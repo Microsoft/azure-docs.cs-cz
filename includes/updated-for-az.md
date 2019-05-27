@@ -5,11 +5,11 @@ manager: carmonm
 ms.date: 04/17/2019
 ms.topic: include
 ms.openlocfilehash: bba762fca7154067e528ebbbb0ea94c8ba7965f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62088352"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110260"
 ---
 > [!NOTE]
 > Použití nového modulu Azure PowerShell Az byla aktualizována v tomto článku. Stále můžete použít modul AzureRM, který budou dál dostávat opravy chyb, dokud alespoň 2020 dne.

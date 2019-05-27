@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499802"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65913855"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Spravovat skripty před a po
 
@@ -30,9 +30,7 @@ Použít po předem a po skript v nasazení aktualizací, začněte tím, že vy
 
 ![Vyberte skriptů](./media/pre-post-scripts/select-scripts.png)
 
-Vyberte skript, který chcete použít v tomto příkladu, můžete použít **UpdateManagement TurnOnVms** sady runbook. Když vyberte sadu runbook **konfigurace skriptu** otevře se stránka, zadejte hodnoty pro parametry a zvolte **předzálohovací skript**. Klikněte na tlačítko **OK** až budete hotovi.
-
-![Konfigurace skriptu](./media/pre-post-scripts/configure-script.png)
+Vyberte skript, který chcete použít v tomto příkladu, můžete použít **UpdateManagement TurnOnVms** sady runbook. Když vyberte sadu runbook **konfigurace skriptu** otevře se stránka, zvolit **předzálohovací skript**. Klikněte na tlačítko **OK** až budete hotovi.
 
 Opakujte tento postup u **UpdateManagement TurnOffVms** skriptu. Ale při volbě **typ skriptu**, zvolte **pozálohovací skript**.
 
@@ -136,7 +134,7 @@ Kompletní příklad se všechny vlastnosti najdete na následujících stránk�
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext` Objekt může obsahovat duplicitní položky pro počítače. To může způsobit skripty před a po spuštění více než jednou ve stejném počítači. Chcete-li vyřešit toto chování, použijte `Sort-Object -Unique` vybrat pouze jedinečné názvy virtuálních počítačů ve vašem skriptu.
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 
 Ukázky pro skripty před a po najdete v [Galerie centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell), nebo importovat na webu Azure portal. V části Import prostřednictvím portálu, ve vašem účtu Automation **automatizace procesů**vyberte **Galerie Runbooků**. Použití **Update Management** filtru.
 

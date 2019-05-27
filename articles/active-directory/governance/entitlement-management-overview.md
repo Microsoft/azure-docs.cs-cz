@@ -16,12 +16,12 @@ ms.date: 04/27/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abe2f7deef2a1dbe82f4702fd3477303891ab2e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873568"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921068"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je Správa oprávnění Azure AD? (Preview)
 
@@ -97,7 +97,7 @@ Balíčky přístup také zahrnovat jeden nebo více *zásady*. Zásady definuje
 
 S balíčkem aplikace přístup a její zásady definuje správce přístupu k balíčku:
 
-- Zdroje a prostředky
+- Prostředky
 - Role uživatelů musí pro prostředky
 - Interní uživatele a externí uživatele, které jsou vhodné pro vyžádání přístupu
 - Proces schvalování a uživatelé, kteří můžete schválit nebo odepřít přístup
@@ -114,7 +114,7 @@ Následující diagram ukazuje příklad různé prvky ve správě oprávnění.
 
 Při použití [Azure AD pro mezifiremní (B2B)](../b2b/what-is-b2b.md) pozvat prostředí, musí v e-mailové adresy externím uživatelům typu Host chcete přenést do adresáře prostředků a práci s znáte. Toto funguje skvělé, když pracujete na projektu menší či krátkodobé a všichni účastníci už znáte, ale je to obtížnější spravovat, pokud máte velké množství uživatelů, kterou chcete pracovat, nebo pokud účastníky v průběhu času měnit.  Například můžete může pracovat s jinou organizací a mít jeden bod kontaktu s dané organizace, ale v čase další uživatelé z této organizace také potřebovat přístup.
 
-Pomocí správy oprávnění můžete definovat zásady, které umožňuje uživatelům z organizací, kterou zadáte, které jsou také pomocí Azure AD, chcete-li mít možnost požádat o přístup k balíčku. Můžete určit, zda je vyžadováno schválení a datem vypršení platnosti pro přístup. Pokud je vyžadováno schválení, můžete také určit jako schvalovatele jeden nebo více uživatelů od externí organizace, který jste dříve pozvali – vzhledem k tomu, které můžete chtít vědět, kteří externí uživatelé z jejich organizace potřebují přístup. Po nakonfigurování balíček přístup, můžete poslat odkaz balíček přístup k vaší kontaktní osoby v externí organizace. Tento kontakt můžete sdílet s ostatními uživateli v externí organizace, a můžou použít tento odkaz a požádat o přístup k balíčku.  Uživatelům to organizace, kteří už byli pozváni do adresáře můžete také použít tento odkaz.
+Pomocí správy oprávnění můžete definovat zásady, které umožňuje uživatelům z organizací, kterou zadáte, které jsou také pomocí Azure AD, chcete-li mít možnost požádat o přístup k balíčku. Můžete určit, zda je vyžadováno schválení a datem vypršení platnosti pro přístup. Pokud je vyžadováno schválení, můžete také určit jako schvalovatele jeden nebo více uživatelů od externí organizace, který jste dříve pozvali – vzhledem k tomu, které můžete chtít vědět, kteří externí uživatelé z jejich organizace potřebují přístup. Po nakonfigurování balíček přístup, můžete poslat odkaz balíček přístup k vaší kontaktní osoby v externí organizace. Tento kontakt můžete sdílet s ostatními uživateli v externí organizace, a můžou použít tento odkaz a požádat o přístup k balíčku.  Uživatelé z této organizace, kteří už byli pozváni do adresáře můžete také použít tento odkaz.
 
 Při schválení žádosti se správa nároků zřízení uživatele s potřebnou úroveň přístupu, které mohou zahrnovat vyzve uživatele, pokud nejsou již ve vašem adresáři. Azure AD automaticky vytvoří účet B2B pro ně.  Všimněte si, že správce má dřív omezený počet organizací, které jsou povolené pro spolupráci, nastavením [B2B povolují nebo odpírají seznamu](../b2b/allow-deny-list.md) chcete povolit nebo blokovat zve do jiné organizace.  Pokud uživatel není povolený v seznamu povolených nebo blokovaných pak nebude pozvaný.
 
@@ -130,7 +130,7 @@ Abyste lépe pochopili Správa nároků a jeho dokumentace, měli byste zkontrol
 | přístup k balíčku | Kolekce oprávnění a zásady pro prostředky, které uživatelé mohou požadovat. Balíček přístup je vždy obsažen v katalogu. |
 | žádost o přístup | Žádost o přístup k balíčku přístup. Žádost o obvykle prochází pracovního postupu. |
 | policy | Sada pravidel, který definuje přístup životní cyklus, jako je například jak uživatelé získají přístup, který můžete schválit a jak dlouho mají uživatelé přístup. Příkladem zásad může být zaměstnance a externí přístup. |
-| Katalog | Kontejner související prostředky a přístup k balíčkům. |
+| catalog | Kontejner související prostředky a přístup k balíčkům. |
 | Obecné katalogu | Integrované katalog, který je vždy k dispozici. Přidání prostředků do katalogu obecné vyžaduje určitá oprávnění. |
 | prostředek | Prostředek nebo služba (jako jsou skupiny, aplikace nebo webu), která uživatele lze udělit oprávnění. |
 | typ prostředku | Typ prostředku, skupiny, aplikace a weby SharePoint Online. |

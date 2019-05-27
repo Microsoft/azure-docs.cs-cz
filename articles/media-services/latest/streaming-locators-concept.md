@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9a14399117971807c1d18f8eb5fab7d6e6cef2d5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465036"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120354"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
@@ -24,17 +24,19 @@ Pokud chcete, aby videa ve výstupním prostředku byla k dispozici klientům pr
 
 Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
-Při vytváření **Lokátor streamování**, je třeba zadat [Asset](https://docs.microsoft.com/rest/api/media/assets) název a [streamování zásad](https://docs.microsoft.com/rest/api/media/streamingpolicies) název. Můžete buď použít jednu z předdefinovaných zásad streamování nebo vytvořit vlastní zásadu. Předdefinované zásady, které jsou aktuálně k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming". Při použití vlastního streamování zásad, doporučujeme navrhnout omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když se stejnými možnostmi a protokoly jsou potřeba. 
+Při vytváření **Lokátor streamování**, je nutné zadat **Asset** název a **streamování zásad** název. Další informace naleznete v následujících tématech:
 
-Pokud chcete zadat možnosti šifrování na datový proud, vytvořte [zásad klíče k obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) , který konfiguruje, jak je klíč k obsahu doručit koncovým klientům prostřednictvím součást doručení klíče služby Media Services. Přidružit vaše Lokátor streamování s **zásad klíče k obsahu** a klíče k obsahu. Služba Media Services můžete nechat automaticky vygenerovat klíč. Následující příklad .NET ukazuje, jak nakonfigurovat šifrování AES omezení s tokenem v Media Services v3: [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted). **Obsah zásady klíčů** jsou aktualizovat, můžete chtít aktualizovat zásady, pokud je třeba provést obměny klíče. Může trvat až 15 minut pro doručení klíče mezipaměti aktualizace a vyzvednutí aktualizované zásady. Doporučuje se tak, aby nevytvářela nové zásady obsahu klíč pro každý Lokátor streamování. Pokuste se znovu použít existující zásady, kdykoli je to stejné možnosti jsou třeba.
+* [Prostředky](assets-concept.md)
+* [Zásady streamování](streaming-policy-concept.md)
+* [Zásady symetrických klíčů](content-key-policy-concept.md)
 
 > [!IMPORTANT]
 > * Vlastnosti **lokátory streamování** jsou DateTime typu jsou vždy ve formátu UTC.
-> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. 
+> * Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
 
 ## <a name="associate-filters-with-streaming-locators"></a>Lokátory streamování přidružit filtry
 
-Můžete zadat seznam [asset nebo účet filtrů](filters-concept.md), které bude platit pro vaše [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamické packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické manifestu](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
+Zobrazit [filtry: přidružili lokátory streamování](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>Filtr, pořadí, stránka Lokátor streamování entity
 
@@ -42,5 +44,4 @@ Zobrazit [filtrování, řazení, stránkování, Media Services entit](entities
 
 ## <a name="next-steps"></a>Další postup
 
-* [Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)
-* [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
+[Kurz: Nahrávání, kódování a streamování videí pomocí .NET](stream-files-tutorial-with-api.md)

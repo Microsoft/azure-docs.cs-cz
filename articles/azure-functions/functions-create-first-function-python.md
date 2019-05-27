@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143057"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864518"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -92,7 +92,7 @@ Rozšíření sady usnadňuje přidat rozšíření vazby dolů cestách. Je tak
 
 Teď můžete přidat funkce do vašeho projektu.
 
-## <a name="create-a-function"></a>Vytvoření funkce
+## <a name="create-a-function"></a>Vytvořit funkci
 
 Přidání funkce do vašeho projektu, spusťte následující příkaz:
 
@@ -108,7 +108,7 @@ Podsložku s názvem _HttpTrigger_ se vytvoří, který obsahuje následující 
 
   Každá vazba vyžaduje směr, typ a jedinečný název. HTTP trigger má vstupní vazby typu [ `httpTrigger` ](functions-bindings-http-webhook.md#trigger) a výstupní vazby typu [ `http` ](functions-bindings-http-webhook.md#output).
 
-* **__init__.py**: soubor skriptu, který je protokolu HTTP aktivované funkce. Tento skript zkontrolovat a zjistit, zda obsahuje výchozí `main()`. Data protokolu HTTP z triggeru je předán do této funkce pomocí `req` s názvem parametru vazby. Definované v function.json, `req` je instance [azure.functions.HttpRequest třídy](/python/api/azure-functions/azure.functions.httprequest). 
+* **\_\_init\_\_.py**: soubor skriptu, který je protokolu HTTP aktivované funkce. Tento skript zkontrolovat a zjistit, zda obsahuje výchozí `main()`. Data protokolu HTTP z triggeru je předán do této funkce pomocí `req` s názvem parametru vazby. Definované v function.json, `req` je instance [azure.functions.HttpRequest třídy](/python/api/azure-functions/azure.functions.httprequest). 
 
     Vrácený objekt definovaný jako `$return` v function.json, je instance [azure.functions.HttpResponse třídy](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [aktivace protokolu HTTP služby Azure Functions a vazby](functions-bindings-http-webhook.md).
 

@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0288d9c0932d012bc83f23053b661c5a7ea2ef82
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731518"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872959"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první funkce trvalý v jazyce C\#
 
 *Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
 
-V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce orchestruje a zřetězen dohromady volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
+V tomto článku se dozvíte, jak používat nástroje Visual Studio 2019 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce orchestruje a zřetězen dohromady volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou k dispozici jako součást sady funkcí vývoj pro Azure v aplikaci Visual Studio 2019.
 
 ![Odolné funkce spuštěné v Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro sl
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalujte [Visual Studio 2017](https://azure.microsoft.com/downloads/). Ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha.
+* Nainstalujte [Visual Studio 2019](https://azure.microsoft.com/downloads/). Ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha.
 
 * Přesvědčte se, že máte [nejnovější nástroje Azure Functions](../functions-develop-vs.md#check-your-tools-version).
 

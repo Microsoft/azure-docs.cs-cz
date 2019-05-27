@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785380"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861548"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory?
 
-Můžete řídit přístup uživatelů k vašim cloudovým aplikacím pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). V zásadách podmíněného přístupu, definujte odpověď ("proveďte to") důvod Aktivace zásady ("Když taková situace nastane"). 
+Můžete řídit přístup uživatelů k vašim cloudovým aplikacím pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). V zásadách podmíněného přístupu, definujte odpověď ("proveďte to") důvod Aktivace zásady ("Když taková situace nastane").
 
 ![Důvod a odpovědi](./media/conditions/10.png)
 
@@ -37,7 +37,7 @@ V kontextu podmíněného přístupu **v takovém případě** se volá **podmí
 ![Zásady podmíněného přístupu](./media/conditions/61.png)
 
 
-Podmínky, které jste nenakonfigurovali v zásadách podmíněného přístupu se nepoužívají. Některé podmínky jsou [povinné](best-practices.md) použít zásady podmíněného přístupu do prostředí. 
+Podmínky, které jste nenakonfigurovali v zásadách podmíněného přístupu se nepoužívají. Některé podmínky jsou [povinné](best-practices.md) použít zásady podmíněného přístupu do prostředí.
 
 Tento článek představuje přehled podmínek a jak se používají zásady podmíněného přístupu. 
 
@@ -73,7 +73,7 @@ Organizace, můžete vybrat z následujících možností:
 > [!NOTE]
 > Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup.
 
-**Akce uživatelů** jsou úkoly provedené uživatelem. Aktuálně se podporují pouze akce je **zaregistrovat informace o zabezpečení (preview)**, umožňuje zásady podmíněného přístupu vynucovat, když se uživatel zaregistruje informace o jejich zabezpečení.
+**Akce uživatelů** jsou úkoly provedené uživatelem. Pouze aktuálně podporované akce **zaregistrovat informace o zabezpečení (preview)**, což umožňuje zásady podmíněného přístupu vynucovat, když uživatelé, kteří jsou povoleny pro kombinované registraci pokus o registraci jejich zabezpečení informace. Další informace najdete v článku, [povolit kombinovat informace o registraci zabezpečení (preview)](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ## <a name="sign-in-risk"></a>Riziko přihlášení
 

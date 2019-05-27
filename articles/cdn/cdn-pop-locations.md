@@ -5,21 +5,21 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: ''
+editor: sohamnchatterjee
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: ae316749d3e88bc8bfd99d0f4856d5386916a27f
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 33682727b84713b515bb68d34aa5cf8b72ce44fa
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869640"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65862472"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN pokrytí Metro 
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Tento článek uvádí aktuální metrem obsahující point-of-presence (POP) um
 | Evropa | Vídeň, Rakousko<br />Brusel, Belgie<br />Praha, Česká republika<br />Kodaň, Dánsko<br /> Helsinki, Finsko<br />Marseille, France<br />Paříž, Francie<br />Berlín, Německo<br />Frankfurt, Německo<br />Atény, Řecko<br />Budapešť, Maďarsko<br />Dublin, Irsko<br />Milán, Itálie<br />Amsterodam, Nizozemsko<br />Varšava, Polsko<br />Barcelona, Španělsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Curych, Švýcarsko<br />Londýn, Spojené království<br />Manchester, Velká Británie | Vídeň, Rakousko<br />Kodaň, Dánsko<br />Helsinki, Finsko<br />Marseille, France<br />Paříž, Francie<br />Frankfurt, Německo<br />Milán, Itálie<br />Riga, Lotyšsko<br />Amsterodam, Nizozemsko<br />Varšava, Polsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Londýn, Spojené království | Rakousko<br />Bulharsko<br />Dánsko<br />Finsko<br />Francie<br />Německo<br />Řecko<br />Irsko<br />Itálie<br />Nizozemsko<br />Polsko<br />Rusko<br />Španělsko<br />Švédsko<br />Švýcarsko<br />Spojené království |
 | Afrika | Kapské město, Jihoafrická republika<br />Johannesburg, Jihoafrická republika | Johannesburg, Jihoafrická republika | Jižní Afrika |
 | Střední východ | Dubai, Spojené arabské emiráty | Maskat, Omán<br />Fujirah, Spojené arabské emiráty | Katar<br />Spojené arabské emiráty |
-| Indie | Čennaj, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie | Bengaluru (Bangalore), Indie<br />Čennaj, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie<br /> | Indie |
+| Indie | Čennaj, Indie<br />Hyderabad, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie | Bengaluru (Bangalore), Indie<br />Čennaj, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie<br /> | Indie |
 | Asie | Hongkong<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Kuala Lumpur, Malaysia<br />Manila, Filipíny<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Taipei, Tchaj-wan<br />Bangkok, Thajsko | Hongkong<br />Batam, Indonésie<br />Jakarta, Indonesia<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Busan, Jižní Korea<br />Soul, Jižní Korea<br />Kao-Siung, Tchaj-wan | Hongkong<br />Indonésie<br />Izrael<br />Japonsko<br />Macao<br />Malajsie<br />Filipíny<br />Singapur<br />Jižní Korea<br />Tchaj-wan<br />Thajsko<br />Turecko<br />Vietnam |
 | Austrálie a Nový Zéland | Brisbane, Austrálie<br />Melbourne, Austrálie<br />Perth, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Austrálie<br />Nový Zéland |
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: e15d6ad445c3fdde0632c3ad468eee7da836a394
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785964"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872699"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -21,9 +21,9 @@ Funkce v aplikaci function app sdílení prostředků. Mezi tyto sdílené prost
 
 ## <a name="connection-limit"></a>Limit připojení
 
-Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je limit počtu připojení (aktuálně v 600 aktivní připojení a 1 200 celkový počet připojení) na instanci. Při dosažení tohoto limitu, modul runtime služby functions vytvoří protokol s následující zprávou: `Host thresholds exceeded: Connections`.
+Počet dostupných připojení je omezený částečně proto, že aplikace function app se spouští v [prostředí izolovaného prostoru](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). Jedním z omezení, izolovaný prostor ukládá váš kód je omezený počet odchozích připojení, která je aktuálně 600 aktivních připojení (celkem 1 200) na instanci. Při dosažení tohoto limitu, modul runtime služby functions zapíše do protokolů následující zprávu: `Host thresholds exceeded: Connections`. Další informace najdete v tématu [omezení služby Functions](functions-scale.md#service-limits).
 
-Toto omezení se na jednu instanci.  Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-and-premium-plans-work) pro zpracování více požadavků, každá instance má limit nezávislé připojení. To znamená neomezený globální připojení, a máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
+Toto omezení se na jednu instanci. Když [měřítka řadiče přidána instance aplikace funkce](functions-scale.md#how-the-consumption-and-premium-plans-work) pro zpracování více požadavků, každá instance má limit nezávislé připojení. To znamená neomezený globální připojení, a máte mnohem víc než 600 aktivní připojení ve všech aktivních instancích.
 
 Při odstraňování potíží, ujistěte se, že jste povolili Application Insights pro aplikaci function app. Application Insights umožňuje zobrazit metriky pro vaše aplikace funkcí, jako je spuštění. Další informace najdete v tématu [zobrazit telemetrická data ve službě Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
 

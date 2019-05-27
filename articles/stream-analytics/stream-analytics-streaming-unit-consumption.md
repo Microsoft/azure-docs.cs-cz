@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/17/2019
+ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761649"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916036"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -51,7 +51,7 @@ Obecně platí, osvědčeným postupem je začít s 6 SUs pro dotazy, které nep
 Další informace o výběru správné číslo su najdete na této stránce: [Škálování služby Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> Určení počtu jednotek su jsou požadovány pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a na dotazu definovaném pro příslušnou úlohu. Můžete vybrat až do vaší kvóty služby SUs pro úlohu. Každé předplatné Azure má ve výchozím nastavení se kvóta až 200 SUs pro všechny úlohy analýzy v určité oblasti. Pro vaše předplatné nad tuto kvótu zvýšit su, obraťte se na [Microsoft Support](https://support.microsoft.com). Platné hodnoty pro služby SUs na úlohu jsou 1, 3, 6 a až v přírůstcích po 6.
+> Určení počtu jednotek su jsou požadovány pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a na dotazu definovaném pro příslušnou úlohu. Můžete vybrat až do vaší kvóty služby SUs pro úlohu. Každé předplatné Azure má ve výchozím nastavení se kvóta až 500 SUs pro všechny úlohy analýzy v určité oblasti. Pro vaše předplatné nad tuto kvótu zvýšit su, obraťte se na [Microsoft Support](https://support.microsoft.com). Platné hodnoty pro služby SUs na úlohu jsou 1, 3, 6 a až v přírůstcích po 6.
 
 ## <a name="factors-that-increase-su-utilization"></a>Faktory, které zvyšují % využití SU 
 

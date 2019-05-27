@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233544"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66123891"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Verze Preview: Migrovat na verzi rozhraní API pro aplikace LUIS 3.x
 
@@ -343,6 +343,9 @@ Předpověď odpovědi obsahuje této entity seznamu, všechny ostatní predikti
 
 **Ve verzi 3**, je označena entity `startIndex` a `entityLength`.
 
+## <a name="deprecation"></a>Vyřazení 
+
+Rozhraní API V2 nebude přestanou používat po dobu alespoň 9 měsíců po V3 ve verzi preview. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,11 +10,11 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58166748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66117588"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekovat anomálie na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
 
@@ -51,7 +51,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-an-iot-edge-device"></a>Přidání zařízení IoT Edge
+## <a name="add-an-iot-edge-device"></a>Přidat zařízení IoT Edge
 
 Existují dva kroky pro přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování. V této části se dozvíte, jak používat:
 
@@ -80,7 +80,7 @@ Aby bylo snazší spravovat zařízení IoT Edge v řešení, vytvořte skupinu 
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Úloha     | Značky  |
+    | Úloha     | Tags  |
     | Název úlohy | AddEdgeTag |
     | Klíč     | IsOilPump |
     | Hodnota   | Ano     |
@@ -163,7 +163,7 @@ Před zabalení jako modul Edge definujete úlohu Stream Analytics na portálu.
     | Název úlohy | EdgeDeviceJob |
     | Předplatné | Vaše předplatné Azure |
     | Skupina prostředků | IoTEdgeDevices |
-    | Umístění | USA – východ |
+    | Location | USA – východ |
     | Hostitelské prostředí | Edge |
     | Jednotky streamování | 1 |
 
@@ -321,7 +321,7 @@ Pokud chcete zasílat oznámení operátory, pokud bylo dosaženo prahové hodno
     | Pole | teplota |
     | Operátor | > |
     | Hodnota | 300 |
-    | Úroveň závažnosti | Informace |
+    | Úroveň závažnosti | Info |
 
     [![Vytvoření pravidla](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 

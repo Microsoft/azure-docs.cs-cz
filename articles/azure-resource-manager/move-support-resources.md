@@ -4,14 +4,14 @@ description: Seznam typů prostředků Azure, které lze přesunout do nové sku
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 5/16/2019
+ms.date: 5/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: d662607eaaabb8ccfad89f625165c542af81b0fa
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dcac557f29a987ea732744c1b82f90f858623ec5
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794520"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872558"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 Tento článek uvádí, zda typ prostředku Azure podporuje operace přesunu. I když typ prostředku podporuje operace přesunutí, může být podmínky, které brání přesunutí prostředku. Podrobnosti o podmínkách, které mají vliv operací přesunu najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
@@ -848,7 +848,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| deviceservices | Ano | Ano |
+| deviceservices | Ne | Ne |
 
 ## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
 | Typ prostředku | Skupina prostředků | Předplatné |

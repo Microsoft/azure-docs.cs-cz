@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01a0f30063b5d98d23bb25fdc7f610158b92cd78
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8538a96e1919fbff9f800a785788ccaa41a68392
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545631"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121934"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS
 
@@ -76,12 +76,13 @@ Když chcete aplikaci nastavit tak, aby získávala tokeny, musíte ji zaregistr
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na horním panelu vyberte svůj účet. Ze seznamu **Directory** vyberte tenanta Active Directory, do kterého chcete aplikaci zaregistrovat.
 3. V levém navigačním podokně vyberte **Všechny služby** a potom vyberte **Azure Active Directory**.
-4. Vyberte **Registrace aplikací** a potom vyberte **Přidat**.
-5. Postupujte podle pokynů a vytvořte novou **nativní** klientskou aplikaci.
+4. Vyberte **registrace aplikací**a pak vyberte **registrace nové**.
+5. Postupujte podle výzev a vytvořte novou klientskou aplikaci.
     * **Název** je název aplikace, který aplikaci popisuje koncovým uživatelům.
-    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu, která je specifická pro vaši aplikaci a je založená na předchozí informaci o identifikátoru URI pro přesměrování.
+    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu, která je specifická pro vaši aplikaci a je založená na předchozí informaci o identifikátoru URI pro přesměrování. Také vyberte **veřejným klientem (mobilních a desktopových)** z rozevíracího seznamu.
 6. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících částech, proto si ji z karty aplikace zkopírujte.
-7. Na stránce **Nastavení** vyberte **Požadovaná oprávnění > Přidat > Microsoft Graph** a potom v části **Delegovaná oprávnění** přidejte oprávnění **Čtení dat z adresáře**. Toto oprávnění nastaví aplikaci, aby za uživatele dotazovala rozhraní Azure AD Graph API.
+7. Z **oprávnění k rozhraní API** stránce **přidat oprávnění**. Uvnitř **vyberte rozhraní API** vyberte ***Microsoft Graphu***.
+8. V části **delegovaná oprávnění**, vyberte oprávnění **User.Read**, pak klikněte na tlačítko **přidat** uložte. Toto oprávnění nastaví aplikaci, aby za uživatele dotazovala rozhraní Azure AD Graph API.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace ADAL
 

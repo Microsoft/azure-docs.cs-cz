@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/29/2098
+ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925698"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922169"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -535,3 +535,14 @@ Pokud nelze povolit automatické aktualizace, přečtěte si následující bě�
 - **Chyba:** Účet Spustit jako se nenašel. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
 
     **Doporučená akce**: Odstranit a potom [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+
+-  **Chyba:** Azure spustit jako certifikát používaný účet automation brzy vyprší platnost. 
+
+    Certifikát podepsaný svým držitelem, který je vytvořený pro účet Spustit jako, vyprší jeden rok od data vytvoření. Před vypršením platnosti ho můžete kdykoli obnovit. Pokud jste si zaregistrovali službu e-mailových oznámení, také dostanete e-mailů při akce je zapotřebí ve směru z vaší strany. Tato chyba se zobrazí 2 měsíce před datem vypršení platnosti a se změní na kritickou chybu, pokud vypršela platnost certifikátu. Jakmile platnost certifikátu vypršela, automatické aktualizace nebude funkční, dokud si neprodloužíte stejné.
+
+   **Doporučená akce**: Klikněte na "Opravit" a potom obnovit certifikát k vyřešení tohoto problému.
+    
+   ![obnovení certifikátu](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+
+> [!NOTE]
+> Po obnovení certifikátu, aktualizujte prosím stránku tak, aby se aktualizuje aktuální stav.

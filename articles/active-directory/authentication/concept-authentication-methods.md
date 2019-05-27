@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359249"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119370"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -26,7 +26,7 @@ Správci můžou určit v zásadách, které metody ověřování jsou k dispozi
 
 Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům vybrat více než minimální požadovaný počet metod ověřování v případě, že nemají přístup k jednomu.
 
-|Metoda ověřování|Využití|
+|Metoda ověření|Využití|
 | --- | --- |
 | Heslo | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Bezpečnostní otázky | Pouze samoobslužné resetování HESLA |
@@ -165,7 +165,7 @@ Jako součást verze public preview se podporují hardwarové tokeny OATH. Dalš
 Jakmile jsou získat tokeny musí být odeslán ve formátu souboru hodnot oddělených čárkami (CSV), stejně jako v příkladu níže ukazuje včetně hlavní název uživatele, sériové číslo, tajný klíč, časový interval, výrobce a model.
 
 ```csv
-upn,serial number,secret key,timeinterval,manufacturer,model
+upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
 
@@ -193,7 +193,7 @@ Pro vše správně fungovalo, musí být telefonní čísla ve formátu *+ Count
 >
 > Resetování hesla nepodporuje telefonní linky. Dokonce i ve formátu 12345 4255551234 + 1 X se odeberou rozšíření před uvedením volání.
 
-### <a name="text-message"></a>Textová zpráva
+### <a name="text-message"></a>Zpráva SMS
 
 Číslo mobilního telefonu s ověřovacím kódem se pošle zprávu SMS. Zadejte ověřovací kód, který je k dispozici v rozhraní přihlášení pokračujte.
 

@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 85e162773f95272ac2af36469480f1786b260e26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ebf371c45868d8e620413f8f54b3531b1a17f817
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806248"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949589"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu komerční Marketplace v partnerském centru
 
@@ -36,7 +36,7 @@ Existujících vydavatelů marketplace najdete známé, ale Vylepšené uživate
 
 ### <a name="improvements-on-user-experience-and-billing"></a>Vylepšení na uživatelské prostředí a fakturace
 
-S přechodem do partnerského centra nová funkce je dostupná pro vydavatele, kromě vylepšení na činnost uživatele. Nabídky SaaS, které můžete vám fakturovat měsíčně nebo ročně, podporují licencování (založené na pracovní stanici) kromě (paušální) na webu na uživatele. Tento nový model finanční zhodnocení je ideální pro obchodního softwaru. Po zavedení služby SaaS na uživatelských licencích v souladu s nové funkce a umožňuje zákazníkům dokončete nákup v AppSource, obchodní Tržiště Microsoftu pro firmy a oborová řešení. 
+S přechodem do partnerského centra nová funkce je dostupná pro vydavatele, kromě vylepšení na činnost uživatele. Nabídky SaaS, které mohou fakturovat měsíčně nebo ročně, podporují licencování (založené na pracovní stanici) kromě podle webu licencování (paušální) na uživatele. Tento nový model finanční zhodnocení je ideální pro obchodního softwaru. Po zavedení služby SaaS na uživatelských licencích v souladu s novou funkci, která umožňuje zákazníkům kompletní nákupy v AppSource, obchodní webu Microsoft marketplace pro firmy a oborové řešení. 
 
 ### <a name="account-and-user-management-updates"></a>Účet a uživatele správy aktualizací
 
@@ -58,3 +58,4 @@ Další informace o nejnovější a budoucích vydaných verzích najdete [marke
 
 - Pro partnery společnosti Microsoft zcela nové zájem o publikování SaaS nabídnout tržišť, naleznete v tématu [vytvořit obchodní Marketplace účet v partnerském centru](./create-account.md).
 - Pro existující partnery, kteří dříve publikované nabídky na portálu Cloud Partner [spravovat váš obchodní Marketplace účet v partnerském centru](./manage-account.md). 
+- Další informace o přesunutí do partnerského centra v tomto cloudu marketplace správy [blogový příspěvek komunitě partnerů](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293), včetně ukázkové video.

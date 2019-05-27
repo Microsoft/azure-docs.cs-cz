@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 19a5fe4c087d477ff15d2237a36d1c4ecaa0e070
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120666"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908182"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Pomocí služby Azure Functions pro připojení ke službě Azure SQL Database
 
-V tomto článku se dozvíte, jak používat Azure Functions k vytvoření naplánované úlohy, která se připojí k instanci Azure SQL Database. Kód funkce vyčistí řádky v tabulce v databázi. Nové C# funkce je vytvořena na základě předem definované časovače triggeru šablony v sadě Visual Studio 2017. Pro podporu tohoto scénáře, musíte také nastavit připojovací řetězec databáze jako nastavení aplikace do aplikace function App. Tento scénář využívá hromadnou operaci v databázi. 
+V tomto článku se dozvíte, jak používat Azure Functions k vytvoření naplánované úlohy, která se připojí k instanci Azure SQL Database. Kód funkce vyčistí řádky v tabulce v databázi. Nové C# funkce je vytvořena na základě šablony předem definovaných časovače triggeru v aplikaci Visual Studio 2019. Pro podporu tohoto scénáře, musíte také nastavit připojovací řetězec databáze jako nastavení aplikace do aplikace function App. Tento scénář využívá hromadnou operaci v databázi. 
 
 Pokud je toto první práci se službou C# funkce, přečtěte si [Azure Functions C# referenční informace pro vývojáře](functions-dotnet-class-library.md).
 
@@ -64,7 +64,7 @@ Musíte jste dříve publikovali aplikace do Azure. Pokud jste tak již neučini
 
 Budete muset přidat balíček NuGet, který obsahuje knihovnu SqlClient. Tuto knihovnu datového přístupu je potřeba pro připojení k databázi SQL.
 
-1. Otevřete projekt aplikace pro vaše místní funkce v sadě Visual Studio 2017.
+1. Otevřete projekt aplikace pro vaše místní funkce v aplikaci Visual Studio 2019.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace funkcí a zvolte **spravovat balíčky NuGet**.
 

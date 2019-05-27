@@ -9,12 +9,12 @@ ms.date: 04/18/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154431"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65907253"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -118,7 +118,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Resource |`sr=b` |Prostředek je v objektu blob. |
 | Oprávnění |`sp=rw` |Oprávnění udělená SAS Read (r) a zápisu (w). |
 | Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Rozsah IP adres, ze kterých se žádost o přijetí. |
-| Protocol (Protokol) |`spr=https` |Jsou povoleny pouze žádosti přes protokol HTTPS. |
+| Protocol |`spr=https` |Jsou povoleny pouze žádosti přes protokol HTTPS. |
 | Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Používá se k autorizaci přístupu k objektu blob. Podpis je kódu HMAC s vypočítaný přes řetězec přihlašování a klíč pomocí algoritmus SHA256 a potom zakódován pomocí kódování Base64. |
 
 ### <a name="account-sas-uri-example"></a>Příklad identifikátor URI SAS účtu
@@ -232,7 +232,7 @@ Níže je několik příkladů oba typy sdíleného přístupového podpisu SAS 
 Pokud chcete spustit tyto příklady jazyka C#, budete muset odkaz následující balíčky NuGet ve vašem projektu:
 
 * [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage), verze 6.x nebo novější (pro použití účtu SAS).
-* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
+* [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager)
 
 Další příklady, které ukazují, jak vytvořit a otestovat SAS najdete v tématu [vzorových kódů Azure pro ukládání](https://azure.microsoft.com/documentation/samples/?service=storage).
 
@@ -422,7 +422,6 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 Sdílené přístupové podpisy jsou užitečná omezená oprávnění k účtu úložiště na klienty, kteří by neměl mít klíč účtu. V důsledku toho jsou důležitou součástí model zabezpečení pro každou aplikaci pomocí služby Azure Storage. Pokud budete postupovat podle osvědčených postupů, které jsou tady uvedené, můžete SAS k zajištění větší flexibility, přístupu k prostředkům ve vašem účtu úložiště bez negativního vlivu zabezpečení vaší aplikace.
 
 ## <a name="next-steps"></a>Další kroky
-* [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](../blobs/storage-manage-access-to-resources.md)
 * [Delegování přístupu se sdíleným přístupovým podpisem](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Úvod do tabulky a SAS fronty.](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

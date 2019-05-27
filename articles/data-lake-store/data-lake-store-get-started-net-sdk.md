@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60877429"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65900878"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace správy účtů v Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -32,22 +32,16 @@ V tomto článku se dozvíte, jak provádět operace správy účtů v Azure Dat
 Pokyny k provádění operací správy dat v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace systému souborů v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* **Visual Studio 2013, 2015 nebo 2017**. Níže uvedené pokyny používají sadu Visual Studio 2017.
+* **Visual Studio 2013 nebo novější**. Níže uvedené pokyny používají Visual Studio 2019.
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
-1. Otevřete Visual Studio a vytvořte konzolovou aplikaci.
-2. V nabídce **Soubor** klikněte na položku **Nový** a potom klikněte na položku **Projekt**.
-3. V části **Nový projekt** zadejte nebo vyberte tyto hodnoty:
+1. V sadě Visual Studio, vyberte **souboru** nabídce **nový**a potom **projektu**.
+2. Zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+3. V **název projektu**, zadejte `CreateADLApplication`a pak vyberte **vytvořit**.
 
-   | Vlastnost | Hodnota |
-   | --- | --- |
-   | Kategorie |Šablony/Visual C#/Windows |
-   | Šablona |Konzolová aplikace |
-   | Název |VytvořeníAplikaceADL |
-4. Projekt vytvoříte kliknutím na **OK**.
-5. Přidejte do projektu balíčky NuGet.
+4. Přidejte do projektu balíčky NuGet.
 
    1. V Průzkumníku řešení klikněte pravým tlačítkem na název projektu a klikněte na možnost **Správa balíčků NuGet**.
    2. Ujistěte se, že na kartě **Správce balíčků NuGet** je položka **Zdroj balíčku** nastavena na hodnotu **nuget.org** a že je zaškrtnuto políčko **Zahrnout předběžné verze**.
@@ -58,7 +52,7 @@ Pokyny k provádění operací správy dat v Data Lake Storage Gen1 pomocí sady
 
         ![Přidání zdroje NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Vytvoření nového účtu Azure Data Lake")
    4. Zavřete **Správce balíčků NuGet**.
-6. Otevřete soubor **Program.cs**, odstraňte stávající kód a potom vložte následující příkazy, čímž přidáte odkazy na obory názvů.
+5. Otevřete soubor **Program.cs**, odstraňte stávající kód a potom vložte následující příkazy, čímž přidáte odkazy na obory názvů.
 
         using System;
         using System.IO;
@@ -74,7 +68,7 @@ Pokyny k provádění operací správy dat v Data Lake Storage Gen1 pomocí sady
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. Deklarujte proměnné a nahraďte zástupné symboly příslušnými hodnotami. Také se ujistěte, že na počítači existuje místní cesta a název souboru, které zadáte.
+6. Deklarujte proměnné a nahraďte zástupné symboly příslušnými hodnotami. Také se ujistěte, že na počítači existuje místní cesta a název souboru, které zadáte.
 
         namespace SdkSample
         {

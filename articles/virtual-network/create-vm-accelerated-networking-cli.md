@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713724"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873418"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Vytvoření virtuálního počítače s Linuxem s Akcelerovanými síťovými službami
 
@@ -224,6 +224,10 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 Pro váš virtuální počítač je nyní k dispozici akcelerované síťové služby.
+
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>Dynamické vazby a odvolání virtuální funkce 
+Aplikace musí spouštět syntetické síťové karty, která je vystavena ve virtuálním počítači. Pokud aplikace běží přímo nad VF NIC, neobdrží **všechny** paketů, které jsou určeny k virtuálnímu počítači, protože některé pakety zobrazí syntetické rozhraní.
+Pokud spustíte aplikaci přes syntetické síťové karty, zaručuje, že aplikace obdrží **všechny** paketů, které jsou určeny k němu. Je také zajišťuje, že aplikace i nadále běží, i v případě, VF je odebrán, když probíhá údržba hostitele. Je aplikace vazby na syntetický síťový adaptér **povinné** požadavek pro všechny aplikace s využitím **Akcelerovanými síťovými službami**.
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>Povolit akcelerované síťové na stávajících virtuálních počítačů
 Pokud jste vytvořili virtuální počítač bez Akcelerovanými síťovými službami, je možné povolit tuto funkci na existující virtuální počítač.  Virtuální počítač musí podporovat Akcelerovanými síťovými službami při splnění následujících požadavků, které jsou také uvedené výše:

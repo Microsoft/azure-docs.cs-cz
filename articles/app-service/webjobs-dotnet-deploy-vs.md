@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ede7e2fe3a2ab4c0dfd4efaea5ec789924968194
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832296"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873007"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service
 
@@ -92,7 +92,7 @@ Můžete nasadit projekt jako webová úloha samostatně, nebo odkaz do webovéh
 
 Pokud používáte Visual Studio 2015, nainstalujte [sady Azure SDK pro .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Pokud používáte Visual Studio 2017, nainstalujte [funkcí vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
+Pokud používáte Visual Studio 2019, nainstalujte [funkcí vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
 
 ### <a id="convert"></a> Povolit nasazení WebJobs pro existující projekt konzolové aplikace
 
@@ -238,10 +238,10 @@ Služba WebJobs podporuje následující nastavení:
 
 | **Nastavení** | **Typ**  | **Popis** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Vše | Umožňuje tato úloha spustila na místě, aniž se nejprve zkopírována do dočasné složky. Další informace najdete v tématu [WebJobs pracovní adresář](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
-| `is_singleton` | Průběžný | Webové úlohy spusťte jenom na jednu instanci horizontální navýšení kapacity. Další informace najdete v tématu [nastavit nepřetržité úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
+| `is_in_place` | Všechny | Umožňuje tato úloha spustila na místě, aniž se nejprve zkopírována do dočasné složky. Další informace najdete v tématu [WebJobs pracovní adresář](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_singleton` | Nepřetržitě | Webové úlohy spusťte jenom na jednu instanci horizontální navýšení kapacity. Další informace najdete v tématu [nastavit nepřetržité úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
 | `schedule` | Aktivované | Webová úloha spustí podle plánu na základě CRON. Další informace najdete v tématu [časovače triggeru článku](../azure-functions/functions-bindings-timer.md#cron-expressions). |
-| `stopping_wait_time`| Vše | Umožňuje řídit chování při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Všechny | Umožňuje řídit chování při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Další postup
 

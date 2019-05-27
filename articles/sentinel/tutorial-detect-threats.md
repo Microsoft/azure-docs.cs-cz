@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 319ec5d09a6daddb5c1fc36f680ee6d0d856e337
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6cb40f8c9f1ee85848b5e3db311d0fb652ec1bc3
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205432"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921808"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Kurz: Detekce hrozeb s Azure Sentinelu ve verzi Preview
 
@@ -45,7 +45,7 @@ Pravidla zjišťování jsou založeny na typy hrozeb a anomálií, které můž
 
 1. Na webu Azure portal v části Azure Sentinelu vyberte **Analytics**.
 
-   ![Analýzy](./media/tutorial-detect-threats/alert-rules.png)
+   ![Analýza](./media/tutorial-detect-threats/alert-rules.png)
 
 2. V horní nabídce klikněte na tlačítko **+ přidat**.  
 
@@ -59,6 +59,10 @@ Pravidla zjišťování jsou založeny na typy hrozeb a anomálií, které můž
         | where OperationName == "Create or Update Virtual Machine" or OperationName == "Create Deployment"
         | where ActivityStatus == "Succeeded"
         | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+
+   > [!NOTE]
+   > Délka dotazu by měl mít délku 1 až 10 000 znaků a nesmí obsahovat "search *" a "union *".
+
 
 5. V **mapování entit** oddílu, použijte pole v rámci **typ Entity** k mapování sloupců v dotazu na pole entity rozpoznávaných Sentinelu Azure. Pro každé pole mapy relevantní sloupce v dotazu, který jste vytvořili v Log Analytics, do pole odpovídající entity. Vyberte název relevantní sloupce pod **vlastnost**. Každá entita obsahuje více polí, například identifikátor SID, GUID, atd. Můžete namapovat entity podle libovolné pole, nikoli pouze horní úrovni entity.
 

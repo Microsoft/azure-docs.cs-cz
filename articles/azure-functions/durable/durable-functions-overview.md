@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730595"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872811"
 ---
 # <a name="what-are-durable-functions"></a>Co jsou odolná služba Functions?
 
@@ -49,7 +49,7 @@ Odolná služba Functions nyní podporuje následující jazyky:
 
 Odolná služba Functions je cílem podporovat všechny [Azure Functions jazyky](../supported-languages.md). Najdete v článku [seznam problémů Durable Functions](https://github.com/Azure/azure-functions-durable-extension/issues) nejnovější stav práce pro podporu dalších jazyků.
 
-Podobně jako Azure Functions jsou šablony, které vám pomůžou s vývojem pomocí Durable Functions [Visual Studio 2017](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)a [webu Azure portal](durable-functions-create-portal.md).
+Podobně jako Azure Functions jsou šablony, které vám pomůžou s vývojem pomocí Durable Functions [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)a [webu Azure portal](durable-functions-create-portal.md).
 
 ## <a name="billing"></a>Fakturace
 
@@ -59,7 +59,7 @@ Odolná služba Functions se účtuje stejná jako funkce Azure Functions. Dalš
 
 Můžete začít s Durable Functions za méně než 10 minut provedením následujících kurzech rychlý start specifické pro jazyk:
 
-* [C#pomocí sady Visual Studio 2017](durable-functions-create-first-csharp.md)
+* [C#pomocí Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript s využitím Visual Studio Code](quickstart-js-vscode.md)
 
 V obou šablon rychlý start místně vytvořit a otestovat trvalý funkci "hello world". Kód funkce potom publikujete do Azure. Funkce, které vytvoříte orchestruje a zřetězí společně volání dalších funkcí.

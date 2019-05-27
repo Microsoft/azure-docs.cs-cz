@@ -11,20 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/22/2019
+ms.date: 05/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24c8dd49667a359bb0fe7051dd801062f37f3db9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 25f0258b9e6b11e505bd48222dfbca176f963a5e
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718434"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921046"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny nebo instanční objekty na předplatné, skupinu prostředků a prostředků obory. Vlastní role jsou uloženy v adresáři služby Azure Active Directory (Azure AD) a je možné sdílet napříč předplatnými. Každý adresář můžete mít až 2000 vlastní role. Můžete vytvořit vlastní role pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny nebo instanční objekty na předplatné, skupinu prostředků a prostředků obory.
+
+Vlastní role jsou uloženy v adresáři služby Azure Active Directory (Azure AD) a je možné sdílet napříč předplatnými. Každý adresář můžete mít až do **5000** vlastní role. (Pro specializované cloudech, jako je Azure Government, Azure Germany a Azure China 21Vianet je limit 2000 vlastní role.) Můžete vytvořit vlastní role pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API.
 
 ## <a name="custom-role-example"></a>Příklad vlastní roli
 
@@ -107,7 +109,7 @@ Předdefinované role, stejně jako `AssignableScopes` vlastnost určuje, že je
 | Úkol | Operace | Popis |
 | --- | --- | --- |
 | Vytvořit/odstranit vlastní roli | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete vytvořit (nebo odstranění) vlastních rolí pro použití v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
-| Aktualizace vlastní role | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete aktualizovat vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
+| Aktualizovat vlastní roli | `Microsoft.Authorization/ roleDefinitions/write` | Uživatelé, kteří jsou udělena tato operace na všech `AssignableScopes` vlastní role můžete aktualizovat vlastní role v těchto oborech. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatelů](built-in-roles.md#user-access-administrator) předplatná, skupiny prostředků a prostředků. |
 | Zobrazit vlastní roli | `Microsoft.Authorization/ roleDefinitions/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny vestavěné role povolit být k dispozici pro přiřazení vlastní role. |
 
 ## <a name="next-steps"></a>Další postup

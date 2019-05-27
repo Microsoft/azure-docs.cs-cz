@@ -8,16 +8,26 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 4f11eac106fe984aa06e41083c2d4f66c7d0e62c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551727"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872915"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – nejčastější dotazy
 
 Tento článek se zabývá nejčastější dotazy (FAQ) o Microsoft Azure Red Hat OpenShift.
+
+## <a name="how-do-i-get-started"></a>Jak mám začít?
+
+Předtím, než budete moct použít Azure Red Hat OpenShift, budete muset zakoupit minimálně 4 uzly aplikace Azure Red Hat OpenShift vyhrazena.
+
+Pokud jste zákazník Azure[koupit Azure Red Hat OpenShift rezervované instance](https://aka.ms/openshift/buy) prostřednictvím webu Azure portal. Po zakoupení, aktivuje vaše předplatné během 24 hodin, po jejichž uplynutí je budete moct zřizování clusterů.
+
+Pokud si nejste zákazník Azure [kontaktujte prodej](https://aka.ms/openshift/contact-sales) a vyplňte formulář prodeje v dolní části stránky zahájíte proces.
+
+Odkazovat [stránce s cenami Azure Red Hat OpenShift](https://aka.ms/openshift/pricing) Další informace.
 
 ## <a name="which-azure-regions-are-supported"></a>Které oblasti Azure podporují?
 

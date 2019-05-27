@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ab01187b03b3d658b171029003667588382bd7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15118535578419f9e1230c5b2fcfd0d7c42257ea
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820290"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908998"
 ---
 # <a name="access-data-from-your-datastores"></a>Přístup k datům z vašich úložišť
 
@@ -30,7 +30,7 @@ Tento návod ukazuje příklady z následujících úloh:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít úložiště, musíte nejprve [pracovní prostor](concept-azure-machine-learning-architecture.md#workspace).
+Chcete-li použít úložiště, musíte nejprve [pracovní prostor](concept-workspace.md).
 
 Začněte tím, že buď [vytváří se nový pracovní prostor](setup-create-workspace.md#sdk) nebo některý z existujících načítání:
 
@@ -115,7 +115,7 @@ ws.set_default_datastore('your datastore name')
 ## <a name="upload--download-data"></a>Nahrávání a stahování dat
 [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) a [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) metod popsaných v následujících příkladech jsou specifické pro a pracovat stejně jako u [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) a [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) třídy.
 
-### <a name="upload"></a>Odeslat
+### <a name="upload"></a>Nahrávání
 
  Nahrajte do adresáře nebo jednotlivé soubory do úložiště dat pomocí sady Python SDK.
 
@@ -155,9 +155,9 @@ Následující tabulce jsou uvedeny [ `DataReference` ](https://docs.microsoft.c
 
 způsob, jak|Metoda|Popis|
 ----|-----|--------
-Připojení| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště v cílové výpočetní prostředí.
+Připojit| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| Slouží k připojení úložiště v cílové výpočetní prostředí.
 Ke stažení|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|Použijte ke stažení obsahu z vašeho úložiště dat do umístění určeného proměnnou `path_on_compute`. <br> Pro kontext školení, spusťte tento soubor ke stažení se provede před spuštění.
-Odeslat|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Slouží k nahrávání souboru z umístění, které určuje `path_on_compute` do vašeho úložiště. <br> Pro kontext spuštění školení odesílání dochází po spuštění.
+Nahrávání|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| Slouží k nahrávání souboru z umístění, které určuje `path_on_compute` do vašeho úložiště. <br> Pro kontext spuštění školení odesílání dochází po spuštění.
 
  ```Python
 import azureml.data

@@ -2,20 +2,20 @@
 title: Načtení dat maloobchodního prodeje Contoso do služby Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Načtení dvě tabulky z dat maloobchodního prodeje Contoso do Azure SQL Data Warehouse pomocí PolyBase a T-SQL příkazy.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load data
 ms.date: 04/17/2018
-ms.author: cakarst
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 33a5f9eebeb68981a9ccd13bb24834f5a9eabd85
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 946d7685839b949a50604bf255809cb00086af99
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875682"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873562"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Načtení dat maloobchodního prodeje Contoso do služby Azure SQL Data Warehouse
 

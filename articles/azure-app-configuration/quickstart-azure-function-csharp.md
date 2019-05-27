@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a0c677e25be86e0f82b821a7931bda0af2b35127
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408658"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864779"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Rychlý start: Vytvoření funkce Azure s konfigurací aplikace
 
@@ -31,7 +31,7 @@ Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visualstudio.microsoft.com/vs). Ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha. Nainstalovat také [nejnovější nástroje Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version).
+V tomto rychlém startu provedete instalaci [Visual Studio 2019](https://visualstudio.microsoft.com/vs). Ujistěte se, že **vývoj pro Azure** je nainstalovaná úloha. Nainstalovat také [nejnovější nástroje Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,7 +41,7 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 
 6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
 

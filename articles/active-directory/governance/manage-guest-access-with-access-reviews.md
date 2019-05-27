@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350962"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113262"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 
@@ -31,16 +31,13 @@ S Azure Active Directory (Azure AD), můžete snadno povolit spolupráce napří
 Můžete také snadno zajistit, že uživatelé typu Host mají odpovídající přístup. Můžete požádat o hostům sami s rozhodovací pravomocí o účast v kontrolu přístupu a znovu Certifikujte (nebo potvrďte) přístup u hostů. Revidující se mohou vyjádřit k nutnosti dalšího přístupu pro jednotlivé uživatele, a to na základě návrhů z Azure AD. Po dokončení kontroly přístupu můžete provést změny a odebrat přístup pro hosty, kteří ho už nepotřebují.
 
 > [!NOTE]
-> Tento dokument se zaměřuje na kontrole přístupu uživatelů typu Host. Pokud chcete kontrolovat přístup všech uživatelů, není stejně hostů, naleznete v tématu [správě přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md). Pokud chcete kontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [zahájení kontroly přístupu v Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md). 
->
->
+> Tento dokument se zaměřuje na kontrole přístupu uživatelů typu Host. Pokud chcete kontrolovat přístup všech uživatelů, není stejně hostů, naleznete v tématu [správě přístupu uživatelů pomocí kontrol přístupu](manage-user-access-with-access-reviews.md). Pokud chcete kontrolovat členství uživatelů v rolích pro správu, jako je například globální správce, přečtěte si téma [zahájení kontroly přístupu v Azure AD Privileged Identity Management](../privileged-identity-management/pim-how-to-start-security-review.md).
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
+- Azure AD Premium P2
 
-Kontroly přístupu jsou k dispozici v edici Premium P2 služby Azure AD, která je součástí řešení Microsoft Enterprise Mobility + Security, E5. Další informace najdete v článku [Edice služby Azure Active Directory](../fundamentals/active-directory-whatis.md). Každý uživatel, který komunikuje s touto funkcí, včetně akcí jako vytváření kontroly, vyplnění kontroly nebo potvrzení přístupu, musí mít licenci. 
-
-Můžete také zadávat do kontrolovat svůj vlastní přístup uživatelů typu Host. Každé placené Azure AD Premium P2 licencí, přiřadit jeden z uživatelů vaší vlastní organizaci můžete pozvat až pět uživatelů typu Host externí příspěvek uživatele B2B. Tyto uživatele typu Host můžete také použít funkce Azure AD Premium P2. Další informace najdete v tématu [licencování spolupráce B2B ve službě Azure AD](../b2b/licensing-guidance.md).
+Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu hostů
 

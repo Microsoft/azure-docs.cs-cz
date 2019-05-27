@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beccd3f28cd3f5de3ef777b80c53651c76017619
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: a2d9639c21e201db1df5145caf1345d4f0879af6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545633"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121949"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace .NET klasické plochy (WPF)
 
@@ -57,13 +57,15 @@ Umožňuje aplikaci získat tokeny svou aplikaci zaregistrovat ve vašem tenanto
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na horním panelu, vyberte svůj účet a v části **Directory** , zvolte tenanta Active Directory, ve kterém chcete registrace vaší aplikace.
 3. Vyberte na **všechny služby** v levém navigačním podokně a zvolte **Azure Active Directory**.
-4. Na **registrace aplikací**, zvolte **přidat**.
-5. Postupujte podle zobrazených výzev a vytvořte nový **nativní** klientské aplikace.
-    * **Název** aplikace popíše aplikaci pro koncové uživatele
-    * **Identifikátor Uri pro přesměrování** je kombinace schématu a řetězec, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte hodnotu specifickou pro vaši aplikaci, například `http://DirectorySearcher`.
+4. Na **registrace aplikací**, zvolte **registrace nové**.
+5. Postupujte podle výzev a vytvořte novou klientskou aplikaci.
+    * **Název** je název aplikace, který aplikaci popisuje koncovým uživatelům.
+    * V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
+    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení odpovědí týkajících se tokenů. Zadejte hodnotu, která je specifická pro vaši aplikaci (například `http://DirectorySearcher`) a je založena na předchozí informace o identifikátor URI přesměrování. Také vyberte **veřejným klientem (mobilních a desktopových)** z rozevíracího seznamu. 
 
 6. Po dokončení registrace AAD, přiřadí se vaše aplikace jedinečné ID aplikace. Tuto hodnotu budete potřebovat v dalších částech, proto zkopírujte ho ze stránky aplikace.
-7. Z **nastavení** zvolte **požadovaná oprávnění** a zvolte **přidat**. Vyberte **Microsoft Graphu** jako rozhraní API a v části **delegovaná oprávnění** přidat **čtení dat adresáře** oprávnění. Nastavení tohoto oprávnění umožňuje vaší aplikaci k dotazování rozhraní Graph API pro uživatele.
+7. Z **oprávnění k rozhraní API** stránce **přidat oprávnění**. Uvnitř **vyberte rozhraní API** vyberte ***Microsoft Graphu***.
+8. V části **delegovaná oprávnění**, vyberte oprávnění **User.Read**, pak klikněte na tlačítko **přidat** uložte. Toto oprávnění nastaví aplikaci, aby za uživatele dotazovala rozhraní Azure AD Graph API.
 
 ## <a name="step-2-install-and-configure-adal"></a>Krok 2: Instalace a konfigurace ADAL
 

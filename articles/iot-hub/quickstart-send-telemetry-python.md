@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: fc303a0ab53c80c91bb29c36a1a7e0f04c4a89e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006878"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873108"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub a čtení s back endové aplikace (Python)
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Ukázková aplikace, které spustíte v tomto rychlém startu je zapsáno s použitím Pythonu. Microsoft Azure IoT SDK pro Python v současné době podporují pouze konkrétní verze jazyka Python pro každou platformu. Další informace najdete v tématu [Python SDK – soubor Readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-V tomto rychlém startu se předpokládá, že používáte vývojový počítač s Windows. Pro systémy Windows, pouze [Python 3.6.x](https://www.python.org/downloads/release/python-368/) je podporována. To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je váš systém architekturu procesoru, 32 bitů, potom instalační program stáhnout x86; pro 64bitovou architekturu stáhněte si instalační program x86 – x 64. Dále ověřte, jestli [Microsoft Visual C++ Redistributable pro Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) pro architektury (x86 nebo x64) je nainstalována.
+V tomto rychlém startu se předpokládá, že používáte vývojový počítač s Windows. Pro systémy Windows, pouze [Python 3.6.x](https://www.python.org/downloads/release/python-368/) je podporována. To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud je váš systém architekturu procesoru, 32 bitů, potom instalační program stáhnout x86; 64bitová architektura stáhněte si instalační program x86 – x 64. Dále ověřte, jestli [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) pro architektury (x86 nebo x64) je nainstalována.
 
 Python si můžete stáhnout pro jiné platformy z [Python.org](https://www.python.org/downloads/).
 
@@ -65,17 +65,17 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spusťte následující příkaz v Azure Cloud Shell vytvořte identitu zařízení.
 
-    **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+    **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
-    **MyPythonDevice** : Toto je název pro registrovaná zařízení. Použijte uvedený název MyPythonDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
+    **MyPythonDevice**: Toto je název pro registrovaná zařízení. Použijte uvedený název MyPythonDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+1. Spuštěním následujících příkazů ve službě Azure Cloud Shell, chcete-li získat _připojovací řetězec zařízení_ pro registraci zařízení:
 
-    **YourIoTHubName** : Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
+    **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table

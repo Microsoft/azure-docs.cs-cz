@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: acf1608257bc5416ff52ed9fbd4209008712f2d7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f5837e06f347a4f822ac007dfe54c99fc7457dbb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408709"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872972"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý start: Vytvoření .NET Framework aplikace s konfigurací aplikace Azure
 
@@ -29,7 +29,7 @@ Konfigurace aplikace pro Azure je služba spravované konfigurace v Azure. Můž
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visualstudio.microsoft.com/vs) a [rozhraní .NET Framework 4.7.1](https://dotnet.microsoft.com/download) nebo novější, pokud jste tak již neučinili.
+V tomto rychlém startu provedete instalaci [Visual Studio 2019](https://visualstudio.microsoft.com/vs) a [rozhraní .NET Framework 4.7.1](https://dotnet.microsoft.com/download) nebo novější, pokud jste tak již neučinili.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,7 +39,7 @@ V tomto rychlém startu provedete instalaci [Visual Studio 2017](https://visuals
 
 6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp:Settings:Message | Data z konfigurace aplikace Azure |
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 883042e7c8abb43338c55a76bba3d64844ce1c56
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
+ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604342"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66179813"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace v Javě v Linuxu pro Azure App Service
 
@@ -65,7 +65,7 @@ Integrované Image Java jsou založeny na [Alpine Linuxu](https://alpine-linux.r
 
 Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostřednictvím webu Azure portal a rozhraní příkazového řádku. Projděte si následující články konfigurace Javy konkrétní webové aplikace:
 
-- [Konfigurace nastavení služby App Service](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurace nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [Nastavení vlastní domény](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Povolení protokolu SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Přidání sítě CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
@@ -73,7 +73,7 @@ Azure App Service pro Linux podporuje pole vyladění a přizpůsobení prostře
 
 ### <a name="set-java-runtime-options"></a>Nastavte možnosti modulu runtime Java
 
-Pokud chcete nastavit přidělené paměti nebo jiné možnosti modulu runtime JVM do Tomcat a Java SE prostředí, vytvořte [nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí Java runtime při spuštění.
+Pokud chcete nastavit přidělené paměti nebo jiné možnosti modulu runtime JVM do Tomcat a Java SE prostředí, vytvořte [nastavení aplikace, které](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) s názvem `JAVA_OPTS` s možnostmi. App Service Linux předá toto nastavení jako proměnnou prostředí Java runtime při spuštění.
 
 Na webu Azure Portal v části **nastavení aplikace** pro webovou aplikaci, vytvořte nové nastavení aplikace s názvem `JAVA_OPTS` , který obsahuje další nastavení, jako například `-Xms512m -Xmx1204m`.
 
@@ -140,11 +140,45 @@ Aplikace Java spuštěná ve službě App Service pro Linux mají stejnou sadu [
 
 ### <a name="authenticate-users"></a>Ověřování uživatelů
 
-Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autorizace** možnost. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přihlašování přes sociální sítě jako je Facebook, Google nebo GitHub. Konfigurace Azure portal funguje pouze v případě konfigurace ověřování jednotným poskytovatele. Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a související články pro jiné zprostředkovatele identity.
+Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autorizace** možnost. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přihlašování přes sociální sítě jako je Facebook, Google nebo GitHub. Konfigurace Azure portal funguje pouze v případě konfigurace ověřování jednotným poskytovatele. Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) a související články pro jiné zprostředkovatele identity. Pokud je potřeba povolit více poskytovatelů přihlásit, postupujte podle pokynů [přizpůsobit ověřování pomocí služby App Service](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) článku.
 
-Pokud je potřeba povolit více poskytovatelů přihlásit, postupujte podle pokynů [přizpůsobit ověřování pomocí služby App Service](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) článku.
+#### <a name="tomcat"></a>Tomcat
 
- Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) k zabezpečení aplikace pomocí známých poznámky k zabezpečení Spring a rozhraní API. Je potřeba ke zvětšení maximální záhlaví ve vaší `application.properties` souboru. Doporučujeme, aby hodnota `16384`.
+Tomcat aplikaci může přístup k danému uživateli deklarace identity přímo z servlet Tomcat přetypováním objektu zabezpečení objektu do objektu Map. Objekt Map se namapuje každý typ deklarace identity ke kolekci pro daný typ deklarace identity. V níže uvedený kód `request` je instance `HttpServletRequest`.
+
+```java
+Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
+```
+
+Teď si můžete prohlédnout `Map` objekt pro jakékoli konkrétní deklarace identity. Například následující fragment kódu Iteruje přes všechny typy deklarací identity a vytiskne obsah každé z kolekcí.
+
+```java
+for (Object key : map.keySet()) {
+        Object value = map.get(key);
+        if (value != null && value instanceof Collection {
+            Collection claims = (Collection) value;
+            for (Object claim : claims) {
+                System.out.println(claims);
+            }
+        }
+    }
+```
+
+Odhlásit uživatele a provádět další akce, naleznete v dokumentaci na [použití ověřování pomocí služby App Service a autorizaci](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentaci na Tomcat [HttpServletRequest rozhraní](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a její metody. Následující servlet, které metody jsou také HYDRATOVANÝ podle vaší konfigurace služby App Service:
+
+```java
+public boolean isSecure()
+public String getRemoteAddr()
+public String getRemoteHost()
+public String getScheme()
+public int getServerPort()
+```
+
+Chcete-li tuto funkci zakázat, vytvořte nastavení aplikace s názvem `WEBSITE_AUTH_SKIP_PRINCIPAL` s hodnotou `1`. Pokud chcete zakázat všechny filtry servlet přidané ve službě App Service, vytvořte nastavení s názvem `WEBSITE_SKIP_FILTERS` s hodnotou `1`.
+
+#### <a name="spring-boot"></a>Spring Boot
+
+Aplikace Spring Boot vývojáři mohou použít [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) k zabezpečení aplikace pomocí známých poznámky k zabezpečení Spring a rozhraní API. Je potřeba ke zvětšení maximální záhlaví ve vaší `application.properties` souboru. Doporučujeme, aby hodnota `16384`.
 
 ### <a name="configure-tlsssl"></a>Konfigurace TLS/SSL
 
@@ -232,7 +266,7 @@ Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC
 </appSettings>
 ```
 
-Nebo nastavte proměnné prostředí v okně "Nastavení aplikace" na webu Azure Portal.
+Nebo nastavte proměnné prostředí **konfigurace** > **nastavení aplikace** stránky na webu Azure Portal.
 
 Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo pro všechny aplikace spuštěné na Tomcat servlet.
 
@@ -327,10 +361,7 @@ A konečně umístěte JAR ovladač v cestě Tomcat a restartujte službu App Se
 
 Pro připojení ke zdrojům dat aplikace Spring Boot, doporučujeme vytvoření připojovací řetězce a vkládá je do vašeho `application.properties` souboru.
 
-1. V části "Nastavení aplikace" v okně App Service nastavte název pro řetězec, vložte připojovací řetězec JDBC v poli hodnota a nastavit zadáním "Vlastní". Tento připojovací řetězec můžete volitelně nastavit jako nastavení slotu.
-
-    ! [Vytvoření připojovacího řetězce na portálu.]
-    
+1. V oddílu "Konfigurace" stránka služby App Service nastavte název pro řetězec, vložte připojovací řetězec JDBC do pole hodnota a nastavit zadáním "Vlastní". Tento připojovací řetězec můžete volitelně nastavit jako nastavení slotu.
 
     Tento připojovací řetězec je přístupné pro naši aplikaci jako proměnné prostředí s názvem `CUSTOMCONNSTR_<your-string-name>`. Například připojovací řetězec, který jsme vytvořili výše, bude mít název `CUSTOMCONNSTR_exampledb`.
 
@@ -383,13 +414,13 @@ Po spuštění skriptu nahrajte `/home/site/deployments/tools` ve vaší instanc
 
 Nastavte **spouštěcí skript** pole na webu Azure Portal do umístění při spuštění skriptu prostředí, například `/home/site/deployments/tools/your-startup-script.sh`.
 
-Zadat [nastavení aplikace](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings) v konfiguraci aplikace a zajistěte tak předání proměnných prostředí pro použití skriptu. Nastavení aplikace udržovat připojovací řetězce a další tajné klíče potřebné ke konfiguraci vaší aplikace ze správy verzí.
+Zadat [nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) v konfiguraci aplikace a zajistěte tak předání proměnných prostředí pro použití skriptu. Nastavení aplikace udržovat připojovací řetězce a další tajné klíče potřebné ke konfiguraci vaší aplikace ze správy verzí.
 
 ### <a name="modules-and-dependencies"></a>Moduly a závislosti
 
 Instalace modulů a jejich závislosti do cesty pro třídy Wildfly prostřednictvím rozhraní příkazového řádku JBoss, musíte vytvořit následující soubory v jejich vlastní adresáře. Některé moduly a závislosti může být nutné další konfigurace, jako je například JNDI pojmenování nebo jiná konfigurace specifické pro rozhraní API, takže tento seznam je minimální sada budete potřebovat ke konfiguraci závislostí ve většině případů.
 
-- [Popisovač modulu XML](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Tento soubor XML definuje název, atributy a závislosti modulu. To [ukázkový soubor module.xml](https://access.redhat.com/documentation/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) definuje modulu Postgres, jeho závislost JDBC souboru JAR a další závislosti modulu, které vyžaduje.
+- [Popisovač modulu XML](https://jboss-modules.github.io/jboss-modules/manual/#descriptors). Tento soubor XML definuje název, atributy a závislosti modulu. To [ukázkový soubor module.xml](https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform/6/html/administration_and_configuration_guide/example_postgresql_xa_datasource) definuje modulu Postgres, jeho závislost JDBC souboru JAR a další závislosti modulu, které vyžaduje.
 - Všechny nezbytné JAR souboru závislosti pro modul.
 - Skript se vaše příkazy rozhraní příkazového řádku JBoss konfigurace nového modulu. Tento soubor bude obsahovat vaše příkazy mají být provedeny pomocí rozhraní příkazového řádku JBoss a konfigurace serveru pro použití závislost. Dokumentace ke službě na příkazy pro přidání modulů, zdroje dat a zprostředkovatelé zasílání zpráv, najdete v tématu [tento dokument](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
 - Bash spouštěcí skript pro volání rozhraní příkazového řádku JBoss a spusťte tento skript v předchozím kroku. Tento soubor se spustí při restartování vaší instance služby App Service, nebo když nových instancí se zřizují během Škálováním. Tento skript po spuštění je, kde můžete provádět další konfigurace pro vaši aplikaci předaly JBoss příkazy rozhraní příkazového řádku JBoss. Minimálně tento soubor může být jediným příkazem k předání vašeho skriptu příkazu rozhraní příkazového řádku JBoss JBoss rozhraní příkazového řádku:
@@ -401,7 +432,7 @@ Instalace modulů a jejich závislosti do cesty pro třídy Wildfly prostřednic
 Jakmile budete mít, soubory a obsah pro modul, postupujte podle kroků níže přidejte modul Wildfly aplikačního serveru.
 
 1. Soubory na serveru FTP `/home/site/deployments/tools` ve vaší instanci služby App Service. Najdete v tomto dokumentu pokyny na získání svoje přihlašovací údaje serveru FTP.
-2. V okně Nastavení aplikace na webu Azure portal, nastavte pole "Při spuštění skriptu" do umístění při spuštění skriptu prostředí, například `/home/site/deployments/tools/your-startup-script.sh` .
+2. V **konfigurace** > **obecné nastavení** stránky Azure portal, nastavte "po spuštění skriptu" pole do umístění při spuštění skriptu prostředí, například `/home/site/deployments/tools/your-startup-script.sh` .
 3. Stisknutím kombinace kláves restartování vaší instance služby App Service **restartovat** tlačítko **přehled** oddílu na portálu nebo pomocí rozhraní příkazového řádku Azure.
 
 ### <a name="configure-data-source-connections"></a>Nakonfigurujte připojení ke zdroji dat

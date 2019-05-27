@@ -2,20 +2,20 @@
 title: Řešení potíží s Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Řešení potíží s Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: mlee3gsd
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.component: supportability
 ms.date: 03/27/2019
-ms.author: martinle
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 5115ffbc3568c87c37bae4a3e65c37f8504f1fb8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ddae39b7a2c76b5bb3f7caff1c0d5a8165c9d93a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475318"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873832"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 

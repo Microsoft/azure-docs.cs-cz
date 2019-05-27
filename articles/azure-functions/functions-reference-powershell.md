@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 71ac525e2af7473ca9ce0a8f60268e76eccd1a9a
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530380"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833525"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Příručka pro vývojáře Azure Functions Powershellu
 
@@ -23,9 +23,9 @@ Tento článek obsahuje podrobnosti o tom, jak psát Azure Functions pomocí Pow
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-Funkce prostředí PowerShell je vyjádřena jako skript prostředí PowerShell, který se spustí při spuštění. Každý skript funkce má související function.json, který definuje, jak funkce se chová, jako je například jak se aktivuje a vstupní a výstupní parametry. Další informace najdete v tématu [triggery a vazby článku](functions-triggers-bindings.md). 
+PowerShell Azure – funkce (funkce) je vyjádřena jako skript prostředí PowerShell, který se spustí při spuštění. Každý skript funkce má se souvisejícím `function.json` soubor, který definuje, jak funkce se chová, jako je například jak se aktivuje a její vstupní a výstupní parametry. Další informace najdete v tématu [triggery a vazby článku](functions-triggers-bindings.md). 
 
-Skript prostředí PowerShell stejně jako jiné druhy funkce přijímá parametry, které odpovídají názvům vstupní vazby definované v function.json. A `TriggerMetadata` , který obsahuje další informace o aktivační událost, která spuštění funkce také předat parametr.
+Stejně jako jiné druhy funkce, funkce skriptu Powershellu trvat, než se parametry, které odpovídají názvům vstupní vazby definované v `function.json` souboru. A `TriggerMetadata` , který obsahuje další informace o aktivační událost, která spuštění funkce také předat parametr.
 
 Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Byste měli mít také dokončenou [funkce Rychlý start pro PowerShell](functions-create-first-function-powershell.md) k vytvoření první funkce prostředí PowerShell.
 
@@ -56,9 +56,9 @@ PSFunctionApp
  | - bin
 ```
 
-V kořenovém adresáři projektu neexistuje sdílené [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.ps1) a vazbu konfigurační soubor (function.json). Název `function.json`jeho nadřazený adresář je vždy název vaší funkce.
+V kořenovém adresáři projektu neexistuje sdílené [ `host.json` ](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.ps1) a vazbu konfigurační soubor (`function.json`). Název souboru function.json nadřazený adresář je vždy název vaší funkce.
 
-Některé vazby vyžaduje přítomnost `extensions.csproj`. Vazba rozšíření vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime, které jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
+Některé vazby vyžaduje přítomnost `extensions.csproj` souboru. Vazba rozšíření vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime, které jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 V prostředí PowerShell aplikace Function App, může volitelně obsahovat `profile.ps1` která se spouští při spuštění aplikace function app (jinak znát pod některým z  *[studený start](#cold-start)*. Další informace najdete v tématu [Powershellu profilu](#powershell-profile).
 
@@ -81,7 +81,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| Vlastnost   | Popis                                     | Type     |
+| Vlastnost   | Description                                     | Type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Pokud ve standardu UTC, funkce aktivovalo        | DateTime |
 | MethodName | Název funkce, která byla aktivována.     | string   |
@@ -243,7 +243,7 @@ Protokolování v prostředí PowerShell funkce funguje jako regulární protoko
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informace | Zapíše do _informace_ úrovně protokolování. |
-| Ladění | **`Write-Debug`** |
+| Ladit | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Kromě těchto rutin, nic se zapisují do kanálu je přesměrován na `Information` protokolu úrovně a zobrazují se pomocí Powershellu výchozí formátování.
@@ -302,9 +302,9 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 Žádost o objekt, který je předán do skriptu je typu `HttpRequestContext`, který má následující vlastnosti:
 
-| Vlastnost  | Popis                                                    | Type                      |
+| Vlastnost  | Description                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje text žádosti. `Body` je serializován do nejlepší typ založené na datech. Například pokud jsou data JSON, to je předáno jako zatřiďovací tabulku. Pokud jsou data řetězce, je předán v podobě řetězce. | objekt |
+| **`Body`**    | Objekt, který obsahuje text žádosti. `Body` je serializován do nejlepší typ založené na datech. Například pokud jsou data JSON, to je předáno jako zatřiďovací tabulku. Pokud jsou data řetězce, je předán v podobě řetězce. | Objekt |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Dictionary < string, string ><sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | string                    |
 | **`Params`**  | Objekt, který obsahuje směrování parametry požadavku. | Dictionary < string, string ><sup>*</sup> |
@@ -317,9 +317,9 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 Objekt odpovědi, který se má odeslat zpět je typu `HttpResponseContext`, který má následující vlastnosti:
 
-| Vlastnost      | Popis                                                 | Type                      |
+| Vlastnost      | Description                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje text odpovědi.           | objekt                    |
+| **`Body`**  | Objekt, který obsahuje text odpovědi.           | Objekt                    |
 | **`ContentType`** | Krátký ručně k nastavení typu obsahu pro odpověď. | string                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulky   |
 | **`StatusCode`**  | Stavový kód HTTP odpovědi.                       | řetězec nebo int             |

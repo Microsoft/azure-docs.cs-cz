@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 05/17/2019
 ms.author: yizhon
-ms.openlocfilehash: a0099fa085e21c381b74dc2690ffcf0870345f21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401245"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65910324"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -126,7 +126,7 @@ Verze Windows **iothub_client\_ukázky\_iothub_convenience_sample** aplikace obs
   ![Průzkumník řešení sady Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
-> Pokud tento projekt otevřít v sadě Visual Studio 2017, potvrďte jej překonfigurovat projekt na nejnovější verzi.
+> Pokud aplikace Visual Studio vás vyzve k jejich cíl změnit projekt na nejnovější verzi, přijmout výzvu.
 
 Toto řešení obsahuje jeden projekt. Existují čtyři balíčky NuGet, nainstalované v tomto řešení:
 
@@ -163,7 +163,7 @@ Můžete předat kopii připojovací řetězec zařízení, které jste získali
 
 Pokud máte platný **IOTHUB\_klienta\_zpracování**, můžete začít volání rozhraní API pro odesílání a příjem zpráv do a ze služby IoT Hub.
 
-### <a name="send-messages"></a>Odesílání zpráv
+### <a name="send-messages"></a>Poslat zprávy
 
 Ukázková aplikace nastaví smyčku pro odesílání zpráv do služby IoT hub. Následující fragment kódu:
 
@@ -226,7 +226,7 @@ static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, v
 
 Všimněte si volání **IoTHubMessage\_Destroy** fungovat až budete hotovi s touto zprávou. Tato funkce uvolní prostředky přidělené při vytváření zprávy.
 
-### <a name="receive-messages"></a>Příjem zpráv
+### <a name="receive-messages"></a>Přijmout zprávy
 
 Přijetí zprávy je asynchronní operace. Nejprve zaregistrujte zpětné volání, které má být vyvolán při zařízení obdrží zprávu:
 
@@ -339,7 +339,7 @@ Uvnitř **serializátor** složky [úložiště azure-iot-sdk-c](https://github.
   ![Řešení sady Visual Studio pro ukázku mqtt](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
-> Pokud tento projekt otevřít v sadě Visual Studio 2017, potvrďte jej překonfigurovat projekt na nejnovější verzi.
+> Pokud aplikace Visual Studio vás vyzve k jejich cíl změnit projekt na nejnovější verzi, přijmout výzvu.
 
 Stejně jako u předchozí ukázce tohohle zahrnuje několik balíčků NuGet:
 
@@ -414,7 +414,7 @@ V tomto příkladu je volána jednoho modelu **ContosoAnemometer**. Tento model 
 
 Data a akce definované v modelu definovat povrch rozhraní API, můžete použít k odesílání zpráv do služby IoT Hub a reagovat na zprávy odeslané do zařízení. Použití tohoto modelu nejlépe odhalíte obsahuje příklad.
 
-### <a name="send-messages"></a>Odesílání zpráv
+### <a name="send-messages"></a>Poslat zprávy
 
 Model definuje data odeslaná do služby IoT Hub. V tomto příkladu to znamená jeden dva datové položky definované pomocí **WITH_DATA** – makro. Existuje několik kroků, které jsou potřebné k odeslání **DeviceId** a **rychlost větru** hodnoty do služby IoT hub. První je nastavení data, která se mají posílat:
 
@@ -483,7 +483,7 @@ Druhý parametr není ukazatel na uživatelský kontext; stejný ukazatel předa
 
 To je vše je k odesílání zpráv typu zařízení cloud. Zbývá jen k pokrytí je jak přijmout zprávy.
 
-### <a name="receive-messages"></a>Příjem zpráv
+### <a name="receive-messages"></a>Přijmout zprávy
 
 Příjem zpráv funguje podobně jako zprávy způsob, jak pracovat **pro IoTHubClient** knihovny. Nejprve zaregistrujte funkce zpětného volání zpráv:
 

@@ -2,19 +2,19 @@
 title: 'Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET – Azure Key Vault | Dokumentace Microsoftu'
 description: V tomto rychlém startu nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 0d2b3f16086bc3dc653124ecfa9e7116f71bc585
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 132711249ffde4a9c49bc997d8c4ebe4d9c74948
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925434"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872545"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
@@ -39,9 +39,9 @@ Než půjdeme dál, přečtěte si prosím [základní koncepty služby Key Vaul
 ## <a name="prerequisites"></a>Požadavky
 
 * Ve Windows:
-  * [Visual Studio 2017 verze 15.7.3 nebo novější](https://www.microsoft.com/net/download/windows) s následujícími úlohami:
+  * [Visual Studio 2019](https://www.microsoft.com/net/download/windows) s následujícími sadami funkcí:
     * Vývoj pro ASP.NET a web
-    * Vývoj aplikací pro různé platformy pomocí rozhraní .NET Core
+    * Vývoj pro různé platformy .NET core
   * [Sada .NET Core SDK 2.1 nebo novější](https://www.microsoft.com/net/download/windows)
 
 * Na počítači Mac:
@@ -119,14 +119,14 @@ git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
 Upravte soubor program.cs, aby se ukázka spustila s konkrétním názvem vašeho trezoru klíčů:
 
 1. Přejděte do složky key-vault-dotnet-core-quickstart.
-2. V sadě Visual Studio 2017 otevřete soubor key-vault-dotnet-core-quickstart.sln.
+2. Otevřete soubor klíče – trezor dotnet-core-quickstart.sln v aplikaci Visual Studio 2019.
 3. Otevřete soubor Program.cs a aktualizujte zástupný text *YourKeyVaultName* s názvem služby key vault, kterou jste vytvořili dříve.
 
 Toto řešení používá knihovny NuGet [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-V hlavní nabídce sady Visual Studio 2017 vyberte **Ladit** > **Spustit bez ladění**. Jakmile se zobrazí prohlížeč, přejděte na stránku **O aplikaci**. Zobrazí se hodnota tajného klíče **AppSecret**.
+V hlavní nabídce Visual Studio 2019 vyberte **ladění** > **spustit bez ladění**. Jakmile se zobrazí prohlížeč, přejděte na stránku **O aplikaci**. Zobrazí se hodnota tajného klíče **AppSecret**.
 
 ## <a name="publish-the-web-application-to-azure"></a>Publikování webové aplikace do Azure
 

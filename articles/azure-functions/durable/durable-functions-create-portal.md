@@ -8,15 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 10/23/2018
-ms.date: 03/25/2019
-ms.author: v-junlch
-ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/23/2018
+ms.author: azfuncdf, glenga
+ms.openlocfilehash: 705a43f1ef35f953d1b87c7c44bbc45fcb4334be
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710856"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872866"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
 
@@ -24,7 +23,7 @@ ms.locfileid: "60710856"
 
 > [!NOTE]
 > 
-> * Pokud vyvíjíte odolná služba functions v C#, měli byste místo toho zvážit [vývoje sady Visual Studio 2017](durable-functions-create-first-csharp.md).
+> * Pokud vyvíjíte odolná služba functions v C#, měli byste místo toho zvážit [vývoj pro Visual Studio 2019](durable-functions-create-first-csharp.md).
 > * Pokud vyvíjíte odolná služba functions v JavaScriptu, měli byste místo toho zvážit [vývoj pro Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
@@ -92,7 +91,7 @@ Pokud vytváříte odolné funkce jazyka JavaScript, budete muset nainstalovat [
 1. Pomocí nástroje protokolu HTTP jako je Postman nebo nástroj cURL k odeslání požadavku POST na adresu URL, kterou jste zkopírovali. V následujícím příkladu se příkaz cURL, který odešle požadavek POST do odolné funkce:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
     V tomto příkladu `{your-function-app-name}` je shodný s doménou, která je název vaší aplikace function App. Zpráva odpovědi obsahuje sadu koncových bodů identifikátor URI, které můžete použít ke sledování a spravuje spouštění, která vypadá jako v následujícím příkladu:
@@ -141,5 +140,3 @@ První odolné funkce je teď vytvořená a spuštěná v Azure.
 
 > [!div class="nextstepaction"]
 > [Další informace o běžných vzorech trvalý – funkce](durable-functions-concepts.md)
-
-<!-- Update_Description: wording update -->

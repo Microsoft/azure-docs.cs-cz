@@ -2,20 +2,20 @@
 title: Optimalizace transakcí pro službu Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Zjistěte, jak optimalizovat výkon transakční kódu ve službě Azure SQL Data Warehouse při minimalizovat rizika pro dlouhé vrácení zpět.
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/19/2018
-ms.author: cakarst
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5e0b2b75ac111f3221108936f84e5883aebfc1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ab1da9fce74359448311591986d57abbbcef066
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478823"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873650"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakcí ve službě Azure SQL Data Warehouse
 Zjistěte, jak optimalizovat výkon transakční kódu ve službě Azure SQL Data Warehouse při minimalizovat rizika pro dlouhé vrácení zpět.
@@ -44,9 +44,9 @@ Tyto operace podporují minimálně přihlašováno:
 
 * VYTVOŘENÍ TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
 * INSERT..SELECT
-* VYTVOŘENÍ INDEXU
+* CREATE INDEX
 * PŘÍKAZ ALTER INDEX ZNOVU SESTAVIT
-* ODSTRANIT INDEX
+* DROP INDEX
 * TRUNCATE TABLE
 * ODSTRANIT TABULKU
 * PŘÍKAZ ALTER TABLE SWITCH PARTITION
@@ -67,12 +67,12 @@ Funkce CTAS a vložit... Vybrat jsou obě operace hromadného načtení. Však o
 
 | Primární Index | Scénář zatížení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Všechny |**Minimální** |
+| Halda |Vše |**Minimální** |
 | Clusterovaný Index |Prázdná cílová tabulka |**Minimální** |
 | Clusterovaný Index |Načtené řádky nepřekrývají s existující stránky v cíli |**Minimální** |
-| Clusterovaný Index |Načtené řádky se překrývá s existující stránky v cíli |Úplná |
+| Clusterovaný Index |Načtené řádky se překrývá s existující stránky v cíli |Úplný |
 | Clusterovaný Index Columnstore |Velikost dávky > = 102,400 na distribuci zarovnání oddílu |**Minimální** |
-| Clusterovaný Index Columnstore |Batch velikost < 102,400 na distribuci zarovnání oddílu |Úplná |
+| Clusterovaný Index Columnstore |Batch velikost < 102,400 na distribuci zarovnání oddílu |Úplný |
 
 Je vhodné poznamenat, že jakékoli zápisy aktualizovat sekundární či neclusterované indexy budou vždy plně protokolované operace.
 
