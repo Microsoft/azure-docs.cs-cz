@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6cd5bbba681acaa0c32e681f7cb4809142fe11f9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60384619"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113242"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Zkontrolovat přístup ke skupinám nebo aplikacím ve službě Azure AD kontroly přístupu
 
 Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístup ke skupinám a aplikacím ve službě Azure AD a zkontroluje ostatní Microsoft Online Services s funkci s názvem přístup služby Azure AD.
 
 Tento článek popisuje, jak kontrolora určené provádí kontroly přístupu pro členy skupiny nebo uživatelé s přístupem k aplikaci.
+
+## <a name="prerequisites"></a>Požadavky
+
+- Azure AD Premium P2
+
+Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="open-the-access-review"></a>Otevřete kontroly přístupu.
 
@@ -64,16 +70,16 @@ Pokud požadavek má-li zkontrolovat svůj vlastní přístup, bude stránka vyp
 
 Existují dva způsoby, jak můžete schválit nebo odepřít přístup:
 
-- Můžete schválit nebo zamítnout každý požadavek jednotlivě, nebo
+- Můžete schválit nebo zamítnout přístup pro jednoho nebo více uživatelů, nebo
 - Můžete přijmout doporučení systému, což je nejjednodušší a nejrychlejší způsob.
 
-### <a name="approve-or-deny-access-for-each-request"></a>Schvalte nebo zamítněte přístup pro každý požadavek
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>Schvalte nebo zamítněte přístup pro jednoho nebo více uživatelů
 
 1. Projděte si seznam uživatelů, můžete rozhodnout, jestli Schvalte nebo zamítněte jejich přístup.
 
-1. Schválit nebo zamítnout každý požadavek, klikněte na něj a otevřete okno k určení akce má být provedena.
+1. Schválit nebo zamítnout přístup pro jednoho uživatele, klikněte na řádek, otevře se okno k určení akce má být provedena. Schvalte nebo zamítněte přístup pro více uživatelů, přidání značek zaškrtnutí vedle uživatelů a klikněte na tlačítko **X kontroly uživatelů** tlačítka pro otevření okna k určení akce má být provedena.
 
-1. Klikněte na tlačítko **schválit** nebo **Odepřít**. Pokud si nejste jistí, můžete kliknout na **Nevím**. To způsobí zůstane zachována jeho přístupu uživatele, ale výběr se projeví v protokolech auditování.
+1. Klikněte na tlačítko **schválit** nebo **Odepřít**. Pokud si nejste jistí, můžete kliknout na **Nevím**. To povede uživatele zachování jejich přístup, ale výběr se projeví v protokolech auditování.
 
     ![Provádění kontroly přístupu](./media/perform-access-review/approve-deny.png)
 

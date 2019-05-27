@@ -9,18 +9,20 @@ ms.date: 01/18/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7006e19616be51d79dc3e1319064d19024400bcc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 078c62913b903eafe9e0fcfcef4189f5ca735d0f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789982"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002826"
 ---
 # <a name="azure-storage-redundancy"></a>Azure redundance úložiště
 
 Data na vašem účtu Microsoft Azure Storage se vždy replikují, aby byla zajištěna jejich stálost a vysoká dostupnost. Úložiště Azure zkopíruje data, takže je chráněný před plánovaných a neplánovaných událostí, včetně krátkodobého selhání hardwaru, sítě nebo výpadky napájení a masivní přírodními pohromami. Můžete replikovat data ve stejném datovém centru, napříč oblastmi datovými centry v rámci stejné oblasti nebo napříč geograficky oddělenými regiony.
 
 Replikace zajišťuje, že váš účet úložiště splňuje [smlouvu o úrovni služeb (SLA) pro Storage](https://azure.microsoft.com/support/legal/sla/storage/) i při selhání. Podívejte se do smlouvy SLA na informace o zárukách služby Azure Storage na stálost a dostupnost.
+
+Azure Storage pravidelně ověří integritu dat ukládat pomocí kontrol cyklické redundance (CRC). Pokud je zjištěno porušení dat, je opravit, pomocí redundantních dat. Azure Storage také počítá kontrolní součty na veškerý přenos v síti pro detekci poškození dat paketů při ukládání nebo načítání dat.
 
 ## <a name="choosing-a-redundancy-option"></a>Pokud vyberete možnost redundance
 

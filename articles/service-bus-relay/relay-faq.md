@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66111471"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
 
@@ -80,13 +80,13 @@ Posílání zprávy k předávání přes Service Bus je považován za "úplné
 Přenosy, které jsou otevřeny pomocí **netTCPRelay** vazby WCF zpracovávat zprávy není jako jednotlivé zprávy, ale jako datový proud dat protéká systémem. Pokud použijete tuto vazbu, odesílatel a naslouchacího procesu mít přehled o rámce jednotlivé zprávy odeslané a přijaté. Pro přenosu, které používají **netTCPRelay** vazby, všechna data zpracovávají jako datový proud pro výpočet účtované zprávy. V takovém případě služby Service Bus vypočítá celkové množství dat odeslaných nebo přijatých prostřednictvím každé jednotlivé relay v intervalech 5 minut. Potom ji vydělí celkové množství dat 64 KB k určení počet účtovaných zpráv pro propojení během tohoto časového období.
 
 ## <a name="quotas"></a>Kvóty
-| Název kvóty | Rozsah |  Poznámky | Hodnota |
+| Název kvóty | Scope |  Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Souběžné naslouchacích procesů na přenos |Entita |Odeslání dalších žádostí o další připojení budou odmítnuty a volající kód obdrží výjimku. |25 |
 | Předávání souběžných připojení za všechny koncové body relay v oboru názvů služby |Obor názvů |- |5 000 |
-| Obor názvů služby Relay koncových bodů |Obor názvů |- |10 000 |
+| Obor názvů služby Relay koncových bodů |Obor názvů |- |10,000 |
 | Velikost pro zprávy [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) přenosu |Obor názvů |Odmítne příchozí zprávy, které přesahují tyto kvóty a obdrží výjimku ve volajícím kódu. |64 kB |
-| Velikost pro zprávy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) přenosu |Obor názvů |Žádné omezení velikosti zpráv. |Unlimited |
+| Velikost pro zprávy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) přenosu |Obor názvů |Žádné omezení velikosti zpráv. |Neomezené |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Má propojení jakékoli využití kvóty?
 Ve výchozím nastavení pro kteroukoli cloudovou službu nastaví Microsoft agregační měsíční využití kvóty, vypočtené ve všech předplatných zákazníka. Chápeme, že v některých případech vašim potřebám může tyto limity překročit. Abychom mohli o vašich potřebách a odpovídajícím způsobem nastavit limity, můžete kdykoli, požádejte služby zákazníkům. Agregované využití kvóty pro Service Bus, jsou následující:

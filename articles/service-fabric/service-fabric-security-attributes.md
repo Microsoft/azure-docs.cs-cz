@@ -9,16 +9,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f12d11cecbf682ae82f9c432804b1d611ee3e39f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719402"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003057"
 ---
-# <a name="common-security-attributes-for-azure-service-fabric"></a>Běžné atributy zabezpečení pro Azure Service Fabric
+# <a name="security-attributes-for-azure-service-fabric"></a>Atributy zabezpečení pro Azure Service Fabric
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do Azure Service Fabric. 
+Tento článek popisuje atributy zabezpečení integrované do Azure Service Fabric. 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -41,7 +41,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Izolace sítě a podporu funkce brány firewall| Ano | Použití skupin zabezpečení sítě (NSG). |
 | Vynucené tunelování podpory| Ano | Sítě Azure poskytují vynucené tunelování. |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

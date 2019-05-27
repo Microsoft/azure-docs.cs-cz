@@ -2,21 +2,20 @@
 title: Pomocí Azure Stream Analytics s využitím SQL Data Warehouse | Dokumentace Microsoftu
 description: Tipy pro používání Azure Stream Analytics s využitím Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: mlee3gsd
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
-origin.date: 03/22/2019
-ms.date: 04/01/2019
-ms.author: v-jay
+ms.subservice: integration
+ms.date: 03/22/2019
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94646c41d9894dd00018ff5ca44d76534d35e8c5
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474304"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873268"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Pomocí Azure Stream Analytics s využitím SQL Data Warehouse
 Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latenci, vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaných dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistěte, jak vytvořit-ucelené řešení Stream Analytics pomocí následujících [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.
@@ -34,13 +33,13 @@ Nejprve spusťte následující kroky v [začít používat Azure Stream Analyti
 Vytvořte databázi Azure SQL Data Warehouse
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Zadejte výstup úlohy: Databáze Azure SQL Data Warehouse
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>1. krok
 V úloze Stream Analytics klikněte na tlačítko **výstup** z horní části stránky a pak klikněte na tlačítko **přidat**.
 
-### <a name="step-2"></a>Krok 2
+### <a name="step-2"></a>2. krok
 Vyberte databázi SQL.
 
-### <a name="step-3"></a>Krok 3
+### <a name="step-3"></a>3. krok
 Na další stránce zadejte následující hodnoty:
 
 * *Výstup Alias*: Zadejte popisný název pro tento výstup úlohy.
@@ -85,6 +84,4 @@ Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse][
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Azure Stream Analytics documentation]: /stream-analytics/
-
-<!-- Update_Description: update meta properties, wording update -->
+[Azure Stream Analytics documentation]: https://azure.microsoft.com/documentation/services/stream-analytics/

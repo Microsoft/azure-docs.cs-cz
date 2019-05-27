@@ -284,13 +284,13 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| FLOAT |Decimal, String (if precision > 28) |
-| INTEGER |Decimal, String (if precision > 28) |
+| PLOVOUCÍ DESETINNOU ČÁRKOU |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| CELÉ ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| NUMBER |Decimal, String (if precision > 28) |
+| ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

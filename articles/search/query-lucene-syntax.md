@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 26935b53d8f852289513a5a7b5d31e3befe3e3b2
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596578"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002251"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Syntaxe dotazů Lucene ve službě Azure Search
 Můžete psát dotazy ve službě Azure Search založený na získáte bohaté [analyzátor dotazů Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) syntaxe pro formuláře specializovaném dotazovacím: zástupný znak, vyhledávání přibližných shod, vyhledávání blízkých výrazů regulární výrazy je pár příkladů. Velká část syntaxe analyzátor dotazů Lucene [Internet implementované ve službě Azure Search](search-lucene-query-architecture.md), s výjimkou produktů *rozsahu vyhledávání* které jsou vytvořeny ve službě Azure Search prostřednictvím `$filter` výrazy. 
@@ -79,7 +79,7 @@ V příkladu výše je tilda (~), ale stejný princip platí pro každý operát
  Speciální znaky musí být uvozena se použije jako součást hledaný text. Vám může uniknout jsou zpětné lomítko (\\). Speciální znaky, které musí být uvozeny řídicími znaky patří:  
 `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
- Například k návratu zástupný znak, použijte \\*.
+ Například k návratu zástupný znak, použijte \\ \*.
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Kódování znaků nebezpečné a vyhrazené v adresách URL
 

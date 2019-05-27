@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0cc00b4f2075ba77490d310080b9968bedb8dc1f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cc3307a4f32d77b9b8d259ac846c4db1c1ae4a99
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701760"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002516"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -60,8 +60,10 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
    * *SubscriptionID* (povinné): ID předplatného Azure, které váš účet služby Automation.
    * *WorkspaceName* (volitelné): Název pracovního prostoru Log Analytics. Pokud nemáte pracovní prostor Log Analytics, skript vytvoří a nakonfiguruje jednu.
 
-     > [!NOTE]
-     > V současné době jsou pouze oblasti automatizace, které podporuje integraci s protokoly Azure monitoru **Austrálie – jihovýchod**, **USA – východ 2**, **jihovýchodní Asie**a **Západní Evropa**. Pokud váš účet Automation není v těchto oblastech, skript vytvoří pracovní prostor Log Analytics ale vás upozorní, že jej nelze propojit dohromady.
+   > [!NOTE]
+   > Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
+   >
+   > Seznam podporovaných mapování dvojic najdete v tématu [mapování oblast pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
 2. V počítači, otevřete **prostředí Windows PowerShell** z **Start** obrazovku v režimu správce.
 3. Z prostředí příkazového řádku Powershellu přejděte do složky, která obsahuje skript, který jste stáhli. Změňte hodnoty pro parametry *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*. Potom spusťte skript.

@@ -47,7 +47,7 @@ V oboru názvů úrovně Premium dělení entit nejsou podporovány. Však můž
 
 ### <a name="create-a-partitioned-entity"></a>Vytvořit dělené entity
 
-Existuje několik způsobů, jak vytvořit dělené fronty nebo tématu. Když vytvoříte frontu nebo téma z vaší aplikace, můžete povolit dělení pro fronty nebo tématu v uvedeném pořadí nastavením [QueueDescription.EnablePartitioning] [ QueueDescription.EnablePartitioning] nebo [ TopicDescription.EnablePartitioning] [ TopicDescription.EnablePartitioning] vlastnost **true**. Tyto vlastnosti musí být nastavena v době vytvoření fronty nebo tématu a jsou k dispozici pouze v starší [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) knihovny. Jak bylo uvedeno dříve, není možné změnit tyto vlastnosti na existující frontu nebo téma. Příklad:
+Existuje několik způsobů, jak vytvořit dělené fronty nebo tématu. Když vytvoříte frontu nebo téma z vaší aplikace, můžete povolit dělení pro fronty nebo tématu v uvedeném pořadí nastavením [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]nebo [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] vlastnost **true**. Tyto vlastnosti musí být nastavena v době vytvoření fronty nebo tématu a jsou k dispozici pouze v starší [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) knihovny. Jak bylo uvedeno dříve, není možné změnit tyto vlastnosti na existující frontu nebo téma. Příklad:
 
 ```csharp
 // Create partitioned topic
@@ -123,7 +123,7 @@ committableTransaction.Commit();
 
 ## <a name="automatic-message-forwarding-with-partitioned-entities"></a>Automatické přesměrování s zpráv segmentované entity
 
-Service Bus podporuje automatické přesměrování z do a mezi dělené entity zpráv. Chcete-li povolit předávání automatické zpráv, nastavte [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] vlastnosti zdrojové fronty nebo odběru. Pokud zpráva Určuje klíč oddílu ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey), nebo [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)), tento klíč oddílu se používá pro Cílová entita.
+Service Bus podporuje automatické přesměrování z do a mezi dělené entity zpráv. Chcete-li povolit předávání automatické zpráv, nastavte [QueueDescription.ForwardTo][QueueDescription.ForwardTo] vlastnosti zdrojové fronty nebo odběru. Pokud zpráva Určuje klíč oddílu ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey), nebo [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)), tento klíč oddílu se používá pro Cílová entita.
 
 ## <a name="considerations-and-guidelines"></a>Důležité informace a pokyny
 * **Funkce vysoké konzistence**: Pokud entita používá funkce, jako jsou relace, duplicit nebo explicitní kontrolu nad klíč rozdělení do oddílů, operací zasílání zpráv vždy směrovat na konkrétní oddíl. Pokud žádného z oddílů docházet k vysoké návštěvnosti nebo příslušné úložiště není v pořádku, tyto operace selhat a snížit dostupnost. Celkově je stále mnohem vyšší než bez oddílů entity; konzistence pouze podmnožinu provoz se setkává s problémy, na rozdíl od veškerý provoz. Další informace najdete v tomto [diskuzi o dostupnosti a konzistence](../event-hubs/event-hubs-availability-and-consistency.md).

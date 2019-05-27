@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25b8669e5ca2abe2d763d9bc14f27ed9c4460886
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825957"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015472"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce s existující místní proxy servery
 
@@ -106,13 +106,13 @@ Existují čtyři aspekty ke zvážení v odchozího proxy serveru:
 #### <a name="proxy-outbound-rules"></a>Odchozí pravidla proxy
 Povolit přístup k následujícím adresám URL:
 
-| zprostředkovatele identity | Jak se používá |
+| URL | Jak se používá |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů |
 | login.windows.net<br>login.microsoftonline.com | Konektor používá tyto adresy URL během procesu registrace. |
 
-Pokud vaše brána firewall nebo proxy server umožňuje přidávání na seznam povolených DNS, můžete seznam povolených připojení k \*. msappproxy.net a \*. servicebus.windows.net. Pokud ne, je potřeba povolit přístup k [rozsahy IP adres Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Pokud vaše brána firewall nebo proxy server umožňuje nakonfigurovat DNS povolit seznamy, můžete povolit připojení k \*. msappproxy.net a \*. servicebus.windows.net. Pokud ne, je potřeba povolit přístup k [rozsahy IP adres Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
 
 
 Pokud nemůžete povolit připojení pomocí plně kvalifikovaného názvu domény a je nutné místo toho zadat rozsahy IP adres, použijte tyto možnosti:

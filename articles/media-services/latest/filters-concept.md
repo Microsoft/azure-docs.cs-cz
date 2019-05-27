@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 3a562f98635d581aa320fdbd59d05a0382f09606
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465529"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002386"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>Definujte účet filtry a filtry asset  
+# <a name="filters"></a>Filtry
 
 Při doručování obsahu zákazníkům (živě streamovaných událostí nebo Video na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. 
 
@@ -36,7 +36,7 @@ Media Services nabízí [dynamických manifestů](filters-dynamic-manifest-overv
 
 V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 
-|Protocol (Protokol)|Příklad:|
+|Protocol|Příklad:|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>Pro HLS verze 3, použijte: `format=m3u8-aapl-v3`.|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -74,7 +74,7 @@ Pomocí této vlastnosti se **Asset filtry**. Nedoporučuje se nastavit vlastnos
 |**startTimestamp**|Vztahuje se na Video na vyžádání (VoD) nebo živého streamování.<br/>To je dlouhou hodnotu, která reprezentuje absolutní počáteční bod datového proudu. Získá hodnotu zaokrouhlí na nejbližší další GOP Start. Jednotka je na časové ose, takže startTimestamp 150000000 bude po dobu 15 sekund.<br/>Použijte startTimestamp a endTimestampp oříznout fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí časové osy výchozí vygeneruje seznam testů, který obsahuje fragmenty mezi 4 sekundami a 10 sekund prezentace videa na vyžádání. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.|
 |**timescale**|Platí pro všechna časová razítka a doby trvání prezentace časový rozsah, zadaný jako počet kroků v jedné sekundy.<br/>Výchozí hodnota je 10000000 – deset milionů přírůstky v jedné sekundy, kde každý přírůstek by 100 nanosekund dlouho.<br/>Například pokud chcete nastavit startTimestamp na 30 sekund, můžete využít hodnotu 300000000 při použití výchozí časový rámec.|
 
-### <a name="tracks"></a>Stop
+### <a name="tracks"></a>stop
 
 Můžete zadat seznam podmínek vlastností sledování filtru (FilterTrackPropertyConditions) podle, na kterém sleduje váš datový proud (živého streamování a Video na vyžádání) by měly být zahrnuty do dynamicky generovaný manifest. Filtry jsou kombinovat pomocí logické **a** a **nebo** operace.
 
@@ -88,11 +88,9 @@ Podmínky pro vlastnost sledování filtru popisují typy stop, hodnoty (popsan�
 |**Název**|Použijte název jeden směr určený pro filtrování.|
 |**Typ**|Použijte jeden směr určený pro filtrování.<br/><br/>Jsou povoleny následující hodnoty: "video", "zvuku" nebo "text".|
 
-## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
+### <a name="example"></a>Příklad:
 
-Můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokátor streamování. [Dynamické packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické manifestu](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
-
-## <a name="definition-example"></a>Příklad definice
+Následující příklad definuje filtr živého streamování: 
 
 ```json
 {
@@ -146,6 +144,15 @@ Můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokáto
   }
 }
 ```
+
+## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
+
+Můžete zadat seznam [asset nebo účet filtrů](filters-concept.md), které bude platit pro vaše [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamické Packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické Manifest](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
+
+Podívejte se na následující příklady:
+
+* [Filtry přidružit Lokátor streamování – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [Filtry přidružit Lokátor streamování – rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="next-steps"></a>Další postup
 

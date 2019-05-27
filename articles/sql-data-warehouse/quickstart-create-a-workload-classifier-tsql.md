@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1c84bf84f8ba28a98937b02a463003a900aefaa0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150390"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002902"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý start: Vytvoření úlohy třídění pomocí jazyka T-SQL
 
@@ -107,6 +107,6 @@ Postupujte podle těchto kroků pro vyčištění prostředků.
 
 ## <a name="next-steps"></a>Další postup
 
-Právě jste vytvořili úlohu třídění. Spustili jste několik dotazů jako TheCEO zobrazíte jejich výkon. Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.
-
-Další informace o správě úloh datového skladu SQL, najdete v části [SQL Data Warehouse úlohy význam](sql-data-warehouse-workload-importance.md) a [SQL Data Warehouse úloh klasifikace](sql-data-warehouse-workload-classification.md).
+- Právě jste vytvořili úlohu třídění. Spustili jste několik dotazů jako TheCEO zobrazíte jejich výkon. Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.
+- Další informace o správě pracovního vytížení Azure SQL Data Warehouse, najdete v části [úlohy význam](sql-data-warehouse-workload-importance.md) a [úloh klasifikace](sql-data-warehouse-workload-classification.md).
+- Články s postupy najdete v článku [nakonfigurovat úlohu význam](sql-data-warehouse-how-to-configure-workload-importance.md) a jak [Správa a sledování úloh správy](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

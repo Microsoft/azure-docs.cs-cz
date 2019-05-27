@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/25/2019
-ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/22/2019
+ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866952"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016380"
 ---
-# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Časových pásem v Azure SQL Database Managed Instance (preview)
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časových pásem v Azure SQL Database Managed Instance
 
 Koordinovaný univerzální čas (UTC) je doporučené časové pásmo pro datovou vrstvu cloudových řešení. Azure SQL Database Managed Instance také nabízí široký výběr časových pásem podle potřeb stávající aplikace, které ukládají hodnoty data a času a volání funkce date a time s implicitní kontextu konkrétní časové pásmo.
 
@@ -101,14 +101,14 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | **ID časového pásma** | **Zobrazovaný název časového pásma** |
 | --- | --- |
 | Datová hranice (běžný čas) | (UTC-12:00) Západní mezinárodní časová osa |
-| UTC-11 | (UTC-11:00) Koordinovaný univerzální čas-11 |
+| UTC-11 | (UTC-11:00) Koordinovaný univerzální čas (UTC)-11 |
 | Aleutské ostrovy (běžný čas) | (UTC-10:00) Aleutské ostrovy |
 | Havajské ostrovy (běžný čas) | (UTC-10:00) Havajské ostrovy |
 | Markézy (běžný čas) | (UTC-09:30) Souostroví Markézy |
 | Aljaška (běžný čas) | (UTC-09:00) Aljaška |
-| UTC-09 | (UTC-09:00) Koordinovaný univerzální čas (UTC)-09 |
+| UTC-09 | (UTC-09:00) Koordinovaný světový čas-09 |
 | Tichomoří – Mexiko (běžný čas) | (UTC-08:00) Baja California |
-| UTC-08 | (UTC-08:00) Koordinovaný univerzální čas (UTC)-08 |
+| UTC-08 | (UTC-08:00) Koordinovaný světový čas-08 |
 | Tichomoří (běžný čas) | (UTC-08:00) Tichomoří (USA a Kanada) |
 | Horská oblast USA (běžný čas) | (UTC-07:00) Arizona |
 | Horská oblast – Mexiko (běžný čas) | (UTC-07:00) Chihuahua, La Paz, Mazatlan |
@@ -132,20 +132,20 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | Západní J. Amerika (běžný čas) | (UTC-04:00) Georgetown, La Paz, Manaus, San Juan |
 | Tichomoří Jižní Am. (běžný čas) | (UTC-04:00) Santiago |
 | Newfoundland (běžný čas) | (UTC-03:30) Newfoundland |
-| Tocantins (běžný čas) | (UTC-03:00) Araguaína |
-| E. Jižní Amerika (běžný čas) | (UTC-03:00) Brasília |
+| Tocantins (běžný čas) | (UTC-03:00) Araguaina |
+| E. Jižní Amerika (běžný čas) | (UTC-03:00) Brazílie |
 | Východní J. Amerika (běžný čas) | (UTC-03:00) Cayenne, Fortaleza |
 | Argentina (běžný čas) | (UTC-03:00) Buenos Aires |
 | Grónsko (běžný čas) | (UTC-03:00) Grónsko |
 | Montevideo (běžný čas) | (UTC-03:00) Montevideo |
 | Magallanský standardní čas | (UTC-03:00) Punta Arenas |
-| Saint Pierre (běžný čas) | (UTC-03:00) Saint Pierre a Miquelon |
+| Saint Pierre (běžný čas) | (UTC-03:00) Saint-Pierre a Miquelon |
 | Bahia (běžný čas) | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Koordinovaný univerzální čas (UTC)-02 |
 | Střední Atlantik (běžný čas) | (UTC-02:00) Střední Atlantik – starý čas |
 | Azory (běžný čas) | (UTC-01:00) Azory |
-| Cabo Verde (běžný čas) | (UTC-01:00) Cabo Verde |
-| UTC | (UTC) Koordinovaný univerzální čas |
+| Cabo Verde (běžný čas) | (UTC-01:00) Ostrovy Cabo Verde |
+| UTC | Koordinovaný univerzální čas (UTC) |
 | Střední čas (běžný čas) | (UTC+00:00) Dublin, Edinburgh, Lisabon, Londýn |
 | Střední (běžný čas) | (UTC+00:00) Monrovia, Reykjavík |
 | W. Evropa (běžný čas) | (UTC+01:00) Amsterdam, Berlín, Bern, Řím, Stockholm, Vídeň |
@@ -176,7 +176,7 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | Rusko (běžný čas) | (UTC+03:00) Moskva, St. Petersburg |
 | E. Afrika (běžný čas) | (UTC+03:00) Nairobi |
 | Irán (běžný čas) | (UTC+03:30) Teherán |
-| Arábie (běžný čas) | (UTC+04:00) Abú Dhabi, Muskat |
+| Arábie (běžný čas) | (UTC+04:00) Abú Dhabi, Maskat |
 | Astrachaňský běžný čas | (UTC+04:00) Astrachaň, Uljanovsk |
 | Ázerbájdžán (běžný čas) | (UTC+04:00) Baku |
 | Rusko časové pásmo 3 | (UTC+04:00) Iževsk, Samara |
@@ -189,7 +189,7 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | Západní Asie (běžný čas) | (UTC+05:00) Ašchabád, Taškent |
 | Jekatěrinburg (běžný čas) | (UTC+05:00) Jekatěrinburg |
 | Pákistán (běžný čas) | (UTC+05:00) Islámábád, Karáčí |
-| Indie (běžný čas) | (UTC+05:30) Čennaj, Kalkata, Bombaj, Nové Dillí |
+| Indie (běžný čas) | (UTC+05:30) Čennaj, Kolkata, Mumbaí, Dillí |
 | Srí Lanka (běžný čas) | (UTC+05:30) Šrí Džajavardanapura |
 | Nepál (běžný čas) | (UTC+05:45) Káthmándú |
 | Střední Asie (běžný čas) | (UTC+06:00) Astana |
@@ -201,8 +201,8 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | W. Mongolsko (běžný čas) | (UTC+07:00) Chovd |
 | Severní Asie (běžný čas) | (UTC+07:00) Krasnojarsk |
 | N. Střední Asie (běžný čas) | (UTC+07:00) Novosibirsk |
-| Tomská oblast (běžný čas) | (UTC+07:00) Tomsk |
-| Čína (běžný čas) | (UTC+08:00) Peking, Čchung-čching, Hongkong, Urumči |
+| Tomská oblast (běžný čas) | (UTC+07:00) Tomská oblast |
+| Čína (běžný čas) | (UTC+08:00) Peking, Čchung-čching, Hongkong, Urumqi |
 | Východ severní Asie (běžný čas) | (UTC+08:00) Irkutsk |
 | Singapore (běžný čas) | (UTC+08:00) Kuala Lumpur, Singapur |
 | W. Austrálie (běžný čas) | (UTC+08:00) Perth |
@@ -230,10 +230,10 @@ Pomocí stejného časového pásma mezi primární a sekundární instance ve s
 | Střední Tichomoří (běžný čas) | (UTC+11:00) Šalamounovy ostrovy, Nová Kaledonie |
 | Rusko časové pásmo 11 | (UTC+12:00) Anadyr, Petropavlovsk-Kamčatskij |
 | Nový Zéland (běžný čas) | (UTC+12:00) Auckland, Wellington |
-| UTC+12 | (UTC+12:00) Koordinovaný univerzální čas+12 |
+| UTC+12 | (UTC+12:00) Koordinovaný univerzální čas (UTC)+12 |
 | Fidži (běžný čas) | (UTC+12:00) Fidži |
 | Kamčatka (běžný čas) | (UTC+12:00) Petropavlovsk-Kamčatskij – starý čas |
-| Chathamovy ostrovy (běžný čas) | (UTC+12:45) Chathamské ostrovy |
+| Chathamovy ostrovy (běžný čas) | (UTC+12:45) Chathamovy ostrovy |
 | UTC+13 | (UTC+13:00) Koordinovaný univerzální čas (UTC) + 13 |
 | Tonga (běžný čas) | (UTC+13:00) Nuku'alofa |
 | Samoa (běžný čas) | (UTC+13:00) Samoa |

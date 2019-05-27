@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202128"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019824"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s problémy s připojením k databázi SQL a přechodných chyb
 
@@ -134,7 +134,7 @@ Pokud váš klientský program připojuje ke službě SQL Database s použitím 
 Při sestavení [připojovací řetězec](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) pro vaše **SqlConnection** objektu, koordinovat hodnoty mezi následujícími parametry:
 
 - **Atributy ConnectRetryCount**:&nbsp;&nbsp;výchozí hodnota je 1. Rozsah je 0 až 255.
-- **ConnectRetryInterval**:&nbsp;&nbsp;výchozí hodnota je 1 sekunda. Rozsah je 1 až 60.
+- **ConnectRetryInterval**:&nbsp;&nbsp;výchozí hodnota je 10 sekund. Rozsah je 1 až 60.
 - **Časový limit připojení**:&nbsp;&nbsp;výchozí hodnota je 15 sekund. Rozsah je 0 až 2147483647.
 
 Konkrétně vybrané hodnoty třeba následující rovnosti true: Časový limit připojení = ConnectRetryCount * ConnectionRetryInterval

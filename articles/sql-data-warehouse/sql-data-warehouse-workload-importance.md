@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c26bca66b0f82ea58d01d0eb8358f521168a799
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154138"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002893"
 ---
 # <a name="sql-data-warehouse-workload-importance"></a>Důležitost úlohy SQL Data Warehouse
 
@@ -61,4 +61,8 @@ Vzhledem k tomu, že 5 je mediumrc, vyžaduje dva slotů souběžnosti.  5 musí
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít s vytvářením třídění, najdete v článku [vytvořit ÚLOHU třídění (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Další informace o klasifikaci úlohy SQL Data Warehouse najdete v tématu [SQL Data Warehouse úloh klasifikace](sql-data-warehouse-workload-classification.md).  Najdete v tomto rychlém startu o tom, jak vytvořit úlohu třídění [vytvořit úlohu třídění](quickstart-create-a-workload-classifier-tsql.md). Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.
+- Další informace o vytvoření klasifikátoru, najdete v článku [vytvořit ÚLOHU třídění (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Další informace o klasifikaci úlohy SQL Data Warehouse najdete v tématu [úloh klasifikace](sql-data-warehouse-workload-classification.md).  
+- Najdete v tomto rychlém startu [vytvořit úlohu třídění](quickstart-create-a-workload-classifier-tsql.md) pro vytvoření klasifikátoru pracovního vytížení.
+- Články s postupy najdete v článku [nakonfigurovat úlohu význam](sql-data-warehouse-how-to-configure-workload-importance.md) a jak [Správa a sledování úloh správy](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.

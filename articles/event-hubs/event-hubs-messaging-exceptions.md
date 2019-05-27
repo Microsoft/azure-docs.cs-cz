@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a6ebfc86a2489910d23faa96550f34cc979c0435
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203427"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001769"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Výjimky zasílání zpráv služby Event Hubs
 
@@ -91,6 +91,12 @@ Této chybě může dojít z jednoho ze dvou důvodů:
 
 By měl k této chybě dochází jen zřídka. To se stane, když je nedostatek procesoru kontejneru kódu pro váš obor názvů – začíná není více než několik sekund, než nástroj pro vyrovnávání zatížení služby Event Hubs.
 
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>Omezí volání getruntimeinformation – metoda
+Azure Event Hubs podporuje až 50 volání za sekundu GetRuntimeInfo za sekundu. Po dosažení limitu, může se zobrazit výjimka podobný následujícímu:
+
+```
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+```
 
 ## <a name="next-steps"></a>Další postup
 

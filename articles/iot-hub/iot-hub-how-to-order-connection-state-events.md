@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60400310"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015258"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat zařízení události připojení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB
 
@@ -154,7 +154,7 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
 
 4. V návrháři aplikace logiky posuňte doprava, dokud se nezobrazí běžné triggery. V části **šablony**, zvolte **prázdná aplikace logiky** tak, že můžete vytvářet aplikace logiky úplně od začátku.
 
-### <a name="select-a-trigger"></a>Výběr triggeru
+### <a name="select-a-trigger"></a>Vyberte trigger
 
 Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu trigger, který spustí pracovní postup, přijímá žádost přes protokol HTTP.
 
@@ -220,7 +220,7 @@ V pracovního postupu aplikace logiky podmínek pomoci spustit konkrétní akce 
 
    **ID databáze**: ToDoList
 
-   **ID kolekce**: Items
+   **ID kolekce**: Položky
 
    **Sproc ID**: LatestDeviceConnectionState
 

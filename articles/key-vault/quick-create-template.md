@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/04/2019
+ms.date: 05/22/2019
 ms.author: jgao
-ms.openlocfilehash: b1b50858286e3a174de254ae16c64b04abc00936
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 802c0409fe3ac88f73c383958d2337be09ef7992
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716004"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016465"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí šablony Resource Manageru
 
@@ -61,10 +61,10 @@ K dokončení tohoto článku potřebujete:
     * **Předplatné:** Vyberte předplatné Azure.
     * **Skupina prostředků**: vyberte **vytvořit nový**, zadejte jedinečný název pro skupinu prostředků a pak klikněte na tlačítko **OK**. 
     * **Umístění:** Vyberte prosím umístění.  Například **USA (střed)**.
-    * **Název trezoru klíčů**: Zadejte jedinečný název pro trezor klíčů.  
-    * **ID tenanta:** Funkce šablony automaticky načte ID vašeho tenanta.  Výchozí hodnotu neměňte.
+    * **Název trezoru klíčů**: Zadejte název pro trezor klíčů, který musí být globálně jedinečný v rámci. vault.azure.net oboru názvů.  
+    * **ID tenanta:** Funkce šablony automaticky načte ID vašeho tenanta.  Neměňte výchozí hodnotu.
     * **Id uživatele AD**: Zadejte své ID objektu uživatele Azure AD, který jste získali z [požadavky](#prerequisites).
-    * **Název tajného kódu**: Zadejte název, ve kterém je uložený ve službě key vault tajný klíč.  Například **adminpassword**
+    * **Název tajného kódu**: Zadejte název, ve kterém je uložený ve službě key vault tajný klíč.  Například **adminpassword**.
     * **Tajná hodnota**: Zadejte hodnotu tajného kódu.  Pokud ukládáte heslo, se doporučuje použít vygenerované heslo, které jste vytvořili v části požadavky.
     * **Souhlasím s podmínkami a ujednáními stavu výše**: Vybrat
 3. Vyberte **Koupit**.

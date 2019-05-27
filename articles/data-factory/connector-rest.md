@@ -288,8 +288,8 @@ Tento obecný konektor REST podporuje následující způsoby stránkování:
 | Klíč | Popis |
 |:--- |:--- |
 | AbsoluteUrl | Označuje adresu URL vydat další požadavek. Může to být **adresa URL absolutní nebo relativní adresa URL**. |
-| QueryParameters.*request_query_parameter* OR QueryParameters['request_query_parameter'] | "request_query_parameter" je uživatelem odkazuje na jeden název parametru dotazu v následující adrese URL požadavku HTTP. |
-| Headers.*request_header* OR Headers['request_header'] | "request_header" je uživatelem odkazuje na jeden název hlavičky v další požadavek HTTP. |
+| QueryParameters. *request_query_parameter* nebo QueryParameters [request_query_parameter] | "request_query_parameter" je uživatelem odkazuje na jeden název parametru dotazu v následující adrese URL požadavku HTTP. |
+| Záhlaví. *request_header* nebo záhlaví [request_header] | "request_header" je uživatelem odkazuje na jeden název hlavičky v další požadavek HTTP. |
 
 **Podporované hodnoty** stránkování pravidel:
 

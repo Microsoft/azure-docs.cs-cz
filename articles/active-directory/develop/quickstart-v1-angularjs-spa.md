@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f526ea3d1a53ef2ae80f36c863e7a19797e9142
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1a1fdbcd04504181a20f5245b6f2378be5b9d405
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545989"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001214"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rychlý start: Sestavení jednostránková aplikace AngularJS pro přihlašování a odhlašování pomocí Azure Active Directory
 
@@ -63,20 +63,15 @@ Pokud chcete aplikaci umožnit ověřování uživatelů a získání tokenů, m
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Pokud jste přihlášení k více adresářům, měli byste zajistit, že máte zobrazený správný adresář. Provedete to tak, že na horním panelu kliknete na svůj účet. Ze seznamu **Adresář** vyberte tenanta Azure AD, do kterého chcete aplikaci zaregistrovat.
 1. V levém podokně klikněte na **Všechny služby** a pak vyberte **Azure Active Directory**.
-1. Klikněte na **Registrace aplikací** a pak vyberte **Přidat**.
-1. Postupujte podle zobrazených výzev a vytvořte novou webovou aplikaci nebo webové rozhraní API:
-
-    * **Název** popisuje aplikaci uživatelům.
-    * **Přihlašovací adresa URL** je umístění, kam bude Azure AD vracet tokeny. Výchozí umístění pro tuto ukázku je `https://localhost:44326/`.
-
-1. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících částech, proto si ji z karty aplikace zkopírujte.
-1. Adal.js používá implicitní tok OAuth ke komunikaci s Azure AD. Implicitní tok musíte pro vaši aplikaci aktivovat:
-
-    1. Klikněte na aplikaci a vyberte **Manifest**. Tím otevřete vložený editor manifestu.
-    1. Najděte vlastnost `oauth2AllowImplicitFlow`. Nastavte její hodnotu na `true`.
-    1. Kliknutím na **Uložit** uložte manifest.
-
-1. Udělte oprávnění pro aplikaci napříč vaším tenantem. Přejděte na **Nastavení > Požadovaná oprávnění** a na horním panelu vyberte tlačítko **Udělit oprávnění**.
+1. Klikněte na tlačítko **registrace aplikací**a pak vyberte **registrace nové**.
+1. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
+1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
+1. Vyberte **webové** platformu v rámci **identifikátor URI pro přesměrování** tématu a nastavte hodnotu na `https://localhost:44326/` (umístění, na který Azure AD vrátí tokeny).
+1. Až budete hotovi, vyberte **Zaregistrovat**. V aplikaci **přehled** stránce si poznamenejte **ID aplikace (klient)** hodnotu.
+1. Adal.js používá implicitní tok OAuth ke komunikaci s Azure AD. Je nutné povolit implicitní tok pro vaši aplikaci. V levém navigačním podokně zaregistrovanou aplikaci vyberte **ověřování**.
+1. V **upřesňující nastavení**v části **implicitní grant**, oboje povolili **tokeny typu ID** a **přístupové tokeny** zaškrtávací políčka. Tokeny typu ID a přístupové tokeny jsou povinné, protože tato aplikace potřebuje přihlásit uživatele a volat rozhraní API.
+1. Vyberte **Uložit**.
+1. Udělte oprávnění pro aplikaci napříč vaším tenantem. Přejděte na **oprávnění k rozhraní API**a vyberte **udělit souhlas správce** tlačítko **udělit souhlas**.
 1. Odstranění potvrďte výběrem **Ano**.
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: ADAL instalace a konfigurace jednostránkové aplikace

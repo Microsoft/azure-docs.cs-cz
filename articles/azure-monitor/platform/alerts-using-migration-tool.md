@@ -7,16 +7,19 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 55e6b515328df635a423e0ecf736b03e17a90b8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00229cca1d7fb238b330ec98cd35d0bb59bc821a
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698428"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015629"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Použijte nástroj dobrovolné migrace k migraci klasického pravidel upozornění
 
-Jako [jsme oznámili už dřív](monitoring-classic-retirement.md), klasických upozornění ve službě Azure Monitor se vyřazuje v červenci 2019. Migrační nástroj je dostupný na webu Azure Portal pro zákazníky používající klasický pravidla upozornění a který chcete spustit migrace sami. Tento článek vysvětluje, jak používat nástroj pro migraci dobrovolně migraci klasického pravidel upozornění před zahájením migrace automatické v červenci 2019.
+Jako [jsme oznámili už dřív](monitoring-classic-retirement.md), klasických upozornění ve službě Azure Monitor se vyřazuje v září 2019 (byla původně 2019. července). Migrační nástroj je dostupný na webu Azure Portal pro zákazníky používající klasický pravidla upozornění a který chcete spustit migrace sami. Tento článek vysvětluje, jak používat nástroj pro migraci dobrovolně migraci klasického pravidel upozornění před zahájením migrace automatické v září 2019.
+
+> [!NOTE]
+> Datum vyřazení pro migraci klasických upozornění byla z důvodu zpoždění při uvádění nástroj pro migraci [rozšířená tak, aby 31. srpna 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) od původně oznámené data 30. června 2019.
 
 ## <a name="benefits-of-new-alerts"></a>Výhody nové výstrahy
 
@@ -78,7 +81,7 @@ Spustit migraci klasického pravidel upozornění na webu Azure Portal, postupuj
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>Proč se Moje předplatné uvedená jako není připraveno k migraci?
 
-Nástroj pro migraci zavádí zákazníkům ve fázích. V počátečních fázích, může být označena většinu nebo všechny z vašich předplatných jako **není připravený k migraci**. Pomocí funkce část dne ale všechna předplatná měli být připravení migrovat.
+Nástroj pro migraci zavádí zákazníkům ve fázích. V počátečních fázích, může být označena většinu nebo všechny z vašich předplatných jako **není připravený k migraci**. 
 
 Až bude předplatné připravené k migraci, vlastník předplatného obdrží e-mailovou zprávu s oznámením, že tento nástroj je k dispozici. Sledujte pro tuto zprávu.
 

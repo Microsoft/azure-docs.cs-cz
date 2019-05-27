@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294225"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113122"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
 
@@ -30,12 +30,10 @@ Následující části poskytují přehled o ohrožení hlášená Identity Prot
 
 Toto ohrožení zabezpečení pomáhá vyhodnotit nasazení služby Azure Multi-Factor Authentication ve vaší organizaci.
 
-Chcete-li zobrazit počet uživatelů, které nejsou registrované pro vícefaktorové ověřování, klikněte na ohrožení zabezpečení a budete přesměrováni na statistik v rámci skóre zabezpečení Identity.
-
 Azure Multi-Factor Authentication poskytuje druhou vrstvu zabezpečení pro ověřování uživatelů. To pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý přihlašovací proces. Azure Multi-Factor Authentication poskytuje snadno použitelný ověřování možností, jako jsou:
 
 * Telefonní hovor
-* Textová zpráva
+* Zpráva SMS
 * Oznámení mobilní aplikace
 * Ověřování jednorázovým HESLEM ověřovací kód
 

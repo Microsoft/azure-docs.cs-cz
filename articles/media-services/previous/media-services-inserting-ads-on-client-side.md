@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8f5cdc33e48d647dba8caeb09b57e233d64712f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687734"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002976"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
 Tento článek obsahuje informace o tom, jak vložit různé typy reklam na straně klienta.
@@ -160,7 +160,7 @@ Nelineárních reklamy jsou určené v `<Creative>` i element. Následující p�
     </Creative>
 ```
 
-<**NonLinearAds**> element může obsahovat jeden nebo více <**NonLinear**> elementy, z nichž každý lze popsat nelineárních ad. <**NonLinear**> prvek určuje prostředek pro nelineárních ad. Prostředek může být <**StaticResource**>, <**IFrameResource**>, nebo <**HTMLResource**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje atribut creativeType, který určuje způsob zobrazení zdroje:
+<**NonLinearAds**> element může obsahovat jeden nebo více <**NonLinear**> elementy, z nichž každý lze popsat nelineárních ad. <**NonLinear**> prvek určuje prostředek pro nelineárních ad. Prostředek může být <**StaticResource**>, <**IFrameResource**>, nebo <**HTMLResource**>. \<**StaticResource**> popisuje prostředků jiného typu než HTML a definuje atribut creativeType, který určuje způsob zobrazení zdroje:
 
 Image/gif, image/jpeg, image/png – prostředku se zobrazí v HTML <**img**> značky.
 
@@ -846,7 +846,7 @@ Následující příklad ukazuje, jak naplánovat ad uprostřed vrácení překr
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poslat názor
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
