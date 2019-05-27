@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: e4664f121601ecec4b8ed52d536e5212b3d0950f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60890244"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833070"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Navíc platí:
 
-* Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio vybrat sady funkcí **Vývoj pro Azure** a **Vývoj v Pythonu**.
+* Pokud ještě nemáte nainstalované Visual Studio 2019, můžete stáhnout a použít **bezplatné** [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio vybrat sady funkcí **Vývoj pro Azure** a **Vývoj v Pythonu**.
 * V sadě funkcí **Vývoj v Pythonu** také vyberte možnost Python 2 nebo si z webu [python.org](https://www.python.org/downloads/release/python-2712/) stáhněte Python 2.7.
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze

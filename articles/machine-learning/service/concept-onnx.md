@@ -11,18 +11,18 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: f1eca5bdd81a384efe04f769ebd12be9d91fc78a
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442417"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849732"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: Vytvoření a zrychlit modelů ML
 
-Zjistěte, jak pomocí [otevřít Neural Network Exchange](https://onnx.ai) (ONNX) může pomoct optimalizovat vašich modelů strojového učení.
+Zjistěte, jak pomocí [otevřít Neural Network Exchange](https://onnx.ai) (ONNX) může pomoct optimalizovat odvození svůj model strojového učení. Odvození nebo vyhodnocení modelu je fáze použití nasazený model pro predikci, obvykle na produkční data. 
 
-Optimalizace modelů strojového učení pro odvození je obtížné, protože je potřeba optimalizovat knihovna odvození provádět většinu funkcí hardwaru a modelu. Tento problém bude velmi obtížné, pokud chcete dosáhnout optimálního výkonu na různých platformách (cloud nebo edge, CPU/GPU, atd.), od každého jeden má různé možnosti a vlastnosti. Složitost se ještě zvýší, pokud máte modely z nejrůznějších platforem, které je potřeba spustit na různých platformách. Je velmi časově optimalizovat všechny různé kombinace platforem a hardwaru. Je potřeba řešení, aby se jednou v upřednostňované framework a běží kdekoli v cloudu i hraničních. To přichází ONNX.
+Optimalizace modelů strojového učení pro odvození (nebo model bodování) je obtížné, protože je potřeba optimalizovat knihovna odvození provádět většinu funkcí hardwaru a modelu. Tento problém bude velmi obtížné, pokud chcete dosáhnout optimálního výkonu na různých platformách (cloud nebo edge, CPU/GPU, atd.), od každého jeden má různé možnosti a vlastnosti. Složitost se ještě zvýší, pokud máte modely z nejrůznějších platforem, které je potřeba spustit na různých platformách. Je velmi časově optimalizovat všechny různé kombinace platforem a hardwaru. Je potřeba řešení, aby se jednou v upřednostňované framework a běží kdekoli v cloudu i hraničních. To přichází ONNX.
 
 Microsoft a komunitou partnerů vytvořili ONNX jako otevřený standard představující modelů strojového učení. Modely z [mnoho architektur](https://onnx.ai/supported-tools) včetně TensorFlow, PyTorch, SciKit-poučení, Keras, Chainer, MXNet a MATLAB můžete exportovat nebo převést do formátu ONNX standard. Jakmile tyto modely jsou ve formátu ONNX, lze spustit na různých platformách a zařízeních.
 

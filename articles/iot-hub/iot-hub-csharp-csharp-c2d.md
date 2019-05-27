@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: d16f57db6a3c39be34c13663db62d7be50749f57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741065"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864447"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Odesílání zpráv z cloudu do zařízení pomocí IoT Hub (.NET)
 
@@ -48,7 +48,7 @@ Na konci tohoto kurzu spusťte dvě konzolové aplikace .NET.
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Visual Studio 2017
+* Visual Studio
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 

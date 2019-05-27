@@ -2,20 +2,20 @@
 title: Dělení tabulky ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Doporučení a příklady použití oddíly tabulky ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 03/18/2019
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d3557be2fd8fdb459571d2c792302963e17e4471
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af9fa49d274036888fd266f8983c523a3b077cbd
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60935876"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851512"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Dělení tabulek v SQL Data Warehouse
 Doporučení a příklady použití oddíly tabulky ve službě Azure SQL Data Warehouse.

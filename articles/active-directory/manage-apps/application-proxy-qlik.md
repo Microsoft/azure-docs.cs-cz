@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc03751859160f2c234810dcb01e1579cb3e2a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8f54e08e6c3b7b673541f124a90f32dbc860fa44
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782659"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859539"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikací a Qlik Sense 
 Azure Active Directory Application Proxy a Qlik Sense uzavřeli partnerství s společně k zajištění, že budete moct snadno použít k poskytnutí vzdáleného přístupu pro vaše nasazení Qlik Sense Proxy aplikací.  
@@ -60,7 +60,9 @@ Postupujte stejným způsobem jako u aplikace č. 1, s následujícími výjimka
 Vaše aplikace je teď připravený k testování. Přístup k externí adresu URL jste použili k publikování QlikSense v aplikaci č. 1 a přihlášení jako uživatel přiřazený na obě aplikace.  
 
 ## <a name="additional-references"></a>Další odkazy
-Další informace o publikování Qlik Sense přes Proxy aplikací najdete v článku Qlik komunity: [Azure AD pomocí integrovaného ověřování Windows s použitím omezeného delegování protokolu Kerberos s Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+Další informace o publikování Qlik Sense pomocí Proxy aplikace najdete v následujících článcích komunity Qlik: 
+- [Azure AD pomocí integrovaného ověřování Windows s použitím omezeného delegování protokolu Kerberos s Qlik Sense](https://community.qlik.com/docs/DOC-20183)
+- [Qlik Sense integrace s Azure AD Application Proxy](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>Další postup
 

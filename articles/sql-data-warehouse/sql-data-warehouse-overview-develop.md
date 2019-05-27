@@ -2,21 +2,20 @@
 title: Zdroje informací pro vývoj datový sklad v Azure | Dokumentace Microsoftu
 description: Koncepty vývoje, rozhodnutí o návrhu, doporučení a technikám kódování pro SQL Data Warehouse.
 services: sql-data-warehouse
-author: WenJason
-manager: digimobile
+author: XiaoyuL-Preview
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-origin.date: 08/29/2018
-ms.date: 10/15/2018
-ms.author: v-jay
+ms.subservice: development
+ms.date: 08/29/2018
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8c04e0409faa3b63a8a2957284ac7aa96740ae03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60747825"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850738"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Rozhodnutí o návrhu a technikám kódování pro SQL Data Warehouse
 Podívejte se přes tyto články o vývoji pro lepší pochopení klíčových rozhodnutí, doporučení a technikám kódování pro SQL Data Warehouse.

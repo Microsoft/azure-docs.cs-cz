@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 5dc311538055d9ecb7aba21f95d819a914cd1db7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826557"
+ms.locfileid: "65849707"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace obchodní transakce možnosti a důležité faktory
 
@@ -144,7 +144,7 @@ Tato možnost musí být nakonfigurovaný na jejím prostřednictvím – Micros
 |Společnost Microsoft platí, 80 % vaše náklady na licence <br> \* Společnost Microsoft platí jste 90 % vaše náklady na licence pro všechny kvalifikovaný aplikace SaaS   |   80,00 $ za měsíc <br> \* 90.00 $ za měsíc    |
 |Microsoft si ponechá 20 % vaše náklady na licence <br> \* Microsoft si ponechá 10 % vaše náklady na licence pro kvalifikovaný aplikacemi SaaS.  |  20,00 $ za měsíc <br> \* $10.00     |
 
-* **Poplatek za služby nižší Marketplace:** U některých produktech SaaS, kterou publikujete na naše obchodní Marketplace, Microsoft omezí jeho poplatek za služby webu Marketplace z 20 % (jak je popsáno ve smlouvě vydavatele Microsoft) na 10 %.  Aby váš produkt k určení, alespoň jedna z vašich produktech musí být určena microsoftem buď jako IP připravenost na společný prodej nebo společný prodej IP nastaveno jako prioritní. Pokud chcete dostávat toto snížené poplatek za služby webu Marketplace za měsíc, způsobilosti musí splnit aspoň pět (5) pracovních dní před koncem kalendářním měsíci. Služba Marketplace k virtuálním počítačům, spravované aplikace nebo žádné produkty k dispozici prostřednictvím našeho webu Marketplace obchodní nebude účtovat poplatek nižší.  Tento poplatek za nižší služby webu Marketplace bude k dispozici na kvalifikovaný nabídky, se poplatky za licence shromažďovaná společností Microsoft až 30. června 2020 31. května 2019.  Po tomto datu se vrátí na jeho normální množství poplatek za služby webu Marketplace.
+* **Poplatek za služby nižší Marketplace:** U některých produktech SaaS, kterou publikujete na naše obchodní Marketplace, Microsoft omezí jeho poplatek za služby webu Marketplace z 20 % (jak je popsáno ve smlouvě vydavatele Microsoft) na 10 %.  Aby váš produkt k určení, alespoň jedna z vašich produktech musí být určena microsoftem buď jako IP připravenost na společný prodej nebo společný prodej IP nastaveno jako prioritní. Pokud chcete dostávat toto snížené poplatek za služby webu Marketplace za měsíc, způsobilosti musí splnit aspoň pět (5) pracovních dní před koncem kalendářním měsíci. Služba Marketplace k virtuálním počítačům, spravované aplikace nebo žádné produkty k dispozici prostřednictvím našeho webu Marketplace obchodní nebude účtovat poplatek nižší.  Tento poplatek za nižší služby webu Marketplace bude k dispozici na kvalifikovaný nabídky, se poplatky za licence shromažďovaná společností Microsoft mezi 1. května 2019 a 30. června 2020.  Po tomto datu se vrátí na jeho normální množství poplatek za služby webu Marketplace.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Zákazník fakturaci, platby a fakturaci a kolekce
 
