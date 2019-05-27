@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430626"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002030"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
 
@@ -74,9 +74,9 @@ Po dokončení předchozích kroků můžete zobrazit doporučení pro optimaliz
 
 Nejprve Pojďme se podívat nanejvýš běžný scénář, který způsobí, že uživatelské účty, chcete-li získat *initiallySuspended*.
 
-> Admin1 může být uživatel Microsoft Cloud Solution Provider a smlouvy Enterprise. Jeho organizace je začít využívat Cloudyn.  Osoba zaregistruje na webu Azure portal a přihlásí na portálu Cloudyn. Jako osobě, která registruje službu Cloudyn a přihlásí do portálu Cloudyn, se *primární správce*. Admin1 nevytvoří všechny uživatelské účty. Ale na portálu Cloudyn mohl vytvořit účty Azure a nastaví hierarchie entit. Admin1 informuje Admin2, správce klienta, který mu je potřeba zaregistrovat ve službě Cloudyn a přihlaste se k portálu Cloudyn.
-> 
-> Admin2 zaregistruje na webu Azure portal. Ale při snaží se přihlaste k portálu Cloudyn, že získá chyba s oznámením o svém účtu je **pozastaveno**. Primární správce Admin1, je oznámení o pozastavení účtu. Admin1 musí aktivovat Admin2 na účet a udělte *přístup správce entity* pro příslušné entity a umožňuje přístup ke správě uživatelů a aktivní uživatelský účet.
+> Admin1 může být uživatel Microsoft Cloud Solution Provider a smlouvy Enterprise. Organizace je začít využívat Cloudyn.  Osoba zaregistruje na webu Azure portal a přihlásí na portálu Cloudyn. Jako osobě, která registruje službu Cloudyn a přihlásí do portálu Cloudyn, stane se Admin1 *primární správce*. Admin1 nevytvoří všechny uživatelské účty. Ale na portálu Cloudyn, vytváření účtů Azure a nastavení hierarchie entit. Admin1 informuje Admin2, správce klienta, které potřebují k zaregistrovat ve službě Cloudyn a přihlaste se k portálu Cloudyn.
+>
+> Admin2 zaregistruje na webu Azure portal. Ale při pokusu o přihlášení k portálu Cloudyn, že dojde k chybě, je jeho účet **pozastaveno**. Primární správce Admin1, je oznámení o pozastavení účtu. Admin1 musí aktivovat Admin2 na účet a udělte *přístup správce entity* pro příslušné entity a umožňuje přístup ke správě uživatelů a aktivní uživatelský účet.
 
 
 Pokud se zobrazí výstraha se požadavek na povolit přístup pro uživatele, musíte aktivovat uživatelský účet.

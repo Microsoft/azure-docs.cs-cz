@@ -11,20 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69399513291a47f7109003e825052314f447125a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322715"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002329"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Vytváření filtrů pomocí REST API služby Media Services
 
-Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. Další informace najdete v tématu [filtrů a dynamických manifestů](filters-dynamic-manifest-overview.md).
+Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. Další informace najdete v tématu [filtry](filters-concept.md) a [dynamických manifestů](filters-dynamic-manifest-overview.md).
 
 Toto téma ukazuje, jak definovat filtr pro Video na vyžádání assetu a vytvořit pomocí rozhraní REST API [filtrů účtů](https://docs.microsoft.com/rest/api/media/accountfilters) a [Asset filtry](https://docs.microsoft.com/rest/api/media/assetfilters). 
+
+> [!NOTE]
+> Přečtěte si [presentationTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Požadavky 
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 5/3/2019
 ms.author: victorh
-ms.openlocfilehash: 4c4a6776e3bb56026a48963ec83fe582380c68d0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145959"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016021"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure bránu Firewall
 
@@ -25,7 +25,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Stavová brána firewall jako služba
 * Integrovaná vysoká dostupnost s neomezenou škálovatelností cloudu
 * Filtrování FQDN
-* Značky plně kvalifikovaných názvů domén
+* Značky plně kvalifikovaného názvu domény
 * Pravidla filtrování síťového provozu
 * Podpora pro odchozí SNAT
 * Podpora DNAT u příchozích přenosů
@@ -87,7 +87,7 @@ Můžete použít Azure PowerShell *uvolnit* a *přidělit* metody.
 Příklad:
 
 ```azurepowershell
-# Stop an exisitng firewall
+# Stop an existing firewall
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()

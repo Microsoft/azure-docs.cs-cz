@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78d251d637d12f35968c2b897a2a8cfd6496b7e0
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545936"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001110"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Rychlý start: Vytvoření webového rozhraní .NET API, která se integruje s Azure AD pro ověřování a autorizace
 
@@ -58,12 +58,12 @@ Abyste pomohli aplikaci zabezpečit, musíte nejdříve aplikaci vytvořit ve va
     * Tento krok přeskočte, pokud v rámci účtu máte jenom jednoho tenanta Azure AD nebo pokud jste už odpovídajícího tenanta Azure AD vybrali.
 
 3. V levém navigačním podokně vyberte **Azure Active Directory**.
-4. Vyberte **Registrace aplikací** a pak vyberte **Přidat**.
-5. Postupujte podle zobrazených výzev a vytvořte novou **Webovou aplikaci / webové rozhraní API**:
-    * **Název** popisuje aplikaci uživatelům. Zadejte **To Do List Service**.
-    * **Identifikátor URI pro přesměrování** je schéma a kombinace řetězců, které Azure AD používá k vrácení tokenů, o které vaše aplikace požádala. Pro tuto hodnotu zadejte `https://localhost:44321/`.
-
-6. Ze stránky **Nastavení > Vlastnosti** pro vaši aplikaci aktualizujte identifikátor URI ID aplikace. Zadejte identifikátor specifický pro tenanta. Zadejte například `https://contoso.onmicrosoft.com/TodoListService`.
+4. Vyberte **registrace aplikací**a pak vyberte **registrace nové**.
+5. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
+V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
+6. Vyberte **webové** platformu v rámci **identifikátor URI pro přesměrování** tématu a nastavte hodnotu na `https://localhost:44321/` (umístění, na který Azure AD vrátí tokeny).
+7. Až budete hotovi, vyberte **Zaregistrovat**. V aplikaci **přehled** stránce si poznamenejte **ID aplikace (klient)** hodnotu.
+6. Vyberte **vystavit rozhraní API**, pak kliknutím na Aktualizovat identifikátor URI ID aplikace **nastavit**. Zadejte identifikátor specifický pro tenanta. Zadejte například `https://contoso.onmicrosoft.com/TodoListService`.
 7. Konfiguraci uložte. Nechte portál otevřený, protože brzy budete muset zaregistrovat klientskou aplikaci.
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Nastavení aplikace pro použití ověřovacího kanálu OWIN
@@ -148,12 +148,9 @@ K ověření příchozích požadavků a tokenů musíte nastavit, aby aplikace 
 Než uvidíte To Do List Service v akci, musíte nakonfigurovat klienta To Do List, aby mohl získávat tokeny z Azure AD a provádět volání do služby.
 
 1. Vraťte se na portál [Azure Portal](https://portal.azure.com).
-1. Vytvořte novou aplikaci v tenantovi Azure AD a ve výsledné nabídce vyberte **Nativní klientská aplikace**.
-    * **Název** popisuje aplikaci uživatelům.
-    * Jako hodnotu pro **Identifikátor URI pro přesměrování** zadejte `http://TodoListClient/`.
-
+1. Vytvořte nové registrace aplikace ve vašem tenantovi Azure AD.  Zadejte **název** , který popíše aplikaci uživatelům, zadejte `http://TodoListClient/` pro **identifikátor URI pro přesměrování** hodnotu a vyberte **veřejným klientem (mobilních a desktopových)** v rozevírací seznam.
 1. Po dokončení registrace přiřadí Azure AD aplikaci jedinečné ID aplikace. Tuto hodnotu budete potřebovat v následujících krocích, proto si ji ze stránky aplikace zkopírujte.
-1. Na stránce **Nastavení** vyberte **Požadovaná oprávnění** a pak vyberte **Přidat**. Najděte a vyberte To Do List Service, přidejte oprávnění **Přístup k TodoListService** v rámci **Delegovaných oprávnění** a pak vyberte **Hotovo**.
+1. Vyberte **oprávnění k rozhraní API**, pak **přidat oprávnění**.  Vyhledejte a vyberte k proveďte seznamu službu, přidejte **user_impersonation přístup TodoListService** oprávnění v rámci **delegovaná oprávnění**a pak vyberte **přidat oprávnění**.
 1. V sadě Visual Studio otevřete `App.config` v projektu TodoListClient a pak zadejte hodnoty konfigurace v oddílu `<appSettings>`.
 
     * `ida:Tenant` je název vašeho tenanta Azure AD, například contoso.onmicrosoft.com.

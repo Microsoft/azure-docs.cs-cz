@@ -3,21 +3,21 @@ title: Transformace dat s Databricks Pythonu – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak zpracovat nebo transformovat data spuštěním Databricks Python.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 60aafd983d1c21777276683a8685376a247d11f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: gauravmalhot
+ms.author: gamal
+ms.reviewer: maghan
+manager: craigg
+ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589215"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002835"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformovat data spuštěním aktivity Python v Azure Databricks
 
@@ -64,9 +64,9 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 
 |Vlastnost|Popis|Požaduje se|
 |---|---|---|
-|jméno|Název aktivity v kanálu.|Ano|
+|name|Název aktivity v kanálu.|Ano|
 |description|Text popisující, jakým způsobem aktivita naloží.|Ne|
-|type|Pro aktivitu Python Databricks typ aktivity je DatabricksSparkPython.|Ano|
+|Typ|Pro aktivitu Python Databricks typ aktivity je DatabricksSparkPython.|Ano|
 |linkedServiceName|Název propojené služby Databricks, ve kterém se spouští aktivity Python. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
 |pythonFile|Identifikátor URI soubor Pythonu, který má být proveden. Jsou podporovány pouze DBFS cesty.|Ano|
 |parameters|Parametry příkazového řádku, které se předají do souboru Python. Toto je pole řetězců.|Ne|

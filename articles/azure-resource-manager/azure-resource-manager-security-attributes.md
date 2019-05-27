@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ebc39dcd9fe921c794add48cc677a799841cbb78
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943626"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002261"
 ---
-# <a name="common-security-attributes-for-azure-resource-manager"></a>Běžné atributy zabezpečení pro Azure Resource Manageru
+# <a name="security-attributes-for-azure-resource-manager"></a>Atributy zabezpečení pro Azure Resource Manageru
 
-Zabezpečení je integrované do všech oblastí služby Azure. Tento článek popisuje běžné atributy zabezpečení integrované do Azure Resource Manageru.
+Tento článek popisuje atributy zabezpečení integrované do Azure Resource Manageru.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -40,7 +40,7 @@ Zabezpečení je integrované do všech oblastí služby Azure. Tento článek p
 | Izolace sítě a podporu funkce brány firewall| Ne |  |
 | Vynucené tunelování podpory| Ne |  |
 
-## <a name="detection"></a>Detection (Detekce)
+## <a name="detection"></a>Detekce
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

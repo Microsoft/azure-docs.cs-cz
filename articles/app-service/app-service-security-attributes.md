@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d22fca27943be7ac7db8b8edd5882b9fa4ab3ab9
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607255"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001700"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Atributy zabezpečení pro službu Azure App Service
 
@@ -28,18 +28,18 @@ Tento článek popisuje běžné atributy zabezpečení integrované do služby 
 |---|---|--|
 | Šifrování v klidovém stavu (například šifrování na straně serveru, šifrování na straně serveru pomocí klíčů spravovaných zákazníkem a další funkce šifrování) | Ano | Obsah souboru webu je uložený ve službě Azure Storage automaticky šifruje obsah v úložišti. Zobrazit [šifrování služby Azure Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md).<br><br>Tajné kódy zákazníka se šifrují při nečinnosti. Tajné klíče jsou šifrují při nečinnosti při uložení konfigurační databáze služby App Service.<br><br>Místně připojených disků můžete volitelně použít jako dočasné úložiště službou websites (D:\local a % TMP %). Místně připojené disky nejsou šifrovány v klidovém stavu. |
 | Šifrování během přenosu (například šifrování ExpressRoute ve virtuální síti a šifrováním virtuálními sítěmi)| Ano | Zákazníci můžou nakonfigurovat webových stránek a vyžadovat a používat protokol HTTPS pro příchozí provoz. Najdete v blogovém příspěvku [jak Azure App Service pouze HTTPS](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/). |
-| Šifrovací klíč zpracování (CMK, BYOK, atd.)| Ano | Zákazníci si mohou vybrat ukládání tajných klíčů aplikací ve službě Key Vault a načítat je za běhu. Zobrazit [pro App Service a Azure Functions (preview) odkazuje na použití služby Key Vault](app-service-key-vault-references.md).|
-| Šifrování na úrovni sloupce (datových služeb Azure)| neuvedeno | |
+| Šifrování klíče zpracování (CMK, BYOK, atd.)| Ano | Zákazníci si mohou vybrat ukládání tajných klíčů aplikací ve službě Key Vault a načítat je za běhu. Zobrazit [pro App Service a Azure Functions (preview) odkazuje na použití služby Key Vault](app-service-key-vault-references.md).|
+| Šifrování na úrovni sloupce (Azure Data Services)| neuvedeno | |
 | Šifrované volání rozhraní API| Ano | Dojde k volání správy konfigurace služby App Service prostřednictvím [Azure Resource Manageru](../azure-resource-manager/index.yml) volání přes protokol HTTPS. |
 
 ## <a name="network-segmentation"></a>Segmentace sítě
 
 | Atribut zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Koncový bod služby podpory| Ano | V současnosti ve verzi preview pro službu App Service. Zobrazit [omezení přístupu službě Azure App Service](app-service-ip-restrictions.md). |
+| Podpora koncového bodu služby| Ano | V současnosti ve verzi preview pro službu App Service. Zobrazit [omezení přístupu službě Azure App Service](app-service-ip-restrictions.md). |
 | Vkládání podpory virtuálních sítí| Ano | App Service Environment jsou privátní implementace služby App Service je vyhrazený pro jediného zákazníka vloženy do virtuální sítě zákazníka. Zobrazit [Úvod do služby App Service Environment](environment/intro.md). |
 | Izolace sítě a Firewalling podpory| Ano | Za veřejné více tenanty služby App Service zákazníci můžou nakonfigurovat seznamy ACL (omezení IP adres) zamezit povoleného příchozího provozu sítě.  Zobrazit [omezení přístupu službě Azure App Service](app-service-ip-restrictions.md).  Služby App Service Environment se nasazuje přímo do virtuálních sítí a proto ji můžete zabezpečit pomocí skupin zabezpečení sítě. |
-| Podpora pro vynucené tunelování | Ano | Služby App Service Environment je možné nasadit do virtuální sítě zákazníka, kde je nakonfigurované vynucené tunelování. Pokud si zákazníci musí postupovat podle pokynů v [konfigurace služby App Service Environment pomocí vynuceného tunelování](environment/forced-tunnel-support.md). |
+| Vynucené tunelování podpory| Ano | Služby App Service Environment je možné nasadit do virtuální sítě zákazníka, kde je nakonfigurované vynucené tunelování. Pokud si zákazníci musí postupovat podle pokynů v [konfigurace služby App Service Environment pomocí vynuceného tunelování](environment/forced-tunnel-support.md). |
 
 ## <a name="detection"></a>Detekce
 
@@ -59,8 +59,8 @@ Tento článek popisuje běžné atributy zabezpečení integrované do služby 
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Plánování a řízení protokolování a auditování| Ano | Všechny operace správy prováděné s objekty služby App Service dojde k prostřednictvím [Azure Resource Manageru](../azure-resource-manager/index.yml). Historické protokoly tyto operace jsou k dispozici na portálu a prostřednictvím rozhraní příkazového řádku; Zobrazit [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md#microsoftweb) a [az monitorování – protokol aktivit](/cli/azure/monitor/activity-log). |
-| Protokolování a auditování RP roviny dat | Ne | Rovina dat pro službu App Service je vzdálené sdílené složce s obsahem nasazený web zákazníka.  Neexistuje žádný auditování vzdálené sdílené složce. |
+| Ovládací prvek a správu roviny protokolování a auditování| Ano | Všechny operace správy prováděné s objekty služby App Service dojde k prostřednictvím [Azure Resource Manageru](../azure-resource-manager/index.yml). Historické protokoly tyto operace jsou k dispozici na portálu a prostřednictvím rozhraní příkazového řádku; Zobrazit [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md#microsoftweb) a [az monitorování – protokol aktivit](/cli/azure/monitor/activity-log). |
+| Protokolování roviny dat a auditu | Ne | Rovina dat pro službu App Service je vzdálené sdílené složce s obsahem nasazený web zákazníka.  Neexistuje žádný auditování vzdálené sdílené složce. |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 

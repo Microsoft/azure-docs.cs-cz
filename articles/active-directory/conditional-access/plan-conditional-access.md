@@ -13,12 +13,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4832055bffa72732991cb766ce88cc48c07530e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2e277f31dcf2627959b88d58f325fb4dad024a00
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301364"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001189"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Jak: Plánování nasazení podmíněného přístupu v Azure Active Directory
 
@@ -81,7 +81,7 @@ V tomto okamžiku je vhodná doba při rozhodování o standardní pojmenování
  
 ![Standardní pojmenování](./media/plan-conditional-access/11.png)
 
-Zatímco popisný název pomáhá udržovat přehled o vaší implementace podmíněného přístupu, pořadové číslo je užitečné, pokud potřebujete odkazovat na zásadu v konverzaci. Například pokud komunikaci ostatními správce po telefonu, můžete požádat ho, aby spustit nástroj Zásady EM063 vyřešit nějaký problém.
+Zatímco popisný název pomáhá udržovat přehled o vaší implementace podmíněného přístupu, pořadové číslo je užitečné, pokud potřebujete odkazovat na zásadu v konverzaci. Například pokud komunikaci ostatními správce po telefonu, můžete požádat je tak, aby zásady EM063 vyřešit nějaký problém.
 
 
 
@@ -131,7 +131,7 @@ Pro zjednodušení přihlašování vašich uživatelů, můžete chtít umožni
 
 Běžné případy použití vyžádáte vícefaktorové ověřování, jsou přístupu:
 
-- [Správci](baseline-protection.md#require-mfa-for-admins)
+- [Správci](howto-baseline-protect-administrators.md)
 - [Na konkrétní aplikace](app-based-mfa.md) 
 - [Z umístění v síti, kterým nedůvěřujete](untrusted-networks.md).
 
@@ -245,7 +245,7 @@ Postup vyčištění se skládá z následujících kroků:
 
 
 
-## <a name="move-to-production"></a>Přejít do produkčního prostředí
+## <a name="move-to-production"></a>Přechod k produkčnímu prostředí
 
 Jakmile jsou připravené pro vaše prostředí nové zásady, nasaďte je do fáze::
 

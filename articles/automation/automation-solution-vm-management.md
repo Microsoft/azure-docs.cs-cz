@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501958"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002477"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -49,7 +49,7 @@ Doporučujeme použít samostatný účet Automation pro řešení spuštění/z
 
 ### <a name="permissions-needed-to-deploy"></a>Oprávnění potřebná k nasazení
 
-Existují určitá oprávnění, které uživatel musí mít k nasazení spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení. Tato oprávnění se liší v případě použití předem vytvořený účet Automation a Log Analytics pracovního prostoru nebo vytvořením nových během nasazení.
+Existují určitá oprávnění, které uživatel musí mít k nasazení spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení. Tato oprávnění se liší v případě použití předem vytvořený účet Automation a Log Analytics pracovního prostoru nebo vytvořením nových během nasazení. Pokud jste přispěvatelem předplatného a globálním správcem ve vašem tenantovi Azure Active Directory, není potřeba konfigurovat následující oprávnění. Pokud nemáte mají tato práva nebo muset nakonfigurovat vlastní roli, přečtěte si téma oprávněních níže.
 
 #### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Účet už existující účet Automation a Log Analytics
 
@@ -79,41 +79,21 @@ Nasazení do účtu Automation a Log Analytics uživatele nasazení řešení vy
 
 Spouštění/zastavování virtuálních počítačů během mimo špičku nasazení řešení do nového účtu Automation a Log Analytics pracovního prostoru uživatele nasazení řešení potřebuje oprávnění definované v předchozí části, jakož i následující oprávnění:
 
-- Spolusprávce pro předplatné – to je potřeba k vytvoření klasického účtu spustit jako
-- Součástí **vývojář aplikace** role. Další podrobnosti o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
+- Spolusprávce pro předplatné – je to potřeba jenom k vytvoření klasického účtu spustit jako
+- Součástí [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **vývojář aplikace** role. Další podrobnosti o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
+- Přispěvatel pro dané předplatné nebo následující oprávnění.
 
 | Oprávnění |Scope|
 | --- | --- |
+| Microsoft.Authorization/Operations/read | Předplatné|
+| Microsoft.Authorization/permissions/read |Předplatné|
 | Microsoft.Authorization/roleAssignments/read | Předplatné |
 | Microsoft.Authorization/roleAssignments/write | Předplatné |
+| Microsoft.Authorization/roleAssignments/delete | Předplatné |
 | Microsoft.Automation/automationAccounts/connections/read | Skupina prostředků |
 | Microsoft.Automation/automationAccounts/certificates/read | Skupina prostředků |
 | Microsoft.Automation/automationAccounts/write | Skupina prostředků |
 | Microsoft.OperationalInsights/workspaces/write | Skupina prostředků |
-
-### <a name="region-mappings"></a>Mapování oblasti
-
-Při povolování spouštění/zastavování virtuálních počítačů špičku, pro propojení pracovního prostoru Log Analytics a účet Automation se podporují pouze v určitých oblastech.
-
-V následující tabulce jsou uvedeny podporované mapování:
-
-|**Oblasti pracovního prostoru log Analytics**|**Oblasti služby Azure Automation**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|WestEurope|WestEurope|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP a EastUS mapování pracovních prostorů Log Analytics pro účty Automation nejsou přesné mapování oblastmi, ale je správné mapování.
-
-<sup>2</sup> z důvodu omezení kapacity oblast není k dispozici při vytváření nových prostředků. To zahrnuje pracovní prostory účty Automation a Log Analytics. Dříve existující propojených prostředků v oblasti však musí i nadále fungovat.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -140,6 +120,11 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    - Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte existující.
    - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, **západní Evropa**, a **USA – západ 2**.
    - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Protokoly služby Azure Monitor byl aktualizován [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
+
+   > [!NOTE]
+   > Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
+   >
+   > Seznam podporovaných mapování dvojic najdete v tématu [mapování oblast pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
 5. Po zadání požadovaných informací v **pracovní prostor Log Analytics** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
 6. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log Analytics. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
@@ -433,7 +418,9 @@ Pokud se rozhodnete, že už nemusíte používat řešení, můžete jej odstra
 
 Pokud chcete odstranit toto řešení, postupujte následovně:
 
-1. Ve svém účtu Automation vyberte **pracovní prostor** z levá stránka.
+1. Ve svém účtu Automation v části **související prostředky**vyberte **pracovní prostor propojený**.
+1. Vyberte **přejděte do pracovního prostoru**.
+1. V části **Obecné**vyberte **řešení**. 
 1. Na **řešení** vyberte řešení, **Start-Stop-VM [pracovní prostor]**. Na **VMManagementSolution [pracovní prostor]** stránky, v nabídce vyberte **odstranit**.<br><br> ![Odstranit řešení pro správu virtuálních počítačů](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. V **odstranit řešení** okně potvrďte, že chcete odstranit řešení.
 1. Během ověřování informací a řešení se odstraní, můžete sledovat jeho průběh **oznámení** z nabídky. Budete přesměrováni **řešení** stránce po spuštění procesu se odebrat řešení.

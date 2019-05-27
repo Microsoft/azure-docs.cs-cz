@@ -2,21 +2,21 @@
 title: Zálohování řešení potíží s virtuálními počítači Azure
 description: Řešení zálohování a obnovení virtuálních počítačů Azure
 services: backup
-author: srinathv
+author: srinathvasireddy
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: srinathv
-ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/22/2019
+ms.author: srinathvasireddy
+ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550018"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002314"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
-Řešení potíží s chybami při pomocí služby Azure Backup pomocí informací uvedených v následující tabulce došlo k chybě:
+Je možné řešit chyby se setkali při použití Azure Backup s informacemi o uvedené níže:
 
 ## <a name="backup"></a>Backup
 
@@ -82,7 +82,7 @@ Restartujte zapisovače služby VSS, které jsou v chybném stavu. Z příkazov�
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - Chyba při analýze konfigurace zálohovacího rozšíření
 
 Kód chyby: ExtensionConfigParsingFailure<br/>
-Chybová zpráva: Došlo k chybě při parsování konfigurace pro rozšíření zálohování.
+Chybová zpráva: Při analýze konfigurace zálohovacího rozšíření se stala chyba.
 
 K této chybě dochází z důvodu změny oprávnění na **MachineKeys** adresáře: **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
 Spusťte následující příkaz a zkontrolujte oprávnění na **MachineKeys** adresáře jsou výchozí hodnoty:**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
@@ -159,7 +159,7 @@ Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta.
 
 ### <a name="common-vm-backup-errors"></a>Běžné chyby při zálohování virtuálního počítače
 
-| Podrobnosti o chybě | Alternativní řešení |
+| Podrobnosti o chybě | Alternativní řešení: |
 | ------ | --- |
 | Kód chyby: 320001<br/> Chybová zpráva: Operace se nedá provést, protože virtuální počítač už neexistuje. <br/> <br/> Kód chyby: 400094 <br/> Chybová zpráva: Virtuální počítač neexistuje. <br/> <br/>  Virtuální počítač Azure nebyl nalezen.  |K této chybě dochází, když primární virtuální počítač se odstraní, ale zásad zálohování vypadá stále pro virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu, proveďte následující kroky: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků, **název cloudové služby**,<br>**nebo**</li><li> Zastavte ochranu virtuálního počítače s nebo bez něj odstraňují se záložní data. Další informace najdete v tématu [zastavení ochrany virtuálních počítačů](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
 | Virtuální počítač je ve stavu selhání zřizování: <br>Restartujte virtuální počítač a ujistěte se, že je virtuální počítač spuštěný nebo vypnout. | Tato chyba nastane, pokud mezi chybami rozšíření umístí virtuální počítač do stavu selhání zřizování. Přejděte do seznamu přípon, zkontrolujte, pokud je neúspěšné rozšíření, odeberte ji a zkuste restartovat virtuální počítač. Pokud všechna rozšíření, je v běžícím stavu, kontrola, zda je spuštěná Služba agenta virtuálního počítače. Pokud ne, restartujte službu agenta virtuálního počítače. |
@@ -175,7 +175,7 @@ Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta.
 
 ## <a name="jobs"></a>Úlohy
 
-| Podrobnosti o chybě | Alternativní řešení |
+| Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- |
 | Zrušení se nepodporuje pro tento typ úlohy: <br>Počkejte, až úloha dokončí. |Žádný |
 | Úloha není zrušitelný stavu: <br>Počkejte, až úloha dokončí. <br>**nebo**<br> Vybrané úlohy není možné zrušit stavu: <br>Počkejte na dokončení úlohy. |Je pravděpodobné, že úloha je téměř u konce. Počkejte, dokud je úloha dokončena.|
@@ -184,7 +184,7 @@ Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta.
 
 ## <a name="restore"></a>Obnovení
 
-| Podrobnosti o chybě | Alternativní řešení |
+| Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- |
 | Obnovení se nezdařilo s vnitřní chybou cloudu. |<ol><li>Cloudové služby, ke kterému se snažíte obnovit je nakonfigurován s nastavením DNS. Můžete zkontrolovat: <br>**$deployment = get-AzureDeployment - ServiceName "ServiceName"-slotu "Produkční" Get AzureDns - části Networkinterfaceconfigurations $deployment. Části Networkinterfaceconfigurations**.<br>Pokud **adresu** je nakonfigurován, pak jsou nakonfigurovaná nastavení DNS.<br> <li>Cloudová služba, do kterého se snažíte obnovit, má nakonfigurovanou **vyhrazená IP adresa**, a stávající virtuální počítače v rámci cloudové služby jsou ve stavu Zastaveno. Můžete zkontrolovat, že Cloudová služba má vyhrazené IP adresy pomocí následující rutiny prostředí PowerShell: **$deployment = Get-AzureDeployment - ServiceName "servicename"-slotu "Produkční" $ programu dep. ReservedIPName**. <br><li>Pokoušíte se při obnovení virtuálního počítače se následující speciální konfigurací sítě do stejné cloudové služby: <ul><li>Virtuální počítače v rámci konfigurace služby Vyrovnávání zatížení, interní a externí.<li>Virtuální počítače s víc vyhrazených IP adres. <li>Virtuální počítače s několika síťovými kartami. </ul><li>Vyberte novou cloudovou službu v uživatelském rozhraní nebo viz [obnovení aspekty](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) pro virtuální počítače se speciální konfigurací sítě.</ol> |
 | Vybraný název DNS se už používá: <br>Zadejte jiný název DNS a zkuste to znovu. |Tento název DNS, odkazuje na název cloudové služby, obvykle končí **. cloudapp.net**. Tento název musí být jedinečný. Pokud se zobrazí tato chyba, musíte zvolit jiný název virtuálního počítače během obnovení. <br><br> Tato chyba se zobrazí pouze pro uživatele na webu Azure portal. Operaci obnovení prostřednictvím prostředí PowerShell bude úspěšné, protože jej obnoví pouze disky a není vytvoření virtuálního počítače. Chyba bude čelí, když virtuální počítač je explicitně vytvořené po operaci obnovení na disku. |
@@ -210,7 +210,7 @@ Obvykle je Agent virtuálního počítače už ve virtuálních počítačích v
 * Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Je potřeba oprávnění správce pro dokončení instalace.
 * Pro virtuální počítače vytvořené pomocí modelu nasazení classic [aktualizovat vlastnosti virtuálního počítače](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) označující, zda je agent nainstalovaný. Tento krok není povinný pro virtuální počítače Azure Resource Manageru.
 
-#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+#### <a name="linux-vms"></a>Linuxové virtuální počítače
 
 * Nainstalujte nejnovější verzi agenta z úložiště distribuce. Podrobnosti o název balíčku, najdete v článku [agenta pro Linux úložiště](https://github.com/Azure/WALinuxAgent).
 * Pro virtuální počítače vytvořené pomocí modelu nasazení classic [použít tento blog](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) aktualizovat vlastnosti virtuálního počítače a ověřte, zda je agent nainstalovaný. Tento krok není povinný pro virtuální počítače Resource Manageru.
@@ -220,7 +220,7 @@ Obvykle je Agent virtuálního počítače už ve virtuálních počítačích v
 
 * Pokud chcete aktualizovat agenta virtuálního počítače, přeinstalujte [binárních souborů agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Před aktualizací agenta, ujistěte se, že žádná operace zálohování, k nimž došlo při aktualizaci agenta virtuálního počítače.
 
-#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
+#### <a name="linux-vms"></a>Linuxové virtuální počítače
 
 * Chcete-li aktualizovat agenta virtuálního počítače s Linuxem, postupujte podle pokynů v článku [aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
