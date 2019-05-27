@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d53f625cec6aee980155711ddeb4d1e1761b91d7
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236144"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače s Linuxem pro přístup k Azure Storage prostřednictvím přístupového klíče
 
@@ -47,7 +47,7 @@ Teď vytvoříte účet úložiště (pokud ho ještě nemáte).  Tento krok tak
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
 6. Klikněte na možnost **Vytvořit**.
 
-    ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
+    ![Vytvořit nový účet úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>Vytvoření kontejneru objektů blob v účtu úložiště
 
@@ -65,7 +65,7 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 V tomto kroku udělíte spravované identitě přiřazené systémem na virtuálním počítači přístup ke klíčům k vašemu účtu úložiště.   
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
-2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
+2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .  
 3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač
 4. Na pravé straně stránky nastavte položku **Role** na Role služby Operátor klíčů účtů úložiště. 
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** nastavte prostředek na Virtuální počítač.  

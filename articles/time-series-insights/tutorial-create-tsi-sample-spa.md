@@ -5,15 +5,15 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 04/25/2019
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 3c2de4bd1f9d487cbb58be9581a0395bf1caa3f9
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 5ee6e9aefb235feb28468798c3bd6b107f8c7c49
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991896"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244040"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 

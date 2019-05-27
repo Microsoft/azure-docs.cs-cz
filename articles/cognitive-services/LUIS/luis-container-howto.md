@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: diberry
-ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: b379ebeeec7d9309cdf150b8b90ddd006e3bcd9a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124273"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240211"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -36,7 +36,7 @@ Chcete-li spustit kontejner LUIS, musíte mít následující:
 |--|--|
 |Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Azure `Cognitive Services` prostředků a LUIS [zabalená aplikace je](luis-how-to-start-new-app.md#export-app-for-containers) souboru |Chcete-li použít kontejner, musíte mít:<br><br>* A _služeb Cognitive Services_ prostředků Azure a související účtování klíč fakturační identifikátor URI koncového bodu. Obě hodnoty na stránce Přehled a klíče pro prostředek jsou k dispozici a jsou vyžadovány pro spuštění kontejneru. Je třeba přidat `luis/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI. <br>* A trénovaného nebo publikované aplikace lze zabalit jako připojené vstup do kontejneru s jeho přidružené ID aplikace. Souboru balíčku můžete získat na portálu služby LUIS nebo rozhraní API pro vytváření. Pokud se služba LUIS zabalených aplikací z [rozhraní API pro vytváření](#authoring-apis-for-package-file), budete také potřebovat vaše _vytváření klíč_.<br><br>Tyto požadavky se používají k předání argumentů příkazového řádku následující proměnné:<br><br>**{AUTHORING_KEY}**: Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a nahrajte protokoly dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Tento Identifikátor slouží k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}**: Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je na webu Azure portal v rámci _služeb Cognitive Services_ klíče seznamu zdrojů. Klíč koncového bodu je také k dispozici na portálu služby LUIS nad klíči a koncový bod stránku nastavení. Nepoužívejte klávesu starter.<br><br>**{BILLING_ENDPOINT}**: Příklad: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Vytváření klíč a klíče koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je Zaměnitelně. |
+|Azure `Cognitive Services` prostředků a LUIS [zabalená aplikace je](luis-how-to-start-new-app.md#export-app-for-containers) souboru |Chcete-li použít kontejner, musíte mít:<br><br>* A _služeb Cognitive Services_ prostředků Azure a související účtování klíč fakturační identifikátor URI koncového bodu. Obě hodnoty na stránce Přehled a klíče pro prostředek jsou k dispozici a jsou vyžadovány pro spuštění kontejneru. Je třeba přidat `luis/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu BILLING_ENDPOINT_URI. <br>* A trénovaného nebo publikované aplikace lze zabalit jako připojené vstup do kontejneru s jeho přidružené ID aplikace. Souboru balíčku můžete získat na portálu služby LUIS nebo rozhraní API pro vytváření. Pokud se služba LUIS zabalených aplikací z [rozhraní API pro vytváření](#authoring-apis-for-package-file), budete také potřebovat vaše _vytváření klíč_.<br><br>Tyto požadavky se používají k předání argumentů příkazového řádku následující proměnné:<br><br>**{AUTHORING_KEY}** : Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a nahrajte protokoly dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Tento Identifikátor slouží k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je na webu Azure portal v rámci _služeb Cognitive Services_ klíče seznamu zdrojů. Klíč koncového bodu je také k dispozici na portálu služby LUIS nad klíči a koncový bod stránku nastavení. Nepoužívejte klávesu starter.<br><br>**{BILLING_ENDPOINT}** : Příklad: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Vytváření klíč a klíče koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je Zaměnitelně. |
 
 ### <a name="authoring-apis-for-package-file"></a>Rozhraní API pro vytváření pro soubor balíčku
 
@@ -136,7 +136,7 @@ Publikovanou aplikaci balíčku je k dispozici **Moje aplikace** stránku se sez
 1. Přihlaste se LUIS [portál](https://www.luis.ai).
 1. V seznamu vyberte zaškrtávací políčko nalevo od názvu aplikace. 
 1. Vyberte **exportovat** položky z kontextové nástrojů nad seznamem.
-1. Vyberte **Export pro kontejner (GZIP)**.
+1. Vyberte **Export pro kontejner (GZIP)** .
 1. Vyberte prostředí, které **produkčního slotu** nebo **přípravný slot**.
 1. Balíček se stahuje z prohlížeče.
 
@@ -152,7 +152,7 @@ Balíček trénovaného aplikace je k dispozici **verze** stránku se seznamem.
 1. Vyberte **verze** v levém navigačním panelu.
 1. V seznamu vyberte zaškrtávací políčko nalevo od názvu verze.
 1. Vyberte **exportovat** položky z kontextové nástrojů nad seznamem.
-1. Vyberte **Export pro kontejner (GZIP)**.
+1. Vyberte **Export pro kontejner (GZIP)** .
 1. Balíček se stahuje z prohlížeče.
 
 ![Exportovat natrénované balíček pro kontejner z nabídky Export verze stránky](./media/luis-container-how-to/export-trained-package-for-container.png)
@@ -223,20 +223,24 @@ Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline
 |{ENDPOINT_KEY} | Tento klíč se používá ke spuštění kontejneru. Nepoužívejte klávesu starter. |
 |{BILLING_ENDPOINT} | Fakturační hodnota koncového bodu není k dispozici na webu Azure portal `Cognitive Services` stránka s přehledem. Je třeba přidat `luis/v2.0` směrování na identifikátor URI koncového bodu, jak je znázorněno v následujícím příkladu: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.|
 
-Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu.
+Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `docker run` příkazu. Spuštěním příkazu v konzole Windows.
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
+```console
+docker run --rm -it -p 5000:5000 ^
+--memory 4g ^
+--cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output\,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
 
-> [!Note] 
-> Ve výstupu předchozího příkazu využívá adresáři `c:` disku, aby se zabránilo konfliktům oprávnění na Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. Ve výstupu předchozího příkazu docker používá zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte to na základě vašich [hostitelský počítač](#the-host-computer) požadavky na operační systém. Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
+* V tomto příkladu adresáři využívá `c:` disku, aby se zabránilo konfliktům oprávnění na Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
+* Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
+* Pokud používáte jiný operační systém, použijte pro připojení a znak pro pokračování řádku pro váš systém správné konzole a Terminálové, syntaxe složky. Tyto příklady předpokládají konzola Windows s znak pro pokračování řádku `^`. Vzhledem k tomu, že kontejner je operační systém Linux, cíl připojení používá syntaxi složky Linux-style.
+
 
 
 Tento příkaz:
@@ -273,7 +277,7 @@ Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 
-|Parametr dotazu|Type|Účel|
+|Parametr dotazu|Typ|Účel|
 |--|--|--|
 |`q`|string|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|

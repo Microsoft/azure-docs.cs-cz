@@ -121,6 +121,12 @@
           items:
             - name: Co je Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Koncepty
+          items:
+            - name: Kontrola požadavků
+              href: data-box-heavy-system-requirements.md
+            - name: Pochopení limitů
+              href: data-box-heavy-limits.md
     - name: Zdroje a prostředky
       items:
         - name: Produkt Data Box

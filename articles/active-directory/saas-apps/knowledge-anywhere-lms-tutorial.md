@@ -5,165 +5,140 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 5cfa07b1-a792-4f0a-8c6f-1a13142193d9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/14/2019
+ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: f39952c74006964155fd23920c85506cac13a878
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 34553c92f54992698a7e3930ac302ef970edd7c7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60261967"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236657"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledge-anywhere-lms"></a>Kurz: Integrace Azure Active Directory s LMS kdekoli znalostní báze
+# <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Kurz: Integrace znalostní báze kdekoli LMS s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat LMS znalostní báze odkudkoli pomocí služby Azure Active Directory (Azure AD).
-Integrace LMS kdekoli znalostní báze s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat LMS znalostní báze odkudkoli pomocí služby Azure Active Directory (Azure AD). Při integraci LMS znalostní báze odkudkoli pomocí služby Azure AD, můžete:
 
-* Můžete řídit ve službě Azure AD, který má přístup k LMS znalostní báze kdekoli.
-* Uživatelům se automaticky přihlášeni do znalostní báze kdekoli LMS (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Ovládací prvek ve službě Azure AD, který má přístup k LMS znalostní báze kdekoli.
+* Aby uživatelé mohli být automaticky přihlášeni LMS kdekoli znalostní báze pomocí jejich účtů služby Azure AD.
+* Správa účtů v jednom centrálním místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s LMS znalostní báze kdekoli, potřebujete následující položky:
+Abyste mohli začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* LMS kdekoli znalostní báze jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Znalostní báze kdekoli LMS jednotné přihlašování (SSO) povolené předplatné.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
-
-* Podporuje LMS znalostní báze kdekoli **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
-* Podporuje LMS znalostní báze kdekoli **JIT** zřizování uživatelů
+V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje LMS znalostní báze kdekoli **SP** iniciované jednotné přihlašování a podporuje **JIT** zřizování uživatelů.
 
 ## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>Přidání znalostní báze kdekoli LMS z Galerie
 
 Ke konfiguraci integrace LMS znalostní báze kamkoli do služby Azure AD, budete muset přidat LMS znalostní báze kdekoli v galerii na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat LMS znalostní báze odkudkoli z galerie, postupujte následovně:**
-
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
-
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
-
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
-
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
-
-    ![Tlačítko nové aplikace](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **LMS znalostní báze kdekoli**vyberte **LMS znalostní báze kdekoli** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![Znalostní báze kdekoli LMS v seznamu výsledků](common/search-new-app.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
+1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
+1. V **přidat z Galerie** části, zadejte **LMS znalostní báze kdekoli** do vyhledávacího pole.
+1. Vyberte **LMS znalostní báze kdekoli** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí znalostní báze kdekoli LMS podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v LMS znalostní báze kdekoli.
+Konfigurace a otestování jednotného přihlašování k Azure AD s znalostní báze kdekoli LMS pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatelské v LMS znalostní báze kdekoli.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s LMS kdekoli znalostní báze, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s LMS kdekoli znalostní báze, proveďte následující stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace znalostní báze kdekoli LMS Single Sign-On](#configure-knowledge-anywhere-lms-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele LMS znalostní báze kdekoli](#create-knowledge-anywhere-lms-test-user)**  – Pokud chcete mít protějšek Britta Simon ve znalostní bázi kdekoli LMS, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace LMS znalostní báze kdekoli](#configure-knowledge-anywhere-lms)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele LMS znalostní báze kdekoli](#create-knowledge-anywhere-lms-test-user)**  mít protějšek B. Simon ve znalostní bázi kdekoli LMS, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s LMS znalostní báze kdekoli, proveďte následující kroky:
+1. V [webu Azure portal](https://portal.azure.com/)na **LMS znalostní báze kdekoli** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
+1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **LMS znalostní báze kdekoli** integrace stránce aplikace vyberte **jednotného přihlašování**.
+   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+1. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+    1. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CLIENTNAME>.knowledgeanywhere.com/`
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
-
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
-
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
-
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
-
-    ![Domény LMS v znalostní báze odkudkoli a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
-
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CLIENTNAME>.knowledgeanywhere.com/`
-
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
+    1. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
-
-    ![Domény LMS v znalostní báze odkudkoli a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
+1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<CLIENTNAME>.knowledgeanywhere.com/`
 
     > [!NOTE]
     > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta LMS v znalostní báze kdekoli](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) tuto výhodu získáte. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. Na **nastavení LMS znalostní báze kdekoli** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. Na **nastavení LMS znalostní báze kdekoli** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+### <a name="configure-knowledge-anywhere-lms"></a>Konfigurace znalostní báze kdekoli LMS
 
-    b. Identifikátor služby Azure Ad
+1. K automatizaci konfigurace v rámci LMS znalostní báze kdekoli, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
 
-    c. Adresa URL – odhlášení
+    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
 
-### <a name="configure-knowledge-anywhere-lms-single-sign-on"></a>Konfigurace znalostní báze kdekoli LMS jednotného přihlašování
+2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení znalostní báze kdekoli LMS** nasměruje na aplikaci LMS znalostní báze kdekoli. Odtud zadejte přihlašovací údaje správce pro přihlášení do LMS znalostní báze kdekoli. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 – 7.
 
-1. V jiném okně prohlížeče otevřete portál pro správu LMS znalostní báze kdekoli.
+    ![Nastavení konfigurace](common/setup-sso.png)
 
-2. Vyberte na **lokality** kartu.
+3. Pokud chcete ručně nastavit LMS znalostní báze kdekoli, otevřete nové okno webového prohlížeče a přihlaste se jako správce lokalitu LMS kdekoli znalostní báze společnosti a proveďte následující kroky:
+
+4. Vyberte na **lokality** kartu.
 
     ![Znalostní báze kdekoli LMS konfigurace](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
-3. Vyberte na **nastavení SAML** kartu.
+5. Vyberte na **nastavení SAML** kartu.
 
     ![Znalostní báze kdekoli LMS konfigurace](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
-4. Klikněte na **přidat nový**.
+6. Klikněte na **přidat nový**.
 
     ![Znalostní báze kdekoli LMS konfigurace](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
-5. Na **přidat nebo aktualizovat nastavení SAML** stránce, proveďte následující kroky:
+7. Na **přidat nebo aktualizovat nastavení SAML** stránce, proveďte následující kroky:
 
     ![Znalostní báze kdekoli LMS konfigurace](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. Zadejte název zprostředkovatele identity podle vaší organizace. Pro příklad:- `Azure`.
 
-    b. V **IDP Entity ID** vložit do textového pole **Azure Ad identifikátor** hodnotu, která jste zkopírovali z portálu Azure portal.
+    b. V **IDP Entity ID** vložit do textového pole **Azure AD identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    c. V **adresa URL zprostředkovatele identity** vložit do textového pole **přihlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
+    c. V **adresa URL zprostředkovatele identity** vložit do textového pole **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
     d. Do poznámkového bloku otevřete soubor stažený certifikát z portálu Azure portal, zkopírujte obsah certifikát a vložte ho do **certifikát** textového pole.
 
-    e. V **odhlašovací adresa URL** vložit do textového pole **odhlašovací adresa URL** hodnotu, která jste zkopírovali z portálu Azure portal.
+    e. V **odhlašovací adresa URL** vložit do textového pole **odhlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
     f. Vyberte **hlavní lokalitu** z rozevíracího seznamu **domény**.
 
@@ -175,64 +150,41 @@ Ke konfiguraci Azure AD jednotné přihlašování s LMS znalostní báze kdekol
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky.
-
-    ![Tlačítko Nový uživatel](common/new-user.png)
-
-3. Ve vlastnosti uživatele proveďte následující kroky.
-
-    ![Dialogové okno uživatele](common/user-properties.png)
-
-    a. V **název** zadat **BrittaSimon**.
-  
-    b. V **uživatelské jméno** typ pole **brittasimon\@yourcompanydomain.extension**  
-    Například BrittaSimon@contoso.com.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
-
-    d. Klikněte na možnost **Vytvořit**.
+1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V **uživatele** vlastností, postupujte podle těchto kroků:
+   1. Do pole **Název** zadejte `B. Simon`.  
+   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu LMS znalostní báze kdekoli.
+V této části povolíte B. Simon používat jednotné přihlašování Azure díky udělení přístupu LMS znalostní báze kdekoli.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **LMS znalostní báze kdekoli**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikací vyberte **LMS znalostní báze kdekoli**.
+1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **LMS znalostní báze kdekoli**.
+1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Odkaz LMS znalostní báze kdekoli v seznamu aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
-
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
 
 ### <a name="create-knowledge-anywhere-lms-test-user"></a>Vytvořit testovacího uživatele LMS kdekoli znalostní báze
 
-V této části se vytvoří uživateli Britta Simon v LMS znalostní báze kdekoli. LMS kdekoli znalostní báze podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi LMS znalostní báze kdekoli, vytvoří se nový po ověření.
+V této části se vytvoří uživateli B. Simon ve LMS znalostní báze kdekoli. LMS kdekoli znalostní báze podporuje zřizování uživatelů v čase, je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi LMS znalostní báze kdekoli, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
-
-Po kliknutí na dlaždici LMS znalostní báze kamkoli na přístupovém panelu, vám by měl být automaticky přihlášeni do znalostní báze kdekoli LMS pro kterou můžete nastavit jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice LMS znalostní báze kamkoli na přístupovém panelu, vám by měl být automaticky přihlášeni do znalostní báze kdekoli LMS pro kterou můžete nastavit jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

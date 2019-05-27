@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a27aa0a6e91347db3aab560157e2cba6c43d584
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 96a1a91f49754386de7127cb981d38acd1852e94
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966586"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241429"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Povolit replikaci virtuálního počítače.
 
 > [!NOTE]
-> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v tématu v článcích **návody** část [dokumentace ke službě Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery).
+> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v tématu v článcích **návody** část [dokumentace ke službě Site Recovery](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -121,7 +121,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
-1. Vyberte **připravit infrastrukturu** > **nastavení replikace** > **+ vytvořit a přidružit**.
+1. Vyberte **připravit infrastrukturu** > **nastavení replikace** >  **+ vytvořit a přidružit**.
 2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Používáme **ContosoReplicationPolicy**.
 3. Pro účely tohoto kurzu Ponecháme výchozí nastavení:
     - **Frekvence kopírování** udává, jak často budou replikovat rozdílová data (po počáteční replikaci). Je výchozí frekvence každých pět minut.

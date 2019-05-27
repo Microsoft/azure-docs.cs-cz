@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/13/2019
 ms.author: edjez
-ms.openlocfilehash: 536aad0fac4e833cd9a30bad2cfd10e25b0f1300
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65607074"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244239"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Potřebu skóre znamená úspěch individuálního nastavení
 
-Potřebu skóre označuje, jak dobře přizpůsobení podle vlastní volby, [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/rank#rankresponse), byl pro uživatele. Hodnota reward skóre je určeno obchodní logiky a podle pozorování chování uživatelů.
+Potřebu skóre označuje, jak dobře přizpůsobení podle vlastní volby, [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response), byl pro uživatele. Hodnota reward skóre je určeno obchodní logiky a podle pozorování chování uživatelů.
 
 Personalizer trénovat jeho modelů strojového učení s vyhodnocením výhody. 
 

@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 7b1e972b5516aa79d1754e32e487e17c9e68ac1d
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 437dc1fba2502602109483aa9d6f25b4265af26f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035419"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239896"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Pokyny pro zodpovědná provádění Personalizer
 
@@ -128,17 +128,13 @@ Následují oblasti návrhu pro zodpovědná implementace AI. Další informace 
 * Archivovat informace a prostředky – například modely, učení zásady a další data - používající Personalizer fungovat, abyste mohli reprodukovat výsledky.
 
 ### <a name="transparency"></a>Transparentnost
-*AI systémy musí být Understandable*. S Personalizer
+*AI systémy musí být Understandable*. S Personalizer:
 
-• Poskytnout uživatelům informace o jak byl individuální obsah. Například můžete zobrazit vaši uživatelé v tlačítko s popiskem "Proč tyto návrhy?" zobrazují, které hlavní funkce uživatele a akce hraje roli ve výsledcích Personalizer.
-• Ujistěte se, že vaše podmínky použití zkontrolujte uvést, že použijete informace týkající se uživatelů a jejich chování k přizpůsobení prostředí.
-
-
-* *Poskytněte uživatelům informace o jak byl individuální obsah.* Například můžete zobrazit vaši uživatelé v tlačítko s popiskem `Why These Suggestions?` zobrazení, které hlavní funkce uživatele a akce hrají roli v přizpůsobení.
-* Ujistěte se, že vaše podmínky použití uvést, že bude používat informace o uživatelích, můžete přizpůsobit prostředí.
+* *Poskytněte uživatelům informace o jak byl individuální obsah.* Například můžete zobrazit vaši uživatelé v tlačítko s popiskem `Why These Suggestions?` zobrazení, které hlavní funkce uživatele a akce hraje roli ve výsledcích Personalizer.
+* Ujistěte se, že vaše podmínky použití zkontrolujte uvést, že použijete informace týkající se uživatelů a jejich chování k přizpůsobení prostředí.
 
 ### <a name="fairness"></a>Rovnost
-* AI systémy by měly zpracovávat všichni uživatelé s poměrně.
+*Všichni uživatelé s AI systémy by měly zpracovávat poměrně*.
 
 * Nepoužívejte Personalizer pro případy použití, kdy výsledky nejsou dlouhodobé, následné, nebo zahrnují skutečné poškození.
 * Nepoužívejte funkcí, které nejsou vhodné přizpůsobit obsah s nebo, které můžou pomoct rozšířit nežádoucí tendence. Například každý, kdo má podobné finanční situaci byste vidět stejný individuální doporučení pro finanční produkty.

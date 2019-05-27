@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: d42e266de9c958c8a71cc5fa680a78c2278cec6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1a1acde81baa596e71b7e39763b0464c8de2fb86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956778"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Kurz: Integrace Azure Active Directory s NetDocuments
 
@@ -52,7 +52,7 @@ Konfigurace integrace NetDocuments do služby Azure AD, budete muset přidat Net
 
 **Chcete-li přidat NetDocuments z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -109,7 +109,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s NetDocuments, proveďte ná
     b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a adresy URL odpovědi. ID úložiště je hodnota rovnou začít tématem CA-následuje přidružený k úložišti NetDocuments 8 kód znaku. Můžete zkontrolovat [dokument podpory NetDocuments Federated Identity](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) Další informace. Případně můžete kontaktovat [tým podpory NetDocuments klienta](https://support.netdocuments.com/hc/) k získání těchto hodnot, pokud máte potíže konfigurace pomocí výše uvedených informací. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a adresy URL odpovědi. ID úložiště je hodnota počínaje **CA -** za nímž následuje přidružený k úložišti NetDocuments 8 kód znaku. Můžete zkontrolovat [dokument podpory NetDocuments Federated Identity](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) Další informace. Případně můžete kontaktovat [tým podpory NetDocuments klienta](https://support.netdocuments.com/hc/) k získání těchto hodnot, pokud máte potíže konfigurace pomocí výše uvedených informací. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 

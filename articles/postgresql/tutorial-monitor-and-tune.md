@@ -1,19 +1,19 @@
 ---
-title: Kurz týkající se sledování a ladění ve službě Azure Database for PostgreSQL
-description: Tento kurz vás provede sledováním a laděním ve službě Azure Database for PostgreSQL.
+title: Kurz týkající se monitorování a ladění ve službě Azure Database for PostgreSQL – jeden Server
+description: Tento kurz vás provede monitorování a ladění ve službě Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: f05e0eef7680b08ce116cc0243d944f6a1db597c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: dcd8363db33809e2a33885f43e570c53807505fd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61091724"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073088"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Kurz: Sledování a ladění – Azure Database for PostgreSQL
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Kurz: Sledování a ladění – Azure Database for PostgreSQL – jeden Server
 
 Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zlepši výkon vašeho serveru. V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]

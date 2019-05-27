@@ -90,12 +90,12 @@ Následující tabulka popisuje vlastnosti v rámci aktivity definici JSON:
 | name |Název aktivity. Zadejte název, který představuje akci, který je nakonfigurovaný na aktivitu<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita slouží. |Ne |
 | type |Určuje typ aktivity. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) a [aktivity TRANSFORMACE dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
-| inputs |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro HDInsightStreaming a SqlServerStoredProcedure aktivity <br/> <br/> Ano, pro všechny ostatní |
+| vstupy |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro HDInsightStreaming a SqlServerStoredProcedure aktivity <br/> <br/> Ano, pro všechny ostatní |
 | outputs |Výstupní tabulky použité aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |Ano |
 | linkedServiceName |Název propojené služby používané aktivitou. <br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. |Ano pro aktivity HDInsight, Azure Machine Learning, aktivity a aktivity uložené procedury. <br/><br/>Ne ve všech ostatních případech |
 | typeProperties |Vlastnosti v části typeProperties závisí na typu aktivity. |Ne |
 | policy |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |Ne |
-| scheduler |Vlastnost "scheduler" se používá k definování požadované plánování aktivity. Jeho objektu třídy subproperties jsou stejné jako ty v [vlastnost availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
+| Scheduler |Vlastnost "scheduler" se používá k definování požadované plánování aktivity. Jeho objektu třídy subproperties jsou stejné jako ty v [vlastnost availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
 
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování za běhu aktivity, konkrétně v případě, že zpracování řezu tabulku. Následující tabulka obsahuje podrobnosti.
@@ -1313,7 +1313,7 @@ Chcete-li definovat datová sada služby Azure Search, nastavte **typ** datové 
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| Typ | Vlastnost type musí být nastavená na **AzureSearchIndex**.| Ano |
+| type | Vlastnost type musí být nastavená na **AzureSearchIndex**.| Ano |
 | indexName | Název indexu Azure Search. Objekt pro vytváření dat, nevytvoří index. Index musí existovat ve službě Azure Search. | Ano |
 
 #### <a name="example"></a>Příklad:
@@ -2454,7 +2454,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
+| type |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
 | connectionString |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi SQL serveru. |Ano |
 | username jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
@@ -3317,7 +3317,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Zkontrolujte, že vlastnost type je nastavená na **OnPremisesFileServer**. |Ano |
+| type |Zkontrolujte, že vlastnost type je nastavená na **OnPremisesFileServer**. |Ano |
 | host |Určuje kořenová cesta ke složce, která chcete kopírovat. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Viz ukázka propojené služby a datové sady definice příklady. |Ano |
 | userid |Zadejte ID uživatele, který má přístup k serveru. |Ne (když zvolíte encryptedCredential) |
 | password |Zadejte heslo pro uživatele (ID uživatele). |Ne (když zvolíte encryptedCredential |
@@ -4745,7 +4745,7 @@ K definování datové sady Web, nastavte **typ** datové sady na **WebTable**a 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| Typ |Typ datové sady. musí být nastaveno na **WebTable** |Ano |
+| type |Typ datové sady. musí být nastaveno na **WebTable** |Ano |
 | path |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Když není zadána cesta, použije se pouze adresu URL, které jsou určené v definici propojené služby. |
 | index |Index tabulky ve zdroji. Zobrazit Get index tabulky v části stránky HTML najdete kroky pro získání indexu tabulky na stránce HTML. |Ano |
 
@@ -4838,7 +4838,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici JSON pr
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na **HDInsightOnDemand**. |Ano |
+| type |Vlastnost type by měla být nastavená na **HDInsightOnDemand**. |Ano |
 | clusterSize |Počet pracovních procesů a datových uzlů do clusteru. Vytvoření clusteru HDInsight s 2 hlavní uzly spolu s počtem uzlů pracovního procesu, kterou zadáte pro tuto vlastnost. Uzly mají velikost Standard_D3, který má 4 jádra, 4 pracovní uzel clusteru trvá 24 jader (4\*4 = 16 jader pro pracovní uzly a navíc 2\*4 = 8 jader pro hlavní uzly). Zobrazit [založených na Linuxu vytvoření Hadoop clusterů v HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) podrobnosti na úrovni Standard_D3. |Ano |
 | TimeToLive |Povolené prodlevy pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane aktivní cluster HDInsight na vyžádání po dokončení aktivity spustit, pokud v clusteru nejsou žádné aktivní úlohy.<br/><br/>Například pokud spuštění aktivit trvá 6 minut a timetolive nastavena na 5 minut, clusteru zůstává aktivní po 5 minutách od 6 minut výpočetního aktivity spustit. Pokud se spuštění další aktivity provádí s oknem 6 minut, je zpracován programovacím modelem stejného clusteru.<br/><br/>Vytváření clusteru HDInsight na vyžádání je náročná operace (akce může trvat), takže použití tohoto nastavení jako potřebné ke zlepšení výkonu služby data factory pomocí opakovaného použití clusteru služby HDInsight na vyžádání.<br/><br/>Pokud hodnota timetolive nastavíte na 0, cluster odstraní jako aktivita spustit zpracované. Na druhé straně Pokud nastavíte vysokou hodnotu, clusteru může zůstat nečinná, zbytečně výsledkem vysoké náklady. Proto je důležité, že nastavíte příslušnou hodnotu na základě vašich potřeb.<br/><br/>Více kanálů můžou sdílet stejnou instanci clusteru HDInsight na vyžádání, pokud je odpovídajícím způsobem nastavit hodnoty vlastnosti timetolive |Ano |
 | version |Verze clusteru HDInsight. Podrobnosti najdete v tématu [podporované verze HDInsight ve službě Azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). |Ne |
@@ -4876,7 +4876,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici Azure J
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na **HDInsight**. |Ano |
+| type |Vlastnost type by měla být nastavená na **HDInsight**. |Ano |
 | clusterUri |Identifikátor URI clusteru HDInsight. |Ano |
 | username jméno |Zadejte jméno uživatele, který se má použít pro připojení do existujícího clusteru HDInsight. |Ano |
 | password |Zadejte heslo pro uživatelský účet. |Ano |
@@ -4909,7 +4909,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici Azure J
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na **AzureBatch**. |Ano |
+| type |Vlastnost type by měla být nastavená na **AzureBatch**. |Ano |
 | accountName |Název účtu služby Azure Batch. |Ano |
 | accessKey |Přístupový klíč pro účet Azure Batch. |Ano |
 | poolName |Název fondu virtuálních počítačů. |Ano |
@@ -5060,7 +5060,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
+| type |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
 | connectionString |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi SQL serveru. |Ano |
 | username jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |

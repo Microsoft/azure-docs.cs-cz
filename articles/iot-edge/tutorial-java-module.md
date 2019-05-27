@@ -9,12 +9,12 @@ ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7f659240e7de729c6f64acf41d76530475fb810f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a105e59007543ffaf31b586707390954643e8bee
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64569476"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239634"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj modulu jazyka Java IoT Edge pro zařízení s Linuxem
 
@@ -61,7 +61,7 @@ K vývoji modul IoT Edge v jazyce Java, nainstalujte na svém vývojovém počí
 ## <a name="create-a-module-project"></a>Vytvoření modulu projektu
 Následujícím postupem se vytvoří projekt modul IoT Edge, který je založen na balíček šablon s Azure IoT Edge maven a sada SDK pro zařízení Azure IoT v Javě. Vytvoření projektu pomocí nástroje IoT Azure a Visual Studio Code.
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Vytvořte šablonu řešení v jazyce Java, kterou můžete přizpůsobit pomocí vlastního kódu. 
 
@@ -259,7 +259,7 @@ Po použití manifestu nasazení pro zařízení IoT Edge začne modul runtime I
 
 Stav zařízení IoT Edge můžete zobrazit v části **Zařízení Azure IoT Hub** v průzkumníku Visual Studio Code. Rozbalením podrobností o zařízení zobrazíte seznam nasazených a spuštěných modulů.
 
-1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **spustit monitorování zpráv D2C**.
+1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **spustit monitorování integrovaných událostí koncový bod**.
 
 2. Zobrazení zpráv přicházejících u služby IoT Hub. Může trvat nějakou dobu zprávy dorazí, protože zařízení IoT Edge se zobrazí její nové nasazení a spuštění všech modulů. Pak změny, které jsme provedli JavaModule kód Počkejte, dokud počítač teploty dosáhne 25 stupňů před odesláním zprávy. Také přidá typ zprávy **výstrah** pro všechny zprávy, které dosažení této prahové hodnoty teploty. 
 
@@ -277,8 +277,8 @@ Dvojče modulu JavaModule jsme použili v manifestu nasazení pro nastavení pra
 
 5. Klikněte pravým tlačítkem na libovolné místo ve dvojčeti modulu úpravy podokně a vyberte **aktualizace dvojčete modulu**. 
 
-5. Monitorování příchozích zpráv typu zařízení cloud. Měli byste vidět zprávy zastavit, dokud nebude dosaženo novou teploty prahovou hodnotu. 
- 
+6. Monitorování příchozích zpráv typu zařízení cloud. Měli byste vidět zprávy zastavit, dokud nebude dosaženo novou teploty prahovou hodnotu. 
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
 Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 

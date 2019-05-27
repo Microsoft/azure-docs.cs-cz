@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f712cc34a3d41ea9472bf9428606cb378eef8c18
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413677"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244266"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Kurz: Použití příznaků funkcí v aplikaci .NET Core
 
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Pokud používáte filtr v příznaků funkcí, musíte zahrnout další knihovny a zaregistrujte ho. Následující příklad ukazuje, jak použít filtr integrovanou funkci s názvem **PercentageFilter "**.
+Pokud používáte filtr v příznaků funkcí, musíte zahrnout další knihovny a zaregistrujte ho. Následující příklad ukazuje, jak použít filtr integrovanou funkci s názvem **PercentageFilter "** .
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -165,7 +165,7 @@ if (featureManager.IsEnabled(nameof(MyFeatureFlags.FeatureA)))
 }
 ```
 
-## <a name="dependency-injection"></a>Injektáž závislostí
+## <a name="dependency-injection"></a>Injektáž závislosti
 
 V ASP.NET Core MVC, funkce správce `IFeatureManager` lze přistupovat pomocí vkládání závislostí.
 
@@ -262,6 +262,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 V tomto kurzu jste zjistili, jak implementovat příznaků funkcí v aplikaci ASP.NET Core s využitím `Microsoft.FeatureManagement` knihovny. Naleznete v následujících zdrojích pro další informace o podporovaných funkcích správy v ASP.NET Core a konfigurace aplikací.
 
-* [Příznak funkce ASP.NET Core ukázkový kód]()
-* [Dokumentace ke službě Microsoft.FeatureManagement]()
+* [Příznak funkce ASP.NET Core ukázkový kód](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Dokumentace ke službě Microsoft.FeatureManagement](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Správa příznaků funkcí](./manage-feature-flags.md)

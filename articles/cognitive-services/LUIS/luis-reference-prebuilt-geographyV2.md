@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 17f612f2ee6c7d27dcec9f72ed3df1ed418eb3d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b9ace8a2402d96c4bb54864eb59a56b46d04067
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712596"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65071975"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 předem připravených entit pro aplikace LUIS
 GeographyV2 předem připravených entit rozpozná místech. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující GeographyV2 záměry aplikace. GeographyV2 entity se podporuje v angličtině [jazykovou verzi](luis-reference-prebuilt-entities.md).
@@ -34,6 +34,9 @@ Zeměpisné umístění mít podtypy:
 
 
 ## <a name="resolution-for-geographyv2-entity"></a>Řešení pro entitu GeographyV2
+
+### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+
 Následující příklad ukazuje rozlišení **builtin.geographyV2** entity.
 
 ```json
@@ -88,6 +91,104 @@ Následující příklad ukazuje rozlišení **builtin.geographyV2** entity.
         }
     ]
 } 
+```
+
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+
+Následující kód JSON je `verbose` parametr nastaven na `false`:
+
+```json
+{
+    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
+    "prediction": {
+        "normalizedQuery": "carol is visiting the sphinx in gizah egypt in africa before heading to texas",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.5115521
+            }
+        },
+        "entities": {
+            "geographyV2": [
+                "the sphinx",
+                "gizah",
+                "egypt",
+                "africa",
+                "texas"
+            ]
+        }
+    }
+}
+```
+
+Následující kód JSON je `verbose` parametr nastaven na `true`:
+
+```json
+{
+    "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
+    "prediction": {
+        "normalizedQuery": "carol is visiting the sphinx in gizah egypt in africa before heading to texas",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.5115521
+            }
+        },
+        "entities": {
+            "geographyV2": [
+                "the sphinx",
+                "gizah",
+                "egypt",
+                "africa",
+                "texas"
+            ],
+            "$instance": {
+                "geographyV2": [
+                    {
+                        "type": "builtin.geographyV2",
+                        "text": "the sphinx",
+                        "startIndex": 18,
+                        "length": 10,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    },
+                    {
+                        "type": "builtin.geographyV2",
+                        "text": "gizah",
+                        "startIndex": 32,
+                        "length": 5,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    },
+                    {
+                        "type": "builtin.geographyV2",
+                        "text": "egypt",
+                        "startIndex": 38,
+                        "length": 5,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    },
+                    {
+                        "type": "builtin.geographyV2",
+                        "text": "africa",
+                        "startIndex": 47,
+                        "length": 6,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    },
+                    {
+                        "type": "builtin.geographyV2",
+                        "text": "texas",
+                        "startIndex": 72,
+                        "length": 5,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Další postup

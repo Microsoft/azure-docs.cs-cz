@@ -4,14 +4,14 @@ description: Informace o správě konzistence ve službě Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: 4a444631de4bc26881ab195333b1b798a7ee6719
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 68a1a757b5c5e4ce63d7f12a8502d57942d4ec42
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925338"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240928"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak spravovat úrovně konzistence ve službě Azure
 
 [Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienty můžete vždy přepsat.
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 ```bash
 # create with a default consistency
@@ -61,7 +61,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet Azure Cosmos a otevřít **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**.
+Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet Azure Cosmos a otevřít **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**. Vizualizace úrovní různých konzistence s poznámkami Hudba také poskytuje web Azure portal. 
 
 ![Konzistence nabídky na webu Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
@@ -211,7 +211,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Monitorování metriky Pravděpodobnostně omezená neaktuálnost (PBS)
 
-Jak konečný výsledek je konečné konzistence? Průměrná případech můžete nabízíme neaktuálnost hranice s ohledem na historii verzí a čas. [ **Probabilistically omezená Neaktuálnost (PBS)** ](https://pbs.cs.berkeley.edu/) metrika pokusí vyčíslení pravděpodobnost neaktuálnost a zobrazuje jako metriku. Pokud chcete zobrazit metriky PBS, přejděte k vašemu účtu Azure Cosmos na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)**.
+Jak konečný výsledek je konečné konzistence? Průměrná případech můžete nabízíme neaktuálnost hranice s ohledem na historii verzí a čas. [ **Probabilistically omezená Neaktuálnost (PBS)** ](https://pbs.cs.berkeley.edu/) metrika pokusí vyčíslení pravděpodobnost neaktuálnost a zobrazuje jako metriku. Pokud chcete zobrazit metriky PBS, přejděte k vašemu účtu Azure Cosmos na webu Azure Portal. Otevřít **metriky** podokně a vyberte **konzistence** kartu. Podívejte se na grafu s názvem **pravděpodobnost silně konzistentních čtení na základě vašich úloh (viz PBS)** .
 
 ![Graf PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 

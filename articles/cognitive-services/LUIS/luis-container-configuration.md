@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/23/2019
 ms.author: diberry
-ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afd29c1689d6d467a42a7c3c60f9a1dccd1a66f0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599372"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242617"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery Dockeru Language Understanding 
 
@@ -108,9 +108,9 @@ Následující tabulka popisuje nastavení podporováno.
 
 Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](luis-container-howto.md#stop-the-container) ho.
 
-
-* **Znak pro pokračování řádku**: Příkazy dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
-* **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
+* Tyto příklady používají adresáři vypnout `c:` disku, aby se zabránilo konfliktům oprávnění na Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. 
+* Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
+* Pokud používáte jiný operační systém, použijte pro připojení a znak pro pokračování řádku pro váš systém správné konzole a Terminálové, syntaxe složky. Tyto příklady předpokládají konzola Windows s znak pro pokračování řádku `^`. Vzhledem k tomu, že kontejner je operační systém Linux, cíl připojení používá syntaxi složky Linux-style.
 
 Nezapomeňte `luis/v2.0` směrování v adrese URL, jak je znázorněno v následující tabulce.
 
@@ -129,32 +129,28 @@ Nahradit {_argument_name_} s vlastními hodnotami:
 
 V následujícím příkladu má nejmíň argumenty umožňuje spuštění kontejneru:
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
+```console
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
 ApiKey={ENDPOINT_KEY}
 ```
-
-> [!Note] 
-> Ve výstupu předchozího příkazu využívá adresáři `c:` disku, aby se zabránilo konfliktům oprávnění na Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění. Ve výstupu předchozího příkazu docker používá zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte to na základě vašich [hostitelský počítač](luis-container-howto.md#the-host-computer) požadavky na operační systém. Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
-
 
 ### <a name="applicationinsights-example"></a>Příklad ApplicationInsights
 
 Následující příklad nastaví ApplicationInsights argument k odesílání telemetrie do Application Insights, když je kontejner spuštěný:
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY}
+```console
+docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
+ApiKey={ENDPOINT_KEY} ^
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
@@ -162,14 +158,14 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 Následující příkaz nastavuje úroveň protokolování `Logging:Console:LogLevel`, konfigurace úrovně protokolování [ `Information` ](https://msdn.microsoft.com). 
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY} \
+```console
+docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis:latest ^
+Eula=accept ^
+Billing={BILLING_ENDPOINT} ^
+ApiKey={ENDPOINT_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 

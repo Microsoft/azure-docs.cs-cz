@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: aa62c06d0c12a42d34ef9b13b8b4533d197d8d19
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715813"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233890"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači pomocí webu Azure portal
 
@@ -77,7 +77,7 @@ Proveďte znovu kroky uvedené v části [Vytvoření prvního virtuálního po�
 | 3 | Název                                  | myVm2                                                                   |
 | 3 | Typ ověřování                   | Vložte váš veřejný klíč SSH nebo vyberte **Heslo** a zadejte heslo. |
 | 3 | Skupina prostředků                        | Vyberte **Použít existující** a pak vyberte **myResourceGroup**.                 |
-| 6 | Rozšíření                            | **Network Agent for Linux**                                             |
+| 6 | Rozšíření                            | **Agent Network Watcher pro Linux**                                             |
 
 Nasazení virtuálního počítače trvá několik minut. Než budete pokračovat ve zbývajících krocích, počkejte, až virtuální počítač dokončí nasazování.
 
@@ -109,7 +109,7 @@ Vytvořte monitorování připojení pro monitorování komunikace přes port TC
 
     ![Monitorování připojení](./media/connection-monitor/connection-monitors.png)
 
-2. Vyberte monitorování s názvem **myVm1-myVm2(22)**, jak je znázorněno na předchozím obrázku, abyste zobrazili podrobnosti pro toto monitorování, jak je znázorněno na následujícím obrázku:
+2. Vyberte monitorování s názvem **myVm1-myVm2(22)** , jak je znázorněno na předchozím obrázku, abyste zobrazili podrobnosti pro toto monitorování, jak je znázorněno na následujícím obrázku:
 
     ![Podrobnosti monitorování](./media/connection-monitor/vm-monitor.png)
 
@@ -150,11 +150,11 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
     | Nastavení                 | Hodnota          |
     | ---                     | ---            |
     | Rozsahy cílových portů | 22             |
-    | Akce                  | Odepřít           |
+    | Akce                  | Odepření           |
     | Priorita                | 100            |
     | Název                    | DenySshInbound |
 
-5. Monitorování připojení provádí testování v intervalech 60 sekund, a proto počkejte několik minut a pak na levé straně portálu vyberte **Network Watcher**, pak **Monitorování připojení** a pak znovu vyberte monitorování **myVm1-myVm2(22)**. Výsledky se teď liší, jak můžete vidět na následujícím obrázku:
+5. Monitorování připojení provádí testování v intervalech 60 sekund, a proto počkejte několik minut a pak na levé straně portálu vyberte **Network Watcher**, pak **Monitorování připojení** a pak znovu vyberte monitorování **myVm1-myVm2(22)** . Výsledky se teď liší, jak můžete vidět na následujícím obrázku:
 
     ![Chyba monitorování podrobností](./media/connection-monitor/vm-monitor-fault.png)
 

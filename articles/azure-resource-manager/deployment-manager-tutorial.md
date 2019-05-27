@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/02/2019
+ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466305"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238850"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru (Public preview)
 
@@ -55,7 +55,6 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 K dokončení tohoto článku potřebujete:
 
 * Určité zkušenosti s vývojem [šablon Azure Resource Manageru](./resource-group-overview.md).
-* Azure Deployment Manager je ve verzi Private Preview. Pokud se chcete zaregistrovat k používání Azure Deployment Manageru, vyplňte [registrační formulář](https://aka.ms/admsignup). 
 * Azure PowerShell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete okno Powershellu new se zvýšenými oprávněními a zadejte následující příkaz:
 
@@ -106,18 +105,18 @@ Stažená složka ArtifactStore obsahuje dvě složky:
 
 Tyto dvě verze (1.0.0.0 a 1.0.0.1) jsou určené k [nasazení revize](#deploy-the-revision). Přestože artefakty šablony i binární artefakty mají dvě verze, mezi těmito dvěma verzemi se liší pouze binární artefakty. Binární artefakty se v praxi aktualizují častěji než artefakty šablony.
 
-1. V textovém editoru otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json**. Toto je základní šablona pro vytvoření účtu úložiště.  
-2. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**. 
+1. V textovém editoru otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json**. Toto je základní šablona pro vytvoření účtu úložiště.
+2. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**.
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
     Tato šablona volá balíček pro nasazení, který obsahuje soubory webové aplikace. V tomto kurzu zkomprimovaného balíčku obsahuje pouze soubor index.html.
-3. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**. 
+3. Otevřete soubor **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Kurz Azure Deployment Manageru – šablona pro vytvoření webové aplikace – parametr containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
 
     Hodnota deployPackageUri je cesta k balíčku pro nasazení. Tento parametr obsahuje proměnnou **$containerRoot**. Hodnota proměnné $containerRoot je zadaná v [šabloně uvedení](#create-the-rollout-template) jako zřetězení umístění SAS zdroje artefaktů, kořenového adresáře artefaktů a hodnoty deployPackageUri.
-4. Otevřete soubor **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.  
+4. Otevřete soubor **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.
 
     ```html
     <html>
@@ -257,7 +256,7 @@ Následující snímek obrazovky ukazuje definici kroku čekání:
 
 ![Kurz Azure Deployment Manageru – prostředky šablony uvedení – krok čekání](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-wait-step.png)
 
-Formát doby trvání odpovídá [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). **PT1M** (velká písmena jsou povinná) je příkladem 1minutového čekání. 
+Formát doby trvání odpovídá [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). **PT1M** (velká písmena jsou povinná) je příkladem 1minutového čekání.
 
 Následující snímek obrazovky ukazuje pouze několik částí definice uvedení:
 
@@ -292,13 +291,13 @@ Vytvoříte soubor parametrů, který se použije pro šablonu uvedení.
 
 ## <a name="deploy-the-templates"></a>Nasazení šablon
 
-K nasazení šablon je možné použít Azure PowerShell. 
+K nasazení šablon je možné použít Azure PowerShell.
 
 1. Spuštěním tohoto skriptu nasaďte topologii služby.
 
     ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"  
+    $location = "Central US"
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
 
     # Create a resource group
@@ -429,7 +428,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
     * **&lt;namePrefix>ServiceWUSrg:** Obsahuje prostředky definované službou ServiceWUS.
     * **&lt;namePrefix>ServiceEUSrg:** Obsahuje prostředky definované službou ServiceEUS.
     * Skupina prostředků pro spravovanou identitu přiřazenou uživatelem.
-3. Vyberte název skupiny prostředků.  
+3. Vyberte název skupiny prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.
 

@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fbcc1c29c1860642dda0afab6a1f10e719a05a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: e45b3b19821644142176c5c0cc7646c4643fe17c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962203"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235209"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridních připojení k Azure Active Directory pro spravované domény
 
@@ -178,7 +178,7 @@ Kromě toho je potřeba v zóně místního intranetu uživatele povolit možnos
 
 ### <a name="configure-seamless-sso"></a>Konfigurace bezproblémového jednotného přihlašování
 
-K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Pokud máte potíže s konfigurací bezproblémového jednotného přihlašování, najdete v článku [Poradce při potížích s Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/tshoot-connect-sso).
+K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). Pokud máte potíže s konfigurací bezproblémového jednotného přihlašování, najdete v článku [Poradce při potížích s Azure Active Directory bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso).
 
 
 ### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně 
@@ -188,7 +188,7 @@ Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z w
 
 ## <a name="verify-the-registration"></a>Ověření registrace
 
-K ověření stavu registrace zařízení v tenantovi Azure můžete použít rutinu **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** v **[modulu Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0)**.
+K ověření stavu registrace zařízení v tenantovi Azure můžete použít rutinu **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** v **[modulu Azure Active Directory PowerShell](/powershell/azure/install-msonlinev1?view=azureadps-2.0)** .
 
 Když použijete rutinu **Get-MSolDevice** ke kontrole podrobností služby:
 

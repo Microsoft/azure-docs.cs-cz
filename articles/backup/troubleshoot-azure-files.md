@@ -8,19 +8,18 @@ ms.author: raynew
 ms.date: 01/31/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ee0eccced5757c91fca1ba7f77750839bc017f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eec30ec8ff85f2d9a2ba78da2872b081e90c9e33
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722435"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240160"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
 K řešení problémů a chyb, ke kterým dochází při používání zálohování sdílených složek Azure, můžete využít informace uvedené v následujících tabulkách.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
 Zálohování sdílených složek Azure je ve verzi Preview. Sdílené složky Azure pro obecné účely v1 a účty úložiště pro obecné účely v2 jsou podporovány. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
-- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
 - Není k dispozici pro ochranu souborů Azure pomocí služby Azure Backup žádné rozhraní příkazového řádku.
 - Maximální počet plánovaných záloh je jedna za den.
@@ -28,8 +27,6 @@ Zálohování sdílených složek Azure je ve verzi Preview. Sdílené složky A
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
 - Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
 - Odstranění sdílené složky, které jsou chráněné službou Azure Backup. Aktuální řešení se odstraní přístup ke všem snímkům pořízeným službou Azure Backup po odstranění sdílené složky a proto dojít ke ztrátě všech bodů obnovení
-
-\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS.
 
 Zálohování sdílených složek Azure v účtech úložiště s [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) replikace (ZRS) je teď dostupná jenom v centrální USA (CUS), východní USA (EUS), východní USA 2 (EUS2), Severní Evropa (NE), jihovýchodní Asie (SEA), západní Evropa (WE) a USA – západ 2 (WUS2).
 

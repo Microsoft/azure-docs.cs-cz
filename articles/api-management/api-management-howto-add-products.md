@@ -12,15 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-origin.date: 08/10/2018
-ms.date: 12/03/2018
+ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: eff827937adbae7cfdfdd86392593df8d698053c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112525"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241780"
 ---
 # <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu  
 
@@ -42,7 +41,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu
 
-![Přidání produktu](media/api-management-howto-add-products/02-create-publish-product-01.png)
+![Přidat produkt](media/api-management-howto-add-products/02-create-publish-product-01.png)
 
 1. Kliknutím na **Produkty** v nabídce na levé straně zobrazte stránku **Produkty**.
 2. Klikněte na tlačítko **+ Přidat**.
@@ -51,11 +50,11 @@ V tomto kurzu se naučíte:
 
     | Název                     | Popis                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Zobrazované jméno             | Název, který se má zobrazit na **portálu pro vývojáře**.                                                                                                                                                                                                                                                        |
+    | Display name             | Název, který se má zobrazit na **portálu pro vývojáře**.                                                                                                                                                                                                                                                        |
     | Název                     | Popisný název produktu.                                                                                                                                                                                                                                                                                      |
     | Popis              | Do pole **Popis** můžete zadat podrobné informace o produktu, například jeho účel, rozhraní API, ke kterým poskytuje přístup, a další užitečné informace.                                                                                                                                               |
     | Stav                    | Pokud chcete produkt publikovat, stiskněte **Publikováno**. Předtím, než bude možné volat rozhraní API v produktu, je nutné produkt publikovat. Ve výchozím nastavení jsou nové produkty nepublikované a viditelné pouze pro skupinu **Správci**.                                                                                      |
-    | Vyžaduje předplatné    | Zaškrtněte políčko **Vyžadovat předplatné**, pokud se k používání produktu vyžaduje přihlášení uživatele k odběru.                                                                                                                                                                                                                                   |
+    | Vyžaduje předplatné.    | Zaškrtněte políčko **Vyžadovat předplatné**, pokud se k používání produktu vyžaduje přihlášení uživatele k odběru.                                                                                                                                                                                                                                   |
     | Vyžaduje schválení        | Zaškrtněte políčko **Vyžadovat schválení**, pokud chcete, aby pokusy o přihlášení k odběru produktu kontroloval a následně přijímal nebo odmítal správce. Pokud toto políčko není zaškrtnuté, pokusy o přihlášení k odběru se automaticky schvalují.                                                                                                                         |
     | Omezení počtu předplatných | Pokud chcete omezit počet více souběžných předplatných, zadejte omezení předplatných.                                                                                                                                                                                                                                |
     | Právní podmínky              | Pro produkt můžete zahrnout podmínky použití, které musí předplatitelé přijmout, aby mohli produkt využívat.                                                                                                                                                                                                             |
@@ -87,7 +86,7 @@ Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získa
 4. Zvolte rozhraní API a klikněte na **Vybrat**.
 
 > [!TIP]
-> Uživatelské předplatné *produktu* můžete vytvořit nebo aktualizovat s použitím vlastních klíčů předplatného [prostřednictvím rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) nebo pomocí příkazu PowerShellu.
+> Uživatelské předplatné *produktu* můžete vytvořit nebo aktualizovat s použitím vlastních klíčů předplatného [prostřednictvím rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) nebo pomocí příkazu PowerShellu.
 
 ## <a name="next-steps"></a>Další postup
 

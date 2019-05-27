@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60515426"
 ---
 # <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
@@ -41,7 +41,7 @@ Content-Length: 0
 
 Informace o požadované záhlaví pro přístup pomocí tokenu je následujícím způsobem.
 
-Name| Formát | Popis
+Název| Formát | Popis
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného
 
@@ -60,7 +60,7 @@ Následující koncový bod musí ho klienti používat pro přístup k převod 
 
 V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se používají pro hlasové požadavky syntézu.
 
-Hlavička |Value |Komentáře
+Záhlaví |Hodnota |Komentáře
 ----|----|----
 Typ obsahu | aplikace/ssml + xml | Vstupní typ obsahu.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.

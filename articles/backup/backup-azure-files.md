@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f20cc1107476f8d65323d277a53086b8bd035a1b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 30544a49f49714eeefbf54d70e54275d2cf9a7ef
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518913"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243548"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -32,7 +32,6 @@ Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachá
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
 Zálohování sdílených složek Azure je ve verzi Preview. Sdílených složek Azure v obou pro obecné účely v1 a účty úložiště pro obecné účely v2 jsou podporovány. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
-- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
 - Není k dispozici pro ochranu souborů Azure pomocí služby Azure Backup žádné rozhraní příkazového řádku.
 - Maximální počet plánovaných záloh je jedna za den.
@@ -40,8 +39,6 @@ Zálohování sdílených složek Azure je ve verzi Preview. Sdílených složek
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
 - Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
 - Odstranění sdílené složky, které jsou chráněné službou Azure Backup. Aktuální řešení se odstraní přístup ke všem snímkům pořízeným službou Azure Backup po odstranění sdílené složky a proto dojít ke ztrátě všech bodů obnovení
-
-\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS.
 
 Zálohování sdílených složek Azure v účtech úložiště s [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) replikace (ZRS) je teď dostupná jenom v centrální USA (CUS), východní USA (EUS), východní USA 2 (EUS2), Severní Evropa (NE), jihovýchodní Asie (SEA), západní Evropa (WE) a USA – západ 2 (WUS2).
 
@@ -52,7 +49,7 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/overview-backup-page.png)
 
-2. V **cíle zálohování** nabídky, z **co chcete zálohovat?**, volba sdílené složky Azure.
+2. V **cíle zálohování** nabídky, z **co chcete zálohovat?** , volba sdílené složky Azure.
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -85,7 +82,7 @@ Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/list-of-backup-items.png)
 
-2. V seznamu vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam sdílených složek Azure.
+2. V seznamu vyberte **Azure Storage (Soubory Azure)** . Zobrazí se seznam sdílených složek Azure.
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
@@ -166,7 +163,7 @@ Zastavení ochrany sdílené složky Azure:
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/list-of-backup-items.png)
 
-2. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam zálohovaných položek pro (Azure Storage (Soubory Azure)).
+2. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)** . Zobrazí se seznam zálohovaných položek pro (Azure Storage (Soubory Azure)).
 
    ![otevření další nabídky kliknutím na položku](./media/backup-file-shares/azure-file-share-backup-items.png)
 

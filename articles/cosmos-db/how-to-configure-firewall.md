@@ -4,14 +4,14 @@ description: Zjistěte, jak nakonfigurovat zásady řízení přístupu IP pro p
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 24ebc7eb4c9abc72a89419611e4b4b3fa2db88b4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068725"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241967"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurace brány firewall protokolu IP ve službě Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Pokud povolíte zásadu řízení přístupu IP prostřednictvím kódu programu
 |------|----------|
 |Německo|51.4.229.218|
 |Čína|139.217.8.252|
-|Vláda USA|52.244.48.71|
+|US Gov|52.244.48.71|
 |Všechny ostatní oblasti|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 Můžete povolit přístup k webu Azure portal tak, že vyberete **povolit přístup z portálu Azure portal** možnosti, jak je znázorněno na následujícím snímku obrazovky: 

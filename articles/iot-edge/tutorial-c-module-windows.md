@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 93910fd0baeace9da474073960dbdb83251a1a63
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee64e5a49bf2825c83c74167d7eb75aa3dc59387
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576555"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239820"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu jazyka C IoT Edge pro zařízení s Windows
 
@@ -57,7 +57,7 @@ Před zahájením tohoto kurzu, by měl prošli předchozího kurzu věnovaného
 
 Následujícím postupem se vytvoří projekt modul IoT Edge, založené na .NET Core 2.0 SDK s použitím sady Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastního kódu.
 
@@ -65,7 +65,7 @@ Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastní
 
 2. Vyberte **Soubor** > **Nový** > **Projekt**. 
 
-3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení na něco popisného jako **CTutorialApp**. Vyberte **OK** a vytvořte projekt. 
+3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení na něco popisného jako **CTutorialApp**. Vyberte **OK** pro vytvoření projektu. 
 
    ![Vytvořte nový projekt Azure IoT Edge](./media/tutorial-c-module-windows/new-project.png)
 
@@ -326,7 +326,7 @@ Chcete-li zobrazit zprávy při jejich doručení na službě IoT Hub můžete p
 
 1. V Průzkumníku cloudu sady Visual Studio vyberte název vašeho zařízení IoT Edge. 
 
-2. V **akce** seznamu vyberte **spustit monitorování zpráv D2C**. 
+2. V **akce** seznamu vyberte **spustit monitorování integrovaných událostí koncový bod**. 
 
 3. Zobrazení zpráv přicházejících u služby IoT Hub. Může trvat nějakou dobu zprávy dorazí, protože zařízení IoT Edge se zobrazí její nové nasazení a spuštění všech modulů. Pak změny, které jsme provedli CModule kód Počkejte, dokud počítač teploty dosáhne 25 stupňů před odesláním zprávy. Také přidá typ zprávy **výstrah** pro všechny zprávy, které dosažení této prahové hodnoty teploty. 
 

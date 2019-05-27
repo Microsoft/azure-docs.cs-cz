@@ -1,18 +1,17 @@
 ---
 title: Jak model a oddílu data ve službě Azure Cosmos DB pomocí reálný příklad
 description: Zjistěte, jak model a rozdělit na oddíly reálný příklad použití Azure Cosmos DB základní rozhraní API
-author: rockboyfor
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-origin.date: 03/27/2019
-ms.date: 04/15/2019
-ms.author: v-yeche
-ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/23/2019
+ms.author: thweiss
+ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61057267"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241000"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model a oddílu data ve službě Azure Cosmos DB pomocí reálný příklad
 
@@ -141,7 +140,7 @@ Načítání uživatele se provádí čtení odpovídající položky z `users` 
 
 ### <a name="c2-createedit-a-post"></a>[C2] Vytvořit/upravit příspěvek
 
-Podobně jako **[C1]**, máme pouze pro zápis do `posts` kontejneru.
+Podobně jako **[C1]** , máme pouze pro zápis do `posts` kontejneru.
 
 ![Zápis jednu položku do kontejneru příspěvky](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -200,7 +199,7 @@ I když hlavního dotazu filtrovat kontejneru klíče oddílu, agregaci uživate
 
 ### <a name="c4-like-a-post"></a>[C4] Stejně jako příspěvek
 
-Stejně jako **[C3]**, vytvoříme odpovídající položku v `posts` kontejneru.
+Stejně jako **[C3]** , vytvoříme odpovídající položku v `posts` kontejneru.
 
 ![Zápis jednu položku do kontejneru příspěvky](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -210,7 +209,7 @@ Stejně jako **[C3]**, vytvoříme odpovídající položku v `posts` kontejneru
 
 ### <a name="q5-list-a-posts-likes"></a>[5] Seznam vytvoří příspěvek lajků
 
-Stejně jako **[4]**, jsme lajky pro tohoto příspěvku dotazy a pak agregovat jejich uživatelských jmen.
+Stejně jako **[4]** , jsme lajky pro tohoto příspěvku dotazy a pak agregovat jejich uživatelských jmen.
 
 ![Načíst všechny lajků příspěvek a agregování jejich další data](./media/how-to-model-partition-example/V1-Q5.png)
 
@@ -283,7 +282,7 @@ Můžeme také změnit komentář a položky, které chcete přidat uživatelsk�
 
 Co chcete dosáhnout je, že pokaždé, když jsme přidat komentář nebo lajk, jsme také zvýšit `commentCount` nebo `likeCount` v odpovídající příspěvku. Jako naše `posts` kontejneru je rozdělený podle `postId`, nové položky (komentáře nebo, jako jsou) a jeho odpovídající příspěvek sednout před stejného logického oddílu. Díky tomu můžeme použít [uloženou proceduru](stored-procedures-triggers-udfs.md) k provedení této operace.
 
-Teď při vytváření komentář (**[C3]**), namísto pouhého přidání nové položky v `posts` kontejneru říkáme následující uložené procedury v tomto kontejneru:
+Teď při vytváření komentář ( **[C3]** ), namísto pouhého přidání nové položky v `posts` kontejneru říkáme následující uložené procedury v tomto kontejneru:
 
 ```javascript
 function createComment(postId, comment) {
@@ -334,7 +333,7 @@ V našem příkladu používáme kanálu změn `users` kontejneru reagovat poka�
 ```javascript
 function updateUsernames(userId, username) {
   var collection = getContext().getCollection();
-
+  
   collection.queryDocuments(
     collection.getSelfLink(),
     `SELECT * FROM p WHERE p.userId = '${userId}'`,
@@ -397,7 +396,7 @@ Přesně stejné situaci při výpisu lajků.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: Zajišťuje, všechny požadavky jsou škálovatelné
 
-Prohlížení naše celková vylepšení výkonu, pořád existují dva požadavky, které jsme dosud plně optimalizována: **[3]** a **[6]**. Jsou požadavky zahrnující dotazy, které není filtr klíče oddílu, který cílí na kontejnery.
+Prohlížení naše celková vylepšení výkonu, pořád existují dva požadavky, které jsme dosud plně optimalizována: **[3]** a **[6]** . Jsou požadavky zahrnující dotazy, které není filtr klíče oddílu, který cílí na kontejnery.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[3] Seznam příspěvků uživatele v krátkých úseků
 
@@ -438,7 +437,7 @@ Takže zavedeme druhou úroveň denormalizace tak, že duplikujete celý přísp
       "creationDate": "<post-creation-date>"
     }
 
-Poznámky:
+Všimněte si, že:
 
 - zavedli jsme `type` pole v položce uživatele k odlišení uživatelů z příspěvků,
 - jsme přidali i `userId` pole v položce uživatele, což je redundantní pomocí `id` pole, ale je potřeba `users` kontejner je teď rozdělený podle `userId` (a ne `id` jako dříve)
@@ -577,6 +576,3 @@ Po tomto úvodu k praktické dat, modelování a vytváření oddílů můžete 
 - [Práce s databází, kontejnerů a položek](databases-containers-items.md)
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 - [Změna informačního kanálu ve službě Azure Cosmos DB](change-feed.md)
-
-<!--Update_Description: new articles on how to model partition example -->
-<!--ms.date: 04/15/2019-->

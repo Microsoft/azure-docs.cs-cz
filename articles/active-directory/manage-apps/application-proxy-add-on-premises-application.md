@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 31992a08c1b6c4fda4053032458879661fe2b740
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015425"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233768"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -51,9 +51,9 @@ Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme m�
 
 2. Server konektoru a webové servery aplikace by měly patřit do stejné domény služby Active Directory nebo span důvěryhodné domény. Mají servery ve stejné doméně nebo důvěřující domény představuje požadavek pro jednotné přihlašování (SSO) pomocí integrovaného ověřování Windows (IWA) a Kerberos omezené delegování (KCD). Pokud jsou server konektoru a serverů webových aplikací v různých doménách služby Active Directory, budete muset použít pro jednotné přihlašování založené na prostředcích delegování. Další informace najdete v tématu [KCD pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
 
-#### <a name="software-requirements"></a>Požadavky na software
+#### <a name="tls-requirements"></a>Požadavky TLS
 
-Windows server konektoru musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Existující konektory se starším než 1.5.612.0 budou nadále fungovat na dřívější verze TLS až do odvolání. 
+Windows server konektoru musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací.
 
 Povolení protokolu TLS 1.2:
 
@@ -67,6 +67,9 @@ Povolení protokolu TLS 1.2:
     ```
 
 2. Restartujte server.
+
+>[!Important] 
+> Ve své třídě nejlepší šifrování poskytovat našim zákazníkům, provádíme aktualizací ve službě Proxy aplikací a omezit tak přístup na pouze protokoly TLS 1.2. Podle připravenosti zákazníka, které změny budou postupně zavádět zákazníkům, kteří používají pouze protokoly TLS 1.2 a žádný vliv tato změna se nezobrazí. Protokol TLS 1.0 a 1.1 vyřazení dokončí v srpnu 31. května 2019 a zákazníci získají předem, chcete-li tuto změnu připravit. Přípravy na tuto změnu zkontrolujte že, která jsou všechny klient server a server prohlížeče kombinace aktualizované na používání protokolu TLS 1.2 pro zachování připojení k Proxy aplikace služby. Patří mezi ně klientů, které uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím Proxy aplikací. V tématu Příprava pro [TLS 1.2 v Office 365](https://docs.microsoft.com/en-us/office365/troubleshoot/prepare-tls-1.2-in-office-365) pro užitečné odkazy a prostředky.
 
 ## <a name="prepare-your-on-premises-environment"></a>Příprava místního prostředí
 
@@ -89,7 +92,7 @@ Bude pravděpodobně starší verzi konektor nainstalován, pokud už používá
 
 Povolit přístup k následujícím adresám URL:
 
-| zprostředkovatele identity | Jak se používá |
+| URL | Jak se používá |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů. |

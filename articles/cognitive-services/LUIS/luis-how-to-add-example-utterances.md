@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197918"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072858"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Přidání entity do příklad projevy 
 
@@ -89,25 +89,6 @@ Za předpokladu, že utterance, `Does John Smith work in Seattle?`, složený ut
 
     ![Stránce s podrobnostmi o snímek obrazovky s příkazy, pomocí složeného entity](./media/luis-how-to-add-example-utterances/hr-create-composite-4.png)
 
-## <a name="add-hierarchical-entity"></a>Přidání hierarchické entity
-
-**Nakonec se přestanou hierarchické entity. Použití [entity role](luis-concept-roles.md) určit podtypy entity, namísto hierarchické entity.**
-
-Hierarchické entity je kategorie kontextově zkušenosti a související entity. V následujícím příkladu obsahuje původní a cílové umístění. 
-
-V utterance `Move John Smith from Seattle to Cairo`, Seattle, je původní umístění a Cairo je cílové umístění. Každé umístění je kontextově různých a zkušenosti z pořadí slov a požadované aplikace word v utterance.
-
-1. Na stránce záměru v utterance, vyberte `Seattle`, zadejte název entity `Location`a pak stiskněte Enter na klávesnici.
-
-1. V **jaký typ entity chcete vytvořit?** v místním okně, vyberte _hierarchické_ pro **typ Entity**, pak přidejte `Origin` a `Destination` jako podřízené položky, a pak vyberte **provádí**.
-
-    ![Stránce s podrobnostmi o snímek obrazovky záměrů, s entitou ToLocation zvýrazněnou](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
-
-1. Aplikace word v utterance byla označena hierarchické nadřazená entita. Musíte přiřadit slovo podřízené entity. Na stránce s podrobnostmi záměru vrátit utterance. Vybrat slovo, pak v rozevíracím seznamu vyberte název entity, které jste vytvořili a postupujte podle nabídce napravo a zvolte správné podřízené entity.
-
-    >[!CAUTION]
-    >Podřízené entity názvy musí být jedinečný ve všech entit v jediné aplikaci. Dva různé hierarchické entity nemůže obsahovat podřízené entity se stejným názvem. 
-
 ## <a name="add-entitys-role-to-utterance"></a>Přidání entity role utterance
 
 Role je pojmenovaný podtypem typu entity, určit podle kontextu utterance. Můžete označí entitu v rámci utterance jako entity, nebo vyberte roli v rámci této entity. Každá entita může mít role včetně vlastních entit, které jsou zjištěné počítače (jednoduché a složené entit), nejsou zjištěné počítače (předem připravených entit, regulární výraz entity seznam entit). 
@@ -143,9 +124,6 @@ Následující řešení vyřešit nesrovnalosti předpovědi entity:
 |Text bez popisku|červené podtržení|Nesprávný predikcí|Aktuální projevy, které používají tuto entitu nesprávné třeba, aby ve všech záměry. Aktuální projevy mají mistaught LUIS, tento text je prediktivní entity.
 |Správně označené text|entity modré zvýraznění, červené podtržení|Nesprávný predikcí|Zadejte další projevy s entitou správně označené v různých místech a použití. Aktuální projevy jsou je dostatečná představuje LUIS, že jde o entitu nebo podobné entity se zobrazí ve stejném kontextu. Podobně jako entity by měl sloučené do jedné entity, LUIS se zaměňovat. Jiným řešením je přidat seznam frázi a zvýšit tak význam slova. |
 |Nesprávně označené text|entity modré zvýraznění, červené podtržení|Správné predikcí| Zadejte další projevy s entitou správně označené v různých místech a použití. 
-
-> [!Note]
-> Po červeným rámečkem okolo s popiskem záměr v řádku utterance příklad [záměru předpovědi chyb](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors) došlo k chybě. Je třeba ho opravit. 
 
 ## <a name="other-actions"></a>Další akce
 

@@ -4,15 +4,15 @@ description: Kurz týkající se nastavení pracovního postupu sestavení a ver
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/02/2018
+ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: d6250b778cdaec47ccbe2f45d35adea0b676a20a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115461"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242557"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -35,7 +35,7 @@ Potom vyberte organizaci, do které se má rozšíření nainstalovat.
 
 ![Zvolit organizaci Azure DevOps ve kterém chcete nainstalovat rozšíření](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
-## <a name="create-a-build-definition"></a>Vytvoření definice sestavení
+## <a name="create-a-build-definition"></a>Vytvořte definici sestavení
 
 Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure DevOps a na řídicím panelu projektů vyhledejte svůj projekt. Do svého projektu můžete přidat [kanál sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) nebo můžete upravit existující kanál sestavení. Pokud už máte kanál sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
 

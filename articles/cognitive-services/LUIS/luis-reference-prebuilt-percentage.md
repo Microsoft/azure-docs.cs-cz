@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: b55aca79047a224a9e1a474afdabf43e2701872d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75538519b7d43aa702e15ce3c22ea4acc73ade87
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473140"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072198"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>Procento předem připravených entit pro aplikace LUIS
 Procento čísla můžete uvádět ve zlomcích, `3 1/2`, nebo jako procento, `2%`. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující procento záměry aplikace. Procento entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
@@ -25,6 +25,9 @@ Procento čísla můžete uvádět ve zlomcích, `3 1/2`, nebo jako procento, `2
 Procento vedete z [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) úložiště GitHub
 
 ## <a name="resolution-for-prebuilt-percentage-entity"></a>Řešení pro procento předem připravených entit
+
+### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+
 Následující příklad ukazuje rozlišení **builtin.percentage** entity.
 
 ```json
@@ -51,6 +54,64 @@ Následující příklad ukazuje rozlišení **builtin.percentage** entity.
       }
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+
+Následující kód JSON je `verbose` parametr nastaven na `false`:
+
+```json
+{
+    "query": "set a trigger when my stock goes up 2%",
+    "prediction": {
+        "normalizedQuery": "set a trigger when my stock goes up 2%",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.541765451
+            }
+        },
+        "entities": {
+            "percentage": [
+                2
+            ]
+        }
+    }
+}
+```
+
+Následující kód JSON je `verbose` parametr nastaven na `true`:
+
+```json
+{
+    "query": "set a trigger when my stock goes up 2%",
+    "prediction": {
+        "normalizedQuery": "set a trigger when my stock goes up 2%",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.541765451
+            }
+        },
+        "entities": {
+            "percentage": [
+                2
+            ],
+            "$instance": {
+                "percentage": [
+                    {
+                        "type": "builtin.percentage",
+                        "text": "2%",
+                        "startIndex": 36,
+                        "length": 2,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

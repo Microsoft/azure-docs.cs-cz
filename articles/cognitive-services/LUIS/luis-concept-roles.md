@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813838"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073012"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Entita role pro kontextové subtypes
 
@@ -79,12 +79,6 @@ Následující příklad projevy používat entity a role:
 |--|--|
 |Jmenuji se dozvědět více o zajímavých **Praha**|Jmenuji se chcete dozvědět více o {Location}|
 |Koupit lístek ze Seattlu do New York|Koupit lístek z {umístění: Origin} a {umístění: Destination}|
-
-## <a name="how-are-roles-related-to-hierarchical-entities"></a>Jak spolu souvisí role a hierarchické entity?
-
-Role jsou teď k dispozici pro všechny entity v příkladu projevy, jakož i předchozí použití vzorů. Protože jsou k dispozici všude, nahrazují nutnost hierarchické entity. Nové entity musí být vytvořené s rolemi, namísto použití hierarchické entity. 
-
-Nakonec se přestanou hierarchické entity.
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 

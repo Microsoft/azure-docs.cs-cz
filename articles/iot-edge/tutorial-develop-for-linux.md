@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4ee3c0bf344520afee6b3a00eb49759ae1432949
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146707"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239779"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Linuxem
 
@@ -190,7 +190,7 @@ Každý modul může mít více *vstupní* a *výstup* fronty deklarovat ve své
 
 7. V dolní části souboru vyhledejte požadované vlastnosti pro **$edgeHub** modulu. 
 
-   Jednou z funkcí modulu centra IoT Edge je pro směrování zpráv mezi všechny moduly v nasazení. Zkontrolujte hodnoty v **trasy** vlastnost. První trasa **SampleModuleToIoTHub**, používá zástupný znak (**\***) k označení jakékoli zprávy přicházející z žádné výstupní fronty v modulu SampleModule. Tyto zprávy přejít do *$upstream*, který je vyhrazený název, který označuje služby IoT Hub. Druhá trasa sensorToSampleModule, přijímá zprávy přicházející z modulu tempSensor a směruje je do *vstup1* vstupní fronty, které jste viděli v kódu SampleModule inicializovat. 
+   Jednou z funkcí modulu centra IoT Edge je pro směrování zpráv mezi všechny moduly v nasazení. Zkontrolujte hodnoty v **trasy** vlastnost. První trasa **SampleModuleToIoTHub**, používá zástupný znak ( **\*** ) k označení jakékoli zprávy přicházející z žádné výstupní fronty v modulu SampleModule. Tyto zprávy přejít do *$upstream*, který je vyhrazený název, který označuje služby IoT Hub. Druhá trasa sensorToSampleModule, přijímá zprávy přicházející z modulu tempSensor a směruje je do *vstup1* vstupní fronty, které jste viděli v kódu SampleModule inicializovat. 
 
    ![Projděte si v deployment.template.json trasy](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -284,7 +284,7 @@ Jste ověřili, že Image kontejneru sestavené jsou uloženy v vašeho registru
 
 Kód SampleModule přijímá zprávy do vstupní fronty a předává je podél prostřednictvím jeho výstupní fronty. Manifest nasazení deklaraci trasy, která předán SampleModule zprávy z tempSensor a pak se předávají zprávy z SampleModule do služby IoT Hub. Nástroje Azure IoT pro Visual Studio Code umožňují zobrazit zprávy při jejich doručení na IoT Hub z jednotlivých zařízeních. 
 
-1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem na zařízení IoT Edge, který chcete monitorovat a pak vyberte **spustit monitorování zpráv D2C**. 
+1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem na zařízení IoT Edge, který chcete monitorovat a pak vyberte **spustit monitorování integrovaných událostí koncový bod**. 
 
 2. Podívejte se v okně výstupu ve Visual Studio Code, chcete-li zobrazit zprávy přicházející v jiném ve službě IoT hub. 
 

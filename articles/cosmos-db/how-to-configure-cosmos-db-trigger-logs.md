@@ -1,17 +1,17 @@
 ---
-title: Zaznamená aktivační událost Azure Cosmos DB
+title: Protokoly triggerů služby Azure Cosmos DB
 description: Zjistěte, jak vystavit protokoly aktivační událost Azure Cosmos DB a Azure funkce protokolování kanálu
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 5/2/2019
+ms.date: 05/23/2019
 ms.author: maquaran
-ms.openlocfilehash: a598842ecde9508a6c2185a6097f689252fda60c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bf5216dc3b296c98176387c6e2cfff7c31daedab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515078"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241029"
 ---
 # <a name="how-to-configure-and-read-the-azure-cosmos-db-trigger-logs"></a>Jak nakonfigurovat a čtení protokolů aktivační událost Azure Cosmos DB
 

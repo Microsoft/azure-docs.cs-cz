@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2694d0f22acfb34c07220ad0145b933457961931
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b7d903c8be74e4c0561bb4a857619c9c62f95a9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575939"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239659"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Kurz: Nasazení Azure funguje jako moduly IoT Edge
 
@@ -57,7 +57,7 @@ K vývoji modul IoT Edge se pomocí Azure Functions, nainstalujte na svém vývo
 
 Nástroje Azure IoT pro Visual Studio Code, který jste nainstalovali v rámci požadavků poskytuje funkce pro správu, jakož i některé šablony kódu. V této části pomocí Visual Studio Code vytvoříte řešení IoT Edge obsahující funkci Azure Functions. 
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Vytvoření C# šablony funkce řešení, kterou můžete přizpůsobit s vlastním kódem.
 
@@ -222,12 +222,11 @@ K nasazení modulu funkce na zařízení IoT Edge můžete použít web Azure Po
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
-Zobrazí se všechny zprávy, které přicházejí na váš IoT hub spuštěním **Azure IoT Hub: Spustit monitorování zpráv D2C** v paletu příkazů.
+Zobrazí se všechny zprávy, které přicházejí na váš IoT hub spuštěním **Azure IoT Hub: Spuštění monitorování koncového bodu integrované události** v paletu příkazů.
 
-Pomocí filtru také můžete zobrazit všechny zprávy přicházející do vašeho IoT Hubu z konkrétního zařízení. Klikněte pravým tlačítkem na **Azure IoT Hub Devices** (Zařízení Azure IoT Hub) a vyberte **Start Monitoring D2C Messages** (Začít monitorovat zprávy D2C).
+Pomocí filtru také můžete zobrazit všechny zprávy přicházející do vašeho IoT Hubu z konkrétního zařízení. Klikněte pravým tlačítkem na zařízení do služby **zařízení Azure IoT Hub** a vyberte **spustit monitorování integrovaných událostí koncový bod**.
 
-Pokud chcete zastavit monitorování zpráv, spusťte příkaz **Azure IoT Hub: Zastavit monitorování zpráv D2C** v paletu příkazů. 
-
+Pokud chcete zastavit monitorování zpráv, spusťte příkaz **Azure IoT Hub: Zastavit monitorování koncového bodu integrované události** v paletu příkazů. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -245,4 +244,3 @@ Pokračujte dalšími kurzy, ve kterých se seznámíte s jinými způsoby, jak 
 
 > [!div class="nextstepaction"]
 > [Nasazení služby Azure Stream Analytics jako modulu IoT Edge](tutorial-deploy-stream-analytics.md)
-

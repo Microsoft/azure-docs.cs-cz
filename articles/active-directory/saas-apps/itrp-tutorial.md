@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s ITRP | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ITRP.
+description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ITRP.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,176 +15,179 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 343439bbf47914404c4598369926f2f02cf5c9af
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898116"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Integrace Azure Active Directory s ITRP
 
 V tomto kurzu se dozvíte, jak integrovat ITRP s Azure Active Directory (Azure AD).
-ITRP integraci se službou Azure AD poskytuje následující výhody:
+Tato integrace poskytuje tyto výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k ITRP.
-* Můžete povolit uživatelům být automaticky přihlášeni k ITRP (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit, kdo má přístup k ITRP Azure AD.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k ITRP (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s ITRP, potřebujete následující položky:
+Konfigurace integrace Azure AD s ITRP, musíte mít:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* ITRP jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné ITRP obsahující single sign-on povoleno.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
 
-* Podporuje ITRP **SP** jednotné přihlašování zahájené pomocí
+* ITRP podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování.
 
-## <a name="adding-itrp-from-the-gallery"></a>Přidání ITRP z Galerie
+## <a name="add-itrp-from-the-gallery"></a>Přidání ITRP z Galerie
 
-Konfigurace integrace ITRP do služby Azure AD, budete muset přidat ITRP z Galerie na váš seznam spravovaných aplikací SaaS.
+Nastavení integrace ITRP do služby Azure AD, budete muset přidat ITRP z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat ITRP z galerie, postupujte následovně:**
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+    ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+2. Přejděte na **podnikové aplikace** > **všechny aplikace**:
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![Vyberte novou aplikaci](common/add-new-app.png)
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+4. Do vyhledávacího pole zadejte **ITRP**. Vyberte **ITRP** ve výsledcích hledání a pak vyberte **přidat**.
 
-4. Do vyhledávacího pole zadejte **ITRP**vyberte **ITRP** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![ITRP v seznamu výsledků](common/search-new-app.png)
+     ![Výsledky vyhledávání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí ITRP podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v ITRP.
+V této části budete konfigurovat a Azure AD jednotné přihlašování s ITRP test pomocí testovacího uživatele s názvem Britta Simon.
+Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v ITRP.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ITRP, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s ITRP, které potřebujete k dokončení těchto kroků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace ITRP Single Sign-On](#configure-itrp-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele ITRP](#create-itrp-test-user)**  – Pokud chcete mít protějšek Britta Simon ITRP, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
+2. **[Konfigurace ITRP jednotného přihlašování](#configure-itrp-single-sign-on)**  na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
+5. **[Vytvořit testovacího uživatele ITRP](#create-an-itrp-test-user)**  připojený k Azure AD zastoupení uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s ITRP, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s ITRP, proveďte tyto kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **ITRP** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/), vyberte na stránce ITRP integrace aplikací, **jednotného přihlašování**:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Vyberte jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit ikonu](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V **základní konfiguraci SAML** dialogové okno pole, proveďte následující kroky.
 
-    ![ITRP domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![Dialogové okno základní konfigurace SAML](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<tenant-name>.itrp.com`
+    1. V **přihlašovací adresa URL** pole, zadejte adresu URL v tomto vzoru:
+    
+       `https://<tenant-name>.itrp.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<tenant-name>.itrp.com`
+    1. V **identifikátor (Entity ID)** pole, zadejte adresu URL v tomto vzoru:
+
+       `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory ITRP klienta](https://www.itrp.com/support) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty jsou zástupné symboly. Budete muset použít skutečné přihlašovací adresu URL a identifikátor. Obraťte se [tým podpory ITRP](https://www.itrp.com/support) k získání hodnoty. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** dialogové okno na webu Azure Portal.
 
-5. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
+5. V **podpisový certifikát SAML** vyberte **upravit** ikony otevřete **podpisový certifikát SAML** dialogové okno:
 
-    ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
+    ![Upravit ikonu](common/edit-certificate.png)
 
-6. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
+6. V **podpisový certifikát SAML** dialogové okno, kopie **kryptografický otisk** hodnotu a uložte ho:
 
     ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-7. Na **nastavení ITRP** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V **nastavení ITRP** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků:
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    1. **Adresa URL pro přihlášení**.
 
-    b. Identifikátor Azure AD
+    1. **Identifikátor služby Azure AD**.
 
-    c. Adresa URL – odhlášení
+    1. **Odhlašovací adresa URL**.
 
 ### <a name="configure-itrp-single-sign-on"></a>Konfigurace ITRP jednotného přihlašování
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti ITRP jako správce.
+1. V novém okně webového prohlížeče Přihlaste se k webu společnosti ITRP jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**.
+1. V horní části okna, vyberte **nastavení** ikony:
 
-    ![ITRP](./media/itrp-tutorial/ic775570.png "ITRP")
+    ![Ikona nastavení](./media/itrp-tutorial/ic775570.png "ikona nastavení")
 
-1. V levém navigačním podokně vyberte **Single Sign-On**.
+1. V levém podokně vyberte **Single Sign-On**:
 
-    ![Jednotné přihlašování](./media/itrp-tutorial/ic775571.png "jednotného přihlašování")
+    ![Vyberte Single Sign-On](./media/itrp-tutorial/ic775571.png "vyberte jednotného přihlašování")
 
-1. V konfiguračním oddílu Single Sign-On proveďte následující kroky:
+1. V **Single Sign-On** konfigurační oddíl, proveďte následující kroky.
 
-    ![Jednotné přihlašování](./media/itrp-tutorial/ic775572.png "jednotného přihlašování")
+    ![Jednotné přihlašování – část](./media/itrp-tutorial/ic775572.png "části jednotného přihlašování")
 
-    ![Jednotné přihlašování](./media/itrp-tutorial/ic775573.png "jednotného přihlašování")
+    ![Jednotné přihlašování – část](./media/itrp-tutorial/ic775573.png "části jednotného přihlašování")
 
-    a. Klikněte na tlačítko **povolené**.
+    1. Vyberte **povolené**.
 
-    b. V **vzdálené adresy URL odhlašovací** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    1. V **vzdálené odhlašovací adresa URL** pole, vložte **odhlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    c. V **adresu URL jednotného přihlašování SAML** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    1. V **adresu URL jednotného přihlašování SAML** pole, vložte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    d.In **otisku certifikátu** vložit do textového pole **kryptografický otisk** hodnota certifikátu, který jste zkopírovali z portálu Azure portal.
+    1. V **otisku certifikátu** pole, vložte **kryptografický otisk** hodnota certifikátu, který jste zkopírovali z portálu Azure portal.
 
-    e. Klikněte na **Uložit**.
+    1. Vyberte **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Vyberte možnost Všichni uživatelé](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Vyberte **nového uživatele** v horní části obrazovky:
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Vyberte nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. V **uživatele** dialogové okno pole, proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno uživatelského](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k ITRP použití Azure jednotného přihlašování.
+V této části se budou moci používat jednotné přihlašování Azure tím, že udělíte přístup k ITRP Britta Simon.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **ITRP**.
 
@@ -192,62 +195,62 @@ V této části je povolit Britta Simon k udělení přístupu k ITRP použití 
 
 2. V seznamu aplikací vyberte **ITRP**.
 
-    ![Odkaz ITRP v seznamu aplikací](common/all-applications.png)
+    ![Seznam aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V levém podokně vyberte **uživatelů a skupin**:
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části okna.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části okna.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogu **přiřadit**.
 
-### <a name="create-itrp-test-user"></a>Vytvoření ITRP testovacího uživatele
+### <a name="create-an-itrp-test-user"></a>Vytvořit testovacího uživatele ITRP
 
-Povolení služby Azure AD uživatelům umožní přihlásit k ITRP, musí být zřízená v k ITRP. V případě ITRP zřizování se ruční úlohy.
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k ITRP, budete muset přidat je do ITRP. Musíte je přidat ručně.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:
 
-1. Přihlaste se k vaší **ITRP** tenanta.
+1. Přihlaste se k vašemu tenantovi ITRP.
 
-1. Na panelu nástrojů v horní části klikněte na tlačítko **záznamy**.
+1. V horní části okna, vyberte **záznamy** ikony:
 
-    ![Správce](./media/itrp-tutorial/ic775575.png "správce")
+    ![Ikona záznamy](./media/itrp-tutorial/ic775575.png "ikonu záznamů")
 
-1. V místní nabídce vyberte **lidé**.
+1. V nabídce vyberte **lidé**:
 
-    ![Lidé](./media/itrp-tutorial/ic775587.png "osoby")
+    ![Vyberte osoby](./media/itrp-tutorial/ic775587.png "vybrat osoby")
 
-1. Klikněte na tlačítko **přidat nové osobě** ("+").
+1. Vyberte znaménko plus ( **+** ) chcete přidat nové uživatele:
 
-    ![Správce](./media/itrp-tutorial/ic775576.png "správce")
+    ![Vyberte znaménko plus](./media/itrp-tutorial/ic775576.png "vyberte znaménko plus")
 
-1. V dialogovém okně Přidat nové osobě proveďte následující kroky:
+1. V **přidat nové osobě** dialogové okno pole, proveďte následující kroky.
 
-    ![Uživatel](./media/itrp-tutorial/ic775577.png "uživatele")
+    ![Dialogové okno Přidat nové osobě](./media/itrp-tutorial/ic775577.png "dialogové okno Přidat nové osoby")
 
-    a. Typ **název**, **e-mailu** platného účtu AAD, které chcete zřídit.
+    1. Zadejte jméno a e-mailovou adresu platnou Azure AD účet, který chcete přidat.
 
-    b. Klikněte na **Uložit**.
+    1. Vyberte **Uložit**.
 
 > [!NOTE]
-> Můžete použít jakékoli jiné ITRP uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných ITRP uživatelským účtům, zřídit AAD.
+> Můžete použít libovolný nástroj pro vytváření účtu uživatele nebo rozhraní API poskytovaných ITRP zřízení uživatelských účtů služby Azure AD.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ITRP na přístupovém panelu, můžete by měl být automaticky přihlášeni k ITRP, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice ITRP na přístupovém panelu, vám by měl být automaticky přihlášeni ITRP instanci, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

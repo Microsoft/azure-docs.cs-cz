@@ -4,14 +4,14 @@ description: Zjistěte, jak implementovat vlastní synchronizaci pro optimalizac
 author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: f10e260432a93a0413d65d6f5814d00a50e9465a
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: cd89a145f5746696cc8fc163eb46896081d85a90
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560275"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240964"
 ---
 # <a name="implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementace vlastního synchronizace pro optimalizaci pro vyšší dostupnost a výkon
 

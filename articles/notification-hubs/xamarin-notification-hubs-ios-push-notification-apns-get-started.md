@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: 94f3d2345ad9ab8187a8c3eff8dc3684b9f4cc39
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cd6d22e7c689bce5c325863b914c5ee8abcbf40a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141351"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240780"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Kurz: Odesílání nabízených oznámení do aplikace Xamarin.iOS pomocí Azure Notification Hubs
 
@@ -65,7 +65,7 @@ Tato části vás provede jednotlivými kroky vytvoření nového centra oznáme
 
 ### <a name="configure-ios-settings-for-the-notification-hub"></a>Konfigurace nastavení iOS pro centrum oznámení
 
-1. Ve skupině **NASTAVENÍ OZNÁMENÍ** vyberte **Apple (APNs)**.
+1. Ve skupině **NASTAVENÍ OZNÁMENÍ** vyberte **Apple (APNs)** .
 2. Vyberte **Certifikát**, klikněte na ikonu **souboru** a vyberte soubor **.p12**, který jste vyexportovali dříve.
 3. Zadejte **heslo** pro certifikát.
 4. Vyberte režim **Sandbox**. **Produkční** režim použijte pouze v případě, že chcete zasílat nabízená oznámení uživatelům, kteří si zakoupili aplikaci z obchodu s aplikacemi.
@@ -78,7 +78,7 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou APNs. Z
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Připojte aplikaci k centru oznámení
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 1. V sadě Visual Studio vytvořte nový projekt pro iOS, vyberte šablonu **Aplikace s jedním zobrazením** a klikněte na **Další**.
 
@@ -108,6 +108,7 @@ Vaše centrum oznámení je teď nakonfigurované pro práci se službou APNs. Z
 
     ```csharp
     using WindowsAzure.Messaging;
+    using UserNotifications
     ```
 
 8. Deklarujte instanci `SBNotificationHub`:

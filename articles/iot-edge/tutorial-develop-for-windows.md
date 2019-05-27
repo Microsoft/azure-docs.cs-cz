@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 631338c0217eb61f4f98cd06ffa16cb2500f246b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 1f2e9bc93b8bea70a58f2e6a544e2088505935a9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146737"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239759"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -298,7 +298,7 @@ Kód IotEdgeModule1 přijímá zprávy do vstupní fronty a předává je podél
 
 1. V Průzkumníku cloudu sady Visual Studio vyberte název zařízení IoT Edge, které jste nasadili. 
 
-2. V **akce** nabídce vyberte možnost **spustit monitorování zpráv D2C**.
+2. V **akce** nabídce vyberte možnost **spustit monitorování integrovaných událostí koncový bod**.
 
 3. Podívejte **výstup** části v sadě Visual Studio zobrazíte zprávy přicházející v jiném ve službě IoT hub. 
 

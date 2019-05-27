@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5fb62c38bde98d946694790adb860240eaa59fa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d59020eb45f7dcced5ea8da04b3b908def34fb70
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709708"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072244"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>Adresa URL předem připravených entit pro aplikace LUIS
 Adresa URL entity extrahuje adresy URL s názvy domény nebo IP adresy. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující adresy URL do aplikace. Adresa URL entity se podporuje v `en-us` pouze jazykovou verzi. 
@@ -25,6 +25,9 @@ Adresa URL entity extrahuje adresy URL s názvy domény nebo IP adresy. Protože
 Spravuje se z adresy URL [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) úložiště GitHub
 
 ## <a name="resolution-for-prebuilt-url-entity"></a>Řešení pro předem připravených entit adresy URL
+
+### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+
 Následující příklad ukazuje rozlišení **builtin.url** entity.
 
 ```json
@@ -48,6 +51,64 @@ Následující příklad ukazuje rozlišení **builtin.url** entity.
       "endIndex": 17
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+
+Následující kód JSON je `verbose` parametr nastaven na `false`:
+
+```json
+{
+    "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
+    "prediction": {
+        "normalizedQuery": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.421936184
+            }
+        },
+        "entities": {
+            "url": [
+                "https://www.luis.ai"
+            ]
+        }
+    }
+}
+```
+
+Následující kód JSON je `verbose` parametr nastaven na `true`:
+
+```json
+{
+    "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
+    "prediction": {
+        "normalizedQuery": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.421936184
+            }
+        },
+        "entities": {
+            "url": [
+                "https://www.luis.ai"
+            ],
+            "$instance": {
+                "url": [
+                    {
+                        "type": "builtin.url",
+                        "text": "https://www.luis.ai",
+                        "startIndex": 0,
+                        "length": 19,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

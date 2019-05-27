@@ -3,15 +3,15 @@ title: Export certifikátů emulátoru služby Azure Cosmos DB
 description: Při vývoji v jazycích a modulech runtime, které nevyužívají úložiště certifikátů systému Windows, budete muset exportovat a spravovat certifikáty SSL. Tento příspěvek obsahuje podrobné pokyny.
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 06/06/2017
+ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: cf280dfb806399a8c09838d965d71e7b18cb905f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61044738"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244454"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 

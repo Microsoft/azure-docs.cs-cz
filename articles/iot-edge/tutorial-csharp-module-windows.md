@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 046398af8678e708784614dfdc231778454ed945
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ca321b8a073f709b55093fde6ff32ae876f3ef12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576597"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238074"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj C# modul IoT Edge pro zařízení s Windows
 
@@ -57,7 +57,7 @@ Před zahájením tohoto kurzu měli jste prošli předchozího kurzu věnované
 
 Následující kroky vytvoření projektu modul IoT Edge pomocí Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Rozšíření nástroje Azure IoT nabízí šablony projektů pro všechny podporované IoT Edge modulu jazyků v sadě Visual Studio 2017. Tyto šablony mají všechny soubory a kód, který musíte nasadit pracovní modul pro testování IoT Edge, nebo získáte výchozí bod pro přizpůsobení šablony s vlastní obchodní logikou. 
 
@@ -65,7 +65,7 @@ Rozšíření nástroje Azure IoT nabízí šablony projektů pro všechny podpo
 
 2. Vyberte **Soubor** > **Nový** > **Projekt**. 
 
-3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení na něco popisného jako **CSharpTutorialApp**. Vyberte **OK** a vytvořte projekt. 
+3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení na něco popisného jako **CSharpTutorialApp**. Vyberte **OK** pro vytvoření projektu. 
 
    ![Vytvořte nový projekt Azure IoT Edge](./media/tutorial-csharp-module-windows/new-project.png)
 
@@ -322,7 +322,7 @@ Chcete-li zobrazit zprávy při jejich doručení na službě IoT Hub můžete p
 
 1. V Průzkumníku cloudu sady Visual Studio vyberte název vašeho zařízení IoT Edge. 
 
-2. V **akce** seznamu vyberte **spustit monitorování zpráv D2C**. 
+2. V **akce** seznamu vyberte **spustit monitorování integrovaných událostí koncový bod**. 
 
 3. Zobrazení zpráv přicházejících u služby IoT Hub. Může trvat nějakou dobu zprávy dorazí, protože změny, které jsme provedli kód CSharpModule Počkejte, dokud počítač teploty dosáhne 25 stupňů před odesláním zprávy. Také přidá typ zprávy **výstrah** pro všechny zprávy, které dosažení této prahové hodnoty teploty. 
 

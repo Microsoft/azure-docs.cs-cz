@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 82da44409c4500ff097805efec33cec8cf6bbedd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 09a3ff744e5e3d4a8c62bf8337179b9d8699c3c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575647"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244555"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj a nasazení modulu Python IoT Edge pro zařízení s Linuxem
 
@@ -67,7 +67,7 @@ K vývoji modul IoT Edge v jazyce Python, nainstalujte na svém vývojovém poč
 ## <a name="create-a-module-project"></a>Vytvoření modulu projektu
 Následující kroky vytvoření modul IoT Edge Python pomocí Visual Studio Code a nástroje Azure IoT.
 
-### <a name="create-a-new-project"></a>Vytvoření nového projektu
+### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Pomocí balíčku Python **cookiecutter** vytvořte šablonu řešení Python, na jejímž základě můžete tvořit. 
 
@@ -178,7 +178,7 @@ Každá šablona zahrnuje ukázkový kód, který vezme simulovaná data sníma�
         print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
     ```
 
-6. Do třídy **HubManager** přidejte nový řádek do metody **__init__**, který inicializuje právě přidanou funkci **module_twin_callback**:
+6. Do třídy **HubManager** přidejte nový řádek do metody **__init__** , který inicializuje právě přidanou funkci **module_twin_callback**:
 
     ```python
     # Sets the callback when a module twin's desired properties are updated.
@@ -242,7 +242,7 @@ Po použití manifestu nasazení pro zařízení IoT Edge začne modul runtime I
 
 Stav zařízení IoT Edge můžete zobrazit v části **Zařízení Azure IoT Hub** v průzkumníku Visual Studio Code. Rozbalením podrobností o zařízení zobrazíte seznam nasazených a spuštěných modulů.
 
-1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **spustit monitorování zpráv D2C**.
+1. V Průzkumníku Visual Studio Code klikněte pravým tlačítkem myši na název vašeho zařízení IoT Edge a vyberte **spustit monitorování integrovaných událostí koncový bod**.
 
 2. Zobrazení zpráv přicházejících u služby IoT Hub. Může trvat nějakou dobu zprávy dorazí, protože zařízení IoT Edge se zobrazí její nové nasazení a spuštění všech modulů. Pak změny, které jsme provedli PythonModule kód Počkejte, dokud počítač teploty dosáhne 25 stupňů před odesláním zprávy. Také přidá typ zprávy **výstrah** pro všechny zprávy, které dosažení této prahové hodnoty teploty. 
 
@@ -260,7 +260,7 @@ Dvojče modulu PythonModule jsme použili v manifestu nasazení pro nastavení p
 
 5. Klikněte pravým tlačítkem na libovolné místo ve dvojčeti modulu úpravy podokně a vyberte **aktualizace dvojčete modulu**. 
 
-5. Monitorování příchozích zpráv typu zařízení cloud. Měli byste vidět zprávy zastavit, dokud nebude dosaženo novou teploty prahovou hodnotu. 
+6. Monitorování příchozích zpráv typu zařízení cloud. Měli byste vidět zprávy zastavit, dokud nebude dosaženo novou teploty prahovou hodnotu. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
@@ -269,7 +269,6 @@ Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete s
 V opačném případě můžete odstranit místní konfigurací a použité v tomto článku se vyhnout poplatkům za prostředky Azure. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>Další postup
 

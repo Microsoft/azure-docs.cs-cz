@@ -2,18 +2,18 @@
 title: Kurz – směrování provozu do koncových bodů vážený - Azure Traffic Manageru
 description: Tento kurz popisuje, jak pomocí služby Traffic Manager směrovat provoz do vážených koncových bodů.
 services: traffic-manager
-author: KumudD
+author: asudbring
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: kumud
-ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: fdae6f9f83cace2d2da08ae2494dbc82a94b1e5d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329649"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238898"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řídit směrování provozu s koncovými body vážený pomocí Traffic Manageru
 
@@ -32,7 +32,9 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Pokud chcete zobrazit službu Traffic Manager v akci, nasaďte pro účely tohoto kurzu následující:
+
 - Dvě instance webů na úrovni basic spuštěné v různých oblastech Azure: Východní USA a západní Evropa.
 - Dva testovací virtuální počítače pro testování služby Traffic Manager: jeden v oblasti USA – východ a druhý v oblasti Západní Evropa Testovací virtuální počítače slouží k předvedení způsobu, jakým Traffic Manager směruje uživatelský provoz na web, jehož koncový bod má přiřazenou vyšší váhu.
 
@@ -43,53 +45,36 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 ### <a name="create-websites"></a>Vytvoření webů
 
 V této části vytvoříte dvě instance webů, které zajistí dva požadované koncové body služby ve dvou oblastech Azure pro profil služby Traffic Manager. Tyto dva weby vytvoříte provedením následujících kroků:
+
 1. Vytvořte dva virtuální počítače pro provoz základního webu: jeden v oblasti USA – východ a druhý v oblasti Západní Evropa.
 2. Na oba virtuální počítače nainstalujte server služby IIS. Aktualizujte výchozí webovou stránku zobrazující název virtuálního počítače, ke kterému je uživatel při prohlížení webu připojený.
 
 #### <a name="create-vms-for-running-websites"></a>Vytvoření virtuálních počítačů pro provoz webů
+
 V této části vytvoříte dva virtuální počítače (*myIISVMEastUS* a *myIISVMWEurope*) v oblastech Azure USA – východ a Západní Evropa.
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Compute** > **Virtuální počítač s Windows Serverem 2016**.
-2. V části **Základy** zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**.
+1. V pravém horním levém horním rohu webu Azure portal vyberte **vytvořit prostředek** > **Compute** > **systému Windows Server. 2019 Datacenter**.
+2. V **vytvoření virtuálního počítače**, zadejte nebo vyberte následující hodnoty **Základy** kartu:
 
-    |Nastavení|Value|
-    |---|---|
-    |Name|Zadejte **myIISVMEastUS**.|
-    |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Skupina prostředků| Vyberte **Nová** a zadejte **myResourceGroupTM1**.|
-    |Location| Vyberte **USA – východ**.|
-    |||
+   - **Předplatné** > **skupiny prostředků**: Vyberte **vytvořit nový** a pak zadejte **myResourceGroupTM1**.
+   - **Podrobnosti o instanci** > **název virtuálního počítače**: Typ *myIISVMEastUS*.
+   - **Podrobnosti o instanci** > **oblasti**:  Vyberte **USA – východ**.
+   - **Účet správce** > **uživatelské jméno**:  Zadejte libovolné uživatelské jméno.
+   - **Účet správce** > **heslo**:  Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Příchozí pravidla portů** > **veřejné příchozí porty**: Vyberte **povolit vybrané porty**.
+   - **Příchozí pravidla portů** > **vyberte příchozí porty**: Vyberte **RDP** a **HTTP** o přijetí změn seznamu.
 
-4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
-5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
-    
-    |Nastavení|Value|
-    |---|---|
-    |Virtuální síť| Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet1**. Jako **Podsíť** zadejte **mySubnet**.|
-    |Skupina zabezpečení sítě|Vyberte **Basic**. V rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
-    |Diagnostika spouštění|Vyberte **Zakázáno**.|
-    |||
-
-6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
-
-7. Zopakujte kroky 1 až 6 s následujícími změnami:
-
-    |Nastavení|Value|
-    |---|---|
-    |Skupina prostředků | Vyberte **Nová** a zadejte **myResourceGroupTM2**.|
-    |Location|Zadejte **Západní Evropa**.|
-    |Název virtuálního počítače | Zadejte **myIISVMWEurope**.|
-    |Virtuální síť | Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet2**. Jako **Podsíť** zadejte **mySubnet**.|
-    |||
-
-8. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte v dalších krocích, dokud se oba virtuální počítače nevytvoří.
+3. Vyberte **správu** kartě nebo vyberte **Další: Disky**, pak **Další: Sítě**, pak **Další: Správa**. V části **monitorování**, nastavte **Diagnostika spouštění** k **vypnout**.
+4. Vyberte **Zkontrolovat a vytvořit**.
+5. Zkontrolujte nastavení a potom klikněte na tlačítko **vytvořit**.  
+6. Podle pokynů vytvořte druhý virtuální počítač s názvem *myIISVMWEurope*, s **skupiny prostředků** název *myResourceGroupTM2*, **umístění** z *západní Evropa*a všechna ostatní nastavení stejný jako *myIISVMEastUS*.
+7. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
 
 ![Vytvoření virtuálního počítače](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-webpage"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
 
-V této části nainstalujete službu IIS na dva virtuální počítače&mdash;myIISVMEastUS a myIISVMWEurope&mdash;a aktualizujte výchozí webovou stránku. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
+V této části nainstalujte server služby IIS na dva virtuální počítače, myIISVMEastUS a myIISVMWEurope a aktualizujte výchozí webovou stránku. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
 
 1. V nabídce vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myIISVMEastUS** ve skupině prostředků **myResourceGroupTM1**.
 2. Na stránce **Přehled** vyberte **Připojit**. V části **Připojení k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**.
@@ -121,45 +106,39 @@ Traffic Manager směruje uživatelský provoz na základě názvů DNS koncovýc
 1. V nabídce vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myIISVMEastUS** ve skupině prostředků **myResourceGroupTM1**.
 2. Na stránce **Přehled** v části **Název DNS** vyberte **Konfigurovat**.
 3. Na stránce **Konfigurace** v části Popisek názvu DNS přidejte jedinečný název. Potom vyberte **Uložit**.
-4. Zopakujte kroky 1 až 3 pro virtuální počítač **myIISVMWEurope** ve skupině prostředků **myResourceGroupTM1**.
+4. Opakujte kroky 1-3 pro virtuální počítač s názvem **myIISVMWEurope** v **myResourceGroupTM2** skupinu prostředků.
 
 ### <a name="create-a-test-vm"></a>Vytvoření testovacího virtuálního počítače
 
-V této části vytvoříte virtuální počítač *mVMEastUS*. Tento virtuální počítač použijete k otestování směrování provozu službou Traffic Manager do koncového bodu webu s vyšší hodnotou váhy.
+V této části vytvoříte virtuální počítač (*myVMEastUS* a *myVMWestEurope*) v každé oblasti Azure (**USA – východ** a **západní Evropa**. Tyto virtuální počítače budete používat pro testování, jak Traffic Manager směruje provoz do koncového bodu webu, který má vyšší hodnotu váhy.
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Compute** > **Virtuální počítač s Windows Serverem 2016**.
-2. V části **Základy** zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
+1. V pravém horním levém horním rohu webu Azure portal vyberte **vytvořit prostředek** > **Compute** > **systému Windows Server. 2019 Datacenter**.
+2. V **vytvoření virtuálního počítače**, zadejte nebo vyberte následující hodnoty **Základy** kartu:
 
-    |Nastavení|Value|
-    |---|---|
-    |Name|Zadejte **myVMEastUS**.|
-    |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroupTM1**.|
-    |||
+   - **Předplatné** > **skupiny prostředků**: Select **myResourceGroupTM1**.
+   - **Podrobnosti o instanci** > **název virtuálního počítače**: Typ *myVMEastUS*.
+   - **Podrobnosti o instanci** > **oblasti**:  Vyberte **USA – východ**.
+   - **Účet správce** > **uživatelské jméno**:  Zadejte libovolné uživatelské jméno.
+   - **Účet správce** > **heslo**:  Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).
+   - **Příchozí pravidla portů** > **veřejné příchozí porty**: Vyberte **povolit vybrané porty**.
+   - **Příchozí pravidla portů** > **vyberte příchozí porty**: Vyberte **RDP** o přijetí změn seznamu.
 
-4. V části **Zvolte velikost** vyberte velikost virtuálního počítače.
-5. V části **Nastavení** vyberte následující hodnoty a pak vyberte **OK**:
-
-    |Nastavení|Value|
-    |---|---|
-    |Virtuální síť| Vyberte **Virtuální síť**. V části **Vytvořit virtuální síť** jako **Název** zadejte **myVNet3**. Jako podsíť zadejte **mySubnet**.|
-    |Skupina zabezpečení sítě|Vyberte **Basic**. V rozevíracím seznamu **Vyberte veřejné příchozí porty** vyberte **HTTP** a **RDP**. |
-    |Diagnostika spouštění|Vyberte **Zakázáno**.|
-    |||
-
-6. V části **Vytvořit** na kartě **Souhrn** vyberte **Vytvořit** a spusťte nasazování virtuálního počítače.
-8. Vytvoření virtuálního počítače trvá několik minut. Nepokračujte v dalších krocích, dokud se virtuální počítač nevytvoří.
+3. Vyberte **správu** kartě nebo vyberte **Další: Disky**, pak **Další: Sítě**, pak **Další: Správa**. V části **monitorování**, nastavte **Diagnostika spouštění** k **vypnout**.
+4. Vyberte **Zkontrolovat a vytvořit**.
+5. Zkontrolujte nastavení a potom klikněte na tlačítko **vytvořit**.  
+6. Podle pokynů vytvořte druhý virtuální počítač s názvem *myVMWestEurope*, s **skupiny prostředků** název *myResourceGroupTM2*, **umístění** z *západní Evropa*a všechna ostatní nastavení stejný jako *myVMEastUS*.
+7. Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
+
 Vytvořte profil služby Traffic Manager založený na metodě **váženého** směrování.
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 2. V části **Vytvořit profil služby Traffic Manager** zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**.
 
-    | Nastavení                 | Value                                              |
+    | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Name                   | Zadejte jedinečný název v rámci zóny trafficmanager.net. Výsledkem bude název DNS trafficmanager.net, který bude sloužit k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Název                   | Zadejte jedinečný název v rámci zóny trafficmanager.net. Výsledkem bude název DNS trafficmanager.net, který bude sloužit k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte metodu **váženého** směrování.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Použít existující** a pak vyberte **myResourceGroupTM1**. |
@@ -175,35 +154,39 @@ Přidejte dva virtuální počítače se službou myIISVMEastUS servery služby 
 2. V okně **Profil služby Traffic Manager** v části **Nastavení** vyberte **Koncové body** > **Přidat**.
 3. Zadejte nebo vyberte následující informace. U ostatních nastavení přijměte výchozí hodnoty a pak vyberte **OK**.
 
-    | Nastavení                 | Value                                              |
+    | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Type                    | Zadejte koncový bod Azure.                                   |
-    | Name           | Zadejte **myEastUSEndpoint**.                                        |
+    | Typ                    | Zadejte koncový bod Azure.                                   |
+    | Název           | Zadejte **myEastUSEndpoint**.                                        |
     | Typ cílového prostředku           | Vyberte **Veřejná IP adresa**.                          |
     | Cílový prostředek          | Zvolte veřejnou IP adresu a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu **myIISVMEastUS-ip**. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
-    |  Hmotnost      | Zadejte **100**.        |
+    |  Váha      | Zadejte **100**.        |
     |        |           |
 
 4. Zopakujte kroky 2 a 3 a přidejte další koncový bod **myWestEuropeEndpoint** pro veřejnou IP adresu **myIISVMWEurope-ip**. Tato adresa je přidružená k virtuálnímu počítači se serverem služby IIS myIISVMWEurope. Jako **Váha** zadejte **25**.
 5. Po přidání se oba koncové body zobrazí v profilu služby Traffic Manager a jejich stav monitorování bude **Online**.
 
 ## <a name="test-the-traffic-manager-profile"></a>Test profilu služby Traffic Manager
+
 Pokud chcete zobrazit službu Traffic Manager v akci, proveďte následující kroky:
+
 1. Určete název DNS vašeho profilu služby Traffic Manager.
 2. Zobrazte službu Traffic Manager v akci.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Určení názvu DNS profilu služby Traffic Manager
+
 V tomto kurzu pro zjednodušení k prohlížení webů použijete název DNS profilu služby Traffic Manager.
 
 Název DNS profilu služby Traffic Manager můžete určit následujícím způsobem:
 
 1. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který jste vytvořili v předchozí části. Ve výsledcích, které se zobrazí, vyberte profil služby Traffic Manager.
-1. Vyberte **Přehled**.
-2. V profilu služby Traffic Manager se zobrazí jeho název DNS. V produkčních nasazeních pomocí záznamu DNS CNAME nakonfigurujete individuální název domény odkazující na název domény služby Traffic Manager.
+2. Vyberte **Přehled**.
+3. V profilu služby Traffic Manager se zobrazí jeho název DNS. V produkčních nasazeních pomocí záznamu DNS CNAME nakonfigurujete individuální název domény odkazující na název domény služby Traffic Manager.
 
    ![Název DNS služby Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Zobrazení služby Traffic Manager v akci
+
 V této části uvidíte službu Traffic Manager v akci.
 
 1. V nabídce vlevo vyberte **Všechny prostředky**. Ze seznamu prostředků vyberte **myVMEastUS** ve skupině prostředků **myResourceGroupTM1**.
@@ -215,7 +198,10 @@ V této části uvidíte službu Traffic Manager v akci.
 
    ![Test profilu služby Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
+7. Opakujte kroky 1 až 6 na virtuální počítač myVMWestEurope zobrazíte odpověď vážený webu.
+
 ## <a name="delete-the-traffic-manager-profile"></a>Odstranění profilu služby Traffic Manager
+
 Pokud už skupiny prostředků vytvořené v tomto kurzu nepotřebujete, můžete je odstranit. Uděláte to tak, že vyberte skupinu prostředků (**ResourceGroupTM1** nebo **ResourceGroupTM2**) a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další postup

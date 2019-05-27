@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 85b06527a6d34ebd8d6bf1605533b9bf4d09fa84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608921"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66236405"
 ---
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

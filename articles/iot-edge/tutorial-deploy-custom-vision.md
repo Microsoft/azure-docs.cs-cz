@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575817"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239691"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provedení klasifikace obrázků na hraničních zařízeních pomocí služby Custom Vision Service
 
@@ -95,7 +95,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 4. Přidejte k této skupině obrázků značku **hemlock** (Jedlovec) a stiskněte **Enter**, aby se značka použila. 
 
-5. Vyberte **Nahrát soubory (10)**. 
+5. Vyberte **Nahrát soubory (10)** . 
 
    ![Nahrát soubory označené hemlock Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
@@ -107,7 +107,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 9. Přidejte k této skupině obrázků značku **japanese cherry** (Sakura) a stiskněte **Enter**, aby se značka použila. 
 
-10. Vyberte **Nahrát soubory (10)**. Po úspěšném nahrání obrázků vyberte **Hotovo**. 
+10. Vyberte **Nahrát soubory (10)** . Po úspěšném nahrání obrázků vyberte **Hotovo**. 
 
 11. Jakmile budou obě sady obrázků označené a nahrané, vyberte **Trénovat** a natrénujte klasifikátor. 
 
@@ -437,7 +437,7 @@ Na svém zařízení si prohlédněte protokoly modulu cameraCapture, kde uvidí
    iotedge logs cameraCapture
    ```
 
-Ve Visual Studio Code klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a vyberte **Začít monitorovat zprávy D2C**. 
+V sadě Visual Studio Code klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a vyberte **spustit monitorování integrovaných událostí koncový bod**. 
 
 Výsledky z modulu služby Custom Vision, které se odesílají jako zprávy z modulu cameraCapture, zahrnují pravděpodobnost, s jakou se jedná o obrázek jedlovce nebo sakury. Vzhledem k tomu, že se jedná o obrázek jedlovce, měla by se zobrazit pravděpodobnost 1.0. 
 

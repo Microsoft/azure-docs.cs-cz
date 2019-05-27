@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 1dfa81ad7981578d4f296de1b421c7e064819718
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7e882a66ae5a090e1fd3a0850ff35281dc4e692d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867292"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072010"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Měna předem připravených entit pro aplikace LUIS
 Měny předem připravených entit rozpozná měny v mnoha označení a země nebo oblasti, bez ohledu na jazykovou verzi aplikace LUIS. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující Měna, která se záměry aplikace. Entita měny se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
@@ -25,6 +25,9 @@ Měny předem připravených entit rozpozná měny v mnoha označení a země ne
 Spravuje se z měny [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) úložiště GitHub
 
 ## <a name="resolution-for-currency-entity"></a>Řešení pro entitu měny
+
+### <a name="api-version-2x"></a>Verze rozhraní API 2.x
+
 Následující příklad ukazuje rozlišení **builtin.currency** entity.
 
 ```json
@@ -56,6 +59,72 @@ Následující příklad ukazuje rozlišení **builtin.currency** entity.
       }
     }
   ]
+}
+```
+
+
+
+### <a name="preview-api-version-3x"></a>Verze Preview rozhraní API 3.x
+
+Následující kód JSON je `verbose` parametr nastaven na `false`:
+
+```json
+{
+    "query": "search for items under $10.99",
+    "prediction": {
+        "normalizedQuery": "search for items under $10.99",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.605889857
+            }
+        },
+        "entities": {
+            "money": [
+                {
+                    "number": 10.99,
+                    "unit": "Dollar"
+                }
+            ]
+        }
+    }
+}
+```
+
+Následující kód JSON je `verbose` parametr nastaven na `true`:
+
+```json
+{
+    "query": "search for items under $10.99",
+    "prediction": {
+        "normalizedQuery": "search for items under $10.99",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.605889857
+            }
+        },
+        "entities": {
+            "money": [
+                {
+                    "number": 10.99,
+                    "unit": "Dollar"
+                }
+            ],
+            "$instance": {
+                "money": [
+                    {
+                        "type": "builtin.currency",
+                        "text": "$10.99",
+                        "startIndex": 23,
+                        "length": 6,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: bd68e2803b3b538011cfa37378890f2cc7b22223
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 942f84723bc207c200b36a63ca7f65cb9d7dab59
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906992"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235614"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -108,7 +108,7 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
-1. Nahraďte `<path to your form>` s cestou k souboru formuláře.
+1. Nahraďte `<path to your form>` s cestou k souboru formuláře. Například c:\temp\file.pdf. 
 1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 

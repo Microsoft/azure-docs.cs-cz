@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a31921e229a4bbfccd6fdd871666aad1eeef3232
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190276"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243845"
 ---
 # <a name="what-is-conversation-transcription"></a>Co je určené k transkripci konverzace?
 
@@ -67,6 +67,11 @@ Konverzace určené k transkripci očekává, že vícekanálový audiostreamy a
 > Podrobnější informace o specifikaci a návrhu, naleznete v tématu [Microsoft řeči zařízení SDK mikrofon](https://aka.ms/cts/microphone). Další informace nebo zakoupit development kit, najdete v článku [získat Microsoft zařízení sadou SDK pro řeč](https://aka.ms/cts/getsdk).
 
 Další informace o použití přepisu konverzace se sadou SDK pro řeč zařízení, najdete v článku [použití přepisu konverzace](https://aka.ms/cts/howto).
+
+
+## <a name="quick-start-with-a-sample-app"></a>Rychlý Start s ukázkovou aplikací
+
+Microsoft řeči zařízení SDK obsahuje ukázkové aplikace rychlý start pro všechna zařízení související ukázky. Přepis konverzace je jedním z nich. Najdete ho v [sadou SDK pro řeč zařízení s androidem quickstart](https://aka.ms/sdsdk-quickstart) s ukázkovou aplikaci a jeho zdrojový kód pro vaši informaci.
 
 ## <a name="next-steps"></a>Další postup
 

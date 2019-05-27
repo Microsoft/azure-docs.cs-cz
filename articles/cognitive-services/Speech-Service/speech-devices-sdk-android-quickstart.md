@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: d5af2bb61eeb986f02a31d45ff9236ecc0c8427e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026192"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234502"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Rychlý start: Spuštění ukázkové aplikace sadou SDK pro řeč zařízení v Androidu
 
-V tomto rychlém startu budete zjistěte, jak můžete vytvářet produkt podporou hlasových sadou SDK pro řeč zařízení pro Android.
+V tomto rychlém startu se dozvíte postupy sadou SDK pro řeč zařízení pro Android můžete vytvářet produkt podporou řeči nebo jej použít jako [konverzace určené k transkripci](conversation-transcription-service.md) zařízení.
 
 Tato příručka vyžaduje [Azure Cognitive Services](get-started.md) účet s prostředkem hlasové služby. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
@@ -33,9 +33,11 @@ Než začnete používat sadou SDK pro řeč zařízení, bude nutné:
 
 * Stáhněte si nejnovější verzi [sadou SDK pro řeč zařízení](https://aka.ms/sdsdk-download)a extrahujte .zip do pracovního adresáře.
    > [!NOTE]
-   > Soubor ZIP obsahuje Android ukázkovou aplikaci.
+   > Android – ukázka Release.zip soubor obsahuje Android ukázkovou aplikaci a v tomto rychlém startu se předpokládá, že aplikace je extrahován do C:\SDSDK\Android-Sample-Release
 
 * Chcete-li získat [klíč předplatného pro hlasové služby](get-started.md)
+
+* Pokud budete chtít použít jiné konverzace je nutné použít [cyklické mikrofon](get-speech-devices-sdk.md) a služba je momentálně dostupný jenom pro "en US" a "zh-CN" v oblastech, "centralus" a "východní Asie". V těchto oblastech použít určené k transkripci konverzace, musí mít klíč řeči.
 
 * Pokud máte v plánu můžete identifikovat záměry (nebo akce) z uživatele projevy hlasové služby, bude nutné [služby Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) předplatného. Další informace o LUIS a rozpoznání záměru, naleznete v tématu [rozpoznávání řeči záměry služba luis C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
@@ -82,16 +84,23 @@ Pokud chcete ověřit nastavení development kit, sestavení a nainstalovat uká
 
 1. Přidáte klíč předplatného řeči ke zdrojovému kódu. Pokud chcete vyzkoušet rozpoznání záměru, přidejte také vaše [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klíč předplatného a aplikace.
 
-   Klíče a informace o aplikaci najdete v následujících řádcích v zdrojový soubor MainActivity.java:
+   Pro zpracování řeči a LUIS údaje začnou MainActivity.java:
 
    ```java
-   // Subscription
-   private static final String SpeechSubscriptionKey = "[your speech key]";
-   private static final String SpeechRegion = "westus";
-   private static final String LuisSubscriptionKey = "[your LUIS key]";
-   private static final String LuisRegion = "westus2.api.cognitive.microsoft.com";
-   private static final String LuisAppId = "[your LUIS app ID]"
+    // Subscription
+    private static String SpeechSubscriptionKey = "<enter your subscription info here>";
+    private static String SpeechRegion = "westus"; // You can change this if your speech region is different.
+    private static String LuisSubscriptionKey = "<enter your subscription info here>";
+    private static String LuisRegion = "westus2"; // you can change this, if you want to test the intent, and your LUIS region is different.
+    private static String LuisAppId = "<enter your LUIS AppId>";
    ```
+
+    Pokud používáte konverzace určené k transkripci řeči klíč a oblasti informace jsou také potřebná v conversation.java:
+
+   ```java
+    private static final String CTSKey = "<Conversation Transcription Service Key>";
+    private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
+    ```
 
 1. Výchozí probuzení word (klíčové slovo) je "Počítač". Můžete také zkusit jednu z nich k dispozici funkce slova, třeba "Počítač" nebo "Assistant". Soubory prostředků pro tato slova alternativní probuzení se v zařízení sadou SDK pro řeč, ve složce – klíčové slovo. Například C:\SDSDK\Android-Sample-Release\keyword\Computer obsahuje soubory používané pro probuzení slovo "Počítač".
 
@@ -126,7 +135,7 @@ Pokud chcete ověřit nastavení development kit, sestavení a nainstalovat uká
    |||Lineární dev Kit, která používá všechny mikrofonů: `Linear4`|
    |||Lineární dev Kit, která používá dva mikrofonů: `Linear2`|
 
-1. Jak vytvořit aplikaci, na **spustit** nabídce vyberte možnost **spuštění "aplikace"**. **Vyberte cíl nasazení** zobrazí se dialogové okno.
+1. Jak vytvořit aplikaci, na **spustit** nabídce vyberte možnost **spuštění "aplikace"** . **Vyberte cíl nasazení** zobrazí se dialogové okno.
 
 1. Vyberte zařízení a pak vyberte **OK** k nasazení aplikace do zařízení.
 
@@ -135,6 +144,10 @@ Pokud chcete ověřit nastavení development kit, sestavení a nainstalovat uká
 1. Ukázková aplikace sadou SDK pro řeč zařízení spustí a zobrazí následující možnosti:
 
    ![Ukázková aplikace příklad sadou SDK pro řeč zařízení a možnosti](media/speech-devices-sdk/qsg-8.png)
+
+1. Nově přidané je ukázka určené k transkripci konverzace. Začněte zbavte se spustit relaci. Ve výchozím nastavení všichni uživatelé jsou hosta, ale pokud máte podpisů hlasové účastníka můžou být přepnuté do /video/participants.properties souboru na zařízení. Ke generování pohled podpis hlasu na [přepisy konverzace (SDK)](how-to-use-conversation-transcription-service.md).
+
+   ![Ukázkové aplikace určené k transkripci konverzace](media/speech-devices-sdk/qsg-15.png)
 
 1. Experiment!
 

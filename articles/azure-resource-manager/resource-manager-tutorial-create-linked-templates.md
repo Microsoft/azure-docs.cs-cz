@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e811d1f7fb84e2539ba9daea3eea13f5e028f997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389529"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241389"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manageru
 
@@ -89,7 +89,7 @@ Propojená šablona vytvoří účet úložiště. Propojené šablony slouží 
 2. Proveďte následující změny:
 
     * Odeberte všechny parametry jiné než **umístění**.
-    * Přidejte parametr s názvem **storageAccountName**. 
+    * Přidejte parametr s názvem **storageAccountName**.
         ```json
         "storageAccountName":{
           "type": "string",
@@ -99,7 +99,7 @@ Propojená šablona vytvoří účet úložiště. Propojené šablony slouží 
         },
         ```
         Název účtu úložiště a umístění jsou předány z hlavní šablony propojené šablony jako parametry.
-        
+
     * Odeberte **proměnné** element a všechny definice proměnných.
     * Odeberte všechny prostředky, než je účet úložiště. Odeberete celkem čtyři prostředky.
     * Aktualizujte hodnotu **název** element prostředku účtu úložiště:
@@ -109,7 +109,7 @@ Propojená šablona vytvoří účet úložiště. Propojené šablony slouží 
         ```
 
     * Aktualizujte **výstupy** prvku, aby vypadaly takto:
-    
+
         ```json
         "outputs": {
           "storageUri": {
@@ -272,7 +272,7 @@ Hlavní šablona se nazývá azuredeploy.json.
     Věnujte pozornost těmto podrobnostem:
 
     * Prostředek `Microsoft.Resources/deployments` v hlavní šabloně je použit k propojení s ostatními šablonami.
-    * Prostředek `deployments` se nazývá `linkedTemplate`. Tento název se používá pro [konfiguraci závislostí](#configure-dependency).  
+    * Prostředek `deployments` se nazývá `linkedTemplate`. Tento název se používá pro [konfiguraci závislostí](#configure-dependency).
     * Můžete použít pouze [přírůstkový](./deployment-modes.md) režim nasazení při vyvolání propojených šablon.
     * `templateLink/uri` obsahuje propojenou šablonu identifikátoru URI. Aktualizujte hodnotu k identifikátoru URI při odeslání propojené šablony (jeden s tokenem SAS).
     * K předání hodnot z hlavní šablony do propojené šablony použijte `parameters`.
@@ -305,7 +305,7 @@ Protože účet úložiště je teď definovaný v propojené šabloně, je nutn
 
     ![Konfigurace závislostí propojených šablon Azure Resource Manageru](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
-    *linkedTemplate* je název prostředku nasazení.  
+    *linkedTemplate* je název prostředku nasazení.
 3. Aktualizovat **vlastnosti/diagnosticsProfile/bootDiagnostics/storageUri** jak je znázorněno na předchozím snímku obrazovky.
 4. Revidovaná šablonu uložte.
 
@@ -334,4 +334,4 @@ Ke zlepšení projekt, proveďte následující další změny do dokončení pr
 V tomto kurzu jste modulární šablonu do hlavní šablony a propojenou šablonu. Další informace o použití rozšíření virtuálních počítačů provést úkoly po nasazení, najdete v tématech:
 
 > [!div class="nextstepaction"]
-> [Nasazování rozšíření virtuálních počítačů](./deployment-manager-tutorial.md)
+> [Nasazování rozšíření virtuálních počítačů](./resource-manager-tutorial-deploy-vm-extensions.md)

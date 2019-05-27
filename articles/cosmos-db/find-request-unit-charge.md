@@ -4,20 +4,20 @@ description: Zjistěte, jak najít jednotky žádosti (RU) poplatků pro všechn
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/15/2019
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 730f0604d0c292764aaee6e0ffb8ef95d90be5f2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 8ccb7ae9869ec01b4f26009535af613ccb1d35d0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410294"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241110"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najít zátěž jednotky žádostí ve službě Azure Cosmos DB
 
 Tento článek představuje různé způsoby, jak můžete najít [jednotky žádosti](request-units.md) spotřebu (RU) pro všechny operace pro kontejner ve službě Azure Cosmos DB. V současné době můžete měřit toto využití pouze pomocí webu Azure portal nebo zkontrolováním odpověď odesílanou obnovení z Azure Cosmos DB pomocí jedné ze sad SDK.
 
-## <a name="sql-core-api"></a>SQL (Core) rozhraní API
+## <a name="sql-core-api"></a>Rozhraní SQL (Core) API
 
 Pokud používáte rozhraní SQL API, máte několik možností pro vyhledání spotřebu RU pro operace kontejneru Azure Cosmos.
 

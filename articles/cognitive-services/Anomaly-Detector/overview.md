@@ -1,5 +1,5 @@
 ---
-title: Co je API detekce anomálií? | Dokumenty Microsoft
+title: Co je rozhraní API Detektoru anomálií? | Dokumenty Microsoft
 titleSuffix: Azure Cognitive Services
 description: Pomocí pokročilých algoritmů rozhraní API detekce anomálií můžete identifikovat anomálie ve vašich datech časových řad.
 services: cognitive-services
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 48dffb8853d3def590e434c1683ecf038e2a194e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473162"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64415832"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>Co je API detekce anomálií?
+# <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
 Rozhraní API detekce anomálií vám umožňuje monitorovat a zjišťovat anomálie ve vašich datech časových řad pomocí služby machine learning. Automaticky identifikuje a použitím nejlepšího těsně modely ke svým datům, bez ohledu na odvětví, scénáři nebo objem dat se přizpůsobí API detekce anomálií. Použití dat časových řad, rozhraní API určuje hranice pro detekci anomálií, očekávané hodnoty, a které datové body jsou anomálie.
 

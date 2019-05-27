@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s Proxyclick | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Proxyclick.
+description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Proxyclick.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,180 +15,185 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b797c7d49495aac90abb31a9214bf2928784a866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa146ad5a36cc74a65ec6d3dee98b2ef35bc65ad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868640"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Kurz: Integrace Azure Active Directory s Proxyclick
 
 V tomto kurzu se dozvíte, jak integrovat Proxyclick s Azure Active Directory (Azure AD).
-Proxyclick integraci se službou Azure AD poskytuje následující výhody:
+Tato integrace poskytuje tyto výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Proxyclick.
-* Můžete povolit uživatelům být automaticky přihlášeni k Proxyclick (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit, kdo má přístup k Proxyclick Azure AD.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k Proxyclick (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Proxyclick, potřebujete následující položky:
+Konfigurace integrace Azure AD s Proxyclick, musíte mít:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Proxyclick jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete si zaregistrovat [zkušební verze na jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+* Proxyclick předplatné, které obsahuje single sign-on povoleno.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
 
-* Podporuje Proxyclick **SP** a **IDP** jednotné přihlašování zahájené pomocí
+* Proxyclick podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování a zahájené pomocí IdP.
 
-## <a name="adding-proxyclick-from-the-gallery"></a>Přidání Proxyclick z Galerie
+## <a name="add-proxyclick-from-the-gallery"></a>Přidání Proxyclick z Galerie
 
-Konfigurace integrace Proxyclick do služby Azure AD, budete muset přidat Proxyclick z Galerie na váš seznam spravovaných aplikací SaaS.
+Nastavení integrace Proxyclick do služby Azure AD, budete muset přidat Proxyclick z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Proxyclick z galerie, postupujte následovně:**
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+    ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+2. Přejděte na **podnikové aplikace** > **všechny aplikace**:
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![Vyberte novou aplikaci](common/add-new-app.png)
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+4. Do vyhledávacího pole zadejte **Proxyclick**. Vyberte **Proxyclick** ve výsledcích hledání a pak vyberte **přidat**.
 
-4. Do vyhledávacího pole zadejte **Proxyclick**vyberte **Proxyclick** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-     ![Proxyclick v seznamu výsledků](common/search-new-app.png)
+     ![Výsledky vyhledávání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Proxyclick podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Proxyclick.
+V této části budete konfigurovat a Azure AD jednotné přihlašování s Proxyclick test pomocí testovacího uživatele s názvem Britta Simon.
+Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v Proxyclick.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Proxyclick, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Proxyclick, které potřebujete k dokončení těchto kroků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Proxyclick Single Sign-On](#configure-proxyclick-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Proxyclick](#create-proxyclick-test-user)**  – Pokud chcete mít protějšek Britta Simon Proxyclick, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
+2. **[Konfigurace Proxyclick jednotného přihlašování](#configure-proxyclick-single-sign-on)**  na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
+5. **[Vytvoření zkušebního uživatele Proxyclick](#create-a-proxyclick-test-user)**  připojený k Azure AD zastoupení uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Proxyclick, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s Proxyclick, proveďte tyto kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Proxyclick** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/), vyberte na stránce Proxyclick integrace aplikací, **jednotného přihlašování**:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Vyberte jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit ikonu](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+4. V **základní konfiguraci SAML** dialogové okno, pokud chcete nakonfigurovat aplikace v režimu zahájené pomocí IdP, proveďte následující kroky.
 
-    ![Proxyclick domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
+    ![Dialogové okno základní konfigurace SAML](common/idp-intiated.png)
 
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://saml.proxyclick.com/init/<companyId>`
+    1. V **identifikátor** pole, zadejte adresu URL v tomto vzoru:
+   
+       `https://saml.proxyclick.com/init/<companyId>`
 
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://saml.proxyclick.com/consume/<companyId>`
+    1. V **adresy URL odpovědi** pole, zadejte adresu URL v tomto vzoru:
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+       `https://saml.proxyclick.com/consume/<companyId>`
+
+5. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **nastavit další adresy URL**. V **přihlašovací adresa URL** pole, zadejte adresu URL v tomto vzoru:
+   
+   `https://saml.proxyclick.com/init/<companyId>`
 
     ![Proxyclick domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://saml.proxyclick.com/init/<companyId>`
+    
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizuje o skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL, který je vysvětlen později v tomto kurzu.
+    > Tyto hodnoty jsou zástupné symboly. Budete muset použít skutečné identifikátor, adresa URL pro odpověď a adresu URL přihlašování. Postup, jak získat tyto hodnoty jsou popsány dále v tomto kurzu.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** odkaz **certifikát (Base64)** , podle požadavků vaší a uložte certifikát v počítači:
 
     ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-7. Na **nastavení Proxyclick** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+7. V **nastavení Proxyclick** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků:
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    1. **Adresa URL pro přihlášení**.
 
-    b. Identifikátor Azure AD
+    1. **Identifikátor služby Azure AD**.
 
-    c. Adresa URL – odhlášení
+    1. **Odhlašovací adresa URL**.
 
-### <a name="configure-proxyclick-single-sign-on"></a>Konfigurace Proxyclick jednotné přihlašování
+### <a name="configure-proxyclick-single-sign-on"></a>Konfigurace Proxyclick jednotného přihlašování
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti Proxyclick jako správce.
+1. V novém okně webového prohlížeče Přihlaste se k webu společnosti Proxyclick jako správce.
 
-2. Vyberte **účet a nastavení**.
+2. Vyberte **účet a nastavení**:
 
-    ![Konfigurace Proxyclick](./media/proxyclick-tutorial/configure1.png)
+    ![Vyberte účet a nastavení](./media/proxyclick-tutorial/configure1.png)
 
-3. Přejděte dolů k položce **integrace** a vyberte **SAML**.
+3. Přejděte dolů k položce **integrace** a vyberte **SAML**:
 
-    ![Konfigurace Proxyclick](./media/proxyclick-tutorial/configure2.png)
+    ![Vyberte SAML](./media/proxyclick-tutorial/configure2.png)
 
-4. V **SAML** části, proveďte následující kroky:
+4. V **SAML** části, proveďte následující kroky.
 
-    ![Konfigurace Proxyclick](./media/proxyclick-tutorial/configure3.png)
+    ![Část SAML](./media/proxyclick-tutorial/configure3.png)
 
-    a. Kopírování **adresu URL příjemce SAML** hodnotu a vložte ho do **adresy URL odpovědi** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
+    1. Kopírovat **adresu URL příjemce SAML** hodnotu a vložte ho do **adresy URL odpovědi** pole **základní konfiguraci SAML** dialogové okno na webu Azure Portal.
 
-    b. Kopírování **přesměrovat adresu URL jednotného přihlašování SAML** hodnotu a vložte ho do **přihlašovací adresa URL** a **identifikátor** textová pole v **základní konfiguraci SAML** oddílu na portálu Azure portal.
+    1. Kopírovat **přesměrovat adresu URL jednotného přihlašování SAML** hodnotu a vložte ho do **přihlašovací adresa URL** a **identifikátor** polích v **základní konfiguraci SAML** Dialogové okno na webu Azure Portal.
 
-    c. Vyberte **metoda požadavku SAML** jako **přesměrování protokolu HTTP**.
+    1. V **metoda požadavku SAML** seznamu vyberte **přesměrování protokolu HTTP**.
 
-    d. V **vystavitele** textového pole vložte hodnotu **Azure AD identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+    1. V **vystavitele** pole, vložte **Azure AD identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    e. V **URL koncového bodu služby SAML 2.0** textového pole vložte hodnotu **přihlašovací adresa URL** zkopírovanými z webu Azure portal.
+    1. V **URL koncového bodu služby SAML 2.0** pole, vložte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    f. Otevřete soubor stažený certifikát z webu Azure portal v programu Poznámkový blok a vložte jej do **certifikát** textového pole.
+    1. V poznámkovém bloku otevřete soubor certifikátu, který jste si stáhli z webu Azure portal. Vložte obsah tohoto souboru do **certifikát** pole.
 
-    g. Klikněte na tlačítko **uložit změny**.
+    1. Vyberte **uložit změny**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Vyberte možnost Všichni uživatelé](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Vyberte **nového uživatele** v horní části obrazovky:
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Vyberte nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. V **uživatele** dialogové okno pole, proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno uživatelského](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k Proxyclick použití Azure jednotného přihlašování.
+V této části se budou moci používat jednotné přihlašování Azure tím, že udělíte přístup k Proxyclick Britta Simon.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Proxyclick**.
 
@@ -196,59 +201,59 @@ V této části je povolit Britta Simon k udělení přístupu k Proxyclick pou�
 
 2. V seznamu aplikací vyberte **Proxyclick**.
 
-    ![Odkaz Proxyclick v seznamu aplikací](common/all-applications.png)
+    ![Seznam aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V levém podokně vyberte **uživatelů a skupin**:
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části okna.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části okna.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogu **přiřadit**.
 
-### <a name="create-proxyclick-test-user"></a>Vytvoření Proxyclick testovacího uživatele
+### <a name="create-a-proxyclick-test-user"></a>Vytvoření zkušebního uživatele Proxyclick
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Proxyclick, musí být poskytnuty do Proxyclick. V případě Proxyclick zřizování se ruční úlohy.
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Proxyclick, budete muset přidat je do Proxyclick. Musíte je přidat ručně.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:
 
 1. Přihlaste se k webu společnosti Proxyclick jako správce.
 
-1. Klikněte na tlačítko **kolegy** z horního navigačního panelu.
+1. Vyberte **kolegy** v horní části okna:
 
-    ![Přidat zaměstnance](./media/proxyclick-tutorial/user1.png)
+    ![Vyberte vaši kolegové](./media/proxyclick-tutorial/user1.png)
 
-1. Klikněte na tlačítko **Přidat kolegy**
+1. Vyberte **Přidat kolegy**:
 
-    ![Přidat zaměstnance](./media/proxyclick-tutorial/user2.png)
+    ![Výběr možnosti Přidat kolegy](./media/proxyclick-tutorial/user2.png)
 
-1. V **přidat kolegu** části, proveďte následující kroky:
+1. V **přidat kolegu** části, proveďte následující kroky.
 
-    ![Přidat zaměstnance](./media/proxyclick-tutorial/user3.png)
+    ![Přidat oddíl kolegu](./media/proxyclick-tutorial/user3.png)
 
-    a. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele brittasimon@contoso.com.
+    1. V **e-mailu** zadejte e-mailovou adresu uživatele. V takovém případě **brittasimon\@contoso.com**.
 
-    b. V **křestní jméno** textového pole Název typu prvního uživatele, jako je Britta.
+    1. V **křestní jméno** zadejte jméno uživatele. V takovém případě **Britta**.
 
-    c. V **příjmení** textového pole zadejte příjmení uživatele, jako je Simon.
+    1. V **příjmení** zadejte příjmení uživatele. V takovém případě **Simon**.
 
-    d. Klikněte na tlačítko **přidat uživatele**.
+    1. Vyberte **přidat uživatele**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Proxyclick na přístupovém panelu, můžete by měl být automaticky přihlášeni k Proxyclick, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice Proxyclick na přístupovém panelu, vám by měl být automaticky přihlášeni Proxyclick instanci, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

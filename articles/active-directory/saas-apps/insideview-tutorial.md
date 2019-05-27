@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s InsideView | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a InsideView.
+description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a InsideView.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,170 +15,171 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 76db7381985853a81843df812dffcd8ab2bd8f9a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0fdabd237fa128326673d84e889387d03f184b00
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407470"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Kurz: Integrace Azure Active Directory s InsideView
 
 V tomto kurzu se dozvíte, jak integrovat InsideView s Azure Active Directory (Azure AD).
-InsideView integraci se službou Azure AD poskytuje následující výhody:
+Tato integrace poskytuje tyto výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k InsideView.
-* Můžete povolit uživatelům být automaticky přihlášeni k InsideView (Single Sign-On) s jejich účty Azure AD.
-* Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit, kdo má přístup k InsideView Azure AD.
+* Můžete povolit uživatelům, aby se automaticky přihlášeni k InsideView (jednotné přihlašování) s jejich účty Azure AD.
+* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s InsideView, potřebujete následující položky:
+Konfigurace integrace Azure AD s InsideView, musíte mít:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* InsideView jednotného přihlašování povolená předplatného
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné InsideView obsahující single sign-on povoleno.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
 
-* Podporuje InsideView **IDP** jednotné přihlašování zahájené pomocí
+* InsideView podporuje jednotné přihlašování zahájené pomocí IdP.
 
-## <a name="adding-insideview-from-the-gallery"></a>Přidání InsideView z Galerie
+## <a name="add-insideview-from-the-gallery"></a>Přidání InsideView z Galerie
 
-Konfigurace integrace InsideView do služby Azure AD, budete muset přidat InsideView z Galerie na váš seznam spravovaných aplikací SaaS.
+Nastavení integrace InsideView do služby Azure AD, budete muset přidat InsideView z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat InsideView z galerie, postupujte následovně:**
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+    ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-    ![Tlačítko Azure Active Directory](common/select-azuread.png)
+2. Přejděte na **podnikové aplikace** > **všechny aplikace**:
 
-2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![Vyberte novou aplikaci](common/add-new-app.png)
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+4. Do vyhledávacího pole zadejte **InsideView**. Vyberte **InsideView** ve výsledcích hledání a pak vyberte **přidat**.
 
-4. Do vyhledávacího pole zadejte **InsideView**vyberte **InsideView** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
-
-    ![InsideView v seznamu výsledků](common/search-new-app.png)
+    ![Výsledky vyhledávání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí InsideView podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v InsideView.
+V této části budete konfigurovat a Azure AD jednotné přihlašování s InsideView test pomocí testovacího uživatele s názvem Britta Simon.
+Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v InsideView.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s InsideView, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s InsideView, které potřebujete k dokončení těchto kroků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace InsideView Single Sign-On](#configure-insideview-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele InsideView](#create-insideview-test-user)**  – Pokud chcete mít protějšek Britta Simon InsideView, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
+2. **[Konfigurace InsideView jednotného přihlašování](#configure-insideview-single-sign-on)**  na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
+5. **[Vytvořit testovacího uživatele InsideView](#create-an-insideview-test-user)**  připojený k Azure AD zastoupení uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
+V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s InsideView, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s InsideView, proveďte tyto kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **InsideView** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/), vyberte na stránce InsideView integrace aplikací, **jednotného přihlašování**:
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
+    ![Vyberte jednotného přihlašování](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
+2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
+    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
-    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+    ![Upravit ikonu](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. V **základní konfiguraci SAML** dialogové okno pole, proveďte následující kroky.
 
-    ![InsideView domény a adresy URL jednotného přihlašování – informace](common/idp-reply.png)
+    ![Dialogové okno základní konfigurace SAML](common/idp-reply.png)
 
-    V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://my.insideview.com/iv/<STS Name>/login.iv`
+    V **adresy URL odpovědi** pole, zadejte adresu URL v tomto vzoru:
+
+    `https://my.insideview.com/iv/<STS Name>/login.iv`
 
     > [!NOTE]
-    > Hodnota není skutečný. Skutečná adresa URL odpovědi zaktualizujte příslušnou hodnotu. Kontakt [tým podpory InsideView klienta](mailto:support@insideview.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tato hodnota je zástupný symbol. Budete muset použít adresy URL skutečné odpovědi. Obraťte se [tým podpory InsideView](mailto:support@insideview.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** dialogové okno na webu Azure Portal.
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Raw)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** odkaz **certifikát (Raw)** , podle požadavků vaší a uložte certifikát v počítači:
 
     ![Odkaz ke stažení certifikátu](common/certificateraw.png)
 
-6. Na **nastavení InsideView** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. V **nastavení InsideView** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků:
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
+    1. **Adresa URL pro přihlášení**.
 
-    b. Identifikátor Azure AD
+    1. **Identifikátor služby Azure AD**.
 
-    c. Adresa URL – odhlášení
+    1. **Odhlašovací adresa URL**.
 
-### <a name="configure-insideview-single-sign-on"></a>Konfigurace InsideView jednotné přihlašování
+### <a name="configure-insideview-single-sign-on"></a>Konfigurace InsideView jednotného přihlašování
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti InsideView jako správce.
+1. V novém okně webového prohlížeče Přihlaste se k webu společnosti InsideView jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na tlačítko **správce**, **SingleSignOn nastavení**a potom klikněte na tlačítko **přidat SAML**.
+1. V horní části okna vyberte **správce**, **SingleSignOn nastavení**a potom **přidat SAML**.
    
-   ![Jednotné přihlašování SAML pro nastavení](./media/insideview-tutorial/ic794135.png "SAML jednotného přihlašování nastavení")
+   ![Jednotné přihlašování – nastavení SAML](./media/insideview-tutorial/ic794135.png "SAML jednotné přihlašování – nastavení")
 
-1. V **přidat nové SAML** části, proveďte následující kroky:
+1. V **přidat nové SAML** části, proveďte následující kroky.
 
-    ![Přidat nový SAML](./media/insideview-tutorial/ic794136.png "přidat nové SAML")
+    ![Přidejte novou SAML část](./media/insideview-tutorial/ic794136.png "přidat oddíl nové SAML")
 
-    a. V **název služby tokenů zabezpečení** textového pole zadejte název pro vaši konfiguraci.
+    1. V **název služby tokenů zabezpečení** pole, zadejte název pro vaši konfiguraci.
 
-    b. V **nevyžádané koncový bod SamlP/WS-Fed** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    1. V **nevyžádané koncový bod SamlP/WS-Fed** pole, vložte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    c. Otevřete váš kódovaného certifikátu Base64, který jste si stáhli z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **certifikátu STS** textového pole.
+    1. Otevřete nezpracovaná certifikát, který jste si stáhli z webu Azure portal. Zkopírujte obsah certifikátu do schránky a vložte obsah do **certifikátu STS** pole.
 
-    d. V **mapování Id uživatele Crm** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    1. V **mapování Id uživatele Crm** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
-    e. V **Crm e-mailu mapování** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    1. V **Crm e-mailu mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
-    f. V **Crm křestní jméno mapování** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    1. V **Crm křestní jméno mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
 
-    g. V **Crm lastName mapování** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.  
+    1. V **Crm lastName mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.  
 
-    h. Klikněte na **Uložit**.
+    1. Vyberte **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
 
-1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
+    ![Vyberte možnost Všichni uživatelé](common/users.png)
 
-2. Vyberte **nového uživatele** v horní části obrazovky.
+2. Vyberte **nového uživatele** v horní části okna:
 
-    ![Tlačítko Nový uživatel](common/new-user.png)
+    ![Vyberte nového uživatele](common/new-user.png)
 
-3. Ve vlastnosti uživatele proveďte následující kroky.
+3. V **uživatele** dialogové okno pole, proveďte následující kroky.
 
-    ![Dialogové okno uživatele](common/user-properties.png)
+    ![Dialogové okno uživatelského](common/user-properties.png)
 
-    a. V **název** zadat **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole `brittasimon@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
+    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon k udělení přístupu k InsideView použití Azure jednotného přihlašování.
+V této části se budou moci používat jednotné přihlašování Azure tím, že udělíte přístup k InsideView Britta Simon.
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **InsideView**.
 
@@ -186,40 +187,40 @@ V této části je povolit Britta Simon k udělení přístupu k InsideView pou�
 
 2. V seznamu aplikací vyberte **InsideView**.
 
-    ![Odkaz InsideView v seznamu aplikací](common/all-applications.png)
+    ![Seznam aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+3. V levém podokně vyberte **uživatelů a skupin**:
 
-    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části okna.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části okna.
 
-7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+7. V **přidat přiřazení** dialogu **přiřadit**.
 
-### <a name="create-insideview-test-user"></a>Vytvoření InsideView testovacího uživatele
+### <a name="create-an-insideview-test-user"></a>Vytvořit testovacího uživatele InsideView
 
-Povolení služby Azure AD uživatelům umožní přihlásit k InsideView, musí být zřízená v k InsideView. V případě InsideView zřizování se ruční úlohy.
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k InsideView, budete muset přidat je do InsideView. Musíte je přidat ručně.
 
-Obraťte se na uživatele nebo kontaktů vytvořených v InsideView získáte [tým podpory InsideView](mailto:support@insideview.com).
+Vytvoření uživatele nebo kontakty v InsideView, obraťte se [tým podpory InsideView](mailto:support@insideview.com).
 
 > [!NOTE]
-> Můžete použít jakékoli jiné InsideView uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných InsideView zřízení uživatelských účtů služby Azure AD.
+> Můžete použít libovolný nástroj pro vytváření účtu uživatele nebo rozhraní API poskytovaných InsideView zřízení uživatelských účtů služby Azure AD.
 
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 
-Po kliknutí na dlaždici InsideView na přístupovém panelu, můžete by měl být automaticky přihlášeni k InsideView, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice InsideView na přístupovém panelu, vám by měl být automaticky přihlášeni InsideView instanci, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

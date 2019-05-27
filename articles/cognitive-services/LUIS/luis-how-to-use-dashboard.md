@@ -1,7 +1,7 @@
 ---
 title: Řídicí panel – Language Understanding
 titleSuffix: Azure Cognitive Services
-description: Opravte záměry analytics souhrnný řídicí panel vizualizačního nástrojů pro generování sestav.
+description: Oprava záměry s řídicím panelu analýz vizualizačního nástrojů pro generování sestav.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a518a697369ff74689a0c4ac05af96453b6a5ca4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072474"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236946"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Použití řídicího panelu můžete aplikaci vylepšovat
 
-Najít a opravit problémy s záměry trénovaného aplikace při použití projevy příklad. Souhrnný řídicí panel zobrazuje celkový informace o aplikaci, s nejdůležitější funkce obsahuje příkazy, které by měly být opraveny. 
+Najít a opravit problémy s záměry trénovaného aplikace při použití projevy příklad. Na řídicím panelu zobrazí celkové informace o aplikaci, s nejdůležitější funkce obsahuje příkazy, které by měly být opraveny. 
 
 Zkontrolujte řídicí panel analýza je iterativní proces, opakuje změnit a zlepšit váš model.
 
@@ -33,16 +33,16 @@ Jsou tři problémy vyřešené v řídicím panelu:
 |Problém|Barva grafu|Vysvětlení|
 |--|--|--|
 |Nevyváženosti dat|-|Proběhne, když se výrazně liší množství projevy příklad. Musí mít všechny záměry _zhruba_ stejný počet příklad projevy – s výjimkou záměru None. 10 – 15 % z celkového množství projevy by měl mít jenom v aplikaci.<br><br> Pokud data jsou imbalanced ale záměru přesnost je nad určitou prahovou hodnotu, není tento imbalance označení problém.<br><br>**Začněte s tímto problémem - může být původní příčiny jiných problémů.**|
-|Jasné predikcí|Orange|Proběhne, když hlavní záměr a další záměr skóre jsou dost blízko, že může překlopit na další školicí kvůli [negativní vzorkování](luis-how-to-train.md#train-with-all-data) nebo další projevy příklad přidá k záměru. |
+|Jasné predikcí|Oranžová|Proběhne, když hlavní záměr a další záměr skóre jsou dost blízko, že může překlopit na další školicí kvůli [negativní vzorkování](luis-how-to-train.md#train-with-all-data) nebo další projevy příklad přidá k záměru. |
 |Nesprávný predikcí|Červená|Proběhne, když není příkladu utterance předpovědět pro označené záměr (záměru, který je v).|
 
 Správné předpovědi jsou reprezentovány s modrou barvu.
 
-Souhrnný řídicí panel zobrazuje tyto problémy a zjistíte, které příkazy se to týká a navrhne, co byste měli dělat ke zlepšení aplikace. 
+Řídicí panel zobrazuje tyto problémy a zjistíte, které příkazy se to týká a navrhne, co byste měli dělat ke zlepšení aplikace. 
 
 ## <a name="before-app-is-trained"></a>Předtím, než se trénuje aplikace 
 
-Před tréninku aplikace řídicí panel shrnutí neobsahuje žádné návrhů pro opravy. Trénování vaši aplikaci tyto návrhy.  
+Před tréninku aplikace řídicího panelu neobsahuje žádné návrhů pro opravy. Trénování vaši aplikaci tyto návrhy.  
 
 ## <a name="check-your-publishing-status"></a>Zkontrolovat stav publikování
 
@@ -50,7 +50,7 @@ Před tréninku aplikace řídicí panel shrnutí neobsahuje žádné návrhů p
 
 Zkontrolujte, že aktivní verze je verze, kterou chcete opravit. 
 
-![Souhrnný řídicí panel zobrazuje aplikace externích služeb, publikování oblastí a agregovat přístupy do koncového bodu.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![Aplikace řídicího panelu ukazuje externích služeb, publikování oblastí a agregovat přístupy do koncového bodu.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
 To také zobrazuje všechny publikované regionů, externích služeb a agregovat přístupy do koncového bodu. 
 
@@ -96,7 +96,7 @@ Začněte s tímto problémem - může být původní příčiny jiných problé
 
 * Přidejte další projevy k příslušnému záměru pak trénování znovu. 
 
-Nepřidávejte projevy na záměru žádný, pokud, která je navržena na řídicí panel shrnutí.
+Nepřidávejte projevy na záměru žádný, pokud, která je navržena na řídicím panelu.
 
 > [!Tip]
 > Pomocí třetí části na stránce **projevy za účelem** s **projevy (číslo)** nastavení jako Stručného průvodce visual, který z nich záměry potřebovat další projevy.  
