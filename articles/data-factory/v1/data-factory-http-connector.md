@@ -55,7 +55,7 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro HTTP 
 | --- | --- | --- |
 | type | **Typ** musí být vlastnost nastavena na **Http**. | Ano |
 | url | Základní adresa URL webového serveru. | Ano |
-| authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**, a **ClientCertificate**. <br><br> Naleznete v dalších částech tohoto článku pro další vlastnosti a ukázky JSON pro typy ověřování. | Ano |
+| authenticationType | Určuje typ ověřování. Povolené hodnoty jsou **anonymní**, **základní**, **Digest**, **Windows**, a **ClientCertificate**. <br><br> Naleznete v dalších částech tohoto článku pro další vlastnosti a ukázky JSON pro typy ověřování. | Ano |
 | enableServerCertificateValidation | Určuje, zda povolit ověření certifikátu serveru SSL, pokud se zdrojový webový server služby protokolu HTTPS. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte na **false**. | Ne<br /> (výchozí hodnota je **true**) |
 | gatewayName | Název instance brány správy dat pro připojení ke zdroji v místním HTTP. | Ano, pokud se kopírují data z místní zdroje HTTP |
 | encryptedCredential | Šifrované přihlašovací údaje pro přístup ke koncovému bodu HTTP. Hodnota se automaticky generuje při konfiguraci ověřovací údaje v Průvodci kopírovat nebo s použitím **ClickOnce** dialogové okno. | Ne<br /> (platí jenom v případě, že kopírování dat z místní server HTTP) |
@@ -68,7 +68,7 @@ Nastavte **authenticationType** k **základní**, **Digest**, nebo **Windows**. 
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| uživatelské jméno | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
+| username | Uživatelské jméno pro použití pro přístup ke koncovému bodu HTTP. | Ano |
 | password | Heslo pro uživatele (**uživatelské jméno**). | Ano |
 
 **Příklad: Používá ověřování Basic, Digest nebo Windows**
@@ -165,8 +165,8 @@ Některé části souboru JSON datové sady, jako je například struktura, dost
 | requestMethod | Metoda HTTP Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| formát | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| format | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, and **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
+| compression | Zadejte typ a úroveň komprese pro data. Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 **Příklad: Pomocí metody GET (výchozí)**
 
