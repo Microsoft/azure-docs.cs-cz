@@ -66,9 +66,9 @@ Následující tabulka popisuje elementy JSON jsou specifické pro službu FTP p
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
 | type |Nastavte na Server_ftp. |Ano |&nbsp; |
-| hostitel |Zadejte název nebo IP adresu serveru FTP. |Ano |&nbsp; |
-| authenticationType. |Zadejte typ ověřování. |Ano |Basic, anonymní |
-| uživatelské jméno |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
+| host |Zadejte název nebo IP adresu serveru FTP. |Ano |&nbsp; |
+| authenticationType |Zadejte typ ověřování. |Ano |Basic, anonymní |
+| username |Zadejte uživatele, který má přístup k serveru FTP. |Ne |&nbsp; |
 | password |Zadejte heslo pro uživatele (uživatelské jméno). |Ne |&nbsp; |
 | encryptedCredential |Zadejte šifrované přihlašovací údaje pro přístup k serveru FTP. |Ne |&nbsp; |
 | gatewayName |Zadejte název brány v brána správy dat pro připojení k serveru FTP na místě. |Ne |&nbsp; |
@@ -159,8 +159,8 @@ Následující tabulka popisuje elementy JSON jsou specifické pro službu FTP p
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Když **fileName** není zadaný pro výstupní datovou sadu, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v **folderPath**, ne všechny soubory.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS Hadoop Distributed File System (). |Ne |
 | partitionedBy |Používá se k určení dynamické **folderPath** a **fileName** dat časové řady. Například můžete zadat **folderPath** , který je s parametry pro každou hodinu data. |Ne |
-| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete zkopírovat soubory jsou mezi souborové úložiště (binární kopie), přeskočte část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**, a jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| format | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete zkopírovat soubory jsou mezi souborové úložiště (binární kopie), přeskočte část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**, a jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 | useBinaryTransfer |Určete, jestli se má použít režim binární přenos. Hodnoty jsou true pro binárním režimu (to je výchozí hodnota) a hodnotu false pro ASCII. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: FtpServer. |Ne |
 
 > [!NOTE]
@@ -206,7 +206,7 @@ V aktivitě kopírování, pokud je zdroj typu **FileSystemSource**, následují
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| rekurzivní |Určuje, jestli se data číst rekurzivně z podsložky, nebo jenom ze zadané složky. |Hodnota TRUE, False (výchozí) |Ne |
+| recursive |Určuje, jestli se data číst rekurzivně z podsložky, nebo jenom ze zadané složky. |Hodnota TRUE, False (výchozí) |Ne |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Příklad JSON: Kopírování dat ze serveru FTP do objektů Blob v Azure
 Tato ukázka předvádí, jak kopírovat data ze serveru FTP do úložiště objektů Blob v Azure. Ale data se dají zkopírovat přímo do libovolné jímky uvádí [podporovaných úložišť dat a formáty](data-factory-data-movement-activities.md#supported-data-stores-and-formats), s využitím aktivity kopírování ve službě Data Factory.
