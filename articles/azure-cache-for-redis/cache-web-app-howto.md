@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830392"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864824"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
 
 ## <a name="introduction"></a>Úvod
 
-V tomto rychlém startu se naučíte, jak vytvořit a nasadit webovou aplikaci ASP.NET do služby Azure App Service pomocí sady Visual Studio 2017. Ukázková aplikace se připojí k mezipaměti Azure ukládat a načítat data z mezipaměti Redis. Po dokončení tohoto rychlého startu budete mít funkční webovou aplikaci, hostované v Azure, která čte a zapisuje do mezipaměti Azure pro Redis.
+Tento rychlý start ukazuje, jak vytvořit a nasadit webovou aplikaci ASP.NET do služby Azure App Service pomocí Visual Studio 2019. Ukázková aplikace se připojí k mezipaměti Azure ukládat a načítat data z mezipaměti Redis. Po dokončení tohoto rychlého startu budete mít funkční webovou aplikaci, hostované v Azure, která čte a zapisuje do mezipaměti Azure pro Redis.
 
 ![Jednoduchý test dokončený v Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -34,7 +34,7 @@ V tomto rychlém startu se naučíte, jak vytvořit a nasadit webovou aplikaci A
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba nainstalovat sadu [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími prostředími:
+Abyste mohli absolvovat tento rychlý start, je potřeba nainstalovat [Visual Studio 2019](https://www.visualstudio.com/downloads/) pomocí následujících prostředích:
 * Vývoj pro ASP.NET a web
 * Vývoj pro Azure
 
@@ -62,7 +62,7 @@ K dokončení tohoto rychlého startu je potřeba nainstalovat sadu [Visual Stud
 
 4. Ujistěte se, že v nastavení **Ověřování** je zadáno **Bez ověřování**. V závislosti na verzi sady Visual Studio může být výchozí hodnotou nastavení **Ověřování** něco jiného. Chcete-li ji změnit, vyberte **Změnit ověřování** a pak **Bez ověřování**.
 
-5. Vyberte **OK** a vytvořte projekt.
+5. Vyberte **OK** pro vytvoření projektu.
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 
@@ -111,7 +111,7 @@ Protože soubor *CacheSecrets.config* není nasazený v Azure společně s aplik
 #### <a name="to-update-the-webconfig-file"></a>Aktualizace souboru *web.config*
 1. V **Průzkumníku řešení** otevřete poklikáním soubor *web.config*.
 
-    ![Soubor web.config](./media/cache-web-app-howto/cache-web-config.png)
+    ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
 
 2. V souboru *web.config* vyhledejte element `<appSetting>`. Potom přidejte tento atribut `file`. Pokud jste použili jiný název souboru nebo umístění, nahraďte těmito hodnotami hodnoty uvedené v příkladu.
 
@@ -266,7 +266,7 @@ Jakmile aplikaci úspěšně místně otestujete, můžete ji nasadit do Azure a
 
 1. V sadě Visual Studio klikněte pravým tlačítkem na uzel projektu v Průzkumníku řešení. Potom vyberte **Publikovat**.
 
-    ![Publikování](./media/cache-web-app-howto/cache-publish-app.png)
+    ![Publikovat](./media/cache-web-app-howto/cache-publish-app.png)
 
 2. Vyberte **Microsoft Azure App Service**, dále **Vytvořit nový** a nakonec **Publikovat**.
 
@@ -301,7 +301,7 @@ Po publikování nové aplikace přidejte nové nastavení aplikace. Toto nastav
 
 2. Přidejte nové nastavení aplikace s názvem **PřipojeníKMezipaměti**, které aplikace použije pro připojení k mezipaměti. Použijte stejnou hodnotu, jakou jste pro `CacheConnection` nakonfigurovali v souboru *TajnéKódyMezipaměti.config*. Tato hodnota obsahuje název hostitele mezipaměti a přístupový klíč.
 
-    ![Přidání nastavení aplikace](./media/cache-web-app-howto/cache-add-app-setting.png)
+    ![Přidat nastavení aplikace](./media/cache-web-app-howto/cache-add-app-setting.png)
 
 ### <a name="run-the-app-in-azure"></a>Spuštění aplikace v Azure
 
@@ -326,7 +326,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 2. Do pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. U skupiny prostředků ve výsledcích hledání vyberte **...** a pak vyberte **Odstranit skupinu prostředků**.
 
-    ![Odstranění](./media/cache-web-app-howto/cache-delete-resource-group.png)
+    ![Odstranit](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a vyberte **Odstranit**.
 

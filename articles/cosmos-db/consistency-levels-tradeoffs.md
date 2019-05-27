@@ -4,15 +4,15 @@ description: Dostupnost a výkon kompromisy pro různé úrovně konzistence ve 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894024"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990225"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy mezi konzistencí, dostupností a výkonem 
 
@@ -55,9 +55,9 @@ Následující tabulka definuje vztahy mezi konzistence modelu a datům odolnost
 |1|Jednoho nebo několika hlavními databázemi|Všechny úrovně konzistence|< 240 minut|< 1 týden|
 |>1|Single Master|Relace, konzistentní předpona, konečný výsledek|< 15 minut|< 15 minut|
 |>1|Single Master|Omezená neaktuálnost|*K* & *T*|< 15 minut|
+|>1|Single Master|Silné|0|< 15 minut|
 |>1|Více hlavních databází|Relace, konzistentní předpona, konečný výsledek|< 15 minut|0|
 |>1|Více hlavních databází|Omezená neaktuálnost|*K* & *T*|0|
-|>1|Jednoho nebo několika hlavními databázemi|Silné|0|< 15 minut|
 
 *K* = počet *"K"* verze (například aktualizace) položky.
 

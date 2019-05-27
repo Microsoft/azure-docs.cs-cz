@@ -5,15 +5,15 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: ef8155cda6c31a63204af80ca091a13bb16a687d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866441"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113389"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zásady: Pro uživatele ve vašem adresáři
 
@@ -34,6 +34,9 @@ Pokud chcete, aby vaše zásady pro uživatele a skupiny v adresáři, který m�
 ### <a name="policy-for-users-not-in-your-directory"></a>Zásady: Pro uživatele není ve vašem adresáři
 
 Pokud chcete, aby vaše zásady pro uživatele není ve vašem adresáři, který můžete požádat o tento balíček přístup, postupujte následovně. Adresáře musí být nakonfigurovaný na povolí **omezení spolupráce organizační vztahy** nastavení.
+
+> [!NOTE]
+> Uživatelský účet guest vytvoří se pro uživatele ještě nejsou součástí do adresáře, jehož žádost schválený nebo schvalovány automaticky. Host bude pozván, ale nebude dostávat pozvánky e-mailu. Místo toho se mu e-mailu při doručení jejich přiřazení přístupu k balíčku. Ve výchozím nastavení později, když tento uživatel už má přiřazení balíčku přístup, protože vypršelo nebo bylo zrušeno, jejich poslední přiřazení, že uživatelský účet guest, bude blokovaná přihlášení, odstraní. Pokud chcete mít po neomezenou dobu, zůstávají ve vašem adresáři uživatele typu Host i v případě, že nemají žádná přiřazení přístupu k balíčku, můžete změnit nastavení pro konfiguraci správy oprávnění.
 
 1. V **uživatelé, kteří můžou požádat o přístup** vyberte **pro uživatele není ve vašem adresáři**.
 
@@ -66,7 +69,7 @@ Následujícím postupem, potřebujete zásady obejít žádosti o přístup a P
 
 1. Přejděte dolů k [zásad: Vypršení platnosti](#policy-expiration) oddílu.
 
-### <a name="policy-request"></a>Zásady: Žádost
+### <a name="policy-request"></a>Zásady: Požadavek
 
 V části žádosti zadejte nastavení schválení Pokud uživatelé požadují přístup k balíčku.
 

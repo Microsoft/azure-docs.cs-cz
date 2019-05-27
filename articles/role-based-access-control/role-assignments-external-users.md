@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345215"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952204"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC
 
@@ -57,7 +57,7 @@ Po výběru předplatného, musíte kliknout na uživatele s rolí správce **ř
 
 Dalším krokem je vybrat roli, kterou chcete přiřadit a uživatel, kterému se přiřadí RBAC role. V **Role** rozevírací nabídka správce uživateli se zobrazí pouze předdefinované role RBAC, které jsou dostupné v Azure. Podrobnější vysvětlení jednotlivých rolí a jejich přiřaditelnými obory, najdete v článku [předdefinované role pro prostředky Azure](built-in-roles.md).
 
-Uživatele s rolí správce je pak potřeba přidat e-mailovou adresu externího uživatele. Chování je očekávané pro externí uživatele není uveden v existujícího tenanta. Po externí uživatel byl pozván, že se nebude zobrazovat v rámci **předplatná > řízení přístupu (IAM)** s aktuálním uživateli, které momentálně nejsou přiřazené roli RBAC v oboru předplatného.
+Uživatele s rolí správce je pak potřeba přidat e-mailovou adresu externího uživatele. Chování je očekávané pro externí uživatele není uveden v existujícího tenanta. Jakmile externí uživatel byl pozván, budou viditelné v rámci **předplatná > řízení přístupu (IAM)** s aktuálním uživateli, které momentálně nejsou přiřazené roli RBAC v oboru předplatného.
 
 ![Přidejte oprávnění do nové role RBAC](./media/role-assignments-external-users/3.png)
 
@@ -66,7 +66,7 @@ Uživatele s rolí správce je pak potřeba přidat e-mailovou adresu externího
 Uživatel "chessercarlton@gmail.com" má být pozvánku **vlastníka** pro předplatné "Bezplatné zkušební verze". Po odeslání e-mailové pozvánce, obdrží externího uživatele potvrzení e-mailu s odkazem k aktivaci.
 ![e-mailové pozvánky pro RBAC role](./media/role-assignments-external-users/5.png)
 
-Jsou externí vůči organizaci, nový uživatel a nemá žádné atributy existující v adresáři "Výchozímu tenantu Azure". Budou vytvořeny po externí uživatel udělil souhlas mají být zaznamenány do adresáře, který je přidružený k předplatnému byl přiřazen k roli.
+Jsou externí vůči organizaci, nový uživatel a nemá žádné atributy existující v adresáři "Výchozímu tenantu Azure". Budou vytvořeny po externí uživatel udělil souhlas mají být zaznamenány do adresáře, který je přidružený k předplatnému, byla přiřazena role k.
 
 ![e-mailovou pozvánku zprávu pro RBAC role](./media/role-assignments-external-users/6.png)
 

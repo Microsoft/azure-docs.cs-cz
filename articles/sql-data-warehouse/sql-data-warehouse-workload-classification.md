@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 208308533753370575b844633c45f7e4aeda0864
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154215"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000126"
 ---
 # <a name="sql-data-warehouse-workload-classification"></a>Klasifikace úlohy SQL Data Warehouse
 
@@ -81,4 +81,7 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>Další postup
 
-Abyste mohli začít s vytvářením třídění, najdete v článku [vytvořit ÚLOHU třídění (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Další informace o SQL Data Warehouse úloh klasifikace a význam, naleznete v tématu [vytvoření klasifikátoru úlohy](quickstart-create-a-workload-classifier-tsql.md) a [SQL Data Warehouse význam](sql-data-warehouse-workload-importance.md). Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.
+- Další informace o vytvoření klasifikátoru, najdete v článku [vytvořit ÚLOHU třídění (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Najdete v tomto rychlém startu o tom, jak vytvořit úlohu třídění [vytvořit úlohu třídění](quickstart-create-a-workload-classifier-tsql.md).
+- Články s postupy najdete v článku [nakonfigurovat úlohu význam](sql-data-warehouse-how-to-configure-workload-importance.md) a jak [spravovat a monitorovat úlohy správy](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Zobrazit [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) k zobrazení dotazů a závažnosti přiřazené.

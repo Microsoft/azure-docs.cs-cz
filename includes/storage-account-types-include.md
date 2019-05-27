@@ -9,11 +9,11 @@ ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477963"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114943"
 ---
 Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuje různé funkce a má vlastní cenový model. Než vytvoříte účet úložiště a určit typ účtu, který je nejvhodnější pro vaše aplikace, zvažte následující rozdíly. Typy účtů úložiště jsou:
 
@@ -27,11 +27,11 @@ Následující tabulka popisuje typy účtů úložiště a jejich funkce:
 
 | Typ účtu úložiště | Podporované služby                       | Úrovně výkonu podporované      | Podporované přístupu         | Možnosti replikace               | Model nasazení<sup>1</sup> | Šifrování<sup>2</sup> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Pro obecné účely V2   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<sup>5</sup> | Horká, studená, archivní<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager             | Šifrované              |
-| Pro obecné účely V1   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<sup>5</sup> | neuvedeno                            | LRS, GRS, RA-GRS                  | Resource Manager, Classic    | Šifrované              |
-| Úložiště objektů blob bloku   | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
-| Úložiště souborů (preview)   | Pouze pro soubory | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Šifrované              |
-| Blob Storage         | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Standard                      | Horká, studená, archivní<sup>3</sup> | LRS, GRS, RA-GRS                  | Resource Manager             | Šifrované              |
+| Pro obecné účely V2   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<sup>5</sup> | Horká, studená, archivní<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Resource Manager             | Zašifrováno              |
+| Pro obecné účely V1   | Objekt BLOB, soubor, fronty, tabulky a Disk       | Standard, Premium<sup>5</sup> | neuvedeno                            | LRS, GRS, RA-GRS                  | Resource Manager, Classic    | Zašifrováno              |
+| Úložiště objektů blob bloku   | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Zašifrováno              |
+| Úložiště souborů (preview)   | Pouze pro soubory | Premium                       | neuvedeno                            | LRS                               | Resource Manager             | Zašifrováno              |
+| Úložiště objektů blob         | Objekt BLOB (objekty BLOB bloku a doplňovacích objektů BLOB jenom) | Standard                      | Horká, studená, archivní<sup>3</sup> | LRS, GRS, RA-GRS                  | Resource Manager             | Zašifrováno              |
 
 <sup>1</sup>doporučuje se použít model nasazení Azure Resource Manageru. Účty úložiště pomocí modelu nasazení classic je možné vytvořit i nadále v některých umístěních, a nadále podporovat existující klasické účty. Další informace najdete v tématu [Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků](../articles/azure-resource-manager/resource-manager-deployment-model.md).
 

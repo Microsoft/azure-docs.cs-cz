@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419761"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111545"
 ---
 1. Přihlaste se na web [Azure Portal][Azure portal].
 2. V nabídce vlevo vyberte **+ Vytvořit prostředek**. Pak vyberte **Integrace** > **Přenos**. Pokud se v seznamu **Přenos** nezobrazuje, vyberte v pravém horním rohu **Zobrazit vše**. 
@@ -18,7 +18,7 @@ ms.locfileid: "60419761"
 5. V poli [Skupina prostředků](../articles/azure-resource-manager/manage-resource-groups-portal.md) vyberte existující skupinu prostředků, do které se obor názvů umístí, nebo vytvořte novou.  
 6. V části **Umístění** vyberte zemi nebo oblast, ve které by se měl váš oboru názvů hostovat.
    
-    ![Vytvoření oboru názvů][create-namespace]
+    ![Vytvořit obor názvů][create-namespace]
 7. Vyberte **Vytvořit**. Systém vytvoří obor názvů a povolí ho. Po několika minutách systém zřídí prostředky pro váš účet.
 
 ### <a name="get-management-credentials"></a>Získání přihlašovacích údajů pro správu

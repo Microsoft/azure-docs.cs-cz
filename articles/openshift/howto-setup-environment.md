@@ -9,12 +9,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 6e859f57f9b5f24ea2f0172f5aa35a60d9769f19
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551700"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962138"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
 
@@ -29,13 +29,15 @@ K vytváření a spouštění aplikací v Microsoft Azure Red Hat OpenShift, bud
 
 Postupujte podle následujících pokynů vás provede všechny tyto požadavky.
 
-## <a name="purchase-azure-virtual-machine-reserved-instances"></a>Koupit Azure rezervované instance virtuálních počítačů
+## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Nákup rezervované instance Azure Red Hat OpenShift aplikace uzly
 
-Než budete moct použít Azure Red Hat OpenShift, budete muset koupit Azure rezervované instance virtuálních počítačů.
+Než budete moct použít Azure Red Hat OpenShift, budete muset zakoupit minimálně 4 uzly aplikace Azure Red Hat OpenShift vyhrazené, po jejichž uplynutí je budete moct zřizování clusterů.
 
-Pokud jste zákazníkem Azure, tady na tom, jak [nákupní virtuálních počítačů Azure rezervované instance](https://aka.ms/openshift/buy). Rezervace snižuje vaše výdaje a prostřednictvím platíte předem za plně spravovaných služeb Azure. Odkazovat na [ *co jsou Azure rezervace* ](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations) Další informace o rezervacích a jak se ušetřit peníze.
+Pokud jste zákazník Azure [koupit Azure Red Hat OpenShift rezervované instance](https://aka.ms/openshift/buy) prostřednictvím webu Azure portal. Po zakoupení, aktivuje vaše předplatné během 24 hodin.
 
 Pokud si nejste zákazník Azure [kontaktujte prodej](https://aka.ms/openshift/contact-sales) a vyplňte formulář prodeje v dolní části stránky zahájíte proces.
+
+Odkazovat [stránce s cenami Azure Red Hat OpenShift](https://aka.ms/openshift/pricing) Další informace.
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 

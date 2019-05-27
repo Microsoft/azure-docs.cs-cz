@@ -105,6 +105,8 @@
       href: language-support.md
     - name: Analýzy pro rozhraní API Bingu pro vyhledávání na webu
       href: bing-web-stats.md
+    - name: Dodržování předpisů
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Podpora
       items:
         - name: Fórum User Voice

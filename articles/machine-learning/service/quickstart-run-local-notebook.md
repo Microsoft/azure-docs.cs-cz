@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753016"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864383"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru poznámkového bloku
 
-Použít vlastní server Poznámkový blok spustit kód, který se přihlásí hodnoty [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md). Pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning.
+Začínáme se službou Azure Machine Learning pomocí svoje vlastní prostředí Pythonu a Server poznámkového bloku Jupyter.  Rychlý start s bez instalace sady SDK, naleznete v tématu [rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu Poznámkový blok](quickstart-run-cloud-notebook.md).
 
-Tento rychlý start využívá svoje vlastní prostředí Pythonu a Server poznámkového bloku Jupyter. Rychlý start s bez instalace sady SDK, naleznete v tématu [rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku](quickstart-run-cloud-notebook.md) 
+Tento rychlý start ukazuje, jak můžete použít [pracovního prostoru služby Azure Machine Learning](concept-azure-machine-learning-architecture.md) k udržení přehledu o vašich se strojovým učením. Budete spouštět kód Pythonu, který hodnoty do protokolu do pracovního prostoru.
 
 Zobrazte video verzi tohoto rychlého startu:
 

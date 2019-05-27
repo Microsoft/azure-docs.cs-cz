@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
-ms.openlocfilehash: 09242eaa6058229226062801f5f71f2bf4c7a9e8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789393"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66126851"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získat smlouvu Enterprise rezervace nákladů a využití
 
@@ -42,9 +42,9 @@ Porovnání dvou datových sad:
 
 | Data | Skutečné náklady na datovou sadu | Amortizované náklady na datová sada |
 | --- | --- | --- |
-| Nákup rezervace | K dispozici v tomto zobrazení.<br>  Chcete-li získat tento filtr dat na ChargeType = &quot;nákupní&quot;. <br> Odkazovat ReservationID nebo ReservationName vědět, jaké rezervace platí se za.  | Neplatí pro toto zobrazení. <br> Náklady na nákup nejsou k dispozici v amortizovaném data. |
+| Nákup rezervace | K dispozici v tomto zobrazení.<br><br>  Chcete-li získat tento filtr dat na ChargeType = &quot;nákupní&quot;. <br><br> Odkazovat ReservationID nebo ReservationName vědět, jaké rezervace platí se za.  | Neplatí pro toto zobrazení. <br><br> Náklady na nákup nejsou k dispozici v amortizovaném data. |
 | effectivePrice | Hodnota je nula využití, získá sleva za rezervaci. | Hodnota se účtuje pomocí poměrného přepočítání na hodiny náklady na rezervaci pro využití, které má sleva za rezervaci. |
-| Nevyužité rezervace (poskytuje počet hodin, po které rezervace nebyl použit za den a peněžní hodnoty odpadu) | Není k dispozici v tomto zobrazení. | K dispozici v tomto zobrazení.<br> K získání těchto dat, filtrování ChargeType = &quot;UnusedReservation&quot;.<br>  Odkazovat ReservationID nebo ReservationName vědět, které rezervace se historického. To je, jak velká část rezervace byla zbytečná v den.  |
+| Nevyužité rezervace (poskytuje počet hodin, po které rezervace nebyl použit za den a peněžní hodnoty odpadu) | Není k dispozici v tomto zobrazení. | K dispozici v tomto zobrazení.<br><br> K získání těchto dat, filtrování ChargeType = &quot;UnusedReservation&quot;.<br><br>  Odkazovat ReservationID nebo ReservationName vědět, které rezervace se historického. To je, jak velká část rezervace byla zbytečná v den.  |
 | UnitPrice (cena prostředku z nového ceníku) | K dispozici | K dispozici |
 
 Další informace, které jsou k dispozici v datech využití Azure se změnil:
@@ -77,12 +77,12 @@ Informace v následující tabulce o metriky a filtr můžou pomoct vyřešit b�
 | **Typ dat rozhraní API** | Akce volání rozhraní API |
 | --- | --- |
 | **Všechny poplatky (využití a nákupů)** | Nahraďte ActualCost {metrika} |
-| **Využití, které je teď sleva za rezervaci** | Nahraďte ActualCost {metrika}<br>Nahraďte {filter}: properties/reservationId%20ne%20 |
-| **Využití, které nezískaly sleva za rezervaci** | Nahraďte ActualCost {metrika}<br>Nahraďte {filter}: properties/reservationId%20eq%20 |
+| **Využití, které je teď sleva za rezervaci** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/reservationId%20ne%20 |
+| **Využití, které nedostali sleva za rezervaci** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/reservationId%20eq%20 |
 | **Amortizované náklady (využití a nákupů)** | Nahraďte AmortizedCost {metrika} |
-| **Nevyužité rezervace sestavy** | Nahraďte AmortizedCost {metrika}<br>Nahraďte {filter}: properties/ChargeType%20eq%20'UnusedReservation. |
-| **Nákup rezervace** | Nahraďte ActualCostReplace {filter} {metrika} s: properties/ChargeType%20eq%20'Purchase.  |
-| **Vrácení peněz** | Nahraďte ActualCost {metrika}<br>Nahraďte {filter}: properties/ChargeType%20eq%20'Refund. |
+| **Nevyužité rezervace sestavy** | Nahraďte AmortizedCost {metrika}<br><br>Nahraďte {filter}: properties/ChargeType%20eq%20'UnusedReservation. |
+| **Nákup rezervace** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/ChargeType%20eq%20'Purchase.  |
+| **Vrácení peněz** | Nahraďte ActualCost {metrika}<br><br>Nahraďte {filter}: properties/ChargeType%20eq%20'Refund. |
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Stáhněte si soubor CSV využití s novými daty
 
