@@ -125,8 +125,8 @@ Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| ClusterSize |Velikost clusteru HDInsight. |
-| TimeToLive |Určuje dobu nečinnosti před odstraněním clusteru HDInsight. |
+| clusterSize |Velikost clusteru HDInsight. |
+| timeToLive |Určuje dobu nečinnosti před odstraněním clusteru HDInsight. |
 | linkedServiceName |Určuje účet úložiště, který se používá k ukládání protokolů generovaných clusterem HDInsight |
 
 Je třeba počítat s následujícím:
