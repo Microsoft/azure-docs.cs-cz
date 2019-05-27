@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66158864"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure Powershellu
 
@@ -27,7 +27,7 @@ Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňuj
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření vlastní role
+> * Vytvořit vlastní roli
 > * Výpis vlastních rolí
 > * Aktualizace vlastní role
 > * Odstranění vlastní role
@@ -277,4 +277,4 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření vlastních rolí pro prostředky Azure pomocí Azure Powershellu](custom-roles-powershell.md)
+> [Vytváření vlastních rolí pro prostředky Azure pomocí Azure PowerShellu](custom-roles-powershell.md)

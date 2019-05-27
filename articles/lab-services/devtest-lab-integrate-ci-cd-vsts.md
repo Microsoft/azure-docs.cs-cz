@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738517"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66157129"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevTest Labs integrovat do Azure DevOps, průběžná integrace a doručování kanálu
 Můžete použít *úloh Azure DevTest Labs* rozšíření, které je nainstalovaný Azure DevOps na snadno integrovat vaše sestavení a vydání kanálu CI/CD s Azure DevTest Labs. Rozšíření nainstaluje tři úkoly: 

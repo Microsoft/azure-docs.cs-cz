@@ -1,24 +1,23 @@
 ---
 title: Mapování sloupce vzory v toku dat pro vytváření dat Azure
-description: Azure Data Factory mapování dat sloupce vzory v toku se používají k vytváření vzorce zobecněný šablon pro pole v toku dat bez ohledu na základní metadata schématu transformují
+description: Zjistěte, jak pomocí Azure Data Factory sloupec vzory v mapování toku dat můžete vytvořit vzorce zobecněný šablon pro pole v toku dat bez ohledu na základní metadata schématu transformují
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 53d3300ea11a86c34909ba6ce0fd6c8c0c38b4b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5131329f6675bc86374f5a5c081e0aaa7d36c0fe
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61269649"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155242"
 ---
-# <a name="azure-data-factory-mapping-data-flow-concepts"></a>Mapování datového toku koncepty služby Azure Data Factory
+# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure data factory mapování dat toky vzory sloupec
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Několik transformace toku dat objekt pro vytváření dat Azure podporují nápad "Vzory sloupce" tak, že můžete vytvořit šablony sloupců na základě způsobů namísto pevně zakódované sloupce. Tato funkce v rámci Tvůrce výrazů můžete použít k definování vzorků tak, aby odpovídaly sloupce pro transformaci nemusíte mít xact, názvy konkrétních polí. Vzory jsou užitečné, pokud příchozí zdrojového pole změnit často, zejména v případě změna sloupců v textových souborů nebo databáze NoSQL. To se někdy označuje jako "Schéma odchylek".
+Několik transformace toku dat objekt pro vytváření dat Azure podporují nápad "Vzory sloupce" tak, že můžete vytvořit šablony sloupců na základě způsobů namísto pevně zakódované sloupce. Tato funkce v rámci Tvůrce výrazů můžete použít k definování vzorků tak, aby odpovídaly sloupce pro transformaci nemusíte mít xact, názvy konkrétních polí. Vzory jsou užitečné, pokud příchozí zdrojového pole změnit často, zejména v případě změna sloupců v textových souborů nebo databáze NoSQL. Tato podmínka je někdy označovány jako "Schéma odchylek".
 
 ![sloupec vzory](media/data-flow/columnpattern2.png "vzory sloupec")
 

@@ -9,11 +9,11 @@ ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: f0ff729084d194ff2e05e89eadc45782f775b1c5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64929363"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156756"
 ---
 V této části odešlete nejnovější zprávy jako šablonové oznámení se značkami z konzolové aplikace .NET. 
 
@@ -22,7 +22,7 @@ V této části odešlete nejnovější zprávy jako šablonové oznámení se z
     c. Vyberte **Konzolová aplikace (.NET Framework)** v seznamu šablon. 
     d. Zadejte **název** pro aplikaci. 
     e. Vyberte **složky** pro aplikaci.
-    f. Vyberte **OK** a vytvořte projekt. 
+    f. Vyberte **OK** pro vytvoření projektu. 
 2. V hlavní nabídce sady Visual Studio, vyberte **nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků** a poté v okně konzoly Zadejte následující řetězec:
    
     ```

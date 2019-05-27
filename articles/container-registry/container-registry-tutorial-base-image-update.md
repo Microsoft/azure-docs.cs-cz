@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152207"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Při aktualizaci základní image do služby Azure container registry. automatizace sestavování imagí kontejneru 
 
@@ -89,7 +89,7 @@ Začněte sestavením základní image pomocí *rychlé úlohy* v ACR Tasks. Jak
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
 ```
 
-## <a name="create-a-task"></a>Vytvoření úkolu
+## <a name="create-a-task"></a>Vytvořit úkol
 
 Dále pomocí příkazu [az acr build-task create][az-acr-task-create] vytvořte úlohu:
 

@@ -14,11 +14,11 @@ ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487800"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66146854"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
 > [!div class="op_single_selector"]
@@ -125,8 +125,8 @@ Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| clusterSize |Velikost clusteru HDInsight. |
-| timeToLive |Určuje dobu nečinnosti před odstraněním clusteru HDInsight. |
+| ClusterSize |Velikost clusteru HDInsight. |
+| TimeToLive |Určuje dobu nečinnosti před odstraněním clusteru HDInsight. |
 | linkedServiceName |Určuje účet úložiště, který se používá k ukládání protokolů generovaných clusterem HDInsight |
 
 Je třeba počítat s následujícím:
@@ -171,7 +171,7 @@ Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| type |Vlastnost type je nastavená na hodnotu AzureBlob, protože se data nachází ve službě Azure Blob Storage. |
+| Typ |Vlastnost type je nastavená na hodnotu AzureBlob, protože se data nachází ve službě Azure Blob Storage. |
 | linkedServiceName |Odkazuje na službu StorageLinkedService, kterou jste vytvořili předtím. |
 | fileName |Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto případě se zpracovává jenom soubor input.log. |
 | type |Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7add8c10fd3224b9c287ea4cc672191157f56a09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861887"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171222"
 ---
 V následující tabulce jsou uvedeny informace o kvótě specifické pro zasílání zpráv Azure Service Bus. Informace o cenách a další kvóty pro služby Service Bus, najdete v části [cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Název kvóty | Rozsah | Poznámky | Hodnota |
+| Název kvóty | Scope | Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Maximální počet obory názvů Basic nebo Standard na předplatné Azure |Obor názvů |Na webu Azure portal odmítne odeslání dalších žádostí o další obory názvů Basic nebo Standard. |100|
 | Maximální počet názvových prostorů Premium za předplatné Azure |Obor názvů |Odeslání dalších žádostí o další názvové prostory úrovně Premium se odmítnul na portálu. |25 |
@@ -32,7 +32,7 @@ V následující tabulce jsou uvedeny informace o kvótě specifické pro zasíl
 | Maximální velikost zprávy [ID relace](/dotnet/api/microsoft.azure.servicebus.message.sessionid) | Entita |- | 128 |
 | Velikost zprávy do fronty, tématu nebo odběru entity |Entita |Odmítne příchozí zprávy, které přesahují tyto kvóty a volající kód obdrží výjimku. |Maximální velikost zprávy: 256 KB pro [úrovně Standard](../articles/service-bus-messaging/service-bus-premium-messaging.md), 1 MB pro [úroveň Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />Z důvodu režie systému je tento limit menší než tyto hodnoty.<br /><br />Záhlaví maximální velikost: 64 KB.<br /><br />Maximální počet vlastnosti záhlaví v kontejneru objektů a dat: **bajtů/int. Hodnota MaxValue**.<br /><br />Maximální velikost vlastnosti v kontejneru objektů a dat: Žádné explicitní omezení. Omezeno daty, která záhlaví maximální velikost. |
 | Velikost vlastnosti zprávy do fronty, tématu nebo odběru entity |Entita | Výjimka **SerializationException** je generován. |Maximální velikost vlastností pro každou vlastnost je 32 000. Celková velikost všech vlastností nesmí být delší než 64 000. Toto omezení platí pro celý záhlaví [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage), který má například uživatel vlastnosti a vlastnosti systému [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)a [ ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid). |
-| Počet odběrů na téma |Entita |Odeslání dalších žádostí o vytvoření další předplatná tématu odmítají. V důsledku toho pokud je nakonfigurovaný pomocí portálu, se zobrazí chybová zpráva. Pokud je volána z rozhraní API pro správu, volající kód přijme výjimku. |Úroveň Standard: Každé předplatné se počítá kvóty 1 000 entity, to znamená, fronty, témata a odběry na obor názvů. <br/> <br/> Úroveň Premium: 2,000. |
+| Počet odběrů na téma |Entita |Odeslání dalších žádostí o vytvoření další předplatná tématu odmítají. V důsledku toho pokud je nakonfigurovaný pomocí portálu, se zobrazí chybová zpráva. Pokud je volána z rozhraní API pro správu, volající kód přijme výjimku. |Standard a Premium: Každé předplatné se počítá kvóty 1 000 entity, to znamená, fronty, témata a odběry na obor názvů. |
 | Počet filtrů SQL na téma |Entita |Odeslání dalších žádostí o vytvoření další filtry k danému tématu odmítají a volající kód obdrží výjimku. |2 000 |
 | Počet filtrů korelace jednotlivých tématech |Entita |Odeslání dalších žádostí o vytvoření další filtry k danému tématu odmítají a volající kód obdrží výjimku. |100 000 |
 | Velikost filtry SQL nebo akce |Obor názvů |Odeslání dalších žádostí o vytvoření další filtry odmítají a volající kód obdrží výjimku. |Maximální délka řetězce podmínka filtru: 1,024 (1 K).<br /><br />Maximální délka řetězce akce pravidla: 1,024 (1 K).<br /><br />Maximální počet výrazů za akce pravidla: 32. |

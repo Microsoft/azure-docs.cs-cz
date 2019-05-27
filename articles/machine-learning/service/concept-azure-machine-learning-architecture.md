@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: MT
+ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502081"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151168"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -34,39 +34,23 @@ Informace o pracovním postupu počítače následující obecně toto pořadí:
 1. Po uspokojivé spustit je najít, zaregistrujte model trvalého v **modelu registru**.
 1. Vývoj hodnoticí skript, který používá model a **model nasadit** jako **webovou službu** v Azure nebo do **zařízení IoT Edge**.
 
+Provedením těchto kroků s žádným z následujících akcí:
++ [Azure Machine Learning sady SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
++ [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++  [Vizuální rozhraní pro službu Azure Machine Learning (preview)](ui-concept-visual-interface.md)
 
 > [!NOTE]
 > Přestože tento článek definuje podmínky a koncepty používané službou Azure Machine Learning, nedefinuje terminologie a koncepty pro platformu Azure. Další informace o terminologii platformy Azure najdete v tématu [Glosář Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="workspace"></a>Pracovní prostor
 
-Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte, když používáte službu Azure Machine Learning.
-
-Pracovním prostoru udržuje seznam cílových výpočetních prostředí, které použijete k natrénování modelu. Také udržuje historii tréninkových spuštění, včetně protokolů, metrik, výstupu a snímek vašich skriptů. Tyto informace použít k určení, které školení vznikly nejlepší model.
-
-Zaregistrujte modely s pracovním prostorem. Použijete registrovanému modelu a hodnoticí skripty k nasazení modelu do služby Azure Container Instances, Azure Kubernetes Service, nebo pole programmable gate array (FPGA) jako koncový bod HTTP založené na protokolu REST. Můžete taky nasadit bitovou kopii pro zařízení Azure IoT Edge jako modul. Interně se vytvoří image dockeru k hostování do nasazené bitové kopie. V případě potřeby můžete zadat vlastní image.
-
-Můžete vytvořit víc pracovních prostorů a každý pracovní prostor může být sdílen více lidí. Když sdílíte s pracovním prostorem, můžete řídit přístup k němu prostřednictvím přiřazování uživatelů do následujících rolí:
-
-* Vlastník
-* Přispěvatel
-* Čtenář
-
-Další informace o těchto rolí, najdete v článku [spravovat přístup k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md) článku.
-
-Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prostředků Azure, které se používají v pracovním prostoru:
-
-* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registry kontejnerů dockeru, které použijete během cvičení a nasazení modelu.
-* [Účet úložiště Azure](https://azure.microsoft.com/services/storage/): Slouží jako výchozí úložiště pro pracovní prostor.
-* [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Ukládá informace o vašich modelů monitorování.
-* [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Tajné klíče úložiště, které jsou používány výpočetní cíle a dalších citlivých údajů, který je nezbytný v pracovním prostoru.
-
-> [!NOTE]
-> Kromě vytvoření nové verze, můžete také použít stávající služby Azure.
+[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte, když používáte službu Azure Machine Learning.
 
 Taxonomie pracovního prostoru je znázorněn v následujícím diagramu:
 
 [![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+Další informace o pracovních prostorech naleznete v tématu [co je pracovní prostor služby Azure Machine Learning?](concept-workspace.md).
 
 ## <a name="experiment"></a>Experiment
 
@@ -170,6 +154,10 @@ Spuštění na základě když odešlete skript pro trénování modelu. Spušt�
 
 Příklad zobrazení spuštění, které vytváří trénování modelu, naleznete v tématu [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
+## <a name="github-tracking-and-integration"></a>GitHub sledování a integrace
+
+Při spuštění školení spustit, pokud je zdrojový adresář místního úložiště Git, informace o úložišti jsou uloženy v historii spuštění. Například aktuální ID potvrzení pro úložiště se zaznamená jako část historie. Tento postup funguje s spuštění odeslána pomocí odhad, ML kanálu nebo spustit skript. Funguje i pro spuštění z SDK nebo rozhraní příkazového řádku Machine Learning.
+
 ## <a name="snapshot"></a>Snímek
 
 Když odešlete spuštění, Azure Machine Learning komprimuje adresáře, který obsahuje skript jako soubor zip a odesílá je do cílového výpočetního prostředí. Soubor zip se pak extrahuje a existuje spuštění skriptu. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
@@ -228,7 +216,7 @@ Azure IoT Edge zajišťuje, že je spuštěn modul a monitoruje zařízení, kte
 
 ## <a name="pipeline"></a>Kanál
 
-Pomocí machine learning kanály, abyste mohli vytvářet a spravovat pracovní postupy, které spojit dohromady machine learning fází. Kanál může obsahovat například přípravy dat, trénování modelu, model nasazení a odvozování fází. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
+Pomocí machine learning kanály, abyste mohli vytvářet a spravovat pracovní postupy, které spojit dohromady machine learning fází. Kanál může obsahovat například přípravy dat, trénování modelu, model nasazení a fáze vyhodnocování/odvození. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
 
 Další informace o machine learning kanály pomocí této služby najdete v tématu [kanály a Azure Machine Learning](concept-ml-pipelines.md).
 

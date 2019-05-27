@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542603"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156251"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Oblasti a dostupnost pro virtuální počítače v Azure
 Azure funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. Je důležité pochopit, jak a kde se virtuální počítače (VM) v Azure provozují, a také vědět, jaké máte možnosti pro zajištění maximálního výkonu, dostupnosti a redundance. Tento článek poskytuje přehled funkcí redundance a dostupnosti Azure.
@@ -95,6 +95,8 @@ Informace o cenách pro různé typy úložišť a možnosti dostupnosti najdete
 Skupina dostupnosti je logické seskupení virtuálních počítačů v rámci datového centra, které umožňují Azure pochopit, jak je sestavená vaše aplikace zajistit redundanci a dostupnost. Doporučujeme, že jsou vytvořeny dva nebo více virtuálních počítačů ve skupině dostupnosti pro vysoce dostupné aplikace a, aby splňoval [99,95 % Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Se neúčtují žádné poplatky pro skupinu dostupnosti samotné, platíte jenom za všechny instance virtuálních počítačů, které vytvoříte. Když je jeden virtuální počítač pomocí [Azure premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd), smlouva Azure SLA se vztahuje na neplánovanou údržbu.
 
 Skupina dostupnosti se skládá ze dvou dalších seskupení, které chrání před selháním hardwaru a povolit aktualizace bezpečně použít – doména selhání (FD) a aktualizační doména (ud). O správě dostupnosti [virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/manage-availability.md) nebo [Windows](../articles/virtual-machines/windows/manage-availability.md) si můžete přečíst víc.
+
+Při přidělování víc výpočetních prostředků, které nevyužívají konstrukce vysoké dostupnosti domén selhání vysokou pravděpodobnost proti spřažení, ale tento proti spřažení není zaručena.
 
 ### <a name="fault-domains"></a>Domény selhání
 Doména selhání je logická skupina hardwarových komponent, které sdílejí společný zdroj napájení a síťový přepínač (je obdobou stojanu v místním datovém centru). Když vytváříte virtuální počítače v rámci skupiny dostupnosti, platforma Azure je automaticky distribuuje do těchto domén selhání. Tento přístup omezuje dopady potenciálního selhání fyzického hardwaru, výpadků sítě nebo přerušení napájení.

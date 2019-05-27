@@ -9,11 +9,11 @@ ms.date: 11/19/2018
 ms.author: dech
 ms.custom: include file
 ms.openlocfilehash: c3cbfda674abaeea1adf35c3ee0d2b5ddf6b2f84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853036"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153760"
 ---
 Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi a kolekci. 
 
@@ -27,7 +27,7 @@ Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit 
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    ID databáze|*Úlohy*|Jako název nové databáze zadejte *Tasks*. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky /, \\, #, ? ani koncové mezery.
+    ID databáze|*Úkoly*|Jako název nové databáze zadejte *Tasks*. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky /, \\, #, ? ani koncové mezery.
     ID kolekce|*Položky*|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.
     Zřízení propustnosti databáze|Ponechte prázdné|Azure Cosmos DB může zřídit propustnost na úrovni databáze (všechny kolekce v databázi sdílet stejnou propustnost) nebo na úrovni kolekce. Ponechte prázdné zřizování propustnosti na úrovni kolekce pro tuto konkrétní kolekci.
     Kapacita úložiště|*Unlimited*|Vyberte úložnou kapacitu **Unlimited**. 

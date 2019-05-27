@@ -9,11 +9,11 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: fdd4e26839661ab9765b7d496e7f60c3686ba637
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553931"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66166184"
 ---
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
@@ -37,7 +37,7 @@ Spusťte z příkazového řádku uzlu ve složce projektu příkaz `npm install
    3. `const keyrule` – Název klíče SAS.
    4. `const key` – Hodnota klíče SAS.
 
-3. Do souboru `listener.js` přidejte následující kód. :
+3. Do souboru `listener.js` přidejte následující kód. : 
 
     Všimněte si, že kód se příliš neliší od libovolného jednoduchého příkladu serveru HTTP, který můžete najít v kurzech Node.js pro začátečníky. Odlišné je jenom použití `createRelayedServer` místo obvyklé funkce `createServer`.
 

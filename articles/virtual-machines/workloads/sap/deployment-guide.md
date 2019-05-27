@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
 ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850890"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66154117"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 
@@ -362,7 +362,7 @@ Následující informace o určení velikosti SAP vědět:
 
 V Azure Resource Manageru pro správu všech prostředků aplikace ve vašem předplatném Azure můžete použít skupiny prostředků. Další informace najdete v tématu [přehled Azure Resource Manageru][resource-group-overview].
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -437,7 +437,7 @@ Průvodce vás provede nastavením povinné parametry pro vytvoření virtuáln�
      * **Typ disku**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
      * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks] [ planning-guide-managed-disks] v Průvodci plánem.
      * **Účet úložiště**: Vyberte existující účet úložiště nebo vytvořte novou. Ne všechny typy úložišť fungovat pro provozování aplikací SAP. Další informace o typech úložiště najdete v tématu [strukturu úložiště virtuálního počítače pro nasazení relační databázový systém](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
-   * **Síť**
+   * **Sítě**
      * **Virtuální síť** a **podsítě**: Virtuální počítač integrovat intranetu, vyberte virtuální síť, který je připojený k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejné IP adresy můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k vašemu virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s použitím skupin zabezpečení sítě][virtual-networks-nsg].
@@ -576,7 +576,7 @@ Průvodce vás provede nastavením povinné parametry pro vytvoření virtuáln�
    * **Storage**
      * **Typ disku**: Vyberte typ disku disk s operačním systémem. Pokud chcete používat Premium Storage pro datové disky, doporučujeme používat Premium Storage pro disk s operačním systémem i.
      * **Použití spravovaných disků**: Pokud chcete používat službu Managed Disks, vyberte Ano. Další informace o službě Managed Disks, naleznete v kapitole [Managed Disks] [ planning-guide-managed-disks] v Průvodci plánem.
-   * **Síť**
+   * **Sítě**
      * **Virtuální síť** a **podsítě**: Virtuální počítač integrovat intranetu, vyberte virtuální síť, který je připojený k vaší místní síti.
      * **Veřejná IP adresa**: Vyberte veřejnou IP adresu, kterou chcete použít, nebo zadejte parametry pro vytvoření nové veřejné IP adresy. Veřejné IP adresy můžete použít pro přístup k virtuálnímu počítači přes Internet. Ujistěte se, že vytvoříte skupinu zabezpečení sítě můžete líp zabezpečit přístup k vašemu virtuálnímu počítači.
      * **Skupina zabezpečení sítě**: Další informace najdete v tématu [řízení toku provozu sítě s použitím skupin zabezpečení sítě][virtual-networks-nsg].
@@ -693,7 +693,7 @@ Následující diagram ukazuje postupně jednotlivé kroky pro přesun místní 
 
 Pokud disk už nahráli a definované v Azure (viz [Azure Virtual Machines plánování a implementace SAP Netweaveru][planning-guide]), proveďte úkoly popsané v následujících částech.
 
-#### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+#### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 K vytvoření nasazení pomocí privátních disk s operačním systémem na webu Azure portal, použijte šablonu SAP publikovaných [úložišti GitHub šablon pro rychlý start azure –][azure-quickstart-templates-github]. Také můžete ručně vytvoříte virtuální počítač s použitím prostředí PowerShell.
 

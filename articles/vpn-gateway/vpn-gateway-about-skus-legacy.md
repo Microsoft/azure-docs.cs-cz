@@ -3,8 +3,8 @@ title: Starší virtuální sítě Azure s SKU služby VPN gateway | Dokumentace
 description: Jak pracovat s staré SKU; brány virtuální sítě Basic, Standard a HighPerformance.
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: jpconnock
+author: WenJason
+manager: digimobile
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
-ms.author: cherylmc
+origin.date: 03/20/2018
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66159216"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU (starší verze SKU) brány virtuální sítě
 
@@ -67,3 +68,5 @@ Můžete taky změnit velikost brány na webu Azure Portal.
 Další informace o nové SKU brány najdete v tématu [skladové položky brány](vpn-gateway-about-vpngateways.md#gwsku).
 
 Další informace o nastavení konfigurace, najdete v části [nastavení konfigurace služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
+
+<!--Update_Description: wording update-->

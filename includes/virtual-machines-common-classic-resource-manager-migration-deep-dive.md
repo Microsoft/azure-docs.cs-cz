@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125354"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66167092"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrovat prostředky IaaS z modelu nasazení classic do Azure Resource Manageru
 Nejprve je potřeba pochopit rozdíl mezi rovina dat a rovině správy operací na infrastrukturu jako službu (IaaS) prostředky.
@@ -45,7 +45,7 @@ Pracovní postup migrace je následující:
 >
 >
 
-### <a name="validate"></a>Ověření
+### <a name="validate"></a>Ověřit
 Operace ověření je prvním krokem v procesu migrace. Cílem tohoto kroku je analyzovat stav prostředky, které chcete migrovat v modelu nasazení classic. Operace vyhodnotí, jestli jsou prostředky schopné migrace (úspěch nebo neúspěch).
 
 Vyberte virtuální síť nebo cloudovou službu (Pokud není ve virtuální síti), který chcete ověřit pro migraci. Pokud prostředek není schopen migrace, uvádí Azure proč důvody.
@@ -107,7 +107,7 @@ Není k dispozici žádná sada okno dobu, před kterou je potřeba provést mig
 
 Pokud nastanou nějaké problémy, vždycky můžete migraci přerušit a vrátit se k modelu nasazení Classic. Po vrácení, Azure otevře roviny správy operací s prostředky, tak, aby mohli obnovit normální provoz na těchto virtuálních počítačích v modelu nasazení classic.
 
-### <a name="abort"></a>Přerušení
+### <a name="abort"></a>Zrušit
 Toto je volitelný krok, pokud chcete vrátit změny k modelu nasazení classic a zastavit migraci. Tato operace odstraní metadat Resource Manageru (vytvořený v kroku přípravy) pro vaše prostředky. 
 
 ![Diagram přerušení kroku](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
@@ -117,7 +117,7 @@ Toto je volitelný krok, pokud chcete vrátit změny k modelu nasazení classic 
 > Tuto operaci nelze provést po aktivaci operace potvrzení.     
 >
 
-### <a name="commit"></a>Potvrzení
+### <a name="commit"></a>Potvrdit
 Po dokončení ověření můžete migraci potvrdit. Prostředky se už nebudou zobrazovat v modelu nasazení classic a jsou k dispozici pouze v modelu nasazení Resource Manager. Migrované prostředky je možné spravovat pouze na novém portálu.
 
 > [!NOTE]
@@ -153,7 +153,7 @@ Model nasazení classic a Resource Manageru reprezentaci prostředků najdete v 
 | Virtuální síť |Virtuální síť |Virtuální síť se migruje se všemi vlastnostmi na model nasazení Resource Manager. Vytvoří se nová skupina prostředků s názvem `-migrated`. |
 | Vyhrazené IP adresy |Veřejná IP adresa s metodou statického přidělování |Vyhrazené IP adresy přidružené k nástroji pro vyrovnávání zatížení se migrují společně s migrací cloudové služby nebo virtuálního počítače. Migrace nepřidružených vyhrazených IP adres se aktuálně nepodporuje. |
 | Veřejná IP adresa na virtuální počítač |Veřejná IP adresa s metodou dynamického přidělování |Veřejná IP adresa přidružená k virtuálnímu počítači se převede na prostředek veřejné IP adresy s nastavenou statickou metodou přidělování. |
-| Skupiny NSG |Skupiny NSG |Skupiny zabezpečení sítě (NSG) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. Skupina NSG v modelu nasazení Classic se během migrace neodebere. Operace se skupinou NSG v rovině správy jsou však v průběhu migrace blokované. |
+| Skupiny NSG |skupin NSG |Skupiny zabezpečení sítě (NSG) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. Skupina NSG v modelu nasazení Classic se během migrace neodebere. Operace se skupinou NSG v rovině správy jsou však v průběhu migrace blokované. |
 | Servery DNS |Servery DNS |Servery DNS přidružené k virtuální síti nebo virtuálnímu počítači se migrují v rámci migrace odpovídajícího prostředku, a to společně se všemi vlastnostmi. |
 | UDR |UDR |Trasy definované uživatelem (UDR) přidružené k podsíti se v rámci migrace klonují do modelu nasazení Resource Manager. UDR v modelu nasazení Classic se během migrace neodebere. V průběhu migrace jsou blokované operace s UDR v rovině správy. |
 | Vlastnost předávání IP v konfiguraci sítě na virtuálním počítači |Vlastnost předávání IP na síťové kartě |Vlastnost předávání IP na virtuálním počítači se během migrace převede na vlastnost na síťových rozhraních. |

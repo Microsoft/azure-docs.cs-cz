@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541379"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159742"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
@@ -70,7 +70,7 @@ Get-AzTableRow -table $cloudTable | ft
 
 Tento příkaz vrátí výsledky, podobně jako v následující tabulce:
 
-| ID uživatele | uživatelské jméno | oddíl | rowkey |
+| userid | username jméno | oddíl | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
@@ -85,7 +85,7 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 Výsledky vypadat podobně jako v následující tabulce:
 
-| ID uživatele | uživatelské jméno | oddíl | rowkey |
+| userid | username jméno | oddíl | rowkey |
 |----|---------|---------------|----|
 | 1 | Chris | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
@@ -101,10 +101,10 @@ Get-AzTableRow -table $cloudTable `
 
 Tento dotaz načte jeden záznam.
 
-|Pole|hodnota|
+|Pole|value|
 |----|----|
-| ID uživatele | 1 |
-| uživatelské jméno | Chris |
+| userid | 1 |
+| username jméno | Chris |
 | PartitionKey | Oddíl1 |
 | RowKey      | CA |
 
@@ -118,10 +118,10 @@ Get-AzTableRow `
 
 Tento dotaz načte jeden záznam.
 
-|Pole|hodnota|
+|Pole|value|
 |----|----|
-| ID uživatele | 1 |
-| uživatelské jméno | Chris |
+| userid | 1 |
+| username jméno | Chris |
 | PartitionKey | Oddíl1 |
 | RowKey      | CA |
 
@@ -153,10 +153,10 @@ Get-AzTableRow -table $cloudTable `
 
 Ve výsledcích zobrazí Jessie2 záznamu.
 
-|Pole|hodnota|
+|Pole|value|
 |----|----|
-| ID uživatele | 2 |
-| uživatelské jméno | Jessie2 |
+| userid | 2 |
+| username jméno | Jessie2 |
 | PartitionKey | Oddíl2 |
 | RowKey      | NM |
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e48ab075264423479e792848af522a890736a403
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8907ae61fb03b417a74eb32e1fd09aece75d5e2c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152689"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151725"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows
 
@@ -76,6 +76,13 @@ Tento příklad ukazuje ruční instalace s kontejnery Windows:
 
 2. Spusťte PowerShell jako správce.
 
+   >[!NOTE]
+   >Instalace IoT Edge, PowerShell (x86) používáte AMD64 relaci powershellu. Pokud si nejste jistí, který typ relace používáte, spusťte následující příkaz:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
+
 3. **Nasadit IoTEdge** příkaz kontroluje, zda váš počítač Windows na podporovanou verzi, se změní na funkci kontejnery a potom stáhne moby runtime a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows. 
 
    ```powershell
@@ -111,12 +118,19 @@ V této druhé možnosti zřizování zařízení pomocí IoT Hub Device Provisi
 
 Následující příklad ukazuje automatické instalace s kontejnery Windows:
 
-1. Postupujte podle kroků v [vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows](how-to-auto-provision-simulated-device-windows.md) nastavení služby Device Provisioning a získání jeho **ID oboru**, simulace zařízení TPM a načíst jeho  **ID registrace**, pak vytvoření jednotlivé registrace. Jakmile je vaše zařízení zaregistrované ve službě IoT hub, pokračujte postupem instalace.  
+1. Postupujte podle kroků v [vytvoření a zřízení simulovaného zařízení TPM IoT Edge ve Windows](how-to-auto-provision-simulated-device-windows.md) nastavení služby Device Provisioning a získání jeho **ID oboru**, simulace zařízení TPM a načíst jeho **ID registrace**, pak vytvoření jednotlivé registrace. Jakmile je vaše zařízení zaregistrované ve službě IoT hub, pokračujte postupem instalace.  
 
    >[!TIP]
    >Nechte okno, na kterém běží simulátor TPM otevřených během instalace a testování. 
 
 2. Spusťte PowerShell jako správce.
+
+   >[!NOTE]
+   >Instalace IoT Edge, PowerShell (x86) používáte AMD64 relaci powershellu. Pokud si nejste jistí, který typ relace používáte, spusťte následující příkaz:
+   >
+   >```powershell
+   >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
+   >```
 
 3. **Nasadit IoTEdge** příkaz kontroluje, zda váš počítač Windows na podporovanou verzi, se změní na funkci kontejnery a potom stáhne moby runtime a modul runtime IoT Edge. Příkaz ve výchozím nastavení používá kontejnery Windows. 
 
@@ -155,7 +169,7 @@ Můžete stáhnout jeden nebo oba z těchto souborů předem do zařízení a pa
 
 Nejnovější instalační soubory IoT Edge spolu s předchozími verzemi, naleznete v tématu [Azure IoT Edge uvolní](https://github.com/Azure/azure-iotedge/releases).
 
-K instalaci součástí offline, použijte `-OfflineInstallationPath` parametr jako součást nasazení – IoTEdge příkaz a zadejte absolutní cestu k adresáři souboru. Například:
+K instalaci součástí offline, použijte `-OfflineInstallationPath` parametr jako součást nasazení – IoTEdge příkaz a zadejte absolutní cestu k adresáři souboru. Například
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -262,7 +276,7 @@ Příkaz nasadit IoTEdge stáhne a nasadí démon zabezpečení IoT Edge a jeho 
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-Inicializace IoTEdge příkaz nakonfiguruje IoT Edge se připojovací řetězec zařízení a provozní údaje. Velká část informace generované tímto příkazem je uložena v souboru iotedge\config.yaml. Inicializace příkazu přijímá tyto společné parametry, mimo jiné. Úplný seznam, použijte běžných `Get-Help Initialize-IoTEdge -full`. 
+Inicializace IoTEdge příkaz nakonfiguruje IoT Edge se připojovací řetězec zařízení a provozní údaje. Velká část informace generované tímto příkazem je uložena v souboru iotedge\config.yaml. Inicializace příkazu přijímá tyto společné parametry, mimo jiné. Úplný seznam, použijte příkaz `Get-Help Initialize-IoTEdge -full`. 
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
