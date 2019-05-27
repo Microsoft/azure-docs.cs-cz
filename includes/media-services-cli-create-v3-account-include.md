@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 02/21/2019
+ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 79af6512e9ce3d3f897be216ee3626c5d4fbcf1d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: feec6a695ad867d26d32904d020648b029f9da35
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733878"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66155754"
 ---
 ## <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
@@ -22,6 +22,8 @@ Nejprve je nutné vytvořit účet Media Services. Tato část popisuje, co pot�
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí následujícího příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky, jako například účty Azure Media Services a přidružené účty Storage.
+
+Můžete nahradit `amsResourceGroup` vaše hodnotou.
 
 ```azurecli
 az group create --name amsResourceGroup --location westus2
@@ -35,7 +37,7 @@ Ke svému účtu Media Services musíte mít přidružený jeden **primární** 
 
 V tomto příkladu vytvoříme obecné účely v2, účet Standard LRS. Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Ale při výběru SKU pro produkční prostředí byste měli zvážit, `--sku Standard_RAGRS`, která poskytuje geografické replikace zajišťuje nepřetržitý chod podniků. Další informace najdete v tématu [účty úložiště](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
-Následující příkaz vytvoří účet Storage, který se přidruží k účtu Media Services. V níže uvedeném skriptu můžete nahradit `storageaccountforams` vaší hodnotou. Název účtu musí mít méně než 24 znaků.
+Následující příkaz vytvoří účet Storage, který se přidruží k účtu Media Services. V níže uvedeném skriptu můžete nahradit `storageaccountforams` vaší hodnotou. `amsResourceGroup` musí odpovídat hodnotě, kterou jste zadali pro skupinu prostředků v předchozím kroku. Název účtu úložiště musí mít délku méně než 24.
 
 ```azurecli
 az storage account create --name storageaccountforams \  

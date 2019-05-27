@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125124"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171162"
 ---
 #### <a name="to-download-hotfixes"></a>Stažení oprav hotfix
 
@@ -26,7 +26,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
    
     ![Prohledávání katalogu](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. Klikněte na **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory ke stažení na zadaném umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
+4. Klikněte na tlačítko **Stáhnout**. Zadejte místní umístění, do kterého chcete aktualizace stáhnout, nebo do něj přejděte pomocí tlačítka **Procházet**. Klikněte na soubory ke stažení na zadaném umístění a složky. Složku je také možné zkopírovat do sdílené síťové složky dostupné ze zařízení.
 5. Vyhledejte všechny další opravy hotfix uvedené v tabulce výše (**4037266**) a stáhněte si odpovídající soubory do určených složek, jak je uvedeno v předchozí tabulce.
 
 > [!NOTE]

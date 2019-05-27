@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 1b3353cae73bb5710dc9343f1d211266d15743a2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 7794cf256ed8063007b4eee7c5c928be85723982
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153211"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170202"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Kurz: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu
 
@@ -44,13 +44,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Následující služby, nástroje a data se používají v tomto kurzu. 
 
-[Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
++ [Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázková data. Ujistěte se, že je účet úložiště ve stejné oblasti jako Azure Search.
 
-[Vytvoření účtu služby Azure storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázková data.
++ [Ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestává ze sady malý soubor různých typů. 
 
-[Ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestává ze sady malý soubor různých typů. 
++ [Instalace sady Visual Studio](https://visualstudio.microsoft.com/) pro použití jako rozhraní IDE.
 
-[Instalace sady Visual Studio](https://visualstudio.microsoft.com/) pro použití jako rozhraní IDE.
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službu pro účely tohoto kurzu.
 
 ## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 

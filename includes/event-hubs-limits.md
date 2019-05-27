@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 9d6b54027adcf2b12c6ca4081a11208a31f620e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 38f7dd6eb1c4965eca003e5ba337ec5912a53420
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464519"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148236"
 ---
 Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách služby Event Hubs najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-| Omezení | Rozsah | Poznámky | Hodnota |
+| Omezení | Scope | Poznámky | Hodnota |
 | --- | --- | --- | --- |
 | Počet obory názvů služby Event Hubs na předplatné |Předplatné |- |100 |
 | Počet událostí centra na obor názvů |Obor názvů |Odeslání dalších žádostí o vytvoření nové Centrum událostí odmítají. |10 |
@@ -30,3 +30,4 @@ Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hub
 | Maximální doba uchovávání dat událostí |Entita |- |1-7 dní |
 | Maximální počet jednotek propustnosti |Obor názvů |Překročení omezení jednotek propustnosti způsobí, že se data omezí a generuje [výjimka zaneprázdněný server](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Chcete-li požádat o větší počet jednotek propustnosti úrovně Standard, souborů [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na základě potvrzení nákupu. |20 |
 | Počet ověřovacích pravidel na obor názvů |Obor názvů|Odeslání dalších žádostí o vytvoření pravidla autorizace odmítají.|12 |
+| Počet volání getruntimeinformation – metoda | Entita | - | 50 za sekundu | 

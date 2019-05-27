@@ -2,19 +2,19 @@
 title: Kurz – použití virtuálního počítače s Linuxem a aplikace v Pythonu ukládat tajné kódy ve službě Azure Key Vault | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak nakonfigurovat aplikaci Python k čtení tajného klíče ze služby Azure Key Vault.
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: a5923c3d5ea7888a3737d7976caded8eef9c1661
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e5fbb4e6f6599d8f9560561fc219dbf57ac0cee1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702107"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "66147757"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: Tajné kódy ukládat v Azure Key Vault pomocí virtuálního počítače s Linuxem a aplikace v Pythonu
 
@@ -25,7 +25,7 @@ V tomto kurzu se nastavení webové aplikace Azure ke čtení informací z Azure
 > [!div class="checklist"]
 > * Vytvořte trezor klíčů
 > * Store tajný klíč v trezoru klíčů
-> * Vytvoření virtuálního počítače s Linuxem
+> * Vytvořit virtuální počítač s Linuxem
 > * Povolit [se identita spravované](../active-directory/managed-identities-azure-resources/overview.md) pro virtuální počítač
 > * Přidělení požadovaných oprávnění pro konzolovou aplikaci pro čtení dat ze služby key vault
 > * Získání tajného klíče z trezoru klíčů
@@ -95,7 +95,7 @@ Zadáním následujících příkazů vytvořte v trezoru klíčů tajný klíč
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
 
 Vytvoření virtuálního počítače pomocí `az vm create` příkazu.
 

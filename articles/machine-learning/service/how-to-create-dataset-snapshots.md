@@ -1,5 +1,5 @@
 ---
-title: Porovnat & reprodukovat data v čase se snímky
+title: Porovnat & reprodukovat dat pomocí snímků datové sady
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak porovnat data v čase a zajistit reprodukovatelnosti se snímky datové sady
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
-ms.date: 05/02/2019
-ms.openlocfilehash: 51d0dcfc543834e9a8725d11fa82b566a5132a6b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/23/2019
+ms.openlocfilehash: 525660be0f38c9458590e52cfcd575acb4cf5444
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205002"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162060"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>Porovnání dat a zajištění reprodukovatelnost se snímky (preview)
 
@@ -41,7 +41,7 @@ Pokud chcete vytvořit datovou sadu snímky, budete potřebovat registrované da
 
 ## <a name="create-dataset-snapshots"></a>Vytvořit datovou sadu snímky
 
-Chcete-li vytvořit snímek datovou sadu, použijte [ `dataset.create_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) ze sady SDK Azure Machine Learning.
+Chcete-li vytvořit snímek datovou sadu, použijte [ `dataset.create_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) z azureml datových sad balíčku sady Azure Machine Learning SDK.
 
 Ve výchozím nastavení, uloží snímek profilu (souhrnné statistiky) data na nejnovější [definici datové sady](how-to-manage-dataset-definitions.md) použít. Definice datové sady obsahuje záznam o jakékoli kroky transformace definované pro data. To je skvělý způsob, jak vytvořit reprodukovatelné vaše přípravy dat, pracovat.
 
@@ -128,14 +128,14 @@ snapshot.get_profile()
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 ID|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Číslo případu|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Datum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Zablokovat|FieldType.STRING|004XX LOŽIT KILBOURN|113XX LOŽIT PSOUNŮ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 Primární typ|FieldType.STRING|PODVODNÝ POSTUPEM|KRÁDEŽ|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Popis|FieldType.STRING|NEPLATNÉ KONTROLY|NAD 500 USD|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Popis umístění|FieldType.STRING||ŠKOLA, VEŘEJNÁ, VYTVÁŘENÍ|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
-Zadržení|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Domácí|FieldType.BOOLEAN|False|False|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Zadržení|FieldType.BOOLEAN|False (Nepravda)|False (Nepravda)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Domácí|FieldType.BOOLEAN|False (Nepravda)|False (Nepravda)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Signál|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
 Okres|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
 Dál|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
@@ -153,9 +153,9 @@ snapshot.to_pandas_dataframe().head(3)
 
 ||ID|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|Domácí|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění
 -|--|-----------|----|-----|----|------------|-----------|--------------------|------|--------|---|----|--------------|--------|------------|------------|----|----------|--------|---------|--------
-0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|1153|PODVODNÝ POSTUPEM|KRÁDEŽE FINANČNÍ IDENTITY PŘES 300 USD|OSTATNÍ|False|False|...|9|50|11|1183356.0|1831503.0|2016|2016-05-11 15:48:00|41.692834|-87.604319|(41.692833841, -87.60431945)
-1|10516598|HZ258664|2016-04-15 17:00:00|082XX LOŽIT MARSHFIELD|890|KRÁDEŽ|ZE SESTAVENÍ|MÍSTO POBYTU|False|False|...|21|71|6|1166776.0|1850053.0|2016|2016-05-12 15:48:00|41.744107|-87.664494|(41.744106973, -87.664494285)
-2|10519196|HZ261252|2016-04-15 10:00:00|104XX LOŽIT SACRAMENTO|1154|PODVODNÝ POSTUPEM|KRÁDEŽE FINANČNÍ IDENTITY 300 USD A V ČÁSTI|MÍSTO POBYTU|False|False|...|19|74|11|NaN|NaN|2016|2016-05-12 15:50:00|NaN|NaN|
+0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|1153|PODVODNÝ POSTUPEM|KRÁDEŽE FINANČNÍ IDENTITY PŘES 300 USD|OSTATNÍ|False (Nepravda)|False (Nepravda)|...|9|50|11|1183356.0|1831503.0|2016|2016-05-11 15:48:00|41.692834|-87.604319|(41.692833841, -87.60431945)
+1|10516598|HZ258664|2016-04-15 17:00:00|082XX LOŽIT MARSHFIELD|890|KRÁDEŽ|ZE SESTAVENÍ|MÍSTO POBYTU|False (Nepravda)|False (Nepravda)|...|21|71|6|1166776.0|1850053.0|2016|2016-05-12 15:48:00|41.744107|-87.664494|(41.744106973, -87.664494285)
+2|10519196|HZ261252|2016-04-15 10:00:00|104XX LOŽIT SACRAMENTO|1154|PODVODNÝ POSTUPEM|KRÁDEŽE FINANČNÍ IDENTITY 300 USD A V ČÁSTI|MÍSTO POBYTU|False (Nepravda)|False (Nepravda)|...|19|74|11|NaN|NaN|2016|2016-05-12 15:50:00|NaN|NaN|
 
 ## <a name="next-steps"></a>Další postup
 

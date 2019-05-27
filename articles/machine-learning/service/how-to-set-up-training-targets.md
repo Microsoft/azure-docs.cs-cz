@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236946"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160476"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
+# <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
 
 Pomocí služby Azure Machine Learning můžete trénování modelu na širokou škálu prostředků nebo prostředí, které se souhrnně označují jako [ __cílových výpočetních prostředí__](concept-azure-machine-learning-architecture.md#compute-target). Cílové výpočetní prostředí může být místním počítači nebo prostředku cloudu, jako jsou Azure Machine Learning Compute, Azure HDInsight nebo vzdáleného virtuálního počítače.  Můžete také vytvořit cílových výpočetních prostředí pro model nasazení, jak je popsáno v ["kde a jak nasadit modely"](how-to-deploy-and-where.md).
 
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak používat různé cílových výpočetních p
 Služba Azure Machine Learning nabízí různé podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
 
-|Cílové školení výpočetní prostředí| Akcelerace GPU | Automaticky<br/> hyperparametrů | Automaticky</br> Strojové učení | Kanály Azure Machine Learning |
+|Cílové školení výpočetní prostředí| Akcelerace GPU | Automaticky<br/> hyperparametrů | Automaticky<br/> Strojové učení | Kanály Azure Machine Learning |
 |----|:----:|:----:|:----:|:----:|
 |[Místní počítač](#local)| Možná | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -418,6 +418,10 @@ Nebo můžete:
 
 * Odeslání experimentu s `Estimator` jak je znázorněno v [ML trénování modelů s odhady](how-to-train-ml-models.md). 
 * Odeslání experimentu [pomocí rozšíření rozhraní příkazového řádku](reference-azure-machine-learning-cli.md#experiments).
+
+## <a name="github-tracking-and-integration"></a>GitHub sledování a integrace
+
+Při spuštění školení spustit, pokud je zdrojový adresář místního úložiště Git, informace o úložišti jsou uloženy v historii spuštění. Například aktuální ID potvrzení pro úložiště se zaznamená jako část historie.
 
 ## <a name="notebook-examples"></a>Příklady poznámkového bloku
 

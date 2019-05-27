@@ -14,11 +14,11 @@ ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
 ms.openlocfilehash: f580bf02b222f01a3d5aad1254f208791ea22b38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66161791"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-linux-cluster-nodes"></a>Povolit Disk encryption pro uzly clusteru service fabric Linux 
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 * Nainstalujte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) , který obsahuje nové příkazy šifrování.
 * Nainstalujte nejnovější verzi [sadu SDK Azure z prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) release. Tady jsou škálovací sady virtuálních počítačů ADE rutiny umožňující ([nastavit](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) šifrování, načtení ([získat](/powershell/module/az.compute/get-azvmssvmdiskencryption)) stav šifrování a odebrat ([zakázat](/powershell/module/az.compute/disable-azvmssdiskencryption)) stupnice šifrování nastavit instanci. 
 
-| Příkaz | Verze |  Zdroj  |
+| Příkaz | Version |  Zdroj  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 nebo novějším | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 nebo novějším | Az.Compute |

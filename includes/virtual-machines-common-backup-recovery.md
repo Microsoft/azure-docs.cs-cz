@@ -2,19 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: rockboyfor
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-origin.date: 03/09/2018
-ms.date: 04/16/2018
-ms.author: v-yeche
+ms.date: 03/09/2018
+ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543702"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160050"
 ---
 ## <a name="azure-backup"></a>Azure Backup
 
@@ -23,6 +22,7 @@ Pro zálohování virtuálních počítačů Azure, spouštění úloh v produk�
 Jednoduché, praktické Úvod do služby Azure Backup pro virtuální počítače Azure, najdete v kurzu "zálohování Azure virtual machines" pro [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) nebo [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
 
 Další informace o tom, jak Azure Backup funguje, najdete v části [plánování infrastruktury zálohování virtuálních počítačů v Azure](../articles/backup/backup-azure-vms-introduction.md)
+
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -40,6 +40,8 @@ Další informace o vytváření snímků najdete v článku:
 
 * [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků ve Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Vytvoření kopie VHD uložené jako spravovaný disk pomocí snímků v Linuxu](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+
+
 
 ## <a name="next-steps"></a>Další postup
 Budete moct vyzkoušet Azure Backup pomocí následujících "Zálohování Windows virtual machines kurz" pro [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) nebo [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).

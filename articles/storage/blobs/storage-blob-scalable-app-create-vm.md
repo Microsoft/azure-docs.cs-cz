@@ -11,11 +11,11 @@ ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: a5b6c22b3917784b20ad11bddf200d1546c48597
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882865"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66168218"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>Vytvoření virtuálního počítače a účtu úložiště pro škálovatelnou aplikaci
 
@@ -25,7 +25,7 @@ V první části této série se naučíte:
 
 > [!div class="checklist"]
 > * vytvořit účet úložiště
-> * Vytvoření virtuálního počítače
+> * Vytvořit virtuální počítač
 > * Konfigurace rozšíření vlastních skriptů
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -58,7 +58,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
   -Kind Storage `
 ```
 
-## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení, která se používají při nasazení virtuálního počítače, jako je image virtuálního počítače, jeho velikost a konfigurace ověřování. Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
 
@@ -130,7 +130,7 @@ V první části série jste se seznámili s vytvořením účtu úložiště, n
 
 > [!div class="checklist"]
 > * vytvořit účet úložiště
-> * Vytvoření virtuálního počítače
+> * Vytvořit virtuální počítač
 > * Konfigurace rozšíření vlastních skriptů
 
 Přejděte k druhé části série, kde do účtu úložiště nahrajete velké objemy dat s využitím exponenciálního opakování a paralelismu.

@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65538416"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147827"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 

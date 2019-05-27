@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105912"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157398"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: portál Azure
 
@@ -46,7 +46,7 @@ Tyto hodnoty můžete použít k vytvoření testovacího prostředí nebo můž
 * **Server DNS:** (volitelné) IP adresa serveru DNS, který chcete používat pro překlad názvů.
 * **Název brány virtuální sítě:** VNet1GW
 * **Typ brány:** Síť VPN
-* **Typ sítě VPN:** Trasové
+* **Typ sítě VPN:** Založeno na směrování
 * **Název veřejné IP adresy:** VNet1GWpip
 * **Typ připojení:** Point-to-Site
 * **Fond adres klienta:** 172.16.201.0/24<br>Klienti VPN, kteří se budou k virtuální síti připojovat pomocí tohoto připojení typu Point-to-Site, získají IP adresu ze zadaného fondu adres klienta.
@@ -108,7 +108,7 @@ Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti při
 
 ## <a name="tunneltype"></a>7. Konfigurace typu tunelového propojení
 
-Můžete vybrat typ tunelového propojení. Dostupné jsou dvě možnosti, SSTP a IKEv2. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOSu a OSX budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP. Můžete si vybrat, jestli povolíte jednu z nich nebo obě. Zaškrtněte políčka, která vyžaduje vaše řešení.
+Můžete vybrat typ tunelového propojení. Možnosti tunelového propojení jsou OpenVPN, SSTP a IKEv2. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOSu a OSX budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP. OpenVPN klienta můžete použít pro připojení k OpenVPN Typ tunelového propojení.
 
 ![Typ tunelového propojení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 

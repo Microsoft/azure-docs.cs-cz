@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: be36f9ab881f2375b14ba0ea36038f9e840d199f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997506"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66156499"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesun dat do a z místního SQL serveru nebo na IaaS (virtuální počítač Azure) pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -76,11 +76,11 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
-| připojovací řetězec |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. |Ano |
+| Typ |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
+| connectionString |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi SQL serveru. |Ano |
-| uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
+| username jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
+| password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 
 Můžete k šifrování přihlašovacích údajů a **New-AzDataFactoryEncryptValue** rutiny a jejich použití v připojovacím řetězci, jak je znázorněno v následujícím příkladu (**EncryptedCredential** vlastnost):
 
@@ -88,7 +88,7 @@ Můžete k šifrování přihlašovacích údajů a **New-AzDataFactoryEncryptVa
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 ```
 
-### <a name="samples"></a>Ukázky
+### <a name="samples"></a>Ukázky kódu
 **JSON pro použití ověřování SQL**
 
 ```json
@@ -168,8 +168,8 @@ Pokud nezadáte sqlReaderQuery nebo sqlReaderStoredProcedureName, sloupce defino
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
-| WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
+| writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu. |TimeSpan<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování ke spuštění tak, že po vyčištění dat určitý řez. Další informace najdete v tématu [opakovatelné kopírování](#repeatable-copy) oddílu. |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generovány řez, který se používá k vyčištění dat určitý řez, kdy se znovu spustit. Další informace najdete v tématu [opakovatelné kopírování](#repeatable-copy) oddílu. |Název sloupce pro sloupec s datovým typem binary(32). |Ne |
 | sqlWriterStoredProcedureName |Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky, například na upsertuje proveďte nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Mějte na paměti, bude tuto uloženou proceduru **za batch**. Pokud budete chtít provádět operace, která pouze spustí jednou a nemá nic dělat se zdrojovými daty, třeba delete nebo truncate, použijte `sqlWriterCleanupScript` vlastnost. |Název uložené procedury. |Ne |
@@ -654,37 +654,37 @@ Mapování je stejná jako SQL Server mapování datového typu pro technologii 
 | Typ databázového stroje SQL serveru | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte] |
-| Bit |Logická hodnota |
-| Char |Řetězec, Char] |
+| binary |Byte[] |
+| bit |Boolean |
+| char |String, Char[] |
 | date |DateTime |
-| Datum a čas |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
-| DateTimeOffset |DateTimeOffset |
+| Datetimeoffset |Datetimeoffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte] |
+| Atribut FILESTREAM (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte] |
-| int |Datový typ Int32 |
-| peníze |Decimal |
-| nchar |Řetězec, Char] |
-| ntext |Řetězec, Char] |
-| Číselné |Decimal |
-| nvarchar |Řetězec, Char] |
-| Real |Jednoduchá |
-| ROWVERSION |Byte] |
+| image |Byte[] |
+| int |Int32 |
+| money |Decimal |
+| nchar |String, Char[] |
+| ntext |String, Char[] |
+| numeric |Decimal |
+| nvarchar |String, Char[] |
+| real |Single |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| Smallmoney |Decimal |
-| SQL_VARIANT |Objekt * |
-| text |Řetězec, Char] |
-| time |Časový interval |
-| časové razítko |Byte] |
-| tinyint |Bajt |
-| UniqueIdentifier |Guid |
-| varbinary |Byte] |
-| varchar |Řetězec, Char] |
-| xml |XML |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
+| time |TimeSpan |
+| časové razítko |Byte[] |
+| tinyint |Byte |
+| uniqueidentifier |Guid |
+| varbinary |Byte[] |
+| varchar |String, Char[] |
+| xml |Xml |
 
 ## <a name="mapping-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
 Pokud chcete namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).

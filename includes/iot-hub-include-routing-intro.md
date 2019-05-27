@@ -9,11 +9,11 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 400f12237ae8b8cbaf6d66bda1663ecb680136f3
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630919"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162737"
 ---
 [Směrování zpráv](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) povolí odesílání telemetrických dat ze zařízení IoT pro integrované koncové body kompatibilní s centrem událostí nebo vlastní koncové body, jako objekt blob úložiště, fronty Service Bus, témat Service Bus a Event Hubs. Pokud chcete nakonfigurovat vlastní zprávu směrování, vytvoříte [směrování dotazů](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) přizpůsobení trasy, která odpovídá určité podmínky. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. Pokud zpráva neodpovídá žádné z definovaných směrování dotazů, přesměruje ho na výchozí koncový bod.
 

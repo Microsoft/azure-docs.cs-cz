@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 95cabef1705cf09f165c1e5ce4434d2c0be61abf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 51db52d5a5bfef6ef5a34fa9a0877516d5786236
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729019"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Kurz: Integrace Azure Active Directory s ZIVVER
 
@@ -115,7 +115,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ZIVVER, proveďte následuj
 
     | Název | Obor názvů | Zdrojový atribut|
     | ---------------| --------------- |
-    | ZivverAccountKey | https://zivver.com/SAML/Attributes | user.objectid |
+    | ZivverAccountKey | protokol https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
     >Pokud používáte hybridní instalace služby Active Directory edice a nástroje Azure AD Connect, hodnota by měla být nastavena `user.objectGUID`
@@ -220,7 +220,7 @@ V této části je povolit Britta Simon k udělení přístupu k ZIVVER použit�
 
 V této části vytvoříte uživatele v ZIVVER jako Britta Simon. Práce s [tým podpory ZIVVER](https://support.zivver.com/) přidat uživatele na platformě ZIVVER. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

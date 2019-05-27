@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
 ms.openlocfilehash: 8f1bf9b9070f2db2376de9cb0a0602eaea98b47e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66147666"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Nástroj pro vyrovnávání zatížení virtuálních počítačů ve všech zónách dostupnosti pomocí Azure CLI
 

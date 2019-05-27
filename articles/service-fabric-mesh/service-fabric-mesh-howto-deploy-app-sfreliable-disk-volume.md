@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419216"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147480"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Připojit svazek s vysokou dostupností Service Fabric Reliable založené na disku v aplikaci Service Fabric mřížky 
 Běžnou metodu zachování stavu s využitím kontejnerové aplikace je použití vzdáleného úložiště, jako je Azure File Storage nebo databáze, jako je Azure Cosmos DB. Tím se spojují významné pro čtení a zápisu latence sítě do vzdáleného úložiště.
@@ -73,7 +73,7 @@ Všimněte si názvu prostředku brány, která má jako typ prostředku `Micros
 
 Po úspěšném nasazení aplikace, získejte IP adresu prostředku brány pro aplikaci. Použijte název brány, kterou jste si všimli v výše uvedené části.
 ```azurecli-interactive
-az mesh gateway show --resource-group myResourceGroup --gateway-name counterGateway
+az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
 Výstup by měl mít zadanou vlastnost `ipAddress` tedy veřejnou IP adresu pro koncový bod služby. Otevřete v prohlížeči. Zobrazí se na webové stránce s hodnotou čítače aktualizuje každou sekundu.

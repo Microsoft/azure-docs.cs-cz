@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165090"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66143293"
 ---
-| **Identifikátor omezení** | **Limit** | **Komentáře** |
+| **Identifikátor omezení** | **Limit** | **Komentář** |
 | --- | --- | --- |
 | Celková kapacita (včetně cloud) |Až 64 TB na virtuální zařízení |Můžete předat úplnou StorSimple Virtual Array do jiného prázdné pole. Pokud se pokusíte obnovit do stejného zařízení, ujistěte se, že máte dostatek volného místa pro dokončení této operace. Poté, co jste překročili 32 TB, nelze obnovit do stejného zařízení. |
 | Maximální počet přihlašovací údaje účtu úložiště na zařízení |1 | |

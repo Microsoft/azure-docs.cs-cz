@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f9e0582a1338bcae7b330c7ece7c3d8cc8593cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21ad3f9baf4b8e117f881d9a36fc606af04e17a5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543896"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158442"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak nainstalovat MySQL v Azure
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuálním počítači Azure s Linuxem.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="install-mysql-on-your-virtual-machine"></a>Instalace MySQL na virtuálním počítači
 > [!NOTE]
 > Musíte již mít na virtuálním počítači Microsoft Azure s Linuxem k dokončení tohoto kurzu. Podrobnosti najdete [Linuxový virtuální počítač Azure kurz](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) k vytvoření a nastavení virtuálního počítače s Linuxem pomocí `mysqlnode` jako název virtuálního počítače a `azureuser` jako uživatel, než budete pokračovat.
 > 
@@ -35,147 +33,208 @@ V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuá
 
 V takovém případě použijte 3306 port jako port pro MySQL.  
 
-Připojte se k Linuxový virtuální počítač vytvořený pomocí putty. Pokud je při prvním použití Linuxový virtuální počítač Azure, najdete informace o použití klienta putty připojení k virtuálnímu počítači s Linuxem [tady](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
 K instalaci MySQL5.6 jako příklad v tomto článku budeme používat úložiště balíčků. Ve skutečnosti MySQL5.6 má další vylepšení výkonu než MySQL5.5.  Další informace o [tady](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/).
 
-### <a name="how-to-install-mysql56-on-ubuntu"></a>Postup instalace MySQL5.6 na Ubuntu
-Virtuální počítač s Linuxem s Ubuntu v Azure použijeme tady.
+## <a name="install-mysql56-on-ubuntu"></a>Nainstalujte MySQL5.6 na Ubuntu
+Budeme používat systém Linux virtuálního počítače s Ubuntu.
 
-* Krok 1: Nainstalovat MySQL Server 5.6 přepínač tak, aby `root` uživatele:
-  
-            #[azureuser@mysqlnode:~]sudo su -
-  
-    Nainstalujte mysql server 5.6:
-  
-            #[root@mysqlnode ~]# apt-get update
-            #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
-  
-    Během instalace zobrazí se dialogové okno se zobrazí na vás vyzve k nastavení MySQL kořenové heslo a zde potřebovat nastavit heslo.
-  
-    ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 
-    Zadejte heslo znovu pro potvrzení.
+### <a name="install-mysql"></a>Instalace MySQL
 
-    ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p2.png)
+Nainstalovat MySQL 5.6 serveru při přechodu `root` uživatele:
 
-* Krok 2: Login MySQL Server
-  
-    Po dokončení instalace serveru MySQL se spustí automaticky službu MySQL. MySQL Server se můžete přihlásit `root` uživatele.
-    Používá následující příkaz k přihlášení a zadání hesla.
-  
-             #[root@mysqlnode ~]# mysql -uroot -p
-* Krok 3: Správa spuštěnou službu MySQL
-  
-    (a) získat stav služby MySQL
-  
-             #[root@mysqlnode ~]# service mysql status
-  
-    (b) Start MySQL Service
-  
-             #[root@mysqlnode ~]# service mysql start
-  
-    (c) zastavit službu MySQL
-  
-             #[root@mysqlnode ~]# service mysql stop
-  
-    (d) restartujte službu MySQL
-  
-             #[root@mysqlnode ~]# service mysql restart
+```bash  
+sudo su -
+```
 
-### <a name="how-to-install-mysql-on-red-hat-os-family-like-centos-oracle-linux"></a>Jak nainstalovat MySQL v řadě Red Hat OS jako CentOS, Oracle Linux
+Nainstalujte mysql server 5.6:
+
+```bash  
+apt-get update
+apt-get -y install mysql-server-5.6
+```
+
+  
+Během instalace zobrazí se dialogové okno se zobrazí na vás vyzve k nastavení MySQL kořenové heslo a zde potřebovat nastavit heslo.
+  
+![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
+
+Zadejte heslo znovu pro potvrzení.
+
+![image](./media/mysql-install/virtual-machines-linux-install-mysql-p2.png)
+
+### <a name="sign-in"></a>Přihlášení
+  
+Po dokončení instalace serveru MySQL se spustí automaticky službu MySQL. Můžete se přihlásit k serveru MySQL se `root` uživatele a zadejte své heslo.
+
+```bash  
+mysql -uroot -p
+```
+
+
+### <a name="manage-the-mysql-service"></a>Správa služby MySQL
+
+Získání stavu služby MySQL
+
+```bash   
+service mysql status
+```
+  
+Start MySQL Service
+
+```bash  
+service mysql start
+```
+  
+Zastavit službu MySQL
+
+```bash  
+service mysql stop
+```
+  
+Restartujte službu MySQL
+
+```bash  
+service mysql restart
+```
+
+## <a name="install-mysql-on-red-hat-os-centos-oracle-linux"></a>Install MySQL on Red Hat OS, CentOS, Oracle Linux
 Virtuální počítač s Linuxem s CentOS nebo Oracle Linux použijeme tady.
 
-* Krok 1: Přidejte úložiště MySQL Yumu přepínač na `root` uživatele:
-  
-            #[azureuser@mysqlnode:~]sudo su -
-  
-    Stáhněte a nainstalujte balíček verze MySQL:
-  
-            #[root@mysqlnode ~]# wget https://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
-            #[root@mysqlnode ~]# yum localinstall -y mysql-community-release-el6-5.noarch.rpm
-* Krok 2: Upravte následující soubor úložiště MySQL pro stahování balíčku MySQL5.6.
-  
-            #[root@mysqlnode ~]# vim /etc/yum.repos.d/mysql-community.repo
-  
-    Aktualizujte jednotlivé hodnoty tohoto souboru níže:
-  
-        \# *Enable to use MySQL 5.6*
-  
-        [mysql56-community]
-        name=MySQL 5.6 Community Server
-  
-        baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/
-  
-        enabled=1
-  
-        gpgcheck=1
-  
-        gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
-* Krok 3: Instalace MySQL z MySQL – úložiště nainstalovat MySQL:
-  
-           #[root@mysqlnode ~]#yum install mysql-community-server
-  
-    Balíček MySQL RPM a všechny související balíčky se nainstalují.
-* Krok 4: Správa spuštěnou službu MySQL
-  
-    (a) zkontrolujte stav služby serveru MySQL:
-  
-           #[root@mysqlnode ~]#service mysqld status
-  
-    (b) zkontrolujte, zda je spuštěn výchozí port MySQL server:
-  
-           #[root@mysqlnode ~]#netstat  –tunlp|grep 3306
+### <a name="add-the-mysql-yum-repository"></a>Přidejte úložiště MySQL yum
+    
+Přepnout na `root` uživatele:
 
-    (c) spusťte MySQL server:
+```bash  
+sudo su -
+```
 
-           #[root@mysqlnode ~]#service mysqld start
+Stáhněte a nainstalujte balíček verze MySQL:
 
-    (d) zastavte MySQL server:
+```bash  
+wget https://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+yum localinstall -y mysql-community-release-el6-5.noarch.rpm
+```
 
-           #[root@mysqlnode ~]#service mysqld stop
+### <a name="enable-the-mysql-repository"></a>Povolit úložiště MySQL
+Upravte následující soubor úložiště MySQL pro stahování balíčku MySQL5.6.
 
-    (e) MySQL sada chcete spustit po spuštění provozu systému:
+```bash  
+vim /etc/yum.repos.d/mysql-community.repo
+```
 
-           #[root@mysqlnode ~]#chkconfig mysqld on
+  
+Aktualizujte jednotlivé hodnoty tohoto souboru níže:
+
+```  
+\# *Enable to use MySQL 5.6*
+  
+[mysql56-community]
+name=MySQL 5.6 Community Server
+  
+baseurl=http://repo.mysql.com/yum/mysql-5.6-community/el/6/$basearch/
+  
+enabled=1
+  
+gpgcheck=1
+  
+gpgkey=file:/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
+```
+
+### <a name="install-mysql"></a>Instalace MySQL 
+
+Instalace MySQL z úložiště.
+
+```bash  
+yum install mysql-community-server
+```
+  
+Balíček MySQL RPM a všechny související balíčky se nainstalují.
 
 
-### <a name="how-to-install-mysql-on-suse-linux"></a>Jak nainstalovat MySQL v SUSE Linuxu
+## <a name="manage-the-mysql-service"></a>Správa služby MySQL
+  
+Zkontrolujte stav služby serveru MySQL:
+
+```bash  
+service mysqld status\
+```
+  
+Zkontrolujte, zda je spuštěn výchozí port MySQL server:
+
+```bash  
+netstat  –tunlp|grep 3306
+```
+
+Spusťte MySQL server:
+
+```bash
+service mysqld start
+```
+
+Zastavte MySQL server:
+
+```bash
+service mysqld stop
+```
+
+Nastavení MySQL chcete spustit po spuštění provozu systému:
+
+```bash
+chkconfig mysqld on
+```
+
+## <a name="install-mysql-on-suse-linux"></a>Instalace MySQL v SUSE Linuxu
+
 Virtuální počítač s Linuxem pomocí OpenSUSE použijeme tady.
 
-* Krok 1: Stáhněte a nainstalujte MySQL Server
+### <a name="download-and-install-mysql-server"></a>Stáhněte a nainstalujte MySQL Server
   
-    Přepnout na `root` uživatele provede následující příkaz:  
-  
-           #sudo su -
-  
-    Stáhněte a nainstalujte MySQL balíčku:
-  
-           #[root@mysqlnode ~]# zypper update
-  
-           #[root@mysqlnode ~]# zypper install mysql-server mysql-devel mysql
-* Krok 2: Správa spuštěnou službu MySQL
-  
-    (a) zkontrolujte stav serveru MySQL:
-  
-           #[root@mysqlnode ~]# rcmysql status
-  
-    (b) zkontrolujte, zda výchozí port serveru MySQL:
-  
-           #[root@mysqlnode ~]# netstat  –tunlp|grep 3306
+Přepnout na `root` uživatele provede následující příkaz:  
 
-    (c) spusťte MySQL server:
+```bash  
+sudo su -
+```
+  
+Stáhněte a nainstalujte MySQL balíčku:
 
-           #[root@mysqlnode ~]# rcmysql start
+```bash  
+zypper update
+zypper install mysql-server mysql-devel mysql
+```
 
-    (d) zastavte MySQL server:
+### <a name="manage-the-mysql-service"></a>Správa služby MySQL
+  
+Zkontrolujte stav serveru MySQL:
 
-           #[root@mysqlnode ~]# rcmysql stop
+```bash  
+rcmysql status
+```
+  
+Zkontrolujte, zda výchozí port serveru MySQL:
 
-    (e) MySQL sada chcete spustit po spuštění provozu systému:
+```bash  
+netstat  –tunlp|grep 3306
+```
 
-           #[root@mysqlnode ~]# insserv mysql
+Spusťte MySQL server:
 
-### <a name="next-step"></a>Dalším krokem
-Najít další využití a informace týkající se MySQL [tady](https://www.mysql.com/).
+```bash
+rcmysql start
+```
+
+Zastavte MySQL server:
+
+```bash
+rcmysql stop
+```
+
+Nastavení MySQL chcete spustit po spuštění provozu systému:
+
+```bash
+insserv mysql
+```
+
+## <a name="next-step"></a>Další krok
+Další informace najdete v tématu [MySQL](https://www.mysql.com/) webu.
 

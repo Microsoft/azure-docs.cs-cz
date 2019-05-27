@@ -9,11 +9,11 @@ ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64744031"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150815"
 ---
 Rychle vytvořit virtuální síť, že můžete kliknete na tlačítko "Vyzkoušet" v tomto článku, otevřete konzolu Powershellu. Upravte hodnoty, potom příkazy zkopírujte a vložte je do okna konzoly. Další informace o novém modulu Az a kompatibility AzureRM najdete v tématu [představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az). Pokyny k instalaci modulu Az, naleznete v tématu [instalace Azure Powershellu](/powershell/azure/install-az-ps).
 

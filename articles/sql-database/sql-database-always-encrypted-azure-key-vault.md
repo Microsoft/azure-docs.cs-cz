@@ -14,11 +14,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66168183"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -47,7 +47,7 @@ Pro účely tohoto kurzu budete potřebovat:
 * Účet a předplatné Azure. Pokud ho nemáte, zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) verze 13.0.700.242 nebo novější.
 * [Rozhraní .NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) nebo novějším (v klientském počítači).
-* Sadu [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * [Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Povolit klientské aplikaci přístup ke službě SQL Database
@@ -97,7 +97,7 @@ Budete potřebovat připojení řetězec později v tomto kurzu, takže po vytvo
    
     ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Připojit se k databázi pomocí SSMS
+## <a name="connect-to-the-database-with-ssms"></a>Připojení k databázi pomocí SSMS
 Otevřete SSMS a připojte se k serveru databáze Clinic.
 
 1. Otevřete aplikaci SSMS. (Přejít na **připojit** > **databázový stroj** otevřít **připojit k serveru** okno, pokud není otevřený.)
@@ -160,7 +160,7 @@ Tento kurz ukazuje, jak ukládat klíče ve službě Azure Key Vault.
 
 ![Konfigurace hlavního klíče](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
-### <a name="validation"></a>Ověření
+### <a name="validation"></a>Ověřování
 Můžete teď šifrování sloupce nebo uložit skript prostředí PowerShell spustit později. Pro účely tohoto kurzu vyberte **pokračovat, dokončete nyní** a klikněte na tlačítko **Další**.
 
 ### <a name="summary"></a>Souhrn

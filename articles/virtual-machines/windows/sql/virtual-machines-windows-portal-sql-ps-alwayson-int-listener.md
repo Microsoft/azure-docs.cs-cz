@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.openlocfilehash: 5b647af7925ceb81c524deb0accf90f9e895080e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165815"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -227,10 +227,10 @@ Všimněte si, že následující pokyny pro naslouchací proces skupiny dostupn
 
 * Pokud jste omezení přístupu se skupinou zabezpečení sítě Azure, zajistěte, aby pravidla povolit zahrnují adres back-end IP adresy virtuálního počítače SQL serveru a nástroje pro vyrovnávání zatížení plovoucí IP adres pro naslouchacího procesu AG a IP adresu clusteru core Pokud je k dispozici.
 
-## <a name="for-more-information"></a>Další informace
+## <a name="for-more-information"></a>Další informace získáte
 Další informace najdete v tématu [skupiny dostupnosti nakonfigurujte Always On na virtuálním počítači Azure ručně](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
-## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
+## <a name="powershell-cmdlets"></a>Rutiny PowerShellu
 Pomocí následujících rutin prostředí PowerShell k vytvoření interního nástroje pro Azure virtual machines.
 
 * [Nové AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 

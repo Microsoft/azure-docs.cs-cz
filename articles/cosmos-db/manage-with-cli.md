@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 4/8/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1d19e58b2d1381725de490b68d9e4d00a2ca4cb6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66151212"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Správa prostředků Azure Cosmos pomocí Azure CLI
 
@@ -21,7 +21,7 @@ Následující průvodci popisuje běžné příkazy pro automatizaci správy ú
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet Azure Cosmos DB
 
 Konzistence typu relace v oblastech USA – východ a USA – Západ, chcete-li vytvořit účet služby Azure Cosmos DB s rozhraním SQL API, spusťte následující příkaz:
 

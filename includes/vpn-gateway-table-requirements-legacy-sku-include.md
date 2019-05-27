@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d8091fdade9cd417af58755d8245c2fb091b86b3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b9e036816aa532d32b1b4305ef6ae646ae05bae
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197177"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159264"
 ---
-Následující tabulka uvádí požadavky na brány PolicyBased a sítě VPN RouteBased. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model. Pro klasického modelu brány sítě VPN PolicyBased jsou stejné jako statické brány a trasové brány jsou stejné jako dynamické brány.
+V následující tabulce jsou uvedeny požadavky pro PolicyBased a RouteBased VPN Gateway. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model. V případě klasického modelu brány PolicyBased VPN jsou stejné jako statické brány a trasové brány jsou stejné jako odpovídají dynamickým branám.
 
-|  | **Brána sítě VPN PolicyBased Basic** | **Brána sítě VPN RouteBased Basic** | **Brána sítě VPN RouteBased Standard** | **RouteBased vysoce výkonná brána sítě VPN** |
+|  | **Brány sítě VPN PolicyBased Basic** | **RouteBased Basic VPN Gateway** | **RouteBased Standard VPN Gateway** | **RouteBased vysoce výkonná brána sítě VPN** |
 | --- | --- | --- | --- | --- |
-| **Připojení Site-to-Site (S2S)** |Konfigurace sítě VPN PolicyBased |Konfigurace sítě VPN RouteBased |Konfigurace sítě VPN RouteBased |Konfigurace sítě VPN RouteBased |
+| **Připojení Site-to-Site (S2S)** |Konfigurace sítě VPN PolicyBased |Konfigurace VPN typu RouteBased |Konfigurace VPN typu RouteBased |Konfigurace VPN typu RouteBased |
 | **Připojení typu point-to-site (P2S**) |Nepodporuje se |Podporuje se (může existovat vedle připojení S2S) |Podporuje se (může existovat vedle připojení S2S) |Podporuje se (může existovat vedle připojení S2S) |
 | **Metoda ověřování** |Předsdílený klíč |Předsdílený klíč pro připojení S2S, certifikáty pro připojení P2S |Předsdílený klíč pro připojení S2S, certifikáty pro připojení P2S |Předsdílený klíč pro připojení S2S, certifikáty pro připojení P2S |
 | **Maximální počet připojení S2S** |1 |10 |10 |30 |

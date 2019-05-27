@@ -9,11 +9,11 @@ ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60724612"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156084"
 ---
 Pokud chcete odstranit kontejner svazků, je potřeba
  - Odstraňte svazky v kontejneru svazků. Pokud kontejner svazků obsahuje přidružené svazky, přepněte tyto svazky do režimu offline nejprve. Postupujte podle kroků v [svazek převést do režimu offline](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Jakmile svazků jsou offline, můžete je odstranit. 
@@ -32,7 +32,7 @@ Když kontejner svazků nemá žádné přidružené svazky, zásady zálohován
 
 3. Pokud kontejner svazků nemá žádné přidružené svazky, zásady zálohování a cloudové snímky, pak je možné odstranit. Po zobrazení výzvy k potvrzení, přečtěte si a zaškrtněte políčko s informacemi o tom následky odstranění kontejneru svazků. Klikněte na tlačítko **odstranit** potom odstranit kontejner svazků.
 
-    ![Potvrzení odstranění](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
+    ![Potvrdit odstranění](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 
 Seznam kontejnerů svazků se aktualizuje tak, aby odrážely kontejneru odstraněných svazků.
 

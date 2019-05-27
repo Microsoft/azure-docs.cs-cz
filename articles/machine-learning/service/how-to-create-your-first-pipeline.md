@@ -1,7 +1,7 @@
 ---
 title: Vytvoření, spuštění a sledovat kanály ML
 titleSuffix: Azure Machine Learning service
-description: Vytvoření a spuštění služby machine learning kanálu s využitím Azure Machine Learning SDK pro Python. Kanály můžete vytvářet a spravovat pracovní postupy této fáze spojit dohromady machine learning (ML). Tyto fáze zahrnují přípravy dat, trénování modelu, model nasazení a odvozování.
+description: Vytvoření a spuštění služby machine learning kanálu s využitím Azure Machine Learning SDK pro Python. Kanály můžete vytvářet a spravovat pracovní postupy této fáze spojit dohromady machine learning (ML). Tyto fáze zahrnují přípravy dat, trénování modelu, model nasazení a odvození/vyhodnocování.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914891"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66165881"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -251,6 +251,8 @@ trainStep = PythonScriptStep(
 )
 ```
 
+Opakované použití předchozích výsledků (`allow_reuse`) je klíč při použití kanály v prostředí vytvářené společnými silami, protože odstranění nepotřebných opakovaných spuštění nabízí flexibilitu. Toto je výchozí chování, když script_name, vstupy a parametry kroku zůstávají stejné. Pokud již byl použit výstupní kroku, úloha není odeslána do výpočetní, místo toho jsou okamžitě dostupné pro spuštění na další krok výsledky z předchozího spuštění. Pokud je nastaven na hodnotu false, nové spuštění bude vždy vygenerovaný pro tento krok během provádění kanálu. 
+
 Po definování svých kroků vytvoříte kanál pomocí některé nebo všechny tyto kroky.
 
 > [!NOTE]
@@ -315,6 +317,10 @@ Při prvním spuštění kanálu, Azure Machine Learning:
 
 Další informace najdete v tématu [experimentovat třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) odkaz.
 
+## <a name="github-tracking-and-integration"></a>GitHub sledování a integrace
+
+Při spuštění školení spustit, pokud je zdrojový adresář místního úložiště Git, informace o úložišti jsou uloženy v historii spuštění. Například aktuální ID potvrzení pro úložiště se zaznamená jako část historie.
+
 ## <a name="publish-a-pipeline"></a>Publikování kanálu
 
 Můžete publikovat v kanálu ho později spustit s různými vstupy. Pro koncový bod REST už byla publikována kanál pro příjem parametrů musí parametrizovat kanál před publikováním. 
@@ -360,7 +366,7 @@ response = requests.post(published_pipeline1.endpoint,
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
-## <a name="view-results"></a>Zobrazení výsledků
+## <a name="view-results"></a>Zobrazit výsledky
 
 Zobrazit seznam všech vašich kanálů a jejich podrobnosti o spuštění:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
@@ -373,11 +379,11 @@ Zobrazit seznam všech vašich kanálů a jejich podrobnosti o spuštění:
 ## <a name="caching--reuse"></a>Ukládání do mezipaměti a opakované použití  
 
 Aby bylo možné optimalizovat a přizpůsobit chování vašich kanálů můžete udělat pár věcí kolem ukládání do mezipaměti a opakovaně použít. Například můžete:
-+ **Vypnout výchozí opakované použití kroku spuštění výstupu** nastavením `allow_reuse=False` během [krok definice](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **Vypnout výchozí opakované použití kroku spuštění výstupu** nastavením `allow_reuse=False` během [krok definice](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Opakované použití je klíč při použití kanály v prostředí vytvářené společnými silami, protože odstranění nepotřebných spuštění nabízí flexibilitu. Však můžete zrušit toto.
 + **Rozšíření hashování nad rámec skript**, aby zahrnoval také absolutní nebo relativní cesty tak zdrojovým_adresářem na jiné soubory a adresáři používajícími `hash_paths=['<file or directory']` 
 + **Vynutit opětovné generování výstupu pro všechny kroky ve spuštění** s `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-Ve výchozím nastavení, opakované použití kroku je povolená a se po zahašování použije pouze soubor hlavního skriptu. Takže pokud se skript pro daný krok zůstává stejná (`script_name`, vstupy a parametry), je výstup z předchozího kroku spustit znovu, úloha není odeslána do výpočetní a výsledků z předchozího spuštění se místo toho okamžitě k dispozici k dalšímu kroku .  
+Ve výchozím nastavení `allow-reuse` kroků je povolená a se po zahašování použije pouze soubor hlavního skriptu. Takže pokud se skript pro daný krok zůstává stejná (`script_name`, vstupy a parametry), je výstup z předchozího kroku spustit znovu, úloha není odeslána do výpočetní a výsledků z předchozího spuštění se místo toho okamžitě k dispozici k dalšímu kroku .  
 
 ```python
 step = PythonScriptStep(name="Hello World", 

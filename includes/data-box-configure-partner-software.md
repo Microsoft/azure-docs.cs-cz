@@ -1,16 +1,15 @@
 ---
-author: WenJason
+author: alkohli
 ms.service: databox
 ms.topic: include
-origin.date: 11/20/2018
-ms.date: 02/25/2019
+ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728164"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150753"
 ---
 Nakonfigurujte partnerský software pro připojení ke klientovi. Pro připojení k partnerský software, obvykle potřebujete následující informace (mohou lišit) jste shromáždili ze **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní v předchozím kroku:
 

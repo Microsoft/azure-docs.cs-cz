@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171350"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Obnovení serveru Azure Database for MariaDB pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden Azure Database pro MariaDB serveru k určitému bodu v čase.
@@ -37,7 +37,7 @@ Tento skript používá příkazy uvedené v následující tabulce:
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Vytvoření serveru az mariadb](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databáze. |
-| [obnovení serveru az mariadb](/cli/azure/mariadb/server#az-mariadb-server-restore) | Obnoví server ze zálohy. |
+| [az mariadb server restore](/cli/azure/mariadb/server#az-mariadb-server-restore) | Obnoví server ze zálohy. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup

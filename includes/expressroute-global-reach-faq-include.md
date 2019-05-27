@@ -9,11 +9,11 @@ ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "65753963"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170701"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co je globální dosah ExpressRoute?
 

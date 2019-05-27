@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245945"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66167279"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Zabezpečení volání vlastních rozhraní API z Azure Logic Apps
 
@@ -192,9 +192,9 @@ Otevřít definici aplikace logiky v zobrazení kódu, přejděte na **HTTP** č
 | ------- | -------- | ----------- | 
 | tenant | Ano | Identifikátor GUID pro tenanta Azure AD | 
 | Cílová skupina | Ano | Identifikátor GUID pro cílový prostředek, kterou chcete získat přístup, který je ID klienta z identity aplikace pro webové aplikace nebo aplikace API | 
-| ID klienta | Ano | Identifikátor GUID pro klienta žádosti o přístup, který je ID klienta z identity aplikace pro svou aplikaci logiky | 
+| clientId | Ano | Identifikátor GUID pro klienta žádosti o přístup, který je ID klienta z identity aplikace pro svou aplikaci logiky | 
 | Tajný kód | Ano | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
-| type | Ano | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. | 
+| Typ | Ano | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. | 
 |||| 
 
 Příklad:
@@ -237,7 +237,7 @@ V **autorizace** oddílu, zahrňte tento řádek:
 | Element | Požaduje se | Popis | 
 | ------- | -------- | ----------- | 
 | type | Ano | Typ ověřování. Pro klientské certifikáty SSL, musí být hodnota `ClientCertificate`. | 
-| heslo | Ano | Heslo pro přístup k certifikátu klienta (soubor PFX) | 
+| password | Ano | Heslo pro přístup k certifikátu klienta (soubor PFX) | 
 | pfx | Ano | Obsah s kódováním base64 klientský certifikát (soubor PFX) | 
 |||| 
 
@@ -254,8 +254,8 @@ V **autorizace** oddílu, zahrňte tento řádek:
 | Element | Požaduje se | Popis | 
 | ------- | -------- | ----------- | 
 | type | Ano | Typ ověřování, který chcete použít. Pro základní ověřování, musí být hodnota `Basic`. | 
-| uživatelské jméno | Ano | Uživatelské jméno, které chcete použít pro ověřování | 
-| heslo | Ano | Heslo, které chcete použít pro ověřování | 
+| username jméno | Ano | Uživatelské jméno, které chcete použít pro ověřování | 
+| password | Ano | Heslo, které chcete použít pro ověřování | 
 |||| 
 
 <a name="azure-ad-code"></a>
