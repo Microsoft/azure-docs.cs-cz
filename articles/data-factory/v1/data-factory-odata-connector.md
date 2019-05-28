@@ -65,8 +65,8 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **OData** |Ano |
 | url |Adresa URL služby OData. |Ano |
-| authenticationType. |Typ ověřování používaný pro připojení ke zdroji OData. <br/><br/> Pro cloudové prostředí OData možné hodnoty jsou Anonymous, Basic a protokolem OAuth (Poznámka: momentálně se podporuje jenom podpory Azure Data Factory, Azure Active Directory na základě OAuth). <br/><br/> V místním prostředí OData možné hodnoty jsou Anonymous, Basic a Windows. |Ano |
-| uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
+| authenticationType |Typ ověřování používaný pro připojení ke zdroji OData. <br/><br/> Pro cloudové prostředí OData možné hodnoty jsou Anonymous, Basic a protokolem OAuth (Poznámka: momentálně se podporuje jenom podpory Azure Data Factory, Azure Active Directory na základě OAuth). <br/><br/> V místním prostředí OData možné hodnoty jsou Anonymous, Basic a Windows. |Ano |
+| username |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **Authorize** tlačítko Průvodce kopírováním služby Data Factory nebo editoru a zadejte svoje přihlašovací údaje, pak hodnota této vlastnosti bude možné automaticky vygenerovat. |Ano (pouze v případě, že používáte ověřování OAuth) |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat z na místní zdroj OData. |Ne |
