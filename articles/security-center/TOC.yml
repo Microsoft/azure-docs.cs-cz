@@ -6,6 +6,8 @@
       href: security-center-intro.md
     - name: Podporované platformy a funkce služby Security Center
       href: security-center-os-coverage.md
+    - name: Vyhodnocení ochrany koncových bodů a doporučení
+      href: security-center-endpoint-protection.md
 - name: Šablony Rychlý start
   expanded: true
   items:

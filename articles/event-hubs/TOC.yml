@@ -51,8 +51,6 @@
           href: event-hubs-capture-python.md
     - name: Streamování do služby Event Hubs pro Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-    - name: Vytvoření vyhrazeného clusteru služby Event Hubs
-      href: event-hubs-dedicated-cluster-create-portal.md
 - name: Kurzy
   items:
     - name: Vizualizace datových anomálií v datových streamech Event Hubs
@@ -86,14 +84,18 @@
       href: event-hubs-event-processor-host.md
     - name: Průvodce programováním
       href: event-hubs-programming-guide.md
-    - name: Spravovaná identita pro prostředky Azure
-      href: event-hubs-managed-service-identity.md
-    - name: Řízení přístupu na základě rolí (Preview)
-      href: event-hubs-role-based-access-control.md
-    - name: Geografické zotavení po havárii a geografická replikace
-      href: event-hubs-geo-dr.md
-    - name: Přehled ověřování a modelu zabezpečení
-      href: event-hubs-authentication-and-security-model-overview.md
+    - name: Zabezpečení
+      items:
+        - name: Spravovaná identita pro prostředky Azure
+          href: event-hubs-managed-service-identity.md
+        - name: Řízení přístupu na základě rolí (Preview)
+          href: event-hubs-role-based-access-control.md
+        - name: Geografické zotavení po havárii a geografická replikace
+          href: event-hubs-geo-dr.md
+        - name: Přehled ověřování a modelu zabezpečení
+          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Atributy zabezpečení
+          href: event-hubs-security-attributes.md
     - name: Dostupnost a konzistence
       href: event-hubs-availability-and-consistency.md
     - name: Průvodce protokolem AMQP 1.0

@@ -142,6 +142,8 @@
           href: concepts-data-flow-column-pattern.md
         - name: Sledování toku dat
           href: concepts-data-flow-monitoring.md
+        - name: Výkon toku dat
+          href: concepts-data-flow-performance.md
         - name: Přesun uzlů
           href: concepts-data-flow-move-nodes.md
         - name: Karta Optimalizace
@@ -318,6 +320,8 @@
           href: connector-sap-ecc.md
         - name: SAP HANA
           href: connector-sap-hana.md
+        - name: Tabulka SAP
+          href: connector-sap-table.md
         - name: ServiceNow
           href: connector-servicenow.md
         - name: SFTP

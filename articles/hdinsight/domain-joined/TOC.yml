@@ -8,6 +8,8 @@
   items:
     - name: Plánování pro clustery ESP
       href: apache-domain-joined-architecture.md
+    - name: Vytváření clusterů ESP a synchronizace s místním prostředím
+      href: apache-domain-joined-create-configure-enterprise-security-cluster.md
     - name: Konfigurace clusterů ESP s využitím Azure AD DS
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Synchronizace uživatelů Azure AD do clusteru služby HDInsight

@@ -40,8 +40,8 @@
               href: connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Koncepty
       items:
-        - name: Globální síť WAN Microsoftu
-          href: azure-network.md
+        - name: Globální síť Microsoftu
+          href: microsoft-global-network.md
         - name: Virtuální sítě
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vyrovnávání zatížení sítě

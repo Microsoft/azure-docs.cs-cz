@@ -59,11 +59,13 @@
   items:
     - name: Konfigurace
       items:
-        - name: Zprostředkovatel konfigurace .NET Core
+        - name: Azure CLI
+          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+        - name: Poskytovatel .NET Core
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
-        - name: Tvůrce konfigurace .NET Framework
+        - name: Tvůrce .NET Frameworku
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Zprostředkovatel konfigurace Java Spring
+        - name: Poskytovatel Java Springu
           href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
         - name: .NET Azure SDK
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
@@ -79,7 +81,11 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
 - name: Zdroje a prostředky
   items:
-    - name: Videa Začínáme
-      href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+    - name: Videa
+      items:
+        - name: Začínáme
+          href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+        - name: Správa funkcí
+          href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
     - name: Poskytnutí zpětné vazby k produktu
       href: 'https://github.com/Azure/AppConfiguration/issues'
