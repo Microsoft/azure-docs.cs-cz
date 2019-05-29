@@ -69,7 +69,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **OnPremisesOdbc** |Ano |
 | connectionString |– Přístup k pověření část připojovací řetězec a případně zašifrované přihlašovací údaje. Příklady v následujících částech. <br/><br/>Můžete zadat připojovací řetězec se vzorem jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo použít systém DSN (název zdroje dat) nastavíte na počítači brány s `"DSN=<name of the DSN>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem). |Ano |
-| credential |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Ne |
+| pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Ne |
 | authenticationType |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty: Anonymní a Basic. |Ano |
 | username |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
