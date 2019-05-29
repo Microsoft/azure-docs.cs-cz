@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 125e0c4331eea105ffc201bd1f5f26bdbec1c553
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691962"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357607"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -184,7 +184,7 @@ Tato část ukazuje, jak použít Maps [rozhraní API pro vyhledávání](https:
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   `SubscriptionKeyCredential` Vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. `atlas.service.MapsURL.newPipeline()` Přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. `searchURL` Představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
+   `SubscriptionKeyCredential` Vytvoří `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. `atlas.service.MapsURL.newPipeline()` Přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instance. `searchURL` Představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
 
 2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá nejbližší čerpacích stanic v zadaném okruhu zadaná zeměpisné šířky a délky. Kolekce funkcí GeoJSON z odpovědi se pak extrahuje pomocí `geojson.getFeatures()` – metoda a přidán do zdroje dat, výsledkem je automaticky dat, vykreslované na mapě prostřednictvím vrstev symbol. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků.
 

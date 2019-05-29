@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a03707246f27bcba9cc46168ec04893b7bbc4c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0d27eef8ee2c70449bacaced0de89bdc5e6989ff
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990816"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357815"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Podmínky použití v šablonách Azure Resource Manageru
 
@@ -39,7 +39,7 @@ Tento kurz se zabývá následujícími úkony:
 Tento kurz se zabývá pouze základní scénář použití podmínek. Další informace naleznete v tématu:
 
 * [Struktura souboru šablony: Podmínka](./resource-group-authoring-templates.md#condition).
-* [Podmíněné nasazení prostředku v šabloně Azure Resource Manageru](/azure/architecture/building-blocks/extending-templates/conditional-deploy.md).
+* [Podmíněné nasazení prostředku v šabloně Azure Resource Manageru](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
 * [Funkce šablony: If](./resource-group-template-functions-logical.md#if).
 * [Porovnání funkcí šablon Azure Resource Manageru](./resource-group-template-functions-comparison.md)
 

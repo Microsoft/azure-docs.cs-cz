@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3a307c32d15aa8c7809d728d98220b0819e91c7c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901098"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357393"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -46,7 +46,7 @@ Můžete analýze obrázků můžete rozpoznat a poskytují přehled o jejich vi
 
 Můžete použít pro počítačové zpracování obrazu k extrakci textu z bitové kopie do aplikace pomocí datového proudu Strojově čitelný znak [optické rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api). V případě potřeby OCR opravuje otočení rozpoznaný text a poskytuje souřadnice rámec jednotlivých slov. OCR podporuje 25 jazycích a jazyk textové rozpoznaných se detekuje automaticky.
 
-Můžete také použít [rozhraní API pro čtení](concept-recognizing-text.md#read-api) extrahovat tištěné a rukou psaný text z obrázků a textu dokumentů. Rozhraní API pro čtení používá aktualizovaný modely a funguje pro různé objekty s různými povrchy a pozadími, jako je potvrzení, plakáty, vizitek, písmena samolepicí bločky nebo Tabule. V současné době ve verzi preview je rozhraní API pro čtení a jediný podporovaný jazyk je angličtina.
+Můžete také použít [rozhraní API pro čtení](concept-recognizing-text.md#read-api) extrahovat tištěné a rukou psaný text z obrázků a textu dokumentů. Rozhraní API pro čtení používá aktualizovaný modely a funguje pro různé objekty s různými povrchy a pozadími, jako je potvrzení, plakáty, vizitek, písmena samolepicí bločky nebo Tabule. V současné době je jediný podporovaný jazyk je angličtina.
 
 ## <a name="moderate-content-in-images"></a>Moderování obsahu v obrázcích
 

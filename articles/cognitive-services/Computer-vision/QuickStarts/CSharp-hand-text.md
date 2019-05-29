@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c1ad38b6dbf4914d3126f2c9166813c286762079
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 629a51673822a93ad15324239057adc111c36630
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409120"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357365"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a C# v počítačové zpracování obrazu
 
@@ -111,11 +111,8 @@ namespace CSHttpClientSample
                 client.DefaultRequestHeaders.Add(
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
-                // Request parameter.
-                string requestParameters = "mode=Handwritten";
-
                 // Assemble the URI for the REST API method.
-                string uri = uriBase + "?" + requestParameters;
+                string uri = uriBase;
 
                 HttpResponseMessage response;
 

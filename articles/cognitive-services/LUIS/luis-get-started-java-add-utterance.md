@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/23/2019
+ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: 43af108b821daaf0d8b030879816ec339e432dee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce2cf0603e584684edda1b1f14a12b52fbbb928c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196741"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357138"
 ---
 # <a name="quickstart-change-model-using-java"></a>Rychlý start: Změnit model pomocí Javy 
 
-[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

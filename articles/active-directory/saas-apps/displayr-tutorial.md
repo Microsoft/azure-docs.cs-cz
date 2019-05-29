@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a2d793a1fbd68d6a71f48b556a77ddcaaaf111
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 93a1ad1f9fbc01cd06b3aaffc8a718634e8454d6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66112146"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357030"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: Displayr integrovat s Azure Active Directory
 
@@ -91,11 +91,11 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-1. Displayr aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. Displayr aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
-1. Kromě toho výše Displayr aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **atributy uživatele a deklarace identity** části na **deklarace skupiny (Preview)** dialogového okna, proveďte následující kroky:
+1. Kromě toho výše Displayr aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **atributy uživatele a deklarace identity** části na **deklarace skupiny (Preview)** dialogového okna, proveďte následující kroky:
 
     a. Klikněte na tlačítko **pera** vedle **skupiny vrácené v deklaraci identity**.
 
@@ -133,7 +133,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![Konfigurace](./media/displayr-tutorial/config01.png)
 
-5. Přepnout na **nastavení** v horní nabídce a přejděte dolů na stránce pro kliknutí na **nakonfigurovat jednotné přihlašování na (SAML)**.
+5. Přepnout na **nastavení** v horní nabídce a přejděte dolů na stránce pro kliknutí na **nakonfigurovat jednotné přihlašování na (SAML)** .
 
     ![Konfigurace](./media/displayr-tutorial/config02.png)
 

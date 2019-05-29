@@ -6,7 +6,7 @@
         - name: Co je řešení VMware společnosti CloudSimple
           href: cloudsimple-vmware-solutions-overview.md
         - name: Klíčové koncepty pro správu
-          href: 'https://docs.azure.cloudsimple.com/key-concepts/'
+          href: key-concepts.md
     - name: Rychlý start
       expanded: true
       items:
@@ -21,7 +21,7 @@
     - name: Koncepty
       items:
         - name: Služba
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-service/'
+          href: cloudsimple-service.md
         - name: Uzly
           href: cloudsimple-node.md
         - name: Privátní cloud
@@ -45,13 +45,13 @@
         - name: VMware v privátním cloudu
           href: vmware-components.md
         - name: Přehled zabezpečení
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
+          href: cloudsimple-security.md
         - name: Kvóta pro uzly
           href: node-quota.md
         - name: Údržba a aktualizace
           href: cloudsimple-maintenance-updates.md
         - name: Nejčastější dotazy
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
+          href: cloudsimple-faq.md
     - name: Kurzy
       items:
         - name: Povolení poskytovatele prostředků
