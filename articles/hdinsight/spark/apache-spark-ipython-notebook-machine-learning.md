@@ -6,20 +6,20 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 87efac96aa0120bfcc804f7a2a49a5ac3da1036b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719067"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252887"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Kurz: Sestavení Apache Spark machine learningu aplikace v HDInsight 
 
 V tomto kurzu se dozvíte, jak používat [Poznámkový blok Jupyter](https://jupyter.org/) k sestavení [Apache Spark](https://spark.apache.org/) služby machine learning aplikací pro Azure HDInsight. 
 
-[MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) je knihovna škálovatelného strojového učení Sparku, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) je knihovna škálovatelného strojového učení Sparku, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky:
+## <a name="prerequisites"></a>Požadavky
 
-Potřebujete následující položku:
+* Cluster Apache Spark ve službě HDInsight. Zobrazit [vytvořit cluster Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
-* Dokončený rychlý start [Vytvoření clusteru Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématu [načtení dat a spouštění dotazů s Apache Spark v HDInsight](./apache-spark-load-data-run-query.md).
 
 ## <a name="understand-the-data-set"></a>Vysvětlení datové sady
 
-Aplikace používá ukázková data ze souboru HVAC.csv, který je standardně k dispozici ve všech clusterech. Soubor se nachází v umístění **\HdiSamples\HdiSamples\SensorSampleData\hvac**. Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Pomocí těchto dat můžete odhadnout, jestli budova bude teplejší nebo studenější na základě cílové teploty, daného ID systému a stáří systému.
+Aplikace používá ukázková data ze souboru HVAC.csv, který je standardně k dispozici ve všech clusterech. Soubor se nachází v `\HdiSamples\HdiSamples\SensorSampleData\hvac`. Data ukazují cílovou teplotu a skutečnou teplotu několika budov s nainstalovanými systémy HVAC. Sloupec **System** představuje ID systému a sloupec **SystemAge** představuje počet let, kolik je systém HVAC v budově umístěný. Pomocí těchto dat můžete odhadnout, jestli budova bude teplejší nebo studenější na základě cílové teploty, daného ID systému a stáří systému.
 
 ![Snímek dat použitých v příkladu strojového učení Sparku](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Snímek dat použitých v příkladu strojového učení Sparku")
 
@@ -60,6 +60,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
     from pyspark.mllib.regression import LabeledPoint
     from numpy import array
     ```
+
 3. Načtěte data (ze souboru hvac.csv), proveďte jejich parsování a použijte je k natrénování modelu. 
 
     ```PySpark
@@ -96,7 +97,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    Další informace o kanálu a jak to funguje, najdete v části <a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">kanálu strojového učení Apache Sparku</a>.
+    Další informace o kanálu a jak to funguje, najdete v části [kanálu strojového učení Apache Sparku](https://spark.apache.org/docs/latest/ml-pipeline.html).
 
 5. Přizpůsobte kanál pro trénovací dokument.
    
@@ -187,12 +188,7 @@ Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich 
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-* Vývoj Apache Spark machine learningu aplikace
-
-V dalším kurzu se dozvíte, jak používat IntelliJ IDEA pro úlohy Sparku. 
+V tomto kurzu jste zjistili, jak sestavení Apache Spark machine learning aplikací pro Azure HDInsight pomocí poznámkového bloku Jupyter. V dalším kurzu se dozvíte, jak používat IntelliJ IDEA pro úlohy Sparku. 
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace v jazyce Scala Maven pomocí IntelliJ](./apache-spark-create-standalone-application.md)
-

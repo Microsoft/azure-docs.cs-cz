@@ -685,8 +685,6 @@
               href: platform/powerbi.md
             - name: Export dat aplikací
               href: app/export-power-bi.md
-        - name: Řídicí panely
-          href: app/app-insights-dashboards.md
         - name: Odeslání dat do Grafany
           href: platform/grafana-plugin.md
     - name: Analýza dat
@@ -1072,8 +1070,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: Poznámky k verzi sady SDK
           href: app/release-notes.md
-        - name: Poznámky k verzi pro Developer Analytics Tools
-          href: app/release-notes-vsix.md
     - name: Analýzy ve Windows
       href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Regionální dostupnost

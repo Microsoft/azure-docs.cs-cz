@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861535"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253073"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -29,7 +29,7 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Musíte spuštěné aspoň Windows 10. dubna 2018 verze aktualizací a zařízení musí být buď:
+* Musíte spuštěné aspoň Windows 10. dubna 2018 verze aktualizace (v1803) a zařízení musí být buď:
    * [Azure AD připojený](../device-management-azure-portal.md) nebo
    * [Hybridní Azure připojené k AD](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény.
 * Je nutné povolit Azure AD samoobslužné resetování hesla.
@@ -122,7 +122,7 @@ Při testování této funkce s použitím vzdálené plochy nebo relaci rozší
 
 * Resetování hesla u Vzdálené plochy se v současné době nepodporuje.
 
-Pokud před 1809, vyžaduje zásady v systému Windows 10 ve verzi Ctrl + Alt + Del **resetovat heslo** nebude fungovat.
+Pokud zásady ve verzích Windows 10 před v1809, vyžaduje Ctrl + Alt + Del **resetovat heslo** nebude fungovat.
 
 Pokud jsou oznámení pro uzamčenou obrazovku vypne, **resetovat heslo** nebude fungovat.
 
