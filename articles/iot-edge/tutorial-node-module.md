@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5147a0d164f1fac67a1c70429fc2e9b1caa00685
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6c94ca3a82095736ef7d242987d1fbf66a825950
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244843"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306507"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: Vývoj a nasazení modulu Node.js IoT Edge pro zařízení s Linuxem
 
@@ -39,7 +39,7 @@ Tento kurz ukazuje postupy při vývoji modulu v **Node.js** pomocí **Visual St
 
 Popis možností pro vývoj a nasazení modulů Node.js pomocí následující tabulky: 
 
-| Node.js | Visual Studio Code | Visual Studio 2017 | 
+| Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Použití VS Code pro moduly Node.js v Linuxu AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Použití VS Code pro moduly Node.js v Linuxu ARM32](./media/tutorial-c-module/green-check.png) |  |

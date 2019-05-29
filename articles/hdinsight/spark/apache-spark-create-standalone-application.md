@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 01/30/2019
-ms.openlocfilehash: 2d431659e46465bf16f6e597f3a49f7008432bb5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: 212a2ca89b91de518f07d097b00b31e785216cb0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722854"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304012"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace v jazyce Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
@@ -80,7 +80,7 @@ Proveďte následující postup instalace modulu plug-in Scala:
   	|Název projektu| Zadejte název.|  
   	|Projekt&nbsp;umístění| Zadejte požadované umístění pro uložení projektu.|
   	|Sadu SDK projektu| To bude na první použití NÁPAD.  Vyberte **nové...**  a přejděte do vaší sady JDK.|
-  	|Verze Sparku|V Průvodci vytvořením integruje správnou verzi pro Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. Tento příklad používá **Spark 2.3.0 (Scala 2.11.8)**.|
+  	|Verze Sparku|V Průvodci vytvořením integruje správnou verzi pro Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. Tento příklad používá **Spark 2.3.0 (Scala 2.11.8)** .|
 
     ![Výběr sady Spark SDK](./media/apache-spark-create-standalone-application/hdi-new-project.png)
 
@@ -123,7 +123,7 @@ Proveďte následující postup instalace modulu plug-in Scala:
 
 15. Vyberte **automaticky importovat projekty Maven** zaškrtávací políčko.
 
-16. Vyberte **Apply** (Použít) a pak vyberte **OK**.  Potom se vrátíte do okna projektu.
+16. Vyberte **použít**a pak vyberte **OK**.  Potom se vrátíte do okna projektu.
    
     ![Konfigurace Mavenu pro automatické stahování](./media/apache-spark-create-standalone-application/configure-maven.png)
    
@@ -175,7 +175,7 @@ Proveďte následující postup instalace modulu plug-in Scala:
     
     1. Z **souboru** příkaz **strukturu projektu...** .
 
-    2. Z **strukturu projektu** okno, přejděte na **artefakty** > **na symbol plus +** > **JAR**  >  **z modulů se závislosti...** .
+    2. Z **strukturu projektu** okno, přejděte na **artefakty** > **na symbol plus +**  > **JAR**  >  **z modulů se závislosti...** .
        
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/create-jar-1.png)
 
@@ -189,7 +189,7 @@ Proveďte následující postup instalace modulu plug-in Scala:
        
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/create-jar-3.png)
 
-    6. **Výstup rozložení** karta obsahuje seznam všech JAR, které jsou zahrnuté jako součást projektu Maven. Můžete vybrat a odstranit soubory, na kterých aplikace Scala nemá přímou závislost. V případě aplikace, kterou tady vytváříte, můžete odebrat všechny soubory kromě posledního (**SparkSimpleApp compile output**). Vyberte JAR odstranit a potom vyberte záporného symbolu **-**.
+    6. **Výstup rozložení** karta obsahuje seznam všech JAR, které jsou zahrnuté jako součást projektu Maven. Můžete vybrat a odstranit soubory, na kterých aplikace Scala nemá přímou závislost. V případě aplikace, kterou tady vytváříte, můžete odebrat všechny soubory kromě posledního (**SparkSimpleApp compile output**). Vyberte JAR odstranit a potom vyberte záporného symbolu **-** .
        
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/delete-output-jars.png)
        

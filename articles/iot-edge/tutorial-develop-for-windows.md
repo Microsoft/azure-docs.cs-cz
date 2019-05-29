@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f2e9bc93b8bea70a58f2e6a544e2088505935a9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 891b64b8e31266360d718255dcd8e8a1f9fb597c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239759"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306588"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Windows
 
-Pomocí sady Visual Studio 2017 na vývoj a nasazení kódu do zařízení Windows s IoT Edge.
+Pomocí sady Visual Studio k vývoji a nasazení kódu do zařízení Windows s IoT Edge.
 
 V rychlém startu jste vytvořili zařízení IoT Edge pomocí virtuálního počítače s Windows a nasazení předem sestavených modulu z Azure Marketplace. Tento kurz vás provede všechno potřebné k vývoji a nasazení do zařízení IoT Edge vlastní kód. V tomto kurzu je předpokladem užitečné pro všechny ostatní kurzy, které začnou více podrobností o konkrétní programovací jazyky nebo služeb Azure. 
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení vývojového počítače.
-> * Pomocí IoT Edge nástrojů pro Visual Studio 2017 k vytvoření nového projektu.
+> * Pomocí IoT Edge nástrojů pro Visual Studio k vytvoření nového projektu.
 > * Sestavení projektu jako kontejner a uložit ho do služby Azure container registry.
 > * Nasazení kódu do zařízení IoT Edge. 
 
@@ -41,17 +41,17 @@ Tento kurz vás provede vývoj modul IoT Edge. *Modul IoT Edge*, nebo někdy pr�
 
 Při vývoji moduly IoT Edge, je důležité pochopit rozdíl mezi vývojového počítače a cílové zařízení IoT Edge, kde modul nakonec se nasadí. Kontejner, který jste vytvořili pro uložení kód modulu musí odpovídat operačního systému (OS) *cílové zařízení*. Pro vývoj v kontejneru Windows tento koncept je jednodušší, protože kontejnery Windows spustit pouze v operačních systémech Windows. Ale svém vývojovém počítači s Windows můžete například použít k vytvoření modulů pro Linux hraniční zařízení IoT. V tomto scénáři je třeba Ujistěte se, že vývojovém počítači byl spuštěn kontejnery Linuxu. Při procházení tohoto kurzu, mějte na paměti rozdíl mezi *vývojovém počítači s operačním systémem* a *kontejneru OS*.
 
-V tomto kurzu cílí na zařízení Windows s IoT Edge. Zařízení Windows IoT Edge používat kontejnery Windows. Doporučujeme použít Visual Studio 2017 na vývoj pro zařízení s Windows tak, aby se, co bude používat v tomto kurzu. Visual Studio Code můžete použít, i když existují rozdíly mezi dva nástroje podpory.
+V tomto kurzu cílí na zařízení Windows s IoT Edge. Zařízení Windows IoT Edge používat kontejnery Windows. Doporučujeme použít Visual Studio k vývoji pro zařízení s Windows, tak, aby se, co bude používat v tomto kurzu. Visual Studio Code můžete použít, i když existují rozdíly mezi dva nástroje podpory.
 
-V následující tabulce jsou uvedeny podporované vývojové scénáře pro **kontejnery Windows** v aplikaci Visual Studio Code a Visual Studio 2017.
+V následující tabulce jsou uvedeny podporované vývojové scénáře pro **kontejnery Windows** v aplikaci Visual Studio Code a Visual Studio.
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Služby Azure** | Azure Functions <br> Azure Stream Analytics |   |
 | **Jazyky** | C#(ladění není podporované) | C <br> C# |
-| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools), [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-Tomto kurzu se naučíte postup vývoje pro Visual Studio 2017. Pokud místo toho můžete využít Visual Studio Code, použijte pokyny v [použít Visual Studio Code k vývoji a ladění modulů Azure IoT Edge](how-to-vs-code-develop-module.md).
+V tomto kurzu se dozvíte, jaké kroky vývoje pro Visual Studio 2019. Pokud místo toho můžete využít Visual Studio Code, použijte pokyny v [použít Visual Studio Code k vývoji a ladění modulů Azure IoT Edge](how-to-vs-code-develop-module.md). Pokud používáte Visual Studio 2017 (verze 15.7 nebo novější), plrease stáhněte a nainstalujte [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -94,19 +94,19 @@ Dokumentace k Dockeru použijte k instalaci na vývojovém počítači:
 
 ## <a name="set-up-visual-studio-and-tools"></a>Nastavení sady Visual Studio a nástroje
 
-Použití rozšíření IoT pro Visual Studio 2017 k vývoji moduly IoT Edge. Tato rozšíření poskytují šablony projektu, automatizovat vytváření manifestu nasazení a vám umožní monitorovat a spravovat zařízení IoT Edge. V této části Nainstalujte Visual Studio a rozšíření IoT Edge pak nastavení účtu Azure ke správě prostředků služby IoT Hub z Visual Studia. 
+Použití rozšíření IoT pro Visual Studio 2019 k vývoji moduly IoT Edge. Tato rozšíření poskytují šablony projektu, automatizovat vytváření manifestu nasazení a vám umožní monitorovat a spravovat zařízení IoT Edge. V této části Nainstalujte Visual Studio a rozšíření IoT Edge pak nastavení účtu Azure ke správě prostředků služby IoT Hub z Visual Studia. 
 
-1. Pokud ještě nemáte Visual Studio na svém vývojovém počítači [instalace sady Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio?view=vs-2017) s následujícími sadami funkcí: 
+1. Pokud ještě nemáte Visual Studio na svém vývojovém počítači [nainstalovat Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) s následujícími sadami funkcí: 
 
    * Vývoj pro Azure
    * Vývoj desktopových aplikací pomocí C++
    * Vývoj pro různé platformy .NET core
 
-1. Pokud již máte Visual Studio 2017 na vývojovém počítači, ujistěte se, že je jeho verze 15.7 nebo novější. Postupujte podle kroků v [upravit Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2017) přidat požadovaná zatížení, pokud je ještě nemáte.
+1. Pokud již máte Visual Studio 2019 na vývojovém počítači. Postupujte podle kroků v [upravit Visual Studio](https://docs.microsoft.com/visualstudio/install/modify-visual-studio) přidat požadovaná zatížení, pokud je ještě nemáte.
 
-2. Stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) rozšíření pro Visual Studio 2017. 
+2. Stáhněte a nainstalujte [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) rozšíření pro Visual Studio 2019. 
 
-3. Po dokončení instalace otevřete sadu Visual Studio.
+3. Po dokončení instalace otevřete Visual Studio 2019 a vyberte **pokračovat bez kódu**.
 
 4. Vyberte **zobrazení** > **Cloud Explorer**. 
 
@@ -122,24 +122,25 @@ Použití rozšíření IoT pro Visual Studio 2017 k vývoji moduly IoT Edge. Ta
 
 ## <a name="create-a-new-module-project"></a>Vytvoření nového projektu modulu
 
-Rozšíření nástroje Azure IoT Edge poskytuje šablony projektů pro všechny podporované IoT Edge module jazyků v sadě Visual Studio 2017. Tyto šablony mají všechny soubory a kód, který musíte nasadit pracovní modul pro testování IoT Edge, nebo získáte výchozí bod pro přizpůsobení šablony s vlastní obchodní logikou. 
+Rozšíření nástroje Azure IoT Edge poskytuje šablony projektů pro všechny podporované IoT Edge module jazyků v sadě Visual Studio. Tyto šablony mají všechny soubory a kód, který musíte nasadit pracovní modul pro testování IoT Edge, nebo získáte výchozí bod pro přizpůsobení šablony s vlastní obchodní logikou. 
 
-1. Spuštění sady Visual Studio jako správce.
+1. Vyberte **souboru** > **nové** > **projektu...**
 
-2. Vyberte **Soubor** > **Nový** > **Projekt**. 
-
-3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení, nebo přijměte výchozí nastavení **AzureIoTEdgeApp1**. Vyberte **OK** pro vytvoření projektu. 
+2. V novém okně projektu, 2. V okně Nový projekt hledání **IoT Edge** projekt a zvolte **Azure IoT Edge (Windows amd64)** projektu. Klikněte na **Další**. 
 
    ![Vytvořte nový projekt Azure IoT Edge](./media/tutorial-develop-for-windows/new-project.png)
+
+3. Konfigurací okna Nový projekt přejmenovat projektu a řešení na něco popisného jako **CTutorialApp**. Klikněte na tlačítko **vytvořit** pro vytvoření projektu.
+
+   ![Konfigurovat nový projekt Azure IoT Edge](./media/tutorial-develop-for-windows/configure-project.png)
+ 
 
 4. V okně aplikace IoT Edge a modul konfiguraci projektu s použitím následujících hodnot: 
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Aplikační platforma | Zrušte zaškrtnutí políčka **Linux Amd64**a zkontrolujte **WindowsAmd64**. |
-   | Vybrat šablonu | Vyberte **modulu C**. | 
-   | Název modulu projektu | Přijměte výchozí nastavení **IoTEdgeModule1**. | 
-   | Úložiště imagí dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Svou image kontejneru je předem z hodnoty názvu modulu projektu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Finální bitové kopie úložiště bude vypadat jako \<název registru\>.azurecr.io/iotedgemodule1. |
+
+   | Vyberte šablonu | Vyberte **modulu C**. | | Název modulu projektu | Přijměte výchozí nastavení **IoTEdgeModule1**. | | Úložiště imagí dockeru | Je úložiště image obsahuje název vašeho registru kontejneru a názvu image kontejneru. Svou image kontejneru je předem z hodnoty názvu modulu projektu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Finální bitové kopie úložiště bude vypadat jako \<název registru\>.azurecr.io/iotedgemodule1. |
 
    ![Konfigurace projektu pro cílové zařízení, typ modulu a container registry](./media/tutorial-develop-for-windows/add-application-and-module.png)
 
@@ -332,7 +333,7 @@ Příkazy v této části jsou určené pro zařízení IoT Edge, ne vývojovém
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu se nastavení sady Visual Studio 2017 na počítači pro vývoj a nasazení prvního modulu IoT Edge z něj. Teď, když znáte základní koncepty, vyzkoušejte přidávání funkcí do modulu tak, aby ho můžete analyzovat data procházejících. Vyberte upřednostňovaný jazyk: 
+V tomto kurzu nastavte Visual Studio 2019 na počítači pro vývoj a nasazení prvního modulu IoT Edge z něj. Teď, když znáte základní koncepty, vyzkoušejte přidávání funkcí do modulu tak, aby ho můžete analyzovat data procházejících. Vyberte upřednostňovaný jazyk: 
 
 > [!div class="nextstepaction"] 
 > [C](tutorial-c-module-windows.md)

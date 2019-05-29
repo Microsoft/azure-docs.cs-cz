@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 9bc18157a6f60555ea18901796199a3fe9dc4c22
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 26ebeb463f42dce06c29a5bd3f69585430a2ee90
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65891248"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306641"
 ---
 # <a name="install-and-run-face-containers"></a>Instalace a spouštění kontejnerů pro rozpoznávání tváře
 
@@ -142,6 +142,10 @@ API pro rozpoznávání tváře kontejnery odesílat informace o fakturaci do Az
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](./face-resource-container-config.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
 

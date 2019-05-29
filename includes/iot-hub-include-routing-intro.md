@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 400f12237ae8b8cbaf6d66bda1663ecb680136f3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d0accd01926743d64fa4911dfe56806537170c2d
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66162737"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271502"
 ---
 [Směrování zpráv](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) povolí odesílání telemetrických dat ze zařízení IoT pro integrované koncové body kompatibilní s centrem událostí nebo vlastní koncové body, jako objekt blob úložiště, fronty Service Bus, témat Service Bus a Event Hubs. Pokud chcete nakonfigurovat vlastní zprávu směrování, vytvoříte [směrování dotazů](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) přizpůsobení trasy, která odpovídá určité podmínky. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. Pokud zpráva neodpovídá žádné z definovaných směrování dotazů, přesměruje ho na výchozí koncový bod.
 
 V tomto kurzu 2 části se dozvíte, jak nastavit a použití těchto vlastní směrování dotazů se službou IoT Hub. Směrování zpráv ze zařízení IoT k jednomu z více koncových bodů, včetně úložiště objektů blob a fronty služby Service Bus. Zprávy do fronty služby Service Bus se prodlouží aplikace logiky a odeslání e-mailem. Zprávy, které nemají vlastní zprávu směrování definované odeslání výchozí koncový bod, pak neexistoval, Azure Stream Analytics a zobrazit ve vizualizaci Power BI.
 
- K dokončení části 1 a 2 v tomto kurzu budete provádět následující úlohy:
+K dokončení části 1 a 2 v tomto kurzu jste provedli následující úlohy:
 
 **Část I: Vytvoření prostředků, nastavte směrování zpráv**
 > [!div class="checklist"]

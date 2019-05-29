@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a8f4e89adec0a6be001f3e6d6df1a252677c5916
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48dd09bf70e99adc250027df872266bea39a786b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158149"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302410"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core pomocí Kestrel
 
@@ -52,7 +52,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) verze 15.5 nebo novější se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
+* [Nainstalovat Visual Studio 2019](https://www.visualstudio.com/) verze 15.5 nebo novější s **vývoj pro Azure** a **vývoj pro ASP.NET a web** úlohy.
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Získání certifikátu nebo vytvoření certifikátu podepsaného svým držitelem pro vývoj
@@ -185,7 +185,7 @@ private X509Certificate2 GetCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 
-V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Účtu, pod kterým se služba spouští (ve výchozím nastavení je to NETWORK SERVICE), musíte také explicitně udělit přístup k privátnímu klíči certifikátu. Můžete to provést ručně (pomocí nástroje certlm.msc), ale lepší je automaticky spustit skript PowerShellu prostřednictvím [konfigurace spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v části **SetupEntryPoint** v manifestu služby.
+V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Nyní, explicitně udělit účtu využívajícího službu (ve výchozím nastavení služba NETWORK) přístup k privátnímu klíči certifikátu. Tento krok můžete provést ručně (pomocí nástroje certlm.msc), ale lepší je automaticky spustit skript Powershellu prostřednictvím [konfigurace spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v **SetupEntryPoint** v manifestu služby.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurace vstupního bodu nastavení služby
 

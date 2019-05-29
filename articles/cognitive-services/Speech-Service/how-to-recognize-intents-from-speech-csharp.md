@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699885"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257330"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Kurz: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč proC#
-
-[!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
 Sada [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) služeb Cognitive Services se integruje se službou [Language Understanding Service (LUIS)](https://www.luis.ai/home) a poskytuje **rozpoznávání záměrů**. Záměr je něco, co chce uživatel udělat: rezervovat si let, ověřit počasí nebo si zavolat. Uživatel může použít jakákoli slova, která mu připadají přirozená. Služba LUIS mapuje pomocí strojového učení žádosti uživatelů na vámi definované záměry.
 

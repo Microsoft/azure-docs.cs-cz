@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/24/2019
-ms.openlocfilehash: d0b0c7dec8ad29b65695289f97f5a9317feb2798
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 05/29/2019
+ms.openlocfilehash: c876c012c48298268f682b5ee428ec0f27979b84
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243809"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298937"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Kurz: Migrace MongoDB API služby Azure Cosmos DB pro MongoDB offline pomocí DMS
 
@@ -49,7 +49,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
     >
     > Tato konfigurace je nezbytná, protože služba Azure Database Migration Service nemá připojení k Internetu.
 
-* Ujistěte se, že pravidla skupiny zabezpečení sítě VNet nedošlo k blokování následující porty příchozí komunikace k Azure Database Migration Service: 53, 443, 9354, 445 a 12000. Další podrobnosti o filtrování provozu skupiny zabezpečení sítě Azure VNet najdete v článku [filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+* Ujistěte se, že není pravidla skupiny zabezpečení sítě virtuální sítě (NSG) blokovat následující komunikační porty: 53, 443, 445, 9354 a 10000 20000. Další podrobnosti o filtrování provozu skupiny zabezpečení sítě Azure VNet najdete v článku [filtrování provozu sítě s použitím skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 * Otevřete bránu Windows firewall a povolit Azure Database Migration Service přístup k serveru MongoDB zdroj, který ve výchozím nastavení je TCP port 27017.
 * Při použití zařízení brány firewall u zdrojových databází, budete muset přidat pravidla firewallu povolující Azure Database Migration Service přístup k zdrojových databází pro migraci.
 

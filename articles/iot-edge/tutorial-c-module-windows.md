@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 04/23/2019
+ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ee64e5a49bf2825c83c74167d7eb75aa3dc59387
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239820"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303898"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu jazyka C IoT Edge pro zařízení s Windows
 
@@ -23,7 +23,7 @@ Pomocí sady Visual Studio k vývoji kódu jazyka C a nasaďte ji do zařízení
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. V tomto kurzu se naučíte:    
 
 > [!div class="checklist"]
-> * Vytvoření modulu IoT Edge, která je založena na sadě SDK .NET Core 2.1 pomocí sady Visual Studio.
+> * Vytvoření modulu IoT Edge, který je založen na C SDK pomocí sady Visual Studio.
 > * Pomocí sady Visual Studio a Dockeru k vytvoření image Dockeru a její publikování do registru.
 > * Nasadit modul do zařízení IoT Edge.
 > * Zobrazit vygenerovaná data.
@@ -34,11 +34,11 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 
 ## <a name="solution-scope"></a>Řešení rozsahu
 
-Tento kurz ukazuje postupy při vývoji modulu v **C** pomocí **Visual Studio 2017**a jak ji nasadit **zařízení Windows**. Pokud vyvíjíte moduly pro Linux zařízení, přejděte na [vývoj modulu jazyka C IoT Edge pro zařízení s Linuxem](tutorial-c-module.md) místo. 
+Tento kurz ukazuje postupy při vývoji modulu v **C** pomocí **Visual Studio 2019**a jak ji nasadit **zařízení Windows**. Pokud vyvíjíte moduly pro Linux zařízení, přejděte na [vývoj modulu jazyka C IoT Edge pro zařízení s Linuxem](tutorial-c-module.md) místo. 
 
 Popis možností pro vývoj a nasazení modulů C na zařízení s Windows pomocí následující tabulky: 
 
-| C | Visual Studio Code | Visual Studio 2017 | 
+| C | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![Vývoj modulů jazyka C pro WinAMD64 v sadě Visual Studio](./media/tutorial-c-module/green-check.png) |
 
@@ -49,31 +49,35 @@ Před zahájením tohoto kurzu, by měl prošli předchozího kurzu věnovaného
 * [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure.
 * A [zařízení Windows s Azure IoT Edge](quickstart.md).
 * Registr kontejnerů, třeba [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio?view=vs-2017), verze 15.7 nebo novější, nakonfigurují [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) rozšíření.
+* [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) nakonfigurovanou [nástroje Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) rozšíření.
 * [Docker CE](https://docs.docker.com/install/) nakonfigurován pro spouštění kontejnerů Windows.
 * Sadu SDK Azure IoT pro C. 
 
+> [!TIP]
+> Pokud používáte Visual Studio 2017 (verze 15.7 nebo novější), stáhněte a nainstalujte [nástroje Azure IoT Edge (Preview)](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) pro VS 2017 na Visual Studio Marketplace
+
 ## <a name="create-a-module-project"></a>Vytvoření modulu projektu
 
-Následujícím postupem se vytvoří projekt modul IoT Edge, založené na .NET Core 2.0 SDK s použitím sady Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
+Následujícím postupem se vytvoří projekt modul IoT Edge, SDK pro jazyk C podle pomocí sady Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
 ### <a name="create-a-new-project"></a>Vytvořit nový projekt
 
 Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastního kódu.
 
-1. Spuštění sady Visual Studio jako správce.
+1. Spusťte Visual Studio 2019 a vyberte **vytvořit nový projekt**.
 
-2. Vyberte **Soubor** > **Nový** > **Projekt**. 
-
-3. V okně Nový projekt, vyberte **Azure IoT** typ projektu a zvolte **Azure IoT Edge** projektu. Přejmenování projektu a řešení na něco popisného jako **CTutorialApp**. Vyberte **OK** pro vytvoření projektu. 
+2. V okně Nový projekt hledání **IoT Edge** projekt a zvolte **Azure IoT Edge (Windows amd64)** projektu. Klikněte na **Další**. 
 
    ![Vytvořte nový projekt Azure IoT Edge](./media/tutorial-c-module-windows/new-project.png)
+
+3. Konfigurací okna Nový projekt přejmenovat projektu a řešení na něco popisného jako **CTutorialApp**. Klikněte na tlačítko **vytvořit** pro vytvoření projektu. 
+
+   ![Konfigurovat nový projekt Azure IoT Edge](./media/tutorial-c-module-windows/configure-project.png)
 
 4. V okně aplikace IoT Edge a modul konfiguraci projektu s použitím následujících hodnot: 
 
    | Pole | Hodnota |
    | ----- | ----- |
-   | Aplikační platforma | Zrušte zaškrtnutí políčka **Linux Amd64**a zkontrolujte **WindowsAmd64**. |
    | Vybrat šablonu | Vyberte **modulu C**. | 
    | Název modulu projektu | Pojmenujte modul **CModule**. | 
    | Úložiště imagí dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Svou image kontejneru je předem z hodnoty názvu modulu projektu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Finální bitové kopie úložiště bude vypadat jako \<název registru\>.azurecr.io/cmodule. |

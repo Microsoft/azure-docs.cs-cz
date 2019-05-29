@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 28cc2bf4794620641fb6af46bd4017d74f87e955
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67334a0e8ae3e6dcca86830cd088e6e446331aee
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717998"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306717"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Kurz: Vyčištění samostatného clusteru
 
@@ -60,7 +60,7 @@ The cluster is successfully removed.
 
 ## <a name="clean-up-aws-resources"></a>Čištění prostředků AWS
 
-* Přihlášení k účtu AWS
+* Přihlaste se k vašemu účtu AWS
 * Přejděte na konzolu EC2.
 * Vyberte tři uzly, které jste vytvořili v první části kurzu.
 * Klikněte na **Akce** > **Stav instance** > **Ukončit**

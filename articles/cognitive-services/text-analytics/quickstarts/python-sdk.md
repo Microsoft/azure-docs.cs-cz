@@ -10,22 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: aahi
-ms.openlocfilehash: 2e9e26243511972c7d05dc55c8e041d83efcbc7d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b319abf22f9aa4cdd9a5fef91be0628672d47bd4
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546584"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297782"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-python-sdk"></a>Rychlý start: Volání službě Text Analytics pomocí sady Python SDK 
 <a name="HOLTop"></a>
 
-V tomto rychlém startu můžete začít analýzou jazyce s využitím sada Text Analytics SDK pro Python. REST API pro analýzu textu je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu bez serializaci a deserializaci JSON.
-
-
-> [!Note]
-> * Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
-> * Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).  
+V tomto rychlém startu můžete začít analýzou jazyce s využitím sada Text Analytics SDK pro Python. REST API pro analýzu textu je kompatibilní s Většina programovacích jazyků, sada SDK poskytuje snadný způsob, jak do svých aplikací integrovat službu bez serializaci a deserializaci JSON. Zdrojový kód pro tuto ukázku můžete najít na [Githubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/language/text_analytics_samples.py).
 
 ## <a name="prerequisites"></a>Požadavky
 

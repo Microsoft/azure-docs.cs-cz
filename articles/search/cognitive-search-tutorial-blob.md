@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 09cef1758b247810f4ef03be9ebe01b498238ac9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fb45d2e36939a53d6242cf7cd5a0b9f1990780c3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242834"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299039"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Kurz REST pro: Volání rozhraní API služeb Cognitive Services v Azure Search indexování kanálu
 
@@ -445,74 +445,8 @@ Opakujte pro další pole: obsah, prostředí, keyPhrases a organizace v tomto c
 
 V závislosti na složitosti a délce řetězce dotazu můžete použít operace GET nebo POST. Další informace najdete v článku o [dotazování pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-<a name="access-enriched-document"></a>
 
-## <a name="accessing-the-enriched-document"></a>Přístup k rozšířenému dokumentu
 
-Kognitivní hledání umožňuje zobrazit si strukturu rozšířeného dokumentu. Rozšířené dokumenty jsou dočasné struktury, které se vytvářejí během rozšiřování a po dokončení procesu se odstraňují.
-
-Pokud chcete zachytit snímek rozšířeného dokumentu vytvořeného během indexování, přidejte do indexu pole s názvem ```enriched```. Indexer do tohoto pole automaticky vypíše řetězcovou reprezentaci všech rozšíření daného dokumentu.
-
-Pole ```enriched``` bude obsahovat řetězec, který je logickou reprezentací rozšířeného dokumentu uloženého v paměti ve formátu JSON.  Hodnota pole je ale platný dokument JSON. Abyste si mohli dokument zobrazit jako formátovaný dokument JSON, bude nutné nahradit `\"` za `"`, protože pro uvozovky se používají řídicí sekvence.  
-
-Pole ```enriched``` existuje kvůli ladění, aby vám pomohlo pochopit logický formát obsahu, proti kterému se vyhodnocují výrazy. Může to být užitečný nástroj, který vám pomůže pochopit a ladit sadu dovedností.
-
-Opakujte předchozí cvičení, včetně zachycení obsahu rozšířeného dokumentu pomocí pole `enriched`:
-
-### <a name="request-body-syntax"></a>Syntaxe textu požadavku
-```json
-{
-  "fields": [
-    {
-      "name": "id",
-      "type": "Edm.String",
-      "key": true,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false,
-      "sortable": true
-    },
-    {
-      "name": "content",
-      "type": "Edm.String",
-      "sortable": false,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "languageCode",
-      "type": "Edm.String",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "keyPhrases",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "organizations",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "enriched",
-      "type": "Edm.String",
-      "searchable": false,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
-    }
-  ]
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění

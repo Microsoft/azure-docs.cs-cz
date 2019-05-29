@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 7def77c0b1cf99fcc2cee77a28782dddaf2ac45d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65994542"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297775"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>Rychlý start: Volání služby pro analýzu textu pomocí sady SDK pro Ruby
 
@@ -28,18 +28,12 @@ Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní A
 
 ## <a name="prerequisites"></a>Požadavky
 
+* [Ruby 2.5.5 nebo novější](https://www.ruby-lang.org/)
+* Rozhraní Text analytics [sady SDK pro Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+ 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace. 
-
-Stáhněte a nainstalujte verzi Ruby 2.5.5 založené na architektuře systému z [tady](https://rubyinstaller.org/downloads/).
-
-> [!Tip]
->  Přestože lze volat [koncových bodů rozhraní REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) přímo pomocí Ruby, `Microsoft.Azure.CognitiveServices.TextAnalytics` SDK usnadňuje volání služby bez serializaci a deserializaci JSON.
->
-> Několik užitečných odkazů:
-> - [Ruby gem stránky](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
-> - [Kód SDK na Githubu](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics/lib/v2.1/generated/azure_cognitiveservices_textanalytics)
 
 <a name="RubyProject"></a>
 

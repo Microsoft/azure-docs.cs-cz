@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4ee3c0bf344520afee6b3a00eb49759ae1432949
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11fa72f5853350c76b2a8d0aa4fd7b96b598b670
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239779"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303854"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Linuxem
 
@@ -42,18 +42,18 @@ Tento kurz vás provede vývoj modul IoT Edge. *Modul IoT Edge*, nebo někdy pr�
 
 Při vývoji moduly IoT Edge, je důležité pochopit rozdíl mezi vývojového počítače a cílové zařízení IoT Edge, kde modul nakonec se nasadí. Kontejner, který jste vytvořili pro uložení kód modulu musí odpovídat operačního systému (OS) *cílové zařízení*. Nejběžnější scénář je například někdo vývoj modulu v počítači Windows hodláte cíl na nějaké zařízení Linux s IoT Edge. V takovém případě bude kontejner operačního systému Linux. Při procházení tohoto kurzu, mějte na paměti rozdíl mezi *vývojovém počítači s operačním systémem* a *kontejneru OS*.
 
-V tomto kurzu cílí na Linux zařízení s IoT Edge. Oblíbeným vývojovým operačního systému počítače, můžete použít tak dlouho, dokud svého vývojového počítače mohli spouštět kontejnery Linux. Doporučujeme použít Visual Studio Code pro vývoj pro Linux zařízení, tak, aby se, co bude používat v tomto kurzu. Visual Studio 2017 můžete použít, i když existují rozdíly mezi dva nástroje podpory.
+V tomto kurzu cílí na Linux zařízení s IoT Edge. Oblíbeným vývojovým operačního systému počítače, můžete použít tak dlouho, dokud svého vývojového počítače mohli spouštět kontejnery Linux. Doporučujeme použít Visual Studio Code pro vývoj pro Linux zařízení, tak, aby se, co bude používat v tomto kurzu. I když existují rozdíly mezi dva nástroje podpory můžete také použít Visual Studio.
 
-V následující tabulce jsou uvedeny podporované vývojové scénáře pro **kontejnery Linuxu** v aplikaci Visual Studio Code a Visual Studio 2017.
+V následující tabulce jsou uvedeny podporované vývojové scénáře pro **kontejnery Linuxu** v aplikaci Visual Studio Code a Visual Studio.
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Architektura zařízení Linux** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
 | **Služby Azure** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Jazyky** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Další informace** | [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools), [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-V tomto kurzu se dozvíte, jaké kroky vývoje pro Visual Studio Code. Pokud místo toho můžete využít Visual Studio 2017, použijte pokyny v [použít Visual Studio 2017 na vývoj a ladění modulů Azure IoT Edge](how-to-visual-studio-develop-module.md).
+V tomto kurzu se dozvíte, jaké kroky vývoje pro Visual Studio Code. Pokud místo toho můžete využít Visual Studio, použijte pokyny v [použít 2019 Visual Studio k vývoji a ladění modulů Azure IoT Edge](how-to-visual-studio-develop-module.md).
 
 ## <a name="prerequisites"></a>Požadavky
 

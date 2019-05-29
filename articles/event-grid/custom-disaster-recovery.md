@@ -5,20 +5,22 @@ services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 05/16/2019
 ms.author: babanisa
-ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562840"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305081"
 ---
-# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvářejte vlastní zotavení po havárii pro vlastní témata ve službě Event Grid
-
+# <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytváření vlastních zotavení po havárii pro vlastní témata ve službě Event Grid
 Zotavení po havárii se zaměřuje na obnovení závažné ztráty funkčnost aplikace. Tento kurz vás provede nastavení architektury zpracování událostí k obnovení v případě služby Event Grid nebude v pořádku v konkrétní oblasti.
 
 V tomto kurzu se dozvíte, jak vytvořit architekturu aktivní pasivní převzetí služeb při selhání pro vlastní témata ve službě Event Grid. Budete provádět převzetí služeb při selhání pomocí zrcadlení témata a odběry ve dvou oblastech a následné správy převzetí služeb při selhání, když téma nebude v pořádku. Architektura v tomto kurzu převezme služby při selhání všechny nové přenosy. je důležité vědět, s tímto nastavením, události už je v letu nebude obnoven, dokud nebude ohrožených oblast opět v pořádku.
+
+> [!NOTE]
+> Event Grid teď podporuje automatické geografického zotavení po havárii (GeoDR) na straně serveru. Stále můžete implementovat logiku pro zotavení po havárii na straně klienta potřebujete větší kontrolu na proces převzetí služeb při selhání. Podrobnosti o automatické GeoDR najdete v tématu [na straně serveru geografického zotavení po havárii ve službě Azure Event Grid](geo-disaster-recovery.md).
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 

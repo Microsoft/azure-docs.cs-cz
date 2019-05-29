@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 24869981595cd68eb833f7b176e17a2683127945
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787916"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306761"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob
 
@@ -40,7 +40,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
+* Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
   - **Azure – vývoj**
 
   ![Azure – vývoj (v části Web a cloud)](media/storage-create-geo-redundant-storage/workloads.png)
@@ -82,6 +82,8 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    | **Model nasazení** | Resource Manager  | Resource Manager obsahuje nejnovější funkce.|
    | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
    | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
+   | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | Toto nastavení je nutné ukázka fungovala. |
+   |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
    |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
@@ -167,7 +169,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
-Tato ukázka vyžaduje bezpečné uložení názvu a klíče účtu úložiště. Store je v počítači, který se spustí ukázku místních proměnných prostředí. Použijte Linuxu nebo Windows příklad, v závislosti na operačním systému vytvořte proměnné prostředí. Ve Windows, je proměnná prostředí není k dispozici dokud znovu nenačtete **příkazového řádku** nebo používané prostředí.
+Tato ukázka vyžaduje bezpečné uložení názvu a klíče účtu úložiště. Store je v počítači, který se spustí ukázku místních proměnných prostředí. Použijte Linuxu nebo Windows příklad, v závislosti na operačním systému vytvořte proměnné prostředí. Ve Windows, je proměnná prostředí není k dispozici, dokud znovu nenačtete **příkazového řádku** nebo prostředí, které používáte.
 
 ### <a name="linux-example"></a>Příklad pro Linux
 
@@ -194,7 +196,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Tyto informace můžete najít na webu Azure Portal tak, že přejdete do účtu úložiště a vyberete **přístupové klíče** v **nastavení** oddílu.
 
-Je také nutné nainstalovat požadované závislosti. Chcete-li to provést, otevřete příkazový řádek, přejděte do složky s ukázkou, a pak zadejte `npm install`.
+Nainstalujte požadované závislosti. Chcete-li to provést, otevřete příkazový řádek, přejděte do složky s ukázkou, a pak zadejte `npm install`.
 
 ---
 
@@ -220,7 +222,7 @@ Ve vzorovém kódu slouží metoda `run_circuit_breaker` v souboru `circuitbreak
 
 Funkce opakování pro objekt Storage je nastavená na zásadu lineárního opakování. Funkce opakování určuje, jestli se má opakovat žádost, a určuje, kolik sekund se má čekat před opakováním žádosti. Nastavte hodnotu **retry\_to\_secondary** na true, pokud by se žádost měla opakovat na sekundární koncový bod v případě, že původní žádost na primární byla neúspěšná. V ukázkové aplikaci je vlastní zásada opakování definovaná ve funkci `retry_callback` objektu úložiště.
 
-Před stažením se definuje funkce [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) objektu Service. Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
+Před stažením objekt služby [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) a [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) funkce je definována. Tyto funkce definují obslužné rutiny událostí, které se spustí po úspěšném stažení nebo pokud se stažení nepovede a opakuje se.
 
 # <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
@@ -231,11 +233,11 @@ Ke spuštění ukázky použití Mavenu na příkazovém řádku.
 
 Tato ukázka vytvoří testovací soubor ve výchozím adresáři. Pro uživatele Windows, je tento adresář **AppData\Local\Temp**. Ukázka pak uvede příkazů, které můžete zadat následující možnosti:
 
-- Zadejte **P** k provedení operace vložení objektu blob, to dočasný soubor nahraje do účtu úložiště.
-- Zadejte **L** k provedení operace objektů blob v seznamu, tento seznam aktuálně ve vašem kontejneru objektů BLOB.
-- Zadejte **G** provést operaci načíst objekt blob, tato akce stáhne soubor z vašeho účtu úložiště do svého místního počítače.
-- Zadejte **D** provést operaci odstranění objektů blob, tím se odstraní objekt blob z účtu úložiště.
-- Zadejte **E** zavřít ukázky, tím se odstraní také všechny prostředky ukázka vytvoří.
+- Zadejte **P** tento příkaz k provedení operace vložení objektu blob, odešle dočasného souboru do účtu úložiště.
+- Zadejte **L** k provedení operace objektů blob v seznamu, tento příkaz výpis objektů BLOB momentálně ve vašem kontejneru.
+- Zadejte **G** provést operaci načíst objekt blob, tento příkaz stáhne soubor z vašeho účtu úložiště do svého místního počítače.
+- Zadejte **D** provést operaci odstranění objektů blob, tento příkaz odstraní objekt blob z účtu úložiště.
+- Zadejte **E** zavřít ukázky, tento příkaz odstraní také všechny prostředky ukázka vytvoří.
 
 Tento příklad ukazuje výstup při spuštění aplikace ve Windows.
 

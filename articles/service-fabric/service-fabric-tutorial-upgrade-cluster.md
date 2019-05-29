@@ -15,21 +15,21 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8bb8a635c3699828376390c489697b6315030937
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157970"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306680"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Kurz: Upgrade modulu runtime clusteru Service Fabric v Azure
 
-Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat modul runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je určená pro clustery Service Fabric běžící v Azure, a nevztahuje se na samostatné clustery Service Fabric.
+Tento kurz je čtvrtou částí série a ukazuje, jak upgradovat modul runtime Service Fabric v clusteru Azure Service Fabric. Tato část kurzu je určené pro clustery Service Fabric běžící v Azure a neplatí pro Service Fabric samostatné clustery.
 
 > [!WARNING]
 > Tato část kurzu vyžaduje PowerShell. Nástroje Azure CLI ještě upgradování modulu runtime clusteru nepodporují. Alternativně je možné cluster upgradovat na portálu. Další informace najdete v tématu [Upgrade clusteru Azure Service Fabric](service-fabric-cluster-upgrade.md).
 
-Pokud váš cluster již využívá nejnovější modul runtime Service Fabric, nemusíte tento krok provádět. Tento článek však můžete použít k instalaci jakéhokoli podporovaného modulu runtime v clusteru Azure Service Fabric.
+Pokud váš cluster již využívá nejnovější modul runtime Service Fabric, nemusíte tento krok. Tento článek však můžete použít k instalaci jakéhokoli podporovaného modulu runtime v clusteru Azure Service Fabric.
 
 V tomto kurzu se naučíte:
 
@@ -55,7 +55,7 @@ Než začnete s tímto kurzem:
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
-* Nastavení vývojového prostředí Windows. Nainstalujte sadu [Visual Studio 2017](https://www.visualstudio.com) a sady funkcí **Vývoj pro Azure**, **Vývoj pro ASP.NET a web** a **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+* Nastavení vývojového prostředí Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a **vývoj pro Azure**, **vývoj pro ASP.NET a web**, a **vývoj pro různé platformy .NET Core**úlohy.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
 ### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
@@ -69,14 +69,14 @@ Set-AzContext -SubscriptionId <guid>
 
 ## <a name="get-the-runtime-version"></a>Získání verze modulu runtime
 
-Po připojení k Azure a výběru předplatného, které obsahuje cluster Service Fabric, můžete získat verzi modulu runtime clusteru.
+Po připojení k Azure, vybrané předplatné obsahuje cluster Service Fabric, můžete získat verzi modulu runtime clusteru.
 
 ```powershell
 Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
-Případně stačí získat seznam všech clusterů ve vašem předplatném pomocí následujícího příkazu:
+Případně stačí získat seznam všech clusterů ve vašem předplatném pomocí následujícího příkladu:
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
@@ -207,8 +207,7 @@ V tomto kurzu jste se naučili:
 > * Upgrade modulu runtime clusteru
 > * Monitorování upgradu
 
-[!div class="checklist"]
-> * Získání verze modulu runtime clusteru
-> * Upgrade modulu runtime clusteru
-> * Monitorování upgradu
+Přejděte k dalšímu kurzu:
 
+> [!div class="nextstepaction"]
+> [Odstranění clusteru](service-fabric-tutorial-delete-cluster.md)

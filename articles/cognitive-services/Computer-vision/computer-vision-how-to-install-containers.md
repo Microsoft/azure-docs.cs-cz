@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 10e5060c06e1ebc591c7245ae588b5352a3328ca
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203108"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302829"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalace a spouštění kontejnerů rozpoznat Text
 
@@ -89,7 +89,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění kontejneru. Příkaz používá následující parametry:
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na Azure `Cognitive Services` stránka klíče.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI. Příkladem je: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
@@ -156,6 +156,10 @@ Odeslat kontejnery rozpoznat Text fakturační údaje do Azure, pomocí _rozpozn
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](./computer-vision-resource-container-config.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
 

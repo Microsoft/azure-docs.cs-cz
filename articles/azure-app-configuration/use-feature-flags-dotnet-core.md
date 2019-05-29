@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f712cc34a3d41ea9472bf9428606cb378eef8c18
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244266"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299266"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Kurz: Použití příznaků funkcí v aplikaci .NET Core
 
-Knihovny .NET Core funkce správy idiomatickou podporují implementace příznaků funkcí v aplikaci .NET nebo ASP.NET Core. Umožňují vám přidat příznaky funkcí pro váš kód více deklarativně tak, že není potřeba psát veškerý `if` příkazy pro ně ručně. Spravují životní cykly příznak funkce (například aktualizace a mezipaměti příznak státy, zajištění neměnných příznak stavu během volání žádosti) za scénu. Kromě toho knihovna ASP.NET Core nabízí integrace out-of-the-box včetně akce řadiče MVC, zobrazení, cesty a middlewaru.
+Knihovny .NET Core funkce správy idiomatickou podporují implementace příznaků funkcí v aplikaci .NET nebo ASP.NET Core. Umožňují vám přidat příznaky funkcí pro váš kód více deklarativně tak, že není potřeba psát veškerý `if` příkazy pro ně ručně. Spravují životní cykly příznak funkce (například aktualizace a mezipaměti příznak státy, zajištění neměnných příznak stavu během volání žádosti) na pozadí. Kromě toho knihovna ASP.NET Core nabízí integrace out-of-the-box včetně akce řadiče MVC, zobrazení, cesty a middlewaru.
 
 [Přidat příznaků funkcí do aplikace ASP.NET Core](./quickstart-feature-flag-aspnet-core.md) rychlý start ukazuje několik způsobů, jak přidat příznaků funkcí v aplikaci ASP.NET Core. Tento kurz vysvětluje tyto další podrobnosti. Najdete v článku [dokumentaci k ASP.NET Core funkci správy](https://go.microsoft.com/fwlink/?linkid=2091410) úplný přehled.
 
-V tomto kurzu se naučíte:
+V tomto kurzu se naučíte, jak:
 
 > [!div class="checklist"]
 > * Přidáte příznaků funkcí v klíčových částí aplikace pro řízení dostupnosti funkce.
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Pokud používáte filtr v příznaků funkcí, musíte zahrnout další knihovny a zaregistrujte ho. Následující příklad ukazuje, jak použít filtr integrovanou funkci s názvem **PercentageFilter "** .
+Pokud použijete filtry ve vaší příznaky funkcí, musíte zahrnout další knihovny a zaregistrujte ho. Následující příklad ukazuje, jak použít filtr integrovanou funkci s názvem **PercentageFilter "** .
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -82,7 +82,7 @@ public class Startup
 }
 ```
 
-Pracovat efektivně, musí zachovat příznaků funkcí mimo aplikaci a spravovat samostatně. To můžete kdykoli upravit příznak stavy a se tyto změny se neprojeví v aplikaci hned. Konfigurace aplikace poskytuje centrálním umístění pro uspořádání a řízení všech funkcí příznaky prostřednictvím vyhrazené uživatelské rozhraní portálu a zajišťuje příznaků pro vaši aplikaci přímo přes .NET Core klienta knihovny. Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace aplikace je prostřednictvím poskytovatele konfigurace `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Můžete použít tento balíček NuGet ve vašem kódu přidáním následujícího *Program.cs* souboru:
+Pracovat efektivně, musí zachovat příznaků funkcí mimo aplikaci a spravovat samostatně. To můžete kdykoli upravit příznak stavy a se tyto změny okamžitou platností v aplikaci. Konfigurace aplikace poskytuje centrálním umístění pro uspořádání a řízení všech funkcí příznaky prostřednictvím vyhrazené uživatelské rozhraní portálu a zajišťuje příznaků pro vaši aplikaci přímo přes .NET Core klienta knihovny. Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core do konfigurace aplikace je prostřednictvím poskytovatele konfigurace `Microsoft.Extensions.Configuration.AzureAppConfiguration`. Můžete použít tento balíček NuGet ve vašem kódu přidáním následujícího *Program.cs* souboru:
 
 ```csharp
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153051"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306558"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spouštění kontejnerů Speech Service
 
@@ -74,7 +74,7 @@ Následující tabulka popisuje minimální a doporučené jader procesoru a pam
 
 Jader a paměti odpovídají `--cpus` a `--memory` nastavení, které se používají jako součást `docker run` příkazu.
 
-**Poznámka:**; Minimální a doporučené vychází z Dockeru omezení *není* hostitelského počítače prostředky. Například kontejnery speech to text paměti namapovat části velké jazykový model a je _doporučuje_ , který vyhovuje celý soubor v paměti, což je o 4 až 6 GB. První spuštění kontejneru buď navíc může trvat déle, protože modely jsou stránkování do paměti.
+**Poznámka:** ; Minimální a doporučené vychází z Dockeru omezení *není* hostitelského počítače prostředky. Například kontejnery speech to text paměti namapovat části velké jazykový model a je _doporučuje_ , který vyhovuje celý soubor v paměti, což je o 4 až 6 GB. První spuštění kontejneru buď navíc může trvat déle, protože modely jsou stránkování do paměti.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Získat image kontejneru s `docker pull`
 
@@ -107,7 +107,7 @@ Následující značku je příklad formátu:
 
 V následující tabulce jsou uvedeny podporované národní prostředí pro **speech to text** 1.1.1 verzi kontejneru:
 
-|Jazyk národního prostředí|Značky|
+|Jazyk národního prostředí|Tags|
 |--|--|
 |Čínština|`zh-cn`|
 |Angličtina |`en-us`<br>`en-gb`<br>`en-au`<br>`en-in`|
@@ -136,7 +136,7 @@ Následující značku je příklad formátu:
 
 V následující tabulce jsou uvedeny podporované národní prostředí pro **převod textu na řeč** v 1.1.0 verzi kontejneru:
 
-|Jazyk národního prostředí|Značky|Podporované hlasů|
+|Jazyk národního prostředí|Tags|Podporované hlasů|
 |--|--|--|
 |Čínština|`zh-cn`|huihuirus<br>kangkang-apollo<br>yaoyao-apollo|
 |Angličtina |`en-au`|catherine<br>hayleyrus|
@@ -281,6 +281,10 @@ Odeslat kontejnery řeči fakturační údaje do Azure, pomocí _řeči_ prostř
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](speech-container-configuration.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
 

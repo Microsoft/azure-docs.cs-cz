@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31992a08c1b6c4fda4053032458879661fe2b740
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7110d7004ae9be58bb150674d516692049507608
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233768"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299081"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -69,7 +69,7 @@ Povolení protokolu TLS 1.2:
 2. Restartujte server.
 
 >[!Important] 
-> Ve své třídě nejlepší šifrování poskytovat našim zákazníkům, provádíme aktualizací ve službě Proxy aplikací a omezit tak přístup na pouze protokoly TLS 1.2. Podle připravenosti zákazníka, které změny budou postupně zavádět zákazníkům, kteří používají pouze protokoly TLS 1.2 a žádný vliv tato změna se nezobrazí. Protokol TLS 1.0 a 1.1 vyřazení dokončí v srpnu 31. května 2019 a zákazníci získají předem, chcete-li tuto změnu připravit. Přípravy na tuto změnu zkontrolujte že, která jsou všechny klient server a server prohlížeče kombinace aktualizované na používání protokolu TLS 1.2 pro zachování připojení k Proxy aplikace služby. Patří mezi ně klientů, které uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím Proxy aplikací. V tématu Příprava pro [TLS 1.2 v Office 365](https://docs.microsoft.com/en-us/office365/troubleshoot/prepare-tls-1.2-in-office-365) pro užitečné odkazy a prostředky.
+> Ve své třídě nejlepší šifrování poskytovat našim zákazníkům, provádíme aktualizací ve službě Proxy aplikací a omezit tak přístup na pouze protokoly TLS 1.2. Podle připravenosti zákazníka, které změny budou postupně zavádět zákazníkům, kteří používají pouze protokoly TLS 1.2 a žádný vliv tato změna se nezobrazí. Protokol TLS 1.0 a 1.1 vyřazení dokončí v srpnu 31. května 2019 a zákazníci získají předem, chcete-li tuto změnu připravit. Přípravy na tuto změnu zkontrolujte že, která jsou všechny klient server a server prohlížeče kombinace aktualizované na používání protokolu TLS 1.2 pro zachování připojení k Proxy aplikace služby. Patří mezi ně klientů, které uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím Proxy aplikací. V tématu Příprava pro [TLS 1.2 v Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365) pro užitečné odkazy a prostředky.
 
 ## <a name="prepare-your-on-premises-environment"></a>Příprava místního prostředí
 

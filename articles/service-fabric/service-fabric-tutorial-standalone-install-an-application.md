@@ -1,6 +1,6 @@
 ---
 title: Kurz instalace aplikace na samostatný cluster Service Fabric – Azure Service Fabric | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak nainstalovat aplikaci do samostatného clusteru Service Fabric.
+description: V tomto kurzu se dozvíte, jak chcete instalovat aplikace do samostatného clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 17bb5f5d8fe7ee407caf0ea5c34dc5380dbd79b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60717934"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302426"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Kurz: Nasazení aplikace na samostatný cluster Service Fabric
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS a nasadíte do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „libovolný OS a libovolný cloud“. V této řadě kurzů vytvoření samostatného clusteru hostovaných ve službě AWS a nasadit aplikaci do něj.
 
-Tento kurz je třetí částí série.  Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu „libovolný OS a libovolný cloud“ pomocí Service Fabric. V tomto kurzu se dozvíte, jak vytvořit infrastrukturu AWS potřebnou k hostování tohoto samostatného clusteru.
+Tento kurz je třetí částí série.  Samostatné clustery Service Fabric nabízí možnost vybrat vlastní prostředí a vytvoření clusteru v rámci naší "Libovolný operační systém a všechny cloudy" přístup s využitím Service Fabric. V tomto kurzu se dozvíte, jak vytvořit infrastrukturu AWS potřebnou k hostování tohoto samostatného clusteru.
 
 Ve třetí části této série se naučíte:
 
@@ -38,7 +38,7 @@ Ve třetí části této série se naučíte:
 
 Než začnete s tímto kurzem:
 
-* [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
+* [Nainstalovat Visual Studio 2019](https://www.visualstudio.com/) a nainstalujte **vývoj pro Azure** a **vývoj pro ASP.NET a web** úlohy.
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové hlasovací aplikace

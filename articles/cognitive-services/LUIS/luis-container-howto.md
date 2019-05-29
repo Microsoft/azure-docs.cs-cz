@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b379ebeeec7d9309cdf150b8b90ddd006e3bcd9a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 02ac7b91622a3c8fe877ea9bcbc7224a67eb0ae5
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240211"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306625"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -277,7 +277,7 @@ Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 
-|Parametr dotazu|Typ|Účel|
+|Parametr dotazu|Type|Účel|
 |--|--|--|
 |`q`|string|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|
@@ -367,6 +367,10 @@ Konfigurace nepodporované aplikací.|Podrobnosti|
 |Nepodporovaná entity pro jazykovou verzi Angličtina (en US)|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) předem připravených entit|
 |Dočištění řeči|Vnější závislosti nejsou podporovány v kontejneru.|
 |Analýza mínění|Vnější závislosti nejsou podporovány v kontejneru.|
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
 

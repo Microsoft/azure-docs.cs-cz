@@ -2,18 +2,18 @@
 title: Kurz Kubernetes v Azure – Příprava aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak pomocí Docker Compose připravit a sestavit vícekontejnerovou aplikaci, kterou pak můžete nasadit do AKS.
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8fdc36215841348cf62cd61245950be6573a1938
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61030524"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304456"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)
 

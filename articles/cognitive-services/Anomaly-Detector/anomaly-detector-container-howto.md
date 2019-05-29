@@ -7,14 +7,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/28/2019
 ms.author: aahi
-ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233613"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306978"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Instalace a spouštění kontejnerů detekce anomálií
 
@@ -22,7 +22,7 @@ Detekce anomálií má následující kontejneru:
 
 |Funkce|Funkce|
 |-|-|
-|Detekce anomálií| <li> Detekuje anomálie, když k nim dojde v reálném čase. <li> Detekuje anomálie v celé datové sady v dávce. <li> Odvodí z něj normální očekávaný rozsah data. <li> Podporuje anomálií detekce citlivosti úpravy lépe přizpůsobit vaše data. |
+|Detektor anomálií| <li> Detekuje anomálie, když k nim dojde v reálném čase. <li> Detekuje anomálie v celé datové sady v dávce. <li> Odvodí z něj normální očekávaný rozsah data. <li> Podporuje anomálií detekce citlivosti úpravy lépe přizpůsobit vaše data. |
 
 Podrobné informace o rozhraních API najdete v tématu:
 * [Další informace o službě API detekce anomálií](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -97,7 +97,7 @@ Jakmile bude kontejner ve [hostitelský počítač](#the-host-computer), použij
 
 Použití [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkaz ke spuštění tři kontejnery. Příkaz používá následující parametry:
 
-| Zástupný symbol | Value |
+| Zástupný symbol | Hodnota |
 |-------------|-------|
 |{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče detekce anomálií webu Azure portal.  |
 |{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce s přehledem detekce anomálií webu Azure portal.|
@@ -176,6 +176,10 @@ Odeslat kontejnery detekce anomálií fakturační údaje do Azure, pomocí _det
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](anomaly-detector-container-configuration.md).
+
+<!--blogs/samples/video coures -->
+
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Souhrn
 
