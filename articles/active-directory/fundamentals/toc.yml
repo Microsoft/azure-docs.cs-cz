@@ -29,6 +29,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Úložiště dat identity pro EU
       href: active-directory-data-storage-eu.md
+    - name: Novinky ve službě Microsoft 365 Government
+      href: whats-new-microsoft-365-government.md
 - name: Návody
   expanded: true
   items:

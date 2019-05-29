@@ -8,15 +8,6 @@
     - name: Přehled a výhody platforem Azure Marketplace a AppSource
       href: ./marketplace-publishers-guide.md
       items:
-        - name: Jak se stát vydavatelem v Marketplace
-          href: ./become-publisher.md
-          items:
-            - name: Vytvoření účtu Microsoft
-              href: ./guidelines.md
-            - name: Registrace na webu Dev Center
-              href: ./register-dev-center.md
-            - name: Přisuzování využití ze strany zákazníků partnerům Azure
-              href: ./azure-partner-customer-usage-attribution.md
         - name: 'Jeden marketplace, dvě prodejní místa'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Aspekty a možnosti publikování
@@ -30,6 +21,8 @@
               href: ./private-offers.md
             - name: Standardní kontrakt
               href: ./standard-contract.md
+            - name: Přisuzování využití ze strany zákazníků partnerům Azure
+              href: ./azure-partner-customer-usage-attribution.md
         - name: Průvodce publikováním podle typu nabídky
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -481,6 +474,15 @@
       items:
         - name: Vytvoření nabídky SaaS
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: Rozhraní API naplnění SaaS
+          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: Registrace aplikace SaaS
+              href: ./partner-center-portal/pc-saas-registration.md
+            - name: Rozhraní API pro naplnění SaaS v2
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: Rozhraní API pro naplnění SaaS v1 (zastaralá)
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
     - name: Stav publikování
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualizace stávajících nabídek
