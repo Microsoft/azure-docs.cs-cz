@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799334"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384972"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vyhledávání zpráv Bingu
 
@@ -33,7 +33,7 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 
 |Země/oblast|Jazyk|Kód na trhu|  
 |---------------------|--------------|-----------------|
-|Dánsko|Dánština|da-DK|
+|Dánsko|dánština|da-DK|
 |Rakousko|Němčina|de-AT|
 |Švýcarsko|Němčina|de-CH|
 |Německo|Němčina|de-DE|
@@ -64,7 +64,7 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 |Švýcarsko|Francouzština|FR-CH|
 |Francie|Francouzština|fr-FR|  
 |Itálie|italština|IT-IT|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|  
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh-HK|  
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Japonsko|Japonština|ja-JP|  
 |Jižní Korea|Korejština|ko-KR|  
@@ -72,8 +72,8 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 |Čínská lidová republika|Čínština|zh-CN|  
 |Brazílie|Portugalština|pt-BR|
 |Rusko|ruština|ru-RU|  
-|Švédsko|Švédština|sv-SE|  
-|Turecko|Turečtina|tr-TR|  
+|Švédsko|švédština|sv-SE|  
+|Turecko|turečtina|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>Podporované trhy pro koncový bod příspěvků
 Pro `/news` koncový bod, následující tabulka uvádí hodnoty kódu na trhu, které můžete použít k určení `mkt` parametr dotazu. Bing vrátí obsah pouze těchto trzích. V seznamu se můžou změnit.  
@@ -82,7 +82,7 @@ Pro seznam země/oblast kódů, které můžete zadat v `cc` parametr dotazu nal
 
 |Země/oblast|Jazyk|Kód na trhu|  
 |---------------------|--------------|-----------------|
-|Dánsko|Dánština|da-DK|
+|Dánsko|dánština|da-DK|
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|cs AU|
 |Spojené království|Angličtina|en-GB|
@@ -135,17 +135,17 @@ Následují kódů země/oblasti, které můžete zadat v `cc` parametr dotazu. 
 |Finsko|FI|  
 |Francie|FR|  
 |Německo|DE|  
-|Hongkong – zvláštní správní oblast|HK|  
+|Hongkong – zvláštní administrativní oblast|HK|  
 |Indie|IN|  
 |Indonésie|ID|  
-|Itálie|it|  
+|Itálie|IT|  
 |Japonsko|JP|  
 |Jižní Korea|KR|  
 |Malajsie|MY|  
 |Mexiko|MX|  
 |Nizozemsko|NL|  
 |Nový Zéland|NZ|  
-|Norsko|NE|  
+|Norsko|NO|  
 |Čínská lidová republika|CN|  
 |Polsko|PL|  
 |Portugalsko|PT|  
@@ -162,4 +162,4 @@ Následují kódů země/oblasti, které můžete zadat v `cc` parametr dotazu. 
 |Spojené státy|USA|
 
 ## <a name="next-steps"></a>Další postup
-Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [referenční dokumentace rozhraní API pro vyhledávání zpráv v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [referenční dokumentace rozhraní API pro vyhledávání zpráv v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

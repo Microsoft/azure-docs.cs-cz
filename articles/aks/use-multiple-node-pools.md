@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142643"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235754"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Ve verzi Preview – vytváření a správě více fondy uzlů pro cluster Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Ve službě Azure Kubernetes Service (AKS), uzlů se stejnou konfigurací jsou s
 V tomto článku se dozvíte, jak vytvořit a spravovat více fondy uzlů v clusteru AKS. Tato funkce je aktuálně ve verzi Preview.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
+> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
 >
-> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
+> * [Zásady podpory AKS][aks-support-policies]
+> * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -72,6 +73,7 @@ Při vytváření a správě AKS clustery, které podporují více fondy uzlů s
 * Více fondy uzlů jsou k dispozici v případě clusterů vytvořených po úspěšném zaregistrování pouze *MultiAgentpoolPreview* a *VMSSPreview* funkce pro vaše předplatné. Nelze přidat nebo spravovat fondy uzlů s existující cluster AKS vytvořili předtím, než tyto funkce byly úspěšně registrovány.
 * Nelze odstranit první fond uzlů.
 * Doplněk směrování aplikace HTTP nelze použít.
+* Nelze přidat, aktualizace nebo odstranění uzlu fondů v existující šablonu Resource Manageru stejně jako u většiny operací. Místo toho [pomocí samostatné šablony Resource Manageru](#manage-node-pools-using-a-resource-manager-template) měnit fondy uzlů v clusteru AKS.
 
 Tato funkce je ve verzi preview, platí následující další omezení:
 
@@ -328,6 +330,95 @@ Events:
 
 Pouze podů, které mají tento barvu použít můžete naplánovat na uzly v *gpunodepool*. Další pod by být naplánováno v *nodepool1* fond uzlů. Pokud vytvoříte fondy dalších uzlů, můžete použít další poskvrnění a tolerations omezit jaké podů můžete naplánovat na tyto prostředky uzlu.
 
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>Spravovat fondy uzlů pomocí šablony Resource Manageru
+
+Při použití šablony Azure Resource Manageru k vytvoření a spravované prostředky, je obvykle aktualizovat nastavení v šabloně a opětovné nasazení pro aktualizaci prostředku. S nodepools ve službě AKS nelze aktualizovat profil počáteční nodepool po vytvoření clusteru AKS. Toto chování znamená, že nelze aktualizovat existující šablonu Resource Manageru, proveďte změnu na fondy uzlů a znovu nasadit. Místo toho musíte vytvořit samostatné šablony Resource Manageru, která aktualizuje pouze fondy agentů pro existující cluster AKS.
+
+Vytvoření šablony, jako `aks-agentpools.json` a vložte následující příklad manifestu. Tato ukázková šablona konfiguruje následující nastavení:
+
+* Aktualizace *Linux* fond agentů se s názvem *myagentpool* ke spuštění tři uzly.
+* Nastaví uzly ve fondu, uzel, aby verzí Kubernetes *1.12.8*.
+* Definuje velikost uzlu jako *Standard_DS2_v2*.
+
+Tyto hodnoty upravte, jako je třeba aktualizovat, přidávat a odstraňovat fondy uzlů podle potřeby:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "clusterName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of your existing AKS cluster."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of your existing AKS cluster."
+      }
+    },
+    "agentPoolName": {
+      "type": "string",
+      "defaultValue": "myagentpool",
+      "metadata": {
+        "description": "The name of the agent pool to create or update."
+      }
+    },
+    "vnetSubnetId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "The Vnet subnet resource ID for your existing AKS cluster."
+      }
+    }
+  },
+  "variables": {
+    "apiVersion": {
+      "aks": "2019-04-01"
+    },
+    "agentPoolProfiles": {
+      "maxPods": 30,
+      "osDiskSizeGB": 0,
+      "agentCount": 3,
+      "agentVmSize": "Standard_DS2_v2",
+      "osType": "Linux",
+      "vnetSubnetId": "[parameters('vnetSubnetId')]"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2019-04-01",
+      "type": "Microsoft.ContainerService/managedClusters/agentPools",
+      "name": "[concat(parameters('clusterName'),'/', parameters('agentPoolName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+            "maxPods": "[variables('agentPoolProfiles').maxPods]",
+            "osDiskSizeGB": "[variables('agentPoolProfiles').osDiskSizeGB]",
+            "count": "[variables('agentPoolProfiles').agentCount]",
+            "vmSize": "[variables('agentPoolProfiles').agentVmSize]",
+            "osType": "[variables('agentPoolProfiles').osType]",
+            "storageProfile": "ManagedDisks",
+      "type": "VirtualMachineScaleSets",
+            "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
+            "orchestratorVersion": "1.12.8"
+      }
+    }
+  ]
+}
+```
+
+Nasazení této šablony můžete použít [vytvořit nasazení skupiny pro az] [ az-group-deployment-create] příkaz, jak je znázorněno v následujícím příkladu. Zobrazí se výzva pro existující název clusteru AKS a umístění:
+
+```azurecli-interactive
+az group deployment create \
+    --resource-group myResourceGroup \
+    --template-file aks-agentpools.json
+```
+
+Může trvat několik minut na aktualizaci clusteru AKS v závislosti na nastavení uzlu fondu a operace, které definujete v šabloně Resource Manageru.
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 V tomto článku jste vytvořili cluster AKS, který obsahuje uzly založený na grafickém procesoru. Abyste snížili náklady na zbytečné, můžete chtít odstranit *gpunodepool*, nebo celého clusteru AKS.
@@ -351,7 +442,6 @@ V tomto článku jste zjistili, jak vytvořit a spravovat více fondy uzlů v cl
 Vytvořit a používat fondy uzlů kontejneru Windows serveru najdete v tématu [vytvoříte kontejner Windows Server ve službě AKS][aks-windows].
 
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -379,3 +469,6 @@ Vytvořit a používat fondy uzlů kontejneru Windows serveru najdete v tématu 
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

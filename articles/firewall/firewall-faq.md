@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/3/2019
+ms.date: 5/30/2019
 ms.author: victorh
-ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016021"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384675"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure bránu Firewall
 
@@ -25,7 +25,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Stavová brána firewall jako služba
 * Integrovaná vysoká dostupnost s neomezenou škálovatelností cloudu
 * Filtrování FQDN
-* Značky plně kvalifikovaného názvu domény
+* Značky plně kvalifikovaných názvů domén
 * Pravidla filtrování síťového provozu
 * Podpora pro odchozí SNAT
 * Podpora DNAT u příchozích přenosů
@@ -34,7 +34,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Co je typické nasazení modelu pro Brána Firewall služby Azure?
 
-Brána Firewall služby Azure můžete nasadit na všechny virtuální sítě, ale zákazníci obvykle nasazení v centrální virtuální síti a vytvořit partnerský vztah jiným virtuálním sítím v modelu střed a paprsek do něj. Pak můžete nastavit výchozí trasu v partnerských virtuálních sítích tak, aby odkazoval na tento centrální brány firewall virtuální sítě. Globální VNet peering se podporuje, ale nedoporučuje kvůli potenciální výkon a problémy s latencí napříč oblastmi. Pro zajištění nejlepšího výkonu nasaďte jednu bránu firewall v jedné oblasti.
+Brána Firewall služby Azure můžete nasadit na všechny virtuální sítě, ale zákazníci obvykle nasazení v centrální virtuální síti a vytvořit partnerský vztah jiným virtuálním sítím v modelu střed a paprsek do něj. Pak můžete nastavit výchozí trasu v partnerských virtuálních sítích tak, aby odkazoval na tento centrální brány firewall virtuální sítě. Globální VNet peering se podporuje, ale není doporučeno z důvodu potenciální výkon a problémy s latencí napříč oblastmi. Pro zajištění nejlepšího výkonu nasaďte jednu bránu firewall v jedné oblasti.
 
 Výhodou tohoto modelu je schopnost centrálně získat ovládací prvek na více virtuálních sítí paprsků napříč různými předplatnými. Je také úspory nákladů, které není potřeba brána firewall v každé virtuální síti nasadit samostatně. Úspory nákladů, které by se mělo měřit a přidružit partnerského vztahu náklady na základě vzorců provozu zákazníka.
 
@@ -62,7 +62,7 @@ Brány Firewall na Azure je integrovaná se službou Azure Monitor pro zobrazen�
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak se Brána Firewall služby Azure z existujících služeb, jako je například síťová virtuální zařízení na webu Marketplace funguje jinak?
 
-Brány Firewall na Azure je služba základní brána firewall, která může vyřešit určitých scénářů zákazníků. Očekává se, zda bude mít kombinaci síťových virtuálních zařízení a Brána Firewall služby Azure třetích stran. Lepší spolupráci se základní prioritou.
+Brány Firewall na Azure je služba základní brána firewall, která může vyřešit určitých scénářů zákazníků. Očekává se, že budete mít kombinaci síťových virtuálních zařízení a Brána Firewall služby Azure třetích stran. Lepší spolupráci se základní prioritou.
 
 ## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Jaký je rozdíl mezi waf služby Application Gateway a Brána Firewall služby Azure?
 
@@ -71,6 +71,11 @@ Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytu
 ## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Jaký je rozdíl mezi skupiny zabezpečení sítě (Nsg) a Brána Firewall služby Azure?
 
 Brána Firewall služby Azure service doplňuje funkci skupiny zabezpečení sítě. Společně poskytují lepší zabezpečení sítě "v obrany". Skupiny zabezpečení sítě poskytují distribuované síťový provoz vrstvy filtrování pro omezení provozu směřujícího do prostředků v rámci virtuálních sítí v každém předplatném. Brány Firewall na Azure je plně stavové a centralizované síťové brány firewall jako služby, která poskytuje ochranu na úrovni sítě a aplikace v rámci různých předplatných a virtuální sítě.
+
+## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>V podsíti brány Firewall Azure podporuje skupiny zabezpečení sítě (Nsg)?
+
+Brány Firewall na Azure je spravovaná služba s víc vrstvami ochrany, včetně ochrany platform se NIC úrovni skupin zabezpečení sítě (ne zobrazitelné).  Skupiny Nsg na úrovni podsítě nejsou vyžadovány v podsíti brány Firewall na Azure a jsou zakázané, aby žádné přerušení služby.
+
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak nastavit Brána Firewall služby Azure se Moje koncové body služby?
 
@@ -125,7 +130,7 @@ Ve výchozím nastavení vynucené tunelování se nepodporuje, ale lze je aktiv
 
 Azure brány Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet učí výchozí trasu k vaší místní síti přes protokol BGP, je nutné to přepsat s UDR 0.0.0.0/0 s **NextHopType** hodnota nastavená na **Internet** udržovat s přímým přístupem Připojení k Internetu. Ve výchozím nastavení brána Firewall služby Azure nepodporuje vynuceného tunelování k místní síti.
 
-Však vyžaduje-li vaše konfigurace vynuceného tunelování k místní síti, Microsoft bude podporovat v případ od případu. Takže si můžete přečíst váš případ, obraťte se na podporu. Pokud přijat, vytvoříme seznamu povolených IP adres vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.
+Však vyžaduje-li vaše konfigurace vynuceného tunelování k místní síti, Microsoft bude podporovat v případ od případu. Takže si můžete přečíst váš případ, obraťte se na podporu. Jestli přijata, budete mít vaše předplatné a ujistěte se, že se zachová připojení k Internetu vyžaduje bránu firewall.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují všechny brány firewall omezení skupin prostředků?
 
@@ -137,7 +142,7 @@ Ne. Pravidla NAT implicitně přidat odpovídající pravidlo sítě přeložen�
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Jak fungují zástupné znaky v cíli pravidla aplikace plně kvalifikovaný název domény?
 
-Pokud nakonfigurujete ***. contoso.com**, umožňuje *anyvalue*. contoso.com, ale ne contoso.com (vrcholu domény). Pokud chcete povolit vrcholu domény, musíte ho explicitně nakonfigurovat jako cílový plně kvalifikovaný název domény.
+Pokud nakonfigurujete * **. contoso.com**, umožňuje *anyvalue*. contoso.com, ale ne contoso.com (vrcholu domény). Pokud chcete povolit vrcholu domény, musíte ho explicitně nakonfigurovat jako cílový plně kvalifikovaný název domény.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Co dělá *Stav zřizování: Nepovedlo* znamenají?
 

@@ -5,16 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: de2e57901becad68f3fad16967faf3ae4833177a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 928d741132623bd92dae1097724295691d7f3808
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797873"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398336"
 ---
-# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiného
+# <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Matice podpory pro replikaci virtuálních počítačů Azure z jedné oblasti do jiné
 
 Tento článek shrnuje podporu a požadavky při nastavování zotavení po havárii virtuálních počítačů Azure z jedné oblasti Azure do jiné, použití [Azure Site Recovery](site-recovery-overview.md) služby.
 
@@ -182,6 +182,7 @@ Tato tabulka je automaticky shrnutý podporu pro disk operačního systému virt
 Maximální velikost disku operačního systému | 2048 GB | [Další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
 Dočasný disk | Nepodporuje se | Dočasný disk je vždy z replikace vyloučit.<br/><br/> Neukládají žádná trvalá data na dočasném disku. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
 Maximální velikost datového disku | 4095 GB |
+Minimální velikost datového disku | Žádná omezení pro nespravované disky. 2 GB za spravované disky | 
 Maximální číslo datového disku | Až 64, v souladu s podporou pro určité velikosti virtuálních počítačů Azure | [Další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
 Četnost změn dat disku | Maximálně 10 MB/s na disku pro premium storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud Průměrná frekvence změny dat na disku je trvale vyšší než maximální délka, nebude dohnat replikace.<br/><br/>  Pokud se překročí maximální nedojde replikace můžete zachytit, ale může se zobrazit body obnovení mírně zpožděné.
 Datový disk - účet úložiště úrovně standard | Podporováno |

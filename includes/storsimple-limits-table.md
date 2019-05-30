@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 93f4f74d435cc14130668da102d1246c5fad5872
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553355"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238603"
 ---
 | Identifikátor omezení | Omezení | Komentáře |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ ms.locfileid: "57553355"
 | Maximální počet záloh uchovávají jednotlivé zásady zálohování |64 | |
 | Maximální počet plánů na zásady zálohování |10 | |
 | Maximální počet snímků typ, který se můžou uchovávat na jeden svazek |256 |Toto množství zahrnuje místních snímků a cloudových snímků. |
-| Maximální počet snímků, které mohou být přítomny v libovolném zařízení |10 000 | |
+| Maximální počet snímků, které mohou být přítomny v libovolném zařízení |10,000 | |
 | Maximální počet svazků, které lze zpracovat paralelní zálohování, obnovení nebo klonování |16 |<ul><li>Pokud existuje více než 16 svazků, jejich se provádějí postupně. Jakmile budou dostupné sloty zpracování.</li><li>Nové zálohy klonovaný nebo obnovený vrstveného svazku nelze provést, dokud se nedokončí operaci. Pro místní svazek jsou povolené zálohování po svazek je online.</li></ul> |
 | Obnovení a klonování obnovit dobu vrstvené svazky |< 2 minut |<ul><li>Svazek je k dispozici během 2 minut obnovení nebo operace klonování, bez ohledu na velikost svazku.</li><li>Výkon svazku může být zpočátku pomalejší než obvykle, protože většina dat a metadat se stále nachází v cloudu. Jako toků dat z cloudu do zařízení StorSimple může zvýšit výkon.</li><li>Celkový čas se stáhnout metadata závisí na velikosti přiděleného svazku. Metadata automaticky přenese do zařízení ve výši 5 minut na TB přidělený objem dat na pozadí. Tato sazba by mohly mít dopad šířky pásma Internetu do cloudu.</li><li>Obnovení nebo operace klonování je dokončena po všechna metadata v zařízení.</li><li>Operace zálohování nelze provést, dokud nebude obnovení nebo operace klonování je úplně dokončená. |
 | Čas obnovení místně vázaných svazků obnovení |< 2 minut |<ul><li>Svazek je k dispozici během 2 minut operace obnovení, bez ohledu na velikost svazku.</li><li>Výkon svazku může být zpočátku pomalejší než obvykle, protože většina dat a metadat se stále nachází v cloudu. Jako toků dat z cloudu do zařízení StorSimple může zvýšit výkon.</li><li>Celkový čas se stáhnout metadata závisí na velikosti přiděleného svazku. Metadata automaticky přenese do zařízení ve výši 5 minut na TB přidělený objem dat na pozadí. Tato sazba by mohly mít dopad šířky pásma Internetu do cloudu.</li><li>Na rozdíl od vrstvených svazků Pokud existují místně připojené svazky data na svazku se také stáhne místně na zařízení. Operaci obnovení je dokončena, když do zařízení, nemůžete všechna data svazku.</li><li>Operace obnovení mohou být dlouhé a celková doba nutná k dokončení obnovení bude záviset na velikosti zřízeného svazku místní, internetové šířce pásma a existující data na zařízení. Operace zálohování na místně vázaný svazek jsou povoleny, když probíhá operace obnovení. |

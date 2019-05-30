@@ -3,19 +3,19 @@ title: Postup přidání Pre-Trained entity do modelu Learner konverzace – Mic
 titleSuffix: Azure
 description: Zjistěte, jak přidat Pre-trained entity do modelu Learner konverzace.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: fb70983c2f9fd20368bb8c6803c9568b27141af7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707712"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389259"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Postup přidání Pre-trained entity
 Tento kurz ukazuje, jak přidat Pre-Trained entity do modelu Learner konverzace.

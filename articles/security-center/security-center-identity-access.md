@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7cb8d494d32f2a9c192418bfab2d5ca9b679c5fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5517bb59d168ffa8d9339d9e765c385cef6db4ce
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60704883"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389481"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
+
+> [!NOTE]
+> "Zobrazení *classic* identita a přístup" propojení se vyřadí dne 31. května 2019. Klikněte na tlačítko [tady](security-center-features-retirement-july2019.md#menu_classicidentity) další na alternativní služby.
 
 > [!NOTE]
 > Monitorování identity a přístupu je ve verzi preview a je k dispozici jenom na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
@@ -115,11 +118,11 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 |Předplatné|30|Z předplatného odebrat externí účty s oprávněními vlastníka|Z předplatného odeberte externí účty s oprávněními vlastníka, aby nedocházelo k nemonitorovanému přístupu. |
 |Předplatné|30|Povolte MFA pro aplikace pro správu Azure účty s oprávněním pro čtení v rámci předplatného|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků.|
 |Předplatné|25|Odeberte z předplatného externí účty s oprávněním pro zápis|Z předplatného odeberte externí účty s oprávněním pro zápis, aby nedocházelo k nemonitorovanému přístupu. |
-|Předplatné|20|Z předplatného odebrat zastaralé účty s oprávněními vlastníka|Odeberte zastaralé účty s oprávněními vlastníka z vašich předplatných.|
-|Předplatné|5|Odeberte zastaralé účty z předplatného|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. |
+|Předplatné|20|Z předplatného odebrat zastaralé účty s oprávněními vlastníka|Odeberte zastaralé účty s oprávněními vlastníka z vašich předplatných. Zastaralé účty jsou účty, u kterých přihlášení je zablokovaný ve službě Azure AD.|
+|Předplatné|5|Odeberte zastaralé účty z předplatného|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. Zastaralé účty jsou účty, u kterých přihlášení je zablokovaný ve službě Azure AD.|
 |Předplatné|5|Určení více než jednoho vlastníka předplatného|Pokud chcete mít redundance přístupu správce určete více než jednoho vlastníka předplatného.|
-|Předplatné|5|Určete v předplatném nanejvýš 3 vlastníky.|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
-|Trezor klíčů|5|Povolte diagnostické protokoly v Key Vaultu|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|Předplatné|5|Určit vlastníky až 3 v rámci předplatného|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
+|Trezor klíčů|5|Povolení diagnostických protokolů v Key Vault|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
 |Předplatné|15|Z předplatného odebrat externí účty s oprávněním pro čtení|Z předplatného odeberte externí účty s oprávněními pro čtení, aby nedocházelo k nemonitorovanému přístupu.|
 |Předplatné|1|Poskytnutí podrobností kontaktů zabezpečení|Zadejte kontaktní informace o zabezpečení pro každé z vašich předplatných. Kontaktní údaje je e-mailovou adresu a telefonní číslo. Informace, používá se vás kontaktovat, pokud náš tým zabezpečení zjistí ohrožení vašich prostředků|
 

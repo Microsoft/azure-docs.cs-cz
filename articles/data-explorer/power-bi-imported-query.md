@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý start: Vizualizace dat v Průzkumníku dat Azure pomocí importovaných dotazů v Power BI '
-description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: import dotaz v Průzkumníku dat Azure.'
+title: 'Vizualizace dat v Průzkumníku dat Azure pomocí importovaných dotazů v Power BI '
+description: 'V tomto článku se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: import dotaz v Průzkumníku dat Azure.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/14/2018
-ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 05/30/2019
+ms.openlocfilehash: ae632f7df34ca342a3dcc12bf5f011df0eb61973
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828927"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399324"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Rychlý start: Vizualizovat data pomocí dotazu importované do Power BI
+# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Vizualizovat data pomocí dotazu importované do Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
-Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto rychlém startu se dozvíte, jak importovat dotaz, aby mohli získat data a vizualizace v sestavě Power BI.
+Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto článku se dozvíte, jak importovat dotaz, aby mohli získat data a vizualizace v sestavě Power BI.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat k dokončení tohoto rychlého startu:
+Budete potřebovat k dokončení tohoto článku:
 
 * Účet organizace e-mailu, který je členem skupiny Azure Active directory, abyste se mohli připojit k [clusteru help Průzkumník dat Azure](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -78,9 +78,8 @@ Nejprve vytvořte dotaz v desktopové aplikaci Průzkumník dat Azure a exportuj
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rychlého startu, odstraňte soubor Power BI Desktopu (.pbix).
+Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto článku, odstraňte soubor Power BI Desktopu (.pbix).
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)
+[Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-sql-query.md)

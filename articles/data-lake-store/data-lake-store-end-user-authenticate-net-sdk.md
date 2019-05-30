@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c80e9953a24504c4ad324ce077b741e60a52b1fb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908013"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243716"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ V tomto článku najdete informace o tom, jak pomocí sady .NET SDK provádět o
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Nativní"**. Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Nativní"** . Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
 1. V sadě Visual Studio, vyberte **souboru** nabídce **nový**a potom **projektu**.
@@ -74,7 +74,7 @@ V tomto článku najdete informace o tom, jak pomocí sady .NET SDK provádět o
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Přidejte tento fragment kódu do klientské aplikace .NET. Nahraďte zástupné hodnoty hodnotami, které je načten z nativní aplikaci Azure AD (uvedené jako předpoklad). Tento fragment kódu umožňuje ověřování vaší aplikace **interaktivně** s Data Lake Storage Gen1, což znamená, že budete vyzváni k zadání přihlašovacích údajů Azure.
 
-Následující fragment kódu pro snadnější použití používá výchozí hodnoty pro ID klienta a jsou platné pro jakékoli předplatné identifikátor URI pro přesměrování. V následujícím fragmentu kódu stačí zadat hodnotu vašeho ID tenanta. Můžete získat ID klienta pomocí pokynů uvedených v [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+Následující fragment kódu pro snadnější použití používá výchozí hodnoty pro ID klienta a jsou platné pro jakékoli předplatné identifikátor URI pro přesměrování. V následujícím fragmentu kódu stačí zadat hodnotu vašeho ID tenanta. Můžete získat ID klienta pomocí pokynů uvedených v [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
     
 - Funkce Main() nahraďte následujícím kódem:
 

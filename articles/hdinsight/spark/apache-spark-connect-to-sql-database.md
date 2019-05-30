@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.openlocfilehash: 84946083146517146ad9aeb48693230aaaaf7943
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/21/2019
+ms.openlocfilehash: 3812cf55a26a12ef110b8acf14edd0e8bfd36851
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701182"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236520"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do služby Azure SQL database
 
-Zjistěte, jak připojit cluster Apache Spark v Azure HDInsight s Azure SQL database a pak si můžete přečíst, zápis a Streamovat data do služby SQL database. Pokyny v tomto článku používají [Poznámkový blok Jupyter](https://jupyter.org/) chcete spouštět fragmenty kódu Scala. Můžete však vytvořit samostatné aplikace ve Scale nebo Python a stejné úlohy provádět. 
+Zjistěte, jak připojit cluster Apache Spark v Azure HDInsight s Azure SQL database a pak si můžete přečíst, zápis a Streamovat data do služby SQL database. Pokyny v tomto článku používají [Poznámkový blok Jupyter](https://jupyter.org/) chcete spouštět fragmenty kódu Scala. Můžete však vytvořit samostatné aplikace ve Scale nebo Python a stejné úlohy provádět.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +36,7 @@ Zjistěte, jak připojit cluster Apache Spark v Azure HDInsight s Azure SQL data
 Začněte vytvořením [Poznámkový blok Jupyter](https://jupyter.org/) přidružené ke clusteru Spark. Tento poznámkový blok použijete ke spuštění kódu použité v tomto článku. 
 
 1. Z [webu Azure portal](https://portal.azure.com/), otevřete svůj cluster.
-1. Vyberte **Poznámkový blok Jupyter** pod **řídicí panely clusteru** na pravé straně.  Pokud nevidíte **řídicí panely clusteru**, klikněte na tlačítko **přehled** v levé nabídce v okně. Po vyzvání zadejte přihlašovací údaje správce clusteru.
+1. Vyberte **Poznámkový blok Jupyter** pod **řídicí panely clusteru** na pravé straně.  Pokud nevidíte **řídicí panely clusteru**vyberte **přehled** v levé nabídce. Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
     ![Poznámkový blok Jupyter ve Sparku](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Poznámkový blok Jupyter ve Sparku")
    
@@ -164,7 +164,7 @@ V této části jsme Streamovat data do **hvactable** , že jste již vytvořili
 
 1. Jako první krok, ujistěte se, že neexistují žádné záznamy v **hvactable**. Pomocí aplikace SSMS, spusťte následující dotaz na tabulku.
 
-       DELETE FROM [dbo].[hvactable]
+       TRUNCATE TABLE [dbo].[hvactable]
 
 1. Vytvoření nového poznámkového bloku Jupyter pro cluster HDInsight Spark. Do buňky kódu, vložte následující fragment kódu a stiskněte klávesu **SHIFT + ENTER**:
 
@@ -174,7 +174,7 @@ V této části jsme Streamovat data do **hvactable** , že jste již vytvořili
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Jsme data z datového proudu **HVAC.csv** do hvactable. Je k dispozici v clusteru na soubor HVAC.csv */HdiSamples/HdiSamples/SensorSampleData/HVAC/*. Následující fragment kódu jsme nejdřív získat schéma dat. Streamovat. Pak vytvoříme dataframe streamování pomocí tohoto schématu. Vložte fragment kódu do buňky kódu a stiskněte klávesu **SHIFT + ENTER** ke spuštění.
+1. Jsme data z datového proudu **HVAC.csv** do hvactable. Je k dispozici v clusteru na soubor HVAC.csv `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`. Následující fragment kódu jsme nejdřív získat schéma dat. Streamovat. Pak vytvoříme dataframe streamování pomocí tohoto schématu. Vložte fragment kódu do buňky kódu a stiskněte klávesu **SHIFT + ENTER** ke spuštění.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

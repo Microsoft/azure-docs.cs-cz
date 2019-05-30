@@ -4,14 +4,14 @@ description: Další informace o syntaxi jazyka SQL, databázových koncepcí a 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 943ed63aed0f64ae6cbd62c52731c6ec73ddd0bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954128"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388487"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Příklady dotazů SQL pro službu Azure Cosmos DB
 
@@ -756,7 +756,7 @@ Tento dotaz načte rodině `id` ve vzestupném pořadí název města. Pokud ví
 
 ## <a id="OffsetLimitClause"></a>OFFSET LIMIT clause
 
-Posun omezení je volitelná klauzule přeskočit pak provést některé hodnoty z dotazu. Počet POSUNUTÍ a počtu LIMIT se vyžadují v klauzuli LIMIT posun.
+Posun omezení je volitelná klauzule přeskočit pak provést některé hodnoty z dotazu. Počet POSUNUTÍ a počtu LIMIT se vyžadují v klauzuli LIMIT posun. Momentálně tuto klauzuli je podporovaný pro dotazy v rámci pouze jednoho oddílu, dotazy napříč oddíly se zatím nepodporují. 
 
 Při posunu omezení se používá ve spojení s klauzulí ORDER BY, sadu výsledků dotazu je vytvořen tímto způsobem přeskočit a provádět s nimi seřazené hodnoty. Pokud se používá bez klauzule ORDER by, způsobí deterministické pořadí hodnot.
 
@@ -1391,7 +1391,7 @@ Výsledkem je:
     [true]
 ```
 
-### <a name="string-functions"></a>Řetězcové funkce
+### <a name="string-functions"></a>Funkce řetězců
 
 Následující skalární funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu. Tady je tabulka funkcí integrovaných řetězec:
 

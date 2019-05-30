@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523643"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387336"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace webové aplikace pravidlo brány firewall míra limit pomocí Azure Powershellu
 Azure web application firewall (WAF) frekvence limit pravidlo pro Azure branou určuje počet požadavků umožněných z IP adresy konkrétního klienta po dobu jedné minuty.
@@ -65,10 +65,10 @@ Následující příklad porovnává */promo* jako hodnotu *RequestUri* proměnn
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>Vytvořit pravidlo limit vlastní míry
-Nastavit limit frekvence pomocí [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). V následujícím příkladu je omezení nastaveno na hodnotu 1000. Požadavky z libovolného klienta na stránce propagační vyšší než 1 000 během jedné minuty jsou blokovány, dokud nezačne další minutu.
+Nastavit limit frekvence pomocí [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). V následujícím příkladu je omezení nastaveno na hodnotu 1000. Požadavky z libovolného klienta na stránce propagační vyšší než 1 000 během jedné minuty jsou blokovány, dokud nezačne další minutu.
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `

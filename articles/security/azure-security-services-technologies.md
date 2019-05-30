@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c100bd6815e003d49efcdca65b16d7efa35ac34
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610916"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234241"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpečení služeb a technologií, které jsou k dispozici v Azure
 
@@ -69,7 +69,7 @@ Tento seznam bude v průběhu času změnit a růst, stejně jako Azure. Ujistě
 | [Azure&nbsp;Role&nbsp;na základě&nbsp;řízení přístupu](../active-directory/role-based-access-control-configure.md)|Funkce řízení přístupu umožňují uživatelům přístup k prostředkům, které jsou vyžadovány k přístupu na základě jejich rolí v rámci organizace.  |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)|Ověřování založené na cloudu úložiště podporující více tenantů, cloudový adresář a víc služeb správy identit v Azure.  |
 | [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)|Služba pro správu identit, která umožňuje kontrolovat, jak zákazníci registrace, přihlášení a spravují své profily při používání aplikací založených na Azure.   |
-| [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)| Verze založené na cloudu a spravované služby Active Directory Domain Services. |
+| [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md)| Verze založené na cloudu a spravované služby Active Directory Domain Services. |
 | [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)| Zřízení zabezpečení, která používá několik různých tvarů ověřování a ověřování před povolením přístupu k zabezpečeným informacím. |
 
 ## <a name="backup-and-disaster-recovery"></a>Zálohování a zotavení po havárii

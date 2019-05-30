@@ -3,19 +3,19 @@ title: Vrátí N-Best překlady – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Vrátí N-Best překlady pomocí rozhraní Microsoft Translator Text API.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 62992122dc16003078bb80ecd87c2bd3692586dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610591"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389678"
 ---
 # <a name="how-to-return-n-best-translations"></a>Jak vracet N-Best překlady
 
@@ -39,7 +39,7 @@ Podpis je:
 |:---|:---|
 | appId | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
 | text | **Vyžaduje** řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|
-| od | **Vyžaduje** řetězec představující kód jazyka textu pro převod. |
+| from | **Vyžaduje** řetězec představující kód jazyka textu pro převod. |
 | na | **Vyžaduje** řetězec představující kód jazyka můžete přeložit text do. |
 | maxTranslations | **Vyžaduje** celé číslo představující maximální počet překlady se vraťte. |
 | Možnosti | **Volitelné** A TranslateOptions objekt, který obsahuje níže uvedené hodnoty. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení.

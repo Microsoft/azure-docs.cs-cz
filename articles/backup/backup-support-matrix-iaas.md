@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 2f48e0d8b46684d067fe2e32f241e28d94c2edbd
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471653"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399677"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -40,10 +40,10 @@ Další informace o zálohování [pomocí zálohování serveru](backup-archite
 
 **Akce** | **Podpora**
 --- | ---
-Povolit zálohování při vytváření virtuálního počítače Azure s Windows | Podporované pro:  Windows Server. 2019 (jádro Datacenter nebo Datacenter), Windows Server 2016 (jádro Datacenter nebo Datacenter); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (verze RTM a SP1)
+Povolit zálohování při vytváření virtuálního počítače Azure s Windows | Podporované pro: <br/><br/> – Windows Server. 2019 (Core Datacenter/Datacenter/Standard) <br/><br/> – Windows Server 2016 (jádro Datacenter/Datacenter/Standard) <br/><br/> – Windows Server 2012 R2 (Datacenter nebo Standard) <br/><br/> – Windows Server 2008 R2 (verze RTM a Standard s aktualizací SP1)
 Povolit zálohování při vytváření virtuálního počítače s Linuxem | Podporované pro:<br/><br/> - Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> -Operačním systémem SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Zálohování virtuálního počítače, který je vypnout nebo offline virtuálního počítače | Podporuje se.<br/><br/> Snímek je konzistentní při selhání pouze, není konzistentní s aplikací.
-Zálohování disků po migraci na spravované disky | Podporuje se.<br/><br/> Zálohování bude pokračovat v práci. Není vyžadována žádná akce.
+Zálohování disků po migraci na spravované disky | Podporuje se.<br/><br/> Zálohování bude pokračovat v práci. Nevyžaduje se žádná akce.
 Zálohování spravované disky po povolení zámku skupiny prostředků | Nepodporuje se.<br/><br/> Azure Backup nejde odstranit starších bodů prostředků a zálohování se spustí při dosažení maximálního počtu bodů obnovení.
 Upravit zásady zálohování pro virtuální počítač | Podporuje se.<br/><br/> Virtuální počítač bude zálohovat pomocí nastavení plán a uchovávání dat v nové zásady. Pokud jsou nastavení uchovávání prodlouží, existující body obnovení jsou označeny a udržovat. Pokud jste se zkrátí, bude nedochází k vyřazení v rámci další úlohy čištění a nakonec odstraní existující body obnovení.
 Zrušit úlohu zálohování | Během procesu snímku podporována.<br/><br/> Není podporováno při snímku přenášejí do trezoru.
@@ -61,7 +61,7 @@ Následující tabulka shrnuje podporované operační systémy, při zálohová
 
 **Scénář** | **Podporu operačního systému**
 --- | ---
-Zálohování pomocí rozšíření agenta virtuálního počítače Azure | Klient Windows: Nepodporuje se<br/><br/> Windows Server. 2019 (jádro Datacenter nebo Datacenter), Windows Server 2016 (jádro Datacenter nebo Datacenter); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (verze RTM a SP1)
+Zálohování pomocí rozšíření agenta virtuálního počítače Azure | Klient Windows: Nepodporuje se<br/><br/>– Windows Server. 2019 (Core Datacenter/Datacenter/Standard) <br/><br/> – Windows Server 2016 (jádro Datacenter/Datacenter/Standard) <br/><br/> – Windows Server 2012 R2 (Datacenter nebo Standard) <br/><br/> – Windows Server 2008 R2 (verze RTM a Standard s aktualizací SP1)
 Zálohování pomocí agenta MARS | [Podporované](backup-support-matrix-mars-agent.md#support-for-direct-backups) operačních systémů.
 Zálohování pomocí aplikace DPM nebo MABS | Podporované operační systémy pro zálohování pomocí [MABS](backup-mabs-protection-matrix.md) a [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 

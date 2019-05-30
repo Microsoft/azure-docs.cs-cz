@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 1a332dd46cac196c8185ddb12c0d900f5c36e1b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a50778db5fd57202c17f05407045259371912586
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61270950"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239195"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režim ladění toku dat
 
@@ -27,6 +27,9 @@ Po zapnutí režimu ladění vytvoříte interaktivně váš tok dat s aktivním
 
 Ve většině případů je vhodné vytvořit vaše toky dat v režimu ladění, mohli ověřit vaši obchodní logiku a zobrazit transformaci dat před publikováním svou práci ve službě Azure Data Factory. K testování toku dat v rámci kanálu by měl použít taky "Ladění" tlačítko na panelu kanálu.
 
+> [!NOTE]
+> Světlý režim ladění je zelené na panelu nástrojů služby Data Factory, účtuje se sazbou toku dat ladění 8 jader/hod obecné výpočetní s 60 minut time-to-live 
+
 ## <a name="debug-mode-on"></a>Režim ladění na
 Po přepnutí na režim ladění, zobrazí výzva s formulářem postranní panel, který si vyžádá přejděte ke svému clusteru interaktivní Azure Databricks a vyberte možnosti pro vzorkování zdroje. Musíte použít cluster interactive z Azure Databricks a vyberte velikost vzorkování z každého transformace vaší zdrojové nebo vyberte textový soubor vhodný pro vaše testovací data.
 
@@ -36,12 +39,12 @@ Po přepnutí na režim ladění, zobrazí výzva s formulářem postranní pane
 >Při spuštění v režimu ladění v toku dat, vaše data nebudou zapsány do jímky transformace. Ladicí relaci má sloužit jako test > prostředí pro transformaci. Jímky nejsou vyžadovány během ladění a jsou ignorovány ve svém toku data. Pokud chcete otestovat zápisu dat > vaše Sink spuštění toku dat z kanálu služby Azure Data Factory a použít spuštění ladění z kanálu.
 
 ## <a name="debug-settings"></a>Nastavení ladění
-Nastavení ladění může být každý zdroj z toku dat se zobrazí v postranní panel a můžete také upravit tak, že vyberete "nastavení zdroje" na panelu nástrojů návrháře se předávají Data. Omezení a/nebo zdrojový soubor pro použití u každého transformace zdroje Tady můžete vybrat. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také nastavení vzorkování ve zdroji pro omezení řádků do transforamtion zdroje.
+Nastavení ladění může být každý zdroj z toku dat se zobrazí v postranní panel a můžete také upravit tak, že vyberete "nastavení zdroje" na panelu nástrojů návrháře se předávají Data. Omezení a/nebo zdrojový soubor pro použití u každého transformace zdroje Tady můžete vybrat. Omezení řádků v tomto nastavení platí pouze pro aktuální relaci ladění. Můžete také použít nastavení vzorkování ve zdroji k omezení řádků do transformace zdroje.
 
 ## <a name="cluster-status"></a>Stav clusteru
 Je indikátor stavu clusteru v horní části návrhové plochy, která se změní na zelenou při bude cluster připravený pro ladění. Pokud váš cluster již je teplo, se prakticky okamžitě zobrazí zelený ukazatel. Pokud váš cluster nebyla spuštěna při zadání režimu ladění, budete muset počkat 5-7 minut, než se cluster tak, aby mohli spustit. Až bude připravená, bude žlutý indikátoru. Jakmile cluster je připravený k ladění toku dat, se změní na zelenou indikátoru.
 
-Až budete hotovi s vaší ladění, zapněte ladění vypnout tak, aby váš cluster Azure Databricks můžete ukončit.
+Až skončíte s vaší ladění, vypněte ladění přepínač tak, aby váš cluster Azure Databricks můžete ukončit a budou už se vám účtovat aktivity ladění.
 
 <img src="media/data-flow/datapreview.png" width="400">
 

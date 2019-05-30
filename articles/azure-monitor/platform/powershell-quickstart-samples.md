@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ada62fbfa51604a6b3188c27d5c14da40c8ac116
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452717"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400210"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Úvodní ukázky v Azure Powershellu pro monitorování
 Tento článek ukazuje ukázkové příkazy prostředí PowerShell můžete získat přístup k funkcím Azure Monitor.
@@ -42,6 +42,11 @@ Zobrazí přihlašovací obrazovka. Jednou přihlásíte ve vašem účtu, Tenan
 Get-AzSubscription
 ```
 
+Pokud chcete zobrazit váš kontext pracovních (které předplatné vaše příkazy jsou spouštěny proti), použijte následující příkaz:
+
+```powershell
+Get-AzContext
+```
 Chcete-li změnit pracovního kontextu do jiného předplatného, použijte následující příkaz:
 
 ```powershell
@@ -50,18 +55,23 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>Získat informace o protokolu aktivit pro odběr
-Použití `Get-AzLog` rutiny.  Následují některé běžné příklady.
+Použití [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) rutiny.  Následují některé běžné příklady. Protokol aktivit obsahuje v posledních 90 dnech operací. Pomocí data před tento čas výsledky v chybové zprávě.  
+
+Zobrazit aktuální datum a čas jsou k ověření toho, co časy pro použití v níže uvedených příkazů:
+```powershell
+Get-Date
+```
 
 Získání položky protokolu z tohoto času a data, prezentovat:
 
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
 Získáte položky protokolu mezi rozsahem čas/datum:
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 Získáte položky protokolu v konkrétní skupině prostředků:
@@ -85,13 +95,13 @@ Get-AzLog -Caller 'myname@company.com'
 Následující příkaz načte poslední 1 000 událostí z protokolu aktivit:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
 `Get-AzLog` podporuje mnoho dalších parametrů. Zobrazit `Get-AzLog` odkaz Další informace.
 
 > [!NOTE]
-> `Get-AzLog` poskytuje pouze 15 dní historie. Použití **- MaxEvents** parametr umožňuje dotazování poslední události N se po uplynutí 15 dnů. Pro přístup k události starší než 15 dnů pomocí rozhraní REST API nebo sady SDK (ukázka C# pomocí sady SDK). Pokud není zadána **StartTime**, pak je výchozí hodnota **EndTime** mínus jedna hodina. Pokud není zadána **EndTime**, pak výchozí hodnotou je aktuální čas. Všechny časy jsou ve formátu UTC.
+> `Get-AzLog` poskytuje pouze 15 dní historie. Použití **- MaxRecords** parametr umožňuje dotazování poslední události N se po uplynutí 15 dnů. Pro přístup k události starší než 15 dnů pomocí rozhraní REST API nebo sady SDK (ukázka C# pomocí sady SDK). Pokud není zadána **StartTime**, pak je výchozí hodnota **EndTime** mínus jedna hodina. Pokud není zadána **EndTime**, pak výchozí hodnotou je aktuální čas. Všechny časy jsou ve formátu UTC.
 > 
 > 
 
@@ -140,9 +150,9 @@ Můžete vytvořit e-mailu a webhook vlastností pomocí `New-AzAlertRuleEmail` 
 
 Následující tabulka popisuje parametry a hodnoty použité k vytvoření upozornění použitím metrik.
 
-| parametr | value |
+| Parametr | value |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Název |simpletestdiskwrite |
 | Umístění tohoto upozornění pravidla |USA – východ |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

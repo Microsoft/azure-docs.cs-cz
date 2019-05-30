@@ -3,19 +3,19 @@ title: Translator Text API V2.0
 titleSuffix: Azure Cognitive Services
 description: Referenční dokumentace pro verze 2.0 Translator Text API.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-jansko
-ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61467152"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389849"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -28,11 +28,18 @@ Translator Text API V2 můžete bez problémů integrovat do vašich aplikací, 
 Pro přístup k rozhraní Translator Text API je potřeba [zaregistrovat do Microsoft Azure](../translator-text-how-to-signup.md).
 
 ## <a name="authorization"></a>Autorizace
-Všechna volání rozhraní Translator Text API vyžadují klíč předplatného k ověření. Rozhraní API podporuje dva režimy ověřování:
+Všechna volání rozhraní Translator Text API vyžadují klíč předplatného k ověření. Rozhraní API podporuje tři režimy ověřování:
 
-* Pomocí přístupového tokenu. Použijte klíč předplatného odkazuje **krok** 9 k vygenerování přístupového tokenu tím, že požadavek POST do služby autorizace. Viz podrobnosti naleznete v dokumentaci služby tokenů. Přístupový token předejte službě Translator pomocí autorizační hlavičky nebo parametr dotazu access_token. Přístupový token je platný 10 minut. Získejte nový přístupový token každých 10 minut a mohli dál využívat stejný přístup token pro opakované požadavky v rámci těchto 10 minut.
+- Přístupový token. Použijte klíč předplatného odkazuje **krok** 9 k vygenerování přístupového tokenu tím, že požadavek POST do služby autorizace. Viz podrobnosti naleznete v dokumentaci služby tokenů. Přístupový token předat službě Translator pomocí hlavičky autorizace nebo `access_token` parametr dotazu. Přístupový token je platný 10 minut. Získejte nový přístupový token každých 10 minut a mohli dál využívat stejný přístup token pro opakované požadavky během těchto 10 minut.
+- Klíč předplatného přímo. Předejte klíč předplatného. jako hodnotu `Ocp-Apim-Subscription-Key` záhlaví vaši žádost o rozhraní Translator API je součástí. V tomto režimu není nutné volat ověřovací token služby k vygenerování přístupového tokenu.
+- A [předplatné víc služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/). Tento režim umožňuje používat jeden tajný klíč k ověření požadavků pro víc služeb. <br/>
+Pokud používáte víc služeb tajného klíče, musí obsahovat dvě záhlaví ověřování při zpracování požadavku. První záhlaví předá tajný klíč. Druhé záhlaví určuje oblast spojených s vaším předplatným:
+   - `Ocp-Apim-Subscription-Key`
+   - `Ocp-Apim-Subscription-Region`
 
-* Přímo pomocí klíč předplatného. Předejte klíč předplatného. jako hodnotu v `Ocp-Apim-Subscription-Key` záhlaví vaši žádost o rozhraní Translator API je součástí. V tomto režimu není nutné volat ověřovací token služby k vygenerování přístupového tokenu.
+Oblast je vyžadován pro víc služeb předplatného rozhraní Text API. Oblast výběru je jen jedna oblast, můžete použít pro překlad textu při použití klíče víc služeb předplatného a musí být stejné oblasti, které jste vybrali při registraci předplatného víc služeb na webu Azure portal.
+
+Jsou dostupné oblasti `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, a `westus2`.
 
 Vezměte v úvahu váš klíč předplatného a přístupový token jako tajné kódy, které by měl být skryta.
 
@@ -46,7 +53,7 @@ Pokud chcete předejít vulgárních výrazů v překladu, bez ohledu na příto
 |:--|:--|:--|:--|
 |NoAction   |Default (Výchozí). Stejně jako nastavit možnost. Vulgárních výrazů předá ze zdroje do cíle.        |彼はジャッカスです。     |Je jackass.   |
 |Označené     |Urážlivá slova umístí značky XML \<vulgárních výrazů > a \</profanity >.       |彼はジャッカスです。 |Je \<vulgárních výrazů > jackass\</profanity >.  |
-|Odstraněno    |Urážlivá slova se odebere z výstupu bez nahrazení.     |彼はジャッカスです。 |Je.   |
+|Odstranění    |Urážlivá slova se odebere z výstupu bez nahrazení.     |彼はジャッカスです。 |Je.   |
 
     
 ## <a name="excluding-content-from-translation"></a>S výjimkou obsahu z překladu
@@ -80,7 +87,7 @@ Typ obsahu odpovědi: application/xml
 |:--|:--|:--|:--|:--|
 |ID aplikace  |(prázdné)    |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query|string|
 |text|(prázdné)   |Povinná hodnota. Řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|query|string|
-|od|(prázdné)   |Volitelné. Řetězec představující kód jazyka textu překlad. Například en pro angličtinu.|query|string|
+|from|(prázdné)   |Volitelné. Řetězec představující kód jazyka textu překlad. Například en pro angličtinu.|query|string|
 |na|(prázdné) |Povinná hodnota. Řetězec představující kód jazyka můžete přeložit text do.|query|string|
 |contentType|(prázdné)    |Volitelné. Formát textu, který je překládán. Podporované formáty jsou text/plain (výchozí) a text/html. Musí být ve správném formátu, dokončení element veškeré kódování HTML.|query|string|
 |category|(prázdné)   |Volitelné. Řetězec obsahující kategorie překladu (domény). Výchozí hodnota je "general".|query|string|
@@ -90,10 +97,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -188,10 +195,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP   |Důvod|
+|Kód stavu HTTP   |Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi. Běžné chyby patří: <ul><li>Element pole nemůže být prázdný</li><li>Neplatná kategorie</li><li>Z jazyka je neplatný</li><li>Jazyk je neplatný</li><li>Požadavek obsahuje příliš mnoho elementů</li><li>Od jazyk není podporován.</li><li>Na jazyk není podporován.</li><li>Přeložit požadavek má příliš mnoho dat.</li><li>HTML není ve správném formátu</li><li>V požadavku překlad bylo předáno příliš mnoho řetězců</li></ul>|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -225,16 +232,16 @@ Typ obsahu odpovědi: application/xml
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
 |ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
-|národní prostředí|(prázdné) |Povinná hodnota. Řetězec představující kombinaci kód ISO 639 dvoupísmenné malá jazykové verze přidružený jazyk a kód ISO 3166 velká subkulturu dvoupísmenné lokalizovat názvy jazyků nebo malými písmeny kód ISO 639 samostatně.|query|string|
+|Národní prostředí|(prázdné) |Povinná hodnota. Řetězec představující kombinaci kód ISO 639 dvoupísmenné malá jazykové verze přidružený jazyk a kód ISO 3166 velká subkulturu dvoupísmenné lokalizovat názvy jazyků nebo malými písmeny kód ISO 639 samostatně.|query|string|
 |Autorizace|(prázdné)  |Požadováno pokud pole appid nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud pole appid nebo `Authorization` není zadána hlavička.|záhlaví|string|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -264,10 +271,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503|Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -297,10 +304,10 @@ Typ obsahu odpovědi: application/xml
  
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400|Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401|Neplatná pověření|
+|401|Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám s přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi `X-MS-Trans-Info`.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -326,17 +333,17 @@ Typ obsahu odpovědi: application/xml
 |ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)   |Povinná hodnota. Řetězec obsahující věty nebo věty zadaného jazyka, který má být používaný wave Stream. Velikost textu mluvit nesmí přesáhnout 2000 znaků.|query|string|
 |language|(prázdné)   |Povinná hodnota. Řetězec představující kód podporovaného jazyka mluvit textu. Kód musí být uvedený v seznamu kódů vrátil z metody `GetLanguagesForSpeak`.|query|string|
-|formát|(prázdné)|Volitelné. Řetězec určující identifikátor typu obsahu V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|string|
+|format|(prázdné)|Volitelné. Řetězec určující identifikátor typu obsahu V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|string|
 |Možnosti|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára <code>\|</code> zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul> |query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám s přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi `X-MS-Trans-Info`.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -366,10 +373,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400|Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám s přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi `X-MS-Trans-Info`.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -420,10 +427,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -451,22 +458,22 @@ Typ obsahu odpovědi: aplikace: xml
 |ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |originalText|(prázdné)|Povinná hodnota. Řetězec obsahující text na překlad z. Řetězec má maximální délku 1000 znaků.|query|string|
 |translatedText|(prázdné) |Povinná hodnota. Řetězec obsahující přeložený text v cílovém jazyce. Řetězec má maximální délku 2000 znaků.|query|string|
-|od|(prázdné)   |Povinná hodnota. Řetězec představující kód jazyka textu překlad. cs = angličtina, de = německé atd...|query|string|
+|from|(prázdné)   |Povinná hodnota. Řetězec představující kód jazyka textu překlad. cs = angličtina, de = německé atd...|query|string|
 |na|(prázdné)|Povinná hodnota. Řetězec představující kód jazyka můžete přeložit text do.|query|string|
 |rating|(prázdné) |Volitelné. Celé číslo představující hodnocení kvality pro tento řetězec. Hodnotu od -10 do 10. Výchozí hodnota je 1.|query|integer|
 |contentType|(prázdné)    |Volitelné. Formát textu, který je překládán. Podporované formáty jsou "text/plain" a "text/html". Musí být ve správném formátu, dokončení element veškeré kódování HTML.   |query|string|
 |category|(prázdné)|Volitelné. Řetězec obsahující kategorie překladu (domény). Výchozí hodnota je "general".|query|string|
 |uživatel|(prázdné)|Povinná hodnota. Řetězec lze sledovat odesílatel požadavku dostane informaci odeslání.|query|string|
-|identifikátor uri|(prázdné)|Volitelné. Řetězec obsahující umístění obsahu tohoto převodu.|query|string|
+|uri|(prázdné)|Volitelné. Řetězec obsahující umístění obsahu tohoto převodu.|query|string|
 |Autorizace|(prázdné)|Požadováno pokud pole appid nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.    |záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |410|AddTranslation se už nepodporuje.|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
@@ -530,10 +537,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |410    |AddTranslation se už nepodporuje.|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám s přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi `X-MS-Trans-Info`.|
 |503|Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
@@ -566,10 +573,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400|Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401|Neplatná pověření|
+|401|Neplatné přihlašovací údaje|
 |500|Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi X-MS-Trans-Info.|
 |503|Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -654,7 +661,7 @@ Typ obsahu odpovědi: application/xml
 |:--|:--|:--|:--|:--|
 |ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)|Povinná hodnota. Řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|query|string|
-|od|(prázdné)|Povinná hodnota. Řetězec představující kód jazyka textu překlad.|query|string|
+|from|(prázdné)|Povinná hodnota. Řetězec představující kód jazyka textu překlad.|query|string|
 |na |(prázdné)    |Povinná hodnota. Řetězec představující kód jazyka můžete přeložit text do.|query|string|
 |maxTranslations|(prázdné)|Povinná hodnota. Celé číslo představující maximální počet překlady se vraťte.|query|integer|
 |Autorizace| (prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|string| záhlaví|
@@ -662,10 +669,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám s přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi `X-MS-Trans-Info`.|
 |503|Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 
@@ -777,10 +784,10 @@ Typ obsahu odpovědi: application/xml
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|
+|Kód stavu HTTP|Reason|
 |:--|:--|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry a podrobné chybové odpovědi.|
-|401    |Neplatná pověření|
+|401    |Neplatné přihlašovací údaje|
 |500    |Došlo k chybě serveru. Pokud potíže potrvají, dejte nám vědět. Pošlete nám s přibližné datum a čas požadavku a s ID žádosti zahrnutý v hlavičce odpovědi `X-MS-Trans-Info`.|
 |503    |Služba není dočasně k dispozici. Zkuste to prosím znovu a dejte nám vědět, pokud chyba přetrvává.|
 

@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 8d2933f6a3bbab792acb708f2a59cad4eb2cabf7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99538fd18067377efcc9e744e9ec611e0f685273
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510424"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389603"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování věty a zarovnání v paralelní dokumenty
 
@@ -36,7 +36,7 @@ Nejlepších výsledků dosáhnete pokuste se ujistěte se, že máte jeden vět
 
 | Datové sady   | Navrhované extrahované věty minimální počet | Navrhované zarovnané věty minimální počet | Počet maximální zarovnané větu |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Školení   | 10 000                                     | 2 000                                    | Žádná horní hranice                 |
+| Školení   | 10,000                                     | 2 000                                    | Žádná horní hranice                 |
 | Ladění     | 2 000                                      | 500                                      | 2,500                          |
 | Testování    | 2 000                                      | 500                                      | 2,500                          |
 | Slovník | 0                                          | 0                                        | Žádná horní hranice                 |

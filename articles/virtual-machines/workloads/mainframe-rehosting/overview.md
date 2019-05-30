@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61487444"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Změna mainframových hostování na Azure virtual machines
@@ -118,7 +118,7 @@ Viz také:
 
 - [Dokumenty White Paper o tématech sálového počítače](mainframe-white-papers.md)
 - [Migrace mainframů](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Řešení potíží](/azure/virtual-machines/troubleshooting/)
+- [Odstraňování potíží](/azure/virtual-machines/troubleshooting/)
 - [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

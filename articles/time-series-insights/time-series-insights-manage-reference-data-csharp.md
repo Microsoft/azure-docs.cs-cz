@@ -4,7 +4,7 @@ description: Tento článek popisuje, jak Správa referenčních dat pro prostř
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 683aa2c7112533d9e3c06ddcb238048a26c75db3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510034"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237613"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro prostředí Azure Time Series Insights pomocíC#
 
@@ -33,7 +33,7 @@ Před kompilace a spuštění vzorového kódu, proveďte následující kroky:
 
    Informace o tom, jak nastavit jako neinteraktivní aplikace najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 
-1. Upravte ukázkový kód pro nahrazení konstanty příkladu, při **DUMMY #**, poblíž začátku kód.
+1. Upravte ukázkový kód pro nahrazení konstanty příkladu, při **DUMMY #** , poblíž začátku kód.
 
 > [!NOTE]
 > Zobrazit GA vzorových kódů najdete [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).

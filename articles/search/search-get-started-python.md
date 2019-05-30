@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Python a rozhraní REST API – Azure Search'
 description: Vytvoření, načtení a dotazování indexu pomocí Pythonu, poznámkové bloky Jupyter a rozhraní REST API Azure Search.
-ms.date: 05/15/2019
+ms.date: 05/23/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: a79a5fe1632eeabee670274ebbb19c4c34bd84d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117344"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244789"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search pomocí poznámkových bloků Jupyter Pythonu
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Tyto služby a nástroje se používají v tomto rychlém startu.
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), poskytování Python 3.x a poznámkové bloky Jupyter.
 
-+ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Můžete použít bezplatnou službou pro tento rychlý start. 
++ [Vytvoření služby Azure Search](search-create-service-portal.md) nebo [najít existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pod vaším aktuálním předplatným. Úroveň Free můžete použít pro tento rychlý start. 
 
 ## <a name="get-a-key-and-url"></a>Získejte klíč a adresy URL
 
@@ -52,7 +52,7 @@ Všechny požadavky vyžaduje klíč rozhraní api na každou požadavku odeslan
 
 ## <a name="connect-to-azure-search"></a>Připojení ke službě Azure Search
 
-Otevřete Poznámkový blok Jupyter a ověřit připojení z místní pracovní stanici, můžete si vyžádat seznam indexů pro vaši službu. Na Windows s Anaconda3 vám pomůže Anaconda Navigátor spuštění poznámkového bloku.
+V této úloze spustit Poznámkový blok Jupyter a ověřte, že se můžete připojit k Azure Search. Uděláte si vyžádá seznam indexů z vaší služby. Na Windows s Anaconda3 vám pomůže Anaconda Navigátor spuštění poznámkového bloku.
 
 1. Vytvoření nového poznámkového bloku Python3.
 
@@ -73,7 +73,7 @@ Otevřete Poznámkový blok Jupyter a ověřit připojení z místní pracovní 
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-1. Ve třetí buňce vydávat žádosti. Tento požadavek GET cílí na kolekci indexů vaší služby search a vybere vlastnost name.
+1. Ve třetí buňce vydávat žádosti. Tento požadavek GET cílí na kolekci indexů vaší služby search a vybere vlastnost name atributu stávající indexy.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -82,20 +82,20 @@ Otevřete Poznámkový blok Jupyter a ověřit připojení z místní pracovní 
    pprint(index_list)
    ```
 
-1. Spuštění každého kroku. Pokud existují indexy odpověď obsahuje seznam indexů. Na snímku obrazovky níže služba zahrnuje indexu azureblob a index realestate-us-sample.
+1. Spuštění každého kroku. Pokud existují indexy odpověď obsahuje seznam názvů indexu. Na snímku obrazovky níže služba již má indexu azureblob a index realestate-us-sample.
 
    ![Skript v jazyce Python do poznámkového bloku Jupyter s protokolem HTTP žádosti do služby Azure Search](media/search-get-started-python/connect-azure-search.png "skriptu Pythonu do poznámkového bloku Jupyter s protokolem HTTP žádosti do služby Azure Search")
 
-   Vrátí kolekci prázdný index tuto odpověď: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Naproti tomu kolekci prázdný index vrátí tuto odpověď: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 > [!Tip]
 > Na bezplatné služby jste omezeni na tři indexy, indexery a zdroje dat. V tomto rychlém startu se vytváří od každého jeden. Ujistěte se, že existuje místo pro vytváření nových objektů před pokračováním žádné.
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Pokud používáte portál, index, musí existovat ve službě můžete načíst data. Tento krok používá [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index) tak, aby nabízel schématu indexu ve službě
+Pokud používáte portál, index, musí existovat ve službě můžete načíst data. Tento krok používá [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index) tak, aby nabízel schématu indexu ve službě.
 
-Kolekce polí definuje strukturu *dokumentu*. Požadované elementy indexu patří název a kolekci polí. Každé pole má název, typ a atributy, které určují, jak se používá (například, zda je fulltextově prohledávatelné, filtrovatelné nebo retrievable ve výsledcích hledání). V rámci indexu, jeden z pole typu `Edm.String` musí být určena jako *klíč* pro identitu dokumentu.
+Požadované elementy indexu zahrnují název, kolekci polí a klíč. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se pole používá (například, zda je fulltextově prohledávatelné, filtrovatelné nebo retrievable ve výsledcích hledání). V rámci indexu, jeden z pole typu `Edm.String` musí být určena jako *klíč* pro identitu dokumentu.
 
 Tento index má název "hotelů pírovat" a definice polí, kterou vidíte níže. Je podmnožinou větší [indexu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) použít v dalších kurzech. Jsme oříznut v tomto rychlém startu pro zkrácení.
 
@@ -127,7 +127,7 @@ Tento index má název "hotelů pírovat" a definice polí, kterou vidíte níž
     }
     ```
 
-2. Jiné buňky vydávat žádosti. Tato operace požadavku cílí na kolekci indexů vaší služby search a vytvoří index založený na schéma indexu, který jste zadali v předchozím kroku.
+2. Jiné buňky vydávat žádosti. Tato operace požadavku cílí na kolekci indexů vaší služby search a vytvoří index založený na schéma indexu podle předcházejí buňky.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -138,12 +138,12 @@ Tento index má název "hotelů pírovat" a definice polí, kterou vidíte níž
 
 3. Spuštění každého kroku.
 
-   Odpověď obsahuje reprezentaci JSON dané schéma. Na následujícím snímku obrazovky ořízne součástí schématu indexu, kde můžete zobrazit další odpovědi.
+   Odpověď obsahuje reprezentaci JSON dané schéma. Na následujícím snímku obrazovky se zobrazuje pouze část odpovědi.
 
     ![Požadavek na vytvoření indexu](media/search-get-started-python/create-index.png "žádost o vytvoření indexu")
 
 > [!Tip]
-> Pro ověření, můžete také zkontrolovat seznam indexů na portálu nebo znovu spusťte požadavek na připojení služby najdete v článku *hotelů pírovat* indexu uvedené v kolekci indexů.
+> Dalším způsobem, jak ověřit vytvoření indexu je kontrola seznamu indexů na portálu.
 
 <a name="load-documents"></a>
 
@@ -211,6 +211,7 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
             "StateProvince": "GA",
             "PostalCode": "30326",
             "Country": "USA"
+            }
         },
         {
         "@search.action": "upload",
@@ -229,11 +230,11 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
             "StateProvince": "TX",
             "PostalCode": "78216",
             "Country": "USA"
-       }
-      }
-     ]
+            }
+        }
+    ]
     }
-    ```
+    ```   
 
 2. Jiné buňky vydávat žádosti. Tento požadavek POST cílí na kolekci dokumentace indexu hotelů pírovat a nabízených oznámení dokumenty v předchozím kroku.
 
@@ -246,26 +247,7 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
 
 3. Spuštění každého kroku a vkládání dokumentů do indexu ve vyhledávací službě. Výsledky by měly vypadat podobně jako v následujícím příkladu. 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#Collection(Microsoft.Azure.Search.V2019_05_06.IndexResult)",
-    'value': [{'errorMessage': None,
-            'key': '1',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '2',
-            'status': True,
-            'statusCode': 201},
-           {'errorMessage': None,
-            'key': '3',
-            'status': True,
-            'statusCode': 201}]},
-           {'errorMessage': None,
-            'key': '4',
-            'status': True,
-            'statusCode': 201}]}
-     ```
-
+    ![Odeslání dokumentů do indexu](media/search-get-started-python/load-index.png "odeslání dokumentů do indexu")
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
@@ -278,7 +260,7 @@ Tento krok ukazuje, jak zadávat dotazy na index pomocí [REST API služby Searc
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. Zformulujte podobnou žádost. Tento požadavek GET cílí na kolekci dokumentace indexu hotelů pírovat a připojí dotaz, který jste zadali v předchozím kroku.
+2. Jiné buňky zformulujte podobnou žádost. Tento požadavek GET cílí na kolekci dokumentace indexu hotelů pírovat a připojí dotaz, který jste zadali v předchozím kroku.
 
    ```python
    url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
@@ -287,32 +269,29 @@ Tento krok ukazuje, jak zadávat dotazy na index pomocí [REST API služby Searc
    pprint(query)
    ```
 
-   Výsledky by měly vypadat podobně jako následující výstup. Výsledky jsou unranked (search.score = 1.0) vzhledem k tomu, že jsme neposkytli všechna kritéria tak, aby odpovídaly na.
+3. Spuštění každého kroku. Výsledky by měly vypadat podobně jako následující výstup. 
 
-   ```
-   {'@odata.context': "https://mydemo.search.windows.net/indexes('hotels-py')/$metadata#docs(*)",
-    '@odata.count': 3,
-    'value': [{'@search.score': 1.0,
-               'HotelId': '1',
-               'HotelName': 'Secret Point Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '2',
-               'HotelName': 'Twin Dome Motel'},
-              {'@search.score': 1.0,
-               'HotelId': '3',
-               'HotelName': 'Triple Landscape Hotel'},
-              {'@search.score': 1.0,
-               'HotelId': '4',
-               'HotelName': 'Sublime Cliff Hotel'}]}
+    ![Prohledání indexu](media/search-get-started-python/search-index.png "prohledání indexu")
+
+4. Zkuste několik další příklady dotazů syntaxe získat představu. Můžete nahradit hledaný_řetězec s příklady a poté znovu spusťte požadavek hledání. 
+
+   Použijte filtr: 
+
+   ```python
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
    ```
 
-3. Zkuste několik další příklady dotazů syntaxe získat představu. Můžete použít filtr, vzít první dva výsledky nebo seřadit podle určitého pole.
+   Využijte nejlepší dva výsledky:
 
-   + `searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'`
+   ```python
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   ```
 
-   + `searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'`
+    Seřadit podle určitého pole:
 
-   + `searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'`
+   ```python
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   ```
 
 ## <a name="clean-up"></a>Vyčištění 
 

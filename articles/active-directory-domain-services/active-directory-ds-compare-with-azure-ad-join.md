@@ -3,7 +3,7 @@ title: Porovnání připojení ke službě Azure AD a Azure Active Directory Dom
 description: Rozhodování mezi připojení ke službě Azure AD a Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
-ms.author: ergreenl
-ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: eaa8cb54a46b1ff3c2c0f7c40c824f6ddcca16b9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359428"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234967"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Výběr mezi připojení k Azure Active Directory a Azure Active Directory Domain Services
 Tento článek popisuje rozdíly mezi připojení ke službě Azure Active Directory (AD) a Azure AD Domain Services a pomůže vám zvolit založené na případy použití.
@@ -59,21 +59,21 @@ Na počítači připojeném k doméně dojde ověřování uživatelů pomocí o
 | Řídí zařízení | Azure AD | Azure AD Domain Services managed domain |
 | Reprezentace v adresáři | Objekty zařízení v adresáři Azure AD. | Počítačových objektů ve spravované doméně AAD DS. |
 | Authentication | Protokoly založené na účtu OAuth/OpenID Connect | Protokol Kerberos, NTLM protokoly |
-| Správa | Software správy mobilních zařízení (MDM), jako je Intune | Zásada skupiny |
+| Správa | Software správy mobilních zařízení (MDM), jako je Intune | Zásady skupiny |
 | Sítě | Funguje přes internet | Vyžaduje počítače být ve stejné virtuální síti jako spravovanou doménu.|
 | Velmi vhodné pro... | Desktopové nebo mobilní zařízení koncových uživatelů | Server virtuálních počítačů nasazených v Azure |
 
 
 ## <a name="next-steps"></a>Další postup
 ### <a name="learn-more-about-azure-ad-domain-services"></a>Další informace o službě Azure AD Domain Services
-* [Přehled služby Azure AD Domain Services](active-directory-ds-overview.md)
+* [Přehled služby Azure AD Domain Services](overview.md)
 * [Funkce](active-directory-ds-features.md)
-* [Scénáře nasazení](active-directory-ds-scenarios.md)
-* [Zjistěte, pokud Azure AD Domain Services vyhovuje případy použití](active-directory-ds-comparison.md)
-* [Vysvětlení, jak Azure AD Domain Services synchronizován s adresářem Azure AD](active-directory-ds-synchronization.md)
+* [Scénáře nasazení](scenarios.md)
+* [Zjistěte, pokud Azure AD Domain Services vyhovuje případy použití](comparison.md)
+* [Vysvětlení, jak Azure AD Domain Services synchronizován s adresářem Azure AD](synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>Další informace o připojení ke službě Azure AD
 * [Úvod do správy zařízení v Azure Active Directory](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Začínáme s Azure AD Domain Services
-* [Povolení služby Azure AD Domain Services pomocí webu Azure portal](active-directory-ds-getting-started.md)
+* [Povolení služby Azure AD Domain Services pomocí webu Azure portal](create-instance.md)

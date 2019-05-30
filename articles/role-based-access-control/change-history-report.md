@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308870"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242106"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit se změny prostředků Azure RBAC
 
@@ -43,7 +43,7 @@ Chcete-li zobrazit protokoly aktivit pomocí webu Azure portal je nejjednodušš
 
 Protokol aktivit na portálu má několik filtrů. Tady jsou filtry související RBAC:
 
-|Filtr  |Value  |
+|Filtr  |Hodnota  |
 |---------|---------|
 |Kategorie události     | <ul><li>Správa</li></ul>         |
 |Operace     | <ul><li>Vytvořit přiřazení role</li> <li>Odstranit přiřazení role</li> <li>Vytvořit nebo aktualizovat vlastní definici role</li> <li>Odstranit definice rolí</li></ul>      |
@@ -121,9 +121,9 @@ Tady jsou základní kroky, abyste mohli začít:
 
 1. [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
-1. [Konfigurovat řešení Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md#configuration) pro váš pracovní prostor.
+1. [Konfigurovat řešení Activity Log Analytics](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) pro váš pracovní prostor.
 
-1. [Zobrazení protokolů aktivit](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Rychlý způsob, jak přejít na stránku přehled Activity Log Analytics řešení je kliknout **Log Analytics** možnost.
+1. [Zobrazení protokolů aktivit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku přehled Activity Log Analytics řešení je kliknout **Log Analytics** možnost.
 
    ![Azure Monitor protokoly možnost portálu](./media/change-history-report/azure-log-analytics-option.png)
 

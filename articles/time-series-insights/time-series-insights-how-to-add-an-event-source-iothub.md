@@ -4,19 +4,19 @@ description: Tento článek popisuje postup přidání zdroje událostí, která
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 258b603b8cd2e0cdfcc72ca17cd3cb0d034caf5b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 79d2062f0e174eeb7550205f90c1650185e1623a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143349"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236986"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí IoT hub do prostředí Time Series Insights
 
@@ -76,7 +76,7 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
    | Vlastnost | Popis |
    | --- | --- |
    | ID předplatného | Vyberte předplatné, ve kterém byla vytvořena služby IoT hub.
-   | Název IoT Hubu | Vyberte název centra IoT.
+   | Název centra IoT | Vyberte název centra IoT.
    | Název zásad centra IoT | Vyberte zásady sdíleného přístupu. Zásady sdíleného přístupu můžete najít na kartě Nastavení centra IoT. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **služba připojit** oprávnění.
    | Klíč zásad centra IoT | Klíč je předem.
    | Skupina uživatelů centra IoT | Skupina uživatelů, která načítá události ze služby IoT hub. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí.
@@ -89,7 +89,7 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT hub:
    | --- | --- |
    | ID předplatného | Předplatné, ve kterém byla vytvořena služby IoT hub.
    | Skupina prostředků | Název skupiny prostředků, ve kterém byla vytvořena služby IoT hub.
-   | Název IoT Hubu | název služby IoT hub. Pokud jste vytvořili službu IoT hub, jste zadali název služby IoT hub.
+   | Název centra IoT | název služby IoT hub. Pokud jste vytvořili službu IoT hub, jste zadali název služby IoT hub.
    | Název zásad centra IoT | Zásady sdíleného přístupu. Na kartě nastavení IoT hub můžete vytvořit zásady sdíleného přístupu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **služba připojit** oprávnění.
    | Klíč zásad centra IoT | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů služby Azure Service Bus. Zadejte primární a sekundární klíč tady.
    | Skupina uživatelů centra IoT | Skupina uživatelů, která načítá události ze služby IoT hub. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí.

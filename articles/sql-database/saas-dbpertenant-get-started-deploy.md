@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 14f76a716447e09299cfa18d6758245706c7b481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbb67845922dd9a3b2a78f76bf25d73bace98a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556466"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240124"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasazení a zkoumání víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
 
@@ -129,7 +129,7 @@ Aplikace Wingtip používá [*Azure Traffic Manager* ](../traffic-manager/traff
 
     | Část adresy URL        | Popis       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Události části aplikace Wingtip.<br /><br /> *-dpt* odlišuje *databáze na tenanta* provádění Wingtip Tickets oproti jiným implementacím. Mezi příklady patří *jeden* aplikace na tenanta (*-sa*) nebo *víceklientské databáze* (*- mt*) implementace. |
+    | http://events.wingtip-dpt | Události části aplikace Wingtip.<br /><br /> *-dpt* odlišuje *databáze na tenanta* provádění Wingtip Tickets oproti jiným implementacím. Mezi příklady patří *jeden* aplikace na tenanta ( *-sa*) nebo *víceklientské databáze* ( *- mt*) implementace. |
     | .  *&lt;uživatele&gt;* | *af1* v příkladu. |
     | .trafficmanager.net/ | Traffic Manager, základní adresu URL. |
     | fabrikamjazzclub | Identifikuje klienta s názvem společnosti Fabrikam Jazz Club. |
@@ -182,7 +182,7 @@ Pokud chcete řídit a monitorovat úlohy na pozadí, použijte následující r
     - Ve výchozím nastavení spustí úlohy na pozadí po dobu 120 minut.
     - Každá úloha způsobí, že zatížení založený na využití procesoru v databázi jednoho tenanta pomocí provádí *sp_CpuLoadGenerator*. Intenzita a doba trvání zatížení se liší v závislosti na `$DemoScenario`.
     - *sp_CpuLoadGenerator* smyčky kolem příkazu SQL SELECT, který způsobuje vysoké zatížení CPU. Časový interval mezi problémy SELECT se liší podle hodnoty parametrů k vytvoření může ovládat zatížení procesoru. Pro simulaci zatížení realističtější se náhodně mění úrovně zatížení a intervaly.
-    - Tento soubor .sql je uložen pod *WingtipTenantDB\\dbo\\StoredProcedures\\*.
+    - Tento soubor .sql je uložen pod *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
 4. Pokud `$OneTime = $false`, generátor zatížení spouští úlohy na pozadí a pak i nadále běžel. Každých 10 sekund, monitoruje pro všechny nové tenanty, které jsou zřízené. Pokud nastavíte `$OneTime = $true`, LoadGenerator spustí úlohy na pozadí a poté se zastaví spuštěná v popředí. Pro účely tohoto kurzu ponechte `$OneTime = $false`.
 
@@ -221,14 +221,14 @@ Aktualizujte Centrum akcí, chcete-li vytvořit nového tenanta se zobrazí v se
 
 Teď, když jste jste spustili zátěž kolekce tenantů, podíváme se na některé z nasazených prostředků.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam serverů SQL Server. Otevřete **katalogu-dpt -&lt;uživatele&gt;** serveru.
+1. V [webu Azure portal](https://portal.azure.com), přejděte na seznam serverů SQL Server. Otevřete **katalogu-dpt -&lt;uživatele&gt;**  serveru.
     - Server katalogu obsahuje dvě databáze, **tenantcatalog** a **basetenantdb** (Šablona databázi, která se kopíruje při vytváření nových tenantů).
 
    ![Databáze](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Vraťte se do seznamu serverů SQL.
 
-3. Otevřít **tenants1-dpt -&lt;uživatele&gt;** serveru, který obsahuje databáze tenantů.
+3. Otevřít **tenants1-dpt -&lt;uživatele&gt;**  serveru, který obsahuje databáze tenantů.
 
 4. Zobrazit následující položky:
 
@@ -254,7 +254,7 @@ Dva grafy znázorňují, elastické fondy a databáze SQL se skvěle hodí pro n
 
 - Další informace najdete v části Další [kurzů v aplikaci SaaS aplikace Wingtip Tickets databáze na tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Další informace o elastických fondech najdete v tématu [co je elastický fond Azure SQL?](sql-database-elastic-pool.md).
-- Další informace o elastických úlohách najdete v tématu [spravovat horizontálním navýšením kapacity databáze](sql-database-elastic-jobs-overview.md).
+- Další informace o elastických úlohách najdete v tématu [spravovat horizontálním navýšením kapacity databáze](elastic-jobs-overview.md).
 - Další informace o víceklientské aplikace SaaS, naleznete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Další postup

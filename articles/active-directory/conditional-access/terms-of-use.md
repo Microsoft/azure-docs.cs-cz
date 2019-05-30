@@ -1,29 +1,26 @@
 ---
 title: Podmínky použití – Azure Active Directory | Dokumentace Microsoftu
-description: Popisuje, jak začít používat Azure Active Directory podmínky použití předkládání informací zaměstnanci nebo hosté před získáním přístupu.
+description: Začněte používat Azure Active Directory podmínky použití předkládání informací zaměstnanci nebo hosté před získáním přístupu.
 services: active-directory
-author: rolyon
-manager: mtillman
-editor: ''
-ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/15/2019
-ms.author: rolyon
+ms.topic: conceptual
+ms.date: 05/29/2019
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8659ecab649216650403f3a992cc6e356e5de5d0
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823586"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383179"
 ---
-# <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
-Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
+# <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínky použití
+
+Azure AD podmínek použití poskytuje jednoduchý způsob, který můžou použít pro předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -38,155 +35,155 @@ Další videa naleznete v tématu:
 - [Postup zavádění podmínky použití ve službě Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Co můžu dělat s podmínkami použití?
-Azure AD Terms of použití má následující možnosti:
+
+Azure AD podmínky použití má následující možnosti:
+
 - Požadovat, aby zaměstnanci nebo hosté přijmout vaše podmínky použití, než získají přístup.
 - Požadovat, aby zaměstnanci nebo hosté přijmout vaše podmínky použití na všech zařízeních, než získají přístup.
 - Požadovat, aby zaměstnanci nebo hosté přijmout vaše podmínky použití podle opakovaného plánu.
-- Předkládat obecné podmínky použití všem uživatelům ve vaší organizaci.
-- Předkládat konkrétní podmínky použití založené na atributech uživatelů (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](../users-groups-roles/groups-dynamic-membership.md)).
-- Předkládat konkrétní podmínky použití při přístupu k aplikacím s velkým vlivem na chod firmy, jako je například Salesforce.
-- Předkládat podmínky použití v různých jazycích.
+- Požadovat, aby zaměstnanci nebo hosté přijmout vaše podmínky použití ještě před registrací informací o zabezpečení v Azure Multi-Factor Authentication (MFA).
+- Vyžadovat, aby přijímal vaše podmínky použití ještě před registrací informací o zabezpečení v Azure AD samoobslužné resetování hesla (SSPR) zaměstnanci.
+- K dispozici obecné podmínky použití pro všechny uživatele ve vaší organizaci.
+- K dispozici konkrétní podmínky použití založené na atributech uživatelů (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](../users-groups-roles/groups-dynamic-membership.md)).
+- K dispozici konkrétní podmínky použití při přístupu k vysoký obchodní dopad aplikací, jako je Salesforce.
+- K dispozici podmínky použití v různých jazycích.
 - Seznam, který byl nebo nebyl přijat na vaše podmínky použití.
 - Pomoc při plnění nařízení o ochraně osobních údajů.
 - Zobrazte protokol podmínky použití aktivity pro audit a dodržování předpisů.
 - Vytváření a správě podmínek použití použití [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (aktuálně ve verzi preview).
 
 ## <a name="prerequisites"></a>Požadavky
-K používání a konfiguraci funkce Azure AD Terms of Use potřebujete:
+
+Použití a konfiguraci Azure AD podmínky použití, musíte mít:
 
 - Předplatné Azure AD Premium P1, P2, EMS E3 nebo EMS E5.
-    - Pokud žádné z těchto předplatných nemáte, můžete [získat Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) nebo [povolit zkušební verzi Azure AD Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
+   - Pokud žádné z těchto předplatných nemáte, můžete [získat Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) nebo [povolit zkušební verzi Azure AD Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 - Jeden z následujících účtů správce pro adresář, který chcete konfigurovat:
-    - Globální správce
-    - Správce zabezpečení
-    - Správce podmíněného přístupu
+   - Globální správce
+   - Správce zabezpečení
+   - Správce podmíněného přístupu
 
 ## <a name="terms-of-use-document"></a>Dokument podmínek použití
 
-Funkce Azure AD Terms of Use k předkládání obsahu používá formát PDF. Soubor PDF může mít libovolný obsah, jako jsou například stávající smluvní dokumenty, a umožňuje od koncových uživatelů při přihlášení získat jejich souhlas. Doporučená velikost písma v souboru PDF pro podporu uživatelů na mobilních zařízeních, je 24 bodů.
+Azure AD podmínky použití ve formátu PDF k předkládání obsahu. Soubor PDF může mít libovolný obsah, jako jsou například stávající smluvní dokumenty, a umožňuje od koncových uživatelů při přihlášení získat jejich souhlas. Doporučená velikost písma v souboru PDF pro podporu uživatelů na mobilních zařízeních, je 24 bodů.
 
 ## <a name="add-terms-of-use"></a>Přidání podmínek použití
-Jakmile dokončíte dokument podmínek použití, přidejte ho pomocí následujícího postupu.
+
+Jakmile dokončíte vaše podmínky použití dokumentů, použijte následující postup a přidejte ji.
 
 1. Přihlaste se do Azure jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-
 1. Přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
-    ![Okno Terms of Use](./media/terms-of-use/tou-blade.png)
+   ![Okno Terms of Use](./media/terms-of-use/tou-blade.png)
 
 1. Klikněte na **Nové podmínky**.
 
-    ![Přidání podmínek použití](./media/terms-of-use/new-tou.png)
+   ![Přidání podmínek použití](./media/terms-of-use/new-tou.png)
 
 1. V **název** pole, zadejte název pro podmínky použití, který se použije na webu Azure Portal.
-
 1. V **zobrazovaný název** pole, zadejte název, který uživatelé uvidí, když se přihlásí.
-
 1. Pro **dokument podmínek použití**finálními podmínkami použití PDF vyhledejte a vyberte ji.
-
 1. Vyberte jazyk pro vaše podmínky použití dokumentů. Volba jazyka vám umožní nahrát různé jazykové verze podmínek použití. Verze podmínek použití, která se zobrazí koncovému uživateli, závisí na jeho předvolbách prohlížeče.
-
 1. Nastavit tak, aby vyžadovala koncovým uživatelům zobrazit podmínky použití před přijetím je **vyžadují, aby uživatelé rozbalili podmínky použití** k **na**.
-
 1. Nastavit tak, aby vyžadovala koncoví uživatelé tak, aby přijímal vaše podmínky použití na všech zařízeních přistupují z **vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních** k **na**. Další informace najdete v tématu [jednotlivá zařízení podmínky použití](#per-device-terms-of-use).
+1. Pokud chcete ukončit platnost podmínky použití souhlasy podle plánu, nastavte **vyprší souhlasy** k **na**. Pokud nastavíte hodnotu na, jsou zobrazeny dvě další nastavení.
 
-1. Pokud chcete ukončit platnost podmínky použití souhlasí podle plánu, nastavte **vyprší souhlasy** k **na**. Pokud nastavíte hodnotu na, jsou zobrazeny dvě další nastavení.
-
-    ![Vypršení platnosti souhlasů](./media/terms-of-use/expire-consents.png)
+   ![Vypršení platnosti souhlasů](./media/terms-of-use/expire-consents.png)
 
 1. Použít **vypršení platnosti od** a **frekvence** nastavení určete plán, podmínky použití vypršení platnosti. Následující tabulka ukazuje výsledek pro několik příklad nastavení:
 
-    | Vypršení platnosti začíná | Frekvence | Výsledek |
-    | --- | --- | --- |
-    | Dnešní datum  | Měsíční | Ode dneška, musí uživatelé přijmout podmínky použití a pak znovu přijali jako každý měsíc. |
-    | Datum v budoucnosti  | Měsíční | Ode dneška, uživatelé musí přijmout podmínky použití. Pokud dojde k budoucí datum, souhlasu vyprší a pak musí uživatelé ovlivnění každý měsíc.  |
+   | Vypršení platnosti začíná | Frekvence | Výsledek |
+   | --- | --- | --- |
+   | Dnešní datum  | Měsíční | Ode dneška, musí uživatelé přijmout podmínky použití a pak znovu přijali jako každý měsíc. |
+   | Datum v budoucnosti  | Měsíční | Ode dneška, uživatelé musí přijmout podmínky použití. Pokud dojde k budoucí datum, souhlasu vyprší a pak musí uživatelé ovlivnění každý měsíc.  |
 
-    Například pokud nastavíte ukončit platnost od datum **1. ledna** a četnost **měsíční**, zde je, jak může dojít k vypršení platnosti dva uživatelé:
+   Například pokud nastavíte ukončit platnost od datum **1. ledna** a četnost **měsíční**, zde je, jak může dojít k vypršení platnosti dva uživatelé:
 
-    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
-    | --- | --- | --- | --- | --- |
-    | Alice | 1. ledna | 1. února | 1. března | Dubna 1 |
-    | Bob | 15. ledna | 1. února | 1. března | Dubna 1 |
+   | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
+   | --- | --- | --- | --- | --- |
+   | Alice | 1. ledna | 1. února | 1. března | Dubna 1 |
+   | Bob | 15. ledna | 1. února | 1. března | Dubna 1 |
 
 1. Použít **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení určuje počet dní, než uživatel musí znovu přijali jako podmínky použití. To umožňuje uživatelům, postupovat podle svého vlastního plánu. Například pokud nastavíte dobu trvání na **30** dnů, zde je, jak může dojít k vypršení platnosti dva uživatelé:
 
-    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
-    | --- | --- | --- | --- | --- |
-    | Alice | 1. ledna | 31. ledna | Března 2 | Dubna 1 |
-    | Bob | 15. ledna | 14. února | Března 16 | Dubna 15 |
+   | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
+   | --- | --- | --- | --- | --- |
+   | Alice | 1. ledna | 31. ledna | Března 2 | Dubna 1 |
+   | Bob | 15. ledna | 14. února | Března 16 | Dubna 15 |
 
-    Je možné použít **vyprší souhlasy** a **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení, ale většinou můžete použít jeden z nich.
+   Je možné použít **vyprší souhlasy** a **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení, ale většinou můžete použít jeden z nich.
 
 1. V části **podmíněného přístupu**, použijte **vynutit šablonou zásad podmíněného přístupu** seznam a vyberte šablonu, kterou chcete vynucovat podmínky použití.
 
-    ![Šablony podmíněného přístupu](./media/terms-of-use/conditional-access-templates.png)
+   ![Šablony podmíněného přístupu](./media/terms-of-use/conditional-access-templates.png)
 
-    | Šablona | Popis |
-    | --- | --- |
-    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásady podmíněného přístupu pro všechny hostů a všechny cloudové aplikace. Tyto zásady mají vliv na webu Azure portal. Jakmile se vytvoří, budete asi muset odhlásit a přihlásit. |
-    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásady podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tyto zásady mají vliv na webu Azure portal. Jakmile se vytvoří, budete muset odhlásit a přihlásit. |
-    | **Vlastní zásady** | Vyberte uživatele, skupiny a aplikace, na které se tyto podmínky použití vztahují. |
-    | **Vytvoření zásad podmíněného přístupu později** | Tyto podmínky použití se zobrazí v seznamu pro udělení řízení při vytváření zásad podmíněného přístupu. |
+   | Šablona | Popis |
+   | --- | --- |
+   | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásady podmíněného přístupu pro všechny hostů a všechny cloudové aplikace. Tyto zásady mají vliv na webu Azure portal. Jakmile se vytvoří, budete asi muset odhlásit a přihlásit. |
+   | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásady podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tyto zásady mají vliv na webu Azure portal. Jakmile se vytvoří, budete muset odhlásit a přihlásit. |
+   | **Vlastní zásady** | Vyberte uživatele, skupiny nebo aplikace, které se použijí tyto podmínky použití pro. |
+   | **Vytvoření zásad podmíněného přístupu později** | Tyto podmínky použití se zobrazí v seznamu pro udělení řízení při vytváření zásad podmíněného přístupu. |
 
-    >[!IMPORTANT]
-    >Zásady podmíněného přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb. Doporučujeme, abyste ze zásad podmíněného přístupu všechny účty služeb vyloučili.
+   >[!IMPORTANT]
+   >Zásady podmíněného přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb. Doporučujeme, abyste ze zásad podmíněného přístupu všechny účty služeb vyloučili.
 
-     Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití (až na úroveň konkrétních cloudových aplikací nebo skupin uživatelů). Další informace najdete v tématu [rychlý start: Podmínky použití přijmout před přístup ke cloudovým aplikacím vyžadovat](require-tou.md).
+    Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití konkrétních cloudových aplikací nebo skupinu uživatelů. Další informace najdete v tématu [rychlý start: Podmínky použití přijmout před přístup ke cloudovým aplikacím vyžadovat](require-tou.md).
 
 1. Klikněte na možnost **Vytvořit**.
 
-    Pokud jste vybrali vlastní šablonu podmíněného přístupu, pak nová obrazovka se zobrazí, který vám umožní vytvořit vlastních zásad podmíněného přístupu.
+   Pokud jste vybrali vlastní šablonu podmíněného přístupu, pak nová obrazovka se zobrazí, který vám umožní vytvořit vlastních zásad podmíněného přístupu.
 
-    ![Vlastní zásady](./media/terms-of-use/custom-policy.png)
+   ![Vlastní zásady](./media/terms-of-use/custom-policy.png)
 
-    Teď byste měli vidět vaše nové podmínky použití.
+   Teď byste měli vidět vaše nové podmínky použití.
 
-    ![Přidání podmínek použití](./media/terms-of-use/create-tou.png)
+   ![Přidání podmínek použití](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>Zobrazit sestavu z kteří je přijali a odmítli
-V okně Terms of Use se zobrazí počet uživatelů, kteří podmínky přijali a odmítli. Tyto počty a informace o těch, kdo podmínky přijali nebo odmítli, se uchovávají po celou dobu platnosti podmínek použití.
+
+V okně Terms of Use se zobrazí počet uživatelů, kteří podmínky přijali a odmítli. Tyto počty a kdo přijata nebo odmítnuta ukládají po dobu životnosti podmínky použití.
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
-    ![Okno Terms of Use](./media/terms-of-use/view-tou.png)
+   ![Okno Terms of Use](./media/terms-of-use/view-tou.png)
 
 1. Podmínky použití, klikněte na čísla v části **přijato** nebo **Odmítnuto** Chcete-li zobrazit aktuální stav pro uživatele.
 
-    ![Souhlasy s podmínkami použití](./media/terms-of-use/accepted-tou.png)
+   ![Souhlasy s podmínkami použití](./media/terms-of-use/accepted-tou.png)
 
-1. Chcete-li zobrazit historii pro jednotlivé uživatele, klikněte na tlačítko se třemi tečkami (**...** ) a potom **zobrazit historii**.
+1. Chcete-li zobrazit historii pro jednotlivé uživatele, klikněte na tlačítko se třemi tečkami ( **...** ) a potom **zobrazit historii**.
 
-    ![Nabídka zobrazení historie](./media/terms-of-use/view-history-menu.png)
+   ![Nabídka zobrazení historie](./media/terms-of-use/view-history-menu.png)
 
-    V podokně zobrazení historie, uvidíte historii všech přijme, odmítne a vypršení platnosti.
+   V podokně zobrazení historie, uvidíte historii všech přijme, odmítne a vypršení platnosti.
 
-    ![Podokno zobrazení historie](./media/terms-of-use/view-history-pane.png)
+   ![Podokno zobrazení historie](./media/terms-of-use/view-history-pane.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Protokoly auditu zobrazení služby Azure AD
-Pokud chcete zobrazit další aktivitu, funkce Azure AD Terms of Use zahrnuje protokoly auditu. Každý souhlasu uživatele aktivuje události z protokolů auditu, které je uložena po dobu **30 dnů**. Tyto protokoly můžete zobrazit na portálu nebo stáhnout jako soubor .csv.
+
+Pokud chcete zobrazit další aktivitu, podmínky použití služby Azure AD obsahuje protokoly auditu. Každý souhlasu uživatele aktivuje události z protokolů auditu, které je uložena po dobu **30 dnů**. Tyto protokoly můžete zobrazit na portálu nebo stáhnout jako soubor .csv.
 
 Začínáme s Azure AD protokoly auditu, použijte následující postup:
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Vyberte podmínky použití.
-
 1. Klikněte na **Zobrazit protokoly auditu**.
 
-    ![Okno Terms of Use](./media/terms-of-use/audit-tou.png)
+   ![Okno Terms of Use](./media/terms-of-use/audit-tou.png)
 
 1. Obrazovce protokolů auditu v Azure AD, můžete filtrovat informace o použití zadaný seznamů pro cílové konkrétní údaje protokolu auditu.
 
-    Můžete také kliknout na **Stáhnout** a stáhnout tyto informace jako soubor .csv pro místní použití.
+   Můžete také kliknout na **Stáhnout** a stáhnout tyto informace jako soubor .csv pro místní použití.
 
-    ![Protokoly auditu](./media/terms-of-use/audit-logs-tou.png)
+   ![Protokoly auditu](./media/terms-of-use/audit-logs-tou.png)
 
-    Pokud kliknete na protokol, zobrazí se podokno s podrobnostmi o další aktivity.
+   Pokud kliknete na protokol, zobrazí se podokno s podrobnostmi o další aktivity.
 
-    ![Podrobnosti o aktivitě](./media/terms-of-use/audit-log-activity-details.png)
+   ![Podrobnosti o aktivitě](./media/terms-of-use/audit-log-activity-details.png)
 
-## <a name="what-terms-of-use-looks-like-for-users"></a>Jak podmínky použití vypadají pro uživatele
-Po vytvoření a vynucení podmínek použití se příslušným uživatelům při přihlášení zobrazí následující obrazovka.
+## <a name="what-terms-of-use-looks-like-for-users"></a>Jaké podmínky použití pro uživatele vypadá
+
+Po podmínky použití se vytvoří a vynutit, uživatelé, kteří jsou v oboru, zobrazí se následující obrazovka při přihlašování.
 
 ![Webové přihlášení](./media/terms-of-use/user-tou.png)
 
@@ -194,62 +191,58 @@ Uživatelé mohou zobrazit podmínky použití a v případě potřeby pomocí t
 
 ![Zobrazit podmínky pro použití s tlačítky přiblížení](./media/terms-of-use/zoom-buttons.png)
 
-Následující obrazovka ukazuje, jak podmínky použití vypadají na mobilních zařízeních.
+Následující obrazovka ukazuje, jak vypadá podmínky použití v mobilních zařízeních.
 
 ![Mobilní přihlášení uživatele](./media/terms-of-use/mobile-tou.png)
 
 Uživatelé pouze musí přijmout podmínky použití jednou a neuvidí podmínky použití znovu na následující přihlášení.
 
-### <a name="how-users-can-review-their-terms-of-use"></a>Jak si uživatelé můžou zobrazit a přečíst své podmínky použití
-Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijali, pomocí následujícího postupu.
+### <a name="how-users-can-review-their-terms-of-use"></a>Jak si mohou uživatelé přečíst jejich podmínky použití
+
+Uživatele můžete zkontrolovat a zjistit podmínky použití, které jste přijali pomocí následujícího postupu.
 
 1. Přihlaste se k webu [https://myapps.microsoft.com](https://myapps.microsoft.com).
-
 1. V pravém horním rohu klikněte na název a vyberte **profilu**.
 
-    ![Profil](./media/terms-of-use/tou14.png)
+   ![Profil](./media/terms-of-use/tou14.png)
 
 1. Na stránce svého profilu klikněte na **Přečíst podmínky použití**.
 
-    ![Profil - přečíst podmínky použití](./media/terms-of-use/tou13a.png)
+   ![Profil - přečíst podmínky použití](./media/terms-of-use/tou13a.png)
 
 1. Tady si můžete přečíst podmínky použití, které jste přijali.
 
 ## <a name="edit-terms-of-use-details"></a>Upravit podrobnosti podmínek použití
+
 Můžete upravit některé podrobnosti podmínek použití, ale nelze upravit existující dokument. Následující postup popisuje, jak upravit podrobnosti.
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Vyberte podmínky použití, které chcete upravit.
-
 1. Klikněte na tlačítko **upravit podmínky**.
-
 1. V upravit podmínky použití podokna změňte název, zobrazovaný název nebo vyžadovat, aby uživatelé rozbalili hodnoty.
 
-    Pokud existují další nastavení chcete změnit, jako je například dokument PDF, vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních, vyprší souhlasy, doba trvání před reacceptance nebo zásad podmíněného přístupu, je nutné vytvořit nové podmínky použití.
+   Pokud existují další nastavení chcete změnit, jako je například dokument PDF, vyžadují, aby uživatelé vyjádřili souhlas na všech zařízeních, vyprší souhlasy, doba trvání před reacceptance nebo zásad podmíněného přístupu, je nutné vytvořit nové podmínky použití.
 
-    ![Upravit podmínky použití](./media/terms-of-use/edit-tou.png)
+   ![Upravit podmínky použití](./media/terms-of-use/edit-tou.png)
 
 1. Klikněte na tlačítko **Uložit** uložte provedené změny.
 
-    Po uložení změn, uživatelé nebudou mít tyto úpravy ovlivnění.
+   Po uložení změn, uživatelé nebudou mít tyto úpravy ovlivnění.
 
 ## <a name="add-a-terms-of-use-language"></a>Přidání podmínek použití jazyka
+
 Následující postup popisuje, jak přidat podmínky použití jazyka.
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Vyberte podmínky použití, které chcete upravit.
-
 1. V podokně podrobností klikněte na tlačítko **jazyky** kartu.
 
-    ![Přidání podmínek použití](./media/terms-of-use/languages-tou.png)
+   ![Přidání podmínek použití](./media/terms-of-use/languages-tou.png)
 
 1. Klikněte na tlačítko **přidat jazyk**.
-
 1. V přidat podmínky použití jazyka podokně nahrát lokalizované PDF a vyberte požadovaný jazyk.
 
-    ![Přidání podmínek použití](./media/terms-of-use/language-add-tou.png)
+   ![Přidání podmínek použití](./media/terms-of-use/language-add-tou.png)
 
 1. Klikněte na tlačítko **přidat** přidat jazyk.
 
@@ -291,28 +284,29 @@ Pokud uživatel používá prohlížeč, který není podporován, bude se mu zo
 ![Nepodporovaný prohlížeč](./media/terms-of-use/per-device-browser-unsupported.png)
 
 ## <a name="delete-terms-of-use"></a>Odstranění podmínek použití
-K odstranění starých podmínek použití můžete použít tento postup.
+
+Odstraněním starých podmínek použití, pomocí následujícího postupu.
 
 1. Přihlaste se k Azure a přejděte na stránku funkce **Terms of Use** na adrese [https://aka.ms/catou](https://aka.ms/catou).
-
 1. Vyberte podmínky použití, které chcete odebrat.
-
 1. Klikněte na **Odstranit podmínky**.
-
 1. Ve zprávě s dotazem, jestli chcete pokračovat, která se zobrazí, klikněte na **Ano**.
 
-    ![Odstranění podmínek použití](./media/terms-of-use/delete-tou.png)
+   ![Odstranění podmínek použití](./media/terms-of-use/delete-tou.png)
 
-    Vaše podmínky použití by se teď už neměly zobrazovat.
+   Už byste měli vidět vaše podmínky použití.
 
 ## <a name="deleted-users-and-active-terms-of-use"></a>Odstranění uživatelé a aktivní podmínky použití
-Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure AD v odstraněném stavu po dobu 30 dnů, během kterých ho v případě potřeby může správce obnovit. Po 30 dnech je tento uživatel odstraněn trvale. Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](../fundamentals/active-directory-users-restore.md) ještě před dosažením tohoto časového období. Jakmile je uživatel trvale odstraněný, odeberou se z aktivních podmínek použití i další data o tomto uživateli. Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
+
+Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure AD v odstraněném stavu po dobu 30 dnů, během kterých ho v případě potřeby může správce obnovit. Po 30 dnech je tento uživatel odstraněn trvale. Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](../fundamentals/active-directory-users-restore.md) ještě před dosažením tohoto časového období. Jeden uživatel byla trvale odstraněna, následná data o tohoto uživatele se odebere z aktivní podmínky použití. Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
 
 ## <a name="policy-changes"></a>Změny zásad
+
 Zásady podmíněného přístupu vstupují v platnost okamžitě. Pokud k tomu dojde, správci se začnou naleznete v tématu "smutné cloudy" nebo "Token problémy s Azure AD". Správce musí odhlásit a znovu se přihlaste k tyto nové zásady.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Příslušní uživatelé se musí odhlásit a znovu přihlásit, aby vyhověli novým zásadám:
+>
 > - pokud jsou u podmínek použití povolené zásady podmíněného přístupu
 > - nebo pokud se vytvoří druhé podmínky použití.
 
@@ -378,11 +372,11 @@ Odpověď: Ano, tak, že vytvoříte několik zásad podmíněného přístupu c
 **Otázka: Co se stane, když uživatel odmítne podmínky použití?**<br />
 Odpověď: Uživatel je zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a přijměte podmínky získal přístup.
 
-**Otázka: Je možné unaccept podmínky použití, které byly dříve přijali službu?**<br />
+**Otázka: Je možné podmínkami použití, který byl dříve přijali službu unaccept?**<br />
 Odpověď: Je možné [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
 
 **Otázka: Co se stane, pokud také používám Intune podmínky a ujednání?**<br />
-Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+Odpověď: Pokud jste nakonfigurovali obě podmínky použití služby Azure AD a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 **Otázka: Jaké koncové body podmínek použití služby používat pro ověřování?**<br />
 Odpověď: Podmínky použití využívá následující koncové body pro ověřování: https://tokenprovider.termsofuse.identitygovernance.azure.com a https://account.activedirectory.windowsazure.com. Pokud vaše organizace má seznam povolených adres URL pro registraci, je potřeba přidat tyto koncové body do seznamu povolených, spolu s koncovým bodům služby Azure AD pro přihlášení.

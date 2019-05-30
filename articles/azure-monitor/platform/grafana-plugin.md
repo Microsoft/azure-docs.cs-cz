@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9a20aba84e79e87f84d63e4bdae3ba1aac062f5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395939"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387196"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -103,7 +103,7 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
      > [!NOTE]
      >
      > Výchozí dotaz, opatřeného modul plug-in používá dvě makra: "__interval $__timeFilter() a $. 
-     > Tato makra umožňují Grafana dynamicky vypočítat časový rozsah a časový interval, při přiblížení na část grafu. Můžete odebrat tato makra a použití filtru (běžný čas), jako například *TimeGenerated > ago(1h)*, ale je, že prostředky grafu by podporuje přiblížení ve funkci.
+     > Tato makra umožňují Grafana dynamicky vypočítat časový rozsah a časový interval, při přiblížení na část grafu. Můžete odebrat tato makra a použití filtru (běžný čas), jako například *TimeGenerated > ago(1h)* , ale je, že prostředky grafu by podporuje přiblížení ve funkci.
     
      ![Grafana config grafů pro Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
@@ -119,8 +119,6 @@ Můžete také znovu použít toto nastavení chcete zahrnout metriky z Promethe
 
 Tady je dobrá reference články týkající se použití Telegraf, InfluxDB, Prometheus a Dockeru
  - [Jak monitorovat systémové metriky se zásobníkem značek na Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
-
- - [Monitorujte metriky prostředků Dockeru s Grafana InfluxDB a Telegraf](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
 
  - [Řešení monitorování pro hostitele Docker, kontejnery a kontejnerizovaných služeb](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: b680f476345bde61797fd1cc137cad6e5653d0a5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6ea218da23d65696c76008cb15e183fcc4bbda10
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798215"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383226"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Koncové body rozhraní API pro vyhledávání zpráv Bingu
 
@@ -39,7 +39,7 @@ Vrátí příspěvků na základě dotazu hledání. Pokud vyhledávacímu dotaz
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Vrátí hlavní příspěvky podle kategorie. Konkrétně žádosti špičková obchodní, sportu nebo Zábava článků pomocí `category=business`, `category=sports`, nebo `category=entertainment`.  `category` Parametr jde použít jenom s `/news` adresy URL. Existují některé formální požadavky pro určení kategorií; odkazovat na `category` v [parametr dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentaci. Odeslat dotaz pomocí adresy url kódování hledaný termín a umožňuje připojení`q=""` parametru. Dostupnost, naleznete v tématu [podporované země/oblasti a trhy](language-support.md#supported-markets-for-news-endpoint).
+Vrátí hlavní příspěvky podle kategorie. Konkrétně žádosti špičková obchodní, sportu nebo Zábava článků pomocí `category=business`, `category=sports`, nebo `category=entertainment`.  `category` Parametr jde použít jenom s `/news` adresy URL. Existují některé formální požadavky pro určení kategorií; odkazovat na `category` v [parametr dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) dokumentaci. Odeslat dotaz pomocí adresy url kódování hledaný termín a umožňuje připojení`q=""` parametru. Dostupnost, naleznete v tématu [podporované země/oblasti a trhy](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Populárních tématech zpráv 
 
@@ -51,7 +51,7 @@ Vrátí témata zpráv, které jsou aktuálně trendů v sociálních sítích. 
 
 ## <a name="next-steps"></a>Další postup
 
-Podrobnosti o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [vyhledávání zpráv Bingu, rozhraní API v7 nabízí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) odkaz.
+Podrobnosti o záhlaví, parametry, kódy na trhu, objekty odpovědi, chyby dále, viz [vyhledávání zpráv Bingu, rozhraní API v7 nabízí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) odkaz.
 
 Podrobnější informace o parametrech podporuje každý koncový bod najdete v referenčních stránkách pro jednotlivé typy.
 Příklady základní požadavky pomocí rozhraní API pro vyhledávání zpráv, najdete v článku [rychlé zprovoznění Bingu pro vyhledávání zpráv](https://docs.microsoft.com/azure/cognitive-services/bing-news-search).

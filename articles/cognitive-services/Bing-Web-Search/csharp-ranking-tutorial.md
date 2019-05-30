@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: bking
-ms.openlocfilehash: 7c074d5d25453e2b2a1ddfc32422790235815f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6afaa2f497fa1a23d083c3ddd76359a49105732d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431153"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384840"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Vytvoření konzolového klienta vyhledávací aplikaci v jazyce C#
 
@@ -38,7 +38,7 @@ Pokud chcete postupovat v kurzu, budete potřebovat:
 
 V sadě Visual Studio vytvořte projekt pomocí `Ctrl`+`Shift`+`N`.
 
-V **nový projekt** dialogového okna, klikněte na tlačítko **Visual C# > klasická plocha Windows > Konzolová aplikace (.NET Framework)**.
+V **nový projekt** dialogového okna, klikněte na tlačítko **Visual C# > klasická plocha Windows > Konzolová aplikace (.NET Framework)** .
 
 Pojmenujte aplikaci **MyConsoleSearchApp**a potom klikněte na tlačítko **OK**.
 
@@ -221,7 +221,7 @@ Před zobrazením jak zobrazit výsledky podle seřazený, podívejte se na uká
 }
 ```
 
-`rankingResponse` JSON – objekt ([dokumentaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) popisuje pořadí odpovídající zobrazení pro výsledky hledání. Zahrnuje jednu nebo více skupin následující, seřazený podle priority:
+`rankingResponse` JSON – objekt ([dokumentaci](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje pořadí odpovídající zobrazení pro výsledky hledání. Zahrnuje jednu nebo více skupin následující, seřazený podle priority:
 
 - `pole`: Výsledky hledání získat nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).
 - `mainline`: Výsledky hledání pro zobrazení v hlavní linii.

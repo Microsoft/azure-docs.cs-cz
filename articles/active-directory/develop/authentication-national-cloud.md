@@ -17,30 +17,30 @@ ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d4586df23548854f4acbfefd32081a36906097
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd37366697a9c1f5019d2864e6d81a4dcd02e3a2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067900"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235493"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
 Národní cloudy jsou fyzicky izolované instance Azure. Tyto oblasti Azure jsou navržené tak, aby jistotu, že požadavky na rezidenci a suverenitu, dodržování předpisů dat jsou zachované v zeměpisné oblasti.
 
-Včetně globální cloudové služby Azure Active Directory nasazené v následujících národních cloudů:  
+Včetně globální cloudové služby Azure Active Directory (Azure AD) nasazené v následujících národních cloudů:  
 
-- Azure US Government
+- Azure Government
 - Azure Germany
 - Azure China 21Vianet
 
-Národní cloudy jsou jedinečné a jiné prostředí, než Azure globální. Proto je potřeba mít na paměti několik klíčových rozdílů při vývoji aplikace pro tato prostředí, jako je registrace aplikací, získávání tokenů a konfigurace koncových bodů.
+Národní cloudy jsou jedinečné a samostatné prostředí z Azure global. Je důležité mít na paměti klíčové rozdíly při vývoji aplikace pro tato prostředí. Rozdíly zahrnují registrace aplikací, získávání tokenů a konfigurace koncových bodů.
 
 ## <a name="app-registration-endpoints"></a>Koncové body registrace aplikace
 
-Neexistuje samostatné webu Azure portal pro každé z nich národních cloudů. Můžete integrovat aplikace s platformou Identity Microsoft v národních cloudů, je nutné zaregistrovat aplikaci zvlášť v každém z webu Azure portal specifická pro prostředí.
+Neexistuje samostatné webu Azure portal pro každé z nich národních cloudů. Můžete integrovat aplikace s platformou identity Microsoft v národních cloudů, je nutné zaregistrovat aplikaci zvlášť každého webu Azure Portal, která je specifická pro prostředí.
 
-V následující tabulce jsou uvedeny základní adresy URL pro koncové body služby Azure Active Directory (Azure AD), použije k registraci aplikace pro jednotlivé národní cloudy.
+V následující tabulce jsou uvedeny základní adresy URL pro koncové body služby Azure AD použije k registraci aplikace pro jednotlivé národní cloudy.
 
 | Národních cloudů | Azure AD koncového bodu portálu |
 |----------------|--------------------------|
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny základní adresy URL pro koncové body sl
 
 Národní cloudy ověřovat uživatele samostatně v každém prostředí a mít samostatného ověření koncových bodů.
 
-V následující tabulce jsou uvedeny základní adresy URL pro koncové body služby Azure Active Directory (Azure AD), které slouží k získání tokenů pro jednotlivé národní cloudy.
+V následující tabulce jsou uvedeny základní adresy URL pro koncové body služby Azure AD slouží k získání tokenů pro jednotlivé národní cloudy.
 
 | Národních cloudů | Koncový bod ověřování Azure AD |
 |----------------|-------------------------|
@@ -62,24 +62,24 @@ V následující tabulce jsou uvedeny základní adresy URL pro koncové body sl
 | Azure AD Číně, provozovaný společností 21Vianet | `https://login.chinacloudapi.cn` |
 | Azure AD (globální službu)| `https://login.microsoftonline.com` |
 
-- Požadavky na koncové body pro povolení nebo token Azure AD můžete tvar pomocí odpovídající základní adresu URL oblast. Například pro Azure Germany:
+Požadavky na povolení služby Azure AD nebo token koncových bodů můžete formulář pomocí odpovídající základní adresu URL oblast. Například pro Azure Germany:
 
   - Je běžné koncový bod autorizace `https://login.microsoftonline.de/common/oauth2/authorize`.
   - Je běžné koncový bod tokenu `https://login.microsoftonline.de/common/oauth2/token`.
 
-- Pro aplikace s jedním tenantem, nahraďte běžné v předchozí adresy URL s ID tenanta nebo název, například `https://login.microsoftonline.de/contoso.com`.
+Pro aplikace s jedním tenantem nahraďte "common" v předchozí adresy URL s ID tenanta nebo název. Příklad: `https://login.microsoftonline.de/contoso.com`.
 
 > [!NOTE]
-> [Autorizace Azure AD v2.0]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) a token koncové body jsou dostupné jenom pro globální služby. Není dosud podporována pro nasazení národních cloudů.
+> [Autorizace Azure AD v2.0]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) a token koncové body jsou k dispozici pouze pro globální službu. Nejsou podporovány pro nasazení národních cloudů.
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Další informace o volání rozhraní API Microsoft Graphu v prostředí národního cloudu, přejděte na [Microsoft Graph v národních cloudů](https://developer.microsoft.com/graph/docs/concepts/deployments).
+Chcete-li získat informace o volání rozhraní API Microsoft Graphu v prostředí národního cloudu, přejděte na [Microsoft Graph v nasazeních národních cloudů](https://developer.microsoft.com/graph/docs/concepts/deployments).
 
 > [!IMPORTANT]
-> Některé služby a funkce, které jsou v různých oblastech z globální služby nemusí být k dispozici ve všech národních cloudech. Chcete-li zjistit, jaké služby jsou k dispozici přejděte na [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+> Některé služby a funkce, které jsou v různých oblastech z globální služby nemusí být k dispozici ve všech národních cloudech. Pokud chcete zjistit, jaké služby jsou k dispozici, přejděte na [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
 
-Použít tento [kurzu Microsoft Authentication Library (MSAL)](msal-national-cloud.md) se naučíte vytvářet aplikace pomocí Microsoft identity platform. Konkrétně tato aplikace se přihlásit uživatele, získání přístupového tokenu pro volání rozhraní Microsoft Graph API.
+Zjistěte, jak sestavit aplikaci pomocí Microsoft identity platform, postupujte [kurzu Microsoft Authentication Library (MSAL)](msal-national-cloud.md). Konkrétně tato aplikace se přihlásit uživatele a získání přístupového tokenu pro volání rozhraní Microsoft Graph API.
 
 ## <a name="next-steps"></a>Další postup
 

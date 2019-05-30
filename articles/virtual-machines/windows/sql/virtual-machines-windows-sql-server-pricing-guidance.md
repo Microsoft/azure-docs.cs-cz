@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce07c6c19c19f134cc322309bb338b94ef11ea85
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477203"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393859"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Ceny pokyny pro virtuální počítače Azure s SQL serverem
 
@@ -61,7 +61,7 @@ Pokud máte jiné lightweight produkční úlohy, použijte jednu z následujíc
 | Standard | Malé až střední úlohy |
 | Enterprise | Velká, nebo klíčové úlohy|
 
-Máte dvě možnosti k platbám za licencování SQL serveru v těchto edicích: *platit za použití* nebo *používání vlastní licence (BYOL)*.
+Máte dvě možnosti k platbám za licencování SQL serveru v těchto edicích: *platit za použití* nebo *používání vlastní licence (BYOL)* .
 
 ## <a name="pay-per-usage"></a>Platba za použití
 
@@ -99,7 +99,7 @@ Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těc
 **Přináší díky mobilitě licencí používat vlastní licenci na SQL Server**, která se také označují jako **BYOL**, znamená, že pomocí stávající licence SQL Server svazek s programem Software Assurance na Virtuálním počítači Azure. SQL Server virtuálního počítače s pomocí BYOL jenom poplatky za náklady na provozování virtuálního počítače, nikoli pro licencování SQL serveru, vzhledem k tomu, že jste už získali licencí se Software Assurance prostřednictvím multilicenčního programu.
 
 > [!IMPORTANT]
-> Image BYOL vyžadují smlouvu Enterprise s programem Software Assurance. Nejsou k dispozici jako součást sady Azure Cloud Solution Partner (CSP) v tuto chvíli.
+> Image BYOL vyžadují smlouvu Enterprise s programem Software Assurance. Nejsou k dispozici jako součást sady Azure Cloud Solution Partner (CSP) v tuto chvíli. Zprostředkovatel kryptografických služeb zákazníci můžou začít přenášet své licence nasazení bitové kopie s průběžnými platbami a následným povolením [zvýhodněné hybridní využití Azure](virtual-machines-windows-sql-ahb.md).
 
 > [!NOTE]
 > BYOL Image jsou aktuálně dostupné jenom pro virtuální počítače s Windows. Můžete však ručně nainstalujte SQL Server na virtuálním počítači pouze pro Linux. Viz pokyny v [nejčastější dotazy týkající se virtuálních počítačů v systému Linux SQL](../../linux/sql/sql-server-linux-faq.md).
@@ -141,7 +141,7 @@ Licenční náklady na SQL Server přímo souvisí s počet virtuálních proces
 
 Existují nové velikosti počítačů, které fungují dobře u určitých typů úloh SQL serveru. Tyto velikosti počítačů udržovat velký objem paměti, úložiště a šířku pásma vstupně-výstupních operací, ale mají nižší počet virtualizované jader. Představte si třeba v následujícím příkladu:
 
-| Velikost virtuálního počítače | vCPU | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (výpočetní + licencování) |
+| Velikost virtuálního počítače | virtuální procesory | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (výpočetní + licencování) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 vstupně-výstupních operací nebo 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 vstupně-výstupních operací nebo 768 MB/s | 75 % nižšími | 57 % nižší |

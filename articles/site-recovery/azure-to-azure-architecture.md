@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791131"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399578"
 ---
-# <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura pro zotavení po havárii Azure do Azure
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
 
 Tento článek popisuje architekturu, komponenty a procesy používané při nasazení zotavení po havárii pro Azure virtual machines (VM) pomocí [Azure Site Recovery](site-recovery-overview.md) služby. Pomocí nastavení zotavení po havárii virtuální počítače Azure nepřetržitě replikovat z jiné cílové oblasti. Pokud dojde k výpadku, můžete převzít služby virtuálních počítačů do sekundární oblasti a přistupovat k nim tam. Když všechno, co běží normálně. znovu, můžete navrátit služby po obnovení a pokračovat v práci v primárním umístění.
@@ -74,7 +74,7 @@ Můžete spravovat a upravovat výchozí nastavení zásady replikace následuj�
 - Nastavení můžete upravit, jak povolit replikaci.
 - Můžete vytvořit zásady replikace v okamžiku a pak ji použijte, když povolíte replikaci.
 
-### <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům
+### <a name="multi-vm-consistency"></a>Konzistence více virtuálních počítačů
 
 Pokud chcete, aby virtuální počítače replikovat společně a sdíleli konzistentní při selhání a obnovení s konzistentní aplikací odkazuje na převzetí služeb při selhání, můžete shromáždit je společně do replikační skupiny. Konzistence více virtuálních počítačů má vliv na výkon úloh a by měla sloužit pouze pro virtuální počítače spuštěné úlohy, které je třeba konzistence ve všech počítačích. 
 
@@ -95,13 +95,13 @@ Site Recovery pořídí snímky následujícím způsobem:
 
 Následující tabulka vysvětluje různé typy konzistence.
 
-### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
+### <a name="crash-consistent"></a>Konzistentní při selhání
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
 Snímek konzistentní s havárií shromažďuje data, která byla na disku při pořízení snímku. Nic neobsahuje v paměti.<br/><br/> Obsahuje ekvivalentní data na disku, která by byla k dispozici, pokud došlo k chybě virtuální počítač nebo napájecí kabel byl stažen ze serveru v okamžiku, která pořízení snímku.<br/><br/> Konzistentní při selhání nezaručuje konzistenci dat pro operační systém nebo aplikace na virtuálním počítači. | Site Recovery vytvoří body obnovení konzistentní při selhání každých 5 minut, ve výchozím nastavení. Toto nastavení nejde změnit.<br/><br/>  | V současné době většina aplikací můžete obnovit také ze body konzistentní při selhání.<br/><br/> Body obnovení konzistentní při selhání jsou obvykle stačí pro replikaci operačních systémů a aplikací, jako jsou servery DHCP a tiskových serverů.
 
-### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
+### <a name="app-consistent"></a>App-consistent
 
 **Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---

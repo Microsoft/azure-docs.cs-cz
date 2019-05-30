@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 43f3a55bc820a232ccebc3a940faa86f9eb730f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467370"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072224"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamicky vytvořit a použít trvalý svazek se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -136,7 +136,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>Použít trvalý svazek
 
-Následující kód YAML vytvoří pod, která používá deklarace identity trvalý svazek *azurefile* pro připojení sdílené složky Azure v */mnt/azure* cestu.
+Následující kód YAML vytvoří pod, která používá deklarace identity trvalý svazek *azurefile* pro připojení sdílené složky Azure v */mnt/azure* cestu. Pro systém Windows Server kontejnery (aktuálně ve verzi preview ve službě AKS), zadejte *mountPath* pomocí konvence cestu Windows, například *"D:"* .
 
 Vytvořte soubor s názvem `azure-pvc-files.yaml`a zkopírujte do následující kód YAML. Ujistěte se, že *claimName* odpovídá PVC vytvořili v předchozím kroku.
 

@@ -1,7 +1,7 @@
 ---
 title: Co je pracovní prostor
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jaké pracovní prostor je a proč potřebujete jeden pro službu Azure Machine Learning.
+description: Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Zachová historii všech tréninkových spuštění, včetně protokolů, metrik, výstupu a snímek vašich skriptů. Pomocí těchto informací můžete určit, které školení vznikly nejlepší model
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 5785bf8f6538f1d91e7a23178e29487ebee14f29
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: HT
+ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989838"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388959"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
+# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
-Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning. Poskytuje centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte, když používáte službu Azure Machine Learning.
+Pracovní prostor je prostředek nejvyšší úrovně pro službu Azure Machine Learning poskytuje centrální místo, kde můžete pracovat s všechny artefakty, které vytvoříte, když používáte službu Azure Machine Learning.  Pracovní prostor uchovává historii všech tréninkových spuštění, včetně protokolů, metrik, výstupu a snímek vašich skriptů. Tyto informace použít k určení, které školení vznikly nejlepší model.  
 
-Pracovní prostor uchovává historii tréninkových spuštění, včetně protokolů, metrik, výstupu a snímek vašich skriptů. Tyto informace použít k určení, které školení vznikly nejlepší model.  
-
-Jakmile budete mít modelu, který rádi používáte, zaregistrujte s pracovním prostorem. Použijete registrovanému modelu a hodnoticí skripty k nasazení do služby Azure Container Instances, Azure Kubernetes Service, nebo pole programmable gate array (FPGA) jako koncový bod HTTP založené na protokolu REST. Můžete taky nasadit model pro zařízení Azure IoT Edge jako modul.
+Jakmile budete mít modelu, který rádi používáte, zaregistrujte s pracovním prostorem. Pak použijete registrovanému modelu a hodnoticí skripty k nasazení do služby Azure Container Instances, Azure Kubernetes Service, nebo pole programmable gate array (FPGA) jako koncový bod HTTP založené na protokolu REST. Můžete taky nasadit model pro zařízení Azure IoT Edge jako modul.
 
 ## <a name="taxonomy"></a>Taxonomie 
 
@@ -50,7 +48,7 @@ Diagram znázorňuje následující součásti pracovního prostoru:
 Můžete pracovat s pracovním prostorem následujícími způsoby:
 
 + Na webu:
-    + [Azure Portal](https://azure.portal.com)
+    + [Azure Portal](https://portal.azure.com)
     + [Vizuální rozhraní (preview)](ui-concept-visual-interface.md)
 + V Pythonu pomocí služby Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + Na příkazovém řádku pomocí Azure Machine Learning [rozšíření rozhraní příkazového řádku](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
@@ -71,7 +69,7 @@ Můžete pracovat s pracovním prostorem následujícími způsoby:
 
 Můžete také provádět následující úlohy správy pracovního prostoru:
 
-| Pracovní prostor Správa úloh   | Portál              | SDK        | CLI        |
+| Pracovní prostor Správa úloh   | Portál              | Sada SDK        | Rozhraní příkazového řádku        |
 |---------------------------|------------------|------------|------------|
 | Vytvoření pracovního prostoru        | **&check;**     | **&check;** | **&check;** |
 | Vytváření a správě výpočetních prostředků    | **&check;**   | **&check;** |  **&check;**   |

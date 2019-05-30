@@ -10,16 +10,16 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1d344f388b03acb3a81fcfde0e214eb7d82dc9b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1eab92dcc9c1890e82f9999e26e54378a3687c6d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578721"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390480"
 ---
 # <a name="how-to-page-through-news-search-results"></a>Jak stránkovat výsledky hledání zpráv
 
-Při volání rozhraní API pro vyhledávání zpráv Bingu vrátí seznam výsledků, které jsou relevantní pro váš dotaz. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-totalmatches) pole.  
+Při volání rozhraní API pro vyhledávání zpráv Bingu vrátí seznam výsledků, které jsou relevantní pro váš dotaz. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-totalmatches) pole.  
   
 Následující příklad ukazuje `totalEstimatedMatches` pole, která obsahuje zprávy odpovědi.  
 
@@ -32,7 +32,7 @@ Následující příklad ukazuje `totalEstimatedMatches` pole, která obsahuje z
 }  
 ```  
   
-Na stránce prostřednictvím články k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) parametrů dotazu.  
+Na stránce prostřednictvím články k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#offset) parametrů dotazu.  
  
 
 |Parametr  |Popis  |

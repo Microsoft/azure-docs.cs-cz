@@ -8,19 +8,19 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467988"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235811"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 
 *Toto téma platí pro tvůrce a správce.*
 
 Pomocí Microsoft Flow můžete automatizovat pracovní postupy mezi mnoha aplikacemi a služeb, které využívají firemní uživatelé. Pracovní postupy můžete aktivovat pomocí IoT Central konektoru v Microsoft Flow, když se pravidlo aktivuje v IoT Central. V pracovním postupu aktivovaného IoT Central nebo jakékoli jiné aplikace můžete použít akce v spojnici IoT Central:
-- Vytvořit zařízení
+- Vytvoření zařízení
 - Získejte informace o zařízení
 - Aktualizovat vlastnosti a nastavení zařízení
 - Spuštění příkazu na zařízení
@@ -41,7 +41,7 @@ V této části se dozvíte, jak aktivovat mobilní oznámení v mobilní aplika
 
     ![Vytvořit novou akci Microsoft Flow](media/howto-add-microsoft-flow/createflowaction.png)
 
-1. Zobrazí se seznam pracovních postupů tha mají přístup k a jsou připojené k tomuto pravidlu IoT Central. Klikněte na tlačítko **zkoumání šablon** nebo **nový > vytvořit ze šablony** a můžete si vybrat z kterékoli z dostupných šablon. 
+1. Zobrazí se seznam pracovních postupů, které mají přístup k a jsou připojené k tomuto pravidlu IoT Central. Klikněte na tlačítko **zkoumání šablon** nebo **nový > vytvořit ze šablony** a můžete si vybrat z kterékoli z dostupných šablon. 
 
     ![Dostupné šablony Microsoft Flow](media/howto-add-microsoft-flow/flowtemplates1.png)
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 354a68d7d4d07657baa7044566dde8b7ed77ca63
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947517"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400074"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fyzický server architektury pro zotavení po havárii Azure
 
@@ -54,7 +54,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 
 ## <a name="failover-and-failback-process"></a>Proces převzetí služeb při selhání a navrácení služeb po obnovení
 
-Po nastavení replikace a spuštění postupu zotavení po havárii (testovací převzetí služeb) zkontrolujte, že všechno funguje podle očekávání, můžete spustit převzetí služeb při selhání a navrácení služeb po obnovení pro potřeby. Poznámky:
+Po nastavení replikace a spuštění postupu zotavení po havárii (testovací převzetí služeb) zkontrolujte, že všechno funguje podle očekávání, můžete spustit převzetí služeb při selhání a navrácení služeb po obnovení pro potřeby. Všimněte si, že:
 
 - Plánované převzetí služeb není podporované.
 - Musíte navrátit služby po zpět do VMware v místním prostředí virtuálních počítačů. To znamená, že budete potřebovat infrastrukturu VMware v místním prostředí i v případě, že replikace místní fyzických serverů do Azure.

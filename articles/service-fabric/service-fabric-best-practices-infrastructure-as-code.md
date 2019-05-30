@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2dfe1493c6611fb69a417895aaa1028ad5881b9c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159935"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237417"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktura jako kód
 
@@ -95,6 +95,47 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
         microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
+```
+
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Virtuální počítač Azure operační systém automatického upgradu konfigurace 
+Upgradování vašich virtuálních počítačů je uživatelem iniciované operace a doporučuje se, že používáte [virtuálního počítače Škálovací nastavení automatického upgradu operačního systému](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) pro správu oprav hostitelů, clustery Azure Service Fabric Použití Orchestrace opravy je alternativní řešení, která je určená pro když jsou hostované mimo Azure, i když POA jde použít v Azure, s režijní náklady na provozování POA v Azure se běžným důvodem preferovat Upgrade automatické operačního systému virtuálního počítače přes POA. Toto jsou vlastnosti šablony výpočetní virtuální počítač Škálovací nastavit Resource Manageru umožňují upgrade operačního systému automaticky:
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+Při použití automatické upgrady operačního systému s využitím Service Fabric, image nového operačního systému je nasazeny v jedné aktualizační doméně se udržet vysokou dostupnost služby spuštěné v Service Fabric. Aby se začala používat automatické upgrady operačního systému v Service Fabric musí být váš cluster nastavená úroveň Silver odolnosti nebo vyšší.
+
+Ujistěte se, že následující klíč registru je nastaven na hodnotu false zabránit inicializace nekoordinovaná aktualizace hostitelských počítačích windows: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+
+Toto jsou vlastnosti šablony výpočetní virtuální počítač Škálovací nastavit Resource Manageru k nastavení klíče registru Windows Update na hodnotu false:
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Konfigurace upgradu clusteru Azure Service Fabric
+Vlastnost šablony Resource Manageru povolit automatický upgrade clusteru Service Fabric je následující:
+```json
+"upgradeMode": "Automatic",
+```
+Cluster ručně upgradovat, stáhněte si soubor cab/deb distribuční k virtuálnímu počítači clusteru a pak vyvolejte následující příkaz Powershellu:
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
 ## <a name="next-steps"></a>Další postup

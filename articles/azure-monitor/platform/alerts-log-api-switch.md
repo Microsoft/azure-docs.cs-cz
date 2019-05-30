@@ -1,28 +1,28 @@
 ---
 title: Přepnout ze starší verze Log Analytics výstrahy rozhraní API do nového rozhraní API Azure výstrahy
-description: Přehled o vyřazení starší verze elementu savedSearch podle rozhraní API upozornění Log Analytics a proces přepnout pravidla upozornění na nové rozhraní API ScheduledQueryRules s podrobnostmi o adresování běžné problémy zákazníků.
+description: Přehled služby starší verze elementu savedSearch podle rozhraní API upozornění Log Analytics a proces přepnout pravidla upozornění na nové rozhraní API ScheduledQueryRules s podrobnostmi o adresování běžné problémy zákazníků.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1706fc050fecd2e4be3a40725ec3e63a9036b3a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e8cb18b3ea4b01db6b373ebbcb55c1e17614319
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60995947"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399152"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvoleb rozhraní API pro výstrahy protokolu
+# <a name="switch-api-preference-for-log-alerts"></a>Přepnutí předvolby rozhraní API pro upozornění protokolu
 
 > [!NOTE]
 > Uvádí obsah pro uživatele Azure pouze veřejný cloud a **není** pro cloud Azure Government nebo Azure China.  
 
-Dokud se nedávno jste spravovali pravidla upozornění na portálu Microsoft Operations Management Suite. Nové prostředí upozornění byla integrována s různými službami v Microsoft Azure včetně služby Log Analytics a budeme muset [rozšíření pravidel upozornění z portálu OMS do Azure](alerts-extend.md). Ale zajistit minimální narušení pro zákazníky, kteří proces nezmění programové rozhraní pro jeho využití – [API upozornění Log Analytics](api-alerts.md) podle elementu SavedSearch.
+Donedávna jste spravovali pravidla upozornění na portálu Microsoft Operations Management Suite. Nové prostředí upozornění byla integrována s různými službami v Microsoft Azure včetně služby Log Analytics a budeme muset [rozšíření pravidel upozornění z portálu OMS do Azure](alerts-extend.md). Ale zajistit minimální narušení pro zákazníky, kteří proces nezmění programové rozhraní pro jeho využití – [API upozornění Log Analytics](api-alerts.md) podle elementu SavedSearch.
 
-Ale nyní oznamujeme ke službě Log Analytics upozorňování uživatelů hodnotu true Azure prostřednictvím kódu programu nebo naopak [Azure Monitor – rozhraní API ScheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), což je také reflektivní v vaše [fakturace Azure – pro výstrahy protokolu](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Další informace o tom, jak spravovat upozornění protokolu pomocí rozhraní API najdete v tématu [Správa upozornění protokolů pomocí šablony Azure Resource](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [upozornění protokolů správa pomocí Powershellu, CLI nebo API](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api).
+Ale nyní oznamujeme ke službě Log Analytics upozorňování uživatelů hodnotu true Azure prostřednictvím kódu programu nebo naopak [Azure Monitor – rozhraní API ScheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), což je také reflektivní v vaše [fakturace Azure – pro výstrahy protokolu](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Další informace o tom, jak spravovat upozornění protokolu pomocí rozhraní API najdete v tématu [Správa upozornění protokolů pomocí šablony Azure Resource](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [upozornění protokolů správa pomocí Powershellu](alerts-log.md#managing-log-alerts-using-powershell).
 
 ## <a name="benefits-of-switching-to-new-azure-api"></a>Výhody přechodu k nové rozhraní API Azure
 
@@ -33,22 +33,23 @@ Má několik výhod, vytváření a Správa výstrah pomocí [scheduledQueryRule
 - Upozornění vytvořené pomocí protokolů [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) může mít definované období až 48 hodin a načítat data delší dobu než dřív
 - Vytvořit pravidla výstrah v jednom kroku jako jeden prostředek, aniž by bylo nutné vytvořit tři úrovně prostředky jako [starší verze API upozornění Log Analytics](api-alerts.md)
 - Jeden programové rozhraní pro všechny varianty upozornění protokolů založených na dotazech v Azure – nové [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) slouží ke správě pravidel pro Log Analytics, jakož i Application Insights
+- Spravovat upozornění protokolu pomocí [rutin prostředí Powershell](alerts-log.md#managing-log-alerts-using-powershell)
 - Všechny nové přihlášení výstrah funkce a budoucí vývoj bude k dispozici jenom na novém [scheduledQueryRules rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>Proces přechod ze starší verze rozhraní API výstrahy protokolu
 
-Proces přechodu pravidla upozornění z [starší verze API upozornění Log Analytics](api-alerts.md) nezahrnuje Změna definice upozornění, dotaz nebo konfiguraci jakýmkoli způsobem. Upozornění pravidla a monitorování jsou poškozena a upozornění nezpůsobí ukončení nebo má potíže během nebo po přepínač.
-
-Uživatelů je zdarma a použít některou [starší verze API upozornění Log Analytics](api-alerts.md) nebo do nového [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Pravidla buď rozhraní API, se vytvořil upozornění *možné spravovat pomocí stejného rozhraní API pouze* – stejně jako z portálu Azure portal. Ve výchozím nastavení, budou dál používat Azure Monitor [starší verze API upozornění Log Analytics](api-alerts.md) k vytvoření jakékoli nové pravidlo upozornění na webu Azure portal.
+Uživatelů je zdarma a použít některou [starší verze API upozornění Log Analytics](api-alerts.md) nebo do nového [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Pravidla buď rozhraní API, se vytvořil upozornění *možné spravovat pomocí stejného rozhraní API pouze* – stejně jako z portálu Azure portal. Ve výchozím nastavení, budou dál používat Azure Monitor [starší verze API upozornění Log Analytics](api-alerts.md) k vytvoření jakékoli nové pravidlo upozornění na webu Azure portal u existujících pracovních prostorů Log Analytics. Jako [oznámili nový pracovní prostor Log vytvořené nebo po 1. června 2019](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/) -automaticky použije nový [scheduledQueryRules rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) ve výchozím nastavení, včetně webu Azure Portal.
 
 Níže jsou zkompilovány dopadů přepínač přednost scheduledQueryRules rozhraní API:
 
-- Všechny interakce provést pro správu upozornění protokolů prostřednictvím programových rozhraní musíte teď provést pomocí [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) místo. Další informace najdete v tématu, [ukázkový používání pomocí šablony Azure Resource](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [ukázkový používání prostřednictvím Azure CLI a Powershellu](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)
+- Všechny interakce provést pro správu upozornění protokolů prostřednictvím programových rozhraní musíte teď provést pomocí [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) místo. Další informace najdete v tématu, [ukázkový používání pomocí šablony Azure Resource](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [ukázkový používání přes PowerShell](alerts-log.md#managing-log-alerts-using-powershell)
 - Všechny nové pravidlo upozornění protokolu vytvořili na webu Azure portal, se vytvoří pomocí [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) pouze a uživatelům povolit používání [další funkce nové rozhraní API](#benefits-of-switching-to-new-azure-api) prostřednictvím webu Azure portal i
 - Závažnost pravidla upozornění protokolů se změní z: *Kritická, upozornění a informativní*do *hodnot závažnosti 0, 1 a 2*. Společně s možností k vytvoření nebo aktualizace pravidla upozornění se závažností a 4.
 
-> [!CAUTION]
-> Jakmile uživatel požádá o přepnout předvoleb k novému [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), pravidla nelze vyjádřit zpět nebo se vraťte na starší využití [starší verze API upozornění Log Analytics](api-alerts.md).
+Proces přechodu pravidla upozornění z [starší verze API upozornění Log Analytics](api-alerts.md) nezahrnuje Změna definice upozornění, dotaz nebo konfiguraci jakýmkoli způsobem. Upozornění pravidla a monitorování jsou poškozena a upozornění nezpůsobí ukončení nebo má potíže během nebo po přepínač. Jediná změna se mění předvoleb rozhraní API a přístup k pravidlům přes nové rozhraní API.
+
+> [!NOTE]
+> Jakmile uživatel požádá o přepnout předvoleb k novému [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), nelze vyjádřit zpět nebo vrátit zpět k používání sady starší [starší verze API upozornění Log Analytics](api-alerts.md).
 
 Každý zákazník, kdo chce dobrovolně přepnout na nový [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a blokovat využití z [starší verze API upozornění Log Analytics](api-alerts.md); to tak, že provádí volání PUT na pod rozhraní API pro přepnutí všechny výstrahy pravidla spojená s konkrétním pracovním prostorem Log Analytics.
 

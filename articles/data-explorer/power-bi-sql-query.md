@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý start: Vizualizace dat v Průzkumníku dat Azure pomocí jazyka SQL v Power BI'
-description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: dotaz SQL proti clusteru služby Průzkumník dat Azure.'
+title: Vizualizace dat v Průzkumníku dat Azure pomocí jazyka SQL v Power BI
+description: 'V tomto článku se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: dotaz SQL proti clusteru služby Průzkumník dat Azure.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/14/2018
-ms.openlocfilehash: 4a3a688adaae8fe66c336617cdd0a4807f16ec68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 05/30/2019
+ms.openlocfilehash: 13cec67a690239204bfc52d04b7cf03fd571148a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828829"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399276"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
+# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
-Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto rychlém startu se dozvíte, jak získat data a vizualizace v sestavě Power BI pomocí jazyka SQL.
+Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto článku se dozvíte, jak získat data a vizualizace v sestavě Power BI pomocí jazyka SQL.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat k dokončení tohoto rychlého startu:
+Budete potřebovat k dokončení tohoto článku:
 
 * Účet organizace e-mailu, který je členem skupiny Azure Active directory, abyste se mohli připojit k [clusteru help Průzkumník dat Azure](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -50,7 +50,7 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
 
     **Nastavení** | **Hodnota** | **Popis pole**
     |---|---|---|
-    | Server | *help.kusto.windows.net* | Adresa URL clusteru help (bez *https://*). Pro další clustery, adresa URL je ve formě  *\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
+    | Server | *help.kusto.windows.net* | Adresa URL clusteru help (bez *https://* ). Pro další clustery, adresa URL je ve formě  *\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
     | Databáze | *Ukázky* | Ukázkovou databázi, která je hostovaná v clusteru, ke kterému se připojujete. |
     | Režim připojení dat | *Import* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. Pomocí tohoto konektoru můžete použít jednu z možností. |
     | Časový limit příkazu | Ponechte prázdné | Jak dlouho dotaz spustí předtím, než vyvolá vypršení časového limitu. |
@@ -80,9 +80,8 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rychlého startu, odstraňte soubor Power BI Desktopu (.pbix).
+Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto článku, odstraňte soubor Power BI Desktopu (.pbix).
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-connector.md)
+[Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-connector.md)

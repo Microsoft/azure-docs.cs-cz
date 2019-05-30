@@ -3,26 +3,29 @@ title: Deklarovat moduly a trasy s manifesty nasazení – Azure IoT Edge | Doku
 description: Zjistěte, jak manifest nasazení deklaruje které moduly chcete nasadit, jak je nasadit a jak vytvořit směrování zpráv mezi nimi.
 author: kgremban
 manager: philmea
-ms.author: v-yiso
-origin.date: 03/28/2019
-ms.date: 04/22/2019
+ms.author: kgremban
+ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seodec18
+ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363149"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389369"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Zjistěte, jak nasadit moduly a vytvářet ve službě IoT Edge
 
-Každé zařízení IoT Edge běží aspoň dva moduly: $edgeAgent a $edgeHub, které jsou součástí modulu runtime IoT Edge. Kromě toho libovolného zařízení IoT Edge můžete spustit více modulů k provedení libovolného počtu procesů. Tyto moduly se nasazují zařízení najednou, takže IoT Edge poskytuje způsob, jak deklarovat, které moduly Chcete-li nainstalovat a způsob jejich spolupráce konfigurace. 
+Každé zařízení IoT Edge běží aspoň dva moduly: $edgeAgent a $edgeHub, které jsou součástí modulu runtime IoT Edge. Zařízení IoT Edge můžete spustit několik dalších modulů pro libovolný počet procesů. Používejte manifest nasazení zjistit zařízení, které moduly Chcete-li nainstalovat a způsob jejich spolupráce konfigurace. 
 
 *Manifest nasazení* je dokument JSON, který popisuje:
 
-* **Agenta IoT Edge** dvojčete modulu, který obsahuje image kontejneru pro každý modul, přihlašovací údaje do registrů kontejnerů privátní přístup a pokyny, jak by měl vytvářet a spravovat každý modul.
+* **Agenta IoT Edge** dvojče zařízení, která zahrnuje tři komponenty. 
+  * Image kontejneru pro každý modul, který běží na zařízení.
+  * Přihlašovací údaje pro přístup k registrům privátní kontejnerů, které obsahují bitové kopie modulu.
+  * Pokyny, jak by měl vytvářet a spravovat každý modul.
 * **Centrum IoT Edge** dvojče zařízení, která zahrnuje jak tok zpráv mezi moduly a nakonec do služby IoT Hub.
 * Volitelně můžete požadované vlastnosti všech dvojčat dalších modulů.
 
@@ -134,7 +137,9 @@ Každý směrování vyžaduje zdroje a jímky, ale je podmínka vyhodnocena jak
 
 ### <a name="source"></a>Zdroj
 
-Zdroj Určuje, odkud pochází zprávy. IoT Edge může směrovat zprávy ze zařízení typu list nebo moduly.
+Zdroj Určuje, odkud pochází zprávy. IoT Edge můžete směrovat zprávy z modulů nebo listové zařízení. 
+
+Pomocí sad IoT SDK, moduly lze deklarovat konkrétní výstupních front pro své zprávy horizontálních oddílů pomocí třídy ModuleClient. Výstupní fronty nejsou potřebné, ale jsou užitečné ke správě několik tras. Zařízení typu list můžete použít třídu DeviceClient sad IoT SDK k odesílání zpráv do zařízení IoT Edge brány stejným způsobem, který bude odesílat zprávy do služby IoT Hub. Další informace najdete v tématu [principy a použití sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md).
 
 Vlastnost Zdroj může být některý z následujících hodnot:
 
@@ -142,14 +147,14 @@ Vlastnost Zdroj může být některý z následujících hodnot:
 | ------ | ----------- |
 | `/*` | Všechny zprávy typu zařízení cloud nebo dvojčete změnit oznámení z jakéhokoli zařízení modulu nebo listu |
 | `/twinChangeNotifications` | Změny dvojčat (ohlášené vlastnosti) pocházející z libovolného zařízení modulu nebo listu |
-| `/messages/*` | Všechny zprávy typu zařízení cloud pomocí modulu nebo listu zařízení některé nebo žádný výstup |
+| `/messages/*` | Všechny zprávy typu zařízení cloud odeslané modulem některé nebo žádný výstup, nebo zařízení typu list |
 | `/messages/modules/*` | Všechny zprávy typu zařízení cloud modulu pro některé nebo žádný výstup |
 | `/messages/modules/<moduleId>/*` | Všechny zprávy typu zařízení cloud pomocí modulu pro konkrétní některé nebo žádný výstup |
 | `/messages/modules/<moduleId>/outputs/*` | Všechny zprávy typu zařízení cloud pomocí modulu pro konkrétní některé výstup |
 | `/messages/modules/<moduleId>/outputs/<output>` | Všechny zprávy typu zařízení cloud odesílaných konkrétní modul pomocí konkrétní výstupu |
 
 ### <a name="condition"></a>Podmínka
-Podmínka je volitelné v deklaraci trasy. Pokud chcete předat všechny zprávy z jímka ke zdroji, nechte **kde** klauzule úplně. Nebo můžete použít [dotazovací jazyk služby IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování pro určité zprávy nebo typy zpráv, které splňují zadanou podmínku. IoT Edge trasy nepodporují filtrování zpráv na základě značky dvojčat nebo vlastnosti. 
+Podmínka je volitelné v deklaraci trasy. Pokud chcete předat všechny zprávy ze zdroje do jímky, nechte **kde** klauzule úplně. Nebo můžete použít [dotazovací jazyk služby IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování pro určité zprávy nebo typy zpráv, které splňují zadanou podmínku. IoT Edge trasy nepodporují filtrování zpráv na základě značky dvojčat nebo vlastnosti. 
 
 Zprávy, které se předají mezi moduly ve službě IoT Edge jsou formátovány stejně jako zprávy, které předávají mezi zařízeními a Azure IoT Hub. Všechny zprávy jsou formátovány jako dokumenty JSON a mít **systemProperties**, **objekt appProperties**, a **tělo** parametry. 
 
@@ -276,9 +281,3 @@ Následující příklad ukazuje, jak může vypadat dokumentu manifestu nasazen
 * Úplný seznam vlastností, které mohou nebo musí být součástí $edgeAgent a $edgeHub, naleznete v tématu [vlastnosti agenta IoT Edge a Centrum IoT Edge](module-edgeagent-edgehub.md).
 
 * Teď, když víte, jak se používají moduly IoT Edge, [pochopení požadavků a nástroje pro vývoj modulů IoT Edge](module-development.md).
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md

@@ -3,19 +3,19 @@ title: Jak použít zpětná volání relace s modelem konverzace Learner – Mi
 titleSuffix: Azure
 description: Zjistěte, jak použít zpětná volání relace s modelem Learner konverzace.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 246b87e46029c2bf4d7361540939181b3b209acc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: eeed0718a1feb170dbbaa783ec0a840c7829c02e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60635660"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390013"
 ---
 # <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Jak použít zpětná volání relace s modelem Learner konverzace
 

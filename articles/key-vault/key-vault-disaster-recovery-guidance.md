@@ -7,14 +7,14 @@ manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 9346f3f9bd9395ac863af87d05724a76ae83fb2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dba1fe91a635f467f4a3aeeaa048897065822869
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702333"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236643"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault dostupnost a redundance
 
@@ -25,6 +25,8 @@ Obsah trezoru klíčů se replikují v rámci oblasti a do sekundární oblasti 
 Pokud selžou i jednotlivé komponenty ve službě key vault, alternativní komponenty v rámci oblasti vstoupit poskytovat vaši žádost, abyste měli jistotu, že neexistuje žádné snížení funkčnosti. Není nutné provádět žádnou akci, který spustí. Probíhá automaticky a bude pro vás transparentní.
 
 V nepravděpodobném případě, že není k dispozici celé oblasti Azure, se automaticky směrují požadavky, které jste provedli z Azure Key Vault v dané oblasti (*převzetí služeb při selhání*) do sekundární oblasti. Až primární oblast opět k dispozici, se požadavky směrují zpět (*při navrácení služeb obnoví*) do primární oblasti. Znovu není potřeba provádět žádnou akci, protože k tomu dojde automaticky.
+
+Prostřednictvím tohoto návrhu vysokou dostupnost služby Azure Key Vault nevyžádá žádný výpadek pro činnosti údržby.
 
 Existuje několik upozornění zajímat:
 
@@ -41,7 +43,7 @@ Existuje několik upozornění zajímat:
   * Zalamování řádků
   * Rozbalení
   * Ověřit
-  * Podepsat
+  * přihlášení
   * Backup
 * Po navrácení převzetí služeb při selhání všech žádostí typy (včetně čtení *a* požadavků na zápis) jsou k dispozici.
 

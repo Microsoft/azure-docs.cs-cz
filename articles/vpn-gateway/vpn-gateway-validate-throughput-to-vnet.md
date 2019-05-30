@@ -2,31 +2,24 @@
 title: Ověření propustnosti sítě VPN k virtuální síti Microsoft Azure | Dokumentace Microsoftu
 description: Účelem tohoto dokumentu je umožňující uživateli ověření propustnosti sítě ze svých místních prostředků do virtuálního počítače Azure.
 services: vpn-gateway
-documentationcenter: na
-author: chadmath
+author: cherylmc
 manager: jasmc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 05/29/2019
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1117afcf6254c32ebe0a4e72ad5619606098253
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457523"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388616"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Ověření propustnosti sítě VPN do virtuální sítě
 
 Připojení k síti VPN gateway umožňuje bezpečně spojovat různá místa mezi lokalitami, připojení mezi vaší virtuální sítě v rámci Azure a vaší místní infrastruktuře IT.
 
-Tento článek ukazuje, jak ověření propustnosti sítě z místních prostředků do Azure virtuální počítač (VM). Také poskytuje pokyny k odstraňování problémů.
+Tento článek ukazuje, jak ověření propustnosti sítě z místních prostředků do Azure virtuální počítač (VM). Také poskytuje pokyny k odstraňování problémů. 
 
 >[!NOTE]
 >Tento článek je určený při diagnostice a řešení běžných problémů. Pokud nemůžete problém vyřešit pomocí následujících informací, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -127,7 +120,7 @@ Může dojít k pomalé souboru kopírování při pomocí Průzkumníka Windows
 - Rychlost čtení/zápis disku dostatek virtuálních počítačů. Další informace najdete v tématu [řešení potíží s Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
 
 ## <a name="on-premises-device-external-facing-interface"></a>Místní zařízení externí protilehlé rozhraní
-Pokud je součástí místního zařízení VPN internetové IP adresy [místní sítě](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definice v Azure, můžete se setkat, neschopnost následně odpojení sítě VPN, Občasná nebo problémy s výkonem.
+Pokud je součástí místního zařízení VPN internetové IP adresy [místní sítě](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) definice místo adres v Azure, můžete se setkat, neschopnost následně odpojení sítě VPN, Občasná nebo problémy s výkonem.
 
 ## <a name="checking-latency"></a>Kontrola latence
 Určí, jestli je zpoždění, nad 100 ms mezi segmenty směrování pomocí tracert trasovat zařízení Microsoft Azure Edge.

@@ -3,19 +3,19 @@ title: Jak vytvořit model konverzace Learner využívající Node.js – Micros
 titleSuffix: Azure
 description: Zjistěte, jak vytvořit model konverzace Learner pomocí Node.js.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: cc071d59a387c8ae4982eacbce6812526f447788
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708358"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388771"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Vytvoření modelu konverzace Learner pomocí Node.js
 
@@ -61,7 +61,7 @@ Konverzace Learner projekt se skládá ze sady SDK je přidat do vašeho robota 
     > [!NOTE]
     > Během `npm install`, tuto chybu můžete ignorovat, pokud k němu dojde: `gyp ERR! stack Error: Can't find Python executable`
 
-2. Konfigurovat:
+2. Konfigurace:
 
    Vytvořte soubor s názvem `.env` v adresáři `cl-bot-01`.  Obsah souboru by měl vypadat:
 

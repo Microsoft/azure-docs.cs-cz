@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68973d3a88791bcfffc8183f5e3a16975fe15742
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2e6a5ecd704aabb4994337cb7b7df9e84677348d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540452"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235284"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -45,7 +45,7 @@ Podívejme se na každý krok v podrobností. Můžete také přejít přímo na
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizace registrace na více tenantů
 
-Registrace webové aplikace nebo rozhraní API ve službě Azure AD jsou ve výchozím nastavení jednoho tenanta. Můžete provést registraci více tenantů hledáním **s bezproblémovým** zapnout **vlastnosti** podokně Registrace vaší aplikace v [webu Azure portal] [ AZURE-portal] a nastavíte ho na **Ano**.
+Registrace webové aplikace nebo rozhraní API ve službě Azure AD jsou ve výchozím nastavení jednoho tenanta. Můžete provést registraci více tenantů hledáním **podporovaných typů účtu** zapnout **ověřování** podokně Registrace vaší aplikace v [webuAzureportal] [ AZURE-portal] a nastavíte ho na **účty v libovolném adresáři organizace**.
 
 Dřív, než aplikace může být více tenantů, vyžaduje Azure AD aplikace být globálně jedinečný identifikátor URI ID aplikace. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD.
 
@@ -150,7 +150,7 @@ To je patrné vícevrstvé nativního klienta volání v ukázkové webové rozh
 
 Podobně jako případ se stane, když různé vrstvy aplikace jsou zaregistrované v různých tenantech. Představte si třeba v případě vytváření nativní klientskou aplikaci, která volá Online rozhraní API pro Office 365 Exchange. Pro vývoj nativních aplikací a dále nativní aplikaci, aby běžela v tenantovi zákazníka, musí být instanční objekt Exchange Online. V takovém případě se pro vývojáře a zákazník musíte koupit Exchange Online pro služby, které byly vytvořeny v svým klientům.
 
-Pokud se jedná o rozhraní API vytvořené organizací, než je Microsoft, musí vývojář rozhraní API umožňují zákazníkům souhlas aplikaci do klientů svým zákazníkům. Doporučený návrh je pro vývojáře třetích stran k vytvoření rozhraní API tak, že můžete také fungovat jako webový klient k provedení registrace. To uděláte takto:
+Pokud se jedná o rozhraní API vytvořené organizací, než je Microsoft, musí vývojář rozhraní API umožňují zákazníkům souhlas aplikaci do klientů svým zákazníkům. Doporučený návrh je pro vývojáře třetích stran k vytvoření rozhraní API tak, že můžete také fungovat jako webový klient k provedení registrace. Použijte následující postup:
 
 1. Postupujte podle předchozích částech k zajištění, že rozhraní API implementuje požadavky na registraci nebo kódu aplikace s více tenanty.
 2. Kromě zpřístupnění rozhraní API obory nebo role, ujistěte se, že obsahuje registraci "přihlášení a čtení profilu uživatele" oprávnění (k dispozici ve výchozím nastavení).

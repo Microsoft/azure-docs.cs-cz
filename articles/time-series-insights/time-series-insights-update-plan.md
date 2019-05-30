@@ -2,7 +2,7 @@
 title: Plánování prostředí Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Plánování prostředí Azure čas Series Insights ve verzi Preview.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3fab86b2b2f0ad892e02cd089dbd7c45ce601d6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205776"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388730"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí Azure čas Series Insights ve verzi Preview
 
-Tento článek popisuje osvědčené postupy pro plánování a začít rychle používat Azure čas Series Insights ve verzi Preview.
+Tento článek popisuje osvědčené postupy pro plánování a rychlé zahájení práce s použitím Insights Azure čas řady ve verzi Preview.
 
 > [!NOTE]
-> Zobrazit [plánování prostředí Azure čas Series Insights GA](time-series-insights-environment-planning.md), osvědčené postupy k plánování instanci TSI obecné dostupnosti.
+> Osvědčené postupy pro plánování instanci služby Time Series Insights obecné dostupnosti, najdete v části [plánování prostředí Azure Time Series Insights všeobecné dostupnosti](time-series-insights-environment-planning.md).
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Osvědčené postupy pro plánování a příprava
 
@@ -45,29 +45,29 @@ Při zřizování prostředí čas Series Insights ve verzi Preview, vytvoříte
 
 Pokud chcete začít, potřebujete tři další položky:
 
-* A [časové řady modelu](./time-series-insights-update-tsm.md).
-* [Připojený zdroj událostí k Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md).
-* [Události přenášejí do zdroje událostí](./time-series-insights-send-events.md) , které jsou namapovány na model a jsou v platném formátu JSON.
+* A [časové řady modelu](./time-series-insights-update-tsm.md)
+* [Připojený zdroj událostí k Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* [Události přenášejí do zdroje událostí](./time-series-insights-send-events.md) , které jsou namapovány na model a jsou v platném formátu JSON
 
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>Konfigurovat vlastnosti ID řady čas a časové razítko
 
-Chcete-li vytvořit nové prostředí Time Series Insights, vyberte **ID řady času**. To uděláte tak funguje jako logický oddíl pro vaše data. Jak je uvedeno, ujistěte se, že má vaše ID řady čas připraven.
+Pokud chcete vytvořit nové prostředí Time Series Insights, vyberte řady čas ID. To uděláte tak funguje jako logický oddíl pro vaše data. Jak je uvedeno, ujistěte se, že má vaše ID řady čas připraven.
 
 > [!IMPORTANT]
 > ID řady času jsou *neměnné* a *není možné později změnit*. Zkontrolujte každé z nich před posledním výběr a prvním použití.
 
-Můžete vybrat až tři (3) klíče jednoznačně rozlišit vašich prostředků. Další informace najdete v článku [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md) a [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md).
+Můžete vybrat až tři klíče jednoznačně rozlišit vašich prostředků. Další informace najdete v článku [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md) a [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md).
 
 Vlastnost časového razítka je také důležité. Tuto vlastnost můžete určit, při přidání zdroje událostí. Každý zdroj události má volitelná vlastnost časového razítka, která se používá ke zdrojům událostí sledovat v čase. Časové razítko hodnoty jsou malá a velká písmena a musí být naformátován jednotlivé specifikace každý zdroj událostí.
 
 > [!TIP]
 > Zkontrolujte požadavky na formátování a analýzy pro zdroje událostí.
 
-Když necháte prázdnou, čas zařazení události ze zdroje událostí se používá jako časové razítko události. Pokud odešlete historická data nebo dávkové události, přizpůsobení vlastnost časového razítka je užitečnější než výchozí čas zařazení události. Další informace, přečtěte si informace o [přidání zdroje událostí ve službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
+Když necháte prázdnou, čas zařazení události ze zdroje událostí se používá jako časové razítko události. Pokud odešlete historická data nebo dávkové události, přizpůsobení vlastnost časového razítka je užitečnější než výchozí čas zařazení události. Další informace, přečtěte si o tom, jak [přidání zdroje událostí ve službě Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).
 
 ## <a name="understand-the-time-series-model"></a>Pochopení časové řady modelu
 
-Teď můžete nakonfigurovat prostředí Time Series Insights Model časové řady. Nový model usnadňuje vyhledání a analýza dat IoT. Umožňuje kurátorování, údržby a obohacení dat časových řad a umožňuje připravit spotřebiteli datových sad. Model využívá **čas řady ID**, které mapují na instanci, která přidruží jedinečný prostředek s proměnnými, označované jako typy a hierarchie. Přečtěte si informace o novém [modelu časové řady](./time-series-insights-update-tsm.md).
+Teď můžete nakonfigurovat prostředí Time Series Insights Model časové řady. Nový model usnadňuje vyhledání a analýza dat IoT. Umožňuje kurátorování, údržby a obohacení dat časových řad a umožňuje připravit spotřebiteli datových sad. Model využívá čas řady ID, které mapují na instanci, která přidruží jedinečný prostředek s proměnnými, označované jako typy a hierarchie. Přečtěte si informace o novém [modelu časové řady](./time-series-insights-update-tsm.md).
 
 Model je dynamická, tak může být sestaven v každém okamžiku. Abyste mohli rychle začít, sestavení a nahrajte ho před doručením (push) dat do služby Time Series Insights. Pokud chcete vytvořit váš model, najdete v článku [použít Model časové řady](./time-series-insights-update-how-to-tsm.md).
 
@@ -79,8 +79,8 @@ Můžete ověřit tak, jak odesílat události do služby Time Series Insights. 
 
 Základním pravidlem:
 
-* Store metadat v vašeho modelu časové řady
-* Časový režim řady, pole instancí a události obsahují jenom potřebné informace, například **ID řady času** nebo **časové razítko**.
+* Store metadat v vašeho modelu časové řady.
+* Časový režim řady, pole instancí a události obsahují jenom nezbytné informace, jako je například ID řady času nebo časového razítka.
 
 Další informace najdete v tématu [obrazce události](./time-series-insights-send-events.md#json).
 
@@ -89,5 +89,4 @@ Další informace najdete v tématu [obrazce události](./time-series-insights-s
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md) v čase Series Insights ve verzi Preview.
-
 - Další informace o [modelování dat](./time-series-insights-update-tsm.md) v čase Series Insights ve verzi Preview.

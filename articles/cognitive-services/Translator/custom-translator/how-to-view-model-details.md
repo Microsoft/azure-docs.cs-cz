@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 13f3d88ad69d2acc64b9a6469415eceaf22fa491
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33b1d7e0e44ecae4bc8a7a6bf9c7e6dfd6b0eb66
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456397"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386886"
 ---
 # <a name="view-model-details"></a>Zobrazení podrobností o modelu
 
@@ -30,7 +30,7 @@ Pro každý model v projektu se zobrazí tyto podrobnosti.
 
     -  TrainingQueued: Určuje, že se školení byla zařazena do systému MT pro tento model.
 
-    -  Spuštěno: Určuje, zda je spuštěna na školení systému MT pro tento model.
+    -  Spuštění: Určuje, zda je spuštěna na školení systému MT pro tento model.
 
     -  Úspěšné: Určuje, že v systému MT byla úspěšná na školení a model je k dispozici. V tomto stavu zobrazí se pro tento model BLEU skóre.
 

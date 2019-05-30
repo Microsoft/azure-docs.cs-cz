@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/31/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c3b9aa6fcf5cf96e3ef1f3bdd76e9f1d19be5c5c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098139"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400107"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -110,7 +110,7 @@ Nastavit konfigurační server zaregistrujete v trezoru a zjištění virtuáln�
 2. Pokud nemáte k dispozici konfigurační server, klikněte na tlačítko **+ konfigurační server**.
 3. V **přidat Server**, zkontrolujte, že **konfigurační Server** se zobrazí v **typ serveru**.
 4. Stáhněte si instalační soubor sjednocené instalace Site Recovery.
-5. Stáhněte registrační klíč trezoru. Budete potřebovat při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
+5. Stáhnout registrační klíč trezoru Budete potřebovat při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 
    ![Nastavení zdroje](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -147,12 +147,12 @@ Vyberte a zkontrolujte cílové prostředky.
 2. Zadejte model nasazení cíl.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
-   ![Cíl](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Target](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Novou zásadu replikace vytvoříte tak, že kliknete na **Infrastruktura Site Recovery** > **Zásady replikace** > **+ Zásada replikace**.
+1. Novou zásadu replikace vytvoříte tak, že kliknete na **Infrastruktura Site Recovery** > **Zásady replikace** >  **+ Zásada replikace**.
 2. V části **Vytvoření zásad replikace** zadejte název zásady.
 3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Tato hodnota určuje, jak často jsou vytvořeny body obnovení pro data. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
 4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: fe08569937dc29ecbc66da1cb2c431cca11a8580
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835106"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389023"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure konzoly sériového portu pro Linux
 
@@ -117,7 +117,9 @@ Konzole sériového portu je možné zakázat pro konkrétní virtuální počí
 > K povolení nebo zakázání konzole sériového portu k předplatnému, musíte mít oprávnění k zápisu do předplatného. Tato oprávnění zahrnují role správce nebo vlastníka. Vlastní role můžete také mít oprávnění k zápisu.
 
 ### <a name="subscription-level-disable"></a>Zakázat úroveň předplatného
-Konzole sériového portu se dají zakázat pro celé předplatné prostřednictvím [volání rozhraní API REST zakázat konzoly](/rest/api/serialconsole/console/disableconsole). Můžete použít **vyzkoušet** funkce, které jsou k dispozici na této stránce dokumentace k rozhraní API zakázání a povolení konzole sériového portu pro odběr. Zadejte ID svého předplatného pro **subscriptionId**, zadejte **výchozí** pro **výchozí**a pak vyberte **spustit**. Příkazy Azure CLI ještě nejsou k dispozici.
+Konzole sériového portu se dají zakázat pro celé předplatné prostřednictvím [volání rozhraní API REST zakázat konzoly](/rest/api/serialconsole/console/disableconsole). Tato akce vyžaduje přístup úrovně Přispěvatel nebo vyšší k předplatnému. Můžete použít **vyzkoušet** funkce, které jsou k dispozici na této stránce dokumentace k rozhraní API zakázání a povolení konzole sériového portu pro odběr. Zadejte ID svého předplatného pro **subscriptionId**, zadejte **výchozí** pro **výchozí**a pak vyberte **spustit**. Příkazy Azure CLI ještě nejsou k dispozici.
+
+Chcete-li znovu povolit konzoly sériového portu pro předplatné, použijte [volání rozhraní API REST povolit konzoly](/rest/api/serialconsole/console/enableconsole).
 
 ![Vyzkoušet rozhraní REST API](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
 
@@ -168,7 +170,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 > [!CAUTION]
 > To znamená, že uživatel, který je odpojen nebude odhlášeni. Schopnost Vynutit odhlášení při odpojení (pomocí SIGHUP nebo mechanismus podobný) je stále v se plánuje. Pro Windows se automatické vypršení časového limitu povolené ve speciální správy konzoly (SAC); ale pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu. Chcete-li to provést, přidejte `export TMOUT=600` ve vaší *.bash_profile* nebo *.profile* souboru pro uživatele, který používáte k přihlášení do konzoly. Toto nastavení vyprší časový limit relace po 10 minutách.
 
-## <a name="accessibility"></a>Usnadnění
+## <a name="accessibility"></a>Přístupnost
 Klíče se pro sériové konzoly Azure se pro usnadnění. Za tímto účelem jsme zajistili, že je plně přístupné konzole sériového portu.
 
 ### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
@@ -182,10 +184,10 @@ Protože většina chyb jsou přechodné, opakování pokusu o připojení je č
 
 Chyba                            |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
-Nepovedlo se načíst nastavení diagnostiky spouštění pro  *&lt;VMNAME&gt;*. Použití konzole sériového portu, zajistěte, že Diagnostika spouštění je povolená pro tento virtuální počítač. | Ujistěte se, že má virtuální počítač [Diagnostika spouštění](boot-diagnostics.md) povolena.
+Nepovedlo se načíst nastavení diagnostiky spouštění pro  *&lt;VMNAME&gt;* . Použití konzole sériového portu, zajistěte, že Diagnostika spouštění je povolená pro tento virtuální počítač. | Ujistěte se, že má virtuální počítač [Diagnostika spouštění](boot-diagnostics.md) povolena.
 Virtuální počítač je v zastaveném stavu Uvolněno. Spusťte virtuální počítač a pokus o připojení konzoly sériového portu. | Virtuální počítač musí být ve spuštěném stavu pro přístup ke konzole sériového portu.
 Nemáte požadovaná oprávnění pro tento virtuální počítač pomocí konzoly sériového portu. Ujistěte se, máte alespoň oprávnění role Přispěvatel virtuálních počítačů.| Konzola sériového portu přístup vyžaduje určitá oprávnění. Další informace najdete v tématu [požadavky](#prerequisites).
-Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění  *&lt;STORAGEACCOUNTNAME&gt;*. Ověřte, že Diagnostika spouštění je povolená pro tento virtuální počítač a máte přístup k tomuto účtu úložiště. | Konzola sériového portu přístup vyžaduje určitá oprávnění. Další informace najdete v tématu [požadavky](#prerequisites).
+Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění  *&lt;STORAGEACCOUNTNAME&gt;* . Ověřte, že Diagnostika spouštění je povolená pro tento virtuální počítač a máte přístup k tomuto účtu úložiště. | Konzola sériového portu přístup vyžaduje určitá oprávnění. Další informace najdete v tématu [požadavky](#prerequisites).
 Webové sokety je uzavřený nebo nelze otevřít. | Možná budete muset povolit `*.console.azure.com`. Podrobnější ale delší přístup je na seznamu povolených IP adres [rozsahy IP adres Datacentra Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653), které mění poměrně.
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá firewall k účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzole sériového portu na funkci.
 
@@ -198,6 +200,7 @@ Stisknutím klávesy **Enter** po připojení banner nezpůsobí výzvě přihl�
 Text konzoly sériového portu zabere jenom část na velikost obrazovky (často po pomocí textového editoru). | Konzoly sériového portu nepodporují vyjednávání o velikost okna ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), což znamená, že bude bez signálu SIGWINCH odesílat aktualizace velikosti obrazovky a virtuální počítač bude nemají žádné informace o velikosti svého terminálu. Nainstalovat xterm nebo podobného nástroje, abyste měli `resize` příkaz a poté spusťte `resize`.
 Vkládání dlouhé řetězce nebude fungovat. | Konzole sériového portu omezení délky řetězce do terminálu na 2 048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
 Konzola sériového portu nefunguje s bránou firewall účtu úložiště. | Konzoly sériového portu záměrné nemůže pracovat s branami firewall účet úložiště na účet úložiště diagnostiky spouštění povolené.
+Konzola sériového portu nefunguje s účtem služby storage pomocí Azure Data Lake Storage Gen2 hierarchické obory názvů. | Jde o známý problém s hierarchické obory názvů. Pokud chcete zmírnit, ujistěte se, že účet úložiště diagnostiky spouštění Virtuálního počítače není vytvořené pomocí Azure Data Lake Storage Gen2. Tuto možnost lze nastavit pouze při vytváření účtu úložiště. Budete muset vytvořit účet úložiště diagnostiky spouštění samostatné bez Azure Data Lake Storage Gen2 povolit, aby tento problém zmírnit.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

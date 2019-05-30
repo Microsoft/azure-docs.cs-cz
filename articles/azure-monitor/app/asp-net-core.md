@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8522b1d0a8f8466870966d3f11ce66f7bf15672b
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016369"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226403"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro aplikace ASP.NET Core
 
@@ -111,7 +111,7 @@ Tento článek popisuje, jak povolit Application Insights pro [ASP.NET Core](htt
     > [!NOTE]
     > Instrumentačním klíčem zadaný ve službě wins kódu přes proměnnou prostředí `APPINSIGHTS_INSTRUMENTATIONKEY`, které služby wins za další možnosti.
 
-## <a name="run-your-application"></a>Spustit aplikaci
+## <a name="run-your-application"></a>Spusťte aplikaci
 
  Spusťte aplikaci a požadavky na ni. Telemetrická data by teď měly začít odesílaných do Application Insights. Následující telemetrická data se automaticky shromažďují pomocí Application Insights SDK.
 
@@ -138,7 +138,7 @@ Podpora pro [čítače výkonu](https://azure.microsoft.com/documentation/articl
 
 [Protokoly ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger) závažnosti `Warning` nebo výše jsou automaticky zachycené ze sady SDK verze 2.7.0-beta3 nebo vyšší.
 
-### <a name="live-metrics"></a>Live Metrics
+### <a name="live-metrics"></a>Živé metriky
 
 Může trvat několik minut, než se telemetrická data začnou zobrazovat na portálu. Chcete-li rychle zkontrolovat, zda vše funguje, je nejvhodnější použít [Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)při posílání požadavků na běžící aplikaci.
 
@@ -383,6 +383,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 ## <a name="video"></a>Video
 
 - Externí krok za krokem videu o [konfigurace Application Insights pomocí .NET Core a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) úplně od začátku.
+- Externí krok za krokem videu o [konfigurace Application Insights pomocí .NET Core a Visual Studio Code](https://youtu.be/ygGt84GDync) úplně od začátku.
 
 ## <a name="next-steps"></a>Další postup
 * [Prozkoumejte toky uživatelů](../../azure-monitor/app/usage-flows.md) pochopit, jak uživatelé procházejí vaši aplikaci.

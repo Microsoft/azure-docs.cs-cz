@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit potíže s Update Management, Change Trackin
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8867912d98897a695c1e59ebd4177301230281bb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145147"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399757"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při registraci řešení
 
@@ -42,6 +42,24 @@ Tato chyba je způsobena nesprávnou nebo chybějící oprávnění na virtuáln
 #### <a name="resolution"></a>Řešení
 
 Ujistěte se, že máte správná oprávnění k připojení virtuálního počítače. Zkontrolujte [práva potřebná k připojení počítačů](../automation-role-based-access-control.md#onboarding) a připojit řešení znovu. Pokud se zobrazí chyba `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ujistěte se, že máte `Microsoft.OperationalInsights/workspaces/read` oprávnění, abyste mohli najít, pokud je virtuální počítač připojit k pracovnímu prostoru.
+
+### <a name="diagnostic-logging"></a>Scénář: Registrace selže a zobrazí se zpráva – nepovedlo se nakonfigurovat účet automatizace pro protokolování diagnostiky
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o připojení virtuálního počítače do řešení zobrazí následující zpráva:
+
+```error
+Failed to configure automation account for diagnostic logging
+```
+
+#### <a name="cause"></a>Příčina
+
+Tato chyba může nastat, pokud cenová úroveň neodpovídá modelu fakturace předplatného. Další informace najdete v tématu [monitorování využití a odhadované náklady ve službě Azure Monitor](http://aka.ms/PricingTierWarning).
+
+#### <a name="resolution"></a>Řešení
+
+Ruční vytvoření pracovního prostoru Log Analytics a zopakovat tento proces registrace a vyberte pracovní prostor vytvořený.
 
 ### <a name="computer-group-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
 

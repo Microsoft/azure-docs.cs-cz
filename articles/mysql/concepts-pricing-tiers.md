@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: e5d7ff8513a0659ca1107b9baf07cdf4bac4b807
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8e3d12db8d2500a2675e451580bee7072d22d41c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688632"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225432"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -38,50 +38,9 @@ Po vytvoření serveru, počet virtuálních jader generace hardwaru a cenové �
 
 ## <a name="compute-generations-and-vcores"></a>COMPUTE generace a virtuální jádra
 
-Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. V současné době můžete zvolit ze dvou generací compute Gen 4 a 5 Obecné. Gen 4 logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech. 4. generace a generace 5 jsou k dispozici v následujících oblastech ("X" označuje k dispozici).
+Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. Čína – východ 1, 1 Čína – sever, USA ministerstva obrany USA – střed a US DoD – východ využívat Gen 4 logických procesorů, které jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech. Všechny ostatní oblasti využívat logické procesory generace 5, které jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech.
 
-| **Oblasti Azure** | **4. generace** | **Generace 5** |
-|:---|:----------:|:--------------------:|
-| USA – střed |  | X |
-| USA – východ |  | X |
-| Východní USA 2 |  | X |
-| Středoseverní USA |  | X |
-| Středojižní USA |  | X |
-| Západní USA |  | X |
-| Západní USA 2 |  | X |
-| Brazílie – jih |  | X |
-| Kanada – střed |  | X |
-| Kanada – východ |  | X |
-| Severní Evropa |  | X |
-| Západní Evropa |  | X |
-| Francie – střed |  | X |
-| Velká Británie – jih |  | X |
-| Spojené království – západ |  | X |
-| Východní Asie |  | X |
-| Jihovýchodní Asie |  | X |
-| Austrálie – východ |  | X |
-| Austrálie – střed |  | X |
-| Austrálie – střed 2 |  | X |
-| Austrálie – jihovýchod |  | X |
-| Střed Indie |  | X |
-| Indie – jih |  | X |
-| Indie – západ |  | X |
-| Japonsko – východ |  | X |
-| Japonsko – západ |  | X |
-| Jižní Korea – střed |  | X |
-| Jižní Korea – jih |  | X |
-| Východní Čína 1 | X |  |
-| Čína – východ 2 |  | X |
-| Čína – sever 1 | X |  |
-| Čína – sever 2 |  | X |
-| Německo – střed |  | X |
-| US DoD – střed  | X |  |
-| US DoD – východ  | X |  |
-| USA (Gov) – Arizona |  | X |
-| USA (Gov) – Texas |  | X |
-| USA (Gov) – Virginia |  | X |
-
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Úložiště, které zřizujete je objem úložné kapacity k dispozici pro databáze Azure pro MySQL server. Úložiště se používá pro soubory databáze, dočasných souborů, protokoly transakcí a MySQL server protokoly. Celkový objem úložiště, který zřídíte také definuje vstupně-výstupní kapacity k dispozici pro váš server.
 
@@ -92,17 +51,25 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Zvýšení velikosti úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací |
 
-Můžete přidat další kapacitu, během a po vytvoření serveru. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
+Můžete přidat další úložiště kapacitu během a po vytvoření serveru a povolit systému, které zvětší úložiště automaticky na základě úložiště využití vašich úloh. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
 
 Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Jsou důležité metriky pro monitorování [limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
-Server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 5 GB nebo 5 % zřízeného úložiště, podle toho, která hodnota je nižší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 250 MB.  
+Servery s méně než 100 GB zřízené úložiště jsou označené, pokud volný úložný prostor je menší než 512MB nebo 5 % velikosti zřízeného úložiště jen pro čtení. Servery s více než 100 GB zřízené úložiště jsou označeny pro čtení, pouze v případě volný úložný prostor je menší než 5 GB.
+
+Například, pokud jste zřídili 110 GB úložiště a skutečné využití překročí 105 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne menší než 512 MB volného místa.
 
 Zatímco se služba pokouší nastavit server jen pro čtení, všechny požadavky transakcí zápisu se zablokují a stávající aktivní transakce se budou provádět dál. Když je server nastavený jen pro čtení, všechny další operace zápisu a potvrzení transakcí selžou. Dotazy na čtení budou fungovat dál bez přerušení. Jakmile navýšíte velikost zřízeného úložiště, bude server připravený znovu přijímat transakce zápisu.
 
-Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-on-metric.md).
+Doporučujeme vám zapnout úložiště auto-grow nebo nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty proto můžete vyhnout převedení do stavu jen pro čtení. Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-on-metric.md).
+
+### <a name="storage-auto-grow"></a>Auto-grow úložiště
+
+Pokud úložiště automaticky růst je povoleno, úložiště automaticky rozšíří, aniž by to ovlivnilo zatížení. Pro servery s méně než 100 GB zřízené úložiště velikost zřízeného úložiště prodloužen o 5 GB, jakmile volný úložný prostor je nižší než delší než 1 GB nebo 10 % zřízeného úložiště. Pro servery s více než 100 GB zřízeného úložiště velikost zřízeného úložiště zvětšit 5 %, pokud volný prostor úložiště je menší než 5 % velikosti zřízeného úložiště. Platí omezení maximální velikost úložiště, jak je uvedeno výše.
+
+Například, pokud jste zřídili 1 000 GB úložiště a skutečné využití překročí 950 GB, velikost úložiště serveru se zvýší až 1050 GB. Případně pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší až 15 GB při méně než 1 GB úložiště je zdarma.
 
 ## <a name="backup"></a>Backup
 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348301"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235143"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -64,7 +64,7 @@ Následující část popisuje, podrobné, jak funguje synchronizace hodnot hash
 >Původní hodnota hash MD4 se nebudou přenášet do služby Azure AD. Místo toho se přenášejí hash SHA256 objektu původní hodnota hash MD4. V důsledku toho pokud je hodnota hash uložené ve službě Azure AD, ho nelze použít v místních útoku pass-the-hash.
 
 ### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Jak funguje synchronizace hodnot hash hesel s Azure Active Directory Domain Services
-Funkce synchronizace hodnot hash hesel můžete použít také k synchronizaci místních hesel [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). V tomto scénáři instanci Azure Active Directory Domain Services ověřuje uživatele v cloudu s všechny metody, které jsou k dispozici v místní instanci Active Directory. Prostředí tento scénář je podobný používání migraci nástroj ADMT (Active Directory) v místním prostředí.
+Funkce synchronizace hodnot hash hesel můžete použít také k synchronizaci místních hesel [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). V tomto scénáři instanci Azure Active Directory Domain Services ověřuje uživatele v cloudu s všechny metody, které jsou k dispozici v místní instanci Active Directory. Prostředí tento scénář je podobný používání migraci nástroj ADMT (Active Directory) v místním prostředí.
 
 ### <a name="security-considerations"></a>Aspekty zabezpečení
 Při synchronizaci hesel heslo ve formátu prostého textu se nevystaví funkci synchronizace hodnoty hash hesla ke službě Azure AD, nebo žádné související služby.

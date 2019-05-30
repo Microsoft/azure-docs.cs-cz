@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408870"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393652"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrace s Azure spravované identity
 
@@ -49,7 +49,7 @@ K dokončení tohoto kurzu potřebujete:
 
 Nastavení spravovaných identit na portálu, nejprve vytvořte aplikaci jako za normálních okolností a pak povolte funkci.
 
-1. Vytvořte aplikaci [webu Azure portal](https://aka.ms/azconfig/portal) obvyklým způsobem. Na portálu přejděte do něj.
+1. Vytvořte aplikaci [webu Azure portal](https://portal.azure.com) obvyklým způsobem. Na portálu přejděte do něj.
 
 2. Přejděte dolů k položce **nastavení** skupině v levém podokně a vyberte **Identity**.
 
@@ -59,9 +59,9 @@ Nastavení spravovaných identit na portálu, nejprve vytvořte aplikaci jako za
 
 ## <a name="grant-access-to-app-configuration"></a>Udělit přístup ke konfiguraci aplikací
 
-1. V [webu Azure portal](https://aka.ms/azconfig/portal)vyberte **všechny prostředky** a vybrat úložiště konfigurace aplikace, kterou jste vytvořili v tomto rychlém startu.
+1. V [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky** a vybrat úložiště konfigurace aplikace, kterou jste vytvořili v tomto rychlém startu.
 
-2. Vyberte **řízení přístupu (IAM)**.
+2. Vyberte **řízení přístupu (IAM)** .
 
 3. Na **zkontrolovat přístup** kartu, vyberte možnost **přidat** v **přidat přiřazení role** karty uživatelského rozhraní.
 
@@ -75,7 +75,7 @@ Nastavení spravovaných identit na portálu, nejprve vytvořte aplikaci jako za
 
 ## <a name="use-a-managed-identity"></a>Použití spravované identity
 
-1. Otevřít *appsettings.json*a přidejte následující skript. Nahraďte  *\<service_endpoint >*, včetně závorkách a s adresou URL k úložišti konfigurace aplikace:
+1. Otevřít *appsettings.json*a přidejte následující skript. Nahraďte  *\<service_endpoint >* , včetně závorkách a s adresou URL k úložišti konfigurace aplikace:
 
     ```json
     "AppConfig": {

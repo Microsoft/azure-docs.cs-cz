@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d02642b0c069124ddcfbef1ea655438c906739a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: d369891624256e98ba8d46168cc9c10c41d37b8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545657"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235226"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -50,7 +50,7 @@ Konfigurace manifestu aplikace:
 
 | Klíč  | Typ hodnoty | Popis  | Příklad hodnoty |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | S povolenou hodnotou Null Int32 | Určuje verzi tokenu přístupu očekává prostředkem. Tím se změní na verzi a formát token JWT vytváří nezávisle na koncový bod nebo klienta používá k žádostem o přístupový token.<br/><br/>Použitý koncový bod, verze 1.0 nebo 2.0, je vybrán klientem a ovlivní pouze verze id_tokens. Prostředky je potřeba explicitně konfigurovat `accesstokenAcceptedVersion` udávajících formát tokenu přístupu podporované.<br/><br/>Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo hodnotu null. Pokud je hodnota null, je výchozí hodnota 1, která odpovídá koncový bod verze 1.0. | `2` |
+| `accessTokenAcceptedVersion` | S povolenou hodnotou Null Int32 | Určuje verzi tokenu přístupu očekává prostředkem. Tím se změní na verzi a formát token JWT vytváří nezávisle na koncový bod nebo klienta používá k žádostem o přístupový token.<br/><br/>Použitý koncový bod, verze 1.0 nebo 2.0, je vybrán klientem a ovlivní pouze verze id_tokens. Prostředky je potřeba explicitně konfigurovat `accesstokenAcceptedVersion` udávajících formát tokenu přístupu podporované.<br/><br/>Možné hodnoty pro `accesstokenAcceptedVersion` jsou 1, 2 nebo hodnotu null. Pokud je hodnota null, je výchozí hodnota 1, která odpovídá koncový bod verze 1.0. <br/><br/>Pokud `signInAudience` je `AzureADandPersonalMicrosoftAccount`, musí být hodnota `2`  | `2` |
 | `addIns` | Kolekce | Definuje vlastní chování, které využívání služby můžete použít k volání aplikace v určitém kontextu. Aplikace, které může mít za následek datové proudy souborů může třeba nastavit vlastnost doplňky pro funkčnost "FileHandler". To vám umožní službám, jako je Office 365 volání aplikace v rámci dokumentu, který uživatel pracuje. | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
 | `allowPublicClient` | Boolean | Určuje typ použití náhradní lokality aplikace. Azure AD odvodí typ aplikace z replyUrlsWithType ve výchozím nastavení. Určitých scénářů, kde Azure AD nelze určit typ klientské aplikace (například [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) toku, kde se stane požadavku HTTP bez adresy URL přesměrování). V těchto případech se služby Azure AD interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud tato hodnota nastavena na hodnotu true, typ použití náhradní lokality aplikace je nastaven jako veřejné klienta, jako je nainstalované aplikace běžící na mobilních zařízeních. Výchozí hodnota je false, což znamená, že je typ použití náhradní lokality aplikace důvěrnému klientovi, například webové aplikace. | `false` |
 | `availableToOtherTenants` | Boolean | Hodnota TRUE, pokud se aplikace sdílí s jinými tenanty; v opačném případě hodnota false. <br><br> _Poznámka: Toto je k dispozici pouze v aplikační prostředí registrace (starší verze). Nahrazuje `signInAudience` v [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí._ | |
@@ -59,7 +59,7 @@ Konfigurace manifestu aplikace:
 | `displayName` | String | Zobrazovaný název aplikace. <br><br> _Poznámka: Toto je k dispozici pouze v aplikační prostředí registrace (starší verze). Nahrazuje `name` v [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí._ | `"MyRegisteredApp"` |
 | `errorUrl` | String | Nepodporovaný. | |
 | `groupMembershipClaims` | String | Konfiguruje `groups` deklarací identity vystavených v uživatele nebo přístupový token OAuth 2.0, který aplikace očekává. K nastavení tohoto atributu, použijte jednu z následujících hodnot platného řetězce:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)<br/>- `"All"` (tím získá všechny skupiny zabezpečení, distribučních skupin a rolí adresáře Azure AD, které je přihlášený uživatel členem. | `"SecurityGroup"` |
-| `homepage` | String | Adresa URL domovské stránky aplikace <br><br> _Poznámka: Toto je k dispozici pouze v aplikační prostředí registrace (starší verze). Nahrazuje `signInUrl` v [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí._ | `"https://MyRegisteredApp"` |
+| `homepage` | String | Adresa URL domovské stránky vaší aplikace. <br><br> _Poznámka: Toto je k dispozici pouze v aplikační prostředí registrace (starší verze). Nahrazuje `signInUrl` v [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí._ | `"https://MyRegisteredApp"` |
 | `objectId` | String | Jedinečný identifikátor pro aplikaci v adresáři. <br><br> _Poznámka: Toto je k dispozici pouze v aplikační prostředí registrace (starší verze). Nahrazuje `id` v [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí._ | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
 | `optionalClaims` | String | Nepovinné deklarace identity v tokenu vrácené služby tokenů zabezpečení pro tuto konkrétní aplikaci.<br>V tuto chvíli nelze použít aplikace, které podporují osobní účty a Azure AD (registrace prostřednictvím portálu pro registraci aplikace) nepovinných deklarací identity. Aplikace registrované u právě Azure AD pomocí koncového bodu v2.0 však můžete získat nepovinných deklarací identity, které, o který žádali v manifestu. Další informace najdete v tématu [nepovinných deklarací identity](active-directory-optional-claims.md). | `null` |
 | `id` | String | Jedinečný identifikátor pro aplikaci v adresáři. Toto ID není identifikátor sloužící k identifikaci aplikace v jakékoli protokol transakce. Používá se pro odkazování na objekt v dotazy na adresář. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
@@ -87,7 +87,7 @@ Konfigurace manifestu aplikace:
 | `signInAudience` | String | Určuje účty Microsoft, které jsou podporovány pro aktuální aplikaci. Podporované hodnoty jsou:<ul><li>**AzureADMyOrg** -uživatelé s Microsoft pracovní nebo školní účet v tenantovi Azure AD své organizace (tj. jeden tenant)</li><li>**AzureADMultipleOrgs** -uživatelé s Microsoft pracovní nebo školní účet v libovolné organizaci tenanta Azure AD (například s více tenanty)</li> <li>**AzureADandPersonalMicrosoftAccount** -uživatelů pomocí osobního účtu Microsoft nebo pracovní nebo školní účet v libovolné organizaci tenanta Azure AD</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | String Array | Vlastní řetězce, které slouží ke kategorizaci a identifikaci aplikace. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
 
-## <a name="common-issues"></a>Běžné potíže
+## <a name="common-issues"></a>Běžné problémy
 
 ### <a name="manifest-limits"></a>Manifest omezení
 
@@ -119,7 +119,7 @@ Při pokusu o odeslání již dříve stažené manifestu se může zobrazit jed
 - "**Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Zadat jednu nebo více hodnot vlastnosti nejsou platné. [].** "
 - "**Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Nepovoluje se nastavit availableToOtherTenants v této verzi rozhraní api pro aktualizaci. [].** "
 - "**Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Aktualizace vlastnosti "adres Replyurl" není povolena pro tuto aplikaci. Místo toho použijte vlastnost "replyUrlsWithType". [].** "
-- "**Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Byla nalezena hodnota bez názvu typu a je k dispozici žádné očekávaného typu. Pokud model není zadána, každou hodnotu v datové části musí mít typ, který lze buď explicitně zadaná v datové části, volající nebo implicitně odvodit z nadřazené hodnoty. []**"
+- "**Nepovedlo se aktualizovat aplikaci xxxxxx. Podrobnosti o chybě: Byla nalezena hodnota bez názvu typu a je k dispozici žádné očekávaného typu. Pokud model není zadána, každou hodnotu v datové části musí mít typ, který lze buď explicitně zadaná v datové části, volající nebo implicitně odvodit z nadřazené hodnoty. []** "
 
 Když se zobrazí jedna z těchto chyb, doporučujeme následující postup:
 

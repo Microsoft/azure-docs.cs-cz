@@ -1,20 +1,20 @@
 ---
-title: Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL
-description: Informace o zálohování a obnovení serveru ve službě Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure.
+title: Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL – jeden Server
+description: Zjistěte, jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL – jeden Server s použitím rozhraní příkazového řádku Azure.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419917"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65069101"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí Azure CLI
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
 
 ## <a name="backup-happens-automatically"></a>Zálohování se automaticky stane
 Azure Database for PostgreSQL servery se pravidelně zálohují k povolení funkce obnovení. Pomocí této funkce může obnovení serveru a jeho databázím do starší v daném okamžiku, na novém serveru.

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: e586ab1bdcca9d6109cf42b6341c333fabb02993
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/28/2019
+ms.openlocfilehash: 9316ca0dfaa2d550ea9a2b89d2c93e0e37230f62
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601682"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388347"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -211,41 +211,39 @@ Pro připojení k Apache Ambari a další webové stránky prostřednictvím vir
 
 ## <a id="networktraffic"></a> Řízení síťového provozu
 
+### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>Řízení příchozího provozu do clusterů HDInsight
+
 Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících metod:
 
 * **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
-    > [!WARNING]  
-    > HDInsight nepodporuje omezení odchozího provozu. Má povolený veškerý odchozí provoz.
-
-* **Trasy definované uživatelem** (UDR) definovat provozní tok mezi prostředky v síti. Další informace najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
-
 * **Síťová virtuální zařízení** replikovat funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v tématu [síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
-Je spravovaná služba HDInsight vyžaduje neomezený přístup ke stavu HDInsight a správy služeb pro příchozí a odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě a trasy definované uživatelem, musíte zajistit, že tyto služby můžete stále komunikovat s clusterem HDInsight.
+Je spravovaná služba HDInsight vyžaduje neomezený přístup ke stavu HDInsight a správy služeb pro příchozí a odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě, musíte zajistit, že tyto služby můžete stále komunikovat s clusterem HDInsight.
 
-### <a id="hdinsight-ip"></a> HDInsight se skupinami zabezpečení sítě a trasy definované uživatelem
+![Diagram vytvořené ve virtuální síti Azure vlastních entit HDInsight](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-Pokud máte v úmyslu používat **skupiny zabezpečení sítě** nebo **trasy definované uživatelem** k řízení síťového provozu, proveďte následující akce před instalací HDInsight:
+### <a id="hdinsight-ip"></a> HDInsight s použitím skupin zabezpečení sítě
+
+Pokud máte v úmyslu používat **skupiny zabezpečení sítě** k řízení síťového provozu, proveďte následující akce před instalací HDInsight:
 
 1. Identifikujte oblasti Azure, který chcete použít pro HDInsight.
 
 2. Identifikujte IP adresy, které vyžadují HDInsight. Další informace najdete v tématu [IP adresy, které jsou vyžadované HDInsight](#hdinsight-ip) oddílu.
 
-3. Vytvoření nebo úprava skupiny zabezpečení sítě nebo trasy definované uživatelem pro podsíť, která budete chtít nainstalovat do HDInsight.
+3. Vytvoření nebo úprava skupiny zabezpečení sítě pro podsíť, která budete chtít nainstalovat do HDInsight.
 
-    * __Skupiny zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy. Tím se zajistí, že správa služby Hdinsight můžete oslovit clusteru od mimo virtuální síť.
-    * __Trasy definované uživatelem__: Pokud budete chtít použít trasy definované uživatelem, vytvořte trasu pro každou IP adresu a nastavte __typem dalšího segmentu směrování__ k __Internet__. By mělo také umožnit veškerého odchozího provozu z virtuální sítě s bez omezení. Například může směrovat veškerý ostatní provoz Azure brány firewall nebo síťové virtuální zařízení (hostované v Azure) pro účely monitorování ale odchozí provoz by neměl být zablokovaný.
+    * __Skupiny zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy. Tím se zajistí, že správa služby HDInsight můžete oslovit clusteru z mimo virtuální síť.
 
-Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem najdete v následující dokumentaci:
+Další informace o skupinách zabezpečení sítě, najdete v článku [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
-* [Skupina zabezpečení sítě](../virtual-network/security-overview.md)
+### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Řízení odchozího provozu z clusterů HDInsight
 
-* [Trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md)
+Další informace o řízení odchozího provozu z clusterů HDInsight, naleznete v tématu [konfigurace omezení odchozího síťového provozu pro clustery Azure HDInsight](hdinsight-restrict-outbound-traffic.md).
 
 #### <a name="forced-tunneling-to-on-premise"></a>Vynucené tunelování na místní
 
-Vynucené tunelování znamená konfigurace směrování definované uživatelem, ve kterém musí veškerý provoz z jedné podsítě určitého síťového umístění nebo umístění, například v místní síti. HDInsight nepodporuje __není__ podporu vynuceným tunelovým propojením do místní sítě. Pokud používáte Firewall služby Azure nebo síťové virtuální zařízení hostované v Azure, můžete použít trasy definované uživatelem pro směrování provozu k němu pro účely monitorování a povolují veškerý odchozí provoz.
+Vynucené tunelování znamená konfigurace směrování definované uživatelem, ve kterém musí veškerý provoz z jedné podsítě určitého síťového umístění nebo umístění, například v místní síti. HDInsight nepodporuje __není__ podporu vynucené tunelování provozu mezi místními sítěmi. 
 
 ## <a id="hdinsight-ip"></a> Požadované IP adresy
 

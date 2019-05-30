@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e059762cbbf5de2ac03a8a74397e59c9b3bdb97e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450019"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387102"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátor řešení připojená továrna
 
@@ -269,7 +269,7 @@ Vlastnosti v této kategorii definují vzhled řídicí panel připojené továr
 * Image
 * Location
 * Jednotky
-* Viditelný
+* Viditelné
 
 ### <a name="internal-topology-tree-addressing"></a>Adresování interní topologii stromu
 
@@ -282,7 +282,7 @@ Hodnoty celkové efektivity zařízení nebo klíčového ukazatele výkonu pro 
 * Hodnoty uzlu OPC UA mají být zahrnuty do výpočtu.
 * Jak na obrázku je vypočítán z hodnot telemetrická data.
 
-Propojená továrna používá vzorce celkové efektivity zařízení, jak publikuje https://www.oeefoundation.org.
+Propojená továrna používá vzorce celkové efektivity zařízení, jak publikuje [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
 
 Objekty uzlu OPC UA na stanicích povolit označování pro použití ve výpočtu celkové efektivity zařízení nebo klíčového ukazatele výkonu. **Relevance** vlastnost určuje, pro které obrázek celkové efektivity zařízení nebo klíčového ukazatele výkonu je třeba použít hodnotu uzlu OPC UA. **Operační kód** vlastnost definuje, jak je hodnota součástí výpočtu.
 

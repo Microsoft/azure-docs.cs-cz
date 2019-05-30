@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: a2c49a6ba269321d1903565ace3ebaae3f3b917e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb521ed0951999fadbfae5e0eac1f0ea275e0d48
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60779416"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391694"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí
 
@@ -25,7 +25,7 @@ Azure IoT Hub se integruje s Azure Event Grid tak, aby mohla odesílat oznámen�
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Integrace služby Event Grid je k dispozici pro IoT hub umístěných v oblastech, kde je podporován služby Event Grid. Nejnovější seznam oblastí najdete v tématu [Úvod do služby Azure Event Grid](../event-grid/overview.md). 
+Integrace služby Event Grid je k dispozici pro IoT hub umístěných v oblastech, kde je podporován služby Event Grid. Všechny události zařízení s výjimkou zařízení telemetrické události jsou obecně dostupné. Telemetrické události zařízení je ve verzi public preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). Nejnovější seznam oblastí najdete v tématu [Úvod do služby Azure Event Grid](../event-grid/overview.md). 
 
 ## <a name="event-types"></a>Typy událostí
 
@@ -37,6 +37,7 @@ IoT Hub zveřejňuje následující typy událostí:
 | Microsoft.Devices.DeviceDeleted | Publikuje, když zařízení se odstraní ze služby IoT hub. |
 | Microsoft.Devices.DeviceConnected | Publikuje, když je zařízení připojené do služby IoT hub. |
 | Microsoft.Devices.DeviceDisconnected | Publikuje, když zařízení je odpojen od služby IoT hub. |
+| Microsoft.Devices.DeviceTelemetry | Publikování do služby IoT hub je odeslání telemetrické zprávy zařízení |
 
 Nastavit, které události chcete-li publikovat z každé služby IoT hub pomocí webu Azure portal nebo rozhraní příkazového řádku Azure. Příklad, projděte si kurz [odeslat e-mailová oznámení o událostech služby Azure IoT Hub pomocí Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -66,6 +67,42 @@ Následující příklad ukazuje schématu je zařízení připojené události:
   }, 
   "dataVersion": "1", 
   "metadataVersion": "1" 
+}]
+```
+
+### <a name="device-telemetry-schema"></a>Schéma Telemetrie zařízení
+
+Zařízení telemetrické zprávy musí být v platném formátu JSON s contentType nastavit do formátu JSON a nastavit na UTF-8 ve zprávě contentEncoding [vlastnosti systému](iot-hub-devguide-routing-query-syntax.md#system-properties). Pokud to není nastavena, pak služby IoT Hub bude zapisovat zprávy v zakódovaném formátu base 64. Následující příklad ukazuje schématu událostí telemetrie zařízení: 
+
+```json
+[{  
+  "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceTelemetry",
+  "eventTime": "2019-01-07T20:58:30.48Z",
+  "data": {        
+      "body": {            
+          "Weather": {                
+              "Temperature": 900            
+            },
+            "Location": "USA"        
+        },
+        "properties": {            
+            "Status": "Active"        
+        },
+        "systemProperties": {            
+          "iothub-content-type": "application/json",
+          "iothub-content-encoding": "utf-8",
+          "iothub-connection-device-id": "d1",
+          "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+          "iothub-connection-auth-generation-id": "123455432199234570",
+          "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
+          "iothub-message-source": "Telemetry"        
+        }    
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -123,13 +160,21 @@ Podrobný popis každé vlastnosti najdete v tématu [schématu událostí služ
 
 ## <a name="filter-events"></a>Události filtru
 
-Odběry událostí služby IoT Hub můžete filtrovat události podle typu a zařízení název události. Na základě předmětu filtry ve službě Event Grid pracovní **začíná** (předpona) a **skončí s** odpovídá (přípona). Tento filtr používá `AND` operátoru, takže doručí události s předmětem, které odpovídají předpony a přípony do odběratele. 
+Odběry událostí služby IoT Hub můžete filtrovat události podle typu události, datového obsahu a předmětu, což je název zařízení.
+
+Event Grid umožňuje [filtrování](../event-grid/event-filtering.md) na obsah typy, témata a data události. Při vytváření odběru Event gridu, můžete přihlásit k odběru vybraných událostí IoT. Na základě předmětu filtry ve službě Event Grid pracovní **začíná** (předpona) a **skončí s** odpovídá (přípona). Tento filtr používá `AND` operátoru, takže doručí události s předmětem, které odpovídají předpony a přípony do odběratele. 
 
 Předmět události IoT používá formát:
 
 ```json
 devices/{deviceId}
 ```
+
+Event Grid také umožňuje filtrování podle atributů událostí, včetně dat obsahu. To umožňuje zvolit, jaké události se doručují na základě obsahu telemetrické zprávy. Podrobnosti najdete na [rozšířené filtrování](../event-grid/event-filtering.md#advanced-filtering) Chcete-li zobrazit příklady. 
+
+Bez telemetrie událostí jako DeviceConnected DeviceDisconnected, DeviceCreated a DeviceDeleted služby Event Grid filtrování je možné při vytváření odběru. Telemetrické události, kromě filtrování ve službě Event Grid uživatelé mohou filtrovat také na dvojčata zařízení, vlastnosti zprávy a text pomocí dotazu směrování zpráv. Můžeme vytvořit výchozí [trasy](iot-hub-devguide-messages-d2c.md) ve službě IoT Hub podle předplatného služby Event Grid k telemetrii zařízení. Tato trasa jeden dokáže uchovat všechna vaše předplatná Event gridu. Pokud chcete filtrovat zprávy před odesláním telemetrická data, můžete aktualizovat vaše [směrování dotazů](iot-hub-devguide-routing-query-syntax.md). Mějte na paměti, že směrování dotazu lze použít u zprávy pouze v případě, že je text JSON.
+
+
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Omezení pro zařízení připojené a zařízení odpojí události
 
 Zobrazí zařízení, připojení a odpojení zařízení události, je nutné otevřít odkaz D2C nebo C2D odkaz pro vaše zařízení. Pokud vaše zařízení používá protokol MQTT, Centrum IoT udržovat C2D otevřete odkaz. AMQP, můžete otevřít odkaz C2D voláním [přijímat asynchronní rozhraní API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet). 
@@ -144,7 +189,7 @@ Aplikace, které zpracovávají události služby IoT Hub postupujte podle těch
 
 * Nepředpokládejte, že jsou všechny události, které se zobrazí typy, které jste očekávali. Vždy zkontrolujte typ události před zpracováním zprávy.
 
-* Můžete doručování zpráv mimo pořadí nebo po prodlevě. Značka etag pole použijte k pochopení, pokud je aktuální informace o objektech.
+* Můžete doručování zpráv mimo pořadí nebo po prodlevě. Značka etag pole použijte k pochopení, pokud je vaše informace o objektech aktuální pro zařízení se vytvořilo nebo zařízení odstranit události.
 
 ## <a name="next-steps"></a>Další postup
 

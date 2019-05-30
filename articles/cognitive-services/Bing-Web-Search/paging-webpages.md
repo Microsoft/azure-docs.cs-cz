@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a038dc2706c7cb128751630f8997851409886290
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797809"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384811"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Jak stránkovat výsledky z rozhraní API webové vyhledávání Bingu
 
-Při volání rozhraní API pro webové vyhledávání Bingu vrátí seznam výsledků. V seznamu je podmnožinou celkový počet výsledků, které můžou být relevantní pro dotaz. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) pole.  
+Při volání rozhraní API pro webové vyhledávání Bingu vrátí seznam výsledků. V seznamu je podmnožinou celkový počet výsledků, které můžou být relevantní pro dotaz. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) pole.  
 
 Následující příklad ukazuje `totalEstimatedMatches` pole, které obsahuje webovou odpověď.  
 
@@ -35,7 +35,7 @@ Následující příklad ukazuje `totalEstimatedMatches` pole, které obsahuje w
 }  
 ```
 
-Na stránce prostřednictvím webové stránky k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) parametrů dotazu.  
+Na stránce prostřednictvím webové stránky k dispozici, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#offset) parametrů dotazu.  
 
 `count` Parametr určuje počet výsledků vrátit v odpovědi. Maximální počet výsledků, které může vyžadovat v odpovědi je 50. Výchozí hodnota je 10. Skutečný počet doručení může být menší než požadovaný.
 
@@ -59,7 +59,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Webové rozhraní API hledání vrátí výsledky, které zahrnují webové stránky a může taky obsahovat obrázků, videí a zpráv. Pokud je stránkování výsledků vyhledávání, jsou stránkování [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpovědí a není další odpovědi, jako je Image nebo zprávy. Například pokud nastavíte `count` na 50, získáte zpět 50 webovou stránku výsledků, ale odpověď může obsahovat další odpovědi a výsledky. Odpověď může obsahovat například 15 imagí a 4 články o novinkách. Je také možné, že výsledky mohou zahrnovat zprávy na stránce první, ale ne na druhé stránce, nebo naopak.   
+Webové rozhraní API hledání vrátí výsledky, které zahrnují webové stránky a může taky obsahovat obrázků, videí a zpráv. Pokud je stránkování výsledků vyhledávání, jsou stránkování [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) odpovědí a není další odpovědi, jako je Image nebo zprávy. Například pokud nastavíte `count` na 50, získáte zpět 50 webovou stránku výsledků, ale odpověď může obsahovat další odpovědi a výsledky. Odpověď může obsahovat například 15 imagí a 4 články o novinkách. Je také možné, že výsledky mohou zahrnovat zprávy na stránce první, ale ne na druhé stránce, nebo naopak.   
 
 Pokud zadáte `responseFilter` parametr dotazu a nezahrnují webové stránky v seznamu filtru, nepoužívejte `count` a `offset` parametry. 
 

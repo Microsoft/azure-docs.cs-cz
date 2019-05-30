@@ -1,20 +1,20 @@
 ---
-title: Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
-description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for postgresql – pravidla brány firewall pomocí příkazového řádku Azure CLI.
+title: Vytvoření a Správa pravidel brány firewall ve službě Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
+description: Tento článek popisuje, jak vytvářet a spravovat pravidla brány firewall ve službě Azure Database for PostgreSQL – jeden Server pomocí příkazového řádku Azure CLI.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.openlocfilehash: 9a96361d3fb155ea5b400990690e3c2b1f65f819
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 03b1c215994e4089ad0aed4eac3868b05c564c4c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422368"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067540"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
+# <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Vytvoření a Správa pravidel brány firewall ve službě Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
 Pravidla brány firewall na úrovni serveru můžete použít ke správě přístupu ke službě Azure Database for PostgreSQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro PostgreSQL pravidla brány firewall, naleznete v tématu [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md).
 
 Pravidel virtuální sítě (VNet) je také možné zabezpečit přístup k vašemu serveru. Další informace o [vytváření a Správa virtuální sítě služby koncových bodů a pravidel pomocí Azure CLI](howto-manage-vnet-using-cli.md).

@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876201"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067620"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Upozornění na metriku s dynamickými prahovými hodnotami ve službě Azure Monitor (Public Preview)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Upozornění na metriku s dynamickými prahovými hodnotami ve službě Azure Monitor
 
 Upozornění na metriku s dynamickými prahovými hodnotami zjišťování využívá pokročilé machine learning (ML) historické chování metriky, identifikovat vzory a anomálie, které indikují problémy se službou je to možné. Poskytuje podporu jednoduchého uživatelského rozhraní a operací ve velkém měřítku tím, že uživatelé ke konfiguraci pravidla upozornění pomocí rozhraní API Azure Resource Manageru, plně automatizovanou způsobem.
 
@@ -116,7 +116,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci oznámení na 
 
 4. Jakmile vyberete cílový prostředek, klikněte na **přidat podmínku**.
 
-5. Vyberte **: procento využití procesoru"**.
+5. Vyberte **: procento využití procesoru"** .
 
 6. Volitelně můžete upřesnit metriku úpravou **období** a **agregace**. Nedoporučuje se používat "Maximální" typ agregace pro tento typ metriky je to méně zástupce chování. Pro "Maximální" agregace typu statické mezní hodnotu možná více vhodné.
 
@@ -153,7 +153,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci oznámení na 
 
 4. Jakmile vyberete cílový prostředek, klikněte na **přidat podmínku**.
 
-5. Vyberte **"Doba provádění požadavku HTTP"**.
+5. Vyberte **"Doba provádění požadavku HTTP"** .
 
 6. Volitelně můžete upřesnit metriku úpravou **období** a **agregace**. Nedoporučuje se používat "Maximální" typ agregace pro tento typ metriky je to méně zástupce chování. Pro "Maximální" agregace typu statické mezní hodnotu možná více vhodné.
 

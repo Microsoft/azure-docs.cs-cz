@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 39432523adea1941ab8c2616decc4b64729acf8e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5dc86aff7324b79f2c1b7a14b349337fc26a1901
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65964803"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244303"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Jak vytvořit a vyhledejte ukotvení pomocí Azure prostorových ukotvení v Unity
 
@@ -190,7 +190,7 @@ Další informace o [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/m
     var hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface().HitTest(point, ARHitTestResultType.ARHitTestResultTypeEstimatedHorizontalPlane | ARHitTestResultType.ARHitTestResultTypeExistingPlaneUsingExtent);
     if (hitResults.Count > 0)
     {
-        // The hitTest method sorts the resulting list by distance from the camera, increasing
+        // The hitTest method sorts the resulting list by increasing distance from the camera
         // The first hit result will usually be the most relevant when responding to user input
         ARHitTestResult hitResult = hitResults[0];
         hitPosition = UnityARMatrixOps.GetPosition(hitResult.worldTransform);

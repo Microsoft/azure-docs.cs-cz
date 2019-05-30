@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/18/2019
-ms.author: mayg
-ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/30/2019
+ms.author: raynew
+ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61280462"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399971"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Převzetí služeb při selhání virtuálních počítačů a fyzických serverů 
 
@@ -80,7 +80,7 @@ Když se aktivuje převzetí služeb při selhání, zahrnuje následující kro
 
 1. Kontrola předpokladů: Tento krok zajistí, že jsou splněny všechny podmínky pro převzetí služeb při selhání
 1. Převzetí služeb při selhání: Tento krok zpracuje data a zpřístupňuje je připravené tak, aby virtuální počítač Azure je možné vytvořit z ní. Pokud jste vybrali **nejnovější** bod obnovení, tento krok vytvoří bod obnovení z dat odesílaných do služby.
-1. Spustit: Tento krok vytvoří virtuální počítač Azure pomocí dat zpracovaných v předchozím kroku.
+1. Spuštění: Tento krok vytvoří virtuální počítač Azure pomocí dat zpracovaných v předchozím kroku.
 
 > [!WARNING]
 > **Nepřerušujte v průběhu převzetí služeb při selhání**: Před spuštěním převzetí služeb při selhání, se zastaví replikace virtuálního počítače. Pokud jste **zrušit** v průběhu úlohy převzetí služeb při selhání zastaví, ale virtuální počítač nespustí replikaci. Replikaci nelze spustit znovu.

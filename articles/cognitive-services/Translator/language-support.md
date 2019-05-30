@@ -3,19 +3,19 @@ title: Podpora jazyků – Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Seznam podporovaných rozhraní Translator Text API přirozeného jazyka.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: v-pawal
+ms.openlocfilehash: 153fd5a8202ca0d919a2254449d846f8798bd10d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690151"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382496"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -42,69 +42,69 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 
 |Jazyk|  Kód jazyka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
-|Afrikánština| `af`    |Jenom statistické|  Neuronových sítí|
-|arabština|    `ar`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Bengálština|    `bn`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Bosenština (latinka)|   `bs`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Bulharština| `bg`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|Afrikánština| `af`    |Jenom statistické|  Neurální|
+|arabština|    `ar`    |Neuronových sítí k dispozici|  Neurální|
+|Bengálština|    `bn`    |Neuronových sítí k dispozici|  Neurální|
+|Bosenština (latinka)|   `bs`    |Neuronových sítí k dispozici|  Neurální|
+|Bulharština| `bg`    |Neuronových sítí k dispozici|  Neurální|
 |Kantonština (tradiční)|   `yue`   |Jenom statistické|  Statistické|
 |Katalánština|   `ca`    |Jenom statistické|  Statistické|
-|čínština (zjednodušená)|    `zh-Hans`   |Výchozí neuronových sítí |Neuronových sítí|
-|Tradiční čínština|   `zh-Hant`   |Výchozí neuronových sítí |Neuronových sítí|
-|Chorvatština|  `hr`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Čeština| `cs`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|dánština|    `da`    |Neuronových sítí k dispozici   |Neuronových sítí|
-|Holandština| `nl`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Angličtina|   `en`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Estonština|  `et`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|fidžijština|    `fj`    |Jenom statistické|  Statistické|
+|Zjednodušená čínština|    `zh-Hans`   |Výchozí neuronových sítí |Neurální|
+|Tradiční čínština|   `zh-Hant`   |Výchozí neuronových sítí |Neurální|
+|Chorvatština|  `hr`    |Neuronových sítí k dispozici|  Neurální|
+|Čeština| `cs`    |Neuronových sítí k dispozici|  Neurální|
+|dánština|    `da`    |Neuronových sítí k dispozici   |Neurální|
+|Holandština| `nl`    |Neuronových sítí k dispozici|  Neurální|
+|Angličtina|   `en`    |Neuronových sítí k dispozici|  Neurální|
+|Estonština|  `et`    |Neuronových sítí k dispozici|  Neurální|
+|Vládní|    `fj`    |Jenom statistické|  Statistické|
 |Filipínština|  `fil`   |Jenom statistické|  Statistické|
-|Finština|   `fi`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Francouzština|    `fr`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Němčina|    `de`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Řečtina| `el`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|Finština|   `fi`    |Neuronových sítí k dispozici|  Neurální|
+|Francouzština|    `fr`    |Neuronových sítí k dispozici|  Neurální|
+|Němčina|    `de`    |Neuronových sítí k dispozici|  Neurální|
+|Řečtina| `el`    |Neuronových sítí k dispozici|  Neurální|
 |Haitská kreolština|    `ht`    |Jenom statistické   |Statistické|
-|Hebrejština |`he`   |Neuronových sítí k dispozici   |Neuronových sítí|
-|Hindština| `hi`    |Výchozí neuronových sítí|    Neuronových sítí|
+|Hebrejština |`he`   |Neuronových sítí k dispozici   |Neurální|
+|Hindština| `hi`    |Výchozí neuronových sítí|    Neurální|
 |Hmong Daw| `mww`   |Jenom statistické|  Statistické|
-|Maďarština| `hu`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Islandština| `is`    |Pouze neuronových sítí|   Neuronových sítí|
+|Maďarština| `hu`    |Neuronových sítí k dispozici|  Neurální|
+|Islandština| `is`    |Pouze neuronových sítí|   Neurální|
 |Indonéština|    `id`    |Jenom statistické|  Statistické|
-|italština|   `it`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Japonština|  `ja`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|italština|   `it`    |Neuronových sítí k dispozici|  Neurální|
+|Japonština|  `ja`    |Neuronových sítí k dispozici|  Neurální|
 |Svahilština| `sw`    |Jenom statistické|  Statistické|
 |Klingon|   `tlh`   |Jenom statistické|  Statistické|
 |Klingon (plqaD)|   `tlh-Qaak`  |Jenom statistické|  Statistické|
-|Korejština |`ko`   |Neuronových sítí k dispozici|  Neuronových sítí|
-|Lotyština|   `lv`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Litevština|    `lt`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Malgaština|  `mg`    |Jenom statistické|  Statistické|
+|Korejština |`ko`   |Neuronových sítí k dispozici|  Neurální|
+|Lotyština|   `lv`    |Neuronových sítí k dispozici|  Neurální|
+|Litevština|    `lt`    |Neuronových sítí k dispozici|  Neurální|
+|Malgašský|  `mg`    |Jenom statistické|  Statistické|
 |Malajština| `ms`    |Jenom statistické   |Statistické|
 |Maltština|   `mt`    |Jenom statistické|  Statistické|
-|norština| `nb`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|norština| `nb`    |Neuronových sítí k dispozici|  Neurální|
 |Perština|   `fa`    |Jenom statistické|  Statistické|
-|polština|    `pl`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Portugalština|    `pt`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|polština|    `pl`    |Neuronových sítí k dispozici|  Neurální|
+|Portugalština|    `pt`    |Neuronových sítí k dispozici|  Neurální|
 |Queretaro Otomi|   `otq`   |Jenom statistické|  Statistické|
-|Rumunština|  `ro`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|ruština|   `ru`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|samojština|    `sm`    |Jenom statistické|  Statistické|
+|Rumunština|  `ro`    |Neuronových sítí k dispozici|  Neurální|
+|ruština|   `ru`    |Neuronových sítí k dispozici|  Neurální|
+|Samoan|    `sm`    |Jenom statistické|  Statistické|
 |Srbština (cyrilice)|    `sr-Cyrl`   |Jenom statistické|  Statistické|
 |Srbština (latinka)|   `sr-Latn`   |Jenom statistické   |Statistické|
-|Slovenština|    `sk`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Slovinština| `sl`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Španělština|   `es`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|švédština|   `sv`    |Neuronových sítí k dispozici   |Neuronových sítí|
+|Slovenština|    `sk`    |Neuronových sítí k dispozici|  Neurální|
+|Slovinština| `sl`    |Neuronových sítí k dispozici|  Neurální|
+|Španělština|   `es`    |Neuronových sítí k dispozici|  Neurální|
+|švédština|   `sv`    |Neuronových sítí k dispozici   |Neurální|
 |Tahitian|  `ty`    |Jenom statistické|  Statistické|
 |Tamilština| `ta`    |Jenom statistické|  Statistické|
-|Telugština|    `te`    |Pouze neuronových sítí|   Neuronových sítí|
-|Thajština|  `th`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Tongánština|    `to`    |Jenom statistické|  Statistické|
-|turečtina|   `tr`    |Neuronových sítí k dispozici   |Neuronových sítí|
-|Ukrajinština| `uk`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|Telugština|    `te`    |Pouze neuronových sítí|   Neurální|
+|Thajština|  `th`    |Neuronových sítí k dispozici|  Neurální|
+|Tonžská|    `to`    |Jenom statistické|  Statistické|
+|turečtina|   `tr`    |Neuronových sítí k dispozici   |Neurální|
+|Ukrajinština| `uk`    |Neuronových sítí k dispozici|  Neurální|
 |Urdština|  `ur`    |Jenom statistické|  Statistické|
-|Vietnamština|    `vi`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Velština| `cy`    |Neuronových sítí k dispozici|  Neuronových sítí|
+|Vietnamština|    `vi`    |Neuronových sítí k dispozici|  Neurální|
+|Velština| `cy`    |Neuronových sítí k dispozici|  Neurální|
 |Yucatec Maya|  `yua`   |Jenom statistické|  Statistické|
 
 ## <a name="transliteration"></a>Transkripce
@@ -126,7 +126,7 @@ Metoda Transliterate podporuje následující jazyky. V "do a z" "<> –" označ
 | Kannadština | `kn` | Kannada `Knda` | --> | Latinská `Latn` |
 | Malajálamština | `ml` | Malajalámština `Mlym` | --> | Latinská `Latn` |
 | Maráthština | `mr` | Devanágarí `Deva` | --> | Latinská `Latn` |
-| urijština | `or` | Oriya `Orya` | <--> | Latinská `Latn` |
+| Oriya | `or` | Oriya `Orya` | <--> | Latinská `Latn` |
 | Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | Latinská `Latn`  |
 | Srbština (cyrilice) | `sr-Cyrl` | Cyrillic `Cyrl`  | --> | Latinská `Latn` |
 | Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrillic `Cyrl`|
@@ -146,7 +146,7 @@ Slovník podporuje tyto jazyky do nebo z anglické využitím metod Lookup a Exa
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
 | Katalánština      | `ca`          |
-| čínština (zjednodušená)      | `zh-Hans`          |
+| Zjednodušená čínština      | `zh-Hans`          |
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | dánština      | `da`          |
@@ -212,7 +212,7 @@ Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vl
 | Bengálština      | `bn`          |
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
-| čínština (zjednodušená)      | `zh-Hans`          |
+| Zjednodušená čínština      | `zh-Hans`          |
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | dánština      | `da`          |
@@ -234,13 +234,13 @@ Tyto jazyky jsou k dispozici pro přizpůsobení do nebo z anglické pomocí [vl
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
-|Malgaština|  `mg`    |
+|Malgašský|  `mg`    |
 | norština      | `nb`          |
 | polština      | `pl`          |
 | Portugalština      | `pt`          |
 | Rumunština      | `ro`          |
 | ruština      | `ru`          |
-|samojština|    `sm`    |
+|Samoan|    `sm`    |
 | Srbština (latinka)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |

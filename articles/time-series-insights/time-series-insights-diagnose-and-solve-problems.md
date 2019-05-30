@@ -4,19 +4,19 @@ description: Tento článek popisuje, jak Diagnostika a řešení potíží s, �
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be2652355e3b9830d4a5198ba71c0f4a78858dd
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 68d46b54bf066724d8f3474f421d2d1f751b75e3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471683"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235047"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights
 
@@ -104,13 +104,13 @@ Ujistěte se, že název vlastnosti časového razítka a hodnotu v souladu s t�
 
 Nejjednodušší způsob, jak zajistit, že váš název vlastnosti časového razítka se zaznamenávají a funguje správně, je použít Průzkumníka služby Time Series Insights. V Průzkumníku Time Series Insights pomocí grafu vyberte určité době po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a potom vyberte **zkoumat události** možnost.
 
-První záhlaví sloupce by měl být název vlastnosti časového razítka. Vedle slovo **časové razítko**, měli byste vidět **($ts)**.
+První záhlaví sloupce by měl být název vlastnosti časového razítka. Vedle slovo **časové razítko**, měli byste vidět **($ts)** .
 
 Neměli vidět následující hodnoty:
 
-- *(abc)*: Označuje, že Time Series Insights čte hodnoty dat jako řetězce.
+- *(abc)* : Označuje, že Time Series Insights čte hodnoty dat jako řetězce.
 - *Ikonu kalendáře*: Označuje, že Time Series Insights je čtení data hodnoty jako *data a času*.
-- *#*: Označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
+- *#* : Označuje, že Time Series Insights čte hodnoty dat jako celé číslo.
 
 ## <a name="next-steps"></a>Další postup
 

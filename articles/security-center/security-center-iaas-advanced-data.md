@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2019
-ms.author: v-mohabe
-ms.openlocfilehash: cfe633c5251842257a0bef5237ea6b80aeaf05e9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 05/29/2019
+ms.author: monhaber
+ms.openlocfilehash: e7420adfe1608df39ef72124817f1d6dadf07db8
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968584"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400135"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Pokročilé datové zabezpečení serverů SQL Server na IaaS
-Pokročilé datové zabezpečení serverů SQL Server na IaaS je jednotný balíček pro pokročilé funkce zabezpečení SQL. Nyní zahrnuje funkce pro zpřístupnění a zmírnění potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze.
+Pokročilé data zabezpečení pro servery SQL v Azure Virtual Machines je jednotný balíček pro pokročilé funkce zabezpečení SQL. Nyní zahrnuje funkce pro zpřístupnění a zmírnění potenciální ohrožení zabezpečení databáze a detekuje neobvyklé aktivity, které může znamenat hrozbu pro vaše databáze. 
 
-Toto zabezpečení nabídky pro servery IaaS SQL je založeno na stejné základní technologii použitou v [rozšířené zabezpečení dat Azure SQL Database balíčku](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
+Toto zabezpečení nabízí pro virtuální počítače SQL serverech Azure je založeno na stejné základní technologii použitou v [rozšířené zabezpečení dat Azure SQL Database balíčku](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
 
 
 ## <a name="overview"></a>Přehled
 
-Zabezpečení dat pokročilé (reklamy) poskytuje sadu pokročilé funkce zabezpečení SQL, který se skládá z posouzení ohrožení zabezpečení a Rozšířená ochrana před internetovými útoky.
+Zabezpečení dat pokročilé poskytuje sadu pokročilé funkce zabezpečení SQL, který se skládá z posouzení ohrožení zabezpečení a Rozšířená ochrana před internetovými útoky.
 
 * [Posouzení ohrožení zabezpečení](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) je snadno konfigurovat službu, můžete zjistit, sledovat a umožňují náprava potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu vašeho zabezpečení a obsahuje postup, jak vyřešit problémy se zabezpečením a Vylepšete vaše fortifications databáze.
 * [Rozšířená ochrana před internetovými útoky](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup nebo zneužití vašeho SQL serveru. Nepřetržitě monitoruje vaši databázi pro podezřelé aktivity a poskytuje výstrahy zabezpečení orientovaných na akci na vzorech přístupu neobvyklé databázové. Tyto výstrahy poskytují podrobnosti o podezřelé aktivitě a doporučených akcích pro šetření a zmírnění hrozby.
 
-## <a name="get-started-with-ads-for-iaas"></a>Začínáme s REKLAM pro IaaS
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Začínáme s pokročilým zabezpečením dat pro SQL na virtuálních počítačích Azure
 
-Následující kroky vám pomůžou začít s REKLAM pro IaaS.
+Následující kroky vám pomůžou začít s pokročilým zabezpečením dat SQL na virtuálních počítačích Azure.
 
-### <a name="set-up-ads-for-iaas"></a>Nastavení služby Active Directory pro IaaS
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Nastavení rozšířené zabezpečení dat pro SQL na virtuálních počítačích Azure
 
 **Než začnete**: Potřebujete pracovní prostor Log Analytics k ukládání protokolů zabezpečení analyzován. Pokud nemáte jednu, pak můžete vytvořit jednu snadno, jak je vysvětleno v [vytvořit pracovní prostor Log Analytics na portálu Azure portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -55,7 +55,7 @@ Následující kroky vám pomůžou začít s REKLAM pro IaaS.
 
 1. Vyberte pracovní prostor používat, a klikněte na tlačítko **vytvořit**.
 
-   ![Vybrat pracovní prostor](./media/security-center-advanced-iaas-data/sql-workspace.png)
+   ![Výběr pracovního prostoru](./media/security-center-advanced-iaas-data/sql-workspace.png)
 
 1. Restartujte [Virtuálního počítače SQL serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017).
 
@@ -95,7 +95,7 @@ Můžete zobrazit a spravovat své aktuální výstrahy zabezpečení.
 
 Můžete nastavit seznam příjemců pro příjem e-mailové oznámení, když ASC výstrahy jsou generovány. E-mailu obsahuje přímý odkaz na upozornění ve službě Azure Security Center s všechny relevantní informace. 
 
-1. Přejděte na **Security Center** > **zásady zabezpečení** a v řádku kliknutím na příslušné předplatné **upravit nastavení >**.
+1. Přejděte na **Security Center** > **zásady zabezpečení** a v řádku kliknutím na příslušné předplatné **upravit nastavení >** .
 
     ![Nastavení předplatného](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
@@ -120,7 +120,7 @@ Můžete nastavit seznam příjemců pro příjem e-mailové oznámení, když A
 
 Zobrazíte výsledky posouzení ohrožení zabezpečení a sestavy přímo ze služby Log Analytics.
 
-1. Přejděte do pracovního prostoru Log Analytics s řešením reklamy.
+1. Přejděte do pracovního prostoru Log Analytics s pokročilým zabezpečením dat řešení.
 1. Přejděte do **řešení** a vyberte **posouzení ohrožení zabezpečení SQL** řešení.
 1. V **Souhrn** podokně klikněte na tlačítko **zobrazit souhrn** a vyberte váš **sestava posouzení ohrožení zabezpečení SQL**.
 
@@ -136,13 +136,13 @@ Zobrazíte výsledky posouzení ohrožení zabezpečení a sestavy přímo ze sl
 
    1. Potom klikněte na prostřednictvím chcete-li zobrazit podrobnosti pro jednotlivé chyby zabezpečení, včetně popisu ohrožení zabezpečení a dopad, stav, spojené riziko a skutečné výsledky v této databázi. Zobrazí se také samotný dotaz, který byl spuštěn k provedení této kontroly a informace o nápravných opatřeních k vyřešení této chyby.
 
-    ![Vybrat pracovní prostor](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    ![Výběr pracovního prostoru](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
 
-    ![Vybrat pracovní prostor](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
+    ![Výběr pracovního prostoru](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
 
 1. Všechny dotazy Log Analytics můžete spustit na datech výsledky posouzení ohrožení zabezpečení, k vyfiltrování a rozčlenění dat podle vašich potřeb.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>Rozšířená ochrana před internetovými útoky pro servery SQL Server na IaaS výstrahy
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Rozšířená ochrana před internetovými útoky pro servery SQL Server na virtuálních počítačích Azure výstrahy
 Výstrahy jsou generovány a potenciálně nebezpečné pokusy o přístup nebo zneužití servery SQL. Tyto události můžete spustit následující upozornění:
 
 ### <a name="anomalous-access-pattern-alerts"></a>Neobvyklé přístup vzor výstrahy

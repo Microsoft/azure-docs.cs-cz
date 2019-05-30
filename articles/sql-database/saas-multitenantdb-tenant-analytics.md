@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 0146f6ca610a25e57771fb21436a70acbdd5a5ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bf97c0c447bfabc1454959d457bbd50f3490299
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61486336"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242805"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Pomocí analýzy napříč tenanty extrahovaná data – aplikace s více tenanty
  
@@ -64,7 +64,7 @@ Nakonec hvězdicového schématu tabulky se generuje dotaz. Výsledky dotazu jso
 
 Vysvětlení, jak konzistentně každý tenant používá služba poskytuje možnost Vytvořit plány služeb pro jejich potřeby. Tento kurz obsahuje základní příklady přehledy, které mohou být úsporách získaných dat tenanta.
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -242,5 +242,5 @@ Blahopřejeme!
 ## <a name="additional-resources"></a>Další materiály
 
 Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
-- [Elastické úlohy](sql-database-elastic-jobs-overview.md).
+- [Elastické úlohy](elastic-jobs-overview.md).
 - [Pomocí analýzy napříč tenanty extrahovaná data – aplikace s jedním tenantem](saas-tenancy-tenant-analytics.md) 

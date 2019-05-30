@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0af36fa68b2d801eed52e6f081b040fb56929c91
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12549bb53a21dd657f51a4a02460ddc82c47bef8
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613648"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386392"
 ---
 # <a name="paging-through-video-search-results"></a>Stránkování výsledků vyhledávání videí
 
@@ -26,7 +26,7 @@ API pro vyhledávání videí Bingu vrátí podmnožinu výsledků hledání, na
 
 ## <a name="total-estimated-matches"></a>Celkový odhadovaný shody
 
-Chcete-li získat odhadovaný počet nalezených výsledků, použijte [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) pole v odpovědi JSON.   
+Chcete-li získat odhadovaný počet nalezených výsledků, použijte [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-totalestimatedmatches) pole v odpovědi JSON.   
   
 ```json  
 {
@@ -39,7 +39,7 @@ Chcete-li získat odhadovaný počet nalezených výsledků, použijte [totalEst
   
 ## <a name="paging-through-videos"></a>Stránkování prostřednictvím videí
 
-Na stránce prostřednictvím k dispozici videa, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) parametrů dotazu při odesílání vaší žádosti.  
+Na stránce prostřednictvím k dispozici videa, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) parametrů dotazu při odesílání vaší žádosti.  
   
 
 |Parametr  |Popis  |
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-Pokud nechcete použít výchozí hodnotu pro [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count), budete muset zadat `offset` parametr, jako v následujícím příkladu dotazu.  
+Pokud nechcete použít výchozí hodnotu pro [počet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count), budete muset zadat `offset` parametr, jako v následujícím příkladu dotazu.  
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 
 Pokud stránkovat 35 videa v čase, nastavte `offset` parametr na hodnotu 0 na první žádosti o dotazu a potom zvýší `offset` podle 35 na každý další požadavek. Další odpovědi na některé výsledky však může obsahovat duplicitní video výsledky z předchozí odpovědi. První dvě videa v odpovědi například může být stejný jako poslední dva videa z předchozí odpovědi.
 
-Chcete-li odstranit duplicitní výsledky, použijte [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-nextoffset) pole `Videos` objektu.
+Chcete-li odstranit duplicitní výsledky, použijte [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-nextoffset) pole `Videos` objektu.
 
 Například pokud chcete na stránku 30 videí současně, můžete nastavit `count` 30 a `offset` na 0 v první požadavek. V další požadavek, byste měli nastavit `offset` parametr k dotazu `nextOffset` hodnotu.
 

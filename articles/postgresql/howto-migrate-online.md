@@ -1,19 +1,19 @@
 ---
-title: Migrace s minimem výpadků ke službě Azure Database for PostgreSQL
-description: Tento článek popisuje, jak provést migraci minimálními prostoji databázi PostgreSQL do služby Azure Database for PostgreSQL s využitím Azure Database Migration Service.
+title: Migrace s minimem výpadků ke službě Azure Database for PostgreSQL – jeden Server
+description: Tento článek popisuje, jak provést migraci minimálními prostoji databázi PostgreSQL do služby Azure Database for PostgreSQL – jeden Server s využitím Azure Database Migration Service.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.openlocfilehash: ceb64781dc7e5243f785ad239c24e5f21b0481ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421199"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067516"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Migrace s minimem výpadků ke službě Azure Database for PostgreSQL
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>Migrace s minimem výpadků ke službě Azure Database for PostgreSQL – jeden Server
 Můžete provést migraci PostgreSQL do služby Azure Database for PostgreSQL s minimálními prostoji pomocí nově zavedená **Průběžná synchronizace schopností** pro [Azure Database Migration Service](https://aka.ms/get-dms) (DMS) . Tato funkce omezuje množství prostoje, které se účtují podle aplikace.
 
 ## <a name="overview"></a>Přehled

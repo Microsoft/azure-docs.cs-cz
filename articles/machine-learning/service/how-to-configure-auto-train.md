@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957458"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400236"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaného experimentů v ML v Pythonu
 
@@ -59,6 +59,14 @@ Klasifikace | Regrese | Vytváření prognóz časových řad
 [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [Pomocí stochastického sestupu (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
+Použití `task` parametr `AutoMLConfig` konstruktor k určení typu testu.
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+# task can be one of classification, regression, forecasting
+automl_config = AutoMLConfig(task="classification")
+```
 
 ## <a name="data-source-and-format"></a>Zdroj dat a formát
 Automatizované machine learning podporuje data, která se nachází v místním počítači nebo v cloudu, jako je Azure Blob Storage. Data lze načíst do scikit-informace podporovaných datových formátů. Můžete číst data do:
@@ -121,7 +129,7 @@ Klíč | Typ | Vzájemně se vylučuje s    | Popis
 ---|---|---|---
 X | Pandas Dataframe nebo Numpy pole | data_train, popisek, sloupce |  Všechny funkce k trénování s
 Y | Pandas Dataframe nebo Numpy pole |   label   | Popisek dat pro trénování s. Pro klasifikaci by měl být pole celých čísel.
-X_valid | Pandas Dataframe nebo Numpy pole   | data_train, popisek | _Volitelné_ všechny funkce má provést ověření. Pokud není zadán, X je rozdělená mezi trénování a ověření
+X_valid | Pandas Dataframe nebo Numpy pole   | data_train, popisek | _Volitelné_ funkce data, která tvoří sadu ověření. Pokud není zadán, X je rozdělená mezi trénování a ověření
 y_valid |   Pandas Dataframe nebo Numpy pole | data_train, popisek | _Volitelné_ popisku dat má provést ověření. Pokud není zadán, y je rozdělená mezi trénování a ověření
 sample_weight | Pandas Dataframe nebo Numpy pole |   data_train, popisek, sloupce| _Volitelné_ váženou hodnotu pro každý vzorek. Používá se, když chcete přiřadit různé váhy na základě datových bodů
 sample_weight_valid | Pandas Dataframe nebo Numpy pole | data_train, popisek, sloupce |    _Volitelné_ váženou hodnotu pro každý vzorek ověření. Pokud není zadán, sample_weight je rozdělená mezi trénování a ověření
@@ -129,30 +137,6 @@ data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Všechna data (f
 label | řetězec  | X, y, X_valid, y_valid |  Představuje sloupec v data_train popisek
 Sloupce | pole řetězců  ||  _Volitelné_ seznamu povolených IP adres sloupců používali pro funkce
 cv_splits_indices   | Pole celých čísel ||  _Volitelné_ seznamu indexů pro rozdělení dat pro křížové ověření
-
-### <a name="load-and-prepare-data-using-data-prep-sdk"></a>Načíst a připravit data pomocí přípravy dat sady SDK
-Automatizované se strojovým učením podporuje načítání dat a transformace pomocí přípravy dat sady SDK. Pomocí sady SDK poskytuje možnost
-
->* Načtení z mnoha typů souborů s analýzy odvozování parametrů (kódování, oddělovač, hlavičky)
->* Převod typu pomocí odvození během načítání souboru
->* Podpora připojení pro MS SQL Server a úložiště Azure Data Lake
->* Přidání sloupce pomocí výrazu
->* Dává chybějící hodnoty
->* Odvození sloupce podle příkladu
->* Filtrování
->* Vlastních transformací Pythonu
-
-Další informace o datech přípravu sdk naleznete [postup přípravy dat pro modelování článku](how-to-load-data.md).
-Tady je příklad, načítání dat pomocí sady sdk pro data přípravu.
-```python
-# The data referenced here was pulled from `sklearn.datasets.load_digits()`.
-simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
-X = dprep.auto_read_file(simple_example_data_root + 'X.csv').skip(1)  # Remove the header row.
-# You can use `auto_read_file` which intelligently figures out delimiters and datatypes of a file.
-
-# Here we read a comma delimited file and convert all columns to integers.
-y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelector(term='.*', use_regex = True))
-```
 
 ## <a name="train-and-validation-data"></a>Trénování a ověřování dat
 
@@ -501,6 +485,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 ![Funkce význam grafu](./media/how-to-configure-auto-train/feature-importance.png)
+
+Další informace o jak vysvětlení modelu a význam funkce můžete povolit v jiných oblastech sady SDK mimo automatizované strojového učení najdete v tématu [koncept](machine-learning-interpretability-explainability.md) článek věnovaný tomu interpretability.
 
 ## <a name="next-steps"></a>Další postup
 

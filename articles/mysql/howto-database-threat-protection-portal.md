@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "61458941"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection pro Azure Database for MySQL
@@ -28,7 +28,7 @@ Rozšířená ochrana před internetovými útoky je součástí nabídky Rozš�
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
 1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).
-2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, kterou chcete chránit. V nastavení zabezpečení, vyberte **Advanced Threat Protection (Preview)**.
+2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, kterou chcete chránit. V nastavení zabezpečení, vyberte **Advanced Threat Protection (Preview)** .
 3. Na **Advanced Threat Protection (Preview)** stránka konfigurace:
 
    - Povolte rozšířenou ochranu před internetovými útoky na serveru.
@@ -46,7 +46,7 @@ Obdržíte e-mailové oznámení po detekci neobvyklých databázových aktivit.
 
     Zobrazit aktivní hrozby:
 
-    ![Aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kliknutím na konkrétní výstrahu zobrazíte další podrobnosti a akce pro zkoumání této hrozby a oprava budoucími hrozbami.
     

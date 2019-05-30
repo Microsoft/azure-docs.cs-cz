@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8b8f9856fe7e0fa591ceb42aab97e92642b6098
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362335"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399352"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -86,7 +86,7 @@ VHD/VHDX | Ano (až 16 disků)
 Virtuální počítače 2. generace | Ano
 Sdílený disk clusteru | Ne
 Šifrovaného disku | Ne
-ROZHRANÍ UEFI| neuvedeno
+UEFI| neuvedeno
 NFS | Ne
 SMB 3.0 | Ne
 RDM | neuvedeno

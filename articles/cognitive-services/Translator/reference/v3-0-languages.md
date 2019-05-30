@@ -3,19 +3,19 @@ title: Translator Text API jazyků – metoda
 titlesuffix: Azure Cognitive Services
 description: Použijte metodu Translator Text API jazyků.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 415093610bfbc314e569eeeb658508bdfb021d9c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797299"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389718"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Jazyky
 
@@ -40,7 +40,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
     <td><em>Povinný parametr</em>.<br/>Verze rozhraní API požadovaná klientem. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>obor</td>
+    <td>scope</td>
     <td>*Volitelný parametr*.<br/>Čárkou oddělený seznam názvů definování skupin jazyků k vrácení. Povolené jsou názvy skupin: `translation`, `transliteration` a `dictionary`. Pokud je zadaný žádný obor, pak jsou vráceny všechny skupiny, což je ekvivalentní k předávání `scope=translation,transliteration,dictionary`. Při rozhodování, která sada podporovaných jazyků je vhodné pro váš scénář, viz popis [objektu odpovědi](#response-body).</td>
   </tr>
 </table> 
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 Hlavičky žádosti jsou:
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>Přijměte jazyka</td>
@@ -229,10 +229,10 @@ Seznam podporovaných jazyků se často mění. Pokud chcete šetřit šířku p
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>ETag</td>
+    <td>značka eTag</td>
     <td>Aktuální hodnota značka entity pro požadované skupiny podporované jazyky. Chcete-li následné žádosti více efektivní, může klient odeslat `ETag` hodnota v `If-None-Match` pole hlavičky.
     </td>
   </tr>
@@ -251,7 +251,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěšné</td>
+    <td>Úspěch</td>
   </tr>
   <tr>
     <td>304</td>

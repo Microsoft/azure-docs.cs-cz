@@ -3,23 +3,23 @@ title: Odkaz na Translator Text API verze 3.0
 titlesuffix: Azure Cognitive Services
 description: Referenční dokumentace pro verze Translator Text API 3.0.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796865"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387518"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového?
 
 Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené na JSON. Zvyšuje použitelnost a výkon, když sloučení stávajících funkcí do menšího počtu operací a nabízí nové funkce.
 
@@ -55,7 +55,7 @@ Přihlaste se k rozhraní Translator Text API odběru nebo [více služeb Cognit
 
 Existují tři hlavičky, které můžete použít k ověření vašeho předplatného. Tato tabulka poskytuje, popisuje, jak každý používat:
 
-|Záhlaví|Popis|
+|Hlavičky|Popis|
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Použít s předplatným služeb Cognitive Services, Pokud předáváte tajný klíč*.<br/>Hodnota je Azure tajný klíč pro vaše předplatné Translator Text API.|
 |Autorizace|*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota je nosný token: `Bearer <token>`.|
@@ -144,7 +144,7 @@ Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavo
 | 400036| Cílový jazyk ("do" pole) je chybějící nebo neplatný.|
 | 400042| Jednu z možností zadané ("Options" pole) není platný.|
 | 400043| ID trasování klienta (ClientTraceId pole nebo záhlaví X-ClientTranceId) je chybějící nebo neplatný.|
-| 400050| Vstupní text je příliš dlouhý.|
+| 400050| Vstupní text je příliš dlouhý. Zobrazení [omezení počtu požadavků](../request-limits.md).|
 | 400064| Parametr "překladu" je chybějící nebo neplatný.|
 | 400070| Počet skriptů target (ToScript parametr) neodpovídá počtu cíl jazyky (parametr).|
 | 400071| Hodnota není platná pro TextType.|
@@ -152,14 +152,15 @@ Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavo
 | 400073| Parametr skriptu není platná.|
 | 400074| Text žádosti nemá platný formát JSON.|
 | 400075| Kombinace jazyka párování a kategorii není platné.|
-| 400077| Byla překročena maximální požadavek velikost.|
+| 400077| Byla překročena maximální požadavek velikost. Zobrazení [omezení počtu požadavků](../request-limits.md).|
 | 400079| Vlastní systém požadovaný pro překlad mezi z a do jazyka neexistuje.|
 | 401000| Požadavek není autorizovaný, protože jsou přihlašovací údaje chybí nebo je neplatný.|
 | 401015| "Zadané přihlašovací údaje jsou pro rozhraní API pro rozpoznávání řeči. Tato žádost vyžaduje přihlašovací údaje pro rozhraní Text API. Použijte prosím předplatné Translator Text API."|
 | 403000| Operace není povolena.|
 | 403001| Operace není povolena, protože předplatné překročila její kvótu.|
 | 405000| Metoda žádosti se nepodporuje pro požadovaný prostředek.|
-| 408001| Vlastní překladový systém požadovaný ještě není k dispozici. Zkuste to prosím znovu za pár minut.|
+| 408001| Je připravováno překladový systém požadovaný. Zkuste to prosím znovu za pár minut.|
+| 408002| Žádosti vypršel časový limit čekání na příchozí datový proud. Klient nevrátil požadavku v rámci doby čekání byla připravena na serveru. Klient opakovat žádost o bez úprav kdykoli později.|
 | 415000| Hlavička Content-Type je chybějící nebo neplatný.|
 | 429000, 429001, 429002| Server odmítl požadavek, protože klient překročil omezení požadavků.|
 | 500000| Došlo k neočekávané chybě. Pokud chyba přetrvává, nahlaste to datum/čas chyby, požádejte o identifikátor odpovědi hlavičku X-RequestId a identifikátor klienta z hlavičky X-ClientTraceId.|

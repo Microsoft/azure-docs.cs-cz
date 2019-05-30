@@ -10,24 +10,24 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 56870a63f42c10b48cc2d8f0ae2995862be46d8f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790244"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388569"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyka a oblasti pro rozhraní API pro vlastní vyhledávání Bingu
 
 Rozhraní API pro vlastní vyhledávání Bingu podporuje více než deseti tři zemích nebo oblastech, mnoho s více než jeden jazyk.
 
-I když je volitelné, žádost by měl uvádět [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kde chcete výsledky pocházet z. Seznam volitelné parametry dotazů najdete v tématu [parametry dotazu.](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
+I když je volitelné, žádost by měl uvádět [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kde chcete výsledky pocházet z. Seznam volitelné parametry dotazů najdete v tématu [parametry dotazu.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
 Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat určitá země nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` záhlaví. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi/oblast v **trhy** tabulky.
 
-`Accept-Language` Záhlaví a `setLang` parametr dotazu se navzájem vylučují – nezadávejte obě. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language` Záhlaví a `setLang` parametr dotazu se navzájem vylučují – nezadávejte obě. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countriesregions"></a>Země nebo oblasti
+## <a name="countriesregions"></a>Země/oblasti
 
 |Země/oblast|Kód|
 |-------|----|
@@ -42,17 +42,17 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní správní oblast|HK|
+|Hongkong – zvláštní administrativní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
-|Itálie|it|
+|Itálie|IT|
 |Japonsko|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
 |Nizozemsko|NL|
 |Nový Zéland|NZ|
-|Norsko|NE|
+|Norsko|NO|
 |Čína|CN|
 |Polsko|PL|
 |Portugalsko|PT|
@@ -82,7 +82,7 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Kanada|Angličtina|cs CA|
 |Kanada|Francouzština|fr-CA|
 |Chile|Španělština|es-CL|
-|Dánsko|Dánština|da-DK|
+|Dánsko|dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
@@ -96,20 +96,20 @@ Můžete zadat, země/oblast pomocí `cc` parametr dotazu. Pokud chcete zadat ur
 |Mexiko|Španělština|es-MX|
 |Nizozemsko|Holandština|NL-NL|
 |Nový Zéland|Angličtina|cs NZ|
-|Norsko|Norština|no-NO|
+|Norsko|norština|no-NO|
 |Čína|Čínština|zh-CN|
 |Polsko|polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
 |Filipíny|Angličtina|cs PH|
 |Rusko|ruština|ru-RU|
-|Saúdská Arábie|Arabština|ar-SA|
+|Saúdská Arábie|arabština|ar-SA|
 |Jižní Afrika|Angličtina|en-ZA|
 |Španělsko|Španělština|es-ES|
-|Švédsko|Švédština|sv-SE|
+|Švédsko|švédština|sv-SE|
 |Švýcarsko|Francouzština|FR-CH|
 |Švýcarsko|Němčina|de-CH|
 |Tchaj-wan|Tradiční čínština|zh-TW|
-|Turecko|Turečtina|tr-TR|
+|Turecko|turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|en-US|
 |Spojené státy|Španělština|es-US|

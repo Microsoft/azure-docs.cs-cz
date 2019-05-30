@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 81be4d5809fe8a3f36f7364b15e19d0046a8b5cd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714011"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237157"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -70,7 +70,7 @@ K určení velikosti clusteru optimální pro vaši aplikaci, můžete srovnáva
 
 Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, velikost paměti RAM a latence sítě:
 
-* Procesor: Velikost virtuálního počítače určuje počet jader. Více jader, vyšší stupeň paralelní zpracování každého uzlu dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jader.
+* CPU: Velikost virtuálního počítače určuje počet jader. Více jader, vyšší stupeň paralelní zpracování každého uzlu dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jader.
 
 * Paměť RAM: Velikost virtuálního počítače také určuje množství paměti RAM ve virtuálním počítači k dispozici. Pro úlohy, které ukládat data v paměti pro zpracování, místo čtení z disku, zkontrolujte navyšte kapacitu pracovních uzlů k dispozici dostatek paměti k datům.
 
@@ -104,9 +104,9 @@ K jeho identifikaci v místním clusteru jedním uzlem můžete znovu spustit ú
 
 Po určení cílovou velikost virtuálního počítače clusteru, škálování a typ, zkontrolujte aktuální kapacitní omezení kvóty předplatného. Při dosažení limitu kvóty, nebudete moci nasadit nových clusterů nebo horizontální navýšení kapacity stávajících clusterů přidáním dalších uzlů pracovního procesu. Pouze kvótu je kvótu jader procesoru, která existuje na úrovni oblasti pro každé předplatné. Například může mít vaše předplatné limit 30 jader v oblasti USA – východ. Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
 
-1. Přejít na web Azure Portal
-1. Klikněte na **Nápověda a podpora** v levé dolní části stránky.
-1. Klikněte na **nová žádost o podporu**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Vyberte **Nápověda a podpora** v levé dolní části stránky.
+1. Vyberte na **nová žádost o podporu**.
 1. Na **nová žádost o podporu** stránce v části **Základy** kartu, vyberte následující možnosti:
    - **Typ problému**: **Omezení služby a předplatného (kvóty)**
    - **Předplatné**: předplatné, které chcete upravit
@@ -114,10 +114,10 @@ Po určení cílovou velikost virtuálního počítače clusteru, škálování 
     
      ![Vytvořit žádost o podporu o navýšení kvóty pro jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Klikněte na **Další**.
-1. Na **podrobnosti** stránky, zadejte popis problému, vyberte závažnost problému a vyberte upřednostňovaný způsob kontaktu.
-1. Klikněte na tlačítko **Další: Zkontrolovat a vytvořit**.
-1. Na **revize + vytvořit** klikněte na tlačítko **vytvořit**.
+1. Vyberte **Další: Řešení >>** .
+1. Na **podrobnosti** stránky, zadejte popis problému, vyberte závažnost problému, upřednostňovaný způsob kontaktu a další povinná pole.
+1. Vyberte **Další: Zkontrolovat a vytvořit >>** .
+1. Na **revize + vytvořit** kartu, vyberte možnost **vytvořit**.
 
 > [!NOTE]  
 > Pokud je potřeba zvýšit kvótu jader HDInsight do privátní oblasti [odeslat žádost o seznam povolených](https://aka.ms/canaryintwhitelist).

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9bce408215cef540604a72109bc5b29ebc3359e7
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413799"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237366"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -185,9 +185,6 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ```
 
-> [!IMPORTANT]
-> Kvůli problému v modulu runtime Ujistěte se, že doba uchování v zásadách uchovávání dat je nakonfigurovaný, aby byl méně než 24 dní, jinak by vést ve službě obnovení zálohy přejít do převzetí služeb při selhání kvora ztráty příspěvek repliky.
-
 ### <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
 Po definování zásad zálohování pro splnění požadavků na ochranu dat aplikace, zásady zálohování by měly být přidružené aplikace. V závislosti na požadavku může být zásady zálohování přidružené aplikace, služby nebo oddíl.
 
@@ -286,10 +283,6 @@ FailureError            :
 ## <a name="limitation-caveats"></a>Omezení / upozornění
 - Rutiny Powershellu pro Service Fabric se v režimu náhledu.
 - Žádná podpora pro Service Fabric clustery v Linuxu.
-
-## <a name="known-issues"></a>Známé problémy
-- Nakonfigurujte doba uchovávání být kratší než 24 dní. 
-
 
 ## <a name="next-steps"></a>Další postup
 - [Principy pravidelné zálohování konfigurace](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
