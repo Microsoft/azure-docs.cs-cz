@@ -296,6 +296,8 @@
               href: transparent-data-encryption-byok-azure-sql.md
         - name: Atributy zabezpečení
           href: sql-database-security-attributes.md
+        - name: Omezení funkcí
+          href: sql-database-feature-restrictions.md
     - name: Škálovatelnost
       items:
         - name: Přehled škálovatelnosti
@@ -368,12 +370,20 @@
           href: sql-database-temporal-tables.md
         - name: Automatizace úloh
           href: sql-database-job-automation-overview.md
+        - name: Propojené servery
+          href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
+        - name: Service Broker
+          href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/sql-database/toc.json'
+        - name: Databázový e-mail
+          href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/sql-database/toc.json'
         - name: Machine Learning Services
           items:
             - name: Přehled
               href: sql-database-machine-learning-services-overview.md
             - name: Klíčové rozdíly
               href: sql-database-machine-learning-services-differences.md
+        - name: Integrace CLR/.NET na straně serveru
+          href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/sql-database/toc.json'
 - name: Návody
   items:
     - name: Přehled

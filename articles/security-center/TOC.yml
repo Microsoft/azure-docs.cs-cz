@@ -57,6 +57,8 @@
       href: security-center-powershell-onboarding.md
     - name: Nastavení služby Security Center
       href: security-center-policies-overview.md
+    - name: Porovnání standardních hodnot s využitím monitorování Integrity souborů
+      href: security-center-file-integrity-monitoring-baselines.md
       items:
         - name: Shromažďování dat
           href: security-center-enable-data-collection.md

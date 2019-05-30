@@ -23,6 +23,8 @@
       href: fhir-oss-cli-quickstart.md
     - name: Konfigurace CORS
       href: configure-cross-origin-resource-sharing.md
+    - name: Konfigurace Cosmos DB
+      href: configure-cosmos-db.md
 - name: Kurzy
   expanded: false
   items:

@@ -65,7 +65,7 @@
           href: batch-aad-auth.md
         - name: Azure AD se službou Batch Management
           href: batch-aad-auth-management.md
-    - name: Vytváření balíčků aplikací
+    - name: Použití balíčků aplikací
       href: batch-application-packages.md
     - name: Vytváření a správa fondů
       items:

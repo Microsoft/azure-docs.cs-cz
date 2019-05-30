@@ -53,4 +53,4 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Vyžadování podmínek použití</a>
+          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Vyžadují se podmínky použití?</a>

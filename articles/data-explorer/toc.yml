@@ -41,14 +41,6 @@
           href: web-query-data.md
         - name: Python
           href: python-query-data.md
-    - name: Vizualizace dat
-      items:
-        - name: Power BI – konektor
-          href: power-bi-connector.md
-        - name: Power BI – importovaný dotaz
-          href: power-bi-imported-query.md
-        - name: Power BI – dotaz SQL
-          href: power-bi-sql-query.md
 - name: Kurzy
   items:
     - name: Ingestování dat bez použití kódu
@@ -80,6 +72,20 @@
           href: anomaly-detection.md
         - name: Strojové učení
           href: machine-learning-clustering.md
+    - name: Vizualizace dat
+      items:
+        - name: Power BI
+          items:
+            - name: konektor
+              href: power-bi-connector.md
+            - name: importovaný dotaz
+              href: power-bi-imported-query.md
+            - name: Dotaz SQL
+              href: power-bi-sql-query.md
+        - name: Sisense
+          href: sisense.md
+        - name: Grafana
+          href: grafana.md
     - name: Spravovat
       items:
         - name: Správa databázových oprávnění
@@ -108,8 +114,6 @@
           href: kqlmagic.md
         - name: Kopírování dat s využitím Azure Data Factory
           href: data-factory-load-data.md
-        - name: Vizualizace dat v Grafaně
-          href: grafana.md
         - name: Připojení přes ODBC
           href: connect-odbc.md
     - name: Řešení potíží

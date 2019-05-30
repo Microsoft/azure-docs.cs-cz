@@ -101,6 +101,8 @@
       href: event-sources.md
     - name: Obslužné rutiny událostí
       href: event-handlers.md
+    - name: Geografické zotavení po havárii
+      href: geo-disaster-recovery.md
 - name: Návody
   items:
     - name: Publikování ve vlastním tématu

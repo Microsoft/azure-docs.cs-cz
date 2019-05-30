@@ -14,12 +14,14 @@
       href: virtual-wan-point-to-site-portal.md
 - name: Koncepty
   items:
-    - name: Umístění a partneři
+    - name: Informace o umístěních a partnerech
       href: virtual-wan-locations-partners.md
-    - name: Architektura globální přenosové sítě
+    - name: Informace o architektuře globální přenosové sítě
       href: virtual-wan-global-transit-network-architecture.md
-    - name: Rovina řízení Office 365 ve službě Virtual WAN
+    - name: Informace o rovině řízení Office 365 ve službě Virtual WAN
       href: virtual-wan-office365-overview.md
+    - name: Informace o zásadách protokolu IPsec
+      href: virtual-wan-ipsec.md
 - name: Návody
   items:
     - name: Směrování provozu z virtuálního rozbočovače do síťového virtuálního zařízení

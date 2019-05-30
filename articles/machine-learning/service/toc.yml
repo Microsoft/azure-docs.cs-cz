@@ -78,6 +78,9 @@
         - name: Predikce četnosti změn
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Otevřené datové sady Azure
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: Koncepty
   items:
     - name: Pracovní prostor
@@ -130,6 +133,9 @@
         - name: Povolit protokolování
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: Nastavení vstupních a výstupních adresářů
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: Použití rozšíření VS Code
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md

@@ -423,7 +423,7 @@
       items:
         - name: Architektura virtuálních sítí HDInsight
           href: ../hdinsight-virtual-network-architecture.md
-        - name: Omezený odchozí provoz HDInsightu
+        - name: Použití brány firewall k omezení odchozího provozu
           href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight ve virtuální síti Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md

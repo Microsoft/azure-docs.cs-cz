@@ -13,6 +13,8 @@
       href: view-applications-portal.md
 - name: Kurzy
   items:
+    - name: Kurzy k aplikacím Saas
+      href: 'https://docs.microsoft.com/azure/active-directory/saas-apps/'
     - name: Konfigurace jednotného přihlašování – portál
       href: configure-single-sign-on-portal.md
     - name: Přidání místní aplikace – portál
@@ -77,19 +79,13 @@
       href: end-user-experiences.md
 - name: Návody
   items:
-    - name: Integrace cloudových aplikací
+    - name: Přidání cloudové aplikace
       items:
-        - name: Přidání aplikace
-          items:
-            - name: Volba typu aplikace
-              href: choose-application-type.md
-            - name: Běžné problémy – aplikace v galerii
-              href: adding-gallery-app-common-problems.md
-            - name: Běžné problémy – aplikace mimo galerii
-              href: adding-non-gallery-app-common-problems.md
+        - name: Volba typu aplikace
+          href: choose-application-type.md
         - name: Změna názvu nebo loga
           href: change-name-or-logo-portal.md
-    - name: Integrace místních aplikací
+    - name: Integrace místní aplikace
       items:
         - name: Konfigurace konektorů
           href: application-proxy-configure-connectors-with-proxy-servers.md
@@ -125,6 +121,138 @@
               href: application-proxy-integrate-with-tableau.md
             - name: Integrace s Qlikem
               href: application-proxy-qlik.md
+    - name: Konfigurace jednotného přihlašování
+      items:
+        - name: Konfigurace aplikací mimo galerii
+          href: configure-single-sign-on-non-gallery-applications.md
+        - name: Konfigurace federovaného jednotného přihlašování – aplikace v galerii
+          href: configure-federated-single-sign-on-gallery-applications.md
+        - name: Konfigurace federovaného jednotného přihlašování – aplikace mimo galerii
+          href: configure-federated-single-sign-on-non-gallery-applications.md
+        - name: Konfigurace hesel – aplikace v galerii
+          href: configure-password-single-sign-on-gallery-applications.md
+        - name: Konfigurace hesel – aplikace mimo galerii
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: Jednotné přihlašování s využitím proxy aplikací
+          items:
+            - name: Omezené delegování Kerberos (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: Ukládání hesel do trezoru
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: Hlavičky
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: Konfigurace zřizování uživatelů
+      items:
+        - name: Jak dlouho trvá zřizování
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Konfigurace zřizování uživatelů – aplikace v galerii
+          href: application-provisioning-config-how-to.md
+        - name: Synchronizace atributu pro mapování – aplikace v galerii
+          href: user-provisioning-sync-attributes-for-mapping.md
+    - name: Přiřazení uživatelů a správa přístupu k aplikacím
+      items:
+        - name: Konfigurace souhlasu uživatele
+          href: configure-user-consent.md
+        - name: Metody pro přiřazení uživatelů a skupin k aplikaci
+          href: methods-for-assigning-users-and-groups.md
+        - name: Přiřazení uživatele k aplikaci
+          href: assign-user-or-group-access-portal.md
+        - name: Použití samoobslužného přístupu k aplikacím
+          href: access-panel-manage-self-service-access.md
+        - name: Metody pro odebrání přístupu uživatele k aplikaci
+          href: methods-for-removing-user-access.md
+        - name: Odebrání přístupu uživatele nebo skupiny
+          href: remove-user-or-group-access-portal.md
+        - name: Skrytí aplikace před uživatelem
+          href: hide-application-from-user-portal.md
+        - name: Zákaz přihlašování uživatelů
+          href: disable-user-sign-in-portal.md
+        - name: Konfigurace samoobslužného přiřazení aplikace
+          href: manage-self-service-access.md
+        - name: Zjišťování domovské sféry
+          href: configure-authentication-for-federated-users-portal.md
+    - name: Migrace aplikací do Azure AD
+      items:
+        - name: Prostředky migrace
+          href: migration-resources.md
+        - name: Migrace aplikace ADFS do Azure
+          href: migrate-adfs-apps-to-azure.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení potíží s přidáváním aplikací
+          items:
+            - name: Běžné problémy – aplikace v galerii
+              href: adding-gallery-app-common-problems.md
+            - name: Běžné problémy – aplikace mimo galerii
+              href: adding-non-gallery-app-common-problems.md
+        - name: Řešení potíží s přihlašováním uživatelů
+          items:
+            - name: Neočekávaná výzva k poskytnutí souhlasu
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: Chyba souhlasu uživatele
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: Potíže s přihlašováním z vlastního portálu
+              href: application-sign-in-other-problem-deeplink.md
+            - name: Potíže s přihlašováním z přístupového panelu
+              href: application-sign-in-other-problem-access-panel.md
+            - name: Chyba na přihlašovací stránce aplikace
+              href: application-sign-in-problem-application-error.md
+            - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: Potíže s přihlášením k aplikaci Microsoftu
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: Potíže s federovaným jednotným přihlašováním – aplikace v galerii
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: Potíže s vlastní vyvinutou aplikací
+              href: application-sign-in-problem-custom-dev.md
+        - name: Řešení potíží s jednotným přihlašováním
+          items:
+            - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: Běžné potíže s konfigurací hesel – aplikace v galerii
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: Řešení potíží se zřizováním uživatelů
+          items:
+            - name: Hodiny – aplikace v galerii
+              href: application-provisioning-when-will-provisioning-finish.md
+            - name: Potíže s konfigurací zřizování uživatelů – aplikace v galerii
+              href: application-provisioning-config-problem.md
+            - name: Potíže při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů – aplikace v galerii
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: Uživatelé nejsou zřízení – aplikace v galerii
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: Zřízení nesprávných uživatelů – aplikace v galerii
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Řešení potíží se seznamem aplikací a přiřazením
+          items:
+            - name: Správa seznamu aplikací pro vašeho tenanta
+              href: application-types.md
+            - name: Přiřazený neočekávaný uživatel
+              href: ways-users-get-assigned-to-applications.md
+        - name: Řešení potíží na přístupovém panelu
+          items:
+            - name: Správa rozšíření prohlížeče
+              href: manage-access-panel-browser-extension.md
+            - name: Aplikace se nezobrazuje
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: Zobrazuje e neočekávaná aplikace
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: Nejde se přihlásit
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: Chyba při instalaci rozšíření prohlížeče
+              href: access-panel-extension-problem-installing.md
+            - name: Chyba při využívání samoobslužného přístupu k aplikacím
+              href: access-panel-troubleshoot-self-service-access.md
         - name: Řešení potíží s proxy aplikací
           items:
             - name: Vývojový diagram řešení potíží s konektorem
@@ -159,124 +287,6 @@
               href: application-proxy-connector-installation-problem.md
             - name: Potíže s přihlašováním
               href: application-sign-in-problem-on-premises-application-proxy.md
-    - name: Zřizování uživatelů
-      items:
-        - name: Jak dlouho to trvá
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: Hodiny – aplikace v galerii
-          href: application-provisioning-when-will-provisioning-finish.md
-        - name: Konfigurace zřizování uživatelů – aplikace v galerii
-          href: application-provisioning-config-how-to.md
-        - name: Potíže s konfigurací zřizování uživatelů – aplikace v galerii
-          href: application-provisioning-config-problem.md
-        - name: Potíže při ukládání přihlašovacích údajů správce při konfiguraci zřizování uživatelů – aplikace v galerii
-          href: application-provisioning-config-problem-storage-limit.md
-        - name: Synchronizace atributu pro mapování – aplikace v galerii
-          href: user-provisioning-sync-attributes-for-mapping.md
-        - name: Uživatelé nejsou zřízení – aplikace v galerii
-          href: application-provisioning-config-problem-no-users-provisioned.md
-        - name: Zřízení nesprávných uživatelů – aplikace v galerii
-          href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: Přístup k aplikaci
-      items:
-        - name: Typy aplikací
-          href: application-types.md
-        - name: Konfigurace souhlasu uživatele
-          href: configure-user-consent.md
-        - name: Metody pro přiřazení uživatelů a skupin k aplikaci
-          href: methods-for-assigning-users-and-groups.md
-        - name: Přiřazení uživatele k aplikaci
-          href: assign-user-or-group-access-portal.md
-        - name: Metody pro odebrání přístupu uživatele k aplikaci
-          href: methods-for-removing-user-access.md
-        - name: Přiřazený neočekávaný uživatel
-          href: ways-users-get-assigned-to-applications.md
-        - name: Odebrání přístupu uživatele nebo skupiny
-          href: remove-user-or-group-access-portal.md
-        - name: Skrytí aplikace před uživatelem
-          href: hide-application-from-user-portal.md
-        - name: Zákaz přihlašování uživatelů
-          href: disable-user-sign-in-portal.md
-        - name: Konfigurace samoobslužného přiřazení aplikace
-          href: manage-self-service-access.md
-        - name: Zjišťování domovské sféry
-          href: configure-authentication-for-federated-users-portal.md
-    - name: Jednotné přihlašování
-      items:
-        - name: Konfigurace aplikací mimo galerii
-          href: configure-single-sign-on-non-gallery-applications.md
-        - name: Konfigurace federovaného jednotného přihlašování – aplikace v galerii
-          href: configure-federated-single-sign-on-gallery-applications.md
-        - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii
-          href: configure-federated-single-sign-on-gallery-applications-problems.md
-        - name: Konfigurace federovaného jednotného přihlašování – aplikace mimo galerii
-          href: configure-federated-single-sign-on-non-gallery-applications.md
-        - name: Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii
-          href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: Konfigurace hesel – aplikace v galerii
-          href: configure-password-single-sign-on-gallery-applications.md
-        - name: Běžné potíže s konfigurací hesel – aplikace v galerii
-          href: configure-password-single-sign-on-gallery-applications-problems.md
-        - name: Konfigurace hesel – aplikace mimo galerii
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: Běžné potíže s konfigurací hesel – aplikace mimo galerii
-          href: configure-password-single-sign-on-non-gallery-applications-problems.md
-        - name: Proxy aplikací
-          items:
-            - name: Omezené delegování Kerberos (KCD)
-              href: application-proxy-configure-single-sign-on-with-kcd.md
-            - name: Ukládání hesel do trezoru
-              href: application-proxy-configure-single-sign-on-password-vaulting.md
-            - name: Hlavičky
-              href: application-proxy-configure-single-sign-on-with-ping-access.md
-            - name: SAML SSO
-              href: application-proxy-configure-single-sign-on-on-premises-apps.md
-    - name: Přístupový panel
-      items:
-        - name: Správa rozšíření prohlížeče
-          href: manage-access-panel-browser-extension.md
-        - name: Aplikace se nezobrazuje
-          href: access-panel-troubleshoot-application-not-appearing.md
-        - name: Zobrazuje e neočekávaná aplikace
-          href: access-panel-troubleshoot-unexpected-application.md
-        - name: Nejde se přihlásit
-          href: access-panel-troubleshoot-web-sign-in-problem.md
-        - name: Chyba při instalaci rozšíření prohlížeče
-          href: access-panel-extension-problem-installing.md
-        - name: Jak využívat samoobslužný přístup k aplikacím
-          href: access-panel-manage-self-service-access.md
-        - name: Chyba při využívání samoobslužného přístupu k aplikacím
-          href: access-panel-troubleshoot-self-service-access.md
-    - name: Migrace
-      items:
-        - name: Prostředky migrace
-          href: migration-resources.md
-        - name: Migrace aplikace ADFS do Azure
-          href: migrate-adfs-apps-to-azure.md
-    - name: Řešení potíží s přihlašováním uživatelů
-      items:
-        - name: Neočekávaná výzva k poskytnutí souhlasu
-          href: application-sign-in-unexpected-user-consent-prompt.md
-        - name: Chyba souhlasu uživatele
-          href: application-sign-in-unexpected-user-consent-error.md
-        - name: Potíže s přihlašováním z vlastního portálu
-          href: application-sign-in-other-problem-deeplink.md
-        - name: Potíže s přihlašováním z přístupového panelu
-          href: application-sign-in-other-problem-access-panel.md
-        - name: Chyba na přihlašovací stránce aplikace
-          href: application-sign-in-problem-application-error.md
-        - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii
-          href: application-sign-in-problem-password-sso-non-gallery.md
-        - name: Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii
-          href: application-sign-in-problem-password-sso-gallery.md
-        - name: Potíže s přihlášením k aplikaci Microsoftu
-          href: application-sign-in-problem-first-party-microsoft.md
-        - name: Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii
-          href: application-sign-in-problem-federated-sso-non-gallery.md
-        - name: Potíže s federovaným jednotným přihlašováním – aplikace v galerii
-          href: application-sign-in-problem-federated-sso-gallery.md
-        - name: Potíže s vlastní vyvinutou aplikací
-          href: application-sign-in-problem-custom-dev.md
 - name: Referenční informace
   items:
     - name: Historie verzí Proxy aplikací

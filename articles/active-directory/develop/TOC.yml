@@ -229,16 +229,20 @@
                   href: msal-js-initializing-client-applications.md
             - name: Zpracování chyb a výjimek
               href: msal-handling-exceptions.md
+            - name: Testování aplikací MSAL
+              href: msal-testing.md
             - name: Protokolování
               href: msal-logging.md
             - name: Jednotné přihlašování (JS)
               href: msal-js-sso.md
             - name: Chování výzvy (JS)
               href: msal-js-prompt-behavior.md
-            - name: Poskytnutí vlastního klienta HttpClient (.NET)
-              href: msal-net-provide-httpclient.md
             - name: Integrace s Azure AD B2C
-              href: msal-b2c-overview.md
+              items:
+                - name: JavaScript
+                  href: msal-b2c-overview.md
+                - name: .NET
+                  href: msal-net-aad-b2c-considerations.md
             - name: Důležité informace a známé problémy
               items:
                 - name: MSAL.NET
@@ -253,8 +257,6 @@
                       href: msal-net-xamarin-ios-considerations.md
                     - name: Univerzální platforma Windows
                       href: msal-net-uwp-considerations.md
-                    - name: Použití zásad AAD B2C
-                      href: msal-net-aad-b2c-considerations.md
                 - name: MSAL.js
                   items:
                     - name: Důležité informace o využití IE
@@ -360,6 +362,8 @@
                   href: msal-net-instantiate-confidential-client-config-options.md
                 - name: Získání souhlasu pro několik prostředků
                   href: msal-net-user-gets-consent-for-multiple-resources.md
+                - name: Poskytnutí vlastního klienta HttpClient
+                  href: msal-net-provide-httpclient.md
         - name: Práce se sadou Visual Studio
           items:
             - name: Použití připojené služby Active Directory

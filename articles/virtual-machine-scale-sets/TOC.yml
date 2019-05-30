@@ -223,6 +223,14 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Použití Azure Powershell
               href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Úprava škálovací sady
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Síťové služby pro škálovací sady
+          href: virtual-machine-scale-sets-networking.md
+        - name: Automatické upgrady operačního systému
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Ochrana instancí (Preview)
+          href: virtual-machine-scale-sets-instance-protection.md
         - name: Galerie sdílených imagí
           items:
             - name: Přehled
@@ -237,14 +245,8 @@
               href: troubleshooting-shared-images.md
         - name: Vertikální škálování ve škálovací sadě
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-        - name: Automatické upgrady operačního systému
-          href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Úprava škálovací sady
-          href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: Použití DSC a škálovacích sad
           href: virtual-machine-scale-sets-dsc.md
-        - name: Síťové služby pro škálovací sady
-          href: virtual-machine-scale-sets-networking.md
         - name: Převod šablony na spravované disky
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: Plánovaná údržba

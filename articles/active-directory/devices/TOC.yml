@@ -22,6 +22,8 @@
   items:
     - name: Jednotné přihlašování k místním prostředkům
       href: azuread-join-sso.md
+    - name: Spravované pracovní stanice Azure
+      href: concept-azure-managed-workstation.md
 - name: Návody
   expanded: true
   items:
@@ -39,6 +41,8 @@
       href: assign-local-admin.md
     - name: Povolení služby Enterprise State Roaming
       href: enterprise-state-roaming-enable.md
+    - name: Nasazení spravovaných pracovních stanic Azure
+      href: howto-azure-managed-workstation.md
     - name: Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD
       href: troubleshoot-hybrid-join-windows-current.md
     - name: Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD

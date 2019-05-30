@@ -48,6 +48,8 @@
       href: delegated-access-virtual-desktop.md
     - name: Metody vyrovnávání zatížení fondu hostitelů
       href: host-pool-load-balancing.md
+    - name: Kontejnery profilů FSLogix a soubory Azure
+      href: fslogix-containers-azure-files.md
 - name: Řešení potíží
   items:
     - name: 'Přehled řešení potíží, zpětná vazba a podpora'
