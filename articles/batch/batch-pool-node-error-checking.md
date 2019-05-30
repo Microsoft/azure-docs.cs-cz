@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 9/25/2018
+ms.date: 05/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b0a9d04fccce7ccbacb700f7af5126c6ae05140a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791337"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357763"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledejte chyby fondu a uzlu
 
@@ -84,18 +84,27 @@ Můžete určit jeden nebo více balíčků aplikací fondu. Služba batch stáh
 
 Uzel [chyby](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) vlastnost hlásí selhání při stažení a dekomprimovat balíček aplikace. Batch nastaví stav uzlu **nepoužitelné**.
 
+### <a name="container-download-failure"></a>Chyba při stahování kontejneru
+
+Ve fondu můžete zadat jeden nebo více odkazů kontejneru. Batch stáhne zadané kontejnery k jednotlivým uzlům. Uzel [chyby](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) vlastnost hlásí selhání při stažení kontejner a nastaví stav uzlu na **nepoužitelné**.
+
 ### <a name="node-in-unusable-state"></a>Uzel v nepoužitelném stavu
 
 Azure Batch může být nastavena [stav uzlu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) k **nepoužitelné** z mnoha důvodů. Stav uzlu nastavte **nepoužitelné**, úlohy nelze naplánovat na uzlu, ale stále budou vám účtovány poplatky.
 
-Batch se vždy pokusí obnovit nepoužitelné uzly, ale obnovení může nebo nemusí být možné v závislosti na příčinu.
+Uzly v **unsuable**, ale bez [chyby](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) stav znamená, že služby Batch nelze navázat komunikaci s virtuálním Počítačem. V takovém případě Batch se vždy pokusí obnovit virtuální počítač. Batch se automaticky pokusí o zotavení virtuální počítače, které se nepodařilo nainstalovat balíčky aplikací nebo kontejnerů, i když je jeho stav **nepoužitelné**.
 
 Pokud služby Batch můžete určit příčinu, uzel [chyby](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) vlastnost podává hlášení.
 
 Další příklady příčiny **nepoužitelné** uzly patří:
 
 - Vlastní image virtuálního počítače je neplatný. Například obrázek, který je připraven není správně.
+
 - Virtuální počítač je přesunuta z důvodu selhání infrastruktury nebo upgradu na nízké úrovni. Batch obnoví uzlu.
+
+- Image virtuálního počítače byla nasazena na hardwaru, který ji nepodporuje. Třeba "HPC" image virtuálního počítače běžící na hardwaru bez HPC. Například při spuštění image CentOS HPC [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) virtuálního počítače.
+
+- Virtuální počítače jsou v [virtuální síť Azure](batch-virtual-network.md), a provoz je zablokovaný, abychom klíčových portů.
 
 ### <a name="node-agent-log-files"></a>Soubory protokolu agenta uzlu
 

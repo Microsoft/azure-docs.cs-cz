@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 395a231fcf43378a51e22427254abb196a46081e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709022"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245098"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučování a nasadit model strojového učení
 
@@ -49,7 +49,7 @@ Pomocí následujících kroků nasaďte retraining webové služby:
     Nyní nasadíte výukového experimentu jako retraining webovou službu, jejichž výstupem jsou trénovaného modelu a výsledky vyhodnocení modelu.
 
 1. V dolní části na plátno experimentu klikněte na tlačítko **nastavení webové služby**
-1. Vyberte **nasazení webové služby [nové]**. Na portálu Azure Machine Learning Web Services se otevře **nasadit webovou službu** stránky.
+1. Vyberte **nasazení webové služby [nové]** . Na portálu Azure Machine Learning Web Services se otevře **nasadit webovou službu** stránky.
 1. Zadejte název pro webovou službu a zvolte plán plateb.
 1. Vyberte **Nasadit**.
 
@@ -59,7 +59,7 @@ V tomto příkladu používáme C# k vytvoření aplikace přeučení. K provede
 
 Pro volání rozhraní API pro přeučení postupujte následovně:
 
-1. Vytvoření C# konzolovou aplikaci v sadě Visual Studio: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)**.
+1. Vytvoření C# konzolovou aplikaci v sadě Visual Studio: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)** .
 1. Přihlaste se k portálu webových služeb Machine Learning.
 1. Klikněte na webové služby, pro kterou pracujete.
 1. Klikněte na tlačítko **využívat**.
@@ -89,7 +89,7 @@ Ukázkový kód BES nahraje soubor z místního disku (například "C:\temp\Cens
 1. V seznamu účtů úložiště vyberte jeden pro uložení retrained modelu.
 1. V levém navigačním sloupci klikněte na tlačítko **přístupové klíče**.
 1. Zkopírujte a uložte **primární přístupový klíč**.
-1. V levém navigačním sloupci klikněte na tlačítko **kontejnery**.
+1. V levém navigačním sloupci klikněte na tlačítko **objekty BLOB**.
 1. Vybrat existující kontejner, nebo vytvořte novou a uložit název.
 
 Vyhledejte *StorageAccountName*, *StorageAccountKey*, a *StorageContainerName* deklarace a aktualizujte hodnoty, které jste si uložili z portálu.

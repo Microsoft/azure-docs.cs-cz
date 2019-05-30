@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89108f02957990ad1c7eb736f39de89537f06db5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60905880"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297923"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Stav Terraformu Store ve službě Azure Storage
 
@@ -79,7 +79,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 Nakonfigurujte Terraform používat back-end, zahrňte *back-endu* konfigurace s typem *azurerm* uvnitř konfigurace Terraformu. Přidat *název_účtu_úložiště*, *container_name*, a *klíč* hodnoty konfigurace bloku.
 
-Následující příklad nakonfiguruje Terraformu back-endu. a vytvoří a skupinu prostředků Azure. Hodnoty nahraďte hodnotami ze svého prostředí.
+Následující příklad nakonfiguruje Terraformu back-endu. a vytvoří skupinu prostředků Azure. Hodnoty nahraďte hodnotami ze svého prostředí.
 
 ```json
 terraform {

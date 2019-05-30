@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ad57f86e221a98461fcd1dc11b92f5665d6128d0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786451"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254406"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 Tato část obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](api-management-howto-policies.md).  
@@ -39,12 +39,15 @@ Tato část obsahuje odkaz pro následující zásady služby API Management. In
     -   [Ověřit token JWT](api-management-access-restriction-policies.md#ValidateJWT) -vynucuje existenci a platnost extrahují z zadanou hlavičku protokolu HTTP nebo parametr dotazu zadaný token JWT.  
 -   [Pokročilé zásady](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Řízení toku](api-management-advanced-policies.md#choose) – podmíněné příkazy zásad na základě vyhodnocení logické výrazy platí.  
-    -   [Dopředné požadavek](api-management-advanced-policies.md#ForwardRequest) -předá požadavek back-end službu.  
-    -   [Protokolování do Eventhubu](api-management-advanced-policies.md#log-to-eventhub) -odesílá zprávy v zadaném formátu do cíl zprávy určené entity protokolovacího nástroje.  
+    -   [Dopředné požadavek](api-management-advanced-policies.md#ForwardRequest) -předá požadavek back-end službu.
+    -   [Omezení souběžnosti](api-management-advanced-policies.md#LimitConcurrency) – brání uzavřen zásady spuštění více než určitý počet požadavků současně.
+    -   [Protokolování do Eventhubu](api-management-advanced-policies.md#log-to-eventhub) -odesílá zprávy v zadaném formátu do cíl zprávy určené entity protokolovacího nástroje.
+    -   [Napodobení odpovědi](api-management-advanced-policies.md#mock-response) -kanálu přeruší provádění a imitaci odpovědi přímo k volajícímu.
     -   [Zkuste](api-management-advanced-policies.md#Retry) -opakuje spouštění příkazů uzavřených zásady, pokud a dokud je podmínka splněna. Spuštění se opakovaly s zadaným časovým intervalům a až po zadaný počet opakování.  
     -   [Vrací odpověď](api-management-advanced-policies.md#ReturnResponse) -kanálu přeruší provádění a vrátí zadanou odpověď přímo na volajícího.  
     -   [Odeslat jednosměrný požadavek](api-management-advanced-policies.md#SendOneWayRequest) – odešle požadavek na zadanou adresu URL bez čekání na odpověď.  
-    -   [Poslat žádost o](api-management-advanced-policies.md#SendRequest) – odešle požadavek na zadanou adresu URL.  
+    -   [Poslat žádost o](api-management-advanced-policies.md#SendRequest) – odešle požadavek na zadanou adresu URL.
+    -   [Nastavit proxy server HTTP](api-management-advanced-policies.md#SetHttpProxy) – umožňuje trasy předávají požadavky přes proxy server HTTP.
     -   [Nastavit proměnnou](api-management-advanced-policies.md#set-variable) – zachovat hodnotu do proměnné pojmenovaného kontextu pro pozdější přístup.  
     -   [Nastaví metodu požadavku](api-management-advanced-policies.md#SetRequestMethod) -vám umožní změnit metodu HTTP pro žádost.  
     -   [Nastavené kódy stavu](api-management-advanced-policies.md#SetStatus) – změní stavový kód HTTP se zadanou hodnotou.  

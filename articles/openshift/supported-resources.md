@@ -2,24 +2,24 @@
 title: Podporované zdroje pro Azure Red Hat OpenShift | Dokumentace Microsoftu
 description: Zjistěte, jaké oblasti Azure a velikosti virtuálních počítačů jsou podporovány pomocí Microsoft Azure Red Hat OpenShift.
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/15/2019
-ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788701"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306224"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Prostředky Azure Red Hat OpenShift
 
 Toto téma obsahuje seznam oblastí Azure a velikosti virtuálních počítačů, které jsou podporované službou Microsoft Azure Red Hat OpenShift.
 
-## <a name="azure-regions"></a>Oblasti Azure
+## <a name="azure-regions"></a>Oblast Azure
 
 Zobrazit [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) aktuální seznam oblastí, kde můžete nasadit Azure Red Hat OpenShift clusterů.
 
@@ -39,12 +39,12 @@ Rozhraní REST API Azure Red Hat OpenShift podporuje následující velikosti v�
 |Velikost|Virtuální procesory|Paměť RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
-|Standard D8s v3|8|32 GB|
+|Standardní D8s v3|8|32 GB|
 |Standard D16s v3|16|64 GB|
 |Standard D32s v3|32|128 GB|
 |-|-|-|
 |Standard E4s v3|4|32 GB|
-|Standard E8s v3|8|64 GB|
+|Standardní E8s v3|8|64 GB|
 |Standard E16s v3|16|128 GB|
 |Standard E32s v3|32|256 GB|
 |-|-|-|
@@ -59,7 +59,7 @@ Následující master / REST API služby Azure Red Hat OpenShift podporují veli
 |Velikost|Virtuální procesory|Paměť RAM|
 |-|-|-|
 |Standard D4s v3|4|16 GB|
-|Standard D8s v3|8|32 GB|
+|Standardní D8s v3|8|32 GB|
 |Standard D16s v3|16|64 GB|
 |Standard D32s v3|32|128 GB|
 

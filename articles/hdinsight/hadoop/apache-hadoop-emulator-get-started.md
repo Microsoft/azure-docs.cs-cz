@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 12/11/2017
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 15152196e45265985c8abb409523982bd4c5d427
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2cb99cfe765e1d3444f362e591812f5088c78c0e
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697410"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393139"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop sandboxu, emulátoru na virtuálním počítači
 
@@ -24,19 +24,16 @@ Zjistěte, jak nainstalovat sandboxu Apache Hadoop od Hortonworks na virtuální
 * [Oracle VirtualBox](https://www.virtualbox.org/). Stáhněte si a nainstalujte ji z [tady](https://www.virtualbox.org/wiki/Downloads).
 
 
-
 ## <a name="download-and-install-the-virtual-machine"></a>Stažení a instalaci virtuálního počítače
-1. Přejděte [stáhne Hortonworks](https://hortonworks.com/downloads/#sandbox).
+1. Přejděte [stáhne Cloudera](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-2. Klikněte na tlačítko **stáhnout VIRTUALBOX** stáhnout nejnovější Hortonworks Sandbox na virtuálním počítači. Zobrazí se výzva k registraci se Hortonworks, před zahájením stahování. Trvat jednu až dvě hodiny ke stažení v závislosti na rychlosti sítě.
+2. Klikněte na tlačítko **VIRTUALBOX** pod **zvolte typ instalace** stáhnout nejnovější Hortonworks Sandbox na virtuálním počítači. Přihlaste se nebo vyplněním formuláře zájmu produktu.
 
-    ![Obrázek odkazu pro stažení Hortonworks Sandboxu pro VirtualBox](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
-3. Ze stejné webové stránky, klikněte na tlačítko **Import na virtuální pole** odkaz ke stažení PDF, který obsahuje pokyny k instalaci pro virtuální počítač.
+1. Klikněte na tlačítko **HDP izolovaného prostoru (nejnovější)** zahájíte stahování.
 
-Stažení starší verze sandboxu HDP, rozbalte archiv:
+Pokyny k vytvoření izolovaného prostoru v tématu [izolovaného prostoru nasazení a Instalační příručka](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-![Archiv Hortonworks Sandbox](./media/apache-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
-
+Stažení starší verze sandboxu HDP, najdete na odkazech v rámci **starší verze**.
 
 ## <a name="start-the-virtual-machine"></a>Spustit virtuální počítač
 
@@ -52,7 +49,7 @@ Stažení starší verze sandboxu HDP, rozbalte archiv:
 1. Z **Začínáme** krok Hortonworks Sandbox stránky vyberte **zobrazit pokročilé možnosti**. Pomocí informací na této stránce pro přihlášení do izolovaného prostoru pomocí protokolu SSH. Použijte název a heslo, které jsou k dispozici.
 
    > [!NOTE]
-   > Pokud nemáte nainstalovaný klient SSH, můžete použít SSH webové poskytnuté na virtuální počítač na **http://localhost:4200/**.
+   > Pokud nemáte nainstalovaný klient SSH, můžete použít SSH webové poskytnuté na virtuální počítač na **http://localhost:4200/** .
 
     Při prvním připojení pomocí protokolu SSH, zobrazí se výzva ke změně hesla pro kořenový účet. Zadejte nové heslo, které používáte k přihlášení pomocí SSH.
 

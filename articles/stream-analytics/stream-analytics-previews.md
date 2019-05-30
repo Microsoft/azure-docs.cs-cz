@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.openlocfilehash: f3838bf6b9f7daa24c0cdb5b0c5a08d41d164530
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.date: 05/29/2019
+ms.openlocfilehash: e63937cedf44b1642e091a4744d898a26422be10
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561138"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393692"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -30,10 +30,6 @@ Následující funkce jsou ve verzi public preview. Můžete využít výhod tě
 ### <a name="anomaly-detection"></a>Detekce anomálií
 
 Azure Stream Analytics zavádí nové modely strojového učení s podporou *zásobníku* a *poklesy* detekce kromě detekce obousměrný, pomalé kladné a pomalé negativních trendů. Další informace najdete v článku [detekce anomálií ve službě Azure Stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
-
-### <a name="sql-database-reference-data"></a>SQL Database referenčních dat
-
-Azure Stream Analytics podporuje Azure SQL Database jako zdroj vstupu pro referenční data. SQL Database můžete použít jako referenční data pro vaši úlohu Stream Analytics na portálu Azure portal a v sadě Visual Studio pomocí nástroje Stream Analytics. Další informace najdete, [pomocí referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics](sql-reference-data.md).
 
 ### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
 

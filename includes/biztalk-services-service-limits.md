@@ -9,13 +9,13 @@ ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553380"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238762"
 ---
-| Prostředek | Free (Preview) | Developer | Basic | Standard | Premium |
+| Resource | Free (Preview) | Developer | Basic | Standard | Premium |
 | --- | --- | --- | --- | --- | --- |
 | Horizontální navýšení kapacity |neuvedeno |neuvedeno |Ano, v přírůstcích po 1 jednotce Basic |Ano, v přírůstcích po 1 jednotce Standard |Ano, v přírůstcích po 1 jednotce Premium |
 | Limit škálování |neuvedeno |neuvedeno |Až na 8 jednotek |Až na 8 jednotek |Až na 8 jednotek |
@@ -24,6 +24,6 @@ ms.locfileid: "57553380"
 | Hybridní připojení na jednotku |5 |5 |10 |50 |100 |
 | Přenos dat hybridním připojením (GB) na jednotku |5 |5 |50 |250 |500 |
 | Počet připojení, které používají služby BizTalk Adapter Service za jednotku |neuvedeno |1 |2 |5 |25 |
-| Archivace |neuvedeno |K dispozici. |neuvedeno |neuvedeno |K dispozici. |
-| Vysoká dostupnost |neuvedeno |neuvedeno |K dispozici. |K dispozici. |K dispozici. |
+| Archivace |neuvedeno |K dispozici |neuvedeno |neuvedeno |K dispozici |
+| Vysoká dostupnost |neuvedeno |neuvedeno |K dispozici |K dispozici |K dispozici |
 

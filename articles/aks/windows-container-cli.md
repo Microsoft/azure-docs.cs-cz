@@ -2,17 +2,17 @@
 title: 'Ve verzi Preview: vytvoření kontejneru Windows serveru v clusteru Azure Kubernetes Service (AKS)'
 description: Zjistěte, jak rychle vytvořit Kubernetes cluster, nasazení aplikace v kontejneru Windows Server ve službě Azure Kubernetes Service (AKS) pomocí Azure CLI.
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: zarhoads
-ms.openlocfilehash: 328fb9707c7151b8696cfb55e13567db90e45b7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: twhitney
+ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991138"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305304"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Ve verzi Preview: vytvoření kontejneru Windows serveru v clusteru Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -35,9 +35,10 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 Po vytvoření clusteru, který může spouštět kontejnery Windows serveru, je nutné přidat fond dalšího uzlu. Přidání fondu dalšího uzlu je popsáno v pozdějším kroku, ale je nejprve potřeba povolit několik funkcí ve verzi preview.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
+> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
 >
-> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
+> * [Zásady podpory AKS][aks-support-policies]
+> * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
     
@@ -276,7 +277,7 @@ Pokud chcete zobrazit ukázkovou aplikaci v akci, otevřete webový prohlížeč
 
 ![Obrázek přechodu na ukázkovou aplikaci ASP.NET](media/windows-container/asp-net-sample-app.png)
 
-## <a name="delete-cluster"></a>Odstranit cluster
+## <a name="delete-cluster"></a>Odstranění clusteru
 
 Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete][az-group-delete].
 
@@ -302,7 +303,6 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [dotnet-samples]: https://hub.docker.com/_/microsoft-dotnet-framework-samples/
-[aks-github]: https://github.com/azure/aks/issues
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
@@ -328,3 +328,5 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
 [use-advanced-networking]: configure-advanced-networking.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

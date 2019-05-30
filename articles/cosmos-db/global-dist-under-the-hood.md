@@ -4,15 +4,15 @@ description: Tento článek obsahuje podrobné technické informace o globální
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c490657eb67a34e79c8dbaea31cb59b49cc6448e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071945"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241096"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB - pod pokličkou
 
@@ -68,7 +68,7 @@ Zavádíme kódovaného vektoru hodiny (obsahující ID oblasti a logické hodin
 
 Pro databáze Cosmos nakonfigurované s využitím více oblastí zápisu systém nabízí celou řadu flexibilní automatické konflikt zásad řešení pro vývojáře lze vybírat, včetně: 
 
-- **Služby Wins posledního zápisu (LWW)**, který, ve výchozím nastavení, používá vlastnost definovaná systémem časové razítko (která je založená na protokolu synchronizaci času hodin). Cosmos DB můžete také zadat jiné vlastní číselné vlastnosti pro řešení konfliktů.  
+- **Služby Wins posledního zápisu (LWW)** , který, ve výchozím nastavení, používá vlastnost definovaná systémem časové razítko (která je založená na protokolu synchronizaci času hodin). Cosmos DB můžete také zadat jiné vlastní číselné vlastnosti pro řešení konfliktů.  
 - **Definované aplikací (vlastní) konflikt zásada řešení** (vyjádřeno prostřednictvím procedury sloučení), která je navržená pro odsouhlasení definovaného aplikací sémantiku a je v konfliktu. Tyto postupy získat vyvolána při zjištění konfliktu zápis – zápis pod záštitou databázové transakce na straně serveru. Poskytuje tento systém přesně jednou zaručit k provádění procedury sloučení jako součást závazku protokolu. Existují [několik ukázek řešení konfliktu](how-to-manage-conflicts.md) si můžete pohrát s.  
 
 ## <a name="consistency-models"></a>Modely konzistence

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/15/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8cee74696d9636a8ac1d6fcbab493f18184355e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787646"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238200"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes **classic** model nasazení na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -28,9 +28,9 @@ ms.locfileid: "65787646"
 | Počet pravidel NSG na skupinu NSG |1 000 |1 000 |
 | Uživatelem definovaná trasa tabulky |200 |200 |
 | Trasy definované uživatelem na směrovací tabulku |400 |400 |
-| Veřejné IP adresy (dynamické) |5 |Kontaktovat podporu |
-| Vyhrazené veřejné IP adresy |20 |Kontaktovat podporu |
-| Veřejné virtuální IP adresy na nasazení |5 |Kontaktovat podporu |
+| Veřejné IP adresy (dynamické) |5 |Kontaktujte podporu |
+| Vyhrazené veřejné IP adresy |20 |Kontaktujte podporu |
+| Veřejné virtuální IP adresy na nasazení |5 |Kontaktujte podporu |
 | Privátní virtuální IP adresy (interní Vyrovnávání zatížení) na nasazení |1 |1 |
 | Seznamy koncový bod řízení přístupu (ACL) |50 |50 |
 
@@ -54,7 +54,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Network Security Groups (Skupiny zabezpečení sítě) |5 000 |
 | Počet pravidel NSG na skupinu NSG |1 000 |
 | IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4,000 |
-| Skupiny zabezpečení aplikace |3 000 |
+| Skupiny zabezpečení aplikací |3 000 |
 | Skupiny zabezpečení aplikace podle konfigurace protokolu IP pro síťové rozhraní |20 |
 | Konfigurace IP na skupiny zabezpečení aplikací |4,000 |
 | Skupiny zabezpečení aplikací, které se dá nastavit v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |100 |
@@ -70,7 +70,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Veřejné IP adresy – dynamická | 1000 pro jazyk Basic. |Kontaktujte podporu. |
 | Veřejné IP adresy – statické | 1000 pro jazyk Basic. |Kontaktujte podporu. |
 | Veřejné IP adresy – statické | 200 pro úroveň Standard.|Kontaktujte podporu. |
-| Velikost předpony veřejných IP (preview) | /28 | Kontaktujte podporu. |
+| Velikost předpony veřejných IP | /28 | Kontaktujte podporu. |
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).

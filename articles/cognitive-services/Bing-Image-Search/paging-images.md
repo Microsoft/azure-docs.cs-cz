@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 38b2244d68de25f53d59dd4eb0a6beba03f0e51d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9368abe7d3b6ad6cf6e86b503dca4fca4f18739c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60916678"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388460"
 ---
 # <a name="page-through-the-images-results"></a>Stránkovat výsledky imagí
 
-Při volání rozhraní API pro vyhledávání obrázků Bingu vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) pole.  
+Při volání rozhraní API pro vyhledávání obrázků Bingu vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#totalestimatedmatches) pole.  
 
 Následující příklad ukazuje `totalEstimatedMatches` pole, které zahrnuje obrázky odpověď.  
 
@@ -34,7 +34,7 @@ Následující příklad ukazuje `totalEstimatedMatches` pole, které zahrnuje o
 }  
 ```  
 
-Chcete-li stránkovat dostupných imagí, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) parametrů dotazu.  
+Chcete-li stránkovat dostupných imagí, použijte [počet](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#count) a [posun](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) parametrů dotazu.  
 
 `count` Parametr určuje počet výsledků vrátit v odpovědi. Maximální počet výsledků, které může vyžadovat v odpovědi je 150. Výchozí hodnota je 35. Skutečný počet doručení může být menší než požadovaný.
 
@@ -58,7 +58,7 @@ Host: api.cognitive.microsoft.com
 
 Očekáváte, že pokud stránce 35 Image současně nastavíte `offset` parametr na hodnotu 0 na první žádosti o dotazu a potom zvýší `offset` podle 35 na každý další požadavek. Ale některé výsledky v následné odpovědi může být duplicitní předchozí odpovědi. První dvě bitové kopie v odpovědi například může být stejný jako poslední dvě bitové kopie z předchozí odpovědi.
 
-Chcete-li odstranit duplicitní výsledky, použijte [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#nextoffset) pole `Images` objektu. `nextOffset` Pole zjistíte `offset` pro další požadavek. Například pokud chcete na stránku 30 imagí v čase, nastavte `count` 30 a `offset` na 0 v první požadavek. V další požadavek, byste měli nastavit `count` 30 a `offset` hodnotu pro předchozí odpověď `nextOffset`. Na stránce zpět, doporučujeme údržbu zásobníku předchozí posuny a automaticky otevíraného nejnovější.
+Chcete-li odstranit duplicitní výsledky, použijte [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#nextoffset) pole `Images` objektu. `nextOffset` Pole zjistíte `offset` pro další požadavek. Například pokud chcete na stránku 30 imagí v čase, nastavte `count` 30 a `offset` na 0 v první požadavek. V další požadavek, byste měli nastavit `count` 30 a `offset` hodnotu pro předchozí odpověď `nextOffset`. Na stránce zpět, doporučujeme údržbu zásobníku předchozí posuny a automaticky otevíraného nejnovější.
 
 > [!NOTE]
 > Stránkování platí pouze pro vyhledávání obrázků (/ imagí/hledání) a není pro přehledy obrázků nebo populárních obrázků (/ imagí a sledování trendů).

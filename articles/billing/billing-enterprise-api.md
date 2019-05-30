@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5722e05e5a5e3a57b4d12b70b14f8674364f824b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615560"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244821"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro generování sestav pro podnikové zákazníky
 Rozhraní API pro vytváření sestav umožňují zákazníkům Enterprise Azure prostřednictvím kódu programu o přijetí změn využití a fakturace data do nástrojů pro analýzu dat upřednostňované. Podnikoví zákazníci si zaregistrovali [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) s Azure a ujistěte se, vyjednávaný peněžní závazky a získat přístup k získání vlastních cen pro prostředky Azure.
@@ -36,25 +36,27 @@ Rozhraní API pro vytváření sestav umožňují zákazníkům Enterprise Azure
 ## <a name="consumption-apis"></a>Využití rozhraní API
 Koncový bod Swaggeru je k dispozici [tady](https://consumption.azure.com/swagger/ui/index) pro rozhraní API je popsáno níže, které by měly umožnit snadné introspekci rozhraní API a možnost k vygenerování klientských sad SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](https://swagger.io/swagger-codegen/). Data od 1. května 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
 
-* **Zůstatek a Souhrn** – [zůstatek a souhrn rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) nabízí měsíční souhrnné informace o zůstatcích, nové nákupy, poplatků za služby Azure Marketplace, úpravy a poplatky za Nadlimitní využití.
+* **Zůstatek a Souhrn** – [zůstatek a souhrn rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) nabízí měsíční souhrnné informace o zůstatcích, nové nákupy, poplatků za služby Azure Marketplace, úpravy a poplatky za Nadlimitní využití.
 
-* **Podrobnosti o použití** – [podrobnosti o použití rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) nabízí denní přehled spotřebované množství a odhadované poplatky registraci. Výsledek obsahuje také informace o instancích, měřičů a oddělení. Rozhraní API může být dotazována fakturační období nebo zadaný počáteční a koncové datum. 
+* **Podrobnosti o použití** – [podrobnosti o použití rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) nabízí denní přehled spotřebované množství a odhadované poplatky registraci. Výsledek obsahuje také informace o instancích, měřičů a oddělení. Rozhraní API může být dotazována fakturační období nebo zadaný počáteční a koncové datum. 
 
-* **Poplatek za Marketplace Store** – [API poplatky webu Marketplace Store](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrátí rozpis podle využití webu marketplace poplatky za den pro zadaný fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou zahrnuty).
+* **Poplatek za Marketplace Store** – [API poplatky webu Marketplace Store](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrátí rozpis podle využití webu marketplace poplatky za den pro zadaný fakturační období nebo počáteční a koncové datum (jednou poplatky nejsou zahrnuty).
 
-* **Ceník** – [cena list API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje příslušný míru pro každého měřiče pro danou registrace a fakturační období. 
+* **Ceník** – [cena list API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje příslušný míru pro každého měřiče pro danou registrace a fakturační období.
+
+* **Rezervované Instance podrobnosti** – [rozhraní API pro využití rezervovaných instancí](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) vrátí nákupy využití rezervovaných instancí. [Rezervované Instance se účtuje API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) ukazuje fakturační transakce provedené. 
 
 ## <a name="data-freshness"></a>Aktuálnost dat
 V odpovědi všechna rozhraní API výše vrátí se značek ETag. Změna v Etag označuje, že se že data aktualizovala.  V následných voláních se stejným rozhraním API pomocí stejné parametry předejte zachycené Etag klíčem "If-None-Match" v záhlaví požadavku http. Stavový kód odpovědi by "NotModified", pokud data nebyla obnovena dalšího a nevrátí se žádná data. Rozhraní API vrátí úplnou datovou sadu pro požadované období pokaždé, když dojde změně značky etag.
 
 ## <a name="helper-apis"></a>Pomocná rozhraní API
- **Seznam fakturační období** – [rozhraní API pro fakturaci období](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrátí seznam hodnot fakturačních obdobích, která, které mají data o spotřebě pro registraci zadané v chronologickém pořadí reverzní. Každé období obsahuje vlastnost odkazuje na trasu rozhraní API pro čtyři sady dat – BalanceSummary, UsageDetails, poplatky webu Marketplace a ceníku.
+ **Seznam fakturační období** – [rozhraní API pro fakturaci období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrátí seznam hodnot fakturačních obdobích, která, které mají data o spotřebě pro registraci zadané v chronologickém pořadí reverzní. Každé období obsahuje vlastnost odkazuje na trasu rozhraní API pro čtyři sady dat – BalanceSummary, UsageDetails, poplatky webu Marketplace a ceníku.
 
 
 ## <a name="api-response-codes"></a>Kódy odpovědí rozhraní API   
-|Stavový kód odpovědi|Zpráva|Popis|
+|Stavový kód odpovědi|Message|Popis|
 |-|-|-|
-|200| OK|Bez chyby|
+|200| OK|Žádná chybová zpráva|
 |401| Neautorizováno| Klíč rozhraní API nebyl nalezen, není platný, vypršela platnost atd.|
 |404| Není dostupný| Koncový bod sestavy nebyl nalezen|
 |400| Chybný požadavek| Neplatné parametry – rozsahy kalendářních dat, EA čísel atd.|

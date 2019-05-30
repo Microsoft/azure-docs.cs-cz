@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 08ea0081c84ea31b2b71d03679b1b527cf94c075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60556776"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258732"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Spravujte uzly, které tvoří cluster.
@@ -28,10 +28,10 @@ Spravujte uzly, které tvoří cluster.
 
 |Příkaz|Popis|
 | --- | --- |
-| zakázat | Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr. |
-| povolit | Aktivujte uzel clusteru Service Fabric, která je právě deaktivována. |
+| Zakázat | Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr. |
+| Povolit | Aktivujte uzel clusteru Service Fabric, která je právě deaktivována. |
 | zdravotnictví | Získá stav uzlu Service Fabricu. |
-| informace | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
+| Informace o | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
 | list | Získá seznam uzlů v clusteru Service Fabric. |
 | načítání | Získá informace o načtení uzlu Service Fabric. |
 | remove-state | Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty. |
@@ -180,6 +180,8 @@ Načte informace o načtení uzlu Service Fabric pro všechny metriky, které ma
 Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty.
 
 Z toho vyplývá, že není možné obnovit trvalý stav tohoto uzlu. Obvykle k tomu dojde, pokud pevném disku bylo vymazáno čistý, nebo pokud dojde k chybě na pevný disk. Uzel musí být mimo provoz pro tuto operaci k dosažení úspěchu. Tato operace umožňuje vědět, že repliky v daném uzlu už neexistuje a v daných prostředcích služby by se měla zastavit čeká na tyto repliky k téhle akci vrátit Service Fabric. Tato rutina nespustí, pokud není odebraná stavu na uzlu a uzel můžete přijít zpět beze změny stavu.
+
+Počínaje Service Fabric 6.5, aby bylo možné tuto rutinu použít pro počáteční uzly. Zadejte prosím počáteční uzly regulární uzly (mimo počáteční hodnota) a pak vyvolejte Tato rutina pro odebrání stav uzlu. Pokud cluster běží v Azure, po počáteční uzel ocitne mimo provoz, Service Fabric se pokusí automaticky ho změnit na uzlu – počáteční hodnota. Aby to chcete udělat, ujistěte se, zkontrolujte počet uzlů – počáteční hodnota v primární typ uzlu je menší než počet dolů počáteční uzly. V případě potřeby přidejte více uzlů do primární typ uzlu dosáhnout. Samostatný cluster, pokud uzel počáteční hodnoty seznamu se neočekává a navrhněte zpět beze změny stavu, prosím odebrat uzel z clusteru najdete v tématu [odebrat uzly ze samostatného clusteru Service Fabric](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes) 
 
 ### <a name="arguments"></a>Argumenty
 

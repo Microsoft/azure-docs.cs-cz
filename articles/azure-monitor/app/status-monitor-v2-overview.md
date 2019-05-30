@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 976545f588895421e7c2be7e18b844d7994bc1ff
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2adc706c5da4fa53ace2a8a471789e276878c491
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779997"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255860"
 ---
 # <a name="status-monitor-v2"></a>Monitorování stavu v2
 
@@ -34,7 +34,7 @@ Telemetrická data se odešlou na portál Azure Portal kde pak můžete [monitor
 https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 
 
-## <a name="instructions"></a>Instrukce
+## <a name="instructions"></a>Pokyny
 - Kontrola naše [pokyny Začínáme](status-monitor-v2-get-started.md) jak hned začít s ukázkami kódu stručné.
 - Kontrola naše [podrobné pokyny](status-monitor-v2-detailed-instructions.md) podrobné informace o tom, jak začít pracovat.
 
@@ -74,7 +74,7 @@ Zobrazení telemetrických dat:
 * [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
 * [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů
 * [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
-* [Vytváření řídicích panelů](../../azure-monitor/app/app-insights-dashboards.md)
+* [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md)
 
 Přidání další telemetrie:
 

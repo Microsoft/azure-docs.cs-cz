@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5b719566ce42639c0c435a8d631e12541d0a0e9d
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595549"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256621"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -99,12 +99,10 @@ Portál otevře zobrazení telemetrie z vaší aplikace.
 
 Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje.
 
-[Další informace o používání Application Insights na portálu Azure Portal](../../azure-monitor/app/app-insights-dashboards.md).
-
-## <a name="step-4-publish-your-app"></a>Krok 4: Publikovat aplikaci
+## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
 Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
 
-Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](../../azure-monitor/app/app-insights-dashboards.md). Můžete také použít výkonný [Kusto dotazovací jazyk](/azure/kusto/query/) k analýze využití a výkonu nebo k hledání konkrétních událostí.
+Vaše telemetrická data sestavení až na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii. Můžete také použít výkonný [Kusto dotazovací jazyk](/azure/kusto/query/) k analýze využití a výkonu nebo k hledání konkrétních událostí.
 
 Můžete také dále analyzovat telemetrii v sadě [Visual Studio](../../azure-monitor/app/visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](../../azure-monitor/app/visual-studio-trends.md).
 
@@ -140,13 +138,12 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 
 * **[Údaje o prohlížečích a o načítání stránek](../../azure-monitor/app/javascript.md)** – Vložte do svých webových stránek fragment kódu.
 * **[Dosažení podrobnějšího monitorování závislostí a výjimek](../../azure-monitor/app/monitor-performance-live-website-now.md)** – Nainstalujte si na server Monitorování stavu.
-* **[Naprogramujte vlastní události](../../azure-monitor/app/api-custom-events-metrics.md)**, které počítají a měří čas nebo akce uživatelů.
+* **[Naprogramujte vlastní události](../../azure-monitor/app/api-custom-events-metrics.md)** , které počítají a měří čas nebo akce uživatelů.
 * **[Získání dat protokolu](../../azure-monitor/app/asp-net-trace-logs.md)** – Zjišťujte korelaci dat protokolu s telemetrickými daty.
 
 ### <a name="analysis"></a>Analýza
 
 * **[Práce s Application Insights v sadě Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
-* **[Práce s portálem Application Insights](../../azure-monitor/app/app-insights-dashboards.md)**<br/> Zahrnuje informace o řídicích panelech, výkonných nástrojích pro diagnostiku a analýzy, výstrahách, aktivních mapách závislostí vaší aplikace a exportu telemetrie.
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** – Výkonný dotazovací jazyk.
 
 ### <a name="alerts"></a>Výstrahy

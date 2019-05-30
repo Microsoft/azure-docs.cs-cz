@@ -1,5 +1,5 @@
 ---
-title: Klasifikace služby SQL Data Warehouse | Dokumentace Microsoftu
+title: Klasifikace služby Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Pokyny k používání klasifikace ke správě souběžnosti, význam a výpočetní prostředky pro dotazy ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000126"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236904"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>Klasifikace úlohy SQL Data Warehouse
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Klasifikace úlohy Azure SQL Data Warehouse
 
 Tento článek vysvětluje proces klasifikace úlohy SQL Data Warehouse na příchozí žádosti o přiřazení třídy prostředků a důležitosti.
 

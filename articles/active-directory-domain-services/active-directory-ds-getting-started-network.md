@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Začínáme | Dokumentace Micros
 description: Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
-ms.author: ergreenl
-ms.openlocfilehash: 3020d7b29f19ec2ab578acbebac8db8ea320a844
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/22/2019
+ms.author: mstephen
+ms.openlocfilehash: 65cc63b32afcc565f1901c4df2893ad103ec0da3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103543"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234909"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 
 
 ## <a name="before-you-begin"></a>Než začnete
-Přečtěte si článek [Důležité informace o sítích pro Azure Active Directory Domain Services](active-directory-ds-networking.md).
+Přečtěte si článek [Důležité informace o sítích pro Azure Active Directory Domain Services](network-considerations.md).
 
 
 ## <a name="task-2-configure-network-settings"></a>Úloha 2: Konfigurace nastavení sítě
@@ -41,7 +41,7 @@ Další úlohou konfigurace je vytvoření virtuální sítě Azure a vyhrazenou
 3. Zvolte virtuální síť, ve kterém by měla být povolená Azure AD Domain Services. Můžete si vybrat existující virtuální síť, nebo vytvořte novou.
 
    > [!TIP]
-   > **Vaši spravovanou doménu nelze přesunout do jiné virtuální sítě po povolení služby Azure AD Domain Services.** Můžete si vyberte správnou virtuální síť umožňuje vaší spravované domény. Po vytvoření spravované domény, nemůžete ho přesunout do jiné virtuální sítě, bez odstranění spravované domény. Doporučujeme vám, že zkontrolujete [sítě důležité informace týkající se Azure Active Directory Domain Services](active-directory-ds-networking.md) předtím, než budete pokračovat.  
+   > **Vaši spravovanou doménu nelze přesunout do jiné virtuální sítě po povolení služby Azure AD Domain Services.** Můžete si vyberte správnou virtuální síť umožňuje vaší spravované domény. Po vytvoření spravované domény, nemůžete ho přesunout do jiné virtuální sítě, bez odstranění spravované domény. Doporučujeme vám, že zkontrolujete [sítě důležité informace týkající se Azure Active Directory Domain Services](network-considerations.md) předtím, než budete pokračovat.  
    >
 
 4. **Vytvoření virtuální sítě:** Klikněte na tlačítko **vytvořit nový** při vytváření nové virtuální sítě. Pro službu Azure AD Domain Services použijte vyhrazenou podsíť. Například vytvořte podsíť s názvem "DomainServices' to vám usnadní ostatním správcům pochopit, co je nasazen v rámci podsítě. Klikněte na tlačítko **OK** po dokončení.
@@ -57,7 +57,7 @@ Další úlohou konfigurace je vytvoření virtuální sítě Azure a vyhrazenou
 
    > [!NOTE]
    > **Pokyny pro výběr podsítě**
-   > 1. Pro službu Azure AD Domain Services použijte vyhrazenou podsíť. Nenasazujte jiné virtuální počítače s touto podsítí. Tato konfigurace umožňuje konfigurovat skupiny zabezpečení sítě (Nsg) pro vaše úlohy nebo virtuální počítače bez narušení vaší spravované domény. Podrobnosti najdete v tématu [sítě důležité informace týkající se Azure Active Directory Domain Services](active-directory-ds-networking.md).
+   > 1. Pro službu Azure AD Domain Services použijte vyhrazenou podsíť. Nenasazujte jiné virtuální počítače s touto podsítí. Tato konfigurace umožňuje konfigurovat skupiny zabezpečení sítě (Nsg) pro vaše úlohy nebo virtuální počítače bez narušení vaší spravované domény. Podrobnosti najdete v tématu [sítě důležité informace týkající se Azure Active Directory Domain Services](network-considerations.md).
    > 2. Nevybírejte podsíť brány pro nasazení služby Azure AD Domain Services, protože není podporovaná konfigurace.
    > 3. Podsíť, ve které jste vybrali, musí mít aspoň 3 až 5 dostupných IP adres ve svém adresním prostoru.
 

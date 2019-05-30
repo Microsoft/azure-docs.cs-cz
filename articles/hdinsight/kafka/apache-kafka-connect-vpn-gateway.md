@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 93b5aeafafdc6ab7ee233f6360bb5e09f45b387f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: ddff9ffb00f4167cb8f64a75b129711467de739d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708835"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297053"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight pomocí služby Azure Virtual Network
 
@@ -197,8 +197,10 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
     New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
-        -Type Standard_GRS `
-        -Location $location
+        -SkuName Standard_GRS `
+        -Location $location `
+        -Kind StorageV2 `
+        -EnableHttpsTrafficOnly 1
 
     # Get the storage account keys and create a context
     $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
@@ -240,7 +242,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
 
 Ve výchozím nastavení Apache Zookeeper vrátí název domény zprostředkovatelům systému Kafka klientům. Tuto konfiguraci nebude fungovat pomocí softwarového klienta sítě VPN, jak ho nelze použít překlad názvů pro entity ve virtuální síti. Pro tuto konfiguraci použijte ke konfiguraci Kafka inzerovat IP adres místo názvů domény následující kroky:
 
-1. Pomocí webového prohlížeče, přejděte na https://CLUSTERNAME.azurehdinsight.net. Nahraďte __CLUSTERNAME__ s názvem Kafka v clusteru HDInsight.
+1. Pomocí webového prohlížeče, přejděte na `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` s názvem Kafka v clusteru HDInsight.
 
     Po zobrazení výzvy použijte HTTPS uživatelské jméno a heslo pro cluster. Webové uživatelské rozhraní Ambari pro cluster se zobrazí.
 
@@ -320,7 +322,9 @@ K ověření připojení k systému Kafka, použijte následující postup k vyt
 
 2. Pomocí následujícího postupu nainstalujte [kafka python](https://kafka-python.readthedocs.io/) klienta:
 
-        pip install kafka-python
+    ```bash
+    pip install kafka-python
+    ```
 
 3. K odesílání dat do Kafka, použijte následující kód Pythonu:
 

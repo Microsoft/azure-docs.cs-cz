@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: af903ce3ce7cfa165c278e415827dda36630e7b4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209726"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237769"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Přehled ověřování pomocí Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,7 +26,7 @@ Je dobré znát několik klíčových pojmů týkajících se ověřování Azur
     Azure Active Directory (Azure AD) je od Microsoftu založené na cloudu adresáři a identitami správy službou s více tenanty. Azure AD kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity v rámci jednoho řešení. Další informace najdete v tématu [co je Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure AD Domain Services**  
-    Azure AD Domain Services poskytuje služby spravované domény, jako je například připojení k doméně, zásady skupiny, LDAP a ověřování protokolu Kerberos nebo NTLM ověřování. Tyto služby jsou plně kompatibilní s Windows Server Active Directory. Další informace najdete v tématu [domény služby Azure Active Directory (AD)](../../active-directory-domain-services/active-directory-ds-overview.md).
+    Azure AD Domain Services poskytuje služby spravované domény, jako je například připojení k doméně, zásady skupiny, LDAP a ověřování protokolu Kerberos nebo NTLM ověřování. Tyto služby jsou plně kompatibilní s Windows Server Active Directory. Další informace najdete v tématu [domény služby Azure Active Directory (AD)](../../active-directory-domain-services/overview.md).
 
 -   **Řízení přístupu (RBAC) na základě Azure Role**  
     Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC, můžete spravovat přístup k prostředkům tak, že udělíte uživatelům co nejnižší oprávnění potřebná k provádění svých úloh. Další informace o RBAC najdete v tématu [co je řízení přístupu na základě rolí (RBAC) v Azure?](../../role-based-access-control/overview.md)
@@ -60,7 +60,7 @@ Když identity přidružené k aplikaci spuštěné na virtuálním počítači 
 ### <a name="enable-azure-ad-authentication-over-smb"></a>Povolení ověřování Azure AD přes SMB
 Můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure pro vaše účty úložiště. nové i stávající vytvořené po 24. září 2018. 
 
-Než povolíte ověřování Azure AD prostřednictvím protokolu SMB, ověřte, že Azure AD Domain Services byla nasazena pro primární tenant Azure AD, ke kterému je přidružena účtu úložiště. Pokud jste ještě Azure AD Domain Services, postupujte podle podrobných pokynů v [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
+Než povolíte ověřování Azure AD prostřednictvím protokolu SMB, ověřte, že Azure AD Domain Services byla nasazena pro primární tenant Azure AD, ke kterému je přidružena účtu úložiště. Pokud jste ještě Azure AD Domain Services, postupujte podle podrobných pokynů v [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/create-instance.md).
 
 Nasazení služby Azure AD Domain Services obvykle trvá 10 až 15 minut. Po nasazení služby Azure AD Domain Services, můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure. Další informace najdete v tématu [povolit Azure Active Directory authentication přes protokol SMB pro soubory Azure (Preview)](storage-files-active-directory-enable.md). 
 

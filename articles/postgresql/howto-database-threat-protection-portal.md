@@ -1,19 +1,19 @@
 ---
-title: Advanced Threat Protection – Azure Database for PostgreSQL
+title: Advanced Threat Protection – Azure Database for PostgreSQL – jeden Server
 description: Ochrana před internetovými útoky detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení databáze.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421266"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067472"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Advanced Threat Protection pro Azure Database for PostgreSQL
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection pro Azure Database for PostgreSQL – jeden Server
 
 Služba Advanced Threat Protection pro Azure Database for PostgreSQL detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
@@ -28,7 +28,7 @@ Rozšířená ochrana před internetovými útoky je součástí nabídky Rozš�
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
 1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).
-2. Přejděte na stránku konfigurace služby Azure Database for PostgreSQL, který chcete chránit. V nastavení zabezpečení, vyberte **Advanced Threat Protection (Preview)**.
+2. Přejděte na stránku konfigurace služby Azure Database for PostgreSQL, který chcete chránit. V nastavení zabezpečení, vyberte **Advanced Threat Protection (Preview)** .
 3. Na **Advanced Threat Protection (Preview)** stránka konfigurace:
 
    - Povolte rozšířenou ochranu před internetovými útoky na serveru.
@@ -46,7 +46,7 @@ Obdržíte e-mailové oznámení po detekci neobvyklých databázových aktivit.
 
     Zobrazit aktivní hrozby:
 
-    ![Aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
+    ![aktivní hrozby](./media/howto-database-threat-protection-portal/active-threats.png)
 
 2. Kliknutím na konkrétní výstrahu zobrazíte další podrobnosti a akce pro zkoumání této hrozby a oprava budoucími hrozbami.
     

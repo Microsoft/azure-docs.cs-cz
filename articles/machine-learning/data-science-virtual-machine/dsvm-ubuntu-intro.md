@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d693af5ddd0b94734dfa065bef8a1f3a5de09ccc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597140"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236497"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
@@ -121,7 +121,7 @@ Můžete získat přístup k datové VĚDY se systémem Ubuntu pomocí tří met
 1. X2Go grafické relací
 1. JupyterHub a JupyterLab pro aplikace Jupyter notebook
 
-Virtuální počítač pro datové vědy můžete také připojit k poznámkových bloků Azure možnost spouštět poznámkové bloky Jupyter ve virtuálním počítači a obejít omezení úroveň free služby. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Virtuální počítač pro datové vědy můžete také připojit k poznámkových bloků Azure možnost spouštět poznámkové bloky Jupyter ve virtuálním počítači a obejít omezení úroveň free služby. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ### <a name="ssh"></a>SSH
 
@@ -268,7 +268,7 @@ conda install <package> -n py35
 
 Pokud jste na grafického rozhraní nebo máte X11 předávání set up, můžete zadat **pycharm** ke spuštění Pythonu PyCharm integrovaného vývojového prostředí. Můžete použít výchozí textových editorů. Kromě toho můžete použít Spyder, integrované vývojové prostředí Pythonu, který je součástí distribuce Anaconda Python. Spyder potřebuje grafické stolní počítač nebo X11 předávání. Zástupce Spyder je součástí grafické desktop.
 
-### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
+### <a name="jupyter-notebook"></a>Jupyter Notebook
 
 Distribuce Anacondy také součástí poznámkového bloku Jupyter, prostředí pro sdílení kódu a analýzy. Poznámkový blok Jupyter je přístupný prostřednictvím JupyterHub. Přihlášení pomocí místního systému Linux uživatelské jméno a heslo.
 

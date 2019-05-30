@@ -1,54 +1,36 @@
 ---
-title: Řešení potíží na vaše zařízení Azure Data Box | Dokumentace Microsoftu
-description: Popisuje postup řešení potíží v Azure Data Box viděli při nahrávání dat do Azure.
+title: Řešení potíží na vaše zařízení Azure Data Box, Azure Data Box náročné | Dokumentace Microsoftu
+description: Popisuje postup řešení potíží v Azure Data Box a Azure Data Box náročné viděli při kopírování dat do těchto zařízení.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 1126002a93419371be3216c55114385c9c600419
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593997"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257291"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box"></a>Řešit problémy spojené s Azure Data Box
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešit problémy spojené s Azure Data Box a Azure Data Box Heavy
 
-Tento článek podrobně popisuje informace o řešení potíží se může zobrazit při použití Azure Data Box.
+Tento článek podrobně popisuje informace o řešení potíží se může zobrazit při použití Azure Data Boxn nebo Azure Data Box náročné.
 
 ## <a name="errors-during-data-copy"></a>Chyby během kopírování dat.
 
 Všechny chyby, které se můžou vyskytnout během kopírování dat, které jsou shrnuty v následující části.
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH 
-
-**Popis chyby:** Název kontejneru nebo sdílené složky musí být dlouhý 3 až 63 znaků.
-
-**Navrhované řešení:** Složku v zařízení Data Box (SMB nebo NFS) sdílené složky, do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
-
-- Na **připojit a Kopírovat** stránce místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy zařízení Data Box.
-- Změňte název složky ve sdílené zařízení Data Box, abyste měli jistotu, že:
-
-    - Název může mít délku 3 až 63 znaků.
-    - Názvy obsahovat pouze písmena, číslice a pomlčky.
-    - Názvy nesmí začínat ani končit pomlčkou.
-    - Název nemůže obsahovat po sobě jdoucí pomlčky.
-    - Příklady platných názvů: `my-folder-1`, `my-really-extra-long-folder-111`.
-    - Příklady názvy, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
-
-    Další informace najdete v tématu Azure zásady vytváření názvů pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [sdílet názvy](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
-
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **Popis chyby:** Název kontejneru nebo sdílené složky musí být dlouhý 3 až 63 znaků. 
 
-**Navrhované řešení:** Složku v zařízení Data Box (SMB nebo NFS) sdílené složky, do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
+**Navrhované řešení:** Složku v zařízení Data Box nebo Data Box náročné share(SMB/NFS), do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
 
-- Na **připojit a Kopírovat** stránce místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy zařízení Data Box.
-- Změňte název složky ve sdílené zařízení Data Box, abyste měli jistotu, že:
+- Na **připojit a Kopírovat** stránky zařízení místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy.
+- Změňte název složky ve sdílené zařízení Data Box nebo Data Box náročné na Ujistěte se, že:
 
     - Název může mít délku 3 až 63 znaků.
     - Názvy obsahovat pouze písmena, číslice a pomlčky.
@@ -64,10 +46,10 @@ Všechny chyby, které se můžou vyskytnout během kopírování dat, které js
 
 **Popis chyby:** Název kontejneru nebo sdílené složky se musí skládat pouze z písmen, číslic a spojovníků.
 
-**Navrhované řešení:** Složku v zařízení Data Box (SMB nebo NFS) sdílené složky, do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
+**Navrhované řešení:** Složku v zařízení Data Box nebo Data Box náročné share(SMB/NFS), do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
 
-- Na **připojit a Kopírovat** stránce místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy zařízení Data Box.
-- Změňte název složky ve sdílené zařízení Data Box, abyste měli jistotu, že:
+- Na **připojit a Kopírovat** stránky zařízení místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy.
+- Změňte název složky ve sdílené zařízení Data Box nebo Data Box náročné na Ujistěte se, že:
 
     - Název může mít délku 3 až 63 znaků.
     - Názvy obsahovat pouze písmena, číslice a pomlčky.
@@ -82,10 +64,10 @@ Všechny chyby, které se můžou vyskytnout během kopírování dat, které js
 
 **Popis chyby:** Názvy kontejnerů a názvy sdílených složek nelze spustit nebo končit pomlčkou a nemůže obsahovat po sobě jdoucí pomlčky.
 
-**Navrhované řešení:** Složku v zařízení Data Box (SMB nebo NFS) sdílené složky, do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
+**Navrhované řešení:** Složku v zařízení Data Box nebo Data Box náročné share(SMB/NFS), do kterého jste zkopírovali data se změní na kontejner služby Azure ve vašem účtu úložiště. 
 
-- Na **připojit a Kopírovat** stránce místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy zařízení Data Box.
-- Změňte název složky ve sdílené zařízení Data Box, abyste měli jistotu, že:
+- Na **připojit a Kopírovat** stránky zařízení místního webového uživatelského rozhraní, stahování a kontrola názvů chybovým souborům pro identifikaci složku s problémy.
+- Změňte název složky ve sdílené zařízení Data Box nebo Data Box náročné na Ujistěte se, že:
 
     - Název může mít délku 3 až 63 znaků.
     - Názvy obsahovat pouze písmena, číslice a pomlčky.
@@ -112,7 +94,7 @@ Další informace najdete v tématu [kopírování na managed disks](data-box-de
 
 **Popis chyby:** Sdílené složky Azure omezuje sdílenou složku a 5 TB dat. Tento limit překročil pro některé sdílené složky.
 
-**Navrhované řešení:** Na **připojit a Kopírovat** stránky zařízení Data Box místního webového uživatelského rozhraní, stáhnout a revidovat chybovým souborům.
+**Navrhované řešení:** Na **připojit a Kopírovat** stránky z místního webového uživatelského rozhraní, stáhnout a revidovat chybovým souborům.
 
 Identifikujte složky, které mají tento problém z protokoly chyb a ujistěte se, že soubory v této složce jsou v části 5 TB.
 
@@ -194,7 +176,7 @@ Další informace najdete v tématu Azure zásady vytváření názvů pro názv
 
 **Popis chyby:** Objekt blob nebo soubor je nesprávně zarovnán.
 
-**Navrhované řešení:** Sdílené složky objektů blob stránky v zařízení Data Box pouze podporuje soubory, které jsou 512 bajtů zarovnána (třeba VHD/VHDX). Žádná data zkopírován do sdílené složky objektů blob stránky je nahráli do Azure jako objekty BLOB stránky.
+**Navrhované řešení:** Sdílené složky objektů blob stránky v zařízení Data Box nebo Data Box náročné pouze podporuje soubory, které jsou 512 bajtů zarovnána (třeba VHD/VHDX). Žádná data zkopírován do sdílené složky objektů blob stránky je nahráli do Azure jako objekty BLOB stránky.
 
 Odeberte všechna data – na VHD/VHDX ze sdílené složky objektů blob stránky. Sdílené složky můžete použít pro objekty blob bloku nebo Azure files pro obecná data.
 

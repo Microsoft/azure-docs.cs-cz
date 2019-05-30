@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2018
+ms.date: 05/22/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb3ff27ba7dc8ea59eb67b2589964fb4333e889
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73d26dffa005ac4bf8df0ecc0cee2c570960a38d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516091"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239979"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Kurzy integrace aplikací SaaS pomocí Azure Active Directory
 
@@ -33,18 +33,50 @@ Seznam všech aplikací SaaS, které byly předem integrované do služby Azure 
 ## <a name="quick-links"></a>Rychlé odkazy
 
 | Logo | Kurz vývoje aplikace pro jednotné přihlašování | Kurz vývoje aplikace pro zřizování uživatelů |
-| :---: | :--- | :--- |
-| ![logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G Suite](google-apps-tutorial.md)|[G Suite - zřizování uživatelů](google-apps-provisioning-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS)](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) - Role zřizování](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on)|
+| :--- | :--- | :--- |
+| ![logo](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Cloud od společnosti Atlassian – zřizování uživatelů](atlassian-cloud-provisioning-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - zřizování uživatelů](servicenow-provisioning-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|[Salesforce – zřizování uživatelů](salesforce-provisioning-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Pracovní den](workday-tutorial.md)| [WORKDAY - zřizování uživatelů](workday-inbound-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
-| ![logo](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)|
 | ![logo](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - zřizování uživatelů](slack-provisioning-tutorial.md)|
+| ![logo](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| |
+| ![logo](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Pracovní den](workday-tutorial.md)| [WORKDAY - zřizování uživatelů](workday-inbound-tutorial.md)|
 
-Další kurzy najdete pomocí obsahu na levé straně. 
+Další kurzy najdete pomocí obsahu na levé straně.
+
+## <a name="cloud-integrations"></a>Integrace cloudu
+
+| Logo | Kurz vývoje aplikace pro jednotné přihlašování | Kurz vývoje aplikace pro zřizování uživatelů |
+| :--- | :--- | :--- |
+| ![logo](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS) Console](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) konzoly - Role zřizování](amazon-web-service-tutorial.md#configure-azure-ad-single-sign-on) |
+| ![logo](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba cloudové služby (Role základů jednotné přihlašování)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
+| ![logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform - zřizování uživatelů](google-apps-provisioning-tutorial.md) |
+| ![logo](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce – zřizování uživatelů](salesforce-provisioning-tutorial.md) |
+| ![logo](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [Platforma cloudových identit SAP](saphana-tutorial.md)| |
+
+## <a name="oneclick-sso"></a>OneClick jednotného přihlašování
+
+| Logo | Kurz vývoje aplikace pro jednotné přihlašování |        |
+| :--- | :--- | :--- |
+| ![logo](./media/tutorial-list/active-directory-saas-alertops-tutorial.png)| [AlertOps](alertops-tutorial.md)|      |
+| ![logo](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS Enterprise](arcgisenterprise-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-displayr-tutorial.png)| [Displayr](displayr-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox for Business](dropboxforbusiness-tutorial.md)|    |
+| ![logo](./media/tutorial-list/active-directory-saas-freedcamp-tutorial.png)| [Freedcamp](freedcamp-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-freshservice-tutorial.png)| [Freshservice](freshservice-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Znalostní báze kdekoli LMS](knowledge-anywhere-lms-tutorial.md)|     |
+| ![logo](./media/tutorial-list/active-directory-saas-soloinsight-cloudgate-sso-tutorial.png)| [Soloinsight-CloudGate SSO](soloinsight-cloudgate-sso-tutorial.md)|       |
+| ![logo](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|       |
+| ![logo](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|        |
+| ![logo](./media/tutorial-list/active-directory-saas-zendesk-tutorial.png)| [Zendesk](zendesk-tutorial.md)|        |
+| ![logo](./media/tutorial-list/active-directory-saas-zscaler-tutorial.png)| [Zscaler](zscaler-tutorial.md)|          |
+| ![logo](./media/tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler Beta](zscaler-beta-tutorial.md)|       |
+| ![logo](./media/tutorial-list/active-directory-saas-zscaler-one-tutorial.png)| [Jeden Zscaler](zscaler-one-tutorial.md)|       |
+| ![logo](./media/tutorial-list/active-directory-saas-zscalerprivateaccess-tutorial.png)| [Zscaler Private Access (ZPA)](zscalerprivateaccess-tutorial.md)|        |
+| ![logo](./media/tutorial-list/active-directory-saas-zscaler-three-tutorial.png)| [Tři Zscaler](zscaler-three-tutorial.md)|       |
+| ![logo](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|        |
+| ![logo](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|         |
 
 ## <a name="next-steps"></a>Další postup
-Další informace o správě aplikací, najdete v článku [co je Správa aplikací](../manage-apps/what-is-application-management.md).
 
+Další informace o správě aplikací, najdete v článku [co je Správa aplikací](../manage-apps/what-is-application-management.md).

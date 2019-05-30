@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a20299887de827f25e4c3306f5e78c188c9a8a7f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969396"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357696"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Vysoká dostupnost SAP NetWeaver nainstalovat Windows převzetí služeb při selhání clusteru a sdílenou složku pro SAP ASCS/SCS instance v Azure
 
@@ -291,7 +291,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Vytvořte virtuální hostitel název Clusterové instance SAP ASCS/SCS
 
-Vytvoření názvu sítě clusteru SAP ASCS/SCS (například **pr1-ascs [10.0.6.7]**), jak je popsáno v [vytvořte virtuální hostitel název Clusterové instance SAP ASCS/SCS] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
+Vytvoření názvu sítě clusteru SAP ASCS/SCS (například **pr1-ascs [10.0.6.7]** ), jak je popsáno v [vytvořte virtuální hostitel název Clusterové instance SAP ASCS/SCS] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
 
 
 ## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Nainstalujte v clusteru ASC/SCS a Lajících instancí
@@ -300,7 +300,7 @@ Vytvoření názvu sítě clusteru SAP ASCS/SCS (například **pr1-ascs [10.0.6.
 
 Nainstalujte instanci SAP ASCS/SCS na prvním uzlu clusteru. Nainstalujte instanci, v nástroji SAP SWPM instalaci, přejděte na:
 
-**\<Produkt >** > **\<DBMS >** > **instalace** > **aplikační Server ABAP** () nebo **Java**) > **vysoké dostupnosti systému** > **instanci ASCS/SCS** > **prvním uzlu clusteru**.
+**\<Produkt >**  >  **\<DBMS >**  > **instalace** > **aplikační Server ABAP** () nebo **Java**) > **vysoké dostupnosti systému** > **instanci ASCS/SCS** > **prvním uzlu clusteru**.
 
 ### <a name="add-a-probe-port"></a>Přidejte port testu
 
@@ -310,12 +310,12 @@ Konfigurace portu sondy SAP. identifikátor SID IP prostředek clusteru SAP pomo
 
 Nainstalujte instanci SAP ASCS/SCS na druhém uzlu clusteru. Nainstalujte instanci, v nástroji SAP SWPM instalaci, přejděte na:
 
-**\<Produkt >** > **\<DBMS >** > **instalace** > **aplikační Server ABAP** () nebo **Java**) > **vysoké dostupnosti systému** > **instanci ASCS/SCS** > **dodatečného uzlu clusteru** .
+**\<Produkt >**  >  **\<DBMS >**  > **instalace** > **aplikační Server ABAP** () nebo **Java**) > **vysoké dostupnosti systému** > **instanci ASCS/SCS** > **dodatečného uzlu clusteru** .
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizovat profil instance SAP ASCS/SCS
 
-Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_\<hostitele >.
+Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_ \<hostitele >.
 
 
 | Název parametru | Hodnota parametru |
@@ -324,7 +324,7 @@ Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_\<
 | enque/encni/set_so_keepalive  | **Hodnota TRUE** |
 | Služba/ha_check_node | **1** |
 
-Restartujte instanci SAP ASCS/SCS. Nastavte `KeepAlive` parametrů v obou uzlů clusteru SAP ASCS/SCS, postupujte podle pokynů a [nastavte položky registru na uzlech clusteru instanci SAP ASCS/SCS]([high-availability-guide]:high-availability-guide.md). 
+Restartujte instanci SAP ASCS/SCS. Nastavte `KeepAlive` parametrů v obou uzlů clusteru SAP ASCS/SCS, postupujte podle pokynů a [nastavte položky registru na uzlech clusteru instanci SAP ASCS/SCS][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Nainstalujte instanci databázového systému a aplikační servery SAP
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: da594ca5793bbf61f393fb1380309403fd808cef
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942222"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258132"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Požadavky na správu účtů na portál Cloud Partner 
 
@@ -23,12 +23,13 @@ Než budete moct použít [portál partnerů cloudu](https://cloudpartner.azure.
 
 Pečlivě si prostudujte práva a povinnosti pod [smlouvou o poskytování služeb společnosti Microsoft](https://www.microsoft.com/servicesagreement) a [Terms](https://www.microsoft.com/legal/intellectualproperty/copyright) před vytvořením účtu.  
 
-Pečlivě zvolte název svého účtu.  Představuje vaší organizaci, neměl by obsahovat všechny slova autorským nebo sporné.  Například Microsoft neumožňuje použití jeho autorským podmínky, například "Azure" a "Microsoft", v názvech účtů.  Další informace najdete v tématu [pokyny pro Azure Marketplace](../../guidelines.md)
+Pečlivě zvolte název svého účtu.  Představuje vaší organizaci, neměl by obsahovat všechny slova autorským nebo sporné.  Například Microsoft neumožňuje použití jeho autorským podmínky, například "Azure" a "Microsoft", v názvech účtů.  Další informace najdete v tématu [pokyny pro Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines)
 
 
 ## <a name="registration-steps"></a>Kroky registrace
 
-V následující tabulce jsou uvedeny kroky potřebnými k plně zaregistrovat jako vydavatel Microsoft cloud.  Úplné pokyny najdete v tématu [stát vydavatelem cloudové Tržiště](../../become-publisher.md). 
+V následující tabulce jsou uvedeny kroky potřebnými k plně zaregistrovat jako vydavatel Microsoft cloud.  Úplné pokyny najdete v tématu [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher
+). 
 
 
 |                   Krok                   |  Výsledný registraci nebo prostředků                     |

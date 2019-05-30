@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 897f2eef0a52838d6190cb85a6a7f4492250935b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809211"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244859"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -43,10 +43,10 @@ Následující tabulka uvádí různé způsoby protokoly můžete použít ve s
 
 |  |  |
 |:---|:---|
-| Analýza | Použití [Log Analytics](../log-query/get-started-portal.md) na webu Azure Portal k zápisu [protokolu dotazy](../log-query/log-query-overview.md) a interaktivní analýzy dat protokolu pomocí výkonný stroj analýzy Průzkumník dat.<br>Použití [konzola Application Insights analytics](../app/analytics.md) na webu Azure Portal k vytváření dotazů protokolu a interaktivně analyzuje data protokolů ze služby Application Insights. |
+| Analyzovat | Použití [Log Analytics](../log-query/get-started-portal.md) na webu Azure Portal k zápisu [protokolu dotazy](../log-query/log-query-overview.md) a interaktivní analýzy dat protokolu pomocí výkonný stroj analýzy Průzkumník dat.<br>Použití [konzola Application Insights analytics](../app/analytics.md) na webu Azure Portal k vytváření dotazů protokolu a interaktivně analyzuje data protokolů ze služby Application Insights. |
 | Vizualizace | Připnout výsledky dotazu se vykresluje jako tabulky nebo grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoření [sešitu](../app/usage-workbooks.md) zkombinovat s více sadami dat v interaktivní sestavy. <br>Export výsledků dotazu na [Power BI](powerbi.md) a použít různé vizualizace a sdílet s uživateli mimo Azure.<br>Export výsledků dotazu na [Grafana](grafana-plugin.md) využít jeho mnoha a zkombinovat s jinými zdroji dat.|
 | Výstrahy | Konfigurace [pravidel upozornění protokolů](alerts-log.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) při výsledky dotazu splňují konkrétní výsledek.<br>Konfigurace [metriky pravidlo upozornění](alerts-metric-logs.md) na některé protokoly dat protokolu extrahovat jako metriky. |
-| Načíst | Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rozhraní příkazového řádku Azure](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k protokolu výsledků dotazu z vlastní aplikaci pomocí [rozhraní REST API](https://dev.loganalytics.io/). |
+| Načtení | Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rozhraní příkazového řádku Azure](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k protokolu výsledků dotazu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k protokolu výsledků dotazu z vlastní aplikaci pomocí [rozhraní REST API](https://dev.loganalytics.io/). |
 | Export | Vytvořit pracovní postup k načtení dat protokolu a zkopírujte ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
@@ -79,7 +79,7 @@ Azure Monitor může shromažďovat data protokolu z různých zdrojů v rámci 
 | Data | Popis |
 |:---|:---|
 | Protokoly auditování Azure Active Directory | Nakonfigurovat přes nastavení diagnostiky pro každý adresář. Zobrazit [protokoly integrace Azure AD s protokoly Azure monitoru](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).  |
-| Protokoly aktivit | Ve výchozím nastavení uloženy odděleně a lze použít pro téměř upozornění v reálném čase. Nainstalujte řešení Activity Log Analytics k zápisu do pracovního prostoru Log Analytics. Zobrazit [shromažďovat a analyzovat protokoly aktivit Azure do Log Analytics](collect-activity-logs.md). |
+| Protokoly aktivit | Ve výchozím nastavení uloženy odděleně a lze použít pro téměř upozornění v reálném čase. Instalace protokolu aktivit analytického řešení pro zápis do pracovního prostoru Log Analytics. Zobrazit [shromažďovat a analyzovat protokoly aktivit Azure do Log Analytics](activity-log-collect.md). |
 
 ### <a name="azure-resources"></a>Prostředky Azure
 

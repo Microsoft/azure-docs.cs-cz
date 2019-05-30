@@ -10,16 +10,16 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 05/09/2019
 tags: connectors
-ms.openlocfilehash: 3fb39103fc9cb0f38bca56dcaeea4837ff4dfabe
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bccefec80ef3afd6d312bb1048d3be5d8e708728
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541495"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258151"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP v Azure Logic Apps
 
-Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP. Konektor funguje s klasickými verzemi SAPu, jako jsou R/3 nebo systémy ECC, v místním prostředí. Konektor také umožňuje integraci s novější systémy SAP HANA založené SAP například s/4 HANA, bez ohledu na to jsou hostované – v místním prostředí nebo v cloudu. Konektor SAP podporuje integraci zpráv nebo dat do a z systémy SAP NetWeaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
+Tento článek popisuje, jak můžete přístup k prostředkům v místním SAP z uvnitř aplikace logiky s využitím konektoru SAP. Konektor funguje s klasickými verzemi systému SAP, jako jsou R/3 nebo systémy ECC, v místním prostředí. Konektor také umožňuje integraci s novější systémy SAP HANA založené SAP například s/4 HANA, bez ohledu na to jsou hostované – v místním prostředí nebo v cloudu. Konektor SAP podporuje integraci zpráv nebo dat do a z systémy SAP NetWeaver prostřednictvím zprostředkující dokumentu (IDoc) nebo obchodní aplikace programovací rozhraní (BAPI) nebo vzdálené volání funkce (RFC).
 
 Konektor SAP používá [knihovny .NET konektoru SAP (NCo)](https://support.sap.com/en/product/connectors/msnet.html) a poskytuje tyto operace nebo akce:
 
@@ -119,6 +119,8 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
       Pokud **typ přihlášení** je nastavena na **skupiny**, tyto vlastnosti, které se obvykle zobrazují volitelné, jsou požadovány:
 
       ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Ve výchozím nastavení silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Další informace o [ **bezpečné psaní** možnost](#safe-typing).
 
    1. Jakmile budete hotoví, vyberte **Vytvořit**.
 
@@ -225,6 +227,8 @@ Tento příklad používá aplikace logiky, která se aktivuje při přijetí zp
 
       ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
+      Ve výchozím nastavení silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Další informace o [ **bezpečné psaní** možnost](#safe-typing).
+
 1. Zadejte požadované parametry, které jsou založené na konfiguraci systému SAP.
 
    Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí Určuje zprávy, které aktivační událost přijme ze serveru SAP prostřednictvím brány data. Prázdný seznam určuje, že aktivační událost přijímá všechny zprávy. Pokud seznam obsahuje více než jedna zpráva, obdrží aktivační událost pouze zprávy uvedený v seznamu. Všechny ostatní zprávy odeslané ze serveru SAP odmítne brána.
@@ -306,7 +310,11 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 
       ![Vytvoření připojení k serveru zpráv SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-   1. Jakmile budete hotoví, vyberte **Vytvořit**. Logic Apps vytvoří a otestuje připojení, ujistěte se, že připojení funguje správně.
+      Ve výchozím nastavení silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Další informace o [ **bezpečné psaní** možnost](#safe-typing).
+
+   1. Jakmile budete hotoví, vyberte **Vytvořit**. 
+   
+      Logic Apps vytvoří a otestuje připojení, ujistěte se, že připojení funguje správně.
 
 1. Zadejte cestu na artefakt, pro kterou chcete vygenerovat schéma.
 
@@ -397,11 +405,58 @@ Chcete-li SNC pro vaše požadavky na nebo z systému SAP, vyberte **SNC použit
    | **SNC SSO** | Při připojování přes SNC SNC identity se obvykle používá pro ověřování volající. Další možností je přepsat tak, aby informace o uživateli a hesla je možné za účelem ověřování totožnosti volajícímu, ale řádku je šifrovaný. |
    | **SNC moje jméno** | Ve většině případů lze tuto vlastnost vynechat. Nainstalované řešení SNC obvykle ví názvu SNC. Pouze pro řešení, podpora "více identit" budete možná muset zadat identitě, kterou chcete použít pro tento konkrétní cíl nebo serveru. |
    | **Název partnera SNC** | Název back-endu SNC |
-   | **SNC kvality ochrany** | Technologie QoS (Quality of Service), která se má použít pro komunikaci SNC tohoto konkrétního cíle nebo serveru Výchozí hodnota je definována v back-end systému. Maximální hodnota je definována pro SNC zabezpečení produktu. |
+   | **SNC kvality ochrany** | Kvalita služby pro komunikaci SNC tento konkrétní cíl/serveru. Výchozí hodnota je definována v back-end systému. Maximální hodnota je definována pro SNC zabezpečení produktu. |
    |||
 
    > [!NOTE]
    > Proměnné prostředí SNC_LIB a SNC_LIB_64 neměla být nastavena na počítači, kde máte brány dat a knihovna SNC. Pokud nastavit, že by přednost knihovna SNC hodnoty předané prostřednictvím konektoru.
+
+<a name="safe-typing"></a>
+
+## <a name="safe-typing"></a>Bezpečné psaní
+
+Ve výchozím nastavení při vytváření připojení k SAP silné typování slouží ke kontrole neplatné hodnoty pomocí provádí ověření XML proti schématu. Toto chování vám může pomoci odhalit problémy dříve. **Bezpečné psaní** možnost je k dispozici kvůli zpětné kompatibilitě a pouze kontroluje délku řetězce. Pokud se rozhodnete **bezpečné psaní**, typ dat a typ TIMS v SAP jsou zpracovávány jako řetězce, nikoli jako jejich ekvivalenty XML `xs:date` a `xs:time` kde `xmlns:xs="http://www.w3.org/2001/XMLSchema"`. Bezpečné psaní má vliv na chování pro všechny generování schématu, posílání zpráv pro datovou část "byl odeslán" a "byla přijata" odpověď i aktivační událost. 
+
+Při použití silné typování (**bezpečné psaní** nepovoleno), schématu typy dat a TIMS mapuje na jednodušší typy XML:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true" type="xs:date"/>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true" type="xs:time"/>
+```
+
+Při odesílání zpráv pomocí silných typů dat a TIMS odpovědi splňuje odpovídající typ formátu XML:
+
+```xml
+<DATE>9999-12-31</DATE>
+<TIME>23:59:59</TIME>
+```
+
+Když **bezpečné psaní** je povoleno, schéma mapuje definice virů a TIMS typy XML například pole s pouze omezení délky řetězce:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+```
+
+Při odesílání zpráv s **bezpečné psaní** povolena, dat a TIMS odpověď vypadá jako v tomto příkladu:
+
+```xml
+<DATE>99991231</DATE>
+<TIME>235959</TIME>
+```
+
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 

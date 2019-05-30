@@ -7,13 +7,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 05/13/2019
-ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
-ms.translationtype: HT
+ms.date: 05/24/2019
+ms.openlocfilehash: c40bae6ac1af2489e4e77d2c280b95cccf8b5603
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978018"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257836"
 ---
 # <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Konfigurace omezení odchozího síťového provozu pro clustery Azure HDInsight (Preview)
 
@@ -32,38 +32,23 @@ Odchozí provoz závislostí HDInsight jsou téměř úplně definovány pomocí
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurace brány Firewall na Azure pomocí HDInsight
 
 Přehled kroků pro uzamčení odchozího přenosu dat z vaší existující HDInsight s bránou Firewall služby Azure jsou:
-1. Povolení koncových bodů služby.
 1. Vytvoření brány firewall.
 1. Přidat aplikace pravidla brány firewall
 1. Přidání pravidel sítě do brány firewall.
 1. Vytvoření směrovací tabulky.
 
-### <a name="enable-service-endpoints"></a>Povolit koncové body služby
-
-Pokud chcete vynechat bránu firewall (třeba a Šetřete náklady na přenos dat) můžete povolit koncové body služby pro SQL a službu storage v podsíti služby HDInsight. Až budete mít koncové body služby povolené do Azure SQL, musí být všechny závislosti Azure SQL, které má cluster nakonfigurovaný s koncovými body služby také.
-
-Pokud chcete povolit koncové body služby správná, proveďte následující kroky:
-
-1. Přihlaste se k webu Azure portal a vyberte virtuální síť, která je nasazená do clusteru HDInsight.
-1. Vyberte **podsítě** pod **nastavení**.
-1. Vyberte podsíť, ve kterém je nasazená do clusteru.
-1. Na obrazovce a upravit nastavení podsítě, klikněte na tlačítko **Microsoft.SQL** a/nebo **Microsoft.Storage** z **koncové body služby**  >   **Služby** rozevíracím seznamu.
-1. Pokud používáte ESP cluster, pak je také nutné vybrat **Microsoft.AzureActiveDirectory** koncový bod služby.
-1. Klikněte na **Uložit**.
-
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Vytvoření nové brány firewall pro váš cluster
 
 1. Vytvořte podsíť s názvem **AzureFirewallSubnet** ve virtuální síti, které se nachází váš cluster. 
 1. Vytvoření nové brány firewall **testovací FW01** pomocí postupu v [kurzu: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
-1. Vyberte nové brány firewall na webu Azure Portal. Klikněte na tlačítko **pravidla** pod **nastavení** > **kolekce pravidel aplikace** > **přidat kolekci pravidel aplikace**.
-
-    ![Název: Přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 ### <a name="configure-the-firewall-with-application-rules"></a>Konfigurace brány firewall pomocí pravidel aplikace
 
 Vytvořte kolekci pravidel aplikace, která umožňuje odesílat a přijímat komunikační sdělení důležitých clusteru.
 
 Vyberte novou bránu firewall **testovací FW01** z portálu Azure portal. Klikněte na tlačítko **pravidla** pod **nastavení** > **kolekce pravidel aplikace** > **přidat kolekci pravidel aplikace**.
+
+![Název: Přidat kolekci pravidel aplikace](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Na **přidat kolekci pravidel aplikace** obrazovky, proveďte následující kroky:
 
@@ -75,12 +60,9 @@ Na **přidat kolekci pravidel aplikace** obrazovky, proveďte následující kro
     1. Pravidla povolení Windows přihlašovací aktivity:
         1. V **Target plně kvalifikované názvy domény** části, zadejte **název**a nastavte **zdrojové adresy** k `*`.
         1. Zadejte `https:443` pod **protokol: Port** a `login.windows.net` pod **cílit na plně kvalifikované názvy domény**.
-    1. Pravidla povolení telemetrie SQM:
-        1. V **Target plně kvalifikované názvy domény** části, zadejte **název**a nastavte **zdrojové adresy** k `*`.
-        1. Zadejte `https:443` pod **protokol: Port** a `sqm.telemetry.microsoft.com` pod **cílit na plně kvalifikované názvy domény**.
     1. Pokud váš clusteru je zajištěná WASB a nepoužíváte výše uvedené koncové body služby, přidejte pravidlo pro WASB:
         1. V **Target plně kvalifikované názvy domény** části, zadejte **název**a nastavte **zdrojové adresy** k `*`.
-        1. Zadejte `http` nebo [https] podle toho, pokud používáte wasb: / / nebo wasbs: / / pod **protokol: Port** a adresa url účtu úložiště v rámci **Target plně kvalifikované názvy domény**.
+        1. Zadejte `http` nebo `https` podle toho, pokud používáte wasb: / / nebo wasbs: / / pod **protokol: Port** a adresa url účtu úložiště v rámci **Target plně kvalifikované názvy domény**.
 1. Klikněte na tlačítko **Add** (Přidat).
 
 ![Název: Zadejte podrobnosti o aplikaci pravidla kolekce](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
@@ -88,9 +70,6 @@ Na **přidat kolekci pravidel aplikace** obrazovky, proveďte následující kro
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurace brány firewall pomocí pravidel sítě
 
 Vytvoření pravidel sítě správně nakonfigurovat váš cluster HDInsight.
-
-> [!Important]
-> Můžete si vybrat mezi pomocí značky služeb SQL v bráně firewall pomocí pravidel sítě podle popisu v této části nebo SQL služby koncového bodu je popsáno v [části na koncové body služby](#enable-service-endpoints). Pokud se rozhodnete v pravidlech sítě používat značky SQL, přihlášení a auditování SQL provoz. Pomocí koncového bodu služby, bude mít provoz SQL obejít bránu firewall.
 
 1. Vyberte novou bránu firewall **testovací FW01** z portálu Azure portal.
 1. Klikněte na tlačítko **pravidla** pod **nastavení** > **sítě kolekce pravidel** > **přidat kolekci pravidel sítě**.
@@ -112,12 +91,7 @@ Vytvoření pravidel sítě správně nakonfigurovat váš cluster HDInsight.
         1. Nastavte **zdrojové adresy** `*`.
         1. Zadejte IP adresu pro váš účet úložiště v **cílové adresy**.
         1. Nastavte **cílové porty** k `*`.
-    1. Pravidlo sítě pro povolení komunikace pomocí služby Key Management pro Windows aktivace.
-        1. V dalším řádku v **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
-        1. Nastavte **zdrojové adresy** `*`.
-        1. Nastavte **cílové adresy** k `*`.
-        1. Nastavte **cílové porty** k `1688`.
-    1. Pokud používáte Log Analytics, vytvořte pravidlo sítě, které umožňují komunikaci s pracovního prostoru Log Analytics.
+    1. (Volitelné) Pokud používáte Log Analytics, vytvořte pravidlo sítě, které umožňují komunikaci s pracovního prostoru Log Analytics.
         1. V dalším řádku v **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
         1. Nastavte **zdrojové adresy** `*`.
         1. Nastavte **cílové adresy** k `*`.
@@ -150,7 +124,7 @@ Třeba ke konfiguraci směrovací tabulky pro cluster se vytvoří v oblasti USA
 1. Klikněte na tlačítko **trasy** pod **nastavení**.
 1. Klikněte na tlačítko **přidat** vytvářet trasy pro IP adresy v následující tabulce.
 
-| Název směrování | Předpona adresy | Typ dalšího přesměrování | Adresa dalšího přesměrování |
+| Název trasy | Předpona adresy | Typ dalšího segmentu | Adresa dalšího segmentu |
 |---|---|---|---|
 | 168.61.49.99 | 168.61.49.99/32 | Internet | Není k dispozici |
 | 23.99.5.239 | 23.99.5.239/32 | Internet | Není k dispozici |

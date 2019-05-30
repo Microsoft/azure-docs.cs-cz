@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dc208f3231882a0726733c897e70557c657cddf3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024511"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244800"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracovat s hledání výsledků ve službě Azure Search
 Tento článek obsahuje pokyny pro implementaci standardní elementy na stránce výsledků hledání, jako je například celkového počtu, načtení dokumentu, řazení a navigaci. Možnosti stránky, které přispívají data nebo informace, které výsledky hledání jsou určeny pomocí [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. 
 
-V rozhraní REST API zahrnují požadavky GET command, cestu a parametry dotazu, které informují o co je požadované služby a jak formulovali odpovědi. V sadě .NET SDK je ekvivalentní rozhraní API [DocumentSearchResult třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet).
+V rozhraní REST API zahrnují požadavky GET command, cestu a parametry dotazu, které informují o co je požadované služby a jak formulovali odpovědi. V sadě .NET SDK je ekvivalentní rozhraní API [DocumentSearchResult třídy](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
 Několik vzorových kódů patří webového front-endové rozhraní, který najdete tady: [New York City úlohy ukázkovou aplikaci](https://azjobsdemo.azurewebsites.net/) a [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
@@ -49,7 +49,7 @@ Přestránkování výsledky vyžaduje `$top` a `$skip`, kde `$top` Určuje, kol
 
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Rozložení
 Na stránce výsledků hledání můžete chtít zobrazit obrázek miniatury, dílčí sadu polí a odkaz na stránku plné verze produktu.
 
  ![][2]

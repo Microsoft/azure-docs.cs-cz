@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790161"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258632"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -147,9 +147,13 @@ Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozší
 
 Další informace najdete v tématu [začít pracovat s zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md).
 
-### <a name="compliance"></a>Kompatibilita
+### <a name="compliance"></a>Dodržování předpisů
 
 Kromě výše uvedených funkcí a funkci, která může pomoci vaší aplikace vyhovět různým nárokům na zabezpečení, Azure SQL Database také účastní pravidelných auditů a byla certifikována pro řadu standardů dodržování předpisů. Další informace najdete v tématu [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) místo, kde najdete nejnovější seznam certifikací dodržování předpisů SQL Database.
+
+### <a name="feature-restrictions"></a>Omezení funkcí
+
+Funkce omezení pomáhá zabránit některé formy útok prostřednictvím injektáže SQL, abyste zabránili úniku informací o databázi, i když je úspěšný útok prostřednictvím injektáže SQL. Další informace najdete v tématu [Azure SQL Database funkce omezení](sql-database-feature-restrictions.md).
 
 ## <a name="next-steps"></a>Další postup
 

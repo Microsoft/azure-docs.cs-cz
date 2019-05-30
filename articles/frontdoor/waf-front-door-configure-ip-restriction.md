@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 05/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: b129579916330a34a2a78d98f2c7653f129d3319
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: dae2bb8ece9ef56c0999e0f89abbf6f8d8e950e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523698"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242929"
 ---
 # <a name="configure-an-ip-restriction-rule-with-web-application-firewall-for-azure-front-door-preview"></a>Konfigurace pravidla omezení IP s firewallem webových aplikací pro Azure branou (Preview)
  Tento článek ukazuje, jak nakonfigurovat IP omezení pravidel firewallu webových aplikací (WAF) pro branou pomocí rozhraní příkazového řádku Azure, Azure Powershellu nebo Azure Resource Manageru šablony.
@@ -157,7 +157,7 @@ Vytvoření porovnání IP všechny podmínky pravidla
    Použití [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) příkaz Definovat akce a nastavit prioritu. V následujícím příkladu bude možné požadavky od klienta IP adresy, které se shodují se seznamem. 
 
 ```powershell
-  $IPAllowRule = New-AzFrontDoorCustomRuleObject `
+  $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
     -Name "IPAllowRule" `
     -RuleType MatchRule `
     -MatchCondition $IPMatchCondition `
@@ -166,7 +166,7 @@ Vytvoření porovnání IP všechny podmínky pravidla
 S nižší prioritou než předchozí IP pravidlo povolit vytvoří blok všechny pravidlo protokolu IP.
 
 ```powershell
-  $IPBlockAll = New-AzFrontDoorCustomRuleObject `
+  $IPBlockAll = New-AzFrontDoorWafCustomRuleObject `
     -Name "IPDenyAll" `
     -RuleType MatchRule `
     -MatchCondition $IPMatchALlCondition `

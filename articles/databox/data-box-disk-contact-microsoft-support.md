@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: ''
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604443"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240149"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Vytvořit lístek podpory Azure Data Box 
 
-Tento článek se týká k Azure Data Box a disku Azure Data Box, které jsou spravované službou Azure Data Box. Pokud narazíte na případné problémy s vaší službou Azure Data Box, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
+Tento článek se týká k Azure Data Box, Azure Data Box zátěži a disku Azure Data Box, které jsou spravované službou Azure Data Box. Pokud narazíte na případné problémy s vaší službou Azure Data Box, můžete vytvořit žádost o službu pro technickou podporu. Tento článek vás provede:
 
 * Jak vytvořit žádost o podporu.
 * Jak spravovat životní cyklus žádost o podporu z v rámci portálu.
 
-## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
+## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
 Proveďte následující kroky a vytvoříte žádost o podporu:
 
@@ -34,7 +34,7 @@ Proveďte následující kroky a vytvoříte žádost o podporu:
     
     1. Z **typ problému** rozevíracího seznamu vyberte **technické**.
     2. Zvolte vaše **Předplatné**.
-    3. V části **služby**, zkontrolujte **všechny služby**. Z rozevíracího seznamu vyberte **zařízení Data Box – ve verzi Preview**. 
+    3. V části **služby**, zkontrolujte **všechny služby**. Z rozevíracího seznamu vyberte **zařízení Data Box**. 
     4. Zadejte vaše **plán podpory**.
     5. Klikněte na **Další**.
 
@@ -59,7 +59,7 @@ Proveďte následující kroky a vytvoříte žádost o podporu:
    2. V **kontaktní informace**, zadejte jméno, e-mailu, volitelné kontakt, země/oblast. Vyberte **uložit změny kontaktů pro budoucí požadavky na podporu**.
    3. Klikněte na možnost **Vytvořit**.
    
-       ![Kontaktní údaje](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
+       ![Kontaktní informace](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
       Microsoft Support používá tyto informace se obrátit na můžete pro další informace, diagnostiku a řešení.
       Po odeslání vaší žádosti pracovníkem technické podpory bude vás kontaktovat co nejdříve a pokračovat při zpracování požadavku.
@@ -84,3 +84,5 @@ Po vytvoření lístku můžete spravovat lístek v celém jeho životním cyklu
 ## <a name="next-steps"></a>Další postup
 
 Zjistěte, jak [řešit problémy spojené s datovým diskem pole](data-box-disk-troubleshoot.md).
+Zjistěte, jak [řešit problémy spojené s zařízení Data Box](data-box-troubleshoot.md).
+Zjistěte, jak [řešit problémy spojené s poli datový objekt Blob úložiště](data-box-troubleshoot-rest.md).

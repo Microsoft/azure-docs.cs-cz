@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 04/19/2019
 ms.author: tomfitz
 ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012493"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238360"
 ---
-| Prostředek | Výchozí omezení | Maximální omezení |
+| Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Prostředky na [skupiny prostředků](../articles/azure-resource-manager/resource-group-overview.md#resource-groups), podle typu prostředku |800 |Se liší podle typu prostředku |
 | Nasazení na skupinu prostředků v historii nasazení |800<sup>1</sup> |800 |
@@ -25,7 +25,7 @@ ms.locfileid: "60012493"
 
 #### <a name="template-limits"></a>Omezení šablony
 
-| Value | Výchozí omezení | Maximální omezení |
+| Hodnota | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Proměnné |256 |256 |

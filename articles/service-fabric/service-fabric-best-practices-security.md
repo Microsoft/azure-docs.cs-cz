@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 3349abfb1b7cf85247b1bb5de8eb53fa09299b74
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 449dbb04d58fe7980c845b8c5bc8d837b643c1be
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136489"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386734"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -201,6 +201,14 @@ Následující příklad ukazuje, jak to provést u prostředku Cosmos DB:
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Základní nastavení zabezpečení Windows
+[Doporučujeme vám, že implementujete standardní konfigurace, který je všeobecně známé a dobře otestovaný, jako je například směrné plány zabezpečení společnosti Microsoft, na rozdíl od vytvoření směrného plánu](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); možnost pro zřízení těchto ve vašem virtuálním počítači Škálovací sady je obslužná rutina rozšíření Azure Desired State Configuration (DSC), můžete nakonfigurovat virtuální počítače, jak se do režimu online, tak, že jsou spuštěné provozního softwaru.
+
+## <a name="azure-firewall"></a>Brána Azure Firewall
+[Brány Firewall na Azure je služba zabezpečení spravované sítě založené na cloudu, která chrání vaše prostředky Azure Virtual Network. Je plně stavová brána firewall jako služba s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený. ](https://docs.microsoft.com/azure/firewall/overview); to umožňuje omezit odchozí přenosy HTTP/S pro zadaný seznam plně kvalifikované názvy domény (FQDN) včetně zástupné znaky. Tato funkce nevyžaduje ukončení protokolu SSL. Jeho doporučená můžete využít [značky Azure bránu Firewall plně kvalifikovaný název domény](https://docs.microsoft.com/azure/firewall/fqdn-tags) aktualizací Windows a abyste umožnili síťový provoz na Microsoft Windows Update koncových bodů může probíhat přes bránu firewall. [Brána Firewall služby Azure pomocí šablony nasadit](https://docs.microsoft.com/azure/firewall/deploy-template) najdete vzorek pro definice šablony Microsoft.Network/azureFirewalls prostředků.
+
+## <a name="tls-12"></a>TLS 1.2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 

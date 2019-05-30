@@ -4,15 +4,15 @@ description: Zjistěte, jak se připojit ke službě Azure Cosmos DB a spravovat
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 8700d0988927b221ace82a492e9902f1f36a562b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60950914"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242649"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Práce s daty s využitím Průzkumníka služby Azure Storage
 
@@ -223,7 +223,7 @@ Pokud Průzkumník služby Storage narazí na některý z těchto certifikátů 
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (stačí jakákoli z odlehčených verzí)
      - Mac a Linux: Mělo by být součástí operačního systému
 2. Spusťte OpenSSL.
-    - Windows: Přejděte do adresáře instalace, pak **/bin/**, pak poklikejte na **openssl.exe**.
+    - Windows: Přejděte do adresáře instalace, pak **/bin/** , pak poklikejte na **openssl.exe**.
     - Mac a Linux: V terminálu spusťte příkaz **openssl**.
 3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jisti, které certifikáty jsou podepsané svým držitelem, hledejte certifikáty, jejichž předmět (s:) je stejný jako vystavitel (i:).

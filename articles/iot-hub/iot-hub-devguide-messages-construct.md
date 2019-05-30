@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 49a28c120ae71224195edcdb3809335aeea1fa3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364061"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252800"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -42,6 +42,8 @@ Zařízení cloud zasílání zpráv pomocí služby IoT Hub má následující 
 * IoT Hub neumožňuje libovolného dělení. Zprávy typu zařízení cloud jsou rozdělené na základě jejich zdrojového **deviceId**.
 
 * Jak je vysvětleno v [řízení přístupu ke službě IoT Hub](iot-hub-devguide-security.md), IoT Hub umožňuje pomocí řízení přístupu a ověřování podle zařízení.
+
+* Potlačení zprávy s informacemi, které přejde do vlastnosti aplikace. Další informace najdete v tématu [zprávy obohacení](iot-hub-message-enrichments-overview.md).
 
 Další informace o tom, jak kódování a dekódování zprávy odesílané pomocí různých protokolů najdete v tématu [sad SDK Azure IoT](iot-hub-devguide-sdks.md).
 

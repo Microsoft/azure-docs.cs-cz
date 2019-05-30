@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: pabutler
-ms.openlocfilehash: 6ca0eb23dad218262eff5d80543628df273022c9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c97bf10daa8f062cc833c7d7c5f7b0ca4835ca6f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942239"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257542"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Správa profilu vydavatele Azure Marketplace a AppSource
 
@@ -49,7 +49,7 @@ Můžete také propojit existujícího účtu Dev Center s svůj profil vydavate
 > [!NOTE]
 > Registrace účtu středisko pro vývojáře je povinná pro publikování placené trh skladové položky.
 
-Pokud nemáte účet Centrum pro vývojáře, můžete vytvořit účet, jak je popsáno v [registraci v centru vývojářů pro](../../register-dev-center.md).  Pak přidejte registrované e-mailovou adresu jako vlastníka na portál partnerů cloudu pro vaši nabídku. Jako vlastníka můžete přidat pouze registrované e-mailovou adresu do profilu publikování z **uživatele** oddílu. Poté Přihlaste se k portálu pomocí stejné e-mailovou adresu a propojí váš účet vývojáře.
+Pokud nemáte účet Centrum pro vývojáře, můžete vytvořit účet, jak je popsáno v [registraci v centru vývojářů pro](https://docs.microsoft.com/azure/marketplace/register-dev-center).  Pak přidejte registrované e-mailovou adresu jako vlastníka na portál partnerů cloudu pro vaši nabídku. Jako vlastníka můžete přidat pouze registrované e-mailovou adresu do profilu publikování z **uživatele** oddílu. Poté Přihlaste se k portálu pomocí stejné e-mailovou adresu a propojí váš účet vývojáře.
 
 ![Podrobnosti o profilu vydavatele – popis profilu vydavatele](./media/publisherprofiledescription.png)
 

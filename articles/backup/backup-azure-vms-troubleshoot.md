@@ -8,26 +8,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 23137cd686bcdba59880ff705a43b16ced992b59
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002314"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303997"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Je možné řešit chyby se setkali při použití Azure Backup s informacemi o uvedené níže:
 
 ## <a name="backup"></a>Backup
+Tato část popisuje selhání zálohování Azure virtuální počítače.
 
-### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – kopírování zálohovaných dat z trezoru vypršel časový limit
+## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – kopírování zálohovaných dat z trezoru vypršel časový limit
 
 Kód chyby: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 Chybová zpráva: Při kopírování zálohovaných dat z trezoru vypršel časový limit
 
 K tomu může dojít z důvodu chyby přechodné úložiště nebo nedostatečné úložiště účtu vstupně-výstupních operací pro zálohovací službu pro přenos dat do trezoru v časovém limitu. Konfigurace zálohování virtuálních počítačů pomocí těchto [osvědčené postupy](backup-azure-vms-introduction.md#best-practices) a zkuste operaci zálohování zopakovat.
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – virtuální počítač není ve stavu, který umožňuje zálohování.
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – virtuální počítač není ve stavu, který umožňuje zálohování.
 
 Kód chyby: UserErrorVmNotInDesirableState <br/>
 Chybová zpráva: Virtuální počítač není ve stavu, který umožňuje zálohování.<br/>
@@ -37,7 +38,7 @@ Operace zálohování se nezdařila, protože virtuální počítač je ve stavu
 * Pokud je virtuální počítač v přechodném stavu mezi **systémem** a **vypnout**, počkejte chcete změnit stav. Potom aktivujte úlohu zálohování.
 *  Pokud virtuální počítač je virtuální počítač s Linuxem a používá Linux Security-Enhanced modulu jádra, vyloučit cestu agenta Azure Linux **/var/lib/waagent** ze zásad zabezpečení a ujistěte se, že je nainstalované rozšíření zálohování.
 
-### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nepovedlo se zablokovat nejméně jeden přípojný bod virtuálního počítače na pořízení konzistentního snímku systému souborů
+## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nepovedlo se zablokovat nejméně jeden přípojný bod virtuálního počítače na pořízení konzistentního snímku systému souborů
 
 Kód chyby: UserErrorFsFreezeFailed <br/>
 Chybová zpráva: Nejméně jeden přípojný bod virtuálního počítače se nepovedlo zablokovat a nešlo tak pořídit snímek konzistentní vzhledem k systému souborů.
@@ -47,7 +48,7 @@ Chybová zpráva: Nejméně jeden přípojný bod virtuálního počítače se n
 * Spusťte kontrolu konzistence systému souborů v těchto zařízeních pomocí **fsck** příkazu.
 * Připojte zařízení znovu a zkuste operaci zálohování zopakovat.</ol>
 
-### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – operace/instalace rozšíření se nepovedlo kvůli chybě modelu COM +.
+## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – operace/instalace rozšíření se nepovedlo kvůli chybě modelu COM +.
 
 Kód chyby: ExtensionSnapshotFailedCOM <br/>
 Chybová zpráva: Operace snímku nebyla úspěšná kvůli chybě modelu COM +.
@@ -55,21 +56,22 @@ Chybová zpráva: Operace snímku nebyla úspěšná kvůli chybě modelu COM +.
 Kód chyby: ExtensionInstallationFailedCOM  <br/>
 Chybová zpráva: Instalace rozšíření/operace nebyla úspěšná kvůli chybě modelu COM +
 
-Kód chyby: ExtensionInstallationFailedMDTC chybová zpráva: Instalace rozšíření selhala s chybou "modelu COM + se nepovedlo komunikovat s Microsoft Distributed Transaction Coordinator
+Kód chyby: ExtensionInstallationFailedMDTC <br/>
+Chybová zpráva: Instalace rozšíření selhala s chybou "modelu COM + se nepovedlo komunikovat s Microsoft Distributed Transaction Coordinator <br/>
 
 Operace zálohování se nezdařila kvůli problému se službou Windows **systém COM +** aplikace.  Pokud chcete tento problém vyřešit, postupujte následovně:
 
 * Zkuste spuštění a restartovat službu Windows **systémová aplikace modelu COM +** (z příkazového řádku se zvýšenými oprávněními **-net start COMSysApp**).
-* Zajištění **Distributed Transaction Coordinator** služby běží jako **síťová služba** účtu. Pokud ne, změňte ho na Spustit jako **síťová služba** účtu a restartujte **systémová aplikace modelu COM +**.
+* Zajištění **Distributed Transaction Coordinator** služby běží jako **síťová služba** účtu. Pokud ne, změňte ho na Spustit jako **síťová služba** účtu a restartujte **systémová aplikace modelu COM +** .
 * Není-li službu restartovat, znovu **Distributed Transaction Coordinator** služby podle následujících kroků:
     * Zastavte službu DTC (Distributed Transaction Coordinator).
     * Otevřete příkazový řádek (cmd).
     * Spuštěním příkazu "msdtc-odinstalace"
     * zrušení příkazu "msdtc – instalace"
     * Spusťte službu DTC (Distributed Transaction Coordinator).
-* Spustit službu Windows **systémová aplikace modelu COM +**. Po **systémová aplikace modelu COM +** zahájení aktivace úlohy zálohování z webu Azure portal.</ol>
+* Spustit službu Windows **systémová aplikace modelu COM +** . Po **systémová aplikace modelu COM +** zahájení aktivace úlohy zálohování z webu Azure portal.</ol>
 
-### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState - operace snímku nebyla úspěšná, protože zapisovače VSS byly ve špatném stavu
+## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState - operace snímku nebyla úspěšná, protože zapisovače VSS byly ve špatném stavu
 
 Kód chyby: ExtensionFailedVssWriterInBadState <br/>
 Chybová zpráva: Operace snímku nebyla úspěšná, protože zapisovače VSS jsou v chybném stavu.
@@ -79,7 +81,7 @@ Restartujte zapisovače služby VSS, které jsou v chybném stavu. Z příkazov�
   * ```net stop serviceName```
   * ```net start serviceName```
 
-### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - Chyba při analýze konfigurace zálohovacího rozšíření
+## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - Chyba při analýze konfigurace zálohovacího rozšíření
 
 Kód chyby: ExtensionConfigParsingFailure<br/>
 Chybová zpráva: Při analýze konfigurace zálohovacího rozšíření se stala chyba.
@@ -108,7 +110,7 @@ Pokud se zobrazí oprávnění ve službě **MachineKeys** adresář, který se 
     * V části **osobní** > **certifikáty**, odstraňte všechny certifikáty kde **vystaveno pro** je model nasazení classic nebo **Windows Azure CRP Generátor certifikátů**.
 3. Aktivace úlohy zálohování virtuálního počítače.
 
-### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - stav rozšíření není operaci zálohování
+## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - stav rozšíření není operaci zálohování
 
 Kód chyby: ExtensionStuckInDeletionState <br/>
 Chybová zpráva: Stav rozšíření není operaci zálohování
@@ -121,7 +123,7 @@ Operace zálohování selhala kvůli nekonzistentnímu stavu rozšíření zálo
 * Po odstranění rozšíření zálohování zopakujte operaci zálohování.
 * Další operace zálohování nainstaluje nové rozšíření v požadovaném stavu.
 
-### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>Pro některé z připojených disků se překročil ExtensionFailedSnapshotLimitReachedError - operace snímku nebyla úspěšná, protože omezení počtu snímků
+## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>Pro některé z připojených disků se překročil ExtensionFailedSnapshotLimitReachedError - operace snímku nebyla úspěšná, protože omezení počtu snímků
 
 Kód chyby: ExtensionFailedSnapshotLimitReachedError  <br/>
 Chybová zpráva: Operace snímku nebyla úspěšná, protože omezení počtu snímků překročení některé z připojených disků
@@ -135,7 +137,7 @@ Operace snímku nebyla úspěšná, protože omezení počtu snímků překroči
     * Zkontrolujte hodnotu **isanysnapshotfailed** je nastavená na hodnotu false v /etc/azure/vmbackup.conf
     * Naplánujte Azure Site Recovery v jinou dobu, tak, aby nevznikne konflikt operace zálohování.
 
-### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - operace snímku nebyla úspěšná kvůli nedostatečným prostředkům virtuálního počítače.
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - operace snímku nebyla úspěšná kvůli nedostatečným prostředkům virtuálního počítače.
 
 Kód chyby: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 Chybová zpráva: Operace snímku nebyla úspěšná kvůli nedostatečným prostředkům virtuálního počítače.
@@ -157,7 +159,7 @@ Tím se zajistí, že se všechny snímky pořídí přes hostitele, a ne hosta.
 
 **Krok 3**: Zkuste [zvětšení velikosti virtuálního počítače](https://azure.microsoft.com/blog/resize-virtual-machines/) a operaci opakujte
 
-### <a name="common-vm-backup-errors"></a>Běžné chyby při zálohování virtuálního počítače
+## <a name="common-vm-backup-errors"></a>Běžné chyby při zálohování virtuálního počítače
 
 | Podrobnosti o chybě | Alternativní řešení: |
 | ------ | --- |
@@ -210,7 +212,7 @@ Obvykle je Agent virtuálního počítače už ve virtuálních počítačích v
 * Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Je potřeba oprávnění správce pro dokončení instalace.
 * Pro virtuální počítače vytvořené pomocí modelu nasazení classic [aktualizovat vlastnosti virtuálního počítače](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) označující, zda je agent nainstalovaný. Tento krok není povinný pro virtuální počítače Azure Resource Manageru.
 
-#### <a name="linux-vms"></a>Linuxové virtuální počítače
+#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
 
 * Nainstalujte nejnovější verzi agenta z úložiště distribuce. Podrobnosti o název balíčku, najdete v článku [agenta pro Linux úložiště](https://github.com/Azure/WALinuxAgent).
 * Pro virtuální počítače vytvořené pomocí modelu nasazení classic [použít tento blog](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) aktualizovat vlastnosti virtuálního počítače a ověřte, zda je agent nainstalovaný. Tento krok není povinný pro virtuální počítače Resource Manageru.
@@ -220,7 +222,7 @@ Obvykle je Agent virtuálního počítače už ve virtuálních počítačích v
 
 * Pokud chcete aktualizovat agenta virtuálního počítače, přeinstalujte [binárních souborů agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Před aktualizací agenta, ujistěte se, že žádná operace zálohování, k nimž došlo při aktualizaci agenta virtuálního počítače.
 
-#### <a name="linux-vms"></a>Linuxové virtuální počítače
+#### <a name="linux-vms"></a>Virtuální počítače s Linuxem
 
 * Chcete-li aktualizovat agenta virtuálního počítače s Linuxem, postupujte podle pokynů v článku [aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -239,7 +241,7 @@ Ověřte, že verze agenta virtuálního počítače na virtuálních počítač
 ## <a name="troubleshoot-vm-snapshot-issues"></a>Řešení potíží s snímku virtuálního počítače
 Zálohování virtuálních počítačů se spoléhá na vydávání příkazů snímek základního úložiště. Nemáte přístup k úložišti nebo zpoždění v úloze snímků spuštění může způsobit selhání úlohy zálohování. Selhání úlohy snímku mohou způsobovat následující podmínky:
 
-- **Pomocí skupiny zabezpečení sítě je blokován síťového přístupu k úložišti**. Další informace o tom, jak [navázat přístup k síti](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do služby Storage s použitím buď na seznam povolených IP adres nebo prostřednictvím proxy serveru.
+- **Pomocí skupiny zabezpečení sítě je blokován síťového přístupu k úložišti**. Další informace o tom, jak [navázat přístup k síti](backup-azure-arm-vms-prepare.md#establish-network-connectivity) do služby Storage s použitím obou seznamu povolených IP adres nebo prostřednictvím proxy serveru.
 - **Virtuální počítače pomocí zálohování serveru SQL Server nakonfigurovaný, může způsobit zpoždění úlohy vytvoření snímku**. Ve výchozím nastavení zálohování virtuálního počítače vytvoří VSS úplného zálohování na virtuálních počítačích s Windows. Virtuální počítače, na kterých běží SQL Server pomocí zálohování serveru SQL Server nakonfigurovaný, může docházet k snímku zpoždění. Pokud snímek zpoždění způsobit selhání zálohování, nastavte následující klíč registru:
 
    ```
@@ -262,8 +264,8 @@ Je potřeba vyřešit veřejné internetové adresy podrobněji [tento blog podp
 
 Po provádí překlad, přístup k IP adresy Azure také musí být k dispozici. Pokud chcete odblokovat přístup k infrastruktuře Azure, použijte jeden z těchto kroků:
 
-- Seznam povolených adres Azure datacenter rozsahy IP adres:
-   1. Získat seznam [Azure datacenter IP adresy](https://www.microsoft.com/download/details.aspx?id=41653) uvedení na seznamu povolených.
+- Povolit seznam rozsahů IP adres datacentra Azure:
+   1. Získat seznam [Azure datacenter IP adresy](https://www.microsoft.com/download/details.aspx?id=41653) chcete být v seznamu povolených.
    1. Odblokování pomocí IP adresy [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) rutiny. V okně PowerShell se zvýšenými oprávněními spusťte tuto rutinu v rámci virtuálního počítače Azure. Spusťte jako správce.
    1. Přidání pravidel k NSG, pokud nemáte v místě, pokud chcete povolit přístup k IP adres.
 - Vytvoření cesty pro příjem provozu HTTP:

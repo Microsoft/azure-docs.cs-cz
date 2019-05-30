@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/22/2019
-ms.openlocfilehash: 7f3afec0425033fba174e000195fa26b295aaef1
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/23/2019
+ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507942"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240341"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity pro elastické fondy pomocí omezení založený na virtuálních jádrech nákupní model prostředků
 
@@ -44,6 +44,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
+|Maximální počet databází pro každý fond|100|200|500|500|500|500|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Maximální velikost dat (GB)|512|756|756|1536|1536|1536|
@@ -56,7 +57,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) * |210|420|630|840|1050|1260|
 |Maximální počet souběžných přihlášení na fond * |210|420|630|840|1050|1260|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|100|200|300|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Počet replik|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -72,6 +72,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|168|
+|Maximální počet databází pro každý fond|500|500|500|500|500|500|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Maximální velikost dat (GB)|1536|2 048|2 048|2 048|3584|4 096|
@@ -84,7 +85,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných přihlášení fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|200|500|500|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Počet replik|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -100,6 +100,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
+|Maximální počet databází pro každý fond|100|200|500|500|500|500|500|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Maximální velikost dat (GB)|512|756|756|1536|1536|1536|
@@ -112,7 +113,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|200|500|500|500|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Počet replik|1|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -128,6 +128,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|81.6|91.8|102|122.4|163.2|204|408|
+|Maximální počet databází pro každý fond|500|500|500|500|500|500|500|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Maximální velikost dat (GB)|2 048|2 048|3072|3072|4 096|4 096|4 096|
@@ -139,7 +140,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Omezení přenosové rychlosti protokolu (MB/s)|37.5|37.5|37.5|37.5|37.5|37.5|37.5|
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|33600|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|33600|4200|8400|
-|Maximální počet databází pro každý fond|500|500|500|500|500|500|500|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -157,6 +157,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
+|Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1|2|3|4|5|6|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
@@ -169,7 +170,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|neuvedeno|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -185,6 +185,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|81.6|91.8|102|122.4|163.2|204|
+|Maximální počet databází pro každý fond|100|100|100|100|100|100|
 |Podpora Columnstore|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
@@ -197,7 +198,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1470|1680|1890|2 100|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|100|100|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -213,6 +213,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
+|Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|100|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
@@ -225,7 +226,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|210|420|630|840|1050|1260|1470|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|neuvedeno|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -241,6 +241,7 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Generování H/W|5|5|5|5|5|5|5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|81.6|91.8|102|122.4|163.2|204|408|
+|Maximální počet databází pro každý fond|100|100|100|100|100|100|100|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|15.768|18.139|20.51|25.252|37.936|52.22|131.64|
 |Maximální velikost dat (GB)|3072|3072|3072|4 096|4 096|4 096|4 096|
@@ -253,7 +254,6 @@ Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikos
 |Maximální počet souběžných pracovních procesů na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální počet souběžných přihlášení na fond (požadavky) *|1680|1890|2 100|2520|3360|4200|8400|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|100|100|100|100|100|100|100|
 |Volby pro elastické fondy – vCore min/max na databázi|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|

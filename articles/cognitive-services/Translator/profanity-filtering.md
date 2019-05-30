@@ -3,20 +3,19 @@ title: Filtrování vulgárních výrazů – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Použijte vulgárních výrazů v rozhraní Translator Text API filtrování.
 services: cognitive-services
-author: Jann-Skotdal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-origin.date: 02/21/2019
-ms.date: 03/12/2019
-ms.author: v-junlch
-ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/21/2019
+ms.author: v-pawal
+ms.openlocfilehash: 3ffe14450f0191b88a8d8a71b5f28ae4c59b68c1
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880026"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387588"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Přidat vulgárních výrazů filtrování s rozhraním Translator Text API
 
@@ -31,9 +30,8 @@ Metoda Translate() přijímá parametr "options", který obsahuje nový prvek "P
 | :---|:---|:---|:---|
 | NoAction | Default (Výchozí). Stejně jako nastavit možnost. Vulgárních výrazů předá ze zdroje do cíle. | 彼は変態です。 | Je Hlupák. |
 | Označené | Urážlivá slova jsou ohraničeny značky XML \<vulgárních výrazů >... \</profanity >. | 彼は変態です。 | Je \<vulgárních výrazů > jerk\</profanity >. |
-| Odstraněno | Urážlivá slova se odeberou z výstupu bez nahrazení. | 彼は。 | Je. |
+| Odstranění | Urážlivá slova se odeberou z výstupu bez nahrazení. | 彼は。 | Je. |
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Použít filtrování pomocí vaše volání rozhraní Translator API vulgárních výrazů](reference/v3-0-translate.md)
-

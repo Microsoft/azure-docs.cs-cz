@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/28/2019
+ms.openlocfilehash: 9a6a1a744a8441d2f082d4d14a3aba8aa1cfc09e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510238"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306021"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Vytvoření a správa repliky pro čtení z příkazového řádku Azure
 
 V tomto článku se dozvíte, jak vytvářet a spravovat repliky pro čtení ve službě Azure Database for PostgreSQL z příkazového řádku Azure. Další informace o čtení replik, najdete v článku [přehled](concepts-read-replicas.md).
 
-> [!NOTE]
-> Rozhraní příkazového řádku Azure zatím nepodporuje vytváření repliky v jiné oblasti než hlavní server. Chcete-li vytvořit repliku mezi různými oblastmi, použijte [webu Azure portal](howto-read-replicas-portal.md).
+> [!IMPORTANT]
+> Čtení repliky můžete vytvořit ve stejné oblasti jako váš hlavní server, nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi public preview.
 
 ## <a name="prerequisites"></a>Požadavky
 - [– Azure Database for PostgreSQL server](quickstart-create-server-up-azure-cli.md) na hlavní server.
@@ -55,8 +55,16 @@ Tyto kroky musí použije k přípravě na úrovni obecné účely nebo k pamě�
 | name | mydemoserver-replica | Název nového serveru repliky, který je vytvořen. |
 | source-server | mydemoserver | Název nebo prostředek ID existující hlavní server pro replikaci z. |
 
+V následujícím příkladu rozhraní příkazového řádku je replika vytvořena ve stejné oblasti jako hlavní server.
+
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
+```
+
+Chcete-li vytvořit křížových přečíst oblasti repliky, použijte `--location` parametru. Následující příklad rozhraní příkazového řádku vytvoří replika v oblasti západní USA.
+
+```azurecli-interactive
+az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 Pokud jste nenastavili `azure.replication_support` parametr **REPLIKY** na obecné účely nebo k paměťově optimalizovaným hlavního serveru a restartujte server, obdržíte chybu. Před vytvořením repliky proveďte tyto dva kroky.

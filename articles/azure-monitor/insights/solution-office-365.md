@@ -10,18 +10,26 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 05/29/2019
 ms.author: bwren
-ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130612"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357581"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
 ![Logo Office 365](media/solution-office-365/icon.png)
+
+
+> [!NOTE]
+> Povolení doporučovaná metoda pro instalaci a konfiguraci řešení Office 365 [konektor Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) místo pomocí kroků v tomto článku. Toto je řešení pro Office 365 Vylepšená konfigurace prostředí s aktualizovanou verzi. Chcete-li připojit protokoly služby Azure AD, použijte [Azure ověřovací služby Azure AD connector](../../sentinel/connect-azure-active-directory.md), který nabízí bohatší data protokolu než protokoly pro správu Office 365. 
+>
+> Když jste [Sentinelu připojení Azure](../../sentinel/quickstart-onboard.md), zadejte pracovní prostor Log Analytics, který má nainstalované v řešení sady Office 365. Jakmile povolíte konektor, řešení bude k dispozici v pracovním prostoru a použít stejně jako jakékoli jiné řešení monitorování, který jste si nainstalovali.
+>
+> Uživatelé v cloudu Azure government, musíte nainstalovat Office 365, pomocí kroků v tomto článku, protože Azure Sentinelu ještě není k dispozici v cloudu pro státní správu.
 
 Řešení pro správu Office 365 vám umožní monitorovat vaše prostředí Office 365 ve službě Azure Monitor.
 
@@ -30,6 +38,7 @@ ms.locfileid: "66130612"
 - Detekujte a prošetřete chování uživatele, který lze přizpůsobit potřebám vaší organizace.
 - Předvedení audit a dodržování předpisů. Můžete například monitorovat operací přístupu k souboru na důvěrné soubory, které vám pomohou s procesu audit a dodržování předpisů.
 - Provádět provozní řešení potíží s použitím [protokolu dotazy](../log-query/log-query-overview.md) nad data aktivit Office 365 vaší organizace.
+
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +73,7 @@ Z pracovního prostoru Log Analytics:
 Z vašeho předplatného Office 365:
 
 - Uživatelské jméno: E-mailovou adresu účtu správce.
-- ID klienta: Jedinečné ID pro předplatné služeb Office 365.
+- ID tenanta: Jedinečné ID pro předplatné služeb Office 365.
 - ID klienta: řetězec o 16 znacích představující klienta Office 365.
 - Tajný kód klienta: Zašifrovaný řetězec potřebné pro ověřování.
 
@@ -79,7 +88,7 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
     ![Přidat registraci aplikace](media/solution-office-365/add-app-registration.png)
 1. Zadejte aplikace **název** a **přihlašovací adresa URL**.  Název by měl být popisný.  Použití `http://localhost` pro adresu URL a zachovat _webové aplikace a rozhraní API_ pro **typu aplikace**
     
-    ![Vytvořit aplikaci](media/solution-office-365/create-application.png)
+    ![Vytvoření aplikace](media/solution-office-365/create-application.png)
 1. Klikněte na tlačítko **vytvořit** a ověřit informace o aplikaci.
 
     ![Registrovaná aplikace](media/solution-office-365/registered-app.png)
@@ -94,19 +103,19 @@ Prvním krokem je vytvoření aplikace v Azure Active Directory, řešení pro s
 1. Vyberte **požadovaná oprávnění** v **nastavení** nabídky a pak klikněte na tlačítko **přidat**.
 1. Klikněte na tlačítko **vyberte rozhraní API** a potom **rozhraní API pro správu Office 365**. Klikněte na tlačítko **rozhraní API pro správu Office 365**. Klikněte na **Vybrat**.
 
-    ![Vyberte rozhraní API](media/solution-office-365/select-api.png)
+    ![Vybrat rozhraní API](media/solution-office-365/select-api.png)
 
 1. V části **vyberte oprávnění** vyberte následující možnosti pro obě **oprávnění aplikace** a **delegovaná oprávnění**:
-   - Přečíst informace o stavu služby pro organizaci
+   - Přečtěte si informace o stavu služby pro vaši organizaci
    - Čtení dat o aktivitách pro vaši organizaci
-   - Přečíst sestavy aktivit pro organizaci
+   - Přečíst sestavy aktivit pro vaši organizaci
 
-     ![Vyberte rozhraní API](media/solution-office-365/select-permissions.png)
+     ![Vybrat rozhraní API](media/solution-office-365/select-permissions.png)
 
 1. Klikněte na tlačítko **vyberte** a potom **provádí**.
 1. Klikněte na tlačítko **udělit oprávnění** a potom klikněte na tlačítko **Ano** žádost o ověření.
 
-    ![Udělit oprávnění](media/solution-office-365/grant-permissions.png)
+    ![Udělení oprávnění](media/solution-office-365/grant-permissions.png)
 
 ### <a name="add-a-key-for-the-application"></a>Přidat klíč pro aplikaci
 
@@ -388,7 +397,7 @@ At line:12 char:18
 
 ```
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
 Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat řešení pro správu](solutions.md#remove-a-monitoring-solution). To shromažďovaných dat z Office 365 do služby Azure Monitor ale nezastaví. Pomocí následujícího postupu zrušit odběr služeb Office 365 a shromažďování dat ukončit.
 
@@ -541,7 +550,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, částečně úspěšném nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Normální<br>Vyhrazený<br>ServicePrincipal<br>Systém |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Vyhrazeno<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base
@@ -579,7 +588,7 @@ Tyto záznamy jsou vytvořeny při změnu nebo přidání objektů služby Azure
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
 | AADTarget | Uživatel, který byla provedena akce (identifikovaných podle vlastnosti Operation). |
-| Actor | Uživatel nebo instanční objekt, který tuto akci provedl. |
+| objekt actor | Uživatel nebo instanční objekt, který tuto akci provedl. |
 | ActorContextId | Identifikátor GUID, který objekt actor patří do organizace. |
 | ActorIpAddress | IP adresa objektu actor ve formátu adresy IPV4 nebo IPV6. |
 | InterSystemsId | Identifikátor GUID, které sledují akce komponentami v rámci služby Office 365. |

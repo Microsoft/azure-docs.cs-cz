@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 0a6bcb3fb94df56caf4d095097572dd8a704f856
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/27/2019
+ms.openlocfilehash: 705ced82ad4edad0bb4adc057414f6b20b80d8d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701201"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298879"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsight
 
@@ -50,7 +50,7 @@ HDInsight také podporuje vlastní metaúložiště, které se doporučují pro 
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Vyberte vlastní úložiště metadat během vytváření clusteru
 
-Cluster může odkazovat na dříve vytvořenou databázi SQL Azure při vytváření clusteru, nebo SQL Database můžete nakonfigurovat po vytvoření clusteru. Tato možnost je zadána s úložištěm > Nastavení Metastoru při vytváření nového systému Hadoop, Spark nebo interaktivní Hive clusteru z webu Azure portal.
+Cluster může odkazovat na dříve vytvořenou databázi SQL Azure při vytváření clusteru, nebo SQL Database můžete nakonfigurovat po vytvoření clusteru. Tato možnost je zadána s **úložiště > Nastavení Metastoru** při vytváření nového systému Hadoop, Spark nebo interaktivní Hive clusteru z webu Azure portal.
 
 ![Portál Azure Store HDInsight Hive metadat](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
 
@@ -79,4 +79,4 @@ Pokyny týkající se vytvoření úložiště metadat Oozie s Azure SQL Databas
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími](./hdinsight-hadoop-provision-linux-clusters.md)

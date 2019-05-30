@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a14e03c21de0b5388040943fbe5e9434271b567f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472216"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258820"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -86,7 +86,9 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Token, který obsahuje hodnoty – hodnoty hash tak, aby příjemce může přepočítá hodnoty hash se stejnými parametry, ověření, že vystavitel je k dispozici platný podpisový klíč.
 
-Identifikátor URI prostředku je úplný identifikátor URI prostředku služby Service Bus, ke kterému je požadována přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>`; to znamená `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. Identifikátor URI musí být [procentuálně zakódovaný](https://msdn.microsoft.com/library/4fkewx0t.aspx).
+Identifikátor URI prostředku je úplný identifikátor URI prostředku služby Service Bus, ke kterému je požadována přístup. Například `http://<namespace>.servicebus.windows.net/<entityPath>` nebo `sb://<namespace>.servicebus.windows.net/<entityPath>`; to znamená `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+
+**Identifikátor URI musí být [procentuálně zakódovaný](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
 Autorizační pravidlo sdíleného přístupu pro podpis musí být nakonfigurované na entitu zadanou tento identifikátor URI, nebo jeden z jejích hierarchické nadřazených tříd. Například `http://contoso.servicebus.windows.net/contosoTopics/T1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
 
@@ -284,7 +286,7 @@ V následující tabulce jsou uvedeny přístupová práva potřebná pro různ�
 | Odeslání do tématu |Odeslat |Libovolné platné tématu adresy |
 | **Předplatné** | | |
 | Vytvoření odběru |Spravovat |Všechny adresy oboru názvů |
-| Odstranit předplatné |Spravovat |.. /myTopic/Subscriptions/mySubscription |
+| Odstranit odběr |Spravovat |.. /myTopic/Subscriptions/mySubscription |
 | Zobrazení výčtu odběrů |Spravovat |.. / myTopic/předplatná |
 | Získat popis odběru |Spravovat |.. /myTopic/Subscriptions/mySubscription |
 | Zrušení nebo celé zprávy po přijetí zprávy v režimu neboli peek-lock |Naslouchat |.. /myTopic/Subscriptions/mySubscription |

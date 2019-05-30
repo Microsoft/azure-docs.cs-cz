@@ -5,15 +5,15 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 21ec3ea70e495364e40e492a5d0f9375e5c5d3e3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: be8384225d213cd83cbbac8bdfb92ec1e823c38b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139957"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235974"
 ---
 1. Přihlaste se k webu [Azure Portal].
 
@@ -21,18 +21,15 @@ ms.locfileid: "66139957"
 
 3. Do vyhledávacího pole zadejte **Mobile Apps**.
 
-    [![Web Azure Portal se zvýrazněnou možností Rychlý start Mobile Apps][quickstart]](./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart-zoom.png#lightbox)
-
-4. V seznamu výsledků vyberte **Rychlý start Mobile Apps** a potom vyberte **Vytvořit**.
+4. V seznamu výsledků vyberte **mobilní aplikace**a pak vyberte **vytvořit**.
 
 5. Vyberte jedinečný **název aplikace**. Ten bude také součástí názvu domény služby App Service.
 
-6. V části **Skupina prostředků** vyberte existující skupinu prostředků _nebo_ vytvořte novou (použijte stejný název, jaký má aplikace).
+6. Vyberte **předplatné** pro tato mobilní aplikace.
 
-7. Klikněte na možnost **Vytvořit**. Počkejte několik minut na úspěšné nasazení služby a teprve potom pokračujte. Sledujte ikonu oznámení (zvonek) v hlavičce portálu upozorňující na aktualizace stavu.
+7. V části **Skupina prostředků** vyberte existující skupinu prostředků _nebo_ vytvořte novou (použijte stejný název, jaký má aplikace).
 
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart.png
+8. Klikněte na možnost **Vytvořit**. Počkejte několik minut na úspěšné nasazení služby a teprve potom pokračujte. Sledujte ikonu oznámení (zvonek) v hlavičce portálu upozorňující na aktualizace stavu.
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com/

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1c7712fc2ce55a3d22995bb119a9ee485a064903
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683398"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399191"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s využitím upozornění log ve službě Azure Monitor  
 
@@ -38,7 +38,7 @@ Ke zmírnění zpoždění, systému vyčká a pokusí znovu výstraha dotazu v�
 
 Jak je popsáno v článku na [terminologie pro výstrahy protokolu](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types), určuje časové období, uvádí v konfiguraci časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v rámci tohoto rozsahu. 
 
-Časové období omezuje data načtena protokolu dotazu, aby se zabránilo zneužití a obchází jakýkoli příkaz čas (jako je **před**) používaných v dotazu protokolu. Například toto časové období je nastavený na 60 minut a spuštění dotazu v 13:15, se používají pouze záznamy vytvořené mezi 12:15 PM a 1:15 PM pro dotaz protokolu. Pokud dotaz protokolu používá čas příkaz podobný **před (1d)**, dotaz stále pouze používá data mezi 12:15 PM a 1:15 PM, protože toto časové období je nastavena na tento interval.
+Časové období omezuje data načtena protokolu dotazu, aby se zabránilo zneužití a obchází jakýkoli příkaz čas (jako je **před**) používaných v dotazu protokolu. Například toto časové období je nastavený na 60 minut a spuštění dotazu v 13:15, se používají pouze záznamy vytvořené mezi 12:15 PM a 1:15 PM pro dotaz protokolu. Pokud dotaz protokolu používá čas příkaz podobný **před (1d)** , dotaz stále pouze používá data mezi 12:15 PM a 1:15 PM, protože toto časové období je nastavena na tento interval.
 
 Zkontrolujte, že časové období v konfiguraci odpovídá vašemu dotazu. Například je uvedeno výše pokud používá dotaz protokolu **před (1d)** s zelené značky, je třeba nastavit časové období na 24 hodin nebo 1 440 minut (označená červenou barvou). Toto nastavení zajistí, že spuštění dotazu tak, jak má.
 
@@ -181,6 +181,7 @@ Následující ukázkové události v protokolu aktivit Azure je pro pravidlo v�
 Každé pravidlo upozornění protokolu vytvoří ve službě Azure Monitor jako součást konfigurace musíte zadat dotazu analytics, která bude pravidelně spouštět služba upozornění. Analytický dotaz může mít správnou syntaxi v době vytvoření pravidla nebo aktualizace. Ale v některých případech po určitou dobu dotazu podle pravidel upozornění protokolů můžete vyvíjet problémů a způsobit, že je spuštění pravidla selhání. Některé běžné důvody, proč dotazu analytics podle pravidel upozornění protokolů můžete vyvíjet chyby jsou:
 
 - Dotaz je zapsán do [spouštět napříč několika prostředcích](../log-query/cross-workspace-query.md). A jeden nebo více zadané prostředky už neexistuje.
+- [upozornění protokolu typ měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) nakonfigurovaný je nastavena výstraha dotazu není v souladu s syntaxe norem
 - Žádný tok dat pro analytické platformy došlo. [Provádění dotazu vrátí chybu](https://dev.loganalytics.io/documentation/Using-the-API/Errors) vzhledem k tomu, že neexistuje žádná data pro zadaný dotaz.
 - Změny v [dotazovací jazyk](https://docs.microsoft.com/azure/kusto/query/) obsahovat upravená formát pro příkazy a funkce. Proto dotaz dříve součástí pravidla upozornění už nejsou platné.
 

@@ -3,19 +3,19 @@ title: Ukázka konverzace Learner modelu, pro resetování hesla – Microsoft C
 titleSuffix: Azure
 description: Zjistěte, jak vytvořit model konverzace Learner ukázku.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: nitinme
+ms.openlocfilehash: 15aa3a8346087908cf77f1f68db916cc2c184448
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60313130"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389879"
 ---
 # <a name="demo-password-reset"></a>Ukázka: Resetování hesla
 Tento kurz představuje robota jednoduché technické podpory, který vám pomůže s resetování hesla s využitím learner konverzace. Model bodu robotů také další toky netriviální dialogové okno a více zapnout včetně třídy mimo doménu pořadí. Úkol můžete udělat bez kódu nebo entity.

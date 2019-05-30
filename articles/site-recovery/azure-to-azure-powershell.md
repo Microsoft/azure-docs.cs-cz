@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: f09a186ee5626718c7b5e1085dd75d8857e44bb1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705175"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258801"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu
 
@@ -135,19 +135,12 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 ## <a name="set-the-vault-context"></a>Nastavte kontext trezoru
 
-> [!TIP]
-> Modul Powershellu pro Azure Site Recovery (Az.RecoveryServices modul) obsahuje aliasy snadno se používá u většiny rutin. Rutiny v modulu podobu  *\<operace >-**AzRecoveryServicesAsr**\<objektu >* a mají ekvivalentní aliasy, které podobu  *\< Operace >-**Azure Site Recovery**\<objektu >*. Tento článek používá rutiny aliasy pro snadnější čtení.
 
-Nastavte kontext trezoru pro použití v relaci Powershellu. Provedete to tak, stáhněte si soubor nastavení trezoru a importujte stažený soubor do relace prostředí PowerShell nastavte kontext trezoru.
-
-Po nastavení, následné operace Azure Site Recovery v relaci Powershellu se provádějí v kontextu vybraného trezoru.
+Nastavte kontext trezoru pro použití v relaci Powershellu. Po nastavení, následné operace Azure Site Recovery v relaci Powershellu se provádějí v kontextu vybraného trezoru.
 
  ```azurepowershell
-#Download the vault settings file for the vault.
-$Vaultsettingsfile = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteRecovery -Path C:\users\user\Documents\
-
-#Import the downloaded vault settings file to set the vault context for the PowerShell session.
-Import-AzRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.FilePath
+#Setting the vault context.
+Set-AsrVaultSettings -Vault $vault
 
 ```
 ```

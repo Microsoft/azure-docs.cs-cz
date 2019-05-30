@@ -4,14 +4,14 @@ description: Zjistěte, jak Azure Cosmos DB a Azure Functions je možné společ
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 54de2d2f9b5691a47ff56891185c7655661092dd
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: db85d02a4f5c6e0f644a03394b570aac46202e72
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833603"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256944"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní prostředí bez serveru databázi s využitím služby Azure Cosmos DB a Azure Functions
 

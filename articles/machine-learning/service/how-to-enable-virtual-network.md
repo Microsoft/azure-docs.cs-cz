@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978227"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356176"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Bezpečné spuštění experimentů a odvození uvnitř virtuální sítě Azure
 
@@ -141,7 +141,7 @@ Při přidání trasy definované uživatelem, definovat trasu pro každou souvi
 
 ![Příklad trasy definované uživatelem pro předponu adresy](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Další informace najdete v tématu [vytvoření fondu služby Azure Batch ve virtuální síti](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) článku.
+Další informace najdete v tématu [vytvoření fondu služby Azure Batch ve virtuální síti](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling) článku.
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Vytvořit Machine Learning Compute ve virtuální síti
 
@@ -221,7 +221,7 @@ Použití virtuálního počítače nebo clusteru Azure HDInsight ve virtuální
 
     * __Značka zdrojové služby__: Vyberte __AzureMachineLearning__.
 
-    * __Zdrojové rozsahy portů__: Vyberte __*__.
+    * __Zdrojové rozsahy portů__: Vyberte __*__ .
 
     * __Určení__: Vyberte __jakékoli__.
 

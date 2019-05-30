@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6f4c354c89fa00d5fc65c635f5f6315761be2f01
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869852"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384149"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyka a oblasti pro rozhraní API Bingu pro vyhledávání obrázků
 
@@ -32,7 +32,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 > - cs Austrálie (angličtina, Austrálie)
 > - zh-CN (čínština, Čína)
 
-## <a name="countriesregions"></a>Země nebo oblasti
+## <a name="countriesregions"></a>Země/oblasti
 
 |Země/oblast|Kód|
 |-------|----|
@@ -47,7 +47,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní správní oblast|HK|
+|Hongkong – zvláštní administrativní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -91,7 +91,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|
@@ -119,4 +119,4 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Spojené státy|Španělština|es-US|
 
 ## <a name="next-steps"></a>Další postup
-Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [zpráv API pro vyhledávání obrázků v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+Další informace o koncových bodech Bingu pro vyhledávání zpráv najdete v tématu [zpráv API pro vyhledávání obrázků v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

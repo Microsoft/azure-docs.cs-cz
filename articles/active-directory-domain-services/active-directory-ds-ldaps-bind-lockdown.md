@@ -3,7 +3,7 @@ title: Vytvořit vazbu pomocí Secure LDAP (LDAPS) k spravované doméně služb
 description: Vytvořit vazbu k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: 62776408675acba1ee8a57252c794e5a1c840155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417027"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234850"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Vytvořit vazbu k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 
@@ -64,13 +64,13 @@ Ukázka skupiny zabezpečení sítě v následující tabulce uzamkne protokolu 
 
 
 ## <a name="related-content"></a>Související obsah
-* [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)
-* [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD Domain Services – Příručka Začínáme](create-instance.md)
+* [Spravovat domény služby Azure AD Domain Services](manage-domain.md)
 * [Základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
-* [Správa zásad skupiny ve spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Správa zásad skupiny pro službu Azure AD Domain Services](manage-group-policy.md)
 * [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
 * [Vytvořte skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-step"></a>Další krok
-[Řešení potíží s protokol secure LDAP ve spravované doméně](active-directory-ds-ldaps-troubleshoot.md)
+[Řešení potíží s protokol secure LDAP ve spravované doméně](tshoot-ldaps.md)

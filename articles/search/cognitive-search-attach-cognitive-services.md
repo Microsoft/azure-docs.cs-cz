@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f9a1e82cb60bf0ec32165294e7f4af3e93d042b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158543"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244431"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Připojit prostředek služeb Cognitive Services dovedností v Azure Search 
 
 Jednotky algoritmů AI [cognitive indexování kanály](cognitive-search-concept-intro.md) použitý pro dokument rozšíření ve službě Azure Search. Tyto algoritmy jsou založeny na prostředky služeb Azure Cognitive Services, včetně [pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/) pro analýzu obrázků a optického rozpoznávání znaků (OCR) a [rozhraní Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) pro rozpoznávání entit Extrakce klíčových frází a dalších obohacení. Používá služba Azure Search pro účely rozšíření dokumentu, algoritmy jsou zabaleny v *dovednosti*, umístí se do *dovednosti*a odkazuje *indexer* během indexování.
 
-Můžete zdarma obohatit omezený počet dokumentů nebo připojíte fakturovatelné prostředku služeb Cognitive Services pro větší a častější úlohy. V tomto článku se dozvíte víc o připojení účtovaných prostředku služeb Cognitive Services se vaše kognitivní dovednosti a rozšiřovat dokumenty během [indexování Azure Search](search-what-is-an-index.md).
+Omezený počet dokumentů můžete obohatit zdarma. Nebo můžete připojit fakturovatelné prostředku služeb Cognitive Services *dovednosti* pro větší a častější úlohy. V tomto článku se dozvíte víc o připojení účtovaných prostředku služeb Cognitive Services během Azure Search rozšiřuje dokumenty [indexování](search-what-is-an-index.md).
 
 > [!NOTE]
 > Účtovaných událostí zahrnout volání rozhraní API služeb Cognitive Services a image extrakce jako součást fáze hádání dokumentu ve službě Azure Search. Neplatí žádné poplatky pro extrakci textu z dokumentů nebo dovednosti, které nejsou volat služby Cognitive Services.
@@ -30,7 +30,9 @@ Můžete zdarma obohatit omezený počet dokumentů nebo připojíte fakturovate
 
 ## <a name="same-region-requirement"></a>Požadavek na stejné oblasti
 
-Požadujeme, aby, že existují ve stejné oblasti Azure Search a Azure Cognitive Services. V době běhu, jinak, se zobrazí tato zpráva: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` Neexistuje žádný způsob, jak přesunout služby napříč oblastmi. Pokud se zobrazí tato chyba, by měl vytvořit novou službu ve stejné oblasti a odpovídajícím způsobem znovu publikovat indexů.
+Požadujeme, aby, že existují ve stejné oblasti Azure Search a Azure Cognitive Services. V době běhu, jinak, se zobrazí tato zpráva: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
+
+Neexistuje žádný způsob, jak přesunout služby napříč oblastmi. Pokud se zobrazí tato chyba, měli byste vytvořit nový prostředek služeb Cognitive Services ve stejné oblasti jako Azure Search.
 
 ## <a name="use-free-resources"></a>Použití uvolnění prostředků
 
@@ -42,9 +44,9 @@ Free (omezená obohacení) prostředků jsou omezené na 20 dokumenty za den na 
 
    ![Otevřete Průvodce importem dat](media/search-get-started-portal/import-data-cmd2.png "otevřete Průvodce importem dat")
 
-1. Vyberte zdroj dat a nadále **přidat kognitivní vyhledávání (volitelné)**. Podrobný návod tohoto průvodce najdete v tématu [Import, index a dotazování pomocí nástroje portálu](search-get-started-portal.md).
+1. Vyberte zdroj dat a nadále **přidat kognitivní vyhledávání (volitelné)** . Podrobný návod tohoto průvodce najdete v tématu [Import, index a dotazování pomocí nástroje portálu](search-get-started-portal.md).
 
-1. Rozbalte **připojení služeb Cognitive Services** a pak vyberte **Free (omezená obohacení)**:
+1. Rozbalte **připojení služeb Cognitive Services** a pak vyberte **Free (omezená obohacení)** :
 
    ![Rozbalit oddíl připojení služeb Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach1.png "část rozbalený připojení služeb Cognitive Services")
 
@@ -56,7 +58,7 @@ Pro úlohy, které vytvoří více než 20 obohacení za den Ujistěte se, že p
 
 Platíte jenom za dovednosti, které volají rozhraní API služeb Cognitive Services. Pro se nic neúčtuje [vlastních dovedností](cognitive-search-create-custom-skill-example.md), nebo jako dovednosti [sloučení textu](cognitive-search-skill-textmerger.md), [rozdělovač text](cognitive-search-skill-textsplit.md), a [shaper](cognitive-search-skill-shaper.md), které nejsou založené na rozhraní API.
 
-1. Otevřete Průvodce importem dat, vyberte zdroj dat a nadále **přidat kognitivní vyhledávání (volitelné)**.
+1. Otevřete Průvodce importem dat, vyberte zdroj dat a nadále **přidat kognitivní vyhledávání (volitelné)** .
 
 1. Rozbalte **připojení služeb Cognitive Services** a pak vyberte **vytvořit nový prostředek služeb Cognitive Services**. Otevře se nová karta, aby mohl vytvořit prostředek:
 

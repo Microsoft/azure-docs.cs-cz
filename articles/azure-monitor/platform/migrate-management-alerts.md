@@ -1,26 +1,26 @@
 ---
 title: Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
 description: Výstrahy na události správy odebere 1. října. Připravte migraci existující výstrahy.
-author: johnkemnetz
+author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/14/2017
-ms.author: johnkem
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78519dad85739b6e4d760bc34719837956638f48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255914"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388722"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
-> Výstrahy na události správy se vypne nebo po 1. října. Postupujte podle pokynů níže pochopit, pokud máte tyto výstrahy a jejich migraci, pokud tomu tak je.
+> Výstrahy na události správy se vypne nebo později dne 1,2017. Postupujte podle pokynů níže pochopit, pokud máte tyto výstrahy a jejich migraci, pokud tomu tak je.
 
 ## <a name="what-is-changing"></a>Co se mění
 

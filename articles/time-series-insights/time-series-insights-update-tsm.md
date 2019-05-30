@@ -2,7 +2,7 @@
 title: Model Time Series ve službě Azure Time Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Principy Azure Time Series Insights časové řady modelu.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9de28c96c2833033a3811835f57cffcccdf4619
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3e6e8ae76c0ae6f688dd4a039b34c52af16b6e0f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190338"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244028"
 ---
 # <a name="time-series-model"></a>Model služby Time Series
 
@@ -126,7 +126,7 @@ Zvažte následující příklad, kdy má hierarchii H1 *vytváření*, *floor*,
 
 V závislosti na tom *instance pole*, hierarchie atributy a hodnoty se zobrazí, jak je znázorněno v následující tabulce:
 
-| ID časové řady | Pole instance |
+| ID číselné řady čas | Pole instance |
 | --- | --- |
 | ID1 | "sestavení" = "1000", "floor" = "10", "místo" = "55"  |
 | ID2 | "sestavení" = "1000", "místo" = "55" |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562214d4bf8fd83f740e114a6d77200b4611649
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003218"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235556"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Základní zásady: Blok starší verze ověřování (preview)
 
@@ -74,13 +74,13 @@ Pokud používáte MacOS, doporučujeme upgradovat na Office pro Mac 2016 nebo n
 
 Exchange Online klienty založené na Windows Outlook, aby nepoužívala moderní ověřování, musí být také povolené moderní ověřování. Pokud moderní ověřování je vypnuté pro Exchange Online, založené na Windows Outlookové klienty podporující moderní ověřování (Outlook 2013 nebo novější) bude používat základní ověřování pro připojení k poštovním schránkám Exchange Online.
 
-SharePoint Online je povolený pro moderní ověřování výchozí. Pro adresáře vytvořená po 1. srpna 2017 je ve výchozím nastavení v Exchangi Online povolené moderní ověřování. Nicméně pokud dříve zakázal moderní ověřování nebo používáte adresář vytvořené před tímto datem, postupujte podle kroků v následujícím článku [povolení moderního ověřování v systému Exchange Online](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+SharePoint Online je povolený pro moderní ověřování výchozí. Pro adresáře vytvořená po 1. srpna 2017 je ve výchozím nastavení v Exchangi Online povolené moderní ověřování. Nicméně pokud dříve zakázal moderní ověřování nebo používáte adresář vytvořené před tímto datem, postupujte podle kroků v následujícím článku [povolení moderního ověřování v systému Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 ### <a name="step-4-skype-for-business"></a>Krok 4: Skype pro firmy
 
 Pokud chcete zabránit starší verze ověřování žádosti Skype pro firmy, je potřeba povolit moderní ověřování pro Skype for Business Online. Pro adresáře vytvořená po 1. srpna 2017 je ve výchozím nastavení povolené moderní ověřování pro Skype pro firmy.
 
-Pokud chcete povolit moderní ověřování ve Skypu pro firmy, doporučujeme přechod do Microsoft Teams, které podporují moderní ověřování ve výchozím nastavení. Ale pokud jste v tuto chvíli nejde tr, je potřeba povolit moderní ověřování pro Skype for Business Online tak, aby Skype pro firmy klienti spustí používající moderní ověřování. Postupujte podle těchto kroků v článku [Skype pro firmy topologie podporované s moderním ověřováním](https://docs.microsoft.com/en-us/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), kde najdete kroky pro povolení moderního ověřování pro Skype pro firmy.
+Pokud chcete povolit moderní ověřování ve Skypu pro firmy, doporučujeme přechod do Microsoft Teams, které podporují moderní ověřování ve výchozím nastavení. Ale pokud jste v tuto chvíli nejde tr, je potřeba povolit moderní ověřování pro Skype for Business Online tak, aby Skype pro firmy klienti spustí používající moderní ověřování. Postupujte podle těchto kroků v článku [Skype pro firmy topologie podporované s moderním ověřováním](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), kde najdete kroky pro povolení moderního ověřování pro Skype pro firmy.
 
 Kromě povolení moderního ověřování pro Skype for Business Online, doporučujeme moderní ověřování povolit pro Exchange Online při povolení moderního ověřování pro Skype pro firmy. Tento proces vám pomůže synchronizaci stavu moderního ověřování v Exchangi Online a Skype pro firmy online a zabrání více výzvám k přihlášení pro Skype pro firmy klienty.
 
@@ -105,11 +105,11 @@ Postup pro povolení moderního ověřování najdete v následujících článc
 
 Zásady **směrný plán zásad: Blok starší verze ověřování (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
 
-Tuto zásadu povolit a chránit vaše správce:
+Tuto zásadu povolit a chránit vaši organizaci:
 
 1. Přihlaste se k **webu Azure portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
-1. V seznamu zásad, vyberte **směrný plán zásad: Blok starší verze ověřování (preview)**.
+1. V seznamu zásad, vyberte **směrný plán zásad: Blok starší verze ověřování (preview)** .
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
 1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.

@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474425"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243276"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Připojení pracovních zařízení k síti vaší organizace
 Připojte se k zařízení s Windows 10 vlastněných společností práce k síti vaší organizace, budete mít přístup k prostředkům potenciálně s omezeným přístupem.
@@ -86,7 +86,7 @@ Pokud jste měli zařízení pro nějakou dobu a je již byla nastavená, může
 
 5. Na **zadejte heslo** obrazovky, zadejte heslo a pak vyberte **přihlášení**.
 
-    ![Zadat heslo](./media/user-help-join-device-on-network/join-device-setup-password.png)
+    ![Zadejte heslo](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
 6. Na vašem mobilním zařízení Schvalte vaše zařízení, můžete přístup k účtu. 
 
@@ -116,3 +116,4 @@ Po připojení zařízení k síti vaší organizace, byste měli mít přístup
 
 - Pokud vaše organizace hodlá registraci osobních zařízení, jako je telefon, přečtěte si téma [registraci osobních zařízení v síti vaší organizace](user-help-register-device-on-network.md).
 
+- Pokud vaše organizace spravuje používání služby Microsoft Intune a máte dotazy týkající se registrace, přihlašování a jakékoli jiné související s Intune problému, najdete v článku [obsahu nápovědy pro uživatele Intune](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

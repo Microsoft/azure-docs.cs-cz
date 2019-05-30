@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/10/2019
-ms.openlocfilehash: 53f9f67397e1484559ee8243a52ad8339df930bc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 05/23/2019
+ms.openlocfilehash: e824ac81f1336644fa70cc24539284feacee3199
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990199"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244535"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -184,11 +184,11 @@ Tady je omezený počet artefaktů pro každý účet integrace. Další informa
 
 | Artefakt | Free | Basic | Standard |
 |----------|------|-------|----------|
-| Obchodní smluv EDI | 10 | 1 | 500 |
-| Obchodní partneři EDI | 25 | 2 | 500 |
+| Obchodní smluv EDI | 10 | 1 | 1 000 |
+| Obchodní partneři EDI | 25 | 2 | 1 000 |
 | Maps | 25 | 500 | 1 000 |
 | Schémata | 25 | 500 | 1 000 |
-| Sestavení | 10 | 25 | 50 |
+| Sestavení | 10 | 25 | 1 000 |
 | Certifikáty | 25 | 2 | 500 |
 | Konfigurace dávek | 5 | 1 | 50 |
 ||||
@@ -257,7 +257,7 @@ Logic Apps nepodporuje přímého připojení k účtům úložiště Azure pře
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>Příchozí IP adresy – pouze služba Logic Apps
 
-| Oblast | IP |
+| Oblast | IP adresa |
 |--------|----|
 | Austrálie – východ | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | Austrálie – jihovýchod | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |

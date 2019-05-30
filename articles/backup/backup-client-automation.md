@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eac7f6ec7ec41d257317d9d2a62f0bacc046dbab
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127811"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400182"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
 V tomto článku se dozvíte, jak pomocí prostředí PowerShell pro nastavení zálohování Azure ve Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
 
-## <a name="install-azure-powershell"></a>Instalovat Azure PowerShell
+## <a name="install-azure-powershell"></a>Instalace prostředí Azure PowerShell
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Abyste mohli začít, [nainstalovat nejnovější verzi prostředí PowerShell](/powershell/azure/install-az-ps).
@@ -86,7 +86,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Před instalací agenta Azure Backup, musíte mít instalační program stažený a k dispozici v systému Windows Server. Můžete získat nejnovější verzi instalačního programu z [Microsoft Download Center](https://aka.ms/azurebackup_agent) nebo ze stránky řídicího panelu trezoru služby Recovery Services. Uložte instalační program na snadno dostupném místě jako * C:\Downloads\*.
 
 Můžete také získat downloader pomocí Powershellu:
- 
+
  ```powershell
  $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
  $WC = New-Object System.Net.WebClient
@@ -104,7 +104,7 @@ Tím se nainstaluje agent s výchozími možnostmi. Instalace trvá několik min
 
 Chcete-li zobrazit seznam nainstalovaných programů, přejděte na **ovládací panely** > **programy** > **programy a funkce**.
 
-![Agent nainstalován](./media/backup-client-automation/installed-agent-listing.png)
+![Agent nainstalovaný](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Možnosti instalace
 
@@ -139,7 +139,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 ```
 
 Ve Windows serveru nebo Windows klientského počítače, spusťte [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) rutiny k registraci počítače v trezoru.
-Tato a další rutiny používané pro zálohování, jsou z modulu MSONLINE, která Mars AgentInstaller se přidá jako součást procesu instalace. 
+Tato a další rutiny používané pro zálohování, jsou z modulu MSONLINE, která Mars AgentInstaller se přidá jako součást procesu instalace.
 
 Instalační program agenta se neaktualizuje $Env: PSModulePath proměnné. To znamená, že se nezdaří automatické načtení modulu. Chcete-li tento problém vyřešit máte následující:
 
@@ -391,6 +391,32 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>Zálohování stavu systému Windows Server v agentovi MABS
+
+Tato část se věnuje příkaz prostředí PowerShell k nastavení stavu systému v MABS agenta
+
+### <a name="schedule"></a>Plán
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>Uchovávání
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>Konfiguruje plán a uchovávání
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>Ověření zásad
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
 
 ### <a name="applying-the-policy"></a>Použití zásady
 

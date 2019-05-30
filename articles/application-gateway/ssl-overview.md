@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849809"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254309"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s aplikační bránou
 
@@ -20,7 +20,7 @@ Vrstva SSL (Secure Sockets) je standard zabezpečení technologie pro vytvořen�
 
 ## <a name="ssl-termination"></a>Ukončení protokolu SSL
 
-Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-end serverů. Existuje mnoho výhod dělat ukončení protokolu SSL ve službě application gateway:
+Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Existuje mnoho výhod dělat ukončení protokolu SSL ve službě application gateway:
 
 - **Vylepšený výkon** – největší výkon přenosů při dešifrování SSL je počáteční metody handshake. Kvůli zvýšení výkonu se server způsobem dešifrování ukládá do mezipaměti ID relace SSL a spravuje lístky relace TLS. Pokud to provedete ve službě application gateway, můžete použít všechny žádosti od stejného klienta hodnoty uložené v mezipaměti. Pokud se provádí v back-end serverů, pokaždé, když požadavky klienta přejít k jinému serveru klienta má re‑authenticate. Použití protokolu TLS lístků může pomoci tento problém zmírnit, ale nepodporují všichni klienti a může být obtížné konfigurovat a spravovat.
 - **Lepší využití back-end serverů** – zpracování SSL/TLS velmi náročné na CPU a je stále více náročné zvýšení velikosti klíče. Odstranění této práce z back-end serverů jim umožní zaměřit se na co je nejúčinnější při doručování obsahu.
@@ -50,13 +50,13 @@ Služba Application gateway podporuje následující typy certifikátů:
 Další informace najdete v tématu [konfiguraci ukončení protokolu SSL s aplikační bránou](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Velikost certifikátu
-Soubor Personal Information Exchange (PFX) s informacemi o certifikátu SSL by neměl být více než 10 KB.
+Zkontrolujte [omezuje Application Gateway](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) části a znát maximální SSL certificate podporovaná velikost.
 
 ## <a name="end-to-end-ssl-encryption"></a>Koncové šifrování protokolu SSL
 
 Někteří zákazníci nemusí mít nešifrovaná komunikace s back-end serverů. Může to být z důvodu požadavků na zabezpečení nebo dodržování předpisů nebo protože aplikace může přijímat pouze zabezpečená připojení. Pro takové aplikace služba Application Gateway podporuje koncové šifrování protokolu SSL.
 
-Koncové šifrování protokolu SSL umožňuje bezpečně přenášet citlivá data do back-endu v zašifrované, zatímco stále využívat výhody funkcí vyrovnávání zatížení vrstvy 7 které služba application gateway poskytuje. Jde například o spřažení relací na základě souborů cookie, směrování na základě adres URL, podporu směrování založeného na webech nebo možnost vkládat hlavičky X-Forwarded-*.
+Koncové šifrování protokolu SSL umožňuje bezpečně přenášet citlivá data do back-endu v zašifrované podobě a současně využívat výhody funkcí pro vyrovnávání zatížení vrstvy 7, které nabízí aplikační brána. Jde například o spřažení relací na základě souborů cookie, směrování na základě adres URL, podporu směrování založeného na webech nebo možnost vkládat hlavičky X-Forwarded-*.
 
 Když je nakonfigurována s režimem komunikace koncového šifrování protokolu SSL, služba Application Gateway ukončuje na bráně relace protokolu SSL a dešifruje provoz uživatelů. Následně použije nakonfigurovaná pravidla k výběru příslušné instance back-endového fondu, na kterou provoz přesměruje. Služba Application Gateway poté zahájí nové připojení SSL k back-endovému serveru a před odesláním požadavku do back-endu znovu zašifruje data pomocí certifikátu s veřejným klíčem back-endového serveru. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem. Koncové šifrování protokolu SSL se povoluje nastavením nastavení protokolu [nastavení HTTP back-endu](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) na protokol HTTPS, který se následně použije na back-endový fond.
 

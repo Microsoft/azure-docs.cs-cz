@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Popisuje procesy, které tento power Azure Dev mezery a jak jsou nakonfigurované v konfiguračním souboru azds.yaml
 keywords: azds.yaml prostory vývoj Azure, vývoj mezery, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605411"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399839"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Jak funguje Azure Dev mezery a je nakonfigurován
 
@@ -80,7 +80,7 @@ Probereme podrobnosti o fungování Azure Dev mezery v každém následující �
 ## <a name="prepare-your-aks-cluster"></a>Příprava vašeho clusteru AKS
 
 Připravuje se váš cluster AKS vyžaduje:
-* Ověření vaší AKS je cluster v oblasti [podporuje Azure Dev prostory](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+* Ověření vaší AKS je cluster v oblasti [podporuje Azure Dev prostory][supported-regions].
 * Ověřování používáte Kubernetes 1.10.3 nebo novější.
 * Povolení Azure Dev mezery v clusteru pomocí `az aks use-dev-spaces`
 
@@ -278,7 +278,7 @@ Při vytvoření požadavku HTTP a service od mimo cluster, požadavek přejde d
 
 Když se požadavek HTTP je ke službě z jiné služby v rámci clusteru, žádost nejprve prochází kontejneru devspaces proxy volání služby. Kontejner devspaces proxy vyhledá požadavek HTTP a kontroly `azds-route-as` záhlaví. Založené na hlavičce, kontejner devspaces proxy bude vyhledávat IP adresu službu přidruženou hodnotu hlavičky. Pokud se najde IP adresu kontejneru devspaces proxy přesměrovává požadavek na tuto IP adresu. Pokud IP adresa není nalezen, kontejner devspaces proxy server přesměruje požadavek na nadřazený kontejner aplikace.
 
-Například aplikace *serviceA* a *serviceB* jsou nasazené na nadřazené místo dev nazývané *výchozí*. *serviceA* spoléhá na *serviceB* a provádí volání HTTP. Uživatele Azure vytvoří prostor podřízené vývoje na základě *výchozí* místo nazývané *azureuser*. Uživatel Azure také nasadí vlastní verzi *serviceA* jejich podřízené prostoru. Když vytvoří požadavek na *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+Například aplikace *serviceA* a *serviceB* jsou nasazené na nadřazené místo dev nazývané *výchozí*. *serviceA* spoléhá na *serviceB* a provádí volání HTTP. Uživatele Azure vytvoří prostor podřízené vývoje na základě *výchozí* místo nazývané *azureuser*. Uživatel Azure také nasadí vlastní verzi *serviceA* jejich podřízené prostoru. Když vytvoří požadavek na *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Azure Dev prostory směrování](media/how-dev-spaces-works/routing.svg)
 
@@ -337,13 +337,13 @@ Použití *install.values* vlastností, můžete vytvořit seznam jednoho nebo v
 
 Ve výše uvedeném příkladu *install.set.replicaCount* vlastnost říká kontroleru kolik instancí aplikace na spouštění v prostoru vývoj. V závislosti na vašem scénáři můžete tuto hodnotu zvýšit, ale bude mít vliv na připojení ladicího programu k pod vaší aplikace. Další informace najdete v tématu [článek pro řešení potíží](troubleshooting.md).
 
-V generované grafu helmu image kontejneru je nastavený na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}*. `azds.yaml` Soubor definuje *install.set.image.tag* vlastnost jako *$(tag)* ve výchozím nastavení, která se používá jako hodnota *{{. VALUES.Image.tag}}*. Tím, že nastavíte *install.set.image.tag* vlastnost tímto způsobem umožňuje image kontejneru pro vaši aplikaci zařazen odlišné způsobem při spuštění Azure Dev mezery. V tomto konkrétním případě je označí image  *\<hodnotu z image.repository >: $(tag)*. Je nutné použít *$(tag)* jako hodnotu proměnné *install.set.image.tag* v pořadí pro vývoj prostory rozpoznat a najděte kontejner v clusteru AKS.
+V generované grafu helmu image kontejneru je nastavený na *{{. VALUES.Image.Repository}} :{{. VALUES.Image.tag}}* . `azds.yaml` Soubor definuje *install.set.image.tag* vlastnost jako *$(tag)* ve výchozím nastavení, která se používá jako hodnota *{{. VALUES.Image.tag}}* . Tím, že nastavíte *install.set.image.tag* vlastnost tímto způsobem umožňuje image kontejneru pro vaši aplikaci zařazen odlišné způsobem při spuštění Azure Dev mezery. V tomto konkrétním případě je označí image  *\<hodnotu z image.repository >: $(tag)* . Je nutné použít *$(tag)* jako hodnotu proměnné *install.set.image.tag* v pořadí pro vývoj prostory rozpoznat a najděte kontejner v clusteru AKS.
 
-Ve výše uvedeném příkladu `azds.yaml` definuje *install.set.ingress.hosts*. *Install.set.ingress.hosts* vlastnost definuje formát názvu hostitele pro veřejné koncové body. Tato vlastnost se používá také *$(spacePrefix)*, *$(rootSpacePrefix)*, a *$(hostSuffix)*, které jsou hodnoty podle kontroleru. 
+Ve výše uvedeném příkladu `azds.yaml` definuje *install.set.ingress.hosts*. *Install.set.ingress.hosts* vlastnost definuje formát názvu hostitele pro veřejné koncové body. Tato vlastnost se používá také *$(spacePrefix)* , *$(rootSpacePrefix)* , a *$(hostSuffix)* , které jsou hodnoty podle kontroleru. 
 
 *$(SpacePrefix)* je název místa dev podřízené, což má formu *SPACENAME.s*. *$(RootSpacePrefix)* je název nadřazené místo. Například pokud *azureuser* je podřízený místa *výchozí*, hodnota *$(rootSpacePrefix)* je *výchozí* a hodnota *$(spacePrefix)* je *azureuser.s*. Pokud pole není podřízený mezeru, *$(spacePrefix)* je prázdný. Například pokud *výchozí* prostor nemá nadřazené místo, hodnota *$(rootSpacePrefix)* je *výchozí* a hodnota *$(spacePrefix)* je prázdný. *$(HostSuffix)* je přípona DNS, který odkazuje Azure Dev prostory kontroler příchozího přenosu dat, která běží v clusteru AKS. Tato přípona DNS záznam DNS zástupný znak odpovídá například  *\*. RANDOM_VALUE.eus.azds.IO*, který byl vytvořen při přidání řadičem Azure Dev prostory ke svému clusteru AKS.
 
-V uvedeném `azds.yaml` souboru, může také aktualizaci *install.set.ingress.hosts* můžete změnit název hostitele vaší aplikace. Například Kdybyste chtěli zjednodušit název hostitele vaší aplikace z *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* k *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)*.
+V uvedeném `azds.yaml` souboru, může také aktualizaci *install.set.ingress.hosts* můžete změnit název hostitele vaší aplikace. Například Kdybyste chtěli zjednodušit název hostitele vaší aplikace z *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* k *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
 Pokud chcete vytvořit kontejner pro vaši aplikaci, využívá kontroler následující části `azds.yaml` konfigurační soubor:
 
@@ -408,7 +408,7 @@ Pro aplikace Java, .NET a Node.js můžete ladit vaši aplikaci běžící pří
 
 ![Ladění kódu](media/get-started-node/debug-configuration-nodejs2.png)
 
-Při spuštění aplikace pomocí Visual Studio Code nebo Visual Studio pro ladění, které zpracovávají spuštění a připojení prostorem dev stejným způsobem jako spuštění `azds up`. Klientské nástroje Visual Studio Code a Visual Studio také poskytují další parametr najdete specifické informace pro ladění. Parametr obsahuje název image ladicího programu, umístění ladicího programu v rámci obrázku ladicího programu a cílové umístění v rámci aplikace kontejneru připojit ladicí program složky. 
+Při spuštění aplikace pomocí Visual Studio Code nebo Visual Studio pro ladění, které zpracovávají spuštění a připojení prostorem dev stejným způsobem jako spuštění `azds up`. Klientské nástroje Visual Studio Code a Visual Studio také poskytují další parametr najdete specifické informace pro ladění. Parametr obsahuje název image ladicího programu, umístění ladicího programu v rámci obrázku ladicího programu a cílové umístění v rámci aplikace kontejneru připojit ladicí program složky.
 
 Obrázek ladicí program je automaticky určeno nástrojů na straně klienta. Pomocí metody podobné identifikátoru použitému při soubor Dockerfile a grafu helmu generovat při spuštění `azds prep`. Po připojení ladicího programu v bitové kopii aplikace se spustí pomocí `azds exec`.
 
@@ -442,3 +442,7 @@ Abyste mohli začít s vývojem pro tým, naleznete v tématu některého z těc
 * [Vývoj v týmu – .NET Core pomocí rozhraní příkazového řádku a Visual Studio Code](team-development-netcore.md)
 * [Vývoj v týmu – .NET Core pomocí sady Visual Studio](team-development-netcore-visualstudio.md)
 * [Vývoj v týmu - Node.js pomocí rozhraní příkazového řádku a Visual Studio Code](team-development-nodejs.md)
+
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

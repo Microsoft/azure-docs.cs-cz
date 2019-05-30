@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485352"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234133"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků
 
@@ -228,7 +228,7 @@ Zabezpečení na úrovni řádků je implementována v jazyce Transact-SQL. Uži
     - Predikát BLOCK brání řádky, které nesplní filtr ze sloupce vložené nebo aktualizované.
     - Pokud relace\_kontextu nebyla nastavena, funkce vrátí hodnotu NULL a žádné řádky jsou viditelné nebo může být vložen.
 
-Povolit zabezpečení na úrovni řádků na všechny horizontální oddíly, spusťte následující příkaz T-SQL pomocí Visual Studio (SSDT), aplikace SSMS nebo powershellu zahrnutý v projektu. Nebo pokud používáte [úlohy Elastic Database](sql-database-elastic-jobs-overview.md), můžete automatizovat provádění tohoto jazyka T-SQL na všechny horizontální oddíly.
+Povolit zabezpečení na úrovni řádků na všechny horizontální oddíly, spusťte následující příkaz T-SQL pomocí Visual Studio (SSDT), aplikace SSMS nebo powershellu zahrnutý v projektu. Nebo pokud používáte [úlohy Elastic Database](elastic-jobs-overview.md), můžete automatizovat provádění tohoto jazyka T-SQL na všechny horizontální oddíly.
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.

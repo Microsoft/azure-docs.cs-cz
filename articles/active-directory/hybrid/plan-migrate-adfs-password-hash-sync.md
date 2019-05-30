@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 180464e22b34c7b378643e738ea0c30ee5a4b11e
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455393"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298893"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -54,7 +54,7 @@ Teď je vhodná doba k ověření, že tato oprávnění jsou nastavené pro vš
 
 Můžete ze dvou metod pro migraci ze správy federovaných identit k synchronizaci hodnot hash hesel a bezproblémové jednotné přihlašování (SSO). Metodu, kterou používáte, závisí na původně konfiguraci vaší instance služby AD FS.
 
-* **Azure AD Connect**. Pokud jste nakonfigurovali službu AD FS pomocí služby Azure AD Connect, můžete *musí* změnit pomocí Průvodce Azure AD Connect na synchronizaci hodnot hash hesel.
+* **Azure AD Connect:** Pokud jste nakonfigurovali službu AD FS pomocí služby Azure AD Connect, můžete *musí* změnit pomocí Průvodce Azure AD Connect na synchronizaci hodnot hash hesel.
 
    Azure AD Connect se automaticky spustí **Set-MsolDomainAuthentication** rutiny, když se změní metodu přihlašování uživatele. Azure AD Connect unfederates automaticky všechny ověřené federovaných domén ve vašem tenantovi Azure AD.
 
@@ -86,7 +86,7 @@ Pokud chcete ověřit aktuální uživatel přihlásit nastavení:
 
    * Pokud **synchronizaci hodnot hash hesel** je nastavena na **zakázané**, proveďte kroky v tomto článku, aby je.
    * Pokud **synchronizaci hodnot hash hesel** je nastavena na **povoleno**, můžete přeskočit část **krok 1: Povolit synchronizaci hodnot hash hesel** v tomto článku.
-4. Na **Kontrola řešení** stránce, přejděte k položce **Active Directory Federation Services (AD FS)**.<br />
+4. Na **Kontrola řešení** stránce, přejděte k položce **Active Directory Federation Services (AD FS)** .<br />
 
    * V případě, že v této části se zobrazí konfiguraci služby AD FS, můžete bezpečně předpokládat, že služba AD FS byla původně nakonfigurován s použitím služby Azure AD Connect. Můžete převést domény z federovaných identit na spravovanou identitu pomocí Azure AD Connect **změnit přihlášení uživatele** možnost. Proces je podrobně popsán v části **A: možnosti Přepnutí z federace na synchronizaci hodnot hash hesel pomocí služby Azure AD Connect**.
    * Pokud službu AD FS není uveden v aktuální nastavení, je nutné ručně převést domén z federovaných identit na spravovanou identitu pomocí prostředí PowerShell. Další informace o tomto procesu najdete v části **možnost B: Přepnutí z federace na synchronizaci hodnot hash hesel pomocí služby Azure AD Connect a prostředí PowerShell**.
@@ -113,7 +113,7 @@ Další informace najdete v těchto článcích:
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Pokud **SupportsMfa** je nastavena na **True**, používáte místním řešením ověřování službou Multi-Factor Authentication dvouúrovňové challenge vložení do tok ověřování uživatele. Toto nastavení nefunguje pro scénáře ověřování služby Azure AD. 
+> Pokud **SupportsMfa** je nastavena na **True**, používáte místním řešením ověřování službou Multi-Factor Authentication dvouúrovňové challenge vložení do tok ověřování uživatele. Toto nastavení už funguje pro scénáře ověřování služby Azure AD po převedení této domény z federovaných na spravované ověřování. Po zakázání federační server relace na vaše místní federace a jedná se o místní vícefaktorové ověřování adaptéry. 
 >
 > Místo toho použijte cloudovou službu Azure Multi-Factor Authentication k provedení stejné funkce. Než budete pokračovat, pečlivě vyhodnoťte vaše požadavky na vícefaktorové ověřování. Před převedením domény, ujistěte se, že chápete, jak používat Azure Multi-Factor Authentication, dopadům na licencování a proces registrace uživatele.
 
@@ -135,7 +135,7 @@ Tato část popisuje důležité informace o nasazení a podrobnosti o použití
 
 Předtím, než převedete z federovaných identit na spravovanou identitu, prohlédněte si blíže jak aktuálně používáte službu AD FS pro službu Azure AD, Office 365 a dalších aplikací (vztahy důvěryhodnosti předávající strany). Konkrétně zvažte scénáře, které jsou popsány v následující tabulce:
 
-| If | Potom |
+| Pokud uživatel | Potom |
 |-|-|
 | Plánujete dál používat službu AD FS s jinými aplikacemi (jiné než Azure AD a Office 365). | Po převodu domény použijete službu AD FS a Azure AD. Zvažte uživatelské prostředí. V některých scénářích, uživatelé musí pravděpodobně k ověření dvakrát: jednou do služby Azure AD (ve kterém uživatel získá přístup přes jednotné přihlašování k ostatním aplikacím, jako je Office 365) a opakujte pro všechny aplikace, které jsou stále vázaná na službu AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance služby AD FS je silně přizpůsobený a závisí na konkrétní vlastní nastavení v souboru onload.js (např. Pokud jste změnili přihlašovací prostředí tak, aby uživatelé používat pouze **SamAccountName** formát pro své uživatelské jméno Namísto uživatele hlavní název (UPN), nebo vaše organizace má silně pod značkou jiných přihlašovací prostředí). Soubor onload.js nemůže být duplicitní ve službě Azure AD. | Než budete pokračovat, je nutné ověřit, že Azure AD můžete požadavkům vaší aktuální vlastní nastavení. Další informace a pokyny najdete v částech o značku služby AD FS a vlastního nastavení služby AD FS.|

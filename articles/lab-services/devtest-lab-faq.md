@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713017"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244391"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
 
-## <a name="blog-post"></a>Příspěvek blogu
+## <a name="blog-post"></a>Blogový příspěvek
 Náš blog týmu DevTest Labs je vyřazený od 20. března 2019. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Kde mohu od této chvíle sledovat aktualizace funkcí?
@@ -280,7 +280,7 @@ Podrobnější vysvětlení najdete v tématu [porovnání vlastních imagí a v
 
 Automatizace nahrávání souborů virtuálního pevného disku k vytváření vlastních imagí, máte dvě možnosti:
 
-- Použití [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) zkopírovat nebo nahrajte soubory virtuálního pevného disku do účtu úložiště, který je spojen s testovacím prostředí.
+- Použití [AzCopy](../storage/common/storage-use-azcopy-v10.md) zkopírovat nebo nahrajte soubory virtuálního pevného disku do účtu úložiště, který je spojen s testovacím prostředí.
 - Použití [Průzkumníka služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). Průzkumník služby Storage je samostatná aplikace, která běží na Windows, OS X a Linux.
 
 Chcete-li najít cílový účet úložiště, který je spojen s testovacího prostředí:

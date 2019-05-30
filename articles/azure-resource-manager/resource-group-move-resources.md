@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4b836faef4630f6bee914478aecaed1bb4db7d71
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872644"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225892"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -68,7 +68,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * CDN
 * Cloudové služby - viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Cognitive Services
-* Registr kontejnerů
+* Container Registry
 * Content Moderator
 * Cost Management
 * Customer Insights
@@ -91,7 +91,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#monitor-limits)
-* Centra oznámení
+* Notification Hubs
 * Operational Insights
 * Správa operací
 * Portálu řídicích panelů
@@ -99,7 +99,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Veřejná IP adresa – základní veřejnou IP adresu SKU je možné přesunout. Standardní veřejné IP adresy skladové položky nelze přesunout.
 * Služby Recovery Services vault – zaregistrujte se do [ve verzi preview](#recovery-services-limitations).
 * SAP HANA v Azure
-* Plánovač
+* Scheduler
 * Search – několik hledání prostředky nejde přesunout v různých oblastech v rámci jedné operace. Místo toho přesuňte je v samostatné operace.
 * Service Bus
 * Service Fabric
@@ -133,14 +133,14 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Azure NetApp Files
 * Certifikáty – certifikáty App Service je možné přesunout, ale mají odeslané certifikáty [omezení](#app-service-limitations).
 * Klasické aplikace
-* Instance kontejnerů
+* Container Instances
 * Container Service
 * Data Box
 * Vývoj mezery
 * Dynamics LCS
 * ExpressRoute
 * Služby testovacího prostředí – testovacím prostředím v Učebnách nelze přesunout do nové skupiny prostředků nebo předplatného. DevTest Labs můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
-* Spravované aplikace
+* Managed Applications
 * Microsoft Genomics
 * Zabezpečení
 * Site Recovery
@@ -323,7 +323,7 @@ Operace může běžet několik minut.
 
 ### <a name="recovery-services-limitations"></a>Omezení Recovery Services
 
- Pro přesun trezoru služby Recovery Services, musíte se zaregistrovat [omezené veřejné verzi preview](../backup/backup-azure-move-recovery-services-vault.md).
+ Chcete-li přesunout trezor služby Recovery Services, postupujte takto: [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](../backup/backup-azure-move-recovery-services-vault.md).
 
 V současné době můžete přesunout jeden trezor služby Recovery Services na oblast, najednou. Nelze přesunout trezorů, které se zálohování souborů Azure, Azure File Sync nebo SQL na virtuálních počítačích IaaS.
 
@@ -467,7 +467,7 @@ Během operace je stále spuštěna, můžete nadále přijímat 202 stavový k�
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
 ```
 
-## <a name="move-resources"></a>Přesunout prostředky
+## <a name="move-resources"></a>Přesunutí prostředků
 
 ### <a name="a-nameuse-portal-by-using-azure-portal"></a><a name="use-portal" />Pomocí webu Azure portal
 

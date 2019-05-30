@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145915"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248881"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -141,19 +141,9 @@ Za spravované disky nelze přejmenovat je. Může však přejmenovat nespravova
 
 Vytváření oddílů GPT lze použít pouze pro datové disky, nikoli disky s operačním systémem. Disky s operačním systémem, musíte použít styl oddílů MBR.
 
-## <a name="uploading-to-a-managed-disk"></a>Nahrávání do spravovaného disku
+**Jaké typy disků podporuje snímky?**
 
-**Můžete nahrát data do existujícího spravovaného disku?**
-
-Ne, nahrát jde použít jenom při vytváření nového prázdného disku se **ReadyToUpload** stavu.
-
-**Můžu připojit disk k virtuálnímu počítači i když je ve stavu nahrávání?**
-
-Ne.
-
-**Můžete pořídit snímek spravovaných disků ve stavu nahrávání?**
-
-Ne.
+SSD na úrovni standard, Premium SSD a SSD na úrovni standard podporovat snímky, bez omezení velikosti. Můžete tak velké disky se snímky (až 32 TB). Ultra SSD nepodporují snímky.
 
 ## <a name="standard-ssd-disks"></a>Standardní disky SSD
 
@@ -353,7 +343,7 @@ Ano.
 
 **Co jsou největší velikostí disků, podporované službou Azure Backup a Azure Site Recovery?**
 
-Největší velikost disku podporované službou Azure Backup a Azure Site Recovery je 4 TB. Podpora větších disků až 32 TB se brzy přidají.
+Největší velikost disku podporované službou Azure Backup a Azure Site Recovery je 4 TB. Podpora větších disků až 32 TB ještě není k dispozici.
 
 **Co jsou doporučené virtuální počítač o velikosti pro větší velikosti disku (> 4 TB) za SEKUNDU a šířky pásma na disku SSD na úrovni Standard a standardní HDD disky k dosažení optimalizovaná?**
 

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/06/2019
+ms.date: 05/06/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad90cd66d922c29887aaa8094e798edb28022b27
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: e5c2d987a1556513e36fc0a81e903d9eefdcae68
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015460"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388163"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -200,9 +200,9 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 * Uživatelé nemůžou dotazovat `userName` nebo `email[type eq "work"]` atributy.  
 
-#### <a name="create-user"></a>Vytvořit uživatele
+#### <a name="create-user"></a>Vytvoření uživatele
 
-###### <a name="request"></a>Požadavek
+###### <a name="request"></a>Žádost
 *PŘÍSPĚVEK/uživatelé*
 ```json
 {
@@ -259,7 +259,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-user"></a>Načíst uživatele
 
-###### <a name="request"></a>Požadavek
+###### <a name="request"></a>Žádost
 *GET /Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response"></a>Odpověď
@@ -290,7 +290,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 ```
 #### <a name="get-user-by-query"></a>Načíst uživatele podle dotazu
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
 ##### <a name="response"></a>Odpověď
@@ -329,7 +329,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-user-by-query---zero-results"></a>Načíst uživatele dotazem - nula výsledků
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 */ GET uživatelé? filter = eq uživatelské jméno "neexistující uživatel"*
 
 ##### <a name="response"></a>Odpověď
@@ -347,7 +347,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [více Vážíme si toho vlastnosti]
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *Oprava/uživatele/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -396,7 +396,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [jednou hodnotou vlastnosti]
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *Oprava/uživatele/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -439,7 +439,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="delete-user"></a>Odstranit uživatele
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *Odstranit /Users/5171a35d82074e068ce2 HTTP/1.1*
 
 ##### <a name="response"></a>Odpověď
@@ -454,7 +454,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="create-group"></a>Vytvořit skupinu
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 */ Groups POST protokolu HTTP/1.1*
 ```json
 {
@@ -488,7 +488,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-group"></a>Získat skupinu
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
 ##### <a name="response"></a>Odpověď
@@ -509,7 +509,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="get-group-by-displayname"></a>Získat skupinu podle displayName
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 */ GET groups? excludedAttributes = členy & filtr = eq displayName "displayName" HTTP/1.1*
 
 ##### <a name="response"></a>Odpověď
@@ -536,7 +536,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 ```
 #### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [třetí atributy]
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *Oprava/skupin/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -554,7 +554,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 ### <a name="update-group-add-members"></a>Skupina aktualizací [přidat členy]
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *Oprava/skupin/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -575,7 +575,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="update-group-remove-members"></a>Aktualizovat skupinu [odebrat členy]
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *Oprava/skupin/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -596,7 +596,7 @@ Tato část poskytuje příklad SCIM žádosti, protože ho vygeneroval klienta 
 
 #### <a name="delete-group"></a>Odstranit skupinu
 
-##### <a name="request"></a>Požadavek
+##### <a name="request"></a>Žádost
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
 ##### <a name="response"></a>Odpověď
@@ -613,7 +613,7 @@ Zde je, jak to funguje:
 3. Adresa URL koncového bodu je zaregistrovaný ve službě Azure AD jako součást vlastní aplikace v galerii aplikací.
 4. Uživatelé a skupiny jsou přiřazeny k této aplikaci ve službě Azure AD. Po přiřazení se umístit do fronty se dá provést synchronizace k cílové aplikaci. Procesu synchronizace zpracování fronty se spouští každých 40 minut.
 
-### <a name="code-samples"></a>Ukázky kódu
+### <a name="code-samples"></a>Ukázky kódů
 Pro zjednodušení tohoto procesu [ukázky kódu](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, které vytvoří SCIM webového koncového bodu služby a předvést automatické zřizování. Vzorek je poskytovatele, který udržuje soubor s řádky reprezentující uživatele a skupiny hodnot oddělených čárkami.    
 
 **Požadavky**

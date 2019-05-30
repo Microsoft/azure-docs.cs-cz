@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07e8fce5fd8db5d2070b8e382a0eba2ae7187b0d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485185"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242775"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která používá horizontálně dělené databáze SQL více tenantů
 
@@ -31,7 +31,7 @@ Tento kurz se věnuje v následujících dvou scénářích:
 - Nasazení aktualizací referenčních dat pro všechny tenanty.
 - Opětovné sestavení indexu pro tabulku, která obsahuje referenční data.
 
-[Elastic Jobs](sql-database-elastic-jobs-overview.md) funkce služby Azure SQL Database slouží k provádění těchto operací u databází tenantů. Úlohy, které se také používat pro databázi tenanta "Šablona". V ukázkové aplikace Wingtip Tickets je zkopírován tuto šablonu databázi zřídit nové databáze tenanta.
+[Elastic Jobs](elastic-jobs-overview.md) funkce služby Azure SQL Database slouží k provádění těchto operací u databází tenantů. Úlohy, které se také používat pro databázi tenanta "Šablona". V ukázkové aplikace Wingtip Tickets je zkopírován tuto šablonu databázi zřídit nové databáze tenanta.
 
 V tomto kurzu se naučíte:
 
@@ -57,7 +57,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Úvod do principu správy schématu SaaS
 
-Model horizontálně dělené databázi s více tenanty používané v tomto příkladu umožňuje databáze tenantů tak, aby obsahovala jeden nebo více tenantů. Tato ukázka zkoumá schopnost používat kombinaci více tenantů a jedním klientem databází, povolení *hybridní* model správy tenanta. Správa změn tyto databáze můžou být složité. [Elastické úlohy](sql-database-elastic-jobs-overview.md) usnadňuje správu a správu velkého počtu databází. Úlohy umožňují bezpečně a spolehlivě spouštět skripty jazyka Transact-SQL jako úkoly pro skupinu databází tenantů. Úlohy jsou nezávislé na vstupu nebo interakci uživatelů. Tuto metodu lze použít k nasazení změny schématu nebo běžné referenčních dat u všech tenantů v aplikaci. Elastické úlohy lze také udržovat zlaté šablony kopie databáze. Šablona se používá k vytvoření nových tenantů, aby vždy nejnovější schéma a referenčních dat se používají.
+Model horizontálně dělené databázi s více tenanty používané v tomto příkladu umožňuje databáze tenantů tak, aby obsahovala jeden nebo více tenantů. Tato ukázka zkoumá schopnost používat kombinaci více tenantů a jedním klientem databází, povolení *hybridní* model správy tenanta. Správa změn tyto databáze můžou být složité. [Elastické úlohy](elastic-jobs-overview.md) usnadňuje správu a správu velkého počtu databází. Úlohy umožňují bezpečně a spolehlivě spouštět skripty jazyka Transact-SQL jako úkoly pro skupinu databází tenantů. Úlohy jsou nezávislé na vstupu nebo interakci uživatelů. Tuto metodu lze použít k nasazení změny schématu nebo běžné referenčních dat u všech tenantů v aplikaci. Elastické úlohy lze také udržovat zlaté šablony kopie databáze. Šablona se používá k vytvoření nových tenantů, aby vždy nejnovější schéma a referenčních dat se používají.
 
 ![obrazovka](media/saas-multitenantdb-schema-management/schema-management.png)
 
@@ -115,7 +115,7 @@ Chcete-li vytvořit novou úlohu, použijte sadu úloh systémové uložené pro
 
 8. Stisknutím klávesy **F5** spusťte skript.
 
-#### <a name="observe"></a>Pozorovat
+#### <a name="observe"></a>Podívejte se
 
 Podívejte se následující položky *DeployReferenceData.sql* skriptu:
 
@@ -146,7 +146,7 @@ V tomto cvičení vytvoříme úlohu, která znovu sestaví index primárního k
 
 3. Stisknutím klávesy **F5** spusťte skript.
 
-#### <a name="observe"></a>Pozorovat
+#### <a name="observe"></a>Podívejte se
 
 Podívejte se následující položky *OnlineReindex.sql* skriptu:
 
@@ -161,8 +161,7 @@ Podívejte se následující položky *OnlineReindex.sql* skriptu:
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 -->
-* [Správa cloudových databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-overview.md)
-* [Vytvoření a správa databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-create-and-manage.md)
+* [Správa cloudových databází s horizontálním navýšením kapacity](elastic-jobs-overview.md)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 92b1e95598da27f0b7d7df30dfa4a82824b4a48c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158193"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306814"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integraci služby API Management s využitím Service Fabric v Azure
 
@@ -45,7 +45,7 @@ Než začnete:
 * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
 * Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte sadu [Visual Studio 2017](https://www.visualstudio.com) a sady funkcí **Vývoj pro Azure**, **Vývoj pro ASP.NET a web** a **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
-## <a name="network-topology"></a>Topologie sítě
+## <a name="network-topology"></a>Síťová topologie
 
 Teď, když máte zabezpečené [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure, nasazení služby API Management k virtuální síti (VNET) v podsíti a skupině zabezpečení sítě určených pro službu API Management. Pro účely tohoto článku je nakonfigurovaná tak, aby používala názvy virtuální sítě, podsítě a skupiny zabezpečení sítě, které jste nastavili v šabloně API Management Resource Manager [kurzu ke clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) Tento článek nasadí následující topologie do Azure, ve kterém Služba API Management a Service Fabric v podsítích stejné virtuální síti jsou:
 
@@ -201,7 +201,7 @@ Vyplňte následující prázdné parametry v souboru *apim.parameters.json* pro
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Vývojář|
+|apimSku|Developer|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
@@ -288,7 +288,7 @@ Přímo na webu [Azure Portal](https://portal.azure.com) teď můžete do své b
 
 Cluster se kromě vlastního prostředku clusteru skládá z dalších prostředků Azure. Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, pro které chcete cluster odebrat.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [rutiny Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
+Přihlaste se k Azure a vyberte ID předplatného, pomocí kterého chcete odebrat cluster.  Své ID předplatného můžete zjistit po přihlášení k webu [Azure Portal](https://portal.azure.com). Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [rutiny Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup).
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

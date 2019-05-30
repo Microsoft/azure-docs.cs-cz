@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 42c94188c0c38448660998bcfc122ae626285566
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147048"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66249048"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
@@ -38,9 +38,11 @@ Podporovány jsou následující operační systémy:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Je možné procházet proxy servery a brány firewall s využitím schopnosti Point-to-Site?
 
-Azure podporuje dva typy možností Point-to-site VPN:
+Azure podporuje tři typy možností Point-to-site VPN:
 
 * SSTP (Secure Socket Tunneling Protocol). SSTP je proprietární řešení Microsoftu založené na SSL, které umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který SSL používá.
+
+* OpenVPN. OpenVPN je založený na protokolu SSL řešení, které umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP, který používá protokol SSL 443.
 
 * IKEv2 VPN. IKEv2 VPN řešení IPsec VPN založené na standardech, které využívá porty UDP 500 a 4500 a protokol IP č. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
 
@@ -66,7 +68,7 @@ Určit přesnou propustnost tunelových propojení sítí VPN je obtížné. IPs
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Je možné pro připojení Point-to-Site použít libovolného softwarového klienta sítě VPN, pokud podporuje protokol SSTP a/nebo IKEv2?
 
-Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
+Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. Můžete však použít OpenVPN klienta na všech platformách pro připojení přes protokol OpenVPN. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 

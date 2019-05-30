@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 3f33fb09a4b6c19bae3c02ecc47dae193a3a6cb0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925224"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304105"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 V tomto článku se dozvíte, jak připojit trvalý disk k virtuálnímu počítači tak, aby můžete zachovat vaše data – i v případě, že váš virtuální počítač se znovu poskytne z důvodu údržby nebo změnou velikosti.
@@ -35,7 +35,7 @@ Pokud chcete přidat nový, prázdný datový disk na virtuálním počítači, 
 az vm disk attach \
    -g myResourceGroup \
    --vm-name myVM \
-   --disk myDataDisk \
+   --name myDataDisk \
    --new \
    --size-gb 50
 ```
@@ -47,7 +47,7 @@ Připojit stávající disk, najít ID disku a předat ID se má [az vm disk att
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 
-az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
+az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Připojte se k počítači s Linuxem připojit nový disk

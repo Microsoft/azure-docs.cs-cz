@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 3bd8600d0839c31a17221bb5421dc36165deb434
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b3b5a89b43eaa5c0851962aef414ec9c9b7440da
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142983"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357736"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise serveru s Azure Files NetApp pro aplikace SAP
 
@@ -58,7 +58,7 @@ ms.locfileid: "65142983"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [NetApp soubory Azure (ve verzi Public Preview)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
+Tento článek popisuje, jak nasadit virtuální počítače, konfigurace virtuálních počítačů, instalaci rozhraní clusteru a instalace s vysokou dostupností systému SAP NetWeaver 7.50, pomocí [souborů NetApp Azure](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
 V ukázkové konfigurace, příkazy pro instalaci atd., ASCS instance je číslo 00, číslo instance Lajících 01, instance primární aplikace (Pa adresy) je 02 a instanci aplikace (AAS) je 03. Se používá QAS ID systému SAP. 
 
 Tento článek vysvětluje, jak dosáhnout vysoké dostupnosti pro SAP NetWeaver aplikace s Azure NetApp Files. V tomto článku se podrobně databázové vrstvě.
@@ -139,13 +139,13 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver Lajících a databáze SAP 
 
 SAP NetWeaver vyžaduje sdílené úložiště pro přenos a profil adresář.  Než budete pokračovat v instalaci pro infrastrukturu souborů Azure NetApp, seznamte se s [dokumentace ke službě soubory Azure NetApp][anf-azure-doc]. Zaškrtněte, pokud vybrané oblasti Azure nabízí NetApp soubory Azure. Následující odkaz zobrazí dostupnost souborů NetApp Azure podle oblasti Azure: [Soubory Azure NetApp dostupnost podle oblasti Azure][anf-avail-matrix].
 
-Funkce souborů Azure NetApp je ve verzi public preview v několika oblastech Azure. Před nasazením NetApp soubory Azure, zaregistrujte si souborů NetApp Azure ve verzi preview, po [registrace pro Azure NetApp soubory pokynů][anf-register]. 
+Služba soubory Azure NetApp je k dispozici v několika [oblastí Azure](https://azure.microsoft.com/global-infrastructure/services/?products=netapp). Před nasazením Azure NetApp Files, žádost o připojení ke službě Azure Files NetApp, následující [registrace pro Azure NetApp soubory pokynů][anf-register]. 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Nasazení prostředků Azure souborů NetApp  
 
-V krocích se předpokládá, že jste už nasadili [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Uvědomte si, že Azure NetApp soubory prostředků a virtuální počítače, kde se prostředky Azure NetApp Files připojí musí nasadit do stejné virtuální síti Azure.  
+V krocích se předpokládá, že jste už nasadili [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Prostředky souborů NetApp Azure a virtuální počítače, ve kterém se připojí prostředky Azure NetApp soubory musí být nasazeny ve stejné virtuální síti Azure nebo v partnerských virtuálních sítích Azure.  
 
-1. Pokud jste dosud neučinili, který, požádat o [registraci ve verzi preview Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
+1. Pokud jste dosud neučinili, který, požádat o [registrace do služby soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
 
 2. Ve vybrané oblasti Azure, po vytvoření účtu NetApp [pokyny k vytvoření účtu NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
 3. Nastavení kapacity fondu souborů NetApp Azure, po [pokyny, jak nastavit službu Azure NetApp Files kapacity fondu](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
@@ -153,7 +153,7 @@ Architektura SAP Netweaver uvedené v tomto článku využívá jeden souborů N
 
 4. Podsíť, která se soubory Azure NetApp delegovat, jak je popsáno v [pokyny delegovat podsítě do služby soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Svazky souborů Azure NetApp, následující nasadit [pokyny pro vytvoření svazku pro soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Svazky v určené soubory NetApp Azure nasadit [podsítě](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp soubory prostředků a virtuální počítače Azure musí být ve stejné virtuální síti Azure. Například sapmnt<b>QAS</b>, usrsap<b>QAS</b>atd jsou názvy svazků a sapmnt<b>qas</b>, usrsap<b>qas</b>, jsou filepaths pro Azure Soubory NetApp svazky.  
+5. Svazky souborů Azure NetApp, následující nasadit [pokyny pro vytvoření svazku pro soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Svazky v určené soubory NetApp Azure nasadit [podsítě](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Mějte na paměti, že Azure NetApp soubory prostředků a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo v partnerských virtuálních sítích Azure. Například sapmnt<b>QAS</b>, usrsap<b>QAS</b>atd jsou názvy svazků a sapmnt<b>qas</b>, usrsap<b>qas</b>, jsou filepaths pro Azure Soubory NetApp svazky.  
 
    1. svazek sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. svazek usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -364,7 +364,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    > [!NOTE]
    > Soubory NetApp Azure v současné době podporuje pouze NFSv3. Nevynechávejte nfsvers = 3 přepínače.
    
-   Restartujte autofs připojit nové sdílené složky
+   Restartujte `autofs` připojení nových sdílených složek
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -734,7 +734,7 @@ Následující položky jsou s předponou buď **[A]** – lze použít na Pa ad
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/ursap<b>qas</b>pas
    </code></pre>
 
-   Restartujte autofs připojit nové sdílené složky
+   Restartujte `autofs` připojení nových sdílených složek
 
    <pre><code>
    sudo systemctl enable autofs
@@ -759,7 +759,7 @@ Následující položky jsou s předponou buď **[A]** – lze použít na Pa ad
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   Restartujte autofs připojit nové sdílené složky
+   Restartujte `autofs` připojení nových sdílených složek
 
    <pre><code>
    sudo systemctl enable autofs
@@ -1230,7 +1230,7 @@ Následující testy jsou kopie testovacích případů v [osvědčené postupy 
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Pokud spustíte pouze příkaz jednou, restartuje sapstart procesu. Při spuštění často dostatečné, bude sapstart restart procesu a prostředek bude v zastaveném stavu. Spuštěním následujících příkazů jako kořenový adresář pro vyčištění prostředků stavu instance Lajících po testu.
+   Pokud zadáte pouze příkaz jednou, `sapstart` restartuje procesu. Pokud byste ho spustili dostatečně, často `sapstart` nerestartuje procesu a prostředek bude v zastaveném stavu. Spuštěním následujících příkazů jako kořenový adresář pro vyčištění prostředků stavu instance Lajících po testu.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

@@ -8,16 +8,20 @@ ms.topic: reference
 ms.date: 03/28/2019
 ms.author: pabutler
 ROBOTS: NOINDEX
-ms.openlocfilehash: 816bdc61f85fdf171870a5b552661b816ec65e2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9b80f0fd36545de94e7128080dba5e516344c107
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943139"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257505"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS splnění rozhraní API verze 1 (zastaralé)
 
 Tento článek vysvětluje, jak vytvořit nabídky SaaS s rozhraními API. Rozhraní API, skládá z koncových bodů a metody REST jsou nezbytné pro povolení předplatných pro vaši nabídku SaaS, pokud mají prodávat prostřednictvím Azure vybrané.  
+
+> [!IMPORTANT] 
+> SaaS nabízejí funkce se migroval na [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Všechny nové zdroje musí pomocí partnerského centra pro vytvoření nové nabídky SaaS a správu existující nabídky.  Aktuální vydavatele se nabídky SaaS se batchwise migrují z portál partnerů cloudu do partnerského centra.  Portál partnerů cloudu se zobrazí stavové zprávy k označení, když se konkrétní stávající nabídky migrovaly.
+> Další informace najdete v tématu [vytvoření nové nabídky SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 > [!WARNING]
 > Tato počáteční verze rozhraní API pro splnění SaaS je zastaralá; Místo toho použijte [API V2 SaaS splnění](./cpp-saas-fulfillment-api-v2.md).  Toto rozhraní API v současné době se spravují pouze k poskytování existujících vydavatelů. 
@@ -27,7 +31,7 @@ Jsou k dispozici následující rozhraní API umožňují integrovat vaší slu�
 -   Vyřešit
 -   Přihlásit odběr
 -   Převést
--   Odhlásit odběr
+-   odhlášení odběru
 
 
 ## <a name="api-methods-and-endpoints"></a>Koncové body a metody rozhraní API
@@ -87,7 +91,7 @@ Když uživatel se přesměruje na web nezávislých výrobců softwaru, adresa 
 |--------------------|---------------|---------------------------------------|
 | id                 | String        | ID předplatného SaaS.          |
 | subscriptionName| String| Název předplatného SaaS nastavena podle uživatele v Azure při přihlášení k odběru ve službě SaaS.|
-| OfferId            | String        | ID nabídky, který uživatel přihlášen k odběru. |
+| offerId            | String        | ID nabídky, který uživatel přihlášen k odběru. |
 | planId             | String        | ID plánu, který uživatel přihlášen k odběru.  |
 |  |  |  |
 
@@ -121,7 +125,7 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -186,7 +190,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 
 **PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -242,7 +246,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 | Operace umístění | Ano          | Propojit k prostředku získat stav operace.                                                        |
 |  |  |  |
 
-### <a name="delete-subscription"></a>Odstranit předplatné
+### <a name="delete-subscription"></a>Odstranit odběr
 
 Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli odstranit odběr s daným ID.
 
@@ -250,7 +254,7 @@ Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli 
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -300,7 +304,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{IDoperace}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{IDoperace}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -334,7 +338,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 | id                 | String        | ID operace.                                                                      |
 | status             | Výčet          | Stav operace, jednu z následujících: `In Progress`, `Succeeded`, nebo `Failed`.          |
 | resourceLocation   | String        | Propojit s předplatným, které vytvořil nebo změnil. To pomáhá klientům získat aktualizovaný stav operace post. Tato hodnota není nastavená pro `Unsubscribe` operace. |
-| vytvořené            | DateTime      | Operace vytvoření čas ve standardu UTC.                                                           |
+| Vytvoření            | DateTime      | Operace vytvoření čas ve standardu UTC.                                                           |
 | lastModified       | DateTime      | Poslední aktualizace na operaci ve standardu UTC.                                                      |
 |  |  |  |
 
@@ -368,7 +372,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -406,7 +410,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 | planId                 | String        | ID plánu, který uživatel přihlášen k odběru.          |
 | saasSubscriptionName   | String        | Název předplatného SaaS.                |
 | saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících akcí:  <br/> - `Subscribed`: Je předplatné aktivní.  <br/> - `Pending`: Uživatel vytvoří prostředek služby, ale nebude aktivní nezávislí.   <br/> - `Unsubscribed`: Uživatel má zrušili.   <br/> - `Suspended`: Uživatel pozastavil předplatné.   <br/> - `Deactivated`:  Předplatné Azure je pozastaveno.  |
-| vytvořené                | DateTime      | Hodnotu časové razítko vytvoření předplatného ve standardu UTC. |
+| Vytvoření                | DateTime      | Hodnotu časové razítko vytvoření předplatného ve standardu UTC. |
 | lastModified           | DateTime      | Předplatné změnit hodnotu časové razítko ve formátu UTC. |
 |  |  |  |
 
@@ -478,7 +482,7 @@ Akce Get na koncový bod předplatná umožňuje uživateli získat všechna př
 | planId                 | String        | ID plánu, který uživatel přihlášen k odběru.          |
 | saasSubscriptionName   | String        | Název předplatného SaaS.                |
 | saasSubscriptionStatus | Výčet          | Stav operace.  Jeden z následujících akcí:  <br/> - `Subscribed`: Je předplatné aktivní.  <br/> - `Pending`: Uživatel vytvoří prostředek služby, ale nebude aktivní nezávislí.   <br/> - `Unsubscribed`: Uživatel má zrušili.   <br/> - `Suspended`: Uživatel pozastavil předplatné.   <br/> - `Deactivated`:  Předplatné Azure je pozastaveno.  |
-| vytvořené                | DateTime      | Hodnotu časové razítko vytvoření předplatného ve standardu UTC. |
+| Vytvoření                | DateTime      | Hodnotu časové razítko vytvoření předplatného ve standardu UTC. |
 | lastModified           | DateTime      | Předplatné změnit hodnotu časové razítko ve formátu UTC. |
 |  |  |  |
 
@@ -529,7 +533,7 @@ SaaS webhook se používá pro oznamování změn aktivně ve službě SaaS. Tot
 | offerId                | String        | ID nabídky, který uživatel přihlášen k odběru. K dispozici pouze s akcí "Úpravy".        |
 | publisherId                | String        | ID vydavatele dané nabídky SaaS         |
 | planId                 | String        | ID plánu, který uživatel přihlášen k odběru. K dispozici pouze s akcí "Úpravy".          |
-| action                 | String        | Akce, která se aktivuje toto oznámení. Možné hodnoty - aktivovat, odstranit, pozastavit, obnovit, aktualizace          |
+| Akce                 | String        | Akce, která se aktivuje toto oznámení. Možné hodnoty - aktivovat, odstranit, pozastavit, obnovit, aktualizace          |
 | Časové razítko                 | String        | Hodnota časového razítka ve standardu UTC, kdy tato upozornění byla aktivována.          |
 |  |  |  |
 

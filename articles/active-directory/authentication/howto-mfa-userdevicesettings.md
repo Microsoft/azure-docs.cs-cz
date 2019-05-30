@@ -1,6 +1,6 @@
 ---
 title: Správci spravovat uživatele a zařízení – Azure MFA – Azure Active Directory
-description: Popisuje postup změny nastavení uživatele, jako je například vynucení uživatelům znovu provést proces výš.
+description: Jak správci změnit nastavení uživatele, jako je například vynucení uživatelům znovu provést proces výš.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d6d901c050f6d1df8b53b34f0088d3ad8b0f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04d4848a00fd645bcf23342f27fe820ccf034a8b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415064"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298848"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa nastavení uživatelů pomocí ověřování Azure Multi-Factor Authentication v cloudu
 
@@ -42,6 +42,14 @@ Toto nastavení přinutí uživatel dokončí proces registrace znovu. Neprohlí
 7. Klikněte na **Uložit**.
 8. Klikněte na tlačítko **zavřete**.
 
+Organizace můžou pomocí prostředí PowerShell pomocí následující jako vodítko k vymazání proveďte následující kroky `StrongAuthenticationMethods` atribut:
+
+```PowerShell
+$Upn = "theuser@domain.com"
+$noMfaConfig = @()
+Set-MsolUser -UserPrincipalName $Upn -StrongAuthenticationMethods $noMfaConfig
+```
+
 ## <a name="delete-users-existing-app-passwords"></a>Odstranit uživatele existující hesla aplikací
 
 Tato nastavení odstraní všechna hesla aplikací, které uživatel vytvořil. Neprohlížečové aplikace, které byly přidruženy k těmto hesla aplikací přestat fungovat, dokud se nevytvoří nové heslo aplikace.
@@ -64,7 +72,7 @@ Mezi konfigurovatelné funkce ověřování Azure Multi-Factor Authentication je
 
 Uživatelé se můžou rozhodnout mimo dvoustupňové ověřování pro Konfigurovatelný počet dnů v jejich běžná zařízení. Pokud dojde k narušení účtu nebo dojde ke ztrátě důvěryhodné zařízení, musíte být schopni odebrat stavu důvěryhodnosti a vyžadovat dvoustupňové ověřování znovu.
 
-**Ověřování službou Multi-Factor Authentication obnovení na všech zapamatovaných zařízeních** nastavení znamená, že bude uživatel odmítl dvoustupňové ověřování při příštím přihlášení, bez ohledu na to, zda se rozhodli označit zařízení jako důvěryhodné.
+Pokud je zaškrtnuto, **ověřování službou Multi-Factor Authentication obnovení na všech zapamatovaných zařízeních** uživatelé nutných k provedení dvoustupňového ověřování při příštím přihlášení, i v případě, že označí zařízení jako důvěryhodné.
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Jak obnovit vícefaktorové ověřování na všechny pozastavené zařízení pro uživatele
 

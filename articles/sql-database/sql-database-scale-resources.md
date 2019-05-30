@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e476f27e2a1945135bd90435078d5bcd47c4b3de
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709186"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073142"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamicky škálovat prostředky databáze s minimálními výpadky
 
@@ -36,12 +36,10 @@ Nemusíte se starat o nákup hardwaru a změnou základní infrastruktury. Šká
 Azure SQL Database nabízí [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
 - [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí kombinaci výpočetních, paměťových a vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším: Basic, Standard a Premium. Úrovně výkonu na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, ke kterým můžete přidat další prostředky úložiště.
-- [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště. Tento model nákupu nabízí tři úrovně služby: Obecné účely, pro důležité obchodní informace a velkokapacitní (preview).
+- [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště. Tento model nákupu nabízí tři úrovně služby: Obecné účely, pro důležité obchodní informace a mírou škálování.
 
 Můžete sestavit svoji první aplikaci na malou izolovanou databází s nízkými náklady za měsíc v rámci úrovně služeb Basic, Standard nebo obecné účely a potom změnit úroveň služby ručně nebo prostřednictvím kódu programu kdykoli do služby úrovně Premium nebo pro důležité obchodní informace pro splnění ne EDS vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
-> [!IMPORTANT]
-> Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k dispozici v omezené oblastech Azure. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 > [!NOTE]
 > Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů.
 

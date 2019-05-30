@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931e44f85131e8cbdd7aecddd6398f6f59d1b166
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 90577ea9f24bc5f36113bc1bdb913949772325c9
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937296"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305508"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -38,7 +38,7 @@ Co je nového zpráva k vydání verze poskytování informací o:
  
 ### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Aktualizovala se oprávnění role správce pro dynamické skupiny
 
-**Typ:** Pevné  
+**Typ:** Oprava  
 **Kategorie služby:** Správa skupin  
 **Funkce produktu:** Spolupráce
 
@@ -48,7 +48,7 @@ Role jsou:
 
 - Globální správce
 
-- Správce Intune
+- Správce služby Intune
 
 - Správce uživatelů
 
@@ -60,7 +60,7 @@ Další informace najdete v tématu [vytvoření dynamické skupiny a zkontrolov
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Uvědomujeme si, že nastavení si jednotné přihlašování (SSO) k softwaru jako služby (SaaS) aplikací může být náročné vzhledem k jedinečné povaze konfiguraci jednotlivých aplikací. Sestavili jsme zjednodušené konfigurační prostředí k automaticky vyplní nastavení konfigurace jednotného přihlašování pro následující aplikace SaaS třetích stran:
 
@@ -74,7 +74,7 @@ Chcete-li začít používat toto prostředí jedním kliknutím, přejděte **w
 
 ---
 
-### <a name="azure-active-directory---where-is-your-data-located-page"></a>Azure Active Directory – Kde se ukládají vaše data? stránka
+### <a name="azure-active-directory---where-is-your-data-located-page"></a>Azure Active Directory – kde se nachází vaše data? stránka
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Ostatní  
@@ -90,7 +90,7 @@ Přístup k této funkci a další informace najdete v tématu [Azure Active Dir
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Moje aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Podívejte se na nový plán nasazení, který je k dispozici pro Moje aplikace přístupového panelu (https://aka.ms/deploymentplans).
 Moje aplikace přístupový panel poskytuje uživatelům na jednom místě vyhledat a získat přístup k jejich aplikacím. Tento portál poskytuje také uživatelům samoobslužné služby příležitosti, jako je žádost o přístup k aplikacím a skupinám nebo správy přístupu k těmto prostředkům jménem jiných uživatelů.
@@ -103,7 +103,7 @@ Další informace najdete v tématu [novinky na portálu Moje aplikace?](https:/
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
 
 Nové **řešení potíží a podpora** kartě **přihlášení** stránky Azure portal, má pomoci správce a pracovníky technické podpory řešit problémy spojené s přihlášení Azure AD. Tato nová karta poskytuje kód chyby, chybová zpráva a doporučeními k nápravě (pokud existuje) vám pomohou při řešení problému. Pokud nemůžete vyřešit problém, jsme také získáte nový způsob, jak vytvořit lístek podpory pomocí **kopírování do schránky** prostředí, která naplní **ID žádosti** a **Datum(UTC)** pole pro soubor protokolu v vašeho lístku podpory.  
 
@@ -126,7 +126,7 @@ Další informace o použití rozšíření vlastních vlastností pro pravidla 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
 
 **Typ:** Plánování změn  
-**Kategorie služby:** Podmíněný přístup  
+**Kategorie služby:** podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
@@ -171,7 +171,7 @@ Tato a další související s protokoly změny najdete v tématu [úplný sezna
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 V září 2018 jsme přidali podporu těchto 16 nové aplikace s federací do Galerie aplikací:
 
@@ -185,7 +185,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Zavedli jsme nové metody transformace deklarací identity, ToLower() byly a ToUpper(), který je možné použít na tokeny SAML ze SAML podle **Konfigurace jednotného přihlašování** stránky.
 
@@ -197,7 +197,7 @@ Další informace najdete v tématu [přizpůsobení deklarací identity vystave
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Jako součást naší uživatelské rozhraní pro konfiguraci aktualizovaná aplikace založené na SAML získáte:
 
@@ -268,7 +268,7 @@ Toto je vyjádření souhlasu se ve verzi public preview. Správci můžou zapno
 ### <a name="new-http-only-cookies-setting-in-azure-ad-application-proxy-apps"></a>Nové nastavení souborů cookie HTTP-Only v aplikacích Proxy aplikací služby Azure AD
 
 **Typ:** Nová funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Řízení přístupu
 
 Existuje nová nastavení volané, **soubory cookie Mitigating** ve vašich aplikacích Proxy aplikací. Toto nastavení zajišťuje dodatečné zabezpečení včetně příznak HTTPOnly v hlavičce odpovědi protokolu HTTP pro obě aplikace Proxy přístupu a relace soubory cookie, zastavením přístup k souboru cookie ze skriptu na straně klienta a další brání akcím, jako je kopírování nebo Úprava souboru cookie. I když tento příznak nebyla použita dříve, soubory cookie byly vždy šifrovaný a přenáší prostřednictvím připojení SSL k ochraně proti nesprávné změny.
@@ -307,7 +307,7 @@ Přístup k aplikacím v současné době pouze podporuje prostředí portálu A
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 V srpna 2018 jsme přidali podporu těchto 16 nové aplikace s federací do Galerie aplikací:
 
@@ -320,7 +320,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 ### <a name="native-tableau-support-is-now-available-in-azure-ad-application-proxy"></a>V Proxy aplikací služby Azure AD je teď k dispozici nativní podpora Tableau
 
 **Typ:** Změněná funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Řízení přístupu
 
 S naší aktualizaci z OpenID Connect protokolu udělení kódu OAuth 2.0 pro naše předběžné ověřovací protokol máte již provádět žádnou další konfiguraci Tableau pomocí Proxy aplikací. Tato změna protokol vám také pomůže Proxy aplikací, lepší podpora více moderních aplikací s použitím pouze přesměrování protokolu HTTP, které jsou běžně podporovány značky jazyka JavaScript a HTML.
@@ -371,7 +371,7 @@ Příklad některé z nových e-mailu návrhů a další informace najdete v té
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
 
 Protokoly aktivit Azure AD jsou teď dostupné ve verzi public preview pro Azure Monitor (Sledování služby celou platformu Azure). Azure Monitor nabízí dlouhodobé uchování a bezproblémové integrace. kromě tato vylepšení:
 
@@ -399,7 +399,7 @@ Umožňuje tato aktualizace můžete zjistit, které zásady jsou vyhodnocovány
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
  
 Se zavedením **klientskou aplikaci** pole v aktivit přihlašování protokoly, zákazníci můžou teď najdete v tématu uživatelé, které používají starší verze ověřování. Zákazníci budou moct přistupovat k těmto informacím pomocí rozhraní Graph API MS přihlášení nebo prostřednictvím přihlášení protokoly aktivit v portálu Azure AD, kde můžete použít **klientskou aplikaci** ovládací prvek pro filtrování starší verze ověřování. Přečtěte si další podrobnosti naleznete v dokumentaci.
 
@@ -409,7 +409,7 @@ Se zavedením **klientskou aplikaci** pole v aktivit přihlašování protokoly,
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 V červenci 2018 jsme přidali podporu těchto 16 nové aplikace s federací do Galerie aplikací:
 
@@ -423,7 +423,7 @@ Další informace o aplikacích najdete v tématu [integrace aplikací SaaS pomo
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Zřizování aplikací  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 Azure AD umožňuje automatizovat vytváření, údržbu a odebírání uživatelských identit v aplikacích SaaS, jako je například Dropbox, Salesforce, ServiceNow a další. Pro července 2018 jsme přidali podporu pro následující aplikace v galerii aplikací Azure AD zřizování uživatelů:
 
@@ -441,7 +441,7 @@ Seznam všech aplikací, které podporují zřizování uživatelů ve galerii A
 
 **Typ:** Nová funkce  
 **Kategorie služby:** AD Connect  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
  
 Azure AD Connect Health uvádí samoobslužnou nápravu můžete zvýraznit a oprava chyb synchronizace. Tato funkce odstraňování potíží s duplicitním atributem chyby synchronizace a opravy objekty, které jsou osamocené ze služby Azure AD. Tuto diagnostiku má následující výhody:
 
@@ -483,7 +483,7 @@ Další informace o této aktualizaci najdete v tématu [Azure AD Connect: Histo
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>Aktualizace uživatelského rozhraní podmínek použití pro koncové uživatele
+### <a name="updates-to-the-terms-of-use-end-user-ui"></a>Aktualizace s podmínkami použití uživatelského rozhraní koncového uživatele
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Podmínky použití  
@@ -549,7 +549,7 @@ Oznámení mobilní aplikace je možné zapnout jenom na jako součást zásady,
 
 **Typ:** Plánování změn  
 **Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
 
 Z důvodu naše vynucení silnější zabezpečení museli měnit oprávnění pro aplikace, které používají pro přístup k toku delegované autorizace [rozhraní API protokoly aktivit Azure AD](https://aka.ms/aadreportsapi). Tato změna se provádí **26. června 2018**.
 
@@ -613,7 +613,7 @@ Zastaralé prohlížeče nemusí podporovat novější verze TLS, jako je protok
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 V červnu 2018 jsme přidali podporu těchto 15 nových aplikací s federací do Galerie aplikací:
 
@@ -641,25 +641,25 @@ Další informace o ochraně hesel služby Azure AD najdete v tématu [eliminuje
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Nový "všechny hosté" podmíněného přístupu šablonu zásad během vytváření podmínky použití (ToU)
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Nový "všechny hosté" podmíněného přístupu šablonu zásad vytvořené během podmínky použití vytváření
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
 **Funkce produktu:** Zásady správného řízení
 
-Během vytváření vašich podmínek použití (ToU) se také vytvoří novou šablonu zásad podmíněného přístupu pro "všechny hostů" a "všechny aplikace". Tato nová šablona zásad platí nově vytvořený podmínek použití, usnadňuje vytváření a vynucování procesů pro hosty.
+Během vytváření vaše podmínky použití se také vytvoří novou šablonu zásad podmíněného přístupu pro "všechny hostů" a "všechny aplikace". Tato nová šablona zásad platí nově vytvořený podmínek použití, usnadňuje vytváření a vynucování procesů pro hosty.
 
 Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>Nové šablony zásad podmíněného přístupu "vlastní" během vytváření podmínky použití (ToU)
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Nové šablony zásad "vlastní" podmíněného přístupu vytvořené během podmínky použití vytváření
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
 **Funkce produktu:** Zásady správného řízení
 
-Při vytváření vašich podmínek použití (ToU) se vytvoří také novou šablonu zásad podmíněného přístupu "vlastní". Tato nová šablona zásad vám umožní vytvořit podmínky použití a pak okamžitě přejít na okno pro vytvoření zásady podmíněného přístupu, aniž by bylo potřeba ručně přejít na portálu.
+Při vytváření vaše podmínky použití se vytvoří také novou šablonu zásad podmíněného přístupu "vlastní". Tato nová šablona zásad vám umožní vytvořit podmínky použití a pak okamžitě přejít na okno pro vytvoření zásady podmíněného přístupu, aniž by bylo potřeba ručně přejít na portálu.
 
 Další informace najdete v tématu [Azure Active Directory Terms of použít funkci](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
@@ -729,7 +729,7 @@ Pokud je nutné použít vyhrazenou okruhů, budete potřebovat ke komunikaci s 
 **Kategorie služby:** Podmínky použití  
 **Funkce produktu:** Prostředí pro vývojáře
  
-Přidali jsme rozhraní Microsoft Graph API pro operace správy z Azure AD Terms of Use. Budete moct vytvářet, aktualizovat, odstranit objekt podmínky použití.
+Přidali jsme rozhraní Microsoft Graph API pro operace správy podmínek použití služby Azure AD. Budete moct vytvářet, aktualizovat, odstranit podmínky použití objektu.
 
 ---
 
@@ -747,7 +747,7 @@ Pomocí vlastních zásad, můžete nyní přidejte společný koncový bod Azur
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Moje aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
  
 Uživatelé mohou nyní přístup k aplikacím pomocí interní adresy URL, i když mimo vaši firemní síť s použitím rozšíření Moje aplikace zabezpečené přihlášení pro službu Azure AD. Bude to fungovat s libovolnou aplikací, které publikujete pomocí Proxy aplikací Azure AD a v jakémkoli prohlížeči, který má také nainstalované rozšíření prohlížeče přístupového panelu. Po přihlášení uživatele do rozšíření, se automaticky povolí funkci adresy URL přesměrování. Rozšíření je k dispozici ke stažení na [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176), [Chrome](https://go.microsoft.com/fwlink/?linkid=866367), a [Firefox](https://go.microsoft.com/fwlink/?linkid=866366).
 
@@ -767,7 +767,7 @@ Zákazníci v Evropě zůstat v Evropě se jejich data a nejsou replikovány mim
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Zřizování aplikací  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 Azure AD umožňuje automatizovat vytváření, údržbu a odebírání uživatelských identit v aplikacích SaaS, jako je například Dropbox, Salesforce, ServiceNow a další. Pro květen 2018 jsme přidali podporu pro následující aplikace v galerii aplikací Azure AD zřizování uživatelů:
 
@@ -795,7 +795,7 @@ Kontrola přístupu skupiny a aplikace je teď obecně dostupná jako součást 
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
  
 Azure protokoly aktivit AD, které obsahuje přihlášení a protokoly auditu, jsou teď dostupné prostřednictvím MS Graphu. Představili jsme dva koncové body prostřednictvím MS Graphu k těmto protokolům získat přístup. Podívejte se na naše [dokumenty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) pro programový přístup k vytváření sestav rozhraní API Azure AD jak začít. 
 
@@ -819,7 +819,7 @@ Azure protokoly aktivit AD, které obsahuje přihlášení a protokoly auditu, j
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 V květnu 2018 jsme přidali podporu těchto 18 nových aplikací s federací do naší Galerie aplikací:
 
@@ -847,7 +847,7 @@ Chcete-li zobrazit průvodcích nasazením, přejděte na [postupujte podle prů
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
  
 Máte potíže najít vaše aplikace / služby objekty zabezpečení? Přidali jsme možnost načíst další aplikace v oddílu podnikové aplikace seznam všech aplikací. Ve výchozím nastavení vám ukážeme, 20 aplikací. Můžete kliknout, **načíst další** zobrazíte další aplikace. 
 
@@ -903,7 +903,7 @@ Další informace najdete v tématu [Azure AD B2C: Žádosti o přístupové tok
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Při konfiguraci aplikace založené na SAML jednotného přihlašování, budete moci testovat integraci na stránce konfigurace. Pokud narazíte na chybu během svého přihlašování, můžete zadat chyby v testovacím prostředí a Azure AD poskytuje řešení kroky k vyřešení konkrétního problému.
 
@@ -914,7 +914,7 @@ Další informace naleznete v tématu:
 
 ---
  
-### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD Terms of Use teď obsahuje generování sestav podle uživatelů
+### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD podmínky použití teď obsahuje generování sestav podle uživatelů
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
@@ -930,7 +930,7 @@ Další informace najdete v tématu [funkcí Azure AD podmínky použití](https
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Ostatní  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
 
 Connect Health teď podporuje schopnost detekovat IP adresy, které by překračovaly prahovou hodnotu neúspěšných přihlášení U/P na hodinové nebo denní bázi. Možnosti poskytované touto funkcí jsou:
 
@@ -946,7 +946,7 @@ Další informace najdete v tématu [sestavě rizikových IP adres](https://aka.
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Na stránce aplikace organizace můžete správci nahrát soubor metadat SAML konfigurace přihlašování SAML podle pro aplikaci Galerie AAD a mimo galerii.
 
@@ -963,7 +963,7 @@ Další informace najdete v tématu [Konfigurace jednotného přihlašování k 
 **Funkce produktu:** Dodržování předpisů
  
 
-Azure AD Terms of Use přešli z verze public preview na všeobecně dostupná.
+Azure AD podmínky použití přešli z verze public preview na všeobecně dostupná.
 
 Další informace najdete v tématu [funkcí Azure AD podmínky použití](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
@@ -990,7 +990,7 @@ Další informace najdete v tématu [povolení nebo blokování pozvánek uživa
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
 
 V dubnu 2018 přidali jsme podporu těchto 13 nové aplikace s federací do naší Galerie aplikací:
 
@@ -1018,7 +1018,7 @@ Další informace najdete v tématu [uživatele udělit B2B ve službě Azure AD
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Ostatní  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
 
 Pokud aplikace, která je uvedena v [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) podporuje založené na SAML jednotného přihlašování, kliknutím na **získat** vám poskytne kurz integrace přidruženou k této aplikaci. 
 
@@ -1028,7 +1028,7 @@ Pokud aplikace, která je uvedena v [Azure marketplace](https://azuremarketplace
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Zřizování aplikací  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 Dřív se zákazníci, kteří používají zřizování konektorů aplikací SaaS (například Salesforce, ServiceNow a pole) uživatelů Azure Active Directory může zaznamenat zpomalení výkonu více než 100 000 kombinované uživatelé s omezením jejich tenantů Azure AD a skupiny a jejich používali přiřazení uživatelů a skupin k určení, kteří by mělo proběhnout zřízení.
 
@@ -1056,9 +1056,9 @@ Další informace najdete v tématu [hesla Azure AD z přihlašovací obrazovky 
  
 ### <a name="certificate-expire-notification"></a>Certifikát vypršel oznámení
 
-**Typ:** Pevné  
+**Typ:** Oprava  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
  
 Azure AD posílá oznámení, když se certifikát pro galerii nebo aplikaci mimo Galerii brzy vyprší platnost. 
 
@@ -1108,7 +1108,7 @@ Další informace naleznete v tématu:
 ### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>Rutiny Proxy aplikací v modulu Powershell GA Module
 
 **Typ:** Nová funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Řízení přístupu
  
 Podpora pro rutiny Proxy aplikací je teď v modul Powershell GA Module. To vyžaduje, abyste aktualizace v prostředí Powershell moduly – Pokud je více než rok, některé rutiny můžou přestat fungovat. 
@@ -1157,7 +1157,7 @@ Další informace najdete v tématu [Azure Active Directory bezproblémové jedn
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
 
 V březnu 2018 přidali jsme podporu těchto 15 nových aplikací s federací do naší Galerie aplikací:
 
@@ -1209,7 +1209,7 @@ Další informace najdete v tématu [požádat o autorizační kód](https://doc
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Zřizování aplikací  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
  
 Verze public preview příchozího zřizování z Workday do Active Directory a Azure AD teď podporuje možnost extrahovat a zřizování pro všechny hodnoty atributů k dispozici v rozhraní Workday Get_Workers API. Tento postup přidá podporuje pro stovky dalších standardní a vlastní atributy nad rámec těch, které jsou součástí počáteční verze pracovního dne příchozí zřizování konektoru.
 
@@ -1245,7 +1245,7 @@ Další informace najdete v tématu [Azure Active Directory bezproblémové jedn
 ### <a name="application-proxy-connector-version-154020-released"></a>Verze konektoru Proxy aplikací 1.5.402.0 všeobecně dostupné
 
 **Typ:** Změněná funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Zabezpečení a ochrana identity
  
 Tato verze konektoru se postupně zavádí do listopadu. Tato nová verze konektoru obsahuje následující změny:
@@ -1275,7 +1275,7 @@ Navigační prostředí pro správu uživatelů a skupin je teď jednodušší. 
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Azure Stack  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
 
 Sestavy protokolu Azure AD aktivit jsou teď dostupné v Microsoft Azure provozované společností 21Vianet (Azure China 21Vianet) instance. Tyto protokoly jsou zahrnuty:
 
@@ -1299,7 +1299,7 @@ Další informace o tom, jak tyto sestavy použít, najdete v části [generová
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
-**Funkce produktu:** Monitorování a sestavy
+**Funkce produktu:** Monitorování a vytváření sestav
 
 Jako součást zpětné vazby zákazníků bez oprávnění správce rolí má přístup k aktivit Azure AD povolit protokoly, zavedli jsme možnost pro uživatele, kteří jsou v roli "Čtenáře sestav" přístup k přihlášení a auditování aktivit v rámci webu Azure portal, jakož i pomocí našich rozhraní Graph API. 
 
@@ -1311,7 +1311,7 @@ Další informace o použití těchto sestav najdete v tématu [generování ses
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
  
 Můžete nakonfigurovat **EmployeeID** jako uživatelský identifikátor a atribut uživatele pro uživatele člena a hosty B2B aplikace založené na SAML přihlašování z podnikové aplikace uživatelského rozhraní.
 
@@ -1322,7 +1322,7 @@ Další informace najdete v tématu [přizpůsobování deklarací identity vyst
 ### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>Zjednodušená správa aplikací pomocí zástupných znaků v Azure AD Application Proxy
 
 **Typ:** Nová funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Ověřování uživatelů
  
 K usnadnění nasazení aplikací a snížit vaše režijní náklady na správu, podporujeme nyní možnost publikovat aplikace pomocí zástupných znaků. Pokud chcete publikovat aplikaci se zástupnými znaky, můžete postupovat podle toku publikování standardní aplikace, ale použít zástupný znak v interní a externí adresy URL.
@@ -1334,7 +1334,7 @@ Další informace najdete v tématu [aplikace se zástupnými znaky v proxy apli
 ### <a name="new-cmdlets-to-support-configuration-of-application-proxy"></a>Nové rutiny, které podporují konfiguraci Proxy aplikací
 
 **Typ:** Nová funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Platforma
 
 Nejnovější vydaná verze modulu AzureAD PowerShell Preview obsahuje nové rutiny, které umožňují zákazníkům konfigurovat aplikace Proxy aplikací pomocí prostředí PowerShell.
@@ -1364,7 +1364,7 @@ Jsou nové rutiny:
 ### <a name="new-cmdlets-to-support-configuration-of-groups"></a>Nové rutiny, které podporují konfiguraci skupin
 
 **Typ:** Nová funkce  
-**Kategorie služby:** Proxy aplikace  
+**Kategorie služby:** App Proxy  
 **Funkce produktu:** Platforma
 
 Nejnovější vydaná verze modulu AzureAD PowerShell obsahuje rutiny pro správu skupin ve službě Azure AD. Tyto rutiny byly dříve k dispozici v modulu AzureADPreview a teď se přidají do modulu AzureAD
@@ -1388,7 +1388,7 @@ Jsou rutiny skupiny, které jsou nyní verze pro obecná dostupnost:
 ### <a name="a-new-release-of-azure-ad-connect-is-available"></a>Je k dispozici nová verze služby Azure AD Connect
 
 **Typ:** Nová funkce  
-**Kategorie služby:** AD Sync  
+**Kategorie služby:** Synchronizace AD  
 **Funkce produktu:** Platforma
  
 Azure AD Connect je preferovaný nástroj pro synchronizaci dat mezi službami Azure AD a na místní zdroje dat, včetně systému Windows Server Active Directory a protokolu LDAP.
@@ -1463,7 +1463,7 @@ Další informace naleznete v tématu:
 
 ---
 
-### <a name="terms-of-use-update-to-mobile-experience"></a>Aktualizace podmínek použití pro mobilní prostředí 
+### <a name="terms-of-use-update-to-mobile-experience"></a>Podmínky použití aktualizace pro mobilní prostředí 
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Podmínky použití  
@@ -1479,7 +1479,7 @@ Když se zobrazí podmínky použití, můžete nyní kliknout na **máte probl�
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
 
 V lednu 2018 byly přidány následující nové aplikace s podporou federace v galerii aplikací:
 
@@ -1509,7 +1509,7 @@ Další informace najdete v tématu věnovaném [rizikovým událostem služby A
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Moje aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Teď můžete lépe spravovat jak aplikacím Office 365 objeví na přístupových panelech uživatele pomocí nového nastavení uživatele. Tato možnost je užitečná pro snížení počtu aplikací v přístupových panelech uživatele, pokud chcete zobrazit jenom aplikace Office na portálu Office. Toto nastavení se nachází v **uživatelská nastavení** a je označený, **uživatelé vidí pouze aplikace Office 365 na portálu Office 365**.
 
@@ -1521,7 +1521,7 @@ Další informace najdete v tématu [skrytí aplikace prostředí uživatele v A
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Moje aplikace  
-**Funkce produktu:** Jednotné přihlašování
+**Funkce produktu:** SSO
 
 Rozšíření prohlížeče Moje aplikace je teď dostupná přes praktický nástroj, který poskytuje jednotné přihlašování v Moje aplikace na funkce jako zástupce v prohlížeči. Po instalaci se uživatele se zobrazuje ikona dlaždice ve svém prohlížeči, který jim poskytuje rychlý přístup k aplikacím. Uživatelé teď mohou využít výhod:
 
@@ -1657,7 +1657,7 @@ Další informace najdete v tématu [co je Azure AD Privileged Identity Manageme
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podnikové aplikace  
-**Funkce produktu:** Integrace třetích stran
+**Funkce produktu:** 3. stran integrace
 
 V prosinci 2017 jsme přidali podporu těchto nových aplikacích s federací do naší Galerie aplikací:
 
@@ -1724,7 +1724,7 @@ V pozdní 2018 se vyřadí z Azure Active Directory Access Control (označované
 ### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>Omezit přístup z prohlížeče pro Intune Managed Browser 
 
 **Typ:** Plánování změn  
-**Kategorie služby:** Podmíněný přístup  
+**Kategorie služby:** podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Můžete omezit přístup z prohlížeče k Office 365 a dalším aplikacím Azure AD připojení cloudu s využitím jako schválenou aplikaci Intune Managed Browser. 
@@ -1746,7 +1746,7 @@ Další informace najdete v tématu [podmíněný přístup ve službě Azure AD
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
 
 **Typ:** Plánování změn  
-**Kategorie služby:** Podmíněný přístup  
+**Kategorie služby:** podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
@@ -1837,7 +1837,7 @@ Další informace najdete v tématu [spravovat zařízení pomocí webu Azure po
 ### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Podpora pro macOS jako platformu zařízení pro podmíněný přístup Azure AD 
 
 **Typ:** Nová funkce    
-**Kategorie služby:** Podmíněný přístup  
+**Kategorie služby:** podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany 
 
 Nyní můžete zahrnout (nebo vyloučit) macOS jako podmínku platformy zařízení ve svojí zásadě podmíněného přístupu Azure AD. Přidání macOS na platformách podporovaných zařízení vám umožňuje:
@@ -1891,7 +1891,7 @@ V Centru pro správu Azure AD teď můžete:
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
  
 **Typ:** Změněná funkce  
-**Kategorie služby:** Podmíněný přístup  
+**Kategorie služby:** podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Tyto aplikace byly přidány do seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
@@ -1909,7 +1909,7 @@ Další informace naleznete v tématu:
 ### <a name="use-or-between-controls-in-a-conditional-access-policy"></a>Použití "Nebo" mezi ovládacími prvky v zásadách podmíněného přístupu 
 
 **Typ:** Změněná funkce    
-**Kategorie služby:** Podmíněný přístup  
+**Kategorie služby:** podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
  
 Teď můžete použít "nebo" (vyžadovat jeden z vybraných ovládacích prvků) pro řízení podmíněného přístupu. Tato funkce slouží k vytváření zásad s "nebo" mezi řízení přístupu. Například můžete použít tuto funkci můžete vytvořit zásadu, která vyžaduje uživatele k přihlášení pomocí služby Multi-Factor Authentication "nebo" na vyhovující zařízení.
@@ -1949,7 +1949,7 @@ Díky těmto novým funkcím byly dostupné sestavy rozhraní API v rámci konco
 
 ### <a name="automatic-sign-in-field-detection"></a>Zjišťování pole Automatické přihlášení
 
-**Typ:** Pevné   
+**Typ:** Oprava   
 **Kategorie služby:** Moje aplikace  
 **Funkce produktu:** Jednotné přihlašování  
 

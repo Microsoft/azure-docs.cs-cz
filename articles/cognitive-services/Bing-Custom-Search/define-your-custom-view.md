@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 83ae5f923130ecb46b7b94cd8112ee45ae13e3f4
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e4799ca099d608c3b8ecd16612b790f5654df7dd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236257"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390423"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí pro vlastní vyhledávání Bingu
 
@@ -40,7 +40,7 @@ Při vytváření vaší instance vlastního hledání můžete určit řezy web
 
 Pokud víte, že řezy, které chcete zahrnout do vaší instance vlastního hledání, je přidat k vaší instanci **aktivní** seznamu. 
 
-Pokud si nejste jistí, řezy, které chcete zahrnout, můžete poslat dotazy vyhledávání Bingu ve **ve verzi Preview** podokně a vyberte řezy, které chcete. To uděláte takto: 
+Pokud si nejste jistí, řezy, které chcete zahrnout, můžete poslat dotazy vyhledávání Bingu ve **ve verzi Preview** podokně a vyberte řezy, které chcete. Použijte následující postup: 
 
 1. Vyberte z rozevíracího seznamu v podokně náhledu "Bingu" a zadejte vyhledávací dotaz
 
@@ -74,7 +74,7 @@ Po přidání oblasti web slice k **aktivní** seznamu, vlastní vyhledávání 
 
 ## <a name="search-for-images-and-videos"></a>Vyhledávání obrázků a videa
 
-Můžete vyhledat obrázky a videa podobně k webovému obsahu pomocí [API pro vyhledávání obrázků Bingu vlastní](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference) nebo [API pro vyhledávání videí Bingu vlastní](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference). Můžete zobrazit tyto výsledky s [hostované uživatelského rozhraní](hosted-ui.md), nebo rozhraní API. 
+Můžete vyhledat obrázky a videa podobně k webovému obsahu pomocí [API pro vyhledávání obrázků Bingu vlastní](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [API pro vyhledávání videí Bingu vlastní](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Můžete zobrazit tyto výsledky s [hostované uživatelského rozhraní](hosted-ui.md), nebo rozhraní API. 
 
 Tato rozhraní API se podobně jako jiné vlastní [Bingu pro vyhledávání obrázků](../Bing-Image-Search/overview.md) a [Bingu pro vyhledávání videí](../Bing-Video-Search/search-the-web.md) rozhraní API, ale hledat celého webu a nevyžadují, aby `customConfig` parametr dotazu. Najdete v těchto sad dokumentace pro další informace o práci s obrázky a videa. 
 
@@ -83,7 +83,7 @@ Tato rozhraní API se podobně jako jiné vlastní [Bingu pro vyhledávání obr
 Vaše hledání instance můžete otestovat pomocí podokna ve verzi preview na pravé straně na portálu posílat vyhledávací dotazy a zobrazit výsledky. 
 
 1. Pod vyhledávacím polem vyberte **Moje Instance**. Můžete porovnat výsledky z prostředí pro vyhledávání na Bingu, tak, že vyberete **Bingu**. 
-2. Výběr filtru bezpečného hledání a které uvedení na trh pro vyhledávání (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)).
+2. Výběr filtru bezpečného hledání a které uvedení na trh pro vyhledávání (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Zadejte dotaz a stiskněte enter nebo klikněte na ikonu Hledat a zobrazit výsledky z aktuální konfiguraci. Můžete změnit typ hledání provedete kliknutím **webové**, **Image**, nebo **Video** zobrazíte odpovídající výsledky. 
 
 <a name="adjustrank"></a>
@@ -95,7 +95,7 @@ Na portálu můžete upravit pořadí hledání obsahu z konkrétní domény, po
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Zablokovat      | Přesune do seznamu blokovaných domény, podstránku nebo webové stránky. Bing vyloučí obsah z vybraného webu z zobrazování ve výsledcích hledání.                    |
-| Zvýšení skóre      | Zvyšuje obsah z domény nebo podstránku vyšší ve výsledcích hledání.                                                                                        |
+| Zvýšení výkonu      | Zvyšuje obsah z domény nebo podstránku vyšší ve výsledcích hledání.                                                                                        |
 | Snížení úrovně     | Sníží úroveň obsah z domény nebo podstránku nižší ve výsledcích hledání. Vyberte, jestli se má obsah z domény degradovat nebo podstránky, že webová stránka patří. |
 | Připnout nahoru | Přesune domény, podstránku nebo webové stránky **Pinned** seznamu. To přinutí webová stránka se zobrazí jako výsledek Nejvyhledávanější zadanému vyhledávacímu dotazu.                   |
 
@@ -129,10 +129,10 @@ Ve výchozím nastavení, se webové stránky pouze připnuté k hornímu okraji
 > [!NOTE]
 > Všechna porovnání mezi uživatele vyhledávací dotaz a vyhledávání kódu pin jsou malá a velká písmena.
 
-| Value | Popis                                                                          |
+| Hodnota | Popis                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| Začíná na | Kód pin je nalezena shoda, pokud řetězec dotazu začíná řetězec dotazu PIN kódu |
-| Končí na   | Kód pin je nalezena shoda, pokud řetězec dotazu končí řetězcem dotazu PIN kódu.  |
+| začíná | Kód pin je nalezena shoda, pokud řetězec dotazu začíná řetězec dotazu PIN kódu |
+| končí   | Kód pin je nalezena shoda, pokud řetězec dotazu končí řetězcem dotazu PIN kódu.  |
 | Obsahuje    | Kód pin je nalezena shoda, pokud řetězec dotazu obsahuje řetězec dotazu PIN kódu.   |
 
 
@@ -144,7 +144,7 @@ Chcete-li změnit pořadí váš PIN kódy, můžete na ně přetažení myší,
 
 Pokud víc PIN kódů splňují podmínky shody, bude používat vlastní vyhledávání Bingu je nejvyšší v seznamu.
 
-## <a name="view-statistics"></a>Statistiky sledovanosti
+## <a name="view-statistics"></a>Zobrazení statistik
 
 Pokud jste přihlášení k odběru vlastního vyhledávání na příslušné úrovni (najdete v článku [stránkách s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), **statistiky** kartu se přidá do produkčních instancí. Statistiky karta zobrazuje podrobnosti o vašich koncových bodů vlastního vyhledávání používání, včetně objemy volání, nejčastější dotazy, geografické distribuce, kódy odpovědí a bezpečného hledání. Můžete filtrovat podrobně popisuje použití zadaný ovládací prvky.
 

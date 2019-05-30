@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573637"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393120"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Například ve scénáři IoT může ukládají metadata o senzorů (které se nemění často) v referenčních dat a připojte ho s datovými proudy IoT reálném čase. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. 
@@ -38,7 +38,7 @@ Pokud chcete nakonfigurovat referenční data, musíte nejprve vytvořit vstup, 
 |Vzor cesty   | Cesta používaná k nalezení objektů BLOB v zadaném kontejneru. V této cestě můžete zadat jednu nebo víc instancí následujících proměnných 2:<BR>{date} {time}<BR>Příklad 1: products/{date}/{time}/product-list.csv<BR>Příklad 2: products/{date}/product-list.csv<BR>Příklad 3: seznam-produktu.csv<BR><br> Pokud objekt blob neexistuje v zadané cestě, úlohy Stream Analytics bude čekat bez omezení pro tento objekt blob k dispozici.   |
 |Formát data [volitelný]   | Pokud jste použili {date} v rámci vzor cesty, který jste zadali, můžete vybrat formát data, ve kterém jsou uspořádány objektů blob z rozevíracího seznamu podporovaných formátů.<BR>Příklad: RRRR/MM/DD, MM/DD/RRRR, atd.   |
 |Formát času [volitelný]   | Pokud jste použili {time} v rámci vzor cesty, který jste zadali, můžete vybrat formát času, ve kterém jsou uspořádány objektů blob z rozevíracího seznamu podporovaných formátů.<BR>Příklad: HH, HH/mm nebo HH mm.  |
-|Formát serializace události   | Aby dotazy fungovaly podle očekávání, potřebuje Stream Analytics vědět, který formát serializace používáte pro příchozí datové streamy. Podporované formáty pro referenční Data jsou CSV a JSON.  |
+|Formát serializace události   | Abyste měli jistotu, že vaše dotazy budou fungovat tak, jak očekáváte, potřebuje Stream Analytics vědět, který formát serializace používáte pro příchozí datové streamy. Podporované formáty pro referenční Data jsou CSV a JSON.  |
 |Kódování   | V tuto chvíli je jediným podporovaným formátem kódování UTF-8.  |
 
 ### <a name="static-reference-data"></a>Statická referenční data
@@ -72,7 +72,7 @@ Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace refer
 3. Objekty BLOB referenčních dat jsou **není** seřazené podle času "Naposledy upraveno" Tento objekt blob, ale pouze čas a datum zadané v objektu blob pojmenovat pomocí {date} a {time} náhrady.
 3. Aby se nemusela seznamu velkého počtu objektů BLOB, zvažte odstranění starých objekty BLOB, pro které se již provádí zpracování. Mějte prosím na paměti, že Azure Stream Analytics je možné dát muset znovu zpracovat malé množství v některých scénářích, jako je restartování.
 
-## <a name="azure-sql-database-preview"></a>Azure SQL Database (Preview)
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database referenční data jsou načítána pro svou úlohu Stream Analytics a je uložena jako snímek v paměti pro zpracování. Snímek referenčních dat je také ukládat do kontejneru v účtu úložiště, který určíte v nastavení konfigurace. Kontejner je automaticky vytvořený při spuštění úlohy. Pokud úloha je zastavená nebo přejde do stavu selhání, odstraní se kontejnery automaticky vytvořený při restartování úlohy.  
 
@@ -93,9 +93,9 @@ Konfigurace vaší databáze SQL referenční data, musíte nejprve vytvořit **
 |Databáze|Azure SQL Database, která obsahuje referenční data.|
 |Uživatelské jméno|Uživatelské jméno přidružené k databázi SQL Azure.|
 |Heslo|Heslo přidružené k vaší databázi SQL Azure.|
-|Aktualizace pravidelně|Tato možnost umožňuje zvolit obnovovací frekvence. Volba "On" vám umožní zadat obnovovací frekvence v DD:HH:MM.|
-|Dotaz snímku|Toto je výchozí možnost dotazu, který načte referenčních dat z SQL Database.|
-|Dotaz delta|Pro pokročilé scénáře s velkými datovými sadami a krátké obnovovací frekvence, zvolte možnost Přidat rozdílového dotazu.|
+|Pravidelně aktualizujte|Tato možnost umožňuje zvolit obnovovací frekvence. Volba "On" vám umožní zadat obnovovací frekvence v DD:HH:MM.|
+|Snímek dotazu|Toto je výchozí možnost dotazu, který načte referenčních dat z SQL Database.|
+|Rozdílový dotaz|Pro pokročilé scénáře s velkými datovými sadami a krátké obnovovací frekvence, zvolte možnost Přidat rozdílového dotazu.|
 
 ## <a name="size-limitation"></a>Omezení velikosti
 

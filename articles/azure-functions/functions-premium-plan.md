@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544774"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242306"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plán služby Azure Functions Premium (preview)
 
@@ -91,9 +91,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>K dispozici instance SKU
 
-Při vytváření naše škálování plánu, můžete mezi tři velikosti instance.  Bude se vám účtovat celkový počet jader a paměti spotřebované za sekundu.  Vaše aplikace může automaticky škálovat na více instancí podle potřeby.  
+Při vytváření nebo škálování plánu, můžete mezi tři velikosti instance.  Bude se vám účtovat celkový počet jader a paměti spotřebované za sekundu.  Vaše aplikace může automaticky škálovat na více instancí podle potřeby.  
 
-|Skladová jednotka|Jádra|Memory (Paměť)|Úložiště|
+|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Úložiště|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|

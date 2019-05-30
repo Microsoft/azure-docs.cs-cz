@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2018
+ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141074"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241683"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API s použitím OAuth 2.0 s Azure Active Directory a API Management
 
@@ -44,17 +44,19 @@ Tady je stručný přehled kroků:
 
 Pokud chcete chránit rozhraní API s využitím Azure AD, prvním krokem je registrace aplikace ve službě Azure AD, který představuje rozhraní API. 
 
-1. Přejděte do svého tenanta Azure AD a potom vyhledejte **registrace aplikací (starší verze)**.
+1. Přejděte [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky. 
 
-2. Vyberte **Registrace nové aplikace**. 
+2. Vyberte **registrace nové**. 
 
-3. Zadejte název aplikace. (V tomto příkladu je název `backend-app`.)  
+1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace: 
+    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `backend-app`. 
+    - V **podporovaných typů účtu** vyberte **účty v libovolném adresáři organizace**. 
 
-4. Zvolte **webovou aplikaci nebo API** jako **typ aplikace**. 
+1. Nechte **identifikátor URI pro přesměrování** části prozatím prázdný.
 
-5. Pro **přihlašovací adresa URL**, můžete použít `https://localhost` jako zástupný symbol.
+1. Výběrem možnosti **Registrovat** aplikaci vytvořte. 
 
-6. Vyberte **Vytvořit**.
+1. V aplikaci **přehled** stránky, vyhledejte **ID aplikace (klient)** hodnotu a uložte ho pro pozdější.
 
 Když se aplikace, poznamenejte si, **ID aplikace**, pro použití v následném kroku. 
 
@@ -62,23 +64,25 @@ Když se aplikace, poznamenejte si, **ID aplikace**, pro použití v následném
 
 Každá klientská aplikace, která volá rozhraní API musí být registrován jako aplikaci v Azure AD také. V tomto příkladu je ukázková aplikace klientské konzole pro vývojáře na portálu pro vývojáře API Management. Tady je postup při registraci jiná aplikace ve službě Azure AD k reprezentaci konzole pro vývojáře.
 
-1. Během činnosti v **registrace aplikací (starší verze)** vyberte **registrace nové aplikace**. 
+1. Přejděte [portál Azure – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky. 
 
-2. Zadejte název aplikace. (V tomto příkladu je název `client-app`.)
+1. Vyberte **registrace nové**.
 
-3. Zvolte **webovou aplikaci nebo API** jako **typ aplikace**.  
+1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace: 
+    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `client-app`. 
+    - V **podporovaných typů účtu** vyberte **účty v libovolném adresáři organizace**. 
 
-4. Pro **přihlašovací adresa URL**, můžete použít `https://localhost` jako zástupný symbol, nebo použijte přihlašovací adresu URL vaší instance služby API Management. (V tomto příkladu je adresa URL `https://contoso5.portal.azure-api.net/signin`.)
+1. V **identifikátor URI pro přesměrování** vyberte `Web` a zadejte adresu URL `https://contoso5.portal.azure-api.net/signin`
 
-5. Vyberte **Vytvořit**.
+1. Výběrem možnosti **Registrovat** aplikaci vytvořte. 
 
-Když se aplikace, poznamenejte si, **ID aplikace**, pro použití v následném kroku. 
+1. V aplikaci **přehled** stránky, vyhledejte **ID aplikace (klient)** hodnotu a uložte ho pro pozdější.
 
 Teď vytvořte tajný kód klienta pro tuto aplikaci pro použití v následném kroku.
 
-1. Vyberte **nastavení** znovu a přejděte na **klíče**.
+1. V seznamu stránek pro klientskou aplikaci, vyberte **certifikáty a tajné kódy**a vyberte **nový tajný kód klienta**.
 
-2. V části **hesla**, zadejte **Popis klíče**. Zvolte, kdy by měl klíč vyprší a vyberte **Uložit**.
+2. V části **přidat tajný klíč klienta**, zadejte **popis**. Zvolte, kdy by měl klíč vyprší a vyberte **přidat**.
 
 Poznamenejte si hodnotu klíče. 
 
@@ -86,17 +90,17 @@ Poznamenejte si hodnotu klíče.
 
 Teď, když jste se zaregistrovali k reprezentaci rozhraní API a vývojářské konzole dvě aplikace, budete muset udělit oprávnění, aby klientská aplikace volat back-end app.  
 
-1. Přejděte do **registrace aplikací (starší verze)**. 
+1. Přejděte do **registrace aplikací**. 
 
-2. Vyberte `client-app`a přejděte na **nastavení**.
+2. Vyberte `client-app`a v seznamu stránek aplikace přejděte na **oprávnění k rozhraní API**.
 
-3. Vyberte **požadovaná oprávnění** > **přidat**.
+3. Vyberte **přidat oprávnění**.
 
-4. Vyberte **vyberte rozhraní API**a vyhledejte `backend-app`.
+4. V části **vyberte rozhraní API**vyhledejte a vyberte `backend-app`.
 
-5. V části **delegovaná oprávnění**vyberte `Access backend-app`. 
+5. V části **delegovaná oprávnění**, vyberte příslušná oprávnění k `backend-app`.
 
-6. Vyberte **vyberte**a pak vyberte **provádí**. 
+6. Vyberte **přidat oprávnění** 
 
 > [!NOTE]
 > Pokud **Azure Active Directory** není uveden v seznamu oprávnění k ostatním aplikacím, vyberte **přidat** přidat ze seznamu.
@@ -107,7 +111,7 @@ V tomto okamžiku jste vytvořili vaší aplikace ve službě Azure AD a mít ud
 
 V tomto příkladu je konzola pro vývojáře klientskou aplikaci. Následující kroky popisují, jak povolit autorizaci uživatelů OAuth 2.0 v konzole pro vývojáře. 
 
-1. Na webu Azure Portal přejděte k vaší instanci API Management.
+1. Na webu Azure portal přejděte k vaší instanci API Management.
 
 2. Vyberte **OAuth 2.0** > **přidat**.
 

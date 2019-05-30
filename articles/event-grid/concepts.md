@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562351"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305258"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty ve službě Azure Event Grid
 
@@ -22,7 +22,8 @@ Tento článek popisuje hlavní koncepty ve službě Azure Event Grid.
 
 Událost je nejmenší velikost informace popisující plně něco, ke které došlo v systému. Každé události je běžné informace, například: Zdroj události, čas události trvalo místo a jedinečný identifikátor. Každou událost má také určité informace, které jsou pouze relevantní pro konkrétní typ události. Třeba událost o nový soubor, který vytváří ve službě Azure Storage obsahuje podrobnosti o souboru, například `lastTimeModified` hodnotu. Nebo událost Event Hubs má adresu URL zachytávací soubor. 
 
-Každá událost je omezená na 64 KB dat.
+Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
+
 
 Vlastnosti, které se odesílají v události, naleznete v tématu [schéma událostí služby Azure Event Grid](event-schema.md).
 
@@ -59,9 +60,6 @@ Příklady vytváření předplatných najdete v tématu:
 Informace o tom, jak aktuální event grid předplatných najdete v tématu [dotazování odběrů Event gridu](query-event-subscriptions.md).
 
 ## <a name="event-subscription-expiration"></a>Události vypršení platnosti předplatného
-
-[Rozšíření služby Event Grid](/cli/azure/azure-cli-extensions-list) pro rozhraní příkazového řádku Azure vám umožní nastavit vypršení datum vytvoření odběru událostí. Pokud používáte rozhraní REST API, použijte `api-version=2018-09-15-preview`
-
 Po tomto datu automaticky vyprší platnost odběru událostí. Nastavit dobu platnosti pro odběry událostí, které jsou vyžadovány pouze po omezenou dobu a nechcete, aby se starat o vyčištění těchto předplatných. Při vytváření odběru událostí pro scénář testování, můžete chtít nastavit vypršení. 
 
 Příkladem vypršení nastavení, najdete v části [přihlásit k odběru s rozšířené filtry](how-to-filter-events.md#subscribe-with-advanced-filters).
@@ -82,7 +80,10 @@ Pokud služby Event Grid nelze potvrdit, že koncový bod odběratele obdržel u
 
 ## <a name="batching"></a>Dávkování
 
-Pokud používáte vlastní téma, události musí být vždy publikovány v poli. Může to být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy případy použití, se doporučuje batch několik událostí společně za publikování na dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každé události by neměly být stále víc než 64 KB.
+Pokud používáte vlastní téma, události musí být vždy publikovány v poli. Může to být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy případy použití, se doporučuje batch několik událostí společně za publikování na dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každé události by neměly být stále větší než 64 KB (obecná dostupnost) nebo 1 MB (preview).
+
+> [!NOTE]
+> Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
 
 ## <a name="next-steps"></a>Další postup
 

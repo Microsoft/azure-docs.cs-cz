@@ -1,9 +1,9 @@
 ---
-title: Vytvoření certifikátem protokolu secure LDAP pro správu domény Azure AD Domain Services | Dokumentace Microsoftu
+title: Vytvoření. Soubor PFX s certifikátem zabezpečeného protokolu LDAP (LDAPS) pro doménu služby Azure AD Domain Services
 description: Vytvoření certifikátem protokolu secure LDAP pro Azure AD Domain Services spravovat doménu
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -13,22 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2017
-ms.author: ergreenl
-ms.openlocfilehash: 801ba3b84ba9956ca8d13916ac4d90060a7f4037
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/13/2019
+ms.author: mstephen
+ms.openlocfilehash: b79418c6e64727e4fdf13b3f4f267d84fcf5da85
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418419"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235028"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Vytvoření. Soubor PFX s certifikátem zabezpečeného protokolu LDAP (LDAPS) pro spravovanou doménu
 
 ## <a name="before-you-begin"></a>Než začnete
-Kompletní [úkol 1: získání certifikátu pro protokol secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md).
 
+Kompletní [úkol 1: získání certifikátu pro protokol secure LDAP](configure-ldaps.md).
 
 ## <a name="task-2-export-the-secure-ldap-certificate-to-a-pfx-file"></a>Úloha 2: Exportujte certifikát protokolu secure LDAP pro. Soubor PFX
+
 Předtím, než se pustíte do této úlohy, získat certifikát protokolu secure LDAP od veřejné certifikační autority nebo vytvořit certifikát podepsaný svým držitelem.
 
 Export certifikátu protokolu LDAPS pro. Soubor PFX:
@@ -96,6 +97,6 @@ Export certifikátu protokolu LDAPS pro. Soubor PFX:
 
     ![Export certifikátu Hotovo](./media/active-directory-domain-services-admin-guide/secure-ldap-exported-as-pfx.png)
 
-
 ## <a name="next-step"></a>Další krok
+
 [Úloha 3: povolení protokolu LDAPS pro spravované domény](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)

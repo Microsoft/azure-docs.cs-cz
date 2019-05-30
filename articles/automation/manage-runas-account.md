@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/21/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002494"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240814"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -54,7 +54,7 @@ Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávn�
 |Vytvořit nebo odebrat na server certifikát služby Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Přispěvatelem skupiny prostředků         |Skupina prostředků účtu služby Automation|
 |Vytvoření nebo odebrání připojení služby Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Přispěvatelem skupiny prostředků |Skupina prostředků účtu služby Automation|
 
-<sup>1</sup> můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Pokud vašeho tenanta Azure AD **uživatelé můžou registrovat aplikace** možnost **uživatelská nastavení**stránky je nastavené na **Ano**. Pokud je nastavení registrace aplikací nastaveno **ne**, musí být uživatel provádějící tuto akci **globálního správce** ve službě Azure AD.
+<sup>1</sup> můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) Pokud vašeho tenanta Azure AD **uživatelé můžou registrovat aplikace** možnost **uživatelská nastavení**stránky je nastavené na **Ano**. Pokud je nastavení registrace aplikací nastaveno **ne**, uživatel provádějící tuto akci musí být definovaná v předchozí tabulce.
 
 Pokud nejste členem instance Active Directory předplatného předtím, než jste už přidali do **globálního správce** role předplatného, se přidá jako Host. V takovém případě se zobrazí `You do not have permissions to create…` upozornění na **přidat účet Automation** stránky. Uživatelé, kteří byly přidány do **globálního správce** nejprve může role být z instance Active Directory předplatného odebrat a znovu přidat – tak jejich úplné uživatelské ve službě Active Directory. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
 
@@ -376,7 +376,7 @@ Na webu Azure Portal, vyberte **předplatná** a zvolte předplatné účtu Auto
 
 ![Přispěvatelé předplatného](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)**. Vyberte **přidat přiřazení role**, tím se otevře **přidat přiřazení role** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. Proveďte tyto kroky pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
+Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)** . Vyberte **přidat přiřazení role**, tím se otevře **přidat přiřazení role** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. Proveďte tyto kroky pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
 
 ## <a name="misconfiguration"></a>Chybná konfigurace
 

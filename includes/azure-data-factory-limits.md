@@ -9,22 +9,22 @@ ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733727"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238786"
 ---
 Azure Data Factory je víceklientská služba, která má následující výchozí omezení na místě zajistit, aby chránily zákaznických předplatných z druhé strany úlohy. Chcete-li zvýšit limity až do maximální pro vaše předplatné, obraťte se na podporu.
 
 ### <a name="version-2"></a>Verze 2
 
-| Prostředek | Výchozí omezení | Maximální omezení |
+| Resource | Výchozí omezení | Maximální omezení |
 | -------- | ------------- | ------------- |
 | Datových továren v předplatném Azure | 50 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Celkový počet entit, jako je například kanály, datových sad, aktivační události, propojené služby a moduly runtime integrace v rámci služby data factory | 5 000 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Celkový počet jader procesoru pro prostředí Azure-SSIS Integration Runtime v rámci jednoho předplatného | 256 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Souběžný kanál spuštění za služby data factory, který je sdílen mezi všechny kanály v objektu pro vytváření | 10 000  | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Souběžný kanál spuštění za služby data factory, který je sdílen mezi všechny kanály v objektu pro vytváření | 10,000  | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximální aktivity za kanál, který obsahuje vnitřní aktivity pro kontejnery | 40 | 40 |
 | Maximální počet propojených integration runtime, který je možné vytvořit pro jednu místní prostředí integration runtime | 100 | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximální parametry za kanál | 50 | 50 |

@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 111167584fb2e0e2ee5977e0e24b3ebf07b170c1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65961440"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238010"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónově redundantní úložiště (ZRS): Vysoce dostupné aplikace služby Azure Storage
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -49,7 +49,7 @@ ZRS nemůže chránit vaše data před regionální po havárii, ve kterém jsou
 ## <a name="converting-to-zrs-replication"></a>Převod na replikací zónově redundantního úložiště
 Migrace do nebo z LRS, GRS a RA-GRS je jednoduché. Pomocí webu Azure portal nebo rozhraní API poskytovatele prostředků úložiště můžete změnit typ redundance vašeho účtu. Azure bude odpovídajícím způsobem replikovat data. 
 
-Migrace dat do nebo z ZRS vyžaduje jinou strategii. ZRS migrace zahrnuje fyzické přesun dat z razítka s jediným úložištěm do několika razítek v rámci oblasti.
+Migrace dat do ZRS vyžaduje jinou strategii. ZRS migrace zahrnuje fyzické přesun dat z razítka s jediným úložištěm do několika razítek v rámci oblasti.
 
 Existují dvě primární možnosti pro migraci do ZRS: 
 

@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777385"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244940"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
-**Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](./diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.
+**Protokolu aktivit Azure** je protokol, který nabízí pohled na všechny události na úrovni předplatného, ke kterým došlo v Azure. Tento článek popisuje schéma událostí podle jednotlivých kategorií data. Schéma dat se liší v závislosti na tom, při čtení dat na portálu, Powershellu, rozhraní příkazového řádku, nebo přímo přes rozhraní REST API a [streamovaná data do úložiště nebo Event Hubs pomocí profilu protokolu](activity-log-export.md). Následující příklady ukazují schématu jako k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní REST API. Mapování těchto vlastností [Azure diagnostické protokoly schématu](diagnostic-logs-schema.md) je k dispozici na konci tohoto článku.
 
 ## <a name="administrative"></a>Správa
 Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a akce operace provést prostřednictvím Resource Manageru. Typy událostí, zobrazí se v této kategorii příklady "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každé akce, které uživatele nebo aplikace pomocí Resource Manageru je modelovaná jako operace na konkrétní typ prostředku. Pokud je typ operace zápisu, Delete nebo akce, záznamy o zahájení a úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie také zahrnuje všechny změny na řízení přístupu na základě rolí v rámci předplatného.
@@ -113,7 +113,7 @@ Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a 
 | Název elementu | Popis |
 | --- | --- |
 | Autorizace |Objekt BLOB RBAC vlastností události. Obvykle obsahuje vlastnosti "action", "role" a "rozsah". |
-| volající |E-mailová adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. |
+| Volající |E-mailová adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. |
 | kanály |Jeden z následujících hodnot: "Admin", "Operace" |
 | deklarace identity |Token JWT, používá služba Active Directory k ověření uživatele nebo aplikaci k provedení této operace v Resource Manageru. |
 | correlationId |Obvykle GUID ve formátu řetězce. Události, které sdílejí ID korelace patřit do stejné akce uber. |
@@ -216,7 +216,7 @@ Tato kategorie obsahuje záznam všechny události stavu prostředků, ke který
         "localizedValue": "Resource Health"
     },
     "eventTimestamp": "2018-09-04T15:33:43.65Z",
-    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "id": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
     "level": "Critical",
     "operationId": "",
     "operationName": {
@@ -232,7 +232,7 @@ Tato kategorie obsahuje záznam všechny události stavu prostředků, ke který
         "value": "Microsoft.Compute/virtualMachines",
         "localizedValue": "Microsoft.Compute/virtualMachines"
     },
-    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "resourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
     "status": {
         "value": "Active",
         "localizedValue": "Active"
@@ -242,7 +242,7 @@ Tato kategorie obsahuje záznam všechny události stavu prostředků, ke který
         "localizedValue": ""
     },
     "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
-    "subscriptionId": "<subscription Id>",
+    "subscriptionId": "<subscription ID>",
     "properties": {
         "stage": "Active",
         "title": "Virtual Machine health status changed to unavailable",
@@ -352,7 +352,7 @@ Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je např�
 ### <a name="property-descriptions"></a>Popisy vlastností
 | Název elementu | Popis |
 | --- | --- |
-| volající | Vždy Microsoft.Insights/alertRules |
+| Volající | Vždy Microsoft.Insights/alertRules |
 | kanály | Vždy "Admin, operace" |
 | deklarace identity | Objekt blob JSON s typem hlavní název služby (hlavní název služby), nebo zdroj výstrahy stroje. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -462,7 +462,7 @@ Tato kategorie obsahuje záznam žádné události vztahující se k operaci mod
 ### <a name="property-descriptions"></a>Popisy vlastností
 | Název elementu | Popis |
 | --- | --- |
-| volající | Vždy Microsoft.Insights/autoscaleSettings |
+| Volající | Vždy Microsoft.Insights/autoscaleSettings |
 | kanály | Vždy "Admin, operace" |
 | deklarace identity | Objekt blob JSON pomocí hlavního názvu služby (hlavní název služby), nebo prostředek typu, modul automatického škálování. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
@@ -744,7 +744,7 @@ Tato kategorie obsahuje záznamy všech operací efekt akce prováděné [Azure 
 | Název elementu | Popis |
 | --- | --- |
 | Autorizace | Pole vlastnosti RBAC události. U nových prostředků Toto je akce a oboru požadavku, který aktivuje hodnocení. Pro existující prostředky je akce "Microsoft.Resources/checkPolicyCompliance/read". |
-| volající | U nových prostředků, identitu, která iniciovala nasazení. Pro existující prostředky, GUID RP Insights zásad Microsoft Azure. |
+| Volající | U nových prostředků, identitu, která iniciovala nasazení. Pro existující prostředky, GUID RP Insights zásad Microsoft Azure. |
 | kanály | Události zásad použijte pouze kanál "Operace". |
 | deklarace identity | Token JWT, používá služba Active Directory k ověření uživatele nebo aplikaci k provedení této operace v Resource Manageru. |
 | correlationId | Obvykle GUID ve formátu řetězce. Události, které sdílejí ID korelace patřit do stejné akce uber. |
@@ -788,7 +788,7 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo oboru ná
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | deklarace identity a autorizace vlastnosti |  |
-| Úroveň | Úroveň |  |
+| Level | Level |  |
 | location | neuvedeno | Umístění, kde událost byla zpracována. *Toto není umístění prostředku, ale místo toho pokud událost byla zpracována. Tato vlastnost bude v budoucí aktualizaci odebrána.* |
 | Vlastnosti | properties.eventProperties |  |
 | properties.eventCategory | category | Pokud properties.eventCategory není k dispozici, je kategorie "Správy" |
@@ -798,6 +798,6 @@ Při streamování protokolu aktivit Azure do účtu úložiště nebo oboru ná
 
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o protokolu aktivit (dříve protokoly auditu)](../../azure-monitor/platform/activity-logs-overview.md)
-* [Stream protokolů aktivit Azure do služby Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+* [Další informace o protokolu aktivit](activity-logs-overview.md)
+* [Export protokolu aktivit do služby Azure Storage nebo služby Event Hubs](activity-log-export.md)
 

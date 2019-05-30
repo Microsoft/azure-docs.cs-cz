@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b3b3b019df70b6c27833afdd0447ecf32da32ff
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821830"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305015"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
 Po celé oblasti Azure nebo datových centrech (Pokud ne [zóny dostupnosti](../availability-zones/az-overview.md) se používají) dojít k výpadku, je velmi důležité pro zpracování dat i nadále fungovat v jiné oblasti nebo datového centra. V důsledku toho *zotavení po havárii geograficky* a *geografickou replikaci* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geo-zotavení po havárii a geografická replikace, na úrovni oboru názvů. 
 
-Funkce zotavení po havárii geograficky je globálně dostupná pro standardní SKU Event Hubs.
+Funkce zotavení po havárii geograficky je globálně dostupná pro Event Hubs úrovně Standard a Dedicated SKU. Mějte prosím na paměti, můžete pouze obory názvů geo pár napříč na stejné úrovni SKU. Například pokud máte obor názvů v clusteru, který je k dispozici jenom v SKU naše vyhrazené ji pouze se dají párovat s oborem názvů v jiném clusteru. 
 
 ## <a name="outages-and-disasters"></a>Výpadků a havárií
 

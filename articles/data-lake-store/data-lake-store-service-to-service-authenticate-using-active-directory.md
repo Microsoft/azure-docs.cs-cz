@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196795"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241374"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -48,9 +48,9 @@ Při pokynů uvedených v předchozí odkaz, ujistěte se, že vyberete **webovo
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Krok 2: Získání ID aplikace, ověřovací klíč a ID tenanta
 Při programovém přihlášení potřebujete ID pro vaši aplikaci. Pokud aplikace běží pod svoje vlastní přihlašovací údaje, potřebujete také ověřovací klíč.
 
-* Pokyny o tom, jak načíst ID a ověřovací klíč aplikace (také nazývané tajný klíč klienta) pro vaši aplikaci najdete v tématu [Get aplikace ID a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Pokyny o tom, jak načíst ID a ověřovací klíč aplikace (také nazývané tajný klíč klienta) pro vaši aplikaci najdete v tématu [Get aplikace ID a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
-* Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>Krok 3: Přiřaďte aplikaci Azure AD do Azure Data Lake Storage Gen1 účet souboru nebo složky
 

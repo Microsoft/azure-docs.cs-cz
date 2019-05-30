@@ -2,7 +2,7 @@
 title: Datové úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Ke zjištění datového úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 8587fb0138309040232b6e0abc0f3eb17cc3093a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951102"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244076"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Datové úložiště a příchozího přenosu dat v Azure čas Series Insights ve verzi Preview
 
@@ -175,7 +175,7 @@ Podporované typy souborů patří:
 > * Ve verzi preview můžete očekávejte delší období před opakovaným dat je k dispozici.
 > * Pokud dochází k žádné významné latenci, ujistěte se, že jste nás kontaktovat.
 
-### <a name="scale"></a>Škálovat
+### <a name="scale"></a>Měřítko
 
 Čas Series Insights ve verzi Preview podporuje měřítku počáteční příchozí přenos dat až 1 Mega bajtů za sekundu (MB/s) pro každé prostředí. Probíhá škálování rozšířenou podporu. Plánujeme aktualizovat tak, aby odrážely těchto vylepšení naší dokumentaci.
 

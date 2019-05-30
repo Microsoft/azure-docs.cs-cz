@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145924"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391439"
 ---
 Dočasné disky s operačním systémem jsou vytvořené v místním úložišti virtuální počítač (VM) a není trvalý do vzdáleného úložiště Azure. Dočasné disky s operačním systémem fungují dobře u bezstavových úloh, kdy aplikace jsou odolné proti selhání jednotlivých virtuálních počítačů, ale více jde o dobu potřebnou pro rozsáhlá nasazení nebo dobu obnovení z Image jednotlivých instancí virtuálních počítačů. Je také vhodné pro aplikace nasazené pomocí modelu nasazení classic, přesunout do modelu nasazení Resource Manager. U dočasných disků s operačním systémem se projevuje nižší latence čtení/zápisu na disk s operačním systémem a rychlejší obnovení virtuálního počítače z image. Kromě toho je disk s operačním systémem dočasné zdarma, vám být účtovány žádné náklady na úložiště pro disk s operačním systémem. 
  
@@ -30,7 +30,7 @@ Hlavní rozdíly mezi trvalé a dočasné disky s operačním systémem:
 |                             | Trvalý Disk s operačním systémem                          | Dočasný disk s operačním systémem                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Maximální velikost disku s operačním systémem      | 2 TiB                                                                                        | Velikost pro velikost virtuálního počítače nebo 2TiB, mezipaměti podle toho, co je menší - [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md), a [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| Podporované velikosti virtuálních počítačů          | Všechny                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
+| Podporované velikosti virtuálních počítačů          | Vše                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Podporu pro disky typu           | Spravovaných a nespravovaných disků operačního systému                                                                | Spravovaný disk s operačním systémem jenom                                                               |
 | Oblasti podpory              | Všechny oblasti                                                                                  | Všechny oblasti                              |
 | Trvalost dat            | Data na disku operačního systému zapsaných na disk s operačním systémem ukládají ve službě Azure Storage                                  | Data zapsaná na disk s operačním systémem je uložit do místního úložiště virtuálního počítače a není trvale uložena do úložiště Azure. |
@@ -38,38 +38,6 @@ Hlavní rozdíly mezi trvalé a dočasné disky s operačním systémem:
 | Specializované podporu pro disky operačního systému | Ano                                                                                          | Ne                                                                                 |
 | Změna velikosti disku operačního systému              | Nepodporuje během vytváření virtuálního počítače a poté, co je virtuální počítač zastavit a uvolnit                                | Nepodporuje během vytváření virtuálních počítačů pouze                                                  |
 | Změna velikosti novou velikost virtuálních počítačů   | Data na disku operačního systému se zachovají.                                                                    | Odstranění dat na disk s operačním systémem, operační systém je znovu zřízeny                                      |
-
-## <a name="register-for-the-preview"></a>Registr ve verzi Preview
-
-
-Registrovat pro náhled dočasné disky s operačním systémem pomocí nejnovější verzi Azure Powershellu nebo rozhraní příkazového řádku Azure.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-Chcete-li zkontrolovat, pokud jste zaregistrovaní pro verzi preview:
-
-```azurepowershell-interactive
-Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="cli"></a>CLI
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
-```
-
-Chcete-li zkontrolovat, pokud jste zaregistrovaní pro verzi preview:
- 
-```azurecli-interactive
-az provider show --namespace Microsoft.Compute
-```
-
 
 ## <a name="scale-set-deployment"></a>Nasazení škálovací sady  
 Proces vytvoření škálovací sady, který používá dočasný disk s operačním systémem je přidáte `diffDiskSettings` vlastnost `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` typ prostředku v šabloně. Zásady ukládání do mezipaměti, musí být nastavena na `ReadOnly` pro dočasný disk s operačním systémem. 

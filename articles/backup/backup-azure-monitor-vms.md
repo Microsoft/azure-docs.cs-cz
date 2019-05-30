@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 350e13a4b1c01329bef1ec270af5ba007cd788aa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464278"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399750"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Správa výstrah pro virtuální počítače Azure
 
@@ -70,7 +70,7 @@ Nastavení e-mailová oznámení pro výstrahy
    | Úroveň výstrahy | Zasílání upozornění |
    | --- | --- |
    | Kritická | selhání zálohování, obnovení selhalo. |
-   | Upozornění | pro zálohování úloh bylo úspěšně dokončeno s upozorněními. (Příklad: některé zapisovače lokality nemohlo vytvřit snímek) |
+   | Upozornění | v současné době nejsou žádné upozornění výstrahy k dispozici pro zálohy virtuálních počítačů Azure (například: některé zapisovače lokality nemohlo vytvřit snímek) |
    | Informační | v současné době nejsou k dispozici pro zálohování virtuálních počítačů Azure bez informační výstrahy |
 
 ### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>E-mail neodešle, i v případě, že jsou oznámení nakonfigurovaná situacích

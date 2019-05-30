@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 59a35e44c78ea86f3b02eb4ad99dc1fd8fcb4870
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160476"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236621"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
 
 Pomocí služby Azure Machine Learning můžete trénování modelu na širokou škálu prostředků nebo prostředí, které se souhrnně označují jako [ __cílových výpočetních prostředí__](concept-azure-machine-learning-architecture.md#compute-target). Cílové výpočetní prostředí může být místním počítači nebo prostředku cloudu, jako jsou Azure Machine Learning Compute, Azure HDInsight nebo vzdáleného virtuálního počítače.  Můžete také vytvořit cílových výpočetních prostředí pro model nasazení, jak je popsáno v ["kde a jak nasadit modely"](how-to-deploy-and-where.md).
 
-Můžete vytvořit a spravovat cílové výpočetní prostředí pomocí Azure Machine Learning SDK, webu Azure portal nebo rozhraní příkazového řádku Azure. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
+Můžete vytvořit a spravovat cílové výpočetní prostředí pomocí sady SDK Azure Machine Learning, webu Azure portal, rozhraní příkazového řádku Azure nebo Azure Machine Learning VS Code příponou. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
  
 V tomto článku se dozvíte, jak používat různé cílových výpočetních prostředí pro cvičení modelu.  Postup pro všechny cílových výpočetních prostředí postupujte podle stejného pracovního postupu:
 1. __Vytvoření__ cílové výpočetní prostředí, pokud ho ještě nemáte.
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak používat různé cílových výpočetních p
 Služba Azure Machine Learning nabízí různé podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
 
-|Cílové školení výpočetní prostředí| Akcelerace GPU | Automaticky<br/> hyperparametrů | Automaticky<br/> Strojové učení | Kanály Azure Machine Learning |
+|Cílové školení výpočetní prostředí| Akcelerace GPU | Automatizované<br/> hyperparametrů | Automatizované<br/> Strojové učení | Kanály Azure Machine Learning |
 |----|:----:|:----:|:----:|:----:|
 |[Místní počítač](#local)| Možná | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -377,6 +377,10 @@ Můžete přistupovat cílových výpočetních prostředí, které jsou spojen�
 
 Další informace najdete v tématu [správy prostředků](reference-azure-machine-learning-cli.md#resource-management).
 
+## <a name="set-up-compute-with-vs-code"></a>Nastavte výpočetní s VS Code
+
+Můžete získat přístup, vytvářet a spravovat cílových výpočetních prostředí, které jsou spojené s použitím vašeho pracovního prostoru [rozšíření VS Codu](how-to-vscode-tools.md#create-and-manage-compute-targets) pro službu Azure Machine Learning.
+
 ## <a id="submit"></a>Odeslat školení spuštění
 
 Po vytvoření konfigurace spuštění můžete použít ke spuštění experimentu.  Model kódu k odeslání školení spuštění je stejný pro všechny typy cílových výpočetních prostředí:
@@ -416,8 +420,9 @@ Přepnout tom stejném experimentu ke spuštění v jiného cílového výpočet
 
 Nebo můžete:
 
-* Odeslání experimentu s `Estimator` jak je znázorněno v [ML trénování modelů s odhady](how-to-train-ml-models.md). 
+* Odeslání experimentu s `Estimator` jak je znázorněno v [ML trénování modelů s odhady](how-to-train-ml-models.md).
 * Odeslání experimentu [pomocí rozšíření rozhraní příkazového řádku](reference-azure-machine-learning-cli.md#experiments).
+* Odeslání experimentu prostřednictvím [rozšíření VS Codu](how-to-vscode-tools.md#train-and-tune-models).
 
 ## <a name="github-tracking-and-integration"></a>GitHub sledování a integrace
 

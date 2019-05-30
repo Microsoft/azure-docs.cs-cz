@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793554"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243955"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Co je balíček zabezpečení podniku v Azure HDInsight
 
@@ -36,7 +36,7 @@ Zabezpečení perimetru v HDInsight se dosahuje prostřednictvím virtuálních 
 Další vrstvu zabezpečení perimetru zajišťuje přes službu VPN Gateway. Brána funguje jako první linie obrany pro veškeré příchozí požadavky do clusteru HDInsight. Tato služba požadavek přijme, ověří jej a teprve pak mu umožní průchod do dalších uzlů v clusteru. Tímto způsobem brána poskytuje zabezpečení perimetru do jiných jmenných a datových uzlů v clusteru.
 
 ## <a name="authentication"></a>Authentication
-Může podnikový správce vytvořit HDInsight cluster s ESP v [virtuální sítě](https://azure.microsoft.com/services/virtual-network/). Všechny uzly clusteru HDInsight jsou připojené k doméně, která spravuje podnik. Toho můžete dosáhnout prostřednictvím [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
+Může podnikový správce vytvořit HDInsight cluster s ESP v [virtuální sítě](https://azure.microsoft.com/services/virtual-network/). Všechny uzly clusteru HDInsight jsou připojené k doméně, která spravuje podnik. Toho můžete dosáhnout prostřednictvím [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). 
 
 S tímto nastavením zaměstnanci podniku může přihlásit k uzlům clusteru s použitím svých přihlašovacích údajů domény. Lze také použít svoje přihlašovací údaje domény k ověření dalších schválených koncových bodech jako zobrazení Apache Ambari ODBC, JDBC, PowerShell a rozhraní REST API pro interakci s clusterem. Správce má plnou kontrolu nad omezením počtu uživatelů, kteří pracují s clusterem přes tyto koncové body.
 

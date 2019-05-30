@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a52d05c77d0aeb8ebeba196df60e59f0647fea9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60740280"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233918"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database pro MariaDB cenové úrovně
 
@@ -51,19 +51,25 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Zvýšení velikosti úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Maximální počet 6000 vstupně-výstupních operací |
 
-Můžete přidat další kapacitu, během a po vytvoření serveru. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
+Můžete přidat další úložiště kapacitu během a po vytvoření serveru a povolit systému, které zvětší úložiště automaticky na základě úložiště využití vašich úloh. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
 
 Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Jsou důležité metriky pro monitorování [limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
-Server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 5 GB nebo 5 % zřízeného úložiště, podle toho, která hodnota je nižší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 250 MB.  
+Servery s méně než 100 GB zřízené úložiště jsou označené, pokud volný úložný prostor je menší než 512MB nebo 5 % velikosti zřízeného úložiště jen pro čtení. Servery s více než 100 GB zřízené úložiště jsou označeny pro čtení, pouze v případě volný úložný prostor je menší než 5 GB.
+
+Například, pokud jste zřídili 110 GB úložiště a skutečné využití překročí 105 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne menší než 512 MB volného místa.
 
 Zatímco se služba pokouší nastavit server jen pro čtení, všechny požadavky transakcí zápisu se zablokují a stávající aktivní transakce se budou provádět dál. Když je server nastavený jen pro čtení, všechny další operace zápisu a potvrzení transakcí selžou. Dotazy na čtení budou fungovat dál bez přerušení. Jakmile navýšíte velikost zřízeného úložiště, bude server připravený znovu přijímat transakce zápisu.
 
-Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. 
+Doporučujeme vám zapnout úložiště auto-grow nebo nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty proto můžete vyhnout převedení do stavu jen pro čtení. Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-metric.md).
 
-Další informace najdete v dokumentaci na [jak nastavit výstrahu](howto-alert-metric.md).
+### <a name="storage-auto-grow"></a>Auto-grow úložiště
+
+Pokud úložiště automaticky růst je povoleno, úložiště automaticky rozšíří, aniž by to ovlivnilo zatížení. Pro servery s méně než 100 GB zřízené úložiště velikost zřízeného úložiště prodloužen o 5 GB, jakmile volný úložný prostor je nižší než delší než 1 GB nebo 10 % zřízeného úložiště. Pro servery s více než 100 GB zřízeného úložiště velikost zřízeného úložiště zvětšit 5 %, pokud volný prostor úložiště je menší než 5 % velikosti zřízeného úložiště. Platí omezení maximální velikost úložiště, jak je uvedeno výše.
+
+Například, pokud jste zřídili 1 000 GB úložiště a skutečné využití překročí 950 GB, velikost úložiště serveru se zvýší až 1050 GB. Případně pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší až 15 GB při méně než 1 GB úložiště je zdarma.
 
 ## <a name="backup"></a>Backup
 

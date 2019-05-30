@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7d607b4370d51ea2605fae6543bd3336853b0806
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954217"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389464"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Práce s databází, kontejnerů a položky ve službě Azure Cosmos DB
 
@@ -55,6 +55,9 @@ Při vytváření kontejneru Azure Cosmos, nakonfigurujete propustnost v jednom 
 
 * **Režim sdílený zřízená propustnost**: Tyto kontejnery sdílejí zřízená propustnost pomocí jiných kontejnerů ve stejné databázi (s výjimkou kontejnerů, které byly nakonfigurovány pomocí vyhrazené zřízená propustnost). Jinými slovy zřízená propustnost v databázi se sdílí mezi všechny kontejnery "sdílené propustnost". Další informace najdete v tématu [jak zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 
+> [!NOTE]
+> Sdílené a vyhrazené propustnosti můžete nakonfigurovat pouze při vytváření databáze a kontejner. Přepnutí z režimu vyhrazené propustnosti pro režim sdíleného propustnost (a naopak), po vytvoření kontejneru, budete muset vytvořit nový kontejner a migraci dat do nového kontejneru. Můžete migrovat data s využitím kanálu funkce změn služby Azure Cosmos DB.
+
 Kontejner služby Azure Cosmos můžete škálovat Elasticky, ať už vytváříte kontejnery pomocí vyhrazené i sdílené zřízená propustnost režimy.
 
 Kontejner služby Azure Cosmos je nezávislý na schématu kontejner položek. Položky v kontejneru můžete mít libovolný schémata. Například položku, která představuje osobu a položku, která představuje automobilu je možné umístit *stejný kontejner*. Ve výchozím nastavení jsou automaticky indexován všechny položky, které přidáte do kontejneru bez nutnosti explicitního index nebo Správa schématu. Indexování chování můžete přizpůsobit tím, že nakonfigurujete [zásady indexování](index-overview.md) v kontejneru. 
@@ -85,7 +88,7 @@ Kontejner služby Azure Cosmos obsahuje sadu vlastností definovaných systémem
 |\_Vlastní | Generované systémem | Adresovatelný URI kontejneru | Ano | Ne | Ne | Ne | Ne |
 |id | User-configurable | Uživatelem definované jedinečný název kontejneru | Ano | Ano | Ano | Ano | Ano |
 |indexingPolicy | User-configurable | Umožňuje změnit cestu index, typ indexu a index režimu | Ano | Ne | Ne | Ne | Ano |
-|TimeToLive | User-configurable | Umožňuje odstranit položky z kontejneru automaticky po nastaveném časovém období. Podrobnosti najdete v tématu [TTL](time-to-live.md). | Ano | Ne | Ne | Ne | Ano |
+|timeToLive | User-configurable | Umožňuje odstranit položky z kontejneru automaticky po nastaveném časovém období. Podrobnosti najdete v tématu [TTL](time-to-live.md). | Ano | Ne | Ne | Ne | Ano |
 |changeFeedPolicy | User-configurable | Umožňuje číst změny provedené u položek v kontejneru. Podrobnosti najdete v tématu [kanálu změn](change-feed.md). | Ano | Ne | Ne | Ne | Ano |
 |uniqueKeyPolicy | User-configurable | Používá k zajištění jedinečnosti jednu nebo více hodnot v logického oddílu. Další informace najdete v tématu [omezení jedinečných klíčů](unique-keys.md). | Ano | Ne | Ne | Ne | Ano |
 

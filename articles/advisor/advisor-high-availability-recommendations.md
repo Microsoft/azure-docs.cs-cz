@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467723"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254673"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti vaší aplikace s využitím Azure Advisoru
 
@@ -30,7 +30,7 @@ Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva 
 
 Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Advisor určí skupiny dostupnosti, které obsahují jeden virtuální počítač a doporučuje přidání jednoho nebo více virtuálních počítačů k němu. Tato konfigurace zajistí, že během buď plánované i neplánované údržby, alespoň jeden virtuální počítač je k dispozici a splňuje SLA pro Azure virtual Machines. Můžete k vytvoření virtuálního počítače nebo přidat existující virtuální počítač do skupiny dostupnosti.  
 
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Používání spravovaných disků ke zvýšení spolehlivosti dat
+## <a name="use-managed-disks-to-improve-data-reliability"></a>Chcete-li zvýšit spolehlivost dat použít Managed Disks
 
 Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí účty úložiště nebo jednotky škálování úložiště nejsou během výpadků odolné vůči selhání jednotky škálování jednoho úložiště. Advisor vyhledá tyto skupiny dostupnosti a doporučí migrace na Azure Managed Disks. Tím se zajistí, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se zabránilo jediný bod selhání. 
 
@@ -69,6 +69,30 @@ V konfiguraci aktivní aktivní navážou obě instance brány sítě VPN tunely
 ## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Brány VPN produkční použít ke spuštění vaší úlohy v produkčním prostředí
 
 Azure Advisor zkontroluje pro všechny brány VPN, které jsou základní SKU a doporučujeme používat místo produkčního SKU. Základní SKU je určená pro účely vývoje a testování. Produkční skladové položky nabízejí větší počet tunelových propojení, podporu protokolu BGP, možnosti konfigurace aktivní – aktivní, vlastní zásady Ipsec/IKE a vyšší stabilitu a dostupnost.
+
+## <a name="repair-invalid-log-alert-rules"></a>Oprava pravidla upozornění protokolu je neplatná
+
+Azure Advisor zjistí pravidel upozornění, které mají neplatné dotazy podle jejich stavu bodu. Pravidla upozornění protokolů se vytvoří ve službě Azure Monitor a slouží ke spouštění analytických dotazů v pravidelných intervalech. Výsledky dotazu určit, jestli je potřeba aktivovat výstrahu. Analytické dotazy může být neplatný přesčas z důvodu změn v odkazované prostředky, tabulek nebo příkazy. Advisor vám doporučí, opravte dotaz v pravidle výstrahy zabránit v získání automaticky zakázáno a zajištění monitorování rozsahu vašich prostředků v Azure. [Další informace o řešení potíží s pravidla upozornění](https://aka.ms/aa_logalerts_queryrepair)
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurace režimu konzistentní indexování do kolekce Cosmos DB
+
+Kontejnery služby Azure Cosmos DB nakonfigurována s režimem Opožděné indexování může mít vliv na aktuálnosti výsledky dotazu. Poradce zjistí, že kontejnery nakonfigurována tímto způsobem a doporučujeme přepnutí do režimu konzistentní vzhledem k aplikacím. [Další informace o indexování zásady ve službě Cosmos DB](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Nakonfigurujte své kontejnery služby Azure Cosmos DB s klíčem oddílu
+
+Azure Advisor bude identifikovat bez oddílů kolekce Azure Cosmos DB, které se blíží svou kvótu zřízeného úložiště. Vám doporučí, migrace těchto kolekcí do nové kolekce s definicí klíče oddílu, tak, aby se může automaticky škálovat podle služby. [Další informace o výběru klíče oddílu](https://aka.ms/cosmosdb/choose-partitionkey)
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgrade sady Azure Cosmos DB .NET SDK na nejnovější verzi z Nuget
+
+Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají starší verze sady .NET SDK a doporučujeme upgradovat na nejnovější verzi z Nugetu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgrade Azure Cosmos DB Java SDK na nejnovější verzi z Mavenu
+
+Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají starší verze sady Java SDK a doporučujeme upgradovat na nejnovější verzi z Mavenu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Konektor Spark Azure Cosmos DB upgradovat na nejnovější verzi z Mavenu
+
+Azure Advisor bude identifikovat účtům Azure Cosmos DB, které používají staré verze konektoru Cosmos DB Spark a doporučujeme upgradovat na nejnovější verzi z Mavenu pro nejnovější opravy, vylepšení výkonu a novými funkcemi. [Další informace o konektoru Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
 

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 03/22/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: bff6fe697912bca0bc55501a74a01a92b1330521
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de04b461d8e2d2dce9a88052a86fbe5d163fafec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551366"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244187"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
@@ -23,6 +23,8 @@ Tento článek uvádí na webu Azure portal, identifikuje prvky stránky portál
 ## <a name="what-is-the-azure-portal"></a>Co je na webu Azure portal?
 
 Na webu Azure portal je webové, jednotné konzoly, která poskytuje alternativu k nástroji příkazového řádku. Pomocí webu Azure portal můžete spravovat pomocí grafického uživatelského rozhraní vašeho předplatného Azure. Můžete vytvářet, spravovat a sledujte všechno od jednoduchých webových aplikací až po složité cloudové nasazení, vytvářet vlastní řídicí panely pro uspořádaný náhled prostředků a konfigurovat možnosti usnadnění pro dosažení co nejlepších výsledků.
+
+Na webu Azure portal je navržená pro zajištění odolnosti a nepřetržitou dostupnost. Má existovat v každé datové centrum Azure, a díky tomu je odolný vůči selháním jednotlivých datových center a také se vyhnete slow-downs sítě tím, že je blízko uživatelům. Na webu Azure portal neustále aktualizuje a nevyžádá žádný výpadek pro činnosti údržby.
 
 ## <a name="azure-home"></a>Azure Home
 
@@ -66,7 +68,6 @@ Jsme předem vyplněné Oblíbené položky na bočním panelu s odkazy na běž
 
 > [!TIP]
 > Nejrychlejší způsob, jak najít zdroj, služby nebo dokumentaci je použití *hledání* v hlavičce globální. Pomocí odkazů navigace s popisem cesty přejít zpět na předchozí stránky.
->
 >
 
 ## <a name="next-steps"></a>Další postup

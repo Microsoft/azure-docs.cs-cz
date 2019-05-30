@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: a9ca34953827c1f94e2696eb4f09163be335d2f4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/28/2019
+ms.openlocfilehash: ba8af55f7467e361136e4b0c57c97b4fa187cec0
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510687"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304962"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak vytvořit a spravovat čtení replik ve službě Azure Database for MySQL pomocí Azure CLI
 
 V tomto článku se dozvíte, jak vytvořit a spravovat čtení replik v rámci stejné oblasti Azure jako hlavní v služba Azure Database for MySQL pomocí Azure CLI.
 
-> [!NOTE]
-> Rozhraní příkazového řádku Azure zatím nepodporuje vytváření repliky v jiné oblasti než hlavní server. Chcete-li vytvořit repliku mezi různými oblastmi, použijte [webu Azure portal]( howto-read-replicas-portal.md) místo.
+> [!IMPORTANT]
+> Čtení repliky můžete vytvořit ve stejné oblasti jako váš hlavní server, nebo v libovolné jiné oblasti Azure podle vašeho výběru. Replikace mezi oblastmi je aktuálně ve verzi public preview.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,6 +43,12 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 | resource-group |  myresourcegroup |  Skupina prostředků, ve kterém server repliky bude vytvořena.  |
 | jméno | mydemoreplicaserver | Název nového serveru repliky, který je vytvořen. |
 | source-server | mydemoserver | Název nebo ID existující hlavní server pro replikaci z. |
+
+Chcete-li vytvořit křížových přečíst oblasti repliky, použijte `--location` parametru. Následující příklad rozhraní příkazového řádku vytvoří replika v oblasti západní USA.
+
+```azurecli-interactive
+az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
+```
 
 > [!NOTE]
 > Repliky pro čtení jsou vytvořeny se stejnou konfigurací serveru na hlavní server. Konfigurace serveru repliky můžete po jejím vytvoření změnit. Doporučuje se, že konfigurace serveru repliky by udržováno na hodnoty roven nebo větší než hlavní Ujistěte se, že je replika schopné udržovat tempo s hlavní.

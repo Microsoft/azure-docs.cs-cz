@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: edf7655c20f1b3bad5ce4d337861bd2ff3e029db
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/27/2019
+ms.openlocfilehash: 3fd85232ff7044c699a3e68ce34b267bf50c4dc3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721366"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257857"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -49,5 +49,5 @@ Všechny typy clusterů HDInsight nasadit YARN. Správce prostředků se nasazuj
 
 ## <a name="next-steps"></a>Další postup
 
-* [Použití MapReduce se v Apache Hadoop v HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce v Apache Hadoopu ve službě HDInsight](hadoop/hdinsight-use-mapreduce.md)
 * [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md)

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153498"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235865"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Spuštění aktivity toku dat ve službě Azure Data Factory
 Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění kanálu aktivované pomocí aktivity toku dat spouštět.
@@ -49,25 +49,26 @@ Spuštění toku dat ADF v ladění (sandbox) spuštění kanálu a spuštění 
 
 ![Spuštění toku dat](media/data-flow/activity-data-flow.png "provedení toku dat.")
 
-### <a name="run-on"></a>Spustit v
-
-Vyberte výpočetní prostředí pro toto spuštění toku data. Výchozí hodnota je výchozí prostředí IR Azure automaticky vyřešit. Tato volba spustí tok dat v prostředí Spark ve stejné oblasti jako svou datovou továrnu. Typ výpočtu bude clusteru úloh, což znamená, že prostředí compute bude trvat několik minut na spuštění.
-
 ### <a name="debugging-pipelines-with-data-flows"></a>Ladění kanálů s toky dat
 
 ![Ladění tlačítko](media/data-flow/debugbutton.png "tlačítko ladit.")
 
 Použijte na datový tok ladění využívat topným zařízením clusteru pro interaktivní testování datové toky v kanálu ladění spustit. Použijte možnost kanálu ladění k testování vašich toků dat v kanálu.
 
-### <a name="run-on"></a>Spustit v
+### <a name="run-on"></a>Spusťte
 
 Toto je povinné pole, která definuje, které prostředí IR pro váš tok dat provádění aktivity. Ve výchozím nastavení bude služba Data Factory používat výchozí prostředí Azure Integration runtime automaticky vyřešit. Můžete však vytvořit vlastní Azure prostředí Integration runtime, který definovat konkrétní oblasti, výpočetní typu, počty jader a hodnota TTL pro provádění aktivity toku vaše data.
 
 Výchozí nastavení pro spuštění toku dat je 8jádrový obecné výpočetní s hodnotou TTL 60 minut.
 
+Vyberte výpočetní prostředí pro toto spuštění toku data. Výchozí hodnota je výchozí prostředí IR Azure automaticky vyřešit. Tato volba spustí tok dat v prostředí Spark ve stejné oblasti jako svou datovou továrnu. Typ výpočtu bude clusteru úloh, což znamená, že prostředí compute bude trvat několik minut na spuštění.
+
 Pro vaše aktivity toku dat máte kontrolu nad spouštěcí prostředí Spark. V [prostředí Azure integration runtime](concepts-integration-runtime.md) jsou nastavení typ výpočtu (obecné účely, paměťově optimalizované a optimalizováno pro výpočty), počet jader pro pracovníka a time-to-live tak, aby odpovídaly prováděcí modul s výpočetní toku dat požadavky. Také nastavení TTL umožňuje udržovat teplé clusteru, který je hned dostupný pro spuštění úlohy.
 
 ![Prostředí Azure Integration Runtime](media/data-flow/ir-new.png "prostředí Azure Integration Runtime")
+
+> [!NOTE]
+> Výběr prostředí Integration Runtime v rámci aktivity toku dat platí jenom pro *aktivuje spuštění* vašeho kanálu. Ladění svůj kanál s toky dat ladicí program se spustí v clusteru Spark 8jádrový výchozí.
 
 ### <a name="staging-area"></a>Pracovní oblasti
 

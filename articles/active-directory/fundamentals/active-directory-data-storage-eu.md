@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93ac5ef5f03f800a8f90259db3e382b3bc5c5e2c
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: e82a78953c4385f7688705d4ab3f697be9c3ddbd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875641"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235170"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Ukládání dat identity Evropského zákazníků v Azure Active Directory
 Identita data se ukládají ve službě Azure AD v zeměpisné umístění na základě adresy poskytnuté vaší organizací při přihlášení k odběru služby Microsoft Online, jako je Office 365 a Azure. Informace o uložení údajů o identitě, můžete použít [kde jsou vaše data umístěné?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) části Microsoft Trust Center.
@@ -28,7 +28,9 @@ Pro zákazníky, kteří k dispozici adresu v Evropě Azure AD udržuje většin
     
 - Všechny dvoufaktorovým ověřováním pomocí telefonní hovory nebo SMS pocházejí z datacentra v USA a směrují globální poskytovateli.
 - Nabízená oznámení pomocí Microsoft Authenticator aplikace pocházejí z datová centra v USA. Kromě toho určité služby výrobce zařízení může také začne play a tyto služby možná mimo Evropa.
-- Kódy OATH se vždy ověřují v USA. 
+- Kódy OATH se vždy ověřují v USA.
+
+Další informace o shromažďovaných informacích uživatele Azure Multi-Factor Authentication (MFA Server) a cloudu Azure MFA, naleznete v tématu [shromažďování dat pro uživatele Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection).
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

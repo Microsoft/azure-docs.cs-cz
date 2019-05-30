@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: 22494984ca45cde7255fb5e1a30548c859bfad68
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2ba3be0d51758cf7afd9f85258403bf79ca8401f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826497"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239419"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Model zabezpečení služby Azure Notification Hubs
 
@@ -43,13 +43,13 @@ Je důležité pochopit, že klíč s přístupem k naslouchání umožňuje kli
 
 Podobně jako u jiných entit, operace centra oznámení jsou povoleny pro tři deklarace identity zabezpečení: Naslouchání, odesílat a spravovat.
 
-| Deklarace identity   | Popis                                          | Přípustné operace |
+| Deklarovat   | Popis                                          | Přípustné operace |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Naslouchat  | Vytvoření/aktualizaci, čtení a odstranění jednoho registrace | Vytvoří nebo aktualizuje registrace<br><br>Registrace pro čtení<br><br>Číst všechny registrace pro popisovač<br><br>Odstranit registrace |
-| Poslat    | Odesílání zpráv do centra oznámení                | Odeslat zprávu |
+| Odeslat    | Odesílání zpráv do centra oznámení                | Odeslání zprávy |
 | Spravovat  | CRUDs v Notification Hubs (včetně, aktualizují se přihlašovací údaje systému oznámení platformy a zabezpečení klíče) a na základě značek čtení registrací |Vytvoření, aktualizaci, čtení nebo odstranění notification hubs<br><br>Čtení registrací podle značky |
 
-Notification Hubs přijímat deklarace identity poskytuje prostřednictvím Microsoft Azure Access Control tokeny a podpis tokeny vygenerovat pomocí sdíleného klíče nakonfigurovaná přímo v centru oznámení.
+Notification Hubs přijímá podpis, který generuje tokeny s použitím sdílené klíče nakonfigurovaná přímo v centru oznámení.
 
 Není možné odeslat oznámení na více než jeden obor názvů. Obory názvů je logický kontejner pro notification hubs a nejsou zahrnuty s odesíláním oznámení.
 Zásady přístupu na úrovni oboru názvů (pověření) lze použít pro operace na úrovni oboru názvů, třeba: výpis notification hubs, vytvoření nebo odstranění služby notification hubs, atd. Pouze zásady přístupu na úrovni centra by umožňují odesílat oznámení.

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151168"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242424"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -37,6 +37,7 @@ Informace o pracovním postupu počítače následující obecně toto pořadí:
 Provedením těchto kroků s žádným z následujících akcí:
 + [Azure Machine Learning sady SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++ [Rozšíření Azure Machine Learning VS Code](how-to-vscode-tools.md)
 +  [Vizuální rozhraní pro službu Azure Machine Learning (preview)](ui-concept-visual-interface.md)
 
 > [!NOTE]
@@ -141,7 +142,7 @@ Pro trénování modelu, určíte adresář, který obsahuje skript školení a 
 
 Příklad najdete v tématu [kurzu: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-## <a name="run"></a>Spustit
+## <a name="run"></a>Spusťte
 
 Spuštění je záznam, který obsahuje následující informace:
 

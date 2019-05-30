@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: rogarana
-ms.openlocfilehash: d5e2f9dba3afee953d296316e990b58c536cbdae
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602024"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237777"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -47,13 +47,13 @@ Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Az
 
 2.  **Povolení služby Azure AD Domain Services na tenanta Azure AD.**
 
-    Pro podporu ověřování pomocí přihlašovacích údajů Azure AD, musíte povolit Azure AD Domain Services pro vašeho tenanta Azure AD. Pokud si nejste správce tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
+    Pro podporu ověřování pomocí přihlašovacích údajů Azure AD, musíte povolit Azure AD Domain Services pro vašeho tenanta Azure AD. Pokud si nejste správce tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/create-instance.md).
 
     Obvykle trvá přibližně 15 minut na dokončení nasazení služby Azure AD Domain Services. Ověřte, že se zobrazuje stav vaší služby Azure AD Domain Services **systémem**, s povolena synchronizace hodnot hash hesel, než budete pokračovat k dalšímu kroku.
 
 3.  **Připojení k doméně virtuálního počítače Azure s Azure Active Directory Domain Services.**
 
-    Pro přístup ke sdílené složce pomocí přihlašovacích údajů Azure AD z virtuálního počítače, musí být váš virtuální počítač připojený k doméně do Azure AD Domain Services. Další informace o tom, jak připojení k doméně virtuálního počítače, naleznete v tématu [připojení virtuálního počítače s Windows serverem do spravované domény](../../active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md).
+    Pro přístup ke sdílené složce pomocí přihlašovacích údajů Azure AD z virtuálního počítače, musí být váš virtuální počítač připojený k doméně do Azure AD Domain Services. Další informace o tom, jak připojení k doméně virtuálního počítače, naleznete v tématu [připojení virtuálního počítače s Windows serverem do spravované domény](../../active-directory-domain-services/join-windows-vm.md).
 
     > [!NOTE]
     > Ověřování Azure AD prostřednictvím protokolu SMB se soubory Azure je podporován pouze na virtuálních počítačích Azure, které běží na verze operačního systému Windows 7 nebo Windows Server 2008 R2.
@@ -79,7 +79,7 @@ Chcete-li povolit ověřování Azure AD pomocí protokolu SMB [webu Azure porta
 
 1. Na webu Azure Portal, přejděte na svůj existující účet úložiště, nebo [vytvořit účet úložiště](../common/storage-quickstart-create-account.md).
 2. V **nastavení** vyberte **konfigurace**.
-3. Povolit **ověřování Azure Active Directory pro soubory Azure (preview)**.
+3. Povolit **ověřování Azure Active Directory pro soubory Azure (preview)** .
 
 Následující obrázek ukazuje, jak povolit ověřování Azure AD prostřednictvím protokolu SMB pro váš účet úložiště.
 
@@ -193,7 +193,7 @@ Následující příkaz Powershellu vytvoří vlastní roli na základě jedné 
 New-AzRoleDefinition -InputFile "<custom-role-def-json-path>"
 ```
 
-#### <a name="cli"></a>CLI 
+#### <a name="cli"></a>Rozhraní příkazového řádku 
 
 Následující příkaz Azure CLI vytvoří vlastní roli na základě jedné z ukázkových šablon.
 
@@ -221,7 +221,7 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>CLI
+#### <a name="cli"></a>Rozhraní příkazového řádku
   
 Následující příkaz rozhraní příkazového řádku 2.0 ukazuje, jak seznamu k dispozici vlastní role a potom přiřadit vlastní roli identity Azure AD, na základě názvu přihlášení. Další informace o přiřazení role RBAC pomocí rozhraní příkazového řádku Azure najdete v tématu [správě přístupu pomocí RBAC a rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
 

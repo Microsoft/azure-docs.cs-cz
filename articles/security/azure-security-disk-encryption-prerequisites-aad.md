@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2cc5d953ec412c1c747989d58303beae05f2039c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 201998168b0709b1608ffad2565518e15d47e52c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66118023"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234300"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -246,7 +246,7 @@ Pomocí postupu z [použití portálu k vytvoření aplikace Azure Active Direct
 1. [Ověření požadovaných oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
 2. [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - Můžete použít libovolný název a adresu URL, které chcete při vytváření aplikace přihlašování.
-3. [Získání ID aplikace a ověřovací klíč](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key). 
+3. [Získání ID aplikace a ověřovací klíč](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
      - Ověřovací klíč je tajný kód klienta a slouží jako AadClientSecret pro Set-AzVMDiskEncryptionExtension. 
         - Ověřovací klíč se používá aplikace jako přihlašovací údaje pro přihlášení k Azure AD. Na webu Azure Portal tento tajný kód se nazývá klíče, ale nemá žádný vztah k trezorům klíčů. Zabezpečte tento tajný kód správně. 
      - ID aplikace se později použije jako AadClientId pro Set-AzVMDiskEncryptionExtension a atribut ServicePrincipalName pro Set-AzKeyVaultAccessPolicy. 

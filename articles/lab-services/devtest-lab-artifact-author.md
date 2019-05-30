@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311121"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399205"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Při vytváření vlastních artefaktů pro virtuální počítač DevTest Labs
 
@@ -53,7 +53,7 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu so
       }
     }
 
-| Název elementu | Povinné? | Popis |
+| Název elementu | Požadováno? | Popis |
 | --- | --- | --- |
 | $schema |Ne |Umístění souboru schématu JSON. Soubor schématu JSON můžete testovat platnost definičního souboru. |
 | název |Ano |Název artefaktu, který se zobrazí v testovacím prostředí. |
@@ -63,7 +63,7 @@ Následující příklad ukazuje oddíly, které tvoří základní strukturu so
 | parameters |Ne |Hodnoty, které jsou k dispozici při spuštění příkazu install artefaktů na počítači. Díky tomu můžete přizpůsobit vašich artefaktů. |
 | runCommand |Ano |Artefakt instalační příkaz, který se spouští na virtuálním počítači. |
 
-### <a name="artifact-parameters"></a>Parametry artefaktů
+### <a name="artifact-parameters"></a>Parametry artefaktu
 V sekci parametrů definičního souboru zadejte hodnoty, které uživatel může zadat při jejich instalaci artefakt. Mohou odkazovat na tyto hodnoty v příkazu install artefaktů.
 
 Pokud chcete definovat parametry, použijte následující strukturu:
@@ -76,7 +76,7 @@ Pokud chcete definovat parametry, použijte následující strukturu:
       }
     }
 
-| Název elementu | Povinné? | Popis |
+| Název elementu | Požadováno? | Popis |
 | --- | --- | --- |
 | type |Ano |Typ hodnoty parametru. Najdete v následujícím seznamu povolených typů. |
 | displayName |Ano |Název parametru, který se zobrazí uživateli v testovacím prostředí. |
@@ -89,14 +89,39 @@ Povolené typy jsou:
 * BOOL (libovolný platný JSON logická hodnota)
 * pole (libovolný platný JSON array)
 
+## <a name="secrets-as-secure-strings"></a>Tajné kódy jako zabezpečené řetězce
+Deklarujte tajné kódy jako zabezpečené řetězce. Tady je syntaxe pro deklaraci parametru zabezpečený řetězec v rámci `parameters` část **artifactfile.json** souboru:
+
+```json
+
+    "securestringParam": {
+      "type": "securestring",
+      "displayName": "Secure String Parameter",
+      "description": "Any text string is allowed, including spaces, and will be presented in UI as masked characters.",
+      "allowEmpty": false
+    },
+```
+
+Příkaz instalovat pro artefakt, spusťte skript prostředí PowerShell, který přijímá zabezpečený řetězec vytvořený pomocí příkazu ConvertTo-SecureString. 
+
+```json
+  "runCommand": {
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact.ps1 -StringParam ''', parameters('stringParam'), ''' -SecureStringParam (ConvertTo-SecureString ''', parameters('securestringParam'), ''' -AsPlainText -Force) -IntParam ', parameters('intParam'), ' -BoolParam:$', parameters('boolParam'), ' -FileContentsParam ''', parameters('fileContentsParam'), ''' -ExtraLogLines ', parameters('extraLogLines'), ' -ForceFail:$', parameters('forceFail'), '\"')]"
+  }
+```
+
+Kompletní příklad artifactfile.json a artifact.ps1 (skript Powershellu) najdete v tématu [této ukázce na Githubu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
+
+Aby nedošlo k protokolování tajných klíčů do konzoly jako výstupní jsou zachyceny pro ladění uživatelského je jiný důležité si uvědomit. 
+
 ## <a name="artifact-expressions-and-functions"></a>Artefakt výrazy a funkce
 Můžete použít výrazy a funkce k vytvoření artefaktu příkaz instalovat.
 Výrazy jsou uzavřeny do závorek ([a]) a vyhodnocují při instalaci artefakt. Výrazy může vyskytovat kdekoli v řetězcové hodnotě JSON. Výrazy vždy vrátí jinou hodnotu JSON. Pokud budete muset použít řetězcový literál, který začíná závorky ([), musíte použít dva závorky ([[).
-Obvykle použijete výrazy s využitím functions k vytvoření hodnoty. Stejně jako v jazyce JavaScript, volání funkce jsou formátovány jako **functionName (arg1, arg2, arg3)**.
+Obvykle použijete výrazy s využitím functions k vytvoření hodnoty. Stejně jako v jazyce JavaScript, volání funkce jsou formátovány jako **functionName (arg1, arg2, arg3)** .
 
 Následující seznam uvádí běžné funkce:
 
-* **parameters(parameterName)**: Vrátí hodnotu parametru, která je k dispozici při spuštění příkazu artefaktů.
+* **parameters(parameterName)** : Vrátí hodnotu parametru, která je k dispozici při spuštění příkazu artefaktů.
 * **concat (arg1, arg2, arg3,...)** : Kombinuje více řetězcových hodnot. Tuto funkci můžete využít širokou škálu argumenty.
 
 Následující příklad ukazuje, jak používat výrazy a funkce k vytvoření hodnoty:

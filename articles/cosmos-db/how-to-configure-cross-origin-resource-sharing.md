@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak nakonfigurovat sdílení prostředků 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2018
+ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 689b0bb08e300efc7c5e93dbf346040b82a7c52d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059762"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241892"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace prostředků mezi zdroji (CORS) pro sdílení obsahu 
 

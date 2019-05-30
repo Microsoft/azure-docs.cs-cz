@@ -7,14 +7,18 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: pabutler
-ms.openlocfilehash: ec206c2d637f9fb2727d72cf17087050a765672c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e7a01af1eba865b0a088b0fa7226273527abd70e
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941962"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257409"
 ---
 # <a name="saas-fulfillment-apis"></a>Rozhraní API naplnění SaaS
+
+> [!IMPORTANT] 
+> SaaS nabízejí funkce se migroval na [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Všechny nové zdroje musí pomocí partnerského centra pro vytvoření nové nabídky SaaS a správu existující nabídky.  Aktuální vydavatele se nabídky SaaS se batchwise migrují z portál partnerů cloudu do partnerského centra.  Portál partnerů cloudu se zobrazí stavové zprávy k označení, když se konkrétní stávající nabídky migrovaly.
+> Další informace najdete v tématu [vytvoření nové nabídky SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 Rozhraní API pro SaaS splnění povolit nezávislí výrobci softwaru (ISV) pro integraci s Azure Marketplace své aplikace SaaS. Rozhraní API umožňují aplikace nezávislých výrobců softwaru se účastnit všech kanálů commerce povoleno: s přímým přístupem, vedené partnerem (prodejci) a vedla pole.  Jedná se o požadavek na výpis transactable nabídky SaaS na Azure Marketplace.
 

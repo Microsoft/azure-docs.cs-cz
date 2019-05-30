@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80ef63cdd9de8cb2340fe15d761402bb9f00fae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d077487f85c789bcdfea3d91e29ee0d44ce82de0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795958"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239440"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architektura SAP HANA (velké instance) v Azure
 
@@ -34,7 +34,7 @@ Celková architektura SAP HANA v Azure (velké instance) poskytuje certifikací 
 
 Architektuře, která je rozdělen na tři části:
 
-- **správné**: Ukazuje na místní infrastrukturu, na kterém běží jiné aplikace v datech centra tak, aby koncoví uživatelé měli přístup k obchodní aplikace, jako je SAP. V ideálním případě by tento místní infrastruktury je připojen do Azure s využitím [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- **správné**: Ukazuje na místní infrastrukturu, na kterém běží jiné aplikace v datech centra tak, aby koncoví uživatelé měli přístup k obchodní aplikace, jako je SAP. V ideálním případě by tento místní infrastruktury je připojená k Azure s využitím [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 - **System Center**: Ukazuje Azure IaaS a virtuálních počítačů v tomto případě použijte k hostování SAP nebo k jiným aplikacím, které používají SAP HANA jako systém DBMS. Menší instance HANA, které fungují s pamětí, které poskytují virtuálních počítačů nasazených ve virtuálních počítačích spolu s jejich aplikační vrstvu. Další informace o virtuálních počítačích najdete v tématu [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/).
 
@@ -45,11 +45,11 @@ Architektuře, která je rozdělen na tři části:
   -  [Použití SAP na virtuálních počítačích Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [Pomocí řešení SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **levé**: Zobrazí hardware s certifikací SAP HANA TDI v razítku velkých instancí Azure. Velká Instance HANA jednotky jsou připojené k virtuálním sítím předplatného s využitím stejnou technologii jako připojení z místního do Azure.
+- **levé**: Zobrazí hardware s certifikací SAP HANA TDI v razítku velkých instancí Azure. Velká Instance HANA jednotky jsou připojené k virtuálním sítím vaše předplatné Azure s využitím stejnou technologii jako připojení z místního do Azure. Od května 2019 máte zavedená optimalizace, které umožňuje komunikaci mezi jednotkami velká Instance HANA a virtuálních počítačů Azure bez zapojení bránu ExpressRoute. V této architektuře (červené čáry) se zobrazí tato optimalizace se označuje jako ExpressRoute rychlé cesty. 
 
 Razítko velkých instancí Azure samotné kombinují následující komponenty:
 
-- **Výpočetní**: Servery, které jsou založeny na procesorech Intel Xeon E7-8890v3 nebo Intel Xeon E7-8890v4, které poskytují nezbytné výpočetní funkce a jsou certifikací SAP HANA.
+- **Výpočetní**: Servery, které jsou založeny na jinou generaci procesorů Intel Xeon, které poskytují nezbytné výpočetní funkce a jsou certifikací SAP HANA.
 - **Síť**: Sjednocené vysokorychlostní síťové infrastruktury, která propojuje výpočty, úložiště a sítě LAN součásti.
 - **Úložiště**: Infrastrukturu úložiště, který je přístupný prostřednictvím sjednocené síťové infrastruktury. Konkrétní úložnou kapacitu, která je k dispozici, závisí na konkrétní SAP HANA v Azure (velké instance) konfigurace, která je nasazena. Větší kapacitu úložiště je k dispozici na měsíční poplatek.
 
@@ -61,5 +61,5 @@ Stejně jako, můžete si vybrat mezi různé typy virtuálních počítačů s 
 
 Můžete najít dostupné skladové položky [dostupných skladových položek pro HLI](hana-available-skus.md).
 
-**Další kroky**
+**Další postup**
 - Přečtěte si [Síťová architektura SAP HANA (velké instance)](hana-network-architecture.md)

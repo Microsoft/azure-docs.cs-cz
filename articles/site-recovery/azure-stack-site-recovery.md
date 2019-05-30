@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124709"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399600"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
 
@@ -68,7 +68,7 @@ Zde je, co je potřeba nastavit tento scénář.
 **Požadavek** | **Podrobnosti**
 --- | ---
 **Účet předplatného Azure** | Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
-**Oprávnění účtu Azure** | Účet Azure, které můžete použít potřebuje oprávnění:<br/><br/> -Vytvořit trezor služby Recovery Services<br/><br/> – Vytvoření virtuálního počítače ve skupině prostředků a virtuální síť, kterou používáte pro scénář<br/><br/> -Zápis do účtu úložiště, který zadáte<br/><br/> Poznámky:<br/><br/> – Pokud vytvoříte účet, jste správcem předplatného a mohou provádět všechny akce.<br/><br/> – Pokud používáte existující předplatné a nejste správce, budete muset správce přiřadit oprávnění vlastníka nebo přispěvatele.<br/><br/> – Pokud potřebujete podrobnější oprávnění, přečtěte si [v tomto článku](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
+**Oprávnění účtu Azure** | Účet Azure, které můžete použít potřebuje oprávnění:<br/><br/> -Vytvořit trezor služby Recovery Services<br/><br/> – Vytvoření virtuálního počítače ve skupině prostředků a virtuální síť, kterou používáte pro scénář<br/><br/> -Zápis do účtu úložiště, který zadáte<br/><br/> Všimněte si, že:<br/><br/> – Pokud vytvoříte účet, jste správcem předplatného a mohou provádět všechny akce.<br/><br/> – Pokud používáte existující předplatné a nejste správce, budete muset správce přiřadit oprávnění vlastníka nebo přispěvatele.<br/><br/> – Pokud potřebujete podrobnější oprávnění, přečtěte si [v tomto článku](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
 **Virtuální počítač Azure Stack** | Budete potřebovat virtuální počítač Azure Stack v rámci předplatného tenanta, který se nasadí jako konfigurační server Site Recovery. 
 
 
@@ -173,7 +173,7 @@ Nastavení konfigurace počítače serveru, zaregistroval v trezoru a zjistit po
 
 3. V **přidat Server**, zkontrolujte, že **konfigurační Server** se zobrazí v **typ serveru**.
 5. Stáhněte si instalační soubor sjednocené instalace Site Recovery.
-6. Stáhněte registrační klíč trezoru. Při spuštění sjednocené instalace potřebujete registrační klíč. Klíč je platný pět dní od jeho vygenerování.
+6. Stáhnout registrační klíč trezoru Při spuštění sjednocené instalace potřebujete registrační klíč. Klíč je platný pět dní od jeho vygenerování.
 
     ![Nastavení zdroje](./media/azure-stack-site-recovery/set-source2.png)
 

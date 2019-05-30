@@ -7,16 +7,20 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 1edaf89c056918f640a905b99d01775273b2c133
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e31efb9a52ff004e6e35ddfc251732c014eedae9
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941930"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257434"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 
 Tento článek vysvětluje postup při registraci aplikace SaaS využívající Microsoft [webu Azure portal](https://portal.azure.com/).  Po úspěšné registraci se zobrazí token zabezpečení Azure Active Directory (Azure AD), který vám umožní přístup k rozhraním API SaaS splnění.  Další informace o službě Azure AD najdete v tématu [co je ověřování?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
+
+> [!IMPORTANT] 
+> SaaS nabízejí funkce se migroval na [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Všechny nové zdroje musí pomocí partnerského centra pro vytvoření nové nabídky SaaS a správu existující nabídky.  Aktuální vydavatele se nabídky SaaS se batchwise migrují z portál partnerů cloudu do partnerského centra.  Portál partnerů cloudu se zobrazí stavové zprávy k označení, když se konkrétní stávající nabídky migrovaly.
+> Další informace najdete v tématu [vytvoření nové nabídky SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 
 ## <a name="service-to-service-authentication-flow"></a>Tok ověřování služba služba
@@ -45,7 +49,7 @@ Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nej
         - Vyberte **webová aplikace / rozhraní API** pro [klientské aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) a [prostředků nebo rozhraní API aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) , které jsou nainstalovány na zabezpečení serveru. Toto nastavení se používá pro OAuth důvěrné [webových klientů](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) a veřejné [uživatelského agenta – klienti se systémem](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
     -   **Adresa URL přihlašování**: Pro webové aplikace nebo rozhraní API aplikace zadejte základní adresu URL vaší aplikace. Například **http://localhost:31544** může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by pak pomocí této adresy URL pro přihlášení k webové klientské aplikace.
-    -   **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp**.
+    -   **Identifikátor URI pro přesměrování**: U nativních aplikací zadejte identifikátor URI používá Azure AD k vracení odpovědí na tokeny. Zadejte hodnotu specifickou pro vaši aplikaci, například **http://MyFirstAADApp** .
 
         ![Registrace aplikací SaaS AD](./media/saas-offer-app-registration-v1-2.png)
 
@@ -72,7 +76,7 @@ Metoda HTTP
 
 *URL požadavku*
 
-**https://login.microsoftonline.com/*{ID Tenanta}*/oauth2/token**
+**https://login.microsoftonline.com/ *{ID Tenanta}* /oauth2/token**
 
 *Parametr URI*
 
@@ -86,7 +90,7 @@ Metoda HTTP
 
 |  **Název hlavičky**  | **Požadováno** |  **Popis**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
-|  Typ obsahu     | True         | Typ obsahu přidruženého k požadavku. Výchozí hodnota je `application/x-www-form-urlencoded`.  |
+|  Content-Type     | True         | Typ obsahu přidruženého k požadavku. Výchozí hodnota je `application/x-www-form-urlencoded`.  |
 |  |  |  |
 
 
@@ -97,7 +101,7 @@ Metoda HTTP
 |  Grant_type         | True         | Typ udělení oprávnění. Výchozí hodnota je `client_credentials`.                    |
 |  Client_id          | True         |  Identifikátor klienta nebo aplikace přidružené k aplikaci Azure AD.                  |
 |  client_secret      | True         |  Heslo přidružené k aplikaci Azure AD.                               |
-|  Prostředek           | True         |  Cílový prostředek, pro kterou je požadována token. Výchozí hodnota je `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
+|  Resource           | True         |  Cílový prostředek, pro kterou je požadována token. Výchozí hodnota je `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 

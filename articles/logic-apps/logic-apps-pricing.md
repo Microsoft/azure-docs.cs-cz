@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990189"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299100"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -38,14 +38,14 @@ Služba Azure Logic Apps měření všechny akce, které běží ve vaší aplik
 
 ## <a name="fixed-pricing-model"></a>Oprava cenový model
 
-[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zajišťuje privátní, izolované a vyhrazené pro vytvoření a spuštění aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. Pro nové aplikace logiky, na kterých běží uvnitř ISE platíte pevnou měsíční cenu pro integrované akce a triggery a také pro konektory úrovně Standard.
+[ *Prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zajišťuje privátní, izolované a vyhrazené pro vytvoření a spuštění aplikace logiky, které mají přístup k prostředkům ve virtuální síti Azure. Pro nové aplikace logiky, na kterých běží uvnitř ISE, platíte [pevná měsíční cena](https://azure.microsoft.com/pricing/details/logic-apps) pro integrované akce a triggery a také pro konektory úrovně Standard.
 
-Vaše ISE také zahrnuje jeden konektor free Enterprise, který zahrnuje tolika připojení. Využití dalších podnikových konektorů se účtuje podle cena spotřeby Enterprise.
+Vaše ISE také zahrnuje jeden konektor free Enterprise, který zahrnuje tolik *připojení* chcete. Využití dalších podnikových konektorů se účtuje na základě [cena spotřeby Enterprise](https://azure.microsoft.com/pricing/details/logic-apps). Pouze všeobecně dostupné podnikové konektory se účtuje cena spotřeby Enterprise. Podnikové konektory ve verzi Public preview se účtuje [standardní konektor míra](https://azure.microsoft.com/pricing/details/logic-apps).
 
 > [!NOTE]
 > V rámci ISE, integrované aktivační události a akce zobrazení **Core** označovat popisky a spouštění v prostředí ISE stejné jako aplikace logiky. Standard a podnikové konektory, které zobrazují **ISE** popisek spouštění v prostředí ISE stejné jako aplikace logiky. Konektory, které nechcete zobrazit popisek ISE spustit v globální službě Logic Apps.
 
-Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete [přidávat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), buď při vytváření nebo později. 
+Základní jednotka ISE chyba opravena kapacity, takže pokud potřebujete větší propustnost, můžete [přidávat další jednotky škálování](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), buď při vytváření nebo později. Aplikace logiky, které běží v prostředí ISE zbytečně náklady na uchovávání dat.
 
 Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
 
@@ -57,7 +57,7 @@ Konektorů Azure Logic Apps pomůže tím, že poskytuje přístup k aplikacím 
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Aktivační události
+## <a name="triggers"></a>Aktivační procedury
 
 Aktivační události představují zvláštní akce, které vytvoří instanci aplikace logiky, když dojde k určité události. Aktivační události fungují různými způsoby, které ovlivňují, jak se měří aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
 
@@ -108,7 +108,7 @@ Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](http
 
 ## <a name="data-retention"></a>Uchovávání dat
 
-Všechny vstupy a výstupy, které jsou uloženy v historii spuštění aplikace logiky bude účtovat podle vaší aplikace logiky [spustit dobu uchování](logic-apps-limits-and-config.md#run-duration-retention-limits). Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
+S výjimkou logic apps, spusťte v prostředí integrační služby (ISE), všechny vstupy a výstupy, které jsou uloženy v historii spuštění aplikace logiky bude účtovat podle vaší aplikace logiky [spustit dobu uchování](logic-apps-limits-and-config.md#run-duration-retention-limits). Aplikace logiky, které běží v prostředí ISE zbytečně náklady na uchovávání dat. Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Chcete-li vám pomohou monitorovat spotřebu úložiště vaší aplikace logiky, můžete:
 

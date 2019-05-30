@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791362"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399716"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 
 Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou omezená požadavků ID objektu zabezpečení a ID předplatného nebo tenanta ID. Pokud vaše požadavky pocházejí z více než jeden ID instančního objektu, je větší než 12 000 a 1 200 za hodinu limitu vašeho předplatného nebo tenanta.
 
-Požadavky se použijí pro vaše předplatné nebo vašeho tenanta. Žádosti jsou ty zahrnují předání vašeho předplatného, ID, třeba načítání skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
+Požadavky se použijí pro vaše předplatné nebo vašeho tenanta. Žádosti jsou ty, které zahrnují předání ID vašeho předplatného, třeba načítání skupin prostředků ve vašem předplatném. Požadavky klientů jsou ID vašeho předplatného, třeba načítání platných umístění Azure.
 
 Tato omezení platí pro každou instanci Azure Resource Manageru. Existuje více instancí ve všech oblastech Azure a Azure Resource Manageru je nasazený do všech oblastí Azure.  Takže v praxi, jsou efektivně mnohem vyšší než tato omezení limitů, jako uživatel požadavky jsou obvykle obsluhovány pomocí mnoha různých instancích.
 
@@ -45,7 +45,7 @@ Počet zbývajících požadavků, které můžete určit tím, že kontroluje h
 ## <a name="retrieving-the-header-values"></a>Načítání hodnoty hlavičky
 Načítají se tyto hodnoty hlavičky v kódu nebo skriptu se nijak neliší od načítání libovolnou hodnotu hlavičky. 
 
-Například v **jazyka C#**, načíst hodnota hlavičky ze **HttpWebResponse** objekt s názvem **odpovědi** následujícím kódem:
+Například v **jazyka C#** , načíst hodnota hlavičky ze **HttpWebResponse** objekt s názvem **odpovědi** následujícím kódem:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)

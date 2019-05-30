@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 4f6a724fe6c1e8668084f1c1cefbaa01cffba181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f7d482b088003e3800debb2db9f6f26bda1672a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444584"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298176"
 ---
 # <a name="azure-log-integration-faq"></a>Integrace protokolů Azure – nejčastější dotazy
 
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o integraci protokolů Azure.
 
 >[!IMPORTANT]
-> Funkce integrace protokolů Azure se přestanou používat podle 06/01/2019. Soubory ke stažení AzLog byly deaktivovány 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
+> Funkce integrace protokolů Azure se přestanou používat podle 06/15/2019. Soubory ke stažení AzLog byly deaktivovány 27. června 2018. Pokyny, jak postupovat přesun vpřed revizi, příspěvek [použití Azure monitoru k integraci s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 Integrace protokolů Azure je služba operačního systému Windows, která vám umožní integrovat vaše místní zabezpečení informací a událostí (SIEM) systémy pro správu nezpracovaných protokolů z vašich prostředků Azure. Tato integrace poskytuje jednotný řídicí panel pro všechny vaše prostředky, místní nebo v cloudu. Můžete pak agregovat, korelovat, analyzovat a výstrahy pro události zabezpečení související s vašimi aplikacemi.
 
@@ -105,7 +105,7 @@ Chyba:
 
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Kde najdu definici vlastnosti v protokolu auditu
 
-Přečtěte si:
+Další informace:
 
 * [Audit operací pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-audit.md)
 * [Seznam událostí správy v rámci předplatného v REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931934.aspx)

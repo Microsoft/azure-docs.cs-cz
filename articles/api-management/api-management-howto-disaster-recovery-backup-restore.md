@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0c1efa0e5cfa4bf31e58be64b3fe78075b79b515
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: e0c02829a2fef6e281794fdba6c9fb5d9b8a736b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141689"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241702"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -63,7 +63,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 6. Zadejte adresu URL zástupného symbolu, jako `http://resources` pro **identifikátor URI pro přesměrování**, jako je povinné pole, ale hodnoty se později nepoužívá. Klikněte na zaškrtávací políčko a uložte aplikaci.
 7. Klikněte na možnost **Vytvořit**.
 
-### <a name="add-an-application"></a>Přidat aplikaci
+### <a name="add-an-application"></a>Přidání aplikace
 
 1. Po vytvoření aplikace klikněte na tlačítko **nastavení**.
 2. Klikněte na tlačítko **požadovaná oprávnění**.
@@ -72,9 +72,9 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 5. Zvolte **Windows** **Azure Service Management API**.
 6. Stisknutím klávesy **vyberte**.
 
-    ![Přidejte oprávnění.](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    ![Přidání oprávnění](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. Klikněte na tlačítko **delegovaná oprávnění** vedle nově přidané aplikace zaškrtněte políčko u **přístup ke správě služeb Azure (preview)**.
+7. Klikněte na tlačítko **delegovaná oprávnění** vedle nově přidané aplikace zaškrtněte políčko u **přístup ke správě služeb Azure (preview)** .
 8. Stisknutím klávesy **vyberte**.
 9. Klikněte na tlačítko **udělit oprávnění**.
 
@@ -117,14 +117,14 @@ Nahraďte `{tenant id}`, `{application id}`, a `{redirect uri}` pomocí následu
 
     Jakmile jsou hodnoty zadané, příklad kódu by měla vrátit token podobně jako v následujícím příkladu:
 
-    ![Token][api-management-arm-token]
+    ![Podpisový][api-management-arm-token]
 
     > [!NOTE]
     > Tokenu může vypršet jejich platnost po určité době. Spuštění vzorového kódu znovu vygenerovat nový token.
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Volání operace zálohování a obnovení
 
-Rozhraní REST API jsou [služby Api Management – zálohování](/rest/api/apimanagement/apimanagementservice/backup) a [služby Api Management – obnovení](/rest/api/apimanagement/apimanagementservice/restore).
+Rozhraní REST API jsou [služby Api Management – zálohování](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) a [služby Api Management – obnovení](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore).
 
 Před voláním operace "zálohování a obnovení", které jsou popsané v následujících částech nastavte autorizační hlavičky žádosti pro volání REST.
 

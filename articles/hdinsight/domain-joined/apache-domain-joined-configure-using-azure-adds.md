@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e1bc99cdc089050fbfa931bbbc7b9a6a316a3a75
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415463"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240182"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services
 
@@ -31,13 +31,13 @@ V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí A
 >
 > Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
 
-Povolení služby Azure AD DS je předpokladem předtím, než vytvoříte HDInsight cluster s ESP. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
+Povolení služby Azure AD DS je předpokladem předtím, než vytvoříte HDInsight cluster s ESP. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/create-instance.md). 
 
 Pokud Azure AD – DS je povolena, všichni uživatelé a objekty zahájením z Azure Active Directory (AAD) do Azure AD – DS ve výchozím nastavení. Operace synchronizace závisí na počtu objektů ve službě Azure AD. Synchronizace může trvat několik dní pro stovky tisíc objektů. 
 
-Můžete synchronizovat jenom skupiny, kteří potřebují přístup ke clusterům HDInsight. Tato možnost synchronizaci pouze určité skupiny se nazývá *obor synchronizace*. Zobrazit [konfigurace s rozsahem synchronizace ze služby Azure AD do spravované domény](../../active-directory-domain-services/active-directory-ds-scoped-synchronization.md) pokyny.
+Můžete synchronizovat jenom skupiny, kteří potřebují přístup ke clusterům HDInsight. Tato možnost synchronizaci pouze určité skupiny se nazývá *obor synchronizace*. Zobrazit [konfigurace s rozsahem synchronizace ze služby Azure AD do spravované domény](../../active-directory-domain-services/scoped-synchronization.md) pokyny.
 
-Při povolování protokolu secure LDAP, vložte název domény do názvu subjektu a alternativní název subjektu v certifikátu. Například, pokud je název vaší domény *contoso100.onmicrosoft.com*, ujistěte se, že přesným názvem existuje v názvu subjektu certifikátu a alternativní název subjektu. Další informace najdete v tématu [konfigurace zabezpečeného protokolu LDAP pro Azure AD – DS spravované domény](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). Níže je příklad vytvoření certifikátu podepsaného svým držitelem a jste název domény (*contoso100.onmicrosoft.com*) v názvu subjektu a DnsName (alternativní název subjektu):
+Při povolování protokolu secure LDAP, vložte název domény do názvu subjektu a alternativní název subjektu v certifikátu. Například, pokud je název vaší domény *contoso100.onmicrosoft.com*, ujistěte se, že přesným názvem existuje v názvu subjektu certifikátu a alternativní název subjektu. Další informace najdete v tématu [konfigurace zabezpečeného protokolu LDAP pro Azure AD – DS spravované domény](../../active-directory-domain-services/configure-ldaps.md). Níže je příklad vytvoření certifikátu podepsaného svým držitelem a jste název domény (*contoso100.onmicrosoft.com*) v názvu subjektu a DnsName (alternativní název subjektu):
 
 ```powershell
 $lifetime=Get-Date

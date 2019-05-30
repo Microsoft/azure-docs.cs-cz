@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8c3c9347a027cccfaef6def84bfdc4c83555e98a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 653db1497fcce5981bba7416f073b0330ca2861f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966485"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398153"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Povolit replikaci virtuálního počítače.
 
 > [!NOTE]
-> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v tématu v článcích **návody** část [dokumentace ke službě Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery).
+> Kurzy vám ukážou, nejjednodušší způsob nasazení pro scénář. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v tématu v článcích **návody** část [dokumentace ke službě Site Recovery](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -112,7 +112,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
-1. Vyberte **připravit infrastrukturu** > **nastavení replikace** > **+ vytvořit a přidružit**.
+1. Vyberte **připravit infrastrukturu** > **nastavení replikace** >  **+ vytvořit a přidružit**.
 2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Používáme **ContosoReplicationPolicy**.
 3. Ponechejte výchozí nastavení a vyberte **OK**.
     - **Frekvence kopírování** označuje, že po počáteční replikaci se rozdílová data budou replikovat každých pět minut.

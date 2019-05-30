@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187663"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305059"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy událostí filtrování pro předplatná Event gridu
 
@@ -107,10 +107,10 @@ Veškeré porovnávání řetězců jsou insensitve případ.
 
 Pro události ve schématu služby Event Grid použijte následující hodnoty pro klíč:
 
-* ID
+* Id
 * Téma
 * Subject
-* Typ události
+* EventType
 * DataVersion
 * Data událostí (např. Data.key1)
 
@@ -118,7 +118,7 @@ Pro události v cloudu události schéma použijte následující hodnoty pro kl
 
 * ID události
 * Zdroj
-* Typ události
+* EventType
 * EventTypeVersion
 * Data událostí (např. Data.key1)
 
@@ -140,8 +140,6 @@ Rozšířené filtrování má následující omezení:
 * Pět rozšířené filtry na odběr služby event grid
 * 512 znaků na jednu řetězcovou hodnotu
 * Pět hodnoty **v** a **není v** operátory
-* Klíč může mít pouze jednu úroveň vnoření (např. data.key1)
-* Schémata vlastních událostí, dají se filtrovat pouze na pole nejvyšší úrovně
 
 Stejný klíč můžete použít ve více než jeden filtr.
 

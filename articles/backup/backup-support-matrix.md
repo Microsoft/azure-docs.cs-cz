@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 51bd4b935b32bea20d3f5de0b8cda62dfdbf07b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236623"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400178"
 ---
 # <a name="azure-backup-support-matrix"></a>Matice podpory pro Azure Backup
 
@@ -27,7 +27,7 @@ K dispozici jsou další matice podpory:
 
 ## <a name="vault-support"></a>Podpora trezoru
 
-Azure Backup používá k organizování a správě zálohy trezory služby Recovery Services. Využívá také trezory ukládat zálohovaná data. 
+Azure Backup používá k organizování a správě zálohy trezory služby Recovery Services. Využívá také trezory ukládat zálohovaná data.
 
 Následující tabulka popisuje funkce trezory služby Recovery Services:
 
@@ -36,8 +36,8 @@ Následující tabulka popisuje funkce trezory služby Recovery Services:
 **Trezorů v předplatném** | Až 500 trezorů služby Recovery Services v rámci jednoho předplatného.
 **Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> Až 50 MABS lze zaregistrovat servery v jednom trezoru.
 **Zdroje dat v trezoru úložiště** | Maximální 54,400 GB. Neexistuje žádné omezení pro zálohy virtuálních počítačů Azure.
-**Zálohování do trezoru** | **Virtuální počítače Azure:** Jednou za den.<br/><br/>**Počítače chráněné službou DPM nebo MABS:** Dvakrát denně.<br/><br/> **Počítače přímo pomocí agenta MARS zálohovat:** Třikrát denně. 
-**Mezi trezorů záloh** | Zálohování je v rámci oblasti.<br/><br/> Je nutné ve všech oblastech Azure, která obsahuje virtuální počítače, které chcete zálohovat trezoru. Nelze zálohovat do jiné oblasti. 
+**Zálohování do trezoru** | **Virtuální počítače Azure:** Jednou za den.<br/><br/>**Počítače chráněné službou DPM nebo MABS:** Dvakrát denně.<br/><br/> **Počítače přímo pomocí agenta MARS zálohovat:** Třikrát denně.
+**Mezi trezorů záloh** | Zálohování je v rámci oblasti.<br/><br/> Je nutné ve všech oblastech Azure, která obsahuje virtuální počítače, které chcete zálohovat trezoru. Nelze zálohovat do jiné oblasti.
 **Přesun trezorů** | Je možné [přesun trezorů](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) napříč předplatnými nebo mezi skupinami prostředků ve stejném předplatném.
 **Přesun dat mezi trezorů** | Přechod zálohovaných dat mezi trezory se nepodporuje.
 **Změna typu trezoru úložiště** | Typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor můžete upravit před zálohy jsou uložené. Po zálohování začne v trezoru, nelze změnit typ replikace.
@@ -69,7 +69,7 @@ Zde je, co je podporováno, pokud chcete zálohovat virtuální počítače Azur
 **Počítač** | **Co se zálohuje** | **Umístění** | **Funkce**
 --- | --- | --- | ---
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | Celý virtuální počítač | Zálohujte do trezoru. | Rozšíření nainstaluje, když povolíte zálohování pro virtuální počítač.<br/><br/> Proveďte zálohu jednou za den.<br/><br/> Zálohování s podporou aplikací pro virtuální počítače s Windows; konzistentní zálohování virtuálních počítačů s Linuxem. Můžete nakonfigurovat aplikace ani konzistence vzhledem k pro počítače s Linuxem pomocí vlastních skriptů.<br/><br/> Obnovte virtuální počítač nebo disk.<br/><br/> Nelze zálohovat virtuální počítač Azure do místního umístění.
-**Zálohování virtuálních počítačů Azure pomocí agenta MARS** | Soubory, složky | Zálohujte do trezoru. | Proveďte zálohu třikrát denně.<br/><br/> Pokud chcete zálohovat konkrétní soubory nebo složky, nikoli celý virtuální počítač, můžete spustit agenta MARS společně s rozšířením virtuálního počítače.
+**Zálohování virtuálních počítačů Azure pomocí agenta MARS** | Soubory, složky, stav systému | Zálohujte do trezoru. | Proveďte zálohu třikrát denně.<br/><br/> Pokud chcete zálohovat konkrétní soubory nebo složky, nikoli celý virtuální počítač, můžete spustit agenta MARS společně s rozšířením virtuálního počítače.
 **Virtuální počítač Azure s aplikací DPM** | Soubory, složky, svazky, stav systému, dat aplikací | Zálohovat na místní úložiště virtuálního počítače Azure, na kterém běží aplikace DPM. Aplikace DPM se potom zálohuje do trezoru. | Snímky schopné rozeznávat aplikace.<br/><br/> Členitost úplné zálohování a obnovení.<br/><br/> Linux pro virtuální počítače (Hyper-V nebo VMware) nepodporuje.<br/><br/> Oracle nepodporuje.
 **Virtuální počítač Azure s MABS** | Soubory, složky, svazky, stav systému, dat aplikací | Zálohovat na místní úložiště virtuálního počítače Azure, na kterém běží MABS. MABS se potom zálohuje do trezoru. | Snímky schopné rozeznávat aplikace.<br/><br/> Členitost úplné zálohování a obnovení.<br/><br/> Linux pro virtuální počítače (Hyper-V nebo VMware) nepodporuje.<br/><br/> Oracle nepodporuje.
 

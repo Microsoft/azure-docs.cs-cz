@@ -3,19 +3,19 @@ title: Translator Text API Translate – metoda
 titleSuffix: Azure Cognitive Services
 description: Použijte metodu Translator Text API přeložit.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 5a2192c4555c2d84587ec8e39ce9ba94c985b541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: v-pawal
+ms.openlocfilehash: be61d8932288b9a6b2cc96e53d3630124ec0f610
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235829"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389757"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -45,7 +45,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td><em>Volitelný parametr</em>.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním <a href="./v3-0-languages.md">podporované jazyky</a> pomocí <code>translation</code> oboru. Pokud <code>from</code> parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
   </tr>
   <tr>
-    <td>do</td>
+    <td>na</td>
     <td><em>Povinný parametr</em>.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z <a href="./v3-0-languages.md">podporované jazyky</a> součástí <code>translation</code> oboru. Například použít <code>to=de</code> pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít <code>to=de&to=it</code> pro převod a němčina, italština.</td>
   </tr>
   <tr>
@@ -94,14 +94,14 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 Hlavičky žádosti patří:
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky</td>
     <td><em>Hlavička požadavku požadované</em>.<br/>Zobrazit <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">dostupné možnosti pro ověřování</a>.</td>
   </tr>
   <tr>
-    <td>Typ obsahu</td>
+    <td>Content-Type</td>
     <td><em>Hlavička požadavku požadované</em>.<br/>Určuje typ obsahu datové části. Možné hodnoty jsou: <code>application/json</code>.</td>
   </tr>
   <tr>
@@ -114,7 +114,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje řetězec, který má přeložit.
 
@@ -172,7 +172,7 @@ Jsou k dispozici v příkladu odpověďmi ve formátu JSON [příklady](#example
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
     <tr>
     <td>X-RequestId</td>
@@ -193,7 +193,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěšné</td>
+    <td>Úspěch</td>
   </tr>
   <tr>
     <td>400</td>
@@ -201,7 +201,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>401</td>
-    <td>Žádost nešlo ověřit. Zkontrolujte, zda jsou pověření zadaná a je platný.</td>
+    <td>Požadavek nešlo ověřit. Zkontrolujte, zda jsou pověření zadaná a je platný.</td>
   </tr>
   <tr>
     <td>403</td>

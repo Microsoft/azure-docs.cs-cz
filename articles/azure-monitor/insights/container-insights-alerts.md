@@ -11,26 +11,27 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 04/26/2019
 ms.author: magoedte
-ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494622"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072392"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak nastavit výstrahy pro problémy s výkonem ve službě Azure Monitor pro kontejnery
 Azure Monitor pro kontejnery sleduje výkon úloh kontejneru, které jsou nasazeny do služby Azure Container Instances nebo spravovat clustery Kubernetes, které jsou hostované ve službě Azure Kubernetes Service (AKS).
 
 Tento článek popisuje, jak povolit výstrahy v těchto situacích:
 
-* Pokud překročí definované prahové hodnoty využití procesoru nebo paměti na uzlech clusteru
-* Pokud využití procesoru nebo paměti na každý kontejner v rámci kontroleru překročí definované prahové hodnoty, než limit, který je nastaven na odpovídající prostředek
-* *Nepřipraveno* vrátí stav uzlu
-*  *Se nezdařilo*, *čekající*, *neznámý*, *systémem*, nebo *Succeeded* počítá pod fáze
+- Pokud překročí prahovou hodnotu využití CPU, paměť v uzlech clusteru
+- Když využití procesoru nebo paměti na každý kontejner v rámci kontroleru překročí prahovou hodnotu v porovnání s limit, který je nastaven na odpovídající prostředek
+- *Nepřipraveno* vrátí stav uzlu
+- *Se nezdařilo*, *čekající*, *neznámý*, *systémem*, nebo *Succeeded* počítá pod fáze
+- Pokud překročí prahové hodnoty volného místa na disku na uzly clusteru 
 
-Výstrahy vysoké využití procesoru nebo využití paměti na uzlech clusteru, použijte dotazy, které jsou k dispozici k vytvoření upozornění na metriku nebo oznámení na základě měření metriky. Upozornění metrik, mají nižší latenci než upozornění protokolů. Ale výstrahy protokolu poskytují dotazování rozšířené i sofistikovanější větší. Upozornění dotazy porovnat hodnoty datetime až po současnost pomocí protokolů *nyní* operátor a přejít zpět jednu hodinu. (Monitorování azure pro kontejnery ukládá všechna data ve formátu koordinovaného univerzálního času (UTC).)
+Výstrahy pro vysoké využití procesoru, využití paměti v aplikaci nebo málo volného místa na disku na uzly clusteru, použijte dotazy, které jsou k dispozici k vytvoření upozornění na metriku nebo oznámení na základě měření metriky. Upozornění metrik, mají nižší latenci než upozornění protokolů. Ale výstrahy protokolu poskytují dotazování rozšířené i sofistikovanější větší. Upozornění dotazy porovnat hodnoty datetime až po současnost pomocí protokolů *nyní* operátor a přejít zpět jednu hodinu. (Monitorování azure pro kontejnery ukládá všechna data ve formátu koordinovaného univerzálního času (UTC).)
 
 Pokud nejste obeznámeni s výstrahami monitorování Azure, přečtěte si téma [přehled výstrah v Microsoft Azure](../platform/alerts-overview.md) před zahájením. Další informace o výstrahách, které používají protokol dotazů najdete v tématu [upozornění protokolů ve službě Azure Monitor](../platform/alerts-unified-log.md). Další informace o upozorněních metrik najdete v tématu [upozornění metrik ve službě Azure Monitor](../platform/alerts-metric-overview.md).
 
@@ -255,6 +256,33 @@ let endDateTime = now();
 >[!NOTE]
 >K upozornění na určité pod fází, jako například *čekající*, *neúspěšné*, nebo *neznámý*, upravit poslední řádek dotazu. Například k výstraze na *úspěšně* použít: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
+Následující dotaz vrátí uzly disky clusteru, které překročí 90 % volného místa, použita. Pokud chcete získat ID clusteru, nejprve spusťte následující dotaz a zkopírujte hodnotu z `ClusterId` vlastnost:
+
+```kusto
+InsightsMetrics
+| extend Tags = todynamic(Tags)            
+| project ClusterId = Tags['container.azm.ms/clusterId']   
+| distinct tostring(ClusterId)   
+``` 
+
+```kusto
+let clusterId = '<cluster-id>';
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+InsightsMetrics
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where Origin == 'container.azm.ms/telegraf'            
+| where Namespace == 'disk'            
+| extend Tags = todynamic(Tags)            
+| project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
+| where ClusterId =~ clusterId       
+| where DiskMetricName == 'used_percent'
+| summarize AggregatedValue = max(DiskMetricValue) by bin(TimeGenerated, trendBinSize)
+| where AggregatedValue >= 90
+```
+
 ## <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 Postupujte podle těchto kroků k vytvoření upozornění protokolu ve službě Azure Monitor můžete použít jeden z pravidel vyhledávání protokolu, které bylo k dispozici dříve.  
 
@@ -272,9 +300,9 @@ Postupujte podle těchto kroků k vytvoření upozornění protokolu ve službě
 8. Konfigurace upozornění následujícím způsobem:
 
     1. V rozevíracím seznamu **Na základě** vyberte **Měření metriky**. Metriky měření vytvoří upozornění pro každý objekt v dotazu, jehož hodnota je vyšší než naše zadanou prahovou hodnotu.
-    1. Pro **podmínku**vyberte **větší než**a zadejte **75** jako počáteční základní **prahová hodnota**. Nebo zadejte jinou hodnotu, která splňuje vaše kritéria.
+    1. Pro **podmínku**vyberte **větší než**a zadejte **75** jako počáteční základní **prahová hodnota** pro výstrahy využití procesoru a paměti . Výstraha místa v místu na disku, zadejte **90**. Nebo zadejte jinou hodnotu, která splňuje vaše kritéria.
     1. V **aktivační událost výstrahy založené na** vyberte **po sobě jdoucí porušení**. V rozevíracím seznamu vyberte **větší než**a zadejte **2**.
-    1. Konfigurace upozornění pro kontejner CPU nebo využití paměti, v části **agregační na**vyberte **ContainerName**. 
+    1. Konfigurace upozornění pro kontejner CPU nebo využití paměti, v části **agregační na**vyberte **ContainerName**. Pokud chcete nakonfigurovat výstrahy místu na disku uzlu clusteru, vyberte **ClusterId**.
     1. V **Evaluated na základě** nastavte **období** hodnota, která se **60 minut**. Toto pravidlo spustí každých 5 minut a vrátí záznamy, které se vytvořily za poslední hodinu od aktuálního času. Nastavení doby široké okno účtům pro potenciální data latence. Také zajistí, že dotaz vrací dat. vyhnete se tak falešně negativní, v němž výstraha nikdy aktivuje.
 
 9. Vyberte **provádí** dokončete pravidlo upozornění.

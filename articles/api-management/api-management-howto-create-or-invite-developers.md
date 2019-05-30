@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 3d50746324ddac21f222d4c743f4b7bf6ee9b773
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: d9cc5da0cd2936c1ac79a308366b8164548cb202
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864807"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241728"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
 
-Vývojáři ve službě API Management, jsou uživatelé rozhraní API, která zveřejníte pomocí služby API Management. Tato příručka ukazuje na tom, jak vytvořit a pozvat vývojáři používat rozhraní API a produktů, že jste jim zpřístupnili s vaší instancí služby API Management. Informace o správě uživatelských účtů prostřednictvím kódu programu, najdete v článku [entitu uživatele](https://docs.microsoft.com/rest/api/apimanagement/user) v dokumentaci [rozhraní API služby REST pro správu](/rest/api/apimanagement/) odkaz.
+Vývojáři ve službě API Management, jsou uživatelé rozhraní API, která zveřejníte pomocí služby API Management. Tato příručka ukazuje na tom, jak vytvořit a pozvat vývojáři používat rozhraní API a produktů, že jste jim zpřístupnili s vaší instancí služby API Management. Informace o správě uživatelských účtů prostřednictvím kódu programu, najdete v článku [entitu uživatele](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) v dokumentaci [rozhraní API služby REST pro správu](/rest/api/apimanagement/) odkaz.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

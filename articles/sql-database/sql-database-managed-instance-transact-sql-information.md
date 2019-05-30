@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 17609212fcc7620dc0d6d617e7626d12c8bb0592
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852152"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258598"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -27,6 +27,7 @@ Tento článek shrnuje a popisuje rozdíly v syntaxi a chování mezi Azure SQL 
 - [Zabezpečení](#security) obsahuje rozdíly ve [auditování](#auditing), [certifikáty](#certificates), [pověření](#credential), [zprostředkovatelé kryptografických služeb](#cryptographic-providers), [přihlašovacích údajů a uživatelů](#logins-and-users)a [klíč služby a hlavní klíč služby](#service-key-and-service-master-key).
 - [Konfigurace](#configuration) obsahuje rozdíly ve [rozšíření fondu vyrovnávací paměti](#buffer-pool-extension), [kolace](#collation), [úrovně kompatibility](#compatibility-levels), [zrcadlení databáze ](#database-mirroring), [volby databáze](#database-options), [agenta systému SQL Server](#sql-server-agent), a [možnosti tabulky](#tables).
 - [Funkce](#functionalities) zahrnuje [HROMADNÉ vložení/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [distribuované transakce](#distributed-transactions), [rozšířených událostí](#extended-events), [externí knihovny](#external-libraries), [filestream a FileTable](#filestream-and-filetable), [sémantické vyhledávání](#full-text-semantic-search), [propojené servery](#linked-servers), [PolyBase](#polybase), [replikace](#replication), [obnovení](#restore-statement), [služby Service Broker](#service-broker), [uložené procedury, funkce a aktivační události](#stored-procedures-functions-and-triggers).
+- [Nastavení prostředí](#Environment) jako je například konfigurace virtuální sítě a podsítě.
 - [Funkce, které mají různé chování v spravované instance](#Changes).
 - [Dočasná omezení a známé problémy](#Issues).
 
@@ -115,7 +116,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>Pověření
+### <a name="credential"></a>Přihlašovací údaj
 
 Pouze Azure Key Vault a `SHARED ACCESS SIGNATURE` identity podporují. Uživatelé Windows se nepodporují.
 
@@ -299,7 +300,7 @@ Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/
 
 Následující funkce v současné době nejsou podporované, ale bude v budoucnu povoleno:
 
-- Proxy
+- Proxy servery
 - Plánování úloh na nečinnosti procesoru
 - Povolení nebo zakázání agenta
 - Výstrahy
@@ -454,6 +455,19 @@ Různé instance služby Service broker se nepodporuje:
 - `xp_cmdshell` není podporováno. Zobrazit [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` nejsou podporovány, což zahrnuje `sp_addextendedproc`  a `sp_dropextendedproc`. Zobrazit [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. Zobrazit [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+
+## <a name="Environment"></a>Omezení Environmet
+
+### <a name="subnet"></a>Podsíť
+- V podsíti vyhrazená pro vaši Managed Instance nelze umístit všechny další prostředky (například virtuální počítače). Tyto prostředky umístěte do jiné podsítě.
+- Podsíť musí mít dostatečný počet dostupných [IP adresy](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimální hodnota je 16, zatímco doporučení je k dispozici alespoň 32 IP adres v podsíti.
+- [Koncové body služeb nelze přidružit podsíť spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Ujistěte se, že při vytváření virtuální sítě je zakázána možnost koncových bodů služby.
+- Počet a typy instancí, které můžete umístit do podsítě mají některé [omezení a omezení](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Zde jsou některé [pravidel zabezpečení, která se musí použít na podsítě](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+
+### <a name="vnet"></a>VNET
+- Virtuální síť je možné nasadit pomocí modelu Resource - klasický Model pro virtuální síť se nepodporuje.
+- Některé služby, jako jsou App Service Environment, Logic apps a spravované instance (používá se pro geografickou replikaci, transakční replikace, nebo prostřednictvím propojené servery) nelze přistupovat spravovaných instancí v různých oblastech, v případě, že jejich virtuální sítě jsou propojené pomocí [globální partnerský vztah](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Můžete připojit k těmto prostředku přes ExpressRoute nebo připojení typu VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ## <a name="Changes"></a> Změny chování
 

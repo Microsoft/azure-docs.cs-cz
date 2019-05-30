@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979350"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298927"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -22,7 +22,7 @@ Při prostředku Azure je určena jako nevyhovující pravidla zásad, je vhodn�
 > - [Podrobnosti o dodržování předpisů](#compliance-details)
 > - [Historie změn (Preview)](#change-history-preview)
 
-## <a name="compliance-details"></a>Podrobnosti dodržování předpisů
+## <a name="compliance-details"></a>Podrobnosti o dodržování předpisů
 
 Pokud prostředek je nedodržují předpisy, podrobnosti o dodržování předpisů pro tento prostředek jsou k dispozici **dodržování zásad** stránky. V podokně Podrobnosti dodržování předpisů zahrnuje následující informace:
 
@@ -87,23 +87,27 @@ Následující matice mapuje každé možné _důvod_ na příslušný [podmínk
 
 |Reason | Podmínka |
 |-|-|
-|Aktuální hodnota musí jako klíč obsahovat cílovou hodnotu. |containsKey nebo **není** notContainsKey |
+|Aktuální hodnota musí obsahovat cílové hodnoty jako klíč. |containsKey nebo **není** notContainsKey |
 |Aktuální hodnota musí obsahovat cílovou hodnotu. |obsahuje nebo **není** notContains |
-|Aktuální hodnota musí být shodná s cílovou hodnotou. |se rovná nebo **není** notEquals |
-|Aktuální hodnota musí existovat. |Existuje |
-|Aktuální hodnota musí být v cílové hodnotě. |v nebo **není** notIn |
-|Aktuální hodnota musí být jako cílová hodnota. |například nebo **není** notLike |
-|Aktuální hodnota musí s rozlišováním velikosti písmen odpovídat cílové hodnotě. |odpovídat nebo **není** notMatch |
-|Aktuální hodnota musí bez rozlišování velikosti písmen odpovídat cílové hodnotě. |matchInsensitively nebo **není** notMatchInsensitively |
-|Aktuální hodnota nesmí jako klíč obsahovat cílovou hodnotu. |notContainsKey nebo **není** containsKey|
-|Aktuální hodnota nesmí obsahovat cílovou hodnotu. |notContains nebo **není** obsahuje |
-|Aktuální hodnota nesmí být shodná s cílovou hodnotou. |notEquals nebo **není** rovná se |
+|Aktuální hodnota musí být rovna cílovou hodnotu. |se rovná nebo **není** notEquals |
+|Aktuální hodnota musí být menší než cílová hodnota. |menší nebo **není** greaterOrEquals |
+|Aktuální hodnota musí být větší než nebo rovna hodnotě cílovou hodnotu. |greaterOrEquals nebo **není** méně |
+|Aktuální hodnota musí být větší než cílová hodnota. |větší nebo **není** lessOrEquals |
+|Aktuální hodnota musí být menší než nebo rovna cílové hodnoty. |lessOrEquals nebo **není** větší |
+|Aktuální hodnota, musí existovat. |Existuje |
+|Aktuální hodnota musí být v cílovou hodnotu. |v nebo **není** notIn |
+|Aktuální hodnota musí být jako cílovou hodnotu. |například nebo **není** notLike |
+|Aktuální hodnota musí rozlišovat malá a velká písmena cílovou hodnotu. |odpovídat nebo **není** notMatch |
+|Aktuální hodnota musí být malá a velká písmena cílovou hodnotu. |matchInsensitively nebo **není** notMatchInsensitively |
+|Aktuální hodnota nesmí obsahovat cílové hodnoty jako klíč. |notContainsKey nebo **není** containsKey|
+|Aktuální hodnota nesmí obsahovat cílové hodnoty. |notContains nebo **není** obsahuje |
+|Aktuální hodnota nesmí být rovna cílovou hodnotu. |notEquals nebo **není** rovná se |
 |Aktuální hodnota nesmí existovat. |**není** existuje  |
-|Aktuální hodnota nesmí být v cílové hodnotě. |notIn nebo **není** v |
-|Aktuální hodnota nesmí být jako cílová hodnota. |notLike nebo **není** jako |
-|Aktuální hodnota nesmí s rozlišováním velikosti písmen odpovídat cílové hodnotě. |notMatch nebo **není** odpovídat |
-|Aktuální hodnota nesmí bez rozlišování velikosti písmen odpovídat cílové hodnotě. |notMatchInsensitively nebo **není** matchInsensitively |
-|Žádné související prostředky neodpovídají podrobnostem účinku v definici zásad. |Prostředek typu definovaného v **then.details.type** a související na prostředek definovaný v **Pokud** část tohoto pravidla zásady neexistuje. |
+|Aktuální hodnota nesmí být v cílovou hodnotu. |notIn nebo **není** v |
+|Aktuální hodnota nesmí být jako cílovou hodnotu. |notLike nebo **není** jako |
+|Aktuální hodnota musí není velká a malá písmena rozlišovat cílovou hodnotu. |notMatch nebo **není** odpovídat |
+|Aktuální hodnota musí být cílová hodnota není malá a velká písmena. |notMatchInsensitively nebo **není** matchInsensitively |
+|Žádné související prostředky odpovídaly podrobnostech účinku v definici zásad. |Prostředek typu definovaného v **then.details.type** a související na prostředek definovaný v **Pokud** část tohoto pravidla zásady neexistuje. |
 
 ## <a name="compliance-details-for-guest-configuration"></a>Podrobnosti o dodržování předpisů pro konfiguraci typu Host
 
@@ -128,7 +132,7 @@ Také nemusí mít přístup k přihlášení k virtuálnímu počítači přím
    - **Typ prostředku** – _guestConfigurationAssignments_ jméno a příjmení.
    - **Naposledy vyhodnoceno** – čas poslední služba hosta konfigurace oznámení o stavu cílového virtuálního počítače Azure Policy.
 
-   ![Podívejte se na podrobnosti dodržování zásad.](../media/determine-non-compliance/guestconfig-assignment-view.png)
+   ![Zobrazit podrobnosti o dodržování předpisů](../media/determine-non-compliance/guestconfig-assignment-view.png)
 
 1. Vyberte název přiřazení konfigurace hostovaného v **název** sloupec, který se otevře **dodržování předpisů prostředkem** stránky.
 
@@ -136,7 +140,7 @@ Také nemusí mít přístup k přihlášení k virtuálnímu počítači přím
 
 **Hosta přiřazení** stránka zobrazuje všechny podrobnosti o dodržování předpisů k dispozici. Každý řádek v zobrazení představuje zkušební verzi, která byla provedena ve virtuálním počítači. V **důvod** sloupce, věta popisující, proč je přiřazení typu Host _nekompatibilní_ se zobrazí. Pokud sledujete, že virtuální počítače by měl být připojený k doméně, třeba **důvod** sloupci zobrazí text včetně členství v aktuální doméně.
 
-![Podívejte se na podrobnosti dodržování zásad.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Zobrazit podrobnosti o dodržování předpisů](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

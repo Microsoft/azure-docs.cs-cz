@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93adedc5c1343df1eee05b653b60cfd7e810044c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540427"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235451"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Rozhraní pro udělování souhlasu Azure Active Directory
 
@@ -40,7 +40,7 @@ Následující kroky ukazují, jak souhlasu prostředí funguje pro aplikace pro
 
 1. Předpokládejme, že máte webovou aplikaci klienta, která potřebuje požádat o určitá oprávnění pro přístup k prostředku nebo rozhraní API. Dozvíte jak provést tuto konfiguraci v další části, ale v podstatě na webu Azure portal slouží k deklaraci žádosti oprávnění v době konfigurace. Jako další nastavení konfigurace se stanou součástí registrace služby Azure AD aplikace:
 
-    ![Oprávnění k ostatním aplikacím](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+    ![Oprávnění k ostatním aplikacím](./media/consent-framework/permissions.png)
 
 1. Vezměte v úvahu, že oprávnění aplikace se aktualizovaly, je aplikace spuštěna a uživatele je použití poprvé. Nejprve je potřeba získat autorizační kód z Azure AD aplikace `/authorize` koncového bodu. Autorizační kód lze potom získat nový přístupový a obnovovací token.
 
@@ -58,11 +58,10 @@ Následující kroky ukazují, jak souhlasu prostředí funguje pro aplikace pro
 
     **Souhlas pro aplikaci prvku delegovaná oprávnění**
 
-   1. Přejděte **nastavení** stránka aplikace
-   1. Vyberte **požadovaná oprávnění**.
-   1. Klikněte na **udělit oprávnění** tlačítko.
+   1. Přejděte **oprávnění k rozhraní API** stránka aplikace
+   1. Klikněte na **udělit souhlas správce** tlačítko.
 
-      ![Udělení oprávnění pro vyjádření souhlasu explicitní správce](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Udělení oprávnění pro vyjádření souhlasu explicitní správce](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
    > Explicitní udělení souhlasu pomocí **udělit oprávnění** je aktuálně vyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js tlačítko. V opačném případě aplikace selže při vyžádání tokenu přístupu.

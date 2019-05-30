@@ -9,15 +9,15 @@ ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803769"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238374"
 ---
-| Prostředek | Výchozí omezení | Maximální omezení |
+| Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| virtuální procesory na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10 000 |
+| virtuální procesory na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10,000 |
 | [Spolusprávci](../articles/billing-add-change-azure-subscription-administrator.md) na předplatné |200 |200 |
 | [Účty úložiště](../articles/storage/common/storage-create-storage-account.md) předplatné<sup>2</sup> |100 |100 |
 | [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |20 |200 |

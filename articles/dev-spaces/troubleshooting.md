@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158942"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234008"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -242,7 +242,7 @@ Kontext sestavení na úrovni projektu nebo služby ve výchozím nastavení se 
 ### <a name="try"></a>Zkuste:
 Co je potřeba udělat:
 1. Upravit _azds.yaml_ souboru nastavit kontext sestavení na úrovni řešení.
-2. Upravit _soubor Dockerfile_ a _Dockerfile.develop_ soubory k odkazování na projekt (_.csproj_) soubory správně, vzhledem k nové sestavení kontextu.
+2. Upravit _soubor Dockerfile_ a _Dockerfile.develop_ soubory k odkazování na projekt ( _.csproj_) soubory správně, vzhledem k nové sestavení kontextu.
 3. Místo _.dockerignore_ souboru vedle souboru .sln a podle potřeby upravte.
 
 Můžete najít na příklad https://github.com/sgreenmsft/buildcontextsample
@@ -404,3 +404,8 @@ Vytvoření kontroleru s alternativním názvem:
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
+
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Povolení prostorů vývoj služeb při selhání při fondy uzlů Windows se přidají do clusteru AKS
+
+### <a name="reason"></a>Reason
+V současné době Azure Dev prostory je určena pro spuštění na systému Linux podů a pouze uzly. V tuto chvíli nelze povolit Azure Dev mezery na cluster AKS pomocí fond uzlů Windows.

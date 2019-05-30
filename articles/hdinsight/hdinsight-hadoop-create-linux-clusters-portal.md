@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cf1a6ffa61b41af5abd20dac13b85024001d2ed2
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715183"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393997"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí webu Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -42,7 +42,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablon A
    
     ![Vytvořit nový cluster na webu Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "vytvoření nového clusteru na portálu Azure portal")
 
-1. Na **HDInsight** stránce **vlastní (velikost, nastavení, aplikace)**.
+1. Na **HDInsight** stránce **vlastní (velikost, nastavení, aplikace)** .
 
 1. Vyberte **1 Základy**. Potom zadejte následující informace.
 
@@ -92,7 +92,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablon A
      Vyberte **Další** přesunout na další stránku.
 
 
-6. Z **4 aplikace (volitelné)**, vyberte všechny aplikace, které chcete. Microsoft, nezávislí výrobci softwaru (ISV) nebo můžete vytvořit tyto aplikace. Další informace najdete v tématu [nainstalujte aplikace během vytváření clusteru](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+6. Z **4 aplikace (volitelné)** , vyberte všechny aplikace, které chcete. Microsoft, nezávislí výrobci softwaru (ISV) nebo můžete vytvořit tyto aplikace. Další informace najdete v tématu [nainstalujte aplikace během vytváření clusteru](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
     Vyberte **Další** přesunout na další stránku.
 

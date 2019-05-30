@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2019
+ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 9647cdd584b53f581f46f728ca2d08f9a113ce92
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 841027fe8d6b97e661faa038dc9381edbb3d4cd8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156144"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226039"
 ---
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -25,6 +25,8 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
+Pokud chcete nainstalovat a používat rozhraní příkazového řádku místně, naleznete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).
+
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie obrázků 
 
 Galerie obrázků je primární prostředek, který používá k povolení sdílení imagí. Povolené znaky pro název galerie jsou malá a velká písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Galerie názvy musí být jedinečné v rámci vašeho předplatného. 
@@ -33,7 +35,7 @@ Vytvoření galerie obrázků s využitím [az sig vytvořit](/cli/azure/sig#az-
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
-az sig create -g myGalleryRG --gallery-name myGallery
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
 ## <a name="create-an-image-definition"></a>Vytvoření definice bitové kopie
@@ -44,7 +46,7 @@ Vytvoření definice počáteční image v galerii pomocí [vytvoření sig az i
 
 ```azurecli-interactive 
 az sig image-definition create \
-   -g myGalleryRG \
+   --resource-group myGalleryRG \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --publisher myPublisher \
@@ -60,16 +62,16 @@ Vytvoření verze Image podle potřeby pomocí [az image Galerie vytvořit image
 
 Povolené znaky pro verze image jsou čísla a tečky. Čísla musí být v rozsahu 32bitového celého čísla. Formát: *Hlavní verze*. *Podverze*. *Oprava*.
 
-V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 2 repliky v *střed USA – západ* oblast, 1 repliky v *střed USA – jih* oblasti a 1 repliky v *USA – východ 2* oblasti.
+V tomto příkladu verzi naše image je *1.0.0* a budeme vytvářet 2 repliky v *střed USA – západ* oblast, 1 repliky v *střed USA – jih* oblasti a 1 repliky v *USA – východ 2* oblasti pomocí zónově redundantní úložiště.
 
 
 ```azurecli-interactive 
 az sig image-version create \
-   -g myGalleryRG \
+   --resource-group myGalleryRG \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
-   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1" \
+   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1=Standard_ZRS" \
    --replica-count 2 \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
 ```
@@ -77,5 +79,24 @@ az sig image-version create \
 > [!NOTE]
 > Budete muset počkat na verzi image, aby zcela dokončit právě vytvořené a replikované před stejné spravované image můžete vytvořit jinou verzi image.
 >
-> Můžete také ukládat vaše verze image v [Zónově redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type standard_zrs` při vytváření verze image.
+> Můžete také uložit všechny repliky verze vaší image v [Zónově redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type standard_zrs` při vytváření verze image.
 >
+
+## <a name="share-the-gallery"></a>Sdílení v galerii
+
+Doporučujeme vám, že můžete sdílet s ostatními uživateli na úrovni galerie. K získání ID objektu galerii, použijte [az sig zobrazit](/cli/azure/sig#az-sig-show).
+
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
+```
+
+Použijte ID objektu jako obor, spolu s e-mailovou adresu a [vytvořit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-create) k udělení přístupu uživateli v galerii sdílené bitové kopie.
+
+```azurecli-interactive
+az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>
+```
+
+

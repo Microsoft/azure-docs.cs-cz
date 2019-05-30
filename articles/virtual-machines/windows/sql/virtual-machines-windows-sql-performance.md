@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477318"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393774"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server ve službě Azure Virtual Machines
 
@@ -179,13 +179,24 @@ Existuje jedna výjimka tohoto doporučení: _pokud využití databáze TempDB j
 
 Některá nasazení může dosáhnout další zvýšit efektivitu pokročilejších technik konfigurace. V následujícím seznamu jsou uvedeny některé funkce serveru SQL Server, které vám mohou pomoci při dosažení lepšího výkonu:
 
-* **Zálohování do Azure storage**: Při provádění zálohování pro SQL Server běžící na virtuálních počítačích Azure, můžete použít [zálohování SQL serveru na adresu URL](https://msdn.microsoft.com/library/dn435916.aspx). Tato funkce je k dispozici od verze SQL Server 2012 SP1 kumulativní aktualizaci 2 se doporučuje pro zálohování připojenými datovými disky. Pokud je zálohování a obnovení do a z úložiště Azure, postupujte podle doporučení uvedených v [SQL Server zálohování na adresu URL osvědčené postupy a řešení potíží a obnovení ze zálohy uložené ve službě Azure Storage](https://msdn.microsoft.com/library/jj919149.aspx). Můžete automatizovat tyto zálohy pomocí [automatizované zálohování pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
+### <a name="backup-to-azure-storage"></a>Zálohování do Azure Storage
+Při provádění zálohování pro SQL Server běžící na virtuálních počítačích Azure, můžete použít [zálohování SQL serveru na adresu URL](https://msdn.microsoft.com/library/dn435916.aspx). Tato funkce je k dispozici od verze SQL Server 2012 SP1 kumulativní aktualizaci 2 se doporučuje pro zálohování připojenými datovými disky. Pokud je zálohování a obnovení do a z úložiště Azure, postupujte podle doporučení uvedených v [SQL Server zálohování na adresu URL osvědčené postupy a řešení potíží a obnovení ze zálohy uložené ve službě Azure Storage](https://msdn.microsoft.com/library/jj919149.aspx). Můžete automatizovat tyto zálohy pomocí [automatizované zálohování pro SQL Server ve službě Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
 
-    Starších než SQL Server 2012, můžete použít [zálohování SQL serveru do Azure nástroje](https://www.microsoft.com/download/details.aspx?id=40740). Tento nástroj může pomoci zvýšit zálohování propustnost pomocí více cílů zálohování stripe.
+Starších než SQL Server 2012, můžete použít [zálohování SQL serveru do Azure nástroje](https://www.microsoft.com/download/details.aspx?id=40740). Tento nástroj může pomoci zvýšit zálohování propustnost pomocí více cílů zálohování stripe.
 
-* **Datové soubory SQL serveru v Azure**: Tato nová funkce [datové soubory SQL serveru v Azure](https://msdn.microsoft.com/library/dn385720.aspx), je k dispozici od verze SQL Server 2014. Ukazuje srovnatelné výkonové charakteristiky jako datové disky Azure s použitím, systémem SQL Server s datovými soubory v Azure.
+### <a name="sql-server-data-files-in-azure"></a>Soubory dat serveru SQL v Azure
 
-## <a name="next-steps"></a>Další kroky
+Tato nová funkce [datové soubory SQL serveru v Azure](https://msdn.microsoft.com/library/dn385720.aspx), je k dispozici od verze SQL Server 2014. Ukazuje srovnatelné výkonové charakteristiky jako datové disky Azure s použitím, systémem SQL Server s datovými soubory v Azure.
+
+### <a name="failover-cluster-instance-and-storage-spaces"></a>Instance clusteru převzetí služeb při selhání a prostory úložiště
+
+Pokud používáte prostory úložiště při přidávání uzlů do clusteru na **potvrzení** stránce, zrušte zaškrtnutí políčka popisek **přidat do clusteru veškeré oprávněné úložiště**. 
+
+![Zrušte zaškrtnutí políčka oprávněné úložiště](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
+
+Pokud používáte prostory úložiště a není zrušte zaškrtnutí políčka **přidat do clusteru veškeré oprávněné úložiště**, Windows odpojí virtuální disky se během procesu clusteringu. Proto dokud prostory úložiště se odebral z clusteru se nezobrazují ve Správci disků nebo Průzkumníka a znovu připojit pomocí Powershellu. Prostory úložiště seskupit několik disků do fondů úložiště. Další informace najdete v tématu [prostory úložiště](/windows-server/storage/storage-spaces/overview).
+
+## <a name="next-steps"></a>Další postup
 
 Další informace o skladování a výkonu najdete v tématu [pokyny ke konfiguraci úložiště pro SQL Server na virtuálním počítači Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 

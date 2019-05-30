@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921907"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389953"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externích řešení pomocí Common Event Format
 
@@ -44,6 +44,8 @@ Připojení mezi Azure Sentinelu a vaše zařízení CEF probíhá ve třech kro
 2. Syslog agent shromažďuje data a odesílá je bezpečně ke službě Log Analytics, ve kterém je analyzovat a rozšiřují.
 3. Agent ukládá data do pracovního prostoru Log Analytics, může být dotázán, podle potřeby a pomocí analýzy, korelace pravidla a řídicí panely.
 
+> [!NOTE]
+> Agenta můžete shromažďovat protokoly z několika zdrojů, ale musí být nainstalován na počítači vyhrazené proxy.
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>Krok 1: Připojte se k zařízení CEF přes vyhrazený virtuální počítač Azure
 
@@ -61,7 +63,7 @@ Alternativně můžete nasadit agenta ručně na existující virtuální počí
 1. Na portálu Azure Sentinelu, klikněte na tlačítko **datové konektory** a vyberte typ zařízení. 
 
 1. V části **konfigurace agenta protokolu Syslog v Linuxu**:
-   - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předem nainstalovaný s agentem Azure Sentinelu a obsahuje všechny nezbytné konfigurace, jak je popsáno výše. Vyberte **automatického nasazení** a klikněte na tlačítko **nasazení agentů pro automatickou diagnostiku**. Tím přejdete na stránku nákupní pro vyhrazené virtuálního počítače s Linuxem, který je automaticky připojena k pracovnímu prostoru, je. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.
+   - Zvolte **automatického nasazení** Pokud chcete vytvořit nový počítač, který je předem nainstalovaný s agentem Azure Sentinelu a obsahuje všechny nezbytné konfigurace, jak je popsáno výše. Vyberte **automatického nasazení** a klikněte na tlačítko **nasazení agentů pro automatickou diagnostiku**. Tím přejdete na stránku nákupní pro vyhrazené virtuálního počítače s Linuxem, který je automaticky připojený k pracovnímu prostoru. Je virtuální počítač **standardní virtuální počítač D2s v3 (2 virtuální procesory, 8 GB paměti)** a má veřejnou IP adresu.
       1. V **vlastní nasazení** stránce zadejte své údaje a zvolte uživatelské jméno a heslo a pokud souhlasíte s podmínkami a ujednáními, zakoupit virtuální počítač.
       1. Konfigurace vašeho zařízení k odeslání protokolů pomocí nastavení uvedených na stránce připojení. Konektor obecný Common Event Format použijte tato nastavení:
          - Protokol = UDP
@@ -118,6 +120,13 @@ Pokud Azure nepoužíváte, ručně nasaďte agenta Sentinelu Azure ke spuštěn
   
  Chcete-li použít příslušné schéma v Log Analytics pro události CEF, vyhledejte `CommonSecurityLog`.
 
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>Krok 2: Formát cef (Common Event Format) protokoly předat Syslog agenta
+
+Nastavte své řešení zabezpečení k odeslání zprávy Syslog ve formátu CEF agentům Syslog. Ujistěte se, že používáte stejné parametry, které se zobrazují v konfiguraci agenta. Obvykle se jedná o:
+
+- Port 514
+- Zařízení local4
+
 ## <a name="step-3-validate-connectivity"></a>Krok 3: Ověření připojení
 
 Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v Log Analytics. 
@@ -128,7 +137,7 @@ Může trvat upwards of 20 minut, než vaše protokoly spuštění se zobrazí v
 
 3. Ujistěte se, že protokoly můžete odeslat dodržovat [RFC 5424](https://tools.ietf.org/html/rfc542).
 
-4. Na počítači se systémem agenta Syslog, ujistěte se, že tyto porty 514, 25226 jsou otevřené a naslouchá, pomocí příkazu `netstat -a -n:`. Další informace o použití tohoto příkazu naleznete v tématu [netstat(8) - Linux man stránky](https://linux.die.netman/8/netstat). Pokud naslouchá správně, uvidíte následující:
+4. Na počítači se systémem agenta Syslog, ujistěte se, že tyto porty 514, 25226 jsou otevřené a naslouchá, pomocí příkazu `netstat -a -n:`. Další informace o použití tohoto příkazu naleznete v tématu [netstat(8) - Linux man stránky](https://linux.die.net/man/8/netstat). Pokud naslouchá správně, uvidíte následující:
 
    ![Azure porty Sentinel](./media/connect-cef/ports.png) 
 

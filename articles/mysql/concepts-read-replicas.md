@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.openlocfilehash: be592cb6bb7c041fab0a2f96a338f4f4bb0ff00a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510927"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225367"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -42,8 +42,7 @@ Pokud hlavní server nemá žádné existující servery repliky, hlavní restar
 
 Při spuštění pracovního postupu vytvoření repliky se vytvoří prázdnou serveru Azure Database for MySQL. Nový server je vyplněna data, která byla na hlavní server. Čas vytvoření závisí na množství dat na hlavní server a doba od poslední týdenní úplnou zálohu. Čas musí být v rozsahu několika minut i několik hodin.
 
-> [!NOTE]
-> Pokud nemáte sadu výstrah úložiště na serverech, doporučujeme vám to. Upozornění vás informuje, když na serveru se blíží limitu úložiště, který bude mít vliv na replikaci.
+Repliky je povolený pro úložiště [auto-grow](concepts-pricing-tiers.md#storage-auto-grow). Funkce auto-grow umožňuje repliky držet krok s dat replikovaných do ní a zabránili přerušení v replikaci nedostatku chyby úložiště.
 
 Zjistěte, jak [vytvoření repliky pro čtení na webu Azure Portal](howto-read-replicas-portal.md).
 
@@ -69,7 +68,7 @@ Tato metrika se počítá pomocí `seconds_behind_master` metriky, které jsou k
 
 Nastavení upozornění pro informování, když je zpoždění replikace dosáhne hodnotu, která se nedají použít u svých úloh.
 
-## <a name="stop-replication"></a>Zastavit replikaci
+## <a name="stop-replication"></a>Zastavení replikace
 
 Můžete zastavit replikaci mezi hlavní a repliku. Po zastavení replikace mezi hlavní server a repliky pro čtení, se stane replika samostatný server. Data v samostatném serveru jsou data, která byla k dispozici na replice v době, kdy byl spuštěn příkaz stop replikace. Samostatný server nebude dohnat s hlavním serverem.
 
@@ -124,7 +123,7 @@ Následující parametry serveru, jsou uzamčené na hlavní server i repliky se
 
 [ `event_scheduler` ](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) Parametr je uzamčen na serverech repliky. 
 
-### <a name="other"></a>Další
+### <a name="other"></a>Ostatní
 
 - Identifikátory globální transakce (GTID) nejsou podporovány.
 - Vytváří se replika repliky se nepodporuje.

@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8bd6a9df9518cb1b2312b525e8876629a2189bd2
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196886"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399607"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
 Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
+
+A [Bot Framework 4.x s kurzem LUIS](luis-nodejs-tutorial-bf-v4.md) je také k dispozici.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -98,7 +100,7 @@ Otevřít **nastavení aplikace** v první okno prohlížeče a úpravy **LuisAp
 
   ![Aktualizovat ID aplikace LUIS v Azure](./media/luis-tutorial-node-bot/bot-service-app-id.png)
 
-Pokud nemáte ID aplikace LUIS, přihlaste se k [LUIS](luis-reference-regions.md) webu pomocí stejného účtu, který používáte k přihlášení k Azure. Vyberte na **Moje aplikace**. 
+Pokud nemáte ID aplikace LUIS, přihlaste se k [LUIS](luis-reference-regions.md) webu pomocí stejného účtu, který používáte k přihlášení do Azure. Vyberte na **Moje aplikace**. 
 
 1. Najdete LUIS aplikaci, kterou jste dříve vytvořili, a která obsahuje záměry a entity z HomeAutomation domény.
 

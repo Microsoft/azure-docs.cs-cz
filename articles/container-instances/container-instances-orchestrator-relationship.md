@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581113"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072985"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Služba Azure Container Instances a orchestrátorů kontejnerů
 
@@ -56,7 +56,7 @@ Místo horizontální navýšení kapacity počtu virtuálních počítačů v c
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Ukázková implementace: virtuální uzly pro Azure Kubernetes Service (AKS)
 
-Rychle škálovat úlohy aplikací do [Azure Kubernetes Service](../aks/intro-kubernetes.md) clusteru (AKS), můžete použít *virtuální uzly* dynamicky vytvořené ve službě Azure Container Instances. Aktuálně ve verzi preview, povolte virtuální uzly síťové komunikace mezi pody spuštěné v ACI a AKS clusteru. 
+Rychle škálovat úlohy aplikací do [Azure Kubernetes Service](../aks/intro-kubernetes.md) clusteru (AKS), můžete použít *virtuální uzly* dynamicky vytvořené ve službě Azure Container Instances. Virtuální uzly povolit síťovou komunikaci mezi pody spuštěné v ACI a AKS clusteru. 
 
 Virtuální uzly aktuálně podporují instance kontejnerů Linuxu. Začínáme s virtuálními uzly pomocí [rozhraní příkazového řádku Azure](https://go.microsoft.com/fwlink/?linkid=2047538) nebo [webu Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Začínáme | Dokumentace Micros
 description: Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: ergreenl
-ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: a4a515f3d669794d5bcdd8fa506a8d3b846db987
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417702"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234945"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 
@@ -44,7 +44,7 @@ Průvodce automaticky vytvoří příslušné skupiny pro správu v adresáři s
 
 ## <a name="configure-synchronization"></a>Konfigurace synchronizace
 
-Azure AD Domain Services umožňuje buď úplná synchronizace všech uživatelů a skupin, které jsou k dispozici ve službě Azure AD, nebo můžete vybrat s vymezeným oborem synchronizace pro synchronizaci jenom na konkrétní skupiny. Pokud vyberete možnost Úplná synchronizace, bude **není** zvolit s vymezeným oborem synchronizace později. Další informace o synchronizaci s vymezeným oborem, najdete [obor článku synchronizace Azure AD Domain Services](active-directory-ds-scoped-synchronization.md).
+Azure AD Domain Services umožňuje buď úplná synchronizace všech uživatelů a skupin, které jsou k dispozici ve službě Azure AD, nebo můžete vybrat s vymezeným oborem synchronizace pro synchronizaci jenom na konkrétní skupiny. Pokud vyberete možnost Úplná synchronizace, bude **není** zvolit s vymezeným oborem synchronizace později. Další informace o synchronizaci s vymezeným oborem, najdete [obor článku synchronizace Azure AD Domain Services](scoped-synchronization.md).
 
 ### <a name="full-synchronization"></a>Úplná synchronizace
 
@@ -98,7 +98,7 @@ Proces zřizování vaši spravovanou doménu může trvat až hodinu.
 
 ## <a name="need-help"></a>Potřebujete pomoc?
 
-Může trvat hodinu nebo dvě pro oba řadiče domény vaší spravované domény, které se mají zřídit. Pokud vaše nasazení se nezdařilo nebo je zablokované ve stavu 'Čekající na vyřízení' pro více než několik hodin, bez obav [kontaktováním produktového týmu pomoc](active-directory-ds-contact-us.md).
+Může trvat hodinu nebo dvě pro oba řadiče domény vaší spravované domény, které se mají zřídit. Pokud vaše nasazení se nezdařilo nebo je zablokované ve stavu 'Čekající na vyřízení' pro více než několik hodin, bez obav [kontaktováním produktového týmu pomoc](contact-us.md).
 
 ## <a name="next-step"></a>Další krok
 

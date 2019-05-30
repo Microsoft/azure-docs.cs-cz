@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0de4da5792553b8e61ce8116988dc0d0b2c55488
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3f4ef7f333525d7408d0345b917102cddb295386
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66130991"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255472"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentace webových aplikací za běhu pomocí monitorování stavu Application Insights
 
@@ -321,7 +321,6 @@ Zobrazení telemetrických dat:
 * [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
 * [Prohledávání událostí a protokolů][diagnostic] pro diagnostiku problémů
 * [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
-* [Vytváření řídicích panelů](../../azure-monitor/app/app-insights-dashboards.md)
 
 Přidání další telemetrie:
 

@@ -18,18 +18,18 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5c6f1064d2d73ab3d99ca341cffd9b296723e97
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: acc30bc18921b79be3b5e5b2ae340eab29dd5bcf
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571105"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305763"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?
 
 S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), jak ověřeného přístupu uživatele můžete řídit vašich cloudových aplikacích. V zásadách podmíněného přístupu definujte odpověď ("to") důvod Aktivace zásady ("Když taková situace nastane").
 
-![Řízení](./media/controls/10.png)
+![Ovládací prvek](./media/controls/10.png)
 
 V souvislosti s podmíněným přístupem
 
@@ -39,7 +39,7 @@ V souvislosti s podmíněným přístupem
 
 Kombinace příkaz podmínky s ovládacími prvky představuje zásad podmíněného přístupu.
 
-![Řízení](./media/controls/61.png)
+![Ovládací prvek](./media/controls/61.png)
 
 Každý ovládací prvek je požadavek, který musí být splněny osoba nebo systém přihlášení nebo omezení na to, co uživatel můžete provést po přihlášení.
 
@@ -58,7 +58,7 @@ Pomocí udělení ovládacích prvků můžete zablokovat přístup úplně nebo
 - Všechny vybrané ovládací prvky musí být splněny (*a*)
 - Jeden vybraný ovládací prvek musí být splněny (*nebo*)
 
-![Řízení](./media/controls/18.png)
+![Ovládací prvek](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
@@ -111,7 +111,7 @@ Seznam podporovaných zásad chráněných klientských aplikací, najdete v č�
 
 Uživatel může vyžadovat ve vašem tenantovi vyjádřit souhlas s podmínkami použití před udělením přístupu k prostředku. Jako správce můžete nakonfigurovat a upravit podmínky použití nahráním dokumentu PDF. Pokud uživatel spadá do rozsahu tato řízení přístupu k aplikaci je udělit pouze tehdy, pokud bylo dohodnuto podmínky použití.
 
-### <a name="custom-controls-preview"></a>Vlastní ovládací prvky (Preview)
+### <a name="custom-controls-preview"></a>Vlastní ovládací prvky (preview)
 
 Přidat vlastní ovládací prvky podmíněného přístupu, který přesměrovat uživatele na kompatibilní služby splňovat další požadavky mimo službu Azure Active Directory. To umožňuje vynucení podmíněného přístupu požadavky pomocí určitých externí ověřování službou Multi-Factor Authentication a zprostředkovatelů ověření. Tím se uspokojí tento ovládací prvek, prohlížeče uživatele přesměruje na externí služby, provede všechny požadované ověřování nebo ověřování aktivity a je následně přesměrován zpět do Azure Active Directory. Pokud si uživatel byl úspěšně ověřen nebo ověřit, uživatel bude pokračovat tok podmíněného přístupu. 
 
@@ -144,11 +144,11 @@ Zkopírujte JSON data a vložte ho do souvisejícího textového pole. Neprovád
 
 Možnost vytvořit vlastní ovládací prvek je v **spravovat** část **podmíněného přístupu** stránky.
 
-![Řízení](./media/controls/82.png)
+![Ovládací prvek](./media/controls/82.png)
 
 Kliknutím na **nový vlastní ovládací prvek**, otevře se okno s textové pole pro data JSON ovládacího prvku.  
 
-![Řízení](./media/controls/81.png)
+![Ovládací prvek](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>Odstraňuje se vlastní ovládací prvky
 
@@ -166,9 +166,9 @@ Chcete-li upravit vlastní ovládací prvek, musíte odstranit aktuální ovlád
 
 ## <a name="session-controls"></a>Ovládací prvky relací
 
-Ovládací prvky relací umožňují používat v cloudové aplikaci omezené možnosti. Ovládací prvky relací neprosazují cloudových aplikací a Spolehněte se na další informace, které poskytuje Azure AD do aplikace o relaci.
+Ovládací prvky relací umožňují v cloudové aplikaci omezené možnosti. Ovládací prvky relací neprosazují cloudových aplikací a Spolehněte se na další informace, které poskytuje Azure AD do aplikace o relaci.
 
-![Řízení](./media/controls/31.png)
+![Ovládací prvek](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>Používat omezení vynucená aplikací
 

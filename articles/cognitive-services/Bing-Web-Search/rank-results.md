@@ -11,18 +11,18 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9a49c4af474d7f0618bf0cff1a093e5cbb62fe2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648818"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390124"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Použití pořadí zobrazení výsledků rozhraní API webové vyhledávání Bingu  
 
-Obsahuje každou odpověď vyhledávání [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) odpověď, která určuje, jak je třeba zobrazit výsledky hledání. Hodnocení odpovědí seskupí výsledky podle mainline obsahu a boční panel pro tradiční hledání stránky výsledků. Pokud nejsou zobrazení výsledků v tradiční hlavní linie a boční panel formátu, je nutné zadat hlavní linie viditelnost obsahu vyšší než postranního panelu obsahu.  
+Obsahuje každou odpověď vyhledávání [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) odpověď, která určuje, jak je třeba zobrazit výsledky hledání. Hodnocení odpovědí seskupí výsledky podle mainline obsahu a boční panel pro tradiční hledání stránky výsledků. Pokud nejsou zobrazení výsledků v tradiční hlavní linie a boční panel formátu, je nutné zadat hlavní linie viditelnost obsahu vyšší než postranního panelu obsahu.  
 
-V rámci jednotlivých skupin (mainline nebo postranního panelu), [položky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) pole určuje pořadí, ve kterém obsah musí být uvedena v. Každá položka obsahuje následující dva způsoby, jak určit výsledek v rámci odpověď.  
+V rámci jednotlivých skupin (mainline nebo postranního panelu), [položky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) pole určuje pořadí, ve kterém obsah musí být uvedena v. Každá položka obsahuje následující dva způsoby, jak určit výsledek v rámci odpověď.  
 
 -   `answerType` a `resultIndex` – `answerType` pole identifikuje odpovědí (například webové stránky nebo zpráv) a `resultIndex` identifikuje výsledků v rámci odpovědí (například zpravodajskému článku). Index je od nuly.  
 
@@ -30,11 +30,11 @@ V rámci jednotlivých skupin (mainline nebo postranního panelu), [položky](ht
 
 Pomocí ID je jednodušší použít, protože je potřeba jenom odpovídat ID hodnocení s ID odpověď nebo některou z jeho výsledky. Pokud objekt odpovědi obsahuje `id` pole, společně zobrazit výsledky všech odpovědí. Například pokud `News` objekt zahrnuje `id` pole, zobrazí všechny články společně. Pokud `News` objekt neobsahuje `id` pole, pak každý příspěvek obsahuje `id` pole a hodnocení odpovědi kombinuje vybrané články s výsledky z jiné odpovědi.  
 
-Použití `answerType` a `resultIndex` je o něco složitější. Použijete `answerType` k identifikaci odpověď, která obsahuje výsledky k zobrazení. Potom použijte `resultIndex` do indexu prostřednictvím výsledků odpověď získat výsledek, který má zobrazit. ( `answerType` Hodnota je název pole v [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektu.) Pokud už má společně zobrazit výsledky všech odpovědí, odpověď na hodnocení položky neobsahuje `resultIndex` pole.  
+Použití `answerType` a `resultIndex` je o něco složitější. Použijete `answerType` k identifikaci odpověď, která obsahuje výsledky k zobrazení. Potom použijte `resultIndex` do indexu prostřednictvím výsledků odpověď získat výsledek, který má zobrazit. ( `answerType` Hodnota je název pole v [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektu.) Pokud už má společně zobrazit výsledky všech odpovědí, odpověď na hodnocení položky neobsahuje `resultIndex` pole.  
 
 ## <a name="ranking-response-example"></a>Hodnocení příklad odpovědi
 
-Následující příklad ukazuje, [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse). Protože nezahrnuje odpověď webové `id` pole, bude zobrazení všech webových stránek jednotlivě podle pořadí (každá webová stránka obsahuje `id` pole). A protože obsahují obrázků, videí a související hledání odpovědí `id` pole, by zobrazit výsledky podle pořadí společně tyto odpovědi.
+Následující příklad ukazuje, [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Protože nezahrnuje odpověď webové `id` pole, bude zobrazení všech webových stránek jednotlivě podle pořadí (každá webová stránka obsahuje `id` pole). A protože obsahují obrázků, videí a související hledání odpovědí `id` pole, by zobrazit výsledky podle pořadí společně tyto odpovědi.
 
 ```json
 {  

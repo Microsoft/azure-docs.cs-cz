@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 3361013d8421cd859c834c07018356318d5e2989
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66179813"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254471"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace v Javě v Linuxu pro Azure App Service
 
@@ -57,7 +57,7 @@ Povolit [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2faz
 
 Pokud vaše aplikace používá [Logback](https://logback.qos.ch/) nebo [Log4j](https://logging.apache.org/log4j) pro trasování, můžete předat dál trasování ke kontrole do služby Azure Application Insights pomocí pokyny ke konfiguraci protokolování framework v [Protokoly trasování prozkoumejte Java ve službě Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
-### <a name="troubleshooting-tools"></a>Nástroje pro řešení potíží
+### <a name="troubleshooting-tools"></a>Řešení potíží s nástroji
 
 Integrované Image Java jsou založeny na [Alpine Linuxu](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) operačního systému. Použití `apk` Správce balíčků pro instalaci řešení potíží nástroje nebo příkazy.
 
@@ -134,7 +134,7 @@ Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in
 
 Pokud vaše aplikace v Javě je zejména velkých, měli byste zvýšit časový limit spuštění. Vytvořit nastavení aplikace, `WEBSITES_CONTAINER_START_TIME_LIMIT` a nastavte ho na počet sekund, po které služby App Service má čekat před vypršením časového limitu. Maximální hodnota je `1800` sekund.
 
-## <a name="secure-applications"></a>Zabezpečené aplikace
+## <a name="secure-applications"></a>Zabezpečení aplikací
 
 Aplikace Java spuštěná ve službě App Service pro Linux mají stejnou sadu [osvědčené postupy zabezpečení](/azure/security/security-paas-applications-using-app-services) jako ostatní aplikace. 
 
@@ -164,7 +164,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Odhlásit uživatele a provádět další akce, naleznete v dokumentaci na [použití ověřování pomocí služby App Service a autorizaci](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentaci na Tomcat [HttpServletRequest rozhraní](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a její metody. Následující servlet, které metody jsou také HYDRATOVANÝ podle vaší konfigurace služby App Service:
+Odhlásit uživatele a provádět další akce, naleznete v dokumentaci na [použití ověřování pomocí služby App Service a autorizaci](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to). K dispozici je také oficiální dokumentaci na Tomcat [HttpServletRequest rozhraní](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) a její metody. Následující servlet, které metody jsou také HYDRATOVANÝ podle vaší konfigurace služby App Service:
 
 ```java
 public boolean isSecure()

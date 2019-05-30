@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456860c74810a692b4839e4204ec0b78d5620864
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513466"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383015"
 ---
 # <a name="create-a-project"></a>Vytvoření projektu
 
@@ -46,7 +46,7 @@ Vytvoření projektu je prvním krokem k sestavení modelu.
 
 3.  Kliknutí na Vytvořit
 
-## <a name="view-project-details"></a>Zobrazit podrobnosti projektu
+## <a name="view-project-details"></a>Zobrazit podrobnosti o projektu
 
 Cílová stránka vlastní Translator ukazuje prvních 10 projektů ve vašem pracovním prostoru. Zobrazí název projektu, dvojici jazyků, kategorie, stav a BLEU skóre.
 
@@ -60,7 +60,7 @@ Až vyberete projekt, uvidíte na stránce projektu následující:
 
 - Tlačítko filtr dokumentů: Pomocí tohoto tlačítka na filtr a vyhledejte konkrétní dokumenty.
 
-    ![Zobrazit podrobnosti projektu](media/how-to/how-to-view-project.png)
+    ![Zobrazit podrobnosti o projektu](media/how-to/how-to-view-project.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127544"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386772"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí uživatelského rozhraní
 
@@ -78,7 +78,7 @@ Hostované uživatelského rozhraní, využívat buď:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Přidejte následující parametry dotazu k adrese URL podle potřeby. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) odkaz.
+  > Přidejte následující parametry dotazu k adrese URL podle potřeby. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) odkaz.
   >
   > - q
   > - mkt
@@ -143,7 +143,7 @@ Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou ko
 
 | |  |
 |---------|---------|
-|Název stránky   | Text zobrazený v nadpisu stránka výsledků hledání (ne pro rozložení přes pop).        |
+|Nadpis stránky   | Text zobrazený v nadpisu stránka výsledků hledání (ne pro rozložení přes pop).        |
 |Panel nástrojů motiv    | Určuje barvu pozadí oblasti názvu stránku výsledků hledání. |
 
 Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou konfiguraci**.  
@@ -157,7 +157,7 @@ Následující konfigurace se zobrazí, pokud kliknete **Zobrazit pokročilou ko
 
 Následující konfigurace platí jenom v případě, že využívání rozhraní hostovaná prostřednictvím koncového bodu ve formátu HTML (nemohou být použity používáte javascriptový fragment kódu).
 
-- Název stránky
+- Nadpis stránky
 - Panel nástrojů motiv
 - Adresa URL odkazu na nadpis
 - Adresa URL loga

@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: reference
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8e5876c9141a3eb85593b12f45b0bde4c7984adf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3d78a1b7488e7489b02e34e9733a5d741213855
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431136"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384895"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade ze služby Bing webové rozhraní API pro vyhledávání v5 na v7
 
@@ -41,7 +41,7 @@ Tento průvodce upgradem identifikuje změny mezi verzí 5 a rozhraní API webov
 
 |Kód|Podřízeného|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Bing vrátí ServerError pokaždé, když dojde k některé z podmínek dílčí kód. Odpověď bude obsahovat tyto chyby, pokud je stavový kód HTTP 500.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError pokaždé, když dojde k některé z podmínek dílčí kód. Odpověď bude obsahovat tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
 |RateLimitExceeded||Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud se překročí QPS a 403 překročení QPM.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.
@@ -62,7 +62,7 @@ DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
 HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-Neimplementováno|ServerError.NotImplemented
+NotImplemented|ServerError.NotImplemented
 InvalidAuthorization|InvalidAuthorization
 InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
@@ -75,14 +75,14 @@ Blokováno|InvalidRequest.Blocked
 
 ### <a name="headers"></a>Hlavičky
 
-- Přidat nepovinný [– direktiva Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) hlavičky žádosti. Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
+- Přidat nepovinný [– direktiva Pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) hlavičky žádosti. Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Přidá [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) parametr dotazu. Tento parametr použijte k určení počtu odpovědí, které má odpověď obsahovat. Odpovědi jsou zvolena podle pořadí. Například, pokud je tento parametr nastavit tři (3), odpověď obsahuje tři hlavní seřazený odpovědi.  
+- Přidá [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) parametr dotazu. Tento parametr použijte k určení počtu odpovědí, které má odpověď obsahovat. Odpovědi jsou zvolena podle pořadí. Například, pokud je tento parametr nastavit tři (3), odpověď obsahuje tři hlavní seřazený odpovědi.  
 
-- Přidá [podporovat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) parametr dotazu. Použijte tento parametr spolu s `answerCount` explicitně zahrnout jeden nebo více typů odpovědí bez ohledu na jejich pořadí. Například pro podporu videa a obrázků do odpovědi, nastavíte povýšit na *videí, obrázků*. Seznam odpovědí, které chcete zvýšit úroveň není započítávat `answerCount` limit. Například pokud `answerCount` je 2 a `promote` je nastavena na *videí, obrázků*, odpověď může obsahovat webové stránky, zprávy, videa a obrázků.
+- Přidá [podporovat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) parametr dotazu. Použijte tento parametr spolu s `answerCount` explicitně zahrnout jeden nebo více typů odpovědí bez ohledu na jejich pořadí. Například pro podporu videa a obrázků do odpovědi, nastavíte povýšit na *videí, obrázků*. Seznam odpovědí, které chcete zvýšit úroveň není započítávat `answerCount` limit. Například pokud `answerCount` je 2 a `promote` je nastavena na *videí, obrázků*, odpověď může obsahovat webové stránky, zprávy, videa a obrázků.
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Přidá `someResultsRemoved` pole [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) objektu. Pole obsahuje hodnotu typu Boolean označující, zda odpovědi vyloučit některé výsledky z webových odpovědí.  
+- Přidá `someResultsRemoved` pole [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) objektu. Pole obsahuje hodnotu typu Boolean označující, zda odpovědi vyloučit některé výsledky z webových odpovědí.  

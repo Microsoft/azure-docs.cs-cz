@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679325"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399379"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V do Azure
 
@@ -91,10 +91,10 @@ Na základě tohoto nastavení, když vyberete Cílová síť virtuálních poč
 
 **Výběr** | **Chráněnému cloudu** | **Ochrana cloudu** | **Cílová síť k dispozici**
 ---|---|---|---
-VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | K dispozici.
- | GoldCloud1 | GoldCloud2 | K dispozici.
+VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | K dispozici
+ | GoldCloud1 | GoldCloud2 | K dispozici
 VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici.
- | GoldCloud1 | GoldCloud2 | K dispozici.
+ | GoldCloud1 | GoldCloud2 | K dispozici
 
 
 Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný název jako podsíť, ve které je umístěný zdrojový virtuální počítač, pak virtuální počítač repliky se připojí k této cílové podsíti po převzetí služeb při selhání. Pokud neexistuje žádná cílová podsíť s odpovídajícím názvem, připojí se virtuální počítač k první podsíti v síti.

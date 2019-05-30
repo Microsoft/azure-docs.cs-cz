@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751237"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239082"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Datová věda pro začátečníky řady
@@ -48,7 +48,7 @@ Už jsme mluvili o tom, jak pro datové vědy je proces použití názvů (také
 
 Vágní dotaz nemusí jako odpověď získat název nebo číslo. Musí být sharp otázku.
 
-Představte si, že jste našli magic lamp s genie, který bude pravdivě odpovědět na každou otázku, kterou požadujete. Ale je mischievous genie a že budete akci k jeho odpovědí vágní a matoucí jak si můžete okamžitě začít s. Chcete připnout mu dotazu vzduchotěsným tak, že mu nemůže pomoct ale říct, co potřebujete vědět.
+Představte si, že jste našli magic lamp s genie, který bude pravdivě odpovědět na každou otázku, kterou požadujete. Ale je mischievous genie, kteří se pokusí provést jejich odpověď jako vágní a matoucí, jak můžete hned začít s. Chcete připínat je mimo provoz s dotaz vzduchotěsným tak, že nemůže pomoct ale říct, co potřebujete vědět.
 
 Pokud byste chtěli položit vágní dotaz, jako je "Co se to stát se Moje akcie?", může odpovědět genie, "se změní cena". Který je truthful odpověď, ale není velmi užitečné.
 

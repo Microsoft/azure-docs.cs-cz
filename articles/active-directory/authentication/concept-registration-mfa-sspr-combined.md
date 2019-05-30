@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415743"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235589"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
@@ -24,7 +24,7 @@ Před kombinovaná registrace uživatelé registrovaní metody ověřování pro
 
 ![Můj profil zobrazující registrované bezpečnostní údaje pro uživatele](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na správce a dokumentaci zaměřené na uživatele, ujistěte se, že rozumíte funkce a účinek této funkce. Základní trénování v dokumentaci pro uživatele můžete připravit vaši uživatelé nové prostředí a pomáhají zajistit úspěšné zavedení.
+Než povolíte nové prostředí, projděte si tuto dokumentaci zaměřené na správce a dokumentaci zaměřené na uživatele, ujistěte se, že rozumíte funkce a účinek této funkce. Trénování založit [dokumentaci pro uživatele](../user-help/user-help-security-info-overview.md) připravit vaši uživatelé pro nové prostředí a pomáhají zajistit úspěšné zavedení.
 
 Azure AD kombinovat bezpečnostním údajům, které registrace není aktuálně k dispozici do národních cloudů, jako jsou Azure US Government, Azure Germany a Azure China 21Vianet.
 
@@ -49,8 +49,8 @@ Kombinované registrace podporuje následující metody ověřování a akce:
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Jiné ověřovací aplikaci | Ano (maximálně 5) | Ne | Ano |
 | Hardwarový token | Ne | Ne | Ano |
-| Telefon | Ano | Ano | Ano |
-| Alternativní telefon | Ano | Ano | Ano |
+| Phone | Ano | Ano | Ano |
+| Alternativní telefonní | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
 | Email | Ano | Ano | Ano |
 | Bezpečnostní otázky | Ano | Ne | Ano |
@@ -84,20 +84,20 @@ Kombinovaná registrace dodržuje zásady vícefaktorového ověřování a samo
 
 Tady je několik scénářů, ve kterých mohou uživatelé vyzváni k registraci nebo aktualizovat svoje bezpečnostní údaje:
 
-* Registrace pro ověřování službou Multi-Factor Authentication vynutit prostřednictvím služby Identity Protection: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
-* Registrace ověřování službou Multi-Factor Authentication vynutit prostřednictvím služby Multi-Factor Authentication na uživatele: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
-* Registrace pro ověřování službou Multi-Factor Authentication vynutit prostřednictvím podmíněného přístupu nebo jiné zásady: Uživatelé jsou požádáni o registraci při použití prostředek, který vyžaduje Vícefaktorové ověřování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
-* Vynucené registrace samoobslužného resetování HESLA: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali pouze metody samoobslužné resetování HESLA.
-* Vynutit aktualizaci samoobslužné resetování HESLA: Uživatelé musí zkontrolovat svoje bezpečnostní údaje v intervalu nastavil na správce. Uživatelům se zobrazí jejich informace o a můžete potvrdit aktuální informace o nebo provést změny v případě potřeby.
+- Registrace pro ověřování službou Multi-Factor Authentication vynutit prostřednictvím služby Identity Protection: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
+- Registrace ověřování službou Multi-Factor Authentication vynutit prostřednictvím služby Multi-Factor Authentication na uživatele: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
+- Registrace pro ověřování službou Multi-Factor Authentication vynutit prostřednictvím podmíněného přístupu nebo jiné zásady: Uživatelé jsou požádáni o registraci při použití prostředek, který vyžaduje Vícefaktorové ověřování. Aby se zaregistrovali metody samoobslužné resetování HESLA a Vícefaktorové ověřování (Pokud je uživatel povolen pro samoobslužné resetování HESLA).
+- Vynucené registrace samoobslužného resetování HESLA: Uživatelé jsou požádáni o registraci při přihlašování. Aby se zaregistrovali pouze metody samoobslužné resetování HESLA.
+- Vynutit aktualizaci samoobslužné resetování HESLA: Uživatelé musí zkontrolovat svoje bezpečnostní údaje v intervalu nastavil na správce. Uživatelům se zobrazí jejich informace o a můžete potvrdit aktuální informace o nebo provést změny v případě potřeby.
 
 Při registraci se nevynutí, uživatelům se zobrazí minimální počet metod, které jsou potřeba, aby vyhovovala zásadám Vícefaktorové ověřování a samoobslužné resetování HESLA, od těch s nejvíce alespoň zabezpečení.
 
 Příklad:
 
-* Uživatel je povolený pro samoobslužné resetování HESLA. Zásady SSPR vyžaduje dvě metody pro resetování a povolil kód mobilní aplikace, e-mail a telefon.
-   * Tento uživatel je potřeba zaregistrovat dvěma způsoby.
-      * Uživatel se ve výchozím nastavení zobrazí aplikace authenticator a telefon.
-      * Uživatele můžete zaregistrovat e-mailu místo aplikaci authenticator nebo v telefonu.
+- Uživatel je povolený pro samoobslužné resetování HESLA. Zásady SSPR vyžaduje dvě metody pro resetování a povolil kód mobilní aplikace, e-mail a telefon.
+   - Tento uživatel je potřeba zaregistrovat dvěma způsoby.
+      - Uživatel se ve výchozím nastavení zobrazí aplikace authenticator a telefon.
+      - Uživatele můžete zaregistrovat e-mailu místo aplikaci authenticator nebo v telefonu.
 
 Tato vývojový diagram popisuje, jaké metody se zobrazí uživateli, když k přerušení k registraci při přihlašování:
 

@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520847"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255263"
 ---
 # <a name="get-started-with-azure-monitor-log-analytics"></a>Začínáme s Azure Monitor Log Analytics
 
@@ -46,7 +46,7 @@ Event | search "error"
 
 Tento dotaz vyhledá _události_ tabulky pro záznamy, které obsahují pojem "Chyba" v jakékoli vlastnosti.
 
-Dotazy můžete spustit buď pomocí názvu tabulky nebo **hledání** příkazu. Výše uvedený příklad začíná název tabulky _události_, která definuje obor dotazu. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich ve vstupu následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
+Dotazy můžete spustit buď pomocí názvu tabulky nebo **hledání** příkazu. Výše uvedený příklad začíná název tabulky _události_, která definuje obor dotazu. Znak svislé čáry (|) odděluje příkazy, takže výstup první z nich slouží jako vstup následující příkaz. Můžete přidat libovolný počet příkazů do jednoho dotazu.
 
 Jiný způsob psaní tohoto stejného dotazu by byl:
 
@@ -115,7 +115,7 @@ Tabulka výsledků často obsahuje mnoho sloupců. Můžete zjistit, že někter
 ![Výběr sloupců](media/get-started-portal/select-columns.png)
 
 
-## <a name="select-a-time-range"></a>Vybrat časový rozsah
+## <a name="select-a-time-range"></a>Vyberte časový rozsah
 Ve výchozím nastavení, Log Analytics se vztahuje _posledních 24 hodin_ časový rozsah. Pokud chcete použít jiný rozsah, vyberte jinou hodnotu prostřednictvím nástroje pro výběr času a klikněte na **spustit**. Kromě přednastavené hodnoty, můžete použít _vlastního časového rozsahu_ možnost vybrat si absolutní rozsahu pro váš dotaz.
 
 ![Výběr času](media/get-started-portal/time-picker.png)

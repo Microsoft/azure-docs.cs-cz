@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/29/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b92083b78971ab00f87e073ba7f4944a6f828daf
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 885c5266e80114b54007d05d2220fbf5ea5ab84e
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991644"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397640"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -211,7 +211,7 @@ Spustit hledání v protokolu, který vrací informace o počítači, aktualizac
 
 ![Výchozí zobrazení Správa aktualizací](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Instalovat aktualizace
+## <a name="install-updates"></a>Instalace aktualizací
 
 Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Pro vytvoření nasazení aktualizace, musí mít přístup pro zápis do účtu Automation a přístup pro zápis pro všechny virtuální počítače Azure, která je určená v nasazení. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [skupiny počítačů v Azure Monitor protokoly](../azure-monitor/platform/computer-groups.md).
 
@@ -232,7 +232,7 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 |Operační systém| Linux nebo Windows|
 | Skupiny aktualizace |Pro počítače v Azure definujte dotaz na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. </br></br>Pro počítače mimo Azure vyberte existující uložené výsledky hledání a vyberte skupinu počítačů mimo Azure zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
 | Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md) |
-|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
+|Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
 |Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior) |
 |Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
 | Předběžné skripty a pozálohovacích skriptů|Vyberte skripty spouštěné před a po nasazení|
@@ -262,13 +262,13 @@ Vyberte **chybějící aktualizace** zobrazíte seznam aktualizací, které neby
 
 ## <a name="view-update-deployments"></a>Zobrazení nasazení aktualizace
 
-Vyberte **nasazení aktualizace** kartu, chcete-li zobrazit seznam existujících nasazení aktualizace. Vyberte některou z nasazení aktualizací v tabulce, čímž otevřete **aktualizovat spuštění nasazení** podokno pro toto nasazení aktualizace.
+Vyberte **nasazení aktualizace** kartu, chcete-li zobrazit seznam existujících nasazení aktualizace. Vyberte některou z nasazení aktualizací v tabulce, čímž otevřete **aktualizovat spuštění nasazení** podokno pro toto nasazení aktualizace. Protokoly úlohy jsou uloženy pro mít délku maximálně 30 dnů.
 
 ![Přehled výsledků nasazení aktualizace](./media/automation-update-management/update-deployment-run.png)
 
 Nasazení aktualizací z rozhraní REST API najdete v tématu [spuštění konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurationruns).
 
-## <a name="update-classifications"></a>Klasifikace aktualizací
+## <a name="update-classifications"></a>Klasifikacích aktualizací
 
 Klasifikacích aktualizací v Update Management s definicí pro každou klasifikaci v následujících tabulkách.
 
@@ -356,7 +356,7 @@ Další informace o portech, které vyžaduje, aby Hybrid Runbook Worker, nalezn
 
 Doporučuje se použít adresy, které uvedete při definování výjimky. Pro IP adresy, které si můžete stáhnout [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor se každý týden aktualizuje a zobrazuje aktuálně nasazené rozsahy a všechny nadcházející změny rozsahů IP adres.
 
-## <a name="search-logs"></a>Hledat protokoly
+## <a name="search-logs"></a>Hledání protokolů
 
 Kromě podrobností, které jsou k dispozici na webu Azure Portal můžete provést hledání v protokolech. Na stránce řešení vyberte **Log Analytics**. **Prohledávání protokolů** se otevře podokno.
 
@@ -586,7 +586,7 @@ Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, čl
 * Umístění
 * Tags
 
-![Výběr skupin](./media/automation-update-management/select-groups.png)
+![Vybrat skupiny](./media/automation-update-management/select-groups.png)
 
 Zobrazení náhledu na výsledky dynamické skupiny, klikněte na tlačítko **ve verzi Preview** tlačítko. Tento náhled zobrazuje členství ve skupině v tuto chvíli v tomto příkladu jsme se hledaný pro počítače se značkou **Role** rovná **BackendServer**. Pokud se tato značka přidá mají další počítače, budou přidány pro všechny budoucí nasazení pro tuto skupinu.
 
@@ -596,7 +596,7 @@ Zobrazení náhledu na výsledky dynamické skupiny, klikněte na tlačítko **v
 
 Pro mimo Azure počítače uložená hledání také označuje jako skupiny počítačů se používají k vytvoření dynamické skupiny. Zjistěte, jak vytvořit uložené výsledky hledání, najdete v článku [vytvořit skupinu počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ho můžete vybrat ze seznamu uložených hledání. Klikněte na tlačítko **ve verzi Preview** na počítačích v uložené výsledky hledání v tuto chvíli ve verzi preview.
 
-![Výběr skupin](./media/automation-update-management/select-groups-2.png)
+![Vybrat skupiny](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 

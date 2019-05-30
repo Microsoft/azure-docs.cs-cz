@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693545"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243259"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Předplatná ve službě Azure API Management
 
@@ -42,7 +42,7 @@ Předplatná můžou být spojené s různými obory: produkt, všechna rozhran�
 
 ### <a name="subscriptions-for-a-product"></a>Předplatná produktu
 
-Tradičně, předplatná ve službě API Management souvisely vždy pomocí jediného [produktu API](api-management-terminology.md) oboru. Vývojáři najít seznam produktů na portálu pro vývojáře. Pak by odesílání žádostí o odběr pro produkty, že ale chtěli použít. Po schválení žádosti o odběr, automaticky nebo které vydavatelé rozhraní API, Vývojář můžete klíče v něm přístup ke všem rozhraním API v rámci produktu.
+Tradičně, předplatná ve službě API Management souvisely vždy pomocí jediného [produktu API](api-management-terminology.md) oboru. Vývojáři najít seznam produktů na portálu pro vývojáře. Pak by odesílání žádostí o odběr pro produkty, že ale chtěli použít. Po schválení žádosti o odběr, automaticky nebo které vydavatelé rozhraní API, Vývojář můžete klíče v něm přístup ke všem rozhraním API v rámci produktu. V současné době zobrazí portál pro vývojáře předplatná obor produktu pouze části profilu uživatele. 
 
 ![Předplatná produktu](./media/api-management-subscriptions/product-subscription.png)
 

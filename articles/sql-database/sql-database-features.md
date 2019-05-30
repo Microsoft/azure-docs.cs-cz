@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 8a7f334984d92707e4afa7cd595197e4dea83f33
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 79cf4c713d60fa600bbb80b9c16728502ffc88ff
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546494"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236837"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server
 
@@ -50,11 +50,11 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Příkaz BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Ne, najdete v článku pouze systém automatických záloh spouštěných - [automatické zálohování](sql-database-automated-backups.md) | Ano, kterou inicioval uživatel pouze kopie zálohy do Azure Blob Storage (zálohy automatické systému nelze zahájit uživatel) – viz [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Předdefinované funkce](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivých funkcí | Ano – viz [uložené procedury, funkce, aktivační události rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) | 
 | [Příkaz BULK INSERT](https://docs.microsoft.com/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ano, ale pouze ze služby Azure Blob storage jako zdroj. | Ano, ale pouze z Azure Blob Storage jako zdroj - najdete na stránce [rozdíly](sql-database-managed-instance-transact-sql-information.md#bulk-insert--openrowset). |
-| [Certifikáty a klíče asymetric](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ano, bez přístupu k systému souborů `BACKUP` a `CREATE` operace. | Ano, bez přístupu k systému souborů `BACKUP` a `CREATE` operace – viz [certifikáty rozdíly](sql-database-managed-instance-transact-sql-information.md#certificates). | 
+| [Certifikáty a asymetrických klíčů](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ano, bez přístupu k systému souborů `BACKUP` a `CREATE` operace. | Ano, bez přístupu k systému souborů `BACKUP` a `CREATE` operace – viz [certifikáty rozdíly](sql-database-managed-instance-transact-sql-information.md#certificates). | 
 | [Funkce Change data capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
 | [Sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Ano |Ano |
 | [Kolace – databáze](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation) | Ano | Ano |
-| [Kolace - server/instance](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace serveru logicla `SQL_Latin1_General_CP1_CI_AS` je vždy použito. | Ano, můžete nastavit, když [je vytvořena instance](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) a nedá se aktualizovat později. |
+| [Kolace - server/instance](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Ne, výchozí kolace logický server `SQL_Latin1_General_CP1_CI_AS` je vždy použito. | Ano, můžete nastavit, když [je vytvořena instance](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) a nedá se aktualizovat později. |
 | [Indexy Columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Ano – [úroveň Premium, úrovně Standard – S3 a vyšší úrovni General Purpose a pro důležité obchodní informace úrovně](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ano |
 | [Common language runtime (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Ne | Ano, ale bez přístupu k systému souborů v `CREATE ASSEMBLY` prohlášení – viz [rozdíly CLR](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ano | Aktuálně ne [z důvodu chyb v obnovení včetně obnovení k URČITÉMU bodu v čase](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database). Toto je vadu, který bude brzo vyřešit. |
@@ -86,7 +86,7 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Výrazy](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Ano | Ano |
 | [Rozšířené události](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Některé – viz [rozšířených událostí ve službě SQL Database](sql-database-xevent-db-diff-from-svr.md) | Ano – viz [rozšířené události rozdíly](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Ne | Ne |
-| [Soubory a skupiny souborů](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Jenom primární soubor skupiny | Ano. Cesty k souborům jsou automaticky přiřazeny a umístění souboru nelze zadat v `ALTER DATABASE ADD FILE` [příkaz](sql-database-managed-instance-transact-sql-information.md#alter-database-statement).  |
+| [Soubory a skupiny souborů](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Jenom primární soubor skupiny | Ano. Se automaticky přiřazují cesty k souborům a umístění souboru nelze zadat v `ALTER DATABASE ADD FILE` [příkaz](sql-database-managed-instance-transact-sql-information.md#alter-database-statement).  |
 | [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Ne | [Ne](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
 | [Fulltextové vyhledávání](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Ano, ale moduly pro dělení na slova třetích stran nejsou podporovány. | Ano, ale [moduly pro dělení na slova třetích stran nejsou podporovány.](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivých funkcí | Ano – viz [uložené procedury, funkce, aktivační události rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
@@ -97,7 +97,7 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Elementy jazyka](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina – viz jednotlivé elementy |  Ano – viz [rozdíly v jazyce T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Propojené servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne - naleznete v tématu [elastického dotazu](sql-database-elastic-query-horizontal-partitioning.md) | Pouze [systému SQL Server a SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
 | [Přesouvání protokolu](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) |[Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) |
-| [Přihlášení a uživatelé](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Ano, ale `CREATE` a `ALTER` příkazy přihlášení nabízí všechny možnosti (bez Windows a úrovni serveru přihlášení Azure Active Directory). `EXECUTE AS LOGIN` není supprted – použití `EXECUTE AS USER` místo.  | Ano, s některými [rozdíly](sql-database-managed-instance-transact-sql-information.md#logins-and-users). Přihlašovací údaje Windows nejsou podporované a by měla být nahrazena přihlášení Azure Active Directory. |
+| [Přihlášení a uživatelé](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Ano, ale `CREATE` a `ALTER` příkazy přihlášení nabízí všechny možnosti (bez Windows a úrovni serveru přihlášení Azure Active Directory). `EXECUTE AS LOGIN` není podporována – použijte `EXECUTE AS USER` místo.  | Ano, s některými [rozdíly](sql-database-managed-instance-transact-sql-information.md#logins-and-users). Přihlašovací údaje Windows nejsou podporované a by měla být nahrazena přihlášení Azure Active Directory. |
 | [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Ne | Ne |
 | [Minimální protokolování v hromadném importu](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Ne | Ne |
 | [Úprava dat systému](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Ne | Ano |
@@ -131,7 +131,7 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Ano | Ano |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ano | Ano |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Ano | Ne |
-| [Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Ne - naleznete v tématu [Elastických úloh](sql-database-elastic-jobs-getting-started.md) | Ano – viz [rozdíly agenta systému SQL Server](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
+| [Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Ne - naleznete v tématu [Elastických úloh](elastic-jobs-overview.md) | Ano – viz [rozdíly agenta systému SQL Server](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatný Azure cloud service. | Ne, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) je samostatný Azure cloud service. |
 | [Auditování služby SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Ne – viz [auditování služby SQL Database](sql-database-auditing.md) | Ano – viz [auditování rozdíly](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Ano | Ano |
@@ -149,7 +149,7 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Dočasné tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | Místní a s rozsahem databáze globálních dočasných tabulek | Místní a rozsahem instanci globálních dočasných tabulek |
 | [Dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Ano](sql-database-temporal-tables.md) | [Ano](sql-database-temporal-tables.md) |
 | Výběr časového pásma | Ne | [Yes(Preview)](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone) |
-| Detekce hrozby|  [Ano](sql-database-threat-detection.md)|[Ano](sql-database-managed-instance-threat-detection.md)|
+| Detekce hrozeb|  [Ano](sql-database-threat-detection.md)|[Ano](sql-database-managed-instance-threat-detection.md)|
 | [Příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Ne | Ne |
 | [Proměnné](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ano | Ano |
 | [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ano – pro obecné účely a pro důležité obchodní informace pouze úrovně služeb| [Ano](transparent-data-encryption-azure-sql.md) |

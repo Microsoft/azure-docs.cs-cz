@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002386"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225411"
 ---
 # <a name="filters"></a>Filtry
 
-Při doručování obsahu zákazníkům (živě streamovaných událostí nebo Video na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services umožňuje definovat účtu filtry a filtry asset pro obsah. 
+Při doručování obsahu zákazníkům (živě streamovaných událostí nebo Video na vyžádání) vašeho klienta může být nutné více flexibility než co je popsána v souboru manifestu výchozí asset. Azure Media Services nabízí [dynamických manifestů](filters-dynamic-manifest-overview.md) na základě předdefinovaných filtrů. 
 
 Filtry jsou pravidla na straně serveru, které umožňují zákazníkům provádět například následující akce: 
 
@@ -32,24 +32,16 @@ Filtry jsou pravidla na straně serveru, které umožňují zákazníkům prová
 - Dodávejte pouze zadaný interpretace nebo zadané jazykové stopy, které podporuje zařízení, která se používá k přehrávání obsahu ("verze filtrování"). 
 - Upravte prezentace okno (DVR) aby bylo možné poskytovat omezenou délku okna DVR v přehrávači ("okno s úpravou prezentace").
 
-Media Services nabízí [dynamických manifestů](filters-dynamic-manifest-overview.md) na základě předdefinovaných filtrů. Jakmile definujete filtry, klienty je použít v adrese URL streamování. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming.
+Služba Media Services vám umožní vytvořit **účtu filtry** a **Asset filtry** pro váš obsah. Kromě toho můžete přidružit s předem vytvořeným filtry **Lokátor streamování**.
 
-V následující tabulce jsou uvedeny příklady adresy URL s filtry:
+## <a name="defining-filters"></a>Definování filtrů
 
-|Protocol|Příklad:|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>Pro HLS verze 3, použijte: `format=m3u8-aapl-v3`.|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
-## <a name="define-filters"></a>Definování filtrů
-
-Existují dva typy filtrů prostředku: 
+Existují dva typy filtrů: 
 
 * [Účet filtry](https://docs.microsoft.com/rest/api/media/accountfilters) (globální) – lze použít u všech prostředků v účtu Azure Media Services, mají životnost účtu.
 * [Filtry Asset](https://docs.microsoft.com/rest/api/media/assetfilters) (místní) - může používat jedině pro určitý prostředek, pomocí kterého byl tento filtr k při vytvoření, mají životnost assetu. 
 
-[Účet filtr](https://docs.microsoft.com/rest/api/media/accountfilters) a [Asset filtr](https://docs.microsoft.com/rest/api/media/assetfilters) typy mají stejné vlastnosti pro definování/popis filtru. Kromě případů, kdy se vytváří **Asset filtr**, je třeba zadat název assetu, se kterým se má přidružit filtru.
+**Účet filtry** a **Asset filtry** typy mají stejné vlastnosti pro definování/popis filtru. Kromě případů, kdy se vytváří **Asset filtr**, je třeba zadat název assetu, se kterým se má přidružit filtru.
 
 V závislosti na scénáři rozhodněte, jaký typ filtru je vhodnější (Asset filtru nebo účet). Filtrů účtů jsou vhodné pro profily zařízení (interpretace filtrování), kde se používal Asset filtry k trim konkrétní prostředek.
 
@@ -145,14 +137,22 @@ Následující příklad definuje filtr živého streamování:
 }
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
+## <a name="associating-filters-with-streaming-locator"></a>Filtry přidružení Lokátor streamování
 
-Můžete zadat seznam [asset nebo účet filtrů](filters-concept.md), které bude platit pro vaše [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamické Packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické Manifest](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. Doporučujeme použít tuto funkci, pokud chcete použít filtry, ale nechcete, aby k vystavení filtr názvů v adrese URL.
+Můžete zadat seznam [asset nebo účet filtrů](filters-concept.md) na vaše [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). [Dynamické Packager](dynamic-packaging-overview.md) platí tento seznam filtrů společně s ty klientem v adrese URL. Tato kombinace generuje [dynamické Manifest](filters-dynamic-manifest-overview.md), která je založena na filtry v adrese URL a filtry, které jste zadali na Lokátor streamování. 
 
 Podívejte se na následující příklady:
 
 * [Filtry přidružit Lokátor streamování – .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
 * [Filtry přidružit Lokátor streamování – rozhraní příkazového řádku](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+
+## <a name="updating-filters"></a>Aktualizuje se filtry
+ 
+**Lokátory streamování** nejsou uvedena aktualizovat filtry je možné aktualizovat. 
+
+Nedoporučuje se aktualizovat definici filtrů přidružených ke aktivně publikované **Lokátor streamování**, zejména v případě, že je povolená síť CDN. Streamování servery a CDN může mít vnitřní mezipaměti, které může způsobovat zastaralá data uložená v mezipaměti, který se má vrátit. 
+
+Pokud je potřeba změnit definici filtru, zvažte vytvoření nového filtru a jejím přidáním na **Lokátor streamování** adresu URL nebo publikování nového **Lokátor streamování** , která odkazuje na filtr přímo.
 
 ## <a name="next-steps"></a>Další postup
 

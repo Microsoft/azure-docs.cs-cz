@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989852"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298482"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -24,6 +24,21 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2019-05-28"></a>2019-05-28
+
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Sada SDK v1.1.4 pro přípravu dat Azure Machine Learning
+
++ **Nové funkce**
+  + Teď vám pomůže následující výraz jazyka funkce extrakce a analýza hodnoty data a času na nové sloupce.
+    + `RegEx.extract_record()` Extrahuje data a času prvky do nového sloupce.
+    + `create_datetime()` vytvoří datum a čas objekty z elementů samostatné data a času.
+  + Při volání metody `get_profile()`, nyní je vidět, že quantile sloupce jsou označeny jako (odhad) jasně označuje, že hodnoty je rovin útoku.
+  + Teď můžete používat ** podpory zástupných znaků při čtení z úložiště objektů Blob v Azure.
+    + Například `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+
++ **Opravy chyb**
+  + Je opravená chyba související s čtení souboru Parquet ze vzdáleného zdroje (objektů Blob v Azure).
 
 ## <a name="2019-05-14"></a>2019-05-14
 
@@ -332,7 +347,7 @@ Poznámka: Data Prep Python SDK se už nevyžaduje instalaci `numpy` a `pandas` 
     - Histogram
     - Skládaný pruhový graf
     - Krabicový graf
-    - Bodový
+    - Bodové vykreslení
     - Bublinový graf
 + Na portálu teď dynamicky generuje sestavy pro experimentů. Když uživatel odešle na spuštění experimentu, automaticky se vygeneruje sestava s zaznamenané metriky a grafy umožňující porovnání během různých spuštění. 
 

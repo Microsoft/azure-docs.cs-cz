@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 05/23/2019
 ms.author: jureid
 ms.openlocfilehash: 81f3edcfcffad1b9b6d0ab4b49769601196049ad
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66179845"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238062"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udělení přístupu k vytvoření předplatného Azure Enterprise (preview)
 
@@ -26,7 +26,7 @@ Jako zákazník Azure na [Enterprise Agreement (EA)](https://azure.microsoft.com
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="grant-access"></a>Udělit přístup
+## <a name="grant-access"></a>Udělení přístupu
 
 K [vytvářet předplatná v rámci registrace účtu](programmatically-create-subscription.md), uživatelé musí mít [role RBAC vlastníka](../role-based-access-control/built-in-roles.md#owner) na tento účet. Můžete udělit uživateli nebo skupině uživatelů role RBAC vlastníka účtu registrace pomocí následujících kroků:
 

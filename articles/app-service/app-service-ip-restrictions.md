@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 05/23/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be0de7e809565fce4171401760d11ef9de45724e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541674"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236124"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu službě Azure App Service #
 
@@ -54,7 +54,7 @@ Můžete kliknout na **[+] přidat** přidáte nové pravidlo omezení přístup
 
 Při vytváření pravidla, musíte vybrat povolit nebo zamítnout a také typ pravidla. Také musíte zajistit, že hodnota priority a co se omezení přístupu.  Volitelně můžete přidat název a popis pravidla.  
 
-Chcete-li nastavit IP adresu na základě pravidel, vyberte typ protokolu IPv4 nebo IPv6. IP adresa notation musí zadat v notaci CIDR pro adresy IPv4 a IPv6. Chcete-li určit přesné adresy, můžete použít něco jako 1.2.3.4/32 kde první čtyři oktety představují vaše IP adresa a maska je /32. Je zápis IPv4 CIDR pro všechny adresy 0.0.0.0/0. Další informace o notaci CIDR, si můžete přečíst [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Chcete-li nastavit IP adresu na základě pravidel, vyberte typ protokolu IPv4 nebo IPv6. IP adresa notation musí zadat v notaci CIDR pro adresy IPv4 a IPv6. Chcete-li určit přesné adresy, můžete použít něco jako 1.2.3.4/32 kde první čtyři oktety představují vaše IP adresa a maska je /32. Je zápis IPv4 CIDR pro všechny adresy 0.0.0.0/0. Další informace o notaci CIDR, si můžete přečíst [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 ![Přidat omezovací pravidlo přístupu virtuální sítě](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
@@ -79,6 +79,14 @@ Pokud chcete odstranit pravidlo, klikněte na tlačítko **...**  na pravidlo a 
 Kromě toho, že řídit přístup k vaší aplikaci, můžete taky omezit přístup k webu scm se používají ve vaší aplikaci. Web scm se na webu nasadit koncový bod a také konzole Kudu. Samostatně můžete přiřadit omezení přístupu k webu scm z aplikace nebo používat stejné nastavení pro aplikaci a Web scm. Při vrácení se změnami do pole má stejná omezení jako aplikace, všechno, co je ignorováno navýšení kapacity. Pokud jste zrušte zaškrtnutí políčka, jakékoli nastavení bylo dříve na webu Správce řízení služeb se použijí. 
 
 ![omezení přístupu seznamu](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+
+## <a name="blocking-a-single-ip-address"></a>Blokování jednu IP adresu ##
+
+Při přidávání vašeho prvního pravidla omezení IP adres, přidá službu explicitní **Zamítnout vše** pravidlo s prioritou 2147483647. V praxi, explicitní **Zamítnout vše** pravidlo bude proveden poslední pravidla a bude blokovat přístup k libovolné IP adresy, které není povolené explicitně pomocí **povolit** pravidlo.
+
+Pro scénář, kde uživatelé chtějí explicitně zablokovat jednu IP adresu nebo blok IP adres, ale Povolit vše, co jiný přístup, je potřeba přidat explicitní **povolit všechny** pravidlo.
+
+![blok jednu ip adresu](media/app-service-ip-restrictions/block-single-address.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programovou manipulaci se pravidla pro omezení přístupu ##
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 135f8f1c9c352f9d2307a8bf9ad1bec892aac179
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446856"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399910"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat v Průzkumníku dat Azure v Grafana
 
@@ -154,8 +154,8 @@ S instanční objekt služby, které jsou přiřazeny *prohlížeče* roli, mů�
     | Uživatelské rozhraní služby Grafana | portál Azure | Azure CLI |
     | --- | --- | --- |
     | ID předplatného | ID PŘEDPLATNÉHO | SubscriptionId |
-    | ID tenanta | ID adresáře | tenant |
-    | ID klienta | ID aplikace | appId |
+    | Id tenanta | ID adresáře | tenant |
+    | Id klienta | ID aplikace | appId |
     | Tajný klíč klienta | Heslo | password |
     | | | |
 
@@ -208,6 +208,6 @@ Nyní jste dokončili konfiguraci Průzkumník dat Azure jako zdroj dat pro Graf
 
 ## <a name="next-steps"></a>Další postup
 
-[Psaní dotazů pro Azure Data Explorer](write-queries.md)
+* [Psaní dotazů pro Azure Data Explorer](write-queries.md)
 
-[Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)
+* [Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)

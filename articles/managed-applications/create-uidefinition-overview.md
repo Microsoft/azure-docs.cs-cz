@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: ab777b487159b009bf2cac6086bb09cc71714b0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587746"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257552"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Vytvořit Azure portal uživatelské rozhraní pro spravované aplikace
 Tento dokument představuje základní koncepty createUiDefinition.json souboru. Na webu Azure portal tento soubor používá k vygenerování uživatelského rozhraní pro vytvoření spravované aplikace.
@@ -48,6 +48,8 @@ Schéma vlastnost parameters závisí na kombinaci zadaná obslužná rutina a v
 
 Včetně `$schema` je doporučené, ale volitelné. Pokud zadaná hodnota pro `version` musí shodovat s verzí v rámci `$schema` identifikátoru URI.
 
+Můžete použít JSON editor pro vytvoření vaší definice uživatelského rozhraní nebo izolovaného prostoru definice uživatelského rozhraní můžete použít k vytvoření a zobrazit jejich náhled definice uživatelského rozhraní. Další informace o sandbox najdete v tématu [testovací rozhraní portálu pro Azure Managed Applications](test-createuidefinition.md).
+
 ## <a name="basics"></a>Základy
 Základní informace o kroku je vždy první krok průvodce vygeneruje, když na webu Azure portal analyzuje soubor. Kromě zobrazení prvky určené ve `basics`, vloží prvky pro uživatele zvolte předplatné, skupinu prostředků a umístění pro nasazení na portálu. Prvky, které se dotazují pro parametry celého nasazení, jako je název clusteru nebo správce přihlašovacích údajů, by měly obecně platí, přejděte v tomto kroku.
 
@@ -59,7 +61,7 @@ Vlastnost kroků může obsahovat nula nebo více dalších kroků pro zobrazen�
 ## <a name="outputs"></a>Výstupy
 Na webu Azure portal používá `outputs` vlastnost pro mapování elementů z `basics` a `steps` na parametry šablony nasazení Azure Resource Manageru. Názvy parametrů šablony jsou klíče tohoto slovníku a hodnoty jsou vlastnosti objektů výstup z odkazované elementy.
 
-Pokud chcete nastavit název prostředku spravované aplikace, musí obsahovat hodnotu s názvem `applicationResourceName` ve vlastnosti výstupy. Pokud tato hodnota není nastavený, aplikace přiřadí identifikátor GUID pro název. Textové pole může obsahovat v uživatelském rozhraní, který vyžaduje název od uživatele.
+Pokud chcete nastavit název prostředku spravované aplikace, musí obsahovat hodnotu s názvem `applicationResourceName` ve vlastnosti výstupy. Pokud tuto hodnotu nenastavíte, aplikace přiřadí identifikátor GUID pro název. Textové pole může obsahovat v uživatelském rozhraní, který vyžaduje název od uživatele.
 
 ```json
 "outputs": {
@@ -71,8 +73,8 @@ Pokud chcete nastavit název prostředku spravované aplikace, musí obsahovat h
 }
 ```
 
-## <a name="functions"></a>Functions
-Podobně jako funkce šablon v Azure Resource Manageru (jak v syntaxi a funkce), CreateUiDefinition poskytuje funkce pro práci s elementy vstupy a výstupy, jakož i funkce, jako jsou podmíněné výrazy.
+## <a name="functions"></a>Funkce
+Podobně jako funkce šablon v Azure Resource Manageru (jak v syntaxi a funkce), CreateUiDefinition poskytuje funkce pro práci s elementy vstupů a výstupů a funkce, jako jsou podmíněné výrazy.
 
 ## <a name="next-steps"></a>Další postup
 Samotný soubor createUiDefinition.json má jednoduché schéma. Skutečné hloubka ho pochází z podporovaných prvky a funkce. Tyto položky jsou popsány podrobněji na:

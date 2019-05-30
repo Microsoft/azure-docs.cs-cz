@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 398b7a78c9bc13631e15c8725efb8cc0fba3f127
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62261e46dc4744597acd10c32f0a835f4a597d4d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806473"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243974"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšíření podpory pro SQL Server 2008 a SQL Server 2008 R2 s Azure
 
@@ -58,7 +58,7 @@ Snímky konzistentní s Azure Site Recovery k zajištění obnovení; vyžaduje 
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-[Database Migration Service](/dms/dms-overview) možnost je určená pro zákazníky, pokud migrujete z místního Azure VM díky upgradu SQL serveru na SQL Server 2012 nebo novější.
+[Database Migration Service](/azure/dms/dms-overview) možnost je určená pro zákazníky, pokud migrujete z místního Azure VM díky upgradu SQL serveru na SQL Server 2012 nebo novější.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453061"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243426"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 
@@ -28,11 +28,11 @@ Azure Monitor předdefinované role jsou účelem je pomoci omezit přístup k p
 Lidem přiřadit role Čtenář monitorování můžete zobrazit všechna data monitorování v rámci předplatného, ale nelze upravit prostředek nebo upravit nastavení související s monitorování prostředků. Tato role je vhodný pro uživatele v organizaci, jako je například podpora nebo operace technici, kteří potřebují mít možnost:
 
 * Zobrazit řídicí panely monitorování na portálu a vytvořit svoje vlastní privátní monitorování řídicí panely.
-* Zobrazit upozornění pravidel definovaných v [Azure Alerts](../../azure-monitor/platform/alerts-overview.md)
-* Dotaz pro používání metrik [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [rutin prostředí PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md), nebo [– multiplatformního rozhraní příkazového řádku](../../azure-monitor/platform/cli-samples.md).
+* Zobrazit upozornění pravidel definovaných v [Azure Alerts](alerts-overview.md)
+* Dotaz pro používání metrik [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [rutin prostředí PowerShell](powershell-quickstart-samples.md), nebo [– multiplatformního rozhraní příkazového řádku](cli-samples.md).
 * Dotaz protokolu aktivit pomocí portálu, rozhraní REST API služby Azure Monitor, rutin Powershellu nebo CLI pro různé platformy.
-* Zobrazení [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) pro prostředek.
-* Zobrazení [profil protokolu](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) pro odběr.
+* Zobrazení [nastavení diagnostiky](diagnostic-logs-overview.md#diagnostic-settings) pro prostředek.
+* Zobrazení [profil protokolu](activity-log-export.md) pro odběr.
 * Zobrazit nastavení automatického škálování.
 * Zobrazit výstrahy aktivitu a nastavení.
 * Přístup k datům služby Application Insights a zobrazení dat v AI Analytics.
@@ -52,9 +52,9 @@ Lidem přiřadit role Čtenář monitorování můžete zobrazit všechna data m
 Uživatelé se přiřadila role Přispěvatel monitorování můžete zobrazit všechna data monitorování v rámci předplatného a vytvoření nebo upravte nastavení monitorování, ale nelze změnit všechny další prostředky. Tato role je nadstavbou jazyka roli Čtenář monitorování a je vhodný pro členy týmu monitorování nebo poskytovatelům spravovaných služeb, kteří kromě výše uvedeného oprávnění také musí být schopni v organizaci:
 
 * Publikujte jako sdílený řídicí panel monitorování řídicí panely.
-* Nastavte [nastavení diagnostiky](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) pro prostředek.\*
-* Nastavte [profil protokolu](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) pro odběr.\*
-* Nastavení prostřednictvím pravidel upozornění aktivity a [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
+* Nastavte [nastavení diagnostiky](diagnostic-logs-overview.md#diagnostic-settings) pro prostředek.\*
+* Nastavte [profil protokolu](activity-log-export.md) pro odběr.\*
+* Nastavení prostřednictvím pravidel upozornění aktivity a [Azure Alerts](alerts-overview.md).
 * Vytvořte webové testy Application Insights a komponenty.
 * Sdílené klíče pracovního prostoru Log Analytics seznamu.
 * Povolí nebo zakáže sady pro monitorování v pracovním prostoru Log Analytics.

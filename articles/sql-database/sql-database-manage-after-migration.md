@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949918"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357318"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nové DBA v cloudu – správu vašich databází ve fondu a jeden ve službě Azure SQL Database
 
@@ -29,13 +29,33 @@ Přechod z tradiční svým spravované svým řízeném prostředí PaaS prost�
 
 Tento článek popisuje některé ze základních vlastností služby Azure SQL Database jako platformu, která můžete snadno využít při práci s izolované databáze a databáze ve fondu v elastických fondech. Jsou následující:
 
+- Monitorování databáze pomocí webu Azure portal
 - Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR)
 - Zabezpečení a dodržování předpisů
 - Inteligentní databázi sledování a údržbu
-- Přesun dat
+- Přesuny dat
 
 > [!NOTE]
 > Tento článek se týká následujících možností nasazení ve službě Azure SQL Database: jedna databáze a elastické fondy. Nevztahuje se na spravované instanci možnost nasazení ve službě SQL Database.
+
+## <a name="monitor-databases-using-the-azure-portal"></a>Monitorování databází na portálu Azure
+
+V [webu Azure portal](https://portal.azure.com/), můžete monitorovat využití jednotlivých databází s výběrem databáze a kliknutím na **monitorování** grafu. Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
+
+- Procento CPU
+- Procento DTU
+- Procento datových V/V
+- Procento velikosti databáze
+
+Jakmile přidáte tyto metriky, můžete pokračovat jejich zobrazením v **monitorování** graf s dalšími informacemi o **metrika** okna. Tyto čtyři metriky uvádějí průměrné využití v procentech vzhledem k hodnotě **DTU** vaší databáze. Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) články pro další informace o úrovních služeb.  
+
+![Monitorování výkonu databáze v rámci úrovně služeb](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+Můžete také nastavit upozornění na výkonové metriky. Klikněte na tlačítko **Přidat upozornění** v okně **Metrika**. Nastavte upozornění podle pokynů průvodce. Můžete určit, zda chcete být upozorněni na překročení zadané prahové hodnoty, nebo naopak když metrika poklesne pod zadanou mez.
+
+Například pokud očekáváte nárůst zatížení databáze, můžete nastavit e-mailové upozornění pro případ, že databáze překročí 80 % kterékoli výkonové metriky. Můžete to použít jako včasné varování zjistit, když bude pravděpodobně nutné přepnout na další nejvyšší velikost výpočetní prostředky.
+
+Metriky výkonu také můžete zjistit, zda je možné nižší výpočty velikosti. Předpokládejme, že používáte databáze S2 v úrovni Standard a všechny metriky ukazují, že databáze v průměru nevyužívá více než 10 % dostupného výkonu. Je pravděpodobné, že databáze bude dobře fungovat i v úrovni Standard S1. Nezapomínejte, úloh, které výskytu špiček nebo náhlého před provedením kolísání nižší výpočty velikosti.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR)
 
@@ -45,7 +65,7 @@ Možnosti obnovení obchodní kontinuity podnikových procesů a po havárii umo
 
 Nevytvářejte záloh ve službě Azure SQL DB a důvodem je, že není nutné. SQL Database automaticky zálohuje databáze za vás, tak už se musí starat o plánování, provádění a správa záloh. Platformu trvá úplné zálohování každý týden, rozdílové že zálohování každých pár hodin a do protokolu zálohování každých 5 minut, ujistěte se, že je efektivní zotavení po havárii a ztrátě dat, minimální. Co nejdříve po vytvoření databáze se stane první úplná záloha. Tyto zálohy jsou k dispozici po určitou dobu nazývá "Doba uchování" a se liší podle úrovně služby, kterou zvolíte. SQL Database poskytuje možnost obnovit do libovolného bodu v čase během období uchovávání dat pomocí [bodu v čase obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Úroveň služby|Doba uchování ve dnech|
+|Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
 |Basic|7|
 |Standard|35|
@@ -135,7 +155,7 @@ Port 1433. SQL Database komunikuje přes tento port. Chcete-li připojit z podni
 
 SQL Database můžete zapnout auditování sledovat události databáze. [Auditování služby SQL Database](sql-database-auditing.md) zaznamenává události databáze a zapisuje je do souboru protokolu auditování v účtu úložiště Azure. Auditování je obzvláště užitečné, pokud chcete získat přehled o případné porušení zabezpečení a zásad, zajistit dodržování předpisů atd. Umožňuje definovat a nakonfigurovat určité kategorie událostí, které se domníváte, že potřebujete auditování a na základě, získejte předem nakonfigurované sestavy a řídicí panel pro spoluprodej základní informace o události, ke kterým dochází ve vaší databázi. Můžete použít tyto zásady auditování na úrovni databáze, nebo na úrovni serveru. Příručka o tom, jak zapnout auditování serveru/databáze, naleznete v tématu: [Povolení SQL Database auditování](sql-database-security-tutorial.md#enable-security-features).
 
-#### <a name="threat-detection"></a>Detekce hrozby
+#### <a name="threat-detection"></a>Detekce hrozeb
 
 S [detekce hrozeb](sql-database-threat-detection.md), získáte možnost tak, aby fungoval na porušení zabezpečení nebo zásady auditování velmi snadno zjistit. Nemusíte být zabezpečení odborné vyřešit potenciální hrozby nebo narušení ve vašem systému. Detekce hrozeb má také některé integrované funkce, jako je detekce útoku prostřednictvím injektáže SQL. Útok prostřednictvím injektáže SQL při pokusu o alter nebo ohrozit zabezpečení dat a poměrně běžný způsob obecně napadení databázové aplikace. Detekce hrozeb se spustí více sad algoritmů, které detekovat potenciální ohrožení zabezpečení a útoky prostřednictvím injektáže SQL, jakož i databáze neobvyklé vzory přístupu k (jako je například přístup z neobvyklého umístění nebo neznámého objektu zabezpečení). Vedoucí pracovníci pověření ochranou zabezpečení nebo jiné určené správci přijímání oznámení, pokud se zjistí ohrožení databáze. Každé upozornění obsahuje podrobnosti o podezřelé aktivitě a doporučení k dále zkoumat a zmírnit hrozby. Zjistěte, jak zapnout detekce hrozeb, najdete v tématech: [Povolit detekci hrozeb](sql-database-security-tutorial.md#enable-security-features).
 

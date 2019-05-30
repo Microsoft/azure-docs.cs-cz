@@ -12,14 +12,14 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142728"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297095"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojení aplikace k Azure SQL Database Managed Instance
 
 Už dnes máte více možností při rozhodování o tom, jak a kde hostujete vaší aplikace.
 
@@ -56,7 +56,7 @@ Jak se připojit k virtuální síti Azure v místním existují dvě možnosti:
 - Připojení VPN typu Site-to-Site ([webu Azure portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [ExpressRoute](../expressroute/expressroute-introduction.md) připojení  
 
-Pokud jste úspěšně navázáno připojení Azure k místní a nemůže navázat připojení k Managed Instance, zkontrolujte, jestli brána firewall má otevřené odchozí připojení na portu 1433 SQL také 11000 12000 rozsah portů pro přesměrování.
+Pokud jste úspěšně navázáno připojení Azure k místní a nemůže navázat připojení k Managed Instance, zkontrolujte, jestli brána firewall má otevřené odchozí připojení na portu 1433 SQL také 11000 11999 rozsah portů pro přesměrování.
 
 ## <a name="connect-an-application-on-the-developers-box"></a>Připojení aplikace ve službě box vývojáře
 
@@ -96,7 +96,7 @@ Tento scénář je znázorněn v následujícím diagramu:
 
 Pro řešení potíží s připojením, zkontrolujte následující položky:
 
-- Pokud se nemůžete připojit k Managed Instance z virtuálního počítače Azure v rámci stejné virtuální síti, ale jiné podsíti, zkontrolujte, pokud máte skupinu zabezpečení sítě v podsíti virtuálních počítačů, která může blokovat přístup k nastavení. Všimněte si také, že budete muset otevřít odchozí připojení na portu 1433 SQL, jakož i porty v rozsahu 11000 12000, protože ty jsou potřeba pro připojení prostřednictvím přesměrování v rámci Azure.
+- Pokud se nemůžete připojit k Managed Instance z virtuálního počítače Azure v rámci stejné virtuální síti, ale jiné podsíti, zkontrolujte, pokud máte skupinu zabezpečení sítě v podsíti virtuálních počítačů, která může blokovat přístup k nastavení. Všimněte si také, že budete muset otevřít odchozí připojení na portu 1433 SQL, jakož i porty v rozsahu 11000 11999, protože ty jsou potřeba pro připojení prostřednictvím přesměrování v rámci Azure.
 - Zkontrolujte, že šíření protokolu BGP je nastavená na **povoleno** pro směrovací tabulku přidruženou k virtuální síti.
 - Pokud používáte P2S VPN, zkontrolujte konfiguraci na portálu Azure, pokud chcete zobrazit, pokud se zobrazí **příchozí a odchozí přenos** čísla. Nenulový čísla označují, že Azure je směrování provozu do a z místní.
 

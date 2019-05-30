@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2242c6fc46f5556de0b0dd63659670e9c3f998d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 399f72c7819378ddc1566c2bdde94801b2c71687
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540186"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235301"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Postup: Konfigurace podmínky služby a o ochraně osobních údajů pro aplikaci
 
@@ -47,7 +47,7 @@ Předtím, než přidáte odkazy na vaší aplikace podmínky služby a o ochran
 | Pokyn     | Popis                           |
 |---------------|---------------------------------------|
 | Formát        | Platná adresa URL.                             |
-| Platná schémata | HTTP a HTTPS<br/>Doporučujeme, abyste HTTPS |
+| Platná schémata | Protokoly HTTP a HTTPS<br/>Doporučujeme, abyste HTTPS |
 | Maximální délka    | 2 048 znaků                       |
 
 Příklady: `https://myapp.com/terms-of-service` a `https://myapp.com/privacy-statement`
@@ -56,33 +56,20 @@ Příklady: `https://myapp.com/terms-of-service` a `https://myapp.com/privacy-st
 
 Jakmile jsou připravené podmínkami služby a o ochraně osobních údajů, můžete přidat odkazy k těmto dokumentům ve své aplikaci pomocí jedné z těchto metod:
 
-* [Na webu Azure portal](#registered-in-azure-portal)
-* [V portálu pro registraci aplikací nebo Centrum pro vývojáře](#registered-in-app-reg-portal)
+* [Na webu Azure portal](#azure-portal)
 * [Pomocí aplikace objektu JSON](#app-object-json)
 * [Pomocí MSGraph beta verze rozhraní REST API](#msgraph-beta-rest-api)
 
-### <a name="registered-in-azure-portal"></a>Pokud jste vaši aplikaci zaregistrovali na webu Azure portal
-
-Pokud jste vaši aplikaci zaregistrovali na webu Azure portal, postupujte podle těchto kroků.
+### <a name="azure-portal"></a>Pomocí webu Azure portal
+Postupujte podle těchto kroků na webu Azure Portal.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejděte **registrace aplikací** části a vyberte svou aplikaci.
-3. Otevřít **vlastnosti** části aplikace.
+3. Otevřít **značky** podokně.
 4. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
 5. Uložte provedené změny.
 
     ![Oddíl properties aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
-
-### <a name="registered-in-app-reg-portal"></a>Pokud jste vaši aplikaci zaregistrovali na portál pro registraci aplikace
-
-Pokud jste zaregistrovali aplikaci v portálu pro registraci aplikací nebo Centrum pro vývojáře, postupujte podle těchto kroků.
-
-1. Přihlaste se k [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
-2. Vyberte vaši aplikaci a přejděte **profilu** oddílu.
-3. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
-4. Uložte provedené změny.
-
-    ![Části profilu aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Pomocí aplikace objektu JSON
 

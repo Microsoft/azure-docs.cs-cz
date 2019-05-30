@@ -16,11 +16,11 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23ec4d2a67beb9b5f903aa0b7f03196b47db3f78
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443520"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66226454"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k úložišti Azure pomocí pověření SAS
 
@@ -70,7 +70,7 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 Azure Storage nativně nepodporuje ověřování Azure AD.  Můžete však použít spravovanou identitu k načtení úložiště SAS v Resource Manageru a pak použít SAS pro přístup k úložišti.  V tomto kroku udělíte spravované identitě přiřazené systémem virtuálního počítače přístup k SAS účtu úložiště.   
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.   
-2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
+2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .  
 3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač
 4. Na pravé straně stránky nastavte položku **Role** na Přispěvatel účtů úložiště.  
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** nastavte prostředek na Virtuální počítač.  

@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c95eb45d75a54af75fdc8004316bc8bfeeddbd7e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0cfaea53156b78fad024046bb6f55229f8ad6536
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783937"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236272"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 
@@ -182,4 +182,4 @@ Pokud stále nemůžete provádět průběh, může vám pomůže podporu Micros
 - Ověřování s více segmenty směrování se běžně používá ve scénářích kde vrstvenou aplikaci s front-endu a back-endu kde vyžadují ověřování, jako je SQL Server Reporting Services. Pokud chcete nakonfigurovat s vícenásobným směrováním scénář, najdete v článku podpory [omezeného delegování může vyžadovat Přechod protokolu Kerberos ve scénářích s více segmenty směrování](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Další postup
-[Konfigurace KCD ve spravované doméně](../../active-directory-domain-services/active-directory-ds-enable-kcd.md).
+[Konfigurace KCD ve spravované doméně](../../active-directory-domain-services/deploy-kcd.md).

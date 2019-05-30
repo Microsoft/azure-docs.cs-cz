@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142795"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357002"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -26,7 +26,7 @@ Ukázkový Runbook Powershellu, který ukazuje aktualizace modelu je k dispozici
 
 Všechna volání musí být ověřené na platný token Azure Active Directory (OAuth 2).  V příkladu v tomto článku budete používat k ověřování do služby Azure Analysis Services hlavní služby (SPN).
 
-Další informace o vytvoření instančního objektu najdete v tématu]
+Další informace o vytvoření instančního objektu najdete v tématu [vytvoření instančního objektu pomocí webu Azure portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +39,7 @@ Další informace o vytvoření instančního objektu najdete v tématu]
 
 2. Na panelu hledání vyhledejte **SqlServer**.
 
-    ![Hledat moduly](./media/analysis-services-refresh-azure-automation/1.png)
+    ![Hledání modulů](./media/analysis-services-refresh-azure-automation/1.png)
 
 3. Vyberte systému SQL Server a pak klikněte na tlačítko **Import**.
  
@@ -149,7 +149,7 @@ Chcete-li využívají sadu runbook pomocí služby Azure Data Factory, nejprve 
 |---------|---------|
 |**AnalysisServicesDatabase**     |Název databáze Azure Analysis Services <br/> Příklad: AdventureWorksDB         |
 |**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |Typ aktualizace provádět. <br/> Příklad: Úplný         |
+|**DatabaseRefreshType**     |Typ aktualizace provádět. <br/> Příklad: Úplná         |
 
 Příklad JSON textu:
 

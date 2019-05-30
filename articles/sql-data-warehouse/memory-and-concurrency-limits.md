@@ -1,5 +1,5 @@
 ---
-title: Omezení paměti a souběžnosti – Azure SQL Data Warehouse | Dokumentace Microsoftu
+title: Omezení paměti a souběžnosti ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 024b3f9c6d1fdd0d4bcb1126e4577387a6415a59
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 3bc1fef1842911e9b2cfb65b3c8cc72e4b615010
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873476"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241273"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
 Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
@@ -133,7 +133,7 @@ Statických tříd prostředků
 
 Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [statický prostředek třídy](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Sloty souběžnosti maximální | Sloty používané staticrc10 | Sloty používané staticrc20 | Sloty používané staticrc30 | Sloty používané staticrc40 | Sloty používané staticrc50 | Sloty používané staticrc60 | Sloty používané staticrc70 | Sloty používané staticrc80 |
+| Úrovně služeb | Maximální počet souběžných dotazů | Sloty souběžnosti maximální | Sloty používané staticrc10 | Sloty používané staticrc20 | Sloty používané staticrc30 | Sloty používané staticrc40 | Sloty používané staticrc50 | Sloty používané staticrc60 | Sloty používané staticrc70 | Sloty používané staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
@@ -156,7 +156,7 @@ Dynamický prostředek třídy
 
 Následující tabulka uvádí maximální počet souběžných dotazů a slotů souběžnosti pro každou [dynamickou třídu prostředků](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
+| Úrovně služeb | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |

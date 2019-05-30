@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6afe54d269d273c6a93e6431e9f1c1af7b18cc0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720913"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237737"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Tento článek vám ukáže postup prakticky nasazení služby soubory Azure v rámci vaší organizace.
@@ -108,7 +108,7 @@ Příkaz Robocopy je dobře známé kopírování nástroj, který se dodává s
 ### <a name="azcopy"></a>AzCopy
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Azure Files, jakož i úložiště objektů Blob v Azure pomocí jednoduchých příkazů s optimálním výkonem. Pomocí AzCopy velmi snadno:
 
-1. Stáhněte si [nejnovější verzi AzCopy ve Windows](https://aka.ms/downloadazcopy) nebo [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
+1. Stáhněte si [nejnovější verzi AzCopy ve Windows](https://aka.ms/downloadazcopy) nebo [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy).
 2. Použití `azcopy` příkazového řádku pro přesun dat do sdílené složky Azure. Syntaxe na Windows je následující: 
 
     ```

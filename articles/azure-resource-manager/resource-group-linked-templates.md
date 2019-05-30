@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: bbbaef306b9ed2bb415b29bc6d96dcfe649338f9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 95044373800441bdcc04bdb84e8485dce29f11e7
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205946"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357409"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -91,7 +91,7 @@ Chcete-li vnořené šablony v rámci hlavní šablony, použijte **šablony** v
 > [!NOTE]
 > Vnořené šablony nemůžete použít parametry a proměnné, které jsou definovány v rámci vnořené šablony. Můžete použít parametry a proměnné z hlavní šablony. V předchozím příkladu `[variables('storageName')]` načte hodnotu z hlavní šablony, ne vnořené šablony. Toto omezení se nevztahuje na externí šablony.
 >
-> Pro dva prostředky definované uvnitř vnoření šablony a jeden prostředek závisí na druhé, hodnota závislost je jednoduše název závislé zdroje:
+> Pro dva prostředky definované uvnitř vnořené šablony a jeden prostředek závisí na druhé, hodnota závislost je jednoduše název závislý prostředek:
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"

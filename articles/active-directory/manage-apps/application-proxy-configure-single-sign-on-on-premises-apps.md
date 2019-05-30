@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 907cb598d708bfa26f53d2e43fef5456258c21b1
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956886"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393035"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML jednotného přihlašování k místním aplikacím přes Proxy aplikací (Preview)
 
@@ -50,14 +50,14 @@ Když budete v průběhu kurzu mějte na paměti následující:
 1. Vyberte **SAML** jako metodu přihlašování.
 1. V **nastavte si jednotné přihlašování pomocí SAML** stránky, upravte **základní konfiguraci SAML** dat a postupujte podle kroků v [základní konfiguraci SAML Enter](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) konfigurace založené na SAML ověřování pro aplikaci.
 
-   * Ujistěte se, že **adresy URL odpovědi** odpovídá nebo je cesta pod **externí adresa URL** pro místní aplikace, kterou jste publikovali prostřednictvím Proxy aplikací. 
-   * Pokud vaše aplikace vyžaduje jiný **adresy URL odpovědi** pro konfiguraci SAML, přidejte tuto jako **Další** adresy URL v seznamu a zaškrtněte políčko vedle něj chcete určit jako primární  **Adresa URL pro odpověď** k odesílání odpovědí zahájené pomocí IDP SAML.
-   * Pro tok, který iniciovaného Zprostředkovatelem přihlašování Ujistěte se, že aplikace také určuje správné **adresy URL odpovědi** nebo adresa URL služby příjemce kontrolního výrazu pro příjem ověřovací token.
+   * Ujistěte se, že **adresy URL odpovědi** odpovídá **externí adresa URL** pro interní aplikace publikované prostřednictvím Proxy aplikace nebo je cesta pod **externí adresa URL**.
+   * Pro zahájené pomocí IDP tok, který kde vaše aplikace vyžaduje jiný **adresy URL odpovědi** pro konfiguraci SAML, přidejte tuto jako **Další** adresu URL v seznamu a zaškrtněte políčko vedle něj a určit ji jako Primární **adresy URL odpovědi**.
+   * Pro tok, který iniciovaného Zprostředkovatelem přihlašování zajistěte, aby určovala back-end aplikace správné **adresy URL odpovědi** nebo adresa URL služby příjemce kontrolního výrazu pro příjem ověřovací token.
 
      ![Zadejte základní údaje konfigurace SAML](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
     > [!NOTE]
-    > Pokud se očekává, že back-end aplikace **adresy URL odpovědi** být interní adresa URL, budete muset nainstalovat Moje aplikace zabezpečené přihlašování rozšíření v uživatelských zařízeních. Toto rozšíření automaticky přesměruje na příslušnou službu Proxy aplikace. Pokud chcete nainstalovat rozšíření, naleznete v tématu [Moje aplikace zabezpečené přihlašování rozšíření](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+    > Pokud se očekává, že back-end aplikace **adresy URL odpovědi** jako interní adresa URL bude nutné použít [vlastních domén](application-proxy-configure-custom-domain.md) odpovídající interní a externí adresy URL nebo instalační Moje aplikace zabezpečené přihlašování rozšíření v uživatelských zařízeních. Toto rozšíření automaticky přesměruje na příslušnou službu Proxy aplikace. Pokud chcete nainstalovat rozšíření, naleznete v tématu [Moje aplikace zabezpečené přihlašování rozšíření](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
 
 ## <a name="test-your-app"></a>Testování aplikace
 

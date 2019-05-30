@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: b024d61c3542293202f0b409b8b3e520a75168c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5f3a43a6c48714566b5c53b33fe541b50d61589
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431799"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383896"
 ---
 # <a name="get-insights-about-a-video"></a>Získejte přehled o videa
 
-Každé video vrácený Video API Bingu pro vyhledávání zahrnuje ID videa, která vám umožní získat další informace o tom, například související videa. Pokud chcete získat přehled o videa, získat její [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) tokenu v odpovědi rozhraní API. 
+Každé video vrácený Video API Bingu pro vyhledávání zahrnuje ID videa, která vám umožní získat další informace o tom, například související videa. Pokud chcete získat přehled o videa, získat její [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) tokenu v odpovědi rozhraní API. 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Každé video vrácený Video API Bingu pro vyhledávání zahrnuje ID videa, kt
     ],
 ```
 
-Později odesílejte požadavek GET na koncový bod podrobnosti videa se ID. Nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#id) parametr k dotazu `videoId` token. K určení přehledy, které chcete načíst, nastavit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr dotazu. Chcete-li získat všechny přehledy, nastavte `modules` ke všem. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
+Později odesílejte požadavek GET na koncový bod podrobnosti videa se ID. Nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) parametr k dotazu `videoId` token. K určení přehledy, které chcete načíst, nastavit [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) parametr dotazu. Chcete-li získat všechny přehledy, nastavte `modules` ke všem. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Získávají se přehledy související videa  
 
-Chcete-li získat videa, která se vztahují k zadané video, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) parametr do dotazu `RelatedVideos`.
+Chcete-li získat videa, která se vztahují k zadané video, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) parametr do dotazu `RelatedVideos`.
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Odpověď na tuto žádost bude mít na nejvyšší úrovni [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) místo objektu [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) objektu.  
+Odpověď na tuto žádost bude mít na nejvyšší úrovni [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) místo objektu [videa](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektu.  
   
 ```json
 {

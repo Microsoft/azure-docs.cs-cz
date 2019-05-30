@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452668"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243455"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -118,7 +118,7 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitor umož
 
 ## <a name="next-steps"></a>Další kroky
 * [Archivace protokolu aktivit do účtu úložiště](../../azure-monitor/platform/archive-activity-log.md)
-* [Přečtěte si přehled protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md)
+* [Přehled protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md)
 * [Nastavte si výstrahy na základě události protokolu aktivit](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

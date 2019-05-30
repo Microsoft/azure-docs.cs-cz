@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak službu Azure Cosmos DB poskytuje vyso
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 05/29/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 74e2d7901d127c9dd7edd8509e5bba082c4ad220
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 74eee3d164e7ee3831f292568da9cf0620e576e5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978970"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399288"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
@@ -48,13 +48,55 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - Nakonfigurovaná s několika oblasti účty ve více oblastech budou s vysokou dostupností pro zápisy a čtení. Regionální převzetí služeb při selhání jsou okamžité a nevyžadují žádné změny z aplikace.
 
-- **Účty ve více oblastech s oblastí zápisu jedním (výpadku oblasti zápisu):** Během výpadku oblasti zápisu zůstanou tyto účty s vysokou dostupností pro čtení. Ale pro zápis je potřeba **"Povolit automatické převzetí služeb při selhání"** na vaše Cosmos účet pro převzetí služeb při selhání ovlivněné oblasti do jiné oblasti. Převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. Když ovlivněné oblasti je zpátky do online režimu, je k dispozici prostřednictvím nereplikované data k dispozici v oblasti ovlivněné zápisu během výpadku [konfliktům kanál](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikace může číst konflikty informačního kanálu, vyřešte konflikty, na základě specifické pro aplikaci logiky a zapsat aktualizovaná data zpět do kontejneru Cosmos podle potřeby. Po obnoví dříve ovlivněné zápisu oblasti stane automaticky k dispozici jako oblasti čtení. Můžete vyvolat ruční převzetí služeb při selhání a nakonfigurovat ovlivněné oblasti jako oblast pro zápis. Akci můžete provést ruční převzetí služeb při selhání pomocí [webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover). Je **bez ztráty dat nebo dostupnost** před, během nebo po ruční převzetí služeb při selhání. Vaše aplikace i nadále s vysokou dostupností. 
+- **Účty ve více oblastech s oblastí zápisu jedním (výpadku oblasti zápisu):** Během výpadku oblasti zápisu zůstanou tyto účty s vysokou dostupností pro čtení. Ale pro zápis je potřeba **"Povolit automatické převzetí služeb při selhání"** na vaše Cosmos účet pro převzetí služeb při selhání ovlivněné oblasti do jiné oblasti. Převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. Když ovlivněné oblasti je zpátky do online režimu, je k dispozici prostřednictvím nereplikovaných data k dispozici v oblasti ovlivněné zápisu během výpadku [konfliktům kanál](how-to-manage-conflicts.md#read-from-conflict-feed). Aplikace může číst konflikty informačního kanálu, vyřešte konflikty, na základě specifické pro aplikaci logiky a zapsat aktualizovaná data zpět do kontejneru Cosmos podle potřeby. Po obnoví dříve ovlivněné zápisu oblasti stane automaticky k dispozici jako oblasti čtení. Můžete vyvolat ruční převzetí služeb při selhání a nakonfigurovat ovlivněné oblasti jako oblast pro zápis. Akci můžete provést ruční převzetí služeb při selhání pomocí [webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover). Je **bez ztráty dat nebo dostupnost** před, během nebo po ruční převzetí služeb při selhání. Vaše aplikace i nadále s vysokou dostupností. 
 
 - **Účty ve více oblastech s jedním zápisu oblast (oblasti čtení výpadek):** Během výpadku oblasti čtení zůstanou tyto účty s vysokou dostupností pro čtení a zápis. Ovlivněné oblasti se automaticky odpojí z oblasti pro zápis a budou označeny v režimu offline. [Cosmos DB SDK](sql-api-sdk-dotnet.md) přečte přesměrování volání další dostupné oblasti v seznamu preferované oblasti. Pokud žádná z oblasti v seznamu preferované oblasti není k dispozici, volání automaticky vrátit do aktuální oblasti pro zápis. Nevyžaduje žádné změny v kódu aplikace zpracovávat výpadku oblasti čtení. Nakonec při ovlivněné oblasti je zpátky do online režimu, budou automaticky synchronizovat s aktuální oblasti pro zápis dříve ovlivněné oblasti čtení a bude možné znovu obsluhovat požadavky na čtení. Další čtení se přesměrují na obnoveném oblasti nevyžaduje žádné změny kódu aplikace. Během převzetí služeb při selhání i některých dříve nezdařené oblasti přečtěte si konzistence, garantuje nadále respektovat Cosmos DB.
 
 - Účty v jedné oblasti může dojít ke ztrátě dostupnosti po regionálního výpadku. Vždy doporučujeme nastavit **alespoň dvě oblasti** (pokud možno minimálně dva zapisovat oblastí) pomocí svého účtu Cosmos k zajištění vysoké dostupnosti po celou dobu.
 
-- I v případě velmi vzácné a unfortunate při oblast Azure je trvale nezotavitelnou není bez ztráty dat. Pokud jsou nakonfigurované výchozí úroveň konzistence účtu Cosmos ve více oblastech *silné*. V případě trvale nezotavitelnou zápisu oblasti, pro více oblastí účty Cosmos nakonfigurovanou konzistenci omezená neaktuálnost, je omezená neaktuálnost okna okno potenciální ztráty dat (*K* nebo *T*); pro relace, konzistentní Předpona a konečný výsledek úrovním, okno potenciální ztráty dat je omezen na maximálně pět sekund.
+- I v případě vzácné a unfortunate při oblast Azure je trvale nastal neopravitelný není bez ztráty dat. Pokud jsou nakonfigurované výchozí úroveň konzistence účtu Cosmos ve více oblastech *silné*. V případě trvale nezotavitelnou zápisu oblasti, pro více oblastí účty Cosmos nakonfigurovanou konzistenci omezená neaktuálnost, je omezená neaktuálnost okna okno potenciální ztráty dat (*K* nebo *T*); pro relace, konzistentní Předpona a konečný výsledek úrovním, okno potenciální ztráty dat je omezen na maximálně pět sekund. 
+
+## <a name="availability-zone-support"></a>Podpora zóny dostupnosti
+
+Azure Cosmos DB je globálně distribuovaná databáze s několika hlavními databázemi služba, která poskytuje vysokou dostupnost a odolnost proti chybám při místní výpadky. Kromě toho pro různé oblasti odolnosti proti chybám, teď můžete povolit **zóna redundance** při výběru oblast, kterou chcete přidružit k vaší databázi Azure Cosmos. 
+
+S podporou zón dostupnosti služby Azure Cosmos DB zajistí, že repliky jsou umístěné napříč několika zónami v dané oblasti zajistit vysokou dostupnost a odolnost proti chybám při selhání oblastmi. Neexistují žádné změny k latenci a jiné smlouvy o úrovni služeb v této konfiguraci. V případě selhání jedné oblasti, zóny redundance poskytuje odolnost úplná data s cílem bodu obnovení = 0 a dostupnost s možnostmi RTO = 0. 
+
+Je redundanci zón *doplňkové funkce* k [multimasterovou replikací](how-to-multi-master.md) funkce. Samostatně redundanci zón nelze dovolávat pro zajištění oblastní odolnosti proti chybám. Například v případě místních výpadků nebo přístup s nízkou latencí oblastech, doporučuje se mít více oblastí zápisu kromě redundanci zón. 
+
+Při konfiguraci zápisu ve více oblastech pro váš účet Azure Cosmos, můžete se rozhodnout do redundanci zón bez dalších poplatků. V opačném případě najdete v poznámce dál týkající se ceny za podpory pro redundanci zón. Redundanci zón na existující oblasti svého účtu Azure Cosmos můžete povolit odebráním oblast a přidat zpět pomocí redundanci zón povolena.
+
+Tato funkce je dostupná v těchto oblastech Azure:
+
+* Velká Británie – jih
+* Jihovýchodní Asie 
+
+> [!NOTE] 
+> Povolení zóny dostupnosti pro jednu oblast účet služby Azure Cosmos, bude výsledkem náklady, které jsou ekvivalentní k přidání další oblasti k vašemu účtu. Podrobnosti o cenách najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a [ve více oblastech nákladů ve službě Azure Cosmos DB](optimize-cost-regions.md) článků. 
+
+Následující tabulka shrnuje možnost vysoké dostupnosti z různých konfigurací účtu: 
+
+|KLÍČOVÝ UKAZATEL VÝKONU  |Jedna oblast bez zóny dostupnosti (bez AZ)  |Jedné oblasti se zónami dostupnosti (AZ)  |Více oblastí se zónami dostupnosti (AZ, 2 oblasti) – nejvíce doporučená nastavení |
+|---------|---------|---------|---------|
+|Zápis smlouva SLA o dostupnosti     |   99,99 %      |    99,99 %     |  99.999%  |
+|Přečtěte si smlouva SLA o dostupnosti   |   99,99 %      |   99,99 %      |  99.999%       |
+|Cena  |  Jedna oblast fakturační sazba |  Fakturační sazba jedné oblasti zóně dostupnosti |  Fakturační sazba ve více oblastech       |
+|Zóna chyby – ztráta dat   |  Ztráta dat  |   Bez ztráty dat. |   Bez ztráty dat.  |
+|Zóna chyby – dostupnost |  Ztráta dostupnosti  | Bez ztráty dostupnosti  |  Bez ztráty dostupnosti  |
+|Latence pro čtení    |  Pro různé oblasti    |   Pro různé oblasti   |    Nízká  |
+|Latence zápisu    |   Pro různé oblasti   |  Pro různé oblasti    |   Nízká   |
+|Oblastní výpadek – ztráta dat    |   Ztráta dat      |  Ztráta dat       |   Ztráta dat <br/><br/> Při použití omezená neaktuálnost konzistence s hlavním uzlem více a více než jedné oblasti, ztráta dat je omezená na omezená neaktuálnost nakonfigurovaný na vašem účtu. <br/><br/> Ztráty dat během místního výpadku se můžete vyhnout tím, že nakonfigurujete silná konzistence s více oblastmi. Tato možnost se dodává s kompromisy, které ovlivňují dostupnost a výkon.      |
+|Oblastní výpadek – dostupnost  |  Ztráta dostupnosti       |  Ztráta dostupnosti       |  Bez ztráty dostupnosti  |
+|Propustnost    |  Zřízené propustnosti X RU/s      |  Zřízené propustnosti X RU/s       |  2 x zřízená propustnost RU/s <br/><br/> Tento režim konfigurace vyžaduje dvakrát množství propustnost při porovnání do jedné oblasti se zónami dostupnosti, protože existují dvě oblasti.   |
+
+Redundanci zón můžete povolit při přidávání oblasti do nové nebo existující účty služby Azure Cosmos. V současné době můžete jenom povolit redundanci zón s využitím šablon Azure Resource Manageru nebo prostředí PowerShell. Povolit zóny redundance u vašeho účtu Azure Cosmos, byste měli nastavit `isZoneRedundant` příznak `true` pro konkrétní lokalitu. Můžete nastavit tento příznak v rámci vlastnosti umístění. Například následující fragment kódu powershellu umožňuje redundanci zón pro "jihovýchodní Asie":
+
+```powershell
+$locations = @( 
+    @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" }, 
+    @{ "locationName"="East US"; "failoverPriority"=1 } 
+) 
+```
 
 ## <a name="building-highly-available-applications"></a>Vytváření aplikací s vysokou dostupností
 

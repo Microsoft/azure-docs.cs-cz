@@ -3,22 +3,22 @@ title: Správa nákladů a využití pro službu Azure Application Insights | Do
 description: Správa svazků telemetrii a sledování nákladů ve službě Application Insights.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: DaleKoetke
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: Dale.Koetke
-ms.date: 12/21/2018
-ms.author: mbullwin
-ms.openlocfilehash: edf724d6fd659ad4e8887a9c68467d17a33f5ccc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.reviewer: mbullwin
+ms.date: 05/29/2019
+ms.author: dalek
+ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254571"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357266"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa nákladů a využití pro službu Application Insights
 
@@ -35,7 +35,7 @@ Ceny za [Azure Application Insights] [ start] se podle objemu dat přijatých. K
 ### <a name="data-volume-details"></a>Podrobné informace o objemu dat
 
 * Objem dat je počet bajtů přijatých službou Application Insights telemetrická data. Objem dat se měří jako velikost nekomprimovaných balíček dat JSON, které se získaly službou Application Insights z vaší aplikace. Pro [tabulková data importovat do analýzy](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import), objem dat se měří jako velikost nekomprimovaných souborů, které se odesílají do Application Insights.
-* Poplatky za objem dat vaší aplikace jsou teď hlášeny na nové účtování počítat s názvem **Ingestování** od dubna 2018. Toto je nový měřič sdílet mezi technologií, jako jsou aplikace Insights a Log Analytics pro monitorování a v části název služby je aktuálně **Log Analytics**. 
+* Poplatky za objem dat vaší aplikace jsou teď hlášeny na nové účtování počítat s názvem **Ingestování** od dubna 2018. Tento nový měřič je sdílen mezi technologií, jako jsou aplikace Insights a Log Analytics pro monitorování a v části název služby je aktuálně **Log Analytics**. 
 * [Live Metrics Stream](../../azure-monitor/app/live-stream.md) dat se nepočítá ceny účely.
 
 Aktuální ceny měny a oblasti, naleznete v tématu [ceny za Application Insights][pricing].
@@ -132,57 +132,56 @@ Chcete-li zjistit skutečné vzorkovací frekvenci, bez ohledu na to, kde je byl
 
 V každém uchovávají záznam, `itemCount` označuje počet původní záznamy, které představuje. Je rovno 1 + Počet zrušených předchozí záznamů. 
 
-## <a name="automation"></a>Automation
-
-Můžete napsat skript nastavení cenový plán s použitím Azure Resource Manageru. [Zjistěte jak](powershell.md#price).
-
 ## <a name="limits-summary"></a>Souhrn omezení
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="disable-daily-cap-e-mails"></a>Zakázat denní limit e-mailů
 
-V části zakázání e-mailů denní objem zakončení **konfigurovat** oddílu prostředku Application Insights v **využití a odhadované náklady** vyberte **denního limitu** . Obsahují nastavení pro odeslání e-mailu, když je dosaženo zakončení, i když bylo dosaženo měnitelné úroveň upozornění. Pokud budete chtít zakázat všechny denní limit objemu související s e-mailů, zrušte zaškrtnutí políčka obou polí.
+V části zakázání e-mailů denní objem zakončení **konfigurovat** oddílu prostředku Application Insights v **využití a odhadované náklady** vyberte **denního limitu** . Obsahují nastavení pro odeslání e-mailu, když je dosaženo zakončení, i když bylo dosaženo měnitelné úroveň upozornění. Pokud chcete zakázat všechny denní limit související s objemem e-mailů, zrušte zaškrtnutí obou polí.
 
-## <a name="legacy-enterprise-pricing-plan"></a>Starší cenový tarif Enterprise
+## <a name="legacy-enterprise-per-node-pricing-tier"></a>Starší verze Enterprise (uzel za) cenová úroveň
 
-Pro první uživatele služby Azure Application Insights stále existují dva možné dvě cenové plány: Basic a Enterprise. Základní cenový plán je stejný, jak je popsáno výše a je výchozí plán. Zahrnuje všechny funkce plánu Enterprise, bez dalších poplatků. Základní plán účtuje především podle objemu dat, který se ingestuje. 
+Pro první uživatele služby Azure Application Insights stále existují dva možné cenové úrovně: Basic a Enterprise. Cenovou úroveň Basic je stejný, jak je popsáno výše a představuje výchozí úroveň. Zahrnuje všechny funkce úrovně Enterprise, bez dalších poplatků. Úroveň Basic účtuje především podle objemu dat, který se ingestuje. 
 
-Plán Enterprise je poplatek za uzel a každý uzel přijme denní příděl dat. V podnikové síti cenový plán, bude vám účtována dat přijatých nad zahrnutý příspěvek. Pokud používáte Operations Management Suite, měli byste zvolit plán Enterprise. 
+> [!NOTE]
+> Tyto starší verze cenové úrovně byly přejmenovány. Enterprise cenová úroveň se teď nazývá **na jeden uzel** a cenové úrovni Basic se teď nazývá **Per GB**. Tyto nové názvy jsou použity níže a na webu Azure Portal.  
+
+Úroveň na jeden uzel (dříve Enterprise) má poplatek za uzel a každý uzel přijme denní příděl dat. V cenové úrovni na jeden uzel bude vám účtována dat přijatých nad zahrnutý příspěvek. Pokud používáte Operations Management Suite, měli byste zvolit úroveň na jeden uzel. 
 
 Aktuální ceny měny a oblasti, naleznete v tématu [ceny za Application Insights](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
 > V dubnu 2018 jsme [zavedené](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro monitorování Azure. Tento model přijímá mezi kompletní portfolio služeb monitorování jednoduchý model "s průběžnými platbami". Další informace o [nový cenový model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak k [posoudit dopad přechodu na tento model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) založené na vaše vzorce používání a [tom, jak začít používat nový model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
-### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Podnikový plán a nároky na Operations Management Suite předplatné
+### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Na úroveň uzlu a nároky na Operations Management Suite předplatné
 
-Zákazníci, kteří si koupí Operations Management Suite E1 a E2 mohou získat Application Insights Enterprise jako další komponentu bez dalších poplatků jako [jsme oznámili už dřív](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). Konkrétně každá jednotka Operations Management Suite E1 a E2 zahrnuje nárok na jeden uzel Application Insights Enterprise plánu. Každý uzel Application Insights zahrnuje až 200 MB dat přijatých za den (oddělené od Log Analytics ingestování), s uchováním dat 90 dnů bez dalších poplatků. Tento plán je popsaná v podrobnější později v tomto článku. 
+Zákazníci, kteří si koupí Operations Management Suite E1 a E2 můžete získat Application Insights na uzlu jako další komponentu bez dalších poplatků jako [jsme oznámili už dřív](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/). Konkrétně každá jednotka Operations Management Suite E1 a E2 zahrnuje nárok na jeden uzel Application Insights za uzel úrovně. Každý uzel Application Insights zahrnuje až 200 MB dat přijatých za den (oddělené od Log Analytics ingestování), s uchováním dat 90 dnů bez dalších poplatků. Na úrovni je popsaná v podrobnější později v tomto článku. 
 
-Vzhledem k tomu, že tento plán je určené jenom pro zákazníky s předplatným Operations Management Suite, zákazníky, kteří nemají předplatného služby Operations Management Suite nezobrazí možnost vybrat tento plán.
+Vzhledem k tomu, že tato úroveň je určené jenom pro zákazníky s předplatným Operations Management Suite, zákazníky, kteří nemají předplatného služby Operations Management Suite nezobrazí možnost vybrat tuto úroveň.
 
 > [!NOTE]
-> Aby bylo zajištěno, že dostanete tento nárok, musí být prostředky Application Insights v podnikové síti cenový plán. Tato oprávnění se vztahuje jenom jako uzly. Prostředky Application Insights v plánu Basic ani neuvědomujete žádnou výhodu. Tato oprávnění nejsou viditelná v ukazuje odhadované náklady **využití a odhadované náklady** podokně. Navíc pokud přesunete předplatné pro nový Azure sledování cenový model platný od dubna 2018, základní plán je k dispozici pouze plán. Přesun předplatného na nový cenový model sledování Azure není žádoucí, pokud máte předplatné Operations Management Suite.
+> Aby bylo zajištěno, že dostanete tento nárok, musí být prostředky Application Insights v cenové úrovně uzlů za. Tato oprávnění se vztahuje jenom jako uzly. Prostředky Application Insights v úrovni Per GB ani neuvědomujete žádnou výhodu. Tato oprávnění nejsou viditelná v ukazuje odhadované náklady **využití a odhadované náklady** podokně. Navíc pokud přesunete předplatné pro nový Azure sledování cenový model platný od dubna 2018, úroveň Per GB je k dispozici jenom úroveň. Přesun předplatného na nový cenový model sledování Azure není žádoucí, pokud máte předplatné Operations Management Suite.
 
-### <a name="how-the-enterprise-plan-works"></a>Jak funguje plánu Enterprise
+### <a name="how-the-per-node-tier-works"></a>Jak funguje na úrovni na jeden uzel
 
-* Platíte za každý uzel, který odesílá telemetrická data pro všechny aplikace v plánu Enterprise.
+* Platíte za každý uzel, který odesílá telemetrická data pro všechny aplikace na úrovni na jeden uzel.
   * A *uzlu* je počítač fyzický nebo virtuální server nebo instance platformy jako služby role, který je hostitelem vaší aplikace.
   * Vývoj pro počítače, klientský prohlížeč a mobilní zařízení se nepočítají jako uzly.
   * Pokud má vaše aplikace několik komponent, které odesílají telemetrická data, jako jsou webové služby a back-end pracovní proces, komponenty se počítá samostatně.
   * [Live Metrics Stream](../../azure-monitor/app/live-stream.md) dat se nepočítá ceny účely. V předplatném poplatky se podle počtu uzlů, ne podle aplikací. Pokud máte pět uzlů, které odesílají telemetrii pro 12 aplikací, platí se za pět uzlů.
 * I když poplatky se zaokrouhlují za měsíc, platíte jenom pro všechny hodiny, kdy uzel odesílá telemetrická data z aplikace. Hodinová sazba se v uvozovkách měsíční poplatek vydělí 744 (počet hodin za měsíc s 31 dny).
 * Pro každý uzel, který je zjištěn (s hodinovou členitost) je zadána přidělení dat svazku alespoň 200 MB za den. Přidělení nepoužívaná data se přenesou z jeden den na další.
-  * Pokud se rozhodnete podniku cenový plán, každé předplatné získá denní příděl dat na základě počtu uzlů, které posílají telemetrická data do prostředky Application Insights v tomto předplatném. Ano Pokud máte pět uzlů, které posílají data celý den, budete mít ve fondu příděl 1 GB použito pro všechny prostředky Application Insights v tomto předplatném. Nebude vadit, když některé uzly posílají více dat než jiné uzly, protože poskytovaná data se sdílejí napříč všemi uzly. Pokud v daném dni prostředky Application Insights zobrazí více dat, než je součástí denní přidělování dat pro toto předplatné, vztahují poplatky za Nadlimitní data úrovně za GB. 
+  * Pokud se rozhodnete cenovou úroveň na jeden uzel, každé předplatné získá denní příděl dat na základě počtu uzlů, které posílají telemetrická data do prostředky Application Insights v tomto předplatném. Ano Pokud máte pět uzlů, které posílají data celý den, budete mít ve fondu příděl 1 GB použito pro všechny prostředky Application Insights v tomto předplatném. Nebude vadit, když některé uzly posílají více dat než jiné uzly, protože poskytovaná data se sdílejí napříč všemi uzly. Pokud v daném dni prostředky Application Insights zobrazí více dat, než je součástí denní přidělování dat pro toto předplatné, vztahují poplatky za Nadlimitní data úrovně za GB. 
   * Denní příděl dat se počítá jako počtu hodin za den (pomocí času UTC), že každý uzel odesílá telemetrii, dělený 24, vynásobený 200 MB. Ano, pokud máte čtyři uzly, které odesílají telemetrii během 15 z 24 hodin za den, zahrnutých dat pro tento den by ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Za cenu 2.30 USD za GB za překročení limitu dat náklady by rovný 1,15 USD uzly odeslání 1 GB dat daný den.
-  * Denní příděl plánu Enterprise se nesdílí s aplikacemi, pro které jste zvolili základní plán. Nepoužité příspěvek není přenesou v detailech. 
+  * Jeden uzel úroveň denní příděl se naopak nesdílí s aplikacemi, pro které jste zvolili úroveň Per GB. Nepoužité příspěvek není přenesou v detailech. 
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Příklady toho, jak určit počet různých uzlů
 
 | Scénář                               | Celková denní počet uzlů |
 |:---------------------------------------|:----------------:|
 | aplikace: 1 pomocí 3 instancí služby Azure App Service a 1 virtuální server | 4 |
-| běžící na virtuálních počítačích 2; 3 aplikace prostředky Application Insights pro tyto aplikace jsou ve stejném předplatném a v plánu Enterprise | 2 | 
+| běžící na virtuálních počítačích 2; 3 aplikace prostředky Application Insights pro tyto aplikace jsou ve stejném předplatném a na úrovni na jeden uzel | 2 | 
 | 4 aplikace, jehož prostředky aplikace Insights je ve stejném předplatném; každou aplikaci spuštěnou 2 instance 16 špičku a 4 instance během 8 hodin ve špičce | 13.33 | 
 | Cloudové služby s 1 Role pracovního procesu a 1 webová Role, každé spuštění 2 instancí | 4 | 
 | Clusteru Azure Service Fabric 5 uzly se systémem 50 mikroslužeb; Každá mikroslužba spuštěné instance 3 | 5|
@@ -192,6 +191,11 @@ Vzhledem k tomu, že tento plán je určené jenom pro zákazníky s předplatn�
   * Pro starší verze sady SDK [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) se chová jako novější verze sady SDK, ale [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) hlásí pouze jeden uzel bez ohledu na počet hostitelů aplikací. 
   * Pokud vaše aplikace používá k nastavení sady SDK **instance role** vlastní hodnoty, ve výchozím nastavení, stejnou hodnotu se používá k určení počtu uzlů. 
   * Pokud používáte novou verzi sady SDK aplikace, která se spouští z klientských počítačů nebo mobilních zařízení, počet uzlů může vrátit číslo, které je moc velká (z důvodu velký počet klientských počítačů nebo mobilních zařízení). 
+
+## <a name="automation"></a>Automation
+
+Můžete napsat skript nastavení cenové úrovně pomocí Azure Resource Manageru. [Zjistěte jak](powershell.md#price).
+
 
 ## <a name="next-steps"></a>Další postup
 

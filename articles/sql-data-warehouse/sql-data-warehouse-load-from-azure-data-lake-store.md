@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Načtení z Azure Data Lake Storage do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
+title: Kurz zatížení z Azure Data Lake Storage do služby Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Načtení dat ze služby Azure Data Lake Storage do Azure SQL Data Warehouse pomocí PolyBase externí tabulky.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9d6a2c097a6040e7c005cc0feeefd59caf352441
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: a706fca7f7653c6916efc72d07988e79c9015a43
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65850499"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244503"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat ze služby Azure Data Lake Storage do SQL Data Warehouse
 Načtení dat ze služby Azure Data Lake Storage do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když můžete spouštět ad hoc dotazy s daty uloženými ve službě Data Lake Storage, doporučujeme importování dat do SQL Data Warehouse pro zajištění nejlepšího výkonu.

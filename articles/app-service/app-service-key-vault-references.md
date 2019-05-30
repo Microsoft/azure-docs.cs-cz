@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956219"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397814"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Použití služby Key Vault odkazy pro App Service a Azure Functions (preview)
 
@@ -37,7 +37,7 @@ Za účelem čtení tajných kódů z trezoru klíčů, budete muset vytvořit t
    > [!NOTE] 
    > Key Vault odkazuje na aktuálně jenom podporu systém přiřadil spravovaných identit. Uživatelsky přiřazené identity nelze použít.
 
-1. Vytvoření [zásady ve službě Key Vault přístupu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikací, které jste vytvořili dříve. Povolte oprávnění tajného kódu "Get" na tuto zásadu. Neprovádějte konfiguraci "oprávnění aplikace" nebo `appliationId` nastavení, jako to není kompatibilní s spravovanou identitu.
+1. Vytvoření [zásady ve službě Key Vault přístupu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikací, které jste vytvořili dříve. Povolte oprávnění tajného kódu "Get" na tuto zásadu. Neprovádějte konfiguraci "oprávnění aplikace" nebo `applicationId` nastavení, jako to není kompatibilní s spravovanou identitu.
 
 ## <a name="reference-syntax"></a>Odkaz syntaxe
 

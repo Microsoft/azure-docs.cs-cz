@@ -2,7 +2,7 @@
 title: Dotazování dat v Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Dotazování dat Azure čas Series Insights ve verzi Preview.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: bbf682df2df7a8cdc9fedb36aa4244fc5c0e9488
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205022"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244002"
 ---
 # <a name="data-querying"></a>Dotazování dat
 
@@ -27,7 +27,7 @@ Tři hlavní kategorie rozhraní API jsou k dispozici v Time Series Insights:
 
 * **Time Series Model-Query (TSM-Q) API**: Umožňuje vytvořit, číst, aktualizovat a odstranit operace na metadata uložená v prostředí součástí modelu časové řady. Příklady jsou instance, typy a hierarchie.
 
-* **Time Series dotazování rozhraní API (TSQ)**: Umožňuje načítání dat události, protože se zaznamená od poskytovatele zdroj. Tato rozhraní API můžete provádět operace transformace, kombinovat a provádí výpočty datech časových řad.
+* **Time Series dotazování rozhraní API (TSQ)** : Umožňuje načítání dat události, protože se zaznamená od poskytovatele zdroj. Tato rozhraní API můžete provádět operace transformace, kombinovat a provádí výpočty datech časových řad.
 
 [Čas řady výrazu (TSX) jazyka](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) je výkonný čtvrtá kategorie. Povolit skládání pokročilé výpočetní používá čas řady modely.
 

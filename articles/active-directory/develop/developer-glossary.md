@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2019
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c989b690e9537dcaaf3710996474a1b8b99826b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962741"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235359"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Glosář pro vývojáře platforma identit Microsoft
 
@@ -95,7 +95,7 @@ Podle definice [Framework autorizace OAuth2][OAuth2-Role-Def], server pověřen�
 
 V případě integrace Microsoft identity platform aplikací, platforma identit Microsoft implementuje role serveru autorizace pro aplikace Azure AD a Microsoft service rozhraní API, například [rozhraní Microsoft Graph API] [Microsoft-Graph].
 
-## <a name="claim"></a>deklarace identity
+## <a name="claim"></a>Deklarace identity
 
 A [token zabezpečení](#security-token) obsahuje deklarace identity, které poskytují kontrolní výrazy přibližně jednu entitu (například [klientská aplikace](#client-application) nebo [vlastníka prostředku](#resource-owner)) na jinou entitu (například [server prostředků](#resource-server)). Deklarace identity jsou páry název/hodnota, která propojení faktů o token subjektu (například objekt zabezpečení, která byla ověřena podle [autorizační server](#authorization-server)). K dispozici v daný token deklarace identity jsou závislé na několika proměnnými, typ tokenu, typ přihlašovacích údajů pro ověření, předmět, konfigurace aplikace, atd.
 
@@ -119,7 +119,7 @@ Zobrazit [rozhraní pro udělování souhlasu](consent-framework.md) Další inf
 
 Zobrazit [token referenční informace k Microsoft identity platform] [ AAD-Tokens-Claims] další podrobnosti.
 
-## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
+## <a name="microsoft-identity-platform"></a>Platforma identit Microsoft
 
 Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně funkční platforma, která se skládá z ověřovací služba, knihovny, registrace aplikace a konfiguraci, dokumentaci pro vývojáře, ukázky kódu a další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Zobrazit [platforma identit Microsoft o](about-microsoft-identity-platform.md) další podrobnosti.
 
@@ -142,7 +142,7 @@ A [klientská aplikace](#client-application) získá přístup k [server prostř
 
 Jsou také surface během [souhlas](#consent) procesu, poskytuje správce nebo vlastníka prostředku příležitost k udělit nebo zamítnout klientský přístup k prostředkům v rámci jejich tenanta.
 
-Žádosti o oprávnění jsou nakonfigurované na "Aplikace" / "Nastavení" kartu [webu Azure portal][AZURE-portal], v části "Požadováno oprávnění" tak, že vyberete požadovanou "Delegovaná oprávnění" a "aplikace Oprávnění"(druhá možnost vyžaduje členství v roli Globální správce). Protože [veřejným klientem](#client-application) nejde udržovat zabezpečené přihlašovací údaje, může požadovat pouze delegovaná oprávnění, při [důvěrnému klientovi](#client-application) má možnost požadovat delegovaná a aplikace oprávnění. Klienta [aplikační objekt](#application-object) ukládá deklarované oprávnění v jeho [requiredResourceAccess vlastnost][AAD-Graph-App-Entity].
+Žádosti o oprávnění jsou nakonfigurované na **oprávnění k rozhraní API** stránku aplikace v [webu Azure portal][AZURE-portal], tak, že vyberete požadovanou "delegovaná oprávnění" a " Aplikace oprávnění"(druhá možnost vyžaduje členství v roli Globální správce). Protože [veřejným klientem](#client-application) nejde udržovat zabezpečené přihlašovací údaje, může požadovat pouze delegovaná oprávnění, při [důvěrnému klientovi](#client-application) má možnost požadovat delegovaná a aplikace oprávnění. Klienta [aplikační objekt](#application-object) ukládá deklarované oprávnění v jeho [requiredResourceAccess vlastnost][AAD-Graph-App-Entity].
 
 ## <a name="resource-owner"></a>vlastník prostředku
 

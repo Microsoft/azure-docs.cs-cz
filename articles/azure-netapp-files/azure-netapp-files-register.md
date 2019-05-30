@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
-ms.openlocfilehash: fbe0b82008d7b15332c4e2cd62c49c611f20fe89
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794700"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299216"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
 
@@ -60,12 +60,12 @@ K používání služby, zaregistrujte poskytovatele prostředků Azure pro Azur
 
    Výstup tohoto příkazu se zobrazí takto:
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/publicPreviewADC",  
-       "name": "Microsoft.NetApp/publicPreviewADC" 
+       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+       "name": "Microsoft.NetApp/ANFGA" 
        
    `<SubID>` je vaše ID předplatného.
 
-    Pokud se nezobrazí název funkce `Microsoft.NetApp/publicPreviewADC`, nemáte přístup ke službě. Zastavte v tomto kroku. Postupujte podle pokynů v [odeslat waitlist žádost o přístup k službě](#waitlist) na žádost o přístup k službě než budete pokračovat. 
+    Pokud se nezobrazí název funkce `Microsoft.NetApp/ANFGA`, nemáte přístup ke službě. Zastavte v tomto kroku. Postupujte podle pokynů v [odeslat waitlist žádost o přístup k službě](#waitlist) na žádost o přístup k službě než budete pokračovat. 
 
 4. V konzole Azure Cloud Shell zadejte následující příkaz pro registraci poskytovatele prostředků Azure: 
     

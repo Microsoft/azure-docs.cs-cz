@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d00808295d39247729f6e843ac59ad7b23407148
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 99fe386ec75e60a16f3095f22dccc3852883f8aa
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785416"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304517"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvání spolupráce služby Azure Active Directory s B2B
 
@@ -56,7 +56,7 @@ Informace o tom, jak jako správce tenanta můžete propojit prohlášení o och
 
 ## <a name="terms-of-use"></a>Podmínky použití
 
-Podmínky použití pro uživatele typu Host může předložit během procesu uplatnění. úvodní pomocí Azure AD Terms of použít funkci. Ve službě Azure Active Directory, můžete přístup k této funkci v rámci **spravovat** > **organizační vztahy** > **podmínky použití** nebo v části **Zabezpečení** > **podmíněného přístupu** > **podmínky použití**. Podrobnosti najdete v tématu [Azure AD Terms of použít funkci](../conditional-access/terms-of-use.md).
+Podmínky použití pro uživatele typu Host může předložit během procesu uplatnění. úvodní s použitím podmínky služby Azure AD použít funkci. Ve službě Azure Active Directory, můžete přístup k této funkci v rámci **spravovat** > **organizační vztahy** > **podmínky použití** nebo v části **Zabezpečení** > **podmíněného přístupu** > **podmínky použití**. Podrobnosti najdete v tématu [funkcí Azure AD podmínky použití](../conditional-access/terms-of-use.md).
 
 ![Snímek obrazovky zobrazující nové podmínky použití](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 

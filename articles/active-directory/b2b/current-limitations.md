@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 05/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4aae8eb29b9e90bd1cb84949e97e21ed68c04c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1466614dfeb8fa4d3d095bae070d01c6503c5bb
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812772"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357241"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Omezení spolupráce B2B ve službě Azure AD
 Spolupráce Azure Active Directory (Azure AD) B2B je aktuálně v souladu s omezeními popsaných v tomto článku.
@@ -29,6 +29,9 @@ Toky B2B spolupráce můžeme přidat uživatele do adresáře a dynamicky je ak
 
 ## <a name="azure-ad-directories"></a>Adresáře Azure AD
 Azure AD B2B je v souladu s Azure AD directory omezení služby. Další informace o počtu adresářů, které uživatel může vytvořit a počet adresářů které uživatele nebo uživatele typu Host může patřit, najdete v článku [limity a omezení služby Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
+
+## <a name="national-clouds"></a>Národní cloudy
+[Národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) jsou fyzicky izolované instance Azure. Spolupráce B2B ve službě nepodporuje přes hranice národních cloudů. Například pokud tenanta služby Azure je ve veřejné globální cloud, nemůžou zvát uživatele, jehož účet je v národních cloudů. Spolupracovat s uživatelem, požádat o jiné e-mailovou adresu nebo vytvořte účet uživatele člena pro ně ve vašem adresáři.
 
 ## <a name="next-steps"></a>Další postup
 

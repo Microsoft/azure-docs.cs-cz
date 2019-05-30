@@ -12,23 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5819194e7967b5921f34223cad299752460de30
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574260"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255642"
 ---
 # <a name="analytics-in-application-insights"></a>Analýzy ve službě Application Insights
 Analýza je výkonný nástroj hledání a dotaz z [Application Insights](app-insights-overview.md). Analytics je webový nástroj, takže není zapotřebí žádné nastavení.
-Pokud jste již nakonfigurovali Application Insights pro některé z aplikací, můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace [okno přehledu](app-insights-dashboards.md).
+Pokud jste již nakonfigurovali Application Insights pro jeden z vašich aplikací můžete analyzovat data vaší aplikace tak, že otevřete Analytics z vaší aplikace s přehledem.
 
 ![Otevřené stránce portal.azure.com otevřete prostředek Application Insights a klikněte na tlačítko Analytics.](./media/analytics/001.png)
 
 Můžete také použít [Analytics playground](https://go.microsoft.com/fwlink/?linkid=859557) což je bezplatná ukázkovém prostředí s velkým množstvím ukázková data.
-<br>
-<br>
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Vztah k protokoly Azure monitoru
 Application Insights analytics vychází [Průzkumník dat Azure](/azure/data-explorer) jako protokoly Azure monitoru a také používá [Kusto dotazovací jazyk](/azure/kusto/query). Používá stejný [portál log analytics](../log-query/get-started-portal.md) jako protokoly Azure monitoru, i když jeho data se ukládají v samostatném oddílu.

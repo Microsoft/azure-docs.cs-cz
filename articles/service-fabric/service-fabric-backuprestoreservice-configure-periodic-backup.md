@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: 31c5feac577dc5e9e0eed9ced9ccfe25c12d3086
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1b36ed5197aeb056c70200a49e09cc777d66d0b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310458"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237358"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
 
@@ -137,9 +137,6 @@ Zásady zálohování se skládá z následujících konfigurací:
             "MinimumNumberOfBackups": 20
         }
         ```
-
-> [!IMPORTANT]
-> Kvůli problému v modulu runtime Ujistěte se, že doba uchování v zásadách uchovávání dat je nakonfigurovaný, aby byl méně než 24 dní, jinak by vést ve službě obnovení zálohy přejít do převzetí služeb při selhání kvora ztráty příspěvek repliky.
 
 ## <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
 Po definování zásad zálohování pro splnění požadavků pro zálohování dat, zásady zálohování by měly být správně přidružené buď _aplikace_, nebo _služby_, nebo _oddílu_.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b486e617389e1611dfebf3d347d2d64df088593
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387543"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258640"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Další informace o rozdílech mezi cloudovými službami a Service Fabric před migrací aplikací.
 Microsoft Azure Service Fabric je platforma aplikací generace cloud pro vysoce škálovatelné, vysoce spolehlivých distribuovaných aplikací. Zavádí řadu nových funkcí pro balení, nasazování, upgradu a správy distribuovaných cloudových aplikací. 
@@ -88,6 +88,24 @@ Běžné mechanizmus pro komunikaci mezi vrstvami v bezstavové prostředí, jak
 Stejný model komunikace je použít v Service Fabric. To může být užitečné při migraci stávající aplikace Cloud Services do Service Fabric. 
 
 ![Přímá komunikace Service Fabric][8]
+
+## <a name="parity"></a>Parita
+[Cloud Services je podobná Service Fabric, co se týče úrovně kontroly a snadnosti použití, ale je teď o starší službu a Service Fabric se doporučuje pro vývoj nových projektů](https://docs.microsoft.com/azure/app-service/overview-compare); porovnávání rozhraní API je následující:
+
+
+| **Cloudová služba rozhraní API** | **Service Fabric rozhraní API** | **Poznámky** |
+| --- | --- | --- |
+| RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId nebo. NodeName | ID je vlastnost NodeName |
+| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | Filtrovat podle NodeName a použijte vlastnost FD |
+| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | Filtrovat podle NodeName a použijte vlastnost upgradu |
+| RoleInstance.GetInstanceEndpoints | FabricRuntime.GetActivationContext nebo pojmenování (ResolveService) | CodePackageActivationContext, který je k dispozici FabricRuntime.GetActivationContext i v rámci repliky prostřednictvím ServiceInitializationParameters.CodePackageActivationContext využít ve verzi. Inicializace |
+| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | Pokud chcete provést stejný druh filtrování podle typu, který můžete získat seznam typů uzlů z clusteru manifest prostřednictvím FabricClient.ClusterManager.GetClusterManifest a Vezmu typy rolí/uzlů z něj. |
+| RoleEnvironment.GetIsAvailable | Připojit WindowsFabricCluster nebo vytvořit FabricRuntime odkazovala na jednotlivé uzly | * |
+| RoleEnvironment.GetLocalResource | CodePackageActivationContext.Log/Temp/Work | * |
+| RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext.Log/Temp/Work | * |
+| LocalResource.GetRootPath | CodePackageActivationContext.Log/Temp/Work | * |
+| Role.GetInstances | FabricClient.QueryManager.GetNodeList nebo ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime.GetActivationContext nebo pojmenování (ResolveService) | * |
 
 ## <a name="next-steps"></a>Další kroky
 Nejjednodušší způsob migrace ze služby Cloud Services do Service Fabric je nahradit pouze nasazení Cloud Services s aplikací Service Fabric, udržování architektury aplikace zhruba stejný. V následujícím článku obsahuje tento průvodce pomůže převést webové nebo pracovní Role pro bezstavové služby Service Fabric.

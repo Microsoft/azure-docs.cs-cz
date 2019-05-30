@@ -9,71 +9,75 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 510899e44e4ea4a90e21473ee6af546744c2be2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120194"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392930"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
 V Azure Media Services v3 [streamování zásady](https://docs.microsoft.com/rest/api/media/streamingpolicies) vám umožňují definovat protokolů streamování a možnosti šifrování pro vaše [lokátory streamování](streaming-locators-concept.md). Media Services v3 poskytuje že některé předdefinované zásady streamování, tak, aby je mohli používat přímo pro zkušební verzi nebo produkční prostředí. 
 
-Aktuálně k dispozici předdefinované zásady streamování:<br/>"Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming".
+Aktuálně k dispozici předdefinované zásady streamování:<br/>
+* "Predefined_DownloadOnly.
+* "Predefined_ClearStreamingOnly.
+* 'Predefined_DownloadAndClearStreaming'
+* "Predefined_ClearKey.
+* 'Predefined_MultiDrmCencStreaming' 
+* 'Predefined_MultiDrmStreaming'
 
-Pokud nemáte speciální požadavky (např. Pokud chcete zadat různé protokoly, potřebují používat službu vlastní doručení klíče, nebo muset použít Vymazat zvukové stopy), můžete vytvořit vlastní zásady streamování. 
+Následující "rozhodovací strom" pomáhá výběru předdefinovaných datových proudů zásady pro váš scénář.
 
- 
 > [!IMPORTANT]
 > * Vlastnosti **streamování zásady** jsou DateTime typu jsou vždy ve formátu UTC.
 > * Navrhněte omezenou sadu zásad pro svůj účet Media Service a je znovu použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti. Další informace najdete v tématu [kvóty a omezení](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Rozhodovací strom
 
-Následující rozhodovací strom vám pomůže vybrat předdefinované zásady streamování pro váš scénář.
+Kliknutím na obrázek zobrazíte jeho plnou velikost.  
 
-Kliknutím na obrázek zobrazíte jeho plnou velikost.  <br/>
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/small.png"></a> 
+<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-## <a name="examples"></a>Příklady
+Pokud šifrování obsahu, je potřeba vytvořit [zásad klíče k obsahu](content-key-policy-concept.md), **zásad klíče k obsahu** není potřeba pro streamování nebo stažení. 
 
-### <a name="not-encrypted"></a>Není šifrováno
+Pokud nemáte speciální požadavky (např. Pokud chcete zadat různé protokoly, potřebují používat službu vlastní doručení klíče, nebo muset použít Vymazat zvukové stopy), můžete si [vytvořit](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) vlastní zásady streamování. 
 
-Pokud chcete ke streamování vašeho souboru v the vymazat (nešifrované), nastavte předdefinované jasné zásady streamování: na "Predefined_ClearStreamingOnly" (v .NET, můžete použít PredefinedStreamingPolicy.ClearStreamingOnly enum).
+## <a name="get-a-streaming-policy-definition"></a>Získat definici zásady streamování  
 
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
-    });
+Pokud chcete zobrazit definici zásady streamování, používat [získat](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) a zadejte název zásady. Příklad:
+
+### <a name="rest"></a>REST
+
+Požadavek:
+
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaServices/contosomedia/streamingPolicies/clearStreamingPolicy?api-version=2018-07-01
 ```
 
-### <a name="encrypted"></a>Zašifrováno 
+Odpověď:
 
-Pokud potřebujete k šifrování obsahu pomocí šifrování obálky a cenc, nastavte zásadu "Predefined_MultiDrmCencStreaming". Tato zásada udává, že chcete vygenerovat a nastavit v lokátoru dva symetrické klíče (obálku a CENC). Tím dojde k nastavení obálky a šifrování PlayReady a Widevine (klíč se doručí klientovi pro přehrávání na základě nakonfigurovaných licencí DRM).
-
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
-        DefaultContentKeyPolicyName = contentPolicyName
-    });
 ```
-
-Pokud chcete zašifrovat datový proud s CBCS (FairPlay), použijte "Predefined_MultiDrmStreaming".
+{
+  "name": "clearStreamingPolicy",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/streamingPolicies/clearStreamingPolicy",
+  "type": "Microsoft.Media/mediaservices/streamingPolicies",
+  "properties": {
+    "created": "2018-08-08T18:29:30.8501486Z",
+    "noEncryption": {
+      "enabledProtocols": {
+        "download": true,
+        "dash": true,
+        "hls": true,
+        "smoothStreaming": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="filtering-ordering-paging"></a>Filtrování, řazení, stránkování
 

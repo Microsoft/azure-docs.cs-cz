@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
+ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 943bf0f4bba014c31a11bb30bf8d3b6a7c11a343
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682540"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299344"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším webovým uživatelským rozhraním
 
@@ -42,7 +42,7 @@ Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, k
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klient SSH. Většina operačních systémů poskytuje klienta SSH prostřednictvím `ssh` příkazu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Webový prohlížeč, který může být nakonfigurován pro použití SOCKS5 proxy.
 
@@ -56,9 +56,9 @@ Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, k
 
 ## <a name="usessh"></a>Vytvořit tunel pomocí příkazu SSH
 
-Pomocí následujícího příkazu vytvořte SSH tunelovat pomocí `ssh` příkazu. Nahraďte **sshuser** s uživatele SSH pro váš HDInsight cluster a nahradit **clustername** s názvem vašeho clusteru HDInsight:
+Pomocí následujícího příkazu vytvořte SSH tunelovat pomocí `ssh` příkazu. Nahraďte `sshuser` s uživatele SSH pro váš HDInsight cluster a nahradit `clustername` s názvem vašeho clusteru HDInsight:
 
-```bash
+```cmd
 ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
@@ -81,19 +81,20 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
 
 ### <a name="create-or-load-a-session"></a>Vytvořit nebo načíst relaci
 
-1. Otevřete PuTTY a ověřte **relace** je vybrána v nabídce vlevo. Pokud již máte uložené relace, vyberte název relace, od **uložit relací** seznamu a klikněte na tlačítko **zatížení**.
+1. Otevřete PuTTY a ověřte **relace** je vybrána v nabídce vlevo. Pokud již máte uložené relace, vyberte název relace, od **uložit relací** seznam a vyberte **zatížení**.
 
 1. Pokud ještě nemáte uložený relace, zadejte informace o připojení:
     * **Název hostitele (nebo IP adresa)** -SSH adres pro HDInsight cluster. Například **mycluster-ssh.azurehdinsight.net**
     * **Port** – 22.
     * **Typ připojení** - SSH
-1. Klikněte na **Uložit**.
+
+1. Vyberte **uložit**
 
     ![Vytvořte relaci SSH](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-2. V **kategorie** části nalevo od dialogového okna, rozbalte **připojení**, rozbalte **SSH**a pak vyberte **tunely**.
+1. V **kategorie** části nalevo od dialogového okna, rozbalte **připojení**, rozbalte **SSH**a pak vyberte **tunely**.
 
-3. Zadejte následující informace o **možnostech řízení SSH port předávání** formuláře:
+1. Zadejte následující informace o **možnostech řízení SSH port předávání** formuláře:
    
    * **Zdrojový port** – port na straně klienta, který chcete přesměrovat. Například **9876**.
 
@@ -103,9 +104,9 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
      
      ![Obrázek možnosti tunelového propojení](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
 
-4. Klikněte na tlačítko **přidat** přidat nastavení a potom klikněte na **otevřete** otevřete připojení SSH.
+1. Vyberte **přidat** přidat nastavení a potom klikněte na **otevřete** otevřete připojení SSH.
 
-5. Po zobrazení výzvy, přihlaste se k serveru.
+1. Po zobrazení výzvy, přihlaste se k serveru.
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Použití tunelového propojení z prohlížeče
 
@@ -125,10 +126,10 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
 
 Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelským rozhraním z webového rozhraní Ambari pomocí následujících kroků:
 
-1. V prohlížeči přejděte na http\:/ / headnodehost:8080. `headnodehost` Adresa je odeslán přes tunel ke clusteru a vyřešit k hlavnímu uzlu, na kterém běží Ambari na. Po zobrazení výzvy zadejte uživatelské jméno správce (správce) a heslo pro váš cluster. Můžete být vyzváni podruhé pomocí webového uživatelského rozhraní Ambari. Pokud ano, zadejte znovu informace.
+1. V prohlížeči přejděte na `http://headnodehost:8080`. `headnodehost` Adresa je odeslán přes tunel ke clusteru a vyřešit k hlavnímu uzlu, na kterém běží Ambari na. Po zobrazení výzvy zadejte uživatelské jméno správce (správce) a heslo pro váš cluster. Můžete být vyzváni podruhé pomocí webového uživatelského rozhraní Ambari. Pokud ano, zadejte znovu informace.
 
    > [!NOTE]  
-   > Při použití http\://headnodehost:8080 adresu pro připojení ke clusteru, kterým se připojujete přes tunelové propojení. Komunikace je zabezpečená pomocí tunelu SSH místo protokolu HTTPS. Pro připojení přes internet pomocí protokolu HTTPS, použijte protokol https\:/ / clustername.azurehdinsight.net, kde **clustername** je název clusteru.
+   > Při použití `http://headnodehost:8080` adresy pro připojení ke clusteru, se připojují prostřednictvím tunelu. Komunikace je zabezpečená pomocí tunelu SSH místo protokolu HTTPS. Chcete-li připojit přes internet pomocí protokolu HTTPS, použijte `https://clustername.azurehdinsight.net`, kde `clustername` je název clusteru.
 
 2. Webové uživatelské rozhraní Ambari vyberte ze seznamu na levé straně stránky HDFS.
 
@@ -138,23 +139,20 @@ Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelsk
 
     ![Image rozbalila se nabídka rychlé odkazy](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]  
-   > Když vyberete __rychlé odkazy__, můžete obdržet ukazatele čekání. K tomuto stavu může dojít, pokud máte pomalé připojení k Internetu. Počkejte minutu nebo dvě data, která mají být přijata ze serveru, a akci opakujte seznamu.
-   >
-   > Některé položky v **rychlé odkazy** nabídky může být oříznou podle pravé straně obrazovky. Pokud ano, rozbalte nabídku pomocí myši a použijte klávesy se šipkou doprava přejděte na obrazovce doprava a zobrazit zbývající nabídky.
+    > [!NOTE]  
+    > Když vyberete __rychlé odkazy__, můžete obdržet ukazatele čekání. K tomuto stavu může dojít, pokud máte pomalé připojení k Internetu. Počkejte minutu nebo dvě data, která mají být přijata ze serveru, a akci opakujte seznamu.
+    >
+    > Některé položky v **rychlé odkazy** nabídky může být oříznou podle pravé straně obrazovky. Pokud ano, rozbalte nabídku pomocí myši a použijte klávesy se šipkou doprava přejděte na obrazovce doprava a zobrazit zbývající nabídky.
 
 4. Zobrazí se stránka podobná na následujícím obrázku:
 
     ![Obrázek NameNode uživatelského rozhraní](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
-   > [!NOTE]  
-   > Všimněte si, že adresa URL pro tuto stránku; by měl být podobný **http\://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Pomocí tohoto identifikátoru URI používá interní plně kvalifikovaný název domény (FQDN) uzlu a je dostupný jenom při použití tunelu SSH.
+    > [!NOTE]  
+    > Všimněte si, že adresa URL pro tuto stránku; by měl být podobný `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster`. Pomocí tohoto identifikátoru URI používá interní plně kvalifikovaný název domény (FQDN) uzlu a je dostupný jenom při použití tunelu SSH.
 
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili, jak vytváření a používání tunelu SSH, najdete v následujícím dokumentu pro jiné způsoby, jak použít Ambari:
 
 * [Správa clusterů HDInsight s použitím Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-
-Další informace o použití SSH s HDInsight naleznete v tématu [použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
-

@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b8e3ddf1cf5d61f730ce01a35ee0813b47ad2d2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204326"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305931"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET do virtuálního počítače Azure ze sady Visual Studio
 
-Tento dokument popisuje, jak publikovat webovou aplikaci ASP.NET do virtuálních počítačů (VM) Azure pomocí **Microsoft Azure Virtual Machines** publikování funkce v sadě Visual Studio 2017.  
+Tento dokument popisuje, jak publikovat webovou aplikaci ASP.NET do virtuálních počítačů (VM) Azure pomocí **Microsoft Azure Virtual Machines** funkce publikování ve Visual Studio 2019.  
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít Visual Studio k publikování projektu ASP.NET na Virtuálním počítači Azure, virtuálního počítače musí být správně nastavena.
@@ -34,7 +34,7 @@ Chcete-li použít Visual Studio k publikování projektu ASP.NET na Virtuální
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Publikování webové aplikace ASP.NET do virtuálního počítače Azure pomocí sady Visual Studio
 Následující část popisuje, jak publikovat existující webové aplikace ASP.NET na virtuálním počítači Azure.
 
-1. Otevřete řešení webové aplikace v sadě Visual Studio 2017.
+1. Otevřete řešení webové aplikace v aplikaci Visual Studio 2019.
 2. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a zvolte **publikování...**
 3. Použijte šipku na pravé straně stránky procházejte možnosti publikování, dokud nenajdete **Microsoft Azure Virtual Machines**.  
 
@@ -58,7 +58,7 @@ Následující část popisuje, jak publikovat existující webové aplikace ASP
 
 7. Kliknutím na tlačítko OK spusťte publikování.
 
-8. Když se zobrazí výzva k zadání přihlašovacích údajů, zadejte uživatelské jméno a heslo uživatelského účtu na cílovém virtuálním počítači, který je nakonfigurovaný s publikováním práva (obvykle správce uživatelské jméno a heslo použité při vytváření virtuálního počítače).  
+8. Po zobrazení výzvy k zadání pověření zadejte uživatelské jméno a heslo uživatelského účtu na cílovém virtuálním počítači, který je nakonfigurovaný s publikováním práva. Tyto přihlašovací údaje jsou obvykle uživatelské jméno admin a heslo použité při vytváření virtuálního počítače.  
 
    ![Nástroj WebDeploy přihlášení]
 
@@ -99,12 +99,12 @@ Vaše nastavení by měl vypadat přibližně takto:
 ![Publikovat nastavení – stránka připojení]
 
 #### <a name="save-user-name-and-password"></a>Uložit uživatelské jméno a heslo
-- Pokud chcete vyhnout, poskytuje informace o ověřování při každém publikování, která můžete naplnit **uživatelské jméno** a **heslo** pole a vyberte možnost **uložit heslo** pole.
+- Vyhněte se poskytuje informace o ověřování při každém publikování. Uděláte to tak, naplnění **uživatelské jméno** a **heslo** pole a vyberte možnost **uložit heslo** pole.
 - Použití **ověřit připojení** potvrďte, že jste zadali správné informace.
 
 #### <a name="deploy-to-clean-web-server"></a>Nasazení do čistého webového serveru
 
-- Pokud chcete zajistit, že kopii webové aplikace za každý nahraný čisté webový server (a, že žádné soubory zůstanou Předsazení z předchozích nasazení), můžete zkontrolovat **odebrat další soubory v cílovém umístění** zaškrtávací políčko ve **nastavení** kartu.
+- Pokud chcete mít jistotu, že webový server má kopii webové aplikace za každý nahraný vyčistit a, že žádné soubory zůstávají v předchozím nasazení, můžete zkontrolovat **odebrat další soubory v cílovém umístění** zaškrtávací políčko ve  **Nastavení** kartu.
 
 - Upozornění: Publikování s tímto nastavením odstraní všechny soubory, které existují na webovém serveru (adresář wwwroot). Ujistěte se, že víte, stav počítače před publikováním tyto volby zapnuty. 
 

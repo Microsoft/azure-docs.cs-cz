@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 646e9bf844477b3d8e1c4c42fb5956e015805433
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 9ca85e4414739bff05176eddc1f31963e453dcf0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833505"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258123"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Vytvořit novou nabídku aplikace SaaS
 
@@ -20,7 +20,7 @@ Tento článek popisuje postup vytvoření a publikování položky nabídky Saa
 
 > [!IMPORTANT] 
 > SaaS nabízejí funkce migruje na [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory).  Všechny nové zdroje musí pomocí partnerského centra pro vytvoření nové nabídky SaaS a správu existující nabídky.  Aktuální vydavatele se nabídky SaaS se batchwise migrují z portál partnerů cloudu do partnerského centra.  Portál partnerů cloudu se zobrazí stavové zprávy k označení, když se konkrétní stávající nabídky migrovaly.
-
+> Další informace najdete v tématu [vytvoření nové nabídky SaaS](../../partner-center-portal/create-new-saas-offer.md).
 
 ## <a name="offer-process"></a>Nabídka procesu
 
@@ -37,7 +37,7 @@ Nabídky SaaS aplikace se skládá z pěti oddílů, jsou popsané v následují
 |    Nabídka nastavení  |  Slouží ke konfiguraci jedinečné identity pro aplikace SaaS.                 |
 |  Technické informace    |  Použít ke konfiguraci typu řešení SaaS a poskytují podrobné informace o připojení pro vaši aplikaci.                |
 |  Informace o kanálu      |   Zadejte informace o kanálu, například GTM materiály a kontakty.                |
-|  Test Drive        |   Volitelný oddíl pro definování služba, která vám umožní zákazníkům testovat vaši nabídku před může zakoupit.                |
+|  Testovací verze        |   Volitelný oddíl pro definování služba, která vám umožní zákazníkům testovat vaši nabídku před může zakoupit.                |
 |  Prezentace podrobnosti       | Obsahuje marketing, právních i průběžné správy prostředků a specifikace.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga</li> <li> Právní prostředky zahrnují další právní dokumentace, zásady ochrany osobních údajů a podmínky použití</li>  <li> Můžete určit způsob zpracování vede z portálu pro koncové uživatele webu Azure Marketplace umožňuje zásad průběžné správy.</li> </ul> |
 | Kontakty            | Obsahuje informace o podpoře kontaktní údaje a zásady |
 

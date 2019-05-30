@@ -12,24 +12,24 @@ ms.subservice: development
 ms.date: 04/05/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 683ec8f9cebb2fcbade9fd636506cf1903eff317
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b2e34f1f72b1b0aa76d4a3031102d052118dae5f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873298"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304119"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>Instalace sady Visual Studio a SSDT pro SQL Data Warehouse
-Vývoj aplikací pro SQL Data Warehouse pomocí sady Visual Studio 2017. Visual Studio 2019 SSDT není aktuálně podporována pro SQL Data Warehouse. 
+Použití Visual Studio 2019 k vývoji aplikací pro službu SQL Data Warehouse. Visual Studio 2019 SSDT není aktuálně podporována pro SQL Data Warehouse. 
 
-Pomocí sady Visual Studio s rozšířením SSDT vám umožňuje použít Průzkumník objektů systému SQL Server vizuálně zkoumat tabulky, zobrazení, uložené procedury a celou řadu dalších objektů ve službě SQL Data Warehouse také spouštět dotazy.
+Pomocí sady Visual Studio s rozšířením SSDT vám umožňuje zkoumat tabulky, zobrazení, uložené procedury a celou řadu dalších objektů vizuálně ve službě SQL Data Warehouse pomocí Průzkumníku objektů SQL serveru. Také vám umožňuje spouštět dotazy.
 
 > [!NOTE]
 > SQL Data Warehouse zatím nepodporuje databázové projekty sady Visual Studio. Pokud chcete dostávat pravidelné aktualizace týkající se této funkce, prosím Hlasujte o nich [UserVoice].
 > 
 > 
 
-## <a name="step-1-install-visual-studio"></a>Krok 1: Nainstalovat Visual Studio
+## <a name="step-1-install-visual-studio"></a>Krok 1: Instalace sady Visual Studio
 Použijte tyto odkazy ke stažení a instalaci sady Visual Studio. Pokud už máte sadu Visual Studio 2013 nebo novější, můžete přeskočit ke kroku 2, instalaci rozšíření SSDT.
 
 1. [Stáhněte si Visual Studio][].
@@ -41,10 +41,10 @@ Pokud chcete nainstalovat rozšíření SSDT pro Visual Studio, nejprve zkontrol
 1. V sadě Visual Studio klikněte na **nástroje** / **rozšíření a aktualizace...** / **Aktualizace**
 2. Vyberte **Aktualizace produktu** a potom vyhledejte položku **Microsoft SQL Server Update for database tooling** (Aktualizace Microsoft SQL Serveru pro databázové nástroje).
 
-Pokud se aktualizace nenajde, měli byste mít nainstalovanou nejnovější verzi.  Pokud chcete ověřit, že je rozšíření SSDT nainstalované, klikněte na **Nápověda** / **O sadě Microsoft Visual Studio** a vyhledejte v seznamu položku SQL Server Data Tools. Pokud možnost instalace není k dispozici v sadě Visual Studio, případně můžete navštívit [si rozšíření SSDT Stáhnout] [ SSDT Download] stránky stáhnout a nainstalovat ručně.
+Měli byste mít nainstalovanou, pokud se aktualizace nenajde nejnovější verzi. Pokud chcete ověřit, že je rozšíření SSDT nainstalované, klikněte na **Nápověda** / **O sadě Microsoft Visual Studio** a vyhledejte v seznamu položku SQL Server Data Tools. Pokud možnost instalace není k dispozici v sadě Visual Studio, můžete přejít [si rozšíření SSDT Stáhnout] [ SSDT Download] stránky stáhnout a nainstalovat ručně.
 
 ## <a name="next-steps"></a>Další postup
-Teď, když máte nejnovější verzi rozšíření SSDT, budete chtít [připojení] [ connect] do služby SQL Data Warehouse.
+Teď, když máte nejnovější verzi rozšíření SSDT, jste připraveni [připojení] [ connect] do služby SQL Data Warehouse.
 
 <!--Anchors-->
 

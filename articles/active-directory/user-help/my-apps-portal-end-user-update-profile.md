@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa6de024758d16b99569261e10d46f9328241427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf8484cdadcdb368c00351ca68e42652b475a7d4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482992"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305422"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizujte informace vašeho profilu a účtu na portálu Moje aplikace
 Můžete použít pracovní nebo školní účet s webovou **Moje aplikace** portál, zobrazit a spustit řadu aplikace vaší organizace založené na cloudu, chcete-li aktualizovat některé z vašeho profilu a účtu informace zobrazíte vaše **skupiny** informace a k provádění **kontrol přístupu** vašich aplikací a skupin. Pokud nemáte přístup k **Moje aplikace** portálu, musíte požádat o Helpdesk oprávnění.
@@ -57,7 +57,7 @@ Aktualizovat a spravovat váš pracovní nebo školní informace o účtu ze **p
 
 - Zadejte informace o další bezpečnostní ověření.
 
-- Projděte si vaše organizace podmínky použití.
+- Přečtěte podmínky použití vaší organizace.
 
 - Odhlásit všude.
 

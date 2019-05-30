@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 73785422a7c45a12671e6cd53da89609190a8352
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66141427"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243288"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -55,7 +55,7 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
 
    * **Externí**: brány a vývojářského portálu API Management, jsou přístupné z veřejného Internetu prostřednictvím externím vyrovnáváním zatížení. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 
-     ![Veřejné partnerské vztahy][api-management-vnet-public]
+     ![Veřejný partnerský vztah][api-management-vnet-public]
 
    * **Interní**: brány a vývojářského portálu API Management je přístupný jenom v rámci virtuální sítě prostřednictvím interního nástroje load balancer. Brána lze přistupovat k prostředkům v rámci virtuální sítě.
 
@@ -103,7 +103,7 @@ Tady je seznam častých problémech, které mohou nastat při nasazení služby
 * **Vlastní nastavení serveru DNS**: Služba API Management závisí na několik služeb Azure. API Management je hostovaná ve virtuální síti pomocí vlastního serveru DNS, musí překládat názvy hostitelů těchto služeb Azure. Postupujte prosím podle [to](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) doprovodné materiály k vlastním nastavením DNS. Viz následující tabulka portů a další požadavky na síť pro odkaz.
 
 > [!IMPORTANT]
-> Pokud máte v plánu používat vlastní servery DNS pro virtuální síť, měli byste nastavit **před** nasazení služby API Management do něj. Jinak budete muset aktualizovat službu API Management pokaždé, když změníte spuštěním servery DNS [použít operace konfigurace sítě](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Pokud máte v plánu používat vlastní servery DNS pro virtuální síť, měli byste nastavit **před** nasazení služby API Management do něj. Jinak budete muset aktualizovat službu API Management pokaždé, když změníte spuštěním servery DNS [použít operace konfigurace sítě](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Porty vyžadované pro službu API Management**: Příchozí a odchozí provoz do podsítě, ve kterém je nasazená API Management se dá řídit pomocí [skupinu zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů jsou k dispozici, API Management nebude fungovat správně a může být nepřístupný. Jeden nebo více z těchto portů blokované je dalším běžný problémem chybnou konfiguraci při použití služby API Management pomocí virtuální sítě.
 
@@ -170,7 +170,7 @@ Tady je seznam častých problémech, které mohou nastat při nasazení služby
   > [!IMPORTANT]
   > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, před nasazením API Management do podsítě.
 
-* **Přírůstkové aktualizace**: Při provádění změn k síti, najdete [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), chcete-li ověřit, že služba API Management ještě ztratili přístup k důležitým prostředkům, které závisí na. Stav připojení by měl být aktualizováno každých 15 minut.
+* **Přírůstkové aktualizace**: Při provádění změn k síti, najdete [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus), chcete-li ověřit, že služba API Management ještě ztratili přístup k důležitým prostředkům, které závisí na. Stav připojení by měl být aktualizováno každých 15 minut.
 
 * **Navigačních odkazů prostředku**: Při nasazování do podsítě virtuální sítě Resource Manageru styl, API Management rezervuje podsítě, tak, že vytvoříte prostředek navigačního odkazu. Pokud podsíť již obsahuje prostředek od jiného výrobce, nasazení bude **selhání**. Podobně když změníte umístění služby API Management k jiné podsíti nebo ho odstranit, odebíráme této navigační odkaz prostředku.
 

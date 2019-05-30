@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: 122f0884469a4901b02a1c86dd5ec98ef4fb24b0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
-ms.translationtype: HT
+ms.openlocfilehash: f36442c5e26391f410eeb5e39a7485da7199bdad
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000256"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243435"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -55,7 +55,8 @@ Doporučujeme provést ověření, než začnete řešení potíží s agentem M
 
 | Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |
-| **Chyba** <br /><ol><li>*Agent služby Microsoft Azure Recovery se nepodařilo připojit ke službě Microsoft Azure Backup. (ID: 100050) zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu*<li>*(407) Vyžaduje se ověření proxy serverem* |Blokuje připojení proxy server. |  <ul><li>Spuštění **IE** > **nastavení** > **Možnosti Internetu** > **zabezpečení**  >  **Internet**. Potom vyberte **vlastní úroveň** a posuňte, dokud se nezobrazí stahování části souboru. Vyberte **povolit**.<li>Budete také muset tyto weby přidat do aplikace IE [Důvěryhodné servery](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti. <li>Pokud máte antivirový software nainstalovaný na serveru, vylučte následující soubory z antivirová kontrola. <ul><li>CBEngine.exe (namísto dpmra.exe).<li>CSC.exe (související s rozhraní .NET Framework). Existuje CSC.exe pro každou verzi rozhraní .NET, který je nainstalován na serveru. Vylučte soubory CSC.exe, které jsou vázané na všechny verze rozhraní .NET framework na příslušném serveru. <li>Dočasné umístění složky nebo mezipaměť. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Složky bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Chyba** <br /><ol><li>*Agent služby Microsoft Azure Recovery se nepodařilo připojit ke službě Microsoft Azure Backup. (ID: 100050) zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu*<li>*(407) Vyžaduje se ověření proxy serverem* |Blokuje připojení proxy server. |  <ul><li>Spuštění **IE** > **nastavení** > **Možnosti Internetu** > **zabezpečení**  >  **Internet**. Potom vyberte **vlastní úroveň** a posuňte, dokud se nezobrazí stahování části souboru. Vyberte **povolit**.<li>Budete také muset tyto weby přidat do aplikace IE [Důvěryhodné servery](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins).<li>Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti.<li> Pokud váš počítač má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači nebo proxy umožňují tyto [adresy URL](backup-configure-vault.md#verify-internet-access) a [IP adresu](backup-configure-vault.md#verify-internet-access). <li>Pokud máte antivirový software nainstalovaný na serveru, vylučte následující soubory z antivirová kontrola. <ul><li>CBEngine.exe (namísto dpmra.exe).<li>CSC.exe (související s rozhraní .NET Framework). Existuje CSC.exe pro každou verzi rozhraní .NET, který je nainstalován na serveru. Vylučte soubory CSC.exe, které jsou vázané na všechny verze rozhraní .NET framework na příslušném serveru. <li>Dočasné umístění složky nebo mezipaměť. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<li>Složky bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nepovedlo se nastavit šifrovací klíč pro bezpečné zálohy
@@ -68,13 +69,13 @@ Doporučujeme provést ověření, než začnete řešení potíží s agentem M
 
 | Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-|**Chyba** <br /><ol>*Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době operaci opakujte. Pokud se problém nevyřeší, kontaktujte prosím podporu Microsoftu*     | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Pomocnou složku byl přesunut nesprávně do jiného umístění. <li> Chybí soubor OnlineBackup.KEK.         | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volné místo odpovídající 5 až 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|**Chyba** <br />*Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době operaci opakujte. Pokud se problém nevyřeší, kontaktujte prosím podporu Microsoftu*     | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Pomocnou složku byl přesunut nesprávně do jiného umístění. <li> Chybí soubor OnlineBackup.KEK.         | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volné místo odpovídající 5 až 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Šifrovací heslo není správně nakonfigurované
 
 | Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
-|**Chyba** <br /><ol>*Došlo k chybě 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurovaný*.    | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Pomocnou složku byl přesunut nesprávně do jiného umístění. <li> Chybí soubor OnlineBackup.KEK.        | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocnou složku nebo umístění mezipaměti na svazek s volné místo odpovídající 5 – 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+|**Chyba** <br />*Došlo k chybě 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurovaný*.    | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Pomocnou složku byl přesunut nesprávně do jiného umístění. <li> Chybí soubor OnlineBackup.KEK.        | <li>Upgrade na [nejnovější verzi](https://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocnou složku nebo umístění mezipaměti na svazek s volné místo odpovídající 5 – 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Zálohování nelze spustit podle plánu
@@ -119,7 +120,7 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, dokonce i po n�
 
     ![Snímek obrazovky s Azure Backup Správce zařízení, se zvýrazněným řadiče úložiště](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  Přejděte na **Správce úloh** > **služby (místní počítač)** > **služba iniciátoru iSCSI společnosti Microsoft**.
+7.  Přejděte na **Správce úloh** > **služby (místní počítač)**  > **služba iniciátoru iSCSI společnosti Microsoft**.
 
     ![Snímek obrazovky z Azure Backup Správce úloh, se zvýrazněným služby (místní)](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
@@ -129,7 +130,7 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, dokonce i po n�
 
 Pokud obnovení pořád selže, restartujte server nebo klienta. Pokud nechcete, aby k restartování nebo obnovení selže i i po restartování serveru, zkuste obnovení v jiném počítači. Postupujte podle kroků v [v tomto článku](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktovat podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 
 ## <a name="next-steps"></a>Další postup

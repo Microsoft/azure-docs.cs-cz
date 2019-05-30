@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2019
+ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764917"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235395"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům
 
@@ -40,11 +40,11 @@ Přejděme rovnou k vytvoření identity. Pokud narazíte na problém, zkontrolu
 
    ![Výběr registrace aplikací](./media/howto-create-service-principal-portal/select-app-registrations.png)
 
-1. Vyberte **Registrace nové aplikace**.
+1. Vyberte **registrace nové**.
 
    ![Přidat aplikaci](./media/howto-create-service-principal-portal/select-add-app.png)
 
-1. Zadejte název a URL aplikace. V poli **Webová aplikace / webové rozhraní API** vyberte typ vytvářené aplikace. Nelze vytvořit přihlašovací údaje [nativní aplikace](../manage-apps/application-proxy-configure-native-client-application.md). Tento typ nelze použít pro automatické aplikaci. Po nastavení hodnot, vyberte **vytvořit**.
+1. Zadejte název aplikace. Vyberte účet podporovaný typ, který určuje, kdo může používat aplikace. V části **identifikátor URI pro přesměrování**vyberte **webové** pro typ aplikace, kterou chcete vytvořit. Zadejte identifikátor URI, kde bude zaslána přístupový token.  Nelze vytvořit přihlašovací údaje [nativní aplikace](../manage-apps/application-proxy-configure-native-client-application.md). Tento typ nelze použít pro automatické aplikaci. Po nastavení hodnot, vyberte **zaregistrovat**.
 
    ![název aplikace](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -58,7 +58,7 @@ Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
 
 1. Přejděte na úrovni oboru, který chcete přiřadit aplikaci. Například vyberte přiřazení role v oboru předplatného, **všechny služby** a **předplatná**.
 
-   ![Vybrat předplatné](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Výběr předplatného](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Vyberte konkrétní předplatné, které chcete přiřadit aplikaci.
 
@@ -66,7 +66,7 @@ Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
 
    Pokud nevidíte předplatné, které hledáte, vyberte **filtr globálních předplatných**. Ujistěte se, že předplatné, které chcete, aby je vybrán pro portál. 
 
-1. Vyberte **řízení přístupu (IAM)**.
+1. Vyberte **řízení přístupu (IAM)** .
 1. Vyberte **přidat přiřazení role**.
 
    ![Výběr možnosti Přidat přiřazení role](./media/howto-create-service-principal-portal/select-add.png)
@@ -81,31 +81,41 @@ Je nastavený instančního objektu služby. Chcete-li začít, používat ke sp
 
 ## <a name="get-values-for-signing-in"></a>Získání hodnot pro přihlášení
 
-### <a name="get-tenant-id"></a>Získání ID tenanta
-
-Při programově přihlášení, je potřeba předat ID tenanta žádosti o ověření.
+Při programově přihlášení, je potřeba předat ID tenanta žádosti o ověření. Taky potřebujete ID aplikace a ověřovacího klíče. K získání těchto hodnot použijte následující postup:
 
 1. Vyberte **Azure Active Directory**.
-1. Vyberte **vlastnosti**.
-
-   ![Vyberte vlastnosti v Azure AD](./media/howto-create-service-principal-portal/select-ad-properties.png)
-
-1. Kopírovat **ID adresáře** k získání ID tenanta.
-
-   ![ID tenanta](./media/howto-create-service-principal-portal/copy-directory-id.png)
-
-### <a name="get-application-id-and-authentication-key"></a>Získejte ID a ověřovacího klíče aplikace
-
-Taky potřebujete ID aplikace a ověřovacího klíče. K získání těchto hodnot použijte následující postup:
 
 1. Z **registrace aplikací** ve službě Azure AD, vyberte svou aplikaci.
 
    ![Vybrat aplikaci](./media/howto-create-service-principal-portal/select-app.png)
 
+1. Zkopírujte ID adresáře (tenant) a uložte ho v kódu aplikace.
+
+    ![ID tenanta](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+
 1. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace.
 
    ![ID klienta](./media/howto-create-service-principal-portal/copy-app-id.png)
 
+## <a name="certificates-and-secrets"></a>Certifikáty a tajné kódy
+Deamon aplikací můžete používat dvě formy přihlašovacích údajů k ověření ve službě Azure AD: certifikátů a tajných klíčů aplikací.  Doporučujeme používat certifikát, ale můžete také vytvořit nový tajný klíč aplikace.
+
+### <a name="upload-a-certificate"></a>Nahrání certifikátu
+
+Pokud nemáte, můžete použít existující certifikát.  Volitelně můžete vytvořit certifikát podepsaný svým držitelem pro testovací účely. Otevřete PowerShell a spuštěním [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem do úložiště certifikátů uživatele ve vašem počítači: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Export tohoto certifikátu pomocí [spravovat uživatelský certifikát](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) modul snap-in konzoly MMC přístupné z ovládacího panelu Windows.
+
+Nahrání certifikátu:
+1. Vyberte **certifikáty a tajné kódy**.
+
+   ![Vyberte nastavení](./media/howto-create-service-principal-portal/select-certs-secrets.png)
+1. Klikněte na **nahrát certifikát** a vyberte certifikát (existující certifikát nebo certifikát podepsaný svým držitelem certifikáty můžete exportovat).
+    ![Nahrání certifikátu](./media/howto-create-service-principal-portal/upload-cert.png)
+1. Klikněte na tlačítko **Add** (Přidat).
+
+Po registraci certifikátu s vaší aplikací v portálu pro registraci aplikace, je potřeba povolit kódem klientské aplikace pro použití certifikátu.
+
+### <a name="create-a-new-application-secret"></a>Vytvořit nový tajný klíč aplikace
+Pokud se rozhodnete použít certifikát, můžete vytvořit nový tajný klíč aplikace.
 1. Vyberte **certifikáty a tajné kódy**.
 
    ![Vyberte nastavení](./media/howto-create-service-principal-portal/select-certs-secrets.png)

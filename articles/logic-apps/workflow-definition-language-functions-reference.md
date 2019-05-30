@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b42d376be0d26c8ced60344793dbc8f7dd4a3d53
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693251"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303763"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps a Microsoft Flow
 
@@ -139,7 +139,7 @@ K práci s podmínkami, porovnat hodnoty a výsledky výrazu nebo vyhodnotit rů
 
 <a name="conversion-functions"></a>
 
-## <a name="conversion-functions"></a>Převodní funkce
+## <a name="conversion-functions"></a>Funkce pro převod
 
 Chcete-li změnit typ nebo formát hodnoty, můžete tyto funkce pro převod.
 Můžete například změnit hodnotu z typu Boolean na celé číslo.
@@ -242,7 +242,7 @@ Můžete například odkazují na výstupy z jedné akce a použít je v rámci 
 | [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Vrácení akce `body` výstupu za běhu. Viz také [tělo](../logic-apps/workflow-definition-language-functions-reference.md#body). |
 | [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Vrací výstup akce za běhu. Zobrazit [akce](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
 | [Akce](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Vrácení výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON. Viz také [akce](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
-| [Text](#body) | Vrácení akce `body` výstupu za běhu. Viz také [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
+| [body](#body) | Vrácení akce `body` výstupu za běhu. Viz také [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Vytvoří pole s hodnotami, které odpovídají názvu klíče v *data formuláře* nebo *form-encoded.* výstupy akce. |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Vrátí jednu hodnotu, která odpovídá názvu klíče v akce *data formuláře* nebo *form-encoded. výstup*. |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Když v opakující se akci nad polem, vrátí aktuální položku v poli během aktuální iteraci akce. |
@@ -296,7 +296,7 @@ Pro práci s objekty JSON a z uzlů XML, můžete tyto funkce pro zpracování.
 <a name="alphabetical-list"></a>
 <a name="action"></a>
 
-### <a name="action"></a>action
+### <a name="action"></a>Akce
 
 Vrátit *aktuální* výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu.
 Ve výchozím nastavení tato funkce odkazuje na objekt celou akci, ale můžete volitelně zadat vlastnost, jejíž hodnotu chcete.
@@ -434,6 +434,8 @@ A vrátí výsledek:
   }
 }
 ```
+
+## <a name="all-functions---alphabaetical-list"></a>Všechny funkce – alphabaetical seznamu
 
 <a name="actions"></a>
 
@@ -643,7 +645,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*objekt*> | Ano | Object | Objekt JSON, ve které chcete přidat vlastnost |
 | <*property*> | Ano | String | Název vlastnosti, která má přidat |
-| <*Hodnota*> | Ano | Všechny | Hodnota pro vlastnost |
+| <*Hodnota*> | Ano | Jakýkoli | Hodnota pro vlastnost |
 |||||
 
 | Návratová hodnota | Type | Popis |
@@ -958,7 +960,7 @@ A vrátí výsledek:
 
 <a name="body"></a>
 
-### <a name="body"></a>hlavní část
+### <a name="body"></a>Text
 
 Vrácení akce `body` výstupu za běhu.
 Zkrácený tvar vlastností `actions('<actionName>').outputs.body`.
@@ -1015,7 +1017,7 @@ bool(<value>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*Hodnota*> | Ano | Všechny | Hodnota k převedení |
+| <*Hodnota*> | Ano | Jakýkoli | Hodnota k převedení |
 |||||
 
 | Návratová hodnota | Type | Popis |
@@ -1055,7 +1057,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*first-non-null-item*> | Všechny | První položka nebo hodnotu, která není null. Pokud všechny parametry mají hodnotu null, tato funkce vrátí hodnotu null. |
+| <*first-non-null-item*> | Jakýkoli | První položka nebo hodnotu, která není null. Pokud všechny parametry mají hodnotu null, tato funkce vrátí hodnotu null. |
 ||||
 
 *Příklad*
@@ -1091,7 +1093,7 @@ concat('<text1>', '<text2>', ...)
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*text1text2...*> | String | Řetězec vytvořený z kombinované vstupního řetězce |
+| <*text1text2...* > | String | Řetězec vytvořený z kombinované vstupního řetězce |
 ||||
 
 *Příklad*
@@ -1106,7 +1108,7 @@ A vrátí výsledek: `"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>obsahuje
+### <a name="contains"></a>Obsahuje
 
 Zkontrolujte, zda kolekce obsahuje konkrétní položku.
 Vrátí hodnotu PRAVDA, pokud byla položka nalezena, nebo vrátí hodnotu false, když nebyl nalezen.
@@ -1791,7 +1793,7 @@ first([<collection>])
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*první položku kolekce*> | Všechny | První položka v kolekci |
+| <*první položku kolekce*> | Jakýkoli | První položka v kolekci |
 ||||
 
 *Příklad*
@@ -2145,13 +2147,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*Výraz*> | Ano | Boolean | Výraz, který má zkontrolovat |
-| <*valueIfTrue*> | Ano | Všechny | Hodnota, která má vrácené v případě, kdy je výraz pravdivý |
-| <*valueIfFalse*> | Ano | Všechny | Hodnota, která má vrátit, pokud má výraz hodnotu false |
+| <*valueIfTrue*> | Ano | Jakýkoli | Hodnota, která má vrácené v případě, kdy je výraz pravdivý |
+| <*valueIfFalse*> | Ano | Jakýkoli | Hodnota, která má vrátit, pokud má výraz hodnotu false |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*Zadaná – návratové hodnoty*> | Všechny | Zadaná hodnota, která vrací na základě toho, zda výraz hodnotu true nebo false |
+| <*Zadaná – návratové hodnoty*> | Jakýkoli | Zadaná hodnota, která vrací na základě toho, zda výraz hodnotu true nebo false |
 ||||
 
 *Příklad*
@@ -2238,7 +2240,7 @@ item()
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*current-array-item*> | Všechny | Aktuální položku v poli pro aktuální iteraci akce |
+| <*current-array-item*> | Jakýkoli | Aktuální položku v poli pro aktuální iteraci akce |
 ||||
 
 *Příklad*
@@ -2251,7 +2253,7 @@ item().body
 
 <a name="items"></a>
 
-### <a name="items"></a>položek
+### <a name="items"></a>items
 
 Vrátí aktuální položky v každém cyklu v smyčky for-each.
 Pomocí této funkce uvnitř smyčky for-each.
@@ -2267,7 +2269,7 @@ items('<loopName>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*item*> | Všechny | Položku z aktuálního cyklu v zadané smyčky for-each |
+| <*item*> | Jakýkoli | Položku z aktuálního cyklu v zadané smyčky for-each |
 ||||
 
 *Příklad*
@@ -2762,7 +2764,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-### <a name="not"></a>ne
+### <a name="not"></a>Not
 
 Zkontrolujte, zda má výraz hodnotu false.
 Vrátí hodnotu PRAVDA, pokud má výraz hodnotu false nebo vrátí hodnotu false v případě hodnoty true.
@@ -2875,7 +2877,7 @@ parameters('<parameterName>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*Hodnota parametru*> | Všechny | Hodnota zadaná parametru |
+| <*Hodnota parametru*> | Jakýkoli | Hodnota zadaná parametru |
 ||||
 
 *Příklad*
@@ -3034,7 +3036,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*objekt*> | Ano | Object | Objekt JSON, jehož vlastnosti chcete nastavit |
 | <*property*> | Ano | String | Název vlastnosti existujících nebo nových nastavení |
-| <*Hodnota*> | Ano | Všechny | Hodnota k nastavení pro zadanou vlastnost |
+| <*Hodnota*> | Ano | Jakýkoli | Hodnota k nastavení pro zadanou vlastnost |
 |||||
 
 | Návratová hodnota | Type | Popis |
@@ -3053,7 +3055,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="skip"></a>
 
-### <a name="skip"></a>přeskočit
+### <a name="skip"></a>Přeskočit
 
 Odebrat položky z přední části kolekce a vrátí *všechny ostatní* položky.
 
@@ -3261,7 +3263,7 @@ string(<value>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*Hodnota*> | Ano | Všechny | Hodnota k převedení |
+| <*Hodnota*> | Ano | Jakýkoli | Hodnota k převedení |
 |||||
 
 | Návratová hodnota | Type | Popis |
@@ -3435,7 +3437,7 @@ A vracet tyto výsledky:
 
 <a name="ticks"></a>
 
-### <a name="ticks"></a>impulzy
+### <a name="ticks"></a>značky
 
 Vrátit `ticks` hodnota vlastnosti pro zadané časové razítko.
 A *značek* během intervalu 100 nanosekund.
@@ -4052,7 +4054,7 @@ variables('<variableName>')
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
-| <*variable-value*> | Všechny | Hodnotu zadanou proměnnou |
+| <*variable-value*> | Jakýkoli | Hodnotu zadanou proměnnou |
 ||||
 
 *Příklad*
@@ -4159,14 +4161,14 @@ xpath('<xml>', '<xpath>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*xml*> | Ano | Všechny | Řetězec XML k vyhledání uzlů nebo hodnoty, které odpovídají hodnota výrazu XPath |
-| <*xpath*> | Ano | Všechny | Výraz XPath, který je použit k vyhledání odpovídající uzly XML nebo hodnoty |
+| <*xml*> | Ano | Jakýkoli | Řetězec XML k vyhledání uzlů nebo hodnoty, které odpovídají hodnota výrazu XPath |
+| <*xpath*> | Ano | Jakýkoli | Výraz XPath, který je použit k vyhledání odpovídající uzly XML nebo hodnoty |
 |||||
 
 | Návratová hodnota | Type | Popis |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | Pokud pouze jeden uzel odpovídá zadanému výrazu XPath uzel XML |
-| <*Hodnota*> | Všechny | Hodnota z při jenom jedna hodnota odpovídá zadanému výrazu XPath uzel XML |
+| <*Hodnota*> | Jakýkoli | Hodnota z při jenom jedna hodnota odpovídá zadanému výrazu XPath uzel XML |
 | [<*xml node1*>, <*xml node2*>;...] </br>-nebo- </br>[<*hodnota1*>, <*hodnota2*>;...] | Pole | Pole s uzly XML nebo hodnoty, které odpovídají zadanému výrazu XPath |
 ||||
 

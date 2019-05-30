@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 78e3897ec653326bcd88a538a6ea7d33938659b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65761951"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299190"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -31,6 +31,9 @@ Abyste mohli využívat **dynamické balení**, musíte mít **Asset** sadu soub
 Díky tomu pak stačí uložit (a platit) soubory pouze v jednom úložném formátu a služba Media Services bude sestavovat a dodávat vhodný formát streamování v reakci na požadavky klientů. 
 
 Ve službě Media Services se používá dynamické balení, zda jsou streamování živě nebo na vyžádání. 
+
+> [!NOTE]
+> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="common-on-demand-workflow"></a>Běžným pracovním postupem na vyžádání
 
@@ -84,7 +87,7 @@ Následující diagram znázorňuje živé streamování s dynamickým vytváře
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
 |MPEG DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
 |MPEG DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
+|Technologie Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Video kodeků podporuje dynamické balení
 
@@ -92,10 +95,32 @@ Dynamické balení podporuje soubory MP4, které obsahují video zakódovány [H
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Zvukových kodeků podporuje dynamické balení
 
-Dynamické balení podporuje soubory MP4, které obsahují zvuk zakódovány [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, v2 HE-AAC), [Dolby digitální Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(rozšířené AC-3 nebo E AC3), Dolby Atmos nebo [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS Express, DTS LBR, DTS HD, High Density, DTS HD, High Density beze ztrát). Streamování obsahu Dolby Atmos se podporuje u standardy, jako jsou MPEG-DASH protokol Common streamování formátu (CSF) nebo společné média aplikace formátu (CMAF) fragmentovaného MP4 a přes HTTP Live Streaming (HLS) s CMAF.
+### <a name="mp4-files-support"></a>Podpora souborů MP4
 
-> [!NOTE]
-> Dynamické balení nepodporuje soubory, které obsahují [Dolby digitální](https://en.wikipedia.org/wiki/Dolby_Digital) zvuku (AC3) (je starší verze kodek).
+Dynamické balení podporuje soubory MP4, které obsahují zvuk s kódováním 
+
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1, HE-AAC v2)
+* [Dolby digitální Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)(Enhanced AC 3 E AC3)
+* Dolby Atmos
+   
+   Streamování obsahu Dolby Atmos se podporuje u standardy, jako jsou MPEG-DASH protokol Common streamování formátu (CSF) nebo společné média aplikace formátu (CMAF) fragmentovaného MP4 a přes HTTP Live Streaming (HLS) s CMAF.
+
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)
+
+    Kodeky DTS podporovaných formátů DASH-CSF, DASH CMAF, HLS M2TS a HLS CMAF balíčků jsou:  
+
+    * Obklopit digitální služby DTS (dtsc)
+    * HD typy nasazení s vysokým rozlišením a hlavní služby DTS HD zvuku (dtsh)
+    * Typy nasazení Express (dtse)
+    * DTS HD beze ztrát (žádné jader) (dtsl)
+
+### <a name="hls-support"></a>Podpora HLS
+
+Dynamické balení podporuje HLS (verze 4 nebo vyšší) pro prostředky, které mají více zvukové stopy s více kodeky a jazyky.
+
+### <a name="not-supported"></a>Nepodporuje se
+
+Dynamické balení nepodporuje soubory, které obsahují [Dolby digitální](https://en.wikipedia.org/wiki/Dolby_Digital) zvuku (AC3) (je starší verze kodek).
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
 
@@ -167,7 +192,7 @@ Tady je příklad DASH manifestu:
    </Period>
 </MPD>
 ```
-### <a name="smooth-streaming"></a>Smooth Streaming
+### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
 Tady je příklad manifestu technologie Smooth Streaming:
 
@@ -193,10 +218,7 @@ Tady je příklad manifestu technologie Smooth Streaming:
 
 ## <a name="dynamic-manifest"></a>Dynamic Manifest
 
-Dynamické filtrování se používá k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. Další informace najdete v tématu [filtrů a dynamických manifestů](filters-dynamic-manifest-overview.md).
-
-> [!NOTE]
-> Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
+Dynamické filtrování se používá k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. Další informace najdete v tématu [předem filtrování manifesty s dynamické Packager](filters-dynamic-manifest-overview.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Klást otázky, váš názor, získávat aktualizace
 

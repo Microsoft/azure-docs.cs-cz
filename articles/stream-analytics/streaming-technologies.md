@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7ef8715f23d21a23dc3f37b192314b922847d3e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805903"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242693"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Zvolte analýzy v reálném čase a streamování zpracování technologie v Azure
 
@@ -25,7 +25,7 @@ Azure Stream Analytics je doporučenou službu pro stream analytics v Azure. Je 
 * Řídicí panely pro vizualizaci dat
 * V reálném čase [výstrahy](stream-analytics-set-up-alerts.md) z dočasné a prostorových vzorů nebo anomálií
 * Extrakce, transformace, načítání (ETL)
-* [Model Event Sourcing](/azure/architecture/patterns/event-sourcing.md)
+* [Model Event Sourcing](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
 Přidání Azure Stream Analytics úlohy do vaší aplikace je nejrychlejší způsob, jak získat streaming analytics nahoru a běží v Azure pomocí jazyka SQL už znáte. Azure Stream Analytics je služba úlohy, není potřeba trávit čas správu clusterů, takže není nutné se starat o výpadků díky 99,9 % podle smlouvy SLA na úrovni projektu. Fakturace se provádí taky na úrovni úlohy vytváření nízké náklady na spuštění (jednu jednotku streamování), ale škálovatelné (až 192 jednotek streamování). Je mnohem méně nákladné spustit několik úloh Stream Analytics, než je spustit a spravovat cluster.

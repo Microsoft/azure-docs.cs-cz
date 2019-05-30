@@ -10,16 +10,16 @@ ms.subservice: load data
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6bc1431ace55538c489d73e0a62d18f274c06d57
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a8bca6c1e56595e4a7d64f9f388c9daca0b166ac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873762"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242911"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
 
-Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldImportersDW z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k: 
+Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldImportersDW z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k:
 
 > [!div class="checklist"]
 > * Vytvoření datového skladu na webu Azure Portal
@@ -37,7 +37,6 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 ## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
-
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -1121,7 +1120,7 @@ Provedli jste tyto akce:
 > * Zobrazení průběhu nahrávání dat
 > * Vytvoření statistik pro nově načtená data
 
-Pokračujte k přehledu migrace a zjistěte, jak do služby SQL Data Warehouse migrovat existující databázi.
+Přejděte k přehled vývoje se naučíte migrovat existující databázi do SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Zjistěte, jak do služby SQL Data Warehouse migrovat existující databázi](sql-data-warehouse-overview-migrate.md).
+>[Rozhodnutí o návrhu migrovat existující databázi do SQL Data Warehouse](sql-data-warehouse-overview-develop.md)

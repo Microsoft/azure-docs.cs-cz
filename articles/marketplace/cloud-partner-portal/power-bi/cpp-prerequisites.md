@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: c6b9f54d073b671b55f259bfbb2aa70d9eacfdc4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c436522bd5f1a9d52b71d85b7b47ac9a089c0b25
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943312"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258172"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Aplikace Power BI nabízejí požadavky
 
@@ -29,7 +29,7 @@ Po aplikaci služby je vytvořený a otestovaný v Power BI, měli byste uložit
 
 Obchodní požadavky zahrnují procesní, smluvní a právní závazky.  Musíte mít:
 
-- Být vydavatele na webu marketplace zaregistrovaný cloud. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](../../become-publisher.md).
+- Být vydavatele na webu marketplace zaregistrovaný cloud. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
     > [!NOTE] 
     > Použijte stejný účet Microsoft Developer Center registrace k přihlášení [portál partnerů cloudu](https://cloudpartner.azure.com). By měl mít pouze jeden účet Microsoft pro svoje nabídky na AppSource. Účty by neměly být specifické pro jednotlivé služby nebo nabídky.

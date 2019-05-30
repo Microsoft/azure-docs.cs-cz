@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03f7f050e158ba30d2f89e79ffcc9e8723eb5268
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626770"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298693"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -198,7 +198,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * Podporuje geoprostorové indexu
-* Ověří vlastnost id pro všechny prostředky. ID prostředků nemůže obsahovat?, /, #, \, znaky ani končit mezerou.
+* Ověří vlastnost ID pro všechny prostředky. ID prostředků nemůže obsahovat?, /, #, \, znaky ani končit mezerou.
 * Přidá nové záhlaví "index transformace průběh" ResourceResponse.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
@@ -215,6 +215,11 @@ Nové funkce a funkce a optimalizace jsou přidány pouze aktuální sadu SDK, p
 Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítnuty službou.
 
 > [!WARNING]
+> Všechny verze **1.x** sady SQL SDK pro Javu vyřadí **30. května 2020**.
+> 
+>
+
+> [!WARNING]
 > Všechny verze SQL SDK pro Javu starší než verze **1.0.0** byly dostupné jenom do **29. února 2016**.
 > 
 > 
@@ -228,37 +233,37 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 | [2.1.1](#2.1.1) |13. prosince 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |21. září 2018 |--- |
-| [1.16.4](#1.16.4) |10. září 2018 |--- |
-| [1.16.3](#1.16.3) |09. září 2018 |--- |
-| [1.16.2](#1.16.2) |29. června 2018 |--- |
-| [1.16.1](#1.16.1) |16. května 2018 |--- |
-| [1.16.0](#1.16.0) |15. března 2018 |--- |
-| [1.15.0](#1.15.0) |14. listopadu 2017 |--- |
-| [1.14.0](#1.14.0) |28. října 2017 |--- |
-| [1.13.0](#1.13.0) |25. srpna 2017 |--- |
-| [1.12.0](#1.12.0) |11. července 2017 |--- |
-| [1.11.0](#1.11.0) |10. května 2017 |--- |
-| [1.10.0](#1.10.0) |11. března 2017 |--- |
-| [1.9.6](#1.9.6) |21. února 2017 |--- |
-| [1.9.5](#1.9.5) |Do 31. ledna 2017 |--- |
-| [1.9.4](#1.9.4) |24. listopadu 2016 |--- |
-| [1.9.3](#1.9.3) |30. října 2016 |--- |
-| [1.9.2](#1.9.2) |28. října 2016 |--- |
-| [1.9.1](#1.9.1) |26. říjnu 2016 |--- |
-| [1.9.0](#1.9.0) |03. října 2016 |--- |
-| [1.8.1](#1.8.1) |30. června 2016 |--- |
-| [1.8.0](#1.8.0) |14. června 2016 |--- |
-| [1.7.1](#1.7.1) |30. dubna 2016 |--- |
-| [1.7.0](#1.7.0) |27. dubna 2016 |--- |
-| [1.6.0](#1.6.0) |29. března 2016 |--- |
-| [1.5.1](#1.5.1) |31. prosince 2015 |--- |
-| [1.5.0](#1.5.0) |04. prosince 2015 |--- |
-| [1.4.0](#1.4.0) |05. října 2015 |--- |
-| [1.3.0](#1.3.0) |05. října 2015 |--- |
-| [1.2.0](#1.2.0) |05. srpna 2015 |--- |
-| [1.1.0](#1.1.0) |09. července 2015 |--- |
-| 1.0.1 |12. května 2015 |--- |
-| [1.0.0](#1.0.0) |07. dubna 2015 |--- |
+| [1.16.4](#1.16.4) |10. září 2018 |30. května 2020 |
+| [1.16.3](#1.16.3) |09. září 2018 |30. května 2020 |
+| [1.16.2](#1.16.2) |29. června 2018 |30. května 2020 |
+| [1.16.1](#1.16.1) |16. května 2018 |30. května 2020 |
+| [1.16.0](#1.16.0) |15. března 2018 |30. května 2020 |
+| [1.15.0](#1.15.0) |14. listopadu 2017 |30. května 2020 |
+| [1.14.0](#1.14.0) |28. října 2017 |30. května 2020 |
+| [1.13.0](#1.13.0) |25. srpna 2017 |30. května 2020 |
+| [1.12.0](#1.12.0) |11. července 2017 |30. května 2020 |
+| [1.11.0](#1.11.0) |10. května 2017 |30. května 2020 |
+| [1.10.0](#1.10.0) |11. března 2017 |30. května 2020 |
+| [1.9.6](#1.9.6) |21. února 2017 |30. května 2020 |
+| [1.9.5](#1.9.5) |Do 31. ledna 2017 |30. května 2020 |
+| [1.9.4](#1.9.4) |24. listopadu 2016 |30. května 2020 |
+| [1.9.3](#1.9.3) |30. října 2016 |30. května 2020 |
+| [1.9.2](#1.9.2) |28. října 2016 |30. května 2020 |
+| [1.9.1](#1.9.1) |26. říjnu 2016 |30. května 2020 |
+| [1.9.0](#1.9.0) |03. října 2016 |30. května 2020 |
+| [1.8.1](#1.8.1) |30. června 2016 |30. května 2020 |
+| [1.8.0](#1.8.0) |14. června 2016 |30. května 2020 |
+| [1.7.1](#1.7.1) |30. dubna 2016 |30. května 2020 |
+| [1.7.0](#1.7.0) |27. dubna 2016 |30. května 2020 |
+| [1.6.0](#1.6.0) |29. března 2016 |30. května 2020 |
+| [1.5.1](#1.5.1) |31. prosince 2015 |30. května 2020 |
+| [1.5.0](#1.5.0) |04. prosince 2015 |30. května 2020 |
+| [1.4.0](#1.4.0) |05. října 2015 |30. května 2020 |
+| [1.3.0](#1.3.0) |05. října 2015 |30. května 2020 |
+| [1.2.0](#1.2.0) |05. srpna 2015 |30. května 2020 |
+| [1.1.0](#1.1.0) |09. července 2015 |30. května 2020 |
+| 1.0.1 |12. května 2015 |30. května 2020 |
+| [1.0.0](#1.0.0) |07. dubna 2015 |30. května 2020 |
 | 0.9.5-prelease |09 března 2015 |29. února 2016 |
 | 0.9.4-prelease |17. února 2015 |29. února 2016 |
 | 0.9.3-prelease |13. ledna 2015 |29. února 2016 |

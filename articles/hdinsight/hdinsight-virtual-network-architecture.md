@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41420497bffd0abdc598e4c86b2dbda1466b2ce1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484870"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252854"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
 
@@ -25,7 +25,7 @@ Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzly
 | Type | Popis |
 | --- | --- |
 | Hlavní uzel |  Pro všechny typy clusteru, s výjimkou Apache Storm hlavní uzly hostují procesy, které spravují provádění distribuované aplikace. K hlavnímu uzlu je také uzel, který je možné, připojte se přes SSH a spouštět aplikace, které jsou pak koordinovaný ke spuštění napříč prostředky clusteru. Počet hlavních uzlů je pevně nastavena na dvě pro všechny typy clusteru. |
-| Uzel zooKeeper | Zookeeper koordinuje úkoly mezi uzly, které provádějí zpracování dat. Také nemá volba lídra nebo hlavního uzlu a uchovává informace o které hlavního uzlu běží konkrétní hlavní služby. Počet uzly ZooKeeper je pevně nastavena na dva. |
+| Uzel zooKeeper | Zookeeper koordinuje úkoly mezi uzly, které provádějí zpracování dat. Také nemá volba lídra nebo hlavního uzlu a uchovává informace o které hlavního uzlu běží konkrétní hlavní služby. Počet uzly ZooKeeper je pevně nastavena na tři. |
 | Pracovní uzel | Představuje uzly, které podporují funkce pro zpracování dat. Pracovní uzly lze přidat nebo odebrat z clusteru škálovat výpočetní funkce a spravujte náklady. |
 | Hraničnímu uzlu R serveru | Hraničnímu uzlu R serveru představuje uzel, který je možné, připojte se přes SSH a spouštět aplikace, které jsou pak koordinovaný ke spuštění napříč prostředky clusteru. Hraniční uzel není součástí analýzy dat v rámci clusteru. Tento uzel je hostitelem také R Studio Server umožňuje spustit R aplikaci pomocí prohlížeče. |
 | Oblast uzlu | Pro typ clusteru HBase uzlu oblasti (také označované jako datový uzel) běží oblastním serveru. Oblastní servery poskytovat a spravovat část data spravovaná přes HBase. Uzly oblasti lze přidat nebo odebrat z clusteru škálovat výpočetní funkce a spravujte náklady.|

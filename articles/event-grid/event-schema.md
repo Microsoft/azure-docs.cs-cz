@@ -8,18 +8,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561558"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304249"
 ---
 # <a name="azure-event-grid-event-schema"></a>Schéma událostí služby Azure Event Grid
 
 Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události obsahují sadu pěti řetězec požadované vlastnosti a objekt požadovaná data. Vlastnosti jsou společné pro všechny události z libovolného vydavatele. Datový objekt obsahuje vlastnosti, které jsou specifické pro každý vydavatele. Témata systému tyto vlastnosti jsou specifické pro poskytovatele prostředků, jako je například Azure Storage nebo Azure Event Hubs.
 
-Zdroje událostí v poli, který může mít několik objektů událostí odesílání událostí do služby Azure Event Grid. Při odesílání událostí do téma event gridu, může pole mít celková velikost až 1 MB. Každá událost v poli je omezena na 64 KB. Pokud událost nebo pole je větší než omezení velikosti, obdržíte odpověď **413 datové části příliš velké**.
+Zdroje událostí v poli, který může mít několik objektů událostí odesílání událostí do služby Azure Event Grid. Při odesílání událostí do téma event gridu, může pole mít celková velikost až 1 MB. Každá událost v poli je omezena na 64 KB (obecná dostupnost) nebo 1 MB (preview). Pokud událost nebo pole je větší než omezení velikosti, obdržíte odpověď **413 datové části příliš velké**.
+
+> [!NOTE]
+> Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
 
 Event Grid odesílá události odběratelům pole, které má jednu událost. Toto chování se může v budoucnu změnit.
 
@@ -83,13 +86,13 @@ Všechny události mají stejné nejvyšší úrovně následující data:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | string | Vydavatel definované cesta předmět události. |
+| Předmět | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
 | čas události | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Další informace o vlastnosti datového objektu, naleznete v tématu zdroje událostí:
 

@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6fc2af0cbe770ee787da757966bbc1647717e5a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61247540"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302686"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Připravte vývojové a testovací prostředí pro IoT Edge
 
@@ -62,11 +62,11 @@ Modul šablon pro některé jazyky a služby mají požadavky, které jsou potř
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Generátor modulu Azure IoT Edge Node.js](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [PIP](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-2017-extension"></a>Rozšíření sady Visual Studio 2017
+### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 extension
 
-Nástroje Azure IoT Edge pro Visual Studio poskytují IoT Edge šablona modulu založená na C#. 
+Nástroje Azure IoT Edge pro Visual Studio poskytují IoT Edge šablona modulu založená na C# a C. 
 
-Další informace a ke stažení najdete na stránce [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools).
+Další informace a ke stažení najdete na stránce [Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) nebo [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools).
 
 ### <a name="iot-edge-dev-tool"></a>Nástroj pro vývojáře IoT Edge
 
@@ -80,7 +80,7 @@ Několik testovacích nástrojů existovat pro simulaci zařízení IoT Edge neb
 
 Pro nasazení v produkčním prostředí je podporován pouze modul runtime IoT Edge, ale tyto nástroje umožňují simulaci nebo snadno vytvořit IoT Edge zařízení pro účely vývoje a testování. Tyto nástroje se vzájemně nevylučují, ale můžou spolupracovat kompletní vývojové prostředí. 
 
-| Tool | Označuje se taky jako | Podporované platformy | Nejvhodnější pro |
+| Nástroj | Označuje se taky jako | Podporované platformy | Nejvhodnější pro |
 | ---- | ------------- | ------------------- | --------- |
 | Nástroj pro vývojáře IoT EdgeHub  | iotedgehubdev | Windows, Linux, MacOS | Simulace zařízení za účelem ladění modulů. |
 | Kontejner vývoj IoT Edge | microsoft/iotedgedev | Windows, Linux, MacOS | Vývoj bez instalování závislostí. |
@@ -109,7 +109,7 @@ Další informace najdete v tématu [systémem Azure IoT Edge v kontejneru](http
 
 ### <a name="iot-edge-device-container"></a>Kontejner zařízení IoT Edge
 
-Kontejner zařízení IoT Edge je kompletní zařízení IoT Edge, jste připravení spustit na jakýkoli počítač s modulem kontejneru. Kontejner zařízení zahrnuje modul runtime IoT Edge a samotný modul kontejneru. Každá instance kontejneru je plně funkční samoobslužné zřizování zařízení IoT Edge. Kontejner zařízení podporuje vzdálené ladění modulů, jako je síťová trasa do modulu. Kontejner zařízení je dobrá pro rychlé vytváření velký počet zařízení IoT Edge k otestování scénářů ve velkém měřítku nebo kanály DevOps. Také podporuje nasazování do kubernetes pomocí helm. 
+Kontejner zařízení IoT Edge je kompletní zařízení IoT Edge, jste připravení spustit na jakýkoli počítač s modulem kontejneru. Kontejner zařízení zahrnuje modul runtime IoT Edge a samotný modul kontejneru. Každá instance kontejneru je plně funkční samoobslužné zřizování zařízení IoT Edge. Kontejner zařízení podporuje vzdálené ladění modulů, jako je síťová trasa do modulu. Kontejner zařízení je dobrá pro rychlé vytváření velkého počtu IoT Edge zařízení k otestování scénářů ve velkém měřítku nebo kanály Azure. Také podporuje nasazování do kubernetes pomocí helm. 
 
 Další informace najdete v tématu [kontejneru zařízení Azure IoT Edge](https://github.com/toolboc/azure-iot-edge-device-container).
 

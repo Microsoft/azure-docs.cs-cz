@@ -2,16 +2,16 @@
 title: Jak změnit, odstranit nebo Správa skupin pro správu – zásady správného řízení Azure
 description: Zjistěte, jak zobrazit, udržovat, aktualizovat a odstraňovat vaše hierarchie skupin správy.
 author: rthorn17
-ms.service: azure-resource-manager
-ms.date: 04/04/2019
+ms.service: governance
+ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950265"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242951"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -206,10 +206,12 @@ Jedním z důvodů, chcete-li vytvořit skupinu pro správu je pohromadě předp
 Pokud chcete přesunout předplatné, všech následujících oprávnění RBAC musí být splněny:
 
 - "Vlastník" role v podřízených předplatného.
-- "Vlastník", "Přispěvatel" nebo "Správa skupiny přispěvatelů" role na group.* cílového nadřazeného správy
-- "Vlastník", "Přispěvatel" nebo "Správa skupiny přispěvatelů" role na existující group.* nadřazené správy
+- "Vlastník", "Přispěvatel" nebo "Správa skupiny přispěvatelů" role cílový nadřazené skupiny pro správu.
+- "Vlastník", "Přispěvatel" nebo "Správa skupiny přispěvatelů" role existující nadřazené skupiny pro správu.
 
-*: Pokud cíl nebo existující skupiny pro správu nadřazené není kořenovou skupinu správy. Protože kořenové skupině pro správu je výchozí úvodní přímé pro všechny nové skupiny pro správu a předplatných, uživatelé oprávnění na něm přesunout položku nepotřebují.
+Pokud je cíl nebo skupině pro správu nadřazenou skupinu Root management, požadavky na oprávnění se nevztahují. Protože kořenové skupině pro správu je výchozí úvodní přímé pro všechny nové skupiny pro správu a předplatných, není nutné oprávnění přesunout položku.
+
+Pokud roli vlastníka předplatného je zděděno z aktuální skupiny pro správu, vaše cíle přesunout jsou omezené. Předplatné lze pouze přesunout do jiné skupiny pro správu kde máte roli vlastníka. Nemůžete ho přesunout do skupiny pro správu kterých jste přispěvatelem vzhledem k tomu, že by dojít ke ztrátě vlastnictví předplatného. Pokud přímo je vám přiřazena role vlastníka předplatného (není zděděno ze skupiny pro správu), můžete přesunout ho k žádné skupině pro správu kterých jste přispěvatelem.
 
 Chcete-li zjistit, jaká oprávnění máte na webu Azure Portal, vyberte správu skupin a potom vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat přístup a oprávnění pomocí RBAC](../../role-based-access-control/overview.md).
 
@@ -325,7 +327,7 @@ Skupiny pro správu se podporují v rámci [protokolu aktivit Azure](../../azure
 
 ![Protokoly aktivit se skupiny pro správu](media/al-mg.png)
 
-Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+Pokud se chcete na skupiny pro správu dotazovat mimo Azure Portal, cílový obor pro skupiny pro správu vypadá takto: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Odkazování na skupiny pro správu od jiných poskytovatelů prostředků
 

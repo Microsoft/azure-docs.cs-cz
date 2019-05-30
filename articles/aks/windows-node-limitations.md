@@ -2,17 +2,17 @@
 title: Omezení pro fondy uzlů Windows Server ve službě Azure Kubernetes Service (AKS)
 description: Další informace o známých omezeních při spuštění fondy uzlů Windows Server a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 3d249271995d96307722dadf6b3e012e63565e6a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.author: twhitney
+ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956278"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304394"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows Server a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Ve službě Azure Kubernetes Service (AKS), můžete vytvořit fond uzlů, na kt
 Tento článek popisuje některé z omezení a koncepty operačního systému pro uzly Windows serveru ve službě AKS. Fondy uzlů pro systém Windows Server jsou aktuálně ve verzi preview.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
+> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
 >
-> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
+> * [Zásady podpory AKS][aks-support-policies]
+> * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Omezení pro systém Windows Server v Kubernetes
 
@@ -57,6 +58,8 @@ Následující další omezení platí pro podporu fondu uzel Windows Server ve 
 - Ve verzi Preview funkce ve službě AKS jako síťové zásady a automatického škálování clusteru, se schválenou sadou pro uzly Windows serveru.
 - Řadiče příchozího přenosu dat by měl být naplánováno, pouze na Linuxových uzlů pomocí NodeSelector.
 - Azure Dev prostory je momentálně dostupný jenom pro fondy uzlů založených na Linuxu.
+- Skupina účty spravované služby (gMSA) podpora v případě, že na uzlech Windows serveru nejsou připojené k doméně služby Active Directory není aktuálně k dispozici ve službě AKS.
+    - Open source, upstream [aks-engine] [ aks-engine] projekt aktuálně poskytuje podporu gMSA Pokud chcete tuto funkci používat.
 
 ## <a name="os-concepts-that-are-different"></a>Koncepty operačního systému, které se liší
 
@@ -74,11 +77,13 @@ Začínáme s kontejnery Windows serveru ve službě AKS, [vytvořit fond uzlů,
 
 <!-- LINKS - external -->
 [upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
-[aks-github]: https://github.com/azure/aks/issues]
 [kubernetes]: https://kubernetes.io
+[aks-engine]: https://github.com/azure/aks-engine
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
 [configure-azure-cni]: configure-azure-cni.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [windows-node-cli]: windows-container-cli.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

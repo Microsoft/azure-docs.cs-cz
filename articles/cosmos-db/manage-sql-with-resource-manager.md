@@ -4,20 +4,23 @@ description: Použití šablon Azure Resource Manageru k vytvoření a konfigura
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/24/2019
 ms.author: mjbrown
-ms.openlocfilehash: a3798ac0c73c7bc6c4012dbb089275254f4c3504
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5683fd072961c7793d8f4bbeb9ecc16a93dd7373
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968833"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242596"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB SQL (Core) rozhraní API pomocí šablon Azure Resource Manageru
 
 ## Vytvořit účet Azure Cosmos, databáze a kontejner. <a id="create-resource"></a>
 
 Vytvořte prostředky služby Azure Cosmos DB pomocí šablony Azure Resource Manageru. Tato šablona vytvoří účet Azure Cosmos se dvěma kontejnery, které sdílejí propustnost 400 RU/s na úrovni databáze. Zkopírujte šablonu a nasadili, jak je znázorněno níže nebo navštivte [galerii pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) a nasadit z webu Azure portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadejte do místní cesty `--template-file` parametru.
+
+> [!NOTE]
+> Momentálně nelze nasadit Functions(UDFs) definované uživatele, uložených procedur a aktivačních událostí pomocí šablony Resource Manageru. 
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

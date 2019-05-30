@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: article
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 02/06/2019
-ms.openlocfilehash: f6d778ddbce16c223945d4683bd7a950bd2a0cb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d0d40ca0ae6ccd4f709d7d94d52764d4affcc215
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61467839"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244704"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformace XML pomocí map ve službě Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -28,11 +28,11 @@ Omezení související s účty pro integraci a součásti, jako jsou mapování
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud předplatné nemáte, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+* Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kam ukládat vaše mapy a další artefakty pro podnikovou integraci a řešení business-to-business (B2B).
 
-* Pokud vaše mapa odkazuje na externí sestavení, budete muset nahrát *sestavení a mapy* ke svému účtu integrace. Ujistěte se, že jste *nejprve nahrát sestavení*a potom ho nahrajete mapa, který odkazuje na sestavení.
+* Pokud vaše mapa odkazuje na externí sestavení, budete muset nahrát *sestavení a mapy* ke svému účtu integrace. Ujistěte se, že jste [ *nejprve nahrát sestavení*](#add-assembly)a potom ho nahrajete mapa, který odkazuje na sestavení.
 
   Pokud vaše sestavení je 2 MB nebo menší, můžete přidat sestavení do účtu pro integraci *přímo* z portálu Azure portal. Nicméně pokud vaše sestavení nebo mapy je větší než 2 MB, ale ne větší než [omezení velikosti pro sestavení nebo aplikace mapy](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), máte tyto možnosti:
 
@@ -50,9 +50,11 @@ Omezení související s účty pro integraci a součásti, jako jsou mapování
 
 Není nutné aplikaci logiky po vytvoření a přidání mapy. Však použít mapu, aplikace logiky potřebuje připojení k účtu pro integraci kam se ukládají, která je namapována. Přečtěte si [postup propojení aplikace logiky s účty pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Pokud ještě nemáte aplikace logiky, přečtěte si [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
+<a name="add-assembly"></a>
+
 ## <a name="add-referenced-assemblies"></a>Přidat odkazovaná sestavení
 
-1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a> pomocí přihlašovacích údajů svého účtu Azure.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
 1. K vyhledání a otevření účtu pro integraci, v hlavní nabídce Azure zvolte **všechny služby**. 
    Do vyhledávacího pole zadejte "účet integrace". 
@@ -74,6 +76,9 @@ Není nutné aplikaci logiky po vytvoření a přidání mapy. Však použít ma
 
 Podle velikosti souboru sestavení, postupujte podle kroků pro nahrávání sestavení, které je buď [až 2 MB](#smaller-assembly) nebo [více než 2 MB, ale pouze až 8 MB](#larger-assembly).
 Omezení množství sestavení v integračních účtů najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits).
+
+> [!NOTE]
+> Pokud změníte vaše sestavení, je nutné také aktualizovat mapu, zda na mapě obsahuje změny.
 
 <a name="smaller-assembly"></a>
 
@@ -99,7 +104,7 @@ Omezení množství sestavení v integračních účtů najdete v tématu [omeze
 
 ### <a name="add-assemblies-more-than-2-mb"></a>Přidat sestavení více než 2 MB
 
-K přidání větší sestavení, můžete nahrát sestavení do kontejneru objektů blob v Azure ve vašem účtu úložiště Azure. Vaše kroky pro přidání sestavení se liší na základě, zda má veřejné oprávnění ke čtení kontejneru objektů blob. Proto nejprve zkontrolujte, jestli má váš kontejner objektů blob veřejné oprávnění ke čtení pomocí následujících kroků: [Nastavte úroveň veřejného přístupu pro kontejner objektů blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+K přidání větší sestavení, můžete nahrát sestavení do kontejneru objektů blob v Azure ve vašem účtu úložiště Azure. Vaše kroky pro přidání sestavení se liší v závislosti, zda má veřejné oprávnění ke čtení kontejneru objektů blob. Proto nejprve zkontrolujte, jestli má váš kontejner objektů blob veřejné oprávnění ke čtení pomocí následujících kroků: [Nastavte úroveň veřejného přístupu pro kontejner objektů blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>Zkontrolujte úroveň přístupu kontejneru
 
@@ -128,7 +133,7 @@ K přidání větší sestavení, můžete nahrát sestavení do kontejneru obje
 
 1. Vraťte se do portálu Azure portal kde **přidat sestavení** je otevřeno podokno. 
    Zadejte název vašeho sestavení. 
-   Zvolte **velký soubor (větší než 2 MB)**.
+   Zvolte **velký soubor (větší než 2 MB)** .
 
    **Identifikátor URI obsahu** pole se teď zobrazí, spíše než **sestavení** pole.
 
@@ -153,7 +158,7 @@ V účtu integrace **přehled** stránce v části **součásti**, **sestavení*
 
 1. Vraťte se do portálu Azure portal kde **přidat sestavení** je otevřeno podokno. 
    Zadejte název vašeho sestavení. 
-   Zvolte **velký soubor (větší než 2 MB)**.
+   Zvolte **velký soubor (větší než 2 MB)** .
 
    **Identifikátor URI obsahu** pole se teď zobrazí, spíše než **sestavení** pole.
 
@@ -170,7 +175,7 @@ Omezení množství mapy v integračních účtů najdete v tématu [omezení a 
 
 Po odeslání všech sestavení, na které odkazuje vaše mapa teď můžete nahrát mapy.
 
-1. Pokud už se nejste přihlášení, přihlaste se k <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> pomocí svých přihlašovacích údajů účtu Azure. 
+1. Pokud už se nejste přihlášení, přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí svých přihlašovacích údajů účtu Azure. 
 
 1. Pokud ještě není otevřeno v hlavní nabídce Azure účtu pro integraci, vyberte **všechny služby**. 
    Do vyhledávacího pole zadejte "účet integrace". 
@@ -310,7 +315,7 @@ the map appears in the **Maps** list.
 
 Pokud chcete aktualizovat existující mapování, budete muset nahrát nový soubor mapování, která obsahuje změny, které chcete. Je však nejprve stáhnout existující mapování pro úpravy.
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, najít a otevřete svůj účet integrace, pokud není otevřen.
+1. V [webu Azure portal](https://portal.azure.com), najít a otevřete svůj účet integrace, pokud není otevřen.
 
 1. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "účet integrace". Vyberte **účty pro integraci**.
 
@@ -328,7 +333,7 @@ Pokud chcete aktualizovat existující mapování, budete muset nahrát nový so
 
 ## <a name="delete-maps"></a>Odstranění mapování
 
-1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, najít a otevřete svůj účet integrace, pokud není otevřen.
+1. V [webu Azure portal](https://portal.azure.com), najít a otevřete svůj účet integrace, pokud není otevřen.
 
 1. V hlavní nabídce Azure zvolte **všechny služby**. 
    Do vyhledávacího pole zadejte "účet integrace". 

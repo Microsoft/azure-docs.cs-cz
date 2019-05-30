@@ -4,14 +4,14 @@ description: Další informace o SQL poddotazy a jejich běžné případy použ
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 05/23/2019
 ms.author: tisande
-ms.openlocfilehash: 48d0c7a022ff568582637aac36a377ca022a413c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
-ms.translationtype: HT
+ms.openlocfilehash: 68465f4ca195930ce08bb579e68d0227e9c18dd6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977360"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242846"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Příklady poddotaz SQL pro službu Azure Cosmos DB
 
@@ -130,7 +130,7 @@ Zvažte například tuto sadu referenční data:
 | NG       | Nanogram            | 1.00E-09       | Gramatika          |
 | µg       | Microgram           | 1.00E-06       | Gramatika          |
 | mg       | Milligram           | 1.00E-03       | Gramatika          |
-| b        | Gramatika                | 1.00E + 00       | Gramatika          |
+| G        | Gramatika                | 1.00E + 00       | Gramatika          |
 | kg       | Kilogram            | 1.00E + 03       | Gramatika          |
 | mg       | Megagram            | 1.00E + 06       | Gramatika          |
 | Gg       | Gigagram            | 1.00E + 09       | Gramatika          |

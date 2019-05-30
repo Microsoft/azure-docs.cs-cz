@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 05/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0061fb7946e4c35f855d1a409cb9bc210c73641a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 891f9fbd26b53b392ac84ed9d420b58558cd20c2
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228314"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258423"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Ve verzi Preview připojit Azure Sentinel
 
@@ -41,7 +41,7 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 - Pracovní prostor log Analytics. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
 
 -  Povolit Sentinelu Azure, potřebujete oprávnění přispěvatele pro předplatné, ve kterém se nachází pracovní prostor Sentinelu Azure. 
-- Použití ověřovacích Azure, potřebujete oprávnění přispěvatele nebo prohlížeče, který pracovní prostor patří do skupiny prostředků
+- Použití ověřovacích Azure, potřebujete oprávnění Přispěvatel nebo Čtenář, který pracovní prostor patří do skupiny prostředků
 - Může být potřeba další oprávnění pro připojení konkrétní zdroje dat
  
 ## Povolit Azure Sentinel <a name="enable"></a>
@@ -54,7 +54,7 @@ Po připojení zdroje dat, vyberte si z Galerie odborně řídicí panely, kter�
 1. Klikněte na tlačítko **+ přidat**.
 1. Vyberte pracovní prostor, který chcete použít nebo vytvořit nový. Můžete spustit ověřovací Azure na více než jednomu pracovnímu prostoru, ale data budou izolovaná do jednoho pracovního prostoru.
 
-   ![hledat](./media/quickstart-onboard/choose-workspace.png)
+   ![search](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - **Umístění pracovního prostoru** je důležité pochopit, že všechna data můžete Streamovat do ověřovacích Azure je uložen v zeměpisné oblasti pracovního prostoru, který jste vybrali.  

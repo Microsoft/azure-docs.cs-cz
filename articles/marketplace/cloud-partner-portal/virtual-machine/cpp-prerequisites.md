@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 65ff96ba3aea889ff5b2e2431578f9344f6d840b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 258d21eae5af50b5dc0bed6887618e2999cae45a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938064"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257381"
 ---
 # <a name="virtual-machine-prerequisites"></a>Požadavky virtuálního počítače
 
@@ -36,7 +36,7 @@ Obchodní požadavky patří procesní, smluvní a právní závazky:
 <!-- TD: Aren't most of these business requirements common to all AMP offerings?  If yes, then move to higher level, perhaps to the AMP section "Become a Cloud Marketplace Publisher" -->
 <!-- TD: Need references for remaining docs/business reqs!-->
 
-- Musí být registrovaný vydavatele na webu Marketplace cloudu.  Pokud jste se ještě nezaregistrovali, postupujte podle kroků v článku [stát vydavatelem cloudové Tržiště](../../become-publisher.md).
+- Musí být registrovaný vydavatele na webu Marketplace cloudu.  Pokud jste se ještě nezaregistrovali, postupujte podle kroků v článku [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
     > [!NOTE]
     > Používejte stejné registrace účtu Microsoft Developer Center pro přihlášení do [portál partnerů cloudu](https://cloudpartner.azure.com).

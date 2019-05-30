@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f1998ec2fe82b9fd52547fbccb208542b22bc949
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161854"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306921"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
@@ -48,7 +48,7 @@ Pokud máte v úmyslu odebrat certifikát, který je označen jako primární, p
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Přidání sekundárního certifikátu přes Powershell Resource Manageru
 > [!TIP]
-> To je teď vyšší a jednodušší způsob přidání sekundárního certifikátu pomocí [přidat AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) rutiny. Není nutné postupujte podle zbývajících kroků v této části.  Navíc není nutné původně použili k vytvoření a nasazení clusteru při použití šablony [přidat AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) rutiny.
+> Existuje nyní lepšímu a snazšímu způsob přidání sekundárního certifikátu pomocí [přidat AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) rutiny. Není nutné postupujte podle zbývajících kroků v této části.  Navíc není nutné původně použili k vytvoření a nasazení clusteru při použití šablony [přidat AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) rutiny.
 
 Tyto kroky předpokládají se seznámíte s tím, jak funguje Resource Manageru a nasadili alespoň jeden cluster Service Fabric pomocí šablony Resource Manageru a jste šablonu, kterou jste použili k nastavení clusteru po ruce. Taky se předpokládá, že jste obeznámeni pomocí formátu JSON.
 

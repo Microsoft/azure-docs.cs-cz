@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192434"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397885"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -86,7 +86,7 @@ Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
 | facsimileTelephoneNumber |Některé řetězcová hodnota nebo *null* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Některé řetězcová hodnota nebo *null* |(user.givenName - eq "value") |
 | pracovní funkce |Některé řetězcová hodnota nebo *null* |(user.jobTitle - eq "value") |
-| mail |Některé řetězcová hodnota nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
+| e-mailu |Některé řetězcová hodnota nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
 | mailNickName |Libovolnou hodnotou řetězce (poštovní alias uživatele) |(user.mailNickName - eq "value") |
 | Mobilní zařízení |Některé řetězcová hodnota nebo *null* |(user.mobile - eq "value") |
 | ID objektu |Identifikátor GUID objektu uživatele |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
@@ -120,13 +120,13 @@ V následující tabulce jsou uvedeny všechny podporované operátory a jejich 
 | Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-ne |
-| Rovná se |-eq |
+| Je rovno |-eq |
 | Nemá na začátku |-notStartsWith |
 | Začíná |-startsWith |
 | Neobsahuje |-notContains |
-| Contains |-obsahuje |
+| Obsahuje |-obsahuje |
 | Neodpovídá |-notMatch |
-| Shoda |-match |
+| Match |-match |
 | V | -v |
 | Ne v | -notIn |
 
@@ -353,7 +353,6 @@ Můžete použít následující atributy zařízení.
  deviceManufacturer | Libovolnou hodnotou řetězce | (device.deviceManufacturer - eq "Samsung")
  deviceModel | Libovolnou hodnotou řetězce | (device.deviceModel - eq "iPad Air")
  deviceOwnership | Osobní, společnosti, neznámé | (device.deviceOwnership - eq "Company")
- domainName | Libovolnou hodnotou řetězce | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Název profilu profil registrace zařízení Apple nebo Windows Autopilot | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
  managementType | MDM (pro mobilní zařízení)<br>PC (pro počítače spravované pomocí agenta Intune pro počítače) | (device.managementType - eq "MDM")
@@ -372,4 +371,4 @@ Tyto články poskytují další informace o skupinách ve službě Azure Active
 * [Vytvoření nové skupiny a přidání členů](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
 * [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)
+* [Správa dynamických pravidel pro uživatele ve skupině](groups-create-rule.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621543"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302241"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Zabezpečení služby a aplikace Service Fabric
 Architektura mikroslužeb přinést [řadu výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb, ale výzvy a jiné než Správa zabezpečení tradiční monolitické aplikace. 
@@ -36,7 +36,7 @@ Prvním krokem při rozhodování o důvěryhodnosti úroveň rozhraní API je o
 
 Pokud přímo přístupné služby, jako ověřovací služba Azure Active Directory nebo vyhrazené ověřování mikroslužby funguje jako bezpečnostní služby tokenu (STS) se dá použít k ověřování uživatelů. Rozhodnutí o důvěryhodnosti jsou sdíleny mezi službami s tokeny zabezpečení nebo soubory cookie. 
 
-Pro ASP.NET Core, hlavní mechanismus pro [ověřování uživatelů](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) je systém členství technologie ASP.NET Core Identity. ASP.NET Core Identity ukládá informace o uživatelském (včetně přihlašovací údaje, rolí a deklarací identity) v úložišti dat nakonfigurované vývojářem. ASP.NET Core Identity podporuje dvojúrovňového ověřování.  Externí zprostředkovatelé ověřování jsou také podporovány, takže uživatelé můžou přihlásit pomocí existujících procesů ověřování od poskytovatelů, jako je Microsoft, Google, Facebook nebo Twitter. 
+Pro ASP.NET Core, hlavní mechanismus pro [ověřování uživatelů](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) je systém členství technologie ASP.NET Core Identity. ASP.NET Core Identity ukládá informace o uživatelském (včetně přihlašovací údaje, rolí a deklarací identity) v úložišti dat nakonfigurované vývojářem. ASP.NET Core Identity podporuje dvojúrovňového ověřování.  Externí zprostředkovatelé ověřování jsou také podporovány, takže uživatel může přihlásit pomocí existujících procesů ověřování od poskytovatelů, jako je Microsoft, Google, Facebook nebo Twitter.
 
 ### <a name="authorization"></a>Autorizace
 Po ověření služby potřebovat autorizaci přístupu uživatelů nebo zjistit, co uživatel je možné provádět. Tento proces umožňuje službě vytvořit rozhraní API dostupné pro některé ověřeného uživatele, ale ne pro všechny. Autorizace je ortogonální a nezávisle na ověřování, což je proces zjišťování, který je uživatel. Ověřování můžou vytvořit jednu nebo více identit pro aktuálního uživatele.

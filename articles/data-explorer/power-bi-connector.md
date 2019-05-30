@@ -1,30 +1,30 @@
 ---
-title: 'Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI'
-description: 'V tomto rychlém startu se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: konektor Power BI pro Průzkumník dat Azure.'
+title: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
+description: 'V tomto článku se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: konektor Power BI pro Průzkumník dat Azure.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/14/2018
-ms.openlocfilehash: 1be13090244a94c1bf3f731c8b6d73fa0848c393
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 05/30/2019
+ms.openlocfilehash: 6147269ab38ac14c2a2ecadaac3448a491af7c20
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827760"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399313"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
+# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
-Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto rychlém startu se dozvíte, jak získat data a vizualizace v sestavě Power BI pomocí integrovaného konektoru.
+Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto článku se dozvíte, jak získat data a vizualizace v sestavě Power BI pomocí integrovaného konektoru.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat k dokončení tohoto rychlého startu:
+Budete potřebovat k dokončení tohoto článku:
 
 * Účet organizace e-mailu, který je členem skupiny Azure Active directory, abyste se mohli připojit k [clusteru help Průzkumník dat Azure](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -53,7 +53,7 @@ Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podm
     | Cluster | *https://help.kusto.windows.net* | Adresa URL clusteru help. Pro další clustery, adresa URL je ve formě *https://\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
     | Databáze | Ponechte prázdné | Databáze, která je hostovaná v clusteru, ke kterému se připojujete. Vybereme to v pozdějším kroku. |
     | Název tabulky | Ponechte prázdné | Jednu z tabulek v databázi nebo dotaz, jako jsou <code>StormEvents \| take 1000</code>. Vybereme to v pozdějším kroku. |
-    | Pokročilá nastavení | Ponechte prázdné | Nastavit možnosti pro vaše dotazy, jako je například výsledek velikost. |
+    | Rozšířené možnosti | Ponechte prázdné | Nastavit možnosti pro vaše dotazy, jako je například výsledek velikost. |
     | Režim připojení dat | *DirectQuery* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. Pomocí tohoto konektoru můžete použít jednu z možností. |
     | | | |
 
@@ -63,7 +63,7 @@ Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podm
 
 1. Na **Navigátor** obrazovky, rozbalte **ukázky** databáze, vyberte **StormEvents** pak **upravit**.
 
-    ![Vyberte tabulku](media/power-bi-connector/select-table.png)
+    ![Výběr tabulky](media/power-bi-connector/select-table.png)
 
     Tabulka se otevře v editoru Power Query, kde můžete před importem dat upravit řádky a sloupce.
 
@@ -85,9 +85,8 @@ Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podm
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto rychlého startu, odstraňte soubor Power BI Desktopu (.pbix).
+Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto článku, odstraňte soubor Power BI Desktopu (.pbix).
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-imported-query.md)
+[Vizualizovat data pomocí importovaných dotazů v Power BI](power-bi-imported-query.md)

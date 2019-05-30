@@ -9,15 +9,15 @@ ms.date: 08/16/2016
 ms.author: deli
 ms.custom: include file
 ms.openlocfilehash: b3788ede23a423bebf96661ea88b227bfb5fdf4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531284"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238455"
 ---
 Následující tabulka popisuje každý z hlavní kvót, omezení, výchozí hodnoty a omezení ve službě Azure Scheduler.
 
-| Prostředek | Popis omezení |
+| Resource | Popis omezení |
 | -------- | ----------------- |
 | **Velikost úlohy** | Maximální velikost je 16 000. Pokud PUT nebo PATCH operace výsledkem úlohy velikost větší než tento limit, vrátí se stavový kód 400 Chybný požadavek. | 
 | **Kolekce úloh** | Maximální počet kolekcí úloh na předplatné Azure je 200 000. | 

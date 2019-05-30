@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6e1a1c614bfa126d58cf9343f945d16fd1c2733
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30a4bfa2cf7a39a28db0575a6851f5b7b481524c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781013"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388175"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Volba typu aplikace, při přidávání aplikace v Azure Active Directory
 Další informace o čtyři typy aplikací, které můžete přidat do služby Azure Active Directory (Azure AD). Při přidávání aplikace v Azure Active Directory, zobrazí se výzva k výběru jednoho typu čtyři aplikace. 
@@ -80,7 +80,7 @@ Toto jsou podporované **jednotného přihlašování** režimy pro aplikace Azu
   >
   >
 
-- **Přihlašování na základě záhlaví** – tuto možnost zvolte, [přihlašování na základě záhlaví](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) jednotné přihlašování režimu Pokud máte aplikaci pomocí PingAccess, který podporuje založený na HTTP hlavičce ověřování, kterou chcete provést jednotné přihlašování k 
+- **Přihlašování na základě záhlaví** – tuto možnost zvolte, [přihlašování na základě záhlaví](application-proxy-configure-single-sign-on-with-ping-access.md) jednotné přihlašování režimu Pokud máte aplikaci pomocí PingAccess, který podporuje založený na HTTP hlavičce ověřování, kterou chcete provést jednotné přihlašování k 
 
   >[!NOTE]
   >Tato možnost je dostupná, pouze pokud proxy aplikací a Pingaccessem je nakonfigurovaná pro aplikaci.

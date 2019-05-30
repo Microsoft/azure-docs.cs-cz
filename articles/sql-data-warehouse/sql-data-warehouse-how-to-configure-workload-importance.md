@@ -1,6 +1,6 @@
 ---
 title: Konfigurace úlohy význam ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit úroveň důležitosti žádosti
+description: Zjistěte, jak nastavit úroveň důležitosti požadavku.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 04abf69faf5388122c08b5ad2998438b5d83334b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 7121d2f022f9c9a5bbc02f04955d2857f3ec986f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003383"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241238"
 ---
 # <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Konfigurace úlohy význam ve službě Azure SQL Data Warehouse
 

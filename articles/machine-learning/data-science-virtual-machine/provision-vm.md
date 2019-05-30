@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596501"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235089"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Zřízení virtuálního počítače Windows datové vědy v Azure
 
@@ -106,7 +106,7 @@ Chcete-li vytvořit instanci DSVM:
 
 Po vytvoření a zřízení virtuálního počítače je možné vzdálené plochy do něj pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v předchozím **Základy** oddílu. Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnoho nástrojů je přístupný prostřednictvím dlaždic nabídky start a ikony na ploše.
 
-Virtuální počítač pro datové vědy můžete také připojit k poznámkových bloků Azure možnost spouštět poznámkové bloky Jupyter ve virtuálním počítači a obejít omezení úroveň free služby. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Virtuální počítač pro datové vědy můžete také připojit k poznámkových bloků Azure možnost spouštět poznámkové bloky Jupyter ve virtuálním počítači a obejít omezení úroveň free služby. Další informace najdete v tématu [spravovat a nakonfigurovat projekty poznámkových bloků – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Nástroje nainstalované na Microsoft virtuální počítač pro datové vědy
 

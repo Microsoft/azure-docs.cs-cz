@@ -5,12 +5,12 @@ author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125470"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304756"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavit Micro fokus CICS BankDemo Micro fokus Enterprise Developer 4.0 v Azure
 
@@ -20,13 +20,13 @@ CICs jsou zahrnovaného systém řízení informací o zákaznících, transakce
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Virtuální počítač s [podnikový vývojář](set-up-micro-focus-azure.md). Uvědomte si, že podnikový vývojář má úplnou instanci Enterprise serveru na něm pro účely vývoje a testování. Toto je instance serveru Enterprise pro tuto ukázku.
+- Virtuální počítač s [podnikový vývojář](set-up-micro-focus-azure.md). Uvědomte si, že podnikový vývojář má úplnou instanci Enterprise serveru na něm pro účely vývoje a testování. Tato instance je instance serveru Enterprise pro tuto ukázku.
 
 - [Edice systému SQL Server 2017 Express](https://www.microsoft.com/sql-server/sql-server-editions-express). Stáhněte a nainstalujte na virtuální počítač Enterprise Developer. Enterprise Server vyžaduje databázi pro správu CICS oblastí a BankDemo aplikace také používá databázi systému SQL Server s názvem BANKDEMO. V této ukázce se předpokládá, že používáte systém SQL Server Express pro databázi i databázi. Při instalaci, vyberte základní instalaci.
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). Aplikace SSMS se používá pro správu databází a spuštění skriptu T-SQL. Stáhněte a nainstalujte na virtuální počítač Enterprise Developer.
 
-- [Visual Studio 2017](https://azure.microsoft.com/downloads/) s nejnovější aktualizací service pack nebo [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), kterou si můžete stáhnout zdarma.
+- [Visual Studio 2019](https://azure.microsoft.com/downloads/) s nejnovější aktualizací service pack nebo [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), kterou si můžete stáhnout zdarma.
 
 - Rumba plochy nebo jiného 3270 emulátoru.
 
@@ -38,7 +38,7 @@ Po instalaci služby Enterprise Developer 4.0 na virtuálním počítači, musí
 
 2. Klikněte na tlačítko **hledání** ikonu vedle **Start** tlačítko a typ **funkce Windows**. Otevře se správce serveru přidat role a funkce průvodce.
 
-3. Vyberte **roli webového serveru (IIS)** a pak zkontrolujte následující:
+3. Vyberte **roli webového serveru (IIS)** a potom zkontrolujte následující možnosti:
 
     - Nástroje webové správy
     - Kompatibilita správy služby IIS 6 (vybrat všechny dostupné funkce)
@@ -46,7 +46,7 @@ Po instalaci služby Enterprise Developer 4.0 na virtuálním počítači, musí
     - Služba IIS skripty a nástroje správy
     - Služba správy služby IIS
 
-4. Vyberte **webové služby**a zkontrolujte následující:
+4. Vyberte **webové služby**a zkontrolujte následující možnosti:
 
      Funkce pro vývoj aplikací:
     - Rozšiřitelnost rozhraní .NET
@@ -54,17 +54,17 @@ Po instalaci služby Enterprise Developer 4.0 na virtuálním počítači, musí
     - Společné funkce protokolu HTTP: Přidat všechny dostupné funkce
     - Stav a Diagnostika: Přidat všechny dostupné funkce
     - Zabezpečení:
-        - Základní ověřování
+        - základního ověřování
         - Ověřování systému Windows
 
 5. Vyberte **služby Aktivace procesu Windows** a všechny jeho podřízené položky.
 
-6. Pro **funkce**, zkontrolujte **rozhraní Microsoft .NET framework 3.5.1**a zkontrolujte následující:
+6. Pro **funkce**, zkontrolujte **rozhraní Microsoft .NET framework 3.5.1**a zkontrolujte následující možnosti:
 
     - Windows Communication Foundation HTTP Activation
     - Aktivace jiným protokolem než HTTP Windows Communication Foundation
 
-7. Pro **funkce**, zkontrolujte **rozhraní Microsoft .NET framework 4.6**a zkontrolujte následující:
+7. Pro **funkce**, zkontrolujte **rozhraní Microsoft .NET framework 4.6**a zkontrolujte následující možnosti:
 
    - Aktivace pojmenovaného kanálu
    - Aktivace protokolem TCP
@@ -88,7 +88,7 @@ Po instalaci služby Enterprise Developer 4.0 na virtuálním počítači, musí
 
 ## <a name="configure-the-local-system-account-for-sql-server"></a>Konfigurace místního systémového účtu pro SQL Server
 
-Některé organizace serverové procesy musí mít možnost vytvářet databáze a dalších objektů a přihlaste se k serveru SQL Server. Tyto procesy použít místní systémový účet, takže je potřeba předat autority sysadmin tomuto účtu.
+Některé organizace serverové procesy musí mít možnost do přihlášení serveru SQL Server a vytvoření databáze a dalších objektů. Tyto procesy použít místní systémový účet, takže je potřeba předat autority sysadmin tomuto účtu.
 
 1. Spusťte **SSMS** a klikněte na tlačítko **připojit** pro připojení k místním SQLEXPRESS serveru pomocí ověřování Windows. Měla by být dostupná v **název serveru** seznamu.
 
@@ -197,18 +197,18 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
      ![Nová obrazovka definice prostředků XA databáze](media/09-demo-xa.png)
 
-6. Klikněte na symbol tří teček (**...** ) a zobrazte si průvodce připojovací řetězec. Pro **název serveru**, typ **(místní)\\SQLEXPRESS**. Pro **přihlášení**vyberte **ověřování Windows**. Název databáze, zadejte **BANKDEMO**
+6. Klikněte na symbol tří teček ( **...** ) a zobrazte si průvodce připojovací řetězec. Pro **název serveru**, typ **(místní)\\SQLEXPRESS**. Pro **přihlášení**vyberte **ověřování Windows**. Název databáze, zadejte **BANKDEMO**
 
      ![Připojovací řetězec obrazovka pro úpravy](media/10-demo-string.png)
 
-7. Vyzkouší připojení.
+7. Otestujte připojení.
 
 ## <a name="start-the-bankdemo-region"></a>Spustit BANKDEMO oblasti
 
 > [!NOTE]
 > Prvním krokem je důležité: Je nutné nastavit oblasti, kterou chcete použít definici prostředků XA jste právě vytvořili.
 
-1. Přejděte na **BANDEMO CICS oblasti** pod **oblastech kontejneru**a pak vyberte **upravit oblast spouštěcí soubor** z **akce** podokno. Posuňte se dolů vlastnosti SQL a zadejte **bankdemo** pro **název prostředek XA** , nebo použijte na tři tečky a vyberte ji.
+1. Přejděte na **BANDEMO CICS oblasti** pod **oblastech kontejneru**a pak vyberte **upravit oblast spouštěcí soubor** z **akce** podokno. Posuňte se dolů vlastnosti SQL a zadejte **bankdemo** pro **název prostředek XA**, nebo použijte na tři tečky a vyberte ji.
 
 2. Klikněte na tlačítko **Uložit** ikonu uložte provedené změny.
 
@@ -216,13 +216,13 @@ Dotaz by měl spustit bez chyb. Po dokončení mít ukázkovou databázi pro apl
 
 4. V dolní části **operací spustit/zastavit oblasti** pole, které se zobrazí v prostředním podokně vyberte **Start**. Za několik sekund spustí se oblast.
 
-     ![Pole SQL spustit/zastavit](/media/11-demo-sql.png)
+     ![Pole SQL spustit/zastavit](media/11-demo-sql.png)
 
      ![Oblast CICS BANKDEMO – Začínáme obrazovky](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Vytvořit naslouchací proces
 
-Je potřeba vytvořit naslouchací proces pro TN3270 relací, které přístup k aplikaci BankDemo.
+Vytvořte naslouchací proces pro TN3270 relací, které přístup k aplikaci BankDemo.
 
 1. V levém podokně rozbalte **konfigurační editory** a vyberte **naslouchací proces**.
 
@@ -236,7 +236,7 @@ Je potřeba vytvořit naslouchací proces pro TN3270 relací, které přístup k
 
 6. Přidejte kanál TN3270 kliknutím pravým tlačítkem myši **BANKDEMO oblasti** a vyberete **kanálu přidat**.
 
-7. Pro **název**, zadejte **TN3270**. Pro **Port**, zadejte **9024**. (Všimněte si, že aplikace ESDEMO používá port 9230, takže budete muset použít jiný port.)
+7. Pro **název**, zadejte **TN3270**. Pro **Port**, zadejte **9024**. Aplikace ESDEMO používá port 9230, takže budete muset použít jiný port.
 
 8. Pokud chcete soubor uložit, klikněte na tlačítko **Uložit** ikonu nebo zvolte **souboru** \> **Uložit**.
 
@@ -247,7 +247,7 @@ Je potřeba vytvořit naslouchací proces pro TN3270 relací, které přístup k
 
 ## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Konfigurace programu pro přístup k aplikaci BankDemo Rumba
 
-Poslední věcí, kterou musíte udělat, je nakonfigurovat 3270 relaci pomocí programu Rumba 3270 emulátoru. Tento krok umožňuje přístup k aplikaci BankDemo přes naslouchací proces, který jste právě vytvořili.
+Poslední věcí, kterou musíte udělat, je nakonfigurovat 3270 relaci pomocí programu Rumba 3270 emulátoru. Tento krok umožňuje přístup k aplikaci BankDemo přes naslouchací proces, který jste vytvořili.
 
 1. Z Windows **Start** nabídce spuštění programu Rumba Desktop.
 
@@ -271,5 +271,5 @@ Blahopřejeme! Je teď spuštěná CICS aplikace v Azure pomocí Micro fokus Ent
 - [Spuštění serveru organizace v kontejnerech Docker v Azure](run-enterprise-server-container.md)
 - [Migrace mainframů – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Odstraňování potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363313"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304975"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Využití referenčních dat z databáze serveru SQL pro úlohy Azure Stream Analytics (Preview)
 
@@ -59,16 +59,14 @@ Pomocí následujících kroků můžete přidat Azure SQL Database jako vstupn�
 
 ### <a name="visual-studio-prerequisites"></a>Požadavky na Visual Studio
 
-1. Pokud používáte Visual Studio 2017, aktualizujte na 15.8.2 nebo vyšší. Všimněte si, že 16.0 a vyšší nejsou podporovány v tomto okamžiku.
-
-2. [Nainstalujte nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Jsou podporovány následující verze sady Visual Studio:
+1. [Nainstalujte nástroje Stream Analytics pro Visual Studio](stream-analytics-tools-for-visual-studio-install.md). Jsou podporovány následující verze sady Visual Studio:
 
    * Visual Studio 2015
-   * Visual Studio 2017
+   * Visual Studio 2019
 
-3. Seznamte se s [nástroje Stream Analytics pro Visual Studio](stream-analytics-quick-create-vs.md) rychlý start.
+2. Seznamte se s [nástroje Stream Analytics pro Visual Studio](stream-analytics-quick-create-vs.md) rychlý start.
 
-4. Vytvoření účtu úložiště
+3. Vytvoření účtu úložiště.
 
 ### <a name="create-a-sql-database-table"></a>Vytvořit tabulky databáze SQL
 
@@ -118,7 +116,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 4. Otevřete soubor SQL v editoru a napsat dotaz SQL.
 
-5. Pokud používáte Visual Studio 2017 a jste nainstalovali SQL Server Data tools, můžete otestovat dotaz kliknutím **Execute**. Průvodce okno objeví se při připojení k SQL database a výsledek dotazu se zobrazí v okně v dolní části.
+5. Pokud používáte Visual Studio 2019 a nainstalujete SQL Server Data tools, můžete otestovat dotaz kliknutím **Execute**. Průvodce okno objeví se při připojení k SQL database a výsledek dotazu se zobrazí v okně v dolní části.
 
 ### <a name="specify-storage-account"></a>Zadejte účet služby storage
 
@@ -130,7 +128,7 @@ Otevřít **JobConfig.json** zadat účet úložiště pro ukládání snímků 
 
 Před nasazením úlohy do Azure, můžete otestovat logiku dotazu místně pro živá vstupní data. Další informace o této funkci najdete v tématu [testování živých dat místně pomocí nástroje Azure Stream Analytics pro Visual Studio (Preview)](stream-analytics-live-data-local-testing.md). Po dokončení testování, klikněte na tlačítko **odeslat do Azure**. Odkaz [vytvořit Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio](stream-analytics-quick-create-vs.md) rychlém startu se naučíte spustit úlohu.
 
-## <a name="delta-query"></a>Dotaz delta
+## <a name="delta-query"></a>Rozdílový dotaz
 
 Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL Database](../sql-database/sql-database-temporal-tables.md) doporučují.
 
@@ -159,7 +157,7 @@ Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL D
  
 2. Autor rozdílového dotazu. 
    
-   Tento dotaz načte všechny řádky v databázi SQL, které bylo vloženo nebo odstraněno v době spuštění  **\@deltaStartTime**a koncový čas  **\@deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako snímek dotazu, stejně jako sloupec  **_operace_**. V tomto sloupci definuje, jestli se řádek je vloženo nebo odstraněno mezi  **\@deltaStartTime** a  **\@deltaEndTime**. Výsledné řádky se označí jako **1** Pokud záznamy byly vloženy, nebo **2** Pokud odstraněn. 
+   Tento dotaz načte všechny řádky v databázi SQL, které bylo vloženo nebo odstraněno v době spuštění  **\@deltaStartTime**a koncový čas  **\@deltaEndTime**. Rozdílový dotaz musí vracet stejné sloupce jako snímek dotazu, stejně jako sloupec  **_operace_** . V tomto sloupci definuje, jestli se řádek je vloženo nebo odstraněno mezi  **\@deltaStartTime** a  **\@deltaEndTime**. Výsledné řádky se označí jako **1** Pokud záznamy byly vloženy, nebo **2** Pokud odstraněn. 
 
    Pro záznamy, které byly aktualizovány dočasnou tabulku se účetnictví zachytáváním operace vložení a odstranění. Modul runtime Stream Analytics potom použije výsledky rozdílového dotazu s předchozím snímkem k udržení referenční data. Příkladem rozdílového dotazu se zobrazuje níže:
 
@@ -174,6 +172,9 @@ Při použití rozdílového dotazu [dočasných tabulek ve službě Azure SQL D
    ```
  
    Všimněte si, že modul runtime Stream Analytics může pravidelně spuštění dotazu snímku kromě rozdílového dotazu k uložení kontrolní body.
+
+## <a name="test-your-query"></a>Otestování dotazu
+   Je důležité ověřit, že dotaz vrací očekávaná datové sady úlohy Stream Analytics budete používat jako referenční data. Pokud chcete otestovat dotaz, přejděte na vstup v části topologie úlohy na portálu. Pak můžete vybrat ukázková Data na váš odkaz na databázi SQL vstup. Po vzorku bude k dispozici, můžete si stáhnout soubor a zkontrolujte, jestli data se vrací je jako očekávané. Pokud chcete optimalizace vývojových a testovacích iterací, doporučuje se použít [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Můžete také jakýkoliv jiný nástroj z dáváte přednost nejprve ujistěte se, že dotaz vrací správných výsledků od vás Azure SQL Database a následné použití, které ve vaší úlohy Stream Analytics. 
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
@@ -193,10 +194,6 @@ Kombinací obou tyto metriky můžete použít k odvození Pokud úloha dotazov�
 **Bude vyžadovat speciální typ služby Azure SQL Database?**
 
 Azure Stream Analytics bude fungovat s jakýmkoli typem služby Azure SQL Database. Je důležité pochopit, že obnovovací frekvence pro vaše referenčního datového vstupu může mít vliv na zatížení dotazu. Možnost dotazu rozdílů, se doporučuje použít dočasných tabulek ve službě Azure SQL Database.
-
-**Vzorkovat vstup z referenčních dat SQL Database vstup**
-
-Tato funkce není dostupná.
 
 **Proč Azure Stream Analytics ukládá snímky v účtu Azure Storage?**
 

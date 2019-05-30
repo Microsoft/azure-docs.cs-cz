@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/29/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 82672136d6f9af50a3d91da2044f6e0ced4b44a6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409361"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356413"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -58,7 +58,7 @@ Proveďte následující kroky pro přípravu disků.
 6.  Příprava na disk, spusťte následující příkaz. **V závislosti na velikosti dat může to trvat několik hodin na dny.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /sk:<Storage account key> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
     ```
     Soubor deníku se vytvoří ve stejné složce, kam jste nástroj spustili. Také se vytvoří dva další soubory – *.xml* soubor (složku, ve kterém spouštíte nástroj) a *jednotky manifest.xml* soubor (složku, ve které se nachází data).
     
@@ -68,12 +68,12 @@ Proveďte následující kroky pro přípravu disků.
     |---------|---------|
     |/j:     |Název souboru deníku s příponou .jrn. Na jednotku je vygenerován soubor deníku. Doporučujeme použít jako název souboru deníku sériové číslo disku.         |
     |/ID:     |ID relace. Pro každou instanci tohoto příkazu použijte jedinečné relace číslo.      |
-    |/Sk:     |Klíč účtu úložiště Azure.         |
     |/t:     |Písmeno jednotky disku k odeslání. Třeba jednotka `D`.         |
     |/bk:     |Klíč nástroje BitLocker pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
     |/srcdir:     |Písmeno jednotky disku budou zaslány, za nímž následuje `:\`. Například, `D:\`.         |
     |/dstdir:     |Název cílový kontejner ve službě Azure Storage.         |
     |/skipwrite:     |Abyste byli připraveni je možnost, která určuje, že neexistuje žádná nová data muset zkopírovat a existující data na disku.          |
+    |/enablecontentmd5:     |Možnost při povolené, zajistí, že je vypočítán MD5 při nahrávání objekty BLOB bloku do Azure.          |
 7. Opakujte předchozí krok u každého disku, který potřebuje k odeslání. Pro každé spuštění příkazového řádku se vytvoří soubor deníku se zadaným názvem.
     
     > [!IMPORTANT]

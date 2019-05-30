@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55b73f5f4e6998eb1eb8c5ebc873fa20f8722a3e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61402037"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304579"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí jazyka C# #
 
@@ -41,7 +41,7 @@ Proveďte tyto kroky trvá přibližně 20 minut.
 
 1. Pokud jste tak dosud neučinili, nainstalujte [sady Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj desktopových aplikací .NET** na stránku úlohy a pak klikněte na tlačítko **nainstalovat**. Stručně řečeno, vidíte, že **vývojové nástroje .NET Framework 4 – 4.6** se vybere automaticky za vás. Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohy .NET pomocí Visual Studio Spouštěče.
 2. V sadě Visual Studio klikněte na **Soubor** > **Nový** > **Projekt**.
-3. V **šablony** > **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, zadejte *myDotnetProject* název projekt, vyberte umístění projektu a pak klikněte na tlačítko **OK**.
+3. V **šablony** > **Visual C#** vyberte **Konzolová aplikace (.NET Framework)** , zadejte *myDotnetProject* název projekt, vyberte umístění projektu a pak klikněte na tlačítko **OK**.
 
 ## <a name="install-the-package"></a>Instalace balíčku
 
@@ -60,7 +60,7 @@ Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup d
 
 ### <a name="create-the-authorization-file"></a>Vytvoření souboru autorizace
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a pak vyberte **textovýsoubor** v *položky Visual C#*. Název souboru *azureauth.properties*a potom klikněte na tlačítko **přidat**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a pak vyberte **textovýsoubor** v *položky Visual C#* . Název souboru *azureauth.properties*a potom klikněte na tlačítko **přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -80,12 +80,12 @@ Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup d
 4. Nastavení proměnné prostředí ve Windows s názvem AZURE_AUTH_LOCATION s úplnou cestou k souboru autorizace, který jste vytvořili. Například můžete použít následující příkaz Powershellu:
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>Vytvoření klienta služby správy
 
-1. Otevřete soubor Program.cs pro projekt, který jste vytvořili a pak přidejte tyto pomocí příkazů do stávajících příkazů v horní části souboru:
+1. Otevřete soubor Program.cs pro projekt, který jste vytvořili. Pak přidejte tyto pomocí příkazů do stávajících příkazů v horní části souboru:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -365,7 +365,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Přidání datového disku k virtuálnímu počítači
 
-Chcete-li přidat datový disk k virtuálnímu počítači, přidejte tento kód do metody Main přidat datový disk, který je 2 GB. velikost han logické jednotce LUN 0 a ukládání do mezipaměti typu ReadWrite:
+Chcete-li přidat datový disk k virtuálnímu počítači, přidejte tento kód do metody Main. V tomto příkladu přidá datový disk, který je 2 GB. velikost han logické jednotce LUN 0 a ukládání do mezipaměti typu ReadWrite:
 
 ```
 Console.WriteLine("Adding data disk to vm...");

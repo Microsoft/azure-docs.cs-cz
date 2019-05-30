@@ -1,18 +1,18 @@
 ---
-title: Vytváření, zobrazení a Správa upozornění protokolu aktivit ve službě Azure Monitor
-description: Postup vytvoření upozornění protokolu aktivit z webu Azure Portal, šablon prostředků a prostředí PowerShell.
+title: Vytvoření, zobrazení a správa aktivit upozornění protokolů ve službě Azure Monitor
+description: Postup vytvoření upozornění protokolu aktivit s využitím webu Azure portal šablony Azure Resource Manageru a Azure Powershellu.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b069e55d98da824363dc480c211cde0fcc2518c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130056"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244959"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -97,7 +97,7 @@ Pomocí následujícího postupu:
     Můžete povolit, zakázat, úprava nebo odstranění pravidla. Další informace o správě pravidel protokolů aktivit.
 
 
-Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit, prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko; potom postupujte podle kroků 4 a vyšší jak je uvedeno v kurzu výše.
+Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit, prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure portal](activity-log-view.md#azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko; potom postupujte podle kroků 4 a vyšší jak je uvedeno v kurzu výše.
     
  ![ Přidat upozornění protokolu aktivit](media/alerts-activity-log/add-activity-log.png)
     
@@ -201,7 +201,7 @@ Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleActivityLog
 > Může trvat až 5 minut nové pravidlo upozornění protokolu aktivit aktivuje
 
 ## <a name="rest-api"></a>REST API 
-[Azure Monitor – rozhraní API upozornění protokolu aktivit](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
+[Azure Monitor – protokol aktivit výstrahy API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -216,7 +216,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 Pokud sampleActivityLogAlert.parameters.json obsahuje hodnoty poskytnutý pro parametry potřebné pro vytvoření pravidla upozornění.
 
-### <a name="use-activity-log-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell protokolu aktivit
+### <a name="use-activity-log-powershell-cmdlets"></a>Použití protokolu aktivit rutin prostředí PowerShell
 
 Upozornění protokolu aktivit mít vyhrazené rutiny Powershellu, které jsou k dispozici:
 
@@ -226,7 +226,7 @@ Upozornění protokolu aktivit mít vyhrazené rutiny Powershellu, které jsou k
 - [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Zakáže existujícího upozornění protokolu aktivit a nastaví její klíčová slova.
 - [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    : Odebere upozornění protokolu aktivit.
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>Rozhraní příkazového řádku
 
 Vyhrazené příkazy rozhraní příkazového řádku Azure v rámci sady [upozornění protokolu aktivit monitorování az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) jsou dostupné pro správu pravidla upozornění protokolu aktivit.
 

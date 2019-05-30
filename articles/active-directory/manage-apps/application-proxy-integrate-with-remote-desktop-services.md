@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 05/23/2019
 ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecd55cbb3a8eefc150db731901458561d90f033
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783411"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233716"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -71,8 +71,9 @@ Po nastavení vzdálené plochy a Azure AD Application Proxy pro vaše prostřed
    - Překlad hlavička adresy URL: Ne
 2. Přiřadíte uživatele k publikované aplikaci VP. Zajistěte, aby že všichni mají přístup k vzdálené ploše, příliš.
 3. Nechte jedinou metodu přihlašování pro aplikaci jako **Azure AD jednotné přihlašování zakázáno**. Uživatelům se výzva k ověření jednou do služby Azure AD a jednou na webu, ale mají jednotné přihlašování ve službě Brána VP.
-4. Přejděte na **Azure Active Directory** > **registrace aplikací** > *aplikace* > **nastavení**.
-5. Vyberte **vlastnosti** a aktualizovat **adresa URL domovské stránky** pole tak, aby odkazovala na váš koncový bod webu (jako je `https://\<rdhost\>.com/RDWeb`).
+4. Vyberte **Azure Active Directory**a potom **registrace aplikací**. Vyberte aplikaci ze seznamu.
+5. V části **spravovat**vyberte **značky**.
+6. Aktualizace **adresa URL domovské stránky** pole tak, aby odkazovala na váš koncový bod webu (jako je `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Směrovat přenos dat vzdálené plochy na Proxy aplikací
 

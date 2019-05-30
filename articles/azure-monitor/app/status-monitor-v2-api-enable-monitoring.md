@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 17798c78b167821f5f30a11996ac90cf67fb0179
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0a443df0c55dc916ef6d12d53811e9d9932370e7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144948"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255920"
 ---
 # <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>Rozhraní API v2 monitorování stavu: Enable-ApplicationInsightsMonitoring (v0.2.1 alfa)
 
@@ -156,7 +156,7 @@ Successfully enabled Application Insights Status Monitor
  - [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
 - [Prohledávejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) k diagnostice problémů
 - [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
-- [Vytváření řídicích panelů](../../azure-monitor/app/app-insights-dashboards.md)
+- [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md)
  
  Přidání další telemetrie:
  - [Vytvářejte webové testy](monitor-web-app-availability.md) k Ujistěte se, že web zůstává živý.

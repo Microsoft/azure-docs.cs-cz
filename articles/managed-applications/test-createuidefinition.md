@@ -1,40 +1,58 @@
 ---
 title: Otestování definice uživatelského rozhraní pro spravované aplikace Azure | Dokumentace Microsoftu
 description: Popisuje, jak otestovat uživatelské prostředí pro vytvoření spravované aplikace prostřednictvím portálu Azure.
-services: managed-applications
-documentationcenter: na
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/22/2018
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: b1392c29881a9077e26baafc8972148800d03d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99ca319910be2cb20214172826eb40361abe72f0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746110"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257596"
 ---
-# <a name="test-azure-portal-interface-for-your-managed-application"></a>Testování rozhraní Azure portal pro vaši spravovanou aplikaci
-Po [vytváření souboru createUiDefinition.json](create-uidefinition-overview.md) pro spravované aplikace Azure, je potřeba otestovat uživatelské prostředí. Pro zjednodušení testování pomocí skriptu, který načte soubor na portálu. Není nutné skutečně nasadit spravované aplikace.
+# <a name="test-your-portal-interface-for-azure-managed-applications"></a>Testovací rozhraní portálu pro Azure Managed Applications
+
+Po [vytváření souboru createUiDefinition.json](create-uidefinition-overview.md) pro vaši spravovanou aplikaci, je potřeba otestovat uživatelské prostředí. Pro zjednodušení testování, používejte prostředí izolovaného prostoru, který načte soubor na portálu. Není nutné skutečně nasadit spravované aplikace. Sandbox uvede uživatelského rozhraní v prostředí portálu aktuální, celou obrazovku. Nebo můžete použít skript prostředí PowerShell pro testování rozhraní, ale používá starší verzi zobrazení na portálu. V tomto článku jsou uvedeny oba přístupy. Sandbox jsou doporučeným způsobem, jak ve verzi preview rozhraní.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* A **createUiDefinition.json** souboru. Pokud nemáte k dispozici tento soubor, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json) a uloží do místního prostředí.
+* A **createUiDefinition.json** souboru. Pokud nemáte k dispozici tento soubor, zkopírujte [ukázkový soubor](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json).
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="download-test-script"></a>Stáhněte si skript testu
+## <a name="use-sandbox"></a>Použití izolovaného prostoru
+
+1. Otevřít [vytvoření izolovaného prostoru definice uživatelského rozhraní](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade).
+
+   ![Zobrazit izolovaného prostoru](./media/test-createuidefinition/show-sandbox.png)
+
+1. Nahraďte obsah souboru createUiDefinition.json prázdnou definici. Vyberte **ve verzi Preview**.
+
+   ![Vyberte Náhled](./media/test-createuidefinition/select-preview.png)
+
+1. Zobrazí se formulář, který jste vytvořili. Můžete projít uživatelské prostředí a vyplňte požadované hodnoty.
+
+   ![Zobrazit formulář](./media/test-createuidefinition/show-ui-form.png)
+
+### <a name="troubleshooting"></a>Řešení potíží
+
+Pokud se nezobrazí formuláře po výběru **ve verzi Preview**, bude pravděpodobně chyba syntaxe. Vyhledejte red ukazatel na pravý posuvník a přejít k němu.
+
+![Chyba syntaxe show](./media/test-createuidefinition/show-syntax-error.png)
+
+Pokud se nezobrazí formuláře a místo toho se zobrazí ikona cloudu s rozevírací vše, formuláře došlo k chybě, jako je například chybějící vlastnost. V prohlížeči otevřete Web Developer Tools. **Konzoly** zobrazuje důležité zprávy o rozhraní.
+
+![Zobrazit chybu](./media/test-createuidefinition/show-error.png)
+
+## <a name="use-test-script"></a>Použití skriptu testu
 
 K otestování rozhraní na portálu, zkopírujte jeden z následujících skriptů do místního počítače:
 
 * [Načtení skriptu prostředí PowerShell](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Skript Azure CLI bokem](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
-
-## <a name="run-script"></a>Spuštění skriptu
 
 Váš soubor rozhraní na portálu najdete spuštěním staženého skriptu. Tento skript vytvoří účet úložiště ve vašem předplatném Azure a createUiDefinition.json soubor nahraje do účtu úložiště. Účet úložiště se vytvoří při prvním spuštění skriptu nebo pokud účet úložiště se odstranil. Pokud účet úložiště existuje ve vašem předplatném Azure, opětovně používá skript ho. Skript se otevře na portálu a načte soubor z účtu úložiště.
 
@@ -70,35 +88,17 @@ Pokud používáte Azure CLI, použijte:
 ./sideload-createuidef.sh
 ```
 
-## <a name="test-your-interface"></a>Testovací rozhraní
-
 Skript se otevře na nové kartě v prohlížeči. Zobrazí se na portálu s rozhraní pro vytvoření spravované aplikace.
 
 ![Zobrazit portál](./media/test-createuidefinition/view-portal.png)
 
-Před vyplňování polí, otevřete Web Developer Tools v prohlížeči. **Konzoly** zobrazuje důležité zprávy o rozhraní.
-
-![Vyberte konzoly](./media/test-createuidefinition/select-console.png)
-
-Pokud vaše definice rozhraní obsahuje chybu, viz popis v konzole.
-
-![Zobrazit chybu](./media/test-createuidefinition/show-error.png)
-
 Zadejte hodnoty pro pole. Až budete hotovi, uvidíte hodnoty, které jsou předány do šablony.
 
-![Zobrazit hodnoty](./media/test-createuidefinition/show-json.png)
+![Zobrazí hodnoty](./media/test-createuidefinition/show-json.png)
 
 Tyto hodnoty můžete použít jako soubor parametrů pro testování nasazení šablony.
 
-## <a name="troubleshooting-the-interface"></a>Řešení potíží s rozhraní
-
-Jsou některé běžné chyby, které může vidět:
-
-* Na portálu nenačte rozhraní. Místo toho zobrazí ikona cloudu s rozevírací vše. Tato ikona se obvykle zobrazuje při dochází k chybě syntaxe v souboru. Otevřete soubor v nástroji VS Code (nebo jiné editoru JSON, který má ověřování schématu) a vyhledejte chyby syntaxe.
-
-* Na souhrnné obrazovce přestane reagovat na portálu. Toto přerušení obvykle dochází, když je v části výstupu chybu. Může mít například odkazuje ovládací prvek, který neexistuje.
-
-* Parametr ve výstupu je prázdný. Tento parametr může být odkazování na vlastnost, která neexistuje. Například odkaz na ovládací prvek je platný, ale není platný odkaz na vlastnost.
+Pokud na souhrnné obrazovce přestane reagovat na portálu, může jít o chybu v části výstupu. Může mít například odkazuje ovládací prvek, který neexistuje. Pokud parametr ve výstupu je prázdný, může parametr odkazuje vlastnost, která neexistuje. Například odkaz na ovládací prvek je platný, ale není platný odkaz na vlastnost.
 
 ## <a name="test-your-solution-files"></a>Testovací soubory řešení
 

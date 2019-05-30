@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5daf0944212dc4b8040a39e6efbf5bb25f7f39f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 712004a1ae8a2a72854b7b2332449a019c0820c3
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901784"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256245"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytváří se nový prostředek je proto součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete udělat automaticky integrovaným vývojovým prostředím. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkčním prostředí sestavení vaší aplikace.
@@ -69,7 +69,6 @@ Pokud očekáváte více dat, klikněte na tlačítko **aktualizovat** po pár s
 Můžete napsat [skript prostředí PowerShell](../../azure-monitor/app/powershell.md) automaticky vytvořit prostředek.
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření řídicího panelu](../../azure-monitor/app/app-insights-dashboards.md)
 * [Diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md)
 * [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md)
 * [Psaní analytických dotazů](../../azure-monitor/app/analytics.md)

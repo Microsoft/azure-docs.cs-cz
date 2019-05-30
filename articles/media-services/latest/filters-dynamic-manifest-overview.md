@@ -11,32 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: ac440be4444ca0d62f7ffde2b8b65e41dcba6683
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 041a73cd2840e0b6a1840e15629d9c0e284e9890
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002455"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225510"
 ---
-# <a name="dynamic-manifests"></a>Dynamické manifesty
+# <a name="pre-filtering-manifests-with-dynamic-packager"></a>Předem filtrování manifesty pomocí dynamické Packager
 
-Media Services nabízí **dynamických manifestů** na základě předdefinovaných filtrů. Jakmile definujete filtry (naleznete v tématu [definovat filtry](filters-concept.md)), klienty je použít ke streamování konkrétní verze nebo dílčích klipů vašeho videa. V adrese URL streamování, zadejte filtry. Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: Apple HTTP Live Streaming (HLS), MPEG-DASH a Smooth Streaming. 
+Při doručování adaptivní přenosové rychlosti streamování obsahu do zařízení, je často potřeba publikování několika verzí manifestu funkce pro cílové konkrétní zařízení nebo dostupnou šířku pásma sítě. [Dynamické Packager](dynamic-packaging-overview.md) můžete zadat filtry, které můžete vyfiltrovat konkrétní kodeky, zvuk, rozlišení a přenosových rychlostí sledovat kombinace na průběžné odstraňují potřebu vytvářet více kopií. Stačí jednoduše publikujte novou adresu URL s konkrétní sadou filtrů nakonfigurovaný tak, aby vaše cílová zařízení (iOS, Android, celosvětového nebo prohlížeče) a možnosti sítě (scénáře velkou šířkou pásma, mobilní nebo s malou šířkou pásma). V takovém případě klienti můžete pracovat s streamování vašeho obsahu pomocí řetězce dotazu (zadáním dostupné [Asset filtry nebo účet filtry](filters-concept.md)) a použít filtry na určité části datový proud stream.
 
-V následující tabulce jsou uvedeny příklady adresy URL s filtry:
+Některé scénáře doručování vyžadují, aby zákazník je nejde získat přístup ke konkrétní stopy. Například možná chcete publikovat manifestu, který obsahuje HD, High Density stopy na úroveň konkrétních odběratele. Nebo můžete chtít odebrat konkrétní s adaptivní přenosovou rychlostí (ABR) sleduje, abyste snížili náklady na doručování na konkrétní zařízení, které by těžit z další stopy. V tomto případě bylo možné přidružit k seznam předem vytvořené filtrů s vaší [Lokátor streamování](streaming-locators-concept.md) při vytvoření. V takovém případě klienti nemůže pracovat s jak Streamovat obsah, je definován **Lokátor streamování**.
 
-|Protocol|Příklad:|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
- 
+Filtrování pomocí zadání můžete kombinovat [filtry pro Lokátor streamování](filters-concept.md#associating-filters-with-streaming-locator) + další zařízení specifické filtry, které váš klient určuje v adrese URL. To může být užitečné pro omezení dalších sleduje například metadata nebo událostí datových proudů, zvuku jazyků nebo popisný zvukové stopy. 
+
+Tato schopnost určit různé filtry na datový proud, poskytuje výkonný **dynamické Manifest** manipulaci s řešení cílit na více scénářů použití pro cílová zařízení. Toto téma vysvětluje koncepty související s **dynamických manifestů** a uvádí příklady scénářů, ve kterých může být vhodné tuto funkci používat.
+
 > [!NOTE]
-> Dynamický manifest neměňte assetu a výchozí manifest pro tento prostředek. Klienta můžete požádat o datový proud s nebo bez filtrů. 
+> Dynamický manifest neměňte assetu a výchozí manifest pro tento prostředek. 
 > 
-
-Toto téma vysvětluje koncepty související s **dynamických manifestů** a uvádí příklady scénářů, ve kterých může být vhodné tuto funkci používat.
 
 ## <a name="manifests-overview"></a>Přehled manifestů
 
@@ -55,6 +51,16 @@ Příklad REST naleznete v tématu [nahrávání, kódování a streamování so
 Můžete použít [stránky ukázku Azure Media Player](https://aka.ms/amp) monitorování přenosové rychlosti datový proud videa. Ukázka stránka zobrazuje diagnostické informace v **diagnostiky** kartu:
 
 ![Diagnostika Azure Media Player][amp_diagnostics]
+ 
+### <a name="examples-urls-with-filters-in-query-string"></a>Příklady: Adresy URL s filtry v řetězci dotazu
+
+Filtry můžete uplatnit adaptivní přenosové rychlosti streamování protokolů: HLS, MPEG-DASH a Smooth Streaming. V následující tabulce jsou uvedeny příklady adresy URL s filtry:
+
+|Protocol|Příklad:|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Technologie Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="rendition-filtering"></a>Interpretace filtrování
 
@@ -121,10 +127,6 @@ Zkombinovat filtry, je nutné nastavit filtr názvů do manifestu/stop URL oddě
 Můžete kombinovat až tři filtry. 
 
 Další informace najdete v tématu [to](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) blogu.
-
-## <a name="associate-filters-with-streaming-locator"></a>Filtry přidružit Lokátor streamování
-
-Zobrazit [filtry: přidružili lokátory streamování](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="considerations-and-limitations"></a>Požadavky a omezení
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6d2ed8ba13fac03a60d9a0730776bc8348876b62
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 5ce838897370430c388d74c3d356497f16efdc8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153575"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245051"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -146,7 +146,7 @@ Pokud chcete použít ověřování pomocí tokenu aplikace služby založené n
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+4. **Udělte nezbytná oprávnění instančního objektu** SQL uživatelů nebo jiné obvyklým způsobem. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Pokud chcete pomocí PolyBase načíst data, přečtěte si [požadované oprávnění databáze](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your application name];
@@ -196,7 +196,7 @@ Použití spravované identity ověřování, postupujte podle těchto kroků:
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **Identita spravované objekt pro vytváření dat nezbytná oprávnění udělit** obvyklým způsobem pro uživatele serveru SQL a další. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+3. **Identita spravované objekt pro vytváření dat nezbytná oprávnění udělit** obvyklým způsobem pro uživatele serveru SQL a další. Spusťte následující kód, nebo si přečtěte další možnosti [tady](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017). Pokud chcete pomocí PolyBase načíst data, přečtěte si [požadované oprávnění databáze](#required-database-permission).
 
     ```sql
     EXEC sp_addrolemember db_owner, [your Data Factory name];
@@ -227,7 +227,7 @@ Použití spravované identity ověřování, postupujte podle těchto kroků:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Data Warehouse.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Azure SQL Data Warehouse.
 
 Pro kopírování dat z nebo do služby Azure SQL Data Warehouse, jsou podporovány následující vlastnosti:
 
@@ -400,9 +400,9 @@ Další informace o tom, jak pomocí funkce PolyBase načteme efektivně SQL Dat
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Použijte PolyBase k načítání dat do Azure SQL Data Warehouse
 
-Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst větší množství dat do Azure SQL Data Warehouse s vysokou propustností. Zobrazí se vám velké zvýšení propustnosti pomocí PolyBase místo výchozího mechanismu hromadné vložení. Zobrazit [výkonu](copy-activity-performance.md#performance-reference) podrobné porovnání. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
+Pomocí [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) je účinný způsob, jak načíst větší množství dat do Azure SQL Data Warehouse s vysokou propustností. Zobrazí se vám velké zvýšení propustnosti pomocí PolyBase místo výchozího mechanismu hromadné vložení. Zobrazit [výkonu](copy-activity-performance.md#performance-reference) podrobné porovnání. Návod s případu použití, naleznete v tématu [načtení 1 TB do Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
 
-* Pokud vaše zdrojová data nejsou v **objektů Blob v Azure, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2**a **formát je PolyBase kompatibilní**, můžete použít aktivitu kopírování, která přímo vyvolat PolyBase nechejte systém Azure SQL Data Warehouse načíst data ze zdroje. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)**.
+* Pokud vaše zdrojová data nejsou v **objektů Blob v Azure, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2**a **formát je PolyBase kompatibilní**, můžete použít aktivitu kopírování, která přímo vyvolat PolyBase nechejte systém Azure SQL Data Warehouse načíst data ze zdroje. Podrobnosti najdete v tématu  **[přímé kopírování pomocí PolyBase](#direct-copy-by-using-polybase)** .
 * Pokud zdrojové úložiště dat a formát polybase původně nepodporuje, použijte **[fázovaného kopírování pomocí PolyBase](#staged-copy-by-using-polybase)** místo toho funkci. Funkce dvoufázové instalace kopírování také poskytuje vyšší propustnost. Automaticky převádí data do formátu kompatibilním PolyBase. A ukládá data do úložiště objektů Blob v Azure. Pak načte data do SQL Data Warehouse.
 
 >[!TIP]
@@ -426,7 +426,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověření klíče účtu, spravovanou identitu ověřování |
 
     >[!IMPORTANT]
-    >Pokud koncový bod služby virtuální sítě se nakonfigurují službě Azure Storage, je potřeba použít spravovanou identitu ověřování. Odkazovat na [dopadu koncové body služby virtuální sítě pomocí služby Azure storage](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
+    >Pokud koncový bod služby virtuální sítě se nakonfigurují službě Azure Storage, je potřeba použít spravovanou identitu ověřování. Odkazovat na [dopadu koncové body služby virtuální sítě pomocí služby Azure storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)
 
 2. **Formát zdrojových dat** je **Parquet**, **ORC**, nebo **oddělený text**, s následující konfigurací:
 

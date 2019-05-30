@@ -15,12 +15,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 827c42763eee39c717cedc90469ae765cc331272
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602424"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253839"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM
 Privileged Identity Management (PIM) ve Azure Active Directory (Azure AD) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na stránky s upozorněními. 
@@ -33,11 +33,11 @@ Výběrem výstrahy zobrazíte sestavu obsahující seznam uživatelů nebo rol�
 ![Sestava výstrahy](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Výstrahy
-| Upozornění | Severity | Trigger | Doporučení |
+| Výstrahy | Severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
-| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Středně velká |Příliš mnoho uživatelů mít roli vlastníka. |Projděte si uživatelé ze seznamu a znovu přiřadíte některé méně privilegovaným rolím. |
-| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Středně velká |Příliš mnoho uživatelů jsou trvale přiřazené k roli. |Projděte si uživatelé ze seznamu a u změnit přiřazení některé vyžadují také aktivaci role používat. |
-| **Vytvořila se duplicitní role** |Středně velká |Stejná kritéria mají více role. |Použijte pouze jednu z těchto rolí. |
+| **K prostředku je přiřazeno příliš mnoho vlastníků.** |Střední |Příliš mnoho uživatelů mít roli vlastníka. |Projděte si uživatelé ze seznamu a znovu přiřadíte některé méně privilegovaným rolím. |
+| **K prostředku je přiřazeno příliš mnoho trvalých vlastníků.** |Střední |Příliš mnoho uživatelů jsou trvale přiřazené k roli. |Projděte si uživatelé ze seznamu a u změnit přiřazení některé vyžadují také aktivaci role používat. |
+| **Vytvořila se duplicitní role** |Střední |Stejná kritéria mají více role. |Použijte pouze jednu z těchto rolí. |
 
 
 ### <a name="severity"></a>Severity
@@ -54,4 +54,4 @@ Upravte nastavení na jednotlivých výstrah pro práci s vaším prostředím a
 
 ## <a name="next-steps"></a>Další postup
 
-- [Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM](pim-resource-roles-configure-alerts.md)
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)

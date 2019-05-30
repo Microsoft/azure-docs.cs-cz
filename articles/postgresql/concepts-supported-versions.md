@@ -1,20 +1,20 @@
 ---
-title: Podporované verze ve službě Azure Database for PostgreSQL
-description: Popisuje podporované verze ve službě Azure Database for PostgreSQL.
+title: Podporované verze ve službě Azure Database for PostgreSQL – jeden Server
+description: Popisuje podporované verze ve službě Azure Database for PostgreSQL – jeden Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 16064d662c5b101e30f8d2fbb64b39db0848f49f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: 4dcbaf159fce6b5f5495a6a25a2a3420cad9e5e8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702311"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067263"
 ---
 # <a name="supported-postgresql-database-versions"></a>Podporované verze databáze PostgreSQL
-Microsoft, zaměřuje na podporu n-2 verze stroje PostgreSQL služba Azure Database for PostgreSQL. Verze by aktuální hlavní verze v Azure (n) a dvě předchozí hlavní verze (-2).
+Cíle společnosti Microsoft pro podporu n-2 verze stroje PostgreSQL v Azure Database for PostgreSQL – jeden Server. Verze by aktuální hlavní verze v Azure (n) a dvě předchozí hlavní verze (-2).
 
 Azure Database for PostgreSQL aktuálně podporuje následující verze:
 

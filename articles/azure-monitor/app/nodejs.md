@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 13379111706eaa816a8fa16cfe72711b7bf4d739
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2a30d5a040c2713f04173e83732cea5fa19af3b
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576449"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255288"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje po nasazení vaše služby a komponenty back-end a tím vám pomáhá [zjišťovat a rychle diagnostikovat problémy nejen s výkonem](../../azure-monitor/app/detect-triage-diagnose.md). Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje po nasazení můžete zjišťovat a rychle diagnostikovat výkonu a další problémy s back-endové služby a komponenty. Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
@@ -202,7 +202,7 @@ server.on("listening", () => {
 
 ## <a name="next-steps"></a>Další postup
 
-* [Monitorování telemetrických dat na portálu](../../azure-monitor/app/app-insights-dashboards.md)
+* [Monitorování telemetrických dat na portálu](../../azure-monitor/app/overview-dashboard.md)
 * [Psaní analytických dotazů do telemetrických dat](../../azure-monitor/log-query/get-started-portal.md)
 
 <!--references-->

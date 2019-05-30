@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df3156688f018aee4717271557220396827dd9e2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947389"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306834"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Vytvoření kontejneru Service Fabric v Linuxu spuštěnou serveru Apache Tomcat
 Apache Tomcat je Oblíbené, open source implementace technologií Java Servlet a Java Server. V tomto článku se dozvíte, jak vytvořit kontejner s Apache Tomcat a jednoduchou webovou aplikaci, kontejner nasadí do clusteru Service Fabric s Linuxem a připojit k webové aplikaci.  
@@ -111,9 +111,9 @@ Postupujte podle kroků v této části sestavíte image Dockeru na základě im
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Nahrání Tomcat image do vašeho registru kontejneru
 Teď, když jste ověřili, že Tomcat image lze spustit v kontejneru na vašem vývojovém počítači, vložit ho do úložiště v registru kontejneru. Tento článek používá Azure Container Registry k uložení image, ale s určitými úpravami postup můžete použít jakéhokoli registru kontejnerů, které zvolíte. V tomto článku se předpokládá název registru bude *myregistry* a je název registru úplné myregistry.azurecr.io. Změňte tyto odpovídajícím způsobem pro váš scénář. 
 
-1. Spusťte příkaz `docker login` a přihlaste se ke svému registru kontejnerů pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
+1. Spustit `docker login` přihlásit ke svému registru kontejnerů pomocí vaší [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
 
-   Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
+   Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo může přihlásit pomocí vašeho registru uživatelské jméno a heslo.
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -144,7 +144,7 @@ Teď, když jste nevložili jste Tomcat image do registru kontejneru, můžete s
    * Pojmenujte svoji aplikaci: ServiceFabricTomcat
    * Název vytvářené aplikační služby: TomcatService
    * Zadejte název bitové kopie: Zadejte adresu URL Image kontejneru do vašeho registru kontejneru. například myregistry.azurecr.io/samples/tomcattest.
-   * Příkazy: Ponechte toto nastavení prázdné. Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potřeba explicitně zadat vstupní příkazy (příkazy se spouští uvnitř kontejneru, což zajistí zachování provozu kontejneru po spuštění).
+   * Příkazy: Nechte prázdné. Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potřeba explicitně zadat vstupní příkazy (příkazy se spouští uvnitř kontejneru, což zajistí zachování provozu kontejneru po spuštění).
    * Počet instancí aplikace typu kontejner hostů: 1
 
    ![Generátor Service Fabric Yeoman pro kontejnery](./media/service-fabric-get-started-tomcat/yo-generator.png)

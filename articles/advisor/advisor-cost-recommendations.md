@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467932"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254725"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snižte náklady na službu pomocí Azure Advisoru
 
@@ -44,6 +44,13 @@ Advisor vám také oznámí rezervované instance, které máte, které vyprší
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Odstranit nepřidružené veřejné IP adresy ušetříte peníze
 
 Advisor identifikuje veřejné IP adresy, které nejsou aktuálně přidružené k prostředkům Azure, jako jsou nástroje pro vyrovnávání zatížení nebo virtuální počítače. Tyto veřejné IP adresy, které jsou součástí nominální poplatek. Pokud nechcete používat, jejich odstranění může způsobit úspory nákladů.
+
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>Azure Data Factory kanálů, které se nedaří odstranit
+
+Azure Advisor zjistí kanálů Azure Data Factory, které opakovaně selhat a doporučujeme při řešení problémů nebo odstranit kanály selhání, pokud už nepotřebujete. Vám bude účtovat těchto kanálech i v případě, že i když jejich nejsou že vám během se nedaří. 
+
+## <a name="use-standard-snapshots-for-managed-disks"></a>Použít standardní snímky za spravované disky
+Pokud chcete uložit 60 % nákladů, doporučujeme ukládat vaše snímky ve standardním úložišti, bez ohledu na typ úložiště nadřazeného disku. Toto je výchozí možnost pro Managed Disks snímky. Azure Advisor bude identifikovat snímky, které jsou uloženy doporučujeme migraci snímek z úrovně Premium na úložiště úrovně Standard a Premium Storage. [Další informace o cenách služby Managed Disks](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak získat přístup k doporučení k nákladům v Azure Advisoru
 

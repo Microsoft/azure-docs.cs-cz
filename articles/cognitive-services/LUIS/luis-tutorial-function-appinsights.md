@@ -9,19 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bde1983f89cb2fcd0a6fddadc2c3379dee4310be
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495348"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399636"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Přidání služby LUIS výsledky do Application Insights a Azure functions
-V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
+V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyka nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 
-Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
+Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot. A [Bot Framework 4.x s kurzem LUIS](luis-nodejs-tutorial-bf-v4.md) je také k dispozici.
 
 V tomto kurzu se naučíte:
 
@@ -129,7 +129,7 @@ Otevřete službu Application Insights zobrazíte položky LUIS.
 > Pokud chcete uložit seznam závislostí a vrátit se k němu později, klikněte na **... Další** a klikněte na tlačítko **uložit oblíbenou**.
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Dotaz Application Insights pro záměr, skóre a utterance
-Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, stejně jako export umožňuje [PowerBI](https://powerbi.microsoft.com). 
+Služba Application Insights poskytuje výkonné nástroje pro dotazování dat pomocí služby [Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) jazyka, stejně jako export umožňuje [Power BI](https://powerbi.microsoft.com). 
 
 1. Klikněte na **Analytics** v horní části závislosti výpis výše pole filtru. 
 

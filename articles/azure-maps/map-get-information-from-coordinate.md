@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 50f906a9d8a0dc19f5eb47bef4cb68f4703f020f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b635ab96f1438377cb0d282c17304c2531185be
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769120"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357806"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
@@ -29,7 +29,7 @@ Existují dva způsoby, jak vytvořit adresu zpětného vyhledávání. Jedním 
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt map a nastaví mechanismus ověřování využívat klíč předplatného. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-Vytvoří druhý blok kódu `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. Pak bude `atlas.service.MapsURL.newPipeline()` přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) instance. `searchURL` Představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
+Vytvoří druhý blok kódu `SubscriptionKeyCredentialPolicy` k ověření požadavků HTTP ve službě Azure Maps se klíč předplatného. Pak bude `atlas.service.MapsURL.newPipeline()` přijímá `SubscriptionKeyCredential` zásady a vytvoří [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instance. `searchURL` Představuje adresu URL ke službě Azure Maps [hledání](https://docs.microsoft.com/rest/api/maps/search) operace.
 
 Aktualizace stylu ukazatele myši na ukazatel na třetí blok kódu a vytvoří [automaticky otevírané okno](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open) objektu. Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
 

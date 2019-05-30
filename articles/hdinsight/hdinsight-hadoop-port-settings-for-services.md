@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2d0b8aba95787f179733dd596e783f097cba4299
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 16041d2b7a971c9ba479c133261930b38d130792
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692129"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252782"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané služby Apache Hadoop v HDInsight
 
@@ -28,14 +28,13 @@ Interně, HDInsight je implementována pomocí několika virtuálních počíta�
 > [!IMPORTANT]  
 > Pokud nezadáte službě Azure Virtual Network jako možnosti konfigurace pro HDInsight, vytvoří se automaticky. Nelze však přidávání jiných počítačů (například vývojovém počítači klienta nebo jiných virtuálních počítačích Azure) do této virtuální sítě.
 
-
 K připojení dalších počítačů k virtuální síti, musíte nejprve vytvořit virtuální síť a pak ho zadat při vytváření clusteru HDInsight. Další informace najdete v tématu [možnosti rozšíření HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="public-ports"></a>Veřejné porty
 
 Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Network a nelze přistupovat přímo z Internetu. Veřejné brána poskytuje přístup k Internetu pro následující porty, které jsou společné pro všechny typy clusterů HDInsight.
 
-| Služba | Port | Protocol (Protokol) | Popis |
+| Služba | Port | Protocol | Popis |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |Klienti se připojí k sshd na primárnímu hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Klienti se připojí k sshd na hraničním uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
@@ -48,7 +47,7 @@ Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Netw
 
 Tady jsou k dispozici pro specifické typy clusterů:
 
-| Služba | Port | Protocol (Protokol) | Typ clusteru | Popis |
+| Služba | Port | Protocol | Typ clusteru | Popis |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |Rozhraní REST API HBase. Zobrazit [začněte používat Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Rozhraní Spark REST API. Zobrazit [úlohy odeslání Apache Spark vzdáleně pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md) |
@@ -74,7 +73,7 @@ Všechny služby veřejně zpřístupnit v síti internet musí být ověřené:
 
 ### <a name="ambari"></a>Ambari
 
-| Služba | Uzly | Port | Cesta URL | Protocol (Protokol) | 
+| Služba | Uzly | Port | Cesta adresy URL | Protocol | 
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní Ambari | Hlavní uzly | 8080 | / | HTTP |
 | Ambari REST API | Hlavní uzly | 8080 | /api/v1 | HTTP |
@@ -85,7 +84,7 @@ Příklady:
 
 ### <a name="hdfs-ports"></a>Porty HDFS
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | NameNode webového uživatelského rozhraní |Hlavní uzly |30070 |HTTPS |Webové uživatelské rozhraní k zobrazení stavu |
 | NameNode metadat služby |Hlavní uzly |8020 |IPC |Metadatech systému souborů |
@@ -96,7 +95,7 @@ Příklady:
 
 ### <a name="yarn-ports"></a>Porty YARN
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | Webové uživatelské rozhraní správce prostředků |Hlavní uzly |8088 |HTTP |Webové uživatelské rozhraní pro Resource Manager |
 | Webové uživatelské rozhraní správce prostředků |Hlavní uzly |8090 |HTTPS |Webové uživatelské rozhraní pro Resource Manager |
@@ -104,26 +103,26 @@ Příklady:
 | Plánovač Resource Manageru |Hlavní uzly |8030 |HTTP |Rozhraní pro správu |
 | Rozhraní správce prostředků aplikace |Hlavní uzly |8050 |HTTP |Adresa správce rozhraní aplikace |
 | NodeManager |Všechny uzly pracovního procesu |30050 |&nbsp; |Adresa správce kontejneru |
-| NodeManager webového uživatelského rozhraní |Všechny uzly pracovního procesu |30060 |HTTP |Rozhraní správce prostředků |
+| NodeManager webového uživatelského rozhraní |Všechny uzly pracovního procesu |30060 |HTTP |Rozhraní Resource Manageru |
 | Adresa časové osy |Hlavní uzly |10200 |RPC |Služba RPC časovou osu služby. |
 | Časová osa webového uživatelského rozhraní |Hlavní uzly |8181 |HTTP |Časová osa služby webového uživatelského rozhraní |
 
 ### <a name="hive-ports"></a>Porty Hive
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Hlavní uzly |10001 |Thrift |Služby pro připojení k Hivu (Thrift/JDBC) |
 | Metastore Hive |Hlavní uzly |9083 |Thrift |Služby pro připojení k metadata Hive (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat ports
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | WebHCat server |Hlavní uzly |30111 |HTTP |Webových rozhraní API jako nadstavby HCatalog a dalším službám Hadoop |
 
 ### <a name="mapreduce-ports"></a>Porty MapReduce
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | JobHistory |Hlavní uzly |19888 |HTTP |MapReduce JobHistory webového uživatelského rozhraní |
 | JobHistory |Hlavní uzly |10020 |&nbsp; |MapReduce JobHistory server |
@@ -131,21 +130,21 @@ Příklady:
 
 ### <a name="oozie"></a>Oozie
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | Oozie server |Hlavní uzly |11000 |HTTP |Adresa URL služby Oozie |
 | Oozie server |Hlavní uzly |11001 |HTTP |Port pro správce Oozie |
 
 ### <a name="ambari-metrics"></a>Metriky Ambari
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | Časová osa (historie aplikace) |Hlavní uzly |6188 |HTTP |Časová osa služby webového uživatelského rozhraní |
 | Časová osa (historie aplikace) |Hlavní uzly |30200 |RPC |Časová osa služby webového uživatelského rozhraní |
 
 ### <a name="hbase-ports"></a>Porty HBase
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | HMaster |Hlavní uzly |16000 |&nbsp; |&nbsp; |
 | Informace o HMaster webového uživatelského rozhraní |Hlavní uzly |16010 |HTTP |Port pro hlavní server HBase webového uživatelského rozhraní |
@@ -154,18 +153,18 @@ Příklady:
 
 ### <a name="kafka-ports"></a>Porty systému Kafka
 
-| Služba | Uzly | Port | Protocol (Protokol) | Popis |
+| Služba | Uzly | Port | Protocol | Popis |
 | --- | --- | --- | --- | --- |
 | Service Broker |Pracovní uzly |9092 |[Kafka přenosový protokol](https://kafka.apache.org/protocol.html) |Používá pro komunikaci klientů |
 | &nbsp; |Uzly Zookeeper |2181 |&nbsp; |Port, který klienti používají pro připojení k Zookeeper |
 
 ### <a name="spark-ports"></a>Porty Spark
 
-| Služba | Uzly | Port | Protocol (Protokol) | Cesta URL | Popis |
+| Služba | Uzly | Port | Protocol | Cesta adresy URL | Popis |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift servery |Hlavní uzly |10002 |Thrift | &nbsp; | Služby pro připojení ke Spark SQL (Thrift/JDBC) |
 | Livy server | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úlohy a aplikace |
-| Poznámkový blok Jupyter | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
+| Jupyter Notebook | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
 
 Příklady:
 

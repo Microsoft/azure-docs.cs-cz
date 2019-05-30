@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7be57733f9bb5936747c77aa06bde3397eb84fa1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478891"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302907"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Prostřednictvím kódu programu vytvořit monitorování úlohy Stream Analytics
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak povolit monitorování pro úlohu Stream Analytics. 
 
 Než zahájíte tento postup, musíte mít splněné následující požadavky:
 
-* Visual Studio 2017 nebo 2015
+* Visual Studio 2019 nebo 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) stáhnout a nainstalovat
 * Existující úlohy Stream Analytics, který musí mít povoleno monitorování
 

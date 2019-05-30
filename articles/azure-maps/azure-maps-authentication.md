@@ -4,17 +4,17 @@ description: Ověřování pomocí služby Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9dfe4024607e106565984d6d49de94d793bf7a8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799087"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393676"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -79,7 +79,7 @@ Azure AD umožňuje řídit přístup k prostředkům zabezpečeného pomocí RB
 
 Azure Maps podporuje řízení přístupu pro čtení pro jednotlivé uživatele Azure AD, aplikací a služeb Azure pomocí spravované identity pro prostředky Azure.
 
-![Čtenář dat Azure Maps (Preview)](./media/azure-maps-authentication/concept.png)
+![Azure Maps Data Reader (Preview)](./media/azure-maps-authentication/concept.png)
 
 Informace o zobrazování nastavení RBAC najdete v tématu [konfigurace RBAC pro Azure Maps](https://aka.ms/amrbac).
 

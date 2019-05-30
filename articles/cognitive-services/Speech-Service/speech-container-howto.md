@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306558"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388693"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spouštění kontejnerů Speech Service
 
-Kontejnery řeči zákazníkům umožní vytvářet jeden architektura řeči aplikace, které je optimalizováno pro využití možnosti robustní Cloudová a hraniční umístění. Jsou dva řeči kontejnery nyní podporujeme **speech to text** a **převod textu na řeč**. 
+Kontejnery řeči zákazníkům umožní vytvářet jeden architektura řeči aplikace, které je optimalizováno pro využití možnosti robustní Cloudová a hraniční umístění. 
 
 Jsou dva řeči kontejnery **speech to text** a **převod textu na řeč**. 
 
 |Funkce|Funkce|Nejnovější|
 |-|-|--|
-|Převod řeči na text| <li>Přepisuje plynulou řeč v reálném čase do textové podoby.<li>Dokáže dávkově přepisovat řeč ze zvukových nahrávek. <li>Podporuje okamžité výsledky, detekci konce řeči, automatické formátování textu a maskování vulgarismů. <li>Může volat službu [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), která z přepsané řeči odvodí záměr uživatele.\*|1.1.1|
-|Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |1.1.0|
+|Převod řeči na text| <li>Transcribes průběžné v reálném čase řeči nebo služby batch záznam zvuku na text pomocí mezilehlých výsledků.|1.1.1|
+|Převod textu na řeč| <li>Převádí text do přirozeně znějící řeči. vstup ve formátu prostého textu nebo řeči syntézu Markup Language (SSML). |1.1.0|
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

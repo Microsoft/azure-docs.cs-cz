@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 514aaaf7a274e60a17bbae62b3c62e7cf3668e7a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540593"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237307"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -46,7 +46,7 @@ Paměť RAM | 16 GB
 Počet disků | 3 disky<br/><br/> Disky zahrnují disku operačního systému, disk mezipaměti procesového serveru a jednotky pro uchovávání dat pro navrácení služeb po obnovení.
 Volné místo na disku | 600 GB místa potřebného pro mezipaměť procesového serveru.
 Volné místo na disku | 600 GB místa potřebného pro jednotka pro uchování.
-Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 |
+Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 s desktopovým prostředím |
 Národní prostředí operačního systému | Angličtina (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") není vyžadován pro konfigurační server s verzemi z [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery).
 Role Windows Serveru | Nepovolí: <br/> – Active Directory Domain Services <br/>– Internet Information Service <br/> – Hyper-V |

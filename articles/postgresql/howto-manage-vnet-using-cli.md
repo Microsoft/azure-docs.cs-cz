@@ -1,20 +1,20 @@
 ---
-title: Vytvoření a správě Azure Database for PostgreSQL VNet koncové body služby a pravidla pomocí Azure CLI
-description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for PostgreSQL VNet koncové body služby a pravidla pomocí příkazového řádku Azure CLI.
+title: Vytvářet a spravovat koncové body služby virtuální sítě a pravidel pro službu Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
+description: Tento článek popisuje, jak vytvářet a spravovat koncové body služby virtuální sítě a pravidel pro službu Azure Database for PostgreSQL pomocí příkazového řádku Azure CLI.
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.openlocfilehash: 7dc5a49e8b27d1a4e4126bef1cce638373e056fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: df2af0240852b23203e504d8233de4af48475438
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420926"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067567"
 ---
-# <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-using-azure-cli"></a>Vytváření a správa Azure Database pro koncové body služby virtuální sítě PostgreSQL pomocí Azure CLI
+# <a name="create-and-manage-vnet-service-endpoints-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Vytvoření a správa koncových bodů služby virtuální sítě pro službu Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure
 Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátní adresní prostor virtuální sítě pro váš server Azure Database for PostgreSQL. Pomocí pohodlné příkazů rozhraní příkazového řádku Azure (CLI), můžete vytvářet, aktualizovat, odstraňovat, seznamu a zobrazit koncové body služby virtuální sítě a pravidla ke správě serveru. Přehled služby Azure Database pro koncové body služby virtuální sítě PostgreSQL, včetně omezení, naleznete v tématu [– Azure Database for koncové body služby virtuální sítě serveru PostgreSQL](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve všech podporovaných oblastí pro službu Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky

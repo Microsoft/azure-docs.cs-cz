@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657998"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241691"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat s názvem hodnoty v zásadách Azure API Management
 Zásady služby API Management jsou vynikající funkcí systému, který chcete změnit chování rozhraní API prostřednictvím konfigurace webu Azure Portal. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad lze sestavit pomocí literálu textové hodnoty. výrazy zásad a s názvem hodnoty. 
@@ -27,10 +27,10 @@ Každá instance služby API Management má vlastnosti kolekce párů klíč/hod
 
 | Atribut | Type | Popis |
 | --- | --- | --- |
-| Display name |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
-| Value |string |Hodnota vlastnosti Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
-|Secret|Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
-| Tags |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
+| `Display name` |string |Alfanumerický řetězec, který se používá jako odkaz na vlastnost v zásadách |
+| `Value`        |string |Hodnota vlastnosti. Nesmí být prázdný nebo obsahovat jen mezerové znaky. |
+| `Secret`       |Boolean|Určuje, zda hodnota je tajný kód a měla šifrovat, nebo ne.|
+| `Tags`         |pole řetězce |Volitelné značky, pokud je zadaný, můžete použít k filtrování seznamu vlastností. |
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
@@ -55,7 +55,7 @@ Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zása
 
 Jakmile se vytvoří vlastnost, můžete ho upravit kliknutím na vlastnost. Pokud změníte název vlastnosti, všechny zásady, které odkazují na tuto vlastnost se automaticky aktualizují na použití nového názvu.
 
-Informace o úpravě vlastností pomocí rozhraní REST API najdete v tématu [upravit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/property?Patch).
+Informace o úpravě vlastností pomocí rozhraní REST API najdete v tématu [upravit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/property?patch).
 
 ## <a name="to-delete-a-property"></a>Chcete-li odstranit vlastnost
 
@@ -66,7 +66,7 @@ Chcete-li odstranit vlastnost, klikněte na tlačítko **odstranit** vedle vlast
 > 
 > 
 
-Informace o odstranění vlastnosti pomocí rozhraní REST API najdete v tématu [odstranit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/property?Delete).
+Informace o odstranění vlastnosti pomocí rozhraní REST API najdete v tématu [odstranit vlastnost pomocí rozhraní REST API](/rest/api/apimanagement/2019-01-01/property/delete).
 
 ## <a name="to-search-and-filter-named-values"></a>K vyhledávání a filtrování hodnot s názvem
 

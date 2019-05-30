@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057810fa8030321f9a94085f66bc1ea93dbc3830
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330002"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238943"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Přidávání, zakazování, povolování nebo odstraňování koncových bodů
 
@@ -52,7 +52,7 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
 3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
-4. Klikněte na koncový bod, který chcete zakázat, a v zobrazeném okně **Koncový bod** klikněte na **Upravit**.
+4. Klikněte na koncový bod, který chcete zakázat.
 5. V okně **Koncový bod** změňte stav koncového bodu na **Zakázáno** a pak klikněte na **Uložit**.
 6. Klienti budou dál posílat data na koncový bod po dobu odpovídající hodnotě Time-to-Live (TTL). Hodnotu TTL můžete změnit na stránce Konfigurace profilu Traffic Manageru.
 
@@ -61,7 +61,7 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
 3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
-4. Klikněte na koncový bod, který chcete zakázat, a v zobrazeném okně **Koncový bod** klikněte na **Upravit**.
+4. Klikněte na koncový bod, který chcete povolit.
 5. V okně **Koncový bod** změňte stav koncového bodu na **Povoleno** a pak klikněte na **Uložit**.
 6. Klienti budou dál posílat data na koncový bod po dobu odpovídající hodnotě Time-to-Live (TTL). Hodnotu TTL můžete změnit na stránce Konfigurace profilu Traffic Manageru.
 
@@ -70,8 +70,8 @@ Můžete také zakázat jednotlivé koncové body, které jsou součástí profi
 1. V prohlížeči se přihlaste k webu [Azure Portal](https://portal.azure.com).
 2. Na panelu hledání na portálu vyhledejte název **profilu služby Traffic Manager**, který chcete upravit, a pak na tento profil služby Traffic Manager klikněte v zobrazených výsledcích.
 3. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body**. 
-4. Klikněte na koncový bod, který chcete zakázat, a v zobrazeném okně **Koncový bod** klikněte na **Upravit**.
-5. V okně **Koncový bod** změňte stav koncového bodu na **Povoleno** a pak klikněte na **Uložit**.
+4. Klikněte na koncový bod, který chcete odstranit.
+5. V **koncový bod** okna, klikněte na tlačítko **odstranit**
 
 
 ## <a name="next-steps"></a>Další postup

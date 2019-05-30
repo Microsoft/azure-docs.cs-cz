@@ -8,19 +8,20 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145872"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271528"
 ---
-Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastní spravované Image virtuálních počítačů. Zadejte sdílený Galerie obrázků:
+Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace spravované Image. Zadejte sdílený Galerie obrázků:
 
 - Spravovat globální replikací obrázků.
 - Správa verzí a seskupení obrázky pro snadnější správu.
-- Zpřístupníte vaše Image s účty Zónově redundantního úložiště (ZRS) s vysokou dostupností v oblasti, které podporují zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám oblastmi.
-- Sdílení napříč předplatnými a dokonce i mezi tenanty používající RBAC.
+- Vysoce dostupných imagí s účty Zónově redundantního úložiště (ZRS) v oblasti, které podporují zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám oblastmi.
+- Sdílení napříč předplatnými a dokonce i mezi tenanty Active Directory (AD), pomocí RBAC.
+- Škálování nasazení pomocí bitové kopie repliky v jednotlivých oblastech.
 
 Pomocí Galerie obrázků Shared můžete sdílet vaše Image jiným uživatelům, objektů služby nebo skupiny služby AD v rámci vaší organizace. Sdílené bitové kopie je možné replikovat do více oblastí, pro rychlejší škálování vašeho nasazení.
 
@@ -42,7 +43,7 @@ Galerie obrázků sdílené funkce má více typů prostředků:
 
 ![Obrázek znázorňující, jak může mít více verzí image v galerii](./media/shared-image-galleries/shared-image-gallery.png)
 
-## <a name="image-definitions"></a>Definice imagí
+## <a name="image-definitions"></a>Definice bitové kopie
 
 Definice bitové kopie jsou logické seskupení pro verze image. K definici image obsahuje informace o proč image byla vytvořena, jaké je pro operační systém a informace o pomocí image. Definici image je jako plán pro všechny podrobnosti související s vytvářením konkrétní image. Není-li nasadit virtuální počítač z definice bitové kopie, ale z verze image vytvořené z definice.
 
@@ -51,9 +52,9 @@ Existují tři parametry pro každou definici bitové kopie, které se používa
 
 |Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
-|myImage1|Contoso|Finance|Back-end|
-|myImage2|Contoso|Finance|Front-end|
-|myImage3|Testování|Finance|Front-end|
+|myImage1|Contoso|Finance|Back-endu|
+|myImage2|Contoso|Finance|Front-endu|
+|myImage3|Testování|Finance|Front-endu|
 
 Všechny tyto tři mají jedinečné sady hodnot. Formát je podobný jak aktuálně určíte vydavatele, nabídky a skladové položky pro [Image Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) v prostředí Azure PowerShell, abyste získali nejnovější verzi Marketplace image. Každá definice obrázek musí mít jedinečnou sadu tyto hodnoty.
 
@@ -81,7 +82,7 @@ V následující tabulce jsou uvedeny zdrojových oblastí. Všech veřejných o
 | Austrálie – střed 2 | Východní Asie       | Jižní Korea – jih      | Spojené království – západ         |
 | Austrálie – východ      | USA – východ         | Středoseverní USA | Západní střed USA |
 | Austrálie – jihovýchod | Východní USA 2       | Severní Evropa     | Západní Evropa     |
-| Brazílie – jih        | Východ USA 2 – EUAP  | Středojižní USA | Indie – západ      |
+| Brazílie – jih        | East US 2 EUAP  | Středojižní USA | Indie – západ      |
 | Kanada – střed      | Francie – střed  | Indie – jih      | Západní USA         |
 | Kanada – východ         | Francie – jih    | Jihovýchodní Asie   | Západní USA         |
 | Střed Indie       | Japonsko – východ      | Velká Británie – sever         | Západní USA 2       |
@@ -102,7 +103,26 @@ Další informace najdete v tématu [kontrola využití prostředků proti omeze
 ## <a name="scaling"></a>Škálování
 Sdílené Galerie Imagí můžete zadat počet replik, které chcete do imagí Azure. Tato funkce umožňuje scénáře nasazení více virtuálních počítačů při nasazení virtuálního počítače je možné rozdělit do různých replik snižuje pravděpodobnost vytvoření instance zpracování omezený přetížení jen jednu repliku.
 
+
+Pomocí Galerie obrázků sdílené, teď můžete nasadit až 1 000 instancí virtuálních počítačů ve škálovací sadě virtuálního počítače (až od 600 spravované Image). Bitové kopie replik poskytovat lepší výkon nasazení, spolehlivost a konzistence.  Počet různých replik můžete nastavit v každé cílové oblasti, podle potřeb škálování pro danou oblast. Protože každá replika hluboká kopie bitové kopie, díky tomu Škálováním svých nasazení lineárně s každou další repliku. Chápeme žádné dvě bitové kopie nebo oblasti jsou stejné, tady je náš obecných pokynů, jak používat repliky v oblasti:
+
+- Pro každých 20 virtuálních počítačů, které vytvoříte současně doporučujeme že ponechat jednu repliku. Například pokud vytváříte 120 virtuálních počítačů současně pomocí stejnou bitovou kopii v oblasti, doporučujeme že ponechat minimálně 6 replik bitové kopie. 
+- Pro každé nasazení škálovací sady s až 600 instancí doporučujeme že ponechat nejméně jedna replika. Například pokud vytváříte 5 škálovací sady souběžně, každý s 600 instancí virtuálních počítačů pomocí stejnou bitovou kopii v jedné oblasti, doporučujeme že ponechat minimálně 5 repliky bitové kopie. 
+
+Vždy doporučujeme za cenu značných počet replik faktorech, jako je velikost obrázku, obsah a typ operačního systému.
+
+
 ![Obrázek znázorňující, jak můžete škálovat imagí](./media/shared-image-galleries/scaling.png)
+
+
+
+## <a name="make-your-images-highly-available"></a>Zpřístupnit vaše Image s vysokou dostupností
+
+[Azure Zónově redundantní úložiště (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) poskytuje odolnost vůči selhání zóny dostupnosti v oblasti. Díky všeobecné dostupnosti sdílené Galerie Imagí můžete ukládání vašich imagí účty ZRS v oblasti se zónami dostupnosti. 
+
+Typ účtu můžete také pro každou z cílových oblastí. Výchozí typ účtu úložiště je Standard_LRS, ale můžete použít Standard_ZRS pro oblasti se zónami dostupnosti. Kontrola regionální dostupnosti ZRS [tady](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
+
+![Obrázek znázorňující ZRS](./media/shared-image-galleries/zrs.png)
 
 
 ## <a name="replication"></a>Replikace
@@ -115,24 +135,23 @@ Oblasti, kterou verzi sdílené bitové kopie se replikuje do je možné aktuali
 
 ## <a name="access"></a>Access
 
-Galerie obrázků sdílené, sdílené bitové kopie a sdílené bitové kopie verze jsou všechny prostředky, je může sdílet, pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny. Můžete sdílet i přístup osobám mimo tenanta, které byly vytvořeny v rámci. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo Škálovací sady virtuálních počítačů.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
+Galerie obrázků sdílené, definici Image a Image verze jsou všechny prostředky, je může sdílet, pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny. Můžete sdílet i přístup osobám mimo tenanta, které byly vytvořeny v rámci. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo Škálovací sady virtuálních počítačů.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
 
-| Sdílené s uživatelem     | Sdílená galerie obrázků | Sdílené bitové kopie | Sdílené verze Image |
+| Sdílené s uživatelem     | Sdílená galerie obrázků | Definice image | Verze bitové kopie |
 |----------------------|----------------------|--------------|----------------------|
 | Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Sdílené bitové kopie         | Ne                   | Ano          | Ano                  |
-| Sdílené verze Image | Ne                   | Ne           | Ano                  |
+| Definice image     | Ne                   | Ano          | Ano                  |
 
-Doporučujeme, abyste sdílení na úrovni Galerie pro dosažení co nejlepších výsledků. Další informace o RBAC najdete v tématu [spravovat přístup k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
+Doporučujeme, abyste sdílení na úrovni Galerie pro dosažení co nejlepších výsledků. Nedoporučujeme sdílení verze jednotlivých obrázků. Další informace o RBAC najdete v tématu [spravovat přístup k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
-Image můžete také sdílet, ve velkém měřítku, mezi tenanty používající registrace aplikace s více tenanty. Další informace o sdílení imagí mezi tenanty najdete v tématu [sdílet Galerie imagí virtuálních počítačů tenantů Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
+Bitové kopie mohou také být sdíleny, ve velkém měřítku, i napříč tenanty používající registrace aplikace s více tenanty. Další informace o sdílení imagí mezi tenanty najdete v tématu [sdílet Galerie imagí virtuálních počítačů tenantů Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Fakturace
 Za použití služby galerie sdílených obrázků se neúčtují žádné poplatky navíc. Účtuje se pro následující prostředky:
 - Náklady na úložiště ukládání verzí sdílených bitových kopií. Cena závisí na počtu replik verze image a počtem oblastí verze se replikuje do. Například pokud máte 2 bitových kopií a obě se replikují do 3 oblasti, pak jste se změní za 6 spravované disky na základě jejich velikosti. Další informace najdete v tématu [cenami služby Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Poplatky za výchozí přenos dat sítě pro replikaci první verze image ze zdrojové oblasti na replikovaných oblastech. Následující repliky jsou zpracovány v rámci oblasti, takže se neúčtují žádné další poplatky. 
 
-## <a name="updating-resources"></a>Aktualizují se prostředky.
+## <a name="updating-resources"></a>Aktualizují se prostředky
 
 Po vytvoření můžete provedete některé změny prostředků Galerie obrázků. Je omezený na:
  
@@ -148,7 +167,7 @@ definice bitové kopie:
 Verze Image:
 - Počet replik místní
 - Cílové oblasti
-- Vyloučení z nejnovější
+- Vyloučit z nejnovější
 - Životnost datum ukončení
 
 

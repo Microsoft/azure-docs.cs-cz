@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: b2aa3eb6a117bbbdcf9c4aa44161dc25ddea2f1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484369"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241915"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v SaaS aplikaci pomocí vzoru databáze na tenanta s Azure SQL Database
  
 Jak databázi aplikace vyvíjí, změny nevyhnutelně musí být provedené v datech schématu nebo odkaz na databázi.  Úlohy údržby databáze je potřeba také pravidelně. Správa aplikace, která používá databázi za vzor tenanta vyžaduje použití těchto změn nebo úlohy údržby v počtu klientských databází.
 
-Tento kurz zkoumá dva scénáře: nasazení aktualizací referenčních dat u všech tenantů a nové sestavení indexu pro tabulku obsahující referenční data. [Elastic jobs](sql-database-elastic-jobs-overview.md) funkce se používá k provedení těchto akcí ve všech databázích tenantů a v databázi šablony použité k vytvoření nového tenanta databází.
+Tento kurz zkoumá dva scénáře: nasazení aktualizací referenčních dat u všech tenantů a nové sestavení indexu pro tabulku obsahující referenční data. [Elastic jobs](elastic-jobs-overview.md) funkce se používá k provedení těchto akcí ve všech databázích tenantů a v databázi šablony použité k vytvoření nového tenanta databází.
 
 V tomto kurzu se naučíte:
 
@@ -46,7 +46,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Úvod do principu správy schématu SaaS
 
-Databáze na tenanta vzor efektivně izoluje dat tenantů, ale zvyšuje počet databází pro správu a údržbu. [Elastické úlohy](sql-database-elastic-jobs-overview.md) usnadňuje správu a Správa databází SQL. Úlohy umožňují bezpečně a spolehlivě spouštět úlohy (skriptů T-SQL) pro skupinu databází. Úlohy můžete nasadit schéma a běžným změnám referenčních dat napříč všemi databázemi tenantů v aplikaci. Elastické úlohy může také sloužit k udržování *šablony* databáze používaná k vytváření nových tenantů, aby se vždy obsahuje nejnovější schéma a referenční data.
+Databáze na tenanta vzor efektivně izoluje dat tenantů, ale zvyšuje počet databází pro správu a údržbu. [Elastické úlohy](elastic-jobs-overview.md) usnadňuje správu a Správa databází SQL. Úlohy umožňují bezpečně a spolehlivě spouštět úlohy (skriptů T-SQL) pro skupinu databází. Úlohy můžete nasadit schéma a běžným změnám referenčních dat napříč všemi databázemi tenantů v aplikaci. Elastické úlohy může také sloužit k udržování *šablony* databáze používaná k vytváření nových tenantů, aby se vždy obsahuje nejnovější schéma a referenční data.
 
 ![obrazovka](media/saas-tenancy-schema-management/schema-management-dpt.png)
 
@@ -133,5 +133,4 @@ Zkuste [vykazování Ad hoc kurzu](saas-tenancy-cross-tenant-reporting.md) prozk
 ## <a name="additional-resources"></a>Další materiály
 
 * [Další kurzy, které vycházejí z nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Správa cloudových databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-overview.md)
-* [Vytvoření a správa databází s horizontálním navýšením kapacity](sql-database-elastic-jobs-create-and-manage.md)
+* [Správa cloudových databází s horizontálním navýšením kapacity](elastic-jobs-overview.md)

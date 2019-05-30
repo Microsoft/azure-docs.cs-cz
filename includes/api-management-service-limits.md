@@ -10,13 +10,13 @@ ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: fc945a7e9389c8aec48a6a1dba969fbf92002d3a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553374"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238642"
 ---
-| Prostředek | Omezení |
+| Resource | Omezení |
 | --- | --- |
 | Maximální počet jednotek škálování | 10 za oblasti<sup>1</sup> |
 | Velikost mezipaměti | 5 GB za každou jednotku<sup>2</sup> |

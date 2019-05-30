@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: a70a887ccb19d9c1cbdb5f8ebf6aa8d4b25a0dfd
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65161067"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388997"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Úloha Azure DevOps pro Průzkumník dat Azure
 
@@ -67,7 +67,7 @@ Vytvořte následující ukázka složky (*funkce*, *zásady*, *tabulky*) v úlo
 
     ![Vytvořit proměnnou](media/devops/create-variable.png)
 
-    Najít Endpoint_URL, na stránku přehled vaší **Explorer Cluster se službou Azure Data** ve službě Azure portal obsahuje URI clusteru Průzkumník dat Azure. Vytvořit identifikátor URI v následujícím formátu `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Například https://kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB.
+    Najít Endpoint_URL, na stránku přehled vaší **Explorer Cluster se službou Azure Data** ve službě Azure portal obsahuje URI clusteru Průzkumník dat Azure. Vytvořit identifikátor URI v následujícím formátu `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Například https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
 
     ![URI clusteru Azure Průzkumník dat](media/devops/adx-cluster-uri.png)
 
@@ -85,7 +85,7 @@ Vytvořte následující ukázka složky (*funkce*, *zásady*, *tabulky*) v úlo
 
 1. Klikněte na **Kusto příkaz** na levé straně a aktualizace úloh s následujícími informacemi:
     * **Zobrazovaný název**: Název úkolu
-    * **Cesta k souboru**: V **tabulky** úkolů, zadejte */Tables/*.csl, protože soubory vytvoření tabulky jsou v *tabulky* složky.
+    * **Cesta k souboru**: V **tabulky** úkolů, zadejte */Tables/* .csl, protože soubory vytvoření tabulky jsou v *tabulky* složky.
     * **Adresa URL koncového bodu**: Zadejte `EndPoint URL`proměnné vytvořené v předchozím kroku.
     * Vyberte **koncový bod služby používá** a vyberte **+ nová**.
 

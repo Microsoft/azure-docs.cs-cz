@@ -4,15 +4,15 @@ description: Tento článek popisuje kategorie konflikt a zásady řešení konf
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 98e9f5fff1b74d417ee07ed0056c8046b49baa17
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892587"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236536"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Zásady řešení a typy konfliktů
 
@@ -30,7 +30,7 @@ Pro účty Azure Cosmos, nakonfigurovaný s využitím více oblastí zápisu m�
 
 Azure Cosmos DB nabízí flexibilní založená na zásadách mechanismus k řešení konfliktů při zápisu. Můžete vybrat mezi dvěma zásadami řešení konfliktů v kontejneru Azure Cosmos:
 
-- **Posledního zápisu Wins (LWW)**: Tato zásada řešení používá ve výchozím nastavení vlastnosti definované v systému časové razítko. Je založen na protokolu synchronizaci času hodin. Pokud používáte rozhraní SQL API, můžete zadat jakoukoli jinou vlastní číselné vlastnosti (například vlastní pojem časové razítko) se použije k odstranění konfliktů. Vlastní číselné vlastnosti se také označuje jako *cesta nalezení konflikt*. 
+- **Posledního zápisu Wins (LWW)** : Tato zásada řešení používá ve výchozím nastavení vlastnosti definované v systému časové razítko. Je založen na protokolu synchronizaci času hodin. Pokud používáte rozhraní SQL API, můžete zadat jakoukoli jinou vlastní číselné vlastnosti (například vlastní pojem časové razítko) se použije k odstranění konfliktů. Vlastní číselné vlastnosti se také označuje jako *cesta nalezení konflikt*. 
 
   Pokud dva nebo více položek konflikt na vložení nebo nahrazení operace, stane položek s nejvyšší hodnotou pro cestu k řešení konfliktů vítěze. Systém určí vítěze máte více položek na stejnou číselnou hodnotu pro cestu k řešení konfliktů. Všechny oblasti zaručeno směřovat do jednoho vítěze a end nahoru se stejnou verzí položky potvrzeny. Při odstranění je v konfliktu se podílejí, vždy odstraněné verze služby wins vložení nebo nahrazení je v konfliktu. Tento výsledek nastane bez ohledu na cestu řešení konfliktů.
 

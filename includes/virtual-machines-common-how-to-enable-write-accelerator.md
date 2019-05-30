@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 05/23/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 7b9b30f1598f7e50d25b15aaf2fda896ee9e5012
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147419"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248868"
 ---
 # <a name="enable-write-accelerator"></a>Povolení akcelerátoru zápisu
 
@@ -48,6 +48,7 @@ Existují omezení Azure Premium Storage VHD na virtuální počítač, který m
 
 | SKLADOVOU POLOŽKU VIRTUÁLNÍHO POČÍTAČE | Počet disků akcelerátorem zápisu | Zápis disku akcelerátoru IOPS na virtuální počítač |
 | --- | --- | --- |
+| M208ms_v2, M208s_v2| 8 | 10000 |
 | M128ms, 128s | 16 | 20000 |
 | M64s M64ms M64ls, | 8 | 10000 |
 | M32ms M32s M32ls M32ts, | 4 | 5000 |

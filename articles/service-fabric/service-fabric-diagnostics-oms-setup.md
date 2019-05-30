@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170966"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306866"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavte si protokoly Azure monitoru pro cluster
 
@@ -62,7 +62,7 @@ Pokud používáte Windows, pokračujte následujícími kroky pro připojení p
 
 3. Na **protokoly účtu úložiště** stránce **přidat** v horní části, chcete-li přidat váš cluster protokoly do pracovního prostoru.
 
-4. Vyberte **účtu úložiště** přidat příslušný účet vytvořený ve vašem clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg\<resourceGroupName\>**. Můžete to ověřit také pomocí šablony Azure Resource Manageru použít k nasazení clusteru, kontrolou hodnoty používané pro **applicationDiagnosticsStorageAccountName**. Pokud název není uveden, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
+4. Vyberte **účtu úložiště** přidat příslušný účet vytvořený ve vašem clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg\<resourceGroupName\>** . Můžete to ověřit také pomocí šablony Azure Resource Manageru použít k nasazení clusteru, kontrolou hodnoty používané pro **applicationDiagnosticsStorageAccountName**. Pokud název není uveden, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
 
 5. Určení datového typu. Nastavte ho na **události Service Fabric**.
 
@@ -110,7 +110,7 @@ $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
-# Log in to Azure and access the correct subscription
+# Sign in to Azure and access the correct subscription
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId $SubID 
 

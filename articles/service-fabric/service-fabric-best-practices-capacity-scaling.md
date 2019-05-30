@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: c72392e46805049703300dd6f60fc7bf08b9053b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9bddb6552b11dd506ee3e2c1c416c15da11048b7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235784"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258744"
 ---
 # <a name="capacity-planning-and-scaling"></a>Plánování kapacity a škálování
 
@@ -70,6 +70,9 @@ Vlastnosti uzlu a omezení umístění, které jsou deklarovány proveďte násl
 2. Spustit `Get-ServiceFabricNode` abyste měli jistotu, že uzel přešla na zakázáno. Pokud ne, počkejte, dokud nebude uzel je zakázaná. To může trvat několik hodin pro každý uzel. Nechcete pokračovat, dokud se uzel přešla na zakázáno.
 3. Snížit počet virtuálních počítačů jednou v tomto typu uzlu. Nejvyšší instance virtuálního počítače se nyní odeberou.
 4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy vertikálně snížit kapacitu počtu instancí ve primárního uzlu typy menší, než co zaručuje úroveň spolehlivosti. Zobrazit [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) seznam doporučených instancí.
+
+> [!NOTE]
+> Je podporovaný scénář, kdy se mají provádět operace vertikální škálování: Můžete migrovat Moje clusteru Service Fabric a aplikace z nespravovaných disků na Managed Disks bez výpadků aplikace. Tím, že zajistíte nového virtuálního počítače škálovací sady se spravovanými disky a provádění aplikace upgradu se pomocí omezení umístění, které se zaměřují zřízené kapacity; cluster Service Fabric můžete naplánovat úlohy zřízený cluster uzel kapacity nasazení podle domény Upgrade bez výpadků aplikace. [Azure základní SKU nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) koncových bodů back-endový fond může být virtuální počítače v jedné skupiny dostupnosti nebo škálovací sady virtuálních počítačů. To znamená, že nástroj pro vyrovnávání zatížení základní SKU nelze použít, pokud přesunout vaše aplikace Service Fabricu systémy mezi škálovacími sadami, aniž by to způsobilo dočasné inaccessibility Service Fabric koncový bod správy, i když clusteru a clusteru svou aplikaci jsou pořád spuštěné; běžně uživatele zřídit nástroj pro vyrovnávání zatížení standardní SKU při provádění virtuální IP adresa (VIP) prohození mezi základní SKU LB a standardní SKU LB prostředky, jak zmírnit všechny budoucí přibližně 30 sekund se tak inaccessibility vyžadované pro prohození virtuálních IP adres.
 
 ## <a name="horizontal-scaling"></a>Horizontální škálování
 

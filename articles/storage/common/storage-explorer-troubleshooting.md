@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 6ada4a25f24a6dcbb1ebd54daad15b37127f7a21
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 980dc850537b7419e4ee48391acd5ba971fb3fed
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154195"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306721"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží pro Azure Storage Exploreru
 
@@ -66,7 +66,7 @@ Zatím nemáme řešení související RBAC v tuto chvíli. Jako alternativní �
 Chyby certifikátů jsou způsobeny jednu ze dvou následujících situací:
 
 1. Aplikace je propojena prostřednictvím "transparentní proxy server", což znamená, že server (například serveru vaší společnosti) zachycuje přenosy HTTP, dešifruje je a pak je šifruje pomocí certifikátu podepsaného svým držitelem.
-2. Spustíte aplikaci, která je do zpráv protokolu HTTPS, které jste dostali vkládá certifikát SSL podepsaný svým držitelem. Příkladem aplikací, které vložení certifikátů obsahuje antivirový program a síťové přenosy kontroly software.
+2. Teď máte spuštěnou aplikaci, která je do zpráv protokolu HTTPS, které jste dostali vkládá certifikát SSL podepsaný svým držitelem. Příkladem aplikací, které vložení certifikátů obsahuje antivirový program a síťové přenosy kontroly software.
 
 Pokud Průzkumník služby Storage se zobrazí certifikát podepsaný svým držitelem nebo nedůvěryhodné, můžete už vědět, zda byla změněna přijatou zprávu protokolu HTTPS. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete dát pokyn Průzkumníka služby Storage důvěřovat provedením následujících kroků:
 
@@ -75,7 +75,7 @@ Pokud Průzkumník služby Storage se zobrazí certifikát podepsaný svým drž
 
 Tento problém může být také výsledkem několik certifikátů (kořenové a zprostředkující). Oba certifikáty musí být přidaný do překonat chyby.
 
-Pokud si nejste jisti odkud certifikátu, můžete zkusit těchto pokynů vyhledejte ho:
+Pokud si nejste jisti odkud certifikátu, můžete vyzkoušet následující postup vás bude:
 
 1. Nainstalujte OpenSSL.
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html) (jakákoli z odlehčených verzí by měl být dostatečná)
@@ -88,13 +88,13 @@ Pokud si nejste jisti odkud certifikátu, můžete zkusit těchto pokynů vyhled
 5. Po nalezení jakékoli certifikáty podepsané svým držitelem pro každé z nich, zkopírujte a vložte všechno z a to včetně **---BEGIN CERTIFICATE---** k **---END CERTIFICATE---** do nového souboru .cer.
 6. Otevřete Průzkumníka služby Storage, klikněte na tlačítko **upravit** > **certifikáty SSL** > **importovat certifikáty**a pak pomocí nástroje pro výběr souborů vyhledejte, vyberte, a Otevřete soubory .cer, které jste vytvořili.
 
-Pokud nemůžete najít žádné certifikáty podepsané svým držitelem podle předchozích kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu o další pomoc. Alternativně můžete spustit z příkazového řádku pomocí Průzkumníka služby Storage `--ignore-certificate-errors` příznak. Při spuštění s tímto příznakem, Průzkumníka služby Storage se bude ignorovat chyby certifikátů.
+Pokud nemůžete najít žádné certifikáty podepsané svým držitelem podle předchozích kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu o další pomoc. Můžete také spustit z příkazového řádku pomocí Průzkumníka služby Storage `--ignore-certificate-errors` příznak. Při spuštění s tímto příznakem, Průzkumníka služby Storage se bude ignorovat chyby certifikátů.
 
 ## <a name="sign-in-issues"></a>Problémy s přihlašováním
 
 ### <a name="blank-sign-in-dialog"></a>Prázdné přihlašovacího dialogového okna
 
-Prázdný znak v dialogových oknech jsou často způsobeny služby AD FS s dotazem, Průzkumníka služby Storage provádět přesměrování, který nepodporuje elektronovým. Chcete-li vyřešit tento problém může pokusit použít tok kódu zařízení pro přihlášení do. To provedete podle následujících kroků:
+Prázdný znak v dialogových oknech jsou často způsobeny služby AD FS s dotazem, Průzkumníka služby Storage provádět přesměrování, který nepodporuje elektronovým. Chcete-li tento problém obejít, pokuste se použít tok kódu zařízení pro přihlášení. Uděláte to tak, proveďte následující kroky:
 
 1. Nabídka: Ve verzi Preview -> "Pomocí přihlášení zařízení kód".
 2. Otevřete dialogové okno připojit, (buď prostřednictvím moduly ikonu na levé straně svislá čára, nebo "Přidat účet" na panel účtu).
@@ -109,7 +109,7 @@ Pokud se potíže při přihlašování k účtu, který chcete použít, proto�
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Opětovné ověření smyčky nebo změnit hlavní název uživatele
 
-Pokud jste se ve smyčce opětovné ověření, nebo se změnily (UPN) jednoho z vašich účtů, zkuste následující:
+Pokud jste ve smyčce opětovné ověření, nebo se změnily (UPN) jednoho z vašich účtů, vyzkoušejte následující kroky:
 
 1. Odeberte všechny účty a potom zavřete Průzkumníka služby Storage
 2. Odstranit. IdentityService složky z vašeho počítače. Na Windows, se nachází ve složce `C:\users\<username>\AppData\Local`. Pro Mac a Linux můžete najít složku v kořenovém adresáři uživatele.
@@ -117,7 +117,7 @@ Pokud jste se ve smyčce opětovné ověření, nebo se změnily (UPN) jednoho z
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
-Podmíněný přístup není podporovaný, když Průzkumníka služby Storage se používá v systému Windows 10, Linuxu nebo macOS. Toto je kvůli omezením v knihovně AAD používané Průzkumníka služby Storage.
+Podmíněný přístup není podporovaný, když Průzkumníka služby Storage se používá v systému Windows 10, Linuxu nebo macOS. Toto je kvůli omezení v knihovně AAD používané Průzkumníka služby Storage.
 
 ## <a name="mac-keychain-errors"></a>Chyby klíčenku Mac.
 
@@ -136,25 +136,25 @@ MacOS řetězce klíčů můžete získat někdy do stavu, která způsobuje pro
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Obecné přihlášení kroky řešení potíží
 
-* Pokud jste v systému macOS a okna přihlášení se zobrazí nikdy selhání "čeká se na ověřování..." Dialogové okno, opakujte [tyto kroky](#mac-keychain-errors)
+* Pokud jste v systému macOS a selhání "čeká se na ověřování..." se nikdy objeví okno přihlášení Dialogové okno, opakujte [tyto kroky](#mac-keychain-errors)
 * Restartování Storage Exploreru
 * Pokud je prázdné okno ověřování, počkejte aspoň jednu minutu před jeho zavřením dialogu ověřování.
 * Ujistěte se, že nastavení proxy serveru a certifikátů pro počítače a Průzkumníka služby Storage jsou správně nakonfigurované nastavení.
-* Pokud jste na Windows a mají přístup k sadě Visual Studio 2017 na stejném počítači a přihlášení, zkuste se přihlásit do sady Visual Studio 2017. Po úspěšném přihlášení do sady Visual Studio 2017 byste měli moct otevírat Průzkumníka služby Storage a zobrazí váš účet v panel účtu.
+* Pokud jste na Windows a mají přístup k Visual Studio 2019 na stejném počítači a přihlášení, zkuste se přihlásit k aplikaci Visual Studio 2019. Po úspěšné přihlašování ve službě Visual Studio 2019 můžete otevřít Průzkumníka služby Storage a zobrazí váš účet v panel účtu.
 
 Pokud nefunguje žádný z těchto metod [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>Chybějící předplatná a nefunkční tenantů
 
-Pokud se vám nedaří načíst vaše předplatná po úspěšném přihlášení, zkuste následující metody pro řešení potíží:
+Pokud nemůžete načíst vaše předplatná po úspěšném přihlášení, zkuste následující metody pro řešení potíží:
 
-* Ověřte, že váš účet má přístup k předplatným, které očekáváte. Po přihlášení k portálu pro prostředí Azure, které se pokoušíte použít, můžete ověřit váš přístup.
-* Ujistěte se, že jste přihlášení pod správnou Azure prostředí (Azure, Azure China 21Vianet, Azure Germany, Azure US Government nebo vlastní prostředí).
-* Pokud jste za proxy serverem, ujistěte se, že jste správně nakonfigurovali proxy Průzkumníka služby Storage.
+* Ověřte, že váš účet má přístup k předplatným, které očekáváte. Můžete ověřit váš přístup při přihlášení k portálu pro prostředí Azure, které zkoušíte použít.
+* Ujistěte se, že jste přihlášení pomocí Azure správné prostředí (Azure, Azure China 21Vianet, Azure Germany, Azure US Government nebo vlastní prostředí).
+* Pokud jste za proxy serverem, ujistěte se, že jste jste správně nakonfigurovali proxy Průzkumníka služby Storage.
 * Zkuste odebrat a znovu přidat účet.
-* Pokud je odkaz "Další informace", podívejte se a naleznete v tématu co chybové zprávy jsou hlášena pro klienty, které se nedaří. Pokud si nejste jisti co dělat s chybou zprávy najdete v tématu a potom bez obav [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
+* Pokud je odkaz "Další informace", podívejte se a naleznete v tématu co chybové zprávy jsou hlášena pro klienty, které se nedaří. Pokud you'ren't opravdu co dělat s chybou můžete zprávy, najdete v tématu a potom bez obav [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
-## <a name="cannot-remove-attached-account-or-storage-resource"></a>Nelze odebrat připojený účet nebo úložiště prostředků
+## <a name="cant-remove-attached-account-or-storage-resource"></a>Nelze odebrat připojený účet nebo úložiště prostředků
 
 Pokud nemůžete odebrat účet připojené nebo prostředek úložiště přes uživatelské rozhraní, můžete ručně odstranit všechny připojené prostředky tak, že odstraníte následující složky:
 
@@ -180,17 +180,17 @@ Nejprve se ujistěte, že jsou správně následující informace, které jste z
 
 ### <a name="common-solutions"></a>Běžná řešení
 
-Pokud stále dochází k problémům, zkuste následující metody pro řešení potíží:
+Pokud máte pořád problémy, zkuste následující metody pro řešení potíží:
 
 * Pokud se můžete připojit k Internetu bez použití vašeho proxy serveru, ověřte, zda Průzkumníka služby Storage funguje bez nastavení proxy serveru povolené. Pokud je to tento případ, může být problém se vaše nastavení proxy serveru. Práce se správcem vaší proxy serveru a identifikovat problémy.
 * Ověřte, že dalších aplikací se proxy server fungovat podle očekávání.
-* Ověřte, že se můžete připojit k portálu pro prostředí Azure, které se pokoušíte použít
+* Ověřte, že se můžete připojit k portálu pro prostředí Azure, které se snažíte použít
 * Ověřte, zda se zobrazila odpovědi z vašich koncových bodů služby. Zadejte jednu z vašeho koncového bodu adresy URL do prohlížeče. Pokud se můžete připojit, byste měli obdržet k InvalidQueryParameterValue nebo podobné odpovědi ve formátu XML.
 * Pokud někdo jiný používá také Průzkumníka služby Storage s proxy serverem, ověřte, že se můžou připojit. Pokud se mohou připojit, bude pravděpodobně nutné kontaktovat správce proxy serveru.
 
 ### <a name="tools-for-diagnosing-issues"></a>Nástroje pro diagnostiku problémů
 
-Pokud máte síťové nástroje, jako je například Fiddleru pro Windows, je možné, že k diagnostice problémů následujícím způsobem:
+Pokud máte síťové nástroje, jako je například Fiddleru pro Windows, můžete diagnostikovat problémy následujícím způsobem:
 
 * Pokud máte pro seznámení se základními váš proxy server, budete muset nakonfigurovat nástroj síťové připojení přes proxy server.
 * Zkontrolujte číslo portu používané nástrojem vaší sítě.
@@ -202,16 +202,16 @@ Pokud máte síťové nástroje, jako je například Fiddleru pro Windows, je mo
 
 Pokud vaše nastavení proxy serveru jsou správné, bude pravděpodobně nutné obraťte se na správce serveru proxy, a
 
-* Ujistěte se, že váš proxy server nedochází k blokování provozu do koncových bodů Azure management nebo prostředek.
+* Ujistěte se, že váš proxy server nebrání v provozu do koncových bodů Azure management nebo prostředek.
 * Zkontrolujte protokol ověřování používá proxy server. Průzkumník služby Storage v současné době nepodporuje proxy servery protokolu NTLM.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Chybová zpráva "Nelze načíst podřízené položky"
 
-Pokud jste připojení k Azure prostřednictvím proxy serveru, ověřte správnost nastavení serveru proxy. Pokud je udělen přístup k prostředku z vlastníka předplatného nebo účet, ověřte, zda přečetl(a) nebo seznamu oprávnění pro daný prostředek.
+Pokud jste připojeni k Azure prostřednictvím proxy serveru, ověřte správnost nastavení serveru proxy. Pokud jste udělen přístup k prostředku od vlastníka předplatného nebo účtu, zkontrolujte, zda si přečetl(a) nebo seznamu oprávnění pro daný prostředek.
 
-## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Připojovací řetězec neobsahuje kompletní konfigurace nastavení
+## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Připojovací řetězec nebude mít úplný nastavení konfigurace
 
-Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů účtu úložiště. Pokud chcete potvrdit, pokud se jedná o tento případ, přejděte na portál a vyhledejte svůj účet úložiště. Můžete rychle to provedete kliknutím pravým tlačítkem na uzel účtu úložiště a kliknutím na "Otevřít v portál". Až to uděláte, přejděte do okna "Přístupových klíčů". Pokud nemáte oprávnění k zobrazení klíče, pak se zobrazí stránka se zprávou "Nemáte přístup". Chcete-li tento problém obejít, můžete získat klíče účtu z někdo jiný a připojit se název a klíč, nebo můžete požádat jiného pro SAS účtu úložiště a použít ho k připojení k účtu úložiště.
+Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů účtu úložiště. Pokud chcete potvrdit, pokud se jedná o tento případ, přejděte na portál a vyhledejte svůj účet úložiště. Můžete rychle to provedete kliknutím pravým tlačítkem na uzel účtu úložiště a kliknutím na "Otevřít v portál". Až to uděláte, přejděte do okna "Přístupových klíčů". Pokud nemáte oprávnění k zobrazení klíče, pak se zobrazí stránka se zprávou "Nemáte přístupová oprávnění". Chcete-li tento problém obejít, můžete získat klíče účtu z někdo jiný a připojit se název a klíč, nebo můžete požádat jiného pro SAS účtu úložiště a použít ho k připojení k účtu úložiště.
 
 Pokud se zobrazí klíče účtu, založte problém na Githubu, abychom mohli pomoct problém vyřešit.
 

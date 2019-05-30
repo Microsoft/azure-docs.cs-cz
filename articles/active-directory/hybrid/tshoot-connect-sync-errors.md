@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ba74961eb549afd2fcf7c10f2d8b981e389a2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381629"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298754"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Při synchronizaci dat identity z Windows Server Active Directory (AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek obsahuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak opravit chyby. Tento článek obsahuje běžné typy chyb a nemusí zahrnovat všechny možné chyby.
@@ -190,7 +190,7 @@ Synchronizované uživatele byl změněn přípona UserPrincipalName z jedné fe
 
 #### <a name="example"></a>Příklad:
 1. Bob Smith, účet pro Contoso.com, získá přidat jako nový uživatel ve službě Active Directory s UserPrincipalName bob@contoso.com
-2. Bob se přesune do jiné divize Contoso.com, Fabrikam.com volá a jeho hodnota UserPrincipalName se změní na bob@fabrikam.com
+2. Bob se přesune do jiné divize Contoso.com, Fabrikam.com volá a jejich UserPrincipalName se změní na bob@fabrikam.com
 3. Federované domény Azure Active Directory jsou domény contoso.com a fabrikam.com.
 4. UserPrincipalName Boba neaktualizuje a má za následek chybu při synchronizaci "FederatedDomainChangeError".
 
@@ -221,7 +221,7 @@ Pokud atribut překračuje maximální povolenou velikost, maximální délku ne
 ### <a name="how-to-fix"></a>K vyřešení
 1. Ujistěte se, že je atribut, který způsobil chybu v rámci omezení na povolené.
 
-## <a name="existing-admin-role-conflict"></a>Konflikt existujících rolí správce
+## <a name="existing-admin-role-conflict"></a>Konflikt existující Role Správce
 
 ### <a name="description"></a>Popis
 **Existující konflikt Role správce** dojde u objektu uživatele během synchronizace po tento objekt uživatele:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db515454c68fe3a7eb1a4616c3278d9fc93ddb2c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621458"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258667"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Spravovat aplikace a služby jako prostředky Azure Resource Manageru
 
@@ -258,6 +258,17 @@ Následující fragment kódu ukazuje různé druhy prostředků, které je mož
    > *ApiVersion* musí být nastaveno na `"2017-07-01-preview"`. Tuto šablonu můžete také nasadit nezávisle na clusteru, za předpokladu, cluster již byla nasazena.
 
 5. Nasaďte! 
+
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>Odebrání aplikace Service Fabric prostředků poskytovatele prostředků
+Následující aktivují balíčku aplikace budou zrušení zřízené z clusteru, a to bude vyčištění využití místa na disku:
+```powershell
+Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2017-07-01-preview" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
+```
+Jednoduše Microsoft.ServiceFabric/clusters/application odebrání šablony ARM nebude zrušení zřízení aplikace
+
+>[!NOTE]
+> Po dokončení odebrání byste neměli vidět verze balíčku v SFX nebo ARM už. Nelze odstranit prostředek verze typu aplikace, na kterém běží aplikace To zabrání ARM/SFRP. Pokud se pokusíte zrušit zřízení balíček spuštěné, nebude už moct SF modulu runtime.
+
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Spravovat existující aplikace prostřednictvím Resource Manageru
 

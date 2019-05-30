@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531846"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357063"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API
 
@@ -38,12 +38,16 @@ V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí. Chcete-li se
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam přiřazení rolí.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
-
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    
+       
+     > [!NOTE]
+     > Ve výše uvedeném příkladu Microsoft.web je, že se používá poskytovatele prostředků, které odkazuje na instanci App service. Podobně můžete použít jakýkoli jiný poskytovatel prostředků a vytvořit identifikátor URI oboru. Chcete-li pochopit více najdete [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) a podporovaných [operace poskytovatele prostředků Azure RM](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations).  
+     
 1. Nahraďte *{filter}* splňující podmínku, kterou chcete použít k filtrování seznamu přiřazení role.
 
     | Filtr | Popis |
@@ -77,11 +81,11 @@ V RBAC se přístup uděluje vytvořením přiřazení role. Chcete-li vytvořit
     
 1. V rámci identifikátoru URI nahradit *{oboru}* s oborem pro přiřazení role.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{roleAssignmentName}* s identifikátorem GUID přiřazení role.
 
@@ -105,11 +109,11 @@ V RBAC se přístup odebírá odebrání přiřazení role. Pokud chcete odebrat
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s oborem pro odebrání přiřazení role.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{roleAssignmentName}* s identifikátorem GUID přiřazení role.
 

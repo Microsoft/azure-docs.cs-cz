@@ -4,19 +4,19 @@ description: Tento článek popisuje dvě nastavení, která řídí uchováván
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e3336df30873b40d2b8a464d1f866b524f76776d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790429"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236995"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Vysvětlení uchovávání dat v Azure Time Series Insights
 
@@ -42,7 +42,7 @@ Informace o přepínání chování uchovávání dat najdete v tématu [konfigu
 
 Porovnejte chování uchovávání dat:
 
-## <a name="purge-old-data"></a>Vyprázdnit stará data
+## <a name="purge-old-data"></a>Vymazat stará data
 
 - Toto chování je výchozí chování pro prostředí Time Series Insights.  
 - Toto chování se upřednostňuje v případě uživatelů chcete vždy zobrazit jejich *nejnovější data* ve svém prostředí Time Series Insights.
@@ -63,7 +63,7 @@ Vezměte v úvahu prostředí také nakonfigurována uchování chování **pokr
 
 Pokaždé, když se toto prostředí denní rychlost příchozího přenosu dat překročí 0.166 GB za den, data nelze ukládat na 180 dnů, protože některá data získá odstraněna. Vezměte v úvahu tato stejné prostředí během zaneprázdněný časového rámce. Předpokládejme, že průměrná 0.189 GB za den může zvýšit rychlost příchozího přenosu dat prostředí. V tomto zaneprázdněný časovém rámci, se zachovají data o 158 dnů (30GB/0.189 = 158,73 dnů uchovávání). Tentokrát je menší než požadovaná data uchování časový rámec.
 
-## <a name="pause-ingress"></a>Pozastavit příchozí přenos dat
+## <a name="pause-ingress"></a>Pozastavit příchozího přenosu dat
 
 - **Pozastavit příchozího přenosu dat** nastavení je navržený tak, aby data není vymazat, pokud je dosaženo omezení velikosti a počtu před jejich doba uchování.  
 - **Pozastavit příchozího přenosu dat** poskytuje další čas pro uživatele, které chcete zvýšit kapacitu prostředí před data se vyprázdní se kvůli porušení doby uchování

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: 959c1ff8b199320105f650a7eb62a04bedb03b3b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: be579b631fd910c56f2c360d6aace5b8d35c22e5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412783"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235996"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Vytvoření aplikace pro Windows s back-endu Azure
 
@@ -39,7 +39,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Windows 10.
-* [Visual Studio Community].
+* Visual Studio Community 2017.
 * Znalost vývoj aplikací pro UPW. Přejděte [dokumentace k UPW](https://docs.microsoft.com/windows/uwp/) další postupy [nastavení](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) a vytvářet aplikace pro UPW.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Vytvoření nového back-endu mobilní aplikace Azure
@@ -48,42 +48,29 @@ Podle těchto pokynů vytvořte nový back-end mobilní aplikace:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použít v mobilních klientských aplikacích. Dále si stáhnete serverový projekt pro jednoduchý back-end seznamu úkolů a publikujete ho v Azure.
-
-## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
-
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Vytvoření připojení k databázi a konfigurace projektu klienta a serveru
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-client-project"></a>Stažení a spuštění klientského projektu
+## <a name="run-the-client-project"></a>Spuštění klientského projektu
 
-Až nakonfigurujete svůj back-end mobilní aplikace, je možné buď vytvořit novou klientskou aplikaci, nebo upravit existující aplikaci tak, aby se připojovala k Azure. V této části si stáhnete projekt ukázkové aplikace UPW přizpůsobený tak, aby se připojoval k vašemu back-endu mobilní aplikace.
+1. Otevřete projekt UPW.
 
-1. Po návratu do okna **Rychlý start** back-endu mobilní aplikace klikněte na **Vytvořit novou aplikaci** > **Stáhnout** a extrahujte komprimované soubory projektu do místního počítače.
+2. Přejděte [webu Azure portal](https://portal.azure.com/) a přejděte do mobilní aplikace, kterou jste vytvořili. Na `Overview` okno Vyhledat adresu URL, které je veřejný koncový bod pro mobilní aplikace. Například - sitename pro Moje aplikace název "test123" bude https://test123.azurewebsites.net.
 
-    ![Stáhnutí projektu typu rychlý start pro Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
+3. Otevřete soubor `App.xaml.cs` v této složce - windows UPW cs/ZUMOAPPNAME /. Název aplikace je `ZUMOAPPNAME`.
 
-2. Otevřete projekt UPW a stisknutím klávesy F5 nasaďte a spusťte aplikaci.
-3. V aplikaci zadejte do textového pole pro **vložení úkolu** smysluplný text, například *Dokončit kurz*, a klikněte na **Uložit**.
+4. V `App` třídy, nahraďte `ZUMOAPPURL` parametr s veřejným koncovým bodem výše.
+
+    `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
+
+    změní
+    
+    `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
+
+5. Stisknutím klávesy F5 pro nasazení a spuštění aplikace.
+
+6. V aplikaci zadejte do textového pole pro **vložení úkolu** smysluplný text, například *Dokončit kurz*, a klikněte na **Uložit**.
 
     ![Dokončení desktopového projektu s rychlým startem pro Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
     Tím se odešle požadavek POST na nový back-end mobilní aplikace, jehož hostitelem je Azure.
-
-> [!TIP]
-> Pokud používáte back-end .NET, můžete projekt aplikace UPW přidat do stejného řešení, ve kterém se nachází serverový projekt. Ve stejném řešení sady Visual Studio bude snazší ladit a testovat jak aplikaci, tak back-end. Chcete-li přidat projekt aplikace UPW do back-endu řešení, musíte používat Visual Studio 2017 nebo novější.
-
-## <a name="next-steps"></a>Další postup
-
-* [Přidání ověřování do aplikace](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
-* [Přidání nabízených oznámení do aplikace](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  Naučte se přidávat do aplikace podporu nabízených oznámení a konfigurovat back-end mobilní aplikace tak, aby k zasílání nabízených oznámení používal Azure Notification Hubs.
-* [Povolení offline synchronizace u aplikace](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Naučte se, jak pomocí back-endu mobilní aplikace přidat do aplikace podporu offline režimu. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací &mdash; zobrazovat, přidávat a upravovat data &mdash; i v případě, že nemají připojení k síti.
-
-<!-- Anchors. -->
-<!-- Images. -->
-<!-- URLs. -->
-[Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
-[Azure portal]: https://portal.azure.com/
-[Visual Studio Community]: https://go.microsoft.com/fwLink/p/?LinkID=534203

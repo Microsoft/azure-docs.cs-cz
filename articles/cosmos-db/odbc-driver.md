@@ -4,14 +4,14 @@ description: Zjistěte, jak vytvořit tabulky a zobrazení normalizovaná data l
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 352cd23f00e911b895e52aacaced1bfba38f7f84
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60931934"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257256"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 

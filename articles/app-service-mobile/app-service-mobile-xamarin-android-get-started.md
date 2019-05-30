@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 05/06/2019
 ms.author: crdun
-ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: f3e8ca4f9736dffe4928fc8920b0890dff87367b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127892"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236027"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Vytvoření aplikace Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -46,15 +46,27 @@ Podle těchto pokynů vytvořte back-end mobilní aplikace.
 
 Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použít v mobilních klientských aplikacích. Dále si stáhněte serverový projekt pro jednoduchý back-end seznamu úkolů a publikujete ho v Azure.
 
-## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Vytvoření připojení k databázi a konfigurace projektu klienta a serveru
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinandroid-app"></a>Stáhnutí a spuštění aplikace Xamarin.Android
-1. V části **Stáhnout a spustit projekt Xamarin.Android** klikněte na tlačítko **Stáhnout**.
+## <a name="run-the-xamarinandroid-app"></a>Spuštění aplikace Xamarin.Android
+1. Otevřete projekt Xamarin.Android.
 
-      Uložte komprimovaný soubor projektu do místního počítače a poznamenejte si, kam jste jej uložili.
-2. Stiskněte klávesu **F5**, aby se projekt sestavil a spustil aplikaci.
-3. V aplikaci zadejte smysluplný text, například *Dokončit kurz*, a klikněte na tlačítko **Přidat**.
+2. Přejděte [webu Azure portal](https://portal.azure.com/) a přejděte do mobilní aplikace, kterou jste vytvořili. Na `Overview` okno Vyhledat adresu URL, které je veřejný koncový bod pro mobilní aplikace. Například - sitename pro Moje aplikace název "test123" bude https://test123.azurewebsites.net.
+
+3. Otevřete soubor `ToDoActivity.cs` v této složce - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs. Název aplikace je `ZUMOAPPNAME`.
+
+4. V `ToDoActivity` třídy, nahraďte `ZUMOAPPURL` proměnné s veřejným koncovým bodem výše.
+
+    `const string applicationURL = @"ZUMOAPPURL";`
+
+    změní
+    
+    `const string applicationURL = @"https://test123.azurewebsites.net";`
+    
+5. Stisknutím klávesy F5 pro nasazení a spuštění aplikace.
+
+6. V aplikaci zadejte smysluplný text, například *Dokončit kurz*, a klikněte na tlačítko **Přidat**.
 
     ![][10]
 
@@ -62,27 +74,14 @@ Nyní máte zřízen back-end mobilní aplikace Azure, který je možné použí
 
    > [!NOTE]
    > Na kód, který přistupuje k back-endu mobilní aplikace pro dotazování a vkládání dat, se můžete podívat v souboru C# ToDoActivity.cs.
-   >
-   >
-
+   
 ## <a name="troubleshooting"></a>Řešení potíží
 Pokud máte se sestavením řešení problémy, spusťte správce balíčků NuGet a proveďte aktualizaci`Xamarin.Android` balíčků pro podporu. Projekty Rychlý start nezahrnují vždycky nejnovější verze.
 
 Upozorňujeme, že všechny balíčky podpory odkazované ve vašem projektu musí mít stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)má`Xamarin.Android.Support.CustomTabs`závislost pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
-## <a name="next-steps"></a>Další postup
-* [Přidání offline synchronizace do aplikace](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [Přidání ověřování do aplikace](app-service-mobile-xamarin-android-get-started-users.md)
-* [Přidání nabízených oznámení do aplikace Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md)
-* [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
-
 <!-- Images. -->
 [0]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-completed-android.png
-[6]: ./media/app-service-mobile-xamarin-android-get-started/mobile-portal-quickstart-xamarin.png
-[8]: ./media/app-service-mobile-xamarin-android-get-started/mobile-xamarin-project-android-vs.png
-[9]: ./media/app-service-mobile-xamarin-android-get-started/mobile-xamarin-project-android-xs.png
 [10]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-startup-android.png
-
 <!-- URLs. -->
-[Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203

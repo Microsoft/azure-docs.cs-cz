@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviewer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 627b29018afff2adb57b3b8b5c816bea9c421f68
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475792"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236864"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrovat na nové úlohy elastické databáze
 
 Upgradovaná verze [úlohy Elastic Database](elastic-jobs-overview.md) je k dispozici.
 
-Pokud máte existující verze zákazníka hostované [úlohy Elastic Database](sql-database-elastic-jobs-overview.md), migrace rutin a skriptů jsou k dispozici pro snadno migrovat na nejnovější verzi.
+Pokud máte stávající zákazník hostované verze služby Elastic Jobs databáze, migrace rutin a skriptů jsou k dispozici pro snadno migrovat na nejnovější verzi.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -32,7 +32,7 @@ Upgradovaná verze úlohy elastické databáze má nová sada rutin prostředí 
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Nainstalujte nejnovější rutiny Elastických úloh
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
 
 Nainstalujte **Az.Sql** 1.1.1-preview modulu zobrazíte nejnovější rutiny Elastických úloh. Spusťte následující příkazy v PowerShellu s přístupem pro správu.
 
@@ -93,7 +93,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 Teď, když jsou inicializovány staré a nové rutiny se Elastic Jobs, migrovat vaše přihlašovací údaje k úloze, cíle a úlohy do nového *databáze úloh*.
 
-### <a name="setup"></a>Nastavení
+### <a name="setup"></a>Instalace
 
 ```powershell
 $ErrorActionPreference = "Stop";

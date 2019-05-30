@@ -1,7 +1,7 @@
 ---
 title: 'Kanály: optimalizace pracovních postupů machine learning'
 titleSuffix: Azure Machine Learning service
-description: V tomto článku najdete informace o machine learningu kanály, které můžete sestavit s využitím Azure Machine Learning SDK for Python a výhody použití kanály. Kanály Machine Learning (ML) používají datoví vědci k vytváření, optimalizaci a správě svých pracovních postupů strojového učení.
+description: V tomto článku najdete informace o machine learningu kanály, které můžete sestavit s využitím Azure Machine Learning SDK for Python a výhody použití kanály. Machine learning (ML) kanály využívají odborníci přes data sestavení, optimalizovat a spravovat jejich strojového učení pracovních postupů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff693ac34382ea5673989ecb6cbb38e19e176ad3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3e3fe64baca6e61c7eee214b84fd1ccdc88d3629
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801064"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237819"
 ---
-# <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Sestavit machine learning kanály ve službě Azure Machine Learning
+# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Vytvoření opakovaně použitelné ML kanály ve službě Azure Machine Learning
 
 V tomto článku najdete informace o machine learningu kanály, které můžete vytvářet pomocí sady Azure Machine Learning SDK pro Python a výhody použití kanály.
 
@@ -64,7 +64,7 @@ Klíčové výhody pro vytváření kanálů pro strojového učení pracovní p
 
 |Hlavní výhodou|Popis|
 |:-------:|-----------|
-|**Bezobslužné&nbsp;běží**|Naplánujte, aby několik kroků běželo buď paralelně, nebo v daném pořadí, spolehlivým způsobem bez nutnosti obsluhy. Protože přípravy dat a modelování můžete poslední dny nebo týdny, můžete nyní soustředit na další úkoly při spuštění kanálu. |
+|**Bezobslužné&nbsp;běží**|Naplánujte pár kroků ke spuštění paralelně nebo postupně spolehlivé a bezobslužné způsobem. Protože přípravy dat a modelování můžete poslední dny nebo týdny, můžete nyní soustředit na další úkoly při spuštění kanálu. |
 |**Smíšené a různých výpočetních**|Použití více kanálů, které jsou spolehlivě koordinovat napříč heterogenní a škálovatelné výpočetní prostředí a úložišť. Kanál jednotlivé kroky můžete spustit s různými výpočetními cíli, jako je HDInsight, virtuálních počítačů využívajících GPU datové vědy a Databricks. To efektivně využije dostupné výpočetní možnosti.|
 |**Opětovné použití**|Vytvoření šablon z kanálů pro konkrétní scénáře, jako je například přetrénování a dávkové bodování. Aktivujte je z externích systémů prostřednictvím jednoduché volání REST.|
 |**Sledování a správy verzí**|Místo ručně sledování data a výsledek cesty při opakovaném, pomocí kanálů SDK explicitně název a verze data zdrojů, vstupy a výstupy. Můžete také spravovat skripty a data odděleně pro vyšší produktivitu.|

@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5846d2bd85a382b8e2aee539af405518e9fb221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0afec1d6eded25a2d9b2389c950e2e21e06e0d54
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288818"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66307064"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Pozvat uživatele typu Host a přiřadit role prostředků Azure v PIM
 
@@ -91,7 +91,7 @@ Použití PIM, můžete pozvat hosta a převést je na oprávněné pro roli pro
 
 1. Klikněte na tlačítko **vyberte člena nebo skupiny**.
 
-    ![Vyberte člena nebo skupinu.](./media/pim-resource-roles-external-users/select-member-group.png)
+    ![Vyberte člena nebo skupiny](./media/pim-resource-roles-external-users/select-member-group.png)
 
 1. Pozvat hosta, klikněte na tlačítko **pozvat**.
 
@@ -125,7 +125,7 @@ Jako externí uživatel potřebujete nejdřív přijmout pozvánku pro vaši org
 
 1. Po kontrole oprávnění, klikněte na tlačítko **přijmout**.
 
-    ![Zkontrolovat oprávnění](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![Kontrola oprávnění](./media/pim-resource-roles-external-users/invite-accept.png)
 
 1. Může se zobrazit výzva k přijměte podmínky použití a určete, jestli chcete zachovat přihlášení.
 
@@ -145,7 +145,7 @@ Jako externí uživatel potřebujete nejdřív přijmout pozvánku pro vaši org
 
 1. Po zadání nastavení pro roli, klikněte na tlačítko **aktivovat** aktivaci této role.
 
-    ![Aktivovat roli](./media/pim-resource-roles-external-users/activate-role.png)
+    ![Aktivace role](./media/pim-resource-roles-external-users/activate-role.png)
 
     Pokud správce musí schválit vaše žádost, byste měli mít přístup k uvedeným prostředkům.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 910e9acaea5c8f95dd344bc8e5454cd2bd3b7a25
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
-ms.translationtype: HT
+ms.date: 5/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968326"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258691"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -27,7 +27,6 @@ Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuáln
 
 > [!NOTE]
 > Další informace o [klasické modely nasazení a modely nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
->
 >
 
 ## <a name="platforms-that-support-the-data-collection-agent"></a>Platformy, které podporují agent pro shromažďování dat. 
@@ -46,20 +45,29 @@ Následující operační systémy Windows se podporují:
 
 > [!NOTE]
 > Integrace s ochrany ATP v programu Windows Defender podporuje pouze systém Windows Server 2012 R2 a Windows serveru 2016.
->
->
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Podporované platformy pro virtuální počítače a počítače s Linuxem
+
 Jsou podporovány následující operační systémy Linux:
 
-* Verze Ubuntu 12.04 LTS, 14.04 LTS a 16.04 LTS.
-* Debian verze 6, 7, 8 a 9.
-* CentOS verze 5, 6 a 7.
-* Red Hat Enterprise Linux (RHEL) verze 5, 6 a 7.
-* SUSE Linux Enterprise Server (SLES) verze 11 a 12.
-* Oracle Linux verze 5, 6 a 7.
-* Linux Amazon 2012.09 2017.
-* OpenSSL 1.1.0 je podporována pouze na platformách x86_64, 64 bitů.
+> [!NOTE]
+> Vzhledem k tomu, že seznam podporovaných operačních systémech Linux se neustále mění, pokud dáváte přednost, klikněte na tlačítko [tady](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) zobrazíte aktuální seznam podporovaných verzí, v případě, že byly provedeny změny od posledního publikování v tomto tématu.
+
+64 bitů
+* CentOS 6 a 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 a 7
+* Red Hat Enterprise Linux Server 6 a 7
+* Debian GNU/Linux 8 a 9
+* Ubuntu Linux 14.04 LTS, 16.04 LTS a 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+32-bit
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 a 9
+* Ubuntu Linux 14.04 LTS a 16.04 LTS
 
 ## <a name="vms-and-cloud-services"></a>Virtuální počítače a cloudové služby
 Podporují se také virtuální počítače, na kterých běží v cloudové službě. Jsou monitorovány pouze cloud services webové a pracovní role, které běží v slot na produkční. Další informace o službách cloud services, najdete v článku [přehled o Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
@@ -70,25 +78,27 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 > [!div class="mx-tableFixed"]
 > 
 
-|Server|Windows||Linux||
-|----|----|----|----|----|
-|Prostředí|Azure|Mimo službu Azure|Azure|Mimo službu Azure|
-|Výstrahy detekce hrozeb VMBA|✔|✔|✔ (o podporovaných verzích)|✔|
-|Výstrahy detekce hrozeb založené na síti|✔|X|✔|X|
-|Integrace ochrany ATP v programu Windows Defender|✔ (o podporovaných verzích)|✔|X|X|
-|Chybějící opravy|✔|✔|✔|✔|
-|Konfigurace zabezpečení|✔|✔|✔|✔|
-|Ochrana koncového bodu|✔|✔|X|X|
-|Přístup k virtuálnímu počítači podle potřeby|✔|X|✔|X|
-|Adaptivní řízení aplikací|✔|✔|✔|✔|
-|FIM|✔|✔|✔|✔|
-|Šifrování disku|✔|X|✔|X|
-|Nasazení třetích stran|✔|X|✔|X|
-|skupin NSG|✔|X|✔|X|
-|Detekce hrozeb fileless|✔|✔|X|X|
-|Mapování sítě|✔|X|✔|X|
-|Ovládací prvky pro adaptivní síť|✔|X|✔|X|
-
+|Server|Windows||Linux||||Ceny|
+|----|----|----|----|----|----|----|----|
+|**Prostředí**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
+||**Virtuální počítač**|**Škálovací sada virtuálních počítačů**||**Virtuální počítač**|**Škálovací sada virtuálních počítačů**|
+|Výstrahy detekce hrozeb VMBA|✔|✔|✔|✔ (o podporovaných verzích)|✔ (o podporovaných verzích)|✔|Detekce hrozeb (zdarma) doporučení (Standard)|
+|Výstrahy detekce hrozeb založené na síti|✔|✔|X|✔|✔|X|Standard|
+|Integrace ochrany ATP v programu Windows Defender|✔ (o podporovaných verzích)|✔ (o podporovaných verzích)|✔|X|X|X|Standard|
+|Chybějící opravy|✔|✔|✔|✔|✔|✔|Free|
+|Konfigurace zabezpečení|✔|✔|✔|✔|✔|✔|Free|
+|Posouzení ochrany koncového bodu|✔|✔|✔|X|X|X|Free|
+|Přístup k virtuálnímu počítači podle potřeby|✔|X|X|✔|X|X|Standard|
+|Adaptivní řízení aplikací|✔|X|✔|✔|X|✔|Standard|
+|FIM|✔|✔|✔|✔|✔|✔|Standard|
+|Vyhodnocování šifrování disku.|✔|✔|X|✔|✔|X|Free|
+|Nasazení třetích stran|✔|X|X|✔|X|X|Free|
+|Posouzení skupin zabezpečení sítě|✔|✔|X|✔|✔|X|Free|
+|Detekce hrozeb fileless|✔|✔|✔|X|X|X|Standard|
+|Mapování sítě|✔|✔|X|✔|✔|X|Standard|
+|Ovládací prvky pro adaptivní síť|✔|✔|X|✔|✔|X|Standard|
+|Dodržování legislativních řídicího panelu pro dodržování předpisů a sestavy|✔|✔|✔|✔|✔|✔|Standard|
+|Doporučení a detekce hrozeb v kontejnerech Dockeru hostovaných IaaS|X|X|X|✔|✔|✔|Standard|
 
 ### <a name="supported-endpoint-protection-solutions"></a>Řešení ochrany koncových bodů podporované
 
@@ -96,7 +106,9 @@ Následující tabulka obsahuje matici:
  - Určuje, zda můžete použít Azure Security Center k instalaci jednotlivá řešení za vás.
  - Můžete zjistit, které endpoint protection řešení Security Center. Pokud je jedno z těchto řešení endpoint protection zjistí, nebude Security Center doporučit instalace.
 
-| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
+Informace o po vygenerování doporučení pro všechny tyto ochrany najdete v tématu [Endpoint Protection posouzení a doporučení](security-center-endpoint-protection.md).
+
+| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
@@ -108,27 +120,49 @@ Následující tabulka obsahuje matici:
 
 > [!NOTE]
 > - Zjišťování nástroje System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows serverem 2008 R2 vyžaduje SCEP k instalaci prostředí PowerShell 3.0 (nebo horním verze).
->
->
 
-## <a name="supported-paas-features"></a>Podporované funkce PaaS 
+## <a name="supported-paas-features"></a>Podporované funkce PaaS
 
 
-|Služba|Doporučení|Detekce hrozby|
+|Služba|Doporučení (zdarma)|Detekce hrozeb (Standard)|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
 |Azure Blob storage účty *|✔| ✔|
-|App Services|✔| ✔|
+|Aplikační služby|✔| ✔|
 |Cloudové služby|✔| X|
 |Virtuální sítě|✔| Není k dispozici|
 |Podsítě|✔| Není k dispozici|
-|Síťové karty|✔| ✔|
-|skupin NSG|✔| Není k dispozici|
-|Předplatné|✔| ✔|
+|Síťové karty|✔| Není k dispozici|
+|Skupiny NSG|✔| Není k dispozici|
+|Předplatné|✔ **| ✔|
+|App Service|✔| Není k dispozici|
+|Batch|✔| Není k dispozici|
+|Service Fabric|✔| Není k dispozici|
+|Účet Automation|✔| Není k dispozici|
+|Nástroj pro vyrovnávání zatížení|✔| Není k dispozici|
+|Search|✔| Není k dispozici|
+|Service Bus|✔| Není k dispozici|
+|Stream Analytics|✔| Není k dispozici|
+|Centrum událostí|✔| Není k dispozici|
+|Logické aplikace|✔| Není k dispozici|
+|Podsíť|✔| Není k dispozici|
+|Vnet|✔| Není k dispozici|
+|Účet úložiště|✔| Není k dispozici|
+|Redis|✔| Není k dispozici|
+|SQL|✔| Není k dispozici|
+|Data lake analytics|✔| Není k dispozici|
+|Účet úložiště|✔| Není k dispozici|
+|Předplatné|✔| Není k dispozici|
+|Trezor klíčů|✔| Není k dispozici|
 
-\* Tyto funkce jsou aktuálně podporované ve verzi public preview. 
+
+
+
+\* Tyto funkce jsou aktuálně podporované ve verzi public preview.
+
+\*\* AAD doporučení jsou dostupné jenom pro standardní předplatná
 
 
 

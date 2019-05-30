@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73c837897f4a104fabb4143d4b49fa3fbc258bb4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561743"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305031"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikovat události pomocí událostí domény
 
@@ -27,10 +27,6 @@ Další informace o události domén najdete v tématu [pochopit události domé
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Nainstalujte funkci ve verzi preview
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
 ## <a name="create-an-event-domain"></a>Vytvoření domény události
 
 Ke správě velkých sad témat, vytvoření domény události.
@@ -38,10 +34,6 @@ Ke správě velkých sad témat, vytvoření domény události.
 Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
-# If you haven't already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid domain create \
   -g <my-resource-group> \
   --name <my-domain-name> \
@@ -51,10 +43,6 @@ az eventgrid domain create \
 Pokud používáte PowerShell, použijte:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 New-AzureRmEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain-name> `
@@ -203,6 +191,23 @@ Get-AzureRmEventGridDomainKey `
 ```
 
 A pak pomocí vašeho oblíbeného způsob vytváření metody POST protokolu HTTP k publikování událostí do služby Event Grid domény.
+
+## <a name="search-lists-of-topics-or-subscriptions"></a>Seznam hledání témata nebo předplatná
+
+Aby bylo hledání a správu velkého počtu témat nebo odběrů, rozhraní API služby Event Grid podporují seznamu stránkování.
+
+### <a name="using-cli"></a>Pomocí rozhraní příkazového řádku
+
+Použití ověřte, že používáte verzi rozšíření Azure CLI Event Grid 0.4.1 nebo novější.
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid topic list \
+    --odata-query "contains(name, 'my-test-filter')"
+```
 
 ## <a name="next-steps"></a>Další postup
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec10359c6f684b1d7fb008946b7ceca2ed626ba
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cd7055794860398ecc6296d0174a691e7fac4450
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545351"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235255"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro Microsoft identity platform
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Jednostránkové aplikace (JavaScript)
 
-Řada moderních aplikací mají front-end jednostránkové aplikace, která primárně je napsána v jazyce JavaScript. Často je zapsán pomocí architektury, jako jsou AngularJS, Ember.js nebo Durandal.js. Koncový bod Microsoft identity platform podporuje tyto aplikace s použitím [implicitního toku OAuth 2.0](v2-oauth2-implicit-grant-flow.md).
+Řada moderních aplikací mají front-end jednostránkové aplikace, která primárně je napsána v jazyce JavaScript. Často je zapsán pomocí architektury, jako jsou Angular, React nebo Vue. Koncový bod Microsoft identity platform podporuje tyto aplikace s použitím [implicitního toku OAuth 2.0](v2-oauth2-implicit-grant-flow.md).
 
 V tomto toku aplikace obdrží tokeny přímo v platformě Microsoft identity zajistí autorizaci koncového bodu, bez jakékoli výměny server-to-server. Všechna logika ověřování a relace zpracování trvá umístit zcela v klientovi JavaScript bez přesměrování další stránky.
 

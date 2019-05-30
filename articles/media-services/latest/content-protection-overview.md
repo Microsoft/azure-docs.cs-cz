@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e13bcb7d4eeded691669277b64aba9048f3bbefa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 99aea38ec877074075eaec8cf9ab8da077901acf
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150417"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393114"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>Ochrana obsahu v případě dynamického šifrování
 
@@ -39,14 +39,13 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
 
 1. Azure Media Services kódu
   
-   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) ukázce se dozvíte, jak implementovat systému s více variantami DRM s Media Services v3 a také použít službu doručování klíčů/licencí Media Services. Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.
+   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) ukázce se dozvíte, jak implementovat systému s více variantami DRM s Media Services v3 pomocí rozhraní .NET. Také ukazuje, jak používat službu doručování klíčů/licencí Media Services. Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.
   
    Příklad ukazuje postup:
 
-   1. Vytvoření a konfigurace [obsahu zásady klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+   1. Vytvoření a konfigurace [obsahu zásady klíčů](content-key-policy-concept.md). Vytváření **zásad klíče k obsahu** nakonfigurovat, jak je doručen koncovým klientům klíč k obsahu (který zajišťuje zabezpečený přístup k vaše prostředky).    
 
       * Definujte autorizace doručování licencí, určíte logiku kontroly autorizace na základě deklarací identity do tokenů JWT.
-      * Konfigurace šifrování DRM zadáním klíče k obsahu.
       * Konfigurace [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), a/nebo [FairPlay](fairplay-license-overview.md) licence. Šablony umožňují nakonfigurovat práva a oprávnění pro každou používané technologiemi DRM.
 
         ```
@@ -54,11 +53,11 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
         ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
         ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
         ```
-   2. Vytvoření [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) , který je nakonfigurován ke streamování šifrované asset. 
+   2. Vytvoření [Lokátor streamování](streaming-locators-concept.md) , který je nakonfigurován ke streamování šifrované asset. 
   
-      **Lokátor streamování** musí být přiřazena [streamování zásad](https://docs.microsoft.com/rest/api/media/streamingpolicies). V tomto příkladu nastavíme StreamingLocator.StreamingPolicyName zásady "Predefined_MultiDrmCencStreaming". Tato zásada určuje, že má pro dva klíče obsahu (Obálka a CENC) k získání vygeneruje a nastavení na Lokátor. Tím dojde k nastavení obálky a šifrování PlayReady a Widevine (klíč se doručí klientovi pro přehrávání na základě nakonfigurovaných licencí DRM). Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
-    
-      Protože chceme, aby k šifrování na video **obsahu zásad klíče** jsme nakonfigurovali dříve také musí být přidružené **Lokátor streamování**. 
+      **Lokátor streamování** musí být přiřazena [streamování zásad](streaming-policy-concept.md). V tomto příkladu nastavíme StreamingLocator.StreamingPolicyName zásady "Predefined_MultiDrmCencStreaming". Šifrování pomocí PlayReady a Widevine se použijí, je klíč doručen klientovi přehrávání podle nakonfigurovaného licence DRM. Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
+      
+      Je také přidružený Lokátor streamování **obsahu zásad klíče** , která byla definována.
     
    3. Vytvořte token testu.
 
@@ -102,11 +101,11 @@ Protokol HLS podporuje následující formáty kontejneru a schémata šifrován
 
 |Formát kontejneru|Schéma šifrování|Adresy URL|
 |---|---|---|
-|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
-|MPG2 TS |CBCS (FairPlay) ||
-|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
-|MPG2 TS |Šifrování CENC (PlayReady) ||
-|CMAF(fmp4) |Šifrování CENC (PlayReady) ||
+|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2 TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
+|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2 TS |Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
+|CMAF(fmp4) |Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
 HLS/CMAF + FairPlay (včetně HEVC / H.265) se podporuje na následujících zařízeních:
 
@@ -120,18 +119,18 @@ Protokol MPEG-DASH podporuje následující formáty kontejneru a schémata šif
 
 |Formát kontejneru|Schéma šifrování|Příklady adresy URL
 |---|---|---|
-|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
-|CSF(fmp4) |Šifrování CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
-|CMAF(fmp4)|Šifrování CENC (Widevine + PlayReady)||
+|Vše|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |Šifrování CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|Šifrování CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
 ### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
 Protokol Smooth Streaming podporuje následující formáty kontejneru a schémata šifrování.
 
-|Protocol (Protokol)|Formát kontejneru|Schéma šifrování|
+|Protocol|Formát kontejneru|Schéma šifrování|
 |---|---|---|
-|fMP4|AES||
-|fMP4 | Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+|fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
+|fMP4 | Šifrování CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
 
 ### <a name="browsers"></a>Prohlížeče
 

@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148597"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254855"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek 
 
@@ -101,7 +101,7 @@ Toto upozornění se může zobrazit i v případě, že nakonfigurujete zásady
 Velikost složky mezipaměti určuje množství dat, která zálohujete.
 - Svazky složka mezipaměti musí mít volné místo, které se rovná aspoň 5 až 10 % celkové velikosti dat zálohy.
 - Pokud svazek obsahuje méně než 5 % volné místo, zvětšete svazek nebo přesuňte složku mezipaměti na svazek s dostatkem místa.
-- 
+- Pokud jste zálohu stavu systému Windows, bude nutné dalších 30 – 35 GB volného místa ve svazku obsahujícím složky mezipaměti
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Změna umístění mezipaměti pro agenta MARS
 
 

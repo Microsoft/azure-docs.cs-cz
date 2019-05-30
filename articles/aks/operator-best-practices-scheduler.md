@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 8233330973946e552e36a85a11bdbbfb06c739f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463876"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65074132"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro Plánovač základní funkce ve službě Azure Kubernetes Service (AKS)
 
@@ -94,7 +94,7 @@ spec:
       app: nginx-frontend
 ```
 
-Můžete také definovat procento, jako například *60 %*, která umožňuje automaticky jako kompenzaci za repliky nastavit škálování počtu podů.
+Můžete také definovat procento, jako například *60 %* , která umožňuje automaticky jako kompenzaci za repliky nastavit škálování počtu podů.
 
 Můžete definovat maximální počet instancí nedostupný replik. Znovu můžete také definovat procento pro maximální není k dispozici tyto pody. Následující pod narušení rozpočtu YAML manifest definuje, že více než dva podů v replice sadu nebudou k dispozici:
 
@@ -126,6 +126,8 @@ Další informace o používání pod přerušení rozpočty, naleznete v témat
 
 [Kube advisor] [ kube-advisor] nástroj je přidružené AKS opensourcový projekt, který prohledá Kubernetes cluster a zprávy o problémech, které nalezne. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
 
+Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru] [ k8s-node-selector] v konfiguraci pod.
+
 V clusteru AKS, který je hostitelem více vývojových týmů a aplikace může být obtížné sledovat podů bez těchto prostředků požadavky a omezení sady. Jako osvědčený postup, pravidelně spouštět `kube-advisor` v clusterech služby AKS, zejména v případě, že kvóty prostředků nepřiřazovat k obory názvů.
 
 ## <a name="next-steps"></a>Další postup
@@ -147,3 +149,4 @@ Tento článek se zaměřuje na základní funkce plánovače Kubernetes. Dalš�
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

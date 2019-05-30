@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8ade598e4f1b6331367e8bd04ad59951ef5de8f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781709"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242379"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází serveru SQL Server na virtuálních počítačích Azure
 
@@ -41,6 +41,7 @@ Před obnovením databáze, vezměte na vědomí následující:
     - Pouze název zadaného klienta můžete otevřít připojení.
 - Všechny systémové databáze (model, hlavní, msdb) zastavte službu agenta systému SQL Server před aktivaci obnovení.
 - Zavřete všechny aplikace, které se můžou pokusit převzít připojení ke kterékoli z těchto databází.
+- Pokud máte více instancí běží na serveru, všechny instance by měl být nahoru a jinak spuštěný server se nezobrazilo v seznamu cílových serverů pro obnovení databáze.
 
 ## <a name="restore-a-database"></a>Obnovení databáze
 
@@ -152,6 +153,13 @@ Pokud jste vybrali **úplné a rozdílové** jako typ obnovení, postupujte takt
 1. Sledovat průběh na obnovení **oznámení** oblasti, nebo sledovat tak, že vyberete **obnovení úlohy** v nabídce databáze.
 
     ![Průběh úlohy obnovení](./media/backup-azure-sql-database/restore-job-notification.png)
+
+### <a name="restore-databases-with-large-number-of-files"></a>Obnovení databáze s velkým počtem souborů
+
+Pokud je větší než velikost řetězce celkový počet souborů v databázi [určitého limitu](backup-sql-server-azure-troubleshoot.md#files-size-limit-beyond-which-restore-happens-to-default-path), Azure Backup ukládá seznam souborů databáze v různých pit součásti tak, nebudete moci nastavit cílovou cestu obnovení během obnovení operace. Soubory se obnoví na výchozí cestu SQL místo.
+
+  ![Obnovte databázi pomocí velkých souborů](./media/backup-azure-sql-database/restore-large-files.jpg)
+
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401778"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397126"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -305,6 +305,8 @@ K této chybě dochází kvůli jednomu z následujících problémů:
 
 4. Vaše sada runbook se pokusil o volání spustitelný soubor nebo subprocess v sadě runbook, která běží v Azure izolovaný prostor. Tento scénář není podporován v Azure karantény.
 
+5. Vaše sady runbook došlo k pokusu o zápis příliš mnoho dat výjimek do výstupního datového proudu.
+
 #### <a name="resolution"></a>Řešení
 
 Některé z následujících řešení tento problém vyřešit:
@@ -316,6 +318,8 @@ Některé z následujících řešení tento problém vyřešit:
 * Druhým řešením je spouštět sadu runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybridní pracovní procesy nejsou omezeny omezení paměti a sítě, které jsou Azure karantény.
 
 * Pokud je potřeba volat procesu (jako je například .exe nebo subprocess.call) v sadě runbook, bude nutné ke spuštění sady runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md).
+
+* Platí limit 1MB na výstupní datový proud úlohy. Ujistěte se, že uzavřít volání spustitelný soubor nebo podproces v bloku try/catch. Pokud se vyvolá výjimku, zapíšete zprávy z této výjimky do proměnné Automation. To zabrání od zapisovaných do výstupního datového proudu úlohy.
 
 ### <a name="fails-deserialized-object"></a>Scénář: Sada Runbook selže z důvodu deserializovaný objekt
 
@@ -463,7 +467,7 @@ Webhook, který se snažíte volat je zakázáno nebo vypršela platnost.
 
 Pokud je webhook zakázaný, můžete znovu povolit webhook prostřednictvím webu Azure portal. Když webhooku vypršela, musí se webhook odstranit a znovu vytvořit. Je možné pouze [obnovit webhooku](../automation-webhooks.md#renew-webhook) pokud ho ještě nevypršela.
 
-### <a name="429"></a>Scénář: 429: Frekvence požadavků je momentálně příliš vysoká. Zkuste to prosím znovu.
+### <a name="429"></a>Scénář: 429: Frekvence požadavků je momentálně příliš vysoká. Zkuste to prosím znovu
 
 #### <a name="issue"></a>Problém
 

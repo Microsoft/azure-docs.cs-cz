@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920451"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254655"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zvýšení výkonu aplikace na platformě Azure s využitím Azure Advisoru
 
@@ -93,6 +93,22 @@ Azure Advisor využívá heuristiky založený na úlohách, jako je poměr čte
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Škálování serveru Azure MySQL, PostgreSQL v Azure nebo Azure MariaDB na vyšší skladovou Položku, aby se zabránilo omezení připojení
 Nová připojení k vašemu databázovému serveru zabírá paměť. Pokud připojení k serveru se nedaří zálohovat z důvodu zhorší výkon databázového serveru [horní limit](https://docs.microsoft.com/azure/postgresql/concepts-limits) v paměti. Azure Advisor vyhledá servery s mnoha chyb připojení a doporučí upgradování limitů připojení vašeho serveru k poskytování více paměti pro váš server vertikálním navýšení kapacity výpočetních nebo pomocí paměti skladových položkách optimalizováno pro, které mají víc výpočetních prostředků na jádro.
+
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>Škálování mezipaměti na jinou velikost a SKU, ke zlepšování mezipaměti a výkonu aplikací
+
+Instance mezipaměti provést nejlépe, když není spuštěna v rámci vysokou nároků na paměť, zatížení serveru s vysokou nebo velká šířka pásma sítě, což může způsobit přestane reagovat a přijít o data, přestanou být dostupné. Advisor vyhledá instancí mezipaměti v těchto podmínkách a doporučí používání osvědčených postupů ke snížení tlaku na paměť, zatížení serveru nebo šířky pásma sítě nebo škáluje na jinou velikost a SKU s větší kapacitou.
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Přidat oblasti s provozem ke svému účtu Azure Cosmos DB
+
+Poradce zjistí účtům Azure Cosmos DB, které mají provoz z oblasti, který není aktuálně nakonfigurovaný a doporučuje přidat tuto oblast. Tím se zlepšit latenci, než dorazí požadavky od dané oblasti a zajistí dostupnost v případě výpadku oblasti. [Další informace o distribuci globálních dat pomocí služby Azure Cosmos DB](https://aka.ms/cosmos/globaldistribution)
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Konfigurace služby Azure Cosmos DB zásady indexování zákazníkem zahrnuty nebo vyloučeny cesty
+
+Azure Advisor bude identifikovat kontejnery služby Cosmos DB, které používají výchozí zásady indexování, ale můžou mít užitek z vlastních zásad indexování založena na vzoru zatížení. Výchozí zásady indexování indexuje všechny vlastnosti, ale pomocí vlastních zásad indexování explicitní zahrnuté ani vyloučené cesty použít ve filtrech dotazů můžete snížit ru a úložiště využité pro indexování. [Další informace o úpravách indexu zásady](https://aka.ms/cosmosdb/modify-index-policy)
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Konfigurovat velikost stránky dotazu (MaxItemCount) služby Azure Cosmos DB na hodnotu -1 
+
+Azure Advisor bude identifikovat kontejnerů Azure Cosmos DB, které používají velikost stránky dotazu 100 a doporučujeme použít velikost stránky-1 pro rychlejší vyhledávání. [Další informace o maximální počet položek](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak získat přístup k doporučení k výkonu v Advisoru
 

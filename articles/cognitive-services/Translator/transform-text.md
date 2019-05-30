@@ -3,19 +3,19 @@ title: Transformace textu – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Transformace textu s použitím rozhraní Translator Text API.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 1319b7191d9b192897e1e8ab4900239bd9230bce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: v-pawal
+ms.openlocfilehash: 4d024fd30a77c011bab4f120c4ef3614aac09998
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608322"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389689"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Jak používat TransformText – metoda
 
@@ -30,7 +30,7 @@ Metoda je služba RESTful pomocí protokolu HTTP GET. Podporuje jednoduchý seri
 
 | Parametr | Popis |
 |:---|:---|
-| Autorizační hlavička | **Vyžaduje** hlavičky protokolu HTTP slouží k identifikaci aplikace. Použít klíč: "Ověřování" a hodnota: "Nosiče" + "" + přístupový token. Podrobnosti najdete tady.|
+| Autorizační hlavičky. | **Vyžaduje** hlavičky protokolu HTTP slouží k identifikaci aplikace. Použít klíč: "Ověřování" a hodnota: "Nosiče" + "" + přístupový token. Podrobnosti najdete tady.|
 | language | **Vyžaduje** řetězec představující kód jazyka. Tento parametr podporuje jenom v angličtině s **en** jako název jazyka.|
 | category | **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost **Obecné**.|
 | větu | **Vyžaduje** věty, kterou chcete opravit. |

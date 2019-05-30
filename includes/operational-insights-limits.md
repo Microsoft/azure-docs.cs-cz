@@ -9,15 +9,15 @@ ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
 ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553454"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238286"
 ---
 Následující omezení platí pro prostředky Azure Log Analytics na jedno předplatné.
 
-| Prostředek | Výchozí omezení | Komentáře
+| Resource | Výchozí omezení | Komentáře
 | --- | --- | --- |
 | Počet bezplatných pracovních prostorů na předplatné | 10 | Toto omezení nejde zvýšit. |
 | Počet placených pracovních prostorů na předplatné | neuvedeno | Co vás omezuje počet prostředků v rámci skupiny prostředků a počtem skupin prostředků na předplatné. | 
@@ -37,7 +37,7 @@ Následující omezení platí pro každý pracovní prostor Log Analytics.
 
 <sup>2</sup>období uchovávání dat pro samostatnou, OMS a za GB cenové plány je možné zvýšit prodloužit na 730 dnů.
 
-| Kategorie | Omezení | Komentáře
+| Category | Limits | Komentáře
 | --- | --- | --- |
 | Rozhraní API kolekce dat | Maximální velikost pro jeden příspěvek je 30 MB.<br>Maximální velikost pro hodnoty pole je 32 KB. | Rozdělte větší svazky na více příspěvků.<br>Pole delší než 32 kB se oříznou. |
 | Search API | 5000 záznamů vrácených pro neagregovaná data.<br>500 000 záznamů pro agregovaná data. | Agregovaná data znamenají vyhledávání, která zahrnuje `summarize` příkazu.

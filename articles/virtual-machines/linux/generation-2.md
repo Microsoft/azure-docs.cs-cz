@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: e6bb947503371e379e4d4972ddfc3614e129174b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835210"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390552"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>Virtuální počítače generace 2 (preview) v Azure
 
@@ -30,7 +30,7 @@ ms.locfileid: "65835210"
 
 Podpora pro 2. generace virtuálních počítačů (VM) je teď dostupná ve verzi public preview v Azure. Nelze změnit generaci virtuálního počítače po jeho vytvoření. Proto doporučujeme, abyste si na základě aspektů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) i informace na této stránce před výběrem generace.
 
-Klíčové funkce podpory 2. generace virtuálních počítačů, jako jsou: zvýšili paměti, Intel® Software Guard rozšíření (SGX) a virtuální trvalé paměti (vPMEM), které nejsou podporovány na virtuálních počítačích generace 1. Virtuální počítače 2. generace mají některé funkce, které zatím nejsou podporované v Azure. Další informace najdete v tématu [funkce a možnosti](#features-and-capabilities) oddílu. 
+2. generace virtuálních počítačů podporu klíčových funkcí, které nejsou podporovány na virtuálních počítačích generace 1, jako například: zvýšili paměti, Intel® Software Guard rozšíření (SGX) a virtuální trvalé paměti (vPMEM). Virtuální počítače generace 2 mají také některé funkce, které zatím nejsou podporované v Azure. Další informace najdete v tématu [funkce a možnosti](#features-and-capabilities) oddílu.
 
 Virtuální počítače generace 2 pomocí nové vs architektury založené na režimu UEFI spouštění systémem BIOS architektura používány virtuálními počítači 1. generace. Ve srovnání s 1. generace virtuálních počítačů, virtuální počítače generace 2 může mít lepší časů spuštění a instalace. Přehled virtuálních počítačů 2. generace a některé hlavní rozdíly mezi 1 a generace 2 najdete v tématu [bych si měl vytvořit virtuální počítač generace 1 nebo 2 v Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
@@ -113,6 +113,29 @@ Jak jsme bude pokračovat v přidávání dalších imagí, které podporují 2.
 Generace 2 virtuální počítače můžete vytvořit také pomocí škálovací sady virtuálních počítačů. Můžete vytvářet generaci 2 virtuálních počítačů pomocí škálovacích sad virtuálních počítačů Azure pomocí Azure CLI.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+* **Jsou generace 2 virtuální počítače k dispozici ve všech oblastech Azure?**  
+    Ano. ale ne všechny [velikosti virtuálních počítačů 2. generace](#generation-2-vm-sizes) jsou k dispozici v každé oblasti. Dostupnost generace 2 virtuální počítače je závislý na dostupnosti velikost virtuálního počítače.
+
+* **Je nějaký cena rozdíl mezi 1 a generace 2 virtuální počítače?**  
+    Není žádný rozdíl v cenách mezi 1. generace a virtuální počítače generace 2.
+
+* **Jak můžu zvýšit velikost disku operačního systému?**  
+  Disky s operačním systémem větší než 2 TB se 2. generace virtuálních počítačů. Ve výchozím nastavení většina disků operačního systému jsou menší než 2 TB pro virtuální počítače generace 2, ale je možné zvýšit velikost disku na doporučenou maximálně 4 TB. Můžete zvýšit velikost disku operačního systému přes rozhraní příkazového řádku Azure nebo na webu Azure portal. Další informace o prostřednictvím kódu programu se zvětšující disky najdete v tématu [Změna velikosti disku](expand-disks.md).
+
+  Chcete-li zvýšit velikost disku operačního systému pomocí webu Azure portal:
+
+  * Přejděte na stránku vlastností virtuálního počítače na portálu Azure portal.
+
+  * Vypnout a uvolnit pomocí virtuálních počítačů **Zastavit** tlačítko.
+
+  * V **disky** vyberte disk s operačním systémem, který chcete zvýšit.
+
+  * Vyberte **konfigurace** v **disky** oddílu a aktualizace **velikost** na požadovanou hodnotu.
+  
+  * Přejděte zpět na stránku vlastností virtuálního počítače a **Start** virtuálního počítače.
+
+  Může se zobrazit upozornění pro disky s operačním systémem větší než 2 TB. Upozornění se nevztahuje na virtuální počítače generace 2; velikost disku operačního systému větší než 4 TB ale **nedoporučuje.**
 
 * **Virtuální počítače generace 2 podporují Akcelerovanými síťovými službami?**  
     Ano, podpora virtuálních počítačů 2. generace [Akcelerovanými síťovými službami](../../virtual-network/create-vm-accelerated-networking-cli.md).

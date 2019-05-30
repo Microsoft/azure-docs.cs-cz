@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: raynew
-ms.openlocfilehash: 593a82221ec94e43d50b7382ba89053d5f68864a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805918"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237268"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Nastavení zotavení po havárii ve velkém měřítku pro virtuální počítače VMware a fyzických serverů
 
@@ -188,7 +188,7 @@ Jakmile zahájíte replikaci pro první dávku virtuálních počítačů, začn
 1. Přiřadíte jako správce pro zotavení po havárii pro sledování stavu kopie replikovaných počítačů.
 2. [Sledování událostí](site-recovery-monitor-and-troubleshoot.md) pro replikované položky a infrastrukturu.
 3. [Monitorování stavu](vmware-physical-azure-monitor-process-server.md) z vaší horizontální navýšení kapacity procesových serverů.
-4. Přihlášení k odběru [e-mailová oznámení](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) pro události, pro snazší monitorování.
+4. Přihlášení k odběru [e-mailová oznámení](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) pro události, pro snazší monitorování.
 5. Chování pravidelně [zotavení po havárii](site-recovery-test-failover-to-azure.md), aby bylo zajištěno, že vše funguje podle očekávání.
 
 

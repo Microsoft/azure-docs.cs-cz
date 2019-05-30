@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65538339"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397840"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Řešení potíží s spřažením relace Azure Application Gateway
 
@@ -86,7 +86,7 @@ Pokud chcete identifikovat problém, postupujte podle pokynů:
 
     ![řešení potíží s relace spřažení – problémy – 3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
+    ![řešení potíží s relace spřažení – problémy-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 Aplikace i nadále pokusu o nastavení souborů cookie s každým požadavkem, dokud nedosáhnete odpověď.
 
@@ -96,7 +96,7 @@ K tomuto problému dochází, protože aplikace Internet Explorer a ostatní pro
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li vyřešit tento problém, by měl přístup k službě Application Gateway pomocí úplného názvu domény. Například použít [ http://website.com ](https://website.com/) nebo [ http://appgw.website.com ](http://appgw.website.com/) .
+Pokud chcete tento problém vyřešit, měli byste ke službě Application Gateway přistupovat pomocí plně kvalifikovaného názvu domény. Například použít [ http://website.com ](https://website.com/) nebo [ http://appgw.website.com ](http://appgw.website.com/) .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Další protokoly k řešení potíží
 
@@ -167,23 +167,23 @@ Pomocí ladicího programu webového podle vašeho výběru. V této ukázce pou
 
 2. Klikněte pravým tlačítkem na spustitelný soubor nastavení a spustit jako správce k instalaci.
 
-            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
+    ![řešení potíží s relace spřažení – problémy – 12.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Když otevřete Fiddler, by měly automaticky spustit zachytávání provozu (Všimněte si, že zachytávání v levém dolním rohu). Stisknutím klávesy F12 spustit nebo zastavit zachytávání provozu.
 
-        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
+    ![řešení potíží s relace spřažení – problémy-13.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
 4. Pravděpodobně vás bude zajímat dešifrovaný komunikaci přes protokol HTTPS a povolíte dešifrování HTTPS tak, že vyberete **nástroje** > **možnosti Fiddleru**a zaškrtněte políčko " **dešifrovat Přenosy HTTPS**".
 
-        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
+    ![řešení potíží s relace spřažení – problémy-14.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
 5. Předchozí relace nesouvisejících před reprodukci problému kliknutím můžete odebrat **X** (ikona) > **odebrat všechny** jako postupujte snímku obrazovky: 
 
-        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
+    ![řešení potíží s relace spřažení – problémy-15.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
 6. Po reprodukování problému uložit tak, že vyberete soubor ke kontrole **souboru** > **Uložit** > **všechny relace...** . 
 
-        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
+    ![řešení potíží s relace spřažení – problémy-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. Zkontrolovat a analyzovat protokoly relace k určení, co je problém.
 
@@ -194,11 +194,11 @@ Pomocí ladicího programu webového podle vašeho výběru. V této ukázce pou
    > [!NOTE]
    > Tato hodnota ARRAffinity je soubor cookie-id, nastavující Application Gateway pro klienta k odeslání do konkrétní back endového serveru.
 
-    ![řešení potíží s relace spřažení – problémy-17.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![řešení potíží s relace spřažení – problémy-17.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Příklad B:** Další relace protokolu a předchozí jeden je klient zpět ke službě Application Gateway, která byla nastavena ARRAAFFINITY reagovat. Pokud odpovídá id souboru cookie ARRAffinity, odešlou se ke stejnému back-end serveru, který se použil dříve paketu. Zkontrolujte další několik řádků komunikaci protokolem http, pokud chcete zobrazit, jestli se soubor cookie klienta ARRAffinity mění.
 
-    ![řešení potíží s relace spřažení – problémy – 18.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
+   ![řešení potíží s relace spřažení – problémy – 18.](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > Pro stejnou relaci komunikace by měl soubor cookie nebudou je moci měnit. Zaškrtnutím tohoto políčka nejvyšší na pravé straně, vyberte kartu soubory cookie."Pokud chcete zobrazit, zda je klienta pomocí souboru cookie a odesláním zpět ke službě Application Gateway. Pokud ne, není udržování a pomocí souboru cookie pro konverzací prohlížeče klienta. V některých případech může být od klienta.

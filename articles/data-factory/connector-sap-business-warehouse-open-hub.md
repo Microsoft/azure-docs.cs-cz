@@ -3,22 +3,21 @@ title: Kopírování dat z řešení SAP Business Warehouse prostřednictvím Op
 description: Zjistěte, jak kopírovat data ze SAP Business Warehouse (BW) prostřednictvím Open rozbočovač do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 03/08/2019
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/08/2019
+ms.author: jingwang
+ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848864"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256915"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open centra pomocí služby Azure Data Factory
 
@@ -30,7 +29,7 @@ Kopírování dat z řešení SAP Business Warehouse prostřednictvím Open rozb
 
 Konkrétně tento konektor SAP Business Warehouse otevřete Centrum podporuje:
 
-- SAP Business Warehouse **verze 7.01 nebo vyšší (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015)**.
+- SAP Business Warehouse **verze 7.01 nebo vyšší (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015)** .
 - Kopírování dat přes otevřít Centrum cílový místní tabulky, který pod může být DSO InfoCube, MultiProvider, zdroj dat, atd.
 - Kopírování dat pomocí základního ověřování.
 - Připojení k aplikační Server.
@@ -135,7 +134,7 @@ Pro SAP Business Warehouse otevřete Centrum propojené služby jsou podporován
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu Salesforce.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu otevřít Centrum SAP BW.
 
 Pro kopírování dat z a do SAP BW Open centra, nastavte vlastnost typ datové sady na **SapOpenHubTable**. Jsou podporovány následující vlastnosti.
 
@@ -173,7 +172,7 @@ Pro kopírování dat z a do SAP BW Open centra, nastavte vlastnost typ datové 
 
 ### <a name="sap-bw-open-hub-as-source"></a>Otevřete Centrum SAP BW jako zdroj
 
-Ke zkopírování dat z centra otevřít SAP BW, nastavte typ zdroje v aktivitě kopírování do **SapOpenHubSource**. Přestože nejsou žádné další vlastnosti specifické pro typ. potřebné v aktivitě kopírování **zdroj** oddílu.
+Ke zkopírování dat z centra otevřít SAP BW, nastavte typ zdroje v aktivitě kopírování do **SapOpenHubSource**. Nejsou žádné další vlastnosti specifické pro typ. potřebné v aktivitě kopírování **zdroj** oddílu.
 
 **Příklad:**
 

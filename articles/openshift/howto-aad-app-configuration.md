@@ -1,20 +1,20 @@
 ---
 title: Integrace s Azure Active Directory pro Azure Red Hat OpenShift | Dokumentace Microsoftu
 description: Informace o vytvoření skupiny zabezpečení Azure AD a uživatele pro testování aplikací v Microsoft Azure Red Hat OpenShift clusteru.
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.service: openshift
 manager: jeconnoc
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: f6b87748c33c1afd047ae25dfb7df3670a73e7c8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779682"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306471"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Integrace s Azure Active Directory pro Azure Red Hat OpenShift
 
@@ -69,7 +69,7 @@ Pokud vaše organizace ještě nemá registrace aplikace Azure Active Directory 
 2. V **zaregistrovat aplikaci** podokně, zadejte název pro registraci vaší aplikace.
 3. Ujistěte se, že v části **podporovaných typů účtu** , který **účty v tomto adresáři organizace jenom** zaškrtnuto. Toto je nejbezpečnější možnost.
 4. Přidáme na identifikátor URI přesměrování vyšší Jakmile víme URI clusteru. Klikněte na tlačítko **zaregistrovat** pro vytvoření registrace aplikace Azure AD.
-5. Na stránce, která se zobrazí, poznamenejte **ID aplikace (klient)**. Společnost Microsoft bude odkazovat na tuto hodnotu jako `APPID` v [vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) kurzu.
+5. Na stránce, která se zobrazí, poznamenejte **ID aplikace (klient)** . Společnost Microsoft bude odkazovat na tuto hodnotu jako `APPID` v [vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) kurzu.
 
 ![Snímek obrazovky stránky objektu aplikace](./media/howto-create-tenant/get-app-id.png)
 
@@ -90,7 +90,7 @@ Další informace o objekty aplikací Azure, najdete v části [aplikace a insta
 
 Podrobnosti o vytvoření nové aplikace Azure AD, najdete v článku [registrace aplikace ke koncovému bodu Azure Active Directory verze 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 * [Aplikace a instanční objekty v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
 * [Rychlé zprovoznění: Registrace aplikace ke koncovému bodu Azure Active Directory verze 1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  

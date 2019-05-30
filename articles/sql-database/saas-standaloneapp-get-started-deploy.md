@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61485121"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304138"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
 
@@ -25,9 +25,9 @@ V tomto kurzu nasazení a zkoumání SaaS aplikace Wingtip Tickets ukázkové ap
 
 Samostatná aplikace nebo aplikace na tenanta vzor nasadí instance aplikace pro každého tenanta.  Každá aplikace je nakonfigurovaná pro konkrétního tenanta a nasazených ve skupině samostatné prostředky Azure. Více instancí aplikace připravené k poskytování řešení více tenantů. Tento model je nejvhodnější pro menší počet klientů, kde je hlavní prioritou izolaci klientů. Azure nabízí partner programy, které umožňují prostředkům má být nasazen do předplatného klienta a spravované poskytovatelem služby jménem klienta. 
 
-V tomto kurzu se naučíte se nasadit tři samostatné aplikace pro tři tenanty do vašeho předplatného Azure.  Máte plný přístup k prozkoumání a pracovat jednotlivé součásti aplikace.
+V tomto kurzu nasadíte tři samostatné aplikace pro tři tenanty do vašeho předplatného Azure.  Máte plný přístup k prozkoumání a pracovat jednotlivé součásti aplikace.
 
-Zdrojový kód a správu skriptů aplikace jsou k dispozici v [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) úložiště GitHub. Aplikace byla vytvořena pomocí sady Visual Studio 2015 a není úspěšně otevřete a kompilace v sadě Visual Studio 2017 bez aktualizace.
+Zdrojový kód a správu skriptů aplikace jsou k dispozici v [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) úložiště GitHub. Aplikace byla vytvořena pomocí sady Visual Studio 2015 a nebude úspěšně otevřít a sestavení v aplikaci Visual Studio 2019 bez aktualizace.
 
 
 V tomto kurzu se dozvíte:
@@ -37,7 +37,7 @@ V tomto kurzu se dozvíte:
 > * Kde lze získat zdrojový kód aplikace a skripty pro správu.
 > * O serverech a databází, které tvoří aplikaci.
 
-Další kurzy budou vydané. Že vám umožní prozkoumejte celou řadu scénářů správy založené na tomto modelu aplikací.   
+Další kurzy budou vydané. Budete umožňují prozkoumejte celou řadu scénářů správy založené na tomto modelu aplikací.   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>Nasazení samostatného SaaS aplikaci Wingtip Tickets
 
@@ -107,7 +107,7 @@ Všechny databáze tenantů jsou 50 DTU *samostatné* databáze.
 <!--
 * Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
 - Další informace o víceklientské aplikace SaaS, naleznete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
@@ -126,6 +126,6 @@ V tomto kurzu jste se dozvěděli:
 > * O serverech a databází, které tvoří aplikaci.
 > * Jak odstranit ukázkové prostředky k zastavení souvisejícího účtování.
 
-Zkuste [Provision and Catalog](saas-standaloneapp-provision-and-catalog.md) kurz, ve kterém bude prozkoumat použití katalogu tenantů, která umožňuje celou řadu scénářů napříč tenanty, jako je schéma analytics správy a klientů.
+Zkuste [Provision and Catalog](saas-standaloneapp-provision-and-catalog.md) kurz, ve kterém prozkoumáte použití katalogu tenantů, která umožňuje celou řadu scénářů napříč tenanty, jako je schéma analytics správy a klientů.
  
 

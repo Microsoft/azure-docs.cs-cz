@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712861"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244908"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
@@ -29,7 +29,7 @@ Pravidlo upozornění metriky můžete definovat tak, že zadáte cílový prost
 - Cílový prostředek (Azure prostředků, kterou chcete monitorovat): myVM
 - Metrika: Procento CPU
 - Typ podmínky: Statická
-- Časová agregace (Statistika, která se spouští nad nezpracované hodnoty metrik. Podporované času agregace jsou Min, Max, Avg, celkem): Průměr
+- Časová agregace (Statistika, která se spouští nad nezpracované hodnoty metrik. Čas podporované agregace jsou Min, Max, Avg, celkový počet, počet): Průměr
 - Období (vzhled back okno, přes které metriky jsou kontrolovány hodnoty): Za posledních 5 minut.
 - Frequency (četnost, se kterým zkontroluje upozornění metriky, pokud jsou splněny podmínky): 1 min.
 - Operátor: Větší než
@@ -43,12 +43,12 @@ Od doby, kdy se vytvoří pravidlo upozornění monitorování spouští každou
 
 - Cílový prostředek (Azure prostředků, kterou chcete monitorovat): myVM
 - Metrika: Procento CPU
-- Typ podmínky: Dynamická
-- Časová agregace (Statistika, která se spouští nad nezpracované hodnoty metrik. Podporované času agregace jsou Min, Max, Avg, celkem): Průměr
+- Typ podmínky: Dynamické
+- Časová agregace (Statistika, která se spouští nad nezpracované hodnoty metrik. Čas podporované agregace jsou Min, Max, Avg, celkový počet, počet): Průměr
 - Období (vzhled back okno, přes které metriky jsou kontrolovány hodnoty): Za posledních 5 minut.
 - Frequency (četnost, se kterým zkontroluje upozornění metriky, pokud jsou splněny podmínky): 1 min.
 - Operátor: Větší než
-- Citlivost: Střednědobé používání
+- Citlivost: Střední
 - Vzhled Back období: 4
 - Počet porušení zásad: 4
 
@@ -106,14 +106,14 @@ Při monitorování více dimenzí, dynamickými prahovými hodnotami, které m�
 
 - Cílový prostředek: myAppServicePlan
 - Metrika: Procento CPU
-- Typ podmínky: Dynamická
+- Typ podmínky: Dynamické
 - Dimenze
   - Instance = *
 - Časová agregace: Průměr
 - Období: Za posledních 5 minut.
 - Frekvence: 1 min.
 - Operátor: GreaterThan
-- Citlivost: Střednědobé používání
+- Citlivost: Střední
 - Vzhled Back období: 1
 - Počet porušení zásad: 1
 
@@ -168,7 +168,7 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 |Microsoft.Network/trafficManagerProfiles | Ano|
 |Microsoft.Search/searchServices | Ano|
 |Microsoft.ServiceBus/namespaces| Ano |
-|Microsoft.Storage/storageAccounts | Ano|
+|Microsoft.Storage/storageAccounts. | Ano|
 |Microsoft.StreamAnalytics/streamingjobs| Ano|
 |Microsoft.TimeSeriesInsights/environments | Ano|
 |Microsoft Web/serverfarms | Ano |

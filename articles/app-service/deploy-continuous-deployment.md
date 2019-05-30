@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765612"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390636"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
 V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [služby Azure App Service](overview.md). App Service umožňuje průběžné nasazování z Bitbucketu, Githubu, a [Azure DevOps služby](https://www.visualstudio.com/team-services/) stažením nejnovější aktualizace z existující úložiště v některé z těchto služeb.
@@ -130,7 +130,7 @@ V **konfigurovat** stránku, **sestavení** nastavte jazyk rozhraní, Azure DevO
 
 V **testovací** zvolte, jestli se má povolit zátěžové testy a pak klikněte na **pokračovat**.
 
-V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má [povolí sloty nasazení](deploy-staging-slots.md), pak klikněte na tlačítko **pokračovat**. 
+V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/app-service/plans/) plánu služby App Service, může se zobrazit také **nasazení do přípravného prostředí** stránky. Zvolte, jestli se má [povolí sloty nasazení](deploy-staging-slots.md), pak klikněte na tlačítko **pokračovat**. DevOps neumožňuje nepřetržité doručování na produkční slot. Toto chování je záměrné, aby se zabránilo nechtěnému nasazení do produkčního prostředí. Doporučujeme nastavit průběžné doručování do přípravného slotu, ověřte změny tam a prohození slotů, až budete připravení.
 
 ### <a name="finish-configuration"></a>Dokončení konfigurace
 

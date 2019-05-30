@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: b5af6c5007130d71f94e1fa748adc333a8d08a48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689323"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258287"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -621,11 +621,11 @@ Máte určitou volnost v jak zpracovávat výstrahy pro zadané prahové hodnoty
 
 ## <a name="patching-and-operations"></a>Operace a opravy
 
-### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>Jak vytvořit škálovací sadu v existující skupinu prostředků?
+### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>Můžete vytvořit škálovací sadu v existující skupinu prostředků?
 
-Vytvoření škálovací sady v existující prostředek skupiny ještě není možné z portálu Azure portal, ale při nasazení škálovací sady z šablony Azure Resource Manageru můžete zadat existující skupinu prostředků. Při vytváření škálovací sady s použitím prostředí Azure PowerShell nebo rozhraní příkazového řádku můžete také zadat existující skupinu prostředků.
+Ano, můžete vytvořit škálovací sadu v existující skupinu prostředků.
 
-### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>Můžeme přesunout škálovací sady do jiné skupiny prostředků?
+### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>Můžu přesunout škálovací sady do jiné skupiny prostředků?
 
 Ano, můžete přesunout, škálovací sada prostředků pro nové předplatné nebo skupinu prostředků.
 

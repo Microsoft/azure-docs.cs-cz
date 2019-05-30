@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518633"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072835"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupin kontejnerů ve službě Azure Container Instances
 
@@ -65,7 +65,7 @@ Další informace najdete v tématu [ResourceRequirements] [ resource-requiremen
 
 * Přidělit **minimální** 1 procesoru a 1 GB paměti pro skupinu kontejnerů. Je možné zřídit instance jednotlivých kontejnerů ve skupině s menší než 1 procesoru a 1 GB paměti. 
 
-* Pro **maximální** prostředky ve skupině kontejnerů, najdete v článku [dostupnost prostředků] [aci--dostupnosti oblastí] pro Azure Container Instances v oblasti nasazení.
+* Pro **maximální** prostředky ve skupině kontejnerů, najdete v článku [dostupnost prostředků] [ region-availability] pro Azure Container Instances v oblasti nasazení.
 
 ## <a name="networking"></a>Sítě
 

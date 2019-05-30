@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 05/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0410b052f17a868aed70ce407b9c9fdefbe023df
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3b21371d6321b208b19ca8b2524308736c3ceca9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233637"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244343"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Připojit zařízení Symantec ICDX 
 
@@ -37,13 +37,36 @@ Symantec ICDX konektoru můžete snadno připojit všechny protokoly řešení S
 
 Integrace a exportovat protokoly přímo do Azure Sentinelu Symantec ICDX.
 
-1. Otevřete konzolu pro správu ICDX.
-2. V levé navigační nabídce vyberte **konfigurace** a pak **předávání** kartu.
-3. V řádku Microsoft Azure Log Analytics, klikněte na tlačítko **Další**následovaný **upravit**. 
-4. V **předávání Log Analytics v Microsoft Azure** okno, nastavte následující:
-    - Ponechte výchozí SymantecICDX název vlastního protokolu.
-    - ID pracovního prostoru zkopírujte a vložte ji **identifikátor zákazníka** pole. Kopírovat **primární klíč** a vložte ho do pole sdíleného klíče. Tyto hodnoty můžete zkopírovat z portálu Azure Sentinelu tak, že vyberete **datové konektory** a potom **Symantec ICDX**.
-6. Chcete-li použít příslušné schéma v Log Analytics pro události Symantec ICDX, vyhledejte **SymantecICDX_CL**.
+1. Otevřete konzolu pro správu ICDX přidání serverů pro předávání Microsoft Azure Sentinelu (Log Analytics).
+2. Klikněte na navigačním panelu ICDx **konfigurace**. 
+3. V horní části **konfigurace** obrazovce, klikněte na tlačítko **předávání**.
+4. V části **předávání**, vedle Microsoft Azure Sentinelu (Log Analytics), klikněte na tlačítko **přidat**. 
+4. V **Microsoft Azure Sentinelu (Log Analytics)** okna, klikněte na tlačítko **zobrazit rozšířené**. 
+5. V horní části rozbalených oknu Microsoft Azure Sentinelu (Log Analytics), postupujte takto:
+    -   **Název**: Zadejte název pro předávání, která má více než 30 znaků. Zvolte jedinečný, smysluplný název. Tento název se zobrazí v seznamu serverů pro předávání na **konfigurace** obrazovky a na řídicích panelech na **řídicí panel** obrazovky. Příklad: Microsoft Azure Log Analytics – východ. Toto pole je povinné.
+    -   **Popis**: Zadejte popis pro předávání. Tento popis se také zobrazí v seznamu serverů pro předávání na **konfigurace** obrazovky. Zahrnout podrobnosti, jako je typ události, které jsou předávané a skupiny, kterou je potřeba kontrolovat data.
+    -   **Typ spouštění**: Vyberte metodu spouštěný pro konfiguraci předávání. Možnosti jsou ruční a automatická.<br>Výchozí hodnota je automaticky. 
+6. V části **události**, postupujte takto: 
+    - **Zdroj**: Vyberte jeden nebo více archivy, ze kterého se má přeposlat události. Můžete vybrat aktivní kolekcí archivy (včetně běžných archiv), osamocené kolekce archivy (to znamená, archivy pro kolekce, které jste odstranili), ICDx příjemce archivy nebo Archiv systému. <br>Výchozí hodnota je běžné archivu.
+      > [!NOTE]
+      > Archivy příjemce ICDx jsou uvedeny samostatně, podle názvu. 
+ 
+    - **Filtr**: Přidáte filtr, který určuje podmnožinu událostí k předávání. Udělejte jednu z těchto věcí:
+        - Chcete-li vybrat podmínku filtru, klikněte na typ, atribut, operátor a hodnotu. 
+        - Do pole filtru projděte si vaše podmínka filtru. Můžete upravit přímo v poli nebo odstranit podle potřeby.
+        - Klikněte na tlačítko a nebo nebo přidat pro vaše podmínka filtru.
+        - Můžete také kliknout na uložené dotazy použít uložený dotaz.
+    - **Zahrnuté atributy**: Zadejte čárkami oddělený seznam atributů, které chcete zahrnout do dat předávaných. Zahrnuté atributy mají přednost před atributy vyloučené.
+    - **Vyloučené atributy**: Zadejte čárkami oddělený seznam atributů, které chcete vyloučit z předané data.
+    - **Velikost dávky**: Vyberte počet události odesílat na dávku. Vaše možnosti jsou 10, 50, 100, 500 až 1000.<br>Výchozí hodnota je 100. 
+    - **Omezení přenosové rychlosti**: Vyberte rychlost, jakou jsou předávány události, vyjádřené jako událostí za sekundu. Možnosti jsou neomezená, 500, 1000, 5000, 10000. <br> Výchozí hodnota je 5 000. 
+7. V části **Azure cílové**, postupujte takto: 
+    - **ID pracovního prostoru**: Vložení ID pracovního prostoru z následujícího seznamu. Toto pole je povinné.
+    - **Primární klíč**: Vložte primární klíč z následujícího seznamu. Toto pole je povinné.
+    - **Název vlastního protokolu**: Zadejte název vlastního protokolu Microsoft Azure portal pracovní prostor Log Analytics ke které se chystáte události. Výchozí hodnota je SymantecICDx. Toto pole je povinné.
+8. Klikněte na tlačítko *Uložit* dokončete konfiguraci předávání. 
+9. Spusťte předávání, v části **možnosti**, klikněte na tlačítko **Další** a potom **Start**.
+10. Chcete-li použít příslušné schéma v Log Analytics pro události Symantec ICDX, vyhledejte **SymantecICDX_CL**.
 
 
 ## <a name="validate-connectivity"></a>Ověření připojení

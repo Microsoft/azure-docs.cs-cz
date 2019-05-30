@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b0844030d069fba40bfd2fdf55252d8b9e3b1c2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249707"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235129"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Příručka nasazení funkce Azure Active Directory
 
@@ -41,7 +41,7 @@ Další informace o licencování najdete na následujících stránkách:
 
 V této fázi správci povolit standardních hodnot zabezpečení funkce pro vytváření základních zabezpečené a snadno se používá ve službě Azure AD předtím, než jsme naimportovat nebo vytvořit běžné uživatelské účty. Tato základní fáze zajišťuje jsou ve stavu zabezpečení od samého začátku a koncovým uživatelům, pouze že zavést do nových konceptů jednou.
 
-| Úkol | Detail | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Určení více než jeden globální správce](../users-groups-roles/directory-emergency-access.md) | Přiřadíte aspoň dva účty výhradně cloudového globálního správce je trvalý pro použití při nouze. Tyto účty nejsou používají denně a musí být dlouhá a složitá hesla. | Azure AD Free |
 | [Použít platformou pro správu rolí, kde je to možné](../users-groups-roles/directory-assign-admin-roles.md) | Poskytují pouze přístup, které potřebují vaši správci do oblastí, které potřebují přístup k. Ne všichni správci musí být globální správce. | Azure AD Free |
@@ -62,10 +62,10 @@ V této fázi správci povolit standardních hodnot zabezpečení funkce pro vyt
 
 V dalším kroku přidáme do foundation podle fáze 1 Import našich uživatelů a povolením synchronizace, plánování pro hosty a příprava pro podporu dalších funkcí.
 
-| Úkol | Detail | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Instalace služby Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | Připravte se na synchronizovat uživatele z existujícího místního adresáře do cloudu. | Azure AD Free |
-| [Implementace synchronizace hodnot Hash hesel](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchronizace hodnot hash hesel, aby změny hesla se musí replikovat, chybných zadání hesla a zjišťování a náprava, uniklé přihlašovací údaje vytváření sestav. | Azure AD Premium P1 |
+| [Implementace synchronizace hodnot Hash hesel](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Synchronizace hodnot hash hesel, aby změny hesla se musí replikovat, chybných zadání hesla a zjišťování a náprava, uniklé přihlašovací údaje vytváření sestav. | Azure AD Free |
 | [Implementace zpětného zápisu hesla](../authentication/howto-sspr-writeback.md) | Povolení změn hesla v cloudu a možné zpětně zapsat do místních prostředí systému Windows Server Active Directory. | Azure AD Premium P1 |
 | [Implementace služby Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) | Povolte monitorování stavu klíče statistiky pro vaše servery Azure AD Connect, servery služby AD FS a řadiče domény. | Azure AD Premium P1 |
 | [Přiřazení licencí pro uživatele na základě členství ve skupinách v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Šetřete čas a úsilí tak, že vytvoříte licenční skupiny, které povolí nebo zakáže funkce podle skupiny místo nastavení na uživatele. | |
@@ -77,7 +77,7 @@ V dalším kroku přidáme do foundation podle fáze 1 Import našich uživatel�
 
 Jak budeme dál stavět na předchozí fáze, jsme identifikovat aplikace Release candidate pro migraci a integrace se službou Azure AD a dokončete instalaci těchto aplikací.
 
-| Úkol | Detail | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | Identifikovat vaší aplikace | Identifikace aplikací ve vaší organizaci: místní, aplikací SaaS v cloudu a další – obchodní aplikace. Určení, zda tyto aplikace můžete a službou Azure AD se mají spravovat. | Vyžaduje se žádné licence |
 | [Integrujte podporované aplikace SaaS v galerii](../manage-apps/add-application-portal.md) | Azure AD má galerie, která obsahuje tisíce předem integrovaných aplikací. Některé z aplikací, které vaše organizace používá jsou pravděpodobně v galerii dostupné přímo z webu Azure portal. | Azure AD Free |
@@ -87,7 +87,7 @@ Jak budeme dál stavět na předchozí fáze, jsme identifikovat aplikace Releas
 
 Fáze 4 vidí správci vynucování zásad nejnižší oprávnění pro správu, dokončení jejich první kontrolu přístupu a povolení automatizace běžné uživatelské úlohy životního cyklu.
 
-| Úkol | Detail | Požadovaná licence |
+| Úkol | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
 | [Vynutit používání služby Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | Odebrání role pro správu z normální každodenní uživatelské účty. Ujistěte se, administrativní uživatelé mají nárok na využití jejich role po úspěšné kontroly ověřování službou Multi-Factor Authentication, poskytuje obchodní odůvodnění nebo z určených schvalovatelů odesílání žádostí o schválení. | Azure AD Premium P2 |
 | [Dokončení kontroly přístupu pro role adresáře Azure AD v PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Práce s vaší zabezpečení a vedoucí týmy k vytvoření zásad přístupu zkontrolujte zkontrolovat přístup pro správu na základě zásad vaší organizace. | Azure AD Premium P2 |

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Funkce | Dokumentace Microsoftu'
 description: Funkce Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8d1c3eb3-1022-4add-a919-c98cc6584af1
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.author: ergreenl
-ms.openlocfilehash: 9e4ab7aa4f61921d8b327404a266694349d78164
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 27aaaca4f28feac0f68b4e034426c64b934b1f95
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60417261"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234919"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>Funkce
@@ -32,10 +32,10 @@ Následující funkce jsou dostupné v Azure AD Domain Services spravované dom�
 * **Vytvořte s vlastními názvy domén:** Můžete vytvořit domén s vlastními názvy (například "contoso100.com") pomocí služby Azure AD Domain Services. Můžete použít buď názvy ověřené nebo neověřených domén. Volitelně můžete také vytvořit doménu s příponou domény integrované (tedy "*. onmicrosoft.com") nabízí adresáře služby Azure AD.
 * **Integrovat se službou Azure AD:** Není potřeba konfigurovat ani spravovat replikaci do Azure AD Domain Services. Uživatelské účty, členství ve skupinách a přihlašovací údaje uživatele (hesel) z adresáře služby Azure AD jsou automaticky dostupné ve službě Azure AD Domain Services. Noví uživatelé, skupiny nebo změny atributů z vašeho tenanta Azure AD nebo v místním adresáři jsou automaticky synchronizovat s Azure AD Domain Services.
 * **Ověřování protokolů NTLM a Kerberos.** Podpora pro ověřování protokolů NTLM a Kerberos můžete nasadit aplikace, které využívají Windows-Integrated ověřování.
-* **Používejte podnikové přihlašovací údaje a hesla:** Hesla pro uživatele ve vašem tenantovi Azure AD fungovat s Azure AD Domain Services. Uživatelům můžete pomocí svých podnikových přihlašovacích údajů k připojení k doméně počítače, přihlaste se interaktivně nebo přes vzdálenou plochu a ověřování na základě spravované domény.
+* **Používejte podnikové přihlašovací údaje a hesla:** Hesla pro uživatele ve vašem tenantovi Azure AD fungovat s Azure AD Domain Services. Uživatele můžete používat své podnikové přihlašovací údaje pro připojení k doméně počítače, přihlásit interaktivně nebo přes vzdálenou plochu a ověřování na základě spravované domény.
 * **Vázání protokolu LDAP & LDAP přečíst podpory:** Můžete použít aplikace, které využívají vazby protokolu LDAP k ověřování uživatelů v doménách, které jsou obsluhovány pomocí Azure AD Domain Services. Kromě toho aplikace, které používají operace čtení protokolu LDAP k dotazu uživatele nebo počítač platí následující atributy z adresáře umí pracovat i ve službě Azure AD Domain Services.
 * **Protokol Secure LDAP (LDAPS):** Můžete povolit přístup k adresáři prostřednictvím zabezpečeného protokolu LDAP (LDAPS). Je k dispozici v rámci virtuální sítě ve výchozím nastavení protokolu Secure LDAP. Můžete však také v případě potřeby povolit protokolu Secure LDAP přes internet.
-* **Zásady skupiny:** Pro uživatele a počítače můžete jednoho integrovaného objektu zásad skupiny jednotlivých kontejnerů pro vynucování dodržování předpisů s požadované zásady zabezpečení pro uživatelské účty a počítačů připojených k doméně. Můžete vytvořit vlastní vlastní objekty zásad skupiny a přiřadit vlastní organizační jednotky [Správa zásad skupiny](active-directory-ds-admin-guide-administer-group-policy.md).
+* **Zásady skupiny:** Pro uživatele a počítače můžete jednoho integrovaného objektu zásad skupiny jednotlivých kontejnerů pro vynucování dodržování předpisů s požadované zásady zabezpečení pro uživatelské účty a počítačů připojených k doméně. Můžete vytvořit vlastní vlastní objekty zásad skupiny a přiřadit vlastní organizační jednotky [Správa zásad skupiny](manage-group-policy.md).
 * **Správa DNS:** Členové skupiny "Správci AAD DC" můžete spravovat službu DNS pro spravovanou doménu pomocí známých nástrojů pro správu DNS jako je modul snap-in konzoly MMC Správa DNS.
 * **Vytvořte vlastní organizační jednotky (OU):** Členové skupiny 'Správci AAD DC' můžete vytvořit vlastní organizační jednotky ve spravované doméně. Tito uživatelé jsou udělena úplná oprávnění správce přes vlastní organizační jednotky, takže se můžete přidávat nebo odebírat účty služeb, počítačů, skupin atd. v rámci těchto vlastní organizační jednotky.
 * **Chcete-li k dispozici v mnoha globálními oblastmi Azure:** Na stránce [Služby Azure podle oblasti](https://azure.microsoft.com/regions/#services/) se dozvíte, pro jaké oblasti je dostupná služba Azure AD Domain Services.

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 3957fefb44bd8e4732f74f69d5522bd499100d0b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e50314d80f3b773d2ea3bbc8abd4709b574aae65
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149871"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226227"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
-Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
+Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly Telemetrie a nastavit parametry pro některé z nich.
 
 Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu aplikace. Je automaticky přidán do projektu při vám [nainstalovat většině verzí sady SDK][start]. Je taky přidaný do webové aplikace pomocí [monitorování stavu na serveru služby IIS][redfield], nebo když vyberete Application Insights [rozšíření webu Azure nebo na virtuálním počítači](azure-web-apps.md).
 
@@ -30,10 +30,10 @@ Není k dispozici odpovídající soubor do ovládacího prvku [SDK na webové s
 Tento dokument popisuje oddílů, které se zobrazí v konfiguraci souboru, jak jsou součástí sady SDK, řídit a které balíčky NuGet načítání těchto komponent.
 
 > [!NOTE]
-> Pokyny k souboru ApplicationInsights.config nebo .xml se nevztahují na .NET Core SDK. Změny v aplikaci .NET Core obvykle používáme soubor appsettings.json. Příklad najdete v [dokumentaci Snapshot Debugger.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)
+> Pokyny k souboru ApplicationInsights.config nebo .xml se nevztahují na .NET Core SDK. Pro konfiguraci aplikací .NET Core, postupujte podle [to](../../azure-monitor/app/asp-net-core.md) průvodce.
 
 ## <a name="telemetry-modules-aspnet"></a>Moduly telemetrická data (ASP.NET)
-Každý modul telemetrie určitém typu dat shromažďuje a používá základního rozhraní API odesílat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat požadované řádky do souboru .config.
+Každý modul Telemetrie určitém typu dat shromažďuje a používá základního rozhraní API odesílat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat požadované řádky do souboru .config.
 
 V konfiguračním souboru pro každý modul je uzel. Zakázat modul, odstranit uzel nebo ji komentář.
 
@@ -52,10 +52,12 @@ Můžete také napsat vlastní sledování kódu pomocí závislostí [TrackDepe
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet package.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Diagnostika Telemetrie Application Insights
-`DiagnosticsTelemetryModule` Hlásí chyby v samotný kód instrumentace Application Insights. Například kód nemůže získat přístup k čítače výkonu, nebo pokud `ITelemetryInitializer` vyvolá výjimku. Telemetrie trasování sledován pomocí funkce tento modul se zobrazí ve [diagnostické vyhledávání][diagnostic]. Sends diagnostic data to dc.services.vsallin.net.
+`DiagnosticsTelemetryModule` Hlásí chyby v samotný kód instrumentace Application Insights. Například kód nemůže získat přístup k čítače výkonu, nebo pokud `ITelemetryInitializer` vyvolá výjimku. Telemetrie trasování sledován pomocí funkce tento modul se zobrazí ve [diagnostické vyhledávání][diagnostic].
 
+```
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud nainstalujete jenom tento balíček, soubor ApplicationInsights.config se nevytvoří automaticky.
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet package. If you only install this package, the ApplicationInsights.config file is not automatically created.
+```
 
 ### <a name="developer-mode"></a>Vývojářský režim
 `DeveloperModeWithDebuggerAttachedTelemetryModule` Vynutí Application Insights `TelemetryChannel` k odesílání dat okamžitě, jeden telemetrie položky v době, když je připojen ladicí program k procesu aplikace. To snižuje množství času mezi okamžikem, když vaše aplikace sleduje telemetrická data, a když se objeví na portálu služby Application Insights. To způsobí, že významné režijní náklady v procesoru a šířku pásma sítě.
@@ -97,10 +99,10 @@ Balíček Microsoft.ApplicationInsights poskytuje [základní rozhraní API](htt
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud právě instalaci tohoto balíčku NuGet, vygeneruje se žádný soubor .config.
 
 ## <a name="telemetry-channel"></a>Kanál telemetrie
-Kanál telemetrie slouží ke správě ukládání do vyrovnávací paměti a přenos telemetrických dat do služby Application Insights.
+[Telemetrie kanál](telemetry-channels.md) spravuje ukládání do vyrovnávací paměti a přenos telemetrických dat do služby Application Insights.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` je výchozím kanálu pro služby. Ukládány data v paměti.
-* `Microsoft.ApplicationInsights.PersistenceChannel` představuje alternativu pro konzolové aplikace. Když vaše aplikace se zavře a odešle ho při spuštění aplikace znovu ho můžete uložit všechna unflushed data do trvalého úložiště.
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` je výchozím kanálu pro webové aplikace. Ukládány data v paměti a používá opakování mechanismy a úložiště na místním disku pro více spolehlivé doručování telemetrická data.
+* `Microsoft.ApplicationInsights.InMemoryChannel` je zjednodušené telemetrie kanál, který se používá, pokud je nakonfigurovaný žádný kanál. 
 
 ## <a name="telemetry-initializers-aspnet"></a>Inicializátory telemetrická data (ASP.NET)
 Inicializátory telemetrie nastavit vlastnosti kontextu, které jsou odeslány společně s každou položkou telemetrie.
@@ -129,7 +131,7 @@ Standardní inicializátory vše je nastaveno buď pomocí webové nebo WindowsS
 
     `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
 * `UserTelemetryInitializer` aktualizace `Id` a `AcquisitionDate` vlastnosti `User` kontext pro všechny položky telemetrie se extrahují z hodnoty `ai_user` vygenerovaný kód instrumentace Application Insights JavaScript spuštěný v uživatele soubor cookie prohlížeč.
-* `WebTestTelemetryInitializer` Nastaví id uživatele, id relace a vlastnosti syntetické zdroje pro požadavky HTTP, která pocházejí z [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
+* `WebTestTelemetryInitializer` Nastaví ID uživatele, ID relace a vlastnosti syntetické zdroje pro požadavky HTTP, která pocházejí z [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
   `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
 
 Pro aplikace .NET spuštěné v Service Fabric, můžete zahrnout `Microsoft.ApplicationInsights.ServiceFabric` balíček NuGet. Tento balíček obsahuje `FabricTelemetryInitializer`, který přidá vlastnosti Service Fabric do položky telemetrie. Další informace najdete v tématu [stránku Githubu](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) o vlastnostech přidal tento balíček NuGet.
@@ -137,7 +139,7 @@ Pro aplikace .NET spuštěné v Service Fabric, můžete zahrnout `Microsoft.App
 ## <a name="telemetry-processors-aspnet"></a>Telemetrie procesory (ASP.NET)
 Procesory telemetrická data můžete filtrovat a upravit každou položku telemetrie těsně před odesláním ze sady SDK k portálu.
 
-Je možné [psát vlastní telemetrii procesory](../../azure-monitor/app/api-filtering-sampling.md#filtering).
+Je možné [psát vlastní Telemetrii procesory](../../azure-monitor/app/api-filtering-sampling.md#filtering).
 
 #### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>Adaptivní vzorkování procesoru telemetrická data (z 2.0.0-beta3)
 Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace odešle velké množství telemetrie, odstraní tento procesor některé.
@@ -156,8 +158,8 @@ Parametr obsahuje cíl, který algoritmus se snaží dosáhnout. Každou instanc
 
 [Další informace o vzorkování](../../azure-monitor/app/sampling.md).
 
-#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Procesor-frekvence vzorkování telemetrie (od 2.0.0-beta1)
-K dispozici je také standardní [vzorkování procesoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md) (z 2.0.1):
+#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Míra vzorkování procesoru telemetrická data (z 2.0.0-beta1)
+K dispozici je také standardní [vzorkování procesoru Telemetrie](../../azure-monitor/app/api-filtering-sampling.md) (z 2.0.1):
 
 ```XML
 
@@ -182,7 +184,7 @@ Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v 
 
 * Min: 1
 * Max: 1000
-* Výchozí: 500
+* Výchozí hodnota: 500
 
 ```
 
@@ -200,7 +202,7 @@ Určuje, jak často by měla být data, která jsou uložena v úložišti v pam
 
 * Min: 1
 * Max: 300
-* Výchozí: 5
+* Výchozí hodnota: 5
 
 ```
 
@@ -218,7 +220,7 @@ Určuje maximální velikost v Megabajtech, která je vymezena do trvalého úlo
 
 * Min: 1
 * Max: 100
-* Výchozí: 10
+* Výchozí hodnota: 10
 
 ```
 
@@ -261,7 +263,7 @@ Určuje, ve kterém se zobrazí data prostředku Application Insights. Obvykle v
 
 Pokud chcete nastavit klíč dynamicky – například pokud chcete odeslat výsledky z vaší aplikace pro různé prostředky – můžete vynechat klíč z konfiguračního souboru a nastavit v kódu.
 
-Chcete-li nastavit klíč pro všemi instancemi TelemetryClient, včetně modulů standardní telemetrická data, nastavte klíč v TelemetryConfiguration.Active. V metodě inicializace, jako je například souboru global.aspx.cs v rámci služby technologie ASP.NET, postupujte takto:
+Pokud chcete nastavit klíč pro všemi instancemi TelemetryClient, včetně standardní moduly telemetrická data, nastavte klíč v TelemetryConfiguration.Active. V metodě inicializace, jako je například souboru global.aspx.cs v rámci služby technologie ASP.NET, postupujte takto:
 
 ```csharp
 

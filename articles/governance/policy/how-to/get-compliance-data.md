@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 050f301b55c718e80c1b4157639bd9dce506f6ba
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 428a1614889409300064420e1d3d4fbc0423a0ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979493"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237534"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získat data o dodržování předpisů prostředků Azure
 
@@ -416,7 +416,8 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [řešení Activity Log Analytics](../../../azure-monitor/platform/collect-activity-logs.md) vázané na předplatné, můžete také zobrazit výsledky nedodržení předpisů pomocí cyklu hodnocení jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi protokolů Azure Monitor lze nastavit upozornění sledování nedodržení předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [řešení Activity Log Analytics](../../../azure-monitor/platform/activity-log-collect.md) vázané na předplatné, můžete také zobrazit výsledky nedodržení předpisů pomocí cyklu hodnocení jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi protokolů Azure Monitor lze nastavit upozornění sledování nedodržení předpisů.
+
 
 ![Azure dodržování zásad pomocí protokolů z Azure monitoru](../media/getting-compliance-data/compliance-loganalytics.png)
 

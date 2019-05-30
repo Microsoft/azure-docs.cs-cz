@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75a02abb6cce332daad12e1feb25fb425f89f7f4
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656678"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393387"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Použití spravované identity ve službě Azure API Management
 
 V tomto článku se dozvíte, jak vytvořit spravovanou identitu pro instanci služby API Management a jak získat přístup k dalším prostředkům. Spravovaná identita vygenerované službou Azure Active Directory (Azure AD) umožňuje snadno a bezpečný přístup k jiné AD chráněné prostředky Azure, jako je Azure Key Vault vaší instance služby API Management. Tato identita je spravuje Azure a není nutné zřizovat nebo otočit jakýchkoli tajných kódů. Další informace o spravovaných identit najdete v tématu [co je spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>Vytvořte spravovanou identitu pro instance služby API Management
 
@@ -242,3 +240,4 @@ Další informace o spravovaných identit pro prostředky Azure:
 
 * [Co je spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md)
 * [Šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates)
+* [Ověřování pomocí spravované identity v zásadách](./api-management-authentication-policies.md#ManagedIdentity)

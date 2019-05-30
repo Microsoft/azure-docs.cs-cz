@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705084"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253764"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ Následující příklad ukazuje **RelyingParty** prvek *B2C_1A_signup_signin* s
 
 Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cestu uživatele pro aplikace předávající strany. |
 | UserJourneyBehaviors | 0:1 | Rozsah cesty chování uživatelů. |
@@ -110,7 +110,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 **UserJourneyBehaviors** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah jednotné přihlašování (SSO) chování relace cesty uživatele. |
 | SessionExpiryType |0:1 | Chování ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute`. `Rolling` Hodnotu (výchozí) určuje, že uživatel zůstane přihlášený za předpokladu, uživatel je neustále aktivní v aplikaci. `Absolute` Hodnota značí, že uživatel musí po době určené aplikace relace donutit k životnost. |
@@ -124,7 +124,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Rozsah | Ano | Rozsah chování jednotné přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`, nebo `Policy`. `Suppressed` Hodnota označuje, zda je potlačeno chování. Například v případě jedné relace přihlášení, žádná relace se zachová pro uživatele a uživatel vždy zobrazí výzva výběru zprostředkovatele identity. `TrustFramework` Hodnota značí, že je chování aplikováno pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel procházet dvě cesty zásady pro vztah důvěryhodnosti framework vyzván výběru zprostředkovatele identity. `Tenant` Hodnota značí, že je chování aplikováno na všechny zásady v tenantovi. Například uživatel procházení dvě cesty zásad pro klienta není vyzván výběru zprostředkovatele identity. `Application` Hodnota značí, že je chování aplikováno na všechny zásady pro aplikace, který zadal žádost. Například uživatel procházení dvě cesty zásad pro aplikaci není vyzván výběru zprostředkovatele identity. `Policy` Hodnota značí, že chování platí jenom pro zásadu. Například je procházení dvě cesty zásady pro vztah důvěryhodnosti framework uživatel vyzván výběru zprostředkovatele identity při přepínání mezi zásadami. |
+| Scope | Ano | Rozsah chování jednotné přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`, nebo `Policy`. `Suppressed` Hodnota označuje, zda je potlačeno chování. Například v případě jedné relace přihlášení, žádná relace se zachová pro uživatele a uživatel vždy zobrazí výzva výběru zprostředkovatele identity. `TrustFramework` Hodnota značí, že je chování aplikováno pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel procházet dvě cesty zásady pro vztah důvěryhodnosti framework vyzván výběru zprostředkovatele identity. `Tenant` Hodnota značí, že je chování aplikováno na všechny zásady v tenantovi. Například uživatel procházení dvě cesty zásad pro klienta není vyzván výběru zprostředkovatele identity. `Application` Hodnota značí, že je chování aplikováno na všechny zásady pro aplikace, který zadal žádost. Například uživatel procházení dvě cesty zásad pro aplikaci není vyzván výběru zprostředkovatele identity. `Policy` Hodnota značí, že chování platí jenom pro zásadu. Například je procházení dvě cesty zásady pro vztah důvěryhodnosti framework uživatel vyzván výběru zprostředkovatele identity při přepínání mezi zásadami. |
 | KeepAliveInDays | Ano | Určuje, jak dlouho zůstane přihlášený uživatel. Nastavením této hodnoty na 0 vypne funkce políčko zůstat Přihlášeni. Další informace najdete v tématu [neodhlašovat](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
@@ -152,7 +152,7 @@ Následující příklad předá parametr s názvem `campaignId` s hodnotou `haw
 
 **ContentDefinitionParameters** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Řetězec, který obsahuje pár klíč-hodnota, která se připojuje k řetězci dotazu identifikátoru definici obsahu zatížení identifikátor URI. |
 
@@ -170,15 +170,15 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 | Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- | 
-| ID | Ano | Hodnota musí být `PolicyProfile`. |
+| Id | Ano | Hodnota musí být `PolicyProfile`. |
 
 **Technický profil** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Zobrazovaný název | 0:1 | Řetězec, který obsahuje název technický profil, který se zobrazí uživatelům. |
+| displayName | 0:1 | Řetězec, který obsahuje název technický profil, který se zobrazí uživatelům. |
 | Popis | 0:1 | Řetězec, který obsahuje popis technický profil, který se zobrazí uživatelům. |
-| Protocol (Protokol) | 1:1 | Protokol použitý pro federace. |
+| Protocol | 1:1 | Protokol použitý pro federace. |
 | Metadata | 0:1 | Kolekce *položky* párů klíč/hodnota využívaných protokol pro komunikaci s koncovým bodem v průběhu transakce nakonfigurujte interakci mezi předávající strany a ostatní účastníci komunity. |
 | OutputClaims | 0:1 | Seznam typů deklarací identity, které jsou použity jako výstup v technickém profilu. Každý z těchto elementů obsahuje odkaz na **typu deklarace identity** již definována v **ClaimsSchema** části nebo v zásadách, ze kterého dědí tento soubor zásad. |
 | SubjectNamingInfo | 0:1 | Název subjektu použít v tokenech. |
@@ -193,7 +193,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 **OutputClaims** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | outputClaim | 0: n | Název typu očekávané deklarace identity v seznamu podporovaných pro zásady, na který se přihlásí předávající straně. Tato deklarace identity slouží jako výstup pro technický profil. |
 
@@ -208,7 +208,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 S **SubjectNameingInfo** prvku, řídí hodnota tokenu subjektu:
-- **JTW token** – `sub` deklarací identity. Toto je hlavní o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží ke kontrole autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. Další informace najdete v tématu [Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md).
+- **JWT token** – `sub` deklarací identity. Toto je hlavní o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží ke kontrole autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. Další informace najdete v tématu [Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md).
 - **SAML token** – `<Subject><NameID>` element, který identifikuje elementu předmět.
 
 **SubjectNamingInfo** prvek obsahuje následující atribut:

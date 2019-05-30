@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60878188"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234057"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -45,12 +45,12 @@ Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro
   
     ![Získejte doménu AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* ID vašeho tenanta Azure. Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* ID vašeho tenanta Azure. Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Tento mechanismus ověřování je doporučený postup, pokud chcete, aby koncový uživatel pro přihlášení do aplikace přes Azure AD. Vaše aplikace bude mít přístup k prostředkům Azure se stejnou úrovní přístupu jako koncový uživatel, který přihlášení. Koncový uživatel musí zadat přihlašovací údaje pravidelně v pořadí pro vaši aplikaci k Udržovat přístup.
 
-Výsledek s přihlášení koncových uživatelů je, že vaše aplikace je zadaný přístupový token a aktualizační token. Získá přístupový token připojené k každého požadavku na Data Lake Storage Gen1 nebo Data Lake Analytics a na jednu hodinu, ve výchozím nastavení je platný. Token obnovení je možné získat nový přístupový token a je platný po dobu až dvou týdnů ve výchozím nastavení. Pro přihlášení koncových uživatelů můžete použít dva různé přístupy.
+Výsledek s koncovým uživatelem, přihlaste se, že vaše aplikace je zadaný přístupový token a aktualizační token. Získá přístupový token připojené k každého požadavku na Data Lake Storage Gen1 nebo Data Lake Analytics a na jednu hodinu, ve výchozím nastavení je platný. Token obnovení je možné získat nový přístupový token a je platný po dobu až dvou týdnů ve výchozím nastavení. Pro přihlášení koncových uživatelů můžete použít dva různé přístupy.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Pomocí automaticky otevírané okno OAuth 2.0
 Aplikace můžete aktivovat automaticky otevíraném okně autorizaci OAuth 2.0 ve kterém může uživatel zadat přihlašovací údaje. Toto automaticky otevírané okno se také funguje s Azure AD dvojúrovňového ověřování (2FA) proces v případě potřeby. 
@@ -82,7 +82,7 @@ Při postupujte podle pokynů v odkazu, ujistěte se, že vyberete **nativní** 
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: Získání ID aplikace a identifikátor URI pro přesměrování
 
-Zobrazit [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) načíst ID aplikace.
+Zobrazit [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) načíst ID aplikace.
 
 Pokud chcete načíst identifikátor URI pro přesměrování, proveďte následující kroky.
 
@@ -95,7 +95,7 @@ Pokud chcete načíst identifikátor URI pro přesměrování, proveďte násled
 3. Zkopírujte hodnotu zobrazenou.
 
 
-## <a name="step-3-set-permissions"></a>Krok 3: Nastavit oprávnění
+## <a name="step-3-set-permissions"></a>Krok 3: Nastavení oprávnění
 
 1. Na webu Azure Portal, vyberte **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**a potom vyberte a klikněte na nativní aplikaci Azure AD, kterou jste vytvořili.
 

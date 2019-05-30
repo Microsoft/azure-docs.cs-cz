@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: kasinh
-ms.openlocfilehash: aa039680be1e88d74cad63eba17d7f3aa89ea49f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
-ms.translationtype: HT
+ms.openlocfilehash: 06faed8ceca77edc20b67f73a76d885839aa7dbc
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000426"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304324"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Odstraňování potíží Azure Backup Serveru
 
@@ -39,11 +39,11 @@ Doporučujeme provést ověření, než začnete řešení potíží s Microsoft
 | --- | --- | --- |
 | Registrace do trezoru | Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje nesouvisí s využitím služby recovery. | Doporučená akce: <br> <ul><li> Stáhněte si nejnovější soubor s přihlašovacími údaji z trezoru a zkuste to znovu. <br>(NEBO)</li> <li> Pokud předchozí akci nefungovalo, zkusit stáhnout přihlašovací údaje na jiný místní adresář nebo vytvořit nový trezor. <br>(NEBO)</li> <li> Zkuste aktualizovat datum a čas nastavení, jak je popsáno v [tento blog](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/). <br>(NEBO)</li> <li> Zkontrolujte, jestli c:\windows\temp má více než 65000 soubory. Přesunutí zastaralých souborů do jiného umístění nebo odstranění položek ve složce Temp. <br>(NEBO)</li> <li> Zkontrolujte stav certifikáty. <br> a. Otevřít **spravovat certifikáty počítače** (v Ovládacích panelech). <br> b. Rozbalte **osobní** uzel a jeho podřízeným uzlem **certifikáty**.<br> c.  Odeberte certifikát **Windows Azure Tools**. <br> d. Opakujte registraci ve službě Azure Backup klienta. <br> (NEBO) </li> <li> Zaškrtněte, pokud chcete zjistit, jestli všechny zásady skupiny na místě. </li></ul> |
 
-## <a name="replica-is-inconsistent"></a>Replika je nekonzistentní.
+## <a name="replica-is-inconsistent"></a>Replika je nekonzistentní
 
 | Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
-| Backup | Replika je nekonzistentní. | Ověřte, že je zapnutá možnost kontroly automatické kontroly konzistence v Průvodci skupiny ochrany. Další informace o příčinách nekonzistence repliky a relevantní doporučení, najdete v článku Microsoft TechNet [replika je nekonzistentní](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> V případě zálohování stavu systému/úplné obnovení systému ověřte, že zálohování Windows serveru je nainstalovaná na chráněném serveru.</li><li> Zkontrolujte problémy související s místa ve fondu úložiště DPM na serveru aplikace DPM nebo Microsoft Azure Backup a přidělení úložiště podle potřeby.</li><li> Kontrola stavu služby Stínová kopie svazku na chráněném serveru. Pokud je v zakázaném stavu, nastavte ji spustit ručně. Spusťte službu na serveru. Pak přejděte zpět do konzoly aplikace DPM nebo Microsoft Azure Backup serveru a spusťte synchronizaci s úlohou kontroly konzistence.</li></ol>|
+| Backup | Replika je nekonzistentní | Ověřte, že je zapnutá možnost kontroly automatické kontroly konzistence v Průvodci skupiny ochrany. Další informace o příčinách nekonzistence repliky a relevantní doporučení, najdete v článku [replika je nekonzistentní](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> V případě zálohování stavu systému/úplné obnovení systému ověřte, že zálohování Windows serveru je nainstalovaná na chráněném serveru.</li><li> Zkontrolujte problémy související s místa ve fondu úložiště DPM na serveru aplikace DPM nebo Microsoft Azure Backup a přidělení úložiště podle potřeby.</li><li> Kontrola stavu služby Stínová kopie svazku na chráněném serveru. Pokud je v zakázaném stavu, nastavte ji spustit ručně. Spusťte službu na serveru. Pak přejděte zpět do konzoly aplikace DPM nebo Microsoft Azure Backup serveru a spusťte synchronizaci s úlohou kontroly konzistence.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Vytvoření bodu obnovení online se nezdařilo
 
@@ -55,7 +55,7 @@ Doporučujeme provést ověření, než začnete řešení potíží s Microsoft
 
 | Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
-| Obnovení | **Kód chyby:**: Chyba CBPServerRegisteredVaultDontMatchWithCurrent/trezoru přihlašovací údaje: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezor, který server je zaregistrovaný. | **Příčina:** K tomuto problému dochází, když se pokoušíte obnovit soubory z původního serveru pomocí možnosti externí DPM pro obnovení na alternativní server, a pokud nejsou přidruženy stejný server, který se obnovuje a původní server z zálohovaná data byla Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** k vyřešení tohoto problému zkontrolujte i původní a alternativní server je zaregistrovaný do stejného trezoru.|
+| Obnovení | **Kód chyby:** : Chyba CBPServerRegisteredVaultDontMatchWithCurrent/trezoru přihlašovací údaje: 100110 <br/> <br/>**Chybová zpráva**: Zadané přihlašovací údaje trezoru se liší od trezor, který server je zaregistrovaný. | **Příčina:** K tomuto problému dochází, když se pokoušíte obnovit soubory z původního serveru pomocí možnosti externí DPM pro obnovení na alternativní server, a pokud nejsou přidruženy stejný server, který se obnovuje a původní server z zálohovaná data byla Trezor služby Recovery Services.<br/> <br/>**Alternativní řešení** k vyřešení tohoto problému zkontrolujte i původní a alternativní server je zaregistrovaný do stejného trezoru.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Selhání úlohy vytvoření bodu obnovení online pro virtuální počítač VMware
 
@@ -82,7 +82,7 @@ Doporučujeme provést ověření, než začnete řešení potíží s Microsoft
 | Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Odesílání agenty na chráněných serverech | Přihlašovací údaje, které jsou určené pro server jsou neplatné. | **Pokud nebude fungovat doporučenou akci, která se zobrazí v rámci produktu, proveďte následující kroky**: <br> Pokuste se ručně nainstalovat agenta ochrany na provozním serveru, jak je uvedeno v [v tomto článku](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual).|
-| Azure Backup Agent se nemohl připojit ke službě Azure Backup (ID: 100050) | Azure Backup Agent nemohl připojit ke službě Azure Backup. | **Pokud nebude fungovat doporučenou akci, která se zobrazí v rámci produktu, proveďte následující kroky**: <br>1. Spusťte na příkazovém řádku se zvýšenými oprávněními: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Otevře se okno aplikace Internet Explorer. <br/> 2. Přejděte na **nástroje** > **Možnosti Internetu** > **připojení** > **nastavení místní sítě**. <br/> 3. Ověřte nastavení proxy serveru pro systémový účet. Nastavit Proxy IP adresy a portu. <br/> 4. Zavřete aplikaci Internet Explorer.|
+| Azure Backup Agent se nemohl připojit ke službě Azure Backup (ID: 100050) | Azure Backup Agent nemohl připojit ke službě Azure Backup. | **Pokud nebude fungovat doporučenou akci, která se zobrazí v rámci produktu, proveďte následující kroky**: <br>1. Spusťte na příkazovém řádku se zvýšenými oprávněními: **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe**. Otevře se okno aplikace Internet Explorer. <br/> 2. Přejděte na **nástroje** > **Možnosti Internetu** > **připojení** > **nastavení místní sítě**. <br/> 3. Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti.<br/> 4. Pokud váš počítač má omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na počítači nebo proxy umožňují tyto [adresy URL](backup-configure-vault.md#verify-internet-access) a [IP adresu](backup-configure-vault.md#verify-internet-access).|
 | Instalace služby Azure Backup Agent se nezdařilo | Instalace Microsoft Azure Recovery Services se nezdařila. Všechny změny provedené v systému instalací Microsoft Azure Recovery Services byly vráceny zpět. (ID: 4024) | Ruční instalace agenta služby Azure.
 
 
@@ -91,7 +91,7 @@ Doporučujeme provést ověření, než začnete řešení potíží s Microsoft
 | Operace | Podrobnosti o chybě | Alternativní řešení: |
 | --- | --- | --- |
 | Konfigurace skupin ochrany | Aplikace DPM se nepodařil výčet součásti aplikace v chráněném počítači (název chráněného počítače). | Vyberte **aktualizovat** na obrazovce konfigurace skupiny ochrany uživatelského rozhraní na příslušné úrovni datasource/součásti. |
-| Konfigurace skupin ochrany | Ochranu nelze nakonfigurovat. | Pokud je chráněný server SQL server, ověřte, že oprávnění role správce byla poskytnutá těmto osobám systémový účet (NTAuthority\System) v chráněném počítači jak je popsáno v [v tomto článku](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
+| Konfigurace skupin ochrany | Ochranu nelze nakonfigurovat | Pokud je chráněný server SQL server, ověřte, že oprávnění role správce byla poskytnutá těmto osobám systémový účet (NTAuthority\System) v chráněném počítači jak je popsáno v [v tomto článku](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
 | Konfigurace skupin ochrany | Není dostatek volného místa ve fondu úložiště pro tuto skupinu ochrany. | Disky, které jsou přidané do fondu úložiště [oddílu by neměla obsahovat](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Odstraňte všechny existující svazky na discích. Poté je přidejte do fondu úložiště.|
 | Změna zásad |Zásady zálohování se nepodařilo upravit. Chyba: Aktuální operace selhala kvůli vnitřní chybě služby [0x29834]. Zkuste prosím tuto operaci po uplynutí nějakou dobu. Pokud se problém nevyřeší, obraťte se na podporu Microsoftu. | **Příčina:**<br/>K této chybě dochází v části tří podmínek: Pokud jsou povolené nastavení zabezpečení, při pokusu zmenšit rozsah uchování nižší než minimální hodnoty dříve, a když jste v nepodporované verzi. (Nepodporovaná verze jsou u funkcí pod verzi Microsoft Azure Backup serveru 2.0.9052 a Azure Backup serveru update 1.) <br/>**Doporučená akce:**<br/> Pokud chcete pokračovat s aktualizacemi související se zásadami, nastavte dobu uchování nad minimální období zadaná doba uchovávání. (Minimální doba uchování je sedm dní pro denní, čtyři týdny pro týdenní, tři týdny, než každý měsíc nebo jeden rok pro roční.) <br><br>Volitelně jiného upřednostňováno, že přístup je k aktualizaci agenta zálohování a Azure Backup Server využít všech aktualizací zabezpečení. |
 

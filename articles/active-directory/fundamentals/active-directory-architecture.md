@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 05/23/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249768"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235181"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura služby Azure Active Directory?
 Azure Active Directory (Azure AD) umožňuje zabezpečeně spravovat přístup k prostředkům a službám Azure pro vaše uživatele. Součástí Azure AD je kompletní sada funkcí pro správu identit. Informace o funkcích služby Azure AD najdete v tématu [Co je Azure Active Directory?](active-directory-whatis.md)
@@ -30,14 +30,14 @@ Geograficky distribuovaná architektura služby Azure AD kombinuje rozsáhlé mo
 
 Tento článek se zabývá následujícími prvky návrhu:
  *  Návrh architektury služeb
- *  Použitelnosti 
+ *  Škálovatelnost
  *  Nepřetržitá dostupnost
  *  Datová centra
 
 ### <a name="service-architecture-design"></a>Návrh architektury služeb
 Nejběžnější způsob sestavení k dispozici přístup a použitelný systém bohatý na data, je prostřednictvím nezávislých stavebních bloků nebo jednotek škálování. Pro datovou vrstvu služby Azure AD, se nazývají jednotky škálování *oddíly*. 
 
-Datová vrstva obsahuje několik front-endových služeb, které poskytují funkce pro čtení a zápis. Následující diagram znázorňuje, jak jsou součástí oddílu jedním adresářem poskytována v rámci geograficky distribuovaných Datacenter. 
+Datová vrstva obsahuje několik front-endových služeb, které poskytují funkce pro čtení a zápis. Následující diagram znázorňuje, jak jsou součástí oddílu jedním adresářem poskytována v rámci geograficky distribuovaných datacentrech. 
 
   ![Diagram oddílů jedním adresářem](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -49,7 +49,7 @@ Komponenty architektury služby Azure AD zahrnují primární repliku a sekundá
 
 **Sekundární repliky**
 
-Všechna *čtení* adresáře se obsluhují ze *sekundárních replik* v datových centrech, které jsou fyzicky umístěné v různých zeměpisných oblastech. Protože data se replikují asynchronně, existuje mnoho sekundárních replik. Čtení adresáře, jako jsou žádosti o ověření, se obsluhují z datových center, která jsou blízko zákazníkům. Sekundární repliky zodpovídají za škálovatelnost čtení.
+Všechny adresáře *přečte* se obsluhují z *sekundárních replik*, které jsou v datových centrech, který se fyzicky nacházejí v různých zeměpisných oblastech. Protože data se replikují asynchronně, existuje mnoho sekundárních replik. Čtení adresáře, jako jsou žádosti o ověření, se obsluhují z datových center, která jsou blízko zákazníkům. Sekundární repliky zodpovídají za škálovatelnost čtení.
 
 ### <a name="scalability"></a>Škálovatelnost
 
@@ -61,7 +61,7 @@ Aplikace adresáře se připojují k nejbližším datovým centrům. Toto přip
 
 ### <a name="continuous-availability"></a>Nepřetržitá dostupnost
 
-Dostupnost (nebo doba provozuschopnosti) definuje schopnost systému pracovat bez přerušení. Klíčem k vysoké dostupnosti služby Azure AD je, že služby mohou rychle přesouvat provoz napříč několika geograficky distribuovaných datových centrech. Každé datové centrum je nezávislé, což umožňuje, aby režimy selhání spolu vzájemně nesouvisely.
+Dostupnost (nebo doba provozuschopnosti) definuje schopnost systému pracovat bez přerušení. Klíčem k vysoké dostupnosti služby Azure AD je, že služby mohou rychle přesouvat provoz napříč několika geograficky distribuovaná datacentra. Každé datové centrum je nezávislé, což umožňuje, aby režimy selhání spolu vzájemně nesouvisely zrušit. Prostřednictvím tohoto návrhu vysokou dostupnost služby Azure AD nevyžádá žádný výpadek pro činnosti údržby.
 
 Návrh oddílů Azure AD je zjednodušená ve srovnání s návrhem podnikové služby AD, pomocí návrhu jedinou předlohou, který obsahuje primární repliky pečlivě orchestrovaný a deterministický proces převzetí služeb při selhání.
 
@@ -73,21 +73,21 @@ Operace čtení (jejichž počet mnohonásobně převyšuje počet zápisů) jdo
 
 **Odolnost dat**
 
-Zápis je před potvrzením bezpečně uložený nejméně do dvou datových center. Nejdřív se zápis potvrdí v primární replice a potom se okamžitě replikuje nejméně do jednoho dalšího datového centra. Tato akce zápisu zajišťuje, že při potenciální katastrofické ztrátě datového centra, který je hostitelem primární nemá za následek ztrátu dat.
+Zápis je nejméně dvou datových centrech před potvrzením. To se stane první potvrzení zápisu na primární a potom se okamžitě replikuje zápis do alespoň jeden další datového centra. Tato akce zápisu zajišťuje, že při potenciální katastrofické ztrátě datového centra hostujícího primární nemá za následek ztrátu dat.
 
 Azure AD udržuje nulu [cíl času obnovení (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) aby nedošlo ke ztrátě dat na převzetí služeb při selhání. To zahrnuje:
 -  Čtení adresáře a vydávání tokenů
 -  Povolení přibližně 5 minut RTO pro zápisy adresáře
 
-### <a name="data-centers"></a>Datová centra
+### <a name="datacenters"></a>Datová centra
 
-Repliky Azure AD jsou uložené v datových centrech rozmístěných po celém světě. Další informace najdete v tématu věnovaném [datovým centrům Azure](https://azure.microsoft.com/overview/datacenters).
+Repliky Azure AD jsou uložené v datových centrech rozmístěných po celém světě. Další informace najdete v tématu [globální infrastruktura Azure](https://azure.microsoft.com/global-infrastructure/).
 
 Azure AD funguje napříč datovými centry s následujícími charakteristikami:
 
- * Ověřování, Graph a další služby AD se nacházejí za službou Gateway. Gateway spravuje vyrovnávání zatížení těchto služeb. To se převzetí služeb při selhání automaticky Pokud žádné není v pořádku, servery jsou zjištěny pomocí transakčních sond stavu. Na základě těchto sond stavu služba Gateway dynamicky směruje provoz na datová centra, která jsou v pořádku.
- * Pro *čtení* má adresář sekundární repliky a odpovídající front-endové služby v konfiguraci typu aktivní-aktivní, které se provozují v několika datových centrech. V případě selhání celého datového centra se provoz automaticky přesměruje do jiného datového centra.
- *  Pro *zapíše*, adresář se převzetí služeb při selhání primární (hlavní) repliky napříč datovými centry prostřednictvím plánovaných (nový primární se synchronizuje s původního primárního) nebo nouzových postupů převzetí. Odolnosti dat se dosahuje tím, že se každé potvrzení replikuje nejméně do dvou datových center.
+ * Ověřování, Graph a další služby AD se nacházejí za službou Gateway. Gateway spravuje vyrovnávání zatížení těchto služeb. To se převzetí služeb při selhání automaticky Pokud žádné není v pořádku, servery jsou zjištěny pomocí transakčních sond stavu. Založené na těchto sond stavu služba Gateway dynamicky směruje provoz k datovým centrům v pořádku.
+ * Pro *přečte*, má adresář sekundární repliky a odpovídající front-endové služby v konfiguraci aktivní aktivní provoz v několika datových centrech. V případě selhání celého datového centra bude automaticky směrovat provoz do jiného datového centra.
+ *  Pro *zapíše*, adresář se převzetí služeb při selhání primární (hlavní) repliky napříč datovými centry prostřednictvím plánovaných (nový primární se synchronizuje s původního primárního) nebo nouzových postupů převzetí. Odolnost dat se dosahuje každé potvrzení replikuje nejméně dvou datových centrech.
 
 **Konzistence dat**
 

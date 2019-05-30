@@ -4,14 +4,14 @@ description: Zjistěte, jak nastavit zřízená propustnost pro kontejnery Azure
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: 598a1562127a67c78f67cdd02b00d83d4a606739
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953554"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389250"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -71,8 +71,7 @@ Následující obrázek ukazuje, jak fyzický oddíl můžete hostovat jeden neb
 Můžete kombinovat dva modely. Zřizování propustnosti na databázi a kontejner je povolen. Následující příklad ukazuje, jak zřídit propustnost v databázi Azure Cosmos a kontejneru:
 
 * Můžete vytvořit databázi Azure Cosmos, s názvem *Z* se zřízenou propustností *"K"* RU. 
-* Dále vytvořte pět kontejnery s názvem *A*, *B*, *C*, *D*, a *E* v databázi.
-* Můžete explicitně nakonfigurovat *"P"* ru zřízenou propustnosti kontejneru s názvem *B*.
+* Dále vytvořte pět kontejnery s názvem *A*, *B*, *C*, *D*, a *E* v databázi. Při vytváření kontejneru B, ujistěte se, že chcete povolit **zřízení Vyhrazená propustnost pro tento kontejner** řádku a explicitně nakonfigurovat *"P"* ru zřízenou propustnost na tento kontejner. Všimněte si, že můžete nakonfigurovat sdílené a vyhrazené propustnosti pouze při vytváření databáze a kontejner. 
 * *"K"* rezervovaných jednotek propustnosti je sdílen mezi čtyři kontejnery *A*, *C*, *D*, a *E*. Přesné množství propustnost, které jsou k dispozici *A*, *C*, *D*, nebo *E* se liší. Neexistují žádné smlouvy SLA pro jednotlivých jednotlivých kontejnerů o propustnosti.
 * Kontejner s názvem *B* je zaručeno, že zobrazíte *"P"* rezervovaných jednotek propustnosti celou dobu. Se zajištěním smlouvy o úrovni služeb.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 291ec651061b7a8a3ea3c0645a6bd6581d529ef6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170390"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245008"
 ---
 ## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
 
@@ -56,7 +56,6 @@ Vytvořte definici image Galerie uvnitř galerie. V tomto příkladu je název i
 1. Po dokončení nasazení vyberte **přejít k prostředku**.
 
 
-
 ## <a name="create-an-image-version"></a>Vytvoření image verze
 
 Vytvoření image verze ze spravované image. V tomto příkladu je verze image *1.0.0* a se replikuje do obou *střed USA – západ* a *střed USA – jih* datových centrech. Při výběru cílových oblastí pro replikaci, mějte na paměti, že je také nutné zahrnout *zdroj* oblasti jako cíl pro replikaci.
@@ -75,3 +74,20 @@ Povolené znaky pro verze image jsou čísla a tečky. Čísla musí být v rozs
 1. Po dokončení nasazení vyberte **přejít k prostředku**.
 
 Může trvat nějakou image replikovat na všechny cílové oblasti.
+
+## <a name="share-the-gallery"></a>Sdílení v galerii
+
+Doporučujeme, sdílíte přístup na úrovni image galerie. Následující vás provede sdílení galerie, kterou jste právě vytvořili.
+
+1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. V nabídce na levé straně vyberte **skupiny prostředků**. 
+1. V seznamu skupin prostředků, vyberte **myGalleryRG**. Otevře se okno pro vaši skupinu prostředků.
+1. V nabídce na levé straně **myGalleryRG** stránce **řízení přístupu (IAM)** . 
+1. V části **přidat přiřazení role**vyberte **přidat**. **Přidat přiřazení role** se otevře podokno. 
+1. V části **Role**vyberte **čtečky**.
+1. V části **přiřadit přístup k**, ponechte výchozí hodnotu **uživatele, skupinu nebo instanční objekt služby Azure AD**.
+1. V části **vyberte**, zadejte e-mailovou adresu osoby, která byste chtěli pozvat.
+1. Pokud uživatel není mimo vaši organizaci, zobrazí se zpráva **tohoto uživatele se pošle e-mail, který mu umožňuje spolupracovat s Microsoftem.** Vybrat uživatele s e-mailovou adresu a pak klikněte na tlačítko **Uložit**.
+
+Pokud je uživatel mimo vaši organizaci, dostanou e-mailová pozvánka k připojení k organizaci. Uživatel musí přijmout pozvánku, pak budou moci zobrazit v galerii a všechny image definice a verze ve svém seznamu zdrojů.
+

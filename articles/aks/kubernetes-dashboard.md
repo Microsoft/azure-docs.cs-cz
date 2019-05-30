@@ -2,17 +2,17 @@
 title: Správa clusteru s řídicím panelu webové služby Azure Kubernetes
 description: Zjistěte, jak použít integrovaný řídicí panel Kubernetes webového uživatelského rozhraní pro správu clusteru služby Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: iainfou
-ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: twhitney
+ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465436"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304528"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes web ve službě Azure Kubernetes Service (AKS)
 

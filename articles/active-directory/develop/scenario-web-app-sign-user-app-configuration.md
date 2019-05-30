@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2204fe3e08b3c4b909ddc8b7ade4cec219d34fb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406636"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254012"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Webová aplikace, které přihlásí uživatelé - konfigurace kódu
 
@@ -110,6 +110,9 @@ Stejným způsobem, odhlaste identifikátoru URI by byl nastaven na `https://loc
 
 Webové aplikace ASP.NET Core (a webových rozhraní API), kód způsobem inicializace aplikace nachází v `Startup.cs` souboru, a pokud chcete přidat ověřování pomocí v2.0 Microsoft Identity platform (dříve Azure AD), budete muset přidat následující kód. Komentáře v kódu by měla být zřejmých.
 
+  > [!NOTE]
+  > Pokud spouštíte projekt s výchozí ASP.NET core webového projektu v rámci sady Visual studio nebo pomocí `dotnet new mvc` metodu `AddAzureAD` je k dispozici ve výchozím nastavení, protože jsou automaticky načteny související balíčky. Ale pokud se sestavení projektu od začátku a chcete použít níže uvedeného kódu doporučujeme, abyste přidali balíček NuGet **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** do vašeho projektu, aby `AddAzureAD` dostupnou metodu.
+  
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
          .AddAzureAD(options => configuration.Bind("AzureAd", options));

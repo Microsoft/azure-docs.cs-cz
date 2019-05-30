@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 567163a5d5ce37eeffb5ef2bc6f9adb7c5b027ec
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371474"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255724"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
 
@@ -77,7 +77,7 @@ Aplikace hostované místně, v Azure a jiných cloudech mohou využít všech v
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření řídicího panelu](../../azure-monitor/app/app-insights-dashboards.md)
+* [Vytvoření řídicího panelu](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md)
 * [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md)
 * [Psaní analytických dotazů](../../azure-monitor/app/analytics.md)

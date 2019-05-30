@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d8c8fcf84cd008957fcdb7cd14c4a07d9f3643
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 59af4e20c7fe838f7c725b47e45968941fa85cb7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074902"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254059"
 ---
 # <a name="protected-web-api---app-registration"></a>Chráněné webové rozhraní API – registrace aplikace
 
@@ -33,8 +33,8 @@ Zobrazit [rychlý start: Registrace aplikace s platformou identity Microsoft](qu
 
 Microsoft identity platform endpoint může vydat dva typy tokenů: tokeny v1.0 a v2.0 tokeny. Další informace o těchto tokenů v [přístupové tokeny](access-tokens.md). Přijatý token verze závisí **podporovaných typů účtu** jste zvolili při vytváření vaší aplikace:
 
-- Pokud hodnota **podporovaných typů účtu** je **účty v jakékoli organizaci adresáři a osobní účty Microsoft (třeba Skype, Xbox, Outlook.com)**, přijatý token verze bude verze 2.0.
-- Přijatý token verze v opačném případě bude verze 2.0.
+- Pokud hodnota **podporovaných typů účtu** je **účty v jakékoli organizaci adresáři a osobní účty Microsoft (třeba Skype, Xbox, Outlook.com)** , přijatý token verze bude verze 2.0.
+- Přijatý token verze v opačném případě bude v1.0.
 
 Po vytvoření aplikace, přijatý token verzi můžete změnit pomocí následujících kroků:
 
@@ -49,7 +49,7 @@ Po vytvoření aplikace, přijatý token verzi můžete změnit pomocí následu
 
 Webová rozhraní API nebudou muset registrovat na identifikátor URI přesměrování je žádný uživatel přihlášený interaktivní.
 
-## <a name="expose-an-api"></a>Zpřístupnit rozhraní API
+## <a name="expose-an-api"></a>Vystavit rozhraní API
 
 Další nastavení specifická pro webová rozhraní API je zveřejněné rozhraní API a vystavené obory.
 

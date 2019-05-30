@@ -1,5 +1,5 @@
 ---
-title: Definice datové sady a správa verzí pomocí Azure ml datové sady
+title: Verze a spravovat definice datové sady pomocí Azure ml datové sady
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak aktualizovat definice datové sady a spravovat životní cyklus definice
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 4476bdd902f054683fa544dc44b548689f3a1881
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146203"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241883"
 ---
-# <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>Aktualizace a správa životního cyklu definicích datových sad
+# <a name="version-and-manage-your-dataset-definitions"></a>Verze a spravovat vaše definice datové sady
 
 Zjistěte, jak aktualizovat a spravovat definice datové sady pomocí Azure Machine Learning, datové sady (preview).
 
@@ -37,7 +37,7 @@ Musíte mít předplatné Azure a pracovních prostorů zaregistrovat datové sa
 
 Ukázkový soubor jako v příkladech v tomto dokumentu je k dispozici na [ https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv ](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv).
 
-## <a name="update-dataset-definitions"></a>Aktualizovat definice datové sady
+## <a name="create-and-update-definitions"></a>Vytvoření a aktualizace definic
 
 Nejprve jsme se vytvořit a zaregistrovat pracovního prostoru datovou sadu.
 
@@ -372,7 +372,7 @@ ds_def = dataset.get_definition(version_id = 1)
 ds_def.archive()
 ```
 
-### <a name="reactivate"></a>Opětovná aktivace
+### <a name="reactivate"></a>Znovu aktivovat
 
 Snadno můžete znovu aktivovat všechny nepoužívané nebo archivované definici datové sady.
 

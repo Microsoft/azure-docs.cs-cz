@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9cd02172af5246c60b93a6e4696988268abed506
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409811"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258686"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení Azure database
 Tento článek popisuje osvědčené postupy pro zabezpečení databáze.
@@ -165,6 +165,10 @@ Tyto funkce vám pomůže:
 - Detekovat a reagovat na potenciální hrozby.
 
 Detekce hrozeb navíc integruje výstrahy se službou Azure Security Center pro přehledu o stavu zabezpečení všech vašich prostředků Azure.
+
+## <a name="enable-feature-restrictions"></a>Povolit omezení funkcí
+
+Data obsažená ve vašich databázích mohou být zpřístupněny útočník vektory útoku, které využívají chyby databáze a časy spuštění dotazu. Azure SQL Database poskytuje několik mechanismů omezení funkcí k ochraně databáze. Další informace najdete v tématu [omezení funkcí služby SQL Database](../sql-database/sql-database-feature-restrictions.md).
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit [osvědčené postupy zabezpečení Azure a vzory](security-best-practices-and-patterns.md) pro další doporučené postupy zabezpečení, mají použít, když jste návrhu, nasazení a správa cloudových řešení pomocí služby Azure.

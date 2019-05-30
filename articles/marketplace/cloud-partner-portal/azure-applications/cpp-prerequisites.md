@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 64039234a3863332ca19b915fb59a5271625d695
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942879"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258189"
 ---
 # <a name="azure-application-prerequisites"></a>Požadavky na aplikace Azure
 
@@ -38,7 +38,8 @@ Další informace najdete v tématu [vytvořit Azure portal uživatelského rozh
 
 Obchodní požadavky zahrnují následující procesní, smluvní a právní závazky:
 
-* Musí být registrovaný vydavatele na webu Marketplace cloudu. Pokud nejsou zaregistrovány, postupujte podle kroků v článku [stát vydavatelem cloudové Tržiště](../../become-publisher.md).
+* Musí být registrovaný vydavatele na webu Marketplace cloudu. Pokud nejsou zaregistrovány, postupujte podle kroků v článku [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher
+).
 
 >[!NOTE]
 >K přihlášení na portál Cloud Partner musí použít stejný účet registrace Microsoft Developer Center. Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Tento účet nesmí být specifické pro jednotlivé služby nebo nabídky.

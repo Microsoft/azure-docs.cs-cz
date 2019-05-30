@@ -3,7 +3,7 @@ title: Rozšířená ochrana před internetovými útoky pomocí Azure Security 
 description: Tento dokument přináší integraci Azure Security Center a rozšířené ochrany před internetovými útoky programu Windows Defender.
 services: security-center
 documentationcenter: na
-author: barclayn
+author: monhaber
 manager: barbkess
 editor: ''
 ms.service: security-center
@@ -11,21 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2018
-ms.author: barclayn
-ms.openlocfilehash: 75ca1401f72e00454dc3355d31c8b8ea64669a72
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/27/2018
+ms.author: monhaber
+ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129123"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258529"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
-Azure Security Center rozšiřuje svoji nabídku cloudových platformách ochranu úloh díky integraci s [rozšířené ochrany před internetovými útoky programu Windows Defender](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
-Tato změna přináší rozsáhlé možnosti koncový bod zjišťování a odpovědi (EDR). Integrace ochrany ATP v programu Windows Defender můžete vybírat anomálie. Můžete také zjistit a reagovat na pokročilých útoků na koncové body serveru monitorovaný pomocí Azure Security Center.
+Azure Security Center rozšiřuje svoji nabídku platforem ochrany cloudových úloh na základě integrace s [rozšířenou ochranou před internetovými útoky v programu Windows Defender](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
+Tato změna přináší komplexní možnosti technologie EDR (Endpoint Detection and Response). Integrace ochrany ATP v programu Windows Defender můžete vybírat anomálie. Můžete také zjistit a reagovat na pokročilých útoků na koncové body serveru monitorovaný pomocí Azure Security Center.
 
-Zákazníci Azure Security Center teď můžou využívat funkce ochrany ATP v programu Windows Defender:
+## <a name="windows-defender-atp-features-in-security-center"></a>Funkce ochrany ATP v programu Windows Defender ve službě Security Center
+
+Při použití ochrany ATP v programu Windows Defender získáte:
 
 - **Generace příspěvek porušení detekci senzorů**: Ochrana ATP v programu Windows Defender senzory pro funkce Windows serverů shromažďovat velké množství chování signálů.
 
@@ -53,9 +55,10 @@ Můžete hlouběji analyzovat upozornění podle Přesun do ochrany ATP v progra
 
 ## <a name="platform-support"></a>Podpora platformy
 
-Tato funkce podporuje zjišťování na Windows Server 2012 R2 a Windows serveru 2016.
+Windows Defender ATP ve službě Security Center podporuje zjišťování v systému Windows Server 2012 R2 a Windows serveru 2016 operačních systémech, které patří do předplatného služby Standard.
 
-Jsou podporovány pouze servery v předplatných pro úrovně služeb standard.
+> [!NOTE]
+> Při použití Azure Security Center k monitorování serverů klienta ochrany ATP v programu Windows Defender je automaticky vytvořen a ochrana ATP v programu Windows Defender data uložená v Evropě ve výchozím nastavení. Pokud potřebujete přesunout data do jiného umístění, budete muset kontaktovat Microsoft Support resetovat klienta.
 
 ## <a name="onboarding-servers-to-security-center"></a>Registrace serverů do služby Security Center 
 
@@ -69,7 +72,6 @@ Na servery připojit ke službě Security Center, klikněte na tlačítko **pře
 4. Po připojení, můžete monitorovat počítače v rámci **výpočetní prostředky a aplikace**.
 
    ![Připojení počítače](media/security-center-wdatp/onboard-computers.png)
-
 
 ## <a name="enable-windows-defender-atp-integration"></a>Povolení integrace ochrany ATP v programu Windows Defender
 

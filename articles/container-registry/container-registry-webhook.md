@@ -5,18 +5,18 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 05/24/2019
 ms.author: danlep
-ms.openlocfilehash: 0a3d2d0e858dc052095c0a58287970d10c06f0ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18ac3fcb2797b24c9d5e5f05968eed4bf8732af7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787248"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389453"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Použití webhooků v Azure Container Registry
 
-Registr kontejnerů Azure uchovává a spravuje privátní Image kontejnerů Dockeru, podobným způsobem, jakým Docker Hub uchovává veřejné Image Dockeru. Můžou hostovat taky úložiště pro [grafy Helm](container-registry-helm-repos.md) (preview), formátování balení nasadit aplikace do Kubernetes. Webhooky k aktivační události při určité akce proběhla v jednom z vašich úložišť registru můžete použít. Webhooky můžou reagovat na události na úrovni registru nebo může být oboru dolů značku konkrétního úložiště.
+Registr kontejnerů Azure uchovává a spravuje privátní Image kontejnerů Dockeru, podobným způsobem, jakým Docker Hub uchovává veřejné Image Dockeru. Můžou hostovat taky úložiště pro [grafy Helm](container-registry-helm-repos.md) (preview), formátování balení nasadit aplikace do Kubernetes. Webhooky k aktivační události při určité akce proběhla v jednom z vašich úložišť registru můžete použít. Webhooky můžou reagovat na události na úrovni registru nebo může být oboru dolů značku konkrétního úložiště. S [geograficky replikovaného](container-registry-geo-replication.md) registru, nakonfigurujte každý webhooku pro reakci na události v konkrétní oblasti repliky.
 
 Podrobnosti o požadavky webhooku, najdete v části [referenční dokumentace schématu Azure Container Registry webhooku](container-registry-webhook-reference.md).
 
@@ -35,12 +35,13 @@ Podrobnosti o požadavky webhooku, najdete v části [referenční dokumentace s
 
 | Hodnota | Popis |
 |---|---|
-| Název | Jméno, které chcete přidělit k webhooku. Může obsahovat jenom písmena a číslice a musí mít délku 5 až 50 znaků. |
+| Název Webhooku | Jméno, které chcete přidělit k webhooku. Může obsahovat jenom písmena a číslice a musí mít délku 5 až 50 znaků. |
+| Location | Pro [geograficky replikovaného](container-registry-geo-replication.md) registru, zadejte oblast Azure z replik registru. 
 | Identifikátor URI služby | Identifikátor URI, kde by měl webhook odesílání oznámení příspěvku. |
-| Vlastní záhlaví | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
+| Vlastní hlavičky | Hlavičky, které chcete předat spolu s požadavek POST. Uživatelé by měli být "klíč: hodnota" formátu. |
 | Aktivační událost akce | Akce, které aktivují webhook. Akce zahrnují nabízená image, image delete, push grafu helmu, odstranění grafu helmu a karantény image. Můžete použít jeden nebo více akcí a aktivovat webhook. |
 | Status | Stav pro webhook po jeho vytvoření. Ve výchozím nastavení je povoleno. |
-| Rozsah | Rozsah, kdy se webhook funguje. Pokud není zadán, rozsah je pro všechny události v registru. To se dá nastavit pro úložiště nebo značku ve formátu "úložiště: značka" nebo "úložiště: *" pro všechny značky v úložišti. |
+| Scope | Rozsah, kdy se webhook funguje. Pokud není zadán, rozsah je pro všechny události v registru. To se dá nastavit pro úložiště nebo značku ve formátu "úložiště: značka" nebo "úložiště: *" pro všechny značky v úložišti. |
 
 Ukázkový formulář webhooku:
 
@@ -54,7 +55,7 @@ Chcete-li vytvořit webhook pomocí Azure CLI, použijte [az acr webhook vytvoř
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
 ```
 
-## <a name="test-webhook"></a>Test webhooku
+## <a name="test-webhook"></a>Testovat webhook
 
 ### <a name="azure-portal"></a>portál Azure
 

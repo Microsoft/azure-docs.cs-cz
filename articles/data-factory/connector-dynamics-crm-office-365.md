@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869537"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356960"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -205,7 +205,7 @@ Ke zkopírování dat z Dynamics, nastavte typ zdroje v aktivitě kopírování 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **DynamicsSource**. | Ano |
-| query | Dotazů FetchXML je proprietární dotazovací jazyk, který se používá v Dynamics (online i v místním prostředí). Prohlédněte si následující příklad. Další informace najdete v tématu [sestavování dotazů s FeachXML](https://msdn.microsoft.com/library/gg328332.aspx). | Ne (když je "entityName" v datové sadě zadán) |
+| query | Dotazů FetchXML je proprietární dotazovací jazyk, který se používá v Dynamics (online i v místním prostředí). Prohlédněte si následující příklad. Další informace najdete v tématu [sestavování dotazů pomocí dotazů FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Ne (když je "entityName" v datové sadě zadán) |
 
 >[!NOTE]
 >Sloupec PK budou vždy zkopírovány i v případě, že sloupec projekce, které nakonfigurujete v dotazu FetchXML neobsahuje.
@@ -269,12 +269,12 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Nastavte vlastnost typ jímky aktivity kopírování **DynamicsSink**. | Ano |
-| writeBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
+| writeBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"** . | Ano |
 | writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
 | ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: Data ponechte beze změny po provedení operace upsert/aktualizace cílového objektu. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert/aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 >[!NOTE]
->Výchozí hodnota jímka "**writeBatchSize**"a aktivita kopírování"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" Dynamics jímka jsou obě 10. Proto se 100 záznamů odesílají na Dynamics současně.
+>Výchozí hodnota jímka "**writeBatchSize**"a aktivita kopírování" **[parallelCopies](copy-activity-performance.md#parallel-copy)** " Dynamics jímka jsou obě 10. Proto se 100 záznamů odesílají na Dynamics současně.
 
 Pro Dynamics 365 online je stanovený limit [2 batch souběžných volání na organizaci](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Pokud dojde k překročení tohoto limitu, chybu "Zaneprázdněný Server", je vyvolána předtím, než je někdy spustí první požadavek. Udržování "writeBatchSize" menší než nebo rovno 10 by se vyhnout takové omezení souběžných volání.
 

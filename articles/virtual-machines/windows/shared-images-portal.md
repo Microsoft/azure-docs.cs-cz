@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63b705f7967eeddaf522941d6db9be5d9f2719d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236593"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244994"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Vytvořením Galerie sdílené bitové kopie pomocí webu Azure portal
 
@@ -67,6 +67,7 @@ Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage*v *myR
 1. Pokud chcete povolit vzdálený přístup k virtuálnímu počítači, v části **veřejné příchozí porty**, zvolte **povolit vybrané porty** a pak vyberte **protokolu RDP (3389)** z rozevíracího seznamu. Pokud nechcete povolit vzdálený přístup k virtuálnímu počítači, ponechejte **žádný** vybrala pro **veřejné příchozí porty**.
 1. Až budete hotovi, vyberte **revize + vytvořit** tlačítko v dolní části stránky.
 1. Když virtuální počítač úspěšně proběhne ověření, vyberte **vytvořit** v dolní části stránky a spustit nasazení.
+
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

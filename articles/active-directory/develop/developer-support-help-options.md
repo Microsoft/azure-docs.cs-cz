@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
+ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962655"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235340"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře
 
@@ -35,7 +35,7 @@ Pokud začínáte, můžete integrovat s Azure Active Directory (Azure AD), Micr
 > * Pokud narazíte na problém s jedním z našich knihoven ověřování, zvýšit *Githubu* problém
 > * Nakonec pokud potřebujete mluvit někomu, můžete chtít otevřít žádost o podporu
 
-## <a name="search"></a>Vyhledávání
+## <a name="search"></a>Search
 
 Pokud máte dotazy související s vývojem, může být schopna najít odpovědi v dokumentaci, [Githubu ukázky](https://github.com/azure-samples), nebo odpovědi na [Stack Overflow](https://www.stackoverflow.com) dotazy.
 
@@ -51,7 +51,7 @@ Kde *{Your hledané termíny}* odpovídají klíčová slova pro vyhledávání.
 
 ## <a name="use-the-development-support-tools"></a>Použití vývojářských nástrojů, podpory
 
-| Tool  | Popis  |
+| Nástroj  | Popis  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Vložte ID a přístupový token k dekódování deklarace identity názvy a hodnoty. |
 | [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který vám umožní vytvářet požadavky a odpovědi na rozhraní Microsoft Graph API najdete v článku. |
@@ -81,10 +81,10 @@ Následující příspěvky z přetečení zásobníku obsahují tipy, jak klás
 
 Pokud najdete chybu nebo problém související s naše knihovny, vyvolat chybu v našich úložištích GitHub. Protože jsou našich knihoven open source, můžete také odeslat žádost o přijetí změn.
 
-Pokud chcete zobrazit seznam knihoven a jejich úložiště GitHub, naleznete v následujících článcích:
+Seznam knihoven a jejich úložiště GitHub naleznete v následujících tématech:
 
 * [ADAL](active-directory-authentication-libraries.md) knihovny a úložištích GitHub.
-* [Knihovna MSAL](reference-v2-libraries.md) knihovny a úložištích GitHub.
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. Android](https://github.com/AzureAD/microsoft-authentication-library-for-android), a [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) knihovny a úložištích GitHub.
 
 ## <a name="open-a-support-request"></a>Žádost o podporu
 

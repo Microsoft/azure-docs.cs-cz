@@ -4,7 +4,7 @@ description: Tento článek popisuje, jak nakonfigurovat ověřování a autoriz
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fb2802bfe9cc0a4d3297e6fa749e5b94008c616
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 9b6cd993e9f6c6dbf173c161de638c6c4a8b18d3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472632"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237057"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure čas Series Insights
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje postup konfigurace ověřování a autorizaci použí
 > [!TIP]
 > Přečtěte si informace o [udělení přístupu k datům](./time-series-insights-data-access.md) do prostředí Time Series Insights v Azure Active Directory.
 
-## <a name="service-principal"></a>Instanční objekt
+## <a name="service-principal"></a>Instanční objekt služby
 
 Toto a následující části popisují, jak nakonfigurovat aplikaci pro přístup k rozhraní API čas Series Insights jménem aplikace. Aplikace můžete potom dotazů nebo publikovat referenčních dat v prostředí Time Series Insights pomocí přihlašovacích údajů aplikace místo uživatelských přihlašovacích údajů.
 

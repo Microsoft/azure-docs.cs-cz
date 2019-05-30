@@ -10,46 +10,46 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 16efb97569aabbea28065b03e9944d6881c39eee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60895359"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390165"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyka a oblasti pro API kontrola pravopisu Bingu
 
 Rozhraní API Bingu pro kontrolu pravopisu zkontrolujte podporuje tyto jazyky (pouze v `spell` režim).
 
-Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by měla být nastavena a buď `Accept-Language` nebo `setLang` je třeba nastavit tak, že je popsán v [referenční dokumentace rozhraní API kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by měla být nastavena a buď `Accept-Language` nebo `setLang` je třeba nastavit tak, že je popsán v [referenční dokumentace rozhraní API kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
 | arabština      | `ar`          |
-| čínština (Čínská lidová republika)     | `zh-CN`          |
+| Čínština (lidé lidová republika)     | `zh-CN`          |
 | Čínština (Hongkong – zvláštní administrativní oblast)    | `zh-HK`          |
 | Čínština (Tchaj-wan)     | `zh-TW`          |
 | dánština      | `da`          |
-| nizozemština (Belgie)       | `nl-BE`          |
-| nizozemština (Nizozemsko)      | `nl-NL`          |
-| Angličtina (Austrálie)    | `en-AU`          |
-| Angličtina (Kanada)     | `en-CA`          |
+| Holandština (Belgie)       | `nl-BE`          |
+| Nizozemština (Nizozemsko)      | `nl-NL`          |
+| angličtina (Austrálie)    | `en-AU`          |
+| angličtina (Kanada)     | `en-CA`          |
 | English (India)    | `en-IN`          |
 | Angličtina (Indonésie)     | `en-ID`          |
 | Angličtina (Malajsie)     | `en-MY`          |
-| Angličtina (Nový Zéland)    | `en-NZ`          |
-| angličtina (Filipíny)     | `en-PH`          |
-| angličtina (Jihoafrická republika)    | `en-ZA`          |
+| angličtina (Nový Zéland)    | `en-NZ`          |
+| Angličtina (Filipíny)     | `en-PH`          |
+| Angličtina (Jižní Afrika)    | `en-ZA`          |
 | Angličtina (Spojené království)    | `en-GB`          |
 | Angličtina (Spojené státy)    | `en-US`          |
 | Finština     | `fi`          |
 | Francouzština (Belgie)     | `fr-BE`          |
 | Francouzština (Kanada)     | `fr-CA`          |
 | Francouzština (Francie)     | `fr-FR`          |
-| Francouzština (Švýcarsko)      | `fr-CH`          |
-| Němčina (Rakousko)      | `de-AT`          |
+| francouzština (Švýcarsko)      | `fr-CH`          |
+| němčina (Rakousko)      | `de-AT`          |
 | Němčina (Německo)      | `de-DE`          |
-| Němčina (Švýcarsko)      | `de-CH`          |
+| němčina (Švýcarsko)      | `de-CH`          |
 | italština     | `it`          |
 | Japonština    | `ja`          |
 | Korejština      | `ko`          |
@@ -62,7 +62,7 @@ Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by m�
 | Španělština (Chile)     | `es-CL`          |
 | Španělština (Mexiko)    | `es-MX`          |
 | Španělština (Španělsko)    | `es-ES`          |
-| španělština (Spojené státy)    | `es-US`          |
+| Španělština (Spojené státy)    | `es-US`          |
 | švédština     | `sv`          |
 | turečtina     | `tr`          |
 

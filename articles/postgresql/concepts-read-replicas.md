@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510982"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242280"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server
 
@@ -40,10 +40,9 @@ Hlavní server musí mít `azure.replication_support` parametr nastaven na **REP
 
 Při spuštění pracovního postupu vytvoření repliky prázdné serveru Azure Database for PostgreSQL se vytvoří. Nový server je vyplněna data, která byla na hlavní server. Čas vytvoření závisí na množství dat na hlavní server a doba od poslední týdenní úplnou zálohu. Čas musí být v rozsahu několika minut i několik hodin.
 
-Funkce repliky pro čtení používá replikaci fyzických PostgreSQL, není logický replikace. Streamování s použitím replikace sloty replikace je výchozí režim operace. V případě potřeby se dohnat používá přesouvání protokolu.
+Repliky je povolený pro úložiště [auto-grow](concepts-pricing-tiers.md#storage-auto-grow). Funkce auto-grow umožňuje repliky držet krok s dat replikovaných do ní a zabránili přerušení v replikaci nedostatku chyby úložiště.
 
-> [!NOTE]
-> Pokud nemáte sadu výstrah úložiště na serverech, doporučujeme vám to. Upozornění vás informuje, když na serveru se blíží limitu úložiště, který bude mít vliv na replikaci.
+Funkce repliky pro čtení používá replikaci fyzických PostgreSQL, není logický replikace. Streamování s použitím replikace sloty replikace je výchozí režim operace. V případě potřeby se dohnat používá přesouvání protokolu.
 
 Zjistěte, jak [vytvoření repliky pro čtení na webu Azure Portal](howto-read-replicas-portal.md).
 
@@ -94,7 +93,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 > [!NOTE]
 > Pokud se hlavní server nebo další repliky restartuje, čas potřebný k restartování a projděte si se projeví v metrika prodleva repliky.
 
-## <a name="stop-replication"></a>Zastavit replikaci
+## <a name="stop-replication"></a>Zastavení replikace
 Můžete zastavit replikaci mezi hlavní a repliku. Akce zastavení způsobí, že repliky restartovat a odebrat jeho nastavení replikace. Po zastavení replikace mezi hlavní server a repliky pro čtení, se stane replika samostatný server. Data v samostatném serveru jsou data, která byla k dispozici na replice v době, kdy byl spuštěn příkaz stop replikace. Samostatný server nebude dohnat s hlavním serverem.
 
 > [!IMPORTANT]

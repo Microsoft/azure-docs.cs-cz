@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: de0ba13a527569e446a44c275b7323d4487f53b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4c2dad687d31597954b023dde9d1b9d69788fe04
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780299"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241406"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - omezení odchozí provoz pro uzly clusteru a řízení přístupu k požadované porty a služby ve službě Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Ve výchozím nastavení clustery AKS mít stejně neomezený přístup k Intern
 Tento článek podrobně popisuje, jaké síťové porty a plně kvalifikované názvy domény (FQDN) jsou povinné a nepovinné-li omezit výchozí přenos v clusteru AKS.  Tato funkce je aktuálně ve verzi Preview.
 
 > [!IMPORTANT]
-> Funkce AKS ve verzi preview jsou samoobslužných služeb a vyjádřit výslovný souhlas. Verze Preview jsou k dispozici pro shromažďování zpětné vazby a chyb z naší komunitě. Však nepodporují technickou podporu Azure. Pokud vytvoříte cluster, nebo přidejte tyto funkce do existujících clusterů, se tento cluster nepodporuje, dokud tato funkce už je ve verzi preview a přechází do všeobecné dostupnosti (GA).
+> Funkce AKS ve verzi preview jsou samoobslužných služeb, vyjádřit výslovný souhlas. Jsou poskytovány shromažďovat zpětnou vazbu a chyb z naší komunitě. Ve verzi preview nejsou tyto funkce určené k použití v produkčním prostředí. Funkce ve verzi public preview spadají pod "co možná nejlepší" podporu. Pomoc od týmů AKS technická podpora je k dispozici během pracovní doby tichomořské časové pásmo (PST) pouze. Další informace najdete v tématu následující články o podpoře:
 >
-> Pokud narazíte na problémy s funkcemi ve verzi preview, [otevřete problém v úložišti Githubu AKS] [ aks-github] s názvem funkce ve verzi preview v název chyby.
+> * [Zásady podpory AKS][aks-support-policies]
+> * [Nejčastější dotazy k podpoře Azure][aks-faq]
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -68,11 +69,11 @@ Ve službě AKS existují dvě sady porty a adresy:
 Těchto odchozích portech / pravidla sítě jsou požadovány pro AKS cluster:
 
 * TCP port *443*
-* TCP port *9000*
+* TCP port *9000* pro front-pod tunel ke komunikaci s koncovým tunelového propojení na serveru rozhraní API.
 
 Následující plně kvalifikovaný název domény / pravidla aplikací jsou požadovány:
 
-| Plně kvalifikovaný název domény                      | Port      | Použití      |
+| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                      | Port      | Použití      |
 |---------------------------|-----------|----------|
 | *.azmk8s.io               | HTTPS:443 | Tato adresa je koncový bod rozhraní API serveru. |
 | aksrepos.azurecr.io       | HTTPS:443 | Tato adresa je potřeba přístup imagí v Azure Container Registry (ACR). |
@@ -90,7 +91,7 @@ Těchto odchozích portech / pravidel sítě se nevyžadují pro AKS clustery fu
 
 Následující plně kvalifikovaný název domény / pravidla aplikací se doporučují pro AKS clustery fungoval správně:
 
-| Plně kvalifikovaný název domény                                    | Port      | Použití      |
+| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | *.ubuntu.com                            | HTTP:80   | Tato adresa umožňuje stáhnout požadované zabezpečení oprav a aktualizací uzlech clusteru s Linuxem. |
 | packages.microsoft.com                  | HTTPS:443 | Tato adresa se používá úložiště balíčky společnosti Microsoft pro uložené v mezipaměti *apt-get* operace. |
@@ -105,9 +106,6 @@ Následující plně kvalifikovaný název domény / pravidla aplikací se dopor
 
 V tomto článku jste zjistili, jaké porty a adresy, které povolí, pokud omezíte výchozí přenos pro cluster. Můžete také definovat, jak můžete sami podů komunikovat a jaká omezení mají v rámci clusteru. Další informace najdete v tématu [zabezpečení přenosu mezi pody pomocí zásady sítě ve službě AKS][network-policy].
 
-<!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -118,3 +116,5 @@ V tomto článku jste zjistili, jaké porty a adresy, které povolí, pokud omez
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-upgrade]: upgrade-cluster.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949575"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243596"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -26,9 +26,9 @@ Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který pod
 
 RBAC využívá pro efektivní použití sady oprávnění k přiřazení rolí *objekty zabezpečení*. A *objektu zabezpečení* je objekt, který představuje uživatele, skupiny, instanční objekt nebo spravovanou identitu, která je definována v Azure Active Directory (AD), která žádá o přístup k prostředkům Azure.
 
-Obvykle se tyto prostředky Azure, jsou přednastaveny omezené prostředky nejvyšší úrovně (například: Účty úložiště Azure). V případě služby Azure Storage a proto Azure Data Lake Storage Gen2 tento mechanismus rozšířilo a prostředek systému souborů.
+Obvykle se tyto prostředky Azure, jsou přednastaveny omezené prostředky nejvyšší úrovně (například: Účty úložiště Azure). V případě služby Azure Storage a proto Azure Data Lake Storage Gen2 tento mechanismus bylo rozšířeno na kontejner prostředku (systém souborů).
 
-Další postup přiřazování rolí pro objekty zabezpečení v rámci vašeho účtu úložiště najdete v tématu [ověřit přístup k Azure, objekty BLOB a fronty pomocí Azure Active Directory](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Další postup přiřazování rolí pro objekty zabezpečení v rámci vašeho účtu úložiště najdete v tématu [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Dopad přiřazení rolí na seznamy řízení přístupu na úrovni souborů a adresářů
 
@@ -49,7 +49,7 @@ Tokeny SAS zahrnout jako součást tokenu mechanismu povolených oprávnění. O
 
 ## <a name="access-control-lists-on-files-and-directories"></a>Seznamy řízení přístupu na soubory a adresáře
 
-Objekt zabezpečení můžete přidružit úroveň přístupu pro soubory a adresáře. Tato přidružení jsou zachyceny v *seznam řízení přístupu (ACL)*. Jednotlivých souborů a adresářů v účtu úložiště má seznam řízení přístupu.
+Objekt zabezpečení můžete přidružit úroveň přístupu pro soubory a adresáře. Tato přidružení jsou zachyceny v *seznam řízení přístupu (ACL)* . Jednotlivých souborů a adresářů v účtu úložiště má seznam řízení přístupu.
 
 Pokud jste přiřadili roli k objektu zabezpečení na úrovni účtu úložiště, můžete použít seznamy řízení přístupu udělení že tohoto objektu zabezpečení přístupu k určité soubory a adresáře se zvýšenými oprávněními.
 
@@ -77,8 +77,6 @@ Výchozí seznamy ACL jsou šablony seznamy ACL asociovaná s adresářem, kter�
 
 Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
 
-Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
-
 > [!NOTE]
 > Změna výchozího seznamu ACL u nadřazené položky nemá vliv na přístup k seznamu ACL nebo výchozí seznam ACL podřízené položky, které již existují.
 
@@ -91,6 +89,9 @@ Oprávnění pro objekt systému souborů jsou **čtení**, **zápisu**, a **Exe
 | **Číst (R)** | Může číst obsah souboru | Vyžaduje **čtení** a **Execute** k výpisu obsahu adresáře |
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Vyžaduje **zápisu** a **Execute** pro vytváření podřízených položek v adresáři |
 | **Provést (X)** | Nemá žádný význam v kontextu Data Lake Storage Gen2 | Je vyžadováno k procházení podřízenými položkami adresáře |
+
+> [!NOTE]
+> Pokud udělujete oprávnění jenom pomocí seznamů ACL (žádné RBAC), pak udělit službu objektu zabezpečení pro čtení nebo zápis do souboru, bude potřeba poskytnout instanční objekt služby **Execute** oprávnění systému souborů a všechny složky v hierarchie složek, které vedou k souboru.
 
 #### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 

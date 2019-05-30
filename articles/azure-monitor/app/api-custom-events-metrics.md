@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: d0a4180a3ea28427b8d82c6f5cf86ef9fa51d580
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785885"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299253"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -53,7 +53,7 @@ Pokud nemáte odkaz na sadu SDK Application Insights ještě:
   * [Projekt v Javě](../../azure-monitor/app/java-get-started.md)
   * [Projekt Node.js](../../azure-monitor/app/nodejs.md)
   * [V každé webové stránky JavaScript](../../azure-monitor/app/javascript.md) 
-* Do kódu zařízení nebo webového serveru přidejte:
+* V zařízení nebo webového kódu serveru patří:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 
@@ -712,7 +712,7 @@ dependencies
 
 ## <a name="flushing-data"></a>Vyprazdňování dat
 
-Za normálních okolností sada SDK odesílá data v některých případech se rozhodli minimalizaci vlivu na uživatele. Nicméně v některých případech můžete chtít vyprázdní vyrovnávací paměť – například pokud používáte sady SDK v aplikaci, která ukončí.
+Za normálních okolností sada SDK odesílá data v pravidelných intervalech (obvykle 30 sekund) nebo pokaždé, když se vyrovnávací paměť je zaplněn (obvykle 500 položek). Nicméně v některých případech můžete chtít vyprázdní vyrovnávací paměť – například pokud používáte sady SDK v aplikaci, která ukončí.
 
 *C#*
 

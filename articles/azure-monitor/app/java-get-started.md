@@ -12,17 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cc1456aa9928cbd4a24c203eab62e3e75b4d7c1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691254"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256190"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
-
-[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ho k [automaticky nástrojem požadavku, sledování závislostí a shromáždit čítače](auto-collect-dependencies.md#java), [diagnostikovat problémy s výkonem a výjimkami](../../azure-monitor/app/detect-triage-diagnose.md), a [napsat kód] [ api] ke sledování, co uživatelé dělají s vaší aplikací. 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ho k [automaticky nástrojem požadavku, sledování závislostí a shromáždit čítače](auto-collect-dependencies.md#java), diagnostikovat problémy s výkonem a výjimkami, a [napsat kód] [ api] ke sledování, co uživatelé dělají s vaší aplikací. 
 
 ![Snímek obrazovky Přehled ukázkových dat.](./media/java-get-started/overview-graphs.png)
 
@@ -487,7 +486,6 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 * [Monitorování čítačů výkonu Unix](java-collectd.md)
 * Přidejte [na svoje webové stránky monitorování](javascript.md) a sledujte dobu načítání stránek, volání AJAX nebo výjimky prohlížeče.
 * Můžete napsat i [vlastní telemetrii](../../azure-monitor/app/api-custom-events-metrics.md) ke sledování využití v prohlížeči nebo na serveru.
-* Vytvářejte si [řídicí panely](../../azure-monitor/app/app-insights-dashboards.md), kde budete mít pohromadě klíčové grafy pro monitorování systému.
 * [Analytické funkce](../../azure-monitor/app/analytics.md) vám pomůžou přímo z vaší aplikace zadávat efektivní dotazy na telemetrie.
 * Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).
 

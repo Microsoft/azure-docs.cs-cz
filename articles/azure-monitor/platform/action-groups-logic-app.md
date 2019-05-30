@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235138"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389563"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Jak aktivovat složité akce s Azure Monitor výstrah
 
@@ -26,7 +26,7 @@ Obecný postup je:
 
 -   Vytvoření aplikace logiky pro příslušný typ výstrahy.
 
--   Importujte schématu pro příslušný typ výstrahy do aplikace logiky.
+-   Importujte ukázkovou datovou část pro příslušný typ výstrahy do aplikace logiky.
 
 -   Definují chování aplikace logiky.
 
@@ -58,7 +58,7 @@ Proces je podobný, pokud chcete aplikaci logiky provádět různé akce.
 
     ![Použít ukázkovou datovou část](media/action-groups-logic-app/use-sample-payload-button.png "použít ukázkovou datovou část")
 
-8.  Zkopírujte a vložte následující schéma ukázka do dialogového okna:
+8.  Zkopírujte a vložte následující ukázkovou datovou část do dialogového okna:
 
     ```json
         {
@@ -140,7 +140,7 @@ Při příštím výstrahu volá vaši skupinu akcí se nazývá svou aplikaci l
 Azure Service Health položky jsou součástí protokolu aktivit. Je podobný procesu pro vytváření upozornění [vytvoření upozornění protokolu aktivit](#create-an-activity-log-alert-administrative), ale s drobnými změnami:
 
 - Kroky 1 až 7 jsou stejné.
-- V kroku 8 použijte následující ukázkový schématu pro trigger požadavku HTTP:
+- V kroku 8 použijte následující ukázkovou datovou část pro trigger požadavku HTTP:
 
     ```json
     {
@@ -228,7 +228,7 @@ Azure Service Health položky jsou součástí protokolu aktivit. Je podobný pr
 Je podobný procesu pro vytváření upozornění na metriku [vytvoření upozornění protokolu aktivit](#create-an-activity-log-alert-administrative), ale s drobnými změnami:
 
 - Kroky 1 až 7 jsou stejné.
-- V kroku 8 použijte následující ukázkový schématu pro trigger požadavku HTTP:
+- V kroku 8 použijte následující ukázkovou datovou část pro trigger požadavku HTTP:
 
     ```json
     {

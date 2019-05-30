@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 86ad6fce34f323d94f7b9c318ba81f547360d4df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038498"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237326"
 ---
 # <a name="networking"></a>Sítě
 
@@ -71,6 +71,8 @@ Horizontální navýšení kapacity infrastruktury je potřeba povolit Akcelerov
 * Ke spuštění úlohy kontejneru Windows, použijte [otevřete síťové režim](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) usnadnění komunikace service-to-service.
 
 * Použít reverzní proxy server, jako [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) nebo [Service Fabric reverzní proxy server](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) vystavit běžné porty aplikací, například 80 nebo 443.
+
+* Pro kontejnery Windows hostované na kruhová s mezerou air počítače, které není možné si vyžádat základní vrstvy z cloudu Azure storage, přepsat chování cizí vrstvy pomocí [– povolit artefakty nondistributable](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) příznak v démona Dockeru.
 
 ## <a name="next-steps"></a>Další postup
 

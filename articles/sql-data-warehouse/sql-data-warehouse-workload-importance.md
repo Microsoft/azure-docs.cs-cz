@@ -1,5 +1,5 @@
 ---
-title: Důležitost úloh | Dokumentace Microsoftu
+title: Důležitost pracovního vytížení Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Pokyny k nastavení význam pro dotazy ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,18 +10,18 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002893"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233844"
 ---
-# <a name="sql-data-warehouse-workload-importance"></a>Důležitost úlohy SQL Data Warehouse
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Důležitost pracovního vytížení Azure SQL Data Warehouse
 
 Tento článek vysvětluje, jak důležité úlohy mohou mít vliv na pořadí provádění pro požadavky na SQL Data Warehouse.
 
-## <a name="importance"></a>Důležitost
+## <a name="importance"></a>Význam
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
@@ -35,7 +35,7 @@ Existuje pět úrovní důležitosti: Nízká, below_normal, Normální, above_n
 
 Nad rámec výše popsaného s prodeje a data o počasí scénáře základní význam jsou další scénáře, kde význam úloh pomáhá plnit zpracování dat a dotazování na ně potřebám.
 
-### <a name="locking"></a>Uzamykání
+### <a name="locking"></a>Uzamčení
 
 Přístup na zámků pro čtení a zápisu aktivit je jedné oblasti přírodních kolize.  Aktivity, jako [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenovat OBJEKT](/sql/t-sql/statements/rename-transact-sql) vyžadovat uzamčení se zvýšenými oprávněními.  SQL Data Warehouse bez úloh význam, optimalizuje propustnost.  Optimalizace propustnosti znamená, že při spuštění a požadavky ve frontě mají stejné zamykání potřeby a prostředky jsou k dispozici, požadavků zařazených do fronty může obejít požadavky s vyšší vyžaduje uzamčení, které byly přijaty ve frontě dříve.  Po použití pracovního vytížení důležitosti pro požadavky s vyšší uzamčení potřebuje. Požadavek s větší význam se spustí před požadavkem s důležitostí nižší.
 

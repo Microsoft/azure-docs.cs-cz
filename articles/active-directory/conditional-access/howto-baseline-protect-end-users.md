@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cd52fb82e5e4cce759be5dfdd8872f64802459
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003158"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235507"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Základní zásady: Ochrana koncového uživatele (preview)
 
@@ -75,11 +75,11 @@ Tyto zásady na směrný plán poskytuje možnost vyloučit uživatele. Než pov
 
 Zásady **směrný plán zásad: Ochrana koncového uživatele (preview)** vybavená předem nakonfigurovaným a se zobrazí v horní části, když přejdete do okna podmíněného přístupu na webu Azure portal.
 
-Tuto zásadu povolit a chránit vaše správce:
+Tuto zásadu povolit a chránit uživatele:
 
 1. Přihlaste se k **webu Azure portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
-1. V seznamu zásad, vyberte **směrný plán zásad: Ochrana koncového uživatele (preview)**.
+1. V seznamu zásad, vyberte **směrný plán zásad: Ochrana koncového uživatele (preview)** .
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
 1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.

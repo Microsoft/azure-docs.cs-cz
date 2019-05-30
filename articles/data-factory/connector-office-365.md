@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ca3cbb1ef46c7fe53b6b16bda40ebef245613f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415657"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245041"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory
 
@@ -41,8 +41,8 @@ Chcete-li kopírovat data z Office 365 do Azure, proveďte následující nutné
 - Váš správce tenanta Office 365 musíte provést akce v rámci zprovozňování, jak je popsáno [tady](https://docs.microsoft.com/graph/data-connect-get-started).
 - Vytvoření a konfigurace webové aplikace Azure AD ve službě Azure Active Directory.  Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Poznamenejte si následující hodnoty, které se používají k definování propojené služby pro Office 365:
-    - ID tenanta. Pokyny najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
-    - Klíč ID aplikace a aplikace.  Pokyny najdete v tématu [Get aplikace ID a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+    - ID tenanta. Pokyny najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+    - Klíč ID aplikace a aplikace.  Pokyny najdete v tématu [Get aplikace ID a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 - Přidejte identitu uživatele, kteří budou využívat žádost o přístup dat jako vlastník webovou aplikaci Azure AD (ze služby Azure AD webová aplikace > Nastavení > vlastníky > Přidat vlastníka). 
     - Identita uživatele musí být v organizaci využívající Office 365 se získávání dat z a nesmí být uživatele typu Host.
 

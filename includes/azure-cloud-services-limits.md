@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 0b24688b502a40e722d2fcc4436ff1824862f489
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803763"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238444"
 ---
-| Prostředek | Výchozí omezení | Maximální omezení |
+| Resource | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | [Jedno nasazení webové nebo pracovní role](../articles/cloud-services/cloud-services-choose-me.md)<sup>1</sup> |25 |25 |
 | [Vstupní koncové body instance](/previous-versions/azure/reference/gg557552(v=azure.100)#instanceinputendpoint) jedno nasazení |25 |25 |

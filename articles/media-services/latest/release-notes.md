@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/29/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153066"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385151"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -36,7 +36,21 @@ Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Me
 
 ## <a name="may-2019"></a>. Května 2019.
 
+### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS v4 a vyšší odborné pomoci v dynamické balení 
+
+Přidání HLS (verze 4 nebo vyšší) podporují v dynamické vytváření paketů pro prostředky, které mají více zvukové stopy s více kodeky a jazyky.
+
+Další informace najdete v tématu [dynamické balení](dynamic-packaging-overview.md).
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea páru oblastí je otevřen pro Media Services 
+
+Služba Media Services je teď dostupná v oblastech Korea – střed a Korea – jih. 
+
+Další informace najdete v tématu [Cloudy a oblasti, ve které Media Services v3 existuje](azure-clouds-regions.md).
+
 ### <a name="performance-improvements"></a>Vylepšení výkonu
+
+Přidané aktualizace, které zahrnují vylepšení výkonu služby Media Services.
 
 * Maximální velikost souboru podporovaná při zpracování byl aktualizován. Zobrazit, [kvóty a omezení](limits-quotas-constraints.md).
 * [Kódování vylepšení rychlosti](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
@@ -52,7 +66,7 @@ Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Me
 
 Dynamické balení, teď podporuje Dolby Atmos. Další informace najdete v tématu [zvuk kodeky podporuje dynamické balení](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
-Nyní můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokátor streamování. Další informace najdete v tématu [filtry přidružit Lokátor streamování](filters-concept.md#associate-filters-with-streaming-locator).
+Nyní můžete zadat seznam prostředků nebo účet filtrů, které pro vaše Lokátor streamování. Další informace najdete v tématu [filtry přidružit Lokátor streamování](filters-concept.md#associating-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>. Února 2019
 

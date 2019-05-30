@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 05/24/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f070cafa026679eb9322ac7ba2eafe4c7e233d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 33d0e5f92d5de104530882b204b1f196360511b2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826740"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236459"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného Azure na jiný účet
 
@@ -59,7 +59,7 @@ Převod vašeho předplatného na jiného uživatele v centru účtů můžete z
    ![První předplatné přenos webové stránky](./media/billing-subscription-transfer/image4.png)
 
    ![Druhý předplatné přenos webové stránky](./media/billing-subscription-transfer/image5.png)
-1. Úspěch! Nyní převodu předplatného.
+1. Výborně! Nyní převodu předplatného.
 
 <a id="EA"></a>
 
@@ -102,7 +102,9 @@ Převod předplatného samoobslužné je k dispozici pro nabídky nebo typy pře
 
 ### <a name="whoisaa"></a> Kdo je správcem účtu předplatného?
 
-Správce účtu je osoba, která registrovanou službu nebo zakoupili předplatné Azure. Mají autorizaci pro přístup [centra pro účty](https://account.azure.com/Subscriptions) a provádět různé úlohy správy, jako je vytvářet předplatná, zrušit předplatná, fakturaci a předplatné změnit nebo změnit správce služeb. Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to následujícím postupem.
+Správce účtu je osoba, která registrovanou službu nebo zakoupili předplatné Azure. Mají autorizaci pro přístup [centra pro účty](https://account.azure.com/Subscriptions) a provádět různé úlohy správy, jako je vytvářet předplatná, zrušit předplatná, fakturaci a předplatné změnit nebo změnit správce služeb. Další informace o porozumění rolích správce a oprávněních najdete v tématu [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+
+Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to následujícím postupem.
 
 1. Přejděte na [stránku Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Vyberte předplatné, které chcete zkontrolovat a pak hledejte v části **nastavení**.

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 163b8e1f68b8d5a102465022c67f7d0da57a7215
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 541ffe70ae5198e631568584a58d02ac283e89d3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596957"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298242"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Použití rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning
 
@@ -40,7 +40,7 @@ Rozhraní příkazového řádku, není to náhrada pro sadu SDK Azure Machine L
 
 Najít [úplné referenční dokumenty pro azure-cli-ml rozšíření Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
 
-## <a name="install-the-extension"></a>Nainstalovat rozšíření
+## <a name="install-the-extension"></a>Instalace rozšíření
 
 Pokud chcete nainstalovat rozšíření Machine Learning CLI, použijte následující příkaz:
 
@@ -165,13 +165,11 @@ Následující příkazy ukazují, jak registrace trénovaného modelu a pak ho 
     Další informace najdete v tématu [profil modelu ml az](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
 
 + Nasazení modelu do AKS
-
     ```azurecli-interactive
-    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
+    az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget
     ```
-
+    
     Tady je příklad `inferenceconfig.json` dokumentu:
-
     ```json
     {
     "entryScript": "score.py",
@@ -182,6 +180,13 @@ Následující příkazy ukazují, jak registrace trénovaného modelu a pak ho 
     "enableGpu": false,
     "baseImage": null,
     "baseImageRegistry": null
+    }
+    ```
+    Následuje příklad "deploymentconfig.json" dokumentu:
+    ```json
+    {
+    "computeType": "aks",
+    "ComputeTarget": "akscomputetarget"
     }
     ```
 

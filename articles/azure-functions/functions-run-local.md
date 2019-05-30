@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fe483f00c5711c2b2b62add32e951d26f732de2f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131399"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241160"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -186,8 +186,8 @@ Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetěz
   },
   "Host": {
     "LocalHttpPort": 7071,
-    "CORS": "*"
-    "CORSCredentials": true
+    "CORS": "*",
+    "CORSCredentials": false
   },
   "ConnectionStrings": {
     "SQLConnectionString": "<sqlclient-connection-string>"
@@ -318,12 +318,12 @@ func host start
 | **`--cors-credentials`** | Povolit ověřený požadavky mezi zdroji (tj. soubory cookie a hlavičky ověřování) verze 2.x pouze. |
 | **`--cors`** | Čárkou oddělený seznam zdrojů CORS, bez mezer. |
 | **`--language-worker`** | Argumentů pro konfiguraci jazyka pracovního procesu. Verze 2.x pouze. |
-| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
+| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí hodnota: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
 | **`--password`** | Heslo nebo soubor, který obsahuje heslo pro soubor .pfx. Použít pouze s `--cert`. Verze 2.x pouze. |
 | **`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Pozastavit další vstupní před ukončením procesu. Používá pouze v případě, že spuštění nástroje Core z integrovaného vývojového prostředí (IDE).|
 | **`--script-root --prefix`** | Slouží k zadání cesty do kořenového adresáře aplikace function app, který se má spustit nebo nasadit. Používá se pro kompilované projekty, které Generovat soubory projektu do podsložky. Například při vytváření knihovny tříd jazyka C# projekt, host.json, local.settings.json a function.json soubory jsou generovány *kořenové* , jako je podsložka s cestou `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. To je kořenový adresář aplikace function app, při spuštění v Azure. |
-| **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí: 20 sekund.|
+| **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí hodnota: 20 sekund.|
 | **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
 
 C# projekt knihovny tříd (.csproj), je třeba zahrnout `--build` možnost k vygenerování knihovny DLL.

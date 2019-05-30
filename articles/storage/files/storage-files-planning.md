@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232775"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237657"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -111,7 +111,7 @@ Je možné zmenšit velikost vašeho zřízené sdílené složky pod používan
 
 Následující tabulka ukazuje několik příkladů tyto vzorce pro velikosti zřízené sdílené složky:
 
-|Kapacita (GB) | Standardní hodnoty vstupně-výstupních operací | Vstupně-výstupních operací datové sekvence | Výchozí přenos dat (MiB/s) | Příchozí přenos dat (MiB/s) |
+|Kapacita (GB) | Základní IOPS | Vstupně-výstupních operací datové sekvence | Výchozí přenos dat (MiB/s) | Příchozí přenos dat (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Až 300     | 66   | 44   |
 |500         | 500     | Až 1 500   | 90   | 60   |
@@ -189,9 +189,9 @@ Je možné pro synchronizaci více sdílených složek Azure na jeden souborový
 Existuje mnoho možností snadno hromadné přenos dat z existujícího souboru sdílet, jako je například místní sdílenou složku, do soubory Azure. Několik oblíbených ty patří (mimo vyčerpávající seznam):
 
 * **Azure File Sync**: Jako součást první synchronizace mezi sdílenými složkami Azure ("koncového bodu cloudu") a obor názvů adresář Windows ("koncový bod serveru") Azure File Sync replikuje všechna data z existující sdílené složky do služby soubory Azure.
-* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Služba Azure Import/Export umožňuje bezpečně přenášet velké objemy dat do sdílené složky Azure přenosem pevných disků do datacentra Azure. 
-* **[Příkaz Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Příkaz Robocopy je dobře známé kopírování nástroj, který se dodává s Windows a Windows Server. Příkaz Robocopy můžou sloužit k připojení sdílené místně a následným použitím umístění připojené jako cíl v příkazu Robocopy přenášet data do soubory Azure.
-* **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Azure Files, jakož i úložiště objektů Blob v Azure pomocí jednoduchých příkazů s optimálním výkonem. AzCopy je k dispozici pro Windows a Linux.
+* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Služba Azure Import/Export umožňuje bezpečně přenášet velké objemy dat do sdílené složky Azure přenosem pevných disků do datacentra Azure. 
+* **[Příkaz Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Příkaz Robocopy je dobře známé kopírování nástroj, který se dodává s Windows a Windows Server. Příkaz Robocopy můžou sloužit k připojení sdílené místně a následným použitím umístění připojené jako cíl v příkazu Robocopy přenášet data do soubory Azure.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Azure Files, jakož i úložiště objektů Blob v Azure pomocí jednoduchých příkazů s optimálním výkonem.
 
 ## <a name="next-steps"></a>Další postup
 * [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)

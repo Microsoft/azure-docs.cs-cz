@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471857"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299306"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -25,6 +25,16 @@ ms.locfileid: "65471857"
 
 * Pokud se vám zobrazují konzistentně stejný zlomek, je pravděpodobně z důvodu adaptivní [vzorkování](../../azure-monitor/app/sampling.md). Pokud to pokud chcete potvrdit, otevřete vyhledávání (v okně Přehled) a podívejte se na instanci žádost nebo jiná událost. V dolní části Vlastnosti klikněte na tlačítko "..." pro získání podrobností o celou vlastnost. Pokud žádost o Count > 1 a pak vzorkování je v provozu.
 * V opačném případě je možné, že narazíte [limitu přenosové rychlosti dat](../../azure-monitor/app/pricing.md#limits-summary) pro cenový tarif. Tato omezení se vztahují na minutu.
+
+*Dochází ke ztrátě dat náhodně.*
+
+* Zaškrtněte, pokud dochází k ztrátu dat na [Telemetrie kanálu](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost)
+
+* Vyhledat všechny známé problémy v kanálu Telemetrie [úložiště Github](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)
+
+*Ztráty dat v aplikaci konzoly nebo ve webové aplikaci dochází při aplikaci se chystá ukončit.*
+
+* Kanál sady SDK udržuje telemetrická data ve vyrovnávací paměti a odešle je v dávkách. Pokud se aplikace vypíná, je nutné explicitně volat [vyprázdnění()](api-custom-events-metrics.md#flushing-data). Chování `Flush()` závisí na skutečnou [kanál](telemetry-channels.md#built-in-telemetrychannels) použít.
 
 ## <a name="no-data-from-my-server"></a>Žádná data ze svého serveru
 *Mám nainstalovanou aplikaci na webovém serveru a nyní nevidím žádnou telemetrii z něj. OK pracoval na mém počítači vývoje.*
@@ -58,7 +68,6 @@ Oprava:
 * Zkontrolujte, že jste zadali přihlašovací údaje pro účet přímo Azure.
 * V prohlížeči, zkontrolujte, že máte přístup k [webu Azure portal](https://portal.azure.com). Otevřete nastavení a zjistit, jestli žádná omezení.
 * [Přidejte Application Insights do existujícího projektu](../../azure-monitor/app/asp-net.md): V Průzkumníku řešení klikněte pravým tlačítkem na projekt a zvolte "Přidat Application Insights."
-* Pokud to pořád nefunguje, postupujte [Ruční postup](../../azure-monitor/app/windows-services.md) přidat prostředek na portálu a potom přidejte sadu SDK do projektu.
 
 ## <a name="emptykey"></a>Dojde k chybě "Instrumentační klíč nemůže být prázdný"
 Vypadá to, došlo k chybě při jste instalovali Application Insights nebo možná adaptér protokolování.

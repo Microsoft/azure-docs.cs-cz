@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572516"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256134"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Na základě protokolů a předem agregovaných metrik ve službě Application Insights
 
@@ -34,7 +34,7 @@ Ve stejnou dobu shromažďování úplnou sadu událostí, které může být ne
 
 ## <a name="pre-aggregated-metrics"></a>Předem agregovaných metrik
 
-Kromě metriky založené na protokolu podzim 2018 se dodávají týmu Application Insights verze public preview služby metriky, které jsou uloženy v úložišti specializované, která je optimalizovaná pro časové řady. Nové metriky již nejsou zachovány jako jednotlivé události s velkým množstvím vlastnosti. Místo toho se ukládají jako předem agregovat časové řady a pouze s klíče dimenzí. Díky tomu nové metriky vynikající v době zpracování dotazu: načítání dat se stane mnohem rychleji a vyžaduje méně výpočetní výkon. To v důsledku umožňuje nové scénáře, jako například [téměř v reálném čase upozorňuje na ně dimenze metrik](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)rychleji reagující [řídicí panely](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards)a provádění dalších akcí.
+Kromě metriky založené na protokolu podzim 2018 se dodávají týmu Application Insights verze public preview služby metriky, které jsou uloženy v úložišti specializované, která je optimalizovaná pro časové řady. Nové metriky již nejsou zachovány jako jednotlivé události s velkým množstvím vlastnosti. Místo toho se ukládají jako předem agregovat časové řady a pouze s klíče dimenzí. Díky tomu nové metriky vynikající v době zpracování dotazu: načítání dat se stane mnohem rychleji a vyžaduje méně výpočetní výkon. To v důsledku umožňuje nové scénáře, jako například [téměř v reálném čase upozorňuje na ně dimenze metrik](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)rychleji reagující [řídicí panely](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)a provádění dalších akcí.
 
 > [!IMPORTANT]
 > Metriky založené na protokolech i předem agregovat existovat vedle sebe ve službě Application Insights. K rozlišení dvou ve službě Application Insights UX předem agregovaná metrika se teď nazývají "Standardní metriky (preview)", přestože tradiční metriky z události, které byly přejmenovány na "metriky založené na protokolu".
@@ -65,7 +65,7 @@ Kolekce vlastních metrik dimenze je ve výchozím nastavení vypnuta vzhledem k
 
 Použití [Průzkumník metrik Azure monitoru](../platform/metrics-getting-started.md) k vykreslení grafy z předem agregovat a založené na protokolech metriky a vytvořit řídicí panely s grafy. Po vybrání požadovaného prostředku Application Insights, pomocí nástroje pro výběr oboru názvů můžete přepínat mezi úrovněmi standard (preview) a metrikami založenými na protokolu, nebo vybrat vlastní metriky oboru názvů:
 
-![Obor názvů metriky](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+![Metriky oboru názvů](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Další postup
 

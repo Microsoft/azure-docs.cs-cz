@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887204"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235881"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -66,7 +66,7 @@ Pokud jste dříve používali zařízení a chcete překonfigurování použít
 #### <a name="to-prepare-the-devkit-device"></a>Příprava zařízení DevKit
 
 1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](https://aka.ms/iotcentral-docs-MXChip-releases) stránku na Githubu.
-1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. Ve Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště na zařízení DevKit. Například může být volán na jednotce **AZ3166 (D:)**.
+1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. Ve Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště na zařízení DevKit. Například může být volán na jednotce **AZ3166 (D:)** .
 1. Přetáhněte **iotCentral.bin** soubor do okna jednotky. Po dokončení kopírování s novým firmwarem restartování zařízení.
 
 1. Po restartu zařízení DevKit, zobrazí se následující obrazovka:
@@ -208,12 +208,12 @@ Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šab
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stavy 
-| Název          | Zobrazované jméno   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
+| Název          | Display name   | NORMÁLNÍ | UPOZORNĚNÍ: | NEBEZPEČÍ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | Devicestate povolená   | Stav zařízení   | Zelená  | Orange  | Červená    | 
 
 #### <a name="events"></a>Události 
-| Název             | Zobrazované jméno      | 
+| Název             | Display name      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Stiskne tlačítko B  | 
 
@@ -221,21 +221,21 @@ Aplikace vytvořené z této šablony Devkits ukázkové aplikace zahrnovat šab
 
 Číselné nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
+| Display name | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Snímač napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
-| Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
+| aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
 | Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
 
 Přepínací tlačítko Nastavení
 
-| Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
+| Display name | Název pole | Na text | Vypnout text | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | Vypnuto     |
 
 ### <a name="properties"></a>Vlastnosti
 
-| Type            | Zobrazované jméno | Název pole | Typ dat |
+| Type            | Display name | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
 | Vlastnosti zařízení | Umístění zařízení   | location  | location    |
@@ -243,11 +243,11 @@ Přepínací tlačítko Nastavení
 
 ### <a name="commands"></a>Příkazy
 
-| Zobrazované jméno | Název pole | Návratový typ | Vstupní pole zobrazované jméno | Název vstupního pole | Typ vstupního pole |
+| Display name | Název pole | Návratový typ | Vstupní pole zobrazované jméno | Název vstupního pole | Typ vstupního pole |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | echo         | echo       | text        | hodnota pro zobrazení         | displayedValue   | text             |
-| odpočítávání    | Odpočítávání  | číslo      | Od               | countFrom        | číslo           |
+| Odpočítávání    | Odpočítávání  | číslo      | Od               | countFrom        | číslo           |
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central Raspberry Pi, navrhované dalším krokem je další způsob [nastavit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.
+Teď, když jste zjistili, jak se připojit k aplikaci Azure IoT Central MXChip IoT DevKit, navrhované dalším krokem je další způsob [nastavit šablonu vlastního zařízení](howto-set-up-template.md) pro zařízení IoT.

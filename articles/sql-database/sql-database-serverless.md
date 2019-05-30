@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/20/2019
-ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a9f883a9776f68a7ece471caca5dc1d7af2aec32
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951478"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393528"
 ---
 # <a name="sql-database-serverless-preview"></a>Bez serveru SQL Database (preview)
 
-## <a name="what-is-the-serverless-compute-tier"></a>Co je výpočetní prostředí úroveň
+## <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
 Bez serveru SQL Database (preview) je výpočetní úroveň, která kusovník pro částku compute používané izolované databáze na základě za sekundu. Bez serveru je optimalizováno pro izolované databáze s přerušovaným, nepředvídatelné využití vzorky, které si může dovolit některých zpoždění při zahřívání výpočetní po období nečinnosti využití cena – výkon.
 
@@ -65,15 +65,15 @@ Následující tabulka shrnuje rozdíly mezi výpočetní prostředí a na úrov
 |:---|:---|:---|
 |**Typické použití**| Databáze s využitím přerušované, nepředvídatelné proložená neaktivní období. | Databáze nebo elastické fondy s více pravidelné používání.|
 | **Úsilí vynaložené na správu výkonu** |Nižší|Vyšší|
-|**COMPUTE škálování**|Automaticky|Ručně|
-|**COMPUTE rychlost odezvy**|Nižší za neaktivní období|Okamžitý|
+|**COMPUTE škálování**|Automatické|Manual|
+|**COMPUTE rychlost odezvy**|Nižší za neaktivní období|Okamžité|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
 ## <a name="purchasing-model-and-service-tier"></a>Zakoupení modelů a úrovni služeb
 
 SQL Database bez serveru je aktuálně podporuje jenom v úrovni General Purpose na 5. generace hardwaru ve virtuálních jader, model nákupu.
 
-## <a name="autoscaling"></a>Automatické škálování
+## <a name="autoscale"></a>Automatické škálování
 
 ### <a name="scaling-responsiveness"></a>Škálování rychlost odezvy
 
@@ -83,7 +83,7 @@ Obecně jsou databáze spustit na počítači s dostatečnou kapacitu k splňuj�
 
 Paměť pro databáze bez serveru je uvolněn více často než u databází, zřízených výpočetních. Toto chování je potřeba řízení nákladů ve službě bez serveru a může ovlivnit výkon.
 
-#### <a name="cache-reclaiming"></a>Opětovné získání do mezipaměti
+#### <a name="cache-reclamation"></a>Recyklace mezipaměti
 
 Na rozdíl od zřízených výpočetních databází je uvolnit paměť z mezipaměti SQL z databáze bez serveru při nízkém využití procesoru nebo mezipaměť.
 
@@ -116,7 +116,7 @@ Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje 
 |Funkce|Autoresume triggeru|
 |---|---|
 |Ověřování a autorizace|Přihlásit|
-|Detekce hrozby|Povolit nebo zakázat nastavení detekce hrozeb na úrovni databáze nebo serveru<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru|
+|Detekce hrozeb|Povolit nebo zakázat nastavení detekce hrozeb na úrovni databáze nebo serveru<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru|
 |Zjišťování a klasifikace dat|Přidání, úprava, odstranění nebo zobrazení popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Aktualizace nebo aktualizace zobrazení zásady auditu|
 |Maskování dat|Přidání, úprava, odstranění nebo zobrazení pravidla maskování dat|
@@ -128,7 +128,7 @@ Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje 
 |Úprava určitá metadata databáze|Přidání nové značky databáze<br>Změna maximální počet virtuálních jader, za minutu virtuálních jader, autopause zpoždění|
 |SQL Server Management Studio (SSMS)|Pomocí aplikace SSMS verze 18 a otevřete nové okno dotazu pro libovolnou databázi na serveru bude pokračovat, všechny databáze automaticky pozastaví na stejném serveru. K tomuto chování nedojde, pokud pomocí aplikace SSMS verze 17.9.1 s podporou technologie IntelliSense-vypnut.|
 
-### <a name="connectivity"></a>Možnosti připojení
+### <a name="connectivity"></a>Připojení
 
 Pokud databáze bez serveru je pozastavený, bude při prvním přihlášení databázi obnovit a vrátí chybu s informacemi o tom, že databáze je k dispozici s kódem chyby 40613. Po obnovení databáze přihlášení je nutné zopakovat k navázání připojení. Databáze klientů se logika opakovaných pokusů připojení by neměl muset upravit.
 
@@ -145,13 +145,13 @@ Tyto funkce nepodporují autopausing a autoresuming. To znamená pokud jsou pou�
 - Synchronizace databáze použitý v synchronizaci dat SQL.
 
 
-## <a name="on-boarding-into-the-serverless-compute-tier"></a>V rámci zprovozňování do vrstvy výpočetní prostředí
+## <a name="onboarding-into-serverless-compute-tier"></a>Registrace do vrstvy výpočetní prostředí
 
 Vytváří se nová databáze nebo přesunutí že existující databáze do vrstvy výpočetní prostředí používá stejný vzor jako vytváření s novou databází ve zřízené výpočetní vrstvě a zahrnuje následující kroky:
 
 1. Zadejte název cíle služby. Cíl služby předepisuje úrovně, generace hardwaru a maximální virtuálních jader. V následující tabulce jsou uvedeny možnosti cíle služby:
 
-   |Název cíle služby|Úroveň služby|Generace hardwaru|Maximální počet virtuální jader|
+   |Název cíle služby|Úroveň služeb|Generace hardwaru|Maximální počet virtuálních jader|
    |---|---|---|---|
    |GP_S_Gen5_1|Obecné použití|Gen5|1|
    |GP_S_Gen5_2|Obecné použití|Gen5|2|
@@ -167,11 +167,11 @@ Vytváří se nová databáze nebo přesunutí že existující databáze do vrs
 > [!NOTE]
 > Pomocí jazyka T-SQL přesunout existující databázi do bez serveru, nebo změňte jeho velikost výpočetních se aktuálně nepodporuje, ale můžete to udělat pomocí webu Azure portal nebo Powershellu.
 
-### <a name="create-new-database-using-the-azure-portal"></a>Vytvořit novou databázi pomocí webu Azure portal
+### <a name="create-new-serverless-database-using-azure-portal"></a>Vytvoření nové databáze bez serveru pomocí webu Azure portal
 
 Zobrazit [rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal](sql-database-single-database-get-started.md).
 
-### <a name="create-new-database-using-powershell"></a>Vytvoření nové databáze pomocí Powershellu
+### <a name="create-new-serverless-database-using-powershell"></a>Vytvoření nové databáze bez serveru pomocí Powershellu
 
 Následující příklad vytvoří novou databázi na úrovni výpočetní prostředí určené cíl služby s názvem GP_S_Gen5_4 s použitím výchozích hodnot pro zpoždění virtuálních jader a autopause min.
 
@@ -190,7 +190,7 @@ New-AzSqlDatabase `
   -AutoPauseDelay 720
 ```
 
-### <a name="move-existing-database-into-the-serverless-compute-tier"></a>Přesunout existující databázi do vrstvy výpočetní prostředí
+### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>Přesunutí databáze zřízených výpočetních do vrstvy výpočetní prostředí
 
 Následující příklad přesune existující jedné databáze z úrovně zřízených výpočetních do vrstvy výpočetní prostředí. Tento příklad explicitně určuje virtuálních jader pro minimální, maximální počet virtuálních jader a autopause zpoždění.
 
@@ -207,11 +207,11 @@ Set-AzSqlDatabase
   -AutoPauseDelay 1440
 ```
 
-### <a name="move-a-database-out-of-the-serverless-compute-tier"></a>Přesunutí databáze mimo úroveň výpočetní prostředí
+### <a name="move-serverless-database-into-provisioned-compute-tier"></a>Přesunout do vrstvy zřízených výpočetních databáze bez serveru
 
 Databáze bez serveru můžete přesunout do vrstvy zřízených výpočetních stejným způsobem jako přesunutí databáze zřízených výpočetních do vrstvy výpočetní prostředí.
 
-## <a name="modify-serverless-configuration-parameters"></a>Upravit parametry konfigurace bez serveru
+## <a name="modifying-serverless-configuration"></a>Změna konfigurace bez serveru
 
 ### <a name="maximum-vcores"></a>Maximální počet virtuálních jader
 
@@ -225,7 +225,7 @@ Změna maximální virtuálních jader je prováděno pomocí [Set-AzSqlDatabase
 
 Úprava zpoždění autopause pomocí provádí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `AutoPauseDelay` argument.
 
-## <a name="monitor-serverless-database"></a>Monitorování databáze bez serveru
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="resources-used-and-billed"></a>Prostředky používá a účtují
 
@@ -237,7 +237,7 @@ Balíček aplikace je vnější hranice většinu prostředků správy pro datab
 
 #### <a name="user-resource-pool"></a>Uživatelským fondem zdrojů
 
-Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředků pro databázi, bez ohledu na to, jestli je databáze v bez serveru nebo zřízené výpočetní vrstvě. Uživatelským fondem zdrojů obory procesoru a vstupů/výstupů uživatelské zatížení generovaných dotazů DDL (například CREATE, ALTER, atd.) a dotazech DML (třeba SELECT, INSERT, UPDATE, DELETE, atd.). Tyto dotazy obvykle představují nejčastěji podstatnou část využití v rámci balíčku aplikace.
+Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředků pro databázi, bez ohledu na to, jestli je databáze v bez serveru nebo zřízené výpočetní vrstvě. Uživatel prostředků fondu obory procesoru a vstupů/výstupů pro uživatelské zatížení generované DDL dotazů, jako jsou CREATE a ALTER a jazyk DML dotazy, jako výběr, vložení, aktualizace a odstranění. Tyto dotazy obvykle představují nejčastěji podstatnou část využití v rámci balíčku aplikace.
 
 ### <a name="metrics"></a>Metriky
 
@@ -279,7 +279,7 @@ Omezení prostředků najdete v tématu [úroveň výpočetní prostředí](sql-
 Objem výpočtů, účtuje se maximální využití procesoru a paměti používá každou sekundu. Pokud procento využití procesoru a použité paměti je menší než minimální velikost pro všechny zřízené, se účtuje zřízená velikost. Aby bylo možné porovnat procesoru s pamětí pro účely fakturace, je paměť ve změny měřítka množství paměti v Gigabajtech o 3 GB za vCore normalizován do jednotek virtuálních jader.
 
 - **Prostředek účtuje**: Procesor a paměť
-- **Fakturována částka ($)**: cena za jednotku – VCORE úrovně * max (min virtuálních jader, používá virtuální jádra, minimální paměť GB * 1/3 paměti využité GB * 1/3) 
+- **Fakturována částka ($)** : cena za jednotku – VCORE úrovně * max (min virtuálních jader, používá virtuální jádra, minimální paměť GB * 1/3 paměti využité GB * 1/3) 
 - **Četnost fakturace**: Za sekundu
 
 Jednotková cena vCore v náklady na vCore za sekundu. Odkazovat [stránce s cenami za Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) pro konkrétní jednotkové ceny v dané oblasti.
@@ -298,7 +298,7 @@ V takovém případě databáze se účtuje za výpočetní prostředky a úlož
 
 Přesněji řečeno výpočetní faktury v tomto příkladu se vypočítává takto:
 
-|Časový interval|použít každou sekundu virtuálních jader|Každou sekundu využité GB|Dimenze účtuje COMPUTE|vCore sekund účtuje za časový interval|
+|Časový Interval|použít každou sekundu virtuálních jader|Každou sekundu využité GB|Dimenze účtuje COMPUTE|vCore sekund účtuje za časový interval|
 |---|---|---|---|---|
 |0:00-1:00|4|9|použít virtuální jádra|4 virtuální jádra * 3600 sekund = 14400 vCore sekund|
 |1:00-2:00|1|12|Využité paměti|12 Gb * 1/3 * 3 600 sekund = 14400 vCore sekund|
@@ -310,7 +310,7 @@ Předpokládejme, že je cena ze jednotku výpočetních je $0.000073/vCore/seco
 
 ## <a name="available-regions"></a>Dostupné oblasti
 
-Bez serveru výpočetní úroveň je dostupná ve všech oblastech kromě následujících oblastech: Austrálie – střed, Čína – východ, Čína – sever, Francie – Jih, Německo – střed, Německo – severovýchod, Indie – Západ, Korea – Jih, Jihoafrická republika – Západ, Velká Británie – sever, Velká Británie – Jih, Velká Británie – západ a střed USA – západ
+Bez serveru výpočetní úroveň je dostupná ve všech oblastech kromě následujících oblastech: Austrálie – střed, Čína – východ, Čína – sever, Francie – Jih, Německo – střed, Německo – severovýchod, Indie – Západ, Korea – Jih, Jihoafrická republika – Západ, Velká Británie – sever, Velká Británie – Jih, Velká Británie – západ a střed USA – západ.
 
 ## <a name="next-steps"></a>Další postup
 

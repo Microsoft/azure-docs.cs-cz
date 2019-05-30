@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394825"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356212"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 
@@ -35,7 +35,7 @@ Odpověď: Jsou to samé. [Log Analytics je integrované jako funkci ve službě
 
 ### <a name="q-can-i-still-use-log-search"></a>Otázka: Pomocí prohledávání protokolů 
 
-Odpověď: Hledání v protokolu je stále k dispozici na portálu OMS a na webu Azure Portal v části názvu aktuálně **protokoly (classic)**. Na portálu OMS se oficiálně dostupné jenom do 15. ledna 2019. Klasickým prostředím protokolů na webu Azure portal postupně vyřadíme a nahradí nové protokoly prostředí. 
+Odpověď: Hledání v protokolu je stále k dispozici na portálu OMS a na webu Azure Portal v části názvu aktuálně **protokoly (classic)** . Na portálu OMS se oficiálně dostupné jenom do 15. ledna 2019. Klasickým prostředím protokolů na webu Azure portal postupně vyřadíme a nahradí nové protokoly prostředí. 
 
 ### <a name="q-can-i-still-use-advanced-analytics-portal"></a>Otázka: Použití portálu Advanced Analytics 
 Nové prostředí protokolů na webu Azure Portal je založen na portálu pro pokročilé analýzy, ale stále k němu mimo na webu Azure portal. Plán služby vyřazení z provozu tento portál externí bude brzy oznámena.
@@ -84,7 +84,7 @@ Odpověď: Seznam zobrazení a nainstalované řešení jsou k dispozici na webu
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>Otázka: Proč nelze vytvořit pracovní prostory v oblasti Středozápad USA? 
 
-Odpověď: V této oblasti bylo dosaženo dočasného omezení kapacity. Toto omezení plánujeme vyřešit v první polovině roku 2019.
+Odpověď: V této oblasti bylo dosaženo dočasného omezení kapacity. Toto omezení se plánuje ji adresovat podle konce září. května 2019.
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Otázka: Používá Log Analytics stejný agent, kterého jako Azure Security Center?
@@ -195,7 +195,7 @@ V části **Azure Log Analytics (OMS)** kartu, vyhledejte zelená značka zaškr
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Otázka: Jak můžu Zastavit agenta v komunikaci se službou Log Analytics?
 
 Odpověď: V nástroji System Center Operations Manager odeberte počítač ze seznamu spravovaných počítačů OMS. Nástroj Operations Manager aktualizuje konfiguraci agenta k již ukládání dat do Log Analytics. U agentů přímo připojené ke službě Log Analytics můžete zastavit komunikaci prostřednictvím: Ovládací prvek panelu, zabezpečení a nastavení, **agenta Microsoft Monitoring Agent**.
-V části **Azure Log Analytics (OMS)**, odeberte všechny pracovní prostory uvedené.
+V části **Azure Log Analytics (OMS)** , odeberte všechny pracovní prostory uvedené.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Otázka: Proč se při pokusu o přesunutí Můj pracovní prostor z jednoho předplatného Azure na jiný dochází k chybě?
 

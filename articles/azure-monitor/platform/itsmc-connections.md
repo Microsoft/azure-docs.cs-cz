@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ffd9c4bfc934faff1664ff39c0e979a9d6c09487
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395481"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399779"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -72,8 +72,8 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 | **Adresa URL serveru**   | Zadejte adresu URL aplikace webového portálu Service Manager. Další informace o aplikaci webového portálu Service Manager je [tady](#create-and-deploy-service-manager-web-app-service).
 | **ID klienta**   | Zadejte ID klienta, který jste vygenerovali (pomocí automatického skriptu) pro ověřování webové aplikace. Další informace o automatizovaný skript je [tady.](../../azure-monitor/platform/itsmc-service-manager-script.md)|
 | **Tajný klíč klienta**   | Zadejte tajný kód klienta vygenerovaný pro toto ID.   |
-| **Rozsah synchronizace dat**   | Výběr pracovních položek portálu Service Manager, které chcete synchronizovat prostřednictvím ITSMC.  Tyto pracovní položky jsou importovány do Log Analytics. **Možnosti:**  Incidenty, žádosti o změnu.|
-| **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
+| **Synchronizace dat**   | Výběr pracovních položek portálu Service Manager, které chcete synchronizovat prostřednictvím ITSMC.  Tyto pracovní položky jsou importovány do Log Analytics. **Možnosti:**  Incidenty, žádosti o změnu.|
+| **Rozsah synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, Log Analytics vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno. |
 
 ![Služba Správce připojení](media/itsmc-connections/service-manager-connection.png)
@@ -185,11 +185,12 @@ Následující části obsahují podrobnosti o tom, jak připojit ServiceNow pro
 ### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující požadavky:
 - ITSMC nainstalované. Další informace: [Přidání IT řešení pro správu konektoru služby](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- ServiceNow podporované verze: Londýn, Kingston, Jakarta, Istanbul, Helsinky, Geneva.
+- ServiceNow podporované verze: Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Geneva.
 
 **Správci ServiceNow musíte provést následující v jejich instance ServiceNow**:
 - Vygenerujte ID klienta a tajný kód klienta ServiceNow produktu. Informace o tom, jak vygenerovat ID klienta a tajný kód naleznete následující informace podle potřeby:
 
+    - [Nastavení OAuth pro Madrid](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavení OAuth pro Londýn](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavení OAuth pro Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavení OAuth pro Jakarta](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615017"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257581"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Zařízení ověřování pomocí certifikátů X.509 certifikační Autority
 
@@ -40,7 +40,7 @@ Pro produkční prostředí doporučujeme vám zakoupit od certifikační autori
 
 Můžete také vytvořit podepsaný svým držitelem CA X.509 pro experimentování ve službě nebo pro použití v uzavřené sítím IoT.
 
-Bez ohledu na to toho, jak získat certifikát X.509 CA, zajistěte její odpovídající privátní klíč tajný kód a chráněný neustále.  To je nezbytné pro důvěryhodnost budování důvěry ověřování X.509 certifikační Autority.
+Bez ohledu na to toho, jak získat certifikát X.509 CA, zajistěte její odpovídající privátní klíč tajný klíč a chráněné neustále.  To je nezbytné pro důvěryhodnost budování důvěry ověřování X.509 certifikační Autority.
 
 Zjistěte, jak [vytvořit certifikát podepsaný svým držitelem certifikační Autority](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), který můžete použít pro služby experimentování ve službě v průběhu tohoto popisu funkce.
 

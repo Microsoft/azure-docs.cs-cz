@@ -5,15 +5,15 @@ services: event-hubs
 author: sethmanheim
 ms.service: event-hubs
 ms.topic: include
-ms.date: 02/26/2018
-ms.author: sethm
+ms.date: 05/22/2019
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38f7dd6eb1c4965eca003e5ba337ec5912a53420
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 3f3b60c3744ce9dea61054b3fa0aaccfea27d784
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148236"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238265"
 ---
 Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách služby Event Hubs najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -31,3 +31,19 @@ Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hub
 | Maximální počet jednotek propustnosti |Obor názvů |Překročení omezení jednotek propustnosti způsobí, že se data omezí a generuje [výjimka zaneprázdněný server](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Chcete-li požádat o větší počet jednotek propustnosti úrovně Standard, souborů [žádost o podporu](/azure/azure-supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na základě potvrzení nákupu. |20 |
 | Počet ověřovacích pravidel na obor názvů |Obor názvů|Odeslání dalších žádostí o vytvoření pravidla autorizace odmítají.|12 |
 | Počet volání getruntimeinformation – metoda | Entita | - | 50 za sekundu | 
+
+### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated - kvóty a omezení
+Event hubs úrovně Dedicated nabídka se účtuje za pevnou měsíční cenu s minimálně 4 hodin využití. Vyhrazené úroveň nabízí všechny funkce plánu Standard, ale s enterprise škálování kapacity a omezení pro zákazníky s náročné úlohy. 
+
+| Funkce | Limits |
+| --- | ---|
+| Šířka pásma |  20 kapacitní jednotky |
+| Obory názvů | 50 na kapacitní jednotku |
+| Event Hubs |  Není nijak omezena event hubs a témat |
+| Události příchozího přenosu dat | Zahrnuje |
+| Velikost zprávy | 1 milion bajtů |
+| Oddíly | 2000 na kapacitní jednotku |
+| Skupiny příjemců | Bez omezení na kapacitní jednotku, 1 000 na Centrum událostí |
+| Zprostředkovaná připojení | 100 tisíc v základu |
+| Uchovávání zpráv | 90 dnů, 10 TB, které jsou zahrnuty na kapacitní jednotku |
+| Zachycování | Zahrnuje |

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1db16475224cc3c91a5353ead0aabd091098e14
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60936332"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240360"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
@@ -132,7 +132,7 @@ V případech, kdy nejde používat nástroje, vám při odhadování, jestli je
 
 ### <a name="elastic-jobs-and-elastic-pools"></a>Elastické úlohy a elastických fondů
 
-U fondu jsou úlohy správy zjednodušené díky spouštění skriptů v **[elastických úlohách](sql-database-elastic-jobs-overview.md)**. Elastická úloha eliminuje většinu únavných úkolů spojených s velkým počtem databází. Pro začátek si přečtěte téma [Začínáme s elastickými úlohami](sql-database-elastic-jobs-getting-started.md).
+U fondu jsou úlohy správy zjednodušené díky spouštění skriptů v **[elastických úlohách](elastic-jobs-overview.md)** . Elastická úloha eliminuje většinu únavných úkolů spojených s velkým počtem databází.
 
 Další informace o ostatních databázových nástrojích pro práci s více databázemi najdete v tématu [Horizontální navýšení kapacity se službou Azure SQL Database](sql-database-elastic-scale-introduction.md).
 

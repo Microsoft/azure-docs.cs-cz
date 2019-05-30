@@ -2,20 +2,30 @@
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 08/23/2018
+ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: 505eac0996129a17b6b68e8ab4ea2d4fc80fd473
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 63c54f8af91b6b4a76ba49d5e6fc7b3cda9f5b98
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140989"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240323"
 ---
-1. Navštivte [Azure Portal]. Klikněte na **Procházet vše** > **Mobilní aplikace** > prostředí back-end, které jste právě vytvořili. V nastavení mobilní aplikace klikněte na **Rychlý start** > **Android**. V části **Configure your client application** (Konfigurace klientské aplikace) klikněte na **Stáhnout**. Tím stáhnete dokončený projekt Android pro aplikaci přednastavenou k připojení k vašemu prostředí back-end. 
-2. Otevřete projekt v **Android Studiu** pomocí možnosti **Importovat projekt (Eclipse ADT, Gradle atd.)**. Nezapomeňte vybrat tuto možnost importu, abyste se vyhnuli případným chybám JDK.
-3. Stisknutím tlačítka **Spustit aplikaci** sestavíte projekt a spustíte aplikaci v simulátoru Androidu.
-4. V aplikaci zadejte smysluplný text, třeba *Dokončit kurz*, a klikněte na tlačítko Přidat. Tím odešlete do prostředí back-end v Azure, které jste předtím vytvořili, požadavek POST. Back-end vloží data z požadavku do tabulky SQL TodoItem a vrátí informace o nově uložených položkách do mobilní aplikace. Mobilní aplikace zobrazí tato data v seznamu. 
-   
-    ![](./media/app-service-mobile-android-quickstart/mobile-quickstart-startup-android.png)
+1. Otevřete projekt v **Android Studiu** pomocí možnosti **Importovat projekt (Eclipse ADT, Gradle atd.)** . Nezapomeňte vybrat tuto možnost importu, abyste se vyhnuli případným chybám JDK.
 
-[Azure Portal]: https://portal.azure.com/
+2. Otevřete soubor `ToDoActivity.java` v této složce - ZUMOAPPNAME/aplikace/src/main/java/com/příklad/zumoappname. Název aplikace je `ZUMOAPPNAME`.
+
+3. Přejděte [webu Azure portal](https://portal.azure.com/) a přejděte do mobilní aplikace, kterou jste vytvořili. Na `Overview` okno Vyhledat adresu URL, které je veřejný koncový bod pro mobilní aplikace. Například - sitename pro Moje aplikace název "test123" bude https://test123.azurewebsites.net.
+
+4. V `onCreate()` metoda, nahraďte `ZUMOAPPURL` parametr s veřejným koncovým bodem výše.
+    
+    `new MobileServiceClient("ZUMOAPPURL", this).withFilter(new ProgressFilter());` 
+    
+    změní
+    
+    `new MobileServiceClient("https://test123.azurewebsites.net", this).withFilter(new ProgressFilter());`
+    
+5. Stisknutím tlačítka **Spustit aplikaci** sestavíte projekt a spustíte aplikaci v simulátoru Androidu.
+
+4. V aplikaci zadejte smysluplný text, třeba *Dokončit kurz*, a klikněte na tlačítko Přidat. Tím odešlete do prostředí back-end v Azure, které jste předtím vytvořili, požadavek POST. Back-end vloží data z požadavku do tabulky SQL TodoItem a vrátí informace o nově uložených položkách do mobilní aplikace. Mobilní aplikace zobrazí tato data v seznamu.
+    ![Rychlý start s Androidem](./media/app-service-mobile-android-quickstart/mobile-quickstart-startup-android.png)
