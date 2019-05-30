@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: f311216182f85da3dd6cf01269062cc9c555f868
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69624f7383b37b9d23f3fb8879f804e7169c1c29
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736985"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384561"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity REST API služby Search pomocí PHP
 
@@ -153,4 +153,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je API pro vyhledávání entit Bingu?](../overview.md )
-* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

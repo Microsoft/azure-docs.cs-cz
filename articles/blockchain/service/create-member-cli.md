@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: e1b7558ea83c8948a8984215e15040e4d929cb1b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4589a9de4c2a8fa43e4e653d4447c7a7715a6e42
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141386"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399947"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Rychlý start: Vytvořit člena blockchain služba Blockchain v Azure pomocí Azure CLI
 
@@ -39,58 +39,25 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-blockchain-member"></a>Vytvoření blockchainové členu
+## <a name="create-a-blockchain-member"></a>Vytvoření člena blockchainu
 
-Vytvořte člena blockchain v Azure Blockchain Service, na kterém běží hlavní knihy protokol kvora v nové consortium.
+Vytvořte člena blockchain v Azure Blockchain Service, na kterém běží hlavní knihy protokol kvora v nové consortium. Existuje několik parametry a vlastnosti, které je potřeba předat. Nahraďte parametry příklad s vašimi hodnotami.
 
-Existuje několik parametry a vlastnosti, které je potřeba předat. Nahraďte hodnoty následujících parametrů.
+```azurecli-interactive
+az resource create --resource-group myResourceGroup --name myblockchainmember --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"eastus\", \"properties\": {\"password\": \"strongMemberAccountPassword@1\", \"protocol\": \"Quorum\", \"consortium\": \"myConsortiumName\", \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\" }, \"sku\": { \"name\": \"S0\" } }"
+```
 
 | Parametr | Popis |
 |---------|-------------|
 | **resource-group** | Název skupiny prostředků, ve kterém jsou vytvořeny prostředky služeb Azure Blockchain. Použijte skupinu prostředků, kterou jste vytvořili v předchozí části.
 | **name** | Jedinečný název, který identifikuje vaši službu Azure Blockchain blockchain člena. Název se používá pro adresu veřejný koncový bod. Například, `myblockchainmember.blockchain.azure.com`.
 | **location** | Oblasti Azure, ve kterém je vytvořena blockchain člena. Například, `eastus`. Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
-| **Heslo** | Heslo účtu člena. Člen heslo účtu se používá k ověření na člen blockchain veřejný koncový bod pomocí základního ověřování.
+| **Heslo** | Heslo pro členy programu výchozí transakce uzel. Při připojování k blockchainu člen výchozí transakce uzel veřejný koncový bod, použijte heslo pro základní ověřování.
 | **consortium** | Název consortium připojit nebo vytvořit.
-| **consortiumManagementAccountPassword** | Heslo pro správu consortium. Používá se pro připojení k konsorcium.
+| **consortiumAccountPassword** | Heslo účtu consortium je označované také jako člen heslo účtu. Člen heslo účtu se používá k šifrování privátního klíče pro Etherea účtu, který je vytvořen pro vaše člena. Členský účet a heslo účtu člen používáte pro správu consortium.
 | **skuName** | Typ vrstvy. Použijte S0 Standard a B0 Basic.
 
-```azurecli-interactive
-az resource create --resource-group myResourceGroup --name myblockchainmember --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"eastus\", \"properties\": {\"password\": \"strongMemberAccountPassword@1\", \"protocol\": \"Quorum\", \"consortium\": \"myConsortiumName\", \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\" }, \"sku\": { \"name\": \"S0\" } }"
-```
-
 Vytvoření člen blockchain a podpůrných prostředků trvá asi 10 minut.
-
-Následující příklad výstupu ukazuje úspěšného operace vytvoření.
-
-```json
-{
-  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/mymembername",
-  "kind": null,
-  "location": "eastus",
-  "name": "mymembername",
-  "properties": {
-    "ConsortiumMemberDisplayName": "mymembername",
-    "consortium": "myConsortiumName",
-    "consortiumManagementAccountAddress": "0xfe5fbb9d1036298abf415282f52397ade5d5beef",
-    "consortiumManagementAccountPassword": null,
-    "consortiumRole": "ADMIN",
-    "dns": "mymembername.blockchain.azure.com",
-    "protocol": "Quorum",
-    "provisioningState": "Succeeded",
-    "userName": "mymembername",
-    "validatorNodesSku": {
-      "capacity": 2
-    }
-  },
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "S0",
-    "tier": "Standard"
-  },
-  "type": "Microsoft.Blockchain/blockchainMembers"
-}
-```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

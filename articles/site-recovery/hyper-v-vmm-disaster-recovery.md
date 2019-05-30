@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cccfc3d028cb2da9346e629a5aca080bedd7fee9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62124141"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66398411"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii do sekundární místní lokality pro virtuální počítače Hyper-V
 
@@ -116,14 +116,14 @@ Vyberte cílový server VMM a cloud:
 1. Klikněte na **Připravit infrastrukturu** > **Cíl** a vyberte cílový server VMM.
 2. Zobrazí se cloudy VMM synchronizované se Site Recovery. Vyberte cílový cloud.
 
-   ![Cíl](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Target](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
 Než začnete, ujistěte se, že všichni hostitelé, na které se zásada vztahuje, používají stejný operační systém. Pokud hostitelé používají různé verze Windows Serveru, budete potřebovat několik zásad replikace.
 
-1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Připravit infrastrukturu** > **Nastavení replikace** > **+Vytvořit a přidružit**.
+1. Pokud chcete vytvořit novou zásadu replikace, klikněte na **Připravit infrastrukturu** > **Nastavení replikace** >  **+Vytvořit a přidružit**.
 2. V části **Vytvořit a přidružit zásady** zadejte název zásady. Typ zdroje i cíle musí být **Hyper-V**.
 3. V poli **Verze hostitele Hyper-V** vyberte, který operační systém běží na hostiteli.
 4. V polích **Typ ověřování** a **Port ověřování** určete, jak se ověřuje provoz mezi primárním hostitelským serverem Hyper-V a hostitelským serverem Hyper-V pro obnovení.

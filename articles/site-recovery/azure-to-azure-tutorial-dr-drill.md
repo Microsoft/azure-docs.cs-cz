@@ -2,20 +2,19 @@
 title: Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí služby Azure Site Recovery
 description: Zjistěte, jak spustit postup zotavení po havárii pro virtuální počítače Azure IaaS do sekundární oblasti Azure pomocí služby Azure Site Recovery.
 services: site-recovery
-author: rockboyfor
-manager: digimobile
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-origin.date: 04/08/2019
-ms.date: 04/22/2019
-ms.author: v-yeche
+ms.date: 05/30/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 16c791287cc50b5ac8992a86f6de1e3eeb5e329e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d058282a9e903b37505f2a762d4264efbbec3a5a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552939"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399505"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -34,6 +33,7 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 
 - Před spuštěním testovacího převzetí služeb při selhání doporučujeme ověřit vlastnosti virtuálního počítače, abyste se ujistili, že je vše tak, jak má být.  Přejděte k vlastnostem virtuálního počítače v části **Replikované položky**. V okně **Základy** se zobrazí informace o nastavení a stavu počítačů.
 - **Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure**, a ne výchozí síť, kterou jste nastavili při povolování replikace.
+
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 
@@ -55,6 +55,3 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 
 > [!div class="nextstepaction"]
 > [Spuštění produkčního převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md)
-
-<!-- Update_Description: update meta properties -->
-

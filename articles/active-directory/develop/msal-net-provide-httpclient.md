@@ -17,15 +17,15 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c9d0724021017ec8c411d637420b05284ea52
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 72ab8a85ecc5649352382469e09d7dfd83a5ddfa
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544164"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305728"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>Poskytování vlastních proxy pomocí MSAL.NET a HttpClient
-Při inicializaci aplikace veřejným klientem, můžete použít `.WithHttpClientFactory method` poskytnout vlastní HttpClient.  Poskytuje vlastní HttpClient umožňuje pokročilé scénáře takové velice přesně kontrolovat proxy serveru HTTP, přizpůsobení záhlaví uživatelského agenta nebo vynucení MSAL používat konkrétní HttpClient (například v ASP.NET Core webová aplikace/rozhraní API).
+Když [inicializace aplikace veřejným klientem](msal-net-initializing-client-applications.md), můžete použít `.WithHttpClientFactory method` poskytnout vlastní HttpClient.  Poskytuje vlastní HttpClient umožňuje pokročilé scénáře takové velice přesně kontrolovat proxy serveru HTTP, přizpůsobení záhlaví uživatelského agenta nebo vynucení MSAL používat konkrétní HttpClient (například v ASP.NET Core webová aplikace/rozhraní API).
 
 ## <a name="initialize-with-httpclientfactory"></a>Inicializace s HttpClientFactory
 Následující příklad ukazuje, jak vytvořit `HttpClientFactory` , kterou následně inicializujete veřejné klientské aplikace s ní:

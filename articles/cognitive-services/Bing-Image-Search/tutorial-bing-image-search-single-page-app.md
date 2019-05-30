@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913229"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383402"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -116,7 +116,7 @@ Ve výchozím nastavení obslužná rutina `onsubmit` vrátí `false`, což zabr
 
 ![[Formulář Bingu pro vyhledávání obrázků]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
+Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
 
 |              |                                                                                                                                                                                    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

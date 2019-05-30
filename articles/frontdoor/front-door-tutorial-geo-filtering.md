@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: c04a9dff55794a3e48146e8effc3627452b3db14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f2b5a2bc3248c9f2ee0eb49e993fd55c7714367a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950165"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389156"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Jak nastavit zásadu geografické filtrování WAF pro vaše branou
 V tomto kurzu se dozvíte, jak pomocí Azure PowerShellu vytvořit ukázkovou zásadu geografického filtrování a přidružit ji k existujícímu hostiteli front-endu služby Front Door. Tato ukázka geografické filtrování zásada bude blokovat požadavky ze všech jiných zemích nebo oblastech s výjimkou Spojených států.
@@ -110,6 +110,5 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > Stačí nastavit vlastnost WebApplicationFirewallPolicyLink jednou propojení zásadu WAF pro hostování front-endu branou. Další zásady aktualizace automaticky nainstalují do hostitele front-endu.
 
 ## <a name="next-steps"></a>Další postup
-
-- Přečtěte si o [zabezpečení aplikační vrstvy pomocí služby Front Door](front-door-application-security.md).
+- Další informace o [firewallu webových aplikací](waf-overview.md).
 - Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).

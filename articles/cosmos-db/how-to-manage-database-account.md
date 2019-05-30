@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 07d177987db1dea261520e8ee2543d871d552acb
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: abd50f4e2ca08bea2af491f4b3991278a6dc3b5e
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240893"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399892"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu Azure Cosmos
 
 Tento článek popisuje, jak spravovat různé úlohy na účtu služby Azure Cosmos pomocí webu Azure portal, prostředí Azure PowerShell, Azure CLI a šablon Azure Resource Manageru.
 
-## <a name="create-an-account"></a>Vytvořit účet
+## <a name="create-an-account"></a>Vytvoření účtu
 
 ### <a id="create-database-account-via-portal"></a>Azure Portal
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ### <a id="create-database-account-via-ps"></a>Azure PowerShell
 ```azurepowershell-interactive
-# Create an Azure Cosmos Account for Core (SQL) API
+# Create an Azure Cosmos account for Core (SQL) API
 $resourceGroupName = "myResourceGroup"
 $location = "West US"
 $accountName = "mycosmosaccount" # must be lower case.
@@ -71,7 +71,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manageru
 
-Tuto šablonu Azure Resource Manageru vytvoří účet služby Azure Cosmos DB pro všechny podporované rozhraní API nakonfigurovat dvě oblasti a v možnostech úrovně konzistence, automatické převzetí služeb při selhání a více hlavních databází. Chcete-li nasadit tuto šablonu, klikněte na nasadit do Azure na stránce readme [účet vytvořit službu Azure Cosmos DB](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
+Tuto šablonu Azure Resource Manageru se vytvoření účtu služby Azure Cosmos pro všechny podporované rozhraní API nakonfigurovat dvě oblasti a v možnostech úrovně konzistence, automatické převzetí služeb při selhání a více hlavních databází. Chcete-li nasadit tuto šablonu, klikněte na nasadit do Azure na stránce readme [účet služby Azure Cosmos vytvářet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Přidání oblastí do účtu databáze nebo jejich odebrání
 
@@ -185,7 +185,7 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName --ena
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
 ```azurepowershell-interactive
-# Update an Azure Cosmos Account from single to multi-master
+# Update an Azure Cosmos account from single to multi-master
 
 $account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
@@ -200,7 +200,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-arm"></a>Šablona Resource Manageru
 
-Účet můžete migrovat z jednoho hlavní větve do více hlavních databází nasazením šablona Resource Manageru použitá k vytvoření účtu a nastavení `enableMultipleWriteLocations: true`. Následující šablony Azure Resource Manageru je úplné minimální šablonu, která nasadí účet služby Azure Cosmos DB pro rozhraní SQL API s jedné oblasti a více hlavních databází povolena.
+Účet můžete migrovat z jednoho hlavní větve do více hlavních databází nasazením šablona Resource Manageru použitá k vytvoření účtu a nastavení `enableMultipleWriteLocations: true`. Následující šablony Azure Resource Manageru je úplné minimální šablonu, která nasadí účet Azure Cosmos pro rozhraní SQL API s jedné oblasti a více hlavních databází povolena.
 
 ```json
 {
@@ -239,13 +239,13 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 }
 ```
 
-## <a id="automatic-failover"></a>Povolit automatické převzetí služeb při selhání pro váš účet Azure Cosmos DB
+## <a id="automatic-failover"></a>Povolit automatické převzetí služeb při selhání pro váš účet Azure Cosmos
 
 Možnost automatického převzetí služeb při selhání umožňuje službě Azure Cosmos DB převzetí služeb při selhání do oblasti s nejvyšší prioritou převzetí služeb při selhání se žádné akce uživatele by měla oblast k dispozici. Pokud je povoleno automatické převzetí služeb při selhání, může být upraveno priority oblasti. Účet musí mít dva nebo více oblastí, které chcete povolit automatické převzetí služeb při selhání.
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Z vašeho účtu služby Azure Cosmos DB, otevřete **globální replikace dat** podokně.
+1. Ze svého účtu Azure Cosmos, otevřete **globální replikace dat** podokně.
 
 2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
 
@@ -344,7 +344,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 Součástí procesu pro ruční převzetí služeb při selhání je změna oblasti zápisu na účet (priority převzetí služeb při selhání = 0) do jiné oblasti, které jsou nakonfigurované pro účet.
 
 > [!NOTE]
-> Účty s několika hlavními databázemi nelze převzít ručně. Pro aplikace pomocí sady SDK služby Azure Cosmos DB bude sada SDK rozpoznat, kdy se oblast stane nedostupnou, potom automaticky přesměrovat na další nejbližší oblasti, pokud používáte vícenásobné navádění rozhraní API v sadě SDK.
+> Účty s několika hlavními databázemi nelze převzít ručně. Pro aplikace pomocí sady SDK služby Azure Cosmos bude sada SDK rozpoznat, kdy se oblast stane nedostupnou, potom automaticky přesměrovat na další nejbližší oblasti, pokud používáte vícenásobné navádění rozhraní API v sadě SDK.
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 

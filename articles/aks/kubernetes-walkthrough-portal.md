@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ad93df6d628c91cddcf8e0a51c6ea11991e7b024
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c43375afe7965475e84793ddcd54a38a2e9bd3cd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465212"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073722"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí webu Azure portal
 
@@ -226,7 +226,7 @@ Naplnění těchto dat na webu Azure Portal může trvat několik minut. Pokud c
 
 1. V části **monitorování** na levé straně zvolte **Insights**
 1. V horní části zvolte **+ Přidat filtr**
-1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>*.
+1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>* .
 1. Vyberte zobrazení **Kontejnery**.
 
 Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:

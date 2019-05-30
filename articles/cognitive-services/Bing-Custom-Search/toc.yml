@@ -62,13 +62,13 @@
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní API pro vlastní automatické návrhy Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference'
     - name: Referenční informace k rozhraní API pro vlastní vyhledávání obrázků Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference'
     - name: Referenční informace k rozhraní API pro vlastní vyhledávání Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference'
     - name: Referenční informace k rozhraní API pro vlastní vyhledávání videí Bingu
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference'
     - name: Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true

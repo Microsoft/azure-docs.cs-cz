@@ -45,6 +45,8 @@
       href: security-center-onboarding.md
     - name: Ochrana serveru pomocí Ochrany ATP v programu Windows Defender
       href: security-center-wdatp.md
+    - name: Pokročilé zabezpečení dat pro IaaS
+      href: security-center-iaas-advanced-data.md
     - name: Ochrana služby App Service
       href: security-center-app-services.md
     - name: Práce se zásadami zabezpečení
@@ -62,8 +64,6 @@
       items:
         - name: Shromažďování dat
           href: security-center-enable-data-collection.md
-        - name: Pokročilé zabezpečení dat pro IaaS
-          href: security-center-iaas-advanced-data.md
         - name: Předdefinované zásady zabezpečení
           href: security-center-policy-definitions.md
         - name: E-mailová oznámení

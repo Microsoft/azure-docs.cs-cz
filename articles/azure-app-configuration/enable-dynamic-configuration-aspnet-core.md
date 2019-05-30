@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 9cbdfe957587977b01bc46b46818856f789f46d8
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518991"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393621"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: Použít dynamické konfiguraci aplikace ASP.NET Core
 
@@ -167,11 +167,11 @@ V tomto kurzu provedete instalaci [.NET Core SDK](https://dotnet.microsoft.com/d
 
     ![Místní spuštění aplikace rychlý start](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Přihlaste se k webu [Azure Portal](https://aka.ms/azconfig/portal). Vyberte **všechny prostředky**a vyberte instance aplikace, který konfigurace úložiště, který jste vytvořili v tomto rychlém startu.
+4. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instance aplikace, který konfigurace úložiště, který jste vytvořili v tomto rychlém startu.
 
 5. Vyberte **Průzkumník konfigurací**a aktualizujte hodnoty následujících klíčů:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
     | TestAppSettings:BackgroundColor | green |
     | TestAppSettings:FontColor | lightGray |

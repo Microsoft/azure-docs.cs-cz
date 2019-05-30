@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 17003864c7bcc5f8be6acf17d40ce2039f031313
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: dfe4f226302b6bb6a010d9d4348fde05b2d31193
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823248"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356940"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý start: Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
 
@@ -90,6 +90,10 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
 
 Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
+> [!NOTE]
+> Pokud dotaz nevrátí žádné výsledky z předplatného už máte přístup, pak Všimněte si, že `Search-AzGraph` výchozí nastavení rutiny pro předplatná ve výchozím kontextu. Zobrazí seznam předplatné ID, které jsou součástí výchozí kontext spustit `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Pokud chcete hledat ve všech předplatných, kterým máte přístup, jeden nastavit PSDefaultParameterValues pro `Search-AzGraph' cmdlet by running 
+> `$PSDefaultParameterValues = @{" Search – AzGraph:Subscription "= $(Get-AzSubscription) .ID}.
+   
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud chcete odebrat modul Resource Graph z prostředí Azure PowerShell, můžete tak provést pomocí následujícího příkazu:

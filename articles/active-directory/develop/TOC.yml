@@ -297,6 +297,8 @@
           items:
             - name: Aplikace a instanční objekty
               href: app-objects-and-service-principals.md
+            - name: Jak a proč se aplikace přidávají do Azure AD
+              href: active-directory-how-applications-are-added.md
             - name: Aplikace s jedním a více tenanty
               href: single-and-multi-tenant-apps.md
         - name: Oprávnění a souhlas

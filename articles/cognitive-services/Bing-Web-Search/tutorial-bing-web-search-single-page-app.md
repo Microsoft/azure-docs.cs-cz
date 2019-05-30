@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798333"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390045"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API webové vyhledávání Bingu
 
@@ -80,7 +80,7 @@ Tento kurz se zaměřuje na `scripts.js` a logiku potřebnou k volání rozhran�
 
 ## <a name="query-options"></a>Možnosti proxy
 
-Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters). Tato tabulka obsahuje podrobný přehled, jak můžou uživatelé filtrovat výsledky hledání pomocí ukázkové aplikace:
+Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters). Tato tabulka obsahuje podrobný přehled, jak můžou uživatelé filtrovat výsledky hledání pomocí ukázkové aplikace:
 
 | Parametr | Popis |
 |-----------|-------------|
@@ -93,7 +93,7 @@ Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [ro
 | `offset` | Skryté pole. Odsazení prvního výsledku hledání v žádosti, které slouží ke stránkování. S každou novou žádostí se hodnota resetuje na `0`. |
 
 > [!NOTE]
-> Rozhraní API Bingu pro vyhledávání na webu nabízí další parametry dotazu umožňující zpřesnit výsledky hledání. Tato ukázka jich používá jenom pár. Úplný seznam dostupných parametrů najdete v tématu s [referenční dokumentací k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters).
+> Rozhraní API Bingu pro vyhledávání na webu nabízí další parametry dotazu umožňující zpřesnit výsledky hledání. Tato ukázka jich používá jenom pár. Úplný seznam dostupných parametrů najdete v tématu s [referenční dokumentací k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
 
 Funkce `bingSearchOptions()` převede tyto možnosti tak, aby odpovídaly formátu, který vyžaduje rozhraní API Bingu pro vyhledávání.
 

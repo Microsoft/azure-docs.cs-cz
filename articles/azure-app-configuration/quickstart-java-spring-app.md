@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408567"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393554"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Rychlý start: Vytvoření aplikace Java Spring pomocí konfigurace aplikace
 
@@ -29,7 +29,7 @@ Provést kroky v tomto rychlém startu můžete použít libovolný editor kódu
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu provedete instalaci podporované [Java Development Kit (JDK)](https://aka.ms/azure-jdks) verze 8 a [Apache Maven](https://maven.apache.org/) verze 3.0 nebo vyšší.
+V tomto rychlém startu provedete instalaci podporované [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) verze 8 a [Apache Maven](https://maven.apache.org/) verze 3.0 nebo vyšší.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,11 +37,11 @@ V tomto rychlém startu provedete instalaci podporované [Java Development Kit (
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník konfigurací** > **+ vytvořit** přidáte následující páry klíč hodnota:
+6. Vyberte **Průzkumník konfigurací** >  **+ vytvořit** přidáte následující páry klíč hodnota:
 
-    | Klíč | Value |
+    | Klíč | Hodnota |
     |---|---|
-    | /Application/config.Message | Vítejte |
+    | /Application/config.Message | Dobrý den, |
 
     Ponechte **popisek** a **typ obsahu** zatím prázdný.
 

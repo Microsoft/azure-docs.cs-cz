@@ -4,19 +4,19 @@ description: Seznamte se s Azure čas Series Insights ve verzi Preview ukázkov�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 04/22/2019
-ms.openlocfilehash: dbdbfc797d37ed38936d6cfd354383d412c6b52d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e35d46607e0a186c8a3a38669c68a6ea52711b51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205825"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242088"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý start: Prozkoumejte Azure čas Series Insights ve verzi Preview ukázkovém prostředí
 
@@ -40,14 +40,14 @@ Průzkumník čas Series Insights ve verzi Preview demonstruje historických dat
 
 1. Podívejte se na větrné turbíny **W7** v **1 zařízení Contoso**.  
 
-    * Aktualizace zobrazení rozsahu na **1/1/17 20:00 do 3/10/17 20:00 (UTC)**.
+    * Aktualizace zobrazení rozsahu na **1/1/17 20:00 do 3/10/17 20:00 (UTC)** .
     * Vyberte **Contoso zařízení 1** > **W7** > **generátor systému** > **GeneratorSpeed** senzor. Pak zkontrolujte výsledné hodnoty.
 
       [![W7 v závodě Contoso 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
 
 1. Contoso nedávno, najdete je v větrné turbíny **W7**. Názory liší o co blízkém požár příčina. Při kontrole podrobněji vidíme, že senzor fire výstrahy se aktivovala během ohně.
 
-    * Aktualizace zobrazení rozsahu na **3/9/17 20:00 do 3/10/17 20:00 (UTC)**.
+    * Aktualizace zobrazení rozsahu na **3/9/17 20:00 do 3/10/17 20:00 (UTC)** .
     * Vyberte **bezpečnost systému** > **FireAlert** senzoru.
 
       [![Contoso je součástí větrné turbíny W7](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
@@ -61,7 +61,7 @@ Průzkumník čas Series Insights ve verzi Preview demonstruje historických dat
 
 1. Přetížení ropy a aktivní upozornění senzorů vnímal špičku těsně před ohně. Rozbalte zobrazené časové řady zobrazíte další příznaky k dispozici vedoucí k ohně. Obě senzorů pohyboval konzistentně časem označující trvalé a znepokojující vzor.
 
-    * Aktualizace zobrazení rozsahu na **2/24/17 20:00 do 3/10/17 20:00 (UTC)**.
+    * Aktualizace zobrazení rozsahu na **2/24/17 20:00 do 3/10/17 20:00 (UTC)** .
 
       [![Ropa tlaku a také vnímal špičku aktivní upozornění senzorů](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
 
@@ -82,7 +82,7 @@ Pomocí Azure Time Series Insights a naše telemetrie ze senzorů, jsme přišli
 
 1. Některé scénáře vyžadují sofistikované analýzy odhalit další drobným příčiny v datech. Vyberte windmill **W6** datu **25. ledna 6**
 
-    * Aktualizace zobrazení rozsahu na **6/1/17 20:00 do 7/1/17 20:00 (UTC)**.
+    * Aktualizace zobrazení rozsahu na **6/1/17 20:00 do 7/1/17 20:00 (UTC)** .
     * Vyberte **1 zařízení Contoso** > **W6** > **bezpečnost systému** > **VoltageActuatorSwitchWarning**  senzoru.
 
       [![Aktualizovat rozsah zobrazení a vyberte W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)

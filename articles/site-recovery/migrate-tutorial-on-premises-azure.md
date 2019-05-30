@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df4f89bd1b2e3c0423f5d758cfa637e4da9e04d0
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193893"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66396530"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -118,7 +118,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 > [!WARNING]
 > **Nepřerušujte převzetí služeb při selhání v průběhu**: Před spuštěním převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
 
-V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího trvání testovacího převzetí služeb při selhání u fyzických serverů, počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolenou službu DHCP, a virtuálních počítačů VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
+V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Můžete si všimnout už testovacího převzetí služeb při selhání u fyzických serverů, počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolené služba DHCP a virtuální počítače VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
 
 ## <a name="after-migration"></a>Po migraci
 
@@ -159,7 +159,7 @@ Některé kroky se dají automatizovat jako součást migračního procesu pomoc
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Ihned
+V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Nyní
 
 > [!div class="nextstepaction"]
 > [Nastavení zotavení po havárii](azure-to-azure-replicate-after-migration.md) do sekundární oblasti Azure pro virtuální počítače Azure.

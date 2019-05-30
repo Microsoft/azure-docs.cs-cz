@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 01/03/2019
+ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e8a68ca87307e1265c200f2e05464ff87983c1e6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788028"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258409"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -68,8 +68,8 @@ Počet řešení existují pro migraci existujících dat do úložiště objekt
 - **Knihovna pro přesun dat úložiště Azure** je knihovna .NET pro přesun dat mezi službami Azure Storage. Knihovna pro přesun dat je sestavován nástroj AzCopy. Další informace najdete v tématu [referenční dokumentaci](/dotnet/api/microsoft.azure.storage.datamovement) pro přesun dat knihovny. 
 - **Azure Data Factory** podporuje kopírování dat do a z úložiště objektů Blob s použitím klíče účtu, sdílený přístupový podpis službu objektu zabezpečení nebo spravovaných identit pro ověřování prostředků Azure. Další informace najdete v tématu [kopírování dat do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 - **Blobfuse** je virtuálním souborovém systému ovladače pro úložiště objektů Blob v Azure. Blobfuse můžete použít pro přístup k existující data objektů blob bloku v účtu úložiště v systému Linux. Další informace najdete v tématu [postup připojení služby Blob storage jako systém souborů s blobfuse](storage-how-to-mount-container-linux.md).
-- **Azure Data Box Disk** je služba pro přenos místních dat do úložiště objektů Blob při velkých datových sad nebo síťovým omezením nahrávání dat při přenosu nereálný. Můžete využít [Azure Data Box Disk](../../databox/data-box-disk-overview.md) a vyžádat si od Microsoftu jednotky SSD (solid-state drive). Potom můžete data zkopírovat na tyto disky a odeslat je do Microsoftu, aby se nahrála do služby Blob Storage.
-- **Služba Azure Import/Export** poskytuje způsob, jak export velkých objemů dat z vašeho účtu úložiště do pevné disky, které zadáte, a dodává se pak vrátit k tomu se svými daty, které Microsoft. Další informace najdete v tématu [přenášet data do úložiště objektů Blob pomocí služby Microsoft Azure Import/Export](../common/storage-import-export-service.md).
+- **Azure Data Box** služba je k dispozici pro přenos místních dat do úložiště objektů Blob při velkých datových sad nebo síťovým omezením nahrávání dat při přenosu nereálný. V závislosti na velikost vašich dat, můžete požádat o [disku Azure Data Box](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md), nebo [Azure Data Box náročné](../../databox/data-box-heavy-overview.md) zařízení od Microsoftu. Můžete kopírovat data na těchto zařízeních a jejich odeslání zpět společnosti Microsoft k odeslání do úložiště objektů Blob.
+- **Služba Azure Import/Export** poskytuje způsob, jak importovat nebo exportovat velkých objemů dat do a z vašeho účtu úložiště pomocí pevných disků, které zadáte. Další informace najdete v tématu [přenášet data do úložiště objektů Blob pomocí služby Microsoft Azure Import/Export](../common/storage-import-export-service.md).
 
 ## <a name="next-steps"></a>Další postup
 

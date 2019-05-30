@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 51775c5534a13fb2515fafa182658beafd38c1eb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 357dc47027582d5c638bb3c7344c839f37f93dc5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026890"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399139"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Rychlý start: Vytvoření služby Azure Blockchain pomocí webu Azure portal
 
@@ -32,7 +32,7 @@ Služba Azure Blockchain se vytvoří s definovanou sadou výpočetních a úlo�
 1. Vyberte **Blockchain** > **služby Azure Blockchain**.
 1. Dokončení šablony.
 
-    ![Vytvořit službu](./media/create-member/create-member.png)
+    ![Vytvoření služby](./media/create-member/create-member.png)
 
     Nastavení | Popis
     --------|------------
@@ -40,11 +40,12 @@ Služba Azure Blockchain se vytvoří s definovanou sadou výpočetních a úlo�
     Předplatné | Vyberte předplatné Azure, kterou chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
     Oblast | Umístění musí být stejný pro všechny členy konsorcia.
-    Heslo účtu člena | Zadejte nové heslo pro členský účet. Člen heslo účtu se používá k ověření na člen blockchain veřejný koncový bod pomocí základního ověřování.
+    Heslo účtu člena | Člen heslo účtu se používá k šifrování privátního klíče pro Etherea účtu, který je vytvořen pro vaše člena. Členský účet a heslo účtu člen používáte pro správu consortium.
     Název W3C | Zadejte jedinečný název pro nový consortium. Pokud se zapojíte consortium prostřednictvím pozvánku, hodnota je consortium, ke které se připojujete.
     Popis | Popis konsorcia.
-    Protocol (Protokol) |  Ve verzi Preview podporuje protokol kvora.
+    Protocol |  Ve verzi Preview podporuje protokol kvora.
     Ceny | Konfigurace uzlu pro vaši novou službu. Vyberte **standardní**. 2 uzly program pro ověření a 1 transakci uzel je ve výchozím nastavení.
+    Transakce uzel heslo | Heslo pro členy programu výchozí transakce uzel. Při připojování k blockchainu člen výchozí transakce uzel veřejný koncový bod, použijte heslo pro základní ověřování.
 
 1. Vyberte **vytvořit** zřídit službu. Zřizování trvá asi 10 minut.
 1. Vyberte **oznámení** na panelu nástrojů, které chcete monitorovat proces nasazení.

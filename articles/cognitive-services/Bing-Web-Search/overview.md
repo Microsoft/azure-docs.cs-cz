@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 65e28b557a3708c155bf80f21a784374c4497783
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60648129"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383041"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Co je rozhraní API Bingu pro vyhledávání webu?
 
@@ -50,5 +50,5 @@ Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli pro
 
 * Podle našich [rychlých startů pro Python](quickstarts/python.md) poprvé zavolejte rozhraní API Bingu pro vyhledávání na webu.  
 * [Vytvořte jednostránkovou webovou aplikaci](tutorial-bing-web-search-single-page-app.md).
-* Prostudujte si [referenční dokumentaci k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
+* Prostudujte si [referenční dokumentaci k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).  
 * Přečtěte si další informace o [požadavcích na zobrazení a použití](UseAndDisplayRequirements.md) rozhraní API Bingu pro vyhledávání na webu.  

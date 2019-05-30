@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28785bb99dcdb767a64ae977e8326b80130fb135
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60447396"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240197"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
 
@@ -67,7 +67,7 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | Name | *mykustocluster* | Požadovaný název vašeho clusteru.|
+   | Název | *mykustocluster* | Požadovaný název vašeho clusteru.|
    | Skladová jednotka (SKU) | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
@@ -76,7 +76,7 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 1. Spusťte následující příkaz a zkontrolujte, zda byl úspěšně vytvořen cluster:
 
     ```azurepowershell-interactive
-    Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
+    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
 Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru byl úspěšně vytvořen.
@@ -92,7 +92,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | Název clusteru | *mykustocluster* | Název clusteru s novou databází.|
-   | Name | *mykustodatabase* | Název databáze.|
+   | Název | *mykustodatabase* | Název databáze.|
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
    | SoftDeletePeriod | *3650:00:00:00* | Množství času, které data zůstanou k dispozici pro dotazy. |
    | HotCachePeriod | *3650:00:00:00* | Množství času, které data zůstanou v mezipaměti. |
@@ -100,7 +100,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
 1. Spuštěním následujícího příkazu zobrazte databázi, kterou jste vytvořili:
 
     ```azurepowershell-interactive
-    Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase
+    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
     ```
 
 Teď máte cluster a databázi.

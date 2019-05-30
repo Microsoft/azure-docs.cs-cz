@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2019
+ms.date: 05/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589422"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225903"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -55,7 +55,7 @@ Resource Manager poskytuje několik výhod:
 
 Azure nabízí čtyři úrovně oborem správy: [skupin pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
-![Rozsah](./media/resource-group-overview/scope-levels.png)
+![Scope](./media/resource-group-overview/scope-levels.png)
 
 Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Například při použití [zásady](../governance/policy/overview.md) do předplatného, které zásady platí pro všechny skupiny prostředků a prostředků ve vašem předplatném. Při použití zásady na skupinu prostředků, zásady se použijí skupinu prostředků a všechny její prostředky. Jiné skupiny prostředků nemá přiřazení zásad.
 
@@ -91,7 +91,7 @@ Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat 
 
 Každý poskytovatel prostředků nabízí sadu prostředků a operací pro práci s těmito prostředky. Pokud například chcete ukládat klíče a tajné klíče, využijete poskytovatele prostředků **Microsoft.KeyVault**. Tento poskytovatel prostředků nabízí typ prostředků nazvaný **trezory** pro vytvoření trezoru klíčů.
 
-Název typu prostředku má formát: **{poskytovatel prostředku}/{typ prostředku}**. Typ prostředku pro trezor klíčů je **Microsoft.KeyVault/vaults**.
+Název typu prostředku má formát: **{poskytovatel prostředku}/{typ prostředku}** . Typ prostředku pro trezor klíčů je **Microsoft.KeyVault/vaults**.
 
 Než začnete nasazovat prostředky, měli byste získat přehled o dostupných poskytovatelích prostředků. Znalost názvů poskytovatelů prostředků a samotných prostředků vám umožní definovat prostředky, které chcete nasadit do Azure. Také je potřeba vědět platná umístění a verze rozhraní API pro každý typ prostředku. Další informace najdete v tématu [Zprostředkovatelé a typy prostředků](resource-manager-supported-services.md).
 
@@ -174,7 +174,21 @@ Po definování šablony jste připraveni k nasazení prostředků do Azure. Nas
 
 Při nasazení komplexní služby pro Azure, můžete potřebovat k nasazení služby do několika oblastí a zkontrolujte jeho stav, než budete pokračovat k dalšímu kroku. Použijte [Azure Deployment Manager](deployment-manager-overview.md) ke koordinaci postupného zavedení služby. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud nepotřebujete tato opatření, lepší volbou jsou operace nasazení v předchozím oddílu.
 
-Deployment Manager je momentálně ve verzi Private Preview.
+Deployment Manager je momentálně ve verzi Public Preview.
+
+## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manageru
+
+Azure Resource Manageru service je navržená pro zajištění odolnosti a nepřetržitou dostupnost. Resource Manager a prvek operacím roviny (žádosti odeslané management.azure.com) v rozhraní REST API jsou:
+
+* Distribuované napříč oblastmi. Některé služby jsou místní.
+
+* Distribuované napříč zónami dostupnosti (jako dobře oblastí) v umístění, které mají několika zónami dostupnosti.
+
+* Není závislá na jedné logické datové centrum.
+
+* Nikdy neobsadila pro činnosti údržby.
+
+Tato odolnost proti chybám se vztahuje na služby, které příjem požadavků prostřednictvím Resource Manageru. Například služby Key Vault těží z této odolnost proti chybám.
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

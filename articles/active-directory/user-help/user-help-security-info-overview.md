@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e471f447b0c50c9c65923d7135b2b48789728df
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8a200df2f474cead197a0e74ae7e27927f814d2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470697"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242278"
 ---
 # <a name="security-info-preview-overview"></a>Přehled bezpečnostních údajů (Preview)
 
@@ -28,7 +28,7 @@ ms.locfileid: "65470697"
 >[!Important]
 >Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
-## <a name="security-info-articles"></a>Články informace o zabezpečení
+## <a name="security-info-related-articles"></a>Články týkající se informace o zabezpečení
 
 Podrobné informace a pokyny k přidání aktualizaci a odstraňování bezpečnostních údajů, najdete v těchto článcích (založené na metodě, kterou chcete použít):
 

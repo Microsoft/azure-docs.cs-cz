@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408748"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393607"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 
@@ -27,7 +27,7 @@ Konfigurace aplikace pro Azure jsou uložena konfigurační data jako páry klí
 
 Klíče jako název pro páry klíč hodnota a umožňují ukládat a načítat hodnoty, které odpovídají. Běžnou praxí uspořádat klíče do hierarchického oboru názvů pomocí znaku oddělovače, jako je `/` nebo `:`. Použijte konvenci, která je nejvhodnější pro vaši aplikaci. Konfigurace aplikace zpracovává klíče jako celek. Ho nebude analyzovat klíče zjistit, jak jejich názvy jsou strukturované nebo vynucování libovolného pravidla na ně.
 
-Využití úložiště konfigurace v rámci aplikační architektury může určovat konkrétní pojmenování schémata pro hodnoty klíče. Jako příklad definuje jazyka Java Spring cloudem framework `Environment` prostředky, které určují nastavení aplikace Spring k být parametrizován proměnné, které zahrnují *název_aplikace* a *profilu*. Klíče pro Spring cloudem související konfigurační data obvykle začínat tyto dva prvky, které jsou oddělené oddělovačem.
+Použití konfiguračních dat v rámci aplikační architektury může diktovat konkrétní pojmenování schémata pro hodnoty klíče. Jako příklad definuje jazyka Java Spring cloudem framework `Environment` prostředky, které určují nastavení aplikace Spring k být parametrizován proměnné, které zahrnují *název_aplikace* a *profilu*. Klíče pro Spring cloudem související konfigurační data obvykle začínat tyto dva prvky, které jsou oddělené oddělovačem.
 
 Klíče uložené v konfiguraci aplikací jsou malá a velká písmena, na základě kódování unicode řetězce. Klíče *app1* a *App1* se liší v obchodě s aplikacemi konfigurace. Mějte to při použití nastavení konfigurace v rámci aplikace, protože některé architektury zpracovat konfigurační klíče ohled. Například systém konfigurace ASP.NET Core považuje za klíče nerozlišuje velikost písmen řetězců. Aby se zabránilo nepředvídatelné chování při dotazování konfigurace aplikací v rámci aplikace ASP.NET Core, nepoužívejte klíče, které se liší pouze malá a velká písmena.
 
@@ -86,7 +86,7 @@ Každá hodnota klíče je jednoznačně identifikují pomocí jeho klíče a po
 
 Můžete zahrnout také následující modely popisku:
 
-| Popisek | |
+| Štítek | |
 |---|---|
 | `label` je tento parametr vynechán nebo `label=*` | Odpovídá libovolný popisek, který obsahuje `null` |
 | `label=%00` | Odpovídá `null` popisek |

@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 33079303f7f2239b7de4d8a92e78acaf205bfbd5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444538"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236082"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
 
@@ -41,7 +41,7 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 
 1.  Přejděte ke kartě **Skupiny prostředků**. 
 2.  Vyberte **skupinu prostředků**, kterou jste pro **virtuální počítač s Windows** vytvořili. 
-3.  Na panelu vlevo přejděte na **Řízení přístupu (IAM)**. 
+3.  Na panelu vlevo přejděte na **Řízení přístupu (IAM)** . 
 4.  Potom **přidat přiřazení role** přiřazení nové role pro vaše **virtuálního počítače Windows**.  V poli **Role** zvolte **Čtenář**. 
 5.  V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte prostředek **Virtuální počítač**. 
 6.  Potom zkontrolujte, že je v rozevíracím seznamu **Předplatné** uvedené správné předplatné. A ve **skupině prostředků** vyberte **Všechny skupiny prostředků**. 

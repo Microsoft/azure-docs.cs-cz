@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f41e81d948bfa482a016e3770a705344f9c26b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60547400"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390439"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Rychlý start: Navrhnout vyhledávací dotazy pomocí REST API pro automatické návrhy Bingu a Javy.
 
@@ -44,7 +44,7 @@ Použití v tomto rychlém startu zahájíte provádění volání rozhraní API
     import com.google.gson.JsonParser;
     ```
 
-2. Vytváření proměnných pro váš klíč předplatného, rozhraní API hostitele a cestu, vaše [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz.
+2. Vytváření proměnných pro váš klíč předplatného, rozhraní API hostitele a cestu, vaše [uvedení na trh kód](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)a vyhledávací dotaz.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -207,4 +207,4 @@ public static String prettify(String json_text) {
 > [Vytvoření jednostránkové webové aplikace](../tutorials/autosuggest.md)
 
 - [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
-- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

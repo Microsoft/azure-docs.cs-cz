@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 6d2b9c8dd8fb89e201cff5155b1dec0857204752
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519238"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400055"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -109,9 +109,9 @@ Na stránce **Cíl ochrany** vyberete následující hodnoty:
 
 |    |  |
 |---------|-----------|
-| Kde jsou vaše počítače umístěné? |Vyberte možnost pro **místní řešení**.|
+| Kde se vaše počítače nachází? |Vyberte možnost pro **místní řešení**.|
 | Kam chcete své počítače replikovat? |Vyberte možnost **připojení k Azure**.|
-| Máte počítače ve virtuální podobě? |Vyberte **Nevirtualizované nebo jiné**.|
+| Jsou vaše počítače virtualizované? |Vyberte **Nevirtualizované nebo jiné**.|
 
 Jakmile to budete mít, přejděte zvolením **OK** na další krok.
 
@@ -192,7 +192,7 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
      | Síť Azure po převzetí služeb při selhání: | Zvolte síť, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).|
      | Podsíť: | V rozevíracím seznamu vyberte **výchozí**.|
 
-   - 3: Výběr fyzických počítačů
+   - 3: Vyberte fyzické počítače
 
      Vyberte **Fyzický počítač** a zadejte **název**, **IP adresu** a **typ operačního systému** instance EC2, kterou chcete migrovat. Vyberte **OK**.
 
@@ -234,7 +234,7 @@ Spusťte na portálu test převzetí služeb při selhání:
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování. Zpracování se dokončí za 8 až 10 minut.
 
-## <a name="migrate-to-azure"></a>Migrovat do Azure
+## <a name="migrate-to-azure"></a>Migrace do Azure
 
 Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveďte jejich migraci na virtuální počítače Azure:
 
@@ -246,7 +246,7 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
    - Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů. 
 
-     ![Dokončit migraci](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Dokončení migrace](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Nepřerušujte probíhající převzetí služeb při selhání*. Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud probíhající proces převzetí služeb při selhání přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  

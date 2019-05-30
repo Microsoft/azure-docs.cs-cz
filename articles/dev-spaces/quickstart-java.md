@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj Kubernetes s kontejnery, mikroslužby a Java v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Java, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 2a7ff71a8143883226c10754afc9757aea310c63
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979127"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393458"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v Javě na použití Azure Dev prostorů Kubernetes
 
@@ -37,7 +37,7 @@ V tomto průvodci se naučíte:
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru Azure Kubernetes Service
 
-Je potřeba vytvořit v clusteru AKS [podporované oblasti](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Následujících příkazů vytvořte skupinu prostředků s názvem *MyResourceGroup* a cluster AKS volá *MyAKS*.
+Je potřeba vytvořit v clusteru AKS [podporované oblasti][supported-regions]. Následujících příkazů vytvořte skupinu prostředků s názvem *MyResourceGroup* a cluster AKS volá *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -113,7 +113,7 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Zobrazí se tato služba spuštěna po otevření veřejnou adresu URL, které se zobrazí ve výstupu `azds up` příkazu. V tomto příkladu je veřejnou adresu URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/*.
+Zobrazí se tato služba spuštěna po otevření veřejnou adresu URL, které se zobrazí ve výstupu `azds up` příkazu. V tomto příkladu je veřejnou adresu URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 Chcete-li zrušit `azds up` příkazu *Ctrl + c*, služba bude pokračovat ve službě AKS a veřejná adresa URL bude stále dostupný.
 
@@ -176,7 +176,7 @@ Klikněte na tlačítko *ladění* pak *Zastavit ladění* zastavit ladicí prog
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Nastavení a použití zarážky pro ladění
 
-Spusťte svoji službu v režimu ladění *spusťte Program Java (AZDS)*.
+Spusťte svoji službu v režimu ladění *spusťte Program Java (AZDS)* .
 
 Přejděte zpět na *Explorer* zobrazení kliknutím *zobrazení* pak *Explorer*. Otevřít `src/main/java/com/ms/sample/webfrontend/Application.java` a klikněte na tlačítko někde na řádku 19 umístěte kurzor existuje. Chcete-li nastavit zarážku přístupů *F9* nebo klikněte na tlačítko *ladění* pak *Přepnout zarážku*.
 
@@ -213,3 +213,6 @@ Zjistěte, jak prostory vývoj Azure vám pomůže vytvořit složitější apli
 
 > [!div class="nextstepaction"]
 > [Práce s více kontejnery a týmový vývoj](multi-service-java.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

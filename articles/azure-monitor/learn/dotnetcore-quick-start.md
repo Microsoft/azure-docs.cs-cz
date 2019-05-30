@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/21/2019
+ms.date: 05/22/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: e6afd342a27fa13ae79e037e6e42e582dd9856cc
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
-ms.translationtype: HT
+ms.openlocfilehash: a4bbb43cb00eeb5a9e741016e1648ce915935eb9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015299"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236592"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -41,7 +41,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="enable-application-insights"></a>Povolit Application Insights
+## <a name="enable-application-insights"></a>Povolení Application Insights
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu bez ohledu na to, jestli jsou spuštěné místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
@@ -102,6 +102,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 ## <a name="video"></a>Video
 
 - Externí krok za krokem videu o [konfigurace Application Insights pomocí .NET Core a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) úplně od začátku.
+- Externí krok za krokem videu o [konfigurace Application Insights pomocí .NET Core a Visual Studio Code](https://youtu.be/ygGt84GDync) úplně od začátku.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Po dokončení testování, můžete odstranit skupinu prostředků a všechny související prostředky. Chcete proto podle následujících pokynů.

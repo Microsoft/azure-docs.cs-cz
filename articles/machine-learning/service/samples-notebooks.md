@@ -1,7 +1,7 @@
 ---
 title: Příklad aplikace Jupyter notebook
 titleSuffix: Azure Machine Learning service
-description: Vyhledejte a použijte příklad poznámkové bloky Jupyter a prozkoumejte službu Azure Machine Learning v Pythonu.
+description: Vyhledejte a použijte příklad poznámkové bloky Jupyter a prozkoumejte služby Azure Machine Learning SDK pro Python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,58 +9,57 @@ ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
-ms.date: 12/04/2018
+ms.date: 05/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: cd88fd85ce6d18287c700a54e42b6237a42ea5c9
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: ea4d5a807c25ea0406b49dac8a83ef1a34e0e8b3
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035380"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391806"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Použití poznámkových bloků Jupyter a prozkoumejte službu Azure Machine Learning
 
-Pro usnadnění práce jsme vyvinuli řadu poznámkové bloky Jupyter Python, která vám pomůže prozkoumat službu Azure Machine Learning. 
+[Poznámkových bloků Azure Machine Learning úložiště](https://github.com/azure/machinelearningnotebooks) obsahuje nejnovější ukázky Azure Machine Learning Python SDK. Tyto poznámkové bloky Juypter jsou navržené tak, které vám pomohou prozkoumat sady SDK a bude sloužit jako model pro vlastní strojového učení projekty.
 
-Zjistěte, jak používat službu s dokumentací na tomto webu a tyto poznámkové bloky můžete přizpůsobit pro vaše konkrétní potřeby. 
+V tomto článku se dozvíte, jak získat přístup k úložišti z následujících prostředích:
 
-Použijte jednu z následujících možností spustit server poznámkového bloku se tyto ukázkové poznámkové bloky.  Jakmile je server spuštěn, Najít kurz poznámkových bloků v **kurzy** složky, nebo si prohlédněte různých funkcí v **postupy-k-použití azureml** složky.
+- [Azure Machine Learning poznámkového bloku virtuálního počítače](#azure-machine-learning-notebook-vm)
+- [Přeneste svůj vlastní server poznámkového bloku](#bring-your-own-jupyter-notebook-server)
+- [Virtuální počítač pro datové vědy](#data-science-virtual-machine)
+- [Azure Notebooks](#azure-notebooks)
 
-## <a name="a-managed-cloud-notebook-server"></a>Server poznámkového bloku spravované cloudové
+> [!NOTE]
+> Jakmile jste naklonovali úložiště, najdete v kurzu poznámkové bloky **kurzy** složky a konkrétní funkce poznámkových bloků v **postupy-k-použití azureml** složky.
 
-Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. Ukázkový poznámkový blok a [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) jsou již nainstalovány a nakonfigurována pro vás, když vytvoříte tento prostředek v cloudu.  
+## <a name="azure-machine-learning-notebook-vm"></a>Azure Machine Learning poznámkového bloku virtuálního počítače
 
-[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+Nejjednodušší způsob, jak začít pracovat s ukázkami se k dokončení [rychlý start založené na cloudu Poznámkový blok](quickstart-run-cloud-notebook.md). Po dokončení budete mít vyhrazené Poznámkový blok serveru už načtené v sadě SDK a ukázkové úložiště. Žádné soubory ke stažení nebo instalace.
 
-* Ukázky jsou k dispozici na webové stránce poznámkového bloku.
+## <a name="bring-your-own-jupyter-notebook-server"></a>Přeneste svůj vlastní server poznámkového bloku Jupyter
 
-## <a name="a-data-science-virtual-machine-dsvm"></a>Virtuální počítač pro datové vědy (DSVM)
-
-[Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) a server poznámkového bloku již nainstalované a nakonfigurované pro vás na DSVM. 
-
-Poté co [vytvořit DSVM](how-to-configure-environment.md#dsvm), pomocí následujících kroků na datové VĚDY spouštění poznámkových bloků.
-
-[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
-
-## <a name="your-own-jupyter-notebook-server"></a>Váš vlastní server poznámkového bloku Jupyter
-
-Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.
+Pokud chcete přenést svůj vlastní server poznámkového bloku pro místní vývoj, postupujte podle těchto kroků:
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-Pokyny k instalaci budou instalovat balíčky potřebujete možnost spouštět poznámkové bloky rychlý start a kurzů.  Další ukázkové poznámkové bloky může vyžadovat instalaci dalších součástí.  Další informace o těchto součástech naleznete v tématu [nainstalovat sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+Tyto pokyny nainstalujte základní sadu SDK balíčky potřebné pro rychlý start a kurzů poznámkových bloků. Další ukázkové poznámkové bloky mohou vyžadovat instalaci dalších součástí. Další informace najdete v tématu [nainstalovat sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+
+## <a name="data-science-virtual-machine"></a>Virtuální počítač pro datové vědy
+
+Na Data virtuálního počítače VĚDY je přizpůsobená image virtuálního počítače vytvořená speciálně pro datových věd. Pokud jste [vytvořit DSVM](how-to-configure-environment.md#dsvm), instalace a konfigurace pro vás server SDK a poznámkového bloku. Ale bude stále potřeba vytvořit pracovní prostor a naklonujte ukázkové úložiště.
+
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
 ## <a name="azure-notebooks"></a>Azure Notebooks
 
-Ukázkové poznámkové bloky a [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) jsou již nainstalován a nakonfigurován pro vás na [poznámkových bloků Azure](https://notebooks.azure.com/). Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
+Na [poznámkových bloků Azure](https://notebooks.azure.com/), instalace a konfigurace pro vás server SDK a poznámkového bloku. Poznámkových bloků Azure poskytuje plně spravovanou, zjednodušené Poznámkový blok prostředí zkoumat.
 
-Použití [webu Azure portal](https://portal.azure.com) Začínáme s Azure poznámkových bloků.  Otevřete pracovní prostor a od **přehled** vyberte **začít pracovat v poznámkových bloků Azure**.
+Pro přístup k ukázkové úložiště na poznámkových bloků Azure, přejděte do pracovního prostoru Azure Machine Learning prostřednictvím [webu Azure portal](https://portal.azure.com). Z **přehled** vyberte **začít pracovat v poznámkových bloků Azure**.
 
 ## <a name="next-steps"></a>Další postup
 
-+ Prozkoumejte ukázkové poznámkové bloky pro službu Azure Machine Learning v tomto úložišti Githubu: https://aka.ms/aml-notebooks
+Prozkoumejte [ukázkové poznámkové bloky](https://aka.ms/aml-notebooks) Pokud chcete zjistit, co Azure Machine Learning service můžete provést nebo zkuste tyto kurzy:
 
-Vyzkoušejte tyto kurzy:
-+ [Trénování a nasadit model klasifikace obrázků s mnist ručně](tutorial-train-models-with-aml.md)
+- [Trénování a nasadit model klasifikace obrázků s mnist ručně](tutorial-train-models-with-aml.md)
 
-+ [Příprava dat a na základě automatizovaných machine learningu k natrénování modelu regrese s datovou sadou NYC taxislužby města](tutorial-data-prep.md)
+- [Příprava dat a na základě automatizovaných machine learningu k natrénování modelu regrese s datovou sadou NYC taxislužby města](tutorial-data-prep.md)

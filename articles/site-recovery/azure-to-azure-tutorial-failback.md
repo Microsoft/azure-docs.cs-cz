@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 339cbf18d79053dfb0704d928b8c9251c73b3a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a3b67e9b0dc41eeb14000400912892fbf29acfe2
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951780"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399487"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 
@@ -50,7 +50,7 @@ Po znovunastavení ochrany virtuálních počítačů, můžete navrátit služb
 5. Po úspěšném dokončení testu převzetí služeb vyberte **vyčištění testovacího převzetí služeb při selhání** chcete vyčistit prostředky vytvořené v rámci zdrojové oblasti pro testovací převzetí služeb.
 6. V **replikované položky**, vyberte virtuální počítač a potom vyberte **převzetí služeb při selhání**.
 7. V **převzetí služeb při selhání**, vyberte bod obnovení pro převzetí služeb při selhání pro:
-    - **Nejnovější (výchozí)**: Zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
+    - **Nejnovější (výchozí)** : Zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
     - **Nejnovější zpracovaný**: Obnoví virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
     - **Vlastní**: Převezme služby při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 

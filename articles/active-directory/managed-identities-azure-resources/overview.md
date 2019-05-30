@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "60290748"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
@@ -58,7 +58,7 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 ![Identity spravovaných služeb a virtuální počítače Azure](media/overview/msi-vm-vmextension-imds-example.png)
 
-|  Vlastnost    | Systém přiřadil spravované identity | Spravovaná identita přiřazená uživateli |
+|  Vlastnost    | Systém přiřadil spravované identity | Uživatel přiřazenou spravované identity |
 |------|----------------------------------|--------------------------------|
 | Vytvoření |  Vytvoření prostředku Azure (třeba virtuální počítač Azure nebo Azure App Service) | Vytvořit jako samostatný prostředek Azure |
 | Životní cyklus | Životní cyklus sdílené s prostředky Azure, vytvořené pomocí spravované identity. <br/> Při odstranění nadřazený prostředek, je rovněž odstraněna spravovaná identita. | Nezávislý životní cyklus. <br/> Musí explicitně odstranit. |

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: d5bd291758d6bb445b757b93fd91a4c2321b97db
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.date: 05/29/2019
+ms.openlocfilehash: 18ce5e9d7cff0d32021e97cd85f1e18c0309f00b
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898940"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357684"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure
 
@@ -118,15 +118,18 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
 
     Cílová tabulka:
 
-    Existují dvě možnosti směrování: *statické* a *dynamické*. Pro účely tohoto rychlého startu použijete statické směrování (výchozí), kde zadáte název tabulky, formát souboru a mapování. Proto nechte **Moje data zahrnují informace o směrování** nezaškrtnuté.
-    Můžete použít také dynamické směrování, kde vaše data zahrnují nezbytné informace o směrování.
+    Existují dvě možnosti pro směrování přijatých dat: *statické* a *dynamické*. 
+    Pro účely tohoto článku použijte statické směrování, ve kterém zadáte název tabulky, formát data a mapování. Proto nechte **Moje data zahrnují informace o směrování** nezaškrtnuté.
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
     | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVÉM formátu JSON, PSV, SOH, SCSV, TSV a TXT. |
-    | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase** a které mapuje příchozí data JSON na názvy sloupců a datové typy tabulky **TestTable**.|
+    | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase** a které mapuje příchozí data JSON na názvy sloupců a datové typy tabulky **TestTable**. Požadované pro JSON, VÍCEŘÁDKOVÉM formátu JSON nebo AVRO a volitelné pro ostatní formáty.|
     | | |
+
+    > [!NOTE]
+    > Vyberte **Moje data zahrnují informace o směrování** pomocí dynamické směrování, kde data obsahuje nezbytné informace o směrování jak je znázorněno [ukázkovou aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) komentáře. Pokud jsou nastavené statické i dynamické vlastnosti, dynamické vlastnosti přepsání statických adres. 
 
 ## <a name="copy-the-connection-string"></a>Zkopírování připojovacího řetězce
 

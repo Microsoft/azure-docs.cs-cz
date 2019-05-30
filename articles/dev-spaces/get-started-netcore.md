@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: efeb37baed3bb57234996938683e0cc230cc82dc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 323308b52874064658f65cf34abe18cc5ef208ff
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861767"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393450"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s Azure Dev prostory s .NET Core
 
@@ -55,7 +55,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
 
-Na příkazovém řádku, vytvořte skupinu prostředků [oblast, která podporuje Azure Dev prostory](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+Na příkazovém řádku, vytvořte skupinu prostředků [oblast, která podporuje Azure Dev prostory][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -232,3 +232,6 @@ Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikac
 
 > [!div class="nextstepaction"]
 > [Informace o vývoji pro víc služeb](multi-service-netcore.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Vývoj v týmu Kubernetes s kontejnery a mikroslužby na platformě Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 94083639ca769d12b04c4dc316a9f9867e4209b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 74ed1981ba6bf62413d7d7bfd51282eb04afd403
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765243"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393404"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Rychlý start: Vývoj v týmu na použití Azure Dev prostorů Kubernetes
 
@@ -35,7 +35,7 @@ V tomto průvodci se naučíte:
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru Azure Kubernetes Service
 
-Je nutné vytvořit v clusteru AKS [podporované oblasti](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Následujících příkazů vytvořte skupinu prostředků s názvem *MyResourceGroup* a cluster AKS volá *MyAKS*.
+Je nutné vytvořit v clusteru AKS [podporované oblasti][supported-regions]. Následujících příkazů vytvořte skupinu prostředků s názvem *MyResourceGroup* a cluster AKS volá *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -232,3 +232,6 @@ Zjistěte, jak vám může služba Azure Dev Spaces pomoct s vývojem složitěj
 
 > [!div class="nextstepaction"]
 > [Práce s více kontejnery a týmový vývoj](multi-service-nodejs.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

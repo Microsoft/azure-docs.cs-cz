@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787836"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389208"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Kurz: Nasadit model vizuální rozhraní strojového učení
 
@@ -95,7 +95,7 @@ Vstupní data uživatel zadá modelu nasazené prostřednictvím **webové služ
 
 Testovat webovou službu na kartě webových služeb v vizuální rozhraní.
 
-1. Přejděte do části webové služby. Zobrazí se webová služba, které jste nasadili s názvem **kurz – předpovídat cenu automobilu [prediktivní Exp]**.
+1. Přejděte do části webové služby. Zobrazí se webová služba, které jste nasadili s názvem **kurz – předpovídat cenu automobilu [prediktivní Exp]** .
 
      ![Snímek obrazovky zobrazující kartu web service se nedávno vytvořenou webovou službou zvýrazněnou](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
@@ -107,7 +107,7 @@ Testovat webovou službu na kartě webových služeb v vizuální rozhraní.
 
     ![Snímek obrazovky zobrazující stránku webové služby](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. Vstup testování dat nebo použijte autofilled ukázková data a vyberte **Test** v dolní části. K webové službě se odešle požadavek testu a výsledky se zobrazí na stránce.
+1. Vstup testování dat nebo použijte autofilled ukázková data a vyberte **Test** v dolní části. K webové službě se odešle požadavek testu a výsledky se zobrazí na stránce. I když hodnota ceny se vygeneruje pro vstupní data, není použit ke generování hodnoty předpovědi.
 
 ## <a name="manage-the-web-service"></a>Správa webové služby
 

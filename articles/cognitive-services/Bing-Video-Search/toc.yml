@@ -64,9 +64,9 @@
 - name: Referenční informace
   items:
     - name: Rozhraní API Bingu pro vyhledávání videí v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference'
     - name: Rozhraní API Bingu pro vyhledávání videí v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference'
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v5-reference'
     - name: Sady SDK
       items:
         - name: .NET

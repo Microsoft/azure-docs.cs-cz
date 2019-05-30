@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 4ea511bec75557bc6f7d37b1724b4b0db65ba9cc
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523026"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299422"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý start: Nastavení služby Azure NetApp Files a vytvoření svazku NFS 
 
@@ -57,7 +57,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 
-1. Na webu Azure portal vyhledávacího pole zadejte **souborů NetApp Azure** a pak vyberte **souborů NetApp Azure (preview)** ze seznamu, který se zobrazí.
+1. Na webu Azure portal vyhledávacího pole zadejte **souborů NetApp Azure** a pak vyberte **souborů NetApp Azure** ze seznamu, který se zobrazí.
 
       ![Vyberte soubory, které Azure NetApp](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
@@ -156,13 +156,13 @@ Jakmile budete hotovi a chcete, můžete odstranit skupinu prostředků. Akce od
 
 3. Na stránce skupiny prostředků, klikněte na **odstranit skupinu prostředků**.
 
-    ![Odstranit skupinu prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Otevře se okno s upozorněním týkajícím se prostředků, které budou odstraněny s vybranou skupinou prostředků.
 
 4. Zadejte název skupiny prostředků (myRG1) pro potvrzení, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní a potom klikněte na tlačítko **odstranit**.
 
-    ![Odstranit skupinu prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Odstranění skupiny prostředků](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 ## <a name="next-steps"></a>Další postup  
 

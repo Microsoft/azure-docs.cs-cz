@@ -216,7 +216,7 @@
           href: online-backup-and-restore.md
         - name: Dodržování předpisů
           href: compliance.md
-    - name: Omezení
+    - name: Omezení prostředků
       href: concepts-limits.md
 - name: 'Cassandra, MongoDB a další rozhraní API'
   expanded: true

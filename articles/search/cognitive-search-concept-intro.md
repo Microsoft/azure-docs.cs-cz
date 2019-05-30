@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8af927bee11d66c473707b603951fa693f6840e3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540902"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299034"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -86,7 +86,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 | Zpracování přirozeného jazyka | Přehledy a informace o textovými vstupy zpracování textu. Rozpoznávání jazyka, analýzu subjektivního hodnocení a extrakci klíčových frází jsou dovednosti, které spadají pod zpracování přirozeného jazyka.  | [Klíč frázi extrakce dovednosti](cognitive-search-skill-keyphrases.md), [dovednosti detekce jazyka](cognitive-search-skill-language-detection.md), [dovednosti analýzy mínění](cognitive-search-skill-sentiment.md) |
 | Analýzy dokumentu | Proces extrahování nebo vytvoření textového obsahu z jiné textové zdrojích během indexování. Optické rozpoznávání znaků (OCR) je příklad, ale obvykle odkazuje na základní indexer funkce jako indexeru extrahuje obsah ze souborů aplikace. Zdroj dat poskytuje umístění zdrojových souborů a poskytuje mapování polí, definice indexeru jsou obě klíčové faktory analýzy dokumentu. | Zobrazit [indexerů](search-indexer-overview.md) |
 | Strukturování | Konsolidace fragmenty textu do větší struktury, nebo naopak rozdělit větší bloky textu do vhodnou velikostí pro další zpracování příjmu dat. | [Dovednosti Shaper](cognitive-search-skill-shaper.md), [Text fúze dovednosti](cognitive-search-skill-textmerger.md), [Text rozdělit dovedností](cognitive-search-skill-textsplit.md) |
-| Bohatších možností dokumenty | Přechodné interní strukturu, není přímo přístupný v kódu. Bohatších možností dokumenty jsou generovány během zpracování, ale pouze konečný výstupy se uchovávají v indexu vyhledávání. Mapování polí určují, které datové prvky jsou přidány do indexu. | Zobrazit [přístupu k dokumentům bohatších možností](cognitive-search-tutorial-blob.md#access-enriched-document). |
+| Bohatších možností dokumenty | Přechodné interní strukturu, vygenerovaných během zpracování, se projeví v indexu vyhledávání závěrečný výstup. Dovedností Určuje, které obohacení provádějí. Mapování polí určují, které datové prvky jsou přidány do indexu. Volitelně můžete vytvořit úložiště znalostní báze k uchování a prozkoumejte bohatších možností dokumentů pomocí nástrojů, jako je Průzkumník služby Storage, Power BI nebo jakýkoli jiný nástroj, který se připojuje k úložišti objektů Blob v Azure. | Zobrazit [znalostní báze store (preview)](knowledge-store-concept-intro.md). |
 | Indexovací modul |  Prohledávací modul, který extrahuje prohledávatelná data a metadata z externího zdroje dat a naplní index na základě mapování pole pole mezi indexem a zdroj dat pro hádání dokumentu. Pro obohacení kognitivního vyhledávání indexeru vyvolá dovedností a obsahuje mapování polí přiřazení rozšíření výstup do cílového pole v indexu. Definice indexeru obsahuje všechny pokyny a odkazy pro operace kanálu a kanál se vyvolá při spuštění indexeru. | [Indexery](search-indexer-overview.md) |
 | Zdroj dat  | Objekt používaný indexerem pro připojení k externímu zdroji dat z podporovaných typů v Azure. | Zobrazit [indexerů](search-indexer-overview.md) |
 | Index | Trvalé vyhledávací index ve službě Azure Search, od schématu indexu, který definuje pole struktury a využití. | [Indexy ve službě Azure Search](search-what-is-an-index.md) | 

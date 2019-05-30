@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7aaa0de87ffa8280a6db34c5497779a5ded41c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4bd3e7d47b6e3083af6f388a5cd750da240a76b6
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545881"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392890"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Přehled knihovny Microsoft Authentication Library (MSAL)
 Microsoft Authentication Library (MSAL) umožňuje vývojářům získat [tokeny](developer-glossary.md#security-token) z Microsoft identity platform koncový bod pro přístup k zabezpečená webová rozhraní API. Tato webová rozhraní API může být Microsoft Graphu, jiné APIS Microsoftu, třetích stran webová rozhraní API nebo svým vlastním rozhraním Web API. Knihovna MSAL je k dispozici pro .NET, JavaScript, Android a iOS, které podporují mnoho různých aplikační architektury a platformy.
@@ -55,7 +55,7 @@ Knihovna MSAL je použít v mnoha scénářích aplikací, včetně následujíc
 | Knihovna | Podporované platformy a rozhraní|
 | --- | --- | 
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| Rozhraní .NET framework, .NET Core, Xamarin Android, Xamarin iOS, univerzální platforma Windows|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript architektury, jako jsou AngularJS, Ember.js nebo Durandal.js|
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript architektury, jako jsou AngularJS, Ember.js nebo Durandal.js|
 | ![Knihovna MSAL pro Android](media/sample-v2-code/logo_Android.png) <br/>[Knihovna MSAL pro Android (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | ![Knihovna MSAL pro iOS](media/sample-v2-code/logo_iOS.png) <br/>[KNIHOVNA MSAL. Objective-C (preview)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
 

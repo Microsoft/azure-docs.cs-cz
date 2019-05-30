@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: efc012e496045d3d5d12d6fe756b62e4ae19cc2a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9999518b81d264cb1e46f3c03ec65379d35aa603
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002148"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242444"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivace účtů a předplatných Azure pomocí služby Cloudyn
 
@@ -64,7 +64,7 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Cloud
     2. Na portálu Azure Portal vyberte **Azure Active Directory**.
     3. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
     4. Zkopírujte GUID adresáře. Tato hodnota představuje ID tenanta.
-    Další informace najdete v tématu o [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    Další informace najdete v tématu o [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
 3. V případě potřeby vyberte ID sazby. Pokud neznáte své ID sazby, najděte ho pomocí následujících kroků.
     1. V pravém horním rohu portálu Azure Portal klikněte na informace o uživateli a potom na **Zobrazit účet**.
     2. V části **Billing Account** (Fakturační účet) klikněte na **Subscriptions** (Předplatná).

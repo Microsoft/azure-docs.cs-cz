@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 1a72e2874e28a2aa5b69866bd959743707ea9d99
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9f62cd132e9aa969a804cd48d552baf9719a0eb6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123648"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302995"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí Azure Stream Analytics tools for Visual Studio
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-* Nainstalujte sadu Visual Studio 2017, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
+* Nainstalujte Visual Studio 2019, Visual Studio 2015 nebo Visual Studio 2013 Update 4. Podporují se edice Enterprise (Ultimate nebo Premium), Professional a Community. Edice Express se nepodporuje.
 
 * Postupujte podle [pokynů k instalaci](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) a nainstalujte Stream Analytics Tools for Visual Studio.
 
@@ -44,7 +44,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
    |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
    |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
    |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisné umístění, kde je možné hostovat služby IoT Hub. Použijte umístění co nejblíže vašim uživatelům. |
-   |Název IoT Hubu  | MyASAIoTHub  |   Vyberte název centra IoT.   |
+   |IoT Hub Name  | MyASAIoTHub  |   Vyberte název centra IoT.   |
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
@@ -114,7 +114,7 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
    |Alias pro vstup  |  Vstup   |  Zadejte název pro identifikaci vstupu úlohy.   |
    |Typ zdroje   |  Datový proud |  Zvolte odpovídající vstupní zdroj: Datový Stream nebo referenčními daty.   |
    |Zdroj  |  IoT Hub |  Vyberte odpovídající vstupní zdroj.   |
-   |Prostředek  | Zvolit zdroj dat z aktuálního účtu | Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
+   |Resource  | Zvolit zdroj dat z aktuálního účtu | Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
    |Předplatné  |  \<Vaše předplatné\>   | Vyberte předplatné Azure, který má centra IoT, které jste vytvořili.   |
    |IoT Hub  |  MyASAIoTHub   |  Vyberte nebo zadejte název služby IoT Hub. Služby IoT Hub názvy jsou automaticky zjišťují, pokud jsou vytvořené v rámci stejného předplatného.   |
    
@@ -132,11 +132,11 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
    |---------|---------|---------|
    |Alias pro výstup  |  Výstup   |  Zadejte název pro identifikaci výstupu úlohy.   |
    |Jímka   |  Blob Storage |  Zvolte odpovídající jímku.    |
-   |Prostředek  |  Zadat nastavení zdroje dat ručně |  Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
+   |Resource  |  Zadat nastavení zdroje dat ručně |  Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
    |Předplatné  |  \<Vaše předplatné\>   | Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného.   |
    |Účet úložiště  |  asaquickstartstorage   |  Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.   |
    |Kontejner  |  container1   |  Vyberte existující kontejner, který jste vytvořili v účtu úložiště.   |
-   |Vzor cesty  |  output   |  Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.   |
+   |Vzor cesty  |  výstup   |  Zadejte název cesty k souboru, která se vytvoří v rámci kontejneru.   |
    
 3. U ostatních možností ponechejte výchozí hodnoty a výběrem možnosti **Uložit** uložte nastavení.  
 

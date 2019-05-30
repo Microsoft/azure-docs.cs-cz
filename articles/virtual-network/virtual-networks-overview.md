@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: 44094a38fff17908fd5ea851209130f89a49c988
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 23093cd8bcb5793b9e5b9abc835f64233e666ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707023"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241748"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
-Azure Virtual Network umožňuje řadě typů prostředků Azure, jako jsou virtuální počítače Azure, zabezpečeně komunikovat mezi sebou, s internetem a s místními sítěmi. Virtuální síť má obor do jedné oblasti; ale více virtuálních sítí z různých oblastí může být propojeny pomocí partnerské vztahy virtuálních sítí.
+Azure Virtual Network umožňuje řadě typů prostředků Azure, jako jsou virtuální počítače Azure, zabezpečeně komunikovat mezi sebou, s internetem a s místními sítěmi. Virtuální síť je vymezen na jedné oblasti Azure. Azure [oblasti](https://azure.microsoft.com/global-infrastructure/regions/) je sada datových center nasazený v hraniční s definovanou latencí a propojená prostřednictvím vyhrazené místní sítě s nízkou latencí. 
+
+Virtuální sítě se skládá z podsítě. Podsíť je rozsah IP adres ve vaší virtuální síti. Podsítě, jako jsou virtuální sítě, mají rozsah jedné oblasti Azure. 
+
+Více virtuálních sítí z různých oblastí může být propojeny pomocí partnerské vztahy virtuálních sítí.
 
 Azure Virtual Network poskytuje následující klíčové funkce:
 

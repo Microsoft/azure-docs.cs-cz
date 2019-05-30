@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 177e0ef0adab3b683657a9b872300cb38185d795
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737121"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384575"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Rychlý start: Odeslat žádost o vyhledávání Bingu Entity Search REST API pomocí Node.js
 
@@ -179,4 +179,4 @@ Zatímco tato aplikace je napsána v jazyce JavaScript, je rozhraní API RESTful
 > [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je API pro vyhledávání entit Bingu?](../overview.md )
-* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

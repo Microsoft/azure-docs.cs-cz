@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
-ms.translationtype: HT
+ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864383"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237800"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru poznámkového bloku
 
@@ -33,14 +33,29 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 * Server poznámkového bloku Python 3.6 s sadu SDK Azure Machine Learning nainstalovaná
 * Pracovní prostor služby Azure Machine Learning service
-* Konfigurační soubor pracovního prostoru (**.azureml/config.json** ).
+* Konfigurační soubor pracovního prostoru ( **.azureml/config.json**).
 
-Získejte všechny tyto požadavky z [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#portal).
+Získejte všechny tyto požadavky z [vytvořit pracovní prostor služby Azure Machine Learning](setup-create-workspace.md#sdk).
+
 
 
 ## <a name="use-the-workspace"></a>Použití pracovního prostoru
 
-Vytvořit skript nebo spustit Poznámkový blok ve stejném adresáři jako konfigurační soubor pracovního prostoru. Spusťte tento kód, který používá základní rozhraní API sady SDK pro sledování spuštění experimentu.
+Vytvořit skript nebo spustit Poznámkový blok ve stejném adresáři jako konfigurační soubor pracovního prostoru ( **.azureml/config.json**).
+
+### <a name="attach-to-workspace"></a>Připojení k pracovnímu prostoru
+
+Tento kód čte informace z konfiguračního souboru pro připojení k vašemu pracovnímu prostoru.
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>Protokol hodnoty
+
+Spusťte tento kód, který používá základní rozhraní API sady SDK pro sledování spuštění experimentu.
 
 1. Vytvoření experimentu v pracovním prostoru.
 1. Přihlaste se ke experiment jednu hodnotu.

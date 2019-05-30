@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 4/30/2019
 ms.author: victorh
 ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "64947268"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
@@ -125,7 +125,7 @@ Služba Application Gateway podporuje možnost přidat, odebrat nebo aktualizova
 
 Další informace najdete v tématu [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
 
-## <a name="sizing"></a>Velikosti
+## <a name="sizing"></a>Velikost
 
 Application Gateway Standard_v2 a WAF_v2 SKU můžete nakonfigurovaný pro automatické škálování nebo pevné velikosti nasazení. Tyto SKU nenabízí velikostí jinou instancí.
 
@@ -135,7 +135,7 @@ Application Gateway Standard a WAF SKU je teď nabízíme ve třech velikostech:
 
 Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway s povoleným přesměrováním zpracování SSL:
 
-| Průměrná velikost odpovědi back endové stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
+| Průměrná velikost odpovědi back endové stránky | Malé | Střední | Velké |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

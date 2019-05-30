@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: f69c2ea334109a42d63b85cb71de0deb7174beab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a6319565aa05f34ce31a14c5fc57e591248f4ee
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701677"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399699"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informace o zálohování SQL Serverů ve virtuálních počítačích Azure
 
@@ -143,6 +143,8 @@ Protokol |  Sekundární
 
       ![Zpráva o úspěšném nasazení](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
+> [!NOTE]
+> Pokud SQL Server má několik instancí systému SQL Server nainstalován, pak je nutné přidat oprávnění sysadmin pro **NT Service\AzureWLBackupPluginSvc** účet pro všechny instance SQL.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,66 +1,63 @@
 ---
 title: Přehled služby relačních databází Azure Database for PostgreSQL
 description: Přehled služby relačních databází Azure Database for PostgreSQL.
-author: rachel-msft
-ms.author: raagyema
+author: jonels-msft
+ms.author: jonels
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 11/14/2018
-ms.openlocfilehash: 318778a83c82b0ddb88f8bbd852442ab389fedb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680314"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073272"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
+Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře. Je založen na komunitní verze open source [PostgreSQL](https://www.postgresql.org/) databázový stroj a je k dispozici dvě možnosti nasazení: Jeden Server a velkokapacitní (Citus) (preview).
 
-Azure Database for PostgreSQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě komunitní verze open source [PostgreSQL](https://www.postgresql.org/) databázový stroj, verze 9.5, 9.6 a 10. Azure Database for PostgreSQL nabízí:
+## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – jeden Server
+Nabízí možnost nasazení jednoho serveru:
 
-- Integrovanou vysokou dostupnost bez dalších poplatků
+- Integrovanou vysokou dostupnost (99,99 % smlouva SLA) bez dalších poplatků
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách
-- Škálování podle potřeby během několika sekund
+- Vertikální škálování podle potřeby během několika sekund
+- Monitorování a upozorňování rychle posoudit dopad vertikálního
 - Zabezpečení pro ochranu neaktivních uložených dat i přenášených dat
 - Automatické zálohování a obnovení k určitému bodu v čase po dobu až 35 dnů
 - Zabezpečení a dodržování předpisů na podnikové úrovni
 
-Všechny tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Díky těmto možnostem se můžete zaměřit na rychlý vývoj aplikací a zkrácení doby dodání produktu na trh, namísto vynakládání prostředků a drahocenného času na správu virtuálních počítačů a infrastruktury. Kromě toho můžete pokračovat ve vývoji aplikací pomocí libovolných opensourcových nástrojů a platforem a dodávat je tak rychle a efektivně, jak váš podnik vyžaduje, aniž byste se museli učit nové dovednosti. 
+Všechny tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Umožňují vám soustředit se na rychlý vývoj aplikací a zkracuje dobu uvedení na trh, namísto trávit cenný čas a prostředky ke správě virtuálních počítačů a infrastruktury. Můžete pokračovat k vývoji aplikací pomocí opensourcových nástrojů a platformy podle vašeho výběru, aniž byste museli učit nové dovednosti.
 
-Tento článek je úvodem do základních konceptů služby Azure Database for PostgreSQL a funkcí týkajících se výkonu, škálovatelnosti a možností správy. Tyto rychlé starty vám pomůžou začít:
+Možnost nasazení jednoho serveru nabízí tři cenové úrovně: Basic, pro obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-pricing-tiers.md) podrobnosti.
 
-- [Vytvoření Azure Database for PostgreSQL pomocí webu Azure Portal](quickstart-create-server-database-portal.md)
-- [Vytvoření Azure Database for PostgreSQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md)
+## <a name="azure-database-for-postgresql---hyperscale-citus-preview"></a>Azure Database for PostgreSQL – velkokapacitní (Citus) (preview)
+Možnost Hyperškálovatelného (Citus) vodorovně škáluje dotazy napříč více počítačů pomocí horizontálního dělení. Jeho dotazovací modul parallelizes příchozích dotazů SQL na těchto serverů pro rychlejší odpovědi na rozsáhlých datových sadách. Aplikace, které vyžadují větší škálovatelnost a výkon, obvykle úlohy, které se blíží--nebo již překračují – 100 GB dat slouží.
 
-Řadu ukázek v Azure CLI najdete tady:
+Nabízí možnost nasazení Hyperškálovatelného (Citus):
 
-- [Ukázky v Azure CLI pro službu Azure Database for PostgreSQL](./sample-scripts-azure-cli.md)
+- Vodorovné škálování na více počítačů pomocí horizontálního dělení
+- Využitím paralelizace dotazů na těchto serverů pro rychlejší odpovědi na rozsáhlých datových sadách
+- Skvělou podporu pro aplikace s více tenanty, operační analýza v reálném čase a Vysoká propustnost transakčními úlohami
 
-## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
-Azure Database for PostgreSQL služby nabízí tři cenové úrovně: Basic, pro obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-pricing-tiers.md) podrobnosti.
+Aplikace vytvořené pro PostgreSQL můžete spouštění distribuovaných dotazů na Hyperškálovatelného (Citus) se standardem [knihovny připojení](./concepts-connection-libraries.md) a minimální změny.
 
-## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
-Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete použít integrované funkce monitorování a upozorňování Azure. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity v závislosti na stávajících nebo předpokládaných požadavcích na výkon nebo úložiště. Podrobnosti najdete v tématu [Upozornění](howto-alert-on-metric.md).
+Všimněte si, že Hyperškálovatelného (Citus) je ve verzi public preview a jako takový zatím nenabízí smlouvu SLA.
 
-## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
-Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S každým serverem Azure Database for PostgreSQL využíváte integrované zabezpečení, odolnost proti chybám a ochranu dat, které byste jinak museli kupovat nebo navrhovat, sestavovat a spravovat. Azure Database for PostgreSQL nabízí v každé cenové úrovni komplexní sadu funkcí a možností pro zajištění provozní kontinuity, které můžete využít k zahájení a udržení provozu. Můžete využít [obnovení databáze do určitého bodu v čase](howto-restore-server-portal.md), a to až 35 dnů zpět. Kromě toho, pokud dojde k výpadku datacentra hostujícího vaše databáze, můžete databáze obnovit z geograficky redundantních kopií nedávných záloh.
+## <a name="data-security"></a>Zabezpečení dat
+Azure Database for PostgreSQL zachovává tradici zabezpečení dat v Azure databázové služby. Obsahuje funkce, které omezují přístup, chránit data v klidovém stavu a za provozu a vám pomohou monitorovat aktivitu. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
 
-## <a name="secure-your-data"></a>Zabezpečení dat
-Databázové služby Azure mají tradici zabezpečení dat, kterou služba Azure Database for PostgreSQL zachovává díky funkcím, které omezují přístup, chrání data a pomáhají s monitorováním aktivity. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://azure.microsoft.com/overview/trusted-cloud/).
-
-Azure Database for postgresql – služba používá šifrování úložiště pro data v klidovém stavu a je kompatibilní s FIPS 140-2. Data včetně záloh se šifrují na disku (s výjimkou dočasných souborů vytvořených databázovým strojem při spouštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
-
-Ve výchozím nastavení je ve službě Azure Database for PostgreSQL nakonfigurované vyžadování [zabezpečení připojení protokolem SSL](./concepts-ssl-connection-security.md) pro data přenášená přes síť. Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
+Azure Database for postgresql – služba používá šifrování úložiště pro data v klidovém stavu a je kompatibilní s FIPS 140-2. Data včetně záloh se šifrují na disku. Služba používá šifrování AES 256 bitů součástí šifrování úložiště Azure a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat. Ve výchozím nastavení služba Azure Database for PostgreSQL vyžaduje zabezpečené připojení pro data přenášená přes síť a mezi databází a kódem klientské aplikace.
 
 ## <a name="contacts"></a>Kontakty
-Jakékoli dotazy nebo návrhy k používání Azure Database for PostgreSQL zasílejte e-mailem týmu Azure Database for PostgreSQL ([@Ask Azure Database for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Poznámka: Tento alias neslouží k poskytování technické podpory.
+Pro jakékoli dotazy nebo návrhy o práci s využitím Azure Database for PostgreSQL, pošlete e-mail na databázi Azure pro PostgreSQL týmu ([ @Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Tato adresa se pro obecné dotazy spíše než lístky podpory.
 
-Můžete také využít tyto komunikační kanály:
-- Pro podporu Azure [vytvořte lístek podpory na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Kromě toho, zvažte následující body kontaktu podle potřeby:
+- Obraťte se na podporu Azure nebo vyřešit problém s vaším účtem [lístek na webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
 ## <a name="next-steps"></a>Další postup
 - Na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) najdete porovnání nákladů a kalkulačky.
-- Začněte [vytvořením první služby Azure Database for PostgreSQL](./quickstart-create-server-database-portal.md).
+- Začněte vytvořením první databáze Azure Database for PostgreSQL [jeden Server](./quickstart-create-server-database-portal.md) nebo [Hyperškálovatelného (Citus) (preview)](./quickstart-create-hyperscale-portal.md)
 - Vytvořte svoji první aplikaci v prostředí typu Python, PHP, Ruby, C\#, Java, Node.js: [Knihovny připojení](./concepts-connection-libraries.md)

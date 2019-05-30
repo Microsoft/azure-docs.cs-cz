@@ -1,5 +1,5 @@
 ---
-title: Vývoj s .NET Core v AKS s Azure Dev prostory a sady Visual Studio 2017
+title: Vývoj s .NET Core v AKS pomocí Azure Dev mezery a Visual Studio
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -13,30 +13,29 @@ keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery,
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 110962c03f0236ebb26c9ed586981b51f36c635f
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765306"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399229"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Rychlý start: Vývoj s využitím .NET Core v Kubernetes se službou Azure Dev mezery (Visual Studio 2017)
+# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>Rychlý start: Vývoj s využitím .NET Core v Kubernetes se službou Azure Dev mezery (Visual Studio)
 
 V tomto průvodci se naučíte:
 
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
-- Iterativní vývoj kódu v kontejnerech pomocí sady Visual Studio 2017.
-- Ladění kódu spuštěného v clusteru pomocí sady Visual Studio 2017.
+- Iterativně vyvíjet kód v kontejnerech pomocí sady Visual Studio
+- Ladění kódu spuštěného v clusteru pomocí sady Visual Studio.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
-- Visual Studio 2017 na Windows s nainstalovaná úloha vývoj pro Web. Pokud ji nemáte nainstalovanou, stáhněte si ji [odtud](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
-- [Visual Studio Tools pro systém Kubernetes](https://aka.ms/get-vsk8stools) nainstalované.
+- Visual Studio. 2019 na Windows s nainstalovaná úloha vývoj pro Azure. Můžete také použít Visual Studio 2017 na Windows s úlohou vývoj pro Web a [Visual Studio Tools pro systém Kubernetes](https://aka.ms/get-vsk8stools) nainstalované. Pokud nemáte nainstalovanou sadu Visual Studio, stáhněte si ji [tady](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru Azure Kubernetes Service
 
-Je nutné vytvořit v clusteru AKS [podporované oblasti](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams). Pokud chcete vytvořit cluster:
+Je nutné vytvořit v clusteru AKS [podporované oblasti][supported-regions]. Pokud chcete vytvořit cluster:
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 1. Vyberte *+ vytvořit prostředek > Služba Kubernetes*. 
@@ -55,8 +54,8 @@ Přejděte ke svému clusteru AKS na portálu Azure portal a klikněte na tlač�
 
 ## <a name="create-a-new-aspnet-web-app"></a>Vytvořit novou webovou aplikaci ASP.NET
 
-1. Otevřete Visual Studio 2017.
-1. Vytvoří nový projekt.
+1. Otevřít Visual Studio.
+1. Vytvoření nového projektu
 1. Zvolte *webové aplikace ASP.NET Core* a pojmenujte svůj projekt *webfrontend*.
 1. Klikněte na *OK*.
 1. Po zobrazení výzvy zvolte *webové aplikace (Model-View-Controller)* šablony.
@@ -101,7 +100,7 @@ Tento proces může zakázaná veřejný přístup ke službě. K povolení veř
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Pokud Visual Studio 2017 je pořád připojený prostorem dev, kliknutím na tlačítko Zastavit. Změňte řádek 20 v `Controllers/HomeController.cs` na:
+Pokud aplikace Visual Studio je stále připojeni k prostoru dev, kliknutím na tlačítko Zastavit. Změňte řádek 20 v `Controllers/HomeController.cs` na:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -113,9 +112,9 @@ Místo znovu sestavovat a nasazovat nové image kontejneru pokaždé, když jsou
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Nastavení a použití zarážky pro ladění
 
-Pokud Visual Studio 2017 je pořád připojený prostorem dev, kliknutím na tlačítko Zastavit. Otevřít `Controllers/HomeController.cs` a klikněte na tlačítko někam na řádek 20 umístěte kurzor existuje. Chcete-li nastavit zarážku přístupů *F9* nebo klikněte na tlačítko *ladění* pak *Přepnout zarážku*. Pro spuštění služby v režimu ladění v prostoru dev, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *spustit ladění*.
+Pokud aplikace Visual Studio je stále připojeni k prostoru dev, kliknutím na tlačítko Zastavit. Otevřít `Controllers/HomeController.cs` a klikněte na tlačítko někam na řádek 20 umístěte kurzor existuje. Chcete-li nastavit zarážku přístupů *F9* nebo klikněte na tlačítko *ladění* pak *Přepnout zarážku*. Pro spuštění služby v režimu ladění v prostoru dev, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *spustit ladění*.
 
-Otevřete svou službu v prohlížeči a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se do sady Visual Studio 2017 a podívejte se, že se zvýrazní řádek 20. Nastavit zarážku bylo pozastaveno služby na řádku 20. A to obnovit ji, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
+Otevřete svou službu v prohlížeči a Všimněte si, že se nezobrazí žádná zpráva. Vraťte se do sady Visual Studio a podívejte se, že se zvýrazní řádek 20. Nastavit zarážku bylo pozastaveno služby na řádku 20. A to obnovit ji, stiskněte *F5* nebo klikněte na tlačítko *ladění* pak *pokračovat*. Vraťte se do prohlížeče a Všimněte si, že se teď zobrazí zpráva.
 
 Při spuštění služby v Kubernetes s připojen jiný ladicí program, máte plný přístup k ladění informace, jako je zásobník volání, místní proměnné a informace o výjimce.
 
@@ -135,3 +134,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [Práce s více kontejnery a týmový vývoj](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[supported-regions]: about.md#supported-regions-and-configurations

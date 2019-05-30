@@ -7,17 +7,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 01/28/2019
-ms.openlocfilehash: f4c291d5684054d606dcb438df71721bd209e5fb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: 6e7e07d130c8c4c8fa776dcad539398a004ecea0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708408"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298918"
 ---
-# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Apache hadoop
+# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Apache hadoop?
 
-Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. Můžete použít open source architektury, jako jsou Hadoop, Apache Spark, Apache Hive, LLAP, Apache Kafka, Apache Storm, R a další. 
+Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure HDInsight je plně spravovaná opensourcová, opensourcová analytická služba v cloudu pro podniky. Můžete použít open source architektury, jako jsou Hadoop, Apache Spark, Apache Hive, LLAP, Apache Kafka, Apache Storm, R a další. 
 
 
 ## <a name="what-is-hdinsight-and-the-hadoop-technology-stack"></a>Co je HDInsight a technologie Hadoop?
@@ -27,7 +27,7 @@ Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure
 
 Azure HDInsight je cloudová distribuce komponent Hadoop z platformy [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/). Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. Můžete využít nejoblíbenější opensourcové architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, R a další. Tyto architektury podporují širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.
 
-Komponenty technologie Hadoop dostupné ve službě HDInsight najdete v tématu [Dostupné komponenty a verze ve službě HDInsight][component-versioning]. Další informace o platformě Hadoop v prostředí HDInsight najdete v tématu [Funkce Azure pro HDInsight](https://azure.microsoft.com/services/hdinsight/).
+K dispozici komponenty technologie Hadoop v HDInsight najdete v tématu [komponenty a verze, které jsou k dispozici s HDInsight](../hdinsight-component-versioning.md). Další informace o platformě Hadoop v prostředí HDInsight najdete v tématu [Funkce Azure pro HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 ## <a name="what-is-big-data"></a>Co jsou velké objemy dat?
 
@@ -84,30 +84,23 @@ Pomocí služby HDInsight můžete rozšířit svou stávající místní infras
 
 HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení clusterů, jako je například možnost přidávání komponent, nástrojů a jazyků. HDInsight nabízí následující typy clusteru:
 
-* **[Apache Hadoop](https://wiki.apache.org/hadoop)**: Rozhraní, který používá HDFS, YARN Správa prostředků a jednoduché programování MapReduce model pro zpracování a analýzu dat dávek paralelně.
-
-* **[Apache Spark](https://spark.apache.org/)**: Open source, paralelní zpracování rozšiřovatelnou platformu, která podporuje zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat. Přečtěte si téma [Co je Apache Spark v prostředí HDInsight?](../spark/apache-spark-overview.md)
-
-* **[Apache HBase](https://hbase.apache.org/)**: Databáze NoSQL postavená na Hadoop poskytující náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a polostrukturovaných dat – případně až miliardy řádků krát miliony sloupců. Přečtěte si téma [Co je HBase v HDInsight?](../hbase/apache-hbase-overview.md)
-
-* **[ML Services](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)**: Server pro hostování a správu paralelních, distribuovaných procesů r. Poskytuje datovým vědcům, statistikům a programátorům v R přístup ke škálovatelným, distribuovaným analytickým metodám služby HDInsight na vyžádání. Viz [Přehled ML Services ve službě HDInsight](../r-server/r-server-overview.md).
-
-* **[Apache Storm](https://storm.incubator.apache.org/)**: V reálném čase distribuovaný výpočetní systém pro rychlé zpracování velkých datových proudů. Storm je poskytován jako spravovaný cluster v prostředí HDInsight. Viz [Analýza dat snímačů v reálném čase pomocí nástrojů Storm a Hadoop](../storm/apache-storm-sensor-data-analysis.md).
-
-* **[Apache Interactive Query ve verzi preview (také označované LLAP: Live Long a zpracování)](https://cwiki.apache.org/confluence/display/Hive/LLAP)**: Ukládání v mezipaměti pro interaktivnější a rychlejší dotazy Hive. Viz [Použití Interactive Query ve službě HDInsight](../interactive-query/apache-interactive-query-get-started.md).
-
-* **[Apache Kafka](https://kafka.apache.org/)**: Open source platforma, která slouží k vytváření aplikací a datových proudů datové kanály. Kafka také poskytuje funkce propojující fronty zpráv, pomocí kterých můžete publikovat datové streamy a přihlašovat se k jejich odběru. Viz [Úvod k Apache Kafka ve službě HDInsight](../kafka/apache-kafka-introduction.md).
+|Typ clusteru | Popis |
+|---|---|
+|[Apache Hadoop](https://wiki.apache.org/hadoop)|Rozhraní, který používá HDFS, YARN Správa prostředků a jednoduché programování MapReduce model pro zpracování a analýzu dat dávek paralelně.|
+|[Apache Spark](https://spark.apache.org/)|Open source, paralelní zpracování rozšiřovatelnou platformu, která podporuje zpracování v paměti pro zvýšení výkonu aplikací pro analýzu velkých objemů dat. Přečtěte si téma [Co je Apache Spark v prostředí HDInsight?](../spark/apache-spark-overview.md)|
+|[Apache HBase](https://hbase.apache.org/)|Databáze NoSQL postavená na Hadoop poskytující náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a polostrukturovaných dat – případně až miliardy řádků krát miliony sloupců. Přečtěte si téma [Co je HBase v HDInsight?](../hbase/apache-hbase-overview.md)|
+|[ML Services](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Server pro hostování a správu paralelních, distribuovaných procesů r. Poskytuje datovým vědcům, statistikům a programátorům v R přístup ke škálovatelným, distribuovaným analytickým metodám služby HDInsight na vyžádání. Viz [Přehled ML Services ve službě HDInsight](../r-server/r-server-overview.md).|
+|[Apache Storm](https://storm.incubator.apache.org/)|V reálném čase distribuovaný výpočetní systém pro rychlé zpracování velkých datových proudů. Storm je poskytován jako spravovaný cluster v prostředí HDInsight. Viz [Analýza dat snímačů v reálném čase pomocí nástrojů Storm a Hadoop](../storm/apache-storm-sensor-data-analysis.md).|
+|[Apache Interactive Query](https://cwiki.apache.org/confluence/display/Hive/LLAP)|Ukládání v mezipaměti pro interaktivnější a rychlejší dotazy Hive. Viz [Použití Interactive Query ve službě HDInsight](../interactive-query/apache-interactive-query-get-started.md).|
+|[Apache Kafka](https://kafka.apache.org/)|Open source platforma, která slouží k vytváření aplikací a datových proudů datové kanály. Kafka také poskytuje funkce propojující fronty zpráv, pomocí kterých můžete publikovat datové streamy a přihlašovat se k jejich odběru. Viz [Úvod k Apache Kafka ve službě HDInsight](../kafka/apache-kafka-introduction.md).|
 
 ## <a name="open-source-components-in-hdinsight"></a>Opensourcové komponenty ve službě HDInsight
 
-
 Azure HDInsight umožňuje vytvářet clustery pomocí open source architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, HBase a R. Tyto clustery ve výchozím nastavení, součástí další opensourcové komponenty, které jsou zahrnuty v clusteru, jako například [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), [Avro](https://avro.apache.org/docs/current/spec.html), [Apache Hive](https://hive.apache.org), [ HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), [Apache Mahout](https://mahout.apache.org/), [Apache Hadoop MapReduce](https://wiki.apache.org/hadoop/MapReduce), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Phoenix](https://phoenix.apache.org/), [Apache Pig](https://pig.apache.org/), [Apache Sqoop](https://sqoop.apache.org/), [Apache Tez](https://tez.apache.org/), [Apache Oozie](https://oozie.apache.org/), [Apache ZooKeeper](https://zookeeper.apache.org/).  
 
-
-
 ## <a name="programming-languages-in-hdinsight"></a>Programovací jazyky v prostředí HDInsight
-Clustery HDInsight, včetně clusterů Spark, HBase, Kafka, Hadoop a dalších, podporují celou řadu programovacích jazyků. Některé z nich ale nejsou ve výchozím nastavení nainstalované. Pro knihovny, moduly nebo balíčky, které nejsou ve výchozím nastavení nainstalované, [použijte akci skriptu pro instalaci součásti](../hdinsight-hadoop-script-actions-linux.md).
 
+Clustery HDInsight, včetně clusterů Spark, HBase, Kafka, Hadoop a dalších, podporují celou řadu programovacích jazyků. Některé z nich ale nejsou ve výchozím nastavení nainstalované. Pro knihovny, moduly nebo balíčky, které nejsou ve výchozím nastavení nainstalované, [použijte akci skriptu pro instalaci součásti](../hdinsight-hadoop-script-actions-linux.md).
 
 |Programovací jazyk  |Informace  |
 |---------|---------|
@@ -133,15 +126,13 @@ Známé nástroje business intelligence (BI) načítají, analyzují a vykazují
 
 * [Apache Spark BI s využitím nástrojů pro vizualizaci dat ve službě Azure HDInsight](../spark/apache-spark-use-bi-tools.md)
 
-* [Vizualizace dat pomocí Microsoft Power BI v Azure HDInsight s Apache Hive](apache-hadoop-connect-hive-power-bi.md) 
+* [Vizualizace dat pomocí Microsoft Power BI v Azure HDInsight s Apache Hive](apache-hadoop-connect-hive-power-bi.md)
 
 * [Vizualizace dat Interactive Query Hive pomocí Power BI ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 
+* [Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](apache-hadoop-connect-excel-power-query.md) (vyžaduje Windows)
 
-* [Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](apache-hadoop-connect-excel-power-query.md) (vyžaduje Windows) 
-
-
-* [Připojení Excelu k systému Apache Hadoop pomocí ovladače ODBC Microsoft Hive](apache-hadoop-connect-excel-hive-odbc-driver.md) (vyžaduje Windows) 
+* [Připojení Excelu k systému Apache Hadoop pomocí ovladače ODBC Microsoft Hive](apache-hadoop-connect-excel-hive-odbc-driver.md) (vyžaduje Windows)
 
 * [Použití služby SQL Server Analysis Services se službou HDInsight](https://docs.microsoft.com/previous-versions/msp-n-p/dn749857(v=pandp.10))
 
@@ -153,7 +144,3 @@ V tomto článku jste zjistili, co je Azure HDInisght a jakým způsobem poskytu
 
 > [!div class="nextstepaction"]
 > [Vytvořit cluster Apache Hadoop v HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)
-
-
-[component-versioning]: ../hdinsight-component-versioning.md
-[zookeeper]: https://zookeeper.apache.org/

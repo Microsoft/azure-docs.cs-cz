@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 35659a77f80bd3b3d105b9ea91513784dbca01c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5653ffbfeb22bc59c48dd92b558178fcd89b2de
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461455"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384505"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání entit s využitím Ruby
 
@@ -146,4 +146,4 @@ Aplikace je sice napsaná v Ruby, ale rozhraní API je webová služba RESTful k
 > [Vytvoření webové jednostránkové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je API pro vyhledávání entit Bingu](../search-the-web.md)
-* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Reference k rozhraní API vyhledávání entit Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729269"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236352"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -55,6 +55,9 @@ A.  Chcete-li zjistit, kde jsou aktuálně k dispozici disků Data Box, přejdě
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
 A. Data Box Disk se podporuje pro všechny oblasti v USA, Kanadě, Austrálii, západní Evropa a Severní Evropa, Koreji a Japonsko. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
+
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>Otázka: Bude Moje disku Data Box pro různé ohraničení zemi během přesouvání?
+A. Data Box Disk se dodávají z v rámci stejné zemi jako jejich cíl a nebude pro různé jakékoli mezinárodní hranice země. Jedinou výjimkou je pro objednávky v Evropské unii (EU), kdy dodávat disků do a z žádné země EU.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Otázka: Na koho se mám obrátit, když narazím na nějaké problémy s disky Data Box Disk?
 A. Pokud narazíte na případné problémy s disků Data Box, [obraťte se na Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
@@ -164,9 +167,9 @@ A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoř�
 
 ### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>Otázka: Můžu zkopíruje data do složky ManagedDisk. Nevidím žádné spravované disky se skupina prostředků zadaná pro spravované disky. Byl nahrán data do Azure a jak ho můžete najít?
 A. Ano. Vaše data byla nahrána do Azure, ale pokud se nezobrazí žádné spravované disky se skupinami zadaný prostředek, je pravděpodobné, protože data nebyla platná. Pokud objekty BLOB stránky, objekty BLOB bloku, soubory Azure a spravované disky nebyly platné, tyto přejde do následující složky:
- - Objekty BLOB stránky by přejít na kontejner objektů blob bloku od *databoxdisk – neplatná-pb -*.
- - Služba soubory Azure přejde na kontejner objektů blob bloku od *databoxdisk – neplatná-af -*.
- - Spravované disky by přejít na kontejner objektů blob bloku od *databoxdisk – neplatná-md –*.
+ - Objekty BLOB stránky by přejít na kontejner objektů blob bloku od *databoxdisk – neplatná-pb -* .
+ - Služba soubory Azure přejde na kontejner objektů blob bloku od *databoxdisk – neplatná-af -* .
+ - Spravované disky by přejít na kontejner objektů blob bloku od *databoxdisk – neplatná-md –* .
 
 ## <a name="next-steps"></a>Další postup
 

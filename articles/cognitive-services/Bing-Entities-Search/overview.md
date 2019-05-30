@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0755688d1cc2f00ffef253b7695d9cb504f9e169
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 679a3d9efbeeb75e0aa8e3986fa85b7ecf0d77bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64866845"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388498"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Co je API pro vyhledávání entit Bingu?
 
@@ -39,5 +39,5 @@ Rozhraní API Bingu pro vyhledávání entit je RESTful webová služba, což us
 
 * Zkuste [interaktivní ukázka](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) pro rozhraní API Bingu pro vyhledávání entit. 
 * Abyste mohli rychle začít s vaší první žádost, zkuste [rychlý Start](quickstarts/csharp.md).
-* [API pro vyhledávání entit Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) odkazovat na části.
+* [API pro vyhledávání entit Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) odkazovat na části.
 * [Požadavky Bingu na zobrazení a použití](./use-display-requirements.md) určují přijatelné způsoby použití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.

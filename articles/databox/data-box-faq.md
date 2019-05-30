@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
-ms.translationtype: HT
+ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150460"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236282"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Nejčastější dotazy
 
@@ -24,8 +24,8 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 - O službě
 - Objednání zařízení
 - Konfigurace a připojení 
-- Stav sledování
-- Kopírovat data 
+- Sledování stavu
+- Kopírování dat 
 - Dodání zařízení
 - Ověření a nahrání dat 
 - Podpora řetězce opatrovnictví
@@ -124,7 +124,7 @@ A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Otázka: Konfigurace portu kanál vyslané zařízení Data Box? A co funkce MPIO?
 A. Nepodporujeme konfigurace kanál portu, konfigurace funkce Multipath vstupně-výstupních operací (MPIO) nebo konfiguraci sítě vLAN na zařízení Data Box.
 
-## <a name="track-status"></a>Stav sledování
+## <a name="track-status"></a>Sledování stavu
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Otázka: Jak můžu sledovat Data Box od okamžiku vystavení objednávky až do zpětného odeslání zařízení? 
 A.  Stav objednávky Data Boxu můžete sledovat na webu Azure Portal. Při vytváření objednávky se zobrazuje také výzva k zadání e-mailové adresy pro oznámení. Pokud jste tuto adresu zadali, budete prostřednictvím e-mailu dostávat oznámení o všech změnách stavu dané objednávky. Další informace o [konfiguraci e-mailových adres pro oznámení](data-box-portal-ui-admin.md#edit-notification-details).
@@ -135,7 +135,7 @@ A.  Microsoft zobrazuje expediční štítek na displeji s elektronickým inkous
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Otázka: Přišlo mi e-mailem oznámení, že zařízení dorazilo do datacentra Azure. Jak zjistím, jestli probíhá nahrávání dat?
 A. Na webu Azure Portal přejděte k objednávce Data Boxu a pak přejděte na **Přehled**. Pokud se data začala nahrávat do Azure, zobrazí se v pravém podokně průběh kopírování. 
 
-## <a name="migrate-data"></a>Migrovat data
+## <a name="migrate-data"></a>Migrace dat
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>Otázka: Kolik dat se vejde do zařízení Data Box?  
 A.  Data Box má využitelné úložiště o kapacitě 80 TB. Jedno zařízení Data Box můžete použít pro data o velikosti 40–80 TB. Pro větší množství dat o velikosti až 500 TB, můžete si objednat více zařízení Data Box. Pokud data přesahují 500 TB, zaregistrujte se do služby Data Box Heavy.  
@@ -184,7 +184,7 @@ A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způso
 A. U služby Data Box zajišťuje dopravu do datacentra Azure i z něj Microsoft. Pokud chcete použít vlastního dopravce, můžete použít službu Azure Import/Export. Další informace najdete v článku o [službě Azure Import/Export](../storage/common/storage-import-export-service.md).
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Otázka: Bude Moje zařízení Data Box pro různé ohraničení zemi během přesouvání?
-A. Všechna zařízení Data Box se dodávají z v rámci stejné zemi jako jejich cíl a nebude pro různé jakékoli mezinárodní hranice země. Jedinou výjimkou je pro objednávky v Evropské unii (EU), kdy zařízení dodávat do a z žádné země EU.
+A. Všechna zařízení Data Box se dodávají z v rámci stejné zemi jako jejich cíl a nebude pro různé jakékoli mezinárodní hranice země. Jedinou výjimkou je pro objednávky v Evropské unii (EU), kdy zařízení dodávat do a z žádné země EU. To platí pro zařízení Data Box náročné i zařízení Data Box.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Otázka: Na displeji s elektronickým inkoustem se nezobrazuje expediční štítek pro vrácení zásilky. Co bych měl/a dělat?
 A. Pokud se na displeji s elektronickým inkoustem nezobrazuje štítek pro vrácení zásilky, postupujte takto:

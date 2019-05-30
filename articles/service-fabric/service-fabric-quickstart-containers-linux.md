@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/30/2019
 ms.author: aljo,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 183f27d752b99c04a711d8141db512c77b9848f9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1487c9e3e57a2fe4dcdcab04aa81cd81315decfd
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122349"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302316"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
@@ -179,7 +179,7 @@ Pomocí odinstalačního skriptu (uninstall.sh), který je součástí šablony,
 
 Nejjednodušší způsob, jak odstranit cluster a všechny prostředky, které využívá, je odstranit příslušnou skupinu prostředků.
 
-Přihlaste se k Azure a vyberte ID předplatného, pro které chcete cluster odebrat. ID vašeho předplatného najdete po přihlášení k webu Azure portal. Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [příkaz az group delete](/cli/azure/group?view=azure-cli-latest).
+Přihlaste se k Azure a vyberte ID předplatného, pomocí kterého chcete odebrat cluster. ID vašeho předplatného najdete po přihlášení k webu Azure portal. Odstranit skupinu prostředků a všechny prostředky clusteru pomocí [příkaz az group delete](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login

@@ -5,21 +5,21 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: overview
-ms.date: 03/05/2019
+ms.date: 05/06/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a147d95701af166c650411a91fb24e3448cfec09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b14e4b452c1dcd92cc3e5447428c28f1d2c5b18e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465525"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073817"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS) usnadňuje nasazení spravovaného clusteru Kubernetes v Azure. AKS zjednodušuje správu Kubernetes a snižuje provozní režii s tím spojenou díky přenášení většiny zodpovědnosti na Azure. Jako hostovaná služba Kubernetes se za vás Azure stará o důležité úlohy, jako je monitorování stavu a údržba. Hlavní servery Kubernetes spravuje Azure. Pouze spravujete a udržujete uzly agentů. Jako spravované prostředí Kubernetes je AKS navíc zdarmaa platíte pouze za uzly agentů v rámci vašich clusterů, a ne za hlavní uzly.
 
-Cluster AKS na portálu Azure můžete vytvořit pomocí Azure CLI nebo šablony řízené možnostmi nasazení, jako jsou šablony Resource Manager a Terraform. Při nasazování clusteru AKS se hlavní uzel Kubernetes i všechny ostatní uzly nasadí a nakonfigurují za vás. Během procesu nasazení je možné nakonfigurovat také další funkce, jako jsou pokročilé síťové funkce, integrace s Azure Active Directory a monitorování.
+Cluster AKS na portálu Azure můžete vytvořit pomocí Azure CLI nebo šablony řízené možnostmi nasazení, jako jsou šablony Resource Manager a Terraform. Při nasazování clusteru AKS se hlavní uzel Kubernetes i všechny ostatní uzly nasadí a nakonfigurují za vás. Během procesu nasazení je možné nakonfigurovat také další funkce, jako jsou pokročilé síťové funkce, integrace s Azure Active Directory a monitorování. Podpora kontejnerů Windows serveru je aktuálně ve verzi preview ve službě AKS.
 
 Další informace o základní informace o Kubernetes najdete v tématu [Kubernetes základní koncepty pro AKS][concepts-clusters-workloads].
 
@@ -43,9 +43,9 @@ Abyste pochopili, jak pracuje váš cluster AKS a nasazené aplikace, Azure Moni
 
 Další informace najdete v tématu [Monitorování stavu kontejneru služby Azure Kubernetes Service][container-health].
 
-## <a name="cluster-and-node"></a>Clustery a uzly
+## <a name="clusters-and-nodes"></a>Clustery a uzlů
 
-Uzly AKS jsou spuštěny na virtuálních počítačích Azure. Můžete úložiště připojit k uzlům a podům, upgradovat komponenty clusteru a použít GPU.
+Uzly AKS jsou spuštěny na virtuálních počítačích Azure. Můžete úložiště připojit k uzlům a podům, upgradovat komponenty clusteru a použít GPU. AKS podporuje clustery Kubernetes, na kterých běží více fondy uzlů pro podporu smíšené operačních systémů a kontejnery Windows serveru (aktuálně ve verzi preview). Uzly s Linuxem spusťte upravené bitové kopie operačního systému Ubuntu a uzly Windows serveru spouštět upravené bitové kopie operačního systému Windows Server. 2019.
 
 ### <a name="cluster-node-and-pod-scaling"></a>Uzel clusteru a škálování podů
 

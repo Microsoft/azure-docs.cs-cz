@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 3959eb789102cd3d54fc7bab32e585b3c09d897b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7870322746d8cb647547e5c85036579611ac3292
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792155"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303308"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý start: Použití .NET a C# v sadě Visual Studio k připojení a dotazování Azure SQL database
 
@@ -34,16 +34,16 @@ K dokončení tohoto rychlého startu je potřeba:
   | Vytvořit| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Nakonfigurovat | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  | Konfigurace | [pravidlo brány firewall na úrovni serveru IP](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
   |||[Připojení z na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načíst data|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Načtení dat|Společnosti Adventure Works načtených za rychlý start|[Obnovit Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Obnovení nebo importovat společnosti Adventure Works z [BACPAC](sql-database-import.md) souboru z [Githubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
   > Skripty v tomto článku se zapisují do použít databázi společnosti Adventure Works. S managed instance musíte importovat databázi společnosti Adventure Works do instance databáze nebo upravovat skripty v tomto článku pro používání databáze Wide World Importers.
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) Community, Professional, or Enterprise edition.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community, Professional, or Enterprise edition.
 
 ## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
 
@@ -59,7 +59,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 
 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**. 
    
-1. V **nový projekt** dialogového okna, vyberte **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)**.
+1. V **nový projekt** dialogového okna, vyberte **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)** .
    
 1. Zadejte *sqltest* pro název projektu a pak vyberte **OK**. Vytvoření nového projektu. 
    
@@ -73,7 +73,7 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
    
 1. Po dokončení instalace můžete zavřít **Správce balíčků NuGet**. 
    
-1. V editoru kódu nahraďte **Program.cs** obsah následujícím kódem. Dosaďte svoje hodnoty `<server>`, `<username>`, `<password>`, a `<database>`.
+1. V editoru kódu nahraďte **Program.cs** obsah následujícím kódem. Nahraďte hodnoty `<server>`, `<username>`, `<password>`, a `<database>`.
    
    >[!IMPORTANT]
    >Kód v tomto příkladu se používá ukázková data AdventureWorksLT, které můžete použít jako zdroj při vytváření databáze. Pokud vaše databáze má jiná data, pomocí tabulek z vlastní databázi v dotazu SELECT. 

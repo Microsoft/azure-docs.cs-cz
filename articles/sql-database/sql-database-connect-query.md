@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a8513344c35c14ebf06f3693da618ed20047d07b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792055"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382279"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Šablony rychlý start: Azure SQL Database připojení a dotazování
 
@@ -39,6 +39,7 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují př
 |[PHP](sql-database-connect-query-php.md)|Tento rychlý start ukazuje použití PHP k vytvoření programu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |[Python](sql-database-connect-query-python.md)|Tento rychlý start ukazuje použití Pythonu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat. |
 |[Ruby](sql-database-connect-query-ruby.md)|Tento rychlý start ukazuje použití Ruby k vytvoření programu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
+|[R](sql-database-connect-query-r.md)|Tento rychlý start ukazuje použití jazyka R s Azure SQL Database Machine Learning Services k vytvoření programu pro připojení k databázi Azure SQL a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>Důležité informace o použití protokolu TLS pro připojení k databázi SQL

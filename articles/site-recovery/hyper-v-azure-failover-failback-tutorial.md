@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 53b2c2945062ef348104e24a352895a14eed1a04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4889d82ac1c837581771860f2aba86faf7650ee
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748998"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399445"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure
 
@@ -73,7 +73,7 @@ Operace navrácení služeb po obnovení je v podstatě převzetí služeb při 
 
 1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Plánované převzetí služeb při selhání**.
 2. V části **Potvrdit plánované převzetí služeb při selhání** ověřte směr převzetí služeb při selhání (z Azure) a vyberte zdrojové a cílové umístění.
-3. Vyberte **Před převzetím služeb při selhání synchronizovat data (synchronizovat pouze rozdílové změny)**. Tato možnost minimalizuje výpadky virtuálních počítačů, protože se synchronizace provedete bez vypnutí virtuálního počítače.
+3. Vyberte **Před převzetím služeb při selhání synchronizovat data (synchronizovat pouze rozdílové změny)** . Tato možnost minimalizuje výpadky virtuálních počítačů, protože se synchronizace provedete bez vypnutí virtuálního počítače.
 4. Zahajte převzetí služeb při selhání. Průběh převzetí služeb při selhání můžete sledovat na kartě **Úlohy**.
 5. Jakmile po dokončení počáteční synchronizace dat budete připraveni vypnout virtuální počítače Azure, klikněte na **Úlohy** > název_úlohy_plánovaného_převzetí_služeb_při_selhání > **Dokončit převzetí služeb při selhání**. Tím se vypne virtuální počítač Azure, nejnovější změny se přenesou do místní lokality a spustí se místní virtuální počítač.
 6. Přihlaste se k místnímu virtuálnímu počítači a ověřte, že je dostupný podle očekávání.

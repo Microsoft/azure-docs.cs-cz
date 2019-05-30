@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: 0b3343a9635fe4120f03e56c41797591d2f25815
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e972dfdd7694a1a43302fa5879ea22f2ecd051ad
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793687"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298854"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -50,7 +50,7 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.2 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (jenom Windows) |-|-|
 | Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.1.1 |1.1.1.0 * (viz poznámka níže) | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1.1 |1.1, 1.0 * (viz poznámka níže) | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -66,7 +66,7 @@ Verze součástí ekosystému Hadoop spojené s verzemi clusterů HDInsight mů�
 > [!IMPORTANT]    
 > Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [vyřazení Windows na HDInsight](#hdinsight-windows-retirement).
 
-### <a name="release-notes"></a>Poznámky k verzi
+### <a name="release-notes"></a>Poznámky k verzi
 
 Zobrazit [zpráva k vydání verze HDInsight](hdinsight-release-notes.md) další poznámky k verzi v nejnovějších verzích HDInsight.
 
@@ -139,7 +139,7 @@ V současné době pouze následující typy clusteru podporují Enterprise Secu
 
 - Hadoop (pouze HDInsight 3.6)
 - Spark
-- Interactive Query
+- Interaktivní dotaz
 
 ### <a name="support-for-azure-data-lake-storage"></a>Podpora pro Azure Data Lake Storage
 
@@ -149,7 +149,7 @@ Enterprise Security Package podporuje, pomocí Azure Data Lake Storage jako prim
 
 Informace o cenách a smlouva SLA pro Enterprise Security Package najdete v tématu [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="hdinsight-windows-retirement"></a>Konec podpory HDInsight ve Windows
+## <a name="hdinsight-windows-retirement"></a>Vyřazení HDInsight Windows
 
 Microsoft Azure HDInsight verze 3.3 byl poslední verze HDInsight ve Windows. Datum vyřazení pro HDInsight ve Windows je 31. července 2018. Pokud máte všechny clustery HDInsight ve Windows 3.3 nebo starší, musí migrovat na HDInsight v Linuxu (HDInsight verze 3.5 nebo novější) před 31. července 2018. Migrace na operační systém Linux umožňuje zachovat možnost vytváření nebo změně velikosti vašich clusterů HDInsight. 27. června 2016 vypršela platnost podpory pro HDInsight verze 3.3 na Windows.
 
@@ -243,7 +243,7 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
 * Všechny podporované oblastech kromě Brazílie – jih a Japonsko – západ:
 
-|Typ clusteru|Hadoop|HBase|Interactive Query|Storm|Spark|ML Server|Kafka|
+|Typ clusteru|Hadoop|HBase|Interaktivní dotaz|Storm|Spark|ML Server|Kafka|
 |---|---|---|---|---|---|---|---|
 |Hlavní: výchozí velikosti virtuálního počítače|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
 |Hlavní: doporučené velikosti virtuálních počítačů|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
@@ -275,7 +275,7 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
 
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
 
-  | Typ clusteru | Hadoop | HBase | Interactive Query |Storm | Spark | ML Services |
+  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služby ML |
   | --- | --- | --- | --- | --- | --- | --- |
   | Hlavní: výchozí velikosti virtuálního počítače |D12 |D12  | D13 |A3 |D12 |D12 |
   | Hlavní: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3,<br/> A4,<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: rimman
-ms.openlocfilehash: 68a1a757b5c5e4ce63d7f12a8502d57942d4ec42
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5b43d822bf29ce07f292403a3a24ad8c13964038
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240928"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389124"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak spravovat úrovně konzistence ve službě Azure
 
 [Výchozí úroveň konzistence](consistency-levels.md) je úroveň konzistence, kterou klienti používají ve výchozím nastavení. Klienty můžete vždy přepsat.
 
-### <a name="cli"></a>CLI
+### <a name="cli"></a>Rozhraní příkazového řádku
 
 ```bash
 # create with a default consistency
@@ -61,7 +61,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>portál Azure
 
-Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet Azure Cosmos a otevřít **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**. Vizualizace úrovní různých konzistence s poznámkami Hudba také poskytuje web Azure portal. 
+Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se k webu Azure portal. Vyhledejte svůj účet Azure Cosmos a otevřít **výchozí konzistence** podokně. Vyberte úroveň konzistence jako nové výchozí nastavení a potom vyberte **Uložit**. Na webu Azure portal poskytuje také vizualizaci úrovní různých konzistence s poznámkami music. 
 
 ![Konzistence nabídky na webu Azure Portal](./media/how-to-manage-consistency/consistency-settings.png)
 

@@ -1,26 +1,26 @@
 ---
-title: Podniková integrace s Azure Logic Apps | Microsoft Docs
-description: Tento přehled popisuje, jak můžete prostřednictvím automatizace úloh, pracovních postupů a obchodních procesů sestavovat řešení podnikové integrace, která integrují aplikace, data, služby a systémy napříč podniky a organizacemi. Vytvořte řešení pro scénáře integrace dat, systémové integrace, integrace podnikových aplikací (EAI) a orchestrace.
+title: Podniková integrace s Azure Logic Apps
+description: Přehled o vytváření podnikových integrační řešení díky automatizaci a orchestraci úlohy, pracovní postupy a obchodní procesy, které se integrují aplikace, data, služby a systémy napříč podniky a organizacemi. Vytvořte řešení pro scénáře integrace dat, systémové integrace, integrace podnikových aplikací (EAI) a orchestrace.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+manager: carmonm
+ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61318522"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299112"
 ---
 # <a name="what-is-azure-logic-apps"></a>Co je Azure Logic Apps?
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) je cloudová služba, která pomáhá automatizovat a orchestrovat úlohy, obchodní procesy a [pracovní postupy](#logic-app-concepts) v případě, že potřebujete integrovat aplikace, data, systémy a služby napříč podniky nebo organizacemi. Logic Apps zjednodušuje návrh a vytváření škálovatelných řešení pro aplikaci [integrace](https://azure.microsoft.com/product-categories/integration/), integraci dat, systémové integrace, integrace podnikových aplikací (EAI) a komunikace business-to-business (B2B), ať již v cloud, místní nebo obojí.
+[Služba Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) je Cloudová služba, která umožňuje plánovat, automatizace a Orchestrace úloh, obchodních procesů a [pracovních postupů](#logic-app-concepts) když potřebujete integrovat aplikace, data, systémy a služby napříč podniky nebo organizace. Logic Apps zjednodušuje návrh a vytváření škálovatelných řešení pro aplikaci [integrace](https://azure.microsoft.com/product-categories/integration/), integraci dat, systémové integrace, integrace podnikových aplikací (EAI) a komunikace business-to-business (B2B), ať již v cloud, místní nebo obojí.
 
 Tady je například pouze několik úloh, které můžete pomocí aplikací logiky automatizovat:
 
@@ -35,7 +35,7 @@ Při vytváření řešení podnikové integrace pomocí Azure Logic Apps si mů
 
 ## <a name="how-does-logic-apps-work"></a>Jako Logic Apps funguje? 
 
-Každý pracovní postup aplikace logiky se spouští triggerem, který se aktivuje při určité události nebo když nová dostupná data splní určitá kritéria. Řada triggerů obsahuje základní schopnosti plánování, takže můžete určit, jak často se vaše úlohy spouští. V případě dalších vlastních scénářů plánování můžete pracovní postup spustit pomocí triggeru plánovače. Další informace o [vytváření pracovních postupů založených na plánu](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md).
+Každý pracovní postup aplikace logiky se spouští triggerem, který se aktivuje při určité události nebo když nová dostupná data splní určitá kritéria. Řada triggerů poskytovaných konektory v Logic Apps obsahuje základní schopnosti plánování, takže můžete nastavit tak, jak často se vaše úlohy spouští. Složitější plánování a pokročilé opakování můžete použít trigger opakování jako první krok v jakékoli pracovního postupu. Další informace o [pracovních postupů založených na plánu](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky, ve které se spustí akce v pracovním postupu. Tyto akce můžou zahrnovat také konverze dat a ovládací prvky toků, jako jsou podmíněné příkazy, příkazy přepínače, smyčky a větvení. Například tato aplikace logiky se spouští triggerem Dynamics 365 s integrovaným kritériem Při aktualizaci záznamu. Pokud trigger rozpozná událost, která splňuje toto kritérium, aktivuje se a spustí akce pracovního postupu. V tomto případě mezi tyto akce patří transformace XML, aktualizace dat, větvení rozhodování a e-mailová oznámení.
 
@@ -132,16 +132,11 @@ Všechny tyto služby pomáhají spojit a vzájemně propojit různorodé systé
 
 ## <a name="get-started"></a>Začínáme 
 
-Logic Apps je jednou z mnoha služeb hostovaných v Microsoft Azure. Takže než začnete, potřebujete předplatné Azure. Pokud předplatné nemáte, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
+Logic Apps je jednou z mnoha služeb hostovaných v Microsoft Azure. Takže než začnete, potřebujete předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
 Pokud máte předplatné Azure, vyzkoušejte tento [rychlý start k vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md), která prostřednictvím informačního kanálu RSS monitoruje nový obsah na webu a odesílá e-mail, když se objeví nový obsah.
 
-## <a name="support-and-feedback"></a>Podpora a zpětná vazba
-
-* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Kontrola provozu s využitím aplikace logiky založené na plánu](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 * Další informace o [řešeních bez serveru s využitím Azure](../logic-apps/logic-apps-serverless-overview.md)

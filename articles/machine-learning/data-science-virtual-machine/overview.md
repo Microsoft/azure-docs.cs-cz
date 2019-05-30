@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1534bc65a369254802973d6c3b91ed8b76ed44e0
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596549"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235082"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -48,7 +48,7 @@ Hackathony nebo soutěže v oblasti datových věd nebo rozsáhlé modelování 
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Vlastní výpočetní výkon pro poznámkové bloky Azure
 
-[Azure Notebooks](/azure/notebooks/azure-notebooks-overview.md) je bezplatná služba hostovaná vyvíjet, spouštět a nasdílet poznámkové bloky Jupyter v cloudu bez instalace. Úroveň free služby je však omezená na 4GB paměti a 1GB dat. Uvolnit všechna omezení, můžete pak připojit projekt poznámkových bloků virtuální počítač pro datové vědy nebo jakýkoli jiný virtuální počítač serverem Jupyter. Pokud poznámkových bloků Azure přihlásíte pomocí účtu služby pomocí Azure Active Directory (například účet organizace) a poznámkové bloky automaticky zobrazí Data Science virtuálních počítačů v žádné předplatné spojené s tímto účtem. Další informace najdete v tématu [spravovat a konfigurovat projekty – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) je bezplatná služba hostovaná vyvíjet, spouštět a nasdílet poznámkové bloky Jupyter v cloudu bez instalace. Úroveň free služby je však omezená na 4GB paměti a 1GB dat. Uvolnit všechna omezení, můžete pak připojit projekt poznámkových bloků virtuální počítač pro datové vědy nebo jakýkoli jiný virtuální počítač serverem Jupyter. Pokud poznámkových bloků Azure přihlásíte pomocí účtu služby pomocí Azure Active Directory (například účet organizace) a poznámkové bloky automaticky zobrazí Data Science virtuálních počítačů v žádné předplatné spojené s tímto účtem. Další informace najdete v tématu [spravovat a konfigurovat projekty – výpočetní vrstva](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krátkodobé experimenty a vyhodnocování
 S minimálním úsilím věnovaným nastavení je možné virtuální počítač pro datovou vědu využít k vyhodnocení nebo výuce nástrojů, jako jsou Microsoft ML Server, SQL Server, nástroje sady Visual Studio, Jupyter, sady nástrojů pro hloubkové nebo strojové učení a nové nástroje oblíbené v komunitě. Díky rychlému nastavení můžete virtuální počítač pro datovou vědu využít i v dalších scénářích krátkodobého použití, jako jsou replikace publikovaných experimentů, prezentace ukázek, procházení postupů v online relacích nebo konferenčních kurzech.

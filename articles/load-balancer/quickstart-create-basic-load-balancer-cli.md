@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: a947b5983f4a7d58878fc15785cfbcbcbba7f226
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 698714990b9b34567d918d3b8c536bc3e39d66b8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156203"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257700"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rychlý start: Vytvořte nástroj pro vyrovnávání zatížení vyrovnávat zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -146,7 +146,7 @@ Vytvořte pravidlo skupiny zabezpečení sítě, které povolí příchozí při
 ```
 ### <a name="create-nics"></a>Vytvoření síťových rozhraní
 
-Pomocí příkazu [az network nic create](/cli/azure/network/nic#az-network-nic-create) vytvořte tři síťová rozhraní a přiřaďte je k veřejné IP adrese a skupině zabezpečení sítě. 
+Vytvořte dvě síťová rozhraní s [az network nic vytvořit](/cli/azure/network/nic#az-network-nic-create) a přidružit je k veřejné IP adrese a skupině zabezpečení sítě. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -164,7 +164,7 @@ done
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
-V tomto příkladu vytvoříte tři virtuální počítače, které se použijí jako servery back-end pro nástroj pro vyrovnávání zatížení. K ověření úspěšného vytvoření nástroje pro vyrovnávání zatížení také na virtuální počítače nainstalujete server NGINX.
+V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro nástroj pro vyrovnávání zatížení. K ověření úspěšného vytvoření nástroje pro vyrovnávání zatížení také na virtuální počítače nainstalujete server NGINX.
 
 ### <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 

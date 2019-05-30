@@ -219,18 +219,18 @@
           href: backup-azure-restore-windows-server.md
         - name: Obnovení stavu systému Windows Server
           href: backup-azure-restore-system-state.md
-        - name: Monitorování a správa trezorů služby Recovery Services
-          href: backup-azure-manage-windows-server.md
     - name: Trezor služby Recovery Services
       items:
         - name: Přehled trezorů služby Recovery Services
           href: backup-azure-recovery-services-vault-overview.md
-        - name: Upgrade úložiště záloh do trezoru služby Recovery Services
-          href: backup-azure-upgrade-backup-to-recovery-services.md
+        - name: Vytvoření trezoru služby Recovery Services
+          href: backup-create-rs-vault.md
         - name: Odstranění trezoru služby Recovery Services
           href: backup-azure-delete-vault.md
         - name: Přesunutí trezoru služby Recovery Services
           href: backup-azure-move-recovery-services-vault.md
+        - name: Monitorování a správa trezorů služby Recovery Services
+          href: backup-azure-manage-windows-server.md
     - name: Řešení potíží
       items:
         - name: Virtuální počítač Azure

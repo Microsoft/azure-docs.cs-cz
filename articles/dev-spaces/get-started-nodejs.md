@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s
-ms.openlocfilehash: c01870aa7ae4a0ae5cf1cc8302200675ac0e8022
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e461f210dc5b2d0dda0eabd5ea80dfcdc9ccebfb
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861692"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392812"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme s Azure Dev prostory s využitím Node.js
 
@@ -55,7 +55,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Vytvoření clusteru Kubernetes s podporou Azure Dev Spaces
 
-Na příkazovém řádku, vytvořte skupinu prostředků [oblast, která podporuje Azure Dev prostory](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+Na příkazovém řádku, vytvořte skupinu prostředků [oblast, která podporuje Azure Dev prostory][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -212,7 +212,7 @@ Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`. N
 
 ### <a name="select-the-azds-debug-configuration"></a>Výběr konfiguraci AZDS pro ladění
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
-1. Jako aktivní konfiguraci ladění vyberte **Launch Program (AZDS)**.
+1. Jako aktivní konfiguraci ladění vyberte **Launch Program (AZDS)** .
 
 ![](media/get-started-node/debug-configuration-nodejs2.png)
 
@@ -272,3 +272,5 @@ Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně
 > [!div class="nextstepaction"]
 > [Informace o vývoji pro víc služeb](multi-service-nodejs.md)
 
+
+[supported-regions]: about.md#supported-regions-and-configurations

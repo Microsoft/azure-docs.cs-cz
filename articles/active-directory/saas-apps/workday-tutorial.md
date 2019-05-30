@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9c8d1fb234efd5df297082cfc1001f28ca1656
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2b9e4f5208eb1f6abb0d6fd786630c183a04ce50
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990407"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388864"
 ---
 # <a name="tutorial-integrate-workday-with-azure-active-directory"></a>Kurz: Integrace Workday s Azure Active Directory
 
@@ -88,7 +88,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečné přihlašovací adresu URL a adresy URL odpovědi. Vaše adresa URL odpovědi musí mít například subdomény: www wd2, wd3, wd3 impl, wd5, wd5 impl).
-    > Pomocí příkazu podobného tomuto `http://www.myworkday.com` funguje, ale `http://myworkday.com` tak není. Kontakt [tým podpory klienta Workday](https://www.workday.com/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Pomocí příkazu podobného tomuto `http://www.myworkday.com` funguje, ale `http://myworkday.com` tak není. Kontakt [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 6. Vaše aplikace Workday očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Pracovní aplikace očekává **nameidentifier** namapovat s **user.mail**, **UPN**a tak dále, takže budete muset upravit mapování atributů kliknutím na  **Upravit** ikonu a změnit mapování atributů.
 
@@ -138,7 +138,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
    > [!NOTE]
    > Hodnota atributu prostředí se váže na hodnotu adresy URL tenanta:  
    > -Pokud název domény adresy URL klienta Workday začíná impl například: *https:\//impl.workday.com/\<tenanta\>/login-saml2.flex*), **prostředí**atribut musí být nastaven na implementaci.  
-   > – Pokud je název domény začíná znakem jiný, budete muset požádat [tým podpory klienta Workday](https://www.workday.com/partners-services/services/support.html) zobrazíte odpovídající **prostředí** hodnotu.
+   > – Pokud je název domény začíná znakem jiný, budete muset požádat [tým podpory klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) zobrazíte odpovídající **prostředí** hodnotu.
 
 4. V **nastavení SAML** části, proveďte následující kroky:
 
@@ -197,7 +197,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![Konfigurace jednotného přihlašování](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfigurace jednotného přihlašování")
 
-    a.  V **ID poskytovatele služby** textové pole, typ **https://www.workday.com**.
+    a.  V **ID poskytovatele služby** textové pole, typ **https://www.workday.com** .
 
     b. Vyberte **není Deflate žádosti o ověření iniciovaného Zprostředkovatelem přihlašování**.
 

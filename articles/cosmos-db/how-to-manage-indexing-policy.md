@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 179b67306803437ccad085cccfb1b5fd40888261
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 05fd369cfebba03c814507f82755fa6cb6a89400
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240864"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386801"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Spravovat zásady indexování ve službě Azure Cosmos DB
 
@@ -167,7 +167,7 @@ Tady je několik příkladů indexování zásady, které jsou uvedené v jejich
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Zásady odhlásit selektivně vyloučit některé vlastnosti cesty
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -201,7 +201,7 @@ Tady je několik příkladů indexování zásady, které jsou uvedené v jejich
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Zásady vyjádřit výslovný souhlas pro selektivní některé vlastnosti cesty zahrnutí
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/path/to/included/property/?",
@@ -235,7 +235,7 @@ Poznámka: Obecně se doporučuje používat **Odhlásit** zásady služby Azure
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Použití prostorový index na cestu určitou vlastnost
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -280,7 +280,7 @@ Tyto zásady můžete použít v situacích, kde [Time-to-Live (TTL) funkce](tim
 ### <a name="no-indexing"></a>Žádné indexování
 ```
     {
-        "indexingPolicy": "none"
+        "indexingMode": "none"
     }
 ```
 
