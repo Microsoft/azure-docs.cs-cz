@@ -197,7 +197,7 @@ Podporovány jsou následující možnosti lokalizace:
 |WebDocumentationTemplatesCurlForBasicAuth|pro Basic Authorization použijte: --user {uživatelské jméno}:{heslo}|  
 |WebDocumentationTemplatesCurlValuesForPath|Zadejte hodnoty parametrů cesty (zobrazené jako {...}), klíč předplatného a hodnoty parametrů dotazu.|  
 |WebDocumentationTemplatesDeveloperKey|Zadejte klíč předplatného.|  
-|WebDocumentationTemplatesJavaApache|Tato ukázka používá klient Apache HTTP ze součástí HTTP)http://hc.apache.org/httpcomponents-client-ga/)|  
+|WebDocumentationTemplatesJavaApache|Tato ukázka používá klient Apache HTTP ze součástí HTTP(http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|Podle potřeby zadejte hodnoty nepovinných parametrů.|  
 |WebDocumentationTemplatesPhpPackage|Tato ukázka používá balíček HTTP_Request2. (Další informace: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|Podle potřeby zadejte hodnoty parametrů cesty (zobrazené jako {...}) a text žádosti.|  

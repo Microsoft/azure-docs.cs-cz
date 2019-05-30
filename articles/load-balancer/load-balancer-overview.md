@@ -123,7 +123,7 @@ Další informace najdete v tématu věnovaném [omezením služby pro Load Bala
 
 ## <a name="concepts"></a>Koncepty
 
-### <a name = "publicloadbalancer">Veřejný Load Balancer</a>
+### <a name = "publicloadbalancer"></a>Veřejný Load Balancer
 
 Veřejný Load Balancer mapuje veřejnou IP adresu a číslo portu příchozích přenosů na privátní IP adresu a číslo portu virtuálního počítače a naopak pro přenosy odpovědí z virtuálního počítače. Při použití pravidel vyrovnávání zatížení můžete distribuovat určité typy provozu mezi několik virtuálních počítačů nebo služeb. Můžete například rozložit zatížení provozu webových požadavků mezi několik webových serverů.
 
