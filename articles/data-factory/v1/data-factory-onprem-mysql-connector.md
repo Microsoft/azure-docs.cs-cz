@@ -70,10 +70,10 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **OnPremisesMySql** |Ano |
 | server |Název serveru MySQL. |Ano |
-| databáze |Název databáze MySQL. |Ano |
+| database |Název databáze MySQL. |Ano |
 | schema |Název schématu databáze. |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
+| authenticationType |Typ ověřování používaný pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
+| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
 
