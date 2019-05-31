@@ -5,13 +5,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: f7ac4b7434c56d356fa7e88de39e819a112ae234
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/29/2019
+ms.openlocfilehash: d39aaf458a1c67330ee1023ec2598bfb979fa48f
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723393"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393704"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Řešení potíží pomocí Azure HDInsight
 
@@ -28,7 +28,7 @@ ms.locfileid: "64723393"
 
 | Informace o | Přečtěte si tyto články |
 | --- | --- |
-| HDInsight v Linuxu a optimalizace | - [Informace o používání HDInsight v Linuxu](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop paměti a řešení potíží s výkonem](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive výkon dotazů](https://web.archive.org/web/20190217214250/https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
+| HDInsight v Linuxu a optimalizace | - [Informace o používání HDInsight v Linuxu](hdinsight-hadoop-linux-information.md)<br>- [Apache Hadoop paměti a řešení potíží s výkonem](hdinsight-hadoop-stack-trace-error-messages.md)<br>- [Apache Hive výkon dotazů](https://web.archive.org/web/20190217214250/ https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/) |
 | Protokoly a výpisy paměti | - [Protokoly přístupu aplikací Apache Hadoop YARN v Linuxu](hdinsight-hadoop-access-yarn-app-logs-linux.md)<br>- [Povolení výpisů paměti haldy pro služby Apache Hadoop v Linuxu](hdinsight-hadoop-collect-debug-heap-dump-linux.md)<br>- [Analýza protokolů pro HDInsight](hdinsight-debug-jobs.md)|
 | Chyby | - [Vysvětlení a řešení chyb WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [Apache Hive nastavení, chcete-li vyřešit chybu OutofMemory](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Nástroje | - [Optimalizovat dotazy Apache Hive](hdinsight-hadoop-optimize-hive-query.md)<br>- [Nástroje HDInsight IntelliJ](./spark/apache-spark-intellij-tool-plugin.md)<br>- [Nástroje HDInsight Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [Nástroje HDInsight VSCode](hdinsight-for-vscode.md)<br>- [Nástroje HDInsight Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |

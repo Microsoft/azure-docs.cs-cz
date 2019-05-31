@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 633981682bd8820d72a98b3fc6fbd802e0cd2afb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32dc928147af8fbb3c84bdb76e50cee4fdabe17d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759890"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386650"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Průvodce upgradem video Search API
 
@@ -40,7 +40,7 @@ Tento průvodce upgradem identifikuje změny mezi verzí 5 a API pro vyhledává
 
 |Kód|Podřízeného|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Bing vrátí ServerError pokaždé, když dojde k některé z podmínek dílčí kód. Odpověď obsahuje tyto chyby, pokud je stavový kód HTTP 500.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError pokaždé, když dojde k některé z podmínek dílčí kód. Odpověď obsahuje tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
 |RateLimitExceeded||Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud se překročí QPS a 403 překročení QPM.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.
@@ -61,7 +61,7 @@ DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
 HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-Neimplementováno|ServerError.NotImplemented
+NotImplemented|ServerError.NotImplemented
 InvalidAuthorization|InvalidAuthorization
 InvalidAuthorizationMethod|InvalidAuthorization
 MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
@@ -71,11 +71,11 @@ Blokováno|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Přejmenovat `modulesRequested` parametr do dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested).  
+- Přejmenovat `modulesRequested` parametr do dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested).  
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Přejmenovat `nextOffsetAddCount` pole [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) k `nextOffset`. Způsob, jak použít posun byl také změněn. Dříve, byste měli nastavit [posun](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) parametr k dotazu `nextOffset` hodnota plus předchozí hodnotu posunu plus počet videí ve výsledku. Nyní, stačí nastavit `offset` parametr k dotazu `nextOffset` hodnotu.  
+- Přejmenovat `nextOffsetAddCount` pole [videa](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) k `nextOffset`. Způsob, jak použít posun byl také změněn. Dříve, byste měli nastavit [posun](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) parametr k dotazu `nextOffset` hodnota plus předchozí hodnotu posunu plus počet videí ve výsledku. Nyní, stačí nastavit `offset` parametr k dotazu `nextOffset` hodnotu.  
   
-- Změnit datový typ `relatedVideos` pole z `Video[]` k [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videosmodule) (viz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails)).
+- Změnit datový typ `relatedVideos` pole z `Video[]` k [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (viz [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
 

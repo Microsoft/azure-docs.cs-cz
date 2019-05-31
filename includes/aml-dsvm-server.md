@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 02ef0d6c7c8ddc7088938d9c8ea379e3b97f3045
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a882a874574395095e98079cd0f8aa4a4987c749
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158725"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391794"
 ---
 1. [Vytvořit pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/setup-create-workspace.md).
 
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 
-    ```
+    ```CLI
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
@@ -32,9 +32,8 @@ ms.locfileid: "66158725"
 
     * Vytvořit nový pracovní prostor pomocí kódu v [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) Poznámkový blok v naklonovaném adresáři.
 
-
 1. Spusťte server poznámkového bloku v naklonovaném adresáři.
-    
+
     ```shell
     jupyter notebook
     ```

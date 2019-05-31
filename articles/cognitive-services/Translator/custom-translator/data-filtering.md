@@ -2,19 +2,19 @@
 title: Filtrování dat – vlastní Translator
 titleSuffix: Azure Cognitive Services
 description: Při odesílání dokumenty, které se použije pro trénování vlastních systému projít dokumenty řadu zpracování a filtrování kroky pro přípravu pro vzdělávání.
-author: v-pawal
+author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-jansko
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba6d1ed5bc26f121f32fad548e7a17c1f4998851
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513389"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389356"
 ---
 # <a name="data-filtering"></a>Filtrování dat
 
@@ -53,7 +53,7 @@ Filtrování transformace neuvozené klíčová slova do uvozený uvozovacím zn
 * `&gt;` změní `&amp;gt;`
 * `&amp;` změní `&amp;amp;`
 
-## <a name="invalid-characters"></a>Neplatné znaky
+## <a name="invalid-characters"></a>Neplatné znaky.
 Vlastní Translator odebere věty, které obsahují znak Unicode U + FFFD. Znak U + FFFD označuje neúspěšné převod kódování.
 
 ## <a name="next-steps"></a>Další postup

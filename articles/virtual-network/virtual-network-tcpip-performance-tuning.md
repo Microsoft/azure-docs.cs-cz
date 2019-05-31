@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410046"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234997"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Pro virtuální počítače Azure pro optimalizaci výkonu protokolu TCP/IP
 
@@ -79,7 +79,7 @@ Mějte na paměti, že zvýšení MTU nebudou nutně vytvořit síť efektivněj
 
 #### <a name="azure-and-vm-mtu"></a>Azure a MTU virtuálního počítače
 
-Výchozí hodnota MTU pro virtuální počítače Azure je 1500 bajtů. Virtuální síť Azure stack se pokusí o fragment paket 1400 bajtů. Ale zásobník virtuální sítě vám umožní pakety 2,006 bajtů při nastavení bitu v hlavičce protokolu IP.
+Výchozí hodnota MTU pro virtuální počítače Azure je 1500 bajtů. Virtuální síť Azure stack se pokusí o fragment paket 1400 bajtů.
 
 Všimněte si, že zásobníku ve virtuální síti není ze své podstaty neefektivní, protože fragmenty pakety 1400 bajtů, i když mají MTU 1 500 virtuálních počítačů. Vysoké procento síťové pakety jsou mnohem menší než 1400 nebo 1500 bajtů.
 
@@ -264,7 +264,7 @@ Akcelerované síťové služby poskytuje konzistentní ultralow sítích s late
 
 Akcelerované síťové služby zvyšuje výkon tím, že hostovaný virtuální počítač hostitele obejít a navázat datapath přímo s SmartNIC hostitele. Tady je několik výhod akcelerované síťové služby:
 
-- **Nižší latenci za vyšší pakety za sekundu (pps)**: Odebrání virtuálního přepínače datapath eliminuje čas, kdy pakety výdaje v hostiteli pro zpracování zásad a zvyšuje počet paketů, které lze zpracovat ve virtuálním počítači.
+- **Nižší latenci za vyšší pakety za sekundu (pps)** : Odebrání virtuálního přepínače datapath eliminuje čas, kdy pakety výdaje v hostiteli pro zpracování zásad a zvyšuje počet paketů, které lze zpracovat ve virtuálním počítači.
 
 - **Snižuje zpoždění**: Virtuální přepínač zpracování závisí na množství zásady, které je potřeba použít a zatížení procesoru, který provádí zpracování. Snižování zátěže vynucení zásad hardwaru odebere této variabilitě poskytováním pakety přímo k virtuálnímu počítači, odstranění komunikace hostitele pro virtuální počítač a všechny softwaru přerušení a přepnutí kontextu.
 

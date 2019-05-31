@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 2fba8b0056c80a62837682a6820b68f71fba9ea8
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
-ms.translationtype: HT
+ms.openlocfilehash: 0307dc5c83782119f6c10279563b8b9f0a999d28
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65952931"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236884"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -49,7 +49,7 @@ Pro všechny operace virtuálního počítače s SQL serverem vyžaduje připoje
 
 Navázat připojení pomocí jedné z následujících možností:
 
-- **Povolit rozsahy IP adres Azure datacenter**. Tato možnost umožňuje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) v souboru pro stažení. Pro přístup k skupinu zabezpečení sítě (NSG), použijte rutinu Set-AzureNetworkSecurityRule. Pokud jste na seznam povolených pouze oblasti konkrétní IP adresy, budete také potřebovat do seznamu povolených IP adres služby Azure Active Directory (Azure AD) služby, značky, pokud chcete povolit ověřování.
+- **Povolit rozsahy IP adres Azure datacenter**. Tato možnost umožňuje [rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653) v souboru pro stažení. Pro přístup k skupinu zabezpečení sítě (NSG), použijte rutinu Set-AzureNetworkSecurityRule. Pokud jste bezpečné příjemci seznam IP adres pouze konkrétní oblasti, budete také potřebovat k aktualizaci seznamu bezpečných příjemců značka služby Azure Active Directory (Azure AD) Pokud chcete povolit ověřování.
 
 - **Povolit přístup pomocí značek NSG**. Pokud používáte skupiny zabezpečení sítě k omezení připojení, tato možnost přidá do vaší skupiny NSG, která umožňuje odchozí přístup ke službě Azure Backup pomocí značky AzureBackup pravidlo. Kromě této značky, budete také potřebovat odpovídající [pravidla](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) pro službu Azure AD a Azure Storage umožňující připojení k ověřování a dat přenosu. Značka AzureBackup je pouze aktuálně dostupné v prostředí PowerShell. Chcete-li vytvořit pravidlo s použitím AzureBackup značky:
 
@@ -96,7 +96,8 @@ Nepoužívejte následující prvky v názvy databází:
   * Na konci a úvodní mezery
   * Na konci značky vykřičník (!)
   * Koncovou hranatou závorku (])
-  * Počínaje F:\
+  * Středník (;)
+  * Dopředné lomítko "/"
 
 Vytváření aliasů je k dispozici pro nepodporované znaky, ale doporučujeme vám, že se jim vyhnout. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
 
@@ -162,7 +163,7 @@ Jak zjistit databáze spuštěné na virtuálním počítači:
 
      * K ochraně více než 50 databází, nakonfigurujte více záloh.
      * Chcete-li povolit [ ](#enable-auto-protection) celý instance nebo skupiny dostupnosti Always On. V **AUTOPROTECT** rozevíracího seznamu vyberte **ON**a pak vyberte **OK**.
-     
+
     > [!NOTE]
     > [Automatickou ochranu](#enable-auto-protection) funkci nejen umožňuje ochranu pro všechny existující databáze najednou, ale také automaticky chrání všechny nové databáze, přidat do této instance nebo skupiny dostupnosti.  
 
