@@ -73,7 +73,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Zkontrolujte, že vlastnost type je nastavená na **OnPremisesFileServer**. |Ano |
+| type |Zkontrolujte, že vlastnost type je nastavená na **OnPremisesFileServer**. |Ano |
 | host |Určuje kořenová cesta ke složce, která chcete kopírovat. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady. |Ano |
 | userid |Zadejte ID uživatele, který má přístup k serveru. |Ne (když zvolíte encryptedCredential) |
 | password |Zadejte heslo pro uživatele (ID uživatele). |Ne (když zvolíte encryptedCredential |
