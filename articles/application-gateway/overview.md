@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/30/2019
+ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: e2e29bf0068fae5d6f4987ec5c3f2a52b883e4bd
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64947268"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418116"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -29,9 +29,9 @@ Tento typ směrování se označuje jako vyrovnávání zatížení aplikační 
 
 Součástí Azure Application Gateway jsou následující funkce:
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Ukončení protokolu SSL (Secure Sockets Layer)
+## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) ukončení
 
-Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Ale někdy nešifrovaná komunikace s servery nepřijatelnou možností. Může to být kvůli požadavkům na zabezpečení, požadavky na dodržování předpisů, nebo aplikace může přijímat pouze zabezpečená připojení. Pro tyto aplikace služba application gateway podporuje koncové šifrování protokolu SSL.
+Služba Application gateway podporuje ukončení protokolu SSL/TLS na bráně, po čemž provoz typicky teče nešifrován na back-end serverů. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Ale někdy nešifrovaná komunikace s servery nepřijatelnou možností. Může to být kvůli požadavkům na zabezpečení, požadavky na dodržování předpisů, nebo aplikace může přijímat pouze zabezpečená připojení. Pro tyto aplikace služba application gateway podporuje koncové šifrování protokolu SSL/TLS.
 
 ## <a name="autoscaling"></a>Automatické škálování
 

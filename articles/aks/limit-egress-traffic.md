@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 4c2dad687d31597954b023dde9d1b9d69788fe04
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241406"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418131"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - omezení odchozí provoz pro uzly clusteru a řízení přístupu k požadované porty a služby ve službě Azure Kubernetes Service (AKS)
 
@@ -69,7 +69,7 @@ Ve službě AKS existují dvě sady porty a adresy:
 Těchto odchozích portech / pravidla sítě jsou požadovány pro AKS cluster:
 
 * TCP port *443*
-* TCP port *9000* pro front-pod tunel ke komunikaci s koncovým tunelového propojení na serveru rozhraní API.
+* TCP port *9000* a TCP port *22* pro front-pod tunel ke komunikaci s koncovým tunelového propojení na serveru rozhraní API.
 
 Následující plně kvalifikovaný název domény / pravidla aplikací jsou požadovány:
 

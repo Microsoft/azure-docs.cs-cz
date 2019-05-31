@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988291"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417714"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Poznámky k verzi Azure SQL Data Warehouse
 
@@ -23,7 +23,7 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [Azure 
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>Zkontrolujte verzi Azure SQL Data Warehouse
 
-Jak nové funkce se nasazuje pro všechny oblasti, Zkontrolujte prosím verzi nasazené instanci a nejnovější poznámky k verzi Azure SQL data Warehouse pro dostupnost funkcí. Pokud chcete zkontrolovat verzi Azure SQL data Warehouse, připojte se ke svému datovému skladu přes SQL Server Management Studio (SSMS) a spusťte `SELECT @@VERSION AS 'SQL Data Warehouse';` vrátí aktuální verzi Azure SQL data Warehouse.
+Jak nové funkce se nasazuje pro všechny oblasti, zkontrolujte verzi nasazení vaší instance a nejnovější poznámky k verzi Azure SQL data Warehouse pro dostupnosti funkce. Pokud chcete zkontrolovat verzi Azure SQL data Warehouse, připojte se ke svému datovému skladu přes SQL Server Management Studio (SSMS) a spusťte `SELECT @@VERSION AS 'SQL Data Warehouse';` vrátí aktuální verzi Azure SQL data Warehouse.
 
 Příklad výstupu: ![Verze SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
 
@@ -38,6 +38,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 |**Další podpora T-SQL**|Zařízení surface oblasti jazyka T-SQL pro SQL Data Warehouse rozšířilo a zahrnuje podporu pro: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**Funkce JSON**|Obchodní analytici teď můžete použít dobře známého jazyka T-SQL k dotazování a manipulaci s dokumenty, které jsou formátovány jako data JSON pomocí následující nové funkce JSON ve službě Azure Data Warehouse:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Sady výsledků dotazu do mezipaměti (Preview)**|Ukládání do mezipaměti sady výsledků umožňuje rychlé pomalejší doby odezvy při snížení čas strávený při vytváření přehledů pro specialisty na obchodní analýzu a generování sestav uživatelů. Další informace naleznete v tématu:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Příkaz ALTER DATABASE nastavit možnosti (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [Sada výsledků dotazu nastavení ukládání do mezipaměti (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+|**Seřazené clusterovaný index columnstore (Preview)**|Columnstore je klíčem k ukládání a efektivní dotazování na velké objemy dat. Pro každou tabulku rozdělí příchozích dat do skupiny řádků a každý sloupec skupina řádků formulářů Segment na disku.  Seřazené Clusterované columnstore optimalizovat indexy další spuštění dotazu povolením odstranění efektivní segmentu.   Další informace naleznete v tématu:</br> -  [Vytvoření tabulky (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>2019. března
 
@@ -72,7 +73,7 @@ Použití data identifikovat pro potvrzení, který uvolní se nastavily pro vá
 
 | Dokumentace k vylepšení | Podrobnosti |
 | --- | --- |
-|žádný | |
+|None | |
 | | |
 
 ## <a name="december-2018"></a>Prosinec 2018

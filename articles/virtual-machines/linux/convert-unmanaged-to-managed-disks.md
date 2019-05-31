@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7c1167a6170cdc0b897c57a51c417a9312b6f41a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eb6a5ed74073a1a31fc9bb1972266e76c7bc2782
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794158"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418480"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Linuxem z nespravovaných disků na managed disks
 
@@ -34,6 +34,7 @@ V tomto článku se dozvíte, jak převést virtuální počítače pomocí rozh
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
+* Původní virtuální pevné disky a účet úložiště používané virtuálním počítačem před převodem se neodstraní. Budou se vám za ně i nadále účtovat poplatky. Abyste se vyhnuli účtování poplatků za tyto artefakty, po ověření dokončení převodu odstraňte původní objekty blob virtuálních pevných disků. Pokud je potřeba najít tyto nepřipojené disky, aby bylo možné je odstranit, najdete v článku [vyhledat a odstranit nepřipojené spravovaných a nespravovaných disků v Azure](find-unattached-disks.md).
 
 ## <a name="convert-single-instance-vms"></a>Převést virtuální počítače s jednou instancí
 Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na managed disks. (Pokud jsou vaše virtuální počítače ve skupině dostupnosti, najdete v další části.) Tento postup můžete použít k převodu virtuálních počítačů z úrovně premium (SSD) nespravované disky na spravované disky úrovně premium, nebo z úrovně standard (HDD), nespravované disky na spravované disky úrovně standard.

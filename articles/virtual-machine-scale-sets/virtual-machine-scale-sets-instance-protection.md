@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 6c271c2c9feb1520951b2a8e301da4878970d60a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259419"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416551"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Nastavená ochrana instance pro virtuální počítač Azure škálování instance (Preview)
 Škálovací sady virtuálních počítačů Azure umožňují lepší pružnost úloh prostřednictvím [automatického škálování](virtual-machine-scale-sets-autoscale-overview.md), tak můžete konfigurovat při škálovat infrastrukturu, a když se škáluje na méně instancí. Škálovací sady také umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů prostřednictvím různých [zásad upgradu](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) nastavení. Aktualizace můžete konfigurovat v modelu škálovací sady a novou konfiguraci platí automaticky pro všechny instance škálovací sady Pokud jste nastavili zásady upgradu automaticky nebo Hromadná.
@@ -30,7 +30,7 @@ Jak vaše aplikace zpracovává přenosy, nesmí být instance situací, ve kter
 Tento článek popisuje, jak můžete použít a využít možnosti ochrany jinou instanci s instancí škálovací sady.
 
 > [!NOTE]
->Ochrana instance je aktuálně ve verzi Public Preview. Bez výslovného souhlasu postup je potřeba pro použití funkce ve verzi public preview je popsáno níže. Instance protection ve verzi preview se podporuje jenom s rozhraním API verze 2019-03-01 a novějších.
+>Ochrana instance je aktuálně ve verzi Public Preview. Bez výslovného souhlasu postup je potřeba pro použití funkce ve verzi public preview je popsáno níže. Instance protection ve verzi preview se podporuje jenom s rozhraním API verze 2019-03-01 a ve škálovacích sadách použití spravovaných disků.
 
 ## <a name="types-of-instance-protection"></a>Typy instancí ochrany
 Škálovací sady poskytují možnosti ochrany instance dva typy:

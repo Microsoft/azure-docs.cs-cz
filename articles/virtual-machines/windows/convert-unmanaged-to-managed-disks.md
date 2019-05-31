@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9cbee4f9f4f694510e852fe3790c8242ef346576
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796583"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416079"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na managed disks
 
@@ -37,7 +37,7 @@ Pokud máte existující Windows virtuální počítače (VM), které používaj
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-
+* Původní virtuální pevné disky a účet úložiště používané virtuálním počítačem před převodem se neodstraní. Budou se vám za ně i nadále účtovat poplatky. Abyste se vyhnuli účtování poplatků za tyto artefakty, po ověření dokončení převodu odstraňte původní objekty blob virtuálních pevných disků. Pokud je potřeba najít tyto nepřipojené disky, aby bylo možné je odstranit, najdete v článku [vyhledat a odstranit nepřipojené spravovaných a nespravovaných disků v Azure](find-unattached-disks.md).
 
 
 ## <a name="convert-single-instance-vms"></a>Převést virtuální počítače s jednou instancí

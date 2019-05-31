@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 742f1359d928aa05a8b8d36bde2ccf022db93b79
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564846"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418253"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
@@ -30,7 +30,7 @@ Tento článek shrnuje, co je podporováno při použití [Azure Site Recovery](
 
 **Operační systém** | **Podrobnosti**
 --- | ---
-Server vCenter | vCenter 5.5, 6.0 a 6.5<br/><br/> Pokud spustíte 6.0 nebo 6.5, mějte na paměti, že jsou podporovány pouze 5.5 se v této funkce.
+vCenter server | vCenter 5.5, 6.0 a 6.5<br/><br/> Pokud spustíte 6.0 nebo 6.5, mějte na paměti, že jsou podporovány pouze 5.5 se v této funkce.
 
 
 ## <a name="replicated-vm-support"></a>Replikované podpora virtuálních počítačů
@@ -88,7 +88,7 @@ VHD/VHDX | neuvedeno
 Virtuální počítače 2. generace | neuvedeno 
 Sdílený disk clusteru | Ano 
 Šifrovaného disku | Ne 
-ROZHRANÍ UEFI| Ano 
+UEFI| Ano 
 NFS | Ne 
 SMB 3.0 | Ne 
 RDM | Ano 

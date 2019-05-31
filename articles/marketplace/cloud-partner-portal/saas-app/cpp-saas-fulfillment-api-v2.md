@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: d240fd7097f0dc284377063df72efd888c09adb6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 432fef4c5dec697fecce694e251dd533aa1cbf07
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258099"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418015"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS splnění rozhraní API verze 2 
 
@@ -122,11 +122,11 @@ Přeloží neprůhledné token k odběru služby SaaS.<br>
 ```json
 Response body:
 {
-    "subscriptionId": "<guid>",  
+    "id": "<guid>",  
     "subscriptionName": "Contoso Cloud Solution",
     "offerId": "offer1",
     "planId": "silver",
-    "quantity": "20" 
+    "quantity": "20" // This will not be returned if the "quantity" = 1
 }
 ```
 

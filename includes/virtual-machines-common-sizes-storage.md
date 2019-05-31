@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c85685f9ace70ea94eea158d91f0d8b01827a43
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 5123ee3f65744f3d0c255712efe990b01be58e26
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391336"
+ms.locfileid: "66420772"
 ---
 Úložiště optimalizované velikosti virtuálních počítačů nabízejí Vysoká propustnost disku a vstupně-výstupní operace a jsou ideální pro velké objemy dat, SQL, NoSQL databáze, datových skladů a velké transakční databáze.  Mezi příklady patří Cassandra, MongoDB, Cloudera a Redis. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i místní úložiště propustnost a šířku pásma sítě pro jednotlivé optimalizované velikosti.
 
@@ -41,7 +41,7 @@ Premium Storage ukládání do mezipaměti: Nepodporuje se
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000 / 4000 | 16000/320 | 32 | 4 / 6400  |
 | Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1,5 MILIÓNU / 8000    | 32000/640 | 32 | 8 / 12800 |
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9 M / 16000   | 64000/1280 | 32 | 8 / 16000+ |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20000   | 80000/1400 | 32 | 8 / 16000+ |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20000   | 80000/1400 | 32 | 8 / 16000+ |
 
 <sup>1</sup> virtuální počítače řady Lsv2 mají standardní disk počítačových prostředků na základě temp SCSI pro použití souborů stránkování/odkládacího souboru operačního systému (D: ve Windows, /dev/sdb v Linuxu). Tento disk obsahuje 80 GB úložiště, 4 000 vstupně-výstupních operací a 80 MB/s přenosová rychlost pro každých 8 virtuálních procesorů (třeba Standard_L80s_v2 poskytuje 800 GB na 40 000 vstupně-výstupních operací a 800 MB/s). Tím se zajistí, že jednotky NVMe může plně vyhrazený pro použití aplikace. Tento disk je dočasný a ztratí se všechna data na Zastavit/uvolnit.
 
@@ -50,6 +50,18 @@ Premium Storage ukládání do mezipaměti: Nepodporuje se
 <sup>3</sup> technologie Hyper-V NVMe přímé poskytuje neomezený přístup k místní jednotky NVMe bezpečně mapovat do prostoru hostovaného virtuálního počítače.  Dosažení maximálního výkonu vyžaduje použití nejnovější WS2019 nebo Ubuntu 18.04 nebo 16.04 z Azure Marketplace.  Rychlost zápisu se liší v závislosti na velikosti vstupně-výstupních operací, jednotky zatížení a využití kapacity.
 
 <sup>4</sup> virtuální počítače řady Lsv2 neposkytují mezipaměti hostitele pro datový disk, jak vůbec nevyužívá Lsv2 úlohy.  Virtuální počítače Lsv2 však zvládne volby disku dočasné disky operačního systému virtuálního počítače Azure (až 30 GB).
+
+<sup>5</sup> virtuálních počítačů s více než 64 virtuálních procesorů vyžadovat jeden z těchto podporovaných hostovaných operačních systémů:
+- Windows Server 2016 nebo novější
+- Ubuntu 16.04 LTS nebo novější, s využitím Azure vyladěný jádra (4.15 jádra nebo novější)
+- SLES 12 SP2 nebo novější
+- RHEL nebo CentOS verze 6.7 do 6.10 s balíčkem 4.3.1 LIS poskytovaný společností Microsoft (nebo novější) nainstalované
+- RHEL nebo CentOS verze 7.3, s balíčkem poskytovaný společností Microsoft LIS 4.2.1 (nebo novější) nainstalované
+- Verze RHEL nebo CentOS 7.4 nebo novější
+- Oracle Linux s UEK4 nebo novější
+- Debian 9 s zpětné jádra, Debian, 10 nebo novější
+- CoreOS s 4.14 jádra nebo novější
+
 
 ## <a name="size-table-definitions"></a>Definice tabulky velikostí
 
