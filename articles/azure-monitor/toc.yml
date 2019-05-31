@@ -837,6 +837,8 @@
                   href: platform/action-groups-create-resource-manager-template.md
                 - name: Implementace akce aplikace logiky
                   href: platform/action-groups-logic-app.md
+                - name: Integrace schématu běžných upozornění s Logic Apps
+                  href: platform/alerts-common-schema-integrations.md
             - name: Řešení Alert Managementu
               href: platform/alert-management-solution.md
             - name: Uživatelské rozhraní upozornění

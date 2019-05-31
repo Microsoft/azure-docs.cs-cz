@@ -287,6 +287,8 @@
               href: application-proxy-connector-installation-problem.md
             - name: Potíže s přihlašováním
               href: application-sign-in-problem-on-premises-application-proxy.md
+            - name: Problémy s CORS v proxy aplikací
+              href: application-proxy-understand-cors-issues.md
 - name: Referenční informace
   items:
     - name: Historie verzí Proxy aplikací
