@@ -69,8 +69,8 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost type musí být nastavená na: **OnPremisesMongoDb** |Ano |
 | server |IP adresa nebo název hostitele serveru MongoDB. |Ano |
 | port |Port TCP, který MongoDB server používá k naslouchání pro připojení klientů. |Volitelné, výchozí hodnota: 27017 |
-| authenticationType. |Basic nebo Anonymous. |Ano |
-| uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
+| authenticationType |Basic nebo Anonymous. |Ano |
+| username |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | password |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Nepovinné (Pokud se používá základní ověřování). Výchozí: používá účet správce a databáze určená vlastnost databaseName. |
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
