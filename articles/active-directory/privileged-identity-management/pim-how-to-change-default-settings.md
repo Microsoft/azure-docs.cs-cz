@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 05/31/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb8944578caf00fac5ca430e411f044a875f6af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bc7d3ffcb56251825bf5f6d760de647938f1ead
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288674"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417873"
 ---
 # <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurace nastavení role Azure AD v PIM
 
@@ -45,7 +45,7 @@ Postupujte podle těchto kroků a otevřete nastavení pro role Azure AD.
 
     Na stránce nastavení pro každou roli existuje několik nastavení, která můžete konfigurovat. Tato nastavení ovlivní jenom uživatele, kteří jsou **oprávněné** přiřazení, ne **trvalé** přiřazení.
 
-## <a name="activations"></a>Aktivace
+## <a name="activations"></a>Počet aktivací
 
 Použití **aktivací** posuvník nastavit maximální dobu v hodinách, že role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí 1 až 72 hodin.
 
@@ -55,7 +55,7 @@ Použití **oznámení** přepínač k určení, jestli správci obdrží e-mail
 
 Pokud je nastavena na **povolit**, oznámení se odesílají do:
 
-- Správce privilegované role
+- Správce privilegované Role
 - Správce zabezpečení
 - Globální správce
 
@@ -72,21 +72,21 @@ Použití **ověřování službou Multi-Factor Authentication** přepínač k u
 * Uživatelé, kteří mají účty Microsoft pro jejich e-mailové adresy (obvykle @outlook.com, ale ne vždy) nejde zaregistrovat pro Azure MFA. Pokud chcete přiřazení rolí uživatelům s účty Microsoft, by měl daly trvalých správců nebo zakázání MFA pro danou roli.
 * Vícefaktorové ověřování pro vysoce privilegované role nelze zakázat pro službu Azure AD a Office 365. Toto je funkce bezpečný přístup z více, protože pracovníci v těchto rolích by měly být pečlivě chráněné:  
   
+  * Azure Information Protection Administrator
   * Správce fakturace
-  * Správce cloudových aplikací
+  * Správce cloudové aplikace
   * Správce dodržování předpisů
   * Správce podmíněného přístupu
-  * Správce služeb CRM
-  * Schvalovatel přístupu ke Customer LockBoxu
-  * Zapisovače do adresáře
+  * Správce služby CRM
+  * Schvalovatel přístupu Lockboxu zákazníka
+  * Uživatelé zapisující do adresáře
   * Správce Exchange
   * Globální správce
-  * Správce služby Information Protection
   * Správce služby Intune
-  * Správce služeb Power BI
-  * Správce privilegované role
+  * Správce služby Power BI
+  * Správce privilegované Role
   * Správce zabezpečení
-  * Správce služeb SharePointu
+  * Správce služeb Sharepointu
   * Správce Skypu pro firmy
   * Správce uživatelů
 

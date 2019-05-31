@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a1d2cc50b405df2c71d94e74973b3291a4e908cb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 04808dda193a3a472813cda852a1a2f24d00e112
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393486"
+ms.locfileid: "66418003"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
@@ -25,7 +25,7 @@ Pomocí služby Media Services můžete doručovat na vyžádání a živé obsa
 
 Postup určení možností šifrování na datový proud, je potřeba vytvořit [streamování zásad](streaming-policy-concept.md) a přidružte jej k vaší [Lokátor streamování](streaming-locators-concept.md). Vytvoříte [zásad klíče k obsahu](https://docs.microsoft.com/rest/api/media/contentkeypolicies) nakonfigurovat jak klíč obsahu (, který zajišťuje zabezpečený přístup k vaší [prostředky](assets-concept.md)) se doručí do koncovým klientům. Je nutné nastavit požadavky (omezení) na obsahu zásad klíče, které musí splnit, aby klíče se zadaným nastavením, který bude doručen do klientů. Tato zásada obsahu klíč není potřeba pro streamování nebo stažení. 
 
-Obvykle přidružit vaše **obsahu zásad klíče** s vaší **Lokátor streamování**. Alternativně můžete zadat obsahu zásad klíče uvnitř zásadu streamování (při vytváření vlastních zásad streamování pro pokročilé scénáře). 
+Obvykle přidružit vaše **obsahu zásad klíče** s vaší [Lokátor streamování](streaming-locators-concept.md). Alternativně můžete zadat obsahu zásad klíče uvnitř [streamování zásad](streaming-policy-concept.md) (při vytváření vlastních zásad streamování pro pokročilé scénáře). 
 
 Doporučujeme nechat Media Services automaticky vygenerovat symetrické klíče. Obvykle by použít dlouhodobá klíč a provedení kontroly existence zásady s **získat**. K získání klíče, je třeba volat metodu samostatnou akci pro tajné kódy a přihlašovací údaje, najdete v následujícím příkladu.
 

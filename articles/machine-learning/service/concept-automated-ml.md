@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: df666843b8a42711aa860a6f8c5e916fb68f036d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 16d100256f9252b478500488c2dc5a01c7e6a0b5
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389908"
+ms.locfileid: "66418061"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -155,9 +155,11 @@ Pomocí služby Azure Machine Learning slouží k sestavení modelu Python a jeh
 
 Automatizované ML je také dostupná v dalších řešení Microsoftu, jako:
 
-+ V aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)
-+ [V HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md), kde horizontální navýšení kapacity automatizované ML trénovací úlohy ve Sparku v clusterech HDInsight paralelně.
-+ [V Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)
+|Integrace|Popis
+|------------|-----------
+|ML.NET|Výběr automatického modelu a školení v aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s ML.NET automatizované ML (Preview). [Další informace](https://docs.microsoft.com/dotnet/machine-learning/automl-overview).
+|HDIsnight|Horizontální navýšení kapacity vašeho automatizované úlohy trénování ML ve Sparku v HDInsight clustery paralelně. [Další informace](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md).
+|PowerBI|Vyvolání modelů strojového učení přímo v Power BI (Preview). [Další informace](https://docs.microsoft.com/power-bi/service-machine-learning-automated).
 
 ## <a name="next-steps"></a>Další postup
 

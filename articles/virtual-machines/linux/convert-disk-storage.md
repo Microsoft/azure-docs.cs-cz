@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 2e7eb455a53abbe2df6ff72f091a599665732429
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bc42bcbf7149f88eb895317a411c7acd5913d63d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724897"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417696"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Převést Azure spravované diskové úložiště úroveň ze Standard na Premium a Premium na Standard
 
-Existují čtyři [typy disků](disks-types.md) Azure spravované disky: Azure Ultra diskové úložiště, Premium SSD, SSD na úrovni Standard a Standard pevný disk. Můžete snadno přepínat mezi Premium SSD, SSD na úrovni Standard a standardní pevný disk, na základě vašich potřeb výkonu s malý výpadek. Tato funkce není podporována pro nespravované disky nebo Ultra diskové úložiště. Ale můžete snadno [převést nespravované na spravované disky](convert-unmanaged-to-managed-disks.md) mohli přepínat mezi typů disků nevidí.
+Existují čtyři typy disků Azure spravované disky: Azure ultra SSD disky (preview), premium SSD, SSD na úrovni standard a standardní pevný disk. Můžete přepínat mezi tři typy disků GA (premium SSD, SSD na úrovni standard a standardní HDD) na základě vašich potřeb výkonu. Nejste ještě možné přepnout z nebo na ultra SSD, je nutné nasadit nový.
+
+Tato funkce není podporována pro nespravované disky. Ale můžete snadno [převést nespravovaného disku na spravovaný disk](convert-unmanaged-to-managed-disks.md) mohli přepínat mezi typů disků nevidí.
 
 Tento článek ukazuje, jak převést spravovaných disků z úrovně Standard na Premium a Premium na Standard s využitím rozhraní příkazového řádku Azure. Pro instalaci nebo upgrade nástroj, najdete v článku [instalace Azure CLI](/cli/azure/install-azure-cli).
 

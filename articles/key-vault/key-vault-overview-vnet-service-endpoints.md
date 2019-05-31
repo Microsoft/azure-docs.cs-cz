@@ -8,12 +8,12 @@ manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d003e851dcfa77b18a67450946a71e4a13ce495c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00274f8e15006f6f58a7c5f153bf0bbc0d26afb9
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700977"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416440"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služeb virtuální sítě pro Azure Key Vault
 
@@ -53,7 +53,7 @@ Další informace najdete v tématu [virtuální sítí a bran firewall nakonfig
 > Mějte na paměti následující omezení konfigurace:
 > * Jsou povoleny maximálně 127 pravidla virtuální sítě a 127 pravidla IPv4. 
 > * Rozsahy, které využívají malé adres "/ 31" nebo "/ 32" předpony velikosti se nepodporují. Místo toho nakonfigurujte tyto rozsahy pomocí jednotlivých pravidel IP adresu.
-> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami **10.**, **172.16-31**, a **192.168.**. 
+> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami **10.** , **172.16-31**, a **192.168.** . 
 > * V současnosti jsou podporované jenom adresy IPv4.
 
 ## <a name="trusted-services"></a>Důvěryhodné služby
@@ -63,12 +63,12 @@ Tady je seznam důvěryhodných služeb, které můžou přistupovat k trezoru k
 |Důvěryhodná služba|Scénáře použití|
 | --- | --- |
 |Služba nasazení Azure Virtual Machines|[Nasazení certifikátů do virtuálních počítačů z trezoru klíčů spravovaných zákazníkem](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/).|
-|Služba nasazení šablon Azure Resource Manager|[Předání zabezpečených hodnot během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
+|Služba nasazení šablon Azure Resource Manageru|[Předání zabezpečených hodnot během nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).|
 |Služba šifrování svazků Azure Disk Encryption|Povolit přístup k klíč nástroje BitLocker (virtuální počítač Windows) nebo heslo DM (virtuální počítač s Linuxem) a šifrovací klíč klíče, během nasazení virtuálních počítačů. Díky tomu [Azure Disk Encryption](../security/azure-security-disk-encryption.md).|
 |Azure Backup|Povolit zálohování a obnovení relevantní klíčů a tajných kódů při zálohování virtuálních počítačů Azure s použitím [Azure Backup](../backup/backup-introduction-to-azure-backup.md).|
 |Exchange Online a SharePoint Online|Povolit přístup k klíč zákazníka pro šifrování služby Azure Storage s [klíč zákazníka](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
 |Azure Information Protection|Povolit přístup ke klíči tenanta pro [služby Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
-|Azure App Service|[Nasaďte certifikát pro Azure Web App přes Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/).|
+|Azure App Service|[Nasaďte certifikát pro Azure Web App přes Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
 |Azure SQL Database|[Transparentní šifrování dat s podporou vlastního klíče pro Azure SQL Database a Data Warehouse](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Šifrování dat v Azure Data Lake Store](../data-lake-store/data-lake-store-encryption.md) pomocí klíče spravovaného zákazníkem.|

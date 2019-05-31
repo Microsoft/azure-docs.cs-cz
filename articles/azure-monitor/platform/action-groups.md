@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 5/10/2019
+ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544484"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416994"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -35,9 +35,9 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 1. V [portál](https://portal.azure.com)vyberte **monitorování**. **Monitorování** podokně konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
 
     !["Monitor" service](./media/action-groups/home-monitor.png)
-1. Vyberte **výstrahy** vyberte **spravovat skupiny akcí**.
+1. Vyberte **výstrahy** vyberte **spravovat akce**.
 
-    ![Správa skupin akcí na tlačítko](./media/action-groups/manage-action-groups.png)
+    ![Správa tlačítko akce](./media/action-groups/manage-action-groups.png)
 1. Vyberte **přidat skupinu akcí**a přejít k vyplnění polí.
 
     ![Příkaz "Přidat skupinu akcí"](./media/action-groups/add-action-group.png)
@@ -102,6 +102,8 @@ Zdrojové rozsahy IP adres
  - 13.106.57.196
  - 52.244.68.117
  - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

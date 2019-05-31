@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920519"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418215"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro Azure Active Directory přihlašovací stránky
 
@@ -32,19 +32,19 @@ Pro podporu většímu počtu přihlašovací údaje a zlepšit tak použitelnos
 
 Další výhodou této práce je vylepšené chybové zprávy. Tady je několik příkladů vylepšení chybových zpráv při přihlašování k aplikaci, která podporuje jenom uživatele Azure Active Directory.
 
-1. Uživatelské jméno je zadáno chybně nebo uživatelské jméno nebylo dosud nebyly synchronizovány do Azure AD:
+- Uživatelské jméno je zadáno chybně nebo uživatelské jméno nebylo dosud nebyly synchronizovány do Azure AD:
   
     ![uživatelské jméno je zadáno chybně nebo nebyl nalezen](./media/signin-realm-discovery/typo-username.png)
   
-2. Název domény je chybně:
+- Název domény je chybně:
   
     ![název domény je zadáno chybně nebo nebyl nalezen](./media/signin-realm-discovery/typo-domain.png)
   
-3. Uživatel se pokusí přihlásit pomocí známých uživatelů domény:
+- Uživatel se pokusí přihlásit pomocí známých uživatelů domény:
   
     ![Přihlaste se pomocí známých uživatelů domény](./media/signin-realm-discovery/consumer-domain.png)
   
-4. Heslo je chybně se zadala některá, ale uživatelské jméno je správné:  
+- Heslo je chybně se zadala některá, ale uživatelské jméno je správné:  
   
     ![heslo je chybně pomocí vhodného uživatelského jména](./media/signin-realm-discovery/incorrect-password.png)
   

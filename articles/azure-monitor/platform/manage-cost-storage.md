@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e0b9faeb796653abb4c061884ab2fbb78e867e71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918985"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417865"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Spravovat využití a nákladů s protokoly Azure monitoru
 
@@ -151,13 +151,13 @@ Větší využití je způsobeno jedním nebo obojím z těchto aspektů:
 
 ## <a name="understanding-nodes-sending-data"></a>Vysvětlení uzlů odesílajících data
 
-Chcete-li pochopit počet počítačů (uzlů), vytváření sestav dat každý den během posledního měsíce, použijte
+Chcete-li pochopit počet počítačů vytvářejících sestavy prezenční signály každý den během posledního měsíce, použijte
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (některé typy dat jsou zdarma), využívat `_IsBillable` [vlastnost](log-standard-properties.md#_isbillable):
+Pokud chcete získat seznam počítačů, které se bude účtovat jako uzly, pokud je pracovní prostor ve starší verzi uzlu na cenovou úroveň, vyhledejte uzly, které odesílají **účtuje datové typy** (některé typy dat jsou zdarma). Chcete-li to provést, použijte `_IsBillable` [vlastnost](log-standard-properties.md#_isbillable) a použití pole nejvíce vlevo plně kvalifikovaný název domény. Vrátí seznam počítačů se fakturuje daty:
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -165,15 +165,24 @@ Zobrazíte seznam počítačů odesílajících **účtuje datové typy** (někt
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy. Tento dotaz nahrazuje starý způsob dotazování informace pro počítač s datovým typem využití.  
-
-To je možné rozšířit na vrátí počet počítačů za hodinu, které odesílají účtuje datové typy (což je způsob výpočtu Log Analytics fakturovatelné uzly pro starší verzi uzlu na cenovou úroveň):
+Počet účtovaných uzly zjištěné se dá odhadnout jako: 
 
 `union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| billableNodes=dcount(computerName)`
+
+> [!NOTE]
+> Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy. Tento dotaz nahrazuje starý způsob dotazování informace pro počítač s datovým typem využití.  
+
+Jak získat počet počítačů za hodinu, odesílají se fakturuje datové typy je přesnější výpočty, co se ve skutečnosti se jim nebudou účtovat poplatky. (Pro pracovní prostory v cenové úrovni starší verze na jeden uzel, Log Analytics vypočítá počet uzlů, které je potřeba se fakturuje po hodinách.) 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
 
 ## <a name="understanding-ingested-data-volume"></a>Principy ingestuje datový svazek
 
@@ -197,24 +206,19 @@ Zobrazíte **velikost** účtovaných událostí může ingestovat počítače, 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 `_IsBillable` [Vlastnost](log-standard-properties.md#_isbillable) Určuje, zda přijatých dat budou účtovat poplatky.
 
-Pokud chcete zobrazit **počet** událostí může ingestovat počítače, použijte
-
-```kusto
-union withsource = tt *
-| summarize count() by Computer | sort by count_ nulls last
-```
-
-Pokud chcete zobrazit počet účtovaných událostí může ingestovat počítače, použijte 
+Pokud chcete zobrazit počet **fakturovatelné** události může ingestovat počítače, použijte 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize count() by Computer  | sort by count_ nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize eventCount=count() by computerName  | sort by count_ nulls last
 ```
 
 Pokud chcete vidět, že počet účtovaných datové typy jsou odesílání dat k určitému počítači, použijte:

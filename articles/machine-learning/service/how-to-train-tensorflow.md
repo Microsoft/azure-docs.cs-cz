@@ -10,18 +10,20 @@ ms.author: minxia
 author: mx-iao
 ms.date: 05/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f3d675d0eac1255974995fd7717192ec6a21bac1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 314917ce91407206d786b191df118893696ac82c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400217"
+ms.locfileid: "66417126"
 ---
-# <a name="use-azure-machine-learning-service-to-train-and-register-tensorflow-models"></a>Použijte službu Azure Machine Learning k trénování a registraci TensorFlow modelů
+# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Trénování a registraci TensorFlow modely ve velkém měřítku ve službě Azure Machine Learning
 
 Tento článek popisuje, jak pro trénování a zaregistrujte model TensorFlow pomocí služby Azure Machine Learning. Budeme používat Oblíbené [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/) klasifikovat ručně číslic, pomocí hluboké neuronové sítě využívající TensorFlow.
 
-Služba Azure Machine Learning budete moct rychle horizontálně navýšit kapacitu vaší úlohy trénování open source pomocí elastických cloudových výpočetních prostředků. Budete také moci sledovat tréninkových spuštění, verze modelů, nasazení modelů a mnoho dalšího. Ať už vyvíjíte modelu TensorFlow od základů nebo existující model spojili do cloudu, služby Azure Machine Learning je připraven vám pomůže vytvářet modely připravené pro produkční prostředí.
+Služba Azure Machine Learning budete moct rychle horizontálně navýšit kapacitu vaší úlohy trénování open source pomocí elastických cloudových výpočetních prostředků. Budete také moci sledovat tréninkových spuštění, verze modelů, nasazení modelů a mnoho dalšího. 
+
+Ať už vyvíjíte modelu TensorFlow od základů nebo existující model spojili do cloudu, můžete vytvářet modely připravené pro produkční prostředí pomocí služby Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Požadavky
 

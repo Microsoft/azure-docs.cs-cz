@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79082056403460a7f1be50c386960ce1476c8ad
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5044567396d832d3c3b2b46e3c3e90e053834595
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397920"
+ms.locfileid: "66417894"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -58,6 +58,8 @@ K dispozici jsou následující role správce:
   * Vlastníci skupiny zabezpečení a skupiny Office 365, kteří můžou spravovat členství ve skupině. Těmto skupinám udělit přístup k citlivým nebo soukromých informací nebo kritické konfigurace ve službě Azure AD a jinde.
   * Správci v dalších službách mimo Azure AD, jako jsou systémy Exchange Online, Office zabezpečení a dodržování předpisů System Center a lidské zdroje.
   * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
+
+* **[Azure Information Protection Administrator](#azure-information-protection-administrator)** : Uživatelé s touto rolí mají všechna oprávnění ve službě Azure Information Protection. Tato role umožňuje konfigurace popisků pro zásady Azure Information Protection, spravovat šablony ochrany a zapnutí ochrany. Tato role neuděluje žádná oprávnění v Centrum Identity Protection, Privileged Identity Management, monitorování Office 365 Service Health, nebo Office 365 Centru zabezpečení a dodržování předpisů.
 
 * **[Správce toku uživatele B2C](#b2c-user-flow-administrator)** : Uživatelé s touto rolí můžou vytvářet a spravovat toky uživatelů B2C (označuje se také jako "integrované" zásady) na webu Azure Portal. Vytvořením nebo úpravou toky uživatelů, tito uživatelé mohou změnit obsah html/CSS a JavaScriptu uživatelské prostředí, změnit požadavky na vícefaktorové ověřování na tok uživatele, změnit deklarace identity v tokenu a nastavení relace pro všechny zásady v tenantovi. Na druhé straně této role není patří schopnost zkontrolujte data uživatele, nebo provést změny atributů, které jsou součástí schématu tenanta. Změní na architekturu rozhraní identit (označuje se také jako vlastní) zásady je také mimo obor této role.
 
@@ -135,8 +137,6 @@ K dispozici jsou následující role správce:
 
 * **[Odesílatel pozvánky hostů](#guest-inviter)** : Uživatelé v této roli můžou spravovat pozvánky uživatelů typu Host Azure Active Directory s B2B při **členové můžou posílat pozvánky** uživatelské nastavení je Ne. Další informace o spolupráci B2B v [o aplikaci Azure AD B2B collaboration](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nezahrnuje žádné jiné oprávnění.
 
-* **[Správce Information Protection](#information-protection-administrator)** : Uživatelé s touto rolí mají všechna oprávnění ve službě Azure Information Protection. Tato role umožňuje konfigurace popisků pro zásady Azure Information Protection, spravovat šablony ochrany a zapnutí ochrany. Tato role neuděluje žádná oprávnění v Centrum Identity Protection, Privileged Identity Management, monitorování Office 365 Service Health, nebo Office 365 Centru zabezpečení a dodržování předpisů.
-
 * **[Správce Intune](#intune-service-administrator)** : Uživatelé s touto rolí mají globální oprávnění v Microsoft Intune Online, pokud služba není k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přiřazovat zásady, jakož i vytvářet a spravovat skupiny. Další informace na [řízení správy na základě rolí (RBAC) v Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role je označena jako "Správce služby Intune". Je "Správce Intune" v [webu Azure portal](https://portal.azure.com).
@@ -185,7 +185,7 @@ Kromě toho má uživatel přístup sestavy týkající se přijetí a využití
   * Vynutí pro opětovné zaregistrování proti existující bez hesla k přihlášení (třeba vícefaktorové ověřování, FIDO)
   * Odvolat "zapamatovat MFA na zařízení", výzvy pro vícefaktorové ověřování pro příští přihlášení
 
-* **[Privilegované Role správce](#privileged-role-administrator)** : Uživatelé s touto rolí můžou Spravovat přiřazení rolí v Azure Active Directory, i v rámci Azure AD Privileged Identity Management. Kromě toho tato role umožňuje spravovat všechny aspekty služby Privileged Identity Management.
+* **[Privilegované Role správce](#privileged-role-administrator)** : Uživatelé s touto rolí můžou Spravovat přiřazení rolí v Azure Active Directory, i v rámci Azure AD Privileged Identity Management. Kromě toho tato role umožňuje spravovat všechny aspekty služby Privileged Identity Management a jednotky pro správu.
 
   <b>Důležité</b>: Tato role uděluje možnost Spravovat přiřazení pro všechny role Azure AD, včetně rolí globálního správce. Tato role neobsahuje další privilegovaných schopnosti ve službě Azure AD, jako je vytváření nebo aktualizaci uživatelů. Však přiřazena k této roli uživatele můžete udělit sami, nebo jinými další oprávnění přiřazením dalších rolí.
 
@@ -341,6 +341,22 @@ Povoleno zobrazení, nastavení a obnovit informace metody ověřování pro vš
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti pro všechny prostředky ve službě microsoft.office365.webPortal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
+
+### <a name="azure-information-protection-administrator"></a>Azure Information Protection Administrator
+Může spravovat všechny aspekty služby Azure Information Protection.
+
+  > [!NOTE]
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.informationProtection/allEntities/allTasks | Spravujte všechny aspekty služby Azure Information Protection. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
@@ -770,22 +786,6 @@ Může resetovat hesla jiných správců a správců technické podpory.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
-### <a name="information-protection-administrator"></a>Správce Information Protection
-Může spravovat všechny aspekty produktu Azure Information Protection.
-
-  > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
-  >
-  >
-
-| **Akce** | **Popis** |
-| --- | --- |
-| microsoft.azure.informationProtection/allEntities/allTasks | Spravujte všechny aspekty služby Azure Information Protection. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
-| microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
-
 ### <a name="intune-service-administrator"></a>Správce služby Intune
 Může spravovat všechny aspekty produktu Intune.
 
@@ -998,8 +998,12 @@ Můžou Spravovat přiřazení rolí ve službě Azure AD a všechny aspekty slu
 
 | **Akce** | **Popis** |
 | --- | --- |
-| microsoft.aad.directory/directoryRoles/update | Aktualizujte directoryRoles ve službě Azure Active Directory. |
 | microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | Vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v microsoft.aad.privilegedIdentityManagement. |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/allTasks | Přečíst a nakonfigurovat vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/allTasks | Přečíst a nakonfigurovat vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/administrativeUnits/allProperties/allTasks | Vytvoření a Správa jednotek pro správu (včetně členů) |
+| microsoft.aad.directory/roleAssignments/allProperties/allTasks | Vytvořit a spravovat přiřazení rolí. |
+| microsoft.aad.directory/roleDefinitions/allProperties/allTasks | Vytvářet a spravovat definice rolí. |
 
 ### <a name="reports-reader"></a>Čtečka sestav
 Může číst přihlášení a sestavy auditu.
@@ -1251,6 +1255,7 @@ DisplayName grafu | Azure portal zobrazovaný název | directoryRoleTemplateId
 Správce aplikace | Správce aplikace | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Vývojář aplikace | Vývojář aplikace | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Azure Information Protection Administrator | Správce služby Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Tok uživatele B2C správce | Tok uživatele B2C správce | 6e591065-9bad-43ed-90f3-e9424366d2f0
 Správce atributů uživatelských toků B2C | Správce atributů uživatelských toků B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 Správce sady klíčů IEF B2C | Správce sady klíčů IEF B2C | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1275,7 +1280,6 @@ Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3
 Externí správce zprostředkovatele Identity | Externí správce zprostředkovatele Identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Odesílatel pozvánky hostů | Odesílatel pozvánky hostů | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce technické podpory | Správce hesel | 729827e3-9c14-49f7-bb1b-9608f156bbb8
-Správce Information Protection | Správce Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Správce služby Intune | Správce služby Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala správce | Kaizala správce | 74ef975b-6605-40af-a5d2-b9539d836353
 Správce licencí | Správce licencí | 4d6ac14f-3453-41d0-bef9-a3e0c569773a

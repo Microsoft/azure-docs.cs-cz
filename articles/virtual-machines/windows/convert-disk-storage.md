@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abd893c68f2e9cac713e09dd0bdafb7f277ae889
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5687e6d0094083a9ee58455cc72b0b2e4da32d65
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707532"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417144"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizovat typ úložiště spravovaného disku
 
-Existují čtyři možnosti pro Azure managed disks: Azure Ultra diskové úložiště, Premium SSD, SSD na úrovni Standard a Standard pevný disk. Můžete přepínat mezi těmito typy úložiště na základě vašich potřeb výkonu s malý výpadek. Tato funkce není podporována pro nespravované disky. Ale můžete snadno [převést nespravovaného disku na spravovaný disk](convert-unmanaged-to-managed-disks.md) mohli přepínat mezi typů disků nevidí.
+Existují čtyři typy disků Azure spravované disky: Azure ultra SSD disky (preview), premium SSD, SSD na úrovni standard a standardní pevný disk. Můžete přepínat mezi tři typy disků GA (premium SSD, SSD na úrovni standard a standardní HDD) na základě vašich potřeb výkonu. Nejste ještě možné přepnout z nebo na ultra SSD, je nutné nasadit nový.
+
+Tato funkce není podporována pro nespravované disky. Ale můžete snadno [převést nespravovaného disku na spravovaný disk](convert-unmanaged-to-managed-disks.md) mohli přepínat mezi typů disků nevidí.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 

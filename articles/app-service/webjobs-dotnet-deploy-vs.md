@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873007"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417100"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service
 
@@ -27,7 +27,7 @@ Tento článek vysvětluje, jak pomocí sady Visual Studio nasadit projekt konzo
 
 Více WebJobs můžete publikovat jednu webovou aplikaci. Ujistěte se, že každá webová úloha ve webové aplikaci má jedinečný název.
 
-Verze 3.x [Azure WebJobs SDK](webjobs-sdk-how-to.md) umožňuje vývoj webových úloh, které ke spuštění aplikace .NET Core, zatímco verze 2.x podporuje pouze rozhraní .NET Framework. Způsob, jak nasadit projekt WebJobs je jiné projekty .NET Core oproti .NET Framework z nich.
+Verze 3.x [Azure WebJobs SDK](webjobs-sdk-how-to.md) umožňuje vývoj webových úloh, které ke spuštění aplikace .NET Core nebo .NET Framework aplikacích a zároveň je verze 2.x podporuje pouze rozhraní .NET Framework. Způsob, jak nasadit projekt WebJobs se liší pro projekty .NET Core oproti .NET Framework z nich.
 
 ## <a name="webjobs-as-net-core-console-apps"></a>WebJobs jako aplikace konzoly .NET Core
 
@@ -144,7 +144,7 @@ Chcete-li vytvořit nový projekt povoleno WebJobs, použijte šablonu projektu 
 > 
 
 #### <a id="createnolink"></a> Nový projekt šablonu WebJobs můžete použít pro nezávislé webová úloha.
-1. Klikněte na tlačítko **souboru** > **nový projekt**a pak v **nový projekt** dialogovém okně **cloudu**  >   **Webová úloha Azure (.NET Framework)**.
+1. Klikněte na tlačítko **souboru** > **nový projekt**a pak v **nový projekt** dialogovém okně **cloudu**  >   **Webová úloha Azure (.NET Framework)** .
    
     ![Dialogové okno Nový projekt zobrazuje šablony webové úlohy](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Postupujte podle pokynů na výše uvedené [aplikaci konzoly projektu nezávislé projektu WebJobs](#convertnolink).
@@ -238,10 +238,10 @@ Služba WebJobs podporuje následující nastavení:
 
 | **Nastavení** | **Typ**  | **Popis** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Všechny | Umožňuje tato úloha spustila na místě, aniž se nejprve zkopírována do dočasné složky. Další informace najdete v tématu [WebJobs pracovní adresář](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
-| `is_singleton` | Nepřetržitě | Webové úlohy spusťte jenom na jednu instanci horizontální navýšení kapacity. Další informace najdete v tématu [nastavit nepřetržité úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Aktivované | Webová úloha spustí podle plánu na základě CRON. Další informace najdete v tématu [časovače triggeru článku](../azure-functions/functions-bindings-timer.md#cron-expressions). |
-| `stopping_wait_time`| Všechny | Umožňuje řídit chování při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `is_in_place` | Vše | Umožňuje tato úloha spustila na místě, aniž se nejprve zkopírována do dočasné složky. Další informace najdete v tématu [WebJobs pracovní adresář](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_singleton` | Průběžný | Webové úlohy spusťte jenom na jednu instanci horizontální navýšení kapacity. Další informace najdete v tématu [nastavit nepřetržité úlohy jako singleton](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
+| `schedule` | Aktivuje | Webová úloha spustí podle plánu na základě CRON. Další informace najdete v tématu [časovače triggeru článku](../azure-functions/functions-bindings-timer.md#cron-expressions). |
+| `stopping_wait_time`| Vše | Umožňuje řídit chování při vypnutí. Další informace najdete v tématu [řádné vypnutí](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Další postup
 

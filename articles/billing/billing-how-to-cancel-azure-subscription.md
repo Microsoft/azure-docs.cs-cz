@@ -1,11 +1,8 @@
 ---
 title: Zrušení předplatného Azure | Dokumentace Microsoftu
 description: Popisuje, jak zrušit předplatné Azure, jako je bezplatná zkušební verze předplatného
-services: ''
-documentationcenter: ''
-author: genlin
-manager: adpick
-editor: ''
+author: bandersmsft
+manager: amberb
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
 ms.service: billing
@@ -13,24 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/23/2019
+ms.date: 5/30/2019
 ms.author: banders
-ms.openlocfilehash: 374224663323e75a1d1413c47490bd3aacd00267
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 235d93de56289bb2daaa661ee9806732da3b6d6a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60918486"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417611"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Zrušení předplatného pro Azure
 
-Můžete zrušit vaše předplatné Azure, jako [správce účtu](billing-subscription-transfer.md#whoisaa). Po zrušení předplatného končí váš přístup k služeb a prostředků Azure.
+Pouze předplatné Azure [správce účtu](billing-subscription-transfer.md#whoisaa) můžete zrušit předplatné Azure. Správci předplatného Azure můžete také [přiřadit jinému uživateli jako správce předplatného](billing-add-change-azure-subscription-administrator.md#assign-a-user-as-an-administrator-of-a-subscription) tak, aby se předplatné zrušit. Po zrušení předplatného končí váš přístup k služeb a prostředků Azure.
 
 Před zrušením předplatného:
 
 * Zálohujte data. Například pokud ukládáte data ve službě Azure storage nebo SQL, stáhněte si kopii. Pokud máte virtuální počítač uložte obrázek ho místně.
 * Vypnutí služby. Přejděte na [prostředky stránce portálu pro správu](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), a **Zastavit** všechny virtuální počítače, aplikace nebo jiné služby.
 * Vezměte v úvahu migrovat data. Zobrazit [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
+* Je nutné odstranit všechny prostředky a všechny skupiny prostředků. Odstraněním se může zrušit předplatné. Každou skupinu prostředků, je nutné odstranit jednotlivě. Při odstranění skupiny prostředků musíte potvrďte odstranění zadáním názvu skupiny prostředků.
 
 Pokud zrušíte placený plán podpory Azure, se stále účtují pro zbývající období předplatného. Další informace najdete v tématu [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
 
@@ -49,7 +47,7 @@ Jakmile zrušíte, účtování se okamžitě ukončí. Však může trvat až 1
 
 Potom deaktivaci vašich služeb. To znamená, že virtuální počítače jsou zrušení přidělení dočasné IP adresy jsou uvolněny a úložiště je jen pro čtení.
 
-V případě zrušení uprostřed fakturačního období budeme posílat na vaše data typické fakturace po skončení období celkový účet. 
+V případě zrušení uprostřed fakturačního období budeme posílat na vaše data typické fakturace po skončení období celkový účet.
 
 Čekáme na 90 dní, než trvale odstranění vašich dat v případě budete potřebovat k přístupu nebo změníte své rozhodnutí. Pro zachování dat můžete neúčtujeme poplatky. Další informace najdete v tématu [Microsoft Trust Center - jak spravuje vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 

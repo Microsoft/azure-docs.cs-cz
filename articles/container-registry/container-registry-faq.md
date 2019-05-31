@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 86efb6b655405500f994a5a5ec7acbd18c645004
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957847"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417925"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy k Azure Container Registry
 
@@ -253,10 +253,11 @@ Obrázek dát do karantény je aktuálně ve verzi preview funkce služby ACR. M
 - [Nová uživatelská oprávnění nemusí platit okamžitě po aktualizaci](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Informace o ověřování není uveden ve správném formátu na přímá volání rozhraní REST API](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Proč nemá na webu Azure portal v seznamu Moje úložiště nebo značky?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Jak se shromažďovat trasování protokolu http na Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>operace docker pull se nezdaří s chybou: net/http: žádost byla zrušena při čekání na připojení (Client.Timeout překročil během čekání na hlavičky)
 
- - Pokud tato chyba je dočasný problém, bude opakování úspěšné. 
+ - Pokud tato chyba je dočasný problém, bude opakování úspěšné.
  - Pokud `docker pull` nepodaří nepřetržitě, mohlo dojít k potížím s démonem dockeru. Tento problém lze obvykle možné zmírnit restartováním démona dockeru. 
  - Pokud problém přetrvává i po restartování démona dockeru, může být problém některé problémy se síťovým připojením k počítači. Pokud chcete zkontrolovat, pokud obecné sítě na počítači je v pořádku, zkuste příkaz `ping www.bing.com`.
  - Vždy byste měli mít mechanismus opakování pro všechny operace klienta dockeru.
@@ -387,6 +388,28 @@ curl $redirect_url
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Proč nemá na webu Azure portal v seznamu Moje úložiště nebo značky? 
 
 Pokud používáte prohlížeč Microsoft Edge, zobrazí se maximálně 100 úložiště nebo značky, které jsou uvedeny. Pokud váš registr má více než 100 úložiště nebo značky, doporučujeme použít Firefoxu nebo chromu prohlížeče pro všechny.
+
+### <a name="how-do-i-collect-http-traces-on-windows"></a>Jak se shromažďovat trasování protokolu http na Windows?
+
+#### <a name="prerequisites"></a>Požadavky
+
+- Povolte dešifrování https ve fiddleru:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Povolte Dockeru k používání proxy serveru pomocí uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
+- Je potřeba vrátit zpět, jakmile budete hotovi.  Docker nefunguje s tuto funkci povolíte a fiddleru neběží.
+
+#### <a name="windows-containers"></a>Kontejnery Windows
+
+Konfigurace proxy serveru Docker na 127.0.0.1:8888
+
+#### <a name="linux-containers"></a>Linuxové kontejnery
+
+Najdete ip Dockeru virtuální přepínač virtuálního počítače:
+
+```powershell
+(Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+```
+
+Konfigurace proxy serveru Docker do výstupního předchozím příkazem a port 8888 (například 10.0.75.1:8888)
 
 ## <a name="tasks"></a>Úlohy
 

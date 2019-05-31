@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: cae0fbd450e6b392e1689d4642181f6e5279752b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 2fa43fcd48736a3d044deb07ed690af580c3b987
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393216"
+ms.locfileid: "66416276"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -143,6 +143,24 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
+### <a name="factors-influencing-query-plan-changes"></a>Faktory ovlivňující změny plánu dotazu
+
+Opětovná kompilace plán provádění dotazů může vést k plánu generování dotazu, který se liší od původně mezipaměti. Existují různé důvody, proč může automaticky překompilovány existující původní plán:
+- Změny ve schématu odkazuje dotaz
+- Změny dat k tabulkám, odkazuje dotaz 
+- Změny v možnosti kontext dotazu 
+
+Kompilované plán může vysunout z různých důvodů, včetně restartování instance mezipaměti, změny konfigurace, tlaku na paměť a explicitní žádosti o vymazání mezipaměti v oboru databáze. Kromě toho pomocí pomocného parametru RECOMPILE znamená, že nebudou zapisována do mezipaměti plánu.
+
+Rekompilace (nebo nové kompilace po vyřazení mezipaměti) může stále dojít generování plán provádění identické dotazu z jedné původně pozorováno.  Pokud jsou však změny plánu ve srovnání s předchozí nebo původní plán, tady jsou nejčastěji používané vysvětlení pro proč změnit plán provádění dotazu:
+
+- **Změnit návrh fyzické**. Například nové indexy vytvořit, je více optimální využití nového indexu, než datová struktura původně vybrali pro první verzi efektivněji krytí, které požadavky dotazu může být použita na nové kompilace, pokud se rozhodne optimalizátoru dotazů provádění dotazu.  Všechny fyzické změny odkazované objekty nemusí se nová možnost plánu v době kompilace.
+
+- **Server prostředků rozdíly**. Ve scénáři, kde se liší jeden plán systému"A" a "systém B" – dostupnost prostředků, jako je počet dostupných procesorů mohou mít vliv na jaký plán získá vygenerována.  Pokud jeden systém má vyšší počet procesorů, například může být zvolen paralelním plánu. 
+
+- **Různé statistické údaje**. Statistické údaje přidružené k odkazované objekty změnit nebo se významně liší od původního systému statistiky.  Pokud změníte statistiky a rekompilujte dochází, optimalizátoru dotazů použije statistiky od tohoto konkrétního bodu v čase. Revidované statistiky může mít distribuce výrazně odlišné dat a frekvencí, které nejsou písmena v původní kompilace.  Tyto změny se používají k odhadu kardinality odhadu (počet řádků očekávané výsledky pomocí stromu dotazu logický tok).  Změny odhadů mohutnost může vést nám k výběru různých fyzických operátory a související objednávky z operací.  I menší změny statistiky může způsobit plán provádění změny dotazu.
+
+- **Databáze byl změněn úroveň nebo kardinalitu estimator verze kompatibility**.  Změny na úrovni kompatibility databáze můžete povolit nové strategie a funkce, které může mít za následek plán spuštění různých dotazů.  Zakázání nebo povolení příznak trasování 4199 nebo změnu stavu databáze s vymezeným oborem konfiguraci, kterou může také ovlivnit QUERY_OPTIMIZER_HOTFIXES dotazování nad rámec úroveň kompatibility databáze volby plánu spuštění v době kompilace.  Příznaky trasování 9481 (starší verze platnost CE) a 2312 (vynutit výchozí CE) jsou taky naplánovat by to mělo dopad. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Vyřešte problém dotazy nebo Poskytněte další zdroje informací
 

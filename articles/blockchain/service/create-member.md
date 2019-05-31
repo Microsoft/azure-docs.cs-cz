@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 357dc47027582d5c638bb3c7344c839f37f93dc5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399139"
+ms.locfileid: "66417508"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>Rychlý start: Vytvoření služby Azure Blockchain pomocí webu Azure portal
 
@@ -44,7 +44,7 @@ Služba Azure Blockchain se vytvoří s definovanou sadou výpočetních a úlo�
     Název W3C | Zadejte jedinečný název pro nový consortium. Pokud se zapojíte consortium prostřednictvím pozvánku, hodnota je consortium, ke které se připojujete.
     Popis | Popis konsorcia.
     Protocol |  Ve verzi Preview podporuje protokol kvora.
-    Ceny | Konfigurace uzlu pro vaši novou službu. Vyberte **standardní**. 2 uzly program pro ověření a 1 transakci uzel je ve výchozím nastavení.
+    Ceny | Konfigurace uzlu pro vaši novou službu. Vyberte **standardní**. 2 uzly program pro ověření a uzlu 1 transakce jsou výchozí nastavení.
     Transakce uzel heslo | Heslo pro členy programu výchozí transakce uzel. Při připojování k blockchainu člen výchozí transakce uzel veřejný koncový bod, použijte heslo pro základní ověřování.
 
 1. Vyberte **vytvořit** zřídit službu. Zřizování trvá asi 10 minut.

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468313"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417073"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce ve Správci úloh v Azure Active Directory
 
@@ -30,14 +30,14 @@ V tomto článku najdete informace potřebné k omezení oprávnění správce u
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Konfigurovat aplikace proxy aplikací | Správce aplikací | 
-Konfigurace vlastností skupiny konektoru | Správce aplikací | 
-Vytvoření registrace aplikace, když je zakázaná možnost pro všechny uživatele | Vývojář aplikací | Správce cloudové aplikace, správce aplikace
-Vytvořit skupinu konektorů | Správce aplikací | 
-Odstranit skupinu konektorů | Správce aplikací | 
-Zákaz proxy aplikací | Správce aplikací | 
-Stáhnout službu konektoru | Správce aplikací | 
-Číst všechny konfigurace | Správce aplikací | 
+Konfigurovat aplikace proxy aplikací | Správce aplikace | 
+Konfigurace vlastností skupiny konektoru | Správce aplikace | 
+Vytvoření registrace aplikace, když je zakázaná možnost pro všechny uživatele | Vývojář aplikace | Správce cloudové aplikace, správce aplikace
+Vytvořit skupinu konektorů | Správce aplikace | 
+Odstranit skupinu konektorů | Správce aplikace | 
+Zákaz proxy aplikací | Správce aplikace | 
+Stáhnout službu konektoru | Správce aplikace | 
+Číst všechny konfigurace | Správce aplikace | 
 
 ## <a name="b2c"></a>B2C
 
@@ -45,7 +45,7 @@ Stáhnout službu konektoru | Správce aplikací |
 ---- | --------------------- | ----------------
 Vytvoření adresáře Azure AD B2C | Všichni uživatelé – typu Host ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Vytvoření aplikace B2C | Globální správce | 
-Vytváření podnikových aplikací | Správce cloudových aplikací | Správce aplikací
+Vytváření podnikových aplikací | Správce cloudové aplikace | Správce aplikace
 Vytvářet, číst, aktualizovat a odstraňovat B2C policies | Globální správce | 
 Vytvářet, číst, aktualizovat a odstranit zprostředkovatele identity | Globální správce | 
 Vytvářet, číst, aktualizovat a odstranit toky uživatelů pro resetování hesla | Globální správce | 
@@ -57,12 +57,12 @@ Vytvářet, číst, aktualizovat a odstranit uživatele | Globální správce ([
 Číst všechny konfigurace | Globální správce | 
 Protokoly auditu pro čtení B2C | Globální správce ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
-## <a name="company-branding"></a>Branding společnosti
+## <a name="company-branding"></a>Firemní branding
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
 Konfigurace brandingu společnosti | Globální správce | 
-Číst všechny konfigurace | Uživatelé s oprávněním ke čtení adresářů | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Číst všechny konfigurace | Uživatelé čtoucí z adresáře | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
 ## <a name="company-properties"></a>Vlastnosti společnosti
 
@@ -101,7 +101,7 @@ Výstrahy a zobrazení metrik služby synchronizace | Čtečka ([naleznete v dok
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
 Spravovat domény | Globální správce | 
-Číst všechny konfigurace | Uživatelé s oprávněním ke čtení adresářů | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Číst všechny konfigurace | Uživatelé čtoucí z adresáře | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
 ## <a name="domain-services"></a>Domain Services
 
@@ -115,8 +115,8 @@ Provádět všechny úlohy služby Azure AD Domain Services | Skupiny Azure AD D
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Zakázání zařízení | Správce cloudových zařízení | 
-Povolení zařízení | Správce cloudových zařízení | 
+Zakázat zařízení | Správce cloudových zařízení | 
+Povolit zařízení | Správce cloudových zařízení | 
 Základní konfigurace pro čtení | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Klíče Bitlockeru pro čtení | Čtenář zabezpečení | Heslo správce, správce zabezpečení
 
@@ -124,13 +124,13 @@ Klíče Bitlockeru pro čtení | Čtenář zabezpečení | Heslo správce, sprá
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Souhlas s žádná delegovaná oprávnění | Správce cloudových aplikací | Správce aplikací
-Souhlas s oprávnění aplikací bez Microsoft Graph nebo Azure AD Graph | Správce cloudových aplikací | Správce aplikací
+Souhlas s žádná delegovaná oprávnění | Správce cloudové aplikace | Správce aplikace
+Souhlas s oprávnění aplikací bez Microsoft Graph nebo Azure AD Graph | Správce cloudové aplikace | Správce aplikace
 Souhlas s aplikací oprávnění pro Microsoft Graph nebo Azure AD Graph | Globální správce | 
 Dávat souhlas aplikacím přístup k vlastním datům | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Vytvoření aplikace organizace | Správce cloudových aplikací | Správce aplikací
-Správa Proxy aplikací | Správce aplikací | 
-Správa nastavení uživatelů | Globální správce | 
+Vytvoření aplikace organizace | Správce cloudové aplikace | Správce aplikace
+Správa Proxy aplikací | Správce aplikace | 
+Spravovat uživatelská nastavení | Globální správce | 
 Kontroly přístupu pro čtení, skupiny nebo aplikace | Čtenář zabezpečení | Správce zabezpečení, Správce uživatelů
 Číst všechny konfigurace | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Aktualizovat přiřazení aplikace organizace | Vlastník aplikace Enterprise ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce cloudové aplikace, správce aplikace
@@ -144,12 +144,12 @@ Aktualizovat vlastnosti jednotného přihlašování | Vlastník aplikace Enterp
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Přiřadit licenci | Správce uživatelů | 
-Vytvořit skupinu | Správce uživatelů | 
+Přiřazení licence | Správce uživatelů | 
+Vytvoření skupiny | Správce uživatelů | 
 Vytvoření, aktualizace nebo odstranění kontroly přístupu, skupiny nebo aplikace | Správce uživatelů | 
 Správa platnosti skupiny | Správce uživatelů | 
 Správa nastavení skupin | Globální správce | 
-Načíst všechny konfiguraci (s výjimkou skrytých členství) | Uživatelé s oprávněním ke čtení adresářů | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Načíst všechny konfiguraci (s výjimkou skrytých členství) | Uživatelé čtoucí z adresáře | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Čtení skrytých členství | Člen skupiny | Vlastník skupiny, heslo správce, správce Exchange, správce Sharepointu, týmy správce, Správce uživatelů
 Čtení členství ve skupinách s skrytých členství | Správce technické podpory | Uživatel správce, správce týmy
 Odvolat licence | Správce licencí | Správce uživatelů
@@ -176,8 +176,8 @@ Přečtěte si ohrožení zabezpečení | Čtenář zabezpečení |
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Přiřadit licenci | Správce licencí | Správce uživatelů
-Číst všechny konfigurace | Uživatelé s oprávněním ke čtení adresářů | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Přiřazení licence | Správce licencí | Správce uživatelů
+Číst všechny konfigurace | Uživatelé čtoucí z adresáře | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Odvolat licence | Správce licencí | Správce uživatelů
 Vyzkoušejte a kupte si předplatné | Správce fakturace | 
 
@@ -186,24 +186,24 @@ Vyzkoušejte a kupte si předplatné | Správce fakturace |
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Protokoly auditu pro čtení | Čtenář sestav | Čtenář zabezpečení, správce zabezpečení
+Protokoly auditu pro čtení | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
 ## <a name="monitoring---sign-ins"></a>Monitorování – přihlášení
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Čtení protokolů přihlášení | Čtenář sestav | Čtenář zabezpečení, správce zabezpečení
+Čtení protokolů přihlášení | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
 ## <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Odstranit všechna existující hesla aplikací vygenerovaná vybranými uživateli | Globální správce | 
+Odstranit všechna stávající hesla aplikací vygenerovaná vybranými uživateli | Globální správce | 
 Zakázání MFA | Globální správce | 
 Povolení MFA | Globální správce | 
 Správa nastavení služby MFA | Globální správce | 
-Vyžadovat, aby vybraní uživatelé znovu zadali způsoby kontaktování | Správce ověřování | 
-Obnovit vícefaktorové ověřování u všech zapamatovaných zařízení  | Správce ověřování | 
+Vyžadovat Vybraní uživatelé znovu zadali způsoby kontaktování | Správce ověřování | 
+Obnovit Multi-Factor authentication u všech zapamatovaných zařízení  | Správce ověřování | 
 
 ## <a name="mfa-server"></a>Server MFA
 
@@ -315,9 +315,9 @@ Zavřít všechny události | Správce zabezpečení |
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
 Přidání uživatele do role adresáře | Správce privilegovaných rolí | 
-Přidá uživatele do skupiny | Správce uživatelů | 
-Přiřadit licenci | Správce licencí | Správce uživatelů
-Vytvořit uživatele typu Host | Odesílatel pozvánek hostů | Správce uživatelů
+Přidání uživatele do skupiny | Správce uživatelů | 
+Přiřazení licence | Správce licencí | Správce uživatelů
+Vytvořit uživatele typu Host | Odesílatel pozvánky hostů | Správce uživatelů
 Vytvořit uživatele | Správce uživatelů | 
 Odstranit uživatele | Správce uživatelů | 
 Zneplatnit obnovovací tokeny omezených správců (viz dokumentace) | Správce uživatelů | 
@@ -338,7 +338,7 @@ Aktualizovat uživatelské nastavení | Globální správce |
 
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
-Odeslat lístek podpory | Správce služeb | Aplikace správce, správce, správce cloudové aplikace, správce dodržování předpisů, Dynamics 365 správce fakturace, Desktop Analytics správce, správce Exchange, správce hesel, Information Protection Správce, Správce služby Intune, Skype pro firmy správce, správce Power BI, správce privilegovaných ověřování, Správce služby SharePoint, správce komunikaci týmů, týmy správce, Správce uživatelů Správce Analytics pracoviště
+Odeslat lístek podpory | Správce služeb | Aplikace správce, správce Azure Information Protection, fakturace heslo správce, správce Exchange, správce, správce cloudové aplikace, dodržování předpisů správce, správce Dynamics 365, klasické pracovní plochy Analytics Správce, Správce služby Intune, Skype pro firmy správce, správce Power BI, správce privilegovaných ověřování, Správce služby SharePoint, správce komunikaci týmů, týmy správce, Správce uživatelů Správce Analytics pracoviště
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 796e9c17a457bfb1a79b600b178d2c733e10f91e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1d4b17cf1e0349bf877c676cb4e591fc20ad4113
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382413"
+ms.locfileid: "66416361"
 ---
 # <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Rychlý start: Použití R k dotazování Azure SQL database (preview)
 
@@ -85,6 +85,9 @@ Získejte informace o připojení potřebné pro připojení k databázi Azure S
 1. Předat kompletní skript R, abyste [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) uložené procedury.
 
    Skript se předává `@script` argument. Všechno, co je uvnitř `@script` argument musí být platný kód R.
+   
+   >[!IMPORTANT]
+   >Kód v tomto příkladu se používá ukázková data AdventureWorksLT, které můžete použít jako zdroj při vytváření databáze. Pokud vaše databáze má jiná data, pomocí tabulek z vlastní databázi v dotazu SELECT. 
 
     ```sql
     EXECUTE sp_execute_external_script

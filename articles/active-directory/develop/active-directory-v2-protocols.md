@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546119"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417652"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Protokoly Microsoft identity platform
 
@@ -48,7 +48,7 @@ V téměř všechny toky OAuth 2.0 a OpenID Connect existují čtyři strany sou
 Každá aplikace, kterou chce, aby se tak, aby přijímal jak osobní i pracovní nebo školní účty musí být registrovaný prostřednictvím metody **registrace aplikací** dojít [webu Azure portal](https://aka.ms/appregistrations) předtím, než mohl tyto uživatele ve službě pomocí OAuth 2.0 nebo OpenID Connect. Proces registrace aplikace bude shromažďovat a přiřadit aplikaci několik hodnot:
 
 * **ID aplikace** , který jednoznačně identifikuje vaši aplikaci
-* A **identifikátor URI pro přesměrování** nebo **identifikátor balíčku** , který lze použít k cílení odpovědí zpět do vaší aplikace
+* A **identifikátor URI pro přesměrování** (volitelné), který lze použít k cílení odpovědí zpět do vaší aplikace
 * Pár dalších hodnot specifické pro scénář.
 
 Pro další informace si přečtěte, jak [zaregistrovat aplikaci](quickstart-register-app.md).

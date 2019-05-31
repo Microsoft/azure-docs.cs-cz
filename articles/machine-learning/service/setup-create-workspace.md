@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 36f3d421ee0b41a0ff71b549a4d4b5646188c3fa
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66016447"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417352"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Vytvořit pracovní prostor služby Azure Machine Learning
 
@@ -168,7 +168,7 @@ Tento konfigurační soubor pracovního prostoru usnadňuje stejného pracovníh
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-To `write_config()` volání rozhraní API vytvoří konfigurační soubor do aktuálního adresáře. *Config.json* soubor obsahuje následující:
+To `write_config()` volání rozhraní API vytvoří konfigurační soubor do aktuálního adresáře. *.Azureml/config.json* soubor obsahuje následující:
 
 ```json
 {

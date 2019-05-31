@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: b42d376be0d26c8ced60344793dbc8f7dd4a3d53
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303763"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416346"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps a Microsoft Flow
 
@@ -246,7 +246,8 @@ Můžete například odkazují na výstupy z jedné akce a použít je v rámci 
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Vytvoří pole s hodnotami, které odpovídají názvu klíče v *data formuláře* nebo *form-encoded.* výstupy akce. |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Vrátí jednu hodnotu, která odpovídá názvu klíče v akce *data formuláře* nebo *form-encoded. výstup*. |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Když v opakující se akci nad polem, vrátí aktuální položku v poli během aktuální iteraci akce. |
-| [Položky](../logic-apps/workflow-definition-language-functions-reference.md#items) | Když uvnitř pro každý nebo proveďte až do smyčky, vrácení aktuální položku zadané smyčky.|
+| [Položky](../logic-apps/workflow-definition-language-functions-reference.md#items) | Když uvnitř Foreach nebo smyčka Until, vrátí aktuální položku zadané smyčky.|
+| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Když uvnitř smyčky dokud vrátíte hodnotu indexu pro aktuální iteraci. Můžete použít tuto funkci uvnitř vnořené do smyčky. |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Vrátí adresu "URL zpětného volání", která volá triggeru nebo akce. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Vrátí text pro určitou část ve výstupu akce, který má více částí. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Vrátí hodnotu pro parametr, který je popsaný v definici pracovního postupu. |
@@ -2278,6 +2279,96 @@ Tento příklad načte aktuální položky ze zadané smyčky for-each:
 
 ```
 items('myForEachLoopName')
+```
+
+<a name="iterationIndexes"></a>
+
+### <a name="iterationindexes"></a>iterationIndexes
+
+Vrátí hodnotu indexu pro uvnitř smyčky dokud aktuální iteraci. Můžete použít tuto funkci uvnitř vnořené do smyčky. 
+
+```
+iterationIndexes('<loopName>')
+```
+
+| Parametr | Požaduje se | Typ | Popis | 
+| --------- | -------- | ---- | ----------- | 
+| <*loopName*> | Ano | String | Název smyčky dokud | 
+||||| 
+
+| Návratová hodnota | Type | Popis | 
+| ------------ | ---- | ----------- | 
+| <*index*> | Integer | Hodnota indexu pro aktuální iterace uvnitř zadaného smyčka Until | 
+|||| 
+
+*Příklad* 
+
+Tento příklad vytvoří proměnné čítače a zvýší hodnotu této proměnné jednou při každé iteraci v smyčce dokud dokud nedosáhne hodnoty čítače pět. Tento příklad také vytvoří proměnnou, která sleduje aktuální index pro každou iteraci. Dokud smyčky, při každé iteraci příklad zvýší čítač a poté přiřadí hodnotu čítače na aktuální hodnotu indexu a potom zvýší čítač. Kdykoli můžete určit aktuální počet opakování načtením aktuální hodnoty indexu.
+
+```
+{
+   "actions": {
+      "Create_counter_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [ 
+               {
+                  "name": "myCounter",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {}
+      },
+      "Create_current_index_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [
+               {
+                  "name": "myCurrentLoopIndex",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {
+            "Create_counter_variable": [ "Succeeded" ]
+         }
+      },
+      "Until": {
+         "type": "Until",
+         "actions": {
+            "Assign_current_index_to_counter": {
+               "type": "SetVariable",
+               "inputs": {
+                  "name": "myCurrentLoopIndex",
+                  "value": "@variables('myCounter')"
+               },
+               "runAfter": {
+                  "Increment_variable": [ "Succeeded" ]
+               }
+            },
+            "Increment_variable": {
+               "type": "IncrementVariable",
+               "inputs": {
+                  "name": "myCounter",
+                  "value": 1
+               },
+               "runAfter": {}
+            }
+         },
+         "expression": "@equals(variables('myCounter'), 5),
+         "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+         },
+         "runAfter": {
+            "Create_current_index_variable": [ "Succeeded" ]
+         }
+      }
+   }
+}
 ```
 
 <a name="json"></a>
