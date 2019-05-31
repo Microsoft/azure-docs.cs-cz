@@ -83,7 +83,7 @@
           displayName: roles
         - name: Extrakce dat volného tvaru
           href: luis-tutorial-pattern-any.md
-    - name: Použití robota
+    - name: Použití architektury robotů V4
       items:
         - name: 'Pomocí jazyka C#'
           href: luis-csharp-tutorial-bf-v4.md
@@ -198,7 +198,7 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: S využitím služby Speech
           href: luis-tutorial-speech-to-intent.md
-        - name: S využitím robotu
+        - name: Použití architektury robotů V3
           items:
             - name: Robot webové aplikace
               items:
@@ -279,6 +279,8 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Hranice
       href: luis-boundaries.md
+    - name: Nastavení aplikace
+      href: luis-reference-application-settings.md
     - name: Referenční informace k předem připraveným entitám
       items:
         - name: Entity pro jednotlivé jazykové verze
