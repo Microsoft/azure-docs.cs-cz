@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: d27c0e9570959e01267d83a768ead45b48b7cea1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1520b01826de2a80d8baeccf4913fa180d385644
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60903213"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256305"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure cloud services
 [Application Insights] [ start] můžete monitorovat [aplikací Azure cloud service](https://azure.microsoft.com/services/cloud-services/) pro dostupnost, výkon, chyby a využití díky kombinování dat ze sady SDK služby Application Insights s [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) data z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -41,7 +41,7 @@ Tato možnost využívá vaši aplikaci za běhu a poskytuje vám veškerá tele
 
 Pokud tato možnost je vše, co potřebujete, jste hotovi. 
 
-Další kroky jsou [zobrazení metrik z aplikace](../../azure-monitor/app/metrics-explorer.md), [zadávání dotazů na data pomocí Analytics](../../azure-monitor/app/analytics.md)a případně i nastavení [řídicí panel](../../azure-monitor/app/app-insights-dashboards.md). 
+Další kroky jsou [zobrazení metrik z aplikace](../../azure-monitor/app/metrics-explorer.md), [zadávání dotazů na data pomocí Analytics](../../azure-monitor/app/analytics.md). 
 
 K monitorování výkonu v prohlížeči, můžete také chtít nastavit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a [přidání kódu do své webové stránky](../../azure-monitor/app/javascript.md).
 
@@ -61,7 +61,7 @@ Telemetrie z vaší aplikace je uložené, analyzují a zobrazují v prostředku
 Každý prostředek patří do skupiny prostředků. Skupiny prostředků slouží ke správě nákladů, udělit přístup ke členům týmu a k nasazování aktualizací v rámci jedné koordinované transakce. Například může [napsat skript pro nasazení](../../azure-resource-manager/resource-group-template-deploy.md) cloudové služby Azure a jeho Application Insights, monitorování prostředků v rámci jedné operace.
 
 ### <a name="resources-for-components"></a>Prostředky pro komponenty
-Doporučujeme vytvořit samostatný prostředek pro každou komponentu aplikace. To znamená, že vytvoříte prostředek pro každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete vytvořit [řídicí panel](../../azure-monitor/app/app-insights-dashboards.md) , který umožňuje mít pohromadě klíčové grafy ze všech komponent tak, aby mohli porovnávat a monitorovat jejich společně v jednom zobrazení. 
+Doporučujeme vytvořit samostatný prostředek pro každou komponentu aplikace. To znamená, že vytvoříte prostředek pro každou webovou roli a roli pracovního procesu. Jednotlivé komponenty můžete analyzovat samostatně, ale můžete vytvořit [řídicí panel](../../azure-monitor/app/overview-dashboard.md) , který umožňuje mít pohromadě klíčové grafy ze všech komponent tak, aby mohli porovnávat a monitorovat jejich společně v jednom zobrazení. 
 
 Alternativním přístupem je odesílání telemetrických dat z více než jedné role do stejného prostředku, ale [přidáním vlastnosti dimenze pro každou položku telemetrie](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) , která je určena její zdrojová role. V takovém případě grafy metrik, jako jsou například výjimky, normálně zobrazuje agregace počtů z různých rolí, ale můžete graf segmentovat podle identifikátoru role podle potřeby. Můžete také filtrovat hledání podle stejné dimenze. Tato alternativa usnadňuje trochu Zobrazit vše, co ve stejnou dobu, ale může také způsobit nejasnostem mezi rolemi.
 
@@ -91,7 +91,7 @@ Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli, a mo�
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Nastavení diagnostiky Azure pro každou roli
 Tuto možnost nastavte, pokud chcete aplikaci monitorovat pomocí Application Insights. V případě webových rolí tato možnost poskytuje performance monitoring pro aplikace, výstrahy, diagnostiku a analýzy využití. Pro jiné role můžete vyhledat a monitorovat diagnostiku Azure jako je restartování, čítače výkonu a volání System.Diagnostics.Trace. 
 
-1. V Průzkumníku řešení Visual Studio v části  **\<Vaše_cloudová_služba >** > **role**, otevřete vlastnosti jednotlivých rolí.
+1. V Průzkumníku řešení Visual Studio v části  **\<Vaše_cloudová_služba >**  > **role**, otevřete vlastnosti jednotlivých rolí.
 
 1. V **konfigurace**, vyberte **posílat diagnostická data do Application Insights** zaškrtněte políčko a pak vyberte prostředek Application Insights, který jste vytvořili dříve.
 
@@ -229,7 +229,7 @@ Získejte telemetrické informace založené na prohlížeči, jako jsou počty 
 Abyste měli jistotu, vaše aplikace zůstává aktivní a reagující, [nastavit webové testy][availability].
 
 ## <a name="display-everything-together"></a>Zobrazení všeho najednou
-Získat celkový přehled o systému, můžete zobrazit klíčové grafy monitorování společně v jednom [řídicí panel](../../azure-monitor/app/app-insights-dashboards.md). Můžete například připnout počty požadavků a selhání pro jednotlivé role. 
+Získat celkový přehled o systému, můžete zobrazit klíčové grafy monitorování společně v jednom [řídicí panel](../../azure-monitor/app/overview-dashboard.md). Můžete například připnout počty požadavků a selhání pro jednotlivé role. 
 
 Pokud váš systém využívá jiné služby Azure zahrnují například Stream Analytics, jejich monitorovacích grafů. 
 
