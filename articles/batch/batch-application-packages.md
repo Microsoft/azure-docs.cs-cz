@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/05/2019
+ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c17835a4155e97395e8ae1b8e9ba6d2a42433f71
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726665"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298735"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -142,7 +142,7 @@ Klikněte na **Aplikace** > **Přidat**.
 
 **Novou aplikaci** okno obsahuje následující pole a zadejte nastavení nové aplikace a balíček aplikace.
 
-**Id aplikace**
+**ID aplikace**
 
 Toto pole určuje ID vaší nové aplikace, který je v souladu s standardní ověřovací pravidla ID dávky Azure. Pravidla pro zajištění ID aplikace jsou následující:
 
@@ -176,7 +176,7 @@ Pokud chcete přidat verze balíčku aplikace pro existující aplikace, vyberte
 
 ![Přidat okno balíčku aplikací na webu Azure portal][8]
 
-Jak je vidět, pole odpovídají objektu **novou aplikaci** okna, ale **id aplikace** pole je zakázaná. Stejně jako nové aplikace, zadejte **verze** pro nový balíček, přejděte do vaší **balíčku aplikace** .zip soubor a potom klikněte na **OK** pro nahrání balíčku.
+Jak je vidět, pole odpovídají objektu **novou aplikaci** okna, ale **ID aplikace** pole je zakázaná. Stejně jako nové aplikace, zadejte **verze** pro nový balíček, přejděte do vaší **balíčku aplikace** .zip soubor a potom klikněte na **OK** pro nahrání balíčku.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizace nebo odstranění balíčku aplikace
 Aktualizovat nebo odstranit existující balíček aplikace, otevřete podrobnosti o aplikaci, klikněte na tlačítko **balíčky**, klikněte na tlačítko **tlačítko se třemi tečkami** v řádku, který chcete upravit a vyberte balíček aplikace Akce, kterou chcete provést.

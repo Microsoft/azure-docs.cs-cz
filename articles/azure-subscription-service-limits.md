@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: byvinyal
-ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 3bdc8580749761242b1fc811b2182d73a2d46328
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66023218"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238710"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další služby.
@@ -155,8 +155,6 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezení Basic, Standa
 
 ### <a name="azure-machine-learning-service-limits"></a>Omezení služby Azure Machine Learning
 Nejnovější hodnoty pro Azure Machine Learning Compute kvóty najdete v [kvóty stránku Azure Machine Learning](../articles/machine-learning/service/how-to-manage-quotas.md)
-
-[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
 
 ### <a name="networking-limits"></a>Síťová omezení
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]

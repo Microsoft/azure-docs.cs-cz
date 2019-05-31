@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa7c3d8bbbca5457a194c414863682050dfec9d7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0913e1877c63ed1a8e960676be02a12b45a34a7d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65189999"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240098"
 ---
 # <a name="deploy-azure-file-sync"></a>Nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -97,8 +97,7 @@ V podokně, které se otevře, zadejte následující informace:
 Až budete hotovi, vyberte **vytvořit** nasadit službu synchronizace úložiště.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-Před interakci s rutinami pro správu Azure File Sync, je potřeba importovat knihovny DLL a vytvoření kontextu správy Azure File Sync. Se totiž rutiny pro správu Azure File Sync ještě nejsou součástí moduly Azure Powershellu.
-
+Nahraďte **< Az_Region >** , **< RG_Name >** , a **< my_storage_sync_service >** pomocí vlastní hodnoty, pak pomocí následujících příkazů vytvořte a nasaďte Služba synchronizace úložiště:
 
 ```powershell
 Connect-AzAccount
@@ -133,7 +132,7 @@ if ($resourceGroups -notcontains $resourceGroup) {
     New-AzResourceGroup -Name $resourceGroup -Location $region
 }
 
-$storageSyncName = "<my-storage-sync-service>"
+$storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 

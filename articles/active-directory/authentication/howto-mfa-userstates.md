@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5a196af8ee6a7d41833185136a76255be4082a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3928a47abf07ab7e6dad0e0a5883162363805df8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358951"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235577"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele
 
@@ -133,6 +133,72 @@ která může také zkrátila na:
    ```PowerShell
    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
    ```
+
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Převést uživatelé z jednotlivých uživatelů MFA podmíněného přístupu na základě MFA
+
+Následující příkaz Powershellu vám může pomoci při převodu na základě podmíněného přístupu Azure Multi-Factor Authentication.
+
+```PowerShell
+# Disable MFA for all users, keeping their MFA methods intact
+Get-MsolUser -All | Disable-MFA -KeepMethods
+
+# Enforce MFA for all users
+Get-MsolUser -All | Set-MfaState -State Enforced
+
+# Wrapper to disable MFA with the option to keep the MFA
+# methods (to avoid having to proof-up again later)
+function Disable-Mfa {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline=$True)]
+        $User,
+        [switch] $KeepMethods
+    )
+
+    Process {
+
+        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
+        $User | Set-MfaState -State Disabled
+
+        if ($KeepMethods) {
+            # Restore the MFA methods which got cleared when disabling MFA
+            Set-MsolUser -ObjectId $User.ObjectId `
+                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
+        }
+    }
+}
+
+# Sets the MFA requirement state
+function Set-MfaState {
+
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $ObjectId,
+        [Parameter(ValueFromPipelineByPropertyName=$True)]
+        $UserPrincipalName,
+        [ValidateSet("Disabled","Enabled","Enforced")]
+        $State
+    )
+
+    Process {
+        Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
+        $Requirements = @()
+        if ($State -ne "Disabled") {
+            $Requirement =
+                [Microsoft.Online.Administration.StrongAuthenticationRequirement]::new()
+            $Requirement.RelyingParty = "*"
+            $Requirement.State = $State
+            $Requirements += $Requirement
+        }
+
+        Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
+                     -StrongAuthenticationRequirements $Requirements
+    }
+}
+
+```
 
 ## <a name="next-steps"></a>Další postup
 

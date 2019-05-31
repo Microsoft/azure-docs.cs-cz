@@ -14,14 +14,14 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: conceptual
-ms.date: 07/07/2017
+ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: 7014d09bbb62e78c37a9496628e3509b6eaaa4ac
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ac6c2b0f93c56de6e0a2b559645884b60d761ba8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123327"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240250"
 ---
 # <a name="create-an-apache-cordova-app"></a>Vytvoření aplikace na platformě Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -43,42 +43,13 @@ Visual Studio je možné obejít a používat přímo příkazový řádek platf
 ## <a name="create-an-azure-mobile-app-backend"></a>Vytvoření back-endu mobilní aplikace Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-[Podívejte se na video zobrazující podobný postup.](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
-
-## <a name="configure-the-server-project"></a>Konfigurace serverového projektu
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Vytvoření připojení k databázi a konfigurace projektu klienta a serveru
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-apache-cordova-app"></a>Stažení a spuštění aplikace Apache Cordova
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
-
-## <a name="next-steps"></a>Další kroky
-Teď když jste dokončili tento kurz, jak rychle začít, přejděte k jednomu z následujících kurzů: 
-
-* [Přidání offline dat](app-service-mobile-cordova-get-started-offline-data.md) do aplikace Apache Cordova
-* [Přidání ověřování](app-service-mobile-cordova-get-started-users.md) do aplikace Apache Cordova
-* [Přidání nabízených oznámení](app-service-mobile-cordova-get-started-push.md) do aplikace Apache Cordova
-
-Další informace o klíčových konceptech Azure App Service
-
-* [Offline data]
-* [Ověřování]
-* [Nabízená oznámení]
-
-Zjistěte, jak používat sady SDK.
-
-* [Apache Cordova SDK]
-* [ASP.NET Server SDK]
-* [Node.js Server SDK]
-
-<!-- Images. -->
-
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
+
 [Visual Studio Community 2017]: https://www.visualstudio.com/
 [Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
-[Offline data]: app-service-mobile-offline-data-sync.md
-[Ověřování]: app-service-mobile-auth.md
-[Nabízená oznámení]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
-[ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977440"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387082"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování v Durable Functions – ukázka počasí sledovacího procesu
 
@@ -42,7 +42,7 @@ Tato ukázka sleduje aktuální počasí do umístění a upozorní uživatele p
 
 Tento příklad zahrnuje použití alternativních rozhraní API počasí ke kontrole aktuální počasí pro určité místo.
 
-První věc, kterou je třeba je počasí alternativních účet. Můžete si ho vytvořit zdarma na [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Jakmile budete mít účet, musíte získat klíče rozhraní API. Můžete tak učinit návštěvou [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api), poté vyberete nastavení klíče. Plán Stratus Developer je zdarma a stačí ke spuštění této ukázky.
+První věc, kterou je třeba je počasí alternativních účet. Můžete si ho vytvořit zdarma na [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Jakmile budete mít účet, musíte získat klíče rozhraní API. Můžete tak učinit návštěvou [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api/?MR=1), poté vyberete nastavení klíče. Plán Stratus Developer je zdarma a stačí ke spuštění této ukázky.
 
 Jakmile budete mít klíč rozhraní API, přidejte následující **nastavení aplikace, které** aplikaci function App.
 
