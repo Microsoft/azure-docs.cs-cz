@@ -400,6 +400,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Zdroje a prostředky
   items:
+    - name: Co je nového
+      href: whats-new.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Podpora jazyků a oblastí

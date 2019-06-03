@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/03/2019
 ms.author: aahi
-ms.openlocfilehash: ae1d8f18705b1058c10d4720c64f624ed0ef4a3d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7d52585b51af09c430130141c3680b5630f7b95e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60829527"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417289"
 ---
 # <a name="what-is-text-analytics-api"></a>Co je API pro analýzu textu?
 
@@ -34,7 +34,7 @@ Použití [analýzu subjektivního hodnocení](how-tos/text-analytics-how-to-sen
 Automaticky [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) rychle identifikovat hlavní body. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) zde rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
-Je možné [rozpoznat jazyk, který vstupní text je napsaný v](how-tos/text-analytics-how-to-language-detection.md) a tvorba sestav jeden jazyk kódu pro každý dokument podání žádosti o až 120 jazyků. Kód jazyka spárovaný se skóre označuje sílu skóre. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
+Je možné [rozpoznat jazyk, který vstupní text je napsaný v](how-tos/text-analytics-how-to-language-detection.md) a tvorba sestav jeden jazyk kódu pro každý dokument podání žádosti v nejrůznějších jazycích, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky. Kód jazyka spárovaný se skóre označuje sílu skóre. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c7) rozhraní API nebo [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK.
 
 ## <a name="named-entity-recognition"></a>Rozpoznávání pojmenovaných entit
 [Identifikujte a kategorizaci entity](how-tos/text-analytics-how-to-entity-linking.md) text jako lidech, místech, organizace, datum a čas, množství, procenta, měny a další. Také rozpozná známé entity a propojí je s dalšími informacemi na webu. Můžete použít [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) rozhraní API.

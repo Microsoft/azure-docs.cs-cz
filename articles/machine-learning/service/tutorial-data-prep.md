@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: dabb43cb2fe9b66d5d83d163b74d2f22354e33b8
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604476"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418025"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
-V tomto kurzu se dozvíte, jak připravit data pro modelování s využitím regrese [balíčku pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk). Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
+V tomto kurzu se dozvíte, jak připravit data pro modelování s využitím regrese [balíčku pro přípravu dat](https://aka.ms/data-prep-sdk) z [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Spuštění různých transformací pro filtrování a kombinovat dvěma různým sadám dat taxislužby NYC.
 
 Tento kurz je **první částí z dvoudílné série kurzů**. Po dokončení série kurzů, lze odhadnout náklady na cesty taxíkem díky trénování modelu na datových funkcích. Tyto funkce patří vyzvednutí den a čas, počet cestujících a výstupní umístění.
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámkový blok, nebo použijte níže uvedené pokyny k získání poznámkového bloku a spustit ho v poznámkových bloků Azure nebo vašeho vlastního serveru poznámkového bloku. Pokud chcete spustit Poznámkový blok, bude nutné:
 
 * Server poznámkového bloku Python 3.6 s nainstalované tyto položky:
-    *  Azure ml přípravy balíčku ze sady SDK Azure Machine Learning pro Python
+    * `azureml-dataprep` Balíčku ze sady SDK Azure Machine Learning
 * Výukový program Poznámkový blok
 
 * Použití [server poznámkového bloku cloudu ve vašem pracovním prostoru](#azure) 
@@ -46,7 +46,7 @@ Přejděte k [nastavení vývojového prostředí](#start) číst kroky Poznámk
 
 ### <a name="azure"></a>Použít server poznámkového bloku cloudu ve vašem pracovním prostoru
 
-Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) již nainstalován a nakonfigurován pro vás, když vytvoříte tento prostředek v cloudu.
+Je snadné začít s vlastním serverem založené na cloudu poznámkového bloku. Sady SDK Azure Machine Learning pro Python je již nainstalován a nakonfigurován pro vás po vytvoření tento prostředek v cloudu.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
@@ -56,8 +56,8 @@ Je snadné začít s vlastním serverem založené na cloudu poznámkového blok
 
 Pomocí těchto kroků můžete vytvořit místní aplikace Jupyter Notebook server ve vašem počítači.  Po dokončení kroků, spusťte **kurzy/regrese – část 1 data-prep.ipynb** poznámkového bloku.
 
-1. Dokončete instalaci kroků v [rychlý start Python pro Azure Machine Learning](setup-create-workspace.md#sdk) vytvoření Miniconda prostředí.  Můžete přejít **vytvořit pracovní prostor** části, ale je budete potřebovat pro [2. část](tutorial-auto-train-models.md) této série kurzů.
-1. Nainstalujte Azure ml přípravy v prostředí pomocí `pip install azureml-dataprep`.
+1. Dokončete instalaci kroků v [rychlý start Python pro Azure Machine Learning](setup-create-workspace.md#sdk) vytvoření Miniconda prostředí a nainstalujte sadu SDK.  Můžete přejít **vytvořit pracovní prostor** části, ale je budete potřebovat pro [2. část](tutorial-auto-train-models.md) této série kurzů.
+1. `azureml-dataprep` Balíček je automaticky nainstalován při instalaci sady SDK.
 1. Naklonujte [úložiště GitHub](https://aka.ms/aml-notebooks).
 
     ```
@@ -85,7 +85,7 @@ Pokud ještě nemáte jim nainstalují potřebné balíčky použijte následuj�
 pip install "azureml-dataprep[pandas]>=1.1.0,<1.2.0"
 ```
 
-Importujte sady SDK.
+Importujte balíček.
 
 ```python
 import azureml.dataprep as dprep
@@ -94,7 +94,7 @@ import azureml.dataprep as dprep
 > [!IMPORTANT]
 > Ujistěte se, že instalujete nejnovější verzi. V tomto kurzu nebude fungovat s číslem verze nižší než 1.1.0
 
-## <a name="load-data"></a>Načíst data
+## <a name="load-data"></a>Načtení dat
 
 Stáhněte si dvě různé sady dat taxislužby NYC do toku dat objektů. Datové sady mají mírně odlišné pole. `auto_read_file()` Metoda automaticky rozpozná typ vstupního souboru.
 

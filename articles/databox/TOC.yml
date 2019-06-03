@@ -111,7 +111,7 @@
           items:
             - name: Správa prostřednictvím portálu Azure Portal
               href: data-box-portal-ui-admin.md
-            - name: Řešení potíží s diskem
+            - name: Řešení potíží se službou Data Box Heavy
               href: data-box-disk-troubleshoot.md
             - name: Kontaktování podpory
               href: data-box-disk-contact-microsoft-support.md
@@ -121,12 +121,32 @@
           items:
             - name: Co je Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Kurzy
+          items:
+            - name: 1 – Objednání
+              href: data-box-heavy-deploy-ordered.md
+            - name: 2 – Nastavení
+              href: data-box-heavy-deploy-set-up.md
+            - name: 3 – Připojení a kopírování
+              items:
+                - name: Přes SMB
+                  href: data-box-heavy-deploy-copy-data.md
+            - name: '4 – Vrácení, odeslání, ověření'
+              href: data-box-heavy-deploy-picked-up.md
         - name: Koncepty
           items:
             - name: Kontrola požadavků
               href: data-box-heavy-system-requirements.md
             - name: Pochopení limitů
               href: data-box-heavy-limits.md
+        - name: Postup
+          items:
+            - name: Správa prostřednictvím portálu Azure Portal
+              href: data-box-portal-admin.md
+            - name: Řešení problémů se zařízeními
+              href: data-box-troubleshoot.md
+            - name: Kontaktování podpory
+              href: data-box-disk-contact-microsoft-support.md
     - name: Zdroje a prostředky
       items:
         - name: Produkt Data Box

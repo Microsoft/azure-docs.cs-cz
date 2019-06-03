@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234502"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425686"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Rychlý start: Spuštění ukázkové aplikace sadou SDK pro řeč zařízení v Androidu
 
@@ -84,7 +84,7 @@ Pokud chcete ověřit nastavení development kit, sestavení a nainstalovat uká
 
 1. Přidáte klíč předplatného řeči ke zdrojovému kódu. Pokud chcete vyzkoušet rozpoznání záměru, přidejte také vaše [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klíč předplatného a aplikace.
 
-   Pro zpracování řeči a LUIS údaje začnou MainActivity.java:
+   Pro zpracování řeči a LUIS vaše údaje začnou MainActivity.java:
 
    ```java
     // Subscription
@@ -95,7 +95,7 @@ Pokud chcete ověřit nastavení development kit, sestavení a nainstalovat uká
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Pokud používáte konverzace určené k transkripci řeči klíč a oblasti informace jsou také potřebná v conversation.java:
+    Používáte konverzace určené k transkripci řeči klíč a oblasti informace jsou také potřebná v conversation.java:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -145,7 +145,7 @@ Pokud chcete ověřit nastavení development kit, sestavení a nainstalovat uká
 
    ![Ukázková aplikace příklad sadou SDK pro řeč zařízení a možnosti](media/speech-devices-sdk/qsg-8.png)
 
-1. Nově přidané je ukázka určené k transkripci konverzace. Začněte zbavte se spustit relaci. Ve výchozím nastavení všichni uživatelé jsou hosta, ale pokud máte podpisů hlasové účastníka můžou být přepnuté do /video/participants.properties souboru na zařízení. Ke generování pohled podpis hlasu na [přepisy konverzace (SDK)](how-to-use-conversation-transcription-service.md).
+1. Vyzkoušejte ukázkovou verzi nového určené k transkripci konverzace. Začněte zbavte se spustit relaci. Ve výchozím nastavení všichni uživatelé jsou hosta. Nicméně, pokud máte podpisů hlasové účastníka, můžou být přepnuté do souboru `/video/participants.properties` na zařízení. Na vygenerovat signaturu hlasové, podívejte se na [přepisy konverzace (SDK)](how-to-use-conversation-transcription-service.md).
 
    ![Ukázkové aplikace určené k transkripci konverzace](media/speech-devices-sdk/qsg-15.png)
 

@@ -210,6 +210,8 @@
         - name: Řízení přístupu na základě role
           displayName: rbac
           href: role-based-access-control.md
+        - name: Atributy zabezpečení
+          href: cosmos-db-security-attributes.md
     - name: Připravenost pro podnikové zpracování
       items:
         - name: Online zálohování a obnovení na vyžádání

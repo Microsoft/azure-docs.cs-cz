@@ -9,18 +9,22 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 4ccb8665c9880e21897c81ed4b4ff534e52bb6d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 481f7a7589a58baac922001d230f95198ed45eb7
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829680"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417946"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>Příklad: Jak detekovat jazyce s využitím rozhraní Text Analytics
 
-[Rozhraní API pro rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) vyhodnotí textový vstup a pro každý dokument vrátí identifikátory jazyka se skóre, které označuje sílu analýzy. Analýza textu rozpozná až 120 jazyků.
+[Rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) funkce rozhraní API vyhodnotí textového vstupu a pro každý dokument a vrátí identifikátory jazyka se skóre označující sílu analýzy.
 
 Tato schopnost je užitečná pro úložiště obsahu, která shromažďují libovolné texty, u nichž není jazyk znám. Výsledky této analýzy můžete parsovat a určit, v kterém jazyce je vstupní dokument napsaný. Spolu s odpovědí se vrátí také skóre, které odráží spolehlivost modelu (jedná se o hodnotu 0 až 1).
+
+Nepublikujeme přesný seznam jazyků pro tuto funkci, ale může zjistit široké škály jazyků, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky. 
+
+Pokud máte obsah vyjádřené v méně často používané jazyk, můžete zkusit rozpoznávání jazyka, které chcete zobrazit, pokud vrací kód. Odpověď pro jazyky, které nelze zjistit `unknown`.
 
 > [!TIP]
 > Rozhraní text Analytics také poskytuje Dockeru založených na Linuxu image kontejneru pro rozpoznávání jazyka, tak, aby se [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.
@@ -206,7 +210,7 @@ Výsledný výstup tvoří převládající jazyk a skóre nižší než 1.0, kt
 
 V tomto článku jste se seznámili s koncepty a pracovním postupem rozpoznávání jazyka pomocí funkce Analýza textu ve službě Cognitive Services. Následující odkazy slouží jako rychlé připomenutí hlavních bodů, které jsme dříve vysvětlili a demonstrovali:
 
-+ [Rozhraní API pro rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) je dostupné pro 120 jazyků.
++ [Rozpoznávání jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) je k dispozici pro řadu jazyků, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky.
 + Dokumenty JSON v textu žádosti zahrnovat ID a text.
 + Žádost POST je určená pro koncový bod `/languages` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), které jsou platné pro dané předplatné.
 + Výstup odpovědi, který je tvořen identifikátory jazyka pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která podporuje JSON, včetně například Excelu a Power BI.

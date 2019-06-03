@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: spelluru
-ms.openlocfilehash: b29798bb87b7c5c677e7d80e552e45e8d1290541
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7dbc7dbc0b670de81a3f4603b0d52bce7559af8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786821"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428313"
 ---
 # <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Reakce na události služby Azure Service Bus obdržené prostřednictvím služby Azure Event Grid s využitím Azure Functions a Azure Logic Apps
 V tomto kurzu se dozvíte, jak reagovat na události služby Azure Service Bus, které dostávají prostřednictvím služby Azure Event Grid pomocí Azure Functions a Azure Logic Apps. Budete proveďte následující kroky:
@@ -127,7 +127,7 @@ Proveďte následující kroky:
 1. Konfigurace funkce použít **V1** verze: 
     1. Vyberte aplikaci funkcí ve stromovém zobrazení a vyberte **fungovat nastavení aplikace**. 
 
-        ![Nastavení Function App]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
+        ![Nastavení aplikace funkcí]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
     2. Vyberte **~ 1** pro **verze modulu Runtime**. 
 2. Rozbalte **funkce** ve stromové struktuře zobrazit a vyberte vaši funkci. Nahraďte kód funkce následujícím kódem: 
 
@@ -280,13 +280,12 @@ Připojení aplikace logiky s Azure Service Bus a Azure Event Grid pomocí násl
     3. Pro **název prostředku**, zvolte svůj obor názvů služby Service Bus. 
     4. Vyberte **přidat nový parametr**a vyberte **filtr přípon**. 
     5. Pro **filtr přípon**, zadejte název vašeho druhého předplatného tématu služby Service Bus. 
-
         ![Návrhář pro Logic Apps – konfigurace událostí](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. Vyberte **+ nový krok** v návrháři, a proveďte následující kroky:
     1. Vyhledejte **Service Bus**.
     2. Vyberte **služby Service Bus** v seznamu. 
     3. Vyberte pro **získání zpráv** v **akce** seznamu. 
-    4. Vyberte **načíst zprávy z odběru tématu (neboli peek-lock)**. 
+    4. Vyberte **načíst zprávy z odběru tématu (neboli peek-lock)** . 
 
         ![Návrhář aplikace logiky – akce get zprávy](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
     5. Zadejte **název připojení**. Příklad: **Načíst zprávy z odběru tématu**a vyberte obor názvů služby Service Bus. 

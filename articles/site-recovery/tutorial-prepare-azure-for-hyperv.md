@@ -5,15 +5,15 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 29189a5919a01fcb897758fb64ca9e84b9381fb6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 07a5ee6ccdaecc78c9a8e61ae9e64a5264e3a875
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410903"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418357"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -55,7 +55,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 1. V [webu Azure portal](https://portal.azure.com) nabídce vyberte možnost **vytvořit prostředek** > **úložiště** > **účet úložiště – objekt blob, soubor, tabulka, fronta** .
 2. V části **Vytvořit účet úložiště** zadejte název účtu.  Název zvoleném musí být jedinečný v rámci Azure, se ze 3 až 24 znaků dlouhý a pouze použití malá písmena a číslice. Pro účely tohoto kurzu použijte **contosovmsacct1910171607**.
 3. V části **Model nasazení** vyberte **Resource Manager**.
-4. V **druh účtu**vyberte **úložiště (pro obecné účely v1)**. Nevybírejte úložiště objektů blob.
+4. V **druh účtu**vyberte **úložiště (pro obecné účely v1)** . Nevybírejte úložiště objektů blob.
 5. V části **Replikace** vyberte výchozí redundanci úložiště **Geograficky redundantní úložiště jen pro čtení**. Ponechte zabezpečený přenos vyžaduje nastavení jako – zakázané.
 6. V části **Výkon** vyberte **Standard**. Dále v **úroveň přístupu**, vyberte výchozí možnost **Hot**.
 7. V **předplatné**, vyberte předplatné, ve kterém chcete vytvořit nový účet úložiště.
@@ -68,7 +68,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
 
 1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**a poté vyhledejte služby Recovery Services na webu Azure Marketplace.
-2. Vyberte **Backup a Site Recovery (OMS)**. V položce **Backup a Site Recovery** stránce **vytvořit**.
+2. Vyberte **Backup a Site Recovery (OMS)** . V položce **Backup a Site Recovery** stránce **vytvořit**.
 1. V **trezor služby Recovery services > název**, zadejte popisný název pro identifikaci trezoru. Pro účely tohoto kurzu použijte **ContosoVMVault**.
 2. V **skupiny prostředků**, vyberte existující skupinu prostředků nebo vytvořte novou. Pro účely tohoto kurzu použijte **contosoRG**.
 3. V **umístění**, vyberte oblast, ve kterém by měl být umístěn v trezoru. Pro účely tohoto kurzu použijte **západní Evropa**.

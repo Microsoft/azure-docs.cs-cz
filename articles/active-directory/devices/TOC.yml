@@ -22,6 +22,8 @@
   items:
     - name: Jednotné přihlašování k místním prostředkům
       href: azuread-join-sso.md
+    - name: Primární obnovovací tokeny
+      href: concept-primary-refresh-token.md
     - name: Spravované pracovní stanice Azure
       href: concept-azure-managed-workstation.md
 - name: Návody
@@ -35,7 +37,7 @@
       href: azureadjoin-plan.md
     - name: Plánování implementace připojení k hybridní službě Azure AD
       href: hybrid-azuread-join-plan.md
-    - name: Řízení připojení vašich zařízení k hybridní službě Azure AD
+    - name: Řízené ověřování hybridního připojení k Azure AD
       href: hybrid-azuread-join-control.md
     - name: Přiřazení místních správců k zařízením připojeným k Azure AD
       href: assign-local-admin.md

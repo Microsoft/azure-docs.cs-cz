@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 80fabccb8a59bcd472812698f624d49dc26c24fa
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399122"
+ms.locfileid: "66417488"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Kurz: Odeslání transakce pomocí služby Azure Blockchain
 
@@ -183,7 +183,7 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
 
 ## <a name="create-smart-contract"></a>Vytvoření inteligentního kontraktu
 
-1. Ve složce **kontrakty**, vytvořte nový soubor s názvem `SimpleStorage.sol`. Přidejte následující kód.
+1. V **kontrakty** složku, vytvořte nový soubor s názvem `SimpleStorage.sol`. Přidejte následující kód.
 
     ```solidity
     pragma solidity >=0.4.21 <0.6.0;
@@ -205,7 +205,7 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
     }
     ```
     
-1. Ve složce **migrace**, vytvořte nový soubor s názvem `2_deploy_simplestorage.js`. Přidejte následující kód.
+1. V **migrace** složku, vytvořte nový soubor s názvem `2_deploy_simplestorage.js`. Přidejte následující kód.
 
     ```solidity
     var SimpleStorage = artifacts.require("SimpleStorage.sol");
@@ -223,10 +223,10 @@ V seznamu uzlu transakce můžete získat veřejný klíč. Zkopírujte veřejn�
     |-------|-------------
     | \<veřejný klíč alfa uzlu\> | Veřejný klíč alfa uzlu
     | \<Etherea adresa účtu\> | Adresa účtu Etherea vytvořen v výchozí uzel transakce
-    
+
     V tomto příkladu počáteční hodnotu **storeData** je hodnota nastavena na 42.
 
-    **privateFor** definuje uzly, na které je k dispozici smlouvy. V tomto příkladu uzel transakce výchozí účet můžete přetypovat privátní transakcí, které **alfa** uzlu. Budete muset přidat veřejných klíčů pro všechny účastníky privátní transakce. Pokud nechcete zahrnout **privateFor:** a **z:** , inteligentní smlouvy transakce jsou veřejné a můžou je zobrazit všichni členové consortium.
+    **privateFor** definuje uzly, na které je k dispozici smlouvy. V tomto příkladu uzel transakce výchozí účet můžete přetypovat privátní transakcí, které **alfa** uzlu. Přidání veřejné klíče pro všechny účastníky privátní transakce. Pokud nechcete zahrnout **privateFor:** a **z:** , inteligentní smlouvy transakce jsou veřejné a můžou je zobrazit všichni členové consortium.
 
 1. Uložte všechny soubory tak, že vyberete **soubor > Uložit vše**.
 

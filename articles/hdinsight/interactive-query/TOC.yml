@@ -320,12 +320,14 @@
       maintainContext: true
     - name: Síťový přístup
       items:
+        - name: Architektura virtuálních sítí HDInsight
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Použití brány firewall k omezení odchozího provozu
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight ve virtuální síti Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: Připojení služby HDInsight k místní síti
           href: ../connect-on-premises-network.md
-          maintainContext: true
     - name: Monitorování s využitím protokolů Azure Monitoru
       items:
         - name: Použití protokolů Azure Monitoru

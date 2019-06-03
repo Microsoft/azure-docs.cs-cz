@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 43aa0956ef1f44fa5705800ff2b424608ec75499
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2c6af53aeec5d40f603d65595d93527107c0d80a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795614"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427704"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Kubernetes v Azure pomocí služby Azure Cosmos DB (preview)
 
@@ -29,7 +29,7 @@ Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v č
 
 1. Nainstalujte nejnovější verzi [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete stáhnout Azure CLI, které jsou specifické pro váš operační systém a nainstalovat.
 
-1. Nainstalujte [v0.32.3](https://github.com/Azure/aks-engine/releases/tag/v0.32.3) verze modulu Azure Kubernetes. Pokyny pro různé operační systémy jsou k dispozici v [modul Azure Kubernetes](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) stránky. Potřebujete pouze kroky z **nainstalovat modul AKS** část propojené dokumentu. Po stažení, extrahuje soubor zip.
+1. Nainstalujte [nejnovější verzi](https://github.com/Azure/aks-engine/releases) modulu Azure Kubernetes. Pokyny pro různé operační systémy jsou k dispozici v [modul Azure Kubernetes](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) stránky. Potřebujete pouze kroky z **nainstalovat modul AKS** část propojené dokumentu. Po stažení, extrahuje soubor zip.
 
    Modul Azure Kubernetes (**aks-engine**) generuje šablon Azure Resource Manageru pro clustery Kubernetes v Azure. Vstup pro aks modul je soubor definice clusteru, které popisují požadovanou clusteru, včetně nástroje orchestrator, funkce a agenty. Struktura vstupních souborů je podobný veřejné rozhraní API pro službu Azure Kubernetes Service.
 
@@ -77,7 +77,7 @@ Další informace o etcd rozhraní API ve službě Azure Cosmos DB, najdete v č
 1. Z příkazového řádku přejděte do složky, ve kterém je modul Azure Kubernetes spustitelný soubor umístěn. Například na příkazovém řádku můžete přejděte do složky jako:
 
    ```cmd
-   cd "\aks-engine-v0.32.3-windows-amd64\aks-engine-v0.32.3-windows-amd64"
+   cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
 1. Otevřete textový editor podle vašeho výběru a definujte šablony Resource Manageru, který se nasadí cluster Kubernetes v Azure pomocí služby Azure Cosmos DB etcd rozhraní API. Zkopírujte následující definici JSON do textového editoru a uložte soubor jako `apiModel.json`:

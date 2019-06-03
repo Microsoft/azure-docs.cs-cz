@@ -87,14 +87,16 @@
           href: storsimple-ova-web-ui-admin.md
     - name: "Poznámky k\_verzi"
       items:
-        - name: Aktualizace 1.1 – aktuální
+        - name: Aktualizace 1.2
+          href: storsimple-virtual-array-update-12-release-notes.md
+        - name: Aktualizace 1.1
           href: storsimple-virtual-array-update-11-release-notes.md
         - name: Update 1
           href: storsimple-virtual-array-update-1-release-notes.md
-        - name: Aktualizace 0.6
-          href: storsimple-virtual-array-update-06-release-notes.md
         - name: Archiv
           items:
+            - name: Aktualizace 0.6
+              href: storsimple-virtual-array-update-06-release-notes.md
             - name: Aktualizace 0.5
               href: storsimple-virtual-array-update-05-release-notes.md
             - name: Aktualizace 0.4
@@ -103,7 +105,7 @@
               href: storsimple-ova-update-03-release-notes.md
             - name: Aktualizace 0.2 a 0.1
               href: storsimple-ova-update-01-release-notes.md
-- name: Řada StorSimple 8000 (Azure Portal)
+- name: StorSimple 8000 Series
   items:
     - name: Přehled
       items:

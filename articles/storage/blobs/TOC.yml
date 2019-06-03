@@ -275,6 +275,8 @@
           href: storage-blob-event-overview.md
         - name: Funkce objektů blob stránky
           href: storage-blob-pageblob-overview.md
+        - name: Statické weby
+          href: storage-blob-static-website.md
     - name: Postup
       items:
         - name: Vytvoření a správa účtů úložiště
@@ -353,7 +355,7 @@
         - name: Nastavení a načtení vlastností a metadat
           href: storage-properties-metadata.md
         - name: Hostování statického webu
-          href: storage-blob-static-website.md
+          href: storage-blob-static-website-how-to.md
         - name: Mapování Azure CDN na vlastní doménu pro přístup přes protokol HTTPS
           href: storage-https-custom-domain-cdn.md
         - name: Konfigurace vlastní domény

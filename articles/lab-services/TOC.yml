@@ -205,6 +205,8 @@
               href: devtest-lab-announcements.md
             - name: Přidání informací o podpoře do testovacího prostředí
               href: devtest-lab-internal-support-message.md
+            - name: Konfigurace galerie sdílených imagí v Azure DevTest Labs
+              href: configure-shared-image-gallery.md
         - name: Výběr vlastní image nebo vzorce
           href: devtest-lab-comparing-vm-base-image-types.md
         - name: Správa vlastních imagí

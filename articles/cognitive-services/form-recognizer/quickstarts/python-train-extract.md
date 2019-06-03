@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2657c69ef631c32b498404908014d8788d485989
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906980"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417967"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API s využitím Pythonu
 
@@ -45,9 +45,12 @@ Když je udělen přístup k použití modulu pro rozpoznávání formulář, do
 
 Po dokončení nasazení prostředku Rozlišovač formuláře vyhledejte a vyberte ho z **všechny prostředky** seznamu na portálu. Vyberte **klíče** kartu k zobrazení klíče předplatného. Ani jeden klíč vám poskytne vaší aplikaci přístup k prostředku. Zkopírujte hodnotu **klíč 1**. Použijete ho v další části.
 
-## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
+## <a name="train-a-form-recognizer-model"></a>Trénování modelu Rozlišovač formuláře
 
-Vytvoření a spuštění ukázky, tyto změny provést následující fragment kódu:
+Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure Storage. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář. Název souboru formuláře musí obsahovat slovo "prázdný".
+
+K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí pythonu kód, který následuje. Před spuštěním kódu, proveďte následující změny:
+
 1. Nahraďte `<Endpoint>` s adresu URL koncového bodu pro formuláře pro rozpoznávání prostředků v oblasti Azure, kde jste získali klíče předplatného.
 1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data.  
 1. Nahraďte `<Subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.

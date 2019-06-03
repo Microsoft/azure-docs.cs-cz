@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035459"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417303"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
@@ -38,7 +38,7 @@ V tomto kurzu přečtěte si následující úkoly:
 Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
 >[!NOTE]
-> Kód v tomto článku byl testován s využitím Azure Machine Learning SDK verze 1.0.0.
+> S využitím Azure Machine Learning SDK verze 1.0.39 testovaný kód v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -147,7 +147,7 @@ dflow_prepared.get_profile()
       <th>Type</th>
       <th>Minimum</th>
       <th>Maximum</th>
-      <th>Počet</th>
+      <th>Count</th>
       <th>Chybí počet</th>
       <th>Nechybí počet</th>
       <th>Procento chybějících</th>
@@ -162,8 +162,8 @@ dflow_prepared.get_profile()
       <th>95 % quantile</th>
       <th>99 % quantile</th>
       <th>99,9 quantile %</th>
-      <th>Střední hodnota</th>
-      <th>Standardní odchylka</th>
+      <th>střední hodnotu</th>
+      <th>Směrodatná odchylka</th>
       <th>Odchylka</th>
       <th>Zešikmení</th>
       <th>Míra fluktuace</th>

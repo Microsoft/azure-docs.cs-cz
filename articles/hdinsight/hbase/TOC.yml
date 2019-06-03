@@ -236,6 +236,10 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Síťový přístup
       items:
+        - name: Architektura virtuálních sítí HDInsight
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Použití brány firewall k omezení odchozího provozu
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight ve virtuální síti Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: Připojení služby HDInsight k místní síti

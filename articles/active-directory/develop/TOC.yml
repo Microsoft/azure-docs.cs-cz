@@ -229,8 +229,6 @@
                   href: msal-js-initializing-client-applications.md
             - name: Zpracování chyb a výjimek
               href: msal-handling-exceptions.md
-            - name: Testování aplikací MSAL
-              href: msal-testing.md
             - name: Protokolování
               href: msal-logging.md
             - name: Jednotné přihlašování (JS)
@@ -366,6 +364,12 @@
                   href: msal-net-user-gets-consent-for-multiple-resources.md
                 - name: Poskytnutí vlastního klienta HttpClient
                   href: msal-net-provide-httpclient.md
+            - name: MSAL.js
+              items:
+                - name: Jak se vyhnout opětovnému načítání stránek
+                  href: msal-js-avoid-page-reloads.md
+                - name: Předání vlastního stavu v požadavcích na ověření
+                  href: msal-js-pass-custom-state-authentication-request.md
         - name: Práce se sadou Visual Studio
           items:
             - name: Použití připojené služby Active Directory

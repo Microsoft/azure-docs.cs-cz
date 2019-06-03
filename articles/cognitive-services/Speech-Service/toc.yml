@@ -222,6 +222,8 @@
           displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows'
         - name: Dostupnost scénáře
           href: scenario-availability.md
+        - name: Dodání aplikace
+          href: ship-application.md
         - name: "Poznámky k\_verzi"
           href: releasenotes.md
         - name: C++

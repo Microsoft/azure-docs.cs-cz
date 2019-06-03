@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4f1ce8fd44a501f594f3093789d1ef03e664d018
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829544"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417312"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Podpora jazyka a oblasti pro rozhraní Text Analytics API
 
@@ -23,7 +23,11 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro každou operaci: 
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Rozhraní Text Analytics API můžete zjišťovat až 120 jazyků. Rozpoznávání jazyka vrátí "skript" jazyk. Například pro frázi "Mám pes" vrátí `en` místo `en-US`. Pouze zvláštním případem je čínština, kde funkci zjišťování jazyka vrátí `zh_CHS` nebo `zh_CHT` pokud ji určit skript zadaného textu k dispozici. V situacích, kdy nelze identifikovat specifického skriptu pro čínské dokument, ho jednoduše vrátí `zh`.
+Rozhraní Text Analytics API můžete zjišťovat široké škály jazyků, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky.  Rozpoznávání jazyka vrátí "skript" jazyk. Například pro frázi "Mám pes" vrátí `en` místo `en-US`. Pouze zvláštním případem je čínština, kde funkci zjišťování jazyka vrátí `zh_CHS` nebo `zh_CHT` pokud ji určit skript zadaného textu k dispozici. V situacích, kdy nelze identifikovat specifického skriptu pro čínské dokument, ho jednoduše vrátí `zh`.
+
+Nepublikujeme přesný seznam jazyků pro tuto funkci, ale může zjistit široké škály jazyků, proměnných typu variant, dialekty a některé jazykové verze nebo místní jazyky. 
+
+Pokud máte obsah vyjádřené v méně často používané jazyk, můžete zkusit rozpoznávání jazyka, které chcete zobrazit, pokud vrací kód. Odpověď pro jazyky, které nelze zjistit `unknown`.
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Analýza mínění, extrakci klíčových frází a rozpoznávání pojmenovaných entit
 

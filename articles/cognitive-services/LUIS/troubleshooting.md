@@ -11,16 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b114b1c3b1c421c6e6944666e3fd928d2aced966
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225878"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417974"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – nejčastější dotazy (FAQ)
 
 Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
+
+## <a name="whats-new"></a>Co je nového
+
+[Další informace](whats-new.md) o tom, co je nového v Language Understanding.
 
 <a name="luis-authoring"></a>
 
@@ -64,7 +68,7 @@ Cortana, které předem sestavených aplikací byla vyřazena jako zastaralá v 
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
 Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to můžu vyřešit? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>V utterance příklad namísto Moje vlastní entity se označí předem připravených entit. Jak to mohu napravit? 
 
 Zobrazit [řešení potíží s předem vytvořenými entitami](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
