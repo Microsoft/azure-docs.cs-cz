@@ -67,7 +67,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost type musí být nastavená na: **OnPremisesTeradata** |Ano |
 | server |Název serveru Teradata. |Ano |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty: Anonymní, základní a Windows. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
+| username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
 
