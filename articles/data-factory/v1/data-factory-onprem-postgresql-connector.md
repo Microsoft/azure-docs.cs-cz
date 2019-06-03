@@ -76,10 +76,10 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **OnPremisesPostgreSql** |Ano |
 | server |Název serveru PostgreSQL. |Ano |
-| databáze |Název databáze PostgreSQL. |Ano |
+| database |Název databáze PostgreSQL. |Ano |
 | schema |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty: Anonymní, základní a Windows. |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
+| authenticationType |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty: Anonymní, základní a Windows. |Ano |
+| username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
 
