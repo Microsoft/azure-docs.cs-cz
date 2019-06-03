@@ -85,15 +85,15 @@ Aktivita HDInsight Pig ve službě Data Factory [kanálu](data-factory-create-pi
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název aktivity |Ano |
+| name |Název aktivity |Ano |
 | description |Text popisující, k čemu aktivita slouží |Ne |
 | type |HDinsightPig |Ano |
-| vstupy |Jeden nebo více vstupů spotřebovávané aktivitou Pig |Ne |
-| výstupy |Jeden nebo více výstupů produkované aktivitou Pig |Ano |
+| inputs |Jeden nebo více vstupů spotřebovávané aktivitou Pig |Ne |
+| outputs |Jeden nebo více výstupů produkované aktivitou Pig |Ano |
 | linkedServiceName |Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory |Ano |
 | script |Zadejte vložený skript Pig |Ne |
-| Cesta ke skriptu |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
+| scriptPath |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
+| defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
 
 ## <a name="example"></a>Příklad:
 Zvažte příklad herních protokolů analytics, ve které chcete určit čas strávený hráči, hraní her spustili ve vaší společnosti.
