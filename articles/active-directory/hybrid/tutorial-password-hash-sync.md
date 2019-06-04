@@ -1,5 +1,5 @@
 ---
-title: 'Kurz:  Integrace jedné doménové struktury AD do Azure s využitím synchronizace hodnot hash hesel (PHS) | Dokumentace Microsoftu'
+title: 'Kurz:  Integrace jedné doménové struktury AD do Azure s využitím PHS'
 description: Ukazuje, jak nastavit prostředí hybridní identity pomocí synchronizace hodnot hash hesel.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60295569"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474017"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz:  Integrace jedné doménové struktury AD s využitím synchronizace hodnot hash hesel (PHS)
 

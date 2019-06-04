@@ -48,6 +48,8 @@
           href: data-lake-analytics-diagnostic-logs.md
         - name: Úprava omezení kvót
           href: data-lake-analytics-quota-limits.md
+        - name: Plánovaní zotavení po havárii
+          href: data-lake-analytics-disaster-recovery.md
     - name: Vývoj programů U-SQL
       items:
         - name: Jazyk U-SQL

@@ -43,8 +43,6 @@
       items:
         - name: Jak funguje MFA
           href: concept-mfa-howitworks.md
-        - name: Která verze je ta správná?
-          href: concept-mfa-whichversion.md
         - name: Licencování uživatelů
           href: concept-mfa-licensing.md
         - name: Správa poskytovatele ověřování

@@ -1,11 +1,11 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s Projectplace | Dokumentace Microsoftu'
-description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Projectplace.
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Projectplace.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: barbkess
+ms.reviewer: celested
 ms.assetid: 298059ca-b652-4577-916a-c31393d53d7a
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,178 +13,131 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/26/2019
+ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 17fbc6bc4f022a15c34c5ca7b9465be392cdc639
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aae6de49a3df3f1e648b99aa9936d6af85fc020f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560627"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497291"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>Kurz: Integrace Azure Active Directory s Projectplace
+# <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Kurz: Projectplace integrovat s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Projectplace s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Projectplace s Azure Active Directory (Azure AD). Když Projectplace můžete integrovat s Azure AD, můžete:
 
-Tato integrace poskytuje tyto výhody:
+* Ovládací prvek ve službě Azure AD, který má přístup k Projectplace.
+* Aby uživatelé mohli být automaticky přihlášeni k Projectplace přes svoje účty Azure AD.
+* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Uživatelům je možné zřídit Projectplace automaticky.
 
-* Můžete použít Azure AD a určovat, kdo má přístup k Projectplace.
-* Můžete povolit uživatelům, aby automaticky přihlášeni k Projectplace (jednotné přihlašování) s jejich účty Azure AD.
-* Můžete spravovat své účty v jednom centrálním místě: na webu Azure portal.
-
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
+Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Projectplace, budete potřebovat:
+Abyste mohli začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete si zaregistrovat [zkušební verze na jeden měsíc](https://azure.microsoft.com/pricing/free-trial/) předplatného.
-* Projectplace předplatné, které obsahuje single sign-on povoleno.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Projectplace jednotné přihlašování (SSO) povolené předplatné.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu budete nakonfigurovat a otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje Projectplace **SP a zprostředkovatele identity** iniciované jednotné přihlašování a podporuje **JIT** zřizování uživatelů.
 
-* Projectplace podporuje jednotné přihlašování iniciovaného Zprostředkovatelem přihlašování.
+## <a name="adding-projectplace-from-the-gallery"></a>Přidání Projectplace z Galerie
 
-## <a name="add-projectplace-from-the-gallery"></a>Přidání Projectplace z Galerie
+Konfigurace integrace Projectplace do služby Azure AD, budete muset přidat Projectplace v galerii na váš seznam spravovaných aplikací SaaS.
 
-Nastavení integrace služby Projectplace do služby Azure AD, budete muset přidat Projectplace v galerii na váš seznam spravovaných aplikací SaaS.
-
-1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**:
-
-    ![Vyberte Azure Active Directory.](common/select-azuread.png)
-
-2. Přejděte na **podnikové aplikace** > **všechny aplikace**:
-
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
-
-3. Chcete-li přidat aplikaci, vyberte **novou aplikaci** v horní části okna:
-
-    ![Vyberte novou aplikaci](common/add-new-app.png)
-
-4. Do vyhledávacího pole zadejte **Projectplace**. Vyberte **Projectplace** ve výsledcích hledání a pak vyberte **přidat**.
-
-     ![Výsledky vyhledávání](common/search-new-app.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
+1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
+1. V **přidat z Galerie** části, zadejte **Projectplace** do vyhledávacího pole.
+1. Vyberte **Projectplace** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části budete konfigurovat a Azure AD jednotné přihlašování s Projectplace test pomocí testovacího uživatele s názvem Britta Simon.
-Pokud chcete povolit jednotné přihlašování, budete muset vytvořit vztah mezi uživatele služby Azure AD a odpovídajícího uživatele v Projectplace.
+Konfigurace a otestování jednotného přihlašování k Azure AD s Projectplace pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Projectplace.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Projectplace, které potřebujete k dokončení těchto kroků:
+Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Projectplace, proveďte následující stavebních bloků:
 
-1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**  k povolení této funkce pro vaše uživatele.
-2. **[Konfigurace Projectplace jednotného přihlašování](#configure-projectplace-single-sign-on)**  na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotného přihlašování.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  povolení služby Azure AD jednotného přihlašování pro uživatele.
-5. **[Vytvoření zkušebního uživatele Projectplace](#create-a-projectplace-test-user)**  připojený k Azure AD zastoupení uživatele.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  k ověření, že konfigurace funguje.
+1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace Projectplace](#configure-projectplace)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovací uživatel Projectplace](#create-projectplace-test-user)**  mít protějšek B. Simon Projectplace, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
 
-V této části budete povolení služby Azure AD jednotného přihlašování na portálu Azure portal.
+Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Projectplace, proveďte tyto kroky:
+1. V [webu Azure portal](https://portal.azure.com/)na **Projectplace** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
+1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Projectplace** integrace stránce aplikace vyberte **jednotného přihlašování**:
+   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    ![Vyberte jednotného přihlašování](common/select-sso.png)
+1. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, aplikace je předem nakonfigurovaný a potřebné adresy URL se už předem vyplní s Azure . Uživatel musí uložte konfiguraci kliknutím **Uložit** tlačítko.
 
-2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
+1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://service.projectplace.com`
 
-3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
+1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko kopírování **ikonu** zkopírovat **adresa Url federačních metadat aplikace** podle vašich požadavků a uložte ho do poznámkového bloku.
 
-    ![Upravit ikonu](common/edit-urls.png)
+   ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-4. V **základní konfiguraci SAML** v dialogu **přihlašovací adresa URL** pole, zadejte adresu URL v tomto vzoru:
+1. Na **nastavení Projectplace** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
 
-    `https://<company>.projectplace.com`
+   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-   ![Dialogové okno základní konfigurace SAML](common/sp-signonurl.png)
-    > [!NOTE]
-    > Tato hodnota je zástupný symbol. Budete muset použít skutečné přihlašovací adresa URL. Obraťte se [tým podpory Projectplace](https://success.planview.com/Projectplace/Support) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** dialogové okno na webu Azure Portal.
+### <a name="configure-projectplace"></a>Konfigurace služby Projectplace
 
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **Stáhnout** odkaz **kód XML metadat federace** , podle požadavků vaší a uložte certifikát v počítači:
-
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
-
-6. V **nastavení Projectplace** tématu, zkopírujte příslušné adresy URL, na základě vašich požadavků.
-
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
-
-    1. **Adresa URL pro přihlášení**.
-
-    1. **Identifikátor služby Azure AD**.
-
-    1. **Odhlašovací adresa URL**.
-
-### <a name="configure-projectplace-single-sign-on"></a>Konfigurace Projectplace jednotného přihlašování
-
-Ke konfiguraci jednotného přihlašování na **Projectplace** straně, je nutné odeslat na stažený **kód XML metadat federace** certifikát a adresy URL, které jste zkopírovali z portálu Azure portal k [ Tým podpory Projectplace](https://success.planview.com/Projectplace/Support). Tento tým zajistí, že je správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na **Projectplace** straně, je nutné odeslat zkopírovaný **adresa Url federačních metadat aplikace** z webu Azure portal [tým podpory Projectplace](https://success.planview.com/Projectplace/Support) . Tento tým zajistí, že je správně nastaveno připojení SAML SSO na obou stranách.
 
 >[!NOTE]
->Konfigurace jednotného přihlašování musí provést [tým podpory Projectplace](https://success.planview.com/Projectplace/Support). Jakmile konfigurace je hotová, zobrazí se oznámení.
+>Konfigurace jednotného přihlašování musí provést [tým podpory Projectplace](https://success.planview.com/Projectplace/Support). Jakmile konfigurace je hotová, zobrazí se oznámení. 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
+V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
 
-1. Na webu Azure Portal, vyberte **Azure Active Directory** v levém podokně vyberte **uživatelé**a pak vyberte **všichni uživatelé**:
-
-    ![Vyberte možnost Všichni uživatelé](common/users.png)
-
-2. Vyberte **nového uživatele** v horní části obrazovky:
-
-    ![Vyberte nového uživatele](common/new-user.png)
-
-3. V **uživatele** dialogové okno pole, proveďte následující kroky.
-
-    ![Dialogové okno uživatelského](common/user-properties.png)
-
-    1. V **název** zadejte **BrittaSimon**.
-  
-    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >**. (Například BrittaSimon@contoso.com.)
-
-    1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
-
-    1. Vyberte **Vytvořit**.
+1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
+1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V **uživatele** vlastností, postupujte podle těchto kroků:
+   1. Do pole **Název** zadejte `B. Simon`.  
+   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure AD jednotného přihlašování tak, že udělíte přístup k Projectplace.
+V této části povolíte B. Simon používat jednotné přihlašování Azure díky udělení přístupu k Projectplace.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Projectplace**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikací vyberte **Projectplace**.
+1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
 
-    ![Okno aplikace organizace](common/enterprise-applications.png)
+   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-2. V seznamu aplikací vyberte **Projectplace**.
+1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Seznam aplikací](common/all-applications.png)
+    ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-3. V levém podokně vyberte **uživatelů a skupin**:
+1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
+1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
 
-    ![Vyberte uživatele a skupiny](common/users-groups-blade.png)
+### <a name="create-projectplace-test-user"></a>Vytvořit testovací uživatel Projectplace
 
-4. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogové okno.
+>[!NOTE]
+>Pokud máte povolené v Projectplace zřizování, můžete tento krok přeskočit. Můžete klást [tým podpory Projectplace](https://success.planview.com/Projectplace/Support) umožňující zřizování, jakmile Hotovo uživatelé budou vytvořeny v Projectplace při prvním přihlášení.
 
-    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
+Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Projectplace, budete muset přidat k Projectplace. Musíte je přidat ručně.
 
-5. V **uživatelů a skupin** dialogu **Britta Simon** v seznamu uživatelů a pak klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
-
-6. Pokud očekáváte, že hodnotu kontrolního výrazu SAML, do role v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu. Klikněte na tlačítko **vyberte** tlačítko v dolní části obrazovky.
-
-7. V **přidat přiřazení** dialogu **přiřadit**.
-
-### <a name="create-a-projectplace-test-user"></a>Vytvoření zkušebního uživatele Projectplace
-
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Projectplace, budete muset přidat k Projectplace. Je nutné je přidat ručně.
-
-Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:
+**Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:**
 
 1. Přihlaste se k vaší **Projectplace** společnosti serveru jako správce.
 
@@ -209,15 +162,14 @@ Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:
 >[!NOTE]
 >Můžete použít také jakýkoliv jiný nástroj pro vytváření uživatelského účtu nebo rozhraní API poskytovaných Projectplace pro přidání uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
-Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
+### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice Projectplace na přístupovém panelu můžete by měl být automaticky přihlášeni k Projectplace instanci, u kterého nastavíte jednotné přihlašování. Další informace najdete v tématu [přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Při výběru dlaždice Projectplace na přístupovém panelu, vám by měl být automaticky přihlášeni k Projectplace, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další prostředky
 
-- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

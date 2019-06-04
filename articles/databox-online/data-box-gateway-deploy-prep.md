@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9650cdb6935fb45f0c59e8a114a9ce1c8e2d809
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d99b10598b9f16da2cf202330f0b5bac9219699f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686522"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476830"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box brány
 
@@ -51,7 +51,11 @@ Tady najdete požadavky na konfiguraci prostředku Data Box Gateway, zařízení
 Než začnete, ujistěte se, že:
 
 - Pro prostředek brány dat pole by měla podporovat vaše předplatné Microsoft Azure. Předplatná s průběžnými platbami nejsou podporovány.
-- Budete mít roli vlastníka nebo přispěvatele, přístup k vašemu předplatnému.
+- Budete mít roli vlastníka nebo přispěvatele přístup na úrovni skupiny prostředků pro prostředky Data pole/Data hrany pole brány služby IoT Hub a Azure Storage.
+
+    - Chcete-li vytvořit žádné hraniční zařízení Data Box / prostředku brány pole dat, měli byste mít obor oprávnění jako přispěvatelé (nebo vyšší) na úrovni skupiny prostředků. Musíte také zkontrolujte, zda `Microsoft.DataBoxEdge` poskytovatel je zaregistrovaný. Informace o tom, jak zaregistrovat, přejděte na [zprostředkovatel prostředku registrace](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Chcete-li vytvořit prostředek služby IoT Hub, ujistěte se, že poskytovatel Microsoft.Devices je zaregistrovaný. Informace o tom, jak zaregistrovat, přejděte na [zprostředkovatel prostředku registrace](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Pokud chcete vytvořit prostředek účtu úložiště, znovu potřebujete Přispěvatel nebo vyšší přístup k rozsahu na úrovni skupiny prostředků. Azure Storage je ve výchozím nastavení zaregistrovaný poskytovatel prostředků.
 - Máte správce nebo uživatel přístup k Azure Active Directory Graph API. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
@@ -106,7 +110,7 @@ Vytvoření prostředku brány pole dat, proveďte následující kroky na webu 
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
+    |Name   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |   
     |Oblast     |Pro tuto verzi východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici pro nasazení vašich prostředků. Všechny oblasti státní správy pro Azure Government, jsou uvedeny v [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) jsou k dispozici. <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
     
     ![Vytvoření prostředku Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)

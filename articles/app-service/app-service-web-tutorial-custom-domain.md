@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e670c00e7d43c449947908ac1d89587c8435b0a7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 962955a405d12365f69519b004ea8f95d529a97c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129498"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475558"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS do služby Azure App Service
 
@@ -48,7 +48,7 @@ Pro absolvování tohoto kurzu potřebujete:
   Abyste například mohli přidat záznamy DNS pro `contoso.com` a `www.contoso.com`, musíte mít možnost konfigurovat nastavení DNS pro kořenovou doménu `contoso.com`.
 
   > [!NOTE]
-  > Pokud nemáte žádný existující název domény, zvažte [zakoupení domény pomocí webu Azure Portal](manage-custom-dns-buy-domain.md). 
+  > Pokud nemáte žádný existující název domény, zvažte [zakoupení domény pomocí webu Azure Portal](manage-custom-dns-buy-domain.md).
 
 ## <a name="prepare-the-app"></a>Příprava aplikace
 
@@ -72,7 +72,7 @@ Zobrazí se stránka pro správu aplikace App Service.
 
 ### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
-V levém navigačním panelu na stránce aplikace se posuňte do části **Nastavení** a vyberte **Vertikálně navýšit kapacitu (plán služby App Service)**.
+V levém navigačním panelu na stránce aplikace se posuňte do části **Nastavení** a vyberte **Vertikálně navýšit kapacitu (plán služby App Service)** .
 
 ![Nabídka Vertikálně navýšit kapacitu](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -139,13 +139,13 @@ Vyberte ikonu **+** vedle možnosti **Přidat název hostitele**.
 
 ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CNAME, například `www.contoso.com`. 
+Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CNAME, například `www.contoso.com`.
 
 Vyberte **Ověřit**.
 
 Zobrazí se stránka **Přidat název hostitele**. 
 
-Ujistěte se, že **typ záznamu názvu hostitele** je nastavena na **CNAME (www\.example.com nebo jakákoli subdoména)**.
+Ujistěte se, že **typ záznamu názvu hostitele** je nastavena na **CNAME (www\.example.com nebo jakákoli subdoména)** .
 
 Vyberte **Přidat název hostitele**.
 
@@ -156,7 +156,7 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -166,7 +166,7 @@ Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodn�
 
 ### <a name="map-an-a-record"></a>Mapování záznamu A
 
-V tomto příkladu přidáte záznam A pro kořenovou doménu (například `contoso.com`). 
+V tomto příkladu přidáte záznam A pro kořenovou doménu (například `contoso.com`).
 
 <a name="info"></a>
 
@@ -174,7 +174,7 @@ V tomto příkladu přidáte záznam A pro kořenovou doménu (například `cont
 
 K mapování záznamu A potřebujete externí IP adresu aplikace. Tuto IP adresu najdete na stránce **Vlastní domény** aplikace na webu Azure Portal.
 
-V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**. 
+V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
 ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -191,11 +191,11 @@ Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 K mapování záznamu A na aplikaci vyžaduje služba App Service **dva** záznamy DNS:
 
 - Záznam **A** pro mapování na IP adresu aplikace.
-- Záznam **TXT** pro mapování na výchozí název hostitele aplikace `<app_name>.azurewebsites.net`. Služba App Service používá tento záznam pouze během konfigurace k ověření, že jste vlastníkem vlastní domény. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit. 
+- Záznam **TXT** pro mapování na výchozí název hostitele aplikace `<app_name>.azurewebsites.net`. Služba App Service používá tento záznam pouze během konfigurace k ověření, že jste vlastníkem vlastní domény. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
-Pro příklad domény `contoso.com` vytvořte záznamy A a TXT podle následující tabulky (`@` obvykle představuje kořenovou doménu). 
+Pro příklad domény `contoso.com` vytvořte záznamy A a TXT podle následující tabulky (`@` obvykle představuje kořenovou doménu).
 
-| Typ záznamu | Hostitel | Hodnota |
+| Typ záznamu | Host | Hodnota |
 | - | - | - |
 | A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
@@ -203,7 +203,7 @@ Pro příklad domény `contoso.com` vytvořte záznamy A a TXT podle následují
 > [!NOTE]
 > Přidat subdoménu (jako je `www.contoso.com`) pomocí záznamu A místo doporučenou [záznam CNAME](#map-a-cname-record), záznam a záznam TXT by měl vypadat jako v následující tabulce místo toho:
 >
-> | Typ záznamu | Hostitel | Hodnota |
+> | Typ záznamu | Host | Hodnota |
 > | - | - | - |
 > | A | `www` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
 > | TXT | `www` | `<app_name>.azurewebsites.net` |
@@ -229,7 +229,7 @@ Vyberte **Ověřit**.
 
 Zobrazí se stránka **Přidat název hostitele**. 
 
-Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)**.
+Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)** .
 
 Vyberte **Přidat název hostitele**.
 
@@ -240,7 +240,7 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -250,7 +250,7 @@ Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodn�
 
 ### <a name="map-a-wildcard-domain"></a>Mapování zástupné domény
 
-V tomto příkladu namapujete na aplikaci App Service [zástupný název DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (například `*.contoso.com`) přidáním záznamu CNAME. 
+V tomto příkladu namapujete na aplikaci App Service [zástupný název DNS](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (například `*.contoso.com`) přidáním záznamu CNAME.
 
 #### <a name="access-dns-records-with-domain-provider"></a>Přístup k záznamům DNS u poskytovatele domény
 
@@ -268,9 +268,9 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>Povolení mapování záznamu CNAME v aplikaci
 
-Teď můžete do aplikace přidat jakoukoli subdoménu, která odpovídá zástupnému názvu (například `sub1.contoso.com` a `sub2.contoso.com` odpovídají `*.contoso.com`). 
+Teď můžete do aplikace přidat jakoukoli subdoménu, která odpovídá zástupnému názvu (například `sub1.contoso.com` a `sub2.contoso.com` odpovídají `*.contoso.com`).
 
-V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**. 
+V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
 ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -282,7 +282,7 @@ Zadejte plně kvalifikovaný název domény, který odpovídá zástupné domén
 
 Aktivuje se tlačítko **Přidat název hostitele**. 
 
-Ujistěte se, že **typ záznamu názvu hostitele** je nastavena na **záznam CNAME (www\.example.com nebo jakákoli subdoména)**.
+Ujistěte se, že **typ záznamu názvu hostitele** je nastavena na **záznam CNAME (www\.example.com nebo jakákoli subdoména)** .
 
 Vyberte **Přidat název hostitele**.
 
@@ -295,7 +295,7 @@ Znovu vyberte ikonu **+** a přidejte další název hostitele, který odpovíd�
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
+> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 ## <a name="test-in-browser"></a>Test v prohlížeči
 
@@ -322,7 +322,7 @@ Ve výchozím nastavení služba App Service směruje webové požadavky do koř
 
 Uděláte to tak, že v levém navigačním panelu na stránce vaší webové aplikace vyberete **Nastavení aplikace**. 
 
-V dolní části stránky kořenový virtuální adresář `/` odkazuje ve výchozím nastavení na adresář `site\wwwroot`, což je kořenový adresář kódu vaší aplikace. Změňte ho tak, aby místo toho odkazoval například na adresář `site\wwwroot\public`, a uložte provedené změny. 
+V dolní části stránky kořenový virtuální adresář `/` odkazuje ve výchozím nastavení na adresář `site\wwwroot`, což je kořenový adresář kódu vaší aplikace. Změňte ho tak, aby místo toho odkazoval například na adresář `site\wwwroot\public`, a uložte provedené změny.
 
 ![Přizpůsobení virtuálního adresáře](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
@@ -339,23 +339,23 @@ Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastn�
 ```bash 
 az webapp config hostname add \
     --webapp-name <app_name> \
-    --resource-group <resource_group_name> \ 
-    --hostname <fully_qualified_domain_name> 
+    --resource-group <resource_group_name> \
+    --hostname <fully_qualified_domain_name>
 ``` 
 
-Další informace najdete v tématu [Mapování vlastní domény na webovou aplikaci](scripts/cli-configure-custom-domain.md). 
+Další informace najdete v tématu [Mapování vlastní domény na webovou aplikaci](scripts/cli-configure-custom-domain.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastní název DNS. 
+Následující příkaz přidá do aplikace App Service nakonfigurovaný vlastní název DNS.
 
 ```powershell  
 Set-AzWebApp `
     -Name <app_name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
+    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
 ```
 
 Další informace najdete v tématu [Přiřazení vlastní domény k webové aplikaci](scripts/powershell-configure-custom-domain.md).

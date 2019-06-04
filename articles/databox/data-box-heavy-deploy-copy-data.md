@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 6bc7af30d409fb7add321953aa2e956a0a3c1840
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 8ee96f2e06071d60eb97596687387fd80ba14cc3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427775"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496274"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb-preview"></a>Kurz: Kopírování dat do služby Azure Data Box náročné přes SMB (preview)
 
@@ -227,7 +227,7 @@ Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data.
 
     ![Stáhněte si chybovým souborům](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do Data Box náročné](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Podrobný seznam chyb při kopírování dat, naleznete v tématu [Poradce při potížích s Data Box na těžké problémy](data-box-troubleshoot.md).
+    Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do Data Box náročné](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat, naleznete v tématu [Poradce při potížích s Data Box na těžké problémy](data-box-troubleshoot.md).
 
 5. Otevřete chybový soubor v poznámkovém bloku. Následující soubor chyba označuje, že není správně zarovnaná data.
 

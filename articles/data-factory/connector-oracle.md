@@ -66,7 +66,7 @@ Následující vlastnosti jsou podporovány pro Oracle propojenou službu.
 
 **Chcete povolit šifrování na připojení Oracle**, máte dvě možnosti:
 
-1.  Chcete-li použít **Triple-DES šifrování (3DES) a Advanced Encryption (Standard AES)**, na straně serveru Oracle, přejděte k Oracle rozšířené zabezpečení (OAS) a konfigurovat nastavení šifrování, přečtěte si podrobnosti o [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor ADF Oracle automatické způsob šifrování použít ten, který konfigurujete v OAS při navazování připojení k systému Oracle.
+1.  Chcete-li použít **Triple-DES šifrování (3DES) a Advanced Encryption (Standard AES)** , na straně serveru Oracle, přejděte k Oracle rozšířené zabezpečení (OAS) a konfigurovat nastavení šifrování, přečtěte si podrobnosti o [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor ADF Oracle automatické způsob šifrování použít ten, který konfigurujete v OAS při navazování připojení k systému Oracle.
 
 2.  Chcete-li použít **SSL**, postupujte podle následujících kroků:
 
@@ -284,13 +284,13 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| PLOVOUCÍ DESETINNOU ČÁRKOU |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| CELÉ ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| FLOAT |Decimal, String (Pokud přesnost > 28) |
+| INTEGER |Decimal, String (Pokud přesnost > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| NUMBER |Decimal, String (Pokud přesnost > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |

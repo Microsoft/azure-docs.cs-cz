@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 7aaf4be23c806dda621430c4d1b0c142f41feb1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51fcb1e504f853973d9772bcece7e893a2d94e44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323869"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472147"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Kurz: Přístup k objektům BLOB storage pomocí vlastní doménu Azure CDN prostřednictvím protokolu HTTPS
 
@@ -44,7 +44,7 @@ Azure CDN ignoruje jakákoli omezení přidaná do tokenu SAS. Všechny tokeny S
 Pokud vytvoříte více adres URL SAS pro stejný koncový bod objektu blob, zvažte povolení ukládání řetězce dotazu do mezipaměti. Zajistíte tím, že se každá adresa URL bude považovat za jedinečnou entitu. Další informace najdete v článku o [řízení chování Azure CDN při ukládání řetězců dotazu do mezipaměti](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>Přesměrování HTTP na HTTPS
-Můžete se rozhodnout pro přesměrování přenosů HTTP na HTTPS a vytvořit [pravidlo přesměrování adresy URL](cdn-rules-engine-reference-features.md#url-redirect) se [strojem pravidel Azure CDN](cdn-rules-engine.md). Tato možnost vyžaduje profil **Azure CDN Premium od Verizonu**. 
+Můžete se rozhodnout pro přesměrování přenosů HTTP na HTTPS a vytvořit [pravidlo přesměrování adresy URL](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) se [strojem pravidel Azure CDN](cdn-verizon-premium-rules-engine.md). Tato možnost vyžaduje profil **Azure CDN Premium od Verizonu**.
 
 ![Pravidlo přesměrování adresy URL](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
 

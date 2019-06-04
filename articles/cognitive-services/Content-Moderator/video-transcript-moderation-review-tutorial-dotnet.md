@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608314"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474696"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -40,19 +40,19 @@ V tomto kurzu získáte informace o následujících postupech:
 - Spuštění ukázkové aplikace, potřebujete účet Azure, prostředek služby Azure Media Services, prostředek Azure Content Moderator a přihlašovacích údajů Azure Active Directory. Pokyny o tom, jak získat tyto najdete v tématu [rozhraní API pro moderování videa](video-moderation-api.md) průvodce.
 - Stáhněte si [Video revize konzolovou aplikaci](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) z Githubu.
 
-## <a name="enter-credentials"></a>Zadat pověření
+## <a name="enter-credentials"></a>Zadejte přihlašovací údaje
 
 Upravit `App.config` a přidejte název klienta služby Active Directory, koncové body služby a klíče předplatného indikován `#####`. Potřebujete tyto informace:
 
-    |Klíč|Popis|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Koncový bod pro rozhraní API služby Azure Media Services (AMS)|
-    |`ClientSecret`|Klíč předplatného pro Azure Media Services|
-    |`ClientId`|ID klienta pro Azure Media Services|
-    |`AzureAdTenantName`|Název tenanta Active Directory zastupujícího vaši organizaci|
-    |`ContentModeratorReviewApiSubscriptionKey`|Klíč předplatného pro rozhraní API pro kontrolu v Content Moderatoru|
-    |`ContentModeratorApiEndpoint`|Další informace o rozhraní API Content Moderatoru|
-    |`ContentModeratorTeamId`|Vytvoření týmového ID Content Moderatoru|
+|Klíč|Popis|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Koncový bod pro rozhraní API služby Azure Media Services (AMS)|
+|`ClientSecret`|Klíč předplatného pro Azure Media Services|
+|`ClientId`|ID klienta pro Azure Media Services|
+|`AzureAdTenantName`|Název tenanta Active Directory zastupujícího vaši organizaci|
+|`ContentModeratorReviewApiSubscriptionKey`|Klíč předplatného pro rozhraní API pro kontrolu v Content Moderatoru|
+|`ContentModeratorApiEndpoint`|Další informace o rozhraní API Content Moderatoru|
+|`ContentModeratorTeamId`|Vytvoření týmového ID Content Moderatoru|
 
 ## <a name="examine-the-main-code"></a>Prozkoumejte hlavní kód
 

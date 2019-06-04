@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 08/22/2017
+ms.date: 12/22/2018
 ms.author: ramkris
-ms.openlocfilehash: e276980235494f7f808510889bda91761cb76544
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dfb4e40aeed797a55a7b2cabad32d33920547c06
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794604"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479506"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Sestavení webové aplikace Java využívající službu Azure Cosmos DB a rozhraní SQL API
 
@@ -52,7 +52,7 @@ Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 
 Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje návod, jak proces instalace v části rychlý Start jejich [kurzu: Instalace TomCat7 a jeho použití s Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) článku.
 
-## <a id="CreateDB"></a>Krok 1: Vytvořit účet Azure Cosmos DB
+## <a id="CreateDB"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
 Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [krok 2: Vytvoření aplikace Java JSP](#CreateJSP).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -62,7 +62,7 @@ Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte n
 ## <a id="CreateJSP"></a>Krok 2: Vytvoření aplikace Java JSP
 Vytvoření aplikace JSP:
 
-1. Nejdříve začneme vytvořením projektu Java. Spusťte Eclipse, klikněte na **File** (Soubor), pak na **New** (Nový) a nakonec na **Dynamic Web Project** (Dynamický webový projekt). Pokud se **Dynamic Web Project** v seznamu dostupných projektů nenachází, udělejte následující: klikněte na **File**, pak na **New**, dále na **Project** (Projekt), rozbalte **Web**, klikněte na **Dynamic Web Project** a nakonec na **Next** (Další). 
+1. Nejdříve začneme vytvořením projektu Java. Spusťte Eclipse, klikněte na **File** (Soubor), pak na **New** (Nový) a nakonec na **Dynamic Web Project** (Dynamický webový projekt). Pokud se **Dynamic Web Project** v seznamu dostupných projektů nenachází, udělejte následující: klikněte na **File**, pak na **New**, dále na **Project** (Projekt), rozbalte **Web**, klikněte na **Dynamic Web Project** a nakonec na **Next** (Další).
    
     ![Vývoj aplikace Java JSP](./media/sql-api-java-application/image10.png)
 2. Zadejte název projektu do pole **Project name** (Název projektu), volitelně v rozevírací nabídce **Target Runtime** (Cílový modul runtime) vyberte hodnotu (např. Apache Tomcat v7.0) a klikněte na **Finish** (Dokončit). Pokud vyberete cílový modul runtime, budete moci spouštět projekt místně přes Eclipse.

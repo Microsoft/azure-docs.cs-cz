@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/28/2019
+ms.date: 05/31/2019
 ms.author: pafarley
-ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1c9e68f643f27f70190b5847225692d554cc5480
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306533"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475440"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalace a spouštění kontejnerů Rozlišovač formuláře
 Nástroj pro rozpoznávání formuláře platí technologií pro strojové učení k identifikaci a extrahovat páry klíč hodnota a tabulky z formuláře. Přiřadí hodnoty a položky tabulky k nim a potom vypíše strukturovanými daty, která obsahuje vztahy v původním souboru. Můžete zavolat vlastní formulář Rozlišovač modelu pomocí jednoduchých rozhraní REST API k zjednodušení a snadno ji integrovat v procesu pracovního postupu služby automation nebo jiné aplikace. Zobrazuje se jenom pět dokumentů (nebo prázdný formulář) jsou potřeba, abyste se mohli výsledky rychle, přesně a přizpůsobená pro váš konkrétní obsah, bez náročné ruční zásah nebo odbornými znalostmi o rozsáhlé datové vědy. Nevyžaduje se popisky dat nebo dat poznámky.
@@ -114,9 +114,9 @@ Tyto parametry nahraďte vlastními hodnotami v následujícím příkladu `dock
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
@@ -142,6 +142,8 @@ Spuštění prvního kontejneru na portu 5000.
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+--mount type=bind,source=c:\input,target=/input  \
+--mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \

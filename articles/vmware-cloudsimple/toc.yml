@@ -15,7 +15,7 @@
         - name: Konfigurace prostředí privátního cloudu
           href: quickstart-create-private-cloud.md
         - name: Vytvoření virtuálního počítače VMware v privátním cloudu
-          href: 'https://docs.azure.cloudsimple.com/quickstart-create-private-cloud-vmware-virtual-machine/'
+          href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Využívání virtuálních počítačů VMware v Azure
           href: quickstart-create-vmware-virtual-machine.md
     - name: Koncepty

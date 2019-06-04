@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: fe2978e176b986164ebb01fddbd29481f8a117bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: faa93b75bde3a14e48baa7d27a3eb6439a137e44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145437"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482307"
 ---
-1. Spusťte Visual Studio 2017.
+1. Start Visual Studio 2019.
 
 1. Ověřte, že je k dispozici sada funkcí **Vývoj pro Univerzální platformu Windows**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno.
 
@@ -19,11 +19,11 @@ ms.locfileid: "66145437"
 
     V opačném případě zaškrtněte políčko **Vývoj multiplatformních aplikací pomocí rozhraní .NET** a vyberte **Změnit** v pravém dolním rohu dialogového okna. Instalace nové funkce chvíli trvá.
 
-1. Vytvořte prázdnou univerzální aplikaci pro Windows v jazyce Visual C#. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C#** > **Univerzální aplikace pro Windows**  v levém podokně. Pak vyberte **Prázdná aplikace (univerzální pro Windows)**. Jako název projektu zadejte *helloworld*.
+1. Vytvořte prázdnou univerzální aplikaci pro Windows v jazyce Visual C#. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C#**  > **Univerzální aplikace pro Windows**  v levém podokně. Pak vyberte **Prázdná aplikace (univerzální pro Windows)** . Jako název projektu zadejte *helloworld*.
 
     ![Snímek obrazovky s dialogovým oknem Nový projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. Sadou SDK pro řeč vyžaduje, aby vaše aplikace musí být sestaveny pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)**. V poli **Cílová verze** vyberte tuto nebo novější verzi a pak klikněte na **OK**.
+1. Sadou SDK pro řeč vyžaduje, že je sestavená vaše aplikace pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)** . V **cílovou verzi** pole, vyberte tato verze nebo novější verze a potom klikněte na tlačítko **OK**.
 
     ![Snímek obrazovky s oknem Nový projekt univerzální platformy Windows](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 

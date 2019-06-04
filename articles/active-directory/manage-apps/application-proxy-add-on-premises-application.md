@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7110d7004ae9be58bb150674d516692049507608
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 82c7b698f655b82ba95f66127f27a921def02cde
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299081"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472995"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -34,10 +34,11 @@ V tomto kurzu:
 
 ## <a name="before-you-begin"></a>Než začnete
 
-K přidání aplikace do tenanta budete potřebovat:
+Pokud chcete přidat místní aplikace do služby Azure AD, budete potřebovat:
 
 * A [základní nebo prémiové předplatné služby Microsoft Azure AD](https://azure.microsoft.com/pricing/details/active-directory)
 * Účet správce aplikace
+* Identity uživatelů musí být synchronizované z místního adresáře nebo přímo v rámci vašich tenantů Azure AD. Umožňuje synchronizaci identit Azure AD pro předběžné ověření uživatelů před udělením přístupu k Proxy aplikace publikované aplikace a mít informace potřebné uživatelské identifikátor provádět jednotné přihlašování (SSO).
 
 ### <a name="windows-server"></a>Windows server
 
@@ -75,7 +76,7 @@ Povolení protokolu TLS 1.2:
 
 Začněte tím, že povolení komunikace do datových center Azure přípravy prostředí pro Azure AD Application Proxy. Pokud je v cestě brána firewall, ujistěte se, že je otevřený. Otevřít brána firewall povoluje konektor tak, aby Proxy aplikace posílat požadavky HTTPS (TCP).
 
-### <a name="open-ports"></a>Otevřít porty
+### <a name="open-ports"></a>Otevření portů
 
 Otevřít následující porty **odchozí** provoz. 
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 3315af0898cb3b18af0334a433a94242b056a8bd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236208"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479777"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Kurz:  Získat mínění utterance
 
@@ -54,6 +54,7 @@ Jedná se o nastavení publikování, takže se nezobrazuje na stránkách zám�
 
 ## <a name="add-personname-prebuilt-entity"></a>Přidat PersonName předem připravených entit 
 
+1. Vyberte **sestavení** z navigační nabídky.
 
 1. V levé navigační nabídce vyberte **Entities** (Entity).
 
@@ -69,11 +70,11 @@ Jedná se o nastavení publikování, takže se nezobrazuje na stránkách zám�
 
 Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích od členů společnosti. 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Na levém panelu vyberte **Intents** (Záměry).
 
-2. Vyberte **Create new intent** (Vytvořit nový záměr).
+1. Vyberte **Create new intent** (Vytvořit nový záměr).
 
-3. Nový záměr pojmenujte `EmployeeFeedback`.
+1. Nový záměr pojmenujte `EmployeeFeedback`.
 
     ![Dialogové okno Create new intent (Vytvořit nový záměr) s názvem EmployeeFeedback (Zpětná vazba o zaměstnancích)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
@@ -106,7 +107,7 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
 1. Na pravém horním navigačním panelu vyberte **Manage** (Správa) a pak v levé nabídce vyberte **Publish settings** (Nastavení publikování).
 
-1. Vyberte **analýzu subjektivního hodnocení** k povolení tohoto nastavení. 
+1. Vyberte **použít analýzu subjektivního hodnocení k určení, zda je uživatele utterance kladná, záporná nebo neutrální.** Chcete-li povolit toto nastavení. 
 
     ![Zapnout analýzu subjektivního hodnocení jako nastavení publikování](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -118,7 +119,11 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Na konec adresy URL zadejte `Jill Jones work with the media team on the public portal was amazing`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `EmployeeFeedback` s extrahovanou analýzou mínění.
+1. Přejděte na konec adresy URL v adrese a zadejte následující utterance:
+
+    `Jill Jones work with the media team on the public portal was amazing` 
+
+    Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `EmployeeFeedback` s extrahovanou analýzou mínění.
     
     ```json
     {
@@ -153,6 +158,8 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
     ```
 
     SentimentAnalysis je kladný se skóre 86 %. 
+
+    Zkuste jiné utterance odebráním hodnota `q` do adresního řádku prohlížeče: `William Jones did a terrible job presenting his ideas.` Označuje skóre mínění negativní zabarvení vrácením nízké skóre `0.18597582`.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 74f7d8a1a828732d5448bf29c0878adb5f74b5e1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5602298ffe60ad15d3daf52587c50357c310200c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398253"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480103"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Ujistěte se, že rozumíte [komponentám a architektuře řešení](concepts-azure-to-azure-architecture.md).
+- Prostudujte si [architekturu a komponenty scénáře](concepts-azure-to-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-azure-to-azure.md) před zahájením.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení

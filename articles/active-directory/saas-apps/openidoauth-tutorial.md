@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713e4e7874b2ca650ab669d52f9d3026b5e80899
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 166452b052313397f1ec17adb59cad3c20fab1f9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780979"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497353"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace OpenID/OAuth aplikaci v galerii aplikací Azure AD
 
@@ -98,7 +98,25 @@ Rozhraní Graph API také poskytuje přístup pro uživatele a skupiny ze služb
 
 Následující kroky ukazují, jak souhlasu prostředí funguje pro uživatele a vývojáře aplikací:
 
-1. Předpokládejme, že máte webovou aplikaci klienta, která potřebuje požádat o specifické oprávnění pro přístup k prostředku nebo rozhraní API. Na webu Azure portal slouží k deklaraci žádosti oprávnění v době konfigurace. Jako další nastavení konfigurace se stanou součástí registrace služby Azure AD aplikace:
+1. Předpokládejme, že máte webovou aplikaci klienta, která potřebuje požádat o specifické oprávnění pro přístup k prostředku nebo rozhraní API. Na webu Azure portal slouží k deklaraci žádosti oprávnění v době konfigurace. Jako další nastavení konfigurace se stanou součástí registrace aplikace Azure AD. Pro cestu požadavku oprávnění je třeba těchto kroků níže uvedených pokynů:
+
+    a. Klikněte na **registrace aplikací** z levé nabídky a otevřít aplikaci tak, že zadáte aplikace název vyhledávacího pole.
+
+    ![Graph API](./media/openidoauth-tutorial/application.png)
+
+    b. Klikněte na tlačítko **zobrazit rozhraní API oprávnění**.
+
+    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+
+    c. Klikněte na **přidat oprávnění**.
+
+    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+
+    d. Klikněte na **Microsoft Graphu**.
+
+    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+
+    e. Vyberte požadované možnosti z **delegovaná oprávnění** a **oprávnění aplikace**.
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
@@ -118,12 +136,12 @@ Běžný uživatel může některá oprávnění vyjádřit souhlas. Další opr
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Rozdíl mezi souhlas správce a souhlasu uživatele
 
-Jako správce může také souhlas delegovaná oprávnění aplikací schválit za všechny uživatele ve vašem tenantovi. Souhlas správce zabraňuje dialogové okno souhlasu zobrazilo pro každého uživatele v tenantovi. Uživatelé, kteří mají roli správce může poskytnout souhlas na webu Azure Portal. Z **nastavení** stránky pro vaši aplikaci, vyberte **požadovaná oprávnění** > **udělit oprávnění**.
+Jako správce může také souhlas delegovaná oprávnění aplikací schválit za všechny uživatele ve vašem tenantovi. Souhlas správce zabraňuje dialogové okno souhlasu zobrazilo pro každého uživatele v tenantovi. Uživatelé, kteří mají roli správce může poskytnout souhlas na webu Azure Portal. Z **nastavení** stránky pro vaši aplikaci, vyberte **požadovaná oprávnění** > **udělit souhlas správce**.
 
 ![Tlačítko udělit oprávnění](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Udělení výslovný souhlas s použitím **udělit oprávnění** je tlačítko vyžadované pro jednostránkové aplikace (SPA), které používají ADAL.js. V opačném případě aplikace selže při vyžádání tokenu přístupu.
+> Udělení výslovný souhlas s použitím **udělit souhlas správce** je tlačítko vyžadované pro jednostránkové aplikace (SPA), které používají ADAL.js. V opačném případě aplikace selže při vyžádání tokenu přístupu.
 
 Oprávnění jen pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje na oprávnění jen pro aplikace a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva. Zpráva, že uživatel není možné vyjádřit souhlas.
 

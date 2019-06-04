@@ -4,20 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: af61d975b540787b9b54d9fdea66773c10aeb6ac
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 27fcf32a9a268488da318567d3edc55d23bd8967
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145444"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482411"
 ---
-1. Spusťte Visual Studio 2017.
+1. Start Visual Studio 2019.
 
-1. Ověřte, že je k dispozici sada funkcí **Vývoj desktopových aplikací pomocí C++**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, přeskočte na další krok.
+1. Ověřte, že je k dispozici sada funkcí **Vývoj desktopových aplikací pomocí C++** . Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, přeskočte na další krok.
 
     ![Snímek obrazovky s kartou Sady funkcí pro Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
-    V opačném případě zaškrtněte políčko **Vývoj desktopových aplikací pomocí C++**.
+    V opačném případě zaškrtněte políčko **Vývoj desktopových aplikací pomocí C++** .
 
 1. Ověřte, že je dostupná komponenta **Správce balíčků NuGet**. Přepněte na kartu **Jednotlivé komponenty** dialogového okna instalačního programu sady Visual Studio a vyberte **Správce balíčků NuGet**, pokud ještě není povolený.
 
@@ -25,7 +25,7 @@ ms.locfileid: "66145444"
 
 1. Pokud potřebujete povolit sadu funkcí C++ nebo NuGet, vyberte **Změnit** (v levém dolním rohu dialogového okna). Instalace nových funkcí chvíli trvá. Pokud už jsou obě funkce povolené, zavřete toto dialogové okno.
 
-1. Vytvořte novou konzolovou aplikaci pro plochu Windows v jazyce Visual C++. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C++** > **Desktop Windows** v levém podokně. Pak vyberte **Konzolová aplikace pro Windows**. Jako název projektu zadejte *helloworld*.
+1. Vytvořte novou konzolovou aplikaci pro plochu Windows v jazyce Visual C++. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C++**  > **Desktop Windows** v levém podokně. Pak vyberte **Konzolová aplikace pro Windows**. Jako název projektu zadejte *helloworld*.
 
     ![Snímek obrazovky s dialogovým oknem Nový projekt](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 

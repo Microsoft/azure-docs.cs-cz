@@ -1,5 +1,5 @@
 ---
-title: Konfigurovat nastavení
+title: Konfigurace nastavení
 titleSuffix: Azure Cognitive Services
 description: Konfigurace služby obsahuje jak služba zpracovává odměny, popisuje, jak často služby, jak často retrained modelu a jaká data se ukládají.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834317"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478576"
 ---
 # <a name="personalizer-settings"></a>Nastavení personalizer
 
@@ -63,7 +63,9 @@ Jakmile změníte toto nastavení, je nutné vybrat **Uložit**.
 
 ### <a name="model-update-frequency"></a>Četnost aktualizace modelu
 
-**Model frekvenci aktualizací** nastaví, jak často je nový model Personalizer retrained. 
+Nejnovější model Trénink probíhal volání rozhraní API Reward z každé aktivní události automaticky nepoužívá Personalizer pořadí volání. **Četnost aktualizace modelu** nastaví, jak často aktualizovány model používaný v pořadí volání. 
+
+Frekvence aktualizace vysokou modelu jsou užitečné v situacích, ve které chcete pečlivě sledovat změny v chování uživatelů. Mezi příklady patří lokality, které můžete spouštět na živé novinky, virální obsah, nebo za ohlašování produktu. V těchto scénářích můžete použít s frekvencí 15 minut. Pro většinu případů použití je účinné nižší četnost aktualizace. Minutové frekvence aktualizace jsou užitečné při ladění kódu vaší aplikace pomocí Personalizer, provádění ukázky nebo interaktivně testování aspekty machine learning.
 
 ![Četnost aktualizace modelu nastaví, jak často je nový model Personalizer retrained.](media/settings/configure-model-update-frequency-settings.png)
 
@@ -77,7 +79,7 @@ Jakmile změníte toto nastavení, je nutné vybrat **Uložit**.
 
 ## <a name="export-the-personalizer-model"></a>Export Personalizer modelu
 
-V části Správa prostředků pro **modelu a zásady**zkontrolujte vytvoření modelu a datum poslední aktualizace a exportovat aktuální model.
+V části Správa prostředků pro **modelu a zásady**zkontrolujte vytvoření modelu a datum poslední aktualizace a exportovat aktuální model. Na webu Azure portal nebo rozhraní API Personalizer můžete exportovat soubor modelu pro archivační účely. 
 
 ![Exportovat aktuální model Personalizer](media/settings/export-current-personalizer-model.png)
 

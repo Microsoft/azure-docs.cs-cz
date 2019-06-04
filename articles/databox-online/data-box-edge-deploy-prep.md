@@ -6,18 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 364ceabc3c9e7a577bd126b81bcd5256d947bbe3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924777"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476774"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Kurz: Příprava na nasazení Azure Data Box Edge  
-
 
 Toto je první kurz v této sérii kurzů nasazení, které jsou nutné k úplné nasazení Azure Data Box Edge. Tento kurz popisuje, jak připravit na webu Azure portal k nasazení hrany pole datového prostředku.
 
@@ -31,7 +30,6 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-
 ### <a name="get-started"></a>Začínáme
 
 Nasazení hrany pole dat, naleznete v následujících kurzech v předepsaném pořadí.
@@ -42,7 +40,7 @@ Nasazení hrany pole dat, naleznete v následujících kurzech v předepsaném p
 | 2. |**[Instalace Data Boxu Edge](data-box-edge-deploy-install.md)**|Rozbalte fyzické zařízení Data Box Edge, usaďte ho do racku a zapojte kabeláž.  |
 | 3. |**[Připojení, nastavení a aktivovat okraj pole dat](data-box-edge-deploy-connect-setup-activate.md)** |Připojte se k místnímu webovému uživatelskému rozhraní, dokončete nastavení zařízení a aktivujte zařízení. Zařízení je připravené na nastavení sdílených složek SMB nebo sdílených složek systému souborů NFS.  |
 | 4. |**[Přenos dat pomocí Data Boxu Edge](data-box-edge-deploy-add-shares.md)** |Přidejte sdílené složky a připojte se k nim pomocí protokolu SMB nebo přes systém souborů NFS. |
-| 5. |**[Transformace dat pomocí Data Boxu Edge](data-box-edge-deploy-configure-compute.md)** |Nakonfigurujte na zařízení moduly Edge umožňující transformaci dat během přenosu do Azure. |
+| 5. |**[Transformace dat pomocí Data Boxu Edge](data-box-edge-deploy-configure-compute.md)** |Konfigurovat výpočetní moduly na zařízení pro transformaci dat při jejich přesunu do Azure. |
 
 Teď můžete začít nastavovat Azure Portal.
 
@@ -55,7 +53,11 @@ Toto jsou požadavky na konfiguraci pro váš prostředek okraj pole Data, zař�
 Než začnete, ujistěte se, že:
 
 - Vaše předplatné Microsoft Azure je povoleno pro zdroj dat pole Edge. Předplatná s průběžnými platbami nejsou podporovány.
-- Budete mít roli vlastníka nebo přispěvatele, přístup k vašemu předplatnému.
+- Budete mít roli vlastníka nebo přispěvatele přístup na úrovni skupiny prostředků pro prostředky Data pole/Data hrany pole brány služby IoT Hub a Azure Storage.
+
+    - Chcete-li vytvořit žádné hraniční zařízení Data Box / prostředku brány pole dat, měli byste mít obor oprávnění jako přispěvatelé (nebo vyšší) na úrovni skupiny prostředků. Musíte také zkontrolujte, zda `Microsoft.DataBoxEdge` poskytovatel je zaregistrovaný. Informace o tom, jak zaregistrovat, přejděte na [zprostředkovatel prostředku registrace](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Chcete-li vytvořit prostředek služby IoT Hub, ujistěte se, že poskytovatel Microsoft.Devices je zaregistrovaný. Informace o tom, jak zaregistrovat, přejděte na [zprostředkovatel prostředku registrace](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Pokud chcete vytvořit prostředek účtu úložiště, znovu potřebujete Přispěvatel nebo vyšší přístup k rozsahu na úrovni skupiny prostředků. Azure Storage je ve výchozím nastavení zaregistrovaný poskytovatel prostředků.
 - Máte správce nebo uživatel přístup k Azure Active Directory Graph API. Další informace najdete v tématu [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
 
@@ -64,7 +66,7 @@ Než začnete, ujistěte se, že:
 Před nasazením fyzického zařízení se ujistěte, že:
 
 - Můžete si bezpečnostní informace, která byla součástí dodávky balíčku.
-- Máte k dispozici ve standardní 19" rack 1 U slot ve vašem datovém centru pro připojení zařízení do racku. 
+- Máte k dispozici v racku standardní 19" 1U slot ve vašem datovém centru pro připojení zařízení do racku.
 - Máte přístup bez stromové struktury, stabilní a úrovni pracovní plochu, ve kterém můžete zařízení bezpečně rest.
 - Lokality, ve kterém chcete nastavit zařízení má standardní napájení z nezávislých zdroje nebo jednotka distribuci napájení (PDU) rack s nepřerušitelný zdroj napájení (UPS).
 - Máte přístup k fyzickému zařízení.
@@ -112,7 +114,7 @@ Vytvořit prostředek služby Data Box Edge, proveďte následující kroky na w
 
     |Nastavení  |Hodnota  |
     |---------|---------|
-    |Název   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
+    |Name   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
     |Oblast     |Pro tuto verzi východní USA, jihovýchodní Asie a západní Evropa jsou k dispozici pro nasazení vašich prostředků. Pokud používáte Azure Government, všechny oblasti státní správy jsou k dispozici, jak je znázorněno [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/).<br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
 
     ![Podrobnosti o projektu a instance](media/data-box-edge-deploy-prep/data-box-edge-resource.png)

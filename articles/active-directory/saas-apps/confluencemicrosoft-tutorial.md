@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 05/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c9268495ed42ca67f815615b441986cf03332f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c9c422e93a6768b764873f21ad9eab6fad4a868e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683654"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML Confluence společností Microsoft
 
@@ -78,6 +78,7 @@ V současné době jsou podporovány následující verze Confluence:
 - Confluence: 6.10.0
 - Confluence: 6.11.0
 - Confluence: 6.12.0
+- Confluence: 6.15.3
 
 > [!NOTE]
 > Mějte prosím na paměti, že naše Confluence modul plug-in funguje taky na Ubuntu 16.04 verze
@@ -94,7 +95,7 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML Confluen
 
 **Přidání jednotného přihlašování SAML Confluence společností Microsoft z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -177,34 +178,40 @@ Ke konfiguraci Azure AD jednotné přihlašování s jednotným Přihlašování
 
 5. Proveďte následující kroky na stránce konfigurace:
 
-    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon52.png)
+    ![Konfigurace jednotného přihlašování](./media/confluencemicrosoft-tutorial/addon53.png)
 
     > [!TIP]
     > Ujistěte se, že je pouze jeden certifikát mapují na aplikaci tak, aby se nezobrazí žádná chyba překladu metadat. Pokud existuje víc certifikátů, správce získá chybu při překladu metadat.
 
-    a. V **adresa URL metadat** vložit do textového pole **adresa Url federačních metadat aplikace** hodnotu, která jste zkopírovali z webu Azure portal a klikněte **vyřešit** tlačítko. Načte adresu URL metadat zprostředkovatele identity a naplní všechny informace o pole.
+    1. V **adresa URL metadat** vložit do textového pole **adresa Url federačních metadat aplikace** hodnotu, která jste zkopírovali z webu Azure portal a klikněte **vyřešit** tlačítko. Načte adresu URL metadat zprostředkovatele identity a naplní všechny informace o pole.
 
-    b. Kopírovat **identifikátor, adresa URL odpovědi a adresa URL přihlašování** hodnoty a vložit je do **identifikátor, adresa URL odpovědi a adresa URL přihlašování** textová pole v uvedeném pořadí **základní konfiguraci SAML** části na webu Azure portal.
+    1. Kopírovat **identifikátor, adresa URL odpovědi a adresa URL přihlašování** hodnoty a vložit je do **identifikátor, adresa URL odpovědi a adresa URL přihlašování** textová pole v uvedeném pořadí **základní konfiguraci SAML** části na webu Azure portal.
 
-    c. V **přihlašovací jméno tlačítko** zadejte název tlačítka, které vaše organizace chce, aby se uživatelům zobrazí na obrazovce přihlášení.
+    1. V **přihlašovací jméno tlačítko** zadejte název tlačítka, které vaše organizace chce, aby se uživatelům zobrazí na obrazovce přihlášení.
 
-    d. V **SAML uživatelské ID umístění**, vyberte buď **ID uživatele není v elementu NameIdentifier příkazu subjektu** nebo **ID uživatele není v elementu atribut**.  Toto ID musí být ID Confluence uživatele. Pokud neodpovídá ID uživatele, systém nedovolí uživatelům umožní přihlásit. 
+    1. V **SAML uživatelské ID umístění**, vyberte buď **ID uživatele není v elementu NameIdentifier příkazu subjektu** nebo **ID uživatele není v elementu atribut**.  Toto ID musí být ID Confluence uživatele. Pokud neodpovídá ID uživatele, systém nedovolí uživatelům umožní přihlásit. 
 
-    > [!Note]
-    > Výchozí umístění SAML ID uživatele je název identifikátoru. Můžete to změnit atribut možnost a zadejte odpovídající název.
+       > [!Note]
+       > Výchozí umístění SAML ID uživatele je název identifikátoru. Můžete to změnit atribut možnost a zadejte odpovídající název.
     
-    e. Pokud vyberete **ID uživatele není v elementu atribut** možnost, pak v **název atributu** textového pole zadejte název atributu, kde se očekává ID uživatele. 
+    1. Pokud vyberete **ID uživatele není v elementu atribut** možnost, pak v **název atributu** textového pole zadejte název atributu, kde se očekává ID uživatele. 
 
-    f. Pokud používáte federovanou doménu (například služby AD FS atd.) pomocí služby Azure AD, potom klikněte na **povolit zjišťování domovské sféry** řádku a nakonfigurovat **název domény**.
+    1. Pokud používáte federovanou doménu (například služby AD FS atd.) pomocí služby Azure AD, potom klikněte na **povolit zjišťování domovské sféry** řádku a nakonfigurovat **název domény**.
     
-    g. V **název domény** zadejte název domény zde v případě přihlášení na základě služby AD FS.
+    1. V **název domény** zadejte název domény zde v případě přihlášení na základě služby AD FS.
 
-    h. Zkontrolujte **povolit jednotné přihlašování,** Pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele z Confluence. 
+    1. Zkontrolujte **povolit jednotné přihlašování,** Pokud se chcete odhlásit se ze služby Azure AD při odhlášení uživatele z Confluence. 
 
-    i. Klikněte na tlačítko **Uložit** uložte nastavení tlačítkem.
+    1. Povolit **platnost Azure přihlášení** uze přihlašovací údaje zaškrtávací políčko, pokud budete chtít přihlásit prostřednictvím služby Azure AD.
+    
+       > [!Note]
+       > Chcete-li povolit výchozí přihlašovací formulář pro přihlašovací jméno správce na přihlašovací stránce, když je povolené vynucené azure přihlášení, přidejte parametr dotazu v adrese URL prohlížeče.
+       > `https://<domain:port>/login.action?force_azure_login=false`
+    
+    1. Klikněte na tlačítko **Uložit** uložte nastavení tlačítkem.
 
-    > [!NOTE]
-    > Další informace o instalaci a řešení potíží s [příručky pro správce konektoru MS Confluence jednotného přihlašování](../ms-confluence-jira-plugin-adminguide.md) a k dispozici je také [nejčastější dotazy k](../ms-confluence-jira-plugin-faq.md) vaši pomoc
+       > [!NOTE]
+       > Další informace o instalaci a řešení potíží s [příručky pro správce konektoru MS Confluence jednotného přihlašování](../ms-confluence-jira-plugin-adminguide.md). K dispozici je také [nejčastější dotazy k](../ms-confluence-jira-plugin-faq.md) vaši pomoc.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 

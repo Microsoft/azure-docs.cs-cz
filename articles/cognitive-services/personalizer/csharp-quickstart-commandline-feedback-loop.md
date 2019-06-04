@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521376"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478617"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Rychlý start: Přizpůsobení obsahu pomocíC# 
 
@@ -40,7 +40,9 @@ Začínáme s Personalizer zahrnuje následující kroky:
 
 ## <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
-V prostředku Personalizer na webu Azure Portal, přejděte **četnost aktualizace modelu** na 10 sekund. To bude trénování služby rychle, což vám umožní podívat, jak se mění hlavní akce pro každou iteraci
+V prostředku Personalizer na webu Azure Portal, přejděte **četnost aktualizace modelu** na 10 sekund. To bude trénování služby rychle, což vám umožní podívat, jak se mění hlavní akce pro každou iteraci.
+
+Při vytváření smyčku Personalizer první instance, není žádný model, protože nepřichází žádná volání rozhraní API Reward tak moct trénovat z. Pořadí volání vrátí stejné pravděpodobnosti pro každou položku. Vaše aplikace by měla stále vždy řadit obsahu pomocí výstupu RewardActionId.
 
 ![Změna frekvence aktualizace modelu](./media/settings/configure-model-update-frequency-settings.png)
 

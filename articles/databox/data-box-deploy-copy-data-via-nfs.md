@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b4825770d8220e24c0d981af19313f265806d84
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 672bcc3d0cb15ef348d090ed6c5a38d6912465ef
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800444"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496313"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím systému souborů NFS
 
@@ -130,7 +130,7 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 > [!IMPORTANT]
 > Nejsou podporovány následující typy souborů Linux: symbolické odkazy, soubory, bloku souborů, soketů a kanálů. Tyto typy souborů bude mít za následek selhání během **přípravu k odeslání** kroku.
 
-Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do zařízení Data Box](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Podrobný seznam chyb při kopírování dat, naleznete v tématu [problémy řešit zařízení Data Box](data-box-troubleshoot.md).
+Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do zařízení Data Box](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat, naleznete v tématu [problémy řešit zařízení Data Box](data-box-troubleshoot.md).
 
 Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
     

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 83eabca3b2ec1903e25b02083b1a2d5b49745396
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b2a0655173405008e0bccf3e31a8db391da6127
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800448"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496287"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
@@ -68,7 +68,7 @@ Pokud používáte počítač s Windows serverem hostitele, postupujte podle tě
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    V závislosti na formátu vašich dat, sdílené cesty jsou následující:
+    V závislosti na formátu vašich dat budou sdílené cesty vypadat podobně jako níže:
     - Azure objekt blob bloku – `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Azure objektů blob stránky – `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Soubory Azure – `\\10.126.76.172\devicemanagertest1_AzFile`
@@ -202,7 +202,7 @@ Pokud chcete optimalizovat výkon, použijte při kopírování dat následujíc
 
 Další informace o příkazu Robocopy najdete v článku [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy a několik příkladů).
 
-Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do zařízení Data Box](data-box-logs.md#view-error-log-during-data-copy-to-data-box). Podrobný seznam chyb při kopírování dat, naleznete v tématu [problémy řešit zařízení Data Box](data-box-troubleshoot.md).
+Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu [zobrazit protokoly chyb při kopírování dat do zařízení Data Box](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat, naleznete v tématu [problémy řešit zařízení Data Box](data-box-troubleshoot.md).
 
 Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
     

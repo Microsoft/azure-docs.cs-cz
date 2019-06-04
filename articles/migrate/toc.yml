@@ -20,14 +20,6 @@
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
-    - name: Osvědčené postupy migrace
-      items:
-        - name: Osvědčené postupy pro zabezpečení a správu po migraci
-          href: migrate-best-practices-security-management.md
-        - name: Osvědčené postupy pro síťové služby po migraci
-          href: migrate-best-practices-networking.md
-        - name: Osvědčené postupy pro určování nákladů a velikostí po migraci
-          href: migrate-best-practices-costs.md
     - name: Příklady migrace – série Contoso
       href: contoso-migration-overview.md
     - name: Zkoumání a posouzení rozsáhlého prostředí

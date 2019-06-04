@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 037c323b2ef9e0a2d264e3fd5f7655456c30a1be
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417464"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475269"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -26,7 +26,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 Abyste mohli absolvovat tento rychlý start, musíte mít:
 - Přístup k rozpoznávání formuláře omezený přístup ve verzi Preview. Pokud chcete získat přístup k verzi preview, vyplňte a odešlete [žádost o přístup formulář Rozlišovač](https://aka.ms/FormRecognizerRequestAccess) formuláře.
 - [cURL](https://curl.haxx.se/windows/) nainstalované.
-- Sada aspoň pět formy stejného typu. Můžete použít [ukázkovou datovou sadou](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start.
+- Sada aspoň pět formy stejného typu. Tato data použijeme pro trénování modelu. Můžete použít [ukázkovou datovou sadou](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý start. Nahrání dat do kořenového účtu služby Azure Blob Storage.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvořit prostředek Rozlišovač formuláře
 
@@ -47,7 +47,7 @@ Po dokončení nasazení prostředku Rozlišovač formuláře vyhledejte a vyber
 
 ## <a name="train-a-form-recognizer-model"></a>Trénování modelu Rozlišovač formuláře
 
-Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure Storage. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář. Název souboru formuláře musí obsahovat slovo "prázdný".
+Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure Storage. Měli byste mít minimálně pět vzorku formy (dokumenty PDF a/nebo imagí) stejný typ nebo strukturu jako hlavní vstupní data. Nebo můžete použít jeden prázdný formulář s dva formuláře vyplněné. Název souboru prázdný formulář musí obsahovat slovo "prázdný".
 
 K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí příkazu cURL, který následuje. Před spuštěním příkazu, proveďte následující změny:
 

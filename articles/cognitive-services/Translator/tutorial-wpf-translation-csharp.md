@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
-ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d51c7b7c2e8d7f9774018f54a6639bebb882420
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653250"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471547"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace překladu s WPF
 
@@ -59,7 +59,7 @@ Abychom mohli pokračovat, budete potřebovat následující:
 
 První věc, kterou budeme muset udělat nastaven našem projektu v sadě Visual Studio.
 
-1. Otevřete sadu Visual Studio. Potom vyberte **soubor > Nový > projekt**.
+1. Otevřít Visual Studio. Potom vyberte **soubor > Nový > projekt**.
 2. Na panelu vlevo vyhledejte a vyberte **Visual C#** . Vyberte **aplikace WPF (.NET Framework)** panelu System center.
    ![Vytvoření aplikace WPF v sadě Visual Studio](media/create-wpf-project-visual-studio.png)
 3. Pojmenujte svůj projekt, nastavte na verzi rozhraní framework **rozhraní .NET Framework 4.5.2 nebo novější**, pak klikněte na tlačítko **OK**.
@@ -79,9 +79,9 @@ Přidejme sestavení do projektu k serializaci a deserializaci objektů a ke spr
 1. Vyhledejte svůj projekt v Průzkumníku řešení sady Visual Studio (pravý panel). Klikněte pravým tlačítkem na projekt a pak vyberte **Přidat > odkaz...** , které se otevře **správce odkazů**.
    ![Přidat odkazy na sestavení](media/add-assemblies-sample.png)
 2. Karta sestavení obsahuje seznam všech sestavení rozhraní .NET Framework, které jsou k dispozici pro odkazování. Vyhledejte tyto odkazy a přidat je do svého projektu pomocí panelu hledání v pravém horním rohu obrazovky:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
+   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
+   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
 3. Po přidání těchto odkazů do vašeho projektu, můžete kliknout na **OK** zavřete **správce odkazů**.
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Pojďme se podívat, co vytváříme.
 
 Uživatel interfacer obsahuje tyto součásti:
 
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 |------|------|-------------|
 | `FromLanguageComboBox` | Pole se seznamem | Zobrazuje seznam jazyků podporovaných Microsoft Translatoru pro překlad textu. Uživatel vybere jazyk, ze kterého překládá. |
 | `ToLanguageComboBox` | Pole se seznamem | Zobrazí seznam stejné jazyky jako `FromComboBox`, ale slouží k výběru uživatele se přitom přeložte do jazyka. |
