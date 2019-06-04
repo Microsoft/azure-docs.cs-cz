@@ -269,7 +269,7 @@ Generovat volání rozhraní API pomocí aplikace pro vývoj oblíbených rozhra
 
 | Klíč | Hodnota |
 | --- | ----- |
-| uživatelské jméno | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |
@@ -317,7 +317,7 @@ Vytvoření volání POST podobný tomu, který je vidět tady. Pomocí informac
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| prostředek | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Nahraďte `application-id` s ID aplikace z *ROPC_Auth_app* registrace.
