@@ -82,8 +82,8 @@ Aktivita HDInsight Hive ve službě Data Factory [kanálu](data-factory-create-p
 | outputs |Výstupy vytvořená aktivitou Hive |Ano |
 | linkedServiceName |Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory |Ano |
 | script |Zadejte vložený skript Hive |Ne |
-| Cesta ke skriptu |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
+| script path |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
+| defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
 
 ## <a name="example"></a>Příklad:
 Zvažte příklad herních protokolů analytics, ve které chcete určit čas strávený uživatelé hraní her spustili ve vaší společnosti. 

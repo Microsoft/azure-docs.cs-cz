@@ -174,8 +174,8 @@ Konfigurační soubory GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ 
   *Linux /boot/vmlinuz-3.12.49-11-default **root = / dev/sda2** ${extra_cmdline} **obnovit = / dev/sda1** splash = silent bezobslužný showopts*
 
 
-- Následující řádek je ze souboru GRUB **/boot/grub/menu.lst**
-  *jádra /boot/vmlinuz-3.0.101-63-default **root = / dev/sda2** **obnovit = / dev/sda1 ** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
+- Následující řádek je ze souboru GRUB **/boot/grub/menu.lst** 
+  *jádra /boot/vmlinuz-3.0.101-63-default **root = / dev/sda2** **obnovit = / dev/sda1** splash = tiché crashkernel = 256M-:128M showopts vga = 0x314*
 
 Pokud zjistíte tučné řetězec výše, GRUB má skutečné zařízení názvy parametrů "root" a "obnovit" místo UUID.
  
