@@ -1,5 +1,5 @@
 ---
-title: Jak pomocí označování verze modelu Learner konverzace – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Jak pomocí označování verze modelu Learner konverzace – Azure Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
 description: Další informace o použití správy verzí a označování s modelem Learner konverzace.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7a1d94700cf84068f918ecff4f4dd433358341e0
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388399"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475706"
 ---
 # <a name="how-to-use-version-tagging"></a>Jak používat označování verzí
 
@@ -109,4 +109,4 @@ Viděli jste nyní fungování správy verzí a jak můžete pracovat s robotem 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Ukázka – resetování hesla](./demo-password-reset.md)
+> [Výčet entit a sady entity akcí](./tutorial-enum-set-entity.md)

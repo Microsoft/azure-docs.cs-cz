@@ -157,7 +157,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | refreshtoken |
 | request_nonce |
 | resource |
-| role |
+| roles |
 | roles |
 | scope |
 | scp |

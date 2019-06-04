@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956980"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473502"
 ---
 # <a name="collaborating-with-other-authors"></a>Spolupráce s jinými autory
 
@@ -31,7 +31,7 @@ Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#a
 
 ## <a name="luis-app-owner"></a>Vlastník aplikace LUIS
 
-Účet, který vytvoří aplikaci je vlastníkem a každá aplikace má jednoho vlastníka. Vlastník je uveden v aplikaci **[nastavení](luis-how-to-collaborate.md)** stránky. Vlastník může odstranit aplikace přijímat e-mailu, když se naplní kvóta koncový bod 75 % měsíčního limitu. 
+Účet, který vytvoří aplikaci je vlastníkem a každá aplikace má jednoho vlastníka. Vlastník je uveden v aplikaci **[nastavení](luis-how-to-collaborate.md)** stránky. Vlastník obdrží e-mail, když se naplní kvóta koncový bod 75 % měsíčního limitu. 
 
 ## <a name="authorization-roles"></a>Povolení role
 Služba LUIS nepodporuje různé role pro vlastníky a spolupracovníci s jednou výjimkou. Vlastník je jediný účet, který může odstranit aplikace.
@@ -42,7 +42,7 @@ Pokud vás zajímá při řízení přístupu k modelu, vezměte v úvahu dělen
 Služba LUIS neposkytuje převod vlastnictví, ale žádné spolupracovníka můžete exportovat aplikace a pak vytvořit aplikace metodou importování, se. Mějte na paměti, že nová aplikace má jiné ID aplikace. Nová aplikace potřebuje školení, publikování a nový koncový bod používá.
 
 ## <a name="luis-app-collaborators"></a>Spolupracovníci aplikace LUIS
-Vlastník aplikace můžete přidat spolupracovníky do aplikace. Vlastník je potřeba přidat spolupracovníka e-mailovou adresu v aplikaci  **[nastavení](luis-how-to-collaborate.md)**. Spolupracovníka má úplný přístup k aplikaci. Pokud spolupracovníka odstraní aplikaci, aplikace se odebere z účtu spolupracovníka ale zůstává v vlastníka účtu. 
+Vlastník aplikace můžete přidat spolupracovníky do aplikace. Vlastník je potřeba přidat spolupracovníka e-mailovou adresu v aplikaci  **[nastavení](luis-how-to-collaborate.md)** . Spolupracovníka má úplný přístup k aplikaci. Pokud spolupracovníka odstraní aplikaci, aplikace se odebere z účtu spolupracovníka ale zůstává v vlastníka účtu. 
 
 Pokud chcete sdílet více aplikací s spolupracovníky, každé aplikaci, která musí přidat e-mailu spolupracovníka. 
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60606358"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497313"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -28,7 +28,7 @@ Pro účely služby Custom Vision Service klasifikace obrázků, musíte nejprve
 
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření vlastní vizi prostředků na webu Azure Portal
-Pokud chcete používat službu Custom Vision Service, budete muset vytvořit vlastní zpracování obrazu trénování a Predikcí prostředky v v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Tím se vytvoří trénování a Predikcí prostředků. 
+Pokud chcete používat službu Custom Vision Service, budete muset vytvořit vlastní zpracování obrazu trénování a Predikcí prostředky v [webu Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). Tím se vytvoří trénování a Predikcí prostředků. 
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
@@ -70,7 +70,7 @@ K natrénování modelu efektivně, pomocí celé řady visual bitové kopie. Vy
 * Na pozadí
 * Vizuální styl
 * osoba nebo seskupené subject(s)
-* velikost
+* Velikost
 * type
 
 Kromě toho Ujistěte se, že všechny trénovacích obrázků splňovat následující kritéria:

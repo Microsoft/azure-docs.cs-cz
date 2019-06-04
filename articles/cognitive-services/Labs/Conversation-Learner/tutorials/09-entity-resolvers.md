@@ -1,5 +1,5 @@
 ---
-title: Překladače entit v modelu Learner konverzace – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Překladače entit v modelu Learner konverzace – Azure Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
 description: Další informace o použití překladačů Entity v Learner konverzace.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7b5f5645a8b5d1d993f87d18503fe270f42c5de5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 51f74f504f0ad70c8c7f73be8ee6a05add685824
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390034"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475752"
 ---
 # <a name="entity-resolvers"></a>Překladače entity
 
@@ -94,4 +94,4 @@ Začněte na domovskou stránku webového uživatelského rozhraní.
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Alternativní vstupy](./10-alternative-inputs.md)
+> [Výčet entity](./tutorial-enum-set-entity.md)

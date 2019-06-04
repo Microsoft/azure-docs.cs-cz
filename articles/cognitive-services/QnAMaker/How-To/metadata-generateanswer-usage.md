@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/30/2019
 ms.author: tulasim
-ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3088d0f161496cfd2e1cb8897cef36365ece9962
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792237"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496961"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Získání odpovědí znalostní báze s rozhraním GenerateAnswer API a metadat
 
@@ -67,11 +67,11 @@ Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který uk
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|Vlastnost požadavku HTTP|Název|Type|Účel|
+|Vlastnost požadavku HTTP|Name|Type|Účel|
 |--|--|--|--|
 |Parametr trasa adresy URL|ID znalostní báze|string|Identifikátor GUID pro znalostní báze.|
 |Parametr trasa adresy URL|Hostitel koncového bodu QnA maker|string|Název hostitele koncového bodu nasazené ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
-|Záhlaví|Typ obsahu|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
+|Záhlaví|Content-Type|string|Typ média textu odeslaného do rozhraní API. Výchozí hodnota je: "|
 |Záhlaví|Autorizace|string|Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo POST|JSON – objekt|JSON|Dotaz s nastavením|
 
@@ -80,12 +80,13 @@ Text JSON má několik nastavení:
 
 |Vlastnost text JSON|Požaduje se|Type|Účel|
 |--|--|--|--|
-|`question`|povinné|string|Uživatel dotaz k odeslání do znalostní báze.|
-|`top`|nepovinné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
-|`userId`|nepovinné|string|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
-|`scoreThreshold`|nepovinné|integer|Vrátí se pouze odpovědi s jistotou skóre nad touto prahovou hodnotou. Výchozí hodnota je 0.|
-|`isTest`|nepovinné|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
-|`strictFilters`|nepovinné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Použití `none` znamená, odpověď by měla mít žádné filtry metadat. |
+|`question`|Vyžaduje|string|Uživatel dotaz k odeslání do znalostní báze.|
+|`top`|Volitelné|integer|Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.|
+|`userId`|Volitelné|string|Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.|
+|`scoreThreshold`|Volitelné|integer|Vrátí se pouze odpovědi s jistotou skóre nad touto prahovou hodnotou. Výchozí hodnota je 0.|
+|`isTest`|Volitelné|Boolean|Pokud nastavena na hodnotu true, vrátí výsledky z `testkb` indexu vyhledávání místo publikované indexu.|
+|`strictFilters`|Volitelné|string|Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Použití `none` znamená, odpověď by měla mít žádné filtry metadat. |
+|`RankerType`|Volitelné|string|Pokud je zadán jako `QuestionOnly`, informuje nástroj QnA Maker k vyhledání pouze dotazy. Pokud není zadaný, hledá QnA Maker otázek a odpovědí.
 
 Příklad text JSON vypadá takto:
 
@@ -113,13 +114,13 @@ Příklad text JSON vypadá takto:
 |Vlastnost odpovědi (seřazené podle skóre)|Účel|
 |--|--|
 |skóre|Hodnocení 0 až 100.|
-|ID|Jedinečné ID přiřazené k odpovědi.|
+|Id|Jedinečné ID přiřazené k odpovědi.|
 |Dotazy|Dotazy poskytnutých uživatelem.|
 |Odpověď|Odpověď na dotaz.|
 |source|Název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.|
 |zprostředkovatele identity|Metadata přidružená k odpovědi.|
 |metadata.name|Název metadat. (maximální délka řetězce: 100, povinné)|
-|metadata.Value: Hodnota metadat. (maximální délka řetězce: 100, povinné)|
+|metadata.Value|Hodnota metadat. (maximální délka řetězce: 100, povinné)|
 
 
 ```json
@@ -172,7 +173,7 @@ Protože výsledky se vyžaduje jenom pro restaurace "Paradise", můžete nastav
 }
 ```
 
-<name="keep-context"></a>
+<a name="keep-context"></a>
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Použití výsledky otázky a odpovědi k zajištění kontextu konverzace
 
@@ -201,6 +202,21 @@ Odpověď GenerateAnswer obsahuje odpovídající informace metadat sady odpoví
             ]
         }
     ]
+}
+```
+
+## <a name="match-questions-only-by-text"></a>Odpovídají pouze dotazy podle textu
+
+Nástroj QnA Maker se ve výchozím nastavení, prohledá otázek a odpovědí. Pokud chcete prohledávat pouze dotazy, generovat odpověď, použijte `RankerType=QuestionOnly` v textu POST GenerateAnswer požadavku.
+
+Můžete prohledávat publikované kb pomocí `isTest=false`, nebo v kb test pomocí `isTest=true`.
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
 }
 ```
 
