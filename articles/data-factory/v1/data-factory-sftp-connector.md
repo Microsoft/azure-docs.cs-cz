@@ -52,9 +52,9 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type | Vlastnost type musí být nastavená na `Sftp`. |Ano |
-| hostitel | Název nebo IP adresa serveru SFTP. |Ano |
+| host | Název nebo IP adresa serveru SFTP. |Ano |
 | port |Port, na kterém naslouchá SFTP server. Výchozí hodnota je: 21 |Ne |
-| authenticationType. |Zadejte typ ověřování. Povolené hodnoty: **Základní**, **SshPublicKey**. <br><br> Odkazovat na [použití základního ověřování](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
+| authenticationType |Zadejte typ ověřování. Povolené hodnoty: **Základní**, **SshPublicKey**. <br><br> Odkazovat na [použití základního ověřování](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
 | skipHostKeyValidation | Určete, jestli chcete přeskočit ověřování klíče hostitele. | Ne. Výchozí hodnota: NEPRAVDA |
 | hostKeyFingerprint | Zadejte hlas klíče hostitele. | Ano, pokud `skipHostKeyValidation` je nastavena na hodnotu false.  |
 | gatewayName |Název brány správy dat pro připojení místnímu serveru SFTP. | Ano, pokud se kopírování dat z místní server SFTP. |
@@ -66,7 +66,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| uživatelské jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
+| username | Uživatel, který má přístup k serveru SFTP. |Ano |
 | password | Heslo pro uživatele (uživatelské jméno). | Ano |
 
 #### <a name="example-basic-authentication"></a>Příklad: Základní ověřování
@@ -116,7 +116,7 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte `auth
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| uživatelské jméno |Uživatel, který má přístup k serveru SFTP |Ano |
+| username |Uživatel, který má přístup k serveru SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče můžete přístup k této brány. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. <br><br> Platí pouze při kopírování dat z místní server SFTP. |
 | privateKeyContent | Serializovaný řetězec soukromého klíče obsahu. Průvodce kopírováním může číst soubor privátního klíče a automaticky extrahovat obsah privátního klíče. Pokud používáte žádné další nástroj nebo sadu SDK, použijte vlastnost privateKeyPath. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. |
 | passPhrase | Zadejte pass frázi/heslo k dešifrování privátního klíče, pokud soubor klíče je chráněn heslo. | Ano, pokud se soubor privátního klíče je chráněn heslo. |
@@ -176,8 +176,8 @@ Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte `auth
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Například folderPath s parametry pro každou hodinu data. |Ne |
-| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| format | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 | useBinaryTransfer |Určete, jestli použít režim binární přenos. Hodnota true pro binárním režimu a false ASCII. Výchozí hodnota: Hodnota TRUE. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: FtpServer. |Ne |
 
 > [!NOTE]
