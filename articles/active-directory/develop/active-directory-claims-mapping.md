@@ -59,17 +59,17 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | access_token |
 | account_type |
 | acr |
-| objekt actor |
+| actor |
 | actortoken |
 | aio |
 | altsecid |
-| AMR |
+| amr |
 | app_chain |
 | app_displayname |
 | app_res |
 | appctx |
 | appctxsender |
-| ID aplikace |
+| appid |
 | appidacr |
 | assertion |
 | at_hash |
@@ -86,13 +86,13 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
-| možností cnf |
-| kód |
-| ovládací prvky |
+| cnf |
+| code |
+| controls |
 | credential_keys |
-| žádosti o podepsání certifikátu |
+| csr |
 | csr_type |
-| ID zařízení |
+| deviceid |
 | dns_names |
 | domain_dns_name |
 | domain_netbios_name |
@@ -103,9 +103,9 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | exp |
 | expires_on |
 | grant_type |
-| graf |
+| graph |
 | group_sids |
-| skupin |
+| groups |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -116,12 +116,12 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
 | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
-| IAT |
+| iat |
 | identityprovider |
 | idp |
 | in_corp |
 | instance |
-| IPADDR |
+| ipaddr |
 | isbrowserhostedapp |
 | iss |
 | jwk |
@@ -136,8 +136,8 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | nameid |
 | nbf |
 | netbios_name |
-| Hodnota Nonce |
-| identifikátor objektu |
+| nonce |
+| oid |
 | on_prem_id |
 | onprem_sam_account_name |
 | onprem_sid |
@@ -149,29 +149,29 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | preferred_username |
 | previous_refresh_token |
 | primary_sid |
-| identifikátor PUID |
+| puid |
 | pwd_exp |
 | pwd_url |
 | redirect_uri |
 | refresh_token |
 | refreshtoken |
 | request_nonce |
-| prostředek |
+| resource |
 | role |
-| role |
-| obor |
+| roles |
+| scope |
 | scp |
-| identifikátor SID |
-| podpis |
+| sid |
+| signature |
 | signin_state |
 | src1 |
 | src2 |
-| Sub |
+| sub |
 | tbid |
 | tenant_display_name |
 | tenant_region_scope |
 | thumbnail_photo |
-| TID. |
+| tid |
 | tokenAutologonEnabled |
 | trustedfordelegation |
 | unique_name |
@@ -179,7 +179,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 | user_setting_sync_url |
 | username |
 | uti |
-| verze |
+| ver |
 | verified_primary_email |
 | verified_secondary_email |
 | wids |
