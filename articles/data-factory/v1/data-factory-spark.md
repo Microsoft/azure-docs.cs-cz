@@ -329,7 +329,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON.
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| jméno | Název aktivity v kanálu. | Ano |
+| name | Název aktivity v kanálu. | Ano |
 | description | Text, který popisuje, jakým způsobem aktivita naloží. | Ne |
 | type | Tato vlastnost musí být nastavená na HDInsightSpark. | Ano |
 | linkedServiceName | Název HDInsight propojené služby, na kterém se spustí program Sparku. | Ano |
