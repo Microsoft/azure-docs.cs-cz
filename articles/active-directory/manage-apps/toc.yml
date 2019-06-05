@@ -74,7 +74,11 @@
         - name: Konfigurace šifrování tokenu SAML (Preview)
           href: howto-saml-token-encryption.md
     - name: Jednotné přihlašování
-      href: what-is-single-sign-on.md
+      items:
+        - name: Co je jednotné přihlašování
+          href: what-is-single-sign-on.md
+        - name: Plánování nasazení jednotného přihlašování
+          href: plan-sso-deployment.md
     - name: Portály pro koncové uživatele
       href: end-user-experiences.md
 - name: Návody
@@ -93,7 +97,9 @@
           href: application-proxy-configure-for-claims-aware-applications.md
         - name: Registrace konektoru – bezobslužná instalace
           href: application-proxy-register-connector-powershell.md
-        - name: Konfigurace nativních klientských aplikací
+        - name: Poskytnutí přístupu k místním rozhraním API pro mobilní a desktopové aplikace
+          href: application-proxy-secure-api-access.md
+        - name: Konfigurace mobilních a desktopových klientských aplikací
           href: application-proxy-configure-native-client-application.md
         - name: Konfigurace vlastní domovské stránky
           href: application-proxy-configure-custom-home-page.md

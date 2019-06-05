@@ -470,8 +470,12 @@
           href: ./partner-center-portal/manage-account.md
         - name: Vyhledání nebo vytvoření pracovního účtu společnosti
           href: ./partner-center-portal/company-work-accounts.md
+        - name: Migrace účtu z CPP do partnerského centra
+          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Vytvoření nové nabídky
       items:
+        - name: Kontrolní seznam k vytvoření nabídky
+          href: ./partner-center-portal/offer-creation-checklist.md
         - name: Vytvoření nabídky SaaS
           href: ./partner-center-portal/create-new-saas-offer.md
         - name: Rozhraní API naplnění SaaS

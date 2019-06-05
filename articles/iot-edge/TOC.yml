@@ -43,7 +43,7 @@
       items:
         - name: Filtrování dat s využitím Azure Functions
           href: tutorial-deploy-function.md
-        - name: Zjištění průměrů s využitím ASA
+        - name: Zjištění průměrů s využitím Azure Stream Analytics
           href: tutorial-deploy-stream-analytics.md
         - name: Hodnocení dat s využitím služby Azure Machine Learning
           href: tutorial-deploy-machine-learning.md

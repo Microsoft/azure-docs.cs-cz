@@ -42,7 +42,7 @@
       href: cdn-pop-list-api.md
     - name: Migrace z verze Standard Verizon na Premium Verizon
       href: cdn-migrate.md
-    - name: DDoS Protection
+    - name: Ochrana před útoky DDoS
       href: cdn-ddos.md
 - name: Návody
   items:
@@ -94,7 +94,7 @@
         - name: Sledování prostředků
           href: cdn-resource-health.md
         - name: Potlačení chování pomocí pravidel
-          href: cdn-rules-engine.md
+          href: cdn-verizon-premium-rules-engine.md
         - name: Použití Traffic Manageru
           href: cdn-traffic-manager.md
     - name: Analýza
@@ -134,15 +134,15 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Referenční informace
   items:
-    - name: Referenční informace ke stroji pravidel
-      href: cdn-rules-engine-reference.md
+    - name: Referenční informace ke stroji pravidel Verizon Premium
+      href: cdn-verizon-premium-rules-engine-reference.md
       items:
         - name: Podmíněné výrazy stroje pravidel
-          href: cdn-rules-engine-reference-conditional-expressions.md
+          href: cdn-verizon-premium-rules-engine-reference-conditional-expressions.md
         - name: Podmínky shody stroje pravidel
-          href: cdn-rules-engine-reference-match-conditions.md
+          href: cdn-verizon-premium-rules-engine-reference-match-conditions.md
         - name: Funkce stroje pravidel
-          href: cdn-rules-engine-reference-features.md
+          href: cdn-verizon-premium-rules-engine-reference-features.md
         - name: Proměnné HTTP
           href: cdn-http-variables.md
     - name: Hlavičky HTTP specifické pro Verizon
@@ -158,8 +158,6 @@
       href: /java/api/com.microsoft.azure.management.cdn
     - name: REST
       href: /rest/api/cdn/
-    - name: Šablona Resource Manageru
-      href: /azure/templates/microsoft.cdn/allversions
 - name: Zdroje a prostředky
   items:
     - name: Lokality POP v Azure CDN

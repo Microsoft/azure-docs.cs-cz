@@ -7,34 +7,10 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření clusteru a databáze
-      items:
-        - name: portál Azure
-          href: create-cluster-database-portal.md
-        - name: Azure CLI
-          href: create-cluster-database-cli.md
-        - name: PowerShell
-          href: create-cluster-database-powershell.md
-        - name: 'C#'
-          href: create-cluster-database-csharp.md
-        - name: Python
-          href: create-cluster-database-python.md
-    - name: Ingestace dat
-      items:
-        - name: Streamování dat – centrum událostí
-          href: ingest-data-event-hub.md
-        - name: Streamování dat – Event Grid
-          href: ingest-data-event-grid.md
-        - name: Streamování dat – Kafka
-          href: ingest-data-kafka.md
-        - name: Dávkové zpracování dat – Python
-          href: python-ingest-data.md
-        - name: Dávkové zpracování dat – Node SDK
-          href: node-ingest-data.md
-        - name: Dávkové zpracování dat – NET Standard SDK
-          href: net-standard-ingest-data.md
-        - name: Dávkové zpracování dat – Logstash
-          href: ingest-data-logstash.md
+    - name: Vytvoření clusteru a databáze – Azure Portal
+      href: create-cluster-database-portal.md
+    - name: Ingestace ukázkových dat
+      href: ingest-sample-data.md
     - name: Dotazování dat
       items:
         - name: Webové uživatelské rozhraní
@@ -52,12 +28,38 @@
     - name: Přehled ingestování dat
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
+    - name: Přehled vizualizace dat
+      href: viz-overview.md
 - name: Návody
   items:
-    - name: Začínáme
+    - name: Vytvoření clusteru a databáze
       items:
-        - name: Ingestace ukázkových dat
-          href: ingest-sample-data.md
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+    - name: Ingestace dat
+      items:
+        - name: Centrum událostí
+          href: ingest-data-event-hub.md
+        - name: Event Grid
+          href: ingest-data-event-grid.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Python
+          href: python-ingest-data.md
+        - name: Node SDK
+          href: node-ingest-data.md
+        - name: .NET Standard SDK
+          href: net-standard-ingest-data.md
+        - name: Logstash
+          href: ingest-data-logstash.md
+        - name: Kopírování dat s využitím Azure Data Factory
+          href: data-factory-load-data.md
     - name: Nasazení
       items:
         - name: Úloha DevOps
@@ -82,10 +84,14 @@
               href: power-bi-imported-query.md
             - name: Dotaz SQL
               href: power-bi-sql-query.md
+        - name: Konektor ODBC
+          href: connect-odbc.md
         - name: Sisense
           href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: Tableau
+          href: tableau.md
     - name: Spravovat
       items:
         - name: Správa databázových oprávnění
@@ -104,7 +110,7 @@
       items:
         - name: Použití metrik k monitorování stavu clusterů
           href: using-metrics.md
-    - name: Práce s dalšími nástroji
+    - name: Integrace s ostatními nástroji
       items:
         - name: Konektor Apache Spark
           href: spark-connector.md
@@ -112,10 +118,6 @@
           href: connect-from-databricks.md
         - name: Analýza dat v aplikacích Jupyter Notebook a Kqlmagic
           href: kqlmagic.md
-        - name: Kopírování dat s využitím Azure Data Factory
-          href: data-factory-load-data.md
-        - name: Připojení přes ODBC
-          href: connect-odbc.md
     - name: Řešení potíží
       items:
         - name: Vytvoření clusteru

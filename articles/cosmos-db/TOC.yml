@@ -600,6 +600,8 @@
       items:
         - name: Tipy pro zvýšení výkonu
           items:
+            - name: Získání metriky spouštění dotazů
+              href: profile-sql-api-query.md
             - name: Ladění výkonu dotazů
               href: sql-api-query-metrics.md
             - name: Tipy ke zvýšení výkonu pro .NET SDK

@@ -39,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: Otestování rozhraní portálu
           href: test-createuidefinition.md
+        - name: Vyžádání přístupu za běhu
+          href: request-just-in-time-access.md
         - name: Aktualizace spravovaných prostředků
           href: update-managed-resources.md
         - name: Použití portálu k publikování definice aplikace
@@ -51,6 +53,8 @@
       items:
         - name: Monitorování spravované aplikace
           href: monitor-managed-application-portal.md
+        - name: Schválení přístupu za běhu
+          href: approve-just-in-time-access.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -96,7 +100,7 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: Úložiště
+        - name: Storage
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md

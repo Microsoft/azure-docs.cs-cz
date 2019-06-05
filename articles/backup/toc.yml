@@ -13,6 +13,9 @@
       href: quick-backup-vm-powershell.md
     - name: Zálohování virtuálního počítače – rozhraní příkazového řádku
       href: quick-backup-vm-cli.md
+    - name: Zálohování virtuálního počítače – použití šablony Resource Manageru
+      displayName: ARM
+      href: quick-backup-vm-template.md
 - name: Kurzy
   items:
     - name: Škálované zálohování virtuálních počítačů Azure
@@ -249,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Stav systému
+          href: backup-azure-system-state-troubleshoot.md
     - name: Monitorování úloh služby Azure Backup
       items:
         - name: Použití webu Azure Portal

@@ -51,6 +51,8 @@
           href: event-hubs-capture-python.md
     - name: Streamování do služby Event Hubs pro Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+    - name: Vytvoření vyhrazeného clusteru
+      href: event-hubs-dedicated-cluster-create-portal.md
 - name: Kurzy
   items:
     - name: Vizualizace datových anomálií v datových streamech Event Hubs

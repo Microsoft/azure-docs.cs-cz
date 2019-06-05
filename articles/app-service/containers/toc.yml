@@ -17,6 +17,18 @@
       href: quickstart-php.md
     - name: Vytvoření aplikace v Node.js
       href: quickstart-nodejs.md
+    - name: Vytvoření aplikace Node.js s využitím Dockeru a editoru Visual Studio Code
+      items:
+        - name: Začínáme
+          href: tutorial-javascript-vscode-get-started.md
+        - name: Vytvoření registru kontejnerů
+          href: tutorial-javascript-vscode-create-registry.md
+        - name: Vytvoření image
+          href: tutorial-javascript-vscode-containerize-app.md
+        - name: Nasazení image
+          href: tutorial-javascript-vscode-deploy-container.md
+        - name: Zobrazení protokolů
+          href: tutorial-javascript-vscode-tail-logs.md
     - name: Vytvoření aplikace v Javě
       href: quickstart-java.md
     - name: Vytvoření aplikace v Pythonu

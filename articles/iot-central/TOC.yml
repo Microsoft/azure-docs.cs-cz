@@ -105,6 +105,8 @@
           href: howto-configure-homepage.md
         - name: Přizpůsobení uživatelského rozhraní aplikací
           href: howto-customize-ui.md
+        - name: Použití šablon aplikací
+          href: howto-use-app-templates.md
         - name: Správa z webu Azure Portal
           href: howto-manage-iot-central-from-portal.md
         - name: Správa z Azure CLI
@@ -141,9 +143,9 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: Sady SDK pro zařízení IoT
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

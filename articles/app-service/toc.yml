@@ -19,6 +19,16 @@
       href: app-service-web-get-started-dotnet-framework.md
     - name: Vytvoření aplikace v Node.js
       href: app-service-web-get-started-nodejs.md
+    - name: Vytvoření aplikace Node.js s využitím editoru Visual Studio Code
+      items:
+        - name: Začínáme
+          href: tutorial-javascript-vscode-get-started.md
+        - name: Vytvoření aplikace
+          href: tutorial-javascript-vscode-create-app.md
+        - name: Nasazení webu
+          href: tutorial-javascript-vscode-deploy-app.md
+        - name: Zobrazení protokolů
+          href: tutorial-javascript-vscode-tail-logs.md
     - name: Vytvoření aplikace v PHP
       href: app-service-web-get-started-php.md
     - name: Vytvoření aplikace v Javě
@@ -78,8 +88,12 @@
           href: overview-patch-os-runtime.md
         - name: Atributy zabezpečení
           href: app-service-security-attributes.md
+    - name: Síťové funkce
+      href: networking-features.md
     - name: Příchozí a odchozí IP adresy
       href: overview-inbound-outbound-ips.md
+    - name: Integrace virtuální sítě
+      href: web-sites-integrate-with-vnet.md
     - name: Hybridní připojení
       href: app-service-hybrid-connections.md
     - name: Integrace Traffic Manageru
@@ -98,8 +112,6 @@
           href: web-sites-php-configure.md
         - name: Konfigurace Javy
           href: configure-language-java.md
-        - name: Připojení k místním prostředkům
-          href: web-sites-integrate-with-vnet.md
     - name: Nasazení do Azure
       items:
         - name: Nasazení aplikace

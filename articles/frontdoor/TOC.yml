@@ -70,6 +70,8 @@
           href: waf-front-door-create-portal.md
         - name: Konfigurace zásad WAF – Azure PowerShell
           href: waf-front-door-custom-rules-powershell.md
+        - name: Konfigurace ochrany před roboty
+          href: waf-front-door-policy-configure-bot-protection.md
         - name: Konfigurace vlastního kódu odpovědi
           href: waf-front-door-configure-custom-response-code.md
         - name: Konfigurace omezení IP adres

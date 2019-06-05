@@ -34,6 +34,8 @@
       href: tutorials/08-pre-trained-entities.md
     - name: Překladače entit
       href: tutorials/09-entity-resolvers.md
+    - name: Výčtové entity
+      href: tutorials/tutorial-enum-set-entity.md
     - name: Alternativní vstupy
       href: tutorials/10-alternative-inputs.md
     - name: Protokolování dialogových oken

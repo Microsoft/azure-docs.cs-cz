@@ -164,6 +164,8 @@
       items:
         - name: Mapový ovládací prvek
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Nástroje pro kreslení
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Modul služeb
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: Šablona Resource Manageru
