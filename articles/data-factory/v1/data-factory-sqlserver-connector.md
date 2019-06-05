@@ -76,7 +76,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
+| type |Vlastnost type by měla být nastavená na: **OnPremisesSqlServer**. |Ano |
 | connectionString |Zadejte připojovací řetězec informace potřebné pro připojení k místní databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi SQL serveru. |Ano |
 | username jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
