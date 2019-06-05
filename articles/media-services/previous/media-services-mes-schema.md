@@ -38,7 +38,7 @@ Definuje přednastavení kódování.
 
 | Název | Typ | Popis |
 | --- | --- | --- |
-| **Verze**<br/><br/> Požaduje se |**xs: decimal** |Předvolby verze. Platí následující omezení: hodnota xs:fractionDigits = "1" a xs:minInclusive value = "1", například **verze = "1.0"**. |
+| **Verze**<br/><br/> Požaduje se |**xs: decimal** |Předvolby verze. Platí následující omezení: hodnota xs:fractionDigits = "1" a xs:minInclusive value = "1", například **verze = "1.0"** . |
 
 ## <a name="Encoding"></a> Kódování
 Obsahuje řadu následující prvky:  
@@ -160,7 +160,7 @@ Zvukový kodek|Podrobnosti
 
 | Název | Typ | Popis |
 | --- | --- | --- |
-| **FileName** |**xs:string** |Název výstupního souboru.<br/><br/> Makra popsané v následující tabulce můžete použít k vytváření názvů výstupních souborů. Příklad:<br/><br/> **"Výstupy": [{"Název_souboru": "{Basename}*{rozlišení}* MP4 {s přenosovou rychlostí}", "Formátu": {"Type": "MP4Format"       }     }   ]** |
+| **FileName** |**xs:string** |Název výstupního souboru.<br/><br/> Makra popsané v následující tabulce můžete použít k vytváření názvů výstupních souborů. Příklad:<br/><br/> **"Výstupy": [{"Název_souboru": "{Basename} *{rozlišení}* MP4 {s přenosovou rychlostí}", "Formátu": {"Type": "MP4Format"       }     }   ]** |
 
 ### <a name="macros"></a>Makra
 
