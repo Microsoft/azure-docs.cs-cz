@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.openlocfilehash: edf4a3e9d9e9b51ac44f839cababa9d14bc0d17a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 05/29/2019
+ms.openlocfilehash: 21209548d1cfe7b6eebb1757e817a12c797e78a9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228063"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688841"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderování textu z konzoly pro rozhraní API
 
-Použití [rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) v Azure Content Moderator kontrolovat textový obsah. Operace prohledá obsah pro vulgárních výrazů a porovnává obsah proti vlastní a sdílené seznamů zakázaných položek.
+Použití [rozhraní API pro moderování textu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) v Azure Content Moderator kontrolovat obsah textu pro vulgárních výrazů a porovnání vlastní a sdílené seznamy.
 
 ## <a name="get-your-api-key"></a>Získejte klíč k rozhraní API
 
@@ -72,7 +72,7 @@ Also, 999-99-9999 looks like a social security number (SSN).
 
 ## <a name="analyze-the-response"></a>Analyzovat odpověď
 
-Následující odpověď obsahuje různé přehledy z rozhraní API. Obsahuje vulgární, identifikovatelné osobní údaje, klasifikace (preview) a verze automaticky opravit.
+Následující odpověď obsahuje různé přehledy z rozhraní API. Obsahuje vulgární, osobní údaje, klasifikace (preview) a verze automaticky opravit.
 
 > [!NOTE]
 > "Klasifikaci" funkcí s asistencí počítače je ve verzi preview a podporuje pouze angličtinu.
