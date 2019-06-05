@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure portal'
-description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MySQL pomocí webu Azure Portal.
+description: Tento kurz vysvětluje, jak vytvořit a spravovat Azure Database for MySQL serveru a databáze pomocí webu Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 0b637ab5f2b6234fed301a60ee1857960a464a33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d9c6a16dd7e6c32a71d496abe8a67e23cc075a6d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342717"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515838"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Kurz: Návrh databázi Azure Database for MySQL pomocí webu Azure portal
 Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
@@ -58,6 +58,9 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
     Cenová úroveň | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň**. Potom vyberte kartu **Obecné účely**. *Gen 5*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
     
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+
+   > [!TIP]
+   > S **automatického růstu** povoleno serveru zvýší úložiště v případě, že se blíží přidělené limit, bez dopadu na vaše úlohy.
 
 3. Klikněte na možnost **Vytvořit**. Po jedné až dvou minutách bude server Azure Database for MySQL spuštěný v cloudu. Pokud chcete monitorovat proces nasazení, klikněte na tlačítko **Oznámení** na panelu nástrojů.
 

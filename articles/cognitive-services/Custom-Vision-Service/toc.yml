@@ -70,8 +70,6 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Rozhraní API Custom Vision pro predikce
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Glosář
-      href: glossary-of-terms.md
     - name: Sady SDK
       items:
         - name: .NET

@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 097cb554523a9e75b265ca16e79769daf0a49b40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 998d33730586316fe3bf423663ffae5148843ed0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864555"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515856"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 
 Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure Service Fabric s front-endem webového rozhraní API pro ASP.NET Core a stavovou back-end službou pro ukládání dat. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v ASP.NET Core, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](#walkthrough_anchor).  Pokud chcete, můžete se podívat na [video s průvodcem](https://channel9.msdn.com/Events/Connect/2017/E100) tímto kurzem.
 
-![Diagram aplikace](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![Front-endu API AngularJS+ASP.NET, připojení do stavové back-end služby v Service Fabric](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 V první části této série se naučíte:
 
@@ -625,9 +625,9 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
 
       ![Front-end služba pro přidání hlasu](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-   2. Nejprve se vytvoří adresa URL k ReverseProxy pro back-end službu **(1)**.
-   3. Pak se do ReverseProxy odešle požadavek HTTP PUT **(2)**.
-   4. Nakonec se do klienta vrátí odpověď z back-end služby **(3)**.
+   2. Nejprve se vytvoří adresa URL k ReverseProxy pro back-end službu **(1)** .
+   3. Pak se do ReverseProxy odešle požadavek HTTP PUT **(2)** .
+   4. Nakonec se do klienta vrátí odpověď z back-end služby **(3)** .
 
 5. Pokračujte stisknutím **F5**.
    1. Nyní jste se dostali k zarážce v back-end službě.
@@ -635,8 +635,8 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
       ![Back-end služba pro přidání hlasu](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
    2. Na prvním řádku v metodě **(1)** se pomocí `StateManager` načte nebo přidá spolehlivý slovník `counts`.
-   3. Všechny interakce s hodnotami ve spolehlivém slovníku vyžadují transakci. Tuto transakci vytvoří tento příkaz using **(2)**.
-   4. V transakci se pro možnost hlasování aktualizuje hodnota příslušného klíče a potvrdí se operace **(3)**. Jakmile se vrátí metoda potvrzení, data ve slovníku se aktualizují a replikují do dalších uzlů v clusteru. Data jsou teď bezpečně uložená v clusteru a v případě selhání back-end služby ji můžou převzít ostatní uzly, aby data byla i nadále dostupná.
+   3. Všechny interakce s hodnotami ve spolehlivém slovníku vyžadují transakci. Tuto transakci vytvoří tento příkaz using **(2)** .
+   4. V transakci se pro možnost hlasování aktualizuje hodnota příslušného klíče a potvrdí se operace **(3)** . Jakmile se vrátí metoda potvrzení, data ve slovníku se aktualizují a replikují do dalších uzlů v clusteru. Data jsou teď bezpečně uložená v clusteru a v případě selhání back-end služby ji můžou převzít ostatní uzly, aby data byla i nadále dostupná.
 6. Pokračujte stisknutím **F5**.
 
 Pokud chcete zastavit ladicí relaci, stiskněte **Shift + F5**.

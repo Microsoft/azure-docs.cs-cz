@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: c51db283a03c0259a68cc59e4c38abf6b47bef58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8940de90b925a1ca252de3cf75acd192531edeb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468342"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514221"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-c"></a>Rychlý start: Použití rozhraní Translator Text API určit pomocí délka větuC#
 

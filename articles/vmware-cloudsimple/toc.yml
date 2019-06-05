@@ -55,11 +55,11 @@
     - name: Kurzy
       items:
         - name: Povolení poskytovatele prostředků
-          href: 'https://docs.azure.cloudsimple.com/enable-cloudsimple-service/'
+          href: enable-cloudsimple-service.md
         - name: Vytvoření služby CloudSimple
-          href: 'https://docs.azure.cloudsimple.com/create-cloudsimple-service/'
+          href: create-cloudsimple-service.md
         - name: Přístup k portálu CloudSimple
-          href: 'https://docs.azure.cloudsimple.com/access-cloudsimple-portal/'
+          href: access-cloudsimple-portal.md
         - name: Správa uzlů
           items:
             - name: Nákup uzlů

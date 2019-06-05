@@ -15,16 +15,6 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: Vytvoření funkce – Visual Studio Code
       href: functions-create-first-function-vs-code.md
-    - name: Vytvoření funkce – Node.js s editorem Visual Studio Code
-      items:
-        - name: Začínáme
-          href: tutorial-javascript-vscode-get-started.md
-        - name: Vytvoření aplikace
-          href: tutorial-javascript-vscode-create-app.md
-        - name: Spuštění a testování aplikace v místním prostředí
-          href: tutorial-javascript-vscode-run-app.md
-        - name: Nasazení webu
-          href: tutorial-javascript-vscode-deploy-app.md
     - name: Vytvoření funkce – Java/Maven
       href: functions-create-first-java-maven.md
     - name: Vytvoření funkce – Python

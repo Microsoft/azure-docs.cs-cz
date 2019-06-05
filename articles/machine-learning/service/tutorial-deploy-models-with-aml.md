@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2984ed9a7edd36b166c0dff9aa87d86c6d2ab45
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9709d18b00d65578ca3a63fe5044e0b9f7b52d58
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800724"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515586"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasadit model klasifikace obrázků ve službě Azure Container Instances
 
@@ -35,7 +35,7 @@ V této části kurzu se pomocí služby Azure Machine Learning pro následujíc
 Container Instances je skvělým řešením pro testování a pochopení pracovního postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> S využitím Azure Machine Learning SDK verze 1.0.8 testovaný kód v tomto článku.
+> S využitím Azure Machine Learning SDK verze 1.0.41 testovaný kód v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
 Přejděte k [nastavit vývojové prostředí](#start) číst kroky poznámkového bloku.  

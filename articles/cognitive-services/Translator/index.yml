@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/21/2019
+  ms.date: 06/04/2019
   ms.author: v-jansko
 abstract:
   description: 'Translator Text je cloudová služba strojového překladu, kterou můžete využít k překladu textu téměř v reálném čase pomocí jednoduchého volání rozhraní REST API. Rozhraní API využívá moderní technologie neurálního strojového překladu a nabízí technologie statistického strojového překladu. Custom Translator je rozšíření rozhraní Translator Text API, které umožňuje vytvářet neurální překladové systémy. Přizpůsobené překladové systémy se dají využít k překladu textu s využitím Translator Text API nebo <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">hlasových služeb Microsoftu</a>. Seznam podporovaných jazyků pro neurální i statistický strojový překlad najdete v části věnované <a href="languages.md">podporovaným jazykům</a>.'

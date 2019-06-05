@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2fde25e4d21081d350fb2a7ecf07b66f348e7ab1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbbe139160a7efd528e63e206aa37ac72b2542df
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60879706"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515193"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-java"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocí Javy
 

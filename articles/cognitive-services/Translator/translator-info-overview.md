@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89b836109818f7a4c1aafdbc9a1b3a72fe806269
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60609099"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515031"
 ---
-# <a name="what-is-translator-text-api"></a>Co je Translator Text API?
+# <a name="what-is-the-translator-text-api"></a>Co je Translator Text API?
 
 Službu Translator Text API můžete snadno integrovat do svých aplikací, webů, nástrojů a služeb. Umožní vám přidat vícejazyčná uživatelská prostředí ve [více než 60 jazycích](languages.md) a můžete ji použít k překladu jazyka z textu do textu na jakékoli hardwarové platformě s jakýmkoli operačním systémem.
 

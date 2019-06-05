@@ -1,7 +1,7 @@
 ---
-title: Vytvářet, publikovat, odpovědět v nástroje QnA Maker
+title: Vytvářet, publikovat a odpovědět v nástroje QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Vytvoření nové znalostní báze pomocí otázek a odpovědí z veřejné nejčastějších dotazů založených na webu. Uložit, trénování a publikování znalostní báze. Po publikování znalostní báze dotaz odesílat a přijímat odpovědi pomocí příkazu CURL. Vytvořte robota a otestovat bot se stejnou otázku.
+description: Vytvoření nové znalostní báze pomocí otázek a odpovědí z veřejné nejčastějších dotazů založených na webu. Uložit, trénování a publikování znalostní báze. Po publikování znalostní báze dotaz odesílat a přijímat odpovědi pomocí příkazu cURL. Potom vytváření robotů a otestovat bot se stejnou otázku.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,26 +11,27 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: a13e0cb0e594571344b16d007ef13475b384b73d
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65594160"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692994"
 ---
-# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Kurz: Nástroj QnA Maker portal vytvořte znalostní báze
+# <a name="tutorial-from-the-qna-maker-portal-create-a-knowledge-base"></a>Kurz: Z portálu QnA Maker vytvoření znalostní báze
 
-Vytvoření nové znalostní báze pomocí otázek a odpovědí z veřejné nejčastějších dotazů založených na webu. Uložit, trénování a publikování znalostní báze. Po publikování znalostní báze dotaz odesílat a přijímat odpovědi pomocí příkazu Curl. Vytvořte robota a otestovat bot se stejnou otázku. 
+Vytvoření nové znalostní báze pomocí otázek a odpovědí z veřejné nejčastějších dotazů založených na webu. Uložit, trénování a publikování znalostní báze. Po publikování znalostní báze dotaz odesílat a přijímat odpovědi pomocí příkazu cURL. Potom vytváření robotů a otestovat bot se stejnou otázku. 
 
 V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Vytvoření znalostní báze na portálu služby QnA Maker
-> * Kontrola, uložení a trénování znalostní báze
-> * Publikování znalostní báze
-> * Dotazování znalostní báze pomocí cURL
-> * Vytváření robotů
-> 
+> * Vytvoření znalostní báze na portálu pro nástroj QnA Maker.
+> * Prohlížení, uložení a trénování znalostní báze.
+> * Publikování znalostní báze.
+> * Používáme nástroj cURL k dotazování znalostní báze.
+> * Vytváření robotů.
+ 
+
 > [!NOTE]
 > Programové verzi tohoto kurzu je k dispozici s tak získají kompletní řešení z [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
@@ -44,25 +45,25 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
 
 1. V horní nabídce vyberte **Create a knowledge base** (Vytvořit znalostní bázi).
 
-    ![Proces vytváření znalostní báze – krok 1](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-1.png)
 
-1. První krok přeskočte, protože použijete existující službu QnA Maker. 
+1. První krok přeskočte, protože budete používat vaše stávající služba QnA Maker. 
 
-1. V dalším kroku vyberte stávající nastavení:  
+1. Vyberte existující nastavení:  
 
     |Nastavení|Účel|
     |--|--|
-    |Microsoft Azure Directory Id (ID adresáře Microsoft Azure)|Vaše _ID adresáře Microsoft Azure_ je přidružený k účtu, který používáte pro přihlášení na webu Azure portal a portál QnA Maker. |
-    |Azure Subscription name (Název předplatného Azure)|Váš fakturační účet, ve kterém jste vytvořili prostředek služby QnA Maker.|
+    |ID adresáře Microsoft Azure|Toto ID je přidružená k účtu, který používáte k přihlášení na webu Azure portal a portál QnA Maker. |
+    |Azure Subscription name (Název předplatného Azure)|Fakturační účet, ve které jste vytvořili prostředek QnA Maker.|
     |Azure QnA Service (Služba otázek a odpovědí Azure)|Prostředek vaší existující služby QnA Maker.|
 
-    ![Proces vytváření znalostní báze – krok 2](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
-1. V dalším kroku zadejte název znalostní báze `My Tutorial kb`.
+1. Zadejte název vaší znalostní báze `My Tutorial kb`.
 
-    ![Proces vytváření znalostní báze – krok 3](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-3.png)
 
-1. V dalším kroku vyplňte následující nastavení znalostní báze:  
+1. Naplnění znalostní báze s následujícím nastavením:  
 
     |Název nastavení|Hodnota nastavení|Účel|
     |--|--|--|
@@ -70,49 +71,49 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
     |File |_v tomto kurzu se nepoužívá_|Toto nastavení slouží k nahrávání souborů pro otázky a odpovědi. |
     |Chit-chat personality (Charakter konverzace)|Popisný|Díky tomu popisný a příležitostné [posouzení vašich osobnostních](../Concepts/best-practices.md#chit-chat) na běžné otázky a odpovědi. Tyto otázky a odpovědi můžete později upravit. |
 
-    ![Proces vytváření znalostní báze – krok 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
 1. Vyberte **Create your KB** (Vytvořit znalostní bázi) a dokončete proces vytváření.
 
-    ![Proces vytváření znalostní báze – krok 5](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-5.png)
 
-## <a name="review-kb-save-and-train"></a>Kontrola, uložení a trénování znalostní báze
+## <a name="review-save-and-train-the-knowledge-base"></a>Kontrola, uložení a trénování znalostní báze
 
 1. Zkontrolujte otázky a odpovědi. První stránka obsahuje otázky a odpovědi z příslušné adresy URL. 
 
-    ![Uložení a natrénování](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
 
 1. V dolní části tabulky vyberte poslední stránku otázek a odpovědí. Na stránce se zobrazí otázky a odpovědi s charakterem konverzace. 
 
-1. Vyberte z panelu nástrojů nad seznamem otázek a odpovědí **zobrazit možnosti** ikonu, pak vyberte **zobrazit metadata**. Zobrazí metadata značky pro každý otázek a odpovědí. Otázky Chit chat mají **redakční: chit chat** metadat již nastaven. Tato metadata se vrátí do klientské aplikace spolu s vybranou odpovědí. Klientská aplikace, jako je chatovací robot, slouží k určení interakcí s uživatelem nebo další zpracování tohoto filtrovaných metadat.
+1. Vyberte z panelu nástrojů nad seznamem otázek a odpovědí **zobrazit možnosti** ikonu a pak vyberte **zobrazit metadata**. Zobrazí metadata značky pro každý otázek a odpovědí. Otázky Chit chat mají **redakční: chit chat** metadat již nastaven. Tato metadata se vrátí do klientské aplikace, spolu s vybranou odpovědí. Klientská aplikace, jako je chatovací robot, slouží k určení interakcí s uživatelem nebo další zpracování tohoto filtrovaných metadat.
 
-    ![! [Zobrazit značky metadat] (.. / media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
+    ![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. V horní nabídce vyberte **Save and train** (Uložit a natrénovat).
 
-## <a name="publish-to-get-kb-endpoints"></a>Publikování a získání koncových bodů znalostní báze
+## <a name="publish-to-get-knowledge-base-endpoints"></a>Publikování na získání koncových bodů znalostní báze
 
-V horní nabídce vyberte tlačítko **Publish** (Publikovat). Jakmile budete na stránce publikování, vyberte tlačítko **Publish** (Publikovat) vedle tlačítka **Cancel** (Zrušit).
+V horní nabídce vyberte tlačítko **Publish** (Publikovat). Na stránce publikování vyberte **Publikovat**.
 
-![Publikování](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
+![Snímek obrazovky nástroje QnA Maker portal](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
 
-Po publikování znalostní báze se zobrazí koncový bod.
+Po publikování znalostní báze se zobrazí na koncový bod.
 
-![Nastavení koncového bodu na stránce publikování](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
+![Snímek obrazovky nastavení koncového bodu](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-Nezavírejte toto **publikovat** , bude ho používat k vytváření robotů v pozdější části kurzu. 
+Nezavírejte toto **publikovat** stránky. Budete potřebovat později v kurzu k vytváření robotů. 
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>Používáme nástroj Curl k dotazu na odpověď – nejčastější dotazy
+## <a name="use-curl-to-query-for-an-faq-answer"></a>Používáme nástroj cURL k dotazu na odpověď – nejčastější dotazy
 
 1. Vyberte kartu **Curl**. 
 
-    ![Příkaz cURL](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
+    ![Snímek obrazovky Curl kartu](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. Zkopírujte text na kartě **Curl** a spusťte ho na příkazovém řádku nebo v terminálu s podporou cURL. Hodnota autorizační hlavičky obsahuje text `Endpoint` (s koncovou mezerou) následovaný klíčem.
+1. Zkopírujte text **Curl** kartu a spustíme ji v cURL povolené terminálu nebo příkazového řádku. Hodnota hlavičky autorizace obsahuje text `Endpoint`s koncovou mezeru a potom klávesu.
 
 1. Nahraďte `<Your question>` za `How large can my KB be?` (Jak velká může být moje znalostní báze?). Tato otázka se podobá otázce `How large a knowledge base can I create?` (Jak velkou znalostní bázi můžu vytvořit?), ale není úplně stejná. Služba QnA Maker s využitím zpracování přirozeného jazyka určí, že se jedná o stejné otázky.     
 
-1. Spusťte příkaz Curl, získáte odpověď JSON, včetně skóre a odpovědí. 
+1. Pomocí příkazu cURL, získáte odpověď JSON, a to včetně určení skóre a odpovědí. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -136,11 +137,11 @@ Nezavírejte toto **publikovat** , bude ho používat k vytváření robotů v p
 
     Služba QnA Maker udává mírnou jistotu se skóre 42,81 %.  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Používáme nástroj Curl k dotazu pro Chit chat odpovědí
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Používáme nástroj cURL k dotazu pro Chit chat odpovědí
 
-1. V terminálu povolené Curl nahraďte `How large can my KB be?` příkazem ukončení konverzace bot od uživatele, jako například `Thank you`.   
+1. V terminálu povolené cURL nahraďte `How large can my KB be?` příkazem ukončení konverzace bot od uživatele, jako například `Thank you`.   
 
-1. Spusťte příkaz Curl, získáte odpověď JSON, včetně skóre a odpovědí. 
+1. Pomocí příkazu cURL, získáte odpověď JSON, a to včetně určení skóre a odpovědí. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -176,13 +177,13 @@ Nezavírejte toto **publikovat** , bude ho používat k vytváření robotů v p
 
     Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. Nástroj QnA Maker, vrátí všechny související dotazy, stejně jako vlastnost metadat obsahující informace o značku metadat Chit konverzace.  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>Používáme nástroj Curl k dotazů pro výchozí odpověď
+## <a name="use-curl-to-query-for-the-default-answer"></a>Používáme nástroj cURL k dotazu pro výchozí odpověď
 
-Na každou otázku, u které si služba QnA Maker není jistá odpovědí, se vrátí výchozí odpověď. Tuto odpověď můžete nakonfigurovat na webu Azure Portal. 
+Na každou otázku, která není jistí QnA Maker obdrží odpověď výchozí. Tuto odpověď můžete nakonfigurovat na webu Azure Portal. 
 
-1. V terminálu s podporou cURL nahraďte `Thank you` (Děkuji) za `x`. 
+1. V terminálu povolené cURL nahraďte `Thank you` s `x`. 
 
-1. Spusťte příkaz Curl, získáte odpověď JSON, včetně skóre a odpovědí. 
+1. Pomocí příkazu cURL, získáte odpověď JSON, a to včetně určení skóre a odpovědí. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -200,7 +201,7 @@ Na každou otázku, u které si služba QnA Maker není jistá odpovědí, se vr
     }
     ```
     
-    Nástroj QnA Maker vrátil bodů `0`, což znamená, že bez obav, ale vrátí výchozí odpověď. 
+    Nástroj QnA Maker vrátil bodů `0`, což znamená, že bez obav. Také vrátí výchozí odpověď. 
 
 ## <a name="create-a-knowledge-base-bot"></a>Vytváření robotů znalostní báze
 
@@ -210,11 +211,11 @@ Další informace najdete v tématu [vytvořit chatovací robot s této znalostn
 
 Jakmile budete hotovi s robotem znalostní báze knowledge base, odeberte skupinu prostředků, `my-tutorial-rg`, chcete-li odebrat všechny prostředky Azure vytvořeny během procesu robota.
 
-Jakmile budete hotovi s znalostní báze na portálu pro nástroj QnA Maker vyberte **Moje znalostních bází**, vyberte ve znalostní bázi **kb tento kurz**, vyberte ikonu Odstranit úplně vpravo v daném řádku.  
+Jakmile budete hotovi s znalostní báze na portálu pro nástroj QnA Maker vyberte **Moje znalostních bází**. Vyberte ve znalostní bázi **tento kurz kb**a vyberte ikonu Odstranit úplně vpravo v daném řádku.  
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace najdete v tématu [zdroje dat podporované](../Concepts/data-sources-supported.md) Další informace o podpoře formátů souborů. 
+Další informace o podporovaných formátech souborů najdete v tématu [Podporované zdroje dat](../Concepts/data-sources-supported.md). 
 
 Další informace o [charakterech](../Concepts/best-practices.md#chit-chat) konverzace.
 

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 1eb24d90c3aefa81f53a3e31c0bd460f45e5a250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626298"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515664"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB s využitím webu Azure portal
 
@@ -63,6 +63,9 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
     Cenová úroveň | Viz popis. | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň** > **Pro obecné účely**. U následujících nastavení ponechte výchozí hodnoty:<br><ul><li>**Výpočetní generace** (Gen 5)</li><li>**vCore** (4 virtuální jádra)</li><li>**Úložiště** (100 GB)</li><li>**Období uchování zálohy** (7 dnů)</li></ul><br>Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, v části **Možnosti redundance zálohy** vyberte **Geograficky redundantní**. <br><br>Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
     
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
+
+   > [!TIP]
+   > S **automatického růstu** povoleno serveru zvýší úložiště v případě, že se blíží přidělené limit, bez dopadu na vaše úlohy.
 
 4. Vyberte **Vytvořit**. Po jedné až dvou minutách bude server Azure Database for MariaDB spuštěný v cloudu. Pokud chcete monitorovat proces nasazení, vyberte na panelu nástrojů **Oznámení**.
 

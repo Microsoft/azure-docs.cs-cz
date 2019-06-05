@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 9b8491621987d42c23feafa870e18b7a9b08ba39
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7c4ec0304211d4ce311d3db2275b065219f37f0f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/04/2019
-ms.locfileid: "66471515"
+ms.locfileid: "66514769"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce s využitím Node.js
 

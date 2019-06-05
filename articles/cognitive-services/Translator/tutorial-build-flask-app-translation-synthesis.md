@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4df2de7f0428ffe35712a29bfef645b6feb66813
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610559"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515007"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: Sestavení aplikace Flask pomocí služeb Azure Cognitive Services
 
@@ -103,7 +103,7 @@ Pojďme vytvořit virtuální prostředí pro naše aplikace Flask pomocí `virt
 
 2. Příkazy k aktivaci virtuální prostředí se budou lišit v závislosti na vaší platformě nebo prostředí:   
 
-   | Platforma | Shell | Příkaz |
+   | Platforma | Prostředí | Příkaz |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |

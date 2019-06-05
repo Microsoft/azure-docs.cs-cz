@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a7896a31d3957f858de356a9cffdcb45a1fb649
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: ae4b57d86461526b285e77aa408373b5d7f5aedf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66426647"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513366"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace připojení k hybridní službě Azure Active Directory službě u federovaných domén
 
-Zařízení se podobně jako uživatel stávají další identitou, kterou chcete chránit a pomocí které zároveň chcete nepřetržitě chránit své prostředky, ať jsou kdekoli. Můžete toho docílit tím, že pomocí některé z následujících metod přenesete identity vašich zařízení do Azure AD:
+Podobným způsobem pro uživatele zařízení je jiné identity jádro, které chcete chránit a použít ji k ochraně vašich prostředků, kdykoli a odkudkoli. Dosažení tohoto cíle přináší a správou identit zařízení ve službě Azure AD pomocí jedné z následujících metod:
 
 - Připojení k Azure AD
 - Hybridní připojení k Azure AD
@@ -28,7 +28,11 @@ Zařízení se podobně jako uživatel stávají další identitou, kterou chcet
 
 Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky jednotnému přihlašování ke cloudovým i místním prostředkům. Současně můžete zabezpečit přístup k vašim cloudovým i místním prostředkům s využitím [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
 
-V tomto kurzu se dozvíte, jak nakonfigurovat hybridní připojení k Azure AD pro zařízení federovaná pomocí služby AD FS.
+V tomto kurzu se dozvíte, jak nakonfigurovat připojení k hybridní službě Azure AD pro zařízení pro počítače připojené k doméně AD ve federovaném prostředí pomocí služby AD FS.
+
+> [!NOTE]
+> Pokud vaše prostředí federované používá zprostředkovatel identity než služba AD FS, je potřeba zajistit, že váš poskytovatel identit podporuje protokol WS-Trust. WS-Trust, je potřeba ověřit váš Windows aktuální hybridní službě Azure AD připojené zařízení s Azure AD. Kromě toho pokud máte Windows nižší úrovně zařízení, které potřebujete k hybridní službě Azure AD join, zprostředkovatele identity potřebovat pro podporu deklarací identity WIAORMULTIAUTHN. 
+
 
 > [!div class="checklist"]
 > * Konfigurace hybridního připojení k Azure AD
@@ -40,9 +44,9 @@ V tomto kurzu se dozvíte, jak nakonfigurovat hybridní připojení k Azure AD p
 
 V tomto kurzu se předpokládá znalost následujících témat:
 
-- [Úvod do správy zařízení v Azure Active Directory](../device-management-introduction.md)
+- [Seznámení se správou identit zařízení ve službě Azure Active Directory](../device-management-introduction.md)
 - [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md)
-- [Jak řídit How hybridní připojení Azure AD pro vaše zařízení](hybrid-azuread-join-control.md)
+- [Jak provést řízené ověřování připojení k hybridní službě Azure AD](hybrid-azuread-join-control.md)
 
 Ke konfiguraci scénáře v tomto kurzu budete potřebovat:
 
@@ -55,7 +59,7 @@ Azure AD Connect od verze 1.1.819.0 nabízí průvodce konfigurací hybridního 
 - Zálohuje existující vztah důvěryhodnosti přijímající strany Azure AD.
 - Aktualizuje pravidla deklarace identity ve vztahu důvěryhodnosti Azure AD.
 
-Postup konfigurace v tomto článku vychází z tohoto průvodce. Pokud máte nainstalovanou starší verzi Azure AD Connect, je potřeba provést upgrade na verzi 1.1.819 nebo novější. Pokud nemůžete nainstalovat nejnovější verzi Azure AD Connect, přečtěte si, [jak ručně nakonfigurovat registraci zařízení](../device-management-hybrid-azuread-joined-devices-setup.md).
+Postup konfigurace v tomto článku vychází z tohoto průvodce. Pokud máte nainstalovanou starší verzi Azure AD Connect, je potřeba provést upgrade na verzi 1.1.819 nebo novější. Pokud instalaci nejnovější verze služby Azure AD Connect není pro vás, přečtěte si téma [postup při ruční konfiguraci připojení k hybridní službě Azure AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual).
 
 Pro hybridní připojení k Azure AD je potřeba, aby zařízení měla ze sítě vaší organizace přístup k následujícím prostředkům Microsoftu:  
 
@@ -65,9 +69,14 @@ Pro hybridní připojení k Azure AD je potřeba, aby zařízení měla ze sít�
 - Služba tokenů zabezpečení vaší organizace (federované domény)
 - `https://autologon.microsoftazuread-sso.com` (Pokud využíváte bezproblémové jednotné přihlašování nebo to plánujete)
 
-Od verze Windows 10 1803 platí, že pokud se nezdaří okamžité připojení k hybridní službě Azure AD pro federované domény, jako je AD FS, využíváme Azure AD Connect k synchronizaci objektu počítače v Azure AD a ten se potom použije k dokončení registrace zařízení pro připojení k hybridní službě Azure AD.
+Od verze Windows 10 1803, pokud se nezdaří okamžité připojení k hybridní službě Azure AD pro federovaném prostředí pomocí služby AD FS, spoléháme na Azure AD Connect pro synchronizaci objekt počítače v Azure AD, který se následně používá k dokončení registrace zařízení k hybridní službě Azure AD Připojte se k. Ověřte, že nástroj Azure AD Connect synchronizoval počítačové objekty zařízení, které chcete hybridně připojit k Azure AD. Pokud počítačové objekty patří do konkrétních organizačních jednotek, je potřeba v Azure AD Connect nakonfigurovat synchronizaci také těchto organizačních jednotek. Další informace o tom, jak synchronizovat objekty počítačů pomocí služby Azure AD Connect, najdete v článku na [konfiguraci filtrování pomocí služby Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#organizational-unitbased-filtering).
 
-Pokud vaše organizace potřebuje přístup k internetu přes odchozí proxy server, od verze Windows 10 1709 můžete [na počítači nakonfigurovat nastavení proxy serveru pomocí objektu zásad skupiny](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Pokud váš počítač využívá starší verzi než Windows 10 1709, je potřeba implementovat Automatické zjišťování webových proxy serverů (WPAD), kterým umožníte počítačům s Windows 10 registrovat zařízení v Azure AD.
+Pokud vaše organizace vyžaduje, aby přístup k Internetu přes odchozí proxy server, Microsoft doporučuje [implementace Proxy Auto-Discovery WPAD (Web)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) umožňující počítače s Windows 10 postup registrace zařízení ve službě Azure AD. Pokud narazíte na problémy s konfigurace a správa WPAD, přejděte na [řešení potíží s automatickou detekci] (https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10). 
+
+Pokud nepoužíváte WPAD a musíte nakonfigurovat nastavení proxy serveru na počítači, můžete provést tak od verze Windows 10 1709 podle [konfigurace nastavení služby WinHTTP pomocí objektu zásad skupiny (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+
+> [!NOTE]
+> Při konfiguraci nastavení proxy serveru na počítači pomocí nastavení služby WinHTTP, se nezdaří všechny počítače, které není možné se připojit k nakonfigurovaný proxy server pro připojení k Internetu.
 
 Pokud vaše organizace potřebuje přístup k internetu přes ověřený odchozí proxy server, je potřeba zajistit, aby se vaše počítače s Windows 10 mohly úspěšně ověřit u odchozího proxy serveru. Vzhledem k tomu, že se na počítačích s Windows 10 provádí registrace zařízení s využitím kontextu počítače, je potřeba nakonfigurovat ověřování odchozího proxy serveru s použitím kontextu počítače. Požadavky na konfiguraci vám sdělí váš poskytovatel odchozího proxy serveru.
 
@@ -129,19 +138,8 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect potř
 
 Pokud jsou některá z vašich zařízení připojených k doméně zařízení s Windows nižší úrovně, je potřeba provést následující:
 
-- Aktualizace nastavení zařízení
 - Konfigurace nastavení místního intranetu pro registraci zařízení
-- Řízení zařízení s Windows nižší úrovně
-
-### <a name="update-device-settings"></a>Aktualizace nastavení zařízení
-
-Pokud chcete registrovat zařízení s Windows nižší úrovně, je potřeba zajistit nastavení zařízení, které uživatelům umožní registrovat zařízení v Azure AD. Na webu Azure Portal najdete toto nastavení v části:
-
-`Home > [Name of your tenant] > Devices - Device settings`
-
-Tyto zásady musí být nastaveno na **všechny**: **Uživatelé můžou registrovat svoje zařízení s Azure AD**
-
-![Registrace zařízení](./media/hybrid-azuread-join-federated-domains/23.png)
+- Nainstalujte Microsoft síti na pracovišti připojit pro Windows nižší úrovně počítače
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Konfigurace nastavení místního intranetu pro registraci zařízení
 
@@ -153,9 +151,13 @@ Pokud chcete úspěšně dokončit hybridní připojení zařízení s Windows n
 
 Kromě toho je potřeba v zóně místního intranetu uživatele povolit možnost **Povolit aktualizace stavového řádku přes skript**.
 
-### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně
+### <a name="install-microsoft-workplace-join-for-windows-down-level-computers"></a>Nainstalujte Microsoft síti na pracovišti připojit pro Windows nižší úrovně počítače
 
-Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z webu Download Center stáhnout a nainstalovat balíček Instalační služby systému Windows (.msi). Další informace najdete v části [řídí ověřování připojení k hybridní službě Azure AD na zařízeních s Windows nižší úrovně](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
+K registraci zařízení s Windows nižší úrovně, musíte nainstalovat organizace [Microsoft Workplace Join pro počítače s Windows 10](https://www.microsoft.com/download/details.aspx?id=53554) k dispozici na webu Microsoft Download Center.
+
+Balíček můžete nasadit pomocí systém distribuce softwaru, jako je [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Balíček podporuje možnosti standardní tichou instalaci s parametrem tichý. Aktuální větev nástroje Configuration Manager nabízí výhody starší verze, jako je schopnost sledování dokončení registrace.
+
+Instalační program vytvoří naplánovanou úlohu v systému, na kterém běží v kontextu uživatele. Úloha se aktivuje, když uživatel provede přihlášení pro Windows. Úloha tiše připojí zařízení s Azure AD s přihlašovacími údaji uživatele po ověření pomocí Azure AD.
 
 ## <a name="verify-the-registration"></a>Ověření registrace
 
@@ -183,9 +185,7 @@ Pokud máte problémy s dokončením hybridního připojení k Azure AD pro zař
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Konfigurace hybridního připojení k Azure Active Directory pro spravované domény](hybrid-azuread-join-managed-domains.md)
-> [Ruční konfigurace hybridního připojení k Azure Active Directory](hybrid-azuread-join-manual.md)
+- Další informace o správě identit zařízení na portálu Azure AD najdete v tématu [Správa identit zařízení pomocí webu Azure portal](device-management-azure-portal.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-automatic-device-registration-setup/12.png

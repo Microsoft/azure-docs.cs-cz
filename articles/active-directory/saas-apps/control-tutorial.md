@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s ovládacím prvkem | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ovládací prvek.
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a řízení kontinuity podnikových procesů.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,18 +16,18 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 569021d79e74bc7a5a2582741109e1094ba90de8
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: aa66ae77ccc271e475d61b286e0f236429e40feb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65862693"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507510"
 ---
-# <a name="tutorial-integrate-control-with-azure-active-directory"></a>Kurz: Řízení integrace s Azure Active Directory
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Kurz: Integrace řízení kontinuity podnikových procesů pomocí Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat ovládací prvek s Azure Active Directory (Azure AD). Při řízení integraci s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak zajistit integraci s Azure Active Directory (Azure AD) kontinuity podnikových procesů řízení (řízení). Při řízení integraci s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k ovládacímu prvku.
+* Spravujte ve službě Azure AD, který má přístup k ovládacímu prvku.
 * Aby uživatelé mohli být automaticky přihlášeni k řízení pomocí jejich účtů služby Azure AD.
 * Správa účtů v jednom centrálním místě – na webu Azure portal.
 
@@ -38,7 +38,7 @@ Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co 
 Abyste mohli začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* Ovládací prvek jednotné přihlašování (SSO) povolené předplatné.
+* Ovládacího prvku jednotné přihlašování (SSO) povolené předplatné.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -83,7 +83,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
     V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory klienta řízení](mailto:help@continuity.net) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Hodnota není skutečný. Aktualizujte hodnotu se subdoménou správné. Vaše subdoménu jednotného přihlašování se dají konfigurovat na [strategií ověření ovládacího prvku](https://control.continuity.net/settings/account_profile#tab/security). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
 1. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
 
@@ -93,19 +93,13 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
 
-1. Na **nastavit řízení** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+1. Na **nastavit řízení** tématu, zkopírujte adresu URL pro přihlášení a uložte do počítače.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Adresa URL – odhlášení
-
 ### <a name="configure-control-sso"></a>Konfigurovat ovládací prvek jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **ovládací prvek** straně, je nutné odeslat **hodnotu kryptografického otisku** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory ovládací prvek](mailto:help@continuity.net). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **ovládací prvek** straně, je potřeba aktualizovat nastavení ověření jednotného přihlašování na [strategií ověření ovládacího prvku](https://control.continuity.net/settings/account_profile#tab/security). Aktualizace **adresu URL jednotného přihlašování SAML** s **přihlašovací adresa URL** a **otisku certifikátu** s **hodnotu kryptografického otisku** z portálu Azure portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -139,7 +133,7 @@ V této části povolíte Britta Simon používat jednotné přihlašování Azu
 
 ### <a name="create-control-test-user"></a>Vytvoření ovládacího prvku testovacího uživatele
 
-V této části vytvořte uživatele Britta Simon v ovládacím prvku. Práce s [tým podpory ovládací prvek](mailto:help@continuity.net) přidat uživatele na platformě ovládacího prvku. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon v ovládacím prvku. Práce s [tým podpory ovládací prvek](mailto:help@continuity.net) přidat uživatele na platformě ovládacího prvku. Britta Simon pomocí služby Azure AD **uživatelské jméno** k naplnění jí **uživatelské ID zprostředkovatele Identity** v ovládacím prvku. Uživatelé musí být vytvořeny a jejich **uživatelské ID zprostředkovatele Identity** nastavit v ovládacím prvku, aby mohli používat jednotné přihlašování.
 
 ### <a name="test-sso"></a>Test SSO
 

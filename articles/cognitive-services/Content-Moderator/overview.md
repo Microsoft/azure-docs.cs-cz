@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551323"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688853"
 ---
 # <a name="what-is-azure-content-moderator"></a>Co je Azure Content Moderator?
 
@@ -25,11 +25,14 @@ Rozhraní API Azure Content Moderatoru je služba Cognitive Services, která kon
 
 Následuje několik scénářů, ve kterých by vývojář nebo tým vývojářů softwaru mohli službu Content Moderator využít:
 
-- Online tržiště moderující katalogy produktů a další uživatelem generovaný obsah
-- Herní společnosti moderující uživatelem generované herní artefakty a chatovací místnosti
-- Sociální platforma zasílání zpráv moderující obrázky, texty a videa přidaná uživateli
-- Podnikové mediální společnosti implementující centralizované moderování obsahu
-- Poskytovatelé řešení vzdělávání K-12 filtrující nevhodný obsah pro studenty a vyučující
+- Online tržišť s řešeními, které moderování katalogů produktů a dalších na uživatelem generovaný obsah.
+- Hraní her, které střední uživatelem generovaný her artefakty a chatovací místnosti.
+- Sociální platforem zasílání zpráv, které moderování obrázků, textu a videa přidaná uživatelé přistupují.
+- Enterprise mediálním společnostem, které implementují centralizované moderování pro svůj obsah.
+- Filtrování obsahu, která je nevhodná pro studenty a vyučující poskytovatelů řešení K-12 vzdělávání.
+
+> [!NOTE]
+> Content Moderator nelze použít k detekci zneužití imagí neplatný podřízený. Však můžete použít kvalifikovaný organizace [PhotoDNA Cloudovou službu](https://www.microsoft.com/photodna "cloudové služby Microsoftu PhotoDNA") na obrazovku pro tento typ obsahu.
 
 ## <a name="what-it-includes"></a>Co zahrnuje
 

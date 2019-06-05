@@ -123,6 +123,10 @@
           items:
             - name: Co je Data Box Heavy?
               href: data-box-heavy-overview.md
+        - name: Šablony Rychlý start
+          items:
+            - name: Nastavení – Azure Portal
+              href: data-box-heavy-quickstart-portal.md
         - name: Kurzy
           items:
             - name: 1 – Objednání

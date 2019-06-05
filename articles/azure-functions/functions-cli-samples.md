@@ -11,32 +11,36 @@ ms.topic: sample
 ms.date: 01/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ba0ecda0ec24bf0a07acbf1bf5bfef494c3eabdd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5cfa6e7a054003750536fbb5c8206ebabafe966
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306424"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514437"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 
 Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure Functions využívající Azure CLI.
 
-| | |
-|-|-|
-|<a name="create"></a>**Vytvoření aplikace**||
+<a id="create"></a>
+
+| Vytvoření aplikace | Popis |
+|---|---|
 | [Vytvoření aplikace funkcí pro provádění bez serveru](scripts/functions-cli-create-serverless.md) | Vytvoří aplikaci funkcí v plánu Consumption.  |
 | [Vytvoření aplikace funkcí v plánu služby App Service](scripts/functions-cli-create-app-service-plan.md) | Vytvoří aplikaci funkcí ve vyhrazeném plánu služby App Service. |
-| | |
-|**Integrace**||
+
+| Integrace | Popis|
+|---|---|
 | [Vytvoření aplikace funkcí a připojení k účtu úložiště](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Vytvoří aplikaci funkcí a připojí ji k účtu úložiště. |
 | [Vytvoření aplikace funkcí a připojení ke službě Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Vytvoří aplikaci funkcí a připojí ji ke službě Azure Cosmos DB. |
-| | |
-|**Průběžné nasazování**||
+
+| Průběžné nasazování | Popis|
+|---|---|
 | [Nasazení z GitHubu](scripts/functions-cli-create-function-app-github-continuous.md) | Vytvoří aplikaci funkcí, která se nasadí z úložiště GitHub.  |
 | [Nasazení z Azure DevOps](scripts/functions-cli-create-function-app-vsts-continuous.md) | Vytvoření aplikace function app, který se nasazuje z úložiště Azure DevOps.  |
-| | |
-|**Konfigurace aplikace**||
+
+| Konfigurace aplikace | Popis |
+|---|---|
 | [Mapování vlastní domény na aplikaci funkcí](scripts/functions-cli-configure-custom-domain.md) | Definuje vlastní doménu pro vaše funkce.  |
 | [Vytvoření vazby certifikátu SSL na aplikaci funkcí](scripts/functions-cli-configure-ssl-certificate.md)  |  Nahraje certifikáty SSL pro funkce na vlastní doméně. |
 

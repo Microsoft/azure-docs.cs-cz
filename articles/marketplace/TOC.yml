@@ -58,8 +58,6 @@
         - name: Vaše výhody na trhu
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: Propagace vašeho podnikání s Microsoftem
-              href: ./gtm-promote-your-business.md
             - name: Upřednostňovaná řešení
               href: ./preferred-solutions.md
             - name: Integrovaná řešení

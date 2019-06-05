@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 5/16/2019
-ms.openlocfilehash: 20eb5a59e98c06d7bce4623a6a8facd998d3be4c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 94988f4f287730c69b51e44bcbfa4e3d63d139fa
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069139"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515711"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
 
@@ -54,17 +54,20 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
     Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje váš server Azure Database for PostgreSQL. K zadanému názvu serveru se připojí název domény *postgres.database.azure.com*. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.
     Zdroj dat | *Žádné* | Vyberte *žádný* vytvořit nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for PostgreSQL, vyberte *Záloha*.)
-    Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_**.
+    Uživatelské jméno správce |*myadmin*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nemůže začínat na **pg_** .
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % atd.).
     Location|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.
     Version|Nejnovější hlavní verze| Nejnovější hlavní verze PostgreSQL, pokud nemáte jiné specifické požadavky.
-    Výpočetní prostředky + úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **konfigurovat server**. Potom vyberte kartu **Obecné účely**. *5. generace*, *4 virtuální jádra*, *100 GB*, a *7 dní* jsou výchozí hodnoty pro **výpočetní generaci**,  **vCore**, **úložiště**, a **období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jako je nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Výpočetní prostředky a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **konfigurovat server**. Potom vyberte kartu **Obecné účely**. *5. generace*, *4 virtuální jádra*, *100 GB*, a *7 dní* jsou výchozí hodnoty pro **výpočetní generaci**,  **vCore**, **úložiště**, a **období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jako je nebo je upravit. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    > [!NOTE]
    > Zvažte použití cenové úrovni Basic Pokud nízký výpočetní a vstupně-výstupní operace jsou dostatečné pro vaši úlohu. Všimněte si, že servery vytvořené v cenové úrovni Basic nelze později škálovat pro obecné účely nebo optimalizované pro paměť. Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/) Další informace.
    > 
 
     ![Podokno Cenová úroveň](./media/quickstart-create-database-portal/2-pricing-tier.png)
+
+    > [!TIP]
+    > S **automatického růstu** povoleno serveru zvýší úložiště v případě, že se blíží přidělené limit, bez dopadu na vaše úlohy.
 
 5. Vyberte **zkontrolujte + vytvořit** zkontrolujte zvolené položky. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
 

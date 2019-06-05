@@ -147,16 +147,12 @@
       items:
         - name: Architektura využívající technologii OPC Twin
           href: overview-opc-twin-architecture.md
-        - name: Architektura propojené továrny
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: Návody
       items:
         - name: Propojená továrna
           items:
             - name: Použití řídicího panelu
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Nasazení brány
-              href: iot-accelerators-connected-factory-gateway-deployment.md
             - name: Použití vydavatele OPC
               href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: Konfigurace akcelerátoru řešení

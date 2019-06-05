@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d51c7b7c2e8d7f9774018f54a6639bebb882420
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 2deaa0ed8b21d5e091fe5d3b3e6986eaf2340281
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/04/2019
-ms.locfileid: "66471547"
+ms.locfileid: "66514707"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace překladu s WPF
 
@@ -108,7 +108,7 @@ Pojďme se podívat, co vytváříme.
 
 Uživatel interfacer obsahuje tyto součásti:
 
-| Name | Typ | Popis |
+| Název | Typ | Popis |
 |------|------|-------------|
 | `FromLanguageComboBox` | Pole se seznamem | Zobrazuje seznam jazyků podporovaných Microsoft Translatoru pro překlad textu. Uživatel vybere jazyk, ze kterého překládá. |
 | `ToLanguageComboBox` | Pole se seznamem | Zobrazí seznam stejné jazyky jako `FromComboBox`, ale slouží k výběru uživatele se přitom přeložte do jazyka. |
