@@ -50,13 +50,13 @@ Události jsou odesílány IoT objektů (například zařízení a senzorů) pro
 | Atribut | Type | Popis |
 | --- | --- | --- |
 | id | string | Jedinečný identifikátor pro událost. |
-| předmět | string | Vydavatel definované cesta předmět události. |
+| subject | string | Vydavatel definované cesta předmět události. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
 | metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
-| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
 
 Další informace o schématu událostí služby Event Grid:
 
