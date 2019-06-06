@@ -9,18 +9,18 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 07b86138a95853673b5d54e272b40af41d58f418
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545040"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475948"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Rychlý start: Příprava a vizualizace dat, aniž byste museli psát kód ve službě Azure Machine Learning
 
-Příprava a vizualizace dat v rozhraní visual drag drop (preview) pro Azure Machine Learning. Data, která budete používat obsahuje záznamy různých automobilů, včetně informací o značce, modelu, technických specifikací a cena.  
+Příprava a vizualizace dat v rozhraní visual drag drop (preview) pro Azure Machine Learning. Data, která budete používat obsahuje záznamy různých automobilů, včetně informací o značce, modelu, technických specifikací a cena. Po dokončení tohoto rychlého startu budete připraveni na základě těchto dat předpovídat cenu automobilu představuje jeden. 
 
-V tomto rychlém startu jste prozkoumáme a připravit data:
+Před tréninku model strojového učení, musíte pochopit a připravit data.  V tomto rychlém startu budete:
 
 - Vytvoření prvního experimentu přidat a zobrazit náhled dat
 - Příprava dat tak, že odeberete chybějící hodnoty
@@ -64,9 +64,9 @@ Nástroj vizuální rozhraní poskytuje interaktivní, visual místo, kde může
 
     ![Přejmenování experimentu](./media/ui-quickstart-run-experiment/rename.png)
 
-## <a name="add-data"></a>Přidat data
+## <a name="add-data"></a>Přidání dat
 
-První věc, kterou potřebujete pro machine learning se data. Existuje několik ukázkových datových sad v tomto rozhraní, které můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadou **Automobile price data (Raw)**. 
+První věc, kterou potřebujete pro machine learning se data. Existuje několik ukázkových datových sad v tomto rozhraní, které můžete použít, nebo můžete importovat data z mnoha zdrojů. V tomto příkladu použijeme ukázkovou datovou sadou **Automobile price data (Raw)** . 
 
 1. Nalevo od plátna experimentu je paleta datových sad a modulů. Vyberte **uložení datové sady** vyberte **ukázky** Chcete-li zobrazit dostupné ukázkové datové sady.
 
@@ -131,7 +131,7 @@ Teď, když spustíte počáteční experimentu můžete vizualizovat data a Poc
 
      ![Zobrazte náhled dat](./media/ui-quickstart-run-experiment/preview-data.gif)
 
-1. Kliknutím na jednotlivé sloupce a Pochopte více o vaší datové sadě.
+1. Kliknutím na jednotlivé sloupce a lépe pochopit, jaké vaše datová sada, rozmyslete si, zda bude předpovídat cenu automobilu užitečné tyto sloupce.
 
 ## <a name="prepare-data"></a>Příprava dat
 
@@ -176,7 +176,7 @@ Nejdřív odeberte **normalized-losses** sloupec úplně.
 
 ### <a name="clean-missing-data"></a>Vyčištění chybějících dat
 
-Nyní přidejte další modul, který odebere všechny zbývající řádky, ve kterých chybějí data.
+Při tréninku modelů, budete muset udělat něco o datech, která chybí.  V tomto případě přidáte modul a všechny zbývající řádky, ve kterých chybějí data.  
 
 1. Typ **Vyčistit** do vyhledávacího pole Najít **vyčištění chybějících dat** modulu.
 
@@ -216,7 +216,7 @@ Vzhledem k tomu, že jste provedli změny moduly do experimentu, se změnila sta
 
     Nejsou nyní 193 řádků a sloupců 25.
 
-    Po kliknutí na **num dveře** uvidíte stále má 2 jedinečné hodnoty, ale teď má chybějící hodnoty 0.  
+    Po kliknutí na **num dveře** uvidíte stále má 2 jedinečné hodnoty, ale teď má chybějící hodnoty 0. Proklikejte se prostřednictvím rest sloupce, které chcete zobrazit, že neexistují žádné chybějící hodnoty left v datové sadě. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -228,7 +228,7 @@ V tomto rychlém startu jste se naučili:
 
 - Vytvoření prvního experimentu přidat a zobrazit náhled dat
 - Příprava dat tak, že odeberete chybějící hodnoty
-- Vizualizujte Výsledná data
+- Vizualizace dat připravené
 
 Pokračujte na kurz na základě těchto dat předpovídat cenu automobilu.
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/20/2019
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: b96c1ada1ebb1bc53f7f55311c69a3cdc04f7574
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b99ee8e6a379a1e86eaf37bb232176c3ca13c0d9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956445"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687959"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -238,24 +238,24 @@ Pokud chcete zobrazit aplikaci Azure Vote v akci, otevřete webový prohlížeč
 
 Při vytvoření clusteru AKS, monitorování Azure pro kontejnery bylo povoleno zachycení stavu metriky pro uzly clusteru a podů. Tyto metriky stavu jsou k dispozici na webu Azure Portal.
 
-Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, proveďte následující kroky:
+Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků Azure Vote podů, proveďte následující kroky:
 
 1. Otevřete webový prohlížeč a přejděte na web Azure Portal na adrese [https://portal.azure.com][azure-portal].
 1. Vyberte vaši skupinu prostředků, například *myResourceGroup*, a pak váš cluster AKS, například *myAKSCluster*.
 1. V části **monitorování** na levé straně zvolte **Insights**
 1. V horní části zvolte **+ Přidat filtr**
-1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>*.
+1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>* .
 1. Vyberte zobrazení **Kontejnery**.
 
 Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:
 
 ![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough/monitor-containers.png)
 
-Pokud chcete zobrazit protokoly pro `azure-vote-front` pod, zvolte možnost **zobrazit v analytics**a pak vyberte **zobrazit protokoly kontejneru** odkaz na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
+Pokud chcete zobrazit protokoly pro `azure-vote-back` pod, zvolte možnost **zobrazit v analytics**, klikněte **zobrazení protokolů kontejneru** odkaz na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
 
 ![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough/monitor-container-logs.png)
 
-## <a name="delete-cluster"></a>Odstranit cluster
+## <a name="delete-the-cluster"></a>Odstranění clusteru
 
 Pokud už cluster nepotřebujete, použijte k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků příkaz [az group delete][az-group-delete].
 

@@ -2,20 +2,20 @@
 title: Tahák pro službu Azure SQL Data Warehouse | Microsoft Docs
 description: Tady najdete odkazy a osvědčené postupy, které vám pomůžou s rychlým vytvářením řešení Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ad205fbbd17b291bf45e0c0b057ee81b80c0730b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762811"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515791"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro službu Azure SQL Data Warehouse
 Tento tahák obsahuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Než začnete, přečtěte si článek [Vzory a antivzory úloh Azure SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns), který podrobně popisuje jednotlivé kroky a vysvětluje, co je služba SQL Data Warehouse, a co není.
@@ -39,7 +39,7 @@ Nejprve svá data načtěte do služby [Azure Data Lake Store](https://docs.micr
 
 | Návrh | Doporučení |
 |:--- |:--- |
-| Distribuce | Kruhové dotazování |
+| Distribuce | Kruhové dotazování. |
 | Indexování | Halda |
 | Dělení | Žádný |
 | Třída prostředku | largerc nebo xlargerc |

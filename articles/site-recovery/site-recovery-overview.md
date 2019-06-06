@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ab1f0a72137ace1942cb8016ae1bfa5c3fd964fb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 907d12464156f551930098f6bd6a6a24596307cb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66396415"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479918"
 ---
 # <a name="about-site-recovery"></a>O službě Azure Site Recovery
 
@@ -56,7 +56,7 @@ Site Recovery může spravovat replikaci pro:
 
 **Podporuje se** | **Podrobnosti**
 --- | ---
-**Scénáře replikace** | Replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné<br/><br/>  Replikovat místní virtuální počítače VMware, Hyper-V a fyzické servery (Windows nebo Linuxem), Azure Stack virtuálních počítačů do Azure.<br/><br/> Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, které spravuje System Center VMM, a fyzických serverů do sekundární lokality
+**Scénáře replikace** | Replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné<br/><br/>  Replikovat místní virtuální počítače VMware, Hyper-V a fyzické servery (Windows nebo Linuxem), Azure Stack virtuálních počítačů do Azure.<br/><br/> <br/><br/> Replikujte instance Windows AWS do Azure.<br/><br/> Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, které spravuje System Center VMM, a fyzických serverů do sekundární lokality
 **Oblasti** | Prohlédněte si [podporované oblasti](https://azure.microsoft.com/regions/services/) pro Site Recovery. |
 **Replikované počítače** | Zkontrolujte požadavky na replikaci pro [virtuální počítače Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), [místní fyzické servery a virtuální počítače VMware](vmware-physical-azure-support-matrix.md#replicated-machines) a [místní virtuální počítače Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
 **Úlohy** | Můžete replikovat jakoukoli úlohu běžící v počítači, u kterého se podporuje replikace. Kromě toho tým Site Recovery [pro řadu aplikací](site-recovery-workload.md#workload-summary) provedl testování specifické pro aplikace.

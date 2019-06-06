@@ -91,6 +91,8 @@
               href: howto-export-data-blob-storage.md
         - name: Vytvoření vlastních rolí
           href: howto-create-custom-rules.md
+        - name: Vytvoření vlastní analýzy
+          href: howto-create-custom-analytics.md
         - name: Vizualizace dat v Power BI
           href: howto-connect-powerbi.md
         - name: Připojení dalších cloudů IoT

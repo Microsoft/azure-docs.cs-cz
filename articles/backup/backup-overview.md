@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e926ca2625f98522652ae7e7d245ecf2ed576c4
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714282"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688715"
 ---
 # <a name="what-is-azure-backup"></a>Co je Azure Backup?
 
@@ -27,12 +27,12 @@ Azure Backup nabízí tyto klíčové výhody:
 - **Zpracování úloh zálohování v místním**: Azure Backup nabízí jednoduché řešení pro zálohování místních prostředků do cloudu. Získejte krátkodobého a dlouhodobého zálohování, aniž by museli nasazovat komplexní místní řešení pro zálohování.
 - **Zálohování virtuálních počítačů Azure IaaS**: Azure Backup poskytuje zálohy nezávislou a izolovanou pro ochranu proti náhodnému odstranění původní data. Zálohy jsou uložené v trezoru služby Recovery Services s integrovanými spravované bodů obnovení. Konfigurace a rozšiřitelnost jsou jednoduché, jsou optimalizované zálohování a můžete je snadno obnovit podle potřeby.
 - **Jednoduše škálujte** – Azure Backup používá základní výkon a neomezený rozsah cloudu Azure k zajištění vysoké dostupnosti s žádné údržbou nebo monitorováním režijní náklady.
-- **Získejte neomezený přenos dat.**: Azure Backup neomezuje množství příchozích nebo odchozích dat přenosu, nebo za data přenesená.
+- **Získejte neomezený přenos dat.** : Azure Backup neomezuje množství příchozích nebo odchozích dat přenosu, nebo za data přenesená.
     - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
     - Pokud provedete import velkých objemů dat pomocí služby Azure Import/Export počáteční offline zálohu, je náklady související s příchozími daty.  [Další informace](backup-azure-backup-import-export.md).
 - **Zabezpečení dat**: Azure Backup obsahuje řešení zabezpečení přenášená i neaktivní uložená data.
 - **Získejte konzistentní zálohování**: Konzistentní zálohování znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikací, které zajišťují, že pro obnovení dat se nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.
-- **Zachovat data krátkodobé a dlouhodobé**: Trezory služby Recovery Services můžete použít pro uchovávání dat v krátkodobém a dlouhodobém horizontu. Azure neomezuje dobu, po kterou data můžou zůstat v trezoru služby Recovery Services. Abyste mohli pro dlouho budete chtít. Služba Azure Backup má omezení 9999 bodů obnovení na chráněnou instanci. [Další informace](backup-introduction-to-azure-backup.md#backup-and-retention)o tom, jak tento limit ovlivní vaše potřeby zálohování.
+- **Zachovat data krátkodobé a dlouhodobé**: Trezory služby Recovery Services můžete použít pro uchovávání dat v krátkodobém a dlouhodobém horizontu. Azure neomezuje dobu, po kterou data můžou zůstat v trezoru služby Recovery Services. Abyste mohli pro dlouho budete chtít. Služba Azure Backup má omezení 9999 bodů obnovení na chráněnou instanci. 
 - **Automatická správa úložiště** – Hybridní prostředí často vyžadují heterogenní úložiště – některá místní a některá cloudová. Azure Backup neznamená žádné náklady na používání místních zařízení úložiště. Azure Backup automaticky přiděluje a spravuje úložiště záloh a používá model plateb jako využití, takže platíte jenom za úložiště, které skutečně využijete. [Další informace](https://azure.microsoft.com/pricing/details/backup) informace o cenách.
 - **Více možností úložiště** – Azure Backup nabízí dva typy replikace pro vaše úložiště/dat s vysokou dostupností.
     - [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datovém centru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
@@ -109,6 +109,25 @@ Další informace o [jak zálohování funguje](backup-architecture.md#architect
 **Chci, aby zálohování aplikace běžící na místních** | S ohledem na aplikace Zálohování počítačů musí být chráněn DPM nebo MABS.
 **Chci, aby podrobné a flexibilní nastavení zálohování a obnovení pro virtuální počítače Azure** | Ochrana virtuálních počítačů Azure pomocí MABS/aplikace DPM běžící na Azure pro větší flexibilita při plánování zálohování a úplnou flexibilitu pro ochranu a obnovení souborů, složek, svazků, aplikace a stavu systému.
 
+## <a name="backup-and-retention"></a>Zálohování a uchovávání
+
+Azure Backup má limit 9999 bodů obnovení (označovaných také jako záložní kopie nebo snímky) na jednu *chráněnou instanci*.
+
+- Chráněná instance je počítač, server (fyzický nebo virtuální) nebo úloha nakonfigurovaná pro zálohování dat do Azure. Instance je chráněná, jakmile se uloží záložní kopie dat.
+- Ochranou je právě tato záložní kopie dat. Pokud dojde ke ztrátě nebo poškození zdrojových dat, je možné je obnovit ze záložní kopie.
+
+V následující tabulce jsou uvedené maximální frekvence zálohování pro jednotlivé komponenty. Konfigurace zásady zálohování Určuje, jak rychle se spotřebovávají body obnovení. Pokud například vytváříte bod obnovení každý den, můžete zachovat body obnovení 27 let, teprve potom vám dojdou. Pokud vytváříte bod obnovení každý měsíc, můžete zachovat body obnovení 833 let, teprve potom vám dojdou. Služba Backup pro body obnovení nenastavuje omezení času vypršení platnosti.
+
+|  | Agent Azure Backup | System Center DPM | Server Azure Backup | Zálohování virtuálních počítačů Azure IaaS |
+| --- | --- | --- | --- | --- |
+| Frekvence zálohování<br/> (do trezoru služby Recovery Services) |Tři zálohy za den |Dvě zálohy za den |Dvě zálohy za den |Jedna záloha za den |
+| Frekvence zálohování<br/> (na disk) |Neuvedeno |Každých 15 minut pro SQL Server<br/><br/> Každou hodinu pro ostatní úlohy |Každých 15 minut pro SQL Server<br/><br/> Každou hodinu pro ostatní úlohy |Neuvedeno |
+| Možnosti uchovávání |Denně, týdně, měsíčně, ročně |Denně, týdně, měsíčně, ročně |Denně, týdně, měsíčně, ročně |Denně, týdně, měsíčně, ročně |
+| Maximální počet bodů obnovení na chráněnou instanci |9999|9999|9999|9999|
+| Maximální doba uchovávání |Závisí na četnosti zálohování |Závisí na četnosti zálohování |Závisí na četnosti zálohování |Závisí na četnosti zálohování |
+| Body obnovení na místním disku |Neuvedeno | 64 pro souborové servery<br/><br/> 448 pro aplikační servery | 64 pro souborové servery<br/><br/> 448 pro aplikační servery |Neuvedeno |
+| Body obnovení na pásku |Neuvedeno |Unlimited |Neuvedeno |Neuvedeno |
+
 ## <a name="how-does-azure-backup-work-with-encryption"></a>Jak funguje Azure Backup pomocí šifrování?
 
 **Šifrování** | **Zálohování v místním** | **Zálohování virtuálních počítačů Azure** | **Zálohování SQL na virtuálních počítačích Azure**
@@ -119,7 +138,7 @@ Další informace o [jak zálohování funguje](backup-architecture.md#architect
 ## <a name="next-steps"></a>Další postup
 
 - [Kontrola](backup-architecture.md) architektura a komponenty pro různé scénáře zálohování.
-- [Ověřte](backup-support-matrix.md) podporované funkce a nastavení pro zálohování.
+- [Ověřte](backup-support-matrix.md) podporují požadavky a omezení pro zálohování a [zálohování virtuálních počítačů Azure](backup-support-matrix-iaas.md).
 
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png

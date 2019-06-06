@@ -11,19 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: ec595e23fbbf3ace5bfd0786d88250a88b61453c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256637"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496376"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje na nejrůznějších platformách, včetně .NET, Node.js a platformě Java EE určený pro aplikace hostované v místním, hybridním nebo jakémkoli veřejném cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
-
-[Prohlédněte si úvod animace](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
 ## <a name="how-does-application-insights-work"></a>Jak Application Insights funguje?
 Do aplikace nainstalujete malý instrumentační balíček a vytvoříte prostředek Application Insights na webu Microsoft Azure Portal. Instrumentace monitoruje vaši aplikaci a odesílá telemetrická data na portál. (Aplikace se dá spustit kdekoli, nemusí být hostovaná v Azure.)
@@ -104,11 +102,13 @@ Application Insights je jedna z mnoha služeb hostovaných v Microsoft Azure. Od
 
 Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vyhovuje. K ostatním se můžete vrátit později.
 
-* **Během spuštění: Instrumentujte vaši webové aplikace na serveru.** Vyhněte se jakýmkoli aktualizacím kódu. K serveru budete potřebovat přístup správce.
-  * [**IIS místně nebo ve virtuálním počítači**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Virtuální počítač nebo webová aplikace Azure**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* **Během vývoje: Přidejte Application Insights do vašeho kódu.** Umožňuje napsat vlastní telemetrii a instrumentovat back-endové a desktopové aplikace.
-  * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 s aktualizací Update 2 nebo novější.
+* **Během spuštění: Instrumentujte vaši webové aplikace na serveru.** Ideální pro aplikace, které jsou už nasazené. Vyhněte se jakýmkoli aktualizacím kódu.
+  * [**Aplikace ASP.NET hostované ve službě IIS místně nebo na virtuálním počítači**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+  * [**Technologie ASP.NET nebo ASP.NET Core aplikacemi hostovanými na Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
+* **Během vývoje: Přidejte Application Insights do vašeho kódu.** Můžete přizpůsobit shromažďování telemetrie a odesílání další telemetrické údaje.
+  * [Aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
+  * [Aplikace ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+  * [Konzolové aplikace .NET](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Jiné platformy](../../azure-monitor/app/platforms.md)
@@ -120,10 +120,12 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
 Začínáme při spuštění:
 
 * [Server IIS](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
 Začínáme při vývoji:
 
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
+* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 
@@ -139,9 +141,9 @@ Začínáme při vývoji:
 
 ## <a name="videos"></a>Videa
 
-[![Animovaný úvod](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
+- Externí video: [konfigurace Application Insights s aplikací v ASP.NET](https://www.youtube.com/watch?v=blnGAVgMAfA).
+- Externí video: [konfigurace Application Insights pomocí ASP.NET Core a Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t).
+- Externí video: [konfigurace Application Insights pomocí ASP.NET Core a Visual Studio Code](https://youtu.be/ygGt84GDync).
 
 <!--Link references-->
 

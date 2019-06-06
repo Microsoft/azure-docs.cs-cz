@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 5/31/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c43375afe7965475e84793ddcd54a38a2e9bd3cd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58f89ddcf4480df14689541ec99b6c9b2526721a
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073722"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688094"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí webu Azure portal
 
@@ -31,27 +31,28 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-V levém horním rohu webu Azure portal vyberte **+ vytvořit prostředek** > **služby Kubernetes**.
+V levém horním rohu webu Azure portal vyberte **+ vytvořit prostředek** > **kontejnery** >  **služby Kubernetes**.
 
 Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
 
-1. **Základy:** Nakonfigurujte následující možnosti:
+1. Na **Základy** stránce, nakonfigurujte následující možnosti:
    - *PODROBNOSTI O PROJEKTU*: Vyberte předplatné Azure, pak vyberte nebo vytvořte skupinu prostředků Azure, jako *myResourceGroup*. Zadejte **Název clusteru Kubernetes**, například *myAKSCluster*.
    - *PODROBNOSTI O CLUSTERU*: Vyberte oblast, verze Kubernetes a předpona názvu DNS pro AKS cluster.
-   - *ŠKÁLOVÁNÍ*: Vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS.
+   - **PRIMÁRNÍ fond uzlů**: vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS. 
        - Vyberte počet uzlů, které se mají do clusteru nasadit. Pro účely tohoto rychlého startu nastavte **Počet uzlů** na hodnotu *1*. Počet uzlů **jde** upravit po nasazení clusteru.
     
      ![Vytvoření clusteru AKS – zadání základních informací](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     Vyberte **Další: Ověřování** po dokončení.
+     Vyberte **Další: Škálování** po dokončení.
 
-1. **Ověřování**: Nakonfigurujte následující možnosti:
-   - Vytvořte nový instanční objekt nebo *nakonfigurujte* použití existujícího. Pokud použijete stávající hlavní název služby (SPN), je potřeba zadat ID klienta a tajný klíč SPN.
-   - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. Tyto ovládací prvky poskytují podrobnější řízení přístupu k prostředkům Kubernetes nasazeným ve vašem clusteru AKS.
+2. Na **škálování** stránce, ponechte výchozí možnosti. V dolní části obrazovky klikněte na tlačítko **Další: ověřování**.
+3. Na **ověřování** stránce, nakonfigurujte následující možnosti:
+   - Vytvořit nový instanční objekt se zaškrtnutým políčkem **instanční objekt služby** pole **(Nový) výchozí instanční**. Nebo můžete zvolit *instanční objekt konfigurovat* použít nějaký existující. Pokud používáte některý z existujících, je potřeba zadejte hlavní název služby klienta, ID a tajný klíč.
+   - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. To poskytuje jemněji odstupňovanou kontrolu nad přístup k prostředky Kubernetesu nasazené v clusteru AKS.
 
-     Ve výchozím nastavení *základní* sítí se používá a je povoleno monitorování Azure pro kontejnery. Vyberte **Zkontrolovat a vytvořit** a jakmile budete připraveni, vyberte **Vytvořit**.
+    Ve výchozím nastavení *základní* sítí se používá a je povoleno monitorování Azure pro kontejnery. Klikněte na tlačítko **revize + vytvořit** a potom **vytvořit** po dokončení ověření.
 
-Vytvoření clusteru AKS a jeho příprava k použití trvá několik minut. Až budete hotovi, přejděte na skupinu prostředků clusteru AKS, jako například *myResourceGroup*a vyberte prostředek AKS, jako je například *myAKSCluster*. Zobrazí se řídicí panel clusteru AKS, podobně jako na následujícím ukázkovém snímku obrazovky:
+Trvá několik minut pro vytvoření clusteru AKS. Po dokončení nasazení klikněte na tlačítko **přejít k prostředku**, nebo vyhledejte skupinu prostředků clusteru AKS, jako například *myResourceGroup*a vyberte prostředek AKS, jako je například *myAKSCluster*. Řídicí panel clusteru AKS je zobrazen jako v následujícím příkladu:
 
 ![Příklad řídicího panelu AKS na webu Azure Portal](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
@@ -59,7 +60,7 @@ Vytvoření clusteru AKS a jeho příprava k použití trvá několik minut. Až
 
 Ke správě clusteru Kubernetes použijete [kubectl][kubectl], klienta příkazového řádku Kubernetes. Klient `kubectl` je předinstalovaný ve službě Azure Cloud Shell.
 
-Otevřete službu Cloud Shell pomocí tlačítka v pravém horním rohu portálu Azure.
+Otevřete Cloud Shell pomocí `>_` tlačítko v horní části webu Azure portal.
 
 ![Portál s otevřenou službou Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 

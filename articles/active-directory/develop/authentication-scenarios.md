@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540163"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734489"
 ---
 # <a name="what-is-authentication"></a>Co je ověřování?
 
@@ -85,14 +85,11 @@ Následující diagram znázorňuje zjednodušenou platforma identit Microsoft z
 
 V tomto toku zřizování:
 
-|   |   |
-|---|---|
-| 1 | Uživatel z tenanta B se pokusí přihlásit aplikace |
-| 2 | Jsou získány a ověřeny přihlašovací údaje uživatele. |
-| 3 | Uživatel je vyzván k vyjádření souhlasu, aby aplikace získala přístup k tenantovi B. |
-| 4 | Platforma Microsoft identity používá objekt aplikace a jako podrobný plán pro vytváření instančního objektu v tenantu B |
-| 5 | Uživatel obdrží požadovaný token. |
-|   |   |
+1. Uživatel z tenanta, které se pokusí přihlásit pomocí aplikace B, koncový bod autorizace požádá o tokenu pro aplikaci.
+1. Přihlašovací údaje uživatele jsou získaných a ověření pro ověřování
+1. Uživatel je výzva k zadání souhlasu pro aplikaci získat přístup k tenantovi B
+1. Platforma Microsoft identity používá objekt aplikace v tenantu A jako podrobný plán pro vytváření instančního objektu v tenantu B
+1. Uživatel obdrží požadovaný token.
 
 Tento proces můžete libovolně opakovat pro další klienty (C, D a tak dále). Tenanta A zachová podrobný plán pro aplikaci (objekt aplikace). Uživatelé a správci všech ostatních tenantů, kde aplikace obdrží souhlas, si zachovají kontrolu nad tím, co aplikace může dělat, prostřednictvím odpovídajícího instančního objektu v každém tenantovi. Další informace najdete v tématu [aplikace a instanční objekty v Microsoft identity platform](app-objects-and-service-principals.md).
 
@@ -109,13 +106,13 @@ Deklarace identity přítomné v jakémkoli tokenu zabezpečení jsou závislé 
 
 Stručný popis každého typu deklarace identity, protože ho vygeneroval platforma identit Microsoft najdete v následující tabulce. Podrobnější informace najdete v článku [přístupové tokeny](access-tokens.md) a [tokeny typu ID](id-tokens.md) vydané platforma identit Microsoft.
 
-| Deklarace identity | Popis |
+| Deklarovat | Popis |
 | --- | --- |
 | ID aplikace | Identifikuje aplikaci, která token používá. |
 | Cílová skupina | Identifikuje přijímající prostředek, pro který je token určený. |
 | Reference třídy kontextu ověřování aplikace | Určuje, jak byl klient ověřen (veřejný klient nebo důvěrný klient). |
 | Okamžik ověření | Zaznamenává datum a čas, kdy k ověření došlo. |
-| Metoda ověření | Určuje, jak byl subjekt tokenu ověřen (heslo, certifikát atd.). |
+| Metoda ověřování | Určuje, jak byl subjekt tokenu ověřen (heslo, certifikát atd.). |
 | Jméno | Poskytuje křestní jméno uživatele, jak je nastavené v Azure AD. |
 | Skupiny | Obsahuje ID objektů skupin Azure AD, kterých je uživatel členem. |
 | Zprostředkovatel identity | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. |

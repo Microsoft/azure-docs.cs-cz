@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6510099f9fb145951cbce1ea168b36dba5f76e07
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: db9424ff4ddd2663ae1342294181dc885c6ed937
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540922"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479557"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě rolí (RBAC) pro prostředky Azure?
 
@@ -132,6 +132,10 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 1. Pokud uživatel nemá roli s akcí v požadovaném oboru, není přístup povolen. V opačném případě Azure Resource Manager ověří, zda platí přiřazení zamítnutí.
 
 1. Pokud ano, přístup se zablokuje. Pokud ne, přístup je udělen.
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+[!INCLUDE [Azure AD free license](../../includes/active-directory-free-license.md)]
 
 ## <a name="next-steps"></a>Další postup
 

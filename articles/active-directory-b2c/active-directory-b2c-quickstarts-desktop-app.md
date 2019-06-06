@@ -2,21 +2,21 @@
 title: Rychlý start – Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C | Microsoft Docs
 description: Spusťte ukázkovou desktopovou aplikaci ASP.NET využívající Azure Active Directory B2C k zajištění přihlášení k účtu.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 94e7972530afee15937b13ae35239a64d9bc986e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd0679cc418cb1a15a69c01d3267d5d11b20fd3e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190550"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509835"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro desktopovou aplikaci pomocí služby Azure Active Directory B2C 
 

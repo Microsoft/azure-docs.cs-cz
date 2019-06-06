@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa653ecf306f5ac5eefaddd61d98e81f919876d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6f9daeb5e0de9c53f16efff46e02015acfa7c521
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513309"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734594"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridních připojení k Azure Active Directory pro spravované domény
 
@@ -65,7 +65,7 @@ Pro hybridní připojení k Azure AD je potřeba, aby zařízení měla ze sít�
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (Pokud využíváte bezproblémové jednotné přihlašování nebo to plánujete)
 
-Pokud vaše organizace vyžaduje, aby přístup k Internetu přes odchozí proxy server, Microsoft doporučuje [implementace Proxy Auto-Discovery WPAD (Web)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) umožňující počítače s Windows 10 postup registrace zařízení ve službě Azure AD. Pokud narazíte na problémy s konfigurace a správa WPAD, přejděte na [řešení potíží s automatickou detekci] (https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10). 
+Pokud vaše organizace vyžaduje, aby přístup k Internetu přes odchozí proxy server, Microsoft doporučuje [implementace Proxy Auto-Discovery WPAD (Web)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) umožňující počítače s Windows 10 postup registrace zařízení ve službě Azure AD. Pokud narazíte na problémy s konfigurace a správa WPAD, přejděte na [řešení potíží s automatickou detekci](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
 Pokud nepoužíváte WPAD a musíte nakonfigurovat nastavení proxy serveru na počítači, můžete provést tak od verze Windows 10 1709 podle [konfigurace nastavení služby WinHTTP pomocí objektu zásad skupiny (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
@@ -158,7 +158,7 @@ K ověření stavu registrace zařízení v tenantovi Azure můžete použít ru
 
 Když použijete rutinu **Get-MSolDevice** ke kontrole podrobností služby:
 
-- Objekt se **id zařízení** , který odpovídá id na Windows, klient musí existovat.
+- Objekt se **ID zařízení** , který odpovídá ID na Windows, klient musí existovat.
 - Hodnota **DeviceTrustType** (Stav důvěryhodnosti zařízení) musí být nastavená na **Domain Joined** (Připojeno k doméně). Jedná se o ekvivalent stavu **Hybridně připojeno k Azure AD** na stránce Zařízení na portálu Azure AD.
 - U zařízení, která se používají k podmíněnému přístupu, musí být hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda) a hodnota **DeviceTrustLevel** (Úroveň důvěryhodnosti zařízení) musí být nastavená na **Managed** (Spravované).
 

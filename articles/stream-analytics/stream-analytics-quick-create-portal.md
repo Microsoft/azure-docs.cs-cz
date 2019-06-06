@@ -4,16 +4,16 @@ description: V tomto rychlém startu se dozvíte, jak začít vytvořením úloh
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 11/21/2018
+ms.date: 06/03/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 7762a48fd34973872fe4d0b00906a03a18d52867
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 4efb8aa21622abddca1add3d8b2fcb523cf45da5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123607"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493390"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure portal
 
@@ -40,7 +40,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
    |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
    |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
    |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisné umístění, kde je možné hostovat služby IoT Hub. Použijte umístění co nejblíže vašim uživatelům. |
-   |Název IoT Hubu  | MyASAIoTHub  |   Vyberte název centra IoT.   |
+   |IoT Hub Name  | MyASAIoTHub  |   Vyberte název centra IoT.   |
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
@@ -82,7 +82,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
 
 2. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.  
 
-3. V seznamu výsledků vyberte **Data + analýzy** > **Úloha Stream Analytics job**.  
+3. Vyberte **Analytics** > **úlohy Stream Analytics** ze seznamu výsledků.  
 
 4. Na stránce Úloha Stream Analytics zadejte následující informace:
 
@@ -93,7 +93,7 @@ Než začnete definovat úlohu Stream Analytics, měli byste data, která je nov
    |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte stejnou skupinu prostředků jako službu IoT Hub. |
    |Location  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde je možné hostovat úlohu Stream Analytics. V zájmu vyššího výkonu a nižších nákladů za přenos dat zvolte umístění co nejbližší vašim uživatelům. |
    |Jednotky streamování  | 1  |   Jednotky streamování představují výpočetní prostředky nutné k provedení úlohy. Ve výchozím nastavení je tato hodnota nastavená na 1. Podrobnosti o škálování jednotek streamování najdete v článku věnovaném [principům a úpravám jednotek streamování](stream-analytics-streaming-unit-consumption.md).   |
-   |Hostitelské prostředí  |  Cloud  |   Úlohy Stream Analytics můžete nasadit do cloudu nebo do hraničního zařízení. Možnost Cloud umožňuje nasazení do Azure Cloud, možnost Edge do zařízení IoT Edge. |
+   |Hostitelské prostředí  |  Cloud  |   Úlohy Stream Analytics můžete nasadit do cloudu nebo do hraničního zařízení. Cloud umožňuje nasazení do cloudu Azure a Edge umožňuje nasazovat do zařízení IoT Edge. |
 
    ![Vytvoření úlohy](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
@@ -187,7 +187,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste pomocí webu Azure Portal nasadili jednoduchou úlohu Stream Analytics. Úlohy Stream Analytics můžete nasadit také pomocí [PowerShellu](stream-analytics-quick-create-powershell.md) a sady [Visual Studio](stream-analytics-quick-create-vs.md).
+V tomto rychlém startu jste pomocí webu Azure Portal nasadili jednoduchou úlohu Stream Analytics. Můžete také nasadit pomocí úloh Stream Analytics [PowerShell](stream-analytics-quick-create-powershell.md), [sady Visual Studio](stream-analytics-quick-create-vs.md), a [Visual Studio Code](quick-create-vs-code.md).
 
 Pokud se chcete dozvědět o konfiguraci dalších vstupních zdrojů a provádění detekce v reálném čase, pokračujte na další článek:
 

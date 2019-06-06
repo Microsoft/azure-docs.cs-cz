@@ -142,8 +142,8 @@ Pokud své role pracovního procesu selže do režimu online, ale webová role p
    Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30
    ```
 
-* Ujistěte se, že název serveru nezačíná **https://**.
-* Ujistěte se, že váš server Azure SQL DB umožňuje služby Azure se k němu připojit. Chcete-li to provést, otevřete databázi na portálu a ověřte, že **povolit přístup ke službám Azure** nastavená na ** na ***.
+* Ujistěte se, že název serveru nezačíná **https://** .
+* Ujistěte se, že váš server Azure SQL DB umožňuje služby Azure se k němu připojit. Chcete-li to provést, otevřete databázi na portálu a ověřte, že **povolit přístup ke službám Azure** nastavená na **na**.
 
 ## <a name="test-the-service-deployment"></a>Testování nasazení služby
 ### <a name="connect-with-a-web-browser"></a>Připojit pomocí webového prohlížeče

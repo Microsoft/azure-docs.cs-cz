@@ -8,19 +8,22 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 211935aac56dff8d6e524706c416c126b1a0c3b8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8fb9e9ea0e126509697b4874bf1e5e0b6a380e7f
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159411"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425740"
 ---
-|**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **P2S<br> připojení IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** |
-|---       | ---        | ---       | ---            | ---       | --- |
-|**Basic** | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se|
-|**VpnGw1**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno |
-|**VpnGw2**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporováno |
-|**VpnGw3**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporováno |
+|**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **P2S<br> připojení IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zone-redundant** |
+|---       | ---        | ---       | ---            | ---       | --- | --- |
+|**Basic** | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| Ne |
+|**VpnGw1**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno | Ne |
+|**VpnGw2**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporováno | Ne |
+|**VpnGw3**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporováno | Ne |
+|**VpnGw1AZ**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno | Ano |
+|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporováno | Ano |
+|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporováno | Ano |
 
 
 (*) Pokud potřebujete více než 30 tunelů VPN S2S, použijte službu [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md).

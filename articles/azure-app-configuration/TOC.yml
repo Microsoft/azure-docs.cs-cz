@@ -47,6 +47,8 @@
       href: concept-point-time-snapshot.md
     - name: Správa funkcí
       href: concept-feature-management.md
+    - name: Zpracování událostí
+      href: concept-app-configuration-event.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii
@@ -57,6 +59,8 @@
       href: howto-integrate-azure-managed-service-identity.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md
+    - name: Směrování událostí na vlastní koncový bod
+      href: howto-app-configuration-event.md
     - name: Osvědčené postupy
       href: howto-best-practices.md
 - name: Referenční informace

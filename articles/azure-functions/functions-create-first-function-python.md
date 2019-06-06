@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864518"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496569"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
 
@@ -92,7 +92,7 @@ Rozšíření sady usnadňuje přidat rozšíření vazby dolů cestách. Je tak
 
 Teď můžete přidat funkce do vašeho projektu.
 
-## <a name="create-a-function"></a>Vytvořit funkci
+## <a name="create-a-function"></a>Vytvoření funkce
 
 Přidání funkce do vašeho projektu, spusťte následující příkaz:
 
@@ -175,7 +175,7 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 ```
 
 > [!NOTE]
-> Aplikace pro Linux a Windows nemůže být hostovaná ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `myResourceGroup` aplikace funkcí Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
+> Azure Functions, plán Consumption pro Linux je aktuálně ve verzi preview a je k dispozici pouze v následujících oblastech: Západní USA, východní USA, západní Evropa, jihovýchodní Asie. Kromě toho aplikace pro Linux a Windows nemůže být hostovaná ve stejné skupině prostředků. Pokud máte existující skupinu prostředků s názvem `myResourceGroup` aplikace funkcí Windows nebo webové aplikace, musíte použít jinou skupinu prostředků.
 
 Nyní jste připraveni publikovat projekt lokální funkce do aplikace function app v Azure.
 

@@ -3,18 +3,18 @@ title: Prohlídka uživatelského rozhraní Azure IoT Central | Microsoft Docs
 description: Jako tvůrce se seznamte s klíčovými oblastmi uživatelského rozhraní Azure IoT Central, které umožňují vytvořit řešení IoT.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/24/2019
+ms.date: 05/31/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 53306b2087a47f5a61fc2a228e2d1f527127f746
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233439"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476313"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -35,7 +35,7 @@ Jako _operátor_ můžete pomocí uživatelského rozhraní Azure IoT Central sp
 
 ## <a name="use-the-left-navigation-menu"></a>Použití levé navigační nabídky
 
-Levé navigační nabídce použijte pro přístup k oblasti jiné aplikace. Můžete rozbalit nebo Sbalit navigační panel tak, že vyberete **<** nebo **>**:
+Levé navigační nabídce použijte pro přístup k oblasti jiné aplikace. Můžete rozbalit nebo Sbalit navigační panel tak, že vyberete **<** nebo **>** :
 
 | Nabídka | Popis |
 | ---- | ----------- |
@@ -63,7 +63,9 @@ Můžete si vybrat mezi světlým a tmavým motivem uživatelského rozhraní:
 
 ![Řídicí panel](media/overview-iot-central-tour/homepage.png)
 
-Řídicí panel je první stránky, které se zobrazí při přihlášení do aplikace Azure IoT Central. Jako tvůrce můžete přizpůsobit řídicí panel aplikací pro ostatní uživatele tak, že přidáte dlaždice. Další informace najdete v kurzu [Přizpůsobení zobrazení Azure IoT Central pro operátora](tutorial-customize-operator.md). Uživatelé mohou také [vytváření vlastních osobních řídicích panelů](howto-personalize-dashboard.md).
+* Řídicí panel je první stránky, které se zobrazí při přihlášení do aplikace Azure IoT Central. Jako tvůrce můžete přizpůsobit řídicí panel aplikací pro ostatní uživatele tak, že přidáte dlaždice. Další informace najdete v kurzu [Přizpůsobení zobrazení Azure IoT Central pro operátora](tutorial-customize-operator.md).
+
+* Jakožto Obsluha můžete vytvořit přizpůsobené řídicí panely a přepínat mezi nimi a o výchozí řídicí panel. Další informace najdete v tématu [vytvořit a spravovat osobních řídicích panelů](howto-personalize-dashboard.md) článek.
 
 ## <a name="device-explorer"></a>Device Explorer
 
@@ -80,7 +82,7 @@ Zobrazí se stránka Průzkumník _zařízení_ v aplikaci Azure IoT Central, se
 
 Stránka _Device Sets_ (Sady zařízení) obsahuje sady zařízení vytvořené tvůrcem. Sada zařízení je kolekce souvisejících zařízení. Tvůrce definuje dotaz, který určí zařízení obsažená v určité sadě zařízení. Sady zařízení se používají při přizpůsobování analýz ve vaší aplikaci. Další informace najdete v článku [Použití sad zařízení v aplikaci Azure IoT Central](howto-use-device-sets.md).
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 
 ![Stránka Analytics (Analýzy)](media/overview-iot-central-tour/analytics.png)
 
@@ -90,25 +92,32 @@ Stránka analýz obsahuje grafy, které vám pomáhají pochopit chování zař�
 
 ![Stránka Jobs (Úlohy)](media/overview-iot-central-tour/jobs.png)
 
-Stránka úloh vám umožňuje provádět operace hromadné správy vašeho zařízení. Tvůrce tuto stránku používá k aktualizaci vlastností zařízení, nastavení a příkazů. Další informace najdete v článku o [spuštění úlohy](howto-run-a-job.md).
+Na stránce úlohy můžete spustit hromadné operace správy zařízení v zařízeních. Tvůrce tuto stránku používá k aktualizaci vlastností zařízení, nastavení a příkazů. Další informace najdete v článku o [spuštění úlohy](howto-run-a-job.md).
 
 ## <a name="device-templates"></a>Šablony zařízení
 
 ![Stránka šablony zařízení](media/overview-iot-central-tour/templates.png)
 
-Stránka zařízení šablony je společnost tvůrce vytvoří a spravuje zařízení šablony v aplikaci. Další informace najdete v kurzu [Definování nového typu zařízení v aplikaci Azure IoT Central](tutorial-define-device-type.md).
+Stránka zařízení šablony je společnost tvůrce vytvoří a spravuje zařízení šablony v aplikaci. Šablona zařízení určuje vlastnosti zařízení, jako:
 
-## <a name="continuous-data-export"></a>Průběžný export dat
+- Měření telemetrických dat, stavu a událostí.
+- Nastavení a vlastnosti.
+- Příkazy.
+- Pravidla na základě událostí nebo hodnot telemetrická data.
+
+Další informace najdete v kurzu [Definování nového typu zařízení v aplikaci Azure IoT Central](tutorial-define-device-type.md).
+
+## <a name="continuous-data-export"></a>Nepřetržitý export dat
 
 ![Průběžný Export dat stránky](media/overview-iot-central-tour/export.png)
 
-Stránka souvislá datová export je, kde správce definuje, jak exportovat data, jako je například telemetrických dat, z aplikace. Další služby můžete ukládat exportovaná data nebo ho použít k analýze. Další informace najdete v tématu [exportovat data v Azure IoT Central](howto-export-data.md) článku.
+Na stránce Exportovat souvislá datová je, kde správce určuje, jak pro streamování dat, jako je například telemetrická data z aplikace. Další služby můžete ukládat exportovaná data nebo ho použít k analýze. Další informace najdete v tématu [exportovat data v Azure IoT Central](howto-export-data.md) článku.
 
 ## <a name="administration"></a>Správa
 
-![Stránka Správa](media/overview-iot-central-tour/administration.png)
+![Stránka Administration (Správa)](media/overview-iot-central-tour/administration.png)
 
-Stránka správy obsahuje odkazy na nástroje používané správcem, třeba k definování uživatelů a rolí v aplikaci. Další informace najdete v článku [Správa aplikace Azure IoT Central](howto-administer.md).
+Stránce pro správu obsahuje odkazy na všechny nástroje, které správce používá například definování uživatelé a role v aplikaci a přizpůsobení uživatelského rozhraní. Další informace najdete v článku [Správa aplikace Azure IoT Central](howto-administer.md).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,7 +12,7 @@ ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: da7fe9310f50d2d2a3c247a410db204903d3412b
 ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2019
 ms.locfileid: "64715881"
@@ -113,7 +113,7 @@ Vytvoření volání POST podobný tomu vidíte tady pomocí informací v násle
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| prostředek | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* a *prostředků* jsou hodnoty, které jste si předtím poznamenali jako ID aplikace. *Refresh_token* je token, který jste obdrželi v ověřovacím hovoru, již bylo zmíněno dříve.

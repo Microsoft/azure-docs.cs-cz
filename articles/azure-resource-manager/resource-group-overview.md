@@ -2,22 +2,18 @@
 title: Přehled Azure Resource Manageru | Dokumentace Microsoftu
 description: Popisuje, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.assetid: 76df7de1-1d3b-436e-9b44-e1b3766b3961
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/24/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6ad87c776bbbab9959f7c90a8d006ae7f62bde79
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225903"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514343"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -51,13 +47,15 @@ Resource Manager poskytuje několik výhod:
 * Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
 * Můžete zpřehlednit fakturaci svojí organizace zobrazením nákladů na skupinu prostředků, které sdílejí stejnou značku.
 
-## <a name="understand-management-scope"></a>Vysvětlení oborem správy
+## <a name="understand-scope"></a>Orientace v oborech
 
-Azure nabízí čtyři úrovně oborem správy: [skupin pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
+Azure nabízí čtyři úrovně oboru: [skupin pro správu](../governance/management-groups/index.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
 ![Scope](./media/resource-group-overview/scope-levels.png)
 
-Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Například při použití [zásady](../governance/policy/overview.md) do předplatného, které zásady platí pro všechny skupiny prostředků a prostředků ve vašem předplatném. Při použití zásady na skupinu prostředků, zásady se použijí skupinu prostředků a všechny její prostředky. Jiné skupiny prostředků nemá přiřazení zásad.
+Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Například při použití [zásady](../governance/policy/overview.md) do předplatného, které zásady platí pro všechny skupiny prostředků a prostředků ve vašem předplatném. Při použití zásady na skupinu prostředků, zásady se použijí skupinu prostředků a všechny její prostředky. Jiné skupiny prostředků, ale nemá přiřazení zásad.
+
+Šablony můžete nasadit do skupin pro správu, předplatná nebo skupiny prostředků.
 
 ## <a name="guidance"></a>Doprovodné materiály
 
@@ -85,7 +83,7 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 
 Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
-Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat prostředky ve skupině prostředků, protože metadata není k dispozici. Prostředky v jiných oblastech bude i nadále fungovat podle očekávání, ale nemůže je aktualizovat. Chcete-li minimalizovat rizika, vyhledejte skupinu prostředků a prostředky ve stejné oblasti.
+Pokud skupinu prostředků oblasti je dočasně nedostupná, nelze aktualizovat prostředky ve skupině prostředků, protože metadata není k dispozici. Prostředky v jiných oblastech bude i nadále fungovat podle očekávání, ale nemůže je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [návrhu spolehlivých aplikací Azure](/azure/architecture/reliability/).
 
 ## <a name="resource-providers"></a>Poskytovatelé prostředků
 

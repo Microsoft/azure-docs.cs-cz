@@ -142,10 +142,6 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: CBA na zařízeních s iOS
               href: active-directory-certificate-based-authentication-ios.md
-    - name: Vývoj
-      items:
-        - name: Integrace MFA do vlastních aplikací
-          href: howto-mfa-sdk.md
     - name: Vytváření sestav
       items:
         - name: Sestavy SSPR

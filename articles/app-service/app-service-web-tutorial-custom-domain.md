@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 962955a405d12365f69519b004ea8f95d529a97c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475558"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742840"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS do služby Azure App Service
 
@@ -119,7 +119,7 @@ V tomto příkladu přidáte záznam CNAME pro subdoménu `www` (například `ww
 
 #### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
-Přidejte záznam CNAME pro mapování subdomény na výchozí název hostitele aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace).
+Přidejte záznam CNAME pro mapování subdomény na výchozí název domény aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace).
 
 Pro příklad domény `www.contoso.com` přidejte záznam CNAME, který mapuje název `www` na `<app_name>.azurewebsites.net`.
 
@@ -129,13 +129,13 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Povolení mapování záznamu CNAME v Azure
 
-V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**. 
+V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte **Vlastní domény**.
 
 ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 Na stránce **Vlastní domény** aplikace přidejte do seznamu plně kvalifikovaný vlastní název DNS (`www.contoso.com`).
 
-Vyberte ikonu **+** vedle možnosti **Přidat název hostitele**.
+Vyberte **+** ikonu vedle **přidat vlastní doménu**.
 
 ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -143,15 +143,15 @@ Zadejte plně kvalifikovaný název domény, pro který jste přidali záznam CN
 
 Vyberte **Ověřit**.
 
-Zobrazí se stránka **Přidat název hostitele**. 
+**Přidat vlastní doménu** stránka je zobrazena.
 
 Ujistěte se, že **typ záznamu názvu hostitele** je nastavena na **CNAME (www\.example.com nebo jakákoli subdoména)** .
 
-Vyberte **Přidat název hostitele**.
+Vyberte **Přidat vlastní doménu**.
 
 ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace může nějakou dobu trvat. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
+Může trvat nějakou dobu pro novou vlastní doménu projeví v aplikaci prvku **vlastní domény** stránky. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -191,7 +191,7 @@ Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 K mapování záznamu A na aplikaci vyžaduje služba App Service **dva** záznamy DNS:
 
 - Záznam **A** pro mapování na IP adresu aplikace.
-- Záznam **TXT** pro mapování na výchozí název hostitele aplikace `<app_name>.azurewebsites.net`. Služba App Service používá tento záznam pouze během konfigurace k ověření, že jste vlastníkem vlastní domény. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
+- A **TXT** záznam pro mapování na výchozí název domény aplikaci `<app_name>.azurewebsites.net`. Služba App Service používá tento záznam pouze během konfigurace k ověření, že jste vlastníkem vlastní domény. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
 
 Pro příklad domény `contoso.com` vytvořte záznamy A a TXT podle následující tabulky (`@` obvykle představuje kořenovou doménu).
 
@@ -219,23 +219,23 @@ Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujíc�
 
 Zpět na stránce **Vlastní domény** aplikace na webu Azure Portal přidejte do seznamu plně kvalifikovaný vlastní název DNS (například `contoso.com`).
 
-Vyberte ikonu **+** vedle možnosti **Přidat název hostitele**.
+Vyberte **+** ikonu vedle **přidat vlastní doménu**.
 
-![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
+![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Zadejte plně kvalifikovaný název domény, pro který jste nakonfigurovali záznam A, například `contoso.com`.
 
 Vyberte **Ověřit**.
 
-Zobrazí se stránka **Přidat název hostitele**. 
+**Přidat vlastní doménu** stránka je zobrazena.
 
 Ujistěte se, že **Typ záznamu názvu hostitele** je nastavený na **Záznam A (www.example.com)** .
 
-Vyberte **Přidat název hostitele**.
+Vyberte **Přidat vlastní doménu**.
 
 ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace může nějakou dobu trvat. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
+Může trvat nějakou dobu pro novou vlastní doménu projeví v aplikaci prvku **vlastní domény** stránky. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
 ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
@@ -258,7 +258,7 @@ V tomto příkladu namapujete na aplikaci App Service [zástupný název DNS](ht
 
 #### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
-Přidejte záznam CNAME mapující zástupný název na výchozí název hostitele aplikace (`<app_name>.azurewebsites.net`).
+Přidejte záznam CNAME mapující zástupný název na výchozí název domény aplikace (`<app_name>.azurewebsites.net`).
 
 Pro příklad domény `*.contoso.com` bude záznam CNAME mapovat název `*` na `<app_name>.azurewebsites.net`.
 
@@ -274,23 +274,23 @@ V levém navigačním panelu na stránce aplikace na webu Azure Portal vyberte *
 
 ![Nabídka Vlastní domény](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Vyberte ikonu **+** vedle možnosti **Přidat název hostitele**.
+Vyberte **+** ikonu vedle **přidat vlastní doménu**.
 
 ![Přidat název hostitele](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Zadejte plně kvalifikovaný název domény, který odpovídá zástupné doméně (například `sub1.contoso.com`), a pak vyberte **Ověřit**.
 
-Aktivuje se tlačítko **Přidat název hostitele**. 
+**Přidat vlastní doménu** se aktivuje tlačítko.
 
 Ujistěte se, že **typ záznamu názvu hostitele** je nastavena na **záznam CNAME (www\.example.com nebo jakákoli subdoména)** .
 
-Vyberte **Přidat název hostitele**.
+Vyberte **Přidat vlastní doménu**.
 
 ![Přidání názvu DNS do aplikace](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace může nějakou dobu trvat. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
+Může trvat nějakou dobu pro novou vlastní doménu projeví v aplikaci prvku **vlastní domény** stránky. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
 
-Znovu vyberte ikonu **+** a přidejte další název hostitele, který odpovídá zástupné doméně. Přidejte například `sub2.contoso.com`.
+Vyberte **+** ikonu Přidat další vlastní domény, který odpovídá zástupné doméně. Přidejte například `sub2.contoso.com`.
 
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 

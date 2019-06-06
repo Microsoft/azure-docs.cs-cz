@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2a4bdaba45c466b7f1f6fb8e91033f9a7665e034
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253073"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730535"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -113,6 +113,8 @@ Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu kli
 Když uživatelům resetovat své heslo z přihlašovací obrazovky zařízení s Windows 10, se vytvoří nízkou úrovní oprávnění dočasné účet s názvem "defaultuser1". Tento účet slouží k zabezpečení procesu resetování hesla. Účet samotný má náhodně generované heslo, nezobrazí se pro přihlášení k zařízení a bude automaticky odstraněna po uživatel může resetovat své heslo. Může existovat více profilů "defaultuser", ale můžete bezpečně ignorovat.
 
 ## <a name="limitations"></a>Omezení
+
+Odemknutí účtu, oznámení mobilní aplikace a kód mobilní aplikace nejsou podporovány službou samoobslužné resetování HESLA pro Windows 10.
 
 Při testování této funkce s použitím Hyper-V se odkaz Resetovat heslo nezobrazí.
 

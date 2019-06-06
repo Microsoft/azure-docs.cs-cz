@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60289102"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473696"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -41,15 +41,6 @@ PIM v podstatě umožňuje správu na kdo, co, kdy, kde a proč pro prostředky,
 - Získat **oznámení** při aktivaci privilegované role
 - Chování **kontrol přístupu** zajistit uživatelé stále potřebují role
 - Stáhněte si **historie auditu** pro interní nebo externí auditu
-
-## <a name="prerequisites"></a>Požadavky
-
-Pokud chcete používat PIM, musí mít jeden z následujících placené nebo zkušební licence. Další informace najdete v tématu [Co je Azure Active Directory?](../fundamentals/active-directory-whatis.md).
-
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5
-
-Informace o licencích pro uživatele najdete v tématu [licenční požadavky pro použití PIM](subscription-requirements.md).
 
 ## <a name="terminology"></a>Terminologie
 
@@ -104,6 +95,12 @@ PIM podporuje následující scénáře:
 - Požádat o aktivaci role, která vyžaduje schválení
 - Zobrazit stav vaší žádosti o aktivaci
 - Dokončit požadovanou úlohu v Azure AD, pokud se aktivace schválí
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Informace o licencích pro uživatele najdete v tématu [licenční požadavky pro použití PIM](subscription-requirements.md).
 
 ## <a name="next-steps"></a>Další postup
 
