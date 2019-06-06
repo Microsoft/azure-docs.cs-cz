@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/05/2019
+ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242280"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734653"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server
 
@@ -60,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 Do příkazového řádku zadejte heslo pro uživatelský účet.
 
 ## <a name="monitor-replication"></a>Monitorování replikace
-Azure Database for PostgreSQL nabízí **maximální prodleva mezi repliky** metriky ve službě Azure Monitor. Tato metrika je k dispozici na hlavní server. Metrika ukazuje je zpoždění v bajtech mezi hlavní a většina obložení repliky. 
+Azure Database for PostgreSQL poskytuje dvě metriky pro monitorování replikace. Jsou dvě metriky **maximální prodleva mezi repliky** a **repliky prodleva**. Zjistěte, jak zobrazit tyto metriky, najdete v článku **monitorovat repliku** část [přečíst článek repliky](howto-read-replicas-portal.md).
 
-Azure Database for PostgreSQL poskytuje také **repliky prodleva** metriky ve službě Azure Monitor. Tato metrika je k dispozici pro pouze repliky. 
+**Maximální prodleva mezi repliky** metrika zobrazuje je zpoždění v bajtech mezi hlavní a většina obložení repliky. Tato metrika je k dispozici na hlavní server.
 
-Metrika se počítá od `pg_stat_wal_receiver` zobrazení:
+**Repliky prodleva** metrika zobrazuje čas, od posledního přehrály transakce. Pokud neexistují žádné transakce, ke kterým dochází na hlavní server, metriku odráží tento časový interval. Tato metrika je k dispozici pouze servery repliky. Prodleva repliky se počítá od `pg_stat_wal_receiver` zobrazení:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-Prodleva repliky metrika zobrazuje doba od poslední přehraná transakce. Pokud neexistují žádné transakce, ke kterým dochází na hlavní server, metriku odráží tento časový interval.
 
 Nastavení upozornění pro informování, když replika prodleva dosáhne hodnotu, která se nedají použít pro vaši úlohu. 
 

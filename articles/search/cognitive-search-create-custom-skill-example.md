@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: efa85491f4b183a044ec5d9e5e6e3d11eebedbe3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023613"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428432"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Příklad: Vytvoření vlastních dovedností pomocí rozhraní API převede Text
 
-V tomto příkladu zjistěte, jak vytvořit webové rozhraní API vlastních dovedností, která přijímá text v libovolném jazyce a převede jej na angličtinu. V příkladu se používá [funkce Azure Functions](https://azure.microsoft.com/services/functions/) zalomení [rozhraní API pro překlad textu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) tak, že implementuje rozhraní vlastních dovedností.
+V tomto příkladu zjistěte, jak vytvořit webové rozhraní API vlastních dovedností. Tato dovednosti přijme text v libovolném jazyce a převede jej na angličtinu. V příkladu se používá [funkce Azure Functions](https://azure.microsoft.com/services/functions/) zalomení [rozhraní API pro překlad textu](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) tak, že implementuje rozhraní vlastních dovedností.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,19 +27,19 @@ V tomto příkladu zjistěte, jak vytvořit webové rozhraní API vlastních dov
 
 + [Zaregistrujte si Translator Text API](../cognitive-services/translator/translator-text-how-to-signup.md)a získání klíče rozhraní API ho zpracovat.
 
-+ Nainstalujte [Visual Studio 2017 verze 15.5](https://www.visualstudio.com/vs/) nebo novější, včetně funkcí vývoj pro Azure.
++ Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/vs/) nebo novější, včetně funkcí vývoj pro Azure.
 
 ## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
 
-Přestože tento příklad používá funkci Azure pro hostování webového rozhraní API, není povinné.  Za předpokladu splnění [rozhraní požadavky pro kognitivní dovednosti](cognitive-search-custom-skill-interface.md), přístup, je provést je důležité. Služba Azure Functions, ale usnadňují vytváření vlastních dovedností.
+Přestože tento příklad používá funkci Azure pro hostování webového rozhraní API, není to nutné.  Za předpokladu splnění [rozhraní požadavky pro kognitivní dovednosti](cognitive-search-custom-skill-interface.md), přístup, je provést je důležité. Služba Azure Functions, ale usnadňují vytváření vlastních dovedností.
 
 ### <a name="create-a-function-app"></a>Vytvoření Function App
 
 1. V sadě Visual Studio, vyberte **nový** > **projektu** z nabídky soubor.
 
-1. V dialogovém okně Nový projekt, vyberte **nainstalováno**, rozbalte **Visual C#** > **cloudu**vyberte **Azure Functions**, zadejte Zadejte název pro váš projekt a vyberte **OK**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
+1. V dialogovém okně Nový projekt, vyberte **nainstalováno**, rozbalte **Visual C#**  > **cloudu**vyberte **Azure Functions**, zadejte Zadejte název pro váš projekt a vyberte **OK**. Název aplikace funkcí musí být platný jako obor názvů C#, takže nepoužívejte podtržítka, pomlčky nebo jiné nealfanumerické znaky.
 
-1. Vyberte **Azure Functions v2 (.NET Core)**. To může také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
+1. Vyberte **Azure Functions v2 (.NET Core)** . To může také provést s verzí 1, ale kód napsaný níže je založen na šabloně v2.
 
 1. Vyberte typ, který má být **triggeru HTTP**
 
@@ -235,13 +235,13 @@ Měli byste vidět odpovědi podobně jako v následujícím příkladu:
 
 ## <a name="publish-the-function-to-azure"></a>Publikování funkce Azure
 
-Pokud jste spokojeni s chováním funkce, můžete ho publikovat.
+Jakmile budete spokojeni s tím, chování funkce, můžete ho publikovat.
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Zvolte **vytvořit nový** > **publikovat**.
 
 1. Pokud jste ještě nepřipojili Visual Studio ke svému účtu Azure, vyberte **přidat účet...**
 
-1. Použijte na obrazovce zobrazí výzvu. Zobrazí se výzva k zadání účtu Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Pokud ještě nemáte tyto, můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště. Až budete hotovi, vyberte **Create**
+1. Použijte na obrazovce zobrazí výzvu. Budete vyzváni k zadání účtu Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Pokud ještě nemáte tyto, můžete vytvořit novou skupinu prostředků, nový plán hostování a účet úložiště. Až budete hotovi, vyberte **Create**
 
 1. Po dokončení nasazení, Všimněte si, že adresa URL webu. Je to adresa vaší aplikace function App v Azure. 
 
@@ -270,7 +270,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
 }
 ```
 
-To mohou být vráceny podobného výsledku ten, který jste předtím viděli při spuštění funkce v místním prostředí.
+V tomto příkladu by měl vytvářet podobného výsledku ten, který jste předtím viděli při spuštění funkce v místním prostředí.
 
 ## <a name="connect-to-your-pipeline"></a>Připojit do kanálu
 Teď, když máte nové vlastní dovednosti, přidáte jej do vaše dovednosti. Následující příklad ukazuje, jak volat dovednosti. Protože dovednosti nemůže pracovat s listy, přidejte instrukce pro maximální velikost dávky být právě ```1``` odesílat dokumenty jednotlivě.
@@ -307,7 +307,7 @@ Teď, když máte nové vlastní dovednosti, přidáte jej do vaše dovednosti. 
 ```
 
 ## <a name="next-steps"></a>Další postup
-Blahopřejeme! Vytvoření vaší první vlastní enricher. Teď můžete použít stejný vzor pro přidání vlastních funkcí. 
+Blahopřejeme! Vaše první vlastní enricher jste vytvořili. Teď můžete použít stejný vzor pro přidání vlastních funkcí. 
 
 + [Přidání vlastních dovedností do kanálu kognitivního vyhledávání](cognitive-search-custom-skill-interface.md)
 + [Definování dovedností](cognitive-search-defining-skillset.md)

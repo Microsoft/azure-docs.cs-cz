@@ -6,40 +6,38 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 06/05/2019
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 455e78c63960103f5facae764aff3d2b3b2a590d
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60924852"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735187"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definovaných funkcí v Azure digitální dvojče
 
-Tento článek shrnuje, jak diagnostikovat a ladit uživatelem definované funkce. Potom obsahuje některé z nejběžnějších scénářů při ladění je nalezena.
+Tento článek shrnuje, jak diagnostikovat a ladit uživatelsky definovaných funkcí v digitální dvojče Azure. Potom obsahuje některé z nejběžnějších scénářů při ladění je nalezena.
 
 >[!TIP]
 > Čtení [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md) Další informace o nastavení nástroje pro ladění v Azure digitální dvojče pomocí protokolů aktivit, diagnostické protokoly a Azure Monitor.
 
 ## <a name="debug-issues"></a>Ladění problémů
 
-Vědět, jak diagnostikovat problémy, které vznikají v rámci vaší instanci Azure digitální dvojče pomáhá efektivně identifikovat problém, příčinu problému a řešení.
+Vědět, jak diagnostikovat problémy v rámci Azure digitální dvojče umožňuje efektivně analyzovat problémy, identifikovat příčiny problémů a poskytují vhodné řešení pro ně.
 
-### <a name="enable-log-analytics-for-your-instance"></a>Povolení log analytics pro vaši instanci
+Širokou škálu protokolování, analýzy a diagnostické nástroje jsou k dispozici k tomuto účelu.
 
-Protokoly a metriky pro vaši instanci Azure digitální dvojče se zobrazí ve službě Azure Monitor. Tato dokumentace předpokládá, že jste vytvořili [protokoly Azure monitoru](../azure-monitor/log-query/log-query-overview.md) pracovní prostor prostřednictvím [webu Azure Portal](../azure-monitor/learn/quick-create-workspace.md), pomocí [rozhraní příkazového řádku Azure](../azure-monitor/learn/quick-create-workspace-cli.md), nebo prostřednictvím [ Prostředí PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+### <a name="enable-logging-for-your-instance"></a>Povolení protokolování pro vaši instanci
 
-> [!NOTE]
-> 5 minut zpoždění může dojít při odesílání událostí do Azure monitoru protokoly poprvé.
+Azure digitální dvojče podporuje robustní protokolování, monitorování a analýzy. Řešení mohou vývojáři protokoly, diagnostických protokolů, protokoly aktivit a další služby Azure Monitor pro podporu komplexní monitorování potřeb aplikace IoT. Možnosti protokolování můžete kombinovat, zadat dotaz nebo zobrazení záznamů napříč několika službami a poskytuje podrobné protokolování pokrytí u řady služeb.
 
-Ke konfiguraci, monitorování a protokolování pro prostředky Azure digitální dvojče, přečtěte si [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
+* Konfigurace protokolování specifické pro digitální dvojče Azure, najdete v článku [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
+* Najdete [Azure Monitor](../azure-monitor/overview.md) přehled a další informace o nastavení výkonné protokolu povoleno v nástroji Azure Monitor.
+* Přečtěte si článek [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitální dvojče Azure prostřednictvím webu Azure Portal, Azure CLI nebo Powershellu.
 
-Přečtěte si článek [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitální dvojče Azure prostřednictvím webu Azure Portal, Azure CLI nebo Powershellu.
-
->[!IMPORTANT]
-> Ujistěte se, že chcete-li vybrat všechny kategorie protokolů, metrik a pracovního prostoru Azure Log Analytics.
+Po nakonfigurování, budete moci vybrat všechny kategorie protokolů, metrik a použijte výkonné Azure Monitor pracovní prostory log analytics pro podporu ladění úsilí.
 
 ### <a name="trace-sensor-telemetry"></a>Telemetrická data ze senzorů trasování
 
@@ -47,7 +45,7 @@ Trasování telemetrická data ze senzorů, ujistěte se, že jsou povolené nas
 
 Tak, aby odpovídaly zprávu telemetrická data ze senzorů do jeho příslušného protokolů, můžete zadat ID korelace odesílání dat události. Chcete-li to provést, nastavte `x-ms-client-request-id` vlastnost na identifikátor GUID.
 
-Po odeslání telemetrie, otevřete log analytics pro dotazování pomocí sady protokolů ID korelace:
+Po odeslání telemetrie, otevřete log analytics k dotazování pomocí sady protokolů ID korelace:
 
 ```Kusto
 AzureDiagnostics
@@ -209,4 +207,6 @@ Pokud povolíte nastavení diagnostiky, můžete se setkat tyto běžné výjimk
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak povolit [sledování a protokolů](../azure-monitor/platform/activity-logs-overview.md) v digitální dvojče Azure.
+- Zjistěte, jak povolit [sledování a protokolů](./how-to-configure-monitoring.md) v digitální dvojče Azure.
+
+- Čtení [protokol aktivit Azure přehled](../azure-monitor/platform/activity-logs-overview.md) článku pro další protokolování možnosti Azure.

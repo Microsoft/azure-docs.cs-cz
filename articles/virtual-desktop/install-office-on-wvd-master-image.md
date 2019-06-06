@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827322"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742555"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
@@ -29,7 +29,9 @@ Tento článek také předpokládá, že na virtuálním počítači, musí mít
 
 Aktivace pro sdílené počítače vám umožňují nasadit do počítače ve vaší organizaci, která se využívají více uživatelů Office 365 ProPlus. Další informace o aktivace pro sdílené počítače najdete v tématu [přehledu aktivace pro sdílené počítače pro Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
 
-Použití [nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117) instalace Office. Windows 10 Enterprise více relace podporuje pouze Office 365 ProPlus.
+Použití [nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117) instalace Office. Windows 10 Enterprise více relace podporuje pouze následující verze Office:
+- Office 365 ProPlus
+- Office 365 Business, který je součástí předplatného Microsoft 365 Business
 
 Nástroj pro nasazení Office vyžaduje soubor XML konfigurace. Následující ukázka přizpůsobit, přečtěte si článek [možnosti konfigurace pro nástroj pro nasazení Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
 
@@ -132,7 +134,7 @@ Tady je postup instalace Onedrivu v režimu na počítač:
 
 2. Stáhněte si OneDriveSetup.exe dvoufázové instalace umístění s tímto odkazem: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Pokud jste nainstalovali office s Onedrivem vynecháním  **\<ExcludeApp ID = "Onedrivu" /\>**, odinstalovat všechny existující instalace OneDrive na uživatele z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz:
+3. Pokud jste nainstalovali office s Onedrivem vynecháním  **\<ExcludeApp ID = "Onedrivu" /\>** , odinstalovat všechny existující instalace OneDrive na uživatele z příkazového řádku se zvýšenými oprávněními spusťte následující příkaz:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
