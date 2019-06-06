@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796897"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514642"
 ---
 # <a name="request-limits-for-translator-text"></a>Omezení počtu požadavků pro Translator Text
 
@@ -38,9 +38,9 @@ Následující tabulky zobrazí pole elementu a znak omezení pro každou operac
 
 ## <a name="character-limits-per-hour"></a>Omezení znak za hodinu
 
-Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi. 
+Váš limit počtu znaků za hodinu je podle vaší úrovně předplatného Translator Text. Hodinová kvóta by měl rovnoměrně spotřebovává během hodiny. Pokud jste nebo překročí limity nebo pošlete příliš velké části kvóta v krátké době, pravděpodobně dostanete out kvóty odpovědi.
 
-| Vrstva | Limit počtu znaků |
+| Úroveň | Limit počtu znaků |
 |------|-----------------|
 | F0 | 2 miliony znaků za hodinu |
 | S1 | 40 milionů znaků za hodinu |
@@ -69,7 +69,7 @@ Při použití [BreakSentence](https://docs.microsoft.com/azure/cognitive-servic
 | Portugalština | PT | 290 |
 | Španělština | es | 280 |
 | italština | it | 280 |
-| Thajština | . | 258 |
+| Thajština | TH | 258 |
 
 > [!NOTE]
 > Toto omezení neplatí pro překlady.

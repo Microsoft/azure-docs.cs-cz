@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
-ms.date: 04/30/2019
+ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: 19144ae40e67127b656cedd61199b732b1c05e86
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236604"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688889"
 ---
-# <a name="content-moderator-api-reference"></a>Referenční informace k rozhraní API Content Moderatoru
+# <a name="content-moderator-api-reference"></a>Content Moderator API reference
 
-Asi začít pracovat s Azure Content Moderator API následujícími způsoby:
+Můžete začít s Azure Content Moderator API následujícími způsoby:
 
 - Na webu Azure Portal [předplatit Content Moderator API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
 - Naleznete v tématu [zkuste Content Moderator na webu](quick-start.md) k registraci se [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/).
@@ -37,7 +37,7 @@ Nastavení pracovního postupu po moderování můžete použít následující 
 
 ## <a name="review-apis"></a>Recenze rozhraní API
 
-Rozhraní API pro kontrolu má následující komponenty:
+Rozhraní API pro kontrolu mají následující komponenty:
 
 | Popis | Referenční informace |
 | -------------------- |-------------|

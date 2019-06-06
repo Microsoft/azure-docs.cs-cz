@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 06/04/2019
 ms.author: v-pawal
-ms.openlocfilehash: 157b809c1f1707cdaa561ab09486cf4886fff4e0
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: eccd0c47c1bfc071f43a6329406cd14f704d019e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389233"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514290"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Jak rozhraní Translator Text API vrátí počet znaků
 
@@ -35,7 +35,7 @@ Co se počítá je:
 
 U skriptů podle ideogramů například čínštiny a japonská Kanji Translator Text API bude stále počet kódové body sady Unicode, ideogram o jeden znak. Výjimka: Náhrady kódu Unicode počet jako dva znaky.
 
-Počet požadavků, slova, bajtů nebo věty je bezvýznamná v počtu znaků. 
+Počet požadavků, slova, bajtů nebo věty je bezvýznamná v počtu znaků.
 
 Volání metody rozpoznat a BreakSentence započítávají spotřeby znak. Předpokládáme, že volání metody rozpoznat a BreakSentence jsou v rozumné poměru k použití jiné funkce, které jsou započteny. Pokud počet rozpoznat nebo BreakSentence volání, které provedete překračuje počet jiných spočítaný počet metod 100krát, Microsoft si vyhrazuje právo k omezení použití metody rozpoznat a BreakSentence.
 
