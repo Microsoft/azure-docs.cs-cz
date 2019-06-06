@@ -157,10 +157,10 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | string | Vydavatel definované cesta předmět události. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
@@ -171,22 +171,22 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | id | string | ID události. |
-| časové razítko | string | Čas, kdy došlo k události. |
+| timestamp | string | Čas, kdy došlo k události. |
 | action | string | Akce, která zahrnuje zadané události. |
-| cíl | objekt | Cíl události. |
-| žádost | objekt | Požadavek, který událost vyvolal. |
+| target | objekt | Cíl události. |
+| request | objekt | Požadavek, který událost vyvolal. |
 
 Cílový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | mediaType | string | Typ MIME odkazovaného objektu. |
-| velikost | integer | Počet bajtů obsahu. Stejné jako délku pole. |
-| ověřování algoritmem Digest | string | Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru. |
-| Délka | integer | Počet bajtů obsahu. Stejná jako velikost pole. |
-| úložiště | string | Název úložiště. |
-| značka | string | Název značky. |
-| jméno | string | Název grafu. |
+| size | integer | Počet bajtů obsahu. Stejné jako délku pole. |
+| digest | string | Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru. |
+| length | integer | Počet bajtů obsahu. Stejná jako velikost pole. |
+| repository | string | Název úložiště. |
+| tag | string | Název značky. |
+| name | string | Název grafu. |
 | version | string | Verze grafu. |
 
 Objekt žádosti má následující vlastnosti:
@@ -195,9 +195,9 @@ Objekt žádosti má následující vlastnosti:
 | -------- | ---- | ----------- |
 | id | string | ID požadavku, který spustil danou událost. |
 | addr | string | IP nebo název hostitele a pravděpodobně port připojení klienta, který spustil danou událost. Tato hodnota je RemoteAddr z požadavku standardní http. |
-| hostitel | string | Zvenku přístupný název hostitele instance registru, jak je uvedeno v http hlavičce hostitele na příchozí požadavky. |
+| host | string | Zvenku přístupný název hostitele instance registru, jak je uvedeno v http hlavičce hostitele na příchozí požadavky. |
 | method | string | Metoda žádosti, které vygenerovalo událost. |
-| userAgent | string | Hlavičky uživatelského agenta žádosti. |
+| useragent | string | Hlavičky uživatelského agenta žádosti. |
 
 ## <a name="next-steps"></a>Další postup
 
