@@ -157,6 +157,10 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+    - name: Automatické zvětšení úložiště
+      items:
+        - name: portál Azure
+          href: howto-auto-grow-storage-portal.md
     - name: Přístup k protokolům serveru
       items:
         - name: portál Azure

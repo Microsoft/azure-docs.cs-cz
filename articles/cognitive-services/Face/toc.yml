@@ -63,6 +63,8 @@
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Určení modelu rozpoznávání obličeje
       href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Určení modelu detekce obličeje
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Použití funkce ve velkém měřítku
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: Analýza videa v reálném čase

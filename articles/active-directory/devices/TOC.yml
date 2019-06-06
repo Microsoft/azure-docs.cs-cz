@@ -1,8 +1,8 @@
-- name: Dokumentace ke správě zařízení
+- name: Dokumentace k identitám zařízení
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je správa zařízení v Azure AD?
+    - name: Co je identita zařízení?
       href: overview.md
     - name: Co je Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
@@ -29,7 +29,7 @@
 - name: Návody
   expanded: true
   items:
-    - name: Správa zařízení pomocí webu Azure Portal
+    - name: Správa identity zařízení
       href: device-management-azure-portal.md
     - name: Správa zastaralých zařízení
       href: manage-stale-devices.md

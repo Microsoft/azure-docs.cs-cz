@@ -73,6 +73,8 @@
           href: waf-overview.md
         - name: Konfigurace WAF
           href: application-gateway-waf-configuration.md
+        - name: Vlastní pravidla
+          href: custom-waf-rules-overview.md
     - name: Monitorování stavu
       items:
         - name: Sonda stavu
@@ -141,6 +143,12 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Azure CLI
           href: application-gateway-customize-waf-rules-cli.md
+    - name: Vlastní pravidla WAF
+      items:
+        - name: Příklady vlastních pravidel
+          href: create-custom-waf-rules.md
+        - name: Konfigurace WAF s využitím vlastních pravidel
+          href: configure-waf-custom-rules.md
     - name: Směrování podle adres URL
       items:
         - name: Azure PowerShell

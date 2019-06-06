@@ -226,6 +226,8 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
+        - name: Služby Azure podle rozsahu auditu
+          href: ./compliance/azure-services-in-fedramp-auditscope.md
         - name: Analýzy dat
           href: ./blueprints/fedramp-analytics-overview.md
         - name: Datový sklad
