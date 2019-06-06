@@ -2,20 +2,20 @@
 title: Dynamické přizpůsobení uživatelského rozhraní Azure Active Directory B2C (UI) pomocí vlastních zásad | Dokumentace Microsoftu
 description: Podpora více značky prostředí směřovat HTML5 a CSS, která se dynamicky mění v době běhu.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c655a1ed7cefcc7af8a22ed1d869b1a2e8b81715
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e1abdfa8bc47f42f7373760370588c0bc41fc1dc
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708871"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507783"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad
 
@@ -68,7 +68,7 @@ V tomto podrobném návodu můžete:
 
 1. V sadě Visual Studio vytvořte projekt tak, že vyberete **souboru** > **nový** > **projektu**.
 
-2. V **nový projekt** okně **Visual C#** > **webové** > **webová aplikace ASP.NET Core (.NET Core)**.
+2. V **nový projekt** okně **Visual C#**  > **webové** > **webová aplikace ASP.NET Core (.NET Core)** .
 
 3. Pojmenujte aplikaci (například *Contoso.AADB2C.UI*) a pak vyberte **OK**.
 
@@ -80,7 +80,7 @@ V tomto podrobném návodu můžete:
 
     ![Výběr šablony webové aplikace](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. Vyberte **OK** a vytvořte projekt.
+6. Vyberte **OK** pro vytvoření projektu.
 
 ## <a name="step-2-create-mvc-view"></a>Krok 2: Vytvořit zobrazení MVC
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1: Stáhněte si šablonu B2C integrované HTML5
@@ -143,7 +143,7 @@ Vyhledejte `<img>` element, který obsahuje `ID` hodnotu *background_background_
 
 2. Ladění webových aplikací a ujistěte se, že _jednotné_ stránka je přístupná (například `http://localhost:<Port number>/Home/unified`).
 
-### <a name="step-25-publish-to-azure"></a>Krok 2.5: Publikování aplikací do Azure
+### <a name="step-25-publish-to-azure"></a>Krok 2.5: Publikování do Azure
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **Contoso.AADB2C.UI** projektu a pak vyberte **publikovat**.
 
     ![Publikování do Microsoft Azure App Service](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)

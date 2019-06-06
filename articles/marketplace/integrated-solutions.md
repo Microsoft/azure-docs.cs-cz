@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4cbc0b399bddbaebd4cb951dcd116e090c2e0c09
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938013"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515615"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrovaná řešení v Azure Marketplace a AppSource
 
@@ -30,6 +30,15 @@ Výhody integrované přístupu jsou:
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete zjistit integrovaná řešení a spojte se s těmito hodnotami partnery návštěvou Consulting Services část [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+Můžete zjistit integrovaná řešení a spojte se s těmito hodnotami partnery návštěvou jejich výpisy tady:
+
+* [Zákazník využívající Zero2Hero 360](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Rychlé Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Kredit Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Zásobník zabezpečení poskytující zdravotní péči cloudu](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [Modul akcelerace DevOps](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [Windows Server End podporovat](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+
+a také návštěvou Consulting Services část [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
 
 ---

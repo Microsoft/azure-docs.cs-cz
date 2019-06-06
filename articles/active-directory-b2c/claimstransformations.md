@@ -2,20 +2,20 @@
 title: ClaimsTransformations – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Definice elementu ClaimsTransformations v Identity prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 65b64563bf00bb519a65b6d2e0418b4f755dea2d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c904ac9d4c59a467dd8402ec44682c3cbd03fd8d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710831"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511537"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -59,7 +59,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 ```
 
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Seznam **InputClaim** elementy, které určují typy deklarací, které jsou použity jako vstup do transformace deklarací identity. Každý z těchto elementů obsahuje odkaz na typu deklarace identity, již definovaná v části ClaimsSchema v zásadách. |
 | Vstupní parametry | 0:1 | Seznam **InputParameter** prvky, které jsou k dispozici jako vstup pro transformaci deklarací identity.  
@@ -69,7 +69,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **InputClaims** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
 
@@ -86,7 +86,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **Vstupní parametry** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Očekávaný vstupní parametr. |
 
@@ -102,7 +102,7 @@ Seznam funkcí transformace deklarací identity, které je možné zahrnout cest
 
 **OutputClaims** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | outputClaim | 0: n | Typ deklarace identity očekávaný výstup. |
 

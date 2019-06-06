@@ -12,20 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245041"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475666"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory
 
-Azure Data Factory umožňuje vložit bohaté datům organizace v Office 365 tenanta do Azure v škálovatelným způsobem a vytvářet analytické aplikace a extrahování přehledů, které jsou založené na těchto prostředcích cenná data. Integrace s Privileged Access Management zajišťující řízení zabezpečeného přístupu cenné zpracovaná data v Office 365.  Další informace o datech Microsoft Graphu připojení, najdete [tento odkaz](https://docs.microsoft.com/graph/data-connect-concept-overview).
+Azure Data Factory se integruje s [datech Microsoft Graphu připojit](https://docs.microsoft.com/graph/data-connect-concept-overview), abyste mohli přenést bohaté datům organizace v Office 365 tenanta do Azure v škálovatelným způsobem a vytvářet analytické aplikace a extrahovat přehledy na základě Tyto prostředky cenná data. Integrace s Privileged Access Management zajišťující řízení zabezpečeného přístupu cenné zpracovaná data v Office 365.  Najdete [tento odkaz](https://docs.microsoft.com/graph/data-connect-concept-overview) přehled o datech Microsoft Graphu připojení a odkazovat na [tento odkaz](https://docs.microsoft.com/graph/data-connect-policies#licensing) informace o licencích.
 
 Tento článek ukazuje, jak použít aktivitu kopírování ke zkopírování dat z Office 365 ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované funkce
+Konektor ADF Office 365 a datech Microsoft Graphu připojení umožňuje na škálování příjmu různé druhy datových sad z poštovní schránky povolená e-mailu Exchange, včetně kontakty z adresáře, události v kalendáři, e-mailové zprávy, informace o uživateli, nastavení poštovní schránky, a atd.  Přečtěte si [tady](https://docs.microsoft.com/graph/data-connect-datasets) zobrazíte úplný seznam datových sad, které jsou k dispozici.
 
 Prozatím se v rámci jednoho kopírování můžete pouze **kopírování dat z Office 365 do [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), a [Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) ve formátu JSON** (zadejte setOfObjects). Pokud chcete načíst do jiné typy úložišť dat, nebo v jiných formátů Office 365, můžete vytvořit řetězové první aktivitu kopírování s aktivitou kopírování dalších dál načítat data do všech [podporovaná ADF cílového úložiště](copy-activity-overview.md#supported-data-stores-and-formats) (viz část o" podporované jako jímka"sloupce v tabulce"Podporovaná úložiště dat a formátech").
 

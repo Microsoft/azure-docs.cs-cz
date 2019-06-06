@@ -2,20 +2,20 @@
 title: Povolit věku v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o tom, jak identifikovat nezletilým vaši aplikaci používají.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b594dc6eadce5093c58d693492f8e86eb92ae4e3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 33b379a03c92b81885f7adfc70f7025a85ce9057
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227999"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511670"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit věku v Azure Active Directory B2C
 
@@ -31,14 +31,14 @@ Azure AD B2C používá informace, které uživatel zadá k určení, zda jsou z
 
 Věku zahrnuje dvě hodnoty stáří: věk, který už je někdo považuje za nezletilého a věk, ve kterém musí mít za svolení rodičů. Následující tabulka uvádí pravidla věku, které se používají k definování za a dílčí vyžadující souhlas.
 
-| Země nebo oblast | Název země/oblasti | Stáří menší souhlas | Vedlejší věk |
+| Země/oblast | Název země/oblasti | Stáří menší souhlas | Vedlejší věk |
 | -------------- | ------------------- | ----------------- | --------- |
 | Výchozí | Žádný | Žádný | 18 |
 | AE | Spojené arabské emiráty | Žádný | 21 |
 | AT | Rakousko | 14 | 18 |
 | BE | Belgie | 14 | 18 |
 | BG | Bulharsko | 16 | 18 |
-| BH | Bahrain | Žádný | 21 |
+| BH | Bahrajn | Žádný | 21 |
 | CM | Kamerun | Žádný | 21 |
 | CY | Kypr | 16 | 18 |
 | CZ | Česká republika | 16 | 18 |
@@ -53,7 +53,7 @@ Věku zahrnuje dvě hodnoty stáří: věk, který už je někdo považuje za ne
 | HR | Chorvatsko | 16 | 18 |
 | HU | Maďarsko | 16 | 18 |
 | IE | Irsko | 13 | 18 |
-| it | Itálie | 16 | 18 |
+| IT | Itálie | 16 | 18 |
 | KR | Korejská republika | 14 | 18 |
 | LT | Litva | 16 | 18 |
 | LU | Lucembursko | 16 | 18 |

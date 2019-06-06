@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 970d533424e2e603a96bf7e36317cbcdf5110304
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306814"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428068"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integraci služby API Management s využitím Service Fabric v Azure
 
@@ -43,7 +43,7 @@ Než začnete:
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [prostředí Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
-* Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte sadu [Visual Studio 2017](https://www.visualstudio.com) a sady funkcí **Vývoj pro Azure**, **Vývoj pro ASP.NET a web** a **Vývoj multiplatformních aplikací pomocí rozhraní .NET Core**.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
+* Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a **vývoj pro Azure**, **vývoj pro ASP.NET a web**, a **vývoj pro různé platformy .NET Core**úlohy.  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
 ## <a name="network-topology"></a>Síťová topologie
 
@@ -88,7 +88,7 @@ Spusťte sadu Visual Studio jako správce a vytvořte službu ASP.NET Core:
     </Resources>
     ```
 
-    Odebrání portu umožní platformě Service Fabric určit port dynamicky z rozsahu portů aplikace otevřených prostřednictvím skupiny zabezpečení sítě v šabloně Resource Manageru pro cluster. Tím se umožní příjem provozu ze služby API Management.
+    Odebrání portu umožní platformě Service Fabric určit port dynamicky z rozsahu portů aplikace otevřených prostřednictvím skupiny zabezpečení sítě v šabloně Cluster Resource Manager, povolit provoz příjem ze služby API Management.
 
  6. Stisknutím klávesy F5 v sadě Visual Studio ověřte, že je webové rozhraní API místně dostupné.
 

@@ -5,15 +5,15 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 06/03/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: cde7d692e8bb37e874c6e55e5584d96e3b13af31
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956386"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497195"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak používat *kubenet* sítě a vytvořit podsí
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Musí mít Azure CLI verze 2.0.56 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+Musí mít Azure CLI verze 2.0.65 nebo později nainstalována a nakonfigurována. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Přehled práce se sítěmi pomocí vlastní podsítě kubenet
 
@@ -48,7 +48,7 @@ S *Azure CNI*, běžný problémem je přiřazené rozsah IP adres je příliš 
 
 Jako ohrožení zabezpečení, můžete vytvořit cluster AKS, který používá *kubenet* a připojte se k existující podsíti virtuální sítě. Tento přístup umožňuje uzly přijímat definovaných IP adres, aniž by bylo nutné rezervovat velký počet IP adres ještě před zahájením pro všechny potenciální podů, které může běžet v clusteru.
 
-S *kubenet*, můžete použít mnohem menší rozsah IP adres a být schopni poskytovat podporu velkých clusterech a požadavky na aplikace. Například v případě */27* rozsah IP adres, můžete spustit 20 25 uzel clusteru s dostatek místa pro škálování nebo upgradovat. Tato velikost clusteru by podporují až *2 200 2,750* pody (s výchozí maximální hodnoty 110 podů na uzel).
+S *kubenet*, můžete použít mnohem menší rozsah IP adres a být schopni poskytovat podporu velkých clusterech a požadavky na aplikace. Například v případě */27* rozsah IP adres, můžete spustit 20 25 uzel clusteru s dostatek místa pro škálování nebo upgradovat. Tato velikost clusteru by podporují až *2 200 2,750* pody (s výchozí maximální hodnoty 110 podů na uzel). Maximální počet podů podle počtu uzlů, které můžete konfigurovat pomocí *kubenet* ve službě AKS je 250.
 
 Následující základní výpočty porovnat rozdíl v modelech sítě:
 
@@ -140,15 +140,15 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
 
-Právě jste vytvořili virtuální síť a podsíť a vytvořit a přiřadit oprávnění pro objekt služby k použití těchto síťových prostředků. Teď vytvořte AKS cluster ve vaší virtuální sítě a podsítě pomocí [az aks vytvořit] [ az-aks-create] příkazu. Definovat vlastní instanční objekt služby  *\<appId >* a  *\<heslo >*, jak znázorňuje výstup z předchozího příkazu k vytvoření instančního objektu služby.
+Právě jste vytvořili virtuální síť a podsíť a vytvořit a přiřadit oprávnění pro objekt služby k použití těchto síťových prostředků. Teď vytvořte AKS cluster ve vaší virtuální sítě a podsítě pomocí [az aks vytvořit] [ az-aks-create] příkazu. Definovat vlastní instanční objekt služby  *\<appId >* a  *\<heslo >* , jak znázorňuje výstup z předchozího příkazu k vytvoření instančního objektu služby.
 
 Tyto rozsahy IP adres jsou také definovány jako součást clusteru vytvořit proces:
 
-* *--Cidr služby* slouží k přiřazení IP adresy interní služby v clusteru AKS. Tento rozsah IP adres by měl být adresní prostor, který se používá jinde ve vašem síťovém prostředí. To zahrnuje žádnými rozsahy adres místní sítě, pokud připojení, nebo v plánu připojit, virtuálním sítím Azure přes Express Route nebo připojení Site-to-Site VPN.
+* *--Cidr služby* slouží k přiřazení IP adresy interní služby v clusteru AKS. Tento rozsah IP adres by měl být adresní prostor, který se používá jinde ve vašem síťovém prostředí. Tento rozsah zahrnuje žádnými rozsahy adres místní sítě, pokud připojení, nebo v plánu připojit, virtuálním sítím Azure přes Express Route nebo připojení Site-to-Site VPN.
 
 * *--Dns-service-ip* adresa by měla být *.10* adresu vašeho rozsahu IP adres služby.
 
-* *– Pod cidr* by měl být velký adresní prostor, který se používá jinde ve vašem síťovém prostředí. To zahrnuje žádnými rozsahy adres místní sítě, pokud připojení, nebo v plánu připojit, virtuálním sítím Azure přes Express Route nebo připojení Site-to-Site VPN.
+* *– Pod cidr* by měl být velký adresní prostor, který se používá jinde ve vašem síťovém prostředí. Tento rozsah zahrnuje žádnými rozsahy adres místní sítě, pokud připojení, nebo v plánu připojit, virtuálním sítím Azure přes Express Route nebo připojení Site-to-Site VPN.
     * Tento rozsah adres musí být dostatečně velký, aby mohla pojmout množství uzly, které plánujete škálovat až. Tento rozsah adres nelze změnit, až se cluster nasazuje, pokud potřebujete další adresy pro další uzly.
     * Rozsah IP adres pod slouží k přiřazení */24* adresní prostor k jednotlivým uzlům v clusteru. V následujícím příkladu *– pod cidr* z *192.168.0.0/16* přiřadí první uzel *192.168.0.0/24*, druhý uzel *192.168.1.0/24*a třetí uzly *192.168.2.0/24*.
     * Jako škálování clusteru nebo upgrady Platforma Azure nadále jste rozsah IP adres pod přiřadit každého nového uzlu.

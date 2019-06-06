@@ -2,20 +2,20 @@
 title: Řetězec deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
 description: Řetězec deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707459"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512589"
 ---
 # <a name="string-claims-transformations"></a>Řetězec deklarace identity transformace
 
@@ -280,7 +280,7 @@ Následující příklad generuje náhodné celočíselnou hodnotu od 0 do 1000.
 ### <a name="example"></a>Příklad:
 
 - Vstupní parametry:
-    - **randomGeneratorType**: CELÉ ČÍSLO
+    - **randomGeneratorType**: INTEGER
     - **maximumNumber**: 1000
     - **stringFormat**: OTP_{0}
     - **ve formátu Base64**: false
@@ -476,7 +476,7 @@ Vrátí část domény e-mailovou adresu.
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | emailAddress | string | Typ ClaimType, který obsahuje e-mailovou adresu. |
-| outputClaim | doména | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity - doméně. |
+| outputClaim | Domény | string | Zavolání typu deklarace identity, který je vytvořen po to transformace deklarací identity - doméně. |
 
 Použijte tato deklarace identity transformace parsovat název domény po uživatele, symbol @. To může být užitečné při odebírání identifikovatelné osobní údaje (PII) z data auditu. Následující deklarace identity transformace ukazuje, jak analyzovat název domény z **e-mailu** deklarací identity.
 

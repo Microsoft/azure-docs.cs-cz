@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 06/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 376a7f3f83cc7fcf7490675d9c0aef1513862e8a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8d4cc5e46066ad2f18d596d0484f62f478b4cc23
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521737"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514329"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Postup zobrazení protokolů a událostí v reálném čase (preview)
 Azure Monitor pro kontejnery obsahuje funkci, která je aktuálně ve verzi preview, která poskytuje živé zobrazit protokoly kontejneru Azure Kubernetes Service (AKS) (stdout/stderr) a události bez nutnosti spuštění příkazů kubectl. Když vyberete jednu z možností, nové podokno se zobrazí pod tabulkou dat výkonu na **uzly**, **řadiče**, a **kontejnery** zobrazení. Zobrazuje živé protokolování a události generované modulem kontejneru pro další pomoc při řešení problémů v reálném čase. 
@@ -27,7 +27,7 @@ Azure Monitor pro kontejnery obsahuje funkci, která je aktuálně ve verzi prev
 >**Přispěvatel** přístup k prostředku clusteru se vyžaduje pro tuto funkci používat.
 >
 
-Živé protokoly podporuje tři různé metody řídit přístup k protokolům:
+Živé protokoly podporují tři různé metody řídit přístup k protokolům:
 
 1. Bez povolené oprávnění Kubernetes RBAC AKS 
 2. Povolené s autorizací Kubernetes RBAC AKS
@@ -66,10 +66,13 @@ Pokud jste povolili Kubernetes RBAC se podařilo autorizovat, je potřeba použ�
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. Pokud konfigurujete to poprvé, můžete vytvořit vazbu pravidla cluster spuštěním následujícího příkazu: `kubectl create -f LogReaderRBAC.yaml`. Pokud už dříve povolili podporu pro živé protokoly ve verzi preview předtím, než jsme představili živé protokoly událostí, a aktualizujte konfiguraci, spusťte následující příkaz: `kubectl apply -f LiveLogRBAC.yml`. 
+2. Pokud ho konfigurujete poprvé, můžete vytvořit vazbu pravidla cluster spuštěním následujícího příkazu: `kubectl create -f LogReaderRBAC.yaml`. Pokud už dříve povolili podporu pro živé protokoly ve verzi preview předtím, než jsme představili živé protokoly událostí, a aktualizujte konfiguraci, spusťte následující příkaz: `kubectl apply -f LogReaderRBAC.yml`. 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurace AKS pomocí Azure Active Directory
-AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). Pokud je konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory pomocí služby Azure Kubernetes Service](../../aks/azure-ad-integration.md). Během postupu vytvořte [klientská aplikace](../../aks/azure-ad-integration.md#create-client-application) a zadejte **identifikátor URI pro přesměrování**, je třeba přidat do seznamu jiném identifikátoru URI `https://ininprodeusuxbase.microsoft.com/*`.  
+AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). Pokud je konfigurujete poprvé, přečtěte si téma [integrace Azure Active Directory pomocí služby Azure Kubernetes Service](../../aks/azure-ad-integration.md). Během postupu vytvořte [klientská aplikace](../../aks/azure-ad-integration.md#create-client-application), musíte zadat dva **identifikátor URI pro přesměrování** položky. Dva identifikátory URI jsou:
+
+- https://ininprodeusuxbase.microsoft.com/*
+- https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html  
 
 >[!NOTE]
 >Konfigurace ověřování pomocí Azure Active Directory pro jednotné přihlašování na lze provést pouze během počáteční nasazení nového clusteru AKS. Nelze nakonfigurovat jednotné přihlašování v pro cluster AKS, už nasazená. Musíte nakonfigurovat ověřování z **registrace aplikace (starší verze)** možnost ve službě Azure AD, aby bylo možné podporovat použití zástupných znaků v identifikátoru URI a při jeho přidání do seznamu, zaregistrujte ho jako **nativní** aplikace.
@@ -77,7 +80,7 @@ AKS je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directo
 
 ## <a name="view-live-logs-and-events"></a>Zobrazit živé protokoly a události
 
-Můžete zobrazit události v reálném čase protokolu vygenerovaný modulem kontejneru z **uzly**, **řadiče**, a **kontejnery** zobrazení. V podokně vlastností vyberte **zobrazení dynamických dat (preview)** možnost a podokno se zobrazí pod tabulkou dat výkonu, kde můžete zobrazit protokol a události v nepřetržitý datový proud. 
+Můžete zobrazit události v reálném čase protokolu vygenerovaný modulem kontejneru z **uzly**, **řadiče**, a **kontejnery** zobrazení. V podokně vlastností, vyberte **zobrazení dynamických dat (preview)** možnost a podokno se zobrazí pod tabulkou dat výkonu, kde můžete zobrazit protokol a události v nepřetržitý datový proud. 
 
 ![Možnost živé protokoly uzlu vlastnosti podokna zobrazení](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
 
@@ -88,7 +91,7 @@ Zprávy protokolů a událostí jsou omezené na základě, na jaký typ prostř
 | Uzly | Node | Událost | Když je vybrán uzel události nefiltrují a zobrazit události celého clusteru Kubernetes. Název podokně zobrazí název clusteru. |
 | Uzly | Pod | Událost | Pokud je vybrána pod události jsou filtrovány do svého oboru názvů. Název podokně zobrazí obor názvů pod. | 
 | Kontrolery | Pod | Událost | Pokud je vybrána pod události jsou filtrovány do svého oboru názvů. Název podokně zobrazí obor názvů pod. |
-| Kontrolery | Kontrolér | Událost | Při výběru kontroleru události jsou filtrovány do svého oboru názvů. Název podokně zobrazí obor názvů kontroleru. |
+| Kontrolery | Kontroler | Událost | Při výběru kontroleru události jsou filtrovány do svého oboru názvů. Název podokně zobrazí obor názvů kontroleru. |
 | Uzly/řadiče/kontejnery | Kontejner | Protokoly | Název podokně zobrazí, že název kontejneru pod seskupen s. |
 
 Pokud AKS cluster je nakonfigurovaný s jednotným Přihlašováním pomocí AAD, zobrazí se výzva k ověření při prvním použití během této relace prohlížeče. Vyberte svůj účet a dokončete ověření pomocí Azure.  

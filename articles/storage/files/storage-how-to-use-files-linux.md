@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691263"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427922"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 
@@ -81,56 +81,57 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení Azure file sdílené složky na vyžádání pomocí `mount`
 
-1. **[Nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](#install-cifs-utils)**.
+1. **[Nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](#install-cifs-utils)** .
 
-1. **Vytvořte složku k přípojnému bodu**: Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Příklad:
+1. **Vytvořte složku k přípojnému bodu**: Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto v nové složce. Například následující příkaz vytvoří nový adresář, nahraďte **< název_účtu_úložiště >** a **< file_share_name >** odpovídajícími informacemi pro vaše prostředí:
 
     ```bash
-    mkdir /mnt/MyAzureFileShare
+    mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Připojení sdílené složky Azure pomocí příkazu připojení**: Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>`, a `<mount-point>` odpovídajícími informacemi pro vaše prostředí. Pokud vaší distribuci Linuxu podporuje šifrování protokolu SMB 3.0 (naleznete v tématu [SMB pochopit požadavky na klienta](#smb-client-reqs) Další informace), použijte `3.0` pro `<smb-version>`. Pro distribuce Linuxu, které nepodporují šifrování protokolu SMB 3.0, použijte `2.1` pro `<smb-version>`. Je pouze možné připojit sdílenou složku Azure mimo oblast Azure (včetně místní nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
+1. **Připojení sdílené složky Azure pomocí příkazu připojení**: Nezapomeňte nahradit **< název_účtu_úložiště >** , **< název_sdílené_složky >** , **< smb_version >** , **< klíč_účtu_úložiště >** , a **< mount_point >** odpovídajícími informacemi pro vaše prostředí. Pokud vaší distribuci Linuxu podporuje šifrování protokolu SMB 3.0 (naleznete v tématu [SMB pochopit požadavky na klienta](#smb-client-reqs) Další informace), použijte **3.0** pro **< smb_version >** . Pro distribuce Linuxu, které nepodporují šifrování protokolu SMB 3.0, použijte **2.1** pro **< smb_version >** . Je pouze možné připojit sdílenou složku Azure mimo oblast Azure (včetně místní nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
 
     ```bash
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> Po dokončení pomocí sdílené složky Azure, můžete použít `sudo umount <mount-point>` odpojit sdílenou složku.
+> Po dokončení pomocí sdílené složky Azure, můžete použít `sudo umount <mount_point>` odpojit sdílenou složku.
 
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvořit bod trvalé připojení pro sdílenou složku Azure pomocí `/etc/fstab`
 
-1. **[Nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](#install-cifs-utils)**.
+1. **[Nainstalovat balíček cifs utils pro vaši Linuxovou distribuci](#install-cifs-utils)** .
 
-1. **Vytvořte složku k přípojnému bodu**: Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto pod `/mnt` složky. Bez ohledu na to vytvoříte, mějte na paměti absolutní cestu ke složce. Například následující příkaz vytvoří novou složku s `/mnt` (cesta je absolutní cesta).
+1. **Vytvořte složku k přípojnému bodu**: Složka pro bod připojení je vytvořit kdekoli v systému souborů, ale je běžné konvence k vytvoření tohoto v nové složce. Bez ohledu na to vytvoříte, mějte na paměti absolutní cestu ke složce. Například následující příkaz vytvoří nový adresář, nahraďte **< název_účtu_úložiště >** a **< file_share_name >** odpovídajícími informacemi pro vaše prostředí.
 
     ```bash
-    sudo mkdir /mnt/MyAzureFileShare
+    sudo mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Vytvořte soubor přihlašovacích údajů ukládat uživatelské jméno (název účtu úložiště) a heslo (klíč účtu úložiště) pro sdílenou složku.** Nezapomeňte nahradit `<storage-account-name>` a `<storage-account-key>` odpovídajícími informacemi pro vaše prostředí. 
+1. **Vytvořte soubor přihlašovacích údajů ukládat uživatelské jméno (název účtu úložiště) a heslo (klíč účtu úložiště) pro sdílenou složku.** Nahraďte **< název_účtu_úložiště >** a **< klíč_účtu_úložiště >** odpovídajícími informacemi pro vaše prostředí.
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir /etc/smbcredentials
+    sudo mkdir /etc/smbcredentials
     fi
-
-    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
-        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
-        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    if [ ! -f "/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred" ]; then
+    sudo bash -c 'echo "username=<STORAGE ACCOUNT NAME>" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
+    sudo bash -c 'echo "password=7wRbLU5ea4mgc<DRIVE LETTER>PIpUCNcuG9gk2W4S2tv7p0cTm62wXTK<DRIVE LETTER>CgJlBJPKYc4VMnwhyQd<DRIVE LETTER>UT<DRIVE LETTER>yR5/RtEHyT/EHtg2Q==" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
     fi
     ```
 
 1. **Změna oprávnění u soubor s přihlašovacími údaji, tak jenom kořenový může číst nebo upravovat soubor hesla.** Klíč účtu úložiště je v podstatě velmi správce heslo pro účet úložiště, nastavení oprávnění pro soubor, který se dostanete tak, aby se pouze hlavní je důležité, aby nižší oprávnění uživatele nelze načíst klíč účtu úložiště.   
 
     ```bash
-    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    sudo chmod 600 /etc/smbcredentials/<storage_account_name>.cred
     ```
 
-1. **Použijte následující příkaz pro přidání následující řádek, který `/etc/fstab`** : Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<smb-version>`, a `<mount-point>` odpovídajícími informacemi pro vaše prostředí. Pokud vaší distribuci Linuxu podporuje šifrování protokolu SMB 3.0 (naleznete v tématu [SMB pochopit požadavky na klienta](#smb-client-reqs) Další informace), použijte `3.0` pro `<smb-version>`. Pro distribuce Linuxu, které nepodporují šifrování protokolu SMB 3.0, použijte `2.1` pro `<smb-version>`. Je pouze možné připojit sdílenou složku Azure mimo oblast Azure (včetně místní nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
+1. **Použijte následující příkaz pro přidání následující řádek, který `/etc/fstab`** : Nezapomeňte nahradit **< název_účtu_úložiště >** , **< název_sdílené_složky >** , **< smb_version >** , a **< mount_point >** odpovídajícími informacemi pro vaše prostředí. Pokud vaší distribuci Linuxu podporuje šifrování protokolu SMB 3.0 (naleznete v tématu [SMB pochopit požadavky na klienta](#smb-client-reqs) Další informace), použijte **3.0** pro **< smb_version >** . Pro distribuce Linuxu, které nepodporují šifrování protokolu SMB 3.0, použijte **2.1** pro **< smb_version >** . Je pouze možné připojit sdílenou složku Azure mimo oblast Azure (včetně místní nebo v jiné oblasti Azure) s protokolem SMB 3.0.
 
     ```bash
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+    sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```
 
 > [!Note]  
@@ -148,4 +149,4 @@ Další informace o službě Soubory Azure najdete na těchto odkazech:
 
 * [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)
-* [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)
+* [Odstraňování potíží](storage-troubleshoot-linux-file-connection-problems.md)

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575418"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478603"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuální sítě
 
 Vytvoření virtuální sítě můžete experimentovat s je docela jednoduché, ale je pravděpodobné, bude nasazovat více virtuálních sítí v čase pro podporu provozním potřebám vaší organizace. Pomocí plánování, budou moct nasazení virtuální sítě a připojení prostředky, které budete potřebovat efektivněji. Informace v tomto článku je nejužitečnější, pokud jste již obeznámeni s virtuálními sítěmi a máte nějaké zkušenosti, práci s nimi. Pokud nejste obeznámeni s virtuálními sítěmi, doporučujeme, abyste si přečetli [Přehled virtuálních sítí](virtual-networks-overview.md).
 
-## <a name="naming"></a>Pojmenování
+## <a name="naming"></a>pojmenování
 
 Všechny prostředky Azure mít název. Název musí být jedinečné v rámci oboru, které pro každý typ prostředku se můžou lišit. Například název virtuální sítě musí být jedinečný v rámci [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale mohou být duplicitní v rámci [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) nebo Azure [oblasti](https://azure.microsoft.com/regions/#services). Definování zásady vytváření názvů, který vám pomůže konzistentně při pojmenování prostředků je užitečné při správě několika síťových prostředků v čase. Návrhy, naleznete v tématu [zásady vytváření názvů](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
@@ -77,7 +77,7 @@ Můžete filtrovat síťový provoz do a z prostředků ve virtuální síti pom
 - Pokud různé virtuální počítače v podsíti, pravidla zabezpečení použitá jim, můžete přidružit síťové rozhraní ve virtuálním počítači na jeden nebo více skupin zabezpečení aplikací. Pravidlo zabezpečení můžete určit skupinu zabezpečení aplikace v její zdroj a cíl. Toto pravidlo potom vztahuje pouze na síťová rozhraní, které jsou členy skupiny zabezpečení aplikace. Další informace o [skupiny zabezpečení sítě](security-overview.md) a [skupiny zabezpečení aplikací](security-overview.md#application-security-groups).
 - Azure vytvoří několik výchozích pravidel zabezpečení v rámci jednotlivých skupin zabezpečení sítě. Jedno výchozí pravidlo umožňuje veškerý provoz mezi všechny prostředky ve virtuální síti. Chcete-li toto chování přepsat, použijte zabezpečení sítě ve skupině, vlastního směrování směrovat provoz na síťové virtuální zařízení, nebo obojí. Doporučuje se, že je seznámit se všemi Azure [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules) a pochopit, jak se používají pravidla skupiny zabezpečení sítě k prostředku.
 
-Můžete zobrazit vzorové návrhy pro implementaci hraniční síti (označované také jako DMZ) mezi Azure a internet pomocí [síťové virtuální zařízení](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) nebo [skupiny zabezpečení sítě](virtual-networks-dmz-nsg.md).
+Můžete zobrazit vzorové návrhy pro implementaci hraniční síti (označované také jako DMZ) mezi Azure a internet pomocí [síťové virtuální zařízení](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
 
 ### <a name="traffic-routing"></a>Směrování provozu
 

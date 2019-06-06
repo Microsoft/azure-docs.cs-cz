@@ -2,20 +2,20 @@
 title: Poznámky pro vývojáře pro vlastní zásady – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Poznámky pro vývojáře na konfiguraci a správu Azure AD B2C s vlastními zásadami.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1093f1882328604819d5fbab33d87b26f1af2886
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1d0be4ec2ed8feb308839377e0494ef2f4b78368
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703244"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510215"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -59,7 +59,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="identity-providers-tokens-protocols"></a>Poskytovatelé tokenů, protokoly identity
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 |-------- | ----------- | ------- | -- | ----- |
 | IDP-OpenIDConnect |  |  | X | Například Google +.  |
 | IDP-OAUTH2 |  |  | X | Například Facebook.  |
@@ -76,7 +76,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="component-support"></a>Podpora součásti
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 | ------- | ----------- | ------- | -- | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | Azure Active Directory jako místní adresář |  |  | X |  |
@@ -87,7 +87,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="content-definition"></a>Definice obsahu
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 | ------- | ----------- | ------- | -- | ----- |
 | Chybové stránky, api.error |  |  | X |  |
 | Stránka výběru zprostředkovatele identity, api.idpselections |  |  | X |  |
@@ -103,7 +103,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="app-ief-integration"></a>Integrace aplikace IEF
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 | ------- | ----------- | ------- | -- | ----- |
 | Domain_hint parametr řetězce dotazu |  |  | X | K dispozici jako deklarace identity, může být předán zprostředkovatel identity. |
 | Login_hint parametr řetězce dotazu |  |  | X | K dispozici jako deklarace identity, může být předán zprostředkovatel identity. |
@@ -113,7 +113,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="session-management"></a>Správa relací
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 | ------- | ----------- | ------- | -- | ----- |
 | Poskytovatel relace jednotného přihlašování |  |  | X |  |
 | Zprostředkovatel relací externí přihlášení |  |  | X |  |
@@ -122,7 +122,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="security"></a>Zabezpečení
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 |-------- | ----------- | ------- | -- | ----- |
 | Zásady klíče generovat, manuální, nahrávání |  |  | X |  |
 | Zásady klíče - RSA/Cert tajných kódů |  |  | X |  |
@@ -130,7 +130,7 @@ Rozhraní prostředí pro vlastní zásady/identit. Tyto funkce jsou ve vývoji 
 
 ### <a name="developer-interface"></a>Rozhraní pro vývojáře
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Náhled | GA | Poznámky |
 | ------- | ----------- | ------- | -- | ----- |
 | Azure Portal IEF uživatelského prostředí |  |  | X |  |
 | Application Insights UserJourney Logs |  | X |  | Používá se pro řešení potíží během vývoje.  |

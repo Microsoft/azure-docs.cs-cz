@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60237614"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427367"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 
@@ -61,12 +61,12 @@ Tento článek obsahuje seznam různých serverů a úloh, které můžete chrá
 |SQL Server|SQL Server 2008|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Všechny scénáře nasazení: databáze|
 |SQL Server|SQL Server 2008|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /> <br /> Azure Stack|Ano|Ano|Všechny scénáře nasazení: databáze|
 |SQL Server|SQL Server 2008|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Všechny scénáře nasazení: databáze|
-|Výměna|Exchange 2016|Fyzický server<br/><br/> Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
-|Výměna|Exchange 2016|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
-|Výměna|Exchange 2013|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
-|Výměna|Exchange 2013|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
-|Výměna|Exchange 2010|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení):  Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
-|Výměna|Exchange 2010|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení):  Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
+|Exchange|Exchange 2016|Fyzický server<br/><br/> Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
+|Exchange|Exchange 2016|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
+|Exchange|Exchange 2013|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
+|Exchange|Exchange 2013|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
+|Exchange|Exchange 2010|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení):  Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
+|Exchange|Exchange 2010|Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení): Samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)<br /><br />Obnovení (všechny scénáře nasazení):  Poštovní schránka, databáze poštovní schránky ve skupině DAG<br/><br/> Zálohování serveru Exchange za nepodporuje odolný systém souborů |
 |SharePoint|SharePoint 2016|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /><br />Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)<br /><br />Virtuální počítač Windows ve VMWare (chrání úlohy běžící na virtuálním počítači Windows ve VMWare)<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení):  Farma, obsah frontendového webového serveru<br /><br />Obnovení (všechny scénáře nasazení):  Farma, databáze, webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, frontendový webový server<br /><br />Všimněte si, že není podporována ochrana Sharepointové farmy, která používá funkci SQL Server 2012 AlwaysOn pro databázi obsahu.|
 |SharePoint|SharePoint 2013|Fyzický server<br /><br />Místní virtuální počítač Hyper-V<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení):  Farma, obsah frontendového webového serveru<br /><br />Obnovení (všechny scénáře nasazení):  Farma, databáze, webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, frontendový webový server<br /><br />Všimněte si, že není podporována ochrana Sharepointové farmy, která používá funkci SQL Server 2012 AlwaysOn pro databázi obsahu.|
 |SharePoint|SharePoint 2013|Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure) – aplikace DPM 2012 R2 Update Rollup 3 a vyšší<br /> <br /> Azure Stack|Ano|Ano|Ochrana (všechny scénáře nasazení):  Farma, vyhledávání služby SharePoint, obsah frontendového webového serveru<br /><br />Obnovení (všechny scénáře nasazení):  Farma, databáze, webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, frontendový webový server<br /><br />Všimněte si, že není podporována ochrana Sharepointové farmy, která používá funkci SQL Server 2012 AlwaysOn pro databázi obsahu.|
@@ -82,6 +82,15 @@ Tento článek obsahuje seznam různých serverů a úloh, které můžete chrá
 |Virtuální počítače VMware|VMware vCenter/vSphere ESX/ESXi licenci 5.5/6.0/6.5 verze |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ano|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
 |Virtuální počítače VMware|[VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ne|Virtuální počítače VMware na sdílené svazky clusteru (CSV), systém souborů NFS a úložištěm pro sítě SAN<br /> Obnovení na úrovni položek souborů a složek je k dispozici pouze pro virtuální počítače s Windows, se nepodporují aplikace Vapp VMware.|
 |Linux|Linux spuštěný jako hosta technologie Hyper-V nebo VMware|Fyzický server <br/>On-premises Hyper-V virtuálního počítače, <br/> Windows virtuální počítač v prostředí VMWare|Ano|Ano|Technologie Hyper-V musí běžet na Windows Server 2012 R2 nebo Windows Server 2016. Ochrana: Celý virtuální počítač<br /><br />Obnovení: Celý virtuální počítač <br/><br/> Úplný seznam podporovaných Linuxových distribucích a verzích, najdete v článku, [Linux v distribucích schválených pro Azure](../virtual-machines/linux/endorsed-distros.md).|
+
+## <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
+
+Pokud Azure ExpressRoute je nakonfigurovaný s privátním nebo Microsoft partnerský vztah, nelze použít k zálohování dat do Azure.
+
+Pokud je nakonfigurované veřejné partnerské vztahy Azure ExpressRoute, můžete použít k zálohování dat do Azure.
+
+>[!NOTE]
+>Veřejný partnerský vztah se již nepoužívá pro nové okruhy.
 
 ## <a name="cluster-support"></a>Podpora clusteru
 Azure Backup Server dokáže chránit data v následujících clusterovaných aplikacích:

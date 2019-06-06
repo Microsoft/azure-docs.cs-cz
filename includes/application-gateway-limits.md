@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 3/26/2019
+ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238406"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66689098"
 ---
 | Resource | Výchozí/maximální limit | Poznámka |
 | --- | --- | --- |
@@ -37,5 +37,6 @@ ms.locfileid: "66238406"
 | Maximální velikost nahrání, Standard |2 GB | |
 | Maximální nahrávání velikost WAF |Střední brány WAF, 100 MB<br>Velké brány WAF, 500 MB| |
 | Omezení velikosti textu WAF, bez souborů|128 KB||
+|Maximální vlastní pravidla firewallu webových aplikací|100||
 
 <sup>1</sup> v případě povoleným WAF SKU, doporučujeme vám, že omezíte počet prostředků na 40 pro zajištění optimálního výkonu.

@@ -2,20 +2,20 @@
 title: Technický profil SAML definování ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Technický profil SAML definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/21/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4a2e8938aeaf75b3b0237962d16f2702968358f9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dca330f20548d3a93091f89dc8ab2b3cb92f50e2
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695584"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512715"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil SAML definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -82,7 +82,7 @@ Následující příklad ukazuje část Azure AD B2C technický profil šifrová
 </KeyDescriptor>
 ```
     
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 **Název** atribut elementu protokol musí být nastavena na `SAML2`. 
 

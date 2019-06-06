@@ -1,43 +1,43 @@
 ---
-title: Sledovat a protokolovat události Azure Data Box | Dokumentace Microsoftu
-description: Popisuje, jak sledovat a protokolovat události v různých fázích vaše objednávka zařízení Azure Data Box.
+title: Sledování a protokolů Azure Data Box, Azure Data Box náročné události | Dokumentace Microsoftu
+description: Popisuje, jak sledovat a protokolovat události v různých fázích vaše objednávka zařízení Azure Data Box a Azure Data Box náročné.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7a6adc72c1dfbe67311ae2ca98d5b07dfab41719
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806503"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495808"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box"></a>Sledování a protokolování událostí pro vaše zařízení Azure Data Box
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
 
-Objednávka zařízení Data Box prochází následující kroky: order, nastavit, data kopírovat, vraťte, nahrajte do Azure a ověřit a výmaz dat. Odpovídající každý krok v pořadí, můžete proveďte více akcí pro řízení přístupu k pořadí, událostech auditování, sledování pořadí a interpretovat různé protokoly, které jsou generovány.
+Objednávky zařízení Data Box nebo Data Box náročné prochází následující kroky: order, nastavit, data kopírovat, vraťte, nahrajte do Azure a ověřit a výmaz dat. Odpovídající každý krok v pořadí, můžete proveďte více akcí pro řízení přístupu k pořadí, událostech auditování, sledování pořadí a interpretovat různé protokoly, které jsou generovány.
 
-V následující tabulce je přehled kroků objednávky zařízení Data Box a dostupnost nástrojů pro sledování a auditování pořadí během jednotlivých kroků.
+Následující tabulka uvádí přehled zařízení Data Box nebo Data Box náročné pořadí kroků a dostupnost nástrojů pro sledování a auditování pořadí během jednotlivých kroků.
 
 | Data Box pořadí fází       | Nástroj ke sledování a auditování                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Vytvořit objednávku               | [Nastavení řízení přístupu na příkazu via RBAC](#set-up-access-control-on-the-order)                                                    |
 | Pořadí zpracování            | [Sledování pořadí](#track-the-order) prostřednictvím <ul><li> portál Azure </li><li> Přesouvání dopravce webu </li><li>E-mailová oznámení</ul> |
-| Nainstalovat zařízení              | Přístup k přihlášení pověření zařízení [protokolů aktivit](#query-activity-logs-during-setup)                                              |
-| Kopírování dat do zařízení        | [Zobrazení *error.xml* soubory](#view-error-log-during-data-copy-to-data-box) pro kopírování dat                                                             |
-| Připravit k odeslání            | [Kontrola souborů BOM](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu v zařízení                                      |
+| Nastavení zařízení              | Přístup k přihlášení pověření zařízení [protokolů aktivit](#query-activity-logs-during-setup)                                              |
+| Kopírování dat do zařízení        | [Zobrazení *error.xml* soubory](#view-error-log-during-data-copy) pro kopírování dat                                                             |
+| Příprava k odeslání            | [Kontrola souborů BOM](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu v zařízení                                      |
 | Nahrání dat do Azure       | [Kontrola *copylogs* ](#review-copy-log-during-upload-to-azure) chyby během data nahrát na datové centrum Azure                         |
 | Vymazání dat ze zařízení   | [Zobrazit řetězce sledování postupného předávání protokolů](#get-chain-of-custody-logs-after-data-erasure) včetně protokoly auditu a uspořádat historii                                                   |
 
-Tento článek podrobně popisuje, různé mechanismy nebo nástroje, které jsou k dispozici ke sledování a auditování objednávka zařízení Data Box.
+Tento článek podrobně popisuje, různé mechanismy nebo nástroje ke sledování a auditování objednávky zařízení Data Box nebo Data Box náročné. Informace v tomto článku platí pro zařízení Data Box i Data Box náročné. V dalších částech všechny odkazy na zařízení Data Box platí také pro Data Box náročné.
 
 ## <a name="set-up-access-control-on-the-order"></a>Nastavení řízení přístupu na pořadí
 
 Můžete řídit, kdo má přístup k vaší objednávky při prvním vytvoření pořadí. Nastavení řízení přístupu na základě rolí (RBAC) rolí na různé obory pro řízení přístupu k objednávka zařízení Data Box. Roli RBAC Určuje typ přístupu – pro čtení i zápis, jen pro čtení, čtení a zápis na podmnožinu operace.
 
-Jsou dvě zařízení Data Box role, které lze definovat:
+Tyto dvě role, které lze definovat pro službu Azure Data Box jsou:
 
 - **Čtecí modul dat pole** -přístup jen pro čtení pro objednávky podle oboru. Může zobrazit jenom podrobnosti objednávky. Nemohou přistupovat k další podrobnosti související s účty úložiště nebo upravit podrobnosti objednávky, jako je například adresa a tak dále.
 - **Přispěvatel dat pole** – může pouze vytvořit objednávku posílat data do účtu úložiště pro danou *Pokud už mají přístup pro zápis do účtu úložiště*. Pokud nemají přístup k účtu úložiště, nelze dokonce vytvořit objednávka zařízení Data Box ke zkopírování dat do účtu. Tato role nedefinuje žádné účet úložiště související oprávnění ani uděluje přístup k účtům úložiště.  
@@ -70,9 +70,9 @@ Můžete sledovat vaši objednávku na webu Azure portal a na webových stránk�
 
 - Každý znak do zařízení Data Box je zaznamenané reálném čase. Ale tyto informace je k dispozici pouze [protokoly auditu](#audit-logs) po úspěšném dokončení pořadí.
 
-## <a name="view-error-log-during-data-copy-to-data-box"></a>Zobrazit v protokolu chyb při kopírování dat do zařízení Data Box
+## <a name="view-error-log-during-data-copy"></a>Zobrazit v protokolu chyb při kopírování dat.
 
-Při kopírování dat do zařízení Data Box chybový soubor je generována pokud nastanou problémy se data kopírují.
+Při kopírování dat do zařízení Data Box nebo náročné pole dat je generována chybový soubor pokud nastanou problémy se data kopírují.
 
 ### <a name="errorxml-file"></a>Soubor Error.XML
 
@@ -147,7 +147,7 @@ Tady je ukázka *error.xml* různých chyb při kopírování do služby soubory
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-V každé z výše uvedených případech vyřešte chyby, než budete pokračovat k dalšímu kroku. Další informace o chyb oznámených při kopírování dat do zařízení Data Box přes protokoly SMB a systému souborů NFS, přejděte na [problémy řešit zařízení Data Box](data-box-troubleshoot.md). Informace o chyb oznámených při kopírování dat do zařízení Data Box přes REST, přejděte na [problémů s úložištěm objektů Blob řešení potíží s poli Data](data-box-troubleshoot-rest.md).
+V každé z výše uvedených případech vyřešte chyby, než budete pokračovat k dalšímu kroku. Další informace o chyb oznámených při kopírování dat do zařízení Data Box přes protokoly SMB a systému souborů NFS, přejděte na [řešení potíží s poli Data a Data Box náročné problémy](data-box-troubleshoot.md). Informace o chyb oznámených při kopírování dat do zařízení Data Box přes REST, přejděte na [problémů s úložištěm objektů Blob řešení potíží s poli Data](data-box-troubleshoot-rest.md).
 
 ## <a name="inspect-bom-during-prepare-to-ship"></a>Kontrola BOM během přípravu k odeslání
 
@@ -157,7 +157,7 @@ Během přípravu k odeslání, seznam souborů, které jsou známé jako vyúč
 - Tento soubor můžete použijte k ověření proti skutečné velikosti souborů.
 - Ověřte, že *crc64* odpovídá řetězec nenulové. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Další informace o chyb oznámených při přípravě k odeslání, přejděte na [problémy řešit zařízení Data Box](data-box-troubleshoot.md).
+Další informace o chyb oznámených při přípravě k odeslání, přejděte na [řešení potíží s poli Data a Data Box náročné problémy](data-box-troubleshoot.md).
 
 ### <a name="bom-or-manifest-file"></a>Soubor manifestu nebo BOM
 
@@ -253,7 +253,7 @@ Po data se vymažou z disků Data Box podle pokynů SP NIST 800-88 revizi 1, jso
 
 ### <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu obsahují informace o zapnutí a sdílejí přístup na zařízení Data Box, pokud je mimo datové centrum Azure. Tyto protokoly jsou umístěné na: `storage-account/azuredatabox-chainofcustodylogs`
+Protokoly auditu obsahují informace o zapnutí a sdílet přístup k zařízení Data Box nebo velkým pole Data, když je mimo datové centrum Azure. Tyto protokoly jsou umístěné na: `storage-account/azuredatabox-chainofcustodylogs`
 
 Tady je ukázka protokolu auditu ze zařízení Data Box:
 
@@ -308,9 +308,9 @@ The authentication information fields provide detailed information about this sp
 ```
 
 
-## <a name="download-order-history"></a>Stáhnout historii objednávek
+## <a name="download-order-history"></a>Stažení historie objednávky
 
-Historie objednávek je k dispozici na webu Azure portal. Pokud pořadí je kompletní a dokončení vyčištění zařízení (výmaz dat z disků), potom přejděte na **objednávka zařízení Data Box > Podrobnosti objednávky**. ** Stažení historie objednávek** možnost je k dispozici. Další informace najdete v tématu [stažení historie objednávek](data-box-portal-admin.md#download-order-history).
+Historie objednávek je k dispozici na webu Azure portal. Pokud pořadí je kompletní a dokončení vyčištění zařízení (výmaz dat z disků), přejděte na vaše objednávka zařízení a přejděte do **podrobnosti objednávky**. ** Stažení historie objednávek** možnost je k dispozici. Další informace najdete v tématu [stažení historie objednávek](data-box-portal-admin.md#download-order-history).
 
 Pokud při procházení historie objednávek se zobrazí:
 
@@ -324,7 +324,7 @@ Tady je příklad historie protokolu pořadí z webu Azure portal:
 -------------------------------
 Microsoft Data Box Order Report
 -------------------------------
-Name                                               : gus-pinto                              
+Name                                               : gus-poland                              
 StartTime(UTC)                              : 9/19/2018 8:49:23 AM +00:00                       
 DeviceType                                     : DataBox                                           
 -------------------
@@ -362,11 +362,11 @@ Time(UTC)                 | Activity                       | Status          | D
 Data Box Log Links
 ------------------
 Account Name         : gusacct
-Copy Logs Path       : databoxcopylog/gus-pinto_<Device-serial-no>_CopyLog_<GUID>.xml
+Copy Logs Path       : databoxcopylog/gus-poland_<Device-serial-no>_CopyLog_<GUID>.xml
 Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [potíží na vaše zařízení Data Box](data-box-troubleshoot.md).
+- Zjistěte, jak [problémů na zařízení Data Box a Data Box náročné](data-box-troubleshoot.md).

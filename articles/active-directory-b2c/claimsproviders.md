@@ -2,20 +2,20 @@
 title: ClaimsProviders – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zadejte element ClaimsProvider vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ababd7e9f1de33eb8679e583c2db18d2992cfb1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699633"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511524"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -41,7 +41,7 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 
 **ClaimsProviders** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1: n | Poskytovatele akreditované deklarace identity, který můžete využít v různých cest uživatele. |
 
@@ -49,10 +49,10 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 
 **ClaimsProvider** prvek obsahuje následujících podřízených elementů:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ---------- | ----------- |
 | Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud poskytovatele deklarací identity obsahuje technický profil na Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definovanými v zprostředkovatele deklarací identity, pokud není přepsán technický profil. Název domény můžete také odkazovat **domain_hint**. Další informace najdete v tématu **přesměrování přihlášení k poskytovateli sociální** část [nastavit přímé přihlášení pomocí Azure Active Directory B2C](direct-signin.md). |
-| Zobrazovaný název | 0:1 | Řetězec, který obsahuje název, který může být zobrazen uživatelům. |
+| displayName | 0:1 | Řetězec, který obsahuje název, který může být zobrazen uživatelům. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Sada technické profily, které podporuje zprostředkovatel deklarací identity |
 
 **ClaimsProvider** slouží k uspořádání vztah technické profily k zprostředkovatele deklarací identity. Následující příklad ukazuje zprostředkovatele deklarací identity Azure Active Directory s Azure Active Directory technické profily:

@@ -2,20 +2,20 @@
 title: Třída StringCollection deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
 description: Třída StringCollection deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37102a231f1741b9e488cca101f4a5411f89de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 98453daeb34d093b49cdcc636f68c3d7ae017126
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681990"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512440"
 ---
 # <a name="stringcollection-claims-transformations"></a>Třída StringCollection deklarace identity transformace
 
@@ -30,8 +30,8 @@ Přidá řetězec deklarace identity do nové třída stringCollection deklarace
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Položka | string | Přidat do výstupu deklarace typu deklarace identity. |
-| InputClaim | kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
-| outputClaim | kolekce | stringCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. |
+| InputClaim | Kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
+| outputClaim | Kolekce | stringCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. |
 
 Použijte Tato transformace přidat řetězec nové nebo existující třída stringCollection deklarací identity. Se běžně používá **AAD UserWriteUsingAlternativeSecurityId** technický profil. Před vytvořením nového účtu na sociální síti **CreateOtherMailsFromEmail** transformaci deklarací identity načte typ ClaimType a přidá hodnotu **otherMails** typu deklarace identity. 
 
@@ -63,9 +63,9 @@ Přidá novou deklaraci třída stringCollection parametr řetězce.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
+| InputClaim | Kolekce | stringCollection | [Volitelné] -Li zadána, transformace deklarací identity zkopíruje položky z této kolekce a přidá položku do konce výstupní kolekce deklarací. |
 | InputParameter | Položka | string | Hodnota přidávaného do výstupní deklarací. |
-| outputClaim | kolekce | stringCollection | ClaimTypes, který bude vytvořen po zavolání této ClaimsTransformation. |
+| outputClaim | Kolekce | stringCollection | ClaimTypes, který bude vytvořen po zavolání této ClaimsTransformation. |
 
 Použijte Tato transformace přidat hodnotu řetězce nové nebo existující třída stringCollection deklarací identity. Následující příklad přidá konstanty e-mailovou adresu (admin@contoso.com) k **otherMails** deklarací identity. 
 
@@ -98,7 +98,7 @@ Získá první položku z kolekce zadaný řetězec.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | kolekce | stringCollection | ClaimTypes, které jsou používány transformace deklarací identity k získání položky. |
+| InputClaim | Kolekce | stringCollection | ClaimTypes, které jsou používány transformace deklarací identity k získání položky. |
 | outputClaim | extractedItem | string | ClaimTypes vytvořený po zavolání této ClaimsTransformation. První položka v kolekci. |
 
 Následující příklad načte **otherMails** deklarace identity a vrátí první položku do **e-mailu** deklarací identity. 

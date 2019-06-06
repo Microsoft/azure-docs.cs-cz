@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: victorh
-ms.openlocfilehash: 847ad271dac4afc8c8baa2faa8702b3a3ab6cefa
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: b34baa6f1ba91935fc6307dbb1617393786043b9
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596700"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692848"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias Přehled záznamů
 
@@ -27,12 +27,12 @@ Sady záznamů alias je podporována pro následující typy záznamů v zóně 
 > [!NOTE]
 > Pokud máte v úmyslu použít záznamu o aliasu pro typy záznamů A nebo AAAA tak, aby odkazovala na [profilu Azure Traffic Manageru](../traffic-manager/quickstart-create-traffic-manager-profile.md) Ujistěte se, že profil služby Traffic Manager má pouze [externí koncové body](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Musíte zadat adresu IPv4 nebo IPv6 pro externí koncové body Traffic Manageru. V koncových bodech nelze použít plně kvalifikované názvy domén (FQDN). V ideálním případě používání statických IP adres.
 
-## <a name="capabilities"></a>Schopnosti
+## <a name="capabilities"></a>Možnosti
 
 - **Odkazovat na prostředek veřejné IP adresy ze serveru DNS A/AAAA sadu záznamů.** Můžete vytvořit sadu záznamů A/AAAA a nastavte ji alias záznamu sady tak, aby odkazoval na prostředek veřejné IP adresy. Sady záznamů DNS je automaticky, pokud veřejná IP adresa se změní nebo je odstranit. Nepropojená DNS záznamy, které odkazují na nesprávné IP adresy se jim vyhnout.
 
 - **Přejděte na profil Traffic Manageru ze sady záznamů DNS A/AAAA/CNAME.** Můžete vytvořit A/AAAA nebo záznam CNAME nastavit a nasměrovat ho na profil Traffic Manageru pomocí záznamů aliasů. Je užitečné zejména při je potřeba směrovat provoz na vrcholu zóny, protože tradiční záznamy CNAME se nepodporují pro vrcholu zóny. Řekněme například, je váš profil Traffic Manageru myprofile.trafficmanager.net a zónu DNS firmy je contoso.com. Můžete vytvořit alias záznamu sadu typů A/AAAA pro doménu contoso.com (vrcholu zóny) a přejděte na myprofile.trafficmanager.net.
-- **Přejděte na koncový bod Azure Content Delivery Network (CDN)**. To je užitečné při vytváření statických webů pomocí služby Azure storage a Azure CDN.
+- **Přejděte na koncový bod Azure Content Delivery Network (CDN)** . To je užitečné při vytváření statických webů pomocí služby Azure storage a Azure CDN.
 - **Přejděte na jinou sadu záznamů DNS v rámci stejné zóny.** Záznamy aliasů můžou odkazovat na jiné sady záznamů stejného typu. Sady záznamů DNS CNAME může být například alias pro jinou sadu záznamů CNAME. Toto uspořádání je užitečné, pokud chcete, aby některé sady záznamů bude aliasy a některé jiné aliasy.
 
 ## <a name="scenarios"></a>Scénáře
@@ -67,6 +67,9 @@ Stejně jako profil služby Traffic Manager můžete také použít záznamů al
 Například pokud váš statický web název www.contoso.com, vaši uživatelé mohou k webu pomocí contoso.com bez nutnosti předřaďte www jako název DNS.
 
 Jak je popsáno výše, záznamy CNAME nejsou podporovány ve vrcholu zóny. Proto nelze použít záznam CNAME tak, aby odkazovala na váš koncový bod CDN contoso.com. Místo toho můžete použít záznamu o aliasu tak, aby odkazoval na vrcholu zóny přímo do koncového bodu CDN.
+
+> [!NOTE]
+> Přejdete na vrcholu zóny koncových bodů CDN pro Azure CDN od Akamai se aktuálně nepodporuje.
 
 ## <a name="next-steps"></a>Další postup
 

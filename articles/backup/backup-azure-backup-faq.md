@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: a0a2bc58603a81ba23ff3f1feb05f4d2350cfe72
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551371"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688744"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
 
-## <a name="recovery-services-vault"></a>Trezor Recovery Services
+## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Je v rámci předplatného Azure nějak omezený počet trezorů, které lze vytvořit?
 Ano. Můžete vytvořit až 500 trezorů služby Recovery Services, každou podporovanou oblast služby Azure Backup na jedno předplatné. Pokud potřebujete další trezory, vytvořte další předplatné.
@@ -172,7 +172,7 @@ Ne. Zásady uchovávání informací lze aplikovat pouze na body záloh. Tato Im
 Ne. Čas obnovení nejstaršího nebo nejnovější bod je stejný. Každý bod obnovení se chová jako úplný bod.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Jestliže se každý bod obnovení chová jako úplný bod, ovlivní to celkové fakturovatelné úložiště zálohování?
-Typické produkty s dlouhodobými body uchování ukládají zálohovaná data jako úplné body. 
+Typické produkty s dlouhodobými body uchování ukládají zálohovaná data jako úplné body.
 
 - Úplné body jsou *neefektivní* z hlediska úložiště, ale jejich obnovení je snadnější a rychlejší.
 - Přírůstkové kopie jsou úložiště *efektivní* ale vyžadují obnovení řetězu dat, což ovlivňuje dobu obnovení
@@ -182,8 +182,8 @@ Architektura úložiště Azure Backup nabízí to nejlepší z obou světů –
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Je nějak omezený počet bodů obnovení, které lze vytvořit?
 Na jednu chráněnou instanci je možné vytvořit až 9 999 bodů obnovení. Chráněná instance je počítač, server (fyzický nebo virtuální) nebo úloha, která zálohuje do Azure.
 
-- Další informace o [zálohování a uchovávání](./backup-introduction-to-azure-backup.md#backup-and-retention).
-- Další informace o [chráněné instance](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
+- Další informace o [zálohování a uchovávání](./backup-overview.md#backup-and-retention).
+
 
 ### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Tom, kolikrát je možné obnovení dat zálohovaných do Azure?
 Počet obnovení z Azure Backup není omezený.

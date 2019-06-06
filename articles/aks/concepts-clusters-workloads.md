@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65850535"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514531"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -70,7 +70,7 @@ Ke spuštění vaší aplikace a podpůrných služeb, budete potřebovat Kubern
 
 Velikost virtuálního počítače Azure pro uzly definuje počet procesorů, kolik paměti a velikosti a typu úložiště (jako třeba vysoce výkonné SSD nebo HDD pravidelných). Pokud očekáváte, třeba pro aplikace, které vyžadují kopírování velkých objemů procesoru a paměti nebo vysoce výkonné úložiště, podle toho naplánujte velikost uzlu. Můžete také škálovat počet uzlů ve vašem clusteru AKS podle potřeby.
 
-Ve službě AKS image virtuálního počítače pro uzly v clusteru je aktuálně podle Ubuntu Linux nebo Windows Server 2019. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
+Ve službě AKS image virtuálního počítače pro uzly v clusteru je aktuálně podle Ubuntu Linux nebo Windows Server 2019. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti. Agentské uzly se účtují jako standardní virtuální počítače, takže zohledňují případné slevy, budete mít na velikosti virtuálního počítače používáte (včetně [Azure rezervace][reservation-discounts]) se automaticky provedou.
 
 Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a možnosti konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete použít modul runtime kontejneru než Moby, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
 
@@ -223,7 +223,7 @@ Další informace najdete v tématu [Kubernetes DaemonSets][kubernetes-daemonset
 > [!NOTE]
 > Pokud se používá [virtuální uzly doplněk](virtual-nodes-cli.md#enable-virtual-nodes-addon), DaemonSets nevytvoří podů na virtuální uzel.
 
-## <a name="namespaces"></a>Názvové prostory
+## <a name="namespaces"></a>Obory názvů
 
 Prostředky Kubernetesu, jako je například podů a nasazení, jsou logicky rozdělena do *obor názvů*. Tato seskupení poskytují způsob, jak logicky rozdělte AKS cluster a omezit přístup k vytváření, zobrazení a správě prostředků. Můžete vytvořit samostatné obchodní skupiny, například obory názvů. Pouze mohou uživatelé komunikovat s prostředky v rámci jejich přiřazené obory názvů.
 
@@ -270,3 +270,4 @@ Tento článek popisuje některé základní součásti Kubernetes a jak se vzta
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md

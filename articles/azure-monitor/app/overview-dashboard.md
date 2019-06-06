@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255614"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497150"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights přehled řídicího panelu
 
@@ -37,7 +37,7 @@ Výběr časového rozsahu zjednodušenou topologickou jednoduché rozhraní jed
 
 Celkový výkon se výrazně zvýšil. Máte přístup jedním kliknutím k oblíbených funkcí, jako je **hledání** a **Analytics**. Každý výchozí dynamicky aktualizuje dlaždice klíčových ukazatelů výkonu poskytuje podrobné informace o odpovídající funkce Application Insights. Další informace o selhání vyberte požadavky **selhání** pod **prošetření** hlavičky:
 
-![Chyby](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
+![selhání](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Řídicí panel aplikací
 
@@ -60,9 +60,12 @@ Chcete-li přejít zpět na stačí vybrat přehled prostředí:
 
 ![Tlačítko Přehled](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud vyberete **konfigurovat nastavení dlaždice** a nastavit vlastní časový rozsah nad rámec 31 dní řídicím panelu nezobrazí se po uplynutí 31 dnů dat, dokonce i s uchováním dat výchozí 90 dnů. Aktuálně neexistuje žádné alternativní řešení pro toto chování.
+
 ## <a name="next-steps"></a>Další postup
 
 - [Trychtýře](../../azure-monitor/app/usage-funnels.md)
 - [Uchování](../../azure-monitor/app/usage-retention.md)
 - [Toky uživatele](../../azure-monitor/app/usage-flows.md)
-- [Řídicí panely](../../azure-monitor/app/app-insights-dashboards.md)

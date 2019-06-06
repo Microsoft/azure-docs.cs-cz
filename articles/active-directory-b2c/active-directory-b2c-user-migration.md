@@ -2,20 +2,20 @@
 title: Migrace uživatelských přístupů v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Informace o základních a pokročilých konceptů na migraci uživatelů pomocí rozhraní Graph API a případně můžete použít vlastní zásady Azure AD B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a4195d7c292100712e6d68831443369ab793bb95
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1e913b02f99095afb7ee1a3f2122e3c1fe1a60b5
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726114"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507666"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 Při migraci vašeho zprostředkovatele identity Azure Active Directory B2C (Azure AD B2C), budete pravděpodobně potřebovat k migraci uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z libovolného poskytovatele identit do Azure AD B2C. Článek neměl být doporučený, ale místo toho popisuje několik scénářů. Vývojář je zodpovědná za vhodnost obou těchto přístupů.
@@ -31,7 +31,7 @@ S Azure AD B2C, můžete migrovat uživatele prostřednictvím [Azure AD Graph A
 
 V obou toků nejprve spustíte proces před migrací, čtení uživatelů ze staré zprostředkovatele identity a vytváření nových účtů v adresáři Azure AD B2C. Pokud nemáte heslo, vytvoříte účet pomocí hesla, které se vygeneruje náhodně. Poté požádat uživatele, chcete-li změnit heslo, nebo při prvním přihlášení uživatele, Azure AD B2C žádá uživatele, aby v něm obnovit.
 
-## <a name="password-policy"></a>Zásady hesel
+## <a name="password-policy"></a>Zásady pro hesla
 Zásady hesel Azure AD B2C (pro místní účty), je založen na zásady služby Azure AD. Azure AD B2C, registrace / přihlášení a hesla resetovat zásady použití síly hesla "silné" a platnost pasu nevyprší všechna hesla. Další informace najdete v tématu [zásady hesel služby Azure AD][AD-PasswordPolicies].
 
 Pokud jsou účty, které chcete migrovat pomocí slabší síly hesla, než [sílu silné heslo, které vynucuje Azure AD B2C][AD-PasswordPolicies], můžete zakázat požadavek na silné heslo. Chcete-li změnit výchozí zásady pro hesla, nastavte `passwordPolicies` vlastnost `DisableStrongPassword`. Požadavek na vytvoření uživatele můžete například upravit následujícím způsobem:
@@ -145,7 +145,7 @@ Chcete-li upravit soubor JSON, otevřete `AADB2C.UserMigration.sln` řešení sa
 ![Soubor dat uživatele](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Jak je vidět, soubor obsahuje seznam entit uživatelů. Každá entita uživatele má následující vlastnosti:
-- e-mail
+- email
 - displayName
 - Jméno
 - Příjmení

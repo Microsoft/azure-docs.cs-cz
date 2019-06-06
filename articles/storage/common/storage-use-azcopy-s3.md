@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0bc74ac0fe45f2502064340a0c3ce5b82694b06
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b18c4c039b615c7c88268b6e668df9f7fec9fabf
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245696"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687926"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopírování dat z Amazon S3 kontejnerů pomocí AzCopy
 
-AzCopy je nástroj příkazového řádku, který vám pomůže zkopírovat objekty BLOB nebo souborů do nebo z účtu úložiště. Tento článek vám pomůže zkopírovat objekty, složky a kontejnerů z Amazon Web Services (AWS) S3 do Azure blob storage pomocí AzCopy.
+AzCopy je nástroj příkazového řádku, který vám pomůže zkopírovat objekty BLOB nebo souborů do nebo z účtu úložiště. Tento článek vám pomůže zkopírovat objekty, adresářů a kontejnerů z Amazon Web Services (AWS) S3 do Azure blob storage pomocí AzCopy.
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Zvolte, jak vám poskytnout přihlašovací údaje pro autorizaci
 
@@ -46,7 +46,7 @@ Shromažďovat AWS přístupový klíč a tajný přístupový klíč a pak nast
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-folders-and-buckets"></a>Kopírování objektů, složky a kontejnerů
+## <a name="copy-objects-directories-and-buckets"></a>Kopírování objektů, adresářů a kontejnerů
 
 Využívá nástroj AzCopy [Vložit blok z adresy URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) rozhraní API, tak, aby se data zkopírovat přímo mezi AWS S3 a servery úložiště. Operace Kopírovaní nepoužívejte šířky pásma sítě v počítači.
 
@@ -64,12 +64,12 @@ Využívá nástroj AzCopy [Vložit blok z adresy URL](https://docs.microsoft.co
 >
 > Další informace o virtuálního hostování kontejnerů najdete v tématu [virtuálního hostování z kontejnerů]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html).
 
-### <a name="copy-a-folder"></a>Zkopírujte složku
+### <a name="copy-a-directory"></a>Kopírování adresáře
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<folder-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<folder-name>" --recursive=true` |
-| **Příklad** | `azcopy cp "https://s3.amazonaws.com/mybucket/myfolder" "https://mystorageaccount.blob.core.windows.net/mycontainer/myfolder" --recursive=true` |
+| **Syntaxe** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
+| **Příklad** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Zkopírujte kontejneru
 

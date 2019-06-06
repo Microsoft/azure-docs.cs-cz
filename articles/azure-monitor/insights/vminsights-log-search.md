@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602090"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472588"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (preview)
 Azure Monitor pro virtuální počítače shromažďuje výkonu a metrik připojení, počítače a zpracování dat inventáře a informace o stavu a předá ji do pracovního prostoru Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [dotazu](../../azure-monitor/log-query/log-query-overview.md) ve službě Azure Monitor. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -43,8 +43,8 @@ VMConnection a VMBoundPort platí následující pole a konvence:
 
 - Počítač: Plně kvalifikovaný název domény počítače generování sestav 
 - ID agenta: Jedinečný identifikátor pro počítač pomocí agenta Log Analytics  
-- Machine: Název prostředku Azure Resource Manageru pro počítač vystavené ServiceMap. Je ve formátu *m-{GUID}*, kde *GUID* je stejný identifikátor GUID jako ID agenta  
-- Proces: Název prostředku Azure Resource Manageru pro proces vystavené ServiceMap. Je ve formátu *p-{hexadecimální řetězec}*. Proces je jedinečný v rámci oboru počítače a ke generování ID procesu jedinečný mezi počítači, kombinovat pole počítače a procesu. 
+- Machine: Název prostředku Azure Resource Manageru pro počítač vystavené ServiceMap. Je ve formátu *m-{GUID}* , kde *GUID* je stejný identifikátor GUID jako ID agenta  
+- Proces: Název prostředku Azure Resource Manageru pro proces vystavené ServiceMap. Je ve formátu *p-{hexadecimální řetězec}* . Proces je jedinečný v rámci oboru počítače a ke generování ID procesu jedinečný mezi počítači, kombinovat pole počítače a procesu. 
 - Název procesu: Název spustitelného souboru procesu vytváření sestav.
 - Všechny IP adresy jsou řetězce v kanonickém formátu IPv4, například *13.107.3.160* 
 
@@ -77,7 +77,7 @@ Kromě metrik počet připojení informace o objemu dat odeslaných a přijatýc
 |:--|:--|
 |BytesSent |Celkový počet bajtů, které byly odeslány časovém období vytváření sestav |
 |BytesReceived |Celkový počet bajtů, které byly přijaty časovém období vytváření sestav |
-|Odpovědi |Počet odpovědí zjištěnými časovém období vytváření sestav. 
+|Odezvy |Počet odpovědí zjištěnými časovém období vytváření sestav. 
 |ResponseTimeMax |Maximální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
 |ResponseTimeMin |Minimální doba odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
 |ResponseTimeSum |Součet všech doby odezvy (milisekundy) zjištěnými časovém období vytváření sestav. Pokud žádná hodnota vlastnosti je prázdná.|
@@ -96,7 +96,7 @@ Tady jsou některé důležité body ke zvážení:
 #### <a name="naming-and-classification"></a>Zásady vytváření názvů a klasifikace
 Pro usnadnění práce IP adresu ke konci vzdáleného připojení je součástí RemoteIp vlastnost. Pro příchozí připojení, RemoteIp je stejný jako SourceIp, zatímco pro odchozí připojení, je stejný jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje hlášených počítači pro RemoteIp canonical názvy DNS. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
 
-#### <a name="geolocation"></a>Zeměpisná poloha
+#### <a name="geolocation"></a>Geografická poloha
 *VMConnection* obsahuje také informace o zeměpisné poloze informace o vzdáleným koncem záznamech připojení ve vlastnostech následující záznam: 
 
 | Vlastnost | Description |
@@ -124,13 +124,6 @@ Každá vlastnost RemoteIp v *VMConnection* tabulky je porovnávána s sadu IP a
 
 ### <a name="ports"></a>Porty 
 Porty na počítači, které aktivně přijímat příchozí provoz nebo potenciálně může přijímat provoz, ale jsou nečinné generování sestav časovém období se zapisují do tabulky VMBoundPort.  
-
->[!NOTE]
->Azure Monitor pro virtuální počítače se nepodporuje, shromažďování a zaznamenávání dat portu v pracovním prostoru Log Analytics v těchto oblastech:  
->- USA – východ  
->- Západní Evropa
->
-> Shromažďování těchto dat je povolená v jiném [podporované oblasti](vminsights-enable-overview.md#log-analytics) pro monitorování Azure pro virtuální počítače. 
 
 Každý záznam v VMBoundPort je identifikován následující pole: 
 
@@ -204,7 +197,7 @@ Záznamy typu *ServiceMapProcess_CL* mít data inventáře pro procesy připojen
 | CommandLine_s | Příkazový řádek |
 | ExecutablePath_s | Cesta ke spustitelnému souboru |
 | WorkingDirectory_s | Pracovní adresář |
-| Uživatelské jméno | Účet, pod kterým je spuštěn proces |
+| UserName | Účet, pod kterým je spuštěn proces |
 | UserDomain | Domény, pod kterým je spuštěn proces |
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech

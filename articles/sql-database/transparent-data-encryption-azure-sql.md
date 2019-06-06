@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 8ed7d144b886cc29592418007b9103b4aa94e8ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331047"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477818"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -33,7 +33,7 @@ SQL Server běžící na virtuálním počítači Azure také můžete použít 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Spravovat službu transparentní šifrování dat
 
-V Azure ve výchozím nastavení transparentní šifrování dat je, že šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server. Pokud je v relaci geografické replikace databáze, primární a geograficky sekundární databáze jsou chráněny primární databáze nadřazeného serveru klíče. Pokud dvě databáze jsou připojené ke stejnému serveru, ale také sdílet stejný certifikát integrované. Microsoft automaticky otočí tyto certifikáty souladu se zásadami zabezpečení interní a je kořenový klíč chráněný přes Microsoft store interní tajného kódu.
+V Azure ve výchozím nastavení transparentní šifrování dat je, že šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server. Pokud je v relaci geografické replikace databáze, primární a geograficky sekundární databáze jsou chráněny primární databáze nadřazeného serveru klíče. Pokud dvě databáze jsou připojené ke stejnému serveru, ale také sdílet stejný certifikát integrované. Microsoft automaticky otočí tyto certifikáty souladu se zásadami zabezpečení interní a je kořenový klíč chráněný přes Microsoft store interní tajného kódu.  Zákazníky můžete ověřovat kompatibilitu databáze SQL s interní bezpečnostním zásadám nezávislého auditu třetích stran sestavy, které jsou k dispozici na [Microsoft Trust Center](https://servicetrust.microsoft.com/).
 
 Microsoft také bezproblémově přesune a spravuje klíče podle potřeby pro geografickou replikaci a obnoví.
 

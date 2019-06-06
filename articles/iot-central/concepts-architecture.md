@@ -3,17 +3,17 @@ title: Koncepce architektury v Azure IoT Central | Dokumentace Microsoftu
 description: Tento článek představuje klíčové koncepty týkající se architektura Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/26/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: 4f4b917808f4973dc83294391f58d7e0e2d01c4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: philmea
+ms.openlocfilehash: 4bc9a79576c3165585a4a2c897bd41bfb77c080c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887390"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693131"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
 
@@ -79,6 +79,14 @@ V šabloně zařízení:
 
 Aplikace může mít jeden nebo více skutečných a simulovaných zařízení, na základě šablony jednotlivých zařízení.
 
+## <a name="data-export"></a>Export dat
+
+V aplikaci Azure IoT Central je možné [průběžně exportovat data](howto-export-data-event-hubs-service-bus.md) do své služby Azure Event Hubs a instance služby Azure Service Bus. Data můžete také pravidelně exportovat do účtu úložiště objektů Blob v Azure. Měření, zařízení a šablon můžete exportovat IoT Central.
+
+## <a name="batch-device-updates"></a>Dávkové aktualizace zařízení
+
+V aplikaci Azure IoT Central je možné [vytvářet a spouštět úlohy](howto-run-a-job.md) ke správě připojených zařízení. Tyto úlohy umožňují hromadné aktualizace vlastností zařízení nebo nastavení, nebo spouštět příkazy. Můžete například vytvořit úlohu zrychlit ventilátor pro více chladicí automaty.
+
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
 
 [Správce můžete definovat pravidla přístupu](howto-administer.md) pro Azure IoT Central aplikaci s využitím předdefinovaných rolí. Správce můžete přiřadit role, které určují, jaké oblasti aplikace má uživatel přístup k uživatelům.
@@ -95,6 +103,9 @@ Funkce zabezpečení v rámci Azure IoT Central:
 ## <a name="ui-shell"></a>Prostředí uživatelského rozhraní
 
 Prostředí uživatelského rozhraní je moderních, interaktivních na HTML5 využívající prohlížeč aplikace.
+Správce může přizpůsobit uživatelské rozhraní aplikace použití vlastní motivy a úpravou odkazy nápovědy tak, aby odkazoval na prostředky vlastní nápovědy. Další informace o přizpůsobení uživatelského rozhraní, naleznete v tématu [přizpůsobení Azure IoT Central uživatelského rozhraní](howto-customize-ui.md) článku.
+
+Operátor můžete vytvořit řídicí panely personalizované aplikace. Můžete mít několik řídicích panelů, které zobrazují různá data a mezi nimi přepínat.
 
 ## <a name="next-steps"></a>Další postup
 

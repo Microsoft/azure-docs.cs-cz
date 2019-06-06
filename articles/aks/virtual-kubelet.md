@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: cc0c3becf21cb54b97a88e9ba35b38308af81a85
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956287"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475424"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -30,13 +30,13 @@ Při použití zprostředkovatele Virtual Kubelet pro Azure Container Instances,
 
 Tento dokument předpokládá, že máte AKS cluster. Pokud potřebujete AKS cluster, přečtěte si [rychlý start Azure Kubernetes Service (AKS)][aks-quick-start].
 
-Musíte také Azure CLI verze **2.0.33** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Musíte také Azure CLI verze **2.0.65** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Chcete-li nainstalovat Virtual Kubelet [Helm](https://docs.helm.sh/using_helm/#installing-helm) je také nutný.
+Nainstalujte Virtual Kubelet, nainstalujte a nakonfigurujte [Helm] [ aks-helm] ve vašem clusteru AKS. Ujistěte se, že je vaše Tiller [nakonfigurován pro použití s Kubernetes RBAC](#for-rbac-enabled-clusters), v případě potřeby.
 
 ### <a name="register-container-instances-feature-provider"></a>Registrace poskytovatele funkce Container Instances
 
-Pokud jste dříve nepoužili služby Azure Container Instance (ACI), zaregistrujte poskytovatele služby s vaším předplatným. Stav registrace poskytovatele ACI pomocí příkazu [az provider list] [az provider list], můžete zjistit, jak je znázorněno v následujícím příkladu:
+Pokud jste dříve nepoužili služby Azure Container Instance (ACI), zaregistrujte poskytovatele služby s vaším předplatným. Můžete zkontrolovat stav registrace poskytovatele ACI pomocí [az provider list] [ az-provider-list] příkaz, jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
@@ -44,13 +44,13 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 
 *Microsoft.ContainerInstance* poskytovatele hlásit jako *registrované*, jak je znázorněno v následujícím příkladu výstupu:
 
-```
+```console
 Namespace                    RegistrationState
 ---------------------------  -------------------
 Microsoft.ContainerInstance  Registered
 ```
 
-Pokud poskytovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [az registrovat poskytovatele] [az provider register], jak je znázorněno v následujícím příkladu:
+Pokud poskytovatel zobrazí jako *NotRegistered*, zaregistrujte poskytovatele pomocí [az provider register] [ az-provider-register] jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -83,7 +83,7 @@ subjects:
 
 Použít účet služby a vazbu s [použití kubectl] [ kubectl-apply] a určete vaše *rbac virtuální kubelet.yaml* souboru, jak je znázorněno v následujícím příkladu:
 
-```
+```console
 $ kubectl apply -f rbac-virtual-kubelet.yaml
 
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
@@ -102,17 +102,21 @@ Teď můžete pokračovat instalací Virtual Kubelet do clusteru AKS.
 Použití [az aks install-connector] [ aks-install-connector] příkaz k instalaci Virtual Kubelet. Tento příklad nasadí konektor Linux i Windows.
 
 ```azurecli-interactive
-az aks install-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet --os-type Both
+az aks install-connector \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --connector-name virtual-kubelet \
+    --os-type Both
 ```
 
-Tyto argumenty jsou k dispozici pro `aks install-connector` příkazu.
+Tyto argumenty jsou k dispozici pro [az aks install-connector] [ aks-install-connector] příkazu.
 
 | Argument: | Popis | Požaduje se |
 |---|---|:---:|
 | `--connector-name` | Název konektoru ACI.| Ano |
 | `--name` `-n` | Název spravovaného clusteru. | Ano |
 | `--resource-group` `-g` | Název skupiny prostředků. | Ano |
-| `--os-type` | Typ operačního systému instance kontejneru. Povolené hodnoty: Both, Linux, Windows. Výchozí: Linux | Ne |
+| `--os-type` | Typ operačního systému instance kontejneru. Povolené hodnoty: Both, Linux, Windows. Výchozí hodnota: Linux | Ne |
 | `--aci-resource-group` | Skupina prostředků, ve kterém chcete vytvořit skupiny kontejnerů ACI. | Ne |
 | `--location` `-l` | Umístění pro vytvoření skupiny kontejnerů ACI. | Ne |
 | `--service-principal` | Instanční objekt služby používat k ověřování do rozhraní API Azure. | Ne |
@@ -122,17 +126,15 @@ Tyto argumenty jsou k dispozici pro `aks install-connector` příkazu.
 
 ## <a name="validate-virtual-kubelet"></a>Ověření Virtual Kubelet
 
-Chcete-li ověřit, jestli je nainstalovaná Virtual Kubelet, vrátí seznam uzlů Kubernetes pomocí [kubectl get uzly] [ kubectl-get] příkazu.
+Chcete-li ověřit, jestli je nainstalovaná Virtual Kubelet, vrátí seznam uzlů Kubernetes pomocí [kubectl get uzly] [ kubectl-get] příkaz:
 
-```
+```console
 $ kubectl get nodes
 
-NAME                                    STATUS    ROLES     AGE       VERSION
-aks-nodepool1-23443254-0                Ready     agent     16d       v1.9.6
-aks-nodepool1-23443254-1                Ready     agent     16d       v1.9.6
-aks-nodepool1-23443254-2                Ready     agent     16d       v1.9.6
-virtual-kubelet-virtual-kubelet-linux   Ready     agent     4m        v1.8.3
-virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
+NAME                                             STATUS   ROLES   AGE   VERSION
+aks-nodepool1-56577038-0                         Ready    agent   11m   v1.12.8
+virtual-kubelet-virtual-kubelet-linux-eastus     Ready    agent   39s   v1.13.1-vk-v0.9.0-1-g7b92d1ee-dev
+virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-vk-v0.9.0-1-g7b92d1ee-dev
 ```
 
 ## <a name="run-linux-container"></a>Spuštění kontejneru Linuxu
@@ -178,11 +180,11 @@ kubectl create -f virtual-kubelet-linux.yaml
 
 Použití [kubectl get pods] [ kubectl-get] příkazů `-o wide` argument do výstupního seznam podů naplánované uzlu. Všimněte si, že `aci-helloworld` pod byla naplánována na `virtual-kubelet-virtual-kubelet-linux` uzlu.
 
-```
+```console
 $ kubectl get pods -o wide
 
-NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
-aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.179.3.180   virtual-kubelet-virtual-kubelet-linux
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE
+aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.147.210   virtual-kubelet-virtual-kubelet-linux-eastus
 ```
 
 ## <a name="run-windows-container"></a>Spuštění kontejneru Windows
@@ -226,13 +228,13 @@ Spusťte aplikaci [kubectl vytvořit] [ kubectl-create] příkazu.
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
-Použití [kubectl get pods] [ kubectl-get] příkazů `-o wide` argument do výstupního seznam podů naplánované uzlu. Všimněte si, že `nanoserver-iis` pod byla naplánována na `virtual-kubelet-virtual-kubelet-win` uzlu.
+Použití [kubectl get pods] [ kubectl-get] příkazů `-o wide` argument do výstupního seznam podů naplánované uzlu. Všimněte si, že `nanoserver-iis` pod byla naplánována na `virtual-kubelet-virtual-kubelet-windows` uzlu.
 
-```
+```console
 $ kubectl get pods -o wide
 
-NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
-nanoserver-iis-868bc8d489-tq4st     1/1       Running   8         21m       138.91.121.91   virtual-kubelet-virtual-kubelet-win
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE
+nanoserver-iis-5d999b87d7-6h8s9   1/1     Running   0          47s     52.224.143.39    virtual-kubelet-virtual-kubelet-windows-eastus
 ```
 
 ## <a name="remove-virtual-kubelet"></a>Odebrat Virtual Kubelet
@@ -240,7 +242,11 @@ nanoserver-iis-868bc8d489-tq4st     1/1       Running   8         21m       138.
 Použití [az aks remove-connector] [ aks-remove-connector] příkazu odeberte Virtual Kubelet. Nahraďte hodnoty argumentů název konektoru, clusteru AKS a skupinu prostředků clusteru AKS.
 
 ```azurecli-interactive
-az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet
+az aks remove-connector \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --connector-name virtual-kubelet \
+    --os-type Both
 ```
 
 > [!NOTE]
@@ -259,6 +265,9 @@ Další informace o Virtual Kubelet na [projektu z Githubu Virtual Kubelet][vk-g
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
 [virtual-nodes-cli]: virtual-nodes-cli.md
 [virtual-nodes-portal]: virtual-nodes-portal.md
+[aks-helm]: kubernetes-helm.md
+[az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

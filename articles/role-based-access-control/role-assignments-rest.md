@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 05/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357063"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472733"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Správa přístupu k prostředkům Azure pomocí RBAC a rozhraní REST API
 
@@ -52,9 +52,9 @@ V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí. Chcete-li se
 
     | Filtr | Popis |
     | --- | --- |
-    | `$filter=atScope()` | Seznam přiřazení rolí pro pouze zadaný obor, bez zahrnutí přiřazení rolí na subscopes. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Seznam přiřazení rolí pro konkrétního uživatele, skupinu nebo instanční objekt služby. |
-    | `$filter=assignedTo('{objectId}')` | Seznam přiřazení rolí pro zadaného uživatele, včetně těch zděděných ze skupin. |
+    | `$filter=atScope()` | Zobrazí seznam přiřazení rolí pro pouze zadaný obor, bez zahrnutí přiřazení rolí na subscopes. |
+    | `$filter=principalId%20eq%20'{objectId}'` | Zobrazí seznam přiřazení rolí pro konkrétního uživatele, skupinu nebo instanční objekt služby. |
+    | `$filter=assignedTo('{objectId}')` | Zobrazí seznam přiřazení rolí pro zadaného uživatele nebo instanční objekt služby. Pokud je uživatel členem skupiny, které má přiřazení role, je uvedený také přiřazení role. Tento filtr je přenositelný pro skupiny, což znamená, že pokud uživatel je členem skupiny a skupiny je členem jiné skupiny, která má přiřazení role, přiřazení role je uvedený také. Tento filtr přijímá pouze id objektu uživatele nebo instanční objekt služby. Id objektu nemůže předat pro skupinu. |
 
 ## <a name="grant-access"></a>Udělení přístupu
 

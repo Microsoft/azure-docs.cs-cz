@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463499"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513654"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavě aktivit přihlašování 
 
@@ -181,6 +181,8 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |500121| Ověření se nezdařilo během žádosti o silné ověřování.|
 |500133| Výraz se nenachází v jeho platný časový rozsah. Ujistěte se, že jej před použitím pro uživatele kontrolní výraz nevyprší platnost přístupového tokenu nebo požádat o nový token.|
 |530021|Aplikace nesplňuje požadavky podmíněného přístupu, které jsou schválené aplikace.|
+|7000218|Text požadavku musí obsahovat následující parametr: "client_assertion" nebo "hodnota client_secret".|
+
 
 ## <a name="next-steps"></a>Další postup
 

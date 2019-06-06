@@ -2,20 +2,20 @@
 title: Definování technický profil pro vystavitele tokenu JWT ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Definice technický profil vystavitele tokenu JWT ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 33dce27b69d080c57b925562ba83db0046b77ca9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 573463d91fc7a4119bd1bc30182588ff9dfdecb7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683789"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510711"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technický profil pro vystavitele tokenu JWT ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64683789"
 
 Azure Active Directory (Azure AD) B2C vyzařuje několik typů tokeny zabezpečení, které zpracovává každý tok ověřování. Technický profil vystavitele tokenu JWT vydá token JWT, který se vrátí zpět do aplikace předávající strany. Tento technický profil je obvykle poslední krok Orchestrace v cestě uživatele.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 **Název** atribut **protokol** elementu musí být nastavena na `None`. Nastavte **OutputTokenFormat** elementu `JWT`.
 
@@ -48,7 +48,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer`:
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Ano | Deklarace identity, který se má použít jako identitu uživatele deklarací identity v rámci OAuth2 autorizační kódy a obnovovacích tokenů. Ve výchozím nastavení, měli byste ho nastavit `objectId`, pokud neurčíte jinou SubjectNamingInfo typ deklarace identity. | 
 | SendTokenResponseBodyWithJsonNumbers | Ne | Vždy nastaven na hodnotu `true`. Pro starší verze formátu, ve kterém jsou číselné hodnoty zadané jako řetězce místo čísla JSON, nastavte na `false`. Tento atribut je potřeba pro klienty, kteří trvalo závislost na předchozích implementace, která vrátí vlastnosti jako řetězce. | 
-| token_lifetime_secs | Ne | Životnost tokenu přístupu. Doba života nosného tokenu OAuth 2.0, který se používá k získání přístupu ke chráněnému prostředku. Výchozí hodnota je 3 600 sekund (1 hodina). (Včetně) minimální hodnota je 300 sekund (5 minut). Maximální počet (včetně) je 86 400 sekund (24 hodin). | 
+| token_lifetime_secs | Ne | Životnost tokenu přístupu. Životnost tokenu nosiče OAuth 2.0, použít k získání přístupu k chráněnému prostředku. Výchozí hodnota je 3 600 sekund (1 hodina). (Včetně) minimální hodnota je 300 sekund (5 minut). Maximální počet (včetně) je 86 400 sekund (24 hodin). | 
 | id_token_lifetime_secs | Ne | Životnost tokenů ID. Výchozí hodnota je 3 600 sekund (1 hodina). (Včetně) minimální hodnota je 300 sekund (5 minut). Maximální počet (včetně) je sekund 86,400 (24 hodin). | 
 | refresh_token_lifetime_secs | Ne | Aktualizujte životností tokenů. Maximální časové období, před kterým token obnovení je možné získat nový přístupový token, pokud vaše aplikace byl udělen offline_access oboru. Výchozí hodnota je 120,9600 sekund (14 dní). (Včetně) minimální hodnota je 86 400 sekund (24 hodin). Maximální počet (včetně) je 7,776,000 sekund (90 dnů). | 
 | rolling_refresh_token_lifetime_secs | Ne | Aktualizujte token doba života posuvného okna. Po tomto časovém období uplyne uživatel bude muset donutit, bez ohledu na období platnosti posledního obnovovací token získaný aplikace. Pokud nechcete, aby k vynucení doba života posuvného okna, nastavte hodnotu allow_infinite_rolling_refresh_token k `true`. Výchozí hodnota je 7,776,000 sekund (90 dnů). (Včetně) minimální hodnota je 86 400 sekund (24 hodin). Maximální počet (včetně) je 31,536,000 sekund (365 dní). | 

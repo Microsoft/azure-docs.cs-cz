@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c8907f1b1c8069a3a3e92d01a5fa6341c06ec952
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953781"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688799"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -48,8 +48,8 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
      |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
      |---------|---------|---------|---------|
      |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Přímé    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
-     |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
+     |Direct    |    HTTPS     |  .NET a Java SDK    |   Porty v rozsahu 20 10 000-000    |
+     |Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000-000 |
 
      Azure Cosmos DB nabízí jednoduchý a otevřené rozhraní RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také RESTful svůj model komunikace a je dostupný prostřednictvím klienta .NET SDK. Přímé TCP i protokol HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosu. Pro zajištění nejlepšího výkonu použijte protokol TCP, pokud je to možné.
 
@@ -137,13 +137,21 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
    <a id="tune-page-size"></a>
 1. **Vyladěním stránek pro informační kanály pro zajištění lepšího výkonu dotazů/čtení**
 
-    Při provádění hromadné čtení dokumentů pomocí funkce (například ReadDocumentFeedAsync) informační kanál čtení nebo při vydání příkazu jazyka SQL, výsledky se vrátí segmentovaným způsobem, pokud sada výsledků je příliš velký. Ve výchozím nastavení výsledky jsou vráceny v blocích 100 položek nebo 1 MB, podle omezení dosáhnete první.
+   Při provádění hromadné čtení dokumentů pomocí funkce (například ReadDocumentFeedAsync) informační kanál čtení nebo při vydání příkazu jazyka SQL, výsledky se vrátí segmentovaným způsobem, pokud sada výsledků je příliš velký. Ve výchozím nastavení výsledky jsou vráceny v blocích 100 položek nebo 1 MB, podle omezení dosáhnete první.
 
-    Abyste snížili počet sítě zaokrouhlit zkracuje dobu odezvy potřebný k načtení všech platných výsledky, můžete zvýšit velikost stránky pomocí [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) hlavičku požadavku na až 1000. V případech, kdy potřebujete zobrazit jenom pár výsledky například pokud vaše uživatelské rozhraní nebo aplikací rozhraní API vrátí jenom 10 výsledky čas, může také snížit velikost stránky na 10 ke snížení propustnosti využité pro dotazy a čtení.
+   Abyste snížili počet sítě zaokrouhlit zkracuje dobu odezvy potřebný k načtení všech platných výsledky, můžete zvýšit velikost stránky pomocí [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) hlavičku požadavku na až 1000. V případech, kdy potřebujete zobrazit jenom pár výsledky například pokud vaše uživatelské rozhraní nebo aplikací rozhraní API vrátí jenom 10 výsledky čas, může také snížit velikost stránky na 10 ke snížení propustnosti využité pro dotazy a čtení.
 
-    Můžete také nastavit velikost stránky pomocí dostupné sady SDK Azure Cosmos DB.  Příklad:
+   > [!NOTE] 
+   > Vlastnost maxItemCount není vhodné používat jenom pro účely stránkování. Je hlavní využití ke zlepšení výkonu dotazů zmenšením maximální počet položek, které vrátil na jedné stránce.  
 
-        IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   Můžete také nastavit velikost stránky pomocí dostupné sady SDK Azure Cosmos DB. [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) vlastnost FeedOptions umožňuje nastavit maximální počet položek, který se má vrátit v operaci enmuration. Když `maxItemCount` je nastavena na hodnotu -1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
+    
+   ```csharp
+    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   ```
+    
+   Pokud je dotaz proveden, výsledná data se odesílají v paketu protokolu TCP. Pokud zadáte příliš nízkou hodnotu pro `maxItemCount`, počet cest, které jsou potřebné k odesílání dat v rámci paket TCP je vysoké, což má velký dopad na výkon. Pokud si nejste jisti, jakou hodnotu nastavení pro `maxItemCount` vlastnost, doporučujeme nastavit na hodnotu -1 a umožnila sadě SDK, vyberte výchozí hodnotu. 
+
 10. **Zvyšte počet vláken nebo úloh**
 
     Zobrazit [zvýšit počet vláken nebo úloh](#increase-threads) v části sítě.

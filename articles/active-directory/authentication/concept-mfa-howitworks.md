@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 06/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7328fb958774b5e17511d046e914cc5612e8a96d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa25e8a965b89c4e97263e3767a9400079fcad7a
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415820"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496795"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: Azure Multi-Factor Authentication
 
@@ -36,10 +36,10 @@ Azure Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a a
 
 Ověřování službou Multi-Factor Authentication je součástí následujících nabídek:
 
-* **Licence Azure Active Directory Premium** -plně vybavené použití služby Azure Multi-Factor Authentication (Cloud) nebo ověřování Azure Multi-Factor Authentication Server (místní).
-   * **Služba Azure MFA (Cloud)** - **tato možnost je doporučený pro nová nasazení**. Azure MFA v cloudu vyžaduje žádnou místní infrastrukturu a je možné s uživateli federované nebo jenom pro cloud.
-   * **Azure MFA Server** – Pokud vaše organizace potřebuje ke správě prvky přidružené infrastruktury a nasazena služba AD FS ve vašem místním prostředí tímto způsobem může být možnost.
-* **Multi-Factor Authentication pro Office 365** -podmnožinu funkcí Azure Multi-Factor Authentication jsou k dispozici jako součást vašeho předplatného. Další informace o vícefaktorové ověřování pro Office 365, najdete v článku [plánování ověřování službou Multi-Factor Authentication pro Office 365 nasazení](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
+* **Azure Active Directory Premium** nebo **Microsoft 365 Business** -plně vybavené používání ověřování Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu tak, aby vyžadovala vícefaktorové ověřování.
+
+* **Azure AD Free**, **Azure AD Basic**, nebo samostatné **Office 365** licence – použití předem vytvořené [zásady podmíněného přístupu směrný plán ochrany](../conditional-access/concept-baseline-protection.md) tak, aby vyžadovala ověřování Multi-Factor Authentication pro uživatele a správce.
+
 * **Azure Active Directory globální správci** -podmnožinu funkcí Azure Multi-Factor Authentication jsou k dispozici jako prostředek k ochraně účty globálních správců.
 
 > [!NOTE]
@@ -51,16 +51,9 @@ Protože většina uživatelů jsou zvyklí používat jenom hesla pro ověřen�
 
 * Trénování pracovníci podpory pro zpracování scénářů, kde uživatel nemůže přihlásit, protože nemají přístup ke své metody ověřování, nebo nejsou správně funguje.
    * Pomocí zásad podmíněného přístupu pro službu Azure MFA, pracovníci podpory můžete přidat uživatele do skupiny, která je vyloučena ze zásad, které vyžadují vícefaktorové ověřování.
-   * Pracovníci podpory zákazníků můžete povolit dočasné jednorázové přihlášení pro uživatele Azure MFA Server chcete, aby uživatel možné ověřit bez dvoustupňové ověřování. Jednorázové přihlášení je dočasné a vyprší po zadaném počtu sekund.   
-* Zvažte použití důvěryhodné IP adresy nebo pojmenovaná umístění jako způsob, jak minimalizovat dvoustupňové ověřování výzvy. Pomocí této funkce můžou správci tenanta spravované nebo federované obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují ze důvěryhodné síťové umístění, například intranetu organizace.
+* Zvažte možnost použít podmíněný přístup – pojmenovaná umístění jako způsob, jak minimalizovat dvoustupňové ověřování výzvy. Pomocí této funkce lze správcům obejít dvoustupňové ověřování pro uživatele, kteří se přihlašují ze bezpečné důvěryhodné síťové umístění, jako je například síť segment použitý pro nové registrace uživatele.
 * Nasazení [Azure AD Identity Protection](../active-directory-identityprotection.md) a aktivovat dvoustupňové ověřování založené na rizikové události.
 
 ## <a name="next-steps"></a>Další postup
 
-- Získat podrobné MFA [plán nasazení](https://aka.ms/MFADeploymentPlan)
-
-- Přečtěte si podrobnosti o [licencování uživatelů](concept-mfa-licensing.md).
-
-- Získejte podrobné informace o tom, [kterou verzi nasadit](concept-mfa-whichversion.md).
-
-- Získejte odpovědi na [nejčastější dotazy](multi-factor-authentication-faq.md).
+- [Podrobný postup nasazení Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

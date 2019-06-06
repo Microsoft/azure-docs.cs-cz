@@ -1,33 +1,32 @@
 ---
 title: Nahrání dat pro úlohy Apache Hadoop v HDInsight
 description: Zjistěte, jak nahrát a přístup k datům pro úlohy Apache Hadoop v HDInsight pomocí Azure classic CLI, Průzkumníka služby Azure Storage, Azure Powershellu, příkazového řádku Hadoopu nebo Sqoopu.
-keywords: ETL hadoop, přesun dat do služby hadoop, hadoop načítání dat
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/08/2019
-ms.openlocfilehash: 3283c885956c5b43171c6287dc00efa9a82db28e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/03/2019
+ms.openlocfilehash: 0dbd5a886e2369d29a568eca47dda5558f43c8cd
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722794"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479134"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrání dat pro úlohy Apache Hadoop v HDInsight
 
-Azure HDInsight nabízí v porovnání s Azure Storage a Azure Data Lake Storage (Gen1 a Gen2) plně funkční distribuovaného systému souborů Hadoop (HDFS). Azure Storage a Data Lake Storage Gen1 a Gen2 jsou navrženy jako rozšíření HDFS poskytuje bezproblémové prostředí pro zákazníky. Umožňují celá sada komponent v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na těchto datech. Informace o výhodách používání služby Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight][hdinsight-storage], [použití Data Lake Storage Gen1 s HDInsight](hdinsight-hadoop-use-data-lake-store.md), a [ Pomocí HDInsight v Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Azure HDInsight nabízí v porovnání s Azure Storage a Azure Data Lake Storage (Gen1 a Gen2) plně funkční distribuovaného systému souborů Hadoop (HDFS). Azure Storage a Data Lake Storage Gen1 a Gen2 jsou navrženy jako rozšíření HDFS poskytuje bezproblémové prostředí pro zákazníky. Umožňují celá sada komponent v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na těchto datech. Informace o výhodách používání služby Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md), [použití Data Lake Storage Gen1 s HDInsight](hdinsight-hadoop-use-data-lake-store.md), a [použití Data Lake Storage Gen2 s HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, vezměte na vědomí následující požadavky:
 
-* Cluster Azure HDInsight. Pokyny najdete v tématu [Začínáme s Azure HDInsight] [ hdinsight-get-started] nebo [clusterů HDInsight vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
+* Cluster Azure HDInsight. Pokyny najdete v tématu [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md) nebo [clusterů HDInsight vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
 * Znalost následujících článcích:
 
-    - [Použití služby Azure Storage s HDInsight][hdinsight-storage]
+    - [Použití služby Azure Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md)
     - [Data Lake Storage Gen1 pomocí služby HDInsight](hdinsight-hadoop-use-data-lake-store.md)
     - [Data Lake Storage Gen2 pomocí služby HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
@@ -36,7 +35,7 @@ Než začnete, vezměte na vědomí následující požadavky:
 ## <a name="utilities"></a>Veřejné služby
 Společnost Microsoft poskytuje následující nástroje pro práci s Azure Storage:
 
-| Tool | Linux | OS X | Windows |
+| Nástroj | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
@@ -64,11 +63,11 @@ Například `hadoop fs -copyFromLocal data.txt /example/data/data.txt`.
 
 Protože výchozí systém souborů pro HDInsight je ve službě Azure Storage, /example/data.txt ve skutečnosti je ve službě Azure Storage. Můžete také odkazovat na soubor jako:
 
-    wasb:///example/data/data.txt
+    wasbs:///example/data/data.txt
 
 nebo
 
-    wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 Seznam dalších příkazech Hadoop, které pracují se soubory naleznete v tématu [https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
@@ -104,7 +103,7 @@ Služba Azure Data Factory je plně spravovaná služba pro vytváření dat úl
 ### <a id="sqoop"></a>Apache Sqoop
 Sqoop je nástroj určený pro přenos dat mezi platformou Hadoop a relačními databázemi. Můžete ho použít pro import dat ze systému správy relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS), transformujte data v Hadoop MapReduce nebo Hive a pak exportovat data zpět do relační databázový systém.
 
-Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop].
+Další informace najdete v tématu [Sqoop použití s HDInsight](hadoop/hdinsight-use-sqoop.md).
 
 ### <a name="development-sdks"></a>Sady SDK pro vývoj
 Úložiště Azure lze rovněž přistupovat pomocí sady Azure SDK z těchto programovacích jazycích:
@@ -144,7 +143,7 @@ Další informace o instalaci sady Azure SDK najdete v tématu [Azure, soubory k
 
 **Příčina:** HBase v HDInsight clustery výchozí velikost bloku 256 kB při zápisu do úložiště Azure. Zatímco funguje pro rozhraní API HBase nebo rozhraní REST API, je výsledkem k chybě při použití `hadoop` nebo `hdfs dfs` nástroje příkazového řádku.
 
-**Řešení:** Použití `fs.azure.write.request.size` k určení větší velikost bloku. Můžete to provést na základě za použití pomocí `-D` parametru. Následující příkaz je uvedený příklad používající tento parametr se `hadoop` příkaz:
+**Rozlišení**: Použití `fs.azure.write.request.size` k určení větší velikost bloku. Můžete to provést na základě za použití pomocí `-D` parametru. Následující příkaz je uvedený příklad používající tento parametr se `hadoop` příkaz:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
@@ -152,28 +151,21 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 Můžete taky zvýšit hodnotu `fs.azure.write.request.size` globálně pomocí Apache Ambari. Následující postup slouží ke změně hodnoty v webovému uživatelskému rozhraní Ambari:
 
-1. V prohlížeči přejděte na uživatelské rozhraní Ambari Web pro váš cluster. Toto je https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název vašeho clusteru.
+1. V prohlížeči přejděte na uživatelské rozhraní Ambari Web pro váš cluster. Toto je `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru.
 
     Po zobrazení výzvy zadejte uživatelské jméno admin a heslo pro cluster.
 2. Na levé straně obrazovky vyberte **HDFS**a pak vyberte **Configs** kartu.
 3. V **filtr...**  zadejte `fs.azure.write.request.size`. Zobrazí se pole a aktuální hodnota uprostřed stránky.
 4. Změňte hodnotu z 262144 (256 KB) na novou hodnotu. Například 4194304 (4 MB).
 
-![Obrázek změna hodnoty prostřednictvím webového uživatelského rozhraní Ambari](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+    ![Obrázek změna hodnoty prostřednictvím webového uživatelského rozhraní Ambari](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
 Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>Další postup
 Teď, když chápete, jak načíst data do HDInsight, přečtěte si, jak provádět analýzu následujících článcích:
 
-* [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
-* [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
-* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
-
-[hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-[hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+* [Začínáme s Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575616"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492841"
 ---
 # <a name="azure-functions-networking-options"></a>Služba Azure Functions možnostech sítě
 
@@ -61,7 +61,7 @@ Integrace služby Virtual network poskytuje aplikaci funkcí přístup k prostř
 
 Integrace služby virtual network můžete povolit přístup z aplikací a databází, webových služeb běžících ve vaší virtuální síti. Integrace virtuální sítě není nutné vystavit veřejný koncový bod pro aplikace na svém virtuálním počítači. Místo toho můžete adresy směrovatelné privátní, bez Internetu.
 
-Obecně dostupnou verzi integrace služby virtual network spoléhá na bránu sítě VPN pro připojení aplikace function App k virtuální síti. Je k dispozici v funkcí hostované v plánu služby App Service. Další informace o konfiguraci této funkce, najdete v článku [integrujte svou aplikaci s Azure virtual network](../app-service/web-sites-integrate-with-vnet.md#enabling-vnet-integration).
+Obecně dostupnou verzi integrace služby virtual network spoléhá na bránu sítě VPN pro připojení aplikace function App k virtuální síti. Je k dispozici v funkcí hostované v plánu služby App Service. Další informace o konfiguraci této funkce, najdete v článku [integrujte svou aplikaci s Azure virtual network](../app-service/web-sites-integrate-with-vnet.md).
 
 ### <a name="preview-version-of-virtual-network-integration"></a>Ve verzi Preview integrace služby virtual network
 

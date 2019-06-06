@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087264"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514464"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s Desired State Configuration (DSC)
 
@@ -145,6 +145,25 @@ Přihlašovací údaj jste použili v konfiguraci, ale neposkytli správné **Co
 #### <a name="resolution"></a>Řešení
 
 * Ujistěte se, že a zajistěte tak předání správné **ConfigurationData** nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu, který je uveden v konfiguraci. Další informace najdete v tématu [prostředky v Azure Automation DSC](../automation-dsc-compile.md#assets).
+
+### <a name="failure-processing-extension"></a>Scénář: Připojení z rozšíření dsc, "Se nepodařilo zpracování rozšíření" Chyba
+
+#### <a name="issue"></a>Problém
+
+Při připojování pomocí rozšíření DSC, selhání nastane obsahující chybu:
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě obvykle dochází, když uzlu je přiřazen název konfigurace uzlu, který neexistuje ve službě.
+
+#### <a name="resolution"></a>Řešení
+
+* Ujistěte se, že jste přiřazení uzlu se název konfigurace uzlu, který přesně odpovídá názvu ve službě.
+* Můžete tak, aby nezahrnovala název konfigurace uzlu, který způsobí registrace uzlu, ale ne přiřazení konfigurace uzlu
 
 ## <a name="next-steps"></a>Další postup
 

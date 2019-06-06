@@ -1,6 +1,6 @@
 ---
-title: 'Stav služby Azure Monitor v2 Reference k rozhraní API: Zakázat monitorování | Dokumentace Microsoftu'
-description: Stav monitorování v2 API Reference Disable-ApplicationInsightsMonitoring. Sledování výkonu webu bez opětovného nasazení webu. Funguje s místně hostovanými webovými aplikacemi v ASP.NET, na virtuálních počítačích nebo v Azure.
+title: 'Azure Monitor stavu v2 reference k rozhraní API: Zakázat monitorování | Dokumentace Microsoftu'
+description: Odkaz na stav monitorování v2 API. Disable-ApplicationInsightsMonitoring. Sledování výkonu webu bez opětovného nasazení webu. Funguje s webové aplikace ASP.NET hostované místně, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,25 +12,25 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6f2bde824c2a9815dc9fd4791ab43e03558da835
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 201c5cc251896efae6b9f4639818471c0f011afe
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144934"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514412"
 ---
 # <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v021-alpha"></a>Rozhraní API v2 monitorování stavu: Disable-ApplicationInsightsMonitoring (v0.2.1 alfa)
 
-Tento dokument popisuje rutiny, který je dodáván jako člen [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Tento článek popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 > [!IMPORTANT]
 > Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="description"></a>Popis
 
-Vypnout monitorování na cílovém počítači.
+Zakáže monitorování v cílovém počítači.
 Tato rutina odebere úpravy k souboru applicationHost.config služby IIS a odebrat klíče registru.
 
 > [!IMPORTANT] 
@@ -45,7 +45,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ## <a name="parameters"></a>Parametry 
 
 ### <a name="-verbose"></a>-Verbose
-**Společný parametr.** Tento přepínač použijte na výstup podrobných protokolů.
+**Společný parametr.** Chcete-li zobrazit podrobné protokoly použijte tento přepínač.
 
 ## <a name="output"></a>Výstup
 
@@ -77,4 +77,4 @@ Successfully disabled Application Insights Status Monitor
 ## <a name="next-steps"></a>Další postup
 
  Lepší využití v2 monitorování stavu:
- - Pomocí naší příručce ke [Poradce při potížích](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.
+ - Pomocí naší příručce ke [Poradce při potížích s](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.

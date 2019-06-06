@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure'
-description: V tomto rychlém startu se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure z platformy Kafka.
+title: Ingestování dat z Kafka do Průzkumníku dat Azure
+description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure z platformy Kafka.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901023"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497282"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z Kafka do Průzkumníku dat Azure
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Ingestování dat z Kafka do Průzkumníku dat Azure
  
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí zpracování (načítání dat) z platformy Kafka. Kafka je distribuovaná streamovací platforma, která umožňuje vytváření v reálném čase streamovaných datových kanálů, které spolehlivě přesunovat data mezi systémy nebo aplikace.
  
@@ -57,7 +57,7 @@ V kořenovém adresáři *kafka jímky azure kusto*, spusťte:
 mvn clean compile assembly:single
 ```
 
-### <a name="deploy"></a>Nasadit 
+### <a name="deploy"></a>Nasazení 
 
 Načtení modulu plug-in do Kafka. Příklad nasazení pomocí dockeru najdete tady [kafka jímky azure kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>Další postup
  
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+* [Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

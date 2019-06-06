@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: ad73b9d84a041f42cfdc3c7f5513bd0d32adf2a0
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: c858d1ac56da5f04346b3cd84402d4eeeb7fd975
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392183"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430974"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče HTTPS příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
@@ -44,6 +44,9 @@ Kontroler příchozího přenosu dat musí také naplánovat na uzlu systému Li
 
 > [!TIP]
 > Následující příklad vytvoří Kubernetes obor názvů pro prostředky příchozího přenosu dat s názvem *příchozího přenosu dat basic*. Podle potřeby zadejte obor názvů pro konkrétní prostředí. Pokud váš cluster AKS není povoleno RBAC, přidejte `--set rbac.create=false` k příkazům Helm.
+
+> [!TIP]
+> Pokud chcete povolit [zachování IP klienta zdrojového] [ client-source-ip] požadavky do kontejnerů v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` k Helm příkaz instalovat. Zdroj klienta IP je uložen v hlavičce požadavku v rámci *X-předané-pro*. Při použití kontroler příchozího přenosu dat s zachování IP zdrojového klienta povoleno, nebude fungovat předávací protokol SSL.
 
 ```console
 # Create a namespace for your ingress resources
@@ -404,4 +407,5 @@ Můžete také:
 [aks-ingress-own-tls]: ingress-own-tls.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli

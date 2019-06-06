@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea39bceaa6b58e84def9635436d902002e33cd14
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464798"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514519"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro správu image kontejnerů a zabezpečení ve službě Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,6 @@ Tento článek se zaměřuje na tom, jak zabezpečit své kontejnery ve službě
 
 > [!div class="checklist"]
 > * Vyhledání a oprava ohrožení zabezpečení image
-> * Pomocí imagí kontejnerů digitálně podepsané důvěryhodným registru
 > * Automaticky aktivovat a opětovné nasazení imagí kontejnerů, když dojde k aktualizaci základní image
 
 Můžete si také přečíst osvědčené postupy pro [clusteru zabezpečení] [ best-practices-cluster-security] a [pod zabezpečení][best-practices-pod-security].
@@ -36,16 +35,6 @@ Jeden problém s přijetím založených na kontejnerech úlohy je ověření za
 ![Kontrola a napravit imagí kontejnerů, ověření a nasazení](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
 V příkladu skutečných můžete použít průběžné integrace a průběžného nasazování (CI/CD) kanálu k automatizaci image kontrol, ověření a nasazení. Služba Azure Container Registry zahrnuje tyto nedostatky zabezpečení možností skenování.
-
-## <a name="use-a-trusted-registry"></a>Použít důvěryhodné registru
-
-**Osvědčené postupy pro moduly** – omezit registry imagí, které podů a nasazení můžete použít. Povolte jenom důvěryhodné registry, kde ověření a řídit imagí, které jsou k dispozici.
-
-Za účelem zvýšení zabezpečení můžete také digitálně podepsat imagí kontejnerů, stejně jako lze podepsání kódu aplikace. Pak jenom povolíte AKS k nasazení bitových kopií podepsaný držitelem. Tento proces zajišťuje další vrstvu zabezpečení, v tom, že omezíte AKS pouze přetahování imagí digitálně podepsaná a důvěryhodná vy, ne jenom Image, které projdou kontrolu ohrožení zabezpečení. Můžete také zajistit, že image kontejneru ještě bylo manipulováno a nahrazuje obrázek s přesně stejný název.
-
-Důvěryhodné registrů, které poskytují imagí kontejnerů digitálně podepsané přidání složitosti do vašeho prostředí, ale může být nezbytné pro určité zásady a dodržování legislativních předpisů. Služba Azure Container Registry podporuje používání důvěryhodných registry a podepsané bitové kopie.
-
-Další informace o imagích digitálně podepsané, naleznete v tématu [obsahu důvěryhodnosti ve službě Azure Container Registry][acr-content-trust].
 
 ## <a name="automatically-build-new-images-on-base-image-update"></a>Automaticky vytvářet nové bitové kopie na aktualizací základních imagí
 
@@ -62,7 +51,6 @@ Další informace o aktualizacích základní image, najdete v části [automati
 Tento článek se zaměřuje na tom, jak zabezpečit vaše kontejnery. K provedení některých z těchto oblastí, naleznete v následujících článcích:
 
 * [Automatizace sestavování imagí na aktualizací základních imagí s úlohami registru kontejneru Azure][acr-base-image-update]
-* [Obsahu důvěryhodnosti ve službě Azure Container Registry][acr-content-trust]
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts
@@ -72,5 +60,4 @@ Tento článek se zaměřuje na tom, jak zabezpečit vaše kontejnery. K provede
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
-[acr-content-trust]: ../container-registry/container-registry-content-trust.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md

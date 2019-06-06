@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6ec85e840f8e61c46e86b0fa8fb947fb763a4265
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518864"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515913"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Úvod do obslužné rutiny rozšíření Azure Desired State Configuration
 
@@ -81,7 +81,7 @@ Tyto informace si můžete prohlédnout ve [webu Azure portal](../../automation/
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-Název konfigurace uzlu, ujistěte se, že používáte název *konfigurace uzlu* a není konfigurace.
+Název konfigurace uzlu Ujistěte se, že konfigurace uzlu existuje v konfiguraci stavu Azure.  Pokud tomu tak není, nasazení rozšíření vrátí chybu.  Také ujistěte se, že používáte název *konfigurace uzlu* a není konfigurace.
 Konfigurace je definován ve skriptu, který se používá [ke kompilaci konfigurace uzlu (soubor MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 Název bude vždy konfigurace následovaných tečkou `.` a buď `localhost` nebo název konkrétní počítače.
 

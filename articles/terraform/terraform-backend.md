@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 89108f02957990ad1c7eb736f39de89537f06db5
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: a88ad25e335026d5172c7997f62629d5ada46f6e
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297923"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693313"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Stav Terraformu Store ve službě Azure Storage
 
@@ -102,7 +102,7 @@ Teď se inicializovat konfiguraci s *Terraformu init* a pak spusťte konfigurac�
 
 Při použití Azure Storage Blob pro úložiště stavu, objekt blob automatickým zamčením před jakoukoli operaci, která zapíše stavu. Tato konfigurace zabraňuje více souběžná stát operací, které mohou způsobit poškození. Další informace najdete v tématu [zamykání stavu] [ terraform-state-lock] o Terraformu dokumentaci.
 
-Zámek uvidíte při zkoumání objektu blob i když na webu Azure portal nebo jiné nástroje pro správu Azure.
+Zámek uvidíte při zkoumání objektů blob pomocí webu Azure portal nebo jiné nástroje pro správu Azure.
 
 ![Azure blob se zámek](media/terraform-backend/lock.png)
 

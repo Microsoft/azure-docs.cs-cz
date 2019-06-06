@@ -2,20 +2,20 @@
 title: Definování profilu s vlastním potvrzením technické vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Definování profilu s vlastním potvrzením technické vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c728660f1a77c02f1e4b5fdeb467a7dbba4e36a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691032"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512660"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu s vlastním potvrzením technické ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64691032"
 
 Všechny interakce v Azure Active Directory (Azure AD) B2C, kde se očekává zadání uživatele se svým s prohlašovanou technické profily. Stránku pro přihlášení, přihlašovací stránka nebo heslo obnovit stránku.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 **Název** atribut **protokol** elementu musí být nastavena na `Proprietary`. **Obslužná rutina** atribut musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, který používá Azure AD B2C pro samoobslužné uplatněna: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 

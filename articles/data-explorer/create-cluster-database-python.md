@@ -1,18 +1,18 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python'
+title: Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python
 description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby s použitím jazyka Python.
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 408b34db16f0d6d22340f0483b90ce5d72ffa613
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: caac53aec08e234f320ee4278a5a58bbc62bff68
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861008"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494584"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitím jazyka Python
 
@@ -24,7 +24,7 @@ ms.locfileid: "60861008"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze s použitím jazyka Python.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto článku vytvořte cluster a databáze s použitím jazyka Python.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ pip install azure-mgmt-kusto
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | název_clusteru | *mykustocluster* | Požadovaný název vašeho clusteru.|
-   | SKU | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
+   | Skladová položka | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
    | resource_group_name | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
@@ -119,7 +119,7 @@ Teď máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte.
+* Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili.
 * Pokud chcete vyčistit prostředky, cluster odstraňte. Po odstranění clusteru se odstraní také všechny databáze v ní. Pomocí následujícího příkazu odstraňte cluster:
 
     ```Python
@@ -128,5 +128,4 @@ Teď máte cluster a databázi.
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+* [Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)

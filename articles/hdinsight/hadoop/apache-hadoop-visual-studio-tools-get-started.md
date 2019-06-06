@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 6fbbdb67478d0b45a2cc2ecb8a44fac140e72da5
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 06/03/2019
+ms.openlocfilehash: 42ef03d604caacf5ba18773b88e892237b5f0eae
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851920"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688524"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
@@ -33,10 +33,10 @@ Pro dokončení tohoto kurzu a používání nástrojů Data Lake pro Visual Stu
 
 * Cluster Azure HDInsight. Vytvoření clusteru služby HDInsight najdete v tématu [začněte používat Apache Hadoop v Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Pokud chcete spouštět interaktivní dotazy Apache Hive, musíte [HDInsight Interactive Query](../interactive-query/apache-interactive-query-get-started.md) clusteru.  
 
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 nebo novější).  [Visual Studio Community edition](https://visualstudio.microsoft.com/vs/community/) je zdarma.  Viz také [instalaci sady Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 nebo novější).  [Visual Studio Community edition](https://visualstudio.microsoft.com/vs/community/) je zdarma.  Viz také [instalaci sady Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Existují mírné rozhraní varianty s Visual Studio 2019.
 
   > [!IMPORTANT]  
-  > Nástroje data Lake je již nejsou podporovány pro Visual Studio 2013. 
+  > Nástroje data Lake je již nejsou podporovány pro Visual Studio 2013.
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Data Lake Tools pro Visual Studio  
 <a name="install-or-update-data-lake-tools-for-visual-studio"></a>
@@ -85,7 +85,7 @@ Připojení k předplatnému Azure:
 
    ![Snímek obrazovky se seznamem clusterů nástrojů Data Lake pro Visual Studio v Průzkumníku serveru](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "Seznam clusterů nástrojů Data Lake pro Visual Studio v Průzkumníku serveru")
 
-5. Rozbalte cluster služby HDInsight. Zobrazí se **Databáze Hive**, výchozí účet úložiště, propojené účty úložiště a **protokol služby Hadoop**. Entity můžete dále rozšířit.
+5. Rozbalte cluster služby HDInsight. **Databáze Hive**, výchozí účet úložiště, propojené účty úložiště a **protokol služby Hadoop** zobrazí. Entity můžete dále rozšířit.
 
 Po připojení k předplatnému Azure, můžete provádět následující úlohy.
 
@@ -93,19 +93,20 @@ Připojení k webu Azure Portal ze sady Visual Studio:
 
 1. V Průzkumníku serveru přejděte na **Azure** > **HDInsight** a vyberte svůj cluster.
 
-2. Klikněte pravým tlačítkem na HDInsight cluster a vyberte **spravovat Cluster webu Azure Portal**.
+2. Klikněte pravým tlačítkem na HDInsight cluster a vyberte **spravovat Cluster webu Azure portal [sic]** .
 
 Můžete klást otázky nebo poskytnutí zpětné vazby ze sady Visual Studio:
 
 1. V Průzkumníku serveru přejděte na **Azure** > **HDInsight**.
 
 2. Klikněte pravým tlačítkem na **HDInsight** a vyberte buď **fórum na webu MSDN** klást otázky, nebo **odeslat zpětnou vazbu** poskytnout zpětnou vazbu.
+
 ## <a name="link-a-cluster"></a>Propojení clusteru
 Jste mohli propojovat cluster kliknutím pravým tlačítkem na **HDInsight** vyberte **propojit HDInsight Cluster**. Zadejte **adresy Url pro připojení**, **uživatelské jméno** a **heslo**, klikněte na tlačítko **Další** pak **Dokončit**, clusteru by měla být uvedená pod uzlem HDInsight úspěšné.
 
 ![Snímek obrazovky nástroje Data Lake pro Visual Studio odkaz clusteru dialog](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-Klikněte pravým tlačítkem na propojené clusteru, vyberte **upravit**, uživatel může aktualizovat informace o clusteru. Všimněte si, že cluster HDInsight přidat teď podporuje pouze Hive.
+Klikněte pravým tlačítkem na propojené clusteru, vyberte **upravit**, uživatel může aktualizovat informace o clusteru. Prozatím Přidání clusteru služby HDInsight podporuje pouze Hive.
 
 ![Snímek obrazovky nástroje Data Lake pro Visual Studio aktualizace clusteru propojení](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
@@ -170,7 +171,14 @@ Vytvoření a spouštění dotazů ad-hoc:
 
 1. Klikněte pravým tlačítkem na cluster, ve kterém chcete spustit dotaz a vybrat **napsat dotaz Hive**.  
 
-2. Zadejte dotazy Hive.  
+2. Zadejte následující dotaz Hive:
+
+    ```sql
+    SELECT devicemodel, COUNT(devicemodel) AS deviceCount
+    FROM hivesampletable
+    GROUP BY devicemodel
+    ORDER BY devicemodel
+    ```
 
     Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud zadáte například `SELECT * FROM`, IntelliSense vypíše všechny navrhované názvy tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF.
 
@@ -204,7 +212,7 @@ Vytvoření a spuštění řešení Hive:
 
 1. V řádku nabídek, přejděte na **souboru** > **nový** > **projektu...** .
 
-2. V levém podokně přejděte do **nainstalováno** > **Azure Data Lake** > **HIVE (HDInsight)**.  
+2. V levém podokně přejděte do **nainstalováno** > **Azure Data Lake** > **HIVE (HDInsight)** .  
 
 3. V prostředním podokně vyberte **Aplikace Hive**. Zadejte vlastnosti a pak vyberte **OK**.
 
@@ -266,7 +274,7 @@ Zobrazení úloh Hive:
 
 1. V řádku nabídek, přejděte na **souboru** > **nový** > **projektu...** .
 
-2. V levém podokně přejděte do **nainstalováno** > **Azure Data Lake** > **Pig (HDInsight)**.  
+2. V levém podokně přejděte do **nainstalováno** > **Azure Data Lake** > **Pig (HDInsight)** .  
 
 3. V prostředním podokně vyberte **Pig aplikace**. Zadejte vlastnosti a pak vyberte **OK**.
 

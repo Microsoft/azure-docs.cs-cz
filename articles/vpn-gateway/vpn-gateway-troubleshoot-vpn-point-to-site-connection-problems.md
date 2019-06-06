@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2018
+ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457472"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475972"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Řešení potíží: Problémy s připojením Azure point-to-site
 
@@ -62,7 +62,7 @@ Další informace o postupu při instalaci klientského certifikátu naleznete v
 
 ### <a name="symptom"></a>Příznak
 
-Když zkusíte připojit virtuální síti Azure gteway používá IKEv2 na Windows, získáte následující chybová zpráva:
+Když zkusíte připojit k bráně virtuální sítě Azure s využitím IKEv2 na Windows, získáte následující chybová zpráva:
 
 **Síťové připojení mezi počítačem a serverem VPN nepodařilo vytvořit, protože vzdálený server neodpovídá.**
 
@@ -305,7 +305,7 @@ Odebrat připojení VPN typu point-to-site a opětovnou instalací klienta VPN. 
 
 ### <a name="solution"></a>Řešení
 
-Chcete-li vyřešit tento problém, odstranit staré soubory konfigurace klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >**, a poté znovu spusťte instalační program klienta VPN .
+Chcete-li vyřešit tento problém, odstranit staré soubory konfigurace klienta VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** , a poté znovu spusťte instalační program klienta VPN .
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient VPN Point-to-site nelze přeložit plně kvalifikovaný název domény zdroje v místní doméně
 

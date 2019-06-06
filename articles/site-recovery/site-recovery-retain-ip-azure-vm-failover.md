@@ -6,12 +6,12 @@ ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b7772bad5bb1c5b43a4bcc8d727a22c82547043
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61277214"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479957"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Zachování IP adresy během převzetí služeb při selhání
 
@@ -43,7 +43,7 @@ Tady je architektura před převzetí služeb při selhání.
         - Východní Asie má virtuální síť (**zdrojová virtuální síť**) s adres 10.1.0.0/16 místa.
         - Východní Asie má úlohy rozdělit mezi tři podsítě ve virtuální síti:
             - **Podsíť 1**: 10.1.1.0/24
-            - **Podsíť 2**: 10.1.2.0/24,
+            - **Podsíť 2**: 10.1.2.0/24
             - **Podsíť 3**: 10.1.3.0/24
     - Je sekundární (cíl) oblast Azure jihovýchodní Asie
         - Jihovýchodní Asie má virtuální síť (**virtuální sítě pro zotavení**) stejný jako **zdrojová virtuální síť**.
@@ -131,11 +131,11 @@ Zde je, jak Síťová architektura vypadá před převzetí služeb při selhán
 - Východní Asie má virtuální síť (**zdrojová virtuální síť**) s adres 10.1.0.0/16 místa.
   - Východní Asie má úlohy rozdělit mezi třemi podsítěmi v **zdrojová virtuální síť**:
     - **Podsíť 1**: 10.1.1.0/24
-    - **Podsíť 2**: 10.1.2.0/24,
-    - **Podsíť 3**: 10.1.3.0/24utilizing virtuální sítě Azure s adres 10.1.0.0/16 místa. Tato virtuální síť jmenuje **zdrojová virtuální síť**
+    - **Podsíť 2**: 10.1.2.0/24
+    - **Podsíť 3**: 10.1.3.0/24 využívající virtuální sítě Azure s adres 10.1.0.0/16 místa. Tato virtuální síť jmenuje **zdrojová virtuální síť**
       - Oblast sekundární (cíl) je Asie – jihovýchod Azure:
   - Jihovýchodní Asie má virtuální síť (**virtuální sítě pro zotavení**) stejný jako **zdrojová virtuální síť**.
-- Virtuální počítače ve východní Asie jsou připojené k místnímu datovému centru s využitím Azure ExpressRoute nebo web na serveru VPN.
+- Virtuální počítače ve východní Asie jsou připojené k místnímu datovému centru pomocí Azure ExpressRoute nebo VPN typu site-to-site.
 - Pokud chcete snížit RTO, zřídí společnosti B brány na virtuální síť pro obnovení v Azure jihovýchodní Asie před převzetí služeb při selhání.
 - Společnost B přiřadí/ověří cílové IP adresy pro replikované virtuální počítače. Cílová IP adresa je stejná jako zdrojová IP adresa pro každý virtuální počítač.
 

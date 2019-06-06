@@ -2,20 +2,20 @@
 title: Reference – důvěryhodnosti architektury v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Téma o vlastní zásady pro Azure Active Directory B2C a architekturu rozhraní identit.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20767c8903cd6617db4d37b756c3d8ae95cfb6ad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 47e45a7dac8abc65f414fedd0fd910e3a7a78113
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701212"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508810"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definice architektury důvěryhodnosti s architekturu rozhraní identit Azure AD B2C
 
@@ -54,7 +54,7 @@ TFs jsou linchpins modelu rozhraní Framework důvěřovat otevřít Identity Ex
 - **Technické zásady pro produkci a využití digitálních identit a proto pro měření Symbolů a LOP. Tyto zásady písemné obvykle zahrnují následující kategorie zásad:**
     - Identita kontroly pravopisu zásady, třeba: *Jak důrazně se informace o identitě osoby prověřeny?*
     - Zásady zabezpečení, například: *Jak důrazně jsou chráněné informace integrity a důvěrnosti?*
-    - Zásady ochrany osobních údajů, například: *Jaké ovládacího prvku uživatel nemá přes osobní identifikovatelné údaje (PII)*?
+    - Zásady ochrany osobních údajů, například: *Jaké ovládacího prvku uživatel nemá přes osobní identifikovatelné údaje (PII)* ?
     - Přežití zásady, například: *Pokud zprostředkovatele přestane operace, jak funguje kontinuity podnikových procesů a ochranu funkce identifikovatelné osobní údaje?*
 
 - **Technické profily pro produkci a využití digitálních identit. Tyto profily zahrnují:**

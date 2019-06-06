@@ -2,20 +2,20 @@
 title: Userjourney | Dokumentace Microsoftu
 description: Zadejte element Userjourney vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f5e56d4953eecdb488d5dadd4497b1c42b932f35
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d2e6ad9aa9692efa4ea5633dff78b262bb1917be
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812567"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512034"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -29,7 +29,7 @@ K definování cest uživatele podporovaného zásadami, **Userjourney** prvek p
 
 **Userjourney** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | UserJourney | 1: n | Cesta uživatele, který definuje všechny nezbytné pro dokončení uživatele tok konstruktorů. | 
 
@@ -41,7 +41,7 @@ K definování cest uživatele podporovaného zásadami, **Userjourney** prvek p
 
 **UserJourney** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1: n | Orchestrace pořadí, který musí být následován úspěšná transakce. Každé cesty uživatele se skládá z uspořádaný seznam kroků Orchestrace, které jsou spouštěny v pořadí. Pokud kterýkoli krok selže, transakce se nezdaří. |
 
@@ -55,7 +55,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 **OrchestrationSteps** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1: n | Na seřazený Orchestrace krok. | 
 
@@ -71,7 +71,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 **OrchestrationStep** element může obsahovat následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- | 
 | Předběžné podmínky | 0: n | Seznam předběžné požadavky, které musí být splněny pro krok Orchestrace ke spuštění. | 
 | ClaimsProviderSelections | 0: n | Seznam výběru zprostředkovatele deklarací identity pro krok Orchestrace. | 
@@ -81,7 +81,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 **Předběžné podmínky** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- | 
 | Předběžné podmínky | 0: n | V závislosti na tom technický profil používá buď přesměruje klienta podle výběru zprostředkovatele deklarací identity nebo je deklarace volání serveru exchange. | 
 
@@ -97,7 +97,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 
 **Předběžné podmínky** prvky obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Hodnota | 1: n | ClaimTypeReferenceId, aby se dalo dotazovat pro. Jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.</li></ul>|
 | Akce | 1:1 | Akce, která má být provedena, pokud v jednom z kroků Orchestrace předpoklad platí. Pokud hodnota `Action` je nastavena na `SkipThisOrchestrationStep`, přidružené `OrchestrationStep` by neměl být spouštěn. | 
@@ -164,7 +164,7 @@ Na krok Orchestrace typu `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp
 
 **ClaimsProviderSelection** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 0: n | Poskytuje seznam zprostředkovatelů deklarací identity, které je možné vybrat.|
 
@@ -216,7 +216,7 @@ V následujícím kroku Orchestrace můžete uživatele k přihlášení pomocí
 
 **ClaimsExchanges** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 0: n | V závislosti na tom technický profil používá buď přesměruje klienta podle ClaimsProviderSelection, který byl vybrán, nebo je deklarace volání serveru exchange. | 
 

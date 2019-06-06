@@ -2,20 +2,20 @@
 title: Nastavení registrace a přihlášení s OpenID Connect – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 81968aa3ba9f082194f4f447161a3eef7e014374
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 774716aeb28ca5d9563f38272a59c8e675a11e4b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704150"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508394"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "64704150"
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a potom klikněte na tlačítko **přidat**.
-5. Pro **typ zprostředkovatele identit**vyberte **OpenID Connect (verze Preview)**.
+5. Pro **typ zprostředkovatele identit**vyberte **OpenID Connect (verze Preview)** .
 
 ## <a name="configure-the-identity-provider"></a>Konfigurace zprostředkovatele identity
 

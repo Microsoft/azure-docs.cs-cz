@@ -11,14 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149237"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515729"
 ---
-# <a name="streaming-endpoints-origin"></a>Koncové body streamování (původní)
+# <a name="streaming-endpoints"></a>Koncové body streamování 
 
 Ve službě Microsoft Azure Media Services [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints) představuje dynamické (just-in-time) obalu a původu službu, která může doručovat obsah na vyžádání a živé přímo do klientské aplikace přehrávače, použijte některý běžné datové proudy mediálních protokolů (HLS nebo DASH). Kromě toho **koncový bod streamování** poskytuje dynamického šifrování (just-in-time) na špičkové technologiemi DRM.
 
@@ -44,7 +44,7 @@ Popis těchto typů najdete v následující tabulce:
 |Type|Jednotky škálování|Popis|
 |--------|--------|--------|  
 |**Standard**|0|Výchozí hodnota je koncový bod streamování **standardní** typu, typu Premium lze změnit úpravou `scaleUnits`.|
-|**Premium**|> 0|**Premium** koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou šířky pásma kapacitu. Přejdete **Premium** typ úpravou `scaleUnits` (jednotek streamování). `scaleUnits` poskytují vyhrazený odchozího přenosu dat kapacity, který lze dokupovat v jednotkách po 200 MB/s. Při použití typu **Premium** každá povolená jednotka poskytuje aplikaci další kapacitu šířky pásma. |
+|**Premium**|>0|**Premium** koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou šířky pásma kapacitu. Přejdete **Premium** typ úpravou `scaleUnits` (jednotek streamování). `scaleUnits` poskytují vyhrazený odchozího přenosu dat kapacity, který lze dokupovat v jednotkách po 200 MB/s. Při použití typu **Premium** každá povolená jednotka poskytuje aplikaci další kapacitu šířky pásma. |
 
 > [!NOTE]
 > Zákazníci, kteří se chtějí k doručování obsahu velkému publiku internet doporučujeme, abyste povolili CDN na koncový bod streamování.

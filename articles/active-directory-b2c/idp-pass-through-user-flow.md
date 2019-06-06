@@ -2,20 +2,20 @@
 title: Předat token přístupu přes tok uživatele aplikace – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zjistěte, jak lze předat prostřednictvím přístupového tokenu pro zprostředkovatele identity OAuth 2.0 jako deklarace identity v toku uživatele v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0270ef3ff74a219442a6800b67055deda7a0583f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705336"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510953"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Předat token přístupu přes tok uživatele do vaší aplikace v Azure Active Directory B2C
 

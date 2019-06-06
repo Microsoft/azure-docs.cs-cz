@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: sogup
-ms.openlocfilehash: b345f5e7f6f32d7fbb76d4f0227c8f4f925ff884
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9fba7d679b7d0edb3c99207c99b23f9616c6fa0e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400293"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477587"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -76,7 +76,7 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Je třeba zadat z
    - Další informace o [geograficky](../storage/common/storage-redundancy-grs.md) a [místní](../storage/common/storage-redundancy-lrs.md) redundance.
 
 > [!NOTE]
-> Po zvolení **typu replikace úložiště** z **geograficky redundantní** k **místně redundantní**, není možné vrátit zpět.
+> Změna **typ replikace úložiště** (místně redundantní / geograficky redundantní) pro trezor služby Recovery services je třeba provést před konfigurací zálohy v trezoru. Po konfiguraci zálohování, je zakázaná možnost upravit a nedá se změnit **typ replikace úložiště**. 
 
 ## <a name="next-steps"></a>Další postup
 

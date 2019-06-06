@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý start: Ingestování dat z Logstash do Průzkumníku dat Azure'
-description: V tomto rychlém startu se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure z Logstash
+title: Ingestování dat z Logstash do Průzkumníku dat Azure
+description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure z Logstash
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/14/2019
-ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759363"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494540"
 ---
-# <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Rychlý start: Ingestování dat z Logstash do Průzkumníku dat Azure
+# <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Ingestování dat z Logstash do Průzkumníku dat Azure
 
-[Logstash](https://www.elastic.co/products/logstash) je open source, kanál zpracování dat na straně serveru, který ingestuje data z mnoha zdrojů současně, transformuje data a posílá ji do vašich oblíbených "dočasně". V tomto rychlém startu budete odesílat data do Průzkumníku dat Azure, jde o službu zkoumání dat rychlé a vysoce škálovatelné pro data protokolů a telemetrie. Budete úvodnímu vytvoření tabulky a mapování dat v testu clusteru a potom směrovat Logstash pro odesílání dat do tabulky a ověřte výsledky.
+[Logstash](https://www.elastic.co/products/logstash) je open source, kanál zpracování dat na straně serveru, který ingestuje data z mnoha zdrojů současně, transformuje data a posílá ji do vašich oblíbených "dočasně". V tomto článku budete odesílat data do Průzkumníku dat Azure, jde o službu zkoumání dat rychlé a vysoce škálovatelné pro data protokolů a telemetrie. Budete úvodnímu vytvoření tabulky a mapování dat v testu clusteru a potom směrovat Logstash pro odesílání dat do tabulky a ověřte výsledky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -146,5 +146,4 @@ Spuštěním následujícího příkazu v databázi pro vyčištění `logs` tab
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Zápis dotazů](write-queries.md)
+* [Zápis dotazů](write-queries.md)

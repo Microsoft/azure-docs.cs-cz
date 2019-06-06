@@ -1,18 +1,18 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze s použitímC#'
+title: Vytvoření clusteru Průzkumník dat Azure a databáze s použitímC#
 description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocíC#
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 719aba498c08617b42d248d3c677499f8eb3e4b2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e51551d4ce8061122fce52b05e68e102b71c27a8
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900823"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494611"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Vytvoření clusteru Průzkumník dat Azure a databáze s použitímC#
 
@@ -24,7 +24,7 @@ ms.locfileid: "65900823"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databází pomocí C#.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto článku vytvoříte cluster a databází pomocí C#.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | clusterName | *mykustocluster* | Požadovaný název vašeho clusteru.|
-   | SKU | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
+   | Skladová položka | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
    | resourceGroupName | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
@@ -112,7 +112,7 @@ Teď máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte.
+* Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili.
 * Pokud chcete vyčistit prostředky, cluster odstraňte. Po odstranění clusteru se odstraní také všechny databáze v ní. Pomocí následujícího příkazu odstraňte cluster:
 
     ```C#-interactive
@@ -121,5 +121,4 @@ Teď máte cluster a databázi.
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+* [Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)

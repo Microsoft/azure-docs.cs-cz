@@ -2,20 +2,20 @@
 title: Účtu na sociální síti deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
 description: Účtu na sociální síti deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f6da199beb292f193d97eee309ca40dd74f81f8e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c1a718539259a284e1d48fe48a3741a676bd4040
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697730"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512490"
 ---
 # <a name="social-accounts-claims-transformations"></a>Transformace deklarací identity účtů na sociálních sítích
 
@@ -75,8 +75,8 @@ Přidá `AlternativeSecurityId` do `alternativeSecurityIdCollection` deklarací 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Položka | string | Přidat do výstupu deklarace typu deklarace identity. |
-| InputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformace deklarací identity, pokud je k dispozici v zásadách. Pokud je zadán, přidá transformace deklarací identity `item` na konec kolekce. |
-| outputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. Nová kolekce, která obsahuje položky ze vstupu `collection` a `item`. |
+| InputClaim | Kolekce | alternativeSecurityIdCollection | ClaimTypes, které jsou používány transformace deklarací identity, pokud je k dispozici v zásadách. Pokud je zadán, přidá transformace deklarací identity `item` na konec kolekce. |
+| outputClaim | Kolekce | alternativeSecurityIdCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. Nová kolekce, která obsahuje položky ze vstupu `collection` a `item`. |
 
 Následující příklad propojí nové sociálních identit pomocí existujícího účtu. Chcete-li propojit nový sociálních identit:
 1. V **AAD UserReadUsingAlternativeSecurityId** a **AAD UserReadUsingObjectId** technické profily výstup uživatele **alternativeSecurityIds** deklarací identity.
@@ -139,8 +139,8 @@ Odebere **AlternativeSecurityId** ze **alternativeSecurityIdCollection** deklara
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | identityProvider | string | Typ ClaimType, který obsahuje název zprostředkovatele identit, která má být odebrán z kolekce. |
-| InputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes, které používají deklarace identity transformace. Transformace deklarací identity identityProvider odebere z kolekce. |
-| outputClaim | kolekce | alternativeSecurityIdCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. Nová kolekce, po identityProvider odebrán z kolekce. |
+| InputClaim | Kolekce | alternativeSecurityIdCollection | ClaimTypes, které používají deklarace identity transformace. Transformace deklarací identity identityProvider odebere z kolekce. |
+| outputClaim | Kolekce | alternativeSecurityIdCollection | ClaimTypes vytvořený po zavolání této ClaimsTransformation. Nová kolekce, po identityProvider odebrán z kolekce. |
 
 Následující příklad zruší propojení mezi sociálních identit pomocí existujícího účtu. Chcete-li odpojit sociálních identit:
 1. V **AAD UserReadUsingAlternativeSecurityId** a **AAD UserReadUsingObjectId** technické profily výstup uživatele **alternativeSecurityIds** deklarací identity.

@@ -9,19 +9,19 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851431"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515296"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s prostorem vývoj Azure
 
 Služby můžou vyžadovat určité hesla, připojovacích řetězců a dalších tajných kódů, například pro databáze nebo jiných služeb zabezpečení Azure. Nastavením hodnoty těchto tajných kódů v konfiguračních souborech, můžete zpřístupnit je ve vašem kódu jako proměnné prostředí.  Toto musí být zpracován opatrně, aby se zabránilo ohrožení zabezpečení tajné klíče.
 
-Azure Dev prostory poskytují dvě možnosti pro ukládání tajných kódů doporučené: v souboru values.dev.yaml a vložené přímo v azds.yaml. Není doporučuje tajné kódy ukládat v values.yaml.
- 
+Azure Dev prostory poskytují dvě doporučené, zjednodušené možnosti pro ukládání tajných kódů v helmu generované klientem Azure Dev prostory nástrojů: v souboru values.dev.yaml a vložené přímo v azds.yaml. Není doporučuje tajné kódy ukládat v values.yaml. Mimo tyto dvě metody pro Helm grafy generované klientem nástroje definované v tomto článku, pokud vytvoříte vlastní diagram helmu, můžete použít grafu helmu přímo ke správě a ukládání tajných kódů.
+
 ## <a name="method-1-valuesdevyaml"></a>Metoda 1: values.dev.yaml
 1. Otevřít VS Code s projektem, který je povolený pro Azure Dev mezery.
 2. Přidejte do ní soubor _values.dev.yaml_ ve stejné složce jako existující _azds.yaml_ a definovat tajného klíče a hodnoty, jako v následujícím příkladu:

@@ -2,20 +2,20 @@
 title: Nastavení přihlášení pro organizace Azure Active Directory – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Nastavení přihlášení pro konkrétní organizace Azure Active Directory v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bae5759beb6a817c411ee52d7eb27dbff4cfe01c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 28dbf0382ac151857e72d4bb59e207f07c8ad3f3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785250"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508426"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizace Azure Active Directory v Azure Active Directory B2C
 

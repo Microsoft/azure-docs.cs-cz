@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61231719"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688910"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -30,7 +30,7 @@ Předpoklady pro tento článek je: předplatné Azure, trezor služby Recovery 
 
 Chcete-li monitorování výstrah nebo zobrazení dat správy o trezoru služby Recovery Services, otevřete v trezoru.
 
-1. Přihlaste se k [webu Azure Portal](https://portal.azure.com/) pomocí svého předplatného Azure.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí svého předplatného Azure.
 
 2. Na portálu klikněte na tlačítko **všechny služby**.
 
@@ -156,7 +156,7 @@ Vyberte závažnost výstrahy (kritický nebo varování) sloužícího ke gener
 
 ## <a name="manage-backup-items"></a>Správa zálohování položek
 
-Trezor služby Recovery Services obsahuje mnoho typů dat záloh. Úplný seznam typů zálohování, naleznete v tématu [které aplikace a úlohy lze zálohovat](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use). Ke správě různých serverů, počítačů, databází a úloh, klikněte na tlačítko **zálohování položek** dlaždici zobrazíte obsah trezoru.
+Trezor služby Recovery Services obsahuje mnoho typů dat záloh. [Další informace](backup-overview.md#what-can-i-back-up) o co můžete zálohovat. Ke správě různých serverů, počítačů, databází a úloh, klikněte na tlačítko **zálohování položek** dlaždici zobrazíte obsah trezoru.
 
 ![Zálohované položky dlaždice](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -226,7 +226,7 @@ Zobrazí se jedné operace nebo všechny operace. Nelze vybrat dvě nebo tři op
 * Backup
 * Obnovení
 * Zakázat zálohování
-* Odstranit data zálohy
+* Odstranění zálohovaných dat
 
 #### <a name="status"></a>Status
 
@@ -234,12 +234,12 @@ Můžete zobrazit všechny stavy nebo jeden. Nelze vybrat dvě nebo tři stavy. 
 
 * Všechny stavy
 * Dokončeno
-* Probíhá zpracování
+* V průběhu
 * Selhalo
 * Zrušeno
 * Dokončeno s upozorněními
 
-#### <a name="start-time"></a>Počáteční čas
+#### <a name="start-time"></a>Čas spuštění
 
 Datum a čas, který začíná dotazu. Výchozí hodnota je 24 hodin.
 
@@ -278,7 +278,7 @@ Ano. V následujících situacích nedocházelo k jejich odesílání.
 
 ## <a name="troubleshooting-monitoring-issues"></a>Řešení potíží s problémy s monitorováním
 
-**Problém:** Úlohy a/nebo výstrahy z agenta Azure Backup se nezobrazují na portálu.
+**Problém**: Úlohy a/nebo výstrahy z agenta Azure Backup se nezobrazují na portálu.
 
 **Řešení potíží:** Proces, ```OBRecoveryServicesManagementAgent```, odešle data úlohy a výstrahy ve službě Azure Backup. Čas od času může tento proces zablokovány nebo vypnutí.
 

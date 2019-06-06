@@ -2,20 +2,20 @@
 title: O technické profily ve vlastních zásad Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o tom, jak technické profily, které se používají ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8865da2f39f574656fe7f018eb1f1900b913391c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b8969ba657506705db2b1a3bbc5b389d0a992c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710878"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512460"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>O technické profily v Azure Active Directory B2C vlastních zásad
 

@@ -2,20 +2,20 @@
 title: Lokalizace – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zadejte vlastní zásady element Localization v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2291bdd270a15c4932d79b124616400d2667c891
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705846"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510587"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -45,7 +45,7 @@ ms.locfileid: "64705846"
 
 **Lokalizace** prvek obsahuje následující prvky XML
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Seznam podporovaných jazyků. | 
 | LocalizedResources | 0: n | Seznam lokalizovaných prostředků. |
@@ -63,7 +63,7 @@ ms.locfileid: "64705846"
 
 **SupportedLanguages** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Zobrazí obsah, který odpovídá značku jazyka podle RFC 5646 – značky pro identifikaci jazyků. | 
 
@@ -77,7 +77,7 @@ ms.locfileid: "64705846"
 
 **LocalizedResources** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Definuje celé kolekce v různé jazykové verze. Kolekce může mít různý počet položek a různých řetězců pro různé jazykové verze. Kolekce příklady výčty, které se zobrazují v typy deklarací identity. Například je uživateli v rozevíracím seznamu zobrazí seznam země/oblast. |
 | LocalizedStrings | 0: n | Definuje všechny řetězce, s výjimkou těchto řetězců, které se zobrazují v kolekcích v různé jazykové verze. |
@@ -86,7 +86,7 @@ ms.locfileid: "64705846"
 
 **LocalizedCollections** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Seznam podporovaných jazyků. |
 
@@ -102,7 +102,7 @@ ms.locfileid: "64705846"
 
 **LocalizedCollection** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Definuje k dispozici možnost uživatele vybrat pro deklaraci identity v uživatelském rozhraní, jako jsou hodnoty v rozevíracího seznamu. |
 
@@ -138,7 +138,7 @@ Následující příklad ukazuje použití **LocalizedCollections** elementu. Ob
 
 **LocalizedStrings** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Lokalizovaný řetězec. |
 

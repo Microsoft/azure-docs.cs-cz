@@ -1,26 +1,25 @@
 ---
-title: Použití Azure Data Box pro odesílání dat do úroveň objektu blob bloku – horká, studená, archivní - | V datech Microsoft Docs
-description: Popisuje, jak pomocí Azure Data Box odeslat data na úroveň úložiště objektů blob bloku odpovídající například horké, studené ani archivní úrovně
+title: Použití Azure Data Box, Azure Data Box náročné k odesílání dat na horké, studené, archivní úroveň objektu blob | V datech Microsoft Docs
+description: Popisuje, jak pomocí Azure Data Box nebo Azure Data Box náročné odeslat data na úroveň úložiště objektů blob bloku odpovídající například horké, studené ani archivní úrovně
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 44fa81ddf6b0892c6d900fd065589b3d6ac5a0bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea208c395e2ef69ce8f28052351643e963cceb05
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326662"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427874"
 ---
-# <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Odešlete data do příslušné úrovně objektů blob Azure Storage pomocí Azure Data Box
+# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Použití Azure Data Box nebo Azure Data Box náročné k odesílání dat do odpovídající úroveň objektu blob Azure Storage
 
 Azure Data Box přesunu velkých objemů dat do Azure přenosem proprietární úložné zařízení. Vyplnit zařízení s daty a vrátí jej. Data ze zařízení Data Box nahraje do výchozí úroveň přidružené k účtu úložiště. Data pak můžete přesunout na jinou vrstvu úložiště.
 
-Tento článek popisuje, jak můžete přesunout data, která je odeslaný zařízení Data Box do horké, studené nebo archivní úroveň objektu blob.  
-
+Tento článek popisuje, jak můžete přesunout data, která je odeslaný zařízení Data Box do horké, studené nebo archivní úroveň objektu blob. Tento článek se týká k Azure Data Box a Azure Data Box náročné.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,7 +31,7 @@ Azure storage umožňuje tři různé úrovně pro ukládání dat v nejvíce ce
 
 Úroveň archivu Azure je v režimu offline a nabízí nejnižší náklady na úložiště, ale také nejvyšší náklady na přístup. Tato úroveň je určená pro data, která zůstanou v archivní úložiště pro nejméně na 180 dnů. Podrobnosti o každém z těchto úrovní a cenový model, v části [srovnání vrstev úložiště](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
-Data ze zařízení Data Box nahraje do vrstvy úložiště, která je přidružená k účtu úložiště. Když vytvoříte účet úložiště, můžete jako horké nebo studené úrovně přístupu. V závislosti na vzory přístupu vašich úloh a náklady, můžete přesunout data z výchozí úroveň na jinou vrstvu úložiště.
+Data z pole Data nebo Data Box náročné nahraje do vrstvy úložiště, která je přidružená k účtu úložiště. Když vytvoříte účet úložiště, můžete jako horké nebo studené úrovně přístupu. V závislosti na vzory přístupu vašich úloh a náklady, můžete přesunout data z výchozí úroveň na jinou vrstvu úložiště.
 
 Může jenom úroveň data v úložišti objektů Blob storage nebo obecné účely v2 (GPv2) účty. Účty pro obecné účely v1 (GPv1) vrstvení nepodporují. Vybrat úroveň správného úložiště dat, prostudujte si důležité informace, najdete v [úložiště objektů Blob v Azure: Premium, vrstvy úložiště Hot, Cool a archiv](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
@@ -40,9 +39,9 @@ Může jenom úroveň data v úložišti objektů Blob storage nebo obecné úč
 
 Výchozí úroveň objektu blob je určen při vytvoření účtu úložiště na webu Azure Portal. Po výběru typu úložiště jako účty GPv2 nebo Blob storage, můžete zadat atribut úrovně přístupu. Ve výchozím nastavení je vybrané vrstvu Hot.
 
-Vrstvy se nedá zadat, pokud se pokoušíte vytvořit nový účet při řazení zařízení Data Box. Po vytvoření účtu můžete upravit nastavení účtu na portálu nastavit výchozí úroveň přístupu.
+Vrstvy se nedá zadat, pokud se pokoušíte vytvořit nový účet při řazení pole Data nebo Data Box náročné. Po vytvoření účtu můžete upravit nastavení účtu na portálu nastavit výchozí úroveň přístupu.
 
-Alternativně můžete vytvořit účet úložiště nejprve s atributem úroveň Zadaný přístupový. Při vytváření objednávka zařízení Data Box, vyberte existující účet úložiště. Další informace o tom, jak nastavit výchozí úroveň objektu blob během vytváření účtu úložiště, přejděte na [vytvořit účet úložiště na webu Azure portal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
+Alternativně můžete vytvořit účet úložiště nejprve s atributem úroveň Zadaný přístupový. Po vytvoření objednávky zařízení Data Box nebo velkým pole Data, vyberte existující účet úložiště. Další informace o tom, jak nastavit výchozí úroveň objektu blob během vytváření účtu úložiště, přejděte na [vytvořit účet úložiště na webu Azure portal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
 
 ## <a name="move-data-to-a-non-default-tier"></a>Přesun dat do jiné než výchozí úroveň
 

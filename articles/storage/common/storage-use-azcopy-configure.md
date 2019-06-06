@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a160591ef0a47eed097ce8db373878f32965de9b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 18dc3e224df18c900653e4549badcdd93f0df6ec
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247121"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688018"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizovat a řešení potíží s AzCopy
 
@@ -52,7 +52,7 @@ Použití `azcopy env` ke kontrole aktuální hodnotu této proměnné.  Pokud j
 
 ## <a name="change-the-location-of-the-log-files"></a>Změnit umístění souboru protokolu
 
-Ve výchozím nastavení, soubory protokolu jsou umístěny v `%USERPROFILE\\.azcopy` složky na Windows nebo v `$HOME\\.azcopy` složky na Mac a Linux. Toto umístění můžete změnit, pokud je potřeba pomocí těchto příkazů.
+Ve výchozím nastavení, soubory protokolu jsou umístěny v `%USERPROFILE\\.azcopy` na Windows nebo v adresáři `$HOME\\.azcopy` adresáře na Mac a Linux. Toto umístění můžete změnit, pokud je potřeba pomocí těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -74,7 +74,7 @@ AzCopy vytvoří soubory protokolu a plán pro každou úlohu. Protokoly můžet
 
 Tyto protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED`, a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
-Ve výchozím nastavení, jsou umístěny soubory protokolu a plán v `%USERPROFILE\\.azcopy` složky na Windows nebo `$HOME\\.azcopy` složky na Mac a Linux.
+Ve výchozím nastavení, jsou umístěny soubory protokolu a plán v `%USERPROFILE\\.azcopy` ve Windows nebo `$HOME\\.azcopy` adresáře na Mac a Linux.
 
 > [!IMPORTANT]
 > Při odesílání požadavku na Microsoft Support (nebo řešení potíží týkajících se třetí stranu), sdílet zrevidovaně verzi příkazu, kterou chcete spustit. Tím se zajistí, že SAS není omylem sdílet s kýmkoli. Můžete najít zrevidovaně verzi na začátku souboru protokolu.

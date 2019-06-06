@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 8a3c9a4fb1b43c1d00d66fee3548ccd10a1e075e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 5a659da4bcc86544c31d7a789779253a0f571f34
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969388"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497552"
 ---
 # <a name="monitor-site-recovery"></a>Monitorování Site Recovery
 
@@ -52,7 +52,7 @@ Zobrazí se stav převzetí služeb při selhání testu pro počítače v trezo
 **Stav** | **Podrobnosti**
 --- | ---
 Doporučuje se test | Počítače, u kterých nedošlo testovací převzetí služeb při selhání, protože byla povolena ochrana.
-Úspěšně provedeno | Počítače s nebo více úspěšné testovací převzetí služeb při selhání.
+Proběhlo úspěšně | Počítače s nebo více úspěšné testovací převzetí služeb při selhání.
 Neuvedeno | Počítače, které nejsou momentálně nárok testovací převzetí služeb při selhání. Počítače, které při selhání, třeba mít počáteční replikaci a testovací převzetí služeb při selhání/převzetí probíhá.
 
 ## <a name="monitor-configuration-issues"></a>Problémy s konfigurací monitorování
@@ -190,7 +190,7 @@ Můžete se přihlásit k odběru e-mailová oznámení pro tyto důležité ud�
 
 Přihlášení odběru následujícím způsobem:
 
-V trezoru > **monitorování a sestavy** klikněte na tlačítko **událostí ASR**.
+V trezoru > **monitorování** klikněte na tlačítko **událostí ASR**.
 1. Klikněte na tlačítko **e-mailová oznámení**.
 1. V **e-mailová oznámení**, zapněte oznámení a zadejte, kdo k odeslání. Můžete odeslat na všichni správci předplatného pošle oznámení a volitelně konkrétní e-mailové adresy.
 

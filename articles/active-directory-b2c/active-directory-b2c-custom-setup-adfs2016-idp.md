@@ -2,20 +2,20 @@
 title: Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Nastavení služby AD FS 2016 pomocí vlastních zásad a protokol SAML v Azure Active Directory B2C
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df4acf72a1a6ea134e1192512fda1d8cf1e92f0a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767997"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510435"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -144,7 +144,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 Použití služby AD FS jako zprostředkovatele identity v Azure AD B2C, budete muset vytvořit AD FS vztah důvěryhodnosti předávající strany pomocí metadat SAML Azure AD B2C. Následující příklad ukazuje adresu URL metadat SAML technického profilu Azure AD B2C:
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Nahraďte následující hodnoty:
@@ -169,8 +169,8 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 
     | Atribut LDAP | Typ odchozí deklarace |
     | -------------- | ------------------- |
-    | User-Principal-Name | userPrincipalName |
-    | Příjmení | family_name |
+    | User-Principal-Name | userPrincipalName (Hlavní název uživatele) |
+    | příjmení | family_name |
     | Zadaný název | given_name |
     | E-Mail-Address | email |
     | Zobrazovaný název | name |

@@ -1,6 +1,6 @@
 ---
-title: 'Stav služby Azure Monitor v2 Reference k rozhraní API: Získat stav | Dokumentace Microsoftu'
-description: Stav monitorování v2 API Reference Get-ApplicationInsightsMonitoringStatus. Sledování výkonu webu bez opětovného nasazení webu. Funguje s místně hostovanými webovými aplikacemi v ASP.NET, na virtuálních počítačích nebo v Azure.
+title: 'Azure Monitor stavu v2 reference k rozhraní API: Získat stav | Dokumentace Microsoftu'
+description: Odkaz na stav monitorování v2 API. Get-ApplicationInsightsMonitoringStatus. Sledování výkonu webu bez opětovného nasazení webu. Funguje s místně hostovanými webovými aplikacemi v ASP.NET, na virtuálních počítačích nebo v Azure.
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: ff61cf2bfb49a64d2f885cb13fd6c48e32c1f8f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416005"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514312"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>Rozhraní API v2 monitorování stavu: Get-ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
 
-Tento dokument popisuje rutiny, který je dodáván jako člen [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+Tento článek popisuje rutiny, která je členem skupiny [modulu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 > [!IMPORTANT]
 > Stav monitorování v2 je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> Tato verze preview je k dispozici bez smlouvu o úrovni služeb, a to nedoporučujeme pro produkční úlohy. Některé funkce nemusí být podporované a některé můžou mít omezené možnosti.
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="description"></a>Popis
 
-Tato rutina se poskytuje pro řešení potíží s modul Powershellu používá.
-Tato rutina oznámí informace o verzi a klíčové soubory potřebné pro monitorování.
-Další parametry poskytují další sestavy na aktuální stav monitorování.
+Řešení potíží umožňuje modulu prostředí PowerShell, který se používá.
+Tato rutina oznámí informace o verzi a informace o klíčových soubory potřebné pro monitorování.
+Další parametry poskytují další sestavy o stavu monitorování.
 
 > [!IMPORTANT] 
 > Tato rutina vyžaduje relaci Powershellu s oprávněními správce.
@@ -40,9 +40,9 @@ Další parametry poskytují další sestavy na aktuální stav monitorování.
 ## <a name="examples"></a>Příklady
 
 
-### <a name="example-basic-information"></a>Příklad: základní informace
+### <a name="example-basic-information"></a>Příklad: Základní informace
 
-Spusťte příkaz: `Get-ApplicationInsightsMonitoringStatus` získat výstup informací o tomto modulu:
+Spustit `Get-ApplicationInsightsMonitoringStatus` zobrazíte informace o aktuální modul:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus
@@ -77,11 +77,11 @@ Machine Identifier:
 0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
 ```
 
-### <a name="example-runtime-status"></a>Příklad: stav modulu runtime
+### <a name="example-runtime-status"></a>Příklad: Stav modulu runtime
 
 Můžete si prohlédnout procesu instrumentované počítače a zjistěte, jestli jsou načteny všechny knihovny DLL. Pokud monitorování funguje, by měla být načtena alespoň 12 knihovny DLL.
 
-- Cmd: `Get-ApplicationInsightsMonitoringStatus -InspectProcess`
+Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -115,19 +115,19 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-## <a name="parameters"></a>Parametry 
+## <a name="parameters"></a>Parametry
 
-### <a name="no-params"></a>(Žádné parametry)
+### <a name="no-parameters"></a>(Bez parametrů)
 
-Podle **výchozí**, tuto rutinu oznámí čísla verzí a cesty knihoven DLL, které jsou nezbytné pro monitorování.
+Ve výchozím nastavení tato rutina oznámí čísla verzí a cesty knihoven DLL, které jsou nezbytné pro monitorování.
 
 Tuto možnost použijte, pokud je potřeba identifikovat verzi libovolnou knihovnou DLL, včetně Application Insights SDK.
 
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**Volitelné**. Tato rutina oznámí, pokud je spuštěna služba IIS.
-Tato rutina také stáhne externí nástroje pro kontrolu, pokud potřebné knihovny DLL jsou zavedeny do modulu runtime služby IIS.
+**Volitelné**. Tento parametr použijte oznamuje, zda je spuštěna služba IIS.
+Také je stažen externí nástroje k určení, zda potřebné knihovny DLL jsou zavedeny do modulu runtime služby IIS.
 
 
 Pokud tento proces z nějakého důvodu selže, můžete ručně spustit tyto příkazy:
@@ -138,10 +138,10 @@ Pokud tento proces z nějakého důvodu selže, můžete ručně spustit tyto p�
 
 ### <a name="-force"></a>-Force
 
-**Volitelné**. Použít pouze s InspectProcess. Tento přepínač se přeskočí uživateli zobrazí výzva ke stažení Další nástroje.
+**Volitelné**. Použít pouze s InspectProcess. Použijte tento přepínač pro přeskočení výzvy uživateli, který se zobrazí předtím, než se stáhnou další nástroje.
 
 
 ## <a name="next-steps"></a>Další postup
 
  Lepší využití v2 monitorování stavu:
- - Pomocí naší příručce ke [Poradce při potížích](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.
+ - Pomocí naší příručce ke [Poradce při potížích s](status-monitor-v2-troubleshoot.md) v2 monitorování stavu.

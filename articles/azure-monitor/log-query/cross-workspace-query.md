@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 06/05/2019
 ms.author: magoedte
-ms.openlocfilehash: b0d12021be5a5dca348ea3ffa3f0b853725812da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51645f4f0c6dcc70d76ed1a20bc40f95db9d9717
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589297"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693364"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolů napříč prostředky ve službě Azure Monitor  
 
-Dříve prostřednictvím služby Azure Monitor je mohli analyzovat data pouze z v rámci aktuálního pracovního prostoru a omezený možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho může hledat pouze položky telemetrická data shromážděná z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights nebo ze sady Visual Studio.  Kvůli tomu také bylo obtížné analyzovat nativně provozní a data aplikací společně.   
+Dříve prostřednictvím služby Azure Monitor je mohli analyzovat data pouze z v rámci aktuálního pracovního prostoru a omezený možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho může hledat pouze položky telemetrická data shromážděná z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights nebo ze sady Visual Studio. Kvůli tomu také bylo obtížné analyzovat nativně provozní a data aplikací společně.   
 
-Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Lze provést pouze tyto typy dotazů v [Log Analytics](portals.md).
+Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech. Lze provést pouze tyto typy dotazů v [Log Analytics](portals.md).
 
 ## <a name="cross-resource-query-limits"></a>Omezení dotazu napříč prostředky 
 
-* Počet prostředků Application Insights, které mohou obsahovat v jediném dotazu je omezený na 100.
+* Počet prostředků Application Insights a pracovní prostory Log Analytics, které zahrnete do jednoho dotazu je omezený na 100.
 * Dotaz napříč prostředky není podporován v zobrazení návrhu. Můžete upravit dotaz, který ve službě Log Analytics a připnout na řídicí panel Azure a [vizualizace prohledávání protokolu](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search). 
 * Dotaz napříč prostředky v upozornění protokolu je podporován v novém [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení, využívá Azure Monitor [starší verze API upozornění Log Analytics](../platform/api-alerts.md) pro vytvoření nového protokolu pravidla upozornění z webu Azure portal, pokud přejdete z [starší verze rozhraní API upozornění Log](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepnutí nové rozhraní API se stane výchozí pro nové pravidla upozornění na webu Azure portal a umožňuje vám vytvořit dotaz napříč prostředky, že pravidla upozornění protokolů. Můžete vytvořit dotaz napříč prostředky log pravidla upozornění přitom přepínač pomocí [šablony ARM pro scheduledQueryRules API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) – ale toto pravidlo upozornění se dají spravovat přes [scheduledQueryRules rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a ne z portálu Azure portal.
 

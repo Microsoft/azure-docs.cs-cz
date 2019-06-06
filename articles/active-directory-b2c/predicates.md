@@ -2,20 +2,20 @@
 title: Predikáty a PredicateValidations – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Účtu na sociální síti deklaraci příklady transformaci identita prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eff8e2cedd6f9388d811002a622dbcdcd0e7ed6c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714162"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512968"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
 
@@ -33,7 +33,7 @@ Následující diagram znázorňuje vztah mezi elementy:
 
 **Predikáty** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Predikát | 1: n | Seznam predikáty. | 
 
@@ -46,20 +46,20 @@ Následující diagram znázorňuje vztah mezi elementy:
 
 **Predikátu** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | Chybová zpráva pro uživatele, pokud kontrola selže. Tento řetězec může být lokalizovány pomocí [přizpůsobení jazyka](localization.md) |
 | Parametry | 1:1 | Parametry pro typ metody ověření řetězce. | 
 
 **Parametry** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Parametr | 1: n | Parametry pro typ metody ověření řetězce. | 
 
 **Parametr** prvek obsahuje následující atributy:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ID | 1:1 | Identifikátor parametru. |
 
@@ -132,7 +132,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateValidations** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | Seznam predikátu ověření. | 
 
@@ -144,13 +144,13 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateValidation** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Seznam skupin predikátu. | 
 
 **PredicateGroups** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Seznam predikáty. | 
 
@@ -162,7 +162,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateGroup** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 |  Popis predikátu, které vám pomůžou uživatelům vědět, jaká hodnota by měla zadání. | 
 | PredicateReferences | 1: n | Seznam odkazy na predikát. | 
@@ -175,7 +175,7 @@ Při ověřování do kontroly oproti typu deklarace identity, definujte predik�
 
 **PredicateReferences** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Odkaz na predikát. | 
 
