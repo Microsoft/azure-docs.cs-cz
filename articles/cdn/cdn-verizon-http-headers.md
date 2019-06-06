@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
-ms.openlocfilehash: 7ce845fb272cea1d621e8ccc18203e3a071e8c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9f7a5332c8529753f2e22efd6af3d04cb3f44b6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323270"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479747"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky HTTP specifické pro Verizon pro Azure CDN stroje pravidel
 
 Pro **Azure CDN Premium od Verizonu** produkty, když požadavek HTTP je odeslána na server původu, point-of-presence serveru (POP) můžete přidat jeden nebo více rezervovaných hlavičky (nebo speciálními záhlavími proxy serveru) v požadavku klienta protokolu POP služby. Tyto hlavičky doplňují standard předávání přijaté záhlaví. Informace o standardní žádosti o hlavičkách najdete v tématu [žádosti pole](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
 
-Pokud chcete zabránit jednu z těchto rezervovaných záhlaví přidávání v žádosti o Azure CDN (Content Delivery Network) POP na zdrojový server, musíte vytvořit pravidlo s [funkce Proxy speciálními záhlavími](cdn-rules-engine-reference-features.md#proxy-special-headers) v stroj pravidel. V tomto pravidle vylučte hlavičky, kterou chcete odebrat z výchozího seznamu hlaviček v poli hlavičky. Pokud jste povolili [funkce ladění hlavičky odpovědi mezipaměti](cdn-rules-engine-reference-features.md#debug-cache-response-headers), nezapomeňte přidat nezbytné `X-EC-Debug` záhlaví. 
+Pokud chcete zabránit jednu z těchto rezervovaných záhlaví přidávání v žádosti o Azure CDN (Content Delivery Network) POP na zdrojový server, musíte vytvořit pravidlo s [funkce Proxy speciálními záhlavími](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) v stroj pravidel. V tomto pravidle vylučte hlavičky, kterou chcete odebrat z výchozího seznamu hlaviček v poli hlavičky. Pokud jste povolili [funkce ladění hlavičky odpovědi mezipaměti](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers), nezapomeňte přidat nezbytné `X-EC-Debug` záhlaví. 
 
 Například, chcete-li odebrat `Via` záhlaví pole hlavičky pravidla by měl obsahovat následující seznam hlaviček: *X-předané u, X-Forwarded-Proto, X-hostitel, X-Midgress seznam bran X, X-ES název hostitele*. 
 
@@ -42,7 +42,7 @@ X-Host | Určuje název hostitele žádosti. | cdn.mydomain.com
 X-Midgress | Určuje, zda byla žádost směrovány přes proxy server prostřednictvím dalšího serveru pro CDN. Například server server původu shield POP nebo server brány server ADN POP. <br />Tato hlavička se přidá do požadavek pouze v případě, že provoz midgress probíhá. V takovém případě záhlaví je nastavená na 1 označuje, že žádost byla směrovány přes proxy server prostřednictvím dalšího serveru pro CDN.| 1
 [Hostitel](#host-request-header) | Identifikuje hostitele a port, kde může najít požadovaný obsah. | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN: Určuje seznam převzetí služeb při selhání serverů brány ADN přiřazené na původní název zákazníka. <br />Shield původu: Označuje sadu původu shield servery přiřazené pro zákazníka původu. | `icn1,hhp1,hnd1`
-X-ES -_&lt;název&gt;_ | Hlavičky žádosti, které začínají *X-ES* (například X-ES-Tag, [X-ES-Debug](cdn-http-debug-headers.md)) jsou vyhrazené pro použití systémem CDN.| produkční waf
+X-ES - _&lt;název&gt;_ | Hlavičky žádosti, které začínají *X-ES* (například X-ES-Tag, [X-ES-Debug](cdn-http-debug-headers.md)) jsou vyhrazené pro použití systémem CDN.| produkční waf
 
 ## <a name="via-request-header"></a>Prostřednictvím hlavičky žádosti
 Formát, pomocí kterého `Via` požadavek hlavička značí serveru POP určený pomocí následující syntaxe:

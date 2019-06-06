@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463628"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430790"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 
@@ -42,6 +42,7 @@ Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba
     - Uživatelé, kteří mají přiřazený role pomocí RBAC tento přístup přijdou
     - Správce služeb a spolupracujících správců přijdete o přístup
     - Pokud máte jakékoli trezory klíčů budou nedostupné a budete mít a opravte je po přidružení
+    - Pokud máte jakékoli spravovaných identit pro prostředky, jako jsou virtuální počítače nebo Logic Apps, budete muset znovu povolit, nebo je znovu vytvořit po přidružení
     - Pokud máte registrované služby Azure Stack, budete muset znovu zaregistrovat po přidružení
 
 1. Přihlaste se pomocí účtu, který:
@@ -76,7 +77,9 @@ Poté, co přidružíte předplatné na jiný adresář, mohou existovat další
 
 1. Pokud máte jakékoli trezorů klíčů, je nutné změnit ID tenanta trezoru klíčů. Další informace najdete v tématu [Změna ID tenanta trezoru klíčů po přesunu předplatného](../../key-vault/key-vault-subscription-move-fix.md).
 
-2. Pokud jste se zaregistrovali službě Azure Stack prostřednictvím tohoto předplatného, budete muset znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s využitím Azure](/azure-stack/operator/azure-stack-registration).
+2. Pokud používáte systém přiřadil identit spravovaných prostředků, musíte tyto znovu povolit. Pokud jste používali uživatelsky přiřazené identity spravované, budete muset znovu vytvořit tyto. Po opětovné povolení nebo znovu vytvořili spravovaných identit, je potřeba znovu vytvořit oprávnění přiřazená uživateli tyto identity. Další informace najdete v části [co je spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).
+
+3. Pokud jste se zaregistrovali službě Azure Stack prostřednictvím tohoto předplatného, budete muset znovu zaregistrovat. Další informace najdete v tématu [registrace Azure Stack s využitím Azure](/azure-stack/operator/azure-stack-registration).
 
 
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232424"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427152"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -40,8 +40,8 @@ Následující tabulka obsahuje informace o podpoře funkcí a sítí pro každ�
 
 Typ prostředí IR | Veřejná síť | Privátní síť
 ------- | -------------- | ---------------
-Azure | Tok dat<br/>Přesun dat<br/>Odesílání aktivit | &nbsp;
-V místním prostředí | Přesun dat<br/>Odesílání aktivit | Přesun dat<br/>Odesílání aktivit
+Azure | Tok dat<br/>Přesuny dat<br/>Odesílání aktivit | &nbsp;
+V místním prostředí | Přesuny dat<br/>Odesílání aktivit | Přesuny dat<br/>Odesílání aktivit
 Azure-SSIS | Spouštění balíčků služby SSIS | Spouštění balíčků služby SSIS
 
 Následující diagram znázorňuje, jak se dají různá prostředí Integration Runtime používat v kombinaci, aby nabízela bohaté funkce integrace dat a podporu sítí:
@@ -114,11 +114,11 @@ Umístění prostředí IR určuje umístění výpočetního prostředí back-e
 ### <a name="azure-ir-location"></a>Umístění prostředí Azure IR
 Pro prostředí Azure IR můžete nastavit určité umístění a v tom případě bude přesun dat nebo odesílání aktivit probíhat v této konkrétní oblasti. 
 
-Pokud se rozhodnete použít automatický překlad umístění prostředí Azure IR, což je výchozí nastavení: 
+Pokud se rozhodnete použít **automaticky Vyřešená prostředí Azure IR** což je výchozí nastavení, 
 
 - V případě aktivity kopírování se služba ADF pokusí automaticky zjistit vaše úložiště dat jímky a zdrojové úložiště dat a zvolí nejlepší umístění buď ve stejné oblasti, pokud je dostupné nebo nejbližší na stejném území, nebo pokud nejsou zjistitelné, použije jako alternativu oblast datové továrny.
 
-- V případě provádění aktivity Lookup a GetMetadata a odesílání aktivity transformace služba ADF použije prostředí IR v oblasti datové továrny.
+- Pro provádění aktivity Lookup, GetMetadata nebo odstranění (označované také jako kanál aktivit), aktivita transformace operací (test připojení, procházet složky seznamu a seznam tabulek, zobrazení náhledu dat), vytváření a vyvolávání (také označovanou jako externí aktivity) ADF prostředí IR použije v oblast datové továrny.
 
 - Tok dat ADF používat prostředí IR v oblast datové továrny. 
 
@@ -148,7 +148,7 @@ Následující diagram znázorňuje nastavení umístění služby Data Factory 
 
 ## <a name="determining-which-ir-to-use"></a>Určení toho, které prostředí IR používat
 
-### <a name="copy-activity"></a>Zkopírovat aktivitu
+### <a name="copy-activity"></a>Aktivita kopírování
 
 V případě aktivity kopírování jsou zapotřebí služby propojené se zdrojem a jímkou, které určují směr toku dat. Pomocí následující logiky se dá určit, která instance prostředí Integration Runtime se ke kopírování používá: 
 

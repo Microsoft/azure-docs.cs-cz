@@ -11,65 +11,63 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/23/2019
+ms.date: 6/6/2019
 ms.author: raiye
-ms.openlocfilehash: 4c0f364e596fbe2bf9083cbcf521902523c92a70
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ecf898d331ec426aa343441d29084b4f2c656fa0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241311"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743034"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
 
 ## <a name="may-2019-guest-os"></a>. Května 2019 hostovaného operačního systému
 
->[!NOTE]
->Operačního systému hosta mohou je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí operačního systému hosta mohou. Tento seznam se může změnit.
-
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
-|  Rel 19-05   |  [4498206 ]  |  Může kumulativní Internet Exploreru   |  2,86, 3.73, 4.66  |  14. května 2019  |
-|  Rel 19-05   |  [4505050 ]  |  Může kumulativní Internet Exploreru   |  2,86, 3.73, 4.66  |  18. května 2019  |
-|  Rel 19-05   |  [4497932 ]  |  Aktualizace může Flash.   |  3.73, 4.66, 5.31  |  14. května 2019  |
-|  Rel 19-05   |  [4499175 ]  |  Souhrn zabezpečení může   |  2.86  |  14. května 2019  |
-|  Rel 19-05   |  [4495612 ]  |  Může Security Rollup .NET 3.5   |  2.86  |  14. května 2019  |
-|  Rel 19-05   |  [4495593 ]  |  Může Security Rollup .NET 4.5.2   |  2.86  |  14. května 2019  |
-|  Rel 19-05   |  [4499158 ]  |  Souhrn zabezpečení může   |  3.73  |  14. května 2019  |
-|  Rel 19-05   |  [4495607 ]  |  Může Security Rollup .NET 3.5   |  3.73  |  14. května 2019  |
-|  Rel 19-05   |  [4495591 ]  |  Může Security Rollup .NET 4.5.2   |  3.73  |  14. května 2019  |
-|  Rel 19-05   |  [4492872 ]  |  Souhrn aplikace Internet Explorer   |  3.73  |  16. dubna 2019  |
-|  Rel 19-05   |  [4499165 ]  |  Souhrn zabezpečení dne   |  4.66  |  14. května 2019  |
-|  Rel 19-05   |  [4495615 ]  |  Může Security Rollup .NET 3.5   |  4.66  |  14. května 2019  |
-|  Rel 19-05   |  [4495589 ]  |  Může Security Rollup .NET 4.5.2   |  4.66  |  14. května 2019  |
-|  Rel 19-05   |  [4498947 ]  |  Může SSU   |  5.31  |  14. května 2019  |
-|  Rel 19-05   |  [4494175 ]  |  Může mikrokód aktualizace   |  5.31  |  14. května 2019  |
-|  Rel 19-05   |  [4505052 ]  |  Souhrn zabezpečení může   |  5.31  |  19. května 2019  |
-|  Rel 19-05   |  [4499728 ]  |  Může SSU   |  6.7  |  19. května 2019  |
-|  Rel 19-05   |  [4505056 ]  |  Souhrn zabezpečení může   |  6.7  |  19. května 2019  |
-|  Rel 19-05   |  [4494174 ]  |  Může mikrokód aktualizace   |  6.7  |  14. května 2019  |
-|  Rel 19-05   |  [4495590 ]  |  Může Security Rollup .NET   |  6.7  |  14. května 2019  |
+|  Rel 19-05   |  [4498206]  |  Může kumulativní Internet Exploreru   |  2,86, 3.73, 4.66  |  14. května 2019  |
+|  Rel 19-05   |  [4505050]  |  Může kumulativní Internet Exploreru   |  2,86, 3.73, 4.66  |  18. května 2019  |
+|  Rel 19-05   |  [4497932]  |  Aktualizace může Flash.   |  3.73, 4.66, 5.31  |  14. května 2019  |
+|  Rel 19-05   |  [4499175]  |  Souhrn zabezpečení může   |  2.86  |  14. května 2019  |
+|  Rel 19-05   |  [4495612]  |  Může Security Rollup .NET 3.5   |  2.86  |  14. května 2019  |
+|  Rel 19-05   |  [4495593]  |  Může Security Rollup .NET 4.5.2   |  2.86  |  14. května 2019  |
+|  Rel 19-05   |  [4499158]  |  Souhrn zabezpečení může   |  3.73  |  14. května 2019  |
+|  Rel 19-05   |  [4495607]  |  Může Security Rollup .NET 3.5   |  3.73  |  14. května 2019  |
+|  Rel 19-05   |  [4495591]  |  Může Security Rollup .NET 4.5.2   |  3.73  |  14. května 2019  |
+|  Rel 19-05   |  [4492872]  |  Souhrn aplikace Internet Explorer   |  3.73  |  16. dubna 2019  |
+|  Rel 19-05   |  [4499165]  |  Souhrn zabezpečení dne   |  4.66  |  14. května 2019  |
+|  Rel 19-05   |  [4495615]  |  Může Security Rollup .NET 3.5   |  4.66  |  14. května 2019  |
+|  Rel 19-05   |  [4495589]  |  Může Security Rollup .NET 4.5.2   |  4.66  |  14. května 2019  |
+|  Rel 19-05   |  [4498947]  |  Může SSU   |  5.31  |  14. května 2019  |
+|  Rel 19-05   |  [4494175]  |  Může mikrokód aktualizace   |  5.31  |  14. května 2019  |
+|  Rel 19-05   |  [4505052]  |  Souhrn zabezpečení může   |  5.31  |  19. května 2019  |
+|  Rel 19-05   |  [4499728]  |  Může SSU   |  6.7  |  19. května 2019  |
+|  Rel 19-05   |  [4505056]  |  Souhrn zabezpečení může   |  6.7  |  19. května 2019  |
+|  Rel 19-05   |  [4494174]  |  Může mikrokód aktualizace   |  6.7  |  14. května 2019  |
+|  Rel 19-05   |  [4495590]  |  Může Security Rollup .NET   |  6.7  |  14. května 2019  |
 
-[KB4493510]: https://support.microsoft.com/kb/KB4493510
-[KB4493472]: https://support.microsoft.com/kb/KB4493472
-[KB4493451]: https://support.microsoft.com/kb/KB4493451
-[KB4493446]: https://support.microsoft.com/kb/KB4493446
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[4498206]: https://support.microsoft.com/kb/4498206
+[4505050]: https://support.microsoft.com/kb/4505050
+[4497932]: https://support.microsoft.com/kb/4497932
+[4499175]: https://support.microsoft.com/kb/4499175
+[4495612]: https://support.microsoft.com/kb/4495612
+[4495593]: https://support.microsoft.com/kb/4495593
+[4499158]: https://support.microsoft.com/kb/4499158
+[4495607]: https://support.microsoft.com/kb/4495607
+[4495591]: https://support.microsoft.com/kb/4495591
+[4492872]: https://support.microsoft.com/kb/4492872
+[4499165]: https://support.microsoft.com/kb/4499165
+[4495615]: https://support.microsoft.com/kb/4495615
+[4495589]: https://support.microsoft.com/kb/4495589
+[4498947]: https://support.microsoft.com/kb/4498947
+[4494175]: https://support.microsoft.com/kb/4494175
+[4505052]: https://support.microsoft.com/kb/4505052
+[4499728]: https://support.microsoft.com/kb/4499728
+[4505056]: https://support.microsoft.com/kb/4505056
+[4494174]: https://support.microsoft.com/kb/4494174
+[4495590]: https://support.microsoft.com/kb/4495590
 
 
 ## <a name="april-2019-guest-os"></a>2019 dubna hostovaného operačního systému
@@ -83,11 +81,11 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Rel 19-04 | [4493448] | Zabezpečení Windows | 2.85 | 9. dubna 2019 |
 | Rel 19-04 | [4493478] | Animace Flash | 3.72, 4.65, 5.30, 6.6 | 9. dubna 2019 |
 | Rel 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 9. dubna 2019 |
-| Rel 19-04 | [KB4490628] | Servisní aktualizace zásobníku | 2.85 | 12. března 2019 |
-| Rel 19-04 | [KB4474419] | Podpora SHA2 | 2.85 | 12. března 2019 |
-| Rel 19-04 | [KB4489878] | Březen kumulativní nesouvisí se zabezpečením | 2.85 | 12. března 2019 |
-| Rel 19-04 | [KB4489891] | Březen kumulativní nesouvisí se zabezpečením | 3.72 | 12. března 2019 |
-| Rel 19-04 | [KB4489881] | Březen kumulativní nesouvisí se zabezpečením | 4.65 | 12. března 2019 |
+| Rel 19-04 | [4490628] | Servisní aktualizace zásobníku | 2.85 | 12. března 2019 |
+| Rel 19-04 | [4474419] | Podpora SHA2 | 2.85 | 12. března 2019 |
+| Rel 19-04 | [4489878] | Březen kumulativní nesouvisí se zabezpečením | 2.85 | 12. března 2019 |
+| Rel 19-04 | [4489891] | Březen kumulativní nesouvisí se zabezpečením | 3.72 | 12. března 2019 |
+| Rel 19-04 | [4489881] | Březen kumulativní nesouvisí se zabezpečením | 4.65 | 12. března 2019 |
 
 [4493509]: https://support.microsoft.com/kb/4493509
 [4493470]: https://support.microsoft.com/kb/4493470
@@ -96,11 +94,11 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 [4493448]: https://support.microsoft.com/kb/4493448
 [4493478]: https://support.microsoft.com/kb/4493478
 [4493435]: https://support.microsoft.com/kb/4493435
-[KB4490628]: https://support.microsoft.com/kb/KB4490628
-[KB4474419]: https://support.microsoft.com/kb/KB4474419
-[KB4489878]: https://support.microsoft.com/kb/KB4489878
-[KB4489891]: https://support.microsoft.com/kb/KB4489891
-[KB4489881]: https://support.microsoft.com/kb/KB4489881
+[4490628]: https://support.microsoft.com/kb/KB4490628
+[4474419]: https://support.microsoft.com/kb/KB4474419
+[4489878]: https://support.microsoft.com/kb/KB4489878
+[4489891]: https://support.microsoft.com/kb/KB4489891
+[4489881]: https://support.microsoft.com/kb/KB4489881
 
 ## <a name="march-2019-guest-os"></a>Březen 2019 hostovaného operačního systému
 

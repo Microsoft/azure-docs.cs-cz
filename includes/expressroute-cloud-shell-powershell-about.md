@@ -5,23 +5,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ece75ff84c9f45e7284d7a5976f55f8a4ac4680f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0074696fe61570b7595179cbf953308f75ed14bd
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158736"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730526"
 ---
-Tento článek používá rutiny prostředí PowerShell. Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter. Existuje několik způsobů, jak Cloud Shell spustit:
+Tento článek používá rutiny prostředí PowerShell. Ke spouštění rutin, můžete použít Azure Cloud Shell, interaktivní prostředí prostředí hostovaných v Azure a použít pomocí prohlížeče. Azure Cloud Shell se dodává s rutinami Azure Powershellu, které jsou předem nainstalované.
+
+Pokud chcete spustit libovolný kód obsažený v tomto článku v Azure Cloud Shell, otevřete relaci služby Cloud Shell, použijte **kopírování** tlačítko na bloku kódu pro kód zkopírujte a vložte ho do relace Cloud Shellu s __Ctrl + Shift + V__ na Windows a Linux, nebo __Cmd + Shift + V__ v systému macOS. Vložený text není spouštěny automaticky, takže stiskněte **Enter** pro spuštění kódu.
+
+Můžete spustit Azure Cloud Shell pomocí:
 
 |  |   |
 |-----------------------------------------------|---|
-| Klikněte na **Vyzkoušet** v pravém horním rohu bloku kódu. | ![Cloud Shell v tomto článku](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-powershell-try-it.png) |
-| Otevřete Cloud Shell ve vašem prohlížeči. | [![https://shell.azure.com/powershell](./media/vpn-gateway-cloud-shell-powershell/launchcloudshell.png)](https://shell.azure.com/powershell) |
-| Klikněte na tlačítko **Cloud Shell** v nabídce v pravé horní části webu Azure Portal. | [![Cloud Shell na portálu](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
-|  |  |
+| Zvolte **Vyzkoušet** v pravém horním rohu bloku kódu. To __nebude__ automaticky zkopírování textu do Cloud Shellu. | ![Příklad vyzkoušet pro Azure Cloud Shell.](./media/cloud-shell-try-it/cli-try-it.png) |
+| Otevřít [shell.azure.com](https://shell.azure.com) v prohlížeči. | [![Spusťte Azure Cloud Shell tlačítko](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| Zvolte **Cloud Shell** v nabídce v pravém horním rohu webu [Azure Portal](https://portal.azure.com). | ![Tlačítko Cloud Shell na webu Azure Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 
-Pokud nechcete použít Azure Cloud Shell, můžete nainstalovat prostředí PowerShell místně místo. Pokud se rozhodnete nainstalovat a používat PowerShell místně, nezapomeňte nainstalovat nejnovější verzi rutin Powershellu pro Azure Resource Manager k získání nejnovější funkce. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+Pokud nechcete použít Azure Cloud Shell, nainstalujte Azure PowerShell místně místo. Nezapomeňte nainstalovat nejnovější verzi modulu Azure PowerShell Az zobrazíte aktuální funkce. Další informace najdete v tématu [instalace Azure Powershellu](/powershell/azure/overview).

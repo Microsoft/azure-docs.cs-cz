@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: d2312fac64515756f5ed2e0feb22fdc6b7205376
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125189"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735230"
 ---
-**Poslední aktualizace dokumentů**: 14 května 2019 10:00 RÁNO PST.
+**Poslední aktualizace dokumentů**: 4. června 2019 3:00 PM PST.
 
 Zveřejnění [nová třída zabezpečení CPU](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativního spouštění útoků na straně kanálu má za následek dotazy z zákazníky, kteří potřebují další nejasnostem.  
 
@@ -49,7 +49,7 @@ Aktualizace operačního systému se vyžadují k izolaci aplikací spuštěnýc
 | Nabídka | Doporučená akce  |
 |----------|---------------------|
 | Azure Cloud Services  | Povolit [automatické aktualizace](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal) nebo zajistit, aby běžely nejnovější hostovaného operačního systému. |
-| Linuxové virtuální počítače Azure | Instalovat aktualizace z poskytovatele operačního systému. Další informace najdete v tématu [Linux](#linux) dále v tomto dokumentu. |
+| Azure Linux Virtual Machines | Instalovat aktualizace z poskytovatele operačního systému. Další informace najdete v tématu [Linux](#linux) dále v tomto dokumentu. |
 | Windows Azure Virtual Machines  | Nainstalujte nejnovější aktualizace zabezpečení.
 | Další služby Azure PaaS | Neexistuje žádná akce potřebné pro zákazníky, kteří používají tyto služby. Azure automaticky udržuje vaše verze operačního systému aktuální. |
 
@@ -77,7 +77,7 @@ Pokud používáte nedůvěryhodný kód, můžete povolit další funkce zabezp
 Cílového operačního systému musí být aktuální tyto další bezpečnostní funkce. Zatímco řada spekulativního spouštění na straně kanálu způsoby zmírnění rizik jsou ve výchozím nastavení povolené, další funkce popsané v tomto poli musí být povoleno ručně a může způsobit, že dopad na výkon. 
 
 
-**Krok 1: Zakázat hyperthreadingem na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na s vysokým počtem podprocesů, virtuální počítač bude nutné zakázat hyperthreadingem nebo přesunout na velikost virtuálního počítače – do s vysokým počtem podprocesů. Zkontrolujte, jestli váš virtuální počítač má povoleným hyperthreadingem, najdete níže uvedený skript příkazového řádku Windows z v rámci virtuálního počítače.
+**Krok 1: Zakázat hyper-threading na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na virtuálním počítači hyper-threaded bude nutné zakázat hyper-threading nebo přesunout do jiných hyper-threaded velikost virtuálního počítače. Referenční dokumentace [tohoto dokumentu](https://docs.microsoft.com/azure/virtual-machines/windows/acu) seznam technologie hyper-threaded velikosti virtuálních počítačů (kde poměr virtuálních procesorů na jader je 2:1). Pokud chcete zkontrolovat, jestli má váš virtuální počítač hyper-threading povolen, najdete níže uvedený skript příkazového řádku Windows z v rámci virtuálního počítače.
 
 Typ `wmic` zadat interaktivní rozhraní. Zadejte níže zobrazíte velikost fyzických a logických procesorů na virtuálním počítači.
 
@@ -85,7 +85,7 @@ Typ `wmic` zadat interaktivní rozhraní. Zadejte níže zobrazíte velikost fyz
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-Pokud je počet logických procesorů větší než fyzických procesorů (jader), je povolen hyperthreading.  Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) zobrazíte hyperthreadingem zakázán.  Jakmile hyperthreadingem je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**. 
+Pokud je počet logických procesorů větší než fyzických procesorů (jader), pak technologie hyper-threading povolen.  Pokud používáte virtuální počítač hyper-threaded, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) získat technologie hyper-threading zakázán.  Jakmile technologie hyper-threading je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**. Najdete [základní počet](#core-count) pochopit, proč se sníží vaše počet jader virtuálního počítače.
 
 
 **Krok 2**: Paralelní ke kroku 1, postupujte podle pokynů v [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) ověření ochrany jsou povolené pomocí [SpeculationControl](https://aka.ms/SpeculationControlPS) modul prostředí PowerShell.
@@ -123,14 +123,14 @@ Pokud se zobrazí výstup `MDS mitigation is enabled: False`, prosím [obraťte 
 <a name="linux"></a>Povolení sadu další funkce zabezpečení uvnitř vyžaduje, aby cílový operační systém plně aktuální. Ve výchozím nastavení se povolí některá zmírnění rizik. Následující část popisuje funkce, které jsou vypnuté ve výchozím nastavení a/nebo závislé na hardwarovou podporu (mikrokód). Povolení těchto funkcí může způsobit, že dopad na výkon. Referenční dokumentaci poskytovatele operačního systému o další pokyny
 
 
-**Krok 1: Zakázat hyperthreadingem na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na s vysokým počtem podprocesů, virtuální počítač bude nutné zakázat hyperthreadingem nebo přesunout do virtuálního počítače – do s vysokým počtem podprocesů.  Chcete-li zkontrolovat, zda jsou spuštěny s vysokým počtem podprocesů virtuálního počítače, spusťte `lscpu` v virtuálního počítače s Linuxem. 
+**Krok 1: Zakázat hyper-threading na virtuálním počítači** – zákazníci, kteří používají nedůvěryhodný kód na virtuálním počítači hyper-threaded bude nutné zakázat hyper-threading nebo přesunout do jiných hyper-threaded virtuálního počítače.  Referenční dokumentace [tohoto dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/acu) seznam technologie hyper-threaded velikosti virtuálních počítačů (kde poměr virtuálních procesorů na jader je 2:1). Chcete-li zkontrolovat, jestli používáte virtuální počítač hyper-threaded, spusťte `lscpu` v virtuálního počítače s Linuxem. 
 
-Pokud `Thread(s) per core = 2`, pak je povolen hyperthreading. 
+Pokud `Thread(s) per core = 2`, pak technologie hyper-threading povolen. 
 
-Pokud `Thread(s) per core = 1`, pak hyperthreadingem byla zakázána. 
+Pokud `Thread(s) per core = 1`, pak technologie hyper-threading je zakázané. 
 
  
-Ukázka výstupu pro virtuální počítač s povoleným hyperthreadingem: 
+Ukázkový výstup pro virtuální počítač s hyper-threading povolen: 
 
 ```console
 CPU Architecture:      x86_64
@@ -145,7 +145,8 @@ NUMA node(s):          1
 
 ```
 
-Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) zobrazíte hyperthreadingem zakázán.  Jakmile hyperthreadingem je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**.
+Pokud používáte virtuální počítač hyper-threaded, [obraťte se na podporu Azure](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) získat technologie hyper-threading zakázán.  Jakmile technologie hyper-threading je zakázaná, **podpora bude vyžadovat úplné restartování virtuálního počítače**. Najdete [základní počet](#core-count) pochopit, proč se sníží vaše počet jader virtuálního počítače.
+
 
 
 **Krok 2**: Cílem je zmírnit nebezpečí některý níže ohrožení zabezpečení na straně kanálu spekulativního spouštění, najdete v dokumentaci poskytovatele operačního systému:   
@@ -153,6 +154,11 @@ Pokud používáte virtuální počítač, s vysokým počtem podprocesů, [obra
 - [RedHat a CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
+
+
+### <a name="core-count"></a>Počet jader
+
+Po vytvoření virtuálního počítače hyper-threaded 2 vláken na základní Platforma Azure přiřadí – ty se nazývají virtuální procesory. Pokud role hyper-threading je zakázáno, Azure odebere vlákno a prostředí do jednoho jádra s hyperthreadingem (fyzických jader). Poměr virtuálních procesorů procesoru 2:1, jednou technologie hyper-threading je zakázaná, počtu CPU na virtuálním počítači se zobrazí poklesly o polovinu. Virtuální počítač D8_v3 je například technologie hyper-threaded virtuálního počítače s na 8 virtuálních procesorů (2 vláken na základní x 4 jader).  Pokud technologie hyper-threading je zakázáno, budou procesory umístit do 4 fyzických jader s 1 vlákna podle počtu jader. 
 
 ## <a name="next-steps"></a>Další postup
 

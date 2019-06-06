@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 635e72a8e8a70b8885afea282511fbfaf24d2f94
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957334"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729469"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -110,7 +110,7 @@ V jazyce JavaScript [vazby](functions-triggers-bindings.md) se konfigurují a de
 
 ### <a name="inputs"></a>Vstupy
 Vstup dělí do dvou kategorií ve službě Azure Functions: jeden je vstup triggeru a druhý je další vstupy. Aktivační události a dalších vstupních vazeb (vazby `direction === "in"`) lze číst pomocí funkce třemi způsoby:
- - **_[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. `name` Vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
+ - ** _[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. `name` Vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Výstupy (vazby `direction === "out"`) je možné zapisovat na funkci v několik
 
 Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů (není sloučit tyto metody):
 
-- **_[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise vrácení funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
+- ** _[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise vrácení funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Data můžete přiřadit výstupních vazeb v jednom z následujících způsob�
   ```
 
   Pokud používáte synchronní funkce, můžete se vrátit objekt pomocí [ `context.done` ](#contextdone-method) (viz příklad).
-- **_[Doporučuje pro jeden výstup]_  Návratová hodnota přímo a pomocí názvu $return vazby.** Tento postup funguje pouze pro asynchronní/Promise vrácení funkce. Viz příklad v [export asynchronní funkce](#exporting-an-async-function). 
+- ** _[Doporučuje pro jeden výstup]_  Návratová hodnota přímo a pomocí názvu $return vazby.** Tento postup funguje pouze pro asynchronní/Promise vrácení funkce. Viz příklad v [export asynchronní funkce](#exporting-an-async-function). 
 - **Přiřazování hodnot k `context.bindings`**  přímo do context.bindings můžete přiřadit hodnoty.
 
   ```javascript
@@ -397,9 +397,9 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`.** Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
++ ** _[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`.** Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
 
-+ **_[Pouze odpovědi]_  Voláním `context.done()`.** Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
++ ** _[Pouze odpovědi]_  Voláním `context.done()`.** Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
 
     ```json
     {
@@ -465,23 +465,16 @@ Existují dva způsoby, jak nainstalovat balíčky na aplikace Function App:
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-Ve službě Functions [nastavení aplikace](functions-app-settings.md), jako je například připojení služby jsou řetězce, zveřejní jako proměnné prostředí během provádění. Může přistupovat tato nastavení pomocí `process.env`, jak je znázorněno zde `GetEnvironmentVariable` funkce:
+Ve službě Functions [nastavení aplikace](functions-app-settings.md), jako je například připojení služby jsou řetězce, zveřejní jako proměnné prostředí během provádění. Může přistupovat tato nastavení pomocí `process.env`, jak je vidět ve voláních druhý a třetí `context.log()` kde jsme protokolu `AzureWebJobsStorage` a `WEBSITE_SITE_NAME` proměnné prostředí:
 
 ```javascript
-module.exports = function (context, myTimer) {
+module.exports = async function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
     context.log('Node.js timer trigger function ran!', timeStamp);
-    context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
-    context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-
-    context.done();
+    context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
+    context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
-
-function GetEnvironmentVariable(name)
-{
-    return name + ": " + process.env[name];
-}
 ```
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]

@@ -1,28 +1,28 @@
 ---
-title: 'Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat'
-description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Azure Data Exploreru pomocí Node.js.
+title: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
+description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure pomocí Node.js.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/25/2018
-ms.openlocfilehash: 42a4d2e34eab3679f98d5a62099ab57e5924fcc3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800426"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494485"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí dvě klientské knihovny pro Node: [knihovnu ingestování](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejdříve vytvoříte mapování tabulky a dat v testovacím clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí dvě klientské knihovny pro Node: [knihovnu ingestování](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku nejprve vytvoříte mapování dat v testu clusteru a tabulky. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Kromě předplatného Azure budete k dokončení tohoto rychlého startu potřebovat:
+Kromě předplatné Azure budete potřebovat k dokončení tohoto článku:
 
 * [Testovací cluster a databázi](create-cluster-database-portal.md)
 
@@ -158,7 +158,7 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
+Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
 
 ```Kusto
 .drop table StormEvents
@@ -166,5 +166,4 @@ Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, 
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Zápis dotazů](write-queries.md)
+* [Zápis dotazů](write-queries.md)

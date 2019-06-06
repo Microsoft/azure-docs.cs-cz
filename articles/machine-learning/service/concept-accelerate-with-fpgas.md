@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9204b0d8513d4adbb9c93be94284d7d46de41e06
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851031"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479563"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Co jsou pole programmable gate Array (FPGA)
 
@@ -35,7 +35,7 @@ Následující diagram a tabulka ukazují, jak porovnat FPGA do dalších proces
 |Specifické pro aplikaci integrovaného okruhy|ASICs|Vlastní okruhů, jako je Google TensorFlow procesoru jednotek (TPU) zadejte maximální efektivitou. Nedá se změnit podle vašich aktuálních potřeb.|
 |Pole programmable gate Array|FPGA|FPGA, jako jsou dostupné v Azure, poskytují výkon blízko ASICs. Jsou také znovupoužitelných a flexibilní v průběhu času implementovat nové logiku.|
 |Grafické procesory|Grafické procesory|Oblíbené volba pro výpočty AI. GPU nabízejí možnosti paralelního zpracování, což rychlejší při vykreslování obrázků než procesory.|
-|Jednotky zpracování – střed|Počet procesorů|Pro obecné účely procesory, není ideální pro grafiku a zpracování videa výkon.|
+|Jednotky zpracování – střed|Procesory|Pro obecné účely procesory, není ideální pro grafiku a zpracování videa výkon.|
 
 FPGA v Azure jsou založené na zařízeních společnosti Intel FPGA, které datových vědců a vývojářů, použijte k urychlení výpočtů v reálném čase AI. Tato architektura povolené FPGA nabízí výkon, flexibilitu a velikost a je k dispozici v Azure.
 
@@ -80,7 +80,7 @@ Nasazení trénovaného DNN modelů do FPGA v cloudu Azure, najdete v článku [
 
 Projděte si tyto videa a blogy:
 
-+ [Hyperškálovatelného hardwaru: ML ve velkém měřítku nad Azure + FPGA: Build 2018 (video)](https://www.youtube.com/watch?v=BMgQAHIx2eY)
++ [Hyperškálovatelného hardwaru: ML ve velkém měřítku nad Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
 + [Uvnitř Microsoft FPGA cloudu založenému na FPGA (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
 

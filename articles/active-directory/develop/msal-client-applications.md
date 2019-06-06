@@ -17,40 +17,40 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e0300ec0ef4ee67b06acb85514ae898bbd0a830
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9d09436b9a2ac38e7b07a51f01d65769ed19d08e
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544300"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430828"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Veřejné klienta a důvěrné klientské aplikace
-Microsoft Authentication Library (MSAL) definuje dva typy klientů: veřejní klienti a důvěrní klienti. Dva klientské typy rozlišují podle jejich schopnost bezpečně ověřovat pomocí autorizačního serveru a zachovat utajení svých přihlašovacích údajů klienta.  Azure AD Authentication Library (ADAL) je naproti tomu koncept kontext ověřování (což je připojení ke službě Azure AD).
+Microsoft Authentication Library (MSAL) definuje dva typy klientů: veřejní klienti a důvěrní klienti. Dva klientské typy rozlišují podle jejich schopnost bezpečně ověřovat pomocí autorizačního serveru a zachovat utajení svých přihlašovacích údajů klienta. Naproti tomu Azure AD Authentication Library (ADAL) používá, co se nazývá *kontextu ověřování* (což je připojení ke službě Azure AD).
 
-- **Důvěrné klientské aplikace** jsou aplikace, které běží na serverech (Web Apps, webové rozhraní API nebo i služby/démona aplikace). Jsou považovány za obtížný přístup a proto dokáže udržování tajný klíč aplikace. Důvěrní klienti budou moct uložení konfigurace času tajných kódů. Každá instance klienta má odlišné konfigurace (včetně ID klienta a tajný klíč). Tyto hodnoty je obtížné pro koncové uživatele k extrakci. Webová aplikace je nejběžnější důvěrnému klientovi. ID klienta je přístupný přes webový prohlížeč, ale je předán pouze v rámci zpětného kanálu a nikdy přímo vystavený tajný kód.
+- **Důvěrné klientské aplikace** jsou aplikace, které běží na serverech (webové aplikace, aplikace webového rozhraní API nebo dokonce i aplikace služby/démona). Budou považovány za obtížné přístup a z tohoto důvodu umožňující zachovat tajný klíč aplikace. Důvěrní klienti může obsahovat tajné kódy konfigurace času. Každá instance klienta má odlišné konfigurace (včetně ID klienta a tajný kód klienta). Tyto hodnoty je obtížné pro koncové uživatele k extrakci. Webová aplikace je nejběžnější důvěrnému klientovi. ID klienta je přístupný přes webový prohlížeč, ale je předán pouze v rámci zpětného kanálu a nikdy přímo vystavený tajný kód.
 
     Důvěrné klientské aplikace: <BR>
     ![Webová aplikace](media/msal-client-applications/web-app.png) ![webového rozhraní API](media/msal-client-applications/web-api.png) ![proces démon nebo službu](media/msal-client-applications/daemon-service.png)
 
-- **Aplikace veřejným klientem** jsou aplikace, které běží na zařízení nebo stolní počítače nebo ve webovém prohlížeči. Nejsou důvěryhodné, aby bezpečně uchovávat tajné kódy aplikace a proto pouze přístup k webovým rozhraním API jménem uživatele (podporují se jenom toky veřejným klientem). Veřejní klienti nebudou moct uložení konfigurace času tajných kódů a díky tomu mají žádný tajný kód klienta.
+- **Aplikace veřejným klientem** jsou aplikace, které běží na zařízení nebo stolní počítače nebo ve webovém prohlížeči. Nejsou důvěryhodné, aby bezpečně uchovávat tajné kódy aplikace, aby pouze přístup k webovým rozhraním API jménem uživatele. (Podporují pouze veřejné klienta toky.) Veřejní klienti neudrží konfigurace času tajné kódy, abyste nemuseli tajné klíče klienta.
 
     Veřejné klientské aplikace: <BR>
     ![Aplikace klasické pracovní plochy](media/msal-client-applications/desktop-app.png) ![Browserless API](media/msal-client-applications/browserless-app.png) ![mobilní aplikace](media/msal-client-applications/mobile-app.png)
 
 > [!NOTE]
-> V MSAL.js neexistuje žádná rozdělení veřejných, důvěrné klientské aplikace.  MSAL.js představuje klientské aplikace jako na základě uživatelského agenta aplikace veřejným klientem, ve kterém kód klienta je prováděn v uživatelský agent jako je webový prohlížeč.  Tito klienti nebudou ukládat tajné klíče, protože kontext prohlížeče je otevřeně dostupné.
+> V MSAL.js neexistuje žádná rozdělení veřejných, důvěrné klientské aplikace.  MSAL.js představuje klientské aplikace jako aplikace založené na agentovi na uživatele, veřejné klienty, ve kterých je klientský kód proveden v uživatelského agenta, jako je webový prohlížeč. Tito klienti nejsou tajných kódů uložit, protože kontext prohlížeče je otevřeně dostupné.
 
 ## <a name="comparing-the-client-types"></a>Porovnání typů klienta
-Existují některé commonalities a rozdíly mezi veřejným klientem a důvěrnému klientovi aplikace:
+Tady jsou některé podobnosti a rozdíly mezi veřejným klientem a důvěrnému klientovi aplikace:
 
-- Oba typy aplikací udržovat mezipaměť tokenu uživatele a můžete získat token tiše (v případech, kdy je token již v mezipaměť tokenu). Důvěrné klientské aplikace také mít mezipaměť tokenu v aplikaci pro tokeny, které jsou pro samotné aplikace.
-- Obě Správa uživatelských účtů a můžete získat účty z mezipaměti token uživatele, uživatelského účtu z identifikátoru nebo odeberte účet.
-- Veřejné klientské aplikace máte čtyři způsoby získávání tokenu (čtyři toky ověřování), zatímco důvěrnému klientovi aplikace mít tři (a jednu metodu pro výpočet adresy URL zprostředkovatele identity zajistí autorizaci koncového bodu). Další informace najdete v tématu scénáře a získávání tokenů.
+- Oba typy aplikace udržovat mezipaměť tokenu uživatele a můžete získat token tiše (Pokud je již token mezipaměť tokenu). Důvěrnému klientovi aplikace mají také mezipaměť tokenu v aplikaci pro tokeny, které jsou pro samotné aplikace.
+- Oba typy aplikací Správa uživatelských účtů a můžete získat účet z mezipaměti token uživatele, uživatelského účtu z identifikátoru nebo odeberte účet.
+- Aplikace veřejným klientem mají čtyři způsoby, jak získat token (čtyři toky ověřování). Důvěrnému klientovi aplikace mají tři způsoby, jak získat token (a jedním ze způsobů pro výpočet adresy URL zprostředkovatele identity zajistí autorizaci koncového bodu). Další informace najdete v tématu [získávání tokenů](msal-acquire-cache-tokens.md).
 
-Pokud jste použili v minulosti ADAL, můžete si všimnout, že rozporu kontextu ADAL pro ověřování, MSAL klienta, který ID (označuje také jako ID aplikace nebo ID aplikace) je předán jednou při konstrukci aplikace a nadále již nebudou musí opakovat při získávání tokenu. To platí i pro veřejné a důvěrné klientské aplikace. Konstruktory důvěrné klientské aplikace jsou předány také přihlašovací údaje pro klienta: tajný kód sdílejí u zprostředkovatele identity.
+Pokud jste použili ADAL, můžete si všimnout, že na rozdíl od kontextu ADAL pro ověřování, v MSAL ID klienta (také nazývané *ID aplikace* nebo *ID aplikace*) je předán jednou při konstrukci aplikace. Není nutné znovu předána, když aplikace získá token. To platí pro obě veřejných, důvěrné klientské aplikace. Konstruktory důvěrnému klientovi aplikace jsou předány také přihlašovací údaje pro klienta: tajný kód sdílejí u zprostředkovatele identity.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o:
 - [Možnosti konfigurace klientské aplikace](msal-client-application-configuration.md)
-- [Vytvoření klientské aplikace pomocí MSAL.NET](msal-net-initializing-client-applications.md).
-- [Vytvoření klientské aplikace s využitím MSAL.js](msal-js-initializing-client-applications.md).
+- [Vytvoření klientské aplikace pomocí MSAL.NET](msal-net-initializing-client-applications.md)
+- [Vytvoření klientské aplikace s využitím MSAL.js](msal-js-initializing-client-applications.md)

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f83eb87d2eecb91aa18b1caceb42f9d8bd6c2a0e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: cfa94fc1c75bcd1eaa9a076cfe63369f60ce5f1c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939589"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693079"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -129,6 +129,7 @@ Zřizování a rušení zřízení během vytváření skupiny synchronizace, ak
 - Názvy objektů (databáze, tabulek a sloupců) nesmí obsahovat tisknutelná znaků tečkou (.), zbývající hranaté závorky ([), nebo právo hranatá závorka (]).
 - Ověřování pomocí Azure Active Directory se nepodporuje.
 - Tabulky se stejným názvem, ale jiné schéma (například dbo.customers a sales.customers) nejsou podporovány.
+- Sloupce s uživatelem definované datové typy se nepodporují.
 
 #### <a name="unsupported-data-types"></a>Nepodporované datové typy
 

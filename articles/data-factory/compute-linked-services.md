@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: b4078303a0fabf70fe8bda82875dd312714f73de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e7405e48307091ff5df12096d49a00c011e2de3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66155247"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480426"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různých výpočetních prostředích, které můžete použít k zpracovávat a transformovat data. Obsahuje také podrobnosti o různých konfigurací (na vyžádání vs. funkce přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojené služby propojení těchto výpočetních prostředí do služby Azure data factory.
@@ -95,10 +95,10 @@ Následující kód JSON určuje HDInsight propojené služby na vyžádání za
 >
 > 
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 | Vlastnost                     | Popis                              | Požaduje se |
 | ---------------------------- | ---------------------------------------- | -------- |
-| Typ                         | Vlastnost type by měla být nastavená na **HDInsightOnDemand**. | Ano      |
+| type                         | Vlastnost type by měla být nastavená na **HDInsightOnDemand**. | Ano      |
 | clusterSize                  | Počet pracovních procesů a datových uzlů do clusteru. Vytvoření clusteru HDInsight s 2 hlavní uzly spolu s počtem uzlů pracovního procesu, kterou zadáte pro tuto vlastnost. Uzly mají velikost Standard_D3, který má 4 jádra, 4 pracovní uzel clusteru trvá 24 jader (4\*4 = 16 jader pro pracovní uzly a navíc 2\*4 = 8 jader pro hlavní uzly). Zobrazit [nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) podrobnosti. | Ano      |
 | linkedServiceName            | Propojená služba clusteru na vyžádání používané pro ukládání a zpracování dat v Azure Storage. HDInsight cluster vytvoří ve stejné oblasti jako tento účet úložiště Azure. Pro Azure HDInsight platí omezení celkového počtu jader, která můžete v jednotlivých podporovaných oblastech Azure použít. Ujistěte se, že máte dostatek kvóty jader v dané oblasti Azure podle vyžaduje parametr clusterSize. Podrobnosti najdete v [nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>V současné době nelze vytvořit cluster HDInsight na vyžádání, která používá Azure Data Lake Store jako úložiště. Pokud chcete uložit výsledných dat z HDInsight zpracování do Azure Data Lake Store, použijte aktivitu kopírování ke zkopírování dat z Azure Blob Storage do Azure Data Lake Store. </p> | Ano      |
 | clusterResourceGroup         | HDInsight cluster vytvoří v této skupině prostředků. | Ano      |
@@ -240,7 +240,7 @@ Pokud chcete vytvořit D4 velikosti hlavní uzly a uzly pracovního procesu, zad
 "dataNodeSize": "Standard_D4",
 ```
 
-Pokud zadáte chybnou hodnotu pro tyto vlastnosti, může se zobrazit následující **Chyba:** Nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: "Chyba". Zpráva: "PreClusterCreationValidationFailure". Když se zobrazí tato chyba, ujistěte se, že používáte **RUTINY a rozhraní API** název tabulky [velikostí virtuálních počítačů](../virtual-machines/linux/sizes.md) článku.        
+Pokud zadáte chybnou hodnotu pro tyto vlastnosti, může se zobrazit následující **Chyba:** Nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: "Chyba". zpráva: "PreClusterCreationValidationFailure". Když se zobrazí tato chyba, ujistěte se, že používáte **RUTINY a rozhraní API** název tabulky [velikostí virtuálních počítačů](../virtual-machines/linux/sizes.md) článku.        
 
 ## <a name="bring-your-own-compute-environment"></a>Výpočetní prostředí
 U tohoto typu konfigurace nastavení uživatelé můžou registrovat již existující výpočetní prostředí jako propojenou službu ve službě Data Factory. Výpočetní prostředí spravuje uživatel a služba Data Factory se používá ke spuštění aktivity.
@@ -283,10 +283,10 @@ Můžete vytvořit služby Azure HDInsight propojené můžete zaregistrovat vla
   }
 ```
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 | Vlastnost          | Popis                                                  | Požaduje se |
 | ----------------- | ------------------------------------------------------------ | -------- |
-| Typ              | Vlastnost type by měla být nastavená na **HDInsight**.            | Ano      |
+| type              | Vlastnost type by měla být nastavená na **HDInsight**.            | Ano      |
 | clusterUri        | Identifikátor URI clusteru HDInsight.                            | Ano      |
 | username jméno          | Zadejte jméno uživatele, který se má použít pro připojení do existujícího clusteru HDInsight. | Ano      |
 | password          | Zadejte heslo pro uživatelský účet.                       | Ano      |
@@ -343,10 +343,10 @@ Najdete v následujících tématech, pokud jste ještě službu Azure Batch:
 ```
 
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 | Vlastnost          | Popis                              | Požaduje se |
 | ----------------- | ---------------------------------------- | -------- |
-| Typ              | Vlastnost type by měla být nastavená na **AzureBatch**. | Ano      |
+| type              | Vlastnost type by měla být nastavená na **AzureBatch**. | Ano      |
 | accountName       | Název účtu služby Azure Batch.         | Ano      |
 | accessKey         | Přístupový klíč pro účet Azure Batch.  | Ano      |
 | batchUri          | Adresa URL k účtu Azure Batch ve formátu https://*batchaccountname.region*. batch.azure.com. | Ano      |
@@ -379,7 +379,7 @@ Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Lear
 }
 ```
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 | Vlastnost               | Popis                              | Požaduje se                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Type                   | Vlastnost type by měla být nastavená na: **AzureML**. | Ano                                      |
@@ -421,11 +421,11 @@ Vytvoření **Azure Data Lake Analytics** propojená služba Azure Data Lake Ana
 }
 ```
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 
 | Vlastnost             | Popis                              | Požaduje se                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| Typ                 | Vlastnost type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
+| type                 | Vlastnost type by měla být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
 | accountName          | Název účtu Azure Data Lake Analytics.  | Ano                                      |
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI.           | Ne                                       |
 | subscriptionId       | Id předplatného Azure                    | Ne                                       |
@@ -481,19 +481,20 @@ Můžete vytvořit **propojená služba Azure Databricks** k registraci pracovn�
 
 ```
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 
 | Vlastnost             | Popis                              | Požaduje se                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Název propojené služby               | Ano   |
-| Typ                 | Vlastnost type by měla být nastavená na: **AzureDatabricks**. | Ano                                      |
-| doména               | Zadejte oblast Azure, odpovídajícím způsobem podle oblasti pracovního prostoru Databricks. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
+| type                 | Vlastnost type by měla být nastavená na: **AzureDatabricks**. | Ano                                      |
+| Domény               | Zadejte oblast Azure, odpovídajícím způsobem podle oblasti pracovního prostoru Databricks. Příklad: https://eastus.azuredatabricks.net | Ano                                 |
 | accessToken          | Přístupový token je vyžadován pro Data Factory k ověření do Azure Databricks. Přístupový token musí být generovány v pracovním prostoru databricks. Podrobný postup najít přístupový token najdete [zde](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)  | Ano                                       |
 | existingClusterId    | ID clusteru ze stávajícího clusteru můžete spouštět všechny úlohy na to. To by měl být již byly vytvořeny interaktivní clusteru. Budete muset ručně restartovat clusteru, pokud přestane reagovat. Databricks navrhnout, spouštění úloh na nových clusterů pro větší spolehlivost. Můžete najít ID clusteru Cluster Interactive v -> pracovní prostor Databricks clustery -> Interaktivní název clusteru -> Konfigurace -> značky. [Další podrobnosti](https://docs.databricks.com/user-guide/clusters/tags.html) | Ne 
 | newClusterVersion    | Verze clusteru Spark. Clusteru úloh vytvoří ve službě databricks. | Ne  |
 | newClusterNumOfWorker| Počet pracovních uzlů, které by měly mít tento cluster. Cluster bude mít jeden ovladač Spark a num_workers prováděcí moduly celkem num_workers + 1 uzlů Spark. Řetězec ve formátu Int32, jako je "1" znamená, že numOfWorker 1 nebo "1:10" znamená, že automatické škálování od 1 jako minimální a 10 jako maximální.  | Ne                |
 | newClusterNodeType   | Toto pole kóduje prostřednictvím jednu hodnotu, prostředky dostupné pro každý z uzlů Sparku v tomto clusteru. Například Spark uzlů se dají zřizovat a optimalizované pro úlohy náročné na paměť nebo výpočetní toto pole je povinné pro nový cluster                | Ne               |
 | newClusterSparkConf  | Sada volitelné, zadané uživatelem páry klíč hodnota konfigurace Spark. Uživatele můžete také předat v řetězci další možnosti JVM ovladače a prováděcí moduly prostřednictvím spark.driver.extraJavaOptions a spark.executor.extraJavaOptions v uvedeném pořadí. | Ne  |
+| newClusterInitScripts| Sada inicializace volitelné, uživatelem definované skripty pro nový cluster. Zadání cesty DBFS skriptům init. | Ne  |
 
 
 ## <a name="azure-sql-database-linked-service"></a>Propojená služba Azure SQL Database

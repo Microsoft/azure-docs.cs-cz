@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65887363"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514492"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -66,7 +66,7 @@ Pokud jste vytvořili prostředky pro použití s vaším clusterem AKS, jako je
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Můžete zadat vlastní název pro skupinu prostředků infrastruktury AKS?
 
-Ano. Ve výchozím nastavení, poskytovatel prostředků pro AKS automaticky vytvoří skupinu prostředků sekundární (například *MC_myResourceGroup_myAKSCluster_eastus*) během nasazení. Pro dosažení souladu s firemní zásady, můžete zadat vlastní název pro tento spravovaný cluster (*MC_*) skupina prostředků.
+Ano. Ve výchozím nastavení, poskytovatel prostředků pro AKS automaticky vytvoří skupinu prostředků sekundární (například *MC_myResourceGroup_myAKSCluster_eastus*) během nasazení. Pro dosažení souladu s firemní zásady, můžete zadat vlastní název pro tento spravovaný cluster (*MC_* ) skupina prostředků.
 
 Chcete-li zadat vlastní název skupiny prostředků, nainstalujte [aks ve verzi preview] [ aks-preview-cli] verze rozšíření Azure CLI *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí [az aks vytvořit] [ az-aks-create] příkazu, použijte *– node-resource-group* parametr a zadejte název pro skupinu prostředků. Pokud jste [pomocí šablony Azure Resource Manageru] [ aks-rm-template] Pokud chcete nasadit AKS cluster, můžete definovat pomocí názvu skupiny prostředků *nodeResourceGroup* vlastnost.
 
@@ -129,6 +129,10 @@ Protože AKS je spravovaná služba, můžeme nasadit a spravovat doplňky a pod
 
 Uživatelé nemohou přepsat minimální `maxPods` ověření.
 
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžete použít Azure rezervace slevy na své uzly AKS agenta?
+
+AKS agentské uzly se účtují jako standardní virtuální počítače Azure, takže pokud jste si koupili [Azure rezervace] [ reservation-discounts] pro velikost virtuálního počítače, který používáte ve službě AKS, se automaticky provedou tyto slevy.
+
 <!-- LINKS - internal -->
 
 [aks-regions]: ./quotas-skus-regions.md#region-availability
@@ -145,6 +149,7 @@ Uživatelé nemohou přepsat minimální `maxPods` ověření.
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 
 <!-- LINKS - external -->
 

@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý start: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)'
-description: V tomto rychlém startu se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure pomocí .NET Standard SDK.
+title: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)
+description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure pomocí .NET Standard SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/18/2018
-ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827200"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496892"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Rychlý start: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)
 
-Průzkumník Azure dat (ADX) je služba pro zkoumání dat rychlá a vysoce škálovatelné pro data protokolů a telemetrie. ADX nabízí dva klientské knihovny pro .NET Standard: [ingestování knihovny](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) a [knihovna dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejdříve vytvoříte mapování tabulky a dat v testovacím clusteru. Fronty ingestování do clusteru a ověřte výsledky.
+Průzkumník Azure dat (ADX) je služba pro zkoumání dat rychlá a vysoce škálovatelné pro data protokolů a telemetrie. ADX nabízí dva klientské knihovny pro .NET Standard: [ingestování knihovny](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) a [knihovna dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku nejprve vytvoříte mapování dat v testu clusteru a tabulky. Fronty ingestování do clusteru a ověřte výsledky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -226,7 +226,7 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
+Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
 
 ```Kusto
 .drop table StormEvents
@@ -234,5 +234,4 @@ Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, 
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Zápis dotazů](write-queries.md)
+* [Zápis dotazů](write-queries.md)

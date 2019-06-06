@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bafa4614e40bb1796ec90e07ecf5b9286a8acb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113510"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734565"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
 
@@ -31,14 +31,13 @@ Tento článek popisuje, jak vytvořit jeden nebo více kontroly přístupu pro 
 ## <a name="prerequisites"></a>Požadavky
 
 - Azure AD Premium P2
-- [Kontroly přístupu povolena](access-reviews-overview.md)
 - Globální správce nebo Správce uživatelů
 
 Další informace najdete v tématu [kteří uživatelé musí mít licence?](access-reviews-overview.md#which-users-must-have-licenses).
 
 ## <a name="create-one-or-more-access-reviews"></a>Vytvořte jeden nebo více kontroly přístupu
 
-1. Přihlaste se k Azure portal a otevřete [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Přihlaste se k Azure portal a otevřete [stránka zásady správného řízení identit](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 1. V nabídce vlevo klikněte na tlačítko **kontrol přístupu**.
 

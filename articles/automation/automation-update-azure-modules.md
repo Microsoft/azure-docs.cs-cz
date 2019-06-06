@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/13/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2f55891ddd383ea15da499495909b56ffb0e06d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c09c9df1b8af7adca5c0169cf31881121ba6cc99
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786146"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427484"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
-Chcete-li aktualizovat moduly Azure ve vašem účtu Automation, musíte použít [runbooku Azure aktualizovat moduly](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), které je dostupné jako open source. Pokud chcete začít používat **aktualizace AutomationAzureModulesForAccount** stažení sady runbook, chcete-li aktualizovat moduly Azure z [Azure aktualizovat moduly sady runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) na Githubu. Potom můžete importovat do účtu služby Automation nebo spustit jako skript. Pokyny o tom, jak to udělat najdete v [aktualizace Azure moduly sady runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update).
+Chcete-li aktualizovat moduly Azure ve vašem účtu Automation, musíte použít [runbooku Azure aktualizovat moduly](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), které je dostupné jako open source. Pokud chcete začít používat **aktualizace AutomationAzureModulesForAccount** stažení sady runbook, chcete-li aktualizovat moduly Azure z [Azure aktualizovat moduly sady runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) na Githubu. Potom můžete importovat do účtu služby Automation nebo spustit jako skript. Zjistěte, jak importovat sady runbook ve vašem účtu Automation, najdete v článku [Import sady runbook](manage-runbooks.md#import-a-runbook).
 
 Nejčastější moduly AzureRM Powershellu jsou dostupné ve výchozím nastavení v každém účtu Automation. Tým Azure pravidelně aktualizuje moduly Azure, proto k zajištění aktuálnosti budete chtít použít [aktualizace AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) sady runbook a aktualizujte moduly v rámci účtů služby Automation.
 

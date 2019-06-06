@@ -69,7 +69,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '(Preview) <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Konfigurovat časové pásmo</a> při vytváření instance.'
+          - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">Nakonfigurujte časové pásmo</a> při vytváření instance.'
           - html: 'Vytváření instancí s <a href="https://aka.ms/managed-instance-collation">kolace na úrovni serveru podle vašeho výběru</a>.'
           - html: 'Funkce geografické obnovení umožňuje <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>.'
           - html: '(Preview) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Znovu vytvořit vyřadit databáze pomocí Powershellu</a>'

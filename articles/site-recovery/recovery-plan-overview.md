@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 32cad7005b2b4da830ac3febf6da847933967a3d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400013"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471439"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
@@ -37,10 +37,10 @@ Plán obnovení vám umožní definovat proces systematické obnovení, tak, že
 
 Můžete naplánovat a vytvořte skupinu obnovení k zachycení vlastnosti specifické pro aplikaci. Jako příklad zvažte Typická třívrstvá aplikace s SQL serverem back-endu, middleware a webový front-end. Obvykle můžete přizpůsobit plán obnovení tak, aby počítače v jednotlivých vrstvách po převzetí služeb při selhání spustit ve správném pořadí.
 
-    - Back-endu SQL by se měl spustit nejprve middleware další a nakonec webový front-end.
-    - Toto počáteční pořadí zajistí, že aplikace funguje podle času poslední počítač spustí.
-    - Toto pořadí zajistí, že když middleware spustí a pokusí se připojit k vrstvě SQL serveru, na úrovni serveru SQL Server je již spuštěna. 
-    - Toto pořadí také pomáhá zajistit, aby front-endový server spustí poslední, tak, aby koncoví uživatelé nemusíte připojit adresu URL aplikace předtím, než se všechny součásti nahoru a spuštění a aplikace je připravena přijímat požadavky.
+- Back-endu SQL by se měl spustit nejprve middleware další a nakonec webový front-end.
+- Toto počáteční pořadí zajistí, že aplikace funguje podle času poslední počítač spustí.
+- Toto pořadí zajistí, že když middleware spustí a pokusí se připojit k vrstvě SQL serveru, na úrovni serveru SQL Server je již spuštěna. 
+- Toto pořadí také pomáhá zajistit, aby front-endový server spustí poslední, tak, aby koncoví uživatelé nemusíte připojit adresu URL aplikace předtím, než se všechny součásti nahoru a spuštění a aplikace je připravena přijímat požadavky.
 
 Pokud chcete vytvořit toto pořadí, přidejte skupiny do skupiny pro obnovení a přidat počítače do skupin.
 - Pokud je zadáno pořadí, řazení se používá. Akce při paralelním spuštění, kde je to vhodné, ke zlepšení obnovení aplikace RTO.

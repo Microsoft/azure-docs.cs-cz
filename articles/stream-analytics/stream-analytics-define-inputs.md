@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.custom: seodec18
-ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 05/30/2019
+ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159290"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455620"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
 Stream Analytics je prvotřídní integrovaná se sadou Azure datové proudy jako vstupů ze tří typů prostředků:
+
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
@@ -26,22 +26,26 @@ Stream Analytics je prvotřídní integrovaná se sadou Azure datové proudy jak
 Tyto prostředky vstupní může existovat ve stejném předplatném Azure jako svou úlohu Stream Analytics nebo jiné předplatné.
 
 ### <a name="compression"></a>Komprese
-Stream Analytics podporuje kompresi ve všech vstupních zdrojů dat datového proudu. Komprese aktuálně podporované typy jsou: NONE, GZip a komprese Deflate. Podpora pro kompresi není k dispozici pro referenční data. Pokud vstupní formát Avro data, která je komprimován, zpracuje se transparentně. Není nutné určit typ komprese se serializace Avro. 
+
+Stream Analytics podporuje kompresi ve všech vstupních zdrojů dat datového proudu. Komprese podporované typy jsou: NONE, GZip a komprese Deflate. Podpora pro kompresi není k dispozici pro referenční data. Pokud vstupní formát Avro data, která je komprimován, zpracuje se transparentně. Není nutné určit typ komprese se serializace Avro. 
 
 ## <a name="create-edit-or-test-inputs"></a>Vytvářet, upravovat nebo testovací vstupy
-Můžete použít [webu Azure portal](https://portal.azure.com) k [vytváření nové vstupů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) a umožňuje zobrazit nebo upravit existující vstupů na své úlohy streamování. Můžete také testovat vstupní připojení a [testování dotazů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) z ukázková data. Při psaní dotazu, zobrazí se seznam vstup v klauzuli FROM. Můžete získat seznam dostupných vstupů ze **dotazu** stránky na portálu. Pokud chcete použít více vstupů, můžete si `JOIN` jejich nebo zápis více `SELECT` dotazy.
+
+Můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md), [sady Visual Studio](stream-analytics-quick-create-vs.md), a [Visual Studio Code](quick-create-vs-code.md) můžete přidat a zobrazit nebo upravit existující vstupů na své úlohy streamování. Můžete také testovat vstupní připojení a [testování dotazů](stream-analytics-manage-job.md#test-your-query) ze vzorových dat na webu Azure Portal, [sady Visual Studio](stream-analytics-vs-tools-local-run.md), a [Visual Studio Code](vscode-local-run.md). Při psaní dotazu, můžete seznam vstup v klauzuli FROM. Můžete získat seznam dostupných vstupů ze **dotazu** stránky na portálu. Pokud chcete použít více vstupů, můžete si `JOIN` jejich nebo zápis více `SELECT` dotazy.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamování dat z Event Hubs
 
-Azure Event Hubs poskytuje vysoce škálovatelné ingestors události publikování a odběru. V Centru událostí shromažďovat miliony událostí za sekundu, můžete zpracovávat a analyzovat velké objemy dat vytvářené vašimi připojenými zařízeními a aplikacemi. Event Hubs a Stream Analytics společně, poskytují-ucelené řešení pro analýzu v reálném čase. Event Hubs umožňuje informační kanál událostí do Azure v reálném čase, a úlohy Stream Analytics dokáže zpracovat tyto události v reálném čase. Můžete například odeslat webové kliknutí, údajů snímačů přes nebo online protokolu událostí do služby Event Hubs. Potom můžete vytvořit úlohy Stream Analytics pro účely služby Event Hubs jako vstupní datové proudy v reálném čase filtrování, agregace a korelace.
+Azure Event Hubs poskytuje vysoce škálovatelné ingestors události publikování a odběru. V Centru událostí shromažďovat miliony událostí za sekundu můžete zpracovávat a analyzovat velké objemy dat vytvářené vašimi připojenými zařízeními a aplikacemi. Event Hubs a Stream Analytics společně, poskytují-ucelené řešení pro analýzu v reálném čase. Event Hubs umožňuje informační kanál událostí do Azure v reálném čase, a úlohy Stream Analytics dokáže zpracovat tyto události v reálném čase. Můžete například odeslat webové kliknutí, údajů snímačů přes nebo online protokolu událostí do služby Event Hubs. Potom můžete vytvořit úlohy Stream Analytics pro účely služby Event Hubs jako vstupní datové proudy v reálném čase filtrování, agregace a korelace.
 
 `EventEnqueuedUtcTime` časové razítko přijetí události v Centru událostí a je výchozí časové razítko události pocházející ze služby Event Hubs do služby Stream Analytics. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
 
-### <a name="consumer-groups"></a>Skupiny příjemců
-Měli byste nakonfigurovat každé Centrum událostí Stream Analytics zadejte mít svůj vlastní skupina uživatelů. Pokud úloha obsahuje spojení sama nebo má více vstupů, některými vstupy může číst čtečka více než jeden směru server-klient. Tato situace má dopad počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu služby Event Hubs pět čtecích zařízení na skupinu příjemce na oddíl, je osvědčeným postupem je určit skupinu příjemců pro každou úlohu Stream Analytics. Platí omezení 20 skupin uživatelů na Centrum událostí. Další informace najdete v tématu [Poradce při potížích s Azure Stream Analytics vstupy](stream-analytics-troubleshoot-input.md).
+### <a name="event-hubs-consumer-groups"></a>Skupiny příjemců centra událostí
 
-### <a name="stream-data-from-event-hubs"></a>Streamování dat z Event Hubs
+Měli byste nakonfigurovat každé Centrum událostí Stream Analytics zadejte mít svůj vlastní skupina uživatelů. Pokud úloha obsahuje spojení sama nebo má více vstupů, některými vstupy může číst čtečka více než jeden směru server-klient. Tato situace má dopad počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu služby Event Hubs pět čtecích zařízení na skupinu příjemce na oddíl, je osvědčeným postupem je určit skupinu příjemců pro každou úlohu Stream Analytics. Je také limit 20 skupiny příjemců centra událostí úrovně Standard. Další informace najdete v tématu [Poradce při potížích s Azure Stream Analytics vstupy](stream-analytics-troubleshoot-input.md).
+
+### <a name="create-an-input-from-event-hubs"></a>Vytvoření vstupní ze služby Event Hubs
+
 Následující tabulka popisuje každou vlastnost **nový vstup** stránky na webu Azure Portal na vstup dat datový proud z centra událostí:
 
 | Vlastnost | Popis |
@@ -79,14 +83,17 @@ FROM Input
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Stream dat ze služby IoT Hub
-Azure Iot Hub je vysoce škálovatelná publikování a odběr schopná optimalizované pro scénáře IoT.
+
+Azure IoT Hub je vysoce škálovatelná publikování a odběr schopná optimalizované pro scénáře IoT.
 
 Výchozí časové razítko události pocházející ze služby IoT Hub ve službě Stream Analytics je časové razítko, které byly přijaty události ve službě IoT Hub, který je `EventEnqueuedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo.
 
-### <a name="consumer-groups"></a>Skupiny příjemců
+### <a name="iot-hub-consumer-groups"></a>Skupiny příjemců IOT Hubu
+
 Měli byste nakonfigurovat každou Stream Analytics služby IoT Hub vstup mít svůj vlastní skupina uživatelů. Pokud úloha obsahuje spojení sama nebo pokud obsahuje více vstupů, můžou některé vstup přečtený ve směru server-klient více než jeden Čtenář. Tato situace má dopad počet čtenářů v skupinu jednoho příjemce. Aby nedošlo k překročení limitu služby Azure IoT Hub pět čtecích zařízení na skupinu příjemce na oddíl, je osvědčeným postupem je určit skupinu příjemců pro každou úlohu Stream Analytics.
 
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>Konfigurace služby IoT Hub jako vstupní datový proud
+
 Následující tabulka popisuje každou vlastnost **nový vstup** stránky na webu Azure Portal při konfiguraci služby IoT Hub jako vstupní datový proud.
 
 | Vlastnost | Popis |
@@ -124,13 +131,10 @@ Zpracování protokolu je běžně používaný scénář pro vstupy úložišt�
 
 Výchozí časové razítko události služby Blob storage ve službě Stream Analytics je časové razítko, že byl naposledy upraven objekt blob, který je `BlobLastModifiedUtcTime`. Ke zpracování dat jako datový proud pomocí časového razítka v případě, že datová část, je nutné použít [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) – klíčové slovo. Úlohu Stream Analytics si vyžádá data z vstup úložiště objektů Blob v Azure každou sekundu Pokud je k dispozici soubor objektu blob. Pokud soubor objektu blob není k dispozici, je exponenciální regresi s maximální doba zpoždění 90 sekund.
 
-Ve formátu CSV vstupy *vyžadují* řádek záhlaví k definování polí pro datovou sadu a všechna pole záhlaví řádku musí být jedinečný.
-
-Stream Analytics v současné době nepodporuje při deserializaci AVRO zprávy generované zachytávání Event Hub nebo vlastní koncový bod kontejneru úložiště Azure IoT Hub.
+Ve formátu CSV vstupy vyžadují řádek záhlaví k definování polí pro datovou sadu a všechna pole záhlaví řádku musí být jedinečný.
 
 > [!NOTE]
 > Stream Analytics nepodporuje přidávání obsahu do existujícího souboru objektu blob. Stream Analytics se zobrazí každý soubor jenom jednou a nebudou zpracovány všechny změny, ke kterým dochází v souboru po úloze má číst data. Osvědčeným postupem je odeslat veškerá data pro soubor blob najednou a pak přidejte další události do souboru objektu blob různých, nové.
-> 
 
 Stream Analytics pro přeskočení čtení několik objektů BLOB ve výjimečných případech může vést k najednou nahrává velký počet objektů BLOB. Doporučuje se k nahrání objektů BLOB aspoň 2 sekundy do úložiště objektů Blob. Pokud tato možnost není vhodná, můžete k velkým svazkům datového proudu událostí služby Event Hubs. 
 

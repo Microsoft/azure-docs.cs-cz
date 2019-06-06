@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788455"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493399"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace výstrahy týkající se stavu prostředků pomocí šablon Resource Manageru
 
@@ -31,7 +31,7 @@ Postupujte podle pokynů na této stránce, budete muset předem zařídit pár 
 1. Je potřeba nainstalovat [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Je potřeba [vytvořit nebo znovu použít skupiny akcí](../azure-monitor/platform/action-groups.md) nakonfigurovaný tak, aby upozornění
 
-## <a name="instructions"></a>Instrukce
+## <a name="instructions"></a>Pokyny
 1. Pomocí Powershellu, připojte se k Azure pomocí svého účtu a vyberte předplatné, které chcete pracovat s
 
         Login-AzAccount
@@ -442,5 +442,7 @@ Další informace o službě Resource Health:
 -  [Přehled Azure Resource Health](Resource-health-overview.md)
 -  [Typy prostředků a kontroly stavu dostupné prostřednictvím služby Azure Resource Health](resource-health-checks-resource-types.md)
 
+
 Vytvoření upozornění na stav služby:
 -  [Konfigurace výstrah pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Azure schéma událostí protokolu aktivit](../azure-monitor/platform/activity-log-schema.md)

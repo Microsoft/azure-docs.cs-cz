@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3f3b60c3744ce9dea61054b3fa0aaccfea27d784
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fa6b4d6d0db09f8c4955430d6dc227356416d915
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238265"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735994"
 ---
 Následující tabulka uvádí kvóty a omezení na konkrétní [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách služby Event Hubs najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -39,11 +39,11 @@ Event hubs úrovně Dedicated nabídka se účtuje za pevnou měsíční cenu s 
 | --- | ---|
 | Šířka pásma |  20 kapacitní jednotky |
 | Obory názvů | 50 na kapacitní jednotku |
-| Event Hubs |  Není nijak omezena event hubs a témat |
+| Event Hubs |  1 000 na obor názvů |
 | Události příchozího přenosu dat | Zahrnuje |
 | Velikost zprávy | 1 milion bajtů |
 | Oddíly | 2000 na kapacitní jednotku |
 | Skupiny příjemců | Bez omezení na kapacitní jednotku, 1 000 na Centrum událostí |
 | Zprostředkovaná připojení | 100 tisíc v základu |
-| Uchovávání zpráv | 90 dnů, 10 TB, které jsou zahrnuty na kapacitní jednotku |
+| Uchovávání zpráv | Až na 7 dní (90 dnů uchovávání už brzo), 10 TB zahrnuté na kapacitní jednotku |
 | Zachycování | Zahrnuje |

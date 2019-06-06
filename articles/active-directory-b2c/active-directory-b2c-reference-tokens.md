@@ -2,20 +2,20 @@
 title: Přehled tokenů – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o tokeny použité v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681896"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509077"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ A [registrované aplikace](tutorial-register-applications.md) přijímá tokeny 
 
 Tokeny zabezpečení, které vaše aplikace obdrží z Azure AD B2C můžou pocházet z `/authorize` nebo `/token` koncových bodů. Když jsou tokeny typu ID získaných z `/authorize` koncového bodu, se provádí pomocí [implicitní tok](active-directory-b2c-reference-spa.md), což se často používá pro uživatele se přihlaste do webové aplikace založené na jazyce javascript. Když jsou tokeny typu ID získaných z `/token` koncového bodu, se provádí pomocí [toku kódu](active-directory-b2c-reference-oidc.md), který udržuje token skryté z prohlížeče.
 
-## <a name="claims"></a>Deklarace identity
+## <a name="claims"></a>deklarace identity
 
 Pokud používáte Azure AD B2C, budete mít přesnou kontrolu nad obsahem z vašich tokenů. Můžete nakonfigurovat [toky uživatelů](active-directory-b2c-reference-policies.md) a [vlastní zásady](active-directory-b2c-overview-custom.md) odesílat určité sady dat uživatele v deklaracích identity, které jsou požadovány pro vaši aplikaci. Tato deklarace identity můžou obsahovat například standardní vlastnosti **displayName** a **emailAddress**. Aplikace můžete použít tyto deklarace mohla bezpečně ověřit uživatele a požadavků. 
 
@@ -50,7 +50,7 @@ Deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Nová
 
 V následující tabulce jsou uvedeny deklarace identity, můžete očekávat v tokeny typu ID a přístupové tokeny vydané službou Azure AD B2C.
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšlený příjemce tokenu. Cílová skupina pro Azure AD B2C je ID aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. Cílové skupiny je synonymní s prostředkem. |
 | Vystavitel | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář, ve kterém byl uživatel ověřený. Vaše aplikace měla ověřit deklarace identity vystavitele tak, abyste měli jistotu, že token pochází od vhodný koncový bod. |
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny deklarace identity, můžete očekávat v 
 | Informace o třídě kontext ověřování | `acr` | Neuvedeno | Použít pouze se staršími zásadami. |
 | Rozhraní framework zásady důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásad, která byla použita k získání tokenu ID. |
 | Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadali přihlašovací údaje, je vyjádřena v unixovém čase. |
-| Rozsah | `scp` | `Read`| Oprávnění udělená prostředek pro přístupový token. Více udělená oprávnění jsou oddělené mezerou. |
+| Scope | `scp` | `Read`| Oprávnění udělená prostředek pro přístupový token. Více udělená oprávnění jsou oddělené mezerou. |
 | Autorizované stran | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | **ID aplikace** klientské aplikace, který inicioval žádost. |
 
 ## <a name="configuration"></a>Konfigurace

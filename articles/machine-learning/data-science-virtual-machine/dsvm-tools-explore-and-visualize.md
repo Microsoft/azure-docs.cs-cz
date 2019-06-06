@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 693be80e493a0ba259d147f432dc9d6c07ba876d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502228"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427517"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Data vizualizace nástroje pro zkoumání a na virtuální počítač pro datové vědy
 
-Klíče krok pro datové vědy je rozumět datům. Vizualizace a nástroje na prozkoumávání dat pomáhají urychlit Principy data. Tady jsou některé nástroje k dispozici na datové VĚDY, které využívají tento krok klíče. 
+Klíče krok pro datové vědy je rozumět datům. Vizualizace a nástroje na prozkoumávání dat pomáhají urychlit Principy data. Tady jsou některé nástroje k dispozici na datové VĚDY, které usnadňují tento krok klíče. 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -56,12 +56,12 @@ Klíče krok pro datové vědy je rozumět datům. Vizualizace a nástroje na pr
 | Odkazy na ukázky      | [Rattle](https://togaware.com/onepager/) |
 | Související nástroje na datové VĚDY      |Xgboost LightGBM, Weka,   |
 
-## <a name="powerbi-desktop"></a>PowerBI Desktop 
+## <a name="power-bi-desktop"></a>Power BI Desktopu 
 |    |           |
 | ------------- | ------------- |
 | Co je to?   | Interaktivní vizualizace dat a nástroje BI    |
 | Podporované DSVM verze      | Windows  |
 | Typické použití      |  Vizualizace dat a vytváření řídicích panelů   |
 | Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, Juno      |
+| Související nástroje na datové VĚDY      |   Visual Studio 2019, Visual Studio Code, Juno      |
 

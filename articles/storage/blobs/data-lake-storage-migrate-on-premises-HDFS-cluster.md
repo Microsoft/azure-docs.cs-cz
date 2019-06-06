@@ -4,26 +4,26 @@ description: Migrovat data z úložiště místní HDFS do služby Azure Storage
 services: storage
 author: normesta
 ms.service: storage
-ms.date: 03/01/2019
+ms.date: 06/05/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 9a42135df38cde91cc6626a3f7d0328334af0a5d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939267"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729047"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Použití Azure Data Box pro migraci dat z úložiště místní HDFS do služby Azure Storage
 
-Můžete migrovat data z HDFS úložiště v místním clusteru Hadoop do služby Azure Storage (úložiště objektů blob nebo Data Lake Storage Gen2) s použitím zařízení Data Box.
+Můžete migrovat data z HDFS úložiště v místním clusteru Hadoop do služby Azure Storage (úložiště objektů blob nebo Data Lake Storage Gen2) s použitím zařízení Data Box. Můžete vybrat z pole 80 TB dat nebo velkého pole Data 770 TB.
 
 Tento článek vám pomůže dokončit tyto úlohy:
 
-:heavy_check_mark: Kopírování dat do zařízení Data Box.
+:heavy_check_mark: Kopírování dat do zařízení Data Box nebo zařízení Data Box náročné.
 
-:heavy_check_mark: Dodávejte aplikace pro zařízení Data Box společnosti Microsoft.
+:heavy_check_mark: Odešlete zařízení zpět do Microsoftu.
 
 :heavy_check_mark: Přesun dat do účtu úložiště Data Lake Storage Gen2.
 
@@ -37,10 +37,10 @@ Potřebujete tyto věci k dokončení migrace.
 
 * Místní cluster Hadoop, která obsahuje zdrojová data.
 
-* [Zařízení Azure Data Box](https://azure.microsoft.com/services/storage/databox/). 
+* [Zařízení Azure Data Box](https://azure.microsoft.com/services/storage/databox/).
 
-    - [Pořadí Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered). Při řazení vaše pole, nezapomeňte si zvolte účet úložiště, který **nebude** mají hierarchické obory názvů na něm povolený. Je to proto, že zařízení Data Box zatím nepodporuje přímé ingestování do Azure Data Lake Storage Gen2. Je potřeba zkopírovat do účtu úložiště a pak proveďte druhá kopie do účtu ADLS Gen2. Pokyny k tomu jsou uvedeny v následujících krocích.
-    - [Zapojení a připojte vaše Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) k místní síti.
+    - [Pořadí Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) nebo [Data Box náročná na výkon](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Při řazení zařízení, nezapomeňte si zvolte účet úložiště, který **nebude** mají hierarchické obory názvů na něm povolený. Je to proto, že zařízení Data Box ještě nepodporují přímý ingestování do Azure Data Lake Storage Gen2. Je potřeba zkopírovat do účtu úložiště a pak proveďte druhá kopie do účtu ADLS Gen2. Pokyny k tomu jsou uvedeny v následujících krocích.
+    - Zapojení a připojte vaše [zařízení Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) nebo [Data Box náročné](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) k místní síti.
 
 Pokud je všechno připravené, Pojďme začít.
 
@@ -48,12 +48,12 @@ Pokud je všechno připravené, Pojďme začít.
 
 Pokud chcete zkopírovat data z vašeho místního úložiště HDFS do zařízení Data Box, budete nastavit pár věcí a pak použít [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) nástroj.
 
-Pokud se množství dat, která kopírujete je větší než kapacita jednu zařízení Data Box, budete muset rozdělit datovou sadu do velikosti, které patří do vašeho datového pole.
+Pokud se množství dat, která kopírujete je větší než kapacita jednu zařízení Data Box nebo že jeden uzel na Data Box náročné, rozdělte vaši datovou sadu do velikosti, které patří do vašeho zařízení.
 
-Použijte následující postup kopírování dat prostřednictvím REST API z/objekt Blob storage do služby Data Box. Data Box se zobrazí jako HDFS úložiště do clusteru způsobí, že rozhraní REST API. 
+Postupujte podle těchto kroků ke kopírování dat pomocí REST API z/objekt Blob úložiště pro vaše zařízení Data Box. Zařízení se zobrazí jako úložiště HDFS do clusteru způsobí, že rozhraní REST API. 
 
 
-1. Než zkopírujete data přes REST, identifikujte primitivy zabezpečení a připojení pro připojení k rozhraní REST na zařízení Data Box. Přihlaste se k místní webové uživatelské rozhraní zařízení Data Box a přejděte na **připojit a Kopírovat** stránky. Využívající službu Azure storage účtu pro vašeho zařízení Data Box, v části **přístup k nastavení**, vyhledejte a vyberte **REST(Preview)**.
+1. Před kopírováním dat přes REST, identifikujte primitivy zabezpečení a připojení pro připojení k rozhraní REST na zařízení Data Box nebo Data Box náročné. Přihlaste se k místní webové uživatelské rozhraní zařízení Data Box a přejděte na **připojit a Kopírovat** stránky. Využívající službu Azure storage account pro vaše zařízení v části **přístup k nastavení**, vyhledejte a vyberte **REST**.
 
     ![Stránka "Připojit a kopírovat."](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
@@ -63,7 +63,7 @@ Použijte následující postup kopírování dat prostřednictvím REST API z/o
 
      ![Dialogové okno "Přístup k účtu úložiště a nahrávání dat"](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Přidat koncový bod a Data pole IP adresu, která `/etc/hosts` na každém uzlu.
+3. Přidat koncový bod a adresu IP zařízení Data Box nebo Data Box náročné uzel k `/etc/hosts` na každém uzlu.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -122,22 +122,30 @@ Použijte následující postup kopírování dat prostřednictvím REST API z/o
   
 Aby se zvýšila rychlost kopírování:
 - Zkuste změnit počet mapovačů. (Výše uvedený příklad používá `m` = 4 mapovačů.)
-- Zkuste spustit několik `distcp` paralelně.
-- Mějte na paměti, že velké soubory poskytují vyšší výkon než malých souborů.       
+- Zkuste spustit více `distcp` paralelně.
+- Mějte na paměti, že velké soubory poskytují vyšší výkon než malých souborů.
     
 ## <a name="ship-the-data-box-to-microsoft"></a>Příjemce zařízení Data Box společnosti Microsoft
 
 Postupujte podle těchto kroků Připravíme a odešleme zařízení Data Box společnosti Microsoft.
 
-1. Jakmile se kopírování dat dokončí, spustit [přípravu k odeslání](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest) na vaše zařízení Data Box. Po dokončení přípravy zařízení stahujte soubory BOM. Budete používat tyto BOM nebo manifest soubory později chcete ověřit nahrání dat do Azure. Vypněte zařízení a odeberte kabely. 
-2.  S UPS k vyzvednutí naplánovat [odeslání vašeho zařízení Data Box zpět do Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up). 
-3.  Poté, co Microsoft obdrží zařízení, je připojený k síti datového centra a nahrání dat do účtu úložiště, který jste zadali (s hierarchické obory názvů, zakázáno) Pokud jste si objednali zařízení Data Box. Proti BOM soubory ověřte, že všechna vaše data se nahraje do Azure. Tato data teď můžete přesunout do účtu úložiště Data Lake Storage Gen2.
+1. Jakmile se kopírování dat dokončí, spusťte:
+    
+    - [Příprava k odeslání na zařízení Data Box nebo Data Box náročné](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+    - Po dokončení přípravy zařízení stahujte soubory BOM. Budete používat tyto BOM nebo manifest soubory později chcete ověřit nahrání dat do Azure. 
+    - Vypněte zařízení a odeberte kabely.
+2.  Vyzvednutí s UPS naplánujte. Postupujte podle pokynů:
+
+    - [Odeslání vašeho zařízení Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) 
+    - [Dodávejte vaše Data pole těžké](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
+3.  Poté, co Microsoft obdrží zařízení, je připojený k síti datového centra a že data jsou odeslána do účtu úložiště, který jste zadali (s hierarchické obory názvů, zakázáno) Pokud je uskutečněn pořadí zařízení. Proti BOM soubory ověřte, že všechna vaše data se nahraje do Azure. Tato data teď můžete přesunout do účtu úložiště Data Lake Storage Gen2.
+
 
 ## <a name="move-the-data-onto-your-data-lake-storage-gen2-storage-account"></a>Přesun dat do účtu úložiště Data Lake Storage Gen2
 
 Tento krok je nutný, pokud použijete jako úložiště dat Azure Data Lake Storage Gen2. Pokud používáte pouze účet blob storage bez hierarchického oboru názvů jako úložiště dat, není potřeba tento krok.
 
-Můžete to provést 2 způsoby. 
+Můžete to provést dvěma způsoby.
 
 - Použití [Azure Data Factory k přesunu dat do ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Budete muset zadat **Azure Blob Storage** jako zdroj.
 

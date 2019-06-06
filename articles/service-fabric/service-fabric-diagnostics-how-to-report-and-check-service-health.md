@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2126157f49bd978d2218986601245cae2e4157b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0db341a9e36d61761321821de5631a564adea050
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322002"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428170"
 ---
 # <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
 Když vaše služby dojde k potížím, schopnost reagovat na a vyřešit incidenty a výpadků a Dosáhněte závisí na vaši schopnost rychle rozpoznat problémy. Pokud hlásit problémy a chyby do nástroje health manager Azure Service Fabric z vašeho kódu služby můžete použít standardní nástroje, které Service Fabric nabízí ke kontrole stavu pro monitorování stavu.
@@ -37,7 +37,7 @@ Tento článek vás provede příkladem hlásí stav z kódu služby. Příklad 
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít nainstalované tyto položky:
 
-* Visual Studio 2015 nebo Visual Studio 2017
+* Visual Studio 2015 nebo Visual Studio 2019
 * Sada Service Fabric SDK
 
 ## <a name="to-create-a-local-secure-dev-cluster"></a>Chcete-li vytvořit zabezpečené místním vývojovém clusteru
@@ -65,7 +65,7 @@ Musíte mít nainstalované tyto položky:
 Šablony projektu Service Fabric v sadě Visual Studio obsahují ukázkový kód. Následující kroky ukazují, jak můžete ohlásit vlastní stav události z kódu vaší služby. Tyto zprávy se nezobrazí automaticky ve standardní nástroje pro monitorování stavu, že Service Fabric nabízí, jako je Service Fabric Explorer, zobrazení stavu Azure portal a PowerShell.
 
 1. Znovu otevřete aplikaci, kterou jste vytvořili dříve v sadě Visual Studio, nebo vytvořte novou aplikaci s použitím **stavová služba** šablony sady Visual Studio.
-1. Otevřete soubor Stateful1.cs a najít `myDictionary.TryGetValueAsync` volání v `RunAsync` metody. Uvidíte, že tato metoda vrátí hodnotu `result` , který obsahuje aktuální hodnotu čítače, protože klíče logika v této aplikaci je udržovat počtu spuštění. Pokud to bylo skutečné aplikace, a chybějící výsledek selhání, chcete označit tuto událost.
+1. Otevřete soubor Stateful1.cs a najít `myDictionary.TryGetValueAsync` volání v `RunAsync` metody. Uvidíte, že tato metoda vrátí hodnotu `result` , který obsahuje aktuální hodnotu čítače, protože klíče logika v této aplikaci je udržovat počtu spuštění. Pokud tato aplikace byla aplikace skutečný, a pokud chybějící výsledek selhání, byste měli označit tuto událost.
 1. Oznamuje událost stavu Pokud chybějící výsledek představuje selhání, přidejte následující kroky.
    
     a. Přidat `System.Fabric.Health` oboru názvů do souboru Stateful1.cs.
@@ -124,7 +124,7 @@ Musíte mít nainstalované tyto položky:
     }
     ```
    Tento kód aktivuje pokaždé, když se sestava stavu `RunAsync` spustí. Když provedete změny, stiskněte klávesu **F5** ke spuštění aplikace.
-1. Jakmile je aplikace spuštěna, otevřete Service Fabric Exploreru zkontrolujte stav aplikace. Tentokrát, Service Fabric Explorer ukazuje, že aplikace je v pořádku. Toto je z důvodu chyby, která byla nahlášena z kódu jsme přidali dříve.
+1. Jakmile je aplikace spuštěna, otevřete Service Fabric Exploreru zkontrolujte stav aplikace. Tentokrát, Service Fabric Explorer ukazuje, že aplikace je v pořádku. Aplikace zobrazí jako není v pořádku, protože došlo k chybě, která ohlášené z kódu, který jsme přidali dříve.
    
     ![Poškozená aplikace v Service Fabric Exploreru](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
 1. Pokud vyberete primární repliky ve stromovém zobrazení Service Fabric Explorer, zobrazí se, která **stav** příliš označuje chybu. Service Fabric Explorer také zobrazí podrobnosti o stavu sestavy, které jste přidali `HealthInformation` parametru v kódu. Zobrazí se stejné sestavy stavu v prostředí PowerShell a webu Azure portal.

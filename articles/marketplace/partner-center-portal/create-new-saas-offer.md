@@ -7,27 +7,28 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9750aa924ba4b6e4e5f3a51e5b34531d3fab0a6e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243321"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455683"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
-Zahajte proces vytváření softwaru, jako služba (SaaS) nabízí, ujistěte se, které jste první [vytvořit účet v partnerském centru](./create-account.md) a otevřete [řídicí panel komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), s **nabízí** vybraná karta. 
+Zahajte proces vytváření softwaru, jako služba (SaaS) nabízí, ujistěte se, které jste první [vytvořit účet v partnerském centru](./create-account.md) a otevřete [řídicí panel komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), s **přehled** vybraná karta.
 
-![Komerční řídicího panelu webu Marketplace na partnerské Centrum](./media/commercial-marketplace-offers.png)
+![Komerční řídicího panelu webu Marketplace na partnerské Centrum](./media/new-offer-overview.png)
 
 Vyberte + **vytvořit novou...** tlačítko a pak vyberte **Software jako služba** položky nabídky. 
 
 Pokud vyberete jednu z ostatních typů nabídky, budete přesměrováni na starší [portál partnerů cloudu](https://cloudpartner.azure.com/).  V tuto chvíli jsou k dispozici v komerční Marketplace portál na partnerském centru jenom nabídky SaaS. 
 
-![Vytvoření nabídky okna na partnerské Centrum](./media/new-offer.png)
+![Vytvoření nabídky okna na partnerské Centrum](./media/new-offer-click.png)
 
+**Nová nabídka** se zobrazí dialogové okno. 
 
-**Nová nabídka** se zobrazí dialogové okno. ![Dialogové okno Nová nabídka](./media/new-offer-popup.png)
+![Dialogové okno Nová nabídka](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-name"></a>Název a ID nabídky

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/16/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c49a639c0426b4535c4c2e88d36d447c10826f1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416706"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730704"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -82,6 +82,9 @@ Ne, Azure Disk Encryption zašifruje pouze připojené svazky.
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Jak otočit tajné kódy nebo šifrovací klíče?
 
 Otočit tajné klíče, stačí zavolat stejný příkaz, který jste původně použili povolit šifrování disku, zadáte jiný trezor klíčů. Obměna klíčů šifrovací klíč, volání stejný příkaz, který jste použili původně povolit šifrování disku, určení nové šifrovací klíče. 
+
+>[!WARNING]
+> - Pokud jste už dřív použili [Azure Disk Encryption pomocí Azure AD app](azure-security-disk-encryption-prerequisites-aad.md) zadáním přihlašovacích údajů Azure AD k šifrování tohoto virtuálního počítače, budete muset pokračovat tuto možnost použijte k šifrování virtuálního počítače. Nemůžete použít [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tento šifrovaný virtuální počítač jako tato akce není podporovaný scénář význam přepnutí mimo aplikaci AAD pro tento šifrovaný virtuální počítač se zatím nepodporuje.
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Jak přidat nebo odebrat šifrovací klíč klíče, pokud nebyla původně ji používat?
 

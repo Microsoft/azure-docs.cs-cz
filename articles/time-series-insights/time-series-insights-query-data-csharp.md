@@ -10,18 +10,18 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e91c6fb4949a4902194bb95f98e49327434cdbfd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 250dd691c3ef3146d6768123de52bf0628b10e42
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244100"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728952"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Dotazování dat pomocí prostředí Azure čas Series Insights GAC#
 
-To C# příklad ukazuje, jak zadávat dotazy na data z prostředí Azure čas Series Insights všeobecné dostupnosti. 
+To C# příklad ukazuje, jak zadávat dotazy na data z prostředí Azure čas Series Insights všeobecné dostupnosti.
 
 V ukázce najdete několik základních příkladů použití rozhraní API pro dotazy:
 
@@ -31,7 +31,7 @@ V ukázce najdete několik základních příkladů použití rozhraní API pro 
 1. Jako příklad požadavku na webový socket se vyžádají agregovaná data o události pro prostředí, které nás zajímá. Data se vyžadují za celý časový rozsah dostupnosti.
 
 > [!NOTE]
-> Ukázkový kód je k dispozici na [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).
+> Ukázkový kód je k dispozici na [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 

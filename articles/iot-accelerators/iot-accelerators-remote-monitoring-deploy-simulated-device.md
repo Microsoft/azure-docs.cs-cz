@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: cdd2b24e6f833ee0acb229a37c7cd3b8b6f36339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66143402"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427563"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Nasazení nového simulovaného zařízení
 
@@ -88,13 +88,14 @@ V této části nakonfigurujete Docker načíst soubory modelu zařízení z **/
 1. Zkopíruje existující soubory modelu zařízení z kontejneru do nového umístění. Nejdříve vyhledejte ID kontejneru pro kontejner simulaci zařízení:
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     Zkopírujte soubory model zařízení, které chcete **tmp** složky ve virtuálním počítači. Následující příkaz předpokládá ID kontejneru je c378d6878407 – tuto hodnotu nahraďte ID vašeho zařízení simulace kontejneru:
 
     ```sh
-    docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo docker cp c378d6878407:/app/webservice/data/devicemodels /tmp
+    sudo chown -R azureuser /tmp/devicemodels/
     ```
 
     Zachovat **bash** okno s otevřít relaci SSH.
@@ -116,13 +117,13 @@ V této části nakonfigurujete Docker načíst soubory modelu zařízení z **/
     Pokud chcete zobrazit stav spuštěné kontejnery Docker a jejich ID kontejneru, použijte následující příkaz:
 
     ```sh
-    docker ps
+    sudo docker ps
     ```
 
     Pokud chcete zobrazit v protokolu z kontejneru simulace zařízení, spusťte následující příkaz. ID kontejneru nahraďte ID vašeho kontejneru simulaci zařízení:
 
     ```sh
-    docker logs -f 5d3f3e78822e
+    sudo docker logs -f 5d3f3e78822e
     ```
 
 ## <a name="run-simulation"></a>Spustit simulaci

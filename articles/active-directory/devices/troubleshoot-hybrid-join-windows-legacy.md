@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76177972cbd002793f5d9fc4ab8bbe6ef2121e91
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: ce1d2aaed85f61e2e18f696d749219a1b951c862
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106687"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474255"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Zařízení s nižší úrovně připojená k řešení potíží s hybridní služby Azure Active Directory 
 
@@ -87,7 +87,7 @@ Pokud zařízení nebyla připojená k hybridní Azure AD, pokuste se provést p
     
   - Autoworkplace.exe nedokáže bezobslužné ověření pomocí Azure AD nebo AD FS. To může být způsobeno chybějícími nebo špatně nakonfigurovaný. Služba AD FS (u federovaných domén) nebo chybějící nebo nesprávně nakonfigurované Azure AD bezproblémové jednotné přihlašování (pro spravované domény) nebo problémů se sítí. 
     
-    - Je možné, že vícefaktorové ověřování (MFA) je povolený a nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaná na serveru služby AD FS. 
+    - Je možné, že vícefaktorové ověřování (MFA) je povolený a nakonfigurovaný pro tohoto uživatele a WIAORMULTIAUTHN není nakonfigurovaná na serveru služby AD FS. 
      
     - Další možností je, že tuto stránku zjišťování domovské sféry čeká pro interakci s uživatelem, což zabrání **autoworkplace.exe** tiše vyžádat token.
      

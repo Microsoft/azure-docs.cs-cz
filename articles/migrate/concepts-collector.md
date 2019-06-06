@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/31/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 865e0679ed05823d115baeb9eea3c01d7fb5f2a5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728020"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428475"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -111,7 +111,7 @@ Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 --- | --- | ---
 *.portal.azure.com | Vztahuje se na Azure Global. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
 *.portal.azure.us | Platí jenom pro Azure Government. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Použít ke stažení modulu PowerShell vCenter PowerCLI. | Přístup k adresám URL je povinný.<br/><br/> K selhání kontroly požadavků.<br/><br/> Instalace modulu automatické na virtuálním počítači Kolektoru se nezdaří. Budete muset ručně nainstalovat modul na počítači, který je připojený k Internetu a potom zkopírujte moduly do tohoto zařízení. [Další informace tak, že přejdete na krok č. 4 v tomto Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
+*.oneget.org:443<br/><br/> *.github.com/oneget/oneget<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.azure.microsoft.com<br/><br/> *.azure.microsoft.com/en-us<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443<br/><br/> *.visualstudio.microsoft.com | Použít ke stažení modulu PowerShell vCenter PowerCLI. | Přístup k adresám URL je povinný.<br/><br/> K selhání kontroly požadavků.<br/><br/> Instalace modulu automatické na virtuálním počítači Kolektoru se nezdaří. Budete muset ručně nainstalovat modul na počítači, který je připojený k Internetu a potom zkopírujte moduly do tohoto zařízení. [Další informace tak, že přejdete na krok č. 4 v tomto Průvodce odstraňováním potíží](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Ruční instalace VMware PowerCLI modulu
@@ -120,7 +120,7 @@ Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 2. Pokud virtuální počítač Kolektoru je offline a nainstalovat modul na jiném počítači s přístupem k Internetu, musíte zkopírovat soubory VMware.* z tohoto počítače k virtuálnímu počítači Kolektoru.
 3. Po dokončení instalace můžete restartovat požadované součásti kontroly potvrďte, že je nainstalovaný PowerCLI.
 
-### <a name="connect-to-vcenter-server"></a>Připojit k vCenter Serveru
+### <a name="connect-to-vcenter-server"></a>Připojit k vCenter serveru
 
 Kolektor se připojí k serveru vCenter a dotazy na metadata virtuálního počítače a čítače výkonu. Zde je, co potřebujete pro připojení.
 
@@ -147,7 +147,7 @@ Kolektor komunikuje dle souhrnu v následující diagram a tabulky.
 --- | --- | ---
 Služba Azure Migrate | TCP 443 | Kolekce komunikuje se službou Azure Migrate přes SSL 443.
 vCenter Server | TCP 443 | Kolekce musí být schopný komunikovat s systému vCenter Server.<br/><br/> Ve výchozím nastavení připojí k serveru vCenter na 443.<br/><br/> Pokud systém vCenter Server naslouchá na jiném portu, tento port by měl být k dispozici jako odchozí port na Kolektoru.
-Protokol RDP | TCP 3389 |
+PROTOKOL RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>Shromáždila se metadata
 
@@ -184,7 +184,7 @@ net.transmitted.average | Vypočítá velikost virtuálního počítače
 
 **Kategorie** |  **Metadata** | **Element datapoint vCenter**
 --- | --- | ---
-Podrobnosti o počítači | ID virtuálního počítače | vm.Config.InstanceUuid
+Podrobnosti o počítači | ID VIRTUÁLNÍHO POČÍTAČE | vm.Config.InstanceUuid
 Podrobnosti o počítači | název virtuálního počítače | vm.Config.Name
 Podrobnosti o počítači | vCenter Server ID | VMwareClient.InstanceUuid
 Podrobnosti o počítači |  Popis virtuálního počítače |  virtuální počítač. Summary.Config.Annotation
@@ -198,7 +198,7 @@ Podrobnosti o počítači | Počet disků | virtuální počítač. Config.Hardw
 Podrobnosti o počítači | Seznam velikost disků | virtuální počítač. Config.Hardware.Device.ToList(). FindAll (x = > x je VirtualDisk)
 Podrobnosti o počítači | Seznamu síťových adaptérů | virtuální počítač. Config.Hardware.Device.ToList(). FindAll (x = > x je VirtualEthernetCard)
 Podrobnosti o počítači | Využití procesoru | cpu.usage.average
-Podrobnosti o počítači | Využití paměti | mem.usage.average
+Podrobnosti o počítači | Využití paměti v aplikaci | mem.usage.average
 Podrobnosti o disku (na disk) | Hodnota klíče disku | disk. Klíč
 Podrobnosti o disku (na disk) | Počet jednotek disku | disk. UnitNumber
 Podrobnosti o disku (na disk) | Hodnota klíče kontroleru disku | disk.ControllerKey.Value
@@ -210,7 +210,7 @@ Podrobnosti o disku (na disk) | MB za sekundu propustnost čtení | virtualDisk.
 Podrobnosti o disku (na disk) | MB za sekundu propustnosti zápisu | virtualDisk.write.average
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | Název síťového adaptéru | síťový adaptér Klíč
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | Adresa MAC | ((VirtualEthernetCard)nic).MacAddress
-Podrobnosti síťového adaptéru (pro síťové rozhraní) | Adresy IPv4 | virtuální počítač. Guest.Net
+Podrobnosti síťového adaptéru (pro síťové rozhraní) | Adresy protokolu IPv4 | virtuální počítač. Guest.Net
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | IPv6 adresy | virtuální počítač. Guest.Net
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | MB za sekundu propustnost čtení | net.received.average
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | MB za sekundu propustnosti zápisu | net.transmitted.average

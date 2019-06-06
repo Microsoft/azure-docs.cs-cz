@@ -8,15 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 03/04/2019
-ms.author: v-junlch
-ms.openlocfilehash: 6d5f9b171a4efc5e52d281655de143ac9d40d437
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/18/2019
+ms.author: cshoe
+ms.openlocfilehash: 8372becd614e35bead9e98e405e2694f3f16db4a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437884"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472329"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Příklad aktivační události a vazby Azure Functions
 
@@ -136,10 +135,9 @@ public class Person
 }
 ```
 
-Teď máte funkční funkci, která se aktivuje Azure Table storage, který odesílá výstupní data do fronty.
+Teď máte funkční funkce, která se aktivuje ve frontě Azure a odesílá výstupní data do služby Azure Table storage.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Služba Azure Functions vazby vzory výrazů](./functions-bindings-expressions-patterns.md)
-

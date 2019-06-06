@@ -7,22 +7,34 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 461c9f3f3725ba27410088ca19f1ec050375adf2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806143"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474521"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Zkontrolujte stav publikování vaší nabídky komerční Marketplace
 
 Můžete zobrazit vaše aktuální **stav publikování** na **nabízí přehled** karty [portálu komerční Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) v partnerském centru.
 
+Pro každou nabídku musí zobrazí jedna z následujících indikátory stavu.
+
+| **Stav**    | **Popis**  |
+| :---------- | :-------------------|
+| **Návrh** | Nabídka se vytvořila, ale není zveřejněná. |
+| **Probíhá publikování** | Plán/nabídky pracuje cestě provede kroky procesu publikování. |
+| **Nutná pozornost** | Kritický problém byl zjištěn během certifikace společnosti Microsoft nebo publikování kroků. |
+| **Preview** | Nabídka byla certifikovat společností Microsoft a nyní čeká na finální ověření vydavatelem. Vyberte vysílat živě, aby nabídka live. |
+| **Živé** | Nabídka je v provozu na webu Marketplace a vidí a můžou zákazníci získat. |
+| **Čeká na ukončení prodej** | Vydavatel vybraných "zastavit zákazník" na nabídku nebo plán, ale akce nebyla dosud dokončena. |
+| **Není k dispozici na webu Marketplace** | Byl odebrán dříve publikované nabídky nebo plán na webu Marketplace. |
+
 ## <a name="automated-validation"></a>Automatické ověření
 
 Prvním krokem v procesu publikování je sada automatické ověření. Každého kroku ověření odpovídá funkci, kterou jste se rozhodli povolit při vytváření vaší nabídky. Pokud tato funkce není povolená, přeskočí ověření pokračovat dalším krokem publikování. Každé ověření je třeba provést předtím, než je schválený stav publikování.
 
-- **Nabízejí nastavení toku nákupu (> 10 minut)**
+- **Nabízejí nastavení toku nákupu (< 10 minut)**
 
 V tomto kroku zajistíme, že vaše nabídka může být splněn jste si koupili zákazníků prostřednictvím webu Azure portal. Tento krok platí jenom pro nabídek prodávaných prostřednictvím společnosti Microsoft.
 
@@ -34,7 +46,7 @@ V tomto kroku jsme ověřit data, které jste zadali v testovací verze technick
 
 V tomto kroku po ověření dat a funkce vaše testovací verze v předchozím kroku můžeme nasadit a replikovat instance vaše testovací verze tak, aby byly připraveny pro používání zákazníka.  Tento krok platí pouze pro nabídky s si testovací jízdu povolena.
 
-- **Vedoucí řízení ověřování a registraci (> 15 minut)**
+- **Vedoucí řízení ověřování a registraci (< 15 min)**
 
 V tomto kroku potvrdíme, že váš systém správy potenciálních zákazníků může přijímat potenciálních zákazníků na základě informací uvedených v nabídce nastavení. Tento krok platí pouze pro nabídky s povolenou správou potenciálních zákazníků.
 
@@ -101,7 +113,7 @@ Pokud už vaši nabídku za provozu a dostupná na webu Marketplace, všech aktu
 
 Přihlaste se do partnerského centra a přejít na nabídku. Budete přesměrováni na **nabízí přehled** stránky. V horní části této stránky, zobrazí se možnost pro **vysílat živě**. Vyberte **vysílat živě,** a po potvrzení, tuto nabídku start, získávání publikována veřejně. Obdržíte oznámení e-mailem při nabídky je v provozu.
 
-## <a name="publish"></a>Publikovat
+## <a name="publish"></a>Publikování
 
 Teď, když jste se rozhodli **vysílat živě** v rámci vaší nabídky, ji dáte k dispozici na webu Marketplace, jsou řadu kontrol finálním ověřením, které budou prošli zajistit konfiguraci se, že živé nabídka stejně jako verze preview verze nabídky.
 

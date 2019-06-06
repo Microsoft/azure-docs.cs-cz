@@ -9,12 +9,12 @@ ms.date: 05/27/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 96a67a9a593655b3b187fe1bb0decfc7252d2d10
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 4014827366afc492d73757a0ac5e1acb64262c51
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253061"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474782"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>Visual Studio 2019 využívat k vývoji a ladění modulů Azure IoT Edge (Preview)
 
@@ -95,20 +95,19 @@ Jakmile vaše aplikace Visual Studio 2019 je připravený, budete potřebovat n�
 
 Šablona projektu Azure IoT Edge v sadě Visual Studio vytvoří projekt, který je možné nasadit do zařízení Azure IoT Edge ve službě Azure IoT Hub. Nejprve vytvořit řešení Azure IoT Edge, a pak vygenerovat první modulu v tomto řešení. Každé řešení IoT Edge může obsahovat více než jeden modul.
 
-1. V sadě Visual Studio dialogové okno Nový projekt, vyhledejte a vyberte **Azure IoT Edge**, zadejte název pro váš projekt a zadejte umístění a pak vyberte **OK**. Výchozí název projektu je **AzureIoTEdgeApp1**.
+1. V sadě Visual Studio dialogové okno Nový projekt, vyhledejte a vyberte **Azure IoT Edge** projektu a klikněte na tlačítko **Další**. V okně konfigurace projektu, zadejte název pro váš projekt a zadejte umístění a pak vyberte **vytvořit**. Výchozí název projektu je **AzureIoTEdgeApp1**.
 
-1. V **modul a přidejte aplikace IoT Edge** okně **Linux Amd64**, **Windows Amd64**, nebo jako aplikační platformu. Pokud vyberete, vytvoříte řešení, přičemž dvěma projektům to, že každý odkazují na výchozí modul kódu.
+   ![Vytvoření nového projektu](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-   > [!TIP]
-   > Rozšíření Azure IoT Edge pro Visual Studio není v současné době podporují projekty vytvářet pro platformu ARM. Najdete v tomto [blogu pro vývojáře IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) příklad použití Visual Studio Code pro vývoj řešení pro ARM32v7/armhf.
+1. V **modul a přidejte aplikace IoT Edge** okna, vyberte buď  **C# modulu** nebo **modulu C** a potom zadejte název modulu a modulu úložiště imagí. Visual Studio autopopulates modulu název s **localhost:5000 / < název vašeho modulu\>** . Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako * **\<název registru\>*. azurecr.io**. Nahradit jenom **localhost:5000** část řetězce tak, aby konečný výsledek bude vypadat jako * *\<* název registru *\>.azurecr.io/* \<název modulu\>***. Výchozí název modulu je **IoTEdgeModule1**
 
-1. Vyberte buď  **C# modulu** nebo **modulu C** a potom zadejte název modulu a modulu úložiště imagí. Visual Studio autopopulates modulu název s **localhost:5000 / < název vašeho modulu\>** . Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá jako * **\<název registru\>*. azurecr.io**. Nahradit jenom **localhost:5000** část řetězce tak, aby konečný výsledek bude vypadat jako * *\<* název registru *\>.azurecr.io/* \<název modulu\>***. Výchozí název modulu je **IoTEdgeModule1**
+   ![Přidejte aplikace a modul](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
 1. Vyberte **OK** k vytvoření řešení Azure IoT Edge pomocí modulu, který používá možnost C# nebo C.
 
-Teď máte **AzureIoTEdgeApp1.Linux.Amd64** projektu nebo **AzureIoTEdgeApp1.Windows.Amd64** projektu, nebo obojí a také **IoTEdgeModule1** projekt na vaší řešení. Každý **AzureIoTEdgeApp1** projekt má `deployment.template.json` soubor, který definuje moduly, které má pro sestavování a nasazování pro vaše řešení IoT Edge a také definuje trasy mezi moduly. Má řešení výchozí **tempSensor** modulu a **IoTEdgeModule1** modulu. **TempSensor** modul generuje Simulovaná data do **IoTEdgeModule1** modulu, zatímco výchozí kód v **IoTEdgeModule1** modul přímo kanály přijetí zprávy do služby Azure IoT Hub.
+Nyní máte **AzureIoTEdgeApp1.Linux.Amd64** projektu nebo **AzureIoTEdgeApp1.Windows.Amd64** projektu a také **IoTEdgeModule1** projekt ve vašem řešení. Každý **AzureIoTEdgeApp1** projekt má `deployment.template.json` soubor, který definuje moduly, které má pro sestavování a nasazování pro vaše řešení IoT Edge a také definuje trasy mezi moduly. Má řešení výchozí **tempSensor** modulu a **IoTEdgeModule1** modulu. **TempSensor** modul generuje Simulovaná data do **IoTEdgeModule1** modulu, zatímco výchozí kód v **IoTEdgeModule1** modul přímo kanály přijetí zprávy do služby Azure IoT Hub.
 
-**IoTEdgeModule1** projekt je konzolová aplikace .NET Core 2.1. Obsahuje požadované soubory Dockeru, které potřebujete pro spouštění kontejnerů Windows nebo linuxového kontejneru zařízení IoT Edge. `module.json` Soubor popisuje metadata modulu. Je součástí modulu skutečný kód, který přijímá sady SDK Azure IoT Device jako závislost, `Program.cs` nebo `main.c` souboru.
+**IoTEdgeModule1** projekt je aplikace konzoly .NET Core 2.1, pokud se jedná C# modulu. Obsahuje požadované soubory Dockeru, které potřebujete pro spouštění kontejnerů Windows nebo linuxového kontejneru zařízení IoT Edge. `module.json` Soubor popisuje metadata modulu. Je součástí modulu skutečný kód, který přijímá sady SDK Azure IoT Device jako závislost, `Program.cs` nebo `main.c` souboru.
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
@@ -122,7 +121,7 @@ Jakmile budete připraveni k přizpůsobení šablony modul s vlastním kódem, 
 
    ![Zkopírujte připojovací řetězec zařízení Edge](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. Přejděte na **nástroje** > **nástroje Azure IoT Edge** > **nastavení IoT Edge simulátor**pasten připojovací řetězec a klikněte na tlačítko **OK** .
+1. Přejděte na **nástroje** > **nástroje Azure IoT Edge** > **nastavení IoT Edge simulátor**, vložte připojovací řetězec a klikněte na tlačítko **OK**.
 
    ![Okno sady Edge připojovací řetězec](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 

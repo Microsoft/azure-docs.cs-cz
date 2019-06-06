@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 99ca7e82a11687d25355589e7ea539a14cdb493b
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: a7c994f85d90e94d514bb4e4f91a6644ed45432c
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420789"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66455154"
 ---
 1. Stáhněte si klienta SDK rychlých startů pro tyto platformy:
     
@@ -94,7 +94,7 @@ ms.locfileid: "66420789"
 
         2. Sestavte projekt .NET server místně v sadě Visual Studio.
 
-        3. V sadě Visual Studio, otevřete Průzkumníka řešení, klikněte pravým tlačítkem na `ZUMOAPPNAMEService` projektu, klikněte na tlačítko **publikovat**, zobrazí se `Publish to App Service` okna. Pokud pracujete na počítači Mac, přečtěte si další způsoby jak nasadit aplikaci [tady](https://docs.microsoft.com/en-us/azure/app-service/deploy-local-git).
+        3. V sadě Visual Studio, otevřete Průzkumníka řešení, klikněte pravým tlačítkem na `ZUMOAPPNAMEService` projektu, klikněte na tlačítko **publikovat**, zobrazí se `Publish to App Service` okna. Pokud pracujete na počítači Mac, přečtěte si další způsoby jak nasadit aplikaci [tady](https://docs.microsoft.com/azure/app-service/deploy-local-git).
         
            ![Publikování aplikace Visual studio](./media/app-service-mobile-configure-new-backend/visual-studio-publish.png)
 

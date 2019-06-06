@@ -1,24 +1,24 @@
 ---
-title: 'Rychlý start: Ingestování dat pomocí knihovny Python Průzkumník dat Azure'
-description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Průzkumníka dat Azure pomocí Pythonu.
+title: Ingestování dat pomocí knihovny Python Průzkumník dat Azure
+description: V tomto článku se dozvíte, jak se přijmout data (načíst) do Průzkumníku dat Azure pomocí Pythonu.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: da23ec91891776e9a459b04c5718147427843991
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827166"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496925"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Rychlý start: Ingestování dat pomocí knihovny Python Průzkumník dat Azure
+# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Ingestování dat pomocí knihovny Python Průzkumník dat Azure
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejprve vytvoříte mapování dat v clusteru a tabulky. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku vytvoříte první tabulky a mapování dat v clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
-Tento rychlý start je dostupný také v podobě [poznámkového bloku Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
+Tento článek je také k dispozici [poznámkového bloku Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -170,7 +170,7 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte. Pokud ne, spuštěním následujícího příkazu v databázi tabulku StormEvents vyčistěte.
+Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili. Pokud ne, spuštěním následujícího příkazu v databázi tabulku StormEvents vyčistěte.
 
 ```Kusto
 .drop table StormEvents
@@ -178,5 +178,4 @@ Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, 
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Dotazování dat pomocí Pythonu](python-query-data.md)
+* [Dotazování dat pomocí Pythonu](python-query-data.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 52c79a0b883ff4c9ac77d7523764384b88c06a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a561d29f462d44eb6bc440bb6110430cc5c51688
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389023"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735241"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure konzoly sériového portu pro Linux
 
@@ -47,6 +47,7 @@ Konzola sériového portu dokumentaci pro Windows najdete v tématu [sériové k
 
 - Nastavení specifická pro Linuxové distribuce, naleznete v tématu [konzoly sériového portu dostupnost distribuce Linuxu](#serial-console-linux-distribution-availability).
 
+- Váš virtuální počítač nebo virtuální počítač instance škálovací sadě, musí být nakonfigurovaný pro výstup sériové na `ttys0`. Toto je výchozí nastavení pro imagích Azure, ale budete chtít double zaškrtnutím tohoto políčka na vlastních imagích. Podrobnosti o [níže](#custom-linux-images).
 
 
 ## <a name="get-started-with-the-serial-console"></a>Začínáme s konzole sériového portu
@@ -84,6 +85,9 @@ Konzola sériového portu je k dispozici na základě jednotlivé instance pro �
 ## <a name="serial-console-linux-distribution-availability"></a>Sériové konzoly Linux distribuční dostupnosti
 Konzole sériového portu správně fungovala musí být hostovaný operační systém nakonfigurované pro čtení a zápis zpráv konzoly sériového portu. Většina [distribucí Linuxu schválených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Výběr **konzoly sériového portu** v **podpora a řešení potíží** části webu Azure portal poskytuje přístup ke konzole sériového portu.
 
+> [!NOTE]
+> Pokud se nezobrazují v konzole sériového portu nic, ujistěte se, že Diagnostika spouštění je povolená na virtuálním počítači. Dosažení **Enter** se často opravit problémy kde nic, zobrazují v konzole sériového portu.
+
 Distribuce      | Přístup k sériové konzole
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
@@ -92,10 +96,13 @@ Ubuntu      | Přístup ke konzole sériového portu ve výchozím nastavení po
 CoreOS      | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
 SUSE        | Novější imagí SLES dostupných v Azure měli konzoly sériového portu ve výchozím nastavení povolená. Pokud používáte starší verze SLES (10 nebo starší) v Azure, najdete v článku [článku znalostní BÁZE](https://www.novell.com/support/kb/doc.php?id=3456486) umožňující konzoly sériového portu.
 Oracle Linux        | Přístup ke konzole sériového portu ve výchozím nastavení povolená.
-Vlastní Linuxové Image     | Pokud chcete povolit konzole sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v souboru */etc/inittab* ke spuštění v terminálu `ttyS0`. Například: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v tématu [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd). Pokud vytváříte vlastní jádra, zvažte povolení tyto příznaky jádra: `CONFIG_SERIAL_8250=y` a `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Konfigurační soubor se obvykle nachází v */boot/* cestu.
 
-> [!NOTE]
-> Pokud se nezobrazují v konzole sériového portu nic, ujistěte se, že Diagnostika spouštění je povolená na virtuálním počítači. Dosažení **Enter** se často opravit problémy kde nic, zobrazují v konzole sériového portu.
+### <a name="custom-linux-images"></a>Vlastní Linuxové Image
+Pokud chcete povolit konzole sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v souboru */etc/inittab* ke spuštění v terminálu `ttyS0`. Například: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`.
+
+Také můžete přidat ttys0 jako cíl pro výstupní sériového portu. Další informace o konfiguraci vlastní image pro práci s konzole sériového portu, naleznete v tématu požadavky na systém Obecné [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
+
+Pokud vytváříte vlastní jádra, zvažte povolení tyto příznaky jádra: `CONFIG_SERIAL_8250=y` a `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Konfigurační soubor se obvykle nachází v */boot/* cestu. |
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu
 
@@ -201,6 +208,7 @@ Text konzoly sériového portu zabere jenom část na velikost obrazovky (často
 Vkládání dlouhé řetězce nebude fungovat. | Konzole sériového portu omezení délky řetězce do terminálu na 2 048 znaků, aby se zabránilo přetížení šířky pásma sériového portu.
 Konzola sériového portu nefunguje s bránou firewall účtu úložiště. | Konzoly sériového portu záměrné nemůže pracovat s branami firewall účet úložiště na účet úložiště diagnostiky spouštění povolené.
 Konzola sériového portu nefunguje s účtem služby storage pomocí Azure Data Lake Storage Gen2 hierarchické obory názvů. | Jde o známý problém s hierarchické obory názvů. Pokud chcete zmírnit, ujistěte se, že účet úložiště diagnostiky spouštění Virtuálního počítače není vytvořené pomocí Azure Data Lake Storage Gen2. Tuto možnost lze nastavit pouze při vytváření účtu úložiště. Budete muset vytvořit účet úložiště diagnostiky spouštění samostatné bez Azure Data Lake Storage Gen2 povolit, aby tento problém zmírnit.
+Kolísá v imagí SLES BYOS vstup z klávesnice. Vstup z klávesnice je pouze občasně rozpoznán. | Jedná se o problém s balíčkem Plymouth. Plymouth neměli spouštět v Azure, protože není nutné úvodní obrazovky a Plymouth dochází ke kolizím s možností platformy pomocí konzoly sériového portu. Odebrat Plymouth s `sudo zypper remove plymouth` a pak proveďte restart. Můžete také upravit přidáním jádra řádek GRUB konfiguraci `plymouth.enable=0` na konec řádku. Uděláte to tak [úpravy spouštěcí položku při spuštění](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles), nebo tak, že upravíte řádek GRUB_CMDLINE_LINUX v `/etc/default/grub`, omnovení kontrole s `grub2-mkconfig -o /boot/grub2/grub.cfg`a poté restartovat počítač.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy

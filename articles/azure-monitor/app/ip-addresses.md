@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mbullwin
-ms.openlocfilehash: c4e924d1e3012bc5e49c89f51026cd651398f4c5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f96718282e9e7b1ba46be956c2e4d202c4f29ea0
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242887"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430913"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané službou Application Insights a Log Analytics
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) služba používá počet IP adres. Můžete potřebovat znát tyto adresy, pokud je aplikace, kterou monitorujete hostována za bránou firewall.
@@ -35,15 +35,15 @@ ms.locfileid: "66242887"
 ## <a name="outgoing-ports"></a>Odchozí porty
 Je třeba otevřít některé Odchozí porty v bráně firewall serveru povolit sadu Application Insights SDK a sledování stavu k odesílání dat do portálu:
 
-| Účel | URL | IP adresa | Porty |
+| Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
-| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20 | 443 |
+| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.162.117<br/>40.73.171.20<br/>102.133.155.50 | 443 |
 | Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Monitorování stavu
 Stav monitoru konfigurace – je potřeba pouze při provádění změn.
 
-| Účel | URL | IP adresa | Porty |
+| Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
 | Konfigurace |`management.core.windows.net` | |`443` |
 | Konfigurace |`management.azure.com` | |`443` |

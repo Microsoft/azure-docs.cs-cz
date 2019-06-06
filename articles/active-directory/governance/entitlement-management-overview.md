@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/27/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921068"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474069"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Co je Správa oprávnění Azure AD? (Preview)
 
@@ -70,22 +70,13 @@ Toto jsou typy prostředků, můžete spravovat přístup k pomocí správy opr�
 
 - Skupiny zabezpečení Azure AD
 - Skupiny Office 365
-- Azure AD pro podniky
-- Aplikace SaaS
-- Vlastní integrované aplikace
-- SharePoint Online kolekcích webů
-- Weby SharePoint Online
+- Azure AD podnikové aplikace, včetně aplikací SaaS a vlastní integrované aplikace, které podporují federace nebo zřizování
+- SharePoint Online kolekce webů a weby
 
-## <a name="prerequisites"></a>Požadavky
+Můžete také řídit přístup k jiným prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo skupinám Office 365.  Příklad:
 
-Pokud chcete používat správu oprávnění Azure AD (Preview), musí mít jeden z těchto licencí:
-
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5 licence
-
-Další informace najdete v tématu [zaregistrovat edice Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) nebo [Enterprise Mobility + Security E5 zkušební](https://aka.ms/emse5trial).
-
-Specializované cloudech, jako je Azure Government, Azure Germany a Azure China 21Vianet, nejsou aktuálně k dispozici pro použití v této verzi preview.
+- Počet uživatelských licencí pro Microsoft Office 365 můžete udělit pomocí skupiny zabezpečení služby Azure AD, přístup k balíčku a konfigurace [licencování na základě skupiny](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu
+- Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení služby Azure AD, přístup k balíčku a vytvoření [přiřazení Azure role](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu
 
 ## <a name="what-are-access-packages-and-policies"></a>Co jsou balíčky přístupu a zásady?
 
@@ -97,7 +88,7 @@ Balíčky přístup také zahrnovat jeden nebo více *zásady*. Zásady definuje
 
 S balíčkem aplikace přístup a její zásady definuje správce přístupu k balíčku:
 
-- Prostředky
+- Zdroje a prostředky
 - Role uživatelů musí pro prostředky
 - Interní uživatele a externí uživatele, které jsou vhodné pro vyžádání přístupu
 - Proces schvalování a uživatelé, kteří můžete schválit nebo odepřít přístup
@@ -132,12 +123,12 @@ Abyste lépe pochopili Správa nároků a jeho dokumentace, měli byste zkontrol
 | policy | Sada pravidel, který definuje přístup životní cyklus, jako je například jak uživatelé získají přístup, který můžete schválit a jak dlouho mají uživatelé přístup. Příkladem zásad může být zaměstnance a externí přístup. |
 | catalog | Kontejner související prostředky a přístup k balíčkům. |
 | Obecné katalogu | Integrované katalog, který je vždy k dispozici. Přidání prostředků do katalogu obecné vyžaduje určitá oprávnění. |
-| prostředek | Prostředek nebo služba (jako jsou skupiny, aplikace nebo webu), která uživatele lze udělit oprávnění. |
-| typ prostředku | Typ prostředku, skupiny, aplikace a weby SharePoint Online. |
+| resource | Prostředek nebo služba (jako jsou skupiny, aplikace nebo webu), která uživatele lze udělit oprávnění. |
+| Typ prostředku | Typ prostředku, skupiny, aplikace a weby SharePoint Online. |
 | role prostředků | Kolekce oprávnění přidružené k prostředku. |
 | adresář prostředků | Adresář, který má jeden nebo více prostředků sdílet. |
 | přiřazení uživatelé | Přiřazení přístupu k balíčku pro uživatele nebo skupiny. |
-| povolit | Proces zpřístupnění uživatelé můžou žádat o přístup k balíčku. |
+| Povolit | Proces zpřístupnění uživatelé můžou žádat o přístup k balíčku. |
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 
@@ -149,12 +140,12 @@ Správa nároků má různé role podle pracovní funkci.
 | Tvůrce katalogu | Vytvoření a Správa katalogů. Obvykle správce IT nebo vlastníka prostředku. Osoby, která se automaticky vytvoří katalog stane první katalogu vlastníka do katalogu. |
 | Vlastník katalogu | Úprava a Správa existujících katalogů. Obvykle správce IT nebo vlastníka prostředku. |
 | Správce přístupu k balíčku | Úprava a Správa všech existujících balíčků přístup v rámci katalogu. |
-| Schvalovatel | Schválení požadavků na přístup k balíčkům. |
+| Schvalovatele | Schválení požadavků na přístup k balíčkům. |
 | Žadatel | Žádost o přístup k balíčkům. |
 
 V následující tabulce jsou uvedeny oprávnění pro každou z těchto rolí.
 
-| Úkol | Správce uživatelů | Tvůrce katalogu | Vlastník katalogu | Správce přístupu k balíčku | Schvalovatel |
+| Úkol | Správce uživatelů | Tvůrce katalogu | Vlastník katalogu | Správce přístupu k balíčku | Schvalovatele |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Vytvořit nový balíček pro přístup v obecné katalogu](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
 | [Vytvořit nový balíček pro přístup do katalogu](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
@@ -173,6 +164,12 @@ V následující tabulce jsou uvedeny oprávnění pro každou z těchto rolí.
 | [Přidat nebo odebrat prostředky z katalogu](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Přidat vlastníky katalogu nebo přístup ke správci balíčků](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Upravit nebo odstranit katalog](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Specializované cloudech, jako je Azure Government, Azure Germany a Azure China 21Vianet, nejsou aktuálně k dispozici pro použití v této verzi preview.
 
 ## <a name="next-steps"></a>Další postup
 

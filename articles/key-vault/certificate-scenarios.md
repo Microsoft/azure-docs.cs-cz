@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0ff97eb17dcf2625e1bb75dabf3e4a9686b5b85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725716"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427834"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certificate management včetně další kroky potřebné pro vytvoření vaší první certifikát do svého trezoru klíčů.
@@ -39,8 +39,7 @@ Certifikáty se skládají z tři vzájemně propojené prostředky dohromady ja
 -   Zavádění jako správce IT, správce infrastruktury veřejných KLÍČŮ nebo kdokoli Správa účtů pomocí certifikačních autorit pro danou společnost angular (např. Contoso) je předpokladem pro používání služby Key Vault certifikáty.  
     Následující jsou aktuální partnered zprostředkovatele se službou Key Vault:  
     -   DigiCert - Key Vault nabízí OV SSL certifikáty s DigiCert.  
-    -   GlobalSign - Key Vault nabízí OV SSL certifikáty s GlobalSign  
-    -   WoSign - Key Vault nabízí OV SSL nebo certifikáty EV SSL s WoSign podle nastavení nakonfigurované podle zákazníka v jejich WoSign účtu na portálu WoSign.  
+    -   Globaltrust - Key Vault nabízí certifikáty s Globaltrust OV SSL.  
 
 **Krok 2** -správcem účtu pro poskytovatele certifikační Autority vytvoří přihlašovací údaje služby Key Vault používané k registraci, obnovit a použít certifikáty SSL prostřednictvím služby Key Vault.
 

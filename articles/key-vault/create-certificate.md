@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7eb4d80933e06b9eceb072bee93e2b127cfa9ffe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67720256cfac68c350c800291653a4a0c1d7ee46
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727435"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427831"
 ---
 # <a name="certificate-creation-methods"></a>Metody vytvoření certifikátu
 
@@ -82,7 +82,7 @@ Vytvoření certifikátu může být dokončené ručně nebo pomocí "svým" vy
 |Poskytovatel|Typ certifikátu|  
 |--------------|----------------------|  
 |DigiCert|Key Vault nabízí OV nebo EV pomocí certifikátů SSL s DigiCert|
-|GlobalCert|Key Vault nabízí OV nebo EV pomocí certifikátů SSL s GlobalSign|
+|GlobalCert|Key Vault nabízí OV nebo EV pomocí certifikátů SSL s Globaltrust |
 
  Vystavitel certifikátu se entitě reprezentované v Azure Key Vault (KV) jako prostředek CertificateIssuer. Používá se k zadání informací o zdroji KV certifikátu; název vystavitele, poskytovatele, přihlašovací údaje a další podrobnosti o správě.
 

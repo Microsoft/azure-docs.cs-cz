@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 464d01b7b818b461024737a83d88c78947453c37
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736135"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428483"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Připojení k rozhraní API služby Media Services v3 – .NET
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak se připojit k .NET SDK služby Azure Media Service
 ## <a name="prerequisites"></a>Požadavky
 
 - [Vytvoření účtu Media Services](create-account-cli-how-to.md). Ujistěte se, že si pamatovat název skupiny prostředků a název účtu Media Services
-- Nainstalujte nástroj, který chcete použít pro vývoj na platformě .NET. Kroky v tomto článku ukazují, jak používat [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, naleznete v tématu [práce s C# ](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít editor odlišný kód.
+- Nainstalujte nástroj, který chcete použít pro vývoj na platformě .NET. Kroky v tomto článku ukazují, jak používat [Visual Studio. 2019 Community Edition](https://www.visualstudio.com/downloads/). Můžete použít Visual Studio Code, naleznete v tématu [práce s C# ](https://code.visualstudio.com/docs/languages/csharp). Nebo můžete použít editor odlišný kód.
 
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74eddadd7fd967daa1eebb9d7cb223fdc708025f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627146"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471424"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna .NET hromadné prováděcí modul: Stažení informací 
 
@@ -42,6 +42,18 @@ ms.locfileid: "60627146"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+
+* Přidání podpory pro prováděcí modul hromadného graf přijmout hodnota ttl vrcholů a hran
+
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+
+* Opravili jsme problém, která způsobila výjimky během elastické škálování služby Azure Cosmos DB při spuštění v režimu brány. Tato oprava je funkčně srovnatelný s 1.4.1 release.
+
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+
+* Přidání hromadného odstranění podporu pro účty SQL API tak, aby přijímal klíč oddílu, n-tic id dokumentu pro odstranění. Díky této změně je funkčně srovnatelný s 1.4.0 release.
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * Včetně MongoBulkExecutor podpoře .NET Standard 2.0. Tato funkce je funkčně srovnatelný s 1.3.0 vydání, a uveďte podporuje .NET Standard 2.0 jako cílový rámec.
@@ -50,10 +62,24 @@ ms.locfileid: "60627146"
 
 * Přidání .NET Standard 2.0 jako jeden z podporovaných cílových platforem na nastavit knihovnu BulkExecutor práce s aplikacemi .NET Core.
 
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* Aktualizovat prováděcí modul hromadného teď používal nejnovější verzi sady Azure Cosmos DB .NET SDK (2.4.0)
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+
+* Přidání podpory pro prováděcí modul hromadného graf přijmout hodnota ttl vrcholů a hran
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+* Opravili jsme problém, která způsobila výjimky během elastické škálování služby Azure Cosmos DB při spuštění v režimu brány.
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+* Přidání hromadného odstranění podporu pro účty SQL API tak, aby přijímal klíč oddílu, n-tic id dokumentu pro odstranění.
+
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* Přidat přetížení pro operaci hromadného odstranění pro účty SQL API tak, aby přijímal klíč oddílu, n-tic id dokumentu pro odstranění.
-* Přidat přetížení pro operaci hromadného odstranění pro účty SQL API tak, aby přijímal RequestOptions, který obsahuje klíč oddílu, který zadáte jako hodnotu klíče oddílu, kromě použití jako filtr ve vstupní dotaz Určuje dokumenty pro odstranění.
 * Opravili jsme problém, která způsobila chybu formátování v uživatelský agent používá BulkExecutor.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0

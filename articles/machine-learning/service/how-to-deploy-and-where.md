@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 929a4ae2e954933bf00550770ba9d41319dc6241
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418045"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742963"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -97,7 +97,7 @@ Tímto výpočetním cíle, nebo výpočetní prostředky, je možné k hostová
 | [Místní webové služby](#local) | Testování/ladění | Vhodné pro testování a řešení potíží omezené.
 | [Azure Kubernetes Service (AKS)](#aks) | Odvození v reálném čase | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
 | [Azure Container Instances (ACI)](#aci) | Testování | Vhodné pro nízkého škálování, úlohy založené na procesoru. |
-| [Azure Machine Learning Compute](how-to-run-batch-predictions.md) | (Preview) Odvození služby batch | Spusťte vyhodnocení na výpočetní prostředí služby batch. Podporuje virtuální počítače s normální a s nízkou prioritou. |
+| [Azure Machine Learning Compute](how-to-run-batch-predictions.md) | Odvození služby batch | Spuštění dávky odvození na výpočetní prostředí. Podporuje virtuální počítače s normální a s nízkou prioritou. |
 | [Azure IoT Edge](#iotedge) | (Preview) Modul IoT | Nasazení a poskytovat modelů ML na zařízeních IoT. |
 
 
@@ -130,8 +130,9 @@ Aktuálně jsou podporovány následující typy:
 Použití generování schématu, uvést `inference-schema` balíčku v souboru prostředí conda. Následující příklad používá `[numpy-support]` vzhledem k tomu, že skript vstupního používá numpy typ parametru: 
 
 #### <a name="example-dependencies-file"></a>Příklad souboru závislosti
-Následující je příkladem souboru závislostí systému Conda pro odvození.
-```python
+Následující kód YAML je příkladem souboru závislostí systému Conda pro odvození.
+
+```YAML
 name: project_environment
 dependencies:
   - python=3.6.2
@@ -186,6 +187,48 @@ def run(data):
         return error
 ```
 
+#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Ukázkový skript s slovníku vstup (podpora spotřeby z Power BI)
+
+Následující příklad ukazuje, jak definovat vstupní data jako < klíč: hodnota > Slovník pomocí datového rámce. Tato metoda je určená pro nasazenou webovou službu z Power BI podporována ([Další informace o používání této webové služby z Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-integration)):
+
+```python
+import json
+import pickle
+import numpy as np
+import pandas as pd
+import azureml.train.automl
+from sklearn.externals import joblib
+from azureml.core.model import Model
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
+
+def init():
+    global model
+    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+input_sample = pd.DataFrame(data=[{
+              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
+              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
+              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
+            }])
+
+output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+
+@input_schema('data', PandasParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 Další příklady skriptů najdete v následujících příkladech:
 
 * Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -281,7 +324,7 @@ Kvóty a regionální dostupnosti ACI najdete v tématu [kvóty a dostupnost obl
 
 Další informace najdete v tématu v referenční dokumentaci [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) a [webová služba](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) třídy.
 
-### <a id="aks"></a>Azure Kubernetes Service (produkce)
+### <a id="aks"></a>Azure Kubernetes Service (DEVTEST & produkční)
 
 Můžete použít existující cluster AKS, nebo vytvořte novou pomocí sady SDK Azure Machine Learning, rozhraní příkazového řádku nebo na webu Azure portal.
 
@@ -293,6 +336,9 @@ Pokud už máte cluster AKS, který je připojený, můžete nasadit do ní. Pok
 
   ```python
   aks_target = AksCompute(ws,"myaks")
+  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
+  # cores and memory to handle this deployment configuration. Note that memory is also used by
+  # things such as dependencies and AML components.
   deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
   service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
   service.wait_for_deployment(show_output = True)
@@ -315,16 +361,23 @@ Další informace o nasazení služby AKS a automatického horizontálního sní
 #### Vytvoření nového clusteru AKS<a id="create-attach-aks"></a>
 **Časový odhad:** Přibližně 5 minut.
 
-> [!IMPORTANT]
-> Vytvořit nebo připojit AKS cluster je vždy jednou procesu pro váš pracovní prostor. Tento cluster pro více nasazení můžete znovu použít. Při odstranění clusteru nebo skupinu prostředků, který jej obsahuje, musíte vytvořit nový cluster, které se budete muset nasadit.
+Vytvořit nebo připojit AKS cluster je vždy jednou procesu pro váš pracovní prostor. Tento cluster pro více nasazení můžete znovu použít. Při odstranění clusteru nebo skupinu prostředků, který jej obsahuje, musíte vytvořit nový cluster, které se budete muset nasadit. Můžete mít více AKS clustery připojené k vašemu pracovnímu prostoru.
 
-Další informace o nastavení `autoscale_target_utilization`, `autoscale_max_replicas`, a `autoscale_min_replicas`, najdete v článku [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-) odkaz.
+Pokud chcete vytvořit cluster AKS pro vývoj, ověřování a testování, je nastavit `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` při použití [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py). S tímto nastavením vytvořil se cluster bude mít jenom jeden uzel.
+
+> [!IMPORTANT]
+> Nastavení `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` vytvoří cluster AKS, který není vhodný pro zpracování provozu v produkčním prostředí. Odvození dobu může být delší než v clusteru, vytvoří pro produkční prostředí. Odolnost proti chybám není také zaručené pro clustery pro vývoj/testování.
+>
+> Doporučujeme clustery vytvořené pro vývoj a testování používat alespoň dva virtuální procesory.
+
 Následující příklad ukazuje, jak vytvořit nový cluster Azure Kubernetes Service:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Use the default configuration (you can also provide parameters to customize this)
+# Use the default configuration (you can also provide parameters to customize this).
+# For example, to create a dev/test cluster, use:
+# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
@@ -341,6 +394,7 @@ Další informace o vytvoření clusteru AKS mimo sadu SDK Azure Machine Learnin
 * [Vytvoření clusteru AKS](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Vytvoření clusteru AKS (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
+Další informace o `cluster_purpose` parametr, najdete v článku [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) odkaz.
 
 > [!IMPORTANT]
 > Pro [ `provisioning_configuration()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py), pokud vyberete vlastní hodnoty agent_count a vm_size, je třeba Ujistěte se, že agent_count vynásobené vm_size je větší než nebo roven 12 virtuálních procesorů. Například pokud použijete vm_size "Standard_D3_v2", který má 4 virtuální procesory, pak měli byste vybrat agent_count 3 nebo vyšší.
@@ -349,7 +403,16 @@ Další informace o vytvoření clusteru AKS mimo sadu SDK Azure Machine Learnin
 
 #### <a name="attach-an-existing-aks-cluster"></a>Připojení existujícího clusteru AKS
 
-Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.12. ## a obsahuje alespoň 12 virtuálních procesorů, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit existující 1.12 AKS. ## clusteru do pracovního prostoru:
+Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.12. ##, ve kterém můžete nasadit svou image.
+
+> [!WARNING]
+> Při připojování AKS cluster s pracovním prostorem, můžete definovat, jak bude používat cluster tak, že nastavíte `cluster_purpose` parametru.
+>
+> Pokud nenastavíte `cluster_purpose` parametr nebo sadu `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, pak cluster musí mít alespoň 12 virtuálních procesorů, které jsou k dispozici.
+>
+> Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, pak clusteru není nutné mít 12 virtuálních procesorů. Cluster, který je nakonfigurovaný pro vývoj/testování ale nebudou vhodná pro produkční síťového provozu na úrovni a může zvýšit dobu odvození.
+
+Následující kód ukazuje, jak se připojit existující 1.12 AKS. ## clusteru do pracovního prostoru:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -357,11 +420,18 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attach the cluster to your workgroup
+# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
+# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+#                                         cluster_name = cluster_name,
+#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
+
+Další informace o `attack_configuration()`, najdete v článku [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) odkaz.
+
+Další informace o `cluster_purpose` parametr, najdete v článku [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) odkaz.
 
 ## <a name="consume-web-services"></a>Využívání webových služeb
 
@@ -395,7 +465,7 @@ print(response.json())
 Další informace najdete v tématu [vytvořit klientskou aplikaci vykreslující](how-to-consume-web-service.md).
 
 
-### <a id="azuremlcompute"></a> Využití služby batch
+### <a id="azuremlcompute"></a> Odvození služby batch
 Azure Machine Learning Compute cíle vytvoření a správa pomocí služby Azure Machine Learning. Použitím pro předpovědi batch z Azure Machine Learning kanály.
 
 Návod k odvození služby batch pomocí Azure Machine Learning Compute, najdete v článku [způsob spouštění Predikcí služby Batch](how-to-run-batch-predictions.md) článku.

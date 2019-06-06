@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978880"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475210"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro službu Azure App Service
 
@@ -55,7 +55,7 @@ Zobrazí se stránka pro správu aplikace App Service.
 
 ### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
-V levém navigačním panelu na stránce aplikace se posuňte do části **Nastavení** a vyberte **Vertikálně navýšit kapacitu (plán služby App Service)**.
+V levém navigačním panelu na stránce aplikace se posuňte do části **Nastavení** a vyberte **Vertikálně navýšit kapacitu (plán služby App Service)** .
 
 ![Nabídka Vertikálně navýšit kapacitu](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -118,7 +118,7 @@ Potom vyberte požadované možnosti pro vaši doménu. V následující tabulce
 
 | Nastavení | Navrhovaná hodnota | Popis |
 |-|-|-|
-|Ochrana osobních údajů | Zapnout | Vyjádřit výslovný souhlas pro "Ochrany osobních údajů", který je součástí ceny nákupu _zdarma_. Některé domény nejvyšší úrovně se spravují přes registrátorů, které nepodporují ochranu osobních údajů a jsou uvedeny na **ochranu osobních údajů** stránky. |
+|Ochranu osobních údajů | Povolení | Vyjádřit výslovný souhlas pro "Ochrany osobních údajů", který je součástí ceny nákupu _zdarma_. Některé domény nejvyšší úrovně se spravují přes registrátorů, které nepodporují ochranu osobních údajů a jsou uvedeny na **ochranu osobních údajů** stránky. |
 | Přiřadit výchozí hostitelské názvy | **WWW** a **\@** | Vyberte požadovaný název hostitele vazeb v případě potřeby. Po dokončení operace nákupu domény vaší aplikace je přístupný na vybrané názvy hostitelů. Pokud je aplikace za [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nevidíte možnost přiřadit kořenovou doménu (@), protože nemá podporu záznamy O Traffic Manageru. Můžete provedete změny přiřazení názvu hostitele po dokončení nákupu domény. |
 
 ### <a name="accept-terms-and-purchase"></a>Přijměte podmínky a nákup
@@ -138,13 +138,17 @@ Zpátky **doména App Service** klikněte na **OK**. Když probíhá operace, se
 
 ### <a name="test-the-hostnames"></a>Testování názvy hostitelů
 
-Pokud výchozí názvy hostitelů přiřazenými do vaší aplikace, se také zobrazí oznámení úspěch pro každý vybraný název hostitele. 
+Pokud výchozí názvy hostitelů přiřazenými do vaší aplikace, se také zobrazí oznámení úspěch pro každý vybraný název hostitele.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Zobrazí také názvy vybraných hostitelů v **vlastní domény** stránku, **vlastní názvy hostitelů** oddílu. 
+Zobrazí také názvy vybraných hostitelů v **vlastní domény** stránku, **vlastní názvy hostitelů** oddílu.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+
+> [!NOTE]
+> A **Poznámka zabezpečení** popisek pro vaši vlastní doménu znamená, že je ještě není vázán na certifikát SSL a jakékoli požadavek HTTPS z prohlížeče do vaší vlastní domény zobrazí a chyby nebo upozornění, v závislosti na prohlížeči. Konfigurace vazby SSL, najdete v článku [koupě a konfigurace certifikátu SSL pro službu Azure App Service](web-sites-purchase-ssl-web-site.md).
+>
 
 Chcete-li otestovat názvy hostitelů, přejděte na uvedené názvy hostitelů v prohlížeči. V příkladu v předchozím snímku obrazovky, zkuste přejít na stránku _kontoso.net_ a _www\.kontoso.net_.
 
@@ -267,7 +271,7 @@ Na webu Azure Portal, v levé nabídce vyberte **všechny služby** > **domén s
 
 Vyberte domény, ke které chcete zrušit nebo odstranit. 
 
-### <a name="delete-hostname-bindings"></a>Odstranit vazby názvů hostitelů
+### <a name="delete-hostname-bindings"></a>Odstranění vazby názvu hostitele
 
 V nabídce vlevo doménu, vyberte **vazby názvu hostitele**. Tady jsou uvedené vazby názvu hostitele ze všech služeb Azure.
 

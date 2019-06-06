@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248881"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482312"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -143,7 +143,7 @@ Vytváření oddílů GPT lze použít pouze pro datové disky, nikoli disky s o
 
 **Jaké typy disků podporuje snímky?**
 
-SSD na úrovni standard, Premium SSD a SSD na úrovni standard podporovat snímky, bez omezení velikosti. Můžete tak velké disky se snímky (až 32 TB). Ultra SSD nepodporují snímky.
+Premium SSD, SSD na úrovni standard a standardní HDD podporovat snímky. Pro tyto typy tří disků jsou snímky podporovány pro všechny velikosti disků (včetně velikosti disků až 32 TB). Ultra SSD nepodporují snímky.
 
 ## <a name="standard-ssd-disks"></a>Standardní disky SSD
 

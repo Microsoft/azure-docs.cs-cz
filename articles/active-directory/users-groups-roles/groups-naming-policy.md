@@ -1,6 +1,6 @@
 ---
 title: Vynutit zásady pojmenování skupin ze skupin Office 365 – Azure Active Directory | Dokumentace Microsoftu
-description: Nastavení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
+description: Nastavení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605548"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734786"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory
 
@@ -74,14 +74,14 @@ Vybraný správce můžete vyloučené z těchto zásad ve všech skupin úloh a
 - Podpora partnerů úrovně 1
 - Podpora partnerů úrovně 2
 - Správce uživatelů
-- Uživatelé s oprávněním k zápisu do adresářů
+- Uživatelé zapisující do adresáře
 
-## <a name="configure-naming-policy-in-azure-portal-preview"></a>Konfigurace zásad vytváření názvů na webu Azure portal (preview)
+## <a name="configure-naming-policy-in-azure-portal"></a>Na webu Azure portal nakonfigurovat zásady pojmenování
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu správce.
 1. Vyberte **skupiny**a pak vyberte **zásad pojmenování** otevřete stránku zásad pojmenování.
 
-    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy-preview.png)
+    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Umožňuje zobrazit nebo upravit zásady vytváření názvů předponu příponu
 
@@ -94,7 +94,7 @@ Vybraný správce můžete vyloučené z těchto zásad ve všech skupin úloh a
 
 1. Na **zásad pojmenování** stránce **blokované slova**.
 
-    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords-preview.png)
+    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords.png)
 
 1. Umožňuje zobrazit nebo upravit tak, že vyberete aktuální seznam blokovaných zadejte vlastní slova **Stáhnout**.
 1. Nahrajte nový seznam blokovaných zadejte vlastní slova tak, že vyberete ikonu souboru.
@@ -198,7 +198,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>Odebrat zásady pojmenování
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Odebrat zásady pojmenování pomocí webu Azure portal (preview)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Odebrat zásady pojmenování pomocí webu Azure portal
 
 1. Na **zásad pojmenování** stránce **odstranit zásadu**.
 1. Jakmile potvrdíte odstranění, zásady pojmenování Odebereme, včetně všech předpon přípon pojmenování zásady a jakékoli vlastní blokované slova.
@@ -230,7 +230,7 @@ Jakmile nastavíte zásady pojmenování skupin ve službě Azure AD, když uži
 - Náhled A názvu souladu s vašimi zásadami vytváření názvů (u předpony a přípony) jakmile uživatel zadá název skupiny
 - Pokud uživatel zadá blokované slova, zobrazí proto jsou blokované slova odebrat chybovou zprávu.
 
-Úloha | Kompatibilita
+Úloha | Dodržování předpisů
 ----------- | -------------------------------
 Azure Portal služby Active Directory | Na portálu Azure AD a na přístupovém panelu portálu zobrazí název názvového vynucená zásada když uživatel zadá název skupiny při vytváření nebo úpravách skupiny. Když uživatel zadá vlastní zablokované slovo, zobrazí se chybová zpráva s zablokované slovo tak, aby uživatel jej může odebrat.
 Outlook Web Access (OWA) | Aplikace Outlook Web Access zobrazují pojmenování zásady vynucují název, když uživatel zadá název skupiny nebo alias skupiny. Když uživatel zadá vlastní zablokované slovo, chybová zpráva se zobrazí v uživatelském rozhraní spolu s zablokované slovo tak, aby uživatel může odstranit ji.

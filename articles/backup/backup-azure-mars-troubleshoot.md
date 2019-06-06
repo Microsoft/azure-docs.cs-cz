@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: f36442c5e26391f410eeb5e39a7485da7199bdad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d8a1d261808eb8f97d1e0dab78b767b37ae6802f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243435"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743146"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -82,7 +82,15 @@ Doporučujeme provést ověření, než začnete řešení potíží s agentem M
 Pokud naplánovaných záloh není aktivují automaticky, zatímco ruční zálohy budou fungovat bez problémů, zkuste následující akce:
 
 - Ujistěte se, že plán zálohování Windows serveru nejsou v konfliktu se soubory a složky, plán zálohování Azure.
-- Přejděte na **ovládací panely** > **nástroje pro správu** > **Plánovač úloh**. Rozbalte **Microsoft**a vyberte **Online zálohování**. Dvakrát klikněte na panel **Microsoft OnlineBackup**a přejděte na **triggery** kartu. Ujistěte se, že je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit**a vyberte **povoleno** zaškrtávací políčko a klikněte na tlačítko **OK**. Na **Obecné** kartu, přejděte na **možnosti zabezpečení** a ujistěte se, že uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **místní Skupina správců** na serveru.
+
+- Zkontrolujte stav Online zálohování je nastavená na **povolit**. Chcete-li ověřit stav provádění níže:
+
+  - Přejděte na **ovládací panely** > **nástroje pro správu** > **Plánovač úloh**.
+    - Rozbalte **Microsoft**a vyberte **Online zálohování**.
+  - Dvakrát klikněte na panel **Microsoft OnlineBackup**a přejděte na **triggery** kartu.
+  - Ověření, pokud je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit**a vyberte **povoleno** zaškrtávací políčko a klikněte na tlačítko **OK**.
+
+- Zkontrolujte uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **skupiny Local Administrators** na serveru. Chcete-li ověřit, že uživatelský účet, přejděte **Obecné** kartě a zaškrtněte **možnosti zabezpečení**.
 
 - Podívejte se, jestli je na serveru nainstalovaný PowerShell 3.0 nebo novější. Pokud chcete zkontrolovat verzi prostředí PowerShell, spusťte následující příkaz a ověřte, zda *hlavní* číslo verze je roven nebo větší než 3.
 
@@ -98,6 +106,15 @@ Pokud naplánovaných záloh není aktivují automaticky, zatímco ruční zálo
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
 
+- Ujistěte se, že server byl restartován po instalaci agenta zálohování
+
+- Zajistili zde nejsou žádné chybějící nebo poškozený **PowerShell** modulu **MSonlineBackup**. V případě, že jsou všechny chybějící nebo poškozené soubory, chcete-li vyřešit tento problém provádět níže:
+
+  - Z jiného počítače (Windows 2008 R2) s agenta MARS funguje správně, zkopírujte složku MSOnlineBackup z *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* cestu.
+  - To vložte problematických počítače ve stejné cestě *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* .
+  - Pokud **MSOnlineBackup** složka je již existuje v počítači, vložení/nahrazení soubory obsahu uvnitř.
+
+
 > [!TIP]
 > Aby bylo zajištěno, že změny jsou konzistentní, restartujte server po provedení výše uvedených kroků.
 
@@ -108,7 +125,7 @@ Azure Backup nemusí úspěšně připojit svazek pro obnovení, dokonce i po n�
 
 1.  Zrušte proces probíhající připojení v případě, že je spuštěné pro několik minut.
 
-2.  Podívejte se, pokud jste na nejnovější verzi agenta zálohování. Chcete-li zjistit, na verzi, **akce** podokně konzoly MARS, vyberte **o Microsoft Azure Recovery Services Agent**. Ujistěte se, že **verze** počet se rovná nebo je vyšší než verze uvedená v [v tomto článku](https://go.microsoft.com/fwlink/?linkid=229525). Můžete stáhnout nejnovější verzi z [tady](https://go.microsoft.com/fwLink/?LinkID=288905).
+2.  Podívejte se, pokud jste na nejnovější verzi agenta zálohování. Chcete-li zjistit, na verzi, **akce** podokně konzoly MARS, vyberte **o Microsoft Azure Recovery Services Agent**. Ujistěte se, že **verze** počet se rovná nebo je vyšší než verze uvedená v [v tomto článku](https://go.microsoft.com/fwlink/?linkid=229525). Nejnovější verzi můžete stáhnout [tady](https://go.microsoft.com/fwLink/?LinkID=288905).
 
 3.  Přejděte na **Správce zařízení** > **řadiče úložiště**a vyhledejte **iniciátoru iSCSI od Microsoftu**. Pokud ji mohli najít, přejděte přímo ke kroku 7.
 

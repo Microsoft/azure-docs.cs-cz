@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: dbc8363052556f29633c069bcd82af5249a3406f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306879"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428115"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -38,7 +38,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 ## <a name="prerequisites"></a>Požadavky
 
 * Vývojový počítač s:
-  * Visual Studio 2015 nebo Visual Studio 2017.
+  * Visual Studio 2015 nebo Visual Studio 2019.
   * [Sada Service Fabric SDK a nástroje](service-fabric-get-started.md).
   *  Docker pro Windows. [Získejte Docker CE pro Windows (stabilní verze)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po nainstalování a spuštění Dockeru klikněte pravým tlačítkem myši na ikonu na hlavním panelu a vyberte **Switch to Windows containers** (Přepnout na kontejnery Windows). Tento krok se vyžaduje pro spuštění imagí Dockeru založených na Windows.
 
@@ -482,7 +482,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 Kontejnery Windows serveru nejsou kompatibilní mezi všemi verzemi operačního systému hostitele. Příklad:
  
 - Kontejnery Windows serveru sestavené pomocí systému Windows Server verze 1709 nefungují na hostitele se systémem Windows Server verze 2016. 
-- Kontejnery Windows serveru sestavené pomocí Windows serveru 2016 fungovat v režimu izolace Hyper-v pouze na hostitele se systémem Windows Server verze 1709. 
+- Kontejnery Windows serveru sestavené pomocí Windows serveru 2016 fungovat v režimu izolace Hyper-V pouze na hostitele se systémem Windows Server verze 1709. 
 - S kontejnery Windows serveru sestavené pomocí Windows serveru 2016 může být potřeba revize kontejneru operačního systému a hostitelský operační systém musí být stejná při spuštění v režimu izolace procesů na hostiteli s Windows serverem 2016.
  
 Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).

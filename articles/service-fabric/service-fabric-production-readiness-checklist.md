@@ -12,28 +12,22 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/10/2018
+ms.date: 6/05/2019
 ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726583"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729868"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
 Je vaše aplikace a clusteru, jste připraveni udělat produkční provoz? Spuštění a testování vaší aplikace i cluster ale neznamená nutně, že jste připravení přejít do produkčního prostředí. Udržujte aplikace a clusteru se systémem hladce prostřednictvím následujícího kontrolního seznamu. Důrazně doporučujeme tyto položky mají být zkontrolovány. Samozřejmě můžete použít alternativní řešení pro konkrétní položky řádku (například vlastní Diagnostika rozhraní).
 
 
-## <a name="pre-requisites-for-production"></a>Předpoklady pro produkční prostředí
-1. [Osvědčené postupy pro Azure Service Fabric zabezpečení](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) jsou: 
-1. Použití certifikátů X.509
-1. Konfigurace zásad zabezpečení
-1. Konfigurace SSL pro Azure Service Fabric
-1. Izolace sítě a zabezpečení pomocí Azure Service Fabric
-1. Nastavení služby Azure Key Vault pro zabezpečení
-1. Microsoft.Network/loadBalancersAssign uživatelů k rolím
+## <a name="prerequisites-for-production"></a>Požadavky pro produkční prostředí
+1. Osvědčené postupy Azure Service Fabric: [Návrh aplikace](./service-fabric-best-practices-applications.md), [zabezpečení](./service-fabric-best-practices-security.md), [sítě](./service-fabric-best-practices-networking.md), [plánování kapacity a škálování](./service-fabric-best-practices-capacity-scaling.md), [infrastruktura jako kód](./service-fabric-best-practices-infrastructure-as-code.md), a [monitorování a Diagnostika](./service-fabric-best-practices-monitoring.md). 
 1. Pokud pomocí Actors programovací model implementovat zabezpečení konfigurace Reliable Actors
 1. Pro clustery s více než 20 jader nebo 10 uzlů vytvoření vyhrazených uzlů primárního typu pro systémové služby. Přidat [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) rezervovat primární typ uzlu systémových služeb.
 1. Použijte D2v2 nebo vyšší skladová položka pro primární typ uzlu. Doporučujeme vybrat skladovou Položku s kapacitou disku alespoň 50 GB.

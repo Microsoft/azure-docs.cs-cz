@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 76d18b6a942ed9b8c6871b0ff7cbc1c83917ada4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c84c3eb74d214a5c98aabef7b2e2987dfdf67c0f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66130469"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472608"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Povolit monitorování Azure pro virtuální počítače (preview)
 
@@ -40,6 +40,7 @@ Než začnete, ujistěte se, že rozumíte informace v následujících částec
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v těchto oblastech:
 
 - Západní střed USA
+- USA – západ 2<sup>1</sup>
 - USA – východ
 - Canada Central<sup>1</sup>
 - Velká Británie – jih<sup>1</sup>
@@ -74,7 +75,7 @@ Proveďte konfiguraci pracovního prostoru pro scénář ve velkém měřítku, 
 
 Následující tabulka uvádí operační systémy Windows a Linuxem, které jsou podporovány službou Azure Monitor pro virtuální počítače. Úplný seznam, který podrobně popisuje verze operačního systému Linux hlavní a dílčí a podporované verze jádra je v této části dozvíte později.
 
-|Verze operačního systému |Výkon |Maps |Zdraví |
+|Verze operačního systému |Výkon |Maps |Stav |
 |-----------|------------|-----|-------|
 |Windows Server 2019 | X | X | X |
 |Windows Server 2016 1803 | X | X | X |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2019
+ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258691"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480536"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -67,7 +67,7 @@ Jsou podporovány následující operační systémy Linux:
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
 * Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14.04 LTS a 16.04 LTS
+* Ubuntu Linux 14.04 LTS, 16.04 LTS a
 
 ## <a name="vms-and-cloud-services"></a>Virtuální počítače a cloudové služby
 Podporují se také virtuální počítače, na kterých běží v cloudové službě. Jsou monitorovány pouze cloud services webové a pracovní role, které běží v slot na produkční. Další informace o službách cloud services, najdete v článku [přehled o Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
@@ -93,7 +93,7 @@ Podporují se také virtuální počítače, na kterých běží v cloudové slu
 |FIM|✔|✔|✔|✔|✔|✔|Standard|
 |Vyhodnocování šifrování disku.|✔|✔|X|✔|✔|X|Free|
 |Nasazení třetích stran|✔|X|X|✔|X|X|Free|
-|Posouzení skupin zabezpečení sítě|✔|✔|X|✔|✔|X|Free|
+|Vyhodnocení skupiny zabezpečení sítě|✔|✔|X|✔|✔|X|Free|
 |Detekce hrozeb fileless|✔|✔|✔|X|X|X|Standard|
 |Mapování sítě|✔|✔|X|✔|✔|X|Standard|
 |Ovládací prvky pro adaptivní síť|✔|✔|X|✔|✔|X|Standard|
@@ -129,7 +129,7 @@ Informace o po vygenerování doporučení pro všechny tyto ochrany najdete v t
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Azure Blob storage účty *|✔| ✔|
+|Účty služby Azure Blob storage|✔| ✔|
 |Aplikační služby|✔| ✔|
 |Cloudové služby|✔| X|
 |Virtuální sítě|✔| Není k dispozici|
@@ -137,7 +137,6 @@ Informace o po vygenerování doporučení pro všechny tyto ochrany najdete v t
 |Síťové karty|✔| Není k dispozici|
 |Skupiny NSG|✔| Není k dispozici|
 |Předplatné|✔ **| ✔|
-|App Service|✔| Není k dispozici|
 |Batch|✔| Není k dispozici|
 |Service Fabric|✔| Není k dispozici|
 |Účet Automation|✔| Není k dispozici|
@@ -147,14 +146,9 @@ Informace o po vygenerování doporučení pro všechny tyto ochrany najdete v t
 |Stream Analytics|✔| Není k dispozici|
 |Centrum událostí|✔| Není k dispozici|
 |Logické aplikace|✔| Není k dispozici|
-|Podsíť|✔| Není k dispozici|
-|Vnet|✔| Není k dispozici|
 |Účet úložiště|✔| Není k dispozici|
 |Redis|✔| Není k dispozici|
-|SQL|✔| Není k dispozici|
 |Data lake analytics|✔| Není k dispozici|
-|Účet úložiště|✔| Není k dispozici|
-|Předplatné|✔| Není k dispozici|
 |Trezor klíčů|✔| Není k dispozici|
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrace z federace na předávací ověřování služby Azure Active Directory | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Migrace z federace PTA pro službu Azure AD'
 description: Tento článek obsahuje informace o přechodu prostředí hybridní identity z federace na předávací ověřování.
 services: active-directory
 author: billmath
@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eb421442a7b45f3cd5925fd1475a0a69053c3113
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60382578"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473377"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování služby Azure Active Directory
 
@@ -48,7 +48,7 @@ Pro většinu zákazníků dvě nebo tři agenti ověřování jsou dostatečná
 
 Můžete ze dvou metod pro migraci ze správy federovaných identit k předávacímu ověřování a bezproblémové jednotné přihlašování (SSO). Metodu, kterou používáte, závisí na původně konfiguraci vaší instance služby AD FS.
 
-* **Azure AD Connect**. Pokud jste nakonfigurovali službu AD FS pomocí služby Azure AD Connect, můžete *musí* změnit pomocí Průvodce Azure AD Connect pro předávací ověřování.
+* **Azure AD Connect:** Pokud jste nakonfigurovali službu AD FS pomocí služby Azure AD Connect, můžete *musí* změnit pomocí Průvodce Azure AD Connect pro předávací ověřování.
 
    Azure AD Connect se automaticky spustí **Set-MsolDomainAuthentication** rutiny, když se změní metodu přihlašování uživatele. Azure AD Connect unfederates automaticky všechny ověřené federovaných domén ve vašem tenantovi Azure AD.
 
@@ -75,7 +75,7 @@ Pokud chcete pochopit, jakou metodu použijete, proveďte kroky v následující
 2. Na **další úkoly** stránce **zobrazit aktuální konfiguraci**a pak vyberte **Další**.<br />
  
    ![Snímek obrazovky zobrazení aktuální konfigurace možnost na stránce další úkoly](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Na **Kontrola řešení** stránce, přejděte k položce **Active Directory Federation Services (AD FS)**.<br />
+3. Na **Kontrola řešení** stránce, přejděte k položce **Active Directory Federation Services (AD FS)** .<br />
 
    * V případě, že v této části se zobrazí konfiguraci služby AD FS, můžete bezpečně předpokládat, že služba AD FS byla původně nakonfigurován s použitím služby Azure AD Connect. Můžete převést domény z federovaných identit na spravovanou identitu pomocí Azure AD Connect **změnit přihlášení uživatele** možnost. Další informace o procesu najdete v části **možnost 1: Konfigurace předávacího ověřování s použitím služby Azure AD Connect**.
    * Pokud službu AD FS není uveden v aktuální nastavení, je nutné ručně převést domén z federovaných identit na spravovanou identitu pomocí prostředí PowerShell. Další informace o tomto procesu najdete v části **možnost 2: Přepnutí z federace na předávací ověřování pomocí Azure AD Connect a prostředí PowerShell**.
@@ -124,7 +124,7 @@ Tato část popisuje důležité informace o nasazení a podrobnosti o použití
 
 Předtím, než převedete z federovaných identit na spravovanou identitu, prohlédněte si blíže jak aktuálně používáte službu AD FS pro službu Azure AD, Office 365 a dalších aplikací (vztahy důvěryhodnosti předávající strany). Konkrétně zvažte scénáře, které jsou popsány v následující tabulce:
 
-| If | Potom |
+| Pokud uživatel | Potom |
 |-|-|
 | Plánujete dál používat službu AD FS s jinými aplikacemi (jiné než Azure AD a Office 365). | Po převodu domény použijete službu AD FS a Azure AD. Zvažte uživatelské prostředí. V některých scénářích, uživatelé musí pravděpodobně k ověření dvakrát: jednou do služby Azure AD (ve kterém uživatel získá přístup přes jednotné přihlašování k ostatním aplikacím, jako je Office 365) a opakujte pro všechny aplikace, které jsou stále vázaná na službu AD FS jako vztah důvěryhodnosti předávající strany. |
 | Vaše instance služby AD FS je silně přizpůsobený a závisí na konkrétní vlastní nastavení v souboru onload.js (např. Pokud jste změnili přihlašovací prostředí tak, aby uživatelé používat pouze **SamAccountName** formát pro své uživatelské jméno Namísto uživatele hlavní název (UPN), nebo vaše organizace má silně pod značkou jiných přihlašovací prostředí). Soubor onload.js nemůže být duplicitní ve službě Azure AD. | Než budete pokračovat, je nutné ověřit, že Azure AD můžete požadavkům vaší aktuální vlastní nastavení. Další informace a pokyny najdete v částech o značku služby AD FS a vlastního nastavení služby AD FS.|

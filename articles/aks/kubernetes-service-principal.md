@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d8a8a2f005a92988158b3f9c36ce24936fb020b4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786395"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475626"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -73,7 +73,7 @@ az aks create \
 Pokud nasadíte cluster AKS pomocí portálu Microsoft Azure, na stránce *ověřování* dialogového okna **Vytvořit cluster Kubernetes** zvolit **Konfigurace instančního objektu**. Vyberte **Použít existující** a zadejte následující hodnoty:
 
 - **ID klienta instančního objektu** je vaše *appId*
-- **Tajný klíč klienta instančního objektu služby** je hodnota *hesla* 
+- **Tajný klíč klienta instančního objektu služby** je hodnota *hesla*
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
@@ -91,7 +91,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 Následující části popisují běžné delegování, které musíte provést.
 
-### <a name="azure-container-registry"></a>Registr kontejneru Azure
+### <a name="azure-container-registry"></a>Azure Container Registry
 
 Pokud používáte jako vaše úložiště imagí kontejnerů Azure Container Registry (ACR), budete muset udělit oprávnění pro váš cluster AKS ke čtení a stažení imagí. Instanční objekt clusteru AKS je potřeba delegovat *čtečky* role v registru. Podrobné pokyny najdete v článku [AKS udělit přístup do služby ACR][aks-to-acr].
 
@@ -126,7 +126,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
 
 - Instanční objekt pro Kubernetes je součástí konfigurace clusteru. K nasazení clusteru ale nepoužívejte identitu.
 - Ve výchozím nastavení přihlašovací údaje instančního objektu služby jsou platné po dobu jednoho roku. Je možné [aktualizovat nebo otočit přihlašovacích údajů instančního objektu služby] [ update-credentials] kdykoli.
-- Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes může být přidružený k jakémukoli platnému názvu aplikace Azure AD (například *https://www.contoso.org/example*). Adresa URL aplikace nemusí být skutečný koncový bod.
+- Každý instanční objekt je přidružený k aplikaci Azure AD. Instanční objekt pro cluster Kubernetes může být přidružený k jakémukoli platnému názvu aplikace Azure AD (například *https://www.contoso.org/example* ). Adresa URL aplikace nemusí být skutečný koncový bod.
 - Při zadávání **ID klienta** instančního objektu použijte hodnotu `appId`.
 - Na agenta uzlu virtuální počítače v clusteru Kubernetes jsou uložené přihlašovací údaje instančního objektu služby v souboru `/etc/kubernetes/azure.json`
 - Pokud použijete příkaz [az aks create][az-aks-create] k automatickému vygenerování instančního objektu, zapíší se přihlašovací údaje instančního objektu do souboru `~/.azure/aksServicePrincipal.json` na počítači, který jste ke spuštění příkazu použili.
@@ -136,6 +136,24 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
+
+## <a name="troubleshoot"></a>Řešení potíží
+
+Jsou ukládány do mezipaměti přihlašovací údaje instančního objektu služby pro AKS cluster pomocí Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování clusteru AKS. Tato chybová zpráva při spuštění [az aks vytvořit] [ az-aks-create] může znamenat problém s přihlašovacích údajů instančního objektu služby uložený v mezipaměti:
+
+```console
+Operation failed with status: 'Bad Request'.
+Details: The credentials in ServicePrincipalProfile were invalid. Please see https://aka.ms/aks-sp-help for more details.
+(Details: adal: Refresh request failed. Status Code = '401'.
+```
+
+Zkontrolujte stáří souboru s přihlašovacími údaji pomocí následujícího příkazu:
+
+```console
+ls -la $HOME/.azure/aksServicePrincipal.json
+```
+
+Výchozí doba vypršení platnosti pro přihlašovací údaje instančního objektu služby je 1 rok. Pokud vaše *aksServicePrincipal.json* soubor je starší než jeden rok, odstraňte soubor a zkuste to znovu nasadit AKS cluster.
 
 ## <a name="next-steps"></a>Další postup
 

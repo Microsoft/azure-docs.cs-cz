@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e0f2d3491db24ecbb49c189232dbc7f698e09fb1
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200614"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430773"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Dál stavu úlohy a datové proudy úlohy ze služby Automation na protokoly Azure monitoru
 
@@ -96,7 +96,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 | Caller_s |Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy. |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | JobId_g |Identifikátor GUID, který představuje ID úlohy runbooku. |
-| ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>– Dokončení |
+| ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>-Vytvořeno<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>– Dokončení |
 | Category | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
 | OperationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci, je úloha. |
 | Resource | Název účtu služby Automation |

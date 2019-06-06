@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7c896356b67de185c55396e98aa6bb2e61dd004d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113262"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472912"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 
@@ -41,7 +41,7 @@ Další informace najdete v tématu [kteří uživatelé musí mít licence?](ac
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu hostů
 
-Zaprvé, jako globální správce nebo Správce uživatelů, přejděte [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) zajistit, že kontrol přístupu je připravený pro vaši organizaci.
+Jako globální správce nebo Správce uživatelů, nejprve přejděte na [stránka zásady správného řízení identit](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/) zajistit, že kontrol přístupu je připravený pro vaši organizaci.
 
 Azure AD umožňuje několik scénářů pro zkontrolujete uživatelů typu Host.
 

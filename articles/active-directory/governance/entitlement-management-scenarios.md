@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96442a9d49581da6841fa7acb8329354ec727f60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918480"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473091"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Běžné scénáře ve správě služby Azure AD oprávnění (Preview)
 
@@ -50,7 +50,7 @@ Existuje několik způsobů, abyste mohli konfigurovat správu oprávnění ve v
 > | **2.** [Přidání role prostředků pro přístup k balíčku](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>Skupiny</li><li>Aplikace</li><li>Weby SharePoint</li></ul> | ![Přidání role prostředků](./media/entitlement-management-scenarios/resource-roles.png) |
 > | **3.** [Přidat zásadu](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>Pro uživatele ve vašem adresáři</li><li>Vyžadovat schválení</li><li>Nastavení vypršení platnosti</li></ul> | ![Přidání zásad](./media/entitlement-management-scenarios/policy.png) |
 
-### <a name="i-want-to-allow-users-from-my-business-partners-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Chcete uživatelům umožnit od Moje obchodních partnerů (včetně uživatelů ještě není v mém adresáři) žádost o přístup ke skupinám, aplikace nebo weby služby SharePoint
+### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Chcete uživatelům umožnit z adresáře obchodních partnerů (včetně uživatelů ještě není v mém adresáři) žádost o přístup ke skupinám, aplikace nebo weby služby SharePoint
 
 > [!div class="mx-tableFixed"]
 > | Kroky | Příklad: |
@@ -83,7 +83,7 @@ Existuje několik způsobů, abyste mohli konfigurovat správu oprávnění ve v
 > | --- | --- |
 > | [Zobrazit sestavu o přiřazení uživatele](entitlement-management-reports.md)<ul><li>Zobrazit, když, o který žádali a kdo schválení</li></ul> |  |
 
-## <a name="approvers"></a>Schvalovatelé
+## <a name="approvers"></a>Schvalovatele
 
 ### <a name="i-want-to-approve-requests-to-access-groups-applications-or-sharepoint-sites"></a>Chci, aby ke schválení žádosti o přístup ke skupinám, aplikace nebo weby služby SharePoint
 
@@ -93,7 +93,7 @@ Existuje několik způsobů, abyste mohli konfigurovat správu oprávnění ve v
 > | **1.** [Otevřít požadavek na portálu Moje aplikace Access](entitlement-management-request-approve.md#open-request) | [![Ikona Tento přístup k portálu](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
 > | **2.** [Schválit žádost o přístup](entitlement-management-request-approve.md#approve-or-deny-request) | ![Schválit přístup](./media/entitlement-management-scenarios/approve-access.png) |
 
-## <a name="requestors"></a>Žadatelé
+## <a name="requestors"></a>Žadatele
 
 ### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-available-to-me-and-request-access"></a>Chci zobrazit skupiny, aplikace nebo weby služby SharePoint v Microsoft Azure a žádat o přístup
 
@@ -124,4 +124,4 @@ Existuje několik způsobů, abyste mohli konfigurovat správu oprávnění ve v
 ## <a name="next-steps"></a>Další postup
 
 - [Kurz: Vytvoření vaší první přístup k balíčku](entitlement-management-access-package-first.md)
-- [Úprava a správa existující balíček pro přístup](entitlement-management-access-package-edit.md)
+- [Úprava a správa existujících přístupových balíčků](entitlement-management-access-package-edit.md)

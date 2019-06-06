@@ -6,18 +6,20 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947074"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430884"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Tady jsou běžné otázky o Azure Application Gateway.
 
 ## <a name="general"></a>Obecné
 
@@ -187,13 +189,18 @@ Zobrazit [pořadí zpracování pravidla](https://docs.microsoft.com/azure/appli
 
 Pole hostitel Určuje název, který chcete odeslat testu a pokud jste nakonfigurovali ve víc lokalitách ve službě Application Gateway. Jinak použijte "127.0.0.1". Tato hodnota se liší od názvu hostitele virtuálního počítače. Má formát \<protokol\>://\<hostitele\>:\<port\>\<cesta\>.
 
-### <a name="can-i-whitelist-application-gateway-access-to-only-a-few-source-ips"></a>Je možné seznamu povolených IP adres službě Application Gateway přístup k jenom pár zdrojové IP adresy?
+### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Můžete povolit službě Application Gateway přístup jenom pár zdrojové IP adresy?
 
-Ano. Zobrazit [omezení přístupu ke konkrétní zdrojové IP adresy](https://docs.microsoft.com/azure/application-gateway/configuration-overview#whitelist-application-gateway-access-to-a-few-source-ips).
+Ano. Zobrazit [omezení přístupu ke konkrétní zdrojové IP adresy](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Můžete použít stejný port pro naslouchací procesy veřejná i privátní přístupem?
 
 Ne.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici pokyny, které jsou dostupné k migraci z v1 SKU na v2 SKU?
+
+Ano. Podrobnosti najdete v tématu, [migrace Azure Application Gateway a firewallu webových aplikací z v1 na v2](migrate-v1-v2.md).
+
 
 ## <a name="configuration---ssl"></a>Konfigurace – SSL
 
@@ -312,6 +319,10 @@ Další informace najdete v tématu [OWASP top 10 ohrožení](https://www.owasp.
 ### <a name="does-waf-support-ddos-protection"></a>Podporuje WAF služby DDoS protection?
 
 Ano. Můžete povolit ochranu před útoky DDoS na virtuální síť, ve kterém je nasazená Aplikační brána. Toto nastavení zajistí, že služba Azure DDoS Protection chrání také application gateway virtuální IP (VIP).
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici pokyny, které jsou dostupné k migraci z v1 SKU na v2 SKU?
+
+Ano. Podrobnosti najdete v tématu, [migrace Azure Application Gateway a firewallu webových aplikací z v1 na v2](migrate-v1-v2.md).
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 

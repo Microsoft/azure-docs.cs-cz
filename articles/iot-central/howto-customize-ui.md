@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0256396cd228898f3852772b113e6064a0656746
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237654"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495566"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Přizpůsobení uživatelského rozhraní Azure IoT Central 
 
@@ -75,6 +75,5 @@ Můžete také přidat nové položky do nabídky Nápověda, odeberte výchozí
 
 Teď, když jste zjistili, jak přizpůsobit uživatelské rozhraní aplikace IoT Central, tady jsou některé další navrhované kroky:
 
-> [!div class="nextstepaction"]
-> [Spravovat aplikaci](./howto-administer.md)
-> [nakonfigurovat řídicí panel aplikací](./howto-configure-homepage.md)
+- [Spravovat aplikaci](./howto-administer.md)
+- [Konfigurace řídicí panel aplikací](./howto-configure-homepage.md)

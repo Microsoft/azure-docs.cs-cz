@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4775a3eb12f48026cca78856a6197e89ddd2c75d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ad391aae72bec392ae75b333fc3bfc1ff3f95f1
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390116"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66727323"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytvoření trasové brány VPN pomocí Powershellu
 
@@ -22,7 +22,7 @@ Kroky v tomto článku se vytvoří virtuální síť, podsíť, podsítě brán
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

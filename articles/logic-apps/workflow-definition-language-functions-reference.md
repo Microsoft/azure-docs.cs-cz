@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416346"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733071"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps a Microsoft Flow
 
@@ -737,7 +737,7 @@ V tomto příkladu přidá jeden den do zadaného časového razítka:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-A vrátí výsledek: `"2018-01-02T00:00:00:0000000Z"`
+A vrátí výsledek: `"2018-01-02T00:00:00.0000000Z"`
 
 *Příklad 2*
 
@@ -3384,7 +3384,7 @@ A vrátí výsledek: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-### <a name="sub"></a>Sub
+### <a name="sub"></a>sub
 
 Vrátí výsledek v daných druhé číslo z první číslo.
 

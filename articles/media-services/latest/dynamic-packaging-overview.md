@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c25aef76b5559b6d00ccf60675d61ea5ea346773
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299190"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494354"
 ---
 # <a name="dynamic-packaging"></a>Dynamické balení
 
@@ -114,10 +114,10 @@ Dynamické balení podporuje soubory MP4, které obsahují zvuk s kódováním
     * Typy nasazení Express (dtse)
     * DTS HD beze ztrát (žádné jader) (dtsl)
 
-### <a name="hls-support"></a>Podpora HLS
+### <a name="multi-audio-tracks"></a>Více zvukové stopy
 
-Dynamické balení podporuje HLS (verze 4 nebo vyšší) pro prostředky, které mají více zvukové stopy s více kodeky a jazyky.
-
+Při streamování prostředky, které mají více zvukové stopy s více kodeky a jazyky, podporuje dynamické balení zvukové stopy s více pro výstup HLS (verze 4 nebo vyšší).
+ 
 ### <a name="not-supported"></a>Nepodporuje se
 
 Dynamické balení nepodporuje soubory, které obsahují [Dolby digitální](https://en.wikipedia.org/wiki/Dolby_Digital) zvuku (AC3) (je starší verze kodek).

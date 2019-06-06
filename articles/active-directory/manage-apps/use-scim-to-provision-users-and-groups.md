@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5c2d987a1556513e36fc0a81e903d9eefdcae68
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388163"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742487"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -81,7 +81,7 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
    *Obrázek 3: Konfigurace zřizování na webu Azure Portal*
     
 1. V **adresy URL Tenanta** zadejte adresu URL koncového bodu SCIM vaší aplikace. Příklad: https://api.contoso.com/scim/v2/
-1. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole necháte prázdné, Azure AD zahrnuje vydané ze služby Azure AD s každou žádostí tokenu nosiče OAuth. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit tento Azure AD vystavený token.
+1. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. 
 1. Vyberte **Test připojení** s Azure Active Directory, pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
 
     >[!NOTE]
@@ -667,8 +667,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
     
 1. V **adresy URL Tenanta** pole, zadejte adresu URL a port koncového bodu SCIM vystavený Internetu. Položka je něco jako http://testmachine.contoso.com:9000 nebo http://\<ip-address >: 9000 /, kde \<ip-address > je vystavený Internetu IP adresu. 
 
-1. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. Pokud toto pole necháte prázdné, Azure AD bude obsahovat vydané ze služby Azure AD s každou žádostí tokenu nosiče OAuth. Aplikace, které používají Azure AD jako zprostředkovatele identity můžete ověřit této služby Azure AD – vydaný token.
-
+1. Pokud koncový bod SCIM vyžaduje tokenu nosiče OAuth z vystavitele než Azure AD, zkopírujte požadované tokenu nosiče OAuth nepovinný **tajný klíč tokenu** pole. 
 1. Vyberte **Test připojení** s Azure Active Directory, pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
 
     >[!NOTE]

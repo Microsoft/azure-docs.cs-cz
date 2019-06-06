@@ -2,20 +2,20 @@
 title: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure Active Directory B2C | Dokumentace Microsoftu
 description: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e44bb1ed6a7a090b4b1213ca14be2b42642475e4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717289"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510723"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -60,7 +60,7 @@ Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-
 
 1. V sadě Visual Studio vytvořte projekt tak, že vyberete **souboru** > **nový** > **projektu**.
 
-2. V **nový projekt** okně **Visual C#** > **webové** > **webová aplikace ASP.NET (.NET Framework)**.
+2. V **nový projekt** okně **Visual C#**  > **webové** > **webová aplikace ASP.NET (.NET Framework)** .
 
 3. V **název** zadejte název aplikace (například *Contoso.AADB2C.API*) a pak vyberte **OK**.
 
@@ -72,7 +72,7 @@ Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-
 
 5. Ujistěte, že ověřování je nastavena na **bez ověřování**.
 
-6. Vyberte **OK** a vytvořte projekt.
+6. Vyberte **OK** pro vytvoření projektu.
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Příprava koncový bod rozhraní REST API
 
@@ -248,13 +248,13 @@ Zprostředkovatel deklarací může mít více technické profily z různých d�
 
 Následující fragment kódu XML obsahuje uzel poskytovatele deklarací identity dva technické profily:
 
-* **TechnicalProfile Id="REST-API-SignUp"**: Definuje vaši službu RESTful.
+* **TechnicalProfile Id="REST-API-SignUp"** : Definuje vaši službu RESTful.
   * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful.
   * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C.
 
     V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah se deklarace `surname` odešle službě REST jako `lastName`, a `email` odešle je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**: Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele.
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** : Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele.
 
 Vyhledejte `<ClaimsProviders>` uzel a potom přidejte následující fragment kódu XML v rámci `<ClaimsProviders>` uzlu:
 

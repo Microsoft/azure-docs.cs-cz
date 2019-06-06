@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: 949468dfe26b076b5c5cf5cab8bbdc2038c7bd2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 021b9035b10ad5a08bca1842e8d0714b33c84271
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165882"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492425"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Vytváření a přístup k datové sady (Preview) ve službě Azure Machine Learning
 
@@ -40,7 +40,7 @@ K vytváření a práci s datovými sadami, budete potřebovat:
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](https://aka.ms/AMLFree) ještě dnes.
 
-* [Pracovního prostoru služby Azure Machine Learning službu pracovního prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
+* [Pracovního prostoru služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
 
 * [Azure Machine Learning SDK pro Python nainstalován](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která obsahuje balíček azureml datové sady.
 

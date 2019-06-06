@@ -2,20 +2,20 @@
 title: Kurz – vytvoření tenanta Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zjistěte, jak připravit pro registraci vaší aplikace tak, že vytvoříte tenanta služby Azure Active Directory B2C na webu Azure portal.
 services: B2C
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6bcb8e8d5b8b6ef1ebac8141dd13964ecf62af6f
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e2568bca8f8ecf170c82c5388823193b8b0457cf
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601687"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734469"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Kurz: Vytvoření tenanta Azure Active Directory B2C
 
@@ -24,14 +24,14 @@ Předtím, než aplikace můžete pracovat s Azure Active Directory (Azure AD) B
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření klienta Azure AD B2C
+> * Vytvoření tenanta Azure AD B2C
 > * Propojte svého tenanta se svým předplatným
 
 Zjistíte, jak zaregistrovat aplikaci v dalším kurzu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření klienta Azure AD B2C
+## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresáře, který obsahuje vaše předplatné po kliknutí **filtr adresářů a předplatných** v horní nabídce a výběrem adresáři, který jej obsahuje. Tento adresář je jiný než ten, který bude obsahovat vašeho tenanta Azure AD B2C.
@@ -57,7 +57,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
-> * Vytvoření klienta Azure AD B2C
+> * Vytvoření tenanta Azure AD B2C
 > * Propojte svého tenanta se svým předplatným
 
 > [!div class="nextstepaction"]

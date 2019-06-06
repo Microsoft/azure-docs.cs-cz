@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234162"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475646"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Ve verzi Preview – automatické škálování clusteru, které splňují požadavky aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -28,11 +28,11 @@ V tomto článku se dozvíte, jak povolit a spravovat automatického škálován
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento článek vyžaduje použití Azure CLI verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek vyžaduje použití Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření aks ve verzi preview rozhraní příkazového řádku
 
-AKS clustery, které podporují automatického škálování clusteru musí používat škálovací sady virtuálních počítačů a verzí Kubernetes *1.12.4* nebo novější. Tato podpora škálovací sada je ve verzi preview. Vyjádřit výslovný souhlas a vytvářet clustery, které používají škálovací sady, nejdřív nainstalovat *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az] [ az-extension-add] , jak je znázorněno v následujícím příkazu Příklad:
+AKS clustery, které podporují automatického škálování clusteru musí používat škálovací sady virtuálních počítačů a verzí Kubernetes *1.12.7* nebo novější. Tato podpora škálovací sada je ve verzi preview. Vyjádřit výslovný souhlas a vytvářet clustery, které používají škálovací sady, nejdřív nainstalovat *aks ve verzi preview* pomocí rozšíření Azure CLI [přidat rozšíření az] [ az-extension-add] , jak je znázorněno v následujícím příkazu Příklad:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -63,9 +63,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>Omezení
 
-Při vytváření a správě AKS clustery, které používají škálovací sady virtuálních počítačů se vztahují následující omezení:
+Při vytváření a správě AKS clustery, které pomocí automatického škálování clusteru se vztahují následující omezení:
 
 * Doplněk směrování aplikace HTTP nelze použít.
+* Aktuálně není možné použít více fondy uzlů (aktuálně ve verzi preview ve službě AKS).
 
 ## <a name="about-the-cluster-autoscaler"></a>O automatického škálování clusteru
 

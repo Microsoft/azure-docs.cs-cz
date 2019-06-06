@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 4af2e97e8ace432c37a770f1930514dd19e30944
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a295dfa1f7f2c58b3e45036212434837ac4bfb4d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235754"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475449"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Ve verzi Preview – vytváření a správě více fondy uzlů pro cluster Azure Kubernetes Service (AKS)
 
@@ -74,6 +74,7 @@ Při vytváření a správě AKS clustery, které podporují více fondy uzlů s
 * Nelze odstranit první fond uzlů.
 * Doplněk směrování aplikace HTTP nelze použít.
 * Nelze přidat, aktualizace nebo odstranění uzlu fondů v existující šablonu Resource Manageru stejně jako u většiny operací. Místo toho [pomocí samostatné šablony Resource Manageru](#manage-node-pools-using-a-resource-manager-template) měnit fondy uzlů v clusteru AKS.
+* Nelze použít automatického škálování clusteru (aktuálně ve verzi preview ve službě AKS).
 
 Tato funkce je ve verzi preview, platí následující další omezení:
 
@@ -222,7 +223,7 @@ Trvá několik minut, než odstranění uzlů a uzlů fondu.
 
 ## <a name="specify-a-vm-size-for-a-node-pool"></a>Určení velikosti virtuálního počítače pro fond uzlů
 
-V předchozích příkladech vytvořit fond uzlů se použil výchozí velikosti virtuálního počítače pro uzly vytvořeno v clusteru. Další běžný scénář, kdy je můžete vytvářet fondy uzlů s možnostmi a různé velikosti virtuálních počítačů. Můžete například vytvořit fond uzlů, který obsahuje uzly s velkým množstvím CPU, paměť nebo fond uzlů, který poskytuje podporou GPU. V dalším kroku při [použití poskvrnění a tolerations][#schedule-pods-using-taints-and-tolerations] říct jak omezit přístup k podů Kubernetes Plánovač, který může spouštět na těchto uzlech.
+V předchozích příkladech vytvořit fond uzlů se použil výchozí velikosti virtuálního počítače pro uzly vytvořeno v clusteru. Další běžný scénář, kdy je můžete vytvářet fondy uzlů s možnostmi a různé velikosti virtuálních počítačů. Můžete například vytvořit fond uzlů, který obsahuje uzly s velkým množstvím CPU, paměť nebo fond uzlů, který poskytuje podporou GPU. V dalším kroku vám [poskvrnění a tolerations](#schedule-pods-using-taints-and-tolerations) říkat Plánovač Kubernetes, jak omezit přístup k podů, které můžou běžet na těchto uzlech.
 
 V následujícím příkladu, vytvořit fond uzlů založený na grafickém procesoru, který používá *Standard_NC6* velikost virtuálního počítače. Tyto virtuální počítače využívají karty NVIDIA Tesla K80. Informace o dostupných velikostech virtuálních počítačů najdete v tématu [velikostí pro virtuální počítače s Linuxem v Azure][vm-sizes].
 
@@ -332,7 +333,7 @@ Pouze podů, které mají tento barvu použít můžete naplánovat na uzly v *g
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Spravovat fondy uzlů pomocí šablony Resource Manageru
 
-Při použití šablony Azure Resource Manageru k vytvoření a spravované prostředky, je obvykle aktualizovat nastavení v šabloně a opětovné nasazení pro aktualizaci prostředku. S nodepools ve službě AKS nelze aktualizovat profil počáteční nodepool po vytvoření clusteru AKS. Toto chování znamená, že nelze aktualizovat existující šablonu Resource Manageru, proveďte změnu na fondy uzlů a znovu nasadit. Místo toho musíte vytvořit samostatné šablony Resource Manageru, která aktualizuje pouze fondy agentů pro existující cluster AKS.
+Při použití šablony Azure Resource Manageru k vytvoření a spravované prostředky, je obvykle aktualizovat nastavení v šabloně a opětovné nasazení pro aktualizaci prostředku. S fondy uzlů ve službě AKS nelze aktualizovat profil fond počátečního uzlu po vytvoření clusteru AKS. Toto chování znamená, že nelze aktualizovat existující šablonu Resource Manageru, proveďte změnu na fondy uzlů a znovu nasadit. Místo toho musíte vytvořit samostatné šablony Resource Manageru, která aktualizuje pouze fondy agentů pro existující cluster AKS.
 
 Vytvoření šablony, jako `aks-agentpools.json` a vložte následující příklad manifestu. Tato ukázková šablona konfiguruje následující nastavení:
 

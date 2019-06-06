@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ecf6d04056a91f1f9dd62a5238f60177d2bf59
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 16e4a5f63ba80b02a967888ad76fedf165a576c8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420585"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473398"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Co je primární aktualizovat Token?
 
@@ -111,8 +111,11 @@ Když uživatel zahájí interakce prohlížeče, prohlížeč (nebo rozšířen
 PRT můžete získat deklarace identity služby Multi-Factor authentication (MFA) v konkrétních scénářích. Když PRT založený na vícefaktorovém ověřování umožňuje požádat o tokeny pro aplikace, deklarace identity MFA se přenesou do těchto tokenů aplikace. Tato funkce poskytuje bezproblémové prostředí pro uživatele tím, že zabráníte ověřovacím testem MFA pro každou aplikaci, která vyžaduje. PRT můžete získat deklaraci identity MFA následujícími způsoby:
 
 * **Přihlaste se pomocí Windows Hello pro firmy**: Windows Hello pro firmy nahradí hesla a používá kryptografické klíče pro zajištění silného dvojúrovňového ověřování. Windows Hello pro firmy je specifické pro uživatele na zařízení a samotného poskytování vyžadují vícefaktorové ověřování. Když se uživatel přihlásí pomocí Windows Hello pro firmy, získá uživatele PRT deklaraci identity MFA. Tento scénář platí také pro uživatele přihlášení pomocí čipové karty v případě ověřování pomocí čipové karty vytvoří deklaraci identity MFA ze služby AD FS.
+   * Jako Windows Hello pro firmy se považuje za ověřování službou Multi-Factor Authentication, deklarace identity MFA je aktualizována při aktualizaci PRT samotný tak dobu trvání MFA bude průběžně rozšířit, když uživatelé přihlásit pomocí WIndows Hello pro firmy
 * **Vícefaktorové ověřování při interaktivním přihlášení k WAM**: Během žádosti o token prostřednictvím WAM Pokud je uživatel vyžadovat vícefaktorové ověřování pro přístup k aplikaci, PRT, který je obnoven během tato interakce je vytištěný s deklaraci identity MFA.
+   * Deklarace identity MFA. v takovém případě není průběžně aktualizován, takže doba trvání MFA je založen na dobu života nastavenu na adresář.
 * **Vícefaktorové ověřování při registraci zařízení**: Pokud správce nakonfiguroval nastavení jejich zařízení ve službě Azure AD [vyžadovat vícefaktorové ověřování k registraci zařízení](device-management-azure-portal.md#configure-device-settings), uživatel musí udělat k dokončení registrace MFA. Během tohoto procesu PRT, který se vydá uživateli má deklaraci identity MFA při registraci. Tato funkce platí jenom pro uživatele, který nebyl operace spojení, ne na jiných uživatelů, kteří se přihlaste se na toto zařízení.
+   * Podobně jako u WAM interaktivní přihlášení, deklarace identity MFA není průběžně aktualizovány, tak dobu trvání MFA je založen na dobu života nastavenu na adresář.
 
 Windows 10 udržuje seznam oddílů PRTs pro každý přihlašovací údaje. Proto je PRT pro každou z Windows Hello pro firmy, heslo nebo čipová karta. Toto rozdělení zajišťuje, že deklarace identity MFA jsou izolované založené na přihlašovacích údajích používá a ne promíchají při žádosti o tokeny.
 

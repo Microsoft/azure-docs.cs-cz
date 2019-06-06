@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16d20e9ea2203c788a2b7b5eb0507b357350407d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7cb3f7baa38305215a8b8383d25132327327d182
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918510"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472966"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Plánování životního cyklu hybridní Identity
 Identita je jedním ze základů strategii enterprise mobility a aplikaci přístup. Jestli se přihlašujete vaše mobilní zařízení nebo aplikaci SaaS, vaše identita je klíčem k získání přístupu ke všemu, co. Na nejvyšší úrovni řešení pro správu identit zahrnuje sjednocení a synchronizaci mezi vaší identity úložišť, což zahrnuje automatizuje a centralizuje proces zřizování prostředků. Řešení identit by měl být centralizované identitou napříč místním i cloudovým a zároveň použít určitou formu federace identit pro zachovat centralizované ověřování a bezpečně sdílet a spolupracovat s externími uživateli a firmy. Prostředky v rozsahu od operačních systémů a aplikací na osoby ve ani pod něj nespadá s organizací. Organizační struktura může být upraven, aby odpovídal zřizování zásad a postupů.
@@ -48,22 +48,23 @@ Při definování těchto požadavků, ujistěte se, že alespoň na následují
   
   * Nemá licenci správy hybridních identit řešení popisovačů?
     * Pokud ano, jaké možnosti jsou k dispozici?
-* Řešení postupovat při správě na základě skupin licencí? 
+  * Řešení postupovat při správě na základě skupin licencí? 
   
-      - Pokud ano, je možné přiřadit skupinu zabezpečení? 
-       - Pokud ano, cloudovým adresářem automaticky přiřadí licence všem členům skupiny? 
-        - Co se stane, pokud uživatel je následně přidány do nebo ze skupiny odebrány, se licence se automaticky přiřazovat a odebírat podle potřeby? 
+    * Pokud ano, je možné přiřadit skupinu zabezpečení? 
+    * Pokud ano, cloudovým adresářem automaticky přiřadí licence všem členům skupiny? 
+    * Co se stane, pokud uživatel je následně přidány do nebo ze skupiny odebrány, se licence se automaticky přiřazovat a odebírat podle potřeby? 
 * Integrace s ostatními zprostředkovateli identity třetí strany:
-* Je možné integrovat toto hybridní řešení pomocí poskytovatelů identit třetích stran k implementaci jednotného přihlašování?
-* Je možné sjednocení všech zprostředkovatelů jinou identitou systém získá na ucelenosti identity?
-* Pokud ano, jak a které jsou, a jaké možnosti jsou k dispozici?
+  * Je možné integrovat toto hybridní řešení pomocí poskytovatelů identit třetích stran k implementaci jednotného přihlašování?
+  * Je možné sjednocení všech zprostředkovatelů jinou identitou systém získá na ucelenosti identity?
+  * Pokud ano, jak a které jsou, a jaké možnosti jsou k dispozici?
 
 ## <a name="synchronization-management"></a>Správa synchronizace
 Jedním z cílů identity Manageru, abyste mohli přenést všechny poskytovatele identit a zajistěte jejich synchronizaci. Zachovat synchronizaci dat založené na zprostředkovateli autoritativní hlavní identity. V hybridním scénáři identity, s modelem synchronizované správy spravovat všechny identity uživatelů a zařízení v místním serveru a synchronizujte účty a volitelně hesel do cloudu. Uživatel zadá stejné heslo místní dělají v cloudu, a při přihlášení, ověření hesla podle řešení identit. Tento model používá nástroje pro synchronizaci adresáře.
 
-![synchronizace adresářů](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) správné návrhu synchronizace hybridní řešení identit Ujistěte se, že jsou odpovědi na následující otázky: • co jsou k dispozici pro hybridní řešení identit synchronizace řešení?
-• Jaké jsou dostupné možnosti jednotného přihlašování?
-• Jaké jsou možnosti pro federaci mezi B2B a B2C?
+![synchronizace adresářů](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) správné návrhu synchronizace hybridní řešení identit Ujistěte se, že jsou odpovědi na následující otázky:
+*    Co jsou k dispozici pro hybridní řešení identit synchronizace řešení?
+*    Jaké jsou dostupné možnosti jednotného přihlašování?
+*    Jaké jsou možnosti pro federaci mezi B2B a B2C?
 
 ## <a name="next-steps"></a>Další postup
 [Určení strategie přijetí správy hybridní identity](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)

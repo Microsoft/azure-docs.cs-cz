@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 527e9979b624970dd55b4300fe63c27386640ac4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a293f0b656c075ae3b21ccf98e602e43ed761958
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560460"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428455"
 ---
 # <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Kurz: Odesílání lokalizovaných nabízených oznámení do zařízení s iOS pomocí Azure Notification Hubs
 
@@ -49,7 +49,7 @@ V [Používání centra oznámení k odesílání novinek], jste sestavili aplik
 > [!NOTE]
 > Jedním ze způsobů na odesílání lokalizovaných oznámení je vytvořit několik verzí jednotlivé značky. Například pro podporu angličtina, francouzština a Mandarínština, je třeba tří různých klíčových slov pro zprávami ze světa seskupenými: "world_en", "world_fr" a "world_ch". Pak nutné odeslat lokalizovanou verzi zprávami ze světa seskupenými ke každé z těchto značek. V tomto tématu použijete šablony vyhnout tím, jak narůstá značek a požadavky na odeslání více zpráv.
 
-Na vysoké úrovni šablony jsou způsob, jak určit, jak konkrétní zařízení přijímat oznámení. Šablona přesně určuje formát datové části tím, že odkazuje na vlastnosti, které jsou součástí zprávy odeslané back-endovou aplikací. V případě odešlete zprávu bez národního prostředí obsahující všechny podporované jazyky:
+Šablony jsou způsob, jak určit, jak konkrétní zařízení přijímat oznámení. Šablona přesně určuje formát datové části tím, že odkazuje na vlastnosti, které jsou součástí zprávy odeslané back-endovou aplikací. V případě odešlete zprávu bez národního prostředí obsahující všechny podporované jazyky:
 
 ```json
 {
@@ -74,7 +74,7 @@ Další informace o šablonách najdete v tématu [šablony](notification-hubs-t
 ## <a name="prerequisites"></a>Požadavky
 
 * Dokončení [nabízená oznámení do zařízení s Iosem konkrétní](notification-hubs-ios-xplat-segmented-apns-push-notification.md) kurz a máte kód, který je k dispozici, protože v tomto kurzu staví přímo na tento kód.
-* Visual Studio 2017 je volitelné.
+* Visual Studio 2019 je volitelný.
 
 ## <a name="update-the-app-user-interface"></a>Aktualizace uživatelského rozhraní aplikace
 
@@ -90,7 +90,7 @@ Pak nezapomeňte přidat IBOutlet ve vašich ViewController.h, jak je znázorně
 
 ## <a name="build-the-ios-app"></a>Vytvoření aplikace pro iOS
 
-1. Ve vaší `Notification.h` přidat `retrieveLocale` metody a úprava úložiště a odběru metod, jak je znázorněno v následujícím kódu:
+1. Ve vaší `Notification.h`, přidejte `retrieveLocale` metoda a úprava úložiště a odběru metod, jak je znázorněno v následujícím kódu:
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;

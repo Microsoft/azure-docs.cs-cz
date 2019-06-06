@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 05/30/2019
-ms.openlocfilehash: 94309a019800b560cf6731d84cea324932e3f357
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4f1dd0bfc0637c6681b513860a63df2b8c35fe5e
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398535"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430856"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Model interpretability službou Azure Machine Learning
 
@@ -462,7 +462,7 @@ Vysvětlení, se dají nasadit spolu s původním modelu a je možné při vyhod
 
 Automatizované machine learning obsahuje balíčky pro interpretaci funkce význam v modelů trénovaných automaticky. Kromě toho scénáře klasifikace umožňují načíst význam funkce na úrovni třídy. Chcete-li povolit toto chování v rámci automatizovaného strojového učení dvěma způsoby:
 
-* Chcete-li povolit funkci důležitosti pro komplet trénovaného modelu, použijte [ `explain_model()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkce.
+* Chcete-li povolit funkci důležitosti pro komplet trénovaného modelu, použijte [ `explain_model()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkce.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
@@ -471,7 +471,7 @@ Automatizované machine learning obsahuje balíčky pro interpretaci funkce výz
         per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
     ```
 
-* Chcete-li povolit funkci důležitosti pro každé jedno spuštění před školení, nastavte `model_explainability` parametr `True` v `AutoMLConfig` objektu, spolu s poskytuje data pro ověření. Potom použijte [ `retrieve_model_explanation()` ](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkce.
+* Chcete-li povolit funkci důležitosti pro každé jedno spuštění před školení, nastavte `model_explainability` parametr `True` v `AutoMLConfig` objektu, spolu s poskytuje data pro ověření. Potom použijte [ `retrieve_model_explanation()` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py) funkce.
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/06/2019
 ms.author: juliako
-ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550966"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66732988"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -79,48 +79,53 @@ Po vytvoření živé události můžete získat adresy URL ingestu, které posk
 
 Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL. 
 
+> [!NOTE] 
+> Pro adresu URL ingestování bude prediktivní nastavte režim "vlastní".
+
 * Není jednoduché adrese URL
 
     Nejednoduché adresy URL představují v AMS verze 3 výchozí režim. Živou událost získáte potenciálně rychle, ale adresa URL ingestu je známá až při spuštění živé události. Pokud živou událost zastavíte nebo spustíte, adresa URL se změní. <br/>Nejednoduché adresy jsou užitečné v situacích, kdy koncový uživatel chce streamovat pomocí aplikace, která chce získat živou událost co nejdříve, a použití dynamické adresy URL ingestu nepředstavuje žádný problém.
 * Jednoduché adrese URL
 
     Režim jednoduchých adres preferují velké mediální vysílače, které používají hardwarové kodéry vysílání a nechtějí znovu konfigurovat své kodéry při spuštění živé události. Chtějí předvídatelnou adresu URL ingestu, která se během doby nemění.
+    
+    Chcete-li určit tento režim nastavíte `vanityUrl` k `true` v okamžiku vytvoření (výchozí hodnota je `false`). Je také potřeba předat přístupového tokenu (`LiveEventInput.accessToken`) v okamžiku vytvoření. Můžete zadat hodnotu tokenu, aby se zabránilo náhodné token v adrese URL. Přístupový token musí být platný řetězec identifikátoru GUID (s nebo bez pomlček). Po nastavení režimu nelze aktualizovat.
 
-> [!NOTE] 
-> Pro adresu URL ingestování bude prediktivní budete muset použít režim "vlastní" a předat přístupového tokenu (aby se zabránilo náhodné token v adrese URL).
+    Přístupový token musí být jedinečný ve vašem datovém centru. Pokud vaše aplikace potřebuje používat jednoduché adrese URL, doporučujeme vždy vytváří nové instance identifikátoru GUID pro váš přístupový token (namísto opakovaného použití jakékoli existující identifikátor GUID). 
 
 ### <a name="live-ingest-url-naming-rules"></a>Živé ingestování – pravidla pojmenování adresy URL
 
 Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).<br/>
-Řetězec *access token* dále je to, co je potřeba určit pro pevnou adresu URL. Také se jedná o 128bitové šestnáctkové číslo.
+*Přístupový token* je nutné zadat pro pevnou adresu URL. Je nutné nastavit přístupový token řetězec je řetězec identifikátoru GUID platnou délku. <br/>
+*Název streamu* Určuje název datového proudu pro konkrétní připojení. Název hodnoty datového proudu je obvykle přidány za kodér, že používáte.
 
 #### <a name="non-vanity-url"></a>Není jednoduché adrese URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/<access token>`
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/<access token>`
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
 
-##### <a name="smooth-streaming"></a>Smooth Streaming
+##### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
-`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>Jednoduché adrese URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/<access token>`
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/<access token>`
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<access token>/<stream name>`<br/>
 
-##### <a name="smooth-streaming"></a>Smooth Streaming
+##### <a name="smooth-streaming"></a>Technologie Smooth Streaming
 
-`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml/streams(<stream name>)`<br/>
 
 ## <a name="live-event-preview-url"></a>Náhled adresy URL pro živé události
 

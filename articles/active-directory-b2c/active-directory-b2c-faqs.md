@@ -2,20 +2,20 @@
 title: Nejčastější dotazy k Azure Active Directory B2C | Dokumentace Microsoftu
 description: Nejčastější dotazy (FAQ) o Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c837ce66656c0e8a6a15d359c76459b03c2d0dd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9198bd4f88533a8eb5817dcb6edb75931c40ec80
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722777"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510057"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -104,7 +104,7 @@ Ne, Azure AD B2C nepodporuje stejnou sadu sestav jako Azure AD Premium. Existuj�
 * **Sestavy auditu** zahrnují aktivita správce i aktivita aplikace. 
 * **Sestavy využití** patří počet uživatelů, počet přihlášení a objemu vícefaktorové ověřování. 
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Lze lokalizovat uživatelského rozhraní stránky, které obsluhuje Azure AD B2C? Jaké jazyky jsou podporovány?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Lze lokalizovat uživatelského rozhraní stránky, které obsluhuje Azure AD B2C? Jaké jsou podporované jazyky?
 Ano!  Přečtěte si informace o [přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md), což je ve verzi public preview.  Poskytujeme překlady 36 jazyků a můžete přepsat libovolný řetězec tak, aby odpovídala vašim potřebám.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Můžete použít vlastní adresy URL na stránkách registrace a přihlašování, které jsou obsluhovány pomocí Azure AD B2C Například můžete změnit adresu URL z login.microsoftonline.com login.contoso.com?

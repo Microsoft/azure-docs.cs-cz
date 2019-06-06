@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/22/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986872"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431195"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatické škálování a zónově redundantní služba Application Gateway 
 
@@ -26,8 +26,8 @@ Nové SKU v2 zahrnuje následující vylepšení:
   Redundanci zón je k dispozici, pouze pokud Azure nejsou k dispozici zóny. V jiných oblastech jsou podporovány všechny ostatní funkce. Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
 - **Virtuální IP adresy statické**: Application gateway v2 skladová položka podporuje statické virtuální IP adresy zadejte výhradně. Tím se zajistí, že nedojde ke změně virtuální IP adresy přidružené k službě application gateway pro životní cyklus nasazení, i po restartování počítače.
 - **Přepište záhlaví**: Služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP s v2 SKU. Další informace najdete v tématu [hlavičky HTTP přepsat pomocí služby Application Gateway](rewrite-http-headers.md)
-- **Integrace se službou Key Vault (preview)**: Application Gateway v2 podporuje integraci se službou Key Vault (ve verzi public preview) pro certifikáty serveru, které jsou připojeny k naslouchací procesy HTTPS povolené. Další informace najdete v tématu [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md).
-- **Azure Kubernetes Service příchozího přenosu dat kontroler (preview)**: Kontroler příchozího přenosu dat v2 Application Gateway umožňuje Azure Application Gateway má být použit jako příchozího přenosu dat pro Azure Kubernetes Service (AKS) označuje jako clusteru AKS. Další informace najdete v tématu [stránky dokumentace](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Integrace se službou Key Vault (preview)** : Application Gateway v2 podporuje integraci se službou Key Vault (ve verzi public preview) pro certifikáty serveru, které jsou připojeny k naslouchací procesy HTTPS povolené. Další informace najdete v tématu [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md).
+- **Azure Kubernetes Service příchozího přenosu dat kontroler (preview)** : Kontroler příchozího přenosu dat v2 Application Gateway umožňuje Azure Application Gateway má být použit jako příchozího přenosu dat pro Azure Kubernetes Service (AKS) označuje jako clusteru AKS. Další informace najdete v tématu [stránky dokumentace](https://azure.github.io/application-gateway-kubernetes-ingress/).
 - **Vylepšení výkonu**: V2, které skladová jednotka nabízí až 5 X lepší SSL snižování zátěže výkon ve srovnání se Standard/WAF SKU.
 - **Rychlejší nasazení a aktualizace** v2 SKU zajišťuje rychlejší nasazení a aktualizace čas Standard/WAF SKU. To zahrnuje také změny konfigurace WAF.
 
@@ -54,6 +54,8 @@ Výpočetní jednotka pokyny:
 > [!NOTE]
 > Každá instance může podporovat aktuálně přibližně 10 kapacitních jednotek.
 > Počet požadavků, které dokáže zpracovat výpočetní jednotka závisí na různých kritérií, jako je velikost klíče certifikátu TLS, pokud chcete algoritmus výměny klíčů, záhlaví přepisů a v případě WAF příchozí žádosti o velikosti. Doporučujeme že provádět testy aplikace k určení frekvence požadavků na výpočetní jednotku. Jednotka kapacity a výpočetní jednotka bude k dispozici jako metriku před fakturace začíná.
+
+Následující tabulka ukazuje příklad ceny a jsou jen jako ukázka.
 
 **Ceny v USA – východ**:
 
@@ -122,7 +124,7 @@ Následující tabulka porovnává funkce, které jsou dostupné v jednotlivých
 | Vlastní chybové stránky                                | &#x2713; | &#x2713; |
 | Podpora protokolu WebSocket                                 | &#x2713; | &#x2713; |
 | Podpora HTTP/2                                    | &#x2713; | &#x2713; |
-| Vyprazdňování připojení                               | &#x2713; | &#x2713; |
+| Vyprázdnění připojení                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > Automatické škálování v2 teď podporuje SKU [sondy stavu výchozí](application-gateway-probe-overview.md#default-health-probe) automaticky monitorování stavu všech prostředků v jeho back endovém fondu a zvýraznit těchto členů back-end, které jsou považovány za není v pořádku. Výchozí kontroly stavu je automaticky konfigurována pro back-endů, které nemají žádnou konfiguraci vlastní test paměti. Další informace najdete v tématu [sondy stavu ve službě application gateway](application-gateway-probe-overview.md).
@@ -142,6 +144,9 @@ Následující tabulka porovnává funkce, které jsou dostupné v jednotlivých
 |Integrace sledování sítě|Nepodporuje se.|
 |Integrace Azure Support Center|Zatím není k dispozici.
 
+## <a name="migrate-from-v1-to-v2"></a>Migrace z v1 na v2
+
+Skript Azure Powershellu je k dispozici v galerii prostředí PowerShell můžete migrovat z vaší verze 1/waf služby Application Gateway k automatickému škálování v2 SKU. Tento skript vám pomůže zkopírovat konfiguraci ze brána v1. Provoz migrace je stále vaší povinností. Další podrobnosti najdete v tématu [migrace Azure Application Gateway z v1 na v2](migrate-v1-v2.md).
 ## <a name="next-steps"></a>Další postup
 
 - [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md)

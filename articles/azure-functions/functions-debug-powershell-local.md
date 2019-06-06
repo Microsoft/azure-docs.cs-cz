@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: b699379448863c8df84fda0e059fc10846c09931
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f02d2eed2030a5d2f54b3bee85885bbb572ac762
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230071"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476673"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Místní ladění funkce Azure Powershellu
 
@@ -95,15 +95,28 @@ S `Wait-Debugger` na místě, teď můžete ladit funkce pomocí Visual Studio C
 
 ## <a name="debug-in-visual-studio-code"></a>Ladění ve Visual Studio Code
 
-Chcete-li ladit vaše funkce Powershellu ve Visual Studio Code, musíte mít následující rozšíření pro Visual Studio Code:
+Chcete-li ladit vaše funkce Powershellu ve Visual Studio Code, musíte mít nainstalované tyto položky:
 
-* [PowerShell](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions](functions-create-first-function-vs-code.md)
+* [Rozšíření prostředí PowerShell pro Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
+* [Rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md)
+* [PowerShell Core 6.2 nebo novější](/powershell/scripting/install/installing-powershell#powershell-core)
 
-Po instalaci rozšíření prostředí PowerShell a Azure Functions, načtěte existující projekt aplikace funkcí. Můžete také [vytvoření projektu funkce](functions-create-first-function-vs-code.md).
+Po instalaci těchto závislostí, načtěte existující projekt funkce Powershellu, nebo [vytvořit svůj první projekt funkce Powershellu](functions-create-first-function-powershell.md).
 
 >[!NOTE]
 > Váš projekt, by neměly mít potřebných konfiguračních souborů, zobrazí se výzva je přidat.
+
+### <a name="set-the-powershell-version"></a>Nastavit verzi prostředí PowerShell
+
+PowerShell Core se nainstaluje vedle prostředí Windows PowerShell. PowerShell Core nastavte jako verze prostředí PowerShell pomocí prostředí PowerShell rozšíření pro Visual Studio Code.
+
+1. Po stisknutí klávesy F1 zobrazení palet příkaz a potom najděte `Session`.
+
+1. Zvolte **prostředí PowerShell: Zobrazit nabídku relace**.
+
+1. Pokud vaše **aktuální relace** není **PowerShell Core 6**, zvolte **přepnout na: PowerShell Core 6**.
+
+Až budete mít otevřený soubor prostředí PowerShell, se zobrazí verze označený zelenou v pravém dolním rohu okna. Vyberete tento text se zobrazí také nabídky relace. Další informace najdete v tématu [zvolíte verzi prostředí PowerShell pro použití s příponou](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
 ### <a name="start-the-function-app"></a>Spuštění aplikace function app
 
@@ -140,7 +153,7 @@ Poté, co dál a plně vyvolání skriptu, uvidíte, že:
 * Konzole Powershellu, který nebyl `Invoke-RestMethod` vrátil výsledek
 * Integrovaná konzola Powershellu ve Visual Studio Code čeká na skript, který se spustí
 
-Následující časy při vyvolání stejnou funkci, ladicí program přeruší hned po rozšíření prostředí PowerShell `Wait-Debugger`.
+Později při vyvolání stejnou funkci, ladicí program v prostředí PowerShell rozšíření přeruší hned po `Wait-Debugger`.
 
 ## <a name="debugging-in-a-powershell-console"></a>Ladění v konzole prostředí PowerShell
 

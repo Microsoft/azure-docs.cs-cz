@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 15232c92e60d21d759bec59597cb161480b8c2ea
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258529"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743231"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
@@ -44,10 +44,6 @@ Tyto možnosti jsou teď dostupné ve službě Azure Security Center:
 - **Podrobné zkoumání počítačů**: Zákazníci Azure Security Center přístup ke konzole ochrany ATP v programu Windows Defender provádět podrobné zkoumání odhalit další obor porušení zabezpečení.
 
 ![Azure Security Center, zobrazení seznamu výstrah a obecné informace o jednotlivých výstrahách](media/security-center-wdatp/image1.png)
-
-Je možné [upozornění prošetřit](security-center-investigation.md) ve službě Azure Security Center:
-
-![Řídicí panel výstrah šetření ve službě Azure Security Center](media/security-center-wdatp/image2.png)
 
 Můžete hlouběji analyzovat upozornění podle Přesun do ochrany ATP v programu Windows Defender. Zde vidíte další informace, jako je strom procesu výstrah a incidentů grafu. Můžete také zobrazit časovou osu podrobné počítač, který ukazuje každý chování historických po dobu až šest měsíců.
 

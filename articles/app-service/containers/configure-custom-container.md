@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zákazníka containers – Azure App Service | Dokumentace Microsoftu
+title: Konfigurace vlastního kontejneru – Azure App Service | Dokumentace Microsoftu
 description: Další informace o konfiguraci aplikací v Node.js v Azure App Service
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9bfd6c34d81e193fe31610f840474f1e4c91170d
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919737"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430927"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linuxu pro službu Azure App Service
 
@@ -28,7 +28,7 @@ Tato příručka obsahuje klíčové koncepty a pokyny, jak kontejnerizace Linux
 
 ## <a name="configure-port-number"></a>Konfigurovat číslo portu
 
-Webový server do své vlastní image může používat jiný port než 80. Azure můžete sdělit port, který používá vlastní pomocí `WEBSITES_PORT` nastavení aplikace. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_. Můžete ho nastavit spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
+Webový server do své vlastní image může používat jiný port než 80. Azure můžete sdělit port, který používá vlastní kontejner pomocí `WEBSITES_PORT` nastavení aplikace. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_. Můžete ho nastavit spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000

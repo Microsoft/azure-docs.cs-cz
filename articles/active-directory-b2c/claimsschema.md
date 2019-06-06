@@ -2,20 +2,20 @@
 title: ClaimsSchema – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zadejte element ClaimsSchema vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 81df3532ee466f32ee42f0010de9aa74dbeb6d85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721749"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511851"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -48,9 +48,9 @@ ms.locfileid: "64721749"
 
 **Typu deklarace identity** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Zobrazovaný název | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
+| displayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Datové typy logická hodnota, date, dateTime, int, long, string, třída stringCollection, je možné alternativeSecurityIdCollection. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí partnerské deklarace typů, který chcete použít pro zadaný protokol. Hodnota se dají přepsat v **PartnerClaimType** zadané v poli **InputClaim** nebo **OutputClaim** elementy. Tento element slouží k určení výchozí název pro určitý protokol.  |
 | Maska | 0:1 | Volitelný řetězec maskování znaků, které mohou být použity při zobrazení deklarace identity. Například můžete jako XXX XXX-4343 maskována 324-232-4343 číslo telefonu. |
@@ -63,9 +63,9 @@ PredicateValidationReference| 0:1 | Odkaz na **PredicateValidationsInput** eleme
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Protocol (Protokol) | 0: n | Seznam protokolů s příslušným partnerem výchozí název typu deklarace. |
+| Protocol | 0: n | Seznam protokolů s příslušným partnerem výchozí název typu deklarace. |
 
 **Protokol** prvek obsahuje následující atributy:
 
@@ -150,7 +150,7 @@ Architekturu rozhraní identit vykreslí pouze první písmeno e-mailovou adresu
 
 **Omezení** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele a vyberte deklaraci identity, jako jsou hodnoty v rozevíracího seznamu. |
 | Vzor | 1:1 | Regulární výraz k použití. |

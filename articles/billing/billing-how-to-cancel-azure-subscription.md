@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 06/03/2019
 ms.author: banders
-ms.openlocfilehash: 235d93de56289bb2daaa661ee9806732da3b6d6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8f4279d9ac085cdd1ded0dfdda4fad9d3fe12fb8
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417611"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480234"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Zrušení předplatného pro Azure
 
@@ -29,6 +29,7 @@ Před zrušením předplatného:
 * Vypnutí služby. Přejděte na [prostředky stránce portálu pro správu](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources), a **Zastavit** všechny virtuální počítače, aplikace nebo jiné služby.
 * Vezměte v úvahu migrovat data. Zobrazit [přesunutí prostředků do nové skupiny prostředků nebo předplatného](../azure-resource-manager/resource-group-move-resources.md).
 * Je nutné odstranit všechny prostředky a všechny skupiny prostředků. Odstraněním se může zrušit předplatné. Každou skupinu prostředků, je nutné odstranit jednotlivě. Při odstranění skupiny prostředků musíte potvrďte odstranění zadáním názvu skupiny prostředků.
+* Pokud máte jakékoli vlastní role, které odkazují na toto předplatné v `AssignableScopes`, měli byste aktualizovat tyto vlastní role se odebrat předplatné. Pokud se pokusíte aktualizovat vlastní roli, až zrušíte předplatné, může se objevit chyba. Další informace najdete v tématu [Poradce při potížích s vlastními rolemi](../role-based-access-control/troubleshooting.md#problems-with-custom-roles) a [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 
 Pokud zrušíte placený plán podpory Azure, se stále účtují pro zbývající období předplatného. Další informace najdete v tématu [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
 
@@ -43,11 +44,9 @@ Pokud zrušíte placený plán podpory Azure, se stále účtují pro zbývajíc
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Co se stane po můžu zrušit svoje předplatné?
 
-Jakmile zrušíte, účtování se okamžitě ukončí. Však může trvat až 10 minut, než zrušení zobrazit na portálu.
+Po zrušení, účtování se okamžitě ukončí. Však může trvat až 10 minut, než zrušení zobrazit na portálu. V případě zrušení uprostřed fakturačního období budeme posílat na vaše data typické fakturace po skončení období celkový účet.
 
-Potom deaktivaci vašich služeb. To znamená, že virtuální počítače jsou zrušení přidělení dočasné IP adresy jsou uvolněny a úložiště je jen pro čtení.
-
-V případě zrušení uprostřed fakturačního období budeme posílat na vaše data typické fakturace po skončení období celkový účet.
+Po zrušení, deaktivaci vašich služeb. To znamená, že virtuální počítače jsou zrušení přidělení dočasné IP adresy jsou uvolněny a úložiště je jen pro čtení.
 
 Čekáme na 90 dní, než trvale odstranění vašich dat v případě budete potřebovat k přístupu nebo změníte své rozhodnutí. Pro zachování dat můžete neúčtujeme poplatky. Další informace najdete v tématu [Microsoft Trust Center - jak spravuje vaše data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 

@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6636c87493230e3e392c29ffaf182b489ab0ba34
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967774"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730362"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Digitální dvojče Swagger referenční dokumentace k Azure
 
@@ -42,15 +42,15 @@ Automaticky generované referenční materiál Swagger poskytuje rychlý přehle
 
 Stručný přehled popisuje rozhraní API.
 
-![Horní swagger][1]
+[![Horní swagger](media/how-to-use-swagger/swagger_management_top.PNG)](media/how-to-use-swagger/swagger_management_top.PNG#lightbox)
 
 Správa API objektové modely jsou také uvedeny.
 
-![Modely swagger][2]
+[![Modely swagger](media/how-to-use-swagger/swagger_management_models.PNG)](media/how-to-use-swagger/swagger_management_models.PNG#lightbox)
 
 Můžete vybrat jednotlivých uvedených objektový model pro podrobnější přehled klíčových atributů.
 
-![Swagger model][3]
+[![Swagger model](media/how-to-use-swagger/swagger_management_model.PNG)](media/how-to-use-swagger/swagger_management_model.PNG#lightbox)
 
 Vygenerovaný objektové modely Swaggeru je pohodlné zobrazíte všechny dostupné Azure digitální dvojče [objekty a rozhraní API](./concepts-objectmodel-spatialgraph.md). Při vytváření řešení na Azure digitální dvojče mohou vývojáři použít tento prostředek.
 
@@ -64,7 +64,7 @@ Každý koncový bod uvedené také zahrnuje požadovaná žádost o informace, 
 * Povinný parametr datové typy.
 * Metoda HTTP pro přístup k prostředku.
 
-![Swagger koncových bodů][4]
+[![Swagger koncových bodů](media/how-to-use-swagger/swagger_management_endpoints.PNG)](media/how-to-use-swagger/swagger_management_endpoints.PNG#lightbox)
 
 Pokud chcete zobrazit podrobnější přehled, vyberte každého prostředku.
 
@@ -74,11 +74,11 @@ Jednou výkonné funkce, které poskytuje Swaggeru je schopnost testování konc
 
 Když vyberete určitý koncový bod, zobrazí se **vyzkoušet**.
 
-![Zkuste swagger][5]
+[![Zkuste swagger](media/how-to-use-swagger/swagger_management_try.PNG)](media/how-to-use-swagger/swagger_management_try.PNG#lightbox)
 
 Rozbalte tuto část, abyste vyvolali vstupní pole pro každý parametr požadované a volitelné. Zadejte správné hodnoty a vyberte **Execute**.
 
-![Pokusili swagger][6]
+[![Pokusili swagger](media/how-to-use-swagger/swagger_management_tried.PNG)](media/how-to-use-swagger/swagger_management_tried.PNG#lightbox)
 
 Po spuštění testu můžete ověřit data odpovědi.
 
@@ -86,7 +86,7 @@ Po spuštění testu můžete ověřit data odpovědi.
 
 Každý koncový bod uvedené také zahrnuje data těla odpovědi k ověření pro vývoj a testování. Tyto příklady: stavový kód a JSON, které chcete zobrazit pro úspěšné požadavky HTTP.
 
-![Odpověď swagger][7]
+[![Odpověď swagger](media/how-to-use-swagger/swagger_management_response.PNG)](media/how-to-use-swagger/swagger_management_response.PNG#lightbox)
 
 Příklady také kódy chyb umožňující ladit nebo vylepšit selhání testů.
 
@@ -104,7 +104,7 @@ Další informace o interaktivním testování požadavků, které jsou chráně
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Název  | Nahradit hodnotou | Příklad: |
+    | Name  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Vaši adresu URL dokumentace k rozhraní REST API pro správu nalézt v portálu  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -118,31 +118,22 @@ Další informace o interaktivním testování požadavků, které jsou chráně
 
 5. Zkopírujte ID aplikace Azure AD.
 
-6. Klikněte na tlačítko Autorizovat na stránce swagger.
+Po dokončení registrace Azure Active Directory:
 
-    ![Povolit tlačítko swagger](../../includes/media/digital-twins-permissions/swagger-select-authorize-btn.png)
+6. Klikněte na tlačítko **Authorize** tlačítko na stránce swagger.
 
-7. Do pole client_id vložte ID aplikace.
+    [![Klikněte na tlačítko Swaggeru povolit tlačítko](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-    ![Pole client_id swagger](../../includes/media/digital-twins-permissions/swagger-auth-form.png)
+7. Vložte do ID aplikace **client_id** pole.
 
-    ![Swagger udělení oprávnění aplikace](../../includes/media/digital-twins-permissions/swagger-grant-application-permissions.png)
+    [![Pole client_id swagger](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. Teď byste měli vidět nositele předaný ověřovací token v hlavičce autorizace a identita přihlášeného uživatele zobrazí ve výsledku.
+8. Pak bude přesměrován na modální následující úspěch.
 
-    ![Token výsledek swagger](../../includes/media/digital-twins-permissions/swagger-token-example.png)
+    [![Modální okno přesměrování swagger](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 
 - Přečtěte si další informace o Azure digitální dvojče objektové modely a Prostorové řady grafu, přečtěte si [Principy Dvojčat digitální Azure objektu modely](./concepts-objectmodel-spatialgraph.md).
 
 - Zjistěte, jak ověřování pomocí rozhraní API pro správu, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
-
-<!-- Images -->
-[1]: media/how-to-use-swagger/swagger_management_top.PNG
-[2]: media/how-to-use-swagger/swagger_management_models.PNG
-[3]: media/how-to-use-swagger/swagger_management_model.PNG
-[4]: media/how-to-use-swagger/swagger_management_endpoints.PNG
-[5]: media/how-to-use-swagger/swagger_management_try.PNG
-[6]: media/how-to-use-swagger/swagger_management_tried.PNG
-[7]: media/how-to-use-swagger/swagger_management_response.PNG

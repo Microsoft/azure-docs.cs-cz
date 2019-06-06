@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: e7cea725a25d48ac9f1ffad6acc434e21145890e
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a7dd5530c3941fe55e8a649f8adb217159823f5d
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473245"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492795"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 
@@ -62,7 +62,7 @@ Další informace o příkazu ARMClient najdete na tomto [dokumentu](https://git
 
 ### <a name="use-azure-resource-manager-client-to-delete-recovery-services-vault"></a>Pomocí klienta Azure Resource Manageru můžete odstranit trezor služby Recovery Services
 
-1. Spusťte následující příkaz pomocí ID předplatného, název skupiny prostředků a název trezoru. W\hen můžete spuštěním příkazu, že odstraní trezor, pokud nemáte žádné závislosti.
+1. Spusťte následující příkaz pomocí ID předplatného, název skupiny prostředků a název trezoru. Při spuštění příkazu odstraní trezor, pokud nemáte žádné závislosti.
 
    ```
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15

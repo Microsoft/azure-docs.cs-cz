@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 60cf37e5f6375d08e73241f6e357ac39ea665e9b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192537"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492759"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -34,9 +34,9 @@ Mezi typické případy použití patří:
 
 Neměnné úložiště podporuje následující funkce:
 
-- **[Podpora zásad uchovávání informací podle času](#time-based-retention)**: Uživatelé můžou nastavit zásady pro ukládání dat pro zadaný interval. Když se zásada uchovávání informací podle času nastavit, objekty BLOB nelze vytvořit a číst, ale upravit nebo odstranit. Po vypršení doby uchování objektů BLOB můžete odstranit, ale není přepsán.
+- **[Podpora zásad uchovávání informací podle času](#time-based-retention)** : Uživatelé můžou nastavit zásady pro ukládání dat pro zadaný interval. Když se zásada uchovávání informací podle času nastavit, objekty BLOB nelze vytvořit a číst, ale upravit nebo odstranit. Po vypršení doby uchování objektů BLOB můžete odstranit, ale není přepsán.
 
-- **[Podpora zásad blokování z právních důvodů](#legal-holds)**: Pokud není znám interval uchovávání informací, uživatelé můžou nastavit právních immutably ukládat data, dokud se vymazat blokování z právních důvodů.  Pokud zásady skupiny s povinností uchování nastavíte, objekty BLOB nelze vytvořit a číst, ale upravit nebo odstranit. Každé skupiny s povinností uchování souvisí s uživatelem definované alfanumerické značky (třeba ID případu, události atd.), který se používá jako identifikátor řetězce. 
+- **[Podpora zásad blokování z právních důvodů](#legal-holds)** : Pokud není znám interval uchovávání informací, uživatelé můžou nastavit právních immutably ukládat data, dokud se vymazat blokování z právních důvodů.  Pokud zásady skupiny s povinností uchování nastavíte, objekty BLOB nelze vytvořit a číst, ale upravit nebo odstranit. Každé skupiny s povinností uchování souvisí s uživatelem definované alfanumerické značky (třeba ID případu, události atd.), který se používá jako identifikátor řetězce. 
 
 - **Podpora pro všechny úrovně objektu blob**: ČERV zásady platí bez ohledu na úroveň úložiště objektů Blob v Azure a použít na všech úrovních: horká, studená a archivní úrovně. Uživatelé můžou přecházet data na úroveň optimalizovaných náklady pro své úlohy při zachování dat neměnnosti.
 
@@ -53,7 +53,7 @@ Kontejner a účet se také nejsou povolené, pokud neexistují žádné objekty
 ### <a name="time-based-retention"></a>Uchovávání informací podle času
 
 > [!IMPORTANT]
-> Zásady uchovávání informací podle času musí být *uzamčen* pro objekt blob ve neměnné (zápisu a odstranění chráněné) stavu Sekundu 17a-4(f) a dalších dodržování legislativních předpisů. Doporučujeme, abyste zamknout zásady v rozumném čase, obvykle během 24 hodin. Nedoporučujeme ale používat *odemknout* stavu jiným účelům, než krátkodobé zkušební verze funkce.
+> Zásady uchovávání informací podle času musí být *uzamčen* pro objekt blob ve kompatibilitu neměnné (zápisu a odstranění chráněné) stavu Sekundu 17a-4(f) a dalších dodržování legislativních předpisů. Doporučujeme vám, že zamknete zásady v rozumném čase, obvykle méně než 24 hodin. Počáteční stav zásad použitých uchovávání informací podle času je *odemknout*, díky tomu můžete otestovat funkci a provést změny zásad předtím, než je zamknout. Zatímco *odemknout* stavu poskytuje ochranu neměnnosti, nedoporučujeme používat *odemknout* stavu jiným účelům, než krátkodobé zkušební verze funkce. 
 
 Při použití zásad uchovávání informací podle času na kontejner všechny objekty BLOB v kontejneru zůstanou v neměnného stavu po dobu trvání *efektivní* dobu uchování. Doba uchování efektivní existujících objektů blob je roven rozdílu mezi časem úpravy objektů blob a interval uchovávání informací zadané uživatelem.
 
@@ -65,6 +65,8 @@ Pro nové objekty blob se efektivní doba uchovávání informací rovná uživa
 > Existující objekt blob v tomto kontejneru _testblob1_, byl vytvořen před rokem. Doba uchování efektivní _testblob1_ je 4 roky.
 >
 > Nový objekt blob _testblob2_, je nyní nahraný do kontejneru. Doby uchování efektivní pro tento nový objekt blob je pět let.
+
+Zásadu odemknout uchovávání informací podle času se doporučuje jenom pro testování funkcí a zásady musí být zamčená s Sekundu 17a-4(f) a dalších dodržování legislativních předpisů splňuje požadavky. Po uzamčení zásady uchovávání informací podle času zásadu nelze odebrat, a je povoleno maximálně 5 zvýšení doby uchování efektivní. Další informace o tom, jak nastavit a zamknout zásady uchovávání informací podle času, najdete v článku [Začínáme](#getting-started) oddílu.
 
 ### <a name="legal-holds"></a>Blokování z právních důvodů
 
@@ -124,7 +126,7 @@ Nejnovější verze [webu Azure portal](https://portal.azure.com), [rozhraní p�
 
     Počáteční stav zásad je odemknuté díky tomu můžete otestovat funkci a provést změny zásad předtím, než je zamknout. Zásady uzamčení je zásadní pro dodržování předpisů jako Sekundu 17a – 4.
 
-5. Zamkněte zásady. Klikněte pravým tlačítkem na tři tečky (**...** ), a zobrazí se následující nabídka s další akce:
+5. Zamkněte zásady. Klikněte pravým tlačítkem na tři tečky ( **...** ), a zobrazí se následující nabídka s další akce:
 
     !["Zamknout zásady" v nabídce](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
@@ -169,7 +171,7 @@ Tyto klientské knihovny podporují neměnné úložiště pro úložiště obje
 
 **Můžete uvést dokumentaci ČERV dodržování předpisů?**
 
-Ano. K dodržování předpisů dokumentu společnost Microsoft uchovávat přední nezávislé hodnocení podnik, který se specializuje na záznamy řízení a informace zásady správného řízení, Cohasset přidruží k vyhodnocení neměnné úložiště objektů Blob v Azure a dodržování požadavků na konkrétní z oboru finančních služeb v odvětví představuje špičku. Cohasset ověřit, že Azure neměnné úložiště objektů Blob, pokud se použije k zachování podle času objekty BLOB ve stavu ČERV, splňuje požadavky na příslušné úložiště 1.31(c)-(d) CFTC pravidlo, 4511 FINRA pravidla a pravidla Sekundu 17a – 4. Microsoft je určená tuto sadu pravidel, protože představují nejčastěji doporučený globálně pro uchovávání záznamů finančních institucí. Je k dispozici v sestavě Cohasset [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage).
+Ano. K dodržování předpisů dokumentu společnost Microsoft uchovávat přední nezávislé hodnocení podnik, který se specializuje na záznamy řízení a informace zásady správného řízení, Cohasset přidruží k vyhodnocení neměnné úložiště objektů Blob v Azure a dodržování požadavků na konkrétní z oboru finančních služeb v odvětví představuje špičku. Cohasset ověřit, že Azure neměnné úložiště objektů Blob, pokud se použije k zachování podle času objekty BLOB ve stavu ČERV, splňuje požadavky na příslušné úložiště 1.31(c)-(d) CFTC pravidlo, 4511 FINRA pravidla a pravidla Sekundu 17a – 4. Microsoft je určená tuto sadu pravidel, protože představují nejčastěji doporučený globálně pro uchovávání záznamů finančních institucí. Je k dispozici v sestavě Cohasset [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage). Požádat o písmenem ověření od Microsoftu týkající se dodržování předpisů ČERV, kontaktujte prosím podporu Azure.
 
 **Platí jenom objekty BLOB bloku, nebo pro stránky a doplňovací objekty BLOB také funkci?**
 
@@ -186,6 +188,10 @@ Ano, kontejner může mít skupiny s povinností uchování a zásadu uchovává
 **Jsou určeny pouze pro soudního řízení zásad blokování z právních důvodů nebo existují jiné scénáře použití?**
 
 Ne, právní uchování je právě obecný termín, který se pro zásady uchovávání informací mimo časovou. Není nutné použít pouze pro sporů souvisejících řízení. Právní zásady uchování jsou užitečné pro zakázání přepsat a odstraní k ochraně důležitých podnikových dat ČERV, kde se doba uchovávání dat neznámý. Může ho použít jako podnikové zásady a chránit vaše nejdůležitější ČERV úlohy nebo ho použít jako pracovní zásadu před vlastní aktivační vyžaduje použití zásady uchovávání informací podle času. 
+
+**Můžu odebrat *uzamčen* zásady uchovávání informací podle času nebo skupiny s povinností uchování?**
+
+Pouze zásady odemknout uchovávání informací podle času lze odebrat z kontejneru. Jakmile zásadu uchovávání informací podle času je uzamčen, nedá se odebrat; Doba uchování efektivní rozšíření jsou povoleny pouze. Značky blokování z právních důvodů může být odstraněno. Pokud se odstraní všechny platné značky, odebere se blokování z právních důvodů.
 
 **Co se stane, když se pokusím odstranit kontejner s *uzamknutou* zásadou uchovávání informací podle času nebo blokováním z právních důvodů?**
 
@@ -375,12 +381,12 @@ $policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
-Odstranit zásady neměnnosti (Přidat - Force zavřete výzvu):
+Odstranit zásady neměnnosti odemknout (Přidat - Force zavřete výzvu):
 ```powershell
 # with an immutability policy object
 $policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 # with an account name or container name
 Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `

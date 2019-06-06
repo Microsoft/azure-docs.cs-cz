@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
-ms.openlocfilehash: 63630f5c4799e9272601f431671abc78ec86a238
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd19aba68f8b847e8f4800d348197f9c2b1c1289
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622353"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428230"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hostování aplikace Node.js na platformě Azure Service Fabric
 
@@ -27,7 +27,7 @@ Tento rychlý start vám pomůže s nasazením existující aplikace (v tomto p�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že máte [nastavené vývojové prostředí](service-fabric-get-started.md). To zahrnuje instalaci sady Service Fabric SDK a sady Visual Studio 2017 nebo 2015.
+Než začnete, ujistěte se, že máte [nastavené vývojové prostředí](service-fabric-get-started.md). To zahrnuje instalaci sady Service Fabric SDK a Visual Studio 2019 nebo 2015.
 
 Také musíte mít existující aplikaci Node.js k nasazení. V tomto rychlém startu se používá jednoduchý web v Node.js, který je ke stažení [zde][download-sample]. Po vytvoření projektu v dalším kroku extrahujte tento soubor do složky `<path-to-project>\ApplicationPackageRoot\<package-name>\Code\`.
 
@@ -66,7 +66,7 @@ Stiskněte **OK**.
 
 Sada Visual Studio vytvoří projekt aplikace a projekt služby objektu actor a zobrazí je v Průzkumníku řešení.
 
-Projekt aplikace (**MyGuestApp**) jako takový neobsahuje žádný kód. Odkazuje ale na sadu projektů služeb. Kromě toho obsahuje další tři typy obsahu:
+Projekt aplikace (**MyGuestApp**) neobsahuje žádný kód přímo. Projekt odkazuje na sadu projektů služeb. Kromě toho obsahuje tři typy obsahu:
 
 * **Profily publikování**  
 Předvolby nástrojů pro různá prostředí.
@@ -83,7 +83,7 @@ Přehled obsahu projektu služby najdete v tématu [Začínáme se službami Rel
 
 Příklad aplikace Node.js, který nasazujeme, používá port **80** a platformě Service Fabric potřebujeme říct, že tento port potřebujeme zpřístupnit.
 
-Otevřete v projektu soubor **ServiceManifest.xml**. V dolní části manifestu je část `<Resources> \ <Endpoints>` s již definovanou položkou. Upravte tuto položku a přidejte `Port`, `Protocol` a `Type`. 
+Otevřete v projektu soubor **ServiceManifest.xml**. V dolní části manifestu není `<Resources> \ <Endpoints>` s již definovanou položkou. Upravte tuto položku a přidejte `Port`, `Protocol` a `Type`. 
 
 ```xml
   <Resources>
@@ -98,9 +98,9 @@ Otevřete v projektu soubor **ServiceManifest.xml**. V dolní části manifestu 
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
-Pokud stisknete klávesu **F5** a spustíte projekt, nasadí se do místního clusteru. My jej ale místo toho nasadíme do Azure.
+Pokud stisknete **F5** a spuštění projektu, je nasazený do místního clusteru. My jej ale místo toho nasadíme do Azure.
 
-Klikněte na projekt pravým tlačítkem a zvolte **Publikovat...**, tím se otevře dialogové okno pro publikování do Azure.
+Klikněte na projekt pravým tlačítkem a zvolte **Publikovat...** , tím se otevře dialogové okno pro publikování do Azure.
 
 ![Dialogové okno pro publikování služby Service Fabric do Azure][publish]
 
@@ -108,13 +108,13 @@ Vyberte cílový profil **PublishProfiles\Cloud.xml**.
 
 Pokud jste to neudělali dříve, zvolte účet Azure, do kterého se má nasazení provést. Pokud ještě žádný nemáte, [zaregistrujte si bezplatný účet][create-account].
 
-V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud žádný nemáte, vyberte **&lt;Vytvořit nový cluster...&gt;**, tím se otevře okno webového prohlížeče s webem Azure Portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+V části **Koncový bod připojení** vyberte cluster Service Fabric, do kterého se má nasazení provést. Pokud ho nemáte, vyberte **&lt;vytvořit nový Cluster... &gt;** tím se otevře okno webového prohlížeče k webu Azure portal. Další informace najdete v tématu popisujícím [vytvoření clusteru na portálu](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Při vytváření clusteru Service Fabric nezapomeňte nastavit nastavení **Vlastní koncové body** na hodnotu **80**.
 
 ![Konfigurace typu uzlu Service Fabric s vlastním koncovým bodem][custom-endpoint]
 
-Dokončení vytvoření nového clusteru Service Fabric nějakou dobu trvá. Jakmile bude vytvořený, vraťte se do dialogového okna pro publikování a vyberte **&lt;Aktualizovat&gt;**. Nový cluster bude uveden v rozevíracím seznamu, vyberte ho.
+Dokončení vytvoření nového clusteru Service Fabric nějakou dobu trvá. Jakmile bude vytvořený, vraťte se do dialogového okna pro publikování a vyberte **&lt;Aktualizovat&gt;** . Nový cluster bude uveden v rozevíracím seznamu, vyberte ho.
 
 Stiskněte **Publikovat** a počkejte na dokončení nasazení.
 
@@ -130,11 +130,11 @@ Zkontrolujte okno přehledu adresy služby. Použijte název domény z vlastnost
 
 ![Okno přehledu Service Fabric na webu Azure Portal][overview]
 
-Přejděte na tuto adresu, kde se zobrazí odezva `HELLO WORLD`.
+Přejděte na tuto adresu, kde se zobrazí `HELLO WORLD` odpovědi.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-Nezapomeňte odstranit všechny prostředky, které jste vytvořili pro účely tohoto rychlého startu – tyto prostředky se vám účtují.
+Nezapomeňte odstranit všechny prostředky, které jste vytvořili pro účely tohoto rychlého startu, protože vám budeme účtovat tyto prostředky.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [spustitelných souborech typu Host](service-fabric-guest-executables-introduction.md).

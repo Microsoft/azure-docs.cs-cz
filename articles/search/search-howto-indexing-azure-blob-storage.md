@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e55d596cfaf34c177f6dc43c27aaac37da87d2f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024861"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479948"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů ve službě Azure Blob Storage pomocí služby Azure Search
 Tento článek popisuje, jak používat Azure Search k indexování dokumentů (jako jsou soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené ve službě Azure Blob storage. Nejprve vysvětluje základy tohoto nastavení a konfigurace indexeru blob. Potom nabízí blíže zkoumat chování a scénáře se pravděpodobně dojde k.
@@ -139,6 +139,7 @@ V závislosti na tom [konfigurace indexeru](#PartsOfBlobToIndex), indexeru blob 
   * **metadata\_úložiště\_poslední\_upravit** (Edm.DateTimeOffset) - naposledy změněno časové razítko pro objekt blob. Služba Azure Search používá k identifikaci změněné objekty BLOB, aby se zabránilo přeindexování všechno, co po počáteční indexování tímto časovým razítkem.
   * **metadata\_úložiště\_velikost** (Edm.Int64) – objekt blob velikost v bajtech.
   * **metadata\_úložiště\_obsah\_md5** (Edm.String) – hodnoty hash MD5 obsah objektů blob, pokud je k dispozici.
+  * **metadata\_úložiště\_sas\_token** (Edm.String) - dočasné token, který mohou využívat [vlastních dovedností](cognitive-search-custom-skill-interface.md) získat správný přístup k objektu blob. Tento token sas by neměl být ukládají pro pozdější použití, jak může vypršet jejich platnost.
 * Metadata vlastnosti specifické pro každý dokument formátu jsou extrahovány do polí uvedených [tady](#ContentSpecificMetadata).
 
 Není nutné definovat všechny výše uvedené vlastnosti polí v indexu vyhledávání – zachytit pouze vlastnosti, které potřebujete pro vaši aplikaci.

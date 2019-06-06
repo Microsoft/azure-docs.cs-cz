@@ -7,15 +7,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 05/24/2019
-ms.openlocfilehash: c40bae6ac1af2489e4e77d2c280b95cccf8b5603
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 05/30/2019
+ms.openlocfilehash: 0e3a35c2ceed5f3bb08b2d332f05bbaf416c94b2
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257836"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743248"
 ---
-# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Konfigurace omezení odchozího síťového provozu pro clustery Azure HDInsight (Preview)
+# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány Firewall (Preview)
 
 Tento článek popisuje kroky pro zabezpečit odchozí provoz z vašeho clusteru HDInsight pomocí Brána Firewall služby Azure. Následující postup předpokládá, že se konfigurace brány Firewall Azure pro stávajícího clusteru. Pokud nasazujete nový cluster a za bránou firewall, nejprve vytvořte HDInsight cluster a podsíť a pak postupujte podle kroků v této příručce.
 
@@ -60,9 +60,9 @@ Na **přidat kolekci pravidel aplikace** obrazovky, proveďte následující kro
     1. Pravidla povolení Windows přihlašovací aktivity:
         1. V **Target plně kvalifikované názvy domény** části, zadejte **název**a nastavte **zdrojové adresy** k `*`.
         1. Zadejte `https:443` pod **protokol: Port** a `login.windows.net` pod **cílit na plně kvalifikované názvy domény**.
-    1. Pokud váš clusteru je zajištěná WASB a nepoužíváte výše uvedené koncové body služby, přidejte pravidlo pro WASB:
+    1. Pokud váš clusteru je zajištěná WASB, přidejte pravidlo pro WASB:
         1. V **Target plně kvalifikované názvy domény** části, zadejte **název**a nastavte **zdrojové adresy** k `*`.
-        1. Zadejte `http` nebo `https` podle toho, pokud používáte wasb: / / nebo wasbs: / / pod **protokol: Port** a adresa url účtu úložiště v rámci **Target plně kvalifikované názvy domény**.
+        1. Zadejte `http:80,https:443` pod **protokol: Port** a adresa url účtu úložiště v rámci **Target plně kvalifikované názvy domény**. Formát bude vypadat jako < storage_account_name.blob.core.windows.net >. Pro použití protokolu https pouze připojení Ujistěte se, že ["vyžadovat zabezpečený přenos"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) je povolená v účtu úložiště.
 1. Klikněte na tlačítko **Add** (Přidat).
 
 ![Název: Zadejte podrobnosti o aplikaci pravidla kolekce](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
@@ -75,29 +75,29 @@ Vytvoření pravidel sítě správně nakonfigurovat váš cluster HDInsight.
 1. Klikněte na tlačítko **pravidla** pod **nastavení** > **sítě kolekce pravidel** > **přidat kolekci pravidel sítě**.
 1. Na **přidat kolekci pravidel sítě** obrazovky, zadejte **název**, **Priority**a klikněte na tlačítko **povolit** z **akce** rozevírací nabídky.
 1. Vytvořte následující pravidla:
-    1. Pravidlo sítě, která umožňuje clusteru proveďte synchronizaci hodin pomocí NTP.
-        1. V **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
+    1. Pravidlo pro sítě v sekci IP adres, který umožňuje clusteru proveďte synchronizaci hodin pomocí NTP.
+        1. V **pravidla** části, zadejte **název** a vyberte **UDP** z **protokol** rozevíracího seznamu.
         1. Nastavte **zdrojové adresy** a **cílové adresy** k `*`.
         1. Nastavte **cílové porty** až 123.
-    1. Pokud používáte Enterprise Security Package (ESP), přidejte pravidlo sítě, která umožňuje komunikaci se službou AAD DS ESP clusterů.
+    1. Pokud používáte Enterprise Security Package (ESP), přidejte pravidlo pro sítě v sekci IP adres, který umožňuje komunikaci se službou AAD DS ESP clusterů.
         1. Určení dvě IP adresy řadičů domény.
         1. V dalším řádku v **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
         1. Nastavte **zdrojové adresy** `*`.
         1. Zadejte všechny IP adresy řadičů domény v **cílové adresy** oddělených čárkami.
         1. Nastavte **cílové porty** k `*`.
-    1. Pokud používáte Azure Data Lake Storage, můžete přidat pravidlo pro sítě k vyřešení problému SNI s ADLS Gen1 a Gen2. Tato možnost bude směrovat provoz do brány firewall, která může mít za následek vyšší náklady na načtení velkých objemů dat, ale provoz bude zaznamenané a auditovatelných.
+    1. Pokud používáte Azure Data Lake Storage, můžete přidat pravidlo pro sítě v části IP adresy k vyřešení problému SNI s ADLS Gen1 a Gen2. Tato možnost bude směrovat provoz do brány firewall, která může mít za následek vyšší náklady na načtení velkých objemů dat, ale provoz bude zaznamenané a auditovatelných v protokolech brány firewall.
         1. Určete IP adresu pro váš účet Data Lake Storage. Můžete použít příkaz prostředí powershell například `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` vyřešit plně kvalifikovaný název domény na IP adresu.
-        1. V dalším řádku v **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
+        1. V dalším řádku **pravidla** části, zadejte **název** a vyberte **TCP** z **protokol** rozevíracího seznamu.
         1. Nastavte **zdrojové adresy** `*`.
         1. Zadejte IP adresu pro váš účet úložiště v **cílové adresy**.
         1. Nastavte **cílové porty** k `*`.
-    1. (Volitelné) Pokud používáte Log Analytics, vytvořte pravidlo sítě, které umožňují komunikaci s pracovního prostoru Log Analytics.
-        1. V dalším řádku v **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
+    1. (Volitelné) Pokud používáte Log Analytics, vytvořte pravidlo pro sítě v části IP adresy umožňují komunikaci s pracovního prostoru Log Analytics.
+        1. V dalším řádku **pravidla** části, zadejte **název** a vyberte **TCP** z **protokol** rozevíracího seznamu.
         1. Nastavte **zdrojové adresy** `*`.
         1. Nastavte **cílové adresy** k `*`.
         1. Nastavte **cílové porty** k `12000`.
-    1. Konfigurace značku služby pro SQL, které vám umožní protokolování a auditování SQL provoz.
-        1. V dalším řádku v **pravidla** části, zadejte **název** a vyberte **jakékoli** z **protokol** rozevíracího seznamu.
+    1. Konfigurace pravidla sítě v části značky služeb pro SQL, které vám umožní protokolování a auditování SQL provoz, pokud není nakonfigurované koncové body služby pro SQL Server v HDInsight podsítě, která bude obejít bránu firewall.
+        1. V dalším řádku **pravidla** části, zadejte **název** a vyberte **TCP** z **protokol** rozevíracího seznamu.
         1. Nastavte **zdrojové adresy** `*`.
         1. Nastavte **cílové adresy** k `*`.
         1. Vyberte **Sql** z **značky služeb** rozevíracího seznamu.
@@ -110,10 +110,9 @@ Vytvoření pravidel sítě správně nakonfigurovat váš cluster HDInsight.
 
 Vytvoření směrovací tabulky s následující položky:
 
-1. Sedm řeší [tento seznam požadovaných HDInsight správy IP adres](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) s dalším segmentem směrování **Internet**:
+1. Šest řeší [tento seznam požadovaných HDInsight správy IP adres](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) s dalším segmentem směrování **Internet**:
     1. Čtyři IP adres pro všechny clustery ve všech oblastech
     1. Dvě IP adresy, které jsou specifické pro oblast, ve kterém je cluster vytvořen
-    1. Jednu IP adresu rekurzivního překladače Azure
 1. Virtuální zařízení tras pro IP adresy 0.0.0.0/0 s dalším směrováním, přičemž vaše Brána Firewall služby Azure privátní IP adresu.
 
 Třeba ke konfiguraci směrovací tabulky pro cluster se vytvoří v oblasti USA "USA", použijte následující kroky:
@@ -132,20 +131,15 @@ Třeba ke konfiguraci směrovací tabulky pro cluster se vytvoří v oblasti USA
 | 138.91.141.162 | 138.91.141.162/32 | Internet | Není k dispozici |
 | 13.67.223.215 | 13.67.223.215/32 | Internet | Není k dispozici |
 | 40.86.83.253 | 40.86.83.253/32 | Internet | Není k dispozici |
-| 168.63.129.16 | 168.63.129.16/32 | Internet | Není k dispozici |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuální zařízení | 10.1.1.4 |
-
-![Název: Vytvoření směrovací tabulky](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-route-table.png)
 
 Dokončete konfiguraci směrovací tabulky:
 
 1. Přiřazení směrovací tabulky, které jste vytvořili pro vaši podsíť HDInsight kliknutím **podsítě** pod **nastavení** a potom **přidružit**.
-1. Na **přidružit podsíť** obrazovky, vyberte virtuální síť vytvořenou do vašeho clusteru a **AzureFirewallSubnet** , které jste vytvořili pro použití s bránou firewall.
+1. Na **přidružit podsíť** obrazovky, vyberte virtuální síť vytvořenou do vašeho clusteru a **podsítě HDInsight** jste použili pro váš cluster HDInsight.
 1. Klikněte na **OK**.
 
-![Název: Vytvoření směrovací tabulky](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-route-table-associate-subnet.png)
-
-## <a name="edge-node-application-traffic"></a>Hraniční uzel provozu aplikace
+## <a name="edge-node-or-custom-application-traffic"></a>Hraniční uzel nebo provozu vlastní aplikace
 
 Proveďte následující kroky vám umožní cluster fungovat bez problémů. Stále musíte nakonfigurovat závislosti tak, aby vyhovovaly vaší vlastní aplikace běžící na hraničních uzlech, pokud je k dispozici.
 
@@ -166,6 +160,9 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
 Integrace s protokoly Azure monitoru vaše Brána Firewall služby Azure je užitečné, když nejdřív Začínáme aplikací pracovat, když si jich nejste vědomi všech závislostí aplikací. Další informace o Azure Monitor protokoly z [analyzovat data protokolů ve službě Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
+
+## <a name="access-to-the-cluster"></a>Přístup ke clusteru
+Po nastavení brány firewall s úspěšně, můžete pomocí interního koncového bodu (https://<clustername>-int.azurehdinsight.net) pro přístup k Ambari z virtuální sítě. Použít veřejný koncový bod (https://<clustername>. azurehdinsight.net) nebo ssh koncový bod (<clustername>-ssh.azurehdinsight.net), ujistěte se, že máte správný tras ve směrovací tabulce a nastavit pravidla skupiny zabezpečení sítě, aby asymetric směrování problém vysvětlení [tady](https://docs.microsoft.com/azure/firewall/integrate-lb).
 
 ## <a name="configure-another-network-virtual-appliance"></a>Nakonfigurovat jiné síťové virtuální zařízení
 

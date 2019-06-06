@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: b51b9f08819a4c496e051d375f6d52aaa985c8e6
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394128"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734890"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Postup pro integraci ve společném schématu produktu alert Logic Apps
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, které využívá p
 
 ## <a name="overview"></a>Přehled
 
-[Společné schéma produktu upozornění](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schématu JSON v rámci všech vašich různých typů výstrah. Ve společném schématu produktu výstrah je nejužitečnější, když využít prostřednictvím kódu programu – prostřednictvím webhooků, runbooků a logic apps. V tomto článku vám ukážeme, jak jeden prostředek se můžou vytvořit pro zpracování všech výstrah. Stejné zásady můžete použít pro jiné metody prostřednictvím kódu programu. Vytvoří jasně definované proměnné pro aplikaci logiky, které jsou popsané v tomto článku ["základní" pole](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)a také popisuje, jak můžete zpracovávat [typ výstrahy]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') určitou logiku.
+[Společné schéma produktu upozornění](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schématu JSON v rámci všech vašich různých typů výstrah. Ve společném schématu produktu výstrah je nejužitečnější, když využít prostřednictvím kódu programu – prostřednictvím webhooků, runbooků a logic apps. V tomto článku vám ukážeme, jak jeden prostředek se můžou vytvořit pro zpracování všech výstrah. Stejné zásady můžete použít pro jiné metody prostřednictvím kódu programu. Vytvoří jasně definované proměnné pro aplikaci logiky, které jsou popsané v tomto článku ["základní" pole](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)a také popisuje, jak můžete zpracovávat [typ výstrahy](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) určitou logiku.
 
 
 ## <a name="prerequisites"></a>Požadavky 
@@ -125,7 +125,7 @@ Tento článek předpokládá, že je čtečka znáte
 
     ![Výraz aplikace logiky](media/alerts-common-schema-integrations/logic-app-expressions.png "výraz aplikace logiky")
     
-     [Pole "monitoringService"]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') můžete jednoznačně identifikovat typ výstrahy založené na které můžete vytvořit podmíněnou logiku.
+     [Pole "monitoringService"](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) můžete jednoznačně identifikovat typ výstrahy založené na které můžete vytvořit podmíněnou logiku.
 
     
     Například následující fragment kódu zkontroluje, jestli je upozornění protokolů Application Insights na základě výstrahy a pokud ano, zobrazí výsledky hledání. V opačném vytiskne "NA".

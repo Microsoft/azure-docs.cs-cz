@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab18c8f165fc30636cd05091be1181743f9972d
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: aede5e315141251026867f7028ebf989d44da4d5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873655"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473047"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Požádat o procesu a e-mailová oznámení ve správě služby Azure AD oprávnění (Preview)
 
@@ -42,10 +42,10 @@ Uživatel, který potřebuje přístup k balíčku přístup můžete odeslat po
 
 | Stav | Popis |
 | --- | --- |
-| Odesláno | Uživatel odešle žádost. |
+| Odeslání | Uživatel odešle žádost. |
 | Čeká na schválení | Pokud zásady přístupu k balíčku vyžaduje schválení, žádost o přesune čekající na schválení. |
-| Vypršela platnost | Pokud žádné schvalovatelů zkontrolujte v žádosti v rámci časového limitu žádosti o schválení, vyprší platnost požadavku. To zkusit znovu, uživatel bude muset znovu odeslat požadavek. |
-| Odmítnuté | Schvalovatel zamítne žádost. |
+| Vypršela platnost | Pokud žádné schvalovatelů schválení žádosti v rámci časového limitu žádosti o schválení, vyprší platnost požadavku. To zkusit znovu, uživatel bude muset znovu odeslat požadavek. |
+| Byl odepřen | Schvalovatel zamítne žádost. |
 | Schválené | Schvalovatel schválí požadavek. |
 | Doručování | Uživatel má **není** byl přiřazen přístup ke všem prostředkům v přístupu k balíčku. Pokud je to externí uživatel, uživatel dosud přistupovat adresář prostředků a přijmout výzvu oprávnění. |
 | Doručeno | Uživatel má přiřazený přístup ke všem prostředkům v přístupu k balíčku. |
@@ -71,7 +71,7 @@ Následující tabulka obsahuje další podrobnosti o každém z těchto e-mailo
 | 7 | Váš přístup k *[přístupu k balíčku]* do konce platnosti zbývá X dní. | Vypršení platnosti X dní před přístup žadatele k přístupu k balíčku | Žadatel |
 | 8 | Váš přístup k *[přístupu k balíčku]* vypršela platnost | Kdy vyprší platnost přístup žadatele přístupu k balíčku | Žadatel |
 
-### <a name="review-access-request-emails"></a>E-mailech žádosti o revize přístupu
+### <a name="access-request-emails"></a>E-mailů žádost o přístup
 
 Když žadatele odešle požadavek na přístup, který je nakonfigurovaný tak, aby vyžadovala schválení přístupu k balíčku, všichni schvalovatelé nakonfigurovali v zásadách obdrží oznámení o e-mailu s podrobnostmi žádosti. Podrobnosti jsou název pro žadatele, organizace, přistupovat k počáteční a koncové datum-li zadán, obchodní odůvodnění, kdy byl požadavek odeslán a kdy skončí platnost této žádosti. E-mailu obsahuje odkaz, kde schvalovatelů můžete schválit nebo zamítnout žádost o přístup. Tady je ukázka e-mailové oznámení, odeslaný approver když žadatele odešle požadavek na přístup.
 
@@ -79,7 +79,7 @@ Když žadatele odešle požadavek na přístup, který je nakonfigurovaný tak,
 
 ### <a name="approved-or-denied-emails"></a>Schválený nebo odepřený e-mailů
 
-Žadatele upozorněni při jejich žádost o přístup je schválený a pro přístup k dispozici nebo při jejich žádost o přístup byl odepřen. Když schvalující návrhů požadavek na přístup odeslané žadatele, jejich schválit nebo zamítnout žádost o přístup. Schvalovatel je potřeba přidat obchodní odůvodnění pro své rozhodnutí.
+Žadatele upozorněni při jejich žádost o přístup je schválený a pro přístup k dispozici nebo při jejich žádost o přístup byl odepřen. Když schvalující obdrží požadavek na přístup odeslané žadatele, jejich schválit nebo zamítnout žádost o přístup. Schvalovatel je potřeba přidat obchodní odůvodnění pro své rozhodnutí.
 
 Při schválení žádosti o přístup, Správa nároků spustí proces udělování přístupu žadatele na každý z prostředků v přístupu k balíčku. Po udělení přístupu ke každému prostředku v balíčku přístup žadatel e-mailové oznámení se pošle žadateli, že jejich žádost o přístup byla schválena a, teď mají přístup k přístupu k balíčku. Tady je ukázka e-mailové oznámení, odesílané do žadatele, když získají přístup k balíčku přístup.
 

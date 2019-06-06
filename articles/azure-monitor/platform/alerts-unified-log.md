@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 5/31/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 194fba3296359f5f7d29a37425a938fe08f1332b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae35c735cffeb8cd85af1f32bb2d14ede6dc6b69
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345872"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427414"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 
@@ -27,13 +27,13 @@ Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvoř
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Hledání pravidel upozornění protokolů – definice a typy
 
-Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatické spouštění zadaných dotazů na protokoly v pravidelných intervalech.  Pokud výsledky dotazu na protokol splňují konkrétní kritéria, vytvoří se záznam upozornění. Pravidlo potom může automaticky spustit jednu nebo více akcí pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md). [Azure Monitoring Přispěvatel](../../azure-monitor/platform/roles-permissions-security.md) role pro vytváření, úpravu a aktualizaci upozornění protokolů se může vyžadovat; spolu s přístup & dotazu provádění práva pro cíle analytics v pravidlo upozornění nebo dotaz na upozornění. Pokud uživatel vytváření nemá přístup k všechny cíle analytics v pravidlo upozornění nebo dotaz na upozornění – vytvoření pravidla může selhat nebo pravidel upozornění protokolů se spustí pomocí částečných výsledků.
+Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatické spouštění zadaných dotazů na protokoly v pravidelných intervalech.  Pokud výsledky dotazu na protokol splňují konkrétní kritéria, vytvoří se záznam upozornění. Pravidlo potom může automaticky spustit jednu nebo více akcí pomocí [skupin akcí](../../azure-monitor/platform/action-groups.md). [Azure Monitoring Přispěvatel](../../azure-monitor/platform/roles-permissions-security.md) role pro vytváření, úpravu a aktualizaci upozornění protokolů se může vyžadovat; spolu s přístup & dotazu provádění práva pro cíle analytics v pravidlo upozornění nebo dotaz na upozornění. V případě, že vytváření uživatel nemá přístup k všechny cíle analytics v pravidlo upozornění nebo dotaz na upozornění – vytvoření pravidla může selhat nebo pravidel upozornění protokolů se spustí pomocí částečných výsledků.
 
 Pravidla vyhledávání protokolů jsou definovány následující podrobnosti:
 
 - **Protokolování dotazu**.  Dotaz, který se spustí pokaždé, když se pravidlo upozornění aktivuje.  Vrácené tímto dotazem záznamy slouží k určení, jestli je výstraha aktivovat. Analytický dotaz je možné pro konkrétní pracovní prostor Log Analytics nebo aplikaci Application Insights a dokonce i pracovat nad více [více prostředky Log Analytics a Application Insights](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) zadaný uživatel má přístup stejně jako práva na všechny dotazy prostředky. 
     > [!IMPORTANT]
-    > Upozornění protokolu **nejsou** podporují použití [funkce](../log-query/functions.md) z bezpečnostních důvodů. Také [napříč prostředky dotazu](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) podpora v upozornění protokolu pro Application Insights a upozornění protokolů pro [Log Analytics nakonfigurované pomocí rozhraní API scheduledQueryRules](../../azure-monitor/platform/alerts-log-api-switch.md) pouze.
+    > [dotaz napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) podpora v upozornění protokolu pro Application Insights a upozornění protokolů pro [Log Analytics nakonfigurované pomocí rozhraní API scheduledQueryRules](../../azure-monitor/platform/alerts-log-api-switch.md) pouze.
 
     Některé analytické příkazy a kombinace nejsou kompatibilní s využitím v upozornění protokolu; pro další podrobnosti zobrazíte [protokolu dotazy výstrah ve službě Azure Monitor](../../azure-monitor/platform/alerts-log-query.md).
 
@@ -45,8 +45,8 @@ Pravidla vyhledávání protokolů jsou definovány následující podrobnosti:
 
 Pravidla vyhledávání protokolů už to pro [protokoly Azure monitoru](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), mohou být dvou typů. Každý z těchto typů je podrobně popsány v následující části.
 
-- **[Počet výsledků](#number-of-results-alert-rules)**. Jediná výstraha vytvořena, když počet záznamů vrácených prohledávání protokolů překročí zadaný počet.
-- **[Metriky měření](#metric-measurement-alert-rules)**.  Upozornění bylo vytvořeno pro každý objekt ve výsledcích prohledávání protokolů s hodnotami, které překročí zadanou prahovou hodnotu.
+- **[Počet výsledků](#number-of-results-alert-rules)** . Jediná výstraha vytvořena, když počet záznamů vrácených prohledávání protokolů překročí zadaný počet.
+- **[Metriky měření](#metric-measurement-alert-rules)** .  Upozornění bylo vytvořeno pro každý objekt ve výsledcích prohledávání protokolů s hodnotami, které překročí zadanou prahovou hodnotu.
 
 Rozdíly mezi typy pravidla upozornění jsou následující.
 
@@ -76,7 +76,7 @@ Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – vás pod rouško
 
 ### <a name="metric-measurement-alert-rules"></a>Pravidla upozornění metriky měření
 
-**Metriky měření** pravidla upozornění vytvořit upozornění pro každý objekt v dotazu s hodnotou, která překročí zadanou prahovou hodnotu.  Mají odlišné následující rozdíly proti **počet výsledků** pravidla upozornění.
+**Metriky měření** pravidla upozornění vytvořit upozornění pro každý objekt v dotazu s hodnotou, která překročí zadanou prahovou hodnotu a zadaný aktivační podmínka. Na rozdíl od **počet výsledků** pravidla, upozornění **měření metriky** pravidla upozornění fungovat, pokud výsledek analytics poskytuje časové řady. Mají odlišné následující rozdíly proti **počet výsledků** pravidla upozornění.
 
 - **Agregační funkce**: Určuje, která se provede výpočet a potenciálně číselná pole agregovat.  Například **count()** vrátí počet záznamů v dotazu **avg(CounterValue)** vrací průměr pole CounterValue v intervalu. V dotazu je agregační funkce musí být s názvem/volá: AggregatedValue a poskytnout číselnou hodnotu. 
 
@@ -127,16 +127,16 @@ Protože je nakonfigurované upozornění tak aktivační událost vycházejíc�
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Hledání pravidel upozornění protokolů – stav a jeho spuštění
 
-Pravidel upozornění protokolů vyhledávání funguje na logiku zabezpečuje pomocí vhodné uživatelem závislosti na konfiguraci a vlastní analýzy dotazech. Od logiky přesné podmínky nebo důvod, proč byste pravidlo upozornění, je trigger zapouzdřena v dotazu Analytics – které se můžou lišit v jednotlivých pravidel upozornění protokolů. Upozornění v Azure, má omezené informace určité základní příčiny v protokolu výsledků je dosažená nebo Překročená prahová hodnota podmínky pravidel upozornění protokolů hledání. Proto upozornění protokolů se označují položky podle stavu bez a se aktivuje pokaždé, když se překročí prahová hodnota uvedená v upozornění protokolu stačí výsledek hledání v protokolu *počet výsledků* nebo *měření metriky* typu podmínky. MSMQEvent_Arrived; pravidel upozornění protokolů se průběžně zachovat, tak dlouho, dokud se vyskytl výstražný stav splníte tak, že výsledek vlastního analytického dotazu k dispozici; bez upozornění každou získávání přeložit. Jako logic přesnou příčinu selhání monitorování se maskované uvnitř dotazu analytics zadané uživatelem. neexistuje žádné prostředky Azure oznámení k potvrzením odvození, zda výsledek hledání v protokolu nesplnění podmínek smluv prahová hodnota označuje řešení problému.
+Pravidel upozornění protokolů vyhledávání funguje na logiku zabezpečuje pomocí vhodné uživatelem závislosti na konfiguraci a vlastní analýzy dotazech. Od logiku monitorování včetně přesné podmínky nebo důvod, proč by měly aktivovat pravidlo upozornění, je zapouzdřena v dotazu analytics – které se můžou lišit v jednotlivých pravidel upozornění protokolů. Upozornění Azure má omezené informace o konkrétní základní příčiny (nebo) scénář právě vyhodnocuje, když je dosažená nebo Překročená prahová hodnota podmínky pravidel upozornění protokolů hledání. Proto upozornění protokolů se označují jako bez stavu. MSMQEvent_Arrived; pravidel upozornění protokolů se zachovat, tak dlouho, dokud se vyskytl výstražný stav splníte tak, že výsledek vlastního analytického dotazu, které jsou k dispozici. Bez upozornění každý získávání převedl, jako je uvnitř dotazu analytics uživatelem zadané maskované logiky přesnou příčinu selhání monitorování. Bylo aktuálně žádný mechanismus pro výstrahy monitorování Azure k potvrzením odvození se vyřešit hlavní příčinu.
 
-Nyní předpokládejme máme pravidel upozornění protokolů volá *Contoso upozornění protokolu*, protože podle konfigurace v [ukázkové chatovací aplikaci obsažené upozornění protokolu typu Number výsledků](#example-of-number-of-records-type-log-alert). 
-- Výsledek hledání v protokolu: 05: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure, vrátil 0 záznamů. pod prahovou hodnotu a proto se nespustí, výstrahu. 
-- Výsledek hledání v protokolu na další iteraci: 10: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure k dispozici 5 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](../../azure-monitor/platform/action-groups.md) spojené. 
-- Výsledek hledání v protokolu v 1:15 PM provedení Contoso upozornění protokolu pomocí výstrah služby Azure, poskytuje 2 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](../../azure-monitor/platform/action-groups.md) spojené.
-- Nyní na další iteraci: 20: 00 provedení upozornění protokolu Contoso upozorněním na Azure, poskytuje výsledek hledání v protokolu znovu 0 záznamů. pod prahovou hodnotu a proto se nespustí, výstrahu.
+Umožňuje nám stejným způsobem pracovat s praktické příklad naleznete v tématu. Předpokládejme máme pravidel upozornění protokolů volá *Contoso upozornění protokolu*, protože podle konfigurace v [ukázkové chatovací aplikaci obsažené upozornění protokolu typu Number výsledků](#example-of-number-of-records-type-log-alert) – kde vlastní výstrahy dotaz byl navržen k vyhledání 500 Kód výsledku v protokolech.
 
-Ale v případě výše uvedené v 1:15 PM - upozornění Azure nemůže určit, že základní problémy zaznamenáno v 1:10 přetrvávají a pokud je net nové neúspěšné; uživatelem zadaný dotaz může být zohlední starší záznamy - jistotu upozornění v Azure. Proto k chyba na straně upozornění, když Contoso upozornění protokolu spuštění 1:15 PM, nakonfigurované [skupiny akcí](../../azure-monitor/platform/action-groups.md) se znovu aktivuje. Nyní: 20: 00 Když jsou vidět žádné záznamy – upozornění Azure nemůže být jisti, že příčinou záznamy vyřešen; proto bude Contoso upozornění protokolu nebyl změněn na vyřešený v řídicím panelu Azure výstrahy a/nebo oznámení odeslaných s informacemi o tom vyřešení upozornění.
+- Výsledek hledání v protokolu: 05: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure, vrátil nulovou záznamy s kódem výsledku s 500. Protože nula je pod prahovou hodnotou, což není aktivováno upozornění.
+- Na další iteraci: 10: 00 provedení Contoso upozornění protokolu pomocí výstrah služby Azure výsledek hledání v protokolu ve formě pět záznamů s kódem výsledku 500. Protože pět překročí prahovou hodnotu a výstraha se aktivuje pomocí přidružené akce se aktivují.
+- Výsledek hledání v protokolu v 1:15 PM provedení Contoso upozornění protokolu pomocí výstrah služby Azure, k dispozici dva záznamy s kódem výsledku 500. Protože dvě překročí prahovou hodnotu a výstraha se aktivuje pomocí přidružené akce se aktivují.
+- Nyní na další iteraci: 20: 00 provedení Contoso upozornění protokolu Azure výstraha poskytuje výsledek hledání v protokolu znovu žádné záznamy s kódem výsledku 500. Protože nula je pod prahovou hodnotou, což není aktivováno upozornění.
 
+Ale v případě výše uvedené v 1:15 PM - upozornění Azure nemůže určit, že základní problémy zaznamenáno v 1:10 přetrvávají a pokud je net nové chyby. Uživatelem zadaný dotaz může být zohlední starší záznamy - jistotu upozornění v Azure. Od logiku pro výstrahy, je zapouzdřena v upozornění dotazu - to dva záznamy s kódem 500 výsledku zaznamenáno v 1:15 PM může nebo nemusí být už jednou vyskytl: 10: 00. Proto k pečlivého upozornění, když se zpracovává Contoso upozornění protokolu v 13:15, nakonfigurované akce se znovu aktivuje. Nyní: 20: 00 Když žádné záznamy se zobrazují s kódem výsledku 500 - upozornění Azure nemůže být jistotu, že teď je vyřešen příčiny 500 výsledný kód zaznamenáno v 1:10 PM a 1:15 PM a Azure Monitor výstrah můžete bez obav odvodit 500 – Chyba problémy se neprovede ze stejného důvodu znovu s. Proto bude Contoso upozornění protokolu nebyl změněn na vyřešený v řídicím panelu Azure výstrahy a/nebo oznámení odeslaných s informacemi o tom vyřešení upozornění. Místo toho můžete uživatele, kdo rozumí použití prvků přesné podmínky nebo důvod pro logiku vložený do dotazu analytics [označit výstrahy jako uzavřenou](alerts-managing-alert-states.md) podle potřeby.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Ceny a fakturace protokol výstrah
 
@@ -154,6 +154,8 @@ Odebrat prostředky skryté scheduleQueryRules vytvořené pro účely fakturace
 
 - Buď uživatel může [přepnout předvoleb rozhraní API pro pravidla upozornění v pracovním prostoru Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) a bez ztráty jejich upozornění pravidel nebo monitorování Přesun do Azure Resource Manageru kompatibilní [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). A tím eliminuje nutnost pseudo skrytá pravidla výstrah pro účely fakturace.
 - Nebo pokud uživatel nechce přepnout předvoleb rozhraní API, uživatel bude muset **odstranit** původní plán a akce upozornění pomocí [starší verze rozhraní API pro analýzu protokolů](api-alerts.md) nebo odstranit v [webu Azure portal původní pravidel upozornění protokolů](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
+
+Kromě toho pro skryté scheduleQueryRules prostředky vytvořené pro účely fakturace pomocí pravidel upozornění [starší verze rozhraní API pro analýzu protokolů](api-alerts.md), všechny operace úprav jako PUT se nezdaří. Jako `microsoft.insights/scheduledqueryrules` typ pseudo pravidla jsou za účelem fakturace pravidla upozornění vytvořené pomocí [starší verze rozhraní API pro analýzu protokolů](api-alerts.md). Každá změna pravidla upozornění by mělo být provedeno pomocí [starší verze rozhraní API pro analýzu protokolů](api-alerts.md) (nebo) uživatel může [přepnout předvoleb rozhraní API pro pravidla upozornění](../../azure-monitor/platform/alerts-log-api-switch.md) používat [scheduledQueryRules rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) Místo toho.
 
 ## <a name="next-steps"></a>Další postup
 

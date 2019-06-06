@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: de1915c7efb4bd8634228f341df2c57c443dd28e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242306"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492701"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Plán služby Azure Functions Premium (preview)
 
@@ -56,7 +56,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Připojení k privátní síti
 
-Využívá výhod platformy Azure Functions, které jsou nasazené na tarif Premium [nově zavedené integraci virtuální sítě pro službu web apps](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration).  Při konfiguraci, vaše aplikace můžou komunikovat s prostředky v rámci vaší virtuální sítě nebo zabezpečené pomocí koncových bodů služby.  Omezení IP adres jsou také k dispozici v aplikaci omezit příchozí provoz.
+Využívá výhod platformy Azure Functions, které jsou nasazené na tarif Premium [nově zavedené integraci virtuální sítě pro službu web apps](../app-service/web-sites-integrate-with-vnet.md).  Při konfiguraci, vaše aplikace můžou komunikovat s prostředky v rámci vaší virtuální sítě nebo zabezpečené pomocí koncových bodů služby.  Omezení IP adres jsou také k dispozici v aplikaci omezit příchozí provoz.
 
 Při přiřazování podsíť k vaší aplikaci funkcí v plánu Premium, musíte pro každou instanci potenciální dostatek IP adres podsítě. I když maximální počet instancí se mohou lišit ve verzi preview, požadujeme, aby blok IP s minimálně 100 dostupnými adresami.
 

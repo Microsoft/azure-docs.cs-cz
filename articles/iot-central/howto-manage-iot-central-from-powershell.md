@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8d432d588cfd563ee48b93f9042339e9590bb5e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 086c7d303fd199090de3be77b2456c4ebcd053a8
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60533260"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66726935"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -25,7 +25,7 @@ Místo vytváření a správu aplikací IoT Central z IoT Central [Správce apli
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud chcete spustit prostředí Azure PowerShell na místním počítači, přečtěte si téma [instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Při spuštění prostředí Azure PowerShell místně, použijte **připojit AzAccount** rutiny pro přihlášení k Azure, než se pokusíte rutiny v tomto článku.
 
@@ -71,7 +71,7 @@ Skript nejprve vytvoří skupinu prostředků na východě USA oblast pro aplika
 |Subdoména         |Subdoména v adrese URL aplikace. V tomto příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
 |Skladová jednotka (SKU)               |V současné době je jediná hodnota **S1** (úrovně standard). Zobrazit [ceny Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Šablona          | Šablony aplikace používat. Další informace najdete v tématu v následující tabulce: |
-|Zobrazovaný název       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
+|displayName       |Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 **Šablony aplikací**
 

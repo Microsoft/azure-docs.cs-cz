@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 79cf4c713d60fa600bbb80b9c16728502ffc88ff
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4d8d2fd9a7408bb77939c9a1c8fdd67251282f49
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236837"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479216"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server
 
@@ -96,8 +96,9 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Podpora dat JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ano](sql-database-json-features.md) | [Ano](sql-database-json-features.md) |
 | [Elementy jazyka](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina – viz jednotlivé elementy |  Ano – viz [rozdíly v jazyce T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Propojené servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne - naleznete v tématu [elastického dotazu](sql-database-elastic-query-horizontal-partitioning.md) | Pouze [systému SQL Server a SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
-| [Přesouvání protokolu](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) |[Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) |
+| [Přesouvání protokolu](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) | Nativně vestavěné jako součást procesu migrace DMS. [Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi a nedoporučuje se používat jako alternativu HA přesouvání protokolu. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) |
 | [Přihlášení a uživatelé](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Ano, ale `CREATE` a `ALTER` příkazy přihlášení nabízí všechny možnosti (bez Windows a úrovni serveru přihlášení Azure Active Directory). `EXECUTE AS LOGIN` není podporována – použijte `EXECUTE AS USER` místo.  | Ano, s některými [rozdíly](sql-database-managed-instance-transact-sql-information.md#logins-and-users). Přihlašovací údaje Windows nejsou podporované a by měla být nahrazena přihlášení Azure Active Directory. |
+| [Dlouhodobé uchovávání záloh – zleva doprava.](sql-database-long-term-retention.md) | Ano, držet krok automaticky pořízení zálohy na 10 let. | Zatím ne. Použití `COPY_ONLY` [ručního zálohování](sql-database-managed-instance-transact-sql-information.md#backup) jako dočasné řešení. |
 | [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Ne | Ne |
 | [Minimální protokolování v hromadném importu](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Ne | Ne |
 | [Úprava dat systému](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Ne | Ano |

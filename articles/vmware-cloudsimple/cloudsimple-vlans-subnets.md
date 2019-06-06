@@ -8,16 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e88977cc4d99df176116e6be7d8e06adb6297782
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9d29445054848d798476fed8184b89f9b6c1210f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209579"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497587"
 ---
 # <a name="vlans-and-subnets-overview"></a>Přehled sítě VLAN a podsítě
 
 CloudSimple poskytuje sítě v jedné oblasti, ve kterém je nasazená CloudSimple služby.  Síť je jeden adresní prostor TCP vrstvy 3 se směrováním ve výchozím nastavení povolená.  Všechny privátní cloudy a podsítí v této oblasti vytvořit může mezi sebou komunikovat bez jakékoli další konfigurace.  Vytváření skupin distribuované portů v systému vCenter pomocí sítě VLAN.
+
+![CloudSimple síťové topologie](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>Sítě VLAN
 
@@ -34,6 +36,10 @@ Všechny podsítě můžete komunikovat mezi sebou ve výchozím nastavení, sn�
 Privátní Cloud je vytvořen jako izolované zásobníku VMware (hostitele ESXi, vCenter, sítě vSAN a NSX) prostředí spravované serverem vCenter.  Součásti správy jsou nasazené v síti, vybraný pro **vSphere/síť vSAN podsítě CIDR**.  Síť rozsah CIDR je rozdělen do různých podsítí během nasazení.
 
 Minimální vSphere/síť vSAN podsítě CIDR rozsahu předpony: **/24** maximální vSphere/síť vSAN podsítě CIDR rozsahu předpony:   **/21**
+
+> [!CAUTION]
+> IP adresy v rozsahu CIDR vSphere/síť vSAN jsou vyhrazené pro použití infrastruktury privátního cloudu. Nepoužívejte IP adresy v tomto rozsahu na jakýkoli virtuální počítač.
+
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>omezení rozsahu podsítě CIDR vSphere/sítě vSAN
 

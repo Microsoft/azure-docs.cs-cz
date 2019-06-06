@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 6147269ab38ac14c2a2ecadaac3448a491af7c20
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.date: 06/04/2019
+ms.openlocfilehash: 0bfacc968a04f8ef9e39a31cff5e81cf4e04c6fb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399313"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494632"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
@@ -38,13 +38,11 @@ Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podm
 
     ![Získání dat](media/power-bi-connector/get-data-more.png)
 
-1. Vyhledejte *Průzkumník dat Azure*vyberte **Průzkumník dat Azure (beta verze)** pak **připojit**.
+1. Vyhledejte *Průzkumník dat Azure*vyberte **Průzkumník dat Azure** pak **připojit**.
 
     ![Vyhledání a získání dat](media/power-bi-connector/search-get-data.png)
 
-1. Na obrazovce **Předběžná verze konektoru** vyberte **Pokračovat**.
-
-1. Na další obrazovce vyplňte formulář s následujícími informacemi.
+1. Na **Průzkumník dat Azure (Kusto)** obrazovky, vyplňte formulář s následujícími informacemi.
 
     ![Možnosti clusteru, databáze a tabulky](media/power-bi-connector/cluster-database-table.png)
 

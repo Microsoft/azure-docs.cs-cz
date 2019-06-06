@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 3c35633c9b25eafdb738ed591c7c7022fbd8149a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967824"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730327"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v Azure digitální dvojče
 
@@ -40,17 +40,17 @@ Protokolování aktivit pro digitální dvojče Azure je ve výchozím nastaven�
 1. Výběr vaší instance digitální dvojče Azure.
 1. Výběr **protokolu aktivit** zobrazíte panel zobrazení:
 
-    ![Protokol aktivit][1]
+    [![Protokol aktivit](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 Pro pokročilé protokolování aktivit:
 
 1. Vyberte **protokoly** možnosti se zobrazí **přehled Activity Log Analytics**:
 
-    ![Výběr][2]
+    [![Výběr](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. **Přehled Activity Log Analytics** sumarizuje data protokolu základní aktivity:
 
-    ![Přehled Activity log analytics][3]
+    [![Přehled Activity log analytics]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >Použití **protokoly aktivit** rychlé přehledy o vašich událostí na úrovni předplatného.
@@ -70,12 +70,12 @@ Povolení diagnostických protokolů pro instanci:
 1. Otevřete prostředek na webu Azure portal.
 1. Klikněte na tlačítko **nastavení diagnostiky**:
 
-    ![Nastavení diagnostiky jeden][4]
+    [![Nastavení diagnostiky jeden](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Klikněte na tlačítko **zapnout diagnostiku** ke shromažďování dat (pokud už dříve povolené).
 1. Vyplňte požadovaná pole a vyberte, jak a kde se uloží data:
 
-    ![Dvě nastavení diagnostiky][5]
+    [![Dvě nastavení diagnostiky](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Diagnostické protokoly jsou často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílené s [protokoly Azure monitoru](../azure-monitor/log-query/get-started-portal.md). Obě možnosti se dají vybrat.
 
@@ -99,24 +99,24 @@ Dotazování na celý protokol je poskytována prostřednictvím [protokoly Azur
 1. Vyhledejte **Log Analytics** na webu Azure Portal.
 1. Uvidí vaši dostupný **pracovní prostor Log Analytics** instancí. Vyberte jednu a vyberte **protokoly** dotazu:
 
-    ![Log Analytics][6]
+    [![Log analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. Pokud ještě nemáte **pracovní prostor Log Analytics** instance, můžete vytvořit pracovní prostor kliknutím **přidat** tlačítka:
 
-    ![Vytváření OMS][7]
+    [![Vytváření OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 Jednou vaše **pracovní prostor Log Analytics** zřídí instance, můžete použít zadávat efektivní dotazy na hledání v protokolech násobky položky nebo pomocí určitých kritérií pomocí **Správa protokolů**:
 
-   ![Správa protokolů][8]
+   [![Správa protokolů](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Další informace o operacích výkonný dotazovací najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Může dojít ke zpoždění 5 minut při odesílání událostí do **pracovní prostor Log Analytics** poprvé.
 
-Protokoly Azure monitoru také poskytuje výkonné chyb a oznámení výstrah služeb, které můžete zobrazit kliknutím **diagnostikovat a řešit problémy**:
+Protokoly Azure monitoru také poskytují výkonný chyb a oznámení výstrah služeb, které můžete zobrazit kliknutím **diagnostikovat a řešit problémy**:
 
-   ![Oznámení o upozornění a chyby][9]
+   [![Oznámení o upozornění a chyby](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Použití **pracovní prostor Log Analytics** do historie protokolu dotazu více funkce aplikace, předplatných a služeb.
@@ -132,14 +132,3 @@ Azure digitální dvojče také podporuje specifické pro aplikaci protokolován
 - Ponořte se hlouběji do nastavení diagnostiky služby Azure ve čtení [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 - Další informace o [protokoly Azure monitoru](../azure-monitor/log-query/get-started-portal.md).
-
-<!-- Images -->
-[1]: media/how-to-configure-monitoring/activity-log.png
-[2]: media/how-to-configure-monitoring/activity-log-select.png
-[3]: media/how-to-configure-monitoring/log-analytics-overview.png
-[4]: media/how-to-configure-monitoring/diagnostic-settings-one.png
-[5]: media/how-to-configure-monitoring/diagnostic-settings-two.png
-[6]: media/how-to-configure-monitoring/log-analytics.png
-[7]: media/how-to-configure-monitoring/log-analytics-oms.png
-[8]: media/how-to-configure-monitoring/log-analytics-management.png
-[9]: media/how-to-configure-monitoring/log-analytics-notifications.png

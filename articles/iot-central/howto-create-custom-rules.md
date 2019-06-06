@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6140a8aea3fe0fe0a8f1c01cd1c97404c41f7a69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65805978"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742409"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Rozšíření Azure IoT Central pomocí vlastního pravidla, které odesílají oznámení
 
@@ -41,7 +41,7 @@ Vytvořit aplikace IoT Central [Azure IoT Central – Moje aplikace](https://aka
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Plán plateb | Průběžné platby |
-| Šablona aplikace | Ukázka Contoso |
+| Šablona aplikace | Sample Contoso (Ukázka Contoso) |
 | Název aplikace | Přijměte výchozí adresář nebo zvolte svůj vlastní název |
 | zprostředkovatele identity | Přijměte výchozí adresář nebo zvolte vlastní jedinečnou předponu adresy URL |
 | Adresář | Váš tenant Azure Active Directory |
@@ -60,37 +60,37 @@ Použití [webu Azure portal vytvořte obor názvů služby Event Hubs](https://
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Název    | Vyberte název vašeho oboru názvů |
+| Name    | Vyberte název vašeho oboru názvů |
 | Cenová úroveň | Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Location | USA – východ |
 | Jednotky propustnosti | 1 |
 
-### <a name="stream-analytics-job"></a>Úloha Stream Analytics
+### <a name="stream-analytics-job"></a>Úlohy Stream Analytics
 
 Použití [webu Azure portal k vytvoření úlohy Stream Analytics](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Název    | Vyberte název požadované úlohy |
+| Name    | Vyberte název požadované úlohy |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Location | USA – východ |
 | Hostitelské prostředí | Cloud |
 | Jednotky streamování | 3 |
 
-### <a name="function-app"></a>Function app
+### <a name="function-app"></a>Function App
 
 Použití [webu Azure portal k vytvoření aplikace function app](https://portal.azure.com/#create/Microsoft.FunctionApp) s následujícím nastavením:
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Název aplikace    | Vyberte název vaší aplikace funkcí |
+| App name (Název aplikace)    | Vyberte název vaší aplikace funkcí |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Operační systém | Windows |
-| Plán Hosting | Plán Consumption |
+| Plán hostování | Plán Consumption |
 | Location | USA – východ |
 | Zásobník modulu runtime | .NET |
 | Úložiště | Vytvořit nový |
@@ -101,12 +101,12 @@ Použití [webu Azure portal k vytvoření účtu SendGrid](https://portal.azure
 
 | Nastavení | Hodnota |
 | ------- | ----- |
-| Název    | Volba názvu účtu SendGrid |
+| Name    | Volba názvu účtu SendGrid |
 | Heslo | Vytvořit heslo |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
 | Cenová úroveň | F1 Free |
-| Kontaktní údaje | Vyplnění požadovaných informací |
+| Kontaktní informace | Vyplnění požadovaných informací |
 
 Když vytvoříte všechny požadované prostředky, vaše **DetectStoppedDevices** skupiny prostředků vypadá jako na následujícím snímku obrazovky:
 
@@ -242,7 +242,7 @@ Toto řešení používá dotazu Stream Analytics ke zjištění, kdy zařízen�
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Vstupní alias | centraltelemetry |
+    | Alias vstupu | centraltelemetry |
     | Předplatné | Vaše předplatné |
     | Obor názvů centra událostí | Váš obor názvů centra událostí |
     | Název centra událostí | Použít existující - **centralexport** |
@@ -254,7 +254,7 @@ Toto řešení používá dotazu Stream Analytics ke zjištění, kdy zařízen�
     | ------- | ----- |
     | Alias pro výstup | EmailNotification |
     | Předplatné | Vaše předplatné |
-    | Function app | Aplikace function app |
+    | Function App | Aplikace function app |
     | Funkce  | HttpTrigger1 |
 
 1. V části **topologie úlohy**vyberte **dotazu** a nahraďte existující dotaz SQL následující:
@@ -312,11 +312,11 @@ Přejděte [aplikace IoT Central](https://aka.ms/iotcentral) vytvoříte pomocí
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Zobrazované jméno | Exportovat do služby Event Hubs |
-    | Enabled | Zapnuté |
+    | Zobrazované jméno | Export do služby Event Hubs |
+    | Enabled | Zapnuto |
     | Obor názvů služby Event Hubs | Název vašeho oboru názvů služby Event Hubs |
     | Centrum událostí | centralexport |
-    | Měření | Zapnuté |
+    | Měření | Zapnuto |
     | Zařízení | Vypnuto |
     | Šablony zařízení | Vypnuto |
 
@@ -324,7 +324,7 @@ Přejděte [aplikace IoT Central](https://aka.ms/iotcentral) vytvoříte pomocí
 
 Počkejte, dokud je stav exportu **systémem** předtím, než budete pokračovat.
 
-## <a name="test"></a>Testovat
+## <a name="test"></a>Test
 
 Otestování řešení, můžete zakázat nepřetržitý export dat z IoT Central pro zastavené Simulovaná zařízení:
 
@@ -353,4 +353,4 @@ V této příručce s postupy jste zjistili, jak:
 * Vytvoření dotazu Stream Analytics, který zjistí, zastavil zařízení odesílá data.
 * Odeslání e-mailové oznámení pomocí Azure Functions a služby SendGrid.
 
-Teď, když víte, jak vytvořit vlastní pravidla a oznámení, navrhované dalším krokem je další postupy [vizualizovat a analyzovat data v řídicím panelu Power BI Azure IoT Central](howto-connect-powerbi.md).
+Teď, když víte, jak vytvořit vlastní pravidla a oznámení, navrhované dalším krokem je další způsob [rozšíření Azure IoT Central s vlastní analytics](howto-create-custom-analytics.md).

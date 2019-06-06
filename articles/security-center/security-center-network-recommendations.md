@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: e038c500d93e4d631c585eed743a373b5e6cec85
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 6b3cef32cf79c2448d2e254e27c332e01ea83c62
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968341"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428361"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Chraňte své prostředky sítě v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol k posílení zabezpečení a ochraně vašich prostředků.
@@ -131,16 +131,14 @@ Na třetí úrovni zobrazí virtuální počítače, který je podobný už uvá
 
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
 |----|----|----|----|
-|Machine|40|Povolit skupiny NSG na virtuálních počítačích|Povolte skupiny zabezpečení sítě řídit přístup k síti virtuálních počítačů.|
-|Podsíť|35|Povolit skupiny zabezpečení sítě u podsítí |Povolte skupiny zabezpečení sítě řídit přístup k síti prostředků nasazené ve vaší podsítě.|
-|Machine|30|Použití řízení přístupu k síti podle potřeby|Platí jenom v řízení přístupu na čas virtuálního počítače trvale zamezit přístup k portům vybrané a povolte autorizovaným uživatelům otevírat prostřednictvím stejný mechanismus a po omezenou dobu.|
+|Machine|40|Skupiny zabezpečení sítě pro virtuální počítače by měly být povolené.|Povolte skupiny zabezpečení sítě řídit přístup k síti virtuálních počítačů.|
+|Podsíť|35|Skupiny zabezpečení sítě na úrovni podsítě by měla být povolená.|Povolte skupiny zabezpečení sítě řídit přístup k síti prostředků nasazené ve vaší podsítě.|
+|Machine|30|Řízení přístupu k síti Just-In-Time bude použito na virtuálních počítačích|Platí jenom v řízení přístupu na čas virtuálního počítače trvale zamezit přístup k portům vybrané a povolte autorizovaným uživatelům otevírat prostřednictvím stejný mechanismus a po omezenou dobu.|
 |Machine|20|Omezit přístup přes internetový koncový bod|Posílení zabezpečení, které umožňují skupiny zabezpečení sítě se vaše internetové virtuální počítače tak, že omezíte přístup k vaší existující pravidla.|
 |Machine|10|Přidání brány firewall příští generace|Přidáte řešení Brána Firewall další generace (NGFW) kvůli lepší ochraně vašich virtuálních počítačů směřujících do Internetu.|
 |Machine|5|Směrování provozu přes síťové brány jenom přes firewall|Aby bylo možné dokončit nasazení další generace řešení brány firewall, se mají směrovat provoz do vašich chráněných virtuálních počítačů směřujících do Internetu jenom přes další generace řešení brány firewall.|
-|Virtuální síť|5|Povolit před útoky DDoS standard protection|Aplikace s veřejnými IP adresami v těchto virtuálních sítích nejsou chráněny službou ochrany před útoky DDOS standard. Doporučujeme, aby je chcete povolit omezení rizik odměrné sítě a útoky protokolu.|
-|Machine|10|Přidání brány firewall příští generace|dd řešení Brána Firewall další generace (NGFW) kvůli lepší ochraně vašich virtuálních počítačů směřujících do Internetu.|
-|Machine|5|Směrování provozu přes síťové brány jenom přes firewall|Aby bylo možné dokončit nasazení další generace řešení brány firewall, se mají směrovat provoz do vašich chráněných virtuálních počítačů směřujících do Internetu jenom přes další generace řešení brány firewall.|
-Virtuální síť|5|Povolit před útoky DDoS standard protection|Aplikace s veřejnými IP adresami v těchto virtuálních sítích nejsou chráněny službou ochrany před útoky DDOS standard. Doporučujeme, aby je chcete povolit omezení rizik odměrné sítě a útoky protokolu.|
+|VNet|5|Povolit před útoky DDoS standard protection|Aplikace s veřejnými IP adresami v těchto virtuálních sítích nejsou chráněny službou ochrany před útoky DDOS standard. Doporučujeme, aby je chcete povolit omezení rizik odměrné sítě a útoky protokolu.|
+
 ## <a name="see-also"></a>Další informace najdete v tématech
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 

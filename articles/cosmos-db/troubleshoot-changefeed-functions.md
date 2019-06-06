@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242517"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734518"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostika a řešení problémů při používání aktivační událost Azure Cosmos DB ve službě Azure Functions
 
@@ -88,6 +88,12 @@ Pokud zjistíte, že některé změny nebyly přijaty ve všech vašich aktivač
 Kromě toho tento scénář může být ověřen, pokud víte, kolik instancí aplikace Azure Function App máte systémem. Je-li zkontrolovat zapůjčení kontejneru a spočítat počet zapůjčení položek v rámci různých hodnot položky, které `Owner` vlastnost v nich by měl být roven počtu instancí aplikace Function App. Pokud existují další vlastníky než známé instancí aplikace Azure Function App, to znamená, že tyto dodatečné vlastníky jeden "zcizování" změny.
 
 Jeden snadný způsob, jak řešení této situace je použít `LeaseCollectionPrefix/leaseCollectionPrefix` vaši funkci s novou/jinou hodnotu nebo alternativně test pomocí nového kontejneru zapůjčení.
+
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazby jde jenom s IReadOnlyList<Document> nebo JArray
+
+K této chybě dochází, pokud váš projekt Azure Functions (nebo jakéhokoli odkazovaného projektu) obsahuje ruční NuGet odkaz na sadu Azure Cosmos DB SDK s jinou verzí než ten, který poskytuje [Azure Functions Cosmos DB Extension](./troubleshoot-changefeed-functions.md#dependencies).
+
+Chcete-li vyřešit tuto situaci, odebrat vyřešit ruční odkaz NuGet, který byl přidán a nechat odkaz na sadu Azure Cosmos DB SDK prostřednictvím balíček rozšíření Azure Functions Cosmos DB.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dfbbdf3f2414f7b00445b271b667ad761ba93df0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724368"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476096"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optimalizace úloh Apache Spark
 
@@ -59,10 +59,10 @@ Když vytvoříte nový cluster Spark, máte možnost vybrat si jako výchozím 
 
 | Typ Store | Systém souborů | Rychlost | Přechodná | Případy použití |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb [s]:**//url/ | **Standard** | Ano | Přechodné clusteru |
-| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Faster** | Ano | Přechodné clusteru |
-| Azure Data Lake Storage Gen1| **adl:**//url/ | **Faster** | Ano | Přechodné clusteru |
-| Local HDFS | **hdfs:**//url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
+| Azure Blob Storage | **wasb:** //url/ | **Standard** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage Gen 2| **abfs[s]:** //url/ | **Faster** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage Gen1| **adl:** //url/ | **Faster** | Ano | Přechodné clusteru |
+| Local HDFS | **hdfs:** //url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 

@@ -5,24 +5,24 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 06/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c6a74548d0dc965127c5568708155341f60dbc65
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359114"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496753"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
-Tento článek vám umožní spravovat nastavení služby Multi-Factor Authentication na webu Azure Portal. Zahrnuje různá témata, které vám umožní využít ověřování Azure Multi-Factor Authentication na maximum. Ne všechny funkce jsou k dispozici v každé [verzi Azure Multi-Factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need).
+Tento článek vám umožní spravovat nastavení služby Multi-Factor Authentication na webu Azure Portal. Zahrnuje různá témata, které vám umožní využít ověřování Azure Multi-Factor Authentication na maximum. Ne všechny funkce jsou k dispozici v každé verzi Azure Multi-Factor Authentication.
 
-Přistupujete k nastavení související s ověřováním službou Multi-Factor Authentication z portálu Azure portal tak, že přejdete do **Azure Active Directory** > **MFA**.
+Přistupujete k nastavení související s Azure Multi-Factor Authentication z portálu Azure portal tak, že přejdete do **Azure Active Directory** > **MFA**.
 
 ![Azure portal – nastavení ověřování Azure Multi-Factor Authentication AD](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -33,20 +33,20 @@ Některá z těchto nastavení se vztahují na MFA Server, Azure MFA nebo obojí
 | Funkce | Popis |
 | ------- | ----------- |
 | Uzamčení účtu | Dočasně uzamčení účtů ve službě ověřování službou Multi-Factor Authentication Pokud příliš mnoho odepřen pokusy o ověření za sebou. Tato funkce platí jenom pro uživatele, kteří zadal PIN kód pro ověření. (MFA Server) |
-| [Blokování a odblokování uživatelů](#block-and-unblock-users) | Používá k blokování konkrétní uživatele na serveru MFA (místní) nebudou moct přijímat žádosti o ověření službou Multi-Factor Authentication. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány. |
+| [Blokování a odblokování uživatelů](#block-and-unblock-users) | Používá k blokování konkrétní uživatelé nebudou moct přijímat žádosti o ověření službou Multi-Factor Authentication. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány. |
 | [Upozornění na podvod](#fraud-alert) | Konfigurovat nastavení související s uživateli možnost nahlásit podvodné ověření požadavků |
 | Oznámení | Povolte oznámení událostí z MFA serveru. |
 | [Tokeny OATH](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Použít ke správě tokeny OATH pro uživatele v cloudových prostředích Azure MFA. |
 | [Nastavení telefonních hovorů.](#phone-call-settings) | Konfigurovat nastavení související s telefonních hovorů a greetings cloudových a místních prostředích. |
 | Poskytovatelé | Tím se zobrazí všechny existující zprostředkovatelé ověřování můžou přiřadit k vašemu účtu. Noví zprostředkovatelé ověřování, nemusí být vytvořena od 1. září 2018 |
 
-## <a name="manage-mfa-server"></a>Spravovat MFA Server
+## <a name="manage-mfa-server"></a>Správa serveru MFA
 
 Nastavení v této části jsou k dispozici pouze pro MFA Server.
 
 | Funkce | Popis |
 | ------- | ----------- |
-| Nastavení serveru | Stažení MFA serveru a vygenerovat aktivační přihlašovací údaje pro inicializaci prostředí |
+| nastavení serveru | Stažení MFA serveru a vygenerovat aktivační přihlašovací údaje pro inicializaci prostředí |
 | [Jednorázové přihlášení](#one-time-bypass) | Umožní uživateli se přihlásit bez provedení dvoustupňového ověřování po omezenou dobu. |
 | [Pravidla ukládání do mezipaměti](#caching-rules) |  Ukládání do mezipaměti se používá především místních systémů, jako je například VPN, odesílání více požadavků ověřování, zatímco první požadavek stále probíhá. Tato funkce umožňuje následné žádosti úspěšné automaticky, po úspěšném uživatele v průběhu prvního ověřování. |
 | Stav serveru | Zobrazíte stav vašich místních serverů MFA včetně verze, stav, IP adresu a poslední komunikace čas a datum. |
@@ -59,7 +59,7 @@ Generování sestav k dispozici zde je specifická pro Server MFA (místní). Az
 
 Použití _blokovat nebo odblokovat uživatele_ funkci, která uživatelům zabránit v přijetí žádosti o ověření. Jakékoli pokusy o ověření pro blokovaného uživatele budou automaticky odepírány. Uživatelé zůstat blokované 90 dnů od doby, které jsou blokovány.
 
-### <a name="block-a-user"></a>Zablokovat uživatele
+### <a name="block-a-user"></a>Blokování uživatele
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
 2. Přejděte do **Azure Active Directory** > **MFA** > **blokování a odblokování uživatelů**.
@@ -89,7 +89,7 @@ Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé můžete 
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
 * **Blokování uživatele při nahlášení podvodu**: Pokud uživatel nahlásí podvod, jejich účet je zablokovaný, po dobu 90 dnů nebo dokud se odblokuje správce svého účtu. Správce můžete zkontrolovat přihlášení pomocí sestavy přihlášení a provést příslušnou akci, k prevenci podvodného budoucí. Správce pak může [Odblokovat](#unblock-a-user) uživatelského účtu.
-* **Kód pro nahlášení podvodu při úvodním pozdravu**: Když uživatelé dostanou telefonního hovoru dvoustupňové ověřování, jsou obvykle stiskněte **#** k potvrzení jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stisknutím klávesy **#**. Tento kód je **0** ve výchozím nastavení, ale můžete ji přizpůsobit.
+* **Kód pro nahlášení podvodu při úvodním pozdravu**: Když uživatelé dostanou telefonního hovoru dvoustupňové ověřování, jsou obvykle stiskněte **#** k potvrzení jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stisknutím klávesy **#** . Tento kód je **0** ve výchozím nastavení, ale můžete ji přizpůsobit.
 
    >[!NOTE]
    >Výchozí hlasový pozdrav od Microsoftu vyzvat uživatele, aby stiskněte **0#** odesílat upozornění na možný podvod. Pokud chcete použít jiné než kód **0**, uložte a nahrajte vlastní pozdravy vlastním hlasem s odpovídající pokyny pro uživatele.
@@ -100,7 +100,7 @@ Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé můžete 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **přihlášení**. Podvod sestava je teď součástí standardních sestav Azure AD přihlášení.
 
-## <a name="phone-call-settings"></a>Nastavení telefonních hovorů
+## <a name="phone-call-settings"></a>Nastavení telefonních hovorů.
 
 ### <a name="caller-id"></a>ID volajícího
 
@@ -265,8 +265,8 @@ Pokud vaše organizace nasadí rozšíření NPS pro zajištění vícefaktorov�
 
 | Typ tenanta Azure AD | Možnosti funkcí, které důvěryhodné IP adresy |
 |:--- |:--- |
-| Spravované |**Konkrétní rozsah IP adres**: Správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet.|
-| Federovaná |**Všechny federovaní uživatelé**: Všechny federovaných uživatelů, kteří přihlásit z v rámci organizace může obejít dvoustupňové ověřování. Uživatelé obejít ověření pomocí deklarací identity, který vystaví služba Active Directory Federation Services (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. |
+| Spravovaní |**Konkrétní rozsah IP adres**: Správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet.|
+| Federované |**Všechny federovaní uživatelé**: Všechny federovaných uživatelů, kteří přihlásit z v rámci organizace může obejít dvoustupňové ověřování. Uživatelé obejít ověření pomocí deklarací identity, který vystaví služba Active Directory Federation Services (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. |
 
 Důvěryhodné IP adresy se nebude používat funguje pouze uvnitř firemní intranet. Pokud vyberete **všechny federované uživatele** možnost a uživatel přihlásí z mimo firemní intranet, má uživatel k ověření pomocí dvoustupňového ověření. Proces je stejný, i v případě, uživatel předloží deklaraci identity služby AD FS. 
 

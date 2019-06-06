@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946815"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431296"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -57,7 +57,7 @@ Skupiny zabezpečení sítě (Nsg) jsou podporované ve službě Application Gat
 
 - Provoz z **AzureLoadBalancer** musí být povoleny značky.
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>Seznam povolených Application Gateway přístup k několika zdrojové IP adresy
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Povolit Application Gateway přístup k několika zdrojové IP adresy
 
 V tomto scénáři pomocí skupin Nsg na podsítě Application Gateway. Umístěte následující omezení na podsítě v tomto pořadí:
 
@@ -118,7 +118,7 @@ Vyberte front-endovou IP adresu, kterou chcete přidružit k tímto naslouchací
 
 Vyberte front-endový port. Vyberte existující port nebo vytvořte novou. Zvolte libovolnou hodnotu od [povolený rozsah portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen běžně používaných portů, jako je například 80 a 443, ale povolené vlastní port, který je vhodný. Port je možné pro veřejně přístupných naslouchacích procesů nebo přístupem k privátní naslouchacích procesů.
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protocol
 
 Vyberte protokol HTTP nebo HTTPS:
 
@@ -209,13 +209,13 @@ Pro pravidlo na základě cest přidání více nastavení HTTP back-end, které
 
 ### <a name="redirection-setting"></a>Nastavení přesměrování
 
-Pokud přesměrování je nakonfigurovaný pro základní pravidlo, všechny žádosti na přidružený naslouchací proces se přesměrují do cíle. Toto je *globální* přesměrování. Pokud přesměrování je nakonfigurovaný pro pravidlo na základě cest, přesměrování pouze požadavky v oblasti určité lokalitě. Příkladem je nákupní košík oblast, která označuje symbolem */cart/\**. Toto je *na základě cest* přesměrování.
+Pokud přesměrování je nakonfigurovaný pro základní pravidlo, všechny žádosti na přidružený naslouchací proces se přesměrují do cíle. Toto je *globální* přesměrování. Pokud přesměrování je nakonfigurovaný pro pravidlo na základě cest, přesměrování pouze požadavky v oblasti určité lokalitě. Příkladem je nákupní košík oblast, která označuje symbolem */cart/\** . Toto je *na základě cest* přesměrování.
 
 Další informace o přesměrování najdete v tématu [přehled přesměrování ve službě Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
 #### <a name="redirection-type"></a>Typ přesměrování
 
-Zvolte typ potřebné přesměrování: *Permanent(301)*, *Temporary(307)*, *Found(302)*, nebo *naleznete v tématu other(303)*.
+Zvolte typ potřebné přesměrování: *Permanent(301)* , *Temporary(307)* , *Found(302)* , nebo *naleznete v tématu other(303)* .
 
 #### <a name="redirection-target"></a>Cíl přesměrování
 
@@ -259,7 +259,7 @@ Tato funkce je užitečná, pokud chcete zachovat uživatelskou relaci na stejn�
 
 Vyprázdnění připojení umožňuje řádně odeberte členy fondu back-end během plánovaných aktualizacích. Během vytváření pravidla můžete použít tato nastavení u všech členů fondu back-end. Zajišťuje, že všechny zrušit registraci instance back endového fondu nepřijímají žádné nové požadavky. Mezitím existujících žádostí mohou dokončit během nakonfigurovaného časového limitu. Vyprázdnění připojení se vztahuje na back endových instancí, které jsou výslovně odebrali z back endového fondu podle volání rozhraní API. Platí také pro back endových instancí, které jsou hlášeny jako *není v pořádku* podle stavu sondy.
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protocol
 
 Služba Application Gateway podporuje protokol HTTP i HTTPS pro směrování žádostí na back-end serverů. Pokud vyberete možnost protokolu HTTP, nešifrovaný provoz do back-end serverů. Pokud nešifrovaná komunikace se nedají použít, vyberte HTTPS.
 
@@ -269,7 +269,7 @@ Toto nastavení v kombinaci s HTTPS v podporuje naslouchací proces [-kompletní
 
 Toto nastavení určuje port, kde back-end serverů naslouchat provoz z aplikační brány. Můžete nakonfigurovat porty od 1 do 65535.
 
-### <a name="request-timeout"></a>Časový limit žádosti
+### <a name="request-timeout"></a>Časový limit požadavku
 
 Toto nastavení je počet sekund, po které application gateway bude čekat na přijetí odpovědi z back endový fond, dříve, než vrátí chybovou zprávu "vypršel časový limit připojení".
 

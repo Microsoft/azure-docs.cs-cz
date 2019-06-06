@@ -16,12 +16,12 @@ ms.date: 05/22/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae204ec1789f227150adc560d4a292404d23b7e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ec3909ffbb624284f999360140b7454098643062
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113310"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473363"
 ---
 # <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Dokončení kontroly přístupu skupin nebo kontrol přístupu aplikací ve službě Azure AD
 
@@ -40,7 +40,7 @@ Další informace najdete v tématu [kteří uživatelé musí mít licence?](ac
 
 Průběh můžete sledovat, jak se revidující dokončení jejich revize.
 
-1. Přihlaste se k Azure portal a otevřete [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+1. Přihlaste se k Azure portal a otevřete [stránka zásady správného řízení identit](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 1. V nabídce vlevo klikněte na tlačítko **kontrol přístupu**.
 

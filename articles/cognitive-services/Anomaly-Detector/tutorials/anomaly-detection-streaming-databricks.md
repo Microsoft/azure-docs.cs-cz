@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Detekce anomálií na streamovaných datech pomocí Azure Databricks'
+title: 'Kurz: Detekce anomálií ve streamovaných datech pomocí Azure Databricks'
 description: Pomocí rozhraní API detekce anomálií a Azure Databricks ke sledování anomálie v datech.
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: a00ad2523c215fa54d7d19d8c9e923b621f3081a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791572"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734665"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: Detekce anomálií na streamovaných datech pomocí Azure Databricks
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
 
-Microsoft Power BI Desktop je bezplatná aplikace, se kterou se můžete připojit k datům abyste je mohli transformovat a vizualizovat. API detekce anomálií, součástí Azure Cognitive Services, zajišťuje monitorování dat časových řad. Použít ke spuštění detekce anomálií na streamovaných datech téměř v reálném čase v tomto kurzu pomocí Azure Databricks. Bude ingestovat data twitteru pomocí služby Azure Event Hubs a importujte je do Azure Databricks pomocí konektoru služby Event Hubs pro Spark. Potom použijete rozhraní API pro detekci anomálií na streamovaných datech. 
+[Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) je rychlá, snadná a spolupráci založené na Apache Sparku analytická služba. API detekce anomálií, součástí Azure Cognitive Services, zajišťuje monitorování dat časových řad. Použít ke spuštění detekce anomálií na streamovaných datech téměř v reálném čase v tomto kurzu pomocí Azure Databricks. Bude ingestovat data twitteru pomocí služby Azure Event Hubs a importujte je do Azure Databricks pomocí konektoru služby Event Hubs pro Spark. Potom použijete rozhraní API pro detekci anomálií na streamovaných datech. 
 
 Následující obrázek ukazuje běh aplikace:
 
@@ -79,7 +79,7 @@ V této části vytvoříte pomocí pracovního prostoru Azure Databricks [webu 
 
     Vyberte **Vytvořit**.
 
-4. Vytvoření účtu trvá několik minut. 
+4. Vytvoření pracovního prostoru trvá několik minut. 
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
@@ -99,7 +99,8 @@ V této části vytvoříte pomocí pracovního prostoru Azure Databricks [webu 
    * Pro účely tohoto článku vytvořte cluster pomocí **5.2** modulu runtime. NESMÍ být zvolen **5.3** modulu runtime.
    * Ujistěte se, **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko zaškrtnuto. Zadejte dobu (v minutách) ukončit clusteru, pokud se cluster nepoužívá.
 
-     Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+     Vyberte **Vytvořit cluster**. 
+4. Vytvoření clusteru trvá několik minut. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
 ## <a name="create-a-twitter-application"></a>Vytvoření aplikace Twitter
 
@@ -127,7 +128,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
    ![Dialogové okno Přidat knihovnu](../media/tutorials/databricks-add-library-option.png "Dialogové okno Přidat knihovnu")
 
-2. Na stránce Nová knihovna jako **Zdroj** vyberte **Souřadnice Maven**. V části **Souřadnice** zadejte souřadnice balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
+2. Na stránce Nová knihovna pro **zdroj** vyberte **Maven**. Pro **koordinuje**, zadejte souřadnice balíčku, které chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
 
    * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
@@ -163,7 +164,7 @@ V tomto kurzu použijete [Azure anomálií detektor API služeb Cognitive Servic
 
     |Hodnota |Popis  |
     |---------|---------|
-    |Název     | Název prostředku detekce anomálií.        |
+    |Name     | Název prostředku detekce anomálií.        |
     |Předplatné     | Předplatné Azure, které prostředek bude přidružen.        |
     |Location     | Umístění Azure.        |
     |Cenová úroveň     | Cenová úroveň služby. Další informace o cenách detekce anomálií, naleznete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |
@@ -172,17 +173,13 @@ V tomto kurzu použijete [Azure anomálií detektor API služeb Cognitive Servic
 
      Vyberte **Vytvořit**.
 
-5. Po vytvoření prostředku z **přehled** kartu, vyberte možnost **zobrazení přístupových klíčů**.
+5. Po vytvoření prostředku z **přehled** kartu, zkopírujte a uložte **koncový bod** adresy URL, jak je znázorněno na snímku obrazovky. Potom vyberte **zobrazení přístupových klíčů**.
 
     ![Zobrazení přístupových klíčů](../media/tutorials/cognitive-services-get-access-keys.png "Zobrazení přístupových klíčů")
 
-    Zkopírujte také část adresy URL koncového bodu, jak je znázorněno na snímku obrazovky. Tuto adresu URL budete potřebovat v další části kurzu.
-
-6. V části **klíče**, vyberte ikonu kopírování vedle klíče, který chcete použít.
+6. V části **klíče**, vyberte ikonu kopírování vedle klíče, který chcete použít. Uložte přístupový klíč.
 
     ![Kopírování přístupových klíčů](../media/tutorials/cognitive-services-copy-access-keys.png "Kopírování přístupových klíčů")
-
-7. Uložte hodnoty adresy URL koncového bodu a přístupového klíče, které jste v tomto kroku načetli. Budete je potřebovat později v tomto kurzu.
 
 ## <a name="create-notebooks-in-databricks"></a>Vytvoření poznámkových bloků v Databricks
 
@@ -191,7 +188,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 - **SendTweetsToEventHub** –Poznámkový blob producenta, který použijete k získání tweetů z Twitteru a jejich streamování do služby Event Hubs.
 - **AnalyzeTweetsFromEventHub** – Poznámkový blok konzumenta, které umožňují čtení tweetů ze služby Event Hubs a spuštění detekce anomálií.
 
-1. V levém podokně vyberte **Pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** a pak vyberte **Poznámkový blok**.
+1. V pracovním prostoru Azure Databricks vyberte **pracovní prostor** v levém podokně. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** a pak vyberte **Poznámkový blok**.
 
     ![Vytvoření poznámkového bloku v Databricks](../media/tutorials/databricks-create-notebook.png "Vytvoření poznámkového bloku v Databricks")
 
@@ -205,7 +202,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 
 ## <a name="send-tweets-to-event-hubs"></a>Odeslání tweetů do služby Event Hubs
 
-V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné hodnoty pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
+V **SendTweetsToEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné hodnoty pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok extrahuje čas vytvoření a počet "Jako" s z tweety s klíčovým slovem "Azure" a tyto události streamování do Event Hubs v reálném čase.
 
 ```scala
 //
@@ -302,7 +299,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. Každá událost ve výstupu představuje tweet, který se ingestuje do služby Event Hubs.
+Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. Každá událost ve výstupu je kombinací časové razítko a počet přijatých do služby Event Hubs s "Jako".
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -325,7 +322,7 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
 
 ## <a name="read-tweets-from-event-hubs"></a>Čtení tweetů ze služby Event Hubs
 
-Do poznámkového bloku **AnalyzeTweetsFromEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro vaši službu Azure Event Hubs, kterou jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
+V **AnalyzeTweetsFromEventHub** Poznámkový blok, vložte následující kód a nahraďte zástupné hodnoty pro prostředek detekce anomálií, které jste vytvořili dříve. Tento poznámkový blok čte tweety, které jste předtím streamovali do služby Event Hubs pomocí poznámkového bloku **SendTweetsToEventHub**.
 
 Zapsání klientovi umožní zavolat detekce anomálií. 
 ```scala
@@ -387,7 +384,7 @@ object AnomalyDetector extends Serializable {
     return response.toString()
   }
 
-  // Calls the Latest Point Detection API for timeserie.
+  // Calls the Latest Point Detection API.
   def detectLatestPoint(series: Series): Option[AnomalySingleResponse] = {
     try {
       println("Process Timestamp: " + series.series.apply(series.series.length-1).timestamp.toString + ", size: " + series.series.length)
@@ -406,7 +403,7 @@ object AnomalyDetector extends Serializable {
     }
   }
 
-  // Calls the Batch Detection API for timeserie.
+  // Calls the Batch Detection API.
   def detectBatch(series: Series): Option[AnomalyBatchResponse] = {
     try {
       val response = processUsingApi(gson.toJson(series), batchDetectionUrl)
@@ -425,7 +422,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. : 
+Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu.
 
     import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
     import java.net.URL
@@ -447,10 +444,9 @@ Poté si připravte agregační funkci pro budoucí použití.
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
 import org.apache.spark.sql.types.{StructType, TimestampType, FloatType, MapType, BooleanType, DataType}
-//import org.apache.spark.sql.functions._
 import scala.collection.immutable.ListMap
 
-class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunction {
+class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
   override def inputSchema: StructType = new StructType().add("timestamp", TimestampType).add("value", FloatType)
   
   override def bufferSchema: StructType = new StructType().add("point", MapType(TimestampType, FloatType))
@@ -482,8 +478,8 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
       
       
       // 0.25 is maxAnomalyRatio. It represents 25%, max anomaly ratio in a time series.
-      // 95 is the sensitivity of the algorithms. 
-      // Check Anomaly detector API reference (https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-last-detect)
+      // 95 is the sensitivity of the algorithms.
+      // Check Anomaly detector API reference (https://aka.ms/anomaly-detector-rest-api-ref)
       
       val series: Series = new Series(detect_points.toArray, 0.25, 95, "hourly")
       val response: Option[AnomalySingleResponse] = AnomalyDetector.detectLatestPoint(series)
@@ -498,7 +494,7 @@ class AnomalyDetectorAggregationFunction_Hourly extends UserDefinedAggregateFunc
 
 ```
 
-Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu. 
+Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí se výstup jako v následujícím fragmentu kódu.
 
     import org.apache.spark.sql.Row
     import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
@@ -506,7 +502,7 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
     import scala.collection.immutable.ListMap
     defined class AnomalyDetectorAggregationFunction
 
-Načtěte data z centra událostí pro detekci anomálií.
+Načtěte data z centra událostí pro detekci anomálií. Nahraďte zástupné hodnoty hodnotami pro Azure Event Hubs, který jste vytvořili dříve.
 
 ```scala
 //
@@ -544,7 +540,7 @@ display(msgStream)
 
 ```
 
-Výstup teď vypadá podobně jako na následujícím obrázku. Placený pozornost, která vaše data v tabulce může lišit od data v tomto kurzu jsou data reálném čase.
+Výstup teď vypadá podobně jako na následujícím obrázku. Všimněte si, že vaše data v tabulce může lišit od data v tomto kurzu jsou data reálném čase.
 ![Načtení dat z Event hub](../media/tutorials/load-data-from-eventhub.png "Data načíst z centra událostí")
 
 Jste nyní streamovali data ze služby Azure Event Hubs do Azure Databricks v reálném čase pomocí konektoru služby Event Hubs pro Apache Spark. Další informace o použití konektoru služby Event Hubs pro Spark najdete v [dokumentaci ke konektorům](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs).
@@ -583,7 +579,8 @@ groupTime                       average
 
 ```
 
-Potom získá agregované výstup výsledku rozdílový. Protože detekce anomálií vyžaduje delší okno historie, používáme Delta uchovávat data historie bodu, který chcete detekovat. 
+Potom získá agregované výstup výsledku rozdílový. Protože detekce anomálií vyžaduje delší okno historie, používáme Delta uchovávat data historie bodu, který chcete detekovat. Nahraďte "[zástupný symbol: název tabulky]" s kvalifikovaným názvem tabulky Delta vytvořit (například "tweets"). Nahraďte "[zástupný symbol: název složky pro kontrolní body]" s hodnotou řetězce, který je jedinečný pokaždé, když spustíte tento kód (například "etl z eventhub-20190605").
+Další informace týkající se rozdílů Lake v Azure Databricks najdete [Delta Lake Průvodce](https://docs.azuredatabricks.net/delta/index.html)
 
 
 ```scala
@@ -599,6 +596,7 @@ groupStream.writeStream
 
 ```
 
+Nahraďte "[zástupný symbol: název tabulky]" se stejným názvem tabulky Delta vámi zvolená výše.
 ```scala
 //
 // Show Aggregate Result
@@ -625,26 +623,34 @@ groupTime                       average
 
 ```
 
-Teď data agregovaná časových řad průběžně ingestuje se do rozdílů. Pak můžete naplánovat úlohy každou hodinu pro detekci anomálií nejnovějším dostupným bodem. 
+Teď data agregovaná časových řad průběžně ingestuje se do rozdílů. Pak můžete naplánovat úlohu po hodinách pro detekci anomálií nejnovějším dostupným bodem. Nahraďte "[zástupný symbol: název tabulky]" se stejným názvem tabulky Delta vámi zvolená výše.
 
 ```scala
 //
-// Anomaly Detection with Batch query
+// Anomaly Detection
 //
 
 import java.time.Instant
+import java.time.format.DateTimeFormatter
+import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit
 
 val detectData = spark.read.format("delta").table("[Placeholder: table name]")
 
-// How long history you want to use in anomaly detection. It is hourly time series in this tutorial, so 72 means 72 hours. 
-val batchSize = 72
+// You could use Databricks to schedule an hourly job and always monitor the latest data point
+// Or you could specify a const value here for testing purpose
+// For example, val endTime = Instant.parse("2019-04-16T00:00:00Z")
+val endTime = Instant.now()
 
-// Change the endTime to where you want to detect. You could use Databricks to schedule a job and change it to the latest hour. 
-val endTime = Instant.parse("2019-04-16T00:00:00Z")
+// This is when your input of anomaly detection starts. It is hourly time series in this tutorial, so 72 means 72 hours ago from endTime.
+val batchSize = 72
 val startTime = endTime.minus(batchSize, ChronoUnit.HOURS)
 
-val series = detectData.filter($"groupTime" < endTime.toString && $"groupTime" >= startTime.toString).sort($"groupTime")
+val DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneOffset.UTC);
+
+val series = detectData.filter($"groupTime" <= DATE_TIME_FORMATTER.format(endTime))
+  .filter($"groupTime" > DATE_TIME_FORMATTER.format(startTime))
+  .sort($"groupTime")
 
 series.createOrReplaceTempView("series")
 
@@ -653,7 +659,7 @@ series.createOrReplaceTempView("series")
 // Register the function to access it
 spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 
-val adResult = spark.sql("SELECT '" + endTime.toString + "' as timestamp, anomalydetect(groupTime, average) as anomaly FROM series")
+val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
 Výsledek, jak je uvedeno níže: 
@@ -665,36 +671,21 @@ Výsledek, jak je uvedeno níže:
 |2019-04-16T00:00:00Z|  false|
 +--------------------+-------+
 
-```
-Výsledek detekce anomálií zpět do rozdílového výstup. 
-```scala
-//
-// Output Batch AD Result to delta
-//
 
-adResult.writeStream
-  .format("delta")
-  .outputMode("complete")
-  .option("checkpointLocation", "/delta/[Placeholder: table name]/_checkpoints/[Placeholder: folder name for checkpoints]")
-  .table("[Placeholder: table name]")
-  
-```
+That's it! Using Azure Databricks, you have successfully streamed data into Azure Event Hubs, consumed the stream data using the Event Hubs connector, and then run anomaly detection on streaming data in near real time.
+Although in this tutorial, the granularity is hourly, you can always change the granularity to meet your need. 
 
+## Clean up resources
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovali data do služby Azure Event Hubs, streamovaná data pomocí konektoru služby Event Hubs a pak jste spustili detekce anomálií na streamovaných datech téměř v reálném čase.
-I když v tomto kurzu členitost je po hodinách, můžete vždycky změnit rozlišovací schopnost odpovídat vašim požadavkům. 
+After you have finished running the tutorial, you can terminate the cluster. To do so, in the Azure Databricks workspace, select **Clusters** from the left pane. For the cluster you want to terminate, move the cursor over the ellipsis under **Actions** column, and select the **Terminate** icon and then select **Confirm**.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků
+![Stop a Databricks cluster](../media/tutorials/terminate-databricks-cluster.png "Stop a Databricks cluster")
 
-Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, v levém podokně v pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery). U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
+If you don't manually terminate the cluster it will automatically stop, provided you selected the **Terminate after \_\_ minutes of inactivity** checkbox while creating the cluster. In such a case, the cluster will automatically stop if it has been inactive for the specified time.
 
-![Zastavení clusteru Databricks](../media/tutorials/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
+## Next steps
 
-Pokud se cluster automaticky zastaví není ukončit ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po zadanou dobu neaktivní.
-
-## <a name="next-steps"></a>Další postup
-
-V tomto kurzu jste zjistili, jak pomocí Azure Databricks streamovat data do služby Azure Event Hubs a pak streamovaná data v reálném čase číst ze služby Event Hubs. Přejděte k dalšímu kurzu, kde se naučíte, jak volat rozhraní API detekce anomálií a vizualizaci pomocí Power BI desktopu anomálie. 
+In this tutorial, you learned how to use Azure Databricks to stream data into Azure Event Hubs and then read the streaming data from Event Hubs in real time. Advance to the next tutorial to learn how to call the Anomaly Detector API and visualize anomalies using Power BI desktop. 
 
 > [!div class="nextstepaction"]
->[Detekce anomálií služby batch pomocí služby Power BI desktopu](batch-anomaly-detection-powerbi.md)
+>[Batch anomaly detection with Power BI desktop](batch-anomaly-detection-powerbi.md)

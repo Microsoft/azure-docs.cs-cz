@@ -1,34 +1,34 @@
 ---
-title: Správa Azure Data Box prostřednictvím webu Azure portal | Dokumentace Microsoftu
-description: Popisuje, jak spravovat Azure Data Box pomocí webu Azure Portal.
+title: Správa Azure Data Box, Azure Data Box náročné prostřednictvím webu Azure portal | Dokumentace Microsoftu
+description: Popisuje, jak pomocí webu Azure portal ke správě zařízení Azure Data Box a Azure Data Box náročné.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 05/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950599"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427720"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Pomocí webu Azure portal ke správě vašeho zařízení Azure Data Box
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí webu Azure portal ke správě zařízení Azure Data Box a Azure Data Box Heavy
 
-Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které lze provést na zařízení Azure Data Box. Data Box můžete spravovat přes Azure Portal nebo v místním webovém uživatelském rozhraní.
+Tento článek se týká k Azure Data Box a Azure Data Box náročné. Tento článek popisuje některé komplexní pracovní postupy a úlohy správy, které lze provést na zařízení Azure Data Box. Můžete spravovat zařízení Data Box prostřednictvím webu Azure portal nebo přes místní webové uživatelské rozhraní.
 
-Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Azure Portal můžete použít ke správě objednávek a Data Boxu a ke sledování stavu objednávek až do jejich dokončení.
+Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Pomocí webu Azure portal můžete spravovat objednávky, spravovat zařízení Data Box a sledovat stav objednávky v upgradovaných do konce.
 
 
 ## <a name="cancel-an-order"></a>Zrušení objednávky
 
-Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. Objednávku je možné zrušit jen do doby, než je zpracována. Jakmile je objednávka zpracovaná a je připravený Data Box, není už možné objednávku zrušit. 
+Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. Objednávku je možné zrušit jen do doby, než je zpracována. Po zpracování objednávky zařízení Data Box je připravené a není možné zrušit pořadí.
 
 Když chcete zrušit objednávku, postupujte následovně.
 
-1.  Přejděte na **Přehled > Zrušit**. 
+1.  Přejděte na **Přehled > Zrušit**.
 
     ![Zrušení objednávky 1](media/data-box-portal-admin/cancel-order1.png)
 
@@ -36,11 +36,11 @@ Když chcete zrušit objednávku, postupujte následovně.
 
     ![Zrušení objednávky 2](media/data-box-portal-admin/cancel-order2.png)
 
-3.  Po zrušení objednávky se na portálu aktualizuje její stav na **Zrušeno**. 
+3.  Po zrušení objednávky se na portálu aktualizuje její stav na **Zrušeno**.
 
 ## <a name="clone-an-order"></a>Klonování objednávky
 
-V některých situacích může být užitečné klonování. Uživatel například používá Data Box k přenosu dat. Jak se postupně generují další data, může být potřeba další Data Box k přenosu těchto dat do Azure. V takovém případě se dá stejná objednávka jednoduše naklonovat.
+V některých situacích může být užitečné klonování. Uživatel například používá Data Box k přenosu dat. Generovaná víc dat, je potřeba pro další zařízení Data Box na tato data přenášíte do Azure. V takovém případě se dá stejná objednávka jednoduše naklonovat.
 
 Pokud chcete naklonovat objednávku, proveďte následující kroky.
 
@@ -53,7 +53,7 @@ Pokud chcete naklonovat objednávku, proveďte následující kroky.
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
 
-## <a name="delete-order"></a>Odstranit objednávku
+## <a name="delete-order"></a>Odstranění objednávky
 
 Po dokončení objednávky můžete chtít objednávku odstranit. Objednávka obsahuje vaše osobní údaje jako jméno, adresu a kontaktní údaje. Při odstranění objednávky se tyto osobní údaje odstraní.
 
@@ -67,15 +67,15 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
 3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na tlačítko **odstranit**.
 
-## <a name="download-shipping-label"></a>Stáhnout expediční štítek
+## <a name="download-shipping-label"></a>Stažení expedičního štítku
 
-Pokud displej E-ink vašeho Data Boxu nefunguje a nezobrazuje zpětný expediční štítek, budete možná muset expediční štítek stáhnout. 
+Pokud displej E-ink vašeho Data Boxu nefunguje a nezobrazuje zpětný expediční štítek, budete možná muset expediční štítek stáhnout. Neexistuje žádný E-ink zobrazovaný v případě velkého pole Data a proto tento pracovní postup se nevztahují na Data Box náročné.
 
 Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
 1.  Přejděte na **Přehled > Stáhnout expediční štítek**. Tato možnost je dostupná teprve po odeslání zařízení. 
 
-    ![Stáhnout expediční štítek](media/data-box-portal-admin/download-shipping-label.png)
+    ![Stažení expedičního štítku](media/data-box-portal-admin/download-shipping-label.png)
 
 2.  Tato akce stáhne následující zpětný expediční štítek. Štítek uložte a vytiskněte ho. Štítek přeložte a vložte do průhledného obalu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
 
@@ -95,7 +95,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
+## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
 Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí zařízení. Jiný uživatel možná muset být informováni, když se kopírování dat dokončí, abyste mohli ověřit, že data jsou v účtu úložiště Azure před odstraněním ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
 
@@ -110,7 +110,7 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
     ![Úprava podrobností o oznámení 2](media/data-box-portal-admin/edit-notification-details2.png)
 
 
-## <a name="download-order-history"></a>Stáhnout historii objednávek
+## <a name="download-order-history"></a>Stažení historie objednávky
 
 Po dokončení objednávky Data Boxu se vymažou data na discích zařízení. Po vyčištění zařízení si na webu Azure Portal můžete stáhnout historii objednávky.
 
@@ -120,7 +120,7 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
     ![Stažení historie objednávky](media/data-box-portal-admin/download-order-history-1.png)
 
-2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
+2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Bude existovat dvě sady odpovídající dva uzly na největší velkým pole Data protokolu. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     
    - **Copy logs** (Protokoly kopírování) – obsahují seznam souborů, u kterých během kopírování dat z Data Boxu do vašeho účtu úložiště Azure došlo k chybě.
    - **Audit logs** (Protokoly auditu) – obsahují informace o zapnutí a sdílení přístupu k Data Boxu, když je mimo datacentrum Azure.
@@ -215,4 +215,4 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [řešit problémy s Data Boxem](data-box-faq.md).
+- Zjistěte, jak [řešení potíží s poli Data a Data Box náročné problémy](data-box-troubleshoot.md).

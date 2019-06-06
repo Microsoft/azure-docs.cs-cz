@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015258"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743273"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat zařízení události připojení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB
 
@@ -154,7 +154,7 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
 
 4. V návrháři aplikace logiky posuňte doprava, dokud se nezobrazí běžné triggery. V části **šablony**, zvolte **prázdná aplikace logiky** tak, že můžete vytvářet aplikace logiky úplně od začátku.
 
-### <a name="select-a-trigger"></a>Vyberte trigger
+### <a name="select-a-trigger"></a>Výběr triggeru
 
 Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu trigger, který spustí pracovní postup, přijímá žádost přes protokol HTTP.
 
@@ -266,13 +266,13 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 4. Vyplňte **Podrobnosti předplatného událostí**: Zadejte popisný název a vyberte **Event Grid schématu**.
 
-5. Vyplňte **typy událostí** pole. Zrušte zaškrtnutí políčka **odběru pro všechny typy událostí** a vyberte **zařízení připojeno** a **odpojení zařízení** z nabídky.
+5. Vyplňte **typy událostí** pole. V rozevíracím seznamu vyberte pouze **zařízení připojeno** a **odpojení zařízení** z nabídky. Klikněte kamkoli jinam na obrazovce seznamu zavřete a uložte svůj výběr.
 
    ![Nastavte typy událostí hledání](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
 6. Pro **podrobnosti o koncovém bodu**, vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
 
-   ![Vyberte adresu url koncového bodu](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![Vyberte adresu url koncového bodu](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. Formulář by teď měl vypadat podobně jako v následujícím příkladu:
 
@@ -302,11 +302,9 @@ Teď, když je nastavení odběru události, můžeme otestovat připojení zař
 
    ![Připojovací řetězec pro zařízení](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>Spusťte simulátor Raspberry Pi
 
-1. Umožňuje použít webový simulátor Raspberry Pi pro simulaci zařízení připojení.
+Umožňuje použít webový simulátor Raspberry Pi pro simulaci zařízení připojení.
 
 [Spusťte simulátor Raspberry Pi](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
@@ -340,7 +338,7 @@ Namísto použití [webu Azure portal](https://portal.azure.com), můžete prov�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Tento kurz využívá prostředky, za které vám můžou být v předplatném Azure účtovány poplatky. Po dokončení tohoto zkušebního kurzu a otestování výsledků zakažte nebo odstraňte prostředky, které si nechcete nechat.
+Tento kurz využívá prostředky, za které vám můžou být v předplatném Azure účtovány poplatky. Až budete hotovi vyzkoušet kurz a testování výsledky, zakázat nebo odstranit prostředky, které nechcete zachovat.
 
 Pokud nechcete přijít o práci na aplikaci logiky, místo odstranění ji zakažte.
 

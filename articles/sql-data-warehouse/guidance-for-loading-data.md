@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load data
-ms.date: 04/17/2018
+ms.date: 05/31/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: f1bfd6a9f7b5d6b7622b3fc79848b986172ff746
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1b5af710feb743a30ac4a2af94b6e7e8b6c56595
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240848"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479894"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Osvědčené postupy načítání dat do služby Azure SQL Data Warehouse
 
@@ -102,7 +102,9 @@ Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich 
 
 ## <a name="creating-statistics-after-the-load"></a>Vytvoření statistiky po načtení
 
-Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  Podrobné vysvětlení statistiky najdete v tématu [Statistika](sql-data-warehouse-tables-statistics.md). Následující příklad vytvoří statistiku pro pět sloupců tabulky Customer_Speed.
+Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  To můžete udělat ručně nebo můžete povolit [automatické vytváření statustics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
+
+Podrobné vysvětlení statistiky najdete v tématu [Statistika](sql-data-warehouse-tables-statistics.md). Následující příklad ukazuje, jak ručně vytvořit statistiku pro pět sloupců tabulky Customer_Speed.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

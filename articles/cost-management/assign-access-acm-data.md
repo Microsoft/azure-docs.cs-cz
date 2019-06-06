@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785860"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493758"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
@@ -170,6 +170,13 @@ Přístup do skupiny prostředků vyžaduje alespoň oprávnění Čtenář nák
 7. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
 8. K přiřazení přístupu, vyhledejte a vyberte uživatele.
 9. Klikněte na **Uložit**.
+
+## <a name="cross-tenant-authentication-issues"></a>Problémy s ověřováním mezi tenanty
+
+Azure Cost Management v současné době má omezenou podporu pro ověřování mezi tenanty. V některých případech při pokusu o ověření mezi tenanty, můžete obdržet **přístup byl odepřen** chyby v analýze nákladů. Této situaci může dojít, pokud se konfigurace řízení přístupu na základě rolí (RBAC) do jiného tenanta předplatného a pak zkuste zobrazit nákladech.
+
+*Chcete-li vyřešit tento problém*: Po konfiguraci RBAC mezi tenanty, počkejte hodinu. Poté se pokuste zobrazení nákladů při analýze nákladů nebo udělit přístup Cost Management pro uživatele v obě klienty.  
+
 
 ## <a name="next-steps"></a>Další postup
 

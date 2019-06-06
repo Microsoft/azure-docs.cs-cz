@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: cc65d6d3f7e7dcc08ea29ecc8a299b556563135b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bfa3e5a943ee59b1ed335f45e113a60f62572675
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236321"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735029"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s AzCopy
 
@@ -28,7 +28,7 @@ AzCopy je nástroj příkazového řádku, který vám pomůže zkopírovat obje
 
 ## <a name="download-azcopy"></a>Stáhněte si nástroje AzCopy
 
-Nejprve stáhněte spustitelný soubor AzCopy V10 do libovolné složky ve vašem počítači. Pro usnadnění zvažte přidání umístění složky AzCopy do systémové cesty pro snadné použití.
+Nejprve stáhněte spustitelný soubor AzCopy V10 do libovolného adresáře v počítači. 
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (cíl)
@@ -39,13 +39,15 @@ Nejprve stáhněte spustitelný soubor AzCopy V10 do libovolné složky ve vaše
 
 ## <a name="run-azcopy"></a>Spuštění nástroje AzCopy
 
-Z příkazového řádku přejděte do adresáře, kam jste stáhli soubor.
+Pro usnadnění zvažte přidání umístění adresáře ke spustitelnému souboru nástroje AzCopy do systémové cesty pro snadné použití. Tímto způsobem můžete zadat `azcopy` z libovolného adresáře v systému.
 
-Chcete-li zobrazit seznam příkazů AzCopy, zadejte `azCopy`a potom stiskněte klávesu ENTER.
+Pokud se rozhodnete nepřidávat adresář AzCopy do cesty, budete muset změňte adresáře na umístění nástroje AzCopy spustitelného souboru a typu `azcopy` nebo `.\azcopy` v prostředí Windows PowerShell příkazové řádky.
 
-Další informace o konkrétním příkazu, zadejte `azCopy` za nímž následuje název příkazu.
+Chcete-li zobrazit seznam příkazů, zadejte `azcopy -h` a potom stiskněte klávesu ENTER.
 
-Například pro další informace o `copy` příkazu, zadejte `azcopy copy`a potom stiskněte klávesu ENTER.
+Další informace o konkrétní příkaz, jednoduše uvést název příkazu (například: `azcopy list -h`).
+
+![Vložená Nápověda](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
 Předtím, než můžete dělat nic smysluplné pomocí nástroje AzCopy, musíte se rozhodnout, jak vám poskytnout přihlašovací údaje pro ověření do služby storage.
 
@@ -81,7 +83,7 @@ Tyto role je možné přiřadit k vaší identity v některém z těchto oborů:
 
 Zjistěte, jak ověřit a přiřazení rolí, najdete v článku [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaši identitu se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo složky. V seznamu ACL potřebuje vaši identitu v cílové složce oprávnění k zápisu a oprávnění spouštět v kontejneru a každé nadřazené složky.
+Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaši identitu se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo adresáře. V seznamu ACL vaši identitu potřebuje oprávnění k zápisu na cílový adresář a oprávnění spouštět v kontejneru a každý nadřazený adresář.
 
 Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
@@ -102,7 +104,7 @@ Tyto role je možné přiřadit k vaší identity v některém z těchto oborů:
 
 Zjistěte, jak ověřit a přiřazení rolí, najdete v článku [udělit přístup k Azure data objektů blob a fronty pomocí RBAC na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaši identitu se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo složky. V seznamu ACL musí vaši identitu v cílové složce oprávnění ke čtení a provádění oprávnění na kontejner a všechny nadřazené složky.
+Není nutné mít jednu z těchto rolí přiřadit k vaší identity, pokud vaši identitu se přidá do seznamu řízení přístupu (ACL) cílový kontejner nebo adresáře. V seznamu ACL musí vaše identity oprávnění ke čtení pro cílový adresář a oprávnění spouštět v kontejneru a každý nadřazený adresář.
 
 Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 

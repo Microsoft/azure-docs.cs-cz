@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 2/1/2019
 ms.author: normesta
 ms.reviewer: seguler
-ms.openlocfilehash: 261fd9f820f3e5421d9d0f4f7c9220ec31003283
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d5077b75ff9e760917e9d5d02bea49dc4967a08b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148440"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473447"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení služby Blob storage jako systém souborů s blobfuse
 
 ## <a name="overview"></a>Přehled
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) je virtuálním souborovém systému ovladače pro úložiště objektů Blob v Azure. Blobfuse umožňuje přístup k existující data objektů blob bloku v účtu úložiště v systému Linux. Azure Blob storage je služba pro úložiště objektů a nemá hierarchického oboru názvů. Blobfuse poskytuje tento obor názvů pomocí schématu virtuální adresář s dopředného lomítka "/" jako oddělovač.  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) je virtuálním souborovém systému ovladače pro úložiště objektů Blob v Azure. Blobfuse umožňuje přístup k existující data objektů blob bloku v účtu úložiště v systému Linux. Blobfuse používá schéma virtuální adresář s dopředného lomítka "/" jako oddělovač.  
 
 Tato příručka ukazuje, jak používat blobfuse a připojení kontejneru úložiště objektů Blob v Linuxu a používat data. Další informace o blobfuse, přečtěte si podrobnosti v [úložiště blobfuse](https://github.com/Azure/azure-storage-fuse).
 

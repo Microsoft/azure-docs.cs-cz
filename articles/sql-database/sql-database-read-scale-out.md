@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/19/2019
-ms.openlocfilehash: cbcdcfd151951334246a4e85d9f521a15bb6269d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 1b452fb0bac91429793f8d55e439c36c70784722
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146103"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492722"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Použít repliky jen pro čtení pro úlohy dotazu jen pro čtení – nástroj pro vyrovnávání zatížení
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Modul Azure PowerShell – Resource Manager je stále podporuje Azure SQL Database, ale všechny budoucí vývoj je Az.Sql modulu. Tyto rutiny najdete v části [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulu Az a moduly AzureRm podstatně totožné.
 
 Jako součást [architektura pro vysokou dostupnost](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability), každá databáze v rámci úrovně služeb Premium, pro důležité obchodní informace nebo velkokapacitní je automaticky zřízena primární repliku a několika sekundárních replik. Sekundární repliky se zřizují se stejnou velikostí výpočetních jako primární repliku. **Horizontální navýšení kapacity pro čtení** funkce umožňuje Vyrovnávání zatížení SQL jen pro čtení na zatížení databáze využití kapacity o jednu z replik jen pro čtení místo sdílení repliky pro čtení i zápis. Tímto způsobem úlohy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Tato funkce je určena pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou třeba analýzy. Získají může zvýšit efektivitu tuto dodatečnou kapacitu bez dalších poplatků.
 

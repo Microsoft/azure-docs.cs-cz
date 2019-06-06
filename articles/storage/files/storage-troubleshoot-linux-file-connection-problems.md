@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0a6b48dbba232c06945b00d5107581d8d0c017b0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987702"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472415"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -110,14 +110,13 @@ Funkce šifrování protokolu SMB 3.0 pro Linux byla zavedena v 4.11 jádra. Tat
 
 Pokud klient Linux SMB nepodporuje šifrování, připojení Azure souborů pomocí protokolu SMB 2.1 z virtuálního počítače Linux Azure, který je ve stejném datacentru jako sdílené. Ověřte, že [vyžadovat zabezpečený přenos]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) je zakázáno v účtu úložiště. 
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Přístup byl odepřen" při přechodu na sdílené složky Azure na portálu
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Ověření se nezdařilo" při přechodu na sdílené složky Azure na portálu
 
 Při procházení sdílené složky Azure na portálu může zobrazit následující chyba:
 
-Přístup je odepřený.  
-Nemáte přístup.  
-Vypadá to, že nemáte přístup k tomuto obsahu. Chcete-li získat přístup, obraťte se prosím vlastníka.  
+Selhání autorizace  
+Nemáte přístup
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. příčina: Váš uživatelský účet nemá přístup k účtu úložiště
 
@@ -223,7 +222,7 @@ Jádro Linuxu upgradujte následující verze, které mají opravu tohoto probl�
 - 4.12.11+
 - Všechny verze, které jsou větší než nebo rovna hodnotě 4.13
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nelze vytvořit symbolické odkazy - ln: se nepovedlo vytvořit symbolický odkaz, 't': Operace není podporována
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>Nelze vytvořit symbolické odkazy - ln: se nepovedlo vytvořit symbolický odkaz, 't': Tato operace není podporována
 
 ### <a name="cause"></a>Příčina
 Ve výchozím nastavení nemá připojení sdílené složky Azure v Linuxu pomocí CIFS povolení podpory pro symbolické odkazy (symbolických odkazů). Zobrazí se chyba takto:

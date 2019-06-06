@@ -5,16 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 01133662ca3a7364efd362f6db99d33243b2ad4b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/05/2019
+ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073548"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66732868"
 ---
 # <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Omezení ve službě Azure Database for PostgreSQL – jeden Server
-Následující části popisují kapacitu a limity funkční ve službě database.
+Následující části popisují kapacitu a limity funkční ve službě database. Pokud chcete další informace o úrovních prostředku (compute, paměti, úložišti), najdete v článku [cenové úrovně](concepts-pricing-tiers.md) článku.
+
 
 ## <a name="maximum-connections"></a>Maximální počet připojení
 Maximální počet připojení na cenová úroveň a virtuálními jádry jsou následující: 
@@ -27,7 +28,7 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Obecné použití| 4| 250|
 |Obecné použití| 8| 480|
 |Obecné použití| 16| 950|
-|Obecné použití| 32| 1 500|
+|Obecné použití| 32| 1500|
 |Obecné použití| 64| 1900|
 |Paměťově optimalizované| 2| 300|
 |Paměťově optimalizované| 4| 500|

@@ -2,20 +2,20 @@
 title: Technický profil ověření definování ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Technický profil Azure Active Directory definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11efd1fa3431d8200545cf1327e98cec6ed1f59e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683162"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511908"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 **ValidationTechnicalProfiles** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Technický profil má být použit pro ověřování, některé nebo všechny výstupní deklarace identit odkazující technického profilu. |
 
@@ -57,7 +57,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 **ValidationTechnicalProfile** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Předběžné podmínky | 0:1 | Seznam předběžné požadavky, které musí být splněny pro technický profil ověření ke spuštění. |
 
@@ -70,7 +70,7 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 
 **Předběžné podmínky** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Hodnota | 1: n | Data, která se používá kontrolu. Pokud je typ této kontroly `ClaimsExist`, toto pole určuje ClaimTypeReferenceId dotazu. Pokud je typ kontroly `ClaimEquals`, toto pole určuje ClaimTypeReferenceId dotazu. Zatímco jiný element hodnota obsahuje hodnotu, která se má zkontrolovat.|
 | Akce | 1:1 | Akce, která se má vzít při splnění předběžná kontrola v rámci na krok Orchestrace. Hodnota **akce** je nastavena na `SkipThisValidationTechnicalProfile`. Určuje, že by neměl být spouštěn technický profil přidruženého ověřování. |

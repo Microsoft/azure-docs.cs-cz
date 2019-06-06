@@ -4,14 +4,14 @@ description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a A
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5203519b1553de54d4e3cd1fafe6fb3d1c18ebd6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 63d729f19b0ef20d0e7a716d6857b4627095856b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779960"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476979"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -35,6 +35,8 @@ Nasazení do **předplatné**, použijte [New-AzDeployment](/powershell/module/a
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
+Nasazení skupiny pro správu se v současné době podporují jenom přes rozhraní REST API. Zobrazit [nasazení prostředků pomocí šablon Resource Manageru a rozhraní REST API Resource Manageru](resource-group-template-deploy-rest.md).
+
 V příkladech v tomto článku se používá nasazení skupiny prostředků. Další informace o nasazení předplatných najdete v tématu [vytvoření skupiny prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -44,7 +46,7 @@ Budete potřebovat k nasazení šablony. Pokud již nemáte, stáhněte a uložt
 Pokud používáte Azure Cloud shell k nasazení šablony, budete muset nainstalovat Azure PowerShell a připojte se k Azure:
 
 - **Instalace rutin Powershellu pro Azure v místním počítači.** Další informace najdete v tématu [Začínáme s Azure PowerShellem](/powershell/azure/get-started-azureps).
-- **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
+- **Připojení k Azure s využitím [připojit AZAccount](/powershell/module/az.accounts/connect-azaccount)** . Pokud máte více předplatných Azure, může být také potřeba spustit [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Další informace najdete v tématu [použít několik předplatných Azure](/powershell/azure/manage-subscriptions-azureps).
 
 ## <a name="deploy-local-template"></a>Nasazení místního šablony
 

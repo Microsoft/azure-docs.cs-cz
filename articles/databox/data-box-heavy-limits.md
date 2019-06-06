@@ -8,14 +8,15 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 115c1a3ab9a7ffe564924edce47f9915448f97e9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: da518de4702925ebad29727e2bdce99e67d40249
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248006"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427763"
 ---
-# <a name="azure-data-box-heavy-limits"></a>Azure Data Box náročné omezení
+# <a name="azure-data-box-heavy-limits-preview"></a>Azure Data Box náročné omezení (preview)
+
 
 Tato omezení zvažte, jak nasadit a provozovat zařízení Azure Data Box náročné. Následující tabulka popisuje tato omezení pro zařízení Data Box.
 

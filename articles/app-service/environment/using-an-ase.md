@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d536e9d14edfa17e890480c07951eccb70e9eb9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9c34d3cfd5ce9bb3a8f9a9072f2843331065100
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228316"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496509"
 ---
 # <a name="use-an-app-service-environment"></a>Pomocí služby App Service environment #
-
-## <a name="overview"></a>Přehled ##
 
 Azure App Service Environment je nasazení služby Azure App Service do podsítě ve virtuální síti Azure zákazníka. Skládá se z:
 
@@ -62,17 +60,14 @@ K vytvoření aplikace ve službě ASE:
 
 1. Vyberte váš operační systém. 
 
-    * Hostování aplikace pro Linux v ASE je nová funkce ve verzi preview, takže doporučujeme nepřidávejte Linuxových aplikací do služby ASE, na kterém aktuálně běží úlohy v produkčním prostředí. 
-    * Přidání Linuxovou aplikaci do služby ASE znamená, že služba ASE bude také v režimu náhledu. 
-
 1. Vyberte existující plán služby App Service ve vaší službě ASE nebo vytvořte novou pomocí následujících kroků:
 
     a. Vyberte **vytvořit nový**.
 
     b. Zadejte název plánu služby App Service.
 
-    c. Vyberte svoji službu ASE v **umístění** rozevíracího seznamu. Hostování aplikace pro Linux v ASE je povolena pouze v 6 oblastech, v tuto chvíli: **Západní USA, východní USA, západní Evropa, Severní Evropa, Austrálie – východ, Asie – jihovýchod.** 
-
+    c. Vyberte svoji službu ASE v **umístění** rozevíracího seznamu. 
+    
     d. Vyberte **izolované** cenovou úroveň. Vyberte **vyberte**.
 
     e. Vyberte **OK**.

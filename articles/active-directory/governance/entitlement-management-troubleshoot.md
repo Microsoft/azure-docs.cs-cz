@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/25/2019
+ms.date: 05/30/2019
 ms.author: rolyon
-ms.reviewer: mwahl
+ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ca7955186d6c6fb1dff2acd6a2d5badd1cedaef
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.openlocfilehash: c2526ef10c3080dae1b32881a109a9436a0fd390
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64541507"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473820"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Řešení potíží se správou oprávnění Azure AD (Preview)
 
@@ -34,12 +34,24 @@ Tento článek popisuje některé položky, měli byste zkontrolovat při řeše
 
 ## <a name="checklist-for-entitlement-management-administration"></a>Kontrolní seznam pro oprávnění pro správu
 
-* Pokud obdržíte zprávu o odepření při konfiguraci oprávnění řízení přístupu a jste globální správce, ujistěte se, že má váš adresář [licence Azure AD Premium P2 (nebo EMS E5)](entitlement-management-overview.md#prerequisites).  
+* Pokud obdržíte zprávu o odepření při konfiguraci oprávnění řízení přístupu a jste globální správce, ujistěte se, že má váš adresář [licence Azure AD Premium P2 (nebo EMS E5)](entitlement-management-overview.md#license-requirements).  
 * Je-li získat zprávu při vytváření nebo zobrazení přístup balíčků o odepření přístupu a jsou členy skupiny katalogu creator, je nutné vytvořit katalog před vytvořením první přístup k balíčku.
 
 ## <a name="checklist-for-adding-a-resource"></a>Kontrolní seznam pro přidání prostředku
 
+* Pro aplikace prostředků, přístup k balíčku musí mít alespoň jednu roli prostředku, který je možné přiřadit. Role jsou definované vlastní aplikace a spravuje ve službě Azure AD. Všimněte si, že na webu Azure portal může také zobrazit instančních objektů pro služby, které nelze vybrat jako aplikace.  Zejména **Exchange Online** a **Sharepointu Online** jsou služby, ne aplikace, které mají role prostředků v adresáři, takže nemůže být součástí balíčku přístup.  Místo toho použijte licencování na základě skupiny vytvořit příslušnou licenci pro uživatele, kteří potřebují přístup k těmto službám.
+
+* Pro skupinu prostředků, přístup k balíčku bude musí být schopen upravitelný ve službě Azure AD.  Skupiny, které pocházejí z místní služby Active Directory nelze přiřadit jako prostředky, protože jejich vlastník nebo atributy členu nelze změnit, ve službě Azure AD.  
+
+* Jednotlivé dokumenty a Sharepointu Online knihovny dokumentů nelze přidat jako prostředky.  Místo toho vytvořte skupiny zabezpečení služby Azure AD, přístup k balíčku zahrnout skupiny a role lokality a v Sharepointu Online pomocí této skupiny pro řízení přístupu k dokumentu nebo knihovny dokumentů.
+
 * Pokud existují uživatelé, které jsou už přiřazené k prostředku, který chcete spravovat s balíčkem aplikace přístup, ujistěte se, že uživatelé jsou přiřazeny k přístupu k balíčku s příslušnou zásadou. Například můžete chtít zahrnout skupiny, přístupu k balíčku, který už má uživatelů ve skupině. Pokud tito uživatelé ve skupině vyžadovat nadále přístup, musí mít příslušnou zásadu přístupu balíčků tak, aby o přístup ke skupině. Přístup k balíčku můžete přiřadit požádá uživatele o přístup k balíčku obsahující tento prostředek nebo přiřazením přímo k přístupu k balíčku. Další informace najdete v tématu [upravovat a spravovat existující balíček přístup](entitlement-management-access-package-edit.md).
+
+## <a name="checklist-for-providing-external-users-access"></a>Kontrolní seznam pro poskytování přístupu externích uživatelů
+
+* Pokud je B2B [seznamu povolených](../b2b/allow-deny-list.md), uživatelé, jejichž adresáře nejsou povoleny. nebude moct požádat o přístup.
+
+* Ujistěte se, že neexistují žádné [zásady podmíněného přístupu](../conditional-access/require-managed-devices.md) , který by jinak znemožňovaly externí uživatelé si vyžádat přístup nebo nebudou moct používat aplikace v balíčcích přístup.
 
 ## <a name="checklist-for-request-issues"></a>Kontrolní seznam pro požadavek problémy
 
@@ -47,7 +59,7 @@ Tento článek popisuje některé položky, měli byste zkontrolovat při řeše
 
 * Když se uživatel přihlásí k portálu Můj přístup k žádosti přístup k balíčku, ujistěte se, že ověřování pomocí účtu organizace. Účet organizace může být buď účet v adresáři zdroje nebo do adresáře, který je součástí některou ze zásad přístupu k balíčku. Pokud uživatelský účet není účet organizace, nebo adresář není obsažena v zásadách, uživatel neuvidí přístup k balíčku. Další informace najdete v tématu [žádat o přístup k balíčku přístup](entitlement-management-request-access.md).
 
-* Pokud uživatel je blokován přihlášení do adresáře zdrojů, nebudou moct požádat o přístup na portálu Moje přístup. Předtím, než uživatel může požádat o přístup, musíte odebrat blok přihlášení z profilu uživatele. Zrušit blokování přihlášení, na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **uživatelé**, klepněte na uživatele a potom klikněte na **profilu**. Upravit **nastavení** a u **zablokovat přihlášení** k **ne**. Další informace najdete v tématu [přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md)
+* Pokud uživatel je blokován přihlášení do adresáře zdrojů, nebudou moct požádat o přístup na portálu Moje přístup. Předtím, než uživatel může požádat o přístup, musíte odebrat blok přihlášení z profilu uživatele. Zrušit blokování přihlášení, na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **uživatelé**, klepněte na uživatele a potom klikněte na **profilu**. Upravit **nastavení** a u **zablokovat přihlášení** k **ne**. Další informace najdete v tématu [přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Můžete také zkontrolovat, pokud uživatel byl zablokován z důvodu [zásad Identity Protection](../identity-protection/howto-unblock-user.md).
 
 * Na portálu Moje přístup, pokud je uživatel žadatele a schvalovatele, neuvidí jejich žádost o přístup k balíčku na **schválení** stránky. Toto chování je záměrné – uživatel nemůže schválit požadavek na své vlastní. Ujistěte se, že přístup k balíčku požadují má další schvalovatele nakonfigurované v této zásadě. Další informace najdete v tématu [upravit existující zásadu](entitlement-management-access-package-edit.md#edit-an-existing-policy).
 

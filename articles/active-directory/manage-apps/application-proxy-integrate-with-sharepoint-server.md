@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e491f0c452b7b51eac4e8cccab1cc7ed8430e49
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65783445"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473775"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy
 
@@ -114,10 +114,10 @@ Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý poč�
 
 Teď, když jste nakonfigurovali KCD, budete připraveni ke konfiguraci Azure AD Application Proxy.
 
-1. Publikování webu služby SharePoint s následujícím nastavením. Podrobné pokyny najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md).
-   * **Interní adresa URL**: Interní adresa URL Sharepointu, který jste vybrali dříve, jako například **<https://SharePoint/>**.
+1. Publikování webu služby SharePoint s následujícím nastavením. Podrobné pokyny najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+   * **Interní adresa URL**: Interní adresa URL Sharepointu, který jste vybrali dříve, jako například **<https://SharePoint/>** .
    * **Metoda předběžného ověřování služby**: Azure Active Directory
-   * **Přeložit adresy URL v hlavičkách**: NE
+   * **Přeložit adresy URL v hlavičkách**: NO
 
    >[!TIP]
    >SharePoint používá _hlavičku hostitele_ hodnotu pro vyhledávání webu. Generuje také odkazy na základě této hodnoty. Výsledkem je, že je odkaz, který SharePoint vygeneruje publikované adresy URL, která je správně nastavený na použití externí adresu URL. Nastavením této hodnoty na **Ano** také povolí konektor k předání požadavku do back endové aplikace. Nicméně, nastavením této hodnoty na **ne** znamená, že konektor nebude odesílat název interního hostitele. Místo toho konektor odešle hlavičku hostitele jako adresu URL publikované na back endové aplikace.

@@ -3,7 +3,7 @@ title: Monitorování identity a přístupu v Azure Security Center | Dokumentac
 description: Zjistěte, jak používat funkce identity a přístupu v Azure Security Center k monitorování aktivit přístupu uživatelů a problémů souvisejících s identitou.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 5517bb59d168ffa8d9339d9e765c385cef6db4ce
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 05/30/2018
+ms.author: monhaber
+ms.openlocfilehash: 16548ae75567fa3ba6f8c9135d61945bd28d2db8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389481"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428419"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
@@ -42,7 +42,6 @@ Monitorování aktivit souvisejících s identitou umožňuje proaktivně jednat
 > [!NOTE]
 > Pokud vaše předplatné má více než 600 účty, Security Center se nepodařilo spustit doporučení Identity ve vašem předplatném. Doporučení, která se nespustí, jsou uvedeny v části "nedostupná posouzení", které jsou popsány níže.
 Security Center se nepodařilo spustit doporučení Identity správce agentů partnerský Cloud Solution Provider (CSP).
->
 >
 
 Zobrazit [doporučení](security-center-identity-access.md#recommendations) seznam identit a přístupu doporučení poskytovaných službou Security Center.
@@ -111,23 +110,20 @@ V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné 
 
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
 |----|----|----|----|
-|Předplatné|50|Povolte MFA pro aplikace pro správu Azure účty s oprávněními vlastníka v rámci předplatného|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními správce nedošlo k porušení zabezpečení účtů nebo prostředků.|
-|Předplatné|50|Povolit službu security center ve vašich předplatných |Povolit službu Security center na všechna předplatná pro rozšířenou detekci hrozeb, JIT, seznamu povolených aplikací a pokročilé doporučení |
-|Předplatné|50|Povolit security center úrovně standard na předplatná |Povolte službu Security center úrovně Standard na všechna předplatná pro rozšířenou detekci hrozeb, JIT, seznamu povolených aplikací a pokročilé doporučení.|
-|Předplatné|40|Povolte MFA pro aplikace pro správu Azure účty s oprávněním pro zápis v předplatném|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků.|
-|Předplatné|30|Z předplatného odebrat externí účty s oprávněními vlastníka|Z předplatného odeberte externí účty s oprávněními vlastníka, aby nedocházelo k nemonitorovanému přístupu. |
-|Předplatné|30|Povolte MFA pro aplikace pro správu Azure účty s oprávněním pro čtení v rámci předplatného|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků.|
-|Předplatné|25|Odeberte z předplatného externí účty s oprávněním pro zápis|Z předplatného odeberte externí účty s oprávněním pro zápis, aby nedocházelo k nemonitorovanému přístupu. |
-|Předplatné|20|Z předplatného odebrat zastaralé účty s oprávněními vlastníka|Odeberte zastaralé účty s oprávněními vlastníka z vašich předplatných. Zastaralé účty jsou účty, u kterých přihlášení je zablokovaný ve službě Azure AD.|
-|Předplatné|5|Odeberte zastaralé účty z předplatného|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. Zastaralé účty jsou účty, u kterých přihlášení je zablokovaný ve službě Azure AD.|
-|Předplatné|5|Určení více než jednoho vlastníka předplatného|Pokud chcete mít redundance přístupu správce určete více než jednoho vlastníka předplatného.|
-|Předplatné|5|Určit vlastníky až 3 v rámci předplatného|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
-|Trezor klíčů|5|Povolení diagnostických protokolů v Key Vault|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
-|Předplatné|15|Z předplatného odebrat externí účty s oprávněním pro čtení|Z předplatného odeberte externí účty s oprávněními pro čtení, aby nedocházelo k nemonitorovanému přístupu.|
-|Předplatné|1|Poskytnutí podrobností kontaktů zabezpečení|Zadejte kontaktní informace o zabezpečení pro každé z vašich předplatných. Kontaktní údaje je e-mailovou adresu a telefonní číslo. Informace, používá se vás kontaktovat, pokud náš tým zabezpečení zjistí ohrožení vašich prostředků|
+|Předplatné|50|MFA povolena na účty s oprávněními vlastníka v rámci předplatného|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními správce nedošlo k porušení zabezpečení účtů nebo prostředků.|
+|Předplatné|40|Na vaše předplatné účty s oprávněním pro zápis musí být aktivována MFA|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků.|
+|Předplatné|30|By měla být z předplatného odebrat externí účty s oprávněními vlastníka|Z předplatného odeberte externí účty s oprávněními vlastníka, aby nedocházelo k nemonitorovanému přístupu.|
+|Předplatné|30|U vašeho předplatného účty s oprávněním pro čtení by měl zapnuté MFA.|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků.|
+|Předplatné|25|Externí účty s zápisu, že by měla být z předplatného odebrat oprávnění|Z předplatného odeberte externí účty s oprávněním pro zápis, aby nedocházelo k nemonitorovanému přístupu. |
+|Předplatné|20|By měla být z předplatného odebrat zastaralé účty s oprávněními vlastníka|Odeberte zastaralé účty s oprávněními vlastníka z vašich předplatných.|
+|Předplatné|5|By měla být z předplatného odebrat zastaralé účty|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. |
+|Předplatné|5|Měla by existovat více než jednoho vlastníka, které jsou přiřazené k vašemu předplatnému|Pokud chcete mít redundance přístupu správce určete více než jednoho vlastníka předplatného.|
+|Předplatné|5|Maximální počet vlastníků 3 by měla být určena pro vaše předplatné|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
+|Trezor klíčů|5|By měly být povolené diagnostické protokoly ve službě Key Vault|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|Předplatné|15|By měla být z předplatného odebrat externí účty s oprávněním pro čtení|Z předplatného odeberte externí účty s oprávněními pro čtení, aby nedocházelo k nemonitorovanému přístupu.| 
 
-> ! [POZNÁMKA] Pokud jste nevytvořili zásady podmíněného přístupu, který vyžaduje vícefaktorové ověřování, ale má nastavení vyloučení, posouzení zabezpečení Center MFA doporučení bere v úvahu zásady nedodržují předpisy, protože umožňuje některé uživatele k přihlášení do Azure bez MFA.
->
+> [!NOTE]
+> Pokud jste nevytvořili zásady podmíněného přístupu, který vyžaduje vícefaktorové ověřování, ale má nastavení vyloučení, posouzení zabezpečení Center MFA doporučení bere v úvahu zásady nedodržují předpisy, protože umožňuje některé uživatele k přihlášení do Azure bez MFA.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60768132"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425621"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -79,7 +79,7 @@ Odkazuje na mějte na paměti:
 
 ## <a name="data-integration-units"></a>Jednotky integrace dat
 
-A **částí integrace dat (DIÚ)** (dříve označované jako jednotka pohybu dat v cloudu nebo DMU) je míru, která představuje výkon (kombinaci procesoru, paměti a přidělení prostředků sítě) jedné jednotky ve službě Data Factory. **DIÚ platí jenom pro [prostředí Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**, ale ne [modul Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
+A **částí integrace dat (DIÚ)** (dříve označované jako jednotka pohybu dat v cloudu nebo DMU) je míru, která představuje výkon (kombinaci procesoru, paměti a přidělení prostředků sítě) jedné jednotky ve službě Data Factory. **DIÚ platí jenom pro [prostředí Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)** , ale ne [modul Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
 **Minimální jednotky integrace dat pro spuštění aktivity kopírování jsou dvě.** Pokud není zadán, následující tabulka uvádí výchozí DIUs používá ve scénářích různé kopie:
 
@@ -93,7 +93,7 @@ Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu **dataIntegrationU
 Zobrazí se skutečně využité jednotky integrace dat pro každou kopii spustit v aktivitě kopírování výstup při spuštění aktivity monitorování. Další podrobnosti o [zkopírujte monitorování aktivit](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Nastavení DIUs **větší než 4** aktuálně funguje pouze tehdy, když jste **zkopírovat víc souborů z objektu Blob úložiště a Data Lake Storage/Amazon S3/Cloudová FTP/Cloudová SFTP pro všechna ostatní data cloudové úložiště.**.
+> Nastavení DIUs **větší než 4** aktuálně platí pouze tehdy, když jste **zkopírovat víc souborů z Azure Storage/Data Lake Storage/Amazon S3/Google Cloud Storage a cloudovým FTP/cloudu SFTP pro všechny ostatní cloudovými datovými úložišti**.
 >
 
 **Příklad:**

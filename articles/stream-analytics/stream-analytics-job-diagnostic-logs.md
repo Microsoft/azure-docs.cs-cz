@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826576"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515921"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Řešení potíží s Azure Stream Analytics s využitím diagnostických protokolů
 
@@ -46,7 +46,7 @@ Protokoly aktivit jsou standardně povoleny a poskytnout podrobný přehled o op
 
    ![Stream Analytics aktivitu protokolu operace souhrnu](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Přejděte dolů k položce **vlastnosti** část JSON, který poskytuje podrobnosti o chybě, která způsobila selhání operace. V tomto příkladu k selhání došlo kvůli chybě v běhu from out of hodnoty zeměpisné šířky vázaná.
+4. Přejděte dolů k položce **vlastnosti** část JSON, který poskytuje podrobnosti o chybě, která způsobila selhání operace. V tomto příkladu k selhání došlo kvůli chybě v běhu from out of hodnoty zeměpisné šířky vázaná. Rozdíl v datech, která zpracovává úlohu Stream Analytics způsobí chybu data. Informace o různých [chyb vstupních a výstupních dat a proč k nim dojde](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
    ![Podrobnosti o chybě JSON](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -103,7 +103,7 @@ time | Časové razítko (ve standardu UTC) v protokolu.
 resourceId | ID prostředku, že operace konal úplně, velkými písmeny. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategorie, buď protokolu **provádění** nebo **Authoring**.
 operationName | Název operace, která je zaznamenána. Například **odesílat události: Chyba zápisu výstupu SQL do mysqloutput**.
-stav | Stav operace. Například **neúspěšné** nebo **Succeeded**.
+status | Stav operace. Například **neúspěšné** nebo **Succeeded**.
 úroveň | Úroveň protokolu. Například **chyba**, **upozornění**, nebo **informativní**.
 properties | Podrobnosti konkrétní položky protokolu serializován jako řetězec formátu JSON. Další informace najdete v následující části v tomto článku.
 

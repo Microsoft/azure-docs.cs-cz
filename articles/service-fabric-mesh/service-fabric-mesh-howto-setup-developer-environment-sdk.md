@@ -9,19 +9,19 @@ ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
-ms.openlocfilehash: 70c32f5e54fa7e71c0884ceba48c84af782b3f41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ab817c65ab562f37b456cc3589624c1876084f0
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418986"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428195"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh
 
 K vytváření a spouštění aplikací Azure Service Fabric mřížky na vývojovém počítači s Windows, budete potřebovat:
 
 * Docker
-* Visual Studio 2017
+* Visual Studio 2017 nebo novější
 * Modul runtime Service Fabric mřížky
 * Sada Service Fabric mřížky SDK a nástroje.
 
@@ -37,14 +37,14 @@ Následující pokyny se vše, co je nainstalována nápověda založen na verzi
 
 ## <a name="visual-studio"></a>Visual Studio
 
-K nasazování aplikací Service Fabric Mesh se vyžaduje sada Visual Studio 2017. [Nainstalujte verzi 15.6.0][download-visual-studio] nebo vyšší a povolte následující sady funkcí:
+Visual Studio 2017 nebo novější je nutné k nasazení aplikace Service Fabric mřížky. [Nainstalujte verzi 15.6.0][download-visual-studio] nebo vyšší a povolte následující sady funkcí:
 
 * Vývoj pro ASP.NET a web
 * Vývoj pro Azure
 
 ## <a name="install-docker"></a>Instalace Dockeru
 
-Pokud už máte nainstalovaný Docker, ujistěte se, že máte nejnovější verzi. Docker může výzvu, pokud je nová verze ale Zkontrolujte ručně, ujistěte se, že máte nejnovější verzi.
+Pokud už máte nainstalovaný Docker, ujistěte se, že máte nejnovější verzi. Docker může výzvu, pokud je nová verze, ale Zkontrolujte ručně, ujistěte se, že máte nejnovější verzi.
 
 #### <a name="install-docker-on-windows-10"></a>Nainstalujte Docker ve Windows 10
 
@@ -52,7 +52,7 @@ Stáhněte a nainstalujte nejnovější verzi [Docker Community Edition pro Wind
 
 Když se během instalace zobrazí výzva, vyberte **Use Windows containers instead of Linux containers** (Použít kontejnery Windows místo kontejnerů Linuxu).
 
-Pokud na vašem počítači není povolená technologie Hyper-V, v instalačním programu Dockeru se zobrazí možnost ji povolit. Po zobrazení příslušné výzvy klikněte na **OK**.
+Pokud na vašem počítači není povolená technologie Hyper-V, instalační program Docker nabídne ho chcete povolit. Po zobrazení příslušné výzvy klikněte na **OK**.
 
 #### <a name="install-docker-on-windows-server-2016"></a>Nainstalovat Docker na Windows serveru 2016
 
@@ -89,7 +89,7 @@ Nainstalujte modul runtime Service Fabric Mesh, sadu SDK a nástroje v následuj
 > Pokud vyvíjíte na Windows Fall Creators update (verze 1709) počítače, můžete použít pouze imagí dockeru Windows verze 1709.
 > Pokud vyvíjíte ve Windows 10. dubna 2018 update (verze 1803) počítače, můžete použít buď imagí dockeru verze 1709 nebo 1803 Windows.
 
-Pokud používáte Visual Studio, můžete tuto část přeskočit, protože Visual Studio vytvoří místní cluster, pokud žádný nemáte.
+Pokud používáte Visual Studio, můžete tuto část přeskočit, protože Visual Studio se vytvoření místního clusteru za vás, pokud ho nemáte.
 
 Pro nejlepší ladění výkonu při vytvoření a spuštění jednoduché aplikace Service Fabric najednou vytvořte jedním uzlem místního vývojového clusteru. Pokud používáte několik aplikací najednou, vytvořte pěti uzly místního vývojového clusteru. Cluster musí být spuštěna vždy, když nasazujete nebo ladit projekt služby prostředků infrastruktury sítě.
 

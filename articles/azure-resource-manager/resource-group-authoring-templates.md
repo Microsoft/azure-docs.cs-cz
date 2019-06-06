@@ -1,23 +1,18 @@
 ---
 title: Struktura šablony Azure Resource Manageru a syntaxe | Dokumentace Microsoftu
 description: Popisuje strukturu a vlastnosti šablony Azure Resource Manageru pomocí deklarativní syntaxe JSON.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/18/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 94ed3c876ece827e4decd2b5b14332f5e854ab83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728002"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431239"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 
@@ -72,7 +67,21 @@ V rámci výrazu, syntaxe `resourceGroup()` volání jedné z funkcí, které po
 
 Šablony funkcí a jejich parametrů rozlišují velikost písmen. Například Resource Manageru překládá **variables('var1')** a **VARIABLES('VAR1')** za stejné. Při vyhodnocování, pokud funkci výslovně upraví případu (například toUpper nebo toLower), funkce zachová případu. Některé typy prostředků mohou mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
 
-Aby řetězcový literál začínat se hranatá závorka `[`, ale ne bylo interpretováno jako výraz, přidejte další závorku spustit řetězec s `[[`.
+Aby řetězcový literál, začněte s levou závorku `[` a končit pravou závorku `]`, ale ne bylo interpretováno jako výraz, přidejte další závorku spustit řetězec s `[[`. Například proměnná:
+
+```json
+"demoVar1": "[[test value]"
+```
+
+Přeloží na `[test value]`.
+
+Pokud řetězec nekončí se hranatá závorka, není však řídicí první závorky. Například proměnná:
+
+```json
+"demoVar2": "[test] value"
+```
+
+Přeloží na `[test] value`.
 
 Předat hodnotu řetězce jako parametr funkce, použijte jednoduché uvozovky.
 
@@ -375,7 +384,7 @@ Tyto šablony příklad ukazují některé scénáře pro používání proměnn
 | [pravidel zabezpečení sítě](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) a [soubor s parametry](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Vytvoří pole ve správném formátu pro přiřazení pravidla zabezpečení pro skupinu zabezpečení sítě. |
 
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 V rámci šablony můžete vytvořit vaše vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Obvykle definujete složitý výraz, který nechcete opakovat v rámci šablony. Vytvoření uživatelem definovaných funkcí z výrazů a [funkce](resource-group-template-functions.md) v rámci šablon, které jsou podporovány.
 
@@ -493,20 +502,20 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| condition | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. Zobrazit [podmínku](#condition). |
+| Podmínka | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. Zobrazit [podmínku](#condition). |
 | apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
 | type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). Pro podřízený prostředek formát typu závisí na tom, jestli má vnořené nadřazený prostředek nebo definované mimo nadřazený prostředek. Zobrazit [podřízené prostředky](#child-resources). |
-| jméno |Ano |Název prostředku Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. Pro podřízený prostředek formát názvu závisí na tom, jestli má vnořené nadřazený prostředek nebo definované mimo nadřazený prostředek. Zobrazit [podřízené prostředky](#child-resources). |
+| name |Ano |Název prostředku. Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. Pro podřízený prostředek formát názvu závisí na tom, jestli má vnořené nadřazený prostředek nebo definované mimo nadřazený prostředek. Zobrazit [podřízené prostředky](#child-resources). |
 | location |Různé |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
-| tags |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
+| značky |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
 | Komentáře |Ne |Poznámky pro dokumentaci prostředků ve vaší šabloně. Další informace najdete v tématu [komentáře v šablonách](resource-group-authoring-templates.md#comments). |
-| Kopírovat |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit několik instancí prostředků v Azure Resource Manageru](resource-group-create-multiple.md). |
+| kopírování |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit několik instancí prostředků v Azure Resource Manageru](resource-group-create-multiple.md). |
 | dependsOn |Ne |Prostředky, které musí být nasazený před nasazením tento prostředek. Resource Manager vyhodnotí závislosti mezi prostředky a nasadí ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, kde jsou nasazeny současně. Hodnota může být čárkou oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Pouze výpis prostředků, které jsou nasazené v této šabloně. Prostředky, které nejsou definovány v této šabloně už musí existovat. Vyhněte se přidává zbytečné závislostí může zpomalit vaše nasazení a vytvoření cyklické závislosti. Pokyny k nastavení závislostí v tématu [definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md). |
 | properties |Ne |Nastavení konfigurace specifických pro prostředky. Hodnoty pro tyto vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku pro operaci rozhraní REST API (metodu PUT) a vytvoří prostředek. Můžete také zadat pole kopie vytvořit několik instancí vlastnosti. Zjistíte dostupné hodnoty, najdete v článku [referenčními informacemi k šablonám](/azure/templates/). |
-| SKU | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
+| Skladová položka | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
 | Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
 | plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
-| prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. Zobrazit [podřízené prostředky](#child-resources). |
+| Prostředky |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. Zobrazit [podřízené prostředky](#child-resources). |
 
 ### <a name="condition"></a>Podmínka
 
@@ -735,7 +744,7 @@ Následující příklad ukazuje strukturu definici výstupu:
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
 | outputName |Ano |Název výstupní hodnoty. Musí být platný identifikátor jazyka JavaScript. |
-| condition |Ne | Logická hodnota označující, zda tento výstupní hodnota je vrácena. Když `true`, hodnota je součástí výstupu pro nasazení. Když `false`, výstupní hodnota je vynecháno pro toto nasazení. Pokud není zadán, výchozí hodnota je `true`. |
+| Podmínka |Ne | Logická hodnota označující, zda tento výstupní hodnota je vrácena. Když `true`, hodnota je součástí výstupu pro nasazení. Když `false`, výstupní hodnota je vynecháno pro toto nasazení. Pokud není zadán, výchozí hodnota je `true`. |
 | type |Ano |Typ výstupní hodnoty. Výstupní hodnoty podporují stejné typy jako vstupní parametry šablony. Pokud zadáte **securestring** pro typ výstupu, hodnota se nezobrazuje historii nasazení a nelze načíst z jiné šablony. Tajná hodnota ve více než jedna šablona, ukládat ve službě Key Vault tajný klíč a tajný klíč v souboru parametrů odkazovat. Další informace najdete v tématu [použití Azure Key Vault k předání zabezpečený parametr. hodnoty během nasazení](resource-manager-keyvault-parameter.md). |
 | value |Ano |Výraz jazyka šablony, která je vyhodnocena a vrátila jako výstupní hodnota. |
 

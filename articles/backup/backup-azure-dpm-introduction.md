@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 82e4278a130bb67a1af61ead981259d7bb4e1aa7
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111250"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427437"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí nástroje System Center DPM
 
@@ -54,6 +54,7 @@ Podporované typy souborů | Tyto typy souborů lze zálohovat pomocí služby A
 Nepodporované typy souborů | Servery v systémech souborů s rozlišením velkých; pevné odkazy (vynecháno); spojovací body (vynecháno); zašifrované a komprimované (vynecháno); šifrované a zhuštěné (vynecháno); Komprimovaný datový proud; analýzy datového proudu.
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, který je minimálně 5 % velikost dat, která je právě zálohován. Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v pomocné umístění.
 Trezoru úložiště | Neexistuje žádné omezení množství dat, která můžete zálohovat do trezoru služby Azure Backup, ale velikost zdroje dat (třeba virtuální počítač nebo databázi) nepřekročí 54400 GB.
+Azure ExpressRoute | Pokud Azure ExpressRoute je nakonfigurovaný s privátním nebo Microsoft partnerský vztah, nelze použít k zálohování dat do Azure.<br/><br/> Pokud je nakonfigurované veřejné partnerské vztahy Azure ExpressRoute, můžete použít k zálohování dat do Azure.<br/><br/> **Poznámka:** Veřejný partnerský vztah se již nepoužívá pro nové okruhy.
 Agent Azure Backup | Pokud DPM běží na System Center 2012 SP1, nainstalujte kumulativní 2 nebo novější pro DPM SP1. Toto je požadována pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, také označovaný jako agent Microsoft Azure Recovery Service (MARS). Pokud máte starší verzi nasadit, aktualizujte na nejnovější verzi zajistěte, že zálohování funguje podle očekávání.
 
 Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si informace o [ceny služby Azure Backup](https://azure.microsoft.com/pricing/details/backup/).

@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.openlocfilehash: 622261d0f7e602635aa6a638357278a9c63a6ecd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/03/2019
+ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990515"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479276"
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
@@ -58,13 +58,12 @@ Abyste nemuseli spuštěné úlohy selžou během vertikálního snižování ka
 1. Ručně ukončení úlohy.
 1. Znovu odešlete úlohy po operaci škálování uzavřel.
 
-Pokud chcete zobrazit seznam čekajících a spuštěné úlohy, můžete použít YARN **uživatelské rozhraní správce prostředků**, následujícím postupem:
+Pokud chcete zobrazit seznam čekajících a spuštěné úlohy, můžete použít YARN **uživatelského rozhraní správce prostředků**, následujícím postupem:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. V levé straně, přejděte na **všechny služby** > **Analytics** > **clustery HDInsight**a pak vyberte svůj cluster.
-3. V hlavní zobrazení, přejděte na **řídicí panely clusteru** > **Ambari domácí**. Zadejte svoje přihlašovací údaje clusteru.
-4. Z uživatelského rozhraní Ambari, vyberte **YARN** na seznam služeb v nabídce vlevo.  
-5. Na stránce YARN vyberte **rychlé odkazy** a ukazatel myši aktivní hlavní uzel a potom vyberte **uživatelské rozhraní správce prostředků**.
+1. Z [webu Azure portal](https://portal.azure.com/), vyberte svůj cluster.  Zobrazit [výpisu a zobrazení clusterů](./hdinsight-administer-use-portal-linux.md#showClusters) pokyny. Cluster se otevře v nové stránky portálu.
+2. V hlavní zobrazení, přejděte na **řídicí panely clusteru** > **Ambari domácí**. Zadejte svoje přihlašovací údaje clusteru.
+3. Z uživatelského rozhraní Ambari, vyberte **YARN** na seznam služeb v nabídce vlevo.  
+4. Na stránce YARN vyberte **rychlé odkazy** a ukazatel myši aktivní hlavní uzel a potom vyberte **uživatelské rozhraní správce prostředků**.
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 

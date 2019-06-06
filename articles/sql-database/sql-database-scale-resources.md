@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e476f27e2a1945135bd90435078d5bcd47c4b3de
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073142"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743109"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamicky škálovat prostředky databáze s minimálními výpadky
 
@@ -55,6 +55,9 @@ Všechny tři typy služby Azure SQL Database nabízí některé schopnost dynam
 - S [izolované databáze](sql-database-single-database-scale.md), můžete použít buď [DTU](sql-database-dtu-resource-limits-single-databases.md) nebo [vCore](sql-database-vcore-resource-limits-single-databases.md) modely, které definují maximální množství prostředků, které se přiřadí každé databázi.
 - A [Managed Instance](sql-database-managed-instance.md) používá [virtuálních jader](sql-database-managed-instance.md#vcore-based-purchasing-model) režimu a umožňuje definovat maximální počet jader procesoru a maximální úložiště přidělené k vaší instanci. Všechny databáze v instanci se sdílení prostředků přidělených této instanci.
 - [Elastické fondy](sql-database-elastic-pool-scale.md) vám umožňují definovat prostředek maximální limit pro skupinu databází ve fondu.
+
+> [!NOTE]
+> Můžete očekávat, že dokončení zalomení krátký připojení při škálování nahoru/vertikální snížení kapacity procesu. Pokud jste implementovali [Logika opakování pro přechodné chyby standardní](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), nebudete si převzetí služeb při selhání.
 
 ## <a name="alternative-scale-methods"></a>Škálování alternativní metody
 

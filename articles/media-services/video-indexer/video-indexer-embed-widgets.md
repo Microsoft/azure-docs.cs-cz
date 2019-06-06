@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/05/2019
 ms.author: juliako
-ms.openlocfilehash: 5acd9b68368f56000a0a32d1ade310cf30143950
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799382"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735077"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -29,7 +29,7 @@ Od verze 2, widgetu základní adresa URL obsahuje oblast účtu. Například ge
 
 Widget **Cognitive Insights** zahrnuje všechny vizuální přehledy, které se extrahovaly z indexování videa. Widget přehledů podporuje tyto volitelné parametry adresy URL:
 
-|Název|Definice|Popis|
+|Name|Definice|Popis|
 |---|---|---|
 |widgets|Řetězce oddělené čárkami|Umožňuje řídit, které přehledy chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` vykreslí jenom přehledy lidí a značek<br/>Dostupné možnosti: people (lidé), keywords (klíčová slova), annotations (poznámky), brands (značky), sentiments (citová zabarvení), transcript (přepis), search (vyhledávání).<br/>Není podporováno prostřednictvím adresy URL ve version=2<br/><br/>**Poznámka:** Param pomůcky adresa URL není podporováno ve verzi 2. |
 
@@ -37,7 +37,7 @@ Widget **Cognitive Insights** zahrnuje všechny vizuální přehledy, které se 
 
 Widget **Player** umožňuje streamovat video pomocí adaptivní přenosové rychlosti. Widget přehrávače podporuje tyto volitelné parametry adresy URL:
 
-|Název|Definice|Popis|
+|Name|Definice|Popis|
 |---|---|---|
 |t|Počet sekund od začátku|Přehrávač začne přehrávat od daného časového bodu.<br/>Příklad: t=60|
 |captions|Kód jazyka|Při načítání widgetu načte titulky v daném jazyce, aby byly k dispozici v nabídce titulků.<br/>Příklad: captions=en-US|
@@ -61,6 +61,9 @@ Widget **Player** umožňuje streamovat video pomocí adaptivní přenosové ryc
 5. Zkopírujte kód pro vložení a přidejte ho do své aplikace. 
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+
+> [!NOTE]
+> Pokud máte problémy s vaší adresy URL videí pro sdílení obsahu, přidejte parametr "umístění" na odkaz. Parametr by mělo být nastavené [oblastí Azure, ve kterých existuje Video Indexer](regions.md). Například, `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 ## <a name="embedding-private-content"></a>Vložení soukromého obsahu
 

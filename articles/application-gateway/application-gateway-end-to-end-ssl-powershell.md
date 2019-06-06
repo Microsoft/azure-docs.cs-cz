@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 8c715cb84dff6e2e739de59aba33041ec1b8db52
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786283"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729678"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
 
@@ -44,7 +44,7 @@ Tento scénář bude:
 
 Ke konfiguraci-kompletního protokolu SSL s aplikační bránou, certifikát je vyžadován pro bránu a certifikáty jsou nutné k back-end serverů. Certifikát brány se používá k odvození symetrický klíč podle specifikace protokolu SSL. Symetrický klíč je pak používat zašifrování a dešifrování provoz odeslaný na bránu. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát souboru umožňuje exportovat soukromý klíč, který vyžaduje službu application gateway šifrování a dešifrování přenosů.
 
-Pro šifrování SSL začátku do konce back-end musí být povolené ve službě application gateway. Odešlete veřejný certifikát back-end serverů ke službě application gateway. Přidání certifikátu se zajistí, že službu application gateway komunikuje pouze se známými back endových instancí. To dále zabezpečuje komunikaci začátku do konce.
+Pro šifrování SSL začátku do konce musí explicitně povoleno back-end službou application gateway. Odešlete veřejný certifikát back-end serverů ke službě application gateway. Přidání certifikátu se zajistí, že službu application gateway komunikuje pouze se známými back endových instancí. To dále zabezpečuje komunikaci začátku do konce.
 
 Proces konfigurace je popsána v následujících částech.
 
@@ -170,7 +170,7 @@ Všechny položky nastavené před vytvořením služby application gateway. Ná
    > Pokud používáte hlavičky hostitele a indikace názvu serveru (SNI) na back-endu, nemusí být načtený veřejný klíč zamýšlená lokalita, na které přenosové toky. Pokud už máte pochybnosti, navštivte https://127.0.0.1/ na back-end servery, které chcete potvrdit, který certifikát se používá pro *výchozí* vazby SSL. V této části použijte veřejný klíč z tohoto požadavku. Pokud používáte hlavičky hostitele a SNI na vazby HTTPS a neobdržíte odpověď a certifikátu ze žádosti o ruční prohlížeče k https://127.0.0.1/ na back-end serverech, musíte nastavit výchozí vazbu SSL na na ně. Pokud to neprovedete, selhání sondy a back-end není na seznamu povolených.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]

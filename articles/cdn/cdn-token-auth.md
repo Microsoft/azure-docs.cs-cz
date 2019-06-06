@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: b55685bc9cfdc8c31e6658050be94cbe49062f89
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869409"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472151"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení prostředků Azure CDN pomocí ověření tokenu
 
@@ -173,17 +173,17 @@ Následující diagram popisuje, jak Azure CDN ověří požadavek klienta při 
 3. V části **HTTP velké**vyberte **stroj pravidel**. Stroj pravidel můžete definovat cesty k použít funkci, povolit ověřování pomocí tokenu funkci a povolit další token funkce související s ověřováním. Další informace najdete v tématu [referenční informace ke stroji pravidel](cdn-rules-engine-reference.md).
 
    1. Vybrat existující pravidlo nebo vytvořit nové pravidlo, které definují asset nebo cesty, pro kterou chcete použít ověřování pomocí tokenu. 
-   2. Pokud chcete povolit ověřování pomocí tokenu na pravidla, vyberte **[tokenu ověřování](cdn-rules-engine-reference-features.md#token-auth)** z **funkce** seznamu a pak vyberte **povoleno**. Vyberte **aktualizace** při aktualizaci pravidla nebo **přidat** Pokud vytváříte pravidlo.
+   2. Pokud chcete povolit ověřování pomocí tokenu na pravidla, vyberte **[tokenu ověřování](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** z **funkce** seznamu a pak vyberte **povoleno**. Vyberte **aktualizace** při aktualizaci pravidla nebo **přidat** Pokud vytváříte pravidlo.
         
       ![Příklad povolit ověřování pomocí tokenu ke stroji pravidel CDN](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. V modulu pravidla můžete také povolit další token funkce související s ověřováním. Chcete-li některý z následujících funkcí, vyberte ho v **funkce** seznamu a pak vyberte **povoleno**.
     
-   - **[Token kódu s cílem odepření vícefaktorového ověřování](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: Určuje typ odpovědi, který je vrácen uživateli po odepření požadavku. Přepsat pravidla, která nastavuje tady odpovědi kódu v **vlastní zpracování odmítnutí** části na stránce ověřování na základě tokenu.
+   - **[Token kódu s cílem odepření vícefaktorového ověřování](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** : Určuje typ odpovědi, který je vrácen uživateli po odepření požadavku. Přepsat pravidla, která nastavuje tady odpovědi kódu v **vlastní zpracování odmítnutí** části na stránce ověřování na základě tokenu.
 
-   - **[Token ověření ignorovat velikost písmen URL](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Určuje, zda je adresa URL sloužící k ověření tokenu malá a velká písmena.
+   - **[Token ověření ignorovat velikost písmen URL](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** : Určuje, zda je adresa URL sloužící k ověření tokenu malá a velká písmena.
 
-   - **[Token ověření parametru](cdn-rules-engine-reference-features.md#token-auth-parameter)**: Přejmenuje tokenu ověřování parametru řetězce dotazu, který se zobrazí požadovanou adresu URL. 
+   - **[Token ověření parametru](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** : Přejmenuje tokenu ověřování parametru řetězce dotazu, který se zobrazí požadovanou adresu URL. 
         
      ![Příklad nastavení ověřování pomocí tokenu ke stroji pravidel CDN](./media/cdn-token-auth/cdn-rules-engine2.png)
 

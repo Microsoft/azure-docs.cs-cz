@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ae477068e2413678d5dd755cb5a7334f85655c74
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259251"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474586"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro SaaS splnění verze 2 
 
@@ -774,26 +774,35 @@ Vydavatel musí implementovat webhooku v této službě SaaS k proaktivně upozo
 
 ```json
 {
-    "operationId": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "offer1",
-    "publisherId": "contoso",
-    "planId": "silver",
-    "quantity": "20"  ,
-    "action": "Subscribe",
-    "timeStamp": "2018-12-01T00:00:00"
+  "id": "<this is a Guid operation id, you can call operations API with this to get status>",
+  "activityId": "<this is a Guid correlation id>",
+  "subscriptionId": "<Guid to uniquely identify this resource>",
+  "publisherId": "<this is the publisher’s name>",
+  "offerId": "<this is the offer name>",
+  "planId": "<this is the plan id>",
+  "quantity": "<the number of seats, will be null if not per-seat saas offer>",
+  "timeStamp": "2019-04-15T20:17:31.7350641Z",
+  "action": "Unsubscribe",
+  "status": "NotStarted"  
+
 }
 ```
+Kde akce může být jedna z následujících: 
+- `Subscribe`, (Když prostředek se aktivovala.)
+- `Unsubscribe`, (Kdy prostředek se odstranil)
+- `ChangePlan`, (Po operaci změnit plán dokončení)
+- `ChangeQuantity`, (Při operaci množství změn dokončení)
+- `Suspend`, (Když prostředků bylo pozastaveno)
+- `Reinstate`, (Při prostředků má byly obnoveny po pozastavení)
 
-Kde akce může být jeden z následujících akcí: 
-- `Subscribe`  (Když prostředek se aktivovala.)
-- `Unsubscribe` (Pokud prostředek se odstranil)
-- `ChangePlan` (Po operaci změnit plán dokončení)
-- `ChangeQuantity` (Pokud změna množství dokončení operace)
-- `Suspend` (Pokud prostředek je pozastavená)
-- `Reinstate` (Když prostředků má byly obnoveny po pozastavení se vaše)
+Kde stav může být jedna z následujících: <br>
+        -NotStarted, <br>
+        -Probíhá zpracování, <br>
+        -Bylo úspěšné, <br>
+        – Nepodařilo, <br>
+        -Konflikt <br>
 
+Užitečné stavy jsou úspěšné a neúspěšné do oznámení webhooku. Operace životního cyklu je od NotStarted do konečného stavu jako úspěšné nebo neúspěšné/konflikt. Pokud se zobrazí, není spuštěna nebo probíhá, pokračujte a požádat o stav prostřednictvím operace získání rozhraní API, dokud operace přejde do konečného stavu před provedením jakékoli akce. 
 
 ## <a name="mock-api"></a>Napodobení rozhraní API
 

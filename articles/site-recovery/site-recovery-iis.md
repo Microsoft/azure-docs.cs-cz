@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61280362"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480293"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci webové služby IIS
 
@@ -109,7 +109,7 @@ Připojovací řetězec odkazuje na virtuální počítač databázi s použití
         </connectionStrings>
         </configuration>
 
-Chcete-li aktualizovat připojovací řetězec z webové vrstvy, přidejte [skript pro aktualizaci služby IIS připojení](https://aka.ms/asr-update-webtier-script-classic) po 3. skupina v plánu obnovení.
+Chcete-li aktualizovat připojovací řetězec z webové vrstvy, přidejte [skript pro aktualizaci služby IIS připojení](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) po 3. skupina v plánu obnovení.
 
 #### <a name="site-bindings-for-the-application"></a>Vazby webu pro aplikaci
 Každý server se skládá z informace o vazbě. Informace o vazbě obsahuje typ vazby, IP adresa, jakou server služby IIS čeká na požadavky serveru, číslo portu a názvy hostitelů pro lokalitu. Během převzetí služeb při selhání může být nutné aktualizovat tyto vazby, pokud dojde ke změně IP adresy, který je spojen s nimi.

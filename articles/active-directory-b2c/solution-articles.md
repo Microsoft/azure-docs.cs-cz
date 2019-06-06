@@ -2,25 +2,25 @@
 title: Řešení a školení pro Azure Active Directory B2C | Dokumentace Microsoftu
 description: Tento článek obsahuje odkazy na řešení a informace o školení, které vám pomohou pochopit a používat Azure Active Directory B2C pro řešení end-to-end-business.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7b409cc80d2443b01d3025dd84348af18118d640
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 95002eb73277176d4a8aeaa40deea4d96c39a755
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691968"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512415"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
 
 Azure Active Directory (Azure AD) B2C umožňuje organizacím implementovat firemní řešení, která usnadňuje připojení se svými zákazníky. Následující průvodci řešeními a školení jsou ke stažení dokumenty, které vás provedou těmito řešeními.
 
-| Název | Popis |
+| Titul | Popis |
 | ----- | ----------- |
 | [Správa identit zákazníků s Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | V tomto přehledu služby Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) z Azure AD B2C týmu nám poskytuje přehled o fungování služby a také ukazují, jak můžeme rychle připojit B2C do aplikace ASP.NET Core. |
 | [Výhody používání Azure AD B2C](https://aka.ms/b2coverview) | Seznamte se s výhodami a běžné scénáře Azure AD B2C a jak vaše aplikace můžou využívat tuto službu ciam od. |

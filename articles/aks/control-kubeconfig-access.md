@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d4d3d9a3ff57a7a388e9703d0d145d8ce6eafd12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143010"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475615"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Pomocí ovládacích prvků přístupu na základě rolí Azure definují přístup k konfigurační soubor Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak přiřadit role RBAC tohoto limitu, který můžete 
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
-Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento článek také vyžaduje, že používáte Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="available-cluster-roles-permissions"></a>Oprávnění role clusteru k dispozici
 
@@ -45,9 +45,9 @@ Tyto role RBAC je použít na služby Azure Active Directory (AD) uživatele neb
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>Přiřadit oprávnění role uživatele nebo skupiny
 
-Chcete-li přiřadit jednu z dostupných rolí, získejte ID prostředku clusteru AKS a ID účtu uživatele Azure AD nebo skupiny. Příkazy v následujícím příkladu proveďte následující kroky:
+Chcete-li přiřadit jednu z dostupných rolí, získejte ID prostředku clusteru AKS a ID účtu uživatele Azure AD nebo skupiny. Příkazy v následujícím příkladu:
 
-* Získá ID prostředku clusteru pomocí [az aks zobrazit] [ az-aks-show] příkazu pro cluster s názvem *myAKSCluster* v *myResourceGroup* Skupina prostředků. Zadejte vlastní název skupiny clusterů a prostředků podle potřeby.
+* Získejte ID prostředku clusteru pomocí [az aks zobrazit] [ az-aks-show] příkazu pro cluster s názvem *myAKSCluster* v *myResourceGroup* Skupina prostředků. Zadejte vlastní název skupiny clusterů a prostředků podle potřeby.
 * Používá [zobrazit účet az] [ az-account-show] a [az ad uživateli zobrazit] [ az-ad-user-show] příkazy k získání vaším ID uživatele.
 * Nakonec se přiřadí role pomocí [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu.
 
@@ -69,7 +69,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Pokud chcete přiřadit oprávnění ke skupině Azure AD, aktualizujte `--assignee` parametr s ID objektu skupiny, ne účet uživatele, jak je znázorněno v předchozím příkladu. Chcete-li získat ID objektu skupiny, použijte [az ad skupiny zobrazit] [ az-ad-group-show] příkazu. Následující příklad získá ID objektu skupiny Azure AD s názvem *appdev*: `az ad group show --group appdev --query objectId -o tsv`
+> Pokud chcete přiřadit oprávnění ke skupině Azure AD, aktualizujte `--assignee` ukazuje předchozí příklad s ID objektu pro parametr *skupiny* spíše než *uživatele*. Chcete-li získat ID objektu skupiny, použijte [az ad skupiny zobrazit] [ az-ad-group-show] příkazu. Následující příklad získá ID objektu skupiny Azure AD s názvem *appdev*: `az ad group show --group appdev --query objectId -o tsv`
 
 Předchozí přiřazení můžete změnit *Role uživatele clusteru* podle potřeby.
 

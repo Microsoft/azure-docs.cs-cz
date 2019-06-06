@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234fc94a0a2ad3d3bee49853cf1dfc6a805a0166
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: adfc96d2d7abf38c00f32a5d53615bb7c99c320e
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825406"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742371"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Chyba na stránce aplikace po přihlášení
 
@@ -67,9 +67,11 @@ Chcete-li přidat atribut v konfiguraci Azure AD se odešle odpověď na Azure A
 
 Při příštím přihlášení uživatele k aplikaci Azure AD pošle nový atribut v odpověď SAML.
 
-## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>Aplikace očekává, že jiný identifikátor uživatele value nebo format
+## <a name="the-application-doesnt-identify-the-user"></a>Aplikace nemá identifikaci uživatele
 
-Přihlášení do aplikace se nezdařilo vzhledem k tomu, že odpověď SAML chybí atributům, jako je role, nebo protože aplikace je očekáván jiný formát pro atribut EntityID.
+Přihlášení do aplikace se nezdařilo vzhledem k tomu, že odpověď SAML chybí atributům, jako je role, nebo protože aplikace je očekáván jiný formát nebo hodnota pro atribut EntityID.
+
+Pokud používáte [Azure AD automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) Pokud chcete vytvořit, spravovat a odebírat uživatele v aplikaci. Ověřte, že uživatel má po úspěšném zřízení k aplikaci SaaS. Další informace najdete v tématu [žádní uživatelé se nezřizují k aplikaci Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
 
 ## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Přidáte atribut v konfiguraci aplikace Azure AD:
 
@@ -125,7 +127,7 @@ Chcete-li změnit, které části tokenu SAML se službou Azure Active Directory
 
    * Podepsat odpověď SAML
 
-   * Podepsat odpověď a kontrolní výraz SAML
+   * Podepsat odpověď SAML a kontrolní výraz
 
    * Podepsat kontrolní výraz SAML
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61484063"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479517"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Zvolte řešení Azure pro přenos dat
 
@@ -63,6 +63,11 @@ Odpovězte na následující otázky vám pomohou s výběrem řešení pro pře
 - Hledáte probíhající, průběžné datové přenosy
 
     Pokud ano, pomocí možností v [scénář 4: Přenosy dat pravidelné](storage-solution-periodic-data-transfer.md).
+ 
+
+## <a name="data-transfer-feature-in-azure-portal"></a>Funkce přenosu dat na webu Azure portal
+
+Můžete také přejít ke svému účtu Azure Storage v Azure portal a vyberte **přenos dat** funkce. Zadejte šířku pásma sítě ve vašem prostředí, velikost dat, který chcete převést a frekvence přenosu dat. Zobrazí se optimální data transfer řešení odpovídající informace, které jste zadali. 
 
 ## <a name="next-steps"></a>Další postup
 

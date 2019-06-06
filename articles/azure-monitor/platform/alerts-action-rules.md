@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65619994"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734935"
 ---
 # <a name="action-rules-preview"></a>Akce pravidla (preview)
 
@@ -33,7 +33,7 @@ I když pravidla upozornění umožňují definovat skupiny akcí, která se akt
 
 ## <a name="configuring-an-action-rule"></a>Konfigurace pravidlo akce
 
-Funkce se zpřístupní po výběru **spravovat akce** z výstrah úvodní stránka ve službě Azure Monitor. Potom vyberte **akce pravidla (Preview)**. Se dostanete tak, že vyberete **akce pravidla (preview)** z řídicího panelu z úvodní stránky pro výstrahy.
+Funkce se zpřístupní po výběru **spravovat akce** z výstrah úvodní stránka ve službě Azure Monitor. Potom vyberte **akce pravidla (Preview)** . Se dostanete tak, že vyberete **akce pravidla (preview)** z řídicího panelu z úvodní stránky pro výstrahy.
 
 ![Akce pravidla z cílové stránky Azure Monitor](media/alerts-action-rules/action-rules-landing-page.png)
 
@@ -67,7 +67,7 @@ Jsou k dispozici tyto filtry:
 * **ID pravidla upozornění**: Umožňuje filtrování pro konkrétní pravidla výstrah pomocí Resource Manageru ID pravidla výstrahy.
 * **Monitorování stavu**: Filtr pro výstrahy instancí se "Fired" nebo "Vyřešeno" jako stav monitorování.
 * **Popis**: Regulární výraz porovnávání v rámci popis definované jako součást pravidla upozornění.
-* **Kontext výstrahy (payload)**: V rámci odpovídající regulární výraz [kontext výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) pole instanci výstrahy.
+* **Kontext výstrahy (payload)** : V rámci odpovídající regulární výraz [kontext výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) pole instanci výstrahy.
 
 Tyto filtry se použijí ve spojení mezi sebou. Například pokud nastavit 'Resource type' = "Virtual Machines" a "Závažnost" = "Sev0", pak můžu mít filtruje pro všechny výstrahy "Sev0" pouze svoje virtuální počítače. 
 
@@ -80,7 +80,7 @@ Další konfiguraci akce pravidla pro potlačení výstrahy nebo podpora skupiny
 #### <a name="suppression"></a>Potlačení
 
 Pokud vyberete **potlačení**, nakonfigurovat doba trvání pro potlačení akcí a oznámení. Vyberte jednu z následujících akcí:
-* **Od tohoto okamžiku (vždy)**: Potlačí všechna oznámení po neomezenou dobu.
+* **Od tohoto okamžiku (vždy)** : Potlačí všechna oznámení po neomezenou dobu.
 * **V naplánovaném čase**: Potlačit oznámení v rámci omezená doba trvání.
 * **S opakování**: Potlačit podle plánu opakování, který může být denní, týdenní nebo měsíční.
 
@@ -128,12 +128,15 @@ Contoso chce potlačit oznámení pro všechna přihlášení výstrah vygenerov
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scénář 3: Skupina akcí definované na skupinu prostředků
 
-Contoso má definované [upozornění metriky na úrovni předplatného](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), ale chce se definují akce, které aktivují výstrahy samostatně pro jejich skupinu prostředků "ContosoRG".
+Contoso má definované [upozornění metriky na úrovni předplatného](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor), ale chce se definují akce, které aktivují speciálně pro výstrahy generované z příslušné skupiny prostředků "ContosoRG".
 
 **Řešení:** Vytvoření akce pravidla s
 * Rozsah = "ContosoRG.
 * Žádné filtry.
 * Nastavte na "ContosoActionGroup" skupina akcí
+
+> [!NOTE]
+> **Skupiny akcí definovaných v rámci akce pravidla a pravidla upozornění pracovat nezávisle na sobě s žádné duplicit**. Ve scénáři popsané výš, dojde-li skupinu akcí definované pravidlo upozornění aktivuje ve spojení s definovaným v pravidle akce skupiny akcí. 
 
 ## <a name="managing-your-action-rules"></a>Správa pravidel akce
 

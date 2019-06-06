@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 84069fb80ac751cbde53b0febdac451b54cd2b29
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544616"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688747"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
 
@@ -32,9 +32,9 @@ Existují dva reprezentace aplikace ve službě Azure AD:
 * [Instanční](app-objects-and-service-principals.md#service-principal-object) -lze považovat za instanci aplikace. Instanční objekty obecně odkazovat na objekt aplikace a jeden objekt aplikace lze odkazovat pomocí více instanční objekty v adresáři.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Co jsou objekty aplikací a odkud jsou pocházejí z?
-Můžete spravovat [objekty aplikací](app-objects-and-service-principals.md#application-object) na webu Azure Portal prostřednictvím [registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) prostředí. Objekty aplikací popisují aplikace do služby Azure AD a lze považovat za definici aplikace, povolení služby vědět, jak pro vydávání tokenů na aplikaci na základě nastavení. Objekt aplikace bude existovat pouze v jeho domovského adresáře, i když je aplikace s více tenanty podpora instanční objekty v jiných adresářích. Objekt aplikace může zahrnovat následující (jako dalšími informace, které zde nejsou uvedeny):
+Můžete spravovat [objekty aplikací](app-objects-and-service-principals.md#application-object) na webu Azure Portal prostřednictvím [registrace aplikací](https://aka.ms/appregistrations) prostředí. Objekty aplikací popisují aplikace do služby Azure AD a lze považovat za definici aplikace, povolení služby vědět, jak pro vydávání tokenů na aplikaci na základě nastavení. Objekt aplikace bude existovat pouze v jeho domovského adresáře, i když je aplikace s více tenanty podpora instanční objekty v jiných adresářích. Objekt aplikace může zahrnovat následující (jako dalšími informace, které zde nejsou uvedeny):
 * Název, loga a vydavatel
-* Adresy URL pro odpověď
+* Identifikátory URI pro přesměrování
 * Tajné kódy (symetrický a/nebo asymetrické klíče používané k ověření aplikace)
 * Rozhraní API závislosti (OAuth)
 * Publikované rozhraní API/zdroje/obory (OAuth)
@@ -74,7 +74,7 @@ Jako objekty aplikace je možné také vytvářet instanční objekty přes víc
   * Při přihlášení k odběru Office 365 nebo začít zkušební verzi, jeden nebo více objektů služby se vytvoří v adresáři reprezentující různé služby, které se používají k doručování všechny funkce související s Office 365.
   * Některé služby Office 365, jako je SharePoint vytvoření instančních objektů průběžně pro umožnění bezpečné komunikace mezi komponentami včetně pracovních postupů.
 * Když správce přidá aplikaci z Galerie aplikací (tím se také vytvoří základní objekt aplikace)
-* Přidat aplikace pro použití [Proxy aplikací Azure AD](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Přidat aplikace pro použití [Proxy aplikací Azure AD](/azure/active-directory/manage-apps/application-proxy)
 * Připojení aplikace pro jednotné přihlašování pomocí SAML nebo heslem jednotného přihlašování (SSO)
 * Prostřednictvím kódu programu přes Azure AD Graph API nebo Powershellu
 
@@ -101,8 +101,8 @@ Aplikace, které přidáte sami sebe (reprezentovány jako **aplikace (vaší)**
   * Pravidla transformace deklarací identity
   * Mapování atributů (zřizování uživatelů)
 * Podrobnější informace o objektu služby a aplikace objektů naleznete v referenční dokumentaci rozhraní REST API služby Azure AD Graph:
-  * [Aplikace](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Instanční objekt služby](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Aplikace](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Instanční objekt služby](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Proč aplikace integrují s Azure AD?
 Aplikace se přidají do služby Azure AD využívat jeden nebo více služeb, které nabízí, včetně:

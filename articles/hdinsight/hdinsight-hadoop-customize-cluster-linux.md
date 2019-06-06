@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 03fcbb0216d85e337b4161aa24ceeb7d3a2bdebe
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518890"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479457"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Přizpůsobení clusterů Azure HDInsight pomocí skriptových akcí
 
@@ -58,7 +58,7 @@ Akce skriptu je Bash skript, který používá na uzlech v clusteru HDInsight. V
 
      * U clusterů s ESP:
          
-         * Wasb [s] :// nebo http [s] :// identifikátory URI jsou podporovány.
+         * Wasb: / / nebo wasbs: / / nebo http [s] :// identifikátory URI jsou podporovány.
             
 * Může být omezen na spouštět pouze určité typy uzlů. Příklady jsou hlavní uzly nebo pracovních uzlů.
 
@@ -145,8 +145,8 @@ HDInsight poskytuje skriptů v clusterech HDInsight nainstalovat následující 
 
 | Název | Skript |
 | --- | --- |
-| Přidat účet Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobrazit [přidání dalších účtů úložiště pro HDInsight](hdinsight-hadoop-add-storage.md). |
-| Nainstalovat Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobrazit [instalace a použití rozhraní Hue v HDInsight Hadoop clusterů](hdinsight-hadoop-hue-linux.md). |
+| Přidání účtu služby Azure Storage |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zobrazit [přidání dalších účtů úložiště pro HDInsight](hdinsight-hadoop-add-storage.md). |
+| Instalace rozhraní Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zobrazit [instalace a použití rozhraní Hue v HDInsight Hadoop clusterů](hdinsight-hadoop-hue-linux.md). |
 | Nainstalovat Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. Zobrazit [instalace a použití Presta na technologii hadoop HDInsight clustery](hdinsight-hadoop-install-presto.md). |
 | Nainstalovat Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zobrazit [nainstalovat Giraph Apache na platformě HDInsight Hadoop clusterů](hdinsight-hadoop-giraph-install-linux.md). |
 | Předběžné načtení knihoven Hivu |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zobrazit [přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight](hdinsight-hadoop-add-hive-libraries.md). |
@@ -174,8 +174,8 @@ Tato část popisuje různé způsoby, jak skriptových akcí můžete použít 
     | Vlastnost | Hodnota |
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte jednu z poskytnutých skriptů. |
-    | Název |Zadejte název akce skriptu. |
-    | URI skriptu Bash |Zadejte identifikátor URI skriptu. |
+    | Name |Zadejte název akce skriptu. |
+    | URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |
 
@@ -257,7 +257,7 @@ Přejděte [webu Azure portal](https://portal.azure.com):
     | --- | --- |
     | Vyberte skript | Chcete-li použít vlastní skript, vyberte __vlastní__. V opačném případě vyberte dodávaného skriptu. |
     | Název |Zadejte název akce skriptu. |
-    | URI skriptu Bash |Zadejte identifikátor URI skriptu. |
+    | URI skriptu bash |Zadejte identifikátor URI skriptu. |
     | HEAD/Worker/Zookeeper |Zadejte uzly, na kterých je skript spuštěn: **Hlavní**, **pracovního procesu**, nebo **ZooKeeper**. |
     | Parametry |Zadejte parametry, pokud je to nutné skript. |
 

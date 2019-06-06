@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 68f62a6945f3b651781414e3194104b6d2e6295c
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356413"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455813"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -58,7 +58,7 @@ Proveďte následující kroky pro přípravu disků.
 6.  Příprava na disk, spusťte následující příkaz. **V závislosti na velikosti dat může to trvat několik hodin na dny.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite /enablecontentmd5 
     ```
     Soubor deníku se vytvoří ve stejné složce, kam jste nástroj spustili. Také se vytvoří dva další soubory – *.xml* soubor (složku, ve kterém spouštíte nástroj) a *jednotky manifest.xml* soubor (složku, ve které se nachází data).
     
@@ -72,6 +72,7 @@ Proveďte následující kroky pro přípravu disků.
     |/bk:     |Klíč nástroje BitLocker pro jednotku. Jeho číselné heslo z výstupu `manage-bde -protectors -get D:`      |
     |/srcdir:     |Písmeno jednotky disku budou zaslány, za nímž následuje `:\`. Například, `D:\`.         |
     |/dstdir:     |Název cílový kontejner ve službě Azure Storage.         |
+    |/blobtype:     |Tato možnost určuje typ objektů BLOB, kterou chcete importovat data. Pro objekty BLOB bloku, to je `BlockBlob` a pro objekty BLOB stránky je `PagaBlob`.         |
     |/skipwrite:     |Abyste byli připraveni je možnost, která určuje, že neexistuje žádná nová data muset zkopírovat a existující data na disku.          |
     |/enablecontentmd5:     |Možnost při povolené, zajistí, že je vypočítán MD5 při nahrávání objekty BLOB bloku do Azure.          |
 7. Opakujte předchozí krok u každého disku, který potřebuje k odeslání. Pro každé spuštění příkazového řádku se vytvoří soubor deníku se zadaným názvem.

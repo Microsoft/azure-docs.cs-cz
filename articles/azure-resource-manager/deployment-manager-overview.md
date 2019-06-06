@@ -1,23 +1,18 @@
 ---
 title: Postupy bezpečného nasazení napříč oblastmi - Azure Deployment Manager
 description: Popisuje postup nasazení služby v mnoha oblastech Azure Deployment Manager. Zobrazuje postupy bezpečného nasazení, aby se ověřilo nasazení před zavedením do všech oblastí.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/13/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595781"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431169"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (Public preview)
 
@@ -25,7 +20,7 @@ K nasazení vaší služby napříč mnoha oblastmi a ujistěte se, že funguje 
 
 Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky. 
 
-Azure Deployment Manager je ve verzi Private Preview. Chcete-li používat Azure Deployment Manager, proveďte [registrační formulář](https://aka.ms/admsignup). Pomoc se tím, že poskytuje vylepšení funkce [zpětnou vazbu](https://aka.ms/admfeedback).
+Azure Deployment Manager je ve verzi preview. Pomozte nám vylepšit tím, že poskytuje funkci [zpětnou vazbu](https://aka.ms/admfeedback).
 
 Pokud chcete použít nástroj Deployment Manager, budete muset vytvořit čtyři soubory:
 

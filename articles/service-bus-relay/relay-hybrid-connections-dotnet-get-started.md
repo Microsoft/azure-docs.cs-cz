@@ -1,6 +1,6 @@
 ---
-title: Začínáme s WebSockety Azure Relay Hybrid Connections v .NET | Microsoft Docs
-description: Napište konzolovou aplikaci v jazyce C# pro WebSockety Azure Relay Hybrid Connections.
+title: Začínáme s Azure Relay Hybrid objekty Websocket připojení v rozhraní .NET | Dokumentace Microsoftu
+description: Zápis C# konzolovou aplikaci pro Azure Relay Hybrid připojení objekty Websocket.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 88d540f274d8b07bfbdbb566c670adf6ddfefd74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ad1d5415feefcf30ebae860bc8f4d8a3e2261d5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749690"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428351"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s předávání hybridních připojení WebSockets v rozhraní .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,7 +64,7 @@ Napište v sadě Visual Studio konzolovou aplikaci v jazyce C#, která bude odes
 
     ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections.
+Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections!
 
 ## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste vytvořili .NET klientské a serverové aplikace, které používá objekty Websocket k odesílání a příjem zpráv. Funkce hybridní připojení Azure Relay podporuje také odesílat a přijímat zprávy pomocí protokolu HTTP. Zjistěte, jak používat protokol HTTP s hybridními připojeními Azure Relay, najdete v článku [rychlý start HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md).

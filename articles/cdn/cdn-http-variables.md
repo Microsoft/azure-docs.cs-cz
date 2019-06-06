@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d572da27cee33cf546933e55a59c27dac4c1efd9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709916"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475204"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné protokolu HTTP pro Azure CDN stroje pravidel
 HTTP proměnné poskytují prostředky, pomocí kterého můžete získat metadata žádostí a odpovědí HTTP. Tato metadata pak lze dynamicky měnit požadavek nebo odpověď. Použití proměnných HTTP je omezen na následující funkce stroje pravidel:
 
-- [Přepište klíč mezipaměti](cdn-rules-engine-reference-features.md#cache-key-rewrite)
-- [Upravit hlavičku požadavku klienta](cdn-rules-engine-reference-features.md#modify-client-request-header)
-- [Upravit klienta hlavička odpovědi](cdn-rules-engine-reference-features.md#modify-client-response-header)
-- [Adresa URL pro přesměrování](cdn-rules-engine-reference-features.md#url-redirect)
-- [Přepsání adresy URL](cdn-rules-engine-reference-features.md#url-rewrite)
+- [Přepište klíč mezipaměti](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [Upravit hlavičku požadavku klienta](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [Upravit klienta hlavička odpovědi](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [Adresa URL pro přesměrování](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [Přepsání adresy URL](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>Definice
 Následující tabulka popisuje podporované proměnné protokolu HTTP. Při Geograficky metadata (například PSČ) není k dispozici pro konkrétní žádost byla vrácena prázdná hodnota.
@@ -102,7 +102,7 @@ Oddělovače jsou popsány v následující tabulce.
 | / | Odděluje citaci proměnnou HTTP nebo vzor. |
 | // | Najít a nahradit všechny výskyty zadanému vzoru. |
 | /= | Najít, kopírovat a přepište všechny výskyty zadanému vzoru. |
-| ,  | Převeďte hodnotu přidružený k proměnné protokolu HTTP na malá písmena. |
+| , | Převeďte hodnotu přidružený k proměnné protokolu HTTP na malá písmena. |
 | ^ | Převeďte hodnotu přidružený k proměnné protokolu HTTP na velká písmena. |
 | ,, | Převeďte všechny výskyty zadaný znak v hodnotě přidružený k proměnné protokolu HTTP na malá písmena. |
 | ^^ | Převeďte všechny výskyty zadaný znak v hodnotě přidružený k proměnné protokolu HTTP na velká písmena. |
@@ -113,7 +113,7 @@ Následující tabulka popisuje podmínek, za kterých zadaný text není považ
 | Podmínka | Popis | Příklad: |
 | --------- | ----------- | --------|
 | % Symbol uvozovací znaky | Symbol procenta můžete být uvozeny pomocí zpětného lomítka. <br />Ukázková hodnota pravé bude zacházet jako s hodnotou literálu a ne jako proměnnou HTTP.| \%{host} |
-| Neznámý proměnné | Pro neznámý proměnné vždy je vrácen prázdný řetězec. | % {unknownvariable} |
+| Neznámý proměnné | Pro neznámý proměnné vždy je vrácen prázdný řetězec. | %{unknown_variable} |
 | Neplatné znaky nebo syntaxe | Proměnné, které obsahují neplatné znaky nebo syntaxe jsou považovány za hodnoty literálu. <br /><br />Příklad #1: Zadaná hodnota obsahuje neplatné znaky (například-). <br /><br />Příklad #2: Zadaná hodnota obsahuje sadu dvojitých složených závorek. <br /><br />Příklad #3: Zadaná hodnota chybí uzavírací složenou závorku.<br /> | Příklad #1: % {resp_user agenta} <br /><br />Příklad #2: % {{hostitele}} <br /><br />Příklad #3: % {hostitele |
 | Chybí název proměnné | Pokud není zadána proměnná vždy vrátí hodnotu NULL. | %{} |
 | Koncové znaky | Znaky, které posloupnost proměnné jsou považovány za hodnoty literálu. <br />Ukázková hodnota pravé obsahuje koncové složené závorky, který se bude zacházet jako s hodnotou literálu. | %{host}} |
@@ -127,9 +127,9 @@ Následující tabulka popisuje, jak definovat výchozí hodnotu.
 
 | Podmínka | Syntaxe | Příklad: | Popis |
 | --------- | ------ | --------| ----------- |
-| Nastavte hlavičku na výchozí hodnotu, pokud splňuje některá z následujících podmínek: <br /><br />-Chybí hlavička <br /><br />-Header hodnota je nastavena na hodnotu NULL.| % {Proměnné: = Value} | % {HTTP_REFERER, abyste: = neurčené} | Hlavička odkazující strany se nastaví jenom *neurčené* když se nachází buď chybí, nebo nastavte na hodnotu NULL. Žádná akce bude provedena, pokud byla nastavena. |
-| Nastavte hlavičku na výchozí hodnotu, pokud je nalezen. | % {Proměnných = Value} | %{http_referer=unspecified} | Hlavička odkazující strany se nastaví jenom *neurčené* když nebyl nalezen. Žádná akce bude provedena, pokud byla nastavena. |
-| Nastavte hlavičku na výchozí hodnotu, pokud nesplňuje některé z následujících podmínek: <br /><br />-Chybí<br /><br /> – Nastavte na hodnotu NULL. | % {Proměnné: + hodnota} | % {HTTP_REFERER, abyste: + neurčené} | Hlavička odkazující strany se nastaví jenom *neurčené* při hodnotu se přiřadila k němu. Žádná akce bude mít místo, když je buď chybí, nebo nastavte na hodnotu NULL. |
+| Nastavte hlavičku na výchozí hodnotu, pokud splňuje některá z následujících podmínek: <br /><br />-Chybí hlavička <br /><br />-Header hodnota je nastavena na hodnotu NULL.| % {Proměnné: = Value} | % {http_referrer: = neurčené} | Hlavička odkazujícího serveru bude nastaveno pouze *neurčené* když se nachází buď chybí, nebo nastavte na hodnotu NULL. Žádná akce bude provedena, pokud byla nastavena. |
+| Nastavte hlavičku na výchozí hodnotu, pokud je nalezen. | % {Proměnných = Value} | %{http_referrer=unspecified} | Hlavička odkazujícího serveru bude nastaveno pouze *neurčené* když nebyl nalezen. Žádná akce bude provedena, pokud byla nastavena. |
+| Nastavte hlavičku na výchozí hodnotu, pokud nesplňuje některé z následujících podmínek: <br /><br />-Chybí<br /><br /> – Nastavte na hodnotu NULL. | % {Proměnné: + hodnota} | % {http_referrer: + neurčené} | Hlavička odkazujícího serveru bude nastaveno pouze *neurčené* při hodnotu se přiřadila k němu. Žádná akce bude mít místo, když je buď chybí, nebo nastavte na hodnotu NULL. |
 
 ## <a name="manipulating-variables"></a>Manipulace s proměnné
 Proměnné lze ovládat následujícími způsoby:

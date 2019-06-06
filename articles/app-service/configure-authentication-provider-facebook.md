@@ -12,15 +12,15 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f37a0c9e4c664ac9631a0a07fa6f114e62939845
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e91d55c29d325301b8ac70ddc63fb408961fbb2c
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852597"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742969"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Konfigurace aplikace App Service pro použití přihlášení k Facebooku
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,19 +30,14 @@ Toto téma ukazuje, jak nakonfigurovat služby Azure App Service pro použití j
 K dokončení postupu v tomto tématu, musíte mít Facebookový účet, který má ověřený e-mailovou adresu a číslo mobilního telefonu. Pokud chcete vytvořit nový účet Facebook, přejděte na [facebook.com].
 
 ## <a name="register"> </a>Registrace vaší aplikace se službou Facebook.
-1. Přihlaste se k [Azure Portal]a přejděte k vaší aplikaci. Kopii vaší **URL**. Bude použijte ji ke konfiguraci aplikace Facebook.
-2. V jiném okně prohlížeče přejděte [Vývojáři Facebooku] web a přihlaste se pomocí vaší sítě Facebook přihlašovací údaje účtu.
-3. (Volitelné) Pokud jste ještě nezaregistrovali, klikněte na tlačítko **aplikace** > **zaregistrujte se jako vývojář**, přijměte zásady a postupujte podle kroků registrace.
-4. Klikněte na tlačítko **Moje aplikace** > **přidejte novou aplikaci**.
+1. Přejděte [Vývojáři Facebooku] přihlašovací údaje účtu pro web a přihlaste se pomocí vaší sítě Facebook.
+3. (Volitelné) Pokud nemáte sítě Facebook pro účet vývojáře, klikněte na tlačítko **Začínáme** a postupujte podle kroků registrace.
+4. Klikněte na tlačítko **Moje aplikace** > **přidat novou aplikaci**.
 5. V **zobrazovaný název**, zadejte jedinečný název pro vaši aplikaci. Také poskytnout vaše **E-mail kontaktu**a potom klikněte na tlačítko **vytvoření ID aplikace** a dokončit kontrolu zabezpečení. Tím přejdete na řídicí panel pro vývojáře pro novou aplikaci Facebook.
-6. V části **přihlášení k Facebooku**, klikněte na tlačítko **nastavení**a klikněte na tlačítko **nastavení** v levém navigačním panelu v části **přihlášení k Facebooku**.
-7. Přidejte svoji aplikaci **identifikátor URI pro přesměrování** k **identifikátory URI pro přesměrování OAuth platný**, pak klikněte na tlačítko **uložit změny**.
-   
-   > [!NOTE]
-   > Vaše přesměrování identifikátoru URI je adresa URL vaší aplikace s cestu, */.auth/login/facebook/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/facebook/callback`. Ujistěte se, že budou používat schéma HTTPS.
-   > 
-   > 
-8. V levém navigačním panelu klikněte na tlačítko **nastavení** > **základní**. Na **tajný kód aplikace** pole, klikněte na tlačítko **zobrazit**, zadejte heslo, pokud požadovaný, poznamenejte si hodnoty **ID aplikace** a **tajný kód aplikace** . Můžete použít později ke konfiguraci vaší aplikace v Azure.
+6. Klikněte na tlačítko **řídicí panel** > **přihlášení k Facebooku** > **nastavení** > **webové**.
+1. V levém navigačním panelu v části **přihlášení k Facebooku**, klikněte na tlačítko **nastavení**.
+1. V **identifikátory URI pro přesměrování OAuth platný**, typ `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` a nahraďte  *\<název aplikace >* s názvem vaší aplikace Azure App Service. Klikněte na tlačítko **uložit změny**.
+8. V levém navigačním panelu klikněte na tlačítko **nastavení** > **základní**. Na **tajný kód aplikace** pole, klikněte na tlačítko **zobrazit**. Zkopírujte hodnoty **ID aplikace** a **tajný kód aplikace**. Můžete použít později ke konfiguraci aplikace app Service v Azure.
    
    > [!IMPORTANT]
    > Tajný kód aplikace je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný kód nebo distribuovat v rámci klientské aplikace.
@@ -51,7 +46,7 @@ K dokončení postupu v tomto tématu, musíte mít Facebookový účet, který 
 9. Facebookový účet, který se použije k registraci aplikace je správce aplikace. V tomto okamžiku pouze správci se můžete přihlásit do této aplikace. K ověřování ostatních účtů pro Facebook, klikněte na tlačítko **revizi aplikace** a povolit **Ujistěte se, \<-název_aplikace > veřejné** k povolení obecné veřejného přístupu ověřováním služby Facebook.
 
 ## <a name="secrets"> </a>Přidejte informace o službě Facebook pro vaši aplikaci
-1. Zpátky [Azure Portal], přejděte k vaší aplikaci. Klikněte na tlačítko **nastavení** > **ověřování / autorizace**a ujistěte se, že **ověřování pomocí služby App Service** je **na**.
+1. Přihlaste se k [Azure Portal] a přejděte do aplikace služby App Service. Klikněte na tlačítko **nastavení** > **ověřování / autorizace**a ujistěte se, že **ověřování pomocí služby App Service** je **na**.
 2. Klikněte na tlačítko **Facebook**, vložením hodnoty ID aplikace a tajný kód aplikace, které jste získali dříve, volitelně povolit všechny obory, které vaše aplikace vyžaduje a potom klikněte na tlačítko **OK**.
    
     ![][0]

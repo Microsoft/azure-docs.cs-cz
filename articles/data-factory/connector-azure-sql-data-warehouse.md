@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 5ce838897370430c388d74c3d356497f16efdc8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd02a95f485f45c223fce4c24a72251481c2aa7e
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245051"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427892"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -531,7 +531,7 @@ Můžete také pro data s takové širokých sloupců, můžete bez PolyBase na�
 
 **Načítání do desítkové sloupec**
 
-Pokud vaše zdrojová data nejsou ve formátu textu a obsahuje prázdné hodnoty, které mají být načtena do SQL Data Warehouse desítkové sloupec, můžete narazit na následující chybu:
+Pokud zdrojová data v textovém formátu nebo jiné kompatibilní – funkce PolyBase ukládá (pomocí kopie dvoufázové instalace a PolyBase), a obsahuje prázdné hodnoty, které mají být načtena do SQL Data Warehouse desítkové sloupec, můžete narazit na následující chybu:
 
 ```
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....

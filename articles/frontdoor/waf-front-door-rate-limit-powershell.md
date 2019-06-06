@@ -9,22 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 99b0cab3fd277f90a675f0e6087d572853053a08
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387336"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478922"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurace webové aplikace pravidlo brány firewall míra limit pomocí Azure Powershellu
 Azure web application firewall (WAF) frekvence limit pravidlo pro Azure branou určuje počet požadavků umožněných z IP adresy konkrétního klienta po dobu jedné minuty.
 Tento článek popisuje, jak nakonfigurovat pravidlo limit frekvence WAF, která určuje počet požadavků umožněných z jednoho klienta pro webovou aplikaci, která obsahuje */promo* v adrese URL, pomocí Azure Powershellu.
-
-> [!IMPORTANT]
-> Funkci pravidla limitu WAF kurz pro Azure branou je aktuálně ve verzi public preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

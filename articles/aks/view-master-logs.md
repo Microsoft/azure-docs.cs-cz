@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128698"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497255"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -26,15 +26,14 @@ Tento článek vyžaduje existující cluster AKS spuštěné v účtu Azure. Po
 
 Ke shromáždění a data kontroly z více zdrojů protokoly Azure monitoru poskytuje dotazovací jazyk a analytický modul, který poskytuje přehledy pro vaše prostředí. Pracovní prostor se používá k porovnání a analyzovat data a můžete integrovat s dalšími službami Azure, jako je například služba Application Insights a Security Center. Pokud chcete použít k analýze protokolů různé platformy, místo toho můžete odesílání diagnostických protokolů do služby Azure storage účet nebo event hub. Další informace najdete v tématu [co je Azure Monitor protokoly?] [log-analytics-overview].
 
-Protokoly služby Azure Monitor je povolit a spravovat na webu Azure Portal. Pokud chcete povolit shromažďování protokolů pro Kubernetes hlavní součásti v clusteru AKS, otevřete ve webovém prohlížeči na webu Azure portal a proveďte následující kroky:
+Protokoly služby Azure Monitor jsou povolit a spravovat na webu Azure Portal. Pokud chcete povolit shromažďování protokolů pro Kubernetes hlavní součásti v clusteru AKS, otevřete ve webovém prohlížeči na webu Azure portal a proveďte následující kroky:
 
 1. Vyberte skupinu prostředků pro váš cluster AKS, jako je například *myResourceGroup*. Nevybírejte skupinu prostředků, která obsahuje vaše vybrané prostředky clusteru AKS, jako například *MC_myResourceGroup_myAKSCluster_eastus*.
 1. Na levé straně zvolte **nastavení diagnostiky**.
-1. Vyberte váš cluster AKS, jako je například *myAKSCluster*, pak se rozhodnout **zapnout diagnostiku**.
-1. Zadejte název, jako například *myAKSClusterLogs*, vyberte možnost **odesílání do pracovního prostoru Log Analytics**.
-    * Zvolit *konfigurovat* pracovní prostor Log Analytics a pak vyberte existující pracovní prostor nebo **vytvořit nový pracovní prostor**.
-    * Pokud je potřeba vytvořit pracovní prostor, zadejte název, skupinu prostředků a umístění.
-1. V seznamu dostupných protokolů vyberte protokoly, které si přejete povolit. Ve výchozím nastavení *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač* protokoly jsou povolené. Můžete povolit dodatečné protokolování, *kube auditu* a *clusteru bylo*. Můžete vrátit a změnit shromažďovat protokoly jsou povolené pracovních prostorů Log Analytics.
+1. Vyberte váš cluster AKS, jako je například *myAKSCluster*, pak se rozhodnout **přidejte nastavení diagnostiky**.
+1. Zadejte název, jako například *myAKSClusterLogs*, vyberte možnost **odesílat do Log Analytics**.
+1. Vyberte existující pracovní prostor nebo vytvořte novou. Pokud vytváříte pracovní prostor, zadejte název pracovního prostoru, skupinu prostředků a umístění.
+1. V seznamu dostupných protokolů vyberte protokoly, které si přejete povolit. Běžné protokoly obsahují *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač*. Můžete povolit dodatečné protokolování, *kube auditu* a *clusteru bylo*. Můžete vrátit a změnit shromažďovat protokoly jsou povolené pracovních prostorů Log Analytics.
 1. Až to budete mít, vyberte **Uložit** povolení kolekce vybraných protokolů.
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Protokoly služby Azure Monitor je povolit a spravovat na webu Azure Portal. Pok
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
-Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* časového intervalu a poté možnost vytvoření pracovního prostoru služby Log Analytics:
+Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* okno:
 
 ![Povolit pracovní prostor Log Analytics pro Azure Monitor protokoly clusteru AKS](media/view-master-logs/enable-oms-log-analytics.png)
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8b1a9b3dee999a35950559a049230f7fdbbc47b6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399191"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477872"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s využitím upozornění log ve službě Azure Monitor  
 
 V tomto článku se dozvíte, jak řešit běžné potíže, které může dojít, pokud nastavujete upozornění protokolů ve službě Azure Monitor. Poskytuje také řešení běžných problémů s Konfigurace upozornění protokolů nebo funkce. 
 
-Termín *upozornění protokolů* popisuje výstrahy, fire založené na dotazu protokolu v [pracovního prostoru Azure Log Analytics](../learn/tutorial-viewdata.md) nebo v [Azure Application Insights](../../azure-monitor/app/analytics.md). Další informace o funkci, terminologie a typy v [upozornění protokolů ve službě Azure Monitor](../platform/alerts-unified-log.md).
+Termín *upozornění protokolů* popisují pravidla, fire založené na dotazu protokolu v [pracovního prostoru Azure Log Analytics](../learn/tutorial-viewdata.md) nebo v [Azure Application Insights](../../azure-monitor/app/analytics.md). Další informace o funkci, terminologie a typy v [upozornění protokolů ve službě Azure Monitor](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > Tento článek nebere v úvahu případech, kdy na webu Azure portal zobrazuje aktivovat pravidlo upozornění a oznámení neprovádí se skupinou souvisejících akcí. Takové případy, najdete v podrobnostech v [vytvořit a spravovat skupiny akcí na webu Azure Portal](../platform/action-groups.md).

@@ -1,20 +1,18 @@
 ---
-title: Nástroje pro Azure HDInsight – použít Visual Studio Code pro Hive, LLAP nebo PySpark | Dokumentace Microsoftu
+title: Nástroje pro Azure HDInsight – použití sady Visual Studio Code pro Hive, LLAP nebo PySpark
 description: Další informace o použití nástroje Azure HDInsight pro Visual Studio Code k vytvoření a odeslání dotazů a skriptů.
-Keywords: Visual Studio Code, Azure HDInsight Tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, Interactive Query
-documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/30/2019
+ms.openlocfilehash: d114a1e62ae0d28e7d4a3ad453d5d7bd3e1d5b7a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681766"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427683"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
@@ -71,12 +69,12 @@ Před odesláním skriptů ke clusterům HDInsight ze sady Visual Studio Code, b
 
     ![Nástroje HDInsight pro Visual Studio Code přihlášení](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. Přihlášení podle pokynů **výstup** podokně.
+2. Postupujte podle přihlášení podle pokynů **výstup** podokně.
     + Pro prostředí Azure globální **HDInsight: Přihlášení** spustí příkaz **přihlášení k Azure** akce v Průzkumníku HDInsight a naopak.
 
         ![Pokyny pro azure k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
 
-    + Pro jiné prostředí postupujte podle pokynů přihlášení.
+    + Pro jiné prostředí postupujte podle přihlášení pokyny.
 
         ![Pokyny pro jiné prostředí k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
@@ -219,7 +217,7 @@ Nástroje HDInsight pro Visual Studio Code můžete odeslat interaktivních dota
 
 8. Nástroj podporuje také **SQL klauzule** dotazu.
 
-   ![Odeslat výsledek úlohy Python](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Stav odeslání se zobrazí v levém dolním stavovém řádku při spouštění dotazů. Neodesílejte další dotazy, pokud je stav **jádra PySpark (zaneprázdněn)**.  
+   ![Odeslat výsledek úlohy Python](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Stav odeslání se zobrazí v levém dolním stavovém řádku při spouštění dotazů. Neodesílejte další dotazy, pokud je stav **jádra PySpark (zaneprázdněn)** .  
 
 >[!NOTE]  
 >Clustery můžete spravovat informace o relaci. Definované proměnné, funkce a hodnoty, které odpovídají jsou uloženy v relaci, takže může být odkazováno mezi víc volání služeb pro stejného clusteru. 
@@ -306,7 +304,7 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     **/Batches příspěvku**   
     Text žádosti
 
-    | jméno | description | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | soubor | Soubor obsahující aplikaci k provedení | Cesta (povinné) | 
     | proxyUser | Uživatel k zosobnění při spuštění úlohy | string | 
@@ -314,27 +312,27 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     | args | Argumenty příkazového řádku pro aplikaci | seznam řetězců | 
     | Kromě souborů JAR | Kromě souborů JAR pro použití v této relaci | Seznam řetězců | 
     | pyFiles | Soubory Pythonu, který se má použít v této relaci | Seznam řetězců |
-    | souborů | soubory, který se má použít v této relaci | Seznam řetězců |
+    | Soubory | soubory, který se má použít v této relaci | Seznam řetězců |
     | driverMemory | Velikost paměti pro účely driver procesu | string |
     | driverCores | Počet jader pro účely driver procesu | int |
     | executorMemory | Množství paměti podle proces prováděcího modulu | string |
     | executorCores | Počet jader pro každý prováděcího modulu | int |
     | numExecutors | Počtu prováděcích procesů ke spuštění pro tuto relaci | int |
     | archivy | Archivuje se použije v této relaci | Seznam řetězců |
-    | fronta | Název fronty YARN, ke které odeslání | string |
-    | jméno | Název této relace | string |
+    | fronty | Název fronty YARN, ke které odeslání | string |
+    | name | Název této relace | string |
     | conf | Vlastnosti konfigurace Spark | Mapování klíč = val |
 
     Text odpovědi   
     Vytvořený objekt služby Batch.
 
-    | jméno | description | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | id | Id relace | int | 
     | appId | Id aplikace pro tuto relaci |  String |
     | appInfo | Informace o podrobné aplikace | Mapování klíč = val |
-    | protokol | Řádky protokolu | seznam řetězců |
-    | state |   Stav služby batch | string |
+    | log | Řádky protokolu | seznam řetězců |
+    | stav |   Stav služby batch | string |
 
 >[!NOTE]
 >Přiřazené konfigurace livy se zobrazí v podokně výstupů když odešlete skript.
@@ -353,7 +351,7 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
 
 4. Rozbalte cluster a zobrazit schéma databáze a tabulky metadat hive.
 
-   ![Cluster Azure HDInsight](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
+   ![Azure HDInsight cluster](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
 
 
 ## <a name="additional-features"></a>Další funkce
@@ -380,7 +378,7 @@ HDInsight pro Visual Studio Code podporuje následující funkce:
 
 ## <a name="logout"></a>Odhlásit  
 
-Přejděte na řádku nabídek **zobrazení** > **paleta příkazů...** a pak zadejte **HDInsight: Odhlášení**.  Bude automaticky otevírané okno s oznámením dolní pravém rohu **odhlášení úspěšně!**.
+Přejděte na řádku nabídek **zobrazení** > **paleta příkazů...** a pak zadejte **HDInsight: Odhlášení**.  Bude automaticky otevírané okno s oznámením dolní pravém rohu **odhlášení úspěšně!** .
 
 
 ## <a name="next-steps"></a>Další postup

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb01aa84201c1e0727414215974a343e8cf3b724
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122296"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475899"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -60,7 +60,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Pomocí příkazu [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) vytvořte veřejný Load Balancer úrovně Basic **myLoadBalancer**, který obsahuje konfiguraci front-endových IP adres **myFrontEnd** a back-endový fond **myBackEndPool** přidružený k privátní IP adrese **10.0.0.7.
+Vytvoření interního nástroje Load Balancer s [az network lb vytvořit](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) s názvem **myLoadBalancer** , který obsahuje konfiguraci IP adres frontendu s názvem **myFrontEnd**, a back endový fond s názvem **myBackEndPool** přidružený k privátní IP adrese ** 10.0.0.7.
 
 ```azurecli-interactive
   az network lb create \

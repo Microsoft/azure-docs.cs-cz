@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 318f21beffb401053c56576ccd9e641dc89cf559
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298802"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473784"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  Referenční informace prostředí PowerShell ADConnectivityTools
 
@@ -35,7 +35,8 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 
 ### <a name="description"></a>POPIS
 
-Spustí místní testy připojení Dns. Aby bylo možné nakonfigurovat konektor služby Active Directory, uživatel musí mít obě překlad názvů pro doménovou strukturu, že se pokoušíte připojit k stejně jako v řadičích domény přidružené k této doménové struktuře.
+Spustí místní testy připojení Dns.
+Aby bylo možné nakonfigurovat konektor služby Active Directory, uživatel musí mít obě resolutionthe název doménové struktury se pokouší připojit k stejně jako v řadičích domény přidružené k této doménové struktuře.
 
 ### <a name="examples"></a>PŘÍKLADY
 

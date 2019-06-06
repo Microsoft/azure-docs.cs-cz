@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c27d47a918939d012abee3c2317eba39587d734
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243582"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475157"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - zabezpečený přístup k serveru pomocí rozhraní API oprávnění rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -74,8 +74,6 @@ Při konfiguraci rozšíření rozsahy IP adres serveru oprávnění rozhraní A
 Na serveru Kubernetes API je, jak jsou vystaveny základní rozhraní Kubernetes API. Tato součást poskytuje interakce pro nástroje pro správu, například `kubectl` nebo řídicí panel Kubernetes. AKS poskytuje hlavní server clusteru s jedním tenantem pomocí vyhrazeného serveru rozhraní API. Ve výchozím nastavení API server je přiřazena veřejná IP adresa a by měl řízení přístupu pomocí řízení přístupu na základě rolí (RBAC).
 
 Zabezpečení přístupu k rovině řízení jinak veřejně přístupné AKS / API server můžete povolit a používat oprávnění rozsahy IP adres. Tyto autorizované rozsahy IP adres povolíte jenom definované rozsahy IP adres pro komunikaci se serverem rozhraní API. Požadavku na API server z IP adresy, který není součástí těchto oprávnění rozsahy IP adres je blokován. Měli byste pokračovat pomocí funkce RBAC pak ověřovat uživatele a akce, kterou vyžadují.
-
-Použít funkci autorizované rozsah IP, veřejnou IP adresu zpřístupněn na fond uzlů nasazením základní služby serveru NGINX. Rozhraní API serveru komunikuje s fond uzlů prostřednictvím této autorizované veřejné IP adresy. Potom můžete definovat další rozsahy IP adres, které má přístup k rozhraní API serveru.
 
 Další informace o serveru rozhraní API a další součásti clusteru, najdete v tématu [Kubernetes základní koncepty pro AKS][concepts-clusters-workloads].
 

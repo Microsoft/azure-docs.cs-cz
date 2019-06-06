@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 06/05/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c2cd813e96b40fc9f95785a1fd28e324a0437b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3836eb87516eed546ae6bb69f53bf64e5df00906
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61315874"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693207"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
@@ -76,7 +76,95 @@ Vzor pro manipulaci s všechny prostředky služby Service Bus následuje běžn
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="complete-code-to-create-a-queue"></a>Kompletní kód můžete vytvořit frontu
+Tady je kompletní kód můžete vytvořit frontu služby Service Bus: 
 
-* [Ukázka správy .NET](https://github.com/Azure-Samples/service-bus-dotnet-management/)
-* [Odkaz na Microsoft.Azure.Management.ServiceBus rozhraní API](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Microsoft.Azure.Management.ServiceBus;
+using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
+
+namespace SBusADApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CreateQueue().GetAwaiter().GetResult();
+        }
+
+        private static async Task CreateQueue()
+        {
+            try
+            {
+                var subscriptionID = "<SUBSCRIPTION ID>";
+                var resourceGroupName = "<RESOURCE GROUP NAME>";
+                var namespaceName = "<SERVICE BUS NAMESPACE NAME>";
+                var queueName = "<NAME OF QUEUE YOU WANT TO CREATE>";
+
+                var token = await GetToken();
+
+                var creds = new TokenCredentials(token);
+                var sbClient = new ServiceBusManagementClient(creds)
+                {
+                    SubscriptionId = subscriptionID,
+                };
+
+                var queueParams = new SBQueue();
+
+                Console.WriteLine("Creating queue...");
+                await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, queueName, queueParams);
+                Console.WriteLine("Created queue successfully.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Could not create a queue...");
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
+        private static async Task<string> GetToken()
+        {
+            try
+            {
+                var tenantId = "<AZURE AD TENANT ID>";
+                var clientId = "<APPLICATION/CLIENT ID>";
+                var clientSecret = "<CLIENT SECRET>";
+
+                var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
+
+                var result = await context.AcquireTokenAsync(
+                    "https://management.core.windows.net/",
+                    new ClientCredential(clientId, clientSecret)
+                );
+
+                // If the token isn't a valid string, throw an error.
+                if (string.IsNullOrEmpty(result.AccessToken))
+                {
+                    throw new Exception("Token result is empty!");
+                }
+
+                return result.AccessToken;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Could not get a token...");
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
+    }
+}
+```
+
+> [!IMPORTANT]
+> Úplný příklad, najdete v článku [ukázku správy .NET na Githubu]((https://github.com/Azure-Samples/service-bus-dotnet-management/)). 
+
+## <a name="next-steps"></a>Další postup
+[Odkaz na Microsoft.Azure.Management.ServiceBus rozhraní API](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

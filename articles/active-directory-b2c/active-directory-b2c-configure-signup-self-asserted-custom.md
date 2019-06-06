@@ -2,20 +2,20 @@
 title: Přidání deklarace identity a přizpůsobení vstupu uživatele s použitím vlastní zásady – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Zjistěte, jak upravit vstup uživatele a přidání deklarace identity na cestě registrace nebo přihlašování v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768014"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507565"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarace identity a přizpůsobení vstupu uživatele s použitím vlastních zásad v Azure Active Directory B2C
 
@@ -263,7 +263,7 @@ Tyto prvky se používají k definování deklarace identity:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresáře, který obsahuje váš tenant Azure AD kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant Azure AD.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
-4. Vyberte **architekturu rozhraní identit (Preview)**.
+4. Vyberte **architekturu rozhraní identit (Preview)** .
 5. Vyberte **nahrát vlastní zásady**a pak nahrajte soubory dvou zásad, které jste změnili.
 2. Vyberte zásadu registrace nebo přihlášení, který jste nahráli a klikněte na tlačítko **spustit nyní** tlačítko.
 3. Měli byste být schopni registrace pomocí e-mailovou adresu.

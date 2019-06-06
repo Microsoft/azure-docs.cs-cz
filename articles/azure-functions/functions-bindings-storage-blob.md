@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: e4ec13453c204885f38b10272e76245e641fbef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f54da6e350b2cf9027b6e9e02ace2a90e292e1ce
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203596"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472340"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby Azure Blob storage pro službu Azure Functions
 
@@ -258,7 +258,7 @@ public void run(
 
 V [knihoven tříd C#](functions-dotnet-class-library.md), můžete nakonfigurovat aktivační událost objektů blob následující atributy:
 
-* [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobTriggerAttribute.cs)
+* [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
   Konstruktor atributu přebírá řetězec cesty, která určuje kontejner, který chcete sledovat a volitelně [vzor názvu objektu blob](#trigger---blob-name-patterns). Tady je příklad:
 
@@ -420,7 +420,7 @@ Modul runtime služby Azure Functions se zajistí, že žádné funkce pro aktiv
 
 Azure Functions úložiště objektů blob příjmy v kontejneru nazvaném *azure – webjobs – hostitelé* v účtu úložiště Azure pro vaši aplikaci function app (definované v nastavení aplikace `AzureWebJobsStorage`). Potvrzení objektu blob obsahuje následující informace:
 
-* Aktivované – funkce ("*&lt;názvem aplikace function app >*. Funkce.  *&lt;název funkce >*", například: "MyFunctionApp.Functions.CopyBlob")
+* Aktivované – funkce (" *&lt;názvem aplikace function app >* . Funkce.  *&lt;název funkce >* ", například: "MyFunctionApp.Functions.CopyBlob")
 * Název kontejneru
 * Typ objektu blob ("BlockBlob" nebo "PageBlob")
 * Název objektu blob
@@ -434,7 +434,7 @@ Když selže funkce pro aktivaci objektu blob pro daný objekt blob, Azure Funct
 
 Pokud selžou i všechny 5 pokusech, Azure Functions přidá zprávu do fronty úložiště s názvem *webjobs. blobtrigger poison*. Pro objekty BLOB nezpracovatelná zpráva fronty je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (ve formátu  *&lt;názvem aplikace function app >*. Funkce.  *&lt;název funkce >*)
+* FunctionId (ve formátu  *&lt;názvem aplikace function app >* . Funkce.  *&lt;název funkce >* )
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
 * BlobName
@@ -1109,7 +1109,7 @@ V jazyce JavaScript, přístup k data objektů blob s využitím `context.bindin
 |---|---|
 | Objekt blob | [Kódy chyb objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Objekt BLOB, tabulky, fronty |  [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Objekt BLOB, tabulky, fronty |  [Řešení potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Objekt BLOB, tabulky, fronty |  [Odstraňování potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: juliako
-ms.openlocfilehash: 68e09ec6ce4aeb91e00c2a15caa8ec81f40064c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7ee54c852ce3332415b69ca6105b472dab0ab8a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733908"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480268"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Připojení k rozhraní API služby Media Services v3 – Java
 
@@ -74,7 +74,7 @@ Při spuštění příkazu, který `pom.xml`, `App.java`, a další soubory jsou
      <artifactId>azure-client-authentication</artifactId>
      <version>1.6.6</version>
    </dependency>
-```
+    ```
 
 ## <a name="connect-to-the-java-client"></a>Připojte se k klientskou sadou Java
 

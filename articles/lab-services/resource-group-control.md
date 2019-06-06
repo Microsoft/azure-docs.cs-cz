@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 1001e6aec7ba2f6ce62eb267d218149296048bb9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394336"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476085"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače testovacího prostředí ve službě Azure DevTest Labs
 
@@ -29,6 +29,9 @@ Jako vlastník testovacího prostředí můžete konfigurovat virtuální počí
 - Konsolidovat všechny prostředky testovacího prostředí v rámci jedné skupiny prostředků pro zjednodušení sledování těchto prostředků a použití [zásady](../governance/policy/overview.md) ke správě prostředků na úrovni skupiny prostředků.
 
 Díky této funkci můžete použít skript zadat nový nebo existující skupiny prostředků v rámci vašeho předplatného Azure pro všechny vaše testovací prostředí virtuálních počítačů. Azure DevTest Labs v současné době podporuje tuto funkci prostřednictvím rozhraní API.
+
+> [!NOTE]
+> Při vytvoření testovacích prostředí v DevTest Labs platí všechny limity předplatného. Testovací prostředí můžete představit jako jiný prostředek ve vašem předplatném. V případě skupiny prostředků je limit [980 skupin prostředků na předplatné](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 Následujícím postupem určete skupinu prostředků pro všechny virtuální počítače vytvořené v testovacím prostředí. 

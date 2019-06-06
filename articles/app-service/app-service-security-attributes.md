@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e38e1479c1e094f691e8f22f0a48f9342cae5cf3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001700"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475077"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Atributy zabezpečení pro službu Azure App Service
 
@@ -41,7 +41,7 @@ Tento článek popisuje běžné atributy zabezpečení integrované do služby 
 | Izolace sítě a Firewalling podpory| Ano | Za veřejné více tenanty služby App Service zákazníci můžou nakonfigurovat seznamy ACL (omezení IP adres) zamezit povoleného příchozího provozu sítě.  Zobrazit [omezení přístupu službě Azure App Service](app-service-ip-restrictions.md).  Služby App Service Environment se nasazuje přímo do virtuálních sítí a proto ji můžete zabezpečit pomocí skupin zabezpečení sítě. |
 | Vynucené tunelování podpory| Ano | Služby App Service Environment je možné nasadit do virtuální sítě zákazníka, kde je nakonfigurované vynucené tunelování. Pokud si zákazníci musí postupovat podle pokynů v [konfigurace služby App Service Environment pomocí vynuceného tunelování](environment/forced-tunnel-support.md). |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -51,7 +51,7 @@ Tento článek popisuje běžné atributy zabezpečení integrované do služby 
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Zákazníci mohou vytvářet aplikace ve službě App Service, které automaticky integrují s [Azure Active Directory (Azure AD)](../active-directory/index.md) i jinými poskytovateli identity kompatibilní OAuth; viz [ověřování a autorizace Azure App Service](overview-authentication-authorization.md). Pro správu přístupu pro prostředky App Service veškerý přístup je řízen kombinaci instanční objekt Azure AD, ověření a role Azure RBAC Resource Manageru. |
+| Authentication| Ano | Zákazníci mohou vytvářet aplikace ve službě App Service, které automaticky integrují s [Azure Active Directory (Azure AD)](../active-directory/index.yml) i jinými poskytovateli identity kompatibilní OAuth; viz [ověřování a autorizace Azure App Service](overview-authentication-authorization.md). Pro správu přístupu pro prostředky App Service veškerý přístup je řízen kombinaci instanční objekt Azure AD, ověření a role Azure RBAC Resource Manageru. |
 | Autorizace| Ano | Pro správu přístupu pro prostředky App Service veškerý přístup je řízen kombinaci instanční objekt Azure AD, ověření a role Azure RBAC Resource Manageru.  |
 
 

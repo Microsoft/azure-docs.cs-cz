@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: e57133a750e282484271261d8e4ddb9a12de2a0e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242424"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480058"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -162,6 +162,9 @@ Při spuštění školení spustit, pokud je zdrojový adresář místního úlo
 ## <a name="snapshot"></a>Snímek
 
 Když odešlete spuštění, Azure Machine Learning komprimuje adresáře, který obsahuje skript jako soubor zip a odesílá je do cílového výpočetního prostředí. Soubor zip se pak extrahuje a existuje spuštění skriptu. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
+
+> [!NOTE]
+> Abyste zabránili zbytečné soubory nebudou zahrnuty do snímku, zkontrolujte soubor ignorovat (.gitignore nebo .amlignore). Umístit tento soubor v adresáři snímku a přidejte názvy souborů v ho. Soubor .amlignore používá stejný [syntaxi a vzory jako soubor .gitignore](https://git-scm.com/docs/gitignore). Pokud existují oba soubory, soubor .amlignore přednost.
 
 ## <a name="activity"></a>Aktivita
 

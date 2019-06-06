@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fe913f057d00fd18b1b163f124d9dd0b83abf0de
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5854a795ba7ceeeb4512f1e2fd16d98826d55dd5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925887"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477987"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
 
@@ -82,13 +82,13 @@ Následující služby Azure IoT Hub aktuálně podporuje jako další koncové 
 
 Omezení pro počet koncových bodů můžete přidat, naleznete v tématu [kvóty a omezování](iot-hub-devguide-quotas-throttling.md).
 
-Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte stav koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku.
+Můžete použít rozhraní REST API [získat stav koncového bodu](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) zobrazíte stav koncových bodů. Doporučujeme použít [metriky služby IoT Hub](iot-hub-metrics.md) související s latencí směrování zprávy k identifikaci a ladit chyby, pokud stav koncového bodu je neaktivní nebo není v pořádku, jak Očekáváme, že latence být vyšší, když je koncový bod v jednom z těchto stavů.
 
 |Stav|Popis|
 |---|---|
-|v pořádku|Koncový bod přijímá zprávy podle očekávání.|
+|V pořádku|Koncový bod přijímá zprávy podle očekávání.|
 |Není v pořádku|Koncový bod není přijímání zpráv podle očekávání a se opakovaně pokouší o službě IoT Hub pro odesílání dat do tohoto koncového bodu. Stav není v pořádku koncového bodu bude aktualizován v pořádku, zřízeno konzistentní stav stavu služby IoT Hub.|
-|Neznámé|Centrum IoT ještě navázalo se připojení ke koncovému bodu. Žádné zprávy byly doručeny do nebo odmítnuta z tohoto koncového bodu.|
+|Neznámý|Centrum IoT ještě navázalo se připojení ke koncovému bodu. Žádné zprávy byly doručeny do nebo odmítnuta z tohoto koncového bodu.|
 |dead|Koncový bod není příjem zpráv, po služby IoT Hub opakovat dobu retrial odesílání zpráv.|
 
 ## <a name="field-gateways"></a>Bran v terénu

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602066"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479987"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -46,7 +46,7 @@ Vytvořte na hlavním cíli v souladu s velikosti podle následujících pokynů
 - **Další velikosti jednotky pro uchovávání dat**: 1 TB
 - **Jádra procesoru**: 4 jádra nebo více
 
-Jsou podporovány následující podporované jádrech Ubuntu.
+Jsou podporovány následující jádrech Ubuntu.
 
 
 |Řada jádra  |Až  |
@@ -67,7 +67,7 @@ Ponechat soubor ISO se systémem Ubuntu 16.04.2 minimální 64-bit do jednotky D
 
 1.  Vyberte **Angličtina** jako váš preferovaný jazyk a pak vyberte **Enter**.
     
-    ![Vybrat jazyk](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Výběr jazyka](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Vyberte **instalace serveru Ubuntu**a pak vyberte **Enter**.
 
     ![Vyberte možnost instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -245,7 +245,7 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
 
     ![Funkce Multipath ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formátování disku a poté vytvořit novou jednotku systému souborů: **mkfs.ext4 /dev/Mapovač/< více cest id disku uchování >**.
+3. Formátování disku a poté vytvořit novou jednotku systému souborů: **mkfs.ext4 /dev/Mapovač/< více cest id disku uchování >** .
     
     ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -343,7 +343,7 @@ Spusťte instalační program. Automaticky zjišťuje, zda je agent nainstalovan
 
 Uvidíte, že **verze** pole obsahuje číslo verze na hlavním cíli.
 
-## <a name="common-issues"></a>Běžné potíže
+## <a name="common-issues"></a>Běžné problémy
 
 * Zajistěte, aby že nezapínejte úložiště vMotion na jakékoli komponentami pro správu jako je hlavní cíl. Pokud se hlavní cíl přesune po úspěšné opětovné zapnutí ochrany, nelze odpojit disky virtuálního počítače (Vmdk). V takovém případě navrácení služeb po obnovení selže.
 

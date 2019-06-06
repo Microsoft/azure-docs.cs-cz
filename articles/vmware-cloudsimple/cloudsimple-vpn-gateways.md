@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872766"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496874"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
@@ -36,6 +36,8 @@ Případy použití pro síť VPN site-to-site zahrnují:
 * Použití místní Active Directory jako zdroj identity serveru vCenter.
 * Pohodlné přenos šablony virtuálního počítače, soubory ISO a další soubory z vašich místních prostředků do privátního cloudu vCenter.
 * Usnadnění úloh běžících na privátní cloud z vaší místní sítě.
+
+![Topologie připojení VPN typu Site-to-Site](media/cloudsimple-site-to-site-vpn-connection.png)
 
 ### <a name="cryptographic-parameters"></a>Kryptografickým parametrům
 

@@ -1,24 +1,24 @@
 ---
-title: 'Rychlý start: Ingestování objekty BLOB Azure do Průzkumníku dat Azure'
-description: V tomto rychlém startu se dozvíte, jak odesílat data účtu úložiště do Průzkumníku dat Azure pomocí odběr služby Event Grid.
+title: Ingestování objekty BLOB Azure do Průzkumníku dat Azure
+description: V tomto článku se dozvíte, jak odesílat data účtu úložiště do Průzkumníku dat Azure pomocí odběr služby Event Grid.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/30/2019
-ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 7d9c21b46f760055846194f52f1594f25b1ee989
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446381"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494750"
 ---
-# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Rychlý start: Ingestování objekty BLOB do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
+# <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objekty BLOB do Průzkumníku dat Azure pomocí přihlášení k odběru oznámení služby Event Grid
 
 Průzkumník služby Azure Data je služba pro zkoumání dat rychlé a škálovatelné pro data protokolů a telemetrie. Nabízí průběžné ingestování (načítání dat) z objektů BLOB zapisovat do kontejnery objektů blob. 
 
-V tomto rychlém startu se dozvíte, jak nastavit [Azure Event Grid](/azure/event-grid/overview) předplatného a směrování událostí do Průzkumníku dat Azure prostřednictvím centra událostí. Pokud chcete začít, byste měli mít účet úložiště se odběru event gridu, který odesílá oznámení do služby Azure Event Hubs. Pak vytvoříte připojení dat k Event Grid a zobrazit data tok v celém systému.
+V tomto článku se dozvíte, jak nastavit [Azure Event Grid](/azure/event-grid/overview) předplatného a směrování událostí do Průzkumníku dat Azure prostřednictvím centra událostí. Pokud chcete začít, byste měli mít účet úložiště se odběru event gridu, který odesílá oznámení do služby Azure Event Hubs. Pak vytvoříte připojení dat k Event Grid a zobrazit data tok v celém systému.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,16 +41,16 @@ V tomto rychlém startu se dozvíte, jak nastavit [Azure Event Grid](/azure/even
     | Name | *test-grid-connection* | Název služby event grid, který chcete vytvořit.|
     | Schéma událostí | *Schéma událostí mřížky* | Schéma, který se má použít pro event grid. |
     | Typ tématu | *Účet úložiště* | Typ tématu event gridu. |
-    | Prostředek tématu | *gridteststorage* | Název účtu úložiště. |
-    | Přihlásit se k odběru všech typů událostí | *clear* | Nemáte, dostanete oznámení na všechny události. |
-    | Definované typy událostí | *Vytvoření objektu BLOB* | Chcete dostávat oznámení, pro které konkrétní události. |
+    | Téma prostředků | *gridteststorage* | Název účtu úložiště. |
+    | Předplatit všechny typy událostí | *clear* | Nemáte, dostanete oznámení na všechny události. |
+    | Události definované typy | *Vytvoření objektu BLOB* | Chcete dostávat oznámení, pro které konkrétní události. |
     | Typ koncového bodu | *Služba Event hubs* | Typ koncového bodu, do kterého odesíláte události. |
     | Koncový bod | *test-hub* | Centrum událostí, které jste vytvořili |
     | | |
 
 1. Vyberte **další funkce** kartu, pokud chcete sledovat soubory od konkrétního kontejneru. Nastavte filtry pro oznámení následujícím způsobem:
     * **Na základě práv subjektů začíná** pole je *literálu* předponu kontejneru objektů blob. Je vzorek použije *startswith*, to může zahrnovat několik kontejnerů. Žádné zástupné znaky jsou povoleny.
-     To *musí* nastavte následujícím způsobem: *`/blobServices/default/containers/`*[předpony kontejneru]
+     To *musí* nastavte následujícím způsobem: *`/blobServices/default/containers/`* [předpony kontejneru]
     * **Na základě práv subjektů skončí s** pole je *literálu* přípona objektu blob. Žádné zástupné znaky jsou povoleny.
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Vytvoření cílové tabulky v Azure Data Exploreru
@@ -157,7 +157,7 @@ Uložit data do souboru a nahrajte ho pomocí tohoto skriptu:
 > [!NOTE]
 > Průzkumník služby Azure Data má zásady agregace (dávkování) pro příjem dat určená k optimalizaci procesu ingestování.
 Ve výchozím nastavení zásada nastavená na 5 minut.
-Budete moct změnit zásady později podle potřeby. V tomto rychlém startu můžete očekávat latenci několik minut.
+Budete moct změnit zásady později podle potřeby. V tomto článku můžou očekávat latenci za několik minut.
 
 1. Na webu Azure Portal v části event gridu, se zobrazí zásobníku v aktivitě při spuštění aplikace.
 
@@ -196,5 +196,4 @@ Pokud nemáte v úmyslu znovu pomocí služby event grid, vyčistit **test-hub-r
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)
+* [Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

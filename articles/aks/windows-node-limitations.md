@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.author: twhitney
-ms.openlocfilehash: 34ece6e49332f781f688a8741db3514faf8c9a25
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 12fb9dc67e8afae3dcb9ade97dd61ab438e0fac5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304394"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475400"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows Server a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -45,6 +45,7 @@ Následující nadřazený omezení pro kontejnery Windows serveru v Kubernetes 
 Následující další omezení platí pro podporu fondu uzel Windows Server ve službě AKS:
 
 - AKS cluster vždy obsahuje uzel fondu s Linuxem jako první fond uzlů. Tento první uzel založených na Linuxu fond nejde odstranit, dokud je neodstraní samotného clusteru AKS.
+- AKS v současné době podporuje pouze load balanceru úrovně basic, která umožňuje pouze pro jeden back-endového fondu, fond uzlů Linux výchozí. V důsledku toho odchozího provozu z Windows podů bude vždy [přeložit do Azure managed veřejnou IP adresu][azure-outbound-traffic]. Protože tuto IP adresu není konfigurovatelné, není na seznamu povolených IP adres provoz pocházející z Windows podů aktuálně možné. 
 - AKS clusterů musíte použít Azure CNI o síťovém modelu (rozšířené).
     - Kubenet (basic) sítě se nepodporuje. Nelze vytvořit, která používá kubenet clusteru AKS. Další informace o rozdílech v modelech sítě, naleznete v tématu [sítě koncepty pro aplikace ve službě AKS][azure-network-models].
     - Model pro sítě Azure CNI vyžaduje dodatečné plánování a důležité informace týkající se správy IP adres. Další informace o tom, jak naplánovat a implementovat Azure CNI najdete v tématu [Azure CNI konfigurace sítě ve službě AKS][configure-azure-cni].
@@ -87,3 +88,4 @@ Začínáme s kontejnery Windows serveru ve službě AKS, [vytvořit fond uzlů,
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat

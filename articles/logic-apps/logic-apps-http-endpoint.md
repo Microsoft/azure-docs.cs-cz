@@ -1,29 +1,25 @@
 ---
-title: Volání, triggery nebo vnořené pracovní postupy s koncovými body HTTP – Azure Logic Apps | Dokumentace Microsoftu
+title: Volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP – Azure Logic Apps
 description: Nastavení koncových bodů HTTP k volání aktivační události, nebo vnořené pracovní postupy pro Azure Logic Apps
 services: logic-apps
-keywords: pracovní postupy, koncové body HTTP
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: integration
+author: ecfan
+ms.author: klam; LADocs
+ms.reviewer: jehollan, klam, LADocs
+manager: carmonm
+ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
+ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: klam; LADocs
-ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304050"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495043"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP v Azure Logic Apps
 
 Můžete nativně zpřístupňují synchronní koncových bodů HTTP jako aktivační události na logic apps, takže můžete aktivovat nebo volání aplikací logiky prostřednictvím adresy URL. Lze také vnořit pracovní postupy ve službě logic apps s použitím vzoru volatelné koncové body.
 
@@ -249,7 +245,7 @@ Odpovědi mít tyto vlastnosti:
 | --- | --- |
 | statusCode |Určuje kód stavu HTTP pro zpracování příchozího požadavku. Tento kód může být libovolný platný stavový kód, který začíná 2xx, 4xx a 5xx. Stavové kódy 3xx však nejsou povolené. |
 | Záhlaví |Definuje libovolný počet hlaviček, které chcete zahrnout do odpovědi. |
-| hlavní část |Určuje objekt textu, který může být řetězec, objekt JSON nebo dokonce binární obsah odkazovaný z předchozího kroku. |
+| Text |Určuje objekt textu, který může být řetězec, objekt JSON nebo dokonce binární obsah odkazovaný z předchozího kroku. |
 
 Tady je schéma JSON vypadá nyní **odpovědi** akce:
 

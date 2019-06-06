@@ -2,20 +2,20 @@
 title: Definování rozhraní RESTful technický profil ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Definujte rozhraní RESTful technický profil ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705297"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512747"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování rozhraní RESTful technický profil ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Vaše zásada může odeslat vstupních deklarací identity k rozhraní REST API
 - **Technický profil ověření** – technický profil ověření volá služba RESTful. Technický profil ověření ověří uživatelsky zadaných dat než cesty uživatele bude pokračovat. Chybová zpráva s technický profil ověření je zobrazení na stránku s vlastním potvrzením a vrácené v výstupní deklarace identit.
 - **Deklarace identity exchange** – služba RESTful přes jeden krok Orchestrace je provedeno volání. V tomto scénáři neexistuje žádné uživatelské rozhraní k vykreslení chybové zprávě. Pokud vaše rozhraní REST API vrací chybu, bude uživatel přesměrován zpět do aplikace předávající strany s chybovou zprávou.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 **Název** atribut **protokol** elementu musí být nastavena na `Proprietary`. **Obslužná rutina** atribut musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, který používá Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
@@ -161,7 +161,7 @@ Rozhraní REST API může být zapotřebí vracet chybová zpráva, například 
 | --------- | -------- | ----------- |
 | version | Ano | 1.0.0 | 
 | status | Ano | 409 | 
-| kód | Ne | Kód chyby z poskytovatele RESTful koncový bod, který se zobrazí, když `DebugMode` je povolená. | 
+| code | Ne | Kód chyby z poskytovatele RESTful koncový bod, který se zobrazí, když `DebugMode` je povolená. | 
 | requestId | Ne | Identifikátor žádosti od poskytovatele koncový bod RESTful, které se zobrazí, když `DebugMode` je povolená. | 
 | userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. | 
 | developerMessage | Ne | Podrobný popis problému a vyřešit, který se zobrazí, když `DebugMode` je povolená. | 

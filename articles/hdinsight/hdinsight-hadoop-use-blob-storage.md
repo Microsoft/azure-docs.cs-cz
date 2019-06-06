@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 24e0b61dfd9950a5c5990f8341e32d048453c5d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6e0192029decef95dcaecc0c60dce5fd5b6f99ff
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689569"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479901"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -51,9 +51,9 @@ Služba HDInsight poskytuje přístup do systému souborů DFS, který je místn
 
     hdfs://<namenodehost>/<path>
 
-Služba HDInsight navíc umožňuje přístup k datům uloženým ve službě Azure Storage. Syntaxe je:
+Služba HDInsight navíc umožňuje přístup k datům uloženým ve službě Azure Storage. Syntaxe je následující:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Při použití účtu Azure Storage s clustery HDInsight je potřeba zvážit tyto aspekty.
 
@@ -96,10 +96,10 @@ Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, k
 Schéma identifikátoru URI pro přístup k souborům ve službě Azure Storage ze služby HDInsight je:
 
 ```config
-wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
+wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 ```
 
-Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s předponou *wasb:*) a zašifrovaný přístup SSL (s *wasbs*). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
+Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s předponou *wasb:* ) a zašifrovaný přístup SSL (s *wasbs*). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
 
 `<BlobStorageContainerName>` Identifikuje název kontejneru objektů blob ve službě Azure storage.
 `<StorageAccountName>` Identifikuje název účtu úložiště Azure. Vyžaduje se plně kvalifikovaný název domény (FQDN).
@@ -137,7 +137,7 @@ Výchozí kontejner objektu blob ukládá konkrétní informace, jako je histori
 
 Společnost Microsoft poskytuje následující nástroje pro práci s Azure Storage:
 
-| Tool | Linux | OS X | Windows |
+| Nástroj | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |

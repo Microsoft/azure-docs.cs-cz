@@ -7,15 +7,15 @@ manager: shivamg
 keywords: Log Analytics; Azure Backup; Výstrahy; Nastavení diagnostiky; Skupiny akcí
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190509"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734854"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -46,7 +46,7 @@ Pracovní prostor služby LA můžete vybrat z jiného předplatného jako cíl.
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Nasazení řešení do pracovního prostoru Log Analytics
 
-Jakmile jsou data v prostoru LA [nasazení šablony githubu](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA k vizualizaci dat. Ujistěte se, že vám poskytnou stejné skupiny prostředků, název pracovního prostoru a umístění pracovního prostoru správně identifikovat pracovní prostor a pak na něj nainstalovat tuto šablonu.
+Jakmile jsou data v prostoru LA [nasazení šablony Githubu](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) na LA k vizualizaci dat. Ujistěte se, že vám poskytnou stejné skupiny prostředků, název pracovního prostoru a umístění pracovního prostoru správně identifikovat pracovní prostor a pak na něj nainstalovat tuto šablonu.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Zobrazení dat Azure Backup pomocí Log Analytics (LA)
 
@@ -242,13 +242,13 @@ Použijte filtry, které je znázorněno na následujícím obrázku ověřit, j
 
 ![Protokoly aktivit pro zálohy virtuálních počítačů Azure](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-Klikněte na tlačítko "JSON" segment, který má získat další podrobnosti a zobrazit tak kopie vložení ho do textového editoru. Měla by se zobrazit podrobnosti trezoru a položku, která spustila aktivitu protokolu to znamená, zálohované položky.
+Klikněte na název operace se zobrazí, operace a související podrobnosti o.
 
-Pak klikněte na tlačítko "Přidat upozornění protokolu aktivit" Generovat výstrahy pro tyto protokoly.
+![Nové pravidlo upozornění](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Kliknutím na "Přidat upozornění protokolu aktivit" uvedené výše a otevře se vytvoření výstrahy obrazovku, ze které je podobné jako vytvoření výstrahy obrazovku [výše popsaným způsobem](#create-alerts-using-log-analytics).
+Klikněte na tlačítko **nové pravidlo upozornění** otevřít **vytvořit pravidlo** obrazovky, můžete tady vytvořit upozornění, pomocí kroků popsaných v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log).
 
-Zde je prostředek samotný trezor RS a proto budete muset opakovat stejnou akci pro všechny tyto trezory, ve kterých chcete oznámení prostřednictvím protokolů aktivit. Podmínka nebude mít žádné prahové hodnoty, období, frekvence vzhledem k tomu, že toto je upozornění založeného na událostech. Poté, co se vygeneruje protokol aktivit relevantní, je vyvolána výstraha.
+Zde je prostředek samotný trezor služby Recovery Services a proto je nutné opakovat stejnou akci pro všechny tyto trezory, ve kterých chcete oznámení prostřednictvím protokolů aktivit. Podmínka nebude mít žádné prahové hodnoty, období, frekvence vzhledem k tomu, že toto je upozornění založeného na událostech. Poté, co se vygeneruje protokol aktivit relevantní, je vyvolána výstraha.
 
 ## <a name="recommendation"></a>Doporučení
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 2d51699138914e4a8ad5d2a133161fcfce71e9fe
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074053"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431312"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -99,6 +99,8 @@ Když vytvoříte nástroj pro vyrovnávání zatížení typ služby, se vytvo�
 Ve službě AKS můžete vytvořit prostředek příchozího přenosu dat pomocí příkazu podobného tomuto serveru NGINX, nebo použít funkci směrování aplikace AKS HTTP. Když povolíte směrování aplikace HTTP pro AKS cluster, Platforma Azure vytvoří kontroler příchozího přenosu dat a *externí DNS* kontroleru. Při vytváření nových prostředků příchozího přenosu dat v Kubernetes se vyžaduje DNS A záznamy vytvořené v zóně DNS specifické pro cluster. Další informace najdete v tématu [nasazení směrování aplikace HTTP][aks-http-routing].
 
 Další běžnou funkcí příchozího přenosu dat se ukončení protokolu SSL/TLS. Ukončení protokolu TLS na velké webové aplikace přistupuje přes protokol HTTPS, může být zpracována prostředků příchozího přenosu dat a nikoli v rámci vlastní aplikace. Poskytnout automatické generování certifikaci TLS a konfigurace, můžete nakonfigurovat prostředek příchozího přenosu dat, který má být použit poskytovatelů, jako je například umožňuje šifrovat. Další informace o konfiguraci řadič příchozího přenosu dat serveru NGINX se teď šifrování, najdete v části [Ingress a protokol TLS][aks-ingress-tls].
+
+Můžete také nakonfigurovat váš kontroler příchozího přenosu dat pro zachování Zdrojová IP adresa klienta na žádosti o kontejnerech v clusteru AKS. Když žádost klienta se směruje do kontejneru v clusteru AKS pomocí vaší kontroler příchozího přenosu dat, nebudou mít k dispozici cílový kontejner původní Zdrojová IP adresa této žádosti. Když povolíte *zachování IP klienta zdrojového*, je k dispozici v hlavičce žádosti v části Zdrojová IP adresa klienta *X-předané-pro*. Pokud používáte klienta zdrojové IP a zachovávání s rozlišením na vašem řadiči příchozího přenosu dat, nemůžete použít předávací protokol SSL. Zachování IP zdrojového klienta a předávací protokol SSL je možné s ostatními službami, jako *nástroj pro vyrovnávání zatížení* typu.
 
 ## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 

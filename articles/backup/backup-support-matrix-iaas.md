@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 2f48e0d8b46684d067fe2e32f241e28d94c2edbd
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399677"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743180"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 Můžete použít [služby Azure Backup](backup-overview.md) pro zálohování místních počítačů a úlohy a Azure virtual machines (VM). Tento článek shrnuje podporu nastavení a omezení při zálohování virtuálních počítačů Azure pomocí Azure Backup.
@@ -54,6 +54,8 @@ Zálohy za den (přes aplikaci DPM nebo MABS) | Dvě naplánované zálohy za de
 Zálohování, měsíčních nebo ročních   | Není podporováno při zálohování se rozšíření virtuálního počítače Azure. Pouze denní nebo týdenní podporována.<br/><br/> Můžete nastavit zásady pro denní nebo týdenní zálohy uchovávat po dobu uchování, měsíčních nebo ročních.
 Nastavení automatické hodiny | Nepodporuje se.<br/><br/> Azure Backup nepodporuje upravit automaticky změny letního času při zálohování virtuálního počítače.<br/><br/>  Ručně podle potřeby upravte zásadu.
 [Funkce zabezpečení pro hybridní zálohy](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  Zakázání funkce zabezpečení není podporován.
+Zálohování virtuálních počítačů, jejichž čas počítače se změní. | Nepodporuje se.<br/><br/> Pokud čas počítače se změní na budoucí datum a čas po povolení zálohování pro tento virtuální počítač; Ale i v případě, že se vrátí zpět změnu času, není zaručeno úspěšné zálohování.  
+
 
 ## <a name="operating-system-support-windows"></a>Podpora operačního systému (Windows)
 
@@ -146,7 +148,7 @@ Zálohování virtuálních počítačů v [skupiny dostupnosti](https://docs.mi
 Zálohování virtuálních počítačů v [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) |  Nepodporuje se.
 Zálohování virtuálních počítačů, které jsou nasazeny pomocí [výhody použití hybridních (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) | Podporuje se.
 Zálohování virtuálních počítačů, které jsou nasazené [škálovací sady](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) |  Nepodporuje se.
-Zálohování virtuálních počítačů, které byly nasazeny [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Vydáno nakladatelstvím Microsoft třetích stran) |  Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém).
+Zálohování virtuálních počítačů, které byly nasazeny [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> (Vydáno nakladatelstvím Microsoft třetích stran) |  Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém). Neobnovujte jsme virtuální počítače Azure Marketplace zajišťuje jako virtuální počítače, jak tyto potřeby informací o nákupu, ale pouze jako disky.
 Zálohování virtuálních počítačů nasazených z vlastní image (třetích stran) |   Podporuje se.<br/><br/> Virtuální počítač musí být spuštěný podporovaný operační systém.<br/><br/> Při obnovení souborů na virtuálním počítači, můžete obnovit pouze na kompatibilní operační systém (ne starší nebo novější operační systém).
 Zálohování virtuálních počítačů, které se migrují do Azure  | Podporuje se.<br/><br/> Zálohování virtuálního počítače, musí nainstalovat agenta virtuálního počítače na migrovaných počítačů.
 Zálohování konzistence více virtuálních počítačů | Azure Backup neposkytuje konzistenci dat a aplikací napříč několika virtuálními počítači.

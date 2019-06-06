@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/04/2019
 ms.author: twhitney
-ms.openlocfilehash: 6b5ebbab717a3db7c9b50549d2762df61c274131
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307344"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688633"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení přes RDP k Azure Kubernetes Service (AKS) uzlů clusteru Windows serveru pro údržbu nebo řešení potíží
 
@@ -32,7 +32,18 @@ Také nutné mít Azure CLI verze 2.0.61 nebo později nainstalované a nakonfig
 
 Uzlů Windows Server ve vašem clusteru AKS nemají zvenku přístupný IP adresy. Chcete-li vytvořit připojení RDP, můžete nasadit virtuální počítač s veřejně dostupná IP adresa na stejné podsíti jako uzly Windows serveru.
 
-Následující příklad vytvoří virtuální počítač s názvem *myVM* v *myResourceGroup* skupinu prostředků. Nahraďte *$SUBNET_ID* s ID podsítě, které používá váš fond uzlů Windows serveru.
+Následující příklad vytvoří virtuální počítač s názvem *myVM* v *myResourceGroup* skupinu prostředků.
+
+Nejprve získejte podsíť používá váš fond uzlů Windows serveru. Pokud chcete získat id podsítě, budete potřebovat název podsítě. Pokud chcete získat název podsítě, budete potřebovat název virtuální sítě. Získejte název virtuální sítě pomocí dotazu na clusteru pro svůj seznam sítí. K dotazování clusteru, musíte její název. Získáte všechny tyto spuštěním následujícího ve službě Azure Cloud Shell:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+VNET_NAME=$(az network vnet list -g $CLUSTER_RG --query [0].name -o tsv)
+SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME --query [0].name -o tsv)
+SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
+```
+
+Teď, když máte SUBNET_ID, spusťte následující příkaz v okně Azure Cloud Shell vytvořte virtuální počítač:
 
 ```azurecli-interactive
 az vm create \

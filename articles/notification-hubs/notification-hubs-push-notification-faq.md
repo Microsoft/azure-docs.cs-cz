@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 8af545f5700e90303562174a3c27cc5438b28e24
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 579d50a95ad0e478f401b7db012e7c743ce58491
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925878"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730465"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 
@@ -56,7 +56,7 @@ Pro úrovně Basic a Standard centra oznámení správně nakonfigurovaných apl
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Jak můžu upgradovat nebo downgradovat Moje centrum nebo oboru názvů do jiné úrovně?
 
-Přejděte  **[Azure Portal]** > **názvové prostory centra oznámení** nebo **Notification Hubs**. Vyberte prostředek, který chcete aktualizovat a přejděte na **cenová úroveň**. Vezměte na vědomí následující požadavky:
+Přejděte  **[Azure Portal]**  > **názvové prostory centra oznámení** nebo **Notification Hubs**. Vyberte prostředek, který chcete aktualizovat a přejděte na **cenová úroveň**. Vezměte na vědomí následující požadavky:
 
 * Aktualizované cenové úrovně se vztahuje na *všechny* hubs v oboru názvů, kterou pracujete.
 * Pokud počet vašich zařízení překračuje limit úroveň, na kterou se Downgrade na, musíte odstranit zařízení, než spustíte downgrade.
@@ -69,17 +69,17 @@ Server sady SDK jsou dostupné pro .NET, Java, Node.js, PHP nebo Python. Rozhran
 
 ### <a name="which-client-platforms-do-you-support"></a>Které klientské platformy podporujete?
 
-Nabízená oznámení jsou podporovány pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (přes Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a s Androidem, [aplikace pro Chrome](notification-hubs-chrome-push-notifications-get-started.md), a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete v části [Kurzy Začínáme centra oznámení] stránky.
+Nabízená oznámení jsou podporovány pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android China (přes Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a s Androidem, a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete v části [Kurzy Začínáme centra oznámení] stránky.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Podporujete textových zpráv, e-mailu nebo web oznámení?
 
 Notification Hubs je primárně určený k odesílání oznámení do mobilní aplikace. Neposkytuje e-mailu nebo text funkcí zasílání a příjmu. Ale platforem třetích stran, které poskytují tyto možnosti je možné integrovat s Notification Hubs k odesílat nativní nabízená oznámení pomocí [Mobile Apps].
 
-Notification Hubs také neposkytuje služby nabízených oznámení v prohlížeči oznámení doručování úprav. Zákazníci můžou implementovat tuto funkci pomocí nástroje SignalR, na které platformy jsou podporované na straně serveru. Pokud chcete odesílat oznámení do aplikací prohlížeče v sandboxu Chrome, najdete v článku [Kurz k aplikacím pro Chrome].
+Notification Hubs také neposkytuje služby nabízených oznámení v prohlížeči oznámení doručování úprav. Zákazníci můžou implementovat tuto funkci pomocí nástroje SignalR, na které platformy jsou podporované na straně serveru. 
 
 ### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Jak se mobilní aplikace a související s Azure Notification Hubs a kdy je použít?
 
-Pokud máte existující back-endu mobilní aplikace a chcete přidat pouze možnost odesílat nabízená oznámení, můžou se používat Azure Notification Hubs. Pokud chcete nastavit back-endu mobilní aplikace od začátku, zvažte použití funkce Mobile Apps služby Azure App Service. Mobilní aplikace automaticky zřídí centra oznámení, takže můžete snadno odesílat nabízená oznámení z back-endu mobilní aplikace. Ceny pro Mobile Apps obsahuje základní poplatky pro Centrum oznámení. Platíte, jenom když překročí zahrnuté nabídky. Podrobné informace o nákladech, přejděte [Ceny služeb App Service] stránky.
+Pokud máte existující back-endu mobilní aplikace a chcete přidat pouze možnost odesílat nabízená oznámení, můžou se používat Azure Notification Hubs. Pokud chcete nastavit back-endu mobilní aplikace od začátku, zvažte použití funkce Mobile Apps služby Azure App Service. Mobilní aplikace automaticky zřídí centra oznámení, takže můžete snadno odesílat nabízená oznámení z back-endu mobilní aplikace. Ceny pro Mobile Apps obsahuje základní poplatky pro Centrum oznámení. Platíte, jenom když překročí zahrnuté nabídky. Podrobné informace o nákladech, přejděte [Ceny služby App Service] stránky.
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Kolik zařízení může podporovat Pokud můžu posílat nabízená oznámení pomocí Notification Hubs?
 
@@ -210,7 +210,6 @@ Můžete také programově přístup k metrikám. Další informace najdete v n�
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Rozhraní REST API Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Kurzy Začínáme centra oznámení]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Kurz k aplikacím pro Chrome]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Pokyny k registraci back-endu]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Pokyny k registraci back-endu 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
@@ -222,4 +221,4 @@ Můžete také programově přístup k metrikám. Další informace najdete v n�
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[Ceny služeb App Service]: https://azure.microsoft.com/pricing/details/app-service/
+[Ceny služby App Service]: https://azure.microsoft.com/pricing/details/app-service/

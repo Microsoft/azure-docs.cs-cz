@@ -2,20 +2,20 @@
 title: Přehled uživatelských účtů v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o uživatelských účtech v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7e9e046ef4fcba81d5a8c330180a6e0831a7dcdd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42a38b47f9e49652b5fe80aa5bbd0047dc7d1e74
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718062"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511969"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Resetovat heslo uživatele, můžete použít následující informace:
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Uživatel typu host
+## <a name="guest-user"></a>Uživatel typu Host
 
 Externí uživatelé do svého tenanta můžete pozvat jako uživatele typu Host. Typický scénář pro pozvání uživatelů typu Host do tenanta Azure AD B2C je ke sdílení správy odpovědnosti. Příklad použití účtu guest, naleznete v tématu [vlastnosti uživatele spolupráce Azure Active Directory s B2B](../active-directory/b2b/user-properties.md).
 

@@ -2,20 +2,20 @@
 title: Obecná deklarace identity transformace příklady Identity prostředí Framework schéma z Azure Active Directory B2C | Dokumentace Microsoftu
 description: Obecná deklarace identity transformace příklady Identity prostředí Framework schéma z Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 831ecf2924ab6c321f69bb50c4a95a4156482585
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a5f8068ea7e97343749c719d2d0800e20701079c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683961"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510988"
 ---
 # <a name="general-claims-transformations"></a>Obecná deklarace identity transformace
 
@@ -29,7 +29,7 @@ Ověří, zda **inputClaim** neexistuje nebo není a nastaví **outputClaim** na
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim |Všechny | Vstupní deklarací, jejichž existence je potřeba ověřit. |
+| InputClaim | InputClaim |Jakýkoli | Vstupní deklarací, jejichž existence je potřeba ověřit. |
 | outputClaim | outputClaim | Boolean | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
 
 Použijte Tato transformace na zkontrolujte, jestli deklarace identity existuje, nebo obsahuje všechny hodnoty deklarací identity. Vrácená hodnota je logická hodnota určující, zda existuje deklarace identity. Následující příklad zkontroluje, jestli existuje e-mailovou adresu.

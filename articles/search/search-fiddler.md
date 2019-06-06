@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eaf594286e5ffc101ad2d24e808fcb806998d053
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793542"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471558"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Rychlý start: Prozkoumejte službu REST API služby Azure Search pomocí nástroje Postman
 > [!div class="op_single_selector"]
@@ -73,13 +73,13 @@ V nástroji Postman by zformulujte podobnou žádost, která vypadá jako na ná
 
 Ve službě Azure Search obvykle vytvořit index před načtením s daty. [Vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index) se používá pro tuto úlohu. 
 
-Adresa URL je rozšířit `hotel` název indexu.
+Adresa URL je rozšířit `hotels` název indexu.
 
 Chcete-li to provést v nástroji Postman:
 
 1. Změňte operaci na **UMÍSTIT**.
 
-2. Kopírují se tato adresa URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`.
+2. Kopírují se tato adresa URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
 
 3. Zadejte definici indexu (viz dole) v textu požadavku.
 
@@ -257,7 +257,7 @@ Pro cíl zkopírujte v upravenou verzi tuto adresu URL: `https://<YOUR-SEARCH-SE
 
 ### <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Změňte operaci na **UMÍSTIT**. Kopírují se upravenou verzi tuto adresu URL: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Zkopírujte definici indexu do textu žádosti uvedené výše. Vaše stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Klikněte na tlačítko **Execute** nahoře vpravo odešlete dokončenou žádost.
+Změňte operaci na **UMÍSTIT**. Kopírují se upravenou verzi tuto adresu URL: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`. Zkopírujte definici indexu do textu žádosti uvedené výše. Vaše stránka by měla vypadat podobně jako na následujícím snímku obrazovky. Klikněte na tlačítko **Execute** nahoře vpravo odešlete dokončenou žádost.
 
 ![Text žádosti Fiddleru][7]
 

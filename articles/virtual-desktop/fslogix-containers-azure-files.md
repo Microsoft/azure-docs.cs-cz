@@ -7,24 +7,24 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c3f31e8d260ea5e462e8782fadd9f61f34d03add
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307269"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497537"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
-Služba Windows virtuální plochy, ve verzi Preview se doporučuje FSLogix profilu kontejnery jako řešení profilu uživatele. FSLogix slouží k roaming profilů ve vzdálené výpočetních prostředích, jako je například virtuální plochy Windows. Ukládá kompletní profil v jedním kontejnerem. Při přihlášení je připojen k výpočetním prostředí pomocí nativní, na hostovi virtuálního pevného disku (VHD) a technologie Hyper-V virtuálního pevného disku (VHDX) služby dynamicky kontejneru. Profil uživatele je hned dostupný a zobrazí se v systému úplně stejně jako nativní profil.
+Služba Windows virtuální plochy, ve verzi Preview se doporučuje FSLogix profilu kontejnery jako řešení profilu uživatele. FSLogix slouží k roaming profilů ve vzdálené výpočetních prostředích, jako je například virtuální plochy Windows. Ukládá kompletní profil v jedním kontejnerem. Při přihlášení je tento kontejner dynamicky připojen k výpočetním prostředí pomocí nativně podporované virtuální pevný Disk (VHD) a technologie Hyper-V virtuálního pevného disku (VHDX). Profil uživatele je hned dostupný a zobrazí se v systému úplně stejně jako nativní profil.
 
 V tomto článku popisujeme kontejnery FSLogix profil použít se soubory Azure. Informace jsou v rámci virtuální plochy Windows, která byla [zveřejněných na 3/21](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/).
 
 ## <a name="user-profiles"></a>Profily uživatelů
 
-Profil uživatele obsahuje údaje o jednotlivých uživatelů, včetně informací o konfiguraci nastavení pracovní plochy, trvalé síťové připojení a nastavení aplikace. Ve výchozím nastavení vytvoří místní profil uživatele, který je úzce integrovaná s operačním systémem Windows.
+Profil uživatele obsahuje údaje o jednotlivých uživatelů, včetně informací o konfiguraci, jako je nastavení pracovní plochy, trvalé síťové připojení a nastavení aplikace. Ve výchozím nastavení vytvoří místní profil uživatele, který je úzce integrovaná s operačním systémem Windows.
 
-Na vzdálený profil uživatele obsahuje oddíl mezi operačního systému a dat uživatele. To umožňuje operačního systému, nahrazení nebo změnit bez několikrát uživatelská data. Hostitel relace vzdálené plochy (RDSH) a infrastruktur virtuální plochy (VDI) může být nahrazen operačního systému z následujících důvodů:
+Na vzdálený profil uživatele obsahuje oddíl mezi operačního systému a dat uživatele. To umožňuje operačního systému, nahrazení nebo změnit, aniž by to ovlivnilo uživatelská data. Hostitel relace vzdálené plochy (RDSH) a infrastruktur virtuální plochy (VDI) může být nahrazen operačního systému z následujících důvodů:
 
 - Upgrade operačního systému
 - Nahrazení z existujícího virtuálního počítače (virtuálního počítače)
@@ -67,7 +67,7 @@ Clustery S2D vyžadují operační systém, který se opravit, aktualizují a za
 
 ## <a name="fslogix-profile-containers"></a>Kontejnery FSLogix profilu
 
-19. listopadu 2018 [společnosti Microsoft získali FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). Adresy FSLogix řadu profilu kontejneru výzev, klíčů mezi nimi jsou:
+19. listopadu 2018 [společnosti Microsoft získali FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší řadu výzev kontejneru profilu. Klíče mezi nimi jsou:
 
 - **Výkon:** [FSLogix profilu kontejnery](https://fslogix.com/products/profile-containers) vysoce a vyřešit problémy s výkonem, které jste v minulosti blokované uložili do mezipaměti v režimu serveru exchange.
 - **OneDrive:** Bez FSLogix profilu kontejnery OneDrive pro firmy nepodporuje dočasné prostředí RDSH nebo infrastruktury virtuálních klientských počítačů. [OneDrive pro firmy a FSLogix osvědčené postupy](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) popisuje způsob, jakým interagují. Další informace najdete v tématu [použití synchronizačního klienta na virtuální plochy](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).

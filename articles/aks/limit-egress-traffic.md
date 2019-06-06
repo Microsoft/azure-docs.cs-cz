@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 13fbb20cde454a0aaab156a74a9fbcbac2d90d07
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418131"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475570"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - omezení odchozí provoz pro uzly clusteru a řízení přístupu k požadované porty a služby ve službě Azure Kubernetes Service (AKS)
 
@@ -75,7 +75,7 @@ Následující plně kvalifikovaný název domény / pravidla aplikací jsou po�
 
 | PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                      | Port      | Použití      |
 |---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443 | Tato adresa je koncový bod rozhraní API serveru. |
+| *.azmk8s.io               | HTTPS:443,22,9000 | Tato adresa je koncový bod rozhraní API serveru. |
 | aksrepos.azurecr.io       | HTTPS:443 | Tato adresa je potřeba přístup imagí v Azure Container Registry (ACR). |
 | *.blob.core.windows.net   | HTTPS:443 | Tato adresa je back-endu úložiště pro imagí uložených v ACR. |
 | mcr.microsoft.com         | HTTPS:443 | Tato adresa je potřeba přístup imagí v Microsoft Container Registry (MCR). |

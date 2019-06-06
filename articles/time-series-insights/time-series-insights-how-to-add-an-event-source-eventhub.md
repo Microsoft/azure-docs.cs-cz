@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8040368f4cbd6d264070aa3db0a8e6b07a866480
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8b39001481764eb955ab4535e8c6ea1752e0c012
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239028"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475725"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Time Series Insights
 
 Tento článek popisuje postup přidání zdroje událostí, která čte data z Azure Event Hubs do prostředí Azure Time Series Insights pomocí webu Azure portal.
 
 > [!NOTE]
-> Podle kroků popsaných v tomto článku se vztahují jak na GA Insights řady čas a čas Series Insights ve verzi Preview prostředí.
+> Kroky, které jsou popsané v tomto článku se vztahují jak na GA Insights řady čas a čas Series Insights ve verzi Preview prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +34,7 @@ Tento článek popisuje postup přidání zdroje událostí, která čte data z 
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Přidat skupinu uživatelů do vašeho centra událostí
 
-Aplikace používat skupiny příjemců k získání dat z Azure Event Hubs. Poskytují vyhrazenou skupinu spotřebitelů, pro použití pouze u tohoto prostředí Time Series Insights, spolehlivě přečíst data z vašeho centra událostí.
+Aplikace používat skupiny příjemců k získání dat z Azure Event Hubs. Spolehlivě číst data ze služby event hub, poskytují vyhrazenou skupinu spotřebitelů, který se používá pouze v tomto prostředí Time Series Insights.
 
 Chcete-li přidat novou skupinu uživatelů ve službě event hub:
 
@@ -64,38 +64,40 @@ Chcete-li přidat novou skupinu uživatelů ve službě event hub:
 
 1. Vyberte příslušné hodnoty pro **možnost importu**:
    - Pokud máte existující centrum událostí v jednom z vašich předplatných, vyberte **použijte Centrum událostí z dostupných předplatných**. Tato možnost je nejjednodušší přístup.
-   - Pokud centra událostí je externí ke svým předplatným, nebo pokud budete chtít Upřesnit možnosti, vyberte **nastavení zadejte centra událostí ručně**.
 
-   [![V podokně nový zdroj událostí zadejte hodnoty pro první tři parametry](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
+       [![V podokně nový zdroj událostí zadejte hodnoty pro první tři parametry](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
-1. V následující tabulce jsou popsány požadované vlastnosti pro **použijte Centrum událostí z dostupných předplatných** možnost:
 
-   [![Podrobnosti o Centru předplatného a události](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+       [![Podrobnosti o Centru předplatného a události](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
-   | Vlastnost | Popis |
-   | --- | --- |
-   | ID předplatného | Vyberte předplatné, ve kterém byla vytvořena centra událostí.
-   | Názvový prostor služby Service Bus | Vyberte obor názvů služby Azure Service Bus, která obsahuje centra událostí.
-   | Název centra událostí | Vyberte název centra událostí.
-   | Název zásady centra událostí | Vyberte zásady sdíleného přístupu. Můžete vytvořit zásady sdíleného přístupu v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **čtení** oprávnění.
-   | Klíč zásad centra událostí | Hodnota klíče může být předem.
-   | Skupina uživatelů centra událostí | Skupina uživatelů, která načítá události z centra událostí. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí. |
-   | Formát serializace události | V současné době JSON je k dispozici pouze Serializační formát. Zprávy o událostech musí být v tomto formátu nebo mohou být přečteny žádná data. |
-   | Název vlastnosti časového razítka | Chcete-li tuto hodnotu určit pochopit formátu dat zpráva odeslaná do centra událostí. Tato hodnota je **název** vlastnosti specifické události v datech zprávu, kterou chcete použít jako časové razítko události. Hodnota je velká a malá písmena. Pokud je ponecháno prázdné, **čas zařazení události** události zdroj se používá jako časové razítko události. |
+     V následující tabulce jsou popsány požadované vlastnosti pro **použijte Centrum událostí z dostupných předplatných** možnost:
 
-1. V následující tabulce jsou popsány požadované vlastnosti pro **nastavení zadejte centra událostí ručně** možnost:
+     | Vlastnost | Popis |
+     | --- | --- |
+     | ID předplatného | Vyberte předplatné, ve kterém byla vytvořena centra událostí.
+     | Obor názvů služby Service Bus | Vyberte obor názvů služby Azure Service Bus, která obsahuje centra událostí.
+     | Název centra událostí | Vyberte název centra událostí.
+     | Název zásady centra událostí | Vyberte zásady sdíleného přístupu. Můžete vytvořit zásady sdíleného přístupu v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **čtení** oprávnění.
+     | Klíč zásad centra událostí | Hodnota klíče může být předem.
+     | Skupina uživatelů centra událostí | Skupina uživatelů, která načítá události z centra událostí. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí. |
+     | Formát serializace události | V současné době JSON je k dispozici pouze Serializační formát. V tomto formátu musí být zprávy o událostech nebo nelze číst data. |
+     | Název vlastnosti časového razítka | Chcete-li tuto hodnotu určit pochopit formátu dat zpráva odeslaná do centra událostí. Tato hodnota je **název** vlastnosti specifické události v datech zprávu, kterou chcete použít jako časové razítko události. Hodnota je velká a malá písmena. Pokud je ponecháno prázdné, **čas zařazení události** události zdroj se používá jako časové razítko události. |
 
-   | Vlastnost | Popis |
-   | --- | --- |
-   | ID předplatného | Předplatné, ve kterém byla vytvořena centra událostí.
-   | Skupina prostředků | Skupina prostředků, ve kterém byla vytvořena centra událostí.
-   | Názvový prostor služby Service Bus | Obor názvů služby Service Bus je kontejner sady entit pro zasílání zpráv. Když vytvoříte nové Centrum událostí, vytvoříte tím taky obor názvů Service Bus.
-   | Název centra událostí | Název vašeho centra událostí. Když vytvoříte Centrum událostí, dáte mu taky určitý název.
-   | Název zásady centra událostí | Zásady sdíleného přístupu. Můžete vytvořit zásady sdíleného přístupu v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **čtení** oprávnění.
-   | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů služby Service Bus. Zadejte primární a sekundární klíč tady.
-   | Skupina uživatelů centra událostí | Skupina uživatelů, která načítá události z centra událostí. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí.
-   | Formát serializace události | V současné době JSON je k dispozici pouze Serializační formát. Zprávy o událostech musí být v tomto formátu nebo mohou být přečteny žádná data. |
-   | Název vlastnosti časového razítka | Chcete-li tuto hodnotu určit pochopit formátu dat zpráva odeslaná do centra událostí. Tato hodnota je **název** vlastnosti specifické události v datech zprávu, kterou chcete použít jako časové razítko události. Hodnota je velká a malá písmena. Pokud je ponecháno prázdné, **čas zařazení události** události zdroj se používá jako časové razítko události. |
+    - Pokud centra událostí je externí ke svým předplatným, nebo pokud budete chtít Upřesnit možnosti, vyberte **nastavení zadejte centra událostí ručně**.
+
+      V následující tabulce jsou popsány požadované vlastnosti pro **nastavení zadejte centra událostí ručně** možnost:
+ 
+      | Vlastnost | Popis |
+      | --- | --- |
+      | ID předplatného | Předplatné, ve kterém byla vytvořena centra událostí.
+      | Skupina prostředků | Skupina prostředků, ve kterém byla vytvořena centra událostí.
+      | Obor názvů služby Service Bus | Obor názvů služby Service Bus je kontejner sady entit pro zasílání zpráv. Když vytvoříte nové Centrum událostí, vytvoříte tím taky obor názvů Service Bus.
+      | Název centra událostí | Název vašeho centra událostí. Když vytvoříte Centrum událostí, dáte mu taky určitý název.
+      | Název zásady centra událostí | Zásady sdíleného přístupu. Můžete vytvořit zásady sdíleného přístupu v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásady sdíleného přístupu pro váš zdroj událostí *musí* mají **čtení** oprávnění.
+      | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů služby Service Bus. Zadejte primární a sekundární klíč tady.
+      | Skupina uživatelů centra událostí | Skupina uživatelů, která načítá události z centra událostí. Důrazně doporučujeme používat vyhrazenou skupinu spotřebitelů pro váš zdroj událostí.
+      | Formát serializace události | V současné době JSON je k dispozici pouze Serializační formát. V tomto formátu musí být zprávy o událostech nebo nelze číst data. |
+      | Název vlastnosti časového razítka | Chcete-li tuto hodnotu určit pochopit formátu dat zpráva odeslaná do centra událostí. Tato hodnota je **název** vlastnosti specifické události v datech zprávu, kterou chcete použít jako časové razítko události. Hodnota je velká a malá písmena. Pokud je ponecháno prázdné, **čas zařazení události** události zdroj se používá jako časové razítko události. |
 
 1. Přidáte vyhrazenou Time Series Insights příjemce názvu skupiny, kterou jste přidali do vašeho centra událostí.
 

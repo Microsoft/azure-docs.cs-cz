@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6465fd069e73a571e0671d528f5d0b4da4602dc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bb34c3f04302e6a2b5cc307b98bafe93e09fcf2f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499389"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734699"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 
@@ -47,11 +47,11 @@ Pro AzureRM rutiny v následující tabulce se používají k vytváření a spr
 | [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Odebere přihlašovací údaje služby Automation. |
 | [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |Nastaví vlastnosti pro existující pověření služby Automation. |
 
-## <a name="activities"></a>Aktivity
+## <a name="activities"></a>Činnosti
 
 Aktivity v následující tabulce se používají pro přístup k přihlašovacím údajům v runbooku a konfiguracích DSC.
 
-| Aktivity | Popis |
+| Činnosti | Popis |
 |:--- |:--- |
 | Get-AutomationPSCredential |Získá přihlašovací údaje pro použití v runbooku nebo konfigurace DSC. Vrátí [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) objektu. |
 
@@ -112,7 +112,7 @@ $password = $myCredential.GetNetworkCredential().Password
 Můžete také použít přihlašovací údaje pro ověření do Azure s [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). Ve většině případů byste měli používat [účet Spustit jako](../manage-runas-account.md) a načíst ji [Get-AutomationConnection](../automation-connections.md).
 
 ```azurepowershell
-$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password

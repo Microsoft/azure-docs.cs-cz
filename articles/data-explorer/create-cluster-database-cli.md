@@ -1,18 +1,18 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí příkazového řádku Azure'
+title: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí příkazového řádku Azure
 description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocí rozhraní příkazového řádku Azure
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 04/10/2019
-ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e771def95db00b5de8c27011641a628560952970
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446144"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494791"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí příkazového řádku Azure
 
@@ -24,15 +24,15 @@ ms.locfileid: "60446144"
 > * [Python](create-cluster-database-python.md)
 >
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze pomocí příkazového řádku Azure.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto článku se vytvoření clusteru a databáze pomocí příkazového řádku Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+K dokončení tohoto článku, budete potřebovat předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-the-cli-parameters"></a>Konfigurovat parametry příkazového řádku
 
@@ -60,8 +60,8 @@ Následující kroky nejsou nutné, pokud spouštíte příkazy ve službě Azur
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | jméno | *azureclitest* | Požadovaný název vašeho clusteru.|
-   | SKU | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
+   | name | *azureclitest* | Požadovaný název vašeho clusteru.|
+   | Skladová položka | *D13_v2* | Skladová položka, která se použije pro váš cluster. |
    | resource-group | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
 
     Existují další volitelné parametry, které můžete použít, jako je například kapacita clusteru.
@@ -85,7 +85,7 @@ Pokud výsledek obsahuje `provisioningState` s `Succeeded` hodnotu, pak clusteru
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | Název clusteru | *azureclitest* | Název clusteru s novou databází.|
-   | jméno | *clidatabase* | Název databáze.|
+   | name | *clidatabase* | Název databáze.|
    | resource-group | *testrg* | Název skupiny prostředků, ve kterém se cluster vytvoří. |
    | Konfigurace soft-delete období | *P365D* | Označuje dobu, kterou data zůstanou k dispozici pro dotaz. Zobrazit [zásady uchovávání informací](/azure/kusto/concepts/retentionpolicy) Další informace. |
    | Horká doby uložení v mezipaměti | *P31D* | Označuje dobu, kterou data zůstanou v mezipaměti. Zobrazit [mezipaměti zásad](/azure/kusto/concepts/cachepolicy) Další informace. |
@@ -100,7 +100,7 @@ Teď máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte.
+* Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili.
 * Pokud chcete vyčistit prostředky, cluster odstraňte. Po odstranění clusteru se odstraní také všechny databáze v ní. Pomocí následujícího příkazu odstraňte cluster:
 
     ```azurecli-interactive
@@ -109,5 +109,4 @@ Teď máte cluster a databázi.
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Rychlé zprovoznění: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+* [Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)

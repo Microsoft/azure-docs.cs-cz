@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955741"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475861"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
 
@@ -113,7 +113,6 @@ Alternativně můžete integrovat aplikace služby App Service s využitím [Azu
 
 S výjimkou **izolované** cenovou úroveň, u všech úrovní aplikace můžete spouštět ve sdílené síťové infrastruktury ve službě App Service. Veřejné IP adresy a nástroje pro vyrovnávání zatížení front-endový jsou sdíleny s jinými tenanty. **Izolované** úroveň poskytuje kompletní síťovou izolaci spuštěním vaší aplikace v rámci vyhrazeného [App Service environment](environment/intro.md). Služby App Service environment běží ve vlastní instanci [Azure Virtual Network](/azure/virtual-network/). To vám umožní: 
 
-- Omezení síťového přístupu s [skupiny zabezpečení sítě](../virtual-network/virtual-networks-dmz-nsg.md). 
 - Poskytování aplikací prostřednictvím vyhrazené veřejný koncový bod, s vyhrazenou front-endů.
 - Slouží k interní aplikaci pomocí interní nástroj pro vyrovnávání zatížení (ILB), který umožňuje přístup jenom v rámci vaší virtuální sítě Azure. ILB má IP adresu z vaší privátní podsítě, která poskytuje celkový počet izolace aplikací z Internetu.
 - [Pomocí ILB za bránou firewall webových aplikací (WAF)](environment/integrate-with-application-gateway.md). WAF nabízí ochranu podnikové úrovni pro vaše veřejné webové aplikace, například DDoS protection, identifikátor URI filtrování a prevence prostřednictvím injektáže SQL.

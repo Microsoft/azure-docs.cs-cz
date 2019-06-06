@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9658ed46e1a46aa3fc2c7fe251fd73b2ef0a13dd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991369"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480322"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -28,7 +28,7 @@ Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure
 
 Při pokusu o připojení sdílené složky, může dojít k následující chybě:
 
-- Došlo k chybě systému 5. Přístup byl zamítnut.
+- Došlo k systémové chybě 5. Přístup byl zamítnut.
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>1. příčina: Nešifrovaná komunikace kanálu
 
@@ -54,9 +54,9 @@ Ověřte, že virtuální sítě a pravidel brány firewall jsou správně nakon
 
 Při pokusu o připojení sdílené složky v místním nebo z jiného datového centra, může dojít k následujícím chybám:
 
-- Došlo k chybě systému 53. Cesta sítě nebyla nalezena.
-- Došlo k chybě systému 67. Síťový název nelze nalézt.
-- Došlo k chybě systému 87. Parametr je nesprávný.
+- Došlo k systémové chybě 53. Síťová cesta se nenašla.
+- Došlo k systémové chybě 67. Název sítě se nenašel.
+- Došlo k systémové chybě 87. Parametr je nesprávný.
 
 ### <a name="cause-1-port-445-is-blocked"></a>1. příčina: Port 445 blokovaný.
 
@@ -136,14 +136,13 @@ Chyba 1816 se stane při dosažení horní limit počtu souběžných otevřený
 
 Snižte počet souběžných otevřených popisovačů ukončením některé obslužné rutiny a pak zkuste to znovu. Další informace najdete v tématu [kontrolní seznam výkonu a škálovatelnosti Microsoft Azure Storage](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Přístup byl odepřen" při přechodu na sdílené složky Azure na portálu
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Chyba "Ověření se nezdařilo" při přechodu na sdílené složky Azure na portálu
 
 Při procházení sdílené složky Azure na portálu může zobrazit následující chyba:
 
-Přístup je odepřený.  
-Nemáte přístup.  
-Vypadá to, že nemáte přístup k tomuto obsahu. Chcete-li získat přístup, obraťte se prosím vlastníka.  
+Selhání autorizace  
+Nemáte přístup 
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1. příčina: Váš uživatelský účet nemá přístup k účtu úložiště
 
@@ -225,7 +224,7 @@ Disky jsou připojené na uživatele. Pokud vaše aplikace nebo služba běží 
 
 ### <a name="solution"></a>Řešení
 
-Použijte jedno z následujících řešení:
+Použijte jednu z následujících řešení:
 
 -   Připojte jednotku ze stejného uživatelského účtu, který obsahuje aplikace. Můžete použít nástroje, jako je PsExec.
 - Předejte název účtu úložiště a klíč uživatelské jméno a heslo parametry sítě použijte příkaz.

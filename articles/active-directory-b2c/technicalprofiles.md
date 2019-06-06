@@ -2,20 +2,20 @@
 title: TechnicalProfiles | Dokumentace Microsoftu
 description: Zadejte element TechnicalProfiles vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711049"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512286"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -80,12 +80,12 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 
 **Technický profil** obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Domain (Doména) | 0:1 | Název domény pro technický profil. Například pokud váš technický profil určuje zprostředkovatele identity Facebook, název domény je Facebook.com. |
-| Zobrazovaný název | 0:1 | Název technický profil, který může být zobrazen uživatelům. |
+| displayName | 0:1 | Název technický profil, který může být zobrazen uživatelům. |
 | Popis | 0:1 | Popis technický profil, který může být zobrazen uživatelům. |
-| Protocol (Protokol) | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
+| Protocol | 0:1 | Protokol používaný pro komunikaci s druhou stranou. |
 | Metadata | 0:1 | Kolekce dvojic klíč/hodnota, které využívají protokol pro komunikaci s koncovým bodem v rámci transakce. |
 | InputTokenFormat | 0:1 | Formát vstupu tokenu. Možné hodnoty: `JSON`, `JWT`, `SAML11`, nebo `SAML2`. `JWT` Hodnota představuje webového tokenu JSON podle specifikaci IETF. `SAML11` Hodnota představuje token SAML 1.1 zabezpečení podle specifikace OASIS.  `SAML2` Hodnota představuje token SAML 2.0 zabezpečení podle specifikace OASIS. |
 | OutputTokenFormat | 0:1 | Formát tokenu výstup. Možné hodnoty: `JSON`, `JWT`, `SAML11`, nebo `SAML2`. |
@@ -102,7 +102,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 | UseTechnicalProfileForSessionManagement | 0:1 | Různé technický profil pro správu relací. |
 |EnabledForUserJourneys| 0:1 |Určuje, zda technickém profilu je proveden v cestě uživatele.  |
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protocol
 
 **Protokol** prvek obsahuje následující atributy:
 
@@ -115,7 +115,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 
 A **metadat** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Metadata, která se týká technického profilu. Každý typ technický profil má jinou sadu položky metadat. V části technický profil typů, další informace. |
 
@@ -131,7 +131,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **CryptographicKeys** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Klíč | 1: n | Kryptografický klíč používaný v tomto technickém profilu. |
 
@@ -148,7 +148,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **InputClaimsTransformations** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Identifikátor deklarace identity transformace, která má být provedena před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. Transformace deklarací identity lze použít k úpravě existující deklarace identity ClaimsSchema nebo generovat nové značky. |
 
@@ -164,7 +164,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **InputClaims** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
 
@@ -182,7 +182,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **PersistedClaims** prvek obsahuje následující prvky:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Typ deklarace k uchování. |
 
@@ -200,7 +200,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **OutputClaims** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | outputClaim | 1: n | Typ deklarace identity očekávaný výstup. |
 
@@ -219,7 +219,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **OutputClaimsTransformations** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | Identifikátory transformace deklarací, které budou spuštěny před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. Transformace deklarací identity lze použít k úpravě existující deklarace identity ClaimsSchema nebo generovat nové značky. |
 
@@ -235,7 +235,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **ValidationTechnicalProfiles** prvek obsahuje následující element:
 
-| Element | Výskyty | Popis |
+| Prvek | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Identifikátory technické profily, které se používají ověřit některé nebo všechny výstupní deklarace identit odkazující technického profilu. Všechny mezi vstupními deklaracemi identity odkazovaného technického profilu musí být uvedena v výstupní deklarace identit odkazující technického profilu. |
 

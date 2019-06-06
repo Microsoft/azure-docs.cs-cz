@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: iainfou
-ms.openlocfilehash: c73f2fea808944847fab6a675914ee57e537560b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20922f0fb6932191b8e522e4640b1ba4fecd5ca4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467149"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514563"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vytváření a správě aplikací ve službě Azure Kubernetes Service (AKS) – operátor clusteru a pro vývojáře
 
@@ -26,13 +26,13 @@ Jako operátor clusteru fungují společně s počet vlastníků aplikace a výv
 
 **Víceklientská architektura**
 
-* [Osvědčené postupy pro zajištění izolace clusteru](operator-best-practices-cluster-isolation.md)
+* [Osvědčené postupy pro izolaci clusteru](operator-best-practices-cluster-isolation.md)
     * Zahrnuje více tenantů základní komponenty a logické izolace s obory názvů.
-* [Osvědčené postupy pro Plánovač základní funkce](operator-best-practices-scheduler.md)
+* [Osvědčené postupy pro základní funkce plánovače](operator-best-practices-scheduler.md)
     * Zahrnuje použití kvóty prostředků a rozpočet pod přerušení.
-* [Osvědčené postupy pro Plánovač pokročilé funkce](operator-best-practices-advanced-scheduler.md)
+* [Osvědčené postupy pro pokročilé funkce plánovače](operator-best-practices-advanced-scheduler.md)
     * Zahrnuje použití poskvrnění a tolerations, uzel selektory a vztahů a vztahů mezi pod a proti spřažení.
-* [Osvědčené postupy pro ověřování a autorizace](operator-best-practices-identity.md)
+* [Osvědčené postupy pro ověřování a autorizaci](operator-best-practices-identity.md)
     * Zahrnuje integraci s Azure Active Directory, pomocí řízení přístupu na základě rolí (RBAC) a pod identit.
 
 **Zabezpečení**
@@ -40,7 +40,7 @@ Jako operátor clusteru fungují společně s počet vlastníků aplikace a výv
 * [Osvědčené postupy pro zabezpečení clusteru a upgrady](operator-best-practices-cluster-security.md)
     * Zahrnuje zabezpečení přístupu k rozhraní API serveru, omezení přístupu ke kontejneru a Správa aktualizací a restartování uzlu.
 * [Osvědčené postupy pro správu image kontejnerů a zabezpečení](operator-best-practices-container-image-management.md)
-    * Zahrnuje zabezpečení image a moduly runtime, s využitím důvěryhodné registry a automatizované buildy při aktualizacích základní image...
+    * Zahrnuje zabezpečení image a moduly runtime a automatizované buildy při aktualizacích základní image.
 * [Osvědčené postupy pro zabezpečení pod](developer-best-practices-pod-security.md)
     * Zahrnuje zabezpečení přístupu k prostředkům, omezení odhalení přihlašovacích údajů a používání pod identity a digitální trezorům klíčů.
 

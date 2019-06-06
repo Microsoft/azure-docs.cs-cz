@@ -1,25 +1,25 @@
 ---
-title: Správa místního webového uživatelského rozhraní Microsoft Azure Data Box | Microsoft Docs v datech
-description: Popisuje, jak používat místní webové uživatelské rozhraní při správě zařízení Data Box
+title: Místního webového uživatelského rozhraní správy pro službu Azure Data Box, Azure Data Box náročné | Dokumentace Microsoftu
+description: Popisuje způsob použití místního webového uživatelského rozhraní pro správu zařízení Data Box a Data Box náročné
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 02/01/2019
+ms.topic: article
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf8af37b0caf51966e336bcb4cea0c4ece5ca9c7
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327253"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496261"
 ---
-# <a name="use-the-local-web-ui-to-administer-your-data-box"></a>Použití místního webového uživatelského rozhraní při správě Data Boxu
+# <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní pro správu zařízení Data Box a Data Box náročné
 
-Článek popisuje část konfigurace a úlohy správy, které se dají provádět v Data Boxu. Data Box můžete spravovat přes uživatelské rozhraní webu Azure Portal a místní webové uživatelské rozhraní pro zařízení. Tento článek se zaměřuje na úlohy, které můžete provádět pomocí místního webového uživatelského rozhraní.
+Tento článek popisuje některé konfigurace a správa úlohy, které lze provést na zařízení Data Box a Data Box náročné. Můžete spravovat zařízení Data Box a Data Box náročné prostřednictvím webu Azure portal uživatelského rozhraní a místního webového uživatelského rozhraní pro zařízení. Tento článek se zaměřuje na úlohy, které můžete provádět pomocí místního webového uživatelského rozhraní.
 
-Místní webové uživatelské rozhraní pro Data Box se používá pro počáteční konfiguraci zařízení. Místní webové uživatelské rozhraní můžete také použít k vypnutí nebo restartování Data Boxu, spuštění diagnostických testů, aktualizaci softwaru, zobrazení protokolů kopírování a generování balíčku protokolů pro podporu Microsoftu.
+Místního webového uživatelského rozhraní pro Data Box a Data Box náročné se používá pro počáteční konfiguraci zařízení. Místního webového uživatelského rozhraní můžete také vypnout nebo restartovat zařízení, spusťte diagnostické testy, aktualizace softwaru, zobrazit protokoly kopírování a vygenerujte balíček pro protokol pro Microsoft Support. Data Box náročné zařízení se dvěma uzly nezávislé dostanete dva samostatné místního webového uživatelského rozhraní odpovídající k jednotlivým uzlům zařízení.
 
 Tento článek obsahuje následující návody:
 
@@ -27,11 +27,11 @@ Tento článek obsahuje následující návody:
 - Vypnutí nebo restartování zařízení
 - Stáhněte si BOM nebo soubory manifestu
 - Zobrazení dostupné kapacity zařízení
-- Přeskočení ověření kontrolního součtu 
+- Přeskočení ověření kontrolního součtu
 
 ## <a name="generate-support-package"></a>Generování balíčku pro podporu
 
-Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží. Pokud chcete vygenerovat balíček pro podporu, postupujte takto:
+Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze systémových protokolů balíček pro podporu. Podpora Microsoftu používá tento balíček k řešení příslušných potíží. Pokud chcete vygenerovat balíček pro podporu, proveďte následující kroky:
 
 1. V místním webovém uživatelském rozhraní přejděte na **Kontaktovat podporu** a klikněte na **Vytvořit balíček pro podporu**.
 
@@ -52,9 +52,9 @@ Pokud budete mít se zařízením jakékoliv problémy, můžete vytvořit ze sy
 
 ## <a name="shut-down-or-restart-your-device"></a>Vypnutí nebo restartování zařízení
 
-Data Box můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Minimalizuje se tak možnost poškození dat. Při vypnutí zařízení zkontrolujte, že se nekopírují data.
+Můžete vypnout nebo restartovat zařízení pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Minimalizuje se tak možnost poškození dat. Při vypnutí zařízení zkontrolujte, že se nekopírují data.
 
-Při vypnutí Data Boxu postupujte podle následujících pokynů.
+Pro vypnutí zařízení, proveďte následující kroky.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Vypnout nebo restartovat**.
 2. Klikněte na **Vypnout**.
@@ -80,11 +80,11 @@ Při restartování Data Boxu postupujte podle následujících pokynů.
 
 ## <a name="download-bom-or-manifest-files"></a>Stáhněte si BOM nebo soubory manifestu
 
-Bill materiálu (Kusovníku) nebo soubory manifestu obsahují seznam souborů, které se zkopírují do zařízení Data Box. Tyto soubory jsou generovány při přípravě zařízení Data Box k odeslání.
+Bill materiálu (Kusovníku) nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do zařízení Data Box nebo Data Box náročné. Tyto soubory jsou generovány při přípravě zařízení k odeslání.
 
-Než začnete, ujistěte se, že vaše zařízení Data Box byla dokončena **přípravu k odeslání** kroku. Následujícím postupem stáhnout BOM nebo soubory manifestu:
+Než začnete, ujistěte se, že vaše zařízení byla dokončena **přípravu k odeslání** kroku. Následujícím postupem stáhnout BOM nebo soubory manifestu:
 
-1. Přejděte do místního webového uživatelského rozhraní pro vaše zařízení Data Box. Zobrazí se, že zařízení Data Box byla dokončena příprava k odeslání. Když se dokončí Příprava zařízení, stavu zařízení se zobrazí jako **připravené k odeslání**.
+1. Přejděte do místního webového uživatelského rozhraní pro vaše zařízení. Zobrazí se, že zařízení dokončí Příprava k odeslání. Když se dokončí Příprava zařízení, stavu zařízení se zobrazí jako **připravené k odeslání**.
 
     ![Zařízení je připravené k odeslání](media/data-box-portal-admin/ready-to-ship.png)
 
@@ -109,6 +109,9 @@ Než začnete, ujistěte se, že vaše zařízení Data Box byla dokončena **p�
     |mydbmdrg2_MDisk-BOM.txt     |Spravovaný Disk         |SMB/NFS         |
 
 Tento seznam slouží k ověření soubory nahrát do účtu úložiště Azure, až zařízení Data Box se vrátí do datacentra Azure. Ukázkový soubor manifestu je uveden níže.
+
+> [!NOTE]
+> Na na Data Box vysoké jsou k dispozici odpovídající dva uzly v zařízení dvě sady seznam souborů (BOM).
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -150,25 +153,24 @@ Tento seznam slouží k ověření soubory nahrát do účtu úložiště Azure,
 <file size="3603" crc64="0x7e34c25d5606693f">\databox\TOC.yml</file>
 ```
 
-Tento soubor obsahuje seznam všech souborů, které byly zkopírovány na zařízení Data Box. V tomto souboru *crc64* hodnota má vztah k kontrolního součtu vygenerovaný pro odpovídající soubor.
+Tento soubor obsahuje seznam všech souborů, které byly zkopírovány na zařízení Data Box nebo Data Box náročné. V tomto souboru *crc64* hodnota má vztah k kontrolního součtu vygenerovaný pro odpovídající soubor.
 
 ## <a name="view-available-capacity-of-the-device"></a>Zobrazení dostupné kapacity zařízení
 
-Dostupnou a využitou kapacitu zařízení můžete zobrazit na řídicím panelu zařízení. 
+Dostupnou a využitou kapacitu zařízení můžete zobrazit na řídicím panelu zařízení.
 
 1. V místním webovém uživatelském rozhraní přejděte na **Zobrazit řídicí panel**.
 2. V části **Připojit a kopírovat** se zobrazí volné a využité místo zařízení.
 
     ![Zobrazení dostupné kapacity](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
-
 ## <a name="skip-checksum-validation"></a>Přeskočení ověření kontrolního součtu
 
-Kontrolní součty jsou generovány pro vaše data ve výchozím nastavení při přípravě na odeslání. V některých výjimečných případech, v závislosti na typu dat (malé velikosti) může být pomalý výkon. V takových případech můžete kontrolní součet přeskočit. 
+Kontrolní součty jsou generovány pro vaše data ve výchozím nastavení při přípravě na odeslání. V některých výjimečných případech, v závislosti na typu dat (malé velikosti) může být pomalý výkon. V takových případech můžete kontrolní součet přeskočit.
 
 Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovlivňuje výkon.
 
-1. V pravém horním rohu z místního webového uživatelského rozhraní vašeho zařízení přejděte na nastavení.
+1. V pravém horním rohu z místního webového uživatelského rozhraní vašeho zařízení, přejděte na **nastavení**.
 
     ![Zakázání kontrolních součtů](media/data-box-local-web-ui-admin/disable-checksum.png)
 
@@ -177,5 +179,5 @@ Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovl
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si, jak [spravovat Data Box prostřednictvím webu Azure Portal](data-box-portal-admin.md).
+- Zjistěte, jak [spravovat zařízení Data Box a Data Box náročné prostřednictvím webu Azure portal](data-box-portal-admin.md).
 

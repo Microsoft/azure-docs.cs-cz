@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508422"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497115"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -180,17 +180,18 @@ Ano. Všechny virtuální počítače a Cloud Services instance rolí, které js
 ## <a name="azure-services-that-connect-to-vnets"></a>Služby Azure, které se připojují k virtuálním sítím
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Můžete použít Azure App Service Web Apps pomocí virtuální sítě?
-Ano. Můžete nasadit webové aplikace v rámci virtuální sítě pomocí prostředí ASE (App Service Environment). Pokud jste nakonfigurovali pro vaše virtuální síť připojení point-to-site, všechny webové aplikace bezpečně připojit a přístup k prostředkům ve virtuální síti. Další informace najdete v následujících článcích:
+Ano. Můžete nasadit webové aplikace v síti VNet pomocí prostředí ASE (App Service Environment), připojení back-endu vaší aplikace do vašich virtuálních sítí pomocí integrace virtuální sítě a zámek příchozímu přenosu do vaší aplikace pomocí koncových bodů služby. Další informace najdete v následujících článcích:
 
+* [Funkce sítě služby App Service](../app-service/networking-features.md)
 * [Vytváření webových aplikací ve službě App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Integrujte svou aplikaci s Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Integrace virtuální sítě a Hybrid Connections pomocí Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json#hybrid-connections-and-app-service-environments)
+* [Omezení přístupu služby App Service](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Můžete nasadit cloudové služby pomocí webových a pracovních rolí (PaaS) ve virtuální síti?
 Ano. (Volitelně) můžete nasadit instance rolí cloudové služby v rámci virtuální sítě. Uděláte to tak, zadejte název virtuální sítě a mapování podsíť/role v konfiguračním oddílu síťové služby konfigurace. Není potřeba aktualizovat některé binární soubory.
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-vmss-to-a-vnet"></a>Můžete připojit virtuální počítač Škálovací nastavit (VMSS) k virtuální síti?
-Ano. VMSS musí připojit k virtuální síti.
+### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>Je možné připojit virtuální počítač škálovací sady do virtuální sítě?
+Ano. Je nutné připojit škálovací sady do virtuální sítě virtuálních počítačů.
 
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Existuje, že úplný seznam Azure services, je možné nasadit prostředky z do virtuální sítě?
 Ano, podrobnosti najdete v tématu [integrace virtuální sítě pro služby Azure](virtual-network-for-azure-services.md).
@@ -219,7 +220,7 @@ Ano. Podrobnosti najdete v tématu [Přehled zabezpečení sítě Azure](../secu
 ## <a name="apis-schemas-and-tools"></a>Rozhraní API, schémat a nástroje
 
 ### <a name="can-i-manage-vnets-from-code"></a>Můžete spravovat virtuální sítě z kódu?
-Ano. Rozhraní REST API můžete použít pro virtuální sítě v [Azure Resource Manageru](/rest/api/virtual-network) a [classic (Správa služeb)](https://go.microsoft.com/fwlink/?LinkId=296833) modely nasazení.
+Ano. Rozhraní REST API můžete použít pro virtuální sítě v [Azure Resource Manageru](/rest/api/virtual-network) a [classic](https://go.microsoft.com/fwlink/?LinkId=296833) modely nasazení.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Je k dispozici podpora nástrojů pro virtuální sítě?
 Ano. Další informace o používání:
@@ -227,7 +228,7 @@ Ano. Další informace o používání:
 - Prostředí PowerShell ke správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/powershell/module/az.network) a [classic](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modely nasazení.
 - Rozhraní příkazového řádku Azure (CLI) k nasazení a správě virtuálních sítích nasazených prostřednictvím [Resource Manageru](/cli/azure/network/vnet) a [classic](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modely nasazení.  
 
-## <a name="vnet-peering"></a>VNET Peering
+## <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 ### <a name="what-is-vnet-peering"></a>Co je partnerský vztah virtuální sítě?
 Partnerský vztah virtuální sítě (nebo partnerský vztah virtuální sítě) můžete použít k propojení virtuálních sítí. Připojení partnerského vztahu virtuální sítě mezi virtuálními sítěmi umožňuje směrovat přenosy mezi nimi soukromě prostřednictvím adresy IPv4. Virtuální počítače v partnerských virtuálních sítích komunikovat mezi sebou, jako kdyby byly ve stejné síti. Tyto virtuální sítě může být ve stejné oblasti nebo v různých oblastech (označované také jako globální VNet Peering). Partnerské vztahy virtuálních sítí můžete také vytvořit napříč předplatnými Azure.
@@ -239,15 +240,15 @@ Ano. Globální VNet peering umožní vytvořit partnerský vztah virtuálních 
 Pokud dvě virtuální sítě v různých oblastech (globální VNet Peering) se nemůže připojit k prostředkům, které používají základní nástroje pro vyrovnávání zatížení. Můžete připojit k prostředkům, které používají Load balanceru úrovně Standard.
 Základní služby Vyrovnávání zatížení, což znamená, že nemůže komunikovat na ně napříč globální VNet Peering používají následující prostředky:
 - Virtuální počítače za bránou nástroje pro vyrovnávání zatížení základní
-- VM Scale Sets s nástroji pro vyrovnávání zatížení základní 
+- Škálovací sady virtuálních počítačů s základní nástroje pro vyrovnávání zatížení 
 - Redis Cache 
 - Služba Application Gateway (v1) skladové položky
 - Service Fabric
 - SQL MI
-- API management
+- API Management
 - Active Directory Domain Services (AD DS)
 - Logic Apps
-- HD Insight
+- HDInsight
 -   Azure Batch
 - AKS
 - App Service Environment
@@ -285,7 +286,7 @@ Ne. Tranzitivní partnerský vztah se nepodporuje. Virtuální síť a sítí VN
 Ne. VNet peering, ať už místní nebo globální, nepředstavuje nějaká omezení šířky pásma. Šířky pásma je omezená jenom virtuální počítač nebo výpočetních prostředků.
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Jak řešit potíže se partnerský vztah virtuální sítě?
-Tady je [Průvodce při potížích s] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) můžete vyzkoušet.
+Tady je [Průvodce při potížích s](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) můžete vyzkoušet.
 
 ## <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
 

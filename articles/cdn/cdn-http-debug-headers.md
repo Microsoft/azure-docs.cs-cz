@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
-ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5693e0e191b36aa8d4552824c649a38d2f17b5b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736968"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475282"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky HTTP X-ES-ladění pro Azure CDN stroje pravidel
 Hlavičky žádosti ladění mezipaměti `X-EC-Debug`, poskytuje další informace o zásady ukládání do mezipaměti, který se použije pro požadovaný prostředek. Tyto hlavičky jsou specifické pro **Azure CDN Premium od Verizonu** produktů.
@@ -27,7 +27,7 @@ Hlavičky žádosti ladění mezipaměti `X-EC-Debug`, poskytuje další informa
 ## <a name="usage"></a>Využití
 Zahrnuje odpověď odesílanou ze serverů POP pro uživatele `X-EC-Debug` záhlaví jenom v případě, že jsou splněny následující podmínky:
 
-- [Funkce ladění hlavičky odpovědi mezipaměti](cdn-rules-engine-reference-features.md#debug-cache-response-headers) byla zapnuta stroj pravidel pro zadaný požadavek.
+- [Funkce ladění hlavičky odpovědi mezipaměti](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) byla zapnuta stroj pravidel pro zadaný požadavek.
 - Zadaný požadavek definuje sadu hlaviček odpovědí mezipaměti ladění, které budou zahrnuty v odpovědi.
 
 ## <a name="requesting-debug-cache-information"></a>Žádost o informace o ladění mezipaměti
@@ -54,7 +54,7 @@ Ladění odpověď mezipaměti, které mohou být vyžádány záhlaví zahrnut�
 ## <a name="cache-status-code-information"></a>Mezipaměť informací o kódu stavu
 Hlavička X-ES-Debug odpovědi můžete identifikovat server a způsob zpracování odpovědi prostřednictvím následující direktivy:
 
-Hlavička | Popis
+Záhlaví | Popis
 -------|------------
 X-ES ladění: x ES cache | Tato hlavička se použije v hlášení pokaždé, když se obsah je směrován přes síť CDN. Identifikuje server POP, která požadavek splnila.
 X-ES ladění: x ES cache-remote | Tato hlavička se hlásí pouze v případě, že se požadovaný obsah ukládá do mezipaměti na zdrojový server shield nebo server brány ADN.
@@ -118,7 +118,7 @@ Následující ukázka hlavička odpovědi označuje, zda požadovaný obsah by 
 ## <a name="cache-key-response-header"></a>Hlavička odpovědi klíč mezipaměti
 `X-EC-Debug: x-ec-cache-key` Hlavička odpovědi určuje fyzické mezipaměti – klíč přidružený k požadovaný obsah. Fyzické klíč mezipaměti se skládá z cestu, která identifikuje prostředek pro účely ukládání do mezipaměti. Jinými slovy servery zkontroluje verzi v mezipaměti prostředek podle jeho cesty podle jeho klíče mezipaměti.
 
-Tento fyzický mezipaměti – klíč začíná dvojité lomítka (/ /) následuje protokol použitý pro vyžádání obsahu (HTTP nebo HTTPS). Tento protokol následuje relativní cesta k požadované asset, který začíná znakem obsahu přístupový bod (například _/000001/_).
+Tento fyzický mezipaměti – klíč začíná dvojité lomítka (/ /) následuje protokol použitý pro vyžádání obsahu (HTTP nebo HTTPS). Tento protokol následuje relativní cesta k požadované asset, který začíná znakem obsahu přístupový bod (například _/000001/_ ).
 
 Ve výchozím nastavení, HTTP platformy umožňují použít *standard mezipaměti*, což znamená, že řetězce dotazu jsou ignorovány pomocí mechanismu ukládání do mezipaměti. Tento typ konfigurace zabraňuje klíč mezipaměti včetně data řetězce dotazu.
 
@@ -151,7 +151,7 @@ Termíny používané v syntaxi výše uvedené hlavičky odpovědi jsou definov
 
 - MATimePeriod: Převede hodnotu max-age (MASeconds) na přibližně ekvivalentem větší jednotky (například ve dnech). 
 
-- UnixTime: Určuje časové razítko mezipaměti požadovaného obsahu v Unixový čas (označovaný také jako POSIX čas nebo Unix epocha). Časové razítko mezipaměti označuje počáteční datum/čas ze kterého se vypočte hodnota TTL prostředků. 
+- UnixTime: Určuje časové razítko mezipaměti požadovaného obsahu v Unixový čas (označované také jako POSIX čas nebo Unix epocha). Časové razítko mezipaměti označuje počáteční datum/čas ze kterého se vypočte hodnota TTL prostředků. 
 
     Pokud zdrojový server nevyužívá třetích stran HTTP, ukládání do mezipaměti serveru nebo pokud tento server nevrací hlavička odpovědi věk, pak časové razítko mezipaměti bude mít vždy datum a čas, kdy byl asset načíst nebo ověřit. V opačném případě servery POP použije pole stáří k výpočtu hodnoty TTL prostředku následujícím způsobem: Načítání/RevalidateDateTime - věku.
 

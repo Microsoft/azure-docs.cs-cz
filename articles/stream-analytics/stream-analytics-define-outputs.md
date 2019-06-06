@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/25/2019
-ms.custom: seodec18
-ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/31/2019
+ms.openlocfilehash: b29f3168b7ecc1ec8f783a7ce7a6dea83318fa14
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205532"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455707"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
+
 Tento článek popisuje typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Když použijete výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data.
 
 Při návrhu dotazu Stream Analytics, odkazovat na název výstupu pomocí [klauzule INTO](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování (Pokud je potřebujete) tím, že poskytuje více klauzulí INTO v dotazu.
@@ -26,28 +26,18 @@ K vytváření, úpravám a testovací úlohy Stream Analytics výstupy, můžet
 Některé typy podporu výstupy [dělení](#partitioning). [Výstup velikosti dávky](#output-batch-size) umožňuje optimalizovat propustnost se liší.
 
 
-## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Stream Analytics podporuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store je velkokapacitní úložiště podnikové úrovni pro analytické úlohy s velkými objemy dat. Data Lake Store můžete použít k ukládání dat libovolné velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy. Stream Analytics musí mít oprávnění k přístupu k Data Lake Store.
+## <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen1
 
-Azure Data Lake Store výstup ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
+Stream Analytics podporuje [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md). Azure Data Lake Storage je podnikové úrovni velkokapacitní úložiště pro analytické úlohy s velkými objemy dat. Data Lake Storage můžete použít k ukládání dat libovolné velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy. Stream Analytics musí mít oprávnění k přístupu k Data Lake Storage.
 
-### <a name="authorize-an-azure-data-lake-store-account"></a>Povolit účet Azure Data Lake Store
+Azure Data Lake Storage výstup ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
 
-1. Když vyberete jako výstup na portálu Azure Data Lake Store, budete vyzváni k ověření připojení k existující instanci Data Lake Store.
-
-   ![Autorizovat připojení pro Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)
-
-2. Pokud již máte přístup k Data Lake Store, vyberte **povolit teď**. Na stránce nastavení a označuje **přesměrování na autorizaci**. Po úspěšném ověření, zobrazí se stránka, která můžete konfigurovat výstupní Data Lake Store.
-
-3. Jakmile budete mít účet Data Lake Store, ověření, můžete konfigurovat vlastnosti pro výstup do Data Lake Store.
-
-   ![Definovat Data Lake Store jako výstupní Stream Analytics](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)
-
-Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat výstup do Data Lake Store.   
+Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat výstup do Data Lake Storage Gen 1.   
 
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Popisný název používaný v dotazech na přímé dotazování výstup do Data Lake Store. |
+| Předplatné | Předplatné obsahující účet Azure Data Lake Storage. |
 | Název účtu | Název účtu Data Lake Store, které e-mail posíláte výstupu. Zobrazí se rozevírací seznam účtů Data Lake Store, které jsou k dispozici v rámci vašeho předplatného. |
 | Vzor předpony cesty | Cesta k souboru, který se používá k zápisu souborů v rámci zadaného účtu Data Lake Store. Můžete zadat jednu nebo víc instancí {date} a {time} proměnné:<br /><ul><li>Příklad 1: složku1/logs / {date} / {time}</li><li>Příklad 2: složku1/logs / {date}</li></ul><br />Časové razítko struktura vytvořená složka se řídí není místním časem a UTC.<br /><br />Pokud vzor cesty souboru nemůže obsahovat koncové lomítko (/), je považován za předponu názvu souboru poslední vzorek v cestě k souboru. <br /><br />Vytvoří se nové soubory v těchto případech:<ul><li>Změna v schéma výstupu</li><li>Externí nebo interní restartovat úlohy</li></ul> |
 | Formát data | Volitelné. Pokud v předponová cesta se používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány souborů. Příklad: RRRR/MM/DD |
@@ -56,24 +46,10 @@ Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat
 | Kódování | Pokud používáte formát CSV nebo JSON, kódování musí být zadán. V tuto chvíli je jediným podporovaným formátem kódování UTF-8.|
 | Oddělovač | Vztahuje se pouze pro serializaci sdíleného svazku clusteru. Stream Analytics podporuje celou řadou běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára.|
 | Formát | Vztahuje se pouze pro serializaci JSON. **Řádcích** : Určuje takový formát výstupu tak, že každý objekt JSON oddělené novým řádkem. **Pole** : Určuje takový formát výstupu jako pole objektů JSON. Toto pole se zavře, když je úloha pozastavena nebo Stream Analytics je přesunout další časový interval. Obecně je vhodnější použít oddělené řádku JSON, protože nevyžaduje žádným zvláštním způsobem, zatímco výstupní soubor je stále se zapisují do.|
-
-### <a name="renew-data-lake-store-authorization"></a>Obnovit autorizaci Data Lake Store
-Je nutné donutit účtu Data Lake Store, pokud od úlohy byl vytvořen nebo poslední ověřený změnila jeho heslo. Pokud nemáte donutit, vaše úloha nevytvoří výstup a zobrazí se chyba značící potřebu opakované v protokoly operací. 
-
-V současné době ověřovací token je nutné ručně aktualizovat každých 90 dní pro všechny úlohy s výstupem Data Lake Store. Můžete překonání tohoto omezení podle [ověřování pomocí spravované identity (preview)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls).
-
-Chcete-li obnovit autorizaci:
-
-1. Vyberte **Zastavit** zastavit úlohy.
-1. Přejít na vaše Data Lake Store výstupní a vyberte **obnovit autorizaci** odkaz.
-
-   Po krátkou dobu, místní stránka indikuje **přesměrování na autorizaci**. Pokud je ověření úspěšné, označuje stránce **autorizaci úspěšně obnovil** a potom se automaticky zavře. 
-   
-1. Vyberte **Uložit** v dolní části stránky. Potom můžete restartovat úlohy z **posledním zastavení** k zamezení ztrátě.
-
-![Obnovit autorizaci Data Lake Store ve výstupu](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)
+| Režim ověřování | Můžete povolit přístup ke svému účtu Data Lake Storage pomocí [Identity spravované](stream-analytics-managed-identities-adls.md) nebo token uživatele. Jakmile povolíte přístup, můžete odvolat přístup ve změně hesla uživatelského účtu, odstranění výstupní Data Lake Storage pro tuto úlohu nebo odstranění úlohy Stream Analytics. |
 
 ## <a name="sql-database"></a>SQL Database
+
 Můžete použít [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako výstup pro data, která jsou svou povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics zapisovat do existující tabulky ve službě SQL Database. Schéma tabulky musí přesně odpovídat pole a jejich typy ve výstupu vaší úlohy. Můžete také určit [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) možnost výstupu jako výstup prostřednictvím SQL Database. Další informace o způsoby, jak zlepšit propustnost zápis, najdete v článku [Stream Analytics se službou Azure SQL Database jako výstup](stream-analytics-sql-output-perf.md) článku. 
 
 Následující tabulka uvádí názvy vlastností a jejich popis vytvářejícím výstupem SQL Database.
@@ -90,11 +66,11 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytvářející
 |Odpovídá počet v dávce| Doporučený limit počtu záznamy odeslané s každou hromadné vložení transakce.|
 
 > [!NOTE]
-> Nabídka Azure SQL Database je aktuálně podporovány pro výstup úlohy ve Stream Analytics. Virtuální počítač Azure s databází připojené systémem SQL Server není podporována. To se může v budoucích verzích změnit.
->
+> Azure SQL Database nabídky, se podporuje pro úlohy, výstup ve Stream Analytics, ale virtuální počítač Azure, které používají verzi SQL Server s databází připojené se nepodporuje.
 
 ## <a name="blob-storage"></a>Blob Storage
-Azure Blob storage nabízí nákladově efektivní a škálovatelné řešení pro ukládání velkých objemů nestrukturovaných dat v cloudu. Úvod do úložiště objektů Blob a jeho použití, naleznete v tématu [jak používat objekty BLOB](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+
+Azure Blob storage nabízí nákladově efektivní a škálovatelné řešení pro ukládání velkých objemů nestrukturovaných dat v cloudu. Úvod do úložiště objektů Blob a jeho použití, naleznete v tématu [nahrávání, stahování a výpis objektů BLOB pomocí webu Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvoření výstupního objektu blob.
 
@@ -124,6 +100,7 @@ Při použití úložiště objektů Blob jako výstup, je vytvořen nový soubo
 * Pokud výstup je rozdělená na oddíly pomocí vlastního pole, kde klíč oddílu Kardinalita větší než 8 000 a nový objekt blob se vytvoří každý klíč oddílu.
 
 ## <a name="event-hubs"></a>Event Hubs
+
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) služba je vysoce škálovatelná publikování a odběr schopná. Může shromažďovat miliony událostí za sekundu. Jedno použití centra událostí jako výstup při vstupu jiná úloha streamování se stane výstup úlohy Stream Analytics.
 
 Budete potřebovat několik parametrů ke konfiguraci datové proudy ze služby event hubs jako výstup.
@@ -135,7 +112,7 @@ Budete potřebovat několik parametrů ke konfiguraci datové proudy ze služby 
 | Název centra událostí | Název výstupu centra událostí. |
 | Název zásady centra událostí | Zásady sdíleného přístupu, které vytvoříte v Centru událostí **konfigurovat** kartu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad centra událostí | Sdílený přístupový klíč, který se používá k ověření přístupu k obor názvů centra událostí. |
-| Sloupec s klíčem oddílu | Volitelné. Sloupec, který obsahuje klíč oddílu výstup z centra událostí. |
+| Sloupec klíče oddílu | Volitelné. Sloupec, který obsahuje klíč oddílu výstup z centra událostí. |
 | Formát serializace události | Formát serializace pro výstupní data. JSON, CSV nebo Avro, jsou podporovány. |
 | Kódování | CSV a JSON UTF-8 je jediný podporovaný formát kódování v tuto chvíli. |
 | Oddělovač | Vztahuje se pouze pro serializaci sdíleného svazku clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, místa, karty a svislá čára. |
@@ -143,23 +120,12 @@ Budete potřebovat několik parametrů ke konfiguraci datové proudy ze služby 
 | Sloupce vlastností | Volitelné. Sloupce oddělených čárkou, které musí být připojené jako vlastnosti uživatele odchozí zprávy místo datové části. Další informace o této funkci se v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
+
 Můžete použít [Power BI](https://powerbi.microsoft.com/) jako výstup pro úlohu Stream Analytics k poskytování bohatých funkcí vizualizace poznatky o výsledky analýzy. Tuto funkci můžete použít pro provozní řídicích panelů, generování sestav a vytváření sestav řízené metriky.
 
 Výstup Power BI ze Stream Analytics není aktuálně dostupná v oblastech Azure Germany (T-Systems International) a Azure China (21Vianet).
 
-### <a name="authorize-a-power-bi-account"></a>Povolit účet Power BI
-1. Power BI vyberete jako výstup na webu Azure Portal, zobrazí se výzva k autorizaci stávajícího uživatele Power BI nebo vytvořte nový účet Power BI.
-   
-   ![Povolit uživatelům Power BI nakonfigurovat výstup](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
-
-2. Vytvořit nový účet, pokud nemáte ještě účet máte a vyberte **povolit teď**. Zobrazí se následující stránka:
-   
-   ![Ověření ve službě Power BI z účtu Azure](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)
-
-3. Zadejte pracovní nebo školní účet pro ověřování výstup Power BI. Pokud jste dosud nejste přihlášeni pro Power BI, vyberte **zaregistrujte se hned teď**. Pracovní nebo školní účet, který používáte pro Power BI se může lišit od, který jste nyní přihlášeni pomocí účtu předplatného Azure.
-
-### <a name="configure-the-power-bi-output-properties"></a>Konfigurace vlastností výstup Power BI
-Jakmile budete mít účet Power BI, ověření, můžete konfigurovat vlastnosti pro výstup do Power BI. Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat výstup do Power BI.
+Následující tabulka uvádí názvy vlastností a jejich popisy nakonfigurovat výstup do Power BI.
 
 | Název vlastnosti | Popis |
 | --- | --- |
@@ -167,8 +133,9 @@ Jakmile budete mít účet Power BI, ověření, můžete konfigurovat vlastnost
 | Pracovní prostor skupiny |Pokud chcete povolit sdílení dat s dalšími uživateli Power BI, můžete vybrat skupiny, do účtu Power BI nebo jej vybrat **pracovní prostor** Pokud nechcete, aby k zápisu do skupiny. Aktualizuje se existující skupina vyžaduje obnovování ověřování Power BI. |
 | Název datové sady |Zadejte název datové sady, který se má výstup Power BI používat. |
 | Název tabulky |Zadejte název tabulky v datové sadě Power BI výstupu. V současné době Power BI výstup z úlohy Stream Analytics může mít pouze jednu tabulku v datové sadě. |
+| Autorizovat připojení | Musíte se autorizovat s Power BI mohli konfigurovat svá nastavení výstupu. Jakmile udělit přístup výstup na řídicí panel Power BI, můžete odvolat přístup ve změně hesla uživatelského účtu, odstranění výstup úlohy nebo odstranění úlohy Stream Analytics. | 
 
-Postup konfigurace výstup Power BI a řídicí panel, najdete v části [Azure Stream Analytics a Power BI](stream-analytics-power-bi-dashboard.md) článku.
+Postup konfigurace výstup Power BI a řídicí panel, najdete v části [Azure Stream Analytics a Power BI](stream-analytics-power-bi-dashboard.md) kurzu.
 
 > [!NOTE]
 > Nevytvářejí explicitně datová sada a tabulky v řídicím panelu Power BI. Datová sada a tabulky se automaticky naplní při spuštění úlohy a úlohy spustí čerpací výstup do Power BI. Pokud dotaz úlohy negeneruje žádné výsledky, nevytvoří se datová sada a tabulky. Pokud Power BI už je datová sada a tabulky se stejným názvem, jaký byl zadán v této úloze Stream Analytics, je existující data přepsána.
@@ -203,19 +170,10 @@ Předchozí nebo aktuální | Int64 | Řetězec | Datum a čas | Double
 Int64 | Int64 | Řetězec | Řetězec | Double
 Double | Double | Řetězec | Řetězec | Double
 Řetězec | Řetězec | Řetězec | Řetězec | Řetězec 
-Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
-
-
-### <a name="renew-power-bi-authorization"></a>Obnovit autorizaci Power BI
-Pokud po vytvoření nebo posledního ověření vaší úlohy Stream Analytics se změní heslo ke svému účtu Power BI, budete muset donutit Stream Analytics. Pokud Azure Multi-Factor Authentication je nakonfigurován na tenantovi služby Azure Active Directory (Azure AD), musíte také obnovit autorizaci Power BI každé dva týdny. Příznaky tohoto problému je žádné výstupy a "ověřit uživatele chybu" v protokoly operací:
-
-  ![Power BI ověření chyba uživatele](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)
-
-Chcete-li vyřešit tento problém, zastavte spuštěné úlohy a přejděte na výstup do Power BI. Vyberte **obnovit autorizaci** propojit a restartujte úlohu z **posledním zastavení** k zamezení ztrátě.
-
-  ![Obnovit autorizaci Power BI pro výstup](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)
+Datum a čas | Řetězec | Řetězec |  Datum a čas | String
 
 ## <a name="table-storage"></a>Úložiště Table
+
 [Azure Table storage](../storage/common/storage-introduction.md) nabízí vysoce dostupné a široce škálovatelné úložiště, takže aplikace může automaticky škálovat podle požadavků uživatelů. Úložiště Table je úložiště klíčů/atributů typu NoSQL od Microsoftu, který můžete použít pro strukturovaná data s méně omezeními ve schématu. Azure Table storage můžete použít k ukládání dat pro trvalost a efektivní načtení.
 
 Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvoření výstupu tabulky.
@@ -225,13 +183,14 @@ Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvořen�
 | Alias pro výstup |Popisný název používaný v dotazech pro přesměrování výstupu dotazu do této tabulky úložiště. |
 | Účet úložiště |Název účtu úložiště, které e-mail posíláte výstupu. |
 | Klíč účtu úložiště |Přístupový klíč přidružený k účtu úložiště. |
-| Název tabulky |Název tabulky V tabulce se vytvoří, pokud neexistuje. |
+| Název tabulky |Název tabulky. V tabulce se vytvoří, pokud neexistuje. |
 | Klíč oddílu |Název výstupního sloupce obsahujícího klíč oddílu. Klíč oddílu je jedinečný identifikátor pro oddíl v tabulce, která tvoří první část primárního klíče entity. Je řetězec, který může mít velikost až 1 KB. |
 | Klíč řádku |Název výstupního sloupce obsahujícího klíč řádku. Klíč řádku je jedinečný identifikátor pro entitu v rámci oddílu. Tvoří druhou část primárního klíče entity. Klíč řádku je řetězcová hodnota, která může mít velikost až 1 KB. |
 | Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí hodnota (100) je dostatečné pro většinu úloh. Najdete v článku [tabulky dávkové operace specifikace](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) další podrobnosti ke změně tohoto nastavení. |
 
 ## <a name="service-bus-queues"></a>Fronty služby Service Bus
-[Fronty služby Service Bus](https://msdn.microsoft.com/library/azure/hh367516.aspx) nabízejí doručení zpráv FIFO na jeden nebo několik konkurenčních spotřebitelů. Zprávy jsou obvykle přijata a zpracovávají v pořadí, ve kterém byly přidány do fronty. Je každou zprávu přijme a zpracuje jenom jeden spotřebitel zprávy.
+
+[Fronty služby Service Bus](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) nabízejí doručení zpráv FIFO na jeden nebo několik konkurenčních spotřebitelů. Zprávy jsou obvykle přijata a zpracovávají v pořadí, ve kterém byly přidány do fronty. Je každou zprávu přijme a zpracuje jenom jeden spotřebitel zprávy.
 
 Následující tabulka uvádí názvy vlastností a jejich popisy pro vytvoření výstupní fronty.
 
@@ -288,7 +247,7 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstup Azure Cosmos 
 | Account ID | Název nebo identifikátor URI účtu služby Azure Cosmos DB koncového bodu. |
 | Klíč účtu | Sdílený přístupový klíč pro účet služby Azure Cosmos DB. |
 | Databáze | Název databáze Azure Cosmos DB. |
-| Vzor názvu kolekce | Název kolekce nebo vzor pro kolekce, který se má použít. <br />Formát názvu kolekce můžete vytvořit pomocí nepovinného tokenu {partition}, ve kterém oddíly začínají od 0. Dva příklady:  <br /><ul><li> _MyCollection_: Musí existovat jednu kolekci s názvem "Mojekolekce".</li>  <li> _MyCollection{partition}_: Podle dělicí sloupec.</li></ul> Rozdělení sloupce kolekce je potřeba vytvořit: "MyCollection0," "MyCollection1", "MyCollection2," a tak dále. |
+| Vzor názvu kolekce | Název kolekce nebo vzor pro kolekce, který se má použít. <br />Formát názvu kolekce můžete vytvořit pomocí nepovinného tokenu {partition}, ve kterém oddíly začínají od 0. Dva příklady:  <br /><ul><li> _MyCollection_: Musí existovat jednu kolekci s názvem "Mojekolekce".</li>  <li> _MyCollection{partition}_ : Podle dělicí sloupec.</li></ul> Rozdělení sloupce kolekce je potřeba vytvořit: "MyCollection0," "MyCollection1", "MyCollection2," a tak dále. |
 | Klíč oddílu | Volitelné. Budete potřebovat jenom v případě, že používáte tokenu {partition} ve vaší vzor názvu kolekce.<br /> Klíč oddílu je název pole ve výstupních událostech používaný k určení klíče pro rozdělení výstupu do kolekcí.<br /> Výstup z jedné kolekce můžete použít libovolný sloupec libovolného výstup. Příkladem je PartitionId. |
 | ID dokumentu |Volitelné. Název pole ve výstupních událostech používaný k určení primárního klíče, na které insert nebo update jsou založené operace.
 
@@ -316,7 +275,7 @@ Také v situaci, kde není žádná událost doručení časový interval, nebud
 Sloupce dotaz jako vlastnosti uživatele může připojit k odchozí zprávy. Tyto sloupce nenavazují do datové části. Vlastnosti jsou k dispozici v podobě slovníku na výstupní zprávu. *Klíč* název sloupce a *hodnotu* je hodnota sloupce ve slovníku vlastností. Všechny typy dat Stream Analytics jsou podporované s výjimkou záznamu a pole.  
 
 Podporované výstupy: 
-* Fronta služby Service Bus 
+* Fronty služby Service Bus 
 * Téma služby Service Bus 
 * Centrum událostí 
 

@@ -2,20 +2,20 @@
 title: Technický profil OAuth2 definování ve vlastních zásadách v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Technický profil OAuth2 definování ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b196b34e8eee99ed77c3c8a914f89fa68d87b8
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683890"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512952"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth2 definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64683890"
 
 Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity protokolu OAuth2. OAuth2 je primární protokol pro delegované ověřování a autorizace. Další informace najdete v tématu [RFC 6749 OAuth 2.0 autorizace rámci](https://tools.ietf.org/html/rfc6749). S OAuth2 technický profil může provést federaci pomocí zprostředkovatele identity na základě OAuth2, jako je Facebook. Federování s využitím zprostředkovatele identity umožňuje uživatelům Přihlaste se pomocí své stávající sociálních sítí nebo podnikové identity.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 **Název** atribut **protokol** elementu musí být nastavena na `OAuth2`. Například protokol **OAUTH pro Facebook** technickém profilu je `OAuth2`:
 
@@ -104,7 +104,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 | --------- | -------- | ----------- |
 | client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity. Šifrovací klíč je požadován, pouze v případě, **response_types** metadat je nastavena na `code`. V tomto případě Azure AD B2C umožňuje jiného volání k výměně autorizačního kódu pro přístupový token. Pokud metadata nastavená na `id_token`, můžete vynechat kryptografický klíč. |  
 
-## <a name="redirect-uri"></a>Přesměrovat identifikátor URI
+## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
 Při konfiguraci adresy URL pro přesměrování vašeho zprostředkovatele identity, zadejte `https://login.microsoftonline.com/te/tenant/policyId/oauth2/authresp`. Nezapomeňte nahradit **tenanta** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **policyId** s identifikátorem zásady (například b2c_1a_policy). Identifikátor URI pro přesměrování musí být v všechna písmena malá.
 

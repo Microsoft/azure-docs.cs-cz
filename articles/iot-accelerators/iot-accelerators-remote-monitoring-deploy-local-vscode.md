@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967530"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730170"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio Code
 
@@ -62,13 +62,14 @@ dotnet build -c Release
 Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorování ve Visual Studio Code:
 
 1. Spusťte editor Visual Studio Code.
-1. Otevřít **azure-iot-pcs-remote-monitoring-dotnet** modul z místní kopie v nástroji VS Code.
-1. Zkopírujte soubory **launch.json** a **tasks.json** z scripts\local\launch\idesettings\vscode\. Vytvořte novou složku **azure-iot-pcs-remote-monitoring-dotnet\.vscode** a vkládání souborů existuje.
-1. Otevřete panel ladění ve VS Code a spustit **spustit všechny mikroslužby** konfigurace. Tato konfigurace mikroslužeb simulace zařízení spustí v Dockeru a běží mikroslužby v ladicím programu.
+1. Ve VS Code, Otevřít **azure-iot-pcs-remote-monitoring-dotnet** složky.
+1. Vytvořit novou složku s názvem **.vscode** v **azure-iot-pcs-remote-monitoring-dotnet** složky.
+1. Zkopírujte soubory **launch.json** a **tasks.json** z services\scripts\local\launch\idesettings\vscode k **.vscode** složky, které jste právě vytvořili.
+1. Otevřít **ladění panel** v nástroji VS Code a spusťte **spustit všechny mikroslužby** konfigurace. Tato konfigurace mikroslužeb simulace zařízení spustí v Dockeru a běží mikroslužby v ladicím programu.
 
-Jako příklad výstupu pro **Auth** službu **ladění konzoly** vypadá podobně jako následující:
+Výstup spuštění **spustit všechny microsoervices** v konzole ladění bude vypadat nějak takto:
 
-[![Deploy-Local-Auth-Service](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>Spuštění webového uživatelského rozhraní
 

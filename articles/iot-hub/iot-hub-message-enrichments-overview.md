@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2de945d2ef1d87b47ea81aac034916466d3c9bda
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6ddfd90956fde0c57e14083a3704cbf365456c75
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258846"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735167"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Obohacení zprávu pro zprávy typu zařízení cloud služby IoT Hub (preview)
 
@@ -49,6 +49,8 @@ Zprávy mohou pocházet z jakéhokoli zdroje dat podporované [směrování zpr�
 
 Obohacení přidáte do zprávy, které se chystáte integrovaný koncový bod služby IoT Hub nebo zprávy, které jsou směrovány na vlastní koncové body, jako je například úložiště objektů Blob v Azure, do fronty služby Service Bus nebo téma služby Service Bus.
 
+Obohacení můžete také přidat do zprávy, které se publikují do služby Event Grid tak, že vyberete koncový bod jako služby Event Grid. Další informace najdete v tématu [služby Iot Hub a Event Grid](iot-hub-event-grid.md).
+
 Obohacení se vztahují na koncový bod. Pokud chcete zadat pět obohacení, chcete-li označením pro určitý koncový bod, jsou stejné pět obohacení označený všechny zprávy, že přejdete do tohoto koncového bodu.
 
 Jak si vyzkoušet naši zprávu obohacení najdete v tématu [kurzu obohacení zprávy](tutorial-message-enrichments.md)
@@ -75,7 +77,7 @@ Obohacení zprávy jsou k dispozici žádné další poplatky. V současné dob�
 
 ## <a name="availability"></a>Dostupnost
 
-Tato funkce je dostupná ve verzi preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+Tato funkce je dostupná ve verzi preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>Další postup
 

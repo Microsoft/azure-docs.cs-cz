@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257956"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735009"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí ve službě Azure Event Grid
 
@@ -140,6 +140,15 @@ Přihlásit k odběru Azure Maps události pro reakci na události monitorové g
 | [Reagujte na události Azure Maps pomocí služby Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Přehled integrace Azure Maps pomocí služby Event Grid. |
 | [Kurz: Nastavení monitorové geografické zóny](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Tento kurz vás provede kroky základní informace o nastavení monitorové geografické zóny s využitím map Azure. Pomocí Azure Event Grid streamování výsledků monitorové geografické zóny a nastavení oznámení na základě výsledků monitorové geografické zóny. |
 | [Schéma událostí](event-schema-azure-maps.md) | Zobrazí pole v událostech Azure Maps. |
+
+## <a name="app-configuration"></a>App Configuration
+Přihlásit k odběru konfiguraci aplikací Azure události pro reakci na události změny klíč hodnota.
+
+|Titul | Popis |
+|---------|---------|
+| [Reagujte na události konfigurace aplikace pro Azure s využitím služby Event Grid](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Přehled integrace konfiguraci aplikací Azure pomocí služby Event Grid. |
+| [Rychlý start: Směrování událostí služby konfigurace aplikací v Azure do vlastního webového koncového bodu pomocí Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Ukazuje, jak používat rozhraní příkazového řádku Azure k odesílání událostí konfigurace aplikací v Azure do Webhooku. |
+| [Schéma událostí](event-schema-app-configuration.md) | Zobrazí pole v událostech konfiguraci aplikací Azure. |
 
 
 ## <a name="next-steps"></a>Další postup

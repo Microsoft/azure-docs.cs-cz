@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782918"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431215"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
 
@@ -339,7 +339,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | ---- | ---- | ----- |
 | Vrátí | Pole | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-## <a name="contains"></a>obsahuje
+## <a name="contains"></a>Obsahuje
 
 `contains (container, itemToFind)`
 
@@ -349,7 +349,7 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obs
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| kontejner |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu k vyhledání. |
+| container |Ano |pole, objekt nebo řetězec |Hodnota, která obsahuje hodnotu k vyhledání. |
 | itemToFind |Ano |řetězec nebo int |Hodnota k vyhledání. |
 
 ### <a name="return-value"></a>Návratová hodnota
@@ -713,7 +713,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | arrayOutput | String | jeden |
 | stringOutput | String | O |
 
-## <a name="format"></a>formát
+## <a name="format"></a>format
 
 `format(formatString, arg1, arg2, ...)`
 
@@ -1123,7 +1123,7 @@ Následující příklad šablony ukazuje parametr s novým identifikátorem.
 
 Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1166,7 +1166,7 @@ Následující příklad používá funkci newGuid vytvořit jedinečný název 
 
 Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | nameOutput | string | storagenziwvyru7uxie |
 
@@ -1259,7 +1259,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
         },
-        "secodeOutput": {
+        "secondOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
@@ -1272,9 +1272,9 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
-| secodeOutput | String | 123-123-xxxx |
+| secondOutput | String | 123-123-xxxx |
 
-## <a name="skip"></a>přeskočit
+## <a name="skip"></a>Přeskočit
 
 `skip(originalValue, numberToSkip)`
 
@@ -1477,7 +1477,7 @@ Převede zadanou hodnotu na řetězec.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ano | Všechny |Hodnota převedená na řetězec. Libovolný typ hodnoty lze převést, včetně objekty a pole. |
+| valueToConvert |Ano | Jakýkoli |Hodnota převedená na řetězec. Libovolný typ hodnoty lze převést, včetně objekty a pole. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -1893,7 +1893,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="uri"></a>identifikátor uri
+## <a name="uri"></a>uri
 
 `uri (baseUri, relativeUri)`
 
@@ -2077,7 +2077,7 @@ Vrátí aktuální hodnotu data a času (UTC) v zadaném formátu. Pokud je k di
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formát |Ne |string |Kódovaný identifikátor URI hodnota převedená na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| format |Ne |string |Kódovaný identifikátor URI hodnota převedená na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) nebo [vlastní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -2134,7 +2134,7 @@ Následující příklad šablony ukazuje různé formáty pro hodnoty data a č
 
 Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |

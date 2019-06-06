@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit problémy s Update managementem
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bcc871ecc9413f02545e6aec4caa6342d563b44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787693"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474566"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -78,19 +78,48 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>Scénář: Aktualizace správy dat se nezobrazuje v protokoly Azure monitoru pro počítač
+### <a name="nologs"></a>Scénář: Počítače se nezobrazují na portálu v části Správa aktualizací
 
 #### <a name="issue"></a>Problém
 
-Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale zobrazit data prezenčního signálu v protokoly Azure monitoru pro Hybrid Runbook Worker, ale ne Update Management.
+Můžete spouštět v následujících scénářích:
+
+* Váš počítač ukazuje **Nenakonfigurováno** ze zobrazení správy aktualizace virtuálního počítače
+
+* Vaše počítače nebyly nalezeny ze zobrazení správy aktualizace účtu Automation
+
+* Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale zobrazit data prezenčního signálu v protokoly Azure monitoru pro Hybrid Runbook Worker, ale ne Update Management.
 
 #### <a name="cause"></a>Příčina
 
+To může být způsobeno potenciální problémy s místní konfigurací nebo nesprávně nakonfigurovaná konfigurace oboru.
+
 Funkce Hybrid Runbook Worker možná muset znovu zaregistrovat a opětovném nainstalování.
+
+Může mít definovaná kvóty ve vašem pracovním prostoru, které bylo dosaženo a zastavuje data ukládat.
 
 #### <a name="resolution"></a>Řešení
 
-Postupujte podle kroků uvedených v [nasadit Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) přeinstalovat hybridních pracovních procesů pro Windows nebo [nasazení Linuxu Hybrid Runbook Worker](../automation-linux-hrw-install.md) pro Linux.
+* Ujistěte se, že váš počítač hlásí použitím správného pracovního prostoru. Ověřte, jaké pracovní prostor vašeho počítače hlásí. Pokyny, jak to chcete ověřit, naleznete v tématu [ověřit připojení agenta k Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Zkontrolujte, že jde o pracovní prostor, který je propojený s vaším účtem Azure Automation. Pokud to pokud chcete potvrdit, přejděte na svůj účet Automation a klikněte na tlačítko **pracovní prostor propojený** pod **související prostředky**.
+
+* Zkontrolujte počítače zobrazí ve vašem pracovním prostoru Log Analytics. Spuštěním následujícího dotazu ve vašem pracovním prostoru Log Analytics, který je propojený s vaším účtem Automation. Pokud se nezobrazí ve výsledcích dotazu váš počítač, není prezenční signál, což znamená, že je pravděpodobně problém místní konfigurace vašeho počítače. Můžete spustit Poradce při potížích pro [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linux](update-agent-issues-linux.md#troubleshoot-offline) v závislosti na operačním systémem, nebo můžete [agenta opětovně nainstalovat](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). Pokud váš počítač se zobrazí ve výsledcích dotazu, je nutné velmi oboru konfigurací určenou ve následující odrážky.
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* Zkontrolovat problémy s konfigurací oboru. [Konfiguraci oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) Určuje, které počítače získat nakonfigurovanou pro řešení. Pokud váš počítač se objeví ve vašem pracovním prostoru, ale není nezobrazuje budete muset nakonfigurovat config rozsah cílových počítačích. Zjistěte, jak to provést, najdete v článku [připojit počítače v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+
+* Pokud výše uvedené kroky váš problém nevyřeší, postupujte podle kroků uvedených v [nasadit Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) přeinstalovat hybridních pracovních procesů pro Windows nebo [nasazení Linuxu Hybrid Runbook Worker](../automation-linux-hrw-install.md) pro Linux.
+
+* V pracovním prostoru spusťte následující dotaz. Pokud se zobrazí výsledek `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` mají kvótu definované v pracovním prostoru, který byl dosažen a data, neuloží se zastavila. V pracovním prostoru, přejděte na **využití a odhadované náklady** > **Správa objemu dat** a zkontrolujte rámci svojí kvóty nebo odebrat kvótu máte.
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
 
 ## <a name="windows"></a>Windows
 
@@ -255,7 +284,7 @@ Možných příčin může být:
 
 * Správce balíčků není v pořádku
 * Konkrétní balíčky může být v rozporu s opravami cloudové
-* Jiné důvody
+* Z jiných důvodů
 
 #### <a name="resolution"></a>Řešení
 

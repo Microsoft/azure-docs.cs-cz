@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720468"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479157"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
@@ -26,12 +26,12 @@ Tento článek poskytuje přehled o těchto typech úložiště a jejich jedine�
 
 V následující tabulce najdete souhrn služby Azure Storage, které jsou podporovány v různých verzích HDInsight:
 
-| Služba úložiště | Typ účtu | Typ Namespace | Podporované služby | Úrovně výkonu podporované | Podporované přístupu | Verze služby HDInsight | Typ clusteru |
+| Služba Storage | Typ účtu | Typ Namespace | Podporované služby | Úrovně výkonu podporované | Podporované přístupu | Verze služby HDInsight | Typ clusteru |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Pro obecné účely V2 | Hierarchické (systém souborů) | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
 |Azure Storage| Pro obecné účely V2 | Object | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
 |Azure Storage| Pro obecné účely V1 | Object | Objekt blob | Standard | neuvedeno | Vše | Vše |
-|Azure Storage| Blob Storage** | Object | Objekt blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
+|Azure Storage| Blob Storage** | Object | Objekt Blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
 |Azure Data Lake Storage Gen1| neuvedeno | Hierarchické (systém souborů) | neuvedeno | neuvedeno | neuvedeno | Pouze 3.6 | Všechny s výjimkou HBase |
 
 ** Pro clustery HDInsight můžou být jenom účty úložiště sekundární typu BlobStorage.
@@ -42,7 +42,7 @@ Další informace o úrovních přístupu služby Azure Storage, najdete v čás
 
 Můžete vytvořit cluster pomocí různé kombinace služeb pro primární a volitelné sekundárního úložiště. V následující tabulce najdete souhrn konfigurace clusteru úložiště, které jsou aktuálně podporovány v HDInsight:
 
-| Verze služby HDInsight | Primární úložiště | Sekundární úložiště | Podporováno |
+| Verze služby HDInsight | Primárního úložiště | Sekundární úložiště | Podporováno |
 |---|---|---|---|
 | 3.6 & 4.0 | Obecné účely V1, V2 pro obecné účely | Obecné účely V1, V2 pro obecné účely, BlobStorage (objekty BLOB bloku) | Ano |
 | 3.6 & 4.0 | Obecné účely V1, V2 pro obecné účely | Data Lake Storage Gen2 | Ne |
@@ -53,7 +53,7 @@ Můžete vytvořit cluster pomocí různé kombinace služeb pro primární a vo
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ano |
 | 3.6 | Data Lake Storage Gen1 | Obecné účely V1, V2 pro obecné účely, BlobStorage (objekty BLOB bloku) | Ano |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
-| 4.0 | Data Lake Storage Gen1 | Všechny | Ne |
+| 4.0 | Data Lake Storage Gen1 | Jakýkoli | Ne |
 
 * = Může to být jeden nebo více účtů Data Lake Storage Gen2, za předpokladu, že jsou všechny instalační program a použít stejné spravovanou identitu pro přístup ke clusteru.
 
@@ -137,7 +137,7 @@ Služba HDInsight poskytuje přístup do systému souborů DFS, který je místn
 
 Pomocí HDInsight můžete také přístup k datům ve službě Azure Storage. Syntaxe vypadá takto:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Při použití účtu služby Azure Storage s clustery HDInsight, zvažte následující zásady:
 

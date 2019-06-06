@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: a5ce6467a547b9fded03b3b5a6f40f84d29d3618
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66385151"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688645"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
 
@@ -36,11 +36,18 @@ Další informace najdete v tématu [pokyny k migraci pro přechod ze služby Me
 
 ## <a name="may-2019"></a>. Května 2019.
 
-### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>HLS v4 a vyšší odborné pomoci v dynamické balení 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Podpora Azure Monitor pro Media Services diagnostické protokoly a metriky
 
-Přidání HLS (verze 4 nebo vyšší) podporují v dynamické vytváření paketů pro prostředky, které mají více zvukové stopy s více kodeky a jazyky.
+Azure Monitor můžete nyní zobrazit telemetrická data emmited službou Media Services.
 
-Další informace najdete v tématu [dynamické balení](dynamic-packaging-overview.md).
+* Použijte diagnostické protokoly Azure monitoru ke sledování požadavků odesílaných Media Services klíč doručování koncový bod. 
+* Monitorování metrik, protože ho vygeneroval Media Services [koncové body streamování](streaming-endpoint-concept.md).   
+
+Podrobnosti najdete v tématu [Media Services monitorování metrik a diagnostických protokolů](media-services-metrics-diagnostic-logs.md).
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Zvukové stopy s více podporují v dynamické balení 
+
+Při streamování prostředky, které mají více zvukové stopy s více kodeky a jazyky, [dynamické balení](dynamic-packaging-overview.md) teď podporuje více zvukové stopy pro výstup HLS (verze 4 nebo vyšší).
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea páru oblastí je otevřen pro Media Services 
 
