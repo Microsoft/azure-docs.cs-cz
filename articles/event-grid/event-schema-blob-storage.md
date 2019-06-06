@@ -90,10 +90,10 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | string | Vydavatel definované cesta předmět události. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události úložiště objektů BLOB. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
@@ -103,15 +103,15 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| rozhraní api | string | Operace, který spustil danou událost. |
+| api | string | Operace, který spustil danou událost. |
 | clientRequestId | string | Klientem generovaná, neprůhledná hodnota se limit znaků 1 KB. Pokud jste povolili protokolování analýzy úložiště, se zaznamená do protokoly analýzy. |
 | requestId | string | Jedinečný identifikátor pro daný požadavek. Použijte pro řešení potíží s požadavku. |
-| značka eTag | string | Hodnota, která můžete použít k provádění operací podmíněně. |
+| eTag | string | Hodnota, která můžete použít k provádění operací podmíněně. |
 | contentType | string | Pro tento objekt blob zadaný typ obsahu. |
 | contentLength | integer | Velikost objektu blob v bajtech. |
 | blobType | string | Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob". |
 | url | string | Cesta k objektu blob. |
-| aplikace Sequencer | string | Řízené uživatelem hodnotu, která můžete použít ke sledování požadavků. |
+| sequencer | string | Řízené uživatelem hodnotu, která můžete použít ke sledování požadavků. |
 | storageDiagnostics | objekt | Informace o diagnostice úložiště. |
  
 ## <a name="next-steps"></a>Další postup
