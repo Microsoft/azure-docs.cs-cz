@@ -104,10 +104,10 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | string | Vydavatel definované cesta předmět události. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události monitorování geografických zón. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
@@ -118,10 +118,10 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | apiCategory | string | Rozhraní API kategorie události. |
-| ApiName | string | Název rozhraní API události. |
-| Problémy | objekt | Uvádí problémy během zpracovávání. Pokud jsou vráceny všechny problémy, pak nebudou žádná geometrie odpověď se vrátí. |
+| apiName | string | Název rozhraní API události. |
+| issues | objekt | Uvádí problémy během zpracovávání. Pokud jsou vráceny všechny problémy, pak nebudou žádná geometrie odpověď se vrátí. |
 | responseCode | číslo | Kód odpovědi HTTP |
-| Geometrie | objekt | Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
+| geometries | objekt | Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
 
 Objekt error je vrácena, když dojde k chybě v rozhraní API pro mapy. Objekt error má následující vlastnosti:
 
@@ -133,22 +133,22 @@ Když dojde k chybě v rozhraní API pro mapy, je vrácen objekt detaily chyby. 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| kód | string | Stavový kód HTTP. |
-| zpráva | string | Pokud je k dispozici, lidské čitelný popis chyby. |
+| code | string | Stavový kód HTTP. |
+| message | string | Pokud je k dispozici, lidské čitelný popis chyby. |
 | innererror | InnerError | Pokud je k dispozici, objekt, který obsahuje konkrétní službu informace o této chybě. |
 
 InnerError je objekt, který obsahuje konkrétní službu informace o této chybě. Objekt InnerError má následující vlastnosti: 
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| kód | string | Chybová zpráva. |
+| code | string | Chybová zpráva. |
 
 Objekt geometrie uvádí geometrie ID monitorovaná geografická zóna, které vypršely relativní vůči času uživatele v požadavku. Geometrie objektu má geometrie položky s následujícími vlastnostmi: 
 
 | Vlastnost | Typ | Popis |
 |:-------- |:---- |:----------- |
-| ID zařízení | string | ID zařízení. |
-| vzdálenost | string | <p>Vzdálenost od souřadnice na nejbližší okraj monitorové geografické zóny. Pozitivní znamená, že bod se souřadnicemi je mimo monitorové geografické zóny. Pokud bod se souřadnicemi je mimo monitorové geografické zóny, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorové geografické zóny, hodnota je 999. Negativní znamená, že bod se souřadnicemi je uvnitř monitorové geografické zóny. Pokud bod se souřadnicemi je uvnitř mnohoúhelníku, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorování geografických zón, hodnota je-999. Hodnota 999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je také mimo monitorové geografické zóny. Hodnota-999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je dobře uvnitř monitorové geografické zóny.<p> |
+| deviceid | string | ID zařízení. |
+| distance | string | <p>Vzdálenost od souřadnice na nejbližší okraj monitorové geografické zóny. Pozitivní znamená, že bod se souřadnicemi je mimo monitorové geografické zóny. Pokud bod se souřadnicemi je mimo monitorové geografické zóny, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorové geografické zóny, hodnota je 999. Negativní znamená, že bod se souřadnicemi je uvnitř monitorové geografické zóny. Pokud bod se souřadnicemi je uvnitř mnohoúhelníku, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorování geografických zón, hodnota je-999. Hodnota 999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je také mimo monitorové geografické zóny. Hodnota-999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je dobře uvnitř monitorové geografické zóny.<p> |
 | geometryid |string | Jedinečné id identifikuje geometrie monitorové geografické zóny. |
 | nearestlat | číslo | Zeměpisná šířka nejbližší bod geometrii. |
 | nearestlon | číslo | Zeměpisná délka nejbližší bod geometrii. |
@@ -159,7 +159,7 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | řetězec] | Seznam ID geometrie monitorové geografické zóny, který je relativní vůči času uživatele v požadavku vypršel. |
-| Geometrie | [] geometrie |Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
+| geometries | [] geometrie |Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
 | invalidPeriodGeofenceGeometryId | řetězec]  | Seznam ID geometrie monitorové geografické zóny, který je v neplatná perioda. relativní vůči času uživatele v požadavku. |
 | isEventPublished | Boolean | Hodnota TRUE alespoň jednu událost je publikování na Azure Maps odběratel událostí, false, pokud žádná událost se publikuje na předplatitele Azure Maps události. |
 
