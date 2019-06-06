@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: b17ef24d753041934f68f3daee950aaa0bec46ba
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605639"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734755"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Pojmenování zásady pro skupiny ve službě Azure Active Directory
 
@@ -31,12 +31,12 @@ V tomto rychlém startu nastavíte ve svém tenantovi Azure Active Directory (Az
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí webu Azure portal (preview)
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí webu Azure portal
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí uživatelského účtu správce.
 1. Vyberte **skupiny**a pak vyberte **zásad pojmenování** otevřete stránku zásad pojmenování.
 
-    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy-preview.png)
+    ![Otevřete stránku zásad pojmenování v Centru pro správu](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Umožňuje zobrazit nebo upravit zásady vytváření názvů předponu příponu
 
@@ -49,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 1. Na **zásad pojmenování** stránce **blokované slova**.
 
-    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords-preview.png)
+    ![Upravit a uložit seznam blokovaných slova pro pojmenování zásady](./media/groups-naming-policy/blockedwords.png)
 
 1. Umožňuje zobrazit nebo upravit tak, že vyberete aktuální seznam blokovaných zadejte vlastní slova **Stáhnout**.
 1. Nahrajte nový seznam blokovaných zadejte vlastní slova tak, že vyberete ikonu souboru.
@@ -59,7 +59,7 @@ A to je vše. Nastavili jste zásady pojmenování a přidali jste vlastní blok
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Odebrat zásady pojmenování pomocí webu Azure portal (preview)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Odebrat zásady pojmenování pomocí webu Azure portal
 
 1. Na **zásad pojmenování** stránce **odstranit zásadu**.
 1. Jakmile potvrdíte odstranění, zásady pojmenování Odebereme, včetně všech předpon přípon pojmenování zásady a jakékoli vlastní blokované slova.

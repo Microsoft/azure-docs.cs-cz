@@ -1,28 +1,29 @@
 ---
 title: Co je Azure SQL Data Warehouse? | Dokumenty Microsoft
-description: Distribuovaná databáze podnikové třídy schopná zpracovávat petabajtové objemy relačních a nerelačních dat. Je to první cloudový datový sklad v odvětví, který se umí během pár sekund zvětšit, zmenšit nebo pozastavit.
+description: Distribuovaná databáze podnikové třídy, která dokáže zpracovávat petabajtové objemy relačních a nerelačních dat. Je v oboru první cloudový datový sklad v možnost zvětšit, zmenšit nebo pozastavit během pár sekund.
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: nicw
+ms.date: 05/30/2019
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 29296d703e59cb234177349ca477c3fdab74ee61
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+mscustom: sqlfreshmay19
+ms.openlocfilehash: a9126e9023091dd8c3df71f2aa2558a01227a8be
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790854"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428030"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Co je Azure SQL Data Warehouse?
 
-SQL Data Warehouse je cloudový datový sklad podnikové třídy, který využívá architekturu MPP (Massively Parallel Processing) k rychlému spouštění složitých dotazů nad petabajty dat. Využijte službu SQL Data Warehouse jako klíčovou součást řešení pro velké objemy dat. Importovat velké objemy dat do SQL Data Warehouse pomocí jednoduchého [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) dotazy T-SQL a pak použijte sílu architektury MPP ke spouštění vysoce výkonných analýz. Postupným integrováním a analyzováním se datový sklad stane pro vaši firmu jediným spolehlivým zdrojem pravdivých informací.  
-
+SQL Data Warehouse je cloudové Enterprise Data skladu třídy, který se používá k rychlému spouštění složitých dotazů nad petabajty dat. masivně paralelní zpracování (MPP). Využijte službu SQL Data Warehouse jako klíčovou součást řešení pro velké objemy dat. Importovat velké objemy dat do SQL Data Warehouse pomocí jednoduchého [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) dotazy T-SQL a pak použijte sílu architektury MPP ke spouštění vysoce výkonných analýz. Postupným integrováním a analyzováním se datový sklad stane pro vaši firmu jediným spolehlivým zdrojem pravdivých informací.  
 
 ## <a name="key-component-of-big-data-solution"></a>Klíčová součást řešení pro velké objemy dat
+
 SQL Data Warehouse je klíčovou součástí uceleného řešení pro velké objemy dat v cloudu.
 
 ![Řešení datového skladu](media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
@@ -33,19 +34,21 @@ SQL Data Warehouse ukládá data v relačních tabulkách se sloupcovým úloži
 
 Výsledky analýz můžou jít do aplikací nebo databází pro generování sestav po celém světě. Obchodní analytici pak můžou získávat přehledy, které jim umožní provádět informovaná obchodní rozhodnutí.
 
-
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychle [vytvořit datový sklad SQL Data Warehouse][create a SQL Data Warehouse] a [načíst ukázková data][load sample data]. Pokud s Azure začínáte, může vám být užitečný [Glosář Azure][Azure glossary], kde najdete potřebnou terminologii. Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
 
-* [Úspěšné zákaznické implementace]
-* [Blogy]
-* [Žádosti o funkce]
-* [Videa]
-* [Blogy zákaznického poradního týmu]
+- Prozkoumejte [architektury Azure SQL Data Warehouse](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
+- Rychle [vytvořit SQL Data Warehouse][create a SQL Data Warehouse]
+- [Načtení ukázkových dat][load sample data].
+- Prozkoumejte [videa](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+
+Můžete se také podívat na některé z těchto dalších zdrojů ke službě SQL Data Warehouse.  
+* Hledání [blogy]
+* Odeslat [Žádosti o funkce]
+* Hledání [blogy zákaznického poradního týmu]
 * [Vytvoření lístku podpory]
-* [Fórum MSDN]
-* [Fórum Stack Overflow]
-* [Twitter]
+* Hledání [Fórum MSDN]
+* Hledání [fórum Stack Overflow]
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
@@ -63,14 +66,13 @@ Teď, když jste se s SQL Data Warehouse seznámili, můžete zjistit, jak rychl
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Úspěšné zákaznické implementace]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [Blogy]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [Blogy zákaznického poradního týmu]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Žádosti o funkce]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Fórum MSDN]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Fórum Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[Videa]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

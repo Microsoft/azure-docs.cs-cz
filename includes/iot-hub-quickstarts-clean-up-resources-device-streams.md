@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: rezas
 ms.custom: include file
-ms.openlocfilehash: 979ca857a4410a8efd1b211afc09a0563d76a1ba
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 155e36bf4198eb18f5505483ea13a287f88a5022
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158622"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733294"
 ---
-Pokud budete pokračovat k dalšímu doporučenému článku, můžete již vytvořené prostředky zachovat a znovu je použít.
+Pokud budete chtít pokračovat k dalšímu článku doporučené, můžete zachovat a znovu použít prostředky, které jste už vytvořili.
 
-Jinak můžete prostředky Azure vytvořené v tomto článku odstranit a vyhnout se tak poplatkům. 
+V opačném případě se vyhnout poplatkům za, můžete odstranit prostředky Azure, které jste vytvořili v tomto článku. 
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
+> Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili službu IoT hub v existující skupinu prostředků obsahující prostředky, které chcete zachovat, odstraňte pouze IoT hub vlastní prostředek, skupinu prostředků.
 >
 
 Odstranění skupiny prostředků podle názvu:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
 
-2. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
+1. V **filtrovat podle názvu** zadejte název skupiny prostředků, která obsahuje službu IoT hub. 
 
-3. V seznamu výsledků klikněte na **...** napravo od vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+1. V seznamu výsledků napravo od vaší skupiny prostředků, vyberte tři tečky ( **...** ) a pak vyberte **odstranit skupinu prostředků**.
 
-    ![Odstranit](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
+    ![Tlačítko "Odstranit skupinu prostředků"](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
 
-4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění tím, že znovu zadáte název vaší skupiny prostředků, a pak klikněte na **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+1. Potvrďte odstranění skupiny prostředků, znovu zadejte název skupiny prostředků a potom vyberte **odstranit**. Po chvíli se odstraní skupinu prostředků a všechny její prostředky obsažené.

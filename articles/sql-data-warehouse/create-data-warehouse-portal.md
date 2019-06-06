@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse – Azure Portal | Dokumentace Microsoftu'
+title: 'Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse – Azure portal | Dokumentace Microsoftu'
 description: Vytvořte a dotazujte datový sklad Azure SQL Data warehouse na webu Azure Portal.
 services: sql-data-warehouse
 author: XiaoyuL-Preview
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: development
-ms.date: 08/02/2018
+ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ee18a78aea67d0270b105f8703259b65c706d2e7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.custom: sqlfreshmay19
+ms.openlocfilehash: 9072caf29be0ebf47207266b7313e989034c3a18
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66169258"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428042"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý start: Vytvoření a dotazování datového skladu SQL Azure na webu Azure Portal
 
@@ -81,7 +82,7 @@ Podle následujícího postupu vytvořte datový sklad SQL, který obsahuje uká
 
 8. Klikněte na tlačítko **Použít**.
 
-9. Teď, když jste dokončili formuláři SQL Data Warehouse, klikněte na tlačítko **vytvořit** a databázi zřiďte. Zřizování trvá několik minut. 
+9. Teď, když jste dokončili formuláři SQL Data Warehouse, klikněte na tlačítko **vytvořit** a databázi zřiďte. Zřizování trvá několik minut.
 
     ![kliknutí na Vytvořit](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -91,31 +92,30 @@ Podle následujícího postupu vytvořte datový sklad SQL, který obsahuje uká
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
-Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru, aby zabránila externím aplikacím a nástrojům v připojení k serveru nebo ke kterékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres. Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta. 
+Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru. Tato brána firewall brání externím aplikacím a nástrojům v připojení k serveru nebo ke kterékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres. Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta.
 
 > [!NOTE]
 > SQL Data Warehouse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 
-1. Jakmile se nasazení dokončí, klikněte na tlačítko **datové sklady SQL** z nabídky na levé straně a pak klikněte na tlačítko **mySampleDatabase** na **datové sklady SQL** stránky. Otevře se stránka s přehledem pro vaši databázi, zobrazí plně kvalifikovaný název (například **mynewserver-20180430.database.windows.net**) a poskytne vám možnosti další konfigurace. 
+1. Po dokončení nasazení vyberte **všechny služby** z nabídky na levé straně. Vyberte **databází**, vyberte hvězdičku vedle **datové sklady SQL** datové sklady SQL přidat k oblíbeným položkám.
+1. Vyberte **datové sklady SQL** z nabídky na levé straně a pak klikněte na tlačítko **mySampleDatabase** na **datové sklady SQL** stránky. Otevře se stránka s přehledem pro vaši databázi, zobrazí plně kvalifikovaný název (například **mynewserver-20180430.database.windows.net**) a poskytne vám možnosti další konfigurace.
+1. Zkopírujte tento plně kvalifikovaný název serveru použít pro připojení k serveru a jeho databázím v tato a další rychlé starty. Pokud chcete otevřít nastavení serveru, klikněte na název serveru.
 
-2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. Pokud chcete otevřít nastavení serveru, klikněte na název serveru.
+   ![vyhledání názvu serveru](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
-   ![vyhledání názvu serveru](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
+1. Klikněte na **Zobrazit nastavení brány firewall**.
 
-3. Pokud chcete otevřít nastavení serveru, 
-4. klikněte na název serveru.
+   ![nastavení serveru](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-   ![nastavení serveru](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+1. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
-5. Klikněte na **Zobrazit nastavení brány firewall**. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database. 
+   ![pravidlo brány firewall serveru](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
-   ![pravidlo brány firewall serveru](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
+1. Pokud chcete do nového pravidla brány firewall přidat svou aktuální IP adresu, klikněte na **Přidat IP adresu klienta** na panelu nástrojů. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-4. Pokud chcete do nového pravidla brány firewall přidat svou aktuální IP adresu, klikněte na **Přidat IP adresu klienta** na panelu nástrojů. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
+1. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
 
-5. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
-
-6. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
+1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
 Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým skladům. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.
 
@@ -127,8 +127,8 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **SQL datových skladů** z nabídky na levé straně a klikněte na datový sklad na **SQL datawarehouses** stránky. 
-3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net. 
+2. Vyberte **SQL datových skladů** z nabídky na levé straně a klikněte na datový sklad na **datové sklady SQL** stránky.
+3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net.
 
     ![informace o připojení](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
@@ -145,8 +145,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **mynewserver-20180430.database.windows.net**. |
    | Authentication | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
-   | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
+   | Přihlásit | Účet správce serveru | Účet, které jste zadali při vytváření serveru. |
+   | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 
     ![Připojení k serveru](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -183,12 +183,12 @@ SQL Data Warehouse jako dotazovací jazyk používá T-SQL. Pokud chcete otevř�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Účtují se vám poplatky za jednotky datového skladu a uložená data v datovém skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně. 
+Už se vám účtovat za jednotky datového skladu a uložená data datového skladu. Výpočetní prostředky a prostředky úložiště se účtují odděleně.
 
-- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, bude se vám účtovat pouze úložiště dat. Výpočetní prostředky můžete obnovit, kdykoli budete připraveni s daty pracovat.
-- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit. 
+- Pokud chcete zachovat data v úložišti, můžete pozastavit výpočetní prostředky v době, kdy datový sklad nepoužíváte. Když pozastavíte výpočetní prostředky, jen za úložný prostor. Výpočetní prostředky můžete obnovit, kdykoli budete připraveni s daty pracovat.
+- Pokud chcete zamezit budoucím poplatkům, můžete datový sklad odstranit.
 
-Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
+Postupujte podle těchto kroků odstraňte prostředky, které už nepotřebujete.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a klikněte na váš datový sklad.
 
@@ -196,7 +196,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 2. Pokud chcete pozastavit výpočetní prostředky, klikněte na tlačítko **Pozastavit**. Když je datový sklad pozastavený, zobrazí **Resume** tlačítko. Chcete-li obnovit výpočetní prostředky, klikněte na tlačítko **obnovit**.
 
-3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na **Odstranit**.
+3. Chcete-li odebrat datový sklad, aby se vám neúčtovaly výpočetní prostředky ani prostředky úložiště, klikněte na tlačítko **odstranit**.
 
 4. Pokud chcete odstranit server SQL, který jste vytvořili, klikněte na tlačítko **mynewserver-20180430.database.windows.net** v předchozím obrázku a pak klikněte na tlačítko **odstranit**. S tímto odstraněním buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
@@ -204,7 +204,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 ## <a name="next-steps"></a>Další postup
 
-Právě jste vytvořili datový sklad a pravidlo brány firewall, připojili jste se ke svému datovému skladu a spustili jste několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
+Právě jste vytvořili datový sklad a pravidlo brány firewall, připojení k vašemu datovému skladu a spustit pár dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]
 > [Načtení dat do datového skladu SQL](load-data-from-azure-blob-storage-using-polybase.md)

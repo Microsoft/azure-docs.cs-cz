@@ -362,6 +362,8 @@
               href: manage-mongodb-with-resource-manager.md
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-mongodb.md
+            - name: Řešení běžných potíží
+              href: mongodb-troubleshoot.md
     - name: Rozhraní Gremlin API
       displayName: 'graph, graph database'
       items:

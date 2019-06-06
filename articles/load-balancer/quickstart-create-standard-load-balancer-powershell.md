@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 513d3931c31ca94b4089139992bceb6f679caa98
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 04db0232e14ccac7938d7062d77c36a54526489c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467695"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730473"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rychlý start: Vytvořit Standard pro vyrovnávání zatížení pomocí Azure Powershellu
 
@@ -29,7 +29,7 @@ Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balanc
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
@@ -129,7 +129,7 @@ $natrule3 = New-AzLoadBalancerInboundNatRuleConfig `
   -BackendPort 3389
 ```
 
-### <a name="create-load-balancer"></a>Vytvořit nástroj pro vyrovnávání zatížení
+### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
 Vytvoření nástroje pro vyrovnávání zatížení Standard s [nové AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Následující příklad vytvoří veřejného Load balanceru úrovně Standard s názvem myLoadBalancer konfiguraci front-end IP adresy pomocí back endového fondu, sondy stavu, pravidlo Vyrovnávání zatížení a pravidla NAT, které jste vytvořili v předchozích krocích:
 
@@ -195,7 +195,7 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
-### <a name="create-network-security-group"></a>Vytvořit skupinu zabezpečení sítě
+### <a name="create-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení k vaší virtuální síti.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Vytvoření pravidla skupiny zabezpečení sítě pro port 3389

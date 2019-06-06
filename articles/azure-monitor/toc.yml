@@ -95,10 +95,6 @@
           href: platform/alerts-overview.md
         - name: Klasická upozornění
           href: platform/alerts-classic.overview.md
-        - name: Inteligentní skupiny
-          href: platform/alerts-smartgroups-overview.md
-        - name: Automatické škálování
-          href: platform/autoscale-overview.md
         - name: Upozornění metrik
           href: platform/alerts-metric-overview.md
         - name: Výstrahy protokolu
@@ -109,6 +105,10 @@
           href: platform/alerts-common-schema.md
         - name: Pravidla akcí
           href: platform/alerts-action-rules.md
+        - name: Inteligentní skupiny
+          href: platform/alerts-smartgroups-overview.md
+        - name: Automatické škálování
+          href: platform/autoscale-overview.md
         - name: Analýza změn
           href: app/change-analysis.md
     - name: Vizualizace dat

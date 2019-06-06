@@ -5,22 +5,22 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: sohamnchatterjee
+editor: mdgattuso
 ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/25/2019
+ms.date: 06/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 0c80abeb4aca47b3ef957c25e12c59e86d59dd94
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 5aa342700c8440e67987cd9d1b45574c02a45f47
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872879"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729804"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porovnání funkcí produktu Azure CDN
 
@@ -33,13 +33,13 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | [Akcelerace dynamického webu](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | Nabízené prostřednictvím [Azure branou služby](https://docs.microsoft.com/azure/frontdoor/front-door-overview) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Akcelerace dynamického webu – adaptivní komprese obrázků](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Akcelerace dynamického webu – předběžné načtení objektů](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| [Optimalizace obecného doručování webu](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;**, Vyberte tento typ optimalizace, pokud vaše Průměrná velikost souboru je menší než 10 MB  | **&#x2713;** |  **&#x2713;** |
+| [Optimalizace obecného doručování webu](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;** , Vyberte tento typ optimalizace, pokud vaše Průměrná velikost souboru je menší než 10 MB  | **&#x2713;** |  **&#x2713;** |
 | [Optimalizace streamování videa](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | prostřednictvím webového obecné doručování | **&#x2713;**  | prostřednictvím webového obecné doručování |  prostřednictvím webového obecné doručování |
-| [Optimalizace velkých souborů](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | prostřednictvím webového obecné doručování | **&#x2713;**, Tento typ optimalizace zvolte, pokud vaše Průměrná velikost souboru je větší než 10 MB   | prostřednictvím webového obecné doručování |  prostřednictvím webového obecné doručování |
+| [Optimalizace velkých souborů](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | prostřednictvím webového obecné doručování | **&#x2713;** , Tento typ optimalizace zvolte, pokud vaše Průměrná velikost souboru je větší než 10 MB   | prostřednictvím webového obecné doručování |  prostřednictvím webového obecné doručování |
 | Změnit typ optimalizace | |**&#x2713;** | | |
 | Počáteční Port |Všechny porty TCP |[Povolený původ porty](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Všechny porty TCP |Všechny porty TCP |
 | [Vyrovnávání zatížení globálního serveru (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**, Vyprázdnit vše a zástupné vyprázdnění nepodporuje Azure CDN od Akamai aktuálně |**&#x2713;** |**&#x2713;** |
+| [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** , Vyprázdnit vše a zástupné vyprázdnění nepodporuje Azure CDN od Akamai aktuálně |**&#x2713;** |**&#x2713;** |
 | [Předběžné načítání prostředku](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | Nastavení mezipaměti nebo hlaviček (pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
 | Přizpůsobit pravidla na základě modul pro doručování obsahu (pomocí [stroj pravidel](cdn-rules-engine.md))  |  | | |**&#x2713;** |
@@ -52,7 +52,7 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 ||||
  **Zabezpečení** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
 | Podpora HTTPS s koncovými body CDN | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTPS pro vlastní doménu](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [HTTPS pro vlastní doménu](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** , Vyžaduje přímý CNAME pro povolení |**&#x2713;** |**&#x2713;** |
 | [Podpora vlastních názvů domén](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geografická filtrování](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Ověření tokenu](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 

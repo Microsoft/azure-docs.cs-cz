@@ -1,6 +1,6 @@
 ---
-title: Co je správa zařízení v Azure Active Directory? | Dokumenty Microsoft
-description: Zjistěte, jak vám správa zařízení může pomoct získat kontrolu nad zařízeními, která přistupují k prostředkům ve vašem prostředí.
+title: Co je identitu zařízení v Azure Active Directory? | Dokumenty Microsoft
+description: Zjistěte, jak Správa identit zařízení vám mohou pomoci při správě zařízení, která mají přístup k prostředkům ve vašem prostředí.
 services: active-directory
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -13,42 +13,38 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 06/04/2019
 ms.author: joflore
-ms.reviewer: jairoc
+ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e756b260db0f6db752d345e085b16d58cee5555
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: faabc65a78626c053aecfac81b560b4731e40b95
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65997291"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729998"
 ---
-# <a name="what-is-device-management-in-azure-active-directory"></a>Co je správa zařízení v Azure Active Directory?
+# <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
 Ve světě orientovaném na mobilní zařízení a cloud umožňuje Azure Active Directory (Azure AD) jednotné přihlašování odkudkoli k zařízením, aplikacím a službám. S čím dál větším rozšířením zařízení (včetně používání vlastních zařízení) stojí před odborníky na IT dva protikladné cíle:
 
 - Umožnit koncovým uživatelům být produktivní kdykoli a kdekoli
 - Zajistit nepřetržitou ochranu podnikových prostředků
 
-Prostřednictvím zařízení uživatelé získávají přístup k vašim firemním prostředkům. Pokud jako správce IT chcete chránit firemní prostředky, chcete mít nad těmito zařízeními kontrolu. To vám umožní zajistit, aby uživatelé přistupovali k vašim prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.
+Prostřednictvím zařízení v Azure AD uživatelé získávají přístup k vašim firemním prostředkům. Chcete-li chránit vaše podnikové prostředky, jako správce IT, správa těchto identit zařízení. To vám umožní zajistit, aby uživatelé přistupovali k vašim prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.
 
-Správa zařízení je také základem [podmíněného přístupu na základě zařízení](../conditional-access/require-managed-devices.md). Pomocí podmíněného přístupu na základě zařízení můžete zajistit, aby byl přístup k prostředkům ve vašem prostředí možný pouze se spravovanými zařízeními.
+Správa identit zařízení je také základem [podmíněného přístupu podle zařízení](../conditional-access/require-managed-devices.md). Pomocí podmíněného přístupu na základě zařízení můžete zajistit, aby byl přístup k prostředkům ve vašem prostředí možný pouze se spravovanými zařízeními.
 
-Tento článek vysvětluje, jak funguje správa zařízení v Azure Active Directory.
+## <a name="getting-devices-in-azure-ad"></a>Získání zařízení ve službě Azure AD
 
-> [!VIDEO https://www.youtube.com/embed/NeezfKhomQU]
-
-## <a name="getting-devices-under-the-control-of-azure-ad"></a>Získání kontroly nad zařízeními prostřednictvím Azure AD
-
-Pokud chcete získat kontrolu nad zařízeními prostřednictvím Azure AD, máte dvě možnosti:
+Pokud chcete získat zařízení ve službě Azure AD, máte dvě možnosti:
 
 - Registrace
 - Připojení
 
 **Registrace** zařízení do Azure AD vám umožní spravovat identitu zařízení. Po registraci zařízení mu registrace zařízení služby Azure AD poskytne identitu, která se používá k ověření zařízení při přihlášení uživatele k Azure AD. Pomocí identity můžete zařízení povolit nebo zakázat.
 
-Při kombinaci s řešením správy mobilních zařízení (MDM), jako je například Microsoft Intune, se atributy zařízení v Azure AD aktualizují o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.  Další informace o registraci zařízení v Microsoft Intune najdete v tématu [co je registrace zařízení?](https://docs.microsoft.com/intune/device-enrollment)
+Při kombinaci s řešením správy mobilních zařízení (MDM), jako je například Microsoft Intune, se atributy zařízení v Azure AD aktualizují o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Další informace o registraci zařízení v Microsoft Intune najdete v tématu [co je registrace zařízení?](https://docs.microsoft.com/intune/device-enrollment)
 
 **Připojení** zařízení představuje rozšíření registrace zařízení. To znamená, že vám poskytne všechny výhody registrace zařízení a navíc také změní místní stav zařízení. Změna místního stavu umožní vašim uživatelům přihlašovat se k zařízení pomocí pracovního nebo školního účtu organizace, a ne osobního účtu.
 
@@ -66,7 +62,7 @@ Uživatelé vaší organizace můžou přidat pracovní nebo školní účet na 
 - Při prvním přístupu k pracovní aplikaci
 - V případě Windows 10 ručně přes nabídku **Nastavení**
 
-Registraci zařízení v Azure AD můžete nakonfigurovat pro Windows 10, iOS, Android a macOS.
+Můžete nakonfigurovat stav zařízení Azure AD registrované pro **osobní Windows 10, iOS, Android a macOS** zařízení.
 
 ## <a name="azure-ad-joined-devices"></a>Zařízení připojená k Azure AD
 
@@ -93,7 +89,6 @@ Implementace zařízení připojených k Azure AD vám poskytne následující v
 - **Přístup k Windows Storu pro firmy** pomocí účtu Azure AD. Vaši uživatelé mají na výběr z inventáře aplikací předem vybraných organizací.
 - Podpora **Windows Hello** pro zajištění zabezpečeného a pohodlného přístupu k pracovním prostředkům.
 - **Omezení přístupu** k aplikacím pouze na zařízení, která splňují zásady dodržování předpisů.
-
 - **Bezproblémový přístup k místním prostředkům** v případě, že je zařízení v dohledu místního řadiče domény.
 
 Přestože je služba Azure AD Join primárně určená pro organizace, které nemají místní infrastrukturu Windows Server Active Directory, můžete ji využít i v následujících scénářích:
@@ -129,9 +124,9 @@ Připojení hybridních zařízení k Azure AD můžete nakonfigurovat pro zař�
 
 ## <a name="summary"></a>Souhrn
 
-Správa zařízení v Azure AD vám umožní:
+Správa identit zařízení ve službě Azure AD můžete:
 
-- Zjednodušit proces získání kontroly nad zařízeními prostřednictvím Azure AD
+- Zjednodušení procesu přináší a správě zařízení ve službě Azure AD
 - Poskytnout uživatelům snadný přístup ke cloudovým prostředkům vaší organizace
 
 Obecně platí, že byste měli použít:
@@ -156,9 +151,9 @@ Obecně platí, že byste měli použít:
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled správy zařízení na webu Azure Portal najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).
-- Další informace o podmíněném přístupu na základě zařízení najdete v tématu věnovaném [konfiguraci zásad podmíněného přístupu na základě zařízení v Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Pokud chcete získat přehled o tom, jak Správa identit zařízení na portálu Azure portal, najdete v článku [Správa identit zařízení pomocí webu Azure portal](device-management-azure-portal.md).
 - Nastavení:
-   - Zařízení s Windows 10 zaregistrovaná v Azure Active Directory: Viz [konfigurace zařízení s Windows 10 zaregistrovaných v Azure Active Directory](../user-help/device-management-azuread-registered-devices-windows10-setup.md).
-   - Zařízení připojená k Azure Active Directory: Viz [konfigurace zařízení připojených k Azure Active Directory](../user-help/device-management-azuread-joined-devices-setup.md).
+   - Azure Active Directory zaregistrované zařízení s Windows 10, najdete v článku [konfigurace Azure Active Directory zaregistrované zařízení s Windows 10](../user-help/device-management-azuread-registered-devices-windows10-setup.md).
+   - Zařízení připojená k Azure Active Directory najdete v tématu [jak k naplánování vaší implementace připojení k Azure Active Directory](azureadjoin-plan.md).
    - Hybridní zařízení připojená k Azure AD: Viz [Plánování implementace hybridního připojení Azure Active Directory](hybrid-azuread-join-plan.md).
+- Další informace o podmíněném přístupu na základě zařízení, najdete v článku [zásad podmíněného přístupu podle zařízení konfigurovat Azure Active Directory](../conditional-access/require-managed-devices.md).

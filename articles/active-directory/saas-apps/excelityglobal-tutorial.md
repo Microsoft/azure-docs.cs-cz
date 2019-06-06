@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: bb18aa35c89657f01319512eac6c15096174891f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd4fe4f7b105fd7aa2d2cf7ee568f85a7ad98ecb
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279151"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Kurz: Integrace Azure Active Directory s ExcelityGlobal
 
@@ -52,7 +52,7 @@ Konfigurace integrace ExcelityGlobal do služby Azure AD, budete muset přidat E
 
 **Chcete-li přidat ExcelityGlobal z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -140,7 +140,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ExcelityGlobal, proveďte n
 
 ### <a name="configure-excelityglobal-single-sign-on"></a>Konfigurace ExcelityGlobal jednotné přihlašování
 
-Ke konfiguraci jednotného přihlašování na **ExcelityGlobal** straně, je nutné odeslat **hodnotu kryptografického otisku** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory ExcelityGlobal](https://www.excelityglobal.com/contact-us/our-locations/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **ExcelityGlobal** straně, je nutné odeslat **hodnotu kryptografického otisku** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory ExcelityGlobal](https://www.excelityglobal.com/contact-us). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -195,7 +195,7 @@ V této části je povolit Britta Simon k udělení přístupu k ExcelityGlobal 
 
 ### <a name="create-excelityglobal-test-user"></a>Vytvoření ExcelityGlobal testovacího uživatele
 
-V této části vytvoříte uživatele v ExcelityGlobal jako Britta Simon. Práce s [tým podpory ExcelityGlobal](https://www.excelityglobal.com/contact-us/our-locations/) přidat uživatele na platformě ExcelityGlobal. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v ExcelityGlobal jako Britta Simon. Práce s [tým podpory ExcelityGlobal](https://www.excelityglobal.com/contact-us) přidat uživatele na platformě ExcelityGlobal. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
