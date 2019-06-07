@@ -4,14 +4,14 @@ description: Seznam typů prostředků Azure, které lze přesunout do nové sku
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 5/17/2019
+ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcac557f29a987ea732744c1b82f90f858623ec5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872558"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752352"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 Tento článek uvádí, zda typ prostředku Azure podporuje operace přesunu. I když typ prostředku podporuje operace přesunutí, může být podmínky, které brání přesunutí prostředku. Podrobnosti o podmínkách, které mají vliv operací přesunu najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
@@ -254,7 +254,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| balíčky | Ne | Ne |
+| Balíčky | Ne | Ne |
 | Plány | Ne | Ne |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
@@ -423,7 +423,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | metricalerts | Ne | Ne |
 | notificationgroups | Ne | Ne |
 | notificationrules | Ne | Ne |
-| scheduledqueryrules | Ne | Ne |
+| scheduledqueryrules | Ano | Ano |
 | webtests | Ano | Ano |
 | workbooks | Ano | Ano |
 
@@ -436,7 +436,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | checknameavailability | Ano | Ano |
-| graf | Ano | Ano |
+| graph | Ano | Ano |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -564,7 +564,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | expressroutecrossconnections | Ne | Ne |
 | expressroutegateways | Ne | Ne |
 | expressrouteports | Ne | Ne |
-| frontdoory | Ano | Ano |
+| frontdoors | Ano | Ano |
 | frontdoorwebapplicationfirewallpolicies | Ano | Ano |
 | loadbalancers | Ano | Ano |
 | localnetworkgateways | Ano | Ano |
@@ -619,7 +619,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftpeering"></a>Microsoft.Peering
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
-| peeringy | Ne | Ne |
+| partnerské vztahy | Ne | Ne |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -681,7 +681,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | gateways | Ne | Ne |
-| uzly | Ne | Ne |
+| uzlů | Ne | Ne |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ prostředku | Skupina prostředků | Předplatné |
@@ -707,7 +707,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | containergroups | Ne | Ne |
 | gateways | Ano | Ano |
 | networks | Ano | Ano |
-| tajné kódy | Ano | Ano |
+| Tajné kódy | Ano | Ano |
 | volumes | Ano | Ano |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -799,7 +799,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | ----------- | ---------- |
 | providerregistrations | Ne | Ne |
-| prostředky | Ne | Ne |
+| Prostředky | Ne | Ne |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Skupina prostředků | Předplatné |
