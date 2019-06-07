@@ -42,6 +42,8 @@
           href: render-coverage.md
         - name: Zajištění směrování
           href: routing-coverage.md
+        - name: Zajištění mobility
+          href: mobility-coverage.md
     - name: Podpora lokalizace
       href: supported-languages.md
     - name: Podporované styly map
@@ -50,6 +52,8 @@
       href: supported-browsers.md
     - name: Úrovně přiblížení a mřížka dlaždic
       href: zoom-levels-and-tile-grid.md
+    - name: Datová struktura Mobility Service
+      href: mobility-service-data-structure.md
 - name: Návody
   items:
     - name: Správa účtů Maps
@@ -70,6 +74,10 @@
           href: how-to-use-best-practices-for-search.md
         - name: Vykreslování vlastních dat na statické mapě
           href: how-to-render-custom-data.md
+        - name: Vyžádání tras veřejné dopravy
+          href: how-to-request-transit-data.md
+        - name: Vyžádání dat o veřejné dopravě v reálném čase
+          href: how-to-request-real-time-data.md
     - name: Vývoj s využitím sady Web SDK
       items:
         - name: Mapový ovládací prvek

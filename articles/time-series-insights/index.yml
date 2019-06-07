@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/23/2019
+  ms.date: 06/03/2019
   ms.author: anshan
 abstract:
   description: 'Vítá vás služba Azure Time Series Insights. Azure Time Series Insights poskytuje výkonné nástroje pro telemetrii a zkoumání dat, které pomáhají vylepšovat provozní analýzy. Tato dokumentace popisuje službu Time Series Insights, postup při zahájení práce s využitím četných jejích funkcí a její výkonná rozhraní API. Informace jsou uváděné ve dvou verzích, pro všeobecně dostupnou verzi (Time Series Insights ve verzi GA) a pro hlavní aktualizaci této služby, která je ve verzi Preview (Time Series Insights ve verzi Preview).'
@@ -46,9 +46,9 @@ sections:
         className: cardsD
         items:
           - title: Azure Time Series Insights verze GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Vytvoření prostředí</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Vytvoření jednostránkové webové aplikace</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Prozkoumání javascriptové klientské knihovny</a></p>
+            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Vytvoření prostředí Azure Time Series Insights</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Vytvoření jednostránkové webové aplikace</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Prozkoumání javascriptové klientské knihovny</a></p>
           - title: Azure Time Series Insights verze Preview
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Kurz k verzi Preview</a></p>
+            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Nastavení prostředí Azure Time Series Insights Preview</a></p>
   - title: Referenční informace
     items:
       - type: list
@@ -56,6 +56,8 @@ sections:
         className: cardsD
         items:
           - title: Rozhraní API služby Time Series Insights verze GA
-            html: <p><a href="/rest/api/time-series-insights-management">Rozhraní API pro správu prostředků</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Syntaxe dotazů</a></p>
+            html: <p><a href="rest/api/time-series-insights/ga">Přístup k datům</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Syntaxe dotazů</a></p>
           - title: Rozhraní API služby Time Series Insights verze Preview
             html: <p><a href="/rest/api/time-series-insights/preview-query">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Rozhraní API pro modely</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Rozhraní API pro prostředí</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Rozhraní API služby Time Series pro výrazy</a></p>
+          - title: Klientská sada SDK
+            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">Javascriptová klientská sada SDK</a></p>'

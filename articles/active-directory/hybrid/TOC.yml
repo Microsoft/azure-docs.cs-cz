@@ -18,6 +18,10 @@
       href: tutorial-phs-backup.md
 - name: Koncepty
   items:
+    - name: Hybridní identita
+      items:
+        - name: Cloudově řízená správa pro místní úlohy
+          href: cloud-governed-management-for-on-premises.md
     - name: Azure AD Connect a Connect Health
       items:
         - name: Co je Azure AD Connect a Connect Health?

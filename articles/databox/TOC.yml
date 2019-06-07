@@ -111,9 +111,7 @@
           items:
             - name: Správa prostřednictvím portálu Azure Portal
               href: data-box-portal-ui-admin.md
-            - name: Přesun dat do úrovně objektu blob
-              href: data-box-how-to-set-data-tier.md
-            - name: Řešení potíží se službou Data Box Heavy
+            - name: Řešení problémů s Data Box Disky
               href: data-box-disk-troubleshoot.md
             - name: Kontaktování podpory
               href: data-box-disk-contact-microsoft-support.md
@@ -155,12 +153,18 @@
               href: data-box-local-web-ui-admin.md
             - name: Řešení problémů se zařízeními
               href: data-box-troubleshoot.md
+            - name: Přesun dat do úrovně objektu blob
+              href: data-box-how-to-set-data-tier.md
             - name: Kontaktování podpory
               href: data-box-disk-contact-microsoft-support.md
             - name: Migrace
               items:
+                - name: To SharePoint Online
+                  href: data-box-heavy-migrate-spo.md
                 - name: Do funkce Synchronizace souborů Azure
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Z úložiště HDFS
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Zdroje a prostředky
       items:
         - name: Produkt Data Box

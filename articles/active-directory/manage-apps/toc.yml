@@ -2,8 +2,10 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Správa aplikací
+    - name: Co je správa aplikací?
       href: what-is-application-management.md
+    - name: Co je proxy aplikací?
+      href: what-is-application-proxy.md
 - name: Šablony Rychlý start
   expanded: true
   items:

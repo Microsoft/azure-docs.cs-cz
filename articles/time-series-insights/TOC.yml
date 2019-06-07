@@ -137,6 +137,10 @@
               href: /rest/api/time-series-insights/preview-env
             - name: Syntaxe a výrazy služby Time Series
               href: /rest/api/time-series-insights/preview-tsx
+    - name: Klientská sada SDK
+      items:
+        - name: Javascriptová klientská sada SDK
+          href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: Související
   items:
     - name: Řešení

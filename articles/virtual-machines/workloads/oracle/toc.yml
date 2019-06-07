@@ -1,7 +1,11 @@
 - name: Přehled
   items:
-    - name: Požadavky na virtuální počítače s Oraclem
-      href: oracle-considerations.md
+    - name: Přehled řešení Oracle
+      href: oracle-overview.md
+    - name: Řešení na virtuálních počítačích Azure
+      href: oracle-vm-solutions.md
+    - name: Řešení s využitím OCI – Preview
+      href: oracle-oci-overview.md
 - name: Šablony Rychlý start
   items:
     - name: Vytvoření Oracle DB
@@ -10,7 +14,7 @@
   items:
     - name: Konfigurace Oracle ASM
       href: configure-oracle-asm.md
-    - name: Konfigurace Oracle DataGuardu
+    - name: Konfigurace Oracle Data Guardu
       href: configure-oracle-dataguard.md
     - name: Konfigurace Oracle GoldenGate
       href: configure-oracle-golden-gate.md
@@ -20,7 +24,7 @@
       href: oracle-design.md
     - name: Strategie zálohování pro Oracle DB
       href: oracle-backup-recovery.md
-    - name: Možnosti Oracle pro zotavení po havárii
+    - name: Možnosti Oraclu pro zotavení po havárii
       href: oracle-disaster-recovery.md
 - name: Zdroje a prostředky
   items:
