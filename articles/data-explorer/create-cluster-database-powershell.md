@@ -1,18 +1,18 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell'
+title: Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
 description: Zjistěte, jak vytvořit cluster Průzkumník dat Azure a databáze služby pomocí prostředí PowerShell
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 28785bb99dcdb767a64ae977e8326b80130fb135
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 85c8cc81b3c61e2faf65bf8a06c69ca7f2b906c9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240197"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497330"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru Průzkumník dat Azure a databáze pomocí prostředí PowerShell
 
@@ -24,7 +24,7 @@ ms.locfileid: "66240197"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto rychlém startu vytvoříte cluster a databáze pomocí prostředí Powershell. Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](../cloud-shell/overview.md) s [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) vytvoření a konfigurace clusterů Průzkumníka služby Azure Data a databáze.
+Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Použití Průzkumníku dat Azure, nejprve vytvoříte cluster a vytvořit jednu nebo více databází v tomto clusteru. Pak můžete ingestovat data (načíst) do databáze tak, aby u ní můžete spouštět dotazy. V tomto článku se vytvoření clusteru a databáze pomocí prostředí Powershell. Spuštěním rutin a skriptů Powershellu na Windows, Linux, nebo v [Azure Cloud Shell](../cloud-shell/overview.md) s [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) vytvoření a konfigurace clusterů Průzkumníka služby Azure Data a databáze.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, tento rychlý start vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-parameters"></a>Konfigurovat parametry
 
@@ -107,7 +107,7 @@ Teď máte cluster a databázi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte.
+* Pokud budete chtít postupujte podle našich článků, zachovat prostředky, které jste vytvořili.
 * Pokud chcete vyčistit prostředky, cluster odstraňte. Po odstranění clusteru se odstraní také všechny databáze v ní. Pomocí následujícího příkazu odstraňte cluster:
 
     ```azurepowershell-interactive
@@ -117,4 +117,4 @@ Teď máte cluster a databázi.
 ## <a name="next-steps"></a>Další postup
 
 * [Další příkazy Az.Kusto](/powershell/module/az.kusto/?view=azps-1.7.0#kusto)
-* [Rychlé zprovoznění: Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)
+* [Příjem dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)](net-standard-ingest-data.md)

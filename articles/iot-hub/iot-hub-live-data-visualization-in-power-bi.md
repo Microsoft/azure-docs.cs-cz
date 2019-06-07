@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 7c770aced36e4c90f654de8d31c12d55ad80c8d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e932048b41e9af149f14a814a1c92d86bd26f29
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60780013"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479867"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat snímače v reálném čase ze služby Azure IoT Hub pomocí Power BI
 
@@ -25,7 +25,7 @@ ms.locfileid: "60780013"
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Se dozvíte, jak k vizualizaci dat snímačů v reálném čase, který obdrží služby Azure IoT hub s využitím Power BI. Pokud budete chtít zkusit porážky vizualizace dat ve službě IoT hub s využitím Web Apps, najdete v [pomocí Azure Web Apps k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
+Se dozvíte, jak k vizualizaci dat snímačů v reálném čase, který obdrží služby Azure IoT hub s využitím Power BI. Pokud budete chtít zkusit porážky vizualizace dat ve službě IoT hub s webovou aplikací, najdete v [použijte nějakou webovou aplikaci k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
@@ -179,6 +179,6 @@ Microsoft taky nabízí [mobilních aplikacích Power BI](https://powerbi.micros
 
 Úspěšně jste použili Power BI k vizualizaci dat snímačů v reálném čase ze služby Azure IoT hub.
 
-Existuje alternativní způsob vizualizace dat ze služby Azure IoT Hub. Zobrazit [pomocí Azure Web Apps k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
+Dalším způsobem, jak vizualizovat data ze služby Azure IoT Hub, najdete v části [použijte nějakou webovou aplikaci k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

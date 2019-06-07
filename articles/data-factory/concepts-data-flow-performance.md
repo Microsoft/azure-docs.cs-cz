@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 90c7e4653b879c2432f08506cea08646e84bb69a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297703"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480410"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapování výkonu toky dat a Průvodce laděním
 
@@ -29,15 +29,28 @@ Azure Data Factory mapování dat toků poskytují rozhraní bez kódu prohlíž
 
 ![Ladění tlačítko](media/data-flow/debugb1.png "ladění")
 
+## <a name="monitor-data-flow-performance"></a>Monitorování výkonu toku dat
+
+Při navrhování data mapování toků v prohlížeči, můžete test jednotek každé jednotlivé transformace po kliknutí na kartě Náhled dat v dolním podokně nastavení pro každý transformace. Dalším krokem, které byste měli podniknout je k testování vašich dat tok end až do konce v Návrháři kanálu. Přidat aktivitu spuštění toku dat a použijte tlačítko ladění k testování výkonu datový tok. V dolním podokně okna kanál zobrazí se ikona eyeglass v části "akce":
+
+![Tok dat monitorování](media/data-flow/mon002.png "předávají Data monitorování 2")
+
+Klepnutí na tuto ikonu se zobrazí plán provádění a následné výkonu profilu datový tok. Tyto informace můžete použít k odhadu výkon vašeho toku dat pro různé velikosti datové zdroje. Mějte na paměti, že 1 minuta čas nastavení spuštění úlohy clusteru, můžete předpokládat výpočtech celkový výkon a pokud použijete výchozí prostředí Azure Integration Runtime, budete muset přidat clusteru nahoru typu číselník také dobu 5 minut.
+
+![Sledování toku dat](media/data-flow/mon003.png "předávají Data monitorování 3")
+
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse
 
 ![Zdroj část](media/data-flow/sourcepart2.png "zdroje část")
 
-### <a name="you-can-match-spark-data-partitioning-to-your-source-database-partitioning-based-on-a-database-table-column-key-in-the-source-transformation"></a>Můžete porovnat Spark dělení dat do zdrojové databáze oddílů podle sloupce klíče tabulky databáze v transformace zdroje
+### <a name="partition-your-source-data"></a>Rozdělit svá zdrojová data
 
 * Přejít na "Optimalizace" a vybrat možnost "Zdroj". Nastavte buď sloupce konkrétní tabulky, nebo typ v dotazu.
 * Pokud jste zvolili "sloupce", pak vyberte sloupec oddílu.
 * Nastavuje maximální počet připojení k vaší databázi SQL Azure. Vyšší zkuste získat paralelní připojení k vaší databázi. Někdy však může vést k vyšší výkon s omezený počet připojení.
+* Zdrojových tabulkách databáze není nutné k rozdělení na oddíly.
+* Nastavení dotazu ve vaší zdrojové transformace, která odpovídá schématu dělení tabulky databáze, vám umožní source databázového stroje využívat eliminace oddílů.
+* Pokud váš zdroj není již rozdělená na oddíly, ADF dál používat dělení v prostředí Spark transformace na základě klíče, který zvolíte v transformaci zdroje dat.
 
 ### <a name="set-batch-size-and-query-on-source"></a>Nastavte velikost dávky a dotazování na zdroj
 
@@ -51,7 +64,7 @@ Azure Data Factory mapování dat toků poskytují rozhraní bez kódu prohlíž
 
 ![Jímka](media/data-flow/sink4.png "jímky")
 
-* Pokud se chcete vyhnout řádek po řádku zpracování floes vaše data, nastavte v nastavení jímky pro službu Azure SQL DB "velikost dávky". Dozvíte se, že se že zapíše ADF procesu databáze v dávkách, v závislosti na velikosti k dispozici.
+* Pokud se chcete vyhnout řádek po řádku zpracování datové toky, nastavte v nastavení jímky pro službu Azure SQL DB "velikost dávky". Dozvíte se, že se že zapíše ADF procesu databáze v dávkách, v závislosti na velikosti k dispozici.
 
 ### <a name="set-partitioning-options-on-your-sink"></a>Nastavte možnosti pro jímku dělení
 
@@ -84,7 +97,7 @@ Azure Data Factory mapování dat toků poskytují rozhraní bez kódu prohlíž
 
 ### <a name="use-staging-to-load-data-in-bulk-via-polybase"></a>Načtení dat pomocí Polybase hromadně pomocí pracovní
 
-* Pokud se chcete vyhnout řádek po řádku zpracování floes vaše data, nastavte možnost "Pracovní" v nastavení jímky tak, aby ADF můžete využít Polybase, aby se zabránilo řádek po řádku vloží do datového skladu. To bude dát pokyn ADF použití technologie Polybase, tak, aby data je možné načíst hromadně.
+* Pokud se chcete vyhnout řádek po řádku zpracování datové toky, nastavte možnost "Pracovní" v nastavení jímky tak, aby ADF můžete využít Polybase, aby se zabránilo řádek po řádku vloží do datového skladu. To bude dát pokyn ADF použití technologie Polybase, tak, aby data je možné načíst hromadně.
 * Při spouštění aktivit v toku dat z kanálu s pracovní zapnuta, bude nutné vybrat umístění úložiště objektů Blob pro hromadné načítání vaše pracovní data.
 
 ### <a name="increase-the-size-of-your-azure-sql-dw"></a>Zvětšete velikost vašeho datového skladu SQL Azure
@@ -113,4 +126,4 @@ Naleznete v dalších článcích toku dat:
 
 - [Přehled toku dat](concepts-data-flow-overview.md)
 - [Aktivitu toku dat](control-flow-execute-data-flow-activity.md)
-
+- [Sledování toku dat výkonu](concepts-data-flow-monitoring.md)

@@ -2,20 +2,20 @@
 title: Definování profilu technické OpenId Connect ve vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Definování profilu technické OpenId Connect ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710325"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512915"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu technické OpenId Connect ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "64710325"
 
 Azure Active Directory (Azure AD) B2C poskytuje podporu pro [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokol zprostředkovatele identity. OpenID Connect 1.0 definuje vrstvu identit přes OAuth 2.0 a představuje nejmodernější optimalizaci pspo v moderních ověřovacích protokolů. S OpenId Connect technický profil může provést federaci s OpenId Connect založené na zprostředkovateli identity, jako je Azure AD. Federování s využitím zprostředkovatele identity umožňuje uživatelům Přihlaste se pomocí své stávající sociálních sítí nebo podnikové identity.
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 **Název** atribut **protokol** elementu musí být nastavena na `OpenIdConnect`. Například protokol **MSA OIDC** technickém profilu je `OpenIdConnect`:
 

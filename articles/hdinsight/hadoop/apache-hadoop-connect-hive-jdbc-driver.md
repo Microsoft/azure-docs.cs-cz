@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2e0c17b07f70d9b05ff9ea6c3af2e8dc26127cae
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 56a2b89277cbf8866c1992a6738bd80106ef3313
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906514"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480002"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazy Apache Hive pomocí ovladače JDBC v HDInsight
 
@@ -28,7 +28,6 @@ Další informace o rozhraní Hive JDBC, naleznete v tématu [HiveJDBCInterface]
 * Cluster HDInsight Hadoop. Pokud chcete jeden vytvořit, přečtěte si téma [Začínáme s Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 * [Java Developer Kit (JDK) verze 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) nebo vyšší.
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL je JDBC klientské aplikace.
-
 
 ## <a name="jdbc-connection-string"></a>Připojovací řetězec JDBC
 
@@ -54,20 +53,12 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
 1. Vytvoření adresáře tak, aby obsahovala určité soubory zkopírovány z vašeho clusteru.
 
-2. V následujícím skriptu, nahraďte `sshuser` s název uživatelského účtu SSH pro cluster.  Nahraďte `CLUSTERNAME` s názvem clusteru HDInsight.  Z příkazového řádku zadejte následující příkaz pro kopírování souborů z clusteru služby HDInsight:
+2. V následujícím skriptu, nahraďte `sshuser` s název uživatelského účtu SSH pro cluster.  Nahraďte `CLUSTERNAME` s názvem clusteru HDInsight.  Z příkazového řádku změnit pracovní adresář vytvořeném v předchozím kroku a potom zadejte následující příkaz pro kopírování souborů z clusteru služby HDInsight:
 
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-codec*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libfb*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+    ```cmd
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar} .
+
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-1.2*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
 3. Spusťte aplikaci SQuirreL SQL. V levé části okna, vyberte **ovladače**.
@@ -82,7 +73,7 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
     * **Název**: Hive
     * **Příklad adresy URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra třídy cesta**: Pomocí tlačítka Přidat přidáte všechny dříve stáhli soubory jar
+    * **Extra třídy cesta**: Použití **přidat** a přidejte všechny soubory jar předtím stáhli.
     * **Název třídy**: org.apache.hive.jdbc.HiveDriver
 
    ![Přidat dialog ovladače](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)

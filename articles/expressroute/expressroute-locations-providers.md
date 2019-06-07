@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/28/2019
-ms.author: mialdrid
-ms.openlocfilehash: a86d3f44d3c2177185fa81602f953be4f726badb
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.date: 05/31/2019
+ms.author: jaredr80
+ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257883"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478159"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -86,10 +86,10 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Čennaj** | Tata Communications | Indie – jih | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Čennaj2** | Airtel | Indie – jih | Airtel |
 | **Chicago** | Equinix | Středoseverní USA | Aryaka Networks, AT&T NetBond, Cologix, Comcast, Coresite, Equinix, InterCloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Global Limited, Sprint, Telia Carrier, Verizon, Zayo |
-| **Dallas** | Equinix | neuvedeno | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Verizon, Zayo|
+| **Dallas** | Equinix | neuvedeno | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | CoreSite | Západní střed USA | CoreSite, Megaport, Zayo |
 | **Dubai** | Spojené arabské emiráty Etisalat | Spojené arabské emiráty – sever | Spojené arabské emiráty Etisalat |
-| **Dubai2** | rozlišované sjednocení typu datamena | Spojené arabské emiráty – sever | rozlišované sjednocení typu datamena |
+| **Dubai2** | rozlišované sjednocení typu datamena | Spojené arabské emiráty – sever | rozlišované sjednocení typu datamena, Orixcom |
 | **Dublin** | Equinix | Severní Evropa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | neuvedeno | DE-CIX, Interxion |
 | **Hongkong – zvláštní administrativní oblast** | Equinix | Východní Asie | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
@@ -100,13 +100,13 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **London2** | Telehouse | Velká Británie – jih | IX Reach, Equinix |
 | **Los Angeles** | CoreSite | neuvedeno | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
 | **Marseille** |Interxion | Francie – jih | Interxion |
-| **Melbourne** | NextDC | Austrálie – jihovýchod | AARNet, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
+| **Melbourne** | NextDC | Austrálie – jihovýchod | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | neuvedeno | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | neuvedeno | Bell Canada, Cologix, Telus, Zayo |
 | **Bombaj** | Tata Communications | Indie – západ | Globální CloudXchange (GCX), umožňující Jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | Indie – západ | Airtel, Sify, Vodafone Idea |
 | **New York** | Equinix | neuvedeno | CenturyLink Cloud Connect, Coresite, Equinix, InterCloud, Megaport, Packet, Zayo |
-| **Newport(Wales)** | Next Generation Data | Spojené království – západ | British Telecom, Level 3 Communications, příští generace |
+| **Newport(Wales)** | Next Generation Data | Spojené království – západ | British Telecom, Colt, Level 3 Communications, příští generace |
 | **Ósaka** | Equinix | Japonsko – západ | Equinix, Internet Initiative Japan Inc. – IIJ, NTT Communications, NTT SmartConnect, Softbank |
 | **Paříž** | Interxion | Francie – střed | Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | NextDC | neuvedeno | Megaport, NextDC |

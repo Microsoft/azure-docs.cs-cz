@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/03/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: ead3122d2040a544c6f09e434f27b7970f0d5840
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417865"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496347"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Spravovat využití a nákladů s protokoly Azure monitoru
 
@@ -58,6 +58,9 @@ Poplatky za log Analytics se přidají do vašeho vyúčtování služeb Azure. 
 Můžete nakonfigurovat denní limit a omezit tak denní příjem dat pro váš pracovní prostor, ale použijte pozornost jak vaším cílem by neměl být k dosažení denního limitu.  V opačném případě můžete přijít o data po zbytek dne, který může mít vliv na ostatní služby Azure a řešení, jehož funkce může záviset na aktuální data, která je k dispozici v pracovním prostoru.  V důsledku toho možnost sledovat a přijímat upozorní, když se to týká podmínky stavu prostředků podporující IT služby.  Denní limit je určena pro použití jako způsob, jak spravovat neočekávané nárůst objemu dat ze spravovaných prostředků a zůstat v rámci svého limitu, nebo pokud chcete k omezení neplánovaných poplatků pro váš pracovní prostor.  
 
 Po dosažení denního limitu pro zbytek dne zastaví kolekci fakturovatelné datových typů. Zobrazí se upozornění banner v horní části stránky pro vybraný pracovní prostor Log Analytics a operace událost je odeslána do *operace* tabulky v rámci **LogManagement** kategorie. Shromažďování dat bude pokračovat po resetování času definované v části *denní limit se nastaví na*. Doporučujeme definovat pravidlo výstrahy založené na této události operace nakonfigurovaný tak, aby upozornit po dosažení denního datového limitu. 
+
+> [!NOTE]
+> Denní limit nezastaví shromažďování dat ze služby Azure Security Center.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifikujte jaké denního limitu pro definování dat
 
@@ -105,7 +108,7 @@ Následující kroky popisují, jak nakonfigurovat jak dlouho protokol dat se uc
 
 ## <a name="legacy-pricing-tiers"></a>Starší verze cenové úrovně
 
-Zákazníci se smlouvou Enterprise podepsaná před 1. červencem 2018 nebo kteří už vytvořili pracovní prostor Log Analytics v rámci předplatného, budete mít dál přístup k *Free* plánu. Pokud vaše předplatné není vázaný na existující registraci smlouvy Enterprise, *Free* úroveň není k dispozici, když vytvoříte pracovní prostor v rámci nového předplatného po 2. dubna 2018.  Data je omezená na sedm dnů uchovávání pro *Free* vrstvy.  Pro starší *samostatné* nebo *na jeden uzel* úrovně, jakož i aktuálním 2018 jednu cenovou úroveň, shromážděných dat je k dispozici za posledních 31 dní. *Free* úroveň má denního limitu příjmu 500 MB, a pokud najdete konzistentně překročení částky povolený objem pracovního prostoru lze změnit na jiný plán, ke shromažďování dat nad tento limit. 
+Předplatným, které pracovní prostor Log Analytics nebo prostředek Application Insights byla v něm před 2. dubnem 2018, nebo jsou propojeny do smlouvy Enterprise, které začínají před 1. února 2019, budou mít přístup ke starší verze cenové úrovně: Zdarma, samostatné (za GB) a za uzel (OMS).  Pracovní prostory v cenové úrovni Free, budou mít omezený na 500 MB (s výjimkou typů data zabezpečení shromážděná službou Azure Security Center) denní příjem dat a uchovávání dat je omezená na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v samostatné nebo cenovými úrovněmi uzlů za mít přístup k uchovávání dat až 2 roky. 
 
 > [!NOTE]
 > Chcete-li používat nároky z nákupu OMS E1 Suite, sadu E2 OMS nebo doplňku OMS pro System Center, zvolte Log Analytics *na jeden uzel* cenovou úroveň.
@@ -131,7 +134,9 @@ Pokud chcete přesunout do aktuální cenová úroveň pracovního prostoru, bud
 
 Pokud jsou na starší verzi cenové úrovně Free a odeslali více než 500 MB dat za den, zastaví shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  Log Analytics, vytváří událost typu operace při shromažďování dat spustí a zastaví. Spuštěním následujícího dotazu ve službě search zkontrolujte, jestli jsou dosažení denního limitu a chybějící data: 
 
-`Operation | where OperationCategory == 'Data Collection Status'`
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
 
 Když se zastaví shromažďování dat, je stav OperationStatus **upozornění**. Když se spustí shromažďování dat, je stav OperationStatus **Succeeded**. Následující tabulka popisuje důvody, které zastaví shromažďování dat a navrhovanou akci pokračování shromažďování dat:  
 
@@ -153,51 +158,63 @@ Větší využití je způsobeno jedním nebo obojím z těchto aspektů:
 
 Chcete-li pochopit počet počítačů vytvářejících sestavy prezenční signály každý den během posledního měsíce, použijte
 
-`Heartbeat | where TimeGenerated > startofday(ago(31d))
+```kusto
+Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
-| render timechart`
+| render timechart
+```
 
 Pokud chcete získat seznam počítačů, které se bude účtovat jako uzly, pokud je pracovní prostor ve starší verzi uzlu na cenovou úroveň, vyhledejte uzly, které odesílají **účtuje datové typy** (některé typy dat jsou zdarma). Chcete-li to provést, použijte `_IsBillable` [vlastnost](log-standard-properties.md#_isbillable) a použití pole nejvíce vlevo plně kvalifikovaný název domény. Vrátí seznam počítačů se fakturuje daty:
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
 
 Počet účtovaných uzly zjištěné se dá odhadnout jako: 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| billableNodes=dcount(computerName)`
+| billableNodes=dcount(computerName)
+```
 
 > [!NOTE]
 > Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy. Tento dotaz nahrazuje starý způsob dotazování informace pro počítač s datovým typem využití.  
 
 Jak získat počet počítačů za hodinu, odesílají se fakturuje datové typy je přesnější výpočty, co se ve skutečnosti se jim nebudou účtovat poplatky. (Pro pracovní prostory v cenové úrovni starší verze na jeden uzel, Log Analytics vypočítá počet uzlů, které je potřeba se fakturuje po hodinách.) 
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ## <a name="understanding-ingested-data-volume"></a>Principy ingestuje datový svazek
 
 Na **využití a odhadované náklady** stránky, *příjem dat podle řešení* graf ukazuje celkový objem dat odesílaných a kolik je odesíláno každé řešení. Díky tomu můžete určit trendy, jako je například, jestli se rozrůstá celkové využití dat (nebo využití podle konkrétního řešení), zbývající konstantní nebo se snižuje. Query sloužící ke generování to je
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 Všimněte si, že v klauzuli "kde IsBillable = true" filtruje z určité řešení, pro které neplatí žádné poplatky ingestování datových typů. 
 
 Můžete přejít na trendy v datech najdete konkrétní datové typy, například pokud chcete zkoumat data z důvodu protokoly služby IIS:
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 ### <a name="data-volume-by-computer"></a>Objem dat podle počítače
 

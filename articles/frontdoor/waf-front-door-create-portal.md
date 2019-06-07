@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/8/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460209"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479058"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Vytvořit zásadu WAF pro Azure branou pomocí webu Azure portal
 
@@ -48,7 +48,7 @@ Nejprve vytvořte zásadu základní WAF s spravované výchozí pravidlo nastav
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Přední dveře              | Vyberte název svého profilu branou.|
-    | Hostitel front-endu           | Vyberte název hostitele vašeho branou a potom vyberte **přidat**.|
+    | Hostitele front-endu           | Vyberte název hostitele vašeho branou a potom vyberte **přidat**.|
     
     > [!NOTE]
     > Pokud je hostitel front-endu přidružit k zásadě WAF, je zobrazeno jako zobrazena šedě. Musíte nejprve odeberte hostitele front-endu z přidružených zásad a znovu přidružit hostitele front-endu do nové zásady WAF.
@@ -63,17 +63,19 @@ Chcete-li WAF se zobrazí v akci, můžete změnit nastavení režimu z **detekc
 
  ![Režim zásad změn WAF](./media/waf-front-door-create-portal/policy.png)
 
+### <a name="custom-rules"></a>Vlastní pravidla
+
+Vlastní pravidlo můžete vytvořit tak, že vyberete **přidat vlastní pravidlo** pod **vlastní pravidla** oddílu. Otevře se stránka Konfigurace vlastní pravidlo. Níže je příklad konfigurace vlastní pravidlo pro zablokování požadavku, pokud řetězec dotazu obsahuje **blockme**.
+
+![Režim zásad změn WAF](./media/waf-front-door-create-portal/customquerystring2.png)
+
 ### <a name="default-rule-set-drs"></a>Výchozí sada pravidel (DRS)
 
 Ve výchozím nastavení zapnutá spravované v Azure nastavit výchozí pravidlo. Zakázat jednotlivá pravidla v rámci skupiny pravidel, rozbalte položku pravidla v rámci dané pravidlo skupiny, vyberte **zaškrtávací políčko** před číslo pravidla a vyberte **zakázat** na kartě výše. Chcete-li změnit typy akcí pro jednotlivá pravidla v pravidle, zaškrtněte políčko u číslo pravidla a pak vyberte **změňte akci** nahoře kartu.
 
- ![Změnit sadu pravidel WAF](./media/waf-front-door-create-portal/managed.png)
+ ![Změnit sadu pravidel WAF](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [firewallu webových aplikací](waf-overview.md).
 - Další informace o [Azure branou](front-door-overview.md).
-
-
-
-

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6516b11bf5d4d4c4e5406a3e6e0cce3189796d33
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 25ff618045c65371b1bddd8aeb32166b3e168a93
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956410"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497206"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI s ve službě Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,7 @@ Plán IP adres pro AKS cluster se skládá z virtuální sítě, alespoň jednu 
 | Virtuální síť | Virtuální síť Azure můžou být velké až /8, ale je omezená na 65 536 nakonfigurovaných IP adres. |
 | Podsíť | Musí být dostatečně velký, aby uzly, podů a všechny Kubernetes a Azure prostředky, které může být zřízené ve vašem clusteru. Například pokud nasadíte interní Azure Load Balancer, jeho front-endových IP adres se přidělují z podsítě clusteru, není veřejné IP adresy. Velikost podsítě musí rovněž brát v úvahu upgradu operace účtů nebo budoucích potřeb škálování.<p />Chcete-li vypočítat *minimální* velikost podsítě, včetně dalšího uzlu pro operace upgradu: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Příklad pro cluster s 50 uzly: `(51) + (51  * 30 (default)) = 1,581` (/ 21, nebo větší)<p/>Příklad 50 uzlu clusteru, který také zahrnuje ustanovení vertikálně navýšit kapacitu dalších 10 uzlů: `(61) + (61 * 30 (default)) = 1,891` (/ 21, nebo větší)<p>Pokud nechcete zadat maximální počet podů na uzlu při vytváření clusteru, maximální počet podů na uzel nastavena na *30*. Minimální počet IP adres, vyžaduje se podle této hodnoty. Pokud vypočítáte vaše minimální požadavky IP adres na jinou maximální hodnotu, přečtěte si téma [konfigurace maximální počet podů na uzel](#configure-maximum---new-clusters) na nastavte tuto hodnotu při nasazování clusteru. |
 | Rozsah adres služby Kubernetes | Tento rozsah by neměly používat libovolný prvek sítě na nebo připojení k této virtuální síti. Adresa služby CIDR musí být menší než /12. |
-| IP adresa služby DNS Kubernetes | IP adresu v rámci rozhraní Kubernetes služby rozsah adres, který bude používat zjišťování služby cluster (kube-dns). Nepoužívejte první IP adresu ve vaší rozsah adres, jako je například.1. První adresou v rozsahu vaší podsítě se používá pro *kubernetes.default.svc.cluster.local* adresu. |
+| IP adresa služby Kubernetes DNS | IP adresu v rámci rozhraní Kubernetes služby rozsah adres, který bude používat zjišťování služby cluster (kube-dns). Nepoužívejte první IP adresu ve vaší rozsah adres, jako je například.1. První adresou v rozsahu vaší podsítě se používá pro *kubernetes.default.svc.cluster.local* adresu. |
 | Adresa mostu docker | IP adresa (v notaci CIDR) použít jako Docker bridge IP adresu na uzlech. Výchozí 172.17.0.1/16. |
 
 ## <a name="maximum-pods-per-node"></a>Maximální podů na jeden uzel
@@ -170,8 +170,6 @@ Platí následující dotazy a odpovědi k **Azure CNI** konfiguraci sítě.
   Není doporučeno, ale tato konfigurace je možné. Rozsah adres služby je sada virtuální IP adresy (VIP), který přiřazuje interních služeb v clusteru Kubernetes. Sítě Azure nemá žádný vhled do rozsahu IP služby clusteru Kubernetes. Z důvodu nedostatku vhled do rozsahu adres služby clusteru je možné později vytvořit novou podsíť ve virtuální síti clusteru, který se překrývá s rozsahem adres služby. Pokud dojde k takové překrývají, Kubernetes přiřadit služby integrační balíček, který je již používán jiným prostředkem v podsíti, způsobit nepředvídatelné chování nebo selhání. Tím zajistíte, že používáte rozsah adres mimo virtuální síť clusteru, se můžete vyhnout toto riziko překrývají.
 
 ## <a name="next-steps"></a>Další postup
-
-### <a name="networking-in-aks"></a>Správa sítě v AKS
 
 Další informace o možnostech sítě v AKS v následujících článcích:
 

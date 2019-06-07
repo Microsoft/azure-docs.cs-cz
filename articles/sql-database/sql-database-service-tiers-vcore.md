@@ -12,126 +12,129 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: c85ee31a54cdbbb09686a2d20200f65fdcd8994a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 520dba611e6791fca990e21173424a914c3d8e14
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235909"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693347"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>Zvolte mezi úrovněmi služeb vCore a migrovat z jednotek DTU úrovně služeb
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Zvolte mezi úrovněmi služeb vCore a migrovat z jednotek DTU úrovně služeb
 
-Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Umožňuje také můžete vybrat generaci:
+Virtuální jádro (vCore) – na základě nákupní model umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Můžete ho taky zvolit generace hardwaru:
 
-- Gen4 - až 24 logických procesorů podle Intel E5-2673 v3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
-- Gen5 - až 80 logických procesorů podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.1 GB na jádro, rychlé eNVM SSD
-
+- **Gen4**: Až 24 logických procesorů podle Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
+- **Gen5**: Až 80 logických procesorů podle Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech vCore = 1 LP (hyper vlákno), 5.1 GB na jádro, rychlé eNVM SSD
 
 Gen4 hardware nabízí podstatně více paměti na vCore. Gen5 hardware však umožňuje vertikálně navýšit kapacitu výpočetních prostředků mnohem vyšší.
 
 > [!NOTE]
-> Informace o úrovních služeb na základě DTU najdete v tématu [založený na DTU úrovně](sql-database-service-tiers-dtu.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-purchase-models.md).
+> Informace o úrovních služeb na základě DTU najdete v tématu [pro nákupní model založený na DTU úrovně služeb](sql-database-service-tiers-dtu.md). Informace o rozdílech mezi úrovněmi služeb pro založený na DTU a modely nákupu založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-purchase-models.md).
 
-## <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
+## <a name="service-tier-characteristics"></a>Vlastnosti vrstvy služeb
 
-Modelu virt. jader nabízí tři úrovně služeb pro obecné účely, hyperškálovatelný systém a důležité obchodní informace. Úrovně služby jsou rozlišené pomocí rozsah velikostí výpočetních, vysoká dostupnost, izolaci chyb, typy a velikosti úložiště a vstupně-výstupních operací. Je nutné nakonfigurovat samostatně požadované období úložiště a uchovávání dat pro zálohování. Na webu Azure Portal, přejděte na Server (ne databáze) > Spravovat zálohy > Konfigurace zásad > v době obnovení konfiguraci bodu > 7 – 35 dní.
+Nákupní model založený na virtuálních jádrech nabízí tři úrovně služby: obecné účely, hyperškálovatelný systém a důležité obchodní informace. Tyto úrovně jsou rozlišené pomocí celou řadu velikostí výpočetních, návrhy vysokou dostupnost, izolaci chyb metody, typy a velikosti úložiště a vstupně-výstupních operací rozsahy.
 
-Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
+Je nutné nakonfigurovat samostatně požadované období úložiště a uchovávání dat pro zálohování. K nastavení doby uchování zálohy, otevřete na webu Azure portal, přejděte na server (ne databáze) a potom přejděte ke **spravovat zálohy** > **konfigurace zásad**  >   **Bod v čase obnovení konfigurace** > **7 – 35 dnů**.
+
+Následující tabulka vysvětluje rozdíly mezi třech úrovních:
 
 ||**Obecné účely**|**Pro důležité obchodní informace**|**Velkokapacitní**|
 |---|---|---|---|
-|Nejlepší pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení|
-|Compute|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 2 až 80<br/>**Výpočetní prostředí**<br/>Gen5: 0,5 – 4 vCore|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 2 až 80|**Zřízení výpočetních**:<br/>Gen4: vCore 1 až 24<br/>Gen5: vCore 2 až 80|
-|Memory (Paměť)|**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore<br/>**Výpočetní prostředí**<br/>Gen5: 3 GB na vCore|**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore |**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore|
-|Úložiště|Používá vzdálené úložiště:<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Výpočetní prostředí izolované databáze**:<br/>5 GB - 1 TB<br/>**Spravovaná Instance**: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Spravovaná Instance**:<br/>32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
-|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro|
-|Úložiště|Používá vzdálené úložiště:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 8 TB |Používá místní úložiště SSD:<br/>Izolované databáze: 5 GB – 4 TB<br/>Spravovanou instanci: 32 GB - 4 TB |Flexibilní a zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště a další. Místní úložiště SSD pro mezipaměť fondu místní vyrovnávací paměti a místní datové úložiště. Jako konečné dlouhodobé úložiště dat Azure vzdálené úložiště. |
-|Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200 000 maximální IOPS|TBD|
-|Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|repliky pro čtení a zápis 1 plus 0-4 [repliky škálování pro čtení](sql-database-read-scale-out.md)|
-|Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a nejsou velikost operace dat (s ohledem minut, nikoli hodin nebo dnů).|
+|Nejvhodnější pro|Většinu obchodních úloh. Nabídky levným provozem, vybalancované a škálovatelné výpočetní možnosti a možnosti úložiště.|Obchodní aplikace s vysokými požadavky na vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|Většina podnikových úloh pomocí vysoce škálovatelného úložiště a požadavky na škálování pro čtení.|
+|Compute|**Zřízení výpočetních**:<br/>Gen4: 1 až 24 virtuálních jader<br/>Gen5: 2 až 80 virtuálních jader<br/>**Výpočetní prostředí**:<br/>Gen5: 0,5 – 4 virtuální jádra|**Zřízení výpočetních**:<br/>Gen4: 1 až 24 virtuálních jader<br/>Gen5: 2 až 80 virtuálních jader|**Zřízení výpočetních**:<br/>Gen4: 1 až 24 virtuálních jader<br/>Gen5: 2 až 80 virtuálních jader|
+|Memory (Paměť)|**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore<br/>**Výpočetní prostředí**:<br/>Gen5: 3 GB na vCore|**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore |**Zřízení výpočetních**:<br/>Gen4: 7 GB na vCore<br/>Gen5: 5.1 GB na vCore|
+|Úložiště|Používá vzdálené úložiště.<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Výpočetní prostředí izolované databáze**:<br/>5 GB - 1 TB<br/>**Spravovaná instance**: 32 GB - 8 TB |Používá místní úložiště SSD.<br/>**Izolované databáze zřízení výpočetních**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB - 4 TB |Flexibilní zvětšování úložiště podle potřeby. Podporuje až 100 TB úložiště. Pro fond vyrovnávacích pamětí v místní mezipaměti a místní úložiště dat používá místní úložiště SSD. Jako konečné dlouhodobé úložiště dat používá vzdálené úložiště Azure. |
+|Vstupně-výstupní propustnost (přibližné)|**Izolované databáze**: 500 IOPS na vCore s 7000 maximální vstupně-výstupních operací.<br/>**Spravovaná instance**: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS na jádro s 200 000 maximální IOPS|Velkokapacitní je architektura vícevrstevných s ukládáním do mezipaměti na různých úrovních. Efektivní IOPs, bude záviset na zatížení.|
+|Dostupnost|1 repliky, žádnou repliku škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>zónově redundantní vysoké dostupnosti (HA)|1 repliky pro čtení i zápis a navíc 0-4 [repliky škálování pro čtení](sql-database-read-scale-out.md)|
+|Zálohování|[Geograficky redundantní úložiště jen pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|Zálohy založené na snímku do vzdáleného úložiště Azure. Tyto snímky obnoví použít pro rychlé obnovení. Zálohy jsou okamžité a nebudou mít vliv na výpočetní výkon vstupně-výstupních operací. Obnovení jsou rychlé a nejsou operace velikost dat (minuty a současně spíše než hodiny nebo dny).|
 |V paměti|Nepodporuje se|Podporováno|Nepodporuje se|
 |||
 
 > [!NOTE]
-> Můžete získat bezplatné databázi Azure SQL na úrovni služby Basic ve spojení s bezplatným účtem Azure prozkoumat Azure. Informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
+> Na úrovni služby basic ve spojení s bezplatným účtem Azure můžete získat bezplatné databázi Azure SQL. Další informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
 
-- Další informace najdete v tématu [vCore omezení prostředků v jedné databázi](sql-database-vcore-resource-limits-single-databases.md) a [vCore omezení prostředků ve spravované instanci](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- Další informace o úrovních služeb pro obecné účely a pro důležité obchodní informace najdete v tématu [úrovně služeb pro obecné účely a pro důležité obchodní informace](sql-database-service-tiers-general-purpose-business-critical.md).
-- Podrobnosti na úrovni služby Hyperškálovatelného v nákupní model založený na virtuálních jádrech najdete v tématu [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md).  
+- Další informace o omezení prostředků na vCore, naleznete v tématu [vCore omezení prostředků v jedné databázi](sql-database-vcore-resource-limits-single-databases.md) a [vCore omezení prostředků ve spravované instanci](sql-database-managed-instance.md#vcore-based-purchasing-model).
+- Další informace o obecné účely a úrovní služeb kritické obchodní najdete v tématu [úrovně služeb pro obecné účely a pro důležité obchodní informace](sql-database-service-tiers-general-purpose-business-critical.md).
+- Další informace o úrovni služeb hyperškálovatelného v nákupní model založený na virtuálních jádrech najdete v tématu [úroveň služby Hyperškálovatelného](sql-database-service-tier-hyperscale.md).  
 
 ## <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-Ve vrstvě zřízené počítače nákupní model založený na virtuálních jádrech, mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
+V úrovni zřízených výpočetních nákupní model založený na virtuálních jádrech, mohou vyměňovat své současné licence pro zlevněné sazby za SQL Database s použitím [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje uložit až 30 procent na Azure SQL Database s použitím vašich místních licencí SQL serveru s programem Software Assurance.
 
 ![Ceny](./media/sql-database-service-tiers/pricing.png)
 
-S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukturu Azure pomocí stávající licence SQL Server pro databázový stroj SQL samotný (**BasePrice**) nebo platby za základní infrastrukturu a licenci systému SQL Server (**LicenseIncluded**).
+S programem Azure Hybrid Benefit můžete platit jenom za základní infrastrukturu Azure s využitím vaší stávající licenci na SQL Server pro databázový stroj SQL samotného (základní výpočetní ceny), nebo můžete platit základní infrastruktury a systému SQL Server licence (ceny s licencí).
 
+Můžete vybrat nebo změnit váš licenční model s využitím webu Azure portal nebo pomocí jedné z následujících rozhraní API:
 
-Můžete vybrat nebo změnit váš licenční model pomocí webu Azure portal nebo pomocí jedné z následujících rozhraní API.
+- Nastavení nebo aktualizaci typu licence pomocí prostředí PowerShell:
 
-- Nastavení nebo aktualizaci typu licence pomocí Powershellu:
-
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
+  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
   - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
 
-- Nastavení nebo aktualizaci typu licence pomocí Azure CLI:
+- Nastavení nebo aktualizaci typu licence pomocí rozhraní příkazového řádku Azure:
 
   - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
   - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
   - [Vytvoření az sql mi](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [aktualizace mi az sql](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- Nastavení nebo aktualizaci typu licence pomocí rozhraní REST API:
+- Nastavení nebo pomocí rozhraní REST API aktualizovat typ licence:
 
   - [Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
   - [Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)
   - [Spravované instance - vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
   - [Spravovaná instance – aktualizace](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
-## <a name="migration-from-dtu-model-to-vcore-model"></a>Migrace z modelu DTU do modelu virt. jader
+## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace z modelu založeného na DTU na model založený na virtuálních jádrech
 
-### <a name="migration-of-a-database"></a>Migrace databáze
+### <a name="migrate-a-database"></a>Migrace databáze
 
-Migrace databáze z nákupní model založený na DTU pro nákupní model založený na virtuálních jádrech je podobný upgrade a Downgrade mezi databáze Standard a Premium v nákupní model založený na DTU.
+Migrace databáze z nákupní model založený na DTU pro nákupní model založený na virtuálních jádrech je podobný upgrade a Downgrade mezi úrovní služeb standard a premium v nákupní model založený na DTU.
 
-### <a name="migration-of-databases-with-geo-replication-links"></a>Migrace databází s vazby geografické replikace
+### <a name="migrate-databases-with-geo-replication-links"></a>Migrace databází s vazby geografické replikace
 
-Migrace z modelu založeného na DTU na model založený na virtuálních jádrech je podobný upgradu nebo downgradu vztahy geografické replikace mezi databáze Standard a Premium. Nevyžaduje se, že se ukončuje geografickou replikaci, ale uživatel musí dodržovat pravidla klasifikace. Při upgradu, musíte nejdřív upgradovat sekundární databáze a pak upgradovat primární. Při downgradu, pořadí: musí nejprve provést downgrade primární databáze a poté downgradovat sekundární.
+Migrace z modelu založeného na DTU pro nákupní model založený na virtuálních jádrech je podobný upgradu nebo downgradu vztahy geografické replikace mezi databáze v úrovních služby standard a premium. Během migrace není nutné zastavit geografickou replikaci, ale je třeba dodržovat tato pravidla klasifikace:
 
-Při použití geografické replikace mezi dva elastické fondy, doporučuje se určit jeden fond jako primární a druhá – jako sekundární. V takovém případě by měl migraci elastických fondů pomocí stejné pokyny.  Je však že je technicky možné, že elastický fond obsahuje primární i sekundární databáze. V takovém případě správně migraci vám by měl zpracovávat fond s vyšší využití jako "primární" a postupujte podle pravidla klasifikace odpovídajícím způsobem.  
+- Při upgradu, musíte nejdřív upgradovat sekundární databáze a pak upgradovat primární.
+- Při downgradu, pořadí: musí nejprve provést downgrade primární databáze a poté downgradovat sekundární.
+
+Při použití geografické replikace mezi dva elastické fondy, doporučujeme označit jeden fond jako primární a druhý jako sekundární. V takovém případě migrace elastických fondů používejte stejné pokyny k sekvencování. Pokud máte elastických fondů, které obsahují primární i sekundární databáze, fond s vyšší využití považovat za primární a postupujte podle pravidla klasifikace odpovídajícím způsobem.  
 
 Následující tabulka uvádí pokyny k migraci konkrétních scénářů:
 
 |Aktuální úroveň služby|Cílové úrovni služeb|Typ migrace|Akce uživatele|
 |---|---|---|---|
 |Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
-|Premium|Obchodně klíčové|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
-|Standard|Obchodně klíčové|Upgrade|Musíte migrovat nejprve sekundární|
-|Obchodně klíčové|Standard|Downgradovat|Musíte migrovat nejdříve primární|
-|Premium|Obecné účely|Downgradovat|Musíte migrovat nejdříve primární|
+|Premium|Pro důležité obchodní informace|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore velikosti *|
+|Standard|Pro důležité obchodní informace|Upgrade|Musíte migrovat nejprve sekundární|
+|Pro důležité obchodní informace|Standard|Downgrade|Musíte migrovat nejdříve primární|
+|Premium|Obecné účely|Downgrade|Musíte migrovat nejdříve primární|
 |Obecné účely|Premium|Upgrade|Musíte migrovat nejprve sekundární|
-|Obchodně klíčové|Obecné účely|Downgradovat|Musíte migrovat nejdříve primární|
-|Obecné účely|Obchodně klíčové|Upgrade|Musíte migrovat nejprve sekundární|
+|Pro důležité obchodní informace|Obecné účely|Downgrade|Musíte migrovat nejdříve primární|
+|Obecné účely|Pro důležité obchodní informace|Upgrade|Musíte migrovat nejprve sekundární|
 ||||
 
-\* Každý 100 DTU ve standardní úrovni vyžaduje alespoň 1 virtuální jádro a každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro
+\* Každých 100 Dtu na úrovni standard vyžadují aspoň 1 virtuální jádro a každý 125 Dtu na úrovni premium vyžadují aspoň 1 virtuální jádro.
 
-### <a name="migration-of-failover-groups"></a>Migrace skupin převzetí služeb při selhání
+### <a name="migrate-failover-groups"></a>Migrace skupin převzetí služeb při selhání
 
-Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje jednotlivých migraci primární a sekundární databází. Během tohoto procesu použít stejné aspekty a pravidel klasifikace. Databáze po převodu na model založený na virtuálních jádrech, skupiny převzetí služeb při selhání zůstávají v platnosti se stejnými nastaveními zásad.
+Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje jednotlivých migraci primární a sekundární databází. Během tohoto procesu použít stejné aspekty a pravidel klasifikace. Po databáze jsou převedeny na nákupní model založený na virtuálních jádrech, skupiny převzetí služeb při selhání zůstávají v platnosti se stejnými nastaveními zásad.
 
-### <a name="creation-of-a-geo-replication-secondary"></a>Vytvoření sekundární geografické replikace
+### <a name="create-a-geo-replication-secondary-database"></a>Vytvoření sekundární databáze geografické replikace
 
-Můžete vytvořit pouze typu geo-secondary pomocí stejné úrovně služeb jako primární. Pro databázi s protokolu vysokou míru generování doporučujeme, že se vytvoří sekundární se stejnou velikostí výpočetních jako primární. Při vytváření typu geo-secondary v elastickém fondu pro jednu primární databázi, doporučuje se, že má fond `maxVCore` nastavení, která odpovídá výpočetní velikost primární databáze. Pokud vytváříte typu geo-secondary v elastickém fondu pro primární do druhého elastického fondu, se doporučuje že fondy mají stejné `maxVCore` nastavení
+Sekundární databáze geografická replikace (typu geo-secondary) můžete vytvořit pouze pomocí stejné úrovně služeb jako u primární databáze. Pro databáze s vysokou generování protokolu rychlostí doporučujeme vytvořit geograficky sekundární se stejnou velikostí výpočetních jako primární.
 
-### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Pomocí kopie databáze převést databázi založený na DTU na databázi založený na virtuálních jádrech
+Pokud vytváříte v elastickém fondu pro jednu primární databázi typu geo-secondary, ujistěte se, že `maxVCore` nastavení fondu odpovídá velikost výpočetních primární databáze. Pokud vytváříte typu geo-secondary pro primární do druhého elastického fondu, doporučujeme, abyste fondy mají stejné `maxVCore` nastavení.
 
-Můžete zkopírovat libovolnou databázi s velikostí výpočetními prostředky na základě jednotek DTU na databázi s velikostí výpočetních založený na virtuálních jádrech bez omezení nebo speciální pořadí úloh, tak dlouho, dokud výpočty velikost cíle podporuje maximální velikost zdrojové databáze. Kopírování databáze vytvoří snímek dat od počáteční čas operace kopírování a neprovede synchronizace dat mezi zdrojem a cílem.
+### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Můžete převést databázi založený na DTU na databázi založený na virtuálních jádrech kopie databáze
+
+Můžete zkopírovat libovolnou databázi s velikostí výpočetními prostředky na základě jednotek DTU na databázi s velikostí výpočetních založený na virtuálních jádrech bez omezení nebo speciální pořadí úloh, tak dlouho, dokud výpočty velikost cíle podporuje maximální velikost zdrojové databáze. Kopírování databáze vytvoří snímek dat od počáteční čas operace kopírování a nebude synchronizovat data mezi zdrojem a cílem.
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md)
-- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro elastické fondy, najdete v části [limity pro elastické fondy SQL Database založené na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Konkrétní výpočetní velikosti a možnosti velikosti úložiště dostupné pro izolované databáze najdete v tématu [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md).
+- Konkrétní výpočetní velikosti a možnosti velikosti úložiště dostupné pro elastické fondy najdete v tématu [limity pro elastické fondy SQL Database založené na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
