@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2eaf819870e2b70cc6238af6d1e9fa1dcb5caab8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236750"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755001"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -62,7 +62,11 @@ Ve většině případů se doporučuje účty pro obecné účely v2, účty pr
 
 ### <a name="block-blob-storage-accounts"></a>Účty úložiště objektů blob bloku
 
-Účet block blob storage je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku nebo doplňovacích objektů BLOB. Účty blob storage bloku nabízí několik úrovní přístupu pro ukládání dat na základě vaší způsobů využití. Další informace najdete v tématu [data v objektech blob úrovně přístupu pro blok](#access-tiers-for-block-blob-data).
+Účet úložiště objektů blob bloku je specializovaný účet úložiště pro ukládání nestrukturovaných dat objektů jako objekty BLOB bloku. Tento účet úložiště zadejte podporuje objekty BLOB bloku a doplňovací objekty BLOB, ale ne objekty BLOB stránky, tabulky nebo fronty.
+
+Účty blob storage bloku ve srovnání s pro obecné účely v2 a účty úložiště blob, poskytují konzistentní vzhledem k aplikacím a nízkou latenci a vyšší rychlost transakcí.
+
+Účty blob storage bloku aktuálně nepodporují výběr vrstvy na horkou, studenou nebo archivní úroveň přístupu.
 
 ### <a name="filestorage-preview-storage-accounts"></a>Účty úložiště pro úložiště souborů (preview)
 
@@ -75,12 +79,16 @@ Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 - Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 - Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
-## <a name="general-purpose-performance-tiers"></a>Úrovně výkonu pro obecné účely
+## <a name="performance-tiers"></a>Úrovně výkonu
 
 Účty úložiště pro obecné účely lze nakonfigurovat pro některý z následujících úrovní výkonu:
 
 * Úroveň výkonu standard pro ukládání objektů BLOB, soubory, tabulky, fronty a disky virtuálních počítačů Azure.
 * Úroveň výkonu premium pro ukládání pouze disky nespravovaného virtuálního počítače.
+
+Účty blob storage bloku poskytují výkon úrovně premium pro ukládání objektů BLOB bloku a doplňovacích objektů BLOB.
+
+Úložiště souborů (preview) účty úložiště poskytují výkon úrovně premium pro sdílené složky Azure.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Úrovně přístupu pro data objektů blob bloku
 
@@ -88,9 +96,9 @@ Azure Storage nabízí různé možnosti pro přístup k datům objektu blob blo
 
 K dispozici přístup úrovně jsou:
 
-* **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou vyšší náklady na úložiště. Nové účty úložiště jsou vytvořené v horké vrstvy ve výchozím nastavení.
+* **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou vyšší náklady na úložiště. Nové účty úložiště jsou ve výchozím nastavení vytvoří v horké úrovni.
 * **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být dražší než přístup k datům v horké úrovni.
-* **Archivu** úroveň, která je dostupná jenom pro objekty BLOB bloku jednotlivé. Archivní úroveň je optimalizovaná pro data, která se toleruje latence načtení několik hodin a zůstanou v archivní úrovni po dobu nejméně na 180 dnů. Archivní úroveň je cenově nejvýhodnější možnost pro ukládání dat, ale přístup k těmto datům je nákladnější než přístup k datům v horké nebo studené úrovně.
+* **Archivu** úroveň, která je dostupná jenom pro objekty BLOB bloku jednotlivé. Archivní úroveň je optimalizovaná pro data, která se toleruje latence načtení několik hodin a zůstanou v archivní úrovni po dobu nejméně na 180 dnů. Archivní úroveň je cenově nejvýhodnější možnost pro ukládání dat, ale přístup k těmto datům je nákladnější než přístup k datům v horké nebo studené úrovni služeb.
 
 Pokud dojde ke změně vzoru využití vašich dat, můžete přepínat mezi úrovněmi přístupu kdykoli. Další informace o úrovních přístupu najdete v části [Azure Blob storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
@@ -119,7 +127,7 @@ Například, pokud je název vašeho účtu úložiště pro obecné účely *my
 * Služba soubory Azure: http://*mystorageaccount*. file.core.windows.net
 
 > [!NOTE]
-> Účet Blob storage zpřístupňuje pouze objektů Blob koncový bod služby.
+> Objekt blob bloku a účty blob storage zveřejňují jenom objektů blob koncový bod služby.
 
 Adresa URL pro přístup k objektu v účtu úložiště je vytvořená připojením umístění objektu v účtu úložiště ke koncovému bodu. Například adresa účtu pro objekty blob může mít tento formát: http://*můj_účet_úložiště*.blob.core.windows.net/*můj_kontejner*/*můj_objekt_blob*.
 
@@ -177,5 +185,6 @@ Služba Import/Export lze použít také k přenosu dat z úložiště objektů 
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak vytvořit účet úložiště Azure, najdete v článku [vytvořit účet úložiště](storage-quickstart-create-account.md).
+* Zjistěte, jak vytvořit účet úložiště Azure pro obecné účely, najdete v článku [vytvořit účet úložiště](storage-quickstart-create-account.md).
+* Zjistěte, jak vytvořit účet úložiště objektů blob bloku, najdete v článku [vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md).
 * Pokud chcete spravovat nebo odstranit existující účet úložiště, přečtěte si téma [spravovat Azure storage účty](storage-account-manage.md).

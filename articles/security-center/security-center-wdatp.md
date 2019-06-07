@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 15232c92e60d21d759bec59597cb161480b8c2ea
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743231"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752568"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
@@ -93,7 +93,7 @@ Postupujte podle pokynů v [přiřadit přístup uživatelům k portálu](https:
 
 ## <a name="set-the-firewall-configuration"></a>Nastavení konfigurace brány firewall
 
-Pokud máte proxy server nebo bránu firewall, která blokuje anonymní provoz, jak senzoru ochrany ATP v programu Windows Defender se připojuje z kontextu systému, ujistěte se, že je povolený anonymní provoz. Postupujte podle pokynů v [povolit přístup k adresám URL služby ochrany ATP v programu Windows Defender v proxy serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server).
+Pokud máte proxy server nebo bránu firewall, která blokuje anonymní provoz, jak senzoru ochrany ATP v programu Windows Defender se připojuje z kontextu systému, ujistěte se, že je povolený anonymní provoz. Postupujte podle pokynů v [povolit přístup k adresám URL služby ochrany ATP v programu Windows Defender v proxy serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
 ## <a name="test-the-feature"></a>Otestovat funkci
 

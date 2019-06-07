@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: cdf2a1a730be657b41c7a4b2daf2f178661394b4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947107"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752016"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co je nového ve službě Azure Application Gateway?
 
@@ -27,6 +27,7 @@ Azure Application Gateway se průběžně aktualizuje. Abyste mohli používat a
 
 |Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
+|Vlastní pravidla WAF |Applicaiton Gateway WAF_v2 nyní podporuje vytvoříte vlastní pravidla. Zobrazit [vlastních pravidel Application Gateway](custom-waf-rules-overview.md). |2019 dne |
 |Automatické škálování, redundanci zón, statické podpory virtuálních IP adres GA |Obecnou dostupnost pro SKU v2, která podporuje automatické škálování, redundanci zón, zvýšit výkon, statické virtuální IP adresy, Key Vault, přepište záhlaví. Zobrazit [dokumentace ke službě Application Gateway automatické škálování](application-gateway-autoscaling-zone-redundant.md). |2019. dubna |
 |Integrace se službou Key Vault |Application Gateway nyní podporuje integraci se službou Key Vault (ve verzi public preview) pro server certifikáty, které jsou připojeny k naslouchací procesy HTTPS povolena. Zobrazit [ukončení protokolu SSL s využitím služby Key Vault certifikátů](key-vault-certs.md). |2019. dubna |
 |Záhlaví CRUD/přepisů     |Nyní můžete přepsat hlavičky protokolu HTTP. Zobrazit [kurzu: Vytvoření služby application gateway a přepište hlavičky protokolu HTTP](tutorial-http-header-rewrite-powershell.md) Další informace.|Prosinec 2018|

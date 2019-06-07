@@ -7,18 +7,14 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 62259749e04d66d78206a0bba77ce88f2c08c82f
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: d35e1dc96f65e51ab14c4962d1824334cbdb1616
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688998"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752026"
 ---
 # <a name="custom-rules-for-web-application-firewall"></a>Vlastní pravidla pro Firewall webových aplikací
-
-> [!IMPORTANT]
-> Waf služby Application Gateway vlastního pravidla ve službě Azure je momentálně ve veřejné verzi preview. **Vlastní pravidla jsou k dispozici pouze pro danou skladovou jednotku WAF_v2**.
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, mohou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Firewall webových aplikací (WAF) Azure Application Gateway se dodává s předem nakonfigurované, spravované platformy sady pravidel, který nabízí ochranu z mnoha různých typů útoků. Tyto útoky patří mezi skriptování, útok prostřednictvím injektáže SQL a další. Pokud jste správce WAF, můžete k zapsání vlastní pravidla, která rozšiřují základní pravidla nastavení pravidel (CRS). Pravidla můžete blokovat nebo povolit požadovaný provoz na základě kritérií porovnání.
 

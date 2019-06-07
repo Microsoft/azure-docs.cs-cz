@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924398"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754180"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Případy použití pro Azure Data Box brány
 
@@ -50,7 +50,7 @@ Než začnete, ujistěte se, že máte spuštěné zařízení Data Box brány. 
 - Po nahrání dat je potřeba ho přesunout do archivní úrovně. Na úrovni objektů blob můžete nastavit dvěma způsoby: Skript Azure Powershellu nebo zásady správy životního cyklu úložiště Azure.  
     - Pokud pomocí prostředí Azure PowerShell, postupujte podle těchto [kroky](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) pro přesun dat do archivní úrovně.
     - Pokud používáte správu životního cyklu Azure, použijte následující postup přesun dat do archivní úrovně.
-        - [Zaregistrujte](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) ve verzi Preview služby správy životního cyklu objektu Blob použití archivní úroveň.
+        - [Zaregistrujte](/azure/storage/common/storage-lifecycle-management-concepts) ve verzi Preview služby správy životního cyklu objektu Blob použití archivní úroveň.
         - Použít tyto zásady na [archivovat data na ingestování](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - Jakmile objekty BLOB jsou označeny jako archiv, se může nelze nadále upravovat bránou dokud nebudou přesunuty do horké nebo studené úrovně. Pokud je soubor v místním úložišti, všechny změny místní kopie (včetně odstraní) nejsou nahrát do archivní úrovně.
 - Číst data v archivním úložišti, musí být rehydrated změnou úrovně objektu blob na horkou nebo studenou. [Aktualizace sdílené složky](data-box-gateway-manage-shares.md#refresh-shares) na bráně dosazení není objekt blob.

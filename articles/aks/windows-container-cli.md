@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/06/2019
 ms.author: twhitney
-ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: cdcc1b985c570d1af4bbb33ac29a37e63b1dfa90
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305304"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752391"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Ve verzi Preview: vytvoření kontejneru Windows serveru v clusteru Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -86,7 +86,6 @@ Tato funkce je ve verzi preview, platí následující další omezení:
 * AKS cluster může mít maximálně osm fondy uzlů.
 * AKS cluster můžou mít maximálně 400 uzlů ve fondech osmi uzlů.
 * Název fondu uzel Windows Server má limit 6 znaků.
-* Fondy uzlů Windows serveru nejsou k dispozici v oblastech Kanada v tuto chvíli.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

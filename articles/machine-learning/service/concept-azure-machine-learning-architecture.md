@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb06d04aec8e98308c0f5595b6b39e4b98302ff
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f369f899d4a383205ad124e4fcd8dabf9f92f63f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480058"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753189"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: Architektura a koncepty
 
@@ -27,7 +27,7 @@ Další informace o architektuře, koncepty a pracovních postupů pro službu A
 
 Informace o pracovním postupu počítače následující obecně toto pořadí:
 
-1. Vývoj strojového učení trénovací skripty v **Python**.
+1. Vývoj strojového učení trénovací skripty v **Python** nebo vizuální rozhraní.
 1. Vytvoření a konfigurace **cílové výpočetní prostředí**.
 1. **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Při školení, může číst nebo zapisovat do skriptů **datastore**. A záznamy o spuštění se uloží jako **spustí** v **pracovní prostor** seskupené pod **experimenty**.
 1. **Dotazování experiment** pro metrikách zaznamenaných do protokolu běhů aktuálního i staršího. Pokud metriky neindikují požadovaného výsledku, smyčka zpátky ke kroku 1 a iterovat své skripty.
@@ -107,34 +107,7 @@ Pomocí rozhraní Python API sady SDK nebo rozhraní příkazového řádku Azur
 
 ## <a name="compute-target"></a>Cílové výpočetní prostředí
 
-Cílové výpočetní prostředí je výpočetní prostředek, který používáte ke spuštění trénovací skript nebo hostovat vaše nasazení služby. Cílových podporovaných výpočetních prostředí jsou:
-
-| Cílové výpočetní prostředí | Školení | Nasazení |
-| ---- |:----:|:----:|
-| Místního počítače | ✓ | &nbsp; |
-| Azure Machine Learning compute | ✓ | &nbsp; |
-| Virtuální počítač s Linuxem v Azure</br>(například virtuální počítač pro datové vědy) | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Apache Spark pro HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | &nbsp; | ✓ |
-| Azure Kubernetes Service | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| Pole programmable gate array (FPGA) | &nbsp; | ✓ |
-
-Cílových výpočetních prostředí jsou připojeny k pracovnímu prostoru. Výpočetní cíle než v místním počítači sdílejí uživatelé pracovního prostoru.
-
-### <a name="managed-and-unmanaged-compute-targets"></a>Cílových výpočetních prostředí spravované a nespravované
-
-* **Spravované**: Cíle, které jsou vytvořeny a spravované službou Azure Machine Learning COMPUTE. Tyto výpočetní cíle jsou optimalizované pro machine learning úlohy. Výpočetní prostředky Azure Machine Learning je jediná cílové výpočetní prostředí spravované od 4. prosince 2018. V budoucnu lze přidat další spravované výpočetní cíle.
-
-    Můžete vytvořit machine learningu výpočetní instance přímo prostřednictvím pracovního prostoru pomocí webu Azure portal, Azure Machine Learning SDK nebo rozhraní příkazového řádku Azure. Všechny ostatní cílových výpočetních prostředí musí být vytvořená mimo pracovní prostor a pak k němu připojená.
-
-* **Nespravované**: Cílových výpočetních prostředí, které jsou *není* spravované službou Azure Machine Learning. Potřebujete vytvořit mimo Azure Machine Learning a připojte je k vašemu pracovnímu prostoru před použitím. Cílových výpočetních prostředí nespravované může vyžadovat další kroky pro vás k údržbě nebo ke zlepšení výkonu pro úlohy s machine learning.
-
-Informace o výběru cílové výpočetní prostředí pro školení, naleznete v tématu [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md).
-
-Informace o výběru cílové výpočetní prostředí pro nasazení, najdete v článku [nasazujte modely pomocí služby Azure Machine Learning](how-to-deploy-and-where.md).
+A [cílové výpočetní prostředí](concept-compute-target.md) vám umožňují určit výpočetních prostředků, ve kterém jste spustili cvičný skript nebo hostitele vašeho nasazení služby. Toto umístění může být místního počítače nebo cloudové výpočetní prostředek. Změna výpočetní prostředí bez úpravy kódu usnadňují cílových výpočetních prostředí. 
 
 ## <a name="training-script"></a>Cvičný skript
 

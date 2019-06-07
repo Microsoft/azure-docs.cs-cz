@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ead81dfec5c98e810abfe4b88accb9aa9092fc90
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 58136aba278097e9778cc1361ed77a4512e3d51b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472716"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751912"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
@@ -58,7 +58,7 @@ Integrace s Azure AD B2C (při ověřování identity v sociálních sítích ne
 
 ### <a name="msal-libraries"></a>Knihovna MSAL knihovny
 
-Knihovna MSAL můžete použít k vytváření aplikací, které se ověřují všechny identity společnosti Microsoft. Knihovna MSAL knihoven v .NET jsou obecně dostupné. Knihovna MSAL knihovny pro JavaScript, iOS a Android jsou ve verzi preview a je vhodný pro použití v produkčním prostředí. Poskytujeme produkční úrovni podporu pro knihovny knihovna MSAL ve verzi preview jako My pro verze MSAL a ADAL, které jsou obecně dostupné.
+Knihovna MSAL můžete použít k vytváření aplikací, které se ověřují všechny identity společnosti Microsoft. Knihovna MSAL knihoven v .NET a jazyka JavaScript jsou obecně dostupné. Knihovna MSAL knihovny pro iOS a Android jsou ve verzi preview a je vhodný pro použití v produkčním prostředí. Poskytujeme produkční úrovni podporu pro knihovny knihovna MSAL ve verzi preview jako My pro verze MSAL a ADAL, které jsou obecně dostupné.
 
 Knihovna MSAL knihovny můžete použít také k integraci vaší aplikace s Azure AD B2C.
 

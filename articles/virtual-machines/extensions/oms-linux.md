@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2019
+ms.date: 06/06/2019
 ms.author: roiyz
-ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743587"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755152"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Azure Monitor pro Linux
 
@@ -53,11 +53,27 @@ Rozšíření agenta Log Analytics je možné spouštět proti těmto Linuxovýc
 >OpenSSL nižší než verze 1.x se nepodporuje na libovolné platformě a verze 1.10 je podporován pouze na platformách x86_64 (64 bitů).  
 >
 
+### <a name="agent-prerequisites"></a>Požadavky agenta
+
+Následující tabulka obsahuje balíčky požadované pro podporovaných distribucích systému Linux, který se nainstaluje agenta na.
+
+|Požadovaný balíček |Popis |Minimální verze |
+|-----------------|------------|----------------|
+|Glibc |    Knihovna GNU C | 2.5-12 
+|Openssl    | Knihovny OpenSSL | 1.0.x nebo 1.1.x |
+|Curl | cURL webového klienta | 7.15.5 |
+|Python ctypes | | 
+|PAM | Moduly PAM | | 
+
+>[!NOTE]
+>Rsyslog nebo syslog-ng je potřeba shromažďovat zprávy syslog. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribucí, by měla být nainstalovaná a nakonfigurovaná pro nahradit sysklog proces démona řešení rsyslog.
+
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Azure monitoru a sady agenta Log Analytics pro každou vydanou verzí. Odkaz na poznámky k verzi sady agenta Log Analytics je součástí. Poznámky k verzi obsahují informace o opravy a nové funkce, které jsou k dispozici pro daného agenta verze.  
 
 | Verze rozšíření Azure monitorování virtuálního počítače s Linuxem | Verze sady prostředků log Analytics agenta | 
 |--------------------------------|--------------------------|
+|1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 

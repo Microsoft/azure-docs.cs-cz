@@ -5,20 +5,20 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: overview
-ms.date: 02/06/2019
+ms.date: 06/07/2019
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 544ff9d2c624ef62bf8041afd818153c1c4bfcc8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: bc3045e3d3b6977555818fcdb3dcaf3246ebd200
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142496"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754809"
 ---
 # <a name="what-are-azure-queues"></a>Co jsou fronty Azure?
 
-Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke které můžete získat přístup z jakéhokoli místa na světě prostřednictvím ověřených volání s využitím protokolu HTTP nebo HTTPS. Zpráva s jednou frontou může mít velikost až 64 kB a jedna fronta můžete obsahovat miliony zpráv, až do dosažení celkové kapacity účtu úložiště.
+Azure Queue storage je služba pro ukládání velkého počtu zpráv. Přístup k zprávy z libovolného místa na světě prostřednictvím ověřených volání přes protokol HTTP nebo HTTPS. Fronty zpráv může být velikost až 64 KB. Fronta může obsahovat milióny zpráv až do vyčerpání celkové kapacity účtu úložiště.
 
 ## <a name="common-uses"></a>Běžné použití
 
@@ -33,8 +33,9 @@ Služba front obsahuje následující součásti:
 
 ![Koncepty front](./media/storage-queues-introduction/queue1.png)
 
-* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL:   
-    https://`<storage account>`.queue.core.windows.net/`<queue>` 
+* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL:
+
+    `https://<storage account>.queue.core.windows.net/<queue>`
   
     Následující adresa URL odkazuje na frontu v diagramu:  
   
@@ -42,9 +43,9 @@ Služba front obsahuje následující součásti:
 
 * **Účet úložiště:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Podrobné informace o kapacitě účtu úložiště najdete v článku [Škálovatelnost a cíle výkonnosti úložiště Azure](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
 
-* **Fronta:** Fronta obsahuje sadu zpráv. Všechny zprávy musí být ve frontě. Upozorňujeme, že název fronty musí být psaný malými písmeny. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+* **Fronta:** Fronta obsahuje sadu zpráv. Název fronty **musí** obsahovat jenom malá písmena. Informace o pojmenování front najdete v tématu [Pojmenování front a metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
-* **zpráva:** Zprávu v libovolném formátu o velikosti až 64 KB. Maximální doba, kterou může zpráva zůstat ve frontě je sedm dní.
+* **zpráva:** Zprávu v libovolném formátu o velikosti až 64 KB. Dříve než ve verzi 2017-07-29 time-to-live maximální povolený počet je sedm dní. Verze 2017-07-29 nebo novější, maximální time-to-live je libovolné kladné číslo, nebo -1, která udává, že zpráva platnost pasu nevyprší. Pokud je tento parametr vynechán, výchozí čas TTL je sedm dní.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1be9d11db9a1c614614e0a4023f84b15588ba5f0
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89539509e759da7f041ce0216397b1a9c8ff1f16
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742963"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753091"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -92,14 +92,7 @@ Další informace najdete v tématu v referenční dokumentaci [třída modelu](
 
 Tímto výpočetním cíle, nebo výpočetní prostředky, je možné k hostování vašich nasazení webové služby. 
 
-| Cílové výpočetní prostředí | Využití | Popis |
-| ----- | ----- | ----- |
-| [Místní webové služby](#local) | Testování/ladění | Vhodné pro testování a řešení potíží omezené.
-| [Azure Kubernetes Service (AKS)](#aks) | Odvození v reálném čase | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
-| [Azure Container Instances (ACI)](#aci) | Testování | Vhodné pro nízkého škálování, úlohy založené na procesoru. |
-| [Azure Machine Learning Compute](how-to-run-batch-predictions.md) | Odvození služby batch | Spuštění dávky odvození na výpočetní prostředí. Podporuje virtuální počítače s normální a s nízkou prioritou. |
-| [Azure IoT Edge](#iotedge) | (Preview) Modul IoT | Nasazení a poskytovat modelů ML na zařízeních IoT. |
-
+[!INCLUDE [aml-compute-target-deploy](../../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="prepare-to-deploy"></a>Příprava nasazení
 

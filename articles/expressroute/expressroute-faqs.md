@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257966"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754739"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -288,7 +288,7 @@ Ano. ExpressRoute premium poplatky nad rámec poplatků za okruhu ExpressRoute a
 
 ## <a name="expressroute-local"></a>Místní ExpressRoute
 ### <a name="what-is-expressroute-local"></a>Co je místní ExpressRoute?
-Místní ExpressRoute je okruh SKU ExpressRoute. Klíčovou funkcí služby místní je, že místní okruh v poskytuje umístění partnerského vztahu ExpressRoute přístup pouze k jedné nebo dvou oblastech Azure ve nebo blízko ní stejné metro. Naproti tomu standardní okruh poskytuje přístup ke všem Azure oblastem v geopolitické oblasti a úrovně Premium okruhu do všech oblastí Azure globálně. 
+Místní ExpressRoute je k dispozici v okruhu SKU ExpressRoute [ExpressRoute přímo](expressroute-erdirect-about.md). Klíčovou funkcí služby místní je, že místní okruh v poskytuje umístění partnerského vztahu ExpressRoute přístup pouze k jedné nebo dvou oblastech Azure ve nebo blízko ní stejné metro. Naproti tomu standardní okruh poskytuje přístup ke všem Azure oblastem v geopolitické oblasti a úrovně Premium okruhu do všech oblastí Azure globálně. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Jaké jsou výhody místní ExpressRoute?
 Zatímco budete muset platit odchozí přenos dat pro váš okruh Standard nebo Premium ExpressRoute, neplatíte odchozí přenosy dat samostatně pro váš okruh ExpressRoute místní. Jinak řečeno cena ExpressRoute místní zahrnuje poplatky za přenos dat. Místní ExpressRoute je úspornější řešení, pokud máte obrovské množství přenášených dat a přepnete data přes soukromé připojení k umístění partnerského vztahu ExpressRoute blízko vaší požadované oblasti Azure. 

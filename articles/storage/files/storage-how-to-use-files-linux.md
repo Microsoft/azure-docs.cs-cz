@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427922"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754831"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 
@@ -75,7 +75,10 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
     Na jiné distribuce, použijte odpovídající balíček správce nebo [zkompilovat ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **Při rozhodování o oprávnění adresářů a souborů připojené sdílené složky**: V příkladech níže oprávnění `0777` je slouží k pojmenování pro čtení, zápisu a spouštěcích oprávnění pro všechny uživatele. Nahradit ho s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod) podle potřeby.
+* **Při rozhodování o oprávnění adresářů a souborů připojené sdílené složky**: V příkladech níže oprávnění `0777` je slouží k pojmenování pro čtení, zápisu a spouštěcích oprávnění pro všechny uživatele. Nahradit ho s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod) podle potřeby, i když to znamená potenciálně omezení přístupu. Pokud používáte jiná oprávnění, měli byste zvážit také pomocí uid a ID skupiny, aby byl zachovaný přístup pro místní skupiny podle svého výběru.
+
+> [!NOTE]
+> Pokud nepřiřadíte explicitně oprávnění adresáře a souboru s dir_mode a file_mode, budou použity výchozí 0755.
 
 * **Zkontrolujte, jestli je port 445 otevřený**: Protokol SMB komunikuje přes protokol TCP 445 – zkontrolujte, že brána firewall neblokuje port TCP 445 z klientského počítače.
 
@@ -89,7 +92,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Připojení sdílené složky Azure pomocí příkazu připojení**: Nezapomeňte nahradit **< název_účtu_úložiště >** , **< název_sdílené_složky >** , **< smb_version >** , **< klíč_účtu_úložiště >** , a **< mount_point >** odpovídajícími informacemi pro vaše prostředí. Pokud vaší distribuci Linuxu podporuje šifrování protokolu SMB 3.0 (naleznete v tématu [SMB pochopit požadavky na klienta](#smb-client-reqs) Další informace), použijte **3.0** pro **< smb_version >** . Pro distribuce Linuxu, které nepodporují šifrování protokolu SMB 3.0, použijte **2.1** pro **< smb_version >** . Je pouze možné připojit sdílenou složku Azure mimo oblast Azure (včetně místní nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
+1. **Připojení sdílené složky Azure pomocí příkazu připojení**: Nezapomeňte nahradit **< název_účtu_úložiště >** , **< název_sdílené_složky >** , **< smb_version >** , **< klíč_účtu_úložiště >** , a **< mount_point >** odpovídajícími informacemi pro vaše prostředí. Pokud vaší distribuci Linuxu podporuje šifrování protokolu SMB 3.0 (naleznete v tématu [SMB pochopit požadavky na klienta](#smb-client-reqs) Další informace), použijte **3.0** pro **< smb_version >** . Pro distribuce Linuxu, které nepodporují šifrování protokolu SMB 3.0, použijte **2.1** pro **< smb_version >** . Je pouze možné připojit sdílenou složku Azure mimo oblast Azure (včetně místní nebo v jiné oblasti Azure) s protokolem SMB 3.0. Pokud chcete můžete změnit oprávnění adresáře a souboru připojené sdílené složky, ale to by znamenalo omezení přístupu.
 
     ```bash
     sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino

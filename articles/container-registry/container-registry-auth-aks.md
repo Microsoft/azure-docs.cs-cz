@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 1d7e130d619f580aeb82939e19ea5abf680ff039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333612"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754475"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Ověřování pomocí Azure Container Registry ze služby Azure Kubernetes
 
 Pokud používáte Azure Container Registry (ACR) s Azure Kubernetes Service (AKS), je potřeba navázat mechanismus ověřování. Tento článek podrobně popisuje doporučené konfigurace pro ověřování mezi těmito dvěma službami Azure.
 
-Tento článek předpokládá, že jste již vytvořili AKS cluster a budete moct přístup ke clusteru pomocí `kubectl` klienta příkazového řádku. 
+Potřebujete nakonfigurovat některý z těchto metod ověřování. Nejběžnější přístupem je [udělit přístup pomocí objektu služby AKS](#grant-aks-access-to-acr). Pokud máte zvláštní požadavky, můžete si volitelně [udělit přístup pomocí Kubernetes tajných kódů](#access-with-kubernetes-secret).
+
+Tento článek předpokládá, že jste již vytvořili AKS cluster a budete moct přístup ke clusteru pomocí `kubectl` klienta příkazového řádku.
 
 ## <a name="grant-aks-access-to-acr"></a>AKS udělit přístup do služby ACR
 

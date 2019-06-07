@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 368bc0402e56479ad8696ca9ed0702f246a670bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 954bbc22e42865991ca7f38fbf3f6f0e8e78a437
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60240633"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754024"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Rychlý start: Vytvoření projektu s vlastním prostředím
 
@@ -43,7 +43,7 @@ Projekt v poznámkových bloků Azure je kolekce souborů, jako jsou poznámkov�
     - **Veřejné projektu**: (zaškrtnuto)
     - **Vytvoření README.md**: (zaškrtnuto)
 
-1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+**), pak vyberete **Poznámkový blok**.
+1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+** ), pak vyberete **Poznámkový blok**.
 
 1. Zadejte název jako je Poznámkový blok *environment.ipynb vlastní*vyberte **Python 3.6** pro jazyk a vyberte **nový**.
 

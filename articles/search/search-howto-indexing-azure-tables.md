@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bca7c1b9ffe7ac0ab82f4287bba201a78fbf726a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024785"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755080"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Index Azure Table storage s Azure Search
 Tento článek ukazuje, jak pomocí Azure Search index data uložená v úložišti tabulek Azure.
@@ -114,6 +114,8 @@ Po vytvoření indexu a zdroj dat, jste připraveni vytvořit indexer:
 Indexer spouští každé dvě hodiny. (Interval plánování je nastavena na "PT2H"). Pokud chcete spustit indexer každých 30 minut, nastavte interval, který "PT30M". Nejkratší podporovaný interval je pět minut. Plán je volitelná. Pokud tento parametr vynechán, indexer se spustí pouze jednou, když je vytvořena. Můžete však spustit indexer na vyžádání v každém okamžiku.   
 
 Další informace o rozhraní API pro vytvoření indexeru najdete v tématu [vytvoření indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+
+Další informace o definování indexeru plánů najdete v části [naplánování indexerů Azure Search](search-howto-schedule-indexers.md).
 
 ## <a name="deal-with-different-field-names"></a>Řešení s názvy jiného pole
 Názvy polí v existujícího indexu v některých případech se liší od názvů vlastností v tabulce. Mapování polí můžete použít k mapování názvů vlastností z tabulky na názvy polí v indexu vyhledávání. Další informace o mapování polí najdete v tématu [mapování polí indexeru Azure Search most rozdíly mezi zdroje dat a vyhledávací indexy](search-indexer-field-mappings.md).

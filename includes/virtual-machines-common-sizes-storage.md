@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 5123ee3f65744f3d0c255712efe990b01be58e26
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420772"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66755608"
 ---
 Úložiště optimalizované velikosti virtuálních počítačů nabízejí Vysoká propustnost disku a vstupně-výstupní operace a jsou ideální pro velké objemy dat, SQL, NoSQL databáze, datových skladů a velké transakční databáze.  Mezi příklady patří Cassandra, MongoDB, Cloudera a Redis. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i místní úložiště propustnost a šířku pásma sítě pro jednotlivé optimalizované velikosti.
 
@@ -57,7 +57,7 @@ Premium Storage ukládání do mezipaměti: Nepodporuje se
 - SLES 12 SP2 nebo novější
 - RHEL nebo CentOS verze 6.7 do 6.10 s balíčkem 4.3.1 LIS poskytovaný společností Microsoft (nebo novější) nainstalované
 - RHEL nebo CentOS verze 7.3, s balíčkem poskytovaný společností Microsoft LIS 4.2.1 (nebo novější) nainstalované
-- Verze RHEL nebo CentOS 7.4 nebo novější
+- RHEL nebo CentOS verze 7.6 nebo novější
 - Oracle Linux s UEK4 nebo novější
 - Debian 9 s zpětné jádra, Debian, 10 nebo novější
 - CoreOS s 4.14 jádra nebo novější

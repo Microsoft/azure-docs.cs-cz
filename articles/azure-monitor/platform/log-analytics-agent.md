@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916362"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751978"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Shromažďovat data protokolu s agentem Azure Log Analytics
 
@@ -59,7 +59,8 @@ Počínaje verzí vydanou po. srpna 2018, provádíme následující změny k n�
 * Nová verze AMI nejsou podporovány.  
 * Pouze verze, na kterých běží SSL 1.x ve výchozím nastavení jsou podporovány.
 
-Pokud používáte verzi, která se momentálně nepodporuje a nebude zarovnat na náš model podpory a distribuce, doporučujeme, abyste rozvětvili toto úložiště potvrdil, že podpory společnosti Microsoft nebude poskytovat pomoc s rozvětveného agenta verze.
+>[!NOTE]
+>Pokud používáte verzi, která se momentálně nepodporuje a nebude zarovnat na náš model podpory a distribuce, doporučujeme, abyste rozvětvili toto úložiště potvrdil, že podpory společnosti Microsoft nebude poskytovat pomoc s rozvětveného agenta verze.
 
 * Linux Amazon 2017.09 (x 64)
 * Linux centOS 6 (x86/x64) a 7 (x 64)  
@@ -72,6 +73,21 @@ Pokud používáte verzi, která se momentálně nepodporuje a nebude zarovnat n
 >[!NOTE]
 >OpenSSL 1.1.0 je podporována pouze na platformách x86_x64 (64 bitů) a OpenSSL dříve, než 1.x se nepodporuje na libovolné platformě.
 >
+
+### <a name="agent-prerequisites"></a>Požadavky agenta
+
+Následující tabulka obsahuje balíčky požadované pro podporovaných distribucích systému Linux, který se nainstaluje agenta na.
+
+|Požadovaný balíček |Popis |Minimální verze |
+|-----------------|------------|----------------|
+|Glibc |    Knihovna GNU C | 2.5-12 
+|Openssl    | Knihovny OpenSSL | 1.0.x nebo 1.1.x |
+|Curl | cURL webového klienta | 7.15.5 |
+|Python ctypes | | 
+|PAM | Moduly PAM | | 
+
+>[!NOTE]
+>Rsyslog nebo syslog-ng je potřeba shromažďovat zprávy syslog. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribucí, by měla být nainstalovaná a nakonfigurovaná pro nahradit sysklog proces démona řešení rsyslog.
 
 ## <a name="tls-12-protocol"></a>Protokol TLS 1.2
 – Pomáhat zajistit zabezpečení dat při přenosu do protokolů Azure Monitor, důrazně doporučujeme, abyste ke konfiguraci agenta pro použití s alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 

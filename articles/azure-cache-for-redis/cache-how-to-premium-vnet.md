@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831035"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752073"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
@@ -113,7 +113,7 @@ Existuj sedm požadavků odchozí port.
 | Port(y) pro | Direction | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage a infrastruktury veřejných KLÍČŮ (Internet) | (Redis podsítě) |* |
-| 53 |Odchozí |TCP/UDP |Redis závislostí na DNS (Internet/virtuální sítě) | (Redis podsítě) |* |
+| 53 |Odchozí |TCP/UDP |Redis závislostí na DNS (Internet/virtuální sítě) | (Redis podsítě) | 168.63.129.16 a 169.254.169.254 <sup>1</sup> a jakékoli vlastní server DNS pro podsíť <sup>3</sup> |
 | 8443 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) | (Redis podsítě) |
 | 10221-10231 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) | (Redis podsítě) |
 | 20226 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
@@ -121,6 +121,9 @@ Existuj sedm požadavků odchozí port.
 | 15000-15999 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
 | 6379-6380 |Odchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
 
+<sup>1</sup> vlastnictví společnosti Microsoft tyto IP adresy se používají k adresa hostitele virtuálního počítače, které poskytuje Azure DNS.
+
+<sup>3</sup> není potřebná pro mezipaměti, které ignorovat vlastní DNS redis podsítě bez vlastního serveru DNS, nebo novější.
 
 #### <a name="inbound-port-requirements"></a>Příchozí požadavky na porty
 

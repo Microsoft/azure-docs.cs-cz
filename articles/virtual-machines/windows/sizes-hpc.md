@@ -3,7 +3,7 @@ title: Azure velikosti virtuálních počítačů s Windows – HPC | Dokumentac
 description: Obsahuje seznam různých velikostí, které jsou k dispozici pro Windows vysoce výkonných výpočetních virtuálních počítačů v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-windows
 documentationcenter: ''
-author: jonbeck7
+author: vermagit
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
-ms.author: jonbeck
-ms.openlocfilehash: 58d4ced041b6f5cf767b45191e28a4b395f584b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: jonbeck;amverma
+ms.openlocfilehash: ad490084b34a8bf6e89c7feb14d5cd2e70a8138f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540475"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755321"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Velikosti virtuálních počítačů vysokovýkonné výpočty
 
@@ -35,20 +35,29 @@ ms.locfileid: "60540475"
 
 * **MPI** – Microsoft MPI (MS-MPI) 2012 R2 nebo novější, Intel MPI knihovny 5.x
 
-  Podporovaná implementace MPI pomocí rozhraní Microsoft Network Direct ke komunikaci mezi instancemi. 
+  Podporovaná implementace MPI na jiné rozhraní SR-IOV povoleno virtuálních počítačů, pomocí rozhraní Microsoft sítě s přímým přístupem (ND) ke komunikaci mezi instancemi. SR-IOV povolit téměř jakoukoli verzi nástroje MPI pro použití s Mellanox OFED povolené velikosti virtuálních počítačů (HB a hybridní připojení series) v Azure. 
 
-* **Adresní prostor sítě RDMA** – síťové RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. Ke spouštění aplikací MPI v nasazené instance ve službě Azure virtual network, ujistěte se, že se adresní prostor virtuální sítě nepřekrývá síť RDMA.
+* **Rozšíření virtuálního počítače InfiniBandDriverWindows** – na virtuálních počítačích s podporou RDMA, přidejte InfiniBandDriverWindows rozšíření pro umožnění InfiniBand. Toto rozšíření virtuálního počítače Windows nainstaluje Windows Network Direct ovladače (na virtuálních počítačích bez rozhraní SR-IOV) nebo ovladače Mellanox OFED (na virtuálních počítačích rozhraní SR-IOV) pro připojení RDMA.
+V některých nasazeních instancí A8 a a9 pro aplikace je automaticky přidán HpcVmDrivers rozšíření. Všimněte si, že je rozšíření virtuálního počítače HpcVmDrivers zastaralé; nebude aktualizován. Chcete-li přidat rozšíření virtuálního počítače k virtuálnímu počítači, můžete použít [prostředí Azure PowerShell](/powershell/azure/overview) rutiny. 
 
-* **Rozšíření virtuálního počítače HpcVmDrivers** – na virtuálních počítačích s podporou RDMA, přidejte HpcVmDrivers rozšíření k instalaci ovladačů zařízení sítě Windows pro připojení RDMA. (V některých nasazeních instancí A8 a A9 HpcVmDrivers rozšíření se přidá automaticky.) Chcete-li přidat rozšíření virtuálního počítače k virtuálnímu počítači, můžete použít [prostředí Azure PowerShell](/powershell/azure/overview) rutiny. 
-
-  
-  Následující příkaz nainstaluje nejnovější rozšíření HpcVMDrivers verze 1.1 na existující RDMA podporovat virtuální počítač s názvem *myVM* nasazených ve skupině prostředků s názvem *myResourceGroup* v  *USA – západ* oblasti:
+  Následující příkaz nainstaluje nejnovější verze 1.0 InfiniBandDriverWindows rozšíření na existující RDMA podporovat virtuální počítač s názvem *myVM* nasazených ve skupině prostředků s názvem *myResourceGroup* v  *USA – západ* oblasti:
 
   ```powershell
-  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.0"
+  ```
+  Rozšíření virtuálních počítačů mohou být také součástí šablony Azure Resource Manageru pro snadné nasazení pomocí elementu JSON:
+  ```json
+  "properties":{
+  "publisher": "Microsoft.HpcCompute",
+  "type": "InfiniBandDriverWindows",
+  "typeHandlerVersion": "1.0",
+  } 
   ```
   
   Další informace najdete v tématu [funkce a rozšíření virtuálních počítačů](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Můžete se s rozšířeními pro virtuální počítače nasazené v také pracovat [modelu nasazení classic](classic/manage-extensions.md).
+
+* **Adresní prostor sítě RDMA** – síťové RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. Ke spouštění aplikací MPI v nasazené instance ve službě Azure virtual network, ujistěte se, že se adresní prostor virtuální sítě nepřekrývá síť RDMA.
+
 
 ### <a name="cluster-configuration-options"></a>Možnosti konfigurace clusteru
 
@@ -79,7 +88,3 @@ Azure poskytuje několik možností, jak vytvářet clustery virtuálních poč�
 - K použití výpočetně náročných instancí při spuštění aplikací MPI pomocí služby Azure Batch, najdete v článku [použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve službě Azure Batch](../../batch/batch-mpi.md).
 
 - Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
-
-
-
-

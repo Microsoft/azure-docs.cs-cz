@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgan
-ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925677"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753767"
 ---
-# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Nejčastější dotazy: Zotavení po havárii Azure do Azure
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Časté dotazy: Zotavení po havárii Azure do Azure
 
 Tento článek obsahuje odpovědi na běžné dotazy týkající se zotavení po havárii virtuálních počítačů Azure do jiné oblasti Azure s použitím [Site Recovery](site-recovery-overview.md). 
 
@@ -137,13 +137,13 @@ První bod obnovení, který je generován má úplnou kopii. Všechny body obno
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Zvýší náklady na úložiště prodloužení doby uchovávání bodů obnovení?
 Ano. Pokud zvýšíte dobu uchování 24 hodin na 72 hodin, Site Recovery se uloží body obnovení pro další 48 hodin. Další čas budou účtovat poplatky za úložiště. Například pokud bod obnovení jeden má rozdílové změny na 10 GB a cena za GB je 0.16 $ za měsíc, bude účtovat další poplatky $1.6 * 48 za měsíc.
 
-## <a name="multi-vm-consistency"></a>Konzistence vzhledem k více virtuálním počítačům
+## <a name="multi-vm-consistency"></a>Konzistence více virtuálních počítačů
 
 ### <a name="what-is-multi-vm-consistency"></a>Co je konzistence více virtuálních počítačů?
 Znamená to, a ujistěte se, že je bod obnovení konzistentní vzhledem k aplikacím na všech replikovaných virtuálních počítačů.
 Site Recovery poskytuje možnost "Konzistenci,", která při výběru, vytvoří skupiny replikace do replikovat všechny počítače najednou, které jsou součástí skupiny.
 Všechny virtuální počítače budou mít sdílené body obnovení konzistentní při selhání a konzistentní při jejich selhání.
-Projděte si kurz k [povolit konzistenci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication).
+Projděte si kurz k [povolit konzistenci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Je možné převzetí služeb při selhání jednoho virtuálního počítače v replikační skupině konzistence více virtuálních počítačů?
 Výběrem možnosti "Konzistence více virtuálních počítačů", můžete se s informacemi o tom, že aplikace obsahuje závislost na všechny virtuální počítače v rámci skupiny. Převzetí služeb při selhání na jeden virtuální počítač proto není povolen.

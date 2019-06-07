@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2019
+ms.date: 06/06/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 5a08c2ae0b82841fd15aac4af06a8874cf64ba53
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 04ceac3b06972687ef6cdeac4dad1f07fea611cb
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950006"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754890"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
@@ -136,7 +136,7 @@ Vlastník
 &nbsp;&nbsp;&nbsp;&nbsp;Akce<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Přispěvatel dat v objektech blob služby Storage
+Přispěvatel dat objektu Blob služby Storage
 
 &nbsp;&nbsp;&nbsp;&nbsp;Akce<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -157,7 +157,7 @@ Další informace o správě a zabezpečení roviny dat pro úložiště najdete
 
 Zobrazení a práce s operace s daty, musí mít správné verze prvků nástrojů nebo sad SDK:
 
-| Tool  | Version  |
+| Nástroj  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
@@ -187,7 +187,7 @@ Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah
 | `Microsoft.Compute/virtualMachines/*` | Uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.|
 | `microsoft.web/sites/restart/Action` | Uděluje přístup k restartování webové aplikace.|
 
-## <a name="notactions"></a>NotActions
+## <a name="notactions"></a>notActions
 
 `NotActions` Oprávnění určuje operace správy, které jsou vyloučené z povolených `Actions`. Použití `NotActions` oprávnění, pokud sadu operací, které chcete povolit je mnohem snazší definované s výjimkou operace s omezeným přístupem. Udělení přístupu podle role (efektivní oprávnění) je vypočítána odečtením `NotActions` operací `Actions` operace.
 
@@ -216,7 +216,7 @@ Na webu Azure portal také umožňuje uživatelům prohlížet a spravovat obsah
 
 ## <a name="assignablescopes"></a>assignableScopes
 
-`AssignableScopes` Vlastnost určuje obory (předplatná, skupiny prostředků nebo prostředky), že je k dispozici pro přiřazení role. Můžete vytvořit roli k dispozici pro přiřazení v jenom předplatná nebo skupiny prostředků, které vyžadují a ne uživatele nepořádku prostředí pro zbytek předplatných nebo skupinách prostředků. Je nutné použít aspoň jeden předplatné, skupinu prostředků nebo ID prostředku.
+`AssignableScopes` Vlastnost určuje obory (předplatná, skupiny prostředků nebo prostředky), které mají tato definice role k dispozici. Můžete zpřístupnit roli pro přiřazení v předplatná nebo skupiny prostředků, které to vyžadují a není dál sbližuje tyto uživatelské prostředí pro zbytek předplatných nebo skupinách prostředků. Je nutné použít aspoň jeden předplatné, skupinu prostředků nebo ID prostředku.
 
 Předdefinované role mají `AssignableScopes` nastavena na kořenového oboru (`"/"`). Kořenového oboru označuje, že role je k dispozici pro přiřazení ve všech oborech. Příklady platných přiřaditelných oborů:
 

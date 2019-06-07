@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475570"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752180"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Ve verzi Preview - omezení odchozí provoz pro uzly clusteru a řízení přístupu k požadované porty a služby ve službě Azure Kubernetes Service (AKS)
 
-Ve výchozím nastavení clustery AKS mít stejně neomezený přístup k Internetu odchozí (odchozí). Tato úroveň přístupu k síti umožňuje uzly a služeb, které můžete spustit pro přístup k externím prostředkům podle potřeby. Pokud chcete omezit výchozí přenos, musí být omezený počet portů a adres přístupné Udržovat úlohy údržby v dobrém stavu clusteru. Cluster se pak nakonfiguruje k použít pouze základní systém Image kontejneru z registru kontejneru Microsoft (MCR) nebo Azure Container Registry (ACR), není externí veřejných úložištích.
+Ve výchozím nastavení clustery AKS mít stejně neomezený přístup k Internetu odchozí (odchozí). Tato úroveň přístupu k síti umožňuje uzly a služeb, které můžete spustit pro přístup k externím prostředkům podle potřeby. Pokud chcete omezit výchozí přenos, musí být omezený počet portů a adres přístupné Udržovat úlohy údržby v dobrém stavu clusteru. Cluster se pak nakonfiguruje k použít pouze základní systém Image kontejneru z registru kontejneru Microsoft (MCR) nebo Azure Container Registry (ACR), není externí veřejných úložištích. Je nutné nakonfigurovat upřednostňované pravidla brány firewall a zabezpečení na tyto požadované porty a adresy.
 
 Tento článek podrobně popisuje, jaké síťové porty a plně kvalifikované názvy domény (FQDN) jsou povinné a nepovinné-li omezit výchozí přenos v clusteru AKS.  Tato funkce je aktuálně ve verzi Preview.
 
@@ -28,7 +28,7 @@ Tento článek podrobně popisuje, jaké síťové porty a plně kvalifikované 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Musí mít Azure CLI verze 2.0.66 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 K vytvoření clusteru AKS, které omezuje výchozí přenos, nejprve povolte příznak funkce v rámci předplatného. Tato funkce registrace nakonfiguruje jakémkoli AKS vytvoříte pomocí systému základní Image kontejneru z MCR nebo služby ACR. K registraci *AKSLockingDownEgressPreview* příznak funkce, použijte [az funkce register] [ az-feature-register] příkaz, jak je znázorněno v následujícím příkladu:
 
@@ -54,7 +54,7 @@ Pro účely provozní a správy uzly v clusteru AKS potřebují přístup k urč
 
 Pokud chcete zvýšit zabezpečení vašeho clusteru AKS, můžete chtít omezit výchozí přenos. Cluster je nakonfigurovaný k přetahování imagí kontejneru z MCR nebo ACR základního systému. Pokud uzamknout výchozí přenos tímto způsobem, je nutné definovat konkrétní porty a plně kvalifikovaných názvů domén povolit uzlů AKS správně komunikovat s vyžaduje externí služby. Bez těchto oprávnění portů a plně kvalifikované názvy domény nelze uzly AKS komunikaci se serverem pro rozhraní API nebo nainstalujte základní součásti.
 
-Můžete použít [Brána Firewall služby Azure] [ azure-firewall] nebo zařízení brány firewall 3. stran k zabezpečení provozu odchozího přenosu dat a definovat tyto požadované porty a adresy.
+Můžete použít [Brána Firewall služby Azure] [ azure-firewall] nebo zařízení brány firewall 3. stran k zabezpečení provozu odchozího přenosu dat a definovat tyto požadované porty a adresy. AKS neprovádí automatické vytváření těchto pravidel pro vás. Následující porty a adresy jsou pro referenci při vytváření příslušných pravidel brány firewall vaší sítě.
 
 Ve službě AKS existují dvě sady porty a adresy:
 
@@ -70,23 +70,26 @@ Těchto odchozích portech / pravidla sítě jsou požadovány pro AKS cluster:
 
 * TCP port *443*
 * TCP port *9000* a TCP port *22* pro front-pod tunel ke komunikaci s koncovým tunelového propojení na serveru rozhraní API.
+    * Chcete-li si to trochu přiblížit, přečtěte si téma * *.hcp.\< umístění\>. azmk8s.io* a * *. tun.\< umístění\>. azmk8s.io* adresy v následující tabulce.
 
 Následující plně kvalifikovaný název domény / pravidla aplikací jsou požadovány:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                      | Port      | Použití      |
-|---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443,22,9000 | Tato adresa je koncový bod rozhraní API serveru. |
-| aksrepos.azurecr.io       | HTTPS:443 | Tato adresa je potřeba přístup imagí v Azure Container Registry (ACR). |
-| *.blob.core.windows.net   | HTTPS:443 | Tato adresa je back-endu úložiště pro imagí uložených v ACR. |
-| mcr.microsoft.com         | HTTPS:443 | Tato adresa je potřeba přístup imagí v Microsoft Container Registry (MCR). |
-| management.azure.com      | HTTPS:443 | Tato adresa je povinná pro Kubernetes GET/PUT operace. |
-| login.microsoftonline.com | HTTPS:443 | Tato adresa je povinná pro ověřování Azure Active Directory. |
+| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                       | Port      | Použití      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod rozhraní API serveru. Nahraďte *\<umístění\>* s oblastí, které se nasadí AKS cluster. |
+| *. tun. \<umístění\>. azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Tato adresa je koncový bod rozhraní API serveru. Nahraďte *\<umístění\>* s oblastí, které se nasadí AKS cluster. |
+| aksrepos.azurecr.io        | HTTPS:443 | Tato adresa je potřeba přístup imagí v Azure Container Registry (ACR). |
+| *.blob.core.windows.net    | HTTPS:443 | Tato adresa je back-endu úložiště pro imagí uložených v ACR. |
+| mcr.microsoft.com          | HTTPS:443 | Tato adresa je potřeba přístup imagí v Microsoft Container Registry (MCR). |
+| *.cdn.mscr.io              | HTTPS:443 | Tato adresa je povinná pro MCR úložiště zajišťuje podporu Azure content delivery network (CDN). |
+| management.azure.com       | HTTPS:443 | Tato adresa je povinná pro Kubernetes GET/PUT operace. |
+| login.microsoftonline.com  | HTTPS:443 | Tato adresa je povinná pro ověřování Azure Active Directory. |
+| api.snapcraft.io           | HTTPS:443, HTTP:80 | Tato adresa je potřeba nainstalovat balíčky Snap na uzly s Linuxem. |
+| ntp.ubuntu.com             | UDP:123   | Tato adresa je povinná pro synchronizaci času NTP na uzly s Linuxem. |
+| *.docker.io                | HTTPS:443 | Tato adresa je potřeba o přijetí změn imagí kontejnerů požadované pro tunelové propojení front. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Volitelné doporučené adresy a porty pro clustery AKS
 
-Těchto odchozích portech / pravidel sítě se nevyžadují pro AKS clustery fungoval správně, ale doporučuje se:
-
-* UDP port *123* pro synchronizaci času NTP
 * UDP port *53* pro DNS
 
 Následující plně kvalifikovaný název domény / pravidla aplikací se doporučují pro AKS clustery fungoval správně:

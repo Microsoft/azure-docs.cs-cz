@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475982"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752964"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
 
@@ -37,18 +37,8 @@ V tomto článku se dozvíte, jak používat různé cílových výpočetních p
 
 Služba Azure Machine Learning nabízí různé podporu napříč různými výpočetními cíli. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
+[!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-|Školení &nbsp;cíle| Podpora GPU |Automatizované ML | Kanály ML | Vizuální rozhraní
-|----|:----:|:----:|:----:|:----:|
-|[Místní počítač](#local)| Možná | ano | &nbsp; | &nbsp; |
-|[Azure Machine Learning Compute](#amlcompute)| ano | Ano & <br/>hyperparameter&nbsp;ladění | ano | ano |
-|[Vzdáleném virtuálním počítači](#vm) |ano | Ano & <br/>hyperparametrů | ano | &nbsp; |
-|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | ano | ano | &nbsp; |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | ano | &nbsp; |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | ano | &nbsp; |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | ano | &nbsp; |
-
-**Všechny výpočetní cíle lze opětovně použít pro více úlohy trénování**. Například po připojení vzdáleném virtuálním počítači do svého pracovního prostoru, jej můžete znovu použít pro více úloh.
 
 > [!NOTE]
 > Azure Machine Learning Compute můžou vytvořit jako prostředek trvalé nebo dynamicky vytvoří, když požádáte o spuštění. Na základě spuštění vytvoření odebere cílové výpočetní prostředí po spuštění školení je dokončeno, proto nelze znovu použít cílových výpočetních prostředí vytvořené tímto způsobem.
@@ -164,7 +154,7 @@ Můžete použít prostředí integrovaného systému conda, již existující p
 
 Použití Azure Data virtuálního počítače VĚDY jako virtuální počítač Azure podle výběru v tomto scénáři. Tento virtuální počítač je předem nakonfigurované datové vědy a AI vývojovým prostředím v Azure. Virtuální počítač nabízí kurátorované řadu nástrojů a architektur pro úplné životního cyklu strojového učení vývoje. Další informace o tom, jak používat datové VĚDY s Azure Machine Learning najdete v tématu [nakonfigurovat prostředí pro vývoj](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
-1. **vytvoření**: Vytvoření DSVM než je použijete k natrénování modelu. Chcete-li vytvořit tento prostředek, naleznete v tématu [zřídit virtuální počítač pro datové vědy pro Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Vytvoření**: Vytvoření DSVM než je použijete k natrénování modelu. Chcete-li vytvořit tento prostředek, naleznete v tématu [zřídit virtuální počítač pro datové vědy pro Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
     > [!WARNING]
     > Azure Machine Learning podporuje pouze virtuální počítače se systémem Ubuntu. Při vytváření virtuálního počítače nebo vyberte existující virtuální počítač, je nutné vybrat virtuální počítač, který používá Ubuntu.
@@ -207,7 +197,7 @@ Teď, když jste připojené tak výpočetní prostředky a nakonfigurovat spuš
 
 Azure HDInsight je oblíbená platforma pro analýzy velkých objemů dat. Tato platforma poskytuje Apache Spark, který slouží k natrénování modelu.
 
-1. **vytvoření**:  Vytvoření clusteru HDInsight, předtím, než ho použijete k natrénování modelu. Vytvoření Spark na clusteru HDInsight najdete v tématu [vytvoření clusteru Spark v HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
+1. **Vytvoření**:  Vytvoření clusteru HDInsight, předtím, než ho použijete k natrénování modelu. Vytvoření Spark na clusteru HDInsight najdete v tématu [vytvoření clusteru Spark v HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
 
     Při vytváření clusteru, musíte zadat uživatelské jméno SSH a heslo. Poznamenejte si tyto hodnoty, podle potřeby je používat jako cílové výpočetní prostředí HDInsight.
     

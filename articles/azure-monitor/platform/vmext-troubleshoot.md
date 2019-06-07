@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2018
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 40f0705cfa7f0e9bb45d300a629adebd0cc5be47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd5e0749116ef335887ea634b9d2790c63bf171d
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61341210"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751927"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Řešení potíží s rozšíření virtuálního počítače Log Analytics ve službě Azure Monitor
 Tento článek poskytuje nápovědu řešení potíží s chybami setkat s rozšířením Log Analytics VM pro virtuální počítače Windows a Linuxu spuštěné na Microsoft Azure a navrhne řešení k jejich řešení.
@@ -45,16 +45,11 @@ Pokud *agenta Microsoft Monitoring Agent* není instalace rozšíření virtuál
    * Můžete také zkontrolovat soubor protokolu agenta virtuálního počítače `C:\WindowsAzure\logs\WaAppAgent.log`
    * Pokud v protokolu neexistuje, není nainstalován agent virtuálního počítače.
    * [Nainstalujte agenta virtuálního počítače Azure](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Potvrďte, že je spuštěn úkol prezenčního signálu rozšíření Microsoft Monitoring Agent pomocí následujících kroků:
-   * Přihlaste se k virtuálnímu počítači
-   * Otevřít okno služby Plánovač úloh a najděte `update_azureoperationalinsight_agent_heartbeat` úkolu
-   * Potvrzení úlohy je povolená a běží každou minutu
-   * Vrátit se změnami souboru protokolu prezenčního signálu `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`
-3. Projděte si soubory protokolů rozšíření Microsoft Monitoring Agent virtuálního počítače v `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
-4. Ujistěte se, že virtuální počítač může spouštět skripty prostředí PowerShell
-5. Ujistěte se, že oprávnění C:\Windows\temp nebyly změněny.
-6. Zobrazení stavu agenta Microsoft Monitoring Agent pomocí následujícího příkazu v okně PowerShell se zvýšenými oprávněními na virtuálním počítači `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-7. Projděte si soubory protokolů instalace agenta Microsoft Monitoring Agent v `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+2. Projděte si soubory protokolů rozšíření Microsoft Monitoring Agent virtuálního počítače v `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+3. Ujistěte se, že virtuální počítač může spouštět skripty prostředí PowerShell
+4. Ujistěte se, že oprávnění C:\Windows\temp nebyly změněny.
+5. Zobrazení stavu agenta Microsoft Monitoring Agent pomocí následujícího příkazu v okně PowerShell se zvýšenými oprávněními na virtuálním počítači `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. Projděte si soubory protokolů instalace agenta Microsoft Monitoring Agent v `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
 Další informace najdete v tématu [řešení potíží s rozšířeními Windows](../../virtual-machines/extensions/oms-windows.md).
 

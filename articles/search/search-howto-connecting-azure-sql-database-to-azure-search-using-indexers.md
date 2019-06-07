@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025346"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755098"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Připojte se k a indexování Azure SQL Database obsahu pomocí indexerů Azure Search
 
@@ -158,23 +158,7 @@ Můžete také uspořádat indexer pravidelné spouštění podle plánu. Chcete
 
 **Interval** parametr je povinný. Interval označuje čas mezi začátkem dvě po sobě jdoucích indexer spuštění. Nejkratší povolený interval je 5 minut; nejdelší sekvenci je za jeden den. Musí být naformátovaná jako hodnotu "dayTimeDuration" XSD (omezená podmnožina [ISO 8601 trvání](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnota). Tento vzor je: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` pro každých 15 minut `PT2H` pro každé dvě hodiny.
 
-Volitelný **startTime** označuje, kdy by měla začít naplánované spuštění. Pokud ji vynecháte, je použit aktuální čas UTC. Tento čas může být v minulosti – ve kterém případě dojde k prvnímu spuštění plánu jako v případě, že indexer je spuštěné nepřetržitě od má položka StartTime hodnotu.  
-
-Najednou lze spustit pouze jedno provedení indexeru. Pokud indexer je spuštěn, když je naplánováno spuštění, provádění se odložit, dokud dalším naplánovaném čase.
-
-Zvažte následující příklad to lze provést konkrétnější. Předpokládejme, že jsme následující hodinový plán nakonfigurovali:
-
-    "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
-
-Stane se toto:
-
-1. Dojde k prvnímu spuštění indexeru začíná na nebo okolo 1. března 2015 12:00 dop. (UTC).
-2. Předpokládejme, že toto spuštění trvá 20 minut (nebo vždy menší než 1 hodina).
-3. Spuštění druhého začíná na nebo okolo 1. března 2015 1:00 dop.
-4. Nyní předpokládejme, že toto spuštění trvá déle než hodinu – například 70 minut – tak, aby nedokončí přibližně 2:10:00
-5. Je nyní 2:00:00, čas pro třetí spuštění spustit. Ale protože spuštění druhého z 1: 00 ráno je pořád spuštěný, třetí provedení se přeskočilo. Třetí spuštění ve 3 hodiny.
-
-Můžete přidat, změnit nebo odstranit plán pro existujícího indexeru pomocí **PUT indexer** požadavku.
+Další informace o definování indexeru plánů najdete v části [naplánování indexerů Azure Search](search-howto-schedule-indexers.md).
 
 <a name="CaptureChangedRows"></a>
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: f3f21f552add551ac2434618b184eb18c53ad5be
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417073"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752234"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce ve Správci úloh v Azure Active Directory
 
@@ -56,6 +56,9 @@ Vytvoření, čtení, aktualizace a odstranění atributů uživatele | Globáln
 Vytvářet, číst, aktualizovat a odstranit uživatele | Globální správce ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
 Číst všechny konfigurace | Globální správce | 
 Protokoly auditu pro čtení B2C | Globální správce ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+
+> [!NOTE]
+> Globální správci služby Azure AD B2C nemají stejná oprávnění jako globální správce Azure AD. Pokud máte oprávnění globálního správce Azure AD B2C, ujistěte se, že jste v adresáři Azure AD B2C a není adresář Azure AD.
 
 ## <a name="company-branding"></a>Firemní branding
 

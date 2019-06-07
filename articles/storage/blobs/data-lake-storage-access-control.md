@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 72a72e385217178cb6afee237cc3a3e5c5d1248b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243596"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751632"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu v Azure Data Lake Storage Gen2
 
@@ -53,7 +53,7 @@ Objekt zabezpečení můžete přidružit úroveň přístupu pro soubory a adre
 
 Pokud jste přiřadili roli k objektu zabezpečení na úrovni účtu úložiště, můžete použít seznamy řízení přístupu udělení že tohoto objektu zabezpečení přístupu k určité soubory a adresáře se zvýšenými oprávněními.
 
-Nelze použít seznamy řízení přístupu k poskytování úrovně přístupu, která je nižší než úroveň poskytované přiřazení role. Například, pokud přiřadíte [Přispěvatel dat objektu Blob úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview) role zabezpečení, nemůžete konzolu použít řízení přístupu v seznamech zabránit zápisu do adresáře takového objektu zabezpečení.
+Nelze použít seznamy řízení přístupu k poskytování úrovně přístupu, která je nižší než úroveň poskytované přiřazení role. Například, pokud přiřadíte [Přispěvatel dat objektu Blob úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) role zabezpečení, nemůžete konzolu použít řízení přístupu v seznamech zabránit zápisu do adresáře takového objektu zabezpečení.
 
 ### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Sada souborů a adresářů oprávnění na úrovni pomocí seznamů řízení přístupu
 

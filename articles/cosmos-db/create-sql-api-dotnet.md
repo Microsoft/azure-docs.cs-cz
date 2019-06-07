@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/20/2019
-ms.openlocfilehash: 432ddf6e0fea0d6de3c24dc853502dca303ce693
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/06/2019
+ms.openlocfilehash: e39440a46228d82b0722f7d9d349d11fb2417b42
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954556"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754654"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>Rychlý start: Vytvoření webové aplikace .NET pomocí rozhraní SQL API účtu ve službě Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Předplatného Azure nebo Bezplatný zkušební účet Azure Cosmos DB
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
 
 <a id="create-account"></a>
-## <a name="create-an-azure-cosmos-db-account"></a>Vytvořit účet Azure Cosmos DB
+## <a name="create-an-azure-cosmos-db-account"></a>Vytvoření účtu služby Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -52,33 +52,32 @@ Předplatného Azure nebo Bezplatný zkušební účet Azure Cosmos DB
 
 Průzkumník dat na webu Azure Portal slouží k vytvoření databáze a kolekce. 
 
-1.  Vyberte **Průzkumník dat** z levého navigačního panelu ve službě Azure Cosmos DB účtu stránky a pak vyberte **novou kolekci**. 
+1.  Vyberte **Průzkumník dat** z levého navigačního panelu ve službě Azure Cosmos DB účtu stránky a pak vyberte **nový kontejner**. 
     
-    Budete muset posunout doprava najdete v článku **přidat kolekci** oblasti.
+    Budete muset posunout doprava najdete v článku **přidat kontejner** okna.
     
     ![Na webu Azure portal Průzkumník dat, podokno přidat kolekci](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  Na stránce **Přidat kolekci** zadejte nastavení pro novou kolekci.
+1.  V **přidat kontejner** podokně zadejte nastavení pro nové kolekce.
     
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|ToDoList|Zadejte *ToDoList* jako název nové databáze. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery.|
-    |**ID kolekce**|Položky|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.|
-    |**Klíč oddílu**| /kategorie| Ukázku popsanou v tomto článku používá */category* jako klíč oddílu.|
+    |**ID databáze**|ToDoList|Zadejte *ToDoList* jako název nové databáze. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery. Zkontrolujte **propustnosti zřídit databáze** možnost, umožňuje sdílet propustnosti zřízené do databáze ve všech kontejnerů v databázi. Tato možnost pomáhá také úspory nákladů. |
     |**Propustnost**|400|Ponechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
+    |**ID kontejneru**|Položky|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.|
+    |**Klíč oddílu**| /kategorie| Ukázku popsanou v tomto článku používá */category* jako klíč oddílu.|
+
     
     Nepřidávejte **jedinečné klíče** pro účely tohoto příkladu. Jedinečné klíče umožňují přidat do databáze vrstvu integrity dat. Tím zajistíte jedinečnost jedné nebo více hodnot pro klíč oddílu. Další informace najdete v tématu [jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
     
-1.  Vyberte **OK**. 
-    Průzkumník dat zobrazí novou databázi a kolekci.
+1.  Vyberte **OK**. Průzkumník dat zobrazí novou databázi a kontejner, který jste vytvořili.
     
-    ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a kolekci](./media/create-sql-api-dotnet/azure-cosmos-db-new-collection.png)
 
 ## <a name="add-data-to-your-database"></a>Přidat data do databáze
 
 Přidání dat do nové databáze pomocí Průzkumníku dat.
 
-1. V **Průzkumník dat**, nová databáze zobrazí v **kolekce** podokně. Rozbalte **ToDoList** databáze, rozbalte **položky** kolekce, vyberte **dokumenty**a pak vyberte **nový dokument**. 
+1. V **Průzkumník dat**, rozbalte **ToDoList** databáze a rozbalte **položky** kontejneru. V dalším kroku vyberte **položky**a pak vyberte **nová položka**. 
    
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
@@ -108,7 +107,7 @@ Přidání dat do nové databáze pomocí Průzkumníku dat.
 
 Pokud chcete zobrazit, jak snadno se pracuje s daty služby Azure Cosmos DB prostřednictvím kódu programu, naklonujte ukázkovou webovou aplikaci SQL API .NET z Githubu, aktualizovat připojovací řetězec a spusťte aplikaci aktualizovat vaše data. 
 
-Můžete také vytvořit databázi a kolekci pomocí ukázkového kódu .NET. Další informace najdete v tématu [revize kódu .NET](#review-the-net-code).
+Databázi a kontejner můžete vytvořit také pomocí vzorový kód .NET. Další informace najdete v tématu [revize kódu .NET](#review-the-net-code).
 
 ### <a name="clone-the-sample-app"></a>Klonování ukázkové aplikace
 
@@ -148,7 +147,7 @@ Nejprve naklonujte C# [aplikace SQL API](https://github.com/Azure-Samples/docume
       `<add key="authKey" value="19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==" />`
 
        
-1. Ujistěte se, že databáze a kolekce hodnot v *web.config* shodovat s názvy, které jste vytvořili dříve. 
+1. Ujistěte se, že databáze a kolekce (také nazývané kontejneru) hodnoty *web.config* shodovat s názvy, které jste vytvořili dříve. 
 
    ```csharp
    <add key="database" value="ToDoList"/>
@@ -163,7 +162,7 @@ Nejprve naklonujte C# [aplikace SQL API](https://github.com/Azure-Samples/docume
 
 1. Do pole **Procházet** v NuGetu zadejte *DocumentDB*.
 
-1. Z výsledků nainstalujte **Microsoft.Azure.DocumentDB** knihovny, pokud ještě není nainstalovaný. Tím se nainstaluje [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) balíček a všechny závislosti.
+1. Z výsledků nainstalujte **2.2.3 verze** z **Microsoft.Azure.DocumentDB** knihovny, pokud ještě není nainstalovaný. Tím se nainstaluje [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) balíček a všechny závislosti.
    
    Pokud správce balíčků NuGet se zobrazí zpráva, že se z řešení chybí některé balíčky, vyberte **obnovení** instalace z interní zdroje. 
 
@@ -177,7 +176,7 @@ Můžete přejít zpět do Průzkumníku dat na webu Azure Portal najdete v čl�
 
 ## <a name="review-the-net-code"></a>Projděte si kód v .NET
 
-Tento krok je volitelný. V tomto rychlém startu jste vytvořili databázi a kolekci na webu Azure Portal a přidání ukázkových dat pomocí ukázku .NET. Ale můžete také vytvoříte databázi a kolekci pomocí ukázku .NET. Pokud vás zajímá vytvoření databázových prostředků v kódu, projděte si následující fragmenty kódu. Fragmenty kódu pocházejí ze *DocumentDBRepository.cs* soubor **todo** projektu.
+Tento krok je volitelný. V tomto rychlém startu jste vytvořili databázi a kontejner na webu Azure Portal a přidávají ukázková data pomocí ukázku .NET. Ale můžete také vytvoříte databázi a kontejner pomocí ukázku .NET. Pokud vás zajímá vytvoření databázových prostředků v kódu, projděte si následující fragmenty kódu. Fragmenty kódu pocházejí ze *DocumentDBRepository.cs* soubor **todo** projektu.
 
 * Tento kód inicializuje `DocumentClient`: 
 
@@ -230,7 +229,7 @@ Tento krok je volitelný. V tomto rychlém startu jste vytvořili databázi a ko
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste zjistili, jak vytvořit účet služby Azure Cosmos DB, vytvoření databáze a kolekce pomocí Průzkumníku dat a spuštění webové aplikace .NET a aktualizujte data. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet služby Azure Cosmos DB, vytvoření databáze a kontejnerů pomocí Průzkumníku dat a spuštění webové aplikace .NET a aktualizujte data. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

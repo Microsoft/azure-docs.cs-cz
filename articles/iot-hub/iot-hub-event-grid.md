@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f08845dbf4168627d0198e81d2092a1fe56c6c89
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 73a9aebfd0c5338f63927860ce3f6c57b20428a4
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733875"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754775"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí
 
@@ -25,7 +25,7 @@ Azure IoT Hub se integruje s Azure Event Grid tak, aby mohla odesílat oznámen�
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Integrace služby Event Grid je k dispozici pro IoT hub umístěných v oblastech, kde je podporován služby Event Grid. Všechny události zařízení s výjimkou zařízení telemetrické události jsou obecně dostupné. Telemetrické události zařízení je ve verzi public preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china/china-welcome), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). Nejnovější seznam oblastí najdete v tématu [Úvod do služby Azure Event Grid](../event-grid/overview.md).
+Integrace služby Event Grid je k dispozici pro IoT hub umístěných v oblastech, kde je podporován služby Event Grid. Všechny události zařízení s výjimkou zařízení telemetrické události jsou obecně dostupné. Telemetrické události zařízení je ve verzi public preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/). Nejnovější seznam oblastí najdete v tématu [Úvod do služby Azure Event Grid](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Typy událostí
 

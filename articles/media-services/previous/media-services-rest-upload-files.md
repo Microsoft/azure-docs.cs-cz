@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817696"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752893"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Azure Media Services pomocí rozhraní REST  
 > [!div class="op_single_selector"]
@@ -176,7 +176,7 @@ Teď, když máte adresu URL pro odeslání, musíte kódu s využitím rozhran�
 
 - [Pomocí rozhraní REST API služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Nahrání objektů BLOB do služby Blob storage](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Nahrání objektů BLOB do služby Blob storage](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Nahrát soubor pomocí nástroje Postman
 
@@ -185,7 +185,7 @@ Jako příklad použijeme Postman k nahrání souboru MP4 malé. Na nahrávání
 Žádost o nahrání není součástí **AzureMedia** kolekce. 
 
 Vytvořit a nastavit novou žádost:
-1. Stisknutím klávesy **+**, chcete-li vytvořit novou kartu žádosti.
+1. Stisknutím klávesy **+** , chcete-li vytvořit novou kartu žádosti.
 2. Vyberte **UMÍSTIT** operace a vložit **{{UploadURL}}** v adrese URL.
 2. Ponechte **autorizace** kartě je (nenastavujte na **nosného tokenu**).
 3. V **záhlaví** kartu, zadejte: **Klíč**: "x-ms-blob-type" a **hodnotu**: "BlockBlob".

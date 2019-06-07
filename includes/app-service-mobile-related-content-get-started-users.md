@@ -4,16 +4,15 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 942c165a53ad07c0d359854fc737c195c6f2d50a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ed8aa7db1fa47cbcf5150fc0abfe5f552f2b57ea
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66138289"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755590"
 ---
-* [Ověřování pomocí služby App Service / přehled autorizace](../articles/app-service/overview-authentication-authorization.md)
-* Přidání ověřování do mobilní aplikace: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
-  Zjistěte, jak přidat ověřování pomocí služby App Service do vaší mobilní aplikace.
+* [Ověřování pomocí služby App Service / přehled autorizace](../articles/app-service/overview-authentication-authorization.md).
+* Přidání ověřování do mobilní aplikace: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users].  
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

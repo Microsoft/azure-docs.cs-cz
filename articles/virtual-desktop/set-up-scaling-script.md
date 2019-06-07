@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410574"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755128"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatické škálování hostitelů relace
 
@@ -26,7 +26,7 @@ Prostředí, ve kterém jste spustili skript musíte mít následující věci:
 
 - Tenant virtuální plochy Windows a účet nebo instančního objektu s oprávněními k dotazu tohoto tenanta (třeba Přispěvatel vzdálené plochy).
 - Relace hostitele fondu virtuálních počítačů nakonfigurované a registrovaný ve službe virtuální plochy Windows.
-- Dalšího virtuálního počítače, který spustí naplánované úlohy pomocí plánovače úloh a má přístup k síti pro hostitele relace. Bude jím norem později v dokumentu jako scaler virtuálního počítače.
+- Dalšího virtuálního počítače, který spustí naplánované úlohy pomocí plánovače úloh a má přístup k síti pro hostitele relace. To bude odkazovat později v dokumentu jako scaler virtuálního počítače.
 - [Modulu Powershellu pro Microsoft Azure Resource Manageru](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) nainstalovala do virtuálního počítače s naplánovanou úlohu.
 - [Modulu Powershellu pro virtuální plochy Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) nainstalovala do virtuálního počítače s naplánovanou úlohu.
 

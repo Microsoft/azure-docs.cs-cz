@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9a592533a92ec724c9a332bef5fdfcf385cb7b2c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730673"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754533"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -59,10 +59,10 @@ Následující rozhraní API se změnil nebo zastaralé:
 - [ **/Configurations/ GET {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (odebrání citlivých informací)
     - Dříve se používá k získání individuální konfigurace typy (včetně tajné kódy).
     - Toto volání rozhraní API nyní vrátí typy individuální konfigurace s tajnými kódy vynechán. Pokud chcete získat všechny konfigurace, včetně tajných klíčů, použijte /configurations volání POST tak nové. Pokud chcete získat jenom nastavení brány, použijte nové /getGatewaySettings volání POST.
-- [**GET /configurations** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (zastaralé)
+- [**GET /configurations** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (zastaralé)
     - Dříve se používá k získání všech konfigurací (včetně tajné kódy)
     - Toto volání rozhraní API se už nebude podporovat. Pokud chcete získat všechny konfigurace do budoucna, použijte /configurations volání POST tak nové. K získání konfigurace s citlivé parametry tento parametr vynechán, použijte volání GET /configurations/ {configurationName}.
-- [**PŘÍSPĚVEK /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (zastaralé)
+- [**PŘÍSPĚVEK /configurations/ {configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (zastaralé)
     - Dříve se používá k aktualizaci přihlašovacích údajů brány.
     - Toto volání rozhraní API bude zastaralé a už není podporovaná. Místo toho použijte nové /updateGatewaySettings příspěvku.
 

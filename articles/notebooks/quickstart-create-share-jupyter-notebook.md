@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b1618e2ac997445606ce98fc72a1ec35ca1280be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239873"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751800"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Rychlý start: Vytvoření a sdílení poznámkového bloku
 
@@ -41,11 +41,11 @@ ms.locfileid: "60239873"
 
      ![Nový projekt automaticky otevírané okno s podrobnostmi mají údaj vyplněný](media/quickstarts/new-project-popup.png)
 
-1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+**), pak vyberete **Poznámkový blok**:
+1. Po chvíli se poznámkových bloků Azure přejde do nového projektu. Poznámkového bloku přidejte do projektu tak, že vyberete **+ nový** rozevíracího seznamu (který může zobrazit jako pouze **+** ), pak vyberete **Poznámkový blok**:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "Nový, prázdný projekt a přidejte příkaz poznámkového bloku")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. V **vytvoření nového poznámkového bloku** automaticky otevírané okno, které se zobrazí, zadejte název souboru pro poznámkový blok, jako například *HelloWorldInPython.ipynb* (*.ipynb* znamená, že poznámkový blok IronPython (Jupyter) ) a vyberte **Python 3.6** pro jazyk (také nazývané *jádra*):
+1. V **vytvoření nového poznámkového bloku** automaticky otevírané okno, které se zobrazí, zadejte název souboru pro poznámkový blok, jako například *HelloWorldInPython.ipynb* ( *.ipynb* znamená, že poznámkový blok IronPython (Jupyter) ) a vyberte **Python 3.6** pro jazyk (také nazývané *jádra*):
 
     ![Vytvoření nového poznámkového bloku automaticky otevíraného okna](media/quickstarts/new-notebook-popup.png)
 

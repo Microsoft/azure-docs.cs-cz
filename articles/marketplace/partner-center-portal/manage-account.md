@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.openlocfilehash: 935d2e1c96705506636c2883113a64bb70c39336
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65806188"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752855"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat vaše obchodní Marketplace účet v partnerském centru 
 
@@ -149,7 +149,7 @@ Další informace najdete v tématu [využití ze strany zákazníků sledován�
 
 Partnerské centrum využívá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) pro přístup k více uživatelských účtů a správu. Vaše organizace Azure AD se automaticky přidruží účet v partnerském centru jako součást procesu registrace. 
 
-## <a name="manage-users"></a>Spravovat uživatele
+## <a name="manage-users"></a>Správa uživatelů
 
 **Uživatelé** část partnerského centra (v části **nastavení účtu**) umožňuje spravovat uživatele, skupiny a aplikace Azure AD, které mají přístup k vašemu účtu partnerského centra pomocí služby Azure AD. Všimněte si, že pokud chcete spravovat uživatele, musíte být přihlášeni pomocí vaší [pracovní účet](./company-work-accounts.md) (související služby Azure AD tenant). Ke správě uživatelů v rámci různých pracovního účtu nebo tenantovi, budete muset odhlásit a pak se přihlásit jako uživatel s **správce** oprávnění, která pracovní účet / tenanta. 
 
@@ -223,7 +223,7 @@ Pokud jeden z vašich uživatelů je potřeba změnit své heslo, dělají to sa
 3.  Stránka s potvrzením budou zobrazeny přihlašovací informace pro uživatele, včetně dočasné heslo. Nezapomeňte si vytisknout nebo zkopírujte tyto údaje a zadejte pro uživatele, nebudou mít přístup k dočasné heslo po opuštění této stránky.
 
 
-## <a name="manage-groups"></a>Spravovat skupiny
+## <a name="manage-groups"></a>Správa skupin
 
 Skupiny umožňují řídit více uživatelských rolí a oprávnění všechno dohromady.
 
@@ -279,7 +279,7 @@ Pokud chcete udělit přístup partnerského centra na zcela nové Azure účet 
 1.  Z **uživatelé** stránky (v části **nastavení účtu**) vyberte **aplikacím služby Azure AD přidat**.
 2.  Na další stránce vyberte **nové služby Azure AD aplikace**.
 3.  Zadejte **adresy URL odpovědi** pro novou aplikaci Azure AD. Toto je adresa URL, kde uživatelé mohou přihlásit a používat aplikaci Azure AD (někdy také říká adresa URL aplikace nebo přihlašovací adresa URL). **Adresy URL odpovědi** nesmí být delší než 256 znaků a musí být jedinečný ve svém adresáři.
-4.  Zadejte **identifikátor ID URI aplikace** pro novou aplikaci Azure AD. Toto je logický identifikátor pro aplikaci Azure AD, která se zobrazí při odesílání jednoho požadavku přihlašování do služby Azure AD. Všimněte si, **identifikátor ID URI aplikace** musí být jedinečný pro každou aplikaci Azure AD ve vašem adresáři. Toto ID nemůže být delší než 256 znaků. Další informace o identifikátor URI ID aplikace najdete v tématu [integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#changing-the-application-registration-to-support-multi-tenant).
+4.  Zadejte **identifikátor ID URI aplikace** pro novou aplikaci Azure AD. Toto je logický identifikátor pro aplikaci Azure AD, která se zobrazí při odesílání jednoho požadavku přihlašování do služby Azure AD. Všimněte si, **identifikátor ID URI aplikace** musí být jedinečný pro každou aplikaci Azure AD ve vašem adresáři. Toto ID nemůže být delší než 256 znaků. Další informace o identifikátor URI ID aplikace najdete v tématu [integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
 5.  V **role** nastavte role nebo vlastních oprávnění pro aplikaci Azure AD.
 6.  Vyberte **Uložit**.
 
@@ -315,7 +315,7 @@ Všimněte si, že se role tenanta Azure Active Directory (AAD) zahrnují globá
 ||• Zobrazení, vytváření a správa partnerů|
 |Správce|• Ke všem funkcím účet Microsoft s výjimkou výplata a daň nastavení
 |      |• Můžete spravovat uživatele, role a pracovní účty (klientů)|
-|Vývojář|• Nahrát balíčky, aplikace a doplňky a zobrazit zprávu o telemetrických dat o využití
+|Developer|• Nahrát balíčky, aplikace a doplňky a zobrazit zprávu o telemetrických dat o využití
 |      |• Nelze získat přístup k finanční účtu nebo informace o nastavení|
 |Přispěvatel firmy|• Může získat přístup k finančním informacím a nastavit informace o cenách
 |      |• Nejde vytvořit nebo odeslat nové aplikace a doplňky|

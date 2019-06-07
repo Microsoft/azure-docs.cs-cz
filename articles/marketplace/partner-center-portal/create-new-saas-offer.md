@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 897634ac0c30b4a2cc496c225965f465a94fe4e9
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455683"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751893"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvoření nové nabídky SaaS
 
@@ -74,7 +74,7 @@ Pokud chcete vypsat Software jako služba (SaaS) nabízí komerční Marketplace
 
 - Nabídky musí být kompatibilní s Azure klienty. (Často aplikace SaaS jsou také hostované v Azure pro nejlepší výkon a kompatibilitu, ale to není povinné.) 
 - Musíte použít vaši nabídku [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ke správě identit a ověřování.
-- Musíte použít vaši nabídku [rozhraním API SaaS splnění](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2) můžete integrovat s Azure Marketplace.
+- Musíte použít vaši nabídku [rozhraním API SaaS splnění](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) můžete integrovat s Azure Marketplace.
 
 #### <a name="billing-infrastructure-costs"></a>Fakturační náklady na infrastrukturu
 Nabídky SaaS, jako vydavatel, musíte vzít v úvahu poplatky za využití infrastruktury Azure a licenční poplatky za software jako náklady na jednu položku. Tyto náklady je vyjádřena jako fixní měsíční poplatek, abyste zákazníka. Využití infrastruktury Azure je spravovaná a fakturuje se vám, partner, přímo. Poplatky za využití infrastruktury skutečný nevidí zákazníka. Vydavatelé se obvykle optimalizované poplatky za využití infrastruktury Azure začlenit do svých ceny licencí softwaru. 

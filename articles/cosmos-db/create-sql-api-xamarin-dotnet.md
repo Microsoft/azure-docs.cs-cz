@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: e0d439edc35e70bc8ac477cf56a6bc25e41df083
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860890"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754727"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý start: Vytvoření aplikace seznamu úkolů s využitím kódu Xamarin pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Pokud používáte Mac, můžete si stáhnout **bezplatnou verzi** [Visual Studi
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>Přidání kolekce
+## <a name="add-a-container"></a>Přidání kontejneru
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -184,7 +184,7 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
     }
     ```
 
-    Tady je potřeba nový identifikátor URI, který jednoznačně určí dokument, který se má nahradit, a který se získá pomocí metody `UriFactory.CreateDocumentUri`, do které se předají názvy databáze a kolekce a ID dokumentu.
+    Zde je potřeba nový identifikátor URI dokumentu, který má nahradit jedinečným způsobem identifikovat a je získat pomocí `UriFactory.CreateDocumentUri` a předají se jí názvy databáze a kolekce a ID dokumentu.
 
     Metoda `DocumentClient.ReplaceDocumentAsync` nahradí dokument určený identifikátorem URI za nový dokument určený jako parametr.
 
@@ -245,7 +245,7 @@ V následujících krocích se dozvíte, jak aplikaci spustit s použitím ladic
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření kolekce pomocí Průzkumníku dat a sestavení a nasazení aplikace Xamarin. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data.
+V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos, vytvoření kontejneru pomocí Průzkumníku dat a sestavení a nasazení aplikace Xamarin. Teď můžete importovat další data k vašemu účtu Azure Cosmos.
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

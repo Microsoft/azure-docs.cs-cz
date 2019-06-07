@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/30/2019
-ms.openlocfilehash: 0e3a35c2ceed5f3bb08b2d332f05bbaf416c94b2
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 4ce3ca31163c286f54b9630e5d4779e2e47a032f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743248"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754582"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány Firewall (Preview)
 
@@ -162,7 +162,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 Integrace s protokoly Azure monitoru vaše Brána Firewall služby Azure je užitečné, když nejdřív Začínáme aplikací pracovat, když si jich nejste vědomi všech závislostí aplikací. Další informace o Azure Monitor protokoly z [analyzovat data protokolů ve službě Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="access-to-the-cluster"></a>Přístup ke clusteru
-Po nastavení brány firewall s úspěšně, můžete pomocí interního koncového bodu (https://<clustername>-int.azurehdinsight.net) pro přístup k Ambari z virtuální sítě. Použít veřejný koncový bod (https://<clustername>. azurehdinsight.net) nebo ssh koncový bod (<clustername>-ssh.azurehdinsight.net), ujistěte se, že máte správný tras ve směrovací tabulce a nastavit pravidla skupiny zabezpečení sítě, aby asymetric směrování problém vysvětlení [tady](https://docs.microsoft.com/azure/firewall/integrate-lb).
+Po nastavení brány firewall s úspěšně, můžete pomocí interního koncového bodu (`https://<clustername>-int.azurehdinsight.net`) pro přístup k Ambari z virtuální sítě. Použít veřejný koncový bod (`https://<clustername>.azurehdinsight.net`) nebo ssh koncový bod (`<clustername>-ssh.azurehdinsight.net`), ujistěte se, že máte správný tras ve směrovací tabulce a nastavit pravidla skupiny zabezpečení sítě se pokud chcete vyhnout směrování problému asymetric vysvětlení [tady](https://docs.microsoft.com/azure/firewall/integrate-lb).
 
 ## <a name="configure-another-network-virtual-appliance"></a>Nakonfigurovat jiné síťové virtuální zařízení
 

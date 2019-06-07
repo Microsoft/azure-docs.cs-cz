@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 44b965bd60d976d4d28dc5e31d78a1c838d4ee02
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 32b0f467f11cf8cb0a04657006cb5a86b11e27e9
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704681"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755202"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
 
@@ -33,31 +33,48 @@ ms.locfileid: "64704681"
 
 ### <a name="mpi"></a>MPI 
 
-Podporovány jsou pouze verze 5.x Intel MPI.
+SR-IOV povoleno velikosti virtuálních počítačů v Azure umožňují téměř jakékoli flavor MPI, který se má použít.
+Na jiných rozhraní SR-IOV povoleno virtuálních počítačích podporovány jsou pouze verze 5.x Intel MPI. Novější verze (2017, 2018) Intel MPI Runtime knihovny může nebo nemusí být kompatibilní s ovladači Azure Linux RDMA.
 
-> [!NOTE]
-> Novější verze (2017, 2018) Intel MPI Runtime knihovny může nebo nemusí být kompatibilní s ovladači Azure Linux RDMA.
 
-### <a name="distributions"></a>Distribuce
+### <a name="supported-os-images"></a>Podporované Image operačního systému
  
-Nasazení virtuálního počítače náročné na výpočetní z některou k imagí v Tržišti Azure Marketplace, který podporuje připojení RDMA:
+Tržiště Azure Marketplace nabízí řadu distribucí systému Linux, které podporují RDMA připojení:
   
-* **Ubuntu** – Ubuntu Server 16.04 LTS. Konfigurace ovladače RDMA na virtuálním počítači a s technologií Intel stáhnout Intel MPI registrace:
+* **Založené na centOS HPC** – bez rozhraní SR-IOV povolená virtuálních počítačů založených na CentOS verze 6.5 HPC nebo novější verze, až 7.5 jsou vhodné. Pro virtuální počítače řady H-series se doporučuje verze 7.1 k 7.5. Na virtuálním počítači se nainstalují ovladače RDMA a Intel MPI 5.1.
+  Pro virtuální počítače s SR-IOV CentOS HPC 7.6 pochází optimalizované a předem načtené RDMA ovladačů a balíčky různých MPI, které jsou nainstalovány.
+  Vyhledáme další Image virtuálního počítače RHEL nebo CentOS přidejte InfiniBandLinux rozšíření pro umožnění InfiniBand. Toto rozšíření virtuálního počítače s Linuxem instaluje ovladače Mellanox OFED (na virtuálních počítačích rozhraní SR-IOV) pro připojení RDMA. Následující rutiny Powershellu nainstaluje nejnovější verzi (verze 1.0) InfiniBandDriverLinux rozšíření na existující virtuální počítač s podporou RDMA. RDMA podporovat virtuální počítač má název *myVM* a je nasazený ve skupině prostředků s názvem *myResourceGroup* v *USA – západ* oblasti následujícím způsobem:
 
-  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
+  ```powershell
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
+  ```
+  Rozšíření virtuálních počítačů mohou být také součástí šablony Azure Resource Manageru pro snadné nasazení pomocí elementu JSON:
+  ```json
+  "properties":{
+  "publisher": "Microsoft.HpcCompute",
+  "type": "InfiniBandDriverLinux",
+  "typeHandlerVersion": "1.0",
+  } 
+  ```
+ 
+  > [!NOTE]
+  > Pro Image založené na CentOS HPC aktualizace jádra jsou zakázány ve **yumu** konfigurační soubor. Je to proto, že ovladače RDMA Linuxu se distribuují jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud se aktualizuje jádra.
+  >
+  
 
-* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro prostředí HPC, SLES 12 SP3 pro prostředí HPC (Premium), SLES 12 SP1 pro prostředí HPC, SLES 12 SP1 pro prostředí HPC (Premium). Instalace ovladačů RDMA a Intel MPI balíčky nejsou distribuovány na virtuálním počítači. Nainstalujte MPI spuštěním následujícího příkazu:
+* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro prostředí HPC, SLES 12 SP3 pro prostředí HPC (Premium), SLES 12 SP1 pro prostředí HPC, SLES 12 SP1 pro prostředí HPC (Premium), SLES 12 SP4 a SLES 15. Instalace ovladačů RDMA a Intel MPI balíčky nejsou distribuovány na virtuálním počítači. Nainstalujte MPI spuštěním následujícího příkazu:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
-    
-* **Založené na centOS HPC** -založené na CentOS 6.5 HPC nebo novější verze (pro H-series, se doporučuje verze 7.1 nebo novější). Na virtuálním počítači se nainstalují ovladače RDMA a Intel MPI 5.1.  
- 
-  > [!NOTE]
-  > Pro Image založené na CentOS HPC aktualizace jádra jsou zakázány ve **yumu** konfigurační soubor. Je to proto, že ovladače RDMA Linuxu se distribuují jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud se aktualizuje jádra.
-  > 
- 
+  
+* **Ubuntu** – Ubuntu Server 16.04 LTS, 18.04 LTS. Konfigurace ovladače RDMA na virtuálním počítači a s technologií Intel stáhnout Intel MPI registrace:
+
+  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
+
+  Další podrobnosti o povolení InfiniBand, nastavení MPI, naleznete v tématu [povolit InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband-with-sriov).
+
+
 ### <a name="cluster-configuration-options"></a>Možnosti konfigurace clusteru
 
 Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuálních počítačů s Linuxem, který může komunikovat pomocí sítě RDMA, včetně: 
@@ -72,14 +89,12 @@ Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuáln�
 
 * **Sady Microsoft HPC Pack** - [sady HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) podporuje několik distribucí systému Linux ke spuštění na nasazených výpočetních uzlů ve virtuálních počítačích Azure podporující RDMA spravuje hlavního uzlu Windows serveru. Ukázkové nasazení, najdete v části [vytvořit prostředí HPC Pack RDMA clusteru s Linuxem v Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
-V závislosti na vašem výběru nástroj pro správu clusteru může být potřeba další systém konfigurace ke spouštění úloh MPI. Například v clusteru virtuálních počítačů, možná bude nutné k navázání vztahu důvěryhodnosti mezi uzly clusteru generování klíčů SSH nebo vytvoření vztahu důvěryhodnosti passwordless SSH.
 
-### <a name="network-topology-considerations"></a>Aspekty topologie sítě
-* Na podporou RDMA virtuálních počítačů s Linuxem v Azure je Eth1 vyhrazený pro RDMA síťový provoz. Neměňte nastavení Eth1 nebo jakékoli informace v konfiguračním souboru odkazující na tuto síť. Eth0 je vyhrazený pro pravidelné Azure síťový provoz.
-
-* Sítě RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. 
-
-
+### <a name="network-considerations"></a>Důležité informace o síti
+* Na jiných SR-IOV podporou RDMA virtuální počítače s Linuxem v Azure, eth1 vyhrazené pro RDMA síťový provoz. Neměňte nastavení eth1 nebo jakékoli informace v konfiguračním souboru odkazující na tuto síť.
+* Na virtuálních počítačů (HB a řady HC) s povoleným rozhraní SR-IOV, ib0 je rezervovaná pro síťový provoz RDMA.
+* Sítě RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. Ke spouštění aplikací MPI v nasazené instance ve službě Azure virtual network, ujistěte se, že se adresní prostor virtuální sítě nepřekrývá síť RDMA.
+* V závislosti na vašem výběru nástroj pro správu clusteru může být potřeba další systém konfigurace ke spouštění úloh MPI. Například v clusteru virtuálních počítačů, možná bude nutné k navázání vztahu důvěryhodnosti mezi uzly clusteru generování klíčů SSH nebo tím, že passwordless přihlášení SSH.
 
 
 ## <a name="other-sizes"></a>Další velikosti
@@ -92,8 +107,5 @@ V závislosti na vašem výběru nástroj pro správu clusteru může být potř
 
 ## <a name="next-steps"></a>Další postup
 
+- Další informace o tom, jak nastavit, optimalizací a Škálováním [úlohy HPC](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc) v Azure.
 - Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
-
-
-
-

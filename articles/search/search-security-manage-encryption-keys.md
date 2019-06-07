@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 567f32cba76aaf2d1657b2476c4d11596d44dec5
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523097"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753918"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Search šifrování pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault
 
@@ -227,7 +227,7 @@ Chcete-li vytvořit aplikaci AAD na portálu:
 
 1. [Vytvořte aplikaci Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
 
-1. [Získejte ID a ověřovacího klíče aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) jako ty, bude nezbytné k vytváření indexu šifrovaná. Je potřeba zadat hodnoty zahrnují **ID aplikace** a **ověřovací klíč**.
+1. [Získejte ID a ověřovacího klíče aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) jako ty, bude nezbytné k vytváření indexu šifrovaná. Je potřeba zadat hodnoty zahrnují **ID aplikace** a **ověřovací klíč**.
 
 >[!Important]
 > Při rozhodování o použití ověřování aplikaci AAD místo spravovanou identitu, vezměte v úvahu skutečnost, že Azure Search nemá oprávnění ke správě svojí aplikaci AAD vaším jménem a je na vás spravovat svoji aplikaci AAD, jako je pravidelná otáčení ověřovací klíč aplikace.
