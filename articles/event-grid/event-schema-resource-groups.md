@@ -236,10 +236,10 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| předmět | string | Vydavatel definované cesta předmět události. |
+| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+| subject | string | Vydavatel definované cesta předmět události. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data událostí skupiny prostředků. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
@@ -249,8 +249,8 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| Autorizace | objekt | Požadovaná oprávnění pro operaci. |
-| deklarace identity | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| authorization | objekt | Požadovaná oprávnění pro operaci. |
+| claims | objekt | Vlastnosti deklarace identity. Další informace najdete v tématu [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | string | ID operace odstraňování potíží. |
 | httpRequest | objekt | Podrobnosti o operaci. Tento objekt je pouze zahrnuty při aktualizaci stávajícího prostředku nebo odstranění prostředku. |
 | resourceProvider | string | Poskytovatel prostředků pro operaci. |
@@ -258,7 +258,7 @@ Datový objekt má následující vlastnosti:
 | operationName | string | Operace, která byla provedena. |
 | status | string | Stav operace. |
 | subscriptionId | string | ID předplatného prostředku. |
-| ID Tenanta | string | ID tenanta prostředku. |
+| tenantId | string | ID tenanta prostředku. |
 
 ## <a name="next-steps"></a>Další postup
 
