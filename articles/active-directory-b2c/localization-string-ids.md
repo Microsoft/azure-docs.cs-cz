@@ -2,20 +2,20 @@
 title: Lokalizace řetězec ID – Azure Active Directory B2C | Dokumentace Microsoftu
 description: Určete ID pro definici obsahu s Id api.signuporsignin vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c6cabcc89e66e9fbf153f2931bfe8b9b70c5f426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41a72013f1538b0a857c76bc949a7109e1cd54b4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682710"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510927"
 ---
 # <a name="localization-string-ids"></a>ID lokalizace řetězce
 
@@ -29,24 +29,24 @@ Následující ID se používají pro definici obsahu s ID `api.signuporsignin`.
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **local_intro_email** | Přihlaste se se svým existujícím účtem. |
+| **local_intro_email** | Přihlaste se pomocí existujícího účtu |
 | **logonIdentifier_email** | E-mailová adresa |
-| **requiredField_email** | Zadejte prosím svůj e-mail. |
+| **requiredField_email** | Zadejte prosím e-mailu |
 | **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
-| **email_pattern** | ^ [a-zA-Z0-9.! #$% & "*+/ =? ^ _\`{\|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ -zA-Z0 - 9-] +)*$ |
-| **local_intro_username** | Přihlásit uživatelským jménem |
+| **email_pattern** | ^ [a-zA-Z0-9.! #$% & " *+/ =? ^ _\`{\|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ -zA-Z0 - 9-] +)* $ |
+| **local_intro_username** | Přihlaste se pomocí uživatelského jména |
 | **logonIdentifier_username** | Uživatelské jméno |
-| **requiredField_username** | Zadejte prosím své uživatelské jméno. |
+| **requiredField_username** | Zadejte prosím svoje uživatelské jméno |
 | **Heslo** | Heslo |
-| **requiredField_password** | Zadejte prosím své heslo. |
-| **invalid_password** | Heslo, které jste zadali, nemá očekávaný formát. |
+| **requiredField_password** | Zadejte prosím heslo |
+| **invalid_password** | Zadané heslo není v očekávaném formátu. |
 | **forgotpassword_link** | Zapomněli jste heslo? |
 | **createaccount_intro** | Nemáte účet? |
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
-| **cancel_message** | Uživatel zapomněl svoje heslo. |
+| **cancel_message** | Uživatel zapomněl svoje heslo |
 | **button_signin** | Přihlášení |
-| **social_intro** | Přihlaste se svým sociálním účtem. |
+| **social_intro** | Přihlaste se pomocí účtu na sociální síti |
   **remember_me** |Neodhlašovat|
 | **unknown_error** | Máme potíže vás přihlásit. Zkuste to prosím znova později. |
 
@@ -83,12 +83,12 @@ Následující příklad lokalizováno zprostředkovatele identity Facebook Arab
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **UserMessageIfInvalidPassword** | Vaše heslo není správné. |
-| **UserMessageIfClaimsPrincipalDoesNotExist** | Nedaří se nám najít váš účet. |
-| **UserMessageIfOldPasswordUsed** | Vypadá to, že jste použili staré heslo. |  
+| **UserMessageIfInvalidPassword** | Heslo je nesprávné. |
+| **UserMessageIfClaimsPrincipalDoesNotExist** | Jsme zdá vyhledejte svůj účet. |
+| **UserMessageIfOldPasswordUsed** | Vypadá to, použít staré heslo. |  
 | **DefaultMessage** | Neplatné uživatelské jméno nebo heslo. |  
 | **UserMessageIfUserAccountDisabled** | Váš účet je zamknutý. Obraťte se na pracovníka podpory k jeho odemčení a akci opakujte. |  
-| **UserMessageIfUserAccountLocked** | Váš účet je dočasně uzamčený, abyste zabránili neoprávněnému používání. Zkuste to znovu později. |  
+| **UserMessageIfUserAccountLocked** | Váš účet je dočasně uzamčený, abyste zabránili neoprávněnému používání. Opakujte akci později. |  
 | **AADRequestsThrottled** | V tomto okamžiku existuje příliš mnoho požadavků. Počkejte chvíli a zkuste to znovu. |  
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Zaregistrujte se a Samoobslužná uplatněna stránky prvky uživatelského rozhraní
@@ -97,28 +97,28 @@ Toto jsou ID pro definici obsahu s ID `api.localaccountsignup` nebo jakékoli de
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **ver_sent** | Ověřovací kód se odeslal na: |
+| **ver_sent** | Ověřovací kód se poslal na: |
 | **ver_but_default** | Výchozí |
 | **cancel_message** | Uživatel zrušil zadávání s vlastním potvrzením informací |
-| **preloader_alt** | Počkejte prosím. |
+| **preloader_alt** | Počkejte prosím |
 | **ver_but_send** | Poslat ověřovací kód |
 | **alert_yes** | Ano |
 | **error_fieldIncorrect** | Jeden nebo více polí se vyplní nesprávně. Zkontrolujte zadání a akci opakujte. |
 | **year** | Rok |
-| **verifying_blurb** | Počkejte prosím, než zpracujeme vaše údaje. |
+| **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
 | **button_cancel** | Zrušit |
 | **ver_fail_no_retry** | Provedli jste příliš mnoho pokusů o nesprávné. Zkuste to prosím znova později. |
 | **Měsíc** | Měsíc |
 | **ver_success_msg** | Ověřit e-mailovou adresu. Teď můžete pokračovat. |
-| **months** | leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
+| **months** | Leden, únor, březen, duben, může dne, dne, srpna, září, dne, dne, dne |
 | **ver_fail_server** | Máme potíže s ověřením vaší e-mailovou adresu. Zadejte platnou e-mailovou adresu a zkuste to znovu. |
 | **error_requiredFieldMissing** | Chybí povinné pole. Vyplňte všechna povinná pole a akci opakujte. |
-| **initial_intro** | Zadejte prosím následující údaje. |
+| **initial_intro** | Uveďte následující informace. |
 | **ver_but_resend** | Poslat nový kód |
 | **button_continue** | Vytvořit |
 | **error_passwordEntryMismatch** | Pole pro zadání hesla se neshodují. Do obou polí zadejte stejné heslo a zkuste to znovu. |
 | **ver_incorrect_format** | Nesprávný formát. |
-| **ver_but_edit** | Změnit e-mail |
+| **ver_but_edit** | Změnit e-mailu |
 | **ver_but_verify** | Ověřit kód |
 | **alert_no** | Ne |
 | **ver_info_msg** | Poslali jsme ověřovací kód do vaší doručené pošty. Zkopírujte jej do vstupního pole dole. |
@@ -126,9 +126,9 @@ Toto jsou ID pro definici obsahu s ID `api.localaccountsignup` nebo jakékoli de
 | **ver_fail_throttled** | Byly příliš mnoho žádostí o ověření tuto e-mailovou adresu. Prosím počkejte a zkuste to znovu. |
 | **helplink_text** | Co je to? |
 | **ver_fail_retry** | Tento kód je nesprávný. Zkuste to prosím znovu. |
-| **alert_title** | Zrušit zadávání údajů |
-| **required_field** | Tyto informace jsou požadovány. |
-| **alert_message** | Opravdu chcete zrušit zadávání údajů? |
+| **alert_title** | Zrušit zadávání vaše podrobnosti |
+| **required_field** | Tyto informace jsou nezbytné. |
+| **alert_message** | Opravdu chcete zrušit zadávání své údaje? |
 | **ver_intro_msg** | Ověření je nezbytné. Klepnutím na tlačítko Odeslat. |
 | **ver_input** | Ověřovací kód |
 
@@ -159,7 +159,7 @@ Toto jsou ID pro definici obsahu s ID `api.phonefactor`.
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **button_verify** | Zavolejte mi |
+| **button_verify** | Zavolej mi |
 | **country_code_label** | Kód země |
 | **cancel_message** | Uživatel zrušil ověřování službou Multi-Factor Authentication |
 | **text_button_send_second_code** | poslat nový kód |
@@ -167,32 +167,32 @@ Toto jsou ID pro definici obsahu s ID `api.phonefactor`.
 | **intro_mixed** | Máme následující číslo záznamu za vás. Nám můžete poslat kód prostřednictvím SMS nebo telefonní k vašemu ověření. |
 | **intro_mixed_p** | Pro vás máme následující čísla na záznam. Zvolte číslo, které můžou telefon nebo poslat kód prostřednictvím SMS k vašemu ověření. |
 | **button_verify_code** | Ověřit kód |
-| **requiredField_code** | Zadejte prosím ověřovací kód, který jste dostali. |
-| **invalid_code** | Zadejte prosím 6místný kód, který jste dostali. |
+| **requiredField_code** | Zadejte ověřovací kód, který jste dostali |
+| **invalid_code** | Zadejte prosím 6 číselným kódem, který jste dostali |
 | **button_cancel** | Zrušit |
 | **local_number_input_placeholder_text** | Telefonní číslo |
 | **button_retry** | Retry |
-| **alternative_text** | Nemám telefon. |
+| **alternative_text** | Nemám mi na telefon |
 | **intro_phone_p** | Pro vás máme následující čísla na záznam. Zvolte číslo, které nám můžete phone k vašemu ověření. |
 | **intro_phone** | Máme následující číslo záznamu za vás. Můžeme se telefonní k vašemu ověření. |
-| **enter_code_text_intro** | Zadejte níže ověřovací kód, nebo  |
-| **intro_entry_phone** | Níže zadejte číslo, na které můžeme zavolat, abychom vás ověřili. |
-| **intro_entry_sms** | Níže zadejte číslo, na které můžeme poslat kód přes SMS, abychom vás ověřili. |
+| **enter_code_text_intro** | Zadejte svůj ověřovací kód níže, nebo  |
+| **intro_entry_phone** | Zadejte níže zobrazené číslo, že jsme můžete phone k vašemu ověření. |
+| **intro_entry_sms** | Zadejte číslo níže, že vám můžeme poslat kód prostřednictvím SMS k vašemu ověření. |
 | **button_send_code** | Poslat kód |
-| **invalid_number** | Zadejte platné telefonní číslo. |
+| **invalid_number** | Zadejte prosím platné telefonní číslo |
 | **intro_sms** | Máme následující číslo záznamu za vás. Pošleme kód zprávou SMS k vašemu ověření. |
-| **intro_entry_mixed** | Níže zadejte číslo, na které můžeme poslat kód přes SMS nebo zavolat, abychom vás ověřili. |
+| **intro_entry_mixed** | Zadejte níže zobrazené číslo, které můžete poslat kód prostřednictvím SMS nebo telefonní k vašemu ověření. |
 | **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
 | **intro_sms_p** |Pro vás máme následující čísla na záznam. Zvolte číslo, že vám můžeme poslat kód prostřednictvím SMS k vašemu ověření. |
-| **requiredField_countryCode** | Vyberte prosím kód země. |
-| **requiredField_number** | Zadejte prosím svoje telefonní číslo. |
+| **requiredField_countryCode** | Vyberte prosím kód země |
+| **requiredField_number** | Zadejte prosím telefonní číslo |
 | **country_code_input_placeholder_text** |Země nebo oblast |
 | **number_label** | Telefonní číslo |
 | **error_tryagain** | Telefonní číslo, které jste zadali, je zaneprázdněná nebo není k dispozici. Zkontrolujte číslo a zkuste to znovu. |
 | **error_incorrect_code** | Ověřovací kód, který jste zadali, neodpovídá našim záznamům. Zkuste to znovu, nebo požádat o nový kód. |
 | **countryList** | {\"Výchozí\":\"země/oblast\",\"AF\":\"Afghánistán\",\"AX\":\"Land Ostrovy\",\"AL\":\"Albánie\",\"DZ\":\"Alžírsko\",\"AS\":\" Americká Samoa\",\"AD\":\"Andorra\",\"AO\":\"Angola\",\"AI\": \"Anguilla\",\"AQ\":\"Antarktida\",\"AG\":\"Antigua a Barbuda\",\"AR\":\"Argentina\",\"AM\":\"Arménie\",\"AW\":\"Aruba \",\"AU\":\"Austrálie\",\"na\":\"Rakousko\",\" AZ\":\"Ázerbájdžán\",\"BS\":\"Bahamy\",\"BH\":\" Bahrajn\",\"BD\":\"Bangladéš\",\"BB\":\"Barbados\",\" PODLE\":\"Bělorusko\",\"BE\":\"Belgie\",\"BZ\":\" Belize\",\"BJ\":\"Benin\",\"BM\":\"Bermudy\",\"BT\":\"Bhútán\",\"BO\":\"Bolívie\",\"BQ\":\" Bonaire\",\"BA\":\"Bosna a Hercegovina\",\"BW\":\"Botswana<span class="notransla class=""></span class="notransla> Menší odlehlé ostrovy\",\"VI\":\"USA Panenské ostrovy\",\"UG\":\"Uganda\",\"UA\":\"Ukrajina\",\"AE\":\" Spojené arabské emiráty\",\"GB\":\"Spojené království\",\"USA\":\"USA\",\"UY \":\"Uruguay\",\"UZ\":\"Uzbekistán\",\"VU\":\"Vanuatu\", \"Posouzení ohrožení zabezpečení\":\"Vatikán\",\"VE\":\"Venezuela\",\"VN\":\"Vietnam \",\"WF\":\"Wallis a Futuna\",\"YE\":\"Jemen\",\"ZM\":\"Zambie\",\"ZW\":\"Zimbabwe\"} |
-| **error_448** | Telefonní číslo, které jste zadali, není dostupné. |
-| **error_449** | Uživatel překročil počet opakování pokusů. |
+| **error_448** | Telefonní číslo, které jste zadali, nedostupný. |
+| **error_449** | Uživatel překročil počet pokusů o opakování. |
 | **verification_code_input_placeholder_text** | Ověřovací kód |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na stránce registrace vícefaktorového ověřování:

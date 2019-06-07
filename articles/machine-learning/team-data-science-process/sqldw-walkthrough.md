@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9da031fd4b35c2fa9126f545eecacf6143b18a1
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61045272"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478850"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](https://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
@@ -584,11 +584,11 @@ Pokud již jste vytvořili pracovní prostor služby Azure ml, můžete přímo 
 
 Chcete-li spustit ukázku soubor Pythonu následující balíčky jsou nutné skriptu IPython Notebook nebo Python. Pokud používáte službu Azure ml IPython Notebook, tyto balíčky se předem nainstalované.
 
-    - pandas
-    - numpy
-    - matplotlib
-    - modul pyodbc
-    - PyTables
+- pandas
+- numpy
+- matplotlib
+- modul pyodbc
+- PyTables
 
 Doporučené pořadí při sestavování Pokročilá analytická řešení v Azure ml s velkými datovými je následující:
 
