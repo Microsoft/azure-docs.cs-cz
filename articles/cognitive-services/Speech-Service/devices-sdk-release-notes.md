@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: wellsi
-ms.openlocfilehash: fab23c86ee2e8f654ac4a9619c39d05ee4e9e4c1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237941"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751806"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 Následující změny části seznamu v nejnovější vydané verze.
@@ -49,7 +49,7 @@ Následující změny části seznamu v nejnovější vydané verze.
 
 **Rozbíjející změny v** 
 
-*   [Instalace aplikace word probuzení](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application) bylo zjednodušené, je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
+*   [Instalace aplikace word probuzení](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) bylo zjednodušené, je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
 *   Došlo ke změně rozpoznávání probuzení aplikace word a jsou podporovány dvě události.
     - RecognizingKeyword, označuje, že výsledek řeči obsahuje text (neověřené) – klíčové slovo.
     - RecognizedKeyword, označuje, že – klíčové slovo rozpoznávání dokončit uznání daným klíčovým slovem.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd8362748c39389139e8384d0bad7e84d20128a4
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539005"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751621"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč – nejčastější dotazy
 
@@ -33,7 +33,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 **Otázka: Pokud chci používat model přizpůsobených hlasových, je rozhraní API stejný jako ten, který se používá pro standardní hlasy?**
 
-**A**: Při vlastní hlasové modelu se vytvoří a nasadí, získáte koncový bod jedinečný pro váš model. Mluví ve svých aplikacích pomocí hlasu, je nutné zadat koncový bod v požadavcích HTTP. Stejné funkce, která je k dispozici v rozhraní REST API pro převod textu na řeč služby je k dispozici pro váš vlastní koncový bod. Zjistěte, jak [vytvořit a používat vlastní koncový bod](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**A**: Při vlastní hlasové modelu se vytvoří a nasadí, získáte koncový bod jedinečný pro váš model. Mluví ve svých aplikacích pomocí hlasu, je nutné zadat koncový bod v požadavcích HTTP. Stejné funkce, která je k dispozici v rozhraní REST API pro převod textu na řeč služby je k dispozici pro váš vlastní koncový bod. Zjistěte, jak [vytvořit a používat vlastní koncový bod](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
 
 **Otázka: Je nutné připravit trénovací data k vytvoření vlastní hlasové modely samostatně?**
 
@@ -41,7 +41,7 @@ Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, projděte si
 
 Kolekce dat řeči je potřebný k vytvoření přizpůsobených hlasových modelu. Tato kolekce se skládá z sadu zvukové soubory nahrávek řeči a textový soubor přepis všech zvukových souborů. Výsledek hlasu digitální spoléhá na kvalitu trénovací data. K vytvoření dobré řeč, je důležité, že nahrávky jsou provedeny v tichém místnosti s mikrofonem stálého vysoce kvalitní. Svazku konzistentní vzhledem k aplikacím mluvící rychlost a mluvený rozteč a dokonce i konzistence v výrazové zkoušky prezentace řeči jsou nezbytné pro vytváření skvělých hlasových digitální. Důrazně doporučujeme záznam hlasů v sadě studio záznam.
 
-V současné době není poskytneme podporu online záznam nebo jste všechna doporučení studio záznam. Požadavek na formátu naleznete v tématu [postup přípravy záznamy a přepisy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+V současné době není poskytneme podporu online záznam nebo jste všechna doporučení studio záznam. Požadavek na formátu naleznete v tématu [postup přípravy záznamy a přepisy](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
 
 **Otázka: Které skripty používají k zaznamenání dat řeči pro školení způsobu vyjadřování vlastní?**
 
@@ -63,5 +63,5 @@ Zajišťuje další služby, které vám pomohou připravit skripty pro záznam.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Řešení potíží](troubleshooting.md)
+* [Odstraňování potíží](troubleshooting.md)
 * [Poznámky k verzi](releasenotes.md)

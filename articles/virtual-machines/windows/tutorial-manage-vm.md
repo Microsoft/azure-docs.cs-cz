@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/28/2018
+ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a23ca469aab582fed4b4e72f48bc2dd0b9dafe0
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60784890"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807798"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytvoření a správa virtuálních počítačů s Windows pomocí Azure Powershellu
 
@@ -181,13 +181,13 @@ Velikost virtuálního počítače určuje množství výpočetních prostředk�
 
 V následující tabulce jsou velikosti rozdělené podle způsobů použití.  
 
-| Type                     | Běžné velikosti           |    Popis       |
+| Typ                     | Běžné velikosti           |    Popis       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Obecné účely](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Vyvážený poměr procesorů k paměti. Ideální pro vývoj nebo testování a pro malé až střední řešení aplikací a dat.  |
-| [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fsv2, Fs, F             | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
+| [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)   | Fsv2            | Vysoký poměr procesorů k paměti. Vhodné pro aplikace se středním provozem, síťová zařízení a dávkové procesy.        |
 | [Optimalizované z hlediska paměti](sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, Dv2  | Vysoký poměr paměti k jádrům. Velmi vhodné pro relační databáze, střední a velké mezipaměti a analýzu v paměti.                 |
-| [Optimalizované z hlediska úložiště](sizes-storage.md)      | Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa.       |
+| [Optimalizované z hlediska úložiště](sizes-storage.md)      | Lsv2, Ls                | Vysoká propustnost disku a V/V. Ideální pro databáze NoSQL, SQL a velké objemy dat.                                                         |
+| [GPU](sizes-gpu.md)          | NV NVv2, síťového adaptéru, NCv2, NCv3, NDv2, ND.   | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa.       |
 | [Vysoký výkon](sizes-hpc.md) | H        | Naše procesorově nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
 ### <a name="find-available-vm-sizes"></a>Zjištění dostupných velikostí virtuálních počítačů

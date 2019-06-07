@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 891b64b8e31266360d718255dcd8e8a1f9fb597c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 81d660857eff63e0dfeeda400b168ea424152081
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306588"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808602"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Kurz: Vývoj modulů IoT Edge pro zařízení s Windows
 
@@ -173,53 +173,54 @@ Modul runtime IoT Edge potřebuje vaše přihlašovací údaje registru přetaho
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Uložte soubor deployment.template.json. 
 
-### Review the sample code
+### <a name="review-the-sample-code"></a>Revize ukázkového kódu
 
-The solution template that you created includes sample code for an IoT Edge module. This sample module simply receives messages and then passes them on. The pipeline functionality demonstrates an important concept in IoT Edge, which is how modules communicate with each other.
+Šablona řešení, který jste vytvořili obsahuje ukázkový kód pro modul IoT Edge. Tento modul bude jednoduše dostávat zprávy a předává je. Funkce kanálu ukazuje důležitý koncept v IoT Edge, což je, jak moduly komunikovat mezi sebou.
 
-Each module can have multiple *input* and *output* queues declared in their code. The IoT Edge hub running on the device routes messages from the output of one module into the input of one or more modules. The specific language for declaring inputs and outputs varies between languages, but the concept is the same across all modules. For more information about routing between modules, see [Declare routes](module-composition.md#declare-routes).
+Každý modul může mít více *vstupní* a *výstup* fronty deklarovat ve svém kódu. IoT Edge hub spuštěného v příslušném zařízení provádí směrování zpráv ve výstupu jeden modul do vstup jednu nebo více modulů. Konkrétní jazyk pro deklarování vstupy a výstupy se pohybuje mezi jazyky, ale je stejný koncept přes všechny moduly. Další informace o směrování mezi moduly, naleznete v tématu [trasy deklarovat](module-composition.md#declare-routes).
 
-1. In the **main.c** file, find the **SetupCallbacksForModule** function.
+1. V **main.c** souboru, vyhledejte **SetupCallbacksForModule** funkce.
 
-2. This function sets up an input queue to receive incoming messages. It calls the C SDK module client function [SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback). Review this function and see that it initializes an input queue called **input1**. 
+2. Tato funkce nastaví Vstupní fronta pro příjem příchozí zprávy. Volá funkci klienta modulu SDK pro jazyk C [SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback). Tato funkce zkontrolovat a zjistit, že inicializuje Vstupní fronta volá **vstup1**. 
 
-   ![Find the input name in the SetInputMessageCallback constructor](./media/tutorial-develop-for-windows/declare-input-queue.png)
+   ![V konstruktoru SetInputMessageCallback najít název vstupu](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
-3. Next, find the **InputQueue1Callback** function.
+3. Dále vyhledejte **InputQueue1Callback** funkce.
 
-4. This function processes received messages and sets up an output queue to pass them along. It calls the C SDK module client function [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync). Review this function and see that it initializes an output queue called **output1**. 
+4. Tato funkce zpracuje přijaté zprávy a nastaví výstupní fronty je předat. Volá funkci klienta modulu SDK pro jazyk C [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync). Zkontrolovat tuto funkci a zjistit, inicializuje do výstupní fronty volá **output1**. 
 
-   ![Find the output name in the SendEventToOutputAsync constructor](./media/tutorial-develop-for-windows/declare-output-queue.png)
+   ![V konstruktoru SendEventToOutputAsync najít název výstupu](./media/tutorial-develop-for-windows/declare-output-queue.png)
 
-5. Open the **deployment.template.json** file.
+5. Otevřít **deployment.template.json** souboru.
 
-6. Find the **modules** property of the $edgeAgent desired properties. 
+6. Najít **moduly** vlastnost $edgeAgent požadované vlastnosti. 
 
-   There should be two modules listed here. The first is **tempSensor**, which is included in all the templates by default to provide simulated temperature data that you can use to test your modules. The second is the **IotEdgeModule1** module that you created as part of this project.
+   Měla by existovat dva moduly, které jsou tady uvedené. První je **tempSensor**, které je součástí všech šablon ve výchozím nastavení poskytovat Simulovaná data o teplotě, můžete použít k otestování modulů. Druhým je **IotEdgeModule1** modul, který jste vytvořili jako součást tohoto projektu.
 
-   This modules property declares which modules should be included in the deployment to your device or devices. 
+   Tato vlastnost moduly deklaruje, které moduly by měl být součástí nasazení, aby vaše zařízení nebo zařízení. 
 
-7. Find the **routes** property of the $edgeHub desired properties. 
+7. Najít **trasy** vlastnost $edgeHub požadované vlastnosti. 
 
-   One of the functions if the IoT Edge hub module is to route messages between all the modules in a deployment. Review the values in the routes property. The first route, **IotEdgeModule1ToIoTHub**, uses a wildcard character (**\***) to include any message coming from any output queue in the IoTEdgeModule1 module. These messages go into *$upstream*, which is a reserved name that indicates IoT Hub. The second route, **sensorToIotEdgeModule1**, takes messages coming from the tempSensor module and routes them to the *input1* input queue of the IotEdgeModule1 module. 
+   Jedna z funkcí, pokud je modul IoT Edge hub ke směrování zpráv mezi všechny moduly v nasazení. Zkontrolujte hodnoty ve vlastnosti trasy. První trasa **IotEdgeModule1ToIoTHub**, používá zástupný znak ( **\*** ) Chcete-li zahrnout všechny zprávy z libovolné výstupní fronty v modulu IoTEdgeModule1. Tyto zprávy přejít do *$upstream*, který je vyhrazený název, který označuje služby IoT Hub. Druhá trasa **sensorToIotEdgeModule1**, přijímá zprávy přicházející z modulu tempSensor a směruje je do *vstup1* vstupní fronty IotEdgeModule1 modulu. 
 
-   ![Review routes in deployment.template.json](./media/tutorial-develop-for-windows/deployment-routes.png)
+   ![Projděte si v deployment.template.json trasy](./media/tutorial-develop-for-windows/deployment-routes.png)
 
 
-## Build and push your solution
+## <a name="build-and-push-your-solution"></a>Vytváření a nasdílení změn vašeho řešení
 
-You've reviewed the module code and the deployment template to understand some key deployment concepts. Now, you're ready to build the IotEdgeModule1 container image and push it to your container registry. With the IoT tools extension for Visual Studio, this step also generates the deployment manifest based on the information in the template file and the module information from the solution files. 
+Můžete si kód modulu a šablonu nasazení některé koncepce klíče nasazení. Teď budete připraveni k sestavení image kontejneru IotEdgeModule1 a nasdílejte ji do vašeho registru kontejneru. Pomocí rozšíření IoT tools for Visual Studio tento krok také vygeneruje manifest nasazení na základě informací v souboru šablony a informace o modulu ze souborů řešení. 
 
-### Sign in to Docker
+### <a name="sign-in-to-docker"></a>Přihlaste se k Dockeru
 
-Provide your container registry credentials to Docker on your development machine so that it can push your container image to be stored in the registry. 
+Zadejte svůj kontejner registru přihlašovací údaje pro Docker na svém vývojovém počítači tak, aby ji nasdílet image kontejnerů mají být uloženy v registru. 
 
-1. Open PowerShell or a command prompt.
+1. Otevřete prostředí PowerShell nebo příkazového řádku.
 
-2. Sign in to Docker with the Azure container registry credentials that you saved after creating the registry. 
+2. Přihlaste se k Dockeru pomocí přihlašovacích údajů registru kontejnerů Azure, které jste si uložili po vytvoření registru. 
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>

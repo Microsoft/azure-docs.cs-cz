@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: d1808bb88ac1bb27f2fd0652585521fbb2abdf56
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: a5790b5412023f06d9f9fd1d2ff61c11db4c53f3
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734665"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807478"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: Detekce anomálií ve streamovaných datech pomocí Azure Databricks
 
-[Azure Databricks](https://azure.microsoft.com/en-us/services/databricks/) je rychlá, snadná a spolupráci založené na Apache Sparku analytická služba. API detekce anomálií, součástí Azure Cognitive Services, zajišťuje monitorování dat časových řad. Použít ke spuštění detekce anomálií na streamovaných datech téměř v reálném čase v tomto kurzu pomocí Azure Databricks. Bude ingestovat data twitteru pomocí služby Azure Event Hubs a importujte je do Azure Databricks pomocí konektoru služby Event Hubs pro Spark. Potom použijete rozhraní API pro detekci anomálií na streamovaných datech. 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) je rychlá, snadná a spolupráci založené na Apache Sparku analytická služba. API detekce anomálií, součástí Azure Cognitive Services, zajišťuje monitorování dat časových řad. Použít ke spuštění detekce anomálií na streamovaných datech téměř v reálném čase v tomto kurzu pomocí Azure Databricks. Bude ingestovat data twitteru pomocí služby Azure Event Hubs a importujte je do Azure Databricks pomocí konektoru služby Event Hubs pro Spark. Potom použijete rozhraní API pro detekci anomálií na streamovaných datech. 
 
 Následující obrázek ukazuje běh aplikace:
 
@@ -164,7 +164,7 @@ V tomto kurzu použijete [Azure anomálií detektor API služeb Cognitive Servic
 
     |Hodnota |Popis  |
     |---------|---------|
-    |Name     | Název prostředku detekce anomálií.        |
+    |Název     | Název prostředku detekce anomálií.        |
     |Předplatné     | Předplatné Azure, které prostředek bude přidružen.        |
     |Location     | Umístění Azure.        |
     |Cenová úroveň     | Cenová úroveň služby. Další informace o cenách detekce anomálií, naleznete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |

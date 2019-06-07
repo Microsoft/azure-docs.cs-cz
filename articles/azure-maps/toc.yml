@@ -154,6 +154,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/data'
         - name: Služba geografické polohy
           href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: Služba Mobility
+          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Služba Render
           href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: Služba Route

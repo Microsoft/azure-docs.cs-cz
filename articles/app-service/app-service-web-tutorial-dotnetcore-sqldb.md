@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c83e14d65b30775f0dad54ab9ade1a7bed5ac821
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad211eef673731a856c4db99fe0b4712217b23e5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139471"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808478"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service
 
@@ -148,7 +148,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 
 ### <a name="create-connection-string"></a>Vytvoření připojovacího řetězce
 
-V následujícím řetězci nahraďte zástupné symboly *\<server_name>*, *\<db_username>* a *\<db_password>* hodnotami, které jste použili dřív.
+V následujícím řetězci nahraďte zástupné symboly *\<server_name>* , *\<db_username>* a *\<db_password>* hodnotami, které jste použili dřív.
 
 ```
 Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
@@ -182,7 +182,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 Dále nastavte proměnnou `ASPNETCORE_ENVIRONMENT` aplikace na hodnotu _Production_. Toto nastavení vám umožňuje zjistit, jestli je aplikace spuštěná v Azure, protože v místním vývojovém prostředí používáte SQLite a v prostředí Azure používáte SQL Database.
 
-Následující příklad nastaví `ASPNETCORE_ENVIRONMENT` nastavení aplikace, které v aplikaci Azure. Nahraďte zástupný symbol *\<app_name>*.
+Následující příklad nastaví `ASPNETCORE_ENVIRONMENT` nastavení aplikace, které v aplikaci Azure. Nahraďte zástupný symbol *\<app_name>* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -371,7 +371,7 @@ Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opět
 
 Při spuštění aplikace ASP.NET Core ve službě Azure App Service, můžete získat protokoly konzoly směrované do Cloud Shellu. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-Ukázkový projekt již následuje dokumentaci na webu [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) dvě změny konfigurace:
+Ukázkový projekt již následuje dokumentaci na webu [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) dvě změny konfigurace:
 
 - Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb.csproj*.
 - Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *Startup.cs*.

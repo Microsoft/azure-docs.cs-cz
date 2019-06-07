@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7678415b7ce505da7678a00a4bcf2d933e260530
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 122028217a78463fa2ceaed63248a74257206345
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303974"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808770"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj C# modul IoT Edge pro zařízení s Windows
 
@@ -60,7 +60,7 @@ Před zahájením tohoto kurzu měli jste prošli předchozího kurzu věnované
 
 Následující kroky vytvoření projektu modul IoT Edge pomocí Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
-### <a name="create-a-new-project"></a>Vytvořit nový projekt
+### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 Nástroje Azure IoT Edge poskytuje šablony projektů pro všechny podporované IoT Edge module jazyků v sadě Visual Studio. Tyto šablony mají všechny soubory a kód, který musíte nasadit pracovní modul pro testování IoT Edge, nebo získáte výchozí bod pro přizpůsobení šablony s vlastní obchodní logikou. 
 
@@ -104,16 +104,17 @@ Manifest nasazení sdílí přihlašovací údaje pro svůj registr kontejneru s
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Uložte soubor deployment.template.json. 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Výchozí modul kód přijímá zprávy ve vstupní frontě a předává je do výstupní fronty. Přidáme další kód tak, aby modul zpracovávat zprávy na hraničních zařízeních před předáním do služby IoT Hub. Aktualizace modulu tak, aby analyzuje data o teplotě v každé zprávě a pouze odešle zprávu do služby IoT Hub, pokud teplota překročí určitou prahovou hodnotu. 
 
-1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+1. V sadě Visual Studio, otevřete **CSharpModule** > **Program.cs**.
 
-2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
+2. Nahoře v oboru názvů **CSharpModule** přidejte tři příkazy **using** pro typy, které se použijí později:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

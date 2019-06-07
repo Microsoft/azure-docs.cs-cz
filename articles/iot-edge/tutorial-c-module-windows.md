@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303898"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808755"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: Vývoj modulu jazyka C IoT Edge pro zařízení s Windows
 
@@ -60,7 +60,7 @@ Před zahájením tohoto kurzu, by měl prošli předchozího kurzu věnovaného
 
 Následujícím postupem se vytvoří projekt modul IoT Edge, SDK pro jazyk C podle pomocí sady Visual Studio a rozšíření Azure IoT Edge Tools. Jakmile budete mít vytvořenou šablonu projektu, přidejte nový kód, aby modul odfiltruje zprávy podle jejich ohlášené vlastnosti. 
 
-### <a name="create-a-new-project"></a>Vytvořit nový projekt
+### <a name="create-a-new-project"></a>Vytvoření nového projektu
 
 Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastního kódu.
 
@@ -104,29 +104,33 @@ Manifest nasazení sdílí přihlašovací údaje pro svůj registr kontejneru s
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. Uložte soubor deployment.template.json. 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>Aktualizace modulu pomocí vlastního kódu
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Výchozí modul kód přijímá zprávy ve vstupní frontě a předává je do výstupní fronty. Přidáme další kód tak, aby modul zpracovávat zprávy na hraničních zařízeních před předáním do služby IoT Hub. Aktualizace modulu tak, aby analyzuje data o teplotě v každé zprávě a pouze odešle zprávu do služby IoT Hub, pokud teplota překročí určitou prahovou hodnotu. 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. Data ze snímače v tomto scénáři přicházejí ve formátu JSON. Pokud chcete filtrovat zprávy ve formátu JSON, importujte knihovnu JSON pro jazyk C. V tomto kurzu se používá Parson.
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. Stáhněte si [úložiště Parson GitHub](https://github.com/kgabis/parson). Kopírovat **parson.c** a **parson.h** soubory do **CModule** projektu.
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. V sadě Visual Studio, otevřete **CMakeLists.txt** soubor ze složky projektu CModule. Na začátku souboru importujte soubory Parson jako knihovnu **my_parson**.
 
       ```
-      add_library (my_parson parson.c parson.h)
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add **my_parson** to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. Přidat **my_parson** do seznamu knihoven v **target_link_libraries** část soubor CMakeLists.txt.
 
-   4. Save the **CMakeLists.txt** file.
+   4. Uložte soubor **CMakeLists.txt**.
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. Otevřít **CModule** > **main.c**. V dolní části seznamu #include, zahrnují přidání nového `parson.h` pro podporu JSON:
 
       ```c
       #include "parson.h"
