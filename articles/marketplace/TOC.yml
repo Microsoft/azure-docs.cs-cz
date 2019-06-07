@@ -326,39 +326,6 @@
               href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: Nabídka aplikace SaaS
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: Požadavky
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: Vytvoření nabídky aplikací SaaS
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: Karta nastavení nabídky
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: Karta Technické informace
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: Karta Plány
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: Karta informací o kanálech
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: Karta Testovací verze
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: Karta podrobností o prodejních místech
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: Karta Kontakty
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: Publikování nabídky
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: Aktualizace stávající nabídky
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: Rozhraní API naplnění SaaS
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: Registrace aplikace SaaS
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: Rozhraní API SaaS v1 (zastaralé)
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: Rozhraní API SaaS v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
         - name: Nabídka virtuálních počítačů
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:

@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 460d8756c437a1212aef054cf069be2bccac8c8a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 64accb70561d4c0282b3ee45935d955dba1c67c4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001363"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474532"
 ---
 # <a name="security-attributes-for-azure-services"></a>Atributy zabezpečení pro služby Azure
 
@@ -44,7 +44,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano | Použití skupin zabezpečení sítě (NSG) a Azure Application Gateway (nebo jiné softwarové zařízení) v uvedeném pořadí. |
 | Vynucené tunelování podpory| Ano | Sítě Azure poskytují vynucené tunelování. |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -93,7 +93,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a Firewalling podpory| Ano | Za veřejné více tenanty služby App Service zákazníci můžou nakonfigurovat seznamy ACL (omezení IP adres) zamezit povoleného příchozího provozu sítě.  Zobrazit [omezení přístupu službě Azure App Service](../app-service/app-service-ip-restrictions.md).  Služby App Service Environment se nasazuje přímo do virtuálních sítí a proto ji můžete zabezpečit pomocí skupin zabezpečení sítě. |
 | Vynucené tunelování podpory| Ano | Služby App Service Environment je možné nasadit do virtuální sítě zákazníka, kde je nakonfigurované vynucené tunelování. Pokud si zákazníci musí postupovat podle pokynů v [konfigurace služby App Service Environment pomocí vynuceného tunelování](../app-service/environment/forced-tunnel-support.md). |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -103,7 +103,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Authentication| Ano | Zákazníci mohou vytvářet aplikace ve službě App Service, které automaticky integrují s [Azure Active Directory (Azure AD)](../active-directory/index.md) i jinými poskytovateli identity kompatibilní OAuth; viz [ověřování a autorizace Azure App Service](../app-service/overview-authentication-authorization.md). Pro správu přístupu pro prostředky App Service veškerý přístup je řízen kombinaci instanční objekt Azure AD, ověření a role Azure RBAC Resource Manageru. |
+| Authentication| Ano | Zákazníci mohou vytvářet aplikace ve službě App Service, které automaticky integrují s [Azure Active Directory (Azure AD)](../active-directory/index.yml) i jinými poskytovateli identity kompatibilní OAuth; viz [ověřování a autorizace Azure App Service](../app-service/overview-authentication-authorization.md). Pro správu přístupu pro prostředky App Service veškerý přístup je řízen kombinaci instanční objekt Azure AD, ověření a role Azure RBAC Resource Manageru. |
 | Autorizace| Ano | Pro správu přístupu pro prostředky App Service veškerý přístup je řízen kombinaci instanční objekt Azure AD, ověření a role Azure RBAC Resource Manageru.  |
 
 
@@ -142,7 +142,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ne |  |
 | Vynucené tunelování podpory| Ne |  |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -191,7 +191,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano | Vynucené tunelování se podporuje pro zálohování virtuálních počítačů. Vynucené tunelování se nepodporuje pro pracovní postupy spouštěné ve virtuálních počítačích. |
 | Vynucené tunelování podpory| Ne |  |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -240,7 +240,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano | Pomocí pravidel brány firewall virtuální sítě. |
 | Vynucené tunelování podpory| Ne |  |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -261,7 +261,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Řízení a rovinou protokolování a auditování| Ano | Používat službu Log Analytics. |
 | Protokolování roviny dat a auditu| Ano | Používat službu Log Analytics. |
 
-### <a name="access-controls"></a>Ovládací prvky přístupu
+### <a name="access-controls"></a>Řízení přístupu
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -289,7 +289,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano (pouze úroveň Premium) |  |
 | Vynucené tunelování podpory| Ne |  |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -336,7 +336,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ne |  |
 | Vynucené tunelování podpory| neuvedeno | Relay je tunelu TLS  |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -385,7 +385,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano | Použití skupin zabezpečení sítě (NSG). |
 | Vynucené tunelování podpory| Ano | Sítě Azure poskytují vynucené tunelování. |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -433,7 +433,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano | Brány firewall na obě databáze a serveru úroveň; izolace pro sítě [spravovanou instanci](../sql-database/sql-database-managed-instance.md) pouze |
 | Vynucené tunelování podpory| Ano | [spravovaná instance](../sql-database/sql-database-managed-instance.md) prostřednictvím [Azure ExpressRoute](../expressroute/index.yml) sítě VPN |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -489,7 +489,7 @@ Tento článek shromažďuje společné atributy zabezpečení pro vybrané slu�
 | Izolace sítě a podporu funkce brány firewall| Ano | |
 | Vynucené tunelování podpory| neuvedeno |  |
 
-### <a name="detection"></a>Detekce
+### <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

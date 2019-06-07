@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0411e1ab76d010eae26142d681dc157a1eb776a8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481156"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752464"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Kurz: Integrace s Azure Active Directory Otsuka Shokai
 
@@ -79,14 +79,7 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránce, proveďte následující kroky:
-
-    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.otsuka-shokai.co.jp/S000000100`
-
-    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.otsuka-shokai.co.jp/ResponseOffice365`
-
-    > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Otsuka Shokai klienta](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+1. Na **nastavte si jednotné přihlašování pomocí SAML** stránka, aplikace je předem nakonfigurovaný a potřebné adresy URL se už předem vyplní s Azure. Uživatel musí uložte konfiguraci kliknutím **Uložit** tlačítko.
 
 1. Otsuka Shokai aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace Otsuka Shokai **nameidentifier** namapovat s **user.objectid**, takže budete muset kliknout na Upravit mapování atributů **upravit**  ikonu a změnit mapování atributů.
 
@@ -139,7 +132,7 @@ V této části vytvoříte testovacího uživatele na webu Azure Portal volá B
 1. Vyberte **nového uživatele** v horní části obrazovky.
 1. V **uživatele** vlastností, postupujte podle těchto kroků:
    1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
    1. Klikněte na možnost **Vytvořit**.
 
@@ -163,7 +156,7 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure d
 
 ### <a name="create-otsuka-shokai-test-user"></a>Vytvoření Otsuka Shokai testovacího uživatele
 
-V této části vytvoříte uživatele v Otsuka Shokai jako Britta Simon. Práce s [tým podpory Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) přidat uživatele na platformě Otsuka Shokai. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele B.Simon v Otsuka Shokai. Práce s [tým podpory Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) přidat uživatele na platformě Otsuka Shokai. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-sso"></a>Test SSO
 

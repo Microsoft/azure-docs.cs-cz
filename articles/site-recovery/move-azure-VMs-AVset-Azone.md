@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e26f9d344a4c11c335d1ea34998c848cbe3598a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793745"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753760"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesuňte virtuální počítače Azure do zóny dostupnosti
-Zóny dostupnosti v Azure pomáhají chránit vaše aplikace a data před selháními datových center. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99 % provozuschopnost virtuálních počítačů (VM). Ve vybraných oblastech se podporují zóny dostupnosti, jak je uvedeno v [co jsou zóny dostupnosti v Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).
+Zóny dostupnosti v Azure pomáhají chránit vaše aplikace a data před selháními datových center. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99 % provozuschopnost virtuálních počítačů (VM). Ve vybraných oblastech se podporují zóny dostupnosti, jak je uvedeno v [co jsou zóny dostupnosti v Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
 
 Ve scénáři, kde jsou vaše virtuální počítače nasazené jako *jednu instanci* v konkrétní oblasti kde chcete zlepšit dostupnost přesunutím tyto virtuální počítače v zóně dostupnosti, můžete to provést pomocí Azure Site Recovery. Tato akce může dále rozdělená na:
 
@@ -28,7 +28,7 @@ Ve scénáři, kde jsou vaše virtuální počítače nasazené jako *jednu inst
 
 ## <a name="check-prerequisites"></a>Kontrola předpokladů
 
-- Zkontrolujte, jestli má cílové oblasti [podpory pro zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). Zkontrolujte, že podle vaší volby [podporované zdrojové oblasti nebo cíle oblasti kombinaci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Proveďte informované rozhodnutí v cílové oblasti.
+- Zkontrolujte, jestli má cílové oblasti [podpory pro zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region). Zkontrolujte, že podle vaší volby [podporované zdrojové oblasti nebo cíle oblasti kombinaci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Proveďte informované rozhodnutí v cílové oblasti.
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](azure-to-azure-architecture.md).
 - Zkontrolujte [omezení podpory a požadavky](azure-to-azure-support-matrix.md).
 - Zkontrolujte oprávnění účtu. Pokud jste právě vytvořili bezplatný účet Azure, jste správcem vašeho předplatného. Pokud si nejste správce předplatného, pracujete s správce přiřazení potřebných oprávnění. Povolení replikace pro virtuální počítač a nakonec k cíli kopírování dat pomocí Azure Site Recovery, musíte mít:
@@ -86,7 +86,7 @@ Následující kroky vás provedou, když Pokud chcete povolit replikaci dat do 
 
 1. Na webu Azure Portal, vyberte **virtuálních počítačů**a vyberte virtuální počítač, který chcete přesunout do zóny dostupnosti.
 2. V **operace**vyberte **zotavení po havárii**.
-3. V **konfigurace zotavení po havárii** > **cílové oblasti**, vyberte cílovou oblast, do kterého budete replikovat. Zkontrolujte tuto oblast [podporuje](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones) zóny dostupnosti.
+3. V **konfigurace zotavení po havárii** > **cílové oblasti**, vyberte cílovou oblast, do kterého budete replikovat. Zkontrolujte tuto oblast [podporuje](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region) zóny dostupnosti.
 
     ![Výběr cílové oblasti](media/azure-vms-to-zones/enable-rep-1.PNG)
 

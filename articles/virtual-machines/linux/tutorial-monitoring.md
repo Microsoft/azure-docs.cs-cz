@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 921505e7f470d337d9e9e491c6db79930d487eb5
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169516"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754360"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Linuxem v Azure
 
@@ -50,7 +50,7 @@ Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Teď pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create) vytvořte virtuální počítač. Následující příklad vytvoří virtuální počítač *myVM*, a pokud klíče SSH ještě neexistují, vytvoří je v umístění *~/.ssh/*:
+Teď pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create) vytvořte virtuální počítač. Následující příklad vytvoří virtuální počítač *myVM*, a pokud klíče SSH ještě neexistují, vytvoří je v umístění *~/.ssh/* :
 
 ```azurecli-interactive
 az vm create \
@@ -117,7 +117,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 Virtuální počítač s Linuxem má vyhrazeného hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal následujícím způsobem:
 
 1. Na webu Azure Portal vyberte **Skupiny prostředků**, zvolte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
-1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z metrik *[hostitele]*.
+1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z metrik *[hostitele]* .
 
     ![Zobrazení metrik hostitele](./media/tutorial-monitoring/monitor-host-metrics.png)
 
@@ -136,7 +136,7 @@ Jsou k dispozici základní metriky hostitele, ale pokud chcete zobrazit podrobn
 Metriky virtuálního počítače lze zobrazit stejným způsobem jako metriky virtuálního počítače hostitele:
 
 1. Na webu Azure Portal zvolte **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
-1. Pokud chcete získat informace o výkonu virtuálního počítače, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z diagnostických metrik *[hosta]*.
+1. Pokud chcete získat informace o výkonu virtuálního počítače, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z diagnostických metrik *[hosta]* .
 
     ![Zobrazení metrik virtuálního počítače](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
@@ -147,7 +147,7 @@ Na základě konkrétních metrik výkonu můžete vytvořit výstrahy. Výstrah
 Následující příklad vytvoří výstrahu týkající se průměrného využití procesoru.
 
 1. Na webu Azure Portal zvolte **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
-2. Vyberte **Upozornění (klasická)**, potom zvolte **Přidat upozornění metriky (klasické)**, které se přidá do horní části okna upozornění.
+2. Vyberte **Upozornění (klasická)** , potom zvolte **Přidat upozornění metriky (klasické)** , které se přidá do horní části okna upozornění.
 3. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
 4. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
 5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
@@ -201,28 +201,27 @@ Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizac
 
 Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-Nové nasazení aktualizací pro virtuální počítač naplánujete vybráním **Naplánovat nasazení aktualizace** v horní části obrazovky **Správa aktualizací**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
+Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
-* **Název** – Zadejte jedinečný název pro identifikaci nasazení aktualizací.
-* **Klasifikace aktualizací** – Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Typy klasifikace jsou:
-  * Důležité aktualizace a aktualizace zabezpečení
-  * Další aktualizace
-* **Aktualizace k vyloučení** – Můžete zadat seznam názvů balíčků, které se mají při nasazování aktualizace přeskočit. Názvy balíčků podporují zástupné znaky (jako jsou například \*jádra\*).
+Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. **Nové nasazení aktualizací** otevře se stránka. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
 
-  ![Obrazovka nastavení plánu aktualizací](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
+| Vlastnost | Popis |
+| --- | --- |
+| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+|Operační systém| Linux nebo Windows|
+| Skupiny aktualizace |Pro počítače v Azure definujte dotaz na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. </br></br>Pro počítače mimo Azure vyberte existující uložené výsledky hledání a vyberte skupinu počítačů mimo Azure zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/automation-update-management.md#using-dynamic-groups)|
+| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../../azure-monitor/platform/computer-groups.md) |
+|Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
+|Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](../../automation/automation-update-management.md#inclusion-behavior) |
+|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
+| Předběžné skripty a pozálohovacích skriptů|Vyberte skripty spouštěné před a po nasazení|
+| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
+| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
-* **Nastavení plánu** – Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času, nebo zadat jiný čas.
-  Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. Pokud chcete nastavit plán opakování, vyberte možnost Opakující se v části Opakování.
+Nasazení aktualizací můžete vytvořit také prostřednictvím kódu programu. Informace o vytvoření nasazení aktualizace pomocí rozhraní REST API najdete v tématu [vytvoření konfigurace aktualizace softwaru -](/rest/api/automation/softwareupdateconfigurations/create). Je také ukázkové sady runbook, který slouží k vytvoření týdenní aktualizace nasazení. Další informace o této sady runbook najdete v tématu [vytvořte týdenní nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
-  ![Obrazovka nastavení plánu aktualizací](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
-
-* **Časové období údržby (minuty)** – Zadejte časové období, ve kterém má dojít k nasazení aktualizací. Pomůžete tím zajistit, že se změny provedou v rámci vašich definovaných časových intervalů pro správu a údržbu.
-
-Jakmile dokončíte konfiguraci plánu, vyberte možnost **Vytvořit**, která vás vrátí na řídicí panel stavu.
+Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit** a vrátíte se na řídicí panel stavu.
 Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, který jste vytvořili.
-
-> [!WARNING]
-> V případě aktualizací, které vyžadují restartování, se virtuální počítač restartuje automaticky.
 
 ### <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 

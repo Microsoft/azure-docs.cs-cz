@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 32e92cb8cd6cd5d16ea8d38d178bb440420e6784
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa423fc441c50c774a9670feec64d0f844a4f5ec
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712115"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755277"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorovat a aktualizovat virtuální počítač s Windows v Azure
 
@@ -168,29 +168,25 @@ Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající va�
 
 Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
-* **Název** – Zadejte jedinečný název pro identifikaci nasazení aktualizací.
-* **Klasifikace aktualizací** – Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Typy klasifikace jsou:
-  * Důležité aktualizace
-  * Aktualizace zabezpečení
-  * Kumulativní aktualizace
-  * Balíčky funkcí
-  * Aktualizace Service Pack
-  * Aktualizace definic
-  * Nástroje
-  * Aktualizace
+Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. **Nové nasazení aktualizací** otevře se stránka. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
 
-* **Nastavení plánu** – Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času, nebo zadat jiný čas.
-  Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. Pokud chcete nastavit plán opakování, klikněte na možnost Opakovat v části Opakování.
+| Vlastnost | Popis |
+| --- | --- |
+| Name |Jedinečný název pro identifikaci nasazení aktualizace. |
+|Operační systém| Linux nebo Windows|
+| Skupiny aktualizace |Pro počítače v Azure definujte dotaz na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. </br></br>Pro počítače mimo Azure vyberte existující uložené výsledky hledání a vyberte skupinu počítačů mimo Azure zahrnout do nasazení. </br></br>Další informace najdete v tématu [dynamické skupiny](../../automation/automation-update-management.md#using-dynamic-groups)|
+| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../../azure-monitor/platform/computer-groups.md) |
+|Klasifikacích aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
+|Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](../../automation/automation-update-management.md#inclusion-behavior) |
+|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
+| Předběžné skripty a pozálohovacích skriptů|Vyberte skripty spouštěné před a po nasazení|
+| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
+| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
-  ![Obrazovka nastavení plánu aktualizací](./media/tutorial-monitoring/manageupdates-schedule-win.png)
-
-* **Časové období údržby (minuty)** – Zadejte časové období, ve kterém má dojít k nasazení aktualizací.  Pomůžete tím zajistit, že se změny provedou v rámci vašich definovaných časových intervalů pro správu a údržbu.
+Nasazení aktualizací můžete vytvořit také prostřednictvím kódu programu. Informace o vytvoření nasazení aktualizace pomocí rozhraní REST API najdete v tématu [vytvoření konfigurace aktualizace softwaru -](/rest/api/automation/softwareupdateconfigurations/create). Je také ukázkové sady runbook, který slouží k vytvoření týdenní aktualizace nasazení. Další informace o této sady runbook najdete v tématu [vytvořte týdenní nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit** a vrátíte se na řídicí panel stavu.
 Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, který jste vytvořili.
-
-> [!WARNING]
-> V případě aktualizací, které vyžadují restartování, se virtuální počítač restartuje automaticky.
 
 ### <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 

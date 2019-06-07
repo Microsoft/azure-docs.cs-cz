@@ -56,7 +56,7 @@ sections:
         className: cardsD
         items:
           - title: Rozhraní API služby Time Series Insights verze GA
-            html: <p><a href="rest/api/time-series-insights/ga">Přístup k datům</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Syntaxe dotazů</a></p>
+            html: <p><a href="/rest/api/time-series-insights/ga">Přístup k datům</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Syntaxe dotazů</a></p>
           - title: Rozhraní API služby Time Series Insights verze Preview
             html: <p><a href="/rest/api/time-series-insights/preview-query">Rozhraní API pro dotazy</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Rozhraní API pro modely</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Rozhraní API pro prostředí</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Rozhraní API služby Time Series pro výrazy</a></p>
           - title: Klientská sada SDK
