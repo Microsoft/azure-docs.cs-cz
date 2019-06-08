@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 8439da94c770bee313a1ae1d1da5df30683cd2ad
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: db431d7815cfcc006563bd6da438154ef77ae6e2
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155713"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66814705"
 ---
 ## <a name="cli-shell"></a>Rozhraní příkazového řádku prostředí
 
 Doporučuje se použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) ke spuštění příkazů rozhraní příkazového řádku. **Cloud Shell** je zdarma, interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Ve službě Cloud Shell jsou předinstalované obvyklé nástroje Azure a jsou nakonfigurované pro použití s vaším účtem. Poskytuje možnost vybrat si prostředí, která nejlépe vyhovuje stylu vaší práce. Uživatelé Linuxu si mohou vybrat Bash. Uživatelé Windows se mohou rozhodnout pro PowerShell.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+Můžete také nainstalovat rozhraní příkazového řádku místně. Zobrazit [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) pokyny pro vaši platformu.
 
-### <a name="login"></a>Přihlásit
+### <a name="sign-in"></a>Přihlášení
 
-Pokud chcete začít používat rozhraní příkazového řádku prostředí (v cloudu nebo místně), spusťte `az login` vytvořit připojení k Azure.
+Použití místní instalaci rozhraní příkazového řádku vyžaduje přihlášení do Azure. Tento krok není povinný pro Azure Cloud Shell. Přihlaste se `az login` příkazu.
 
 Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě budete muset otevřít stránku prohlížeče a postupujte podle pokynů v příkazovém řádku zadejte autorizační kód po přejití do https://aka.ms/devicelogin v prohlížeči.
 
@@ -31,7 +31,7 @@ Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, ud
 
 Mnoho příkazů rozhraní příkazového řádku Media Services umožňují předat parametr s názvem souboru. Pokud používáte **Cloud Shell**, můžete nahrát soubor do vašeho clouddrive (použijte PowerShell nebo Bash). 
 
-![Nahrát soubory]
+![Nahrání souborů]
 
 Určuje, zda používáte místní rozhraní příkazového řádku nebo **Cloud Shell**, budete muset zadat cestu k souboru podle operačního systému nebo službě Cloud Shell (Bashe nebo Powershellu), kterou používáte. Dole najdete několik příkladů:
 
