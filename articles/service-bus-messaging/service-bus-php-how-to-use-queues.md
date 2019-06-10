@@ -163,7 +163,7 @@ catch(ServiceException $e){
 }
 ```
 
-Zprávy odeslané do (a přijatých z) služby Service Bus jsou instance front [BrokeredMessage][BrokeredMessage] třídy. [BrokeredMessage] [ BrokeredMessage] objekty mají sadu standardních metod a vlastností, které se používají k uložení vlastních vlastností aplikace a tělo libovolnými aplikačními daty.
+Zprávy odeslané do (a přijatých z) služby Service Bus jsou instance front [BrokeredMessage][BrokeredMessage] třídy. [BrokeredMessage][BrokeredMessage] objekty mají sadu standardních metod a vlastností, které se používají k uložení vlastních vlastností aplikace a tělo libovolnými aplikačními daty.
 
 Fronty Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených ve frontě není omezený, ale celková velikost zpráv držených ve frontě omezená je. Tento horní limit velikosti fronty je 5 GB.
 
