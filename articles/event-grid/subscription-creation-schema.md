@@ -35,8 +35,8 @@ Název odběru události musí být dlouhý 3 až 64 znaků a může obsahovat p
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| cíl | objekt | Objekt, který definuje koncový bod. |
-| Filtr | objekt | Volitelné pole k filtrování typů událostí. |
+| destination | objekt | Objekt, který definuje koncový bod. |
+| filter | objekt | Volitelné pole k filtrování typů událostí. |
 
 ### <a name="destination-object"></a>cílový objekt
 
