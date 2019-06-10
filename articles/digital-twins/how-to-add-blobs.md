@@ -57,10 +57,10 @@ Metadata objektu blob JSON odpovídá následující model:
 | **name** |String | Lidské – popisný název pro objekt blob |
 | **type** | String | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
 | **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
-| **Podtyp** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
+| **subtype** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | Podtyp ID pro tento objekt blob - nemůžou používat *podtyp* a *subtypeId* |
 | **description** | String | Vlastní popis objektu blob |
-| **sdílení** | String | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
+| **sharing** | String | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
 
 Metadata objektu BLOB se vždy uvedené jako první blok s **Content-Type** `application/json` nebo stejně jako `.json` souboru. Data souborů zadaný v druhém bloků dat a může být libovolný podporovaný typ MIME.
 
@@ -115,9 +115,9 @@ Jednotlivě vrácené objekty BLOB splňovat následující schéma JSON:
 | **parentId** | String | Nadřazená entita přidružení objektu blob k (mezery, zařízení nebo uživatelů) |
 | **type** | String | Nelze použít typ objektu blob - *typ* a *identifikátor typeId.*  |
 | **typeId** | Integer | ID typu objektu blob - nelze použít *typ* a *identifikátor typeId.* |
-| **Podtyp** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
+| **subtype** | String | Nelze použít podtypu objektu blob - *podtyp* a *subtypeId* |
 | **subtypeId** | Integer | Podtyp ID pro tento objekt blob - nemůžou používat *podtyp* a *subtypeId* |
-| **sdílení** | String | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
+| **sharing** | String | Určuje, zda objekt blob může být na úrovni shared – výčet [`None`, `Tree`, `Global`] |
 | **description** | String | Vlastní popis objektu blob |
 | **contentInfos** | Pole | Určuje informace nestrukturovaných metadata, včetně verze |
 | **fullName** | String | Úplný název objektu blob |
