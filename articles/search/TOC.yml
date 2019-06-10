@@ -163,24 +163,28 @@
       items:
         - name: Přehled indexerů
           href: search-indexer-overview.md
-        - name: Indexer pro Blob Storage
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Indexer pro Table Storage
+        - name: Indexer pro Azure Table Storage
           href: search-howto-indexing-azure-tables.md
-        - name: Indexer pro SQL DB
+        - name: Indexer pro Azure SQL DB
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Indexer pro Cosmos DB
+        - name: Indexer pro Azure Cosmos DB
           href: search-howto-index-cosmosdb.md
-        - name: 'Indexování objektů blob 1:N'
-          href: search-howto-index-one-to-many-blobs.md
-        - name: Indexování objektů blob CSV
-          href: search-howto-index-csv-blobs.md
-        - name: Indexování objektů blob JSON
-          href: search-howto-index-json-blobs.md
+        - name: Indexer pro Azure Blob Storage
+          items:
+            - name: Nastavení indexeru objektů blob
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 'Indexování objektů blob 1:N'
+              href: search-howto-index-one-to-many-blobs.md
+            - name: Indexování objektů blob CSV
+              href: search-howto-index-csv-blobs.md
+            - name: Indexování objektů blob JSON
+              href: search-howto-index-json-blobs.md
+        - name: Plánování indexerů
+          href: search-howto-schedule-indexers.md
+        - name: Pole map
+          href: search-indexer-field-mappings.md
         - name: Připojení k virtuálním počítačům s SQL Serverem
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: Mapování polí
-          href: search-indexer-field-mappings.md
         - name: Řešení běžných potíží
           href: search-indexer-troubleshooting.md
     - name: Rozšíření s využitím AI

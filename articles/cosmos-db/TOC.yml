@@ -533,8 +533,8 @@
           href: how-to-sql-subquery.md
     - name: Kanál změn
       items:
-        - name: Protokoly triggerů služby Azure Cosmos DB
-          href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Zásady připojení triggerů Azure Cosmos DB
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: Několik triggerů Azure Cosmos DB
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Řešení potíží s triggery Azure Cosmos DB

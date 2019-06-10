@@ -1,0 +1,30 @@
+- name: Dokumentace k vysokovýkonnému výpočetnímu prostředí (HPC)
+  items:
+    - name: Přehled
+      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+    - name: Konfigurace
+      items:
+        - name: Optimalizace pro Linux
+          href: configure.md
+        - name: Povolení sítí Infiniband
+          href: enable-infiniband.md
+    - name: Nastavení MPI
+      href: setup-mpi.md
+    - name: Škálování aplikací
+      href: compiling-scaling-applications.md
+    - name: Virtuální počítače
+      items:
+        - name: Řada HB
+          items:
+            - name: Přehled
+              href: hb-series-overview.md
+            - name: Výkon
+              href: hb-series-performance.md
+        - name: Řada HC
+          items:
+            - name: Přehled
+              href: hc-series-overview.md
+            - name: Výkon
+              href: hc-series-performance.md
+        - name: Známé problémy s virtuálními počítači řady HB a HC
+          href: hb-hc-known-issues.md

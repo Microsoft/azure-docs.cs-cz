@@ -13,7 +13,7 @@ metadata:
   ms.date: 02/14/2019
   ms.author: philmea
 abstract:
-  description: 'Služba Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s nejnovějšími dostupnými mapovými daty k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps je sada rozhraní REST API kompatibilní s Azure One API pro mapy, hledání, směrování, provoz, časová pásma, geografické polohy, geofencing, data map a prostorové operace doplněná o sady SDK pro web and Android. Zajišťuje snadný, flexibilní a přenositelný vývoj napříč několika platformami.'
+  description: 'Služba Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s nejnovějšími dostupnými mapovými daty k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps je sada rozhraní REST API kompatibilní s Azure One API pro mapy, hledání, směrování, provoz, mobilitu, časová pásma, geografické polohy, geofencing, data map a prostorové operace doplněná o sady SDK pro web and Android. Zajišťuje snadný, flexibilní a přenositelný vývoj napříč několika platformami.'
 sections:
   - title: Zprovoznění během 5 minut
     items:
@@ -54,4 +54,4 @@ sections:
           - title: JavaScript
             html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Mapový ovládací prvek</a></p>'
           - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Datová služba</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Služba geografické polohy</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Služba Spatial</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Datová služba</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Služba geografické polohy</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Služba Mobility</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Služba Render</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Služba Route</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Služba Search</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Služba Spatial</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Služba Timezone</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Služba Traffic</a></p>'

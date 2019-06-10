@@ -86,6 +86,9 @@
     - name: Pracovní prostor
       displayName: concept definitions architecture
       href: concept-workspace.md
+    - name: Cílový výpočetní objekt
+      displayName: concept definitions architecture
+      href: concept-compute-target.md
     - name: Vizuální rozhraní
       displayName: concept
       href: ui-concept-visual-interface.md
@@ -95,15 +98,15 @@
     - name: Správa modelů (MLOps)
       displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: Opakovaně použitelné kanály ML
+      href: concept-ml-pipelines.md
     - name: Interpretovatelnost modelů
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: Zrychlení pomocí FPGA
+    - name: Přehled FPGA
       href: concept-accelerate-with-fpgas.md
-    - name: Optimalizace s využitím ONNX a modulu runtime ONNX
+    - name: ONNX a modul runtime ONNX
       href: concept-onnx.md
-    - name: Kanály Machine Learningu
-      href: concept-ml-pipelines.md
     - name: Zabezpečení
       items:
         - name: Přehled zabezpečení podniku

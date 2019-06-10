@@ -61,19 +61,18 @@
       href: security-center-policies-overview.md
     - name: Porovnání standardních hodnot s využitím monitorování Integrity souborů
       href: security-center-file-integrity-monitoring-baselines.md
-      items:
-        - name: Shromažďování dat
-          href: security-center-enable-data-collection.md
-        - name: Předdefinované zásady zabezpečení
-          href: security-center-policy-definitions.md
-        - name: E-mailová oznámení
-          href: security-center-provide-security-contact-details.md
-        - name: Cenová úroveň
-          href: security-center-pricing.md
-        - name: Konfigurace zabezpečení
-          href: security-center-customize-os-security-config.md
-        - name: Viditelnost v rámci celého tenanta
-          href: security-center-management-groups.md
+    - name: Shromažďování dat
+      href: security-center-enable-data-collection.md
+    - name: Předdefinované zásady zabezpečení
+      href: security-center-policy-definitions.md
+    - name: E-mailová oznámení
+      href: security-center-provide-security-contact-details.md
+    - name: Cenová úroveň
+      href: security-center-pricing.md
+    - name: Konfigurace zabezpečení
+      href: security-center-customize-os-security-config.md
+    - name: Viditelnost v rámci celého tenanta
+      href: security-center-management-groups.md
     - name: Implementace doporučení pro zabezpečení
       href: security-center-recommendations.md
       items:
