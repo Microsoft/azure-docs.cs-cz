@@ -69,7 +69,7 @@ Jsou podporovány následující typy dat v modelů vytvořených pomocí **seri
 | double |dvojité přesnosti s plovoucí desetinnou čárkou číslo s desetinnou čárkou |
 | int |32bitové celé číslo |
 | float |číslo s plovoucí desetinnou čárkou desetinnou čárkou a jednoduchou přesností |
-| Long |dlouhé celé číslo |
+| long |dlouhé celé číslo |
 | int8\_t |8bitové celé číslo |
 | int16\_t |16bitové celé číslo |
 | int32\_t |32bitové celé číslo |
@@ -78,8 +78,8 @@ Jsou podporovány následující typy dat v modelů vytvořených pomocí **seri
 | ascii\_char\_ptr |Řetězec ASCII |
 | EDM\_DATE\_TIME\_OFFSET |posun času datum |
 | EDM\_GUID |GUID |
-| EDM\_BINÁRNÍ |binary |
-| DEKLAROVAT\_– STRUKTURA |Komplexní datový typ. |
+| EDM\_BINARY |binary |
+| DECLARE\_STRUCT |Komplexní datový typ. |
 
 Začněme s posledním datovým typem. **DECLARE\_struktura** umožňuje definovat komplexních datových typů, které jsou seskupeními primitivní typy. Tyto skupiny umožňuje definovat model, který vypadá takto:
 
