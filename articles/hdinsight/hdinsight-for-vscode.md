@@ -306,20 +306,20 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
 
     | name | description | type | 
     | :- | :- | :- | 
-    | soubor | Soubor obsahující aplikaci k provedení | Cesta (povinné) | 
+    | file | Soubor obsahující aplikaci k provedení | Cesta (povinné) | 
     | proxyUser | Uživatel k zosobnění při spuštění úlohy | string | 
     | className | Hlavní třída Java/Spark aplikace | string |
     | args | Argumenty příkazového řádku pro aplikaci | seznam řetězců | 
-    | Kromě souborů JAR | Kromě souborů JAR pro použití v této relaci | Seznam řetězců | 
+    | jars | Kromě souborů JAR pro použití v této relaci | Seznam řetězců | 
     | pyFiles | Soubory Pythonu, který se má použít v této relaci | Seznam řetězců |
-    | Soubory | soubory, který se má použít v této relaci | Seznam řetězců |
+    | files | soubory, který se má použít v této relaci | Seznam řetězců |
     | driverMemory | Velikost paměti pro účely driver procesu | string |
     | driverCores | Počet jader pro účely driver procesu | int |
     | executorMemory | Množství paměti podle proces prováděcího modulu | string |
     | executorCores | Počet jader pro každý prováděcího modulu | int |
     | numExecutors | Počtu prováděcích procesů ke spuštění pro tuto relaci | int |
-    | archivy | Archivuje se použije v této relaci | Seznam řetězců |
-    | fronty | Název fronty YARN, ke které odeslání | string |
+    | archives | Archivuje se použije v této relaci | Seznam řetězců |
+    | queue | Název fronty YARN, ke které odeslání | string |
     | name | Název této relace | string |
     | conf | Vlastnosti konfigurace Spark | Mapování klíč = val |
 
@@ -332,7 +332,7 @@ Odešlete soubor, Všimněte si, že složka .vscode je automaticky přidán do 
     | appId | Id aplikace pro tuto relaci |  String |
     | appInfo | Informace o podrobné aplikace | Mapování klíč = val |
     | log | Řádky protokolu | seznam řetězců |
-    | stav |   Stav služby batch | string |
+    | state |   Stav služby batch | string |
 
 >[!NOTE]
 >Přiřazené konfigurace livy se zobrazí v podokně výstupů když odešlete skript.
