@@ -38,7 +38,7 @@ Pomocí následující požadavek HTTP PUT můžete vytvořit nový Azure Load b
 |subscriptionId   |  path       |  True       |   řetězec      |  Přihlašovací údaje předplatného, které jedinečně identifikují předplatné Microsoft Azure. ID předplatného je součástí identifikátoru URI pro každé volání služby.      |
 |resourceGroupName     |     path    | True        |  řetězec       |   Název skupiny prostředků.     |
 |loadBalancerName     |  path       |      True   |    řetězec     |    Název nástroje pro vyrovnávání zatížení.    |
-|verze API-version    |   query     |  True       |     řetězec    |  Verze rozhraní API klienta.      |
+|api-version    |   query     |  True       |     řetězec    |  Verze rozhraní API klienta.      |
 
 
 
