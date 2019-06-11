@@ -191,10 +191,10 @@ Otevřít definici aplikace logiky v zobrazení kódu, přejděte na **HTTP** č
 | Element | Požaduje se | Popis | 
 | ------- | -------- | ----------- | 
 | tenant | Ano | Identifikátor GUID pro tenanta Azure AD | 
-| Cílová skupina | Ano | Identifikátor GUID pro cílový prostředek, kterou chcete získat přístup, který je ID klienta z identity aplikace pro webové aplikace nebo aplikace API | 
+| audience | Ano | Identifikátor GUID pro cílový prostředek, kterou chcete získat přístup, který je ID klienta z identity aplikace pro webové aplikace nebo aplikace API | 
 | clientId | Ano | Identifikátor GUID pro klienta žádosti o přístup, který je ID klienta z identity aplikace pro svou aplikaci logiky | 
-| Tajný kód | Ano | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
-| Typ | Ano | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. | 
+| secret | Ano | Klíč nebo heslo z identity aplikace pro klienta, který žádá o přístupový token | 
+| type | Ano | Typ ověřování. ActiveDirectoryOAuth ověřování, je hodnota `ActiveDirectoryOAuth`. | 
 |||| 
 
 Příklad:
