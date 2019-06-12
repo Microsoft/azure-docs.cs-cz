@@ -71,7 +71,7 @@ Tento článek obsahuje vlastní kód, který můžete použít v jednotlivých 
 | eventLevel |   | Úroveň události. (Povinné) |
 | eventTime |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
 | recordType |   | Typ záznamu sledování. Povolená hodnota je **vlastní**. (Povinné) |
-| záznam |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
+| record |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování B2B protokolu
