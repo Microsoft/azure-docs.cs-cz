@@ -59,7 +59,7 @@ Tento článek obsahuje vlastní kód, který můžete použít v jednotlivých 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
 | sourceType |   | Typ spuštění zdroje. Povolené hodnoty jsou **Microsoft.Logic/workflows** a **vlastní**. (Povinné) |
-| Zdroj |   | Pokud je typ zdrojového **Microsoft.Logic/workflows**, informace o zdroji je potřeba postupovat podle tohoto schématu. Pokud je typ zdrojového **vlastní**, schéma je JToken. (Povinné) |
+| source |   | Pokud je typ zdrojového **Microsoft.Logic/workflows**, informace o zdroji je potřeba postupovat podle tohoto schématu. Pokud je typ zdrojového **vlastní**, schéma je JToken. (Povinné) |
 | systemId | String | ID logiku aplikace systému. (Povinné) |
 | runId | String | ID spuštění aplikace logiky (Povinné) |
 | operationName | String | Název operace (například akce nebo triggeru). (Povinné) |
@@ -69,9 +69,9 @@ Tento článek obsahuje vlastní kód, který můžete použít v jednotlivých 
 | correlationId | String | ID korelace ke korelaci zprávy. (Volitelné) |
 | clientRequestId | String | Klienta můžete naplnit ho ke korelaci zprávy. (Volitelné) |
 | eventLevel |   | Úroveň události. (Povinné) |
-| čas události |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
+| eventTime |   | Čas události ve formátu RRRR-MM-DDTHH:MM:SS.00000Z UTC. (Povinné) |
 | recordType |   | Typ záznamu sledování. Povolená hodnota je **vlastní**. (Povinné) |
-| záznam |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
+| record |   | Vlastní typ záznamu. Povolený formát je JToken. (Povinné) |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>Schémata sledování B2B protokolu
