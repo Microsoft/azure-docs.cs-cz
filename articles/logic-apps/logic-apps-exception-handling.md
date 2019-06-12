@@ -82,8 +82,8 @@ Nebo můžete ručně zadat zásady opakovaných pokusů v `inputs` část pro a
 
 | Hodnota | Type | Popis |
 |-------|------|-------------|
-| <*minimální interval*> | String | Pro zásady s exponenciálním intervalem, nejmenší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*maximum-interval*> | String | Pro zásady s exponenciálním intervalem, největší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | String | Pro zásady s exponenciálním intervalem, nejmenší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | String | Pro zásady s exponenciálním intervalem, největší interval intervalu namátkou vybraného v [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Tady je další informace o typech jiné zásady.
