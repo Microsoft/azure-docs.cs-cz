@@ -63,8 +63,8 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | as2To | String | Příjemce zprávy AS2 název ze záhlaví zprávy AS2. (Povinné) |
 | as2From | String | Název odesílatele zprávy AS2 od záhlaví zprávy AS2. (Povinné) |
 | agreementName | String | Název smlouvy AS2, ke které se řeší zprávy. (Volitelné) |
-| směr | String | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| ID zprávy | String | ID zprávy AS2 od záhlaví zprávy AS2 (volitelné) |
+| direction | String | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| messageId | String | ID zprávy AS2 od záhlaví zprávy AS2 (volitelné) |
 | dispositionType |String | Hodnota typu dispozice zpráva dispozice upozornění (zprávy MDN.). (Volitelné) |
 | fileName | String | Název souboru z hlavičky zprávy AS2. (Volitelné) |
 | isMessageFailed |Boolean | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
@@ -116,8 +116,8 @@ Ke sledování úspěšnosti, chyby a vlastnosti zprávy pro transakce business-
 | as2To | String | Jméno partnera, který obdrží zprávu AS2. (Povinné) |
 | as2From | String | Jméno partnera, který odešle zprávu AS2. (Povinné) |
 | agreementName | String | Název smlouvy AS2, ke které se řeší zprávy. (Volitelné) |
-| směr |String | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
-| ID zprávy | String | ID zprávy AS2 (Volitelné) |
+| direction |String | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| messageId | String | ID zprávy AS2 (Volitelné) |
 | originalMessageId |String | ID původní zprávy AS2 (Volitelné) |
 | dispositionType | String | Hodnota disposition typu zprávy MDN. (Volitelné) |
 | isMessageFailed |Boolean | Určuje, zda zpráva AS2 se nepodařilo. (Povinné) |
