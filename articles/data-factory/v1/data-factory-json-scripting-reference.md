@@ -90,12 +90,12 @@ Následující tabulka popisuje vlastnosti v rámci aktivity definici JSON:
 | name |Název aktivity. Zadejte název, který představuje akci, který je nakonfigurovaný na aktivitu<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_)</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita slouží. |Ne |
 | type |Určuje typ aktivity. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) a [aktivity TRANSFORMACE dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
-| vstupy |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro HDInsightStreaming a SqlServerStoredProcedure aktivity <br/> <br/> Ano, pro všechny ostatní |
+| inputs |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro HDInsightStreaming a SqlServerStoredProcedure aktivity <br/> <br/> Ano, pro všechny ostatní |
 | outputs |Výstupní tabulky použité aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |Ano |
 | linkedServiceName |Název propojené služby používané aktivitou. <br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. |Ano pro aktivity HDInsight, Azure Machine Learning, aktivity a aktivity uložené procedury. <br/><br/>Ne ve všech ostatních případech |
 | typeProperties |Vlastnosti v části typeProperties závisí na typu aktivity. |Ne |
 | policy |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |Ne |
-| Scheduler |Vlastnost "scheduler" se používá k definování požadované plánování aktivity. Jeho objektu třídy subproperties jsou stejné jako ty v [vlastnost availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
+| scheduler |Vlastnost "scheduler" se používá k definování požadované plánování aktivity. Jeho objektu třídy subproperties jsou stejné jako ty v [vlastnost availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
 
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování za běhu aktivity, konkrétně v případě, že zpracování řezu tabulku. Následující tabulka obsahuje podrobnosti.
