@@ -40,14 +40,14 @@ Schéma pro většinu prvků vypadá takto:
 
 | Vlastnost | Požaduje se | Popis |
 | -------- | -------- | ----------- |
-| jméno | Ano | Interní identifikátor pro odkazování na konkrétní instanci elementu. Nejběžnější použití názvu elementu je v `outputs`, kde výstupní hodnoty zadané elementy jsou namapovány na parametry šablony. Můžete ho můžete použít k vytvoření vazby výstupní hodnota element, který má `defaultValue` jiného elementu. |
+| name | Ano | Interní identifikátor pro odkazování na konkrétní instanci elementu. Nejběžnější použití názvu elementu je v `outputs`, kde výstupní hodnoty zadané elementy jsou namapovány na parametry šablony. Můžete ho můžete použít k vytvoření vazby výstupní hodnota element, který má `defaultValue` jiného elementu. |
 | type | Ano | Ovládací prvek uživatelského rozhraní pro vykreslení elementu. Seznam podporovaných typů najdete v tématu [prvky](#elements). |
 | label | Ano | Zobrazený text elementu. Některé typy prvků obsahovat více popisků, takže hodnota může být objekt, který obsahuje více řetězců. |
-| Výchozí hodnota | Ne | Výchozí hodnota elementu. Některé typy prvků podporu komplexní výchozí hodnoty, takže hodnota může být objekt. |
+| defaultValue | Ne | Výchozí hodnota elementu. Některé typy prvků podporu komplexní výchozí hodnoty, takže hodnota může být objekt. |
 | toolTip | Ne | Text zobrazený v popisu tlačítka prvku. Podobně jako `label`, některé prvky podporovat více řetězců tip nástroj. Vložených odkazů můžete vložit pomocí syntaxe Markdownu.
-| Omezení | Ne | Jednu nebo více vlastností, které se používají k přizpůsobení chování ověřování elementu. Podporované vlastnosti pro omezení se liší podle typu elementu. Některé typy prvků nepodporuje přizpůsobení chování ověřování a tedy mít žádnou vlastnost omezení. |
-| Možnosti | Ne | Další vlastnosti, které přizpůsobit chování element. Podobně jako `constraints`, podporovaných vlastností se liší podle typu elementu. |
-| Viditelné | Ne | Určuje, zda je zobrazen elementu. Pokud `true`, se zobrazí element a příslušných podřízených elementů. Výchozí hodnota je `true`. Použití [logické funkce](create-uidefinition-functions.md#logical-functions) dynamicky řídit hodnota této vlastnosti.
+| constraints | Ne | Jednu nebo více vlastností, které se používají k přizpůsobení chování ověřování elementu. Podporované vlastnosti pro omezení se liší podle typu elementu. Některé typy prvků nepodporuje přizpůsobení chování ověřování a tedy mít žádnou vlastnost omezení. |
+| options | Ne | Další vlastnosti, které přizpůsobit chování element. Podobně jako `constraints`, podporovaných vlastností se liší podle typu elementu. |
+| visible | Ne | Určuje, zda je zobrazen elementu. Pokud `true`, se zobrazí element a příslušných podřízených elementů. Výchozí hodnota je `true`. Použití [logické funkce](create-uidefinition-functions.md#logical-functions) dynamicky řídit hodnota této vlastnosti.
 
 ## <a name="elements"></a>Elementy
 
