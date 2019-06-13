@@ -66,7 +66,7 @@ Následující kód JSON ukazuje schéma pro rozšíření stavu aplikace. Rozš
 | Název | Hodnota / příklad | Typ dat
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| vydavatele | `Microsoft.ManagedServices` | string |
+| publisher | `Microsoft.ManagedServices` | string |
 | type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
@@ -74,7 +74,7 @@ Následující kód JSON ukazuje schéma pro rozšíření stavu aplikace. Rozš
 
 | Název | Hodnota / příklad | Typ dat
 | ---- | ---- | ----
-| Protokol | `http` nebo `tcp` | string |
+| protocol | `http` nebo `tcp` | string |
 | port | Nepovinné, pokud je protokol `http`, povinné, když je protokol `tcp` | int |
 | requestPath | Povinné, když je protokol `http`, není povolený, pokud je protokol `tcp` | string |
 
