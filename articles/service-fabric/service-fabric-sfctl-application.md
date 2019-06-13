@@ -28,26 +28,26 @@ Vytvářet, odstraňovat a spravovat aplikace a typy aplikací.
 
 |Příkaz|Popis|
 | --- | --- |
-| vytvoření | Vytvoří aplikaci Service Fabric pomocí zadaný popis. |
+| create | Vytvoří aplikaci Service Fabric pomocí zadaný popis. |
 | delete | Odstraní stávající aplikace Service Fabric. |
-| nasazení | Získá informace o aplikaci nasazenou na uzlu Service Fabric. |
+| deployed | Získá informace o aplikaci nasazenou na uzlu Service Fabric. |
 | deployed-health | Získá informace o stavu aplikace nasazené na uzlu Service Fabric. |
-| nasazení seznamu | Získá seznam aplikací, které jsou nasazené na uzlu Service Fabric. |
-| zdravotnictví | Získá stav aplikace service fabric. |
-| informace | Získá informace o aplikaci Service Fabric. |
+| deployed-list | Získá seznam aplikací, které jsou nasazené na uzlu Service Fabric. |
+| health | Získá stav aplikace service fabric. |
+| info | Získá informace o aplikaci Service Fabric. |
 | list | Získá seznam aplikací vytvořených v clusteru Service Fabric, které se shodují se zadanými filtry. |
-| načítání | Získá načíst informace o aplikaci Service Fabric. |
-| Manifest | Získá manifest popisující typ aplikace. |
-| Zřizování | Předpisy nebo registrech typ aplikace Service Fabric s pomocí balíčku .sfpkg v externím úložišti nebo pomocí balíčku aplikace do úložiště imagí clusteru. |
+| load | Získá načíst informace o aplikaci Service Fabric. |
+| manifest | Získá manifest popisující typ aplikace. |
+| provision | Předpisy nebo registrech typ aplikace Service Fabric s pomocí balíčku .sfpkg v externím úložišti nebo pomocí balíčku aplikace do úložiště imagí clusteru. |
 | report-health | Odešle zprávu o stavu v aplikaci Service Fabric. |
 | type | Získá seznam typů aplikací v clusteru Service Fabric odpovídající zadanému názvu. |
-| seznam typů | Získá seznam typů aplikací v clusteru Service Fabric. |
-| zrušení zajišťování | Odebere nebo zruší registraci typu aplikace Service Fabric z clusteru. |
-| upgradovat | Začne se upgradovat aplikace v clusteru Service Fabric. |
+| type-list | Získá seznam typů aplikací v clusteru Service Fabric. |
+| unprovision | Odebere nebo zruší registraci typu aplikace Service Fabric z clusteru. |
+| upgrade | Začne se upgradovat aplikace v clusteru Service Fabric. |
 | upgrade-resume | Obnoví upgrade aplikace v clusteru Service Fabric. |
 | upgrade-rollback | Spustí se vracení zpět aktuálně probíhající upgrade aplikace v clusteru Service Fabric. |
 | upgrade-status | Načte podrobnosti pro upgrade na nejnovější provést u této aplikace. |
-| nahrání | Zkopírujte balíček aplikace Service Fabric do úložiště imagí. |
+| upload | Zkopírujte balíček aplikace Service Fabric do úložiště imagí. |
 
 ## <a name="sfctl-application-create"></a>Vytvoření aplikace sfctl
 Vytvoří aplikaci Service Fabric pomocí zadaný popis.
