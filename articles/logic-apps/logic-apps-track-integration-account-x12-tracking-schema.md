@@ -66,7 +66,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
 | functionalGroupControlNumber | String | Funkční kontrolní číslo. (Volitelné) |
 | transactionSetControlNumber | String | Kontrolní číslo sady transakcí. (Volitelné) |
@@ -122,7 +122,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Kontrolní číslo funkční potvrzení výměny. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
 | functionalGroupControlNumber | String | Kontrolní číslo skupiny funkční funkční potvrzení. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
 | isaSegment | String | Segment ISA zprávy. Hodnota naplní pouze pro straně odesílání, kde je přijato funkční potvrzení pro zprávy odeslané na partnera. (Volitelné) |
@@ -132,8 +132,8 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingtransactionSetControlNumber | String | Kontrolní číslo sady transakcí reagovat. (Volitelné) |
 | respondingTransactionSetId | String | Sady transakcí odpovídá ID, který mapuje na AK201 v potvrzení. (Volitelné) |
 | statusCode | Boolean | Stavový kód potvrzení sady transakcí. (Povinné) |
-| segmentsCount | Výčet | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | Výčet | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| segmentsCount | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
+| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | CorrelationMessageId | String | ID korelace zprávy. Kombinace {AgreementName} {*GroupControlNumber*} {TransactionSetControlNumber}. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
 | ak2Segment | String | Potvrzení transakce v rámci přijatý funkční skupiny. (Volitelné) |
@@ -180,7 +180,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
 | isaSegment | String | Segment ISA zprávy. (Volitelné) |
 | isTechnicalAcknowledgmentExpected | Boolean | Určuje, zda je technický potvrzení nakonfigurovaný v X12 smlouvy. (Povinné) |
@@ -231,13 +231,13 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
 | isaSegment | String | Segment ISA pro technické potvrzení, které se získaly od partnerů. (Volitelné) |
 | respondingInterchangeControlNumber |String | Technické potvrzení, které se získaly od partnerů pro kontrolní číslo výměny. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| statusCode | Výčet | Výměny. stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | Výčet | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| statusCode | Enum | Výměny. stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
+| processingStatus | Enum | Stav potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ta102 | String | Interchange datum. (Volitelné) |
 | ta103 | String | Interchange čas. (Volitelné) |
 | ta105 | String | Výměny. Poznámka: kód. (Volitelné) |
@@ -284,7 +284,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Kontrolní číslo výměny. (Volitelné) |
 | functionalGroupControlNumber | String | Funkční kontrolní číslo. (Volitelné) |
 | gsSegment | String | Zpráva GS segmentu. (Volitelné) |
@@ -340,7 +340,7 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | receiverQualifier | String | Přijímat kvalifikátor partnera. (Povinné) |
 | receiverIdentifier | String | Zobrazí identifikátor partnera. (Povinné) |
 | agreementName | String | Název X12 smlouvy, ke které se řeší zprávy. (Volitelné) |
-| směr | Výčet | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
+| direction | Enum | Směr toku zprávy příjmu nebo odesílání. (Povinné) |
 | interchangeControlNumber | String | Kontrolní číslo výměny, která naplní na straně odesílání při přijetí technické potvrzení od partnerů. (Volitelné) |
 | functionalGroupControlNumber | String | Kontrolní číslo skupiny funkční technické potvrzení, která naplní na straně odesílání při přijetí technické potvrzení od partnerů. (Volitelné) |
 | isaSegment | String | Stejné jako výměny řídit číslo, ale mají údaj vyplněný pouze ve zvláštních případech. (Volitelné) |
@@ -348,8 +348,8 @@ Při monitorování úspěch, chyby a vlastnosti zprávy pro transakce business-
 | respondingfunctionalGroupControlNumber | String | Kontrolní číslo skupiny původní funkční. (Volitelné) |
 | respondingFunctionalGroupId | String | ID mapuje AK101 ve funkční skupině potvrzení. (Volitelné) |
 | isMessageFailed | Boolean | Zda X12 zprávy se nezdařilo. (Povinné) |
-| statusCode | Výčet | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
-| StavZpracování | Výčet | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
+| statusCode | Enum | Stavový kód potvrzení. Povolené hodnoty jsou **přijato**, **Odmítnuto**, a **AcceptedWithErrors**. (Povinné) |
+| processingStatus | Enum | Stav zpracování potvrzení. Povolené hodnoty jsou **přijaté**, **vygenerované**, a **odeslané**. (Povinné) |
 | ak903 | String | Počet přijatých sady transakcí. (Volitelné) |
 | ak904 | String | Číslo sady transakcí přijaté v identifikované funkční skupiny. (Volitelné) |
 | ak9Segment | String | Zda je funkční skupinu určené v segmentu AK1 přijímat nebo odmítat a proč. (Volitelné) |
