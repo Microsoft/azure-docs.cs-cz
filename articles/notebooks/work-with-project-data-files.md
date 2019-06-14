@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240440"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Práce s datovými soubory v projektech poznámkového bloku v Azure
@@ -62,11 +62,11 @@ Soubory můžete zahrnout do projektu z řídicího panelu Projekt, nebo v rámc
 
 1. V **stav nahrávání** automaticky otevírané okno, které se zobrazí, vyberte **cílovou složku** z rozevíracího seznamu:
 
-    - Relace složky (*~/* ): Nahrání souborů do aktuální relace Poznámkový blok, ale nevytváří soubory v projektu. Složka relace je partnerské zařízení do složky projektu, ale nebude zachována po ukončení relace. Pro přístup k souborům relace v kódu, předpona názvy souborů s relativní cestou *... /*.
+    - Relace složky ( *~/* ): Nahrání souborů do aktuální relace Poznámkový blok, ale nevytváří soubory v projektu. Složka relace je partnerské zařízení do složky projektu, ale nebude zachována po ukončení relace. Pro přístup k souborům relace v kódu, předpona názvy souborů s relativní cestou *... /* .
 
         Pomocí složky relace je užitečné pro experimentování ve službě a nebudou zbytečně zabírat projektu se soubory může nebo nemusí potřebovat dlouhodobě se vyhnete. Mohou také nahrávat soubory do složky relace, která mají stejné názvy souborů v projektu, aniž by vznikly konflikty a bez nutnosti přejmenujte soubory. Například Řekněme, že máme jednu verzi *data.csv* v projektu již, ale chcete experimentovat s jinou verzi *data.csv*. Tím, že nahrajete soubor do složky relace, můžete spustit Poznámkový blok, který používá data v nahraného souboru (na ni následně odkazuje v kódu pomocí *... /data.csv*) namísto data v souboru projektu.
 
-    - Složky projektu (*/project*): nahrání souborů do projektu, kde je lze přistupovat pomocí relativní cesty v kódu. Po nahrání souboru do této složky je stejný jako nahrání souboru na řídicí panel Projekt. Soubor je uložen s projektem a je k dispozici v novějším relace.
+    - Složky projektu ( */project*): nahrání souborů do projektu, kde je lze přistupovat pomocí relativní cesty v kódu. Po nahrání souboru do této složky je stejný jako nahrání souboru na řídicí panel Projekt. Soubor je uložen s projektem a je k dispozici v novějším relace.
 
         Nahrávání se nezdaří při pokusu nahrát soubor se stejným názvem jako ten, který již v projektu existuje. K přepsání souboru, nahrajte nový soubor z řídicího panelu Projekt místo toho, která nabízí možnost přepsat.
 

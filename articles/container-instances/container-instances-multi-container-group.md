@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: f769beda1654dc9f58ecff733741fb1ab9118031
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152301"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: Nasazení skupiny více kontejnerů pomocí šablony Resource Manageru
@@ -179,7 +179,7 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Zobrazit protokoly kontejneru
+## <a name="view-container-logs"></a>Zobrazení protokolů kontejneru
 
 Zobrazit výstup protokolu kontejneru pomocí [protokoly kontejneru az] [ az-container-logs] příkazu. `--container-name` Argument určuje kontejner, ze kterého chcete vyžádat protokoly. V tomto příkladu `aci-tutorial-app` určen kontejner.
 

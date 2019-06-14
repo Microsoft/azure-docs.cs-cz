@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630560"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Pomocí monitorování indikátorů StorSimple ke správě vašeho zařízení
@@ -53,7 +53,7 @@ Hlavní rozdíl mezi přední panel LED pro zařízení a pro skříň EBOD je *
 ## <a name="front-panel-led-status"></a>Přední panel Indikátor stavu
 Následující tabulku použijte k určení stavu indikován LED na přední panel EBOD skříň nebo zařízení.  
 
-| Napájení systému | Chyby modulu | Logické chyby | Varování | Status |
+| Napájení systému | Chyby modulu | Logické chyby | Alarm | Status |
 | --- | --- | --- | --- | --- |
 | Červená oranžová |OFF |OFF |neuvedeno |Napájení ze sítě ztrátě provozující na zálohování napájení nebo napájení ze sítě a zařízení, které moduly byly odebrány. |
 | Zelená |ON |ON |neuvedeno |Panel OPS pro zapnutí 5 (s) testu stavu |
@@ -219,7 +219,7 @@ Akustický signál můžete Ztlumit stisknutím klávesy Ztlumit tlačítko na p
 Následující tabulka popisuje různé podmínky upozornění.
 
 ### <a name="alarm-conditions"></a>Podmínky upozornění
-| Status | Severity | Varování | OPS panelu LED |
+| Status | Severity | Alarm | OPS panelu LED |
 | --- | --- | --- | --- |
 | Upozornění PCM – výpadku napájení řadiče domény z jedné PCM |Selhání – bez ztráty redundance |S1 |Chyby modulu |
 | Upozornění PCM – výpadku napájení řadiče domény z jedné PCM |Selhání – ztrátu redundance |S1 |Chyby modulu |
@@ -239,7 +239,7 @@ Následující tabulka popisuje různé podmínky upozornění.
 | Jednotka řízení napájení |Upozornění – bez výpadku napájení jednotky |S1 |Chyby modulu |
 | Jednotka řízení napájení |Selhání – kritická; výpadku napájení jednotky |S1 |Chyby modulu |
 | Jednotka byla odebrána. |Upozornění |Žádný |Chyby modulu |
-| Nedostatek energie k dispozici |Upozornění |žádný |Chyby modulu |
+| Nedostatek energie k dispozici |Upozornění |None |Chyby modulu |
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [StorSimple hardwarové součásti a stav](storsimple-8000-monitor-hardware-status.md).

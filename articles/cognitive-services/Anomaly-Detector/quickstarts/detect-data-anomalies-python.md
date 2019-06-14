@@ -6,15 +6,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cd37638b9bac2a1b48f0ef0abb7b18da440049f0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544496"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080749"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Rychlý start: Detekovat anomálie ve vašich datech časových řad pomocí rozhraní REST API služby detekce anomálií a Pythonu
 

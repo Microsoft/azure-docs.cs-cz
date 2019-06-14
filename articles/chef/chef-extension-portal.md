@@ -9,10 +9,10 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563774"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Instalace klienta Chefu na webu Azure Portal
@@ -74,7 +74,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
 
      ![Vyberte přidat rozšíření přidat rozšíření virtuálního počítače](./media/chef-extension-portal/add-vm-add-extension.png)
 
-1. Na **nový prostředek** kartu, vyberte možnost **rozšíření Linux Chef (1.2.3)**.
+1. Na **nový prostředek** kartu, vyberte možnost **rozšíření Linux Chef (1.2.3)** .
 
      ![Chef obsahuje rozšíření pro virtuální počítače s Linuxem a Windows](./media/chef-extension-portal/select-linux-chef-extension.png)
 
@@ -82,7 +82,7 @@ V této části nejprve použijete na webu Azure portal vytvořit počítač s L
 
 1. Na **nainstalovat rozšíření** kartu, zadejte následující hodnoty a pak vyberte **OK**.
 
-    - **Adresa URL serveru Chef** – zadejte adresu URL serveru Chef, který obsahuje název organizace, například *https://api.chef.io/organization/mycompany*.
+    - **Adresa URL serveru Chef** – zadejte adresu URL serveru Chef, který obsahuje název organizace, například *https://api.chef.io/organization/mycompany* .
     - **Název uzlu Chef** – zadejte název uzlu Chef. Může to být libovolná hodnota.
     - **Seznam spuštění** – zadejte seznam Chef spuštění, který je přidán do počítače. To může být ponecháno prázdné.
     - **Název klienta ověření** – zadejte název Chef ověření klienta. například *tarcher validátoru*.

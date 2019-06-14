@@ -17,19 +17,19 @@ ms.date: 06/27/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108831"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Playbook Azure Active Directory Identity Protection
 
 Playbook vám umožní:
 
 * Naplnění dat v rámci prostředí Identity Protection tak, že simulace rizikových událostí a ohrožení zabezpečení
-* Nastavení zásad podmíněného přístupu na základě rizik a otestujte dopad těchto zásad
+* Nastavit zásady podmíněného přístupu na základě rizik a otestujte dopad těchto zásad
 
 
 ## <a name="simulating-risk-events"></a>Simulace rizikových událostí
@@ -135,7 +135,7 @@ Další informace najdete v článku, který se zabývá [způsobem konfigurace 
 6. Zvýšení úrovně rizika uživatele testovacího účtu, například simulace rizikových událostí jednoho několikrát.
 7. Počkejte pár minut a potom ověřte, že uživatelské úrovni pro vaše uživatele je střední. V opačném případě simulace další rizikové události pro uživatele.
 8. Jako **vynucení zásad**vyberte **na**.
-9. Podmíněný přístup na základě rizik uživatelů teď můžete otestovat přihlášením pomocí uživatele s úrovní rizika se zvýšenými oprávněními.
+9. Teď můžete otestovat uživatele na základě rizik podmíněného přístupu po přihlášení pomocí uživatele s úrovní rizika se zvýšenými oprávněními.
     
     
 

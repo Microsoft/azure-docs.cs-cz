@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: f9dd8a48da08f00cea1219f72940dd84dd3a97ac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725507"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – zpráva k vydání verze a Průvodce migrací
@@ -60,11 +60,11 @@ Certifikáty služby Key Vault spravovat x509 certifikáty a podporuje následuj
 
 * *KeyVaultClientException* se změní na *KeyVaultErrorException*
 * Chyba služby se změnil z *výjimky. Chyba* k *výjimky. Body.Error.Message*.
-* Odebrat z chybové zprávy pro další informace o **[JsonExtensionData]**.
+* Odebrat z chybové zprávy pro další informace o **[JsonExtensionData]** .
 
 ## <a name="constructors"></a>Konstruktory
 
-* Místo přijetí *HttpClient* jako argument konstruktoru konstruktoru přijímá pouze *HttpClientHandler* nebo *DelegatingHandler []*.
+* Místo přijetí *HttpClient* jako argument konstruktoru konstruktoru přijímá pouze *HttpClientHandler* nebo *DelegatingHandler []* .
 
 ## <a name="downloaded-packages"></a>Stažených balíčků
 

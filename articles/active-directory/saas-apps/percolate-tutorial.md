@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560564"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Kurz: Integrace Azure Active Directory s provede se perkolace
 
@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat integraci provede se perkolace do služby Azure AD, 
 
 4. Do vyhledávacího pole zadejte **provede se perkolace**. Vyberte **provede se perkolace** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Výsledky vyhledávání](common/search-new-app.png)
+     ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -95,7 +95,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s provede se perkolace, prove
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -105,7 +105,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s provede se perkolace, prove
 
     ![Provede se perkolace domény a adresy URL jednotné přihlašování – informace](common/preintegrated.png)
 
-5. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **nastavit další adresy URL** a v **přihlašovací adresa URL** zadejte **https://percolate.com/app/login**:
+5. Pokud chcete nakonfigurovat aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **nastavit další adresy URL** a v **přihlašovací adresa URL** zadejte **https://percolate.com/app/login** :
 
    ![Provede se perkolace domény a adresy URL jednotné přihlašování – informace](common/metadata-upload-additional-signon.png)
 6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** vyberte **kopírování** ikonu zkopírujte **adresa Url federačních metadat aplikace** . Tuto adresu URL si uložte.
@@ -168,7 +168,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >**. (Například BrittaSimon@contoso.com.)
+    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
 
     1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
@@ -222,7 +222,7 @@ Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:
 
     1. Vyberte **vytvořit uživatele**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372277"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a události analýzy ve službě Application Insights
@@ -58,7 +58,7 @@ Sdílet odkaz na sestavu uživatelé, relace nebo události; Klikněte na tlač�
 
 Sdílet kopii dat v sestavě uživatelé, relace nebo události; Klikněte na tlačítko **sdílenou složku** na panelu nástrojů klikněte **ikona aplikace Word** vytvořit dokument aplikace Word s daty. Nebo klikněte na tlačítko **ikona aplikace Word** nad hlavním grafu.
 
-## <a name="meet-your-users"></a>Seznamte se se svými uživateli
+## <a name="meet-your-users"></a>Podle uživatele
 
 **Splňovat vaši uživatelé** části s informacemi o pět ukázkové uživatele odpovídá aktuální dotaz. Vzhledem k tomu a zkoumat chování osob, kromě agregací, může poskytnout přehled o tom, jak lidé skutečně používat vaší aplikace.
 

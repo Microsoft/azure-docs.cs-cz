@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 20f0d6a88fead155225cff69ab89635de587a46d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66455171"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056488"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
@@ -40,11 +40,11 @@ Podporovány jsou následující operační systémy:
 
 Azure podporuje tři typy možností Point-to-site VPN:
 
-* SSTP (Secure Socket Tunneling Protocol). SSTP je proprietární řešení Microsoftu založené na SSL, které umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který SSL používá.
+* SSTP (Secure Socket Tunneling Protocol). SSTP je Microsoft proprietární založený na protokolu SSL řešení, které umožňuje pronikat branami firewall, protože většina bran firewall otevřít odchozí port TCP, který používá protokol SSL 443.
 
-* OpenVPN. OpenVPN je založený na protokolu SSL řešení, které umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP, který používá protokol SSL 443.
+* OpenVPN. OpenVPN je založený na protokolu SSL řešení, které umožňuje pronikat branami firewall, protože většina bran firewall otevřít odchozí port TCP, který používá protokol SSL 443.
 
-* IKEv2 VPN. IKEv2 VPN řešení IPsec VPN založené na standardech, které využívá porty UDP 500 a 4500 a protokol IP č. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
+* IKEv2 VPN. Je IKEv2 VPN řešení IPsec VPN založené na standardech, které již používá Odchozí porty UDP 500 a 4500 a protokol IP. 50. Brány firewall tyto porty neotvírají vždycky, takže je možné, že IKEv2 VPN nebude moct procházet servery proxy a branami firewall.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Pokud restartuji klientský počítač nakonfigurovaný pro připojení Point-to-Site, připojí se síť VPN automaticky znovu?
 
@@ -80,9 +80,9 @@ Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
    | Verze operačního systému | Datum | Číslo/odkaz |
    |---|---|---|
-   | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-   | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 Version 1709 | 22. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows Server 2016<br>Windows 10 verze 1607 | 17\. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 verze 1703 | 17\. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10 Version 1709 | 22\. března 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Nastavte hodnotu klíče registru. Vytvořte nebo nastavte klíč REG_DWORD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload v registru na hodnotu 1.

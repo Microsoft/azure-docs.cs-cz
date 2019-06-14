@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c2b32d1c96a01282aa8cdbae1d55976a89abea81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a816cd6df8351a9b9daefd569d1fad2ec0763832
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101547"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Kurz: Integrace Azure Active Directory s GlassFrog
 
@@ -53,7 +53,7 @@ Konfigurace integrace GlassFrog do služby Azure AD, budete muset přidat GlassF
 
 **Chcete-li přidat GlassFrog z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2692d4109b5ca673b2acffe19eac1b141e5b8067
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2cc3f8389eb0b98da5c172adf65ff4dae38ca29d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Kurz: OBCHODNÍ aplikace s povoleným integrace Azure Active Directory pomocí tokenu SAML 1.1
 
@@ -53,7 +53,7 @@ Chcete-li konfigurovat integraci SAML 1.1 Token povolena obchodní aplikaci do s
 
 **Chcete-li přidat SAML 1.1 Token povolené obchodní aplikaci z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ V této části povolíte Britta Simon do Azure můžete používat jednotné p�
 
 V této části, vytvořte uživatele Britta Simon tokenu SAML 1.1 obchodní aplikace s povolenou. Práce se SAML 1.1 Token povolené obchodní aplikaci pro tým podpory pro přidání uživatele v tokenu SAML 1.1 povolené obchodní aplikaci pro platformu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

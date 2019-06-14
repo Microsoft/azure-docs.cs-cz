@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796751"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
@@ -46,7 +46,7 @@ Požadavek musí používat protokol HTTPS.
 > Maximální délka adresy URL je 2 048 znaků. Aby bylo zajištěno, že vaše délka adresy URL nepřekračuje limit, maximální délka parametry dotazu musí být menší než 1 500 znaků. Pokud adresa URL je delší než 2 048 znaků, server vrátí 404 Nenalezeno.  
   
   
-## <a name="headers"></a>Záhlaví  
+## <a name="headers"></a>Hlavičky  
 Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.  
   
 |Záhlaví|Popis|  
@@ -70,7 +70,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu.  
   
   
-|Název|Hodnota|Type|Požaduje se|  
+|Name|Hodnota|Type|Požaduje se|  
 |----------|-----------|----------|--------------|
 |<a name="count" />Počet|Počet výsledků k vrácení, počínaje indexem určené `offset` parametru.|String|Ne|   
 |<a name="localCategories" />localCategories|Seznam možností, které definují vyhledávání podle kategorie business.  Zobrazit [prohledávat místní firmy kategorie](local-categories.md)|String|Ne|  
@@ -117,16 +117,16 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 ### <a name="license"></a>Licence  
 Definuje licence, pod kterým mohou být použity text nebo fotografie.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |name|Název licence.|String|  
 |url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|String|  
 
 
-### <a name="link"></a>Vytvořit propojení  
+### <a name="link"></a>Odkaz  
 Definuje komponenty hypertextový odkaz.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu.|String|  
 |text|Zobrazení textu.|String|  
@@ -140,7 +140,7 @@ Definuje vydavatele.
   
 Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo obojí.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |name|Název vydavatele.|String|  
 |url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|String|  
@@ -150,10 +150,10 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
 ### <a name="place"></a>Místo  
 Definuje informace o místní firmy, jako je například restaurace nebo hotelu.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Zadejte pokyn, který může být nastaven na jednu z následujících akcí:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restaurace</ul><li>|String|  
-|adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
+|Adresa|Poštovní adresa ve kterém se entita nachází.|PostalAddress služby Active Directory|  
 |entityPresentationInfo|Další informace o entitě, jako je například pomocné parametry, které můžete použít k určení typu entity. Například zda je restaurace nebo hotelu. `entityScenario` Je nastaveno na ListItem.|EntityPresentationInfo|  
 |name|Název entity.|String|  
 |Telefon|Entity telefonní číslo.|String|  
@@ -181,7 +181,7 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
 
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |-------------|-----------------|----------|
 |items|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
@@ -198,7 +198,7 @@ Definuje položku výsledek vyhledávání k zobrazení.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  
   
-|Název|Hodnota|  
+|Name|Hodnota|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Výsledky hledání pro zobrazení v hlavní linii.|  
 |<a name="ranking-pole" />pole|Výsledky hledání, které by měl být poskytnuta nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).|  
@@ -209,7 +209,7 @@ Definuje objekt nejvyšší úrovně, který obsahuje odpověď po úspěšném 
   
 Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude úspěšné (stavový kód protokolu HTTP je 200 OK); text odpovědi však bude prázdný.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu, který je nastaven na SearchResponse.|String|  
 |Místa|Seznam entit, které odpovídají vyhledávacímu dotazu.|JSON – objekt|  
@@ -222,7 +222,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   
 |Stavový kód|Popis|  
 |-----------------|-----------------|  
-|200|Úspěšné|  
+|200|Úspěch|  
 |400|Jeden z parametrů dotazu je chybí nebo není platný.|  
 |401|Klíč předplatného chybí nebo není platný.|  
 |403|Ověření uživatele (například používají klíče platným předplatným), ale nemají oprávnění k požadovanému prostředku.<br /><br /> Bing může také vracet tento stav překročení volající jejich dotazů za měsíc kvóty.|  
@@ -262,7 +262,7 @@ Jsou následující hodnoty možnou chybu kódu a dílčí chyba kódu.
 
 |Kód|Podřízeného|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Stavový kód protokolu HTTP je 500.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Stavový kód protokolu HTTP je 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud používáte protokol HTTP místo protokolu HTTPS, Bing vrátí HttpNotAllowed a je stavový kód HTTP 410.
 |RateLimitExceeded|Žádné dílčí kódy|Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Pokud překročíte QPS, Bing, vrátí stavový kód HTTP 429 a pokud překročíte QPM, Bing vrátí 403.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.

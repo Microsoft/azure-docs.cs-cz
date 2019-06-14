@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60333820"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics  
@@ -83,7 +83,7 @@ Definice argumentů a hodnoty jsou následující:
 * **USQLTargetType=Merge or SyntaxCheck**:
     * **Sloučit**. Sloučení režimu zkompiluje soubory kódu na pozadí. Mezi příklady patří **.cs**, **.py**, a **.r** soubory. To inlines výslednou knihovnu uživatelský kód do skriptu U-SQL. Mezi příklady patří binární soubor knihovny dll, Python nebo R kódu.
     * **SyntaxCheck**. Režim SyntaxCheck nejprve sloučí soubory kódu na pozadí skript U-SQL. Pak zkompiluje skript U-SQL k ověření kódu.
-* **DataRoot =\<prohledá se cesta DataRoot >**. Pouze u SyntaxCheck režimu, je potřeba DataRoot. Při vytváření skriptu s režimem SyntaxCheck, zkontroluje MSBuild odkazy na objekty databáze ve skriptu. Před sestavením, nastavte odpovídající místní prostředí, který obsahuje odkazované objekty z databáze U-SQL ve složce DataRoot počítač sestavení. Můžete také spravovat tyto databáze závislostí podle [odkazování na projekt U-SQL database](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild zkontroluje pouze odkazy na objekty databáze, nikoli soubory.
+* **DataRoot =\<prohledá se cesta DataRoot >** . Pouze u SyntaxCheck režimu, je potřeba DataRoot. Při vytváření skriptu s režimem SyntaxCheck, zkontroluje MSBuild odkazy na objekty databáze ve skriptu. Před sestavením, nastavte odpovídající místní prostředí, který obsahuje odkazované objekty z databáze U-SQL ve složce DataRoot počítač sestavení. Můžete také spravovat tyto databáze závislostí podle [odkazování na projekt U-SQL database](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project). Nástroj MSBuild zkontroluje pouze odkazy na objekty databáze, nikoli soubory.
 * **EnableDeployment = true** nebo **false**. EnableDeployment Určuje, zda je povolen nasadit odkazované databáze U-SQL během procesu sestavení. Je-li odkazovat na databázový projekt U-SQL a využívat databázových objektů ve vašem skriptu U-SQL, nastavte tento parametr na **true**.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Průběžná integrace pomocí kanálů Azure
@@ -456,31 +456,31 @@ Následujícím postupem nastavit úlohu nasazení databáze v kanálech Azure:
 
 | Parametr | Popis | Výchozí hodnota | Požaduje se |
 |---------|-----------|-------------|--------|
-|Balíček|Cesta k balíčku pro nasazení databáze U-SQL k nasazení.|null|true (pravda)|
+|Balíček|Cesta k balíčku pro nasazení databáze U-SQL k nasazení.|Hodnotu Null|true (pravda)|
 |Databáze|Název databáze a nasazené nebo vytvořen.|master|false (nepravda)|
-|LogFile|Cestu k souboru pro protokolování. Standardní navýšení kapacity (konzola) ve výchozím nastavení.|null|false (nepravda)|
-|LogLevel|Úroveň protokolování: Podrobné nastavení, Normální, upozornění nebo chyby.|LogLevel.Normal|false (nepravda)|
+|LogFile|Cestu k souboru pro protokolování. Standardní navýšení kapacity (konzola) ve výchozím nastavení.|Hodnotu Null|false (nepravda)|
+|LogLevel|Úroveň protokolu: Podrobné nastavení, Normální, upozornění nebo chyby.|LogLevel.Normal|false (nepravda)|
 
 #### <a name="parameter-for-local-deployment"></a>{{Parametr pro místní nasazení
 
 |Parametr|Popis|Výchozí hodnota|Požaduje se|
 |---------|-----------|-------------|--------|
-|Kořenová datová složka|Cesta kořenové složce místní data.|null|true (pravda)|
+|DataRoot|Cesta kořenové složce místní data.|Hodnotu Null|true (pravda)|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parametry pro nasazení Azure Data Lake Analytics
 
 |Parametr|Popis|Výchozí hodnota|Požaduje se|
 |---------|-----------|-------------|--------|
-|Účet|Určuje, které účtu Azure Data Lake Analytics k nasazení podle názvu účtu.|null|true (pravda)|
-|ResourceGroup|Název skupiny prostředků Azure pro účet Azure Data Lake Analytics.|null|true (pravda)|
-|SubscriptionId|ID předplatného Azure pro účet Azure Data Lake Analytics.|null|true (pravda)|
-|Tenant|Název tenanta je název domény služby Azure Active Directory (Azure AD). Nachází se na stránku Správa předplatného na webu Azure Portal.|null|true (pravda)|
-|AzureSDKPath|Cesty hledání závislých sestavení v sadě Azure SDK.|null|true (pravda)|
+|Účet|Určuje, které účtu Azure Data Lake Analytics k nasazení podle názvu účtu.|Hodnotu Null|true (pravda)|
+|ResourceGroup|Název skupiny prostředků Azure pro účet Azure Data Lake Analytics.|Hodnotu Null|true (pravda)|
+|SubscriptionId|ID předplatného Azure pro účet Azure Data Lake Analytics.|Hodnotu Null|true (pravda)|
+|Tenant|Název tenanta je název domény služby Azure Active Directory (Azure AD). Nachází se na stránku Správa předplatného na webu Azure Portal.|Hodnotu Null|true (pravda)|
+|AzureSDKPath|Cesty hledání závislých sestavení v sadě Azure SDK.|Hodnotu Null|true (pravda)|
 |Interaktivní|Jestli se mají použít interaktivní režim ověřování.|false (nepravda)|false (nepravda)|
-|ClientId|Vyžaduje se ID aplikace Azure AD pro neinteraktivní ověřování.|null|Vyžaduje se pro neinteraktivní ověřování.|
-|Secrete|Secrete nebo heslo pro neinteraktivní ověřování. Byste měli použít pouze ve důvěryhodné a zabezpečené prostředí.|null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte SecreteFile.|
-|SecreteFile|Soubor uloží secrete nebo heslo pro neinteraktivní ověřování. Ujistěte se, že zajistit jeho číst pouze od aktuálního uživatele.|null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte Secrete.|
-|CertFile|Soubor uloží certifikace X.509 pro neinteraktivní ověřování. Ve výchozím nastavení je použití klienta secrete ověřování.|null|false (nepravda)|
+|ClientId|Vyžaduje se ID aplikace Azure AD pro neinteraktivní ověřování.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování.|
+|Secrete|Secrete nebo heslo pro neinteraktivní ověřování. Byste měli použít pouze ve důvěryhodné a zabezpečené prostředí.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte SecreteFile.|
+|SecreteFile|Soubor uloží secrete nebo heslo pro neinteraktivní ověřování. Ujistěte se, že zajistit jeho číst pouze od aktuálního uživatele.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte Secrete.|
+|CertFile|Soubor uloží certifikace X.509 pro neinteraktivní ověřování. Ve výchozím nastavení je použití klienta secrete ověřování.|Hodnotu Null|false (nepravda)|
 | JobPrefix | Předpona pro nasazení databáze U-SQL DDL úlohy. | Deploy_ + DateTime.Now | false (nepravda) |
 
 ## <a name="next-steps"></a>Další postup

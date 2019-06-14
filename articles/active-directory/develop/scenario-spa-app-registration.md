@@ -16,10 +16,10 @@ ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074827"
 ---
 # <a name="single-page-application---app-registration"></a>Jednostránková aplikace – registrace aplikace
@@ -42,7 +42,7 @@ Na stejném **ověřování** stránce v části **upřesňující nastavení**,
 
 Pokud vaše aplikace potřebuje také získat přístupové tokeny pro volání rozhraní API, ujistěte se, že chcete povolit **přístupové tokeny** také zaškrtávací políčko. Další informace najdete v tématu [tokeny typu ID](./id-tokens.md) a [přístupové tokeny](./access-tokens.md).
 
-## <a name="api-permissions"></a>Oprávnění rozhraní API
+## <a name="api-permissions"></a>Oprávnění k rozhraní API
 
 Jednostránkové aplikace můžou zavolat rozhraní API jménem přihlášeného uživatele. Budou muset požadovat delegovaná oprávnění. Podrobnosti najdete v tématu [přidat oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
 

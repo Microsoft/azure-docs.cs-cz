@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8ad2ffddf96aa6ecc886ac5653d2d0b8dcfb0856
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903698"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Kurz: Integrace se SAP Business objekt cloudem Azure Active Directory
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci SAP Business objektu cloudu do služby Azu
 
 **Chcete-li přidat SAP Business objekt Cloud z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -138,7 +138,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Business objekt clou
     
     ![Na kartě zabezpečení vyberte ikonu pro úpravy](./media/sapboc-tutorial/config2.png)  
 
-4. Pro **metodu ověřování**vyberte **SAML jednotné přihlašování (SSO)**.
+4. Pro **metodu ověřování**vyberte **SAML jednotné přihlašování (SSO)** .
 
     ![Vyberte metodu ověřování SAML jednotného přihlašování](./media/sapboc-tutorial/config3.png)  
 
@@ -225,7 +225,7 @@ Chcete-li vytvořit uživatelský účet:
 
     ![Přidat zaměstnance](./media/sapboc-tutorial/user1.png)
 
-3. Na **uživatelé** stránky a přidat nové podrobnosti o uživateli, vyberte **+**. 
+3. Na **uživatelé** stránky a přidat nové podrobnosti o uživateli, vyberte **+** . 
 
     ![Stránka Přidat uživatele](./media/sapboc-tutorial/user4.png)
 
@@ -247,7 +247,7 @@ Chcete-li vytvořit uživatelský účet:
 
     g. Vyberte **Uložit** ikonu.    
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

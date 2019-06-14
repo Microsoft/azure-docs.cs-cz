@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80680de6602b26488a8bade8a69fdd85b7f83ed1
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9246d7bd48579def171986606e88c09593029aa2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108148"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 
@@ -40,8 +40,8 @@ Existují čtyři hlavní typy aplikací, které můžete přidat do vaší **po
 
 -   **Aplikace mimo galerii** – používání vlastních aplikací. Podpora jednotného přihlašování pro jiné aplikace jejich přidáním do služby Azure AD. Můžete integrovat všechny webový odkaz, který chcete nebo jakékoliv aplikace, která vykreslí pole uživatelského jména a hesla, podporuje přes protokol SAML nebo OpenID Connect nebo SCIM podporuje. Další informace najdete v tématu [nakonfigurovat jednotné přihlašování pro aplikace mimo galerii](configure-single-sign-on-non-gallery-applications.md).
 
-## <a name="manage-risk-with-conditional-access-policies"></a>Správa rizik pomocí zásad podmíněného přístupu
-Párování s Azure AD jednotné přihlašování (SSO) [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) poskytuje vysokou úroveň zabezpečení pro přístup k aplikacím. Funkce zabezpečení zahrnují ochranu identit v cloudovém měřítku, řízení přístupu na základě rizik, nativní vícefaktorové ověřování a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
+## <a name="manage-risk-with-conditional-access-policies"></a>Řízení rizik pomocí zásad podmíněného přístupu
+Párování s Azure AD jednotné přihlašování (SSO) [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) poskytuje vysokou úroveň zabezpečení pro přístup k aplikacím. Funkce zabezpečení zahrnují ochranu cloudových identit, řízení přístupu na základě rizik, nativní služby Multi-Factor authentication a zásady podmíněného přístupu. Tyto funkce umožňují podrobné zásady řízení přístupu na základě aplikací nebo skupin, které potřebují vyšší úroveň zabezpečení.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Vyšší produktivita pomocí jednotného přihlašování
 Povolení jednotného přihlašování mezi aplikacemi a Office 365 poskytuje stávajícím uživatelům nadstandardní prostředí pro přihlašování, protože snižuje počet výzev k přihlášení nebo je úplně eliminuje. Prostředí je tak pro uživatele ucelenější, neruší ho zobrazováním mnoha výzev k přihlášení a uživatel nemusí spravovat mnoho hesel. Obchodní skupiny mohou spravovat a schvalovat přístup prostřednictvím samoobslužného a dynamického členství. Když správu přístupu k aplikacím povolíte správným lidem, zvýšíte zabezpečení systému identit.

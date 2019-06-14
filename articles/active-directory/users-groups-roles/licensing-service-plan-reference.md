@@ -17,10 +17,10 @@ ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f96a7ad1c67fab9354daaafa129d15dfbff12064
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64729373"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
@@ -31,7 +31,7 @@ Při správě licencí [na webu Azure portal](https://portal.azure.com/#blade/Mi
 - **ID řetězce**: Při provádění operace s licencí pomocí rutin Powershellu v1.0
 - **GUID**: Identifikátor GUID, které používají Azure AD Graph a Microsoft Graph
 - **Zahrnuté plány služeb**: Seznam plánů služeb v produktu, které odpovídají ID řetězce a identifikátor GUID
-- **Služby zahrnuté plány (popisné názvy)**: Seznam plánů služeb (popisné názvy) v rámci produktu, které odpovídá ID řetězce a identifikátor GUID
+- **Služby zahrnuté plány (popisné názvy)** : Seznam plánů služeb (popisné názvy) v rámci produktu, které odpovídá ID řetězce a identifikátor GUID
 
 >[!NOTE]
 >Tyto informace jsou přesné od 15. dubna 2019.

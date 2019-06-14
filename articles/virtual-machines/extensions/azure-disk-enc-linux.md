@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 3ce881da4b683cf7034100d5044dd0f3c93edb52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b5b1f24fb22ff0922c362bd9911ad5c42236ee6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800180"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051712"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption pro Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -40,7 +40,42 @@ Azure Disk Encryption je momentálně podporovaný na vyberte distribucích a ve
 
 Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup k Active Directory, služby Key Vault, úložiště a koncových bodů správy balíčků.  Další informace najdete v tématu [požadované součásti služby Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
 
-## <a name="extension-schema"></a>Schéma rozšíření
+## <a name="extension-schemata"></a>Rozšíření schémat
+
+Existují dvě schémata pro Azure Disk Encryption: v1.1, novější, doporučené schéma, které nepoužívají vlastnosti v Azure Active Directory (AAD) a v0.1, starší schéma, které vyžaduje vlastnosti AAD. Je nutné použít verzi schématu odpovídající rozšíření, kterou používáte: v1.1 schématu pro AzureDiskEncryptionForLinux rozšíření verze 1.1, v0.1 schématu pro AzureDiskEncryptionForLinux verze rozšíření 0,1.
+### <a name="schema-v11-no-aad-recommended"></a>Schéma v1.1: Žádné AAD (doporučeno)
+
+Schéma v1.1 je doporučeno a nevyžaduje, aby vlastnosti služby Azure Active Directory.
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+        "publisher": "Microsoft.Azure.Security",
+        "settings": {
+          "DiskFormatQuery": "[diskFormatQuery]",
+          "EncryptionOperation": "[encryptionOperation]",
+          "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+          "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KeyVaultURL": "[keyVaultURL]",
+          "SequenceVersion": "sequenceVersion]",
+          "VolumeType": "[volumeType]"
+        },
+        "type": "AzureDiskEncryptionForLinux",
+        "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
+### <a name="schema-v01-with-aad"></a>Schéma v0.1: v AAD 
+
+Vyžaduje schéma 0,1 `aadClientID` a buď `aadClientSecret` nebo `AADClientCertificate`.
+
+Pomocí `aadClientSecret`:
 
 ```json
 {
@@ -70,22 +105,53 @@ Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup 
 }
 ```
 
+Pomocí `AADClientCertificate`:
+
+```json
+{
+  "type": "extensions",
+  "name": "[name]",
+  "apiVersion": "2015-06-15",
+  "location": "[location]",
+  "properties": {
+    "protectedSettings": {
+      "AADClientCertificate": "[aadClientCertificate]",
+      "Passphrase": "[passphrase]"
+    },
+    "publisher": "Microsoft.Azure.Security",
+    "settings": {
+      "AADClientID": "[aadClientID]",
+      "DiskFormatQuery": "[diskFormatQuery]",
+      "EncryptionOperation": "[encryptionOperation]",
+      "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+      "KeyVaultURL": "[keyVaultURL]",
+      "SequenceVersion": "sequenceVersion]",
+      "VolumeType": "[volumeType]"
+    },
+    "type": "AzureDiskEncryptionForLinux",
+    "typeHandlerVersion": "[extensionVersion]"
+  }
+}
+```
+
+
 ### <a name="property-values"></a>Hodnoty vlastností
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| vydavatele | Microsoft.Azure.Security | string |
+| publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 (VMSS) | int |
-| AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
-| AADClientSecret | password | string |
-| AADClientCertificate | thumbprint | string |
+| typeHandlerVersion | 0.1, 1.1 | int |
+| (schéma 0,1) AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
+| (schéma 0,1) AADClientSecret | password | string |
+| (schéma 0,1) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | Slovník JSON |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | string |
 | KeyEncryptionKeyURL | url | string |
-| KeyVaultURL | url | string |
+| (volitelné) KeyVaultURL | url | string |
 | Přístupové heslo | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Operačního systému, dat, všechny | string |

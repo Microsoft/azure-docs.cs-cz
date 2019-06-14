@@ -18,13 +18,13 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545213"
 ---
-# <a name="web-api"></a>Webové rozhraní API
+# <a name="web-api"></a>Web API
 
 Webové rozhraní API apps jsou webové aplikace, které potřebujete k získání zdroje z webového rozhraní API. V tomto scénáři existují dva typy identit, které webové aplikace můžete použít k ověření a zavolání webového rozhraní API:
 
@@ -63,11 +63,11 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsány v níže t
 1. Autorizační kód a informace o webové aplikace a webového rozhraní API jsou ověření pomocí Azure AD. Po úspěšném ověření Azure AD vrací dva tokeny: přístupový token JWT a aktualizační token JWT.
 1. Přes protokol HTTPS webová aplikace používá vrácené přístupový token JWT přidat token JWT řetězec s označením "Nosiče" v hlavičce autorizace požadavku do webového rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaný prostředek.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 Zobrazit ukázky kódu pro webovou aplikaci do scénáře webového rozhraní API. A, vraťte se často – jsou přidávány nové ukázky. Web [aplikace webového rozhraní API](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 Registrace aplikace ke koncovému bodu Azure AD v1.0, najdete v článku [registrace aplikace](quickstart-register-app.md).
 

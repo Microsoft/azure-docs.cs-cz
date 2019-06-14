@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60593195"
 ---
 # <a name="virtual-network-tap"></a>Naslouchací zařízení virtuální sítě
@@ -63,7 +63,7 @@ Než vytvoříte virtuální síť TAP, musí obdržet e-mail s potvrzením, kte
 
 Účty, můžete použít konfiguraci klepnutím na síťových rozhraních musí být přiřazená k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , který je přiřazen nezbytné akce z následující tabulky:
 
-| Akce | Název |
+| Akce | Name |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | Potřebný k vytvoření, aktualizaci, čtení a odstranění virtuální sítě resource klepněte na |
 | Microsoft.Network/networkInterfaces/read | Vyžadovaných k načtení prostředků rozhraní sítě, na které se nakonfigurují vzoru TAP |

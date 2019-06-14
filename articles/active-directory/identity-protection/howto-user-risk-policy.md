@@ -17,23 +17,23 @@ ms.date: 03/14/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b94e9b7267c956c07f4171f8cce46c6159affd90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 942f7e43a549b5aa1a21284949ffc12ef3c8d75f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108920"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Jak: Konfigurace zásad rizik uživatelů
 
-S riziko uživatele Azure AD detekuje pravděpodobnost, že není uživatelský účet v bezpečí. Jako správce můžete nakonfigurovat zásady podmíněného přístupu rizik uživatelů, automaticky reagovat na úroveň rizika konkrétního uživatele.
+S riziko uživatele Azure AD detekuje pravděpodobnost, že není uživatelský účet v bezpečí. Jako správce můžete nakonfigurovat riziko uživatele zásady podmíněného přístupu, automaticky reagovat na úroveň rizika konkrétního uživatele.
  
 Tento článek obsahuje informace, na kterých je nutné nakonfigurovat zásady rizik uživatelů.
 
 
 ## <a name="what-is-a-user-risk-policy"></a>Co je zásady rizik uživatelů?
 
-Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je ke zjištění podezřelé akce, které společně přihlášení. Ve službě Azure AD jsou podezřelé akce, které systém může zjistit, označované také jako rizikové události. Zatímco některé rizikové události lze zjistit v reálném čase, jsou také rizikové události, které vyžadují delší dobu. Systém vyžaduje ke zjištění nemožná cesta do netypických míst, období učení 14 dnů se dozvíte o běžné chování uživatele. Existuje několik možností, jak vyřešit zjištěné rizikové události. Například můžete ručně vyřešit jednotlivé rizikových událostí nebo můžete získat jejich duplicita se vyřešila pomocí rizika přihlášení nebo zásady rizik podmíněného přístupu uživatelů.
+Azure AD analyzuje každé přihlášení uživatele. Cílem analýzy je ke zjištění podezřelé akce, které společně přihlášení. Ve službě Azure AD jsou podezřelé akce, které systém může zjistit, označované také jako rizikové události. Zatímco některé rizikové události lze zjistit v reálném čase, jsou také rizikové události, které vyžadují delší dobu. Systém vyžaduje ke zjištění nemožná cesta do netypických míst, období učení 14 dnů se dozvíte o běžné chování uživatele. Existuje několik možností, jak vyřešit zjištěné rizikové události. Například je ručně vyřešit jednotlivé rizikových událostí nebo je vyřešit pomocí rizika přihlášení nebo riziko uživatele zásady podmíněného přístupu můžete získat.
 
 Všechny rizikové události, které byly zjištěny pro uživatele a nepovedlo se vyřešila jsou označovány jako aktivní rizikové události. Aktivní rizikové události, které jsou spojeny s uživatelem, jsou označovány jako uživatelského rizika. Azure AD podle rizika uživatele, vypočítá pravděpodobnost (nízká, střední, vysoká) ohrožené uživatele. Pravděpodobnost se nazývá úroveň rizika uživatele.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708792"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování služby API Management
@@ -55,9 +55,9 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Požaduje se|Výchozí|  
+|Name|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|uživatelské jméno|Určuje uživatelské jméno základní přihlašovací údaje.|Ano|neuvedeno|  
+|username jméno|Určuje uživatelské jméno základní přihlašovací údaje.|Ano|neuvedeno|  
 |password|Určuje heslo základní přihlašovací údaje.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
@@ -89,7 +89,7 @@ V tomto příkladu se klientský certifikát identifikovat podle názvu prostře
 
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Požaduje se|  
+|Name|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |authentication-certificate|Kořenový element.|Ano|  
   
@@ -130,9 +130,9 @@ V tomto příkladu se klientský certifikát identifikovat podle názvu prostře
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Požaduje se|Výchozí|  
+|Name|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|řetězec. Identifikátor URI ID aplikace z cílové webové rozhraní API (zabezpečené prostředků) v Azure Active Directory.|Ano|neuvedeno|  
+|resource|řetězec. Identifikátor URI ID aplikace z cílové webové rozhraní API (zabezpečené prostředků) v Azure Active Directory.|Ano|neuvedeno|  
 |výstup token proměnnou název|řetězec. Název kontextové proměnné, která se zobrazí hodnota tokenu jako typ objektu, který `string`.|Ne|neuvedeno|  
 |ignore-error|Datový typ Boolean. Pokud nastavit `true`, kanál zásady budou i nadále spouštět i v případě, že se získat přístupový token.|Ne|false (nepravda)|  
   

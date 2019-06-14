@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126677"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>Nasazení Azure Databricks ve vaší virtuální síti (Preview)
@@ -121,7 +121,7 @@ Pokud použijete tuto šablonu bez také použití šablony skupiny zabezpečen�
 
 Pokud použijete [webu Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) nebo [šablon Azure Resource Manageru](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) k vytvoření skupiny zabezpečení sítě, je nutné ručně seznam povolených následující provoz na podsítě.
 
-|Direction|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|
+|Direction|Protocol|source|Zdrojový port|Cíl|Cílový port|
 |---------|--------|------|-----------|-----------|----------------|
 |Příchozí|\*|VirtualNetwork|\*|\*|\*|
 |Příchozí|\*|Rovina řízení adres IP pro NAT|\*|\*|22|

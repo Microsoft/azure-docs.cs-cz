@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: b648c51b1b169c02f149493c53b6ef738b736e61
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 40409dbc860341e36501eec7ba77e2dd727c995e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905671"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Kurz: Integrace Azure Active Directory s TonicDM
 
@@ -55,7 +55,7 @@ Konfigurace integrace TonicDM do služby Azure AD, budete muset přidat TonicDM 
 
 **Chcete-li přidat TonicDM z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -183,7 +183,7 @@ V této části je povolit Britta Simon k udělení přístupu k TonicDM použit
 
 V této části vytvoříte uživatele v TonicDM jako Britta Simon. Práce s [tým podpory TonicDM](mailto:support@tonicdm.com) přidat uživatele na platformě TonicDM. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

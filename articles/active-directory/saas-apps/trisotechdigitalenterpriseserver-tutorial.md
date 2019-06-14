@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c5d1a791de5c295b4644e5633983a5369200498e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 56399f99ede611c4a120603cce3a3eede2728c6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888387"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088268"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Kurz: Integrace Azure Active Directory s Trisotech digitální Enterprise Server
 
@@ -55,7 +55,7 @@ Ke konfiguraci integrace Trisotech digitální Enterprise serveru do služby Azu
 
 **Chcete-li přidat Trisotech digitální Enterprise serveru z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -203,7 +203,7 @@ V této části je uživateli Britta Simon vytvořit Trisotech digitální Enter
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Trisotech digitální Enterprise Server](mailto:support@trisotech.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

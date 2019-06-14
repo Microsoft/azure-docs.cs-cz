@@ -8,17 +8,17 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523335"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
 Tento článek se týká problémy při počátečním nastavení tenanta virtuální plochy Windows a související relace hostitelské fondu infrastruktury.
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview. Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) fattica virtuální plochy Windows service s produktovým týmem a aktivní komunitě členy.
 
@@ -319,7 +319,7 @@ Příklad nezpracovaná Chyba:
 
 Pokud používáte nabídek Azure Marketplace, zadejte hodnoty následujících parametrů k ověření správně virtuální plochy Windows:
 
-- Virtuální Desktop Windows tenanta vlastníka vzdálené plochy: Instanční objekt
+- Virtuální Desktop Windows tenanta vlastníka vzdálené plochy: Instanční objekt služby
 - ID aplikace: Vytvoření aplikace identifikace nový instanční objekt služby
 - Heslo a potvrzení hesla: Heslo tajný klíč, který jste vygenerovali pro instanční objekt
 - ID klienta Azure AD: Vytvoření Tenanta Azure AD ID instančního objektu

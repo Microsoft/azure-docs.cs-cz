@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65407869"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny verze 2 Azure Active Directory pro správu skupin
@@ -168,7 +168,7 @@ Odstranit skupiny z adresáře, použijte rutinu Remove-AzureADGroup následují
 
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 
-## <a name="manage-group-membership"></a>Spravovat členství ve skupinách 
+## <a name="manage-group-membership"></a>Správa členství ve skupinách 
 ### <a name="add-members"></a>Přidat členy
 Přidání nových členů do skupiny, použijte rutinu Add-AzureADGroupMember. Tento příkaz přidá členy do skupiny Správci Intune, které jsme použili v předchozím příkladu:
 
@@ -254,13 +254,13 @@ Když skupina se vytvoří, jisti, že koncové body povolí koncovému uživate
   
 * urážlivý příspěvek 
 * admin 
-* správce 
+* Správce 
 * hostmaster 
 * majordomo 
 * správce pošty 
 * kořen 
-* zabezpečení 
-* zabezpečení 
+* Zabezpečený 
+* security 
 * Správce protokolu SSL 
 * správce webového serveru 
 

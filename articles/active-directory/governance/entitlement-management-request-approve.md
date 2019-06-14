@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b2d07638f6c6f153ee3640273fbee5e56df0ab2
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541522"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Schválit nebo odmítnout žádosti o přístup ve správě služby Azure AD oprávnění (Preview)
@@ -36,7 +36,7 @@ Správa oprávnění Azure AD můžete nakonfigurovat zásady, které vyžadují
 
 Prvním krokem pro schválení nebo zamítnutí žádosti o přístup je najít a otevřít žádost o přístup čeká na schválení. Existují dva způsoby, jak otevřít žádost o přístup.
 
-**Požadované role:** Schvalovatel
+**Požadované role:** Schvalovatele
 
 1. Vyhledejte e-mailu z Microsoft Azure, která vás vyzve k schválit nebo zamítnout žádost. Tady je příklad e-mailu:
 
@@ -58,7 +58,7 @@ Pokud nemáte k dispozici v e-mailu, najdete pomocí následujících kroků ž�
 
 Po otevření žádosti o přístup čeká na schválení, zobrazí se podrobnosti, které vám pomohou Ujistěte se, schválit nebo zamítnout rozhodnutí.
 
-**Požadované role:** Schvalovatel
+**Požadované role:** Schvalovatele
 
 1. Klikněte na tlačítko **zobrazení** odkaz a otevřete tak podokno žádost o přístup.
 

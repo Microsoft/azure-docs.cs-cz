@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 632ae913214794a114bc12019d92b6902172fca7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd936c823501dfe53dd81ba64b56bfb491fc85e4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65858496"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Kurz: Integrace Azure Active Directory s Birst agilní obchodní analýzy
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace Birst agilní obchodní analýzy do služby Azure AD, b
 
 **Chcete-li přidat Birst agilní obchodní analýzy z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -192,7 +192,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v Birst agilní obchodní analýzy. Práce s [tým podpory Birst agilní obchodní analýzy](mailto:info@birst.com) přidat uživatele na platformě Birst agilní obchodní analýzy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

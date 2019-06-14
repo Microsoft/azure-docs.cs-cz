@@ -4,14 +4,14 @@ description: Ukazuje, jaké typy prostředků Azure podporují značky. Poskytuj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/10/2019
+ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ef37323fb8150e3a6b52800bfafa2585ae328c2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056885"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](resource-group-using-tags.md). Sloupec s názvem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s názvem **značku sestavy nákladů** označuje, zda tento typ prostředku předá značka sestavy nákladů.
@@ -40,10 +40,10 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ----------- |
 | aadsupportcases | Ne |  Ne |
 | addsservices | Ne |  Ne |
-| agenti | Ne |  Ne |
+| Agenti | Ne |  Ne |
 | anonymousapiusers | Ne |  Ne |
 | konfigurace | Ne |  Ne |
-| protokoly | Ne |  Ne |
+| logs | Ne |  Ne |
 | sestavy | Ne |  Ne |
 | services | Ne |  Ne |
 
@@ -52,14 +52,14 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ----------- |
 | Konfigurace | Ne |  Ne |
 | generateRecommendations | Ne |  Ne |
-| doporučení | Ne |  Ne |
+| Doporučení | Ne |  Ne |
 | potlačení | Ne |  Ne |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
 | actionRules | Ne |  Ne |
-| upozornění | Ne |  Ne |
+| výstrahy | Ne |  Ne |
 | alertsList | Ne |  Ne |
 | alertsSummary | Ne |  Ne |
 | alertsSummaryList | Ne |  Ne |
@@ -239,7 +239,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | reservationOrders/rozdělení | Ne |  Ne |
 | reservationOrders/swap | Ne |  Ne |
 | rezervace | Ne |  Ne |
-| prostředky | Ne |  Ne |
+| Prostředky | Ne |  Ne |
 | validateReservationOrder | Ne |  Ne |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -351,21 +351,21 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | AggregatedCost | Ne |  Ne |
 | Zůstatky | Ne |  Ne |
 | Rozpočty | Ne |  Ne |
-| Poplatky | Ne |  Ne |
+| Poplatky za | Ne |  Ne |
 | CostTags | Ne |  Ne |
 | Kredity | Ne |  Ne |
-| události | Ne |  Ne |
+| stránka events | Ne |  Ne |
 | Prognózy | Ne |  Ne |
 | Velké | Ne |  Ne |
 | Marketplaces | Ne |  Ne |
 | Pricesheets | Ne |  Ne |
-| produkty | Ne |  Ne |
+| Produkty | Ne |  Ne |
 | ReservationDetails | Ne |  Ne |
 | ReservationRecommendations | Ne |  Ne |
 | ReservationSummaries | Ne |  Ne |
 | ReservationTransactions | Ne |  Ne |
 | Tags | Ne |  Ne |
-| Podmínky | Ne |  Ne |
+| Výrazy | Ne |  Ne |
 | UsageDetails | Ne |  Ne |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -612,7 +612,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | myareas/oblasti/galleryitems | Ne |  Ne |
 | myareas/galleryitems | Ne |  Ne |
 | Registrace | Ne |  Ne |
-| prostředky | Ne |  Ne |
+| Prostředky | Ne |  Ne |
 | retrieveresourcesbyid | Ne |  Ne |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -654,7 +654,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | alertrules | Ano | Ano |
 | automatedExportSettings | Ne |  Ne |
 | autoscalesettings | Ano | Ano |
-| základní hodnota | Ne |  Ne |
+| Standardní hodnoty | Ne |  Ne |
 | calculatebaseline | Ne |  Ne |
 | components | Ano | Ano |
 | součásti/události | Ne |  Ne |
@@ -667,7 +667,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | extendedDiagnosticSettings | Ne |  Ne |
 | logDefinitions | Ne |  Ne |
 | logprofiles | Ne |  Ne |
-| protokoly | Ne |  Ne |
+| logs | Ne |  Ne |
 | metricAlerts | Ano | Ano |
 | migrateToNewPricingModel | Ne |  Ne |
 | myWorkbooks | Ne |  Ne |
@@ -692,7 +692,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
-| Graf | Ano | Ano |
+| Graph | Ano | Ano |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
@@ -714,7 +714,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
 | labaccounts | Ano | Ano |
-| uživatelů | Ne |  Ne |
+| uživatelé | Ne |  Ne |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
@@ -729,7 +729,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
-| protokoly | Ne |  Ne |
+| logs | Ne |  Ne |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
@@ -776,7 +776,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- | ----------- |
 | getEntities | Ne |  Ne |
 | managementGroups | Ne |  Ne |
-| prostředky | Ne |  Ne |
+| Prostředky | Ne |  Ne |
 | startTenantBackfill | Ne |  Ne |
 | tenantBackfillStatus | Ne |  Ne |
 
@@ -798,7 +798,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | offerTypes/publishers/offers/plans/configs | Ne |  Ne |
 | offerTypes/publishers/offers/plans/configs/importImage | Ne |  Ne |
 | privategalleryitems | Ne |  Ne |
-| produkty | Ne |  Ne |
+| Produkty | Ne |  Ne |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
@@ -864,7 +864,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | dnszones/TXT | Ne |  Ne |
 | expressRouteCircuits | Ano  | Ne |
 | expressRouteServiceProviders | Ne |  Ne |
-| frontdoory | Ano | Ano |
+| frontdoors | Ano | Ano |
 | frontdoorWebApplicationFirewallPolicies | Ano | Ano |
 | getDnsResourceReference | Ne |  Ne |
 | interfaceEndpoints | Ano | Ano |
@@ -973,7 +973,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
-| prostředky | Ne |  Ne |
+| Prostředky | Ne |  Ne |
 | subscriptionsStatus | Ne |  Ne |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
@@ -982,21 +982,21 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | availabilityStatuses | Ne |  Ne |
 | childAvailabilityStatuses | Ne |  Ne |
 | childResources | Ne |  Ne |
-| události | Ne |  Ne |
+| stránka events | Ne |  Ne |
 | impactedResources | Ne |  Ne |
-| oznámení | Ne |  Ne |
+| Oznámení | Ne |  Ne |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
-| nasazení | Ne |  Ne |
+| Nasazení | Ne |  Ne |
 | Nasazení/operace | Ne |  Ne |
 | Odkazy | Ne |  Ne |
 | notifyResourceJobs | Ne |  Ne |
 | Zprostředkovatelé | Ne |  Ne |
 | resourceGroups | Ne |  Ne |
-| prostředky | Ne |  Ne |
-| předplatná | Ne |  Ne |
+| Prostředky | Ne |  Ne |
+| Předplatná | Ne |  Ne |
 | Předplatná a poskytovatelé | Ne |  Ne |
 | subscriptions/resourceGroups | Ne |  Ne |
 | předplatné/resourcegroups/prostředky | Ne |  Ne |
@@ -1027,7 +1027,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
 | advancedThreatProtectionSettings | Ne |  Ne |
-| upozornění | Ne |  Ne |
+| výstrahy | Ne |  Ne |
 | allowedConnections | Ne |  Ne |
 | appliances | Ne |  Ne |
 | applicationWhitelistings | Ne |  Ne |
@@ -1038,11 +1038,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | externalSecuritySolutions | Ne |  Ne |
 | InformationProtectionPolicies | Ne |  Ne |
 | jitNetworkAccessPolicies | Ne |  Ne |
-| sledování | Ne |  Ne |
+| Monitorování | Ne |  Ne |
 | Monitoring/antimalwaru | Ne |  Ne |
 | monitorování a standardních hodnot | Ne |  Ne |
 | Monitoring/patch | Ne |  Ne |
-| zásady | Ne |  Ne |
+| Zásady | Ne |  Ne |
 | ceny | Ne |  Ne |
 | securityContacts | Ne |  Ne |
 | securitySolutions | Ne |  Ne |
@@ -1053,7 +1053,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | securityStatus/virtualMachines | Ne |  Ne |
 | securityStatuses | Ne |  Ne |
 | securityStatusesSummaries | Ne |  Ne |
-| nastavení | Ne |  Ne |
+| settings | Ne |  Ne |
 | úlohy | Ne |  Ne |
 | Topologie | Ne |  Ne |
 | workspaceSettings | Ne |  Ne |
@@ -1091,7 +1091,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | applications | Ano | Ano |
 | gateways | Ano | Ano |
 | networks | Ano | Ano |
-| tajné kódy | Ano | Ano |
+| Tajné kódy | Ano | Ano |
 | volumes | Ano | Ano |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -1194,7 +1194,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
 | ------------- | ----------- | ----------- |
 | providerRegistrations | Ano | Ano |
-| prostředky | Ano | Ano |
+| Prostředky | Ano | Ano |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Podporuje značky | Sestava náklady na značku |
@@ -1231,13 +1231,13 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | customApis | Ano | Ano |
 | deletedSites | Ne |  Ne |
 | functions | Ne |  Ne |
-| hostingEnvironments | Ano | Ne |
+| hostingEnvironments | Ano | Ano |
 | hostingEnvironments/multiRolePools | Ne |  Ne |
 | hostingEnvironments/multiRolePools/instances | Ne |  Ne |
 | hostingEnvironments/workerPools | Ne |  Ne |
 | hostingEnvironments/workerPools/instances | Ne |  Ne |
 | publishingUsers | Ne |  Ne |
-| doporučení | Ne |  Ne |
+| Doporučení | Ne |  Ne |
 | resourceHealthMetadata | Ne |  Ne |
 | Moduly runtime | Ne |  Ne |
 | serverFarms | Ano | Ano |

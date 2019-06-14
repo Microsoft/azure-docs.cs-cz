@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84029b9f6a3e447ee914e5a53b79df89d683259d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba2782dbce0588007ebbd7fc77c8a127a4ac04e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280800"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convene"></a>Kurz: Integrace Azure Active Directory s Convene
 
@@ -55,7 +55,7 @@ Konfigurace integrace Convene do služby Azure AD, budete muset přidat Convene 
 
 **Chcete-li přidat Convene z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

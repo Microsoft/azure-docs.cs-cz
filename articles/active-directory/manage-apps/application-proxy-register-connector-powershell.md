@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65782920"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvořit skript bezobslužné instalace pro Azure AD Application Proxy connector
@@ -53,7 +53,7 @@ Existují dvě metody, které lze použít k registraci konektoru:
 * Registrace konektoru pomocí tokenu vytvořený v režimu offline
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrace konektoru pomocí přihlašovacích údajů objektu prostředí Windows PowerShell
-1. Vytvořte objekt přihlašovacích údajů Windows Powershellu `$cred` , který obsahuje uživatelské jméno správce a heslo pro svůj adresář. Spusťte následující příkaz a nahraďte *\<uživatelské jméno\>* a  *\<heslo\>*:
+1. Vytvořte objekt přihlašovacích údajů Windows Powershellu `$cred` , který obsahuje uživatelské jméno správce a heslo pro svůj adresář. Spusťte následující příkaz a nahraďte *\<uživatelské jméno\>* a  *\<heslo\>* :
    
         $User = "<username>"
         $PlainPassword = '<password>'

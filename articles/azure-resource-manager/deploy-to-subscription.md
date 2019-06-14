@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129153"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupiny prostředků a prostředků na úrovni předplatného
@@ -211,9 +211,9 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
 }
 ```
 
-## <a name="create-policies"></a>Vytvořit zásady
+## <a name="create-policies"></a>Vytvoření zásad
 
-### <a name="assign-policy"></a>Přiřadit zásady
+### <a name="assign-policy"></a>Přiřazení zásad
 
 Následující příklad přiřadí existující definici zásady k předplatnému. Pokud zásady parametry, zadejte je jako objekt. Pokud zásady nepřijímá parametry, použijte výchozí prázdný objekt.
 

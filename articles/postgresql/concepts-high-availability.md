@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: f54c83099957b4d8795c4049be52d70e8a0e2a61
-ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073440"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Koncepty vysoké dostupnosti ve službě Azure Database for PostgreSQL – jeden Server

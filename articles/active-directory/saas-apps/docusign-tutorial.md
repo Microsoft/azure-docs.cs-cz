@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 72505cfc0a86c00882de37c35dff61a12a9c3fbe
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 607e5aded52375190878de6b48ffa4aa2ab49767
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104093"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Kurz: Integrace Azure Active Directory se službou DocuSign
 
@@ -55,7 +55,7 @@ Konfigurace integrace DocuSign do služby Azure AD, budete muset přidat DocuSig
 
 **Chcete-li přidat DocuSign z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -134,31 +134,31 @@ Ke konfiguraci Azure AD jednotného přihlašování službou DocuSign, proveďt
 
 2. V horní pravé části stránky klikněte na profil **logo** a potom klikněte na **přejděte do správce**.
   
-    ![Konfiguruje se jednotné přihlašování.][51]
+    ![Konfigurace jednotného přihlašování][51]
 
 3. Na stránce řešení domény, klikněte na **domén**
 
-    ![Konfiguruje se jednotné přihlašování.][50]
+    ![Konfigurace jednotného přihlašování][50]
 
 4. V části **domén** klikněte na tlačítko **domény deklaraci identity**.
 
-    ![Konfiguruje se jednotné přihlašování.][52]
+    ![Konfigurace jednotného přihlašování][52]
 
 5. Na **deklarace identity domény** dialogového okna v **název domény** textového pole zadejte doménu vaší společnosti a potom klikněte na tlačítko **deklarace identity**. Ujistěte se, že ověření domény a je ve stavu aktivní.
 
-    ![Konfiguruje se jednotné přihlašování.][53]
+    ![Konfigurace jednotného přihlašování][53]
 
 6. Na stránce řešení domény, klikněte na tlačítko **zprostředkovatelé Identity**.
   
-    ![Konfiguruje se jednotné přihlašování.][54]
+    ![Konfigurace jednotného přihlašování][54]
 
 7. V části **zprostředkovatelé Identity** klikněte na tlačítko **přidat zprostředkovatele IDENTITY**. 
 
-    ![Konfiguruje se jednotné přihlašování.][55]
+    ![Konfigurace jednotného přihlašování][55]
 
 8. Na **nastavení zprostředkovatele Identity** stránce, proveďte následující kroky:
 
-    ![Konfiguruje se jednotné přihlašování.][56]
+    ![Konfigurace jednotného přihlašování][56]
 
     a. V **název** textového pole zadejte jedinečný název pro vaši konfiguraci. Nepoužívejte mezery.
 
@@ -176,26 +176,26 @@ Ke konfiguraci Azure AD jednotného přihlašování službou DocuSign, proveďt
 
     h. V **mapování vlastního atributu** části, klikněte na **přidat nové mapování**.
 
-    ![Konfiguruje se jednotné přihlašování.][62]
+    ![Konfigurace jednotného přihlašování][62]
 
-    i. Zvolte pole, které chcete propojit s deklarací identity Azure AD. V tomto příkladu **emailaddress** deklarací identity je namapována na žádnou hodnotu **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Jedná se o výchozí název deklarace identity z Azure AD pro deklarace identity e-mailu a pak klikněte na tlačítko **Uložit**.
+    i. Zvolte pole, které chcete propojit s deklarací identity Azure AD. V tomto příkladu **emailaddress** deklarací identity je namapována na žádnou hodnotu **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** . Jedná se o výchozí název deklarace identity z Azure AD pro deklarace identity e-mailu a pak klikněte na tlačítko **Uložit**.
 
-    ![Konfiguruje se jednotné přihlašování.][57]
+    ![Konfigurace jednotného přihlašování][57]
 
     > [!NOTE]
     > Použít příslušné **identifikátor uživatele** mapovat uživatele ze služby Azure AD pro mapování uživatele DocuSign. Vyberte správné pole a zadejte příslušnou hodnotu na základě svého nastavení organizace.
 
     j. V **certifikáty zprostředkovatele Identity** klikněte na tlačítko **přidat certifikát**a pak nahrajte certifikát, který jste si stáhli z portálu Azure AD a klikněte na **Uložit**.
 
-    ![Konfiguruje se jednotné přihlašování.][58]
+    ![Konfigurace jednotného přihlašování][58]
 
     k. V **zprostředkovatelé Identity** klikněte na tlačítko **akce**a potom klikněte na tlačítko **koncové body**.
 
-    ![Konfiguruje se jednotné přihlašování.][59]
+    ![Konfigurace jednotného přihlašování][59]
 
     l. V **zobrazit SAML 2.0 koncové body** části na **portál pro správu DocuSign**, proveďte následující kroky:
 
-    ![Konfiguruje se jednotné přihlašování.][60]
+    ![Konfigurace jednotného přihlašování][60]
 
     * Kopírovat **URL vystavitele poskytovatele služby**a vložte jej do **identifikátor** textového pole v **základní konfiguraci SAML** části na webu Azure portal.
 
@@ -260,7 +260,7 @@ V této části se vytvoří uživateli Britta Simon v DocuSign. DocuSign podpor
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory DocuSign](https://support.docusign.com/).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

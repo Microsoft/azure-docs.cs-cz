@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: b62ac8229d121738c23a4520bc1c1952603e2a12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ed2f4fa72617aa20ef085d64759119db650b288
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869295"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>Kurz: Integrace Azure Active Directory s Powerschool otázky výkonu
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci otázky výkonu Powerschool do služby Azu
 
 **Otázky výkonu Powerschool přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v oblastech výkonu Powerschool. Práce s [otázky výkonu Powerschool tým podpory](mailto:pmsupport@powerschoo.com) přidat uživatele na platformě Powerschool výkonu věcech. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

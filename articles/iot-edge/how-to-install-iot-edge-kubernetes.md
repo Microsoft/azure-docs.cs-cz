@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 66aca7be9a2df93d846d7e78bc64c93279afc2d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160692"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Postup instalace IoT Edge v Kubernetes (Preview)
@@ -78,7 +78,7 @@ Všechny komponenty nasazení edge působí na obor názvů Kubernetes, která j
     minikube dashboard
     ```
 
-    V části obory názvů clusteru se zobrazí jeden pro zařízení IoT Edge, které jsou podle úmluvy *msiot -\<iothub-name >-\<edgedevice-name >*. IoT Edge agenta a iotedged podů měli pracovat v tomto oboru názvů.
+    V části obory názvů clusteru se zobrazí jeden pro zařízení IoT Edge, které jsou podle úmluvy *msiot -\<iothub-name >-\<edgedevice-name >* . IoT Edge agenta a iotedged podů měli pracovat v tomto oboru názvů.
 
 1. Přidat modul simulované teplotní snímač pomocí postupu v [nasazení modulu](quickstart-linux.md#deploy-a-module) části tohoto rychlého startu. Správa modul IoT Edge se provádí na portálu služby IoT Hub, stejně jako ostatní zařízení IoT Edge. Místní změny konfigurace modulu prostřednictvím nástrojů pro Kubernetes se nedoporučuje, protože se může přepsat.
 

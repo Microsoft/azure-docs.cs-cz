@@ -16,10 +16,10 @@ ms.date: 11/27/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112699"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Powershellu
@@ -34,7 +34,7 @@ V tomto článku pomocí Powershellu, se dozvíte, jak k provádění následuj�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)**.
+- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Nainstalujte [nejnovější verzi Azure Powershellu](/powershell/azure/install-az-ps) Pokud jste tak již neučinili.
 
@@ -137,7 +137,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 > [!NOTE]
 > Pokud jste zřídili spravovanou identitu pro prostředky Azure VM rozšíření (zastaralé), musíte ho odebrat pomocí [odebrat AzVMExtension](/powershell/module/az.compute/remove-azvmextension). Další informace najdete v tématu [migrovat z rozšíření virtuálního počítače Azure IMDS ověřování](howto-migrate-vm-extension.md).
 
-## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
+## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
 
 V této části se dozvíte, jak přidávat a odebírat spravované identity přiřazené uživateli z virtuálního počítače pomocí Azure Powershellu.
 

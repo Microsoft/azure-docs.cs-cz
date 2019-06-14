@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142562"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
@@ -92,7 +92,7 @@ Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brán
 
 ## <a name="specifying-a-different-provider"></a>Zadání jiného poskytovatele
 
-Modely dat ve službě Azure Analysis Services může vyžadovat různé datové zprostředkovatele při připojování k určité zdroje dat. V některých případech může tabulkových modelů připojení ke zdrojům dat pomocí nativní poskytovatelů, jako je například SQL Server Native Client (SQLNCLI11) vrátí chybu. Pokud používáte nativní poskytovatelů než SQLOLEDB, zobrazí se chybová zpráva: **'SQLNCLI11.1' není registrovaný poskytovatel**. Nebo, pokud máte modelu DirectQuery připojení k místním zdrojům dat a používají nativní zprostředkovatele, může se zobrazit chybová zpráva: **Chyba při vytváření sady řádků OLE DB. Nesprávná syntaxe poblíž textu "LIMIT"**.
+Modely dat ve službě Azure Analysis Services může vyžadovat různé datové zprostředkovatele při připojování k určité zdroje dat. V některých případech může tabulkových modelů připojení ke zdrojům dat pomocí nativní poskytovatelů, jako je například SQL Server Native Client (SQLNCLI11) vrátí chybu. Pokud používáte nativní poskytovatelů než SQLOLEDB, zobrazí se chybová zpráva: **'SQLNCLI11.1' není registrovaný poskytovatel**. Nebo, pokud máte modelu DirectQuery připojení k místním zdrojům dat a používají nativní zprostředkovatele, může se zobrazit chybová zpráva: **Chyba při vytváření sady řádků OLE DB. Nesprávná syntaxe poblíž textu "LIMIT"** .
 
 Při migraci tabulkový model místní SQL Server Analysis Services do služby Azure Analysis Services, může být nutné změnit zprostředkovatele.
 

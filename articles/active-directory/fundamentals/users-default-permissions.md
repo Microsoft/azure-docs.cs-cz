@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cb0fe056ff7ff4794667d6b28782daad100609f
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65921031"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?
@@ -50,10 +50,10 @@ Výchozí oprávnění pro členy je možné omezit následujícími způsoby.
 Oprávnění | Vysvětlení nastavení
 ---------- | ------------
 Uživatelé můžou registrovat aplikace | Nastavení této možnosti na Ne zabraňuje uživatelům vytvářet registrace aplikací. Možnost lze udělit pak zpátky na určité jednotlivce jejich přidáním do role pro vývojáře aplikací.
-Umožnit uživatelům propojit pracovní nebo školní účet k LinkedInu | Nastavení této možnosti na Ne zabraňuje uživatelům v připojení svého pracovního nebo školního účtu se svým účtem LinkedIn.  Zobrazit [účet LinkedIn připojení sdílení dat a vyjádření souhlasu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) Další informace.
+Umožnit uživatelům propojit pracovní nebo školní účet s Linkedinem | Nastavení této možnosti na Ne zabraňuje uživatelům v připojení svého pracovního nebo školního účtu se svým účtem LinkedIn.  Zobrazit [účet LinkedIn připojení sdílení dat a vyjádření souhlasu](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) Další informace.
 Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a Správci uživatelů stále můžou vytvářet skupiny zabezpečení. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
 Možnost vytvářet skupiny Office 365 | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny Office 365. Nastavení této možnosti na hodnotu Někteří umožní vytvářet skupiny Office 365 vybrané skupině uživatelů. Globální správci a Správci uživatelů bude stále moci vytvářet skupiny Office 365. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
-Omezit přístup k portálu pro správu Azure AD | Nastavení této možnosti na hodnotu Ano zabraňuje uživatelům v přístupu Azure Active Directory s využitím webu Azure portal pouze.
+Omezení přístupu k portálu pro správu Azure AD | Nastavení této možnosti na hodnotu Ano zabraňuje uživatelům v přístupu Azure Active Directory s využitím webu Azure portal pouze.
 Možnost číst ostatní uživatele | Toto nastavení je k dispozici pouze v PowerShellu. Nastavení této možnosti na hodnotu $false zabrání všem uživatelům, kteří nejsou správci, číst z adresáře informace o uživatelích. Toto nastavení nebrání čtení informací o uživatelích v ostatních službách Microsoftu, jako je například Exchange Online. Toto nastavení je určené pro zvláštní okolnosti a jeho nastavení na hodnotu $false se nedoporučuje.
 
 ## <a name="object-ownership"></a>Vlastnictví objektů

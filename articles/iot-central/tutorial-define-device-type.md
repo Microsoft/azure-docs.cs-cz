@@ -3,18 +3,18 @@ title: Definování nového typu zařízení v aplikaci Azure IoT Central | Micr
 description: Tento kurz vám jako tvůrci ukáže, jak definovat nový typ zařízení v aplikaci Azure IoT Central. Pro váš typ definujete telemetrická data, stav, vlastnosti a nastavení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/28/2019
+ms.date: 06/07/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748478"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056780"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definujte nový typ zařízení v aplikaci Azure IoT Central
 
@@ -132,7 +132,7 @@ Následující kroky ukazují, jak vytvořit novou šablonu zařízení **Connec
 
      | Nastavení              | Hodnota         |
      | -------------------- | -----------   |
-     | Zobrazovaný název         | Teplota   |
+     | Zobrazované jméno         | Teplota   |
      | Název pole           | Teplota   |
      | Jednotky                | F             |
      | Minimum                  | 60            |
@@ -174,7 +174,7 @@ Události použijte k definování dat bodu v čase, který zařízení odešle,
 
      | Nastavení              | Hodnota             |
      | -------------------- | -----------       |
-     | Zobrazovaný název         | Chyba motoru ventilátoru   |
+     | Zobrazované jméno         | Chyba motoru ventilátoru   |
      | Název pole           | fanmotorerr       |
      | Severity             | Chyba             |
 
@@ -212,7 +212,7 @@ Stav můžete použít k definování a vizualizovat stav zařízení nebo jeho 
 
      | Nastavení              | Hodnota             |
      | -------------------- | -----------       |
-     | Zobrazovaný název         | Režim ventilátoru          |
+     | Zobrazované jméno         | Režim ventilátoru          |
      | Název pole           | fanmode           |
      | Hodnota                | 1                 |
      | Popisek        | Funguje         |
@@ -257,7 +257,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     | Pole                | Hodnota           |
     | -------------------- | -----------     |
-    | Zobrazovaný název         | Nastavená teplota |
+    | Zobrazované jméno         | Nastavená teplota |
     | Název pole           | setTemperature  |
     | Jednotka měření      | F               |
     | Desetinná místa       | 1               |
@@ -287,7 +287,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     | Pole                | Hodnota                |
     | -------------------- | -------------------- |
-    | Zobrazovaný název         | Location             |
+    | Zobrazované jméno         | Location             |
     | Název pole           | location             |
     | Počáteční hodnota        | Seattle, WA          |
     | Popis          | Device location (Umístění zařízení)      |
@@ -304,7 +304,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     | Pole                | Hodnota                   |
     | -------------------- | ----------------------- |
-    | Zobrazovaný název         | Last Service Date (Datum poslední údržby)       |
+    | Zobrazované jméno         | Last Service Date (Datum poslední údržby)       |
     | Název pole           | serviceDate             |
     | Počáteční hodnota        | 1/1/2019                |
     | Popis          | Last serviced (Poslední údržba)           |
@@ -321,7 +321,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     | Pole                | Hodnota                   |
     | -------------------- | ----------------------- |
-    | Zobrazovaný název         | Verze firmwaru        |
+    | Zobrazované jméno         | Verze firmwaru        |
     | Název pole           | firmwareVersion         |
     | Typ dat            | text                    |
     | Popis          | Verze firmwaru klimatizace |
@@ -336,7 +336,7 @@ Nastavení, vlastnosti a příkazy jsou různé hodnoty definované v šabloně 
 
     | Pole                | Hodnota                   |
     | -------------------- | ----------------------- |
-    | Zobrazovaný název         | Sériové číslo           |
+    | Zobrazované jméno         | Sériové číslo           |
     | Název pole           | serialNumber            |
     | Typ dat            | text                    |
     | Popis          | Sériové číslo klimatizace  |
@@ -360,7 +360,7 @@ _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkaz
 
     | Pole                | Hodnota           |
     | -------------------- | -----------     |
-    | Zobrazovaný název         | Příkaz pro zobrazení výsledků    |
+    | Zobrazované jméno         | Příkaz pro zobrazení výsledků    |
     | Název pole           | echo            |
     | Výchozí časový limit      | 30              |
     | Zobrazovaný typ         | text            |
@@ -386,9 +386,9 @@ Nyní jste definovali vaše **připojené klimatizace** šablona zařízení, si
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Teplota |
+    | Titul        | Teplota |
     | Časové rozmezí   | Posledních 30 minut |
-    | Měření     | Teplota (vyberte **viditelnost** vedle **teploty**) |
+    | Míry     | Teplota (vyberte **viditelnost** vedle **teploty**) |
 
     ![Nastavení čárového grafu](./media/tutorial-define-device-type/linechartsettings.png)
 
@@ -398,9 +398,9 @@ Nyní jste definovali vaše **připojené klimatizace** šablona zařízení, si
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Ventilátor Motor události |
+    | Titul        | Ventilátor Motor události |
     | Časové rozmezí   | Posledních 30 minut |
-    | Měření     | Ventilátor Motor chyby (vyberte **viditelnost** vedle **Motor chyba ventilátor**) |
+    | Míry     | Ventilátor Motor chyby (vyberte **viditelnost** vedle **Motor chyba ventilátor**) |
 
     ![Nastavení grafu události](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
@@ -410,9 +410,9 @@ Nyní jste definovali vaše **připojené klimatizace** šablona zařízení, si
 
     | Nastavení      | Hodnota       |
     | ------------ | ----------- |
-    | Název        | Režim ventilátoru |
+    | Titul        | Režim ventilátoru |
     | Časové rozmezí   | Posledních 30 minut |
-    | Měření | Ventilátor režimu (vyberte **viditelnost** vedle **ventilátor režimu**) |
+    | Míry | Ventilátor režimu (vyberte **viditelnost** vedle **ventilátor režimu**) |
 
     ![Nastavení čárového grafu](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
@@ -424,7 +424,7 @@ Nyní jste definovali vaše **připojené klimatizace** šablona zařízení, si
 
     | Nastavení                 | Hodnota         |
     | ----------------------- | ------------- |
-    | Název                   | Vlastnosti zařízení |
+    | Titul                   | Vlastnosti zařízení |
     | Nastavení a vlastností | Nastavená teplota<br/>Sériové číslo<br/>Verze firmwaru |
 
     Nastavení a vlastnosti, které jste dříve definovali v **nastavením a vlastnostem** stránky jsou uvedeny v **dostupných sloupců**.

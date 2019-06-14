@@ -7,12 +7,12 @@ ms.author: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: b5048266fe17bc16fba8228f7cc17d0ee9f3bc0b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4d391c095495a3d0e34a2111d7b4564e6f4f2b8d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072000"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
 Abyste mohli využívat nejnovější funkce HDInsight, doporučujeme, abyste clustery HDInsight upgradovali na nejnovější verzi. Postupujte níže uvedených pokynů k upgradu vašeho HDInsight clusteru verze.
@@ -27,9 +27,8 @@ Pracovní postup pro upgrade clusteru HDInsight je následujícím způsobem.
 
 1. Přečtěte si každá část tohoto dokumentu o změny, které mohou být vyžadovány při upgradu vašeho clusteru HDInsight.
 2. Vytvoření clusteru jako assurance prostředí test nebo kvalita. Další informace týkající se vytvoření clusteru najdete v tématu [zjistěte, jak vytvářet clustery HDInsight založené na Linuxu](hdinsight-hadoop-provision-linux-clusters.md)
-3. Zkopírujte do nové prostředí stávající úlohy, zdroje a jímky. Zobrazit [kopírování dat do testovacího prostředí](hdinsight-migrate-from-windows-to-linux.md#copy-data-to-the-test-environment) další podrobnosti.
+3. Zkopírujte do nové prostředí stávající úlohy, zdroje a jímky.
 4. Proveďte ověřovací testování, abyste měli jistotu, že vaše úlohy fungovat podle očekávání v novém clusteru.
-
 
 Jakmile si ověříte, že vše funguje podle očekávání, naplánujte výpadky na migraci. Během výpadků proveďte následující akce:
 

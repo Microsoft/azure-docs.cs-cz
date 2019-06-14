@@ -16,10 +16,10 @@ ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 29446f6f0a86a00cc92fe46211caddd22aaa4859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112558"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurace virtuálního počítače pomocí spravované identity pro prostředky Azure pomocí sady Azure SDK
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak povolit a odebrat spravovaných identit pro pr
 
 Azure podporuje různé programovací platformy prostřednictvím řady [sady Azure SDK](https://azure.microsoft.com/downloads). Některé z nich byly aktualizovány pro podporu spravovaných identit pro prostředky Azure a zadejte odpovídající ukázky, které ukazují využití. Tento seznam se aktualizuje, jak přidat další podporu:
 
-| SDK | Ukázka |
+| Sada SDK | Ukázka |
 | --- | ------ | 
 | .NET   | [Správa prostředků z virtuálního počítače povolená pomocí spravované identity pro prostředky Azure, které jsou povolené](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [Správa služby storage z virtuálního počítače povolená pomocí spravované identity pro prostředky Azure](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|

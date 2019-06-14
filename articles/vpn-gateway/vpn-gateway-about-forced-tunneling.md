@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
 ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506013"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic

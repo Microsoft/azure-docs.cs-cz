@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2e717e612973fa4c46c9ab4e70091d32fcf19
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7dbf96c3480f47e5f6b292759a949c9bbf36dc07
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902421"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Kurz: Integrace Azure Active Directory s ZABEZPEČENÉ DORUČOVÁNÍ
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integraci ZABEZPEČENÉ DORUČOVÁNÍ do služby Azu
 
 **Chcete-li přidat ZABEZPEČENÉ DORUČOVÁNÍ z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v ZABEZPEČENÉ DORUČOVÁNÍ. Práce s [ZABEZPEČENÉ DORUČOVÁNÍ tým podpory](mailto:iw-sd-support@fujifilm.com) přidat uživatele na platformě ZABEZPEČENÉ DORUČOVÁNÍ. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

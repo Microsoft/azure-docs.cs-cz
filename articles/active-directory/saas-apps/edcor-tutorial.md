@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1d9089f3fb2f3ebf3022b54c442e8338ab983b
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 084a045fda66087b657f26679ab1926fa3611cb8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508346"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103668"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Kurz: Integrace Azure Active Directory s Edcor
 
@@ -54,7 +54,7 @@ Konfigurace integrace Edcor do služby Azure AD, budete muset přidat Edcor z Ga
 
 **Chcete-li přidat Edcor z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -181,7 +181,7 @@ V této části je povolit Britta Simon k udělení přístupu k Edcor použití
 
 V této části vytvoříte uživatele v Edcor jako Britta Simon. Práce s [tým podpory Edcor](https://www.edcor.com/contact-us/) přidat uživatele na platformě Edcor. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

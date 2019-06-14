@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 86aab19eb0203e75fb8586adbdeb3f6fff9d14bd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b77b44856e9623235051470bc087885765ee12c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575459"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080436"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Store dat na hraničních zařízeních s databází SQL serveru
 
@@ -69,7 +69,7 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
    | Zadejte název řešení | Zadejte popisný název pro vaše řešení, jako je třeba **SqlSolution**, nebo přijměte výchozí nastavení. |
    | Vyberte šablonu modulu | Zvolte **Azure Functions – C#** . |
    | Zadejte název modulu | Zadejte název modulu **sqlFunction**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečný řetězec vypadá jako \<název registru\>.azurecr.io/sqlFunction. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečný řetězec vypadá jako \<název registru\>.azurecr.io/sqlfunction. |
 
    V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge. 
    

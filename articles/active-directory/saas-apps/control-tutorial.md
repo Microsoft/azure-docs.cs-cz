@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa66ae77ccc271e475d61b286e0f236429e40feb
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: f3b5c0d9c8a1cc86afc07f332670568fd17c63f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507510"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104678"
 ---
 # <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Kurz: Integrace řízení kontinuity podnikových procesů pomocí Azure Active Directory
 

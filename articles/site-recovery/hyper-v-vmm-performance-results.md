@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60363467"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testu pro replikaci Hyper-V do sekundární lokality
@@ -111,7 +111,7 @@ Ve výsledcích zobrazí jasně, že s minimální režie pro velký cluster šk
 | Servery Hyper-V v clusteru: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 má 256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |Můžu x 4 GB/s |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
 | VMM Server |2 | | |2 |1 Gb/s |Windows Server databáze 2012 R2 (x 64) a VMM 2012 R2 |
 
-### <a name="secondary-site"></a>Sekundární lokalita
+### <a name="secondary-site"></a>Sekundární lokality
 
 * Sekundární lokalita bude mít cluster převzetí služeb při selhání uzlu současně všech šest.
 * Sítě SAN iSCSI poskytuje úložiště pro uzel clusteru. Model – Hitachi HUS130.
@@ -135,7 +135,7 @@ Ve výsledcích zobrazí jasně, že s minimální režie pro velký cluster šk
 | --- | --- | --- | --- | --- | --- |
 | Souborový server |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |Náhodné 100 % |
 | SQL Server (svazku 1) SQL serveru (svazku. 2) |864 |100%100% |70%0% |88 |100 % random100 % sekvenční |
-| Výměna |32 |100 % |67% |8 |100 % náhodné |
+| Exchange |32 |100 % |67% |8 |100 % náhodné |
 | Pracovní stanice/VDI |464 |66%34% |70%95% |11 |Obě náhodné 100 % |
 | Web souborového serveru |4864 |33%34%33% |95%95%95% |888 |Náhodné 75 % |
 

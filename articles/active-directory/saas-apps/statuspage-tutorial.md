@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 49f77da5843bc2438ea7f82475b4faf753b66f09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d947f610e6a753ce2ed349917640b07a55bbb735
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Kurz: Integrace Azure Active Directory s stránka se stavem
 
@@ -53,7 +53,7 @@ Konfigurace integrace stránka se stavem do služby Azure AD, budete muset přid
 
 **Stránka se stavem přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -245,7 +245,7 @@ Stránka se stavem podporuje zřizování just-in-time. Je už povolená v [konf
 
 1. Klikněte na tlačítko **vytvořit účet**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

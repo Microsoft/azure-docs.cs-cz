@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4afcbffa778c902c1b32979c69ca91ab0955f739
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e50cc4ca9c98cb6a8e0f19cfcf6c1f86f1949beb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682934"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107683"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory rizikových událostí
 
@@ -99,7 +99,7 @@ Tento typ rizikové události identifikuje přihlášení z napadený malwarem, 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
 Tento typ rizikové události identifikuje IP adresy, ze kterých vysoký počet neúspěšných pokusů o přihlášení se zjistily, několika uživatelským účtům během krátké doby času. Shoduje se vzorem provozu IP adres používaných útočníky a je silným indikátorem, že účty již jsou nebo se chystáte dojít k ohrožení bezpečnosti. Jde algoritmu strojového učení, které ignoruje zřejmé false-pozitivní výsledky, jako je například IP adresy, které se pravidelně používají jinými uživateli v organizaci.  Systém má období učení 14 dní, ve kterém se naučí chování přihlášení z nového uživatele a nového tenanta.
 
-## <a name="detection-type"></a>Typ detekce
+## <a name="detection-type"></a>Typ zjištění
 
 Vlastnost typu zjišťování je indikátorem (**v reálném čase** nebo **Offline**) pro zjišťování časovém rámci rizikové události. V současné době většina rizikové události jsou rozpoznána offline v operaci následného zpracování rizikové události došlo.
 

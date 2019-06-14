@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: de472cd25997b0c48f258927b2617c2399b2bb21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70ce03834910447e92f0272fc67034caa59c43f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405439"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074073"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu marketingových Salesforce pomocí Azure Data Factory (Preview)
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak používat aktivitu kopírování ve službě Azure
 
 Kopírování dat z cloudu marketingových Salesforce do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Konektor Salesforce Marketing Cloud podporuje ověřování OAuth 2. Nad orchard je založen [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
 >Tento konektor nepodporuje načítání vlastních objektů nebo rozšíření vlastní data.

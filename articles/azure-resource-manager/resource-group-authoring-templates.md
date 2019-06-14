@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.openlocfilehash: e3b8b6b969568fc15558002c268cdc4a16c2fadd
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431239"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
@@ -132,7 +132,7 @@ Dostupné vlastnosti parametru jsou:
 |:--- |:--- |:--- |
 | Název parametru |Ano |Název parametru. Musí být platný identifikátor jazyka JavaScript. |
 | type |Ano |Typ hodnoty parametru. Povolené typy a hodnoty jsou **řetězec**, **securestring**, **int**, **bool**, **objekt**, **secureObject**, a **pole**. |
-| Výchozí hodnota |Ne |Výchozí hodnota pro parametr, pokud se nezadá žádná hodnota pro parametr. |
+| defaultValue |Ne |Výchozí hodnota pro parametr, pokud se nezadá žádná hodnota pro parametr. |
 | allowedValues |Ne |Povolené hodnoty pro parametr, abyste měli jistotu, že se zadal správný hodnotu pole. |
 | minValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je také zahrnuto. |
 | maxValue |Ne |Maximální hodnoty pro parametry typu int, tato hodnota je také zahrnuto. |

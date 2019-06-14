@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 871294703a4be36e274df1e34b9cc9bee7d19783
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071940"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -123,7 +123,7 @@ Tento příklad ukazuje, jak podporovat přípravné požadavků, například ty
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |cors|Kořenový element.|Ano|neuvedeno|
 |Povolené zdroje|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky napříč doménami. `allowed-origins` může obsahovat buď jeden `origin` prvek, který určuje `*` umožňující jakýkoli původ nebo jeden nebo více `origin` prvky, které obsahují identifikátoru URI.|Ano|neuvedeno|
@@ -136,7 +136,7 @@ Tento příklad ukazuje, jak podporovat přípravné požadavků, například ty
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|`Access-Control-Allow-Credentials` Záhlaví v předběžné odpovědi se nastaví na hodnotu tohoto atributu a mít vliv na schopnost klienta přihlašovacích údajů napříč doménami požadavků na odeslání.|Ne|false (nepravda)|
 |preflight-result-max-age|`Access-Control-Max-Age` Záhlaví v předběžné odpovědi se nastaví na hodnotu tohoto atributu a mít vliv na schopnost uživatelský agent odpověď přípravné mezipaměti.|Ne|0|
@@ -145,7 +145,7 @@ Tento příklad ukazuje, jak podporovat přípravné požadavků, například ty
 Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 - **Části zásad:** příchozí
-- **Zásady obory:** globální, rozhraní API, operace
+- **Zásady obory:** globální, produktu, rozhraní API, operace
 
 ## <a name="JSONP"></a> JSONP
 `jsonp` Zásad přidá JSON s podporou odsazení (JSONP) pro operaci nebo rozhraní API pro volání mezi doménami založené na prohlížeči klientů JavaScript povolit. JSONP je metoda použita v programech jazyka JavaScript požadovat data ze serveru v jiné doméně. JSONP obchází omezení vynucená většina webových prohlížečů, ve kterém přístup k webovým stránkám musí být ve stejné doméně.
@@ -168,13 +168,13 @@ Pokud chcete přidat parametr zpětného volání `?cb=XXX` vrátí výsledek JS
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |jsonp|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |Název parametru zpětného volání|Mezi doménami JavaScript volání funkce s předponou plně kvalifikovaný název domény ve kterém se funkce nachází.|Ano|neuvedeno|
 

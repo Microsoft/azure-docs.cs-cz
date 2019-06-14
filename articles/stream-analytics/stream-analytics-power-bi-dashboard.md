@@ -7,16 +7,16 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 0e67a56e3d723874ed93fc8dcad91e3063d923ed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817748"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076192"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Kurz: Stream Analytics a Power BI: Řídicí panel analýzy v reálném čase pro streamovaná data
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics a Power BI: Řídicí panel analýzy v reálném čase pro streamovaná data
+
 Azure Stream Analytics umožňuje využít jeden z předních nástroje business intelligence, [Microsoft Power BI](https://powerbi.com/). V tomto článku se dozvíte, jak vytvořit nástroje business intelligence pomocí Power BI jako výstup pro úlohy Azure Stream Analytics. Také se dozvíte, jak vytvořit a použít řídicí panel v reálném čase.
 
 Tento článek pokračuje ze Stream Analytics [zjišťování možných podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) kurzu. Pracovní postup vytvořený v tomto kurzu vychází a přidá Power BI výstup tak, aby můžete vizualizovat podvodnému telefonních hovorů, které rozpozná úlohu Stream Analytics. 
@@ -38,41 +38,31 @@ V tomto kurzu zjišťování možných podvodů v reálném čase je výstup ode
 
 1. Na webu Azure Portal otevřete úlohu Stream Analytics, který jste vytvořili dříve. Pokud jste použili navrhovaný název, je název úlohy `sa_frauddetection_job_demo`.
 
-2. Vyberte **výstupy** uprostřed řídicího panelu úloh a potom vyberte **+ přidat**.
+2. V nabídce vlevo vyberte **výstupy** pod **topologie úlohy**. Vyberte **+ přidat** a zvolte **Power BI** z rozevírací nabídky.
 
-3. Pro **Alias pro výstup**, zadejte `CallStream-PowerBI`. Můžete použít jiný název. Pokud tak učiníte, si poznamenejte, protože je budete později potřebovat názvu. 
+3. Vyberte **+ Přidat** > **Power BI**. Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat**:
 
-4. V části **jímky**vyberte **Power BI**.
+   |**Nastavení**  |**Navrhovaná hodnota**  |
+   |---------|---------|
+   |Alias pro výstup  |  CallStream-PowerBI  |
+   |Název datové sady  |   sa-dataset  |
+   |Název tabulky |  fraudulent-calls  |
 
-   ![Vytvořit výstup pro Power BI](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
+   ![Konfigurace výstupu Stream Analytics](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
-5. Klikněte na tlačítko **Autorizovat**.
+   > [!WARNING]
+   > Pokud Power BI obsahuje datovou sadu a tabulku, která mají stejné názvy jako ty, které zadáte v úloze Stream Analytics, jsou přepsat ty stávající.
+   > Doporučujeme vám, že nevytvoříte explicitně touto datovou sadou a tabulka ve vašem účtu Power BI. Vytvoří se automaticky při spuštění vaší úlohy Stream Analytics a úloha spustí čerpací výstup do Power BI. Pokud vaše úloha dotaz nevrátí žádné výsledky, nevytvoří se datová sada a tabulky.
+   >
 
-    Okno se otevře ve kterém můžete zadat své přihlašovací údaje Azure pro pracovní nebo školní účet. 
-
-    ![Zadejte přihlašovací údaje pro přístup k Power BI](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
-
-6. Zadejte svoje přihlašovací údaje. Mějte na paměti pak když zadáte svoje přihlašovací údaje, máte plně oprávnění pro přístup k vaší oblasti pro Power BI do úlohy Stream Analytics.
-
-7. Když se vrátíte **nový výstup** okně zadejte následující informace:
-
-   * **Pracovní prostor skupiny**: Vyberte pracovní prostor ve vašem tenantovi Power BI, kde chcete vytvořit datovou sadu.
-   * **Název datové sady**:  Zadejte `sa-dataset`. Můžete použít jiný název. Pokud tak učiníte, ujistěte se, poznamenejte si ho pro pozdější.
-   * **Název tabulky**: Zadejte `fraudulent-calls`. V současné době Power BI výstup z úlohy Stream Analytics může mít pouze jednu tabulku v datové sadě.
-
-     ![Datová sada pracovního prostoru Power BI a tabulky](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
-
-     > [!WARNING]
-     > Pokud Power BI obsahuje datovou sadu a tabulku, která mají stejné názvy jako ty, které zadáte v úloze Stream Analytics, jsou přepsat ty stávající.
-     > Doporučujeme vám, že nevytvoříte explicitně touto datovou sadou a tabulka ve vašem účtu Power BI. Vytvoří se automaticky při spuštění vaší úlohy Stream Analytics a úloha spustí čerpací výstup do Power BI. Pokud vaše úloha dotaz nevrátí žádné výsledky, nevytvoří se datová sada a tabulky.
-     >
+4. Když vyberete **Autorizovat**, otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit**.
 
 8. Klikněte na možnost **Vytvořit**.
 
 Datová sada se vytvoří s následujícím nastavením:
 
-* **defaultRetentionPolicy: BasicFIFO**: Data jsou FIFO, s délkou maximálně 200 000 řádků.
-* **defaultMode: pushStreaming**: Podporuje datové sady streamování dlaždic a vizuálů tradiční sestava založená (označovaný také jako nabízených oznámení).
+* **defaultRetentionPolicy: BasicFIFO** -Data jsou FIFO, s délkou maximálně 200 000 řádků.
+* **defaultMode: pushStreaming** – datová sada podporuje dlaždice streamování a tradiční sestava založená vizuály (push).
 
 V současné době nelze vytvořit datové sady s další příznaky.
 
@@ -90,54 +80,52 @@ Další informace o datových sad Power BI, najdete v článku [rozhraní REST A
     >[!NOTE]
     >Pokud není název vstupu `CallStream` v kurzu zjišťování možných podvodů, nahraďte název `CallStream` v **FROM** a **připojení** klauzule v dotazu.
 
-        ```SQL
-        /* Our criteria for fraud:
-        Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
+   ```SQL
+   /* Our criteria for fraud:
+   Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-        SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
-        INTO "CallStream-PowerBI"
-        FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
-        JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+   SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+   INTO "CallStream-PowerBI"
+   FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+   JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
 
-        /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
-        ON CS1.CallingIMSI = CS2.CallingIMSI
+   /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+   ON CS1.CallingIMSI = CS2.CallingIMSI
 
-        /* ...and date between CS1 and CS2 is between one and five seconds */
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
+   /* ...and date between CS1 and CS2 is between one and five seconds */
+   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-        /* Where the switch location is different */
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        GROUP BY TumblingWindow(Duration(second, 1))
-        ```
+   /* Where the switch location is different */
+   WHERE CS1.SwitchNum != CS2.SwitchNum
+   GROUP BY TumblingWindow(Duration(second, 1))
+   ```
 
 4. Klikněte na **Uložit**.
 
 
 ## <a name="test-the-query"></a>Otestujte dotaz
+
 Tato část je volitelný, ale doporučujeme. 
 
 1. Pokud aplikace TelcoStreaming není aktuálně spuštěná, spusťte ji pomocí následujících kroků:
 
-    * Otevřete příkazové okno.
+    * Otevřete příkazový řádek.
     * Přejděte do složky, kde jsou telcogenerator.exe a telcodatagen.exe.config upravené soubory.
     * Spusťte následující příkaz:
 
        `telcodatagen.exe 1000 .2 2`
 
-2. V **dotazu** okna, klikněte na tečky vedle `CallStream` vstup a potom vyberte **ukázková data ze vstupu**.
+2. Na **dotazu** stránce pro vaši úlohu Stream Analytics, klikněte na tečky vedle `CallStream` vstup a potom vyberte **ukázková data ze vstupu**.
 
 3. Určete, jestli má tři minuty v hodnotě data a klikněte na tlačítko **OK**. Počkejte, dokud se nezobrazí oznámení o dokončeném vzorkování dat.
 
-4. Klikněte na **Test** a ujistěte se, že získáváte výsledky.
-
+4. Klikněte na tlačítko **Test** a zkontrolovat výsledky kontroly.
 
 ## <a name="run-the-job"></a>Spuštění úlohy
 
-1. Ujistěte se, zda je spuštěna aplikace TelcoStreaming.
+1. Ujistěte se, že je spuštěná aplikace TelcoStreaming.
 
-2. Zavřít **dotazu** okno.
-
-3. V okně úlohy klikněte na tlačítko **Start**.
+2. Přejděte **přehled** stránce pro vaši úlohu Stream Analytics a vyberte **Start**.
 
     ![Spuštění úlohy Stream Analytics](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707102"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI
@@ -92,7 +92,7 @@ Při použití tokenů pro vložení, můžete omezit využití prostředků, kt
 
 Níže jsou k dispozici obory pro kolekce pracovních prostorů Power BI.
 
-|Rozsah|Popis|
+|Scope|Popis|
 |---|---|
 |Dataset.Read|Poskytuje oprávnění ke čtení zadané datové sady.|
 |Dataset.Write|Poskytuje oprávnění k zápisu do zadané datové sady.|

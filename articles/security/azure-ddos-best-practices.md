@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
 ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60588012"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Osvědčené postupy a referenční architektury
@@ -182,7 +182,7 @@ Kybernetického zabezpečení vyžaduje stálé inovace v obrany. Služba Azure 
 
 S útoky DDoS, které cílí na prostředky Azure obvykle vyžaduje minimem zásahů z pohledu uživatele. Stále zahrnutí před útoky DDoS zmírnění jako součást strategie reakce na incidenty pomáhá minimalizovat dopad na obchodní kontinuity podnikových procesů.
 
-### <a name="microsoft-threat-intelligence"></a>Analýza hrozeb Microsoftu
+### <a name="microsoft-threat-intelligence"></a>Analýzy hrozeb Microsoftu
 
 Microsoft má síť rozsáhlé threat intelligence. Tato síť používá kolektivních znalostí komunitě rozšířené zabezpečení, který podporuje online služeb Microsoftu, partnerů Microsoftu a relace v rámci komunity zabezpečení Internetu. 
 

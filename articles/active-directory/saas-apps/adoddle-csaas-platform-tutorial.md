@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 828de7e3e91a0ccdc123dc893dce158d644c5d38
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: aa82bf6e1dab87c21335b9cfb8f889549535c14a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813226"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Kurz: Integrace Azure Active Directory s Adoddle cSaas platformy
 
@@ -55,7 +55,7 @@ Ke konfiguraci integrace Adoddle cSaas platformy do služby Azure AD, budete mus
 
 **Chcete-li přidat Adoddle cSaas platformu z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -180,7 +180,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se vytvoří uživateli Britta Simon v Adoddle cSaas platformy. Adoddle cSaas platforma podporuje **just-in-time zřizování**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Adoddle cSaas platformy, se vytvoří nový při pokusu o přístup k Adoddle cSaas platformy.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

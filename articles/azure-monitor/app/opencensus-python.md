@@ -10,10 +10,10 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957239"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Shromažďovat distribuované trasování z Pythonu (Preview)
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-application-insights-resource"></a>Vytvořit prostředek Application Insights
+## <a name="create-application-insights-resource"></a>Vytvořte prostředek Application Insights
 
 Nejprve je nutné vytvořit prostředek Application Insights, která bude generovat key(ikey) instrumentaci. Ikey pak slouží ke konfiguraci místního serveru pro předávání k odesílání distribuované trasování z aplikace OpenCensus instrumentována pro Application Insights.   
 

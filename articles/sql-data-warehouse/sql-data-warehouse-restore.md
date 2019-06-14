@@ -11,10 +11,10 @@ ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: ebbcbcc3d0934800980b7d8e00895b11ff2747b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310395"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Obnovení Azure SQL Data Warehouse 
@@ -235,7 +235,7 @@ Pokud zdrojová databáze je povolené šifrování TDE, bude obnovenou databáz
 
 4. Vyberte buď **body obnovení automaticky** nebo **uživatelem definované body obnovení**.
 
-    ![Automatické body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Body obnovení automaticky](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Pro body obnovení uživatelsky definovaná **vyberte bod obnovení** nebo **vytvořit nový bod obnovení uživatelem definované**.
 

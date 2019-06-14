@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 55fa42eb1c35025b1008b3b5d26f61c243ff2b97
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: fb55840a3423f32d2d6d6d2531628ae4361a0cc3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Integrace Azure Active Directory s Uberflip
 
@@ -152,7 +152,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon na webu A
 
     1. V **název** zadejte **BSimon**.
   
-    1. V **uživatelské jméno** zadejte **BSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BSimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **BSimon\@\<doména_společnosti >.\< Rozšíření >** . Například **BSimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
@@ -191,7 +191,7 @@ Uživatel se jménem B. Simon je nyní v Uberflip vytvořili. Nemusíte dělat n
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [tým podpory Uberflip](mailto:support@uberflip.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

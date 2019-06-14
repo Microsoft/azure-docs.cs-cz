@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586258"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů: Analýza pro FedRAMP
@@ -90,7 +90,7 @@ Skupiny zabezpečení sítě mají konkrétní porty a protokoly, otevřete ře�
 Architektura chrání data při nečinnosti pomocí šifrování, auditování databáze a jiné míry.
 
 **Replikace dat** Azure Government nabízí dvě možnosti pro [replikace dat](https://docs.microsoft.com/azure/storage/common/storage-redundancy):
- - Výchozí nastavení je replikace dat **geograficky redundantní úložiště (GRS)**, který asynchronně ukládá data zákazníků v samostatné datové centrum mimo primární oblasti. Tím se zajistí obnovení dat v případě výpadku primární datové centrum.
+ - Výchozí nastavení je replikace dat **geograficky redundantní úložiště (GRS)** , který asynchronně ukládá data zákazníků v samostatné datové centrum mimo primární oblasti. Tím se zajistí obnovení dat v případě výpadku primární datové centrum.
  - **Místně redundantní úložiště (LRS)** lze také nastavit prostřednictvím účtu úložiště Azure. LRS se replikuje data v jednotce škálování úložiště, která je hostována ve stejné oblasti, ve kterém zákazník vytvoří jejich účtu. Všechna data se replikují souběžně, zajištění, že dojde ke ztrátě žádná data záloh v selhání primárního úložiště škálovací jednotku.
 
 **Azure Storage** podle šifrovaná data na požadavky rest, všechny služby nasazené v této referenční architektury využijte [služby Azure Storage](https://azure.microsoft.com/services/storage/), která ukládá data s [šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-service-encryption).

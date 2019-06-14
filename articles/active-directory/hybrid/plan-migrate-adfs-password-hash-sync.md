@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d2c587129f9f9f09c8f3871748449dc7b1755b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474031"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109267"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -155,7 +155,7 @@ Problémy s AD FS **InsideCorporateNetwork** deklarace identity, pokud uživatel
 
 Po dokončení konfigurace pojmenovaná umístění, je nutné aktualizovat všechny zásady podmíněného přístupu, které byly nakonfigurované pro zahrnutí nebo vyloučení síti **všechna důvěryhodná umístění** nebo **důvěryhodné IP adresy MFA** hodnoty odrážet nové pojmenovaná umístění.
 
-Další informace o **umístění** podmínka podmíněného přístupu, přečtěte si téma [podmíněný přístup k umístění služby Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+Další informace o **umístění** podmínka podmíněného přístupu, přečtěte si téma [podmíněný přístup služby Active Directory umístění](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 #### <a name="hybrid-azure-ad-joined-devices"></a>Hybridní Azure zařízení připojených k doméně AD
 

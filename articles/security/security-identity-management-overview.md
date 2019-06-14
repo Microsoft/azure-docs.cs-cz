@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 758ed2e44718da709acec1379cfc79936c8b7cdf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444227"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083642"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
 
- Správa identit je proces ověřování a autorizace [objekty zabezpečení](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals). Zahrnuje také řídicí informace o těchto objektech (identity). Objekty zabezpečení (identity) může zahrnovat služby, aplikace, uživatelů, skupin atd. Microsoft identity a přístupu k řešení Nápověda pro funkci správy IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu. Tento typ ochrany umožňuje další úrovně ověřování, jako je například Vícefaktorové ověřování a zásady podmíněného přístupu. Prostřednictvím rozšířeného zabezpečení vytváření sestav, auditování a upozornění, že pomáhá zmírnit potenciální potíže se zabezpečením monitorování podezřelou aktivitu. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování (SSO) k tisícům cloudový software jako služba (SaaS) aplikací a přístup k webovým aplikacím, které běží místně.
+ Správa identit je proces ověřování a autorizace [objekty zabezpečení](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals). Zahrnuje také řídicí informace o těchto objektech (identity). Objekty zabezpečení (identity) může zahrnovat služby, aplikace, uživatelů, skupin atd. Microsoft identity a přístupu k řešení Nápověda pro funkci správy IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu. Tento typ ochrany umožňuje další úrovně ověřování, jako jsou zásady ověřování službou Multi-Factor Authentication a podmíněného přístupu. Prostřednictvím rozšířeného zabezpečení vytváření sestav, auditování a upozornění, že pomáhá zmírnit potenciální potíže se zabezpečením monitorování podezřelou aktivitu. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování (SSO) k tisícům cloudový software jako služba (SaaS) aplikací a přístup k webovým aplikacím, které běží místně.
  
 S využitím výhod zabezpečení služby Azure Active Directory (Azure AD), můžete:
 

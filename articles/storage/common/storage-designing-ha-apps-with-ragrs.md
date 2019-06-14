@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951314"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
@@ -202,12 +202,12 @@ Následující tabulka znázorňuje příklad co může nastat při aktualizaci 
 | **čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **výsledek** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entity ve primárního |                                   |                    | Transakce A vložit do primární,<br> nejsou ještě nereplikovaly. |
-| T1       |                                                            | Transakce A <br> replikují do<br> sekundární | T1 | Transakce A replikují do sekundární. <br>Čas poslední synchronizace aktualizovat.    |
+| T1       |                                                            | Transakce A <br> replikují do<br> Sekundární | T1 | Transakce A replikují do sekundární. <br>Čas poslední synchronizace aktualizovat.    |
 | T2       | Transakce B:<br>Aktualizace<br> Zaměstnanec entity<br> v primární  |                                | T1                 | Transakci zapsán do primární, B<br> nejsou ještě nereplikovaly.  |
-| T3       | Transakce C:<br> Aktualizace <br>správce<br>Entita role v<br>primární |                    | T1                 | Transakci zapsán do primární, C<br> nejsou ještě nereplikovaly.  |
-| *T4*     |                                                       | Transakce C <br>replikují do<br> sekundární | T1         | Transakce C replikují do sekundární.<br>Nelze aktualizovat, protože LastSyncTime <br>ještě nebyla replikována transakce B.|
+| T3       | Transakce C:<br> Aktualizace <br>Správce<br>Entita role v<br>Primární |                    | T1                 | Transakci zapsán do primární, C<br> nejsou ještě nereplikovaly.  |
+| *T4*     |                                                       | Transakce C <br>replikují do<br> Sekundární | T1         | Transakce C replikují do sekundární.<br>Nelze aktualizovat, protože LastSyncTime <br>ještě nebyla replikována transakce B.|
 | *T5*     | Ke čtení entit <br>ze sekundární                           |                                  | T1                 | Získat hodnotu zastaralé pro zaměstnance <br> entity vzhledem k tomu, že nebyla transakce B <br> ještě nereplikovaly. Získat novou hodnotu<br> Entita role správce vzhledem k tomu, že má C<br> replikovat. Stále ještě čas poslední synchronizace<br> byla aktualizována, protože transakce B<br> nebyl replikován. Poznáte,<br>Entita role správce je nekonzistentní <br>protože entity data a času je po <br>Čas poslední synchronizace. |
-| *T6*     |                                                      | Transakce B<br> replikují do<br> sekundární | T6                 | *T6* – mít všechny transakce pomocí jazyka C <br>se replikují, čas poslední synchronizace<br> se aktualizuje. |
+| *T6*     |                                                      | Transakce B<br> replikují do<br> Sekundární | T6                 | *T6* – mít všechny transakce pomocí jazyka C <br>se replikují, čas poslední synchronizace<br> se aktualizuje. |
 
 V tomto příkladu se předpokládá, že klient přepíná na čtení ze sekundární oblasti v T5. Můžou číst **role správce** entity v tuto chvíli entity však obsahuje hodnotu pro počet správců, která není konzistentní s počtem **zaměstnance** entity, které jsou v tuto chvíli je označena jako správci v sekundární oblasti. Váš klient může jednoduše zobrazit tuto hodnotu, se riziko, že je nekonzistentní informace. Alternativně může pokusit určit, který klient **role správce** je ve stavu potenciálně konzistentní vzhledem k tomu dojít mimo pořadí aktualizací a potom informovat uživatele o této skutečnosti.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: de24b64ecd95eec79d7508f978acda9f0ae5a8d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62097510"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Přidání nabízených oznámení do aplikace Xamarin.iOS
@@ -147,7 +147,7 @@ Vaše aplikace je nyní aktualizována o podporu nabízených oznámení.
    > [!NOTE]
    > Je nutné explicitně přijmout nabízená oznámení z vaší aplikace. Tento požadavek dochází pouze při prvním spuštění aplikace.
 
-2. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus (**+**) ikonu.
+2. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus ( **+** ) ikonu.
 3. Ověřte, že přijetí oznámení a pak klikněte na **OK** chcete oznámení zavřít.
 4. Opakujte krok 2 a okamžitě zavřete aplikaci a potom ověřte, že se zobrazí oznámení.
 

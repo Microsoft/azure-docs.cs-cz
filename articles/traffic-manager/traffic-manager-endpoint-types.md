@@ -3,7 +3,7 @@ title: Typy koncových bodů Traffic Manageru | Dokumentace Microsoftu
 description: Tento článek vysvětluje různé typy koncových bodů, které lze použít s Azure Traffic Managerem
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,18 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: kumud
-ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.author: allensu
+ms.openlocfilehash: 469b6543b380cb6b3b10c3def8484bed944f8556
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071207"
 ---
-# <a name="traffic-manager-endpoints"></a>Koncové body služby Traffic Manager
+# <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
+
 Microsoft Azure Traffic Manager umožňuje řídit, jak je zatížení sítě distribuováno do nasazení aplikace spuštěné v různých datových centrech. Konfigurace nasazení každé aplikace jako "koncový bod' v Traffic Manageru. Když Traffic Manager obdrží žádost o DNS, vybere dostupný koncový bod vrátit v odpovědi DNS. Volba Traffic Manageru založen na aktuální stav koncového bodu a metodu směrování provozu. Další informace najdete v tématu [jak funguje Traffic Manager](traffic-manager-how-it-works.md).
 
 Existují tři typy koncových bodů, které Traffic Manager podporuje:
+
 * **Koncové body Azure** jsou používané pro služby hostované v Azure.
 * **Externí koncové body** se používají pro IPv4/IPv6 adres, plně kvalifikovaných názvů domén, nebo pro služby hostované mimo Azure, která může být buď místní nebo pomocí jiného poskytovatele hostitelských služeb.
 * **Vnořené koncové body** umožňují kombinovat profily Traffic Manageru k vytvoření více flexibilní schémata směrování provozu pro podporu potřeb větší a složitější nasazení.
@@ -42,14 +44,14 @@ Koncové body Azure jsou používané pro služby založené na Azure ve služb�
 
 Prostředků PublicIPAddress jsou prostředky Azure Resource Manageru. Neexistují v modelu nasazení classic. Proto jsou pouze podporované v Traffic Manageru na Azure Resource Manageru prostředí. Jiné typy koncových bodů jsou podporované prostřednictvím modelu nasazení classic i Resource Manager.
 
-Při používání koncových bodů Azure Traffic Manager rozpozná virtuálních počítačů IaaS "Klasickém", cloudovou službu nebo webové aplikace je zastavena a spuštěna. Tento stav se projeví v stav koncového bodu. Zobrazit [monitorování koncových bodů Traffic Manageru](traffic-manager-monitoring.md#endpoint-and-profile-status) podrobnosti. Při zastavení základní služby Traffic Manager neprovádí kontroly stavu koncových bodů nebo směrovat přenos dat do koncového bodu. Pro zastavené instanci dojít k žádné události fakturace Traffic Manageru. Při restartování služby fakturačního obnoví a koncový bod je způsobilá k přijímání provozu. Tato detekce se nevztahují na koncové body PublicIpAddress.
+Při používání koncových bodů Azure Traffic Manager rozpozná, pokud webová aplikace je zastavena a spuštěna. Tento stav se projeví v stav koncového bodu. Zobrazit [monitorování koncových bodů Traffic Manageru](traffic-manager-monitoring.md#endpoint-and-profile-status) podrobnosti. Při zastavení základní služby Traffic Manager neprovádí kontroly stavu koncových bodů nebo směrovat přenos dat do koncového bodu. Pro zastavené instanci dojít k žádné události fakturace Traffic Manageru. Při restartování služby fakturačního obnoví a koncový bod je způsobilá k přijímání provozu. Tato detekce se nevztahují na koncové body PublicIpAddress.
 
 ## <a name="external-endpoints"></a>Externí koncové body
 
 Externí koncové body se používají pro buď IPv4/IPv6 adres, plně kvalifikovaných názvů domén, nebo pro služby mimo Azure. Využívání koncovými body adresy IPv4/IPv6 umožňuje přenos správce ke kontrole stavu koncových bodů bez nutnosti názvu DNS pro ně. V důsledku toho Traffic Manager může reagovat na dotazy se záznamy A nebo AAAA při vrácení tohoto koncového bodu v odpovědi. Služby mimo Azure může obsahovat služby hostované v místním nebo pomocí jiného poskytovatele. Externí koncové body můžete použít jednotlivě nebo společně s koncovými body Azure v jednom profilu Traffic Manageru s výjimkou koncové body určené jako IPv4 nebo IPv6 adresy, které může obsahovat jenom externí koncové body. Kombinování koncové body s externími koncovými body Azure umožňuje různé scénáře:
 
 * Zadejte zvýšit redundanci pro stávající místní aplikace v jednom modelu aktivní aktivní nebo aktivní pasivní převzetí služeb při selhání pomocí Azure. 
-* Směrování provozu do koncových bodů, které nemají název DNS k nim má přiřazené. Kromě toho snížit celkové latence vyhledávání DNS odstraňují potřebu ke spuštění druhého dotazu DNS k získání IP adresy vrátil názvu DNS. 
+* Směrování provozu do koncových bodů, které nemají název DNS k nim má přiřazené. Kromě toho snížit celkové latence vyhledávání DNS odstraňují potřebu ke spuštění druhého dotazu DNS k získání IP adresy vrátil názvu DNS.
 * Snížení latence aplikace pro uživatele po celém světě, rozšiřte existující místní aplikaci do dalších geografických umístěních v Azure. Další informace najdete v tématu [Traffic Manageru "Výkonu" směrování provozu](traffic-manager-routing-methods.md#performance).
 * Zadejte další kapacitu pro existující místní aplikaci, průběžně nebo jako "burst-to-cloud" řešení, které vyhoví špičky v poptávce pomocí Azure.
 

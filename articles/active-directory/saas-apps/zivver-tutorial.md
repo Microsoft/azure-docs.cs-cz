@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 51db52d5a5bfef6ef5a34fa9a0877516d5786236
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e18c5dfe3649f74a9f84c605785ca99748298bea
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Kurz: Integrace Azure Active Directory s ZIVVER
 
@@ -53,7 +53,7 @@ Konfigurace integrace ZIVVER do služby Azure AD, budete muset přidat ZIVVER z 
 
 **Chcete-li přidat ZIVVER z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -113,7 +113,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ZIVVER, proveďte následuj
 
 6. Kromě toho výše ZIVVER aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Obor názvů | Zdrojový atribut|
+    | Name | Obor názvů | Zdrojový atribut|
     | ---------------| --------------- |
     | ZivverAccountKey | protokol https:\//zivver.com/SAML/Attributes | user.objectid |
 
@@ -220,7 +220,7 @@ V této části je povolit Britta Simon k udělení přístupu k ZIVVER použit�
 
 V této části vytvoříte uživatele v ZIVVER jako Britta Simon. Práce s [tým podpory ZIVVER](https://support.zivver.com/) přidat uživatele na platformě ZIVVER. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

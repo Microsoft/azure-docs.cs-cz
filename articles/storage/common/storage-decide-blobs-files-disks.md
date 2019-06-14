@@ -9,10 +9,10 @@ ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 30c7c1c50e59162817d7cfab0d852d8e034457d0
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969420"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
@@ -37,11 +37,11 @@ Následující tabulka porovnává soubory Azure s využitím objektů BLOB Azur
 |-|-|-|  
 |**Atribut**|**Azure Blobs**|**Služba soubory Azure**|  
 |Možnosti odolnosti|LRS, ZRS, GRS, RA-GRS|LRS, ZRS, GRS|  
-|Usnadnění|Rozhraní REST API|Rozhraní REST API<br /><br /> Protokol SMB 2.1, tak i SMB 3.0 (standardní systém souborů rozhraní API)|  
-|Možnosti připojení|Rozhraní REST API – po celém světě|Rozhraní REST API – po celém světě<br /><br /> Protokol SMB 2.1--v rámci oblasti<br /><br /> Protokol SMB 3.0 – po celém světě|  
+|Přístupnost|Rozhraní REST API|Rozhraní REST API<br /><br /> Protokol SMB 2.1, tak i SMB 3.0 (standardní systém souborů rozhraní API)|  
+|Připojení|Rozhraní REST API – po celém světě|Rozhraní REST API – po celém světě<br /><br /> Protokol SMB 2.1--v rámci oblasti<br /><br /> Protokol SMB 3.0 – po celém světě|  
 |Koncové body|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Adresáře|Plochý obor názvů|Hodnota TRUE adresářových objektů|  
-|Rozlišování velikosti písmen názvů|Rozlišovat malá a velká|Malá a velká písmena, ale zachování velikosti písmen|  
+|Rozlišování velikosti písmen názvů|Malá a velká písmena se rozlišují.|Malá a velká písmena, ale zachování velikosti písmen|  
 |Kapacita|Až 2 omezení PiB účtu |5 TiB sdílené složky|  
 |Propustnost|Až 60 MiB/s na objekt blob bloku|Až 60 MiB/s na sdílenou složku|  
 |Velikost objektu|Až o 4,75 TB za objekty blob bloku|Až 1 TB na soubor|  
@@ -60,7 +60,7 @@ Následující tabulka porovnává soubory Azure pomocí Azure Disks.
 |Scope|Výhradně pro jeden virtuální počítač|Sdílený přístup napříč několika virtuálními počítači|  
 |Snímků a kopírování|Ano|Ano|  
 |Konfigurace|Připojen při spuštění virtuálního počítače|Připojení po spuštění virtuálního počítače|  
-|Authentication|Předdefinované|Nastavit pomocí příkazu net use|  
+|Authentication|Integrované|Nastavit pomocí příkazu net use|  
 |Přístup pomocí rozhraní REST|Soubory virtuálního pevného disku není přístupný.|Soubory uložené ve sdílené složce je přístupný.|  
 |Maximální velikost|32 TiB disku|5 TiB sdílené složky a 1 TiB souboru v rámci sdílené složky|  
 |Maximální počet vstupně-výstupních operací|20 000 IOps|1 000 IOps|  

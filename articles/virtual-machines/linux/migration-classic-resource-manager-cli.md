@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60543138"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrovat prostředky IaaS z modelu nasazení classic do Azure Resource Manageru pomocí rozhraní příkazového řádku Azure
@@ -35,7 +35,7 @@ Tady je Vývojový diagram k identifikaci pořadí, ve kterém kroky je nutné p
 
 ![Snímek obrazovky, který ukazuje kroky migrace](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="step-1-prepare-for-migration"></a>Krok 1: Příprava na migraci
+## <a name="step-1-prepare-for-migration"></a>Krok 1: Příprava migrace
 Tady je několik osvědčených postupů, které doporučujeme při hodnocení migrace prostředků IaaS z classic do Resource Manageru:
 
 * Přečtěte si [seznam nepodporovaných konfigurací nebo funkce](../windows/migration-classic-resource-manager-overview.md). Pokud máte virtuální počítače, které používají nepodporované konfigurace nebo funkce, doporučujeme počkejte podpora funkce/Konfigurace oznámena. Alternativně můžete odebrat tuto funkci nebo přesunout mimo tuto konfiguraci pro povolení migrace, pokud vyhovuje vašim potřebám.
@@ -146,7 +146,7 @@ Výstup bude vypadat přibližně takto:
 
 ![Snímek obrazovky z příkazového řádku se zvýrazněným názvem celý virtuální sítě.](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-Ve výše uvedeném příkladu **virtualNetworkName** je celý název **"Skupina classicubuntu16 classicubuntu16"**.
+Ve výše uvedeném příkladu **virtualNetworkName** je celý název **"Skupina classicubuntu16 classicubuntu16"** .
 
 Nejprve ověřte, jestli je možné migrovat virtuální sítě pomocí následujícího příkazu:
 

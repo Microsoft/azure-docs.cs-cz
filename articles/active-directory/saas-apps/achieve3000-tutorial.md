@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ddac8a87bb557daadf0a6ea0f1303545ec63d50
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8aa86f75d70e7253fa250893ce685b90d6a02f01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65886599"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>Kurz: Integrace Azure Active Directory s Achieve3000
 
@@ -53,7 +53,7 @@ Konfigurace integrace Achieve3000 do služby Azure AD, budete muset přidat Achi
 
 **Chcete-li přidat Achieve3000 z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Achieve3000, proveďte nás
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------| --------- |
     | studentID     | user.mail |
     | | |
@@ -214,7 +214,7 @@ V této části je povolit Britta Simon k udělení přístupu k Achieve3000 pou
 
 V této části vytvoříte uživatele v Achieve3000 jako Britta Simon. Práce s [tým podpory Achieve3000](https://www.achieve3000.com/contact-us/) přidat uživatele na platformě Achieve3000. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

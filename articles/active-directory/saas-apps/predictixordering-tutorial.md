@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 79e9952aefc44b7c490bb9fe375487c1a3335fc8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901505"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Kurz: Integrace Azure Active Directory s Predictix řazení
 
@@ -66,7 +66,7 @@ Postup nastavení integrace Predictix řazení do služby Azure AD, musíte dopl
 
 4. Do vyhledávacího pole zadejte **řazení Predictix**. Vyberte **Predictix řazení** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Výsledky vyhledávání](common/search-new-app.png)
+     ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -94,7 +94,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Predictix řazení, proveď
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -155,7 +155,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >**. (Například BrittaSimon@contoso.com.)
+    1. V **uživatelské jméno** zadejte **BrittaSimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
 
     1. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
@@ -191,7 +191,7 @@ V této části se budou moci používat Azure AD jednotného přihlašování t
 
 Dále je třeba vytvořit uživatele s názvem Britta Simon v Predictix řazení. Práce s [Predictix řazení tým podpory](https://www.predix.io/support/) přidat uživatele. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: a66d1cb16f47ebe7aeba3685b3567620ae4a8a51
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a9245ab5a2d51ee3995ff0c614cafaebdc20d00f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898011"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Kurz: Integrace Azure Active Directory s Kintone
 
@@ -53,7 +53,7 @@ Konfigurace integrace Kintone do služby Azure AD, budete muset přidat Kintone 
 
 **Chcete-li přidat Kintone z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Povolení služby Azure AD uživatelům umožní přihlásit k Kintone, musí b�
 > [!NOTE]
 > Můžete použít jakékoli jiné Kintone uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Kintone uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

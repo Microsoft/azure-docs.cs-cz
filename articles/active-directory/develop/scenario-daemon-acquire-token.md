@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075367"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Démon procesu aplikace, která volá webové rozhraní API – získání tokenu
@@ -65,7 +65,7 @@ Oborem použitým pro přihlašovací údaje pro klienta by měl vždy být reso
 
 > [!IMPORTANT]
 > Azure AD pro MSAL (koncový bod verze 2.0) s dotazem přístupového tokenu pro prostředek přijímání v1.0 přístupový token, analyzuje požadovanou cílovou skupinu z požadovaného oboru převzetím všechno dřív než poslední lomítko a používat jej jako identifikátor prostředku.
-> Proto pokud, jako je Azure SQL (**https://database.windows.net**) prostředku očekává, že cílové koncové lomítko (pro Azure SQL: `https://database.windows.net/`), budete muset požádat o oboru `https://database.windows.net//.default` (Poznámka: dvojité lomítka). Viz také MSAL.NET problém [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Adresa url prostředku koncové lomítko je vynechán, která způsobila chybu při ověřování sql.
+> Proto pokud, jako je Azure SQL ( **https://database.windows.net** ) prostředku očekává, že cílové koncové lomítko (pro Azure SQL: `https://database.windows.net/` ), budete muset požádat o oboru `https://database.windows.net//.default` (Poznámka: dvojité lomítka). Viz také MSAL.NET problém [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Adresa url prostředku koncové lomítko je vynechán, která způsobila chybu při ověřování sql.
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient rozhraní API
 
@@ -128,7 +128,7 @@ CompletableFuture<AuthenticationResult> future = cca.acquireToken(parameters);
 AuthenticationResult result = future.get();
 ```
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protocol
 
 Pokud nemáte ještě knihovny pro váš jazyk podle vlastní volby, může být vhodné pro použití přímo protokolu:
 

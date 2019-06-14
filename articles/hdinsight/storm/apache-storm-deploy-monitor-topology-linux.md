@@ -8,21 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682899"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078242"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
 V tomto dokumentu, seznamte se se základy monitorování a správa [Apache Storm](https://storm.apache.org/) topologií Storm a systémem v clusterech HDInsight.
-
-> [!IMPORTANT]  
-> Kroky v tomto článku vyžadují linuxovým Storm v clusteru HDInsight. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
->
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,7 +100,7 @@ Vyberte tvar spoutů a boltů zobrazíte informace o těchto součástí. Otevř
 
 Deaktivace topologii pozastaví ho, dokud nebude ukončen nebo znovu aktivovat. Chcete-li provádět tyto operace, použijte __deaktivovat__ a __znovu aktivovat__ tlačítka v horní části __souhrn topologie__.
 
-### <a name="rebalance"></a>Obnovit rovnováhu
+### <a name="rebalance"></a>Obnovení rovnováhy
 
 Opětovné vyvážení topologii umožňuje systému revidovat paralelismus topologii. Pokud jste změnili velikost clusteru přidat další poznámky, například opětovné vyvážení umožňuje topologie zobrazíte nové uzly.
 
@@ -148,7 +143,7 @@ Po spuštění topologií Storm, pokračovat spuštění, dokud se zastavila. Po
 
     storm kill TOPOLOGYNAME
 
-### <a name="rebalance"></a>Obnovit rovnováhu
+### <a name="rebalance"></a>Obnovení rovnováhy
 
 Opětovné vyvážení topologii umožňuje systému revidovat paralelismus topologii. Pokud jste změnili velikost clusteru přidat další poznámky, například opětovné vyvážení umožňuje topologie zobrazíte nové uzly.
 
@@ -159,7 +154,7 @@ Opětovné vyvážení topologii umožňuje systému revidovat paralelismus topo
 
 ## <a name="monitor-and-manage-storm-ui"></a>Monitorování a správa: Storm UI
 
-Uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je součástí clusteru HDInsight. Chcete-li zobrazit uživatelské rozhraní Storm pomocí webového prohlížeče otevřete **https://CLUSTERNAME.azurehdinsight.net/stormui**, kde **CLUSTERNAME** je název vašeho clusteru.
+Uživatelské rozhraní Storm poskytuje webové rozhraní pro práci se spuštěnými topologiemi a je součástí clusteru HDInsight. Chcete-li zobrazit uživatelské rozhraní Storm pomocí webového prohlížeče otevřete **https://CLUSTERNAME.azurehdinsight.net/stormui** , kde **CLUSTERNAME** je název vašeho clusteru.
 
 > [!NOTE]  
 > Pokud budete vyzváni k zadání uživatelského jména a hesla, zadejte správce clusteru (admin) a heslo použité při vytvoření clusteru.
@@ -213,7 +208,7 @@ Další informace najdete v tématu [Apache Storm uživatelského rozhraní REST
 
 ### <a name="base-uri"></a>Základní identifikátor URI
 
-Základní identifikátor URI pro rozhraní REST API v clusterech HDInsight založených na Linuxu je k dispozici na na hlavní uzel **https:\//HEADNODEFQDN:8744/api/v1/**. Název domény hlavního uzlu je generována při vytváření clusteru a není statická.
+Základní identifikátor URI pro rozhraní REST API v clusterech HDInsight založených na Linuxu je k dispozici na na hlavní uzel **https:\//HEADNODEFQDN:8744/api/v1/** . Název domény hlavního uzlu je generována při vytváření clusteru a není statická.
 
 Plně kvalifikovaný název domény (FQDN) pro hlavní uzel clusteru najdete v několika různými způsoby:
 

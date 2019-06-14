@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 5/5/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c4928050f945ac88dd1f86e2a13b5d26d385e55a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c765c3e29166358f3504949136a67d8d0db96be8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078151"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 
@@ -42,16 +42,18 @@ Příklad: Jednou sdílenou složkou může dosáhnout 100 000 vstupně-výstupn
 
 ### <a name="premium-filestorage-account-limits"></a>Limity účtu úložiště souborů úrovně Premium
 
-Premium sdílené složky jsou zřízené v účet speciální úložiště s názvem **úložiště souborů (preview)**. Tento účet má mírně odlišná měřítka cíle než účet úložiště používané pro standardní sdílené složky. Cíle škálování účtu úložiště, najdete v tabulce [cíle škálování účtu Azure storage](#azure-storage-account-scale-targets) oddílu.
+Premium sdílené složky jsou zřízené v účet speciální úložiště s názvem **úložiště souborů (preview)** . Tento účet má mírně odlišná měřítka cíle než účet úložiště používané pro standardní sdílené složky. Cíle škálování účtu úložiště, najdete v tabulce [cíle škálování účtu Azure storage](#azure-storage-account-scale-targets) oddílu.
 
 > [!IMPORTANT]
 > Omezení účtů úložiště platí pro všechny sdílené složky. Škálování až maximální počet účtů úložiště je pouze dosažitelný, pokud existuje pouze jedna sdílená složka na účet úložiště.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+
 ## <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
 
-Pomocí služby Azure File Sync jsme jste se pokusili co nejvíc návrhu pro neomezené využití, ale to není vždy možné. Následující tabulka označuje hranice naše testování a cíle, které jsou ve skutečnosti pevných limitů:
+Azure File Sync byly navržené s cílem neomezené využití, ale neomezené využití není vždy možné. Následující tabulka označuje hranice testování od Microsoftu a také určuje cíle, které jsou pevných limitů:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -82,7 +84,7 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 | Nahrát propustnost | 20 objekty za sekundu |
 | Namespace stahování propustnost * | 400 objekty za sekundu |
 
-* Když se vytvoří nový koncový bod serveru, agenta Azure File Sync nebude stahovat žádný obsah souboru. Nejprve synchronizuje úplný obor názvů a pak aktivační události na pozadí spojené s vracením ke stažení souborů, buď v plné výši nebo vrstvení cloudu, pokud je povoleno, nastavte na koncovém bodu serveru zásad vrstvení cloudu.
+\* Když se vytvoří nový koncový bod serveru, agenta Azure File Sync nebude stahovat žádný obsah souboru. Nejprve synchronizuje úplný obor názvů a pak aktivační události na pozadí spojené s vracením ke stažení souborů, buď v plné výši nebo vrstvení cloudu, pokud je povoleno, nastavte na koncovém bodu serveru zásad vrstvení cloudu.
 
 | Probíhající synchronizace  |   |
 |-|--|
@@ -92,7 +94,7 @@ Při plánování nasazení pro každou z fází, níže jsou výsledky pozorov�
 | Nahrát propustnost | objekty 30 za sekundu |
 | Úplné stažení propustnost * | 60 objekty za sekundu |
 
-* Pokud cloudu ovládání datových vrstev je povolená, budete pravděpodobně sledovat lepší výkon jako pouze některá data se stáhne soubor. Azure File Sync stáhne jenom data uložená v mezipaměti souborů, když se změní na žádném z koncových bodů. Vrstvené nebo nově vytvořené soubory agent nebude stahovat data souborů a místo toho synchronizuje pouze obor názvů pro všechny koncové body serveru. Agent také podporuje částečné stažení vrstvené soubory jsou přístupné uživatelem. 
+\* Pokud cloudu ovládání datových vrstev je povolená, budete pravděpodobně sledovat lepší výkon jako pouze některá data se stáhne soubor. Azure File Sync stáhne jenom data uložená v mezipaměti souborů, když se změní na žádném z koncových bodů. Vrstvené nebo nově vytvořené soubory agent nebude stahovat data souborů a místo toho synchronizuje pouze obor názvů pro všechny koncové body serveru. Agent také podporuje částečné stažení vrstvené soubory jsou přístupné uživatelem. 
 
 > [!Note]  
 > Výše uvedených čísel nejsou údaj o výkon, který bude probíhat. Skutečný výkon bude záviset na několika faktorech, jak je uvedeno na začátku této části.

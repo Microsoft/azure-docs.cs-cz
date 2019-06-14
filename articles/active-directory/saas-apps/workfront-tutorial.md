@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97eb016f1a77d4166976c6a4d7aebd073550e8c2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 51fd45729a4e34fa1669f758c5a9c8f5cbec498f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>Kurz: Integrace Azure Active Directory s Workfront
 
@@ -54,7 +54,7 @@ Konfigurace integrace Workfront do služby Azure AD, budete muset přidat Workfr
 
 **Chcete-li přidat Workfront z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -223,7 +223,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Workfront.
    
     d. Klikněte na tlačítko **přidat osobu**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

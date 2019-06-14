@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245481"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizace Azure AD Connect: Principy uživatelů, skupin a kontaktů
@@ -47,7 +47,7 @@ Důležité body je potřeba vědět při synchronizaci skupin služby Active Di
 
     * Pokud skupiny *proxyAddress* atributu je prázdný, jeho *e-mailu* atribut musí mít hodnotu.
 
-    * Pokud skupina *proxyAddress* atribut je prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Zde je několik příkladů:
+    * Pokud skupina *proxyAddress* atribut je prázdný, musí obsahovat alespoň jednu hodnotu adresy proxy serveru SMTP. Následuje několik příkladů:
     
       * Skupinu služby Active Directory, jehož atribut proxyAddress má hodnotu *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* nebudou poštovní ve službě Azure AD. Nemá adresu SMTP.
       

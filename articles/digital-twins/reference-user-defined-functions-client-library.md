@@ -6,15 +6,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 06/06/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: d309765e6c4b0b0cc8a7e92977134d4135a69a13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be05cec8e3d755f1b04e5ecc5ec7c740053a74d4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073041"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Uživatelem definované funkce Klientská knihovna – referenční informace
 
@@ -221,7 +221,7 @@ Tato funkce nastaví hodnotu v objektu ze senzorů pomocí daného datového typ
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | identifikátor senzor |
 | *dataType*  | `string` | Typ dat ze senzorů |
-| *value*  | `string` | Value |
+| *value*  | `string` | Hodnota |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, datový typ, hodnoty)
 
@@ -233,7 +233,7 @@ Tato funkce nastaví hodnotu na objekt prostoru s danou datovým typem.
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | identifikátor místa |
 | *dataType* | `string` | Typ dat |
-| *value* | `string` | Value |
+| *value* | `string` | Hodnota |
 
 ### <a name="logmessage"></a>log(Message)
 
@@ -420,7 +420,7 @@ Tato funkce odesílá oznámení se zadanou datovou část.
 | ------ | ------------------- | ------------ |
 | *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
-### <a name="value"></a>Value
+### <a name="value"></a>Hodnota
 
 ```JSON
 {

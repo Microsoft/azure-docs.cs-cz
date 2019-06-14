@@ -9,10 +9,10 @@ ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
 ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347447"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
@@ -72,7 +72,7 @@ Dříve musely metrik Azure monitoru, Application Insights, Log Analytics a stav
 | Stav služby | Protokol aktivit  | Nepodporuje se. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Testy dostupnosti webu | Nepodporuje se. Zobrazit [upozornění webových testů](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
 
-## <a name="manage-alerts"></a>Správa upozornění
+## <a name="manage-alerts"></a>Správa výstrah
 Stav výstrahy k určení, kde je v procesu překladu, který můžete nastavit. Když se splní kritéria zadaná v pravidle výstrahy, vytvoření nebo aktivuje výstrahu, je ve stavu *nový*. Po potvrzení oznámení a při zavření, můžete změnit stav. Všechny změny stavu jsou uloženy v historii upozornění.
 
 Jsou podporovány následující stavy výstrah.
@@ -115,7 +115,7 @@ Vyberte následující hodnoty v horní části stránky s upozorněními na ote
 | Celkový počet pravidel upozornění | Celkový počet pravidel upozornění v vybrané předplatné a skupinu prostředků. Vyberte tuto hodnotu a otevřete zobrazení pravidla filtrování ve vybraném předplatném a skupině prostředků.
 
 
-## <a name="manage-alert-rules"></a>Správa pravidel výstrah
+## <a name="manage-alert-rules"></a>Spravovat pravidla výstrah
 Klikněte na **spravovat pravidla výstrah** zobrazíte **pravidla** stránky. **Pravidla** je na jednom místě pro správu všechna pravidla výstrah ve vašich předplatných Azure. Obsahuje seznam všech pravidel upozornění a může být řazeny podle cílové prostředky, skupiny prostředků, název pravidla nebo stav. Pravidla výstrah můžete také upravit, povolit nebo zakázat z této stránky.  
 
  ![pravidla výstrah](./media/alerts-overview/alerts-preview-rules.png)

@@ -1,20 +1,19 @@
 ---
-title: Konfigurace výstrah stavu služby Azure s použitím OpsGenie | Dokumentace Microsoftu
+title: Odeslat upozornění na stav služby Azure s použitím OpsGenie pomocí webhooků
 description: Získáte přizpůsobená oznámení o události služby service health k vaší instanci použitím OpsGenie.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.workload: Supportability
-ms.date: 11/14/2017
-ms.openlocfilehash: 79a77fff206831c0f9b3bb73ad33f951d99e2c81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067169"
 ---
-# <a name="configure-service-health-alerts-with-opsgenie"></a>Konfigurace výstrah stavu služby s použitím OpsGenie
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Odeslat upozornění na stav služby Azure s použitím OpsGenie pomocí webhooků
 
 Tento článek ukazuje, jak nastavit upozornění na stav služby Azure s použitím OpsGenie pomocí webhooku. S použitím [použitím OpsGenie](https://www.opsgenie.com/)integrace služby Azure Service Health, můžete použitím OpsGenie předávání výstrah stavu služby Azure. Použitím OpsGenie můžete určit správné osoby pro oznámení podle plánů ve volání pomocí e-mailu, textové zprávy (SMS), telefonní hovory, iOS a Android nabízená oznámení a rostoucích výstrahy, dokud je potvrzení nebo zavření výstrahy.
 

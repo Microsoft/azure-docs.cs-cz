@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b0b3921640ebf6ed21860cfac75ffca195096db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e8b61bc01e729472c140253f8f936b6ec0dd1b0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Integrace Azure Active Directory s zástupce
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci náměstek do služby Azure AD, budete mus
 
 **Chcete-li přidat zástupce z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -274,7 +274,7 @@ Povolit uživatele Azure AD se přihlaste k zástupce, musí být poskytnuty do 
 
 5. Držitel účtu AAD obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní. Můžete použít jakékoli jiné náměstek uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných náměstek uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

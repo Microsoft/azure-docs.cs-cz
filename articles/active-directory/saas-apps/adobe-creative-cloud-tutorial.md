@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 9650389d8ec641af1db0652dd09fbd7f06223956
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Kurz: Integrace Azure Active Directory s Adobe Creative Cloud
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci Adobe Creative Cloud do služby Azure AD, 
 
 **Chcete-li přidat Adobe Creative Cloud z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -122,7 +122,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Adobe Creative Cloud, prove
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail | user.mail
+    | Email | user.mail
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -253,7 +253,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Adobe Creative Cloud, 
    * V rámci aplikace klasické pracovní plochy nástroje > přihlášení
    * V rámci aplikace > Nápověda > přihlášení
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

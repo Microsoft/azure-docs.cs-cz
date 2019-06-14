@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335419"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-amazon-redshift-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-amazon-redshift.md)
 
@@ -87,7 +87,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **AmazonRedshiftSource**, násle
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Dotaz** | Použijte vlastní dotaz číst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **query** | Použijte vlastní dotaz číst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 | **redshiftUnloadSettings** | Při použití Redshift obsahuje skupiny vlastností **uvolnění** příkazu. | Ne |
 | **s3LinkedServiceName** | Amazon S3, který se použije jako dočasné úložiště. Propojené služby je určen pomocí Azure Data Factory název typu **typu AwsAccessKey**. | Požaduje se při použití **redshiftunloadsettings, taková služba** vlastnost |
 | **bucketName** | Označuje kbelíku Amazon S3 používat k ukládání dat dočasné. Pokud tuto vlastnost nezadáte, aktivita kopírování automaticky vygeneruje kbelík. | Požaduje se při použití **redshiftunloadsettings, taková služba** vlastnost |
@@ -96,7 +96,7 @@ Alternativně můžete použít **RelationalSource** typ, který zahrnuje Amazon
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Dotaz** |Použijte vlastní dotaz číst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **query** |Použijte vlastní dotaz číst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Použití uvolnění pro kopírování dat z Amazon Redshift
 
@@ -331,16 +331,16 @@ Aktivitu kopírování, která převádí data z Amazon Redshift typu na typ .NE
 | Typ Amazon Redshift | Typ formátu .NET |
 | --- | --- |
 | SMALLINT |Int16 |
-| CELÉ ČÍSLO |Int32 |
+| INTEGER |Int32 |
 | BIGINT |Int64 |
 | DECIMAL |Decimal |
 | REAL |Single |
-| DVOJITOU PŘESNOSTÍ |Double |
-| DATOVÝ TYP BOOLEAN |String |
+| DOUBLE PRECISION |Double |
+| BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| DATE (Datum) |DateTime |
-| ČASOVÉ RAZÍTKO |DateTime |
+| DATE |DateTime |
+| TIMESTAMP |DateTime |
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce

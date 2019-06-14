@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896f24ee20aece111c496a5b16d4b3dade119f85
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7e4104d3ec129ec3ab03edfe4ff32f9e55386af4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900534"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Kurz: Integrace Azure Active Directory s Bridge
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace most do služby Azure AD, budete muset přidat most z G
 
 **Most přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v mostu. Práce s [tým podpory přemostění](https://community.bridgeapp.com/community/help) přidat uživatele na platformě mostu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

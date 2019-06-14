@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4bb99c8cbec88d23f9297dcbe8b13cc69cd0006c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241000"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070669"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Jak model a oddílu data ve službě Azure Cosmos DB pomocí reálný příklad
 
@@ -479,7 +479,7 @@ Tak optimalizovat tento poslední žádosti, zavedeme třetí kontejner náš n�
 
 Tento kontejner je rozdělený podle `type`, který bude vždy `post` v našich položky. To zajistí, že všechny položky v tomto kontejneru se nacházejí ve stejném oddílu.
 
-K dosažení denormalizace stačilo připojení na kanálu zavedli jsme dříve k odeslání příspěvků na tento nový kontejner kanálu změn. Jeden důležité na holé nezapomeňte je, že potřebujeme, abyste měli jistotu, že uchováváme jenom 100 nejnovější příspěvky v opačném případě může obsah kontejneru růst přesahuje maximální velikost oddílu. To se provádí pomocí volání [po triggeru](stored-procedures-triggers-udfs.md#triggers) pokaždé, když dokument v kontejneru:
+K dosažení denormalizace stačilo připojení na kanálu zavedli jsme dříve k odeslání příspěvků na tento nový kontejner kanálu změn. Je důležité mít na paměti, berte v úvahu, že potřebujeme, abyste měli jistotu, že uchováváme jenom 100 nejnovější příspěvky v opačném případě může obsah kontejneru růst přesahuje maximální velikost oddílu. To se provádí pomocí volání [po triggeru](stored-procedures-triggers-udfs.md#triggers) pokaždé, když dokument v kontejneru:
 
 ![Denormalizing příspěvků do kontejneru informačního kanálu](./media/how-to-model-partition-example/denormalization-3.png)
 

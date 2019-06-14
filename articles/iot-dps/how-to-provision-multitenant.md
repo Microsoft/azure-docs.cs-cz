@@ -2,18 +2,17 @@
 title: Jak zřídit zařízení pro víceklientskou architekturu v Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
 description: Jak zřídit zařízení pro víceklientskou architekturu s vaším zařízením zřizování instance služby
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116083"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientskou architekturu 
@@ -42,6 +41,8 @@ Tento článek používá ukázku simulovaného zařízení z [Azure IoT C SDK](
 
 * Dokončení [nastavení služby IoT Hub Device Provisioning pomocí webu Azure portal](./quick-setup-auto-provision.md) rychlý start.
 
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="create-two-regional-iot-hubs"></a>Vytvořte dva místní centra IoT
@@ -192,7 +193,7 @@ Chcete-li vyčistit klidní, tyto virtuální počítače se přidají do stejn�
 V této části se klonovat sady Azure IoT C SDK na každém virtuálním počítači. Tato sada SDK obsahuje ukázky, která budou simulovat zřizování z každé oblasti klienta zařízení.
 
 
-1. Pro každý virtuální počítač, nainstalujte **Cmake**, **g ++**, **gcc**, a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) pomocí následujících příkazů:
+1. Pro každý virtuální počítač, nainstalujte **Cmake**, **g ++** , **gcc**, a [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) pomocí následujících příkazů:
 
     ```bash
     sudo apt-get update
@@ -299,7 +300,7 @@ V této části budete aktualizovat ukázkou zřizování v sadě Azure IoT C SD
 
 Vzorový kód simuluje posloupnost spouštěcí zařízení, která odešle žádost o zřízení instance služby Device Provisioning. Pořadí spouštění způsobí, že zařízení bude používat a přiřazen do služby IoT hub, který je nejblíž založen na latenci.
 
-1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_**.
+1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_** .
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6a66aefec69a0551f85b11a380c90d1915bd776
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: f57b0189708f48d1dc403ce778f5f9693b6dc702
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474204"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110377"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
@@ -225,7 +225,7 @@ Další informace o podmíněném přístupu a resetování hesla, zobrazí se [
 
 ---
 
-## <a name="april-2019"></a>2019. dubna
+## <a name="april-2019"></a>2019\. dubna
 
 ### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>Nová inteligentní funkce detekce hrozeb služby Azure AD je teď dostupná v aktualizaci Azure AD Identity Protection
 
@@ -339,7 +339,7 @@ Další informace najdete v tématu [řešení chyb při synchronizaci](https://
 
 ---
 
-### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Zvýšení zabezpečení pomocí zásady podmíněného přístupu na základě ochrany aplikací ve službě Azure AD (Public preview)
+### <a name="increased-security-using-the-app-protection-based-conditional-access-policy-in-azure-ad-public-preview"></a>Zvýšení zabezpečení pomocí zásad podmíněného přístupu na základě ochrany aplikace ve službě Azure AD (Public preview)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
@@ -357,19 +357,19 @@ Další informace najdete v tématu [vyžadování zásad ochrany aplikací pro 
 
 ---
 
-### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nová podpora pro Azure AD jednotného přihlašování a podmíněný přístup v Microsoft Edge (Public preview)
+### <a name="new-support-for-azure-ad-single-sign-on-and-conditional-access-in-microsoft-edge-public-preview"></a>Nová podpora pro Azure AD jednotného přihlašování a podmíněný přístup ve službě Microsoft Edge (Public preview)
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Zabezpečení a ochrana identity
 
-Rozšířili jsme naši podporu služby Azure AD pro Microsoft Edge, včetně poskytnutí novou podporu pro jednotné přihlašování a podmíněný přístup Azure AD. Pokud jste dříve používali Microsoft Intune Managed Browser, teď můžete Microsoft Edge místo toho.
+Rozšířili jsme naši podporu služby Azure AD pro Microsoft Edge, včetně poskytnutí novou podporu pro Azure AD jednotného přihlašování a podmíněný přístup. Pokud jste dříve používali Microsoft Intune Managed Browser, teď můžete Microsoft Edge místo toho.
 
 Další informace o vytváření a správu zařízení a aplikací pomocí podmíněného přístupu najdete v tématu [vyžadují spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) a [vyžaduje schválené klientské aplikace pro cloud přístup k aplikaci s podmíněným přístupem](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Další informace o tom, jak Správa přístupu k Microsoft Edge pomocí zásad Microsoft Intune najdete v tématu [Správa přístupu k Internetu pomocí prohlížeče chráněné zásad Microsoft Intune](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
 ---
 
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>2019\. března
 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Rozhraní prostředí pro identity a vlastních zásad pro podporu v Azure Active Directory B2C je nyní dostupná (GA)
 
@@ -477,7 +477,7 @@ Další informace o novém **protokoly auditu** stránky, přečtěte si téma [
 **Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Zabezpečení a ochrana identity
 
-Zabránit Správci omylem nezamezila svoje vlastní tenanty prostřednictvím nesprávně nakonfigurované zásady podmíněného přístupu, vytvořili jsme nová upozornění a aktualizované pokyny na webu Azure Portal. Další informace o nové pokyny najdete v tématu [co jsou závislosti služby podmíněného přístupu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
+Zabránit Správci omylem nezamezila svoje vlastní tenanty prostřednictvím nesprávně nakonfigurované zásady podmíněného přístupu, vytvořili jsme nová upozornění a aktualizované pokyny na webu Azure Portal. Další informace o nové pokyny najdete v tématu [co jsou závislosti služby v Azure Active Directory podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies).
 
 ---
 
@@ -647,7 +647,7 @@ Další informace o použití šablon najdete v tématu [Azure AD B2C teď má p
 
 ---
 
-## <a name="january-2019"></a>2019. ledna
+## <a name="january-2019"></a>2019\. ledna
 
 ### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Active Directory s B2B spolupráce pomocí ověřování jednorázovým heslem (Public preview)
 

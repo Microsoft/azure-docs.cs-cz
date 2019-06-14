@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60478504"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Zřízení virtuálního počítače s Linuxem a SQL Serverem na webu Azure Portal
@@ -92,7 +92,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
    * **Uživatelské jméno**: Zadejte jméno správce pro virtuální počítač.
    * **Veřejný klíč SSH**: Zadejte veřejný klíč RSA.
-   * **Veřejné příchozí porty**: Zvolte **povolit vybrané porty** a vybrat **SSH (22)** port v **vyberte veřejné příchozí porty** seznamu. V tomto rychlém startu tento krok je nezbytný k připojení a dokončete konfiguraci systému SQL Server. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)**, aby se otevřel port 1433 pro připojení přes internet.
+   * **Veřejné příchozí porty**: Zvolte **povolit vybrané porty** a vybrat **SSH (22)** port v **vyberte veřejné příchozí porty** seznamu. V tomto rychlém startu tento krok je nezbytný k připojení a dokončete konfiguraci systému SQL Server. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)** , aby se otevřel port 1433 pro připojení přes internet.
 
    ![Příchozí porty](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -171,7 +171,7 @@ Ve výchozím nastavení se nainstaluje několik [balíčků](sql-server-linux-v
 Pokud se potřebujete vzdáleně připojit k SQL Serveru na virtuálním počítači Azure, musíte ve skupině zabezpečení sítě nakonfigurovat pravidlo pro příchozí provoz. Toto pravidlo povoluje provoz na portu, na kterém SQL Server naslouchá (výchozí je 1433). Následující kroky ukazují, jak tento krok provést pomocí webu Azure Portal.
 
 > [!TIP]
-> Pokud jste během zřizování v nastavení vybrali příchozí port **MS SQL (1433)**, tyto změny už se pro vás provedly. Můžete přejít k další části věnované konfiguraci brány firewall.
+> Pokud jste během zřizování v nastavení vybrali příchozí port **MS SQL (1433)** , tyto změny už se pro vás provedly. Můžete přejít k další části věnované konfiguraci brány firewall.
 
 1. Na portálu vyberte **Virtuální počítače** a pak vyberte váš virtuální počítač s SQL Serverem.
 1. V levém navigačním podokně v části **nastavení**vyberte **sítě**.

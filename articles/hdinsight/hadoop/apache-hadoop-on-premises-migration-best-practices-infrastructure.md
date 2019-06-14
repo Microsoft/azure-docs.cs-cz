@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687763"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057473"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -36,7 +36,7 @@ Zobrazit [výchozí velikosti virtuálního počítače a konfigurace uzlů pro 
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>Zkontrolovat dostupnost součásti systému Hadoop v HDInsight
 
-Každá verze HDInsight je Cloudová distribuce verze Hortonworks Data Platform (HDP) a se skládá sada součástí ekosystému Hadoop. Zobrazit [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md) podrobnosti o všech součástí HDInsight a jejich aktuální verze.
+Každá verze HDInsight je Cloudová distribuce sady součástí ekosystému Hadoop. Zobrazit [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md) podrobnosti o všech součástí HDInsight a jejich aktuální verze.
 
 Ke kontrole komponenty a verze v HDInsight můžete také použít Apache Ambari, Uživatelskému nebo Ambari REST API.
 
@@ -81,7 +81,7 @@ Skript může být zachována nebo provést jednou. Trvalých skriptů se použ�
 
 HDInsight poskytuje předpřipravené skripty v clusterech HDInsight nainstalovat následující komponenty:
 
-- Přidat účet Azure Storage
+- Přidání účtu služby Azure Storage
 - Instalace rozhraní Hue
 - Nainstalovat Presto
 - Nainstalovat Solr

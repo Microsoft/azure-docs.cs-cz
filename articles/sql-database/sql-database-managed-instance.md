@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c09dd990bb377672cb34ebd73a5aa9e59bbc067f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070398"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Použití rozšířené zabezpečení dat s virtuálními sítěmi a téměř 100 % kompatibility SQL Database
 
@@ -78,7 +78,7 @@ V následující tabulce jsou uvedeny klíčové funkce spravované instance:
 V modelu virt. jader můžete mezi generacemi hardwaru.
 
 - **Gen4** logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesory, SSD připojené, fyzických jader, 7 GB paměti RAM na jádro a velikostí výpočetních mezi 8 až 24 virtuálních jader.
-- **Gen5** logické procesory jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, technologie hyper-threaded logické jádro a výpočet velikosti mezi 80 a 8 jader.
+- **Gen5** logické procesory jsou založeny na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, technologie hyper-threaded logické jádro a výpočet velikosti mezi 4 a 80 jádra.
 
 Další informace o rozdílech mezi generacemi hardwaru v [managed instance omezení prostředků](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
@@ -226,7 +226,7 @@ Možnost nasazení spravované instance umožňuje správce systému, abyste str
 
 V následující tabulce jsou uvedeny několik vlastností, které jsou přístupné prostřednictvím jazyka Transact SQL, můžete použít ke zjištění, že vaše aplikace pracuje s spravovanou instanci a načíst důležité vlastnosti.
 
-|Vlastnost|Hodnota|Poznámka|
+|Vlastnost|Hodnota|Komentář|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejné jako u databáze SQL.|
@@ -240,5 +240,5 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 - Další informace o konfiguraci virtuální sítě najdete v tématu [managed instance konfigurace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md).
 - Rychlý start, která vytváří managed instance a obnoví databázi ze zálohy, naleznete v tématu [vytvoření managed instance](sql-database-managed-instance-get-started.md).
 - Kurz použití Azure Database Migration Service (DMS) pro migraci, najdete v tématu [spravované migrace instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Rozšířené monitorování výkonu databáze spravované instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)
+- Rozšířené monitorování výkonu databáze spravované instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).
 - Informace o cenách najdete v tématu [SQL Database managed instance ceny](https://azure.microsoft.com/pricing/details/sql-database/managed/).

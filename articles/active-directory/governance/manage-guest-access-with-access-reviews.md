@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c896356b67de185c55396e98aa6bb2e61dd004d
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66472912"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu

@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288500"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role Azure AD v PIM
@@ -69,7 +69,7 @@ Tato část obsahuje seznam všech výstrah zabezpečení pro role Azure AD, jak
 
 | | |
 | --- | --- |
-| **Závažnost** | Střednědobé používání |
+| **Závažnost** | Střední |
 | **Proč se zobrazí toto upozornění?** | Účty v privilegovaných rolí, které nedošlo ke změně hesla v posledních 90 dnů. Tyto účty mohou být služby nebo sdílené účty, které nejsou dodržovány a můžou se stát terčem útočníků. |
 | **Jak vyřešit?** | Projděte si účty v seznamu. Pokud už potřebují přístup, odeberte je ze svoje privilegované role. |
 | **Ochrany před únikem informací** | Ujistěte se, že účty, které jsou sdíleny jsou otáčení silná hesla, když dojde ke změně v uživatele, kteří znát heslo. </br>Pravidelně revize účty s privilegované role pomocí [kontrol přístupu](pim-how-to-start-security-review.md) a odeberte přiřazení rolí, které už nejsou potřeba. |
@@ -80,7 +80,7 @@ Tato část obsahuje seznam všech výstrah zabezpečení pro role Azure AD, jak
 
 | | |
 | --- | --- |
-| **Závažnost** | Vysoký |
+| **Závažnost** | Vysoká |
 | **Proč se zobrazí toto upozornění?** | Přiřazení privilegovaných rolí, které jsou mimo PIM nemonitoruje správně a může znamenat útok aktivní. |
 | **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odebere je z privilegované role přiřazené mimo PIM. |
 | **Ochrany před únikem informací** | Prozkoumejte, kde uživatelé jsou přiřazení privilegovaných rolí mimo PIM a zakázat budoucí přiřazení z něj. |

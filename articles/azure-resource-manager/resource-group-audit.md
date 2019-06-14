@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606566"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Zobrazení protokolů aktivit k monitorování akcí u prostředků
@@ -53,7 +53,7 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
 
 1. Všimněte si, že filtry se změnily a zaměřit se na chyby nasazení za posledních 24 hodin. Zobrazí se pouze operace, které odpovídají filtrům.
 
-    ![Zobrazit filtry](./media/resource-group-audit/view-filters.png)
+    ![Zobrazení filtrů](./media/resource-group-audit/view-filters.png)
 
 1. Zaměřte se na určité operace, změňte filtry nebo použít nové značky. Například následující obrázek ukazuje novou hodnotu **Timespan** a **typ prostředku** je nastavena na účty úložiště. 
 
@@ -73,7 +73,7 @@ Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhr
 
 1. Z portálu můžete zobrazit změny prostředku. Přejděte zpět k výchozímu zobrazení v nástroji sledování a vyberte operaci, která se podílejí změně prostředku.
 
-    ![Vybrat operaci](./media/resource-group-audit/select-operation.png)
+    ![Operace Select](./media/resource-group-audit/select-operation.png)
 
 1. Vyberte **změnit historii (Preview)** a vyberte si jednu z dostupných operací.
 

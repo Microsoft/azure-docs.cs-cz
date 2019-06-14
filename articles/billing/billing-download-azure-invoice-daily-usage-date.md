@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616306"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
@@ -58,7 +58,7 @@ Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyú
 
 Faktury se generují pro každou [fakturační profil](billing-mca-overview.md#understand-billing-profiles) smlouvy zákazníka Microsoftu. Musí být fakturační profil vlastník, Přispěvatel, čtenář, nebo fakturovat správce stahovat faktury z portálu Azure portal.
 
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
 3. Vyberte **Faktury**.
 4. V mřížce faktury najde řádek faktury, kterou chcete stáhnout.
@@ -108,7 +108,7 @@ Získání faktury e-mailem podle pokynů výše a kliknutím na tlačítko mů�
 
 Pokud máte smlouvu Microsoft zákazníka, můžete přejít k získání faktury e-mailem. Všechny fakturační profil vlastníci, přispěvatelé, čtenáři a faktury Správci získají faktury e-mailem. Čtenáři nelze aktualizovat předvolby faktury e-mailu.
 
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 1. Vyberte fakturační profil.
 1. V části **nastavení**vyberte **vlastnosti**.
 1. V části **fakturu e-mailem**vyberte **předvolby faktury e-mailu aktualizace**.
@@ -169,7 +169,7 @@ Zobrazovat a stahovat data o využití pro fakturační profil, musí být faktu
 
 #### <a name="download-usage-for-billed-charges"></a>Stáhnout využití fakturuje za
 
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
 3. Vyberte **Faktury**.
 4. V mřížce faktury nalezen řádek odpovídající využití, které chcete stáhnout fakturu.
@@ -180,7 +180,7 @@ Zobrazovat a stahovat data o využití pro fakturační profil, musí být faktu
 
 Můžete také stáhnout využití za měsíc k datu v aktuálním fakturačním období, to znamená, že ještě nebyly byla účtuje poplatky.
 
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 2. Vyberte fakturační profil.
 3. V **přehled** okna, klikněte na tlačítko **Azure stáhnout využití a poplatků**.
 

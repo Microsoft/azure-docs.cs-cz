@@ -1,33 +1,33 @@
 ---
-title: Přístup protokolů serveru ve službě Azure Database for MySQL pomocí Azure CLI
-description: Tento článek popisuje, jak získat přístup k protokolům serveru ve službě Azure Database for MySQL pomocí nástroje příkazového řádku Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+title: Přístup pomalých dotazů zaznamená ve službě Azure Database for MySQL pomocí Azure CLI
+description: Tento článek popisuje, jak získat přístup k protokoly pomalých dotazů ve službě Azure Database for MySQL pomocí rozhraní příkazového řádku Azure.
+author: andrela
+ms.author: ajlam
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/12/219
+ms.openlocfilehash: 740dbce579fba6347b1a7f2cfc6bcae40d3503ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525483"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052705"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a získat přístup k protokolům serveru pomocí příkazového řádku Azure
-Azure Database for MySQL – protokoly serveru si můžete stáhnout pomocí příkazového řádku Azure, nástroje příkazového řádku Azure.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurace a přistupovat k protokoly pomalých dotazů pomocí rozhraní příkazového řádku Azure
+Azure Database for MySQL – protokoly pomalých dotazů si můžete stáhnout pomocí příkazového řádku Azure, nástroje příkazového řádku Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:
 - [Azure Database for MySQL serveru](quickstart-create-mysql-server-database-using-azure-cli.md)
 - [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nebo Azure Cloud Shell v prohlížeči
 
-## <a name="configure-logging-for-azure-database-for-mysql"></a>Konfigurace protokolování pro službu Azure Database for MySQL
+## <a name="configure-logging"></a>Konfigurace protokolování
 Můžete nakonfigurovat server pro přístup k protokolu pomalých dotazů MySQL pomocí následujících kroků:
-1. Zapnutí protokolování tak, že nastavíte **pomalé\_dotazu\_protokolu** parametr ON.
+1. Zapnutí protokolování pomalých dotazů nastavením **pomalé\_dotazu\_protokolu** parametr ON.
 2. Upravit další parametry, jako například **dlouhé\_dotazu\_čas** a **protokolu\_pomalé\_správce\_příkazy**.
 
-Zjistěte, jak nastavit hodnoty těchto parametrů pomocí Azure CLI, najdete v článku [konfigurace parametrů serveru](howto-configure-server-parameters-using-cli.md). 
+Zjistěte, jak nastavit hodnoty těchto parametrů pomocí Azure CLI, najdete v článku [konfigurace parametrů serveru](howto-configure-server-parameters-using-cli.md).
 
 Například následující příkaz rozhraní příkazového řádku zapne protokolu pomalých dotazů, nastaví doba dlouhého dotazu na 10 sekund a pak ji vypne protokolování pomalých správce příkazu. Nakonec se zobrazí možnosti konfigurace pro kontrolu.
 ```azurecli-interactive
@@ -38,7 +38,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Protokoly seznamu pro službu Azure Database for MySQL serveru
-Chcete-li seznam souborů protokolu k dispozici pro váš server, spusťte [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) příkazu.
+Chcete-li seznam souborů protokolu pomalých dotazů k dispozici pro váš server, spusťte [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) příkazu.
 
 Můžete zobrazit seznam souborů protokolu pro server **mydemoserver.mysql.database.azure.com** ve skupině prostředků **myresourcegroup**. Potom směrovat seznam souborů protokolů do textového souboru s názvem **protokolu\_soubory\_seznam.txt**.
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [protokolů serveru ve službě Azure Database for MySQL](concepts-server-logs.md).
+- Další informace o [protokoly pomalých dotazů ve službě Azure Database for MySQL](concepts-server-logs.md).

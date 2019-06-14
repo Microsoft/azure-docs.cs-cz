@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 34b5a5901122b60c20a33e3564dca0eb5273afa3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8c951d7f5f1629447b1b5c1fc6e8a1c202246d74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711986"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním Kantega pro bambus
 
@@ -53,7 +53,7 @@ Konfigurace integrace Kantega jednotné přihlašování pro bambus do služby A
 
 **Chcete-li přidat Kantega jednotné přihlašování pro bambus z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

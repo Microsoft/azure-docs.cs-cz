@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 18dc3e224df18c900653e4549badcdd93f0df6ec
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: bf58256b05c6c1260078c0dba547295e08328ef5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073683"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizovat a řešení potíží s AzCopy
 
@@ -32,7 +32,7 @@ Chcete-li konfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_prox
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | `set https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | V příkazovém řádku použijte: `set https_proxy=<proxy IP>:<proxy port>`<br> V Powershellu použijte: `$env:https_proxy=<proxy IP>:<proxy port>`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
