@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 56ceb48be9d5cc9d1cdceed7505e2e3e918a7286
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 6dbaa24df8b2917dd3f68d3851ca4662554ad00a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053269"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Přidání LUIS výsledky do Application Insights s využitím Botu vC#
 
 V tomto kurzu přidá informace o odpovědi LUIS k [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyka nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 
-Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot. A [Bot Framework 4.x s kurzem LUIS](luis-csharp-tutorial-bf-v4.md) je také k dispozici.
+Robot využívá rozhraní Bot Framework 4.x a použijete Azure Web app bot. A [Bot Framework 4.x s kurzem LUIS](luis-csharp-tutorial-bf-v4.md) je také k dispozici.
 
 V tomto kurzu se naučíte:
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Váš robot LUIS webové aplikace z **[předchozí kurz o službě](luis-csharp-tutorial-build-bot-framework-sample.md)** pomocí Application Insights zapnuté.
+* Z použijete LUIS web app bot **tutorial](luis-csharp-tutorial-bf-v4.md)** pomocí Application Insights zapnuté.
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) nainstalovány místně na vašem počítači.
 
 > [!Tip]
@@ -43,7 +43,7 @@ Veškerý kód v tomto kurzu je k dispozici na [úložiště GitHub Azure-Sample
 
 ## <a name="review-luis-web-app-bot"></a>Zkontrolujte LUIS web app bot
 
-Tento kurz předpokládá, že budete mít kód vypadá podobně jako následující nebo, že jste dokončili [další kurz](luis-csharp-tutorial-build-bot-framework-sample.md):
+Tento kurz předpokládá, že budete mít kód vypadá podobně jako následující nebo, že jste dokončili [další kurz](luis-csharp-tutorial-bf-v4.md):
 
    [!code-csharp[Web app bot with LUIS](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs "Web app bot with LUIS")]
 

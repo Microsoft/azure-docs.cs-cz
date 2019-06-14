@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60658283"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapacita instance Azure API Management
@@ -69,7 +69,7 @@ Složitějších operací na požadavky jsou, tím vyšší **kapacity** za spot
 ![Metrika kapacity](./media/api-management-capacity/capacity-metric.png)  
 
 1. Přejděte k vaší instanci APIM v [webu Azure portal](https://portal.azure.com/).
-2. Vyberte **metriky (preview)**.
+2. Vyberte **metriky (preview)** .
 3. Z části fialové vyberte **kapacity** metriky z dostupných metrik a nechte výchozí **Avg** agregace.
 
     > [!TIP]

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551749"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v dotazů na protokoly Azure monitoru
@@ -128,13 +128,13 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Kategorie | TimeGenerated | count_ |
+| Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
-| Přímý agent | 2017-06-06T17:00:00Z | 15 |
-| Přímý agent | 2017-06-06T18:00:00Z | 60 |
-| Přímý agent | 2017-06-06T20:00:00Z | 55 |
-| Přímý agent | 2017-06-06T21:00:00Z | 57 |
-| Přímý agent | 2017-06-06T22:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T17:00:00Z | 15 |
+| Přímý Agent | 2017-06-06T18:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T20:00:00Z | 55 |
+| Přímý Agent | 2017-06-06T21:00:00Z | 57 |
+| Přímý Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
 V těchto výsledků ale sady přidružené k "2017-06-06T19:00:00Z" chybí, protože není k dispozici žádná data prezenčního signálu pro určitou hodinu. Použití `make-series` funkci přiřadí výchozí hodnotu prázdných kbelíků. Tím se vygeneruje řádek pro každou kategorii se dvěma sloupci další pole, jeden pro hodnoty a jeden pro odpovídající časovým intervalům:
@@ -144,9 +144,9 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Kategorie | count_ | TimeGenerated |
+| Category | count_ | TimeGenerated |
 |---|---|---|
-| Přímý agent | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
+| Přímý Agent | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | ... | ... | ... |
 
 Třetího prvku pole *count_* pole má hodnotu 0, podle očekávání a neexistuje odpovídající razítko "2017-06-06T19:00:00.0000000Z" v _TimeGenerated_ pole. Formát tohoto pole je obtížné číst ale. Použití `mvexpand` rozbalte pole a vytvořit stejný formát výstupu vygenerovanými `summarize`:
@@ -158,14 +158,14 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Kategorie | TimeGenerated | count_ |
+| Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
-| Přímý agent | 2017-06-06T17:00:00Z | 15 |
-| Přímý agent | 2017-06-06T18:00:00Z | 60 |
-| Přímý agent | 2017-06-06T19:00:00Z | 0 |
-| Přímý agent | 2017-06-06T20:00:00Z | 55 |
-| Přímý agent | 2017-06-06T21:00:00Z | 57 |
-| Přímý agent | 2017-06-06T22:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T17:00:00Z | 15 |
+| Přímý Agent | 2017-06-06T18:00:00Z | 60 |
+| Přímý Agent | 2017-06-06T19:00:00Z | 0 |
+| Přímý Agent | 2017-06-06T20:00:00Z | 55 |
+| Přímý Agent | 2017-06-06T21:00:00Z | 57 |
+| Přímý Agent | 2017-06-06T22:00:00Z | 60 |
 | ... | ... | ... |
 
 

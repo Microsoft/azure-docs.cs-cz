@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 211e11b5bfd6a8bb7b1d61fec120566d60b9c5c0
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6fde8c38722e39d530c2890ef9c9a045b28b6e49
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Kurz: Integrace Azure Active Directory s Cherwell
 
@@ -54,7 +54,7 @@ Konfigurace integrace Cherwell do služby Azure AD, budete muset přidat Cherwel
 
 **Chcete-li přidat Cherwell z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Cherwell, mus�
 > [!NOTE]
 > Můžete použít jakékoli jiné Cherwell uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Cherwell ke zřízení služby Azure Active Directory uživatelské účty.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

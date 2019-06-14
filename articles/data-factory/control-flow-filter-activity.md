@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
 ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60554843"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrovat aktivity ve službě Azure Data Factory
@@ -41,7 +41,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 name | Název `Filter` aktivity. | String | Ano
 type | Musí být nastaveno na **filtr**. | String | Ano
-condition | Podmínku, která má použít pro filtrování vstupu. | Výraz | Ano
+Podmínka | Podmínku, která má použít pro filtrování vstupu. | Výraz | Ano
 items | Vstupní pole, na které bude použito filtru. | Výraz | Ano
 
 ## <a name="example"></a>Příklad:

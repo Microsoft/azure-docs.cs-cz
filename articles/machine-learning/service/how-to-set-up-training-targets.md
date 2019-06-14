@@ -9,18 +9,18 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: a815ec4ac97f8476403f773aeedb19ff84092b03
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0b35ef5ca3aaa7ad4169f99e2830ebea76d2759e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752964"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074943"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu 
 
-Pomocí služby Azure Machine Learning můžete trénování modelu na širokou škálu prostředků nebo prostředí, které se souhrnně označují jako [ __cílových výpočetních prostředí__](concept-azure-machine-learning-architecture.md#compute-target). Cílové výpočetní prostředí může být místním počítači nebo prostředku cloudu, jako jsou Azure Machine Learning Compute, Azure HDInsight nebo vzdáleného virtuálního počítače.  Můžete také vytvořit cílových výpočetních prostředí pro model nasazení, jak je popsáno v ["kde a jak nasadit modely"](how-to-deploy-and-where.md).
+Pomocí služby Azure Machine Learning můžete trénování modelu na širokou škálu prostředků nebo prostředí, které se souhrnně označují jako [ __cílových výpočetních prostředí__](concept-azure-machine-learning-architecture.md#compute-targets). Cílové výpočetní prostředí může být místním počítači nebo prostředku cloudu, jako jsou Azure Machine Learning Compute, Azure HDInsight nebo vzdáleného virtuálního počítače.  Můžete také vytvořit cílových výpočetních prostředí pro model nasazení, jak je popsáno v ["kde a jak nasadit modely"](how-to-deploy-and-where.md).
 
 Můžete vytvořit a spravovat cílové výpočetní prostředí pomocí sady SDK Azure Machine Learning, webu Azure portal, rozhraní příkazového řádku Azure nebo Azure Machine Learning VS Code příponou. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
  
@@ -75,7 +75,7 @@ Následující kód ukazuje příklad konfigurace tréninkových spuštění pro
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
   
-## <a name="set-up-compute-targets-with-python"></a>Nastavení cílových výpočetních prostředí s využitím Pythonu
+## <a name="set-up-in-python"></a>Nastavte si v Pythonu
 
 Použijte následující části, abyste konfiguraci těchto cílových výpočetních prostředí:
 
@@ -271,7 +271,7 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-compute-in-the-azure-portal"></a>Nastavte výpočetní prostředky na webu Azure Portal
+## <a name="set-up-in-azure-portal"></a>Nastavit na webu Azure portal
 
 Můžete přistupovat cílových výpočetních prostředí, které jsou spojeny s pracovního prostoru na webu Azure Portal.  Na portálu můžete použít:
 
@@ -357,7 +357,7 @@ Postupujte podle kroků popsaných dříve zobrazí seznam cílových výpočetn
 1. Vyberte __připojit__. 
 1. Zobrazení stavu operace připojení tak, že vyberete cílového výpočetního prostředí v seznamu.
 
-## <a name="set-up-compute-with-the-cli"></a>Nastavte výpočetní pomocí rozhraní příkazového řádku
+## <a name="set-up-with-cli"></a>Nastavit pomocí rozhraní příkazového řádku
 
 Můžete přistupovat cílových výpočetních prostředí, které jsou spojené s použitím vašeho pracovního prostoru [rozšíření rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) pro službu Azure Machine Learning.  Můžete použít rozhraní příkazového řádku pro:
 
@@ -367,7 +367,7 @@ Můžete přistupovat cílových výpočetních prostředí, které jsou spojen�
 
 Další informace najdete v tématu [správy prostředků](reference-azure-machine-learning-cli.md#resource-management).
 
-## <a name="set-up-compute-with-vs-code"></a>Nastavte výpočetní s VS Code
+## <a name="set-up-with-vs-code"></a>Nastavení s VS Code
 
 Můžete získat přístup, vytvářet a spravovat cílových výpočetních prostředí, které jsou spojené s použitím vašeho pracovního prostoru [rozšíření VS Codu](how-to-vscode-tools.md#create-and-manage-compute-targets) pro službu Azure Machine Learning.
 
@@ -384,7 +384,7 @@ Po vytvoření konfigurace spuštění můžete použít ke spuštění experime
 >
 > Chcete-li zabránit nebudou zahrnuty do snímku souborů, vytvořte [.gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` souborů v adresáři a přidejte soubory do ní. `.amlignore` Soubor pomocí stejné syntaxe a vzor, jako [.gitignore](https://git-scm.com/docs/gitignore) souboru. Pokud existují oba soubory `.amlignore` soubor má přednost.
 > 
-> Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
+> Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshots).
 
 ### <a name="create-an-experiment"></a>Vytvoření experimentu
 

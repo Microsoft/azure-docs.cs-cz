@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61449989"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080452"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co je akcelerátor řešení připojené továrny IoT?
 
@@ -65,7 +65,4 @@ Propojená továrna zahrnuje následující funkce:
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o řešení připojené továrny v předkonfigurovaném v následujících článcích:
-
-* [Propojená továrna návod pro předkonfigurované řešení](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Nasazení brány pro propojenou továrnu]( iot-accelerators-connected-factory-gateway-deployment.md)
+Další informace o akcelerátor řešení připojená továrna, najdete v tomto rychlém startu [zkuste cloudové řešení ke správě mých průmyslová zařízení IoT](quickstart-connected-factory-deploy.md).

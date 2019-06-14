@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: f84e81a5a9e9c9cf6f477adefa0869d776f7dd71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075609"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimalizace výkonu na virtuálních počítačích řady Lsv2
 
@@ -24,7 +24,7 @@ Virtuální počítače řady Lsv2 podporují celou řadu úloh, které potřebu
 
 Návrh Lsv2-series virtuálních počítačů (VM) maximalizuje procesor AMD EPYC 7551™, který poskytovat nejlepší výkon mezi procesoru, paměti, zařízení NVMe a virtuální počítače. Kromě dosažení maximálního výkonu hardwaru, jsou virtuální počítače řady Lsv2 navrženy pro práci s potřebami operačních systémů Windows a Linux pro lepší výkon pomocí hardwaru a softwaru.
 
-Ladění softwarových a hardwarových výsledkem optimalizovanou verzi [systému Windows Server. 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview), kterou jsme vydali v rané fázi prosince 2018 na webu Azure Marketplace, který podporuje maximální výkon u zařízení NVMe řady Lsv2 Virtuální počítače.
+Ladění softwarových a hardwarových výsledkem optimalizovanou verzi [systému Windows Server. 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), kterou jsme vydali v rané fázi prosince 2018 na webu Azure Marketplace, který podporuje maximální výkon u zařízení NVMe řady Lsv2 Virtuální počítače.
 
 Tento článek poskytuje tipy a návrhy, aby úlohy a aplikace dosáhnout maximálního výkonu, které jsou navržené k virtuálním počítačům. Informace na této stránce se průběžně aktualizuje při přidání další Lsv2 optimalizované Image na webu Azure Marketplace.
 

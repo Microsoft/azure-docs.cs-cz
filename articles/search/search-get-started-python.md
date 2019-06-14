@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Python a rozhraní REST API – Azure Search'
 description: Vytvoření, načtení a dotazování indexu pomocí Pythonu, poznámkové bloky Jupyter a rozhraní REST API Azure Search.
-ms.date: 05/23/2019
+ms.date: 06/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c519cbd151ac3008593e3309930db4e9a9414e51
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244789"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056630"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Rychlý start: Vytvoření indexu Azure Search pomocí poznámkových bloků Jupyter Pythonu
 > [!div class="op_single_selector"]
@@ -88,22 +88,19 @@ V této úloze spustit Poznámkový blok Jupyter a ověřte, že se můžete př
 
    Naproti tomu kolekci prázdný index vrátí tuto odpověď: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
-> [!Tip]
-> Na bezplatné služby jste omezeni na tři indexy, indexery a zdroje dat. V tomto rychlém startu se vytváří od každého jeden. Ujistěte se, že existuje místo pro vytváření nových objektů před pokračováním žádné.
-
-## <a name="1---create-an-index"></a>1. Vytvoření indexu
+## <a name="1---create-an-index"></a>1\. Vytvoření indexu
 
 Pokud používáte portál, index, musí existovat ve službě můžete načíst data. Tento krok používá [vytvořit Index rozhraní REST API služby](https://docs.microsoft.com/rest/api/searchservice/create-index) tak, aby nabízel schématu indexu ve službě.
 
 Požadované elementy indexu zahrnují název, kolekci polí a klíč. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se pole používá (například, zda je fulltextově prohledávatelné, filtrovatelné nebo retrievable ve výsledcích hledání). V rámci indexu, jeden z pole typu `Edm.String` musí být určena jako *klíč* pro identitu dokumentu.
 
-Tento index má název "hotelů pírovat" a definice polí, kterou vidíte níže. Je podmnožinou větší [indexu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) použít v dalších kurzech. Jsme oříznut v tomto rychlém startu pro zkrácení.
+Tento index je s názvem "hotely – rychlý start" a obsahuje definice pole, které vidíte níže. Je podmnožinou větší [indexu Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) použít v dalších kurzech. Jsme oříznut v tomto rychlém startu pro zkrácení.
 
 1. V další buňky vložte následující příklad do buňky zadejte schéma. 
 
     ```python
     index_schema = {
-       "name": "hotels-py",  
+       "name": "hotels-quickstart",  
        "fields": [
          {"name": "HotelId", "type": "Edm.String", "key": "true", "filterable": "true"},
          {"name": "HotelName", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "true", "facetable": "false"},
@@ -236,10 +233,10 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
     }
     ```   
 
-2. Jiné buňky vydávat žádosti. Tento požadavek POST cílí na kolekci dokumentace indexu hotelů pírovat a nabízených oznámení dokumenty v předchozím kroku.
+2. Jiné buňky vydávat žádosti. Tento požadavek POST cílí na kolekci dokumentace indexu hotels – rychlý start a oznámení dokumenty v předchozím kroku.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs/index" + api_version
+   url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
    response  = requests.post(url, headers=headers, json=documents)
    index_content = response.json()
    pprint(index_content)
@@ -249,60 +246,67 @@ Pro vkládání dokumentů, pomocí požadavku HTTP POST do koncového bodu adre
 
     ![Odeslání dokumentů do indexu](media/search-get-started-python/load-index.png "odeslání dokumentů do indexu")
 
-## <a name="3---search-an-index"></a>3. Prohledání indexu
+## <a name="3---search-an-index"></a>3\. Prohledání indexu
 
 Tento krok ukazuje, jak zadávat dotazy na index pomocí [REST API služby Search dokumenty](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
+1. Do buňky zadejte výraz dotazu, který se spustí prázdné vyhledávání (vyhledávání = *), vrací unranked seznamu (hledání skóre = 1.0) libovolný dokumentů. Azure Search ve výchozím nastavení, vrátí 50 shodnými najednou. Jako strukturované tento dotaz vrátí strukturu celého dokumentu a hodnoty. Přidat $count = true, pokud chcete získat počet všechny dokumenty ve výsledcích.
 
-1. Do nové buňky zadejte výraz dotazu. Následující příklad hledá podmínky "hotels" a "Wi-Fi". Je také vrátí hodnotu *počet* dokumentů, které se shodují, a *vybere* pole, která chcete zahrnout do výsledků hledání.
+   ```python
+   searchstring = '&search=*&$count=true'
+   ```
+
+1. Novou buňku zadejte následující příklad, chcete-li vyhledat podmínky "hotels" a "Wi-Fi". Přidáte $select k určení pole, která chcete zahrnout do výsledků hledání.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. Jiné buňky zformulujte podobnou žádost. Tento požadavek GET cílí na kolekci dokumentace indexu hotelů pírovat a připojí dotaz, který jste zadali v předchozím kroku.
+1. Jiné buňky zformulujte podobnou žádost. Tento požadavek GET cílí na kolekci dokumentace indexu hotels-quickstart a připojí dotaz, který jste zadali v předchozím kroku.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-3. Spuštění každého kroku. Výsledky by měly vypadat podobně jako následující výstup. 
+1. Spuštění každého kroku. Výsledky by měly vypadat podobně jako následující výstup. 
 
     ![Prohledání indexu](media/search-get-started-python/search-index.png "prohledání indexu")
 
-4. Zkuste několik další příklady dotazů syntaxe získat představu. Můžete nahradit hledaný_řetězec s příklady a poté znovu spusťte požadavek hledání. 
+1. Zkuste několik další příklady dotazů syntaxe získat představu. Můžete nahradit hledaný_řetězec s příklady a poté znovu spusťte požadavek hledání. 
 
    Použijte filtr: 
 
    ```python
-   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
    Využijte nejlepší dva výsledky:
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
     Seřadit podle určitého pole:
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
 ## <a name="clean-up"></a>Vyčištění 
 
-Index by měl odstranit, pokud ho už nepotřebují. Bezplatná služba je omezena na tři indexy. Můžete chtít odstranit všechny indexy, které nepoužíváte aktivně aby uvolnil prostor pro další kurzy.
+Index by měl odstranit, pokud ho už nepotřebují. Bezplatná služba je omezena na tři indexy. Odstraňte všechny indexy, které nepoužíváte aktivně aby uvolnil prostor pro další kurzy.
+
+Nejjednodušší způsob, jak odstranit objekty je prostřednictvím portálu, ale protože Python quickstart, syntaxi vrací stejný výsledek:
 
    ```python
-  url = endpoint + "indexes/hotels-py" + api_version
+  url = endpoint + "indexes/hotels-quickstart" + api_version
   response  = requests.delete(url, headers=headers)
    ```
 
-Odstranění indexu můžete ověřit tak, že vrací seznam stávající indexy. Pokud je pryč hotelů pírovat, víte vaše žádost byla úspěšná.
+Odstranění indexu můžete ověřit tak, že probíhá vyžádání seznamu stávající indexy. Pokud je pryč hotels-quickstart, víte vaše žádost byla úspěšná.
 
 ```python
 url = endpoint + "indexes" + api_version + "&$select=name"

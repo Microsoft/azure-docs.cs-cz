@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c3546dbadf64786b398610c19ee7f8e9e740d51
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Kurz: Integrace Azure Active Directory s oblouk
 
@@ -53,7 +53,7 @@ Konfigurace integrace oblouk do služby Azure AD, budete muset přidat oblouk na
 
 **Chcete-li přidat oblouk z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -245,7 +245,7 @@ Povolení služby Azure AD uživatelům umožní přihlásit k oblouk musí být
 
 1. Uživatel dostane pozvánku a po jeho přijetí jsou vytvořeny v systému.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

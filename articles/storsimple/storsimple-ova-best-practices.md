@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630134"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pro StorSimple Virtual Array
@@ -44,7 +44,7 @@ Implementujte následující osvědčené postupy při zřizování virtuálníh
 | **Datový typ disku** |Zřízení jako **dynamicky se zvětšující**.<br></br> **Pevná velikost** trvá moc dlouho. <br></br> Nepoužívejte **rozdílové** možnost. |Použití **dynamicky zřizovat** možnost. |
 | **Úprava dat disku** |Rozšíření nebo zmenšení není povolený. Pokus o Uděláte to tak vede ke ztrátě všech místních dat na zařízení. |Rozšíření nebo zmenšení není povolený. Pokus o Uděláte to tak vede ke ztrátě všech místních dat na zařízení. |
 
-### <a name="sizing"></a>Velikosti
+### <a name="sizing"></a>Velikost
 Při nastavování velikosti StorSimple Virtual Array, vezměte v úvahu následující faktory:
 
 * Místní rezervace pro svazky nebo sdílené složky. Přibližně 12 % prostor je vyhrazeno u místní vrstvy pro každý zřízené vrstvený svazek nebo sdílenou složku. Přibližně 10 % prostoru je také rezervovaná pro místně vázaný svazek systému souborů.

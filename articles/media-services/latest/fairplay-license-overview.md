@@ -15,10 +15,10 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60733568"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay licenční požadavky a konfigurace 
@@ -35,7 +35,7 @@ Vyžadují se následující věci při použití služby Media Services k šifr
 * Apple vyžaduje k získání vlastníka obsahu [balíček pro nasazení](https://developer.apple.com/contact/fps/). Stav již implementováno klíč zabezpečení modulu (KSM) pomocí služby Media Services, a že žádáte finálním balíčku snímků za Sekundu. Existují pokyny ve finálním balíčku snímků za Sekundu pro generování certifikace a získat klíč tajný klíč aplikace (AKS). Konfigurace FairPlay použijete dotaz.
 * Na straně doručování klíčů/licencí Media Services musí být nastaveny následující věci:
 
-    * **Certifikát aplikace (AC)**: Toto je soubor .pfx, který obsahuje privátní klíč. Tento soubor vytvořte a šifrovat pomocí hesla. Soubor .pfx musí být ve formátu Base64.
+    * **Certifikát aplikace (AC)** : Toto je soubor .pfx, který obsahuje privátní klíč. Tento soubor vytvořte a šifrovat pomocí hesla. Soubor .pfx musí být ve formátu Base64.
 
         Následující kroky popisují, jak generovat soubor certifikátu .pfx pro FairPlay:
 
@@ -54,7 +54,7 @@ Vyžadují se následující věci při použití služby Media Services k šifr
     
 * Snímků za Sekundu na straně klienta je nutné nastavit následující věci:
 
-  * **Certifikát aplikace (AC)**: Toto je.cer/.der soubor, který obsahuje veřejný klíč, který operační systém používá k šifrování některé datové části. Služba Media Services je potřeba vědět, protože je vyžadováno přehrávač. Služba doručování klíčů dešifruje ji pomocí odpovídajícího soukromého klíče.
+  * **Certifikát aplikace (AC)** : Toto je.cer/.der soubor, který obsahuje veřejný klíč, který operační systém používá k šifrování některé datové části. Služba Media Services je potřeba vědět, protože je vyžadováno přehrávač. Služba doručování klíčů dešifruje ji pomocí odpovídajícího soukromého klíče.
 
 * Pro přehrávání šifrovaného datového proudu FairPlay, získat první skutečné položit dotaz a pak vygenerovat skutečný certifikát. Tento proces vytvoří všechny tři části:
 

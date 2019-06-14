@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: e3f5cb726dddbdbfbd1b1f48c800ac681e7a174c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696553"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056750"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
@@ -21,11 +21,11 @@ Apache HBase je dotazovaný obvykle s jeho nízké úrovně rozhraní API (kontr
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Dva samostatné alespoň clusterů HDInsight, jeden HBase a jeden Sparku s využitím Sparku 2.1 (HDInsight 3.6) nainstalovaný.
-* Spark cluster potřebuje ke komunikaci přímo s clusterem HBase s minimální latencí, takže doporučenou konfiguraci nasazení obou clusterech ve stejné virtuální síti. Další informace najdete v tématu [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).
-* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) jako primární úložiště vašich clusterů. To může být wasb: / / Azure Blob Storage, abfs: / / pro Azure Data Lake Storage Gen2 nebo adl: / / pro Azure Data Lake Storage Gen1. Pokud pro úložiště objektů Blob nebo Data Lake Storage Gen2 je povoleno zabezpečený přenos, identifikátor URI by wasbs: / / nebo abfss: / /, respektive naleznete také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
+* Dva samostatné clustery HDInsight, které jsou nasazené ve stejné virtuální síti. Jeden jeden HBase a Spark s nejméně Sparku 2.1 (HDInsight 3.6) nainstalovaný. Další informace najdete v tématu [vytvoření linuxových clusterech v HDInsight pomocí webu Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
+* Klient SSH. Další informace najdete v tématu [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* [Schéma identifikátoru URI](hdinsight-hadoop-linux-information.md#URI-and-scheme) jako primární úložiště vašich clusterů. To může být wasb: / / Azure Blob Storage, abfs: / / pro Azure Data Lake Storage Gen2 nebo adl: / / pro Azure Data Lake Storage Gen1. Pokud pro úložiště objektů Blob nebo Data Lake Storage Gen2 je povoleno zabezpečený přenos, identifikátor URI by wasbs: / / nebo abfss: / /, respektive naleznete také [zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Celkový proces
 
@@ -40,38 +40,47 @@ Proces vysoké úrovně pro povolení váš cluster Spark na HDInsight cluster d
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>Příprava ukázkových dat v Apache HBase
 
-V tomto kroku vytvoření a vyplnění jednoduché tabulky v Apache HBase, který potom můžete dotazovat pomocí Sparku.
+V tomto kroku vytvoření a vyplnění tabulky v Apache HBase, který potom můžete dotazovat pomocí Sparku.
 
-1. Připojení k hlavnímu uzlu clusteru HBase pomocí protokolu SSH. Další informace najdete v tématu [připojení k HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).  Upravte následující příkaz tak, že nahradíte `HBASECLUSTER` s názvem vašeho clusteru HBase `sshuser` s ssh uživatele název účtu a potom zadejte příkaz.
+1. Použití `ssh` příkazu se připojte ke svému clusteru HBase. Upravte následující příkaz tak, že nahradíte `HBASECLUSTER` s názvem vaší HBase clusteru a potom zadejte příkaz:
 
-    ```
+    ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Zadejte následující příkaz ke spuštění prostředí HBase:
+2. Použití `hbase shell` příkaz ke spuštění interaktivního prostředí HBase. Zadejte následující příkaz v připojení SSH:
 
-        hbase shell
+    ```bash
+    hbase shell
+    ```
 
-3. Zadejte následující příkaz k vytvoření `Contacts` tabulku s rodinami sloupců `Personal` a `Office`:
+3. Použití `create` příkaz pro vytvoření tabulky HBase se dvěma skupinami sloupců. Zadejte následující příkaz:
 
-        create 'Contacts', 'Personal', 'Office'
+    ```hbase
+    create 'Contacts', 'Personal', 'Office'
+    ```
 
-4. Zadejte níže uvedených příkazů se načíst několik řádků vzorku dat:
+4. Použití `put` příkaz pro vložení hodnot v zadaném sloupci v zadaný řádek v určité tabulce. Zadejte následující příkaz:
 
-        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-        put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
-        put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
-        put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```hbase
+    put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+    put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+    put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+    put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+    put 'Contacts', '8396', 'Personal:Name', 'Calvin Raji'
+    put 'Contacts', '8396', 'Personal:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
+    put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
+    ```
 
-5. Zadejte následující příkaz pro ukončení prostředí HBase:
+5. Použití `exit` příkaz k zastavení interaktivní prostředí HBase. Zadejte následující příkaz:
 
-        exit 
+    ```hbase
+    exit
+    ```
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>Zkopírujte hbase-site.xml ke clusteru Spark
+
 Zkopírujte hbase-site.xml z místního úložiště do kořenového adresáře výchozí úložiště clusteru Spark.  Upravte následující příkaz tak, aby odrážely konfiguraci.  V otevřít relaci SSH pro HBase cluster, zadejte příkaz:
 
 | Hodnota syntaxe | Nová hodnota|
@@ -80,9 +89,11 @@ Zkopírujte hbase-site.xml z místního úložiště do kořenového adresáře 
 |`SPARK_STORAGE_CONTAINER`|Nahraďte výchozí název kontejneru úložiště používají pro clustery Spark.|
 |`SPARK_STORAGE_ACCOUNT`|Nahraďte výchozí název účtu úložiště pro Spark cluster.|
 
-```
+```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
 ```
+
+Ukončete vaše ssh připojení k vašemu clusteru HBase.
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Vložit hbase-site.xml na svém clusteru Spark
 
@@ -90,13 +101,15 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 2. Zadejte následující příkaz pro kopírování `hbase-site.xml` z výchozí úložiště clusteru Spark ke složce Spark 2 konfigurace v místním úložišti clusteru:
 
-        sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```bash
+    sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
+    ```
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spusťte prostředí Sparku odkazující na konektor Spark HBase
 
 1. V otevřít relaci SSH ke clusteru Spark zadejte následující příkaz ke spuštění prostředí sparku:
 
-    ```
+    ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
     ```  
 
@@ -185,12 +198,14 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
 
 9. Měli byste vidět výsledky, jako jsou tyto:
 
-        +-------------+--------------------+
-        | personalName|       officeAddress|
-        +-------------+--------------------+
-        |    John Dole|1111 San Gabriel Dr.|
-        |  Calvin Raji|5415 San Gabriel Dr.|
-        +-------------+--------------------+
+    ```output
+    +-------------+--------------------+
+    | personalName|       officeAddress|
+    +-------------+--------------------+
+    |    John Dole|1111 San Gabriel Dr.|
+    |  Calvin Raji|5415 San Gabriel Dr.|
+    +-------------+--------------------+
+    ```
 
 ## <a name="insert-new-data"></a>Vložte nová data
 
@@ -229,13 +244,21 @@ V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spar
 
 5. Měl by se zobrazit výstup podobný tomuto:
 
-        +------+--------------------+--------------+------------+--------------+
-        |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
-        +------+--------------------+--------------+------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
-        | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+------------+--------------+
+    ```output
+    +------+--------------------+--------------+------------+--------------+
+    |rowkey|       officeAddress|   officePhone|personalName| personalPhone|
+    +------+--------------------+--------------+------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|   John Dole|1-425-000-0001|
+    | 16891|        40 Ellis St.|  674-555-0110|John Jackson|  230-555-0194|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191| Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+------------+--------------+
+    ```
+
+6. Ukončete prostředí sparku tak, že zadáte následující příkaz:
+
+    ```scala
+    :q
+    ```
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a03b185f6df5e32012883d210d684ec08b119019
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281151"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Kurz: Integrace Azure Active Directory s Comm100 živém chatu
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci živém chatu Comm100 do služby Azure AD,
 
 **Chcete-li přidat živém chatu Comm100 z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -116,9 +116,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Comm100 živém chatu, prov
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Name |  Zdrojový atribut|
+    | Název |  Zdrojový atribut|
     | ---------------| --------------- |
-    |   e-mail    | user.mail |
+    |   email    | user.mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 

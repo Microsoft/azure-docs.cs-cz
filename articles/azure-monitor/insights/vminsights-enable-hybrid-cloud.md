@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 06/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b8870f0a6f14536fdf3a1ff675f2fbe3ce8aeec
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
-ms.translationtype: MT
+ms.openlocfilehash: 89970802ff21a254fae0604e50ea2b8b5901f95a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524187"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052007"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Povolit monitorování Azure pro hybridní prostředí pro virtuální počítače (preview)
 
@@ -35,7 +35,7 @@ Před Začínáme pracovat, nezapomeňte se podívat [požadavky](vminsights-ena
 
 Úkoly k dokončení této úlohy se dají shrnout takto:
 
-1. Instalace agenta Log Analytics pro Windows nebo Linux.
+1. Instalace agenta Log Analytics pro Windows nebo Linux. Před instalací agenta, zkontrolujte [přehled agenta Log Analytics](../platform/log-analytics-agent.md) článku vám pomohou pochopit požadavky na systém a metody nasazení.  
 
 2. Stáhněte a nainstalujte Azure Monitor pro virtuální počítače mapu závislostí agenta pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
 
@@ -56,7 +56,7 @@ Následující tabulka obsahuje parametry, které podporují instalaci agenta z 
 | /? | Vrátí seznam možností příkazového řádku. |
 | /S | Provádí tichou instalaci bez zásahu uživatele. |
 
-Například spusťte instalační program se `/?` parametr, typ **InstallDependencyAgent Windows.exe /?**.
+Například spusťte instalační program se `/?` parametr, typ **InstallDependencyAgent Windows.exe /?** .
 
 Soubory agenta závislostí Windows jsou nainstalované v *agenta závislostí C:\Program Files\Microsoft* ve výchozím nastavení. Pokud se nepodaří spustit po dokončení instalace agenta závislostí, zkontrolujte protokoly podrobné informace o chybě. Adresář protokolu je *%Programfiles%\Microsoft závislost Agent\logs*.
 

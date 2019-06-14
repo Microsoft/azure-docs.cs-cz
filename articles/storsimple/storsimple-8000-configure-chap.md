@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362701"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolu CHAP pro zařízení StorSimple
@@ -59,7 +59,7 @@ Při ověřování jednosměrnou ověřuje cíl iniciátor. Toto ověřování, 
    3. Potvrďte heslo.
 
        ![Iniciátor CHAP](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Klikněte na tlačítko **OK** a uložte změny.
+3. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Změny uložíte kliknutím na tlačítko **OK** .
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Postup konfigurace jednosměrného ověřování na hostitelském Windows serveru
 1. Na hostitelském serveru Windows spusťte iniciátor iSCSI.
@@ -113,7 +113,7 @@ V případě obousměrné ověřování cíl ověřuje iniciátor a potom inici�
    3. Potvrďte heslo.
 
        ![Iniciátor CHAP](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Klikněte na tlačítko **OK** a uložte změny.
+4. Klikněte na **Uložit**. Zobrazí se potvrzovací zpráva. Změny uložíte kliknutím na tlačítko **OK** .
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Konfigurace obousměrné ověřování na hostitelském Windows serveru
 

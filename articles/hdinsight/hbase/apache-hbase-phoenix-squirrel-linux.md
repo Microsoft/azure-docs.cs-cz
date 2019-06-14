@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý start: Dotaz Apache HBase v Azure HDInsight – Apache Phoenix'
-description: Další informace o použití Apache Phoenixu v HDInsight. Také zjistěte, jak nainstalovat a nastavit SQLLine ve vašem počítači pro připojení ke clusteru služby HBase v HDInsight.
+description: V tomto rychlém startu se dozvíte, jak používat Apache Phoenix v HDInsight. Také zjistěte, jak nainstalovat a nastavit SQLLine ve vašem počítači pro připojení ke clusteru služby HBase v HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 46606a991ce878a3335c2c605a4040c9520d5128
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: fd812698ef68a4077b7de6a612392d30d195ec39
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596200"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076278"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Rychlý start: Dotaz Apache HBase v Azure HDInsight s Apache Phoenix
 
@@ -126,10 +126,3 @@ V tomto rychlém startu jste zjistili, jak používat Apache Phoenix ke spoušt�
 
 > [!div class="nextstepaction"]
 > [Apache Phoenix v HDInsight](../hdinsight-phoenix-in-hdinsight.md)
-
-## <a name="see-also"></a>Viz také
-
-* [Ruční SQLLine](http://sqlline.sourceforge.net/#manual).
-* [Apache Phoenix gramatiky](https://phoenix.apache.org/language/index.html).
-* [Apache Phoenix za 15 minut nebo i rychleji](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)
-* [Přehled HDInsight HBase](./apache-hbase-overview.md)

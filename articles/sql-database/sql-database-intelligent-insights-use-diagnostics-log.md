@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60703162"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu Intelligent Insights Azure SQL Database
@@ -81,7 +81,7 @@ Soubor protokolu v závislosti na výkonu zjištěném problému, podrobnosti v�
 | Dosáhnout omezení prostředků | <li>Ovlivněné prostředky</li><li>Hodnoty hash dotazu</li><li>Procento využití prostředků</li> |
 | Zvýšení zatížení | <li>Počet dotazů, jejichž spuštění vyšší</li><li>Hodnoty hash dotazu dotazů s největší příspěvek na zvýšení zatížení</li> |
 | Přetížení paměti | <li>Paměť fulltextu</li> |
-| Uzamykání | <li>Vliv na hodnoty hash dotazu</li><li>Blokování hodnoty hash dotazu</li> |
+| Uzamčení | <li>Vliv na hodnoty hash dotazu</li><li>Blokování hodnoty hash dotazu</li> |
 | Zvýšená MAXDOP | <li>Hodnoty hash dotazu</li><li>CXP čekací dobu</li><li>Čekání</li> |
 | Pagelatch Contention | <li>Dotazování hodnoty hash způsobí kolizi dotazů</li> |
 | Chybějící Index | <li>Hodnoty hash dotazu</li> |

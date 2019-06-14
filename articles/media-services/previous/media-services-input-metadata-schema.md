@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463765"
 ---
 # <a name="input-metadata"></a>Vstupní Metadata 
@@ -122,7 +122,7 @@ Typ představuje konkrétní videa sledovat v souboru prostředku.
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **FourCC**<br /><br /> Požaduje se |**xs:string** |Kodek videa FourCC kódu. |
 | **Profil** |**xs: řetězec** |Sledovat video profilu. |
@@ -146,7 +146,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Atributy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **key**<br /><br /> Požaduje se |**xs:string** |Klíč v páru klíč/hodnota. |
 | **value**<br /><br /> Požaduje se |**xs:string** |Hodnota ve dvojici klíč/hodnota. |
@@ -188,7 +188,7 @@ Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](medi
 Element obálky, která uchovává více **Program** elementy.  
 
 ### <a name="child-elements"></a>Podřízené prvky
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Soubory prostředků, které jsou ve formátu MPEG-TS obsahuje informace o aplikacích v souboru prostředku. |
 
@@ -208,7 +208,7 @@ Element obálky, která uchovává více **Program** elementy.
  Podívejte se příklad XML na konci tohoto článku: [Ukázkový kód XML](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="elements"></a>Elementy
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (dědí nastavení z TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Obsahuje informace o zvukové stopy v souboru prostředku. |
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60455004"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Řešení potíží s objekt, který se nesynchronizuje se službou Azure Active Directory
@@ -73,7 +73,7 @@ V horní polovině **operace** karta zobrazuje všechna spuštění v chronologi
 
 **Stav** sloupec obsahuje nejdůležitější informace a v něm nejzávažnějších problémů pro spuštění. Tady je stručný přehled nejběžnějších stavů v pořadí podle priority šetření (kde * znamená několik možných chybové řetězce).
 
-| Status | Poznámka |
+| Status | Komentář |
 | --- | --- |
 | stopped-* |Spuštění nebylo možné dokončit. K tomu může dojít, například, pokud vzdálený systém je vypnutý a nelze kontaktovat. |
 | stopped-error-limit |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
@@ -81,7 +81,7 @@ V horní polovině **operace** karta zobrazuje všechna spuštění v chronologi
 | dokončené -\*– upozornění |Spuštění dokončil, ale některá data není v očekávaném stavu. Pokud máte chyby, tato zpráva je obvykle pouze příznakem. Upozornění není prozkoumat, dokud se odstranily chyby. |
 | úspěch |Žádné problémy. |
 
-Když vyberete řádek na konec **operace** kartu se aktualizuje a zobrazí podrobnosti, ve kterých běží. Na straně úplně vlevo této oblasti, může mít seznam s názvem **krok #**. Tento seznam se zobrazí jenom v případě, že máte více domén v doménové struktuře a každé doméně představuje krok. Název domény najdete v části **oddílu**. V části **statistické údaje o synchronizaci** záhlaví, můžete najít další informace o počtu změn, které byly zpracovány. Vyberte odkazy na získání seznamu změněné objekty. Pokud máte objektů s chybami, tyto chyby se zobrazí v části **chyby synchronizace** záhlaví.
+Když vyberete řádek na konec **operace** kartu se aktualizuje a zobrazí podrobnosti, ve kterých běží. Na straně úplně vlevo této oblasti, může mít seznam s názvem **krok #** . Tento seznam se zobrazí jenom v případě, že máte více domén v doménové struktuře a každé doméně představuje krok. Název domény najdete v části **oddílu**. V části **statistické údaje o synchronizaci** záhlaví, můžete najít další informace o počtu změn, které byly zpracovány. Vyberte odkazy na získání seznamu změněné objekty. Pokud máte objektů s chybami, tyto chyby se zobrazí v části **chyby synchronizace** záhlaví.
 
 ### <a name="errors-on-the-operations-tab"></a>Chyby na kartě operace
 Pokud máte chyby, Synchronization Service Manager zobrazí objekt s chybou a vlastní chyba jako odkazy, které poskytují další informace.
@@ -91,7 +91,7 @@ Začněte výběrem řetězec chyby. (Na předchozím obrázku je chybový řet�
 
 Klikněte pravým tlačítkem na **informace v zásobníku volání** klikněte **Vybrat vše**a pak vyberte **kopírování**. Pak zkopírujte do zásobníku a podívejte se na chyby ve svém oblíbeném editoru, jako je například Poznámkový blok.
 
-Pokud je chyba z **SyncRulesEngine**, informace v zásobníku volání nejprve obsahuje všechny atributy objektu. Posuňte se dolů, dokud se nezobrazí záhlaví **u třídy InnerException = >**.  
+Pokud je chyba z **SyncRulesEngine**, informace v zásobníku volání nejprve obsahuje všechny atributy objektu. Posuňte se dolů, dokud se nezobrazí záhlaví **u třídy InnerException = >** .  
 
   ![Snímek obrazovky z Synchronization Service Manager, zobrazují informace o chybě pod záhlavím u třídy InnerException = >](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
@@ -142,7 +142,7 @@ Na předchozím obrázku se také zobrazí v **PasswordSync** sloupec, který m�
 
 Z **rodokmenu** kartu, můžete získat do úložiště metaverse tak, že vyberete [ **vlastnosti objektu úložiště Metaverse**](#mv-attributes).
 
-### <a name="preview"></a>Preview
+### <a name="preview"></a>Náhled
 V levém horním rohu **vlastnosti objektu prostoru konektoru** je okno **ve verzi Preview** tlačítko. Klikněte na toto tlačítko otevřete **ve verzi Preview** stránku, kde můžete synchronizovat jednoho objektu. Tato stránka je užitečné, pokud řešíte některé vlastní synchronizační pravidla a chcete posoudit účinek parametru změnu u jednoho objektu. Můžete vybrat **Full sync** nebo **rozdílová synchronizace**. Můžete také vybrat **generovat ve verzi Preview**, který pouze sleduje změny v paměti. Nebo vyberte **potvrzení změn ve verzi Preview**, která aktualizuje úložiště metaverse a zpracuje všechny změny prostor konektoru cíl.  
 
 ![Snímek obrazovky stránky ve verzi Preview se spustit náhled vybrané](./media/tshoot-connect-object-not-syncing/preview.png)  

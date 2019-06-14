@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61221738"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
@@ -47,7 +47,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
 >
 >Další informace najdete v tématu [vytvoření kanálu sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Přihlaste se k vaší organizaci Azure DevOps (**https:\//dev.azure.com/{your organizace} /**) a otevřete projekt, který obsahuje vaše úložiště řešení IoT Edge.
+1. Přihlaste se k vaší organizaci Azure DevOps (**https:\//dev.azure.com/{your organizace} /** ) a otevřete projekt, který obsahuje vaše úložiště řešení IoT Edge.
 
    Pro účely tohoto článku jsme vytvořili úložiště volána **IoTEdgeRepo**. Daného úložiště obsahuje **IoTEdgeSolution** který má kód pro modul s názvem **filtermodule**. 
 
@@ -77,7 +77,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
     
      ![Konfigurace fondu agentů sestavení](./media/how-to-ci-cd/configure-env.png)
 
-5. Kanál je součástí předkonfigurovaného úlohu s názvem **úlohu agenta 1**. Vyberte znaménko plus (**+**) přidáte tři úkoly do úlohy: **Azure IoT Edge** dvakrát a **publikujte artefakty sestavení** po. (Při najetí myší na název každé úlohy zobrazíte **přidat** tlačítko.)
+5. Kanál je součástí předkonfigurovaného úlohu s názvem **úlohu agenta 1**. Vyberte znaménko plus ( **+** ) přidáte tři úkoly do úlohy: **Azure IoT Edge** dvakrát a **publikujte artefakty sestavení** po. (Při najetí myší na název každé úlohy zobrazíte **přidat** tlačítko.)
 
    ![Přidat úlohu Azure IoT Edge](./media/how-to-ci-cd/add-iot-edge-task.png)
 
@@ -89,7 +89,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
 
    * **Zobrazovaný název**: Přijměte výchozí nastavení **Azure IoT Edge – bitové kopie sestavení modulu**.
    * **Akce**: Přijměte výchozí nastavení **vytváření bitové kopie modulu**. 
-   * **. soubor template.json**: Vyberte tři tečky (**...** ) a přejděte **deployment.template.json** souboru v úložišti, který obsahuje vaše řešení IoT Edge. 
+   * **. soubor template.json**: Vyberte tři tečky ( **...** ) a přejděte **deployment.template.json** souboru v úložišti, který obsahuje vaše řešení IoT Edge. 
    * **Výchozí platformu**: Vyberte příslušné platformy pro vaše moduly založené na cílové zařízení IoT Edge. 
    * **Výstupní proměnné**: Výstupní proměnné zahrnují název odkazu, který vám pomůže nakonfigurovat cestu k souboru odkud se bude generovat soubor deployment.json. Nastavte název odkazu na něco snadno zapamatovatelné jako **hrany**. 
 
@@ -98,7 +98,7 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte kanál na au
    * **Zobrazovaný název**: Zobrazovaný název se aktualizuje automaticky při změně pole akce. 
    * **Akce**: Pomocí rozevíracího seznamu vyberte **Push bitové kopie modulu**. 
    * **Typ registru kontejneru**: Vyberte typ registru kontejneru, který použijete k uložení vaší bitové kopie modulu. V závislosti na tom, jaký typ registru zvolíte, změny formuláře. Pokud se rozhodnete **Azure Container Registry**, pomocí rozevíracích seznamů vyberte předplatné Azure a název vašeho registru kontejneru. Pokud se rozhodnete **obecný Container Registry**vyberte **nový** spojení služba registru. 
-   * **. soubor template.json**: Vyberte tři tečky (**...** ) a přejděte **deployment.template.json** souboru v úložišti, který obsahuje vaše řešení IoT Edge. 
+   * **. soubor template.json**: Vyberte tři tečky ( **...** ) a přejděte **deployment.template.json** souboru v úložišti, který obsahuje vaše řešení IoT Edge. 
    * **Výchozí platformu**: Vyberte stejnou platformu jako váš obrázky vytvořené modulu.
 
    Pokud máte více registrů kontejnerů k hostování vaší bitové kopie modulu, budete muset Duplikovat tuto úlohu, vyberte jiný registr kontejneru a použijte **obejít modulu nebo modulech** v upřesňujících nastaveních obejít imagí, které nejsou pro tuto konkrétního registru.
@@ -152,7 +152,7 @@ Vytvoření nového kanálu a konfigurace první fáze pro zajištění kvality 
 
 8. Ve fázi dotazů a odpovědí, byste měli vidět výchozí **úlohu agenta**. Můžete nakonfigurovat podrobnosti o úlohu agenta, ale úloha nasazení je nezávislé na platformě, takže můžete použít buď **hostované VS2017** nebo **hostované 1604 Ubuntu** v **fondu Agentských**(nebo jiné spravované sami agenty). 
 
-9. Vyberte znaménko plus (**+**) Chcete-li přidat jeden úkol. Vyhledat a přidat **Azure IoT Edge**. 
+9. Vyberte znaménko plus ( **+** ) Chcete-li přidat jeden úkol. Vyhledat a přidat **Azure IoT Edge**. 
 
     ![Přidání úkolů pro kontrolu kvality](./media/how-to-ci-cd/add-task-qa.png)
 

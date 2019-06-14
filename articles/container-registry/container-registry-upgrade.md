@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60480307"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade registru Classic kontejneru
@@ -37,7 +37,7 @@ Spravovaný registr úložiště poskytuje následující výhody:
 
 Další podrobnosti o úložiště obrázků v ACR, naleznete v tématu [úložiště image kontejneru ve službě Azure Container Registry](container-registry-storage.md).
 
-## <a name="migration-considerations"></a>Aspekty migrace
+## <a name="migration-considerations"></a>Požadavky na migraci
 
 Když provedete upgrade registru Classic na spravovaný registr, Azure musíte zkopírovat všechny existující Image kontejneru z účtu úložiště ACR vytvořené v rámci vašeho předplatného na účet úložiště, který spravuje Azure. V závislosti na velikosti vašeho registru tento proces může trvat pár minut i několik hodin. Pro účely odhad očekávat, že čas migrace přibližně 0,5 GB za minutu.
 

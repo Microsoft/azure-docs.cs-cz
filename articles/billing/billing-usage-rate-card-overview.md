@@ -17,10 +17,10 @@ ms.date: 5/10/2018
 ms.author: erikre
 ms.custom: seodec18
 ms.openlocfilehash: 99772579fd28b0880d497abb038fb25fd2a6139e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369263"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Pomocí Azure API pro fakturaci prostřednictvím kódu programu získáte přehled o využívání služeb Azure
@@ -57,7 +57,7 @@ Tady jsou některé scénáře, které jsou možné kombinací využití a RateC
 * **Nastavení výstrah** – využít k získání odhadovaných cloudové využití a poplatky za a nastavit výstrahy na základě prostředků nebo peněžní na využití a RateCard API.
 * **Předpověď vyúčtování** – Get Odhadované využití a cloudové výdaje a použití algoritmů strojového učení k předpovědi, co bude na faktuře na konci fakturačního cyklu.
 * **Předběžné spotřeby analýza nákladů** – použijte RateCard API předpovědět, kolik vaše faktura se pro očekávané využití při přesun úloh do Azure. Pokud máte existující úlohy v jiných cloudech nebo privátních cloudů, využití s Azure můžete také namapovat sazby získat lepší odhad Azure výdajů. Tento odhad poskytuje schopnost zaměření na nabídku a porovnat a kontrast mezi typy jinou nabídku nad rámec s průběžnými platbami, jako je peněžních závazků a peněžního kreditu. Rozhraní API také nabízí možnost zobrazit rozdíly náklady podle oblasti a umožňuje provádět analýzy what-if nákladů pro vám pomůže zajistit rozhodnutí o nasazení.
-* **Analýza "co kdyby"** -
+* **Analýza "co kdyby"**  -
 
   * Můžete určit, zda je cenově výhodnější ke spouštění úloh v jiné oblasti nebo na jinou konfiguraci prostředků Azure. Náklady na prostředky Azure může lišit v závislosti na oblasti Azure, které používáte.
   * Můžete také určit, pokud jiný typ nabídky Azure poskytuje lepší rychlost v prostředku Azure.

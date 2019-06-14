@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3f53cd80fcd17241dcecb07f631277abe795946d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 9a4a95452c11993f57674bcbd16cf3ed5ea828e4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897976"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099556"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Kurz: Integrace Azure Active Directory s itslearning
 
@@ -53,7 +53,7 @@ Konfigurace integrace itslearning do služby Azure AD, budete muset přidat itsl
 
 **Chcete-li přidat itslearning z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -187,7 +187,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v itslearning jako Britta Simon. Práce s [tým podpory itslearning](mailto:support@itslearning.com) přidat uživatele na platformě itslearning. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

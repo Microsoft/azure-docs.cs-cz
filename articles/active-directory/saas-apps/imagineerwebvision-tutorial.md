@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c8bdfb7c9ae921eda2828af2c20136feaa9de6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: fd301abc9beea05df998a7e0e62ed7479c972135
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898047"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Kurz: Integrace Azure Active Directory s Imagineer WebVision
 
@@ -54,7 +54,7 @@ Konfigurace integrace Imagineer WebVision do služby Azure AD, budete muset při
 
 **Chcete-li přidat Imagineer WebVision z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -175,7 +175,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v Imagineer WebVision jako Britta Simon. Práce s [tým podpory Imagineer WebVision](mailto:support@itgny.com) přidat uživatele na platformě Imagineer WebVision. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

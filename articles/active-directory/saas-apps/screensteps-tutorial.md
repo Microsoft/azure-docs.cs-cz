@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 570f789d0f399c5ffa7535101136ab65ba58ccd5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867671"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Kurz: Integrace Azure Active Directory s ScreenSteps
 
@@ -53,7 +53,7 @@ Konfigurace integrace ScreenSteps do služby Azure AD, budete muset přidat Scre
 
 **Chcete-li přidat ScreenSteps z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -136,7 +136,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ScreenSteps, proveďte nás
 
     ![Ověřování vzdálené](./media/screensteps-tutorial/ic778524.png "vzdáleného ověřování")
 
-1. Klikněte na tlačítko **vytvořit jeden koncový bod přihlašování –**.
+1. Klikněte na tlačítko **vytvořit jeden koncový bod přihlašování –** .
 
     ![Ověřování vzdálené](./media/screensteps-tutorial/ic778525.png "vzdáleného ověřování")
 
@@ -170,7 +170,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ScreenSteps, proveďte nás
 
     f. Kopírovat **adresu URL příjemce SAML** do schránky a vložte do **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** části webu Azure Portal.
 
-    g. Vraťte se **upravit jeden koncový bod přihlašování –**.
+    g. Vraťte se **upravit jeden koncový bod přihlašování –** .
 
     h. Klikněte na tlačítko **nastavit jako výchozí pro účet** tlačítko použít tento koncový bod pro všechny uživatele, kteří se přihlásí do ScreenSteps. Případně můžete kliknout **přidat do lokality** tlačítko použít tento koncový bod pro určité weby v **ScreenSteps**.
 
@@ -229,7 +229,7 @@ V této části je povolit Britta Simon k udělení přístupu k ScreenSteps pou
 
 V této části vytvoříte uživatele v ScreenSteps jako Britta Simon. Práce s [tým podpory ScreenSteps klienta](https://www.screensteps.com/contact) přidat uživatele na platformě ScreenSteps. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

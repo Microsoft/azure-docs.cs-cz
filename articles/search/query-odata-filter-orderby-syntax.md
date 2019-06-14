@@ -1,7 +1,7 @@
 ---
-title: Syntaxe výrazů OData pro filtry a klauzule order by – klauzule – Azure Search
-description: Filtr a klauzule order by výraz syntaxe OData pro Azure Search dotazy.
-ms.date: 05/02/2019
+title: Přehled jazyka OData – Azure Search
+description: Přehled jazyka OData pro filtry, vyberte a ORDER pro Azure Search dotazy.
+ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,309 +19,217 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b1f77a9e0a3308098e5f6c699f2fc79e5c437f17
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 166c23088fe0388199ca51efde05153bb5697e38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024262"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063706"
 ---
-# <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Syntaxe výrazů OData pro filtry a klauzulemi klauzule order by ve službě Azure Search
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>Přehled jazyka OData pro `$filter`, `$orderby`, a `$select` ve službě Azure Search
 
-Služba Azure Search podporuje podmnožinou syntaxe výrazů OData pro **$filter** a **$orderby** výrazy. Filtrovací výrazy jsou vyhodnocovány během zpracování dotazu parsování, omezení hledání konkrétních polí nebo přidání kritéria shody využít při kontrolách indexu. Výrazy Order by se použijí jako krok následného zpracování v rámci sady výsledků. Filtry a výrazy order by jsou zahrnuty v žádosti o dotaz týkajícími se syntaxe OData, která je nezávislá [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) použít v syntaxi dotazu **hledání** parametr. Tento článek obsahuje referenční dokumentaci pro OData výrazy použité ve výrazech řazení a filtry.
+Služba Azure Search podporuje podmnožinou syntaxe výrazů OData pro **$filter**, **$orderby**, a **$select** výrazy. Filtrovací výrazy jsou vyhodnocovány během zpracování dotazu parsování, omezení hledání konkrétních polí nebo přidání kritéria shody využít při kontrolách indexu. Výrazy Order by se použijí jako krok následného zpracování přes sadu výsledků pro uspořádání dokumentů, které jsou vráceny. Vyberte výrazy určit pole dokumentu, která jsou součástí sady výsledků. Syntaxe tyto výrazy se liší od [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxe, která se používá v dotazu **hledání** parametr sice nějakou překrývají v syntaxi pro odkazování na pole.
 
-## <a name="filter-syntax"></a>Řiďte se syntaxí filtru
+Tento článek poskytuje přehled o výraz jazyka OData použít filtry, klauzule order by a select výrazy. Jazyk se zobrazí "zdola nahoru", spuštění s naprosto základní prvky a na jejich vytváření. Nejvyšší úrovně syntaxe pro každý parametr je věnovaný samostatný článek podle:
 
-A **$filter** výrazu můžete provést samostatná jako plně vyjádřené dotaz nebo upřesnění dotazu, který má další parametry. Následující příklady znázorňují několik klíčových scénářů. V prvním příkladu je filtr látku dotazu.
+- [Syntaxe $filter](search-query-odata-filter.md)
+- [Syntaxe $orderby](search-query-odata-orderby.md)
+- [Syntaxe $select](search-query-odata-select.md)
 
+OData výrazy v rozsahu od jednoduchých velmi složité, ale všechny sdílejí společné prvky. Většina základních částí výrazu OData ve službě Azure Search jsou:
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
-    }
-```
+- **Pole cest**, který odkazuje na konkrétní pole vašeho indexu.
+- **Konstanty**, které jsou literálové hodnoty určitého data typu.
 
-Dalším běžným případem použití je filtry zkombinovat "faceting", kde filtr snižuje styčné plochy dotaz na základě výběru uživatele řízené omezující vlastnost navigace:
+> [!NOTE]
+> Terminologie ve službě Azure Search se liší od [OData standard](https://www.odata.org/documentation/) několika způsoby. Čemu říkáme **pole** ve službě Azure Search je volána **vlastnost** v OData a podobně pro **cesta pole** oproti **cesta k vlastnosti**. **Index** obsahující **dokumenty** ve službě Azure Search je podle obecněji OData jako **sadu entit** obsahující **entity**. Terminologie pro Azure Search se používá v celém tento odkaz.
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "search": "test",
-      "facets": [ "tags", "baseRate,values:80|150|220" ],
-      "filter": "rating eq 3 and category eq 'Motel'"
-    }
-```
+## <a name="field-paths"></a>Pole cesty
 
-### <a name="filter-operators"></a>Operátory filtru  
+Následující EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiky pole cesty.
 
-- Logické operátory (a, nebo ne).  
-
-- Výrazy porovnání (`eq, ne, gt, lt, ge, le`). Při porovnávání řetězců se rozlišují malá a velká písmena.  
-
-- Konstanty z podporovaných [modelu Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) typů (EDM) (viz [podporované datové typy &#40;Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) seznam podporovaných typů). Konstanty kolekci typů nejsou podporovány.  
-
-- Odkazy na názvy polí. Pouze `filterable` pole můžete používat ve výrazech filtru.  
-
-- `any` bez parametrů. To testuje, jestli pole typu `Collection(Edm.String)` neobsahuje žádné prvky.  
-
-- `any` a `all` s podporou omezené lambda výrazu. 
-    
-  -   `any/all` jsou podporovány na pole typu `Collection(Edm.String)`. 
-    
-  -   `any` jde použít jenom s výrazy rovnosti jednoduché nebo `search.in` funkce. Jednoduché výrazy skládat z porovnání mezi službou jedno pole a hodnota literálu, třeba `Title eq 'Magna Carta'`.
-    
-  -   `all` jde použít jenom s jednoduchou nerovnost výrazy nebo `not search.in`.   
-
-- Geoprostorové funkce `geo.distance` a `geo.intersects`. `geo.distance` Funkce vrací vzdálenost v kilometrech mezi dvěma body, jeden je pole a druhý je konstantní předanou v rámci filtru. `geo.intersects` Funkce vrátí hodnotu true, pokud je daný bod v rámci dané mnohoúhelníku, kde je bod je pole a mnohoúhelník je zadána jako konstanta předanou v rámci filtru.  
-
-  Mnohoúhelník je dvojrozměrné povrch uložené jako posloupnost body definující ohraničující vyzvánět (viz následující příklad). Mnohoúhelník musí zavřou, což znamená, první a poslední bod sad musí být stejné. [Bodů mnohoúhelníku musí být v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
-
-  `geo.distance` vrací vzdálenost v kilometrech ve službě Azure Search. Tím se liší od jiných služeb, které podporují operace geoprostorové OData, které obvykle vrací vzdálenost v metrech.  
-
-  > [!NOTE]  
-  >  Při použití geo.distance ve filtru, musí porovnat vzdálenost vrácené funkcí s použitím konstantní `lt`, `le`, `gt`, nebo `ge`. Operátory `eq` a `ne` nejsou podporovány při porovnávání vzdálenosti. To je třeba správné použití geo.distance: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
-
-- `search.in` Funkce testuje, jestli daný řetězec pole je rovna jednomu z daného seznamu hodnot. To lze také v některé nebo všechny porovnat jednu hodnotu pole řetězce kolekce s daný seznam hodnot. Rovnost mezi poli a každá hodnota v seznamu je určena stejným způsobem jako pro malá a velká písmena způsobem `eq` operátor. Proto výraz jako `search.in(myfield, 'a, b, c')` je ekvivalentní `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, s tím rozdílem, že `search.in` předá mnohem lepší výkon. 
-
-   První parametr `search.in` funkce je odkaz na pole řetězce (nebo proměnnou rozsahu přes kolekce pole řetězce v případě, kde `search.in` je použit uvnitř `any` nebo `all` výraz). 
-  
-   Druhý parametr je řetězec obsahující seznam hodnot, oddělené mezerami nebo čárkami. 
-  
-   Třetí parametr je řetězec, ve kterém každý znak řetězci, nebo podmnožina tento řetězec je považován za oddělovačem při analýze seznamu hodnot ve druhém parametru. Pokud je potřeba použít oddělovače kromě mezery a čárky, protože hodnoty obsahovat tyto znaky, můžete zadat volitelný třetí parametr pro `search.in`. 
-
-  > [!NOTE]   
-  > Některé scénáře vyžadují porovnání pole pro velký počet konstantní hodnoty. Implementace oříznutí zabezpečení pomocí filtrů například může vyžadovat porovnání pole ID dokumentu na seznam ID, ke kterým je žádajícího uživatele udělit oprávnění ke čtení. Ve scénářích takto důrazně doporučujeme používat `search.in` funkci místo složitější disjunkce rovnosti výrazů. Například použít `search.in(Id, '123, 456, ...')` místo `Id eq 123 or Id eq 456 or ....`. 
-  >
-  > Pokud používáte `search.in`, můžete očekávat, že když druhý parametr obsahuje seznam stovky nebo tisíce hodnoty doby odezvy sekunda. Všimněte si, že není žádná explicitní omezený počet položek, které můžete předat `search.in`, i když jsou dál omezené na žádost o maximální velikosti. Však latence bude růst počet hodnot.
-
-- `search.ismatch` Funkce vyhodnocuje vyhledávací dotaz jako součást výrazu filtru. V sadě výsledků se vrátí dokumenty, které odpovídají vyhledávacímu dotazu. K dispozici jsou následující přetížení této funkce:
-  - `search.ismatch(search)`
-  - `search.ismatch(search, searchFields)`
-  - `search.ismatch(search, searchFields, queryType, searchMode)`
-
-  kde: 
-  
-  - `search`: vyhledávací dotaz (buď [jednoduché](query-simple-syntax.md) nebo [úplné](query-lucene-syntax.md) syntaxe dotazu). 
-  - `queryType`: "jednoduchý" nebo "úplné", výchozí hodnota je "jednoduchý". Určuje, jaký jazyk dotazu byla použita v `search` parametru.
-  - `searchFields`: čárkami oddělený seznam prohledávatelná pole pro hledání, výchozí hodnota je všechna prohledatelná pole v indexu.    
-  - `searchMode`: "libovolné" nebo "vše", výchozí hodnota je "žádný". Určuje, zda některé nebo všechny hledané termíny musí odpovídat k sečtení dokument jako shoda.
-
-  Všechny výše uvedené parametry jsou ekvivalentní odpovídající [parametry požadavku hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-
-- `search.ismatchscoring` Funkce, jako je třeba `search.ismatch` fungovat, vrátí hodnotu true pro dokumenty, které odpovídají vyhledávacímu dotazu předaného jako parametr. Rozdíl mezi nimi je, že skóre relevance odpovídajících dokumentů `search.ismatchscoring` dotazu přispěje k celkové skóre dokument, zatímco v případě `search.ismatch`, skóre dokumentu se nezmění. Následující přetížení této funkce je k dispozici s parametry, které jsou stejné jako `search.ismatch`:
-  - `search.ismatchscoring(search)`
-  - `search.ismatchscoring(search, searchFields)`
-  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
-
-  `search.ismatch` a `search.ismatchscoring` funkce jsou plně ortogonální sebou a zbytek algebraický filtru. To znamená, že obě funkce je možné ve stejném výrazu filtru. 
-
-### <a name="geospatial-queries-and-polygons-spanning-the-180th-meridian"></a>Geoprostorové dotazy a pokrývání uzlů 180th poledníků mnohoúhelníky  
- Pro mnoho geoprostorové dotazy knihovny formulování dotazu, který zahrnuje 180th poledníků (téměř datová hranice) je buď off-limits nebo vyžaduje alternativní řešení, jako je například rozdělení na dva na obou stranách poledníky mnohoúhelníku.  
-
- Ve službě Azure Search, geoprostorové dotazy, které obsahují zeměpisnou délku 180 stupňů bude fungovat podle očekávání, pokud je obdélníkový tvar dotazu a vaše souřadnice zarovnají k rozložení mřížky podél zeměpisnou šířku a délku (například `geo.intersects(location, geography'POLYGON((179 65,179 66,-179 66,-179 65,179 65))'`). V opačném případě pro neobdélníkových nebo nezarovnaných tvary, zvažte rozdělení mnohoúhelníku přístup.  
-
-<a name="bkmk_limits"></a>
-
-## <a name="filter-size-limitations"></a>Omezení velikosti filtru 
-
- Existují omezení velikosti a složitosti filtru výrazů, které můžete odeslat do služby Azure Search. Omezení jsou zhruba podle počtu klauzule ve výrazu filtru. Základním pravidlem je, že pokud máte stovky klauzule vám hrozí, že narazíte omezení. Doporučujeme, abyste návrhu vaší aplikace tak negeneruje filtry neomezené velikosti.  
-
-
-## <a name="filter-examples"></a>Příklady filtrů  
-
- Najdete všechny hotels základní sazba menší než 200 USD, který jsou hodnoceny dosahovalo nebo přesahovalo 4:  
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200.0 and rating ge 4
+field_path ::= identifier('/'identifier)*
+
+identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
- Najdete všechny hotels než "Roach Motel", které mají byla renovovanou od 2010:  
+Diagramu interaktivní syntaxe je také k dispozici:
+
+> [!div class="nextstepaction"]
+> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+
+> [!NOTE]
+> Zobrazit [referenční příručka syntaxe výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md) pro dokončení EBNF.
+
+Cesta pole se skládá z jedné nebo více **identifikátory** odděleny lomítky. Každý identifikátor je sekvence znaků, které musí začínat ASCII písmenem nebo podtržítkem a obsahovat jen ASCII písmena, číslice a podtržítka. Může být písmena, velká nebo malá.
+
+Identifikátor mohou odkazovat na název pole, nebo **proměnnou rozsahu** v kontextu [výrazu kolekce](search-query-odata-collection-operators.md) (`any` nebo `all`) ve filtru. Proměnná rozsahu je jako proměnnou smyčky, který reprezentuje aktuálního prvku kolekce. Pro komplexní kolekce Tato proměnná představuje objekt, což je důvod, proč můžete použít pole cesty k odkazování na dílčí pole proměnné. To je obdobou zápisu s tečkou v řadě programovacích jazyků.
+
+V následující tabulce jsou uvedeny příklady pole cest:
+
+| Cesta pole | Popis |
+| --- | --- |
+| `HotelName` | Odkazuje na nejvyšší úrovni pole indexu |
+| `Address/City` | Odkazuje `City` dílčí pole komplexní pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu |
+| `Rooms/Type` | Odkazuje `Type` dílčí pole komplexní kolekci pole v indexu; `Rooms` je typu `Collection(Edm.ComplexType)` v tomto příkladu |
+| `Stores/Address/Country` | Odkazuje `Country` dílčí pole `Address` dílčí pole komplexní kolekci pole v indexu; `Stores` je typu `Collection(Edm.ComplexType)` a `Address` je typu `Edm.ComplexType` v tomto příkladu |
+| `room/Type` | Odkazuje `Type` dílčí pole `room` proměnnou rozsahu, například ve výrazu filtru `Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Odkazuje `Country` dílčí pole `Address` dílčí pole `store` proměnnou rozsahu, například ve výrazu filtru `Stores/any(store: store/Address/Country eq 'Canada')` |
+
+Význam cesta pole se liší v závislosti na kontextu. Filtry, odkazuje cesta pole na hodnotu *jednu instanci* pole v aktuálním dokumentu. V jiných kontextech například **$orderby**, **$select**, nebo v [fielded vyhledávání v celé syntaxe Lucene](query-lucene-syntax.md#bkmk_fields), pole Cesta odkazuje na pole samotného. Tento rozdíl má některé důsledky pro použití pole cesty ve filtrech.
+
+Vezměte v úvahu cesta pole `Address/City`. Ve filtru to se vztahuje na jeden Město pro aktuální dokument, jako je "San Francisco". Naproti tomu `Rooms/Type` odkazuje `Type` dílčí pole pro mnoho místnosti (např. "standard" pro první místnost "deluxe" pro druhý místnosti a tak dále). Protože `Rooms/Type` neodkazuje *jednu instanci* dílčí pole `Type`, nelze použít přímo ve filtru. Místo toho pokud chcete filtrovat podle typu místnosti, použijte [výraz lambda](search-query-odata-collection-operators.md) s proměnnou rozsahu, například takto:
+
+    Rooms/any(room: room/Type eq 'deluxe')
+
+V tomto příkladu proměnná rozsahu `room` se zobrazí v `room/Type` cesta pole. Tímto způsobem `room/Type` odkazuje na typ aktuální místnosti v aktuálním dokumentu. Toto je jedna instance `Type` dílčí pole, takže ho můžete použít přímo ve filtru.
+
+### <a name="using-field-paths"></a>Pomocí pole cesty
+
+Pole cesty se používají v mnoha parametry [API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Následující tabulka uvádí všechna místa, kde lze použít, a navíc nějaká omezení jejich využití:
+
+| Rozhraní API | Název parametru | Omezení |
+| --- | --- | --- |
+| [Vytvoření](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizace](https://docs.microsoft.com/rest/api/searchservice/update-index) indexu | `suggesters/sourceFields` | Žádný |
+| [Vytvoření](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizace](https://docs.microsoft.com/rest/api/searchservice/update-index) indexu | `scoringProfiles/text/weights` | Mohou odkazovat pouze na **prohledávatelné** pole |
+| [Vytvoření](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizace](https://docs.microsoft.com/rest/api/searchservice/update-index) indexu | `scoringProfiles/functions/fieldName` | Mohou odkazovat pouze na **filterable** pole |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search` Když `queryType` je `full` | Mohou odkazovat pouze na **prohledávatelné** pole |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Mohou odkazovat pouze na **facetable** pole |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Mohou odkazovat pouze na **prohledávatelné** pole |
+| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Mohou odkazovat pouze na **prohledávatelné** pole |
+| [Navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) a [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Mohou odkazovat pouze na pole, které jsou součástí [modulu pro návrhy](index-add-suggesters.md) |
+| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions), a [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Mohou odkazovat pouze na **filterable** pole |
+| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) a [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Mohou odkazovat pouze na **seřaditelné** pole |
+| [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions), a [vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Mohou odkazovat pouze na **retrievable** pole |
+
+## <a name="constants"></a>Konstanty
+
+Konstanty v OData se jednu hodnotu literálu danou [modelu Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) typ (EDM). Zobrazit [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) seznam podporovaných typů ve službě Azure Search. Konstanty kolekci typů nejsou podporovány.
+
+V následující tabulce jsou uvedeny příklady konstanty pro jednotlivé typy dat podporované službou Azure Search:
+
+| Typ dat | Příklad konstanty |
+| --- | --- |
+| `Edm.Boolean` | `true`, `false` |
+| `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
+| `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
+| `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
+| `Edm.Int32` | `123`, `-456` |
+| `Edm.Int64` | `283032927235` |
+| `Edm.String` | `'hello'` |
+
+Následující EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro většinu konstanty je znázorněno výše uvedené tabulky. Gramatika pro geoprostorové typy lze nalézt v [OData geoprostorové funkce ve službě Azure Search](search-query-odata-geo-spatial-functions.md).
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
+constant ::=
+    string_literal
+    | date_time_offset_literal
+    | integer_literal
+    | float_literal
+    | boolean_literal
+    | 'null'
+
+string_literal ::= "'"([^'] | "''")*"'"
+
+date_time_offset_literal ::= date_part'T'time_part time_zone
+
+date_part ::= year'-'month'-'day
+
+time_part ::= hour':'minute(':'second('.'fractional_seconds)?)?
+
+zero_to_fifty_nine ::= [0-5]digit
+
+digit ::= [0-9]
+
+year ::= digit digit digit digit
+
+month ::= '0'[1-9] | '1'[0-2]
+
+day ::= '0'[1-9] | [1-2]digit | '3'[0-1]
+
+hour ::= [0-1]digit | '2'[0-3]
+
+minute ::= zero_to_fifty_nine
+
+second ::= zero_to_fifty_nine
+
+fractional_seconds ::= integer_literal
+
+time_zone ::= 'Z' | sign hour':'minute
+
+sign ::= '+' | '-'
+
+/* In practice integer literals are limited in length to the precision of
+the corresponding EDM data type. */
+integer_literal ::= digit+
+
+float_literal ::=
+    sign? whole_part fractional_part? exponent?
+    | 'NaN'
+    | '-INF'
+    | 'INF'
+
+whole_part ::= integer_literal
+
+fractional_part ::= '.'integer_literal
+
+exponent ::= 'e' sign? integer_literal
+
+boolean_literal ::= 'true' | 'false'
 ```
 
- Najdete všechny hotels základní sazba menší než 200 USD, které mají byla renovovanou od 2010 s datetime literál, který obsahuje informace o časovém pásmu pro Tichomořský běžný čas:  
+Diagramu interaktivní syntaxe je také k dispozici:
+
+> [!div class="nextstepaction"]
+> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+
+> [!NOTE]
+> Zobrazit [referenční příručka syntaxe výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md) pro dokončení EBNF.
+
+## <a name="building-expressions-from-field-paths-and-constants"></a>Vytváření výrazů od a konstanty pole cesty
+
+Pole cest a konstanty jsou základní součástí výrazu OData, ale tam už úplné výrazy sami. Ve skutečnosti **$select** parametr ve službě Azure Search není nic ale čárkou oddělený seznam cest pole a **$orderby** není mnohem složitější než **$select**. Pokud máte náhodou pole typu `Edm.Boolean` v indexu, lze dokonce psát filtr, který má hodnotu nothing, ale cesta tohoto pole. Konstanty `true` a `false` jsou rovněž platné filtry.
+
+Ve většině případů budete však mnohem složitější výrazy, které odkazují na více než jedno pole a konstanty. Tyto výrazy jsou sestaveny různými způsoby v závislosti na parametr.
+
+Následující EBNF ([Extended Backus-Naur – formulář](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiky **$filter**, **$orderby**, a **$select** parametry. Tyto jsou vytvářeny z jednodušší výrazy, které odkazují na pole cesty a konstanty:
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
+filter_expression ::= boolean_expression
+
+order_by_expression ::= order_by_clause(',' order_by_clause)*
+
+select_expression ::= '*' | field_path(',' field_path)*
 ```
 
- Najdete všechny hotely, které mají parkovací zahrnuté a neumožňují kouření:  
+Diagramu interaktivní syntaxe je také k dispozici:
 
-```
-$filter=parkingIncluded and not smokingAllowed
-```
+> [!div class="nextstepaction"]
+> [Diagram syntaxe OData pro službu Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
- \- OR -  
+> [!NOTE]
+> Zobrazit [referenční příručka syntaxe výrazů OData pro službu Azure Search](search-query-odata-syntax-reference.md) pro dokončení EBNF.
 
-```
-$filter=parkingIncluded eq true and smokingAllowed eq false
-```
+**$Orderby** a **$select** parametry jsou obě čárkami oddělený seznam výrazů jednodušší. **$Filter** parametr je logický výraz, který se skládá z jednodušší dílčích výrazů. Tato dílčí výrazy jsou kombinované pomocí logických operátorů, například [ `and`, `or`, a `not` ](search-query-odata-logical-operators.md), operátory porovnání, jako například [ `eq`, `lt`, `gt`, a tak dále](search-query-odata-comparison-operators.md)a kolekce operátory, jako například [ `any` a `all` ](search-query-odata-collection-operators.md).
 
- Najdete všechny hotely, které jsou luxusní nebo parkovací patří a mají hodnocení 5:  
+**$Filter**, **$orderby**, a **$select** parametry jsou prozkoumat podrobněji v následujících článcích:
 
-```
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
-```
-
- Najdete všechny hotely se značkou "Wi-Fi" (kde každý hotelu má značky, které jsou uloženy v poli Collection(Edm.String)):  
-
-```
-$filter=tags/any(t: t eq 'wifi')
-```
-
- Najdete všechny hotels bez značky "motel":  
-
-```
-$filter=tags/all(t: t ne 'motel')
-```
-
- Najdete všechny hotely se žádné značky:  
-
-```
-$filter=tags/any()
-```
-
-Najdete všechny hotely, které nemají značky:  
-
-```
-$filter=not tags/any()
-```
-
-
- Najdete všechny hotely v rámci 10 kilometrů bodu daného odkazu (kde umístění je pole typu Edm.GeographyPoint):  
-
-```
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
-```
-
- Najdete všechny hotely v rámci daného zobrazení popsány mnohoúhelníku (kde umístění je pole typu Edm.GeographyPoint). Všimněte si, že je uzavřena mnohoúhelníku (první a poslední bod sad musí být stejná) a [body musí být uvedeny v pořadí proti směru hodinových ručiček](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
-
-```
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
-```
-
- Najít všechny hotely, které buď nemají žádnou hodnotu v poli "Popis", nebo explicitně je hodnota nastavena na hodnotu null:  
-
-```
-$filter=description eq null
-```
-
-Najdete všechny hotels s názvem rovno "Roach motel" nebo "Rozpočtu hotel"). Fráze obsahovat mezery, která je výchozím oddělovačem. Můžete specicfy alternativní oddělovač v jednoduchých uvozovkách jako třetí parametr řetězce:  
-
-```
-$filter=search.in(name, 'Roach motel,Budget hotel', ',')
-```
-
-Najít všechny hotels s názvem rovná buď Roach motel "nebo rozpočtu hotelu oddělené" | "):  
-
-```
-$filter=search.in(name, 'Roach motel|Budget hotel', '|')
-```
-
-Nalezení hotelů všechny značky wifi nebo "fondu":  
-
-```
-$filter=tags/any(t: search.in(t, 'wifi, pool'))
-```
-
-Najdete shoda s frází v rámci kolekce, jako je například "vyhřívaný ručníků stojany" nebo "fén zahrnuté" značky. 
-
-```
-$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
-```
-
-Najdete všechny hotels bez značky "motel" ani "kabině":  
-
-```
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))
-```
-
-Najdete dokumenty obsahující slovo "waterfront". Tento dotaz filtru je stejný jako [požadavek hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront`.
-
-```
-$filter=search.ismatchscoring('waterfront')
-```
-
-Hledání dokumentů s slovo "hostel" a hodnocení větší nebo rovna 4 nebo dokumenty obsahující slovo "motel" a hodnocení roven hodnotě 5. Všimněte si, že tuto žádost nelze vyjádřen bez `search.ismatchscoring` funkce.
-
-```
-$filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
-```
-
-Hledání dokumentů bez slovo "luxusní".
-
-```
-$filter=not search.ismatch('luxury') 
-```
-
-Hledání dokumentů pomocí fráze "oceánu zobrazení" nebo hodnocení rovna 5. `search.ismatchscoring` Dotazu se provede pouze s poli `hotelName` a `description`.
-Všimněte si, dokumenty, které odpovídají druhé klauzule disjunkce vrátí se příliš – hotels s hodnocením rovna 5. Aby bylo jasné těchto dokumentech nebyly shodují s některým z Vyhodnocená části výrazu, vrátí se skóre rovna hodnotě nula.
-
-```
-$filter=search.ismatchscoring('"ocean view"', 'description,hotelName') or rating eq 5
-```
-
-Hledání dokumentů, kde jsou podmínky "hotel" a "letiště" v rámci 5 slov od sebe navzájem v popisu hotelu a kde kouření nepovoluje. Tento dotaz používá [úplný jazyk dotazu Lucene](query-lucene-syntax.md).
-
-```
-$filter=search.ismatch('"hotel airport"~5', 'description', 'full', 'any') and not smokingAllowed 
-```
-
-## <a name="order-by-syntax"></a>Syntaxe klauzule ORDER by
-
-**$Orderby** parametr přijímá čárkami oddělený seznam až 32 výrazů formuláře `sort-criteria [asc|desc]`. Kritéria řazení může být název `sortable` pole nebo volání na buď `geo.distance` nebo `search.score` funkce. Můžete použít buď `asc` nebo `desc` explicitně zadávat pořadí řazení. Výchozí pořadí je vzestupně.
-
-Pokud máte více dokumentů stejná kritéria řazení a `search.score` nepoužívá – funkce (např. Pokud můžete seřadit podle číselná `rating` pole a dokumenty tři všechny mají hodnocení 4), vazby nebudou fungovat podle dokumentu skóre v sestupném pořadí. Pokud dokument skóre, které se shodují (například, když není žádný dotaz fulltextové vyhledávání v požadavku je zadaná), pak relativní řazení vázané dokumentů je neurčitý.
- 
-Můžete zadat více kritéria řazení. Pořadí výrazy Určuje konečné řazení. Například, chcete-li seřadit sestupně podle skóre, za nímž následuje hodnocení, syntaxe by `$orderby=search.score() desc,rating desc`.
-
-Syntaxe pro `geo.distance` v **$orderby** je stejný jako v **$filter**. Při použití `geo.distance` v **$orderby**, ke kterému se vztahuje pole musí být typu `Edm.GeographyPoint` a musí být také `sortable`.  
-
-Syntaxe pro `search.score` v **$orderby** je `search.score()`. Funkce `search.score` nepřijímá žádné parametry.  
- 
-
-## <a name="order-by-examples"></a>Příklady klauzule ORDER by
-
-Seřadit vzestupně podle základní sazba hotels:
-
-```
-$orderby=baseRate asc
-```
-
-Seřadit sestupně podle hodnocení, pak vzestupně podle základní sazba hotels (mějte na paměti, že ascending je výchozí hodnota):
-
-```
-$orderby=rating desc,baseRate
-```
-
-Seřadit sestupně podle hodnocení, pak vzestupně podle vzdálenosti od dané souřadnice hotels:
-
-```
-$orderby=rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-
-Seřadit v sestupném pořadí tak, že search.score a hodnocení a potom ve vzestupném pořadí podle vzdálenosti od dané souřadnice tak, aby mezi dva hotels s identické hodnocení na ten nejbližší je uvedená jako první hotels:
-
-```
-$orderby=search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-<a name="bkmk_unsupported"></a>
-
-## <a name="unsupported-odata-syntax"></a>Nepodporovaná syntaxe OData
-
--   Aritmetické výrazy  
-
--   Funkce (s výjimkou vzdálenost a protíná geoprostorové funkce)  
-
--   `any/all` pomocí libovolného lambda výrazů  
+- [Syntaxe OData $filter ve službě Azure Search](search-query-odata-filter.md)
+- [Syntaxe OData $orderby ve službě Azure Search](search-query-odata-orderby.md)
+- [Syntaxe OData $select ve službě Azure Search](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech  
 
-+ [Fasetová navigace ve službě Azure Search](search-faceted-navigation.md) 
-+ [Filtry ve službě Azure Search](search-filters.md) 
-+ [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
-+ [Syntaxe dotazů Lucene](query-lucene-syntax.md)
-+ [Jednoduchá syntaxe dotazů ve službě Azure Search](query-simple-syntax.md)   
+- [Fasetová navigace ve službě Azure Search](search-faceted-navigation.md)
+- [Filtry ve službě Azure Search](search-filters.md)
+- [Hledání dokumentů &#40;rozhraní REST API služby Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Syntaxe dotazů Lucene](query-lucene-syntax.md)
+- [Jednoduchá syntaxe dotazů ve službě Azure Search](query-simple-syntax.md)

@@ -1,5 +1,5 @@
 ---
-title: Kurz – registr aplikaci – Azure Active Directory B2C | Dokumentace Microsoftu
+title: Kurz – registr aplikaci – Azure Active Directory B2C
 description: Informace o postupu registrace webové aplikace v Azure Active Directory B2C s využitím webu Azure portal.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 380fc1633f94f2365162c1a4e4087c9113e5f663
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 5c46d3153bdc5768836bce198af115f82e8469f3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66511944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056282"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Kurz: Registrace aplikace v Azure Active Directory B2C
 
@@ -40,7 +40,9 @@ Pokud jste ještě nevytvořili vlastní [Tenanta Azure AD B2C](tutorial-create-
 3. Vyberte **aplikací**a pak vyberte **přidat**.
 4. Zadejte název aplikace. Například *webapp1*.
 5. Pro **zahrnout webovou aplikaci / webové rozhraní API** a **povolit implicitní tok**vyberte **Ano**.
-6. Pro **adresy URL odpovědi**, zadejte koncový bod kam by měl Azure AD B2C vrátí všechny tokeny, které vaše aplikace požaduje. Například můžete nastavit ji pro naslouchání lokálně na `https://localhost:44316` Pokud ještě neznáte číslo portu, můžete zadat hodnotu zástupného symbolu a později změnit. Pro účely testování můžete ji nastavit `https://jwt.ms`, který se zobrazí obsah tokenu pro kontrolu. Pro účely tohoto kurzu, nastavte ho na `https://jwt.ms`. 
+6. Pro **adresy URL odpovědi**, zadejte koncový bod kam by měl Azure AD B2C vrátí všechny tokeny, které vaše aplikace požaduje. Například, můžete ji nastavit tak, aby naslouchala místně na `https://localhost:44316`. Pokud ještě neznáte číslo portu, můžete zadat hodnotu zástupného symbolu a později změnit.
+
+    Pro testovací účely, stejně jako v tomto kurzu můžete ho nastavit `https://jwt.ms` zobrazuje obsah tokenu pro kontrolu. Pro účely tohoto kurzu nastavte **adresy URL odpovědi** k `https://jwt.ms`.
 
     Odpověď URL musí začínat schématem `https`, a všechny odpovědi, adresa URL musí sdílet jednu doménu DNS. Například, pokud aplikace obsahuje adresu URL odpovědi z `https://login.contoso.com`, jako je tato adresa URL můžete přidat k němu `https://login.contoso.com/new`. Nebo mohou odkazovat na subdoménu DNS `login.contoso.com`, jako například `https://new.login.contoso.com`. Pokud chcete, aby byla aplikace s `login-east.contoso.com` a `login-west.contoso.com` podle adresy URL odpovědí, je nutné přidat tyto adresy URL odpovědi v tomto pořadí: `https://contoso.com`, `https://login-east.contoso.com`, `https://login-west.contoso.com`. Druhé dvě můžete přidat, protože jsou subdoménami první adresy URL odpovědi, `contoso.com`.
 
@@ -50,8 +52,9 @@ Pokud jste ještě nevytvořili vlastní [Tenanta Azure AD B2C](tutorial-create-
 
 Pokud vaše aplikace vymění kód pro token, musíte vytvořit tajný klíč aplikace.
 
-1. Vyberte **klíče** a potom klikněte na tlačítko **vygenerovat klíč**.
-2. Vyberte **Uložit** zobrazíte klíče. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
+1. V **Azure AD B2C - aplikací** vyberte aplikaci, kterou jste vytvořili, například *webapp1*.
+2. Vyberte **klíče** a pak vyberte **vygenerovat klíč**.
+3. Vyberte **Uložit** zobrazíte klíče. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -61,5 +64,7 @@ V tomto článku jste zjistili, jak:
 > * Registrace webové aplikace
 > * Vytvoření tajného klíče klienta
 
+Dále přečtěte si, jak vytvářet toky uživatelů umožňuje uživatelům zaregistrovat, přihlaste se a spravují své profily.
+
 > [!div class="nextstepaction"]
-> [Vytvořit toky uživatelů v Azure Active Directory B2C](tutorial-create-user-flows.md)
+> [Vytvořit toky uživatelů v Azure Active Directory B2C >](tutorial-create-user-flows.md)

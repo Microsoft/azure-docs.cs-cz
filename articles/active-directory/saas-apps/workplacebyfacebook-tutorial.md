@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27173c8beeecf2be43e80f59df8907952734c06b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: db14df2dc24afbc8f7982d8d1e4e6429c1c4b1ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905226"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Kurz: Integrace Azure Active Directory s síti na pracovišti ve službě Facebook.
 
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat integrace pracoviště pomocí Facebooku do služby 
 
 **K síti na pracovišti ve službě Facebook přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -174,7 +174,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s síti na pracovišti ve slu
 
     i. Všichni uživatelé používající pracovní plocha nyní se zobrazí přihlašovací stránku Azure AD pro ověřování.
 
-4. **Odhlášení přesměrovat SAML (volitelné)** -
+4. **Odhlášení přesměrovat SAML (volitelné)**  -
 
     Můžete volitelně nakonfigurovat SAML odhlašovací adresa Url, který můžete použít tak, aby odkazoval na stránku služby Azure AD odhlášení. Když toto nastavení povolené a nakonfigurované, uživatel již přesměruje k odhlašovací stránce síti na pracovišti. Místo toho uživatel bude přesměrován na adresu url, která byla přidána do nastavení přesměrování odhlašování SAML.
 
@@ -247,7 +247,7 @@ Neexistuje žádná akce vám v této části. Pokud uživatel neexistuje v sít
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [pracoviště týmem podpory klienta sítě Facebook](https://workplace.fb.com/faq/)
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

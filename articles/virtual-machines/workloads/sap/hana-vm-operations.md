@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/05/2019
+ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 156bb4cbf43dc71627f9db785dba574f25139285
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: b1591f4f1e96bbb2bffb80a2c652963faa5dca5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077644"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
@@ -66,6 +66,11 @@ Nasazení virtuálních počítačů v Azure s použitím:
 - Azure CLI.
 
 Také můžete nasadit kompletní instalované platformy SAP HANA ve službě Azure VM prostřednictvím [SAP Cloudovou platformu](https://cal.sap.com/). Proces instalace je popsána v [nasadit řešení SAP S/4HANA nebo BW/4HANA v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) nebo s automatizací vydané [tady](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
+
+>[!IMPORTANT]
+> Chcete-li použít M208xx_v2 virtuální počítače, musíte mít na paměti, vyberte image operačního systému SUSE Linux z Galerie imagí virtuálních počítačů Azure. Pokud chcete zobrazit podrobné informace najdete v článku [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series). Red Hat není dosud podporována pro použití HANA na Mv2 řady virtuálních počítačů. Aktuální plánování je k poskytování podpory pro verze Red Hat systémem řadu virtuálních počítačů Mv2 v CY2019 s/4 HANA 
+> 
+
 
 ### <a name="storage-configuration-for-sap-hana"></a>Konfigurace úložiště pro SAP HANA
 Konfigurace úložiště a typy úložiště, který se má použít se SAP HANA v Azure, najdete dokumentu [konfigurace úložiště virtuálních počítačů SAP HANA Azure](./hana-vm-operations-storage.md)

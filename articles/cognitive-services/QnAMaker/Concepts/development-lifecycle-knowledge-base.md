@@ -12,10 +12,10 @@ ms.date: 04/16/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 3f78b8a2566137d596f4ab3f083e1d14289365c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61379244"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Životní cyklus znalostní báze Knowledge base v nástroje QnA Maker
@@ -31,7 +31,7 @@ Koncový bod znalostní báze knowledge base (KB) nástroje QnA Maker poskytuje 
 Znalostní báze připravený k testování, jakmile se vyplní s obsahem, buď pomocí redakčních úprav nebo Automatická extrakce. Interaktivní testování lze provést na portálu QnA Maker prostřednictvím **Test** panelu zadáním běžné dotazy na uživatele a ověření, že odpovědi vrátila správnou odpověď a dostatečné skóre spolehlivosti. 
 
 * **Chcete-li vyřešit skóre, které se s nízkou spolehlivostí**: Přidat alternativní otázky. 
-* **Když dotaz nesprávně vrátí [výchozí odpověď](confidence-score.md#change-default-answer)**: Přidat nové odpovědi na otázku správná. 
+* **Když dotaz nesprávně vrátí [výchozí odpověď](confidence-score.md#change-default-answer)** : Přidat nové odpovědi na otázku správná. 
 
 Tato těsné smyčce test aktualizace pokračuje, dokud budete spokojeni s výsledky. Zjistěte, jak [testování znalostní báze](../How-To/test-knowledge-base.md).
 

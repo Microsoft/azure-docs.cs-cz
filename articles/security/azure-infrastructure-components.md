@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587196"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Součásti systému Azure informace a hranice
@@ -89,7 +89,7 @@ Týmy služeb jsou:
 ## <a name="types-of-users"></a>Typy uživatelů
 Zaměstnanci (nebo dodavatele) společnosti Microsoft jsou považovány za interní uživatele. Všichni ostatní uživatelé jsou považovány za externí uživatele. Všichni Azure interní uživatelé mají stav jejich zaměstnance zařazený do kategorie s úrovní citlivosti, který definuje přístup k zákaznickým datům (přístup nebo žádný přístup). Oprávnění uživatele pro Azure (povolení oprávnění po provedení ověřování) jsou popsány v následující tabulce:
 
-| Role | Interní nebo externí | Úroveň citlivosti | Autorizované oprávnění a funkce prováděné | Typ přístupu
+| Role | Interní nebo externí | Úroveň citlivosti | Autorizované oprávnění a funkce prováděné | Typ přístupu.
 | --- | --- | --- | --- | --- |
 | Technika datové centrum Azure | Interní | Žádný přístup k zákaznickým datům | Spravujte fyzického zabezpečení místním prostředí. Chování hlídky do a z datového centra a monitorovat všechny vstupní body. Přepravu do proměnné a z datového centra určité-vymazat pracovníky, kteří poskytují obecné služby (například jídlo nebo čištění) nebo IT práce v rámci datového centra. Provádění rutiny monitorování a údržby síťového hardwaru. Provedení incidentu správy a typu break-fix práce pomocí různých nástrojů. Provádění rutiny monitorování a údržby fyzického hardwaru v datových centrech. Přístup k prostředí na vyžádání z vlastníkům nemovitostí. Dokáže provádět forenzní šetření, protokolování incidentů sestavy a vyžadují povinné zabezpečení školení a zásad požadavků. Provozní vlastnictví a údržby důležité zabezpečení nástrojů, jako je například skenery a shromažďování protokolů. | Trvalý přístup k prostředí. |
 | Azure incidentu třídění (rychlá reakce engineers) | Interní | Přístup k zákaznickým datům | Spravujte komunikaci mezi MCIO, podpory a vývojové týmy. Třídění platformu, incidentů, problémů s nasazením a žádosti o služby. | Just-in-time přístup k prostředí, s omezenou trvalého přístupu k systémům jiných zákazníků. |

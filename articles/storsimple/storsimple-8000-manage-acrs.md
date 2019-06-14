@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693239"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Použití služby StorSimple Manager pro správu záznamy řízení přístupu
 
@@ -59,7 +59,7 @@ Proveďte následující kroky pro přidání ACR.
 
     1. Zadejte název vaší služby ACR.
     
-    2. Zadejte název IQN hostitele Windows serveru v části **iSCSI Initiator název (IQN)**.
+    2. Zadejte název IQN hostitele Windows serveru v části **iSCSI Initiator název (IQN)** .
 
     3. Klikněte na tlačítko **přidat** vytvořit ACR.
 

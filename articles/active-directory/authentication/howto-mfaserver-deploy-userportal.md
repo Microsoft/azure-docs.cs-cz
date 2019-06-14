@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358568"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056044"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -27,6 +27,9 @@ Uživatelé se k portálu User Portal přihlašují svým normálním uživatels
 Správce portálu User Portal je možné nastavit a udělit jim oprávnění přidávat nové uživatele a aktualizovat existující uživatele.
 
 V závislosti na vašem prostředí můžete chtít portál User Portal nasadit na stejný server jako Azure Multi-Factor Authentication Server, nebo na jiný server s přístupem k internetu.
+
+> [!IMPORTANT]
+> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
 
 ![MFA Server User Portal na přihlašovací stránce portálu](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -99,9 +102,9 @@ Instalace portálu uživatele na jiném serveru, než je Azure Multi-Factor Auth
 4. Přejděte do umístění **C:\inetpub\wwwroot\MultiFactorAuth**.
 5. V Poznámkovém bloku upravte soubor Web.Config.
 
-    * Vyhledejte klíč **"USE_WEB_SERVICE_SDK"** a změňte **value="false"** na **value="true"**.
-    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"**, kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
-    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"**, kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
+    * Vyhledejte klíč **"USE_WEB_SERVICE_SDK"** a změňte **value="false"** na **value="true"** .
+    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** a změňte **value=""** na **value="DOMÉNA\Uživatel"** , kde DOMÉNA\Uživatel je účet služby, který je součástí skupiny PhoneFactor Admins.
+    * Vyhledejte klíč **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** a změňte **value=""** na **value="Heslo"** , kde Heslo je heslo pro účet úložiště zadaný na předchozím řádku.
     * Vyhledejte hodnotu **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** a změňte tuto zástupnou adresu URL na adresu URL sady SDK webové služby, kterou jsme nainstalovali v kroku 2.
     * Uložte soubor Web.Config a zavřete Poznámkový blok.
 

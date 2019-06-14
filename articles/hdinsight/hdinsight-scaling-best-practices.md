@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: eb68421c4f62d94eedf266a0c34a0e276eacc4a6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/10/2019
+ms.openlocfilehash: b85277a4238351b6448c2cf29676ae3d8c118385
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479276"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077206"
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
@@ -21,6 +21,9 @@ HDInsight poskytuje pružnost tím, že možnost vertikálně navýšit a sníž
 Pokud máte pravidelné dávkové zpracování, clusteru HDInsight se dá škálovat několik minut, než tuto operaci tak, aby cluster měl adekvátní paměť a procesory.  Později po dokončení zpracování a využití ocitne mimo provoz znovu, můžete vertikálně snížit kapacitu clusteru HDInsight na míň pracovních uzlů.
 
 Škálování clusteru ručně pomocí jedné z metod popsaných níže, nebo použijte [automatického škálování](hdinsight-autoscale-clusters.md) možnosti, jak systém automaticky škálovat nahoru a dolů v reakci na procesoru, paměti a další metriky.
+
+> [!NOTE]  
+> Pouze clustery HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí verze vašeho clusteru, můžete zkontrolovat na stránce Vlastnosti.
 
 ## <a name="utilities-to-scale-clusters"></a>Nástroje pro škálování clusterů
 
@@ -47,6 +50,50 @@ Pomocí kteréhokoli z těchto metod, můžete škálovat svůj cluster HDInsigh
 Když jste **přidat** uzlů spuštěného clusteru HDInsight (škálování nahoru), všechny úlohy čekající na vyřízení nebo spuštěné tyto zásady neovlivní. Nové úlohy můžete bezpečně odeslané během procesu změny velikosti. Pokud z nějakého důvodu selže operace škálování, chyby se zpracuje, aby se zachovala váš cluster ve funkčním stavu.
 
 Pokud jste **odebrat** uzly (vertikálně), budou všechny čekající na vyřízení nebo spuštěné úlohy selžou po dokončení operace škálování. To je způsobeno některé ze služeb restartování během procesu změny velikosti. Je také riziko, že váš cluster dostat zablokované v nouzovém režimu během ruční operace škálování.
+
+Změna počtu datových uzlů se liší pro každý typ clusteru podporuje HDInsight:
+
+* Apache Hadoop
+
+    Bezproblémově můžete zvýšit počet pracovních uzlů v clusteru Hadoop, na kterém běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete odeslat také když probíhá operace. Selhání v rámci operace škálování jsou zpracovány bez výpadku v tak, aby cluster zůstane vždy ve funkčním stavu.
+
+    Pokud je Hadoop cluster je kapacitu vertikálně snížit snížením počtu datových uzlů, jsou restartovat některé ze služeb v clusteru. Toto chování způsobí, že všechny spuštěné a čekající úlohy selhání po dokončení operace škálování. Můžete, ale neúspěšné úlohy po dokončení operace.
+
+* Apache HBase
+
+    Bezproblémově můžete přidat nebo odebrat uzly do clusteru HBase během jejího běhu. Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut od dokončení operace škálování. Oblastní servery však můžete také ručně vyvážit změnou přihlášení k hlavnímu uzlu clusteru a spustíte tento příkaz z okna příkazového řádku:
+
+    ```bash
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
+    ```
+
+    Další informace o používání prostředí HBase najdete v tématu [Začínáme s příkladem Apache HBase v HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md).
+
+* Apache Storm
+
+    Bezproblémově můžete přidat nebo odebrat datových uzlů do clusteru Storm během jejího běhu. Ale po úspěšném dokončení operace škálování, je potřeba obnovit rovnováhu topologie.
+
+    Opětovné vyvážení lze provést dvěma způsoby:
+
+  * Webové uživatelské rozhraní Storm
+  * Nástroje rozhraní příkazového řádku (CLI)
+
+    Odkazovat [dokumentaci Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
+
+    Webové uživatelské rozhraní Storm je k dispozici v clusteru HDInsight:
+
+    ![Obnovení rovnováhy škálování HDInsight Storm](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
+    Tady je příklad příkazu rozhraní příkazového řádku, chcete-li obnovit rovnováhu topologie Storm:
+
+    ```cli
+    ## Reconfigure the topology "mytopology" to use 5 worker processes,
+    ## the spout "blue-spout" to use 3 executors, and
+    ## the bolt "yellow-bolt" to use 10 executors
+    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Tom, jak bezpečně vertikální snížení kapacity clusteru
 
@@ -140,13 +187,13 @@ Pokud Hive se zachovají dočasné soubory, pak tyto soubory můžete ručně vy
 1. Zastavení služeb Hive a ujistěte se, že jsou dokončeny všechny dotazy a úlohy.
 2. Zobrazení obsahu pomocný adresář dříve, nalezené `hdfs://mycluster/tmp/hive/` zobrazíte, pokud obsahuje všechny soubory:
 
-    ```
+    ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
 
     Když soubory existují zde je ukázkový výstup:
 
-    ```
+    ```output
     sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
@@ -160,7 +207,7 @@ Pokud Hive se zachovají dočasné soubory, pak tyto soubory můžete ručně vy
 
     Příklad příkazového řádku k odebrání souborů z HDFS:
 
-    ```
+    ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
@@ -173,7 +220,6 @@ Zachování tři uzly pracovního procesu je proto dražší než vertikální s
 #### <a name="run-the-command-to-leave-safe-mode"></a>Pomocí příkazu ukončit nouzový režim
 
 Posledním způsobem je ke spuštění příkazu nechte Nouzový režim. Pokud víte, že z důvodu pro přechod do režimu bezpečného HDFS je z důvodu nedostatečného replikace souborů Hive, můžete spustit následující příkaz, který ponechte Nouzový režim:
-
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
@@ -201,4 +247,3 @@ Oblastní servery jsou automaticky rovnoměrně rozdělen během několika minut
 
 * [Automatické škálování clusterů Azure HDInsight](hdinsight-autoscale-clusters.md)
 * [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md)
-* [Škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters)

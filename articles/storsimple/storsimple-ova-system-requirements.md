@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629301"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Požadavky systému virtuálních polí StorSimple
@@ -94,10 +94,10 @@ Následující tabulka uvádí porty, které je potřeba otevřít v bráně fir
 
 | **Číslo portu<sup>1</sup>** | **Snížení nebo navýšení kapacity** | **Rozsah portů** | **Požadováno** | **Poznámky** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Výstup |Síť WAN |Ne |Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| TCP 443 (HTTPS) |Výstup |Síť WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
-| UDP 53 (DNS) |Výstup |Síť WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. <br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme použít místní server DNS. |
-| UDP 123 (NTP) |Výstup |Síť WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP.<br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme, abyste synchronizace času se řadiče domény služby Active Directory. |
+| TCP 80 (HTTP) |navýšení kapacity |WAN |Ne |Odchozí port se používá pro přístup k Internetu pro načtení aktualizací. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
+| TCP 443 (HTTPS) |navýšení kapacity |WAN |Ano |Odchozí port se používá pro přístup k datům v cloudu. <br></br>Odchozí webový proxy server je konfigurovatelná uživatelem. |
+| UDP 53 (DNS) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. <br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme použít místní server DNS. |
+| UDP 123 (NTP) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP.<br></br> Všimněte si, že pokud nasazení souborového serveru, doporučujeme, abyste synchronizace času se řadiče domény služby Active Directory. |
 | TCP 80 (HTTP) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. <br></br> Všimněte si, že přístup k místním uživatelského rozhraní pomocí protokolu HTTP bude automaticky přesměrovat na protokol HTTPS. |
 | TCP 443 (HTTPS) |V |LAN |Ano |Toto je příchozí port pro místní uživatelské rozhraní na zařízení StorSimple pro místní správu. |
 | TCP 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
@@ -123,13 +123,13 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle StorS
 
 | Vzor adresy URL | Komponenta nebo funkce |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací službu|
 | `http://*.backup.windowsazure.com` |Registrace zařízení |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
-| `https://*.partners.extranet.microsoft.com/*` |Balíček pro podporu |
+| `https://*.partners.extranet.microsoft.com/*` |Balíček pro podporu. |
 | `https://*.data.microsoft.com` |Telemetrické službě ve Windows, najdete v článku [aktualizace pro uživatelské prostředí a telemetrická data diagnostiky](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Další postup

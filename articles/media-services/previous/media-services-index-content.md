@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: adsolank;juliako;johndeu
 ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61215801"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indexování mediálních souborů pomocí Azure Media Indexer
@@ -247,7 +247,7 @@ Vygenerují se stejnou výstupy (jako úspěšné úlohy). Mohou odkazovat na v�
 ### <a id="preset"></a> Předvolby úloh pro Azure Media Indexer
 Zpracování z Azure Media Indexer je možné přizpůsobit tím, že poskytuje nepovinná úloha přednastavení spolu s úkolu.  Následující část popisuje formátu tento konfigurační soubor xml.
 
-| Název | Vyžadovat | Popis |
+| Name | Vyžadovat | Popis |
 | --- | --- | --- |
 | **Vstup** |false (nepravda) |Soubory prostředků, kterou chcete indexu.</p><p>Azure Media Indexer podporuje následující formáty souborů médií: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Můžete zadat název souboru (s) v **název** nebo **seznamu** atribut **vstupní** – element (jak je vidět níže). Pokud nezadáte soubor, který prostředek se index, vyberou se primární soubor. Pokud není nastaven žádný soubor primární prostředek, je prvním souboru v vstupní asset indexovat.</p><p>Chcete-li explicitně zadat název souboru prostředku, proveďte:<br/>`<input name="TestFile.wmv">`<br/><br/>Můžete také indexu více souborů prostředků najednou (až 10 soubory). Použijte následující postup:<br/><br/><ol class="ordered"><li><p>Vytvořte textový soubor (soubor manifestu) a nastavte ho .lst příponu. </p></li><li><p>Přidáte seznam všech názvů souborů prostředků v vstupní asset pro tento soubor manifestu. </p></li><li><p>Přidání souboru (nahrát) v manifestu do prostředku.  </p></li><li><p>Zadejte název souboru manifestu v atributu seznamu vstupu.<br/>`<input list="input.lst">`</li></ol><br/><br/>Poznámka: Pokud chcete přidat více než 10 souborů do souboru manifestu, úloha indexování selže s kódem chyby 2006. |
 | **metadata** |false (nepravda) |Metadata pro zadaný prostředek soubory, které používají pro adaptaci slovníku.  Užitečné připravit indexeru rozpoznat nestandardní slovník slova, jako je například správných podstatná jména.<br/>`<metadata key="..." value="..."/>` <br/><br/>Můžete zadat **hodnoty** pro předdefinované **klíče**. Aktuálně jsou podporovány následující klíče:<br/><br/>"title" a "Popis" - použitý pro adaptaci slovníku upravit jazyk modelu pro vaši úlohu a zlepšit přesnost rozpoznávání řeči.  Hodnoty počáteční hodnoty hledání na Internetu najít kontextově relevantní textové dokumenty pomocí obsah k posílení interní slovník pro dobu trvání úlohy indexování.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -256,7 +256,7 @@ Zpracování z Azure Media Indexer je možné přizpůsobit tím, že poskytuje 
 ### <a id="error_codes"></a>Kódy chyb
 V případě chyby, ohlaste Azure Media Indexer zpět jednu z následující kódy chyb:
 
-| Kód | Název | Možné důvody |
+| Kód | Name | Možné důvody |
 | --- | --- | --- |
 | 2000 |Neplatná konfigurace |Neplatná konfigurace |
 | 2001 |Neplatné vstupní prostředky |Chybí vstupní prostředky nebo prázdný asset. |

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141162"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062238"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
 Místní brána dat zajišťuje zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
 
 Získání první nastavení brány je složené ze čtyř částí procesu:
 
-- **Stáhněte si a spusťte instalační program** – tento krok nainstaluje služba brány na počítači ve vaší organizaci. Také přihlásit k Azure pomocí účtu ve vaší [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure AD. Azure B2B účty (Host) nejsou podporovány.
+- **Stáhněte si a spusťte instalační program** – tento krok nainstaluje služba brány na počítači ve vaší organizaci. Také přihlásit k Azure pomocí účtu ve vaší [tenanta](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD. Azure B2B účty (Host) nejsou podporovány.
 
 - **Mohli bránu registrovat** – v tomto kroku, zadejte název a obnovení klíče pro bránu a vyberte oblast, bránu zaregistrovali na cloudové službě brány. Váš prostředek brány mohou být registrovány v libovolné oblasti, ale doporučujeme, aby že měla být ve stejné oblasti jako váš Server Analysis Services. 
 

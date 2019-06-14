@@ -12,12 +12,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f430a832ffb35b95d0bf4eff2d82be5ecc3d865c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42de060d81539030ef1970e01e753383662e924f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083913"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup ve službě Azure AD
 
@@ -56,7 +56,7 @@ Ale alespoň jeden z vašich účtů pro nouzový přístup by neměl mít stejn
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Alespoň jeden účet vyloučit ze zásad podmíněného přístupu
 
-Během nouze které nechcete zásadu, která by mohly blokovat přístup k vyřešení problému. Účet pro nouzový přístup aspoň jeden by se měly vyloučit ze všech zásad podmíněného přístupu. Pokud jste povolili [základní zásady](../conditional-access/baseline-protection.md), má být vyloučena účtů pro nouzový přístup.
+Během nouze které nechcete zásadu, která by mohly blokovat přístup k vyřešení problému. Alespoň jeden účet pro nouzový přístup by se měly vyloučit ze všech zásad podmíněného přístupu. Pokud jste povolili [základní zásady](../conditional-access/baseline-protection.md), má být vyloučena účtů pro nouzový přístup.
 
 ## <a name="additional-guidance-for-hybrid-customers"></a>Další pokyny pro zákazníky využívající hybridní řešení
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
 ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764284"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu ve službě Azure Data Factory
@@ -63,14 +63,14 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity webu | String | Ano
+name | Název aktivity webu | String | Ano
 type | Musí být nastaveno na **WebActivity**. | String | Ano
 method | Metoda REST API pro cílový koncový bod. | řetězec. <br/><br/>Podporované typy: "GET", "POST", "UMÍSTĚNÍ" | Ano
 url | Cílový koncový bod a cesty | Řetězec (nebo výraz s hodnotu resultType řetězec). Aktivita vyprší časový limit na 1 minutu s chybou, pokud neobdrží odpověď z koncového bodu. | Ano
 Záhlaví | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ano, vyžaduje se hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`
-hlavní část | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotu resultType řetězec). <br/><br/>Zobrazit schéma datové části požadavku v [schématu datové části požadavku](#request-payload-schema) oddílu. | Vyžaduje se pro metody POST a PUT.
-Ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne
-datové sady | Seznam datových sad předaná koncovému bodu. | Pole odkazů na datovou sadu. Může být prázdné pole. | Ano
+Text | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotu resultType řetězec). <br/><br/>Zobrazit schéma datové části požadavku v [schématu datové části požadavku](#request-payload-schema) oddílu. | Vyžaduje se pro metody POST a PUT.
+ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne
+datasets | Seznam datových sad předaná koncovému bodu. | Pole odkazů na datovou sadu. Může být prázdné pole. | Ano
 linkedServices | Seznam propojených služeb předaná koncovému bodu. | Pole odkazů na propojenou službu. Může být prázdné pole. | Ano
 
 > [!NOTE]
@@ -102,7 +102,7 @@ Zadejte uživatelské jméno a heslo pro použití se základním ověřováním
 }
 ```
 
-### <a name="client-certificate"></a>Klientský certifikát
+### <a name="client-certificate"></a>klientský certifikát
 Zadejte obsah souboru PFX a heslo s kódováním base64.
 
 ```json

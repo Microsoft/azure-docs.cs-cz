@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: e770beb0470b54d8e13493bca4790323b2e96ce1
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393188"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076358"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schéma událostí Azure Event Grid pro službu IoT Hub
 
@@ -35,7 +35,7 @@ Azure IoT Hub generuje následující typy událostí:
 | Microsoft.Devices.DeviceDisconnected | Publikuje, když zařízení je odpojen od služby IoT hub. | 
 | Microsoft.Devices.DeviceTelemetry | Publikovat odeslání telemetrické zprávy do služby IoT hub. |
 
-Všechny události zařízení s výjimkou zařízení telemetrické události jsou obecně dostupné ve všech oblastech podporovaných služby Event Grid. Telemetrické události zařízení je ve verzi public preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+Všechny události zařízení s výjimkou zařízení telemetrické události jsou obecně dostupné ve všech oblastech podporovaných služby Event Grid. Telemetrické události zařízení je ve verzi public preview a je k dispozici ve všech oblastech kromě USA – východ, USA – Západ, západní Evropa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome), a [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="example-event"></a>Příklad události
 
@@ -156,8 +156,8 @@ Všechny události obsahovat stejná data nejvyšší úrovně:
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
 | eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | data | objekt | Data událostí služby IoT Hub.  |
-| dataVersion | string | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 Pro všechny události služby IoT Hub datový objekt obsahuje následující vlastnosti:
 

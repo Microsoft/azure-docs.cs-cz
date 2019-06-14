@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058591"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider pro .NET Core ILogger protokoly
 
@@ -106,6 +106,9 @@ public class ValuesController : ControllerBase
 ```
 
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Zachycení ILogger protokoly ze souboru Startup.cs a Program.cs v aplikacích ASP.NET Core
+
+> [!NOTE]
+> V ASP.NET Core 3.0 nebo novější, se už nedají vložit `ILogger` v souboru Startup.cs a souboru Program.cs. Zobrazit https://github.com/aspnet/Announcements/issues/353 další podrobnosti.
 
 Nové ApplicationInsightsLoggerProvider můžete zachytit protokoly z aplikace po spuštění kanálu v rané fázi. I když ApplicationInsightsLoggerProvider je automaticky povolené ve službě Application Insights (počínaje verzí 2.7.0-beta3), nemusí kód instrumentace nastavit nahoru, až později v kanálu. Proto pouze protokoly z **řadič**/ jiné třídy budou zachyceny. Pro každý protokol počínaje zachytávání **Program.cs** a **Startup.cs** samostatně, je potřeba explicitně povolit Instrumentační klíč pro ApplicationInsightsLoggerProvider. Navíc *TelemetryConfiguration* není plně nastavené, když se připojujete z **Program.cs** nebo **Startup.cs** samotný. Tyto protokoly proto bude mít minimální konfigurace, který používá InMemoryChannel, žádné vzorkování a standardní telemetrie inicializátory nebo procesorů.
 
@@ -450,7 +453,7 @@ Pokud chcete vždy odesílat TraceTelemetry, použijte tento fragment kódu: ```
 
 Rozšíření Application Insights ve službě Azure Web Apps využívá předchozího poskytovatele. Můžete upravit pravidla filtrování v *appsettings.json* souboru pro vaši aplikaci. Pokud chcete využít výhod nového poskytovatele, použijte čas sestavení instrumentace provedením závislostí NuGet v sadě SDK. Tento článek bude aktualizován, při rozšíření přepne na používání nového poskytovatele.
 
-### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Jsem pomocí samostatného balíčku Microsoft.Extensions.Logging.ApplicationInsights a povolení Application Insights poskytovatele voláním **Tvůrce. AddApplicationInsights("ikey")**. Je možné získat instrumentačním klíčem z konfigurace?
+### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Jsem pomocí samostatného balíčku Microsoft.Extensions.Logging.ApplicationInsights a povolení Application Insights poskytovatele voláním **Tvůrce. AddApplicationInsights("ikey")** . Je možné získat instrumentačním klíčem z konfigurace?
 
 
 Upravte soubor Program.cs a appsettings.json následujícím způsobem:

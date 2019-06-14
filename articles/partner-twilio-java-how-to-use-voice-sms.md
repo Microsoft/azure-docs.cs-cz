@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60623948"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Postup použití Twilia pro hlasové hovory a SMS v jazyce Java
@@ -42,17 +42,17 @@ Rozhraní API využívá Twilio příkazů například **&lt;Say&gt;** příkaz 
 
 Následuje seznam příkazů Twilio.
 
-* **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
-* **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
-* **&lt;Zavěšení&gt;**: Ukončí volání.
-* **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
-* **&lt;Fronty&gt;**: Přidejte do fronty pro volající.
-* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
-* **&lt;Record&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
-* **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez fakturace je.
-* **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
-* **&lt;Sms&gt;**: Odešle zprávu SMS.
+* **&lt;Volání&gt;** : Volající se připojí k jiný telefon.
+* **&lt;Shromážděte&gt;** : Shromažďuje číslice zadané na klávesnici telefonu.
+* **&lt;Zavěšení&gt;** : Ukončí volání.
+* **&lt;Přehrát&gt;** : Přehraje zvukový soubor.
+* **&lt;Fronty&gt;** : Přidejte do fronty pro volající.
+* **&lt;Pause&gt;** : Bezobslužná počká zadaný počet sekund.
+* **&lt;Record&gt;** : Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Přesměrovat&gt;** : Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
+* **&lt;Odmítnout&gt;** : Odmítne příchozí volání na vaše číslo Twilio bez fakturace je.
+* **&lt;Řekněme, že&gt;** : Převede text na řeč, který je k volání.
+* **&lt;Sms&gt;** : Odešle zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založený na formátu XML podle Twilio příkazy, které informují o Twilio, jak zpracovat hovor nebo SMS.
@@ -158,7 +158,7 @@ Následující ukazuje, jak odeslat zprávu SMS pomocí **zpráva** třídy. **z
 Další informace o parametrech předaná **Message.creator** metodu, najdete v článku [ https://www.twilio.com/docs/api/rest/sending-sms ] [ twilio_rest_sending_sms].
 
 ## <a id="howto_provide_twiml_responses"></a>Jak: Poskytování TwiML odezvy z vlastního webu
-Pokud aplikace zahájí volání rozhraní API Twilia například prostřednictvím **CallCreator.create** metoda, Twilio odešlete žádost na adresu URL, která se očekává navrácení TwiML odpovědi. Výše uvedený příklad používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná **&lt;odpovědi&gt;** element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] zobrazíte **&lt;odpovědi&gt;** element, který obsahuje **&lt;Say&gt;** elementu.)
+Pokud aplikace zahájí volání rozhraní API Twilia například prostřednictvím **CallCreator.create** metoda, Twilio odešlete žádost na adresu URL, která se očekává navrácení TwiML odpovědi. Výše uvedený příklad používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná **&lt; odpovědi&gt;** element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] zobrazíte **&lt; odpovědi&gt;** element, který obsahuje **&lt; Say&gt;** elementu.)
 
 Aniž byste museli spoléhat na URL poskytnutou Twilio, můžete vytvořit vlastní adresu URL webu, který vrací odpovědi protokolu HTTP. Můžete vytvořit web v jakémkoli jazyce, který vrací odpovědi HTTP; Toto téma předpokládá, že budete hostovat na adresu URL v JSP stránky.
 

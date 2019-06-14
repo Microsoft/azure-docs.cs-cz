@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 74eee3d164e7ee3831f292568da9cf0620e576e5
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 23273084826775b47170753dff3e5cf5ed8ae45f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063560"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím Azure Cosmos DB
 
@@ -76,7 +76,7 @@ Tato funkce je dostupná v těchto oblastech Azure:
 
 Následující tabulka shrnuje možnost vysoké dostupnosti z různých konfigurací účtu: 
 
-|KLÍČOVÝ UKAZATEL VÝKONU  |Jedna oblast bez zóny dostupnosti (bez AZ)  |Jedné oblasti se zónami dostupnosti (AZ)  |Více oblastí se zónami dostupnosti (AZ, 2 oblasti) – nejvíce doporučená nastavení |
+|KLÍČOVÝ UKAZATEL VÝKONU  |Jedna oblast bez zóny dostupnosti (Non-AZ)  |Jedné oblasti se zónami dostupnosti (AZ)  |Zapíše více oblastí se zónami dostupnosti (AZ, 2 oblasti) – většina doporučené nastavení |
 |---------|---------|---------|---------|
 |Zápis smlouva SLA o dostupnosti     |   99,99 %      |    99,99 %     |  99.999%  |
 |Přečtěte si smlouva SLA o dostupnosti   |   99,99 %      |   99,99 %      |  99.999%       |

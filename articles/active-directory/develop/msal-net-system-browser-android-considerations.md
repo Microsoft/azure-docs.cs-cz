@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c57feb33967732481d78e0ddaba5e90f4f82f327
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544427"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Důležité informace specifické pro Xamarin Android pomocí MSAL.NET
@@ -56,16 +56,16 @@ V následující tabulce jsou uvedeny, zařízení a prohlížeče, které byly 
 
 | | Prohlížeč&ast;     |  Výsledek  | 
 | ------------- |:-------------:|:-----:|
-| Huawei jeden + / | Chrome&ast; | Úspěch|
-| Huawei jeden + / | Edge&ast; | Úspěch|
-| Huawei jeden + / | Firefox&ast; | Úspěch|
-| Huawei jeden + / | Kulatý háček&ast; | Úspěch|
-| Jeden + | Ecosia&ast; | Úspěch|
-| Jeden + | Kiwi&ast; | Úspěch|
-| Huawei jeden + / | Opera | Úspěch|
-| Huawei | OperaMini | Úspěch|
-| Huawei jeden + / | InBrowser | Úspěch|
-| Jeden + | Maxthon | Úspěch|
+| Huawei jeden + / | Chrome&ast; | Průchod|
+| Huawei jeden + / | Edge&ast; | Průchod|
+| Huawei jeden + / | Firefox&ast; | Průchod|
+| Huawei jeden + / | Kulatý háček&ast; | Průchod|
+| Jeden + | Ecosia&ast; | Průchod|
+| Jeden + | Kiwi&ast; | Průchod|
+| Huawei jeden + / | Opera | Průchod|
+| Huawei | OperaMini | Průchod|
+| Huawei jeden + / | InBrowser | Průchod|
+| Jeden + | Maxthon | Průchod|
 | Huawei jeden + / | DuckDuckGo | Uživatel zrušil ověřování|
 | Huawei jeden + / | UC prohlížeče | Uživatel zrušil ověřování|
 | Jeden + | Delfínů | Uživatel zrušil ověřování|

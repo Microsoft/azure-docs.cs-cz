@@ -15,10 +15,10 @@ ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679047"
 ---
 # <a name="onboarding-requirements"></a>Požadavky na onboarding
@@ -83,5 +83,5 @@ Matice kompatibility operačního systému a verze firmwaru a ovladače HLI, naj
 - Očekává se, že jste je zákazníkem v systému SAP a mají podporu kontraktu s řešením SAP.
 - Zejména pro implementace třídy typu II SKU velké Instance HANA konzultujte s řešením SAP verze SAP HANA a konečný výsledek konfigurace na velkých a velkých vertikálně navýšit kapacitu hardwaru.
 
-**Další kroky**
+**Další postup**
 - Přečtěte si [architektura SAP HANA (velké instance) v Azure](hana-architecture.md)

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e9002b96467d6fa3a5c4fb03fb20bde4e1bf87a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151186"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059349"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpečení podnikové třídy pro službu Azure Machine Learning
 
@@ -62,7 +62,7 @@ V následující tabulce jsou uvedeny některé hlavní operace služby Azure Ma
 
 | Služba Azure Machine Learning operace | Vlastník | Přispěvatel | Čtenář |
 | ---- |:----:|:----:|:----:|
-| Vytvořit pracovní prostor | ✓ | ✓ | |
+| Vytvoření pracovního prostoru | ✓ | ✓ | |
 | Sdílení pracovního prostoru | ✓ | |  |
 | Vytvořte výpočetní prostředky | ✓ | ✓ | |
 | Připojit výpočetní prostředky | ✓ | ✓ | |
@@ -70,12 +70,12 @@ V následující tabulce jsou uvedeny některé hlavní operace služby Azure Ma
 | Spusťte Experiment | ✓ | ✓ | |
 | Zobrazení spuštění a metrik | ✓ | ✓ | ✓ |
 | Registrace modelu | ✓ | ✓ | |
-| Vytvořit image | ✓ | ✓ | |
+| Vytvoření image | ✓ | ✓ | |
 | Nasazení webové služby | ✓ | ✓ | |
 | Zobrazení modelů nebo imagí | ✓ | ✓ | ✓ |
 | Volání webové služby | ✓ | ✓ | ✓ |
 
-Pokud předdefinované role nejsou dostatečná k vašim potřebám, můžete také vytvořit vlastní role. Všimněte si, že pouze vlastní role, které jsme podporu pro operace v pracovním prostoru a Machine Learning Compute. Může mít vlastní role číst, zapsat nebo odstranit oprávnění v pracovním prostoru a výpočetních prostředků v daném pracovním prostoru. Roli můžete zpřístupnit na úrovni konkrétní pracovní prostor, úrovni skupiny prostředků konkrétní nebo úroveň konkrétní předplatné. Další informace najdete v tématu [správu uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md)
+Pokud předdefinované role nejsou dostatečná k vašim potřebám, můžete také vytvořit vlastní role. Podporujeme jenom vlastní role se pro operace v pracovním prostoru a Machine Learning Compute. Může mít vlastní role číst, zapsat nebo odstranit oprávnění v pracovním prostoru a výpočetních prostředků v daném pracovním prostoru. Roli můžete zpřístupnit na úrovni konkrétní pracovní prostor, úrovni skupiny prostředků konkrétní nebo úroveň konkrétní předplatné. Další informace najdete v tématu [správu uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md)
 
 ### <a name="securing-compute-and-data"></a>Zabezpečení výpočetních a dat
 Vlastníci a přispěvatelé můžete použít všechny výpočetní prostředky cíle a úložišti dat, které jsou připojené k pracovnímu prostoru.  
@@ -86,15 +86,15 @@ Další informace o spravovaných identit najdete v tématu [spravovaných ident
 | Resource | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel | 
-| Účet úložiště | Přispěvatel dat v objektech blob služby Storage | 
+| Účet úložiště | Přispěvatel dat objektu Blob služby Storage | 
 | Key Vault | Přístup ke všem certifikátům klíče, tajné kódy, | 
-| Registr kontejneru Azure | Přispěvatel | 
+| Azure Container Registry | Přispěvatel | 
 | Skupiny prostředků, která obsahuje tento pracovní prostor | Přispěvatel | 
 | Skupina prostředků obsahující trezor klíčů (Pokud je jiný než ten, který obsahuje pracovní prostor) | Přispěvatel | 
 
 Doporučuje se, že správci neodebírejte přístup spravovaná identita na odkazech uvedených výše. Přístup je možné obnovit pomocí operace resynchronizovat klíče.
 
-Služba Azure Machine Learning se vytvoří další aplikace (název začíná aml-) s přístupem na úrovni Přispěvatel ve vašem předplatném pro každou oblast pracovního prostoru. Pro příklad. Pokud máte pracovní prostor v oblasti východní USA a jiným pracovním prostorem v oblasti Severní Evropa ve stejném předplatném se zobrazí 2 těchto aplikací. To je potřeba, aby Azure Machine Learning service může pomoct spravovat výpočetní prostředky.
+Služba Azure Machine Learning se vytvoří další aplikace (název začíná řetězcem `aml-`) s přístupem na úrovni Přispěvatel ve vašem předplatném pro každou oblast pracovního prostoru. Pro příklad. Pokud máte pracovní prostor v oblasti východní USA a jiným pracovním prostorem v oblasti Severní Evropa ve stejném předplatném se zobrazí dvě takové aplikace. To je potřeba, aby Azure Machine Learning service může pomoct spravovat výpočetní prostředky.
 
 
 ## <a name="network-security"></a>Zabezpečení sítě
@@ -113,13 +113,15 @@ Další informace o tom, jak uvést vaše vlastní klíče pro data uložená ve
 
 Cvičná data jsou obvykle také uložená v úložišti objektů Blob v Azure tak, aby byly přístupné pro výpočetní školení. Toto úložiště není spravované službou Azure Machine Learning, ale připojené k výpočtu jako vzdálený systém souborů.
 
+Informace o obnovování přístupových klíčů pro účty úložiště Azure, které jsou součástí vašeho pracovního prostoru, najdete v článku [opětovné vygenerování přístupových klíčů k úložišti](how-to-change-storage-access-key.md) článku.
+
 #### <a name="cosmos-db"></a>Cosmos DB
 Služba Azure Machine Learning ukládá metriky a metadata pro Cosmos DB, který se nachází v předplatném Microsoft spravovaném službou Azure Machine Learning. Všechna data uložená ve službě Cosmos DB zašifrovaná přinejmenším pomocí Microsoft Managed Keys.
 
 #### <a name="azure-container-registry-acr"></a>Azure Container Registry (ACR)
 Všechny Image kontejneru v registru (ACR) jsou v klidovém stavu zašifrovaná. Azure automaticky šifruje image před uložením a dešifruje ji v běhu při služby Azure Machine Learning, stáhne bitovou kopii.
 
-#### <a name="machine-learning-compute"></a>Výpočetní prostředky služby Machine Learning
+#### <a name="machine-learning-compute"></a>Ve službě Machine Learning Compute
 Disk s operačním systémem pro každý výpočetní uzel je uložený ve službě Azure Storage se šifrují pomocí klíčů spravovaných Microsoft v účtech úložiště služby Azure Machine Learning. Tato výpočetní je dočasný a clustery jsou obvykle kapacitu vertikálně snížit při nic se nespustilo. ve frontě. Základní virtuální počítač se zruší a odstranit disk s operačním systémem. Azure disk encryption se nepodporuje pro disk s operačním systémem.
 Každý virtuální počítač má také místní dočasný disk pro operační systém operace. Tento disk Volitelně lze také na fázi trénovací data. Tento disk není šifrovaný. Další informace o tom, jak funguje šifrování v klidovém stavu v Azure najdete v tématu [Azure Data šifrování neaktivních](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest). 
 
@@ -149,7 +151,7 @@ Ve službě AppInsights, který se vytvoří v předplatném uživatele při vyt
 
 ## <a name="data-flow-diagram"></a>Diagram toku dat
 
-### <a name="create-workspace"></a>Vytvořit pracovní prostor
+### <a name="create-workspace"></a>Vytvoření pracovního prostoru
 Následující diagram znázorňuje pracovní postup vytvoření pracovního prostoru.
 Uživatel přihlásí do Azure AD z kteréhokoli z podporovaných klientů služby Azure Machine Learning (rozhraní příkazového řádku, Python SDK, Azure portal) a požádá o příslušného tokenu Azure Resource Manageru.  Uživatel pak zavolá Azure Resource Manageru vytvořit pracovní prostor.  Azure Resource Manageru kontakty Azure Machine Learning služby poskytovatele prostředků se zřídit pracovní prostor.  Další prostředky se vytvoří v předplatném zákazníka během vytváření pracovního prostoru:
 * Trezor klíčů (k ukládání tajných klíčů)

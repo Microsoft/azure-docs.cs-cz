@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: dab0b11a350a10a209d67ddc69db5531a2cc292c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080770"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN od Verizonu prémiové funkce modul pravidel
 
@@ -36,7 +36,7 @@ Name | Účel
 
 Tyto funkce jsou navržené tak, přizpůsobit a jak se obsah ukládá do mezipaměti.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Parametry šířky pásma](#bandwidth-parameters) | Určuje, zda jsou parametry omezení šířky pásma (například ec_rate a ec_prebuf) aktivní.
 [Omezení šířky pásma](#bandwidth-throttling) | Omezuje šířku pásma pro odpověď v poskytnuté v point-of-presence (POP).
@@ -74,7 +74,7 @@ Name | Účel
 
 Tyto funkce slouží k přidání, úprava nebo odstranění hlaviček ze žádosti nebo odpovědi.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Hlavička odpovědi věk](#age-response-header) | Určuje, zda hlavičku odpovědi věk je součástí odpověď odesílanou žadateli.
 [Ladění hlavičky odpovědi v mezipaměti](#debug-cache-response-headers) | Určuje, jestli odpověď může obsahovat hlavičku odpovědi X-ES-ladění, která poskytuje informace o zásady ukládání do mezipaměti pro požadovaný prostředek.
@@ -86,7 +86,7 @@ Name | Účel
 
 Tyto funkce slouží k přizpůsobení dat uložených v nezpracovaných souborů protokolu.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Protokol vlastní pole 1](#custom-log-field-1) | Určuje formát a obsah, který je přiřazen poli vlastní protokol v nezpracovaných souborů protokolu.
 [Řetězec dotazu protokolu](#log-query-string) | Určuje, zda řetězec dotazu je uložen spolu s adresy URL v přístup k protokolům.
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 Tyto funkce jsou určeny k řízení, jak síť CDN komunikuje s původním serveru.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Maximální počet Keep-Alive požadavků](#maximum-keep-alive-requests) | Definuje maximální počet požadavků pro zachování připojení předtím, než je uzavřený.
 [Speciálními záhlavími proxy](#proxy-special-headers) | Definuje sadu hlaviček požadavků specifické pro CDN, které jsou předávány z místní nabídky k serveru původu.
@@ -149,7 +149,7 @@ Název | Účel
 
 Tyto funkce umožňují pokročilé funkce pro zkušené uživatele.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Metody HTTP možné ukládat do mezipaměti](#cacheable-http-methods) | Určuje sadu další metody HTTP, které lze uložit do mezipaměti v síti.
 [Velikost textu požadavku možné ukládat do mezipaměti](#cacheable-request-body-size) | Definuje prahovou hodnotu pro určení, jestli odpověď na příspěvek můžete uložit do mezipaměti.
@@ -338,7 +338,7 @@ Duplikovat řetězce dotazu "no-cache" na stránce ukládání do mezipaměti ř
 
 Následující příklad použití pro tuto funkci poskytuje ukázkový požadavek a klíče mezipaměti výchozí:
 
-- **Ukázka požadavku:** http://wpc.0001.&lt; domény&gt;/800001/Origin/folder/asset.htm?sessionid=1234 & jazyk = EN & userid = 01
+- **Ukázka požadavku:** http://wpc.0001.&lt ; domény&gt; /800001/Origin/folder/asset.htm?sessionid=1234 & jazyk = EN & userid = 01
 - **Výchozí klíč mezipaměti:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Zahrnout
@@ -516,8 +516,8 @@ Formát pro zadávání hlaviček žádostí a odpovědí je definovaná násled
 
 Typ záhlaví|Formát|Příklady
 -|-|-
-Hlavička požadavku|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referrer}i <br/> % {Autorizace} i
-Hlavička odezvy|%{[ResponseHeader]()}[o]()| O % {stáří} <br/> %{Content-Type}o <br/> %{Cookie}o
+Hlavička požadavku|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referrer}i <br/> % {Autorizace} i
+Hlavička odezvy|`%{[ResponseHeader]()}[o]()`| O % {stáří} <br/> %{Content-Type}o <br/> %{Cookie}o
 
 Informace o klíči:
 

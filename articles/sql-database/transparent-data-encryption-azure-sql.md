@@ -12,16 +12,16 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: b09182ef06c708e9c606173f02b006e7802f29ed
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477818"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061388"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
-Transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit Azure SQL Database, spravované Instance SQL Azure a Azure Data Warehouse. Provede v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace. Ve výchozím nastavení je transparentní šifrování dat povolené pro všechny nově nasazenými databázemi Azure SQL. Transparentní šifrování dat nelze použít k šifrování logické **hlavní** databáze ve službě SQL Database.  **Hlavní** databáze obsahuje objekty, které jsou potřeba k provádění operací transparentní šifrování dat pro uživatelské databáze.
+Transparentní šifrování dat (TDE) pomáhá chránit – Azure SQL Database, spravované Instance SQL Azure a Azure Data Warehouse před hrozbou škodlivých činností offline tím, že šifruje neaktivní uložená data. Provede v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace. Ve výchozím nastavení je transparentní šifrování dat povolené pro všechny nově nasazenými databázemi Azure SQL. Transparentní šifrování dat nelze použít k šifrování logické **hlavní** databáze ve službě SQL Database.  **Hlavní** databáze obsahuje objekty, které jsou potřeba k provádění operací transparentní šifrování dat pro uživatelské databáze.
 
 Transparentní šifrování dat je potřeba ručně povolit pro spravované Instance Azure SQL, starší databáze Azure SQL Database nebo Azure SQL Data Warehouse.  
 

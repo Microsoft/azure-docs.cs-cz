@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 5524c59537f1657fddd626bd4c019f4f65b8390d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 39f62b82ed2716099a63e363c87fbac65d02ffb0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920342"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>Kurz: Integrace Azure Active Directory s Workpath
 
@@ -55,7 +55,7 @@ Konfigurace integrace Workpath do služby Azure AD, budete muset přidat Workpat
 
 **Chcete-li přidat Workpath z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Workpath, proveďte násled
 
 7. Kromě toho výše Workpath aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------------- | -------------------- |    
     | křestní_jméno | user.givenname |
     | Příjmení | user.surname |

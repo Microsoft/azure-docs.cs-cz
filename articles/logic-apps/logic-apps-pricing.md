@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075066"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -89,7 +89,7 @@ Když zakážete, aplikace logiky, všechny aktuálně spuštěné instance mů�
 
 ## <a name="integration-accounts"></a>Účty pro integraci
 
-Ceny za spotřebu se vztahuje na [účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md) kde můžete prozkoumat, vývoj a testování [B2B a EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování XML](logic-apps-enterprise-integration-xml.md) funkce v Azure Logic Apps bez Další poplatky.
+Oprava cenový model se vztahuje na [účty pro integraci](logic-apps-enterprise-integration-create-integration-account.md) kde můžete prozkoumat, vývoj a testování [B2B a EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování XML](logic-apps-enterprise-integration-xml.md) funkce v Azure Logic Apps bez Další poplatky.
 Může mít jeden účet pro integraci v každé oblasti Azure. Každý účet pro integraci můžete ukládat konkrétní [počet artefaktů](../logic-apps/logic-apps-limits-and-config.md), mezi které patří obchodní partnery, smlouvy, map, schémata, sestavení, certifikáty, konfigurace dávek a tak dále.
 
 Služba Azure Logic Apps nabízí účty pro integraci Free, Basic a Standard. Na úrovních Basic a Standard jsou podporovány Logic Apps smlouvu o úrovni služeb (SLA), zatímco úroveň Free není podporováno smlouvou SLA a má omezení propustnosti a využití.

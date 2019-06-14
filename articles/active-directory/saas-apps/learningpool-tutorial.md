@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 104c208c1e651f67679327fa8c7a56b65c33fd24
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897832"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Kurz: Integrace Azure Active Directory s Learningpool Act
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci sady Application Compatibility Toolkit Lea
 
 **Přidání Learningpool Act z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -124,7 +124,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Learningpool Act, proveďte
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------------- | -------------------- |
     | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
     | urn:oid:2.5.4.42 | user.givenname |
@@ -229,7 +229,7 @@ Uživatelé musí být vytvořené vaší [tým podpory Learningpool Act](https:
 > [!NOTE]
 > Můžete použít jakékoli jiné Learningpool Act uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Learningpool Act uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

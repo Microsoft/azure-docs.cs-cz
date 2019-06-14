@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/11/2019
 ms.openlocfilehash: d9cd5ba0b697cbf67f943eb49d66010745d8561e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584845"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Zvolte vpravo systému SQL Server v Azure
@@ -25,7 +25,7 @@ ms.locfileid: "60584845"
 V Azure, můžete mít svoje úlohy systému SQL Server běží v prostředí infrastruktury (IaaS) nebo jako hostované služby ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)). V rámci PaaS máte několik možností nasazení a úrovně služeb v rámci každé možnosti nasazení. Klíčovou otázkou, které budete muset požádat při rozhodování mezi PaaS nebo IaaS se chcete ke správě databáze, provedení oprav, zálohování, nebo chcete delegovat tyto operace do Azure?
 V závislosti na odpovědi máte následující možnosti:
 
-- [Azure SQL Database](sql-database-technical-overview.md): Plně spravovanými databázový stroj SQL, podle nejnovější stabilní Enterprise edici systému SQL Server. Toto je relační databáze jako služba (DBaaS hostovaná v cloudu Azure, která spadá do oborové kategorie) *Platform-as-a-Service (PaaS)*. SQL database má více možností nasazení, z nichž každý je postavená na standardizovaném hardwaru a softwaru, který je ve vlastnictví, hostován a spravován společností Microsoft. SQL Database, můžete použít integrované funkce, které vyžadují rozsáhlé konfiguraci při použití v systému SQL Server (místně nebo v Azure virtuální počítač). Při použití SQL Database platíte průběžnými platbami s možností vertikálního nebo horizontálního navyšování kapacity pro dosažení vyššího výkonu bez přerušení. SQL Database má další funkce, které nejsou k dispozici v systému SQL Server, jako je například integrovanou vysokou dostupnost, inteligentní funkce a správu. Azure SQL Database nabízí následující možnosti nasazení:
+- [Azure SQL Database](sql-database-technical-overview.md): Plně spravovanými databázový stroj SQL, podle nejnovější stabilní Enterprise edici systému SQL Server. Toto je relační databáze jako služba (DBaaS hostovaná v cloudu Azure, která spadá do oborové kategorie) *Platform-as-a-Service (PaaS)* . SQL database má více možností nasazení, z nichž každý je postavená na standardizovaném hardwaru a softwaru, který je ve vlastnictví, hostován a spravován společností Microsoft. SQL Database, můžete použít integrované funkce, které vyžadují rozsáhlé konfiguraci při použití v systému SQL Server (místně nebo v Azure virtuální počítač). Při použití SQL Database platíte průběžnými platbami s možností vertikálního nebo horizontálního navyšování kapacity pro dosažení vyššího výkonu bez přerušení. SQL Database má další funkce, které nejsou k dispozici v systému SQL Server, jako je například integrovanou vysokou dostupnost, inteligentní funkce a správu. Azure SQL Database nabízí následující možnosti nasazení:
   
   - Jako [izolované databáze](sql-database-single-database.md) s vlastní sadou prostředků spravovat přes server SQL Database. Izolovaná databáze je podobný [databáze s omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) v systému SQL Server. Tato možnost je optimalizovaná pro vývoj moderních aplikací nových cloudových aplikací.
   - [Elastického fondu](sql-database-elastic-pool.md), což je kolekce databází se sdílenou sadou prostředků spravovat přes server SQL Database. Izolované databáze můžete přesunout do a z elastického fondu. Tato možnost je optimalizovaná pro vývoj moderních aplikací z nových cloudových aplikací s použitím vícetenantovou aplikaci SaaS.
@@ -107,7 +107,7 @@ V současné době **SQL Database** se prodává jako služba a je k dispozici n
 
 - Díky izolovanou databázi SQL Database můžete rozhodnout o úrovni služeb, který nejlépe vyhovuje vašim potřebám z široké škály ceny od 5$ měsíčně pro úroveň basic.
 - Můžete vytvořit [elastické fondy](sql-database-elastic-pool.md) sdílení prostředků mezi různými instancemi databáze ke snížení nákladů a využití zohlednit špičky.
-- Spravované instance SQL Database můžete také přinést vlastní licenci. Další informace o používání vlastní licence, najdete v části [mobilitu licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/) nebo použijte [kalkulačky pro program Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) zobrazíte jak **ušetříte až 40 %**.
+- Spravované instance SQL Database můžete také přinést vlastní licenci. Další informace o používání vlastní licence, najdete v části [mobilitu licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/) nebo použijte [kalkulačky pro program Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#sql-database) zobrazíte jak **ušetříte až 40 %** .
 
 Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/). Můžete dynamicky upravit úrovně služeb a vypočítat velikost tak, aby odpovídaly potřebám různých propustnosti vaší aplikace.
 

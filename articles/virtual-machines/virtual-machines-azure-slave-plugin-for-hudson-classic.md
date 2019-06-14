@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60444145"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Jak používat podřízený Plugin Azure s Hudson Continuous Integration
@@ -152,7 +152,7 @@ V této části vytvoříte Hudson úlohu, která se spustí na podřízený uze
 5. Na stránce konfigurace úlohy, vyberte **omezit, kde lze tento projekt spustit**.
 6. Vyberte **uzlu a popisek nabídky** a vyberte **linux** (jsme zadali tento popisek, při vytváření šablony virtuálního počítače v předchozí části).
 7. V **sestavení** klikněte na tlačítko **přidat krok sestavení** a vyberte **spustit prostředí**.
-8. Upravte následující skript, nahrazení **{název účtu github}**, **{název vašeho projektu}**, a **{adresáři projektu}** s odpovídající hodnoty a vložit upravený skript v části textu, který se zobrazí.
+8. Upravte následující skript, nahrazení **{název účtu github}** , **{název vašeho projektu}** , a **{adresáři projektu}** s odpovídající hodnoty a vložit upravený skript v části textu, který se zobrazí.
    
         # Clone from git repo
    

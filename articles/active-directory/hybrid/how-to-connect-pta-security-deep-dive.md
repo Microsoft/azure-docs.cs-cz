@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60348059"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
@@ -186,9 +186,9 @@ Obnovit ověřovací Agent vztah důvěryhodnosti s Azure AD:
 
 Aktualizátor aplikaci automaticky aktualizuje ověřovací Agent po vydání nové verze (s opravy chyb a vylepšení výkonu). Aplikace Aktualizátoru nezpracovává veškerých žádostí o ověření hesla pro vašeho tenanta.
 
-Azure AD je hostitelem nová verze softwaru podepsané **balíček Instalační služby systému Windows (MSI)**. Soubor MSI je podepsaná pomocí [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) s SHA256 jako algoritmus digest. 
+Azure AD je hostitelem nová verze softwaru podepsané **balíček Instalační služby systému Windows (MSI)** . Soubor MSI je podepsaná pomocí [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) s SHA256 jako algoritmus digest. 
 
-![Automatická aktualizace](./media/how-to-connect-pta-security-deep-dive/pta5.png)
+![Automatické aktualizace](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
 K automatické aktualizaci ověřovací Agent:
 

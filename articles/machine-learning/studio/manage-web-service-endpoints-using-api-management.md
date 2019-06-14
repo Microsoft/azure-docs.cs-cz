@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347081"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
@@ -150,7 +150,7 @@ Operace lze volat přímo z portálu pro vývojáře, která poskytuje pohodlný
 
 4. Pro **parametry žádosti**, typ vašeho **pracovní prostor** a **služby**, typ "2.0 pro **apiversion**a"true"pro **podrobnosti**. Můžete najít vaše **pracovní prostor** a **služby** AzureML řídicím panelu webové služby (naleznete v tématu **testovat webovou službu** v dodatku A).
 
-   Pro **hlavičky požadavku**, klikněte na tlačítko **přidat záhlaví** a zadejte "Content-Type" a "application/json". Klikněte na tlačítko **přidat záhlaví** znovu a zadejte "Autorizace" a "nosiče  *\<vaše služba API-KEY\>*". KLÍČ rozhraní API můžete najít na řídicím panelu služby Azure ml web (naleznete v tématu **testovat webovou službu** v dodatku A).
+   Pro **hlavičky požadavku**, klikněte na tlačítko **přidat záhlaví** a zadejte "Content-Type" a "application/json". Klikněte na tlačítko **přidat záhlaví** znovu a zadejte "Autorizace" a "nosiče  *\<vaše služba API-KEY\>* ". KLÍČ rozhraní API můžete najít na řídicím panelu služby Azure ml web (naleznete v tématu **testovat webovou službu** v dodatku A).
 
    Pro **text žádosti**, typ `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`.
 

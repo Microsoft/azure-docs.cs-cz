@@ -10,10 +10,10 @@ ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
 ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60430425"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service s modulem ACS a režimu Docker Swarm pomocí Azure DevOps
@@ -197,7 +197,7 @@ Azure DevOps vám umožní [správě vydávání verzí napříč prostředími]
 
 ### <a name="initial-release-setup"></a>Nastavení počáteční verze
 
-1. Chcete-li vytvořit kanál pro vydávání verzí, klikněte na tlačítko **verze** > **+ vydání**
+1. Chcete-li vytvořit kanál pro vydávání verzí, klikněte na tlačítko **verze** >  **+ vydání**
 
 2. Konfigurovat zdroj artefaktu, klikněte na tlačítko **artefakty** > **propojit zdroj artefaktu**. Tento nový kanál pro vydávání verzí, odkaz na sestavení, které jste definovali v předchozím kroku. Poté je k dispozici v procesu vydání soubor docker-compose.yml.
 

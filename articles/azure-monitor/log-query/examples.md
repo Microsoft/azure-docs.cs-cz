@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
 ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759907"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů protokolu Azure Monitor
@@ -25,7 +25,7 @@ Tento článek obsahuje příklady různých [dotazy](log-query-overview.md) pom
 
 Najdete v článku [referenční informace k jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) podrobnosti o jiná klíčová slova použít v těchto ukázek. Projděte si [lekce týkající se vytváření dotazů](get-started-queries.md) Pokud začínáte do Azure monitoru.
 
-## <a name="events"></a>Události
+## <a name="events"></a>Duration
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Vyhledávání událostí na úrovni aplikace popsat jako "Kryptografický"
 Tento příklad prohledá tabulku **události** a bude hledat záznamy, ve kterých **EventLog** je _Application_ a **RenderedDescription** obsahuje _cryptographic_. Obsahuje záznamy z posledních 24 hodin.

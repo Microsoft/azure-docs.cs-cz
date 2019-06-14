@@ -9,10 +9,10 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616487"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Analytics
@@ -142,7 +142,7 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 | Název | Typ | Popis |
 | --- | --- | --- |
 | HttpMethod |String |Metoda protokolu HTTP se používá pro operaci. Třeba získáte. |
-| Cesta |String |Cesta operaci byla provedena |
+| `Path` |String |Cesta operaci byla provedena |
 | RequestContentLength |int |Délka obsahu žádosti HTTP |
 | ClientRequestId |String |Identifikátor, který jednoznačně identifikuje tento požadavek |
 | StartTime |String |Čas, kdy server přijal požadavek |
@@ -177,7 +177,7 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
 
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | time |String |Časové razítko (ve standardu UTC) v protokolu |
 | resourceId |String |Identifikátor prostředku, který operace trvalo umístit na |

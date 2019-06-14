@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60547869"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat z Office 365 pomocí služby Azure Data Factory
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak pomocí služby Data Factory _načtěte data z
       
    ![Stránka Nová datová továrna](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Název**: Zadejte globálně jedinečný název pro službu Azure data factory. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadFromOffice365Demo\" není k dispozici," Zadejte jiný název datové továrny. Můžete například použít název  _**vaše_jméno**_**LoadFromOffice365Demo**. Zkuste znovu vytvořit datovou továrnu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Název**: Zadejte globálně jedinečný název pro službu Azure data factory. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadFromOffice365Demo\" není k dispozici," Zadejte jiný název datové továrny. Můžete například použít název  _**vaše_jméno**_ **LoadFromOffice365Demo**. Zkuste znovu vytvořit datovou továrnu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: Vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
     * **Skupina prostředků**: Z rozevíracího seznamu vyberte existující skupinu prostředků, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
     * **Verze**: Vyberte **V2**.
@@ -137,7 +137,7 @@ Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu,
 
 Pokud je to poprvé, kdy požadujete data pro tento kontext (kombinace dat, které tabulky se přístup, které cílového účtu je načítají do data a které identity uživatele je vidět data žádost o přístup), zobrazí se aktivita kopírování stav jako "**probíhá**", a pouze v případě, že kliknete na odkaz "Details" v části Akce se zobrazí stav jako "**RequesetingConsent**".  Člen skupiny schvalovatel přístupu dat musí schválit žádost v Privileged Access Management extrakce dat mohl pokračovat.
 
-_Stav jako žádost o souhlas:_
+_Stav jako žádost o souhlas:_ 
 ![podrobnosti o spuštění aktivit – žádost o souhlas](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Stav jako extrahování dat:_

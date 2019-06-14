@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059238"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení s využitím Azure Machine Learning SDK
 
@@ -53,7 +53,7 @@ Vytvoření prostředků potřebných ke spuštění kanálu:
 
 * Konfigurace `DataReference` objektu tak, aby odkazoval na data, která se nachází, nebo k ní v úložišti dat přístupném.
 
-* Nastavit [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md#compute-target) podle postupu k kanál se spouští.
+* Nastavit [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md#compute-targets) podle postupu k kanál se spouští.
 
 ### <a name="set-up-a-datastore"></a>Nastavení úložiště dat
 Úložiště dat ukládá data pro kanál tak, aby přístup. Každý pracovní prostor má výchozí úložiště. Můžete zaregistrovat další úložiště. 
@@ -296,7 +296,7 @@ Při odesílání kanál služby Azure Machine Learning kontroluje závislosti p
 > [!IMPORTANT]
 > Chcete-li zabránit nebudou zahrnuty do snímku souborů, vytvořte [.gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` souborů v adresáři a přidejte soubory do ní. `.amlignore` Soubor pomocí stejné syntaxe a vzor, jako [.gitignore](https://git-scm.com/docs/gitignore) souboru. Pokud existují oba soubory `.amlignore` soubor má přednost.
 >
-> Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
+> Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshots).
 
 ```python
 # Submit the pipeline to be run
@@ -366,7 +366,7 @@ response = requests.post(published_pipeline1.endpoint,
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
-## <a name="view-results"></a>Zobrazit výsledky
+## <a name="view-results"></a>Zobrazení výsledků
 
 Zobrazit seznam všech vašich kanálů a jejich podrobnosti o spuštění:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  

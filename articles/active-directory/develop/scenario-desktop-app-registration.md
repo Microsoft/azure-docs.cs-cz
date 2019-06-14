@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da934709274d90668d94dfea3a9c223e191d032
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5ab2701a82da0b8f7bc4e23a3d947be905593e85
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076057"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057217"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Aplikace klasické pracovní plochy, že volání webového rozhraní API – registrace aplikace
 
@@ -46,16 +46,17 @@ Pokud vaše aplikace klasické pracovní plochy používá interaktivní ověřo
 
 Znovu identifikátory URI pro použití v aplikaci klasické pracovní plochy pro přesměrování, bude záviset na tok, který chcete použít.
 
-- Pokud používáte interaktivní ověřování, budete chtít použít `https://login.microsoftonline.com/common/oauth2/nativeclient`. Dosáhnete kliknutím na odpovídající adresu URL v této konfiguraci **ověřování** oddílu pro vaši aplikaci
+- Pokud používáte **interaktivní ověřování** nebo **toku kódu zařízení**, budete chtít použít `https://login.microsoftonline.com/common/oauth2/nativeclient`. Dosáhnete kliknutím na odpovídající adresu URL v této konfiguraci **ověřování** oddílu pro vaši aplikaci
   
   > [!IMPORTANT]
   > Dnes MSAL.NET používá jiný identifikátor URI pro přesměrování ve výchozím nastavení v desktopové aplikace běžící na Windows (`urn:ietf:wg:oauth:2.0:oob`). V budoucnu budete chceme změnit toto výchozí nastavení, a proto vám doporučujeme použít `https://login.microsoftonline.com/common/oauth2/nativeclient`
 
-- Pokud vaše aplikace používá pouze ověření integrované Windows, uživatelské jméno a heslo nebo zařízení toku kódu, není nutné zaregistrovat na identifikátor URI přesměrování pro aplikaci. Ve skutečnosti tyto toky provést výměnu zpráv pro koncový bod v2.0 Microsoft identity platform a vaše aplikace nebude volána zpět na žádné konkrétní identifikátor URI. Aby bylo možné rozlišit z toku aplikace důvěrnému klientovi, který nemá identifikátory URI pro přesměrování buď (klienta přihlašovacích údajů tok používaný v aplikacích démon), budete muset express, že vaše aplikace je aplikace veřejným klientem. Tato konfigurace zajišťuje tak, že přejdete **ověřování** pro vaši aplikaci a v části **upřesňující nastavení** podsekce, zvolte **Ano**, na otázku **Považovat aplikace veřejným klientem** (v **výchozí typ klienta** odstavci)
+- Pokud vaše aplikace používá pouze ověření integrované Windows, uživatelské jméno a heslo, není nutné zaregistrovat na identifikátor URI přesměrování pro aplikaci. Ve skutečnosti tyto toky provést výměnu zpráv pro koncový bod v2.0 Microsoft identity platform a vaše aplikace nebude volána zpět na žádné konkrétní identifikátor URI. 
+- Aby bylo možné rozlišit zařízení toku kódu, integrované ověřování Windows a uživatelského jména a hesla z toku aplikace důvěrnému klientovi, který nemá identifikátory URI pro přesměrování buď (klienta přihlašovacích údajů tok používaný v aplikacích démon), budete muset express vaše aplikace je aplikace veřejným klientem. Tato konfigurace zajišťuje tak, že přejdete **ověřování** pro vaši aplikaci a v části **upřesňující nastavení** podsekce, zvolte **Ano**, na otázku **Považovat aplikace veřejným klientem** (v **výchozí typ klienta** odstavci)
 
   ![Povolit veřejné klienta](media/scenarios/default-client-type.png)
 
-## <a name="api-permissions"></a>Oprávnění rozhraní API
+## <a name="api-permissions"></a>Oprávnění k rozhraní API
 
 Desktopové aplikace volat rozhraní API jménem přihlášeného uživatele. Budou muset požadovat delegovaná oprávnění. Jejich nemohou požadovat oprávnění aplikací (které jsou zpracovávány pouze v [démon aplikace](scenario-daemon-overview.md))
 

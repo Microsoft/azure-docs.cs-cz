@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fa79f519c8f3eb8baeaab04870f22a1cfefa59ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053164"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Pomocí služby bot QnA Maker a LUIS distribuovat znalostní báze
 Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
@@ -27,7 +27,7 @@ Tento článek používá sadu SDK v3 Bot Framework. Přečtěte si tento [Bot F
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura služby luis QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![Nástroj QnA Maker s architekturou Language Understanding](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dotaz z modelu LUIS a použije ji směrovat do znalostní báze správný nástroj QnA Maker.
 
@@ -51,7 +51,7 @@ Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dot
 
 ## <a name="web-app-bot"></a>Web app Bot
 
-1. [Vytvořte Web App bot](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample) pomocí šablony služby LUIS. Vyberte 3.x sady SDK a programovací jazyk C#.
+1. [Vytváření robotů "Základní" webovou aplikaci](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) automaticky obsahující aplikaci LUIS. Vyberte 4.x SDK a C# programovací jazyk.
 
 1. Po vytvoření použijete web app bot, na webu Azure Portal, vyberte použijete web app bot.
 1. Vyberte **nastavení aplikace** v navigačním služby Web app bot, poté přejděte dolů k **nastavení aplikace** část dostupných nastaveních.

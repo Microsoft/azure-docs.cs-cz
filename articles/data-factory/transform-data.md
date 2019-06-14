@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 2c674f77ef0f779c9764771e2e0ae7a4aea47548
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60622103"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat ve službě Azure Data Factory
@@ -60,10 +60,10 @@ V průběhu času prediktivních modelů ve službě Machine Learning, experimen
 
 Zobrazit [aktivit Machine learningu pomocí](transform-data-using-machine-learning.md) podrobné informace o těchto aktivit Machine learningu. 
 
-## <a name="stored-procedure-activity"></a>Aktivita uložené procedury
+## <a name="stored-procedure-activity"></a>Aktivita uložená procedura
 Aktivita uložená procedura SQL serveru v kanálech Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložiště dat: Azure SQL Database, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo Virtuálním počítači Azure. Zobrazit [aktivity uložené procedury](transform-data-using-stored-procedure.md) , kde najdete podrobnosti.  
 
-## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita Data Lake Analytics U-SQL
+## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita data Lake Analytics U-SQL
 Aktivita data Lake Analytics U-SQL spouští skript U-SQL v clusteru služby Azure Data Lake Analytics. Zobrazit [aktivita Data Analytics U-SQL](transform-data-using-data-lake-analytics.md) , kde najdete podrobnosti. 
 
 ## <a name="databricks-notebook-activity"></a>Aktivitu poznámkového bloku Databricks

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
 ms.openlocfilehash: fbbc8a4f636a95d18baa0dc5de541279ce36789b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551932"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílení řídicích panelů Azure prostřednictvím řízení přístupu na základě Role
@@ -36,7 +36,7 @@ Pomocí Role-Based řízení přístupu (RBAC), můžete přiřadit uživatele k
 
 * předplatné
 * skupina prostředků
-* prostředek
+* resource
 
 Oprávnění, která přiřadíte se dědí z předplatného na prostředek. Publikovaný řídicí panel je prostředek. Proto může již máte uživatele přiřadit do rolí pro předplatné, které fungovat i pro publikovaný řídicí panel. 
 

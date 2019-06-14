@@ -3,17 +3,17 @@ title: Použití zařízení nastaví v aplikaci Azure IoT Central | Dokumentace
 description: Jakožto Obsluha nastaví použití zařízení v aplikaci Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 02/05/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60517358"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052940"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
@@ -50,7 +50,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
 1. Vyberte vaši sadu zařízení.
 
-1. Vyberte kartu **Dashboard** (Řídicí panel).
+1. Vyberte kartu **Řídicí panel** .
 
 1. Vyberte **Upravit**.
 
@@ -73,7 +73,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
     1. Zvolte **mřížky** v pravém podokně.
     1. Poskytují vaší mřížkou **Title**.
     1. Vyberte sloupce, které chcete zobrazit výběrem **přidat nebo odebrat**. V panelu, která se otevře zvolte sloupec má a klikněte na šipku doprava a vyberte ji.
-    1. Vyberte **OK**.
+    1. Zvolte **OK**.
     1. Zvolte **Uložit**.
 
         ![Ukládat mřížka](media/howto-use-device-sets/image9.png)
@@ -115,7 +115,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat **seznamu**. **Seznamu*
 
     ![Volba sloupce](media/howto-use-device-sets/image12.png)
 
-1. Vyberte **OK**.
+1. Zvolte **OK**.
 
 ## <a name="analytics"></a>Analýzy
 

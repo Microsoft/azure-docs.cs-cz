@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466287"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licencí pro skupinu v Azure Active Directory
@@ -77,7 +77,7 @@ Rozhodnutí o tom, jak vyřešit konfliktní licence na produkty vždy patří s
 
 **PowerShell:** Rutiny prostředí PowerShell, oznamte tuto chybu jako _MutuallyExclusiveViolation_.
 
-## <a name="other-products-depend-on-this-license"></a>Na této licenci závisí další produkty.
+## <a name="other-products-depend-on-this-license"></a>Na této licenci závisí další produkty
 
 **Problém:** Plán služby, který musí být povolené pro plán služby, v jiném produktu pro funkci obsahuje některý z produktů, které je zadaná ve skupině. K této chybě dochází, když se pokusí odebrat základní plán služby Azure AD. Například to může nastat při odebrání uživatele ze skupiny.
 

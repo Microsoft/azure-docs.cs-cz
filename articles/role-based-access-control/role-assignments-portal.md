@@ -15,10 +15,10 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60533034"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure portal
@@ -69,13 +69,13 @@ První věc, kterou musíte se rozhodnout je tam, kde otevřete okno ovládacíh
 
 1. Klikněte na tento konkrétní prostředek.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
     Následuje příklad přístup okna ovládacího prvku (IAM) předplatného. Pokud provedete změny řízení přístupu tady, by se vztahují na celé předplatné.
 
     ![Okno pro kontrolu (IAM) přístup k předplatnému](./media/role-assignments-portal/access-control-subscription.png)
 
-## <a name="view-roles-and-permissions"></a>Zobrazit role a oprávnění
+## <a name="view-roles-and-permissions"></a>Zobrazení rolí a oprávnění
 
 Definice role je kolekce oprávnění, kterou používáte pro přiřazení rolí. Azure má víc než 70 [předdefinované role pro prostředky Azure](built-in-roles.md). Postupujte podle těchto kroků k zobrazení dostupných rolí a oprávnění.
 
@@ -91,7 +91,7 @@ Definice role je kolekce oprávnění, kterou používáte pro přiřazení rol�
 
    ![Přiřazení rolí](./media/role-assignments-portal/role-assignments.png)
 
-## <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
+## <a name="view-role-assignments"></a>Zobrazení přiřazení rolí
 
 Při správě přístupu, budete chtít vědět, kdo má přístup, jaké jsou jejich oprávnění a v jaké oboru. Pro přístup k seznamu pro uživatele, skupiny, instanční objekt nebo spravovanou identitu zobrazit svá přiřazení rolí.
 
@@ -127,7 +127,7 @@ Následujícím postupem zobrazíte přístup pro jednoho uživatele, skupiny, i
 
    Na kartě přiřazení Role se zobrazí, kdo má přístup na tento obor. Všimněte si, že některé role mají obor nastavený na **Tento prostředek**, zatímco jiné mají obor **(Zděděný)** z jiného oboru. Přístup přiřazený speciálně pro tento prostředek nebo zděděn od přiřazení do nadřazeného oboru.
 
-## <a name="add-a-role-assignment"></a>Přidat přiřazení role
+## <a name="add-a-role-assignment"></a>Přidání přiřazení role
 
 V RBAC udělit přístup, můžete přiřadit role pro uživatele, skupiny, instanční objekt nebo spravovaná identita. Postupujte podle těchto kroků k udělení přístupu v různých oborech.
 
@@ -161,7 +161,7 @@ Chcete-li uživatel správcem předplatného Azure, přiřaďte jim [vlastníka]
 
 1. Klikněte na předplatné, ve které chcete udělit přístup.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
 1. Klikněte na tlačítko **přiřazení rolí** kartu zobrazíte všechna přiřazení rolí pro toto předplatné.
 
@@ -208,4 +208,4 @@ V RBAC se přístup odebírá odebrání přiřazení role. Postupujte podle tě
 * [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a webu Azure portal](quickstart-assign-role-user-portal.md)
 * [Kurz: Udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a Azure Powershellu](tutorial-role-assignments-user-powershell.md)
 * [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)
-* [Uspořádání prostředků s využitím skupin pro správu Azure](../governance/management-groups/index.md)
+* [Uspořádání prostředků se skupinami pro správu Azure](../governance/management-groups/index.md)

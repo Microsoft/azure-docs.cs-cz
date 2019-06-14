@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 392b7a08d9422658c5620f60e9c1caca074bc85e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452672"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Nejčastější dotazy a známé problémy s (Aktualizovat) v Azure Active Directory identity protection
@@ -32,7 +32,7 @@ ms.locfileid: "60452672"
 **Zavřít uživatelského rizika** v modelu classic Identity Protection nastaví objekt actor v historii rizika uživatele ve službě Identity Protection (Aktualizovat) na **Azure AD**.
 
 
-**Zavřít uživatelského rizika** v ochrana Identity (Aktualizovat) nastaví objekt actor v historii rizika uživatele ve službě Identity Protection (Aktualizovat) na **\<jména správce s hypertextovým odkazem přejdete na okno uživatele\>**.
+**Zavřít uživatelského rizika** v ochrana Identity (Aktualizovat) nastaví objekt actor v historii rizika uživatele ve službě Identity Protection (Aktualizovat) na **\<jména správce s hypertextovým odkazem přejdete na okno uživatele\>** .
 
 Existuje problém aktuální známé příčinou latence v toku propuštění rizika uživatele. Pokud máte "zásady rizik uživatelů", přestane tato zásada použití dismissed uživatelům v rámci minut po kliknutí na "Zavřít uživatelského rizika". Nicméně jsou známy zpoždění pomocí uživatelského rozhraní "stavu riziko" dismissed uživatelů. Jako alternativní řešení aktualizujte stránku, na úrovni prohlížeče zobrazíte nejnovější uživatele "Stav rizika".
 
@@ -43,7 +43,7 @@ Dotazy na **uživatelské jméno** pole jsou malá a velká písmena, při dotaz
 
 Při přepínání **hierarchické zobrazení** skryje **poslední aktualizace rizika** sloupce. Chcete-li znovu přidat kliknutím na sloupec **sloupce** v horní části okna rizikový uživatel.
 
-**Zavřít všechny události** v modelu classic Identity Protection nastaví stav rizikových událostí na **uzavřené (vyřešené)**.
+**Zavřít všechny události** v modelu classic Identity Protection nastaví stav rizikových událostí na **uzavřené (vyřešené)** .
 
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Sestavy rizikových přihlášení známé problémy
@@ -76,7 +76,7 @@ Informace o zeměpisné poloze mapování adresy IP, je globální výzva. Pokud
 
 **Potvrďte bezpečné** (na u přihlášení) – informuje Azure AD Identity Protection, že přihlášení proběhlo vlastníkem identity a nenaznačuje, že ohrožení zabezpečení.
 
-- Po přijetí této zpětné vazby, pustíme přihlášení (nikoli uživatele) rizika stavu **potvrzeno bezpečné** a úroveň rizika pro **-**.
+- Po přijetí této zpětné vazby, pustíme přihlášení (nikoli uživatele) rizika stavu **potvrzeno bezpečné** a úroveň rizika pro **-** .
 
 - Kromě toho zajišťuje informace na našem strojového učení systémy pro budoucí vylepšení v posouzení rizik.
 

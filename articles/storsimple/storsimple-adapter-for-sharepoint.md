@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
 ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60633159"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Nainstalovat a nakonfigurovat StorSimple Adapter pro SharePoint
@@ -92,7 +92,7 @@ Před instalací StorSimple Adapter pro SharePoint, musíte nakonfigurovat zař�
 ## <a name="configure-prerequisites"></a>Konfigurovat požadavky související s
 Před instalací StorSimple Adapter pro SharePoint, ujistěte se, že zařízení StorSimple, farmy služby SharePoint server a instance systému SQL Server splňují následující požadavky.
 
-### <a name="system-requirements"></a>Systémové požadavky
+### <a name="system-requirements"></a>Požadavky na systém
 StorSimple Adapter pro SharePoint funguje s níže uvedený hardware a software:
 
 * Podporovaný operační systém – Windows Server 2008 R2 SP1, Windows Server 2012 nebo Windows Server 2012 R2

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
 ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609694"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
@@ -128,7 +128,7 @@ Jeho úkolem je monitorovat stav pacientů a také zajistit, aby byl k dispozici
 
 Auditor je vyhodnocen jako řešení pro dodržování předpisů. Jejich nemají žádný přímý přístup k síti.
 
--   Integrovaná přiřazení rolí: [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Integrovaná přiřazení rolí: [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   Přiřazení vlastních rolí: neuvedeno
 
@@ -358,7 +358,7 @@ K dosažení úložiště dat, společné schéma rozhraní API implementované 
 ### <a name="application-insights"></a>Application Insights
 - [Application Insights](/azure/application-insights/app-insights-overview) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Slouží k monitorování živé webové aplikace. Detekuje anomálie výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
-### <a name="azure-alerts"></a>Upozornění Azure
+### <a name="azure-alerts"></a>Azure Alerts
 - [Výstrahy](/azure/azure-monitor/platform/alerts-metric) nabízejí způsob sledování služeb Azure a umožňují konfigurovat podmínky nad daty. Výstrahy také poskytují oznámení, když výstražný stav odpovídá data monitorování.
 
 ### <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor

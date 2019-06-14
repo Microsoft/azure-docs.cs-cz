@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67faf268d265fd045c21b75b6f64840511a371d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067327"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, je registrován v testovacím, řídí počet hodin, můžete použít virtuální počítač a další. 
@@ -80,19 +80,24 @@ Vyberte **uživatelé** v nabídce vlevo, pokud chcete zobrazit seznam uživatel
 Kvóty uživatele můžete nastavit pomocí následujících kroků: 
 
 1. Vyberte **uživatelé** v nabídce vlevo.
-2. Vyberte **kvóty na uživatele: neomezená** na panelu nástrojů. 
-3. Na **kvóty uživatele** stránky, vyberte jednu z následujících možností: 
-    1. **Žádný**. Uživatelé mohou používat své virtuální počítače pouze při naplánovaném čase nebo když vlastník testovacího prostředí se změní na virtuálních počítačích pro ně.
-    2. **Neomezené (výchozí)**. Uživatelé mohou používat své virtuální počítače bez jakýchkoli časových omezení.
-    3. **Zadejte počet hodin na uživatele**. Uživatelé můžou používat své virtuální počítače pro zadaného počtu hodin (níže uvedených) kromě naplánovaném čase. Pokud vyberete tuto možnost, zadejte **počet hodin** v textovém poli. 
+2. Vyberte **kvóty na uživatele:** na panelu nástrojů. 
+3. Na **kvóty uživatele** stránky, zadejte počet hodin, kterou chcete přidělit pro jednotlivé uživatele (student): 
+    1. **0 hodin (pouze schéma)** . Uživatelé mohou používat své virtuální počítače pouze v naplánovaném čase nebo jako vlastník testovacího prostředí se změní na virtuálních počítačích pro ně.
+
+        ![Nula hodin – pouze naplánovaném čase](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Celkový počet hodin testovacího prostředí na uživatele**. Uživatelé můžou používat svoje virtuální počítače pro zadaného počtu hodin (zadaný pro toto pole) **kromě naplánovaném čase**. Pokud vyberete tuto možnost, zadejte **počet hodin** v textovém poli. 
 
         ![Počet hodin na uživatele](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
     4. Vyberte **Uložit**. 
-5. Nyní uvidíte změněné hodnoty na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;**. 
+5. Nyní uvidíte změněné hodnoty na panelu nástrojů: **Kvóta na uživatele: &lt;počet hodin&gt;** . 
 
     ![Kvóta na uživatele](../media/how-to-configure-student-usage/quota-per-user.png)
 
+
+
 > [!IMPORTANT]
+> Před odesláním odkaz na registraci pro studenty, učitelé musí buď nastavte plán pro třídu, pokud 0 hodin kvóty vyberte nebo zadejte hodiny kvóty pro testovací prostředí.
+>
 > [Naplánované spuštění virtuálních počítačů](how-to-create-schedules.md) nepočítá proti kvóty přidělený na uživatele. Kvóta je na dobu mimo hodiny plánu, které student stráví na virtuálních počítačích. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Přidání uživatelů tím, že nahrajete soubor CSV

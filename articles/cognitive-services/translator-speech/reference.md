@@ -12,10 +12,10 @@ ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60539175"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
@@ -56,7 +56,7 @@ Ukázky kódu pro demonstraci použití rozhraní Translator Speech API jsou k d
 
 ZÍSKAT /speech/translate Establishes relace pro překlad řeči
 
-### <a name="connecting"></a>Připojování
+### <a name="connecting"></a>Připojení
 Před připojením ke službě, přečtěte si seznam parametrů uvedených dále v této části. Příklad žádosti je:
 
 `GET wss://dev.microsofttranslator.com/speech/translate?from=en-US&to=it-IT&features=texttospeech&voice=it-IT-Elsa&api-version=1.0`
@@ -70,7 +70,7 @@ Po připojení se naváže, začne klient, vysílání datového proudu zvuku ve
 
 Zvukový vstup je ve formátu souboru zvuk zvukového průběhu (WAVE nebo více obvykle označuje jako WAV z důvodu jeho příponu názvu souboru). Klientská aplikace by měl datový proud jeden kanál, odebírána data v 16 kHz zvuk PCM podepsaný 16 bitů. První sada bajtů streamuje klientovi bude zahrnovat hlavičku WAV. Záhlaví 44 bajtů pro jeden kanál podepsané 16 bitů PCM stream odebírána data v 16 kHz je:
 
-|Offset|Value|
+|Offset|Hodnota|
 |:---|:---|
 |0 - 3|"RIFF"|
 |4 - 7|0|
@@ -166,14 +166,14 @@ Když klientská aplikace dokončení vysílání datového proudu zvuku, obdrž
 
 ### <a name="parameters"></a>Parametry
 
-|Parametr|Value|Popis|Typ parametru|Typ dat|
+|Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:---|:---|:---|:---|:---|
-|verze API-version|1.0|Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query   |string|
-|od|(prázdné)   |Určuje jazyk příchozí řeči. Hodnota je jeden z identifikátorů jazyka z `speech` oboru v odpovědi z rozhraní API pro jazyky.|query|string|
+|api-version|1.0|Verze rozhraní API požadovaná klientem. Povolené hodnoty jsou: `1.0`.|query   |string|
+|from|(prázdné)   |Určuje jazyk příchozí řeči. Hodnota je jeden z identifikátorů jazyka z `speech` oboru v odpovědi z rozhraní API pro jazyky.|query|string|
 |na|(prázdné)|Určuje jazyk, který chcete přeložit text přepisu do. Hodnota je jeden z identifikátorů jazyka z `text` oboru v odpovědi z rozhraní API pro jazyky.|query|string|
 |Database|(prázdné)   |Exportovaná sadu funkcí zvolila klienta. Mezi dostupné funkce patří:<ul><li>`TextToSpeech`: Určuje, že služba musí vrátit přeložené zvuk na finální přeloženou větu.</li><li>`Partial`: Určuje, že služba musí vracet výsledky zprostředkující rozpoznávání při streamování zvuku ve službě.</li><li>`TimingInfo`: Určuje, že služba musí vracet informace o časování, které jsou spojené s každou rozpoznávání.</li></ul>Jako příklad klienta zadáte `features=partial,texttospeech` přijímat částečné výsledky a převod textu na řeč, ale žádné informace o časování. Všimněte si, že konečných výsledků se vždy streamují do klienta.|query|string|
 |Hlasu|(prázdné)|Určuje co hlasu pro převod textu na řeč vykreslování přeloženého textu. Hodnota je jeden z identifikátorů hlasové z oboru převod textu na řeč v odpovědi z rozhraní API pro jazyky. Pokud hlasový vstup není zadán, že systém bude automaticky zvolte jeden, pokud je povolena funkce Převod textu na řeč.|query|string|
-|formát|(prázdné)|Určuje formát převod textu na řeč zvukový stream vrácený poskytovatelem služby. Dostupné možnosti jsou:<ul><li>`audio/wav`: Zvukového průběhu zvukový datový proud. Klient musí použít hlavičku WAV správně interpretovat zvukový formát. Zvuk WAV pro převod textu na řeč je 16 bitů, jeden kanál PCM s vzorkovací frekvenci 24kHz nebo 16kHz.</li><li>`audio/mp3`: MP3 zvukový datový proud.</li></ul>Výchozí hodnota je `audio/wav`.|query|string|
+|format|(prázdné)|Určuje formát převod textu na řeč zvukový stream vrácený poskytovatelem služby. Dostupné možnosti jsou:<ul><li>`audio/wav`: Zvukového průběhu zvukový datový proud. Klient musí použít hlavičku WAV správně interpretovat zvukový formát. Zvuk WAV pro převod textu na řeč je 16 bitů, jeden kanál PCM s vzorkovací frekvenci 24kHz nebo 16kHz.</li><li>`audio/mp3`: MP3 zvukový datový proud.</li></ul>Výchozí hodnota je `audio/wav`.|query|string|
 |ProfanityAction    |(prázdné)    |Určuje způsob, jakým služba pracovat profanities rozpoznán v řeči. Jsou platné akce:<ul><li>`NoAction`: Profanities je ponechán beze změny.</li><li>`Marked`: Profanities jsou nahrazeny značku. Zobrazit `ProfanityMarker` parametru.</li><li>`Deleted`: Profanities se odstraní. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a .".`</li></ul>Výchozí hodnota je označen.|query|string|
 |ProfanityMarker|(prázdné)    |Určuje, jak zjištěné profanities jsou zpracovány při `ProfanityAction` je nastavena na `Marked`. Platné možnosti jsou:<ul><li>`Asterisk`: Profanities se nahradí řetězcem `***`. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a ***.".`</li><li>`Tag`: Podle značky XML vulgárních výrazů jsou obklopené vulgárních výrazů. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stanou `"He is a <profanity>jackass</profanity>."`.</li></ul>Výchozí formát je `Asterisk`.|query|string|
 |Autorizace|(prázdné)  |Určuje hodnotu klienta nosný token. Použijte předponu `Bearer` za nímž následuje hodnotu `access_token` hodnoty vrácené službou tokenu ověřování.|záhlaví   |string|
@@ -187,10 +187,10 @@ Když klientská aplikace dokončení vysílání datového proudu zvuku, obdrž
 
 ### <a name="response-messages"></a>Zprávy odpovědi
 
-|Kód stavu HTTP|Důvod|Model odpovědi|Hlavičky|
+|Kód stavu HTTP|Reason|Model odpovědi|Hlavičky|
 |:--|:--|:--|:--|
 |101    |Upgrade objektu WebSocket.|Příklad hodnoty modelu <br/> objekt {}|X-RequestId<br/>Hodnota identifikaci požadavků pro účely odstraňování potíží.<br/>string|
 |400    |Chybný požadavek. Zkontrolujte vstupní parametry k zajištění, že jsou platné. Objekt odpovědi obsahuje podrobnější popis chyby.|||
-|401    |Neautorizováno. Ujistěte se, že se přihlašovací údaje nastavené, že jsou platné a že vaše předplatné Azure Tržiště dat je v pořádku s dostupné vyrovnávání.|||
+|401    |Neoprávněný přístup. Ujistěte se, že se přihlašovací údaje nastavené, že jsou platné a že vaše předplatné Azure Tržiště dat je v pořádku s dostupné vyrovnávání.|||
 |500    |Došlo k chybě. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|||
 |503    |Server je dočasně nedostupný. Zkuste prosím požadavek. Pokud potíže potrvají, zprávu s identifikátorem trasování klienta (X-ClientTraceId) nebo identifikátor (X-RequestId) žádosti.|||

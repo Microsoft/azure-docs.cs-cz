@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49e5b6f52b92889ccc7c46f091ea1b90d43b0307
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3b16d928e2e4fc4b5376d30b81eb39e5a46e54b0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704797"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Kurz: Integrace Azure Active Directory s rozvoji Linkedinem
 
@@ -58,7 +58,7 @@ Pokud chcete nakonfigurovat integraci rozvoji Linkedinem do služby Azure AD, mu
 
 **Chcete-li přidat rozvoji Linkedinem z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s rozvoji Linkedinem, proveď
 
 7. Kromě toho výše rozvoji Linkedinem aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V části deklarace identity uživatelů na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | -------| -------------|
     | Oddělení | user.department |
 

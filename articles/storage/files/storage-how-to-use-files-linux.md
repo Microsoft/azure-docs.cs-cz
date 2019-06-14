@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 375d0de60b916becc8e86a1e33cf4ed46f12c077
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
-ms.translationtype: MT
+ms.openlocfilehash: 465725c69d7aedd7ca7cda35e798ce52416eb929
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055246"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 
@@ -75,7 +75,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
     Na jiné distribuce, použijte odpovídající balíček správce nebo [zkompilovat ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **Při rozhodování o oprávnění adresářů a souborů připojené sdílené složky**: V příkladech níže oprávnění `0777` je slouží k pojmenování pro čtení, zápisu a spouštěcích oprávnění pro všechny uživatele. Nahradit ho s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod) podle potřeby, i když to znamená potenciálně omezení přístupu. Pokud používáte jiná oprávnění, měli byste zvážit také pomocí uid a ID skupiny, aby byl zachovaný přístup pro místní skupiny podle svého výběru.
+* **Při rozhodování o oprávnění adresářů a souborů připojené sdílené složky**: V příkladech níže oprávnění `0777` je slouží k pojmenování pro čtení, zápisu a spouštěcích oprávnění pro všechny uživatele. Nahradit ho s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod) podle potřeby, i když to znamená potenciálně omezení přístupu. Pokud používáte jiná oprávnění, měli byste zvážit také pomocí uid a ID skupiny, aby byl zachovaný přístup pro místní uživatele a skupiny podle svého výběru.
 
 > [!NOTE]
 > Pokud nepřiřadíte explicitně oprávnění adresáře a souboru s dir_mode a file_mode, budou použity výchozí 0755.

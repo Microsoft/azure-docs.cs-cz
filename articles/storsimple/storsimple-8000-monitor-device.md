@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60634467"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Použití služby Správce zařízení StorSimple k monitorování zařízení StorSimple
@@ -40,7 +40,7 @@ Zřízená a zbývající kapacity se dále člení místně připnuté a vrstve
 ## <a name="usage"></a>Využití
 **Využití** sleduje metriky související s množství dat úložný prostor, který používá svazky, kontejnery svazků nebo zařízení. Můžete vytvořit sestavy na základě využití kapacity primární úložiště, cloudového úložiště nebo úložiště vašeho zařízení. Využití kapacity se měří na konkrétním svazku, kontejner určitý svazek nebo všechny kontejnery svazků.
 Ve výchozím nastavení se použije v hlášení využití za posledních 24 hodin. Můžete upravit graf a změňte, doba trvání nad tím, které se využití hlášené tak, že vyberete:
-* Posledních 24 hodin
+* Za posledních 24 hodin
 * Posledních 7 dní
 * Posledních 30 dní
 * Posledních 90 dní

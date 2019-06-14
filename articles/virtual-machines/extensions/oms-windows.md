@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: 270b3ae49a815c9e12fce9377c8298192237f28a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fb931d5ce72b21cb17abbcd11095dbc8d611f0c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790373"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064425"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Azure Monitor pro Windows
 
@@ -38,17 +38,18 @@ Rozšíření agenta Log Analytics pro Windows podporuje následující verze op
 - Windows Server 2008 R2, 2012, 2012 R2, 2016, verze 1709 a 1803
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
-Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Azure monitoru a sady agenta Log Analytics pro každou vydanou verzí. 
+Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Windows Azure monitoru a sady agenta Log Analytics pro každou vydanou verzí. 
 
-| Verze rozšíření Azure monitorování virtuálního počítače s Linuxem | Verze sady prostředků log Analytics agenta | Datum vydání | Poznámky k verzi |
+| Verze sady prostředků agenta log Analytics Windows | Verze rozšíření Azure VM Windows monitorování | Datum vydání | Poznámky k verzi |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
-| 8.0.11049.0 | 1.0.11049.1 | Únor 2017 | |
-| 8.0.11072.0 | 1.0.11072.1 | Září 2017 | |
-| 8.0.11081.0 | 1.0.11081.5 | Listopad 2017 | | 
-| 8.0.11103.0 | neuvedeno |  Duben 2018 | |
-| 8.0.11136.0 | neuvedeno | Září 2018 |  <ul><li> Přidání podpory pro zjišťování Změna ID prostředku. přesun virtuálních počítačů </li><li> Přidání podpory pro vytváření sestav nainstalovat ID při použití rozšíření prostředků </li></ul>| 
-| 10.19.10006.0 | neuvedeno | DEC 2018 | <ul><li> Stabilizace menší opravy </li></ul> | 
-| 10.19.13515.0 | 1.0.13515.1 | 2019. března | <ul><li>Stabilizace menší opravy </li></ul> |
+| 10.20.18001 | 1.0.18001 | 2019 dne | <ul><li> Stabilizace vylepšení a opravy menších chyb </li><li> Přidání možnosti zakázat výchozí přihlašovací údaje při navazování připojení proxy server (podpora pro WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
+| 10.19.13515 | 1.0.13515 | 2019\. března | <ul><li>Stabilizace menší opravy </li></ul> |
+| 10.19.10006 | neuvedeno | DEC 2018 | <ul><li> Stabilizace menší opravy </li></ul> | 
+| 8.0.11136 | neuvedeno | Září 2018 |  <ul><li> Přidání podpory pro zjišťování Změna ID prostředku. přesun virtuálních počítačů </li><li> Přidání podpory pro vytváření sestav nainstalovat ID při použití rozšíření prostředků </li></ul>| 
+| 8.0.11103 | neuvedeno |  Duben 2018 | |
+| 8.0.11081 | 1.0.11081 | Listopad 2017 | | 
+| 8.0.11072 | 1.0.11072 | Září 2017 | |
+| 8.0.11049 | 1.0.11049 | Únor 2017 | |
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -89,7 +90,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 | Název | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| vydavatele | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | ID pracovního prostoru (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
@@ -97,7 +98,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 
 \* ID pracovního prostoru je volána consumerId v rozhraní API služby Log Analytics.
 
-## <a name="template-deployment"></a>Nasazení šablony
+## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění rozšíření agenta Log Analytics při nasazení šablony Azure Resource Manageru. Ukázková šablona, která zahrnuje rozšíření virtuálního počítače agenta Log Analytics můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 

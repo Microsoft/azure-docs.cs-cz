@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 3dcbbfcdff0f30b8300e4fe767e27efb65723c5b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4abffc36695b5399eec28d74b9aa5eccb9841821
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898519"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Kurz: Integrace Azure Active Directory s FreshGrade
 
@@ -52,7 +52,7 @@ Konfigurace integrace FreshGrade do služby Azure AD, budete muset přidat Fresh
 
 **Chcete-li přidat FreshGrade z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon k udělení přístupu k FreshGrade pou�
 
 V této části vytvoříte uživatele v FreshGrade jako Britta Simon. Práce s [tým podpory FreshGrade](mailto:support@freshgrade.com) přidat uživatele na platformě FreshGrade. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

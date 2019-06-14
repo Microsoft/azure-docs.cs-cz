@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e331ea54a290bc794b04bb0d8e0ea653ef12bc19
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ffee3b8fa1d152ce94513353c5c178adb5e3cc77
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898824"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Kurz: Integrace Azure Active Directory s Evidence.com
 
@@ -53,7 +53,7 @@ Konfigurace integrace Evidence.com do služby Azure AD, budete muset přidat Evi
 
 **Chcete-li přidat Evidence.com z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -207,7 +207,7 @@ Pro uživatele Azure AD bude moct přihlásit musí být zřízený pro přístu
 
 5. **E-mailovou adresu** přidání uživatele, musí odpovídat uživatelské jméno uživatele ve službě Azure AD, který chcete poskytnout přístup. Pokud uživatelské jméno a e-mailové adresy nejsou stejnou hodnotu ve vaší organizaci, můžete použít **Evidence.com > atributy > Single Sign-On** části webu Azure portal, chcete-li změnit nameidenitifer odesílat Evidence.com bude e-mailovou adresu.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

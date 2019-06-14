@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
 ms.openlocfilehash: bd62624406adb006fdcd7d59f72db3fb5e1848a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60421793"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Metriky Azure Relay ve službě Azure Monitor (preview)
@@ -41,7 +41,7 @@ Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com).
 
 ![][1]
 
-Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Preview)**. 
+Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Preview)** . 
 
 Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenzí.
 
@@ -60,16 +60,16 @@ Všechny hodnoty metriky se posílají do Azure monitoru každou minutu. Časov�
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| ListenerConnections – úspěch (preview) | Počet úspěšných naslouchací proces připojení k Azure Relay v zadaném období. <br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+| ListenerConnections – úspěch (preview) | Počet úspěšných naslouchací proces připojení k Azure Relay v zadaném období. <br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 |ListenerConnections-ClientError (preview)|Číslo chyby klienta na naslouchací proces připojení v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|ListenerConnections-ServerError (preview)|Počet chyb serveru na naslouchací proces připojení v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|SenderConnections – úspěch (preview)|Počet úspěšných odesílatele připojení vytvořená v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|SenderConnections-ClientError (preview)|Číslo chyby klienta pro připojení odesílatele v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|ListenerConnections-ServerError (preview)|Počet chyb serveru na naslouchací proces připojení v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|SenderConnections – úspěch (preview)|Počet úspěšných odesílatele připojení vytvořená v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|SenderConnections-ClientError (preview)|Číslo chyby klienta pro připojení odesílatele v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 |SenderConnections-ServerError (preview)|Počet chyb serveru pro připojení odesílatele v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 |ListenerConnections-TotalRequests (preview)|Celkový počet připojení naslouchacího procesu v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|SenderConnections-TotalRequests (preview)|Požadavky na připojení provedené odesílatelé v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|ActiveConnections (preview)|Počet aktivních připojení v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
-|ActiveListeners (preview)|Počet aktivní naslouchací procesy v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|SenderConnections-TotalRequests (preview)|Požadavky na připojení provedené odesílatelé v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|ActiveConnections (preview)|Počet aktivních připojení v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|ActiveListeners (preview)|Počet aktivní naslouchací procesy v zadaném období.<br/><br/> Jednotka: Count <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 |ListenerDisconnects (preview)|Počet odpojené naslouchacích procesů v zadaném období.<br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 |SenderDisconnects (preview)|Počet odpojené odesílatelů v zadaném období.<br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 

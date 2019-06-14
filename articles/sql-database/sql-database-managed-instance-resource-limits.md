@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: ef431754db222554c6543e12e4cb6cf0431f7b51
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 06/13/2019
+ms.openlocfilehash: 15f64c7087ea4d24f271af67b251030a2196fa10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755040"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070378"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database managed instance omezení prostředků
 
@@ -32,26 +32,26 @@ Managed instance má vlastnosti a omezení prostředků, které jsou závislé n
 
 ### <a name="hardware-generation-characteristics"></a>Generování vlastností hardwaru
 
-Spravované instance Azure SQL Database je možné nasadit na dvou generacemi hardwaru: Gen4 i Gen5. Generacemi hardwaru mají jiné charakteristiky, které jsou popsány v následující tabulce:
+Spravované instance Azure SQL Database je možné nasadit na dvou generacemi hardwaru: Gen4 i Gen5. Generacemi hardwaru mají jiné charakteristiky, jak je popsáno v následující tabulce:
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech připojené SSD vCore = 1 PP (fyzických jader) | Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech rychlé NVMe SSD, vCore = 1 LP (hyper vlákno) |
-| Virtuální jádra | 8, 16, 24 virtuálních jader | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
+| Virtuální jádra | 8, 16, 24 virtuálních jader | 4, 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
 | Paměť (poměr paměti a jader) | 7 GB na vCore | 5.1 GB na vCore |
-| OLTP v paměti maximální paměti | Instance omezení: 3 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 8GB na databázi<br/> -16 jádry: 20GB na databázi<br/> -24jádra: 36GB na databázi | Instance omezení: 2,5 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 13GB na databázi<br/> -16 jádry: 32GB na databázi |
+| OLTP v paměti maximální paměti | Instance omezení: 3 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 8 GB na databázi<br/> -16 jádry: 20 GB na databázi<br/> -24jádra: 36 GB na databázi | Instance omezení: 2,5 GB na vCore<br/>Omezení databáze:<br/> -8 jádry: 13 GB na databázi<br/> -16 jádry: 32 GB na databázi |
 | Maximální místo v úložišti instancí (Obecné) |  8 TB | 8 TB |
 | Maximální velikost úložiště instance (pro důležité obchodní informace) | 1 TB | 1 TB, 2 TB nebo 4 TB, v závislosti na počtu jader |
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
-Managed instance má dvě úrovně služeb - obecné účely a pro důležité obchodní informace. Tyto úrovně teď poskytují různé možnosti, jak je popsáno v následující tabulce:
+Managed instance má dvě úrovně služby: Obecné účely a pro důležité obchodní informace. Tyto úrovně teď poskytují různé možnosti, jak je popsáno v následující tabulce:
 
 | **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
-| Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Paměť (poměr paměti a jader) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) |
-| Maximální velikost úložiště instancí | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
+| Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
+| Memory (Paměť) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB - 408 GB (5.1 GB/vCore) |
+| Maximální velikost úložiště instancí | -2 TB pro 4 virtuální jádra (pouze Gen5)<br/>-8 TB pro ostatní velikosti | Gen4: 1 TB <br/> Gen5: <br/>-1 TB pro 4, 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
@@ -62,10 +62,9 @@ Managed instance má dvě úrovně služeb - obecné účely a pro důležité o
 | Maximální velikost tempDB | 192 - 1,920 GB (24 GB na vCore) | Bez omezení – limitován velikostí úložiště maximální počet instancí |
 | Maximální počet relací | 30000 | 30000 |
 
-**Poznámky k**:
-
-- Velikost souboru protokolu a data uživatelů a systémové databáze jsou součástí úložiště velikost instance, která je ve srovnání s maximální limit velikosti úložiště. Použití <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> zobrazení systému k určení součet využitého místa databáze. Protokoly chyb není trvalý a není součástí velikost. Velikost úložiště nejsou součástí zálohy.
-- Propustnost a vstupně-výstupních operací také závisí na velikosti stránky, který není omezený explicitně spravované instance.
+> [!NOTE]
+> - Velikost souboru protokolu a data uživatelů a systémové databáze jsou součástí úložiště velikost instance, která je ve srovnání s maximální limit velikosti úložiště. Použití <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> zobrazení systému k určení součet využitého místa databáze. Protokoly chyb není trvalý a není součástí velikost. Velikost úložiště nejsou součástí zálohy.
+> - Propustnost a vstupně-výstupních operací také závisí na velikosti stránky, který není omezený explicitně spravované instance.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -80,55 +79,33 @@ Nasazení spravované instance aktuálně podporuje jenom pro následující typ
 - [Poskytovatele cloudových služeb (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Vývoj/testování s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0023p/)
-
-> [!NOTE]
-> Toto omezení je dočasný. Nové typy předplatného se povolí v budoucnu.
+- [Předplatná s měsíční kredit Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 
 ## <a name="regional-resource-limitations"></a>Omezení místních prostředků
 
 Typy podporované předplatného může obsahovat omezený počet prostředků v jedné oblasti. Managed instance má dvě výchozí omezení každou oblast Azure, v závislosti na typu typ předplatného:
 
 - **Limitu podsítí**: Maximální počet podsítí, ve které jsou spravované instance nasazené v jedné oblasti.
-- **Omezení počtu instancí**: Maximální počet instancí, které mohou být nasazeny v jedné oblasti.
+- **vCore limit**: Maximální počet virtuálních jader, které je možné nasadit napříč všemi instancemi v jedné oblasti.
 
 > [!Note]
 > Tato omezení jsou výchozí nastavení a ne technická omezení. Omezení může být vyšší podle potřeby tak, že vytvoříte speciální [žádost o podporu na webu Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) Pokud potřebujete více spravovaných instancí v aktuální oblasti. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez odeslání žádosti o podporu.
 
 Následující tabulka ukazuje výchozí místní omezení pro podporované předplatná:
 
-|Typ odběru| Maximální počet podsítí spravované instance | Maximální počet instancí |Maximální počet GP managed instance *|Maximální počet BC managed instance *|
-| :---| :--- | :--- |:--- |:--- |
-|Průběžné platby|1*|4*|4*|1*|
-|CSP |1*|4*|4*|1*|
-|Vývoj/testování s průběžnými platbami|1*|4*|4*|1*|
-|Enterprise pro vývoj/testování|1*|4*|4*|1*|
-|EA|3**|12**|12**|3**|
+|Typ odběru| Maximální počet podsítí spravované instance | Maximální počet jednotek vCore * |
+| :---| :--- | :--- |
+|Průběžné platby|3|320|
+|CSP |8 (15 v některých oblastech **)|960 (v některých oblastech ** 1440)|
+|Vývoj/testování s průběžnými platbami|3|320|
+|Enterprise pro vývoj/testování|3|320|
+|EA|8 (15 v některých oblastech **)|960 (v některých oblastech ** 1440)|
+|Visual Studio Enterprise|2 |64|
+|Visual Studio Professional a MSDN Platforms|2|32|
 
-\* 1 BC nebo 4 GP instance v jedné podsíti můžete nasadit buď tak, aby celkový počet jednotek"instance" v podsíti nikdy nepřesáhne 4.
+\* Při plánování vašeho nasazení, vezměte v úvahu, že kritické obchodní (BC) virtuální jádro (z důvodu přidání redundance) využívá 4 x větší kapacitu než virtuální jádro pro obecné účely (zásady skupiny). Ano, pro výpočty, 1 virtuální jádro GP = 1 vCore jednotky a 1 BC virtuální jádro = 4 jednotky na vCore. Zjednodušuje analýzy využití pro výchozí omezení, Shrňte jednotky vCore přes všechny podsítě v oblasti, kde spravované instance se nasazují a porovnávat výsledky s limity instancí jednotky pro typ vašeho předplatného. **Maximální počet jednotek vCore** omezení platí pro každé předplatné oblast. Neexistuje žádné omezení na jednotlivé podsítě s tím rozdílem, že součet všech virtuálních jader nasazených na více podsítí musí být menší nebo rovna hodnotě **maximální počet jednotek vCore**.
 
-** Maximální počet instancí v rámci jedné úrovně služby platí v případě, že neexistují žádné instance v rámci jiné úrovně služby. Pokud budete chtít míchat zásady skupiny a BC instance ve stejné podsíti, použijte jako referenci pro povolené kombinace v následující části. Jednoduché pravidlo celkový počet podsítí nemůže být delší než 3 a celkový počet jednotek instance nemůže být delší než 12.
-
-
-> [!IMPORTANT]
-> Při plánování vašeho nasazení, vezměte v úvahu, že instance kritické obchodní (BC) (z důvodu přidání redundance) obecně využívá 4 x větší kapacitu než instance obecné účely (zásady skupiny). Ano, pro výpočty, 1 GP instance = 1 instance jednotky a 1 BC instance = 4 jednotky instance. Pro zjednodušení analýzy využití pro výchozí omezení, Shrňte instance jednotky ve všech podsítí v oblasti, kde spravované instance se nasazují a porovnávat výsledky s limity instancí jednotky pro typ vašeho předplatného.
-
-## <a name="strategies-for-deploying-mixed-general-purpose-and-business-critical-instances"></a>Strategie pro nasazení smíšeném instance pro obecné účely a pro důležité obchodní informace
-
-[Smlouvy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) předplatné může mít kombinací instancí GP a BC. Existují však některá omezení týkající se umístění instance v podsítí.
-
-> [!Note]
-> [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) a [Cloud Service Provider (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) typy předplatného může mít buď jeden pro důležité obchodní informace nebo až na 4 instance pro obecné účely.
-
-Následující příklady pokrývají nasazené služby se neprázdný podsítěmi a smíšené GP a BC úrovně služeb.
-
-|Počet podsítí|podsíť 1|Podsíť 2|Podsíť 3|
-|:---|:---|:---|:---|
-|1|1 BC až 8 GP<br>2 BC až 4 GP|neuvedeno| neuvedeno|
-|2|BC 0, až 4 GP|BC 1, až 4 GP<br>2 BC, 0 GP|neuvedeno|
-|2|1 BC, 0 GP|BC 0, až na 8 GP<br>BC 1, až 4 GP|neuvedeno|
-|2|2 BC, 0 GP|BC 0, až 4 GP|neuvedeno|
-|3|1 BC, 0 GP|1 BC, 0 GP|BC 0, až 4 GP|
-|3|1 BC, 0 GP|BC 0, až 4 GP|BC 0, až 4 GP|
+** Větší podsítě a vCore omezení jsou k dispozici v následujících oblastech: Austrálie – východ, USA – východ, USA – východ 2, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, západní Evropa, západní USA 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro SQL spravovaná instance
 
@@ -147,7 +124,7 @@ Chcete-li zahájit proces získávání vyšší kvóty:
      ![Problém typ kvóty](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
 3. Klikněte na **Další**.
-4. Na kartě problém pro novou žádost o podporu:
+4. Na **problém kartu** pro novou žádost o podporu:
    - Pro **závažnost**, vyberte úroveň závažnosti problému.
    - Pro **podrobnosti**, poskytují další informace o svém problému, včetně chybových zpráv.
    - Pro **nahrání souboru**, připojte soubor s dalšími informacemi (až 4 MB).
@@ -156,9 +133,9 @@ Chcete-li zahájit proces získávání vyšší kvóty:
 
      > [!IMPORTANT]
      > Neplatný požadavek by měl obsahovat:
-     > - Oblasti, které předplatné limit musí být zvýšena
-     > - Požadovaný počet instancí na úroveň služby v existující podsítě po kvótu zvýšit (je-li žádné existující podsítě potřeba rozšířit
-     > - Požadované číslo nové podsítě a celkový počet instancí na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
+     > - Oblast, ve které předplatné limit musí být zvýšena.
+     > - Požadovaný počet virtuálních jader na úrovni služby v existující podsítě po kvóty zvýšit (je-li žádné existující podsítě je potřeba rozbalit.
+     > - Požadované číslo nové podsítě a celkový počet virtuálních jader na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
 
 5. Klikněte na **Další**.
 6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.

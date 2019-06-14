@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626909"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak chcete-li vrátit zařízení certifikáty X.509
@@ -60,7 +60,7 @@ Aktualizuje se registrace položky pro souhrn certifikátů se provádí na **Sp
 
 2. Klikněte na **Správa registrací**.
 
-    ![Spravovat registrace](./media/how-to-roll-certificates/manage-enrollments-portal.png)
+    ![Správa registrací](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
 
 Jak zpracovat aktualizaci položky registrace bude záviset na tom, jestli používáte jednotlivé registrace nebo skupinových registrací. Také doporučené postupy se liší v závislosti na tom, jestli máte postupný certifikáty z důvodu porušení zabezpečení nebo vypršení platnosti certifikátu. Následující části popisují, jak zpracovat tyto aktualizace.

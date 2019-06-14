@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 06/11/2019
 ms.author: tulasim
-ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3bae01d65685aa9ea7bfc95d1f1454741d37b5e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053235"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Kurz: Vytváření QnA robotů s využitím Azure Bot službu v4
 
@@ -55,9 +55,9 @@ Vytváření robotů jako klientskou aplikaci pro znalostní báze.
     |Location|`west us`|Umístění bodu robotů také prostředků Azure.|
     |Cenová úroveň|`F0`|Pro službu Azure bot service na úrovni free.|
     |App name (Název aplikace)|`my-tutorial-kb-bot-app`|Toto je webová aplikace pro podporu svého robota pouze. Jak už používá vaše služba QnA Maker nemělo by to být stejný název aplikace. Nástroj QnA Maker webovou aplikaci pro sdílení obsahu s jakýmikoli prostředky se nepodporuje.|
-    |Jazykové sady SDK|C#|Toto je základní programovací jazyk používá rozhraní bot framework SDK. Jsou vaše volby C# nebo Node.js.|
+    |Jazykové sady SDK|C#|Toto je základní programovací jazyk používá rozhraní bot framework SDK. Jsou vaše volby [ C# ](https://github.com/Microsoft/botbuilder-dotnet) nebo [Node.js](https://github.com/Microsoft/botbuilder-js).|
     |Nástroj QnA ověřovacím klíčem|**Neměnit**|Tato hodnota je vyplňují za vás.|
-    |Plán služby App Service / umístění|**Neměnit**|Umístění pro účely tohoto kurzu není důležité.|
+    |Plán App service/umístění|**Neměnit**|Umístění pro účely tohoto kurzu není důležité.|
     |Azure Storage|**Neměnit**|Konverzace data se ukládají do tabulek Azure Storage.|
     |Application Insights|**Neměnit**|Protokolování se odesílají do Application Insights.|
     |Microsoft App ID|**Neměnit**|Uživatel služby Active directory a heslo je povinné.|

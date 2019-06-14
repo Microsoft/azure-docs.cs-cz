@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
 ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442082"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
@@ -445,13 +445,13 @@ Informace o tom co zastupuje každý symbol v syntaxi výrazů, najdete v násle
 ### <a name="operators"></a>Operátory
 Jsou podporovány následující operátory:
 
-| Rodina | Operátory |
+| Řada | Operátory |
 | --- | --- |
 | Aritmetické operace |+, -, *, /, % |
 | Logické |A, NEBO NE |
 | Porovnání |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 Při dotazování na dvojčata a úlohy, které jediný podporovaný je funkce:
 
 | Funkce | Popis |

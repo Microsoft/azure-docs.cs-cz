@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39c5efee0958fdfc8fa647f5acaf929f559f7bf7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61038554"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065652"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Jak nakonfigurovat – Azure Database pro MariaDB Data replikace
 
-V tomto článku se dozvíte, jak nastavit replikaci dat ve službě Azure Database pro MariaDB služby díky konfiguraci serverů master a repliky. Replikace dat umožňuje synchronizovat data z hlavního serveru MariaDB spuštěné místně, v databázi služby hostované jiných poskytovatelů cloudových služeb do repliky ve službě Azure Database pro MariaDB službu nebo virtuálních počítačích. 
+V tomto článku se dozvíte, jak nastavit replikaci dat ve službě Azure Database pro MariaDB služby díky konfiguraci serverů master a repliky. Replikace dat umožňuje synchronizovat data z hlavního serveru MariaDB spuštěné místně, v databázi služby hostované jiných poskytovatelů cloudových služeb do repliky ve službě Azure Database pro MariaDB službu nebo virtuálních počítačích. Jsme recommanded nastavení replikace dat s [globální ID transakce](https://mariadb.com/kb/en/library/gtid/) 10.2 je hlavní server verze nebo vyšší.
 
 Tento článek předpokládá, že máte alespoň nějaké zkušenosti s MariaDB serverům a databázím.
 
@@ -116,7 +116,16 @@ Následující kroky připravte a nakonfigurujte MariaDB serveru místní, v vir
    Výsledky by měly být jako následující. Ujistěte se, jak se použije v dalších krocích, poznamenejte si název binárního souboru.
 
    ![Hlavní stav výsledky](./media/howto-data-in-replication/masterstatus.png)
+   
+6. Získat GTID pozice (volitelné, potřebné pro replikaci s GTID)
+
+   Spuštění funkce [ `BINLOG_GTID_POS` ](https://mariadb.com/kb/en/library/binlog_gtid_pos/) příkaz, který získá pozici GTID pro název souboru odpovídá binlog a posun.
+  
+    ```sql
+    select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
+    ```
  
+
 ## <a name="dump-and-restore-master-server"></a>Výpisu a obnovení hlavního serveru
 
 1. Vypsat všechny databáze z hlavního serveru
@@ -142,10 +151,16 @@ Následující kroky připravte a nakonfigurujte MariaDB serveru místní, v vir
 
    Všechny funkce replikace dat provádí uložené procedury. Můžete najít všechny postupy v [Data v uložené procedury replikace](reference-data-in-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench.
 
-   K propojení dvou serverů a spuštění replikace, přihlášení k cílovému serveru repliky v Azure DB pro službu MariaDB a nastavit externí instanci jako hlavní server. To se provádí pomocí `mysql.az_replication_change_master` uloženou proceduru v Azure DB for MariaDB serveru.
+   K propojení dvou serverů a spuštění replikace, přihlášení k cílovému serveru repliky v Azure DB pro službu MariaDB a nastavit externí instanci jako hlavní server. To se provádí pomocí `mysql.az_replication_change_master` nebo `mysql.az_replication_change_master_with_gtid` uloženou proceduru v Azure DB for MariaDB serveru.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
+   ```
+   
+   nebo
+   
+   ```sql
+   CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
    ```
 
    - master_host: název hostitele hlavního serveru
@@ -153,6 +168,7 @@ Následující kroky připravte a nakonfigurujte MariaDB serveru místní, v vir
    - master_password: heslo nadřazeného serveru
    - master_log_file: název souboru binárního protokolu spuštění `show master status`
    - master_log_pos: pozice binární protokol spuštění `show master status`
+   - master_gtid_pos: Pozice GTID spuštění `select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
    - master_ssl_ca: Certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
        - Je doporučeno předat tento parametr jako proměnnou. Podívejte se na následující příklady pro další informace.
 
@@ -199,9 +215,13 @@ Následující kroky připravte a nakonfigurujte MariaDB serveru místní, v vir
 
    Pokud státu `Slave_IO_Running` a `Slave_SQL_Running` jsou "Ano" a hodnota `Seconds_Behind_Master` je "0", dobře funguje replikace. `Seconds_Behind_Master` Určuje, jak pozdní repliky. Pokud hodnota je "0", znamená to, že je replika zpracování aktualizací. 
 
+4. Aktualizace odpovídají proměnných serveru, aby se data replikace více bezpečné (potřeba jenom pro replikaci bez GTID)
+    
+    Z důvodu omezení nativní replikace MariaDB, budete muset nastavení [ `sync_master_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) a [ `sync_relay_log_info` ](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) proměnné na replikaci bez GTID scénáře. Jsme recommand zkontrolujte podřízený server serveru `sync_master_info` a `sync_relay_log_info` proměnné a jejich změnu ot `1` Pokud chcete, aby se zajistilo stabilní je replikace dat v.
+    
 ## <a name="other-stored-procedures"></a>Dalších uložených procedur
 
-### <a name="stop-replication"></a>Zastavit replikaci
+### <a name="stop-replication"></a>Zastavení replikace
 
 Pokud chcete zastavit replikaci mezi serverem pro hlavní a repliku, použijte následující uložené procedury:
 

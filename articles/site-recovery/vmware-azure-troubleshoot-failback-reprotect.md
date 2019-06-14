@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565595"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Řešení potíží s navrácení služeb po obnovení do místní z Azure
@@ -33,7 +33,7 @@ K této chybě dochází při:
 * Virtuální počítač Azure kontaktovat místní konfigurační server. Virtuální počítač nelze zjistit a zaregistrován ke konfiguračnímu serveru.
 * Služba InMage Scout application neběží na virtuálním počítači Azure po převzetí služeb při selhání. Služba je potřeba ke komunikaci s místní konfigurační server.
 
-Řešení tohoto problému:
+K vyřešení tohoto problému:
 
 * Zkontrolujte, že síť virtuálních počítačů Azure umožňuje virtuálnímu počítači Azure ke komunikaci s místní konfigurační server. Můžete nastavit síť site-to-site VPN do vašeho místního datového centra nebo připojení Azure ExpressRoute nakonfigurovat soukromý partnerský vztah virtuální sítě virtuálního počítače Azure.
 * Pokud virtuální počítač může komunikovat s místní konfigurační server, přihlaste se k virtuálnímu počítači. Zkontrolujte službu InMage Scout application. Pokud se zobrazí, že neběží, spusťte službu ručně. Zkontrolujte, že služba spuštěna typ je nastavena na **automatické**.
@@ -44,7 +44,7 @@ K této chybě dochází při:
 
 Tento problém může dojít, pokud virtuální počítač na hlavním cílovém serveru, ke kterému jste se navrácení služeb po obnovení se stejným názvem již existuje.
 
-Řešení tohoto problému:
+K vyřešení tohoto problému:
 
 * Vyberte jiný hlavní cílový server na jiného hostitele tak, aby opětovného nastavování ochrany vytvoří počítače na jiného hostitele, kde není v konfliktu názvů.
 * Také můžete řešení vMotion přesunout na hlavním cíli na jiného hostitele, kde kolize názvů neprovede. Pokud existujícího virtuálního počítače je zapomenutý počítač, přejmenujte ho tak, aby nový virtuální počítač se dají vytvořit na stejném hostiteli ESXi.
@@ -54,7 +54,7 @@ Tento problém může dojít, pokud virtuální počítač na hlavním cílovém
 
 **Virtuální počítač neběží ve stavu, kdy nereaguje, nebo není přístupný.**
 
-Řešení tohoto problému:
+K vyřešení tohoto problému:
 
 K znovunastavení ochrany virtuálního počítače s převzetím služeb při selhání, musí být spuštěn virtuální počítač Azure, tak, aby služba Mobility zaregistruje se pomocí konfigurace místního serveru a může spustit replikaci tím, že komunikuje s procesový server. Pokud tento počítač je připojen k síti nesprávná nebo není spuštěná (ne reagovat nebo vypněte), konfigurační server se nemůže připojit službu Mobility na virtuálním počítači zahajte opětovné nastavování ochrany.
 
@@ -78,7 +78,7 @@ Tato část popisuje běžné chyby, které mohou nastat během navrácení slu�
 
 Tento problém nastane, pokud nedostanete místní virtuální počítač na hostitele, který nemá dostatek paměti zřízené. 
 
-Řešení tohoto problému:
+K vyřešení tohoto problému:
 
 * Zřízení více paměti na hostiteli ESXi.
 * Kromě toho můžete použít řešení vMotion pro přesun virtuálního počítače na jiného hostitele ESXi, který má dostatek paměti ke spuštění virtuálního počítače.

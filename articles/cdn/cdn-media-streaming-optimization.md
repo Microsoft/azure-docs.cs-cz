@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636221"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>S Azure CDN optimalizace streamování médií 
@@ -77,7 +77,7 @@ Můžete nakonfigurovat koncový bod content delivery network (CDN) k optimaliza
  
 Po vytvoření koncového bodu se vztahuje optimalizace pro všechny soubory, které splňují určitá kritéria. Následující část popisuje tento proces. 
 
-### <a name="caching"></a>Ukládání do mezipaměti
+### <a name="caching"></a>Caching
 
 Pokud **Azure CDN Standard od Akamai** zjistí, prostředek je streamovací manifest nebo fragment, používá různou dobu vypršení platnosti mezipaměti z obecné doručování webu. (Podívejte se na seznam v následující tabulce.) Protože jsou vždy, neuplatňují cache-control nebo Expires záhlaví odeslanými ze zdroje. Pokud prostředek není asset média, se ukládá do mezipaměti pomocí dobách vypršení platnosti pro obecné doručování webu.
 
@@ -86,8 +86,8 @@ Krátký záporný časový ukládání do mezipaměti je užitečný pro snižo
 
 |   | Obecné doručování webu | Streamování obecných médií | Streamování médií vod (Video-on-demand)  
 --- | --- | --- | ---
-Caching: Pozitivní <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dnů | 365 dnů   
-Caching: Negativní <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda | 1 sekunda
+Caching: Kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dnů | 365 dnů   
+Caching: Záporný <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Řešení selhání původu  
 

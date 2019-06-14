@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: b62b35320ba1f4473e9b3a039d181d6a2fb58257
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 9dd7f7d07b34ed3c1076b46c0bf5185d6c8cd31a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074234"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -68,6 +68,18 @@ Oracle podporuje imagemi virtuálního počítače založeného na Oracle Linuxu
 ### <a name="attached-disk-configuration-options"></a>Možnosti konfigurace připojený disk
 
 Spolehněte se na službu Azure Blob storage připojených disků. Každý standardní disk je schopen teoretické maximum přibližně 500 vstupně výstupní operace za sekundu (IOPS). Naše nabídky disk premium je upřednostňována pro vysoce výkonné databázové úlohy a může dosáhnout až 5000 vstupně-výstupních operací na disk. Můžete jeden disk, který vyhovuje vašim požadavkům na výkon. Můžete však zvýšit efektivní výkon vstupně-výstupních operací, pokud používáte více připojených disků, rozložit dat z databáze mezi nimi a pak pomocí automatického úložiště Oracle Management (ASM). Zobrazit [Oracle automatického úložiště – přehled](https://www.oracle.com/technetwork/database/index-100339.html) Oracle ASM konkrétní informace. Příklad toho, jak nainstalovat a nakonfigurovat Oracle ASM na Linuxovém virtuálním počítači Azure, najdete v článku [instalace a konfigurace Oracle automatizované Storage Management](configure-oracle-asm.md) kurzu.
+
+### <a name="shared-storage-configuration-options"></a>Možnosti konfigurace sdíleného úložiště
+
+Služba soubory Azure NetApp bylo navrženo pro splnění požadavků core provozování vysoce výkonné úlohy, jako jsou databáze v cloudu a poskytuje;
+- Azure nativní sdílené služby úložiště NFS pro spuštění úlohy Oracle buď prostřednictvím nativního klienta systému souborů NFS virtuálního počítače nebo Oracle dNFS
+- Škálovatelnost výkonu vrstev, které zahrnují požadavky skutečných rozsah IOPS
+- Nízká latence
+- Vysoká dostupnost, vysoká odolnost a možnosti správy ve velkém měřítku, obvykle vyžadována zásadně důležité podnikové úlohy (třeba SAP nebo Oracle)
+- Rychlé a efektivní zálohování a obnovení, abyste dosáhli nejvíc agresivní RTO a RPO SLA
+
+Tyto možnosti je možné, protože NetApp soubory Azure je založena na NetApp ONTAP® typu flash systémy s operačním systémem v rámci prostředí Azure datového centra – jako Azure nativní služby. Výsledkem je technologie úložiště ideální databázi, která může být zřízené a spotřebované stejně jako jiné možnosti úložišť v Azure. Zobrazit [dokumentace ke službě soubory Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/) Další informace o tom, jak nasadit a získat přístup ke svazkům Azure NetApp soubory systému souborů NFS. Zobrazit [Oracle v Azure nasazení osvědčených postupů pomocí Azure NetApp souborů](https://www.netapp.com/us/media/tr-4780.pdf) pro doporučené osvědčené postupy pro provozní databázi Oracle souborů NetApp Azure.
+
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Clusterová aplikace skutečný Oracle (Oracle RAC)
 Oracle RAC slouží ke zmírnění selhání jednoho uzlu v konfiguraci v místním clusteru s několika uzly. Spoléhá na dva místními technologiemi, které nejsou nativní pro vysoce škálovatelné veřejných cloudových prostředích: všesměrového vysílání v síti a sdíleného disku. Pokud vaše databáze řešení nevyžaduje RAC Oracle v Azure, musíte jiného software jiného výrobce umožňují tyto technologie. Další informace o Oracle RAC, najdete v článku [FlashGrid SkyCluster stránky](https://www.flashgrid.io/oracle-rac-in-azure/).

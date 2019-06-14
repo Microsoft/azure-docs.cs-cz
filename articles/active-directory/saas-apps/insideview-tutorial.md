@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fdabd237fa128326673d84e889387d03f184b00
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Kurz: Integrace Azure Active Directory s InsideView
 
@@ -66,7 +66,7 @@ Nastavení integrace InsideView do služby Azure AD, budete muset přidat Inside
 
 4. Do vyhledávacího pole zadejte **InsideView**. Vyberte **InsideView** ve výsledcích hledání a pak vyberte **přidat**.
 
-    ![Výsledky vyhledávání](common/search-new-app.png)
+    ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -94,7 +94,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s InsideView, proveďte tyto 
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -143,13 +143,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s InsideView, proveďte tyto 
 
     1. Otevřete nezpracovaná certifikát, který jste si stáhli z webu Azure portal. Zkopírujte obsah certifikátu do schránky a vložte obsah do **certifikátu STS** pole.
 
-    1. V **mapování Id uživatele Crm** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    1. V **mapování Id uživatele Crm** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-    1. V **Crm e-mailu mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    1. V **Crm e-mailu mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
 
-    1. V **Crm křestní jméno mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    1. V **Crm křestní jméno mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
 
-    1. V **Crm lastName mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.  
+    1. V **Crm lastName mapování** zadejte **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .  
 
     1. Vyberte **Uložit**.
 
@@ -212,7 +212,7 @@ Vytvoření uživatele nebo kontakty v InsideView, obraťte se [tým podpory Ins
 > [!NOTE]
 > Můžete použít libovolný nástroj pro vytváření účtu uživatele nebo rozhraní API poskytovaných InsideView zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

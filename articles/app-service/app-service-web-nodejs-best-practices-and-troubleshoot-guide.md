@@ -16,10 +16,10 @@ ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
 ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60853030"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
@@ -262,7 +262,7 @@ Některá řešení pro tento proces urychlit jsou:
 
 Povolit FREB pro aplikace, abyste viděli kód chyby win32 (Nezapomeňte povolit FREB pouze na webech li se o neprodukční z důvodů výkonu).
 
-| Stav HTTP | Podřízený stav protokolu HTTP | Možný důvod? |
+| Stav protokolu HTTP | Podřízený stav protokolu HTTP | Možný důvod? |
 | --- | --- | --- |
 | 500 |1000 |Došlo k problému některé odesílání požadavku do modulu IISNODE – zaškrtněte, pokud byl spuštěn node.exe. Node.exe může mít došlo k chybě při spuštění. Zkontrolujte konfiguraci souboru web.config pro chyby. |
 | 500 |1001 |-Win32Error 0x2 – aplikace nereaguje na adresu URL. Pokud vaše aplikace express obsahuje správný trasy definované zkontrolujte pravidla pro přepis adres URL nebo kontrola. -Win32Error 0x6d – pojmenovaného kanálu je zaneprázdněn – Node.exe nepřijímá požadavky, protože kanálu je zaneprázdněný. Zkontrolujte vysoké využití procesoru. -Další chyby – zkontrolujte, pokud došlo k chybě node.exe. |
@@ -276,7 +276,7 @@ Povolit FREB pro aplikace, abyste viděli kód chyby win32 (Nezapomeňte povolit
 
 NODE.exe má nastavení nazývá `NODE_PENDING_PIPE_INSTANCES`. Ve službě Azure App Service tato hodnota nastavena na 5 000. To znamená, že node.exe může přijmout 5000 požadavků současně v pojmenovaném kanálu. Tato hodnota by měla být dostatečné pro většinu aplikací node běžící na Azure App Service. Z důvodu vysoké hodnoty pro byste neměli vidět 503.1003 ve službě Azure App Service `NODE_PENDING_PIPE_INSTANCES`
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další materiály
 
 Další informace o aplikacích node.js ve službě Azure App Service na následujících odkazech.
 

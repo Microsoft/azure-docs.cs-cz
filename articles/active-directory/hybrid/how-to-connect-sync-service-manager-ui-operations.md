@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381388"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Na kartě Synchronizace Service Manager Operations
@@ -35,7 +35,7 @@ V horní polovině zobrazuje všechna spuštění v chronologickém pořadí. Ve
 
 **Stav** sloupec je nejdůležitější informace a v něm nejzávažnějších problémů pro spuštění. Tady je stručný přehled nejběžnějších stavů v pořadí podle priority k prozkoumání (kde * označení několik možných chybové řetězce).
 
-| Status | Poznámka |
+| Status | Komentář |
 | --- | --- |
 | stopped-\* |Spuštění se nepovedlo dokončit. Například, pokud vzdálený systém je vypnutý a nelze kontaktovat. |
 | stopped-error-limit |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
@@ -43,7 +43,7 @@ V horní polovině zobrazuje všechna spuštění v chronologickém pořadí. Ve
 | dokončené -\*– upozornění |Běh dokončen, ale některá data není v očekávaném stavu. Pokud už máte chyby, pak tato zpráva je obvykle pouze příznakem. Až vyřešíte chyby by neměl prozkoumat upozornění. |
 | úspěch |Žádné problémy. |
 
-Při výběru řádku dolní části aktualizuje zobrazíte podrobnosti o spuštění. Úplně vlevo dole, můžete mít přehled o tom, že **krok #**. Tento seznam se zobrazí, jenom Pokud máte více domén v doménové struktuře kde každou doménu představuje krok. Název domény najdete v části **oddílu**. V části **statistické údaje o synchronizaci**, najdete další informace o počtu změn, které byly zpracovány. Můžete kliknout na odkazy na získání seznamu změněné objekty. Pokud máte objektů s chybami, tyto chyby se zobrazí v části **chyby synchronizace**.
+Při výběru řádku dolní části aktualizuje zobrazíte podrobnosti o spuštění. Úplně vlevo dole, můžete mít přehled o tom, že **krok #** . Tento seznam se zobrazí, jenom Pokud máte více domén v doménové struktuře kde každou doménu představuje krok. Název domény najdete v části **oddílu**. V části **statistické údaje o synchronizaci**, najdete další informace o počtu změn, které byly zpracovány. Můžete kliknout na odkazy na získání seznamu změněné objekty. Pokud máte objektů s chybami, tyto chyby se zobrazí v části **chyby synchronizace**.
 
 Další informace najdete v tématu [potíží s objektem, který se nesynchronizuje](tshoot-connect-object-not-syncing.md)
 

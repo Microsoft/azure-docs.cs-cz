@@ -13,10 +13,10 @@ ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
 ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699299"
 ---
 # <a name="local-forwarder-preview"></a>Místní server pro předávání (Preview)
@@ -29,13 +29,13 @@ Místní služba předávání je [projekt open source na Githubu](https://githu
 
 ### <a name="windows"></a>Windows
 
-#### <a name="windows-service"></a>Služba systému Windows
+#### <a name="windows-service"></a>Windows Service
 
 Po instalaci se jako služba Windows je nejjednodušší způsob spouštění místní server pro předávání v části Windows. Spustitelný soubor Windows služby je součástí vydání (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) která lze snadno dokument zaregistrovat u operačního systému.
 
 > [!NOTE]
 > Služba předávání místní vyžaduje minimálně rozhraní .NET Framework 4.7. Pokud nemáte rozhraní .NET Framework 4.7 služby bude instalace, ale nespustí. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
-https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**.
+https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Stáhněte si LF. Soubor WindowsServiceHost.zip z [stránce verzí místní předávání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na Githubu.
 
@@ -146,7 +146,7 @@ systemctl enable localforwarder
 systemctl start localforwarder
 ```
 
-* Monitorovat službu zkontrolováním **.log* soubory v adresáři /home/SAMPLE_USER/LOCALFORWARDER_DIR.
+* Monitorovat službu zkontrolováním * *.log* soubory v adresáři /home/SAMPLE_USER/LOCALFORWARDER_DIR.
 
 ### <a name="mac"></a>Mac
 Místní server pro předávání může fungovat v systému macOS, ale není aktuálně podporována oficiálně.
@@ -177,7 +177,7 @@ host.Stop();
 
 ## <a name="monitoring-local-forwarder"></a>Monitorování místní server pro předávání
 
-Trasování jsou zapsané do systému souborů vedle spustitelný soubor, na kterém běží server pro předávání místní (vyhledejte **.log* soubory). Můžete umístit soubor s názvem *NLog.config* vedle spustitelný soubor a zadejte vlastní konfiguraci místo výchozí hodnotu. Zobrazit [dokumentaci](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) pro popis formátu.
+Trasování jsou zapsané do systému souborů vedle spustitelný soubor, na kterém běží server pro předávání místní (vyhledejte * *.log* soubory). Můžete umístit soubor s názvem *NLog.config* vedle spustitelný soubor a zadejte vlastní konfiguraci místo výchozí hodnotu. Zobrazit [dokumentaci](https://github.com/NLog/NLog/wiki/Configuration-file#configuration-file-format) pro popis formátu.
 
 Není-li žádný konfigurační soubor (což je výchozí hodnota), místní předávání použije výchozí konfigurace, který se nachází [tady](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/blob/master/src/Common/NLog.config).
 

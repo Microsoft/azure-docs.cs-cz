@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487278"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytvářet, monitorovat a spravovat objekty pro vytváření dat Azure pomocí Azure Data Factory .NET SDK
@@ -113,7 +113,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
 1. Pomocí sady Visual Studio 2012/2013/2015 vytvořte konzolovou aplikaci C# .NET.
    1. Spusťte **Visual Studio** 2012/2013/2015.
    2. Klikněte na **Soubor**, přejděte na **Nový** a klikněte na **Projekt**.
-   3. Rozbalte **Šablony** a vyberte **Visual C#**. V tomto názorném postupu použijete C#, ale mohli byste využít libovolný jazyk .NET.
+   3. Rozbalte **Šablony** a vyberte **Visual C#** . V tomto názorném postupu použijete C#, ale mohli byste využít libovolný jazyk .NET.
    4. V seznamu typů projektů napravo vyberte **Konzolová aplikace**.
    5. Jako název zadejte **DataFactoryAPITestApp**.
    6. Jako umístění vyberte **C:\ADFGetStarted**.
@@ -139,7 +139,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
         </appSettings>
     </configuration>
     ```
-5. V souboru App.Config aktualizujte hodnoty pro  **&lt;ID aplikace&gt;**,  **&lt;heslo&gt;**,  **&lt;předplatného ID&gt;**, a **&lt;ID tenanta&gt;** vlastními hodnotami.
+5. V souboru App.Config aktualizujte hodnoty pro  **&lt;ID aplikace&gt;** ,  **&lt;heslo&gt;** ,  **&lt;předplatného ID&gt;** , a **&lt;ID tenanta&gt;** vlastními hodnotami.
 6. Přidejte následující **pomocí** příkazy **Program.cs** soubor v projektu.
 
     ```csharp

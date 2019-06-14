@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab30dfeccc4ae1c7b09a8f48846ffb9e71cfc23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60438944"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Požadavky pro přístup k API pro vytváření sestav Azure Active Directory
@@ -62,19 +62,19 @@ K nastavení konfigurace adresáře pro přístup k rozhraní API pro generován
 
 1. V [webu Azure portal](https://portal.azure.com)vyberte **Azure Active Directory** v levém navigačním podokně.
    
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. V **Azure Active Directory** stránce **registrace aplikací**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
 3. Z **registrace aplikací** stránce **registrace nové aplikace**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. V **vytvořit** stránce, proveďte následující kroky:
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. V **název** textové pole, typ `Reporting API application`.
 
@@ -91,11 +91,11 @@ V závislosti na rozhraní API, které chcete získat přístup musíte aplikaci
 
 | Rozhraní API | Oprávnění |
 | --- | --- |
-| Windows Azure Active Directory | Čtení dat adresáře |
+| Windows Azure Active Directory | Čtení dat z adresáře |
 | Microsoft Graph | Přečtěte si, že všechna data protokolů auditu |
 
 
-![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 Následující části jsou uvedené kroky pro obě rozhraní API. Pokud nechcete, aby pro přístup k jednomu z rozhraní API, související kroky můžete přeskočit.
 
@@ -103,45 +103,45 @@ Následující části jsou uvedené kroky pro obě rozhraní API. Pokud nechcet
 
 1. Vyberte svou aplikaci z **registrace aplikací** stránku a vybrat **nastavení**. 
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
 2. Na **nastavení** stránce **požadovaná oprávnění**. 
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
 3. Na **požadovaná oprávnění** stránku, **API** klikněte na možnost **Windows Azure Active Directory**. 
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
 4. Na **povolit přístup z** stránce **čtení dat adresáře** a zrušte zaškrtnutí možnosti **přihlášení a čtení profilu uživatele**. 
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
 5. Na panelu nástrojů v horní části klikněte na tlačítko **Uložit**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 6. Na **požadovaná oprávnění** klikněte na stránku, na panelu nástrojů v horní části **přidat**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/32.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/32.png)
 
 7. Na **přístup přes rozhraní API přidat** klikněte na **vyberte rozhraní API**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/31.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/31.png)
 
 8. Na **vyberte rozhraní API** klikněte na **Microsoft Graphu**a potom klikněte na tlačítko **vyberte**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/33.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/33.png)
 
 9. Na **povolit přístup z** stránce **číst všechna data protokolů auditu**a potom klikněte na tlačítko **vyberte**.  
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/34.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/34.png)
 
 10. Na **přístup přes rozhraní API přidat** klikněte na **provádí**.  
 
 11. Na **požadovaná oprávnění** stránky, na panelu nástrojů v horní části. Klikněte na tlačítko **udělit oprávnění**a potom klikněte na tlačítko **Ano**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/17.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/17.png)
 
 
 ## <a name="gather-configuration-settings"></a>Shromážděte nastavení konfigurace 
@@ -160,11 +160,11 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro gene
 
 1. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně vyberte **Azure Active Directory**.
    
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Na **Azure Active Directory** stránce **vlastní názvy domén**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. Zkopírujte váš název domény z seznam domén.
 
@@ -175,13 +175,13 @@ Tyto hodnoty budete potřebovat při konfiguraci volání rozhraní API pro gene
 
 1. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně klikněte na tlačítko **Azure Active Directory**.
    
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Vyberte svou aplikaci z **registrace aplikací** stránky.
 
 3. Ze stránky aplikace, přejděte na **ID aplikace** a vyberte **kopírování kliknutím**.
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>Získat tajný kód klienta aplikace
@@ -191,21 +191,21 @@ Pokud chcete získat tajný kód klienta aplikace, budete muset vytvořit nový 
 
 1. V [webu Azure portal](https://portal.azure.com), v levém navigačním podokně klikněte na tlačítko **Azure Active Directory**.
    
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Vyberte svou aplikaci z **registrace aplikací** stránky.
 
 3. Na stránce aplikace, na panelu nástrojů v horní části vyberte **nastavení**. 
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
 4. Na **nastavení** stránku, **přístup přes rozhraní API** klikněte na tlačítko **klíče**. 
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. Na **klíče** stránce, proveďte následující kroky:
 
-    ![Zaregistrovat aplikaci](./media/howto-configure-prerequisites-for-reporting-api/14.png)
+    ![Registrace aplikace](./media/howto-configure-prerequisites-for-reporting-api/14.png)
 
     a. V **popis** textové pole, typ `Reporting API`.
 
@@ -227,7 +227,7 @@ Aktuálně nepodporujeme koncového bodu v2 Microsoft Graphu – Ujistěte se, �
 
 Může zobrazit tato chybová zpráva při pokusu o přístup k přihlášení pomocí Graph Exploreru. Ujistěte se, že jste přihlášeni ke svému účtu pomocí tlačítek přihlášení v Uživatelském rozhraní Graph Explorer, jak je znázorněno na následujícím obrázku. 
 
-![Graph Exploreru](./media/troubleshoot-graph-api/graph-explorer.png)
+![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
 ### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Chyba: Nepovedlo se provést kontrola licence premium z AD Graphu 
 

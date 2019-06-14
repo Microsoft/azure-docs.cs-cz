@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 3b4ed6d1ba83e2adb96bcfac986381dccbbef56f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 0a202621a9da031815ebbff3b121ea7f5e1eccfe
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062183"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -45,8 +45,9 @@ Podívejte se na příklad specifické pro jazyk:
 * [C#](#c-example)
 * [C# skript (.csx)](#c-script-example)
 * [F#](#f-example)
-* [JavaScript](#javascript-example)
 * [Java](#java-example)
+* [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
@@ -117,6 +118,21 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
     log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
+### <a name="java-example"></a>Příklad pro jazyk Java
+
+Následující příklad funkci aktivuje a spustí každých pět minut. `@TimerTrigger` Poznámka k funkci definuje plán stejný řetězec formátu jako [výrazů CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
 
 Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt. A [objekt časovače](#usage) je předán do funkce.
@@ -148,19 +164,37 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="java-example"></a>Příklad pro jazyk Java
+### <a name="python-example"></a>Příklad v Pythonu
 
-Následující příklad funkci aktivuje a spustí každých pět minut. `@TimerTrigger` Poznámka k funkci definuje plán stejný řetězec formátu jako [výrazů CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+Následující příklad používá aktivaci časovačem vazby, jejíž konfigurace je popsáno v *function.json* souboru. Skutečný [funkce Pythonu](functions-reference-python.md) používá vazba je popsána v  *__init__.py* souboru. Objekt předaný do funkce je typu [azure.functions.TimerRequest objekt](/python/api/azure-functions/azure.functions.timerrequest). Funkce logic zapíše do protokolů určující, zda je aktuální volání z důvodu chybějící plán výskyt. 
 
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
+Zde je vazba dat v *function.json* souboru:
+
+```json
+{
+    "name": "mytimer",
+    "type": "timerTrigger",
+    "direction": "in",
+    "schedule": "0 */5 * * * *"
 }
+```
+
+Tady je kód Pythonu:
+
+```python
+import datetime
+import logging
+
+import azure.functions as func
+
+def main(mytimer: func.TimerRequest) -> None:
+    utc_timestamp = datetime.datetime.utcnow().replace(
+        tzinfo=datetime.timezone.utc).isoformat()
+
+    if mytimer.past_due:
+        logging.info('The timer is past due!')
+
+    logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
 ## <a name="attributes"></a>Atributy
@@ -269,7 +303,7 @@ Například *východní oblast (běžný čas)* je UTC-05:00. Chcete-li mít ča
 "schedule": "0 0 15 * * *"
 ``` 
 
-Nebo vytvořit nastavení aplikace pro vaši aplikaci function app s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní oblast (běžný čas)**.  Poté použije následující výraz CRON: 
+Nebo vytvořit nastavení aplikace pro vaši aplikaci function app s názvem `WEBSITE_TIME_ZONE` a nastavte hodnotu na **východní oblast (běžný čas)** .  Poté použije následující výraz CRON: 
 
 ```json
 "schedule": "0 0 10 * * *"

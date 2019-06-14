@@ -6,13 +6,13 @@ ms.author: raagyema
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 403f111882b1bd151b26af56fd614355e7ba88e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/12/2019
+ms.openlocfilehash: 9fff9f13e5ce6bf8a7805f7794d3e71eb4030104
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61040754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065683"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a získat přístup k protokolům serveru pomocí příkazového řádku Azure
 Azure Database pro MariaDB serverové protokoly můžete stáhnout pomocí příkazového řádku Azure, nástroje příkazového řádku Azure.
@@ -38,7 +38,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Seznam protokolů pro službu Azure Database pro MariaDB server
-Chcete-li seznam souborů protokolu k dispozici pro váš server, spusťte [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) příkazu.
+Chcete-li seznam souborů protokolu pomalých dotazů k dispozici pro váš server, spusťte [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) příkazu.
 
 Můžete zobrazit seznam souborů protokolu pro server **mydemoserver.mariadb.database.azure.com** ve skupině prostředků **myresourcegroup**. Potom směrovat seznam souborů protokolů do textového souboru s názvem **protokolu\_soubory\_seznam.txt**.
 ```azurecli-interactive
@@ -53,4 +53,4 @@ az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [protokolů serveru ve službě Azure Database pro MariaDB](concepts-server-logs.md).
+- Další informace o [protokoly pomalých dotazů ve službě Azure Database pro MariaDB](concepts-server-logs.md).

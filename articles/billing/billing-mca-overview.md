@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371444"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>Začínáme s vaším fakturačním účtem Microsoft zákaznické smlouvy
@@ -59,7 +59,7 @@ Každý fakturační profil má svůj vlastní způsoby platby, které se použ�
 | Type             | Definice  |
 |------------------|-------------|
 |Kredity Azure    |  Kredity se automaticky použijí pro Celková fakturovaná částka na vaší faktuře k výpočtu velikosti, budete muset platit. Další informace najdete v tématu [zůstatek kreditu Azure pro váš fakturační profil sledovat](billing-mca-check-azure-credits-balance.md). |
-|Šek nebo bezhotovostní převod | Můžete platit dlužná částka fakturu buď prostřednictvím vrácení, nebo při přenosu přenášet. Jsou uvedeny pokyny pro platbu na fakturu |
+|Kontrola nebo při přenosu přenosu | Můžete platit dlužná částka fakturu buď prostřednictvím vrácení, nebo při přenosu přenášet. Jsou uvedeny pokyny pro platbu na fakturu |
 
 ### <a name="control-azure-marketplace-and-reservation-purchases-by-applying-policies"></a>Nákupy na Azure Marketplace ovládacího prvku a rezervace pomocí zásad
 
@@ -72,7 +72,7 @@ Plány Azure jsou povolené automaticky při vytváření fakturačního profilu
 | Plánování             | Definice  |
 |------------------|-------------|
 |Microsoft Azure Plan   | Povolení uživatelům vytvářet předplatná, která můžete spouštět žádné úlohy. Další informace najdete v tématu [plánu Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0017g/) |
-|Plán Microsoft Azure pro Vývoj/testování | Povolit předplatitele Visual Studia vytvořit předplatné, které mohly probíhat jenom pro vývoj nebo testování zatížení. Tato předplatná, získáte výhody, jako je například nižší sazby a přístup k imagím virtuálních počítačů vylučuje na webu Azure Portal. Další informace najdete v tématu [Microsoft Azure plánování DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
+|Plán Microsoft Azure pro vývoj/testování | Povolit předplatitele Visual Studia vytvořit předplatné, které mohly probíhat jenom pro vývoj nebo testování zatížení. Tato předplatná, získáte výhody, jako je například nižší sazby a přístup k imagím virtuálních počítačů vylučuje na webu Azure Portal. Další informace najdete v tématu [Microsoft Azure plánování DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)|
 
 ## <a name="understand-invoice-sections"></a>Vysvětlení faktury oddíly
 
@@ -85,7 +85,7 @@ Role v části faktury mají oprávnění řídit, kdo vytváří předplatných
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 

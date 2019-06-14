@@ -11,35 +11,38 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/05/2019
-ms.openlocfilehash: b39d2c839444e3cad60d5ff08e117282ecc04d7a
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.date: 06/12/2019
+ms.openlocfilehash: eba5294780cc39ced6e9ebb93abde84c31f90ed8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070109"
 ---
-# <a name="sql-database-serverless-preview"></a>Bez serveru SQL Database (preview)
+# <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (preview)
+
+Azure SQL Database, bez serveru (preview) je výpočetní úroveň pro izolované databáze, která se automaticky škáluje výpočetní prostředky na základě zátěži a účtuje velikost výpočetních využívá za sekundu. Databáze na úrovni výpočetní prostředí také automaticky pozastaví neaktivní období, kdy pouze úložiště se účtuje a automaticky obnoví databáze po návratu aktivity.
 
 ## <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
-Bez serveru SQL Database (preview) je výpočetní úroveň izolovanou databázi, bude automaticky škálovat výpočetní a účtuje velikost výpočetních operací za sekundu. 
-
-Databáze na úrovni výpočetní prostředí je ve výpočetní oblasti, kterou můžete použít a prodlevu autopause parametrizované.
+Na úrovni výpočetní prostředí pro izolovanou databázi je parametrizován rozsah škálování výpočetní prostředky a prodlevu autopause.  Konfigurace tyto parametry obrazce výkon databáze a výpočetní náklady.
 
 ![bez serveru fakturace](./media/sql-database-serverless/serverless-billing.png)
 
-### <a name="performance"></a>Výkon
+### <a name="performance-configuration"></a>Konfigurace výkonu
 
-- Počet virtuálních jader pro minimální a maximální virtuálních jader je konfigurovatelné parametry, které definují oblasti k dispozici výpočetní kapacity pro databázi. Omezení paměti a vstupně-výstupní operace jsou úměrná zadaný rozsah vCore.  
-- Autopause zpoždění je konfigurovatelný parametr, který definuje dobu, po který databáze musí být neaktivní, než je automaticky pozastaví. Databáze se automaticky obnoví při dalším přihlášení.
+- **Minimální virtuálních jader** a **virtuálních jader pro maximální** jsou konfigurovatelné parametry, které definují oblasti k dispozici výpočetní kapacity pro databázi. Omezení paměti a vstupně-výstupní operace jsou úměrná zadaný rozsah vCore.  
+- **Autopause zpoždění** je konfigurovatelný parametr, který definuje časový interval, databáze musí být neaktivní, než je automaticky pozastaví. Databáze se automaticky obnoví při příštím přihlášení nebo jiné aktivity.  Alternativně je možné zakázat autopausing.
 
-### <a name="pricing"></a>Ceny
+### <a name="cost"></a>Náklady
 
-- Celkový účet za databázi bez serveru je souhrn faktury výpočetní prostředky a faktura za úložiště.
-Fakturace za výpočetní prostředky podle množství používá virtuálních jader a paměti operací za sekundu.
-- Minimální výpočetní prostředky, které se účtují podle min virtuálních jader a paměti min.
-- Zatímco databáze je pozastavený, účtuje se pouze úložiště.
+- Náklady na databáze bez serveru je součtem výpočetní náklady a náklady na úložiště.
+- Při využití služby compute je v rozsahu definovaném minimálním a omezení pro službu compute maximální nakonfigurovaný, náklady na výpočetní prostředky podle vCore a využití paměti.
+- Při využití služby compute je nižší než omezení compute min nakonfigurované, náklady na výpočetní prostředky se odvíjí min virtuálních jader a minimální pamětí nakonfigurovaných.
+- Pokud databáze je pozastavený, náklady na výpočetní výkon jsou nula a bude účtovat pouze úložiště.
+- Náklady na úložiště, je určena stejným způsobem jako v zřízených výpočetních vrstvy.
+
+Další podrobnosti o nákladech, naleznete v tématu [fakturace](sql-database-serverless.md#billing).
 
 ## <a name="scenarios"></a>Scénáře
 
@@ -73,7 +76,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní prostředí a na úrov
 
 SQL Database bez serveru je aktuálně podporuje jenom v úrovni General Purpose na 5. generace hardwaru ve virtuálních jader, model nákupu.
 
-## <a name="autoscale"></a>Automatické škálování
+## <a name="autoscaling"></a>Automatické škálování
 
 ### <a name="scaling-responsiveness"></a>Škálování rychlost odezvy
 
@@ -98,9 +101,9 @@ V bez serveru a zřízení výpočetních databází, mezipaměti, kterou polož
 
 Mezipaměti SQL roste, jak načíst data z disku stejným způsobem a se stejnou rychlostí jako zřízené databáze. Když je zaneprázdněná databáze, do mezipaměti může růst bez omezení až po limit maximální paměti.
 
-## <a name="autopause-and-autoresume"></a>Autopause a autoresume
+## <a name="autopausing-and-autoresuming"></a>Autopausing a autoresuming
 
-### <a name="autopause"></a>Autopause
+### <a name="autopausing"></a>Autopausing
 
 Autopausing se aktivuje, pokud všechny následující podmínky platí po dobu trvání zpoždění autopause:
 
@@ -117,7 +120,7 @@ Tyto funkce nepodporují autopausing.  To znamená pokud jsou používány někt
 
 Autopausing dočasně nemůže během nasazování některé aktualizace služby, které vyžadují databázi být online.  V takových případech bude autopausing povoleno znovu po dokončení aktualizace služby.
 
-### <a name="autoresume"></a>Autoresume
+### <a name="autoresuming"></a>Autoresuming
 
 Pokud některý z následujících podmínek jsou splněny, kdykoli se aktivuje Autoresuming:
 
@@ -148,7 +151,7 @@ Latence autoresume a autopause databáze bez serveru je obecně daly autopause 1
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Registrace do vrstvy výpočetní prostředí
 
-Vytváří se nová databáze nebo přesunutí že existující databáze do vrstvy výpočetní prostředí používá stejný vzor jako vytváření s novou databází ve zřízené výpočetní vrstvě a zahrnuje následující kroky:
+Vytváří se nová databáze nebo přesunutí že existující databáze do vrstvy výpočetní prostředí používá stejný vzor jako vytváření s novou databází ve výpočetní vrstva zřízený a zahrnuje následující kroky.
 
 1. Zadejte název cíle služby. Cíl služby předepisuje úrovně, generace hardwaru a maximální počet virtuálních jader. V následující tabulce jsou uvedeny možnosti cíle služby:
 
@@ -163,18 +166,20 @@ Vytváří se nová databáze nebo přesunutí že existující databáze do vrs
    |Parametr|Hodnota možnosti|Výchozí hodnota|
    |---|---|---|---|
    |Min virtuálních jader|{0,5, 1, 2, 4} není větší než maximální počet virtuálních jader|0,5 virtuálních jader|
-   |Autopause zpoždění|Min: 360 minut (6 hodin)<br>Max: 10 080 minut (7 dní)<br>Krocích: 60 minut<br>Zakázat autopause: -1|360 minut|
+   |Autopause zpoždění|Minimálně: 360 minut (6 hodin)<br>Maximální počet: 10 080 minut (7 dní)<br>Krocích: 60 minut<br>Zakázat autopause: -1|360 minut|
 
 > [!NOTE]
 > Pomocí jazyka T-SQL přesunout existující databázi do bez serveru, nebo změňte jeho velikost výpočetních se aktuálně nepodporuje, ale můžete to udělat pomocí webu Azure portal nebo Powershellu.
 
-### <a name="create-new-serverless-database-using-azure-portal"></a>Vytvoření nové databáze bez serveru pomocí webu Azure portal
+### <a name="create-new-database-in-serverless-compute-tier"></a>Vytvořit novou databázi na úrovni výpočetní prostředí 
+
+#### <a name="use-azure-portal"></a>Použití webu Azure Portal
 
 Zobrazit [rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal](sql-database-single-database-get-started.md).
 
-### <a name="create-new-serverless-database-using-powershell"></a>Vytvoření nové databáze bez serveru pomocí Powershellu
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Následující příklad vytvoří novou databázi na úrovni výpočetní prostředí určené cíl služby s názvem GP_S_Gen5_4 s použitím výchozích hodnot pro zpoždění virtuálních jader a autopause min.
+Následující příklad vytvoří novou databázi na úrovni výpočetní prostředí.  Tento příklad explicitně určuje virtuálních jader pro minimální, maximální počet virtuálních jader a autopause zpoždění.
 
 ```powershell
 New-AzSqlDatabase `
@@ -189,9 +194,11 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
-### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>Přesunutí databáze zřízených výpočetních do vrstvy výpočetní prostředí
+### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Přesunutí databáze z úrovně zřízených výpočetních do vrstvy výpočetní prostředí
 
-Následující příklad přesune existující jedné databáze z úrovně zřízených výpočetních do vrstvy výpočetní prostředí. Tento příklad explicitně určuje virtuálních jader pro minimální, maximální počet virtuálních jader a autopause zpoždění.
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
+
+Následující příklad přesune databázi z vrstvy zřízených výpočetních do vrstvy výpočetní prostředí. Tento příklad explicitně určuje virtuálních jader pro minimální, maximální počet virtuálních jader a autopause zpoždění.
 
 ```powershell
 Set-AzSqlDatabase
@@ -206,7 +213,7 @@ Set-AzSqlDatabase
   -AutoPauseDelayInMinutes 1440
 ```
 
-### <a name="move-serverless-database-into-provisioned-compute-tier"></a>Přesunout do vrstvy zřízených výpočetních databáze bez serveru
+### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Přesunutí databáze z úrovně výpočetní prostředí do zřízených výpočetních vrstvy
 
 Databáze bez serveru můžete přesunout do vrstvy zřízených výpočetních stejným způsobem jako přesunutí databáze zřízených výpočetních do vrstvy výpočetní prostředí.
 
@@ -214,13 +221,19 @@ Databáze bez serveru můžete přesunout do vrstvy zřízených výpočetních 
 
 ### <a name="maximum-vcores"></a>Maximální počet virtuálních jader
 
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
+
 Změna maximální počet virtuálních jader je prováděno pomocí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `MaxVcore` argument.
 
 ### <a name="minimum-vcores"></a>Minimální počet virtuálních jader
 
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
+
 Úprava min virtuálních jader je prováděno pomocí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `MinVcore` argument.
 
 ### <a name="autopause-delay"></a>Autopause zpoždění
+
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Úprava zpoždění autopause pomocí provádí [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) příkazu v Powershellu pomocí `AutoPauseDelayInMinutes` argument.
 
@@ -228,7 +241,7 @@ Změna maximální počet virtuálních jader je prováděno pomocí [Set-AzSqlD
 
 ### <a name="resources-used-and-billed"></a>Prostředky používá a účtují
 
-Prostředky databáze bez serveru jsou zapouzdřena objektem následující entity:
+Prostředky databáze bez serveru jsou zapouzdřena objektem balíček aplikace, SQL instance a entity fondu prostředků uživatelů.
 
 #### <a name="app-package"></a>Balíček aplikace
 

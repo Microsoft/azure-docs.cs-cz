@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 46be01c57be0e4f5fa74f8e8b0d91db3d78f441c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d4acc620fb2a4c41615c745516e5ccfafd59d848
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480410"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057945"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapování výkonu toky dat a Průvodce laděním
 
@@ -41,7 +41,7 @@ Klepnutí na tuto ikonu se zobrazí plán provádění a následné výkonu prof
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse
 
-![Zdroj část](media/data-flow/sourcepart2.png "zdroje část")
+![Zdroj část](media/data-flow/sourcepart3.png "zdroje část")
 
 ### <a name="partition-your-source-data"></a>Rozdělit svá zdrojová data
 
@@ -122,8 +122,8 @@ Klepnutí na tuto ikonu se zobrazí plán provádění a následné výkonu prof
 * Aby se zabránilo vyčerpání prostředků výpočetního uzlu, můžete ponechat výchozí nebo explicitní schéma rozdělení oddílů ve službě ADF, která optimalizuje výkon, a pak přidejte další aktivitu kopírování v kanálu, která sloučí všechny části souborů z výstupní složky do jediného nového soubor. Tato technika v podstatě odděluje akci transformace z sloučení souboru a dosáhne stejného výsledku jako nastavení "výstup do jednoho souboru".
 
 ## <a name="next-steps"></a>Další postup
-Naleznete v dalších článcích toku dat:
+Zobrazit další toku dat články související s výkonem:
 
-- [Přehled toku dat](concepts-data-flow-overview.md)
+- [Karta Optimalizace toku dat](concepts-data-flow-optimize-tab.md)
 - [Aktivitu toku dat](control-flow-execute-data-flow-activity.md)
 - [Sledování toku dat výkonu](concepts-data-flow-monitoring.md)

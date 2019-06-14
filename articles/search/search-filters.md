@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1871fee2734d347ff54d6aa70d90d1c28bd1f6f1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062386"
 ---
 # <a name="filters-in-azure-search"></a>Filtry ve službě Azure Search 
 
@@ -158,11 +158,11 @@ Textové řetězce jsou malá a velká písmena. Neexistuje žádné nižší-ma
 
 ### <a name="approaches-for-filtering-on-text"></a>Přístupy k filtrování podle textu
 
-| Přístup | Popis | Kdy je použít | 
+| Přístup | Popis | Kdy je použít |
 |----------|-------------|-------------|
-| [search.in](query-odata-filter-orderby-syntax.md) | Funkce, která odpovídá poli proti oddělený seznam řetězců. | Doporučuje se pro [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry, které je potřeba mít odpovídající pole řetězce mnoho nezpracované textové hodnoty. **Hledat.v** funkce je určená pro rychlost a je mnohem rychlejší než explicitní porovnávání na pole pro každý řetězec pomocí `eq` a `or`. | 
-| [search.ismatch](query-odata-filter-orderby-syntax.md) | Funkce, která umožňuje kombinovat fulltextové vyhledávání operace s operacemi výhradně Booleovský filtr ve stejném výrazu filtru. | Použití **search.ismatch** (nebo ekvivalent bodování **search.ismatchscoring**) Pokud chcete, aby více kombinací vyhledávací filtr v jedné žádosti. Můžete ji také používat *obsahuje* filtr na částečné řetězce v rámci většího řetězce. |
-| [$filter = řetězec pole – operátor](query-odata-filter-orderby-syntax.md) | Uživatelem definovaný výraz se skládá z pole, operátory a hodnoty. | Použijte ho, když chcete najít přesné shody mezi hodnotu řetězce a pole řetězce. |
+| [`search.in`](search-query-odata-search-in-function.md) | Funkce, která odpovídá poli proti oddělený seznam řetězců. | Doporučuje se pro [filtry zabezpečení](search-security-trimming-for-azure-search.md) a pro všechny filtry, které je potřeba mít odpovídající pole řetězce mnoho nezpracované textové hodnoty. **Hledat.v** funkce je určená pro rychlost a je mnohem rychlejší než explicitní porovnávání na pole pro každý řetězec pomocí `eq` a `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Funkce, která umožňuje kombinovat fulltextové vyhledávání operace s operacemi výhradně Booleovský filtr ve stejném výrazu filtru. | Použití **search.ismatch** (nebo ekvivalent bodování **search.ismatchscoring**) Pokud chcete, aby více kombinací vyhledávací filtr v jedné žádosti. Můžete ji také používat *obsahuje* filtr na částečné řetězce v rámci většího řetězce. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Uživatelem definovaný výraz se skládá z pole, operátory a hodnoty. | Použijte ho, když chcete najít přesné shody mezi hodnotu řetězce a pole řetězce. |
 
 ## <a name="numeric-filter-fundamentals"></a>Základy číselný filtr
 

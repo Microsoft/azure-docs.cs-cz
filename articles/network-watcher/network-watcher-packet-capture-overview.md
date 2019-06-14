@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4cfbfc4bed5438ed901fca86d8c2939d3860c68e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8ef9da86377ac6f1b012cb0ebfd9d6866bc0c620
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684163"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061586"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Úvod do proměnné zachytávání paketů ve službě Azure Network Watcher
 
-Network Watcher proměnné zachytávání paketů umožňuje vytvořit relace zachycení paketů sledujte provoz do a z virtuálního počítače. Pomáhá zachytávání paketů pro diagnostiku sítě anomálie reaktivně a proactivity. Mezi další použití patří shromažďování statistických údajů sítě získat informace o síti vniknutí, chcete-li ladit komunikaci klienta se serverem a spoustu dalších věcí.
+Network Watcher proměnné zachytávání paketů umožňuje vytvořit relace zachycení paketů sledujte provoz do a z virtuálního počítače. Zachytávání paketů pomáhá diagnostikovat sítě anomálie reaktivně a proaktivně. Mezi další použití patří shromažďování statistických údajů sítě získat informace o síti vniknutí, chcete-li ladit komunikaci klienta se serverem a spoustu dalších věcí.
 
 Zachytávání paketů se rozšíření virtuálního počítače, která je spuštěna vzdáleně prostřednictvím Network Watcher. Tato schopnost snižuje zátěž ručně spustit zachytávání paketů na požadovaný virtuální počítač, což šetří cenný čas. Zachytávání paketů se dá spouštět na portálu, Powershellu, rozhraní příkazového řádku nebo rozhraní REST API. Jeden příklad, jak se dá spouštět zachytávání paketů se virtuální počítač výstrahy. Filtry jsou k dispozici pro relace zachytávání zajistit, že zaznamenávat provoz, který chcete monitorovat. Filtry jsou založeny na 5-řazené kolekce členů (protokol, místní IP adresa, Vzdálená IP adresa, místní port a vzdálených portů) informace. Zachycená data se ukládají v místním disku nebo objekt blob úložiště. Existuje limit 10 relace zachycení paketů na oblast a předplatné. Toto omezení se vztahuje pouze na relace a neplatí pro soubory uložené paketů zachycení místně na virtuálním počítači nebo v účtu úložiště.
 

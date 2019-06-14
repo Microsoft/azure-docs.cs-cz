@@ -9,10 +9,10 @@ ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61063384"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
@@ -87,7 +87,7 @@ Vezměte v úvahu následující posloupnost:
 1. Existují dvě instance fronty úložiště.
 2. Zachovat přicházející zprávy a při kontrole fronty úložiště, celkový počet přečte 50. Můžete předpokládat, že tohoto automatického škálování by měl spustit akci škálování na víc systémů. Mějte však na paměti, že je stále 50/2 = 25 zpráv na instanci. Horizontální navýšení kapacity, takže nebude fungovat. Pro první Škálováním nestane celkový počet zpráv ve frontě úložiště by měl být 100.
 3. V dalším kroku se předpokládá, že celkový počet zpráv dosáhne 100.
-4. 3. instanci fronty úložiště se přidá z důvodu akce škálování na víc systémů.  Další akce škálování se neprovede, dokud celkový počet zpráv ve frontě dosáhne 150, protože 150/3 = 50.
+4. 3\. instanci fronty úložiště se přidá z důvodu akce škálování na víc systémů.  Další akce škálování se neprovede, dokud celkový počet zpráv ve frontě dosáhne 150, protože 150/3 = 50.
 5. Nyní získá menší počet zpráv ve frontě. Tři instancemi první akci škálování na méně instancí se stane, když celkový počet zpráv ve všech frontách přidat až pro 30, protože 30/3 = 10 zpráv na instanci, která je prahová hodnota škálování na méně instancí.
 
 ### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Důležité informace pro změnu velikosti při více profilů jsou nakonfigurované v nastavení automatického škálování

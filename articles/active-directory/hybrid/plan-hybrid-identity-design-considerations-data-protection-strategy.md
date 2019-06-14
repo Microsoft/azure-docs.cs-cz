@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109357"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze budete definovat strategie ochrany dat pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v:
@@ -45,7 +45,7 @@ V závislosti na tom, jak jste odpověděli na otázky v [určit požadavky na o
 
 | Možnosti ochrany dat | V klidovém stavu uložených v cloudu | V rozhraní rest místní | Při přenosu |
 | --- | --- | --- | --- |
-| Šifrování jednotky nástrojem BitLocker |X |X | |
+| Nástroj BitLocker Drive Encryption |X |X | |
 | SQL Server k šifrování databází |X |X | |
 | Šifrování virtuálního počítače na virtuální počítač | | |X |
 | SSL/TLS | | |X |
@@ -97,7 +97,7 @@ Azure Active Directory poskytuje jednotné přihlašování do tisícovek aplika
 
 * Security Assertion Markup Language (SAML)
 * OAuth
-* Kerberos
+* Protokol Kerberos
 * Tokeny
 * Certifikáty
 

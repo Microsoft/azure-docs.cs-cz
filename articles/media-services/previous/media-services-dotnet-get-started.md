@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2d55af3e9ed3ad64f9ba7726799b31acb6b48580
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465018"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET  
@@ -375,7 +375,7 @@ Abyste mohli streamovat video, vložte adresu URL do textového pole URL v [pře
 
 Pokud chcete otestovat progresivní stahování, vložte adresu URL do prohlížeče (například Internet Exploreru, Chromu nebo Safari).
 
-Další informace najdete v následujících tématech:
+Další informace naleznete v následujících tématech:
 
 - [Přehrávání obsahu ve stávajících přehrávačích](media-services-playback-content-with-existing-players.md)
 - [Vývoj aplikací videopřehrávače](media-services-develop-video-players.md)

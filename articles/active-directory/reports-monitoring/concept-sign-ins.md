@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107654"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -100,7 +100,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Aplikace
 - Stav přihlášení
 - Podmíněný přístup
-- Date
+- Datum
 
 ![Aktivita přihlašování](./media/concept-sign-ins/04.png "Aktivita přihlašování")
 
@@ -110,16 +110,16 @@ Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.
 
 Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
 
-- Všechny
+- Vše
 - Úspěch
-- Chyba
+- Selhání
 
 **Podmíněného přístupu** filtr umožňuje vybrat stav zásad certifikační Autority pro přihlášení:
 
-- Všechny
+- Vše
 - Nevztahuje se.
 - Úspěch
-- Chyba
+- Selhání
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
@@ -198,8 +198,8 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Klient
 - Location
 - IP adresa
-- Date
-- Vyžaduje se MFA.
+- Datum
+- Vyžaduje se MFA
 - Stav přihlášení
 
 > [!NOTE]
