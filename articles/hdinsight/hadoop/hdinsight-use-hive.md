@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: fbf10e992843d9297363398ca5ea13b8e0aa10a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/06/2019
+ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076317"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -48,7 +48,7 @@ V následující tabulce použijte ke zjištění různých způsobech použív�
 
 ## <a name="hiveql-language-reference"></a>Referenční informace k jazyku HiveQL
 
-Referenční informace k jazyku HiveQL je k dispozici v [příručky jazyka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+Referenční informace k jazyku HiveQL je k dispozici v [jazyk ruční](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
 
 ## <a name="hive-and-data-structure"></a>Hive a datové struktury
 
@@ -67,7 +67,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive podporuje taky vlastní **serializátor/deserializers (SerDe)** pro komplexní nebo nepravidelně strukturovaná data. Další informace najdete v tématu [použití vlastní SerDe JSON s HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentu.
+Hive podporuje taky vlastní **serializátor/deserializers (SerDe)** pro komplexní nebo nepravidelně strukturovaná data. Další informace najdete v tématu [použití vlastní SerDe JSON s HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentu.
 
 Další informace o formátech podporovaných Hive najdete v článku [ruční jazyka (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -91,11 +91,11 @@ Existují dva typy tabulek, které můžete vytvořit pomocí Hive:
     * Budete potřebovat vlastní umístění, jako je například účet služby storage jiné než výchozí.
     * Program než hive spravuje formát dat, umístění atd.
 
-Další informace najdete v tématu [Hive interní a externí tabulky ÚVOD] [ cindygross-hive-tables] blogový příspěvek.
+Další informace najdete v tématu [Hive interní a externí tabulky ÚVOD](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) blogový příspěvek.
 
 ## <a name="user-defined-functions-udf"></a>Uživatelem definované funkce (UDF)
 
-Hive se také dají rozšířit prostřednictvím **uživatelem definované funkce (UDF)**. Uživatelem definovanou FUNKCI umožňuje implementovat logiku, která se snadno modelována nebo funkce v HiveQL. Příklad použití funkce UDF pomocí Hive najdete v následujících dokumentech:
+Hive se také dají rozšířit prostřednictvím **uživatelem definované funkce (UDF)** . Uživatelem definovanou FUNKCI umožňuje implementovat logiku, která se snadno modelována nebo funkce v HiveQL. Příklad použití funkce UDF pomocí Hive najdete v následujících dokumentech:
 
 * [Uživatelem definované funkce jazyka Java pomocí Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -143,7 +143,7 @@ Příkazy HiveQL v předchozím příkladu, proveďte následující akce:
 
 * `STORED AS TEXTFILE LOCATION`: Říká Hive, ve kterém jsou data uložená ( `example/data` adresáře) a, která je uložená jako text. Data mohou být v jednom souboru nebo rozdělené mezi více souborů v adresáři.
 
-* `SELECT`: Vybere počet všech řádků ve kterém sloupci **t4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+* `SELECT`: Vybere počet všech řádků ve kterém sloupci **t4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
 
 * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresář obsahuje soubory, které neodpovídají schématu. Chcete-li zabránit uvolňování paměti ve výsledcích, tento příkaz sděluje Hive, že jsme by měl vrátit pouze data ze souborů s koncovkou. log.
 
@@ -204,50 +204,20 @@ Azure Data Factory umožňuje používat HDInsight jako součást kanálu služb
 
 SQL Server Integration Services (SSIS) můžete použít ke spuštění úlohy Hive. Azure Feature Pack for SSIS obsahuje následující součásti, které pracují s úloh Hive v HDInsight.
 
-* [Úloha Azure HDInsight Hive][hivetask]
+* [Úloha Azure HDInsight Hive](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Správce připojení Azure předplatného][connectionmanager]
+* [Správce připojení Azure předplatného](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-Další informace najdete v tématu [Azure Feature Pack] [ ssispack] dokumentaci.
+Další informace najdete v tématu [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentaci.
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Další informace o použití Oozie s Hive najdete v článku [Apache Oozie použijte k definování a spuštění pracovního postupu](../hdinsight-use-oozie-linux-mac.md) dokumentu.
 
-## <a id="nextsteps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili, co je Hive a jeho použití se systémem Hadoop v HDInsight, pomocí následujících odkazů a prozkoumejte další možnosti, jak pracovat s Azure HDInsight.
 
-* [Nahrání dat do služby HDInsight][hdinsight-upload-data]
-* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
-* [Použijte úlohy MapReduce s HDInsight][hdinsight-use-mapreduce]
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: https://msdn.microsoft.com/library/mt146771(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
-
-[hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: ../hdinsight-upload-data.md
-
-[Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-
-[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+* [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md)
+* [Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight](./python-udf-hdinsight.md)
+* [Použití úloh MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
