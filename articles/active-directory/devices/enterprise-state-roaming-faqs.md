@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60296312"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
@@ -76,7 +76,7 @@ V listopadu 2015 nebo novější verze Windows 10 Enterprise State Roaming je po
 Pokud několik služeb Azure AD pro účty z různých tenantů Azure AD jsou na stejném zařízení, je nutné aktualizovat registr zařízení komunikovat se službou Azure Rights Management pro jednotlivé tenanty Azure AD.  
 
 1. Najdete identifikátor GUID pro jednotlivé tenanty Azure AD. Otevřete na webu Azure portal a vyberte tenanta Azure AD. Na stránce vlastnosti vybraného tenanta je identifikátor GUID pro klienta (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), s popiskem **ID adresáře**. 
-2. Jakmile budete mít identifikátor GUID, budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenanta Identifikátor GUID >**.
+2. Jakmile budete mít identifikátor GUID, budete muset přidat klíč registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenanta Identifikátor GUID >** .
    Z **tenanta Identifikátor GUID** klíče, vytvořte novou víceřetězcovou hodnotu (REG-MULTI-SZ) s názvem **AllowedRMSServerUrls**. Její data určete distribuční bod adresy URL licencování Azure tenantů, které má přístup k zařízení.
 3. Licenční adresy URL distribučního bodu můžete najít spuštěním **Get-AadrmConfiguration** rutiny z modulu AADRM. Pokud hodnoty **LicensingIntranetDistributionPointUrl** a **LicensingExtranetDistributionPointUrl** se liší, zadat obě hodnoty. Pokud jsou hodnoty stejné, zadejte hodnotu pouze jednou.
 

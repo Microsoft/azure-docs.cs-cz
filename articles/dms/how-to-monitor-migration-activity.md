@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60532813"
 ---
 # <a name="monitor-migration-activity"></a>Monitorování aktivit migrace
@@ -50,7 +50,7 @@ V následující tabulce jsou uvedena pole, v okně databáze a popisuje různé
       <td>Migrace byla úspěšná bez problémů.</td>
     </tr>
     <tr>
-      <td>S chybou</td>
+      <td>Došlo k chybě</td>
       <td>Migrace se nezdařila. Výběrem odkazu "Podrobnosti o chybě naleznete v tématu" v části Podrobnosti o migraci kompletní chybové zprávy.</td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@ V následující tabulce jsou uvedena pole, v okně databáze a popisuje různé
     </tr>
     <tr>
       <td>Dokončit</td>
-      <td>Migrace je hotová.</td>
+      <td>Migrace byla dokončena.</td>
     </tr>
     <tr>
       <td>Selhalo</td>
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedena pole, v okně databáze a popisuje různé
       <td>DMS je nastavení se kanál migrace.</td>
     </tr>
     <tr>
-      <td>Probíhá úplné načtení dat</td>
+      <td>Úplné načtení dat v průběhu</td>
       <td>DMS provádí počátečním načtení.</td>
     </tr>
     <tr>
@@ -84,11 +84,11 @@ V následující tabulce jsou uvedena pole, v okně databáze a popisuje různé
       <td>Po dokončení počáteční načtení DMS označí databáze jako připravené pro přímou migraci. Uživatele zaškrtněte, pokud data zachytila průběžné synchronizace.</td>
     </tr>
     <tr>
-      <td>Všechny změny použity</td>
+      <td>Všechny změny se použily v</td>
       <td>Počátečním načtení a průběžná synchronizace se dokončí. Tento stav také vyvolá se po databáze je úspěšně přímou migraci.</td>
     </tr>
     <tr>
-      <td>Zobrazit podrobnosti o chybě</td>
+      <td>Viz podrobnosti o chybě</td>
       <td>Kliknutím na odkaz zobrazíte podrobnosti o chybě.</td>
     </tr>
     <tr>

@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60348401"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizace Azure AD Connect: Druhé spuštění průvodce instalací
@@ -81,7 +81,7 @@ Možnost zobrazí, pokud pracovní je aktuálně povoleno nebo zakázáno:
 Chcete-li ke změně stavu, vyberte tuto možnost a vyberte nebo zrušte zaškrtnutí políčka.  
 ![Možnost, která se také zobrazuje aktuální stav pracovní režim](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
-## <a name="change-user-sign-in"></a>Změna přihlašovacích údajů uživatele
+## <a name="change-user-sign-in"></a>Změnit přihlášení uživatele
 Tato možnost umožňuje změnit metodu přihlašování uživatele do a z synchronizace hodnot hash hesel, předávacího ověřování nebo federace. Nelze změnit na **nekonfigurujte**.
 
 Další informace o této možnosti najdete v tématu [přihlášení uživatele](plan-connect-user-signin.md#changing-the-user-sign-in-method).

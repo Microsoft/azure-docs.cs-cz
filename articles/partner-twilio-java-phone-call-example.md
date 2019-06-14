@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422637"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak telefonování pomocí Twilio v aplikace v Javě v Azure
@@ -183,7 +183,7 @@ Tento kód byl poskytnut zobrazit základní funkce s použitím Twilio v jazyce
 
 * Místo použití webového formuláře, můžete použít objekty BLOB služby Azure storage nebo SQL Database k ukládání telefonní čísla a volání text. Informace o použití objektů BLOB Azure storage v Javě, naleznete v tématu [použití služby Blob Storage z Javy][howto_blob_storage_java]. 
 * Můžete použít **RoleEnvironment.getConfigurationSettings** načíst Twilio ID účtu a ověřovací token z nastavení konfigurace vašeho nasazení, namísto pevně kódováno pomocí hodnot v makecall.jsp. Informace o tom, **RoleEnvironment** najdete v tématu [pomocí knihovny Runtime služeb Azure v JSP] [ azure_runtime_jsp] a balíček modulu Runtime služby Azure documentation [ http://dl.windowsazure.com/javadoc][azure_javadoc].
-* Kód makecall.jsp přiřadí URL poskytnutou Twilio, [ https://twimlets.com/message ] [ twimlet_message_url]do **Url** proměnné. Tato adresa URL obsahuje odpověď Twilio Markup Language (TwiML), která informuje Twilio, jak postupovat u volání. Například může obsahovat TwiML, který je vrácen **&lt;Say&gt;** příkaz, který má za následek text, se kterým se mluví příjemce volání. Namísto použití URL poskytnutou Twilio, může sestavení vlastní služby reagovat na žádosti pro Twilio; Další informace najdete v tématu [postupy použití Twilia pro hlasové hovory a SMS v jazyce Java][howto_twilio_voice_sms_java]. Další informace o TwiML najdete [ https://www.twilio.com/docs/api/twiml ] [ twiml]a další informace o **&lt;Say&gt;** a ostatní operace Twilio můžete najít v [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
+* Kód makecall.jsp přiřadí URL poskytnutou Twilio, [ https://twimlets.com/message ] [ twimlet_message_url]do **Url** proměnné. Tato adresa URL obsahuje odpověď Twilio Markup Language (TwiML), která informuje Twilio, jak postupovat u volání. Například může obsahovat TwiML, který je vrácen **&lt;Say&gt;** příkaz, který má za následek text, se kterým se mluví příjemce volání. Namísto použití URL poskytnutou Twilio, může sestavení vlastní služby reagovat na žádosti pro Twilio; Další informace najdete v tématu [postupy použití Twilia pro hlasové hovory a SMS v jazyce Java][howto_twilio_voice_sms_java]. Další informace o TwiML najdete [ https://www.twilio.com/docs/api/twiml ] [ twiml]a další informace o **&lt; Say&gt;** a ostatní operace Twilio můžete najít v [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
 * Přečtěte si pokyny pro zabezpečení platformy Twilio na [ https://www.twilio.com/docs/security ] [ twilio_docs_security].
 
 Další informace o Twilio, naleznete v tématu [ https://www.twilio.com/docs ] [ twilio_docs].

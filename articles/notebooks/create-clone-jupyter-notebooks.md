@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237532"
 ---
 # <a name="create-and-clone-projects"></a>Vytváření a klonování projektů
@@ -78,10 +78,10 @@ Následující vyhrazená slova nelze použít samy o sobě jako ID projektu. Ta
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| o produktu | account | Správa | rozhraní api | blog | Classroom |
+| o | account | Správa | api | blog | Classroom |
 | content | řídicí panel | Prozkoumejte službu | Nejčastější dotazy | Nápověda | html |
-| Domovská složka | Import | Knihovna | Správa | novinka | Poznámkový blok |
-| Poznámkové bloky | pdf | preview | Ceny | profil | hledat |
+| Domovská stránka | Import | Knihovna | management | novinka | Poznámkový blok |
+| Poznámkové bloky | pdf | preview | Ceny | Profil | search |
 | status | podpora | test | | | |
 
 Pokud se pokusíte použít jednu z těchto slov jako ID projektu, **vytvořit nový projekt** a **nastavení projektu** automaticky otevíraná okna označení "id knihovny je rezervovaný identifikátor."

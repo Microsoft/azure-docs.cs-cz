@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60520578"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
@@ -64,7 +64,7 @@ Když vytvoříte skupinu prostředků, můžete nasadit prostředky do ní z we
 
    Alternativně můžete vytvořit skupinu prostředků, při nasazování prostředků. Vyberte **vytvořit nový** a zadejte název skupiny prostředků.
 
-   ![Vytvořte novou skupinu prostředků](./media/resource-group-template-deploy-portal/select-new-group.png)
+   ![Vytvořit novou skupinu prostředků](./media/resource-group-template-deploy-portal/select-new-group.png)
 
 1. Spustí se vaše nasazení. Nasazení může trvat několik minut. Po dokončení nasazení se zobrazí oznámení.
 
@@ -99,7 +99,7 @@ Pokud chcete provést nasazení, ale ne použít některý z šablony na webu Ma
 
 1. Můžete ručně upravit syntaxi skriptu JSON nebo vybrat předem sestavené šablony z [Galerie šablon rychlý Start](https://azure.microsoft.com/resources/templates/). Ale pro účely tohoto článku můžete použít **přidat prostředek** možnost.
 
-   ![Upravit šablonu](./media/resource-group-template-deploy-portal/select-add-resource.png)
+   ![Úprava šablony](./media/resource-group-template-deploy-portal/select-add-resource.png)
 
 1. Vyberte **účtu úložiště** a zadejte název. Až budete hotovi se zadáváním hodnot, vyberte **OK**.
 

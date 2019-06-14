@@ -17,10 +17,10 @@ ms.date: 06/28/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130377"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrace aktivního názvu DNS do Azure App Service
@@ -41,7 +41,7 @@ Dokončete tento postup:
 
 Když se navážete preventivně vlastní doménu, můžete provést z následujících možností před provedením jakýchkoli změn svoje záznamy DNS:
 
-- Ověřit vlastnictví domény
+- Ověří vlastnictví domény
 - Povolit název domény pro vaši aplikaci
 
 Při migraci nakonec vlastní název DNS ze staré lokality aplikace služby App Service, nebudou nedojde k žádnému výpadku v překlad DNS.
@@ -121,7 +121,7 @@ Zpět v bude stránka záznamů DNS vašeho poskytovatele domény vyberte zázna
 
 Pro `contoso.com` kořenové domény příklad, přemapujte záznam A nebo CNAME jako příklady v následující tabulce: 
 
-| Příklad plně kvalifikovaný název domény | Typ záznamu | Hostitel | Hodnota |
+| Příklad plně kvalifikovaný název domény | Typ záznamu | Host | Hodnota |
 | - | - | - | - |
 | contoso.com (kořen) | A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
 | www\.contoso.com (sub) | CNAME | `www` | _&lt;appname>.azurewebsites.net_ |

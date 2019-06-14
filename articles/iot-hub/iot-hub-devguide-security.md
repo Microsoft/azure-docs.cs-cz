@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400592"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
@@ -37,7 +37,7 @@ Můžete udělit [oprávnění](#iot-hub-permissions) následujícími způsoby:
 
 * **IoT hub úrovně sdílené zásady přístupu**. Zásady sdíleného přístupu udělit libovolnou kombinaci [oprávnění](#iot-hub-permissions). Můžete definovat zásady v [webu Azure portal](https://portal.azure.com), prostřednictvím kódu programu pomocí [IoT Hub prostředek REST API](/rest/api/iothub/iothubresource), nebo pomocí [az iot hub zásad](/cli/azure/iot/hub/policy?view=azure-cli-latest) rozhraní příkazového řádku. Nově vytvořený IoT hub má následující výchozí zásady:
   
-  | Zásada sdíleného přístupu | Oprávnění |
+  | Zásady sdíleného přístupu | Oprávnění |
   | -------------------- | ----------- |
   | iothubowner | Oprávnění All |
   | service | **ServiceConnect** oprávnění |
@@ -108,7 +108,7 @@ Pokud používáte rozhraní SASL prostý AMQP, klient připojení do služby Io
 
 ## <a name="scope-iot-hub-level-credentials"></a>Určení oboru přihlašovací údaje na úrovni centra IoT
 
-Zásady zabezpečení na úrovni centra IoT můžete omezit rozsah tak, že vytvoříte tokeny s omezeným identifikátor URI prostředku. Koncový bod pro odesílání zpráv typu zařízení cloud ze zařízení je třeba **/devices/ {deviceId} / zpráv/události**. Můžete taky zásady sdíleného přístupu na úrovni centra IoT s **DeviceConnect** oprávnění k podpisu tokenu je jehož resourceURI **/devices/ {deviceId}**. Tento postup vytvoří token, který lze použít k odesílání zpráv zařízení pouze **deviceId**.
+Zásady zabezpečení na úrovni centra IoT můžete omezit rozsah tak, že vytvoříte tokeny s omezeným identifikátor URI prostředku. Koncový bod pro odesílání zpráv typu zařízení cloud ze zařízení je třeba **/devices/ {deviceId} / zpráv/události**. Můžete taky zásady sdíleného přístupu na úrovni centra IoT s **DeviceConnect** oprávnění k podpisu tokenu je jehož resourceURI **/devices/ {deviceId}** . Tento postup vytvoří token, který lze použít k odesílání zpráv zařízení pouze **deviceId**.
 
 Tento mechanismus je podobný [zásad vydavatele služby Event Hubs](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)a umožňuje implementovat vlastní metody ověřování.
 
@@ -134,7 +134,7 @@ Token zabezpečení má následující formát:
 
 Tady jsou očekávané hodnoty:
 
-| Value | Popis |
+| Hodnota | Popis |
 | --- | --- |
 | {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: Klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256. |
 | {resourceURI} |Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele služby IoT hub (žádný protokol). Například `myHub.azure-devices.net/devices/device1`. |

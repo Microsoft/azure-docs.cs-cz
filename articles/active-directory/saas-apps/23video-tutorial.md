@@ -16,10 +16,10 @@ ms.date: 05/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec0cfaaf0d4ae692581d63c7745660ffeacfb11f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60439420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>Kurz: Integrace Azure Active Directory s 23 videa
@@ -60,7 +60,7 @@ Konfigurace integrace 23 Video do služby Azure AD, budete muset přidat 23 Vide
 
 **Chcete-li přidat 23 videa z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -132,7 +132,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/23video-tutorial/tutorial_23video_configure.png) 
 
-7. Ke konfiguraci jednotného přihlašování na **23 Video** straně, je nutné odeslat na stažený **certifikát (Base64)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby**k [23 tým podpory Video](mailto:support@23company.com). 
+7. Ke konfiguraci jednotného přihlašování na **23 Video** straně, je nutné odeslat na stažený **certifikát (Base64)** , **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby**k [23 tým podpory Video](mailto:support@23company.com). 
 
 
 > [!TIP]

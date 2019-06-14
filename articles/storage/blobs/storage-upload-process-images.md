@@ -10,25 +10,25 @@ ms.date: 11/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: mvc
-ms.openlocfilehash: e5be86f9f7fbaedeb8fbb10b89926644dcf8aac2
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 612c0b48faac365623fe36d6d2435c1c79566d9b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835139"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071329"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 
 Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit webovou aplikaci, která používá Klientská knihovna pro úložiště Azure můžete nahrávat obrázky do účtu úložiště. Jakmile budete hotovi, budete mít webovou aplikaci, která ukládá a zobrazuje obrázky ze služby Azure storage.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/figure2.png)
+![Změnu velikosti obrázků aplikace v .NET](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikace změnu velikosti obrázků ve Node.js V2](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikace změnu velikosti obrázků ve Node.js V10](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -211,7 +211,7 @@ Pokud chcete otestovat webovou aplikaci, přejděte na adresu URL publikované a
 
 Vyberte **mohl odesílat fotky** oblasti vybrat a nahrát soubor nebo soubor přetáhněte do oblasti. Obrázek po úspěšném nahrání zmizí. **Vygenerované miniatury** části zůstane prázdná, dokud testujeme dále v tomto tématu.
 
-![Aplikace ImageResizer](media/storage-upload-process-images/figure1.png)
+![Nahrát fotografie v .NET](media/storage-upload-process-images/figure1.png)
 
 Ve vzorovém kódu `UploadFiletoStorage` úlohy v *Storagehelper.cs* soubor slouží k nahrání obrázku do *image* kontejneru v účtu úložiště pomocí [ UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metody. Úlohu `UploadFiletoStorage` obsahuje následující vzorek kódu.
 
@@ -254,7 +254,7 @@ Předchozí úloha využívá následující třídy a metody:
 
 Vyberte **zvolit soubor** a vyberte soubor, pak klikněte na tlačítko **nahrát obrázek**. **Vygenerované miniatury** části zůstane prázdná, dokud testujeme dále v tomto tématu. 
 
-![Aplikace pro nahrávání obrázků](media/storage-upload-process-images/upload-app-nodejs.png)
+![Nahrát fotografie v Node.js V2](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Ve vzorovém kódu je za nahrání obrázku do kontejneru objektů blob zodpovědná trasa `post`. Tato trasa při zpracování nahrávání využívá následující moduly:
 
@@ -318,7 +318,7 @@ router.post('/', uploadStrategy, (req, res) => {
 
 Vyberte **zvolit soubor** a vyberte soubor, pak klikněte na tlačítko **nahrát obrázek**. **Vygenerované miniatury** části zůstane prázdná, dokud testujeme dále v tomto tématu. 
 
-![Aplikace pro nahrávání obrázků](media/storage-upload-process-images/upload-app-nodejs.png)
+![Nahrát fotografie v Node.js V10](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Ve vzorovém kódu je za nahrání obrázku do kontejneru objektů blob zodpovědná trasa `post`. Tato trasa při zpracování nahrávání využívá následující moduly:
 
@@ -400,7 +400,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo 
 
 Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/figure13.png)
+![Azure Portal seznam imagí kontejneru](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Test zobrazení miniatury
 
@@ -413,13 +413,13 @@ Pomocí nástroje pro výběr souborů vyberte soubor a vyberte **nahrát**.
 Vraťte se do své aplikace a zkontrolujte, jestli je viditelný obrázek nahraný do kontejneru **thumbnails**.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/figure2.png)
+![Aplikace změnu velikosti obrázku .NET s novou bitovou kopii zobrazí](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikace změnu velikosti obrázku Node.js V2 s novou bitovou kopii, zobrazí](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 # <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
-![Zobrazení kontejneru obrázků](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Aplikace změnu velikosti obrázku Node.js V10 s novou bitovou kopii, zobrazí](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 

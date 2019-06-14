@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
 ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370709"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy role pro správu smlouvy Azure Enterprise v Azure
@@ -26,7 +26,7 @@ Ke správě používání ve vaší organizaci a výdaje, Azure zákazníky se s
 
 - Podnikový správce
 - Správce rozlehlé sítě (jen pro čtení)
-- Správce oddělení
+- Oddělení správce
 - Oddělení správce (jen pro čtení)
 - Vlastník účtu
  
@@ -40,7 +40,7 @@ Následující části popisují, omezení a možností jednotlivých rolí.
 |---|---|
 |Podnikový správce|Unlimited|
 |Správce rozlehlé sítě (jen pro čtení)|Unlimited|
-|Správce oddělení|Unlimited|
+|Oddělení správce|Unlimited|
 |Oddělení správce (jen pro čtení)|Unlimited|
 |Vlastník účtu|1 za účet<sup>1</sup>|
 
@@ -48,7 +48,7 @@ Následující části popisují, omezení a možností jednotlivých rolí.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Struktura organizace a oprávnění rolí
 
-|Úlohy| Podnikový správce|Správce rozlehlé sítě (jen pro čtení)|Správce oddělení|Oddělení správce (jen pro čtení)|Vlastník účtu|
+|Úlohy| Podnikový správce|Správce rozlehlé sítě (jen pro čtení)|Oddělení správce|Oddělení správce (jen pro čtení)|Vlastník účtu|
 |---|---|---|---|---|---|
 |Zobrazit správce rozlehlé sítě|✔|✔|✘|✘|✘|
 |Přidejte nebo odeberte správce organizace|✔|✘|✘|✘|✘|
@@ -67,7 +67,7 @@ Následující části popisují, omezení a možností jednotlivých rolí.
 
 ## <a name="usage-and-costs-access-by-role"></a>Využití a nákladů přístupu podle rolí
 
-|Úlohy| Podnikový správce|Správce rozlehlé sítě (jen pro čtení)|Správce oddělení|Oddělení správce (jen pro čtení) |Vlastník účtu|
+|Úlohy| Podnikový správce|Správce rozlehlé sítě (jen pro čtení)|Oddělení správce|Oddělení správce (jen pro čtení) |Vlastník účtu|
 |---|---|---|---|---|---|
 |Zůstatek kreditu zobrazení včetně peněžní závazek|✔|✔|✘|✘|✘|
 |Zobrazení oddělení kvóty útraty|✔|✔|✘|✘|✘|
@@ -95,8 +95,8 @@ Následující tabulka znázorňuje vztah mezi role správce smlouvy Enterprise,
 |---|---|---|---|
 |Vlastník účtu nebo správci oddělení|✔ Povoleno|Vlastník|Ceny za EA organizace.|
 |Vlastník účtu nebo správci oddělení|✘ Zakázáno|Vlastník|Maloobchodní cenu|
-|Vlastník účtu nebo správci oddělení|✔ Povoleno |žádný|Žádné informace o cenách|
-|Vlastník účtu nebo správci oddělení|✘ Zakázáno |žádný|Žádné informace o cenách|
+|Vlastník účtu nebo správci oddělení|✔ Povoleno |None|Žádné informace o cenách|
+|Vlastník účtu nebo správci oddělení|✘ Zakázáno |None|Žádné informace o cenách|
 |Žádný|Neuvedeno |Vlastník|Maloobchodní cenu|
 
 Nastavte roli správce rozlehlé sítě a zobrazení účtuje zásady na portálu Enterprise. RBAC role je možné aktualizovat na webu Azure Portal. Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).

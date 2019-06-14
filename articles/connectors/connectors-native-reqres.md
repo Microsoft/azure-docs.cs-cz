@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
 ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538099"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Začínáme s komponentami žádostí a odpovědí
@@ -86,7 +86,7 @@ Následující tabulky popisují vstupní pole pro aktivační událost a akce a
 #### <a name="request-trigger"></a>Aktivační událost požadavek
 Níže je vstupní pole pro aktivační událost z příchozího požadavku HTTP.
 
-| Zobrazované jméno | Název vlastnosti | Popis |
+| Display name | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Schéma JSON |schema |Schéma JSON textu požadavku HTTP |
 
@@ -104,11 +104,11 @@ Toto jsou podrobnosti výstupu pro daný požadavek.
 #### <a name="response-action"></a>Akce odpovědi
 Níže jsou vstupní pole pro akce odpovědi HTTP. A * znamená, že je povinné pole.
 
-| Zobrazované jméno | Název vlastnosti | Popis |
+| Display name | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Stavový kód * |statusCode |Stavový kód HTTP |
 | Hlavičky |Záhlaví |Objekt JSON záhlaví odpovědi zahrnout |
-| Tělo |hlavní část |Text odpovědi |
+| Tělo |Text |Text odpovědi |
 
 ## <a name="next-steps"></a>Další postup
 Nyní, vyzkoušejte si platformu a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Další dostupné konektory v logic apps můžete prozkoumat podle našich [rozhraní API seznamu](apis-list.md).

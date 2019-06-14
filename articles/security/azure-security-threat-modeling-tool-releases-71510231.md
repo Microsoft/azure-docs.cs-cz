@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
 ms.openlocfilehash: 6f7699ece97be1941ef5235b92f2c76b3bed140e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610607"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 11. 2018
@@ -33,7 +33,7 @@ V původním jste si poznamenali v [zpráva k vydání verze GA](./azure-securit
 
 - Žádný
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy
   - Microsoft Windows 10

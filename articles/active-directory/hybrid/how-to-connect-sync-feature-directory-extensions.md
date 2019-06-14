@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff0fd4d01eab739b79685c1de67cb8fe28873961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347948"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: Rozšíření adresáře
@@ -62,7 +62,7 @@ Tyto atributy jsou teď k dispozici prostřednictvím Azure AD Graph API. Dotazo
 Nebo můžete zadat dotaz na atributy prostřednictvím rozhraní Microsoft Graph API s využitím [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> Budete muset požádat o atributy, které mají být vráceny. Explicitně vybrat atributy takto: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select = extension_9d98ed114c4840d298fad781915f27e4_employeeID extension_9d98ed114c4840d298fad781915f27e4_division. 
+> Budete muset požádat o atributy, které mají být vráceny. Explicitně vybrat atributy takto: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
 > Další informace najdete v tématu [Microsoft Graph: Použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

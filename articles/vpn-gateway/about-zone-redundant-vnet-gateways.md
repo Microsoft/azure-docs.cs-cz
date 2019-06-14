@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
 ms.openlocfilehash: 0ba818ef3c24d0e88e662adf87b22cc938fe5fab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391042"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>O branách zónově redundantní virtuálních sítí v zónách dostupnosti Azure

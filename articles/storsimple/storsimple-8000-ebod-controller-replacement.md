@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60578666"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Výměna kontroleru EBOD, zařízení StorSimple
@@ -91,8 +91,8 @@ Následující postup a tabulka vysvětlují, jak nainstalovat modul řadiče EB
    | 1 |Primární zařízení |
    | 2 |PCM 0 |
    | 3 |PCM 1 |
-   | 4 |Řadič 0 |
-   | 5 |Řadič 1 |
+   | 4 |Kontroler 0 |
+   | 5 |Kontroler 1 |
    | 6 |Kontroleru EBOD 0 |
    | 7 |Kontroleru EBOD 1 |
    | 8 |Skříň EBOD |

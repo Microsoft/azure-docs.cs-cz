@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
 ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531777"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru na Azure Logic Apps
@@ -102,9 +102,9 @@ Ruční spuštění a aktivaci jednorázové úlohy, odešlete volání adresu U
 
 Například pomocí aplikace Postman, můžete vytvořit požadavek POST s nastavením podobný této ukázce a klikněte na tlačítko **odeslat** k odeslání požadavku.
 
-| Metoda žádosti | zprostředkovatele identity | Tělo | Hlavičky |
+| Request – metoda | zprostředkovatele identity | Tělo | Hlavičky |
 |----------------|-----|------|---------| 
-| **POST** | <*endpoint-URL*> | **nezpracované** <p>**JSON(application/json)** <p>V **nezpracovaná** zadejte datovou část je vhodné odesílat v požadavku. <p>**Poznámka:** Tato nastavení automaticky nakonfiguruje **záhlaví** hodnoty. | **Klíč**: Typ obsahu <br>**Hodnota**: application/json
+| **POST** | <*endpoint-URL*> | **nezpracované** <p>**JSON(application/json)** <p>V **nezpracovaná** zadejte datovou část je vhodné odesílat v požadavku. <p>**Poznámka:** Tato nastavení automaticky nakonfiguruje **záhlaví** hodnoty. | **Klíč**: Content-Type <br>**Hodnota**: application/json
  |||| 
 
 ![Odeslat žádost o ruční spuštění aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -159,7 +159,7 @@ Tady jsou další způsoby, jak si můžete přizpůsobit úlohy.
 
 K řízení způsobu, jakým akce se pokusí znovu spustí podle ve vaší aplikaci logiky stát krátkodobých selhání, můžete nastavit [zásady opakování](../logic-apps/logic-apps-exception-handling.md#retry-policies) v nastavení všechny akce, například:
 
-1. Otevřete požadovanou akci (**...** ) nabídky a vybereme **nastavení**.
+1. Otevřete požadovanou akci ( **...** ) nabídky a vybereme **nastavení**.
 
    ![Otevřete nastavení akce](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -179,9 +179,9 @@ V Azure Scheduleru výchozí akce se nezdaří spuštění, můžete spustit v.4
 
    ![Přidat paralelní akce](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. Na jinou akci, spusťte (**...** ) nabídky a vybereme **nakonfigurovat vlastnost runafter**.
+1. Na jinou akci, spusťte ( **...** ) nabídky a vybereme **nakonfigurovat vlastnost runafter**.
 
-   ![Nakonfigurovat vlastnost runAfter](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
+   ![Nakonfigurovat vlastnost runafter](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
 1. Zrušte zaškrtnutí políčka **úspěšné** vlastnost. Vyberte tyto vlastnosti: **selhala**, **se přeskočila**, a **vypršení časového limitu**
 

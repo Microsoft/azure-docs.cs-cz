@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
 ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60467038"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti přístupu a identit pro službu Azure Kubernetes Service (AKS)

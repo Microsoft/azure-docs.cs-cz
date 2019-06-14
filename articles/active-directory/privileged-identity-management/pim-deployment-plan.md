@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60440597"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
@@ -99,7 +99,7 @@ Následující část vám pomůže Identifikujte všechny zúčastněné strany
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>Zúčastněné strany: Role PIM pro Azure AD
 
-| Name | Role | Akce |
+| Název | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mailu | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu správy identit pro definování, jak je tuto změnu v souladu s základní infrastruktury správy identit ve vaší organizaci. | SO/R/I |
 | Jméno a e-mailu | **Vlastník služby / řádek správce**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou to klíč v rozhodování a pomáhá zavést PIM pro jejich tým. | SO/R/I |
@@ -153,7 +153,7 @@ Pokud chcete automatizovat kroky 3 a 4, můžou využívat funkci kontroly pří
 
 ![Vytvoření kontroly přístupu](./media/pim-deployment-plan/create-access-review.png)
 
-Revidující byste měli nastavit na **členové (vlastní)**. To se rozešle e-mail všem členům role získat, aby ověřil, zda potřebují přístup. Měli byste také zapnout **vyžadovat důvod při schválení** v upřesňujících nastaveních tak, aby uživatelé můžou stát proč potřebují roli. Na základě těchto informací, budete moct odebrat uživatele z nepotřebné role a delegování podrobnější rolí správce v případě globální správci.
+Revidující byste měli nastavit na **členové (vlastní)** . To se rozešle e-mail všem členům role získat, aby ověřil, zda potřebují přístup. Měli byste také zapnout **vyžadovat důvod při schválení** v upřesňujících nastaveních tak, aby uživatelé můžou stát proč potřebují roli. Na základě těchto informací, budete moct odebrat uživatele z nepotřebné role a delegování podrobnější rolí správce v případě globální správci.
 
 Kontroly přístupu závisí na e-mailů, aby bylo uživatelům zkontrolovat přístup k rolím. Pokud mají privilegovaný účty, které nemají e-mailů propojený, je nutné k vyplnění pole e-mailu sekundárním u těchto účtů. Další informace najdete v tématu [atributu proxyAddresses v Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
@@ -182,7 +182,7 @@ Je důležité k určení priority ochrana role Azure AD, které mají nejvíce 
 1. Správce uživatelů
 1. Správce Exchange
 1. Správce SharePointu
-1. Správce Intune
+1. Správce služby Intune
 1. Čtenář zabezpečení
 1. Správce služeb
 1. Správce fakturace
@@ -240,7 +240,7 @@ Před implementací řešení PIM je dobrým zvykem koncept nastavení PIM pro k
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>Nastavení PIM pro role Azure AD
 
-| Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Trvalého správce |
+| Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Schvalovatele | Doba trvání aktivace | Trvalého správce |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globální správce | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další globální správce | 1 hodina | Účty pro nouzový přístup |
 | Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | : x:. | : x:. | Žádný | 2 Hour | Žádný |
@@ -248,7 +248,7 @@ Před implementací řešení PIM je dobrým zvykem koncept nastavení PIM pro k
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>Nastavení PIM pro role prostředků Azure
 
-| Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Správce Active | Aktivní vypršení platnosti | Vypršení platnosti oprávnění |
+| Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Schvalovatele | Doba trvání aktivace | Správce Active | Aktivní vypršení platnosti | Vypršení platnosti oprávnění |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Vlastník kritické předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníky předplatného | 1 hodina | Žádný | neuvedeno | 3 měsíce |
 | Správce uživatelských přístupů méně kritické předplatných | :heavy_check_mark: | :heavy_check_mark: | : x:. | Žádný | 1 hodina | Žádný | neuvedeno | 3 měsíce |
@@ -263,7 +263,7 @@ Následující tabulka popisuje jednotlivé nastavení.
 | Oznámení | Pokud nastavena na hodnotu true, globálního správce, správce privilegovaných rolí, správce zabezpečení v organizaci dostanou oznámení e-mailem když oprávněný uživatel aktivuje roli.<br/><br/>**Poznámka:** Některé organizace nemají e-mailovou adresu, vázané na svých účtů správce, chcete-li získat tyto e-mailová oznámení, měli byste nastavit alternativní e-mailovou adresu, takže správci budou dostávat tyto e-maily. |
 | Lístek incidentu | Určuje, zda oprávněný uživatel potřebuje k zaznamenání číslo lístku incidentu při aktivaci jejich role. Toto nastavení pomáhá organizacím identifikovat každou aktivaci s interní číslo incidentu ke zmírnění aktivace nežádoucí serverům.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** výhod čísla incidentů a jejich zapojení PIM s váš interní systém. To je užitečné hlavně pro schvalovatelů, kteří potřebují kontext pro aktivaci. |
 | Vyžadovat schválení | Určuje, zda oprávněný uživatel potřebuje získat schválení aktivaci této role.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** můžete nastavit schválení pro role s nejvíce oprávnění. Na základě způsobů využití u všech zákazníků PIM, globální správce, Správce uživatelů, správce Exchange, správce zabezpečení a správce hesel je nejběžnější role s instalačním programem schválení. |
-| Schvalovatel | Pokud se vyžaduje k aktivaci oprávněných rolí seznam uživatelů, kteří by měla schválit žádost o schválení. Ve výchozím nastavení nastaví PIM schvalovatel být všichni uživatelé, kteří jsou správce privilegovaných rolí, ať už jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud je uživatel i oprávněné pro roli Azure AD a schvalovatele role, nebudou moct schvalovat sami.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele, které chcete být těmi, kdo jsou nejvíc informovanosti ohledně konkrétní roli a jeho časté uživatelům, nikoli jako globální správce. |
+| Schvalovatele | Pokud se vyžaduje k aktivaci oprávněných rolí seznam uživatelů, kteří by měla schválit žádost o schválení. Ve výchozím nastavení nastaví PIM schvalovatel být všichni uživatelé, kteří jsou správce privilegovaných rolí, ať už jsou trvalé nebo oprávněné.<br/><br/>**Poznámka:** Pokud je uživatel i oprávněné pro roli Azure AD a schvalovatele role, nebudou moct schvalovat sami.<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zvolili schvalovatele, které chcete být těmi, kdo jsou nejvíc informovanosti ohledně konkrétní roli a jeho časté uživatelům, nikoli jako globální správce. |
 | Doba trvání aktivace | Dlouhá doba, kterou uživatel aktivuje se v roli předtím, než vyprší platnost. |
 | Trvalého správce | Seznam uživatelů, kteří se budou pro roli správce je trvalý (nikdy muset aktivovat).<br/><br/> :heavy_check_mark: **Společnost Microsoft doporučuje** mít žádný stávající správce u všech rolí s výjimkou globální správci. Přečtěte si více o řezu kdo je třeba oprávnění a trvale aktivní části tohoto plánu, která má být. |
 | Správce Active | Správce active pro prostředky Azure, je seznam uživatelů, kteří se už nikdy nemusíte použít roli aktivovat. To se označuje jako správce je trvalý stejně jako v Azure AD role vzhledem k tomu, že můžete nastavit dobu vypršení platnosti pro Pokud uživatel ztratí této role. |
@@ -340,7 +340,7 @@ Nasazení PIM představí další kroky pro privilegované role uživatele. I kd
 > [!TIP]
 > :heavy_check_mark: **Společnost Microsoft doporučuje** můžete nastavit čas, který nabízí váš tým technické podpory a podpory pro provede pracovní postup PIM (Pokud vaše organizace má interní podpory IT týmu). Jim poskytnout příslušné dokumentace, jakož i vaše kontaktní informace.
 
-### <a name="move-to-production"></a>Přejít do produkčního prostředí
+### <a name="move-to-production"></a>Přechod k produkčnímu prostředí
 
 Po testování je kompletní a úspěšné, přesuňte opakováním všechny kroky v testovací fáze pro všechny uživatele každou roli, kterou jste definovali v konfiguraci PIM PIM do produkčního prostředí. PIM pro role Azure AD organizace často testovat a zaveďte PIM pro globální správce před testováním a zavádí PIM pro jiné role. Mezitím pro prostředky Azure, které organizace obvykle testování a zavedení PIM jedno předplatné Azure, najednou.
 
@@ -353,7 +353,7 @@ Pokud pro práci podle potřeby v produkčním prostředí se nepodařilo PIM, n
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Otevřít **Azure AD Privileged Identity Management**.
 1. Klikněte na tlačítko **role Azure AD** a potom klikněte na tlačítko **role**.
-1. Pro každou roli, kterou jste nakonfigurovali, klikněte na tlačítko se třemi tečkami (**...** ) pro všechny uživatele s oprávněného přiřazení.
+1. Pro každou roli, kterou jste nakonfigurovali, klikněte na tlačítko se třemi tečkami ( **...** ) pro všechny uživatele s oprávněného přiřazení.
 1. Klikněte na tlačítko **trvalé** možnost trvalé přiřazení role.
 
 #### <a name="azure-resource-roles"></a>Role prostředků Azure
@@ -362,7 +362,7 @@ Pokud pro práci podle potřeby v produkčním prostředí se nepodařilo PIM, n
 1. Otevřít **Azure AD Privileged Identity Management**.
 1. Klikněte na tlačítko **prostředky Azure** a potom klikněte na předplatné nebo prostředek, které chcete vrátit zpět.
 1. Klikněte na tlačítko **role**.
-1. Pro každou roli, kterou jste nakonfigurovali, klikněte na tlačítko se třemi tečkami (**...** ) pro všechny uživatele s oprávněného přiřazení.
+1. Pro každou roli, kterou jste nakonfigurovali, klikněte na tlačítko se třemi tečkami ( **...** ) pro všechny uživatele s oprávněného přiřazení.
 1. Klikněte na tlačítko **trvalé** možnost trvalé přiřazení role.
 
 ## <a name="step-4-next-steps-after-deploying-pim"></a>Krok 4. Další kroky po nasazení PIM

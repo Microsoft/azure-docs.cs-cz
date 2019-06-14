@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236196"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Řešení potíží se System Center Data Protection Managerem
@@ -22,7 +22,7 @@ Tento článek popisuje řešení problémů, které se můžete setkat při pou
 Nejnovější poznámky k verzi pro System Center Data Protection Manager, najdete v článku [dokumentace pro System Center](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). Další informace o podpoře pro aplikaci Data Protection Manager v [Tato matice](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
 
 
-## <a name="error-replica-is-inconsistent"></a>Chyba: Replika je nekonzistentní.
+## <a name="error-replica-is-inconsistent"></a>Chyba: Replika je nekonzistentní
 
 Repliky může být nekonzistentní z následujících důvodů:
 - Úloha vytvoření repliky nezdaří.
@@ -53,7 +53,7 @@ Chcete-li vyřešit tento problém, proveďte následující akce:
 - Ujistěte se, že replika je k dispozici a ne chybí.
 - Zajistěte, aby replika dostatek místa k vytvoření deníku (USN number) pořadí aktualizace.
 
-## <a name="error-unable-to-configure-protection"></a>Chyba: Ochranu nelze nakonfigurovat.
+## <a name="error-unable-to-configure-protection"></a>Chyba: Ochranu nelze nakonfigurovat
 
 K této chybě dochází, když serveru aplikace Data Protection Manager nemůže kontaktovat na chráněném serveru. 
 

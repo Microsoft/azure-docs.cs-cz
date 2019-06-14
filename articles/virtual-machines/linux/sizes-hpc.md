@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 32b0f467f11cf8cb0a04657006cb5a86b11e27e9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 003a14174ff65bab253f27a458d4f3e2c0a1a6db
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070001"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
 
@@ -72,7 +72,7 @@ Tržiště Azure Marketplace nabízí řadu distribucí systému Linux, které p
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  Další podrobnosti o povolení InfiniBand, nastavení MPI, naleznete v tématu [povolit InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband-with-sriov).
+  Další podrobnosti o povolení InfiniBand, nastavení MPI, naleznete v tématu [povolit InfiniBand](../workloads/hpc/enable-infiniband.md).
 
 
 ### <a name="cluster-configuration-options"></a>Možnosti konfigurace clusteru
@@ -107,5 +107,5 @@ Azure poskytuje celou řadu možností pro vytváření clusterů HPC virtuáln�
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o tom, jak nastavit, optimalizací a Škálováním [úlohy HPC](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc) v Azure.
+- Další informace o tom, jak nastavit, optimalizací a Škálováním [úlohy HPC](../workloads/hpc/configure.md) v Azure.
 - Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.

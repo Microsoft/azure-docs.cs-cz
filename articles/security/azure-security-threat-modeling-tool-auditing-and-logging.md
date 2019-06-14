@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 4843828c89b04e36b0bcc73dcedf9c5735b73729
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610865"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Zabezpečení rámce: Auditování a protokolování | Zmírnění rizik 
@@ -36,7 +36,7 @@ ms.locfileid: "60610865"
 
 ## <a id="sensitive-entities"></a>Určení citlivých entit ve vašem řešení a provádět audit změn
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -47,7 +47,7 @@ ms.locfileid: "60610865"
 
 ## <a id="auditing"></a>Ujistěte se, že auditování a protokolování je vynucená u aplikace
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -58,7 +58,7 @@ ms.locfileid: "60610865"
 
 ## <a id="log-rotation"></a>Ujistěte se, že jsou splněné rotace protokolů a oddělení
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -69,7 +69,7 @@ ms.locfileid: "60610865"
 
 ## <a id="log-sensitive-data"></a>Ujistěte se, že aplikace neprotokoluje citlivými daty
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -80,7 +80,7 @@ ms.locfileid: "60610865"
 
 ## <a id="log-restricted-access"></a>Ujistěte se, že auditu a soubory protokolů mají omezený přístup
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -91,7 +91,7 @@ ms.locfileid: "60610865"
 
 ## <a id="user-management"></a>Ujistěte se, že jsou zaznamenány události správy uživatele
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -102,7 +102,7 @@ ms.locfileid: "60610865"
 
 ## <a id="inbuilt-defenses"></a>Ujistěte se, že systém má integrované obrana proti zneužití
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -113,7 +113,7 @@ ms.locfileid: "60610865"
 
 ## <a id="diagnostics-logging"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -124,7 +124,7 @@ ms.locfileid: "60610865"
 
 ## <a id="identify-sensitive-entities"></a>Ujistěte se, že je povolené auditování přihlášení na SQL serveru
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -135,7 +135,7 @@ ms.locfileid: "60610865"
 
 ## <a id="threat-detection"></a>Povolit detekci hrozeb v Azure SQL
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -146,7 +146,7 @@ ms.locfileid: "60610865"
 
 ## <a id="analytics"></a>Auditovat přístup k Azure Storage pomocí Azure Storage Analytics
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Nasazení |  
@@ -157,7 +157,7 @@ ms.locfileid: "60610865"
 
 ## <a id="sufficient-logging"></a>Implementace dostatečná protokolování
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -186,7 +186,7 @@ Tady je příklad konfigurace s auditováním služby povolena
 
 ## <a id="audit-failure-handling"></a>Implementace dostatečná auditu selhání zpracování
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -213,7 +213,7 @@ Konfigurace WCF oznámení programu pokaždé, když nelze zapisovat do protokol
 
 ## <a id="logging-web-api"></a>Ujistěte se, že je pro webové rozhraní API vynucovat auditování a protokolování
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -224,7 +224,7 @@ Konfigurace WCF oznámení programu pokaždé, když nelze zapisovat do protokol
 
 ## <a id="logging-field-gateway"></a>Ujistěte se, že pro hraniční brána je vynucovat odpovídající auditování a protokolování
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Sestavení |  
@@ -235,7 +235,7 @@ Konfigurace WCF oznámení programu pokaždé, když nelze zapisovat do protokol
 
 ## <a id="logging-cloud-gateway"></a>Ujistěte se, že je pro Cloudová brána vynucovat odpovídající auditování a protokolování
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  

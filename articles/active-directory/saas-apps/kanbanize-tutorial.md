@@ -16,10 +16,10 @@ ms.date: 07/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60264235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Kurz: Integrace Azure Active Directory s Kanbanize
@@ -60,7 +60,7 @@ Konfigurace integrace Kanbanize do služby Azure AD, budete muset přidat Kanban
 
 **Chcete-li přidat Kanbanize z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 

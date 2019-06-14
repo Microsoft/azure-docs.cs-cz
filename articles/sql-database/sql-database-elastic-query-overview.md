@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 01/19/2019
-ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/13/2019
+ms.openlocfilehash: 2ea1d116de2c435e873c653bbfa0571377c4f5ef
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60585685"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067056"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 
@@ -140,7 +140,7 @@ Elastický dotaz je zahrnuté do ceny za databází Azure SQL Database. Všimně
 * Skriptování z externích zdrojů dat nebo externích tabulek z aplikace SSMS a SSDT se ještě nepodporuje.
 * Import/Export pro SQL DB zatím nepodporuje externí zdroje dat a externí tabulky. Pokud je potřeba použít Import/Export, vyřadit tyto objekty před exportem a potom je znovu vytvořit po importu.
 * Elastický dotaz aktuálně podporuje pouze přístup jen pro čtení pro externí tabulky. Můžete však použít všechny funkce jazyka T-SQL v databázi ve kterém je definována externí tabulky. To může být užitečné, například zachovat dočasné použití, například výsledky, vyberte < column_list > do < local_table >, nebo k definování uložené procedury v databázi elastický dotaz odkazující na externí tabulky.
-* S výjimkou nvarchar(max) typů LOB nepodporují v definici externí tabulky. Jako alternativní řešení můžete vytvořit zobrazení na vzdálenou databázi, která přetypovává typu LOB do nvarchar(max), definovat externí tabulky zobrazení místo v základní tabulce a přetypujte ji zpět do původního typu LOB v dotazech.
+* S výjimkou nvarchar(max) obchodní typy (včetně prostorové typy) nejsou podporovány v definici externí tabulky. Jako alternativní řešení můžete vytvořit zobrazení na vzdálenou databázi, která přetypovává typu LOB do nvarchar(max), definovat externí tabulky zobrazení místo v základní tabulce a přetypujte ji zpět do původního typu LOB v dotazech.
 * Sloupce datového typu nvarchar(max) ve výsledku sady zakázat rozšířené dávkování technika použitý v implementaci elastický dotaz a může mít vliv na výkon dotazu pro řád, nebo dokonce u dvou řádově v jiné kanonické případy použití, kde je velké množství neagregovaná data přenášejí výsledku dotazu.
 * Statistiky sloupce na externí tabulky nejsou aktuálně podporovány. Statistika tabulky jsou podporované, ale musí být vytvořeny ručně.
 

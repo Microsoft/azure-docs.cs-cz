@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60198167"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených v Azure Data Lake Storage Gen1
@@ -55,7 +55,7 @@ Když přiřadíte do účtů Data Lake Storage Gen1 uživatele nebo skupiny zab
 
 1. Otevřete účet Data Lake Storage Gen1. V levém podokně klikněte na tlačítko **všechny prostředky**a potom v okně všechny prostředky klikněte na název účtu, ke kterému chcete přiřadit uživatele nebo skupinu zabezpečení.
 
-2. V okně účtu Data Lake Storage Gen1, klikněte na tlačítko **řízení přístupu (IAM)**. V okně ve výchozím nastavení obsahuje vlastníky předplatného jako vlastník.
+2. V okně účtu Data Lake Storage Gen1, klikněte na tlačítko **řízení přístupu (IAM)** . V okně ve výchozím nastavení obsahuje vlastníky předplatného jako vlastník.
    
     ![Skupinu zabezpečení přiřadit k účtu Azure Data Lake Storage Gen1](./media/data-lake-store-secure-data/adl.select.user.icon1.png "skupinu zabezpečení přiřadit k účtu Azure Data Lake Storage Gen1")
 
@@ -127,7 +127,7 @@ Když odeberete z účtů Data Lake Storage Gen1 skupiny zabezpečení, se měn�
 
 Přístup k datům se nemění a je dál spravovaný přístup seznamy ACL.  Výjimkou jsou uživatelé nebo skupiny v roli vlastníky.  Tito uživatelé už nejsou odebírat vlastníky role uživatele nebo skupiny a jejich přístup se překlopil na nastavení seznamu ACL pro přístup. 
 
-1. V okně účtu Data Lake Storage Gen1, klikněte na tlačítko **řízení přístupu (IAM)**. 
+1. V okně účtu Data Lake Storage Gen1, klikněte na tlačítko **řízení přístupu (IAM)** . 
    
     ![Přiřadit skupiny zabezpečení účtu Data Lake Storage Gen1](./media/data-lake-store-secure-data/adl.select.user.icon.png "skupinu zabezpečení přiřadit k účtu Data Lake Storage Gen1")
 2. V **řízení přístupu (IAM)** okna, klikněte na skupiny zabezpečení, kterou chcete odebrat. Klikněte na tlačítko **odebrat**.

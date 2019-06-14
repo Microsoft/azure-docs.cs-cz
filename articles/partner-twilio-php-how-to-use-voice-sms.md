@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60422351"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Postup použití Twilia pro hlasové hovory a SMS v jazyce PHP.
@@ -44,16 +44,16 @@ Rozhraní API využívá Twilio příkazů například **&lt;Say&gt;** příkaz 
 
 Následuje seznam příkazů Twilio. Další informace o ostatních příkazů a funkce prostřednictvím [dokumentaci Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
-* **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
-* **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
-* **&lt;Zavěšení&gt;**: Ukončí volání.
-* **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
-* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
-* **&lt;Record&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
-* **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
-* **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
-* **&lt;Sms&gt;**: Odešle zprávu SMS.
+* **&lt;Volání&gt;** : Volající se připojí k jiný telefon.
+* **&lt;Shromážděte&gt;** : Shromažďuje číslice zadané na klávesnici telefonu.
+* **&lt;Zavěšení&gt;** : Ukončí volání.
+* **&lt;Přehrát&gt;** : Přehraje zvukový soubor.
+* **&lt;Pause&gt;** : Bezobslužná počká zadaný počet sekund.
+* **&lt;Record&gt;** : Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Přesměrovat&gt;** : Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
+* **&lt;Odmítnout&gt;** : Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
+* **&lt;Řekněme, že&gt;** : Převede text na řeč, který je k volání.
+* **&lt;Sms&gt;** : Odešle zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založený na formátu XML podle Twilio příkazy, které informují o Twilio, jak zpracovat hovor nebo SMS.
@@ -84,7 +84,7 @@ Můžete nakonfigurovat aplikace pro používání knihovny Twilio pro jazyk PHP
 
 1. Stažení knihovny Twilio pro jazyk PHP z Githubu ([https://github.com/twilio/twilio-php][twilio_php]) a přidejte **služby** adresáře do vaší aplikace.
    
-    - nebo -
+    -OR-
 2. Nainstalujte knihovnu Twilio pro jazyk PHP jako HRUŠKOVÝ balíček. Nainstalujete ho pomocí následujících příkazů:
    
         $ pear channel-discover twilio.github.com/pear

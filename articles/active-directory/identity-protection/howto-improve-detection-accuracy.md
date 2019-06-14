@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453217"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>Jak: Zlepšovat přesnost detekce 
@@ -49,7 +49,7 @@ Existují tři způsoby, jak zlepšit přesnost detekce: potvrďte ohrožení za
 Vaše zpětná vazba je zpracován Azure AD, aby se zlepšila přesnost detekce výsledky. Obvykle můžete poskytnout zpětnou vazbu jako součást uživatelského rizika nebo šetření rizika přihlášení. Další informace najdete v tématu [zkoumání rizikoví uživatelé a přihlašování](howto-investigate-risky-users-signins.md).
 
 
-## <a name="confirm-compromised"></a>Potvrdit napadení
+## <a name="confirm-compromised"></a>Potvrďte dojde k ohrožení bezpečnosti
 
 Potvrzení události přihlášení, protože dojde k ohrožení bezpečnosti signalizuje do služby Azure AD, že přihlášení nebyl autorizován vlastníkem identity. Když si vyberete, "Potvrdit dojde k ohrožení bezpečnosti", bude Azure AD
 
@@ -65,15 +65,15 @@ Potvrďte ohrožení zabezpečení přihlášení:
 
 - **Sestavy rizikových přihlášení** – tato možnost umožňuje, abyste potvrdili, že ohrožení zabezpečení přihlášení pro jeden nebo více události přihlášení.
 
-    ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/07.png)
+    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/07.png)
 
 - **Zobrazení podrobností o sestavě rizikových přihlášení** – tato možnost povolí, budete vyzváni k potvrzení ohrožení bezpečnosti účtu pro vybrané přihlášení události v sestavě rizikových přihlášení. 
 
-    ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/04.png)
+    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/04.png)
 
 
  
-## <a name="confirm-safe"></a>Potvrdit bezpečnost
+## <a name="confirm-safe"></a>Potvrďte bezpečné
 
 
 Potvrzení události přihlášení jako bezpečné signály do služby Azure AD, která přihlášení **byl** oprávnění vlastníkem příslušné identity. Když si vyberete, "Potvrdit bezpečné", bude Azure AD:
@@ -91,16 +91,16 @@ Potvrďte, že bezpečného přihlášení v:
 
 - **Sestavy rizikových přihlášení** – tato možnost povolí, budete vyzváni k potvrzení bezpečné přihlašování k nejméně jedné události přihlášení.
 
-    ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/08.png)
+    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/08.png)
 
 - **Zobrazení podrobností o sestavě rizikových přihlášení** – tato možnost povolí, budete vyzváni k potvrzení bezpečného přihlášení na vybrané události přihlášení v sestavě rizikových přihlášení. 
 
-    ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/05.png)
+    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/05.png)
 
 
 
 
-## <a name="dismiss-user-risk"></a>Skrýt riziko uživatele
+## <a name="dismiss-user-risk"></a>Zavřít uživatelského rizika
 
 Pokud už udělali nápravné akce pro riziko uživatele nebo přesvědčeni, že falešně byly označeny jako rizikovou, že můžete zavřít uživatelského rizika. Zavření rizika uživatele obnoví uživatele – rizikové stavu. Všechny minulé rizika a rizikových přihlášení se zruší události pro vybraného uživatele.
 
@@ -109,11 +109,11 @@ Můžete zavřít ohlášené uživatelského rizika v:
 
 - **Sestava rizikových uživatelů** – tato možnost dovoluje zrušit uživatelského rizika pro jeden nebo více vybraných uživatelů.
 
-    ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/02.png)
+    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/02.png)
 
 - **Zobrazení podrobností o** – tato možnost dovoluje zrušit riziko uživatele pro vybrané uživatele v sestavě rizika uživatele. 
 
-    ![Skrýt riziko uživatele](./media/howto-improve-detection-accuracy/01.png)
+    ![Zavřít uživatelského rizika](./media/howto-improve-detection-accuracy/01.png)
 
 
 **Co byste měli vědět:**

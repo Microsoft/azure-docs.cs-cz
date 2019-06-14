@@ -10,10 +10,10 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453757"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadované náklady ve službě Azure Monitor
@@ -68,7 +68,7 @@ Na stránce také ukazuje různé sady měřiče, které odpovídají na nový c
 
 Nový cenový model nemá přidělení zahrnutých dat založené na uzlu. Proto těchto měřičů ingestování dat jsou sloučeny do nový common data ingestování měřič volá **sdílené Ingestování Services\Data**. 
 
-Existuje jiná změna dat přijatých do Log Analytics nebo v oblastech s vyšší náklady na Application Insights. Data pro tyto oblasti vysoké náklady se zobrazí se nové dílčím měřením. Příkladem je **Ingestování (USA – Středozápad)**.
+Existuje jiná změna dat přijatých do Log Analytics nebo v oblastech s vyšší náklady na Application Insights. Data pro tyto oblasti vysoké náklady se zobrazí se nové dílčím měřením. Příkladem je **Ingestování (USA – Středozápad)** .
 
 > [!NOTE]
 > Na jedno předplatné odhadované náklady není faktor na úrovni účtu, za uzel oprávnění v Operations Management Suite (OMS) předplatného. Podrobnější diskuzi o novém cenovém modelu najdete v tomto případě vašeho obchodního zástupce.

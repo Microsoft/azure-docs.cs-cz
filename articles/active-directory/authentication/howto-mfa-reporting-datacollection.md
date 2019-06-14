@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359037"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování dat uživatele služby Azure Multi-Factor Authentication
@@ -32,7 +32,7 @@ Pokusy o ověření (používá se pro vytváření sestav a řešení potíží
 
 - Timestamp
 - Uživatelské jméno
-- Jméno
+- Křestní jméno
 - Příjmení
 - E-mailová adresa
 - Skupina uživatelů
@@ -42,7 +42,7 @@ Pokusy o ověření (používá se pro vytváření sestav a řešení potíží
 - Režim textové zprávy (ověřování jednorázovým HESLEM, jednorázové heslo + kód PIN)
 - Režim mobilní aplikace (standardní, kód PIN)
 - Režim tokenu OATH (standardní, kód PIN)
-- Typ ověření
+- Typ ověřování
 - Název aplikace
 - Kód země primárního volání
 - Volání primární telefonní číslo
@@ -92,7 +92,7 @@ Bloky (používá k určení blokovaných stavu a pro vytváření sestav):
 - Linka
 - Vyčištění rozšíření
 - Blokováno
-- Důvod blokování
+- Důvod zablokování
 - Časové razítko ukončení
 - Důvod ukončení
 - Uzamčení účtu
@@ -122,14 +122,14 @@ Změny (používají k synchronizaci změny uživatelů do MFA serveru nebo AAD)
 - Uživatelské jméno
 - Nový kód země
 - Nové telefonní číslo
-- Nové číslo linky
+- Nové rozšíření
 - Nový kód země záložního telefonu
 - Nové telefonní číslo záložního telefonu
 - Nové rozšíření zálohování
 - Nový kód PIN
-- Je vyžadována změna kódu PIN
+- Vyžadována změna kódu PIN
 - Původní Token zařízení
-- Nový token zařízení
+- Nový Token zařízení
 
 ## <a name="gather-data-from-mfa-server"></a>Shromažďování dat z MFA serveru
 

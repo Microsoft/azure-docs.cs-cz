@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394904"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Export nebo odstranění osobních údajů v Azure DevTest Labs
@@ -39,10 +39,10 @@ DevTest Labs používá e-mailová adresa uživatele pro automatické vypnutí e
 ### <a name="user-object-id"></a>ID objektu uživatele
 DevTest Labs používá ID objektu uživatele zobrazit trendy nákladů měsíce na měsíc a náklady podle prostředků informace pro správce testovacího prostředí. Umožňuje sledování nákladů a správa prahové hodnoty pro své testovací prostředí. 
 
-**Trend odhad nákladů pro aktuální kalendářní měsíc:**
+**Trend odhad nákladů pro aktuální kalendářní měsíc:** 
 ![trend odhad nákladů pro aktuální kalendářní měsíc](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Odhadované náklady za měsíc k datu prostředkem:**
+**Odhadované náklady za měsíc k datu prostředkem:** 
 ![odhadované náklady za měsíc k datu podle prostředku](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
@@ -69,7 +69,7 @@ Jako uživatel, který testovací prostředí můžete požádat o export s osob
     ![Vyberte dlaždici objekty BLOB](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Vyberte kontejner s názvem **labresourceusage** v seznamu kontejnerů.
 
-    ![Vyberte kontejner objektů blob.](./media/personal-data-delete-export/select-blob-container.png)
+    ![Vyberte kontejner objektů blob](./media/personal-data-delete-export/select-blob-container.png)
 6. Vyberte **složky** pojmenované po vašem testovacím prostředí. Můžete najít **sdíleného svazku clusteru** soubory pro **disky** a **virtuálních počítačů** ve vaší laboratoři v této složce. Můžete stáhnout tyto soubory sdíleného svazku clusteru, filtrování obsahu pro testovací prostředí uživatele, který požaduje přístup a s nimi sdílet.
 
     ![Stáhněte si soubor CSV](./media/personal-data-delete-export/download-csv-file.png)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611008"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
@@ -95,7 +95,7 @@ Azure Monitor protokoly pomohou vám rychle a snadno zjistit celkové postavení
 
 -   **Významné problémy**: Umožňuje rychle identifikovat celou řadu aktivních problémů a závažnost problémů.
 
--   **Zjištění (Preview)**: Umožňuje identifikovat vzory útoků zobrazením výstrahy zabezpečení, jak se objeví na vaše prostředky.
+-   **Zjištění (Preview)** : Umožňuje identifikovat vzory útoků zobrazením výstrahy zabezpečení, jak se objeví na vaše prostředky.
 
 -   **Hrozeb**: Umožňuje identifikovat vzory útoků tím, že zobrazuje celkový počet serverů s odchozími škodlivými přenosy, typu škodlivých hrozeb a mapu umístění IP adresy.
 
@@ -193,7 +193,7 @@ Možné příklady:
 
 ### <a name="anomaly-detection"></a>Detekce anomálií
 
-Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Machine learning se použije pro určí běžné úrovně aktivity pro vaše nasazení, a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení. Zde naleznete příklad:
+Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Machine learning se použije pro určí běžné úrovně aktivity pro vaše nasazení, a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení. Tady je příklad:
 
 -   **Příchozí útoky hrubou silou RDP/SSH**: Nasazení může být vytížené virtuální počítače s mnoha přihlášení každý den a dalších virtuálních počítačů, které mají několik, pokud existuje, přihlašovací údaje. Azure Security Center můžete určit standardní hodnoty pro přihlašovací aktivitu pro tyto virtuální počítače a pomocí strojového učení definovat kolem běžné přihlašovací aktivity. Pokud je rozdíl oproti standardní hodnoty definované pro vlastnosti související s přihlášením, může být vygenerována výstraha. A strojové učení tu zase určuje, co je významné.
 
@@ -342,10 +342,10 @@ Díky nástrojům, které usnadňují odhalení stínového IT, vyhodnocování 
 | | |
 |---|---|
 | Informace | Možnost odhalte stínové IT s Cloud App Security. Získejte potřebný přehled díky zjišťování aplikací, aktivit, uživatelů, dat a souborů ve vašem cloudovém prostředí. Objevte aplikace třetích stran, které jsou připojené k vašemu cloudu.|
-|Prozkoumat | Cloudové aplikace můžete prošetřete pomocí forenzních cloudových nástrojů podrobné informace o rizikových aplikacích, konkrétních uživatelů a souborech v síti. Najdete vzorce v datech shromážděných z vašeho cloudu. Generování sestav pro monitorování vašeho cloudu. |
-| Řízení | Zmírnění rizik pomocí nastavení zásad a výstrah můžete dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do alternativních bezpečných a schválených cloudových aplikací. |
+|Prošetření | Cloudové aplikace můžete prošetřete pomocí forenzních cloudových nástrojů podrobné informace o rizikových aplikacích, konkrétních uživatelů a souborech v síti. Najdete vzorce v datech shromážděných z vašeho cloudu. Generování sestav pro monitorování vašeho cloudu. |
+| Ovládací prvek | Zmírnění rizik pomocí nastavení zásad a výstrah můžete dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do alternativních bezpečných a schválených cloudových aplikací. |
 | Ochrana | Cloud App Security můžete schválit nebo zakazují, aby se aplikace, vynucovat ochranu před únikem informací, řídit oprávnění a sdílení a generovat vlastní sestavy a upozornění. |
-| Řízení | Zmírnění rizik pomocí nastavení zásad a výstrah můžete dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do alternativních bezpečných a schválených cloudových aplikací. |
+| Ovládací prvek | Zmírnění rizik pomocí nastavení zásad a výstrah můžete dosáhnout tak maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security můžete svoje uživatele migrovat do alternativních bezpečných a schválených cloudových aplikací. |
 | | |
 
 

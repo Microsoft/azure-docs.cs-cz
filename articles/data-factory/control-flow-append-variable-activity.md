@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557218"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Připojte aktivitu proměnnou ve službě Azure Data Factory
@@ -26,7 +26,7 @@ Použije aktivitu přidat proměnnou přidat hodnotu existující proměnné pol
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-jméno | Název aktivity v kanálu | Ano
+name | Název aktivity v kanálu | Ano
 description | Text popisující, jakým způsobem aktivita naloží | ne
 type | Typ aktivity je AppendVariable | ano
 value | Řetězcový literál nebo výraz hodnotu objektu použít k připojení do zadané proměnné | ano

@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243510"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování, můžete řídit objektů, které se zobrazí ve službě Azure Active Directory (Azure AD) z místního adresáře. Výchozí konfigurace přijímá všechny objekty ve všech doménách nakonfigurovaných doménových struktur. Obecně platí toto je doporučená konfigurace. Uživatele, kteří používají úlohy Office 365, jako je Exchange Online a Skype pro firmy, těžit z globální seznam adresu odeslání e-mailu a volat všem uživatelům. Ve výchozí konfiguraci bylo by nutné stejným způsobem, který by měla s implementací místní Exchange nebo Lync.
 
-V některých případech však budete požadované provést nějaké změny ve výchozí konfiguraci. Zde je několik příkladů:
+V některých případech však budete požadované provést nějaké změny ve výchozí konfiguraci. Následuje několik příkladů:
 
 * Plánujete používat [s Azure AD directory topologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Je nutné použít filtr k řízení, které objekty se synchronizují do konkrétní adresář Azure AD.
 * Spustit pilotní nasazení pro Azure nebo Office 365 a chcete pouze podmnožinu uživatelů ve službě Azure AD. V tomto pilotním programu malé není důležité, aby byly dokončení globálního seznamu adres k předvedení funkcí.
@@ -218,7 +218,7 @@ Při filtrování příchozích, využijte sílu **oboru** rozhodnout, které ob
 
 Podívejme se na příklad:  
 ![Rozsah](./media/how-to-connect-sync-configure-filtering/scope.png)  
-To byste si měli přečíst jako **(oddělení = IT) nebo (oddělení = prodeje a c = US)**.
+To byste si měli přečíst jako **(oddělení = IT) nebo (oddělení = prodeje a c = US)** .
 
 V následující ukázky a kroky použijte objekt uživatele jako příklad, ale to můžete použít pro všechny typy objektů.
 

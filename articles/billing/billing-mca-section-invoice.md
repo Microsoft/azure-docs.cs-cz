@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371571"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Vytvořit oddíly na vaší faktuře uspořádat svoje náklady
@@ -30,7 +30,7 @@ K vytvoření oddílu faktury, musíte být **fakturační vlastníka profilu** 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
@@ -57,6 +57,6 @@ K vytvoření oddílu faktury, musíte být **fakturační vlastníka profilu** 
 - [Ostatním uživatelům oprávnění k vytvoření předplatného Azure](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions)
 - [Získat vlastnictví fakturace předplatného Azure od uživatelů v jiných účtech fakturace](billing-mca-request-billing-ownership.md)
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

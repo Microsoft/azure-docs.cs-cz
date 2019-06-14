@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 89034b04c6b38c0873f890e55693c6e15e6a8d93
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742840"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069399"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS do služby Azure App Service
 
@@ -68,7 +68,7 @@ V levé nabídce vyberte **App Services** a pak vyberte název aplikace.
 
 Zobrazí se stránka pro správu aplikace App Service.  
 
-<a name="checkpricing"></a>
+<a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
@@ -82,7 +82,7 @@ Aktuální úroveň aplikace je zvýrazněná modrým ohraničením. Zkontrolujt
 
 Pokud plán služby App Service není úrovně **F1**, zavřete stránku **Vertikálně navýšit kapacitu** a přejděte k části [Mapování záznamu CNAME](#cname).
 
-<a name="scaleup"></a>
+<a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 
@@ -96,7 +96,7 @@ Až se zobrazí následující oznámení, operace škálování je dokončená.
 
 ![Potvrzení operace škálování](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-<a name="cname"></a>
+<a name="cname" aria-hidden="true"></a>
 
 ## <a name="map-your-domain"></a>Mapování domény
 
@@ -162,7 +162,7 @@ Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodn�
 
 ![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-<a name="a"></a>
+<a name="a" aria-hidden="true"></a>
 
 ### <a name="map-an-a-record"></a>Mapování záznamu A
 
@@ -213,7 +213,7 @@ Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujíc�
 
 ![Stránka záznamů DNS](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-<a name="enable-a"></a>
+<a name="enable-a" aria-hidden="true"></a>
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>Povolení mapování záznamu A v aplikaci
 
@@ -246,7 +246,7 @@ Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodn�
 
 ![Chyba ověření](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
-<a name="wildcard"></a>
+<a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Mapování zástupné domény
 
@@ -310,7 +310,7 @@ Pokud se při přechodu na adresu URL vaší vlastní domény zobrazí chyba HTT
 - V konfiguraci vlastní domény chybí záznam A nebo záznam CNAME.
 - Prohlížeč uložil do mezipaměti starou IP adresu vaší domény. Vymažte mezipaměť a znovu otestujte překlad DNS. Na počítači s Windows můžete mezipaměť vymazat příkazem `ipconfig /flushdns`.
 
-<a name="virtualdir"></a>
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="migrate-an-active-domain"></a>Migrace aktivní domény
 
@@ -326,7 +326,7 @@ V dolní části stránky kořenový virtuální adresář `/` odkazuje ve vých
 
 ![Přizpůsobení virtuálního adresáře](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-Po dokončení této operace by vaše aplikace měla na kořenové cestě (například http://contoso.com)) vracet správnou stránku.
+Po dokončení této operace by vaše aplikace měla na kořenové cestě (například http://contoso.com) ) vracet správnou stránku.
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 

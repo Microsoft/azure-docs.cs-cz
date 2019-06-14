@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
 ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60635133"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z několika kontejnerů pomocí Azure Data Factory
@@ -51,7 +51,7 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 
 3. Vyberte **pomocí této šablony**.
 
-    ![Použít tuto šablonu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
+    ![Pomocí této šablony](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
 4. Zobrazí se vám kanálu, jako v následujícím příkladu:
 

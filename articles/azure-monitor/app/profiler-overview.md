@@ -13,10 +13,10 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306302"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil produkční aplikace v Azure pomocí Application Insights
@@ -75,7 +75,7 @@ Pokud **clr! ThePreStub** trvá dlouhou dobu pro požadavek, žádost je první 
 
 ### <a id="ngencold"></a>Kód pro načtení ([STUDENÉHO])
 
-Pokud název metody obsahuje **[STUDENOU]**, jako například **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework spouští kód poprvé, která není optimalizována tak [profilováním řízená optimalizace](/cpp/build/profile-guided-optimizations). Pro každou metodu by se měla zobrazit maximálně jednou během procesu.
+Pokud název metody obsahuje **[STUDENOU]** , jako například **mscorlib.ni! [ COLD]System.Reflection.CustomAttribute.IsDefined**, modul runtime rozhraní .NET Framework spouští kód poprvé, která není optimalizována tak [profilováním řízená optimalizace](/cpp/build/profile-guided-optimizations). Pro každou metodu by se měla zobrazit maximálně jednou během procesu.
 
 Pokud načítání kódu trvá podstatnou část času požadavku, požadavek je první z nich provádět neoptimalizované část metody. Zvažte použití zahřívání proces, který provede část kódu, než vaši uživatelé k němu přístup.
 
@@ -95,7 +95,7 @@ Metody jako **SqlCommand.Execute** znamenat, že kód čeká na dokončení oper
 
 **BLOCKED_TIME** označuje, že kód je čekání na jiný prostředek k dispozici. Například může čekat pro synchronizační objekt, má být k dispozici vlákno nebo požadavek dokončit.
 
-### <a name="unmanaged-async"></a>Nespravovaný asynchronní
+### <a name="unmanaged-async"></a>Nespravované asynchronní
 
 Rozhraní .NET framework vysílá události trasování událostí pro Windows a předá ID aktivit mezi vlákny tak, aby asynchronní volání lze sledovat přes více vláken. Nespravovaný kód (nativní kód) a některé starší styly asynchronní kód chybí tyto události a ID aktivit, takže profileru nelze zjistit, jaké vlákna a toho, jaké jsou funkce spuštěné ve vlákně. To je označené jako 'Nespravované Async' v zásobníku volání. Pokud si stáhnete soubor trasování událostí pro Windows, je možné použít [PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) získat lepší přehled o tom, co se děje.
 

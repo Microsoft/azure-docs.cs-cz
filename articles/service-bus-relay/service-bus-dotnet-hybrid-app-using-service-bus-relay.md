@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 145960db27247a8535eb96640000b86d810619c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60419764"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Zpřístupňují služby WCF v místním do webové aplikace v cloudu s využitím Azure Relay 
@@ -81,7 +81,7 @@ Nejdříve vytvořte systém katalogu produktů simulované místní.  Tento pro
 ### <a name="create-the-project"></a>Vytvoření projektu
 1. Spusťte Visual Studio s právy správce. Pokud tak chcete učinit, klikněte pravým tlačítkem na ikonu programu Visual Studio a potom klikněte na **Spustit jako správce**.
 2. Ve Visual Studiu v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
-3. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Konzolová aplikace (.NET Framework)**. Do pole **Název** zadejte název **ProductsServer**:
+3. V **Nainstalovaných šablonách** v části **Visual C#** klikněte na **Konzolová aplikace (.NET Framework)** . Do pole **Název** zadejte název **ProductsServer**:
 
    ![Dialogové okno Nový projekt][11]
 4. Kliknutím na tlačítko **OK** vytvořte projekt **ProductsServer**.
@@ -229,9 +229,9 @@ V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data na
 
 1. Zkontrolkujte, že je Visual Studio spuštěné s právy správce.
 2. Ve Visual Studiu v nabídce **Soubor** klikněte na **Nový** a pak na **Projekt**.
-3. V **Nainstalovaných šablonách** v části **Visual C#**, klikněte na **Webová aplikace ASP.NET (.NET Framework)**. Jako název projektu zadejte **ProductsPortal**. Pak klikněte na **OK**.
+3. V **Nainstalovaných šablonách** v části **Visual C#** , klikněte na **Webová aplikace ASP.NET (.NET Framework)** . Jako název projektu zadejte **ProductsPortal**. Pak klikněte na **OK**.
 
-   ![Dialogové okno Nový projekt][15]
+   ![Dialogové okno nového projektu][15]
 
 4. V seznamu **Šablony ASP.NET** v dialogovém okně **Nová webová aplikace ASP.NET** klikněte na **MVC**.
 

@@ -16,10 +16,10 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60419369"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojit soubory Azure na základě svazek v aplikaci Service Fabric mřížky 

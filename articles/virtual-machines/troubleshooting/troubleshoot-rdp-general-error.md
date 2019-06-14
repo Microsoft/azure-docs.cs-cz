@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f290a7e16938c66d45fab9b78086f77bfdfe4839
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319509"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení potíží s RDP obecné chybě ve virtuálním počítači Azure
@@ -63,11 +63,11 @@ Naslouchací proces RDP je špatně nakonfigurovaný.
 
 Chcete-li vyřešit tento problém [zálohování disku s operačním systémem](../windows/snapshot-copy-managed-disk.md), a [připojte disk s operačním systémem zachránit virtuálního počítače](troubleshoot-recovery-disks-portal-windows.md)a postupujte podle pokynů.
 
-### <a name="serial-console"></a>Konzola sériového portu
+### <a name="serial-console"></a>Sériová konzola
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otevřené instance CMD v konzole sériového portu
 
-1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **sériová konzola (Preview)**. Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
+1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **sériová konzola (Preview)** . Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
 
 2. Vytvořte nový kanál pro instanci CMD. Typ **CMD** spuštění kanálu se získat název kanálu.
 
@@ -242,6 +242,6 @@ Další informace najdete v tématu [služby Vzdálená plocha nespouští na Vi
 
 Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuálním počítači Azure](troubleshoot-rdp-intermittent-connectivity.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

@@ -15,10 +15,10 @@ ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60349890"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Data služby Health service není aktuální výstrahy
@@ -43,7 +43,7 @@ Následující tabulka mapuje na odpovídající typy požadované datové typy 
 | Typ služby | Agent (název služby Windows) | Účel | Datový typ vygeneruje  |
 | --- | --- | --- | --- |  
 | Azure AD Connect (Sync) | Služba analýz synchronizace služby Azure AD Connect Health | Shromažďovat informace specifické pro službu AAD Connect (konektory, synchronizační pravidla, atd.) | AadSyncService-SynchronizationRules <br />  AadSyncService konektory <br /> AadSyncService-GlobalConfigurations  <br />  AadSyncService-RunProfileResults <br /> AadSyncService-ServiceConfigurations <br /> AadSyncService-ServiceStatus   |
-|  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromáždit čítače výkonu specifické pro službu AAD Connect, trasování ETW, soubory | Počítadlo výkonu |
+|  | Služba monitorování synchronizace služby Azure AD Connect Health | Shromáždit čítače výkonu specifické pro službu AAD Connect, trasování ETW, soubory | Čítač výkonu |
 | AD DS | Služba analýz AD DS pro Azure AD Connect Health | Provádět syntetické testy, shromažďovat informace o topologii, replikační metadata |  - Adds-TopologyInfo-Json <br /> Běžné-TestData-Json (vytvoří výsledky testů)   | 
 |  | Služba monitorování AD DS pro Azure AD Connect Health | Shromáždit čítače výkonu specifické pro AD DS, trasování ETW, soubory | – Čítač výkonu  <br /> Běžné-TestData-Json (odešle výsledky testů)  |
 | AD FS | Diagnostické služby AD FS pro Azure AD Connect Health | Provádět syntetické testy | TestResult (vytvoří výsledky testů) | 

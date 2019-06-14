@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129846"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro aplikace SaaS s více tenanty pomocí geografické replikace databáze
@@ -52,7 +52,7 @@ Založené na geografické replikace plánu zotavení po Havárii A zahrnuje tř
 
 Všechny části považuje pečlivě, zejména v případě, že provoz ve velkém měřítku. Celkově plánu musí provádět několik cílů:
 
-* Nastavení
+* Instalace
     * Vybudování a udržování zrcadlový prostředí v oblasti obnovení. Vytváření elastických fondů a které se replikují všechny databáze v tomto prostředí obnovení rezervuje kapacitu v oblasti obnovení. Správa tohoto prostředí zahrnuje replikaci nových databází tenantů, jako jsou zřízené.  
 * Obnovení
     * Pro použití s možností škálovat dolů zotavení minimalizovat náklady na každodenní fondů a databází musí být vertikálně kapacitu až na získat plně funkční kapacity v oblasti obnovení
@@ -90,7 +90,7 @@ Později v samostatných vrácení kroku, převzetí služeb při selhání data
 ## <a name="review-the-healthy-state-of-the-application"></a>Kontrola stavu v pořádku aplikace
 
 Před zahájením procesu obnovení, zkontrolujte stav v pořádku normální aplikace.
-1. Ve webovém prohlížeči otevřete Centrum akcí aplikace Wingtip Tickets (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net - nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení).
+1. Ve webovém prohlížeči otevřete Centrum akcí aplikace Wingtip Tickets (http://events.wingtip-dpt.&lt ; uživatel&gt;. trafficmanager.net - nahradit &lt; uživatele&gt; s hodnotou uživatele vašeho nasazení).
     * Přejděte do dolní části stránky a Všimněte si, že název serveru katalogu a umístění v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.
     *TIP: Najeďte myší umístění zvětšíte zobrazení.* 
      ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
@@ -207,7 +207,7 @@ Zatímco koncový bod aplikace je v Traffic Manageru zakázán, aplikace je k di
  
      ![Centrum akcí do offline režimu](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Otevřete stránku offline tenanta události přímo, se zobrazí oznámení tenanta na offline. Například pokud Hall koncertní Contoso je v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt; uživatel&gt;.trafficmanager.net/contosoconcerthall ![stránka Contoso Offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Otevřete stránku offline tenanta události přímo, se zobrazí oznámení tenanta na offline. Například pokud Hall koncertní Contoso je v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt ; uživatel&gt;.trafficmanager.net/contosoconcerthall ![ stránka Contoso Offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Zřízení nového tenanta v oblasti obnovení
 Ještě předtím, než všechny existující databáze tenanta máte převzetí služeb při selhání, můžete zřídit nové tenanty v oblasti obnovení.  
@@ -256,7 +256,7 @@ V této úloze budete aktualizovat některou z databází tenantů.
 2. V *prostředí PowerShell ISE*, v ...\Learning skript Modules\Business kontinuity podnikových procesů a Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 po havárii, nastavte následující hodnotu:
     * **$DemoScenario = 5** odstraňte událost z klienta v oblasti obnovení
 3. Stisknutím klávesy **F5** a spustit skript
-4. Aktualizujte stránku události Hall koncertní Contoso (http://events.wingtip-dpt.&lt; uživatel&gt;.trafficmanager.net/contosoconcerthall – nahraďte &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení) a Všimněte si, že poslední událost byla odstraněna.
+4. Aktualizujte stránku události Hall koncertní Contoso (http://events.wingtip-dpt.&lt ; uživatel&gt;.trafficmanager.net/contosoconcerthall – nahraďte &lt; uživatele&gt; s hodnotou uživatele vašeho nasazení) a Všimněte si, že poslední událost byla odstraněna.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Repatriovat základní aplikaci, aby jeho původní produkční oblasti
 
@@ -289,7 +289,7 @@ Nyní Pojďme imagine je výpadek vyřešen a spusťte skript pro vrácení.
     * Stisknutím klávesy **F5** ke spuštění skriptu pro obnovení v novém okně prostředí PowerShell.  Navracení bude trvat několik minut a můžete ji sledovat v okně Powershellu.
     ![Navracení procesu](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Když je spuštěný skript, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net)
+4. Když je spuštěný skript, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt ; uživatel&gt;. trafficmanager.net)
     * Všimněte si, že jsou všechny tenanty online a dostupné během tohoto procesu.
 
 5. Po dokončení navracení aktualizujte Centrum akcí a otevřete stránku události pro Hawthorn vedení se zaměstnanci. Všimněte si, že tato databáze obsahuje byla repatriated původní oblast.

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615182"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Kurz upgradu Service Fabric aplikace pomocí sady Visual Studio
@@ -43,7 +43,7 @@ Výběr **publikovat** zobrazí místní okno, a můžete nastavit **cílový pr
 
 Nyní můžete kliknout na **publikovat** v dialogovém okně. Můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Vizuální objekty aplikace má webovou službu, můžete přejít na zadáním [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) do adresního řádku prohlížeče.  Měli byste vidět 10 s plovoucí desetinnou čárkou vizuální objekty přesouvat na obrazovce.
 
-**POZNÁMKA:** Pokud nasazení `Cloud.xml` profilu (Azure Service Fabric), aplikace pak měla být k dispozici na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/**. Ujistěte se, že máte `8081/TCP` nakonfigurovaná v nástroji pro vyrovnávání zatížení (najít nástroj pro vyrovnávání zatížení ve stejné skupině prostředků jako instance Service Fabric).
+**POZNÁMKA:** Pokud nasazení `Cloud.xml` profilu (Azure Service Fabric), aplikace pak měla být k dispozici na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/** . Ujistěte se, že máte `8081/TCP` nakonfigurovaná v nástroji pro vyrovnávání zatížení (najít nástroj pro vyrovnávání zatížení ve stejné skupině prostředků jako instance Service Fabric).
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Ukázku aktualizovat, a vizuálních objektů
 Můžete si všimnout, že s verzí, který je nasazený v kroku 1, ne otočit vizuální objekty. Umožňuje upgradovat tuto aplikaci do jednoho kde také otočit vizuální objekty.

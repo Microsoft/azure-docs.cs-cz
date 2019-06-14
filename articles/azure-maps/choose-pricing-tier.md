@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60796319"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Zvolte cenovou úroveň ve službě Azure Maps vpravo
 
-Azure Maps nabízí dva cenové úrovně. Cílem tohoto článku je k vám pomůžou zvolit cenovou úroveň pro vaše potřeby vpravo. Pomoc při výběru doprava cenovou úroveň, položte si následující dvě otázky.
+Azure Maps nabízí dvě cenové úrovně. Cílem tohoto článku je k vám pomůžou zvolit cenovou úroveň pro vaše potřeby vpravo. Pomoc při výběru doprava cenovou úroveň, položte si následující dvě otázky.
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jaké geoprostorové funkce plánu použít?
 Cenová úroveň S0 je pro vás vhodná, pokud splňují vaše požadavky na služby geoprostorové základní rozhraní API. Pokud chcete další pokročilé funkce pro vaši aplikaci, vezměte v úvahu vyžadují pro cenovou úroveň S1. Příklad možnosti jsou areal plus hybridní snímky, rozsah trasy a geografické kódování služby batch. **Cenové úrovně možnosti** tabulka poskytuje lepší představu potřeby vaší aplikace. Pomáhá také zvolte cenovou úroveň pro vaši aplikaci nejvhodnější.

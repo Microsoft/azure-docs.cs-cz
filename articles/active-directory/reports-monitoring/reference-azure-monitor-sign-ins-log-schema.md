@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285200"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretace schéma protokolů přihlášení Azure AD ve službě Azure Monitor
@@ -151,14 +151,14 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | OperationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
 | Category | Pro přihlášení, tato hodnota je vždy *SignIn*. | 
 | TenantId | Klient identifikátor GUID, který je spojen s protokoly. |
-| Hodnota resultType | Výsledek operace přihlášení může být *úspěch* nebo *selhání*. | 
+| ResultType | Výsledek operace přihlášení může být *úspěch* nebo *selhání*. | 
 | resultSignature | Obsahuje kód chyby, pokud existuje, pro přihlašovací operaci. |
 | resultDescription | Obsahuje popis chyby pro operace přihlášení. |
 | DurationMs |  Tato hodnota není mapován a toto pole můžete klidně ignorovat.|
 | CallerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
 | CorrelationId | Volitelný GUID, který je předaný klientem. Tato hodnota může pomoct korelovat operací na straně klienta s operací na straně serveru, a to je užitečné, když sledujete protokoly, které jsou rozmístěny služby. |
 | Identita | Identita z tokenu, který byl předložený při provedení žádosti. To může být uživatelský účet, účet system nebo instanční objekt služby. |
-| Úroveň | Poskytuje typ zprávy. Pro audit, je vždy *informativní*. |
+| Level | Poskytuje typ zprávy. Pro audit, je vždy *informativní*. |
 | Location | Poskytuje umístění aktivit přihlašování. |
 | Vlastnosti | Obsahuje seznam všech vlastností, které jsou spojeny s přihlášení. Další informace najdete v tématu [Reference k rozhraní API Microsoft Graphu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Toto schéma používá stejné názvy atributů jako prostředek přihlášení pro lepší čitelnost.
 

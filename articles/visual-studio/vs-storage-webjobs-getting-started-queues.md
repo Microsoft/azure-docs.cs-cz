@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391169"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů)
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 Sada SDK automaticky serializuje objekt do formátu JSON. Zpráva fronty je vytvořen vždy, i v případě, objekt má hodnotu null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Vytvoření více zpráv nebo v asynchronních funkcí
-Chcete-li vytvořit více zpráv, ujistěte se, typ parametru pro výstupní fronty **ICollector<T>**  nebo **IAsyncCollector<T>**, jak je znázorněno v následujícím příkladu.
+Chcete-li vytvořit více zpráv, ujistěte se, typ parametru pro výstupní fronty **ICollector<T>**  nebo **IAsyncCollector<T>** , jak je znázorněno v následujícím příkladu.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -342,7 +342,7 @@ Zprávy, jejíž obsah způsobí, že funkce, která se nezdaří se nazývají 
 ### <a name="automatic-poison-message-handling"></a>Automatické manipulaci s nezpracovatelnými zprávami
 Sada SDK bude volání funkce až 5krát ke zpracování zpráv fronty. Pokud selže páté zkuste zpráva bude přesunuta do fronty poškozené. Můžete zjistit, jak nakonfigurovat maximální počet opakovaných pokusů v [nastavení konfigurace možností](#how-to-set-configuration-options).
 
-Počet poškozených fronta je s názvem *{originalqueuename}*-poškozené. Můžete napsat, že je potřeba funkci zpracování zpráv z fronty nezpracovatelných podle jejich protokolování nebo odeslání oznámení této ruční pozornost.
+Počet poškozených fronta je s názvem *{originalqueuename}* -poškozené. Můžete napsat, že je potřeba funkci zpracování zpráv z fronty nezpracovatelných podle jejich protokolování nebo odeslání oznámení této ruční pozornost.
 
 V následujícím příkladu **CopyBlob** funkce se nezdaří, pokud zpráva fronty obsahuje název objektu blob, který neexistuje. Pokud k tomu dojde, se přesune zprávy z fronty copyblobqueue copyblobqueue poison fronty. **ProcessPoisonMessage** pak protokoly nezpracovatelných zpráv.
 
@@ -544,7 +544,7 @@ Na řídicím panelu WebJobs SDK, posledních 100 řádků konzoly výstupu zobr
 
 ![Přepnout výstupu](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-V probíhající WebJob, protokoly aplikací zobrazí v/data/úlohy/průběžné/*{webjobname}*/job_log.txt v systému souborů webové aplikace.
+V probíhající WebJob, protokoly aplikací zobrazí v/data/úlohy/průběžné/ *{webjobname}* /job_log.txt v systému souborů webové aplikace.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

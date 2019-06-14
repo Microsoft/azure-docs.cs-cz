@@ -9,17 +9,17 @@ ms.date: 3/26/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: 7edce5175a1dda66abf3316cb8f0eb33e9f64ef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236035"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
 V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odesílání do pracovního prostoru Log Analytics, když se vytvoří prostředek.
 
 > [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
+> 1\. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
 >
 > 
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381174"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Upgrade Windows Azure Active Directory Sync a Azure Active Directory Sync
@@ -35,10 +35,10 @@ Poslední verze nástroje DirSync byla vydána v červenci 2014 a v květnu 2015
 Azure AD Connect je nástupcem nástroje DirSync a Azure AD Sync. Tyto dvě podporované kombinuje všechny scénáře. Další informace o řezu [integrace místních identit s Azure Active Directory](whatis-hybrid-identity.md).
 
 ## <a name="deprecation-schedule"></a>Plánu ukončování používání
-| Datum | Poznámka |
+| Datum | Komentář |
 | --- | --- |
-| 13. dubna 2016 |Windows Azure Active Directory Sync (DirSync") a Microsoft Azure Active Directory Sync (Azure AD Sync") jsou ohlášené jako zastaralé. |
-| 13. dubna 2017 |Podpora skončí. Zákazníci už budou moci otevřít případ podpory bez upgradu na Azure AD Connect poprvé. |
+| 13\. dubna 2016 |Windows Azure Active Directory Sync (DirSync") a Microsoft Azure Active Directory Sync (Azure AD Sync") jsou ohlášené jako zastaralé. |
+| 13\. dubna 2017 |Podpora skončí. Zákazníci už budou moci otevřít případ podpory bez upgradu na Azure AD Connect poprvé. |
 |Do 31. prosince 2017|Azure AD může už přijímají komunikaci od Windows Azure Active Directory Sync (DirSync") a Microsoft Azure Active Directory Sync (Azure AD Sync").
 
 ## <a name="how-to-transition-to-azure-ad-connect"></a>Postup přechodu k Azure AD Connect

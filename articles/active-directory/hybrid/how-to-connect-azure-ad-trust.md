@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245725"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Správa vztah důvěryhodnosti služby AD FS pomocí Azure AD pomocí služby Azure AD Connect
@@ -48,7 +48,7 @@ Azure AD Connect spravuje **pouze** související nastavení se vztah důvěryho
 | Pravidla transformace vystavení | Počet pravidel deklarací identity, které jsou potřeba pro zajištění optimálního výkonu funkce služby Azure AD ve federované nastavení nejsou k dispozici. Azure AD Connect zajišťuje, že vztah důvěryhodnosti Azure AD je vždy nakonfigurovanou správnou sadu pravidel deklarací identity doporučené. |
 | Alternativní id | Pokud se synchronizace je nakonfigurován pro použití alternativní id, Azure AD Connect konfiguraci služby AD FS provádět ověření pomocí alternativní id. |
 | Automatické metadata update | Vztah důvěryhodnosti s Azure AD je nakonfigurovaný pro automatické metadata aktualizací. Služba AD FS pravidelně kontroluje metadata vztahu důvěryhodnosti Azure AD a udržuje je aktuální v případě, že se změní na straně služby Azure AD. |
-| Integrované ověřování systému Windows (IWA) | Během operace připojení k hybridní službě Azure AD je povoleno IWA pro registraci zařízení pro usnadnění připojení k hybridní službě Azure AD pro zařízení s nižší úrovně |
+| Ověření integrované Windows (IWA) | Během operace připojení k hybridní službě Azure AD je povoleno IWA pro registraci zařízení pro usnadnění připojení k hybridní službě Azure AD pro zařízení s nižší úrovně |
 
 ## <a name="execution-flows-and-federation-settings-configured-by-azure-ad-connect"></a>Spuštění toků a nastavení federace Azure AD Connect
 
@@ -59,7 +59,7 @@ Služby Azure AD connect neprovede aktualizaci všech nastavení pro vztah dův�
 | Nejdříve projít instalace (rychlé) | Žádný |
 | Nejdříve projít instalace (novou farmu služby AD FS) | Vytvořit novou farmu služby AD FS a vztah důvěryhodnosti s Azure AD je vytvořený z nuly. |
 | Nejdříve projít instalace (existující farmu služby AD FS, existující vztah důvěryhodnosti Azure AD) | Identifikátor vztahu důvěryhodnosti Azure AD, pravidla transformace vystavení, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
-| Resetovat vztah důvěryhodnosti služby Azure AD | Token podpisový certifikát, podpisový algoritmus, identifikátor vztahu důvěryhodnosti Azure AD, transformace vystavení tokenu pravidla, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
+| Resetovat vztah důvěryhodnosti Azure AD | Token podpisový certifikát, podpisový algoritmus, identifikátor vztahu důvěryhodnosti Azure AD, transformace vystavení tokenu pravidla, koncové body služby Azure AD, alternativní id (v případě potřeby), automatické metadata update |
 | Přidat federační server | Žádný |
 | Přidání serveru WAP | Žádný |
 | Možnosti zařízení | Pravidla transformace vystavení, IWA pro registraci zařízení |

@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60301100"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postup: Vyžadovat vícefaktorové ověřování pro přístup z nedůvěryhodných sítích s podmíněným přístupem   
@@ -73,11 +73,11 @@ Namísto pokusu o definovat, jaké jsou všechna místa, které nejsou důvěryh
 
 - Zahrnout všechny umístění 
 
-    ![Podmíněný přístup](./media/untrusted-networks/02.png)
+    ![podmíněný přístup](./media/untrusted-networks/02.png)
 
 - Vyloučit všechny důvěryhodné umístění 
 
-    ![Podmíněný přístup](./media/untrusted-networks/01.png)
+    ![podmíněný přístup](./media/untrusted-networks/01.png)
 
 
 

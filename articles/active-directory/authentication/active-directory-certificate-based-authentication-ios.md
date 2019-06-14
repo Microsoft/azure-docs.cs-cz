@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60415991"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Ověřování Azure Active Directory na základě certifikátů v Iosu

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 989c5c1cd9474999400177293d896b96c79c32b7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955227"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060903"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Architektura služby Azure Blockchain Workbench
 
@@ -45,7 +45,7 @@ Ve webové aplikaci můžou Autorizovaní uživatelé přístup ke konzole sprá
 * Nahrání a nasazení vlastních chytrých kontraktů.
 * Přiřazení uživatelského přístupu k inteligentní smlouvy v kontextu konkrétní roli.
 
-Další informace najdete v tématu [Azure Blockchain Workbench ukázka klientské aplikace na Githubu](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client).
+Další informace najdete v tématu [Azure Blockchain Workbench ukázka klientské aplikace na Githubu](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
 
 ## <a name="gateway-service-api"></a>Rozhraní API služby brány
 

@@ -16,10 +16,10 @@ ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 5aac1f7e1ded700b9bec38c358ea0049df93fd3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60454553"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Ukázky Azure Powershellu pro monitorování

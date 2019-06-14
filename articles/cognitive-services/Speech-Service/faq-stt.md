@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
 ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60539056"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Převod řeči na Text – nejčastější dotazy
@@ -151,5 +151,5 @@ Pokud máte další aspekty ochrany osobních údajů, které neumožňují pomo
 
 ## <a name="next-steps"></a>Další postup
 
-* [Řešení potíží](troubleshooting.md)
+* [Odstraňování potíží](troubleshooting.md)
 * [Poznámky k verzi](releasenotes.md)

@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60326321"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta u SaaS aplikace databází na tenanta
@@ -76,7 +76,7 @@ Abychom si předvedli tyto scénáře obnovení, nejprve "nechtěného" odstraň
 
 1. V prostředí PowerShell ISE otevřete... \\Learning Modules\\provozní kontinuitu a zotavení po havárii\\RestoreTenant\\*Demo-RestoreTenant.ps1*a nastavte následující hodnotu:
 
-   * **$DemoScenario** = **1**, *odstranit poslední události (s žádné prodej lístků)*.
+   * **$DemoScenario** = **1**, *odstranit poslední události (s žádné prodej lístků)* .
 2. Stisknutím klávesy F5 spusťte skript a odstranit poslední události. Zobrazí se následující potvrzující zpráva:
 
    ```Console

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60454108"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
@@ -67,7 +67,7 @@ Galerie prostředí PowerShell ale nabízí rychlou možnost jak nasadit modul p
 |:--|:--|:--|
 | Name | WorkspaceId | WorkspaceKey |
 | Type | String | String |
-| Value | Vložte ID pracovního prostoru z pracovního prostoru Log Analytics. | Vložit pomocí primární nebo sekundární klíč pracovního prostoru Log Analytics. |
+| Hodnota | Vložte ID pracovního prostoru z pracovního prostoru Log Analytics. | Vložit pomocí primární nebo sekundární klíč pracovního prostoru Log Analytics. |
 | Šifrované | Ne | Ano |
 
 ## <a name="3-create-runbook"></a>3. Vytvoření runbooku
@@ -179,12 +179,12 @@ Nejběžnější způsob spuštění sady runbook, která shromažďuje data mon
 2. Klikněte na tlačítko **přidat plán** > **připojení plánu k runbooku** > **vytvoření nového plánu**.
 5. Zadejte následující hodnoty pro plán a klikněte na **vytvořit**.
 
-| Vlastnost | Value |
+| Vlastnost | Hodnota |
 |:--|:--|
 | Name | AutomationJobs-Hourly |
 | Spuštění | Vyberte možnost kdykoli alespoň 5 minut po aktuálním čase. |
 | Opakování | Opakující se |
-| Opakovat každých | 1 hodina |
+| Opakovat každý | 1 hodina |
 | Nastavit vypršení platnosti | Ne |
 
 Po vytvoření plánu je potřeba nastavit hodnoty parametrů, které se použijí pokaždé, když tento plán spuštění runbooku.

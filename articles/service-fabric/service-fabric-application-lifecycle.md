@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 1/19/2018
 ms.author: atsenthi
 ms.openlocfilehash: 53cab3591ea11721e36b48438f35df016e2a9f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60621479"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
@@ -80,7 +80,7 @@ Zobrazit [kurz upgradu aplikace](service-fabric-application-upgrade-tutorial.md)
 4. *Operátor* přidává a odebírá uzly určené *správce aplikace*.
 5. Při přidání nových uzlů k nebo existující uzly jsou odebrány z clusteru, Service Fabric automaticky rozděluje zátěž aktuálního spuštěných aplikací napříč všemi uzly v clusteru pro zajištění optimálního výkonu.
 
-## <a name="remove"></a>Odebrat
+## <a name="remove"></a>odebrat
 1. *Operátor* můžete odstranit konkrétní instanci služby spuštěné v clusteru bez odebrání celé aplikace pomocí [ **DeleteServiceAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient), [ **Odebrat ServiceFabricService** rutiny](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice), nebo [ **odstranění služby** operace REST](https://docs.microsoft.com/rest/api/servicefabric/delete-a-service).  
 2. *Operátor* můžete také odstranit instance aplikace a všechny její služby pomocí [ **DeleteApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [  **Odebrat ServiceFabricApplication** rutiny](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplication), nebo [ **odstranit aplikaci** operace REST](https://docs.microsoft.com/rest/api/servicefabric/delete-an-application).
 3. Po ukončení aplikace a služby mají *operátor* můžete zrušit zřízení typu aplikace pomocí [ **UnprovisionApplicationAsync** metoda](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [ **Unregister-ServiceFabricApplicationType** rutiny](https://docs.microsoft.com/powershell/module/servicefabric/unregister-servicefabricapplicationtype), nebo [ **zrušit zřízení aplikace** operace REST](https://docs.microsoft.com/rest/api/servicefabric/unprovision-an-application). Zrušení zřízení typu aplikace se neodebere balíček aplikace z ImageStore. Balíček aplikace musí odebrat ručně.

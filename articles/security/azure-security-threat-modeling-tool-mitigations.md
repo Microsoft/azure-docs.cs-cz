@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611319"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Nástroj pro modelování hrozeb Microsoftu způsoby zmírnění rizik
@@ -31,7 +31,7 @@ Přejděte **[nástroj pro modelování hrozeb](./azure-security-threat-modeling
 
 Nástroj pro modelování hrozeb způsoby zmírnění rizik jsou rozdělené podle rámce zabezpečení webové aplikace, který se skládá z následujících akcí:
 
-| Kategorie | Popis |
+| Category | Popis |
 | -------- | ----------- |
 | **[Auditování a protokolování](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Kdo jste, co a kdy? Auditování a protokolování odkazovat jak vaše aplikace zaznamenává události související se zabezpečením |
 | **[Ověřování](./azure-security-threat-modeling-tool-authentication.md)** | Kdo jste? Ověřování je proces, ve kterém entity prokáže vaše oprávnění identitě z druhé entity, obvykle pomocí přihlašovacích údajů, jako je například uživatelské jméno a heslo |

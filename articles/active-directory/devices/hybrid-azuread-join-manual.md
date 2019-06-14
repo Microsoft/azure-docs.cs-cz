@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8db7e2588b03807a42f82fd0fcd4e71855e55c1d
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66426323"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052148"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridní služby Azure Active Directory připojené zařízení
 
@@ -139,7 +139,7 @@ Rutina `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Používá modul Active Directory PowerShell a nástroje Azure Active Directory Domain Services (Azure AD DS). Tyto nástroje spoléhají na Active Directory Web Services běží na řadiči domény. Služba Active Directory Web Services se podporuje v řadičích domény s Windows Serverem 2008 R2 nebo novějším.
 * Je podporován pouze pomocí prostředí PowerShell verze 1.1.166.0 modulu MSOnline. Chcete-li stáhnout tento modul, použijte [tento odkaz](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).
-* Pokud nejsou nainstalovány nástroje Azure AD DS, `Initialize-ADSyncDomainJoinedComputerSync` se nezdaří. Můžete nainstalovat nástroje Azure AD DS přes správce serveru pod **funkce** > **nástroje pro vzdálenou správu serveru** > **nástroje pro správu rolí** .
+* Pokud nejsou nainstalované nástroje služby AD DS, `Initialize-ADSyncDomainJoinedComputerSync` se nezdaří. Můžete nainstalovat nástroje služby AD DS přes správce serveru pod **funkce** > **nástroje pro vzdálenou správu serveru** > **nástroje pro správu rolí**.
 
 Pro řadiče domény se systémem Windows Server 2008 nebo dřívější verze pomocí následujícího skriptu vytvořte spojovací bod služby. V konfiguraci s více doménovými strukturami pomocí následujícího skriptu vytvořte spojovací bod služby v každé doménové struktuře, pokud existují počítače.
 

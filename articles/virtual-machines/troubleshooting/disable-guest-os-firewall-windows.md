@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60505457"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Zakázání brány firewall hostovaného operačního systému na virtuálním počítači Azure
@@ -104,11 +104,11 @@ Použijte následující postup použijte [Remote Registry](https://support.micr
 
 4.  Spusťte instanci **Services.msc**.
 
-5.  Klikněte na tlačítko **služby (místní počítač)**.
+5.  Klikněte na tlačítko **služby (místní počítač)** .
 
 6.  Vyberte **připojit k jinému počítači**.
 
-7.  Zadejte **privátní IP adresa (DIP)** problému virtuálního počítače.
+7.  Zadejte **privátní IP adresa (DIP)**  problému virtuálního počítače.
 
 8.  Restartujte zásadu místní brány firewall.
 

@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
 ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60447187"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Vytvořit pracovní postupy založené na události nebo akce pomocí webhooků a Azure Logic Apps
@@ -91,26 +91,26 @@ Tady jsou další podrobnosti o aktivační události a akce podporuje tento web
 #### <a name="http-webhook"></a>HTTP Webhook
 
 Odběru adresu URL zpětného volání pro službu, která může volat adresu URL, která se aktivuje aplikace logiky podle potřeby.
-* Znamená, že požadované pole.
+\* Znamená, že požadované pole.
 
-| Zobrazovaný název | Property Name | Popis |
+| Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
-| Přihlášení odběru URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o předplatné |
+| Přihlášení odběru URI * |uri |Identifikátor URI HTTP pro žádosti o předplatné |
 | Odhlásit odběr – metoda * |method |Metoda HTTP pro žádost o zrušení odběru |
-| Odhlásit odběr URI * |identifikátor uri |Identifikátor URI HTTP pro žádost o zrušení odběru |
-| Přihlášení odběru textu |hlavní část |Požadavku HTTP pro přihlášení k odběru |
+| Odhlásit odběr URI * |uri |Identifikátor URI HTTP pro žádost o zrušení odběru |
+| Přihlášení odběru textu |Text |Požadavku HTTP pro přihlášení k odběru |
 | Přihlášení odběru záhlaví |Záhlaví |Hlavičky požadavků HTTP pro přihlášení k odběru |
-| Ověřování přihlášení odběru |Ověřování |Ověřování protokolu HTTP pro přihlášení k odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
-| Odhlásit odběr textu |hlavní část |Požadavku HTTP pro zrušení odběru |
+| Ověřování přihlášení odběru |ověřování |Ověřování protokolu HTTP pro přihlášení k odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
+| Odhlásit odběr textu |Text |Požadavku HTTP pro zrušení odběru |
 | Odhlásit odběr záhlaví |Záhlaví |Hlavičky požadavků HTTP pro zrušení odběru |
-| Odhlásit odběr ověřování |Ověřování |Ověřování protokolu HTTP pro zrušení odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
+| Odhlásit odběr ověřování |ověřování |Ověřování protokolu HTTP pro zrušení odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
 
 **Podrobnosti výstupu**
 
 Požadavek Webhooku
 
-| Property Name | Typ dat | Popis |
+| Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky požadavku Webhooku |
 | Tělo |objekt |Objekt požadavku Webhooku |
@@ -122,31 +122,31 @@ Požadavek Webhooku
 | --- | --- |
 | HTTP Webhook |Adresa URL zpětného volání službě, která může volat adresu URL obnovit podle potřeby kroku pracovního postupu odběru. |
 
-### <a name="action-details"></a>Detaily akce
+### <a name="action-details"></a>Podrobnosti akce
 
 #### <a name="http-webhook"></a>HTTP Webhook
 
 Adresa URL zpětného volání službě, která může volat adresu URL obnovit podle potřeby kroku pracovního postupu odběru.
-* Znamená, že požadované pole.
+\* Znamená, že požadované pole.
 
-| Zobrazovaný název | Property Name | Popis |
+| Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Přihlášení odběru metoda * |method |Metoda HTTP pro žádosti o předplatné |
-| Přihlášení odběru URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o předplatné |
+| Přihlášení odběru URI * |uri |Identifikátor URI HTTP pro žádosti o předplatné |
 | Odhlásit odběr – metoda * |method |Metoda HTTP pro žádost o zrušení odběru |
-| Odhlásit odběr URI * |identifikátor uri |Identifikátor URI HTTP pro žádost o zrušení odběru |
-| Přihlášení odběru textu |hlavní část |Požadavku HTTP pro přihlášení k odběru |
+| Odhlásit odběr URI * |uri |Identifikátor URI HTTP pro žádost o zrušení odběru |
+| Přihlášení odběru textu |Text |Požadavku HTTP pro přihlášení k odběru |
 | Přihlášení odběru záhlaví |Záhlaví |Hlavičky požadavků HTTP pro přihlášení k odběru |
-| Ověřování přihlášení odběru |Ověřování |Ověřování protokolu HTTP pro přihlášení k odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
-| Odhlásit odběr textu |hlavní část |Požadavku HTTP pro zrušení odběru |
+| Ověřování přihlášení odběru |ověřování |Ověřování protokolu HTTP pro přihlášení k odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
+| Odhlásit odběr textu |Text |Požadavku HTTP pro zrušení odběru |
 | Odhlásit odběr záhlaví |Záhlaví |Hlavičky požadavků HTTP pro zrušení odběru |
-| Odhlásit odběr ověřování |Ověřování |Ověřování protokolu HTTP pro zrušení odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
+| Odhlásit odběr ověřování |ověřování |Ověřování protokolu HTTP pro zrušení odběru. [Zobrazit konektor HTTP](connectors-native-http.md#authentication) podrobnosti |
 
 **Podrobnosti výstupu**
 
 Požadavek Webhooku
 
-| Property Name | Typ dat | Popis |
+| Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky požadavku Webhooku |
 | Tělo |objekt |Objekt požadavku Webhooku |

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414613"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Řešení potíží s kombinovat informace o registraci zabezpečení (preview)
@@ -35,7 +35,7 @@ Události evidované pro kombinované registrace jsou v kategorii metody ověřo
 
 Následující tabulka uvádí všechny auditovat události generované modulem kombinovaná registrace:
 
-| Aktivita | Status | Důvod | Popis |
+| Aktivita | Status | Reason | Popis |
 | --- | --- | --- | --- |
 | Uživatel zaregistrován všechny požadované bezpečnostní údaje | Úspěch | Uživatel zaregistrován všechny požadované bezpečnostní údaje. | Pokud uživatel úspěšně dokončil registraci, dojde k této události.|
 | Uživatel zaregistrován všechny požadované bezpečnostní údaje | Selhání | Uživatel zrušil registraci informací o zabezpečení. | Tato událost nastane, pokud uživatel zruší registraci v režimu přerušení.|

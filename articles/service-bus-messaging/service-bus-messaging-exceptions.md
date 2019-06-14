@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
 ms.openlocfilehash: b90e87310bf6dec505176b7f4d4cb9e15ac57c20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307773"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Výjimky zasílání zpráv Service Bus
@@ -62,7 +62,7 @@ Následující tabulka uvádí zasílání zpráv typy výjimek a jejich příč
 | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Pokus o operaci na transakci, která je nejistá, nebo je proveden pokus o potvrzení transakce a transakce stane nejistým výsledkem. |Ke zpracování potřeba aplikace tuto výjimku (jako speciální případ), protože transakce může již byly potvrzeny. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
-[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) indikuje, že došlo k překročení kvóty pro některou z entit.
+[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) označuje, že byla překročena kvóta pro konkrétní entitu.
 
 ### <a name="queues-and-topics"></a>Fronty a témata
 Pro fronty a témata je to často velikost fronty. Vlastnost chybová zpráva obsahuje další podrobnosti, jako v následujícím příkladu:

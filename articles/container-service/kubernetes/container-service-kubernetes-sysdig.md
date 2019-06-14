@@ -10,10 +10,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 4aef241e2c86e4016c3c468fcdcfdfc620fc7aa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309256"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service Kubernetes pomocí služby Sysdig
@@ -66,7 +66,7 @@ V Linuxu a OS X můžete spustit:
 $ curl -O https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml
 ```
 
-V prostředí PowerShell:
+V PowerShellu:
 
 ```console
 $ Invoke-WebRequest -Uri https://raw.githubusercontent.com/draios/sysdig-cloud-scripts/master/agent_deploy/kubernetes/sysdig-daemonset.yaml | Select-Object -ExpandProperty Content > sysdig-daemonset.yaml

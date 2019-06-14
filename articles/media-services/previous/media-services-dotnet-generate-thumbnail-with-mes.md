@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61244225"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
@@ -558,7 +558,7 @@ Platí následující aspekty:
     Můžete kombinovat a párovat zápisy, jako je prosím.
     
     Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit "zajímavý" prvního rámce obsahu poznámky: (Krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
-  * Výchozí hodnoty: Spustit: {nejlepší}
+  * Výchozí nastavení: Spustit: {nejlepší}
 * Výstupní formát, musí se explicitně zadat pro každou formát obrázku: Jpg/Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
 
 ## <a name="next-steps"></a>Další postup

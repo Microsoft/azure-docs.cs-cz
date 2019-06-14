@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320334"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Pomocí služby Správce zařízení StorSimple můžete zobrazit a spravovat výstrahy StorSimple
@@ -72,7 +72,7 @@ Po povolení e-mailové oznámení pro zařízení se v seznamu oznámení obdr�
       
 3. Pokud chcete poslat testovací e-mailové oznámení, klikněte na tlačítko **odeslat zkušební email**. Služba Správce zařízení StorSimple se zobrazí stavové zprávy, jak předává testovací oznámení.
 
-    ![Nastavení výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![nastavení výstrah](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
 4. Při odeslání testovacího e-mailu se zobrazí oznámení. 
    
@@ -154,13 +154,13 @@ Pokud připojení ke cloudu na zařízení StorSimple produkční selže, pak v 
 |:--- |:--- |:--- |
 | Zařízení se pokusilo převzít <*název zařízení*>. |Zařízení je v režimu údržby. |Zařízení se nezdařila. důvod spustil nebo ukončil režim údržby. To je běžné a není potřeba žádná akce. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
 | Zařízení se pokusilo převzít <*název zařízení*>. |Firmwaru zařízení nebo software byl právě aktualizován. |Došlo k selhání clusteru z důvodu aktualizace. To je běžné a není potřeba žádná akce. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
-| Zařízení se pokusilo převzít <*název zařízení*>. |Kontroler se vypnul nebo restartoval. |Zařízení se nepodařilo přes, protože byla aktivní kontroler vypnul nebo restartoval microsoftem nebo správcem. Není nutné provádět žádnou akci. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
+| Zařízení se pokusilo převzít <*název zařízení*>. |Kontroler se vypnul nebo restartoval. |Zařízení se nepodařilo přes, protože byla aktivní kontroler vypnul nebo restartoval microsoftem nebo správcem. Není vyžadována žádná akce. Až toto upozornění potvrdíte, vymažte ho ze stránky s upozorněními. |
 | Zařízení se pokusilo převzít <*název zařízení*>. |Plánované převzetí služeb při selhání. |Ověřte, že bylo plánované převzetí služeb při selhání. Poté, co jste udělali příslušnou akci, vymažte toto upozornění ze stránky s upozorněními. |
 | Zařízení se pokusilo převzít <*název zařízení*>. |Neplánované převzetí služeb při selhání. |StorSimple je navržená k automaticky zotavit po neplánovaném převzetí služeb při selhání. Pokud zjistíte velký počet těchto výstrahách, obraťte se na Microsoft Support. |
 | Zařízení se pokusilo převzít <*název zařízení*>. |Ostatní/Neznámý důvod. |Pokud zjistíte velký počet těchto výstrahách, obraťte se na Microsoft Support. Jakmile je problém vyřešen, vymažte toto upozornění ze stránky s upozorněními. |
 | Služba kritické zařízení hlásí stav jako neúspěšný. |DataPath selhání služby. |Požádejte o pomoc Microsoft Support. |
-| Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Ostatní/Neznámý důvod. |Někdy dočasné situace může způsobit, že tyto výstrahy. Pokud je to tento případ, pak tato výstraha bude automaticky vymazán po nějaké době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
-| Virtuální IP adresu pro síťové rozhraní <*dat #*> hlásí stav jako neúspěšný. |Název rozhraní: <*dat #*> IP adresa `<IP address>` nelze do online režimu, protože byla zjištěna duplicitní IP adresa v síti. |Ujistěte se, že duplicitní IP adresa se odebere ze sítě nebo změnit konfiguraci rozhraní s jinou IP adresu. |
+| Virtuální IP adresu pro síťové rozhraní <*dat #* > hlásí stav jako neúspěšný. |Ostatní/Neznámý důvod. |Někdy dočasné situace může způsobit, že tyto výstrahy. Pokud je to tento případ, pak tato výstraha bude automaticky vymazán po nějaké době. Pokud potíže potrvají, kontaktujte prosím podporu Microsoftu. |
+| Virtuální IP adresu pro síťové rozhraní <*dat #* > hlásí stav jako neúspěšný. |Název rozhraní: <*dat #* > IP adresa `<IP address>` nelze do online režimu, protože byla zjištěna duplicitní IP adresa v síti. |Ujistěte se, že duplicitní IP adresa se odebere ze sítě nebo změnit konfiguraci rozhraní s jinou IP adresu. |
 
 ### <a name="disaster-recovery-alerts"></a>Výstrahy pro zotavení po havárii
 

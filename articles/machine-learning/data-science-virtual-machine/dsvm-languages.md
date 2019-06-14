@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60502213"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
@@ -234,12 +234,12 @@ Helena umístění výchozí hodnota je globální prostředí číst všichni u
 
 ## <a name="other-languages"></a>Jiné jazyky
 
-**C#**: K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `csc` příkazu. 
+**C#** : K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `csc` příkazu. 
 
 **Java**: OpenJDK je k dispozici v Linuxu i Windows edice DSVM a nastavte na cestě. Můžete zadat `javac` nebo `java` příkazu na příkazovém řádku ve Windows nebo prostředí bash v Linuxu pomocí Javy. 
 
 **Node.js**: platforma node.js je k dispozici v Linuxu i Windows edition DSVM a sada na cestě. Můžete zadat `node` nebo `npm` příkazu na příkazovém řádku ve Windows nebo prostředí bash v systému Linux pro přístup k node.js. Na Windows je nainstalován Node.js tools pro rozšíření sady Visual Studio k poskytování grafické integrovaného vývojového prostředí pro vývoj aplikace node.js. 
 
-**F#**: K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `fsc` příkazu. 
+**F#** : K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `fsc` příkazu. 
 
 

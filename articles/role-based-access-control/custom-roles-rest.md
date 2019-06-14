@@ -16,10 +16,10 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60596678"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření vlastních rolí pro prostředky Azure pomocí rozhraní REST API
@@ -54,11 +54,11 @@ K zobrazení seznamu vlastních rolí v oboru, použijte [definice rolí – sez
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam rolí.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{filter}* s typem role.
 
@@ -78,11 +78,11 @@ Chcete-li získat informace o vlastní role podle jeho zobrazovaného názvu, po
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam rolí.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{filter}* se zobrazovaným názvem pro roli.
 
@@ -104,11 +104,11 @@ Chcete-li získat informace o vlastní role podle jejího jedinečného identifi
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam rolí.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{roleDefinitionId}* s identifikátorem GUID definice role.
 
@@ -152,11 +152,11 @@ Chcete-li vytvořit vlastní roli, použijte [definice rolí – vytvořit nebo 
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s prvním `assignableScopes` vlastní role.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{roleDefinitionId}* s identifikátorem GUID vlastní role.
 
@@ -217,11 +217,11 @@ Chcete-li aktualizovat vlastní roli, použijte [definice rolí – vytvořit ne
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s prvním `assignableScopes` vlastní role.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{roleDefinitionId}* s identifikátorem GUID vlastní role.
 
@@ -301,11 +301,11 @@ Pokud chcete odstranit vlastní roli, použijte [odstranit definice rolí –](/
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, který chcete odstranit vlastní roli.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{roleDefinitionId}* s identifikátorem GUID vlastní role.
 

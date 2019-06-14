@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 04da6b7a904bed8fa0990afe77b7fc81bec5a76e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064029"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro Custom Speech
 
@@ -44,7 +44,7 @@ Každou datovou sadu, které nahrajete, musí splňovat požadavky pro datový t
 Po odeslání vaší datové sadě máte několik možností:
 
 * Můžete přejít **testování** kartu a vizuálně zkoumat jenom zvuk nebo zvukový + lidských s názvem bez přípony určené k transkripci data.
-* Můžete přejít **školení** kartu a nám přepisu zvuku + lidské dat nebo související textových dat pro trénování vlastních modelů.
+* Můžete přejít **školení** kartu a používat data přepisu zvuku + lidské nebo text související s k trénování vlastních modelů.
 
 ## <a name="audio-data-for-testing"></a>Zvuková data pro účely testování
 

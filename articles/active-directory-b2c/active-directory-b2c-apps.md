@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4a9931fa6e2edf8989036eb8dbfbef3638cbbe0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 9ae2894f9f442bca1e6029b7e7d8e07824abf7fb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507527"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051742"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -98,7 +98,7 @@ Webové rozhraní API může přijímat tokeny z řady typů klientů, včetně 
 6. `access_token` a `refresh_token` jsou odesílány zpět do webového serveru.
 7. Webové rozhraní API je volána s `access_token` v hlavičce autorizace.
 8. Webové rozhraní API ověří daný token.
-9. Zabezpečení dat se vrátí do webového serveru.
+9. Zabezpečení dat se vrátí do webové aplikace.
 
 Pro další informace o kódech autorizace a obnovovacích tokenech a návod, jak získat tokeny, si přečtěte o [protokolu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).
 

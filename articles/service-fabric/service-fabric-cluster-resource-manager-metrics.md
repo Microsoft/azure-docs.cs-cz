@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516711"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric s metrikami
@@ -35,9 +35,9 @@ Příkladem metriky jsou věci, jako je využití paměti, disku a využití pro
 
 | Metrika | Instance Bezstavová zatížení | Stavová zatížení sekundární | Stavová zatížení primární | Hmotnost |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Vysoký |
-| ReplicaCount |0 |1 |1 |Střednědobé používání |
-| Počet |1 |1 |1 |Nízká |
+| PrimaryCount |0 |0 |1 |Vysoká |
+| ReplicaCount |0 |1 |1 |Střední |
+| Count |1 |1 |1 |Nízká |
 
 
 Pro základní úlohy poskytují metriky výchozí vrazíme rozdělení práce v clusteru. V následujícím příkladu se podíváme, co se stane, když vytvoříme dvě služby a Spolehněte se na výchozí metriky pro službu Vyrovnávání. První služby je stavovou službu s tři oddíly a repliky cílového nastavení velikosti tři. Druhá služba je bezstavové služby s jedním oddílem a počet instancí tří.

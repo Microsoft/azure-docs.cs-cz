@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92a5d9539d254eb7d52e3277691c9d8ff5a41821
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60286731"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Nainstalovat a používat zobrazení log analytics pro Azure Active Directory
@@ -65,7 +65,7 @@ Použití zobrazení log analytics, budete potřebovat:
 
 5. Zadejte název a popis výstrahy a nastavit závažnost **upozornění**.
 
-    ![Vytvořit pravidlo](./media/howto-install-use-log-analytics-views/create-rule.png)
+    ![Vytvoření pravidla](./media/howto-install-use-log-analytics-views/create-rule.png)
 
 6. Vyberte skupinu akcí s výstrahou. Obecně platí může to být buď tým, které chcete zasílat oznámení prostřednictvím e-mailu nebo textovou zprávu nebo může být automatizaci úloh pomocí webhooků, runbooků, functions, logic apps nebo externí řešení ITSM. Zjistěte, jak [vytváření a Správa skupin akcí na webu Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).
 

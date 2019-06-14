@@ -7,10 +7,10 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/21/2019
 ms.openlocfilehash: e98e501806971f3cf1bec29960ad15ef9c0024fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611275"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Použití Azure Disk Encryption pomocí škálování virtuálního počítače nastavte nastavení posloupnosti rozšíření

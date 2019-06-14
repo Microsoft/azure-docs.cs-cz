@@ -17,10 +17,10 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60582948"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
@@ -294,7 +294,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 Tento scénář předvádí, kde se nachází existující přizpůsobené Image, které se nacházejí v účtu úložiště úrovně Standard. Jak je uvedeno, pokud chcete umístit virtuální pevný disk operačního systému na Premium Storage, budete muset zkopírovat bitovou kopii, která existuje v účtu úložiště úrovně Standard a předtím, než je možné přenést do služby Premium Storage. Pokud máte image v místním, můžete také pomocí této metody můžete zkopírovat, který přímo do účtu Premium Storage.
 
-#### <a name="step-1-create-storage-account"></a>Krok 1: Vytvořit účet úložiště
+#### <a name="step-1-create-storage-account"></a>Krok 1: Vytvoření účtu úložiště
 
 ```powershell
 $mysubscription = "DansSubscription"

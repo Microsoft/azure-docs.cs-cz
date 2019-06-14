@@ -9,10 +9,10 @@ ms.date: 3/12/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60346644"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ohodnotit omezení pro hlasové, SMS, e-mailů, nabízená oznámení v aplikaci Azure a webhook příspěvky

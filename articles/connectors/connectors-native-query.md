@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538214"
 ---
 # <a name="get-started-with-the-query-action"></a>Začínáme s akce dotazu
@@ -58,18 +58,18 @@ Tady jsou uvedené podrobnosti pro akci, která podporuje tento konektor. Konekt
 
 | Akce | Popis |
 | --- | --- |
-| Filtrovat pole |Vyhodnocuje podmínku pro každou položku v poli a vrátí výsledky |
+| Filtrování pole |Vyhodnocuje podmínku pro každou položku v poli a vrátí výsledky |
 
-## <a name="action-details"></a>Detaily akce
+## <a name="action-details"></a>Podrobnosti akce
 Akce dotazu obsahuje jednu akci je to možné. Následující tabulky popisují požadované a volitelné vstupní pole pro akce a odpovídající podrobnosti výstupu, které jsou spojené s použitím akce.
 
-### <a name="filter-array"></a>Filtrovat pole
+### <a name="filter-array"></a>Filtrování pole
 Níže jsou vstupní pole pro akce, která umožňuje odchozí požadavek HTTP.
 A * znamená, že je povinné pole.
 
-| Zobrazované jméno | Název vlastnosti | Popis |
+| Display name | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Z * |od |Pole k filtrování |
+| Z * |from |Pole k filtrování |
 | Podmínka * |kde |Podmínku, která má vyhodnotit pro každou položku |
 
 <br>

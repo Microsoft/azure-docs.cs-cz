@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60288373"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurace nastavení role prostředků Azure v PIM
@@ -79,13 +79,13 @@ A můžete zvolit jednu z těchto **aktivní** možnosti doba trvání přiřaze
 
 PIM umožňuje volitelné vynucování Azure Multi-Factor Authentication (MFA) pro dva různé scénáře.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Při aktivním přiřazení vyžadovat vícefaktorové ověřování
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Při aktivním přiřazení vyžadovat Vícefaktorové ověřování
 
 V některých případech můžete chtít přiřadit člena k roli na krátkou dobu (jeden den, například). V takovém případě nepotřebují přiřazených členů na žádost o aktivaci. V tomto scénáři nelze PIM vynucení vícefaktorového ověřování, když člen používá přiřazení role, protože je již aktivní v roli od okamžiku, kdy jsou přiřazeny.
 
 Tak, aby byl správce prostředků splnění přiřazení kdo, Řekněme, že jsou, můžete vynutit vícefaktorové ověřování při aktivním přiřazení tak, že zkontrolujete **při aktivním přiřazení vyžadovat Vícefaktorové ověřování** pole.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
+### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Vícefaktorové ověřování při aktivaci
 
 Může vyžadovat oprávněné členy role ke spuštění MFA, před aktivací. Tento proces zajišťuje, že uživatel, který žádá o tom, že se aktivace, který říká, že jsou s jistotou přiměřené. Vynucování této možnosti chrání důležité prostředky v situacích, pokud uživatelský účet může být ohrožený.
 
@@ -109,7 +109,7 @@ Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kr
 
 1. Klikněte na tlačítko **vybrat schvalovatele** a otevřete tak podokno členů nebo skupin Select.
 
-    ![Vyberte člena nebo skupinu.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Vyberte člena nebo skupiny](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. Vyberte alespoň jeden člen nebo skupinu a potom klikněte na tlačítko **vyberte**. Můžete přidat libovolnou kombinaci členové a skupiny. Musíte vybrat aspoň jeden schvalovatel. Neexistují žádné výchozí schvalovatele.
 

@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60253181"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznění modelů strojového učení předdefinovaných Spark
@@ -43,7 +43,7 @@ Chcete-li upravit poznámkového bloku Jupyter pro Spark 1.6 používat s cluste
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Instalační program: umístění úložiště, knihovny a přednastavený kontext Spark
 Spark je možné číst a zapisovat do Azure Storage Blob (WASB). Takže existující data uložená existuje mohou být zpracovány pomocí Sparku a výsledky uložené znovu v WASB.
 
-Pokud chcete uložit soubory nebo modely WASB, cesta musí být zadán správně. Výchozí kontejner připojené ke clusteru Spark může být odkazováno pomocí cesta začínající: *"wasb / / / / /"*. Následující příklad kódu určuje umístění dat pro čtení a cestu k adresáři modelu úložiště, do kterého se uloží výstupní modelu. 
+Pokud chcete uložit soubory nebo modely WASB, cesta musí být zadán správně. Výchozí kontejner připojené ke clusteru Spark může být odkazováno pomocí cesta začínající: *"wasb / / / / /"* . Následující příklad kódu určuje umístění dat pro čtení a cestu k adresáři modelu úložiště, do kterého se uloží výstupní modelu. 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Nastavit cesty adresáře na umístění úložiště v WASB
 Modely se ukládají do: "wasb: / / / uživatel/remoteuser/NYCTaxi/modely". Pokud tato cesta není správně nastavená, modely nejsou načtené pro vyhodnocení.

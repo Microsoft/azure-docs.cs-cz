@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631902"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software řady StorSimple 8000, vysokou dostupnost a požadavky na síť
@@ -63,11 +63,11 @@ Zařízení StorSimple je zařízení uzamknuté. Porty je však nutné otevří
 
 | Číslo portu<sup>1,2</sup> | Snížení nebo navýšení kapacity | Rozsah portů | Požaduje se | Poznámky |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Výstup |Síť WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu pro načtení aktualizací.</li><li>Odchozí webový proxy server je konfigurovatelná uživatelem.</li><li>Povolit aktualizace systému, musí být tento port taky otevřený pro pevné IP adresy kontroleru.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Výstup |Síť WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je konfigurovatelná uživatelem.</li><li>Povolit aktualizace systému, musí být tento port taky otevřený pro pevné IP adresy kontroleru.</li><li>Tento port se také používá na obou řadičích pro uvolnění paměti.</li></ul> |
-| UDP 53 (DNS) |Výstup |Síť WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. |
-| UDP 123 (NTP) |Výstup |Síť WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP. |
-| TCP 9354 |Výstup |Síť WAN |Ano |Odchozí port používá ke komunikaci se službou StorSimple Device Manager zařízení StorSimple. |
+| TCP 80 (HTTP)<sup>3</sup> |navýšení kapacity |WAN |Ne |<ul><li>Odchozí port se používá pro přístup k Internetu pro načtení aktualizací.</li><li>Odchozí webový proxy server je konfigurovatelná uživatelem.</li><li>Povolit aktualizace systému, musí být tento port taky otevřený pro pevné IP adresy kontroleru.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |navýšení kapacity |WAN |Ano |<ul><li>Odchozí port se používá pro přístup k datům v cloudu.</li><li>Odchozí webový proxy server je konfigurovatelná uživatelem.</li><li>Povolit aktualizace systému, musí být tento port taky otevřený pro pevné IP adresy kontroleru.</li><li>Tento port se také používá na obou řadičích pro uvolnění paměti.</li></ul> |
+| UDP 53 (DNS) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová DNS. |
+| UDP 123 (NTP) |navýšení kapacity |WAN |V některých případech; v části poznámky. |Tento port je povinný, jenom v případě, že používáte server služby Internetová NTP. |
+| TCP 9354 |navýšení kapacity |WAN |Ano |Odchozí port používá ke komunikaci se službou StorSimple Device Manager zařízení StorSimple. |
 | 3260 (iSCSI) |V |LAN |Ne |Tento port se používá pro přístup k datům přes iSCSI. |
 | 5985 |V |LAN |Ne |Příchozí port slouží ke komunikaci se zařízením StorSimple ve StorSimple Snapshot Manageru.<br>Tento port se používá také při vzdálené připojení k prostředí Windows PowerShell pro StorSimple přes protokol HTTP. |
 | 5986 |V |LAN |Ne |Tento port se používá při vzdálené připojení k prostředí Windows PowerShell pro StorSimple přes protokol HTTPS. |
@@ -96,25 +96,25 @@ Doporučujeme nastavit pravidla brány firewall pro odchozí provoz, podle StorS
 
 | Vzor adresy URL | Komponenta nebo funkce | IP adresy zařízení |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba |Povolenou podporu cloudu síťová rozhraní |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací službu |Povolenou podporu cloudu síťová rozhraní |
 | `https://*.backup.windowsazure.com` |Registrace zařízení |Pouze DATA 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |Povolenou podporu cloudu síťová rozhraní |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |Povolenou podporu cloudu síťová rozhraní |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |Pevné IP adresy jenom kontroleru |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Pevné IP adresy jenom kontroleru |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu |Povolenou podporu cloudu síťová rozhraní |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu. |Povolenou podporu cloudu síťová rozhraní |
 
 #### <a name="url-patterns-for-azure-government-portal"></a>Vzory adres URL pro portál Azure Government
 
 | Vzor adresy URL | Komponenta nebo funkce | IP adresy zařízení |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací služba |Povolenou podporu cloudu síťová rozhraní |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |Služba Správce zařízení StorSimple<br>Access Control Service<br>Azure Service Bus<br>Ověřovací službu |Povolenou podporu cloudu síťová rozhraní |
 | `https://*.backup.windowsazure.us` |Registrace zařízení |Pouze DATA 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Odvolání certifikátu |Povolenou podporu cloudu síťová rozhraní |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Účty úložiště Azure a monitorování |Povolenou podporu cloudu síťová rozhraní |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Servery Microsoft Update<br> |Pevné IP adresy jenom kontroleru |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Pevné IP adresy jenom kontroleru |
-| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu |Povolenou podporu cloudu síťová rozhraní |
+| `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Balíček pro podporu. |Povolenou podporu cloudu síťová rozhraní |
 
 ### <a name="routing-metric"></a>Metriky
 

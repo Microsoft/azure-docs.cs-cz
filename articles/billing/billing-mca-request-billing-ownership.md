@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371920"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Získat fakturační vlastnictví předplatného Azure od jiných uživatelů
@@ -35,7 +35,7 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure portal vyhledejte Správa nákladů a fakturace](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -64,7 +64,7 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující Azure portal vyhledejte Správa nákladů a fakturace](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -81,14 +81,14 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
    |---------|---------|
    |Datum žádosti|Datum, kdy byla odeslána žádost o přenos|
    |Příjemce|E-mailovou adresu uživatele, že jste odeslali žádost o převod vlastnictví fakturace|
-   |Datum konce platnosti|Datum vypršení platnosti požadavku|
+   |Datum vypršení platnosti|Datum vypršení platnosti požadavku|
    |Status|Stav žádosti o převedení|
 
     Žádost o převod může mít jednu z následujících stavů:
 
    |Status|Definice|
    |---------|---------|
-   |Probíhá zpracování|Uživatel nepřijal žádost o přenos|
+   |V průběhu|Uživatel nepřijal žádost o přenos|
    |Zpracování|Uživatel schválit žádost o přenos. Fakturace za předplatné, které uživatel vybral se převádějí na vaši část faktury|
    |Dokončeno| Fakturace za předplatné, které uživatel vybral se přenese do vaší části faktury|
    |Bylo dokončeno s chybami|Zpracována žádost o ale fakturace pro některá předplatná, které uživatel vybral nebylo možné přenést|
@@ -116,7 +116,7 @@ Následující část obsahuje další informace o přenos předplatného.
 
 Služby Azure v rámci předplatného zachovat spuštěna bez výpadku. Jsme pouze přechod fakturační vztah pro předplatná Azure, které uživatel vybere pro přenos.
 
-### <a name="disabled-subscriptions"></a>Zakázaná předplatná
+### <a name="disabled-subscriptions"></a>Deaktivovaných předplatných
 
 Nelze přenést deaktivovaných předplatných. Předplatné musí být v aktivním stavu k přenosu jejich vlastnictví fakturace.
 
@@ -159,7 +159,7 @@ Předplatná se nepřevádějí produktech SaaS. Požádejte uživatele, aby [Az
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 

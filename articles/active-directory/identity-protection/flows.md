@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295200"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Možnosti přihlašování s Azure AD Identity Protection
@@ -104,7 +104,7 @@ Uživatel musí získat jako uživatel, který je zablokovaný kvůli odbloková
 
 ![Náprava](./media/flows/104.png "nápravy")
 
-## <a name="reset-password"></a>Resetování hesla
+## <a name="reset-password"></a>Resetovat heslo
 Pokud z přihlášení jsou blokovány ohrožených uživatelů, Správce může vygenerovat dočasné heslo pro ně. Uživatelé nemají změnit své heslo při příštím přihlášení.
 
 ![Náprava](./media/flows/160.png "nápravy")

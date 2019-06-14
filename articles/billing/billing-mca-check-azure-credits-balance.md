@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372217"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Sledovat zůstatek kreditu Azure pro smlouvu zákazníků společnosti Microsoft
@@ -33,7 +33,7 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
 1. Přihlaste se k webu [Azure Portal]( https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující vyhledávání v portálu pro správu nákladů a fakturace](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -45,9 +45,9 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
    ![Snímek obrazovky zůstatek kreditu a transakce pro profil fakturace](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
-   | Označení               | Definice                           |
+   | Termín               | Definice                           |
    |--------------------|--------------------------------------------------------|
-   | Odhadovaný zůstatek  | Odhadované množství kreditů máte po zvážení všech účtovat a čekající transakce |
+   | Odhadované zůstatek  | Odhadované množství kreditů máte po zvážení všech účtovat a čekající transakce |
    | Aktuální zůstatek    | Množství kreditů od vaší poslední faktury. Nezahrnuje všechny čekající transakce |
    | Transakce       | Všechny fakturační transakce, které měla vliv na zůstatek vašeho kreditu Azure |
 
@@ -57,11 +57,11 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
 
    ![Snímek obrazovky s kredity seznamy pro profil fakturace](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | Označení                 | Definice                           |
+   | Termín                 | Definice                           |
    |----------------------|--------------------------------------------------------|
-   | Zdroj               | Získání zdroje kreditu |
+   | source               | Získání zdroje kreditu |
    | Počáteční datum           | Datum, kdy jste získali kreditu |
-   | Datum konce platnosti      | Datum, kdy vyprší platnost kreditu |
+   | Datum vypršení platnosti      | Datum, kdy vyprší platnost kreditu |
    | Zůstatek              | Zůstatek na účtu od poslední faktury |
    | Původní velikost      | Původní množství kreditu |
    | Status               | Aktuální stav úvěru. Stav může být aktivní, používá, vypršela nebo vyprší |
@@ -77,7 +77,7 @@ Kredity Azure jsou jedním z způsobů platby. Získáte kredit od Microsoftu ja
  Následující produkty nejsou pokryty kredity Azure. Za použití těchto produktů bez ohledu na to, váš zůstatek kreditu:
 
 - Canonical
-- Základy Citrix XenApp
+- Citrix XenApp Essentials
 - Citrix XenDesktop 
 - Registrovaný uživatel
 - Openlogic
@@ -93,7 +93,7 @@ Kredity Azure jsou jedním z způsobů platby. Získáte kredit od Microsoftu ja
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
 

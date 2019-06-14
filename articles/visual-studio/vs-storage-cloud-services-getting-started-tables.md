@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: cec8ab9d678ff559176580fa8eccc261f449f4c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60361969"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure table storage a Visual Studio připojené služby (projekty cloudových služeb)
@@ -25,7 +25,7 @@ ms.locfileid: "60361969"
 ## <a name="overview"></a>Přehled
 Tento článek popisuje, jak začít používat úložiště tabulek v Azure v sadě Visual Studio po odkazovat účtu služby Azure storage v projektu cloudové služby pomocí sady Visual Studio nebo vytvořili **přidání připojené služby** dialogového okna. **Přidání připojené služby** operace nainstaluje příslušné balíčky NuGet pro přístup k Azure storage ve vašem projektu a přidá připojovací řetězec pro účet úložiště pro konfigurační soubory projektu.
 
-Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.
+Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.
 
 Abyste mohli začít, musíte nejprve vytvořit tabulku v účtu úložiště. Vám ukážeme, jak vytvořit tabulku Azure v kódu a jak provádět základní tabulky a entity operace, jako jsou přidání, úprava, čtení a čtení tabulkové entity. Ukázky jsou napsané v jazyce C\# kód a použít [Klientská knihovna pro Microsoft Azure Storage pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 

@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 09/25/2018
 ms.openlocfilehash: 453a048bc9e7c2878c0730b9002b10bdeb8c22fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331611"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace vícefaktorového ověřování pro SQL Server Management Studio a Azure AD
@@ -37,7 +37,7 @@ V tomto tématu se dozvíte, jak pomocí Azure Active Directory vícefaktorové 
 
 Následující kroky ukazují, jak se připojit k SQL Database nebo SQL Data Warehouse pomocí nejnovější verze aplikace SSMS.
 
-1. Připojení pomocí univerzálního ověřování na **připojit k serveru** dialogu **univerzální podporující vícefaktorové ověřování služby Active Directory –**. (Pokud se zobrazí **univerzálního ověřování Active Directory** nejsou na nejnovější verzi SSMS.)  
+1. Připojení pomocí univerzálního ověřování na **připojit k serveru** dialogu **univerzální podporující vícefaktorové ověřování služby Active Directory –** . (Pokud se zobrazí **univerzálního ověřování Active Directory** nejsou na nejnovější verzi SSMS.)  
    ![1mfa-universal-connect][1]  
 2. Dokončení **uživatelské jméno** pole pomocí přihlašovacích údajů Azure Active Directory, ve formátu `user_name@domain.com`.  
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   

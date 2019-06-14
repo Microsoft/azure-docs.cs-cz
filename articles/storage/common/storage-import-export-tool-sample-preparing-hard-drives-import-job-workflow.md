@@ -9,10 +9,10 @@ ms.date: 04/07/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 42da285fbb55df43959506996bcde9cf547c2a22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320563"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
@@ -34,7 +34,7 @@ Tento příklad importuje následující data do účtu služby Azure storage s 
 
 Úlohy importu se import dat do následujících cílů v rámci účtu úložiště:
 
-|Zdroj|Cílový virtuální adresář nebo objekt blob|
+|source|Cílový virtuální adresář nebo objekt blob|
 |------------|-------------------------------------------|
 |H:\Video\ |Video /|
 |H:\Photo\ |fotografie /|

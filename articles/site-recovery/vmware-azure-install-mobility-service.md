@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318165"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Příprava zdrojového počítače na nabízenou instalaci agenta mobility
@@ -27,7 +27,7 @@ Na každém počítači s Windows, kterou chcete chránit, postupujte takto:
     - V klíči registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidejte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
     -  Chcete-li to provést z příkazového řádku, spusťte následující příkaz:  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
-3. V bráně Windows Firewall na počítači, který chcete chránit, vyberte **povolit aplikaci nebo funkci průchod bránou Firewall**. Povolit **sdílení souborů a tiskáren** a **Windows Management Instrumentation (WMI)**. Pro počítače, které patří do nějaké domény můžete nakonfigurovat nastavení brány firewall pomocí objektu zásad skupiny (GPO).
+3. V bráně Windows Firewall na počítači, který chcete chránit, vyberte **povolit aplikaci nebo funkci průchod bránou Firewall**. Povolit **sdílení souborů a tiskáren** a **Windows Management Instrumentation (WMI)** . Pro počítače, které patří do nějaké domény můžete nakonfigurovat nastavení brány firewall pomocí objektu zásad skupiny (GPO).
 
    ![Nastavení brány firewall](./media/vmware-azure-install-mobility-service/mobility1.png)
 

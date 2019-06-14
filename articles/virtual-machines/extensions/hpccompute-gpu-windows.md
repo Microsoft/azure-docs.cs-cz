@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
 ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60388671"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
@@ -71,10 +71,10 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Name | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| vydavatele | Microsoft.HpcCompute | string |
+| publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
@@ -161,7 +161,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 | Kód chyby | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 0 | Úspěšná operace |
+| 0 | Operace byla úspěšná. |
 | 1 | Operace byla úspěšná. Vyžaduje se restartování. |
 | 100 | Operace není podporována nebo nebylo možné dokončit. | Možné příčiny: Nepodporovaná verze prostředí PowerShell, velikost virtuálního počítače není virtuálního počítače s N-series, stahování dat selhání. Zkontrolujte soubory protokolu a zjistěte příčinu chyby. |
 | 240, 840 | Časový limit operace. | Zkuste operaci znovu. |

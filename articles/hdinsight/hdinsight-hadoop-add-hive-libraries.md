@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fe8f97368531ed572083834256d84cd1ed6dd8a1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3ef5362c4d97b8d805212f9cf813c7bc9c8c18c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059441"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight
 
@@ -39,9 +39,6 @@ Pro **linuxových clusterech**: [https://hdiconfigactions.blob.core.windows.net/
 
 Pro **clusterů se systémem Windows**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 **Požadavky**
 
 * Skripty se musí použít pro obě **hlavním uzlům** a **pracovní uzly**.
@@ -50,7 +47,7 @@ Pro **clusterů se systémem Windows**: [https://hdiconfigactions.blob.core.wind
 
 * Účet úložiště obsahující knihovnu soubory jar **musí** propojit při vytváření clusteru HDInsight. Musí být buď výchozí účet úložiště, nebo prostřednictvím přidán účet __volitelná konfigurace__.
 
-* Jako parametr pro skript akce musí být zadána cesta WASB do kontejneru. Například, pokud kromě souborů JAR jsou uloženy v kontejneru nazvaném **knihovny** v účtu úložiště s názvem **mystorage**, bude parametr **wasb://libs\@ mystorage.BLOB.Core.Windows.NET/**.
+* Jako parametr pro skript akce musí být zadána cesta WASB do kontejneru. Například, pokud kromě souborů JAR jsou uloženy v kontejneru nazvaném **knihovny** v účtu úložiště s názvem **mystorage**, bude parametr **wasb://libs\@ mystorage.BLOB.Core.Windows.NET/** .
 
   > [!NOTE]  
   > Tento dokument předpokládá, že jste už vytvořili účet úložiště, kontejner objektů blob a odeslat soubory do něj.
@@ -76,9 +73,9 @@ Pro **clusterů se systémem Windows**: [https://hdiconfigactions.blob.core.wind
 
    * **PRACOVNÍK**: Zaškrtněte tuto možnost.
 
-   * **ZOOKEEPER**: Ponechte toto nastavení prázdné.
+   * **ZOOKEEPER**: Nechte prázdné.
 
-   * **PARAMETRY**: Zadejte adresu WASB kontejner a účet úložiště, který obsahuje kromě souborů JAR. Například **wasb://libs\@mystorage.blob.core.windows.net/**.
+   * **PARAMETRY**: Zadejte adresu WASB kontejner a účet úložiště, který obsahuje kromě souborů JAR. Například **wasb://libs\@mystorage.blob.core.windows.net/** .
 
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte.
 

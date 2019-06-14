@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: dfd0443dafbc4fcc221937f248bf6d2f292b528f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60335359"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-azure-sql-data-warehouse-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-azure-sql-data-warehouse.md)
 
@@ -276,9 +276,9 @@ Následující tabulka obsahuje příklady o tom, jak zadat **tableName** vlastn
 
 | Schéma databáze | Název tabulky | Vlastnost tableName JSON |
 | --- | --- | --- |
-| dbo |MyTable |Tabulka nebo vlastník databáze. Tabulka nebo [dbo]. [MyTable] |
-| dbo1 |MyTable |dbo1.MyTable or [dbo1].[MyTable] |
-| vlastník databáze |My.Table |[My.Table] nebo [dbo].[My.Table] |
+| dbo |MyTable |MyTable nebo dbo.MyTable nebo [dbo].[MyTable] |
+| dbo1 |MyTable |dbo1. Tabulka nebo [dbo1].[MyTable] |
+| dbo |My.Table |[My.Table] nebo [dbo].[My.Table] |
 | dbo1 |My.Table |[dbo1].[My.Table] |
 
 Pokud se zobrazí následující chyba, můžou být problémy s hodnotou, kterou jste zadali pro vlastnost tableName. Viz tabulka pro správný způsob, jak určit hodnoty pro vlastnost tableName JSON.

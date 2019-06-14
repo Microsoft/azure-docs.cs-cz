@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381140"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Reference k funkcím
@@ -82,7 +82,7 @@ Funkce s typy **mvbin**, **mvstr**, a **mvref** funguje jenom u více jednohodno
 | **Program Flow** | | | | |
 | [Chyba](#error) |[IIF](#iif) |[Výběr](#select) |[Přepínač](#switch) | |
 | [kde](#where) |[s](#with) | | | |
-| **Text** | | | | |
+| **text** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [doleva](#left) |[Délka](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
 | [PadLeft](#padleft) |[PadRight –](#padright) |[PCase](#pcase) |[nahradit](#replace) | |
@@ -363,7 +363,7 @@ Funkce CGuid převede řetězcové vyjádření identifikátoru GUID na binárn�
 * V tomto modelu ve formátu řetězce: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx nebo {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 - - -
-### <a name="contains"></a>Contains
+### <a name="contains"></a>Obsahuje
 **Popis:**  
 Funkce obsahuje najde řetězec uvnitř vícehodnotového atributu
 
@@ -402,7 +402,7 @@ ConvertFromBase64 funkce převede hodnotu zadaného kódovanou jako base64 regul
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Oba příklady vrátí "*Hello world!*"
+Oba příklady vrátí "*Hello world!* "
 
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
@@ -420,7 +420,7 @@ Tento formát se používá služba Azure Active Directory jako rozlišující n
 
 **Příklad:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-Vrátí "*Hello world!*"
+Vrátí "*Hello world!* "
 
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -451,7 +451,7 @@ Výstupní formát této funkce používá Azure Active Directory jako formát r
 Returns 48656C6C6F20776F726C6421
 
 - - -
-### <a name="count"></a>Počet
+### <a name="count"></a>Count
 **Popis:**  
 Count – funkce vrátí počet prvků v vícehodnotového atributu
 
@@ -846,7 +846,7 @@ ItemOrNull funkce je užitečná spolu s obsahuje funkce, protože druhá funkce
 Pokud je index mimo rozsah, vrátí hodnotu Null.
 
 - - -
-### <a name="join"></a>Spojit
+### <a name="join"></a>Připojit
 **Popis:**  
 Funkce připojení k více Vážíme si toho řetězec a vrátí řetězec s jednou hodnotou pomocí zadaného oddělovače vložen mezi každou položku.
 
@@ -877,7 +877,7 @@ Funkce LCase převede všechny znaky v řetězci na malá písmena.
 Vrátí "test".
 
 - - -
-### <a name="left"></a>Vlevo
+### <a name="left"></a>doleva
 **Popis:**  
 Left – funkce vrátí zadaný počet znaků z levé strany řetězce.
 
@@ -956,7 +956,7 @@ Vrátí "hn".
 Vrátí "Doe"
 
 - - -
-### <a name="now"></a>Ihned
+### <a name="now"></a>Nyní
 **Popis:**  
 Funkce nyní vrací hodnotu DateTime, zadáte aktuální datum a čas, podle systémového data a času v počítači.
 
@@ -1128,7 +1128,7 @@ Vrátí Raksmorgas
 Vrátí "ONeil", jeden značek je definována k odebrání.
 
 - - -
-### <a name="right"></a>Vpravo
+### <a name="right"></a>Pravé
 **Popis:**  
 Right – funkce vrátí zadaný počet znaků z pravé strany (konec) na řetězec.
 
@@ -1184,7 +1184,7 @@ Proces všechny hodnoty ve více Vážíme si toho atribut (nebo výstupní výr
 Vrátí všechny hodnoty ve více Vážíme si toho atribut otherPhone po odebrání pomlčky (-).
 
 - - -
-### <a name="split"></a>Rozdělit
+### <a name="split"></a>rozdělení
 **Popis:**  
 Funkce rozdělení přijímá řetězec oddělené oddělovačem a zpřístupňuje je řetězec více Vážíme si toho.
 
@@ -1246,7 +1246,7 @@ Hodnota může být také chybovou funkci, což by mohlo vrátit vlastní řetě
 Vrátí jazyk používaný v některých hlavních měst, v opačném případě vrátí chybu.
 
 - - -
-### <a name="trim"></a>Oříznout
+### <a name="trim"></a>Trim
 **Popis:**  
 Funkce Trim odstraní úvodní a koncové mezery z řetězce.
 
@@ -1295,7 +1295,7 @@ Návratové hodnoty certifikátu v userCertificate více hodnot atributů, kter�
 **Popis:**  
 Funkce s poskytuje způsob, jak zjednodušit složitý výraz pomocí proměnné k reprezentaci dílčí výraz, který se zobrazí jednu nebo víckrát v složitý výraz.
 
-**Syntaxe:**
+**Syntaxe:** 
 `With(var variable, exp subExpression, exp complexExpression)`  
 * Proměnná: Představuje dílčí výraz.
 * dílčí výraz: dílčí výraz reprezentována proměnné.

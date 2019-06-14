@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60199439"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure Cloud Shell
@@ -32,56 +32,56 @@ Známá řešení pro řešení potíží ve službě Azure Cloud Shell patří:
 ### <a name="early-timeouts-in-firefox"></a>Časná vypršení časových limitů ve Firefoxu
 
 - **Podrobnosti o**: Cloud Shell využívá otevřít pomocí protokolu websocket předat vstup/výstup do prohlížeče. FireFox má předvolby zásad, které můžete zavřít objekt websocket předčasně způsobí vypršení časového limitu pro dřívější ve službě Cloud Shell.
-- **Řešení:** Otevřete FireFox a přejděte do "o: konfigurace" v poli Adresa URL. Vyhledejte "network.websocket.timeout.ping.request" a změňte hodnotu od 0 do 10.
+- **Rozlišení**: Otevřete FireFox a přejděte do "o: konfigurace" v poli Adresa URL. Vyhledejte "network.websocket.timeout.ping.request" a změňte hodnotu od 0 do 10.
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Zakázání Cloud Shell v uzamčeném síťové prostředí
 
 - **Podrobnosti o**: Správce může přát zakázat přístup ke službě Cloud Shell pro své uživatele. Využívá přístup ke službě cloud Shell `ux.console.azure.com` doménu, která může odepřen, všechny přístupy do Cloud Shellu entrypoints včetně portal.azure.com, shell.azure.com, rozšíření Azure účet služby Visual Studio Code a docs.microsoft.com se zastavuje.
-- **Řešení:** Omezení přístupu k `ux.console.azure.com` pomocí nastavení sítě pro vaše prostředí. Ikona Cloud Shell zůstanou uchovány portal.azure.com, ale nebude úspěšné připojení ke službě.
+- **Rozlišení**: Omezení přístupu k `ux.console.azure.com` pomocí nastavení sítě pro vaše prostředí. Ikona Cloud Shell zůstanou uchovány portal.azure.com, ale nebude úspěšné připojení ke službě.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialogové okno úložiště – Chyba: 403 RequestDisallowedByPolicy
 
 - **Podrobnosti o**: Při vytváření účtu úložiště Cloud Shell neúspěšný kvůli zásady služby Azure umístěn váš správce. Chybová zpráva bude obsahovat: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Řešení:** Obraťte se na správce Azure odebrat nebo aktualizovat Azure policy odepření vytvoření úložiště.
+- **Rozlišení**: Obraťte se na správce Azure odebrat nebo aktualizovat Azure policy odepření vytvoření úložiště.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Dialogové okno úložiště – Chyba: 400 DisallowedOperation
 
 - **Podrobnosti o**: Pokud používají předplatné Azure Active Directory, nelze vytvořit úložiště.
-- **Řešení:** Pomocí předplatného Azure dokáže vytvořit prostředky úložiště. Předplatná Azure AD, nebudou se moct vytváření prostředků Azure.
+- **Rozlišení**: Pomocí předplatného Azure dokáže vytvořit prostředky úložiště. Předplatná Azure AD, nebudou se moct vytváření prostředků Azure.
 
 ### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminál výstup – Chyba: Nepovedlo se připojit terminál: protokolu websocket nelze navázat. Stisknutím klávesy `Enter` znovu připojit.
 - **Podrobnosti o**: Cloud Shell vyžaduje oprávnění k vytvoření objektu websocket na straně připojení k službě Cloud Shell infrastruktury.
-- **Řešení:** Zkontrolujte jste nakonfigurovali nastavení sítě, abyste povolili odeslání žádosti o https a požadavky protokolu websocket na domén na *. console.azure.com.
+- **Rozlišení**: Zkontrolujte jste nakonfigurovali nastavení sítě, abyste povolili odeslání žádosti o https a požadavky protokolu websocket na domén na *. console.azure.com.
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Nastavit připojení k službě Cloud Shell pro podporu použití protokolu TLS 1.2
  - **Podrobnosti o**: Chcete-li definovat verze protokolu TLS pro připojení do služby Cloud Shell, musíte nastavit konkrétní nastavení prohlížeče.
- - **Řešení:** Přejděte do nastavení zabezpečení prohlížeče a zaškrtněte políčko vedle "Použití protokolu TLS 1.2".
+ - **Rozlišení**: Přejděte do nastavení zabezpečení prohlížeče a zaškrtněte políčko vedle "Použití protokolu TLS 1.2".
 
 ## <a name="bash-troubleshooting"></a>Řešení potíží s bash
 
 ### <a name="cannot-run-the-docker-daemon"></a>Nelze spustit démona dockeru
 
 - **Podrobnosti o**: Cloud Shell využívá kontejner pro hostování vašeho prostředí, v důsledku spuštění démona se nepovoluje.
-- **Řešení:** Využívat [docker-machine](https://docs.docker.com/machine/overview/), která se instaluje standardně Spravovat kontejnery dockeru ze vzdáleného hostitele Docker.
+- **Rozlišení**: Využívat [docker-machine](https://docs.docker.com/machine/overview/), která se instaluje standardně Spravovat kontejnery dockeru ze vzdáleného hostitele Docker.
 
 ## <a name="powershell-troubleshooting"></a>Řešení potíží s Powershellu
 
 ### <a name="gui-applications-are-not-supported"></a>Aplikace grafického uživatelského rozhraní se nepodporují.
 
 - **Podrobnosti o**: Pokud uživatel spustí aplikaci grafického uživatelského rozhraní, řádku tento příkaz nevrací. Například při klonování jeden privátní úložiště GitHub, který má dvoufaktorové ověřování povoleno, se zobrazí dialogové okno pro dokončení dvoufaktorového ověřování.
-- **Řešení:** Zavřete a znovu otevřete prostředí.
+- **Rozlišení**: Zavřete a znovu otevřete prostředí.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Řešení potíží s Vzdálená správa virtuálních počítačů Azure
 > [!NOTE]
 > Virtuální počítače Azure musí mít veřejnou směřující IP adresu.
 
 - **Podrobnosti o**: Z důvodu výchozí nastavení brány Windows Firewall pro WinRM může uživatel zobrazit následující chybová zpráva: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Řešení:**  Spustit `Enable-AzVMPSRemoting` povolit všechny aspekty vzdálené komunikace Powershellu na cílovém počítači.
+- **Rozlišení**:  Spustit `Enable-AzVMPSRemoting` povolit všechny aspekty vzdálené komunikace Powershellu na cílovém počítači.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` výsledek v Azure disk se neaktualizuje
 
 - **Podrobnosti o**: Ve výchozím nastavení, pokud chcete optimalizovat uživatelské prostředí, výsledky `dir` se uloží do mezipaměti v Azure disk.
-- **Řešení:** Po vytvoření, aktualizace nebo odebrání prostředku Azure, spusťte `dir -force` výsledky v Azure disk se nepodařilo aktualizovat.
+- **Rozlišení**: Po vytvoření, aktualizace nebo odebrání prostředku Azure, spusťte `dir -force` výsledky v Azure disk se nepodařilo aktualizovat.
 
 ## <a name="general-limitations"></a>Obecná omezení
 

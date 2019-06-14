@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60530996"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizace 1.2 zpráva k vydání verze pro vaše zařízení řady StorSimple 8000
@@ -67,7 +67,7 @@ Následující tabulka obsahuje souhrn problémy, které byly opraveny v aktuali
 | Ne. | Funkce | Problém | Opraveno v aktualizaci | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Prostředí Windows PowerShell pro StorSimple |Když uživatel vzdálený přístup zařízení StorSimple pomocí prostředí Windows PowerShell pro StorSimple a potom spustit Průvodce instalací, selhání došlo k co nejdříve IP se vstupní Data 0. Tato chyba je opravená ve verzi Update 1. |Update 1 |Ano |Ano |
-| 2 |Obnovení do výrobního nastavení |V některých případech se při provedení obnovení do výrobního nastavení zařízení StorSimple se zablokuje a zobrazí tato zpráva: **Obnovení k objektu pro vytváření probíhá (fáze 8)**. K tomu dojít, pokud stisknutí kombinace kláves CTRL + C, zatímco rutina probíhala. Tato chyba je opravená. |Update 1 |Ano |Ne |
+| 2 |Obnovení do výrobního nastavení |V některých případech se při provedení obnovení do výrobního nastavení zařízení StorSimple se zablokuje a zobrazí tato zpráva: **Obnovení k objektu pro vytváření probíhá (fáze 8)** . K tomu dojít, pokud stisknutí kombinace kláves CTRL + C, zatímco rutina probíhala. Tato chyba je opravená. |Update 1 |Ano |Ne |
 | 3 |Obnovení do výrobního nastavení |Po obnovení objekt factory kontroleru, který selhal duální bylo povoleno pokračovat s registrací zařízení. Kvůli tomu nepodporované konfiguraci systému. Ve verzi Update 1 se zobrazí chybová zpráva a registrace je blokována v zařízení, že má neúspěšné obnovení továrního nastavení. |Update 1 |Ano |Ne |
 | 4 |Obnovení do výrobního nastavení |V některých případech byly vyvolány neshoda falešně pozitivní výstrahy. Nesprávný neshoda výstrahy se vygeneruje už na zařízení se softwarem Update 1. |Update 1 |Ano |Ne |
 | 5 |Obnovení do výrobního nastavení |Pokud při obnovení továrního nastavení byl přerušen před dokončením, zařízení zadat režim obnovení a nepovolil vám přístup k prostředí Windows PowerShell pro StorSimple. Tato chyba je opravená. |Update 1 |Ano |Ne |

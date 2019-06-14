@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60246317"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativního zřizování
@@ -42,13 +42,13 @@ Tento kanál obsahuje několik různých modulů. Každý z nich je zodpovědná
 * [Priorita](#precedence), řeší konfliktní atribut příspěvky
 * Cíl, cílový objekt
 
-## <a name="scope"></a>Rozsah
+## <a name="scope"></a>Scope
 Modul oboru se zabývá tím, objektu a určuje pravidla, která jsou v oboru a měly by být součástí zpracování. V závislosti na atributy hodnoty na objekt jsou vyhodnoceny v oboru různých synchronizační pravidla. Zakázaný uživatel se žádné poštovní schránky serveru Exchange, například mít jiná pravidla než v případě povoleného uživatele s poštovní schránku.  
-![Rozsah](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Rozsah je definován jako skupiny a klauzule. Klauzule jsou uvnitř skupiny. Logický operátor AND se používá mezi všechny klauzule ve skupině. Například (oddělení IT a země = = Dánsko). Logický operátor OR se používá mezi skupinami.
 
-![Rozsah](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 Obor na tomto obrázku byste si měli přečíst jako (oddělení IT a země = = Dánsko) nebo (země = Švédsko). Pokud skupina 1 nebo 2. skupina je vyhodnocen na hodnotu true, pravidlo je v oboru.
 
 Modul oboru podporuje následující operace.
@@ -66,7 +66,7 @@ Modul oboru podporuje následující operace.
 | ISBITSET, ISNOTBITSET |Vyhodnotí, jestli konkrétní bit nastaven. Například lze použít k vyhodnocení bity v atributu userAccountControl najdete v článku, pokud je uživatel povolen nebo zakázán. |
 | ISMEMBEROF ISNOTMEMBEROF |Hodnota by měla obsahovat rozlišující název pro skupinu v prostoru konektoru. Pokud objekt je členem zadané skupiny, je pravidlo v oboru. |
 
-## <a name="join"></a>Spojit
+## <a name="join"></a>Připojit
 Modul spojení v kanálu synchronizace je odpovědný za vyhledání procesoru vztah mezi objektem ve zdroji a objekt do cíle. Tento vztah na příchozí pravidlo, bude objekt v prostoru konektoru hledání vztahu k objektu v úložišti metaverse.  
 ![Připojte se k mezi cs a mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 Cílem je zobrazit, že pokud objekt již v úložišti metaverse, které vytvořil jiný konektor, by měl být spojené s. Například v doménové struktuře účtu prostředku má být uživatel z doménové struktury účtu propojen s uživateli v doménové struktuře prostředku.

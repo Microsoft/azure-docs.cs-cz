@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60399784"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné datových věd s využitím Azure Data Lake: Návod začátku do konce
@@ -135,7 +135,7 @@ Jedinečný klíč pro připojení o jízdách\_a dat o jízdách\_tarif se skl�
 
 Skripty U-SQL jsou zde popsané a k dispozici v samostatném souboru. Můžete si stáhnout kompletní **skriptů U-SQL** z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
-Ke spuštění U-SQL, otevřete Visual Studio, klikněte na tlačítko **soubor--> Nový Projekt-->**, zvolte **projekt v U-SQL**, pojmenujte a uložte ho do složky.
+Ke spuštění U-SQL, otevřete Visual Studio, klikněte na tlačítko **soubor--> Nový Projekt-->** , zvolte **projekt v U-SQL**, pojmenujte a uložte ho do složky.
 
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -148,7 +148,7 @@ Ke spuštění U-SQL, otevřete Visual Studio, klikněte na tlačítko **soubor-
 
 ### <a name="ingest"></a>Příjem dat: Přečíst data z veřejných objektů blob
 
-Umístění dat v Azure blob je odkazováno jako **wasb://container\_název\@blob\_úložiště\_účet\_name.blob.core.windows.net/blob_name**a může být extrahována pomocí **Extractors.Csv()**. Nahraďte vlastní název kontejneru a název účtu úložiště v následujících skriptů pro kontejner\_název\@blob\_úložiště\_účet\_názvem v adrese wasb. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít **o jízdách\_data\_\{\*\}CSV** číst ve všech souborech 12 o jízdách.
+Umístění dat v Azure blob je odkazováno jako **wasb://container\_název\@blob\_úložiště\_účet\_name.blob.core.windows.net/blob_name**a může být extrahována pomocí **Extractors.Csv()** . Nahraďte vlastní název kontejneru a název účtu úložiště v následujících skriptů pro kontejner\_název\@blob\_úložiště\_účet\_názvem v adrese wasb. Vzhledem k tomu, že názvy souborů jsou ve stejném formátu, je možné použít **o jízdách\_data\_\{\*\}CSV** číst ve všech souborech 12 o jízdách.
 
     ///Read in Trip data
     @trip0 =

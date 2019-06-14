@@ -16,10 +16,10 @@ ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334394"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Přihlašovací prostředí s ověřováním Azure Multi-Factor Authentication

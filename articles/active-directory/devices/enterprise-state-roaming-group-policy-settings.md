@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f1b23862edeabbf8e03d4589fa3f22a3fab9f72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353155"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení zásad skupiny a MDM
@@ -43,7 +43,7 @@ Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou přip
 
 Tato nastavení se nacházejí ve: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| Name | Popis |
+| Název | Popis |
 | --- | --- |
 | Účty: Blokovat účty Microsoft |Nastavení této zásady zabrání uživatelům v přidávání nových účtů Microsoft na tomto počítači |
 | Se nesynchronizují |Zabrání uživatelům zpřístupní Windows nastavení a data aplikací |

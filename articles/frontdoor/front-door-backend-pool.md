@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60193706"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Fondy back-end a back-EndY branou služby Azure
@@ -71,7 +71,7 @@ Služba branou odešle pravidelné požadavky sondy HTTP/HTTPS pro všechny vaš
 
 - **Protokol**. Definuje, zda chcete odesílat požadavky sondy stavu ze branou služby pro váš back-end pomocí protokolu HTTP nebo HTTPS.
 
-- **Interval (sekundy)**. Definuje frekvence sondy stavu služby pro váš back-end nebo intervaly, ve kterých každé prostředí branou odešle testu.
+- **Interval (sekundy)** . Definuje frekvence sondy stavu služby pro váš back-end nebo intervaly, ve kterých každé prostředí branou odešle testu.
 
     >[!NOTE]
     >Pro rychlejší převzetí služeb při selhání nastavte interval na nižší hodnotu. Čím nižší hodnota, tím větší objem test stavu zobrazí váš back-end. Například pokud interval globálně nastavená na 30 sekund 90 branou prostředí nebo bodů POP, každý back-end se zobrazí informace o 3 až 5 testu požadavků za sekundu.
@@ -85,7 +85,7 @@ Nastavení back-endový fond Vyrovnávání zatížení definují, jak vyhodnocu
 
 - **Velikost vzorku úspěšné**. Definuje velikost vzorku jak už jsme zmínili, počet úspěšných ukázky potřebné k volání back-endu v pořádku. Předpokládejme například, intervalem branou stavu testu je 30 sekund, velikost vzorku je 5 a velikost vzorku úspěšné je 3. Pokaždé, když vyhodnotíme stav sondy pro back-endu, podíváme na posledních pět ukázky víc než 150 sekund (5 × 30). Alespoň tři úspěšné testy, je potřeba deklarovat back-end jako v pořádku.
 
-- **Latence citlivosti (Další latence)**. Definuje, zda chcete, aby vstupní brána k odesílání požadavku do back-endů do rozsahu citlivosti měření latence nebo předat požadavek na nejbližší back-endu.
+- **Latence citlivosti (Další latence)** . Definuje, zda chcete, aby vstupní brána k odesílání požadavku do back-endů do rozsahu citlivosti měření latence nebo předat požadavek na nejbližší back-endu.
 
 Další informace najdete v tématu [směrování metodu na základě nejnižší latence](front-door-routing-methods.md#latency).
 

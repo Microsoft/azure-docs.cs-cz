@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
 ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611523"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric osvědčené postupy zabezpečení
@@ -139,10 +139,10 @@ Certifikát musí splňovat následující požadavky na certifikáty protokolu 
 -   Název subjektu certifikátu musí odpovídat názvu domény, který se používá pro přístup k vaší cloudové služby.
 
     - Získejte název vlastní domény pro použití pro přístup k vaší cloudové služby.
-    - Vyžádejte certifikát od certifikační Autority s názvem subjektu, který odpovídá názvu vlastní domény vaší služby. Například, pokud je název vaší vlastní domény __contoso__**.com**, certifikát z certifikační Autority by měl mít název subjektu **. contoso.com** nebo __www__ **. contoso.com**.
+    - Vyžádejte certifikát od certifikační Autority s názvem subjektu, který odpovídá názvu vlastní domény vaší služby. Například, pokud je název vaší vlastní domény __contoso__ **.com**, certifikát z certifikační Autority by měl mít název subjektu **. contoso.com** nebo __www__ **. contoso.com**.
 
     >[!NOTE]
-    >Nelze získat od certifikační Autority pro certifikát SSL __cloudapp__**.net** domény.
+    >Nelze získat od certifikační Autority pro certifikát SSL __cloudapp__ **.net** domény.
 
 -   Certifikát musí používat minimálně 2 048 bitů šifrování.
 

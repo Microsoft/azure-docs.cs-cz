@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414796"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Ochrana hesel Azure AD monitorování a protokolování
@@ -65,7 +65,7 @@ Klíč události související s hesly ověření jsou následující:
 
 |   |Změna hesla |Nastavení hesla|
 | --- | :---: | :---: |
-|Úspěch |10014 |10015|
+|Průchod |10014 |10015|
 |(Z důvodu zásad hesel zákazníka)| 10016, 30002| 10017, 30003|
 |(Z důvodu zásad hesel Microsoft)| 10016, 30004| 10017, 30005|
 |(Z důvodu kombinované Microsoft a zákazník zásady hesel)| 10016, 30026| 10017, 30027|

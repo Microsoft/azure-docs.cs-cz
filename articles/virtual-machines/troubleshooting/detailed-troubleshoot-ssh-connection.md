@@ -17,10 +17,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: aedf06c5a5e225f0cafb81b17923d6c742da69eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506152"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobné kroky pro problémy s připojením k virtuálnímu počítači s Linuxem v Azure pro řešení potíží SSH
@@ -40,7 +40,7 @@ Následující kroky umožňují izolovat příčiny chyby a zjistit, řešení 
 
 2. Vyberte **nastavení** prozkoumat koncové body IP adresy, skupiny zabezpečení sítě a další nastavení.
 
-   Virtuální počítač by měl mít koncový bod definovaný pro provoz SSH, který si můžete prohlédnout v **koncové body** nebo  **[skupinu zabezpečení sítě](../../virtual-network/security-overview.md)**. Koncové body do virtuálních počítačů, které byly vytvořeny pomocí Resource Manageru jsou uložené ve skupině zabezpečení sítě. Ověřte, že pravidla skupiny zabezpečení sítě se použily a je odkazováno v podsíti.
+   Virtuální počítač by měl mít koncový bod definovaný pro provoz SSH, který si můžete prohlédnout v **koncové body** nebo  **[skupinu zabezpečení sítě](../../virtual-network/security-overview.md)** . Koncové body do virtuálních počítačů, které byly vytvořeny pomocí Resource Manageru jsou uložené ve skupině zabezpečení sítě. Ověřte, že pravidla skupiny zabezpečení sítě se použily a je odkazováno v podsíti.
 
 Pokud chcete ověřit připojení k síti, zkontrolujte nakonfigurované koncové body a zobrazit, pokud se můžete připojit k virtuálnímu počítači pomocí jiného protokolu, jako je například HTTP, nebo jinou službu.
 

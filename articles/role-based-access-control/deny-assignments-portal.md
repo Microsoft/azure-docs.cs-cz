@@ -15,10 +15,10 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194325"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal
@@ -34,7 +34,7 @@ Pokud chcete získat informace o přiřazení odepřít, musíte mít:
 
 - `Microsoft.Authorization/denyAssignments/read` oprávnění, která je obsažena ve většině [předdefinované role pro prostředky Azure](built-in-roles.md).
 
-## <a name="view-deny-assignments"></a>Zobrazit přiřazení zamítnutí
+## <a name="view-deny-assignments"></a>Zobrazení zamítnout přiřazení
 
 Podle těchto kroků zobrazit zamítnout přiřazení v oboru předplatného nebo správu skupiny.
 
@@ -42,7 +42,7 @@ Podle těchto kroků zobrazit zamítnout přiřazení v oboru předplatného neb
 
 1. Klikněte na skupinu pro správu nebo předplatného, které chcete zobrazit.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
 1. Klikněte na tlačítko **zamítnout přiřazení** kartu (nebo klikněte na tlačítko **zobrazení** tlačítka pro zobrazení odepřít dlaždici přiřazení).
 

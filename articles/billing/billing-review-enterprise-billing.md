@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
 ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371032"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Projděte si podnikové registrace fakturace pomocí rozhraní REST API
@@ -43,8 +43,8 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
 Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuálního fakturačního cyklu. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také volat [API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data na 36 měsíců.
 
@@ -96,8 +96,8 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
 Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuálního fakturačního cyklu. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také volat [API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data na 36 měsíců.
 
@@ -152,8 +152,8 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [klíč rozhraní API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based). |  
 
 Tento příklad ukazuje synchronní volání, které vrátí podrobnosti pro aktuálního fakturačního cyklu. Synchronní volání z důvodů výkonu nevrátil informace pro poslední měsíc.  Můžete také volat [API asynchronně](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) vrátit data na 36 měsíců.
 

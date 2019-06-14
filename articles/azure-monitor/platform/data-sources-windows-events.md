@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236908"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí Windows ve službě Azure Monitor
@@ -28,7 +28,7 @@ Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje 
 ## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace Windows
 Konfigurovat protokoly událostí Windows z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources).
 
-Azure Monitor shromažďuje jenom události z protokolů událostí Windows, které jsou určené v nastavení.  Protokol událostí přidáte zadáním názvu protokolu a kliknutím na **+**.  Pro všechny protokoly se shromažďují jen události s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní protokol, který chcete shromáždit.  Nelze zadat žádná další kritéria filtrování událostí.
+Azure Monitor shromažďuje jenom události z protokolů událostí Windows, které jsou určené v nastavení.  Protokol událostí přidáte zadáním názvu protokolu a kliknutím na **+** .  Pro všechny protokoly se shromažďují jen události s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní protokol, který chcete shromáždit.  Nelze zadat žádná další kritéria filtrování událostí.
 
 Jak budete zadávat název protokolu událostí, Azure Monitor nabízí návrhy běžnému názvu certifikátu protokolu událostí. Pokud na protokol, který chcete přidat, se nezobrazí v seznamu, můžete ho přidat stále tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránce protokolu a zkopírujte řetězec z *jméno a příjmení* pole.
 
@@ -56,10 +56,10 @@ Záznamy událostí Windows mají typ **události** a mít vlastnosti v následu
 | ParameterXml |Hodnoty parametru událostí ve formátu XML. |
 | ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manageru.  Pro ostatní agenty tato hodnota je `AOI-<workspace ID>` |
 | RenderedDescription |Popis události s hodnotami parametrů |
-| Zdroj |Zdroj události. |
+| source |Zdroj události. |
 | SourceSystem |Typ agenta událost byla shromážděna z. <br> OpsManager – Windows agent, buď přímé připojení nebo spravované nástroje Operations Manager <br> Linux – všichni agenti systému Linux  <br> AzureStorage – diagnostiky Azure |
 | TimeGenerated |Datum a čas vytvoření události ve Windows. |
-| Uživatelské jméno |Uživatelské jméno účtu, který protokoluje událost. |
+| UserName |Uživatelské jméno účtu, který protokoluje událost. |
 
 ## <a name="log-queries-with-windows-events"></a>Protokol dotazů pomocí událostí Windows
 Následující tabulka obsahuje příklady různých dotazů na protokoly, které načítají záznamy událostí Windows.

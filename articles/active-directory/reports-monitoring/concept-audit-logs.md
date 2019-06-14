@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60441022"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
@@ -82,7 +82,7 @@ Můžete filtrovat data auditu pro následující pole:
 - Category
 - Aktivita
 - Status
-- Cíl
+- Target
 - Spustil(a) (činitel)
 - Rozsah dat
 
@@ -127,7 +127,7 @@ Můžete filtrovat data auditu pro následující pole:
 
 **Aktivity** filtr podle kategorií a aktivit prostředků typ výběru provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
 
-Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](reference-audit-activities.md).
+Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](reference-audit-activities.md).
 
 **Stav** filtrování umožňuje filtrovat na základě stavu operace auditu. Stav může být jeden z následujících akcí:
 

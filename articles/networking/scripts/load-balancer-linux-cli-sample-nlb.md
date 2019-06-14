@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 916e9e1f7287757f19e93ecf7b8cc38f556e2dc8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564642"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti

@@ -13,10 +13,10 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60295364"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktory ovlivňující výkon nástroje Azure AD Connect
@@ -104,7 +104,7 @@ Modul runtime proces synchronizace má následující vlastnosti výkonu:
 * Export je také lineární.
 * Synchronizace se zvětší exponenciálně zvyšuje podle počtu objektů s odkazy na jiné objekty. Členství ve skupinách a vnořené skupiny mají dopad na výkon hlavní, protože jeho členy odkazovat na objekty uživatele nebo jiné skupiny. Tyto odkazy musí být nalezen a odkazuje na skutečných objektů v MV k dokončení synchronizační cyklus.
 
-### <a name="filtering"></a>Filtrování
+### <a name="filtering"></a>Filtering
 
 Velikost topologie služby Active Directory, kterou chcete importovat je číslo jediný faktor ovlivňující výkon a celkový čas, bude trvat vnitřní součástí zřizování modulu.
 

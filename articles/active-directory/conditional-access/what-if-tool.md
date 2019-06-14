@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60354289"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co je co-li nástroj podmíněného přístupu Azure Active Directory?
@@ -86,11 +86,11 @@ IP adresa je jedna adresa IPv4 tak, aby napodoboval [podmínka umístění](loca
 
 ### <a name="device-platforms"></a>Platformy zařízení
 
-Toto nastavení napodobuje [podmínku platformy zařízení](conditions.md#device-platforms) a představuje ekvivalent **všechny platformy (včetně nepodporovaných)**. 
-### <a name="client-apps"></a>Klientské aplikace
+Toto nastavení napodobuje [podmínku platformy zařízení](conditions.md#device-platforms) a představuje ekvivalent **všechny platformy (včetně nepodporovaných)** . 
+### <a name="client-apps"></a>Klientské aplikace.
 
 Toto nastavení napodobuje [klientské aplikace podmínku](conditions.md#client-apps).
-Ve výchozím nastavení, toto nastavení způsobí, že zkušební verzi všech zásad s **prohlížeče** nebo **mobilní aplikace a desktopoví klienti** buď jednotlivě nebo oba zaškrtnuto. Zjistí také zásady, které vynucují **protokolu Exchange ActiveSync (EAS)**. Toto nastavení můžete zúžit tak, že vyberete:
+Ve výchozím nastavení, toto nastavení způsobí, že zkušební verzi všech zásad s **prohlížeče** nebo **mobilní aplikace a desktopoví klienti** buď jednotlivě nebo oba zaškrtnuto. Zjistí také zásady, které vynucují **protokolu Exchange ActiveSync (EAS)** . Toto nastavení můžete zúžit tak, že vyberete:
 
 - **Prohlížeč** vyhodnotit všechny zásady s nejméně **prohlížeče** vybrané. 
 
@@ -102,7 +102,7 @@ Ve výchozím nastavení, toto nastavení způsobí, že zkušební verzi všech
 Toto nastavení napodobuje [rizika přihlašování podmínku](conditions.md#sign-in-risk).   
 
 
-## <a name="evaluation"></a>Vyhodnocení 
+## <a name="evaluation"></a>Hodnocení 
 
 Spustit zkušební verzi kliknutím **co když**. Výsledek vyhodnocení poskytuje sestavu, která se skládá ze: 
 

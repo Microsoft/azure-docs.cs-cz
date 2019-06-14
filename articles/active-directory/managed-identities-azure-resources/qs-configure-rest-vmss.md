@@ -16,10 +16,10 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60308274"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím volání rozhraní REST API
@@ -35,7 +35,7 @@ V tomto článku se pomocí příkazu CURL k volání koncového bodu REST Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)**.
+- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení řízení přístupu na základě rolí Azure:
 
@@ -313,7 +313,7 @@ Zakázat systém přiřadil identitou v existující škálovací sady virtuáln
 
    Odebrat ze škálovací sady virtuálního počítače, který má uživatelsky přiřazené identity spravované systém přiřadil spravovanou identitu, odeberte `SystemAssigned` z `{"identity":{"type:" "}}` hodnotu při zachování `UserAssigned` hodnotu a `userAssignedIdentities` slovník hodnot, pokud jste používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechat `identityIds` pole.
 
-## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživateli
+## <a name="user-assigned-managed-identity"></a>Uživatel přiřazenou spravované identity
 
 V této části se dozvíte, jak přidávat a odebírat uživatele přiřazeny spravovaná identita na virtuální počítač škálovací sadu pomocí příkazu CURL k volání koncového bodu REST Azure Resource Manageru.
 

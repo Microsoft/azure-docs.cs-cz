@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60366926"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurovat režim přenosu protokolu IPsec pro soukromý partnerský vztah ExpressRoute
@@ -176,7 +176,7 @@ Vytvoření seznamu filtru, který určuje šifrovaný provoz protokolu HTTP s c
 7. Na **typ protokolu IP** stránce **TCP**. Pak klikněte na **Další**.
 
    [![30]][30]
-8. Na **portu protokolu IP** stránce **z jakéhokoli portu** a **na tento port:**. Typ **8080** v textovém poli. Tato nastavení určují, že budou se šifrovat jenom provozu HTTP na cílový port 8080. Pak klikněte na **Další**.
+8. Na **portu protokolu IP** stránce **z jakéhokoli portu** a **na tento port:** . Typ **8080** v textovém poli. Tato nastavení určují, že budou se šifrovat jenom provozu HTTP na cílový port 8080. Pak klikněte na **Další**.
 
    [![do 31]][do 31]
 9. Zobrazte seznam filtrů IP.  Konfigurace seznamu filtru IP **azure. místní HTTP8080** aktivuje šifrování pro veškeré přenosy, které splňují následující kritéria:

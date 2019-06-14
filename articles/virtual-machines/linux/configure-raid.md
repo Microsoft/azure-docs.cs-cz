@@ -17,10 +17,10 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: e773fdcb031f0f8f896ea40d76231fd54a603dc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60328795"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu

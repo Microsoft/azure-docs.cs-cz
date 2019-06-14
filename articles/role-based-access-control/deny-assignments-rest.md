@@ -16,10 +16,10 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194663"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Seznam zamítnout přiřazení pro prostředky Azure pomocí rozhraní REST API
@@ -45,11 +45,11 @@ Pokud chcete získat informace o přiřazení odepřít, musíte mít:
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam přiřazení odepřít.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{odepřít id přiřazení}* s identifikátorem Odepřít přiřazení, které chcete načíst.
 
@@ -69,11 +69,11 @@ Pokud chcete získat informace o přiřazení odepřít, musíte mít:
 
 1. V rámci identifikátoru URI nahradit *{oboru}* s rozsahem, pro které chcete seznam přiřazení odepřít.
 
-    | Rozsah | Type |
+    | Scope | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Předplatné |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Nahraďte *{filter}* splňující podmínku, kterou chcete použít k filtrování seznamu přiřazení odepřít.
 

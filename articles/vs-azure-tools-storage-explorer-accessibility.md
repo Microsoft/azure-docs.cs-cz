@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60457246"
 ---
 # <a name="storage-explorer-accessibility"></a>Dostupnost Storage Exploreru
@@ -58,8 +58,8 @@ Nastavení motivu změní barvu většinu prvků uživatelského rozhraní. Dopo
 Příkaz       | Klávesová zkratka
 --------------|--------------------
 Nové okno    | **Ovládací prvek + Shift + N**
-Zavřít editor  | **Ovládací prvek + F4**
-Ukončit          | **Ctrl + Shift + W**
+Zavřete Editor  | **Ovládací prvek + F4**
+Ukončení          | **Ctrl + Shift + W**
 
 ### <a name="navigation-commands"></a>Příkazy pro navigaci
 
@@ -81,14 +81,14 @@ Předchozí editoru        | **Ovládací prvek + Page Up**
 Příkaz  | Klávesová zkratka
 ---------|------------------
 Přiblížit  | **Ovládací prvek +=**
-Oddálit | **CTRL +-**
+Horizonální oddálení | **CTRL +-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Příkazy Editor sdílené složky souborů a objektů BLOB
 
 Příkaz | Klávesová zkratka
 --------|--------------------
 Zpět    | **ALT + Šipka doleva**
-Předat dál | **ALT + Šipka vpravo**
+Vpřed | **ALT + Šipka vpravo**
 Nahoru      | **ALT + Šipka nahoru**
 
 ### <a name="editor-commands"></a>Editor příkazů
@@ -105,7 +105,7 @@ Obnovení  | **Ovládací prvek + R**
 Příkaz                | Klávesová zkratka
 -----------------------|------------------
 Přepnout vývojářské nástroje | **F12**
-Načíst znovu                 | **Alt+Control+R**
+Znovu načíst                 | **Alt+Control+R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

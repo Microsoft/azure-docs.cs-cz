@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764301"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook aktivity ve službě Azure Data Factory
@@ -56,13 +56,13 @@ Zavěšení aktivitu webu můžete použít k řízení provádění kanálů p�
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity hook webu | String | Ano |
+name | Název aktivity hook webu | String | Ano |
 type | Musí být nastaveno na **Webhooku**. | String | Ano |
 method | Metoda REST API pro cílový koncový bod. | řetězec. Podporované typy: "POST" | Ano |
 url | Cílový koncový bod a cesty | Řetězec (nebo výraz s hodnotu resultType řetězec). | Ano |
 Záhlaví | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: "záhlaví": {"Accept-Language": "en-us", "Content-Type": "application/json"}. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ano, vyžaduje se hlavička Content-type. "záhlaví": {"Content-Type": "application/json"} |
-hlavní část | Představuje datovou část, která je odeslána do koncového bodu. | Tělo předán zpět do zpětného volání identifikátoru URI by měl být platným formátem JSON. Zobrazit schéma datové části požadavku v [schématu datové části požadavku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) oddílu. | Ano |
-Ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Základní" nebo "ClientCertificate." Další informace najdete v tématu [ověřování](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne |
+Text | Představuje datovou část, která je odeslána do koncového bodu. | Tělo předán zpět do zpětného volání identifikátoru URI by měl být platným formátem JSON. Zobrazit schéma datové části požadavku v [schématu datové části požadavku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) oddílu. | Ano |
+ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Základní" nebo "ClientCertificate." Další informace najdete v tématu [ověřování](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne |
 timeout | Jak dlouho bude čekat na aktivitu &#39;zpětného&#39; má být volána. Jak dlouho aktivity bude čekat "zpětného' má být volána. Výchozí hodnota je 10mins ("00:10:00"). Format is Timespan i.e. d.hh:mm:ss | String | Ne |
 
 ## <a name="additional-notes"></a>Další poznámky

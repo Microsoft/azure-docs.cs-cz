@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60301572"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co je migrace zásad podmíněného přístupu Azure Active Directory? 
@@ -84,7 +84,7 @@ Změna vybrané skupiny nebo vyloučení konkrétních skupin můžete otestovat
 
 Pomocí podmíněného přístupu na webu Azure Portal můžete spravovat všechny zásady v jednom centrálním místě. Protože došlo ke změně výrazně provádění jak podmíněný přístup, měli byste seznámit se základními koncepcemi před migrací klasické zásady.
 
-Přečtěte si:
+Další informace:
 
 - [Co je podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md) Další informace o základních konceptech a terminologii.
 
@@ -94,7 +94,7 @@ Přečtěte si:
 
 
  
-## <a name="migration-considerations"></a>Aspekty migrace
+## <a name="migration-considerations"></a>Požadavky na migraci
 
 V tomto článku, zásady podmíněného přístupu Azure AD jsou také označovány jako *nové zásady*.
 Klasické zásady dál fungovat společně s vaší nové zásady, dokud zakázat nebo odstranit. 

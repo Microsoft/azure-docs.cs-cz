@@ -16,10 +16,10 @@ ms.date: 06/23/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 699afd4703efc5e8f63bb13fe1dd753a0c72594d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60282986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benselect"></a>Kurz: Integrace Azure Active Directory s BenSelect
@@ -60,7 +60,7 @@ Konfigurace integrace BenSelect do služby Azure AD, budete muset přidat BenSel
 
 **Chcete-li přidat BenSelect z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 

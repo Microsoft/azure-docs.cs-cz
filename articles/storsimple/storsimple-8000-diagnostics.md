@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60576182"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Použít diagnostický nástroj, který StorSimple k řešení problémů se zařízením řady 8000
@@ -420,7 +420,7 @@ Tady je Tabulka popisující, jaký různé parametry prostředí Windows PowerS
 | Název                    | Popisný název zařízení nakonfigurované na webu Azure portal během nasazování zařízení. Popisný název výchozí je sériové číslo zařízení. |
 | Model                   | Model zařízení řady StorSimple 8000. Model může být 8100 nebo 8600.|
 | sériové číslo            | Sériové číslo zařízení přiřazené na objekt pro vytváření a 15 znaků. Například udává 8600 SHX0991003G44HT:<br> 8600 – je model zařízení.<br>TVX – je lokalita výroby.<br> 0991003 - je konkrétní produkt. <br> G44HT-posledních 5 číslic jsou zvětšeny pro vytvoření jedinečnými sériovými čísly. Toto video asi sekvenční sady.|
-| Časové pásmo                | Časové pásmo zařízení nakonfigurované na webu Azure Portal během nasazování zařízení.|
+| časové pásmo                | Časové pásmo zařízení nakonfigurované na webu Azure Portal během nasazování zařízení.|
 | CurrentController       | Kontroler, který jste připojeni přes rozhraní Windows PowerShell vašeho zařízení StorSimple.|
 | ActiveController        | Kontroler, který je v zařízení aktivní a je řízení všech síťových a diskových operací. To může být řadič 0 a řadič 1.  |
 | Controller0Status       | Stav řadiče 0 na vašem zařízení. Stav kontroleru může být normální, v režimu obnovení nebo nedostupný.|

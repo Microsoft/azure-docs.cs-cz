@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609496"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpečení Azure a dodržování předpisů – IaaS třívrstvé webové aplikace pro UK OFFICIAL
@@ -154,7 +154,7 @@ Tyto virtuální sítě jsou i nadále spravovány jako samostatné prostředky,
 
 **Skupiny zabezpečení sítě**: [Skupiny Nsg](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) obsahují seznamy řízení přístupu, která povolují nebo zakazují provoz ve virtuální síti. Skupiny zabezpečení sítě slouží k zabezpečení provozu na úrovni jednotlivých virtuálních počítačů nebo podsítě.
 
-**Active Directory Domain Services (AD DS)**: Tato architektura poskytuje vyhrazený [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) nasazení.
+**Active Directory Domain Services (AD DS)** : Tato architektura poskytuje vyhrazený [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) nasazení.
 
 **Protokolování a auditování**: [Protokol aktivit v Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zachycení operace pro prostředky ve vašem předplatném, jako například provádět, kteří při operaci došlo k chybě, který operaci spustil, stav operace a hodnotách jiných vlastností, které vám můžou pomoct prozkoumat operace. Protokol aktivit v Azure je služba platformy Azure, který explicitně zaznamenává všechny akce v rámci předplatného. Protokoly můžete archivovat nebo exportovat podle potřeby.
 

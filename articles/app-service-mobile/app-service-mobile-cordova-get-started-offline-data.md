@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110979"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikaci Cordova
@@ -128,7 +128,7 @@ Offline synchronizace kód musí být přidán do aplikace. Offline synchronizac
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    Můžete se rozhodnout, kdy odešlete změny do back-endu mobilní aplikace po zavolání **syncContext.push()**. Například lze zavolat **syncBackend** v obslužné rutině události tlačítko vázané na tlačítko synchronizovat.
+    Můžete se rozhodnout, kdy odešlete změny do back-endu mobilní aplikace po zavolání **syncContext.push()** . Například lze zavolat **syncBackend** v obslužné rutině události tlačítko vázané na tlačítko synchronizovat.
 
 ## <a name="offline-sync-considerations"></a>Důležité informace o offline synchronizace
 

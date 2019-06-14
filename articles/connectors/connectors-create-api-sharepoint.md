@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60450739"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Monitorování a Správa prostředků služby SharePoint pomocí Azure Logic Apps
@@ -70,7 +70,7 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
    V seznamu akcí vyberte požadovanou akci.
 
    Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Po zobrazení výzvy k přihlášení, zadejte připojovací údaje. Pokud používáte SharePoint Server, ujistěte se, že vyberete **připojit přes místní bránu dat**. Jakmile budete hotoví, vyberte **Vytvořit**.
 

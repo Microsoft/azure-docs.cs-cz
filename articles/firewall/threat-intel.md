@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60194027"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Brána Firewall před internetovými útoky Azure na základě logiky filtrování – ve verzi Public Preview

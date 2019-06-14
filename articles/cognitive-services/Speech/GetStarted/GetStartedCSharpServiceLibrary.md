@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515240"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Rychlý start: Použít knihovnu pro zpracování řeči Bingu rozpoznávání služby v jazyce C&#35; pro Windows rozhraní .NET

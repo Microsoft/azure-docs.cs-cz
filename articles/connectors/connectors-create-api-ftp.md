@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
 ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60408496"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Vytváření, monitorování a správu protokolu FTP souborů pomocí Azure Logic Apps
@@ -28,7 +28,7 @@ S Azure Logic Apps a konektor FTP můžete vytvořit automatizovaných úloh a p
 
 Můžete použít aktivační události, které odpovědi ze serveru FTP a zpřístupnit výstup dalších akcí. Spuštění akcí ve svých aplikacích logiky můžete použít pro správu souborů na vašem serveru FTP. Také můžete mít další akce, které používají výstup z FTP akcí. Například pokud pravidelně získání souborů ze serveru FTP, můžete odeslat e-mailu o těchto souborech a jejich obsah s použitím konektoru Office 365 Outlook nebo konektor Outlook.com. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="limits"></a>Omezení
+## <a name="limits"></a>Limits
 
 * FTP akce podporují pouze soubory, které jsou *50 MB nebo méně* Pokud nepoužíváte [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md), které umožňují překročí tento limit. V současné době aktivační události FTP nepodporují dělením dat do bloků.
 
@@ -61,7 +61,7 @@ Můžete použít aktivační události, které odpovědi ze serveru FTP a zpř�
    V seznamu akcí vyberte požadovanou akci.
 
    Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Zadejte nezbytné podrobnosti připojení a pak zvolte **vytvořit**.
 
@@ -69,7 +69,7 @@ Můžete použít aktivační události, které odpovědi ze serveru FTP a zpř�
 
 Pokud se požaduje obsah souboru, aktivační událost nezíská soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru:
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)** .
 
 * Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -77,7 +77,7 @@ Pokud se požaduje obsah souboru, aktivační událost nezíská soubory větš�
 
 <a name="file-added-modified"></a>
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Aktivační událost FTP: Když je přidán nebo upraven soubor
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Aktivační událost FTP: Při přidání nebo změně souboru
 
 Tato aktivační událost se spustí pracovní postup aplikace logiky Pokud trigger rozpozná souboru při přidání nebo změně na serveru FTP. Takže například že můžete přidat podmínku, která zkontroluje obsah souboru a rozhodne, zda tento obsah získali založené na tom, jestli tento obsah splňují zadanou podmínku. Nakonec můžete přidat akci, která získá obsah souboru a vložit obsah do složky na serveru SFTP. 
 
@@ -85,7 +85,7 @@ Tato aktivační událost se spustí pracovní postup aplikace logiky Pokud trig
 
 Pokud se požaduje obsah souboru, aktivační události nelze získat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)** .
 
 * Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -106,7 +106,7 @@ Tady je příklad ukazující této aktivační události: **Při přidání neb
 
    ![Vytvoření připojení k serveru FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
-1. Vedle položky **složky** vyberte ikonu složky, zobrazí se seznam. Najít složku, které je třeba sledovat pro nové nebo upravené soubory, vyberte šipku pravý úhel (**>**), přejděte do složky a potom vyberte složku.
+1. Vedle položky **složky** vyberte ikonu složky, zobrazí se seznam. Najít složku, které je třeba sledovat pro nové nebo upravené soubory, vyberte šipku pravý úhel ( **>** ), přejděte do složky a potom vyberte složku.
 
    ![Vyhledejte a vyberte složku, kterou chcete monitorovat](./media/connectors-create-api-ftp/select-folder.png)  
 
@@ -124,7 +124,7 @@ Tato akce získá obsah ze souboru na FTP server, když se tento soubor se přid
 
 Pokud se požaduje obsah souboru, aktivační události nelze získat soubory větší než 50 MB. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru: 
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)** .
 
 * Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 

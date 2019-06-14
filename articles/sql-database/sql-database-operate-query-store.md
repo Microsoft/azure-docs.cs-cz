@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 3ceb8569d952f2947870ce7314f869623b2d87f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584739"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Provozování Query Store ve službě Azure SQL Database
@@ -32,7 +32,7 @@ Query Store bylo [globálně dostupné](https://azure.microsoft.com/updates/gene
 
 Tato část popisuje výchozí hodnoty optimální konfiguraci, které jsou určeny k zaručit spolehlivý provoz Query Store a závislé součásti, jako například [služby SQL Database Advisor a řídicí panel Výkon](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Výchozí konfigurace je optimalizovaná pro souvislá datová kolekci, ve kterých je minimum času stráveného ve stavu vypnuto/READ_ONLY.
 
-| Konfigurace | Popis | Výchozí | Poznámka |
+| Konfigurace | Popis | Výchozí | Komentář |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |Určuje mez pro data místo Query Store můžete provést uvnitř databáze zákazníků |100 |Vynutit pro nové databáze |
 | INTERVAL_LENGTH_MINUTES |Definuje velikost časový interval, během kterého se agregují a trvalé statistické údaje o shromážděných pro plány dotazů. Každý dotaz služby active plán bude mít maximálně jeden řádek pro určitou dobu definované s touto konfigurací |60 |Vynutit pro nové databáze |

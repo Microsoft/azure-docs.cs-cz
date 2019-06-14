@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/04/2019
 ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331910"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Klientská knihovna elastic Database s Entity Framework
@@ -45,8 +45,8 @@ Jakmile vytvoříte tyto databáze, zadejte místo zástupné znaky v **Program.
 
 Entity Framework vývojáři Spolehněte se na jednu z následujících čtyř pracovní postupy pro vytváření aplikací a k zajištění trvalosti pro objekty aplikací:
 
-* **Code First (nová databáze)**: EF vývojářem modelu v kódu aplikace a poté vygeneruje EF databáze z něj. 
-* **Code First (existující databázi)**: Vývojář umožňuje EF, generování kódu aplikace pro model z existující databáze.
+* **Code First (nová databáze)** : EF vývojářem modelu v kódu aplikace a poté vygeneruje EF databáze z něj. 
+* **Code First (existující databázi)** : Vývojář umožňuje EF, generování kódu aplikace pro model z existující databáze.
 * **Model první**: Vývojář vytvoří model v EF designeru a pak EF vytvoří databáze z modelu.
 * **Databáze první**: Vývojář používá EF nástrojů k odvození modelu z existující databáze. 
 

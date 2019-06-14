@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 284d0e888b89d340088f770af22c026a861a4685
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610731"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpečení rámce: Správa konfigurace | Zmírnění rizik 
@@ -36,7 +36,7 @@ ms.locfileid: "60610731"
 
 ## <a id="csp-js"></a>Implementace obsahu zabezpečení zásady (CSP) a zakažte vložený javascript
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -68,7 +68,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="xss-filter"></a>Povolit filtr XSS v prohlížeči
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -79,7 +79,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="trace-deploy"></a>Aplikace ASP.NET musíte zakázat trasování a ladění před nasazením
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -90,7 +90,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="js-trusted"></a>JavaScript třetích stran přístup pouze z důvěryhodných zdrojů
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -101,7 +101,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a id="ui-defenses"></a>Ujistěte se, že ověřeného stránek ASP.NET začlenit nápravu uživatelského rozhraní nebo opěry pro kliknutí ochrany
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -136,7 +136,7 @@ Soubor Web.config kód lokality, které by měly být pouze ohraničeny pomocí 
 
 ## <a id="cors-aspnet"></a>Ujistěte se, že jsou povolena pouze důvěryhodného zdroje, pokud je povolené CORS na webové aplikace ASP.NET
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -167,7 +167,7 @@ Mějte prosím na paměti, že je důležité zajistit, že seznam původů v at
 
 ## <a id="validate-aspnet"></a>Povolit ValidateRequest atribut na stránkách ASP.NET
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -193,7 +193,7 @@ Poznámka: tuto funkci žádost o ověření není podporován a není součást
 
 ## <a id="local-js"></a>Použijte místně hostované nejnovější verze knihovny jazyka JavaScript
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -204,7 +204,7 @@ Poznámka: tuto funkci žádost o ověření není podporován a není součást
 
 ## <a id="mime-sniff"></a>Zakázat automatické sledování toku dat MIME
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -269,7 +269,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="standard-finger"></a>Odebrání hlaviček standardní serveru na Windows Azure Web Sites, aby otisků
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -280,7 +280,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="firewall-db"></a>Konfigurace brány Windows Firewall pro přístup k databázi
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -291,7 +291,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a id="cors-api"></a>Ujistěte se, že jsou povolena pouze důvěryhodného zdroje, pokud je povolené CORS na rozhraní ASP.NET Web API
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -387,7 +387,7 @@ public class ResourcesController : ApiController
 }
 ```
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -479,7 +479,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="config-sensitive"></a>Šifrování oddíly konfiguračních souborů rozhraní Web API, které obsahují citlivá data
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Nasazení |  
@@ -490,7 +490,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="admin-strong"></a>Ujistěte se, že všechny správce rozhraní jsou zabezpečené pomocí silné přihlašovací údaje
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Nasazení |  
@@ -501,7 +501,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="unknown-exe"></a>Ujistěte se, že neznámý kód nelze spustit na zařízeních
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Sestavení |  
@@ -512,7 +512,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="partition-iot"></a>Šifrování operačního systému a další oddíly zařízení IoT s bit schránky
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Sestavení |  
@@ -523,7 +523,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="min-enable"></a>Ujistěte se, že jsou povolené jenom minimální služby/funkce na zařízeních
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Nasazení |  
@@ -534,7 +534,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="field-bit-locker"></a>Šifrování operačního systému a další oddíly hraniční brána IoT s bit schránky
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Nasazení |  
@@ -545,7 +545,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="default-change"></a>Ujistěte se, že výchozí přihlašovací údaje ze brána pole se změní při instalaci
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Nasazení |  
@@ -556,7 +556,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="cloud-firmware"></a>Ujistěte se, že Cloudová brána implementuje proces aktualizovat firmware připojená zařízení
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  
@@ -567,7 +567,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="controls-policies"></a>Ujistěte se, že zařízení mají kontrolních mechanismů pro zabezpečení koncový bod nakonfigurovaný podle organizační zásady
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -578,7 +578,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="secure-keys"></a>Zajistěte zabezpečenou správu přístupových klíčů k úložišti Azure
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Nasazení |  
@@ -589,7 +589,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="cors-storage"></a>Ujistěte se, že jsou povolena pouze důvěryhodného zdroje, pokud je povolené CORS v Azure storage
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -600,7 +600,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 
 ## <a id="throttling"></a>Povolení služby WCF pro omezení funkce
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -623,7 +623,7 @@ Tady je příklad konfigurace s povoleno omezení:
 
 ## <a id="info-metadata"></a>WCF informacím pomocí metadat
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  

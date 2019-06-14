@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
 ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60204629"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Rychlý start: Ruční instalace jedné instance SAP HANA v Azure Virtual Machines
@@ -189,7 +189,7 @@ Běžně používané hodnoty závažnosti jsou:
 - Důležité
 - Střední
 - Nízká
-- Neurčeno
+- Tento parametr zadán
 
 **Zypperu** příkaz by mohl vypadat pouze pro aktualizace, které je třeba nainstalované balíčky. Například můžete použít tento příkaz:
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: cf1dc352068747ab2f77beec8802407d15699d17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607155"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Podpora jazyků pro Content Moderator API
@@ -32,8 +32,8 @@ ms.locfileid: "60607155"
 | bengálština | Amharština | Čínština (tradiční)     | Holandština | |
 | Bugiština – | arabština | Čeština                     | Angličtina | |
 | Buhid | Arménština | dánština                     | Finština | |
-| Carian | Ásámština | Holandština                     | Francouzština | |
-| Čínština (zjednodušená) | ázerbájdžánština | Angličtina  | Řečtina (moderní) | |
+| Carian | Assamese | Holandština                     | Francouzština | |
+| Čínština (zjednodušená) | Ázerbajdžánský | Angličtina  | Řečtina (moderní) | |
 | Čínština (tradiční) | Bengálština – Bangladéš | Finština  | italština | |
 | Kirke (Slovanské jazyky) | Bengálština – Indie | Francouzština     | Korejština | |
 | Koptština | Baskičtina | Němčina                      | norština | |
@@ -41,17 +41,17 @@ ms.locfileid: "60607155"
 | Dhivehi | Bosenština – cyrilice | Maďarština      | Portugalština | |
 | Holandština | Bosenština - Latin | italština             | Rumunština | |
 | Angličtina | (Kreolština) | Bretonština [bez GeoPol] | Japonština  | ruština |
-| fársíjština | Bulharština | Korejština                        | Slovenština | |
+| Farsi | Bulharština | Korejština                        | Slovenština | |
 | Francouzština | Katalánština | norština                        | Španělština ||
 | Němčina | Centrální Kurdština | polština        | turečtina | |
 | Řečtina | Čerokézština | Portugalština | | |
-| Haitština | Čínština (zjednodušená) | Rumunština | | |
+| Haitský | Čínština (zjednodušená) | Rumunština | | |
 | Hebrejština | Čínština (tradiční) – zvláštní administrativní oblast Hongkong | ruština | | |
 | Hindština | Čínština (tradiční) – Tchaj-wan | Srbština cyrilice | | |
 | Hmong | Chorvatština | Srbština Latin | | |
 | Maďarština | Čeština | Slovenština | | |
 | italština | dánština | Španělština | | |
-| Japonština | Dáríština | švédština | | |
+| Japonština | Dari | švédština | | |
 | Korejština | Holandština | turečtina | | |
 | Kurdština (Arabské písmo) | Angličtina | | | |
 | Kurdština (latinka) | Estonština | | | |
@@ -62,44 +62,44 @@ ms.locfileid: "60607155"
 | Lydian | Gruzínština | | | |
 | Mycenaean (řečtina) | Němčina | | | |
 | Nko | Řečtina | | | |
-| norština (bokmal) | Gudžarátština | | | |
-| Norština (Nynorsk) |  Hauština | | | |
+| Norština (Bokmal) | Gudžarátština | | | |
+| Norština (Nynorsk) |  Hausa | | | |
 | Staré (perština) | Hebrejština | | | |
 | Paštština | Hindština | | | |
 | polština | Maďarština | | | |
 | Portugalština | Islandština | | | |
-| Paňdžábština | Igboština | | | |
+| Paňdžábština | Igbo | | | |
 | Rejang | Indonéština | | | |
 | ruština | Inuktitutština | | | |
 | Santali | Irština | | | |
-| Sasak | Xhoština | | | |
-| Saurashtra | Zuluština | | | |
+| Sasak | isiXhosa | | | |
+| Saurashtra | isiZulu | | | |
 | Srbština (cyrilice) | italština | | | |
 | Srbština (latinka) | Japonština | | | |
-| Sinhálština | Kannadština | | | |
+| Sinhala | Kannadština | | | |
 | Slovinština | Kazaština | | | |
-| Španělština | Khmérština | | | |
-| švédština | Kičejština | | | |
-| Sylheti | Kiňarwandština | | | |
-| Syrština | Svahilština | | | |
-| Tagbanwa | Konkánština | | | |
+| Španělština | Khmer | | | |
+| švédština | K'iche | | | |
+| Sylheti | Kinyarwanda | | | |
+| Syrská | Svahilština | | | |
+| Tagbanwa | Konkani | | | |
 | Tai (Nua) | Korejština | | | |
 | Tamashek | Kyrgyzština | | | |
-| turečtina | Laoština | | | |
+| turečtina | Lao | | | |
 | Ugaritic | Lotyština | | | |
 | Uzbečtina (cyrilice) | Litevština | | | |
 | Uzbečtina (latinka) | Lucemburština | | | |
-| Vai | Makedonština | | | |
-| Yi | Malajština | | | |
+| Vai | Makedonský | | | |
+| Iština | Malajština | | | |
 | Zhuang, Chuang | Malajálamština | | | |
 | | Maltština | | | |
-| | Maorština | | | |
+| | Maori | | | |
 | | Maráthština | | | |
 | | Mongolština | | | |
 | | Nepálština | | | |
 | | Norština (Bokmal) | | | |
 | | Norština (Nynorsk) | | | |
-| | Udijština | | | |
+| | Odia | | | |
 | | Paštština | | | |
 | | Perština | | | |
 | | polština | | | |
@@ -107,29 +107,29 @@ ms.locfileid: "60607155"
 | | Portugalština – Portugalsko | | | |
 | | Pulaar | | | |
 | | Paňdžábština | | | |
-| | paňdžábština (Pákistán) | | | |
-| | Kečuánština (Peru) | | | |
+| | Paňdžábština (Pákistán) | | | |
+| | Quechua (Peru) | | | |
 | | Rumunština | | | |
 | | ruština | | | |
-| | Skotská gaelština | | | |
+| | Scottish Gaelic | | | |
 | | Srbština (cyrilice) | | | |
 | | Srbština (cyrilice, Bosna a Hercegovina) | | | |
 | | Srbština (latinka) | | | |
 | | Sesotho | | | |
-| | Severní sótština | | | |
-| | Setswanština | | | |
-| | sindhština | | | |
-| | Sinhálština | | | |
+| | Severní sotština | | | |
+| | Setswana | | | |
+| | Sindhi | | | |
+| | Sinhala | | | |
 | | Slovenština | | | |
 | | Slovinština | | | |
 | | Španělština | | | |
 | | švédština | | | |
-| | Tádžičtina | | | |
+| | Tajik | | | |
 | | Tamilština | | | |
 | | Tatarština | | | |
 | | Telugština | | | |
 | | Thajština | | | |
-| | tigrinijština | | | |
+| | Tigriňňa | | | |
 | | turečtina | | | |
 | | Turkmenština | | | |
 | | Ukrajinština | | | |
@@ -139,5 +139,5 @@ ms.locfileid: "60607155"
 | | Valencijština | | | |
 | | Vietnamština | | | |
 | | Velština | | | |
-| | Wolofština | | | |
-| | Jorubština | | | |
+| | Wolof | | | |
+| | Yoruba | | | |

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334790"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array aktualizace 0.4 poznámky
@@ -56,7 +56,7 @@ Následující tabulka obsahuje souhrn chyby opravené v této verzi.
 | Ne. | Funkce | Problém |
 | --- | --- | --- |
 | 1 |Výkon zálohování|V dřívějších verzích zálohy zahrnující velkého počtu souborů by trvalo dlouhou dobu pro dokončení (v pořadí podle dní). V této verzi najdete v úplných a přírůstkových záloh k výraznému snížení čas na dokončení. |
-| 2 |Balíček pro podporu|Disk, procesoru, paměti, sítě a cloudové statistiky jsou nyní přihlášeni do protokolů podpory vytváření velmi efektivní s řešením problémů zařízení podpůrných balíčků.|
+| 2 |Balíček pro podporu.|Disk, procesoru, paměti, sítě a cloudové statistiky jsou nyní přihlášeni do protokolů podpory vytváření velmi efektivní s řešením problémů zařízení podpůrných balíčků.|
 | 3 |Backup |V dřívějších verzích dlouho trvající záloh může vést zpracujte místo na zařízení, což vede k selhání zálohování. Tato chyba opravená tím, že více než 5 záloh do fronty v jednom okamžiku v této verzi.|
 | 4 |iSCSI | V dřívějších verzích byla místní rezervace pro vrstvené nebo místně připojené svazky 10 % velikosti zřízeného svazku. V této verzi je omezené na 10 % s délkou maximálně 200 GB (pro vrstvené svazky větší než 2 TB) místní rezervace pro všechny svazky iSCSI (místně připnuté nebo vrstvené) a tím uvolnění další místo na místním disku. Doporučujeme vám, že místně připojené svazky v této verzi omezena na 200 GB.|
 

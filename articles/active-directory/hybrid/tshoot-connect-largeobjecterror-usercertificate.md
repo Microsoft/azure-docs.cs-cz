@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095485"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace Azure AD Connect: Zpracování chyb LargeObject způsobených atributem userCertificate
@@ -117,7 +117,7 @@ Nové pravidlo synchronizace musí mít stejné **filtr oborů** a **vyšší pr
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadejte název* | Například *"Out aad – vlastní přepsání pro userCertificate"* |
+    | Name | *Zadejte název* | Například *"Out aad – vlastní přepsání pro userCertificate"* |
     | Popis | *Zadejte popis* | Například *"Pokud atributem userCertificate má více než 15 hodnot, export hodnotu NULL."* |
     | Připojený systém | *Vyberte konektor Azure AD* |
     | Typ objektu systému připojené | **Uživatel** | |

@@ -16,10 +16,10 @@ ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60290681"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Přiřazení přístupu spravovanou identitu prostředku pomocí Powershellu
@@ -32,7 +32,7 @@ Po dokončení konfigurace k prostředku Azure s využitím spravované identity
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)**.
+- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)** .
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Nainstalujte [nejnovější verzi Azure Powershellu](/powershell/azure/install-az-ps) Pokud jste tak již neučinili.
 

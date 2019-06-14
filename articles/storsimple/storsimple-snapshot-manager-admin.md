@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
 ms.openlocfilehash: bc72da98800ef85ef14be0882ba856fbf01386b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630015"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Použití StorSimple Snapshot Manager ke správě vašeho řešení StorSimple
@@ -51,7 +51,7 @@ StorSimple Snapshot Manager můžete použít ke sledování a správě aktuáln
 | Další informace o StorSimple Snapshot Manageru |[Co je StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
 | Nainstalovat Snapshot Manageru zařízení StorSimple<br>Přeinstalujte StorSimple Snapshot Manageru<br>Odebrat StorSimple Snapshot Manageru |[Nasazení StorSimple Snapshot Manageru](storsimple-snapshot-manager-deployment.md) |
 | Použití StorSimple Snapshot Manageru nabídek a funkce:<ul><li>Panel nabídek</li><li>Panel nástrojů</li><li>Podokno přehledu</li><li>Podokno výsledků</li><li>Podokna akcí</li><li>Navigace pomocí kláves a klávesové zkratky</li></ul> |[Uživatelské rozhraní StorSimple Snapshot Manageru](storsimple-use-snapshot-manager.md) |
-| Použijte běžné funkce konzoly MMC, které jsou zahrnuté ve StorSimple Snapshot Manageru:<ul><li>Zobrazení</li><li>Nové okno</li><li>Obnovení</li><li>Exportovat seznam</li><li>Nápověda</li></ul> |[Použijte nabídku akcí MMC prostřednictvím StorSimple Snapshot Manageru](storsimple-snapshot-manager-mmc-menu.md) |
+| Použijte běžné funkce konzoly MMC, které jsou zahrnuté ve StorSimple Snapshot Manageru:<ul><li>Zobrazení</li><li>Nové okno</li><li>Obnovení</li><li>Exportovat seznam</li><li>Help</li></ul> |[Použijte nabídku akcí MMC prostřednictvím StorSimple Snapshot Manageru](storsimple-snapshot-manager-mmc-menu.md) |
 | Přidat nebo nahradit zařízení<br>Připojení zařízení<br>Ověřte importované svazku skupiny<br>Aktualizovat připojená zařízení<br>Ověřování zařízení<br>Zobrazení podrobností o zařízení<br>Odstranění konfigurace zařízení<br>Změnit heslo zařízení<br>Nahraďte zařízení se nezdařilo<br> |[K připojení a správě zařízení StorSimple pomocí StorSimple Snapshot Manageru](storsimple-snapshot-manager-manage-devices.md) |
 | Připojit svazky<br>Zobrazení informací o svazcích<br>Odstranění svazku<br>Znovu prohledat svazky<br>Konfigurace a zálohujte základního svazku<br>Konfigurace a zálohování dynamické zrcadlený svazek |[Pomocí StorSimple Snapshot Manageru k zobrazení a správa svazků](storsimple-snapshot-manager-manage-volumes.md) |
 | Zobrazení skupin svazků<br>Vytvoření skupiny svazků<br>Zálohování skupiny svazků<br>Upravit skupiny svazků<br>Odstranění skupiny svazků |[Vytvoření a Správa skupin svazků pomocí StorSimple Snapshot Manageru](storsimple-snapshot-manager-manage-volume-groups.md) |

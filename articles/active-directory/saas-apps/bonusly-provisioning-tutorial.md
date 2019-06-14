@@ -17,10 +17,10 @@ ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad0ee590572dbc92e67be9f84ffc65afc3e8473
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60282315"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Kurz: Konfigurace Bonusly pro automatické zřizování uživatelů
@@ -47,7 +47,7 @@ Před konfigurací Bonusly pro automatické zřizování uživatelů pomocí Azu
 
 **Chcete-li přidat Bonusly z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60391357"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače s Linuxem, které využívá ověřování SSH pomocí rozhraní REST API
@@ -54,8 +54,8 @@ Vyžadují se následující hlavičky:
 
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
-| *Typ obsahu:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Autorizace:* | Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
+| *Authorization:* | Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Obecné informace o práci s požadavky rozhraní REST API najdete v tématu [součástí žádost/odpověď rozhraní REST API](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -66,7 +66,7 @@ Následující běžné definice slouží k sestavení hlavní část žádosti:
 | Name                       | Požaduje se | Typ                                                                                | Popis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Umístění prostředku. |
-| jméno                       |          | string                                                                              | Název virtuálního počítače. |
+| name                       |          | string                                                                              | Název virtuálního počítače. |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Určuje nastavení úložiště pro disky virtuálních počítačů. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Určuje nastavení operačního systému pro virtuální počítač. |

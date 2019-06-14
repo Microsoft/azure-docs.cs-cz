@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60286928"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Průvodce zabezpečením role Azure AD v PIM
@@ -53,11 +53,11 @@ Druhý krok průvodce vám dává možnost změnit přiřazení rolí správce.
 
 1. Klikněte na tlačítko **Další** vyberte členy, které chcete nastavit jako oprávněné.
 
-    ![Převod členů na oprávněné](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Převést na oprávněné členy](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. Po výběru členů, klikněte na tlačítko **Další**.
 
-    ![Zkontrolovat změny](./media/pim-security-wizard/review-changes.png)
+    ![Změny vyplývající z revize](./media/pim-security-wizard/review-changes.png)
 
 1. Klikněte na tlačítko **OK** pro převod na trvalé přiřazení oprávněné.
 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332273"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce mapování horizontálních oddílů
@@ -55,11 +55,11 @@ Elastické škálování podporuje následující typy jako klíče horizontáln
 | .NET | Java |
 | --- | --- |
 | integer |integer |
-| Long |Long |
+| long |long |
 | identifikátor GUID |Uuid |
 | Byte  |Byte |
-| datetime | časové razítko |
-| TimeSpan | doba trvání|
+| datetime | timestamp |
+| TimeSpan | Doba trvání|
 | DateTimeOffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Mapy horizontálních oddílů seznamu a rozsahu
@@ -98,8 +98,8 @@ Každý z výše uvedené tabulky je koncepční příkladem **ShardMap** objekt
 
 V klientské knihovně správce mapování horizontálních oddílů je kolekce mapování horizontálních oddílů. Data spravovaná přes **ShardMapManager** instance je udržováno na třech místech:
 
-1. **Mapy horizontálních oddílů globální (GSM)**: Můžete určit databázi, která bude sloužit jako úložiště pro všechny jeho mapy horizontálních oddílů a mapování. Ke správě informací se automaticky vytvoří zvláštní tabulkám a uloženým procedurám. To je obvykle s malou databází a lehce přistupovat, a se nesmí používat pro jiné potřebám vaší aplikace. Tabulky jsou v speciální schéma s názvem **__ShardManagement**.
-2. **Mapy horizontálních oddílů místní (LSM)**: Každou databázi, který zadáte jako horizontálního oddílu je změněn, aby obsahoval několik malé tabulky a speciální uložené procedury, které obsahují a spravovat informace mapy horizontálních oddílů, které jsou specifické pro tohoto horizontálního oddílu. Tyto informace je redundantní pomocí informací v GSM a umožní aplikaci ověřit informace mapy horizontálních oddílů v mezipaměti bez uvedení vyžadovanou zátěž na GSM; aplikace používá LSM k určení, zda mapování uložené v mezipaměti je stále platný. Tabulky odpovídající LSM v jednotlivých horizontálních oddílech jsou také ve schématu **__ShardManagement**.
+1. **Mapy horizontálních oddílů globální (GSM)** : Můžete určit databázi, která bude sloužit jako úložiště pro všechny jeho mapy horizontálních oddílů a mapování. Ke správě informací se automaticky vytvoří zvláštní tabulkám a uloženým procedurám. To je obvykle s malou databází a lehce přistupovat, a se nesmí používat pro jiné potřebám vaší aplikace. Tabulky jsou v speciální schéma s názvem **__ShardManagement**.
+2. **Mapy horizontálních oddílů místní (LSM)** : Každou databázi, který zadáte jako horizontálního oddílu je změněn, aby obsahoval několik malé tabulky a speciální uložené procedury, které obsahují a spravovat informace mapy horizontálních oddílů, které jsou specifické pro tohoto horizontálního oddílu. Tyto informace je redundantní pomocí informací v GSM a umožní aplikaci ověřit informace mapy horizontálních oddílů v mezipaměti bez uvedení vyžadovanou zátěž na GSM; aplikace používá LSM k určení, zda mapování uložené v mezipaměti je stále platný. Tabulky odpovídající LSM v jednotlivých horizontálních oddílech jsou také ve schématu **__ShardManagement**.
 3. **Mezipaměť aplikace**: Každý přístup instance aplikace **ShardMapManager** objektu udržuje místní mezipaměť v paměti její mapování. Ukládají se informace o směrování, která nedávno byla načtena.
 
 ## <a name="constructing-a-shardmapmanager"></a>Vytváření ShardMapManager

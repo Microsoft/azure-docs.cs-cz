@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60354349"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co jsou závislosti služby podmíněného přístupu Azure Active Directory? 
@@ -56,23 +56,23 @@ Jako osvědčený postup byste měli nastavit běžné zásady mezi souvisejíc�
 
 Následující tabulka uvádí závislosti další služby, ve kterém musí splňovat klientské aplikace  
 
-| Klientské aplikace         | Příjem dat služby                          | Vynucení |
+| Klientské aplikace.         | Příjem dat služby                          | Vynucení |
 | :--                 | :--                                         | ---         | 
 | Azure Data Lake     | Microsoft Azure Management (portál a rozhraní API) | Časné vazby |
-| Microsoft Classroom | Výměna                                    | Časné vazby |
+| Microsoft Classroom | Exchange                                    | Časné vazby |
 |                     | SharePoint                                  | Časné vazby  |
-| Microsoft Teams     | Výměna                                    | Časné vazby |
+| Microsoft Teams     | Exchange                                    | Časné vazby |
 |                     | MS Planner                                  | S pozdní vazbou  |
 |                     | SharePoint                                  | Časné vazby |
 |                     | Online Skype pro firmy                   | Časné vazby |
-| Portál Office       | Výměna                                    | S pozdní vazbou  |
+| Portál Office       | Exchange                                    | S pozdní vazbou  |
 |                     | SharePoint                                  | S pozdní vazbou  |
-| Aplikace Outlook skupiny      | Výměna                                    | Časné vazby |
+| Aplikace Outlook skupiny      | Exchange                                    | Časné vazby |
 |                     | SharePoint                                  | Časné vazby |
 | PowerApps           | Microsoft Azure Management (portál a rozhraní API) | Časné vazby |
 |                     | Windows Azure Active Directory              | Časné vazby |
-| Project             | Dynamics CRM                                | Časné vazby |
-| Skype pro firmy  | Výměna                                    | Časné vazby |
+| Projekt             | Dynamics CRM                                | Časné vazby |
+| Skype pro firmy  | Exchange                                    | Časné vazby |
 | Visual Studio       | Microsoft Azure Management (portál a rozhraní API) | Časné vazby |
 
 

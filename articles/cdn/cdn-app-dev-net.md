@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60579924"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
@@ -51,7 +51,7 @@ Náš projekt bude používat některé knihovny Azure obsažené v balíčcích
 1. Klikněte na tlačítko **nástroje** nabídce **Správce balíčků Nuget**, pak **Konzola správce balíčků**.
    
     ![Spravovat balíčky Nuget](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. V konzole Správce balíčků spustíte následující příkaz k instalaci **Active Directory Authentication Library (ADAL)**:
+2. V konzole Správce balíčků spustíte následující příkaz k instalaci **Active Directory Authentication Library (ADAL)** :
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. Spuštěním následujících příkazů nainstalujte **knihovny správy Azure CDN**:
@@ -73,7 +73,7 @@ Pojďme si základní struktura naše programu.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Budeme muset definovat některé konstanty, které bude používat naše metody.  V `Program` třídy, ale předtím, než `Main` metodu, přidejte následující.  Nezapomeňte nahradit zástupné symboly, včetně  **&lt;ostrých závorek&gt;**, vlastními hodnotami podle potřeby.
+2. Budeme muset definovat některé konstanty, které bude používat naše metody.  V `Program` třídy, ale předtím, než `Main` metodu, přidejte následující.  Nezapomeňte nahradit zástupné symboly, včetně  **&lt;ostrých závorek&gt;** , vlastními hodnotami podle potřeby.
    
     ```csharp
     //Tenant app constants

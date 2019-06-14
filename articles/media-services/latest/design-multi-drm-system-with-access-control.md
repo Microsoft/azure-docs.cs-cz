@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734082"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
@@ -329,7 +329,7 @@ Registrace a konfigurace aplikace ukazatel ve službě Azure AD, proveďte násl
 
 3. Aktualizace souboru manifestu aplikace tak, aby vlastnost groupMembershipClaims má hodnotu "groupMembershipClaims": "Vše".
 
-4. V aplikaci Azure AD, která odkazuje na webové aplikace přehrávače, v části **oprávnění k ostatním aplikacím**, přidání aplikace prostředku, který byl přidán v kroku 1. V části **delegovaná oprávnění**vyberte **přístupu [resource_name]**. Tato možnost poskytuje oprávnění webové aplikace k vytvoření přístupové tokeny, které přístup k aplikaci prostředků. Proveďte pro místní a nasazené verze webové aplikace při vývoji v sadě Visual Studio a webové aplikace Azure.
+4. V aplikaci Azure AD, která odkazuje na webové aplikace přehrávače, v části **oprávnění k ostatním aplikacím**, přidání aplikace prostředku, který byl přidán v kroku 1. V části **delegovaná oprávnění**vyberte **přístupu [resource_name]** . Tato možnost poskytuje oprávnění webové aplikace k vytvoření přístupové tokeny, které přístup k aplikaci prostředků. Proveďte pro místní a nasazené verze webové aplikace při vývoji v sadě Visual Studio a webové aplikace Azure.
 
 Token JWT vydaného službě Azure AD je přístupový token pro přístup k prostředku ukazatele.
 

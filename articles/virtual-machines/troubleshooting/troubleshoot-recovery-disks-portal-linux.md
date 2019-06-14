@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 11/14/2016
 ms.author: genli
 ms.openlocfilehash: 65187c3ef6debfa27c8c4fea62bcd31b857b4171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60319795"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálního počítače s Linuxem připojením disku s operačním systémem k obnovení virtuálního počítače pomocí webu Azure portal

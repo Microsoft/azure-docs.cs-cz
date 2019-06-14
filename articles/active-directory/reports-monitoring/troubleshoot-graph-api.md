@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b517204fb650020bdebf8172186f30fff58f722
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285031"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Řešení potíží s chybami v Azure Active Directory API pro vytváření sestav
@@ -36,7 +36,7 @@ Aktuálně nepodporujeme koncového bodu v2 Microsoft Graphu – Ujistěte se, �
 
 Může zobrazit tato chybová zpráva při pokusu o přístup k přihlášení pomocí Graph Exploreru. Ujistěte se, že jste přihlášeni ke svému účtu pomocí tlačítek přihlášení v Uživatelském rozhraní Graph Explorer, jak je znázorněno na následujícím obrázku. 
 
-![Graph Exploreru](./media/troubleshoot-graph-api/graph-explorer.png)
+![Graph Explorer](./media/troubleshoot-graph-api/graph-explorer.png)
 
 ### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>Chyba: Nepovedlo se provést kontrola licence premium z AD Graphu 
 

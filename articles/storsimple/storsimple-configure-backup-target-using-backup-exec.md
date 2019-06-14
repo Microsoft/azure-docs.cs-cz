@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60724321"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako cíl zálohování se službou Backup Exec
@@ -252,7 +252,7 @@ V následujícím příkladu používáme GFS otočení. V příkladu se předpo
 
 Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku pro měsíční a roční úplné zálohování. Vytvoření 5 TiB StorSimple vrstveného svazku pro každý přírůstkové zálohování denně.
 
-| Typ zálohování uchovávání | Velikost (TiB) | Násobitel GFS\* | Celková kapacita (TB)  |
+| Typ zálohování uchovávání | Velikost (TB) | Násobitel GFS\* | Celková kapacita (TB)  |
 |---|---|---|---|
 | Týdenní úplné | 1 | 4  | 4 |
 | Každodenní přírůstkové | 0,5 | 20 (cykly stejný počet týdnů za měsíc) | 12 (2 pro další kvótu) |
@@ -313,8 +313,8 @@ Tady je příklad plánu otočení GFS čtyři týdny, měsíční nebo roční:
 | Typ frekvence/zálohování | Úplná | Přírůstkové (1-5 dní)  |   
 |---|---|---|
 | Každý týden (1 – 4 týdny) | Sobota | Pondělí – pátek |
-| měsíčně  | Sobota  |   |
-| Ročně | Sobota  |   |
+| Měsíční  | Sobota  |   |
+| Roční | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Backup Exec úlohy zálohování přiřadit svazky zařízení StorSimple
@@ -368,7 +368,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>Konfigurace zálohování a požadavky na kapacitu
 
-| Typ zálohování a uchovávání | Úložiště | Velikost (TiB) | Násobitel GFS | Celková kapacita\* (TB) |
+| Typ zálohování a uchovávání | Úložiště | Velikost (TB) | Násobitel GFS | Celková kapacita\* (TB) |
 |---|---|---|---|---|
 | Týden 1 (úplných a přírůstkových) |Místní disk (krátkodobé)| 1 | 1 | 1 |
 | StorSimple týdnů 2 až 4 |StorSimple disku (dlouhodobé) | 1 | 4 | 4 |
@@ -387,8 +387,8 @@ Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSi
 | Týdnu 2 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 3 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 4 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| měsíčně | Každý měsíc StorSimple |   |   |   |   |   |
-| Ročně | Každý rok StorSimple  |   |   |   |   |   |
+| Měsíční | Každý měsíc StorSimple |   |   |   |   |   |
+| Roční | Každý rok StorSimple  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Přiřadit Backup Exec archivní svazky zařízení StorSimple a úlohy odstranění duplicitních dat

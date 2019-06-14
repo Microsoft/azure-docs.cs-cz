@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337361"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolíte diagnostiku Azure ve službě Azure Cloud Services
@@ -140,7 +140,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Přidání souboru XML pro vaše **WorkerRole1** projektu kliknutím pravým tlačítkem na **WorkerRole1** projektu a vyberte **přidat** -> **novou položku...** -> **Položky Visual C#** -> **Data** -> **soubor XML**. Název souboru "WadExample.xml".
+2. Přidání souboru XML pro vaše **WorkerRole1** projektu kliknutím pravým tlačítkem na **WorkerRole1** projektu a vyberte **přidat** -> **novou položku...** -> **Položky Visual C#**  -> **Data** -> **soubor XML**. Název souboru "WadExample.xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. WadConfig.xsd přidružte konfigurační soubor. Ujistěte se, že v okně editoru WadExample.xml aktivní okno. Stisknutím klávesy **F4** otevřít **vlastnosti** okna. Klikněte na tlačítko **schémata** vlastnost **vlastnosti** okna. Klikněte na tlačítko **...** v **schémata** vlastnost. Klikněte na tlačítko **Přidat...** tlačítko a přejděte do umístění, kam jste uložili soubor XSD a vyberte soubor WadConfig.xsd. Klikněte na **OK**.

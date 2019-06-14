@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
 ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556976"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geografické obnovení použijte k obnovení ze zálohy databáze víceklientské aplikace SaaS
@@ -80,7 +80,7 @@ Zotavení po Havárii skripty používané v tomto kurzu jsou k dispozici v [Saa
 ## <a name="review-the-healthy-state-of-the-application"></a>Kontrola stavu v pořádku aplikace
 Před zahájením procesu obnovení, zkontrolujte stav v pořádku normální aplikace.
 
-1. Ve webovém prohlížeči otevřete Centrum událostí Wingtip Tickets (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net, nahraďte &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení).
+1. Ve webovém prohlížeči otevřete Centrum událostí Wingtip Tickets (http://events.wingtip-dpt.&lt ; uživatel&gt;. trafficmanager.net, nahraďte &lt; uživatele&gt; s hodnotou uživatele vašeho nasazení).
     
    Přejděte do dolní části stránky a Všimněte si, že název serveru katalogu a umístění v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.    
 
@@ -200,7 +200,7 @@ Zatímco koncový bod aplikace je v Traffic Manageru zakázán, aplikace je k di
  
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * Pokud otevřete stránku události klienta přímo tenanta je offline, na stránce se zobrazí oznámení offline tenanta. Například pokud Hall koncertní Contoso je v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt; uživatel&gt;.trafficmanager.net/contosoconcerthall.
+  * Pokud otevřete stránku události klienta přímo tenanta je offline, na stránce se zobrazí oznámení offline tenanta. Například pokud Hall koncertní Contoso je v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt ; uživatel&gt;.trafficmanager.net/contosoconcerthall.
 
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -266,7 +266,7 @@ V této úloze můžete aktualizovat některou z obnovené tenantských databáz
 
 3. Spustit skript, stisknutím klávesy F5.
 
-4. Aktualizujte stránku události Hall koncertní Contoso (http://events.wingtip-dpt.&lt; uživatel&gt;.trafficmanager.net/contosoconcerthall) a Všimněte si, že události vážně Strauss chybí.
+4. Aktualizujte stránku události Hall koncertní Contoso (http://events.wingtip-dpt.&lt ; uživatel&gt;.trafficmanager.net/contosoconcerthall) a Všimněte si, že události vážně Strauss chybí.
 
 V tuto chvíli v tomto kurzu jste obnovili aplikace, která je nyní spuštěna v oblasti obnovení. Zřízení nového tenanta v oblasti obnovení a upravená data jednoho z obnovené tenantů.  
 
@@ -330,7 +330,7 @@ Pokud jste postupovali podle tohoto kurzu, skript okamžitě znovu aktivuje Fabr
 
     Ke spuštění skriptu pro obnovení v novém okně prostředí PowerShell, stisknutím klávesy F5. Navracení trvá několik minut a můžete ji sledovat v okně Powershellu.
 
-3. Když je spuštěný skript, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net).
+3. Když je spuštěný skript, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt ; uživatel&gt;. trafficmanager.net).
 
     Všimněte si, že jsou všechny tenanty online a dostupné během tohoto procesu.
 

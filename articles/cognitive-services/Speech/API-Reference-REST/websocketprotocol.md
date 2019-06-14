@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515323"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokol WebSocket pro zpracování řeči Bingu
@@ -80,7 +80,7 @@ Následující informace záhlaví jsou nezbytné k tokenu přístupu.
 
 | Name | Formát | Popis |
 |----|----|----|
-| OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného |
+| OCP-Apim-Subscription-Key | ASCII | Klíč předplatného. |
 
 Vrátí token služby přístupový token JWT jako `text/plain`. Pak tokenů JWT je předán jako `Base64 access_token` k ověření typu handshake jako *autorizace* záhlaví s předponou řetězec `Bearer`. Příklad:
 
@@ -98,7 +98,7 @@ Klienti *musí* podporují standardní přesměrování mechanismy určené [spe
 
 Klienti *musí* použít příslušný koncový bod služby řeči. Koncový bod se odvíjí režim rozpoznávání a jazyk. V tabulce jsou uvedeny některé příklady.
 
-| Mode | Cesta | Identifikátor URI služby |
+| Režim | `Path` | Identifikátor URI služby |
 | -----|-----|-----|
 | Interaktivní | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | Konverzace | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
@@ -150,9 +150,9 @@ Hlavní zprávy odeslané klientem služby jsou `speech.config`, `audio`, a `tel
 
 Následující hlavičky jsou požadovány pro všechny zprávy klienta pochází.
 
-| Hlavička | Value |
+| Záhlaví | Hodnota |
 |----|----|
-| Cesta | Cesta zprávy, jak je uvedeno v tomto dokumentu |
+| `Path` | Cesta zprávy, jak je uvedeno v tomto dokumentu |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
 
@@ -179,11 +179,11 @@ Klienti *musí* odeslat `speech.config` zpráv okamžitě po navázání připoj
 
 #### <a name="required-message-headers"></a>Požadovaná zpráva hlavičky
 
-| Název hlavičky | Value |
+| Název hlavičky | Hodnota |
 |----|----|
-| Cesta | `speech.config` |
+| `Path` | `speech.config` |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
-| Typ obsahu | Application/json; charset = utf-8 |
+| Content-Type | Application/json; charset = utf-8 |
 
 Stejně jako všechny zprávy v protokolu Speech Service klientského vznikla `speech.config` zpráva *musí* patří *X časové razítko* hlavičku, která zaznamenává klient UTC Čas odeslání zprávy ke službě. `speech.config` Zpráva *nemá* vyžadují *X-RequestId* záhlaví vzhledem k tomu, že tato zpráva není přidružený k žádosti o konkrétní řeči.
 
@@ -250,12 +250,12 @@ Speech Service používá první `audio` zprávu, která obsahuje identifikátor
 
 Následující hlavičky jsou potřebné pro všechny `audio` zprávy.
 
-| Hlavička         |  Value     |
+| Záhlaví         |  Hodnota     |
 | ------------- | ---------------- |
-| Cesta | `audio` |
+| `Path` | `audio` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
-| Typ obsahu | Typ zvukové obsahu. Typ musí být buď *audio/x-wav* (PCM) nebo *audio/silk* (SILK). |
+| Content-Type | Typ zvukové obsahu. Typ musí být buď *audio/x-wav* (PCM) nebo *audio/silk* (SILK). |
 
 #### <a name="supported-audio-encodings"></a>Podporovaná kódování zvuku
 
@@ -308,9 +308,9 @@ Klienty, musíte potvrdit konec zapněte odesláním `telemetry` krátce po při
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `telemetry` |
+| `Path` | `telemetry` |
 | X-časové razítko | Časové razítko hodiny klienta UTC ve formátu ISO 8601 |
-| Typ obsahu | `application/json` |
+| Content-Type | `application/json` |
 | Tělo | Struktura JSON obsahující klientské informace o zapnutí |
 
 Schéma pro text `telemetry` zpráv je definována v [Telemetrie schématu](#telemetry-schema) části.
@@ -330,8 +330,8 @@ Tato část popisuje zprávy, které pocházejí z Speech Service a posílají s
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `speech.startDetected` |
-| Typ obsahu | Application/json; charset = utf-8 |
+| `Path` | `speech.startDetected` |
+| Content-Type | Application/json; charset = utf-8 |
 | Tělo | Struktura JSON, který obsahuje informace o podmínkách, při spuštění řeči byla zjištěna. *Posun* pole v této struktuře určuje posun (v jednotkách 100 nanosekund) při rozpoznávání řeči zjistil v zvukový datový proud, vzhledem k začátku datového proudu. |
 
 #### <a name="sample-message"></a>Ukázková zpráva
@@ -355,9 +355,9 @@ Při rozpoznávání řeči Speech Service pravidelně generuje hypotézy o slov
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `speech.hypothesis` |
+| `Path` | `speech.hypothesis` |
 | X-RequestId | Identifikátor UUID ve formátu "no-dash" |
-| Typ obsahu | application/json |
+| Content-Type | application/json |
 | Tělo | Předpoklad řeči strukturu JSON |
 
 #### <a name="sample-message"></a>Ukázková zpráva
@@ -387,8 +387,8 @@ Když Speech Service určuje, že obsahuje dostatek informací k vygenerování 
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `speech.phrase` |
-| Typ obsahu | application/json |
+| `Path` | `speech.phrase` |
+| Content-Type | application/json |
 | Tělo | Fráze řeči strukturu JSON |
 
 Schéma JSON frázi řeči obsahuje následující pole: `RecognitionStatus`, `DisplayText`, `Offset`, a `Duration`. Další informace o těchto polích naleznete v tématu [určené k transkripci odpovědi](../concepts.md#transcription-responses).
@@ -415,9 +415,9 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `speech.endDetected` |
+| `Path` | `speech.endDetected` |
 | Tělo | Struktura JSON obsahující posun, když byl zjištěn konec řeči. Posun je reprezentován v jednotkách 100 nanosekund posun od začátku zvuk, který se používá k rozpoznávání. |
-| Typ obsahu | Application/json; charset = utf-8 |
+| Content-Type | Application/json; charset = utf-8 |
 
 #### <a name="sample-message"></a>Ukázková zpráva
 
@@ -440,8 +440,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `turn.start` |
-| Typ obsahu | Application/json; charset = utf-8 |
+| `Path` | `turn.start` |
+| Content-Type | Application/json; charset = utf-8 |
 | Tělo | Struktura JSON |
 
 #### <a name="sample-message"></a>Ukázková zpráva
@@ -467,7 +467,7 @@ Text `turn.start` zprávy je struktura JSON obsahující kontext pro začátek z
 | Pole | Popis |
 | ------------- | ---------------- |
 | Kódování zpráv protokolu WebSocket | Text |
-| Cesta | `turn.end` |
+| `Path` | `turn.end` |
 | Tělo | Žádný |
 
 #### <a name="sample-message"></a>Ukázková zpráva
@@ -511,7 +511,7 @@ Klienti musí obsahovat informace o událostech, ke kterým došlo během život
 | Name | `Connection` | Požaduje se |
 | ID | Hodnota identifikátoru připojení, která byla použita v *X ConnectionId* záhlaví pro tento požadavek na připojení | Požaduje se |
 | Start | Čas, kdy klient odešle požadavek na připojení | Požaduje se |
-| Konec | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
+| End | Čas při přijetí oznámení, že bylo připojení úspěšně vytvořeno klienta nebo v chybových případech, odmítnuto, odmítnuto nebo se nezdařilo | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud připojení úspěšné, klienti měli vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
 
 Popis chyby musí být maximálně 50 znaků a v ideálním případě by měla být jedna z hodnot uvedených v následující tabulce. Pokud chybového stavu neodpovídá jednu z těchto hodnot, klientů můžete použít výstižný popis chybovou podmínku s použitím [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez mezer. Umožňuje odeslat *telemetrie* zprávy vyžaduje připojení ke službě, takže pouze přechodný nebo dočasné chybové stavy můžete oznámený v *telemetrie* zprávy. Chybové stavy, *trvale* blok klienta v navázání připojení ke službě ochranu klienta v odesílání jakékoli zprávy do služby, včetně *telemetrie* zprávy.
@@ -524,7 +524,7 @@ Popis chyby musí být maximálně 50 znaků a v ideálním případě by měla 
 | NoResources | Klient nemá dostatek některých místních prostředků (například paměť) při pokusu o připojení. |
 | Zakázáno | Klient nemohl připojit ke službě, protože služba vrátila HTTP `403 Forbidden` stavový kód na požadavek na upgrade objektu WebSocket. |
 | Neautorizováno | Klient nemohl připojit ke službě, protože služba vrátila HTTP `401 Unauthorized` stavový kód na požadavek na upgrade objektu WebSocket. |
-| BadRequest | Klient nemohl připojit ke službě, protože služba vrátila HTTP `400 Bad Request` stavový kód na požadavek na upgrade objektu WebSocket. |
+| Chybného požadavku | Klient nemohl připojit ke službě, protože služba vrátila HTTP `400 Bad Request` stavový kód na požadavek na upgrade objektu WebSocket. |
 | ServerUnavailable | Klient nemohl připojit ke službě, protože služba vrátila HTTP `503 Server Unavailable` stavový kód na požadavek na upgrade objektu WebSocket. |
 | ServerError | Klient nemohl připojit ke službě, protože služba vrátila `HTTP 500` vnitřní chyba stavový kód na požadavek na upgrade objektu WebSocket. |
 | Vypršení časového limitu | Požadavek na připojení klienta vypršel časový limit bez odpověď ze služby. *End* pole obsahuje čas vypršení časového limitu klienta a zastavení čeká na připojení. |
@@ -550,7 +550,7 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* časo
 | ----- | ----------- | ----- |
 | Name | Mikrofon | Požaduje se |
 | Start | Čas, kdy klient začít používat zvukového vstupu z mikrofon nebo jiných zvukový datový proud nebo aktivační událost poslal spotter – klíčové slovo | Požaduje se |
-| Konec | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
+| End | Čas, kdy klienta zastavena pomocí datového proudu mikrofon nebo ve zvukovém souboru | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Operace mikrofon byly úspěšné, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
 
 ### <a name="metric-listeningtrigger"></a>Metrika `ListeningTrigger`
@@ -570,7 +570,7 @@ Použít následující příklady pouze jako vodítka pro záznam *Start* a *En
 | ----- | ----------- | ----- |
 | Name | ListeningTrigger | Nepovinné |
 | Start | Čas zahájení aktivační událost pro naslouchání klienta | Požaduje se |
-| Konec | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
+| End | Čas dokončení aktivační událost pro naslouchání klienta | Požaduje se |
 | Chyba | Popis chyby, ke které došlo k chybě, pokud existuje. Pokud operace aktivační události byl úspěšný, klienti by měl vynechat, nechte toto pole. Maximální délka tohoto pole je 50 znaků. | Vyžaduje se pro případy chyb, jinak tento parametr vynechán |
 
 #### <a name="sample-message"></a>Ukázková zpráva

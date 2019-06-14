@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60384697"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect sync služby stínové atributy
@@ -38,7 +38,7 @@ Mají více přípon UPN ve svojí místní službě Active Directory, ale jeden
 ### <a name="userprincipalname"></a>userPrincipalName (Hlavní název uživatele)
 Uživatel má následující hodnoty atributu v neověřenou doménu:
 
-| Atribut | Value |
+| Atribut | Hodnota |
 | --- | --- |
 | místní atribut userPrincipalName | lee.sperry@fabrikam.com |
 | Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
@@ -53,7 +53,7 @@ Stejný postup pro pouze včetně ověřených domén také vyvolá proxyAddress
 
 Uživatel poštovní schránky, ať už místní nebo v Exchangi Online se zobrazí pouze hodnoty ověřených domén. Může vypadat například takto:
 
-| Atribut | Value |
+| Atribut | Hodnota |
 | --- | --- |
 | místní proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |

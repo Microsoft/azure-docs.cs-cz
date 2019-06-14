@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
 ms.openlocfilehash: 4ebd96613378bbd907beb5109343a2427b1300b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60427219"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytváření map, které transformují XML mezi formáty v Azure Logic Apps sadou Enterprise Integration Pack
@@ -135,7 +135,7 @@ Ve výchozím nastavení spustí odpověď od transformace značky pořadí bajt
 
 
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 * [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
 * [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md "přečtěte si víc o podnikové integrace map")  
 

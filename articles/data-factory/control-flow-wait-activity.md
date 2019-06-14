@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/12/2018
 ms.author: shlo
 ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764747"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Aktivita wait spuštění ve službě Azure Data Factory
@@ -39,7 +39,7 @@ Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provád
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název `Wait` aktivity. | String | Ano
+name | Název `Wait` aktivity. | String | Ano
 type | Musí být nastaveno na **počkejte**. | String | Ano
 waitTimeInSeconds | Počet sekund, po které kanálu počká, než budete pokračovat se zpracováním. | Integer | Ano
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 9e7441ab9503919fbf1d0890ce69f04259f38986
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065773"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -24,6 +24,51 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 + Azure Machine Learning [ **sady SDK pro přípravu dat**](https://aka.ms/data-prep-sdk)
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
+
+## <a name="2019-06-10"></a>2019-06-10
+
+### <a name="azure-machine-learning-sdk-for-python-v1043"></a>Azure Machine Learning sady SDK pro Python v1.0.43
+
++ **Nové funkce**
+  + Služba Azure Machine Learning teď poskytuje prvotřídní podporu pro oblíbené machine learning a datové analýzy framework Scikit poučení. Pomocí [ `SKLearn` estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py), uživatelé mohou snadno trénovat a nasazovat modely Scikit informace.
+    + Zjistěte, jak [spustit hyperparametrů s Scikit informace pomocí HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb).
+  + Přidání podpory pro vytváření ModuleStep v kanálech spolu s tříd modulu a verze modulu pro správu opakovaně použitelné výpočetních jednotek.
+  + Webové služby ACI teď podporují trvalé scoring_uri prostřednictvím aktualizací. Scoring_uri se změní z IP adresy na plně kvalifikovaný název domény. Popisek názvu Dns pro plně kvalifikovaný název domény je možné nakonfigurovat tak, že nastavíte dns_name_label na deploy_configuration. 
+  + Automatizované strojového učení nových funkcí:
+    + Featurizer STL pro předpověď
+    + KMeans clustering je povolena pro funkci sweeping
+  + Kvóta AmlCompute schválení právě začala být rychlejší! Nyní jsme automatizované proces schvalování žádostí kvóta v rámci prahovou hodnotu. Další informace o fungování kvóty, přečtěte si [Správa kvót](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
+ 
+
++ **Funkce ve verzi Preview**
+    + Integrace s [MLflow](https://mlflow.org) 1.0.0 sledování prostřednictvím azureml mlflow balíčku ([poznámkových bloků příklad](https://aka.ms/azureml-mlflow-examples)).
+    + Odešlete jako spustit Poznámkový blok Jupyter. [Dokumentace k API – referenční informace](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
+    + Verze Public Preview [Data odchylek detektor](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) prostřednictvím azureml. contrib datadrift balíčku ([poznámkových bloků příklad](https://aka.ms/azureml-datadrift-example)). Posun dat jeden z hlavních důvodů je, kde přesnost modelu zhoršení v čase. To se stane, když obsluhovat data pro modelování v produkčním prostředí se liší od data, která model se trénuje na. Detektor odchylek AML dat pomáhá zákazníkům sledovat data odchylek a odešle oznámení pokaždé, když se zjistí odchylek. 
+
++ **Rozbíjející změny v**
+
++ **Opravy chyb a vylepšení**
+  + RunConfiguration načtení a uložení podporuje zadávání úplnou cestu k souboru s úplnou back kompatibility pro předchozí chování.
+  + Přidání ukládání do mezipaměti v ServicePrincipalAuthentication ve výchozím nastavení vypnuta.
+  + Povolení protokolování více vykreslení pod stejným názvem metriky.
+  + Třída nyní správně importovatelnou ze azureml.core modelu (`from azureml.core import Model`).
+  + V krocích kanálu `hash_path` parametr je nyní zastaralá. Nové chování je k vytvoření hodnoty hash kompletní zdrojovým_adresářem, s výjimkou souborů uvedených v .amlignore nebo .gitignore.
+  + V kanálu balíčků různých `get_all` a `get_all_*` metody se již nepoužívají nahrazený `list` a `list_*`v uvedeném pořadí.
+  + azureml.Core.get_run už nevyžaduje třídy k importu návrat zpět původní typ spuštění.
+  + Opravili jsme problém, kde některé volání webové služby aktualizace aktivovat aktualizaci.
+  + Časový limit vyhodnocení na webové služby AKS musí mít délku doby 5 MS a 300000ms. Maximální povolená scoring_timeout_ms pro vyhodnocování požadavků má byla přešla z 1 min na 5 minut.
+  + Teď máte LocalWebservice objekty `scoring_uri` a `swagger_uri` vlastnosti.
+  + Přesunout vytváření adresáře výstupy a nahrání adresáře výstupy z procesu uživatele. Povolená historie spuštění sady SDK ke spuštění v každý proces uživatele. To by měla vyřešit některé problémy synchronizace díky distribuované trénování běží.
+  + Název protokolu azureml vypíše název procesu uživatele teď bude zahrnovat název procesu (pro distribuované trénování pouze) a identifikátor PID.
+
+### <a name="azure-machine-learning-data-prep-sdk-v115"></a>Sada SDK v1.1.5 pro přípravu dat Azure Machine Learning
+
++ **Opravy chyb a vylepšení**
+  + Pro interpretované data a času hodnoty, které mají formát 2 dvoumístného čísla roku rozsahu platný let se aktualizovala tak, aby odpovídala verzi může Windows. Rozsah se změnil z 1930 2029 na 1950 2049.
+  + Při čtení souboru a nastavení `handleQuotedLineBreaks=True`, `\r` , bude zacházeno jako nový řádek.
+  + Je opravená chyba, která způsobila `read_pandas_dataframe` selhání v některých případech.
+  + Výkon je vyšší `get_profile`.
+  + Vylepšené chybové zprávy.
 
 ## <a name="2019-05-28"></a>2019-05-28
 
@@ -513,7 +558,7 @@ Na webu Azure portal pro službu Azure Machine Learning má následující aktua
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning sady SDK pro Python v0.1.74
 
 + **Rozbíjející změny v** 
-  * * Workspace.compute_targets, úložišť, experimenty, obrázky, modely a *webservices* jsou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
+  * \* Workspace.compute_targets, úložišť, experimenty, obrázky, modely a *webservices* jsou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
   * *Run.get_context* zastarání *Run.get_submitted_run*. Druhá metoda odebere v dalších verzích.
   * *PipelineData* třídy nyní očekává, že objekt úložiště dat jako parametr spíše než datastore_name. Obdobně *kanálu* přijímá default_datastore spíše než default_datastore_name.
 

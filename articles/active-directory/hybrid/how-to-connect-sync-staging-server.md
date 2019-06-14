@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381556"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Pracovní server a zotavení po havárii
@@ -65,9 +65,9 @@ Pokud vlastní změny provedené na primární server a chcete porovnat konfigur
 
 #### <a name="import-and-synchronize"></a>Importovat a synchronizovat
 1. Vyberte **konektory**a vyberte první konektor s typem **Active Directory Domain Services**. Klikněte na tlačítko **spustit**vyberte **úplný import**, a **OK**. Tyto kroky proveďte pro všechny konektory tohoto typu.
-2. Vyberte konektor s typem **Azure Active Directory (Microsoft)**. Klikněte na tlačítko **spustit**vyberte **úplný import**, a **OK**.
+2. Vyberte konektor s typem **Azure Active Directory (Microsoft)** . Klikněte na tlačítko **spustit**vyberte **úplný import**, a **OK**.
 3. Ujistěte se, že je stále vybraná karta konektory. Pro každý konektor s typem **Active Directory Domain Services**, klikněte na tlačítko **spustit**vyberte **rozdílová synchronizace**, a **OK**.
-4. Vyberte konektor s typem **Azure Active Directory (Microsoft)**. Klikněte na tlačítko **spustit**vyberte **rozdílová synchronizace**, a **OK**.
+4. Vyberte konektor s typem **Azure Active Directory (Microsoft)** . Klikněte na tlačítko **spustit**vyberte **rozdílová synchronizace**, a **OK**.
 
 Nyní máte připravené změny do služby Azure AD a místní AD (Pokud používáte hybridní nasazení systému Exchange) export. Následující kroky umožňují zkontrolovat, co se chystá změna před zahájením skutečně export do adresáře.
 

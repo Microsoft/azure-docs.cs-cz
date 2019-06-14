@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60373652"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu ve službě Application Insights
@@ -86,15 +86,15 @@ Případně odkaz na související oficiální dokumentaci.
 | [Vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Můžete změnit všechno včetně přístupu uživatelů. |
 | [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Můžete upravit všechno včetně všech prostředků. |
 | [Přispěvatel aplikace součást Insights](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Můžete upravit prostředky Application Insights, webové testy a upozornění. |
-| [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Můžete zobrazit, ale nic nezměníte. |
+| [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Můžete zobrazit, ale nic nezměníte. |
 | [Application Insights Snapshot debuggeru.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Uděluje oprávnění uživatele používat funkce Application Insights Snapshot debuggeru. Všimněte si, že tato role je součástí rolí Přispěvatel ani vlastník. |
 | Přispěvatel správy vydaných verzí nasazení služby Azure | Role přispěvatele pro služby nasazení prostřednictvím nasazení služby Azure. |
 | [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Zvláštní roli pro vymazání osobních údajů. Najdete v našich [pokyny ohledně osobních údajů](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) Další informace.   |
 | Správce ExpressRoute | Můžete odstranit vytvářet a spravovat tras express.|
 | [Přispěvatel log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Přispěvatel log Analytics může číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování, zahrnuje přidání rozšíření virtuálního počítače na virtuální počítače; čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure Storage; Vytvoření a konfigurace účtů služby Automation; přidávání řešení a konfigurace diagnostik Azure na všech prostředcích Azure.  |
-| [Čtenář log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Čtenář Log Analytics si může zobrazit a vyhledat všechna data monitorování a jeho nastavení. Může si zobrazit konfiguraci diagnostiky Azure na všech prostředcích Azure. |
+| [Čtenář log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Čtenář log Analytics můžete zobrazit a vyhledat všechna data monitorování a zobrazení nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
 | masterreader | Umožňuje uživateli zobrazit všechno, ale ne provádět změny. |
-| [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Může číst všechna data monitorování a aktualizovat jeho nastavení. |
+| [Přispěvatel monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Může číst všechna data monitorování a aktualizovat nastavení monitorování. |
 | [Monitorování metrik vydavatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Povolí publikování metrik pro prostředky Azure. |
 | [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Může číst všechna data monitorování. |
 | Přispěvatel zásad prostředků (Preview) | Obnovení uživatelé z EA s oprávněními vytvářet a upravovat zásady prostředků, vytvářet lístky podpory a číst prostředek a hierarchii.  |
@@ -108,7 +108,7 @@ Případně odkaz na související oficiální dokumentaci.
 * Výstrahy
 * Průběžný export
 
-#### <a name="select-the-user"></a>Vybrat uživatele
+#### <a name="select-the-user"></a>Vyberte uživatele
 
 Pokud uživatel, kterého chcete, aby se v adresáři, můžete pozvat kdokoli s účtem Microsoft.
 (Pokud používají služby, jako je Outlook.com, OneDrive, Windows Phone nebo XBox Live, nemají účet Microsoft.)

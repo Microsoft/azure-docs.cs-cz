@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: 387877efea4df30685fcf443a4d114c4feb66401
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60525666"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Nastavte si upozornění na metriky pro službu Azure Database for MySQL pomocí webu Azure portal 
@@ -46,13 +46,13 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
    
-   ![Vybrat metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   ![Vyberte metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
 7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
    
    Vyberte **provádí** po dokončení.
 
-   ![Vybrat metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   ![Vyberte metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
 8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
 

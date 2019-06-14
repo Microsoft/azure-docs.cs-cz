@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369921"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Vysvětlení podmínek na faktuře Microsoft Azure
@@ -44,7 +44,7 @@ V následujících částech jsou důležité termíny, které se zobrazují na 
 
 ![Informace o účtu část faktury](./media/billing-understand-your-invoice/1.png)
 
-| Označení | Popis |
+| Termín | Popis |
 | --- | --- |
 | Číslo objednávky zákazníka. |Číslo volitelné nákupní objednávky, přiřadil ke sledování |
 | Faktura č. |Jedinečné, číslo faktury vygenerované Microsoft používá pro účely sledování |
@@ -65,7 +65,7 @@ Název předplatného ("produkční úložiště") je název předplatného pro 
 #### <a name="understand-the-previous-charges"></a>Vysvětlení předchozí poplatků za
 Předchozí zůstatek, platbami a nevyrovnaným zůstatkem části faktury shrnuje transakce od vaší poslední fakturačního období.
 
-| Označení | Popis |
+| Termín | Popis |
 | --- | --- |
 | Předchozí zůstatek |Celková dlužná částka z poslední fakturačního období |
 | Platby |Celkové platby a kredity u vaší poslední fakturačního období |
@@ -74,7 +74,7 @@ Předchozí zůstatek, platbami a nevyrovnaným zůstatkem části faktury shrnu
 #### <a name="understand-the-current-charges"></a>Vysvětlení aktuálních poplatků
 Aktuální poplatky části faktury zobrazuje podrobnosti o měsíčních poplatcích pro aktuální fakturační období.
 
-| Označení | Popis |
+| Termín | Popis |
 | --- | --- |
 | Poplatky za používání |Poplatky za využívání jsou celkové měsíční poplatky za odběr pro aktuální fakturační období|
 | Slevy |U aktuálního fakturačního období slevy|
@@ -84,7 +84,7 @@ Aktuální poplatky části faktury zobrazuje podrobnosti o měsíčních poplat
 
 Následující tabulka popisuje prodávané na a pokyny pro platbu na druhé stránce faktuře.
 
-| Označení |Popis |
+| Termín |Popis |
 | --- | --- |
 | Kupující |Adresa profilu, který je v účtu. <br/><br/>Pokud potřebujete změnit adresu, přečtěte si [jak ke změně informací profilu účtu Azure, jako je například kontaktní e-mailovou adresu a telefonní číslo](billing-how-to-change-azure-account-profile.md).|
 | Pokyny pro platbu |Návod, jak platit v závislosti na způsobu platby (například jako autor kredit ve výši karty nebo na fakturu). |
@@ -97,17 +97,17 @@ V části poplatky za využívání, faktury zobrazí úrovni informace měřen�
 
 Následující tabulka popisuje záhlaví sloupců poplatky za využití uvedené na vaší faktuře.
 
-| Označení |Popis |
+| Termín |Popis |
 | --- | --- |
 | Name |Identifikuje službu nejvyšší úrovně za využití |
 | Type |Definuje typ služeb Azure, který může mít vliv na sazbu |
-| Prostředek |Určuje měrnou jednotku pro měření spotřebovávanou |
+| Resource |Určuje měrnou jednotku pro měření spotřebovávanou |
 | Oblast |Určuje polohu datacentra pro určité služby, které se počítají na základě umístění datového centra |
 | Spotřebované |Množství měřiče použít během fakturačního období |
 | Zahrnuje |Množství měřiče, které je zdarma v aktuálním fakturačním období |
 | Fakturovatelné |Ukazuje rozdíl mezi spotřebované množství a zahrnuté množství. Tuto částku vám budeme fakturovat. U nabídek s průběžnými platbami se nabídka nezahrnuje žádné množství je tento součet stejný jako spotřebované množství |
 | Sazba |Sazba se účtuje za fakturovatelnou jednotku |
-| Value |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
+| Hodnota |Zobrazuje výsledek součinu sloupce Nadlimitní množství sloupcem sazba. Pokud spotřebované množství nepřekročí zahrnuté množství, neplatí žádné poplatky v tomto sloupci. |
 | Dílčí součet |Součet všech vaše náklady před zdaněním za tento fakturační období |
 | Celkový součet |Součet všech poplatků po zdanění za tento fakturační období |
 

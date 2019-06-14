@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311687"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro ukládání vlastních artefaktů a šablony Resource Manageru
@@ -54,7 +54,7 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Klonování úložiště Azure získat adresu URL a osobní přístupový token
 
-1. Přejděte na domovskou stránku týmu kolekce (například https://contoso-web-team.visualstudio.com)a pak vyberte svůj projekt.
+1. Přejděte na domovskou stránku týmu kolekce (například https://contoso-web-team.visualstudio.com) a pak vyberte svůj projekt.
 2. Na domovské stránce projektu, vyberte **kód**.
 3. Chcete-li zobrazit adresu URL klonu na projekt **kód** stránce **klonování**.
 4. Adresu URL si uložte. Adresa URL použijete později.
@@ -74,7 +74,7 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **další služby**a pak vyberte **DevTest Labs** ze seznamu služeb.
 3. V seznamu testovacích prostředí vyberte vaše testovací prostředí. 
-4. Vyberte **konfigurace a zásad** > **úložišť** > **+ přidat**.
+4. Vyberte **konfigurace a zásad** > **úložišť** >  **+ přidat**.
 
     ![Tlačítko Přidat úložiště](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. V druhém **úložišť** stránky, zadejte následující informace:

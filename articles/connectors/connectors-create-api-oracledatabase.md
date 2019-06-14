@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60453544"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem databáze Oracle
@@ -105,13 +105,13 @@ Tento článek ukazuje, jak použít konektor Oracle Database v aplikaci logiky.
 
 **Příčina:** Sada SDK klienta Oracle není nainstalovaná na počítači, kde je spuštěná na místní bránu dat.  
 
-**Řešení:** Stáhněte a nainstalujte na stejném počítači jako místní brána dat sada SDK klienta Oracle.
+**Rozlišení**: Stáhněte a nainstalujte na stejném počítači jako místní brána dat sada SDK klienta Oracle.
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Chyba:** Tabulka '[Tablename]' nedefinuje žádné klíčové sloupce
 
 **Příčina:** Tabulka nemá primární klíč.  
 
-**Řešení:** Konektor Oracle Database vyžaduje použít tabulku se sloupcem primárního klíče.
+**Rozlišení**: Konektor Oracle Database vyžaduje použít tabulku se sloupcem primárního klíče.
 
 #### <a name="currently-not-supported"></a>Aktuálně nejsou podporovány
 

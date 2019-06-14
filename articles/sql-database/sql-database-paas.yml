@@ -44,7 +44,7 @@ sections:
           - title: Škálování prostředků
             href: /azure/sql-database/sql-database-scale-resources
             html: '<p>Azure SQL Database umožňuje snadno přidat další prostředky (procesor, paměť nebo úložiště) bez dlouhé zřizování.</p>'
-  - title: Další zdroje informací
+  - title: Další materiály
     items:
       - type: paragraph
         text: 'Azure SQL Database poskytuje sadu další integrované funkce PaaS, že vám pomůže snadněji spravovat databáze.'

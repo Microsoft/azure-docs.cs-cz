@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/22/2019
 ms.openlocfilehash: 2a10876bc3c9558de29caf9fee2ae0b06ee87f28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405337"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Určit velikost podsítě virtuální sítě pro Azure SQL Database Managed Instance

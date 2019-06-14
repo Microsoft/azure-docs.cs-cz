@@ -11,10 +11,10 @@ ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646641"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení pomocí rozhraní REST API služby Azure Virtual machines
@@ -37,7 +37,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Odezvy
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
