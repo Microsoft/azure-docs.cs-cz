@@ -75,7 +75,7 @@ Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| vydavatele | Microsoft.Azure.Security | string |
+| publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1, 1.1 (VMSS) | int |
 | AADClientID | tomuto: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | identifikátor GUID | 
@@ -86,7 +86,7 @@ Azure Disk Encryption pro Linux vyžaduje připojení k Internetu pro přístup 
 | KeyEncryptionAlgorithm | "RSA OAEP", "RSA 256 OAEP", "RSA1_5. | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| Přístupové heslo | password | string | 
+| Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | Operačního systému, dat, všechny | string |
 
