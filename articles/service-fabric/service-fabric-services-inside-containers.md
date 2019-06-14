@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: caed77234646654d151b64d2c80b7231342f6d8c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050478"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Kontejnerizace Service Fabric Reliable Services a Reliable Actors ve Windows
 
@@ -119,6 +119,16 @@ Tento dokument obsahuje pokyny k získání vaší služby běžící uvnitř ko
    </ContainerHostPolicies>
    </Policies>
    ```
+
+> [!NOTE] 
+> Ve výchozím nastavení aplikace Service Fabric mají přístup k modulu runtime Service Fabric, ve formě koncový bod přijímá požadavky specifické pro aplikaci. Zvažte zakázání tento přístup, když aplikace hostuje nedůvěryhodného kódu. Další informace najdete v tématu [osvědčené postupy zabezpečení ve službě Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Pokud chcete zakázat přístup k modulu runtime Service Fabric, přidejte následující nastavení v části zásady manifest aplikace odpovídající importovaný manifest služby, následujícím způsobem:
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
 
 10. K otestování této aplikace, musíte ji nasadit do clusteru, který používá verzi 5.7 nebo novější. Pro modul runtime verze 6.1 nebo nižší budete muset upravit a aktualizovat nastavení clusteru povolit tuto funkci ve verzi preview. Postupujte podle kroků v tomto [článku](service-fabric-cluster-fabric-settings.md) přidat nastavení je ukázáno dále.
     ```

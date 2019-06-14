@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516859"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
@@ -65,7 +65,7 @@ Pak je zřetězí dva soubory společně se příkaz:
 
 Objekt dataset obsahuje několik typů statistik v každém e-mailu:
 
-* U sloupců obsahujících ***slovo\_frekvence\_slovo*** označuje procento slova v e-mailu, které odpovídají *slovo*. Například pokud *slovo\_frekvence\_zkontrolujte* je 1, pak bylo 1 % všech slov v e-mailu *Ujistěte se,*.
+* U sloupců obsahujících ***slovo\_frekvence\_slovo*** označuje procento slova v e-mailu, které odpovídají *slovo*. Například pokud *slovo\_frekvence\_zkontrolujte* je 1, pak bylo 1 % všech slov v e-mailu *Ujistěte se,* .
 * U sloupců obsahujících ***char\_frekvence\_CHAR*** označuje procento všechny znaky v e-mailu, které byly *CHAR*.
 * ***velké\_spustit\_délka\_nejdelší*** představuje nejdelší doba posloupnost velká písmena.
 * ***velké\_spustit\_délka\_průměrné*** je průměrná délka všech pořadí velká písmena.

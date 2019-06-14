@@ -64,7 +64,7 @@ sections:
         className: cardsD
         items:
           - title: Náhledy
-            html: '<p><a href="stream-analytics-previews#public-previews">Public Preview</a></p><p><a href="stream-analytics-previews#private-previews">Private Preview</a></p>'
+            html: '<p><a href="stream-analytics-previews#public-previews">Public Preview</a></p><p><a href="stream-analytics-previews#other-previews">Private Preview</a></p>'
           - title: Příkazový řádek
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
           - title: Jazyky

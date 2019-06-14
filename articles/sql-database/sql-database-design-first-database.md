@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: a13d1f843604025ee0f843c0770b3d11b53dd837
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fc3b1cdfee76bbee7676170fa69a1c53a495dc53
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051138"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Kurz: Návrh relační databáze v jedné databázi v rámci Azure SQL Database pomocí SSMS
 
@@ -29,7 +29,7 @@ Azure SQL database je relační databáze as-a-service (DBaaS) v Microsoft cloud
 > - Hromadně načítat data pomocí BCP
 > - Dotazování dat pomocí aplikace SSMS
 
-* Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
+\* Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) předtím, než začnete.
 
 > [!NOTE]
 > Pro účely tohoto kurzu používáme izolované databáze. Můžete také použít ve fondu databáze v elastickém fondu nebo instanci databáze do spravované instance. Připojení k managed instance najdete v těchto rychlých startů pro spravovanou instanci: [Rychlé zprovoznění: Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance](sql-database-managed-instance-configure-vm.md) a [rychlý start: Konfigurace připojení typu point-to-site k Azure SQL Database Managed Instance z místní](sql-database-managed-instance-configure-p2s.md).
@@ -117,7 +117,7 @@ Vaši IP adresu můžete nyní procházet brány firewall protokolu IP. Teď mů
 > [!IMPORTANT]
 > Ve výchozím nastavení je přístup přes bránu firewall služby SQL Database IP povolené pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
 
-## <a name="connect-to-the-database"></a>Připojení k databázi
+## <a name="connect-to-the-database"></a>Připojte se k databázi.
 
 Použití [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) k navázání připojení k izolované databáze.
 
@@ -151,7 +151,7 @@ Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém spr�
 - Person (Osoba)
 - Course (Kurz)
 - Student
-- Credit
+- Kredit
 
 Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisejí. Některé z těchto tabulek odkazují na sloupce v jiných tabulkách. Například *Student* tabulky odkazů *PersonId* sloupec *osoba* tabulky. Prohlédněte si diagram, abyste pochopili, jak spolu tabulky v tomto kurzu souvisejí. Podrobný rozbor toho, jak vytvářet efektivní databázové tabulky, najdete v tématu [Vytváření efektivních databázových tabulek](https://msdn.microsoft.com/library/cc505842.aspx). Informace o výběru datových typů najdete v tématu [Datové typy](/sql/t-sql/data-types/data-types-transact-sql).
 
@@ -227,10 +227,10 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 4. Spuštěním následujících příkazů vložte ukázková data do tabulek a zároveň nahraďte hodnoty *server*, *databáze*, *uživatele*, a *heslo* hodnotami pro vaše prostředí.
 
    ```cmd
-   bcp Course in SampleCourseData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Person in SamplePersonData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Student in SampleStudentData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
-   bcp Credit in SampleCreditData.txt -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Person in SamplePersonData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Student in SampleStudentData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
+   bcp Credit in SampleCreditData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
    ```
 
 Teď jste načetli ukázková data do tabulek, které jste předtím vytvořili.

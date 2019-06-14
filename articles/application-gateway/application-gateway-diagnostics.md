@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b0ee159b1c4a4072ce5a86f9fb925744a415b3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66135536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048713"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -155,8 +155,7 @@ Ve výchozím nastavení vygeneruje protokol aktivit Azure. Protokoly jsou zacho
 
 ### <a name="access-log"></a>Přístup k protokolu
 
-Přístup protokolu se vytvoří pouze v případě, že jste ho povolili pro každou instanci Application Gateway, jak je uvedeno v předchozích krocích. Data se ukládají v účtu úložiště, který jste zadali při povolování protokolování. Každý přístup ke službě Application Gateway se protokoluje ve formátu JSON, jak je znázorněno v následujícím příkladu:
-
+Přístup protokolu se vytvoří pouze v případě, že jste ho povolili pro každou instanci Application Gateway, jak je uvedeno v předchozích krocích. Data se ukládají v účtu úložiště, který jste zadali při povolování protokolování. Každý přístup ke službě Application Gateway se protokoluje ve formátu JSON, jak je znázorněno v následujícím příkladu v1:
 
 |Hodnota  |Popis  |
 |---------|---------|
@@ -196,6 +195,58 @@ Přístup protokolu se vytvoří pouze v případě, že jste ho povolili pro ka
     }
 }
 ```
+Služba Application Gateway a WAF v2 najdete v protokolech zobrazuje ještě pár informací:
+
+|Hodnota  |Popis  |
+|---------|---------|
+|instanceId     | Instance služby Application Gateway, který žádost zpracoval.        |
+|Když     | Původní IP adresa pro žádost.        |
+|clientPort     | Výchozí port pro daný požadavek.       |
+|httpMethod     | Metoda HTTP použitá v požadavku.       |
+|requestUri     | Identifikátor URI byl přijat požadavek.        |
+|RequestQuery     | **Server-Routed**: Instance back endového fondu, který byl odeslán požadavek.</br>**X-AzureApplicationGateway-LOG-ID**: ID korelace použitou pro danou žádost. Slouží k řešení potíží s přenosy na back-end serverech. </br>**STAV SERVERU**: Kód odpovědi HTTP, které služba Application Gateway přijaté z back-endu.       |
+|UserAgent     | Uživatelský agent uveden v hlavičce požadavku HTTP.        |
+|httpStatus     | Stavový kód HTTP vrácen do klienta z aplikační brány.       |
+|httpVersion     | Verze protokolu HTTP žádosti.        |
+|ReceivedBytes     | Velikost paketu přijaté v bajtech.        |
+|SentBytes| Velikost v bajtech odeslaných paketů.|
+|timeTaken| Časový interval (v milisekundách), která je potřebná pro zpracování požadavku a odpovědi k odeslání. Počítá se jako intervalu od okamžiku, kdy služba Application Gateway přijímá první bajt požadavku HTTP na čas při odesílání odpovědi operace dokončí. Je důležité si uvědomit, že pole Time-Taken obvykle zahrnuje dobu, po kterou jsou pakety žádostí a odpovědí přenášeny přes síť. |
+|sslEnabled| Určuje, zda komunikace s back endové fondy používá protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
+|sslCipher| Šifrovací sada používá pro komunikaci protokolem SSL (Pokud je povolen protokol SSL).|
+|sslProtocol| Protokol SSL používá (Pokud je povolen protokol SSL).|
+|serverRouted| Back-end server této aplikační brány směruje žádost o.|
+|serverStatus| Stavový kód protokolu HTTP back-end serveru.|
+|serverResponseLatency| Latence odpověď z back-end serveru.|
+|host| Adresy uvedené v Hlavička hostitele požadavku.|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "ApplicationGatewayRole_IN_0",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "requestQuery": "X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.4.0.4&X-AzureApplicationGateway-LOG-ID=874f1f0f-6807-41c9-b7bc-f3cfa74aa0b1&SERVER-STATUS=404",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off"
+        "sslCipher": "",
+        "sslProtocol": "",
+        "serverRouted": "104.41.114.59:80",
+        "serverStatus": "200",
+        "serverResponseLatency": "0.023",
+        "host": "52.231.230.101"
+    }
+}
+```
 
 ### <a name="performance-log"></a>V protokolu výkonu
 
@@ -208,7 +259,7 @@ V protokolu výkonu se vygeneruje pouze v případě, že je povolená pro každ
 |healthyHostCount     | Počet v dobrém stavu hostitelů ve fondu back-end.        |
 |unHealthyHostCount     | Počet není v pořádku hostitelů ve fondu back-end.        |
 |RequestCount     | Počet požadavků, které obsluhují.        |
-|latence | Průměrná latence (v milisekundách) žádostí z instance do back-endu, který obsluhuje požadavky. |
+|Latence | Průměrná latence (v milisekundách) žádostí z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí.|
 |throughput| Průměrná propustnost od poslední protokolu v bajtech za sekundu.|
 
@@ -249,8 +300,8 @@ Brány firewall protokolu se vytvoří pouze v případě, že je povolená pro 
 |ruleSetVersion     | Verze se používá sada pravidel. Dostupné jsou hodnoty 2.2.9 a 3.0.     |
 |RuleId     | ID pravidla spouštěcí události.        |
 |message     | Uživatelsky přívětivé zprávu pro aktivační událost. Další podrobnosti jsou uvedeny v části Podrobnosti.        |
-|akce     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
-|Web     | Web, pro který byl vygenerován v protokolu. V současné době pouze globální je uvedené, protože pravidla jsou globální.|
+|action     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
+|Lokality     | Web, pro který byl vygenerován v protokolu. V současné době pouze globální je uvedené, protože pravidla jsou globální.|
 |Podrobnosti     | Podrobnosti o spouštěcí události.        |
 |details.Message     | Popis pravidla.        |
 |details.data     | Konkrétní data uvedená v požadavku, který odpovídá pravidlo.         |

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60395718"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
@@ -89,7 +89,7 @@ V závislosti na produktu ITSM, ke kterému se připojujete použijte následuj�
 
 Jakmile budete mít připravenou na to nástrojům ITSM, postupujte podle pokynů můžete vytvořit připojení:
 
-1. Přejděte na **všechny prostředky**, vyhledejte **ServiceDesk(YourWorkspaceName)**.
+1. Přejděte na **všechny prostředky**, vyhledejte **ServiceDesk(YourWorkspaceName)** .
 2. V části **zdroje dat pracovního prostoru** v levém podokně klikněte na tlačítko **připojení ITSM**.
    ![Připojení ITSM](media/itsmc-overview/itsm-connections.png)
 
@@ -116,7 +116,7 @@ Jakmile se připojení ITSM vytvořené, můžete vytvořit pracovní položky v
 
 Skupiny akcí poskytují modulární a opakovaně použitelné způsob aktivace akce pro Azure Alerts. Použití skupin akcí s upozornění metrik, upozornění protokolu aktivit a upozornění Azure Log Analytics na webu Azure portal.
 
-Použijte následující postup:
+Pomocí následujícího postupu:
 
 1. Na webu Azure portal, klikněte na tlačítko **monitorování**.
 2. V levém podokně klikněte na tlačítko **skupiny akcí**. **Přidat skupinu akcí** zobrazí se okno.
@@ -190,10 +190,10 @@ ServiceDeskWorkItemType_s="Incident"
 - Vytvořil
 - Vyřešil
 - Uzavřel
-- Zdroj
-- Přiřazené k
+- source
+- Přiřazeno
 - Category
-- Název
+- Titul
 - Popis
 - Datum vytvoření
 - Datum uzavření
@@ -211,9 +211,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - ID oddělení služeb
 - Vytvořil
 - Uzavřel
-- Zdroj
-- Přiřazené k
-- Název
+- source
+- Přiřazeno
+- Titul
 - Type
 - Category
 - Stav
@@ -223,7 +223,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priorita
 - Riziko
 - Dopad
-- Přiřazené k
+- Přiřazeno
 - Datum vytvoření
 - Datum uzavření
 - Datum poslední změny
@@ -245,14 +245,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Impact_s |Dopad|
 | Priority_s | Priorita |
 | CreatedBy_s | Otevřít v |
-| ResolvedBy_s | Vyřešil(a)|
+| ResolvedBy_s | Vyřešil|
 | ClosedBy_s  | Uzavřel |
 | Source_s| Typ kontaktu |
 | AssignedTo_s | Přiřazeno  |
 | Category_s | Category |
 | Title_s|  Krátký popis |
 | Description_s|  Poznámky |
-| CreatedDate_t|  Otevřeno |
+| CreatedDate_t|  Otevřít |
 | ClosedDate_t| Uzavřeno|
 | ResolvedDate_t|Vyřešeno|
 | Computer  | Položky konfigurace |

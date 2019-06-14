@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60556368"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -30,24 +30,24 @@ Vytvářet, odstraňovat a spravovat služby, typů služeb a balíčky služeb.
 | --- | --- |
 | název aplikace | Získá název aplikace Service Fabric pro službu. |
 | seznam balíčků kódu | Získá seznam balíčky kódu, které jsou nasazené na uzlu Service Fabricu. |
-| vytvoření | Vytvoří zadané služby Service Fabric. |
+| create | Vytvoří zadané služby Service Fabric. |
 | delete | Odstraní existující službu Service Fabric. |
 | Typ nasazení | Získá informace o zadané služby typu aplikace nasazená na uzlu v clusteru Service Fabric. |
 | nasadit seznam typů | Získá seznam obsahující informace o typech služeb z aplikace nasazené na uzly v clusteru Service Fabric. |
 | description | Získá popis existující službu Service Fabric. |
 | get-container-logs | Získá protokoly kontejneru pro nasazení v uzlu Service Fabric container. |
-| zdravotnictví | Získá stav zadané služby Service Fabric. |
-| informace | Získá informace o konkrétní služby, které patří k aplikaci Service Fabric. |
+| health | Získá stav zadané služby Service Fabric. |
+| info | Získá informace o konkrétní služby, které patří k aplikaci Service Fabric. |
 | list | Získá informace o všech služeb, které patří k aplikaci podle ID aplikace. |
-| Manifest | Získá manifest popisující typ služby. |
+| manifest | Získá manifest popisující typ služby. |
 | package-deploy | Soubory ke stažení balíčků přidružených k zadané služby manifestu do bitové kopie mezipaměti na zadaný uzel. |
 | package-health | Získá informace o stavu balíčku služby pro konkrétní aplikace nasazená pro uzel Service Fabric a aplikace. |
 | package-info | Získá seznam balíčků služeb nasazených na odpovídající zadanému názvu uzlu Service Fabricu. |
 | seznam balíčků | Získá seznam balíčků služeb nasazených na uzlu Service Fabricu. |
 | Obnovit | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení zadanou službu, která je aktuálně zablokované ve ztrátě kvora. |
 | report-health | Odešle zprávu o stavu ve službě Service Fabric. |
-| vyřešit | Přeložit oddíl Service Fabric. |
-| seznam typů | Získá seznam obsahující informace o typech služeb, které jsou podporovány podle typu aplikací zřízených v clusteru Service Fabric. |
+| řešení | Přeložit oddíl Service Fabric. |
+| type-list | Získá seznam obsahující informace o typech služeb, které jsou podporovány podle typu aplikací zřízených v clusteru Service Fabric. |
 | update | Aktualizuje zadaný služby pomocí popis pro danou aktualizaci. |
 
 ## <a name="sfctl-service-app-name"></a>sfctl služba aplikace name

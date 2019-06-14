@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610743"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-onprem-teradata-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-teradata.md)
 
@@ -287,7 +287,7 @@ Při přesunu dat pro Teradata, se používají následující mapování z typu
 | --- | --- |
 | char |String |
 | Clob |String |
-| Obrázek |String |
+| Graphic |String |
 | VarChar |String |
 | VarGraphic |String |
 | Objekt blob |Byte[] |
@@ -302,27 +302,27 @@ Při přesunu dat pro Teradata, se používají následující mapování z typu
 | SmallInt |Int16 |
 | Datum |DateTime |
 | Čas |TimeSpan |
-| Čas s časovým pásmem |String |
+| Time With Time Zone |String |
 | Timestamp |DateTime |
-| Časové razítko s časovým pásmem |Datetimeoffset |
-| Interval den |TimeSpan |
-| Interval den na hodinu |TimeSpan |
-| Den intervalu minuty. |TimeSpan |
-| Den intervalu sekundy. |TimeSpan |
+| Timestamp With Time Zone |Datetimeoffset |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
 | Interval Hour |TimeSpan |
-| Interval hodinu, minutu |TimeSpan |
-| Hodina intervalu sekundy. |TimeSpan |
-| Interval minutu |TimeSpan |
-| Interval minuty, sekundy. |TimeSpan |
-| Interval druhý |TimeSpan |
-| Interval rok |String |
-| Interval rok měsíc |String |
-| Interval měsíc |String |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Second |TimeSpan |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Interval Month |String |
 | Period(Date) |String |
 | Period(Time) |String |
-| Období (čas s časovým pásmem) |String |
+| Period(Time With Time Zone) |String |
 | Period(Timestamp) |String |
-| Období (časové razítko s časovým pásmem) |String |
+| Period(Timestamp With Time Zone) |String |
 | Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce

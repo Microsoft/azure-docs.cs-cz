@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
-ms.translationtype: MT
+ms.openlocfilehash: 85bbd14c8d2bcd8e3699e5f5efdae9f52acd63e5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389079"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808548"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Rychlý start: Vytvoření izolované databáze ve službě Azure SQL Database pomocí webu Azure portal
 
@@ -137,4 +137,4 @@ Jakmile budete hotovi, tyto prostředky používá, můžete je odstranit násle
   - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Vytvoření izolované databáze na úrovni zřízených výpočetních pomocí Azure CLI najdete v tématu [ukázky v Azure CLI](sql-database-cli-samples.md).
 - Vytvoření izolované databáze na úrovni zřízených výpočetních pomocí Azure Powershellu najdete v tématu [ukázky Azure Powershellu](sql-database-powershell-samples.md).
-- Vytvoření izolované databáze na úrovni výpočetní prostředí pomocí Azure Powershellu najdete v tématu [vytvořit databázi bez serveru pomocí prostředí PowerShell](sql-database-serverless.md#create-new-serverless-database-using-powershell)
+- Vytvoření izolované databáze na úrovni výpočetní prostředí pomocí Azure Powershellu najdete v tématu [vytvořit databázi bez serveru pomocí prostředí PowerShell](sql-database-serverless.md#create-new-database-in-serverless-compute-tier-using-powershell)

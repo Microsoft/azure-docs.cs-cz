@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60583804"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instance kontejnerů, které používají prostředky GPU
@@ -45,7 +45,7 @@ Chcete-li použít grafickými procesory v instanci kontejneru, zadejte *GPU pro
 * **Počet** – počet GPU: **1**, **2**, nebo **4**.
 * **Skladová položka** -GPU SKU: **K80**, **P100**, nebo **V100**. Každý SKU mapuje na GPU NVIDIA Tesla v jednom rodiny virtuálních počítačů s podporou grafického procesoru Azure následující:
 
-  | Skladová jednotka (SKU) | Rodina virtuálního počítače |
+  | Skladová jednotka (SKU) | Řady virtuálních počítačů |
   | --- | --- |
   | K80 | [NC](../virtual-machines/linux/sizes-gpu.md#nc-series) |
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |

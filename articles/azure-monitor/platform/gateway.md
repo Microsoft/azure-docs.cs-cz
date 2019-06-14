@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60396247"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics ve službě Azure Monitor
@@ -102,8 +102,8 @@ V následující tabulce jsou uvedeny přibližně kolik agentů může komuniko
 
 |brána |Nepodporuje agenty (přibližné)|  
 |--------|----------------------------------|  
-|Procesor: Intel Xeon E5-2660 v3 procesoru \@ 2,6 GHz, 2 jádra<br> Paměť: 4 GB<br> Šířka pásma sítě: 1 Gb/s| 600|  
-|Procesor: Intel Xeon E5-2660 v3 procesoru \@ 2,6 GHz, 4 jádra<br> Paměť: 8 GB<br> Šířka pásma sítě: 1 Gb/s| 1000|  
+|CPU: Intel Xeon E5-2660 v3 procesoru \@ 2,6 GHz, 2 jádra<br> Paměť: 4 GB<br> Šířka pásma sítě: 1 Gb/s| 600|  
+|CPU: Intel Xeon E5-2660 v3 procesoru \@ 2,6 GHz, 4 jádra<br> Paměť: 8 GB<br> Šířka pásma sítě: 1 Gb/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Stáhněte si bránu Log Analytics
 
@@ -412,7 +412,7 @@ V následující tabulce jsou uvedeny čítačů výkonu k dispozici pro bránu 
 
 ![Snímek obrazovky služby Log Analytics rozhraní brány, zobrazuje čítače výkonu](./media/gateway/counters.png)
 
-## <a name="assistance"></a>Pomoc
+## <a name="assistance"></a>Asistence
 Když jste přihlášení k webu Azure portal, můžete získat pomoc se sadou gateway Log Analytics nebo jiné služby Azure nebo funkce.
 Potřebujete pomoc, vyberte ikonu otazníku v pravém horním rohu portálu a vyberte **nová žádost o podporu**. Dokončete nový formulář žádosti o podporu.
 

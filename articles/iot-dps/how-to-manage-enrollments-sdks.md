@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60627265"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Správa registrací zařízení pomocí SDK služby zřizování zařízení Azure
@@ -21,7 +21,7 @@ A *registrace zařízení* vytvoří záznam o jedno zařízení nebo skupině z
 ## <a name="prerequisites"></a>Požadavky
 * Získání připojovacího řetězce z vaší instanci služby Device Provisioning.
 * Získat artefaktů zabezpečení pro zařízení [mechanismus ověřování](concepts-security.md#attestation-mechanism) použít:
-    * [**Trusted Platform Module (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
+    * [**Trusted Platform Module (TPM)** ](/azure/iot-dps/concepts-security#trusted-platform-module):
         * Jednotlivá registrace: ID registrace a ověřovacího klíče TPM z fyzického zařízení nebo simulátor TPM.
         * Skupiny registrací se nevztahují na ověření identity čipem TPM.
     * [**X.509**](/azure/iot-dps/concepts-security):

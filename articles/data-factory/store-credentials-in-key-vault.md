@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048521"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store přihlašovacích údajů ve službě Azure Key Vault
 
@@ -32,7 +32,7 @@ Tato funkce spoléhá na objekt pro vytváření spravované identity data. Zjis
 
 Chcete-li odkazovat přihlašovací údaje uložené ve službě Azure Key Vault, budete muset:
 
-1. **Načíst data factory spravované identity** tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření. Pokud používáte ADF vytváření uživatelského rozhraní, ID aplikace spravovaná identita zobrazí v okně vytvoření propojené služby Azure Key Vault; Můžete také načíst ji z webu Azure portal najdete [identita spravované služby data factory načtení](data-factory-service-identity.md#retrieve-managed-identity).
+1. **Načíst data factory spravované identity** tak, že zkopírujete hodnotu "Spravované ID aplikace Identity" generované spolu se svým objektem pro vytváření. Pokud používáte ADF vytváření uživatelského rozhraní, ID aplikace spravovaná identita zobrazí v okně vytvoření propojené služby Azure Key Vault; Můžete také načíst ji z webu Azure portal najdete [identita spravované služby data factory načtení](data-factory-service-identity.md#retrieve-managed-identity).
 2. **Udělení přístupu spravovaných identit do služby Azure Key Vault.** V trezoru klíčů -> zásady -> přístup přidat nový -> Toto ID aplikace identity udělit spravované hledání **získat** oprávnění v rozevírací nabídce oprávnění tajného klíče. To umožňuje tento určený objekt pro vytváření pro přístup k tajným kódem v trezoru klíčů.
 3. **Vytvoření propojené služby odkazuje na službě Azure Key Vault.** Odkazovat na [propojená služba Azure Key Vault](#azure-key-vault-linked-service).
 4. **Vytvořte propojenou službu úložiště dat, uvnitř které odkaz odpovídající tajného klíče uložené v trezoru.** Odkazovat na [odkaz tajného klíče uložené ve službě key vault](#reference-secret-stored-in-key-vault).
@@ -48,7 +48,7 @@ Pro Azure Key Vault propojené služby jsou podporovány následující vlastnos
 
 **Použití pro vytváření uživatelského rozhraní:**
 
-Klikněte na tlačítko **připojení** -> **propojené služby** -> **+ nová** -> vyhledejte "Azure Key Vault":
+Klikněte na tlačítko **připojení** -> **propojené služby** ->  **+ nová** -> vyhledejte "Azure Key Vault":
 
 ![Službou AZURE Search](media/store-credentials-in-key-vault/search-akv.png)
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60495111"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitorování stavu replikace služby Active Directory prostřednictvím služby Azure Monitor
@@ -52,7 +52,7 @@ Pokud nechcete, aby všechny řadiče domény připojit přímo do Azure monitor
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti kolekce dat stavu replikace AD
 V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak data se shromažďují pro stav replikace AD.
 
-| Platforma | Přímý agent | Agent nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta nástroje SCOM odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
+| Platforma | Přímý Agent | Agent nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta nástroje SCOM odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |každých pět dní |
 
@@ -106,7 +106,7 @@ Jak je uvedeno výše, dlaždici řídicího panelu pro stav replikace AD řeše
 >
 
 ### <a name="ad-replication-status-details"></a>Podrobnosti o stavu replikace AD
-Po kliknutí na libovolnou položku v jednom seznamu se zobrazí další podrobnosti o použití protokolu dotazu. Výsledky se filtrují na Zobrazit pouze chyby související s danou položku. Například pokud kliknete na první řadič domény se uveden v části **stav cílového serveru (ADDC02)**, se zobrazí výsledky dotazu vyfiltrovaný tak, aby zobrazit chyby se tento řadič domény uvedený jako cílový server:
+Po kliknutí na libovolnou položku v jednom seznamu se zobrazí další podrobnosti o použití protokolu dotazu. Výsledky se filtrují na Zobrazit pouze chyby související s danou položku. Například pokud kliknete na první řadič domény se uveden v části **stav cílového serveru (ADDC02)** , se zobrazí výsledky dotazu vyfiltrovaný tak, aby zobrazit chyby se tento řadič domény uvedený jako cílový server:
 
 ![Chyby stavu replikace AD ve výsledcích dotazu](./media/ad-replication-status/oms-ad-replication-search-details.png)
 

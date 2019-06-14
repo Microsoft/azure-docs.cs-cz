@@ -2,7 +2,7 @@
 title: Událost selhání úlohy služby Azure Batch | Dokumentace Microsoftu
 description: Referenční informace pro úlohy Batch selhání události.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/20/2017
-ms.date: 05/15/2018
-ms.author: v-junlch
+ms.date: 04/20/2017
+ms.author: lahugh
 ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60549984"
 ---
 # <a name="task-fail-event"></a>Událost selhání úlohy
@@ -56,7 +55,7 @@ ms.locfileid: "60549984"
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
 |jobId|String|Id úlohy obsahující úlohu.|
-|id|String|Identifikátor úkolu|
+|id|String|Id úkolu.|
 |taskType|String|Typ úlohy. To může být JobManager oznamující, že je úkol Správce úloh nebo uživatel oznamující, že se nejedná o úkol Správce úloh. Tato událost není aktivováno, úkolů přípravy úloh, uvolnění úloh nebo spuštění úlohy.|
 |systemTaskVersion|Int32|Toto je čítač interní opakovaných pokusů pro úlohu. Interně služba Batch může pokus zopakovat úlohu, aby se zohlednily přechodné problémy. Tyto problémy mohou zahrnovat plánování s interními chybami nebo pokusy o obnovení z výpočetních uzlů ve špatném stavu.|
 |[nodeInfo](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém se úkol spustil.|
@@ -75,7 +74,7 @@ ms.locfileid: "60549984"
 
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|numberOfInstances|Int32|Celkový počet výpočetních uzlů požadovaných úkolem|
+|numberOfInstances|Int32|Počet výpočetních uzlů požadovaných úkolem.|
 
 ###  <a name="constraints"></a> Omezení
 
@@ -93,5 +92,3 @@ ms.locfileid: "60549984"
 |exitCode|Int32|Ukončovací kód úkolu.|
 |retryCount|Int32|Počet pokusů, které úlohy se pokus o pomocí služby Batch. Úloha je opakovat, pokud ho ukončí s nenulový ukončovací kód, až do zadaného MaxTaskRetryCount.|
 |requeueCount|Int32|Počet pokusů, které úloha má byla znovu zařadit do fronty pomocí služby Batch jako výsledek požadavku uživatele.<br /><br /> Když uživatel odebere uzly z fondu (nebo změnou velikosti zmenšit fond) nebo při deaktivaci úlohy, uživatel může určit, že spuštěné úkoly na uzlech se zařadí do fronty pro spuštění. Tento počet sleduje, kolikrát úkol má byla znovu zařadit do fronty z těchto důvodů.|
-
-<!-- Update_Description: update metedata properties -->

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 10/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8fed3ce98b23c5ac1cc97b88a278c5946f06af8e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b1280274122800147c442b73b360bc5141530a0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968678"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050601"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z virtuálních počítačů Azure (VM), škálovací sady virtuálních počítačů, kontejnerů IaaS a počítače mimo Azure (včetně místních) k monitorování ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Agent Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -31,12 +31,11 @@ Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Microsoft Monitori
 > [!NOTE]
 > - Shromažďování dat je potřeba jenom za výpočetní prostředky (virtuální počítače, škálovací sady virtuálních počítačů, kontejnery IaaS a počítače mimo Azure). Můžete využívat výhody Azure Security Center i v případě, že nemusíte zřizovat agentů; ale bude mít omezenou zabezpečení a možnosti uvedené výše se nepodporují.  
 > - Seznam podporovaných platforem najdete v tématu [podporovaných platforem ve službě Azure Security Center](security-center-os-coverage.md).
-> - Shromažďování dat pro škálovací sadu virtuálních počítačů se momentálně nepodporuje.
-> - Ukládání dat v Log Analytics, ať už používáte novou nebo existující pracovní prostor může účtovat další poplatky za úložiště dat, stránce s cenami pro další podrobnosti najdete v článku.
+> - Ukládání dat v Log Analytics, ať už používáte nového nebo existujícího pracovního prostoru, se můžou účtovat další poplatky za úložiště dat. Další podrobnosti najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## Povolit automatické zřizování agenta Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
 
-Ke shromažďování dat z počítačů, měli byste mít agenta Microsoft Monitoring Agent nainstalována.  Instalace agenta může být automaticky (doporučeno) nebo si můžou nainstalovat agenta ručně.  
+Ke shromažďování dat z počítačů, měli byste mít agenta Microsoft Monitoring Agent nainstalována.  Instalace agenta se dá provést automaticky (doporučeno) nebo můžete agenta nainstalovat ručně.  
 
 >[!NOTE]
 > Automatické zřizování je ve výchozím nastavení vypnuté. Pokud chcete nastavit Security Center mohla nainstalovat ve výchozím nastavení automatického zřizování, nastavte ji na **na**.
@@ -87,10 +86,8 @@ Výběr pracovního prostoru vytvořených službou Security Center:
 1. Security Center automaticky povolí řešení Security Center v pracovním prostoru pro jednotlivé cenové úrovně pro předplatné. 
 
 > [!NOTE]
-> Cenová úroveň pracovních prostorů vytvořených službou Security Center Log Analytics nemá vliv na fakturaci Security Center. Fakturace Security Center je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru. Pro bezplatnou úroveň Security Center umožňuje *SecurityCenterFree* řešení na výchozího pracovního prostoru. U úrovně Standard Security Center povolí řešení *SecurityCenterFree* ve výchozím pracovním prostoru.
-> Ukládání dat v Log Analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
-
-Další informace o cenách najdete v tématu [ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+> Cenová úroveň pracovních prostorů vytvořených službou Security Center Log Analytics nemá vliv na fakturaci Security Center. Fakturace Security Center je vždy na základě zásad zabezpečení Security Center a řešení nainstalované v pracovním prostoru. Pro bezplatnou úroveň Security Center umožňuje *SecurityCenterFree* řešení na výchozího pracovního prostoru. Pro úroveň Standard, Security Center umožňuje *zabezpečení* řešení na výchozího pracovního prostoru.
+> Ukládání dat v Log Analytics se můžou účtovat další poplatky za úložiště dat. Další podrobnosti najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 Další informace o existujících účtů log analytics najdete v tématu [existující log analytics zákazníkům](security-center-faq.md#existingloganalyticscust).
 
@@ -102,7 +99,7 @@ Pokud chcete použít stávající pracovní prostor Log Analytics, musíte mít
 
 > [!NOTE]
 > Řešení povolená ve existujícího pracovního prostoru se použijí na virtuální počítače Azure, které jsou k němu připojená. U placených řešení Toto může vést k další poplatky. Pro data aspekty ochrany osobních údajů Ujistěte se, že váš vybraný pracovní prostor je vhodné geografické oblasti.
-> Ukládání dat v log analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
+> Ukládání dat v log analytics se můžou účtovat další poplatky za úložiště dat. Další podrobnosti najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 Vyberte existující pracovní prostor Log Analytics:
 
@@ -150,7 +147,7 @@ Když vyberete pracovní prostor, ve kterých se mají ukládat data, jsou k dis
 ## <a name="data-collection-tier"></a>Úrovně shromažďování dat
 Výběr úrovně shromažďování dat ve službě Azure Security Center mají vliv jenom úložiště událostí zabezpečení ve vašem pracovním prostoru Log Analytics. Agenta Log Analytics bude i nadále shromažďovat a analyzovat události zabezpečení potřebné pro detekce hrozeb Azure Security Center, bez ohledu na to, jaké úroveň události zabezpečení můžete zvolit uložení pracovního prostoru Log Analytics (pokud existuje). Výběr k uložení událostí zabezpečení ve vašem pracovním prostoru vám umožní šetření, vyhledávání a auditování tyto události ve vašem pracovním prostoru. 
 > [!NOTE]
-> Ukládání dat v log analytics může účtovat další poplatky za úložiště dat, naleznete stránce s cenami pro další podrobnosti.
+> Ukládání dat v log analytics se můžou účtovat další poplatky za úložiště dat. Další podrobnosti najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 > 
 > Můžete si vybrat vpravo filtrování zásady pro předplatná a pracovní prostory z čtyř sad událostí, které mají být uloženy ve vašem pracovním prostoru: 
 
@@ -179,7 +176,7 @@ Tady je úplný přehled zabezpečení a AppLocker event ID pro každou sadu:
 | --- | --- |
 | Minimální | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| Obecné | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
+| Společné | 1,299,300,324,340,403,404,410,411,412,413,431,500,501,1100,1102,1107,1108,4608,4610,4611,4614,4622, |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -205,8 +202,10 @@ Tyto případy použití určit, jak automatické zřizování lze použít v p�
 
 - Microsoft Monitoring Agent je nainstalovaný na počítači, ale ne jako rozšíření (přímý agent)<br>
 Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center nainstaluje rozšíření Microsoft Monitoring Agent a upgradovat Microsoft Monitoring agent na nejnovější verzi.
-Nainstalovaného agenta bude dále generovat sestavy na jeho už nakonfigurovaných pracovních prostorech a kromě toho budou hlásit do pracovního prostoru nakonfigurované ve službě Security Center (vícenásobné navádění je podporována).
+Nainstalovaného agenta bude dále generovat sestavy na jeho už nakonfigurovaných pracovních prostorech a kromě toho budou hlásit do pracovního prostoru nakonfigurované ve službě Security Center (vícenásobné navádění je podporované na počítačích s Windows).
 Pokud má konfigurovaný pracovní prostor je uživatel pracovní prostor (není Security Center výchozího pracovního prostoru), pak budete muset nainstalovat "zabezpečení /"securityFree"řešení v něm pro Security Center spuštění zpracování událostí z virtuálních počítačů a počítačů odesílajících sestavy do pracovního prostoru.<br>
+<br>
+Pro počítače s Linuxem, vícenásobné navádění Agent ještě není podporováno – proto, pokud je nalezena existující instalace agenta, nedojde, automatické zřizování a konfiguraci počítače se nezmění.
 <br>
 Pro existující počítače v předplatných připojili ke službě Security Center před 2019-03-17, když bude zjištěna existujícího agenta, nenainstalují se rozšíření Microsoft Monitoring Agent a nebude mít vliv počítače. Pro tyto počítače naleznete v části "Vyřešit problémy se stavem agenta na počítačích monitorování" doporučení k vyřešení problémů s instalací agenta na těchto počítačích.
 

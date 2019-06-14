@@ -3,20 +3,21 @@ title: Konfigurace metody směrování s více hodnotami provoz v Azure Traffic 
 description: Tento článek vysvětluje postup konfigurace Traffic Manageru směrovat provoz do koncových bodů A/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: kumud
-ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: allensu
+ms.openlocfilehash: 5db8e2932a43a2d6c6cb8a99c4f32b37a4a5a3f8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050890"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manageru
 
@@ -46,7 +47,7 @@ Vytvořte profil služby Traffic Manager, která přesměruje uživatelský prov
     | Metoda směrování          | Vyberte **hodnot** metodu směrování.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Select *myResourceGroupTM1*. |
-    | Umístění                | Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.                              |
+    | Location                | Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.                              |
    |        |           | 
   
    ![Vytvoření profilu Traffic Manageru](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
@@ -62,7 +63,7 @@ Přidejte dvě IP adresy jako externí koncové body do profilu služby Traffic 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Type                    | Externí koncový bod                                   |
-    | Název           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Plně kvalifikovaný název domény (FQDN) nebo IP adresa           | Zadejte veřejnou IP adresu koncového bodu, který chcete přidat k tomuto profilu Traffic Manageru                         |
     |        |           |
 

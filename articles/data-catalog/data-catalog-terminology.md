@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: a6f2cf1dcee6a85376c8d767e57c504b6b246e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60580455"
 ---
 # <a name="azure-data-catalog-terminology"></a>Terminologie služby Azure Data Catalog
@@ -50,7 +50,7 @@ K datovému assetu popisnými metadaty může zahrnovat informace o tom, jak po�
 * Adresa URL identit a přístupu nástroj pro správu (jako je například Microsoft Identity Manager), který můžete použít k získání přístupu ke zdroji dat.
 * Položka prostého textu, který popisuje, jak uživatelé můžou získat přístup ke zdroji dat.
 
-## <a name="preview"></a>Preview
+## <a name="preview"></a>Náhled
 
 Verze preview ve službě Azure Data Catalog je snímek až 20 záznamů, které můžete extrahovaná ze zdroje dat během registrace a uloženy v katalogu s metadaty datový asset. Verzi preview může pomoci uživatelům, kteří je zjistili k datovému assetu lépe porozumět jeho funkci a účel. Jinými slovy zobrazení ukázkových dat může být větší hodnotu než když vidíte pouze názvy sloupců a datové typy.
 Verze Preview se podporují jenom pro tabulky a zobrazení a musí být explicitně vybraný uživatel během registrace.

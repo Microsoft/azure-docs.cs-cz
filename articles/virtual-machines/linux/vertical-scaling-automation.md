@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d9bf155f24c947f8a27a38af01aedcf0b041b94
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d0d0c3683d8855418bdafa204325525c4cd3943c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966047"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050779"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Vertikální škálování virtuálního počítače Azure s Linuxem pomocí Azure Automation
 Vertikální škálování je proces zvýšením nebo snížením prostředky počítače v reakci na zatížení. V Azure to můžete provést tak, že změníte velikost virtuálního počítače. To může pomoct v těchto scénářích
@@ -83,6 +83,7 @@ Osnova – pokyny k tomu je jako níže
 > | Standard_ND6s |Standard_ND24s |
 > | Standard_NV6 |Standard_NV24 |
 > | Standard_NV6s_v2 |Standard_NV24s_v2 |
+> | Standard_NV12s_v3 |Standard_NV48s_v3 |
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Nastavení přístupu k virtuálním počítačům Azure Automation.
 První věc, kterou je třeba provést je vytvořit účet Azure Automation, který bude hostitelem použít k instancím Škálovací sady virtuálního počítače škálovací sady runbook. Služba Automation nedávno zavedli funkci "Účet Spustit jako", takže nastavení nahoru instanční objekt pro automatické spouštění sady runbook jménem uživatele velmi snadné. Další informace najdete v článku níže:

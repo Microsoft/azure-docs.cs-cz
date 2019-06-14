@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 60f2edf0adbfd740ce552449125ae69ab50a8586
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051091"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
 
@@ -87,7 +87,7 @@ V SMSS připojení k vašemu serveru Azure SQL Database.
 
 5. Chcete-li zobrazit objekty databáze, rozbalte **databází** a potom rozbalte **mySampleDatabase**.
 
-   ![zobrazení databázových objektů](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase objekty](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Dotazování dat
 
@@ -106,7 +106,7 @@ To [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL
 
 3. Na panelu nástrojů vyberte **Execute** načítat data z `Product` a `ProductCategory` tabulky.
 
-    ![dotaz pro načtení dat ze dvou tabulek](./media/sql-database-connect-query-ssms/query2.png)
+    ![dotaz pro načtení dat z tabulek Product a ProductCategory](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Vložení dat
 
@@ -133,7 +133,7 @@ To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Trans
            ,GETDATE() );
    ```
 
-2. Vyberte **Execute** vložte nový řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
+2. Vyberte **Execute** vložte nový řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
 
 ## <a name="view-the-result"></a>Zobrazení výsledku
 
@@ -146,7 +146,7 @@ To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Trans
 
 2. Vyberte **Provést**. Zobrazí se následující výsledky.
 
-   ![výsledek](./media/sql-database-connect-query-ssms/result.png)
+   ![Výsledek dotazu tabulka produktů](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Aktualizace dat
 
@@ -160,7 +160,7 @@ To [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) kód Transact
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **Execute** aktualizujte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
+2. Vyberte **Execute** aktualizujte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
 
 ## <a name="delete-data"></a>Odstranění dat
 
@@ -173,7 +173,7 @@ To [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-S
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **Execute** odstraňte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
+2. Vyberte **Execute** odstraňte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)** .
 
 ## <a name="next-steps"></a>Další postup
 

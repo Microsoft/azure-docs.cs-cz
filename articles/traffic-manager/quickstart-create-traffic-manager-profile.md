@@ -2,7 +2,8 @@
 title: Rychlý start – Vytvoření profilu služby Traffic Manager pro zajištění vysoké dostupnosti aplikací pomocí webu Azure Portal
 description: Tento článek Rychlý start popisuje, jak vytvořit profil služby Traffic Manager umožňující vytváření vysoce dostupných webových aplikací.
 services: traffic-manager
-author: KumudD
+author: asudbring
+manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: kumud
-ms.openlocfilehash: 2cd8830f4b2b7c972ba8972e686be984bb96fd04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: d9b1d0624aa94884c269eb33131f8b61671e99ee
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051007"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Rychlý start: Vytvoření profilu Traffic Manageru pomocí webu Azure portal
 
@@ -81,7 +82,7 @@ Vytvořte profil služby Traffic Manager, která směruje provoz uživatelů na 
 
     | Nastavení | Hodnota |
     | --------| ----- |
-    | Název | Zadejte jedinečný název pro svůj profil Traffic Manageru.|
+    | Name | Zadejte jedinečný název pro svůj profil Traffic Manageru.|
     | Metoda směrování | Vyberte **Priority**.|
     | Předplatné | Vyberte předplatné, které chcete použít pro profil traffic Manageru. |
     | Skupina prostředků | Select *myResourceGroupTM1*.|
@@ -114,7 +115,7 @@ Přidejte web v oblasti *USA – východ* jako primární koncový bod, do kter�
     | Nastavení | Hodnota |
     | ------- | ------|
     | Type | Vyberte **koncový bod Azure**. |
-    | Název | Zadejte *myFailoverEndpoint*. |
+    | Name | Zadejte *myFailoverEndpoint*. |
     | Typ cílového prostředku | Vyberte **služby App Service**. |
     | Cílový prostředek | Vyberte **vybrat aplikační službu** > **západní Evropa**. |
     | Priorita | Vyberte **2**. Veškerý provoz směrován na tento koncový bod převzetí služeb při selhání, pokud je primární koncový bod není v pořádku. |

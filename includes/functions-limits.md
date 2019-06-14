@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: 8f30d9fb2fcfe8f55af13d7726aa8458f8733b3f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9b98e1a1f5243584d0ca4b1490e25302ec26b465
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050541"
 ---
-| Resource | [Plán consumption](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan-public-preview) | [Plán služby App Service](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
+| Resource | [Plán consumption](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [Plán služby App Service](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontální navýšení kapacity | Řízené událostmi | Řízené událostmi | [Ruční nebo automatické škálování](../articles/app-service/web-sites-scale.md) | 
 |Výchozí [doba trvání časového limitu](../articles/azure-functions/functions-scale.md#timeout) (min) |5 | 30 |30<sup>2</sup> |
@@ -28,10 +28,10 @@ ms.locfileid: "66236015"
 | Vlastní domény na aplikaci</a> |500<sup>7</sup> |500 |500 |
 | Vlastní domény [podpora protokolu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Není podporováno, pro certifikát se zástupným znakem *. azurewebsites.net k dispozici ve výchozím nastavení| bez vazby SSL pro SNI a 1 IP SSL. připojení zahrnuté |bez vazby SSL pro SNI a 1 IP SSL. připojení zahrnuté | 
 
-<sup>1</sup>konkrétní omezení pro různé možnosti plán služby App Service najdete v tématu [omezení plánu služby App Service](../articles/azure-subscription-service-limits.md#app-service-limits).  
-<sup>2</sup>výchozí časový limit pro modul runtime verze 1.x funkcí v plánu služby App Service je bez vazby.  
-<sup>3</sup>vyžaduje plán služby App Service se nastavenou na [Always On](../articles/azure-functions/functions-scale.md#always-on). Platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
+<sup>1</sup> konkrétní omezení pro různé možnosti plán služby App Service najdete v tématu [omezení plánu služby App Service](../articles/azure-subscription-service-limits.md#app-service-limits).  
+<sup>2</sup> výchozí časový limit pro modul runtime verze 1.x funkcí v plánu služby App Service je bez vazby.  
+<sup>3</sup> vyžaduje plán služby App Service se nastavenou na [Always On](../articles/azure-functions/functions-scale.md#always-on). Platit standardních [sazby](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup> tato omezení jsou [nastavit na hostiteli](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
-<sup>5</sup> závisí skutečný počet aplikací function App, které můžete hostovat na aktivity aplikací, velikosti instance počítačů a odpovídajících využití prostředků.   
-<sup>6</sup>limitu úložiště je celková velikost obsahu v dočasné úložiště mezi všemi aplikacemi v rámci stejného plánu služby App Service. Plán consumption soubory Azure používá jako dočasné úložiště.  
-<sup>7</sup>při je vaše aplikace funkcí hostované v [plánu Consumption](../articles/azure-functions/functions-scale.md#consumption-plan), se podporuje jenom možnost CNAME. Pro aplikace function App v [plán Premium](../articles/azure-functions/functions-scale.md#premium-plan-public-preview) nebo [plán služby App Service](../articles/azure-functions/functions-scale.md#app-service-plan), můžete namapovat vlastní doménu pomocí záznamu A nebo záznam CNAME. 
+<sup>5</sup> závisí skutečný počet aplikací function App, které můžete hostovat na aktivity aplikací, velikosti instance počítačů a odpovídajících využití prostředků.
+<sup>6</sup> limitu úložiště je celková velikost obsahu v dočasné úložiště mezi všemi aplikacemi v rámci stejného plánu služby App Service. Plán consumption soubory Azure používá jako dočasné úložiště.  
+<sup>7</sup> při je vaše aplikace funkcí hostované v [plánu Consumption](../articles/azure-functions/functions-scale.md#consumption-plan), se podporuje jenom možnost CNAME. Pro aplikace function App v [plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) nebo [plán služby App Service](../articles/azure-functions/functions-scale.md#app-service-plan), můžete namapovat vlastní doménu pomocí záznamu A nebo záznam CNAME.

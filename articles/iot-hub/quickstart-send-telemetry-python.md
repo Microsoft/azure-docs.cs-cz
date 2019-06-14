@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/28/2019
-ms.openlocfilehash: 03c7da3e17e8e606b46c5c5e104a1271e8fbfd33
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a8abd71609d3e063c92541485007a3bde44be954
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873108"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051236"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do služby IoT hub a čtení s back endové aplikace (Python)
 
@@ -112,6 +112,13 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
     ![Spuštění simulovaného zařízení](media/quickstart-send-telemetry-python/SimulatedDevice.png)
+    
+### <a name="to-avoid-the-import-iothubclient-error"></a>Aby se zabránilo iothub_client Chyba importu
+Aktuální verzi sady Azure IoT SDK pro Python je obálka nad [naší sady SDK C](https://github.com/azure/azure-iot-sdk-c). Je generována pomocí [Boost](https://www.boost.org/) knihovny. Z důvodu, že obsahuje několik významných omezení. Další podrobnosti najdete [zde](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)
+
+1. Zkontrolujte, zda máte správnou verzi [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues). Mějte na paměti, že funguje pouze určité verze pro tuto ukázku. 
+2. Zkontrolujte, zda máte správnou verzi C++ runtime [Microsoft Visual C++ Redistributable pro Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). (Doporučujeme nejnovější verzi).
+3. Ověřte, zda jste nainstalovali klienta IOT hub: `pip install azure-iothub-device-client`.
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 

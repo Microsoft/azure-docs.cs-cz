@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
 ms.openlocfilehash: 481b643f2f7201a2a1745c7aef9ddd81883da020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498344"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics ve službě Azure Monitor
@@ -103,7 +103,7 @@ Po klepnutí **Key Vault Analytics** dlaždici můžete zobrazení souhrnných i
 ## <a name="azure-monitor-log-records"></a>Záznamy protokolu Azure Monitor
 Řešení Azure Key Vault analyzuje záznamy, které mají typ **KeyVaults** , která se shromažďují z [AuditEvent protokoly](../../key-vault/key-vault-logging.md) v Azure Diagnostics.  Vlastnosti pro tyto záznamy jsou v následující tabulce:  
 
-| Vlastnost | Popis |
+| Vlastnost | Description |
 |:--- |:--- |
 | Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
@@ -117,13 +117,13 @@ Po klepnutí **Key Vault Analytics** dlaždici můžete zobrazení souhrnných i
 | OperationName |Název operace, jak je uvedeno v [protokolování Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | OperationVersion |Verze rozhraní REST API požadovaná klientem (například *2015-06-01*) |
 | requestUri_s |Identifikátor URI žádosti |
-| Prostředek |Název trezoru klíčů. |
+| Resource |Název trezoru klíčů. |
 | ResourceGroup |Skupina prostředků trezoru klíčů. |
 | ResourceId |ID prostředku Azure Resource Manageru Pro protokoly Key Vault. to je ID prostředku Key Vault. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | *TREZORY SLUŽBY* |
 | resultSignature |Stav protokolu HTTP (například *OK*) |
-| Hodnota resultType |Výsledek požadavku REST API (například *úspěch*) |
+| ResultType |Výsledek požadavku REST API (například *úspěch*) |
 | SubscriptionId |ID předplatného Azure obsahující trezor klíčů předplatného |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Migrace z původního řešení Key Vault

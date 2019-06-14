@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: container-service
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 06/05/2019
 ms.author: danlep
-ms.openlocfilehash: 48deeec7a2c8767ab5dbb81b622e6d40483ed455
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fb6dec606169eb0bf2bfbeff042700cff441560b
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202819"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808907"
 ---
 # <a name="make-a-remote-connection-to-a-kubernetes-dcos-or-docker-swarm-cluster"></a>Vzdálené připojení ke clusteru Kubernetes, DC/OS nebo Docker Swarm
 Po vytvoření clusteru Azure Container Service je nutné se ke clusteru připojit kvůli nasazení a správě úloh. Tento článek popisuje, jak se připojit k hlavnímu virtuálnímu počítači clusteru ze vzdáleného počítače. 
@@ -32,7 +32,7 @@ Podle následujícího postupu nainstalujete a nakonfigurujete `kubectl` ve vaš
 > 
 
 ### <a name="install-kubectl"></a>Instalace kubectl
-Jedním ze způsobů, jak tento nástroj nainstalovat, je použít `az acs kubernetes install-cli` rozhraní příkazového řádku Azure. Pokud chcete spustit tento příkaz, ujistěte se, že můžete [nainstalované](/cli/azure/install-az-cli2) nejnovější verzi Azure CLI a přihlášení k účtu Azure (`az login`).
+Jedním ze způsobů, jak tento nástroj nainstalovat, je použít `az acs kubernetes install-cli` rozhraní příkazového řádku Azure. Ke spuštění tohoto příkazu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a přihlaste se k účtu Azure pomocí `az login`.
 
 ```azurecli
 # Linux or macOS
@@ -78,7 +78,7 @@ kubectl proxy
 
 Uživatelské rozhraní Kubernetes je nyní k dispozici na adrese: `http://localhost:8001/ui`.
 
-Další informace najdete v tématu [Rychlé představení Kubernetes](http://kubernetes.io/docs/user-guide/quick-start/).
+Další informace najdete v tématu [rychlý start s Kubernetes](http://kubernetes.io/docs/user-guide/quick-start/).
 
 ## <a name="connect-to-a-dcos-or-swarm-cluster"></a>Připojení ke clusteru DC/OS nebo Swarm
 

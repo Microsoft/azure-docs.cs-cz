@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 231f44612b5e87afdf84f31d86c80be644fb4484
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6ae1094a6e47d19af97fbbb1ce988d0756f33731
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048546"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, které používáte:"]
 > * [Verze 1](v1/data-factory-azure-sql-connector.md)
 > * [Aktuální verze](connector-azure-sql-database.md)
 
@@ -364,6 +364,9 @@ GO
 
 ### <a name="azure-sql-database-as-the-sink"></a>Azure SQL Database jako jímka
 
+> [!TIP]
+> Další informace o podporovaných zápisu chování, konfigurace a osvědčených postupů z [osvědčený postup pro načítání dat do služby Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database).
+
 Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastnost v aktivitě kopírování jímky pro **SqlSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
 
 | Vlastnost | Popis | Požaduje se |
@@ -372,14 +375,11 @@ Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastn
 | writeBatchSize | Počet řádků, která se vloží do tabulky SQL **dávce**.<br/> Je povolená hodnota **celé číslo** (počet řádků). Ve výchozím nastavení služby Data Factory dynamicky určí příslušné batch velikost podle velikosti řádku. | Ne |
 | writeBatchTimeout | Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace.<br/> Je povolená hodnota **timespan**. Příklad: "00: 30:00" (30 minut). | Ne |
 | preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisem dat do Azure SQL Database. Pouze vyvolá se jednou za kopírování spustit. Tuto vlastnost použijte k vyčištění dat předem. | Ne |
-| sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. Příkladem je upsertuje nebo transformovat pomocí vlastní obchodní logikou. <br/><br/>Tuto uloženou proceduru se **za batch**. Pro operace, které pouze spustit jednou a nemají co dělat se zdrojovými daty, použijte `preCopyScript` vlastnost. Příklad operace jsou delete a zkrátit. | Ne |
+| sqlWriterStoredProcedureName | Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky. <br/>Tuto uloženou proceduru se **za batch**. Pro operace, které pouze spustit jednou a nesouvisí se zdrojovými daty, například delete nebo truncate, použijte `preCopyScript` vlastnost. | Ne |
 | storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. | Ne |
 | sqlWriterTableType | Zadejte název tabulky typu použitého v uložené proceduře. Aktivitu kopírování, která zpřístupňuje data přesouvá v dočasné tabulce s tímto typem tabulky. Uloženou proceduru kód pak sloučit data kopírovaná s existujícími daty. | Ne |
 
-> [!TIP]
-> Při kopírování dat do služby Azure SQL Database, aktivita kopírování připojí data do tabulky jímky ve výchozím nastavení. Pokud chcete provést s funkcí upsert nebo další obchodní logiku, použijte uloženou proceduru v **SqlSink**. Přečtěte si další podrobnosti o [volání uložené procedury SQL jímky](#invoking-stored-procedure-for-sql-sink).
-
-#### <a name="append-data-example"></a>Připojit příklad dat
+**Příklad 1: připojení dat**
 
 ```json
 "activities":[
@@ -411,7 +411,7 @@ Chcete-li kopírovat data do služby Azure SQL Database, nastavte **typ** vlastn
 ]
 ```
 
-#### <a name="invoke-a-stored-procedure-during-copy-for-upsert-example"></a>Vyvolání uložené procedury během kopírování například upsertovat
+**Příklad 2: volání uložené procedury během kopírování**
 
 Přečtěte si další podrobnosti o [volání uložené procedury SQL jímky](#invoking-stored-procedure-for-sql-sink).
 
@@ -450,84 +450,69 @@ Přečtěte si další podrobnosti o [volání uložené procedury SQL jímky](#
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>Sloupce identity v cílové databázi
+## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>Osvědčeným postupem pro načítání dat do služby Azure SQL Database
 
-V této části se dozvíte, jak kopírovat data ze zdrojové tabulky bez sloupec identity do cílové tabulky se sloupcem identity.
+Při kopírování dat do Azure SQL Database může vyžadovat chování různých zápisu:
 
-#### <a name="source-table"></a>Zdrojová tabulka
+- **[Připojit](#append-data)** : zdroj data obsahují pouze nové záznamy;
+- **[Upsert](#upsert-data)** : Moje zdrojová data mají vkládání a aktualizace.
+- **[Přepsat](#overwrite-entire-table)** : Chcete znovu načíst tabulku celé dimenze pokaždé, když;
+- **[Zápis o vlastní logiku](#write-data-with-custom-logic)** : Potřebuji další zpracování před posledním vkládání do cílové tabulky.
+
+Odkazovat uvedeném pořadí oddíly o tom, jak nakonfigurovat v ADF a osvědčené postupy.
+
+### <a name="append-data"></a>Připojení dat
+
+Toto je výchozí chování tohoto konektoru jímky Azure SQL Database a proveďte ADF **hromadné vložení** efektivně zapisovat do tabulky. Můžete jednoduše nakonfigurovat zdroj a odpovídajícím způsobem jímky v aktivitě kopírování.
+
+### <a name="upsert-data"></a>Upsert dat
+
+**Možnost mám** (navrhované zejména v případě, že máte ke kopírování velkých objemů dat): **přístup většina výkonné** provedete upsert je následující: 
+
+- Za prvé, využívat [dočasné tabulky v rozsahu databáze](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database) hromadné načtení všech záznamů pomocí aktivit kopírování. Operace u databáze s rozsahem dočasné tabulky se neprotokolují, načtete milióny záznamů v řádu sekund.
+- Aktivita uložená procedura spuštění ve službě ADF použít [sloučit](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (nebo INSERT/UPDATE) prohlášení a dočasné tabulky jako zdroje k provedení všech aktualizaci nebo vložení jako jedna transakce, snižuje množství výměn dat a protokolovat operace. Na konci aktivity uložené procedury lze až bude připravená na další cyklus upsert oříznutí dočasné tabulky. 
+
+Jako příklad, ve službě Azure Data Factory vytvoříte kanál s **aktivita kopírování** zřetězené s **aktivity uložené procedury** v případě úspěchu. Nejprve kopíruje data ze zdrojového úložiště do dočasné tabulky Azure SQL Database, třeba " **##UpsertTempTable**" jako název tabulky v datové sadě, pak ten volá uloženou proceduru ke sloučení do cílového zdroje dat z dočasné tabulky tabulky a vyčistit dočasné tabulky.
+
+![Upsertovat](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+V databázi definujte uložená procedura s logikou SLOUČENÍ, podobně jako následující text, který ukazuje z výše uvedených aktivity uložené procedury. Za předpokladu, že cíl **marketingové** tabulky se třemi sloupci: **ID profilu**, **stavu**, a **kategorie**, a proveďte upsert na základě **ProfileID** sloupce.
 
 ```sql
-create table dbo.SourceTbl
-(
-       name varchar(100),
-       age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-#### <a name="destination-table"></a>Cílová tabulka
+**Možnost II:** Alternativně můžete se rozhodnout [vyvolat uloženou proceduru v aktivitě kopírování](#invoking-stored-procedure-for-sql-sink), při Poznámka: Tento přístup je provést pro každý řádek ve zdrojové tabulce místo využívání hromadné vložení jako výchozí přístup v aktivitě kopírování proto se nevejde pro upsert velkého rozsahu.
 
-```sql
-create table dbo.TargetTbl
-(
-       identifier int identity(1,1),
-       name varchar(100),
-       age int
-)
-```
+### <a name="overwrite-entire-table"></a>Přepsat celou tabulku
 
-> [!NOTE]
-> Cílová tabulka obsahuje sloupec identity.
+Můžete nakonfigurovat **preCopyScript** vlastnost v aktivitě kopírování jímky, v takovém případě pro každé spuštění aktivity kopírování ADF spustí skript nejprve spusťte kopírování vložte data. Například pokud chcete přepsat celou tabulku s nejnovější data, můžete určit skript, který nejprve odstranit všechny záznamy před hromadného načtení nová data ze zdroje.
 
-#### <a name="source-dataset-json-definition"></a>Zdroj definice JSON datové sady
+### <a name="write-data-with-custom-logic"></a>Zápis dat o vlastní logiku
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " AzureSqlTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
-
-#### <a name="destination-dataset-json-definition"></a>Určení definice JSON datové sady
-
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "AzureSqlTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
-
-> [!NOTE]
-> Zdrojové a cílové tabulce mají jiné schéma. 
-
-Cíl obsahuje další sloupec s identitou. V tomto scénáři je nutné zadat **struktura** vlastnost v definici datové sady target, která neobsahuje sloupec identity.
+Podobné, jak je popsáno v [Upsert data](#upsert-data) oddílu, když potřebujete provést další zpracování před posledním vložení zdrojová data do cílové tabulky, můžete) pro široké možnosti škálování a načíst do tabulky s vymezeným oborem dočasné databáze a vyvoláte uložená procedura nebo b) vyvolání uložené procedury během kopírování.
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> Vyvolání uložené procedury SQL jímky
 
 Při kopírování dat do Azure SQL Database, můžete také nakonfigurovat a vyvolat uloženou proceduru s další parametry zadané uživatelem.
 
-Uloženou proceduru můžete použít, když integrovaná funkce kopírování mechanismy neslouží účel. Se obvykle používá při upsert, insert a update nebo další zpracování je třeba provést před posledním vložení zdrojová data do cílové tabulky. Některé příklady vysokého jsou sloučení sloupců, vyhledat další hodnoty a vložení do více než jednou tabulkou.
+> [!TIP]
+> Volání uložené procedury zpracovává na data řádek po řádku namísto hromadné operace, která není určeno pro kopírování velkého rozsahu. Další informace z [osvědčený postup pro načítání dat do služby Azure SQL Database](#best-practice-for-loading-data-into-azure-sql-database).
+
+Uloženou proceduru můžete použít, když integrovaná funkce kopírování mechanismy neslouží účel, například použít zvláštní zpracování před posledním vložení zdrojová data do cílové tabulky. Některé příklady vysokého jsou sloučení sloupců, vyhledat další hodnoty a vložení do více než jednou tabulkou.
 
 Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve službě Azure SQL Database pomocí uložené procedury. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ID profilu**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 

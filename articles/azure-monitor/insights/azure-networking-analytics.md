@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: bwren
-ms.openlocfilehash: 244df90a9db2a2b0d5f6ca6e1874bce94fc7f5bf
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13908706f8dcec0eb2d1773bcef2ee622b4ebcc1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048637"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Sítě Azure monitoring řešení ve službě Azure Monitor
 
@@ -221,8 +221,8 @@ Používat aktualizované řešení:
 
      | Namísto: | Použití: |
      | --- | --- |
-     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde element ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
-     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde element ResourceType == "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124; kde element ResourceType == "NETWORKSECURITYGROUPS" |
 
    + Pro všechna pole, který má příponu \_s, \_d, nebo \_g v názvu, změňte první znak na malá písmena

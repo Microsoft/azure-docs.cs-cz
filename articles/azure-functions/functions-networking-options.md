@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050643"
 ---
 # <a name="azure-functions-networking-options"></a>Služba Azure Functions možnostech sítě
 
@@ -25,13 +25,13 @@ Můžete hostovat aplikace function App v několika způsoby:
 
 * Existuje sada možností plánu, které běží na infrastrukturu víceklientské s různými úrovněmi připojení k virtuální síti a možnosti škálování:
     * [Plánu Consumption](functions-scale.md#consumption-plan), která se dynamicky škáluje v reakci na zatížení a nabízí možnosti izolace sítě minimální.
-    * [Plán Premium](functions-scale.md#premium-plan-public-preview), což také dynamicky, škálování a nabízí komplexnější izolace sítě.
+    * [Plán Premium](functions-scale.md#premium-plan), což také dynamicky, škálování a nabízí komplexnější izolace sítě.
     * Azure [plán služby App Service](functions-scale.md#app-service-plan), který funguje na pevnou škálovací a nabízí podobné izolace sítě k plánu Premium.
 * Funkce můžete spustit v [služby App Service Environment](../app-service/environment/intro.md). Tato metoda nasadí funkce do vaší virtuální sítě a nabízí plnou síťového ovládacího prvku a izolaci.
 
 ## <a name="matrix-of-networking-features"></a>Matice síťových funkcí
 
-|                |[Plán consumption](functions-scale.md#consumption-plan)|[Plán Premium (preview)](functions-scale.md#premium-plan-public-preview)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
+|                |[Plán consumption](functions-scale.md#consumption-plan)|[Plán Premium (preview)](functions-scale.md#premium-plan)|[Plán služby App Service](functions-scale.md#app-service-plan)|[App Service Environment](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Příchozí omezení IP adres](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Omezení odchozích IP adres](#private-site-access)|❌No| ❌No|❌No|✅Yes|

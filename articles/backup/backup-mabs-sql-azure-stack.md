@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254472"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Zálohování SQL serveru v zásobníku
@@ -66,7 +66,7 @@ Správa zálohování databáze SQL serveru do Azure a obnovení z Azure zahrnuj
 
 8. V **vyberte způsob vytvoření repliky**, zvolte, jak vytvořit první bod obnovení. Prvotní zálohování ručně (mimo síť) můžou přenášet do vyhnout zahlcení šířky pásma nebo v síti. Pokud budete chtít čekat na přenos první zálohování, můžete zadat čas pro počáteční přenos. Klikněte na **Další**.
 
-    ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
+    ![Metodu počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
     Kopie prvotní zálohy. vyžaduje přenos celý zdroj dat (databáze SQL serveru) z provozního serveru (počítač s SQL serverem) do Azure Backup Server. Tato data můžou být velké a přenášení dat přes síť může být delší než šířka pásma. Z tohoto důvodu můžete přenést prvotní zálohování: **Ručně** (pomocí vyměnitelného média) Chcete-li se vyhnout zahlcení šířky pásma, nebo **automaticky přes síť** (v určený čas).
 
