@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d7c1d9b59e802343f6d8fe258e8e4ac961bb2df
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394519"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061007"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Standardní vlastnosti ve službě Azure Monitor protokolování záznamů
 Data protokolu ve službě Azure Monitor je [uložené jako sady záznamů](../log-query/log-query-overview.md), každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
@@ -52,7 +52,7 @@ search *
 ```
 
 ## <a name="resourceid"></a>\_ID prostředku
- **\_ResourceId** vlastnost obsahuje jedinečný identifikátor pro prostředek, který je přidružený záznam. To vám dává standardní vlastnosti, které chcete použít k určení oboru dotazu pouze záznamy z konkrétního prostředku nebo k související data z více tabulek.
+**\_ResourceId** vlastnost obsahuje jedinečný identifikátor pro prostředek, který je přidružený záznam. To vám dává standardní vlastnosti, které chcete použít k určení oboru dotazu pouze záznamy z konkrétního prostředku nebo k související data z více tabulek.
 
 Pro prostředky Azure, hodnota **_ResourceId** je [ID URL prostředku Azure](../../azure-resource-manager/resource-group-template-functions-resource.md). Vlastnost je aktuálně omezená na prostředky Azure, ale bude možné rozšířit na prostředky mimo Azure, jako jsou místní počítače.
 
@@ -98,7 +98,7 @@ union withsource = tt *
 Pomocí těchto `union withsource = tt *` střídmě dotazy jsou nákladné ke spuštění kontrol napříč datové typy.
 
 ## <a name="isbillable"></a>\_IsBillable
- **\_IsBillable** vlastnost určuje, zda přijatých dat se dají fakturovat. Data s  **\_IsBillable** rovna _false_ se shromažďují zadarmo a není účtují ke svému účtu Azure.
+**\_IsBillable** vlastnost určuje, zda přijatých dat se dají fakturovat. Data s  **\_IsBillable** rovna _false_ se shromažďují zadarmo a není účtují ke svému účtu Azure.
 
 ### <a name="examples"></a>Příklady
 Pokud chcete získat seznam počítačů odesílajících billed datové typy, použijte následující dotaz:
@@ -125,7 +125,7 @@ union withsource = tt *
 ```
 
 ## <a name="billedsize"></a>\_BilledSize
- **\_BilledSize** vlastnost určuje velikost v bajtech data, která se ke svému účtu Azure účtovat, pokud  **\_IsBillable** má hodnotu true.
+**\_BilledSize** vlastnost určuje velikost v bajtech data, která se ke svému účtu Azure účtovat, pokud  **\_IsBillable** má hodnotu true.
 
 ### <a name="examples"></a>Příklady
 Pokud chcete zobrazit velikost účtovaných událostí může ingestovat počítače, použijte `_BilledSize` vlastnost, která poskytuje velikost v bajtech:
@@ -135,6 +135,26 @@ union withsource = tt *
 | where _IsBillable == true 
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
 ```
+
+Pokud chcete zobrazit velikost účtovaných událostí může ingestovat předplatného, použijte tento dotaz:
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+```
+
+Pokud chcete zobrazit velikost účtovaných událostí může ingestovat skupinu prostředků, použijte následující dotaz:
+
+```Kusto
+union withsource=table * 
+| where _IsBillable == true 
+| parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
+| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+
+```
+
 
 Pokud chcete zobrazit počet událostí může ingestovat počítače, použijte následující dotaz:
 
@@ -151,7 +171,7 @@ union withsource = tt *
 | summarize count() by Computer  | sort by count_ nulls last
 ```
 
-Pokud chcete vidět, že počet účtovaných datové typy jsou odesílání dat k určitému počítači, použijte následující dotaz:
+Pokud chcete zobrazit počet účtovaných datových typů z určitého počítače, použijte následující dotaz:
 
 ```Kusto
 union withsource = tt *
@@ -159,7 +179,6 @@ union withsource = tt *
 | where _IsBillable == true 
 | summarize count() by tt | sort by count_ nulls last 
 ```
-
 
 ## <a name="next-steps"></a>Další postup
 

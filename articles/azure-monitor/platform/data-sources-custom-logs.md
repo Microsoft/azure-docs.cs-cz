@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60996165"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly ve službě Azure Monitor
@@ -100,7 +100,7 @@ Následující tabulka obsahuje příklady platných vzorů k určení různých
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis pro protokol
 Vámi určeným názvem se použije pro typ protokolu, jak je popsáno výše.  Vždy skončí s _CL odlišující jej jako vlastní protokol.
 
-1. Zadejte název protokolu.   **\_CL** přípona je poskytována automaticky.
+1. Zadejte název protokolu.  **\_CL** přípona je poskytována automaticky.
 2. Přidat volitelný **popis**.
 3. Klikněte na tlačítko **Další** se uložit definici vlastního protokolu.
 
