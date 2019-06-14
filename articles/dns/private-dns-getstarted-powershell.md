@@ -5,24 +5,24 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 06/13/2019
 ms.author: victorh
-ms.openlocfilehash: 2b88454f06d2e2d42298e52feeaa26ae9d1a4902
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 8f39c9707fef013c162e407a7e3ccaa67f2cabfc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730248"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080586"
 ---
 # <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Kurz: Vytvoření privátní zóny DNS pomocí Azure Powershellu
+
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 Tento kurz vás provede kroky k vytvoření první privátní zóny a záznamu DNS pomocí Azure PowerShellu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
-
-K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty označujeme jako *virtuální sítě pro překlad*. Můžete také zadat virtuální síť, pro kterou bude Azure DNS uchovávat záznamy názvů hostitelů při každém vytvoření virtuálního počítače, změně jeho IP adresy nebo jeho odstranění.  Tu označujeme jako *registrační virtuální síť*.
+K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Toto nastavení se nazývá *propojené* virtuální sítě. Pokud je povolená Automatická registrace, Azure DNS také aktualizuje záznamy zóny pokaždé, když je vytvořen virtuální počítač, změny jeho "IP adresu, nebo je odstranit.
 
 V tomto kurzu se naučíte:
 
@@ -53,9 +53,9 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-private-zone"></a>Vytvoření privátní zóny DNS
 
-Zónu DNS vytvoříte pomocí rutiny `New-AzDnsZone` s parametrem **ZoneType** s hodnotou *Private*. Následující příklad vytvoří zónu DNS s názvem **private.contoso.com** ve skupině prostředků s názvem **MyAzureResourceGroup** a zpřístupňuje zóny DNS pro virtuální síť s názvem  **MyAzureVnet**.
+Zóna DNS se vytvoří pomocí rutiny `New-AzPrivateDnsZone`.
 
-Pokud parametr **ZoneType** vynecháte, zóna se vytvoří jako veřejná zóna. Pokud potřebujete vytvořit privátní zónu, je tento parametr povinný. 
+Následující příklad vytvoří virtuální síť s názvem **myAzureVNet**. Pak vytvoří zónu DNS s názvem **private.contoso.com** v **MyAzureResourceGroup** zónu DNS, která propojí skupinu prostředků, **MyAzureVnet** virtuální sítě, a umožňuje automatické registrace.
 
 ```azurepowershell
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
@@ -66,28 +66,29 @@ $vnet = New-AzVirtualNetwork `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup `
-   -ZoneType Private `
-   -RegistrationVirtualNetworkId @($vnet.Id)
+$zone = New-AzPrivateDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup
+
+$link = New-AzPrivateDnsVirtualNetworkLink -ZoneName private.contoso.com `
+  -ResourceGroupName MyAzureResourceGroup -Name "mylink" `
+  -VirtualNetworkId $vnet.id -EnableRegistration
 ```
 
-Kdybyste chtěli vytvořit zónu jenom pro překlad adres (bez automatického vytváření názvu hostitele), mohli byste místo parametru *RegistrationVirtualNetworkId* použít parametr *ResolutionVirtualNetworkId*.
-
-> [!NOTE]
-> Automaticky vytvořené záznamy názvu hostitele se vám nezobrazí. Později ale provedete testování, abyste si ověřili, že existují.
+Pokud chcete vytvořit zónu jenom pro překlad adres (registrace bez automatické název hostitele), můžete vynechat `-EnableRegistration` parametru.
 
 ### <a name="list-dns-private-zones"></a>Výpis privátních zón DNS
 
-Vynecháním názvu zóny v rutině `Get-AzDnsZone` můžete zobrazit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zón.
+Vynecháním názvu zóny v rutině `Get-AzPrivateDnsZone` můžete zobrazit výčet všech zón ve skupině prostředků. Tato operace vrátí pole objektů zón.
 
 ```azurepowershell
-Get-AzDnsZone -ResourceGroupName MyAzureResourceGroup
+$zones = Get-AzPrivateDnsZone -ResourceGroupName MyAzureResourceGroup
+$zones
 ```
 
-Vynecháním názvu zóny i názvu skupiny prostředků v rutině `Get-AzDnsZone` můžete zobrazit výčet všech zón v předplatném Azure.
+Vynecháním názvu zóny i názvu skupiny prostředků v rutině `Get-AzPrivateDnsZone` můžete zobrazit výčet všech zón v předplatném Azure.
 
 ```azurepowershell
-Get-AzDnsZone
+$zones = Get-AzPrivateDnsZone
+$zones
 ```
 
 ## <a name="create-the-test-virtual-machines"></a>Vytvoření testovacích virtuálních počítačů
@@ -118,12 +119,12 @@ Dokončení tohoto procesu může několik minut trvat.
 
 ## <a name="create-an-additional-dns-record"></a>Vytvoření dalšího záznamu DNS
 
-Sady záznamů vytvoříte pomocí rutiny `New-AzDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **private.contoso.com**, ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.private.contoso.com**. Typ záznamu je A, IP adresa je 10.2.0.4 a hodnota TTL je 3600 sekund.
+Sady záznamů vytvoříte pomocí rutiny `New-AzPrivateDnsRecordSet`. Následující příklad vytvoří záznam s relativním názvem **db** v zóně DNS **private.contoso.com**, ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.private.contoso.com**. Typ záznamu je A, IP adresa je 10.2.0.4 a hodnota TTL je 3600 sekund.
 
 ```azurepowershell
-New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
+New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
-   -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
+   -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
 
 ### <a name="view-dns-records"></a>Zobrazení záznamů DNS
@@ -131,9 +132,8 @@ New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
 K výpisu záznamů DNS ve vaší zóně použijte následující příkaz:
 
 ```azurepowershell
-Get-AzDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
+Get-AzPrivateDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
-Nezapomeňte, že automaticky se vytvořené záznamy A pro vaše dva testovací virtuální počítače se nezobrazí.
 
 ## <a name="test-the-private-zone"></a>Testování privátní zóny
 
@@ -155,10 +155,13 @@ Totéž zopakujte pro virtuální počítač myVM02.
 ### <a name="ping-the-vms-by-name"></a>Odeslání příkazu ping na virtuální počítače podle názvu
 
 1. Z příkazového řádku ve Windows PowerShellu virtuálního počítače myVM02 odešlete příkaz ping do virtuálního počítače myVM01 a použijte v něm automaticky zaregistrovaný název hostitele:
+
    ```
    ping myVM01.private.contoso.com
    ```
+
    Zobrazený výstup by měl vypadat zhruba takto:
+
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -174,11 +177,15 @@ Totéž zopakujte pro virtuální počítač myVM02.
        Minimum = 0ms, Maximum = 1ms, Average = 0ms
    PS C:\>
    ```
+
 2. Teď odešlete příkaz ping na název **db**, který jste předtím vytvořili:
+
    ```
    ping db.private.contoso.com
    ```
+
    Zobrazený výstup by měl vypadat zhruba takto:
+
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -190,7 +197,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
    Ping statistics for 10.2.0.4:
        Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
-   Approximate round trip times in milli-seconds:
+   Approximate round trip times in milliseconds:
        Minimum = 0ms, Maximum = 0ms, Average = 0ms
    PS C:\>
    ```
@@ -210,7 +217,3 @@ Teď se můžete o privátních zónách DNS dozvědět podrobnější informace
 
 > [!div class="nextstepaction"]
 > [Použití Azure DNS pro privátní domény](private-dns-overview.md)
-
-
-
-

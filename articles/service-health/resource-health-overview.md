@@ -5,14 +5,13 @@ author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
-ms.workload: Supportability
-ms.date: 11/16/2018
-ms.openlocfilehash: d2a77e831290aa1ee0fcb6d4addf8f6e90786d52
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/10/2019
+ms.openlocfilehash: e79f2924448b69989cc563b7b3b30bca0540533f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067202"
 ---
 # <a name="azure-resource-health-overview"></a>Přehled Azure Resource Health
  
@@ -21,6 +20,7 @@ Azure Resource Health pomáhá při diagnostice a získání podpory v případ�
 Vzhledem k tomu [stav Azure](https://status.azure.com) vás informuje o potíže se službou, které mají vliv široké škále zákazníků Azure, Resource Health poskytuje individuální řídicí panel stav svých prostředků. Resource Health ukazuje všechny časy, kdy byly vaše prostředky v minulosti nedostupné kvůli problémům se službami Azure. Pak je jednoduchý rozumět, pokud byl došlo k porušení smlouvy SLA. 
 
 ## <a name="resource-definition-and-health-assessment"></a>Posouzení definice a stavu prostředků
+
 Prostředek je konkrétní instance služby Azure: například virtuální počítač, webové aplikace nebo databáze SQL.
 
 Služba Resource Health spoléhá na signály, protože ho vygeneroval jiný služby Azure k vyhodnocení, zda prostředek je v pořádku, či nikoli. Pokud prostředek není v pořádku, Resource Health analyzuje dodatečné informace k určení příčiny problému. Také identifikuje akce, které Microsoft trvá na tento problém vyřešit nebo akce, které můžete provést při řešení příčiny problému. 
@@ -28,17 +28,21 @@ Služba Resource Health spoléhá na signály, protože ho vygeneroval jiný slu
 Pro další podrobnosti o tom, jak se bude hodnotit stavu, zkontrolujte úplný seznam typů prostředků a kontrolách stavu ve službě [Azure Resource Health](resource-health-checks-resource-types.md).
 
 ## <a name="health-status"></a>Stav
+
 Stav prostředku se zobrazí jako jedna z následujících stavů.
 
-### <a name="available"></a>K dispozici.
+### <a name="available"></a>K dispozici
+
 Stav **dostupné** znamená, že služba nezjistila žádné události, které ovlivňují stav prostředku. V případech, ve kterém prostředek se zotavuje ze neplánovaný výpadek během posledních 24 hodin se zobrazí **nedávno Vyřešeno** oznámení.
 
 ![Stav "Dostupný" pro virtuální počítač s oznámením "Nedávno vyřešené"](./media/resource-health-overview/Available.png)
 
 ### <a name="unavailable"></a>Není dostupný
+
 Stav **není k dispozici** znamená, že služba zjistila k aktuálnímu platformy nebo jiných platforem událost, která má vliv na stav prostředku.
 
 #### <a name="platform-events"></a>Události platformy
+
 Události platformy jsou aktivovány více komponent infrastruktury Azure. Patří mezi ně naplánované akce (například plánovaná údržba) i neočekávané incidentů (například restartování neplánované hostitele).
 
 Služba Resource Health poskytuje další podrobnosti o události a proces obnovení. Také umožňuje i v případě, že nemáte k dispozici aktivní smlouvu podpory společnosti Microsoft, kontaktujte podporu.
@@ -46,11 +50,13 @@ Služba Resource Health poskytuje další podrobnosti o události a proces obnov
 ![Stav služby "Není k dispozici" pro virtuální počítač z důvodu události platformy](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Události jiné platformy
+
 Události mimo platformy jsou aktivovány akce uživatelů. Příklady jsou zastavení virtuálního počítače nebo dosažení maximálního počtu připojení k Azure Cache pro Redis.
 
 ![Stav služby "Není k dispozici" pro virtuální počítač kvůli jiné platformy](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Neznámé
+
 Stav **neznámý** označuje, že Resource Health neobdržel informace o tomto zdroji pro více než 10 minut. Přestože tento stav není úplným a rozhodujícím údaj o stavu prostředku, je důležitý datový bod v procesu odstraňování potíží.
 
 Pokud prostředek běží podle očekávání, stav prostředku se změní na **dostupné** za pár minut.
@@ -60,26 +66,31 @@ Pokud máte problémy s prostředkem, **neznámý** stav může naznačovat, že
 ![Stav "Neznámá" pro virtuální počítač](./media/resource-health-overview/Unknown.png)
 
 ### <a name="degraded"></a>Sníženo
+
 Stav **snížený** znamená, že váš prostředek byl nalezen ke ztrátě výkonu, i když je stále k dispozici pro použití.
 Různé prostředky mají své vlastní kritéria pro kdy určí, že má snížený výkon prostředku.
 
 ![Stav "Snížený" pro virtuální počítač](./media/resource-health-overview/degraded.png)
 
 ## <a name="reporting-an-incorrect-status"></a>Nesprávný stav vytváření sestav
+
 Pokud se domníváte, že aktuální stav je nesprávná, můžete nás informovat tak, že vyberete **sestavy nesprávný stav**. V případech, kdy problém s Azure je ovlivňuje doporučujeme vám obraťte se na podporu – od Resource Health. 
 
 ![Pole pro odeslání informací o nesprávný stav](./media/resource-health-overview/incorrect-status.png)
 
 ## <a name="historical-information"></a>Historické informace
+
 Dostanete až do 14 dnů v historii stavu **historie stavu** část Resource Health. 
 
 ![Seznam událostí stavu prostředků za poslední dva týdny](./media/resource-health-overview/history-blade.png)
 
 ## <a name="getting-started"></a>Začínáme
+
 Chcete-li spustit Resource Health pro jeden prostředek:
-1.  Přihlaste se k portálu Azure.
-2.  Vyhledejte prostředek.
-3.  V nabídce prostředků v levém podokně vyberte **Resource health**.
+
+1. Přihlaste se k portálu Azure.
+2. Vyhledejte prostředek.
+3. V nabídce prostředků v levém podokně vyberte **Resource health**.
 
 ![Otevírání Resource Health ze zobrazení zdrojů](./media/resource-health-overview/from-resource-blade.png)
 

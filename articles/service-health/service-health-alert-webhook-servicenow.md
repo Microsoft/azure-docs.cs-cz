@@ -1,23 +1,24 @@
 ---
-title: Konfigurace výstrah stavu služby Azure s použitím ServiceNow | Dokumentace Microsoftu
+title: Odeslat upozornění na stav služby Azure s použitím ServiceNow pomocí webhooků
 description: Získáte přizpůsobená oznámení o události služby service health k vaší instanci ServiceNow.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620864"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067108"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurace výstrah stavu služby s použitím ServiceNow
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Odeslat upozornění na stav služby Azure s použitím ServiceNow pomocí webhooků
 
 Tento článek ukazuje, jak integrovat výstrah stavu služby Azure s použitím ServiceNow pomocí webhooku. Po nastavení integraci webhooků s instancí ServiceNow, získáváte upozornění pomocí vaší stávající infrastruktury oznámení, kdy vás ovlivňují problémy se službami Azure. Pokaždé, když se aktivuje upozornění služby Azure Service Health, zavolá webhook prostřednictvím rozhraní API REST pro skripty pro ServiceNow.
 
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Vytváření skriptů rozhraní REST API v ServiceNow
+
 1.  Ujistěte se, že nemáte registrovanou službu a přihlášení do vaší [ServiceNow](https://www.servicenow.com/) účtu.
 
 1.  Přejděte **webové služby System** části ServiceNow a vyberte **skripty rozhraní REST API**.

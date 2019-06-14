@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 154efffcb1f86907fefecc060419c1d9450470f8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f992aed6eba775052483b1657d04dead18b2b2ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059170"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Service Fabric nabízí sadu rozhraní API k dosažení následující funkce vz
 - Správa uchovávání záloh (nadcházející)
 
 ## <a name="prerequisites"></a>Požadavky
-* Cluster Service Fabric s Fabric verze 6.2 a novějším. Cluster by měla nastavit na Windows serveru. Projít tento [článku](service-fabric-cluster-creation-for-windows-server.md) pokyny ke stažení požadovaný balíček.
+* Cluster Service Fabric s využitím Fabric verze 6.4 nebo vyšší. Projít tento [článku](service-fabric-cluster-creation-for-windows-server.md) pokyny ke stažení požadovaný balíček.
 * Certifikát X.509 pro šifrování tajných kódů, které jsou potřebné pro připojení do služby storage k ukládání záloh. Přečtěte si [článku](service-fabric-windows-cluster-x509-security.md) vědět, jak získat nebo vytvořit certifikát X.509 podepsaný svým držitelem.
 
 * Service Fabric Reliable stavové aplikace sestavené pomocí Service Fabric SDK verze 3.0 nebo vyšší. Aplikace cílené na.Net Core 2.0, aplikace by měly být sestaveny pomocí Service Fabric SDK verze 3.1 nebo novější.

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 9e1b1953520c5502668fbbae70a37a140253b035
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241691"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat s názvem hodnoty v zásadách Azure API Management
@@ -36,7 +36,7 @@ Každá instance služby API Management má vlastnosti kolekce párů klíč/hod
 
 Hodnoty vlastností můžou obsahovat řetězcových literálů a [výrazy zásad](/azure/api-management/api-management-policy-expressions). Například hodnota `ExpressionProperty` je výraz zásad, která vrací řetězec obsahující aktuální datum a čas. Vlastnost `ContosoHeaderValue` je označen jako tajný klíč, takže jeho hodnota se nezobrazí.
 
-| Název | Value | Secret | Tags |
+| Name | Value | Secret | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.openlocfilehash: d1011a8fd8f181233be8e1fa27c3bfaea3d86141
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685167"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Začínáme s kolekcemi Pracovních prostorů Microsoft Power BI
@@ -103,7 +103,7 @@ Po uložení práce v **Power BI Desktop** se vytvoří soubor PBIX. Tento soubo
 
 V rámci kolekcí Pracovních prostorů Power BI můžete vytvářet datové sady pomocí rozhraní REST API. Potom můžete datovou sadu naplnit daty. To umožňuje pracovat s daty bez potřeby mít Power BI Desktop. Další informace najdete v tématu [Post Datasets](https://msdn.microsoft.com/library/azure/mt778875.aspx).
 
-### <a name="reports"></a>Reports
+### <a name="reports"></a>Sestavy
 
 Můžete ve své aplikaci vytvořit sestavu přímo z datové sady pomocí rozhraní API jazyka JavaScript. Další informace najdete v tématu [Vytvoření nové sestavy z datové sady v kolekcích Pracovních prostorů Power BI](create-report-from-dataset.md).
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 734b0cf9373ea98ab33c06b45ad53b46a3355dd6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62117021"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpečení a ochranu dat.
@@ -256,7 +256,7 @@ Následují některé otázky a odpovědi týkající se zabezpečení a Microso
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Konfigurace protokolu CHAP pro zařízení StorSimple](storsimple-8000-configure-chap.md)
 
-**Otázka:** Chci, aby k zadání hesla Snapshot Manageru zařízení StorSimple na hostitele, který se připojuje k zařízení StorSimple, ale heslo není k dispozici. Co můžu udělat?
+**Otázka:** Chci, aby k zadání hesla Snapshot Manageru zařízení StorSimple na hostitele, který se připojuje k zařízení StorSimple, ale heslo není k dispozici. Co mám udělat?
 
 **Odpověď:** Pokud jste zapomněli heslo, měli byste vytvořit nový. Pak nezapomeňte informovat všechny existující uživatele, že se změnil heslo a že by měl aktualizují jejich klientů na používání nové heslo. Pokyny najdete v tématu:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 18e1bb486c47baf7648a74e31451e2db73f72250
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23ba45804632163cc5de41ac2353091b7cf850c1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063188"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Příprava dat k vytvoření vlastní hlasový vstup
 
@@ -49,7 +49,7 @@ Můžete připravit záznamů jednotlivých projevy a odpovídající přepisu d
 K vytvoření dobré hlasového písma, vytvořte záznamy v tichém místnosti s vysoce kvalitní mikrofon. Konzistentní svazku mluvený míra mluvený rozteč a expresivní zkoušky prezentace řeči je nezbytné.
 
 > [!TIP]
-> Pokud chcete vytvořit hlasový vstup pro použití v produkčním prostředí, doporučujeme že použít profesionální záznam studio a způsobu vyjadřování talentu. Další informace najdete v tématu [jak záznam hlasu ukázky pro vlastní hlasové](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/record-custom-voice-samples).
+> Pokud chcete vytvořit hlasový vstup pro použití v produkčním prostředí, doporučujeme že použít profesionální záznam studio a způsobu vyjadřování talentu. Další informace najdete v tématu [jak záznam hlasu ukázky pro vlastní hlasové](record-custom-voice-samples.md).
 
 ### <a name="audio-files"></a>Zvukové soubory
 

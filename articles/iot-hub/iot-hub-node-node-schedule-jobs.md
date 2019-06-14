@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: 1a42b590fc83b89cd9f90998f835fc58f84ea960
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: af35a84c299544e43988547771ddce75fd71bd90
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065789"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Úlohy vysílání a plánování (Node)
 
@@ -105,7 +105,7 @@ V této části vytvoříte konzolovou aplikaci Node.js, která bude reagovat na
    
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
-            if (!err) {
+            if (err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');

@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192323"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
@@ -111,11 +111,11 @@ Návratové kódy stavu:
 |Kód  |Popis  |
 |---------|---------|
 |-1     |  Neplatný       |
-|0     | Replikování        |
+|0     | Replikace        |
 |1     |  Rehydratace       |
 |2     |   Dokončeno       |
 |3     |   Selhalo      |
-|4     |    Finalizace     |
+|4     |    Dokončování     |
 |||
 
 
@@ -145,7 +145,7 @@ Pro aplikace SSMS, SSDT a připojovací řetězce v prostředí PowerShell, apli
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-**Problém:** Uživatelé získají chyba **nelze nalézt server '\<název serveru > "instance v režimu připojení 'ReadOnly'.**
+**Problém**: Uživatelé získají chyba **nelze nalézt server '\<název serveru > "instance v režimu připojení 'ReadOnly'.**
 
 **Řešení:** Při výběru **oddělte server pro zpracování od fondu dotazů** možnost připojení klienta pomocí výchozí připojovací řetězec (bez `:rw`) se přesměrují na fond replikami dotazu. Pokud repliky ve fondu dotazů jsou online, ale protože synchronizace nebyl dosud nebylo dokončeno, přesměrované klientská připojení může selhat. Pokud chcete zabránit neúspěšná připojení, musí existovat alespoň dva servery ve fondu dotaz při provedení synchronizace. Každý server se synchronizuje jednotlivě, ostatní budou i nadále online. Pokud se rozhodnete, že nebudete chtít server zpracování ve fondu dotaz během zpracování, můžete ho odebrat z fondu pro zpracování a pak ho přidat zpět do fondu, jakmile se zpracování dokončí, ale před synchronizací. Použití paměti a QPU metriky pro monitorování stavu synchronizace.
 

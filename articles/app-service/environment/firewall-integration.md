@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 06/11/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058063"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Používat jenom služby App Service Environment
 
@@ -30,6 +30,21 @@ Existuje mnoho příchozí závislosti, které má služba ASE. Řízení příc
 Odchozí závislostí služby ASE jsou téměř úplně definovány pomocí plně kvalifikovaných názvů domén, které nemají statické adresy za nimi stojí. Chybějící statické adresy znamená, že skupiny zabezpečení sítě (Nsg) nelze použít pro uzamčení odchozí přenosy ze služby ASE. Adresy změnit dostatečně často, že jeden nelze nastavit pravidla založená na aktuální řešení a použít k vytvoření skupin zabezpečení sítě. 
 
 Řešení zabezpečení odchozí adresy spočívá v použití zařízení brány firewall, které můžete řídit odchozí provoz na základě názvů domén. Brány Firewall na Azure můžete omezit odchozí přenosy HTTP i HTTPS založené na plně kvalifikovaný název domény cílový.  
+
+## <a name="system-architecture"></a>Architektura systému
+
+Nasazení služby ASE s odchozí provoz prostřednictvím brány firewall na zařízení vyžaduje změnu trasy v podsíti služby ASE. Směrování provozu na úrovni IP. Pokud si nejste opatrní při definování trasy, můžete vynutit odeslání přenosu s odpovědí protokolu TCP do zdrojového kódu z jiné adresy. To se označuje jako asymetrické směrování a přeruší TCP.
+
+Musí být definované tak, aby příchozí provoz do služby ASE může odpovídat zpět na ně že stejným způsobem jako provoz pochází trasy. To platí pro řízení příchozích požadavků a platí pro požadavky na příchozí žádosti.
+
+Provoz do a ze služby ASE musí dodržovat následující konvence
+
+* Provoz do Azure SQL, úložiště a centra událostí nejsou podporovány s využitím zařízení brány firewall. Tento provoz se musí odeslat přímo na těchto služeb. Je tak, jak provádět dojít ke konfiguraci koncových bodů služby pro tyto tři služby. 
+* Směrovací tabulka pravidla musí být definován, které odesílají řízení příchozích přenosů z odkud pocházejí.
+* Směrovací tabulka pravidla musí být definován, které odesílají příchozí aplikační provoz z odkud pocházejí. 
+* Veškerý ostatní provoz služby ASE opuštění je odeslat do vašeho zařízení brány firewall s pravidlem směrovací tabulky.
+
+![Služba ASE s flowem připojovací Brána Firewall služby Azure][5]
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurace brány Firewall Azure s vaší služby ASE 
 
@@ -68,8 +83,6 @@ Proveďte následující kroky vám umožní vaší služby ASE fungovat bez pro
 Pokud vaše aplikace mají závislosti, musí být přidán do vaše Brána Firewall služby Azure. Vytvoření aplikace pravidla, která umožňují přenosy HTTP/HTTPS a pravidla síťových pro všechno ostatní. 
 
 Pokud víte, které váš provoz žádostí na aplikace budou přicházet z rozsahu adres, můžete přidat, do směrovací tabulky, který je přiřazen k podsíti služby ASE. Pokud rozsah adres je velký nebo neurčená, pak vám pomůže síťové zařízení, jako je Application Gateway získáte jednu adresu pro přidání do směrovací tabulky. Podrobnosti o tom, jak nakonfigurovat službu Application Gateway se vaše služba ASE s ILB, přečtěte si [integrace služby ILB ASE pomocí služby Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
-
-![Služba ASE s flowem připojovací Brána Firewall služby Azure][5]
 
 Toto použití služby Application Gateway je jenom jedním z příkladů, jak nakonfigurovat váš systém. Pokud postupovat podle této cesty, pak musíte přidat trasy do směrovací tabulky podsítě služby ASE, aby odpovědi provoz odeslaný ke službě Application Gateway by tam přejít přímo. 
 

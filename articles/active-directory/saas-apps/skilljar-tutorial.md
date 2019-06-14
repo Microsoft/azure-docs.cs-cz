@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ea7982290cdcd51ba09ca97aa3f23086222516df
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e4df5e259ce1cf2cd10d6ec514fa9091a6bd2d76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Kurz: Integrace Azure Active Directory s Skilljar
 
@@ -54,7 +54,7 @@ Konfigurace integrace Skilljar do služby Azure AD, budete muset přidat Skillja
 
 **Chcete-li přidat Skilljar z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v Skilljar. Skilljar podpor
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Skilljar](https://support.skilljar.com/hc/).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

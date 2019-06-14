@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8581b7f940aceca4e3ab85e44f83bf0bebb1b6f5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d1192d3606dfbbf54a8177c2369a9cae8871d92b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Kurz: Integrace Azure Active Directory s PlanMyLeave
 
@@ -55,7 +55,7 @@ Konfigurace integrace PlanMyLeave do služby Azure AD, budete muset přidat Plan
 
 **Chcete-li přidat PlanMyLeave z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -210,7 +210,7 @@ V této části se vytvoří uživateli Britta Simon v PlanMyLeave. PlanMyLeave 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory PlanMyLeave](mailto:support@planmyleave.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

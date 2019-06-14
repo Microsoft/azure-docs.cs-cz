@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60552412"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spuštění navrácení služeb po obnovení pro virtuální počítače Hyper-V
@@ -29,11 +29,11 @@ Po převzetí služeb při selhání z primárního do sekundárního umístěn�
 1. Vyberte **plány obnovení** > *recoveryplan_name*. Klikněte na tlačítko **převzetí služeb při selhání** > **plánované převzetí služeb při selhání**.
 2. Na **potvrďte plánované převzetí služeb při selhání** zvolte zdrojovým a cílovým umístěním. Všimněte si směr převzetí služeb při selhání. Pokud převzetí služeb při selhání z primárního pracoval jako očekávají a jsou všechny virtuální počítače v sekundární lokalitě, jedná se pouze pro informaci.
 3. Pokud přebíráte služby obnovení z Azure vyberte nastavení v **synchronizace dat**:
-    - **Synchronizovat data před převzetí služeb při selhání (pouze synchronizovat rozdílové změny)**– tuto možnost minimalizuje prostoje pro virtuální počítače, jak synchronizuje bez tyto služby vypnout. Provádí následující kroky:
+    - **Synchronizovat data před převzetí služeb při selhání (pouze synchronizovat rozdílové změny)** – tuto možnost minimalizuje prostoje pro virtuální počítače, jak synchronizuje bez tyto služby vypnout. Provádí následující kroky:
         - Fáze 1: Pořídí snímek virtuálního počítače v Azure a zkopíruje ho do místního hostitele Hyper-V. Počítač se bude spouštět dál v Azure.
         - Fáze 2: Vypne virtuální počítač v Azure tak, aby žádné nové změny dojde k dispozici. Obsahuje závěrečnou sadu rozdílové změny se přenáší na místním serveru a spuštění virtuálního počítače místní databáze.
 
-    - **Synchronizovat data pouze převzetí služeb při selhání (úplné stažení)**– tato možnost je rychlejší.
+    - **Synchronizovat data pouze převzetí služeb při selhání (úplné stažení)** – tato možnost je rychlejší.
         - Tato možnost je rychlejší, protože Očekáváme, že většina disku se změnil, a nechceme a ztrácet čas v výpočet kontrolního součtu. Provede stahování disku. Je také užitečné při místní virtuální počítač se odstranil.
         - Doporučujeme tuto možnost použijte, pokud běží Azure nějakou dobu (za měsíc nebo déle) nebo místní virtuální počítač se odstranil. Tato možnost nebude provádět výpočty kontrolního součtu.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: eded8eb446d36a321acf46231eee3e764ba41504
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407909"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Integrace Azure Active Directory s TOPdesk – zabezpečení
 
@@ -53,7 +53,7 @@ Konfigurace integrace TOPdesk – zabezpečení do služby Azure AD, budete muse
 
 **Chcete-li přidat TOPdesk – zabezpečení z galerie, proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -178,13 +178,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s TOPdesk – zabezpečení, 
 
     a. Chcete-li nahrát soubor metadat stažené z webu Azure portal v části **federačních metadat**, klikněte na tlačítko **Procházet**.
 
-    b. K nahrání souboru certifikátu v části **certifikátu (RSA)**, klikněte na tlačítko **Procházet**.
+    b. K nahrání souboru certifikátu v části **certifikátu (RSA)** , klikněte na tlačítko **Procházet**.
 
-    c. Pro **privátní klíč (RSA, PKCS8, kódování DER)**, můžete nahrát vlastní privátní klíč, nebo můžete kontaktovat [TOPdesk - tým podpory zabezpečení klienta](https://www.topdesk.com/us/support) získat soukromý klíč.
+    c. Pro **privátní klíč (RSA, PKCS8, kódování DER)** , můžete nahrát vlastní privátní klíč, nebo můžete kontaktovat [TOPdesk - tým podpory zabezpečení klienta](https://www.topdesk.com/us/support) získat soukromý klíč.
 
     d. Nahrát soubor loga jste získali v části z na tým podpory TOPdesk **ikona loga**, klikněte na tlačítko **Procházet**.
 
-    e. V **atribut uživatelského jména** textové pole, typ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. V **atribut uživatelského jména** textové pole, typ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     f. V **zobrazovaný název** textového pole zadejte název pro vaši konfiguraci.
 
@@ -271,7 +271,7 @@ V případě TOPdesk – zabezpečené, zřizování je ruční úloha.
 > [!NOTE]
 > Můžete použít jakékoli jiné TOPdesk – nástroje pro tvorbu zabezpečené uživatelského účtu nebo rozhraní API poskytovaných TOPdesk – zabezpečené ke zřízení účtů služby AAD uživatele.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

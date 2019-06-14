@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b2b3d1ac0a7c0e917f87be1dd131120f63a70f8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b245661ab8f26c1f529a049d326d2c72838c7a17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142812"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056721"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrujte Apache Spark a Apache Hivu se službou konektoru sklad Hive
 
@@ -20,7 +20,7 @@ Apache Hive skladu konektoru (HWC) je knihovna, která umožňuje snadněji prac
 
 Konektor Hive Warehouse umožňuje využívat jedinečné funkce Hive a Sparku a vytvářejte výkonné aplikace pro velké objemy dat. Apache Hive nabízí podporu pro databázové transakce, které jsou ten, konzistentní, izolované a trvalý (kyseliny). Další informace o kyseliny a transakcí v Hive najdete v tématu [Hive transakce](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Hive také nabízí podrobné zabezpečení ovládání pomocí Apache Ranger a nízkou latencí Analytical Processing není k dispozici v Apache Spark.
 
-Apache Spark má o strukturované streamování rozhraní API, která poskytuje funkce streamování není k dispozici v Apache Hive. Začátek s Hortonworks Data Platform (HDP) 3.0, Apache Spark a Apache Hive mít samostatné metaúložiště, což může ztěžovat vzájemná funkční spolupráce. Konektor Hive Warehouse usnadňuje používat Spark a Hive společně. Knihovna HWC načítá data z procesy démon LLAP do Spark prováděcí moduly paralelně, takže efektivní a škálovatelnost než použití standardní JDBC propojení Spark a Hive.
+Apache Spark má o strukturované streamování rozhraní API, která poskytuje funkce streamování není k dispozici v Apache Hive. Od verze HDInsight 4.0, Apache Spark 2.3.1 a Apache Hive 3.1.0 mají samostatné metaúložiště, což může ztěžovat vzájemná funkční spolupráce. Konektor Hive Warehouse usnadňuje používat Spark a Hive společně. Knihovna HWC načítá data z procesy démon LLAP do Spark prováděcí moduly paralelně, takže efektivní a škálovatelnost než použití standardní JDBC propojení Spark a Hive.
 
 ![Architektura](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -239,5 +239,5 @@ Postupujte podle pokynů můžete vytvořit příklad konektor sklad Hive, kter�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Pomocí HDInsight Interactive Query](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Použití Interactive Query se službou HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started).
 * [Příklady interakci s konektorem Hive skladu použití Zeppelin Livy, skriptu spark-submit a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

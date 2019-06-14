@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3ae6966ed3fa8ee57e0ac85fe34866dcbde0fb9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425621"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077251"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-copy-activity-performance.md)
 > * [Aktuální verze](copy-activity-performance.md)
 
@@ -306,7 +306,7 @@ Ujistěte se, že základní úložiště dat není zahlcen jiné úlohy, které
 
 Microsoft úložišť dat, najdete v tématu [monitorování a optimalizace témata](#performance-reference) , které jsou specifické pro úložiště dat. Tato témata můžete pochopit vlastnosti výkonu úložiště dat a jak minimalizovat dobu odezvy a maximalizuje propustnost.
 
-* Pokud zkopírujete data **ze služby Blob storage do SQL Data Warehouse**, zvažte použití **PolyBase** pro zvýšení výkonu. Zobrazit [použití PolyBase k načítání dat do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) podrobnosti.
+* Pokud zkopírujete data **z žádná data ukládat do služby Azure SQL Data Warehouse**, zvažte použití **PolyBase** pro zvýšení výkonu. Zobrazit [použití PolyBase k načítání dat do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) podrobnosti.
 * Pokud zkopírujete data **z HDFS do Azure Blob nebo Azure Data Lake Store**, zvažte použití **DistCp** pro zvýšení výkonu. Zobrazit [použití DistCp ke kopírování dat z HDFS](connector-hdfs.md#use-distcp-to-copy-data-from-hdfs) podrobnosti.
 * Pokud zkopírujete data **z Redshift do Azure SQL Data Warehouse/Azure BLob nebo Azure Data Lake Store**, zvažte použití **uvolnění** pro zvýšení výkonu. Zobrazit [uvolnění použít ke zkopírování dat z Amazon Redshift](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift) podrobnosti.
 
@@ -317,10 +317,8 @@ Microsoft úložišť dat, najdete v tématu [monitorování a optimalizace tém
 
 ### <a name="relational-data-stores"></a>Úložiště relačních dat
 
-* **Zkopírujte chování**: V závislosti na vlastnostech jste nastavili pro **sqlSink**, aktivitu kopírování, která zapisuje data do cílové databáze různými způsoby.
-  * Ve výchozím nastavení připojí data přesun služba používá rozhraní API hromadného kopírování k vložení dat v režimu, který poskytuje nejlepší výkon.
-  * Při konfiguraci uloženou proceduru v jímce, platí databázi jednoho řádku dat v době místo jako hromadné načtení. Výkon dochází k výraznému snížení. Pokud vaši datovou sadu je velká, pokud se dá použít, zvažte možnost použití **preCopyScript** vlastnost.
-  * Pokud nakonfigurujete **preCopyScript** spustit vlastností pro každou aktivitu kopírování, služba spustí skript a potom pomocí rozhraní API hromadného kopírování vložte data. Například pokud chcete přepsat celou tabulku s nejnovější data, můžete určit skript, který nejprve odstranit všechny záznamy před hromadného načtení nová data ze zdroje.
+* **Zkopírujte chování a výkon nepřímo**: Existují různé způsoby, chcete-li zapsat data do SQL jímky, další informace z [osvědčený postup pro načítání dat do služby Azure SQL Database](connector-azure-sql-database.md#best-practice-for-loading-data-into-azure-sql-database).
+
 * **Velikost dat vzor a batch**:
   * Schéma tabulky ovlivňuje kopírování propustnost. Ke zkopírování stejné množství dat, velký řádek velikosti umožňuje lepší výkon než velikost malých řádku, protože databáze můžete efektivněji menší počet dávek dat potvrzení změn.
   * Aktivitu kopírování, která vloží data z řady dávky. Můžete nastavit počet řádků v dávce pomocí **writeBatchSize** vlastnost. Pokud data obsahují malé řádků, můžete nastavit **writeBatchSize** vlastnost s vyšší hodnota můžou využívat výhody nižší režijní náklady na služby batch a vyšší propustnost. Je-li velikost řádku vašich dat je velká, dejte pozor, když zvýšíte **writeBatchSize**. Vysoká hodnota může vést k kopírování chybu způsobenou přetížení databáze.

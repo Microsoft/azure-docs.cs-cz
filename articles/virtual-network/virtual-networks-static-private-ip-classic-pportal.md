@@ -17,10 +17,10 @@ ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 72d1c4d2ea3adf7d8751adfbb013435f8f2530f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125742"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Konfigurace privátních IP adres pro virtuální počítač (Classic) pomocí webu Azure portal
@@ -61,7 +61,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak načíst statické privátní informace o IP adrese virtuálního počítače
 Pokud chcete zobrazit statické informace privátní IP adresu pro virtuální počítač vytvořený pomocí výše uvedených kroků, spusťte následující postup.
 
-1. Na webu Azure Portal, vyberte **Procházet vše** > **virtuální počítače (classic)** > **DNS01** > **všechny nastavení** > **IP adresy** a Všimněte si přidělování IP adres a IP adresu, jak je vidět níže.
+1. Na webu Azure Portal, vyberte **Procházet vše** > **virtuální počítače (classic)**  > **DNS01** > **všechny nastavení** > **IP adresy** a Všimněte si přidělování IP adres a IP adresu, jak je vidět níže.
    
     ![Vytvoření virtuálního počítače na webu Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 

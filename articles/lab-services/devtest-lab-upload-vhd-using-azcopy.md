@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cd778762bebf4a9dda3688292ac0a3674e446e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60634976"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Nahrání souboru VHD do testovacího prostředí účtu úložiště pomocí AzCopy
@@ -45,7 +45,7 @@ Následující kroky vás provedou po nahrání souboru VHD pomocí Azure DevTes
 
 1. V okně testovacího prostředí, vyberte **konfigurace**. 
 
-1. V testovacím prostředí **konfigurace** okně vyberte **vlastních imagí (VHD)**.
+1. V testovacím prostředí **konfigurace** okně vyberte **vlastních imagí (VHD)** .
 
 1. Na **vlastních imagí** okno, vyberte **+ přidat**. 
 

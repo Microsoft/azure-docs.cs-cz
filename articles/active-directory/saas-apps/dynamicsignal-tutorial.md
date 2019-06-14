@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d36b81530989517167e3c9ae5baa125f2d09bbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3405de31de48073e45e0c907ee918c2afd1e5b96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862057"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Kurz: Integrace Azure Active Directory s dynamické signálu
 
@@ -55,7 +55,7 @@ Pokud chcete nakonfigurovat integraci dynamických signálu do služby Azure AD,
 
 **Chcete-li přidat dynamické signál z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -192,7 +192,7 @@ V této části se uživateli Britta Simon vytvoří dynamické signálu. Dynami
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory dynamické signál](mailto:support@dynamicsignal.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

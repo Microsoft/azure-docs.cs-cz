@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: f8c95b2981933764bc8d6dcf8bf57e9ab40ef53b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074213"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat podpora služby Virtual Network pro mezipaměť Azure Premium pro Redis
 Mezipaměti Redis Azure má různé mezipaměti nabídek, které poskytují flexibilitu při výběru velikosti mezipaměti a funkcí, včetně novými funkcemi úrovně Premium jako je clustering, trvalé a podpory služby virtual network. Virtuální síť je privátní síť v cloudu. Když Azure pro instanci Redis Cache má nakonfigurovanou virtuální síť, není veřejně adresovatelný a je přístupný pouze z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje postup konfigurace podpory služby virtual network pro Azure Cache úrovně premium pro instanci Redis.
@@ -131,7 +131,7 @@ Nejsou k dispozici osm požadavky rozsah portu pro příchozí spojení. Přích
 
 | Port(y) pro | Direction | Přenosový protokol | Účel | Místní IP | Vzdálená IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Příchozí |TCP |Komunikace klientů Redis, Vyrovnávání zatížení Azure | (Redis podsítě) | (Redis podsítě), virtuální síť, nástroj pro vyrovnávání zatížení Azure |
+| 6379, 6380 |Příchozí |TCP |Komunikace klientů Redis, Vyrovnávání zatížení Azure | (Redis podsítě) | (Redis podsítě), virtuální síť, nástroj pro vyrovnávání zatížení Azure <sup>2</sup> |
 | 8443 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
 | 8500 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Redis podsítě) |Nástroj pro vyrovnávání zatížení Azure |
 | 10221-10231 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě), nástroje pro vyrovnávání zatížení Azure |
@@ -139,6 +139,8 @@ Nejsou k dispozici osm požadavky rozsah portu pro příchozí spojení. Přích
 | 15000-15999 |Příchozí |TCP |Komunikace klienta s redis cache, Azure načíst vyrovnávání | (Redis podsítě) |Virtuální síť, nástroj pro vyrovnávání zatížení Azure |
 | 16001 |Příchozí |TCP/UDP |Vyrovnávání zatížení Azure | (Redis podsítě) |Nástroj pro vyrovnávání zatížení Azure |
 | 20226 |Příchozí |TCP |Interní komunikaci pro Redis | (Redis podsítě) |(Redis podsítě) |
+
+<sup>2</sup> značku služby můžete použít k vytváření pravidel NSG "AzureLoadBalancer" (Resource Manager) (nebo "AZURE_LOADBALANCER' v případě klasického modelu).
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Další požadavky síťového připojení virtuální sítě
 

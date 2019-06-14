@@ -18,10 +18,10 @@ ms.author: priyamo
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60438169"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza služby Azure AD protokolů aktivit se protokoly Azure monitoru
@@ -86,7 +86,7 @@ Můžete také nastavit výstrahy na váš dotaz. Například pokud chcete nakon
 
 2. Vyberte výchozí **upozornění kritéria** vytvořené v výstrahy a aktualizace **prahová hodnota** ve výchozí metriku na 10.
 
-    ![Kritéria upozornění](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
+    ![Kritéria výstrah](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. Zadejte název a popis pro výstrahu a vyberte úroveň závažnosti. V našem příkladu jsme ji nastavit na **informativní**.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11c6472265d7efca98a7e822ca8b8945a13c2ba
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 916b87bd4165e83594fafed6aa04b58fcf720ff5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Kurz: Integrace Azure Active Directory s BorrowBox
 
@@ -54,7 +54,7 @@ Konfigurace integrace BorrowBox do služby Azure AD, budete muset přidat Borrow
 
 **Chcete-li přidat BorrowBox z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -195,7 +195,7 @@ V této části se vytvoří uživateli Britta Simon v BorrowBox. BorrowBox podp
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory BorrowBox](mailto:borrowbox@bolinda.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

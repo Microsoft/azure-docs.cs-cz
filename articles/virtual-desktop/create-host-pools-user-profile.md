@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: f6516e37107a16d80c4d9eb9514782bdbcc44184
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925217"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Nastavení sdílení profilu uživatele pro fond hostitelů
@@ -62,7 +62,7 @@ Ke konfiguraci virtuálních počítačů se softwarem FSLogix, proveďte postup
 6. Vytvořte klíč s názvem **profily**.
 7. Vytvořte následující hodnoty pro klíč profily:
 
-| Název                | Type               | Hodnota/dat                        |
+| Name                | Type               | Hodnota/dat                        |
 |---------------------|--------------------|-----------------------------------|
 | Enabled             | DWORD              | 1                                 |
 | VHDLocations        | Víceřetězcová hodnota | "Síťovou cestu pro sdílenou složku"     |

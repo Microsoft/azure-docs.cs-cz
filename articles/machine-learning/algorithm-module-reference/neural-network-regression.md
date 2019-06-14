@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: bc6a7505ab09e929e5add61eea687f871aedf242
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029307"
 ---
 # <a name="neural-network-regression-module"></a>Modul neuronové sítě regrese
@@ -67,7 +67,7 @@ Neuronové sítě je možné výrazně přizpůsobit. Tato část popisuje, jak 
   
     Vzhledem k tomu, že počet uzlů ve vrstvě vstupní je určeno několik funkcí v trénovacích dat, v regresní model může existovat jenom jeden uzel ve vrstvě výstup.  
   
-4. Pro **počet skrytých uzlů:**, zadejte počet skrytých uzlů. Výchozí hodnota je jeden skryté vrstvě s 100 uzlů. (Tato možnost není k dispozici, pokud definujete vlastní architektury pomocí Net #.)
+4. Pro **počet skrytých uzlů:** , zadejte počet skrytých uzlů. Výchozí hodnota je jeden skryté vrstvě s 100 uzlů. (Tato možnost není k dispozici, pokud definujete vlastní architektury pomocí Net #.)
   
 5.  Pro **rychlost učení**, zadejte hodnotu, která definuje krok v každé iteraci, před opravy. Větší hodnotu kurz vás naučí může způsobit modelu a umožňuje konvergovat rychleji, ale jeho překročení místní minima.
 

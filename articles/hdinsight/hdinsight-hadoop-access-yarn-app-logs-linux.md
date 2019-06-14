@@ -8,19 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0a3411cc4cc32c3e54583ab81ee98f2e151d4384
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0c5ecfba97c61288d08681006645eab0bdd23f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059455"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup aplikací Apache Hadoop YARN přihlášení založené na Linuxu HDInsight
 
 Zjistěte, jak získat přístup k protokolům pro [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (zatím jiné Resource Negotiator) žádosti o [Apache Hadoop](https://hadoop.apache.org/) clusteru v Azure HDInsight.
-
-> [!IMPORTANT]  
-> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je pouze operační systém používaný v HDInsight verze 3.6 nebo novější. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
@@ -37,9 +34,9 @@ YARN Timeline Server zahrnuje následující typ dat:
 
 YARN podporuje několik programovacích modelů ([Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) právě jeden z nich) tím, že odpojí správy prostředků z plánování a sledování aplikací. YARN používá globální *ResourceManager* (SV), uzel za pracovního procesu *NodeManagers* (NMs) a každou aplikaci *ApplicationMasters* (AMs). Každou aplikaci AM vyjedná prostředků (procesoru, paměti, disku a sítě) pro používání aplikace s vzdálené správy služby Správce prostředků funguje s NMs pro udělení těchto prostředků, které jsou poskytovány jako *kontejnery*. AM zodpovídá pro sledování pokroku kontejnery přiřadit RM. Aplikace můžou vyžadovat mnoho kontejnerů v závislosti na povaze aplikace.
 
-Každá aplikace může skládat z více *pokusy aplikací o*. Pokud se aplikaci nepodaří, může pokus o jako nový pokus o. Každý pokus o spuštění v kontejneru. V tom smyslu kontejner poskytuje kontext pro základní jednotku práce prováděné aplikací YARN. Veškerá práce, která se provádí v rámci kontejneru se provádí na jednu pracovní uzel, na kterém byl přidělen kontejneru. Zobrazit [Apache Hadoop YARN koncepty] [ YARN-concepts] pro odkaz na další.
+Každá aplikace může skládat z více *pokusy aplikací o*. Pokud se aplikaci nepodaří, může pokus o jako nový pokus o. Každý pokus o spuštění v kontejneru. V tom smyslu kontejner poskytuje kontext pro základní jednotku práce prováděné aplikací YARN. Veškerá práce, která se provádí v rámci kontejneru se provádí na jednu pracovní uzel, na kterém byl přidělen kontejneru. Zobrazit [Apache Hadoop YARN koncepty](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) pro odkaz na další.
 
-Protokoly aplikací (a protokoly přiřazeným kontejnerem) jsou velmi důležité při ladění aplikací Hadoop jiných problematické. YARN poskytuje dobré architekturu pro shromažďování, shromažďování a ukládání protokolů aplikace pomocí [protokolu agregace] [ log-aggregation] funkce. Díky funkci agregace protokolu přístup k protokolům aplikací deterministického. Protokoly agreguje přes všechny kontejnery na pracovním uzlu a uloží je jako jeden soubor protokolu agregované podle počtu uzlů pracovního procesu. V protokolu je uložen na výchozí systém souborů po dokončení aplikace. Vaše aplikace může používat stovek nebo tisíců kontejnerů, ale protokolů pro všechny kontejnery, které běží na uzlu jeden pracovního procesu se vždy agregují do jednoho souboru. Je proto pouze 1 protokolu na pracovní uzel používaný vaší aplikací. Agregace protokolu je povolené ve výchozím nastavení verze clustery HDInsight 3.0 a vyšší. Agregované protokoly jsou umístěny ve výchozím nastavení úložiště pro cluster. Následující cesta je cesta HDFS do protokolů:
+Protokoly aplikací (a protokoly přiřazeným kontejnerem) jsou velmi důležité při ladění aplikací Hadoop jiných problematické. YARN poskytuje dobré architekturu pro shromažďování, shromažďování a ukládání protokolů aplikace pomocí [protokolu agregace](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) funkce. Díky funkci agregace protokolu přístup k protokolům aplikací deterministického. Protokoly agreguje přes všechny kontejnery na pracovním uzlu a uloží je jako jeden soubor protokolu agregované podle počtu uzlů pracovního procesu. V protokolu je uložen na výchozí systém souborů po dokončení aplikace. Vaše aplikace může používat stovek nebo tisíců kontejnerů, ale protokolů pro všechny kontejnery, které běží na uzlu jeden pracovního procesu se vždy agregují do jednoho souboru. Je proto pouze 1 protokolu na pracovní uzel používaný vaší aplikací. Agregace protokolu je povolené ve výchozím nastavení verze clustery HDInsight 3.0 a vyšší. Agregované protokoly jsou umístěny ve výchozím nastavení úložiště pro cluster. Následující cesta je cesta HDFS do protokolů:
 
     /app-logs/<user>/logs/<applicationId>
 
@@ -73,7 +70,5 @@ Uživatelské rozhraní správce prostředků YARN běží na hlavního uzlu clu
     Zobrazí se seznam odkazů na protokoly YARN.
 
 [YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
-[log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
-[YARN-concepts]:https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
 ms.openlocfilehash: 732cb118b7a0eebdbf28c7d7fe6ced435ce7920e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713720"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
@@ -37,7 +37,7 @@ Následující tabulka má dobu přenosu přibližné dat na základě dat svazk
 || **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 dny|1 den| 2 hodiny|14 minut|
 |10 TB|22 dnů|10 dnů|1 den|2 hodiny|
-|35 TB|76 dnů|34 dnů|3 dny|8 hodin|
+|35 TB|76 dnů|34 dnů|3 dny.|8 hodin|
 |80 TB|173 dnů|78 dnů|8 dní|19 hodin|
 |100 TB|216 dnů|97 dnů|10 dnů|1 den|
 |200 TB|1 rok|194 dnů|19 dnů|2 dny|

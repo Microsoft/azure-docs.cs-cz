@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c66a875dc3419e928da83811809bd0f6d5d054
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 7271a1cf0520eef8aa9b64fab36349caf3c0ffcd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Kurz: Integrace Azure Active Directory s FileCloud
 
@@ -55,7 +55,7 @@ Konfigurace integrace FileCloud do služby Azure AD, budete muset přidat FileCl
 
 **Chcete-li přidat FileCloud z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -212,7 +212,7 @@ V této části se vytvoří uživateli Britta Simon v FileCloud. FileCloud podp
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory FileCloud klienta](mailto:support@codelathe.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

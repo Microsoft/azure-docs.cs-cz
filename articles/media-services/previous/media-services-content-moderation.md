@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465673"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator rozpoznat možné obsahu pro dospělé nebo pikantního obsahu 
@@ -48,7 +48,7 @@ Ve výstupu JSON obsahuje následující prvky:
 | --- | --- |
 | version |Verze Content Moderatoru. |
 | Časová osa |"Značky" za sekundu videa. |
-| Posun |Posun času pro časová razítka. Ve verzi 1.0 rozhraní API pro Video bude tato hodnota vždy 0. Tato hodnota může v budoucnu změnit. |
+| offset |Posun času pro časová razítka. Ve verzi 1.0 rozhraní API pro Video bude tato hodnota vždy 0. Tato hodnota může v budoucnu změnit. |
 | snímkovou |Počet snímků ve videu za sekundu. |
 | Šířka |Šířka rámce výstup videa, v pixelech.|
 | Výška |Výška snímek výstup videa, v pixelech.|
@@ -60,7 +60,7 @@ Ve výstupu JSON obsahuje následující prvky:
 |Element|Popis|
 |---|---|
 | start |Čas zahájení první událost v "impulzech." |
-| doba trvání |Délka fragment v "impulzech." |
+| Doba trvání |Délka fragment v "impulzech." |
 | interval |Interval každý záznam událostí v rámci fragment v "impulzech." |
 | [Události](#events-json-elements) |Každá událost představuje klipu a každý klip obsahuje klíčové snímky zjištěna a sledovány v rámci této dobu trvání. Je to pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které se v tomto bodu v čase odehrály.|
 
@@ -72,7 +72,7 @@ Ve výstupu JSON obsahuje následující prvky:
 | adultScore | Skóre spolehlivosti pro možný obsah pro dospělé, na škále od 0,00 a 0,99. |
 | racyScore | Skóre spolehlivosti možné pikantní obsah, na škále od 0,00 a 0,99. |
 | index | index rámce na škále od prvního rámce indexu na poslední index snímku. |
-| časové razítko | Umístění tohoto rámce v "impulzech." |
+| timestamp | Umístění tohoto rámce v "impulzech." |
 | shotIndex | Index nadřazený snímek. |
 
 

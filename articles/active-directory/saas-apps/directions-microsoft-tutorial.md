@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca35e1c6966365fab1a53fe9674a8f361422eea
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0cd6f3a97e96f22ee32ff8f84b234e806f23e945
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>Kurz: Integrace pokyny týkající se Microsoft Azure Active Directory
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace pokynů na Microsoft do služby Azure AD, budete muset 
 
 **Chcete-li přidat pokynů na Microsoft z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -200,7 +200,7 @@ Neexistuje žádná položka akce konfigurace zřizování uživatelů pro pokyn
 
 Přiřazený uživatel se pokusí přihlásit k směrech Microsoft pomocí přístupového panelu, směry na Microsoft ověří, zda uživatel existuje. Pokud není žádný uživatelský účet k dispozici dosud, vytvoří se automaticky podle pokynů na Microsoft.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963172"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení pomocí SCIM 2.0 protokol dodržování předpisů služby zřizování uživatelů služby Azure AD
@@ -38,10 +38,10 @@ Tento článek popisuje aktuálního i staršího problémy s zřizování služ
 
 | **Problém dodržování předpisů SCIM 2.0** |  **Oprava?** | **Opravte datum**  |  
 |---|---|---|
-| Azure AD vyžaduje "nebo scim" v kořenovém adresáři aplikace je adresa URL koncového bodu SCIM  | Ano  |  18. prosince 2018 | 
-| Atributy rozšíření použít tečku "."zápis před názvy atributů místo dvojtečka":" zápis |  Ano  | 18. prosince 2018  | 
-|  Oprava žádosti více hodnotami atributů obsahovat řiďte se syntaxí filtru neplatná cesta | Ano  |  18. prosince 2018  | 
-|  Požadavky na vytvoření skupiny obsahují neplatné schéma identifikátoru URI | Ano  |  18. prosince 2018  |  
+| Azure AD vyžaduje "nebo scim" v kořenovém adresáři aplikace je adresa URL koncového bodu SCIM  | Ano  |  18\. prosince 2018 | 
+| Atributy rozšíření použít tečku "."zápis před názvy atributů místo dvojtečka":" zápis |  Ano  | 18\. prosince 2018  | 
+|  Oprava žádosti více hodnotami atributů obsahovat řiďte se syntaxí filtru neplatná cesta | Ano  |  18\. prosince 2018  | 
+|  Požadavky na vytvoření skupiny obsahují neplatné schéma identifikátoru URI | Ano  |  18\. prosince 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Jsou opravy služeb popsány, automaticky využije na mé existující aplikace SCIM?
 

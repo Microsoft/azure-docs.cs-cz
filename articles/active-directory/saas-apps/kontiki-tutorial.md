@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee7454942b9214eeb1253339446df370e20fe01
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Kurz: Integrace Azure Active Directory s Kontiki
 
@@ -143,7 +143,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >**. Například **brittasimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >** . Například **brittasimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište hodnotu, která se zobrazí **heslo** pole.
 
@@ -181,7 +181,7 @@ V této části udělíte přístup Britta Simon k Kontiki, které můžete pou�
 
 Neexistuje žádná položka akce můžete nakonfigurovat v Kontiki zřizování uživatelů. Přiřazený uživatel se pokusí přihlásit k Kontiki na portálu Moje aplikace, Kontiki kontroluje, zda uživatel existuje. Pokud se nenajde žádný uživatelský účet, Kontiki automaticky vytvoří uživatelský účet.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

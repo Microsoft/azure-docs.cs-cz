@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 0b158a1d713e0de8f3d1b2672aed442fce66e724
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917157"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077379"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Co je vizuální rozhraní pro službu Azure Machine Learning? 
 
@@ -27,7 +27,7 @@ Vizuální rozhraní používá služby Azure Machine Learning [pracovní prosto
 + Zápis artefakty [experimentovat](#experiment) i v pracovním prostoru.
 + Přístup [datových sad](#dataset).
 + Použití [výpočetní prostředky](#compute) v pracovním prostoru pro spuštění testu. 
-+ Zaregistrujte [modely](concept-azure-machine-learning-architecture.md#model).
++ Zaregistrujte [modely](concept-azure-machine-learning-architecture.md#models).
 + [Nasazení](#deployment) modely jako webové služby na výpočetní prostředky v pracovním prostoru.
 
 ![Přehled vizuální rozhraní](media/ui-concept-visual-interface/overview.png)

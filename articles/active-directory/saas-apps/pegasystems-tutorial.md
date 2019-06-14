@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 195e7bf21fe1f6017705883f2ec692c182f15375
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Kurz: Integrace Azure Active Directory s Pega systémy
 
@@ -67,7 +67,7 @@ Postup nastavení integrace systémů Pega do služby Azure AD, budete muset př
 
 4. Do vyhledávacího pole zadejte **Pega systémy**. Vyberte **Pega systémy** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Výsledky vyhledávání](common/search-new-app.png)
+     ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -95,7 +95,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Pega systémy, proveďte ty
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -234,7 +234,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon @\<doména_společnosti >.\< Rozšíření >**. (Například BrittaSimon@contoso.com.)
+    b. V **uživatelské jméno** zadejte **brittasimon @\<doména_společnosti >.\< Rozšíření >** . (Například BrittaSimon@contoso.com.)
 
     c. Vyberte **zobrazit heslo**a zapište si hodnotu, která je v **heslo** pole.
 
@@ -270,7 +270,7 @@ V této části se budou moci používat jednotné přihlašování Azure tím, 
 
 Dále je třeba vytvořit uživatele s názvem Britta Simon v systémech Pega. Práce s [tým podpory Pega systémy](https://www.pega.com/contact-us) pro vytváření uživatelů.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

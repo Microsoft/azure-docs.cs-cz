@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f58c8c3ea76cf44730a54897e6b77ef6e648a49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1df79d7a4bd983527ee6d84c7ffe8e5ef61d6197
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Kurz: Integrace s Azure Active Directory pomocí Amazon Web Services (AWS)
 
@@ -85,7 +85,7 @@ Ke konfiguraci integrace služby Amazon Web Services (AWS) do služby Azure AD, 
 
 **Chcete-li přidat Amazon Web Services (AWS) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -412,11 +412,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Amazon Web Services (AWS).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Amazon Web Services (AWS)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Amazon Web Services (AWS)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **Amazon Web Services (AWS)**.
+2. V seznamu aplikace zadejte a vyberte **Amazon Web Services (AWS)** .
 
     ![V seznamu aplikací na odkaz Amazon Web Services (AWS)](common/all-applications.png)
 

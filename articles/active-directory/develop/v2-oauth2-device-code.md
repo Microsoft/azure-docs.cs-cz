@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 06/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e875108e0349c0ab08a7217074e2afe23bcacc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 79718b14210bfdf139bca76db91c57c38a791434
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052245"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Platforma identit Microsoft a tok OAuth 2.0 zařízení kódu
 
@@ -31,9 +31,11 @@ ms.locfileid: "65544926"
 Podporuje Microsoft identity platform [udělení kódu zařízení](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), což umožňuje uživatelům umožní přihlásit k omezené vstupní zařízení, jako jsou inteligentní TV, zařízení IoT nebo tiskárny.  Pokud chcete povolit tento tok, má zařízení uživatele navštivte webovou stránku ve svém prohlížeči na jiném zařízení pro přihlášení.  Když se uživatel přihlásí, zařízení je možné získat přístupové tokeny a podle potřeby obnovovacích tokenů.  
 
 > [!IMPORTANT]
-> V tuto chvíli podporuje koncový bod Microsoft identity platform tok zařízení pouze pro klienty Azure AD, ale ne osobní účty.  To znamená, že je nutné použít koncový bod nastavit jako tenant nebo `organizations` koncového bodu.  
+> V tuto chvíli podporuje koncový bod Microsoft identity platform tok zařízení pouze pro klienty Azure AD, ale ne osobní účty.  To znamená, že je nutné použít koncový bod nastavit jako tenant nebo `organizations` koncového bodu.  Tato podpora bude brzy povolená. 
 >
 > Osobní účty, které se pozvat do tenanta služby Azure AD bude moct používat toku udělení zařízení, ale pouze v rámci tenanta.
+>
+> Jako další Všimněte si `verification_uri_complete` pole odpovědi není zahrnutý nebo v tuto chvíli nepodporuje.  
 
 > [!NOTE]
 > Koncový bod Microsoft identity platform nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod Microsoft identity platform, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).
@@ -42,7 +44,7 @@ Podporuje Microsoft identity platform [udělení kódu zařízení](https://tool
 
 Následující diagram podobný tok kódu celého zařízení. Každý z kroků dále v tomto článku popisujeme.
 
-![Tok kódu zařízení](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Tok kódu při zařízení](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Žádost o ověření zařízení
 
@@ -78,7 +80,6 @@ scope=user.read%20openid%20profile
 |`device_code`     | String | Dlouhý řetězec používaného k ověřování relací mezi klientem a serverem ověřování. Klient použije tento parametr k žádosti o přístupový token od autorizačního serveru. |
 |`user_code`       | String | Krátký řetězec, který se zobrazí uživateli, který se používá k identifikaci relaci na sekundární zařízení.|
 |`verification_uri`| Identifikátor URI | Identifikátor URI by měl uživatel přejde na s `user_code` abyste se mohli přihlásit. |
-|`verification_uri_complete`| Identifikátor URI | Identifikátor URI, který kombinuje `user_code` a `verification_uri`, která se používá pro jiné textové přenos na uživatele (například přes Bluetooth na zařízení nebo kódu QR).  |
 |`expires_in`      | int | Počet sekund před `device_code` a `user_code` vypršení platnosti. |
 |`interval`        | int | Počet sekund, po které klient by měl čekat mezi požadavků dotazování. |
 | `message`        | String | Čitelný řetězec s pokyny pro uživatele. To může být lokalizována zahrnutím **parametr dotazu** v požadavku ve formátu `?mkt=xx-XX`, plnění v příslušné jazykové jazykovou verzi kódu. |

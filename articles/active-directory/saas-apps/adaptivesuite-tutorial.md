@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b2c7ca8699274b96f7f382dfe1958bf5babbbe99
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c217663c5752907e0b3d6372d4522f6aba982b3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Kurz: Integrace Azure Active Directory s adaptivní Insights
 
@@ -52,7 +52,7 @@ Pokud chcete nakonfigurovat integraci adaptivní Insights do služby Azure AD, b
 
 **Adaptivní Insights přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

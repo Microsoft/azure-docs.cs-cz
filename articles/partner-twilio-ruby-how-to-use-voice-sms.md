@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457647"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Postup použití Twilia pro hlasové hovory a SMS v Ruby
@@ -52,16 +52,16 @@ Twilio příkazy jsou značky XML, které informují Twilio, jak **proveďte**. 
 
 Následuje seznam příkazů Twilio.
 
-* **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
-* **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
-* **&lt;Zavěšení&gt;**: Ukončí volání.
-* **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
-* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
-* **&lt;Record&gt;**: Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
-* **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
-* **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
-* **&lt;Sms&gt;**: Odešle zprávu SMS.
+* **&lt;Volání&gt;** : Volající se připojí k jiný telefon.
+* **&lt;Shromážděte&gt;** : Shromažďuje číslice zadané na klávesnici telefonu.
+* **&lt;Zavěšení&gt;** : Ukončí volání.
+* **&lt;Přehrát&gt;** : Přehraje zvukový soubor.
+* **&lt;Pause&gt;** : Bezobslužná počká zadaný počet sekund.
+* **&lt;Record&gt;** : Zaznamenává hlasové volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Přesměrovat&gt;** : Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
+* **&lt;Odmítnout&gt;** : Odmítne příchozí volání na vaše číslo Twilio bez vám fakturace
+* **&lt;Řekněme, že&gt;** : Převede text na řeč, který je k volání.
+* **&lt;Sms&gt;** : Odešle zprávu SMS.
 
 Další informace o Twilio příkazů, jejich atributy a TwiML najdete v tématu [TwiML][twiml]. Další informace o rozhraní API Twilia najdete v tématu [Twilio API][twilio_api].
 

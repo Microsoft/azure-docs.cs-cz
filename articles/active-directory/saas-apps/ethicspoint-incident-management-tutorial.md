@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e50cdd19510f0bf160c075c763e645120622674
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76a43acb1cf0c514111e89f1a3f4408f4c51e091
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Kurz: Integrace s Azure Active Directory s EthicsPoint Incident Management (EPIM)
 
@@ -53,7 +53,7 @@ Konfigurace integrace nástroje správy incidentů EthicsPoint (EPIM) do služby
 
 **Správa incidentů EthicsPoint (EPIM) přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -166,11 +166,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k EthicsPoint Incident Management (EPIM).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **EthicsPoint Incident Management (EPIM)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **EthicsPoint Incident Management (EPIM)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **EthicsPoint Incident Management (EPIM)**.
+2. V seznamu aplikací vyberte **EthicsPoint Incident Management (EPIM)** .
 
     ![Správa incidentů EthicsPoint (EPIM) odkaz v seznamu aplikací](common/all-applications.png)
 

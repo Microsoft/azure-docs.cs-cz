@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 571ab38dd52d83f1391b555bc4dfc8c091f1fd1b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 97e38c62da74444f1f229f12e42d98e75a6e5073
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Kurz: Integrace Azure Active Directory s Mindflash
 
@@ -52,7 +52,7 @@ Konfigurace integrace Mindflash do služby Azure AD, budete muset přidat Mindfl
 
 **Chcete-li přidat Mindflash z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -210,7 +210,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Mindflash, musí být 
 >Můžete použít jakékoli jiné Mindflash uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Mindflash uživatelským účtům, zřídit AAD. 
 > 
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65849707"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace obchodní transakce možnosti a důležité faktory
@@ -98,16 +98,16 @@ Tento cenový tarif může být vyšší nebo nižší než veřejně zobrazené
 
 |Vaše náklady na licence  | 1,00 $ za hodinu  |
 |---------|---------|
-|Náklady na využití Azure (D1 / 1jader)    |   0.14 za hodinu     |
+|Náklady na využití Azure (D1 / 1jader)    |   0\.14 za hodinu     |
 |*Microsoft účtuje*    |  *1.14 $ za hodinu*       |
 
 * V tomto scénáři účtuje Microsoft 1.14 $ za hodinu za použití publikované image virtuálního počítače.
 
-|Microsoft účtuje  | 1.14 $ za hodinu  |
+|Microsoft účtuje  | 1\.14 $ za hodinu  |
 |---------|---------|
 |Společnost Microsoft platí, 80 % vaše náklady na licence|   0,80 $ za hodinu     |
-|Microsoft si ponechá 20 % vaše náklady na licence  |  0.20 za hodinu       |
-|Microsoft si ponechá 100 % nákladů na využití Azure | 0.14 za hodinu |
+|Microsoft si ponechá 20 % vaše náklady na licence  |  0\.20 za hodinu       |
+|Microsoft si ponechá 100 % nákladů na využití Azure | 0\.14 za hodinu |
 
 **Používání vlastní licence (BYOL)**
 
@@ -115,14 +115,14 @@ Tento cenový tarif může být vyšší nebo nižší než veřejně zobrazené
 
 |Vaše náklady na licence  | Licenční poplatek za vyjednávat a účtuje se podle vás  |
 |---------|---------|
-|Náklady na využití Azure (D1 / 1jader)    |   0.14 za hodinu     |
+|Náklady na využití Azure (D1 / 1jader)    |   0\.14 za hodinu     |
 |*Microsoft účtuje*    |  *0.14 za hodinu*       |
 
 * V tomto scénáři účtuje Microsoft 0.14 $ za hodinu za použití publikované image virtuálního počítače.
 
-|Microsoft účtuje  | 0.14 za hodinu  |
+|Microsoft účtuje  | 0\.14 za hodinu  |
 |---------|---------|
-|Microsoft si ponechá náklady na využití Azure    |   0.14 za hodinu     |
+|Microsoft si ponechá náklady na využití Azure    |   0\.14 za hodinu     |
 |Microsoft udržuje vaše náklady na licence % 0   |  0,00 USD za hodinu       |
 
 **Aplikace SaaS předplatného (zákazník prostřednictvím Azure)**
@@ -162,31 +162,31 @@ Zákazníci mohou také platit pomocí platební karty a měsíční faktuře. V
 
 Například, pokud zákazník koupí prostřednictvím platební karty:
 
-|Popis    |    Date  |
+|Popis    |    Datum  |
 |----------|----------|
 |Pořadí období   | 15 srpna 2018 – 30. srpna 2018 |
-|Výraz ukončení (měsíc)   | 30. srpna 2018 |
-|Datum fakturace | 1. září 2018 |
-|Datum platby zákazníků | 1. září 2018 |
+|Výraz ukončení (měsíc)   | 30\. srpna 2018 |
+|Datum fakturace | 1\. září 2018 |
+|Datum platby zákazníků | 1\. září 2018 |
 |Úschovu používala služba období (kreditní karty, 30 dnů) | 1 září 2018 – 30. září 2018 |
-|Kolekce doby spuštění | 1. září 2018 |
-|Konec období kolekce (maximální počet, 30 dní) | 30. září 2018 |
-|Datum výpočtu výběr (každý měsíc na 15. dne) | 1. října 2018 |
-|Výběr data | 15. října 2018 |
+|Kolekce doby spuštění | 1\. září 2018 |
+|Konec období kolekce (maximální počet, 30 dní) | 30\. září 2018 |
+|Datum výpočtu výběr (každý měsíc na 15. dne) | 1\. října 2018 |
+|Výběr data | 15\. října 2018 |
 
 Pokud zákazník koupí pomocí smlouvy Enterprise:
 
-| Popis |    Date  |
+| Popis |    Datum  |
 |----------|----------|
 |Pořadí období | 15 srpna 2018 – 30. srpna 2018 |
-|Výraz ukončení (čtvrtletí) | 30. září 2018 |
-|Datum fakturace | 15. října 2018 |
+|Výraz ukončení (čtvrtletí) | 30\. září 2018 |
+|Datum fakturace | 15\. října 2018 |
 |Úschovu používala služba období (kreditní karty, 30 dnů) | neuvedeno |
-|Kolekce doby spuštění | 15. října 2018 |
-|Konec období kolekce (maximální počet, 90 dní) | 15. ledna 2019 |
-|Datum platby zákazníků | 30. prosince 2018 |
-|Datum výpočtu výběr (každý měsíc na 15. dne) | 15. ledna 2019 |
-|Výběr data | 15. února 2019 |
+|Kolekce doby spuštění | 15\. října 2018 |
+|Konec období kolekce (maximální počet, 90 dní) | 15\. ledna 2019 |
+|Datum platby zákazníků | 30\. prosince 2018 |
+|Datum výpočtu výběr (každý měsíc na 15. dne) | 15\. ledna 2019 |
+|Výběr data | 15\. února 2019 |
 
 **Bezplatné kredity a peněžní závazek** 
 

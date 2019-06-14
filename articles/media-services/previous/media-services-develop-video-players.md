@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465639"
 ---
 # <a name="develop-video-player-applications"></a>Vývoj aplikací videopřehrávače
@@ -33,7 +33,7 @@ Služba Azure Media Services nabízí nástroje, které potřebujete k vytvořen
 
 Microsoft Azure Media Services umožňuje obsah tak, aby se poskytovat, než se DASH, Smooth Streaming a HLS streaming formáty přehrávání obsahu. Azure Media Player bere v úvahu tyto různé formáty a automaticky hraje nejlepší odkaz založené na možnostech platformy a prohlížeče. Microsoft Azure Media Services také umožňuje dynamické šifrování prostředků pomocí šifrování PlayReady nebo 128bitového šifrování AES envelope šifrování. Azure Media Player umožňuje k dešifrování PlayReady a AES-128 bitů šifrovaný obsah, když správně nakonfigurovaný. 
 
-Další informace najdete tady:
+Další informace:
 
 * [Přehrávač médií Azure](https://aka.ms/ampinfo)
 * [Dokumentace ke službě Azure Media Player](https://aka.ms/ampdocs) 
@@ -52,7 +52,7 @@ Můžete také použít některý z následujících sad SDK:
 * [Licencování Microsoft® technologie Smooth Streaming portování klienta](https://aka.ms/sspk) 
 * [Vývoj aplikací videa XBOX](https://xbox.create.msdn.com/) 
 
-## <a name="advertising"></a>Inzerce a reklama
+## <a name="advertising"></a>Reklama
 Azure Media Services poskytuje podporu pro vkládání reklam prostřednictvím mediální platformu Windows: Přehrávačů. Přehrávačů s podporou ad jsou k dispozici pro zařízení s Windows 8, Silverlight, Windows Phone 8 a iOS. Každý player framework obsahuje ukázkový kód, který ukazuje, jak implementovat aplikace přehrávače. Existují tři různé druhy reklamy, které lze vložit do médií:
 
 Lineární – úplné rámce reklamy, které pozastavit video hlavní

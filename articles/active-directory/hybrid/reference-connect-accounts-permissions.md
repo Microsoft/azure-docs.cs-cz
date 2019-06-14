@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919168"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
@@ -38,7 +38,7 @@ Azure AD Connect používá 3 účty, aby bylo možné synchronizovat informace 
 
 - **Účet Azure AD Connector**: použít při zápisu informací do služby Azure AD
 
-Kromě tyto tři účty používají ke spouštění služby Azure AD Connect budete také potřebovat následující další účty k instalaci Azure AD Connect.  Jsou to:
+Kromě tyto tři účty používají ke spouštění služby Azure AD Connect budete také potřebovat následující další účty k instalaci Azure AD Connect.  Toto jsou:
 
 - **Účet místního správce**: Správce, který je instalace Azure AD Connect a který má oprávnění místního správce na počítači.
 
@@ -46,9 +46,9 @@ Kromě tyto tři účty používají ke spouštění služby Azure AD Connect bu
 
 - **Účet Azure AD globálního správce**: použít k vytvoření účtu Azure AD Connector a nakonfigurovat služby Azure AD.
 
-- **Účet SQL SA (volitelné)**: použili k vytvoření databáze ADSync při použití plnou verzi systému SQL Server.  Tento Server SQL může být místní nebo vzdálené instalace služby Azure AD Connect.  Tento účet může být stejný účet jako správce podnikové sítě.  Zřizování může databáze nyní možné provádět vzdáleně správce SQL a následně je nainstalován Správce služby Azure AD Connect s oprávněními vlastníka databáze.  Informace o najdete v článku [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md)
+- **Účet SQL SA (volitelné)** : použili k vytvoření databáze ADSync při použití plnou verzi systému SQL Server.  Tento Server SQL může být místní nebo vzdálené instalace služby Azure AD Connect.  Tento účet může být stejný účet jako správce podnikové sítě.  Zřizování může databáze nyní možné provádět vzdáleně správce SQL a následně je nainstalován Správce služby Azure AD Connect s oprávněními vlastníka databáze.  Informace o najdete v článku [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md)
 
-## <a name="installing-azure-ad-connect"></a>Instaluje se služba Azure AD Connect.
+## <a name="installing-azure-ad-connect"></a>Instalace Azure AD Connect
 Průvodce instalací Azure AD Connect poskytuje dvě různé cesty:
 
 * V expresním nastavení Průvodce vyžaduje další oprávnění.  Je to tak, aby ho konfiguraci nastavení, aniž by bylo potřeba vytvořit uživatele nebo nakonfigurovat oprávnění.
@@ -80,7 +80,7 @@ Konektor služby AD DS účet je vytvořený pro čtení a zápis do systému Wi
 | Čtení a zápis všech iNetOrgPerson vlastnosti |Import a serveru Exchange hybridní |
 | Čtení a zápis všech vlastností skupiny |Import a serveru Exchange hybridní |
 | Obraťte se na čtení a zápis všech vlastností |Import a serveru Exchange hybridní |
-| Resetování hesla |Příprava k povolení zpětného zápisu hesla |
+| Resetovat heslo |Příprava k povolení zpětného zápisu hesla |
 
 ### <a name="express-installation-wizard-summary"></a>Souhrn Průvodce Expresní instalace
 
@@ -146,7 +146,7 @@ Když upgradujete z jedné verze nástroje Azure AD Connect na novou verzi, pot�
 >Od verze sestavení 1.1.484, Azure AD Connect zavedené regrese chybu, která vyžaduje oprávnění správce systému pro upgrade databáze SQL.  Tato chyba se vyřeší v sestavení 1.1.647.  Pokud provádíte upgrade na toto sestavení, budete potřebovat oprávnění správce.  Nejsou dostatečná oprávnění dbo.  Pokud se pokusíte upgradovat bez oprávnění správce služby Azure AD Connect, dojde k selhání a Azure AD Connect se už nebude správně fungovat později.  Společnost Microsoft je tomu věnovat pozornost a funguje to pokud chcete opravit.
 
 
-| Objekt zabezpečení | Oprávnění vyžadovaná | Použití |
+| Instančního objektu | Oprávnění vyžadovaná | Použití |
 | --- | --- | --- |
 | Uživatel, který spouští Průvodce instalací |Správce místního serveru |Aktualizujte binární soubory. |
 | Uživatel, který spouští Průvodce instalací |Člen ADSyncAdmins |Změny synchronizační pravidla a další konfiguraci. |
@@ -154,7 +154,7 @@ Když upgradujete z jedné verze nástroje Azure AD Connect na novou verzi, pot�
 
 ## <a name="more-about-the-created-accounts"></a>Další informace o vytvořené účty
 ### <a name="ad-ds-connector-account"></a>Účet AD DS konektoru
-Pokud používáte expresního nastavení, účet se vytvoří ve službě Active Directory, který je používán k synchronizaci. Vytvořený účet se nachází v kořenové doméně doménové struktury v kontejneru Users a má s předponou názvu **MSOL_**. Účet je vytvořen s dlouho složité heslo, nemá prošlou platnost. Pokud máte zásady hesel ve vaší doméně, ujistěte se, že dlouhá a složitá hesla by bylo možné pro tento účet.
+Pokud používáte expresního nastavení, účet se vytvoří ve službě Active Directory, který je používán k synchronizaci. Vytvořený účet se nachází v kořenové doméně doménové struktury v kontejneru Users a má s předponou názvu **MSOL_** . Účet je vytvořen s dlouho složité heslo, nemá prošlou platnost. Pokud máte zásady hesel ve vaší doméně, ujistěte se, že dlouhá a složitá hesla by bylo možné pro tento účet.
 
 ![Účet AD](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
@@ -177,7 +177,7 @@ Pokud používáte připojení k sestavení z 2017 dne nebo starší, pak by nem
 
 Toto je tabulka výchozí doporučené a podporované možnosti pro účet synchronizační služby.
 
-Legenda:
+Legendy:
 
 - **Tučné** označuje výchozí možnost a ve většině případů doporučujeme.
 - *Kurzíva* určuje doporučená možnost, pokud není výchozí možnost.

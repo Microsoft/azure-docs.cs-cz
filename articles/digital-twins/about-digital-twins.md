@@ -9,12 +9,12 @@ ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41a6b040c04c3a212a7ee89897b29f5ec96048d7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926497"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072181"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
@@ -34,7 +34,7 @@ Azure digitální dvojče platí pro všechny typy prostředí. Jen několik př
 - Analyzujte obsazení úrovně budovy.
 - Najdete za nejvytíženější pokladna ve vašem úložišti.
 
-Ať už je váš skutečný obchodní scénář jakýkoli, prostřednictvím služby Azure Digital Twins můžete zřídit odpovídající digitální instanci.
+Cokoli, co je vaše každodenní praxe podnikový scénář, je velmi pravděpodobné že odpovídající instance digitální dají zřídit prostřednictvím digitální dvojče Azure.
 
 V následujícím videu trvá bližší pohled na digitální dvojče Azure.
 

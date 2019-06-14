@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: b28d590390cd1a1ef1c6651e6943ac2a7fa0af29
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075501"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -45,7 +45,7 @@ Po dokončení kontroly dodržování předpisů pro aktualizace do počítače 
 
 Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
 
-Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každé tři hodiny. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
+Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každou hodinu. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
 
 Řešení podá zprávu o aktuálnosti počítače podle jakým zdrojem je nakonfigurované na synchronizaci se službou. Pokud počítač Windows je nakonfigurovaný tak, že sestavy do služby WSUS, podle toho, když WSUS poslední synchronizaci se službou Microsoft Update, výsledky mohou lišit od co ukazuje Microsoft Updates. Toto chování je stejná pro počítače s Linuxem, které jsou nakonfigurované k ukládání dat do místního úložiště namísto do veřejného úložiště.
 
@@ -303,7 +303,7 @@ Správa aktualizací spoléhá na webu Windows Update ke stažení a instalaci a
 
 ### <a name="pre-download-updates"></a>Náhled stahování aktualizací
 
-Konfigurace automaticky stahování aktualizací v zásadách skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) k **3**. Stáhne aktualizace potřeba na pozadí, ale neinstaluje je. To zajišťuje Správa aktualizací v ovládacím prvku plánů, ale povolit aktualizace stáhnout mimo časové období údržby Update Management. To může zabránit **překročilo se časové období údržby** chyby v Update Management.
+Konfigurace automaticky stahování aktualizací v zásadách skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) k **3**. Stáhne aktualizace potřeba na pozadí, ale neinstaluje je. To zajišťuje Správa aktualizací v ovládacím prvku plánů, ale povolit aktualizace stáhnout mimo časové období údržby Update Management. To může zabránit **překročilo se časové období údržby** chyby v Update Management.
 
 Můžete to také nastavit pomocí prostředí PowerShell, spusťte následující příkaz Powershellu v systému, které chcete automaticky – stahování aktualizací.
 

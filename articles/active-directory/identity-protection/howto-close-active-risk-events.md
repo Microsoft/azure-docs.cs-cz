@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e003aec8fa5aeab587fa07acdae3a13b370a535
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55c56674b04c4359fba741d10176fc91e3a991eb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453434"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109031"
 ---
 # <a name="how-to-close-active-risk-events"></a>Jak: Zavření aktivních rizikových událostí
 
@@ -48,9 +48,9 @@ Zavřít aktivní rizikových událostí, máte následující možnosti:
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>Vyžadovat resetování hesla se zásady rizik uživatelů
 
-Pokud nakonfigurujete [zásady podmíněného přístupu na základě rizika uživatele](howto-user-risk-policy.md), můžete vyžadovat změnu hesla, pokud se automaticky zjistí určitá úroveň rizika uživatele. 
+Tím, že nakonfigurujete [riziko uživatele zásady podmíněného přístupu](howto-user-risk-policy.md), mohou vyžadovat změnu hesla, pokud byla automaticky zjištěna úroveň rizika zadaného uživatele. 
 
-![Resetování hesla](./media/howto-close-active-risk-events/13.png)
+![Resetovat heslo](./media/howto-close-active-risk-events/13.png)
 
 Resetování hesla ukončí všechny aktivní rizika události související uživatele a přináší identitu zpátky do bezpečného stavu. Použití zásady rizik uživatelů je upřednostňovanou metodou zavřete aktivní rizikové události, protože tato metoda je automatické. Neexistuje žádná interakce potřebné mezi ovlivněné uživatele a pomoc HelpDesk nebo správce.
 
@@ -65,12 +65,12 @@ Ale pomocí zásady rizik uživatelů není vždy použít. To se týká, např�
 
 Pokud nutnost zadat heslo resetovat zásady rizik uživatelů není možné, můžete získat všechny rizikové události pro uživatele uzavřen heslo ruční resetování.
 
-![Resetování hesla](./media/howto-close-active-risk-events/04.png)
+![Resetovat heslo](./media/howto-close-active-risk-events/04.png)
 
 
 Dialogové okno související poskytuje dva různé způsoby vytvoření nového hesla:
 
-![Resetování hesla](./media/howto-close-active-risk-events/05.png)
+![Resetovat heslo](./media/howto-close-active-risk-events/05.png)
 
 
 **Vygenerovat dočasné heslo** -podle vygenerovat dočasné heslo, můžete okamžitě použít identitu zpět do bezpečného stavu. Tato metoda vyžaduje interakci s ovlivnění uživatelé, protože potřebují vědět, co je dočasné heslo. Můžete například odeslat nové dočasné heslo na alternativní e-mailovou adresu uživatele nebo jeho manažerovi. Protože je dočasné heslo, bude uživatel vyzván při dalším přihlášení změnit heslo.
@@ -83,7 +83,7 @@ Dialogové okno související poskytuje dva různé způsoby vytvoření nového
 
 Pokud heslo resetovat není pro vás, může také skrýt všechny rizikové události. 
 
-![Resetování hesla](./media/howto-close-active-risk-events/03.png)
+![Resetovat heslo](./media/howto-close-active-risk-events/03.png)
 
 Po kliknutí na **zavřít všechny události**, jsou uzavřeny všechny události a ovlivněného uživatele už nejsou ohrožení. Ale vzhledem k tomu, že tato metoda nemá vliv na stávající heslo, to není vrácení souvisejících identity do bezpečného stavu. Případ použití upřednostňované pro tuto metodu je odstraněného uživatele pomocí aktivní rizikové události. 
 

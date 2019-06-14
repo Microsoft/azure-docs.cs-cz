@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66130986"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
@@ -100,24 +100,24 @@ Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](.
 ## <a name="metric-names"></a>Názvy metrik
 | Název metriky | Název obrazovky | Popis |
 | --- | --- | --- |
-| `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči |
+| `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči. |
 | `basicExceptionServer.count` |Serverové výjimky |Počet nezpracovaných výjimek vyvolaných aplikací |
 | `clientPerformance.clientProcess.value` |Čas klientského zpracování |Doba mezi přijetím posledního bajtu dokumentu, dokud je načten v modelu DOM. Asynchronní žádosti se možná ještě zpracovávají. |
-| `clientPerformance.networkConnection.value` |Čas síťového připojení při stahování stránky |Čas, který prohlížeč pro připojení k síti. Může být 0, pokud uložené v mezipaměti. |
+| `clientPerformance.networkConnection.value` |Čas síťového připojení při zatížení stránky |Čas, který prohlížeč pro připojení k síti. Může být 0, pokud uložené v mezipaměti. |
 | `clientPerformance.receiveRequest.value` |Čas přijetí odezvy |Doba mezi prohlížeči odesílá požadavek do spuštění trvá příjem odpovědi. |
 | `clientPerformance.sendRequest.value` |Čas odeslání žádosti |Doba, za kterou prohlížeč odešlete žádost. |
-| `clientPerformance.total.value` |Čas načítání stránky prohlížeče |Doba od žádosti uživatele do načtení DOM, šablon stylů, skriptů a obrázků |
+| `clientPerformance.total.value` |Doba načítání stránek prohlížečem |Doba od žádosti uživatele do modelu DOM, šablon stylů, skripty a bitové kopie se načítají. |
 | `performanceCounter.available_bytes.value` |Dostupná paměť |Fyzická paměť k dispozici pro proces nebo pro použití systémem. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence V/V procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
+| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence v/v procesu |Celkový počet bajtů za sekundu číst a zapisovat do souborů, sítě a zařízení. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |frekvence výjimek |Výjimek vyvolaných za sekundu. |
 | `performanceCounter.percentage_processor_time.value` |Proces – procesor |Procentuální hodnotu uplynulého času všechny podprocesy procesu používají procesor pro spouštění instrukcí pro proces aplikace. |
-| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech |
-| `performanceCounter.process_private_bytes.value` |Privátní bajty procesu |Paměť exkluzivně přiřazená k procesům monitorované aplikace |
-| `performanceCounter.request_execution_time.value` |Doba provádění požadavku ASP.NET |Doba provádění nejnovější žádosti |
-| `performanceCounter.requests_in_application_queue.value` |Požadavky ASP.NET ve frontě na spuštění |Délka fronty žádostí na aplikace |
-| `performanceCounter.requests_per_sec.value` |Frekvence požadavků ASP.NET |Počet všech žádostí na aplikaci za sekundu z ASP.NET |
+| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech. |
+| `performanceCounter.process_private_bytes.value` |Privátní bajty procesu |Paměť exkluzivně přiřazená k procesům monitorované aplikace. |
+| `performanceCounter.request_execution_time.value` |Doba provádění požadavku ASP.NET |Doba provádění nejnovější žádosti. |
+| `performanceCounter.requests_in_application_queue.value` |Požadavky ASP.NET ve frontě na spuštění |Délka fronty žádostí na aplikace. |
+| `performanceCounter.requests_per_sec.value` |Frekvence požadavků ASP.NET |Počet všech žádostí na aplikaci za sekundu z ASP.NET. |
 | `remoteDependencyFailed.durationMetric.count` |Chyby závislostí |Počet neúspěšných volání prováděných aplikací serveru vůči externím prostředkům. |
-| `request.duration` |Doba odezvy serveru |Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi |
+| `request.duration` |Doba odezvy serveru |Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi. |
 | `request.rate` |Frekvence žádostí |Počet všech žádostí na aplikaci za sekundu. |
 | `requestFailed.count` |Neúspěšné požadavky |Žádosti o počet protokolu HTTP, z kterých vzniklo kódem odpovědi > = 400 |
 | `view.count` |Zobrazení stránek |Počet žádostí uživatele klienta pro webovou stránku. Syntetický provoz je odfiltrována. |
@@ -127,7 +127,7 @@ Metriky odesílá telemetrická data různých modulů:
 
 | Metriky skupiny | Modul kolekcí |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazení |[JavaScript prohlížeče](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazit |[JavaScript prohlížeče](../../azure-monitor/app/javascript.md) |
 | performanceCounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Závislost](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | žádost<br/>requestFailed |[Žádost serveru](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |

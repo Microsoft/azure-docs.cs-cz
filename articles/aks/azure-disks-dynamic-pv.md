@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956474"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamické vytváření a používání trvalého svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
@@ -88,7 +88,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Použít trvalý svazek
 
-Po vytvoření deklarace identity trvalý svazek a disku úspěšně zřízený, pod je možné vytvořit s přístupem k disku. Následující manifest vytvoří základní pod NGINX, která používá deklarace identity trvalý svazek s názvem *azure managed Disks* připojení Azure disku v cestě `/mnt/azure`. Pro systém Windows Server kontejnery (aktuálně ve verzi preview ve službě AKS), zadejte *mountPath* pomocí konvence cestu Windows, například *"D:"*.
+Po vytvoření deklarace identity trvalý svazek a disku úspěšně zřízený, pod je možné vytvořit s přístupem k disku. Následující manifest vytvoří základní pod NGINX, která používá deklarace identity trvalý svazek s názvem *azure managed Disks* připojení Azure disku v cestě `/mnt/azure`. Pro systém Windows Server kontejnery (aktuálně ve verzi preview ve službě AKS), zadejte *mountPath* pomocí konvence cestu Windows, například *"D:"* .
 
 Vytvořte soubor s názvem `azure-pvc-disk.yaml`a zkopírujte do následující manifestu.
 

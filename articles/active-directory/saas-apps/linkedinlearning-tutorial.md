@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3717ed095c162255b0c0cdf09cac13fe2033979a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ff3748213d8449704f7b1001469eb8f7a224498
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60260498"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Kurz: Integrace Azure Active Directory s Linkedinem
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integrace LinkedIn Learning do služby Azure AD, bud
 
 **Chcete-li přidat LinkedIn Learning v galerii, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -127,7 +127,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Linkedinem, proveďte násl
     
     | Name | Zdrojový atribut |
     | ---------------| --------------- |
-    | e-mail  | user.mail  |
+    | email  | user.mail  |
     | Oddělení  | user.department  |
     | jméno  | user.givenname  |
     | Příjmení  | user.surname  |

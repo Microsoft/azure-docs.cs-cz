@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d58ef2716e2a432e1123d6b215b33fb2b688a32
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1e093c9065cf7372e329af68e0fb9867bb12782a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724455"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certent-equity-management"></a>Kurz: Integrace Azure Active Directory se správou jmění Certent
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integraci Certent jmění správy do služby Azure A
 
 **Přidání Certent jmění správy z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -119,9 +119,9 @@ Ke konfiguraci Azure AD jednotného přihlašování se správou jmění Certent
 
 6. Pro klasické jednotného přihlašování aplikace pro správu jmění Certent očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
-    | FIRMA | user.companyname |
+    | SPOLEČNOSTI | user.companyname |
     | UŽIVATEL | user.userprincipalname |
     | ROLE | user.assignedroles |
 

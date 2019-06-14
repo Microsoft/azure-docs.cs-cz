@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0966fe01c90d5bf0bdaefba893b678f877805c5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 83a18d05533058dfe564c1f936403e43194abc6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icims"></a>Kurz: Integrace Azure Active Directory s ICIMS
 
@@ -53,7 +53,7 @@ Konfigurace integrace ICIMS do služby Azure AD, budete muset přidat ICIMS z Ga
 
 **Chcete-li přidat ICIMS z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon k udělení přístupu k ICIMS použití
 
 V této části vytvoříte uživatele v ICIMS jako Britta Simon. Práce s [tým podpory ICIMS](https://www.icims.com/contact-us) přidat uživatele na platformě ICIMS. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

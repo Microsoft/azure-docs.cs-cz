@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900091"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Kurz: Integrace Azure Active Directory s Cisco Webex schůzky
 
@@ -55,7 +55,7 @@ Ke konfiguraci integrace Cisco Webex schůzky do služby Azure AD, budete muset 
 
 **Přidání schůzky Webex Cisco z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -128,7 +128,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cisco Webex schůzky, prove
 
 6. Odstranit výchozí atributy z **deklarace identity uživatelů** oddílu a Cisco Webex schůzky aplikace očekává, že několik další atributy se mají předat zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------|  --------- |
     |   jméno    | user.givenname |
     |   Příjmení    | user.surname |
@@ -249,7 +249,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 Cílem této části je vytvořte uživatele Britta Simon v Cisco Webex schůzky. Podporuje Cisco Webex schůzky **just-in-time** zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Cisco Webex schůzky, je vytvořen nový při pokusu o přístup k Cisco Webex schůzky.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60337557"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Vytvoření rolí pracovního procesu a webu PHP
@@ -26,7 +26,7 @@ ms.locfileid: "60337557"
 
 Tato příručka obsahuje pokyny k vytvoření webové nebo pracovní role PHP v prostředí pro vývoj Windows, vybrat konkrétní verzi PHP z "integrované" verze k dispozici, změňte konfiguraci PHP, povolit rozšíření a nakonec nasadit do Azure. Také popisuje, jak nakonfigurovat webové nebo pracovní role, použít modul runtime PHP (s vlastní konfigurace a rozšíření), který zadáte.
 
-V rámci systému Azure jsou dostupné tři výpočetní modely ke spouštění aplikací: Azure App Service, Azure Virtual Machines a Azure Cloud Services. Všechny tři modely podporují PHP. Cloud Services, které zahrnuje webové a pracovní role, poskytuje *platforma jako služba (PaaS)*. Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací. Role pracovního procesu dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
+V rámci systému Azure jsou dostupné tři výpočetní modely ke spouštění aplikací: Azure App Service, Azure Virtual Machines a Azure Cloud Services. Všechny tři modely podporují PHP. Cloud Services, které zahrnuje webové a pracovní role, poskytuje *platforma jako služba (PaaS)* . Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací. Role pracovního procesu dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
 
 Další informace o těchto možnostech najdete v tématu [poskytovaný platformou Azure možností hostování výpočetních řešení](cloud-services/cloud-services-choose-me.md).
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586926"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
@@ -224,7 +224,7 @@ Auditování zabezpečení sítě je důležité pro zjištění ohrožení zabe
 
 Network Watcher je aktuálně má následující možnosti:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Protokoly auditu</a>**-operace provedené jako součást konfigurace sítě jsou protokolovány. Tyto protokoly můžete zobrazit na webu Azure Portal nebo pomocí nástrojů společnosti Microsoft, jako je Power BI nebo nástrojů třetích stran načíst. Protokoly auditu jsou k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní Rest API. Další informace týkající se protokolů auditu najdete v tématu Audit operací pomocí Resource Manageru. Protokoly auditu jsou k dispozici pro operace provést pro všechny síťové prostředky.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Protokoly auditu</a>** -operace provedené jako součást konfigurace sítě jsou protokolovány. Tyto protokoly můžete zobrazit na webu Azure Portal nebo pomocí nástrojů společnosti Microsoft, jako je Power BI nebo nástrojů třetích stran načíst. Protokoly auditu jsou k dispozici prostřednictvím portálu, Powershellu, rozhraní příkazového řádku a rozhraní Rest API. Další informace týkající se protokolů auditu najdete v tématu Audit operací pomocí Resource Manageru. Protokoly auditu jsou k dispozici pro operace provést pro všechny síťové prostředky.
 
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP tok ověří </a>**  – zkontroluje, jestli je paket povolený nebo zakázaný na základě toku informace 5 řazené kolekce členů paketů parametrů (cílová IP adresa, Zdrojová IP adresa, cílový Port, zdrojový Port a protokol). Pokud paketu je skupina zabezpečení sítě, je vrácena pravidlo a skupinu zabezpečení sítě, které paket zamítlo.

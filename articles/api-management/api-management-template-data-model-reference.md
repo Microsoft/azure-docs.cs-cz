@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
 ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61094518"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management šablony data referenční informace k modelu
@@ -142,8 +142,8 @@ Portál pro vývojáře není k dispozici na úrovni Consumption.
 |--------------|----------|-----------------|  
 |`Id`|string|Jedinečný identifikátor pro tento problém.|  
 |`ApiID`|string|Id rozhraní API, pro které tento problém byl nahlášen.|  
-|`Title`|string|Název problému|  
-|`Description`|string|Popis problému|  
+|`Title`|string|Název problému.|  
+|`Description`|string|Popis problému.|  
 |`SubscriptionDeveloperName`|string|Křestní jméno pro vývojáře, které hlásí problém.|  
 |`IssueState`|string|Aktuální stav problému. Možné hodnoty jsou navrhované, otevřeno, Uzavřeno.|  
 |`ReportedOn`|DateTime|Datum a čas, který tento problém byl nahlášen.|  

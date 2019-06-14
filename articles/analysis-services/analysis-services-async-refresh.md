@@ -9,10 +9,10 @@ ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506971"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
@@ -98,10 +98,10 @@ Text může vypadat takto:
 
 Zadání parametrů se nevyžaduje. Výchozí hodnota je použita.
 
-| Název             | Typ  | Popis  |Výchozí  |
+| Name             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
-| `Type`           | Výčet  | Typ zpracování, který má provést. Typy jsou v souladu s TMSL [aktualizovat příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: full, clearValues, vypočítat, dataOnly, automaticky a defragmentaci. Přidáte typ není podporován.      |   automatic      |
-| `CommitMode`     | Výčet  | Určuje, pokud objekty budou potvrzeny v dávkách, nebo pouze v případě, že je dokončeno. Režimy: výchozí, transakční, partialBatch.  |  transakční       |
+| `Type`           | Enum  | Typ zpracování, který má provést. Typy jsou v souladu s TMSL [aktualizovat příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: full, clearValues, vypočítat, dataOnly, automaticky a defragmentaci. Přidáte typ není podporován.      |   automatic      |
+| `CommitMode`     | Enum  | Určuje, pokud objekty budou potvrzeny v dávkách, nebo pouze v případě, že je dokončeno. Režimy: výchozí, transakční, partialBatch.  |  transakční       |
 | `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterém se spustí paralelní zpracování příkazů. Tuto hodnotu v souladu s MaxParallelism vlastnost, která je možné nastavit v TMSL [pořadí příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) nebo pomocí jiné metody.       | 10        |
 | `RetryCount`     | Int   | Označuje počet pokusů, které se předtím, než oznámí opakování operace.      |     0    |
 | `Objects`        | Pole | Pole objektů, které chcete zpracovat. Každý objekt obsahuje: "tabulky" při zpracování celé tabulky nebo "table" a "oddíl" při zpracování oddílu. Pokud nejsou zadány žádné objekty, se aktualizují celý model. |   Celý model procesu      |
@@ -188,8 +188,8 @@ Hodnoty pro `syncstate`:
 
 - 0: Replikace. Databází se replikují do cílové složky.
 - 1: Rehydratace. Databáze se nedosadí data na počet instancí serveru jen pro čtení.
-- 2: Dokončeno Operace synchronizace byla úspěšně dokončena.
-- 3: Selhalo Operace synchronizace se nezdařila.
+- 2: Dokončit. Operace synchronizace byla úspěšně dokončena.
+- 3: Se nezdařilo. Operace synchronizace se nezdařila.
 - 4: Dokončování. Operace synchronizace byla dokončena, ale provádí vyčištění.
 
 ## <a name="code-sample"></a>Ukázka kódu
@@ -203,7 +203,7 @@ Tady je ukázka kódu C# vám pomůžou začít, [RestApiSample na Githubu](http
 
 Vzorový kód používá [instanční objekt služby](#service-principal) ověřování.
 
-### <a name="service-principal"></a>Instanční objekt
+### <a name="service-principal"></a>Instanční objekt služby
 
 Zobrazit [vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) a [přidání hlavního názvu služby k roli správce serveru](analysis-services-addservprinc-admins.md) pro další informace o tom, jak nastavení hlavního názvu služby a přidělení potřebných oprávnění v Azure jako . Po dokončení kroků, proveďte následující kroky:
 

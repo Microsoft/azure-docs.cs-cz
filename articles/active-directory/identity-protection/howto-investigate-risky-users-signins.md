@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a90195a2d0899b0a157cc67badd2f9873164987
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60295946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108951"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Jak: Prozkoumávání rizikových uživatelů a přihlášení 
 
@@ -30,7 +30,7 @@ ms.locfileid: "60295946"
 Pomocí sestavy rizikových přihlášení a rizikový uživatel můžete prozkoumat a získat přehled o rizika ve vašem prostředí. Díky možnosti filtrování a řazení rizikových přihlášení a uživatelů můžete lépe pochopili potenciální neoprávněného vniknutí ve vaší organizaci. 
 
 
-## <a name="risky-users-report"></a>Sestava o rizikových uživatelích
+## <a name="risky-users-report"></a>Sestava rizikových uživatelů
 
 Pomocí informací uvedených v sestavě rizikových uživatelů můžete najít odpovědi na otázky jako:
 
@@ -41,12 +41,12 @@ Pomocí informací uvedených v sestavě rizikových uživatelů můžete najít
 
 Váš první vstupní bod do této sestavy je **prošetření** části na stránce zabezpečení.
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/01.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/01.png)
 
 
 Sestava rizikových uživatelů má výchozí zobrazení, který ukazuje:
 
-- Name
+- Název
 
 - Stav rizika
 
@@ -61,18 +61,18 @@ Sestava rizikových uživatelů má výchozí zobrazení, který ukazuje:
 - Status
  
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/03.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/03.png)
 
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/04.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/04.png)
 
 Dialogové okno sloupce můžete zobrazit další pole nebo odeberte pole, která jsou už zobrazená.
 
 Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti ve vodorovném zobrazení.
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/05.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/05.png)
 
 
 Zobrazení podrobností ukazuje:
@@ -81,7 +81,7 @@ Zobrazení podrobností ukazuje:
 
 - Poslední riziková přihlášení
 
-- Rizikové události, které nesouvisejí s přihlášením
+- Rizikové události není propojená se u přihlášení
 
 - Historie rizika
 
@@ -89,7 +89,7 @@ Zobrazení podrobností ukazuje:
 
 Kromě toho můžete:
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/08.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/08.png)
 
 - Zobrazte všechny místní přihlášení k zobrazení sestavy přihlášení pro daného uživatele.
 
@@ -105,7 +105,7 @@ Kromě toho můžete:
 
 Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat rizikový uživatel data s využitím následujících výchozích polí:
 
-- Name
+- Název
 
 - Uživatelské jméno
 
@@ -117,7 +117,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 - Status
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/06.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/06.png)
 
 
 
@@ -126,15 +126,15 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 **Rizika stavu** filtr umožňuje vybrat:
 
-- Ohrožené
-- Opraveno
-- Zamítnout
+- Riziko
+- Opravené
+- Zavře
 
 
 **Úroveň rizika** filtr umožňuje vybrat:
 
-- Vysoký
-- Střednědobé používání
+- Vysoká
+- Střední
 - Nízká
 
 
@@ -145,7 +145,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 **Stav** filtr umožňuje vybrat:
 
-- Odstraněno
+- Odstranění
 - Aktivní
 
 
@@ -153,7 +153,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 Pokud budete chtít pracovat s ním mimo na webu Azure portal si můžete stáhnout data rizikový uživatel. Kliknutím na stáhnout vytvoří soubor CSV nejnovější 2 500 záznamů. 
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/07.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/07.png)
 
 
 V panelu nástrojů klikněte na sloupce můžete přizpůsobit zobrazení seznamu.
@@ -209,13 +209,13 @@ Sestavy rizikových přihlášení má výchozí zobrazení, které obsahuje:
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/11.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/11.png)
 
 Dialogové okno sloupce můžete zobrazit další pole nebo odeberte pole, která jsou už zobrazená.
 
 Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti ve vodorovném zobrazení.
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/12.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/12.png)
 
 
 Zobrazení podrobností ukazuje:
@@ -224,7 +224,7 @@ Zobrazení podrobností ukazuje:
 
 - Informace o zařízení
 
-- Informace o riziku
+- Informace o rizika
 
 - Informace o MFA
 
@@ -236,11 +236,11 @@ Zobrazení podrobností ukazuje:
 
 Kromě toho můžete:
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/13.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/13.png)
 
-- Potvrdit napadení 
+- Potvrďte dojde k ohrožení bezpečnosti 
 
-- Potvrdit bezpečnost
+- Potvrďte bezpečné
 
 Další informace najdete v tématu [jak zlepšit přesnost detekce](howto-improve-detection-accuracy.md).
 
@@ -278,23 +278,23 @@ Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možnos
 
 **Rizika stavu** filtr umožňuje vybrat:
 
-- Ohrožené
-- Potvrzená napadení
-- Potvrzené bezpečí
-- Zamítnout
-- Opraveno
+- Riziko
+- Potvrdit dojde k ohrožení bezpečnosti
+- Potvrdit bezpečné
+- Zavře
+- Opravené
 
 
 **Úrovně (agregace) rizika** filtr umožňuje vybrat:
 
-- Vysoký
-- Střednědobé používání
+- Vysoká
+- Střední
 - Nízká
 
 **(V reálném čase) úroveň rizika** filtr umožňuje vybrat:
 
-- Vysoký
-- Střednědobé používání
+- Vysoká
+- Střední
 - Nízká
 
 
@@ -322,7 +322,7 @@ Možné hodnoty:
 
 Pokud budete chtít pracovat s ním mimo na webu Azure portal si můžete stáhnout data rizikových přihlášení. Kliknutím na stáhnout vytvoří soubor CSV nejnovější 2 500 záznamů. 
 
-![Sestava o rizikových uživatelích](./media/howto-investigate-risky-users-signins/15.png)
+![Sestava rizikových uživatelů](./media/howto-investigate-risky-users-signins/15.png)
 
 
 

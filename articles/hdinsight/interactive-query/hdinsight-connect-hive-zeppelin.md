@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Dotazy Apache Hive spustit v Azure HDInsight – Apache Zeppelin'
-description: Další informace o použití Apache Zeppelinu ke spuštění dotazy Apache Hive.
+description: V tomto rychlém startu se dozvíte, jak k použití Apache Zeppelinu ke spuštění dotazy Apache Hive.
 keywords: hdinsight hadoop, hive, interactive query, LLAP
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: f4b8495646e83005dc48e8a729a0e5987b832721
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1642c64b0b14c2e290aad689399b59d896660a28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056695"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Rychlý start: Dotazy Apache Hive spustit v Azure HDInsight s Apache Zeppelin
 
@@ -83,12 +83,3 @@ V tomto rychlém startu jste zjistili, jak používat Apache Zeppelinu ke spouš
 
 > [!div class="nextstepaction"]
 > [Připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
-
-## <a name="see-also"></a>Další informace najdete v tématech
-
-* [Vizualizace dat pomocí Microsoft Power BI v Azure HDInsight s Apache Hive](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [Vizualizace dat Interactive Query Apache Hive pomocí Power BI v Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Pomocí nástroje Azure HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md).
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md).

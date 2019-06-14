@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: shared-resources
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/13/2019
+ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa7f5d3fb38eb1dbca51dec9b73dca3c998436aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 54ebe7df9523a863ae14bc55c6ae4c9635468755
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60500346"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063468"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Spravovat moduly ve službě Azure Automation
 
-Azure Automation poskytuje možnost importovat další moduly Powershellu do účtu Automation pro sady runbook na základě prostředí PowerShell. Tyto moduly je možné vlastní moduly, které jste vytvořili z Galerie prostředí PowerShell nebo moduly AzureRM a Az pro Azure.
+Azure Automation poskytuje možnost importovat další moduly Powershellu do účtu Automation pro sady runbook na základě prostředí PowerShell. Tyto moduly je možné vlastní moduly, které jste vytvořili z Galerie prostředí PowerShell nebo moduly AzureRM a Az pro Azure. Některé moduly jsou importována ve výchozím nastavení při vytváření účtu Automation.
 
 ## <a name="import-modules"></a>Import modulů
 
@@ -51,11 +51,27 @@ Můžete také importovat další moduly z Galerie prostředí PowerShell přím
 
 ![Galerie prostředí PowerShell importovat z webu Azure portal](../media/modules/gallery-azure-portal.png)
 
+## <a name="delete-modules"></a>Odstranit moduly
+
+Pokud máte potíže s modulem nebo je potřeba vrátit zpět na předchozí verzi modulu, odstraníte ji ve svém účtu Automation. Nelze odstranit původní verze [výchozí moduly](#default-modules) , které jsou naimportovány při vytvoření účtu Automation. Pokud chcete odstranit modul je novější verze některého [výchozí moduly](#default-modules) nainstalované, ho se vrátit k předchozí verzi, která byla nainstalována pomocí vašeho účtu Automation. V opačném případě se odeberou všechny modul, který je odstranit z vašeho účtu Automation.
+
+### <a name="azure-portal"></a>portál Azure
+
+Na webu Azure Portal, přejděte do účtu Automation a vyberte **moduly** pod **sdílené prostředky**. Vyberte modul, který chcete odebrat. Na **modulu** stránky, clcick **odstranit**. Pokud tento modul je jedním z [výchozí moduly](#default-modules) ho bude vrácena zpět na verzi, která byla k dispozici, pokud byl účet Automation vytvořený.
+
+### <a name="powershell"></a>PowerShell
+
+Pro odebrání modulu pomocí prostředí PowerShell, spusťte následující příkaz:
+
+```azurepowershell-interactive
+Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
+```
+
 ## <a name="internal-cmdlets"></a>Interní rutiny
 
 Tady je seznam rutin v interní `Orchestrator.AssetManagement.Cmdlets` modul, který je importován každý účet služby Automation. Tyto rutiny jsou dostupné v runboocích a konfiguracích DSC a bylo možné interagovat s vašimi prostředky v rámci účtu Automation. Kromě toho interní rutiny umožňují načíst tajné kódy z šifrované **proměnné** hodnoty, **přihlašovací údaje**a šifrované **připojení** pole. Rutiny prostředí Azure PowerShell, nebudou se moct k načtení těchto tajných kódů. Tyto rutiny nevyžadují implicitně připojení k Azure při jejich používání. To je užitečné pro scénáře, ve kterém jste připojení, jako je například účet Spustit jako, který je třeba použít pro ověření do Azure.
 
-|Name|Popis|
+|Název|Popis|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -209,6 +225,37 @@ Doporučujeme, abyste že při vytváření modulu Powershellu pro použití ve 
 * V modulu musí být plně obsažený v příkazu xcopy u balíčku. Moduly Azure Automation se distribuují do sandboxy Automation při runbooky potřebují spustit. Moduly musí pracovat nezávisle, které běží na hostiteli. By měl být schopen Zip nahoru a přesunout balíček modulu a fungovat jako obvykle po importování do jiného hostitele prostředí PowerShell. V pořadí, které se provedou nesmí být modul závislý na žádném souboru mimo složku modulu. Tato složka je složka, kterou zazipujete při importu modulu do služby Azure Automation. Modul by neměl závisí také na žádném jedinečném nastavení registrů na hostiteli, jako je nastavena tato nastavení při instalaci produktu. Všechny soubory v modulu musí mít méně než 140 znaků cesty. Všechny cesty, než 140 znaků způsobí problémů při importu runbooku. Pokud tento osvědčený postup nedodržíte, modul nebude možné použít ve službě Azure Automation.  
 
 * Pokud odkazující na [moduly Azure Powershellu Az](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) v modulu, ujistěte se také nejsou odkazující na `AzureRM`. `Az` Modulu nelze použít ve spojení s `AzureRM` moduly. `Az` je podporován v sadách runbook, ale nejsou ve výchozím nastavení importován. Další informace o `Az` moduly a důležité informace o vzít v úvahu, najdete v části [Az podpora modulu ve službě Azure Automation](../az-modules.md).
+
+## <a name="default-modules"></a>Výchozí moduly
+
+V následující tabulce jsou uvedeny moduly, které jsou ve výchozím nastavení importován při vytváření účtu Automation. Níže uvedené moduly může mít novější verze z nich importovat, ale původní verze nelze odebrat z vašeho účtu Automation, i v případě, že odstraníte je novější verze.
+
+|Název modulu|Version|
+|---|---|
+| AuditPolicyDsc | 1.1.0.0 |
+| Azure | 1.0.3 |
+| Azure.Storage | 1.0.3 |
+| AzureRM.Automation | 1.0.3 |
+| AzureRM.Compute | 1.2.1 |
+| AzureRM.Profile | 1.0.3 |
+| AzureRM.Resources | 1.0.3 |
+| AzureRM.Sql | 1.0.3 |
+| AzureRM.Storage | 1.0.3 |
+| ComputerManagementDsc | 5.0.0.0 |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
+| PSDscResources | 2.9.0.0 |
+| SecurityPolicyDsc | 2.1.0.0 |
+| StateConfigCompositeResources | 1 |
+| xDSCDomainjoin | 1.1 |
+| xPowerShellExecutionPolicy | 1.1.0.0 |
+| xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>Další postup
 

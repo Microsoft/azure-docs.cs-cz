@@ -13,10 +13,10 @@ ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900706"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrická data: Datový model Application Insights
@@ -45,7 +45,7 @@ Toto pole bylo původně slouží k označení typu zařízení, kterou použív
 Maximální délka: 64
 
 
-## <a name="operation-id"></a>ID operace
+## <a name="operation-id"></a>Id operace
 
 Jedinečný identifikátor kořenovou operaci. Tento identifikátor skupiny telemetrie umožňuje napříč více komponent. Zobrazit [korelace telemetrie](../../azure-monitor/app/correlation.md) podrobnosti. Id operace je vytvořen pomocí požadavku nebo zobrazení stránky. Všechny další telemetrie nastaví toto pole na hodnotu nadřazeného žádosti nebo zobrazení stránky. 
 
@@ -73,7 +73,7 @@ Název syntetické zdroje. Některé telemetrická data z aplikace může předs
 Maximální délka: 1024
 
 
-## <a name="session-id"></a>ID relace
+## <a name="session-id"></a>Id relace
 
 ID relace – instance interakce uživatele s aplikací. Informace v polích kontextu relace je vždy o koncového uživatele. Při odesílání telemetrických dat ze služby, spočívá v kontextu relace uživatele, který inicioval operaci ve službě.
 

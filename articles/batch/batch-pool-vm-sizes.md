@@ -12,15 +12,15 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 06/11/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 033e0865f23034b94e3133e0ba5890eca4e746ea
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080893"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Výběr velikosti virtuálního počítače pro výpočetní uzly ve fondu služby Azure Batch
 
@@ -28,60 +28,54 @@ Když při volbě velikosti uzlu pro fond služby Azure Batch, můžete z témě
 
 Existuje pár výjimek a omezení, která volba velikosti virtuálního počítače:
 
-* Nepodporuje některé rodiny virtuálních počítačů nebo velikosti virtuálních počítačů ve službě Batch. 
+* Nepodporuje některé řadu virtuálních počítačů nebo velikosti virtuálních počítačů ve službě Batch.
 * Některé velikosti virtuálních počítačů jsou omezené a musí být konkrétně povolené předtím, než může být přidělen.
 
-## <a name="supported-vm-families-and-sizes"></a>Podporované rodiny virtuálních počítačů a velikosti
+## <a name="supported-vm-series-and-sizes"></a>Podporované řadu virtuálních počítačů a velikosti
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Fondy v konfiguraci virtuálního počítače
 
-Fondy služby batch v konfiguraci virtuálního počítače podporují všechny velikosti virtuálních počítačů ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)) *s výjimkou* pro následující:
+Fondy služby batch v konfiguraci virtuálního počítače podporují téměř všechny velikosti virtuálních počítačů ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). V následující tabulce získat další informace o podporovaných velikostech a omezení.
 
-| Rodina  | Nepodporované velikosti  |
-|---------|---------|
-| Základní A-series | Basic_A0 (A0) |
-| A-Series | Standard_A0 |
-| B-Series | Vše |
-| Řada DC | Vše |
-| Extrémní optimalizované z hlediska paměti | Vše |
-| Řada HB<sup>1,2</sup> | Vše |
-| Hybridní připojení řady<sup>1,2</sup> | Vše |
-| Řada Lsv2 | Vše |
-| NDv2-series<sup>1,2</sup> | Vše |
-| NVv2-series<sup>1</sup> | Vše |
-| SAP HANA | Vše |
+Všechny propagační nebo velikosti virtuálních počítačů ve verzi preview nejsou uvedeny není zaručena pro podporu.
 
+| Řada virtuálních počítačů  | Podporované velikosti | Režim přidělování fondů pro účet batch<sup>1</sup> |
+|------------|---------|-----------------|
+| Základní A-series | Všechny velikosti *s výjimkou* Basic_A0 (A0) | Jakýkoli |
+| A-Series | Všechny velikosti *s výjimkou* Standard_A0 | Jakýkoli |
+| Av2-series | Všechny velikosti | Jakýkoli |
+| B-Series | Žádný | Není k dispozici. |
+| Řada DC | Žádný | Není k dispozici. |
+| Řada Dv2, Dsv2-series | Všechny velikosti | Jakýkoli |
+| Dv3 Dsv3-series | Všechny velikosti | Jakýkoli |
+| [Paměťově optimalizované velikosti](../virtual-machines/linux/sizes-memory.md) | Žádný | Není k dispozici. |
+| Fsv2-series | Všechny velikosti | Jakýkoli |
+| H-series | Všechny velikosti | Jakýkoli |
+| HB-Series | Všechny velikosti | Režim předplatného uživatele |
+| HC-Series | Všechny velikosti | Režim předplatného uživatele |
+| Řada Ls | Všechny velikosti | Jakýkoli |
+| Řada Lsv2 | Žádný | Není k dispozici. |
+| M-Series | Standard_M64ms (s nízkou prioritou pouze), Standard_M128s (pouze s nízkou prioritou) | Jakýkoli |  
+| Řada NCv2<sup>2</sup> | Všechny velikosti | Jakýkoli |
+| Řady NCv3-series<sup>2</sup> | Všechny velikosti | Jakýkoli |
+| ND-series<sup>2</sup> | Všechny velikosti | Jakýkoli |
+| NDv2-series | Všechny velikosti | Režim předplatného uživatele |
+| NV-Series | Všechny velikosti | Jakýkoli |
+| Řada NVv3 | Žádný | Není k dispozici. |
+| SAP HANA | Žádný | Není k dispozici. |
 
-<sup>1</sup> plánujeme přidat podporu.  
-<sup>2</sup> mohou být využívána účtů Batch v režimu předplatného uživatele, musí mít základní kvótu nastavenou režimu předplatného uživatele účtu Batch. Zobrazit [konfigurace pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Další informace.
+<sup>1</sup> některé novější řady virtuálních počítačů jsou částečně podporované od začátku. Tyto řady virtuálních počítačů mohou být přiděleny podle účtů služby Batch pomocí **režim přidělování fondů** nastavena na **předplatné uživatele**. Zobrazit [účty Batch spravovat](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Další informace o konfiguraci účtu Batch. Zobrazit [kvóty a omezení](batch-quota-limit.md) se naučíte žádost o kvótu pro tyto částečně podporované řadu virtuálních počítačů pro **předplatné uživatele** účty Batch.  
 
-Tyto velikosti virtuálních počítačů jsou podporovány pouze pro uzly s nízkou prioritou:
-
-| Rodina  | Podporované velikosti  |
-|---------|---------|
-| M-Series | Standard_M64ms |
-| M-Series | Standard_M128s |
-
-Ostatní velikosti virtuálních počítačů řady M-series se aktuálně nepodporují.
+<sup>2</sup> velikosti těchto virtuálních počítačů mohou být přiděleny ve fondech Batch v konfiguraci virtuálního počítače, ale musíte požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota).
 
 ### <a name="pools-in-cloud-service-configuration"></a>Fondy v konfiguraci cloudové služby
 
-Fondy služby batch v konfiguraci cloudové služby podporují všechny [velikosti virtuálních počítačů pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md) *s výjimkou* pro následující:
+Fondy služby batch v konfiguraci cloudové služby podporují všechny [velikosti virtuálních počítačů pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **s výjimkou** pro následující:
 
-| Rodina  | Nepodporované velikosti  |
-|---------|---------|
-| A-Series | ExtraSmall |
+| Řada virtuálních počítačů  | Nepodporované velikosti |
+|------------|-------------------|
+| A-Series   | Velmi malá       |
 | Av2-series | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
-
-## <a name="restricted-vm-families"></a>S omezeným přístupem rodiny virtuálních počítačů
-
-Následující rodiny virtuálních počítačů mohou být přiděleny ve fondech služby Batch, ale musíte požádat o zvýšení kvóty specifická (viz [v tomto článku](batch-quota-limit.md#increase-a-quota)):
-
-* NCv2-Series
-* NCv3-series
-* ND-Series
-
-Tyto velikosti jde použít jenom ve fondech v konfiguraci virtuálního počítače.
 
 ## <a name="size-considerations"></a>Důležité informace o velikosti
 
@@ -89,9 +83,9 @@ Tyto velikosti jde použít jenom ve fondech v konfiguraci virtuálního počít
 
 * **Úkolů na uzel** – se obvykle volí uzel velikost za předpokladu, že jeden úkol běží na uzlu po druhém. Však může být výhodné mít několik úkolů (a tudíž i několik instancí aplikace) [při paralelním spuštění](batch-parallel-node-tasks.md) během provádění úlohy na výpočetních uzlech. V takovém případě je běžné zvolit velikost vícejádrovými uzlu tak, aby vyhovovaly zvýšené poptávky na paralelní zpracování úkolů.
 
-* **Načíst limity pro různé úlohy** – všechny uzly ve fondu mají stejnou velikost. Pokud máte v úmyslu spouštět aplikace s různými požadavky na systém nebo úrovně zatížení, doporučujeme vám používat oddělené fondy. 
+* **Načíst limity pro různé úlohy** – všechny uzly ve fondu mají stejnou velikost. Pokud máte v úmyslu spouštět aplikace s různými požadavky na systém nebo úrovně zatížení, doporučujeme vám používat oddělené fondy.
 
-* **Dostupnost v oblastech** – řada virtuálních počítačů nebo velikost nemusí být k dispozici v oblastech, kde můžete vytvořit účty Batch. Zkontrolujte, že velikost je k dispozici, najdete v článku [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
+* **Dostupnost v oblastech** -series virtuálních počítačů nebo velikost nemusí být k dispozici v oblastech, kde můžete vytvořit účty Batch. Zkontrolujte, že velikost je k dispozici, najdete v článku [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 
 * **Kvóty** – [kvóty jader](batch-quota-limit.md#resource-quotas) v dávce účtu můžete omezit počet uzlů danou velikost můžete přidat do fondu služby Batch. Chcete-li požádat o zvýšení kvóty, přečtěte si téma [v tomto článku](batch-quota-limit.md#increase-a-quota). 
 

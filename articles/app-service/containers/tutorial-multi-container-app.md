@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: d4a93bbd823db59d688f77a626b1225519fb7b44
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d1176d2d70dcd4de3e4287a1973de027c061f291
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055556"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (Preview) ve službě Web App for Containers
 
@@ -314,7 +314,7 @@ Ve více kontejnerech se teď provozuje služba Web App for Containers. Pokud al
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Kvůli použití trvalého úložiště povolíte ve službě App Service toto nastavení. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
+Použití trvalé úložiště, povolíte toto nastavení v rámci služby App Service. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE

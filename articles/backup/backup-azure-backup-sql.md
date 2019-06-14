@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60643877"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL serveru do Azure jako úloha aplikace DPM
@@ -66,7 +66,7 @@ Než začnete, ujistěte se, že všechny [požadavky](backup-azure-dpm-introduc
     Pokud **automaticky rozšiřovat svazky** je vybraná možnost, aplikace DPM můžete účet pro zvýšení záložní svazek při nárůstu jejich objemu produkčního prostředí. Pokud **automaticky rozšiřovat svazky** možnost není vybrána, DPM omezuje na úložiště zálohování pro zdroje dat ve skupině ochrany.
 9. Správci mít přenosu tomto prvotním zálohování ručně (mimo síť) Chcete-li se vyhnout zahlcení šířky pásma nebo v síti. Mohou také nakonfigurovat čas, kdy se může stát počáteční přenos. Klikněte na **Další**.
 
-    ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
+    ![Metodu počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
     Kopie prvotní zálohy. vyžaduje přenos celý zdroj dat. (databáze SQL serveru) z provozního serveru (počítač s SQL serverem) na serveru DPM. Tato data můžou být velké a přenášení dat přes síť může být delší než šířka pásma. Z tohoto důvodu se mohou správci přenosu prvotní zálohování: **Ručně** (pomocí vyměnitelného média) Chcete-li se vyhnout zahlcení šířky pásma, nebo **automaticky přes síť** (v určený čas).
 

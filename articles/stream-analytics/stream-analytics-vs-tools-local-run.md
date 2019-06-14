@@ -10,11 +10,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: 1b86085a76f5ff87147db9dbd0a584784f5e4a2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64686489"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Testování dotazů Stream Analytics místně pomocí sady Visual Studio
 
@@ -44,7 +44,7 @@ Soubor s názvem **local_EntryStream.json** je automaticky přidán do složky v
    
 Vyberte **spustit místně** v editoru dotazů. Nebo stisknutím klávesy F5.
    
-![Spustit místně](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
+![Místní spuštění](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
 Výstup může zobrazit ve formátu tabulky přímo ze sady Visual Studio.
 

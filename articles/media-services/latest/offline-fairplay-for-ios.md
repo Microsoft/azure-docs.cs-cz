@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937516"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming pro iOS 
@@ -48,7 +48,7 @@ Před implementací offline DRM pro FairPlay. na zařízení s iOS 10 +:
 * Online ochrana obsahu pro FairPlay, přečtěte si: 
 
     - [Konfigurace a licenční požadavky pro Apple FairPlay](fairplay-license-overview.md)
-    - [Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí](protect-with-drm.md)
+    - [Pomocí DRM dynamického šifrování a licence služby pro doručování](protect-with-drm.md)
     - Ukázka .NET, který obsahuje konfiguraci online streamování snímků za Sekundu: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * Získáte sadu SDK snímků za Sekundu z webu Apple Developer Network. Tato sada SDK snímků za Sekundu obsahuje dvě součásti:
 

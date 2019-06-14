@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611346"
 ---
 # <a name="the-azure-production-network"></a>Produkční sítě Azure
@@ -54,7 +54,7 @@ Implementace zabezpečení robustní softwaru a brány firewall na funkce na rů
 ### <a name="azure-security-features"></a>Funkce zabezpečení Azure
 Azure implementuje brány firewall založená na hostiteli software do produkční sítě. Několik základních zabezpečení a funkce brány se nacházejí v rámci jádra prostředí Azure. Tyto funkce zabezpečení zahrnují strategii obrany v prostředí Azure. Zákaznická data v Azure je chráněn následující brány firewall:
 
-**Firewall hypervisoru (filtr paketů)**: Tato brána firewall je implementovaná v hypervisoru a nakonfigurovaná agentem kontroleru (FC) prostředků infrastruktury. Tato brána firewall chrání tenanta, na kterém běží ve virtuálním počítači před neoprávněným přístupem. Ve výchozím nastavení po vytvoření virtuálního počítače blokován veškerý provoz, a pak agenta FC přidá pravidel a výjimek ve filtru byl povolen autorizovaný provoz.
+**Firewall hypervisoru (filtr paketů)** : Tato brána firewall je implementovaná v hypervisoru a nakonfigurovaná agentem kontroleru (FC) prostředků infrastruktury. Tato brána firewall chrání tenanta, na kterém běží ve virtuálním počítači před neoprávněným přístupem. Ve výchozím nastavení po vytvoření virtuálního počítače blokován veškerý provoz, a pak agenta FC přidá pravidel a výjimek ve filtru byl povolen autorizovaný provoz.
 
 Dvě kategorie pravidel se naprogramovat tady:
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
 ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60620632"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Funkce zabezpečení k ochraně hybridní zálohy, které používají Azure Backup
-Otázky týkající se otázek zabezpečení, jako je malware, před ransomwarem a neoprávněných vniknutí, roste. Tyto problémy se zabezpečením může být náročné, peněz i data. Pro ochranu před těmito útoky, Azure Backup teď poskytuje funkce zabezpečení k ochraně hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a služby Azure Backup serveru. Tyto funkce patří:
+Otázky týkající se otázek zabezpečení, jako je malware, před ransomwarem a neoprávněných vniknutí, roste. Tyto problémy se zabezpečením může být náročné, peněz i data. Pro ochranu před těmito útoky, Azure Backup teď poskytuje funkce zabezpečení k ochraně hybridní zálohy. Tento článek popisuje, jak povolit a používat tyto funkce pomocí agenta Azure Recovery Services a služby Azure Backup serveru. Mezi tyto funkce patří:
 
 - **Ochrany před únikem informací**. Přidání další úroveň ověřování pokaždé, když se provádí důležité operace, jako je změna přístupové heslo. Toto ověření je zajistit, že tyto operace můžete provádět jenom uživatelé, kteří mají platné přihlašovací údaje Azure.
 - **Výstrahy**. Správce předplatného je odeslána e-mailové oznámení pokaždé, když se provádí důležité operace, jako je odstraňují se záložní data. Tento e-mail zajistí, že se uživatel rychle dozví týkající se těchto akcí.
@@ -50,7 +50,7 @@ Pokud vytvoříte trezor služby Recovery Services, můžete použít všechny f
     ![Vlastnosti trezoru služby Recovery snímek obrazovky](./media/backup-azure-security-feature/security-settings-update.png)
 
     Aktualizace odkaz otevře **nastavení zabezpečení** okno, které poskytuje přehled funkcí a umožňuje vám povolit je.
-5. Z rozevíracího seznamu **nakonfigurovali ověřování Azure Multi-Factor Authentication?**, vyberte hodnotu pro potvrzení, pokud jste povolili [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Pokud je povoleno, zobrazí se výzva k ověření z jiného zařízení (například mobilní telefon), při přihlašování k webu Azure portal.
+5. Z rozevíracího seznamu **nakonfigurovali ověřování Azure Multi-Factor Authentication?** , vyberte hodnotu pro potvrzení, pokud jste povolili [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md). Pokud je povoleno, zobrazí se výzva k ověření z jiného zařízení (například mobilní telefon), při přihlašování k webu Azure portal.
 
    Když provádíte kritické operace v zálohování, je nutné zadat bezpečnostní kód PIN, k dispozici na na webu Azure portal. Povolení ověřování Azure Multi-Factor Authentication přidává další vrstvu zabezpečení. Pouze ověřeným uživatelům s platné přihlašovací údaje Azure a ověřil z druhé zařízení, můžete přístup k webu Azure portal.
 6. Chcete-li uložit nastavení zabezpečení, vyberte **povolit** a klikněte na tlačítko **Uložit**. Můžete vybrat **povolit** až poté, co vyberete hodnotu **nakonfigurovali ověřování Azure Multi-Factor Authentication?** seznamu v předchozím kroku.

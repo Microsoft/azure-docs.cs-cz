@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c326525f5a551ddb00a709ed0a36a68a1343db
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 790df60f973e6f86bd4424173909159fdd81ee0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Kurz: Integrace s Azure Active Directory s HRworks jednotného přihlašování
 
@@ -212,7 +212,7 @@ Azure AD uživatelům umožnit přihlásit v k HRworks Single Sign-On, se musí 
     
     ![Konfigurace jednotného přihlašování](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

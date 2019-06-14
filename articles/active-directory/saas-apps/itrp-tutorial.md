@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3be09c998399cdca886f207bf5fc621bf51d8dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236747"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099605"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Integrace Azure Active Directory s ITRP
 
@@ -66,7 +66,7 @@ Nastavení integrace ITRP do služby Azure AD, budete muset přidat ITRP z Galer
 
 4. Do vyhledávacího pole zadejte **ITRP**. Vyberte **ITRP** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Výsledky vyhledávání](common/search-new-app.png)
+     ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -94,7 +94,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ITRP, proveďte tyto kroky:
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -242,7 +242,7 @@ Chcete-li vytvořit uživatelský účet, proveďte tyto kroky:
 > [!NOTE]
 > Můžete použít libovolný nástroj pro vytváření účtu uživatele nebo rozhraní API poskytovaných ITRP zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

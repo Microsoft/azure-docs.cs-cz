@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d2f854c869ead8016a5437a4e40339d9455c9ad7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0b6fd17d2f8577532778733866260f43e9ac7685
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226415"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Kurz: Integrace Azure Active Directory s RolePoint
 
@@ -66,7 +66,7 @@ Nastavení integrace RolePoint do služby Azure AD, budete muset přidat RolePoi
 
 4. Do vyhledávacího pole zadejte **RolePoint**. Vyberte **RolePoint** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Výsledky vyhledávání](common/search-new-app.png)
+     ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -94,7 +94,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s RolePoint, proveďte tyto k
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -188,7 +188,7 @@ V této části se budou moci používat jednotné přihlašování Azure tím, 
 
 Dále je třeba vytvořit uživatele s názvem Britta Simon v RolePoint. Práce s [tým podpory RolePoint](mailto:info@rolepoint.com) pro přidání uživatelů do RolePoint. Uživatelé musí vytvořit a aktivovat, než budete moct použít jednotné přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

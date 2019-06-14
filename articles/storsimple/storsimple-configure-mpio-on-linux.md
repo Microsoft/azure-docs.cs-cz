@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2018
+ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: b968cc29a7139a4a6db5d2dea8dd6f8f4e1c7ccd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6d4a5b9688540e5aa96dd8789dbb609aedeca97
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077857"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
 Tento článek vysvětluje kroky nutné ke konfiguraci cest vstupně-výstupních operací (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojený ke svému zařízení Microsoft Azure StorSimple pro zajištění vysoké dostupnosti prostřednictvím iniciátory iSCSI. Popisuje podrobně automatické zjišťování zařízení více cest a specifické nastavení pouze pro svazky zařízení StorSimple.
@@ -56,11 +56,11 @@ Konfigurační soubor `/etc/multipath.conf` díky řadě funkcí více cest uži
 
 Multipath.conf má pět částí:
 
-- **Výchozí nastavení na úrovni systému** *(výchozí nastavení)*: Můžete přepsat výchozí nastavení na úrovni systému.
-- **Zařízení na seznamu zakázaných adres** *(černý list)*: Můžete zadat seznam zařízení, která by neměla být řízena Mapovač zařízení.
-- **Seznam zakázaných výjimky** *(blacklist_exceptions)*: Můžete určit konkrétní zařízení jsou považovány za funkce multipath zařízení i v případě, že uvedené v blacklist.
-- **Nastavení konkrétní řadič úložiště** *(zařízení)*: Můžete zadat nastavení konfigurace, které se použijí na zařízení, která mají dodavatele a informace o produktu.
-- **Nastavení konkrétního zařízení** *(multipaths)*: V této části můžete použít k vyladění nastavení konfigurace pro jednotlivé logické jednotky.
+- **Výchozí nastavení na úrovni systému** *(výchozí nastavení)* : Můžete přepsat výchozí nastavení na úrovni systému.
+- **Zařízení na seznamu zakázaných adres** *(černý list)* : Můžete zadat seznam zařízení, která by neměla být řízena Mapovač zařízení.
+- **Seznam zakázaných výjimky** *(blacklist_exceptions)* : Můžete určit konkrétní zařízení jsou považovány za funkce multipath zařízení i v případě, že uvedené v blacklist.
+- **Nastavení konkrétní řadič úložiště** *(zařízení)* : Můžete zadat nastavení konfigurace, které se použijí na zařízení, která mají dodavatele a informace o produktu.
+- **Nastavení konkrétního zařízení** *(multipaths)* : V této části můžete použít k vyladění nastavení konfigurace pro jednotlivé logické jednotky.
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurace více cest na StorSimple připojené k hostiteli s Linuxem
 Zařízení StorSimple připojené k hostiteli se systémem Linux můžete nakonfigurovat pro vysokou dostupnost a vyrovnávání zatížení. Například pokud má dvě rozhraní připojené k síti SAN hostiteli s Linuxem a má dvě rozhraní připojené k síti SAN, tak, aby tato rozhraní jsou ve stejné podsíti, pak bude 4 cesty k dispozici. Nicméně pokud každé rozhraní DATA na zařízení a hostitele rozhraní jsou v jiné podsíti protokolu IP (a ne směrovatelné), pak pouze 2 cesty nebudou k dispozici. Můžete nakonfigurovat více cest automaticky zjistit všechny dostupné cesty, vyberte algoritmus Vyrovnávání zatížení pro tyto cesty, použít konkrétní konfiguraci nastavení pro svazky jen pro StorSimple a potom povolit a ověřit více cest.
@@ -417,7 +417,7 @@ A. Pokud chcete ověřit, jestli vaše zařízení je na seznamu povolených, po
     dm-3 devnode blacklisted, unmonitored
 
 
-Další informace najdete v části [použít řešení potíží s interaktivního příkazu pro více cest](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html).
+Další informace najdete v části [Poradce při potížích pro více cest](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
 
 ## <a name="list-of-useful-commands"></a>Seznam užitečné příkazy
 | Type | Příkaz | Popis |
@@ -444,6 +444,6 @@ Další informace najdete v části [použít řešení potíží s interaktivn�
 ## <a name="next-steps"></a>Další postup
 Když konfigurujete funkci MPIO na hostiteli s Linuxem, budete možná potřebovat, k odkazování na tyto dokumenty CentoS 6.6:
 
-* [Nastavení funkce MPIO na CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
+* [Nastavení funkce MPIO na CentOS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
 * [Průvodce školení Linux](http://linux-training.be/linuxsys.pdf)
 

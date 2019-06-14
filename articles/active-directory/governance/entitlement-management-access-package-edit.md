@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833332"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Úprava a správa přístupu balíček ve správě služby Azure AD oprávnění (Preview)
@@ -146,7 +146,7 @@ Azure AD může automaticky přidělit uživatelům přístup k webu Sharepointu
 
 1. V seznamu prostředků rolí najdete prostředků roli, kterou chcete odebrat.
 
-1. Klikněte na tlačítko se třemi tečkami (**...** ) a potom klikněte na tlačítko **odebrat prostředek role**.
+1. Klikněte na tlačítko se třemi tečkami ( **...** ) a potom klikněte na tlačítko **odebrat prostředek role**.
 
     Každý uživatel s existující přiřazení k balíčku přístupu bude mít automaticky přístup odvolat tento prostředek roli. odebere se současně.
 
@@ -326,7 +326,7 @@ Zjistitelný ve výchozím nastavení jsou balíčky přístup. To znamená, že
 
     Pokud hodnotu **Ano**, přístup k balíčku nebudou uvedené na portálu Moje přístup daného uživatele. Jediný způsob, jak může uživatel zobrazit balíček přístupu je, pokud mají přímou **Moje propojte portálu** k přístupu k balíčku.
 
-## <a name="delete"></a>Odstranit
+## <a name="delete"></a>Odstranění
 
 Balíček přístup můžete odstranit pouze, pokud nemá žádná přiřazení aktivního uživatele.
 

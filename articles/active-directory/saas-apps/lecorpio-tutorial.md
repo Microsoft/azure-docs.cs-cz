@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0dec40027441432845d44828eb61e6b9e0ff081
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bd351191e780118fbce81cd804204bc4dfa00285
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897743"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>Kurz: Integrace Azure Active Directory s Lecorpio
 
@@ -53,7 +53,7 @@ Konfigurace integrace Lecorpio do služby Azure AD, budete muset přidat Lecorpi
 
 **Chcete-li přidat Lecorpio z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon k udělení přístupu k Lecorpio použi
 
 V této části vytvoříte uživatele v Lecorpio jako Britta Simon. Práce s [tým podpory Lecorpio](mailto:info@lecorpio.com) přidat uživatele na platformě Lecorpio. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

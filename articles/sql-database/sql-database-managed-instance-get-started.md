@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: f54cea75e6f7866f1be41d3b0f82393af2235a0a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 27439758c9e2b909bb7179b69c7aade81429f502
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070494"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -73,7 +73,7 @@ Následující kroky ukazují, jak vytvořit spravovanou instanci.
 11. Vyberte **probíhá nasazení** otevřete okno spravované instance můžete dále monitorovat průběh nasazení. 
 
 > [!IMPORTANT]
-> U první instance v podsíti trvá nasazení obvykle mnohem delší než v dalších instancí. Nepřerušujte operace nasazení, protože trvá déle, než jste očekávali. Vytvoření druhého spravované instance v podsíti trvá jenom pár minut.
+> U první instance v podsíti trvá nasazení obvykle mnohem delší než v dalších instancí. Nepřerušujte operace nasazení, protože trvá déle, než jste očekávali.
 
 ## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>Kontrola prostředků a načíst vaše plně kvalifikovaný název serveru
 
@@ -85,7 +85,7 @@ Po úspěšném nasazení zkontrolujte prostředky, které byly vytvořeny a na�
 
 2. Vyberte tabulku směrovací tabulku trasy definované uživatelem (UDR), který byl vytvořen za vás.
 
-   ![Tabulka směrování](./media/sql-database-managed-instance-get-started/route-table.png)
+   ![Směrovací tabulky](./media/sql-database-managed-instance-get-started/route-table.png)
 
 3. Ve směrovací tabulce zkontrolujte položky pro směrování provozu z a v rámci virtuální sítě spravované instance. Pokud vytváříte nebo konfigurujete směrovací tabulka ručně, musí být potřeba vytvořit tyto položky ve směrovací tabulce.
 

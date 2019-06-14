@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689371"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
@@ -62,7 +62,7 @@ Výstup obsahuje všechny informace, které byly nalezeny v video nebo zvuk soub
 
 ### <a name="transcript"></a>přepis
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |id|ID řádku.|
 |text|Přepis samotný.|
@@ -146,7 +146,7 @@ Příklad:
 |Název|Popis|
 |---|---|
 |id|ID tváře.|
-|jméno|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
+|name|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
 |spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
 |description|Popis celebrity. |
 |thumbnailId|ID miniatury této pro rozpoznávání tváře.|
@@ -188,7 +188,7 @@ Příklad:
 
 ### <a name="shots"></a>snímky
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |id|Snímek ID.|
 |keyFrames|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
@@ -245,7 +245,7 @@ Příklad:
 
 ### <a name="statistics"></a>statistiky
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |CorrespondenceCount|Počet srovnávací ve videu.|
 |WordCount|Počet slov za mluvčího.|
@@ -254,7 +254,7 @@ Příklad:
 |SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
 
 
-### <a name="sentiments"></a>mínění
+### <a name="sentiments"></a>zabarvení
 
 Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0 0.1, 0.2 0,1.
 
@@ -296,7 +296,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 |Název|Popis|
 |---|---|
 |id|ID popisku.|
-|jméno|Název popisku (například "Computer", "TV").|
+|name|Název popisku (například "Computer", "TV").|
 |language|Popisek názvu jazyka (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
 
@@ -352,7 +352,7 @@ Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné neb
 
 ### <a name="keywords"></a>klíčová slova
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |id|ID – klíčové slovo.|
 |text|Text – klíčové slovo.|
@@ -403,7 +403,7 @@ Blok visualContentModeration obsahuje časových rozsahů, které můžou mít o
 
 Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být k dispozici pouze privátní zobrazení. Uživatelé mají možnost odeslat žádost pro lidskou kontrolu obsahu, ve kterém bude obsahovat případ atribut IsAdult výsledek kontrolu člověkem.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |id|ID visual moderování obsahu.|
 |adultScore|Hodnocení obsahu pro dospělé (z content moderatoru).|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: b190db401b8ae31582ea31cf59d30f20baccf8c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060360"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric vám na všechny entity v clusteru předem připravené sestav stravu systému. [Health store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity, které jsou založeny na sestavách systému. Je také uspořádány v hierarchii, který explicitně zaznamenává interakce entity.
@@ -36,7 +36,7 @@ Systémovými stavovými sestavami poskytují přehled o clusteru a funkčnost a
 > 
 > 
 
-Součásti systému sestavy, jsou identifikované zdroj, který začíná "**systému.**" Předpona. Watchdogs nemůžou používat stejnou předponu jejich zdroje jako odmítají sestavy s neplatnými parametry.
+Součásti systému sestavy, jsou identifikované zdroj, který začíná "**systému.** " Předpona. Watchdogs nemůžou používat stejnou předponu jejich zdroje jako odmítají sestavy s neplatnými parametry.
 
 Podívejme se na některé sestavy systému pochopit, co je spustí a zjistěte, jak opravte potenciální problémy, které reprezentují.
 
@@ -57,7 +57,7 @@ Sestava udává časový limit globální zapůjčení jako time to live (TTL). 
 * **Vlastnost**: Začíná **detekovaná sousední** a obsahuje informace o uzlu.
 * **Další kroky**: Zjistěte, proč je ztraceno okolí. Například zkontrolujte komunikaci mezi uzly clusteru.
 
-### <a name="rebuild"></a>Znovu sestavit
+### <a name="rebuild"></a>Opětovné sestavení
 
 Služba Správce převzetí služeb při selhání (FM) spravuje informace o uzlech clusteru. Při převzetí služeb při selhání ztratí svoje data a přejde do ztrátu dat, nezaručuje, že na něm uvedeny nejaktuálnější informace o uzlech clusteru. V tomto případě systém prochází opětovné sestavení a System.FM – shromažďuje data ze všech uzlů v clusteru, aby bylo možné znovu sestavte svůj stav. V některých případech z důvodu sítě nebo problémů uzlu, opětovné sestavení můžete získat zablokuje nebo zastaven a proces. Stejné může dojít ke službě Master Správce převzetí služeb při selhání (FMM). FMM je Bezstavová systémová služba, která sleduje kde jsou všechny FMs v clusteru. Uzel s ID nejblíže 0 je vždy FMM primární. Získá ztracené tento uzel se aktivuje opětovné sestavení.
 Pokud jeden z předchozích podmínek dojde, **System.FM –** nebo **System.FMM** příznaky prostřednictvím zprávu o chybách. Opětovné sestavení se mohly zaseknout v jednom ze dvou fází:
@@ -72,17 +72,37 @@ Pokud jeden z předchozích podmínek dojde, **System.FM –** nebo **System.FMM
 * **Vlastnost**: Znovu sestavte.
 * **Další kroky**: Zjistěte síťové připojení mezi uzly a také stav žádné konkrétní uzlů, které jsou uvedeny v popisu sestavy stavu.
 
-## <a name="node-system-health-reports"></a>Uzel systémovými stavovými sestavami
-System.FM –, který představuje službu, kterou správce převzetí služeb při selhání, je, že úřad, který spravuje informace o uzlech clusteru. Každý uzel by měl mít jednu sestavu z System.FM – zobrazení stavu. Uzel entity, které jsou odebrány při odebrání stav uzlu. Další informace najdete v tématu [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+### <a name="seed-node-status"></a>Počáteční stav uzlu
+**System.FM –** sestavy varováním na úrovni clusteru, pokud jsou některé uzly počáteční hodnoty není v pořádku. Počáteční uzly jsou uzly, které zachovat dostupnost základního clusteru. Tyto uzly pomáhají zajistit, že cluster zůstane až vytvořením zapůjčení s ostatními uzly a slouží jako tiebreakers během určité druhy chyb v síti. Pokud nejsou opět nepřipojí většinou počáteční uzly jsou vypnuté v clusteru, cluster automaticky ukončí. 
 
-### <a name="node-updown"></a>Uzel směrem nahoru nebo dolů
-System.FM – hlásí jako OK, pokud uzel připojí prstenec (je zprovozněný). Hlásí chybu, pokud uzel aktualizační kanál, který se liší (je vypnutý, buď pro upgrade nebo jednoduše vzhledem k tomu, že se nezdařilo). Hierarchie stavu sestavena v úložišti stavů funguje u nasazených entit v korelaci s System.FM – sestavy uzlu. Uzel považuje virtuální nadřazené všech nasazených entit. Nasazené entit v tomto uzlu se zobrazují prostřednictvím dotazů, pokud uzel je hlášeno jako provoz pomocí System.FM – se stejnou instanci jako instanci spojenou s entitami. Při System.FM – hlásí, že uzel je vypnutý nebo restartovaný jako novou instanci úložišti health automaticky vyčistí nasazené entity, které může existovat jenom na uzel dolů nebo na předchozí instance uzlu.
+Počáteční uzel je v pořádku, pokud jeho stav uzlu je mimo provoz, odebráno nebo neznámý.
+Sestava upozornění pro počáteční uzel stav se zobrazí seznam všech není v pořádku, počáteční uzly s podrobnými informacemi.
 
-* **SourceId**: System.FM –
-* **Vlastnost**: Stav.
-* **Další kroky**: Pokud uzel je mimo provoz kvůli upgradu, by měl mít zpět poté, co byl upgradován. V takovém případě by měl stav přepněte zpátky na OK. Pokud uzel nepřejde do stavu zpět nebo se postup nezdaří, problém vyžaduje další šetření.
+* **SourceID**: System.FM –
+* **Vlastnost**: SeedNodeStatus
+* **Další kroky**: Pokud se toto upozornění se zobrazí v clusteru, postupujte podle následujících pokynů to opravit: U clusteru se systémem Service Fabric verze 6.5 nebo vyšší: Pro cluster Service Fabric v Azure po počáteční uzel ocitne mimo provoz, Service Fabric se pokusí automaticky ho změnit na uzlu – počáteční hodnota. Aby to chcete udělat, ujistěte se, zkontrolujte počet uzlů – počáteční hodnota v primární typ uzlu je větší nebo rovna počtu dolů počáteční uzly. V případě potřeby přidejte více uzlů do primární typ uzlu dosáhnout.
+V závislosti na stavu clusteru může trvat nějakou dobu, pokud chcete problém vyřešit. Až to uděláte, jsou automaticky vymazány sestavy upozornění.
 
-Následující příklad zobrazuje System.FM – události se stavem Stav OK pro uzel:
+Samostatný cluster Service Fabric zrušte sestavy upozornění počáteční uzly muset se obnoví dobrý stav. V závislosti na tom, proč počáteční uzly jsou v pořádku, třeba provést různé akce: Pokud je uzel počáteční hodnoty dolů, uživatelé potřebují, zobrazíte takový uzel počáteční hodnoty; Pokud je uzel počáteční hodnoty odebrané nebo neznámá, tento uzel počáteční hodnoty [potřeba odebrat z clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Sestava upozornění jsou automaticky vymazány, až budou všechny počáteční uzly v dobrém stavu.
+
+Pro cluster Service Fabric verze starší než verze 6.5: V takovém případě upozornění sestavy je potřeba ručně vymazat. **Uživatelé by měl Ujistěte se, že před vymazáním sestavy se obnoví dobrý stav počáteční uzly**: Pokud je počátečním uzlem je vypnutý, uživatelé potřebují zobrazíte takový uzel počáteční hodnoty; Pokud je uzel počáteční hodnoty odebrané nebo neznámý, takový uzel počáteční hodnoty musí být odstraněno z clusteru.
+Po počáteční uzly se obnoví dobrý stav, použijte následující příkaz z Powershellu [vymazat sestavy upozornění](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+
+```powershell
+PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
+
+## Node system health reports
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+
+### Node up/down
+System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
+
+* **SourceId**: System.FM
+* **Property**: State.
+* **Next steps**: If the node is down for an upgrade, it should come back up after it's been upgraded. In this case, the health state should switch back to OK. If the node doesn't come back or it fails, the problem needs more investigation.
+
+The following example shows the System.FM event with a health state of OK for node up:
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
@@ -104,7 +124,7 @@ HealthEvents          :
 ```
 
 
-### <a name="certificate-expiration"></a>Konec platnosti certifikátu
+### <a name="certificate-expiration"></a>Vypršení platnosti certifikátu
 **System.FabricNode** sestavy upozornění, když certifikáty používané uzel blíží vypršení platnosti. Existují tři certifikáty podle počtu uzlů: **Certificate_cluster**, **Certificate_server**, a **Certificate_default_client**. Po vypršení platnosti alespoň dva týdny, je sestava Stav v pořádku. Po vypršení platnosti je během dvou týdnů, typ sestavy je upozornění. Hodnota TTL z těchto událostí je nekonečné, jsou odebírají a Jestliže uzel opustí clusteru.
 
 * **SourceId**: System.FabricNode
@@ -632,25 +652,25 @@ Vlastnost a text označují, které rozhraní API je teď zablokované. Další 
 
 - **IStatefulServiceReplica.Close** a **IStatefulServiceReplica.Abort**: Nejběžnější případ je služba není dodržením token rušení, který byl poskytnut `RunAsync`. Může být také, která `ICommunicationListener.CloseAsync`, nebo pokud přepsána, `OnCloseAsync` se zablokovala.
 
-- **IStatefulServiceReplica.ChangeRole (S)** a **IStatefulServiceReplica.ChangeRole(N)**: Nejběžnější případ je služba není dodržením token rušení, který byl poskytnut `RunAsync`. V tomto scénáři nejlepším řešením je restartovat repliky.
+- **IStatefulServiceReplica.ChangeRole (S)** a **IStatefulServiceReplica.ChangeRole(N)** : Nejběžnější případ je služba není dodržením token rušení, který byl poskytnut `RunAsync`. V tomto scénáři nejlepším řešením je restartovat repliky.
 
-- **IStatefulServiceReplica.ChangeRole(P)**: Nejběžnější případ je, že nebyla služba vrátila úlohu z `RunAsync`.
+- **IStatefulServiceReplica.ChangeRole(P)** : Nejběžnější případ je, že nebyla služba vrátila úlohu z `RunAsync`.
 
 Další volání rozhraní API, které může způsobit zablokování a zobrazení jsou na **IReplicator** rozhraní. Příklad:
 
 - **IReplicator.CatchupReplicaSet**: Toto upozornění znamená jeden ze dvou kroků. Nejsou dostatečná repliky. Pokud chcete zobrazit, pokud se jedná o tento případ, podívejte se na stav repliky replik v oddílu nebo System.FM – sestava stavu pro zablokované Rekonfigurace. Nebo můžete repliky nejsou potvrdil operace. Rutiny Powershellu `Get-ServiceFabricDeployedReplicaDetail` slouží k určení rozsahu postupu všechny repliky. Potíže nezpůsobuje repliky, jejichž `LastAppliedReplicationSequenceNumber` hodnotu za primární `CommittedSequenceNumber` hodnotu.
 
-- **IReplicator.BuildReplica(\<Remote ReplicaId>)**: Toto upozornění signalizuje problém v procesu sestavení. Další informace najdete v tématu [životní cyklus replik](service-fabric-concepts-replica-lifecycle.md). Může být z důvodu chybné konfigurace adresy replikátor. Další informace najdete v tématu [konfigurace stavovém modelu Reliable Services](service-fabric-reliable-services-configuration.md) a [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md). Také může být problém ve vzdáleném uzlu.
+- **IReplicator.BuildReplica(\<Remote ReplicaId>)** : Toto upozornění signalizuje problém v procesu sestavení. Další informace najdete v tématu [životní cyklus replik](service-fabric-concepts-replica-lifecycle.md). Může být z důvodu chybné konfigurace adresy replikátor. Další informace najdete v tématu [konfigurace stavovém modelu Reliable Services](service-fabric-reliable-services-configuration.md) a [určení prostředků v manifestu služby](service-fabric-service-manifest-resources.md). Také může být problém ve vzdáleném uzlu.
 
 ### <a name="replicator-system-health-reports"></a>Replikátor systémovými stavovými sestavami
-**Replikační fronta je plná:**
+**Replikační fronta je plná:** 
 **System.Replicator** hlásí upozornění, pokud fronta replikací je plná. Na primárním, replikace fronta obvykle zaplní protože jeden nebo více sekundárních replik jsou pomalá potvrzení operace. Na sekundárním to obvykle se stane, když je pomalé provádět operace služby. Upozornění se vymaže při fronty již není úplná.
 
 * **SourceId**: System.Replicator
 * **Vlastnost**: **PrimaryReplicationQueueStatus** nebo **SecondaryReplicationQueueStatus**, v závislosti na role repliky.
 * **Další kroky**: Pokud je sestava na primární, zkontrolujte připojení mezi uzly v clusteru. Pokud všechna připojení jsou v pořádku, může být alespoň jeden pomalé sekundárního objektu s latence vysokou disku provádět operace. Pokud je sestava na sekundárním, proveďte nejprve kontrolu využití disku a výkonu na uzlu. Zkontrolujte odchozí připojení z pomalého uzlu na primární.
 
-**RemoteReplicatorConnectionStatus:**
+**RemoteReplicatorConnectionStatus:** 
 **System.Replicator** na primární replice sestavy varování při připojení k sekundární (vzdálené) replikátoru není v pořádku. Adresa vzdáleného replikátoru je zobrazena ve zprávě sestavy, díky tomu je snazší zjistit, jestli byla předána chybná konfigurace, nebo pokud existují problémy se sítí mezi replikátorů.
 
 * **SourceId**: System.Replicator
@@ -674,7 +694,7 @@ Další volání rozhraní API, které může způsobit zablokování a zobrazen
 Při pojmenování operace trvá déle, než se očekávalo, je označen jako operace se sestavou upozornění na primární replice služby oddílu zásady vytváření názvů, který poskytuje operaci. Pokud se operace úspěšně dokončí, se vymaže upozornění. Pokud operace skončí s chybou, sestava stavu zahrnuje podrobnosti o chybě.
 
 * **SourceId**: System.NamingService
-* **Vlastnost**: Začíná předponou "**Duration_**" a identifikuje pomalá operace a název Service Fabric, na kterém se používá operace. Například pokud vytvoříte službu v názvu **fabric: / MyApp/Moje_služba** trvá příliš dlouho, je vlastnost **Duration_AOCreateService.fabric:/MyApp/MyService**. "AO" odkazuje na roli z oddílu zásady vytváření názvů pro tento název a operaci.
+* **Vlastnost**: Začíná předponou "**Duration_** " a identifikuje pomalá operace a název Service Fabric, na kterém se používá operace. Například pokud vytvoříte službu v názvu **fabric: / MyApp/Moje_služba** trvá příliš dlouho, je vlastnost **Duration_AOCreateService.fabric:/MyApp/MyService**. "AO" odkazuje na roli z oddílu zásady vytváření názvů pro tento název a operaci.
 * **Další kroky**: Zjistěte, proč operace pojmenování se nezdaří. Každá operace může mít jiný hlavní příčiny. Například se mohly zaseknout službu odstranit. Služba se mohly zaseknout, protože pořád padá hostitele aplikace na uzlu kvůli chybě uživatele v kódu služby.
 
 Následující příklad ukazuje operaci služby vytvořit. Operace trvalo déle než nakonfigurovaná doba trvání. "AO" počet opakování a odešle práce "Ne" "Ne" dokončit poslední operaci s časovým LIMITEM. V takovém případě je stejné repliky primární žádosti "o" a "Žádná" rolí.

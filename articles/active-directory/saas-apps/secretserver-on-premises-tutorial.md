@@ -17,10 +17,10 @@ ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Kurz: Integrace Azure Active Directory pomocí tajného klíče serveru (místní)
@@ -61,7 +61,7 @@ Konfigurace integrace tajný klíč serveru (místní) do služby Azure AD, bude
 
 **Přidání tajného klíče serveru (místní) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -191,7 +191,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
     ![Přiřadit uživatele][201]
 
-1. V seznamu aplikací vyberte **tajný klíč serveru (místní)**.
+1. V seznamu aplikací vyberte **tajný klíč serveru (místní)** .
 
     ![Tajný kód serveru (místní) odkaz v seznamu aplikací](./media/secretserver-on-premises-tutorial/tutorial_secretserver_app.png)
 

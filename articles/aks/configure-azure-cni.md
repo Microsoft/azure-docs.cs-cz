@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 25ff618045c65371b1bddd8aeb32166b3e168a93
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 7fc634b064a2b5ac844e60341fedb94c14a62749
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061083"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítí Azure CNI s ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak používat *Azure CNI* sítě a vytvořit pods
 
 * Virtuální síť pro AKS cluster, musíte povolit odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
-* Nesmíte používat AKS clustery `169.254.0.0/16`, `172.30.0.0/16`, nebo `172.31.0.0/16` pro Kubernetes service rozsah adres.
+* Nesmíte používat AKS clustery `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`, nebo `192.0.2.0/24` pro Kubernetes service rozsah adres.
 * Instanční objekt používané clusterem AKS musí mít minimálně [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) oprávnění na podsítě v rámci vaší virtuální sítě. Pokud chcete definovat [vlastní roli](../role-based-access-control/custom-roles.md) nemusíte používat předdefinovaná role Přispěvatel sítě, se vyžadují následující oprávnění:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -100,7 +100,7 @@ Při vytváření clusteru AKS, se dají konfigurovat pro sítě Azure CNI násl
 * Nesmí být v rozsahu IP adres virtuální sítě clusteru
 * Se nesmí překrývat s jinými virtuálními sítěmi, které vytvoří partnerskou virtuální síť s clustery
 * Se nesmí překrývat s každé místní IP adresy
-* Nesmí být v rozsahu `169.254.0.0/16`, `172.30.0.0/16`, nebo `172.31.0.0/16`
+* Nesmí být v rozsahu `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16`, nebo `192.0.2.0/24`
 
 I když je technicky možné určit rozsah adres služby v rámci stejné virtuální síti jako cluster, tím proto nedoporučujeme. Pokud překrývající se rozsahy IP adres se používají může způsobit nepředvídatelné chování. Další informace najdete v tématu [nejčastější dotazy k](#frequently-asked-questions) části tohoto článku. Další informace o službách Kubernetes najdete v části [služby] [ services] v dokumentaci ke Kubernetes.
 

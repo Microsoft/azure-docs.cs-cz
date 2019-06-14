@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f12a4973f2c3427d9d44de625f9e987e836d4b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60242779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Kurz: Integrace Azure Active Directory s Oneteam
 
@@ -55,7 +55,7 @@ Konfigurace integrace Oneteam do služby Azure AD, budete muset přidat Oneteam 
 
 **Chcete-li přidat Oneteam z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

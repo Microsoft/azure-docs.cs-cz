@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868175"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059202"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Webhooků Azure pro monitorování oznámení úloh pro Media Services s .NET 
 
@@ -61,7 +61,7 @@ Při vytváření funkcí služby Media Services, je užitečné pro přidání 
 
 [Nastavení aplikace](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) oddíl definuje parametry, které se používají v webhooku definované v tomto článku. Tyto parametry můžete také přidáte nastavení aplikace. 
 
-|Název|Definice|Příklad:| 
+|Name|Definice|Příklad:| 
 |---|---|---|
 |SigningKey |Podpisový klíč.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Adresu koncového bodu webhooku. Po vytvoření funkce webhook můžete zkopírovat adresu URL **získat adresu URL funkce** odkaz. | protokol https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
@@ -79,7 +79,7 @@ Po nasazení aplikace funkcí se nachází mezi **App Services** Azure Functions
 
 Vaše funkce Azure Functions je přidružené soubory kódu a další soubory, které jsou popsané v této části. Ve výchozím nastavení, je přidružený funkce **function.json** a **run.csx** (C#) soubory. Je třeba přidat **project.json** souboru. Zbývající část ukazuje definice pro tyto soubory.
 
-![souborů](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
@@ -245,7 +245,7 @@ private static string PublishAndBuildStreamingURLs(String jobID)
 
     // Get a reference to the streaming manifest file from the  
     // collection of files in the asset. 
-    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+    var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                 EndsWith(".ism")).
                 FirstOrDefault();
 

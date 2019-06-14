@@ -15,10 +15,10 @@ ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230038"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověřování.
@@ -26,11 +26,11 @@ Dvoustupňové ověření je krok dodatečné zabezpečení, která pomáhá chr
 
 Tento článek vám pomůže nastavit vaši **pracovního nebo školního účtu**. Pokud chcete povolit dvoustupňové ověřování pro vlastní, osobní účet Microsoft, přečtěte si téma [o dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
-## <a name="set-up-your-account"></a>Nastavit účet
+## <a name="set-up-your-account"></a>Nastavení účtu
 
 Pokud vaše firemní podpora požaduje spuštění pomocí dvoustupňového ověření, zobrazí se vám obrazovka s upozorněním **váš správce vyžaduje, abyste nastavili tento účet pro dodatečné ověření zabezpečení**:
 
-![Nastavení](./media/multi-factor-authentication-end-user-first-time/first.png)
+![Instalace](./media/multi-factor-authentication-end-user-first-time/first.png)
 
 Abyste mohli začít, vyberte **nyní nastavit.**
 
@@ -40,7 +40,7 @@ Pokud nevidíte obrazovku při přihlášení, postupujte podle pokynů v [sprav
 
 Na první otázku v procesu registrace je, jak chcete, abychom vás kontaktovali. Podívejte se na možnosti v tabulce a pomocí odkazů můžete přejít na kroky nastavení pro jednotlivé metody.
 
-| Způsob kontaktování | Popis |
+| Způsob kontaktu | Popis |
 | --- | --- |
 | [Mobilní aplikace](#use-a-mobile-app-as-the-contact-method) |- **Dostávat oznámení o ověření.** Tato možnost odešle oznámení do aplikace authenticator na tablet nebo smartphone. Oznámení zobrazte a pokud je legitimní, vyberte **ověřit** v aplikaci. Vaše firma nebo škola může vyžadovat zadání kódu PIN, než můžete ověřit.<br>- **Použijte ověřovací kód.** V tomto režimu se ověřovací aplikace generuje ověřovací kód, který aktualizuje každých 30 sekund. Zadejte aktuální ověřovací kód v rozhraní přihlášení.<br>Aplikace Microsoft Authenticator je dostupná pro [Android](https://go.microsoft.com/fwlink/?linkid=866594) a [iOS](https://go.microsoft.com/fwlink/?linkid=866594).|
 | [Volání na mobilní telefon nebo text](#use-your-mobile-phone-as-the-contact-method) |- **Telefonní hovor** umístí automatizovaný hlasový hovor na telefonní číslo, které zadáte. Stačí odpovědět volání a stisknutím klávesy # na klávesnici telefonu provede ověření.<br>- **Textová zpráva** ukončí textovou zprávu s ověřovacím kódem. Po zobrazení výzvy v textu odpovědět na textovou zprávu nebo zadejte ověřovací kód do rozhraní pro přihlášení k dispozici. |
@@ -80,13 +80,13 @@ Pokud chcete přidat účet do mobilní aplikace ručně, namísto použití čt
 1. Vyberte **ručně zadejte účet** tlačítko.  
 2. Zadejte kód a adresu URL, která jsou k dispozici na stejné stránce, které vám poskytnou čárového kódu. Tyto informace ukládá **kód** a **URL** polí v mobilní aplikaci.
 
-    ![Nastavení](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
+    ![Instalace](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
 3. Po dokončení aktivace vyberte **Kontaktujte mě**. Tento krok na váš telefon odešle oznámení nebo ověřovací kód. Vyberte **ověřte**.
 
 ## <a name="use-your-mobile-phone-as-the-contact-method"></a>Mobilní telefon používat jako způsob kontaktu
 1. Vyberte **telefon pro ověření** z rozevíracího seznamu.  
 
-    ![Nastavení](./media/multi-factor-authentication-end-user-first-time/phone.png)  
+    ![Instalace](./media/multi-factor-authentication-end-user-first-time/phone.png)  
 2. Vyberte svou zemi z rozevíracího seznamu a zadejte své mobilní telefonní číslo.
 3. Vyberte metodu, kterou chcete použít s mobilním telefonem - textová zpráva nebo volání.
 4. Vyberte **Kontaktujte mě** k ověření svého telefonního čísla. V závislosti na vybraném režimu jsme odeslala textová zpráva nebo volání. Postupujte podle pokynů na obrazovce a potom vyberte **ověřte**.
@@ -97,7 +97,7 @@ Pokud chcete přidat účet do mobilní aplikace ručně, namísto použití čt
 ## <a name="use-your-office-phone-as-the-contact-method"></a>Použijte váš telefon do kanceláře jako způsob kontaktu
 1. Vyberte **telefonní číslo do kanceláře** z rozevíracího seznamu  
 
-    ![Nastavení](./media/multi-factor-authentication-end-user-first-time/office.png)  
+    ![Instalace](./media/multi-factor-authentication-end-user-first-time/office.png)  
 2. Pole telefonního čísla se automaticky vyplní vaše kontaktní informace společnosti. Pokud je číslo chybné nebo nebylo nalezeno, požádejte správce, aby provádět změny.
 3. Vyberte **Kontaktujte mě** ověřit vaše telefonní číslo a My se zavolejte na číslo. Postupujte podle pokynů na obrazovce a potom vyberte **ověřte**.
 4. V tomto okamžiku budete vyzváni k nastavení hesla aplikací pro neprohlížečové aplikace, jako je například Outlook 2010 nebo starší, nebo nativní e-mailové aplikace na zařízení Apple. Je to proto, že některé aplikace nepodporují dvoustupňové ověřování. Pokud tyto aplikace nepoužíváte, klikněte na tlačítko **Hotovo** a přeskočit zbývající kroky.

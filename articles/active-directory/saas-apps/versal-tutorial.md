@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 83a5d4c1d9c0475609a506fbfe6ae23bd9e236fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 837ba4043fe27c15f75c4d401878dfdb3328b82f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865503"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Kurz: Integrace Azure Active Directory s Versal odkazů
 
@@ -53,7 +53,7 @@ Konfigurace integrace Versal odkazů do služby Azure AD, budete muset přidat V
 
 **Chcete-li přidat Versal odkazů z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -188,7 +188,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v Versal odkazů. Postupujte podle [vytváření SAML testovací uživatele](https://support.versal.com/hc/articles/115011672887-Creating-a-SAML-test-user) podpora průvodce pro vytvoření uživatele Britta Simon v rámci vaší organizace. Uživatelé musí vytvořit a aktivovat v Versal odkazů, než použití jednotného přihlašování. 
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí verzál kurzu vložené na vašem webu.
 Podrobnosti najdete [vkládání organizační kurzy](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML jednotného přihlašování** podpora příručka pokyny o tom, jak díky podpoře pro Azure AD pro vložení verzál kurzu jednotného přihlašování. 

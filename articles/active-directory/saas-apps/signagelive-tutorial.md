@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bff57635c87b77270e1bd20e04834dec132b2df6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c31f201179f9f0eb7077ed275aae927a2a4fe376
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867310"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Kurz: Integrace Azure Active Directory s Signagelive
 
@@ -183,7 +183,7 @@ V této části je povolit Britta Simon k udělení přístupu k Signagelive pou
 
 V této části vytvoříte uživatele v Signagelive jako Britta Simon. Práce s [tým podpory Signagelive](mailto:support@signagelive.com) přidat uživatele na platformě Signagelive. Musíte vytvořit a aktivovat uživatelé používat jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu MyApps.
 

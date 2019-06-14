@@ -3,7 +3,7 @@ title: Měření Real User Measurements do Azure Traffic Manageru s webovými st
 description: Nastavení webové stránky k odeslání měření Real User Measurements do Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d044457df80f16a6e8073e7f3253a611f74d8a8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884076"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071220"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak odeslat měření Real User Measurements do Azure Traffic Manager pomocí webových stránek
 
@@ -26,7 +26,7 @@ Můžete nakonfigurovat webové stránky k odeslání měření Real User Measur
 
 ## <a name="obtain-a-real-user-measurements-key"></a>Získat klíč měření Real User Measurements
 
-Měření trvat a odeslat do Traffic Manageru z klientské aplikace jsou označeny pomocí jedinečného řetězce, volá se, **klíč měření reálných skutečných uživatelů (REÁLNÝCH)**. Můžete získat spuštění klíče pomocí webu Azure portal, rozhraní REST API, nebo pomocí Powershellu nebo rozhraní příkazového řádku Azure.
+Měření trvat a odeslat do Traffic Manageru z klientské aplikace jsou označeny pomocí jedinečného řetězce, volá se, **klíč měření reálných skutečných uživatelů (REÁLNÝCH)** . Můžete získat spuštění klíče pomocí webu Azure portal, rozhraní REST API, nebo pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
 Získání klíče REÁLNÝCH pomocí webu Azure portal:
 1. Z prohlížeče Přihlaste se k webu Azure portal. Pokud ještě nemáte účet, můžete se zaregistrovat k bezplatné zkušební verzi na jeden měsíc.

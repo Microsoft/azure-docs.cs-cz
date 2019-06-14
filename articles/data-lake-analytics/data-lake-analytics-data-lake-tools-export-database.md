@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60628536"
 ---
 # <a name="export-a-u-sql-database"></a>Exportovat databázi U-SQL
@@ -56,7 +56,7 @@ Můžete také nakonfigurovat další nastavení pro cíl exportu. V následují
 |Název cíle|Tento název označuje, ve které chcete uložit exportovaný databázových prostředků. Příklady jsou sestavení, další soubory a ukázkovými daty. Složka s tímto názvem se vytvoří v kořenové složce místní data.|
 |Adresář projektu|Tato cesta definuje, ve které chcete uložit exportovaný skript U-SQL. V tomto umístění jsou uloženy všech definic objektů databáze.|
 |Pouze schéma|Pokud vyberete tuto možnost, jsou exportovány pouze definice databáze a prostředky (jako jsou sestavení a další soubory).|
-|Schéma a data|Pokud vyberete tuto možnost, jsou exportovány definic databáze, prostředky a data. Horní N řádků z tabulky jsou exportovány.|
+|Schéma a Data|Pokud vyberete tuto možnost, jsou exportovány definic databáze, prostředky a data. Horní N řádků z tabulky jsou exportovány.|
 |Importovat do místní databáze automaticky|Pokud vyberete tuto možnost, vyexportované databáze je automaticky importován do místní databáze při exportu bylo dokončeno.|
 
 ![Průvodce exportem databáze - Export seznamu objektů a další konfigurace](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
 ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955876"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
@@ -195,7 +195,7 @@ Automatické prohození zjednodušuje scénáře DevOps, ve které chcete pro ko
 
 Pokud chcete nakonfigurovat automatické prohození, postupujte takto:
 
-1. Přejděte na stránku prostředek vaší aplikace. Vyberte **nasazovací sloty (Preview)** > *\<požadovaný zdrojový slot >* > **nastavení aplikace**.
+1. Přejděte na stránku prostředek vaší aplikace. Vyberte **nasazovací sloty (Preview)**  >  *\<požadovaný zdrojový slot >*  > **nastavení aplikace**.
    
 2. V **automatického prohození**vyberte **na**, pak vyberte požadovaného cílovém slotu v **automatického prohození slotu**a klikněte na tlačítko **Uložit** na panelu příkazů. 
    
@@ -238,7 +238,7 @@ Ve výchozím nastavení všechny požadavky na adresu URL produkční aplikace 
 
 Automaticky směrovat provoz produkčního prostředí, postupujte podle těchto kroků:
 
-1. Přejděte na stránku prostředek vaší aplikace a vyberte **nasazovací sloty (Preview)**.
+1. Přejděte na stránku prostředek vaší aplikace a vyberte **nasazovací sloty (Preview)** .
 
 2. V **provoz %** sloupec slotu, které chcete směrovat, zadejte procento (mezi 0 a 100) k reprezentaci množství celkového provozu, kterým chcete směrovat. Klikněte na **Uložit**.
 
@@ -272,7 +272,7 @@ Ve výchozím nastavení, jsou uvedeny nové sloty pravidlo směrování z `0%`,
 
 ## <a name="delete-slot"></a>Odstranit slot
 
-Přejděte na stránku prostředek vaší aplikace. Vyberte **nasazovací sloty (Preview)** > *\<slotu odstranit >* > **přehled**. Klikněte na tlačítko **odstranit** na panelu příkazů.  
+Přejděte na stránku prostředek vaší aplikace. Vyberte **nasazovací sloty (Preview)**  >  *\<slotu odstranit >*  > **přehled**. Klikněte na tlačítko **odstranit** na panelu příkazů.  
 
 ![Odstranění slotu nasazení](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -289,7 +289,7 @@ Prostředí Azure PowerShell je modul, který obsahuje rutiny pro správu Azure 
 Informace o instalaci a konfiguraci prostředí Azure PowerShell a na ověřování prostředí Azure PowerShell ve vašem předplatném Azure, najdete v části [instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).  
 
 - - -
-### <a name="create-web-app"></a>Vytvořit webovou aplikaci
+### <a name="create-web-app"></a>Vytvoření webové aplikace
 ```powershell
 New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```

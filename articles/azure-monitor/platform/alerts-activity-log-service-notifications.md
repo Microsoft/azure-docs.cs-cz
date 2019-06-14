@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3157cef6952f01d689d3cb4a30c9d7c843095809
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071700"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -92,7 +92,7 @@ Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>Upozornění s existující skupina akcí pomocí webu Azure portal
 
-1. Postupujte podle kroků 1 až 7 v předchozí části, chcete-li vytvořit oznámení o stavu služby. 
+1. Postupujte podle kroků 1 až 6 v předchozí části, chcete-li vytvořit oznámení o stavu služby. 
 
 1. V části **definujte skupinu akcí**, klikněte na tlačítko **akce výběru skupiny** tlačítko. Vyberte skupinu příslušnou akci.
 

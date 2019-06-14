@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7e9b7c8f2cf86245322679198b84b50d2c5edce8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464674"
 ---
 # <a name="module-k-means-clustering"></a>Modul: Clustering K-Means
@@ -75,7 +75,7 @@ Když se zpracovává trénovací data, algoritmus K-means začíná počátečn
 
          Tato metoda je volána také *náhodné oddílu* metody.  
   
-    -   **K – znamená, že ++**: Toto je výchozí metoda pro inicializaci clustery.  
+    -   **K – znamená, že ++** : Toto je výchozí metoda pro inicializaci clustery.  
   
          **Tis. – znamená, že ++** algoritmus navrhl 2007 podle Davida Arthur a Sergei Vassilvitskii, aby se zabránilo nízký clustering standardní algoritmus K-means. **K – znamená, že ++** dále to vylepšuje standardní K-means pomocí jiné metody pro výběr centra počáteční clusteru.  
   

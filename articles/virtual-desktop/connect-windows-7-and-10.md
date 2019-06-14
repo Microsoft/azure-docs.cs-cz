@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: helohr
 ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65145994"
 ---
 # <a name="connect-from-windows-10-or-windows-7"></a>Připojení z Windows 10 nebo Windows 7
 
-> Týká se Windows 7 a Windows 10.
+> To platí pro: Windows 7 a Windows 10.
 
 Je k dispozici ke stažení klienta, která poskytuje přístup k prostředkům Windows Virtual Desktop Preview ze zařízení s Windows 7 a Windows 10.
 
@@ -51,7 +51,7 @@ Jakmile se předplatné služby informačního kanálu, obsah informačního kan
 
 Po přihlášení k odběru, můžete zobrazit další informace o kanálu díky přístupu do panelu podrobností.
 
-1. Na hlavní stránce klienta, vyberte tři tečky (**...** ) napravo od názvu informačního kanálu.
+1. Na hlavní stránce klienta, vyberte tři tečky ( **...** ) napravo od názvu informačního kanálu.
 1. Z rozevírací nabídky vyberte **podrobnosti**.
 1. Panel podrobností se zobrazí na pravé straně klienta.
 
@@ -68,7 +68,7 @@ V případě potřeby můžete spustit ruční aktualizaci tak, že vyberete na 
 
 V této části se dozvíte, jak k odhlášení odběru z informačního kanálu. Může odhlásit odběr znovu s jiným účtem nebo odebrat zdroje ze systému.
 
-1. Na hlavní stránce klienta, vyberte tři tečky (**...** ) napravo od názvu informačního kanálu.
+1. Na hlavní stránce klienta, vyberte tři tečky ( **...** ) napravo od názvu informačního kanálu.
 1. Z rozevírací nabídky vyberte **Unsubscribe**.
 1. Zkontrolujte a vyberte **pokračovat** z tohoto dialogového okna.
 

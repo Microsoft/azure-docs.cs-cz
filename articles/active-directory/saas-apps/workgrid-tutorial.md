@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e979410405aa9914b496b80d2ac783a67b480a7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0ff4250244fcd91c74771aba305b1643926b0732
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65887884"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workgrid"></a>Kurz: Integrace Azure Active Directory s Workgrid
 
@@ -55,7 +55,7 @@ Konfigurace integrace Workgrid do služby Azure AD, budete muset přidat Workgri
 
 **Chcete-li přidat Workgrid z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -190,7 +190,7 @@ V této části je povolit Britta Simon k udělení přístupu k Workgrid použi
 
 V této části se vytvoří uživateli Britta Simon v Workgrid. Workgrid podporuje just-in-time zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Workgrid, vytvoří se při pokusu o přístup k Workgrid nový.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

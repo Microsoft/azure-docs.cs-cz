@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217188"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
@@ -218,12 +218,12 @@ Všimněte si, že pokud potřebujete vlastní předvolby, měli byste požádat
 
 | S přenosovou rychlostí | Šířka | Výška | MaxFPS | Profil | Název výstupní Stream |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Vysoký |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Vysoký |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Vysoký |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Vysoký |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Vysoký |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Vysoký |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |Vysoká |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Vysoká |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Vysoká |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Vysoká |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Vysoká |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Vysoká |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Výstup zvukový Stream
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3dab784d706228793c6acc0f930f39ba1962caeb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c41da4417d230b49927ff203efce2b9f4ec0b6b6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Kurz: Integrace Azure Active Directory s M-Files
 
@@ -52,7 +52,7 @@ Konfigurace integrace M-Files do služby Azure AD, budete muset přidat M-Files 
 
 **Chcete-li přidat M-Files z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -211,7 +211,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 Cílem této části je vytvořte uživatele Britta Simon v M-Files. Práce s [tým podpory M-Files](mailto:support@m-files.com) k přidání uživatelů do M-Files.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

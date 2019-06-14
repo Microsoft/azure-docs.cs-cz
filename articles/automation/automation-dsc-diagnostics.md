@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0dad74f75fd7b73e7dab0b2dddbdfda193d5b2ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 50779f8a37713bda8b27c1cfd2ca37eed4edbd11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61073935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054715"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav na protokoly Azure monitoru
 
@@ -49,26 +49,26 @@ Pokud chcete začít, import dat z Azure Automation DSC do protokolů Azure Moni
 
    ```powershell
    # Find the ResourceId for the Automation Account
-   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   Get-AzResource -ResourceType 'Microsoft.Automation/automationAccounts'
    ```
 
 1. Získejte _ResourceId_ pracovního prostoru Log Analytics, spuštěním následujícího příkazu Powershellu: (Pokud máte více než jeden pracovní prostor, zvolte _ResourceID_ pracovního prostoru, kterou chcete nakonfigurovat).
 
    ```powershell
    # Find the ResourceId for the Log Analytics workspace
-   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
 1. Spuštěním následujícího příkazu Powershellu nahraďte `<AutomationResourceId>` a `<WorkspaceResourceId>` s _ResourceId_ hodnoty ze všech předchozích kroků:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
    ```
 
 Pokud chcete zastavit import dat z Azure Automation stavu konfigurace na protokoly Azure monitoru, spusťte následující příkaz Powershellu:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
+Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Category 'DscNodeStatus'
 ```
 
 ## <a name="view-the-state-configuration-logs"></a>Zobrazit protokoly konfigurace stavu
@@ -133,7 +133,7 @@ Diagnostika ve službě Azure Automation vytvoří dvě kategorie záznamy v pro
 | NodeName_s |Název spravovaných uzlů. |
 | NodeComplianceStatus_s |Určuje, zda je uzel kompatibilní. |
 | DscReportStatus |Kontrola dodržování předpisů, jestli proběhla úspěšně. |
-| ConfigurationMode | Jak tato konfigurace používá k uzlu. Možné hodnoty jsou __"ApplyOnly"__,__"ApplyandMonitior"__, a __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a neprovede žádnou další akci, pokud nová konfigurace se vloží do cílového uzlu nebo když nová konfigurace se načítají ze serveru. Po počáteční použití nové konfigurace DSC nekontroluje odchylky od dříve nakonfigurované stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyOnly__ projeví. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu sestavy DSC nesrovnalosti v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyAndMonitor__ projeví.</li><li>__ApplyAndAutoCorrect__: DSC platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu DSC sestavy nesrovnalosti v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
+| ConfigurationMode | Jak tato konfigurace používá k uzlu. Možné hodnoty jsou __"ApplyOnly"__ , __"ApplyandMonitior"__ , a __"ApplyandAutoCorrect"__ . <ul><li>__ApplyOnly__: DSC aplikuje konfiguraci a neprovede žádnou další akci, pokud nová konfigurace se vloží do cílového uzlu nebo když nová konfigurace se načítají ze serveru. Po počáteční použití nové konfigurace DSC nekontroluje odchylky od dříve nakonfigurované stavu. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyOnly__ projeví. </li><li> __ApplyAndMonitor__: Toto je výchozí hodnota. LCM platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu sestavy DSC nesrovnalosti v protokolech. DSC se pokusí použít konfiguraci, dokud nebude úspěšná, až poté __ApplyAndMonitor__ projeví.</li><li>__ApplyAndAutoCorrect__: DSC platí všechny nové konfigurace. Po počáteční aplikaci novou konfiguraci Pokud cílový uzel drifts z požadovaného stavu DSC sestavy nesrovnalosti v protokolech a pak znovu použije aktuální konfiguraci.</li></ul> |
 | HostName_s | Název spravovaných uzlů. |
 | IP adresa | Adresa IPv4 spravovaných uzlů. |
 | Category | DscNodeStatus |

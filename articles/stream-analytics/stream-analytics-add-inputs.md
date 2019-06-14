@@ -4,17 +4,16 @@ description: Tento článek popisuje koncept vstupů v úloze Azure Stream Analy
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/25/2018
-ms.openlocfilehash: 408a77dd5409f8604a059d3bc7f37ffe1e3d6ba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: d82e3d37c5927640d349304559be548743c34fc4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61362129"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076222"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Vysvětlení vstupy pro Azure Stream Analytics
 

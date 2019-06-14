@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
 ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937652"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Propagaci vašeho podnikání s Microsoftem 
@@ -29,7 +29,7 @@ MPN poskytuje pokyny pro následující témata.
 
 Ke zvýšení úrovně nabídky nebo aplikace, použijte pro přístup k více výhodách a prostředcích v následující tabulce. 
 
-| Výhody | prostředky |  
+| Výhody | Prostředky |  
 |:--- |:--- |  
 | Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které můžete ušetřit čas i peníze. Výhody může také pomoci lépe posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<ul> <li>Další informace o základní výhody, získáte základní výhody a požadavky na stránce umístění [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
 | Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí umožňuje odlišíte se mezi ostatními partnery Microsoftu. Získávat kompetencí vám také pomůže ukazují technické znalosti a úspěchy zákazníků na trhu. S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je společný prodej.<ul> <li>Další informace o kompetenci pro Cloudovou platformu, navštivte kompetenci pro Cloudovou platformu stránky umístění [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  

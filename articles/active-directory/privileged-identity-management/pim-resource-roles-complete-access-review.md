@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aee8ac3c2638ede559f8a1f9c51f2d6e62604998
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602307"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>Dokončení kontroly přístupu z role prostředků Azure v PIM
@@ -41,16 +41,16 @@ V okně Podrobnosti o kontrolu přístupu existuje mnoho možností pro správu 
 
 ![Možnosti pro správu revize](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
-### <a name="stop"></a>Ukončit
+### <a name="stop"></a>Zastavit
 Všechny kontroly přístupu mají koncové datum, ale můžete použít **Zastavit** tlačítko pro dokončení včas. Všichni uživatelé, kteří nedokončili svoji kontrolu té doby nebude možné ji dokončit po zastavení revize. Kontrola nelze restartovat po byla zastavena.
 
-### <a name="reset"></a>Obnovit
+### <a name="reset"></a>Resetovat
 Kontroly přístupu k odebrání všech rozhodnutí, které jsou provedeny v něm můžete resetovat. Poté, co jste změnili kontroly přístupu, všichni uživatelé jsou označeny jako znovu neprovedla kontrola. 
 
 ### <a name="apply"></a>Použít
 Po dokončení kontroly přístupu používat **použít** tlačítko k implementaci výsledek kontroly. Pokud v revizi byl odepřen přístup uživatelů, tento krok Odstraní přiřazení role.  
 
-### <a name="delete"></a>Odstranit
+### <a name="delete"></a>Odstranění
 Můžete se v případě zájmu revize víc, odstraňte jej. **Odstranit** tlačítko kontroly odebere z aplikace PIM.
 
 ## <a name="results"></a>Výsledky

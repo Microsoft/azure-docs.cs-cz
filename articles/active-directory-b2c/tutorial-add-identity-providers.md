@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ceae908b37c825721a42c49db4503382eb35c71c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055092"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidat zprostředkovatele identity pro vaše aplikace v Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, budete m
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresáře, který obsahuje váš tenant Azure AD kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant Azure AD.
-3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací (starší verze)** .
 4. Vyberte **Registrace nové aplikace**.
 5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
 6. Pro **typ aplikace**vyberte `Web app / API`.
@@ -106,7 +106,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, které chcete přidat, 
     Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
 8. Pro **ID klienta**, zadejte ID aplikace, které jste si dříve poznamenali a **tajný kód klienta**, zadejte hodnotu klíče, který jste si předtím poznamenali.
-9. Volitelně můžete zadat hodnotu pro **Domain_hint**. Například, `ContosoAD`. 
+9. Volitelně můžete zadat hodnotu pro **Domain_hint**. Například, `ContosoAD`. Pomocné parametry domény (https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) jsou direktivy, které jsou zahrnuty v žádosti o ověření z aplikace. Umožňuje zrychlit uživatele na federované IdP přihlašovací stránku. Nebo můžete být používají v aplikaci s více tenanty zrychlí uživatele přímo obchodní značku služby Azure AD přihlašovací stránku pro svého tenanta.
 10. Klikněte na **OK**.
 11. Vyberte **mapování deklarací od zprostředkovatele identity** a nastavte následující deklarace:
     

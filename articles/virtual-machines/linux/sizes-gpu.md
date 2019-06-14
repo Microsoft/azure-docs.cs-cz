@@ -1,5 +1,5 @@
 ---
-title: Velikosti virtuálních počítačů Azure s Linuxem – GPU | Dokumentace Microsoftu
+title: Azure velikostí virtuálního počítače s Linuxem – hardwarově akcelerovanou compute | Dokumentace Microsoftu
 description: Seznamy různé GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 8f50f090fe38382b8bc3cb7f669ab4025d36ff76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3c59c73914a78374da0b8d2f9aeb18b9005e00ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799427"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070016"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizované velikosti virtuálních počítačů
 

@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142612"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
@@ -83,7 +83,7 @@ Kategorie metriky protokoly stejné [metrik serveru](analysis-services-monitor.m
 
     * **Archivovat do účtu úložiště**. Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Zobrazit [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md). Postupujte podle pokynů k vytvoření správce prostředků, účet pro obecné účely, pak vyberte svůj účet úložiště tak, že vrací na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
     * **Stream do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující centrum událostí oboru názvů a Centrum událostí pro připojení k. Další informace najdete v tématu [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu vyberte název oboru názvů a zásad centra událostí.
-    * **Odeslat do Azure monitoru (pracovní prostor Log Analytics)**. Chcete-li tuto možnost použijte, buď použijte existující pracovní prostor nebo [vytvořit nový pracovní prostor](../azure-monitor/learn/quick-create-workspace.md) prostředků na portálu. Další informace o prohlížení protokolů, najdete v části [zobrazení protokolů v pracovním prostoru Log Analytics](#view-logs-in-log-analytics-workspace) v tomto článku.
+    * **Odeslat do Azure monitoru (pracovní prostor Log Analytics)** . Chcete-li tuto možnost použijte, buď použijte existující pracovní prostor nebo [vytvořit nový pracovní prostor](../azure-monitor/learn/quick-create-workspace.md) prostředků na portálu. Další informace o prohlížení protokolů, najdete v části [zobrazení protokolů v pracovním prostoru Log Analytics](#view-logs-in-log-analytics-workspace) v tomto článku.
 
     * **Modul**. Tato možnost protokolování xEvents. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
     * **Služba**. Tuto možnost, do protokolu událostí na úrovni služby. Pokud jsou archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.

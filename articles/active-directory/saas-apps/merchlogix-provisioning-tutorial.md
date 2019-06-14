@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263587"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060310"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Kurz: Konfigurace MerchLogix pro automatické zřizování uživatelů
 
@@ -44,7 +44,7 @@ Před konfigurací MerchLogix pro automatické zřizování uživatelů pomocí 
 
 **Chcete-li přidat MerchLogix z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 

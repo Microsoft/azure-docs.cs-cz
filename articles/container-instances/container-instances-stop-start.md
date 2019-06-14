@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65070817"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Ručně zastavení nebo spuštění kontejnerů ve službě Azure Container Instances
@@ -38,7 +38,7 @@ Spustí se všechny kontejnery ve skupině kontejnerů pomocí této akce. Nelze
 
 Po ruční spuštění nebo restartování skupiny kontejnerů, spuštění kontejneru skupiny podle nakonfigurované zásady restartování.
   
-## <a name="restart"></a>Restartování
+## <a name="restart"></a>Restart
 
 Během jejího běhu – například pomocí je možné restartovat skupinu kontejnerů [az container restartování] [ az-container-restart] příkazu. Tato akce restartuje všechny kontejnery ve skupině kontejnerů. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
 

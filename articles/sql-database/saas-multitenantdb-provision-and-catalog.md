@@ -13,10 +13,10 @@ ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485899"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalogizace nových tenantů v SaaS aplikace využívající horizontálně dělené databázi s více tenanty Azure SQL
@@ -169,7 +169,7 @@ Abyste pochopili, jak aplikaci Wingtip implementované zřizování ve sdílené
 
 4. Po spuštění skriptu se zastaví na zarážce, stiskněte klávesu **F11** k krokování s vnořením do kódu.
 
-   ![ladit](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Ladění](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Trasování provádění skriptu pomocí **ladění** možnosti nabídky **F10** a **F11**, Krokovat přes nebo do volané funkce.
 

@@ -18,10 +18,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60452929"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – zabezpečení – přehled
@@ -39,27 +39,27 @@ Přehled zabezpečení je široce rozdělený do dvou částí:
   
 ## <a name="trends"></a>Trendy
 
-### <a name="new-risky-users-detected"></a>Zjistili se noví rizikoví uživatelé
+### <a name="new-risky-users-detected"></a>Zjištěn nový rizikový uživatel.
 
 Tento graf zobrazuje počet nové rizikové uživatele, které byly zjištěny v průběhu zvoleném časovém období. Můžete filtrovat zobrazení tohoto grafu podle uživatele úrovně rizika (nízké, střední, vysoká). Najeďte myší přírůstky datum UTC zobrazíte počet rizikových uživatelů pro daný den zjištěna. Klikněte na tento graf přejdete na sestavu "Rizikový uživatel". Oprava uživatelů, kteří jsou na riziko, zvažte možnost změnit své heslo.
 
-### <a name="new-risky-sign-ins-detected"></a>Zjistila se nová riziková přihlášení
+### <a name="new-risky-sign-ins-detected"></a>Nová riziková přihlášení zjistil
 
 Tento graf zobrazuje počet rizikových přihlášení zjištěnými za zvoleném časovém období. Můžete filtrovat zobrazení tohoto grafu podle rizika přihlašování typu (v reálném čase nebo agregace) a úroveň rizika přihlášení (nízká, střední, vysoká). Nechráněné přihlášení jsou úspěšné v reálném čase rizika přihlášení, které nebylo probíhá ověřovací test MFA. (Poznámka: Sign-INS, které bývají offline detekce za riziková nedá chránit v: zásady rizik přihlašování v reálném čase). Najeďte myší přírůstky datum UTC zobrazíte počet přihlášení zjistil riziko pro daný den. Klikněte na tento graf přejdete na sestavu "Rizikových přihlášení".
 
 ## <a name="tiles"></a>Dlaždice
  
-### <a name="high-risk-users"></a>Uživatelé s vysokým rizikem
+### <a name="high-risk-users"></a>Uživatelů s vysokým rizikem
 
 Dlaždice 'uživatelů s vysokým rizikem' zobrazuje nejnovější počet uživatelů s velkou pravděpodobností identita ohrozit zabezpečení. Tady by měly být nejvyšší prioritu pro šetření. Kliknutím na dlaždici 'uživatelů s vysokým rizikem' bude přesměrována na filtrované zobrazení "Rizikoví uživatelé" sestavu zobrazující pouze uživatelé s vysokou úroveň rizika. Pomocí této sestavy, můžete další informace a oprava těchto uživatelů s resetováním hesla.
 
 ![Přehled zabezpečení](./media/security-overview/02.png)
 
 
-### <a name="medium-risk-users"></a>Uživatelé se středním rizikem
+### <a name="medium-risk-users"></a>Střední riziko uživatele
 Na dlaždici 'střední riziko uživatele' zobrazují nejnovější počtu uživatelů s střední pravděpodobnosti ohrožení identity. Kliknutím na dlaždici 'střední riziko uživatele' bude přesměrována na filtrované zobrazení "Rizikoví uživatelé" sestavu zobrazující pouze uživatelé s úrovní rizika média. Pomocí této sestavy můžete dále prozkoumat a oprava těchto uživatelů.
 
-### <a name="unprotected-risky-sign-ins"></a>Nechráněná riziková přihlášení
+### <a name="unprotected-risky-sign-ins"></a>Nechráněné riziková přihlášení
 
 Dlaždice 'Nechráněné rizikových přihlášení' zobrazuje počet za poslední týden úspěšné, v reálném čase rizikových přihlášení, které byly ani blokované ani MFA vystaven zásady podmíněného přístupu, Identity Protection rizikem zásad nebo na uživatele MFA. Jedná se o potenciálně ohroženými přihlašovací údaje, které proběhly úspěšně a probíhá ověřovací test MFA není. K ochraně těchto přihlášení v budoucnosti, používejte zásady rizik přihlašování. Kliknutím na dlaždici "Nechráněné rizikových přihlášení" přesměruje do okna Konfigurace zásady rizik přihlašování ve kterém můžete nakonfigurovat zásady rizik přihlašování k vynucení vícefaktorového ověřování na Přihlaste se pomocí úroveň rizika zadané.
 
@@ -69,7 +69,7 @@ Dlaždice 'Nechráněné rizikových přihlášení' zobrazuje počet za posledn
 Dlaždice 'Starší verze ověřování' Zobrazí počet za poslední týden starší verze ověřování ve vaší organizaci. Protokoly pro ověřování na starší verze nepodporují metody moderní zabezpečení, jako jsou MFA. Pokud chcete zabránit starší verze ověřování, můžete použít zásady podmíněného přístupu. Kliknutím na dlaždici "Starší verze ověřování" verze vás přesměrují na "Identity zabezpečení skóre".
 
 
-### <a name="identity-secure-score"></a>Identity Secure Score
+### <a name="identity-secure-score"></a>Skóre zabezpečení identit
 
 Skóre zabezpečení Identity opatření a porovnává lepšímu zabezpečení vzorů odvětví. Pokud kliknete na dlaždici "Identita zabezpečení skóre (Preview)", přesměruje se do okna "Identity zabezpečení skóre (Preview)' Pokud podrobnější informace o stavu zabezpečení.
 

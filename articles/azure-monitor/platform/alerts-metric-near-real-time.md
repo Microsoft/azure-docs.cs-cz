@@ -9,10 +9,10 @@ ms.date: 06/29/2018
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 965d1ace2afdad21a069193b508fc2b10fdf4700
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697233"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
@@ -59,7 +59,7 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.PowerBIDedicated/capacities | neuvedeno | [Kapacity](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   neuvedeno      |[Vyhledávací služby](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Storage/storageAccounts     |    Ano     | [Účty úložiště](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts.     |    Ano     | [Účty úložiště](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [souborové služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices), [fronty služby](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služeb](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | Ano | [Plány služby App Service](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)  |

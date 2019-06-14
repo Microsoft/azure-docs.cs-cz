@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 3055d91028ed6c4fcfbfcbe607350b3f5fc8bedf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37d96b6c24bd4dd4faa05a124ea16c02811ec611
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870800"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-novatus"></a>Kurz: Integrace Azure Active Directory s Novatus
 
@@ -54,7 +54,7 @@ Konfigurace integrace Novatus do služby Azure AD, budete muset přidat Novatus 
 
 **Chcete-li přidat Novatus z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -188,7 +188,7 @@ V této části se vytvoří uživateli Britta Simon v Novatus. Novatus podporuj
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Novatus](mailto:jvinci@novatusinc.com). 
 > 
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

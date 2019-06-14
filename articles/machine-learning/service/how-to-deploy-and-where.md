@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 89539509e759da7f041ce0216397b1a9c8ff1f16
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 2c54f7192827376bb157915738ee781f45433267
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753091"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059221"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -108,6 +108,16 @@ Skript obsahuje dvě funkce, které načíst a spustit model:
 * `init()`: Tuto funkci obvykle načte modelu do globálního objektu. Tato funkce se spustí pouze jednou při spuštění kontejneru Dockeru pro webovou službu.
 
 * `run(input_data)`: Tato funkce využívá model k predikci hodnoty založené na vstupní data. K serializaci a rušení serializace, vstupy a výstupy spustit obvykle používají JSON. Můžete také pracovat s Nezpracovaná binární data. Můžete transformovat data, před odesláním do modelu, nebo před vrácením klientovi.
+
+#### <a name="what-is-getmodelpath"></a>Co je get_model_path?
+Při registraci modelu, zadejte název modelu používají pro správu modelů v registru. Tento název použít v get_model_path rozhraní API, které vrací cestu soubory modelu v místním systému souborů. Když si zaregistrujete, složku nebo sadu souborů, toto rozhraní API vrátí cestu k adresáři, který obsahuje tyto soubory.
+
+Při registraci modelu, můžete jí název, který odpovídá do modelu je umístění, místně nebo během nasazování služby.
+
+Následujícím příkladu vrátí cestu jednoho souboru s názvem "sklearn_mnist_model.pkl" (který byl zaregistrován s názvem "sklearn_mnist")
+```
+model_path = Model.get_model_path('sklearn_mnist')
+``` 
 
 #### <a name="optional-automatic-swagger-schema-generation"></a>(Volitelné) Automatické generování schématu Swaggeru
 
@@ -248,7 +258,9 @@ V tomto příkladu konfigurace obsahuje následující položky:
 * [Skript vstupního](#script), který se používá pro zpracování webových požadavků odeslaných v nasazené službě
 * Soubor conda, který popisuje balíčky Pythonu potřebné k odvození
 
-Informace o funkcích InferenceConfig najdete v tématu [pokročilou konfiguraci](#advanced-config) oddílu.
+Informace o funkcích InferenceConfig najdete v tématu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) referenční třídy.
+
+Informace o používání vlastní image Dockeru s odvození konfigurace najdete v tématu [nasadit model použití vlastní image Dockeru](how-to-deploy-custom-docker-image.md).
 
 ### <a name="3-define-your-deployment-configuration"></a>3. Definovat konfiguraci nasazení
 
@@ -265,6 +277,15 @@ Následující tabulka obsahuje příklad vytvoření konfigurace nasazení pro 
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 Následující části ukazují, jak vytvořit konfiguraci nasazení a použít ji k nasazení webové služby.
+
+### <a name="optional-profile-your-model"></a>Volitelné: Profil modelu
+Před nasazením modelu jako služby, můžete chtít profilujte ji určit optimální využití procesoru a požadavky na paměť.
+Můžete to provést prostřednictvím sady SDK nebo rozhraní příkazového řádku.
+
+Další informace si můžete prohlédnout naše dokumentace k sadě SDK tady: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
+
+Model výsledků profilace jsou emitovány jako objekt spustit.
+Specifika na schéma modelu profilu najdete tady: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
 
 ## <a name="deploy-to-target"></a>Nasazení do cíle
 
@@ -492,54 +513,6 @@ print(service.state)
 print(service.get_logs())
 ```
 
-<a id="advanced-config"></a>
-
-## <a name="advanced-settings"></a>Upřesnit nastavení 
-
-**<a id="customimage"></a> Použití vlastní základní image**
-
-Interně InferenceConfig vytvoří image Dockeru, který obsahuje model a jiné prostředky vyžadované služby. Pokud není zadán, použije se výchozí základní image.
-
-Při vytváření obrázek, který použijete s vaší konfigurací odvození, obrázek musí splňovat následující požadavky:
-
-* Ubuntu 16.04 nebo vyšší.
-* Conda 4.5. # nebo vyšší.
-* Python 3.5. # nebo 3.6. #.
-
-Chcete-li použít vlastní image, nastavte `base_image` vlastnost odvození konfigurace na adresu bitové kopie. Následující příklad ukazuje, jak použít některou image z obou veřejných a privátních Azure Container Registry:
-
-```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
-
-# or, use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
-```
-
-Na následujícím obrázku identifikátory URI jsou určené pro bitových kopií poskytnutých společností Microsoft a můžou používat bez zadání uživatelského jména a hesla hodnoty:
-
-* `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7`
-* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03`
-
-Chcete-li používat tyto Image, nastavte `base_image` na identifikátor URI ze seznamu výše. Nastavte `base_image_registry.address` k `mcr.microsoft.com`.
-
-> [!IMPORTANT]
-> Microsoft obrazy, které používají CUDA nebo TensorRT musí použít pouze na služby Microsoft Azure.
-
-Další informace o nahrání vlastních imagí do služby Azure Container Registry, najdete v části [nahrání první image do soukromého registru kontejnerů Dockeru](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
-
-Pokud váš model se trénuje na Azure Machine Learning Compute, pomocí __verze 1.0.22 nebo větší__ sady Azure Machine Learning SDK, image se vytvoří během cvičení. Následující příklad ukazuje, jak použít tuto bitovou kopii:
-
-```python
-# Use an image built during training with SDK 1.0.22 or greater
-image_config.base_image = run.properties["AzureML.DerivedImageName"]
-```
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()`.
 Chcete-li odstranit registrovaný model, použijte `model.delete()`.
@@ -547,6 +520,7 @@ Chcete-li odstranit registrovaný model, použijte `model.delete()`.
 Další informace najdete v tématu v referenční dokumentaci [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), a [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
 ## <a name="next-steps"></a>Další postup
+* [Jak nasadit model s použitím vlastní image Dockeru](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazení](how-to-troubleshoot-deployment.md)
 * [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
 * [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)

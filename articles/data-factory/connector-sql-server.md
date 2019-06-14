@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d28f6ed1957f8f6ae7ff7eb49f8ce4cbdec62266
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 230fe94820a00c276238a7f5ff189ecc817f3f96
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074046"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-sqlserver-connector.md)
 > * [Aktuální verze](connector-sql-server.md)
 
@@ -280,6 +280,9 @@ GO
 
 ### <a name="sql-server-as-sink"></a>SQL Server jako jímka
 
+> [!TIP]
+> Další informace o podporovaných zápisu chování, konfigurace a osvědčených postupů z [osvědčený postup pro načítání dat do služby SQL Server](#best-practice-for-loading-data-into-sql-server).
+
 Ke zkopírování dat do SQL serveru, nastavte typ jímky v aktivitě kopírování do **SqlSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
 
 | Vlastnost | Popis | Požaduje se |
@@ -288,12 +291,9 @@ Ke zkopírování dat do SQL serveru, nastavte typ jímky v aktivitě kopírová
 | writeBatchSize |Počet řádků, která se vloží do tabulky SQL **dávce**.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). Ve výchozím nastavení služby Data Factory dynamicky určí příslušné batch velikost podle velikosti řádku. |Ne |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené hodnoty jsou: časový interval. Příklad: "00: 30:00" (30 minut). |Ne |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápis dat do systému SQL Server. To se ji volat pouze jednou za kopírování spustit. Tato vlastnost slouží k vyčištění předem načtená data. |Ne |
-| sqlWriterStoredProcedureName |Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky, například na upsertuje proveďte nebo transformace pomocí vlastní obchodní logikou. <br/><br/>Mějte na paměti, bude tuto uloženou proceduru **za batch**. Pokud budete chtít provádět operace, která pouze spustí jednou a nemá nic dělat se zdrojovými daty, třeba delete nebo truncate, použijte `preCopyScript` vlastnost. |Ne |
+| sqlWriterStoredProcedureName |Název uložené procedury, která definuje, jak použít zdroj dat do cílové tabulky.<br/>Mějte na paměti, bude tuto uloženou proceduru **za batch**. Pokud budete chtít provádět operace, která pouze spustí jednou a nemá nic dělat se zdrojovými daty, třeba delete nebo truncate, použijte `preCopyScript` vlastnost. |Ne |
 | storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou: páry název/hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. |Ne |
 | sqlWriterTableType |Zadejte název tabulky typu použitého v uložené proceduře. Aktivitu kopírování, která zpřístupňuje data přesouvá do dočasné tabulky s tímto typem tabulky. Uloženou proceduru kód pak sloučit data kopírovaná s existujícími daty. |Ne |
-
-> [!TIP]
-> Při kopírování dat systému SQL Server, aktivita kopírování ve výchozím nastavení připojí data do tabulky jímky. K provedení UPSERT nebo další obchodní logiku, použijte uloženou proceduru v SqlSink. Přečtěte si další podrobnosti o [volání uložené procedury pro SQL jímky](#invoking-stored-procedure-for-sql-sink).
 
 **Příklad 1: připojení dat**
 
@@ -327,7 +327,7 @@ Ke zkopírování dat do SQL serveru, nastavte typ jímky v aktivitě kopírová
 ]
 ```
 
-**Příklad 2: volání uložené procedury během kopírování pro upsertovat**
+**Příklad 2: volání uložené procedury během kopírování**
 
 Přečtěte si další podrobnosti o [volání uložené procedury pro SQL jímky](#invoking-stored-procedure-for-sql-sink).
 
@@ -366,80 +366,69 @@ Přečtěte si další podrobnosti o [volání uložené procedury pro SQL jímk
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>Sloupce identity v cílové databázi
+## <a name="best-practice-for-loading-data-into-sql-server"></a>Osvědčeným postupem pro načítání dat do SQL serveru
 
-Tato část poskytuje příklad, který kopíruje data ze zdrojové tabulky s žádný sloupec identity do cílové tabulky se sloupcem identity.
+Při kopírování dat do SQL serveru může vyžadovat chování různých zápisu:
 
-**Zdrojová tabulka:**
+- **[Připojit](#append-data)** : zdroj data obsahují pouze nové záznamy;
+- **[Upsert](#upsert-data)** : Moje zdrojová data mají vkládání a aktualizace.
+- **[Přepsat](#overwrite-entire-table)** : Chcete znovu načíst tabulku celé dimenze pokaždé, když;
+- **[Zápis o vlastní logiku](#write-data-with-custom-logic)** : Potřebuji další zpracování před posledním vkládání do cílové tabulky.
+
+Odkazovat uvedeném pořadí oddíly o tom, jak nakonfigurovat v ADF a osvědčené postupy.
+
+### <a name="append-data"></a>Připojení dat
+
+Toto je výchozí chování tohoto konektoru jímky SQL Server a proveďte ADF **hromadné vložení** efektivně zapisovat do tabulky. Můžete jednoduše nakonfigurovat zdroj a odpovídajícím způsobem jímky v aktivitě kopírování.
+
+### <a name="upsert-data"></a>Upsert dat
+
+**Možnost mám** (navrhované zejména v případě, že máte ke kopírování velkých objemů dat): **přístup většina výkonné** provedete upsert je následující: 
+
+- Za prvé, využívat [dočasnou tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) hromadné načtení všech záznamů pomocí aktivit kopírování. Jak operace u dočasných tabulek se neprotokolují, můžete načíst milióny záznamů v řádu sekund.
+- Aktivita uložená procedura spuštění ve službě ADF použít [sloučit](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) (nebo INSERT/UPDATE) prohlášení a dočasné tabulky jako zdroje k provedení všech aktualizaci nebo vložení jako jedna transakce, snižuje množství výměn dat a protokolovat operace. Na konci aktivity uložené procedury lze až bude připravená na další cyklus upsert oříznutí dočasné tabulky. 
+
+Jako příklad, ve službě Azure Data Factory vytvoříte kanál s **aktivita kopírování** zřetězené s **aktivity uložené procedury** v případě úspěchu. Nejprve kopíruje data ze zdrojového úložiště do dočasné tabulky databáze, třeba " **##UpsertTempTable**" jako název tabulky v datové sadě, pak ten volá uloženou proceduru ke sloučení do cílové tabulky zdroje dat z dočasné tabulky a vyčistit dočasné tabulky.
+
+![Upsertovat](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+V databázi definujte uložená procedura s logikou SLOUČENÍ, podobně jako následující text, který ukazuje z výše uvedených aktivity uložené procedury. Za předpokladu, že cíl **marketingové** tabulky se třemi sloupci: **ID profilu**, **stavu**, a **kategorie**, a proveďte upsert na základě **ProfileID** sloupce.
 
 ```sql
-create table dbo.SourceTbl
-(
-    name varchar(100),
-    age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-**Cílová tabulka:**
+**Možnost II:** Alternativně můžete se rozhodnout [vyvolat uloženou proceduru v aktivitě kopírování](#invoking-stored-procedure-for-sql-sink), při Poznámka: Tento přístup je provést pro každý řádek ve zdrojové tabulce místo využívání hromadné vložení jako výchozí přístup v aktivitě kopírování proto se nevejde pro upsert velkého rozsahu.
 
-```sql
-create table dbo.TargetTbl
-(
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
-)
-```
+### <a name="overwrite-entire-table"></a>Přepsat celou tabulku
 
-Všimněte si, že cílová tabulka obsahuje sloupec identity.
+Můžete nakonfigurovat **preCopyScript** vlastnost v aktivitě kopírování jímky, v takovém případě pro každé spuštění aktivity kopírování ADF spustí skript nejprve spusťte kopírování vložte data. Například pokud chcete přepsat celou tabulku s nejnovější data, můžete určit skript, který nejprve odstranit všechny záznamy před hromadného načtení nová data ze zdroje.
 
-**Zdroj definice JSON datové sady**
+### <a name="write-data-with-custom-logic"></a>Zápis dat o vlastní logiku
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
-
-**Určení definice JSON datové sady**
-
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
-
-Všimněte si, že jako zdrojové a cílové tabulce mají jiné schéma (cílový má další sloupec s identitou). V tomto scénáři budete muset zadat **struktura** vlastnost v definici datové sady target, která neobsahuje sloupec identity.
+Podobné, jak je popsáno v [Upsert data](#upsert-data) oddílu, když potřebujete provést další zpracování před posledním vložení zdrojová data do cílové tabulky, můžete) pro široké možnosti škálování a načíst do dočasné tabulky a vyvoláte uloženého procedura, nebo b) vyvolání uložené procedury během kopírování.
 
 ## <a name="invoking-stored-procedure-for-sql-sink"></a> Vyvolání uložené procedury SQL jímky
 
-Při kopírování dat do databáze SQL serveru, zadán uživatel, může se konfigurují a vyvolání další parametry uložené procedury.
+Při kopírování dat do databáze SQL serveru, můžete také nakonfigurovat a vyvolat uloženou proceduru s další parametry zadané uživatelem.
 
-Uloženou proceduru lze použít při integrovaná funkce kopírování mechanismy neodesílají účel. Používá se obvykle při upsert (insert a update) nebo další zpracování (sloučení sloupců vyhledávání dalších hodnot, vložení do několika tabulek, atd.) je potřeba udělat před posledním vložení zdrojová data v cílové tabulce.
+> [!TIP]
+> Volání uložené procedury zpracovává na data řádek po řádku namísto hromadné operace, která není určeno pro kopírování velkého rozsahu. Další informace z [osvědčený postup pro načítání dat do služby SQL Server](#best-practice-for-loading-data-into-sql-server).
+
+Uloženou proceduru můžete použít, když integrovaná funkce kopírování mechanismy neslouží účel, například použít zvláštní zpracování před posledním vložení zdrojová data do cílové tabulky. Některé příklady vysokého jsou sloučení sloupců, vyhledat další hodnoty a vložení do více než jednou tabulkou.
 
 Následující příklad ukazuje způsob použití uloženou proceduru provedete upsert do tabulky v databázi serveru SQL Server. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ID profilu**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 

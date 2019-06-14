@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f493120431481423892706fa2a9352b322c500
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82da2aec617841643d083662639ebde1b4513ed0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Kurz: Integrace Azure Active Directory s CylancePROTECT
 
@@ -53,7 +53,7 @@ Konfigurace integrace CylancePROTECT do služby Azure AD, budete muset přidat C
 
 **Chcete-li přidat CylancePROTECT z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

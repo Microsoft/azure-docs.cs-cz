@@ -9,17 +9,17 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: dd073d040e6e7f149109c9988580dcd889f7c62f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65160137"
 ---
 # <a name="activity-management-overview"></a>Přehled správy aktivit
 
 CloudSimple sleduje všechny aktivity, které můžou ovlivnit fungování privátních cloudů. Tyto aktivity včetně výstrahy, události, úkoly a auditování aktivit. [Aktivity stránky](https://docs.azure.cloudsimple.com/activity/) shrnout aktuální aktivity a umožní vám procházet hierarchii pro další podrobnosti.
 
-## <a name="events"></a>Události
+## <a name="events"></a>Duration
 
 Události sledování na portálu CloudSimple uživatele a aktivitu systému.  Události zobrazit aktivity spojené s konkrétní prostředek a závažnost dopadu.  Můžete zobrazit události z portálu CloudSimple.
 

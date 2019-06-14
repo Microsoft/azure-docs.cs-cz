@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/06/2019
+ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 04ceac3b06972687ef6cdeac4dad1f07fea611cb
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 00501ec72dff99f93fa04944c5ab733fce38ce21
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754890"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074012"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
 
@@ -225,7 +225,7 @@ Předdefinované role mají `AssignableScopes` nastavena na kořenového oboru (
 | Role je k dispozici pro přiřazení v rámci jednoho předplatného | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
 | Role je k dispozici pro přiřazení ve dvou předplatných | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
 | Role je k dispozici pro přiřazení pouze ve skupině síťových prostředků | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Role je k dispozici pro přiřazení ve všech oborech | `"/"` |
+| Role je k dispozici pro přiřazení ze všech rozsahů (platí jenom pro předdefinované role) | `"/"` |
 
 Informace o `AssignableScopes` vlastních rolí, najdete v části [vlastní role pro prostředky Azure](custom-roles.md).
 

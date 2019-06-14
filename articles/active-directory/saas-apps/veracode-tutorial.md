@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 11f75f53adc9e8ce1dbf78ef7a7d58742b6bc839
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1024f0c09d6ab67b412a8f65d8964f3ac9d43254
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Kurz: Integrace Azure Active Directory s Veracode
 
@@ -55,7 +55,7 @@ Konfigurace integrace Veracode do služby Azure AD, budete muset přidat Veracod
 
 **Chcete-li přidat Veracode z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -113,7 +113,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Veracode, proveďte násled
 
 6. Kromě toho výše Veracode aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | jméno |User.givenName |
     | Příjmení |User.Surname |
@@ -248,7 +248,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Veracode, musí být p
 > [!NOTE]
 > Můžete použít jakékoli jiné Veracode uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Veracode zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

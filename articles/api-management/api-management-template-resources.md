@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60557881"
 ---
 # <a name="azure-api-management-template-resources"></a>Šablony prostředků Azure API Management
@@ -112,9 +112,9 @@ Podporovány jsou následující možnosti lokalizace:
   
 ###  <a name="ApisStrings"></a> ApisStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
-|PageTitleApis|Rozhraní API|  
+|PageTitleApis|API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
@@ -127,17 +127,17 @@ Podporovány jsou následující možnosti lokalizace:
   
 ###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Opravdu chcete odebrat aplikaci?|  
 |WebDevelopersAppNotPublished|Nepublikováno|  
-|WebDevelopersAppNotSubmitted|Neodeslané|  
-|WebDevelopersAppTableCategoryHeader|Kategorie|  
-|WebDevelopersAppTableNameHeader|Název|  
+|WebDevelopersAppNotSubmitted|Neodeslaný|  
+|WebDevelopersAppTableCategoryHeader|Category|  
+|WebDevelopersAppTableNameHeader|Name|  
 |WebDevelopersAppTableStateHeader|Stav|  
 |WebDevelopersEditLink|Upravit|  
-|WebDevelopersRegisterAppLink|Zaregistrovat aplikaci|  
-|WebDevelopersRemoveLink|Odebrat|  
+|WebDevelopersRegisterAppLink|Registrace aplikace|  
+|WebDevelopersRemoveLink|odebrat|  
 |WebDevelopersSubmitLink|Odeslat|  
 |WebDevelopersYourApplicationsHeader|Vaše aplikace|  
   
@@ -156,7 +156,7 @@ Podporovány jsou následující možnosti lokalizace:
 |GeneralJsonExceptionMessage|Něco není správný. Může se jednat o dočasnou poruchu nebo chybu. Prosím znovu načíst stránku a zkuste to znovu.|  
 |ConfirmationMessageUnsavedChanges|Existují nějaké neuložené změny. Opravdu že chcete zrušit a zahodit změny?|  
 |AzureActiveDirectory|Azure Active Directory|  
-|HttpLargeRequestMessage|Text požadavku HTTP je moc dlouhý.|  
+|HttpLargeRequestMessage|Text požadavku HTTP je moc velká.|  
   
 ###  <a name="CommonStrings"></a> CommonStrings  
   
@@ -165,49 +165,49 @@ Podporovány jsou následující možnosti lokalizace:
 |ButtonLabelCancel|Zrušit|  
 |ButtonLabelSave|Uložení|  
 |GeneralExceptionMessage|Něco není správný. Může se jednat o dočasnou poruchu nebo chybu. Zkuste to znovu.|  
-|NoItemsToDisplay|Nejsou k dispozici žádné položky, které by bylo možné zobrazit.|  
+|NoItemsToDisplay|Nebyly nalezeny žádné položky k zobrazení.|  
 |PagerButtonLabelFirst|První|  
 |PagerButtonLabelLast|Poslední|  
 |PagerButtonLabelNext|Další|  
 |PagerButtonLabelPrevious|Předchozí|  
 |PagerLabelPageNOfM|Stránka {0} z {1}|  
-|PasswordTooShort|Heslo je příliš krátké.|  
-|EmailAsPassword|Nepoužívejte svůj e-mail jako heslo.|  
-|PasswordSameAsUserName|Vaše heslo nesmí obsahovat vaše uživatelské jméno.|  
-|PasswordTwoCharacterClasses|Použijte jiné třídy znaků.|  
+|PasswordTooShort|Heslo je příliš krátké|  
+|EmailAsPassword|Nepoužívejte svůj e-mail jako heslo|  
+|PasswordSameAsUserName|Heslo nesmí obsahovat vaše uživatelské jméno|  
+|PasswordTwoCharacterClasses|Použijte jiné třídy znaků|  
 |PasswordTooManyRepetitions|Příliš mnoho opakování|  
 |PasswordSequenceFound|Vaše heslo obsahuje sekvence.|  
 |PagerLabelPageSize|Velikost stránky|  
 |CurtainLabelLoading|Načítání...|  
-|TablePlaceholderNothingToDisplay|Pro vybrané období a obor nejsou k dispozici žádná data.|  
+|TablePlaceholderNothingToDisplay|Neexistuje žádná data pro vybrané období a obor|  
 |ButtonLabelClose|Zavřít|  
   
 ###  <a name="Documentation"></a> Dokumentace ke službě  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Neplatná hlavička "{0}.|  
 |WebDocumentationInvalidRequestErrorMessage|Neplatná adresa URL žádosti|  
-|TextboxLabelAccessToken|Access token *|  
+|TextboxLabelAccessToken|Přístupový token *|  
 |DropdownOptionPrimaryKeyFormat|Primární –{0}|  
 |DropdownOptionSecondaryKeyFormat|Sekundární-{0}|  
-|WebDocumentationSubscriptionKeyText|Váš klíč předplatného|  
+|WebDocumentationSubscriptionKeyText|Klíč předplatného.|  
 |WebDocumentationTemplatesAddHeaders|Přidat povinné hlavičky HTTP|  
 |WebDocumentationTemplatesBasicAuthSample|Ukázka Basic Authorization|  
-|WebDocumentationTemplatesCurlForBasicAuth|pro Basic Authorization použijte: --user {uživatelské jméno}:{heslo}|  
-|WebDocumentationTemplatesCurlValuesForPath|Zadejte hodnoty parametrů cesty (zobrazené jako {...}), klíč předplatného a hodnoty parametrů dotazu.|  
+|WebDocumentationTemplatesCurlForBasicAuth|pro Basic Authorization použijte:--uživatele {username}: {heslo}|  
+|WebDocumentationTemplatesCurlValuesForPath|Zadejte hodnoty parametrů cesty (zobrazené jako {...}), klíč předplatného a hodnoty pro parametry dotazu.|  
 |WebDocumentationTemplatesDeveloperKey|Zadejte klíč předplatného.|  
 |WebDocumentationTemplatesJavaApache|Tato ukázka používá klient Apache HTTP ze součástí HTTP(http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|Podle potřeby zadejte hodnoty nepovinných parametrů.|  
 |WebDocumentationTemplatesPhpPackage|Tato ukázka používá balíček HTTP_Request2. (Další informace: https://pear.php.net/package/HTTP_Request2)|  
-|WebDocumentationTemplatesPythonValuesForPath|Podle potřeby zadejte hodnoty parametrů cesty (zobrazené jako {...}) a text žádosti.|  
+|WebDocumentationTemplatesPythonValuesForPath|Zadejte hodnoty parametrů cesty (zobrazené jako {...}) a text žádosti v případě potřeby|  
 |WebDocumentationTemplatesRequestBody|Zadejte text žádosti.|  
 |WebDocumentationTemplatesRequiredParams|Zadejte hodnoty následujících povinných parametrů.|  
-|WebDocumentationTemplatesValuesForPath|Zadejte hodnoty parametrů cesty (zobrazené jako {...}).|  
+|WebDocumentationTemplatesValuesForPath|Zadejte hodnoty parametrů cesty (zobrazené jako {...})|  
 |OAuth2AuthorizationEndpointDescription|Koncový bod autorizace se používá k interakci s vlastníkem prostředku a získání udělení autorizace.|  
-|OAuth2AuthorizationEndpointName|Koncový bod autorizace|  
-|OAuth2TokenEndpointDescription|Koncový bod tokenu používá klient ke získání přístupového tokenu tím, že předloží svoje udělení autorizace nebo aktualizační token.|  
-|OAuth2TokenEndpointName|Koncový bod tokenu|  
+|OAuth2AuthorizationEndpointName|koncový bod autorizace|  
+|OAuth2TokenEndpointDescription|Koncový bod tokenu používá klient k získání přístupového tokenu tím, že předloží svoje udělení autorizace nebo aktualizační token.|  
+|OAuth2TokenEndpointName|koncový bod tokenu|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|< p\> klienta spouští tok přesměrováním vlastník prostředku uživatelského agenta pro koncový bod autorizace.  Klient zahrne identifikátoru klienta, požadovaný obor, místní a identifikátor URI přesměrování, na které pošle autorizační server uživatelského agenta, zpět po přístup je udělen (nebo byl odepřen).     < /p\> < p\> autorizační server ověří vlastníka prostředku (prostřednictvím uživatelského agenta) a zjistí, zda vlastník prostředku udělí nebo zamítne žádost o přístup klienta.     < /p\> < p\> za předpokladu, že vlastník prostředku udělí přístup, přesměruje autorizační server uživatelského agenta zpět na klienta pomocí přesměrovacího identifikátoru URI zadaný starší (v požadavku nebo během registrati klienta zapnuto).  Přesměrovací identifikátor URI obsahuje autorizační kód a místní stav, který klient poskytl dříve.     </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Pokud uživatel odmítne žádost o přístup z, pokud požadavek je neplatný, bude klient informován pomocí následujících parametrů přidaných do přesměrování: < /p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Žádost o autorizaci|  
@@ -225,12 +225,12 @@ Podporovány jsou následující možnosti lokalizace:
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|< p\> Pokud vlastník prostředku žádost o přístup zamítne nebo pokud žádost selže z jiných důvodů než je chybějící nebo neplatný přesměrovací identifikátor URI, informuje autorizační server klienta přidáním následujících parametrů do o součást fragmentu f přesměrovací identifikátor URI ve formátu "application/x--www-form-urlencoded". </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|< p\> klientská aplikace musí kvůli zahájení procesu OAuth poslat uživateli pro koncový bod autorizace.      Koncovém bodu autorizace uživatel ověří a pak udělí nebo zamítne přístup k aplikaci. </p\>|  
 |OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|< p\> Pokud vlastník prostředku udělí žádost o přístup, autorizační server vystaví přístupový token a doručí ho klientovi přidáním následujících parametrů do součásti fragmentu přesměrovacího identifikátoru URI pomocí "application/x-www Formát - formuláře – adresy URL". </p\>|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Tok autorizačního kódu je optimalizovaný pro klienty, kteří jsou schopni zachovat utajení svých přihlašovacích údajů (například aplikace webového serveru implementované pomocí jazyků PHP, Java, Python, Ruby, ASP.NET atd.).|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Tok autorizačního kódu je optimalizovaný pro klienty schopni zachovat utajení svých přihlašovacích údajů (například aplikace webového serveru implementované pomocí PHP, Java, Python, Ruby, ASP.NET atd.).|  
 |OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Udělení autorizačního kódu|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|Tok klientských přihlašovacích údajů je vhodný v případech, kdy klient (aplikace) požaduje přístup k chráněným prostředkům pod svou kontrolou. Klient se považuje za jako vlastníka prostředku, tak nebude vyžadována žádná interakce s koncovým uživatelem.|  
 |OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|Udělení klientských přihlašovacích údajů|  
 |OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Implicitní tok je optimalizovaný pro klienti nepodporující zachovat utajení svých přihlašovacích údajů pro provoz konkrétní identifikátor URI pro přesměrování. Tito klienti jsou zpravidla implementovaní v prohlížeči pomocí skriptovacího jazyka, jako je JavaScript.|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Implicitní udělení|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Implicitní grant|  
 |OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Tok přihlašovacího hesla vlastníka prostředku je vhodný v případech, kdy má vlastník prostředku vztah důvěryhodnosti s klientem (vaší aplikací), například operační systém zařízení nebo aplikace s vysokou úrovní oprávnění. Tento tok je vhodný pro klienty schopni získat přihlašovací údaje (uživatelské jméno a heslo, zpravidla pomocí interaktivního formuláře) vlastníka prostředku.|  
 |OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Udělení přihlašovacího hesla vlastníka prostředku|  
 |OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|< p\> vlastník prostředku poskytne klientovi své uživatelské jméno a heslo. < /p\> < p\> si klient vyžádá přístupový token od autorizačního serveru '' koncový bod tokenu s zahrnutím přihlašovacích údajů přijatých od vlastníka prostředku.  Když se odešle požadavek, klient se ověří pomocí autorizačního serveru. < /p\> < p\> autorizační server ověří klienta a ověří přihlašovací údaje vlastníka prostředku a pokud je platný, vystaví přístupový token. </p\>|  
@@ -272,7 +272,7 @@ Podporovány jsou následující možnosti lokalizace:
 |OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|POVINNÉ. Hodnota musí být nastavená na "password".|  
 |OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|POVINNÉ. Heslo vlastníka prostředku.|  
 |OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|VOLITELNÉ. Identifikátor URI koncového bodu přesměrování musí být absolutní identifikátor URI.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|POVINNÉ, pokud byl v žádosti o autorizaci zahrnut parametr redirect_uri a jejich hodnoty MUSÍ být identické.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|VYŽADUJE-li parametr "redirect_uri" byl součástí žádost o autorizaci a jejich hodnoty musí být identické.|  
 |OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|VOLITELNÉ. Identifikátor URI koncového bodu přesměrování musí být absolutní identifikátor URI.|  
 |OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|VOLITELNÉ. Token obnovení, který můžete použít k získání nových přístupových tokenů.|  
 |OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|VOLITELNÉ. Token obnovení, který můžete použít k získání nových přístupových tokenů.|  
@@ -280,13 +280,13 @@ Podporovány jsou následující možnosti lokalizace:
 |OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|POVINNÉ. Hodnota musí být nastavená na "kód".|  
 |OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|POVINNÉ. Hodnota musí být nastavená na "token".|  
 |OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|VOLITELNÉ. Rozsah žádosti o přístup.|  
-|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|NEPOVINNÉ, pokud se shoduje s rozsahem požadovaným klientem, jinak POVINNÉ|  
+|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|VOLITELNÉ, pokud se shoduje s rozsahem požadovaným klientem; v opačném případě POVINNÝ.|  
 |OAuth2Scope_ClientCredentialsGrant_TokenRequest|VOLITELNÉ. Rozsah žádosti o přístup.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenResponse|NEPOVINNÉ, pokud se shoduje s rozsahem požadovaným klientem, jinak POVINNÉ|  
+|OAuth2Scope_ClientCredentialsGrant_TokenResponse|NEPOVINNÉ, pokud se shoduje s rozsahem požadovaným klientem; v opačném případě POVINNÝ.|  
 |OAuth2Scope_ImplicitGrant_AuthorizationRequest|VOLITELNÉ. Rozsah žádosti o přístup.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationResponse|NEPOVINNÉ, pokud se shoduje s rozsahem požadovaným klientem, jinak POVINNÉ|  
+|OAuth2Scope_ImplicitGrant_AuthorizationResponse|VOLITELNÉ, pokud se shoduje s rozsahem požadovaným klientem; v opačném případě POVINNÝ.|  
 |OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|VOLITELNÉ. Rozsah žádosti o přístup.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|NEPOVINNÉ, pokud se shoduje s rozsahem požadovaným klientem, jinak POVINNÉ|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|NEPOVINNÉ, pokud se shoduje s rozsahem požadovaným klientem; v opačném případě POVINNÝ.|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|POVINNÉ, pokud parametr "stavu" nacházel v žádosti o ověření klienta.  O přesnou hodnotu přijatou od klienta.|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|DOPORUČENÉ. Neprůhledná hodnota používaných klientem pro uchování stavu mezi žádostí a zpětného volání.  Autorizační server používá tuto hodnotu při přesměrování uživatelského agenta zpět do klienta.  Parametr by měla sloužit jak zabránit padělání žádosti více webů.|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|POVINNÉ, pokud parametr "stavu" nacházel v žádosti o ověření klienta.  O přesnou hodnotu přijatou od klienta.|  
@@ -300,21 +300,21 @@ Podporovány jsou následující možnosti lokalizace:
 |OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|POVINNÉ. Uživatelské jméno vlastníka prostředku.|  
 |OAuth2UnsupportedTokenType|Token typu '{0}' není podporován.|  
 |OAuth2InvalidState|Neplatná odpověď od autorizačního serveru|  
-|OAuth2GrantType_AuthorizationCode|Autorizační kód|  
+|OAuth2GrantType_AuthorizationCode|autorizační kód|  
 |OAuth2GrantType_Implicit|Implicitní|  
 |OAuth2GrantType_ClientCredentials|Přihlašovací údaje klienta|  
 |OAuth2GrantType_ResourceOwnerPassword|Heslo vlastníka prostředku|  
-|WebDocumentation302Code|302 – Nalezeno|  
-|WebDocumentation400Code|400 (chybná žádost)|  
-|OAuth2SendingMethod_AuthHeader|Autorizační hlavička|  
+|WebDocumentation302Code|302 Found|  
+|WebDocumentation400Code|400 (Chybný požadavek)|  
+|OAuth2SendingMethod_AuthHeader|Autorizační hlavičky.|  
 |OAuth2SendingMethod_QueryParam|Parametr dotazu|  
 |OAuth2AuthorizationServerGeneralException|Došlo k chybě při autorizaci přístupu přes {0}|  
-|OAuth2AuthorizationServerCommunicationException|Připojení HTTP k autorizačnímu serveru nebylo možné navázat, nebo bylo neočekávaně zavřeno.|  
-|WebDocumentationOAuth2GeneralErrorMessage|Došlo k neočekávané chybě|  
+|OAuth2AuthorizationServerCommunicationException|Nelze navázat připojení HTTP k autorizačnímu serveru nebo bylo neočekávaně zavřeno.|  
+|WebDocumentationOAuth2GeneralErrorMessage|Došlo k neočekávané chybě.|  
 |AuthorizationServerCommunicationException|Došlo k výjimce komunikace autorizační server. Obraťte se prosím na správce.|  
 |TextblockSubscriptionKeyHeaderDescription|Klíč předplatného, který poskytuje přístup k tomuto rozhraní API. Součástí vaší < href ='/ developer'\>profilu < /a\>.|  
 |TextblockOAuthHeaderDescription|Přístupový token OAuth 2.0 získaný od < i\>{0}< /i\>. Podporované typy udělení: < můžu\>{1}< /i\>.|  
-|TextblockContentTypeHeaderDescription|Typ média textu odeslaného do rozhraní API|  
+|TextblockContentTypeHeaderDescription|Typ média textu odeslaného do rozhraní API.|  
 |ErrorMessageApiNotAccessible|V tuto chvíli není dostupná rozhraní API, které se snažíte volat. Obraťte se vydavatele tohoto rozhraní API < href = "/ issues"\>tady < /a\>.|  
 |ErrorMessageApiTimedout|Rozhraní API, které se snažíte volat, trvá déle než obvykle vrátit odpověď. Obraťte se vydavatele tohoto rozhraní API < href = "/ issues"\>tady < /a\>.|  
 |BadRequestParameterExpected|""{0}' očekává se parametr "|  
@@ -326,31 +326,31 @@ Podporovány jsou následující možnosti lokalizace:
 |SectionHeadingRequestUrl|Adresa URL požadavku|  
 |SectionHeadingResponse|Odpověď|  
 |SectionHeadingRequestHeaders|Hlavičky požadavku|  
-|FormLabelSubtextOptional|nepovinné|  
+|FormLabelSubtextOptional|Volitelné|  
 |SectionHeadingCodeSamples|Ukázky kódů|  
 |TextblockOpenidConnectHeaderDescription|Token identifikátoru OpenID Connect získaný od < i\>{0}< /i\>. Podporované typy udělení: < můžu\>{1}< /i\>.|  
   
 ###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
-|LinkLabelBack|zpět|  
-|LinkLabelHomePage|domovská stránka|  
+|LinkLabelBack|Zpět|  
+|LinkLabelHomePage|Domovská stránka|  
 |LinkLabelSendUsEmail|Pošlete nám e-mail|  
-|PageTitleError|Při obsluze požadované stránky bohužel došlo k problému|  
+|PageTitleError|Je nám líto došlo k potížím při obsluze požadované stránky|  
 |TextblockPotentialCauseIntermittentIssue|Může jít problém s přístupem k přerušovaným dat, který už pominul.|  
-|TextblockPotentialCauseOldLink|Odkaz, na který jste klikli, může být zastaralý a už nesměřuje na správné místo.|  
+|TextblockPotentialCauseOldLink|Odkaz, který jste klikli na může být zastaralý a nesměřuje na správné místo.|  
 |TextblockPotentialCauseTechnicalProblem|Může jít o technický problém na naší straně.|  
 |TextblockPotentialSolutionRefresh|Zkuste aktualizovat stránku.|  
 |TextblockPotentialSolutionStartOver|Začněte znovu z našich {0}.|  
 |TextblockPotentialSolutionTryAgain|Přejděte {0} a zkuste akci provést znovu.|  
 |TextReportProblem|{0} popisující, co došlo k chybě a podíváme na to, co nejdříve podíváme.|  
-|TitlePotentialCause|Potenciální příčina|  
-|TitlePotentialSolution|Možná jde jen o dočasný problém, takže můžete vyzkoušet pár věcí|  
+|TitlePotentialCause|Možná příčina|  
+|TitlePotentialSolution|Možná jde jen o dočasný problém, několik postupů k vyzkoušení|  
   
 ###  <a name="IssuesStrings"></a> IssuesStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |WebIssuesIndexTitle|Problémy|  
 |WebIssuesNoActiveSubscriptions|Budete mít žádná aktivní předplatná. Musíte se k odběru produktu, který chcete nahlásit problém.|  
@@ -363,15 +363,15 @@ Podporovány jsou následující možnosti lokalizace:
   
 |Název|Text|  
 |----------|----------|  
-|LinkLabelHomePage|domovská stránka|  
-|LinkLabelSendUsEmail|pošlete nám prosím e-mail|  
+|LinkLabelHomePage|Domovská stránka|  
+|LinkLabelSendUsEmail|Pošlete nám e-mail|  
 |PageTitleNotFound|Je nám líto, ale nenašli jsme stránku, kterou hledáte|  
 |TextblockPotentialCauseMisspelledUrl|Možná je chybně adresu URL Pokud jste ho zadali.|  
-|TextblockPotentialCauseOldLink|Odkaz, na který jste klikli, může být zastaralý a už nesměřuje na správné místo.|  
-|TextblockPotentialSolutionRetype|Zkuste adresu URL zadat znovu.|  
+|TextblockPotentialCauseOldLink|Odkaz, který jste klikli na může být zastaralý a nesměřuje na správné místo.|  
+|TextblockPotentialSolutionRetype|Znovu adresu URL.|  
 |TextblockPotentialSolutionStartOver|Začněte znovu z našich {0}.|  
 |TextReportProblem|{0} popisující, co došlo k chybě a podíváme na to, co nejdříve podíváme.|  
-|TitlePotentialCause|Potenciální příčina|  
+|TitlePotentialCause|Možná příčina|  
 |TitlePotentialSolution|Potenciální řešení|  
   
 ###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
@@ -382,23 +382,23 @@ Podporovány jsou následující možnosti lokalizace:
 |WebProductsLegalTermsLink|Podmínky použití|  
 |WebProductsSubscribeButton|Přihlásit odběr|  
 |WebProductsUsageLimitsHeader|Limity využití|  
-|WebProductsYouAreNotSubscribed|Tento produkt máte předplacený.|  
+|WebProductsYouAreNotSubscribed|Jste přihlášeni k tomuto produktu.|  
 |WebProductsYouRequestedSubscription|Požádali jste o předplatné tohoto produktu.|  
-|ErrorYouNeedToAgreeWithLegalTerms|Před pokračováním musíte souhlasit s podmínkami použití.|  
+|ErrorYouNeedToAgreeWithLegalTerms|Abyste mohli pokračovat, musíte souhlasit s podmínkami použití.|  
 |ButtonLabelAddSubscription|Přidat předplatné|  
-|LinkLabelChangeSubscriptionName|změnit|  
+|LinkLabelChangeSubscriptionName|Změna|  
 |ButtonLabelConfirm|Potvrdit|  
 |TextblockMultipleSubscriptionsCount|Máte {0} předplatná pro tento produkt:|  
 |TextblockSingleSubscriptionsCount|Máte {0} předplatné tohoto produktu:|  
 |TextblockSingleApisCount|Tento produkt obsahuje {0} rozhraní API:|  
 |TextblockMultipleApisCount|Tento produkt obsahuje {0} rozhraní API:|  
 |TextblockHeaderSubscribe|Předplatit produkt|  
-|TextblockSubscriptionDescription|Nové předplatné se vytvoří takto:|  
+|TextblockSubscriptionDescription|Nový odběr bude vytvořen následujícím způsobem:|  
 |TextblockSubscriptionLimitReached|Byl dosažen limit předplatných.|  
   
 ###  <a name="ProductsStrings"></a> ProductsStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleProducts|Products|  
   
@@ -407,26 +407,26 @@ Podporovány jsou následující možnosti lokalizace:
 |Název|Text|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|Správci v tuto chvíli zakázali přihlašování.|  
-|TextboxExternalIdentitiesSigninInvitation|Alternativně se můžete přihlásit přes|  
-|TextboxExternalIdentitiesSigninInvitationPrimary|Přihlásit se přes:|  
+|TextboxExternalIdentitiesSigninInvitation|Případně Přihlaste se pomocí|  
+|TextboxExternalIdentitiesSigninInvitationPrimary|Přihlaste se pomocí:|  
   
 ###  <a name="SigninResources"></a> SigninResources  
   
 |Název|Text|  
 |----------|----------|  
 |PrincipalNotFound|Objekt zabezpečení nebyl nalezen nebo podpis je neplatný.|  
-|ErrorSsoAuthenticationFailed|Jednotné přihlašování se nepodařilo ověřit.|  
-|ErrorSsoAuthenticationFailedDetailed|Byl zadán neplatný token nebo nelze ověřit podpis.|  
+|ErrorSsoAuthenticationFailed|Ověření jednotného přihlašování se nezdařilo|  
+|ErrorSsoAuthenticationFailedDetailed|Byl zadán neplatný token nebo podpis nelze ověřit.|  
 |ErrorSsoTokenInvalid|Token jednotného přihlašování je neplatný.|  
 |ValidationErrorSpecificEmailAlreadyExists|E-mailu "{0}" již zaregistrován.|  
 |ValidationErrorSpecificEmailInvalid|E-mailu "{0}' je neplatný|  
 |ValidationErrorPasswordInvalid|Heslo je neplatné. Opravte chyby a zkuste to znovu.|  
 |PropertyTooShort|{0} je příliš krátké.|  
-|WebAuthenticationAddresserEmailInvalidErrorMessage|Neplatná e-mailová adresa|  
-|ValidationMessageNewPasswordConfirmationRequired|Potvrdit nové heslo|  
-|ValidationErrorPasswordConfirmationRequired|Potvrzovací heslo je prázdné.|  
+|WebAuthenticationAddresserEmailInvalidErrorMessage|Neplatná e-mailovou adresu.|  
+|ValidationMessageNewPasswordConfirmationRequired|Potvrzení nového hesla|  
+|ValidationErrorPasswordConfirmationRequired|Potvrďte, že heslo je prázdné.|  
 |WebAuthenticationEmailChangeNotice|E-mail s potvrzením změny je na cestě {0}. Postupujte podle pokynů v něm potvrďte nové e-mailovou adresu. Pokud v e-mailu do vaší doručené pošty v několika dalších minut nedorazí, Zkontrolujte prosím složku s nevyžádanými e-maily.|  
-|WebAuthenticationEmailChangeNoticeHeader|Vaše žádost o změnu e-mailu byla úspěšně zpracována|  
+|WebAuthenticationEmailChangeNoticeHeader|Vaše žádost o změnu e-mailu byla úspěšně zpracována.|  
 |WebAuthenticationEmailChangeNoticeTitle|Byla vyžádána změna e-mailu|  
 |WebAuthenticationEmailHasBeenRevertedNotice|Váš e-mail už existuje. Žádost byla stornována|  
 |ValidationErrorEmailAlreadyExists|E-mail už existuje.|  
@@ -436,7 +436,7 @@ Podporovány jsou následující možnosti lokalizace:
 |WebAuthenticationErrorNoticeHeader|Chyba|  
 |WebAuthenticationFieldLengthErrorMessage|{0} Maximální délka musí být. {1}|  
 |TextboxLabelEmailFirstName|Jméno|  
-|ValidationErrorFirstNameRequired|Křesní jméno je povinné.|  
+|ValidationErrorFirstNameRequired|Křestní jméno je povinné.|  
 |ValidationErrorFirstNameInvalid|Neplatné křestní jméno|  
 |NoticeInvalidInvitationToken|Mějte prosím na paměti, že potvrzovací odkazy jsou platné pouze 48 hodin. Pokud jste pořád v tomto časovém rámci, ujistěte se prosím, že je odkaz správný. Pokud platnost odkazu vypršela, zopakujte prosím akci, kterou se snažíte potvrdit.|  
 |NoticeHeaderInvalidInvitationToken|Neplatný token pozvánky|  
@@ -445,47 +445,47 @@ Podporovány jsou následující možnosti lokalizace:
 |TextboxLabelEmailLastName|Příjmení|  
 |ValidationErrorLastNameRequired|Příjmení je povinné.|  
 |WebAuthenticationLinkExpiredNotice|Vypršela platnost potvrzovacího odkazu dostali. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
-|NoticePasswordResetLinkInvalidOrExpired|Odkaz na resetování hesla je neplatný nebo mu vypršela platnost.|  
+|NoticePasswordResetLinkInvalidOrExpired|Odkaz na resetování hesla je neplatná nebo vypršela její platnost.|  
 |WebAuthenticationLinkExpiredNoticeTitle|Odkaz odeslán|  
 |WebAuthenticationNewPasswordLabel|Nové heslo|  
-|ValidationMessageNewPasswordRequired|Vyžaduje se nové heslo.|  
+|ValidationMessageNewPasswordRequired|Je vyžadováno nové heslo.|  
 |TextboxLabelNotificationsSenderEmail|E-mail odesílatele oznámení|  
 |TextboxLabelOrganizationName|Název organizace|  
 |WebAuthenticationOrganizationRequiredErrorMessage|Název organizace je prázdný.|  
-|WebAuthenticationPasswordChangedNotice|Vaše heslo bylo úspěšně aktualizováno.|  
+|WebAuthenticationPasswordChangedNotice|Vaše heslo bylo úspěšně aktualizováno|  
 |WebAuthenticationPasswordChangedNoticeTitle|Heslo bylo aktualizováno|  
-|WebAuthenticationPasswordCompareErrorMessage|Hesla se neshodují.|  
+|WebAuthenticationPasswordCompareErrorMessage|Hesla se neshodují|  
 |WebAuthenticationPasswordConfirmLabel|Potvrzení hesla|  
-|ValidationErrorPasswordInvalidDetailed|Heslo je moc slabé.|  
+|ValidationErrorPasswordInvalidDetailed|Heslo je příliš slabé.|  
 |WebAuthenticationPasswordLabel|Heslo|  
-|ValidationErrorPasswordRequired|Heslo je povinné.|  
+|ValidationErrorPasswordRequired|Je vyžadováno heslo.|  
 |WebAuthenticationPasswordResetSendNotice|E-mail s potvrzením změny hesla je na cestě {0}. Postupujte podle pokynů v e-mailu, pokračujte v procesu změny hesla.|  
-|WebAuthenticationPasswordResetSendNoticeHeader|Vaše žádost o resetování hesla byla úspěšně zpracována|  
+|WebAuthenticationPasswordResetSendNoticeHeader|Vaše žádost o resetování hesla byla úspěšně zpracována.|  
 |WebAuthenticationPasswordResetSendNoticeTitle|Bylo vyžádáno resetování hesla|  
 |WebAuthenticationRequestNotFoundNotice|Žádost nebyla nalezena.|  
-|WebAuthenticationSenderEmailRequiredErrorMessage|E-mail odesílatele oznámení je prázdný.|  
+|WebAuthenticationSenderEmailRequiredErrorMessage|E-mail odesílatele oznámení je prázdný|  
 |WebAuthenticationSigninPasswordLabel|Potvrďte prosím změnu zadáním hesla.|  
 |WebAuthenticationSignupConfirmNotice|E-mail s potvrzením registrace je na cestě k {0}. < br /\> postupujte podle pokynů v e-mailu aktivovat svůj účet. < br /\> Pokud e-mail nedorazí do doručené pošty během několika minut, prosím Zkontrolujte složku s nevyžádanými e-maily.|  
-|WebAuthenticationSignupConfirmNoticeHeader|Váš účet byl úspěšně vytvořen|  
+|WebAuthenticationSignupConfirmNoticeHeader|Váš účet byl úspěšně vytvořen.|  
 |WebAuthenticationSignupConfirmNoticeRepeatHeader|E-mail s potvrzením registrace byl odeslán znovu|  
-|WebAuthenticationSignupConfirmNoticeTitle|Účet se vytvořil.|  
-|WebAuthenticationTokenRequiredErrorMessage|Token je prázdný.|  
+|WebAuthenticationSignupConfirmNoticeTitle|Vytvořený účet|  
+|WebAuthenticationTokenRequiredErrorMessage|Token je prázdný|  
 |WebAuthenticationUserAlreadyRegisteredNotice|Zdá se, že uživatel tuto e-mailovou je už zaregistrovaný v systému. Pokud jste zapomněli svoje heslo, zkuste prosím obnovit nebo se obraťte na náš tým podpory.|  
 |WebAuthenticationUserAlreadyRegisteredNoticeHeader|Uživatel je už zaregistrovaný|  
-|WebAuthenticationUserAlreadyRegisteredNoticeTitle|Registrace už proběhla|  
-|ButtonLabelChangePassword|Změnit heslo|  
-|ButtonLabelChangeAccountInfo|Změnit informace účtu|  
+|WebAuthenticationUserAlreadyRegisteredNoticeTitle|Už zaregistrovaný|  
+|ButtonLabelChangePassword|Změna hesla|  
+|ButtonLabelChangeAccountInfo|Změnit informace o účtu|  
 |ButtonLabelCloseAccount|Zavřít účet|  
 |WebAuthenticationInvalidCaptchaErrorMessage|Zadaný text neodpovídá text v obrázku. Zkuste to prosím znovu.|  
 |ValidationErrorCredentialsInvalid|E-mail nebo heslo je neplatné. Opravte chyby a zkuste to znovu.|  
-|WebAuthenticationRequestIsNotValid|Žádost není platná.|  
-|WebAuthenticationUserIsNotConfirm|Předtím, než se pokusíte přihlásit, prosím potvrďte svou registraci.|  
+|WebAuthenticationRequestIsNotValid|Žádost není platná|  
+|WebAuthenticationUserIsNotConfirm|Prosím potvrďte svou registraci, než se pokusíte přihlásit.|  
 |WebAuthenticationInvalidEmailFormated|E-mailu je neplatný: {0}|  
 |WebAuthenticationUserNotFound|Uživatel nenalezen|  
 |WebAuthenticationTenantNotRegistered|Váš účet patří do tenanta služby Azure Active Directory, který nemá autorizaci pro přístup na tento portál.|  
 |WebAuthenticationAuthenticationFailed|Ověřování selhalo.|  
 |WebAuthenticationGooglePlusNotEnabled|Ověřování selhalo. Pokud jste ověřovali aplikaci pak prosím požádejte správce, abyste měli jistotu, že ověřování Google je správně nakonfigurován.|  
-|ValidationErrorAllowedTenantIsRequired|Povolený tenant je povinný.|  
+|ValidationErrorAllowedTenantIsRequired|Povolený Tenant je povinný.|  
 |ValidationErrorTenantIsNotValid|Tenant Azure Active Directory "{0}' není platný.|  
 |WebAuthenticationActiveDirectoryTitle|Azure Active Directory|  
 |WebAuthenticationLoginUsingYourProvider|Přihlaste se pomocí vaší {0} účtu|  
@@ -497,40 +497,40 @@ Podporovány jsou následující možnosti lokalizace:
 |WebAuthenticationUserRegistrationDisabledNoticeTitle|Registrace uživatelů zakázána|  
 |WebAuthenticationSignupPendingConfirmationNotice|Abychom mohli dokončit vytvoření vašeho účtu potřebujeme ověřit vaši e-mailovou adresu. Poslali jsme e-mail na {0}. Postupujte podle pokynů v e-mailu si můžete účet aktivovat. Pokud e-mail během několika dalších minut nedorazí, Zkontrolujte prosím složku s nevyžádanými e-maily.|  
 |WebAuthenticationSignupPendingConfirmationAccountFoundNotice|Našli jsme Nepotvrzený účet pro e-mailovou adresu {0}. K dokončení vytvoření vašeho účtu potřebujeme ověřit vaši e-mailovou adresu. Poslali jsme e-mail na {0}. Postupujte podle pokynů v e-mailu si můžete účet aktivovat. Pokud e-mail během několika dalších minut nedorazí, Zkontrolujte prosím složku s nevyžádanými e-maily|  
-|WebAuthenticationSignupConfirmationAlmostDone|Už to skoro je!|  
+|WebAuthenticationSignupConfirmationAlmostDone|Už to skoro je|  
 |WebAuthenticationSignupConfirmationEmailSent|Poslali jsme e-mail na {0}. Postupujte podle pokynů v e-mailu si můžete účet aktivovat. Pokud e-mail během několika dalších minut nedorazí, Zkontrolujte prosím složku s nevyžádanými e-maily.|  
 |WebAuthenticationEmailSentNotificationMessage|E-mail byl úspěšně odeslán do {0}|  
-|WebAuthenticationNoAadTenantConfigured|Pro tuto službu není nakonfigurovaný žádný tenant Azure Active Directory.|  
+|WebAuthenticationNoAadTenantConfigured|Žádné nakonfigurované pro službu tenanta Azure Active Directory.|  
 |CheckboxLabelUserRegistrationTermsConsentRequired|Souhlasím `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
 |TextblockUserRegistrationTermsProvided|Najdete v tématu `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|Podmínky použití|  
-|ValidationMessageConsentNotAccepted|Před pokračováním musíte souhlasit s podmínkami použití.|  
+|ValidationMessageConsentNotAccepted|Abyste mohli pokračovat, musíte souhlasit s podmínkami použití.|  
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Zapomněli jste heslo?|  
 |WebAuthenticationIfAdministrator|Pokud jste správce musíte přihlásit `<a href="{0}"\>here</a\>`.|  
 |WebAuthenticationNotAMember|Ještě nejste členem? `<a href="/signup"\>Sign up now</a\>`|  
-|WebAuthenticationRemember|Zapamatovat si mě na tomto počítači|  
-|WebAuthenticationSigininWithPassword|Přihlaste se pomocí uživatelského jména a hesla.|  
+|WebAuthenticationRemember|Pamatovat si mě na tomto počítači|  
+|WebAuthenticationSigininWithPassword|Přihlaste se pomocí uživatelského jména a hesla|  
 |WebAuthenticationSigninTitle|Přihlášení|  
 |WebAuthenticationSignUpNow|Zaregistrujte se|  
   
 ###  <a name="SignupStrings"></a> SignupStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleSignup|Registrace|  
-|WebAuthenticationAlreadyAMember|Už jste členem?|  
-|WebAuthenticationCreateNewAccount|Vytvořit nový účet API Managementu|  
-|WebAuthenticationSigninNow|Přihlásit se|  
+|WebAuthenticationAlreadyAMember|Máte už předplatné?|  
+|WebAuthenticationCreateNewAccount|Vytvořit nový účet API managementu|  
+|WebAuthenticationSigninNow|Přihlaste se hned|  
 |ButtonLabelSignup|Registrace|  
   
 ###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Opravdu chcete toto předplatné zrušit?|  
 |SubscriptionRenewConfirmation|Opravdu chcete prodloužit platnost tohoto předplatného?|  
@@ -541,21 +541,21 @@ Podporovány jsou následující možnosti lokalizace:
 |ButtonLabelShowKey|Zobrazit|  
 |ButtonLabelRenewSubscription|Obnovit|  
 |WebDevelopersSubscriptionRequested|Datum žádosti {0}|  
-|WebDevelopersSubscriptionRequestedState|Požadováno|  
-|WebDevelopersSubscriptionTableNameHeader|Název|  
+|WebDevelopersSubscriptionRequestedState|Požadovaný|  
+|WebDevelopersSubscriptionTableNameHeader|Name|  
 |WebDevelopersSubscriptionTableStateHeader|Stav|  
-|WebDevelopersUsageStatisticsLink|Sestavy Analytics|  
+|WebDevelopersUsageStatisticsLink|Analytické sestavy|  
 |WebDevelopersYourSubscriptions|Vaše předplatná|  
 |SubscriptionPropertyLabelRequestedDate|Datum žádosti|  
-|SubscriptionPropertyLabelStartedDate|Spuštěno dne|  
+|SubscriptionPropertyLabelStartedDate|Spustit na|  
 |PageTitleRenameSubscription|Přejmenovat předplatné|  
 |SubscriptionPropertyLabelName|Název předplatného|  
   
 ###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|Název|Text|  
+|Name|Text|  
 |----------|----------|  
-|SectionHeadingCloseAccount|Chcete zavřít svůj účet?|  
+|SectionHeadingCloseAccount|Pokud chcete zavřít svůj účet?|  
 |PageTitleDeveloperProfile|Profil|  
 |ButtonLabelHideKey|Skrýt|  
 |ButtonLabelRegenerateKey|Znovu vytvořit|  
@@ -573,8 +573,8 @@ Podporovány jsou následující možnosti lokalizace:
   
 |Název|Text|  
 |----------|----------|  
-|ButtonLabelChangeAccountInfo|Změnit informace účtu|  
-|ButtonLabelChangePassword|Změnit heslo|  
+|ButtonLabelChangeAccountInfo|Změnit informace o účtu|  
+|ButtonLabelChangePassword|Změna hesla|  
 |ButtonLabelCloseAccount|Zavřít účet|  
 |TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|Jméno|  
@@ -585,7 +585,7 @@ Podporovány jsou následující možnosti lokalizace:
 |SubscriptionStateCancelled|Zrušeno|  
 |SubscriptionStateExpired|Vypršela platnost|  
 |SubscriptionStateRejected|Zamítnuto|  
-|SubscriptionStateRequested|Požadováno|  
+|SubscriptionStateRequested|Požadovaný|  
 |SubscriptionStateSuspended|Pozastaveno|  
 |DefaultSubscriptionNameTemplate|{0}  (výchozí)|  
 |SubscriptionNameTemplate|# Přístup pro vývojáře{0}|  

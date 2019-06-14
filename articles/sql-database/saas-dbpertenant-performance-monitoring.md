@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61388588"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
@@ -178,7 +178,7 @@ Jako alternativu navýšení kapacity fondu vytvořte druhý fond a přemístět
    1. Klikněte na tlačítko **přidat databáze** zobrazíte seznam databází na serveru, který lze přidat do *Pool2*.
    1. Vyberte všechny 10 databáze je přesunout do nového fondu, a potom klikněte na **vyberte**. Pokud jste byl spuštěn generátor zatížení, služba již ví, že váš profil výkonu vyžaduje větší než výchozí velikost 50 eDTU fondu a doporučuje, začínající 100 eDTU nastavení.
 
-      ![doporučení](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![Doporučení](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
    1. Pro účely tohoto kurzu ponechte výchozí nastavení na 50 Edtu a klikněte na tlačítko **vyberte** znovu.
    1. Vyberte **OK** vytvořit nový fond a přemístěte do něho vybrané databáze.

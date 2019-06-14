@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60618798"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatické škálování virtuálního počítače škálovací sady na webu Azure Portal
@@ -76,7 +76,7 @@ Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud j
     
     | Parametr              | Vysvětlení                                                                                                          | Hodnota          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Méně než   |
+    | *– Operátor*             | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                      | Je menší než   |
     | *Prahová hodnota*            | Procentuální hodnotu, která způsobí aktivaci akce pravidlem automatického škálování.                                                 | 30             |
     | *Operace*            | Definuje, jestli se škálovací sada by se měly škálovat nahoru nebo dolů po použití pravidla kapacita a jaké přírůstku                         | Snížit procento o |
     | *Počet instancí*       | Procento instancí virtuálních počítačů, které se mají po aktivaci pravidla změnit.                                             | 20             |

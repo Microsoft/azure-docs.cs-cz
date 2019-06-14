@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60506529"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby Správce zařízení StorSimple pro zařízení StorSimple 8000 series
@@ -75,7 +75,7 @@ Proveďte následující kroky pro odstranění služby.
 
     ![Odstranit vyhledávací služba](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Tím přejdete do okna služby Správce zařízení StorSimple. Klikněte na **Odstranit**.
+2. Tím přejdete do okna služby Správce zařízení StorSimple. Klikněte na tlačítko **odstranit**.
 
     ![Odstranit službu](./media/storsimple-8000-manage-service/deletessdevman2.png)
 

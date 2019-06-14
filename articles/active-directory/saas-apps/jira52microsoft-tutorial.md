@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 003666d5bb3c309e501bcf76a15beb47340f9150
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708738"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099517"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML JIRA Microsoft (V5.2)
 
@@ -80,7 +80,7 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML JIRA Mic
 
 **Chcete-li přidat JIRA SAML SSO Microsoft (V5.2) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -224,11 +224,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k systému JIRA SAML SSO Microsoft (V5.2).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **JIRA SAML SSO Microsoft (V5.2)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **JIRA SAML SSO Microsoft (V5.2)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **JIRA SAML SSO Microsoft (V5.2)**.
+2. V seznamu aplikací vyberte **JIRA SAML SSO Microsoft (V5.2)** .
 
     ![Jednotné přihlašování SAML JIRA podle propojení Microsoft (verze 5.2) v seznamu aplikací](common/all-applications.png)
 

@@ -2,40 +2,38 @@
 title: Konfigurace kontejneru – nástroj pro rozpoznávání formuláře
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak konfigurovat kontejner formuláře Rozlišovač analyzovat data formuláře a tabulek.
-author: PatrickFarley
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/31/2019
-ms.author: pafarley
-ms.openlocfilehash: 28acc2d1eafacb9e53fac3e3cce092738401f838
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: bdff74be8578bb862974479b3151b0d922f00dd9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063993"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurace formuláře Rozlišovač kontejnery
 
-Formulář pro rozpoznávání kontejnery Umožněte zákazníkům vytvářet aplikace architekturu, která je optimalizováno pro využití možnosti robustní Cloudová a hraniční umístění.
+Pomocí kontejnerů Rozlišovač formulář Azure můžete vytvořit aplikaci architekturu, která je optimalizováno pro využití možnosti robustní Cloudová a hraniční umístění.
 
-**Formuláře Rozlišovač** kontejneru běhové prostředí je nakonfigurovaný nástrojem `docker run` argumenty příkazového. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení kontejneru konkrétní jsou fakturace.
+Můžete nakonfigurovat pomocí běhového prostředí modulu pro rozpoznávání formuláře kontejneru `docker run` argumenty příkazu. Tento kontejner víme o několika požadované nastavení a volitelné několik nastavení. Pár příkladů, najdete v článku ["Příklad docker run příkazy"](#example-docker-run-commands) oddílu. Nastavení kontejneru konkrétní jsou fakturace.
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](form-recognizer-container-howto.md#billing).
+> [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně. Je nutné zadat platné hodnoty pro všechny tři nastavení. v opačném případě se nespustí vašeho kontejneru. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](form-recognizer-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
-`ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _formuláře Rozlišovač_ prostředek určený pro [ `Billing` ](#billing-configuration-setting) nastavení konfigurace.
+`ApiKey` Nastavení určuje klíč prostředků Azure, který se používá ke sledování fakturačních údajů pro kontejner. Hodnota ApiKey musí být platný klíč pro _formuláře Rozlišovač_ prostředek, který je zadán pro `Billing` v části "Billing (fakturace nastavení konfigurace).
 
-Toto nastavení najdete v následujícím místě:
-
-* Azure portal: **Formulář pro rozpoznávání** správy prostředků v části **klíče**
+Můžete najít tato nastavení na webu Azure Portal, v **správy prostředků modulu pro rozpoznávání formuláře**v části **klíče**.
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
@@ -43,11 +41,9 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení, určuje identifikátor URI koncového bodu z _formuláře Rozlišovač_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _formuláře Rozlišovač_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
+`Billing` Nastavení, určuje identifikátor URI koncového bodu z _formuláře Rozlišovač_ prostředků v Azure, který umožňuje měřit fakturačních údajů pro kontejner. Hodnota pro toto nastavení konfigurace musí být platný identifikátor URI koncového bodu pro _formuláře Rozlišovač_ prostředků v Azure. Sestavy využití kontejnerů o každých 10 až 15 minut.
 
-Toto nastavení najdete v následujícím místě:
-
-* Azure portal: **Formulář pro rozpoznávání** přehled s popiskem `Endpoint`
+Můžete najít tato nastavení na webu Azure Portal, v **formuláře Rozlišovač přehled**v části **koncový bod**.
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -61,7 +57,7 @@ Toto nastavení najdete v následujícím místě:
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru http
+## <a name="http-proxy-credentials-settings"></a>Nastavení přihlašovacích údajů proxy serveru HTTP
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
@@ -72,11 +68,11 @@ Toto nastavení najdete v následujícím místě:
 
 ## <a name="mount-settings"></a>Nastavení Mounts
 
-Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstup tak, že zadáte `--mount` možnost [dockeru spustit](https://docs.docker.com/engine/reference/commandline/run/) příkazu.
+Použití vazby připojí ke čtení a zápisu dat do a z kontejneru. Můžete určit vstupní připojení nebo připojení výstupu tak, že zadáte `--mount` možnost [ `docker run` příkaz](https://docs.docker.com/engine/reference/commandline/run/).
 
-Kontejner modulu pro rozpoznávání formuláře vyžaduje vstupní a výstupní připojení. Vstupní připojení může být jen pro čtení a je potřeba přístup k datům, který se použije pro trénování a vyhodnocování. Výstup připojení musí být zapisovatelný a se použije k ukládání dočasných dat a modely.
+Kontejner modulu pro rozpoznávání formuláře vyžaduje vstupní připojení a připojení výstupu. Vstupní připojení může být jen pro čtení, a to nutné pro přístup k datům, který se používá pro trénování a vyhodnocování. Výstup připojení musí být zapisovatelný a používat k ukládání dočasných dat a modely.
 
-Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](form-recognizer-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění.
+Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho připojení umístění [hostitelský počítač](form-recognizer-container-howto.md#the-host-computer) nemusí být dostupný z důvodu konfliktu mezi oprávnění účtu služby Docker a oprávnění umístění připojení hostitele.
 
 |Nepovinné| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
@@ -85,22 +81,24 @@ Syntaxe umístění hostitele připojení se liší v závislosti na operačním
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad
 
-Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](form-recognizer-container-howto.md#stop-the-container) ho.
+Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy. Když je spuštěn, kontejner zůstane spuštěný dokud [ji zastavit](form-recognizer-container-howto.md#stop-the-container).
 
-* **Znak pro pokračování řádku**: Příkazy Dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému.
-* **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery Dockeru.
+* **Znak pro pokračování řádku**: Příkazy Dockeru v následujících částech použijte zpětné lomítko (\\) jako znak pro pokračování řádku. Nahraďte nebo odstraňte tento znak, v závislosti na požadavcích vaší operačního systému hostitele.
+* **Pořadí argumentů**: Neměnit pořadí argumentů, pokud jste obeznámeni s kontejnery Dockeru.
 
-Nahradit {_argument_name_} s vlastními hodnotami:
+Nahradit {_argument_name_} v tabulce následujících vlastními hodnotami:
 
 | Zástupný symbol | Hodnota |
 |-------------|-------|
-|{BILLING_KEY} | Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránce klíče modulu pro rozpoznávání formuláře webu Azure portal.  |
-|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na stránce s přehledem Rozlišovač formuláře webu Azure portal.|
-|{COMPUTER_VISION_API_KEY}| Klíč je k dispozici na stránce klíče rozhraní API pro zpracování obrazu počítačů webu Azure portal.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Fakturační koncový bod. Pokud používáte cloudové prostředky pro počítačové zpracování obrazu, hodnotu identifikátoru URI je k dispozici na stránce Přehled rozhraní API pro zpracování obrazu počítače webu Azure portal. Pokud používáte `cognitive-services-recognize-text` kontejner, použijte fakturační adresu URL koncového bodu předaný do kontejneru v `docker run` příkazu.|
+|{BILLING_KEY} | Klíč, který se používá ke spuštění kontejneru. Je k dispozici na webu Azure portal stránky formuláře rozpoznávání klíče.  |
+|{BILLING_ENDPOINT_URI} | Fakturační koncový bod hodnotu identifikátoru URI je k dispozici na portálu Azure portal, stránka s přehledem Rozlišovač formuláře.|
+|{COMPUTER_VISION_API_KEY}| Klíč je k dispozici na webu Azure portal stránku klíče rozhraní API pro zpracování obrazu počítačů.|
+|{COMPUTER_VISION_ENDPOINT_URI}|Fakturační koncový bod. Pokud používáte cloudové prostředky pro počítačové zpracování obrazu, je k dispozici na portálu Azure portal, stránka s přehledem rozhraní API pro zpracování obrazu počítače hodnotu identifikátoru URI. Pokud používáte *cognitive services – rozpoznat text* kontejneru, použijte fakturační adresu URL koncového bodu, který je předán do kontejneru v `docker run` příkazu.|
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, A `ApiKey` možnosti musí být zadán pro spuštění kontejneru; v opačném případě nebude spuštění kontejneru.  Další informace najdete v tématu [fakturace](#billing-configuration-setting).
+> Pro spuštění kontejneru, zadejte `Eula`, `Billing`, a `ApiKey` možnosti; v opačném případě nebude spuštění kontejneru. Další informace najdete v tématu [fakturace](#billing-configuration-setting).
+
+> [!NOTE] 
 > Hodnota ApiKey **klíč** ze stránky klíče na prostředek Azure formuláře Rozlišovače.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Formulář příklady Rozlišovač kontejneru Dockeru
@@ -139,4 +137,4 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="next-steps"></a>Další postup
 
-* Kontrola [instalace a spouštění kontejnerů](form-recognizer-container-howto.md)
+* Kontrola [instalace a spuštění kontejnerů](form-recognizer-container-howto.md).

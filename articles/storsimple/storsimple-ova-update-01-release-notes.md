@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60629284"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Poznámky k verzi StorSimple Virtual Array aktualizace 0.2 a 0.1
@@ -58,7 +58,7 @@ Následující tabulka obsahuje souhrn chyby opravené v této verzi.
 | --- | --- | --- |
 | 1 |VMDK |V některých verzích VMware disk s operačním systémem viděla jako zhuštěné způsobí upozornění a přerušení běžného provozu. Tato chyba byla opravena v této verzi. |
 | 2 |iSCSI server |V poslední verzi uživatele bylo nutné určit bránu pro každé rozhraní povolené síťové virtuální zařízení StorSimple. Toto chování se změnilo v této verzi tak, aby uživatel měl nakonfigurovat aspoň jednu bránu pro všechny povolené síťové rozhraní. |
-| 3 |Balíček pro podporu |Ve starší verzi softwaru podporují kolekci balíčku selhalo při velikosti balíčku byly větší než 1 GB. Tento problém je vyřešen v této verzi. |
+| 3 |Balíček pro podporu. |Ve starší verzi softwaru podporují kolekci balíčku selhalo při velikosti balíčku byly větší než 1 GB. Tento problém je vyřešen v této verzi. |
 | 4 |Přístup pro cloud |V poslední verzi StorSimple Virtual Array nemá připojení k síti a byl restartován, by místního uživatelského rozhraní máte potíže s připojením. Tento problém je vyřešen v této verzi. |
 | 5 |Grafy monitorování |V předchozí verzi, po převzetí služeb zařízení grafy využití kapacity cloudu zobrazují nesprávné hodnoty na portálu Azure classic. Tento problém je vyřešený v aktuální verzi. |
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b6e004ea613d1a3dfd47a2798e0298f41eab2d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99423568de7ff6686198120fd94e9c09287b21a8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Kurz: Integrace Azure Active Directory s PurelyHR
 
@@ -55,7 +55,7 @@ Konfigurace integrace PurelyHR do služby Azure AD, budete muset přidat PurelyH
 
 **Chcete-li přidat PurelyHR z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -206,7 +206,7 @@ V této části je povolit Britta Simon k udělení přístupu k PurelyHR použi
 
 Pokud chcete povolit Azure AD uživatelům umožní přihlásit k PurelyHR, musí být poskytnuty do PurelyHR. V PurelyHR zřizování se automatická úloha a žádné ruční kroky jsou požadovány, pokud je povoleno automatické zřizování uživatelů.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764318"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Aktivita ověření ve službě Azure Data Factory
@@ -61,7 +61,7 @@ Ověřování v kanálu můžete použít k zajištění kanálu pouze pokračuj
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity "ověření. | String | Ano |
+name | Název aktivity "ověření. | String | Ano |
 type | Musí být nastaveno na **ověření**. | String | Ano |
 Datové sady | Aktivity se zablokovat spuštění, dokud se ověřila tento odkaz na datovou sadu existuje a zda splňují zadaná kritéria, nebo bylo dosaženo časového limitu. Vlastnost "MinimumSize" nebo "ChildItems" by měla podporovat datové sady k dispozici. | Odkaz na datovou sadu | Ano |
 timeout | Určuje časový limit pro spuštění aktivity. Pokud není zadána žádná hodnota, výchozí hodnota je 7 dnů ("7.00:00:00"). Formát je d.hh:mm:ss | String | Ne |

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
 ms.openlocfilehash: 3a94b8252feb7c5c345d678579c477fce02d6e03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679166"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Ovládací prvek Azure CDN s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti
@@ -75,7 +75,7 @@ Pro globální a vlastní pravidla ukládání do mezipaměti můžete zadat dob
 
 Pro vlastní mezipaměti pravidla jsou k dispozici dvě shody podmínky:
  
-- **Cesta**: Tato podmínka odpovídá cestě adresy URL, s výjimkou názvu domény a podporuje zástupným znakem (\*). Například _/myfile.html_, _/Moje/slozka / *_, a _/my/images/*.jpg_. Maximální délka je 260 znaků.
+- **Cesta**: Tato podmínka odpovídá cestě adresy URL, s výjimkou názvu domény a podporuje zástupným znakem (\*). Například _/myfile.html_, _/Moje/slozka / *_ , a _/my/images/*.jpg_. Maximální délka je 260 znaků.
 
 - **Rozšíření**: Tato podmínka odpovídá přípona souboru požadovaného souboru. Můžete zadat seznam přípon souborů oddělený čárkami tak, aby odpovídaly. Například _.jpg_, _.mp3_, nebo _.png_. Maximální počet rozšíření je 50 a maximální počet znaků na rozšíření je 16. 
 
@@ -101,9 +101,9 @@ Globální a vlastní pravidla ukládání do mezipaměti se zpracovávají v n�
    - Podmínka shody: **Rozšíření**
    - Odpovídající hodnotě: _HTML_
    - Chování ukládání do mezipaměti: **Nastavit, pokud chybí**
-   - Doba vypršení platnosti mezipaměti: 3 dny
+   - Doba vypršení platnosti mezipaměti: 3 dny.
 
-Pokud jsou nastavena, žádost o  _&lt;název hostitele koncového bodu&gt;_.azureedge.net/home/index.html triggery vlastní ukládání do mezipaměti pravidlo 2 #, která je nastavena na: **Nastavit, pokud chybí** a 3 dny. Proto pokud *index.html* soubor má `Cache-Control` nebo `Expires` hlavičky protokolu HTTP jsou respektovat; jinak, pokud nejsou nastavené tyto hlavičky, soubor je uložená v mezipaměti pro 3 dny.
+Pokud jsou nastavena, žádost o  _&lt;název hostitele koncového bodu&gt;_ .azureedge.net/home/index.html triggery vlastní ukládání do mezipaměti pravidlo 2 #, která je nastavena na: **Nastavit, pokud chybí** a 3 dny. Proto pokud *index.html* soubor má `Cache-Control` nebo `Expires` hlavičky protokolu HTTP jsou respektovat; jinak, pokud nejsou nastavené tyto hlavičky, soubor je uložená v mezipaměti pro 3 dny.
 
 > [!NOTE] 
 > Soubory, které jsou uložené v mezipaměti před změnou pravidlo spravovat jejich nastavení doby trvání mezipaměti původu. Pokud chcete resetovat jejich dob trvání mezipaměti, je nutné [vyprázdnění souboru](cdn-purge-endpoint.md). 

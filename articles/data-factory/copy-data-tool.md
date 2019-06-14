@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787648"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Nástroj pro kopírování dat v Azure Data Factory
@@ -78,7 +78,7 @@ Následující snímek obrazovky ukazuje dotaz SQL pro filtrování data.
 ![Filtrování dat v databázi](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Filtrování dat v složce objektů blob v Azure
-Proměnné v cesta ke složce můžete použít ke kopírování dat ze složky. Podporované proměnné jsou: **{year}**, **{month}**, **{day}**, **{hour}**, a **{minute}**. Příklad: inputfolder / {year} / {month} / {day}. 
+Proměnné v cesta ke složce můžete použít ke kopírování dat ze složky. Podporované proměnné jsou: **{year}** , **{month}** , **{day}** , **{hour}** , a **{minute}** . Příklad: inputfolder / {year} / {month} / {day}. 
 
 Předpokládejme, že mají vstupní složky v následujícím formátu: 
 
@@ -91,7 +91,7 @@ Předpokládejme, že mají vstupní složky v následujícím formátu:
 
 Klikněte na tlačítko **Procházet** tlačítko pro **souboru nebo složky**, přejděte do jednoho z těchto složek (třeba 2016 -> 03 -> 02-01 >) a klikněte na tlačítko **zvolit**. Měli byste vidět 2016/03/01/02 v textovém poli. 
 
-Potom nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}** , a **02** s **{hour}** a stiskněte klávesu **kartu** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
+Potom nahraďte **2016** s **{year}** , **03** s **{month}** , **01** s **{day}** , a **02** s **{hour}** a stiskněte klávesu **kartu** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
 
 ![Filtr souboru nebo složky](./media/copy-data-tool/filter-file-or-folder.png)
 

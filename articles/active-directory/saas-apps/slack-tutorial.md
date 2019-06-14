@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2472e78a9da223b0c651551d7cc8e05ab6eea9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 90950f2725c821729bf38cfdfbfd1782e5ffc09c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889649"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Integrace Azure Active Directory s Slack
 
@@ -55,7 +55,7 @@ Konfigurace integrace Slack do služby Azure AD, budete muset přidat Slack z Ga
 
 **Chcete-li přidat Slack z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Slack. Slack podporu
 > [!NOTE]
 > Azure AD Connect je nástroj pro synchronizaci, která lze synchronizovat v místním prostředí Active Directory identity do služby Azure AD a pak tyto synchronizovaných uživatelů můžete také použít aplikace, jak ostatní uživatelé v cloudu.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

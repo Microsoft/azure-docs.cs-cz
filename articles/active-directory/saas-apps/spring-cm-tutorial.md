@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04-08-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ddc09d3d2475afe9be90cf1d5585697b9c36cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eea000cc51b4b688d572bc8b6485db823b70b3aa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866856"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Kurz: Integrace Azure Active Directory s SpringCM
 
@@ -54,7 +54,7 @@ Konfigurace integrace SpringCM do služby Azure AD, budete muset přidat SpringC
 
 **Chcete-li přidat SpringCM z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -227,7 +227,7 @@ Pokud chcete povolit Azure Active Directory uživatelům umožní přihlásit k 
    > [!NOTE]
    > Můžete použít jakékoli jiné SpringCM uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných SpringCM uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154691"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
@@ -192,7 +192,7 @@ Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD
 2. V pravém horním rohu vyberte svůj účet a přepněte do požadované služby Azure AD tenanta. Klient by měl být správce předplatného tenanta předplatného, ve kterém je nasazená aplikace Workbench a máte dostatečná oprávnění k registraci aplikace.
 3. V levém navigačním podokně vyberte službu **Azure Active Directory**. Vyberte **registrace aplikací** > **registrace nové aplikace**.
 
-    ![Registrace aplikace](media/deploy/app-registration.png)
+    ![Registrace aplikací](media/deploy/app-registration.png)
 
 4. Zadejte **název** a **přihlašovací adresa URL** pro aplikaci. Hodnoty zástupných symbolů můžete použít, protože byly změněny hodnoty během nasazení. 
 
@@ -200,8 +200,8 @@ Blockchain Workbench umožňuje nasazení vyžaduje registrace aplikace Azure AD
 
     |Nastavení  | Hodnota  |
     |---------|---------|
-    |Název | `Blockchain API` |
-    |Typ aplikace |Webová aplikace / webové rozhraní API|
+    |Name | `Blockchain API` |
+    |Typ aplikace |Webová aplikace / rozhraní API|
     |Přihlašovací adresa URL | `https://blockchainapi` |
 
 5. Vyberte **vytvořit** registrace aplikace Azure AD.

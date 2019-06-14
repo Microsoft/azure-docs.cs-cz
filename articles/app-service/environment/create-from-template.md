@@ -15,10 +15,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66137076"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření služby ASE s použitím šablony Azure Resource Manageru
@@ -69,12 +69,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Trvá přibližně hodinu pro službu ASE, který se má vytvořit. Potom služby ASE se zobrazí na portálu v seznamu služeb ase pro předplatné, které aktivuje nasazení.
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>Nahrání a konfigurace certifikátu SSL "Výchozí"
-Certifikát SSL musí být přidruženy služby ASE jako "Výchozí" certifikát SSL, který se používá k navázání připojení SSL k aplikacím. Pokud je výchozí příponu DNS službu ASE *interní contoso.com*, připojení k https://some-random-app.internal-contoso.com vyžaduje certifikát SSL, který je platný pro **.internal contoso.com*. 
+Certifikát SSL musí být přidruženy služby ASE jako "Výchozí" certifikát SSL, který se používá k navázání připojení SSL k aplikacím. Pokud je výchozí příponu DNS službu ASE *interní contoso.com*, připojení k https://some-random-app.internal-contoso.com vyžaduje certifikát SSL, který je platný pro * *.internal contoso.com*. 
 
 Získáte platný certifikát protokolu SSL pomocí interní certifikační autority, nákupu certifikát od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
-* **Předmět**: Tento atribut musí být nastaven **.vase kořenové domain-here.com*.
-* **Alternativní název subjektu**: Tento atribut musí obsahovat **.vase kořenové domain-here.com* a **.vase-kořenové-domain-here.com*. Připojení SSL k webu SCM/kudu spojenému s každou aplikací používá adresu ve tvaru *your-app-name.scm.your-root-domain-here.com*.
+* **Předmět**: Tento atribut musí být nastaven * *.vase kořenové domain-here.com*.
+* **Alternativní název subjektu**: Tento atribut musí obsahovat * *.vase kořenové domain-here.com* a * *.vase-kořenové-domain-here.com*. Připojení SSL k webu SCM/kudu spojenému s každou aplikací používá adresu ve tvaru *your-app-name.scm.your-root-domain-here.com*.
 
 Pomocí platného certifikátu SSL v rukou jsou potřeba další dva přípravné kroky. Převeďte/uložte certifikát SSL jako soubor .pfx. Mějte na paměti, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
 
@@ -111,7 +111,7 @@ Parametry v *azuredeploy.parameters.json* souboru jsou uvedené tady:
 * *existingAseLocation*: Textový řetězec obsahující oblast Azure, ve kterém byla nasazena služba ASE s ILB.  Příklad: "Střední část jihu USA".
 * *pfxBlobString*: Řetězec s kódováním based64 reprezentace souboru .pfx. Použijte fragment kódu je uvedeno výše a zkopírujte řetězec obsažený v "exportedcert.pfx.b64". Vložte ji jako hodnotu *pfxBlobString* atribut.
 * *password*: Heslo používané k zabezpečení souboru .pfx.
-* *certificateThumbprint*: Kryptografický otisk certifikátu Pokud se načetlo tuto hodnotu z prostředí PowerShell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu, jako je. Pokud zkopírujete hodnoty z dialogového okna certifikátu Windows, nezapomeňte odstranit nadbytečné mezery. *CertificateThumbprint* by měla vypadat podobně jako AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* *certificateThumbprint*: Kryptografický otisk certifikátu. Pokud se načetlo tuto hodnotu z prostředí PowerShell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu, jako je. Pokud zkopírujete hodnoty z dialogového okna certifikátu Windows, nezapomeňte odstranit nadbytečné mezery. *CertificateThumbprint* by měla vypadat podobně jako AF3143EB61D43F6727842115BB7F17BBCECAECAE.
 * *název certifikátu*: Vlastní výběr identifikátor popisný řetězec použít na identitu certifikátu. Název se používá jako součást jedinečný identifikátor správce prostředků *Microsoft.Web/certificates* entity, který představuje certifikát SSL. Název *musí* končit následující příponu: \_yourASENameHere_InternalLoadBalancingASE. Na webu Azure portal používá tato přípona jako indikátor, že tento certifikát slouží k zabezpečení služby ASE s ILB povolena.
 
 Příklad zkrácený *azuredeploy.parameters.json* je znázorněna zde:
@@ -154,7 +154,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Trvá přibližně 40 minut na front-endu služby ASE na použití změny. Například pro ASE se výchozí velikosti, která používá dva front-endy šablony trvá přibližně jednu hodinu a 20 minut. Když šablona je spuštěn, nelze škálovat služby ASE.  
 
-Po dokončení šablonu aplikace na služba ASE s ILB je možný přes protokol HTTPS. Připojení jsou zabezpečené pomocí výchozího certifikátu SSL. Výchozí certifikát SSL se používá při aplikace v prostředí ILB ASE se tak vyřeší, s použitím kombinace výchozí název hostitele a název aplikace. Například https://mycustomapp.internal-contoso.com používá výchozí certifikát SSL pro **.internal contoso.com*.
+Po dokončení šablonu aplikace na služba ASE s ILB je možný přes protokol HTTPS. Připojení jsou zabezpečené pomocí výchozího certifikátu SSL. Výchozí certifikát SSL se používá při aplikace v prostředí ILB ASE se tak vyřeší, s použitím kombinace výchozí název hostitele a název aplikace. Například https://mycustomapp.internal-contoso.com používá výchozí certifikát SSL pro * *.internal contoso.com*.
 
 Stejně jako aplikace, které běží na veřejné víceklientské služby, ale vývojáři můžete nakonfigurovat vlastní hostitele pro jednotlivé aplikace. Také mohou nakonfigurovat jedinečných vazeb certifikátů SNI SSL pro jednotlivé aplikace.
 

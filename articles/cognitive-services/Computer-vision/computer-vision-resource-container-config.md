@@ -3,20 +3,20 @@ title: Konfigurace kontejnery – pro počítačové zpracování obrazu
 titlesuffix: Azure Cognitive Services
 description: Nakonfigurujte různá nastavení pro kontejnery rozpoznat Text v počítačové zpracování obrazu.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
+ms.date: 06/10/2019
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fa6f04f28da2613f8b78e8885515ac40fa5961e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203479"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071303"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurace kontejnery Dockeru rozpoznání textu
 
@@ -79,9 +79,9 @@ Kontejnery pro počítačové zpracování obrazu nepoužívejte vstup nebo výs
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](computer-vision-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Name | Typ dat | Popis |
+|Nepovinné| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | String | Kontejnery pro zpracování obrazu počítače nepoužívejte toto.|
+|Nepovoleno| `Input` | String | Kontejnery pro zpracování obrazu počítače nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 

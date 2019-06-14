@@ -10,10 +10,10 @@ ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61333862"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Ověřování pomocí privátního registru kontejnerů Dockeru
@@ -36,7 +36,7 @@ Pro přístup k registru token, který používá `az acr login` platí za 1 hod
 
 Pomocí `az acr login` s identitami, Azure poskytuje [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md). Pro některé scénáře můžete chtít přihlásit k registru s vlastním jednotlivé identity ve službě Azure AD. Pro scénáře mezi službami nebo pro zvládání potřeb pracovní skupiny, pokud nechcete spravovat jednotlivé přístup, můžete se také přihlásit [spravované identity pro prostředky Azure](container-registry-authentication-managed-identity.md).
 
-## <a name="service-principal"></a>Instanční objekt
+## <a name="service-principal"></a>Instanční objekt služby
 
 Pokud přiřadíte [instanční objekt služby](../active-directory/develop/app-objects-and-service-principals.md) do vašeho registru, aplikace nebo služby lze použít pro bezobslužné ověření. Instanční objekty umožňují [přístupu podle rolí](../role-based-access-control/role-assignments-portal.md) do registru, a můžete přiřadit více objektů služby do registru. Více instanční objekty umožňují definovat různá přístupová pro různé aplikace.
 

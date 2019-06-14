@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298992"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
@@ -38,12 +38,12 @@ Azure AD Connect Health pro synchronizaci je součástí instalace služby Azure
    1. Oprava chyby k rozlišení mezi několika přihlašování, které sdílejí stejnou client-request-id.
    2. Oprava chyby k analýze chyb chybná uživatelského jména a hesla na jazyk lokalizované servery.   
 
-## <a name="april-2019"></a>2019. dubna
+## <a name="april-2019"></a>2019\. dubna
 **Aktualizace agenta:** 
 * Agent Azure AD Connect Health pro službu AD FS (verze 3.1.46.0) 
    1. Oprava výstrahy procesu zkontrolujte duplicitní hlavní název služby pro služby AD FS
 
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>2019\. března
 **Aktualizace agenta:** 
 * Agent Azure AD Connect Health pro službu AD DS (verze 3.1.41.0)  
    1. Kolekce verze rozhraní .NET

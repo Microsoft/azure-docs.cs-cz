@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/19/2019
 ms.author: robinsh
 ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719324"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Sada IoT vzdálené monitorování a oznámení pomocí Azure Logic Apps propojení vaší služby IoT hub a poštovní schránky
 
@@ -78,7 +78,7 @@ Vytvořte oboru názvů a frontu Service Bus. Dále v tomto tématu vytvoříte 
 
    ![Přidat frontu služby Service bus na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-queue.png)
 
-1. Zpět na **služby Service Bus Namespace** podokně v části **entity**vyberte **fronty**. Otevření fronty služby Service Bus ze seznamu a pak vyberte **zásady sdíleného přístupu** > **+ přidat**.
+1. Zpět na **služby Service Bus Namespace** podokně v části **entity**vyberte **fronty**. Otevření fronty služby Service Bus ze seznamu a pak vyberte **zásady sdíleného přístupu** >  **+ přidat**.
 
 1. Zadejte název pro zásadu vrácení **spravovat**a pak vyberte **vytvořit**.
 
@@ -158,7 +158,7 @@ V předchozí části Nastavení služby IoT hub pro směrování zpráv obsahuj
 
    ![Výběr služby Service Bus a začněte vytvářet aplikace logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/6-select-service-bus-when-creating-blank-logic-app-azure-portal.png)
 
-1. V části **triggery**vyberte **při doručení jedné či více zpráv do fronty (automatické dokončení)**.
+1. V části **triggery**vyberte **při doručení jedné či více zpráv do fronty (automatické dokončení)** .
 
    ![Vyberte trigger pro vaše aplikace logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-service-bus-trigger.png)
 
@@ -214,7 +214,7 @@ V předchozí části Nastavení služby IoT hub pro směrování zpráv obsahuj
 
    1. Na **smtp pro propojení rozhraní API** podokně v části **Obecné**vyberte **připojení API. upravte**.
 
-   1. Na **upravit připojení rozhraní API** vyberte **povolit SSL?**, znovu zadejte heslo pro e-mailový účet a vyberte **Uložit**.
+   1. Na **upravit připojení rozhraní API** vyberte **povolit SSL?** , znovu zadejte heslo pro e-mailový účet a vyberte **Uložit**.
 
       ![Upravit připojení rozhraní API SMTP ve vaší aplikaci logiky na webu Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/re-enable-smtp-connection-ssl.png)
 

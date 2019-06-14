@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
 ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60461505"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Ukázky log analytics v Azure brány Firewall
@@ -28,7 +28,7 @@ Proveďte následující kroky, chcete-li přidat zobrazení do pracovního pros
 
 1. Otevřete pracovní prostor Log Analytics na portálu Azure Portal.
 2. Otevřít **zobrazení návrháře** níže **Obecné**.
-3. Klikněte na **Importovat**.
+3. Klikněte na **Import**.
 4. Procházet a vybrat **AzureFirewall.omsview** souborů, které jste stáhli dříve.
 5. Klikněte na **Uložit**.
 

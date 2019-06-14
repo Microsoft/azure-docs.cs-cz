@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029757"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Výjimky a kódy chyb pro odkaz na modul a algoritmům
@@ -774,7 +774,7 @@ Dalším důvodem tato chyba může zobrazit, pokud se pokusíte použít sloupe
   
  Tato chyba ve službě Azure Machine Learning nepoužívá a přestanou používat.  
   
-**Řešení:** Žádné.  
+**Řešení:** Žádné  
   
 |Zprávy o výjimkách|  
 |------------------------|  
@@ -1192,7 +1192,7 @@ Naleznete v následujících článcích pro pomoc s dotazy Hive pro machine lea
   
  Pokud je SQL, které jsou generovány zpráv hlášených výjimek modulu, provádějte akci podle oznámenou chybu. Chybové zprávy v některých případech například konkrétní pokyny pravděpodobně chyba:
 + *Žádný odpovídající sloupec nebo chybějící databáze*, která udává, že může být zadali jste nesprávný název sloupce. Pokud jste si jistí, že je správný název sloupce, zkuste pomocí závorek nebo použijte sloupec identifier.
-+ *Logická chyba SQL téměř \<SQL – klíčové slovo\>*, označující, že bude pravděpodobně chyba syntaxe před zadané klíčové slovo
++ *Logická chyba SQL téměř \<SQL – klíčové slovo\>* , označující, že bude pravděpodobně chyba syntaxe před zadané klíčové slovo
 
   
 |Zprávy o výjimkách|  

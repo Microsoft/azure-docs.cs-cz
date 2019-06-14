@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e37b35f87920016f81bda60fe8a9b6f1714eaae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 800db36f8432a8d8cf99028643f91269ffb648e3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Integrace Azure Active Directory s MobileIron
 
@@ -53,7 +53,7 @@ Konfigurace integrace MobileIron do služby Azure AD, budete muset přidat Mobil
 
 **Chcete-li přidat MobileIron z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -214,7 +214,7 @@ V případě MobileIron zřizování se ruční úlohy.
 
     d. Klikněte na **Done** (Hotovo).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

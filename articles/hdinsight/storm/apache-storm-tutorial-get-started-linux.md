@@ -9,21 +9,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 40757c80878ef5a06d3368d4c20f65ebfa11e47b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 299e8990d9211eadc33a7e3348ba0364adfafb92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708256"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078178"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
 
 Další informace o použití [Apache Storm](https://storm.apache.org/) v HDInsight pomocí příkladů topologie storm starter.
 
 Apache Storm je škálovatelný výpočetní systém v reálném čase odolný proti chybám, distribuovaný určený pro zpracování datových proudů. Pomocí Storm v Azure HDInsight můžete vytvořit cloudový cluster Storm, který bude provádět analýzy velkých objemů dat v reálném čase.
-
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +45,7 @@ Pomocí následujících kroků můžete vytvořit Storm na clusteru HDInsight:
     * **Název clusteru**: Název clusteru HDInsight.
     * **Předplatné**: Vyberte předplatné, které chcete použít.
     * **Uživatelské jméno přihlášení clusteru** a **přihlašovací heslo clusteru**: Přihlašovací údaje pro přístup ke clusteru přes protokol HTTPS. Tyto přihlašovací údaje se používají i pro přístup ke službám, jako jsou webové uživatelské rozhraní Ambari nebo REST API.
-    * **Uživatelské jméno Secure Shell (SSH)**: Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
+    * **Uživatelské jméno Secure Shell (SSH)** : Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
     * **Skupina prostředků**: Skupina prostředků, ve které se cluster vytváří.
     * **Umístění**: Oblast Azure, ve které se cluster vytváří.
 

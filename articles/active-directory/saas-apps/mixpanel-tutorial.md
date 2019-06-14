@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 7fa4c78269464b1a38507acd6512e5f44ed94945
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae93c9911034cf9cba1fdcf8c9472e4d3332bcad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Kurz: Integrace Azure Active Directory s Mixpanelu
 
@@ -52,7 +52,7 @@ Konfigurace integrace Mixpanelu do služby Azure AD, budete muset přidat Mixpan
 
 **Chcete-li přidat Mixpanelu z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -215,7 +215,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Mixpanelu.
 > [!Note]
 > Uživatel dostane e-mailu k profilu.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

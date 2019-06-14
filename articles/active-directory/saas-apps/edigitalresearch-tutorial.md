@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d5cc15b0b6ef673396be0cf5bce7ca79cc676b35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c2c77d4d6c816b23b86a7daea7cf5f20e98262d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280082"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Kurz: Integrace Azure Active Directory s eDigitalResearch
 
@@ -53,7 +53,7 @@ Konfigurace integrace eDigitalResearch do služby Azure AD, budete muset přidat
 
 **Chcete-li přidat eDigitalResearch z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

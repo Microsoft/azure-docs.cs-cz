@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbdccf3b7a3ba1b8e55befa0fdc24eeff3e403da
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 315aba8ac8617f8bf2db71784ec0f9a8dec66cf7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108363"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -48,7 +48,7 @@ Pokud se registrace nezdařila během instalace konektoru průvodce, existují d
 
 Po nalezení konektor chyby z protokolu událostí použijte tuto tabulku běžné chyby pro vyřešení problému:
 
-| Chyba | Doporučený postup |
+| Chyba | Doporučené kroky |
 | ----- | ----------------- |
 | Registrace konektoru se nezdařilo: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. Chyba: "Jeden nebo více chybám došlo k chybě." | Pokud se zavře okno registrace bez přihlášení ke službě Azure AD, znovu spusťte Průvodce pro konektor nástroje a registrace konektoru. <br><br> Pokud se otevře okno registrace a pak hned zavře bez povolení k přihlášení, zobrazí se pravděpodobně k této chybě. K této chybě dochází, když dojde k chybě sítě ve vašem systému. Ujistěte se, že je možné se připojit z prohlížeče na veřejném webu a porty jsou otevřené, jak je uvedeno v [požadavky na Proxy aplikace](application-proxy-add-on-premises-application.md). |
 | Vymazat chyby se zobrazí v okně registrace. Nelze pokračovat | Pokud se zobrazí tato chyba a pak okno zavřete, zadali jste nesprávné uživatelské jméno nebo heslo. Zkuste to znova. |
@@ -91,7 +91,7 @@ Pokud narazíte na chybu nebo problém s Proxy aplikací Azure AD, která není 
 * [Povolení Proxy aplikace služby Azure Active Directory](application-proxy-add-on-premises-application.md)
 * [Publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md)
 * [Povolit jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Povolení podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
+* [Zapnout zásady podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

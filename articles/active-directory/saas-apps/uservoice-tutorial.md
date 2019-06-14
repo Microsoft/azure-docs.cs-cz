@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: dbd7189b1761a9ea88ce32dae3d7b45a88301ff6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905627"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087626"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Kurz: Integrace Azure Active Directory s UserVoice
 
@@ -53,7 +53,7 @@ Konfigurace integrace UserVoice do služby Azure AD, budete muset přidat UserVo
 
 **Chcete-li přidat UserVoice z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -146,7 +146,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s UserVoice, proveďte násle
    
     ![Upravit ověření uživatele](./media/uservoice-tutorial/ic777521.png "ověřování uživatelů pro úpravy")
    
-    a. Klikněte na tlačítko **jednotné přihlašování (SSO)**.
+    a. Klikněte na tlačítko **jednotné přihlašování (SSO)** .
  
     b. Vložit **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal do **jednotného přihlašování vzdáleného přihlášení** textového pole.
 
@@ -239,7 +239,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k službě UserV
 > [!NOTE]
 > Můžete použít jakékoli jiné UserVoice uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných UserVoice uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

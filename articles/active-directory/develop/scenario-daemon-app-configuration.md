@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055765"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Démon procesu aplikace, že volání webových rozhraní API – konfigurace kódu
 
@@ -39,9 +39,11 @@ Knihovny Microsoft podporuje aplikace démonů jsou:
 
 ## <a name="configuration-of-the-authority"></a>Konfigurace autority
 
-Vzhledem k tomu, že aplikace démon nepoužívejte delegovaná oprávnění, ale oprávnění aplikací, jejich *nepodporuje typ účtu* nemůže být *účty v libovolném adresáři organizace a Microsoft osobní účty () například, Skype, Xbox, Outlook.com)*. Ve skutečnosti neexistuje žádný správce tenanta udělit souhlas démon aplikace pro osobní účty Microsoft. Budete muset zvolit *účty v mé organizaci* nebo *účty v jakékoli organizaci*.
+Vzhledem k tomu, že aplikace démon nepoužívejte delegovaná oprávnění, ale oprávnění aplikací, jejich *nepodporuje typ účtu* nemůže být *účty v libovolném adresáři organizace a Microsoft osobní účty () například, Skype, Xbox, Outlook.com)* . Ve skutečnosti neexistuje žádný správce tenanta udělit souhlas démon aplikace pro osobní účty Microsoft. Budete muset zvolit *účty v mé organizaci* nebo *účty v jakékoli organizaci*.
 
-Proto autority zadané v konfiguraci aplikace by měla být tenanta ed (určení ID Tenanta nebo název domény přidružený k vaší organizaci). Pokud jste nezávislý výrobce softwaru a chcete poskytnout nástroj pro více tenantů, můžete použít `organizations`. Ale pamatujte, že budete také muset vašim zákazníkům vysvětlují, jak udělit souhlas správce. Zobrazit [požaduje souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) podrobnosti
+Proto autority zadané v konfiguraci aplikace by měla být tenanta ed (určení ID Tenanta nebo název domény přidružený k vaší organizaci).
+
+Pokud jste nezávislý výrobce softwaru a chcete poskytnout nástroj pro více tenantů, můžete použít `organizations`. Ale pamatujte, že budete také muset vašim zákazníkům vysvětlují, jak udělit souhlas správce. Zobrazit [požaduje souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) podrobnosti. Také aktuálně nejsou k dispozici v MSAL omezení, která `organizations` je povolený jenom při přihlašovacích údajů klienta se tajný klíč aplikace (ne certifikát). Zobrazit [MSAL.NET chyb #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
 ## <a name="application-configuration-and-instantiation"></a>Konfigurace aplikace a instance
 

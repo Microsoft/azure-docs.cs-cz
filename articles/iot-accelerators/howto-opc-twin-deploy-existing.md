@@ -8,42 +8,43 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6eeca062bdc17ec207910b9ba4aa8cea4048f849
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451293"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080505"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení do existujícího projektu Dvojčete OPC
 
-OPC Dvojčete modulu běží na hraničních zařízeních IoT a poskytuje několik služeb edge do Dvojčete OPC a služby registrů. 
+OPC Dvojčete modulu běží na hraničních zařízeních IoT a poskytuje několik služeb edge do Dvojčete OPC a služby registrů.
 
 Službu micro OPC Dvojčete usnadňuje komunikaci mezi operátory objekt pro vytváření a zařízení serveru OPC UA ve výrobním závodě přes modul IoT Edge Dvojčete OPC. Micro služba poskytuje služby OPC UA (Procházet, čtení, zápis a spouštění) přes REST API. 
 
 Mikroslužby registru zařízení OPC UA poskytuje přístup k registrované aplikace OPC UA a jejich koncové body. Operátoři a správci můžou zaregistrovat a zrušení registrace nové aplikace OPC UA a procházet ty stávající, včetně jejich koncové body. Kromě aplikací a koncový bod správy služba registru také katalogy registrovaných modulů IoT Edge Dvojčete OPC. Rozhraní API služby vám dává kontrolu nad edge funkce modulu, například spuštění nebo zastavení serveru zjišťování (vyhledávání služby) nebo aktivaci nové dvojčat koncového bodu, které lze přistupovat pomocí služby micro Dvojčete OPC.
 
-Základní modul je identita nadřízeného. Správce spravuje dvojčete koncový bod, který odpovídá koncové body serveru OPC UA, které jsou aktivované pomocí odpovídajícího registru OPC UA rozhraní API. Tento koncový bod dvojčat přeložit OPC UA JSON přijal od služby OPC Dvojčete micro běží v cloudu do binární zprávy OPC UA, které se odesílají prostřednictvím zabezpečeného kanálu stavové ke koncovému bodu spravovaného. Správce taky poskytuje služby zjišťování, které odesílají události zjišťování zařízení do služby připojení zařízení OPC UA pro zpracování, kde tyto události za následek aktualizace registru OPC UA.  Tento článek ukazuje, jak nasadit OPC Dvojčete modulu do existujícího projektu. 
+Základní modul je identita nadřízeného. Správce spravuje dvojčete koncový bod, který odpovídá koncové body serveru OPC UA, které jsou aktivované pomocí odpovídajícího registru OPC UA rozhraní API. Tento koncový bod dvojčat přeložit OPC UA JSON přijal od služby OPC Dvojčete micro běží v cloudu do binární zprávy OPC UA, které se odesílají prostřednictvím zabezpečeného kanálu stavové ke koncovému bodu spravovaného. Správce taky poskytuje služby zjišťování, které odesílají události zjišťování zařízení do služby připojení zařízení OPC UA pro zpracování, kde tyto události za následek aktualizace registru OPC UA.  Tento článek ukazuje, jak nasadit OPC Dvojčete modulu do existujícího projektu.
 
 > [!NOTE]
 > Další informace o podrobnosti nasazení a pokyny najdete v článku Githubu [úložiště](https://github.com/Azure/azure-iiot-opc-twin-module).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že máte prostředí PowerShell a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalovaná rozšíření.   Pokud jste neprovedli ještě, naklonujte úložiště GitHub.  Otevřete příkazový řádek nebo terminálu a spusťte:
+Ujistěte se, že máte prostředí PowerShell a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalovaná rozšíření. Pokud jste tak ještě není udělali, naklonujte úložiště GitHub. Spusťte následující příkazy v prostředí PowerShell:
 
-```bash
-git clone --recursive https://github.com/Azure/azure-iiot-components 
+```powershell
+git clone --recursive https://github.com/Azure/azure-iiot-components.git
 cd azure-iiot-components
 ```
 
 ## <a name="deploy-industrial-iot-services-to-azure"></a>Průmyslového IoT služby nasadit do Azure
 
-1. Otevřít příkazový řádek nebo terminálu spusťte:
+1. V relaci Powershellu spusťte:
 
-   ```bash
-   deploy
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy.cmd
+    ```
 
 2. Postupujte podle pokynů přiřadit název k nasazení skupiny prostředků a název k webu.   Skript nasadí mikroslužby a jejich závislosti platformy Azure do skupiny prostředků ve vašem předplatném Azure.  Skript také zaregistruje aplikace ve vašem tenantovi Azure Active Directory (AAD) pro podporu ověřování OAuth.  Nasazení bude trvat několik minut.  Příklad co se zobrazí po úspěšném nasazení řešení:
 
@@ -77,11 +78,12 @@ Skript nasazení se pokusí zaregistrovat dvě aplikace AAD v Azure Active Direc
 
 Namísto pouze služeb a závislosti můžete taky nasadit All-in-one ukázku.  Vše v jedné ukázka obsahuje tři servery OPC UA, OPC Dvojčete modulu, všechny mikroslužby a ukázkové webové aplikace.  Je určena pro demonstrační účely.
 
-1. Ujistěte se, že máte klon úložiště (viz výše). Otevřete příkazový řádek nebo terminálu v kořenové složce úložiště a spusťte:
+1. Ujistěte se, že máte klon úložiště (viz výše). Otevřete příkazový řádek Powershellu v kořenové složce úložiště a spusťte:
 
-   ```bash
-   deploy -type demo
-   ```
+    ```powershell
+    set-executionpolicy -ExecutionPolicy Unrestricted -Scope Process
+    .\deploy -type demo
+    ```
 
 2. Postupujte podle pokynů a přiřadit nový název skupiny prostředků a název webu.  Po úspěšném nasazení, skript zobrazí adresu URL koncového bodu webové aplikace.
 
@@ -89,55 +91,55 @@ Namísto pouze služeb a závislosti můžete taky nasadit All-in-one ukázku.  
 
 Skript používá následující parametry:
 
-```bash
+```powershell
 -type
 ```
 
 Typ nasazení (virtuální počítač, místních, ukázka)
 
-```bash
+```powershell
 -resourceGroupName
 ```
 
 Může být název stávající nebo novou skupinu prostředků.
 
-```bash
+```powershell
 -subscriptionId
 ```
 
 Volitelný parametr, ID předplatného, ve kterém se prostředky nasadí.
 
-```bash
+```powershell
 -subscriptionName
 ```
 
 Nebo název předplatného.
 
-```bash
+```powershell
 -resourceGroupLocation
 ```
 
 Volitelný parametr, umístění skupiny prostředků. Je-li zadána, pokusí se vytvořit novou skupinu prostředků v tomto umístění.
 
-```bash
+```powershell
 -aadApplicationName
 ```
 
-Název pro aplikaci AAD k registraci v rámci. 
+Název pro aplikaci AAD k registraci v rámci.
 
-```bash
+```powershell
 -tenantId
 ```
 
 Tenanta AAD se má použít.
 
-```bash
+```powershell
 -credentials
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak nasadit Dvojčete OPC do existujícího projektu, je zde navrhované další krok:
+Teď, když jste zjistili, jak nasadit Dvojčete OPC do existujícího projektu, je zde navrhované další krok:
 
 > [!div class="nextstepaction"]
 > [Zabezpečená komunikace klienta OPC a OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)

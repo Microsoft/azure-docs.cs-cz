@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1018b449047e40a67ea843e8506fb43f6e1093a6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9e074282b477fe620170cd8672dc3d050fce6afe
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061638"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
 
@@ -51,7 +51,7 @@ Postupujte podle těchto kroků a vytvořte prostředí:
    Cenová úroveň | S1 | Vyberte potřebnou propustnost. Nejnižší náklady a počáteční kapacitu vyberte položku S1.
    Kapacita | 1 | Kapacita je násobitel platí pro rychlost příchozího přenosu dat, kapacitu a náklady spojené s vybraná skladová položka.  Kapacitu prostředí můžete po vytvoření změnit. Nejnižší náklady vyberte kapacitou 1. 
   
-1. Zkontrolujte **připnout na řídicí panel** nejlépe snadný přístup k vaše prostředí Time Series Insights v budoucnu.
+1. Zkontrolujte **připnout na řídicí panel** pro snadný přístup k vaše prostředí Time Series Insights v budoucnu.
 
    ![Vytvoření služby Time Series Insights – připnutí na řídicí panel](media/time-series-insights-get-started/3-pin-create.png)
 

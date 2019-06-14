@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: c5cc39c2f2a7f2a79b8d6bc2bd95506ee5532a84
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073968"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace služby Application Gateway
 
@@ -74,6 +74,9 @@ Pro v1 SKU trasy definované uživatelem (udr) se podporují na podsítě Applic
 Pro v2 SKU trasy definované uživatelem nejsou podporovány na podsítě Application Gateway. Další informace najdete v tématu [SKU v2 Azure Application Gateway](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
+> Trasy definované uživatelem nejsou podporovány pro v2 SKU.  Pokud budete potřebovat trasy definované uživatelem, by měly být nadále nasazení v1 SKU.
+
+> [!NOTE]
 > Použití tras definovaných uživatelem na podsítě Application Gateway způsobí, že stav v [zobrazení stavu back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) se zobrazí "Unknown". Navíc způsobí, že generace služby Application Gateway protokoly a metriky, které selžou. Doporučujeme vám, že nepoužíváte trasy definované uživatelem na podsítě Application Gateway tak, aby se zobrazí stav back endu, protokoly a metriky.
 
 ## <a name="front-end-ip"></a>Front-endovou IP
@@ -84,7 +87,7 @@ Veřejná IP adresa není vyžadováno pro vnitřní koncový bod, který není 
 
 Je podporován pouze 1 veřejné IP adresy nebo 1 privátní IP adresu. Když vytvoříte službu application gateway zvolíte front-end IP adresu.
 
-- Pro veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako služba application gateway. Pokud jste vytvořili novou veřejnou IP adresu, typ IP adresy, kterou jste vybrali (statická nebo dynamická) není možné později změnit. Další informace najdete v tématu [statickou nebo dynamickou veřejnou IP adresu](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Pro veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako služba application gateway. Pokud jste vytvořili novou veřejnou IP adresu, typ IP adresy, kterou jste vybrali (statická nebo dynamická) není možné později změnit. Další informace najdete v tématu [statickou nebo dynamickou veřejnou IP adresu](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
 - Pro privátní IP adresu můžete zadat privátní IP adresu z podsítě, ve kterém se vytvoří aplikační bránu. Pokud nezadáte, je automaticky vybrán libovolnou IP adresu z podsítě. Další informace najdete v tématu [vytvoření služby application gateway pomocí interního nástroje](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
@@ -124,7 +127,7 @@ Vyberte protokol HTTP nebo HTTPS:
 
 - Pokud vyberete možnost protokolu HTTP, Nešifrovaný přenos dat mezi klientem a application gateway.
 
-- Vyberte protokol HTTPS, pokud chcete, aby [ukončení protokolu SSL](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) nebo [šifrování SSL začátku do konce](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Přenos dat mezi klientem a application gateway je zašifrovaná. A ukončení připojení protokolem SSL ve službě application gateway. Pokud chcete, aby šifrování SSL začátku do konce, musíte zvolit protokol HTTPS a nakonfigurovat **protokolu HTTP back-end** nastavení. Tím se zajistí, že provoz se šifruje znovu při jejich přenosu z aplikační brány pro back-endu.
+- Vyberte protokol HTTPS, pokud chcete, aby [ukončení protokolu SSL](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) nebo [šifrování SSL začátku do konce](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Přenos dat mezi klientem a application gateway je zašifrovaná. A ukončení připojení protokolem SSL ve službě application gateway. Pokud chcete, aby šifrování SSL začátku do konce, musíte zvolit protokol HTTPS a nakonfigurovat **protokolu HTTP back-end** nastavení. Tím se zajistí, že provoz se šifruje znovu při jejich přenosu z aplikační brány pro back-endu.
 
 Ke konfiguraci ukončení protokolu SSL a šifrování pomocí protokolu SSL začátku do konce, musíte přidat certifikát pro naslouchací proces povolení application gateway se odvodit symetrický klíč. To je dáno specifikace protokolu SSL. Symetrický klíč se používá k šifrování a dešifrování přenosů, které je odesláno brány. Certifikát brány musí být ve formátu Personal Information Exchange (PFX). Tento formát umožňuje exportovat soukromý klíč, které brána používá k šifrování a dešifrování přenosů.
 
@@ -172,7 +175,7 @@ Když vytvoříte službu application gateway pomocí webu Azure portal, vytvoř
 
 ### <a name="rule-type"></a>Typ pravidla
 
-Když vytvoříte pravidlo, můžete vybrat mezi [ *základní* a *na základě cest*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule).
+Když vytvoříte pravidlo, můžete vybrat mezi [ *základní* a *na základě cest*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
 - Pokud budete chtít předávat všechny žádosti na přidružený naslouchací proces, vyberte basic (například *blogu<i></i>.contoso.com/\*)* do jednoho back endového fondu.
 - Zvolte cestu na základě Pokud chcete směrovat požadavky z konkrétní cesty adresy URL na konkrétní fondy back-end. Vzor cesty platí pouze pro cestu adresy URL, aby jeho parametry dotazu.
@@ -245,7 +248,7 @@ Další informace o přesměrování najdete v tématu:
 Toto nastavení přidá, odebere nebo aktualizuje hlaviček žádostí a odpovědí protokolu HTTP při požadavku a odpovědi pakety přesunout mezi klientem a back endové fondy. Můžete konfigurovat jenom tato funkce prostřednictvím prostředí PowerShell. Podpora rozhraní příkazového řádku a webu Azure portal ještě nejsou k dispozici. Další informace naleznete v tématu:
 
  - [Přepište přehled hlavičky protokolu HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Konfigurovat přepsání hlavičky protokolu HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [Konfigurovat přepsání hlavičky protokolu HTTP](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>Nastavení HTTP
 

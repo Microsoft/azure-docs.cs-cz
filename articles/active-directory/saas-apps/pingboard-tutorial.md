@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d69271f65c326237a380624d994d8f5339537114
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 341d8dd712b858572ec5df76b176258ca87c8857
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094423"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Kurz: Integrace Azure Active Directory s Pingboard
 
@@ -55,7 +55,7 @@ Konfigurace integrace Pingboard do služby Azure AD, budete muset přidat Pingbo
 
 **Chcete-li přidat Pingboard z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -224,7 +224,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Pingboard. Pingboard
 
     a. V **jméno a příjmení** , jako je textové pole, typ celé jméno uživatele **Britta Simon**.
 
-    b. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele **brittasimon@contoso.com**.
+    b. V **e-mailu** , jako je textové pole, typ e-mailovou adresu uživatele **brittasimon@contoso.com** .
 
     c. V **pracovní pozice** textového pole zadejte název úlohy Britta Simon.
 
@@ -239,7 +239,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Pingboard. Pingboard
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

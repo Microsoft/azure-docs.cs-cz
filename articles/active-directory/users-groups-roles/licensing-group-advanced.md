@@ -16,17 +16,17 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60471768"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory
 
 Použijte následující informace a příklady pro získání rozsáhlejšími znalostmi licencování na základě skupin Azure Active Directory (Azure AD).
 
-## <a name="usage-location"></a>Místo využívání
+## <a name="usage-location"></a>Místo použití
 
 Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít **místo využívání** vlastnost na uživatele. V [na webu Azure portal](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profilu** &gt; **nastavení**.
 
@@ -188,7 +188,7 @@ Pokud se na skupinu licencí, Azure AD se spustí aplikování změn pro všechn
    > ```
 
 3. Pokud chcete zobrazit úplný protokol pro způsob zpracování skupiny, včetně změny všech uživatelů, nastavte následující filtry:
-   - **Iniciátor (Actor)**: "Microsoft Azure AD na základě skupin licencí."
+   - **Iniciátor (Actor)** : "Microsoft Azure AD na základě skupin licencí."
    - **Rozsah kalendářních dat** (volitelné): Pokud znáte konkrétní skupinu vlastní rozsah spuštění a dokončení zpracování
 
 Tento ukázkový výstup ukazuje začátek zpracování, všechny výsledné změny uživatelů a dokončení zpracování.

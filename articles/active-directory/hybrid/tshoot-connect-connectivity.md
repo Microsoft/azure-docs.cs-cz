@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64572778"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením Azure AD
@@ -48,7 +48,7 @@ Z těchto adres URL v následující tabulce je absolutní minimum, bude moct p�
 | mscrl.microsoft.com |HTTP/80 |Používá ke stahování seznamů CRL. |
 | \*.verisign.com |HTTP/80 |Používá ke stahování seznamů CRL. |
 | \*. entrust.net |HTTP/80 |Používá ke stahování seznamů CRL pro vícefaktorové ověřování. |
-| \*.windows.net |HTTPS/443 |Používá k přihlášení do služby Azure AD. |
+| \*. windows.net |HTTPS/443 |Používá k přihlášení do služby Azure AD. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Používá se pro MFA. |
 | \*.microsoftonline.com |HTTPS/443 |Slouží ke konfiguraci adresáře služby Azure AD a import/export dat. |
 
@@ -93,7 +93,7 @@ Pokud se zobrazí **nelze se připojit ke vzdálenému serveru**, pak se pokouš
 Pokud proxy server není správně nakonfigurovaná, dojde k chybě: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| Chyba | Text chyby | Poznámka |
+| Chyba | Text chyby | Komentář |
 | --- | --- | --- |
 | 403 |Zakázáno |Proxy server nebyl otevřen pro požadovanou adresu URL. Návštěvě konfiguraci proxy serveru a ujistěte se, [adresy URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) nebyla otevřena. |
 | 407 |Vyžadováno ověřování proxy serveru |U přihlášení potřeba proxy server, ale žádný není zadaný. Pokud váš proxy server vyžaduje ověření, ujistěte se, že nemá toto nastavení nakonfigurované v souboru machine.config. Ujistěte se také, že používáte doménové účty pro uživatele, který spustil průvodce a pro účet služby. |

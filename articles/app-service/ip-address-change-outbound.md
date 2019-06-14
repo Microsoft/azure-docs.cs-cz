@@ -12,10 +12,10 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61269725"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Postup přípravy na změnu odchozí IP adresy

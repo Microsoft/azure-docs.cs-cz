@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545282"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol pro jednotné přihlašování – SAML
@@ -52,9 +52,9 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ID | Požaduje se | Azure AD používá tento atribut naplnit `InResponseTo` atribut vrácené odpovědi. ID nesmí začínat číslicí, takže běžných strategií je předřaďte řetězec jako "id" na řetězcové vyjádření identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platné ID. |
 | Version | Požaduje se | Tento parametr by měl být nastaven na **2.0**. |
 | IssueInstant | Požaduje se | Toto je řetězec data a času s hodnotou UTC a [("o") formátu round-trip](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává, že hodnota data a času tohoto typu, ale nebude vyhodnocení nebo použijte hodnotu. |
-| AssertionConsumerServiceUrl | Volitelná | Pokud je zadán, musí odpovídat tento parametr `RedirectUri` cloudové služby ve službě Azure AD. |
-| ForceAuthn | Volitelná | To je logická hodnota. Pokud je hodnota true, znamená to, že uživatel bude muset znovu ověřit, i v případě, že mají platný relace s Azure AD. |
-| IsPassive | Volitelná | To je logická hodnota, která určuje, zda služby Azure AD by měl ověřit uživatele tiše, bez zásahu uživatele, pomocí souboru cookie relace, pokud existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
+| AssertionConsumerServiceUrl | Nepovinné | Pokud je zadán, musí odpovídat tento parametr `RedirectUri` cloudové služby ve službě Azure AD. |
+| ForceAuthn | Nepovinné | To je logická hodnota. Pokud je hodnota true, znamená to, že uživatel bude muset znovu ověřit, i v případě, že mají platný relace s Azure AD. |
+| IsPassive | Nepovinné | To je logická hodnota, která určuje, zda služby Azure AD by měl ověřit uživatele tiše, bez zásahu uživatele, pomocí souboru cookie relace, pokud existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
 
 Všechny ostatní `AuthnRequest` atributy, jako jsou souhlasu, cíl, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex a ProviderName **ignoruje**.
 
@@ -97,7 +97,7 @@ Azure AD, ignoruje `AllowCreate` atribut.
 
 Jsou-li zadán, `ProxyCount` atribut, `IDPListOption` nebo `RequesterID` element, protože nejsou podporovány.
 
-### <a name="signature"></a>Podpis
+### <a name="signature"></a>podpis
 Nejsou zahrnuté `Signature` prvek `AuthnRequest` prvky, jako je Azure AD nepodporuje podepsané žádosti o ověření.
 
 ### <a name="subject"></a>Subject
@@ -199,7 +199,7 @@ Je nastavené na `https://sts.windows.net/<TenantIDGUID>/`kde \<TenantIDGUID > j
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-#### <a name="signature"></a>Podpis
+#### <a name="signature"></a>podpis
 
 Azure AD podepisuje kontrolního výrazu v reakci na úspěšném přihlášení. `Signature` Prvek obsahuje digitální podpis, který cloudovou službu můžete použít k ověření zdroje k ověření integrity kontrolního výrazu.
 

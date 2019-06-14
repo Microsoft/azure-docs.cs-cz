@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
 ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60642580"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
@@ -57,7 +57,7 @@ Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro trezor 
       ![Zapnout diagnostiku kroku 4](./media/backup-azure-configure-reports/enable-diagnostics.png)
 5. V **název** zadejte název nastavení. Vyberte **archivovat do účtu úložiště** zaškrtněte políčko, aby vytváření sestav dat můžete spustit přenášejí do účtu úložiště.
 
-      ![5. kroku povolení diagnostiky](./media/backup-azure-configure-reports/select-setting-name.png)
+      ![5\. kroku povolení diagnostiky](./media/backup-azure-configure-reports/select-setting-name.png)
 6. Vyberte **účtu úložiště**, vyberte příslušné předplatné a účet úložiště, ze seznamu pro ukládání dat, vytváření sestav a vyberte **OK**.
 
       ![Vyberte úložiště účtu krok 6](./media/backup-azure-configure-reports/select-subscription-sa.png)
@@ -87,7 +87,7 @@ Pokud chcete přizpůsobit a sdílet sestavy, vytvořte pracovní prostor a prov
       ![Získat balíček obsahu](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Zadejte název účtu úložiště, který jste nakonfigurovali v předchozím kroku 5 a vyberte **Další**.
 
-    ![Zadejte název účtu úložiště.](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
+    ![Zadejte název účtu úložiště](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
 5. Pomocí metody ověřování "Klíče", zadejte klíč účtu úložiště pro tento účet úložiště. K [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-account-manage.md#access-keys), přejděte na svůj účet úložiště na webu Azure Portal.
 
      ![Zadejte účet úložiště](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>

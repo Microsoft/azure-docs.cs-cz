@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31755dcc247ea3be5fb38249afd98dc72dcbc544
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717128"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k sestavení služby machine learning aplikací a analyzovat datové sady
@@ -24,7 +24,7 @@ MLlib je knihovna Spark core, která poskytuje řadu nástrojů, které jsou už
 
 * Klasifikace
 * Regrese
-* Clustering
+* Vytváření clusterů
 * Téma modelování
 * Rozložené singulární hodnotu (SVD) a analýzy hlavních komponentách (DPS)
 * Předpoklad testování a výpočtu statistik vzorku
@@ -199,12 +199,12 @@ Začněme představu, co obsahuje datovou sadu.
 
     Pro předpověď výsledků kontroly potravin, budete muset vyvinout model založený na porušení zásad. Protože logistické regrese je metoda binární klasifikace, je vhodné seskupit Výsledná data do dvou kategorií: **Selhání** a **předat**:
 
-   - Úspěch
-       - Úspěch
+   - Průchod
+       - Průchod
        - Předejte plánovaným bodem obnovení kratším podmínky
    - Chyba
        - Chyba
-   - Zahodit
+   - Zahození
        - Firmy, které se nenachází
        - Nevyvíjí obchodní činnost
 
