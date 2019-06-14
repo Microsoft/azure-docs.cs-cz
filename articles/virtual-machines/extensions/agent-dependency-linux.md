@@ -77,7 +77,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta závislosti vi
 | Název | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| vydavatele | Microsoft.Azure.Monitoring.DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
