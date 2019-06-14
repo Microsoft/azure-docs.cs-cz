@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31738c43756da14ba6c2c92afbcb2882561c8001
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722875"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoop v HDInsight
@@ -163,7 +163,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
     ![Průzkumník serveru zobrazující účet úložiště pro cluster](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * Pokud tuto položku lze rozšířit, používáte __účet služby Azure Storage__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, rozbalte položku a potom dvakrát klikněte __(výchozí kontejner)__.
+    * Pokud tuto položku lze rozšířit, používáte __účet služby Azure Storage__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, rozbalte položku a potom dvakrát klikněte __(výchozí kontejner)__ .
 
     * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Storage__ jako výchozího úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte __(výchozí účet úložiště)__ položka.
 

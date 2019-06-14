@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e91351d4571eaa084865c5a179ed05e6c773b952
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2ddb8777a6470c0e739545e71867a694022d1723
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Kurz: Integrace Azure Active Directory s Promapp
 
@@ -68,7 +68,7 @@ Nastavení integrace Promapp do služby Azure AD, budete muset přidat Promapp z
 
 4. Do vyhledávacího pole zadejte **Promapp**. Vyberte **Promapp** ve výsledcích hledání a pak vyberte **přidat**.
 
-     ![Výsledky vyhledávání](common/search-new-app.png)
+     ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -95,7 +95,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Promapp, proveďte tyto kro
 
 2. V **vybrat jedinou metodu přihlašování** dialogovém okně vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování:
 
-    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
+    ![Vyberte metodu jednotné přihlašování](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, vyberte **upravit** ikony otevřete **základní konfiguraci SAML** dialogové okno:
 
@@ -227,7 +227,7 @@ V této části se budou moci používat jednotné přihlašování Azure tím, 
 
 Promapp podporuje zřizování uživatelů just-in-time. Tato funkce je ve výchozím nastavení povolena. Pokud uživatel již neexistuje mezi Promapp, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 Teď je potřeba otestovat vaši konfiguraci Azure AD jednotné přihlašování pomocí přístupového panelu.
 

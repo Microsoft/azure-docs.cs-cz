@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60456125"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
@@ -67,7 +67,7 @@ Přejděte do **Azure Active Directory** -> **přihlášení** na [centra pro sp
 | 80002 | Vypršel časový limit žádosti o ověření hesla ověřovacího agenta. | Zkontrolujte, jestli je dostupný z ověřovacího agenta služby Active Directory.
 | 80003 | Ověřovací agent přijal neplatnou odpověď. | Pokud se jedná o reprodukovatelné konzistentně napříč více uživatelů, zkontrolujte konfiguraci služby Active Directory.
 | 80004 | V žádosti o přihlášení byl použit nesprávný hlavní název uživatele (UPN). | Požádejte uživatele k přihlášení pomocí pověření správné uživatelské jméno.
-| 80005 | Ověřovací Agent: Došlo k chybě. | Došlo k přechodné chybě. Zkuste to znovu později.
+| 80005 | Ověřovací Agent: Došlo k chybě. | Došlo k přechodné chybě. Opakujte akci později.
 | 80007 | Ověřovací agent se nemohl připojit k Active Directory. | Zkontrolujte, jestli je dostupný z ověřovacího agenta služby Active Directory.
 | 80010 | Ověřovací agent nebyl schopen dešifrovat heslo. | Pokud se jedná o konzistentně reprodukovatelnou, instalace a registrace bude nový Agent ověřování. A odinstalovat stávající. 
 | 80011 | Ověřovací agent nebyl schopen získat dešifrovací klíč. | Pokud se jedná o konzistentně reprodukovatelnou, instalace a registrace bude nový Agent ověřování. A odinstalovat stávající.
@@ -133,7 +133,7 @@ Pro podrobné analýzy povolte protokol "Relace" (klikněte pravým tlačítkem 
 
 ### <a name="detailed-trace-logs"></a>Podrobné trasování protokolů
 
-Chcete-li vyřešit neúspěšných přihlášení uživatele, vyhledejte protokoly trasování v **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\\**. Tyto protokoly obsahovat důvodů proč konkrétního uživatele přihlášení se nezdařilo, pomocí funkce předávací ověřování. Tyto chyby jsou také namapován na důvody selhání přihlášení, je znázorněno v předchozí tabulce důvodů selhání přihlášení. Tady je příklad položky protokolu:
+Chcete-li vyřešit neúspěšných přihlášení uživatele, vyhledejte protokoly trasování v **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\\** . Tyto protokoly obsahovat důvodů proč konkrétního uživatele přihlášení se nezdařilo, pomocí funkce předávací ověřování. Tyto chyby jsou také namapován na důvody selhání přihlášení, je znázorněno v předchozí tabulce důvodů selhání přihlášení. Tady je příklad položky protokolu:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

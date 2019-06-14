@@ -16,17 +16,17 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074617"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Webová aplikace s přihlašováním uživatelů – přihlášení
 
 Zjistěte, jak přidat přihlášení na kód vaší webové aplikace, které uživatelé přihlásí.
 
-## <a name="sign-in"></a>přihlášení
+## <a name="sign-in"></a>Přihlášení
 
 Kód, který jsme vytvořili v předchozím článku [konfigurace kódu aplikace](scenario-web-app-sign-user-app-configuration.md) je všechno, co potřebujete k implementaci odhlašování. Jakmile se uživatel přihlásil k aplikaci, budete pravděpodobně chtít povolit odhlášení. ASP.NET core zpracovává odhlášení za vás.
 
@@ -124,7 +124,7 @@ public void SignOut()
 }
 ```
 
-## <a name="protocol"></a>Protocol (Protokol)
+## <a name="protocol"></a>Protocol
 
 Pokud už nechcete používat ASP.NET Core nebo ASP.NET, můžete si prohlédnout protokol dokumentaci, která je dostupná z [Open ID Connect](./v2-protocols-oidc.md).
 

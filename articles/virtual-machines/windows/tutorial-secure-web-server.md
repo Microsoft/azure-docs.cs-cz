@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b92700caab27b527ae58cc0c7e8deca89c4d43f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 4396af1b96cbf13d59e9562d6d85f875ae6c4af7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080164"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači Windows v Azure s využitím certifikátů SSL, které jsou uložené ve službě Key Vault
 
@@ -57,7 +57,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Potom vytvořte službu Key Vault pomocí rutiny [New-AzureRmKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
+Dále vytvořte službu Key Vault s [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte `mykeyvault` v následujícím příkladu vlastním jedinečným názvem služby Key Vault:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -68,16 +68,16 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Vygenerování certifikátu a jeho uložení do služby Key Vault
-V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí rutiny [Import-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). Pro účely tohoto kurzu následující příklad ukazuje, jak můžete pomocí rutiny [Add-AzureKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) vygenerovat certifikát podepsaný svým držitelem, který využívá výchozí zásady certifikátu z rutiny [New-AzureKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
+Použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem pomocí [Import AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate). Pro účely tohoto kurzu následující příklad ukazuje, jak můžete vygenerovat certifikát podepsaný svým držitelem s [přidat AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) , který používá výchozí zásady certifikátu z [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy). 
 
 ```azurepowershell-interactive
-$policy = New-AzureKeyVaultCertificatePolicy `
+$policy = New-AzKeyVaultCertificatePolicy `
     -SubjectName "CN=www.contoso.com" `
     -SecretContentType "application/x-pkcs12" `
     -IssuerName Self `
     -ValidityInMonths 12
 
-Add-AzureKeyVaultCertificate `
+Add-AzKeyVaultCertificate `
     -VaultName $keyvaultName `
     -Name "mycert" `
     -CertificatePolicy $policy 
@@ -121,10 +121,10 @@ Vytvoření virtuálního počítače trvá několik minut. Poslední krok použ
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Přidání certifikátu ze služby Key Vault do virtuálního počítače
-Pokud chcete přidat certifikát ze služby Key Vault do virtuálního počítače, získejte ID certifikátu pomocí rutiny [Get-AzureKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Přidání certifikátu do virtuálního počítače s [přidat AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
+K přidání certifikátu ze služby Key Vault do virtuálního počítače, získejte ID certifikátu pomocí [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret). Přidání certifikátu do virtuálního počítače s [přidat AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret):
 
 ```azurepowershell-interactive
-$certURL=(Get-AzureKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
+$certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
 
 $vm=Get-AzVM -ResourceGroupName $resourceGroup -Name "myVM"
 $vaultId=(Get-AzKeyVault -ResourceGroupName $resourceGroup -VaultName $keyVaultName).ResourceId

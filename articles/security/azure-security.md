@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610519"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
@@ -140,7 +140,7 @@ Můžete povolit nebo zakázat následující typy protokolů:
 
 -   Webový Server protokolování – informace o transakce HTTP pomocí rozšířeném formátu protokolu W3C souboru. To je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 
-#### <a name="application-diagnostics"></a>Diagnostika aplikace
+#### <a name="application-diagnostics"></a>Konzole Application diagnostics
 [Konzole Application diagnostics](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) umožňuje zaznamenat informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) třídy k protokolování informací do protokolu diagnostiky aplikace. V konzoli Application Diagnostics existují dva hlavní typy událostí, ta, která souvisí s výkonem aplikací a související se selháním a chybami aplikací. Je možné rozdělit selháním a chybami dalšího problémy s připojením, zabezpečením a selháním. Selhání problémy se většinou vztahují k problému s kódem aplikace.
 
 V konzoli Application Diagnostics lze zobrazit události seskupené následujícími způsoby:

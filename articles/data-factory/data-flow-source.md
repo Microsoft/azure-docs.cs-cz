@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 5d8a339049ebda02c2fe470c5d8dc2c743d547ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234547"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077238"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
 
@@ -65,13 +65,13 @@ Později můžete změnit názvy sloupců v vyberte transformaci. Ke změně dat
 
 Na **optimalizace** kartu pro transformaci zdroj, může se zobrazit **zdroj** oddílu typu. Tato možnost je dostupná jenom v případě zdroje je Azure SQL Database. Je to proto, že Data Factory se pokusí navázat připojení paralelní spouštění velkých dotazů na databázi SQL zdroje.
 
-![Nastavení oddílu zdroje](media/data-flow/sourcepart2.png "dělení")
+![Nastavení oddílu zdroje](media/data-flow/sourcepart3.png "dělení")
 
 Nemáte k dělení dat v databázi SQL zdroje, ale jsou užitečné pro dotazy na velkých oddílů. Oddíl můžete založit na sloupec nebo dotazu.
 
 ### <a name="use-a-column-to-partition-data"></a>Použít sloupec k dělení dat
 
-Ze zdrojové tabulky vyberte na sloupec, který oddíl. Také nastavte maximální počet připojení.
+Ze zdrojové tabulky vyberte na sloupec, který oddíl. Nastavte také počet oddílů.
 
 ### <a name="use-a-query-to-partition-data"></a>Použijte dotaz k dělení dat
 

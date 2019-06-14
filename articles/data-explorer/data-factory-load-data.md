@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60447722"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopírování dat do Průzkumníku dat Azure pomocí Azure Data Factory 
@@ -46,7 +46,7 @@ V tomto článku se dozvíte, jak načíst data z Amazonu S3 do Průzkumníku da
 
     **Nastavení**  | **Popis pole**
     |---|---|
-    | **Název** | Zadejte globálně jedinečný název datové továrny. Pokud se zobrazí chyba *"název objektu pro vytváření dat \"LoadADXDemo\" není k dispozici"*, zadejte jiný název datové továrny. Pravidla pojmenování artefaktů služby Data Factory, naleznete v tématu [Data Factory – pravidla pojmenování](/azure/data-factory/naming-rules).|
+    | **Název** | Zadejte globálně jedinečný název datové továrny. Pokud se zobrazí chyba *"název objektu pro vytváření dat \"LoadADXDemo\" není k dispozici"* , zadejte jiný název datové továrny. Pravidla pojmenování artefaktů služby Data Factory, naleznete v tématu [Data Factory – pravidla pojmenování](/azure/data-factory/naming-rules).|
     | **Předplatné** | Vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. |
     | **Skupina prostředků** | Vyberte **vytvořit nový** a zadejte název nové skupiny prostředků. Vyberte **použít existující**, pokud máte existující skupinu prostředků. |
     | **Verze** | Vyberte **V2** |
@@ -158,7 +158,7 @@ Průzkumník dat Nová propojená služba Azure se vytvoří pro kopírování d
     * Druhý mapování nastane, pokud tento tabulková data ingestují do Průzkumníku dat Azure. Mapování se provádí podle [pravidla mapování sdíleného svazku clusteru](/azure/kusto/management/mappings#csv-mapping). Všimněte si, že i v případě, že zdroj dat nebyl ve formátu CSV, ADF má data převedli do formátu tabulky, proto je mapování sdíleného svazku clusteru pouze relevantní mapování v této fázi.
         * V části **Průzkumník dat Azure (Kusto) jímky vlastnosti** přidejte příslušné **Ingestování mapování názvu** (volitelné) proto mapování sloupce je možné.
         * Pokud **Ingestování mapování názvu** není zadán, podle pořadí mapování "by-name" **mapování sloupců** dojde k oddílu. Pokud mapování "by-name" selže, Průzkumník dat Azure se pokusí ingestovat data v pořadí "podle sloupce pozice" (mapy podle pozice jako výchozí).
-    * Vyberte **další**
+    * Vyberte **Další**.
 
     ![Mapování sloupce cílové datové sady](media/data-factory-load-data/destination-dataset-column-mapping.png)
 

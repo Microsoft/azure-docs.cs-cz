@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/31/2019
+ms.date: 06/11/2019
 ms.author: jaredr80
-ms.openlocfilehash: c443d4705da83a43af10763f633f340b1eab69d3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
-ms.translationtype: MT
+ms.openlocfilehash: 48b75bee6eddda6591ac0285cd8c0c8a43ac0dbe
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054385"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -92,14 +92,14 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Dubai2** | rozlišované sjednocení typu datamena | Spojené arabské emiráty – sever | rozlišované sjednocení typu datamena, Orixcom |
 | **Dublin** | Equinix | Severní Evropa | Colt, eir, Equinix, Interxion, Megaport |
 | **Frankfurt** | Interxion | neuvedeno | DE-CIX, Interxion |
-| **Hongkong – zvláštní administrativní oblast** | Equinix | Východní Asie | Aryaka Networks, British Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
+| **Hongkong – zvláštní administrativní oblast** | Equinix | Východní Asie | Aryaka Networks, British Telecom, Chief Telecom, China Telecom Global, Equinix, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Verizon |
 | **Johannesburg** | Teraco | Jižní Afrika – sever | Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Kuala Lumpur** | TIME dotCom | neuvedeno | TIME dotCom |
 | **Las Vegas** | Přepínač | neuvedeno | CenturyLink Cloud Connect, Megaport |
 | **Londýn** | Equinix | Velká Británie – jih | AT&T NetBond, British Telecom, Colt, Equinix, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | Telehouse | Velká Británie – jih | IX Reach, Equinix |
 | **Los Angeles** | CoreSite | neuvedeno | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
-| **Marseille** |Interxion | Francie – jih | Interxion |
+| **Marseille** |Interxion | Francie – jih | Interxion Jaguar sítě |
 | **Melbourne** | NextDC | Austrálie – jihovýchod | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | Equinix | neuvedeno | C3ntro+, Equinix, Megaport, Neutrona Networks |
 | **Montreal** | Cologix | neuvedeno | Bell Canada, Cologix, Telus, Zayo |

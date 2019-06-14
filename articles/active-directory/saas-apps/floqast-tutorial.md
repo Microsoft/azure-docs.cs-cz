@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b3e839af886dc23bdfb11dacfb1854a2277bf3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b26133c64877bcac07d2e8ba10dbee05d4e36d34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862631"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Kurz: Integrace Azure Active Directory s FloQast
 
@@ -52,7 +52,7 @@ Konfigurace integrace FloQast do služby Azure AD, budete muset přidat FloQast 
 
 **Chcete-li přidat FloQast z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -118,11 +118,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s FloQast, proveďte následu
 
 7. Kromě toho výše FloQast aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------------- | -------------------- |    
     | FirstName           | user.givenname |
     | LastName            | user.surname |
-    | E-mail               | user.mail    |
+    | Email               | user.mail    |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -225,7 +225,7 @@ V této části je povolit Britta Simon k udělení přístupu k FloQast použit
 
 V této části vytvoříte uživatele v FloQast jako Britta Simon. Práce s [tým podpory FloQast](mailto:support@floqast.com) přidat uživatele na platformě FloQast. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

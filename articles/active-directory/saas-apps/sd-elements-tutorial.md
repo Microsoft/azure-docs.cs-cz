@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a18971125724e6e2fdc6b37de15894efb8b9071a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9e6deb8b31559b8c5add06f1771cd69df0c1f136
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867592"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Kurz: Integrace Azure Active Directory s systém SD Elements
 
@@ -53,7 +53,7 @@ Konfigurace integrace systém SD Elements do služby Azure AD, budete muset při
 
 **Systém SD Elements přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Cílem této části je vytvořte uživatele Britta Simon v systém SD Elements.
 
     ![Vytvoření zkušebního uživatele systém SD Elements](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
 
-    a. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je **brittasimon@contoso.com**.
+    a. V **e-mailu** textového pole zadejte e-mailu uživatele, jako je **brittasimon@contoso.com** .
 
     b. V **křestní jméno** textového pole zadejte jméno uživatele, jako je **Britta**.
 
@@ -259,7 +259,7 @@ Cílem této části je vytvořte uživatele Britta Simon v systém SD Elements.
 
     e. Klikněte na tlačítko **vytvořit uživatele**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

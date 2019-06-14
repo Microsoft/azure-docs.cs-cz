@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0c6fc9ed196a1b3ddd3d8e67887e2340ddbcda
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 2eb38ca490190054ea78b5e1c71c09c94621419b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888431"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088935"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Kurz: Integrace Azure Active Directory s Teamwork.com
 
@@ -54,7 +54,7 @@ Konfigurace integrace Teamwork.com do služby Azure AD, budete muset přidat Tea
 
 **Chcete-li přidat Teamwork.com z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -190,7 +190,7 @@ V této části je povolit Britta Simon k udělení přístupu k Teamwork.com po
 
 V této části vytvoříte uživatele v Teamwork.com jako Britta Simon. Práce s [tým podpory Teamwork.com](mailto:support@teamwork.com) přidat uživatele na platformě Teamwork.com. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

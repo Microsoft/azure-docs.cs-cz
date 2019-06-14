@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
 ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123395"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure WCF Relay REST
@@ -56,7 +56,7 @@ Hlavní rozdíl mezi kontraktu WCF a kontraktem ve stylu REST je další vlastno
 ### <a name="to-create-a-contract-with-an-interface"></a>Vytvoření smlouvy s rozhraní
 
 1. Spusťte Visual Studio jako správce: v nabídce **Start** klikněte na program pravým tlačítkem a vyberte možnost **Spustit jako správce**.
-2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogovém okně **Nový projekt** klikněte na **Visual C#**, vyberte šablonu **Konzolová aplikace** ta zadejte jí název **ImageListener**. Použijte výchozí **Umístění**. Klikněte na **OK**, tím vytvoříte projekt.
+2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogovém okně **Nový projekt** klikněte na **Visual C#** , vyberte šablonu **Konzolová aplikace** ta zadejte jí název **ImageListener**. Použijte výchozí **Umístění**. Klikněte na **OK**, tím vytvoříte projekt.
 3. Visual Studio pro projekt C# vytvoří soubor `Program.cs`. Tato třída obsahuje prázdnou metodu `Main()` potřebnou ke správnému sestavení projektu konzolové aplikace.
 4. Nainstalujte balíček Service Bus NuGet, tím do projektu přidáte odkazy na Service Bus a **System.ServiceModel.dll**. Tento balíček automaticky přidá reference na knihovny Service Bus a WCF **System.ServiceModel**. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **ImageListener** a pak klikněte na **Správa balíčků NuGet**. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Klikněte na **Instalovat** a přijměte podmínky použití.
 5. Do projektu musíte explicitně přidat odkaz na **System.ServiceModel.Web.dll**:

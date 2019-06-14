@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91ee8b6e614cf12deccd1429ad67323c277954a0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061479"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Nejčastější dotazy ke službě Azure web application firewall
 
@@ -31,9 +31,6 @@ Zásady služby Azure WAF lze použít pro webové aplikace hostované na služb
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Co je WAF branou služby Azure? 
 
 Branou Azure je vysoce škálovatelné a globálně distribuované aplikace a síť pro doručování obsahu. Azure WAF, při integraci s branou, přestane denial-of-service a cílených útoků aplikace na hranici sítě Azure, blízko útoku zdroje před vstupem vaší virtuální síti, nabízí ochranu bez omezení výkonu.
-
-## <a name="how-will-i-be-charged-for-azure-waf-for-front-door"></a>Jak se mi účtovat waf služby Azure pro branou?
-Ve verzi public preview WAF využití za branou neúčtují žádné poplatky. Všimněte si, že je poplatek za branou navíc. Podívejte se na ceny služby branou [tady](https://azure.microsoft.com/pricing/details/frontdoor/).
 
 ## <a name="does-azure-waf-support-https"></a>Podporuje Azure WAF HTTPS?
 

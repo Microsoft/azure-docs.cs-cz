@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f1972a870ac15e1ca8dde963eef6cf7f1caf3039
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.openlocfilehash: 9a1b8cf0fe74554c78f2d06d601231ed2740172a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052355"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Zpracování výjimek a chyb s použitím MSAL
 Výjimky v Microsoft Authentication Library (MSAL) jsou určené pro vývojáře aplikací pro řešení potíží a ne pro zobrazení koncovým uživatelům. Zprávy o výjimkách nejsou lokalizovány.
@@ -29,21 +29,21 @@ Výjimky v Microsoft Authentication Library (MSAL) jsou určené pro vývojáře
 Při zpracování výjimek a chyb, můžete použít vlastní typ výjimky nebo kód chyby: k rozlišení mezi výjimky.  Seznam kódů chyb najdete v tématu [kódy chyb ověřování a autorizace](reference-aadsts-error-codes.md).
 
 ## <a name="net-exceptions"></a>Výjimky .NET
-Při zpracování výjimek, můžete použít samotný datový typ výjimky a `ErrorCode` člen rozlišovat mezi výjimky. Hodnoty `ErrorCode` jsou konstanty typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet#fields).
+Při zpracování výjimek, můžete použít samotný datový typ výjimky a `ErrorCode` člen rozlišovat mezi výjimky. Hodnoty `ErrorCode` jsou konstanty typu [MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet).
 
-Podívejte se na pole můžete mít také [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet#fields), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet#fields), [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet#fields).
+Podívejte se na pole můžete mít také [MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet), [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet), [MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet).
 
 Pokud [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) je vyvolána chyba kódu může obsahovat kód, který můžete najít v [kódy chyb ověřování a autorizace](reference-aadsts-error-codes.md).
 
 ### <a name="common-exceptions"></a>Běžné výjimky
 Tady jsou běžné výjimky, které by mohla být vyvolána a některé možné způsoby zmírnění rizik.
 
-| Výjimka | Kód chyby | Zmírnění|
+| Výjimka | Kód chyby | Omezení rizik|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID {appId} s názvem {appName}. Odeslat žádost o interaktivní autorizaci pro tohoto uživatele a prostředek.| Potřebujete získat souhlas uživatele jako první. Pokud nepoužíváte .NET Core (která nemá žádné webové uživatelské rozhraní), volání (pouze jednou) `AcquireTokeninteractive`. Pokud používáte .NET core nebo to dělat nechcete `AcquireTokenInteractive`, uživatel přejít na adresu URL k udělení souhlasu doplňku: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read . Chcete-li volat `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: Uživatel je potřeba pomocí služby Multi-Factor authentication.| Neexistuje žádné zmírňující opatření – pokud MFA je nakonfigurovaný pro vašeho tenanta a AAD se rozhodne je vynutit, budete muset nouzového řešení ověření pomocí interaktivního toku, jako `AcquireTokenInteractive` nebo `AcquireTokenByDeviceCode`.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet#fields) |AADSTS90010: Typ udělení oprávnění není podporováno u */common* nebo */consumers* koncových bodů. Použití */organizations* nebo koncový bod specifickým pro tenanta. Použili jste */common*.| Jak je vysvětleno v zprávy ze služby Azure AD, musí mít tenanta oprávnění nebo jinak */organizations*.|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet#fields) | AADSTS70002: Text požadavku musí obsahovat následující parametr: hodnotu client_secret nebo client_assertion ".| To může nastat, pokud vaše aplikace nebyla registrována jako veřejné klientskou aplikaci ve službě Azure AD. Na webu Azure Portal, upravit manifest pro aplikace a nastavení `allowPublicClient` k `true`. |
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: Typ udělení oprávnění není podporováno u */common* nebo */consumers* koncových bodů. Použití */organizations* nebo koncový bod specifickým pro tenanta. Použili jste */common*.| Jak je vysvětleno v zprávy ze služby Azure AD, musí mít tenanta oprávnění nebo jinak */organizations*.|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: Text požadavku musí obsahovat následující parametr: hodnotu client_secret nebo client_assertion ".| To může nastat, pokud vaše aplikace nebyla registrována jako veřejné klientskou aplikaci ve službě Azure AD. Na webu Azure Portal, upravit manifest pro aplikace a nastavení `allowPublicClient` k `true`. |
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user zpráva: Nelze identifikovat přihlášeného uživatele| Knihovny nemohl zadat dotaz aktuální Windows přihlášeného uživatele nebo tento uživatel není AD nebo připojená k AAD (připojené k doméně uživatelů pracovního místa se nepodporují). Zmírnění dopadů 1: na UPW, zkontrolujte, že aplikace má následující možnosti: Podnikové ověřování, privátní sítě (klient a Server), informace o uživatelském účtu. Zmírnění dopadů 2: Implementace vlastní logiky načíst uživatelské jméno (třeba john@contoso.com) a použít `AcquireTokenByIntegratedWindowsAuth` formulář, který přebírá uživatelské jméno.|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| Tato metoda závisí na protokolu vystavený službou Active Directory (AD). Pokud uživatel vytvořil ve službě Azure Active Directory bez zálohování AD ("spravovaný" uživatel), tato metoda se nezdaří. Uživatelé vytvořili ve službě AD a se opírá o AAD ("federovaných" uživatelů) mohou mít prospěch z této metody jako neinteraktivní ověřování. Omezení rizik: Použití interaktivního ověřování.|
 

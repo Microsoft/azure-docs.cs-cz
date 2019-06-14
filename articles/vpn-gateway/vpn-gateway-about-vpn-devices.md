@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: yushwang
 ms.openlocfilehash: 6535949767999e04b11106ff8a294e912a6d0fb8
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66388852"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
@@ -42,7 +42,7 @@ Pomoc s konfigurací zařízení VPN, naleznete odkazy příslušné řadě zař
 |**Dodavatel**          |**Řada zařízení**     |**Minimální verze operačního systému** |**Pokyny ke konfiguraci PolicyBased** |**Pokyny ke konfiguraci RouteBased** |
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Není kompatibilní  |[Průvodce konfigurací](https://www.a10networks.com/resources/deployment-guides/a10-thunder-cfw-ipsec-vpn-interoperability-azure-vpn-gateways)|
-| Allied Telesis     |Směrovače VPN řady AR |5.4.7+ řady AR               |Již brzy     |[Průvodce konfigurací](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
+| Allied Telesis     |Směrovače VPN řady AR |5\.4.7+ řady AR               |Již brzy     |[Průvodce konfigurací](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall řady F |PolicyBased: 5.4.3<br>RouteBased: 6.2.0 |[Průvodce konfigurací](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[Průvodce konfigurací](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall řady X |Barracuda Firewall 6.5 |[Průvodce konfigurací](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Není kompatibilní |
 | Check Point |Security Gateway |R80.10 |[Průvodce konfigurací](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Průvodce konfigurací](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
@@ -203,7 +203,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 >
 >
 
-### <a name="feb-16-2017"></a>16. února 2017
+### <a name="feb-16-2017"></a>16\. února 2017
 
 **Zařízení Palo Alto Networks s verzí dřívější než 7.1.4** pro síť VPN Azure založené na směrování: Pokud používáte zařízení VPN z Palo Alto Networks s verzí PAN-OS dřívější než 7.1.4 a dochází k problémům s připojením k Azure VPN Gateway založená na směrování, proveďte následující kroky:
 

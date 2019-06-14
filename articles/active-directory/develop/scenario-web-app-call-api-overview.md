@@ -16,13 +16,13 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65076297"
 ---
-# <a name="scenario-web-app-that-calls-web-apis"></a>Scénář: Webové aplikace, že volání webových rozhraní API
+# <a name="scenario-web-app-that-calls-web-apis"></a>Scénář: Webová aplikace, která volá webová rozhraní API
 
 Zjistěte, jak sestavit webovou aplikaci na platformě Microsoft identity přihlášení uživatelů a, která volá webové rozhraní API jménem přihlášeného uživatele.
 
@@ -39,7 +39,7 @@ Tento scénář supposes, když jste prošli následující scénář:
 
 Přidání ověřování do webové aplikace, které lze tedy přihlašování uživatelů a volá webové rozhraní API jménem přihlášeného uživatele.
 
-![Webové aplikace, že volání webových rozhraní API](./media/scenario-webapp/web-app.svg)
+![Webová aplikace, která volá webová rozhraní API](./media/scenario-webapp/web-app.svg)
 
 Webové aplikace, která volá webové rozhraní API:
 

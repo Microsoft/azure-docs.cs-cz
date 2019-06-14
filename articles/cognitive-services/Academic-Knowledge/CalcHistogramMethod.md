@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60498826"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram – metoda
@@ -30,18 +30,18 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Name  |Value | Povinné?  |Popis
+Name  |Hodnota | Požadováno?  |Popis
 -----------|----------|--------|----------
 **výraz**    |Textový řetězec | Ano  |Výraz dotazu, který určuje entity, přes která chcete vypočítat histogramy.
 **model** |Textový řetězec | Ne |Vyberte název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.
 **Atributy** | Textový řetězec | Ne<br>Výchozí hodnota: | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
-**count** |Číslo | Ne<br>Výchozí: 10 |Číslo s vrácenými výsledky.
-**Posun**  |Číslo | Ne<br>Výchozí: 0 |Index první výsledek vrátit.
-**timeout**  |Číslo | Ne<br>Výchozí: 1000 |Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
+**count** |Číslo | Ne<br>Výchozí hodnota: 10 |Číslo s vrácenými výsledky.
+**Posun**  |Číslo | Ne<br>Výchozí hodnota: 0 |Index první výsledek vrátit.
+**timeout**  |Číslo | Ne<br>Výchozí hodnota: 1000 |Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
-Name | Popis
+Název | Popis
 --------|---------
 **výraz**  |Výraz parametru z požadavku.
 **num_entities** | Celkový počet odpovídajících entit.
@@ -65,7 +65,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>Výraz v první výklad, který je vrácen z interpretaci rozhraní API je *a (kompozitních (AA. AuN == "jaime teevan"), Y > 2012)*.
+<br>Výraz v první výklad, který je vrácen z interpretaci rozhraní API je *a (kompozitních (AA. AuN == "jaime teevan"), Y > 2012)* .
 <br>Hodnota tohoto výrazu je pak předán **calchistogram** rozhraní API. *Attributes=Y,F.FN* parametr označuje, distribuce papíru počty by měl být například podle roku a pole studie:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

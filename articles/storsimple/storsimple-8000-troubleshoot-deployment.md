@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 6bb587de2f0f3ef9c4e8c4a856ee4b7430e9b9cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64715212"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s problémy při nasazení zařízení StorSimple
 ## <a name="overview"></a>Přehled
@@ -82,7 +82,7 @@ Následující tabulky obsahují seznam běžných chyb, že můžete setkat, kd
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Chyby při nastavení volitelné webového proxy serveru
 | Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: Neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů stanovených nastavení proxy serveru není platný. |Není k dispozici identifikátor URI ve správném formátu. Použijte následující formát: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 1 |Invoke-HcsSetupWizard: Neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů stanovených nastavení proxy serveru není platný. |Není k dispozici identifikátor URI ve správném formátu. Použijte následující formát: http:// *\<IP adresu nebo plně kvalifikovaný název domény proxy serveru webových >* : *\<číslo portu TCP >* |
 | 2 |Invoke-HcsSetupWizard: Server RPC není k dispozici (výjimka z HRESULT: 0x800706ba) |Hlavní příčinou je jeden z následujících akcí:<ol><li>Až cluster není.</li><li>Pasivní kontroler nemůže komunikovat s aktivním řadiči. proto se příkaz spustí z pasivní kontroler.</li></ol> |V závislosti na hlavní příčina:<ol><li>[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží.</li><li>Spusťte příkaz z aktivního kontroleru. Pokud chcete spustit příkaz z pasivního kontroleru, je potřeba zajistit, že pasivní kontroler může komunikovat s aktivním řadiči. Budete muset [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) Pokud tyto možnosti připojení bylo přerušeno.</li></ol> |
 | 3 |Invoke-HcsSetupWizard: Volání RPC se nezdařilo (výjimka z HRESULT: 0x800706be) |Clusteru je mimo provoz. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží. |
 | 4 |Invoke-HcsSetupWizard: Nebyl nalezen prostředek clusteru (výjimka z HRESULT: 0x8007138f) |Prostředek clusteru se nenašel. To může nastat při instalaci není správný. |Budete muset obnovit zařízení do výchozího továrního nastavení. [Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) k vytvoření prostředku clusteru. |

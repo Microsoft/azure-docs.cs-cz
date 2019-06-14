@@ -11,10 +11,10 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, otevřete Service Broker, Open Service Broker for Azure
 ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61028412"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrovat stávající aplikaci MongoDB API služby Azure Cosmos DB pro MongoDB a zprostředkovatele Open Service Broker for Azure (OSBA)
@@ -267,7 +267,7 @@ press Ctrl+C to detach
 ...
 ```
 
-Přejděte na adresu URL zobrazené v protokolech. V předchozím příkladu můžete využít *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*. 
+Přejděte na adresu URL zobrazené v protokolech. V předchozím příkladu můžete využít *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* . 
 
 Ověřte, že se zobrazí aplikace spolu se vaše změny.
 

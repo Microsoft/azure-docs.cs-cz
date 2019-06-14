@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 490ef95e061da4a008bf50ef664aaa379d5b3062
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5fbec8b6a1a21826896f8e2499b1e8b7237d0ff9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60242419"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Kurz: Integrace Azure Active Directory s Software pro správu OneTrust ochrany osobních údajů
 
@@ -55,7 +55,7 @@ Konfigurace integrace Software pro správu OneTrust ochrany osobních údajů do
 
 **Chcete-li přidat Software pro správu OneTrust ochrany osobních údajů z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

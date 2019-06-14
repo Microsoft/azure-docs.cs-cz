@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f231d3d966154c1ea5cca808eedad1051089fea
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 441c9345f92974c387429baac768dbccb03fc995
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65897366"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Kurz: Integrace Azure Active Directory s 10 000 ft plány
 
@@ -55,7 +55,7 @@ Konfigurace integrace 10 000 ft plány do služby Azure AD, budete muset přidat
 
 **10 000 ft plánů přidat z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v 10 000 ft plány. 10 000 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory plány klienta 10 000 ft](https://www.10000ft.com/plans/support).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

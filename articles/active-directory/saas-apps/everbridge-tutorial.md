@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: f8dd11e7fb0b9fda0e0f1c7d3f794f6bfd766cdf
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Kurz: Integrace Azure Active Directory s Everbridge
 
@@ -228,7 +228,7 @@ Povolte Britta Simon k udělení přístupu k Everbridge použití Azure jednotn
 
 V této části vytvoříte Britta Simon v Everbridge testovacího uživatele. Přidat uživatele na platformě Everbridge, pracovat [tým podpory Everbridge](mailto:support@everbridge.com). Uživatelé musí vytvořit a aktivovat v Everbridge, než použití jednotného přihlašování. 
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 Testování Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

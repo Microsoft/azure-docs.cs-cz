@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719750"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
@@ -26,12 +26,12 @@ Režimy zamykání, však nelze změnit mimo podrobné plány.
 
 Prostředky vytvořené v přiřazení podrobného plánu artefakty mají čtyř stavů: **Není uzamčen**, **jen pro čtení**, **nelze upravit nebo odstranit**, nebo **nelze odstranit**. Každý typ artefaktu může být v **není uzamčen** stavu. V následující tabulce můžete použít k určení stavu prostředku:
 
-|Mode|Typ zdroje artefaktů|Stav|Popis|
+|Režim|Typ zdroje artefaktů|Stav|Popis|
 |-|-|-|-|
-|Nezamykat|*|Není uzamčen|Prostředky nejsou chráněny podrobné plány. Tento stav se používá také pro prostředky, které jsou přidány do **jen pro čtení** nebo **neodstraňujte** artefaktu skupinu prostředků z mimo přiřazení podrobného plánu.|
+|Není uzamčení|*|Není uzamčen|Prostředky nejsou chráněny podrobné plány. Tento stav se používá také pro prostředky, které jsou přidány do **jen pro čtení** nebo **neodstraňujte** artefaktu skupinu prostředků z mimo přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit nebo odstranit|Skupina prostředků je jen pro čtení a nejde upravit značky pro skupinu prostředků. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
 |Jen pro čtení|Skupina prostředků bez|Jen pro čtení|Prostředek se nedá změnit žádným způsobem – žádné změny a nelze odstranit.|
-|Neodstraňovat|*|Nelze odstranit|Prostředky můžete změnit, ale nejde odstranit. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
+|Neodstraňujte|*|Nelze odstranit|Prostředky můžete změnit, ale nejde odstranit. **Není uzamčen** prostředky můžete přidat, přesunout, změnit ani odstranit z této skupiny prostředků.|
 
 ## <a name="overriding-locking-states"></a>Přepsání zamykání stavu
 
@@ -56,10 +56,10 @@ RBAC [zamítnout přiřazení](../../../role-based-access-control/deny-assignmen
 
 [Zamítnout přiřazení vlastnosti](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) každého režimu jsou následující:
 
-|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|Režim |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |Jen pro čtení |**\*** |**\*/ čtení** |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
-|Neodstraňovat |**\*/ DELETE** | |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
+|Neodstraňujte |**\*/ DELETE** | |SystemDefined (Everyone) |podrobný plán přiřazení a uživatelem definovanými v **excludedPrincipals** |Skupina prostředků - _true_; Prostředek – _false_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho odeprete přiřazení Odepřít akce u prostředků podrobného plánu nemusí být hned v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.

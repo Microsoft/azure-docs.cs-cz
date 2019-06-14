@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128096"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node.js SDK
@@ -372,9 +372,9 @@ Většinu nastavení v souboru azureMobile.js mají v nastavení odpovídající
 
 | Nastavení aplikace | azureMobile.js setting | Popis | Platné hodnoty |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |jméno |Název aplikace |string |
+| **MS_MobileAppName** |name |Název aplikace |string |
 | **MS_MobileLoggingLevel** |Logging.level |Minimální úroveň protokolování zpráv do protokolu |Chyba, upozornění, informace, verbose, debug, i |
-| **MS_DebugMode** |ladit |Povolí nebo zakáže režim ladění |Hodnota TRUE, false |
+| **MS_DebugMode** |Ladění |Povolí nebo zakáže režim ladění |Hodnota TRUE, false |
 | **MS_TableSchema** |data.schema |Výchozí název schématu pro tabulky SQL |String (výchozí: vlastník databáze) |
 | **MS_DynamicSchema** |data.dynamicSchema |Povolí nebo zakáže režim ladění |Hodnota TRUE, false |
 | **MS_DisableVersionHeader** |verze (nastavena na nedefinované) |Zakáže hlavičky X-záhlaví ZUMO-Server-Version |Hodnota TRUE, false |
@@ -404,7 +404,7 @@ Pomocí Azure SQL Database jako úložiště dat je identické napříč všemi 
 1. V **skupiny prostředků** zadejte stejný název jako vaše aplikace.
 1. Je vybraný výchozí plán služby App Service. Pokud chcete změnit plán služby App Service:
 
-   a. Vyberte **plán služby App Service** > **+ vytvořit novou**.
+   a. Vyberte **plán služby App Service** >  **+ vytvořit novou**.
 
    b. Zadejte název nového plánu služby App Service a vyberte příslušné místo.
 
@@ -422,7 +422,7 @@ Můžete nastavit připojení k back-endu Mobile Apps existující databázi SQL
 > [!NOTE]
 > Pokud už máte databázi ve stejném umístění jako back-endu Mobile Apps, můžete místo toho vybrat **použít stávající databázi** a potom tuto databázi vybrat. Z důvodu vyšší latencí nedoporučujeme použití databáze do jiného umístění.
 
-1. V nové mobilní aplikace back-endu, vyberte **nastavení** > **mobilní aplikace** > **Data** > **+ přidat**.
+1. V nové mobilní aplikace back-endu, vyberte **nastavení** > **mobilní aplikace** > **Data** >  **+ přidat**.
 1. V **přidat datové připojení** vyberte **SQL Database – konfigurovat požadované nastavení** > **vytvořit novou databázi**. Zadejte název nové databáze v **název** pole.
 1. Vyberte **Server**. V **nový server** podokně zadejte jedinečný název serveru v **název serveru** pole a zadejte vhodný server pro přihlašovací jméno správce a heslo. Ujistěte se, že **povolit službám azure přístup k serveru** zaškrtnuto. Vyberte **OK**.
 
@@ -909,7 +909,7 @@ Aplikace Node.js mají přístup k široké škále diagnostický protokol nást
 Jednoduché tabulky můžete použít k vytváření a práci s tabulkami přímo na portálu. Můžete nahrát datové sady do jednoduchých tabulek ve formátu CSV. Všimněte si, že nemůžete použít názvy vlastností (ve vaší datové sadě sdíleného svazku clusteru), které jsou v konfliktu s názvy vlastností systému back-endu Mobile Apps. Názvy vlastností systému jsou:
 * createdAt
 * updatedAt
-* odstraněna
+* Odstranit
 * version
 
 Operace s tabulkou i můžete upravit pomocí editoru služby App Service. Když vyberete **jednoduché tabulky** v nastavení back-end serveru, můžete přidat, upravit nebo odstranit tabulku. Můžete také zobrazit data v tabulce.
@@ -942,7 +942,7 @@ Pomocí webu Azure portal, můžete upravit soubory skriptu back-end Node.js v a
 
 1. V podokně pro Mobile Apps back-endu, vyberte **všechna nastavení** > buď **jednoduché tabulky** nebo **jednoduchá rozhraní API**. Vyberte tabulku nebo rozhraní API a pak vyberte **upravit skript**. Otevře se soubor skriptu v App Service Editor.
 
-   ![Editor služby App Service](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 1. Proveďte požadované změny do souboru kódu v editoru online. Změny se uloží automaticky během psaní.
 
 <!-- Images -->

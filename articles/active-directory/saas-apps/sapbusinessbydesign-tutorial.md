@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23669671c9aec2ebad8e03e06a0ea1b139214cad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0b830f0760b768826b2d937b4a8b2ffbd8e9e2a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902842"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Kurz: Integrace Azure Active Directory s SAP Business ByDesign
 
@@ -54,7 +54,7 @@ Konfigurace integrace SAP Business ByDesign do služby Azure AD, budete muset p�
 
 **Chcete-li přidat SAP Business ByDesign z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Business ByDesign, p
 
     a. Vyberte **transformace** jako **zdroj**.
 
-    b. V **transformace** rozevíracího seznamu vyberte **ExtractMailPrefix()**.
+    b. V **transformace** rozevíracího seznamu vyberte **ExtractMailPrefix()** .
 
     c. V **parametr 1** rozevíracího seznamu vyberte atribut uživatele, které chcete použít pro implementaci. Například pokud chcete použít jako jedinečný identifikátor uživatele EmployeeID a hodnota atributu jsou uložené v ExtensionAttribute2, vyberte user.extensionattribute2.
 
@@ -245,7 +245,7 @@ V této části vytvoříte uživatele v SAP Business ByDesign jako Britta Simon
 > [!NOTE]
 > Ujistěte se prosím, že NameID hodnota by měla odpovídat s polem uživatelské jméno na platformě SAP Business ByDesign.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

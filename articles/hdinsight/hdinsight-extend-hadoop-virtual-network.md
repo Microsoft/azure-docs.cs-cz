@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 46fa1c5a4874508cf8e2d288a99c908744347b69
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 06/04/2019
+ms.openlocfilehash: 4bfbce7dd985f3ebf67fde671d83acf30623b641
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480084"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055404"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -25,7 +25,7 @@ Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network
 * Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) služby, které nejsou k dispozici veřejně přes internet. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo [Apache HBase](https://hbase.apache.org/) rozhraní Java API.
 
 > [!IMPORTANT]  
-> 28. února 2019 síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
+> 28\. února 2019 síťové prostředky (jako jsou síťové karty, LBs atd.) pro nový clustery, které jsou vytvořené ve virtuální síti se zřídí ve stejné skupině prostředků clusteru HDInsight. Tyto prostředky byly dříve zřízeny ve skupině prostředků virtuální sítě. Není žádná změna aktuální spuštěné clustery a tyto clustery, které jsou vytvořené bez virtuální sítě.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Požadavky na ukázky a příklady
 
@@ -223,7 +223,7 @@ Je spravovaná služba HDInsight vyžaduje neomezený přístup ke stavu HDInsig
 
 ![Diagram vytvořené ve virtuální síti Azure vlastních entit HDInsight](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-### <a id="hdinsight-ip"></a> HDInsight s použitím skupin zabezpečení sítě
+### <a name="hdinsight-with-network-security-groups"></a>HDInsight s použitím skupin zabezpečení sítě
 
 Pokud máte v úmyslu používat **skupiny zabezpečení sítě** k řízení síťového provozu, proveďte následující akce před instalací HDInsight:
 
@@ -291,11 +291,11 @@ Pokud používáte skupiny zabezpečení sítě, musí umožňovat provoz ze slu
     | &nbsp; | Indie – jih | 104.211.223.67<br/>104.211.216.210 | \*:443 | Příchozí |
     | Japonsko | Japonsko – východ | 13.78.125.90</br>13.78.89.60 | \*:443 | Příchozí |
     | &nbsp; | Japonsko – západ | 40.74.125.69</br>138.91.29.150 | \*:443 | Příchozí |
-    | Jižní Korea | Jižní Korea – střed | 52.231.39.142</br>52.231.36.209 | \*:433 | Příchozí |
+    | Jižní Korea | Jižní Korea – střed | 52.231.39.142</br>52.231.36.209 | \*:443 | Příchozí |
     | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | \*:443 | Příchozí
     | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | \*:443 | Příchozí |
     | &nbsp; | Velká Británie – jih | 51.140.47.39</br>51.140.52.16 | \*:443 | Příchozí |
-    | Spojené státy | USA – střed | 13.67.223.215</br>40.86.83.253 | \*:443 | Příchozí |
+    | Spojené státy | USA – střed | 13.89.171.122</br>13.89.171.124 | \*:443 | Příchozí |
     | &nbsp; | USA – východ | 13.82.225.233</br>40.71.175.99 | \*:443 | Příchozí |
     | &nbsp; | Středoseverní USA | 157.56.8.38</br>157.55.213.99 | \*:443 | Příchozí |
     | &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | \*:443 | Příchozí |
@@ -328,28 +328,29 @@ Následující šablony Resource Manageru se vytvoří virtuální síť, která
 
 * [Nasazení zabezpečené virtuální síti Azure a cluster HDInsight Hadoop](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
-> [!IMPORTANT]  
-> Změna IP adresy používané v tomto příkladu tak, aby odpovídaly oblast Azure, které používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Pomocí následujícího skriptu prostředí PowerShell k vytvoření virtuální sítě, která omezuje příchozí provoz a umožní provoz z IP adres pro oblast Severní Evropa.
 
 > [!IMPORTANT]  
-> Změna IP adresy používané v tomto příkladu tak, aby odpovídaly oblast Azure, které používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
+> Změna IP adresy pro `hdirule1` a `hdirule2` v tomto příkladu tak, aby odpovídaly oblast Azure, kterou používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
+
 # Get the Virtual Network object
 $vnet = Get-AzVirtualNetwork `
     -Name $vnetName `
     -ResourceGroupName $resourceGroupName
+
 # Get the region the Virtual network is in.
 $location = $vnet.Location
+
 # Get the subnet object
 $subnet = $vnet.Subnets | Where-Object Name -eq $subnetName
+
 # Create a Network Security Group.
 # And add exemptions for the HDInsight health and management services.
 $nsg = New-AzNetworkSecurityGroup `
@@ -422,8 +423,10 @@ $nsg = New-AzNetworkSecurityGroup `
         -Access Allow `
         -Priority 305 `
         -Direction Inbound `
+
 # Set the changes to the security group
 Set-AzNetworkSecurityGroup -NetworkSecurityGroup $nsg
+
 # Apply the NSG to the subnet
 Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
@@ -433,14 +436,12 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-> [!IMPORTANT]  
-> Tento příklad ukazuje, jak přidat pravidla, která povolí příchozí provoz na požadované IP adresy. Neobsahuje pravidlo, které omezují příchozí přístup z jiných zdrojů.
->
-> Následující příklad ukazuje, jak povolit přístup přes SSH z Internetu:
->
-> ```powershell
-> Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
-> ```
+Tento příklad ukazuje, jak přidat pravidla, která povolí příchozí provoz na požadované IP adresy. Neobsahuje pravidlo, které omezují příchozí přístup z jiných zdrojů. Následující kód ukazuje, jak povolit přístup přes SSH z Internetu:
+
+```powershell
+Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
+Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
+```
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -457,7 +458,7 @@ Následujícím postupem vytvoření virtuální sítě, které omezují přích
 2. Použijte následující postup k přidání pravidel do nové skupiny zabezpečení sítě, které umožní příchozí komunikaci na portu 443 ze stavu a Správa služby Azure HDInsight. Nahraďte `RESOURCEGROUP` s názvem skupiny prostředků, která obsahuje virtuální síť Azure.
 
     > [!IMPORTANT]  
-    > Změna IP adresy používané v tomto příkladu tak, aby odpovídaly oblast Azure, které používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
+    > Změna IP adresy pro `hdirule1` a `hdirule2` v tomto příkladu tak, aby odpovídaly oblast Azure, kterou používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -471,14 +472,12 @@ Následujícím postupem vytvoření virtuální sítě, které omezují přích
 3. Pokud chcete načíst jedinečný identifikátor pro tuto skupinu zabezpečení sítě, použijte následující příkaz:
 
     ```azurecli
-    az network nsg show -g RESOURCEGROUP -n hdisecure --query 'id'
+    az network nsg show -g RESOURCEGROUP -n hdisecure --query "id"
     ```
 
     Tento příkaz vrátí hodnotu podobné následujícímu textu:
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
-
-    Použijte dvojité uvozovky kolem `id` v příkazu, pokud neobdržíte očekávané výsledky.
 
 4. Chcete-li použít skupinu zabezpečení sítě k podsíti použijte následující příkaz. Nahradit `GUID` a `RESOURCEGROUP` vrácené hodnoty s těmi v předchozím kroku. Nahraďte `VNETNAME` a `SUBNETNAME` s názvem virtuální sítě a název podsítě, kterou chcete vytvořit.
 
@@ -488,14 +487,14 @@ Následujícím postupem vytvoření virtuální sítě, které omezují přích
 
     Po dokončení tohoto příkazu můžete nainstalovat HDInsight do virtuální sítě.
 
-> [!IMPORTANT]  
-> Tyto kroky otevřít pouze přístup k službě stavu a správa HDInsight v cloudu Azure. Je blokován jiným přístup ke clusteru HDInsight z mimo virtuální síť. Pokud chcete povolit přístup mimo virtuální síť, musíte přidat další pravidla skupiny zabezpečení sítě.
->
-> Následující příklad ukazuje, jak povolit přístup přes SSH z Internetu:
->
-> ```azurecli
-> az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
-> ```
+
+Tyto kroky otevřít pouze přístup k službě stavu a správa HDInsight v cloudu Azure. Je blokován jiným přístup ke clusteru HDInsight z mimo virtuální síť. Pokud chcete povolit přístup mimo virtuální síť, musíte přidat další pravidla skupiny zabezpečení sítě.
+
+Následující kód ukazuje, jak povolit přístup přes SSH z Internetu:
+
+```azurecli
+az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
+```
 
 ## <a id="example-dns"></a> Příklad: Konfigurace DNS
 
@@ -658,7 +657,7 @@ Po dokončení těchto kroků se můžete připojit k prostředkům ve virtuáln
 ## <a name="next-steps"></a>Další postup
 
 * Příklad začátku do konce konfigurace HDInsight pro připojení k místní síti, najdete v části [HDInsight připojit k místní síti](./connect-on-premises-network.md).
-* Konfigurace clusterů Apache Hbase ve virtuálních sítích Azure, najdete v části [clusterů vytvořit Apache HBase v HDInsight ve virtuální síti Azure](hbase/apache-hbase-provision-vnet.md).
+* Konfigurace clusterů Apache HBase ve virtuálních sítích Azure, najdete v části [clusterů vytvořit Apache HBase v HDInsight ve virtuální síti Azure](hbase/apache-hbase-provision-vnet.md).
 * Konfigurace geografické replikace Apache HBase, naleznete v tématu [nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure](hbase/apache-hbase-replication.md).
 * Další informace o virtuálních sítích Azure najdete v článku [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 

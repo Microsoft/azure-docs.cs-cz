@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
 ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60684403"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv EDIFACT pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
@@ -71,7 +71,7 @@ Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-int
    | Identita hostitele |Identifikátor pro hostitele partnera |
    | Partner s identitou hosta |Smlouvu musí hostitelské i hostující partnera. Partner s identitou hosta představuje organizace, která je podnikající s partnerem hostitele. |
    | Identita hosta |Identifikátor partner s identitou hosta |
-   | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
+   | Zobrazit nastavení |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
    | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané dohodou. |
    ||| 
 
@@ -94,8 +94,8 @@ Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v so
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB6.1 (Referenční heslo příjemce) |Zadejte hodnotu mezi 1 a 14 znaky alfanumerická hodnota. |
-| UNB6.2 (Referenční kvalifikátor příjemce) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně dva znaky. |
+| UNB6.1 (referenční heslo příjemce) |Zadejte hodnotu mezi 1 a 14 znaky alfanumerická hodnota. |
+| UNB6.2 (referenční kvalifikátor příjemce) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně dva znaky. |
 
 ### <a name="acknowledgments"></a>Potvrzení
 
@@ -125,7 +125,7 @@ Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v so
 | Zakázat duplicity kontrolních čísel sad transakcí |Blokování výměn se duplicitní transakce sada kontrolních čísel (UNH1), vyberte tuto vlastnost. |
 | Řídicí číslo potvrzení EDIFACT |K určení čísla referenční dokumentace sady transakcí pro použití v potvrzení, zadejte hodnotu pro předponu, rozsah čísel odkaz a příponu. |
 
-### <a name="validations"></a>Ověřování
+### <a name="validations"></a>Ověření
 
 Po dokončení každého řádku ověření druhého je automaticky přidán. Pokud nezadáte žádná pravidla, ověřování pomocí "Výchozího" řádku.
 
@@ -142,7 +142,7 @@ Po dokončení každého řádku ověření druhého je automaticky přidán. Po
 
 | Vlastnost | Popis |
 | --- | --- |
-| Pokud jsou povolené koncové oddělovače, vytvořit prázdné značky XML |Zaškrtněte toto políčko, aby odesílatele výměny zahrnout prázdné značky XML pro koncové oddělovače. |
+| Vytvořit prázdné značky XML, pokud jsou povolené koncové oddělovače |Zaškrtněte toto políčko, aby odesílatele výměny zahrnout prázdné značky XML pro koncové oddělovače. |
 | Rozdělit výměnu jako sady transakcí – pozastavit sady transakcí při chybě|Analyzuje každou transakci nastavit ve výměně do samostatného dokumentu XML použitím odpovídající obálku do sady transakcí. Pozastavit pouze sady transakcí, jejichž ověření se nezdařilo. |
 | Rozdělit výměnu jako sady transakcí – pozastavit výměnu při chybě|Analyzuje každou transakci nastavit ve výměně do samostatného dokumentu XML použitím odpovídající obálky. Pozastavit celý výměnu, pokud jeden nebo více sady transakcí v výměna neúspěšné ověření. | 
 | Zachovat výměnu – pozastavit sady transakcí při chybě |Výměna ponechá beze změn, vytvoří dokument XML pro celé dávkové výměnu. Pozastavit pouze sady transakcí, které neúspěšné ověření současně zpracovávat všechny ostatní sady transakcí. |
@@ -168,18 +168,18 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 | Vlastnost | Popis |
 | --- | --- |
 | UNB1.2 (verze syntaxe) |Vyberte hodnotu v rozmezí **1** a **4**. |
-| UNB2.3 (Adresa zpětného směrování odesílatele) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků. |
-| UNB3.3 (Adresa zpětného směrování příjemce) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků. |
-| UNB6.1 (Referenční heslo příjemce) |Zadejte alfanumerická hodnota s minimálně jeden a maximálně 14 znaků. |
-| UNB6.2 (Referenční kvalifikátor příjemce) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně dva znaky. |
-| UNB7 (Referenční ID aplikace) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků |
+| UNB2.3 (adresa zpětného směrování odesílatele) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků. |
+| UNB3.3 (adresa zpětného směrování příjemce) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků. |
+| UNB6.1 (referenční heslo příjemce) |Zadejte alfanumerická hodnota s minimálně jeden a maximálně 14 znaků. |
+| UNB6.2 (referenční kvalifikátor příjemce) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně dva znaky. |
+| UNB7 (referenční ID aplikace) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků |
 
 ### <a name="acknowledgment"></a>Potvrzení
 | Vlastnost | Popis |
 | --- | --- |
 | Přijetí zprávy (CONTRL) |Toto políčko zaškrtněte, pokud hostované partnerské očekává technické potvrzení (CONTRL). Toto nastavení určuje, že hostované partnera, který odesílá zprávy, požadavků na potvrzení partner s identitou hosta. |
 | Potvrzení (CONTRL) |Toto políčko zaškrtněte, pokud hostované partnerské očekává, že k přijetí funkční potvrzení (CONTRL). Toto nastavení určuje, že hostované partnera, který odesílá zprávy, požadavků na potvrzení partner s identitou hosta. |
-| Vygenerovat smyčku SG1/SG4 pro přijaté sady transakcí |Pokud jste se rozhodli požádat o funkční potvrzení, vyberte toto políčko, aby generování SG1/BS4 smyček v funkční CONTRL potvrzení pro přijaté sady transakcí. |
+| Generovat SG1/sg4 pro přijaté sady transakcí |Pokud jste se rozhodli požádat o funkční potvrzení, vyberte toto políčko, aby generování SG1/BS4 smyček v funkční CONTRL potvrzení pro přijaté sady transakcí. |
 
 ### <a name="schemas"></a>Schémata
 | Vlastnost | Popis |
@@ -192,11 +192,11 @@ Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vá
 ### <a name="envelopes"></a>Obálky
 | Vlastnost | Popis |
 | --- | --- |
-| UNB8 (Zpracování kódu priority) |Zadejte hodnotu, která není více než jeden znak abecední. |
-| UNB10 (Dohoda o komunikaci) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 40 znaků. |
-| UNB11 (Testovací indikátor) |Zaškrtněte toto políčko, že je výměna vygenerovat testovací data |
-| Použít segment UNA (Nápověda k řetězci služby) |Zaškrtnutím tohoto políčka Generovat segment UNA pro výměnu k odeslání. |
-| Použít segmenty UNG (Hlavička skupiny funkce) |Zaškrtnutím tohoto políčka pro vytváření segmentů seskupení v záhlaví funkční skupiny v zprávy odeslané do partner s identitou hosta. Chcete-li vytvořit segmenty UNG se používají tyto hodnoty: <p>Pro **UNG1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 6 znaků. <p>Pro **UNG2.1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 35 znaků. <p>Pro **UNG2.2**, zadejte hodnotu alfanumerické s maximálně 4 znaky. <p>Pro **UNG3.1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 35 znaků. <p>Pro **UNG3.2**, zadejte hodnotu alfanumerické s maximálně 4 znaky. <p>Pro **UNG6**, zadejte alfanumerická hodnota s minimálně jeden a maximálně tři znaky. <p>Pro **UNG7.1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně tři znaky. <p>Pro **UNG7.2**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně tři znaky. <p>Pro **UNG7.3**, zadejte alfanumerická hodnota s minimálně 1 znak a maximálně 6 znaků. <p>Pro **UNG8**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků. |
+| UNB8 (zpracování kódu Priority) |Zadejte hodnotu, která není více než jeden znak abecední. |
+| UNB10 (dohoda o komunikaci) |Zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 40 znaků. |
+| UNB11 (testovací indikátor) |Zaškrtněte toto políčko, že je výměna vygenerovat testovací data |
+| Použít Segment UNA (Rady řetězci služby) |Zaškrtnutím tohoto políčka Generovat segment UNA pro výměnu k odeslání. |
+| Použít segmenty UNG (hlavička skupiny funkce) |Zaškrtnutím tohoto políčka pro vytváření segmentů seskupení v záhlaví funkční skupiny v zprávy odeslané do partner s identitou hosta. Chcete-li vytvořit segmenty UNG se používají tyto hodnoty: <p>Pro **UNG1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 6 znaků. <p>Pro **UNG2.1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 35 znaků. <p>Pro **UNG2.2**, zadejte hodnotu alfanumerické s maximálně 4 znaky. <p>Pro **UNG3.1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 35 znaků. <p>Pro **UNG3.2**, zadejte hodnotu alfanumerické s maximálně 4 znaky. <p>Pro **UNG6**, zadejte alfanumerická hodnota s minimálně jeden a maximálně tři znaky. <p>Pro **UNG7.1**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně tři znaky. <p>Pro **UNG7.2**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně tři znaky. <p>Pro **UNG7.3**, zadejte alfanumerická hodnota s minimálně 1 znak a maximálně 6 znaků. <p>Pro **UNG8**, zadejte alfanumerická hodnota s minimálně jeden znak a maximálně 14 znaků. |
 
 ### <a name="character-sets-and-separators"></a>Znakové sady a oddělovače
 
@@ -204,7 +204,7 @@ Jiné než znakové sady, můžete zadat jinou sadu oddělovačů použít u ka�
 
 | Vlastnost | Popis |
 | --- | --- |
-| UNB1.1 (Identifikátor systému) |Vyberte EDIFACT znakové sady má být použita na odchozí výměny. |
+| UNB1.1 (identifikátor systému) |Vyberte EDIFACT znakové sady má být použita na odchozí výměny. |
 | Schéma |Vyberte schéma z rozevíracího seznamu. Po dokončení každého řádku, se automaticky přidá nový řádek. Pro vybrané schéma vyberte sadu oddělovače, který chcete použít, podle oddělovače níže. |
 | Typ vstupu |Z rozevíracího seznamu vyberte typem vstupu. |
 | Oddělovač komponent |K oddělení složených datových prvků, zadejte jeden znak. |
@@ -215,11 +215,11 @@ Jiné než znakové sady, můžete zadat jinou sadu oddělovačů použít u ka�
 ### <a name="control-numbers"></a>Kontrolní čísla
 | Vlastnost | Popis |
 | --- | --- |
-| UNB5 (Výměnné řídicí číslo) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty slouží ke generování odchozí výměny. Předpona a přípona jsou volitelné, zatímco kontrolní číslo je povinný. Kontrolní číslo je zvýšen pro každé nové zprávy. Předpona a přípona zůstávají stejné. |
-| UNG5 (Řídicí číslo skupiny) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty slouží ke generování kontrolní číslo skupiny. Předpona a přípona jsou volitelné, zatímco kontrolní číslo je povinný. Kontrolní číslo je zvýšen pro každou novou zprávu, dokud nebude dosaženo maximální hodnoty; Předpona a přípona zůstávají stejné. |
-| UNH1 (Referenční číslo hlavičky zprávy) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty slouží ke generování referenční číslo hlavičky zprávy. Předpona a přípona jsou volitelné, zatímco referenční číslo je povinný. Referenční číslo je zvýšen pro každé nové zprávy. Předpona a přípona zůstávají stejné. |
+| UNB5 (výměnné řídicí číslo) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty slouží ke generování odchozí výměny. Předpona a přípona jsou volitelné, zatímco kontrolní číslo je povinný. Kontrolní číslo je zvýšen pro každé nové zprávy. Předpona a přípona zůstávají stejné. |
+| UNG5 (řídicí číslo skupiny) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty slouží ke generování kontrolní číslo skupiny. Předpona a přípona jsou volitelné, zatímco kontrolní číslo je povinný. Kontrolní číslo je zvýšen pro každou novou zprávu, dokud nebude dosaženo maximální hodnoty; Předpona a přípona zůstávají stejné. |
+| UNH1 (referenční číslo hlavičky zprávy) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty slouží ke generování referenční číslo hlavičky zprávy. Předpona a přípona jsou volitelné, zatímco referenční číslo je povinný. Referenční číslo je zvýšen pro každé nové zprávy. Předpona a přípona zůstávají stejné. |
 
-### <a name="validations"></a>Ověřování
+### <a name="validations"></a>Ověření
 
 Po dokončení každého řádku ověření druhého je automaticky přidán. Pokud nezadáte žádná pravidla, ověřování pomocí "Výchozího" řádku.
 
@@ -245,6 +245,6 @@ Po dokončení každého řádku ověření druhého je automaticky přidán. Po
 ## <a name="view-swagger-file"></a>Zobrazit soubor Swagger
 Chcete-li zobrazit podrobnosti Swagger pro konektor EDIFACT, naleznete v tématu [EDIFACT](/connectors/edifact/).
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 * [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
 

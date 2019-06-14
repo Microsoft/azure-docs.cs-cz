@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 01a70bfbb169090fbdf4b5f8e00af6895f69c964
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903264"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>Kurz: Integrace Azure Active Directory se SAP Netweaverem
 
@@ -54,7 +54,7 @@ Konfigurace integrace SAP NetWeaver do služby Azure AD, budete muset přidat SA
 
 **SAP NetWeaver přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -196,7 +196,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se SAP Netweaverem, proveď
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
-    b. Z **transformace** seznamu vyberte **ExtractMailPrefix()**.
+    b. Z **transformace** seznamu vyberte **ExtractMailPrefix()** .
 
     c. Z **parametr 1** seznamu vyberte **user.userprinicipalname**.
 
@@ -353,7 +353,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v SAP NetWeaver jako Britta Simon. Fungovat interně odborné tým SAP nebo spolupráci s partnerem SAP organizace přidat uživatele na platformě SAP Netweaveru.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 1. Jakmile poskytovatel identity Azure AD se aktivoval, zkuste níže uvedenou adresu URL ke kontrole jednotné přihlašování (nebudou se výzva pro uživatelské jméno a heslo)
 

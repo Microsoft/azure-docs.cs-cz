@@ -15,10 +15,10 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956044"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
@@ -114,7 +114,7 @@ V levém navigačním panelu na stránce vaší aplikace, klikněte na tlačítk
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Klikněte na tlačítko **kanály Azure (Preview)** > **pokračovat**.
+Klikněte na tlačítko **kanály Azure (Preview)**  > **pokračovat**.
 
 ![](media/app-service-deploy-local-git/pipeline-builds.png)
 
@@ -212,7 +212,7 @@ git config --global http.postBuffer 524288000
 
   * `npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1`
 
-      OR
+      NEBO
   * `npm ERR! [modulename@version] preinstall: \make || gmake\`
 
 ## <a name="additional-resources"></a>Další prostředky

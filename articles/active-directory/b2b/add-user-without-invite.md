@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 06/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: sasubram
+ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5db5eb9c0e0493d906345892fcc5f2872a3e0e14
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 81aad3ef9a4a53532d19fdb81bc48fc50931d49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812460"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056065"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Přidat uživatele typu Host spolupráce B2B bez pozvánky odkaz nebo e-mailu
 
@@ -29,7 +29,7 @@ Předtím, než tato nová metoda byla k dispozici, může pozvat uživatele typ
 2. Správce v organizaci hostitele [nastaví zásady](delegate-invitations.md) , která umožňují Sam k identifikaci a přidat další uživatele v organizaci partnera poskytujícího (Litware). (Sam, musí být přidaný do **odesílatel pozvánky hostů** role.)
 3. Nyní Sam můžete přidat další uživatele z Litware do adresáře, skupiny nebo aplikace společnosti WoodGrove bez nutnosti pozvánky uplatnit. Pokud Sam má oprávnění odpovídající výčet Litware, dojde automaticky.
  
-Tato metoda původní stále funguje. Je však malý rozdíl v chování. Pokud používáte PowerShell, můžete si všimnout, že teď má účet pozvaný hosta **PendingAcceptance** stav místo okamžitě zobrazení **přijato**. I když je ve stavu čekající na vyřízení, uživatel typu Host stále přihlásit a přístup k aplikaci bez kliknutí na odkaz na e-mailové pozvání. Stav Čekání znamená, že není uživatel zatím prošli [souhlas prostředí](redemption-experience.md#privacy-policy-agreement), kde přijmou podmínky ochrany osobních údajů zvoucí organizaci. Uživatel typu Host při prvním přihlášení se zobrazí tato obrazovka pro vyjádření souhlasu. 
+Tato metoda původní stále funguje. Je však malý rozdíl v chování. Pokud používáte PowerShell, můžete si všimnout, že teď má účet pozvaný hosta **PendingAcceptance** stav místo okamžitě zobrazení **přijato**. I když je ve stavu čekající na vyřízení, uživatel typu Host stále přihlásit a přístup k aplikaci bez kliknutí na odkaz na e-mailové pozvání. Stav Čekání znamená, že není uživatel zatím prošli [souhlas prostředí](redemption-experience.md#consent-experience-for-the-guest), kde přijmou podmínky ochrany osobních údajů zvoucí organizaci. Uživatel typu Host při prvním přihlášení se zobrazí tato obrazovka pro vyjádření souhlasu. 
 
 Pokud můžete pozvat uživatele do adresáře, musí uživatel typu Host přístup k prostředku specifickým pro tenanta webu Azure portal přímo adresu URL (například https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) k zobrazení a souhlasit s podmínkami ochrany osobních údajů.
 

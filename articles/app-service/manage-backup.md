@@ -16,10 +16,10 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61271642"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
@@ -78,13 +78,13 @@ Podporují se následující řešení databáze s funkcí zálohování:
 ![klikněte na tlačítko Konfigurovat.](./media/web-sites-backup/ClickConfigure1.png)
 3. V **konfigurace zálohování** klikněte na **úložiště: Není nakonfigurováno** a nakonfigurujte účet úložiště.
    
-    ![Výběr účtu úložiště][ChooseStorageAccount]
+    ![Zvolte účet úložiště][ChooseStorageAccount]
 4. Vyberte cílovou složku zálohy tak, že vyberete **účtu úložiště** a **kontejneru**. Účet úložiště musí patřit do stejného předplatného jako aplikace, které chcete zálohovat. Pokud chcete, můžete vytvořit nový účet úložiště nebo nový kontejner na příslušných stránkách. Jakmile budete hotovi, klikněte na tlačítko **vyberte**.
    
-    ![Výběr účtu úložiště](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
+    ![Zvolte účet úložiště](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
 5. V **konfigurace zálohování** stránce, která je pořád otevřená, můžete nakonfigurovat **příkaz Backup Database**, vyberte databáze, které chcete zahrnout do zálohy (SQL database nebo MySQL) a pak klikněte na tlačítko **OK**.  
    
-    ![Výběr účtu úložiště](./media/web-sites-backup/03ConfigureDatabase1.png)
+    ![Zvolte účet úložiště](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
    > Pro databáze se zobrazí v tomto seznamu, musí existovat svůj připojovací řetězec **připojovací řetězce** část **nastavení aplikace** stránky pro vaši aplikaci. 
@@ -106,7 +106,7 @@ Jakmile je nakonfigurovaný účet úložiště a kontejner, můžete zahájit r
 ## <a name="configure-automated-backups"></a>Konfigurace automatizovaného zálohování
 1. V **konfiguraci zálohování** nastavte **naplánované zálohování** k **na**. 
    
-    ![Výběr účtu úložiště](./media/web-sites-backup/05ScheduleBackup1.png)
+    ![Zvolte účet úložiště](./media/web-sites-backup/05ScheduleBackup1.png)
 2. Nastavení plánu zálohování, které se zobrazí možnosti **naplánované zálohování** k **na**, podle potřeby nakonfigurujte plán zálohování a klikněte na tlačítko **OK**.
    
     ![Povolit automatické zálohování][SetAutomatedBackupOn]

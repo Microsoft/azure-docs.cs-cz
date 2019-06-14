@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825444"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci mimo Galerii konfigurované pro federované jednotné přihlašování
@@ -146,9 +146,9 @@ Po krátké době možné ke spouštění těchto aplikací pomocí metod popsan
 
 Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné přihlášení. Mezi běžné problémy patří:
 
--   V požadavku SAML chybí povinná pole.
+-   Chybí povinná pole. v požadavku SAML
 
--   Kódovaná metoda požadavku SAML
+-   Požadavek SAML zakódoval metodu
 
 **Řešení**
 
@@ -264,7 +264,7 @@ Odstraňte nepoužívané odpovědních adres URL nakonfigurované pro aplikaci.
 
 6.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
 
-7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)**, odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)** , odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
 
 
 

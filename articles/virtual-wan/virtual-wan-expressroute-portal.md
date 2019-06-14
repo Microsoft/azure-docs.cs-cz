@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: d43cdec9e906087c98759a478ebc0c86beaa1354
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693270"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077511"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Kurz: Vytvoření přidružení ExpressRoute pomocí Azure virtuální sítě WAN (Preview)
 
@@ -47,8 +47,8 @@ Než budete moci nakonfigurovat virtuální síť WAN, je nejdříve potřeba za
 
 **Požadavky pro verzi Preview:**
 
-Okruh ExpressRoute, musí být povolená v zemi/oblast, která podporuje [ExpressRoute globální dosah](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
-Okruh ExpressRoute, musí být okruh Premium pro připojení k rozbočovači virtuální sítě WAN. 
+  * Okruh ExpressRoute, musí být povolená v zemi/oblast, která podporuje [ExpressRoute globální dosah](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
+  * Abyste se mohli připojit k rozbočovači virtuální sítě WAN, musí být okruh ExpressRoute Premium okruhu. 
 
 ## <a name="vnet"></a>1. Vytvoření virtuální sítě
 

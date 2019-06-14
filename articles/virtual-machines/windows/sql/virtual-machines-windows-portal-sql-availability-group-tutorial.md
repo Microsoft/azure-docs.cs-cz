@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60593416"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Kurz: Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
@@ -299,7 +299,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti. použijte následují
 
     ![Průvodce novou skupinu dostupnosti, vyberte počáteční Data synchronizace](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. V **vybrat počáteční synchronizaci dat** stránce **úplné** a zadejte do sdíleného síťového umístění. Pro umístění, použijte [zálohování sdílené složky, kterou jste vytvořili](#backupshare). V příkladu pochází  **\\ \\ \<první Server SQL\>\Backup\\**. Klikněte na **Další**.
+8. V **vybrat počáteční synchronizaci dat** stránce **úplné** a zadejte do sdíleného síťového umístění. Pro umístění, použijte [zálohování sdílené složky, kterou jste vytvořili](#backupshare). V příkladu pochází  **\\ \\ \<první Server SQL\>\Backup\\** . Klikněte na **Další**.
 
    >[!NOTE]
    >Úplná synchronizace trvá úplné zálohování databáze na první instanci systému SQL Server a obnoví k druhé instanci. U velkých databází úplnou synchronizaci nedoporučuje, protože to může trvat dlouhou dobu. Nyní můžete snížit ruční vytvoření zálohy databáze a obnovení s `NO RECOVERY`. Pokud již obnovení databáze s `NO RECOVERY` na druhém serveru SQL před konfigurací skupiny dostupnosti, zvolte **připojit pouze k**. Pokud chcete vytvořit zálohu po dokončení konfigurace skupiny dostupnosti, zvolte **přeskočit počáteční synchronizaci**.

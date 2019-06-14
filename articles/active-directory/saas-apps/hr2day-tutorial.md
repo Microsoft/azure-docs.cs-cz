@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 491f1704cf08bd31a1b089d178afb3c281d636e6
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 126bb05109e624fb1198ea16b07cd7836103f9e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898297"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Integrace Azure Active Directory s HR2day podle Merces
 
@@ -53,7 +53,7 @@ Konfigurace integrace HR2day podle Merces do služby Azure AD, budete muset při
 
 **Chcete-li přidat HR2day podle Merces z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -121,7 +121,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HR2day podle Merces, prove�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Název |  Zdrojový atribut |
+    | Name |  Zdrojový atribut |
     | ---------- | ----------- |
     | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
     | | |
@@ -163,7 +163,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s HR2day podle Merces, prove�
 Ke konfiguraci jednotného přihlašování na **HR2day podle Merces** straně, je nutné odeslat na stažený **certifikát (Base64)** a vhodné zkopírovaný adresy URL z webu Azure portal [HR2day Merces podpora tým](mailto:servicedesk@merces.nl). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!NOTE]
-> Zmínění Merces týmu, že tato integrační potřebuje ID Entity k nastavení se vzorem **https://hr2day.force.com/INSTANCENAME**.
+> Zmínění Merces týmu, že tato integrační potřebuje ID Entity k nastavení se vzorem **https://hr2day.force.com/INSTANCENAME** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -223,7 +223,7 @@ V této části vytvoříte volány Britta Simon v HR2day Merces uživatele. Pr�
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [HR2day týmem podpory klienta Merces](mailto:servicedesk@merces.nl).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

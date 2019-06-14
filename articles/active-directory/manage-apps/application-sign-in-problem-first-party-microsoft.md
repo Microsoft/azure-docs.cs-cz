@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108304"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoftu
 
@@ -67,7 +67,7 @@ Toto jsou některé běžné problémy, které lidé tyto problémy při jejich 
 
   * Ujistěte se, že **ověřování službou Multi-Factor Authentication** neblokuje přístup uživatelů. [Zkontrolujte stav služby Multi-Factor authentication](#check-a-users-multi-factor-authentication-status) nebo [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
-  * Ujistěte se, že **zásady podmíněného přístupu** nebo **Identity Protection** zásad neblokuje přístup uživatelů. [Zkontrolujte zásady podmíněného přístupu konkrétní](#problems-with-conditional-access-policies) nebo [zkontrolujte zásady podmíněného přístupu pro konkrétní aplikaci](#check-a-specific-applications-conditional-access-policy) nebo [zakázat zásadu konkrétní podmíněného přístupu](#disable-a-specific-conditional-access-policy)
+  * Ujistěte se, že **zásady podmíněného přístupu** nebo **Identity Protection** zásad neblokuje přístup uživatelů. [Zkontrolovat konkrétní zásady podmíněného přístupu](#problems-with-conditional-access-policies) nebo [zkontrolujte zásady podmíněného přístupu pro konkrétní aplikaci](#check-a-specific-applications-conditional-access-policy) nebo [zakázat konkrétní zásady podmíněného přístupu](#disable-a-specific-conditional-access-policy)
 
   * Ujistěte se, že uživatele **kontaktní údaje pro ověření** neustále aktuální, aby ověřování službou Multi-Factor Authentication nebo podmíněného přístupu zásady vynucení. [Zkontrolujte stav služby Multi-Factor authentication](#check-a-users-multi-factor-authentication-status) nebo [zkontrolujte kontaktní údaje pro ověření uživatele](#check-a-users-authentication-contact-info)
 
@@ -419,9 +419,9 @@ Chcete-li přiřadit licenci ke skupině, postupujte takto:
 
 ## <a name="problems-with-conditional-access-policies"></a>Problémy se zásadami podmíněného přístupu
 
-### <a name="check-a-specific-conditional-access-policy"></a>Zkontrolujte zásady konkrétní podmíněného přístupu
+### <a name="check-a-specific-conditional-access-policy"></a>Zkontrolovat konkrétní zásady podmíněného přístupu
 
-Zkontrolujte nebo ověřit zásady podmíněného přístupu jeden:
+Zkontrolujte nebo ověřit jednu zásadu podmíněného přístupu:
 
 1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
@@ -474,9 +474,9 @@ Zkontrolujte nebo ověřit jednu aplikaci aktuálně nakonfigurované zásady po
      >
      >
 
-### <a name="disable-a-specific-conditional-access-policy"></a>Zakázat zásadu konkrétní podmíněného přístupu
+### <a name="disable-a-specific-conditional-access-policy"></a>Zakázat konkrétní zásady podmíněného přístupu
 
-Zkontrolujte nebo ověřit zásady podmíněného přístupu jeden:
+Zkontrolujte nebo ověřit jednu zásadu podmíněného přístupu:
 
 1.  Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako **globálního správce.**
 
@@ -512,7 +512,7 @@ Přístup k aplikaci můžete blokovat, protože nedošlo k operace vyjádření
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Provedení operace schválením na úrovni správce pro všechny aplikace
 
--   Pro **pouze aplikace vyvinuté pomocí modelu aplikace V1**, můžete vynutit této úrovně souhlas správce na výskyt tak, že přidáte "**? řádku = správce\_souhlas**" na konec objektu Přihlašovací adresa URL na aplikace.
+-   Pro **pouze aplikace vyvinuté pomocí modelu aplikace V1**, můžete vynutit této úrovně souhlas správce na výskyt tak, že přidáte " **? řádku = správce\_souhlas**" na konec objektu Přihlašovací adresa URL na aplikace.
 
 -   Pro **jakékoli aplikace vyvinuté pomocí modelu aplikace V2**, můžete vynutit tato schválením na úrovni správce na výskyt podle pokynů v části **žádat oprávnění správce directory** část [pomocí koncového bodu souhlas správce](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 

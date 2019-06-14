@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0308fbb103fb06bd2dffe0a442346a3fc4f7db62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901083"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Kurz: Integrace Azure Active Directory s BlueJeans
 
@@ -56,7 +56,7 @@ Konfigurace integrace BlueJeans do služby Azure AD, budete muset přidat BlueJe
 
 **Chcete-li přidat BlueJeans z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -260,7 +260,7 @@ Cílem této části je vytvořte uživatele Britta Simon v BlueJeans. BlueJeans
 > [!NOTE]
 > Můžete použít jakékoli jiné BlueJeans uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných BlueJeans zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d218ebcacf18687d01402f2c6ac354d95a1fe71f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306761"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071401"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: Sestavení aplikace s vysokou dostupností s úložištěm objektů Blob
 
@@ -82,8 +82,6 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    | **Model nasazení** | Resource Manager  | Resource Manager obsahuje nejnovější funkce.|
    | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
    | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
-   | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | Toto nastavení je nutné ukázka fungovala. |
-   |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
    |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |

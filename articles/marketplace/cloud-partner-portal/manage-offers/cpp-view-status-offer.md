@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: b8113552edf9dd2f886b5752b2ebc69afc0fda08
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064307"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Zobrazit stav publikování nabídek na webu Azure Marketplace a AppSource
 
@@ -39,7 +39,7 @@ Následující příklad **stav** kartu konzultační služby, zobrazující ozn
 
 ![Stav kartu konzultační služby ukazuje chybu](./media/consulting-service-error.png)
 
-Zobrazí se stav poslední příklad aplikací Azure kritický problém revize Microsoft.  Obsahuje aktivní propojení s položkou VSTS, který obsahuje podrobné informace o tomto problému zkontrolujte.  Další informace najdete v tématu [nabídka aplikaci Azure publikovat](cpp-publish-offer.md).
+Zobrazí se stav poslední příklad aplikací Azure kritický problém revize Microsoft.  Obsahuje aktivní propojení s položkou Azure DevOps, který obsahuje podrobné informace o tomto problému zkontrolujte.  Další informace najdete v tématu [nabídka aplikaci Azure publikovat](cpp-publish-offer.md).
 
 ![Kartu stav pro aplikaci Azure znázorňující kontrolu problému](../azure-applications/media/status-tab-ms-review.png)
 

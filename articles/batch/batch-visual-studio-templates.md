@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60550047"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Rychlé zprovoznění řešení Batch pomocí šablony projektů Visual Studio
@@ -89,7 +89,7 @@ Chcete-li přidat správce úloh do řešení, které jste vytvořili dříve, p
 
 1. Otevřete existující řešení v sadě Visual Studio.
 2. V Průzkumníku řešení klikněte pravým tlačítkem na řešení, klikněte na tlačítko **přidat** > **nový projekt**.
-3. V části **Visual C#**, klikněte na tlačítko **cloudu**a potom klikněte na tlačítko **Správce úloh Azure Batch s rozdělovačem úlohy**.
+3. V části **Visual C#** , klikněte na tlačítko **cloudu**a potom klikněte na tlačítko **Správce úloh Azure Batch s rozdělovačem úlohy**.
 4. Zadejte název, který popíše aplikaci a identifikuje tento projekt jako správce úloh (např.) "LitwareJobManager").
 5. Chcete-li vytvořit projekt, klikněte na tlačítko **OK**.
 6. Nakonec sestavte projekt tak, aby platnost sady Visual Studio se načíst všechny odkazované balíčky NuGet a ověřte, že projekt je platné, než začnete, její změny.
@@ -258,7 +258,7 @@ Přidat úkol procesor do řešení, které jste vytvořili dříve, postupujte 
 
 1. Otevřete existující řešení v sadě Visual Studio.
 2. V Průzkumníku řešení klikněte pravým tlačítkem na řešení, klikněte na tlačítko **přidat**a potom klikněte na tlačítko **nový projekt**.
-3. V části **Visual C#**, klikněte na tlačítko **cloudu**a potom klikněte na tlačítko **Azure Batch úkol procesoru**.
+3. V části **Visual C#** , klikněte na tlačítko **cloudu**a potom klikněte na tlačítko **Azure Batch úkol procesoru**.
 4. Zadejte název, který popíše aplikaci a identifikuje tento projekt jako úloha procesor (např.) "LitwareTaskProcessor").
 5. Chcete-li vytvořit projekt, klikněte na tlačítko **OK**.
 6. Nakonec sestavte projekt tak, aby platnost sady Visual Studio se načíst všechny odkazované balíčky NuGet a ověřte, že projekt je platné, než začnete, její změny.

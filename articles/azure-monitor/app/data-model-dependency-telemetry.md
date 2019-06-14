@@ -13,17 +13,17 @@ ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60901021"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie závislostí: Datový model Application Insights
 
 Telemetrie závislostí (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje interakci monitorované součásti pomocí vzdáleného komponenty, jako je SQL nebo koncový bod HTTP.
 
-## <a name="name"></a>Název
+## <a name="name"></a>Name
 
 Název příkazu zahájené s tímto voláním závislostí. Hodnota s nízkou kardinality. Příklady jsou název uložené procedury a šablonu cesty URL.
 
@@ -39,7 +39,7 @@ Příkaz iniciovaných toto volání závislosti. Příklady příkazu jazyka SQ
 
 Název typu závislosti. Kardinalita s nízkou hodnotu pro logické seskupení závislosti a další pole, jako jsou commandName a kód výsledku vyhodnocení. Příklady jsou SQL, Azure table a HTTP.
 
-## <a name="target"></a>Cíl
+## <a name="target"></a>Target
 
 Cílový web volání závislostí. Příkladem mohou být název serveru, adresa hostitele. Další informace najdete v tématu [korelace](../../azure-monitor/app/correlation.md) stránky.
 

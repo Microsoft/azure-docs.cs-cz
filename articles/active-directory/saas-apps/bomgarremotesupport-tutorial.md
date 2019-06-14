@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65e7192bdcc148ba081d0de954b51535778e750
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: b25007fa8e9d547b9e5671390514b3bc10f329fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>Kurz: Integrace Azure Active Directory s podporou vzdáleného Bomgar
 
@@ -54,7 +54,7 @@ Konfigurace integrace vzdálenou podporu Bomgar do služby Azure AD, budete muse
 
 **Chcete-li přidat podporu vzdáleného Bomgar z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ V této části se vytvoří uživateli Britta Simon v Bomgar vzdálenou podporu
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [Bomgar vzdálenou podporu týmu podpory](https://www.bomgar.com/docs/index.htm#support).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

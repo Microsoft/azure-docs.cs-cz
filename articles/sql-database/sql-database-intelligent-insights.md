@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 15154844c954e53ca1add5d3fbaa3e9d02152ad2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60703191"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Inteligentní přehledy s využitím AI k monitorování a ladění výkonu databáze
@@ -56,7 +56,7 @@ Identifikuje SQL Database přehledu výkonu jsou zaznamenány v protokolu diagno
 | Ovlivněné metriky | Metriky, který způsobil vygenerování přehledů: <ul><li>Doba trvání zvýšení [sekund] dotazu.</li><li>Nadměrné čekání [sekund].</li><li>Vypršel časový limit žádosti [procento].</li><li>Požadavky s chybou [procento].</li></ul>|
 | Hodnota dopad | Měří hodnota metriky. |
 | Ovlivněné dotazy a kódy chyb | Dotaz na hodnotu hash nebo kód chyby. To umožňuje snadno porovnat pro ovlivněné dotazy. Metriky, které se skládají z zvýšení doby trvání dotazu, čekání, vypršení časového limitu počtu nebo kódy chyb jsou k dispozici. |
-| Nalezení | Detekce určí v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [databáze odstraňování problémů s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Detekce | Detekce určí v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [databáze odstraňování problémů s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
 | Analýza původní příčiny | Hlavní příčina analýzy problému zjištěného v lidsky čitelném formátu. Některé insights může obsahovat doporučení zlepšení výkonu, kde je to možné. |
 |||
 

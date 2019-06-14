@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
 ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938257"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografická dostupnost a podpora měny
@@ -41,7 +41,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Bosna a Hercegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
 | Brazílie                              | BR        | BRL\*        |
-| Brunej                              | BN        | USD          |
+| Brunei                              | BN        | USD          |
 | Bulharsko                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
@@ -72,7 +72,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Řecko                              | GR        | EUR          |
 | Guatemala                           | GT        | USD          |
 | Honduras                            | HN        | USD          |
-| Hongkong – zvláštní správní oblast                       | HK        | USD          |
+| Hongkong – zvláštní administrativní oblast                       | HK        | USD          |
 | Maďarsko                             | HU        | EUR          |
 | Island                             | IS        | EUR          |
 | Indie                               | IN        | INR          |
@@ -96,7 +96,7 @@ Nabídky Azure Marketplace se dají koupit 141 geografické oblasti definované 
 | Litva                           | LT        | EUR          |
 | Lucembursko                          | LU        | EUR          |
 | Macao – zvláštní administrativní oblast                           | MO        | USD          |
-| Severní Makedonie                     | MK        | USD          |
+| Makedonie – sever                     | MK        | USD          |
 | Malajsie                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauricius                           | MU        | USD          |

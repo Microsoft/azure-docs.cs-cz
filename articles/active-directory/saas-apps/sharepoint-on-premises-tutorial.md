@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e85f390ee5ff74f02cb95fa4dcf1dfc1a35dad1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 63e424e9029ac81ed73696fc25882fc601bece96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699864"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci služby SharePoint v místním do služby 
 
 **Pokud chcete přidat místní SharePoint z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -248,7 +248,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 6. Klikněte na **přidat** a potom **vyberte rozhraní API**.
 
-    ![Přístup přes rozhraní API](./media/sharepoint-on-premises-tutorial/required_permissions.png)
+    ![API Access](./media/sharepoint-on-premises-tutorial/required_permissions.png)
 
 7. Přidat obojí **Windows Azure Active Directory** a **Microsoft Graph API**, ale je pouze možné vybrat jednotlivě.
 
@@ -260,7 +260,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 9. Nyní, v části požadované nastavení, klikněte na **udělit oprávnění** a potom klikněte na tlačítko Ano udělit oprávnění.
 
-    ![Udělit oprávnění](./media/sharepoint-on-premises-tutorial/grantpermission.png)
+    ![Udělení oprávnění](./media/sharepoint-on-premises-tutorial/grantpermission.png)
 
     > [!NOTE]
     > Zkontrolujte v části oznámení k určení, pokud byla úspěšně udělena oprávnění.  Pokud nejsou, AzureCP nebude fungovat správně a nebude možné nakonfigurovat místní SharePoint s použitím Azure Active Directory skupin zabezpečení.

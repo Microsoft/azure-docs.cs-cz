@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 087440b60e1d5fecc668849bc1350d66988b16b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c71d76539a4486527d2c8954c62db82a52ca3a4e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056816"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převést převod textu na řeč pomocí Pythonu
 

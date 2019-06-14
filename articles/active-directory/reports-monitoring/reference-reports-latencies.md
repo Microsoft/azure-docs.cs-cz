@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65594018"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav Azure Active Directory.
@@ -41,7 +41,7 @@ V následující tabulce jsou uvedeny informace o latenci pro sestavy aktivit.
 > **Latence (95. percentil)** odkazuje na čas, podle kterého se ohlásí 95 % protokolů, a **latenci (99. percentilu)** odkazuje na čas, podle kterého se ohlásí 99 % protokoly. 
 >
 
-| Nahlásit | Latence (95. percentil) |Latenci (99. percentilu)|
+| Sestava | Latence (95. percentil) |Latenci (99. percentilu)|
 | :-- | --- | --- |
 | Protokoly auditu | 2 minuty  | 5 minut  |
 | Přihlášení | 2 minuty  | 5 minut |
@@ -59,7 +59,7 @@ Existují dva typy sestav zabezpečení:
 
 V následující tabulce jsou uvedeny informace o latenci pro zprávy o zabezpečení.
 
-| Nahlásit | Minimální | Průměr | Maximum |
+| Sestava | Minimální | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Ohrožení uživatelé          | 5 minut   | 15 minut  | 2 hodiny  |
 | Riziková přihlášení         | 5 minut   | 15 minut  | 2 hodiny  |
@@ -70,7 +70,7 @@ Azure AD používá adaptivní algoritmy strojového učení a heuristik ke zji�
 
 V následující tabulce jsou uvedeny informace o latenci pro rizikové události.
 
-| Nahlásit | Minimální | Průměr | Maximum |
+| Sestava | Minimální | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Přihlášení z anonymních IP adres |5 minut |15 minut |2 hodiny |
 | Přihlášení z neznámých míst |5 minut |15 minut |2 hodiny |

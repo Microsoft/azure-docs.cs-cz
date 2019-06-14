@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e9ca9fa26e9744eb0a9bfafe692a096825b0b5
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
-ms.translationtype: MT
+ms.openlocfilehash: f3e33e483bdc9440ced1a2bc8aec6f21272eb797
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052175"
 ---
 # <a name="building-secure-workstations"></a>Vytváření zabezpečených pracovních stanic
 
 Zabezpečené izolované pracovní stanice jsou kriticky důležité pro zabezpečení citlivých role jako správci vývojářů a operátorů důležitých služeb. Mnoho dalších kontrolních mechanismů pro zabezpečení a záruky bude selhat nebo nemají žádný vliv, pokud došlo k napadení základního zabezpečení pracovní stanice klienta.
 
 Tento dokument popisuje, co je potřeba k vytvoření zabezpečené klientské pracovní stanice s podrobnými pokyny krok za krokem, jak nastavit spuštění kontrolních mechanismů pro zabezpečení. Tento typ pracovních stanic v některých případech se nazývá pracovní stanice privilegovaným přístupem (PAW), které tento odkaz se budou používat a postavené na. Pokyny ale vypadat na cloudové technologie pro správu služby a zavádí zabezpečení funkce zavedena od verze Windows 10RS5, ochrana ATP v programu Defender Microsoft, Azure Active Directory a Intune.
+
+> [!NOTE]
+> Tento článek vysvětluje koncept zabezpečené pracovní stanice a jeho význam. Pokud jste již seznámení s konceptem a chcete přejít k nasazení, přečtěte si prosím [nasazení zabezpečené pracovní stanice](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation).
 
 ## <a name="why-securing-workstation-access-is-important"></a>Proč je důležité zabezpečení přístupu pracovní stanice
 

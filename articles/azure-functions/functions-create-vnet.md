@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 07c7d7fb682708bf813820440d9c790c28b1f3e5
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834631"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063277"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Kurz: integrate funkce do služby Azure virtual network
 
@@ -113,7 +113,7 @@ S WordPress lokality, kde běží na virtuálním počítači ve virtuální sí
 
     ![Stav pro konfiguraci sítě](./media/functions-create-vnet/Networking-1.png)
 
-1. Na stránce integrace virtuální sítě vyberte **přidání virtuální sítě (preview)**.
+1. Na stránce integrace virtuální sítě vyberte **přidání virtuální sítě (preview)** .
 
     ![Přidání integrace virtuální sítě ve verzi preview](./media/functions-create-vnet/networking-2.png)
 
@@ -137,7 +137,7 @@ Aplikace function app teď přístup k virtuální síti, ve kterém je spuště
 
 Integrace virtuální sítě povolené můžete vytvořit proxy serveru ve vaší aplikaci funkcí ke směrování žádostí na virtuální počítač provozovaný ve virtuální síti.
 
-1. V aplikaci function app, vyberte **proxy** > **+**, potom použijte nastavení proxy v tabulce pod obrázkem:
+1. V aplikaci function app, vyberte **proxy** >  **+** , potom použijte nastavení proxy v tabulce pod obrázkem:
 
     ![Definujte nastavení proxy serveru](./media/functions-create-vnet/create-proxy.png)
 
@@ -170,4 +170,4 @@ Funkce běžící v plánu Premium sdílet stejnou základní infrastruktury slu
 > [!div class="nextstepaction"]
 > [Další informace o možnosti sítě v funkce](./functions-networking-options.md)
 
-[Plán Premium]: functions-scale.md#premium-plan-public-preview
+[Plán Premium]: functions-scale.md#premium-plan

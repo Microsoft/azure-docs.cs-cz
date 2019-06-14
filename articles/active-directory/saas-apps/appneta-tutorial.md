@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48e353df6c14ec24a01fe3b1852de2c6a0a3155
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8b1e2baa2cdaee511ecff614406a0e4c25d553c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901044"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Kurz: Integrace Azure Active Directory pomocí nástroje Sledování výkonu AppNeta
 
@@ -54,7 +54,7 @@ Konfigurace integrace nástroje Sledování výkonu AppNeta do služby Azure AD,
 
 **Přidání nástroje Sledování výkonu AppNeta z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -119,14 +119,14 @@ Ke konfiguraci Azure AD jednotné přihlašování s monitorováním výkonu App
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --------| ----------------|
     | Jméno| user.givenname|
     | Příjmení| user.surname|
     | email| user.userprincipalname|
     | name| user.userprincipalname|
-    | skupin  | user.assignedroles |
-    | telefon| user.telephonenumber |
+    | groups  | user.assignedroles |
+    | Telefon| user.telephonenumber |
     | název| user.jobtitle|
     | | |
 
@@ -227,7 +227,7 @@ V této části se vytvoří uživateli Britta Simon v nástroji Sledování vý
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory sledování výkonu AppNeta](mailto:support@appneta.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

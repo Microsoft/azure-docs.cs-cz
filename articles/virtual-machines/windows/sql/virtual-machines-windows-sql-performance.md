@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c1f40c62fce61ba16dfdf289d54cd19c3739ce21
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 3fda34e46ddb7ea17c98795ad6632841b79764eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076913"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server ve službě Azure Virtual Machines
 
@@ -55,7 +55,7 @@ Pro citlivé aplikace s výkonem, se doporučuje použít následující [veliko
 * **SQL Server Enterprise Edition**: DS3_v2 nebo vyšší
 * **Edice SQL Server Standard a Web**: DS2_v2 nebo vyšší
 
-[DSv2-series](../sizes-general.md#dsv2-series) virtuálních počítačů podporují službu premium storage, které doporučujeme pro zajištění nejlepšího výkonu. Velikost doporučená tady jsou směrné plány, ale skutečný velikost, kterou vyberete, závisí na vaše požadavky na pracovní zatížení. Virtuální počítače DSv2-series jsou pro obecné účely virtuálních počítačů, které jsou vhodné pro různé úlohy, zatímco jiné velikosti počítačů optimalizovaných pro konkrétní úlohu, typech. Například [řady M-series](../sizes-memory.md#m-series) nabízí nejvyšší počet virtuálních procesorů a paměti pro i ty největší úlohy SQL serveru. [Řady GS-series](../sizes-memory.md#gs-series) a [DSv2-series 11-15](../sizes-memory.md#dsv2-series-11-15) jsou optimalizované pro paměť velké požadavky. Obě tyto řady jsou také dostupné v [core velikosti omezen](../../windows/constrained-vcpu.md), což šetří peníze pro výpočetní úlohy s nižší nároky. [Řada Ls-series](../sizes-storage.md) počítačů optimalizovaných pro Vysoká propustnost disku a vstupně-výstupních operací. Je důležité zvážit konkrétních úloh SQL serveru a použít tento výběr virtuálních počítačů řady a velikosti.
+[DSv2-series](../sizes-general.md#dsv2-series) virtuálních počítačů podporují službu premium storage, které doporučujeme pro zajištění nejlepšího výkonu. Velikost doporučená tady jsou směrné plány, ale skutečný velikost, kterou vyberete, závisí na vaše požadavky na pracovní zatížení. Virtuální počítače DSv2-series jsou pro obecné účely virtuálních počítačů, které jsou vhodné pro různé úlohy, zatímco jiné velikosti počítačů optimalizovaných pro konkrétní úlohu, typech. Například [řady M-series](../sizes-memory.md#m-series) nabízí nejvyšší počet virtuálních procesorů a paměti pro i ty největší úlohy SQL serveru. [Řady GS-series](../sizes-previous-gen.md#gs-series) a [DSv2-series 11-15](../sizes-memory.md#dsv2-series-11-15) jsou optimalizované pro paměť velké požadavky. Obě tyto řady jsou také dostupné v [core velikosti omezen](../../windows/constrained-vcpu.md), což šetří peníze pro výpočetní úlohy s nižší nároky. [Řada Ls-series](../sizes-storage.md) počítačů optimalizovaných pro Vysoká propustnost disku a vstupně-výstupních operací. Je důležité zvážit konkrétních úloh SQL serveru a použít tento výběr virtuálních počítačů řady a velikosti.
 
 ## <a name="storage-guidance"></a>Pokynů pro Storage
 

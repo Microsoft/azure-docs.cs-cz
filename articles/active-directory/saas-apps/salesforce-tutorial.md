@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4dffa40d4a34241f54b67fc28a1d4b7ba320347d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903796"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Kurz: Integrace Azure Active Directory se Salesforce
 
@@ -58,7 +58,7 @@ Pokud chcete nakonfigurovat integraci Salesforce do služby Azure AD, budete mus
 
 **Chcete-li přidat z Galerie služby Salesforce, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -243,7 +243,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se v Salesforce vytvoří uživatelské volá Britta Simon. Salesforce podporuje just-in-time zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel ještě neexistuje v Salesforce, vytvoří se nový při pokusu o přístup k Salesforce. Salesforce také podporuje automatické zřizování uživatelů, další podrobnosti můžete najít [tady](salesforce-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

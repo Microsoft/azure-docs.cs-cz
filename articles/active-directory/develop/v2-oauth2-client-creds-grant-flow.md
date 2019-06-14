@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545097"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Platforma identit Microsoft a tok přihlašovacích údajů klienta OAuth 2.0
@@ -67,8 +67,8 @@ Namísto použití seznamů ACL, můžete použít rozhraní API k vystavení sa
 
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
-* Odesílání pošty jménem libovolného uživatele
-* Čtení dat adresáře
+* Odesílání pošty jako jakýkoli uživatel
+* Čtení dat z adresáře
 
 Další informace o oprávněních aplikace, přejděte na [Microsoft Graphu](https://developer.microsoft.com/graph).
 

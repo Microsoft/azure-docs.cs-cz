@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: zchia
 ms.openlocfilehash: e8414b9737e0ee7f847827a432dd9887931a2532
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470387"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace Comeet náboru softwaru pro automatické zřizování uživatelů
@@ -45,7 +45,7 @@ Před konfigurací Comeet náboru softwaru pro automatické zřizování uživat
 
 **Přidat Software náboru Comeet z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -108,11 +108,11 @@ Tato část příručky vás provede kroky pro konfiguraci služba zřizování 
 
 7. Po vyplnění polí zobrazených v kroku 5, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k Comeet přijetí softwaru. Pokud se nepovede, ujistěte se, že váš účet Comeet náboru softwaru má oprávnění správce a zkuste to znovu.
 
-    ![Token](common/provisioning-testconnection-token.png)
+    ![Podpisový](common/provisioning-testconnection-token.png)
 
 8. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
 
-    ![Oznamovací e-mail](common/provisioning-notification-email.png)
+    ![E-mailové oznámení](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 

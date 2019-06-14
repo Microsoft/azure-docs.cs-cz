@@ -7,25 +7,24 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 4/11/2018
+ms.date: 6/06/2019
 ms.author: robinsh
-ms.openlocfilehash: 3e932048b41e9af149f14a814a1c92d86bd26f29
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7deb1b501d30c8af0cb190f4722d46435afa9b8e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065811"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Vizualizace dat snímače v reálném čase ze služby Azure IoT Hub pomocí Power BI
 
 ![Diagram začátku do konce](./media/iot-hub-live-data-visualization-in-power-bi/1_end-to-end-diagram.png)
 
-
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-Se dozvíte, jak k vizualizaci dat snímačů v reálném čase, který obdrží služby Azure IoT hub s využitím Power BI. Pokud budete chtít zkusit porážky vizualizace dat ve službě IoT hub s webovou aplikací, najdete v [použijte nějakou webovou aplikaci k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
+Se dozvíte, jak k vizualizaci dat snímačů v reálném čase, který obdrží služby Azure IoT hub s využitím Power BI. Pokud budete chtít zkusit vizualizace dat ve službě IoT hub s webovou aplikací, přečtěte si téma [použijte nějakou webovou aplikaci k vizualizaci dat snímačů v reálném čase ze služby Azure IoT Hub](iot-hub-live-data-visualization-in-web-apps.md).
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
@@ -37,7 +36,7 @@ Se dozvíte, jak k vizualizaci dat snímačů v reálném čase, který obdrží
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ty zahrnují následující požadavky:
+* Dokončení [online simulátor Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) kurzu nebo jeden z kurzů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto články zahrnovat následující požadavky:
   
   * Aktivní předplatné Azure.
   * Azure IoT hub v rámci vašeho předplatného.
@@ -53,7 +52,7 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
 ### <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek** > **Internet věcí** > **Úloha Stream Analytics**.
+1. V [webu Azure portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **Internet of Things** > **úlohy Stream Analytics**.
 
 2. Zadejte o úloze následující informace.
 
@@ -63,37 +62,49 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
    **Umístění**: Použijte stejné umístění jako skupina prostředků.
 
-   **Připnout na řídicí panel**: Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
+   ![Vytvoření úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job-azure.png)
 
-   ![Vytvoření úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
-
-3. Klikněte na možnost **Vytvořit**.
+3. Vyberte **Vytvořit**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
 1. Otevřete úlohu Stream Analytics.
 
-2. V části **Topologie úlohy** klikněte na **Vstupy**.
+2. V části **topologie úlohy**vyberte **vstupy**.
 
-3. V **vstupy** podokně klikněte na tlačítko **přidat vstup streamu**a potom zadejte následující informace:
+3. V **vstupy** vyberte **přidat vstup streamu**a pak vyberte **služby IoT Hub** z rozevíracího seznamu. V podokně nový vstupní zadejte následující informace:
 
-   **Vstupní alias**: Jedinečný alias pro vstup a vyberte **nastavení poskytovat služby IoT Hub ručně** níže.
+   **Vstupní alias**: Zadejte jedinečný alias pro vstup.
 
-   **Zdroj**: Vyberte **služby IoT hub**.
-   
-   **Koncový bod**: Klikněte na tlačítko **zasílání zpráv**.
+   **Poskytuje služby IoT Hub ze svého předplatného**: Vyberte přepínač.
 
-   **Skupina uživatelů**: Vyberte skupinu příjemců, který jste právě vytvořili.
+   **Předplatné**: Vyberte předplatné Azure, které používáte pro účely tohoto kurzu.
 
-4. Klikněte na možnost **Vytvořit**.
+   **IoT Hub**: Vyberte centrum IoT používáte pro účely tohoto kurzu.
 
-   ![Přidat vstup do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
+   **Koncový bod**: Vyberte **zasílání zpráv**.
+
+   **Název zásad sdíleného přístupu**: Vyberte název zásady sdíleného přístupu má úloha Stream Analytics pro účely služby IoT hub. Pro účely tohoto kurzu můžete vybrat *služby*. *Služby* zásada se vytvoří ve výchozím nastavení nového centra IoT hub a udělí oprávnění odesílat a přijímat v koncových bodech na straně cloudu vystavený službou IoT hub. Další informace najdete v tématu [řízení přístupu a oprávnění](iot-hub-devguide-security.md#access-control-and-permissions).
+
+   **Klíč zásad sdíleného přístupu**: Toto pole je automaticky vyplněný na základě vašeho výběru pro název zásad sdíleného přístupu.
+
+   **Skupina uživatelů**: Vyberte skupinu příjemců, který jste vytvořili dříve.
+
+   Ponechte všechna ostatní pole na jejich výchozích hodnotách.
+
+   ![Přidat vstup do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job-azure.png)
+
+4. Vyberte **Uložit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **Topologie úlohy** klikněte na **Výstupy**.
+1. V části **topologie úlohy**vyberte **výstupy**.
 
-2. V **výstupy** podokně klikněte na tlačítko **přidat** a **Power BI**a potom zadejte následující informace:
+2. V **výstupy** vyberte **přidat** a **Power BI**.
+
+3. Na **Power BI – nový výstup** vyberte **Authorize** a postupujte podle pokynů se přihlaste ke svému účtu Power BI.
+
+4. Po přihlášení k Power BI, zadejte následující informace:
 
    **Alias pro výstup**: Jedinečný alias pro výstup.
 
@@ -103,29 +114,27 @@ Začněme vytvořením úlohy Stream Analytics. Když vytvoříte úlohu, definu
 
    **Název tabulky**: Zadejte název tabulky.
 
-3. Klikněte na tlačítko **Authorize**a pak se přihlaste ke svému účtu Power BI.
+   ![Přidat výstup do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job-azure.png)
 
-4. Klikněte na možnost **Vytvořit**.
-
-   ![Přidat výstup do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
+5. Vyberte **Uložit**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **Topologie úlohy** klikněte na **Dotaz**.
+1. V části **Topologie úlohy** vyberte **Dotaz**.
 
 2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy.
 
 3. Nahraďte `[YourOutputAlias]` názvem aliasu pro výstup.
 
-4. Klikněte na **Uložit**.
+   ![Přidat dotaz do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/add-query-stream-analytics-job-azure.png)
 
-   ![Přidat dotaz do úlohy Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/5_add-query-stream-analytics-job-azure.png)
+4. Vyberte **Uložit**.
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
+V úloze Stream Analytics, vyberte **přehled**a pak vyberte **Start** > **nyní** > **Start**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
-![Spustit úlohu Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/6_run-stream-analytics-job-azure.png)
+![Spustit úlohu Stream Analytics v Azure](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job-azure.png)
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Vytvoření a publikování sestav Power BI k vizualizaci dat
 
@@ -133,45 +142,45 @@ V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Ja
 
 2. Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/en-us/).
 
-3. Klikněte na pracovním prostoru, který jste použili, **pracovní prostor**.
+3. Vyberte pracovní prostor, který jste použili, **pracovní prostor**.
 
-4. Klikněte na **Datové sady**.
+4. Vyberte **datových sad**.
 
    Měli byste vidět datové sady, který jste zadali při vytváření výstup úlohy Stream Analytics.
 
-5. Datové sady, který jste vytvořili, klikněte na tlačítko **přidat sestavu** (první ikona napravo od názvu datové sady).
+5. Datové sady, který jste vytvořili, vyberte **přidat sestavu** (první ikona napravo od názvu datové sady).
 
-   ![Vytvoření sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
+   ![Vytvoření sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/start-power-bi.png)
 
 6. Vytvořte spojnicový graf zobrazující v reálném čase vývoj teploty.
 
-   1. Na stránce vytváření sestav přidejte spojnicový graf.
+   1. Na **vizualizace** podokně na stránku pro vytvoření sestavy, vyberte ikonu spojnicového grafu pro přidání spojnicového grafu.
 
    2. V podokně **Pole** rozbalte tabulku, kterou jste určili při vytváření výstupu pro úlohu služby Stream Analytics.
-   
+
    3. Přetáhněte **EventEnqueuedUtcTime** na **Osu** v podokně **Vizualizace**.
-   
+
    4. Přetáhněte položku **temperature** na **Hodnoty**.
 
       Vytvoří spojnicový graf. Na ose x bude datum a čas v časovém pásmu UTC. Na ose y bude hodnota snímače teploty.
 
-      ![Přidání spojnicového grafu pro teploty do sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/8_add-line-chart-for-temperature-to-power-bi-report-microsoft.png)
+      ![Přidání spojnicového grafu pro teploty do sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temp.png)
 
 7. Vytvořte jiný spojnicový graf zobrazující v reálném čase vývoj vlhkosti. Chcete-li to provést, postupujte podle stejných kroků výše a umístěte **EventEnqueuedUtcTime** na ose x a **vlhkosti** na ose y.
 
-   ![Přidání spojnicového grafu pro vlhkost do sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/9_add-line-chart-for-humidity-to-power-bi-report-microsoft.png)
+   ![Přidání spojnicového grafu pro vlhkost do sestavy Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
 
-8. Kliknutím na **Uložit** sestavu uložte.
+8. Vyberte **Uložit** pro uložení sestavy.
 
-9. Klikněte na tlačítko **sestavy** v levém podokně a pak klikněte na sestavu, že jste právě vytvořili.
+9. Vyberte **sestavy** v levém podokně a pak vyberte sestavu, že jste právě vytvořili.
 
-10. Klikněte na tlačítko **souboru** > **publikovat na webu**.
+10. Vyberte **souboru** > **publikovat na webu**.
 
-11. Klikněte na tlačítko **vytvořit kód pro vložení**a potom klikněte na tlačítko **publikovat**.
+11. Vyberte **vytvořit kód pro vložení**a pak vyberte **publikovat**.
 
-Zadáte odkaz na sestavu, že můžete sdílet s kýmkoli pro přístup k sestavě a fragment kódu pro integraci sestavy do blogu nebo webu.
+Už jste zadali odkaz na sestavu, které můžete sdílet s kýmkoli pro přístup k sestavě a fragment kódu, který můžete použít k integraci sestavy do blogu nebo webu.
 
-![Publikování sestav Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/10_publish-power-bi-report-microsoft.png)
+![Publikování sestav Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-publish.png)
 
 Microsoft taky nabízí [mobilních aplikacích Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) pro zobrazení a interakci s Power BI řídicí panely a sestavy na mobilním zařízení.
 

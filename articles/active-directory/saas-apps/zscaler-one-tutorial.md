@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 94682cfae8078a38fff9ef36ccfc619baee2e612
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 79eae27becf0d2570132b3ad709414879140fd0f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694422"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Kurz: Integrace Azure Active Directory s jeden Zscaler
 
@@ -55,7 +55,7 @@ Konfigurovat integraci Zscalerem jeden do služby Azure AD, budete muset přidat
 
 **Chcete-li přidat Zscalerem jeden z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem jeden, proveď
 
 6. Kromě výše Zscalerem jedné aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
     
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------| ------------ |
     | MemberOf     | user.assignedroles |
 

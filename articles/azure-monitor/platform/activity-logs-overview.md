@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 34857108cf7f0580c380ffbd4bbcedb5cd5a807a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6fc00bf0dfb83f349da91989a579f31be2027ff0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245028"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071685"
 ---
 # <a name="overview-of-azure-activity-log"></a>Přehled protokolu aktivit Azure
 
@@ -30,10 +30,10 @@ Existuje jeden protokol aktivit pro každé předplatné Azure. Poskytuje data o
 
 
 > [!NOTE]
-> Protokol aktivit Azure je primárně určen pro aktivity, ke kterým dochází v Azure Resource Manageru. Sledovat ugresources pomocí modelu Classic/RDFE. Některé typy prostředků Classic mají poskytovatele prostředků proxy serveru v Azure Resource Manageru (například Microsoft.ClassicCompute). Pokud pracujete s typem prostředku klasické prostřednictvím Azure Resource Manageru pomocí těchto poskytovatelů prostředků proxy serveru, operace se zobrazí v protokolu aktivit. Pokud pracujete s typem prostředku klasické mimo proxy služby Azure Resource Manageru, vaše akce se zaznamenávají jenom v operaci protokolu. Protokol operace můžete procházet v samostatných oddílech portálu.
+> Protokol aktivit Azure je primárně určen pro aktivity, ke kterým dochází v Azure Resource Manageru. Sledovat prostředky pomocí modelu Classic/RDFE. Některé typy prostředků Classic mají poskytovatele prostředků proxy serveru v Azure Resource Manageru (například Microsoft.ClassicCompute). Pokud pracujete s typem prostředku klasické prostřednictvím Azure Resource Manageru pomocí těchto poskytovatelů prostředků proxy serveru, operace se zobrazí v protokolu aktivit. Pokud pracujete s typem prostředku klasické mimo proxy služby Azure Resource Manageru, vaše akce se zaznamenávají jenom v operaci protokolu. Protokol operace můžete procházet v samostatných oddílech portálu.
 
 ## <a name="activity-log-retention"></a>Uchovávání protokolů aktivit
-Události protokolu aktivit se ukládají po dobu 90 dnů. Pro ukládání těchto dat delší dobu [shromažďovat ve službě Azure Monitor](activity-log-collect.md) nebo [exportujte ho do úložiště nebo Center událostí](activity-log-export.md).
+Po vytvoření položky protokolu aktivit se změnily nebo odstranily v systému. Navíc je nelze změnit rozhraní nebo programově. Události protokolu aktivit se ukládají po dobu 90 dnů. Pro ukládání těchto dat delší dobu [shromažďovat ve službě Azure Monitor](activity-log-collect.md) nebo [exportujte ho do úložiště nebo Center událostí](activity-log-export.md).
 
 ## <a name="view-the-activity-log"></a>Zobrazení protokolu aktivit
 Zobrazení protokolu aktivit pro všechny prostředky z **monitorování** nabídky na webu Azure Portal. Zobrazení protokolu aktivit pro určitý prostředek z **protokolu aktivit** v nabídce tohoto prostředku. Můžete také načíst záznamy protokolu aktivit pomocí Powershellu, rozhraní příkazového řádku nebo rozhraní REST API.  Zobrazit [zobrazení a načtení Azure aktivity protokolu události](activity-log-view.md).

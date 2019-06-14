@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60598083"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizace instalace služby Mobility pomocí nástroje System Center Configuration Manager
@@ -210,7 +210,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 > [!TIP]
 > Aby se zabránilo zbytečnému resetování, naplánujte instalaci balíčku během měsíčního časového období údržby nebo okno aktualizací softwaru.
 
-Průběh nasazení můžete monitorovat pomocí konzoly nástroje Configuration Manager. Přejděte na **monitorování** > **nasazení** > *[název vašeho balíčku]*.
+Průběh nasazení můžete monitorovat pomocí konzoly nástroje Configuration Manager. Přejděte na **monitorování** > **nasazení** >  *[název vašeho balíčku]* .
 
   ![Snímek obrazovky nástroje Configuration Manager můžete monitorovat nasazení](./media/vmware-azure-mobility-install-configuration-mgr/report.PNG)
 
@@ -397,7 +397,7 @@ cd /tmp
 
     | **Název parametru** | **Hodnota** |
    |--|--|
-   | Název | Nainstalovat službu Mobility Microsoft Azure (Linux) |
+   | Name | Nainstalovat službu Mobility Microsoft Azure (Linux) |
    | Příkazový řádek | ./install_linux.sh |
    | Program lze spustit | Určuje, jestli je uživatel přihlášen |
 

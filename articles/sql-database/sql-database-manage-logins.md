@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: b1e952d9af474e2318ef91a6bdcc2605a3c30018
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af6cec22ae455e6a6ead4c45fead2d7ff5b708d2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60702291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070509"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -64,7 +64,7 @@ Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adr
 
 Pokud je brána firewall na úrovni serveru správně nakonfigurovaná, může se **správce SQL serveru** a **správce Azure Active Directory** připojit pomocí klientských nástrojů, jako jsou SQL Server Management Studio nebo SQL Server Data Tools. Jenom nejnovější nástroje poskytují všechny funkce a možnosti. Následující diagram znázorňuje typickou konfiguraci pro dva účty správce.
 
-![Cesta pro přístup správce](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
+![konfigurace dvou Správa účtů](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
 
 Při použití otevřeného portu brány firewall na úrovni serveru se můžou správci připojit k jakékoli databázi služby SQL Database.
 

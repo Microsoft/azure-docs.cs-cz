@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7f547b770f63885df00d2fe296698828c323eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff0464ed5b223dc71d635ffceb15376716cc4291
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859058"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106676"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>Kurz: Integrace Azure Active Directory s ARECH pro podniky
 
@@ -55,7 +55,7 @@ Pokud chcete nakonfigurovat integraci ARECH pro Enterprise do služby Azure AD, 
 
 **Chcete-li přidat ARECH pro organizace z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -172,7 +172,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části se vytvoří uživateli Britta Simon v ARŮ pro podniky. Podporuje ARECH pro podniky **zřizování just-in-time**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi ARECH pro organizace, je vytvořen nový při pokusu o přístup k ARECH pro podniky.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

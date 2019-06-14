@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112646"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Povolení offline synchronizace u mobilních aplikací pro iOS
@@ -147,7 +147,7 @@ Otevřít **QSDataModel.xcdatamodeld**. Čtyři tabulky jsou definovány--tři, 
   * TodoItem: Ukládá položky úkolů. Systémovými sloupci **createdAt**, **updatedAt**, a **verze** jsou volitelné systémové vlastnosti.
 
 > [!NOTE]
-> Sady Mobile Apps SDK rezervuje názvy sloupců, které začínají řetězcem "**``**". Nepoužívejte tuto předponu s nic jiného než systémovými sloupci. V opačném případě jsou názvy sloupců změnit při použití vzdáleného back-endu.
+> Sady Mobile Apps SDK rezervuje názvy sloupců, které začínají řetězcem " **``** ". Nepoužívejte tuto předponu s nic jiného než systémovými sloupci. V opačném případě jsou názvy sloupců změnit při použití vzdáleného back-endu.
 >
 >
 
@@ -164,7 +164,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | id | Integer 64 |
 | itemId | String |
 | properties | Binární Data |
-| tabulka | String |
+| table | String |
 | tableKind | Integer 16 |
 
 
@@ -188,7 +188,7 @@ Když použijete funkci offline synchronizace, definujte tři systémové tabulk
 | id |String |
 | key |String |
 | keyType |Integer 64 |
-| tabulka |String |
+| table |String |
 | value |String |
 
 ### <a name="data-table"></a>Tabulka dat

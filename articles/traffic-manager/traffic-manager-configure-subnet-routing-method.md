@@ -3,7 +3,7 @@ title: Konfigurace metody směrování podsítě provozu pomocí Azure Traffic M
 description: Tento článek vysvětluje postup konfigurace Traffic Manageru směrovat provoz z konkrétní podsítě.
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 1a7bc38a91dc7621a3b09d7901c70eecb21101d6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060957"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -175,7 +175,7 @@ Vytvořte profil služby Traffic Manager, který vám umožní na základě zdro
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Name                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Jako metodu směrování vyberte **Podsíť**.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte **Existující** a zadejte *myResourceGroupTM1*. |
@@ -195,7 +195,7 @@ Přidejte dva virtuální počítače se službou IIS servery – *myIISVMEastUS
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Type                    | Koncový bod Azure                                   |
-    | Název           | myTestWebSiteEndpoint                                        |
+    | Name           | myTestWebSiteEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Nastavení směrování podsítě    |   Přidat IP adresu *myVMEastUS* testovací virtuální počítač. Jakýkoli dotaz uživatelů pocházejících z tohoto virtuálního počítače budete přesměrováni na *myTestWebSiteEndpoint*.    |

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 8e344d6908ba19f8e2294c7777b9c1016eafaf52
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43f940c3c5b0fcf06fb5aa9be268f85db19fc8a6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927639"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077669"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>Řešení potíží s přehled, zpětná vazba a podpora
+# <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
 
 Tento článek obsahuje přehled problémy mohou nastat při nastavování prostředí tenanta virtuální plochy Windows a poskytuje způsoby, jak vyřešit problémy.
 
@@ -24,7 +24,7 @@ Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je
 
 ## <a name="escalation-tracks"></a>Eskalace stopy
 
-V následující tabulce můžete identifikovat a řešit problémy, na které můžete narazit při nastavování prostředí tenanta pomocí klienta vzdálené plochy.
+V následující tabulce můžete identifikovat a řešit problémy, na které můžete narazit při nastavování prostředí tenanta pomocí klienta vzdálené plochy. Váš tenant je nastaveno, můžete použít naši novou [diagnostické služby](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) identifikovat problémy pro běžné scénáře.
 
 >[!NOTE]
 >Můžeme aktuálně nejsou trvá případy podpory virtuální plochy Windows je ve verzi preview. Pokaždé, když budeme odkazovat podporu virtuální plochy Windows, přejděte na našem fóru technické komunitě teď. Přejděte [technické komunitě virtuální plochy Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) diskutovat s produktovým týmem a aktivní komunitě členy. Pokud potřebujete podporu problém vyřešit, patří ID aktivity a přibližné časový rámec pro kdy došlo k problému.
@@ -34,8 +34,8 @@ V následující tabulce můžete identifikovat a řešit problémy, na které m
 | Vytvoření klienta                                                    | Pokud dojde k výpadku Azure, obraťte se na [podpory Azure](https://azure.microsoft.com/support/options/); v opačném případě kontaktní **Podpora vzdálené plochy virtuální služby nebo Windows Desktop**.|
 | Přístup k webu Marketplace šablony na webu Azure portal       | Pokud dojde k výpadku Azure, obraťte se na [podpory Azure](https://azure.microsoft.com/support/options/). <br> <br> Šablony Azure Marketplace Windows virtuální plochy jsou volně k dispozici.|
 | Přístup k šablon Azure Resource Manageru z Githubu                                  | Najdete v části "Vytvoření Windows Virtual relace plochy hostitele virtuálních počítačů" [Tenanta a hostitele fondu vytváření](troubleshoot-set-up-issues.md). Pokud se jedná o stále nevyřešené, obraťte se [tým podpory Githubu](https://github.com/contact). <br> <br> Pokud po přístupu k šabloně na webu GitHub dojde k chybě, obraťte se na [podpory Azure](https://azure.microsoft.com/support/options/).|
-| Nastavení relace hostitele fondu Azure Virtual Network (VNET) a Expressroute               | Kontakt **podpory Azure (síť)**. |
-| Relace hostitele fondu vytvoření virtuálního počítače (VM) při šablon Azure Resource Manageru, které jsou součástí virtuálního klienta Windows nejsou používány. | Kontakt **podpory Azure (Compute)**. <br> <br> Problémy s šablonami Azure Resource Manageru, které jsou součástí virtuálního klienta Windows, naleznete v části Vytvoření virtuálního klienta Windows tenanta z [Tenanta a hostitele fondu vytváření](troubleshoot-set-up-issues.md). |
+| Nastavení relace hostitele fondu Azure Virtual Network (VNET) a Expressroute               | Kontakt **podpory Azure (síť)** . |
+| Relace hostitele fondu vytvoření virtuálního počítače (VM) při šablon Azure Resource Manageru, které jsou součástí virtuálního klienta Windows nejsou používány. | Kontakt **podpory Azure (Compute)** . <br> <br> Problémy s šablonami Azure Resource Manageru, které jsou součástí virtuálního klienta Windows, naleznete v části Vytvoření virtuálního klienta Windows tenanta z [Tenanta a hostitele fondu vytváření](troubleshoot-set-up-issues.md). |
 | Správa prostředí hostitele relace Windows virtuální plochy z portálu Azure portal    | Kontakt **podpory Azure**. <br> <br> Potíží se správou při použití vzdálené plochy služby/Windows virtuální plochy Powershellu, najdete v části [Windows Powershellu virtuální plochy](troubleshoot-powershell.md) nebo se obraťte **tým podpory vzdálené plochy virtuální služby nebo Windows Desktop** . |
 | Správa konfigurace virtuální plochy Windows spojený s fondy hostitele a skupiny aplikací (skupin aplikací)      | Naleznete v tématu [Windows Powershellu virtuální plochy](troubleshoot-powershell.md), nebo se obraťte **tým podpory vzdálené plochy virtuální služby nebo Windows Desktop**. <br> <br> Pokud problémy jsou svázány se ukázka grafického uživatelského rozhraní (GUI), kontaktujte komunity Yammeru.|
 | Klienti služby Vzdálená plocha selhání v nabídce start                                                 | Zobrazit [klienta připojení ke vzdálené ploše](troubleshoot-client-connection.md) a pokud problém nevyřešíte, obraťte se na **tým podpory vzdálené plochy virtuální služby nebo Windows Desktop**.  <br> <br> Pokud se jedná o chybu sítě, budou uživatelé potřebovat kontaktovat svého správce sítě. |

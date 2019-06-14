@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824743"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
@@ -30,11 +30,11 @@ Tento článek je relevantní pouze pro aplikace, které jsou nakonfigurovány p
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automaticky generovaný certifikát pro galerie i mimo Galerii aplikace
 
-Když přidejte novou aplikaci z galerie a nakonfigurovat základě SAML přihlašování (tak, že vyberete **jednotného přihlašování** > **SAML** ze stránky přehled aplikace), Azure AD vygeneruje certifikát pro aplikaci, která platí pro tři roky. Chcete-li stáhnout aktivní certifikát jako certifikát zabezpečení (**.cer**) soubor, vraťte se na této stránce (**přihlašování na základě SAML**) a vyberte odkaz ke stažení v **podpisový certifikát SAML** záhlaví. Můžete si vybrat nezpracované (binární) certifikátu nebo certifikátu Base64 (základní text kódováním base64). U aplikací, galerie, může zobrazit tato část také odkaz ke stažení certifikátu jako kód XML metadat federace ( **.xml** souboru), v závislosti na požadavku aplikace.
+Když přidejte novou aplikaci z galerie a nakonfigurovat základě SAML přihlašování (tak, že vyberete **jednotného přihlašování** > **SAML** ze stránky přehled aplikace), Azure AD vygeneruje certifikát pro aplikaci, která platí pro tři roky. Chcete-li stáhnout aktivní certifikát jako certifikát zabezpečení ( **.cer**) soubor, vraťte se na této stránce (**přihlašování na základě SAML**) a vyberte odkaz ke stažení v **podpisový certifikát SAML** záhlaví. Můžete si vybrat nezpracované (binární) certifikátu nebo certifikátu Base64 (základní text kódováním base64). U aplikací, galerie, může zobrazit tato část také odkaz ke stažení certifikátu jako kód XML metadat federace ( **.xml** souboru), v závislosti na požadavku aplikace.
 
 ![SAML aktivní podpisový certifikát možnosti stahování](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Aktivních nebo neaktivních certifikátů můžete také stáhnout tak, že vyberete **podpisový certifikát SAML** nadpisu **upravit** ikonu (tužka), která se zobrazí **podpisový certifikát SAML** stránky. Vyberte tři tečky (**...** ) vedle certifikátu, kterou chcete stáhnout a pak zvolte který formát certifikátu chcete. Máte další možnost stažení certifikátu ve formátu pošty s vylepšenou ochranou osobních údajů (PEM). Tento formát je stejný jako Base64, ale **.pem** příponu, která není rozpoznána ve Windows jako formát certifikátu.
+Aktivních nebo neaktivních certifikátů můžete také stáhnout tak, že vyberete **podpisový certifikát SAML** nadpisu **upravit** ikonu (tužka), která se zobrazí **podpisový certifikát SAML** stránky. Vyberte tři tečky ( **...** ) vedle certifikátu, kterou chcete stáhnout a pak zvolte který formát certifikátu chcete. Máte další možnost stažení certifikátu ve formátu pošty s vylepšenou ochranou osobních údajů (PEM). Tento formát je stejný jako Base64, ale **.pem** příponu, která není rozpoznána ve Windows jako formát certifikátu.
 
 ![Podpisového certifikátu možnosti stahování (aktivní a neaktivní) SAML](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
@@ -88,7 +88,7 @@ Dále stáhněte nový certifikát ve správném formátu, nahrajte ho do aplika
 
 3. Postupujte podle pokynů [automaticky generovaný certifikát pro galerie i mimo Galerii aplikace](#auto-generated-certificate-for-gallery-and-non-gallery-applications) výše v části. Tento krok stáhne certifikátu ve formátu kódování pro nahrávání vyžadovaného aplikací.
 
-4. Pokud chcete přejít na nový certifikát, vraťte se do **podpisový certifikát SAML** stránce a na řádku nově uložený certifikát, vyberte tři tečky (**...** ) a vyberte **aktivovat certifikát**. Stav tohoto nového certifikátu se změní na **aktivní**, a dříve aktivní certifikát se změní na stav **neaktivní**.
+4. Pokud chcete přejít na nový certifikát, vraťte se do **podpisový certifikát SAML** stránce a na řádku nově uložený certifikát, vyberte tři tečky ( **...** ) a vyberte **aktivovat certifikát**. Stav tohoto nového certifikátu se změní na **aktivní**, a dříve aktivní certifikát se změní na stav **neaktivní**.
 
 5. Pokračujte následujícím pokyny ke konfiguraci přihlašování SAML aplikace, které jste zobrazili dříve, tak, že můžete nahrát SAML podepisování certifikátů ve správném formátu kódování.
 
@@ -116,7 +116,7 @@ Pokud certifikátu brzy vyprší platnost, můžete obnovit pomocí procedury, k
 
 2. Pokud aplikace může automaticky nespotřebujete certifikát, nastavte nový certifikát na aktivní pomocí následujících kroků:
    1. Přejděte zpět **podpisový certifikát SAML** stránky.
-   2. V řádku nově uložený certifikát, vyberte tři tečky (**...** ) a pak vyberte **aktivovat certifikát**.
+   2. V řádku nově uložený certifikát, vyberte tři tečky ( **...** ) a pak vyberte **aktivovat certifikát**.
    3. Přeskočte následující dva kroky.
 
 3. Pokud aplikace může najednou zpracovat pouze jeden certifikát, vyberte výpadek interval provádět další krok. (Jinak, pokud aplikace nebude automaticky výběr nového certifikátu ale může zpracovávat více než jeden podpisový certifikát, můžete provést další krok kdykoli.)

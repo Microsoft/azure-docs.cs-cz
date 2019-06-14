@@ -6,15 +6,15 @@ keywords: kódování; kodérů; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 01/17/2019
+ms.date: 06/12/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 50b22cefccf620d7b79202a5c432e2e6a4e3e3be
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 1bede8ff7c33988a4e11a84d3a51ca098a608f33
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550043"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055283"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené datové proudy kodéry
 
@@ -24,7 +24,7 @@ Ve službě Azure Media Services [živá událost](https://docs.microsoft.com/re
 
   > [!NOTE]
   > Použití průchozí metody je nejekonomičtější způsob, jak živě Streamovat.
-
+ 
 * Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí živá událost, který má povolené provádět živé kódování pomocí Media Services v jednom z následujících formátů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Živá událost potom provede kódování v reálném čase příchozího datového proudu s jednou přenosovou rychlostí na datový proud s více přenosovými rychlostmi (adaptivní) videa.
 
 Podrobné informace o kódování v reálném čase pomocí služby Media Services najdete v tématu [živé streamování pomocí služby Media Services v3](live-streaming-overview.md).
@@ -127,7 +127,7 @@ Postupujte stejným způsobem jako v [živá událost předávací ověřování
 
 ### <a name="email-your-recorded-settings"></a>Zaznamenané nastavení e-mailu
 
-Nakonec zaznamenané nastavení e-mailu a live parametry archivu služby Azure Media Services na amsstreaming@microsoft.com jako oznámení, že se prošly všechny kontroly připravenosti ověření. Také vaše kontaktní informace pro všechny zpracování. Obraťte se na tým Azure Media Services s jakékoliv otázky týkající se tohoto procesu.
+Nakonec zaznamenané nastavení e-mailu a live parametry archivu služby Azure Media Services na amslived@microsoft.com jako oznámení, že se prošly všechny kontroly připravenosti ověření. Také vaše kontaktní informace pro všechny zpracování. Obraťte se na tým Azure Media Services s jakékoliv otázky týkající se tohoto procesu.
 
 ## <a name="next-steps"></a>Další postup
 

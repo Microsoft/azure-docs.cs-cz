@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
 ms.openlocfilehash: 20a170963ff4a8ff9cb69d3397e66e12c1047d16
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561191"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování

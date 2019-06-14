@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 889e9fb334f99db85143513f0447c212e54f56cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c4a01c32bd033113d69f4fde6a47c494e2661e89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60259062"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Kurz: Integrace Azure Active Directory s MaxxPoint
 
@@ -52,7 +52,7 @@ Konfigurace integrace MaxxPoint do služby Azure AD, budete muset přidat MaxxPo
 
 **Chcete-li přidat MaxxPoint z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

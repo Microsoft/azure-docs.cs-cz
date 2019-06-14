@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fa85581829f82da9a137315e1f890aa481408d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ee28d5a9ec3a8df694cd1971be8a73ff8e976cc3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898925"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Kurz: Integrace Azure Active Directory s etouches
 
@@ -53,7 +53,7 @@ Konfigurace integrace etouches do služby Azure AD, budete muset přidat etouche
 
 **Chcete-li přidat etouches z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -119,9 +119,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s etouches, proveďte násled
 
 6. Kromě toho výše etouches aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------------- | -------------------- |
-    | E-mail | user.mail | 
+    | Email | user.mail | 
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
@@ -234,7 +234,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v etouches jako Britta Simon. Práce s [tým podpory etouches klienta](https://www.etouches.com/event-software/support/customer-support/) přidat uživatele na platformě etouches.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

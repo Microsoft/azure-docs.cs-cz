@@ -10,11 +10,11 @@ ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64708944"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ověřování odchozích připojení pro Azure Scheduler
 
@@ -38,7 +38,7 @@ Scheduler podporuje tyto modely ověřování:
 
 * Pokud chcete odebrat ověřování z úlohy Scheduleru, explicitně požadavek PUT nebo PATCH spouštět úlohy a nastavte `authentication` objekt má hodnotu null. Odpověď nebude obsahovat všechny vlastnosti ověřování.
 
-## <a name="client-certificate"></a>Klientský certifikát
+## <a name="client-certificate"></a>klientský certifikát
 
 ### <a name="request-body---client-certificate"></a>Text požadavku - klientského certifikátu
 
@@ -276,7 +276,7 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="active-directory-oauth"></a>Active Directory OAuth
+## <a name="active-directory-oauth"></a>Služby Active Directory OAuth
 
 ### <a name="request-body---active-directory-oauth"></a>Text – Active Directory OAuth žádosti 
 

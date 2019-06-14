@@ -9,10 +9,10 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700275"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrace hromadných dat do Azure File Sync
@@ -49,9 +49,9 @@ Tady je postup pro nastavení Azure File Sync způsobem, který je kompatibilní
 
 ![Diagram znázorňující, jak nastavit službu Azure File Sync](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
-| Krok | Detail |
+| Krok | Podrobnosti |
 |---|---------------------------------------------------------------------------------------|
-| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Pořadí Data Box](../../databox/data-box-deploy-ordered.md). Nabídky rodiny zařízení Data Box [několik produktů](https://azure.microsoft.com/services/storage/databox/data) podle svých potřeb. Až se zobrazí Data Box, postupujte podle jeho [dokumentaci ke kopírování dat](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do této cesty UNC na zařízení Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<ShareName\>*. Tady *ShareName* je název pracovní sdílené složky. Odeslat zpět do Azure Data Box. |
+| ![Krok 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Pořadí Data Box](../../databox/data-box-deploy-ordered.md). Nabídky rodiny zařízení Data Box [několik produktů](https://azure.microsoft.com/services/storage/databox/data) podle svých potřeb. Až se zobrazí Data Box, postupujte podle jeho [dokumentaci ke kopírování dat](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) do této cesty UNC na zařízení Data Box:  *\\< DeviceIPAddres\>\<StorageAccountName_AzFile\> \<ShareName\>* . Tady *ShareName* je název pracovní sdílené složky. Odeslat zpět do Azure Data Box. |
 | ![Krok 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Počkejte, dokud vaše soubory zobrazí sdílené složky Azure, které jste zvolili jako dočasné pracovní složky. *Než povolíte synchronizaci do těchto sdílených složek.* |
 | ![Krok 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Vytvořte novou prázdnou sdílenou složku pro každou sdílenou složku, která pro vás vytvořili zařízení Data Box. Této nové sdílené složky musí být ve stejném účtu úložiště jako sdílenou složku zařízení Data Box. [Jak vytvořit novou sdílenou složku Azure file](storage-how-to-create-file-share.md). |
 | ![Krok 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Vytvořit skupinu synchronizace](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) ve službě synchronizace úložiště. Odkaz na prázdnou sdílenou složku jako koncový bod cloudu. Tento krok opakujte pro každou sdílenou složku zařízení Data Box. [Nastavení Azure File Sync](storage-sync-files-deployment-guide.md). |

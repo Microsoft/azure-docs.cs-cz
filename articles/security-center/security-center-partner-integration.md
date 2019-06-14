@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: e756a0a7af9ad89e3aad8b0dbe27a870a3f855c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d94567800a9fd020784c9cb07b2c6824cd032509
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60907165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064277"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
+
+> [!NOTE]
+> Podmnožinu řešení zabezpečení se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Integrovaná řešení zabezpečení Azure
 Security Center umožňuje snadné povolení integrovaných řešení zabezpečení v Azure. Mezi výhody patří:
@@ -31,11 +34,7 @@ Security Center umožňuje snadné povolení integrovaných řešení zabezpeče
 - **Integrované detekce**: Události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují v rámci výstrah a incidentů služby Security Center. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
 - **Sjednocená Správa a sledování stavu**: Zákazníci můžou pomocí integrovaných událostí stavu monitorovat všechna partnerská řešení na první pohled. Je dostupná základní správa se snadným přístupem k pokročilému nastavení s použitím partnerského řešení.
 
-Mezi integrovaná řešení zabezpečení v současné době patří:
-
-- Firewall webových aplikací ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/products.html) a [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
-- Firewall nové generace ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](https://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) a [Palo Alto Networks](https://www.paloaltonetworks.com/products))
-- Posouzení ohrožení zabezpečení ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) a [Rapid7](https://www.rapid7.com/products/insightvm/))
+V současné době integrovaných řešení zabezpečení zahrnují posouzení ohrožení zabezpečení podle [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) a [Rapid7](https://www.rapid7.com/products/insightvm/) a Microsoft Application Gateway Web application firewall.
 
 > [!NOTE]
 > Security Center neinstaluje agenta Microsoft Monitoring Agent na partnerská virtuální zařízení, protože většina dodavatelů zabezpečení na svých zařízeních zakazuje spouštění externích agentů.
@@ -43,12 +42,7 @@ Mezi integrovaná řešení zabezpečení v současné době patří:
 >
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
-Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete také připojit další zdroje dat zabezpečení, včetně:
-
-- Azure AD Identity Protection
-- Počítače spuštěné místně nebo v jiných cloudech
-- Řešení zabezpečení s podporou formátu CEF (Common Event Format)
-- Microsoft Advanced Threat Analytics
+Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete také připojit další zdroje dat zabezpečení, včetně počítačů, které jsou spuštěné místně nebo v jiných cloudech.
 
 ![Integrace partnerských řešení](./media/security-center-partner-integration/security-center-partner-integration-fig8.png)
 
@@ -112,76 +106,6 @@ Security Center také vyhledává řešení nasazená v předplatném, která do
 
 ![Zdroje dat](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
-### <a name="connect-external-solutions"></a>Připojení externích řešení
-
-Kromě shromažďování dat o zabezpečení z počítačů můžete také integrovat data přicházející z mnoha různých jiných řešení zabezpečení, včetně těch, které podporují protokol Common Event Format (CEF). CEF je standardní formát nad zprávami Syslog, který používá mnoho dodavatelů zabezpečení, aby byla možná vzájemná integrace událostí mezi různými platformami.
-
-V tomto rychlém startu se naučíte:
-- Připojit řešení zabezpečení do služby Azure Security Center pomocí protokolů CEF
-- Ověření připojení pomocí řešení zabezpečení
-
-#### <a name="prerequisites"></a>Požadavky
-Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/).
-
-Chcete-li si tento rychlý start použít, budete potřebovat služby Security Center na cenové úrovni Standard. Security Center úrovně Standard můžete vyzkoušet zdarma. Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
-
-Budete také potřebovat [počítač s Linuxem](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux) a službou Syslog, který je již připojený ke službě Security Center.
-
-#### <a name="connect-solution-using-cef"></a>Připojit řešení pomocí CEF
-
-1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
-
-    ![Výběr služby Security Center](./media/quick-security-solutions/quick-security-solutions-fig1.png)  
-
-3. V hlavní nabídce služby Security Center vyberte **Zásady zabezpečení**.
-4. Na stránce Řešení zabezpečení v části **Přidat zdroje dat (3)** klikněte na tlačítko **Přidat** pod položkou **Common Event Format**.
-
-    ![Přidání zdroje dat](./media/quick-security-solutions/quick-security-solutions-fig2.png)
-
-5. Na stránce Protokoly Common Event Format rozbalte druhý krok, **Configure Syslog forwarding to send the required logs to the agent on UDP port 25226** (Konfigurace předávání protokolu Syslog pro odesílání požadovaných dat agentovi na portu UDP 25226) a pokračujte na počítači s Linuxem podle následujících pokynů:
-
-    ![Konfigurace syslogu](./media/quick-security-solutions/quick-security-solutions-fig3.png)
-
-6. Rozbalte třetí krok, **Place the agent configuration file on the agent computer** (Uložení konfiguračního souboru agenta do počítače agenta) a pokračujte na počítači s Linuxem podle následujících pokynů:
-
-    ![Konfigurace agentů](./media/quick-security-solutions/quick-security-solutions-fig4.png)
-
-7. Rozbalte čtvrtý krok, **Restart the syslog daemon and the agent** (Restartování démona syslog a agenta) a pokračujte na počítači s Linuxem podle následujících pokynů:
-
-    ![Restartování syslogu](./media/quick-security-solutions/quick-security-solutions-fig5.png)
-
-
-#### <a name="validate-the-connection"></a>Ověření připojení
-
-Než budete pokračovat následujícím postupem, musíte počkat, dokud syslog nezačne odesílat zprávy do služby Security Center. To může nějakou dobu trvat, závisí to na velikosti prostředí.
-
-1.  V levém podokně řídicího panelu Security Center klikněte na tlačítko **Hledat**.
-2.  Vyberte pracovní prostor, ke kterému je Syslog (počítač s Linuxem) připojený.
-3.  Zadejte *CommonSecurityLog* a klikněte na tlačítko **Hledat**.
-
-Následující příklad ukazuje výsledek tohoto postupu: ![CommonSecurityLog](./media/quick-security-solutions/common-sec-log.png)
-
-#### <a name="clean-up-resources"></a>Vyčištění prostředků
-Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud budete chtít pokračovat v práci s následnými kurzy a rychlými starty, ponechte v provozu úroveň Standard a nechte zapnuté automatické zřizování. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
-
-1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
-2. Vyberte předplatné nebo zásady, které chcete vrátit na úroveň Free. Otevře se okno **Zásady zabezpečení**.
-3. V části **SOUČÁSTI ZÁSAD** vyberte **Cenová úroveň**.
-4. Výběrem **Free** změníte předplatné z úrovně Standard na úroveň Free.
-5. Vyberte **Uložit**.
-
-Pokud chcete vypnout automatické zřizování:
-
-1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
-2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
-3. V části **Zásady zabezpečení – shromažďování dat** výběrem možnosti **Vypnuto** u volby **Onboarding** vypnete automatické zřizování.
-4. Vyberte **Uložit**.
-
->[!NOTE]
-> Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
->
-
 ## <a name="exporting-data-to-a-siem"></a>Export dat do SIEM
 
 Zpracované události vytvořené službou Azure Security Center se publikují do Azure [protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), jeden z protokolu typy dostupné v nástroji Azure Monitor. Azure Monitor nabízí konsolidované kanálu pro směrování všech dat monitorování do nástroje SIEM. To se provádí Streamovat data do centra událostí, kde ji potom je mohly vyžádat do nástroje partnera.
@@ -230,6 +154,5 @@ Tady je několik Splunk dotazů, které můžete použít k načítání dat vý
 V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Monitorování partnerských řešení pomocí služby Security Center](security-center-partner-solutions.md). Zjistěte, jak monitorovat stav partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Získejte odpovědi na nejčastější dotazy k používání služby Security Center.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

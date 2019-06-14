@@ -16,10 +16,10 @@ ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31cf1f6da515aa9b453987383e78f466c5ba4fb9
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827295"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro automatické zřizování uživatelů
@@ -311,9 +311,9 @@ V tomto kroku budete "zabezpečení domény" udělit oprávnění zásad pro pra
    | ---------- | ---------- |
    | Operace GET a Put | Data pracovních procesů: Veřejný pracovní sestavy |
    | Operace GET a Put | Data osob: Kontaktní informace o práci |
-   | Získat  | Data pracovních procesů: Všechny pozice |
-   | Získat  | Data pracovních procesů: Aktuální personální informace |
-   | Získat  | Data pracovních procesů: Název firmy na pracovní profil |
+   | Získat | Data pracovních procesů: Všechny pozice |
+   | Získat | Data pracovních procesů: Aktuální personální informace |
+   | Získat | Data pracovních procesů: Název firmy na pracovní profil |
    | Operace GET a Put | WORKDAY účty |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurace oprávnění zásad zabezpečení obchodního procesu
@@ -464,7 +464,7 @@ Po nasazení .NET 4.7.1+ si můžete stáhnout **[zde agentem zřizování v mí
 
    * Jakmile přihlašovací údaje jsou úspěšně, uloží **mapování** oddíl se zobrazí výchozí mapování **synchronizovat pracovníkům Workday v místní službě Active Directory**
 
-### <a name="part-3-configure-attribute-mappings"></a>3. část: Nakonfigurujte mapování atributů
+### <a name="part-3-configure-attribute-mappings"></a>3\. část: Nakonfigurujte mapování atributů
 
 V této části můžete nakonfigurovat uživatele tok dat z Workday do Active Directory.
 
@@ -536,7 +536,7 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ano** | Zapisovat pouze při vytváření |
 | **PreferredNameData**    |  CN    |   |   Zapisovat pouze při vytváření |
-| **SelectUniqueValue (připojit k ("\@", připojte se k (".", \[FirstName\], \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 1 (), \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Zapisovat pouze při vytváření 
+| **SelectUniqueValue (připojit k ("\@", připojte se k (".", \[FirstName\], \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 1 (), \[LastName\]), "contoso.com"), připojte se k ("\@", připojte se k (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName (Hlavní název uživatele)     |     | Zapisovat pouze při vytváření 
 | **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Zapisovat pouze při vytváření |
 | **Přepínač (\[aktivní\],, "0", "PRAVDA", "1", "Nepravda")** |  accountDisabled      |     | Vytváření a aktualizace |
 | **Jméno**   | givenName       |     |    Vytváření a aktualizace |
@@ -959,7 +959,7 @@ Zaškrtněte políčko "Úpravy" pro pouze operace aktualizace toku z Workday do
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Jak formátovat zobrazovaná jména ve službě AD na základě atributů oddělení, země nebo město a regionální odchylky popisovač uživatele?
 
-Je běžné požadavky na konfiguraci *displayName* atributu ve službě AD, takže poskytuje také informace o oddělení a zemi/oblast uživatele. Pro třeba pokud Jan Macek pracuje v oddělení marketingu v USA, můžete jeho *displayName* zobrazí jako *Macek Jan (Marketing-US)*.
+Je běžné požadavky na konfiguraci *displayName* atributu ve službě AD, takže poskytuje také informace o oddělení a zemi/oblast uživatele. Pro třeba pokud Jan Macek pracuje v oddělení marketingu v USA, můžete jeho *displayName* zobrazí jako *Macek Jan (Marketing-US)* .
 
 Zde je, jak můžete zpracovávat takové požadavky pro vytváření *CN* nebo *displayName* k patřit atributy jako společnosti, organizační jednotky, město nebo země/oblast.
 
@@ -988,14 +988,14 @@ Zde je, jak můžete zpracovávat takové požadavky pro vytváření *CN* nebo 
 
   Se svým týmem Workday potvrďte, že výše uvedené rozhraní API výrazy jsou platné pro konfiguraci klienta Workday. Pokud třeba, můžete je upravit podle popisu v části [přizpůsobení seznamu atributů uživatelů Workday](#customizing-the-list-of-workday-user-attributes).
 
-* Chcete-li sestavit výraz atribut správné mapování, určete, které Workday atribut "vynuceně" představuje uživatele křestní jméno, název, země/oblast a poslední oddělení. Řekněme, že jsou atributy *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* a *SupervisoryOrganization* v uvedeném pořadí. Může být využit k sestavení výrazu pro AD *displayName* atribut následujícím způsobem můžete zobrazit zobrazovaný název, jako je *Macek Jan (Marketing-US)*.
+* Chcete-li sestavit výraz atribut správné mapování, určete, které Workday atribut "vynuceně" představuje uživatele křestní jméno, název, země/oblast a poslední oddělení. Řekněme, že jsou atributy *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* a *SupervisoryOrganization* v uvedeném pořadí. Může být využit k sestavení výrazu pro AD *displayName* atribut následujícím způsobem můžete zobrazit zobrazovaný název, jako je *Macek Jan (Marketing-US)* .
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
     Jakmile budete mít pravý výraz, upravit mapování atributů tabulky a změnit *displayName* mapování atributů, jak je znázorněno níže:   ![DisplayName mapování](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
-* Rozšíření příkladu výše, Pojďme say byste chtěli převést názvy měst přicházející z Workday do Zkrácený tvar vlastností hodnoty a použít ho k vytváření zobrazované názvy, jako *Smith, Jan (Kuba)* nebo *Doe, Jana (NYC)*, pak lze tohoto výsledku dosáhnout pomocí výraz přepínače s pracovního dne *magistrát* atribut jako určujícím proměnné.
+* Rozšíření příkladu výše, Pojďme say byste chtěli převést názvy měst přicházející z Workday do Zkrácený tvar vlastností hodnoty a použít ho k vytváření zobrazované názvy, jako *Smith, Jan (Kuba)* nebo *Doe, Jana (NYC)* , pak lze tohoto výsledku dosáhnout pomocí výraz přepínače s pracovního dne *magistrát* atribut jako určujícím proměnné.
 
      ```
     Switch
@@ -1099,7 +1099,7 @@ Když kliknete na některý z záznamů protokolu auditu **podrobnosti o aktivit
 
   Najít odpovídající této operaci importu AD záznamy protokolu zřizování agenta, otevřete protokoly Prohlížeče událostí Windows a používat **najít...** možnost nabídky k vyhledání položky protokolu obsahující hodnotu atributu odpovídající vlastnost ID nebo připojení (v tomto případě *21023*).
 
-  ![Najít](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Vyhledávání](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Vyhledejte položku s *ID události = 9*, který bude poskytovat LDAP vyhledávací filtr používaný agentem pro načtení účet AD. Můžete ověřit, zda se jedná o správné vyhledávací filtr pro načtení jedinečného uživatele položky.
 
@@ -1146,7 +1146,7 @@ Atribut manager je ve službě AD atribut typu odkaz. Zřizovací služba nenast
 
   [![Aktualizace Správce](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
-První 4 záznamy jsou jako ty, které Prozkoumali jsme uživatele v rámci operace vytvoření. 5. záznam je export spojené s atributem update manager. Záznam protokolu zobrazuje výsledek AD účet správce aktualizace operace, která se provádí pomocí manažera *objectGuid* atribut.
+První 4 záznamy jsou jako ty, které Prozkoumali jsme uživatele v rámci operace vytvoření. 5\. záznam je export spojené s atributem update manager. Záznam protokolu zobrazuje výsledek AD účet správce aktualizace operace, která se provádí pomocí manažera *objectGuid* atribut.
 
   ```JSON
   // Modified Properties

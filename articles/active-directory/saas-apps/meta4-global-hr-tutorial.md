@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ccb12ca5daf7a57ed50f6ed471e62f61b335466
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: f45fc1d5128811f04ca96224551dde969f4fe9d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65552055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>Kurz: Integrace Azure Active Directory s Meta4 globální HR
 
@@ -58,7 +58,7 @@ Konfigurace integrace globální HR Meta4 do služby Azure AD, budete muset při
 
 **Chcete-li přidat globální HR Meta4 z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -193,7 +193,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v Meta4 globální HR. Práce s [tým podpory globální HR Meta4](mailto:victors@meta4.com) přidat uživatele na platformě Meta4 globální HR. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

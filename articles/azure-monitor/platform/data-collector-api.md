@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922787"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslat data protokolu pro monitorování Azure pomocí rozhraní API kolekce dat HTTP (public preview)
@@ -52,11 +52,11 @@ Pokud chcete používat rozhraní API kolekce dat HTTP, můžete vytvořit poža
 | Parametr | Popis |
 |:--- |:--- |
 | ID zákazníka |Jedinečný identifikátor pro pracovní prostor Log Analytics. |
-| Prostředek |Název prostředku rozhraní API: / api/logs. |
+| Resource |Název prostředku rozhraní API: / api/logs. |
 | Verze rozhraní API |Verze rozhraní API pro použití s touto žádostí. V současné době je 2016-04-01. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
-| Hlavička | Popis |
+| Záhlaví | Popis |
 |:--- |:--- |
 | Autorizace |Ověření podpisu. Později v tomto článku najdete informace o tom, jak vytvořit hlavičku HMAC SHA256. |
 | Log-Type |Zadejte typ záznamu dat, která se právě odesílá. Omezení velikosti pro tento parametr je 100 znaků. |
@@ -200,10 +200,10 @@ Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit služ
 | 400 |Nesprávná žádost |MissingLogType |Typ protokolu požadovaná hodnota nebyla zadána. |
 | 400 |Nesprávná žádost |UnsupportedContentType |Typ obsahu nebyl nastaven na **application/json**. |
 | 403 |Zakázáno |InvalidAuthorization |Službu se nepovedlo ověřit žádost. Ověřte, že jsou platné ID a připojení klíče pracovního prostoru. |
-| 404 |Nenalezené | | Zadaná adresa URL je nesprávná nebo požadavku je moc velká. |
+| 404 |Nebyl nalezen | | Zadaná adresa URL je nesprávná nebo požadavku je moc velká. |
 | 429 |Příliš mnoho žádostí | | Služba dochází k velkému počtu data z vašeho účtu. Zkuste prosím požadavek později. |
-| 500 |Vnitřní chyba serveru |UnspecifiedError |U této služby došlo k vnitřní chybě. Zkuste prosím požadavek. |
-| 503 |Služba není dostupná |ServiceUnavailable |Služba je momentálně nedostupný a nepřijímá žádosti. Zkuste to prosím znovu, vaši žádost. |
+| 500 |Vnitřní chyba serveru |UnspecifiedError |Služby došlo k vnitřní chybě. Zkuste prosím požadavek. |
+| 503 |Služba není k dispozici |ServiceUnavailable |Služba je momentálně nedostupný a nepřijímá žádosti. Zkuste to prosím znovu, vaši žádost. |
 
 ## <a name="query-data"></a>Dotazování dat
 Zadat dotaz na data odeslaná Azure monitoru HTTP rozhraní API kolekce dat, hledat záznamy s **typ** , který je roven **LogType** hodnotu, která jste zadali, s příponou **_CL**. Například, pokud jste použili **MyCustomLog**, pak by vrátí všechny záznamy s `MyCustomLog_CL`.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ed9be9f3ecc7a14a0aa0210ee34f9323126be085
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65072224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061097"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamicky vytvořit a použít trvalý svazek se soubory Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Třída úložiště se používá k definování, jak se vytvoří sdílené sl
 * *Standard_RAGRS* – standardní geograficky redundantní úložiště jen pro čtení (RA-GRS)
 
 > [!NOTE]
-> Azure Files aktuálně pouze práce s úložiště úrovně Standard. Pokud používáte službu Premium storage, nepodaří svazek zřídit.
+> Služba soubory Azure podporují službu premium storage v AKS clustery se spuštěnou technologií Kubernetes 1.13 nebo vyšší.
 
 Další informace o Kubernetes třídy úložiště pro soubory Azure najdete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
 

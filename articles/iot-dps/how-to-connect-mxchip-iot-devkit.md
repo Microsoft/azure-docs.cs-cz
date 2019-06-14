@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122816"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Použití Azure IoT Hub Device Provisioning Service automatického zřizování k registraci ve službě IoT Hub MXChip IoT DevKit
@@ -60,7 +60,7 @@ Uložit aktualizačními doménami DevKit:
 
 1. U DevKit, podržte klávesu **tlačítko A**, push a verzi **resetování** tlačítko a pak uvolněte **tlačítko A**. Vaše DevKit přejde do režimu konfigurace.
 
-1. Klikněte na tlačítko `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Konfigurace nastavení zařízení... > Konfigurace jedinečný řetězec (UD)**.
+1. Klikněte na tlačítko `F1` otevřete paletu příkazů, zadejte a vyberte **Workbench zařízení Azure IoT: Konfigurace nastavení zařízení... > Konfigurace jedinečný řetězec (UD)** .
   ![Konfigurace aktualizačními doménami](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. Poznamenejte si vygenerovaný řetězec aktualizačními doménami. Potřebujete ji k vygenerování certifikátu X.509. Stiskněte klávesu `Enter`.

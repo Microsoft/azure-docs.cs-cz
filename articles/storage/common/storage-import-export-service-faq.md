@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61478568"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: Nejčastější dotazy 

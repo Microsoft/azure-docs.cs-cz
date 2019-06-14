@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 12025dfb93bbcfc86ae301f8fb63e7ac74697cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f8fd0b317c17f142664d22291c23442dd49f970
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60898912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053305"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Export datového modelu
 V této tabulce jsou uvedeny vlastnosti objektu telemetrická data odesílaná z [Application Insights](../../azure-monitor/app/app-insights-overview.md) sady SDK k portálu.
@@ -158,7 +158,7 @@ Všechny typy telemetrie doplňují oddíl kontextu. Všechna tato pole jsou př
 | internal.data.documentVersion |string | |
 | internal.data.id |string | Jedinečný identifikátor, který je přidělen položky se ingestuje do služby Application Insights |
 
-## <a name="events"></a>Události
+## <a name="events"></a>Duration
 Vlastní události generované modulem [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 | `Path` | Type | Poznámky |
@@ -236,7 +236,7 @@ Odeslaný [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#tr
 | --- | --- | --- |
 | Počet požadavků [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad: 4 =&gt; 25%. |
 | žádost o [0] durationMetric.value |číslo |Doba od žádosti přicházející do odpovědi. 1e7 == 1s |
-| id požadavku [0] |string |ID operace |
+| id požadavku [0] |string |Id operace |
 | Název žádosti [0] |string |Základ adresy url + GET/POST.  Maximální délka 250 |
 | žádost o [0] responseCode |integer |Odpovědi HTTP odeslané do klienta |
 | Úspěch požadavku [0] |Boolean |Výchozí == (responseCode &lt; 400) |
@@ -271,7 +271,7 @@ Odeslaný trackPageView() nebo [stopTrackPage](../../azure-monitor/app/api-custo
 | --- | --- | --- |
 | Počet zobrazení [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | zobrazení [0] durationMetric.value |integer |Volitelně můžete nastavit v trackPageView() nebo startTrackPage() – hodnota stopTrackPage(). Není stejný jako clientPerformance hodnoty. |
-| Název zobrazení [0] |string |Název stránky  Maximální délka 250 |
+| Název zobrazení [0] |string |Název stránky.  Maximální délka 250 |
 | Adresa url zobrazení [0] |string | |
 | zobrazení [0] urlData.base |string | |
 | zobrazení [0] urlData.hashTag |string | |
@@ -282,7 +282,7 @@ Sestavy [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availab
 
 | `Path` | Type | Poznámky |
 | --- | --- | --- |
-| availabilityMetric.name dostupnost [0] |string |dostupnosti |
+| availabilityMetric.name dostupnost [0] |string |availability |
 | availabilityMetric.value dostupnost [0] |číslo |1.0 nebo 0,0 |
 | počet dostupnost [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | dataSizeMetric.name dostupnost [0] |string | |

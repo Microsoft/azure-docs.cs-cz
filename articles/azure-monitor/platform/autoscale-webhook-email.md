@@ -9,10 +9,10 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787301"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Pomocí akcí automatického škálování můžete poslat e-mail a webhook oznámení výstrah ve službě Azure Monitor
@@ -62,7 +62,7 @@ Při použití rozhraní REST API nebo Resource Manageru šablony, zahrnují ele
 
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
-| operace |ano |Hodnota musí být "Škálovací" |
+| Operace |ano |Hodnota musí být "Škálovací" |
 | sendToSubscriptionAdministrator |ano |Hodnota musí být "true" nebo "false" |
 | sendToSubscriptionCoAdministrators |ano |Hodnota musí být "true" nebo "false" |
 | customEmails |ano |Hodnota může být null [] nebo pole řetězců e-mailů |
@@ -106,11 +106,11 @@ Při generování oznámení automatického škálování je datová část webh
 | Pole | Povinné? | Popis |
 | --- | --- | --- |
 | status |ano |Stav, který určuje, zda byla vygenerována akce automatického škálování |
-| operace |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
+| Operace |ano |Pro zvýšení instancí je "Horizontální navýšení kapacity" a snížení v instancích, bude "Škálování v" |
 | Kontext |ano |Kontext akce automatického škálování |
-| časové razítko |ano |Časové razítko při aktivaci akce automatického škálování |
+| timestamp |ano |Časové razítko při aktivaci akce automatického škálování |
 | id |Ano |ID správce prostředků zadaném nastavení automatického škálování |
-| jméno |Ano |Název nastavení automatického škálování |
+| name |Ano |Název nastavení automatického škálování |
 | Podrobnosti |Ano |Vysvětlení akci, která trvala služby automatického škálování a změna v počtu instancí |
 | subscriptionId |Ano |ID předplatného cílového prostředku, který je právě škálovat |
 | resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který je právě škálovat |

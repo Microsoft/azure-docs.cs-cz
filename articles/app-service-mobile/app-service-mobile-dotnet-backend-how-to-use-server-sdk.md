@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119512"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
@@ -53,7 +53,7 @@ Nainstalujte úlohy Azure prostřednictvím instalačního programu sady Visual 
 
 1. Otevřít **nový projekt** dialogového okna (z **souboru** > **nový** > **projekt...** ).
 2. Rozbalte **Visual C#** a vyberte **webové**.
-3. Vyberte **webová aplikace ASP.NET (.NET Framework)**.
+3. Vyberte **webová aplikace ASP.NET (.NET Framework)** .
 4. Zadejte název projektu. Pak klikněte na **OK**.
 5. Vyberte **mobilní aplikace Azure** ze seznamu šablon.
 6. Klikněte na tlačítko **OK** k vytvoření řešení.
@@ -104,7 +104,7 @@ Pokud chcete povolit jednotlivé funkce, musí volat metody rozšíření na **M
         .MapApiControllers()
         .ApplyTo(config);
 
-Rychlý start serveru z Azure portal volání **UseDefaultConfiguration()**. Tato ekvivalent následující nastavení:
+Rychlý start serveru z Azure portal volání **UseDefaultConfiguration()** . Tato ekvivalent následující nastavení:
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package

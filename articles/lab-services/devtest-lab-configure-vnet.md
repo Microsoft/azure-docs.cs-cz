@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60694732"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurace virtuální sítě ve službě Azure DevTest Labs
@@ -39,7 +39,7 @@ Následující postup vás provede přidáním stávající virtuální síť (a
 1. Vyberte **+ Přidat**.
    
     ![Přidat existující virtuální sítě do testovacího prostředí](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-1. Na **virtuální síť** vyberte **[vyberte virtuální síť]**.
+1. Na **virtuální síť** vyberte **[vyberte virtuální síť]** .
    
     ![Vyberte existující virtuální sítě](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
 1. Na **zvolte virtuální síť** podokně, vyberte požadovanou virtuální síť. Zobrazí seznam zobrazující všechny virtuální sítě, které jsou ve stejné oblasti v rámci předplatného jako testovacího prostředí.

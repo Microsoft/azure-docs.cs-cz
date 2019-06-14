@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60da0c2c421f7f783c4d59252b0df3c7be1a0b1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0448ae468e27fcdf1a0ee54ef6a3ed48ca3f6b11
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Integrace Azure Active Directory s Tangoe příkaz Premium Mobile
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integraci Tangoe příkaz Premium mobilní zařízen
 
 **Přidání Mobile Premium Tangoe příkaz z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

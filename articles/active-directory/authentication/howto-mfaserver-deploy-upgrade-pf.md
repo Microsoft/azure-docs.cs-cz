@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277001faf988e5d201a65c9e4112263f226b3db5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcb1bf4996e381db933eac91135093a101e504bb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055979"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgrade agenta PhoneFactor na Azure Multi-Factor Authentication Server
 
 Pokud chcete upgradovat agenta PhoneFactor verze 5.x nebo starší na Azure Multi-Factor Authentication Server, odinstalujte nejprve agenta PhoneFactor a připojené součásti. Pak lze instalovat Multi-Factor Authentication Server a jeho připojené součásti.
+
+> [!IMPORTANT]
+> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
 
 ## <a name="uninstall-the-phonefactor-agent"></a>Odinstalace agenta PhoneFactor
 

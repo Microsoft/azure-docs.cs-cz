@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
 ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60625158"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analyzovat protokoly toků skupin zabezpečení sítě v Azure s využitím Network Watcheru a Graylogu
@@ -231,7 +231,7 @@ Můžete kliknout na název řídicího panelu a prohlédnout si ho ale v tuto c
 
 3. Vyberte žádné požadované parametry, ve kterém chcete vizualizovat (v tomto příkladu je vybrán zdroj IP). Chcete-li zobrazit seznam možných widgetů, klikněte na modrou šipkou rozevíracího seznamu na levé straně pole a pak vyberte **rychlé hodnoty** ke generování widgetu. By měl vypadat podobně jako na následujícím obrázku:
 
-   ![Zdrojová IP adresa](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
+   ![Zdrojová adresa IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
 4. Odtud můžete vybrat **přidat na řídicí panel** tlačítko v pravém horním rohu widgetu a vyberte odpovídající řídicí panel, který chcete přidat.
 

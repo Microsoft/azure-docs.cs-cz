@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 6d461725d0d4c86ee7aa5b450d42c01ca77ffb16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406599"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107680"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Jak používat Azure Monitor sešity sestav Azure Active Directory
 
@@ -76,9 +76,9 @@ Tento sešit zobrazuje trendy následující přihlášení:
 
 - Úspěch
 
-- Čeká se na akci uživatele.
+- Akce čekajících uživatelů
 
-- Chyba
+- Selhání
 
 Každý trendů můžete filtrovat podle těchto kategorií:
 
@@ -168,11 +168,11 @@ Tento sešit zobrazuje následující zakázáno přihlášení trendy:
 
 - Vyžadování MFA
  
-- Vyžadovat podmínky použití
+- Vyžadování podmínek použití
 
 - Vyžadovat zásady ochrany osobních údajů
 
-- Další
+- Ostatní
 
 
 Každý trendů můžete filtrovat podle těchto kategorií:
@@ -210,9 +210,9 @@ Tento sešit zobrazuje trendy následující přihlášení:
 
 - Úspěch
 
-- Čeká se na akci.
+- Čekající akce
 
-- Chyba
+- Selhání
 
 
 Každý trendů můžete filtrovat podle těchto kategorií:

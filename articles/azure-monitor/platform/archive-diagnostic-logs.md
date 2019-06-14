@@ -1,39 +1,31 @@
 ---
 title: Archivovat diagnostické protokoly Azure
 description: Zjistěte, jak archivace diagnostických protokolů pro dlouhodobé uchovávání v účtu úložiště Azure.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: bc1804e547bb1a29fc0dc680b948f1bb31af8307
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8ab8a0bcf0c2c00515e46f3e2bbdb55b42ff7a2a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244915"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071539"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat diagnostické protokoly Azure
 
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin prostředí PowerShell, rozhraní příkazového řádku nebo rozhraní REST API pro archivaci vaše [diagnostické protokoly Azure](diagnostic-logs-overview.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat diagnostických protokolů k zásadám volitelné uchovávání informací pro auditování, statické analýzy nebo pro zálohování. Účet úložiště nemusí být ve stejném předplatném jako prostředek, které vysílá protokoly za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
 
-> [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
->
-> 
-
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete muset [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md) ke kterému můžete archivovat diagnostické protokoly. Důrazně doporučujeme, že nepoužíváte existující účet úložiště, který obsahuje jiné, než monitorování data uložená v něm může lépe řídit přístup k datům monitorování. Pokud jsou také archivace protokolu aktivit a diagnostických metrik na účet úložiště, ale může být použití účtu úložiště pro diagnostické protokoly a aby se všechna data monitorování v centrálním umístění.
 
-> [!NOTE]
->  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
-
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
 
-Archivace diagnostických protokolů některou z níže uvedených způsobů je nastavit **nastavení diagnostiky** určitého prostředku. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metrik data odeslaná do cíle (účet úložiště, obor názvů Event Hubs nebo pracovní prostor Log Analytics). Definuje také zásady uchovávání informací (počet dní uchování) pro události z každé kategorie protokolu a data metriky, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události pro dané kategorie protokolu se ukládají po neomezenou dobu (které je třeba navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů mezi 1 a 2147483647. [Další informace o nastavení diagnostiky zde](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
+Archivace diagnostických protokolů některou z níže uvedených způsobů je nastavit **nastavení diagnostiky** určitého prostředku. Nastavení diagnostiky pro prostředek definuje kategorie protokolů a metrik data odeslaná do cíle (účet úložiště, obor názvů Event Hubs nebo pracovní prostor Log Analytics). Definuje také zásady uchovávání informací (počet dní uchování) pro události z každé kategorie protokolu a data metriky, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události pro dané kategorie protokolu se ukládají po neomezenou dobu (které je třeba navždy). Zásady uchovávání informací v opačném případě může být libovolný počet dnů od 1 do 365. [Další informace o nastavení diagnostiky zde](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings). Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. 
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
@@ -71,17 +63,17 @@ Po chvíli se nové nastavení se zobrazí v seznamu nastavení pro tento prost�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ```
-Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Category networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | ResourceId |Ano |ID prostředku prostředku, na kterém chcete nastavit nastavení diagnostiky. |
 | StorageAccountId |Ne |ID prostředku účtu úložiště, ke kterému má být uložen diagnostické protokoly. |
-| Categories |Ne |Čárkou oddělený seznam kategorií protokolu povolit. |
+| Category |Ne |Čárkou oddělený seznam kategorií protokolu povolit. |
 | Enabled |Ano |Logická hodnota označující, jestli jsou povolené nebo zakázané pro tento prostředek diagnostiku. |
 | RetentionEnabled |Ne |Logická hodnota označující, zda jsou povoleny zásady uchovávání informací pro tento prostředek. |
-| RetentionInDays |Ne |Počet dní, pro které události uchování mezi 1 a 2147483647. Hodnota nula ukládá protokoly po neomezenou dobu. |
+| RetentionInDays |Ne |Počet dní, pro které by měl být zachován události od 1 do 365. Hodnota nula ukládá protokoly po neomezenou dobu. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Archivace diagnostických protokolů pomocí Azure CLI
 

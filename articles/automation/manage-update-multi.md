@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 16fe2d23fdd07f8f150cc010b0a1d232c761c77f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 024a2dbbd46fa2ab60da0f9682dbe298eaf73e86
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61300047"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055576"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -85,7 +85,7 @@ Počítače, které se nedávno byly povoleny pro řízení aktualizace nemusí 
 
 - **Nedodržující předpisy**: Počítače, kterým chybí minimálně jedna kritická aktualizace nebo aktualizace zabezpečení.
 
-- **Nevyhodnoceno**: Data o posouzení aktualizací nebyla přijata od počítače v očekávaném časovém rámci. Pro počítače s Linuxem je časový rámec expect za poslední 3 hodiny. Pro počítače s Windows je očekávaném časovém rámci za posledních 12 hodin.
+- **Nevyhodnoceno**: Data o posouzení aktualizací nebyla přijata od počítače v očekávaném časovém rámci. Pro počítače s Linuxem je časový rámec expect za poslední hodinu. Pro počítače s Windows je očekávaném časovém rámci za posledních 12 hodin.
 
 Chcete-li zobrazit stav agenta, klikněte na odkaz ve **připravenost agenta aktualizací** sloupce. Výběrem této možnosti se otevře **Hybrid Worker** podokně a zobrazuje stav procesu Hybrid Worker. Následující obrázek ukazuje příklad agenta, který nebyl připojen ke správě aktualizací pro delší časové období:
 
@@ -116,7 +116,7 @@ Po dokončení kontroly dodržování předpisů pro aktualizace do počítače 
 
 Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
 
-Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každé tři hodiny. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
+Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každou hodinu. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
 
 Může trvat 30 minut až 6 hodin na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
@@ -130,7 +130,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: Vyberte **Windows** nebo **Linux**.
-- **Skupiny, které se aktualizace (preview)**: Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
+- **Skupiny, které se aktualizace (preview)** : Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
 - **Počítače k aktualizaci**: Vyberte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytvoření skupiny počítačů v Azure Monitor protokolů, najdete v článku [skupiny počítačů v protokoly Azure monitoru](../azure-monitor/platform/computer-groups.md)
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
@@ -154,7 +154,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
    ![Dialogové okno Nastavení plánu](./media/manage-update-multi/update-set-schedule.png)
 
 - **Skripty před a po skripty**: Vyberte skripty spouštěné před a po nasazení. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
-- **Časové období údržby (minuty)**: Zadejte dobu, po které má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
+- **Časové období údržby (minuty)** : Zadejte dobu, po které má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
 - **Restartovat ovládací prvek** – toto nastavení určuje, jak se zpracovává restartování počítače pro nasazení aktualizace.
 

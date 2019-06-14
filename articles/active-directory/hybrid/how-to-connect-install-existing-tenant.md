@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64571371"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Pokud máte existující tenanta
@@ -34,7 +34,7 @@ Některé uživatele v místním a další můžete spravovat v cloudu. Běžný
 Pokud jste nespustili ke správě uživatelů ve službě Azure AD, které jsou k dispozici také v místní AD a později chtít připojit a používat, existují některé další otázky, které je potřeba zvážit.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchronizovat s existující uživatele ve službě Azure AD
-Při instalaci služby Azure AD Connect a zahájit synchronizaci, služba synchronizace Azure AD (ve službě Azure AD) provede kontrolu na každý nový objekt a pokuste se najít existující objekt tak, aby odpovídaly. Existují tři atributy použité pro tento proces: **userPrincipalName**, **proxyAddresses**, a **sourceAnchor**/**immutableID** . Shoda s **userPrincipalName** a **proxyAddresses** se označuje jako **obnovitelně shoda**. Shoda s **sourceAnchor** se označuje jako **pevné shoda**. Pro **proxyAddresses** pouze hodnotu pomocí atributu **SMTP:**, která je primární e-mailovou adresu, se používá pro hodnocení.
+Při instalaci služby Azure AD Connect a zahájit synchronizaci, služba synchronizace Azure AD (ve službě Azure AD) provede kontrolu na každý nový objekt a pokuste se najít existující objekt tak, aby odpovídaly. Existují tři atributy použité pro tento proces: **userPrincipalName**, **proxyAddresses**, a **sourceAnchor**/**immutableID** . Shoda s **userPrincipalName** a **proxyAddresses** se označuje jako **obnovitelně shoda**. Shoda s **sourceAnchor** se označuje jako **pevné shoda**. Pro **proxyAddresses** pouze hodnotu pomocí atributu **SMTP:** , která je primární e-mailovou adresu, se používá pro hodnocení.
 
 Porovnání je vyhodnocen pouze pro nové objekty z připojení. Pokud změníte existující objekt, je porovnávání, tyto atributy, pak se zobrazí chyba místo.
 

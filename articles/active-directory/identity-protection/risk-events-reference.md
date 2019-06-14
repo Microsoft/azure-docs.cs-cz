@@ -17,10 +17,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3973a35acb4cb95d3392a8daa59e7fd9a8c56eb1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65191528"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection rizikem události – referenční informace
@@ -28,7 +28,7 @@ ms.locfileid: "65191528"
 Většinu narušení zabezpečení se použijí při útočníci získají přístup k prostředí krádeží identity uživatele. Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik ke zjištění podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každé zjištěné podezřelé akce je uložen v záznamu volané rizikové události.
 
 
-## <a name="anonymous-ip-address"></a>Anonymní IP adresa
+## <a name="anonymous-ip-address"></a>Anonymní IP adresy
 
 **Typ zjišťování:** V reálném čase  
 **Starý název:** Přihlášení z anonymních IP adres
@@ -38,7 +38,7 @@ Tento typ rizikové události označuje přihlášení z anonymní IP adresy (na
 Tyto IP adresy jsou obvykle používány účastníky, kteří chtějí skrýt jejich přihlášení telemetrie (IP adresa, umístění, zařízení atd.) pro potenciálně škodlivým činnostem.
 
 
-## <a name="atypical-travel"></a>Neobvyklá cesta
+## <a name="atypical-travel"></a>Atypické cesty
 
 **Typ zjišťování:** Offline  
 **Starý název:** Nemožná cesta do netypických míst
@@ -69,7 +69,7 @@ Když internetovým zločincům ohrozit platný hesla oprávněným uživatelům
 Když služba získá přihlašovací údaje uživatele z dark web, vložit weby nebo výše uvedených zdrojů, jsou porovnávána s aktuální platná pověření uživatelů Azure AD se najít platný shody.
 
 
-## <a name="malware-linked-ip-address"></a>IP adresy související s malwarem
+## <a name="malware-linked-ip-address"></a>Malware propojené IP adresa
 
 **Typ zjišťování:** Offline  
 **Starý název:** Přihlášení z nakažených zařízení
@@ -89,7 +89,7 @@ Tento typ rizikové události bere v úvahu minulé historie přihlašování (I
 Můžeme také spustit toto zjišťování pro základní ověřování (nebo starších verzí protokolů). Protože tyto protokoly nejsou moderní vlastnosti, jako je ID klienta, je omezený telemetrických dat do snížil počet falešných poplachů. Doporučujeme, aby naše zákazníky, přesunout do moderního ověřování.
 
 
-## <a name="azure-ad-threat-intelligence"></a>Analýza hrozeb Azure AD
+## <a name="azure-ad-threat-intelligence"></a>Analýzy hrozeb v Azure AD
 
 **Typ zjišťování:** Offline <br>
 **Starý název:** Toto zjišťování se zobrazí v sestavách starší verze služby Azure AD Identity Protection (uživatelé označení příznakem rizika, rizikové události) jako "Uživatelé s uniklými přihlašovacími údaji.

@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
 ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473735"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure classic CLI
@@ -67,7 +67,7 @@ V předchozím příkladu `quick-create` se příznak `-M` využíval jenom k id
 * název virtuálního počítače
 * umístění (vhodné výchozí hodnoty jsou `westus` nebo `westeurope`)
 * linux (aby se v Azure vědělo, který operační systém chcete)
-* uživatelské jméno
+* username jméno
 
 V následujícím příkladu jsou všechny tyto hodnoty zadané, takže už není potřeba zobrazovat žádné další výzvy. Pokud jako soubor veřejného klíče ve formátu ssh-rsa používáte `~/.ssh/id_rsa.pub`, funguje tak, jak je:
 

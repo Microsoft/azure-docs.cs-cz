@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62122919"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (webové úlohy projektů)
@@ -144,7 +144,7 @@ Maximální počet opakování je možné konfigurovat. Stejné **MaxDequeueCoun
 
 Pro objekty BLOB nezpracovatelná zpráva fronty je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (ve formátu *{název úlohy WebJob}*. Funkce. *{Název funkce}*, například: WebJob1.Functions.CopyBlob)
+* FunctionId (ve formátu *{název úlohy WebJob}* . Funkce. *{Název funkce}* , například: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
 * BlobName
@@ -193,7 +193,7 @@ Sada WebJobs SDK, zajišťuje, že žádné **BlobTrigger** funkce volána více
 
 Potvrzení objektu BLOB se ukládají v kontejneru nazvaném *azure – webjobs – hostitelé* v určeném AzureWebJobsStorage připojovací řetězec účtu úložiště Azure. Potvrzení objektu blob obsahuje následující informace:
 
-* Funkce, která byla volána pro objekt blob ("*{název úlohy WebJob}*. Funkce. *{Název funkce}*", například: "WebJob1.Functions.CopyBlob")
+* Funkce, která byla volána pro objekt blob (" *{název úlohy WebJob}* . Funkce. *{Název funkce}* ", například: "WebJob1.Functions.CopyBlob")
 * Název kontejneru
 * Typ objektu blob ("BlockBlob" nebo "PageBlob")
 * Název objektu blob

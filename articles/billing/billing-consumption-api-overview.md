@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
 ms.openlocfilehash: 16e0bdfa0fc70d5239cb4127e61891a013bf54a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60615882"
 ---
 # <a name="azure-consumption-api-overview"></a>Přehled rozhraní API konektoru Azure consumption 
@@ -109,7 +109,7 @@ Toto rozhraní API zahrnuje:
 
 -   **Řízení přístupu Azure na základě rolí** – Konfigurace zásady přístupu na [webu Azure portal](https://portal.azure.com), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) nebo [rutin prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) k určení uživatele nebo aplikace můžete získat přístup k datům využití předplatného. Volající musí používat standardní tokeny služby Azure Active Directory pro ověřování. Přidání volajícího do role Čtenář fakturace, čtenář, vlastník nebo Přispěvatel získat přístup k datům využití pro konkrétní předplatné Azure. 
 -   **Filtrování** – přizpůsobení výsledků doporučení pomocí následující filtry:
-    - Rozsah
+    - Scope
     - Lookback období
 -   **Informace o rezervaci pro jinou nabídku typy** – informace o rezervaci je momentálně dostupná pro zákazníky s Enterprise nebo Web Direct.
 

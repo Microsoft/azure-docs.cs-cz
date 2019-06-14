@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942713"
 ---
 # <a name="storefront-details-tab"></a>Karta podrobností o prodejních místech
@@ -90,7 +90,7 @@ Program
 
 -   Se zaměřuje na zabezpečení, škálování a uspořádání dat v rámci Microsoftu cloudu pomocí Azure Data Lake, Azure HDInsight nebo Azure SQL Data Warehouse.
 
-2. den
+2\. den
 
 -   Popisuje, jak nakonfigurovat a nasadit řešení pokročilé analýzy s využitím Microsoft R a Azure Machine Learning.
 

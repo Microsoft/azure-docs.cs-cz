@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dc228f3473a4ddca8b5b68cdd99f1fced1a04cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ea2f5e33859852388357526052c39fa432471efb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922228"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091275"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Kurz: Integrace Azure Active Directory s SensoScientific bezdrátové teploty monitorování systému
 
@@ -54,7 +54,7 @@ Ke konfiguraci integrace SensoScientific bezdrátové teploty monitorování sys
 
 **Chcete-li přidat SensoScientific bezdrátové teploty monitorování systému z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

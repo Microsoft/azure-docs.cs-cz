@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ce059e542ee7bfa67e899b4923e3410e13e4930e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389250"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067502"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -87,7 +87,7 @@ Můžete programově načíst minimální propustnosti kontejneru nebo databáze
 
 Při použití sady .NET SDK [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metoda vám umožňuje načíst minimální propustnosti kontejneru nebo databáze. 
 
-Zřízená propustnost kontejneru nebo databázi můžete škálovat v každém okamžiku. 
+Zřízená propustnost kontejneru nebo databázi můžete škálovat v každém okamžiku. Při provádění operace škálování pro zvýšení propustnosti, může trvat déle kvůli úlohy systému ke zřízení požadované prostředky. Můžete zkontrolovat stav operace škálování webu Azure portal nebo prostřednictvím kódu programu pomocí sad SDK. Při použití sady .net SDK, můžete získat stav operace škálování pomocí `DocumentClient.ReadOfferAsync` metody.
 
 ## <a name="comparison-of-models"></a>Porovnání modelů
 

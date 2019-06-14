@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 15b2408113d8bd19d2e988643442ac5e3b305237
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f9ca4b54db305a5c088b4dda27a6844c8439fa1a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149210"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055296"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Vzdálený soubor na základě adresy URL kódování a streamování videa – REST
 
@@ -236,7 +236,7 @@ Po dokončení úlohy kódování, dalším krokem je, aby video ve výstupu **A
 
 Proces vytváření **Lokátor streamování** nazývá publikování. Ve výchozím nastavení **Lokátor streamování** platnost okamžitě po provedení volání rozhraní API a trvá, dokud je odstraníme, pokud nenakonfigurujete volitelné počáteční a koncový čas. 
 
-Při vytváření [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators), budete muset zadat požadovaný **StreamingPolicyName**. V tomto příkladu budete streamovat čistý nebo také nešifrovaný obsah, takže použijete předdefinovanou zásadu čistého streamování **PredefinedStreamingPolicy.ClearStreamingOnly**.
+Při vytváření [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators), je třeba zadat požadovaný **StreamingPolicyName**. V tomto příkladu se vám být streamování obsahu v clear (nebo bez šifrování), tak předdefinovaného vymazat streamování zásady, které se používá "Predefined_ClearStreamingOnly".
 
 > [!IMPORTANT]
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 
@@ -316,7 +316,7 @@ V této části vytvoříme adresu URL pro streamování HLS. Adresy URL se skl�
 1. Protokol, přes který se data odesílají. V tomto případě je to protokol HTTPS.
 
     > [!NOTE]
-    > Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
+    > Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“.
 
 2. Název hostitele koncového bodu streamování. V tomto případě je to „amsaccount-usw22.streaming.media.azure.net“.
 

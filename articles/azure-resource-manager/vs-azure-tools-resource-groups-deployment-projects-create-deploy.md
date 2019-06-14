@@ -1,5 +1,5 @@
 ---
-title: Projekty skupiny prostředků Azure v sadě Visual Studio | Dokumentace Microsoftu
+title: Vytvoření a nasazení projekty skupiny prostředků Visual Studio v Azure
 description: Vytvoření projektu skupiny prostředků Azure a nasadit prostředky do Azure pomocí sady Visual Studio.
 services: azure-resource-manager
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: ca7cccb1d4f17ff9f80ca006da0ef7ce77109227
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4b54a1c234eb2211884fede1c059e4c20cda137e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053276"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 
@@ -37,7 +37,7 @@ V této části vytvoříte projekt skupiny prostředků Azure pomocí šablony 
     ![Projekt nasazení v cloudu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Zvolte šablonu, kterou chcete nasadit do Azure Resource Manageru. Všimněte si, že máte spoustu různých možností v závislosti na typu projektu, který chcete nasadit. Pro tento článek si vyberte šablonu **Web app + SQL** (Webová aplikace a SQL).
    
-    ![Zvolte šablonu](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
+    ![Volba šablony](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
     Šablona, kterou vyberete, je jenom výchozí bod, podle potřeb vašeho scénáře můžete prostředky přidat nebo odebrat.
    
