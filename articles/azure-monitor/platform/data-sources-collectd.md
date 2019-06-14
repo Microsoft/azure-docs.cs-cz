@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764948"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná na agentech pro Linux ve službě Azure Monitor
@@ -114,7 +114,7 @@ Chcete-li zachovat známým modelem mezi metriky infrastruktury ještě shromaž
 |:--|:--|
 | `host` | Computer |
 | `plugin` | Žádný |
-| `plugin_instance` | Název instance<br>Pokud **plugin_instance** je *null* pak InstanceName = "*_celkem*" |
+| `plugin_instance` | Název instance<br>Pokud **plugin_instance** je *null* pak InstanceName = " *_celkem*" |
 | `type` | Název objektu |
 | `type_instance` | Hodnota counterName<br>Pokud **type_instance** je *null* pak CounterName =**prázdné** |
 | `dsnames[]` | Hodnota counterName |

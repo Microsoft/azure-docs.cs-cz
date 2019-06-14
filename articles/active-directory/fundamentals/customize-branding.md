@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65441636"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
@@ -27,7 +27,7 @@ Pomocí loga vaší organizace a vlastní barevná schémata poskytují konziste
 >Přidání vlastní značka vyžaduje použití Azure Active Directory Premium 1, Premium 2 nebo edice Basic nebo máte licenci Office 365. Další informace o licencování a edicích, naleznete v tématu [registrace Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
-Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
+Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
 
 Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do lokalit, jako je například www\.office.com. Místo toho uživatel musí přihlásit před přizpůsobený branding se zobrazí.
 

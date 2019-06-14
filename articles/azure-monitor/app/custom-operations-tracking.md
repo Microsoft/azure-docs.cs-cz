@@ -13,10 +13,10 @@ ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60900885"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí Application Insights .NET SDK
@@ -124,7 +124,7 @@ Protokol HTTP pro korelaci také deklaruje `Correlation-Context` záhlaví. Ale 
 ## <a name="queue-instrumentation"></a>Instrumentace fronty
 Zatímco je [protokolu HTTP pro korelaci](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) předat podrobnosti korelace požadavku HTTP, má každý protokol fronty k definování, jak jsou stejné informace předají zprávy fronty. Některé protokoly fronty (jako je například AMQP) umožňuje předání dalších metadat a jiné (tyto fronty Azure Storage) vyžaduje kontext, který má být zakódován do datové části zprávy.
 
-### <a name="service-bus-queue"></a>Fronta Service Bus
+### <a name="service-bus-queue"></a>Fronty služby Service Bus
 Application Insights sleduje volání zasílání zpráv Service Bus s novými [klienta služby Service Bus Microsoft Azure pro .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) verze 3.0.0 nebo novější.
 Pokud používáte [vzor obslužné rutiny zpráv](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) ke zpracování zpráv, skončíte: všechna volání služby Service Bus provádí vaše služba se automaticky sledovat a korelují s ostatními položkami telemetrická data. Odkazovat [trasování pomocí nástroje Microsoft Application Insights klienta služby Service Bus](../../service-bus-messaging/service-bus-end-to-end-tracing.md) ručně během zpracování zprávy.
 
@@ -229,8 +229,8 @@ Protože front služby Storage podporuje rozhraní API HTTP, všechny operace s 
 
 Tento příklad ukazuje, jak sledovat `Enqueue` operace. Můžete:
 
- - **Proveďte korelaci opakovaných pokusů (pokud existuje)**: Všichni mají jeden společný nadřazený, který má `Enqueue` operace. V opačném případě budete sledovat jako podřízené objekty příchozího požadavku. Pokud existují logický vícenásobných do fronty, může být obtížné najít, která volá výsledkem opakovaných pokusů.
- - **Korelovat protokoly úložiště (pokud a v případě potřeby)**: Už se korelují s telemetrii Application Insights.
+ - **Proveďte korelaci opakovaných pokusů (pokud existuje)** : Všichni mají jeden společný nadřazený, který má `Enqueue` operace. V opačném případě budete sledovat jako podřízené objekty příchozího požadavku. Pokud existují logický vícenásobných do fronty, může být obtížné najít, která volá výsledkem opakovaných pokusů.
+ - **Korelovat protokoly úložiště (pokud a v případě potřeby)** : Už se korelují s telemetrii Application Insights.
 
 `Enqueue` Operace je podřízený, nadřazené operace (například s příchozím požadavkem HTTP). Volání závislostí protokolu HTTP je podřízeným `Enqueue` operace a podřízený příchozího požadavku:
 

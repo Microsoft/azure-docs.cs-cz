@@ -17,10 +17,10 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 3fe1e72d277bffd4bc9b38ac377e33b341967e17
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65806353"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Sestava využití a insights na portálu Azure Active Directory
@@ -45,7 +45,7 @@ Pro přístup k datům ze sestavy využití a přehledy, budete potřebovat:
 2. Vyberte adresář, vpravo a pak vyberte **Azure Active Directory** a zvolte **podnikové aplikace**.
 3. Z **aktivity** vyberte **dat o využití a insights** a otevřete tak sestavu. 
 
-![Sestavy využití a přehledů](./media/concept-usage-insights-report/main-menu.png)
+![Sestava přehledů a využití](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>Pomocí sestavy
@@ -58,7 +58,7 @@ Můžete také nastavit fokus na konkrétní aplikaci. Vyberte **zobrazení akti
 
 Když vyberete jeden den v grafu využití aplikace, získejte podrobný seznam aktivit přihlašování pro aplikaci.  
 
-![Sestavy využití a přehledů](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![Sestava přehledů a využití](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>Další postup
 

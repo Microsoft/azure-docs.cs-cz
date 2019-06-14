@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922889"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Propojení Configuration Manageru do Azure monitoru
@@ -49,7 +49,7 @@ V následujícím postupu udělíte *Přispěvatel* role ve vašem pracovním pr
 
 1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor změnit.
-3. V levém podokně vyberte **řízení přístupu (IAM)**.
+3. V levém podokně vyberte **řízení přístupu (IAM)** .
 4. V stránku řízení přístupu (IAM), klikněte na tlačítko **přidat přiřazení role** a **přidat přiřazení role** otevře se podokno.
 5. V **přidat přiřazení role** podokně v části **Role** rozevíracího seznamu vyberte **Přispěvatel** role.  
 6. V části **přiřadit přístup k** rozevíracího seznamu vyberte aplikace nástroje Configuration Manager předtím vytvořili ve službě AD a potom klikněte na tlačítko **OK**.  

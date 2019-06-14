@@ -18,10 +18,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545115"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma identit Microsoft a přístupové heslo vlastníka prostředku OAuth 2.0
@@ -108,7 +108,7 @@ Pokud uživatel není k dispozici správné uživatelské jméno nebo heslo, neb
 | `invalid_request` | Požadavek byl nesprávně vytvořen. | Typ udělení oprávnění nepodporuje `/common` nebo `/consumers` kontextu ověřování.  Místo nich se používá `/organizations`. |
 | `invalid_client` | Aplikace je nesprávně nastavený | K tomu může dojít, pokud `allowPublicClient` vlastnost není nastavena na hodnotu true v [manifest aplikace](reference-app-manifest.md). `allowPublicClient` Vlastnost je potřeba, proto ROPC udělení nemá identifikátor URI přesměrování. Azure AD nemůže určit, pokud je aplikace veřejným klientem aplikace nebo aplikace důvěrnému klientovi, pokud je nastavena. ROPC je podporována pouze pro veřejné klientské aplikace. |
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 * Vyzkoušejte si ROPC sami pomocí [ukázková Konzolová aplikace](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
 * Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [Microsoft identity platform omezení](active-directory-v2-limitations.md).

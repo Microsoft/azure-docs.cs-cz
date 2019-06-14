@@ -8,10 +8,10 @@ ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
 ms.openlocfilehash: 9b6089aa828b5667f100c1a8cbff3e69345e4512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66150431"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Služba Azure Key Vault spravovat účet úložiště – PowerShell
@@ -46,7 +46,7 @@ Následující příklad ukazuje, jak povolit služby Key Vault ke správě vaš
 ## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autorizace služby Key Vault pro přístup k účtu úložiště
 
 > [!IMPORTANT]
-> Tenanta služby Azure AD poskytuje každý registrované aplikaci  **[instanční objekt služby](/azure/active-directory/develop/developer-glossary#service-principal-object)**, který slouží jako identitu aplikace. ID aplikace instančního objektu se používá při zadání autorizaci pro přístup k další prostředky Azure prostřednictvím řízení přístupu na základě role (RBAC). Protože Key Vault je aplikace Microsoft, je předem registrovánu ve všech tenantů Azure AD v rámci stejné ID aplikace v rámci každé cloudu Azure:
+> Tenanta služby Azure AD poskytuje každý registrované aplikaci  **[instanční objekt služby](/azure/active-directory/develop/developer-glossary#service-principal-object)** , který slouží jako identitu aplikace. ID aplikace instančního objektu se používá při zadání autorizaci pro přístup k další prostředky Azure prostřednictvím řízení přístupu na základě role (RBAC). Protože Key Vault je aplikace Microsoft, je předem registrovánu ve všech tenantů Azure AD v rámci stejné ID aplikace v rámci každé cloudu Azure:
 > - ID aplikace používat klienty Azure AD v cloudu Azure government `7e7c393b-45d0-48b1-a35e-2905ddf8183c`.
 > - ID aplikace používat klienty Azure AD ve veřejném cloudu Azure a všechny ostatní `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`.
 

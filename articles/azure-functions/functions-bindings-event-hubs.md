@@ -10,15 +10,14 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-origin.date: 11/08/2017
-ms.date: 03/20/2019
-ms.author: v-junlch
+ms.date: 11/08/2017
+ms.author: cshoe
 ms.openlocfilehash: 7ca3ab8e3becf884fdba460f1981430e0c66ef99
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104448"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511774"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
@@ -47,5 +46,3 @@ Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.
 
 > [!div class="nextstepaction"]
 > [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
-
-<!-- Update_Description: wording update -->

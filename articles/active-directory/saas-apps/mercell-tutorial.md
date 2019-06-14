@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2411a036cd56d88e261317ae523d8186b85b5a15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b37e35eb0314de25dad2ce07175a774f921fe4cf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65872280"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Kurz: Integrace Azure Active Directory s Mercell
 
@@ -54,7 +54,7 @@ Konfigurace integrace Mercell do služby Azure AD, budete muset přidat Mercell 
 
 **Chcete-li přidat Mercell z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -174,7 +174,7 @@ V této části se vytvoří uživateli Britta Simon v Mercell. Mercell podporuj
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Mercell](mailto:webmaster@mercell.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

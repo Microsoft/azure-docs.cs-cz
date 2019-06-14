@@ -42,7 +42,7 @@ sections:
           - title: Metriky a protokolování
             href: /azure/sql-database/sql-database-metrics-diag-logging
             html: '<p>Stream vaší databáze diagnostickou telemetrii do služby Azure SQL Analytics, Azure Event Hubs nebo Azure Blob storage pro vlastní integraci.</p>'
-  - title: Další zdroje informací
+  - title: Další materiály
     items:
       - type: paragraph
         text: 'Přečtěte si o další funkce, které může pomoci že optimalizovat výkon vaší databáze.'

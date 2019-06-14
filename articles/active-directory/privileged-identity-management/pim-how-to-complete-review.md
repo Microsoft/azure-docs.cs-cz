@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a7fa3bfe159620130bc0962b470cea8e7422646
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602160"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Dokončení kontroly přístupu Azure AD rolí v PIM
@@ -38,7 +38,7 @@ V okně podrobností kontroly přístupu jsou čísla možnosti pro správu tét
 ### <a name="remind"></a>Připomenout
 Pokud kontrola přístupu je nastavený tak, aby uživatele zkontrolujte, **připomenutí** tlačítko odešle oznámení. 
 
-### <a name="stop"></a>Ukončit
+### <a name="stop"></a>Zastavit
 Všechny kontroly přístupu mají koncové datum, ale můžete použít **Zastavit** tlačítko pro dokončení včas. Pokud v tuto chvíli ještě byly zkontrolovány všechny uživatele, nebudou moct po zastavení revize. Kontrola nelze restartovat po byla zastavena.
 
 ### <a name="apply"></a>Použít
@@ -47,7 +47,7 @@ Po dokončení kontroly přístupu, protože se dosáhlo koncové datum nebo ru�
 ### <a name="export"></a>Export
 Pokud chcete použít výsledky kontroly přístupu ručně, můžete to taky revizi. **Exportovat** tlačítka se spustí stažení souboru CSV. Můžete spravovat výsledky v Excelu nebo jinými programy, které otevřete soubory CSV.
 
-### <a name="delete"></a>Odstranit
+### <a name="delete"></a>Odstranění
 Pokud si nejste zájem o další revizi, odstraňte ho. **Odstranit** tlačítko kontroly odebere z aplikace PIM.
 
 > [!IMPORTANT]

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4185e9f5e1b411f95afacb80499db048769ea27b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60279739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102970"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Kurz: Integrace Azure Active Directory s Evernote
 
@@ -53,7 +53,7 @@ Konfigurace integrace Evernote do služby Azure AD, budete muset přidat Evernot
 
 **Chcete-li přidat Evernote z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -145,7 +145,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Evernote, proveďte násled
 
     ![Konzoly pro správu](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. Z **'Konzoly pro správu'**, přejděte na stránku **"Zabezpečení"** a vyberte **"Single Sign-On"**
+3. Z **'Konzoly pro správu'** , přejděte na stránku **"Zabezpečení"** a vyberte **"Single Sign-On"**
 
     ![Nastavení jednotného přihlašování](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
@@ -220,11 +220,11 @@ V případě Evernote zřizování se ruční úlohy.
 
 1. Přihlaste se na web společnosti Evernote jako správce.
 
-2. Klikněte na tlačítko **'Konzoly pro správu'**.
+2. Klikněte na tlačítko **'Konzoly pro správu'** .
 
     ![Konzoly pro správu](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. Z **'Konzoly pro správu'**, přejděte na stránku **'Přidat uživatele'**.
+3. Z **'Konzoly pro správu'** , přejděte na stránku **'Přidat uživatele'** .
 
     ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
 

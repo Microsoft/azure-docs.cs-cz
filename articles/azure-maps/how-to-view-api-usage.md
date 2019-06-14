@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 31522436de97062432af2afe101f85d376243a38
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957253"
 ---
 # <a name="view-azure-maps-api-usage"></a>Zobrazit využití rozhraní API služby Azure Maps
@@ -42,7 +42,7 @@ Pokračujte k další části, pokud je potřeba upravit tyto grafy pro konkrét
 
       ![Podokno Azure Maps metriky](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Dále můžete vybrat *časový rozsah* kliknutím **posledních 24 hodin (automaticky)**. Ve výchozím nastavení je čas rozsah nastavený na 24 hodin. Po kliknutí na tlačítko, zobrazí se všechny volitelné časového rozsahu. Můžete vybrat *časové intervaly* a chcete zobrazit čas jako *místní* nebo *GMT* ve stejném rozevíracího seznamu. Klikněte na tlačítko **Použít**.
+5. Dále můžete vybrat *časový rozsah* kliknutím **posledních 24 hodin (automaticky)** . Ve výchozím nastavení je čas rozsah nastavený na 24 hodin. Po kliknutí na tlačítko, zobrazí se všechny volitelné časového rozsahu. Můžete vybrat *časové intervaly* a chcete zobrazit čas jako *místní* nebo *GMT* ve stejném rozevíracího seznamu. Klikněte na tlačítko **Použít**.
 
     ![Azure Maps metriky časový rozsah](media/how-to-view-api-usage/time-range.png)
 

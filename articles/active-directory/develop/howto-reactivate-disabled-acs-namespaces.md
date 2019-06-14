@@ -17,10 +17,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fe1517cce8a1f9b1024085340ffb927b282f0fb
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540288"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postup: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
@@ -29,7 +29,7 @@ V listopadu 2017 jsme oznámili, že Microsoft Azure Access Control Service (ACS
 
 Protože potom odeslali jsme vám e-mailů k e-mailu správce že ACS předplatná informace o vyřazení ACS 12 měsíců, 9 měsíců, 6 měsíců, 3 měsíce, 1 měsíc, 2 týdny, 1 týden, a 1 den před vyřazením 7. listopadu 2018.
 
-3. října 2018 jsme oznámili (prostřednictvím e-mailu a [blogový příspěvek](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) rozšíření nabídky zákazníkům, kteří nejde dokončit, jejich migraci před 7. listopadu 2018. Oznámení bylo také pokyny, jak požaduje rozšíření.
+3\. října 2018 jsme oznámili (prostřednictvím e-mailu a [blogový příspěvek](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) rozšíření nabídky zákazníkům, kteří nejde dokončit, jejich migraci před 7. listopadu 2018. Oznámení bylo také pokyny, jak požaduje rozšíření.
 
 ## <a name="why-your-namespace-is-disabled"></a>Proč je neaktivní váš obor názvů
 

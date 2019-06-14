@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65521886"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Přidat moduly pro návrhy na index pro typeahead ve službě Azure Search
@@ -123,7 +123,7 @@ Pro platformu .NET, použijte [SuggestWithHttpMessagesAsync](https://docs.micros
 
 Příklad demonstrace obou požadavků, najdete v části [příklad pro přidání automatické dokončování a návrhy ve službě Azure Search](search-autocomplete-tutorial.md).
 
-## <a name="sample-code"></a>Ukázkový kód
+## <a name="sample-code"></a>Ukázka kódu
 
 [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) obsahuje ukázkové C# a kód v Javě a ukazuje vytváření modulu pro návrhy, navrhované dotazy, automatické dokončování a omezující vlastnost navigace. 
 

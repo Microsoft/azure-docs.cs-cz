@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
 ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60427089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64710187"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Zobrazit úložiště registru kontejnerů na webu Azure Portal
 

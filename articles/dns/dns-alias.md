@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ff71eb7d1386226e29b3f0846e0894a553f978e5
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0d52e84ba027f902cebf543ae019b5e4b53400b7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754229"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059681"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS alias Přehled záznamů
 
@@ -53,7 +53,7 @@ Tento scénář je podobný předchozímu. Možná se přesune aplikace nebo zá
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Hostování aplikací s vyrovnáváním zatížení ve vrcholu zóny
 
-Protokol DNS brání přiřazení CNAME záznamů ve vrcholu zóny. Například pokud vaše doména je contoso.com; můžete vytvořit záznamy CNAME pro somelable.contoso.com; ale nelze vytvořit záznam CNAME pro doménu contoso.com, samotného.
+Protokol DNS brání přiřazení CNAME záznamů ve vrcholu zóny. Například pokud vaše doména je contoso.com; můžete vytvořit záznamy CNAME pro somelabel.contoso.com; ale nelze vytvořit záznam CNAME pro doménu contoso.com, samotného.
 Toto omezení představuje problém pro počet vlastníků aplikace, kteří mají aplikace s vyrovnáváním zatížení za [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Protože pomocí profilu Traffic Manageru se vyžaduje vytvoření záznamu CNAME, není možné tak, aby odkazoval na profil Traffic Manageru z vrcholu zóny.
 
 Tento problém je vyřešen pomocí záznamů aliasů. Na rozdíl od záznamů CNAME alias záznamy jsou vytvářeny na vrcholu zóny a vlastníky aplikace. můžete ji použít k jejich záznamu vrcholu zóny přejděte na profil Traffic Manageru, který má externí koncové body. Počet vlastníků aplikace odkazovat na stejný profil Traffic Manageru, který se používá u všech ostatních domén v rámci jejich zóny DNS.

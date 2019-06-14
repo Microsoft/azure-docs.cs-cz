@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.openlocfilehash: e35e86bee4dfee21d0a98867c3e0d1d7850ed0ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761997"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query
@@ -41,7 +41,7 @@ Doplněk Power Query pro Excel umožňuje snadno importovat data z vašeho clust
 
    - Excel 2016
 
-     - Klikněte na tlačítko **Data** nabídky, klikněte na tlačítko **získat Data** z **načíst a transformovat Data** pásu karet, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **Z Azure HDInsight(HDFS)**.
+     - Klikněte na tlačítko **Data** nabídky, klikněte na tlačítko **získat Data** z **načíst a transformovat Data** pásu karet, klikněte na tlačítko **z Azure**a potom klikněte na tlačítko **Z Azure HDInsight(HDFS)** .
 
        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
@@ -54,10 +54,10 @@ Doplněk Power Query pro Excel umožňuje snadno importovat data z vašeho clust
        **Poznámka:** Pokud se nezobrazí **Power Query** nabídky, přejděte na **souboru** > **možnosti** > **Add-ins**a vyberte  **Doplňky modelu COM** z rozevíracího seznamu **spravovat** pole v dolní části stránky. Vyberte **přejít...**  tlačítko a ověřte, že je zaškrtnuto políčko pro Power Query pro Excel add-in.
        
        **Poznámka:** Power Query také umožňuje importovat data z HDFS kliknutím **z jiných zdrojů**.
-4. Pro **název účtu**, zadejte název účtu služby Azure Blob storage spojené s vaším clusterem a potom klikněte na tlačítko **OK**. Tento účet může být výchozí účet úložiště nebo propojený účet úložiště.  Formát je *https://&lt;StorageAccountName >.blob.core.windows.net/*.
+4. Pro **název účtu**, zadejte název účtu služby Azure Blob storage spojené s vaším clusterem a potom klikněte na tlačítko **OK**. Tento účet může být výchozí účet úložiště nebo propojený účet úložiště.  Formát je *https://&lt;StorageAccountName >.blob.core.windows.net/* .
 5. Pro **klíč účtu**, zadejte klíč účtu úložiště objektů Blob a pak klikněte na tlačítko **Uložit**. (Budete muset zadat čas informace pouze první účet přístupu k tomuto úložišti.)
 6. V **Navigátor** podokna na levé straně editoru dotazů, dvakrát klikněte na název kontejneru úložiště objektů Blob. Ve výchozím nastavení je název kontejneru stejný název jako název clusteru.
-7. Vyhledejte **HiveSampleData.txt** v **název** sloupec (cesta ke složce je **... / hive/warehouse/hivesampletable/**) a potom klikněte na tlačítko **binární** na levé straně HiveSampleData.txt. HiveSampleData.txt obsahuje všechny clusteru. Volitelně můžete použít vlastní soubor.
+7. Vyhledejte **HiveSampleData.txt** v **název** sloupec (cesta ke složce je **... / hive/warehouse/hivesampletable/** ) a potom klikněte na tlačítko **binární** na levé straně HiveSampleData.txt. HiveSampleData.txt obsahuje všechny clusteru. Volitelně můžete použít vlastní soubor.
    
     ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
 8. Pokud chcete, můžete přejmenovat názvy sloupců. Až budete připravení, klikněte na tlačítko **zavřít a načíst**.  Data se načetl do sešitu:

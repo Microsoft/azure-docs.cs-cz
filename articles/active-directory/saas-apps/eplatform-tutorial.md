@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b73712e114b3542caa5aa05570d509c93df019e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61946f77ddffe999e55acd09e3957d91c621492b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280046"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67103239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>Kurz: Integrace Azure Active Directory s ePlatform
 
@@ -52,7 +52,7 @@ Konfigurace integrace ePlatform do služby Azure AD, budete muset přidat ePlatf
 
 **Chcete-li přidat ePlatform z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -123,7 +123,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ePlatform, proveďte násle
 
 8. Kromě toho výše ePlatform aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ---------------| --------------- |
     | upn | user.userprincipalname |
 

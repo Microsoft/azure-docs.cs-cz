@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540671"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Aplikace a instanční objekty v Azure Active Directory
@@ -43,7 +43,7 @@ Podle definice může aplikace fungovat v těchto rolích:
 
 V následujících částech uvidíte, jak představuje aplikačního modelu služby Azure AD aplikace v době návrhu a za běhu.
 
-## <a name="application-registration"></a>Registrace aplikace
+## <a name="application-registration"></a>Registrace aplikací
 
 Když se zaregistrujete aplikaci Azure AD v [webu Azure portal][AZURE-Portal], jsou vytvořeny dva objekty ve vašem tenantovi Azure AD:
 

@@ -5,17 +5,17 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 06/12/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 74c5fcfabe0f24127c4eddb3a019f8ea5debe453
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4bfa325017d485a76bfe87c0f7facde4acf8f2b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714328"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066101"
 ---
-# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-template"></a>Rychlý start: Vytvoření clusteru Apache Spark v HDInsight pomocí šablony
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Vytvoření clusteru Apache Spark ve službě Azure HDInsight pomocí šablony Resource Manageru
 
 Zjistěte, jak vytvořit [Apache Spark](https://spark.apache.org/) clusteru v Azure HDInsight a spouštění dotazů Spark SQL proti [Apache Hive](https://hive.apache.org/) tabulky. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku v HDInsight najdete v tématu [přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
 
@@ -40,7 +40,7 @@ Vytvořte cluster HDInsight Spark pomocí šablony Azure Resource Manageru. Šab
 
     | Vlastnost | Hodnota |
     |---|---|
-    |**Předplatné**|Vyberte předplatné Azure použité k vytvoření tohoto clusteru. V tomto rychlém startu se používá předplatné **&lt;název předplatného Azure>**. |
+    |**Předplatné**|Vyberte předplatné Azure použité k vytvoření tohoto clusteru. V tomto rychlém startu se používá předplatné **&lt;název předplatného Azure>** . |
     | **Skupina prostředků**|Vytvořte skupinu prostředků nebo vyberte existující. Skupina prostředků slouží ke správě prostředků Azure pro vaše projekty. V tomto rychlém startu se používá název nové skupiny prostředků **myspark20180403rg**.|
     | **Umístění**|Vyberte umístění skupiny prostředků. Šablona toto umístění používá k vytvoření clusteru i jako výchozí úložiště clusteru. V tomto rychlém startu se používá umístění **USA – východ 2**.|
     | **Název clusteru**|Zadejte název clusteru HDInsight, který chcete vytvořit. V tomto rychlém startu se používá název nového clusteru **myspark20180403**.|

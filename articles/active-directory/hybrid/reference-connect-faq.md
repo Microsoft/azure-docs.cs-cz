@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65137786"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
@@ -62,7 +62,7 @@ Ano, tento scénář se podporuje. Odkazovat na [více domén](how-to-connect-in
 **Otázka: Může obsahovat více konektorů stejné domény služby Active Directory ve službě Azure AD Connect?**  
 Ne, více konektorů pro stejnou doménu AD nejsou podporovány. 
 
-**Otázka: Můžu přesunout databázi služby Azure AD Connect z místní databáze do vzdálené instance systému SQL Server?**   
+**Otázka: Můžu přesunout databázi služby Azure AD Connect z místní databáze do vzdálené instance systému SQL Server?**    
 Ano, následující kroky obsahují obecné pokyny o tom, jak to provést. Aktuálně pracujeme na podrobnější dokumentu.
 1. Proveďte zálohu databáze LocalDB ADSync.
 Nejjednodušší způsob, jak to provést, je použít SQL Server Management Studio nainstalované ve stejném počítači jako Azure AD Connect. Připojte se k *(LocalDb). \ADSync*a pak proveďte zálohu databáze ADSync.

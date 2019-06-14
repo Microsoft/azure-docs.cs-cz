@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 97d0615fcc4f86c295441ec6a0eb8b86ba6b11b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789475"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059693"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý start: Definujte a přiřaďte podrobný plán na portálu
 
@@ -29,7 +29,7 @@ Když se dozvíte, jak vytvořit a přiřadit plány, můžete definovat běžn�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="create-a-blueprint"></a>Vytvořit podrobný plán
+## <a name="create-a-blueprint"></a>Vytvoření podrobného plánu
 
 Jako první krok při definování standardního vzoru pro dodržování předpisů je sestavení podrobného plánu z dostupných prostředků. V tomto příkladu, vytvořte nový plán s názvem **MyBlueprint** ke konfiguraci přiřazení rolí a zásad pro předplatné. A přidejte novou skupinu prostředků a vytvořit přiřazení šablony a role správce prostředků na novou skupinu prostředků.
 
@@ -70,11 +70,11 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    1. Změna **typ** k **integrované**. V **hledání**, zadejte **značka**.
 
-   1. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte **použít značku a její výchozí hodnotu pro skupiny prostředků**.
+   1. Vyklikněte z **hledání** pro zobrazení filtrování. Vyberte **připojit ke skupinám prostředků značku a její výchozí hodnotu**.
 
    1. Vyberte **přidat** přidat tento artefakt podrobný plán.
 
-1. Vyberte řádek přiřazení zásady **použít značku a její výchozí hodnotu pro skupiny prostředků**.
+1. Vyberte řádek přiřazení zásady **připojit ke skupinám prostředků značku a její výchozí hodnotu**.
 
 1. Otevře se okno k zadání parametrů s artefaktem jako součást definice podrobného plánu a umožňuje nastavení parametrů pro všechna přiřazení (statických parametrů) na tento podrobný plán místo při přiřazení (dynamické parametry). Tento příklad používá dynamických parametrů během přiřazení podrobného plánu, takže políčko nechte výchozí hodnoty a vyberte **zrušit**.
 

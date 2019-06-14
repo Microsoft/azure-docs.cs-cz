@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61023597"
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat databázové role a uživatele
@@ -134,7 +134,7 @@ Filtry řádků definovat, které řádky v tabulce může být dotázán členy
   
 Filtry řádků lze definovat pouze pro role se pro čtení a číst a oprávnění procesu. Ve výchozím nastavení Pokud pro konkrétní tabulku, není definován řádkový filtr členy můžete dotazovat všechny řádky v tabulce pokud křížové filtrování platí z jiné tabulky.
   
- Filtry řádků vyžadují vzorec DAX, který se musí vyhodnotit na hodnotu TRUE nebo FALSE, chcete-li definovat řádky, které může být dotázán členy dané konkrétní role. Nelze se dotazovat na řádky, které nejsou zahrnuty ve vzorci DAX. Například následující řádek tabulky Customers filtry výrazu, *= zákazníci [Země] = "USA"*, členové role prodeje uvidí jenom zákazníkům v USA.  
+ Filtry řádků vyžadují vzorec DAX, který se musí vyhodnotit na hodnotu TRUE nebo FALSE, chcete-li definovat řádky, které může být dotázán členy dané konkrétní role. Nelze se dotazovat na řádky, které nejsou zahrnuty ve vzorci DAX. Například následující řádek tabulky Customers filtry výrazu, *= zákazníci [Země] = "USA"* , členové role prodeje uvidí jenom zákazníkům v USA.  
   
 Filtry řádků platí pro zadané řádky a související řádky. Pokud má tabulka více vztahů, použít filtry zabezpečení pro relaci, která je aktivní. Filtry řádků budou prolínají pomocí dalších filtrech řádků definované pro související tabulky, například:  
   
@@ -146,7 +146,7 @@ Filtry řádků platí pro zadané řádky a související řádky. Pokud má ta
   
  Výsledkem je, že členy můžete dotazovat řádky dat, kde se zákazník v USA, kategorie produktů je jízdních kol a je v roce 2016. Uživatelé nemohou spustit dotaz transakce mimo USA, transakcí, které nejsou jízdní kola nebo transakce není v 2016 Pokud nejsou členem jiné role, která uděluje oprávnění.
   
- Filtr, můžete použít *=FALSE()*, odepření přístupu pro všechny řádky pro celou tabulku.
+ Filtr, můžete použít *=FALSE()* , odepření přístupu pro všechny řádky pro celou tabulku.
 
 ## <a name="next-steps"></a>Další postup
 

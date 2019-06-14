@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66015472"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce s existující místní proxy servery
@@ -106,7 +106,7 @@ Existují čtyři aspekty ke zvážení v odchozího proxy serveru:
 #### <a name="proxy-outbound-rules"></a>Odchozí pravidla proxy
 Povolit přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
+| zprostředkovatele identity | Jak se používá |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů |

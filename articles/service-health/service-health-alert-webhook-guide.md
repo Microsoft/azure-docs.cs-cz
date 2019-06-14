@@ -1,5 +1,5 @@
 ---
-title: Konfigurace oznámení o stavu pro existující systémy pro správu problémů pomocí webhooku | Dokumentace Microsoftu
+title: Konfigurace oznámení o stavu služby Azure pro existující systémy pro správu problémů pomocí webhooku
 description: Získáte přizpůsobená oznámení o události služby service health na existující systému pro správu problémů.
 author: stephbaron
 ms.author: stbaron
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: ccddb1ffd86ce95b1ca5563de2f4b04c41d5737d
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 3e9a564310d750e63c9cf81d19f698e75712d09a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067180"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurace oznámení o stavu pro existující systémy pro správu problémů pomocí webhooku
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e11446b961727663961e4d3fa295a9b7f64860c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059667"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -529,7 +529,7 @@ Použijte nástroj, jako [Postman](https://www.getpostman.com/) nebo [curl](http
 * Nastavení `aeg-event-type: Notification` záhlaví.
 * RequestBin dat vložte do textu žádosti.
 * Odeslání na adresu URL vaší funkce triggeru služby Event Grid.
-  * 2.x používají následující vzor:
+  * 2\.x používají následující vzor:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
@@ -555,7 +555,7 @@ Funkce triggeru služby Event Grid spustí a zobrazí protokoly podobné násled
 
 ## <a name="local-testing-with-ngrok"></a>Místní testování s ngrok
 
-Jiný způsob, jak otestovat místně aktivační událost služby Event Grid je k automatizaci připojení HTTP mezi Internetem a vývojového počítače. Můžete to udělat open source nástroj s názvem [ngrok](https://ngrok.com/):
+Jiný způsob, jak otestovat místně aktivační událost služby Event Grid je k automatizaci připojení HTTP mezi Internetem a vývojového počítače. Můžete to udělat pomocí některého nástroje, například [ngrok](https://ngrok.com/):
 
 1. [Vytvoření koncového bodu ngrok](#create-an-ngrok-endpoint).
 1. [Spusťte funkci triggeru služby Event Grid](#run-the-event-grid-trigger-function).

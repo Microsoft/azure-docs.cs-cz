@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109318"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategie přijetí životního cyklu hybridní identity
 V této úloze budete definovat strategie správy identit pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v [určit úlohy správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -80,13 +80,13 @@ Azure Active Directory poskytuje jednotné přihlašování na a rozšířeného
 Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uživatelů tím, že jim poskytuje společnou identitu pro přístup ke cloudovým i místním prostředkům. Tato integrace uživatelům a organizacím můžete využít následující:
 
 * Uživatelé se společnou identitou hybridní můžou organizace poskytovat přes místní nebo cloudové služby využívající Windows Server Active Directory a následným připojením k Azure Active Directory.
-* Správci můžou poskytnout podmíněný přístup na základě prostředků aplikace, zařízení a identitu uživatele, umístění v síti a ověřování službou Multi-Factor Authentication.
+* Správci můžou poskytnout podmíněného přístupu podle prostředku aplikace, zařízení a identitu uživatele, umístění v síti a ověřování službou Multi-Factor Authentication.
 * Uživatelé můžou využívat jejich společné identity pomocí účtů v Azure AD a Office 365, Intune, aplikacím SaaS a aplikace třetích stran.
 * Vývojáři mohou vytvářet aplikace, které využívají společný model identit integrace aplikace do místní služby Active Directory nebo Azure pro aplikace založené na cloudu
 
 Na následujícím obrázku je příklad souhrnný přehled procesu synchronizace identit.
 
-![Synchronizovat](./media/plan-hybrid-identity-design-considerations/identitysync.png)
+![Sync](./media/plan-hybrid-identity-design-considerations/identitysync.png)
 
 Procesu synchronizace identit
 
