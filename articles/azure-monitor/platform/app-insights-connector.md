@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
 ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606740"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení Application Insights Connector správy (zastaralé)
@@ -142,7 +142,7 @@ Součástí perspektivy jsou aktualizovány v závislosti na vyhledávací dotaz
 
 Application Insights Connector okna jsou určené k usnadnění a přesouvat na vybranou aplikaci Application Insights se tak *při použití na webu Azure portal*. Řešení můžete použít jako základní monitorovací platformě, která pomáhá při řešení problémů aplikace. Až uvidíte potenciální problém v některé z připojených aplikací, můžete buď přejít k podrobnostem ho ve službě Log Analytics search nebo můžete vytvořit kontingenční přímo do aplikace Application Insights.
 
-Pro otáčení, klikněte na symbol tří teček (**...** ), který se zobrazí na konci každého řádku a vyberte **otevřít ve službě Application Insights**.
+Pro otáčení, klikněte na symbol tří teček ( **...** ), který se zobrazí na konci každého řádku a vyberte **otevřít ve službě Application Insights**.
 
 >[!NOTE]
 >**Otevřít ve službě Application Insights** není k dispozici na webu Azure Portal.

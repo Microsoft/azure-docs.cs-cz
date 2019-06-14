@@ -4,19 +4,19 @@ description: Tento článek popisuje, jak použít referenční data vyhledává
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 99917fa01fcdb3faf731e9d0909d67ff41222f22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393120"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066770"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
+
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Například ve scénáři IoT může ukládají metadata o senzorů (které se nemění často) v referenčních dat a připojte ho s datovými proudy IoT reálném čase. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. 
 
 Stream Analytics podporuje Azure Blob storage a Azure SQL Database jako vrstvu úložiště pro referenční Data. Můžete také transformovat nebo kopírování referenčních dat do Blob storage ze služby Azure Data Factory používat [libovolný počet založené na cloudu a úložiště dat v místním](../data-factory/copy-activity-overview.md).
@@ -43,7 +43,7 @@ Pokud chcete nakonfigurovat referenční data, musíte nejprve vytvořit vstup, 
 
 ### <a name="static-reference-data"></a>Statická referenční data
 
-Pokud referenční data se neočekává změna, podporu pro statická referenční data je povoleno zadat cestu ke statické ve vstupní konfiguraci. Azure Stream Analytics převezme objekt blob ze zadané cesty. {date} a {time} nahrazování tokenů se nevyžadují. Referenční data jsou neměnné ve službě Stream Analytics. Proto se nedoporučuje přepsání statická referenční data objektu blob.
+Pokud referenční data se neočekává změna, podporu pro statická referenční data je povoleno zadat cestu ke statické ve vstupní konfiguraci. Azure Stream Analytics převezme objekt blob ze zadané cesty. {date} a {time} nahrazování tokenů se nevyžadují. Protože referenční data jsou neměnné ve službě Stream Analytics, přepsání statická referenční data objektu blob se nedoporučuje.
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Generovat referenční data podle plánu
 
@@ -54,7 +54,7 @@ Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace refer
 > [!NOTE]
 > Aktuálně úlohy Stream Analytics vyhledejte aktualizace objektů blob jenom v případě, že čas počítače přejde do doby kódovaný v názvu objektu blob. Například bude hledat úlohy `sample/2015-04-16/17-30/products.csv` ihned poté, co možná, ale ne starší než 17:30:00 na 16. dubna 2015 UTC časové pásmo. Bude *nikdy* vyhledejte objekt blob s kódováním časem starší než poslední z nich, který je zjištěn.
 > 
-> Například Jakmile úloha nalezne objekt blob `sample/2015-04-16/17-30/products.csv` všech souborů s kódováním data starší než 17:30:00 16. dubna 2015 se bude ignorovat, pokud opožděné přicházejících `sample/2015-04-16/17-25/products.csv` objektů blob se vytvoří ve stejném kontejneru úloha nebude používat.
+> Třeba když se najde úlohy blob `sample/2015-04-16/17-30/products.csv` všech souborů s kódováním data starší než 17:30:00 16. dubna 2015 se bude ignorovat, pokud opožděné přicházejících `sample/2015-04-16/17-25/products.csv` objektů blob se vytvoří ve stejném kontejneru úloha nebude používat.
 > 
 > Podobně pokud `sample/2015-04-16/17-30/products.csv` je vytvořen pouze ve 22:03:00 16. dubna 2015, ale žádný objekt blob s dřívějšímu datu se nachází v kontejneru, úloha použije tento soubor se spouští ve 22:03:00 16. dubnem 2015 a použít předchozí referenční data, dokud to neuděláte.
 > 

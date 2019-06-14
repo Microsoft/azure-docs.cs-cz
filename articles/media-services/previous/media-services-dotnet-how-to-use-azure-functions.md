@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217467"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions se službou Media Services
@@ -64,11 +64,11 @@ Po nasazení aplikace funkcí se nachází mezi **App Services** Azure Functions
 2. Zvolte **C#** jazyka a **zpracování dat** scénář.
 3. Zvolte **BlobTrigger** šablony. Tato funkce se aktivuje pokaždé, když se nahraje do objektu blob **vstupní** kontejneru. **Vstupní** název je zadán v **cesta**, v dalším kroku.
 
-    ![souborů](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Jakmile vyberete **BlobTrigger**, na stránce se zobrazí některé další ovládací prvky.
 
-    ![souborů](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Klikněte na možnost **Vytvořit**. 
 
@@ -76,7 +76,7 @@ Po nasazení aplikace funkcí se nachází mezi **App Services** Azure Functions
 
 Funkce Azure souvisí se soubory kódu a další soubory, které jsou popsané v této části. Při použití na webu Azure portal vytvořit funkci, **function.json** a **run.csx** se vytvoří za vás. Je třeba přidání nebo nahrání **project.json** souboru. Zbývající část nabízí stručné vysvětlení jednotlivých souborů a zobrazí jejich definice.
 
-![souborů](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 

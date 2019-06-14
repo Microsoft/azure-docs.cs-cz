@@ -10,10 +10,10 @@ ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
 ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66162134"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytvořit a spravovat přiřazení rolí v Azure digitální dvojče
@@ -39,13 +39,13 @@ Každé přiřazení role odpovídá následující definici:
 
 Následující tabulka popisuje každý atribut:
 
-| Atribut | Název | Požaduje se | Typ | Popis |
+| Atribut | Name | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- | --- |
 | RoleId | Identifikátor definice role | Ano | String | Jedinečné ID přiřazení požadované role. Najdete definice rolí a jejich identifikátoru dotazování rozhraní API systému nebo kontrola následující tabulka. |
 | ID objektu | Identifikátor objektu | Ano | String | ID služby Azure Active Directory, ID instančního objektu služby nebo název domény. Co nebo které je přiřazeno přiřazení role. Přiřazení role musí být naformátovaná podle jeho přidruženého typu. Pro `DomainName` objectIdType, objectId musí začínat `“@”` znak. |
 | objectIdType | Typ identifikátoru objektu | Ano | String | Druh použít identifikátor objektu. Zobrazit **podporované ObjectIdTypes** níže. |
 | path | Místo cesty | Ano | String | Cesta úplný přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy použijte Princip nejnižších oprávnění. |
-| ID Tenanta | Identifikátor tenanta | Různé | String | Ve většině případů ID tenanta služby Azure Active Directory. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
+| tenantId | Identifikátor tenanta | Různé | String | Ve většině případů ID tenanta služby Azure Active Directory. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Identifikátory definice role podporovaná
 

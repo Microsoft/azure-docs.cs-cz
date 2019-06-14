@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963977"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
@@ -91,7 +91,7 @@ Informace o tom, jak se obecně připojit aplikace, které implementují SCIM 2.
 
 Konfigurace zřizování pro vybranou aplikaci služby Azure AD pomocí portálu Azure Active Directory.
 
-1. Otevřít  **[portálu Azure Active Directory](https://aad.portal.azure.com)**.
+1. Otevřít  **[portálu Azure Active Directory](https://aad.portal.azure.com)** .
 
 1. Vyberte **podnikové aplikace** v levém podokně. Seznam všech aplikací nakonfigurovaných se zobrazuje.
 
@@ -179,7 +179,7 @@ Pokud jednotlivého uživatele nelze přidat, aktualizovat nebo odstranit v cíl
 
 Nastavením hodnoty atributů pro ovlivněného uživatele ve zdrojovém systému nebo úpravou mapování atributů není způsobit konflikty lze vyřešit tyto chyby.   
 
-### <a name="quarantine"></a>Karanténa
+### <a name="quarantine"></a>Karantény
 
 Pokud většinu nebo všechny z volání pro cílový systém konzistentně selže kvůli chybě (například přihlašovací údaje neplatné správce), zřizování úloha přejde do stavu "karantény". Tento stav je uvedeno v [zřizování souhrnnou sestavu](check-status-user-account-provisioning.md) a prostřednictvím e-mailu, pokud e-mailová oznámení nakonfigurované na webu Azure Portal. 
 

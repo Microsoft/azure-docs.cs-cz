@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: d8a1d261808eb8f97d1e0dab78b767b37ae6802f
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 2c2ed46ed6e4a5d6663387777d3425d18b50500e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060219"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -41,9 +41,29 @@ Doporučujeme provést ověření, než začnete řešení potíží s agentem M
 
 ## <a name="invalid-vault-credentials-provided"></a>Neplatné přihlašovací údaje úložiště k dispozici
 
-| Podrobnosti o chybě | Možné příčiny | Doporučené akce |
-| ---     | ---     | ---    |
-| **Chyba** </br> *Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje přidružené ke službě obnovení. (ID: 34513)* | <ul><li> Přihlašovací údaje trezoru jsou neplatné (to znamená, že byly staženy víc než 48 hodin, než čas registrace).<li>MARS Agent se nemůže stahovat soubory do svého adresáře Windows Temp. <li>Přihlašovací údaje trezoru jsou v umístění v síti. <li>Protokol TLS 1.0 je zakázaný.<li> Nakonfigurovaný proxy server blokuje připojení. <br> |  <ul><li>Stáhněte si nové přihlašovací údaje trezoru. (**Poznámka**: Pokud více souborů přihlašovacích údajů trezoru se stáhnou předtím, jenom nejnovější stažený soubor je platný do 48 hodin.) <li>Spuštění **IE** > **nastavení** > **Možnosti Internetu** > **zabezpečení**  >  **Internet**. V dalším kroku vyberte **vlastní úroveň**a posuňte, dokud se nezobrazí stahování části souboru. Potom vyberte **povolit**.<li>Budete také muset tyto weby přidat do aplikace IE [Důvěryhodné servery](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access).<li>Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti. <li> Datum a čas dodržovat váš počítač.<li>Pokud obdržíte chybu s informacemi o tom, že stahování souborů nejsou povoleny, je pravděpodobné, že existuje velký počet souborů v adresáři C:/Windows/Temp.<li>Přejděte na C:/Windows/Temp a zkontrolujte, zda jsou více než 60 000 nebo než 65 000 vývojáři soubory s příponou TMP. Pokud existuje, odstraňte tyto soubory.<li>Ujistěte se, že máte nainstalované rozhraní .NET framework 4.6.2. <li>Pokud jste zakázali protokol TLS 1.0 z důvodu dodržování PCI, podívejte se na to [stránka o řešení problémů](https://support.microsoft.com/help/4022913). <li>Pokud máte antivirový software nainstalovaný na serveru, vylučte z antivirová kontrola následující soubory: <ul><li>CBengine.exe<li>CSC.exe, který má vztah k rozhraní .NET Framework. Existuje CSC.exe pro každou verzi rozhraní .NET, který je nainstalován na serveru. Vylučte soubory CSC.exe, které jsou vázané na všechny verze rozhraní .NET Framework na příslušném serveru. <li>Dočasné umístění složky nebo mezipaměť. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>Složky bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+**Chybová zpráva**: Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje přidružené ke službě obnovení. (ID: 34513)
+
+| Příčina | Doporučená akce |
+| ---     | ---    |
+| **Přihlašovací údaje trezoru jsou neplatné** <br/> <br/> Soubory přihlašovacích údajů trezoru je pravděpodobně být poškozen nebo jeho platnost vypršela (to znamená stažené víc než 48 hodin, než čas registrace)| Stažení nových přihlašovacích údajů z trezoru služby Recovery Services na webu Azure Portal (naleznete v tématu *kroku 6* pod [ **stáhnout agenta MARS** ](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent) oddílu) a provádět níže: <ul><li> Pokud již máte nainstalována a registrována Microsoft Azure Backup Agent, otevřete konzolu pro Microsoft Azure Backup Agent konzoly MMC a zvolte **zaregistrovat Server** z podokna akcí k dokončení registrace s nově staženým přihlašovací údaje <br/> <li> Pokud nové instalace se nezdařila pokuste se znovu nainstalovat pomocí nových přihlašovacích údajů</ul> **Poznámka:** Pokud více souborů přihlašovacích údajů trezoru se stáhnou předtím, jenom nejnovější stažený soubor je platný do 48 hodin. Proto doporučujeme stáhnout novou nový soubor s přihlašovacími údaji trezoru.
+| **Proxy Server nebo brána firewall blokuje <br/>nebo <br/>připojení k Internetu bez** <br/><br/> Pokud váš počítač nebo Proxy serveru má omezený přístup k Internetu potom bez výpisu potřebné adresy URL registrace se nezdaří.| Pokud chcete tento problém vyřešit, proveďte níže:<br/> <ul><li> Váš tým IT zajistit, že systém má připojení k Internetu<li> Pokud Proxy server, zajistěte možnost proxy serveru byl zrušen výběr cesty při registraci agenta, zkontrolujte uvedené kroky nastavení proxy serveru [zde](#verifying-proxy-settings-for-windows)<li> Pokud máte brány firewall a proxy server, pak práce se síťovým týmem zajistit, že následující adresy URL a IP adres mají přístup<br/> <br> **Adresy URL**<br> - *www.msftncsi.com* <br>-  *.Microsoft.com* <br> -  *.WindowsAzure.com* <br>-  *.microsoftonline.com* <br>-  *.windows.net* <br>**IP adresa**<br> - *20.190.128.0/18* <br> - *40.126.0.0/18* <br/></ul></ul>Zkuste znovu zaregistrovat po dokončení výše uvedené kroky pro řešení potíží
+| **Antivirový software blokuje** | Pokud máte antivirový software nainstalovaný na serveru, přidejte pravidla vyloučení nezbytné pro následující soubory z antivirová kontrola: <br/><ui> <li> *CBengine.exe* <li> *CSC.exe*<li> Výchozí umístění je pomocnou složku *C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* <li> Složky Bin na *C:\Program Files\Microsoft Azure Recovery Services Agent\Bin*
+
+### <a name="additional-recommendations"></a>Další doporučení
+- Přejděte na *C:/Windows/Temp* a zkontrolujte, zda jsou více než 60 000 nebo než 65 000 vývojáři soubory s příponou TMP. Pokud existuje, odstraňte tyto soubory
+- Zkontrolujte data a času počítači je spárování s místním časovém pásmu
+- Zkontrolujte [následující](backup-configure-vault.md#verify-internet-access) lokalit jsou přidány do IE důvěryhodných serverů
+
+### <a name="verifying-proxy-settings-for-windows"></a>Ověřuje se nastavení proxy serveru pro Windows
+
+- Stáhněte si **psexec** z [zde](https://docs.microsoft.com/sysinternals/downloads/psexec)
+- To `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` z řádku se zvýšenými oprávněními:
+- Tím se spustí *aplikace Internet Explorer* okna
+- Přejděte na *nástroje* -> *Možnosti Internetu* -> *připojení* -> *nastavení místní sítě*
+- Ověřte nastavení proxy serveru pro *systému* účtu
+- Pokud je nakonfigurovaný žádný proxy server a podrobnosti o proxy serveru jsou k dispozici, pak odeberte podrobnosti
+-   Pokud proxy server je nakonfigurován a podrobnosti o proxy nejsou správné, zajistěte *Proxy IP* a *port* správnost podrobností
+- Zavřít *aplikace Internet Explorer*
 
 ## <a name="unable-to-download-vault-credential-file"></a>Nepovedlo se stáhnout soubor s přihlašovacími údaji trezoru
 
@@ -85,34 +105,31 @@ Pokud naplánovaných záloh není aktivují automaticky, zatímco ruční zálo
 
 - Zkontrolujte stav Online zálohování je nastavená na **povolit**. Chcete-li ověřit stav provádění níže:
 
-  - Přejděte na **ovládací panely** > **nástroje pro správu** > **Plánovač úloh**.
-    - Rozbalte **Microsoft**a vyberte **Online zálohování**.
+  - Otevřít **Plánovač úloh** a rozbalte **Microsoft**a vyberte **Online zálohování**.
   - Dvakrát klikněte na panel **Microsoft OnlineBackup**a přejděte na **triggery** kartu.
-  - Ověření, pokud je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit**a vyberte **povoleno** zaškrtávací políčko a klikněte na tlačítko **OK**.
+  - Ověření, pokud je stav nastaven **povoleno**. Pokud tomu tak není, vyberte **upravit** > **povoleno** zaškrtávací políčko a klikněte na tlačítko **OK**.
 
-- Zkontrolujte uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **skupiny Local Administrators** na serveru. Chcete-li ověřit, že uživatelský účet, přejděte **Obecné** kartě a zaškrtněte **možnosti zabezpečení**.
+- Zkontrolujte uživatelský účet vybrané ke spuštění úkolu je buď **systému** nebo **skupiny Local Administrators** na serveru. Chcete-li ověřit, že uživatelský účet, přejděte **Obecné** kartě a zaškrtněte **zabezpečení** možnosti.
 
-- Podívejte se, jestli je na serveru nainstalovaný PowerShell 3.0 nebo novější. Pokud chcete zkontrolovat verzi prostředí PowerShell, spusťte následující příkaz a ověřte, zda *hlavní* číslo verze je roven nebo větší než 3.
+- Ujistěte se, že je nainstalovaný PowerShell 3.0 nebo vyšší na serveru. Pokud chcete zkontrolovat verzi prostředí PowerShell, spusťte následující příkaz a ověřte, zda *hlavní* číslo verze je roven nebo větší než 3.
 
   `$PSVersionTable.PSVersion`
 
-- Zjistit, zda následující cesta je součástí *PSMODULEPATH* proměnné prostředí.
+- Zkontrolujte následující cesta je součástí *PSMODULEPATH* proměnné prostředí
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Pokud zásady spouštění prostředí PowerShell pro *LocalMachine* je nastavena na s omezeným přístupem, rutina prostředí PowerShell, který se aktivuje úloha zálohování může selhat. Spuštěním následujících příkazů v režimu se zvýšenými oprávněními ke kontrole a nastavte zásady spouštění buď *Unrestricted* nebo *RemoteSigned*.
+- Pokud zásady spouštění prostředí PowerShell pro *LocalMachine* je nastavena na s omezeným přístupem, rutina prostředí PowerShell, který se aktivuje úloha zálohování může selhat. Spuštěním následujících příkazů v režimu se zvýšenými oprávněními ke kontrole a nastavte zásady spouštění buď *Unrestricted* nebo *RemoteSigned*
 
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
 
-- Ujistěte se, že server byl restartován po instalaci agenta zálohování
+- Zajistili zde nejsou žádné chybějící nebo poškozený **PowerShell** modulu **MSonlineBackup**. V případě, že existuje všechny chybějící nebo poškozené soubory, k vyřešení tohoto problému proveďte níže:
 
-- Zajistili zde nejsou žádné chybějící nebo poškozený **PowerShell** modulu **MSonlineBackup**. V případě, že jsou všechny chybějící nebo poškozené soubory, chcete-li vyřešit tento problém provádět níže:
-
-  - Z jiného počítače (Windows 2008 R2) s agenta MARS funguje správně, zkopírujte složku MSOnlineBackup z *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* cestu.
+  - Z libovolného počítače s agenta MARS, který pracuje správně, zkopírujte složku MSOnlineBackup z *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* cestu.
   - To vložte problematických počítače ve stejné cestě *(C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules)* .
-  - Pokud **MSOnlineBackup** složka je již existuje v počítači, vložení/nahrazení soubory obsahu uvnitř.
+  - Pokud **MSOnlineBackup** složka je již existoval v počítači, vložte nebo nahraďte soubory obsahu uvnitř.
 
 
 > [!TIP]

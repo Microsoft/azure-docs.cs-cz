@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69dac57118d7876ba08a562f5478b19465b37e07
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 670319eb3fb79742d2946f5fc45ca8904e8c1dd9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Kurz: Integrace Azure Active Directory s Braze
 
@@ -54,7 +54,7 @@ Konfigurace integrace Braze do služby Azure AD, budete muset přidat Braze z Ga
 
 **Chcete-li přidat Braze z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -125,7 +125,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Braze, proveďte následuj�
 
     | Název | Zdrojový atribut|
     | -----| --------------- |
-    | e-mail | user.userprincipalname |
+    | email | user.userprincipalname |
     | křestní_jméno| user.givenname|
     | Příjmení| user.surname|
     | přihlášení| user.mail|
@@ -220,7 +220,7 @@ V této části je povolit Britta Simon k udělení přístupu k Braze použití
 
 V této části vytvoříte uživatele v Braze jako Britta Simon. Práce s [tým podpory Braze](mailto:support@braze.com) přidat uživatele na platformě Braze. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

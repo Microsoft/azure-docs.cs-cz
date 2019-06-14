@@ -13,18 +13,35 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ee3aeb9f44d1b98d6307c6a72d1e4786ea1ec664
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787518"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076904"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server na virtuálním počítači Azure zpráva k vydání verze
 
 Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systému SQL Server. Tento článek shrnuje nové funkce a vylepšení v posledních verzích [systému SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). V článku jsou uvedeny také důležité aktualizace obsahu, které jsou přímo související s vydáním ale publikovat ve stejném časovém rámci. Vylepšení k jiným službám Azure, najdete v části [aktualizace služeb](https://azure.microsoft.com/updates)
 
-## <a name="april-2019"></a>2019. dubna
+## <a name="may-2019"></a>. Května 2019.
+
+### <a name="service-improvements"></a>Vylepšení služby
+
+| Vylepšení služby | Podrobnosti |
+| --- | --- |
+| **Nový virtuální počítač s SQL management na webu Azure portal** | Je teď nový způsob, jak spravovat virtuálního počítače s SQL serverem na webu Azure Portal. Další informace najdete v tématu [Správa virtuálního počítače SQL serverem na webu Azure Portal](virtual-machines-windows-sql-manage-portal.md).  | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Dokumentace k vylepšení
+
+| Dokumentace | Podrobnosti |
+| --- | --- |
+| **Nový portál správy virtuálního počítače s SQL** | Zhruba tucet články byly aktualizovány na nové prostředí portálu správy virtuálního počítače s SQL. | 
+| &nbsp; | &nbsp; |
+
+
+## <a name="april-2019"></a>2019\. dubna
 
 ### <a name="service-improvements"></a>Vylepšení služby
 
@@ -33,11 +50,8 @@ Azure umožňuje nasadit virtuální počítač pomocí image vytvořené systé
 | **Rozšíření podpory pro SQL Server 2008 a 2008 R2** | [Rozšíření podpory](virtual-machines-windows-sql-server-2008-eos-extend-support.md) pro SQL Server 2008 a SQL Server 2008 R2 a migrujte *jako-je* na Virtuálním počítači Azure. | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Dokumentace k vylepšení
 
-Žádný
-
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>2019\. března
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |

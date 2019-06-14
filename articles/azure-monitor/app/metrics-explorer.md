@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: mbullwin
 ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60700613"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik ve službě Application Insights
@@ -166,7 +166,7 @@ Pokud upravíte okno, ale pak chcete vrátit zpět do původní uložila sada, s
 
 ![V seznamu tlačítka v horní části Průzkumníku metrik](./media/metrics-explorer/17-reset.png)
 
-## <a name="live-metrics-stream"></a>Live Metrics Stream
+## <a name="live-metrics-stream"></a>Live metrics stream
 
 Mnohem více okamžitě zobrazit telemetrii, otevřete [Live Stream](live-stream.md). Většina metrik trvat několik minut, než se zobrazí, a to z důvodu procesu agregace. Naopak živé metriky jsou optimalizované pro zajištění nízké latence. 
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cdff2305914ca6e4144f7784d1a60026a1d27c0
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65988687"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Co je skóre zabezpečení identit v Azure Active Directory?
@@ -26,7 +26,7 @@ Jak zabezpečený je váš tenant služby Azure AD? Pokud si nejste jisti, jak n
 
 Skóre zabezpečení identit je číslo z rozsahu 1 až 223, která slouží jako indikátor jak zarovnané jste se od Microsoftu doporučené osvědčené postupy pro zabezpečení. Každá akce zlepšení v zabezpečené skóre identity je vytvořený na míru vaší konkrétní konfiguraci.  
 
-![Secure Score](./media/identity-secure-score/identity-secure-score-overview.png)
+![Bezpečnostní skóre](./media/identity-secure-score/identity-secure-score-overview.png)
 
 Toto skóre vám umožní:
 

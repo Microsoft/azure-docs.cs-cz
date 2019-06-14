@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 02/15/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 322be1e13662d92a3cb0a805a9ccaacd05928f7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16d7691d59e0805c7f8cf565a599ca5e6a78a7cf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886760"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053043"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza Azure IoT Central dat na řídicím panelu Power BI
 
@@ -38,7 +38,7 @@ Nastavení řešení vyžaduje následující:
 - Power BI Desktopu (nejnovější verze)
 - Power BI Pro (Pokud chcete řídicí panel sdílet s ostatními)
 
-## <a name="reports"></a>Reports
+## <a name="reports"></a>Sestavy
 
 Dvě sestavy jsou automaticky generovány. 
 

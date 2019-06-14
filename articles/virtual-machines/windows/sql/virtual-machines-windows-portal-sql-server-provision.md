@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb051d37f3a1dd82d7d46bfe8b22c2ba1251be85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6723adb3fb8987a127eee419c9ac188c7a33d50b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076044"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Přidělení virtuálního počítače s Windows SQL serverem na webu Azure Portal
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Při vytváření virtuálního počítače s SQL serverem, vyberte jednu z několika předem nakonfigurované Image z Galerie virtuálních počítačů. Následující kroky ukazují, jak vybrat některou k imagí SQL serveru 2017.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí svého účtu.
 
 1. Na webu Azure Portal klikněte na **Vytvořit prostředek**. Na Portálu se otevře okno **Nový**.
 
@@ -98,7 +98,7 @@ Na **Základy** kartu, zadejte následující informace:
     1. V **Image** seznamu vyberte _bezplatná licence SQL serveru: SQL Server 2017 Developer ve Windows serveru 2016_.  
     1. Zvolit **změnit velikost** pro **velikost** virtuálního počítače a vyberte **A2 základní** nabídky. Ujistěte se, že vyčistit prostředky, až budete hotovi s nimi, abyste zabránili neočekávaným poplatkům. Doporučené velikosti a konfiguraci počítačů pro produkční úlohy najdete v tématu [Osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md).
 
-    ![Podrobnosti o instancích](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+    ![Podrobnosti o instanci](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > Odhadované měsíční náklady zobrazené v okně **Zvolit velikost** nezahrnují náklady na licencování SQL Serveru. Tento odhad jsou náklady pouze na virtuální počítač. Pro edice Express a Developer systému SQL Server je tento odhad o celkové odhadované náklady. Pro ostatní edice se podívejte na [stránku s cenami pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a vyberte cílovou edici vašeho SQL Serveru. Viz také [doprovodné materiály k pro virtuální počítače Azure s SQL serverem cenám](virtual-machines-windows-sql-server-pricing-guidance.md) a [velikosti virtuálních počítačů](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -141,15 +141,15 @@ Na **sítě** kartu, nakonfigurujte možnosti vaší sítě.
 
 #### <a name="monitoring"></a>Monitorování
 
-Na **monitorování** kartu, nakonfigurujte monitorování a automatické vypnutí. 
+Na **monitorování** kartu, nakonfigurujte sledování a autoshutdown. 
 
 * Azure umožňuje **spouštění monitorování** ve výchozím nastavení pomocí stejného účtu úložiště určený pro virtuální počítač. Můžete změnit tato nastavení zde, jakož i povolení **operačního systému hosta diagnostiky**. 
-* Můžete povolit **systém přiřadil spravovanou identitu** a **automatického vypínání** na této kartě také. 
+* Můžete povolit **systém přiřadil spravovanou identitu** a **autoshutdown** na této kartě také. 
 
 ![Správa nastavení virtuálního počítače SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
 
 
-## <a name="3-configure-sql-server-settings"></a>3. Konfigurace nastavení SQL Serveru
+## <a name="3-configure-sql-server-settings"></a>3. Konfigurace nastavení SQL serveru
 
 Na **nastavení systému SQL Server** kartu, nakonfigurujte konkrétní nastavení a optimalizace pro SQL Server. Nastavení, která můžete nakonfigurovat pro SQL Server, patří:
 
@@ -188,7 +188,7 @@ Obecně se doporučuje zvýšit zabezpečení výběrem nejvíce omezujícího p
 
 ### <a name="authentication"></a>Authentication
 
-Pokud budete chtít vyžadovat ověřování SQL Serveru, klikněte v části **Ověřování SQL** na **Povolit**.
+Pokud budete vyžadovat ověřování SQL serveru, klikněte na tlačítko **povolit** pod **ověřování SQL** na **nastavení systému SQL Server** kartu.
 
 ![Ověřování SQL Serveru](./media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
 
@@ -199,13 +199,12 @@ Pokud povolíte ověřování SQL Serveru, zadejte **přihlašovací jméno** a 
 
 Pokud ověřování SQL Serveru nepovolíte, můžete pro připojení k instanci SQL Serveru používat účet místního správce ve virtuálním počítači.
 
-![Ověřování serveru SQL Server](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-authentication.png)
 
 ### <a name="azure-key-vault-integration"></a>Integrace se službou Azure Key Vault
 
-Pokud budete chtít ukládat tajné klíče zabezpečení v Azure pro šifrování, klikněte na **Integrace se službou Azure Key Vault** a klikněte na **Povolit**.
+Chcete-li ukládat tajné klíče zabezpečení v Azure pro šifrování, vyberte **nastavení systému SQL Server**a přejděte dolů k položce **integrace Azure key vaultu**. Vyberte **povolit** a vyplňte požadované informace. 
 
-![Integrace se službou Azure Key Vault](media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
+![Integrace se službou Azure Key Vault](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-akv.png)
 
 V následující tabulce jsou uvedeny parametry, které jsou nezbytné pro konfiguraci Integrace se službou Azure Key Vault.
 
@@ -220,7 +219,7 @@ Další informace najdete v tématu [Konfigurace Integrace se službou Azure Key
 
 ### <a name="storage-configuration"></a>Konfigurace úložiště
 
-V části **konfiguraci úložiště**vyberte **změna konfigurace** k určení požadavků na úložiště.
+Na **nastavení systému SQL Server** ve skupině **konfiguraci úložiště**vyberte **změna konfigurace** k určení požadavků na úložiště.
 
 
 > [!NOTE]
@@ -239,7 +238,7 @@ V části **Optimalizace úložiště** vyberte jednu z následujících možnos
 
 ![Konfigurace úložiště virtuálního počítače SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
 
-### <a name="sql-server-license"></a>Licence SQL Serveru
+### <a name="sql-server-license"></a>SQL Server License
 Pokud jste zákazníky programu Software Assurance, můžete využít [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) na používání vlastní licence SQL serveru a ušetřit na prostředky. 
 
 ![Licence virtuálního počítače SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-license.png)
@@ -264,14 +263,16 @@ Když povolíte automatizované zálohování SQL, můžete nakonfigurovat násl
 * Zálohování systémových databází
 * Konfigurování plánu zálohování
 
-Pokud chcete zálohy šifrovat, klikněte na **Povolit**. Pak zadejte **heslo**. Azure vytvoří certifikát pro šifrování záloh a používá zadané heslo k ochraně tohoto certifikátu.
+Pokud chcete zálohy šifrovat, klikněte na **Povolit**. Pak zadejte **heslo**. Azure vytvoří certifikát pro šifrování záloh a používá zadané heslo k ochraně tohoto certifikátu. Ve výchozím nastavení plánu je nastavena automaticky, ale můžete vytvořit ruční plán tak, že vyberete **ruční**. 
+
+![Automatické zálohování virtuálního počítače SQL](media/virtual-machines-windows-portal-sql-server-provision/automated-backup.png)
 
 Další informace najdete v tématu [Automatizované zálohování pro SQL Server v Azure Virtual Machines](virtual-machines-windows-sql-automated-backup.md).
 
 
 ### <a name="r-services-advanced-analytics"></a>R Services (Advanced Analytics)
 
-Máte možnost Povolit [SQL Server R Services (Advanced Analytics)](/sql/advanced-analytics/r/sql-server-r-services/). Tato možnost umožňuje používat pokročilé analýzy s SQL serverem 2017. V okně **Nastavení SQL Serveru** klikněte na **Povolit**.
+Máte možnost Povolit [SQL Server R Services (Advanced Analytics)](/sql/advanced-analytics/r/sql-server-r-services/). Tato možnost umožňuje používat pokročilé analýzy s SQL serverem 2017. Vyberte **povolit** na **nastavení systému SQL Server** okna.
 
 
 ## <a name="4-review--create"></a>4. Zkontrolovat a vytvořit

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64869995"
 ---
 # <a name="azure-maps-render-coverage"></a>Zajištění vykreslování Azure Maps
@@ -83,7 +83,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Jižní Súdán                      | ✓ | ✓ |
 | Súdán                            | ✓ | ✓ |
 | Svazijsko                        | ✓ | ✓ |
-| Sjednocená tanzanská republika      | ✓ | ✓ |
+| Sjednocená Tanzanská republika      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
 | Tunisko                          | ✓ | ✓ |
 | Uganda                           | ✓ | ✓ |
@@ -102,7 +102,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Barbados                  | ✓ | ✓ |
 | Belize                    | ✓ | ✓ |
 | Bermudy                   | ✓ | ✓ |
-| Mnohonárodnostní stát Bolívie | ✓ | ✓ |
+| Mnohonárodní stát Bolívie | ✓ | ✓ |
 | Bonaire, Svatý Eustach a Saba | ✓ | ✓ |
 | Brazílie                    | ✓ | ✓ |
 | Kanada                    | ✓ | ✓ |
@@ -115,7 +115,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Dominika                  | ✓ | ✓ |
 | Dominikánská republika        | ✓ | ✓ |
 | Ekvádor                   | ✓ | ✓ |
-| Falklandy (Malvíny) | ✓ | ✓ |
+| Falklandské ostrovy (Malvíny) | ✓ | ✓ |
 | Francouzská Guyana             | ✓ | ✓ |
 | Grónsko                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
@@ -139,7 +139,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Svatý Kryštof a Nevis     | ✓ | ✓ |
 | Svatá Lucie               | ✓ | ✓ |
 | Svatý Martin (francouzština)     | ✓ | ✓ |
-| Svatý Pierre a Miquelon | ✓ | ✓ |
+| Saint Pierre a Miquelon | ✓ | ✓ |
 | Svatý Vincenc a Grenadiny | ✓ | ✓ |
 | Sint Maarten (holandština)      | ✓ | ✓ |
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ | ✓ |
@@ -161,13 +161,13 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Bangladéš                |   | Ø |
 | Bhútán                    |   | Ø |
 | Britské území v Indickém oceánu |   | Ø |
-| Brunej                    | ✓ | ✓ |
+| Brunei                    | ✓ | ✓ |
 | Kambodža                  |   | Ø |
 | Čína                     |   | Ø |
-| Kokosové ostrovy (Keeling)   |   | Ø |
+| Kokosové (Keelingovy) ostrovy   |   | Ø |
 | Korejská lidově demokratická republika |   | Ø |
 | Dokdo a Takeshima       |   | Ø |
-| Hongkong – zvláštní správní oblast             | ✓ | ✓ |
+| Hongkong – zvláštní administrativní oblast             | ✓ | ✓ |
 | Indie                     | Ø | ✓ | 
 | Indonésie                 | ✓ | ✓ |
 | Írán                      |   | Ø |
@@ -199,7 +199,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Tchaj-wan                    | ✓ | ✓ |
 | Tádžikistán                |   | Ø |
 | Thajsko                  | ✓ | ✓ |
-| Východní Timor               |   | Ø |
+| Timor-Leste               |   | Ø |
 | Turkmenistán              |   | Ø |
 | Spojené arabské emiráty      | ✓ | ✓ |
 | Menší odlehlé ostrovy Spojených států amerických |   | Ø |
@@ -224,10 +224,10 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Nová Kaledonie             |   | Ø |
 | Nový Zéland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk (ostrov)            |   | Ø |
+| Ostrova Norfolk            |   | Ø |
 | Palau                     |   | Ø |
-| Papua - Nová Guinea          |   | Ø |
-| Pitcairn                  |   | Ø |
+| Papua – Nová Guinea          |   | Ø |
+| Pitcairnovy                  |   | Ø |
 | Samoa                     |   | Ø |
 | Šalamounovy ostrovy           |   | Ø|
 | Tokelau                   |   | Ø |
@@ -274,7 +274,7 @@ Mapy, ale nemá stejnou úroveň informací a přesnost pro všechny oblasti. N�
 | Lichtenštejnsko             | ✓ | ✓ |
 | Litva                 | ✓ | ✓ |
 | Lucembursko                | ✓ | ✓ |
-| Severní Makedonie           | ✓ | ✓ |
+| Makedonie – sever           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Moldavsko                   | ✓ | ✓ |
 | Monako                    | ✓ | ✓ |

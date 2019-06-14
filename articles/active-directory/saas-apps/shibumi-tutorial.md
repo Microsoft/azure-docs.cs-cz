@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 445e24732edc1bc7e4d1cfe3ff49a54115c7ea3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc8c06d5c38092ee74367b40415f1fc2bb616633
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867456"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>Kurz: Integrace Azure Active Directory s Shibumi
 
@@ -55,7 +55,7 @@ Konfigurace integrace Shibumi do služby Azure AD, budete muset přidat Shibumi 
 
 **Chcete-li přidat Shibumi z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -192,7 +192,7 @@ V této části je povolit Britta Simon k udělení přístupu k Shibumi použit
 
 V této části se vytvoří uživateli Britta Simon v Shibumi. Shibumi podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Shibumi, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

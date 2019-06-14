@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66141252"
 ---
 Z důvodu průběžného vývoje nemusí v nástroji Android Studio nainstalovanou verzi sady SDK pro Android odpovídat verzi v kódu. Sady Android SDK odkazované v tomto kurzu je verze 26, nejnovější v době zápisu. Zvýšit číslo verze a zobrazí nové verze sady SDK, doporučujeme používat nejnovější dostupná verze.
@@ -22,7 +22,7 @@ Pokud některý z těchto se zobrazí, nemusí shodovat na verzi sady SDK pro An
 
 1. V nástroji Android Studio, klikněte na tlačítko **nástroje** > **Android** > **správce sady SDK**. Pokud jste nenainstalovali nejnovější verzi sady SDK platformy, klepněte na jeho instalaci. Poznamenejte si číslo verze.
 
-2. Na **Project Exploreru** ve skupině **skriptů Gradle**, otevřete soubor **build.gradle (modul: aplikace)**. Ujistěte se, **compileSdkVersion** a **targetSdkVersion** jsou nastaveny na nainstalovanou nejnovější verzi sady SDK. `build.gradle` Může vypadat třeba takto:
+2. Na **Project Exploreru** ve skupině **skriptů Gradle**, otevřete soubor **build.gradle (modul: aplikace)** . Ujistěte se, **compileSdkVersion** a **targetSdkVersion** jsou nastaveny na nainstalovanou nejnovější verzi sady SDK. `build.gradle` Může vypadat třeba takto:
 
     ```gradle
     android {

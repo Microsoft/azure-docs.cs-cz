@@ -4,21 +4,21 @@ description: Zjistěte, jak moduly a zařízení IoT Edge může fungovat i bez 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/30/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 74d2601c2319ccad9cc980b83894a3242705aa46
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4f3e5c1566271573b43e24a1749b42daa7530555
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051952"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Seznamte se s rozšířenou offline funkcí pro zařízení, moduly a podřízená zařízení IoT Edge
 
-Azure IoT Edge podporuje rozšířené offline operace s vašimi zařízeními IoT Edge a umožní offline operace na zařízeních bez okrajů podřízené příliš. Tak dlouho, dokud zařízení IoT Edge došlo jednu příležitost k připojení ke službě IoT Hub a všechny podřízené zařízení můžete nadále funkce s přerušovaným nebo žádné připojení k Internetu. 
+Azure IoT Edge podporuje rozšířené offline operace s vašimi zařízeními IoT Edge a příliš umožňuje offline operace na podřízené zařízení IoT Edge. Tak dlouho, dokud zařízení IoT Edge došlo jednu příležitost k připojení ke službě IoT Hub a všechny podřízené zařízení můžete nadále funkce s přerušovaným nebo žádné připojení k Internetu. 
 
 
 ## <a name="how-it-works"></a>Jak to funguje
@@ -27,19 +27,19 @@ Když se zařízení IoT Edge dostane do offline režimu, Centrum IoT Edge přeb
 
 Následující příklad ukazuje, jak funguje scénáři IoT Edge v režimu offline:
 
-1. **Konfigurace zařízení IoT Edge.**
+1. **Konfigurace zařízení**
 
-   Zařízení IoT Edge mají automaticky offline Funkce povolené. Rozšíření této funkce s jinými zařízeními IoT, musíte deklarovat vztah nadřízenosti a podřízenosti mezi zařízeními ve službě IoT Hub. 
+   Zařízení IoT Edge mají automaticky offline Funkce povolené. Rozšíření této funkce s jinými zařízeními IoT, musíte deklarovat vztah nadřízenosti a podřízenosti mezi zařízeními ve službě IoT Hub. Potom nakonfigurujte zařízení podřízené důvěřovat jejich přiřazené nadřazené zařízení a směrování komunikace typu zařízení cloud prostřednictvím nadřazené jako brána. 
 
-2. **Synchronizace pomocí služby IoT Hub.**
+2. **Synchronizace pomocí služby IoT Hub**
 
    Alespoň jednou po instalaci modulu runtime IoT Edge, zařízení IoT Edge musí být online pro synchronizaci se službou IoT Hub. V této synchronizace zařízení IoT Edge načte podrobnosti o všech podřízených zařízení přiřazených k němu. Zařízení IoT Edge zároveň se bezpečně aktualizuje místní mezipaměti, povolení offline operace a načte nastavení pro místní ukládání telemetrických zpráv. 
 
-3. **Přejdete do režimu offline.**
+3. **Přejít do režimu offline**
 
    Při odpojení ze služby IoT Hub, můžete zařízení IoT Edge, jeho nasazené moduly a všechny podřízené objekty zařízení IoT fungovat po neomezenou dobu. Moduly a podřízená zařízení můžete spustit a restartovat díky ověřování pomocí centra IoT Edge při offline. Ukládají se místně telemetrie upstream vázán ke službě IoT Hub. Komunikace mezi moduly nebo mezi zařízeními IoT podřízené zachovaný prostřednictvím přímé metody nebo zprávy. 
 
-4. **Znovu připojit a znovu synchronizujte službou IoT Hub.**
+4. **Znovu připojit a znovu synchronizujte službou IoT Hub**
 
    Po obnovení připojení pomocí služby IoT Hub znovu synchronizuje zařízení IoT Edge. Místně uložené zprávy doručovaly ve stejném pořadí, ve kterém byly uloženy. Rozdíly mezi požadované a ohlášené vlastnosti moduly a zařízeními jsou sloučeny. Zařízení IoT Edge aktualizuje všechny změny na svou sadu zařízení IoT přiřazené podřízené.
 
@@ -49,28 +49,30 @@ Rozšířené možnosti offline popsaných v tomto článku jsou dostupné v [Io
 
 Prodloužená odborná pomoc offline je k dispozici ve všech oblastech, kde je k dispozici, IoT Hub **s výjimkou** USA – východ.
 
-Pouze zařízení Edge IoT se dá přidat jako podřízenou zařízení. 
+Pouze zařízení IoT Edge se dá přidat jako podřízenou zařízení. 
 
 Zařízení IoT Edge a jejich zařízení přiřazené podřízené, můžou fungovat po synchronizaci počáteční, jednorázové po neomezenou dobu offline. Úložiště zpráv, které však závisí na time to live (TTL) nastavení a dostupné místo na disku pro ukládání zpráv. 
 
-## <a name="set-up-an-iot-edge-device"></a>Nastavení zařízení IoT Edge
+## <a name="set-up-parent-and-child-devices"></a>Nastavení nadřazených a podřízených zařízení
 
-Pro zařízení IoT Edge rozšířit možnosti rozšířené offline do zařízení IoT podřízené musíte deklarovat vztahy nadřazenosti a podřízenosti na webu Azure Portal.
+Pro zařízení IoT Edge rozšířit možnosti rozšířené offline do zařízení IoT podřízené budete muset provést dva kroky. Nejprve deklarujte hierarchické vztahy na webu Azure Portal. Za druhé vytvoření vztahu důvěryhodnosti mezi zařízením nadřazené a podřízené zařízení a potom konfiguraci komunikace typu zařízení cloud a absolvovat nadřazené jako brána. 
 
 ### <a name="assign-child-devices"></a>Přiřazení zařízení podřízené
 
-Podřízená zařízení může být jakékoli zařízení bez okrajů zaregistrované u stejné služby IoT Hub. Nadřazené zařízení může mít více podřízených zařízení, ale podřízené zařízení může mít pouze jeden nadřazený prvek. Existují tři možnosti, jak nastavit podřízené zařízení do hraničního zařízení:
+Podřízená zařízení může být jakékoli zařízení IoT Edge zaregistrované u stejné služby IoT Hub. Nadřazené zařízení může mít více podřízených zařízení, ale podřízené zařízení má pouze jeden nadřazený prvek. Existují tři možnosti, jak nastavit podřízené zařízení do hraničního zařízení: prostřednictvím portálu Azure pomocí Azure CLI, nebo pomocí sady SDK služby IoT Hub. 
+
+Následující části obsahují příklady, jak je možné deklarovat vztah nadřízenosti/ve službě IoT Hub pro existující zařízení IoT. Pokud vytváříte nových identit zařízení pro vaše dítě zařízení, přečtěte si téma [ověření podřízené zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md) Další informace.
 
 #### <a name="option-1-iot-hub-portal"></a>Option 1: IoT Hub Portal
 
- Můžete spravovat relaci nadřazený podřízený na vytvoření nového zařízení nebo ze stránky detaily zařízení buď nadřazené zařízení IoT Edge nebo podřízené zařízení IoT. 
+Při vytváření nového zařízení je možné deklarovat vztah nadřízenosti a podřízenosti. Nebo pro existující zařízení, je možné deklarovat vztah vychází ze stránky podrobností zařízení buď nadřazené zařízení IoT Edge nebo podřízené zařízení IoT. 
 
    ![Správa podřízených zařízení ze stránky detaily zařízení IoT Edge](./media/offline-capabilities/manage-child-devices.png)
 
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Použití `az` nástroj příkazového řádku
 
-Použití [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) s [rozšíření IoT](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 nebo novější), můžete spravovat nadřazené vztahy podřízenosti a nadřízenosti s [identitu zařízení](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) dílčí příkazy. V příkladě níž jsme spuštění dotazu k přiřazení všech hraničních zařízeních IoT bez zařízení v centru jako podřízená zařízení zařízení IoT Edge. 
+Použití [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) s [rozšíření IoT](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 nebo novější), můžete spravovat nadřazené vztahy podřízenosti a nadřízenosti s [identitu zařízení](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) dílčí příkazy. Následující příklad používá dotaz k přiřazení všech zařízení IoT Edge v centru tak, aby se podřízené zařízení zařízení IoT Edge. 
 
 ```shell
 # Set IoT Edge parent device
@@ -99,19 +101,29 @@ Můžete upravit [dotazu](../iot-hub/iot-hub-devguide-query-language.md) vybrat 
 
 Nakonec můžete spravovat nadřazené vztahy podřízenosti a nadřízenosti prostřednictvím kódu programu pomocí C#, Java nebo Node.js sady SDK služby IoT Hub. Tady je [příklad přiřazení podřízené zařízení](https://aka.ms/set-child-iot-device-c-sharp) pomocí C# SDK.
 
-### <a name="specifying-dns-servers"></a>Určení serverů DNS 
+### <a name="set-up-the-parent-device-as-a-gateway"></a>Nastavení nadřazené zařízení jako brána
 
-Pokud chcete zlepšit odolnost, důrazně doporučujeme zadejte adresy serverů DNS ve svém prostředí. Podrobnosti najdete [dvě možnosti, jak to provést z článku Poradce při potížích](troubleshoot.md#resolution-7).
+Si můžete představit jako transparentní brána, kde má svou vlastní identitu ve službě IoT Hub podřízené zařízení, ale komunikuje přes cloud prostřednictvím svého nadřazeného objektu v relaci nadřazený/podřízený. Pro zabezpečenou komunikaci podřízené zařízení musí být schopný ověřit, že zařízení nadřazené pochází z důvěryhodného zdroje. V opačném případě třetích stran, může nastavit škodlivý zařízení k předstírání identity nadřazené položky a zachycení komunikace. 
+
+Jedním ze způsobů vytvoření tohoto vztahu důvěryhodnosti je podrobně popsány v následujících článcích: 
+* [Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge](how-to-create-transparent-gateway.md)
+* [Připojte zařízení za příjem dat (podřízený) brány Azure IoT Edge](how-to-connect-downstream-device.md)
+
+## <a name="specify-dns-servers"></a>Určit servery DNS 
+
+Pokud chcete zlepšit odolnost, důrazně doporučujeme zadejte adresy serverů DNS ve svém prostředí. Zobrazit dvě možnosti, jak [nastavení serveru DNS v článku Poradce při potížích](troubleshoot.md#resolution-7).
 
 ## <a name="optional-offline-settings"></a>Volitelná nastavení
 
-Pokud budete chtít shromažďovat všechny zprávy, které generují zařízení během období dlouhé offline, konfigurace centra IoT Edge tak, aby bylo možné ukládat všechny zprávy. Existují dvě změny, můžete pro Centrum IoT Edge umožňuje dlouhodobé úložiště zpráv. Nejprve zvýšit time to live nastavení. Pak přidejte další místo na disku pro úložiště zpráv. 
+Pokud vaše zařízení přejdou do režimu offline, nadřazené zařízení IoT Edge ukládá všechny zprávy typu zařízení cloud, dokud se obnoví připojení. Modul IoT Edge hub spravuje úložiště a předávání zpráv v režimu offline. U zařízení, která může přejít do režimu offline delší časová období Optimalizujte výkon tím, že nakonfigurujete dvě nastavení centra IoT Edge. 
+
+Nejprve zvýšit time to live nastavení tak, aby Centrum IoT Edge bude udržovat zprávy dostatečně dlouhé pro zařízení znovu připojit. Pak přidejte další místo na disku pro úložiště zpráv. 
 
 ### <a name="time-to-live"></a>Hodnota TTL (Time to Live)
 
 Time to live nastavení je množství času (v sekundách), který zprávu počkat, který bude doručen před vypršením platnosti. Výchozí hodnota je 7200 sekund (dva hodin). Maximální hodnota je omezen pouze maximální hodnotu proměnnou celého čísla, což je přibližně 2 miliardy. 
 
-Toto nastavení je požadovaná vlastnost centra IoT Edge, která je uložena ve dvojčeti modulu. Můžete ho nakonfigurovat na webu Azure Portal, v **konfigurovat rozšířená nastavení modulu Runtime Edge** části nebo přímo v nasazení manifestu. 
+Toto nastavení je požadovaná vlastnost centra IoT Edge, která je uložena ve dvojčeti modulu. Můžete ho nakonfigurovat na portálu Azure nebo přímo v manifestu nasazení. 
 
 ```json
 "$edgeHub": {
@@ -165,4 +177,8 @@ Můžete také najít další podrobnosti o vytvoření možnosti z [docker doku
 
 ## <a name="next-steps"></a>Další postup
 
-Povolit rozšířené offline operace ve vaší [transparentní brána](how-to-create-transparent-gateway.md) scénáře.
+Další informace o tom, jak nastavit transparentní bránu pro připojení k nadřazené a podřízené zařízení: 
+
+* [Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge](how-to-create-transparent-gateway.md)
+* [Ověření podřízené zařízení do služby Azure IoT Hub](how-to-authenticate-downstream-device.md)
+* [Připojte zařízení za příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md)

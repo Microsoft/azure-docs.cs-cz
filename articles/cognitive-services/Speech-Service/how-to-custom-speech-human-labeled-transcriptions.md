@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ba6d137a7eb5fc2c56bfc39aa8f831d76411fb46
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025919"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060852"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak vytvořit lidských s názvem bez přípony přepisů
 
@@ -78,7 +78,7 @@ Tady je pár příkladů normalizace automaticky provedeno přepis:
 | Pi je asi 3.14 | Pi je přibližně tři čtyři jeden bod |
 To stojí $3.14| to stojí tři čtrnáct |
 
-## <a name="mandarin-chinese-zh-cn"></a>Mandarínština čínština (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>Mandarínština čínština (zh-CN)
 
 Lidské s názvem bez přípony přepisy pro čínské zvuk Mandarínština musí být kódovaný pomocí značky pořadí bajtů kódování UTF-8. Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo scrape data z webové stránky. Pokud tyto znaky jsou k dispozici, ujistěte se, že aktualizace pomocí odpovídající nahrazení plnou šířkou.
 

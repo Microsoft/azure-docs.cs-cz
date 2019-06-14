@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851371"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurace aplikace App Service pro použití přihlášení Azure Active Directory
@@ -79,12 +79,12 @@ Můžete zaregistrovat nativní klienty, které poskytuje větší kontrolu nad 
 1. Přejděte do **Azure Active Directory** v [Azure Portal].
 2. V levém navigačním panelu vyberte **registrace aplikací**. Klikněte na tlačítko **registrace nové aplikace** v horní části.
 4. V **vytvořit** stránky, zadejte **název** pro registraci vaší aplikace. Vyberte **nativní** v **typ aplikace**.
-5. V **identifikátor URI pro přesměrování** zadejte váš web */.auth/login/done* koncový bod, používat schéma HTTPS. Tato hodnota by měl být podobný *https://contoso.azurewebsites.net/.auth/login/done*. Vytvoření aplikace pro Windows, místo toho použití-li [balíček SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identifikátor URI.
+5. V **identifikátor URI pro přesměrování** zadejte váš web */.auth/login/done* koncový bod, používat schéma HTTPS. Tato hodnota by měl být podobný *https://contoso.azurewebsites.net/.auth/login/done* . Vytvoření aplikace pro Windows, místo toho použití-li [balíček SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) jako identifikátor URI.
 5. Klikněte na možnost **Vytvořit**.
 6. Po registraci aplikace se přidala, vyberte ji a otevřete ho. Najít **ID aplikace** a poznamenejte si tuto hodnotu.
 7. Klikněte na tlačítko **všechna nastavení** > **požadovaná oprávnění** > **přidat** > **vyberte rozhraní API**.
 8. Zadejte název aplikace služby App Service, které jste zaregistrovali dříve vyhledejte, pak ho vyberte a klikněte na **vyberte**.
-9. Vyberte **přístup \<app_name >**. Pak klikněte na **Vybrat**. Potom klikněte na **Done** (Hotovo).
+9. Vyberte **přístup \<app_name >** . Pak klikněte na **Vybrat**. Potom klikněte na **Done** (Hotovo).
 
 Nyní jste nakonfigurovali nativní klientské aplikace s přístupem k aplikaci služby App Service.
 
