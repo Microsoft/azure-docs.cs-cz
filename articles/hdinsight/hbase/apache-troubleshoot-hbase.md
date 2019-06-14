@@ -8,10 +8,10 @@ ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713496"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
@@ -219,7 +219,7 @@ Pro připojení k Apache Phoenix, je nutné zadat IP adresu z aktivního uzlu Ap
    ```
 
    > [!Note] 
-   > Získat IP adresu z aktivního uzlu ZooKeeper z uživatelského rozhraní Ambari. Přejděte na **HBase** > **rychlé odkazy** > **ZK\* (aktivní)** > **Zookeeper informace**. 
+   > Získat IP adresu z aktivního uzlu ZooKeeper z uživatelského rozhraní Ambari. Přejděte na **HBase** > **rychlé odkazy** > **ZK\* (aktivní)**  > **Zookeeper informace**. 
 
 3. Pokud sqlline.py připojí k Phoenix a nemá časový limit, spusťte následující příkaz k ověření dostupnosti a stavu Phoenix:
 
