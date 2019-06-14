@@ -79,7 +79,7 @@ Následující kód JSON ukazuje schéma rozšíření Azure VM závislost agent
 | Název | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| vydavatele | Microsoft.Azure.Monitoring.DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
