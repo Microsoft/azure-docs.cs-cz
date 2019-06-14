@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b91c0e55ba3400d4d601556d214bb2c9d6ff170
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65858763"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Kurz: Integrace Azure Active Directory s AuditBoard
 
@@ -53,7 +53,7 @@ Konfigurace integrace AuditBoard do služby Azure AD, budete muset přidat Audit
 
 **Chcete-li přidat AuditBoard z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -180,7 +180,7 @@ V této části je povolit Britta Simon k udělení přístupu k AuditBoard pou�
 
 V této části vytvoříte uživatele v AuditBoard jako Britta Simon. Práce s [tým podpory AuditBoard](mailto:support@auditboard.com) přidat uživatele na platformě AuditBoard. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

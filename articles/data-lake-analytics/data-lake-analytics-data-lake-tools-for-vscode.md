@@ -10,10 +10,10 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60508890"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Pomocí nástrojů Azure Data Lake pro Visual Studio Code
@@ -170,7 +170,7 @@ Pohodlnější způsob, jak spouštět **ADL: Registrace sestavení** příkaz j
 
 **Registrace přes ADL: Registrace sestavení (Upřesnit) příkaz**
 1.  Vyberte kombinaci kláves Ctrl + Shift + P otevřete paletu příkazů.
-2.  Zadejte **ADL: Registrace sestavení (rozšířené)**. 
+2.  Zadejte **ADL: Registrace sestavení (rozšířené)** . 
 3.  Zadejte cestu místní sestavení. 
 4.  Soubor JSON se zobrazí. Zkontrolujte a v případě potřeby upravit závislosti sestavení a parametry prostředku. Pokyny jsou zobrazeny v **výstup** okna. Aby bylo možné pokračovat k registraci sestavení, uložte (Ctrl + S) souboru JSON.
 
@@ -366,10 +366,10 @@ Je možné [monitorovat stav nahrávání](#check-storage-tasks-status).
 
 
 ### <a name="download-a-file"></a>Stažení souboru 
-Soubor můžete stáhnout pomocí příkazu **ADL: Stáhněte si soubor** nebo **ADL: Stáhněte si soubor (rozšířené)**.
+Soubor můžete stáhnout pomocí příkazu **ADL: Stáhněte si soubor** nebo **ADL: Stáhněte si soubor (rozšířené)** .
 
 **Stáhnout soubor přes ADL: Stáhněte si soubor (Upřesnit) – příkaz**
-1. Pravým tlačítkem myši na editor skriptů a pak vyberte **stáhnout soubor (Upřesnit)**.
+1. Pravým tlačítkem myši na editor skriptů a pak vyberte **stáhnout soubor (Upřesnit)** .
 2. VS Code zobrazí soubor JSON. Můžete zadat cesty k souborům a stáhnout více souborů najednou. Pokyny jsou zobrazeny v **výstup** okna. Přejděte na soubor nebo soubory stáhnout, uložte (Ctrl + S) souboru JSON.
 
     ![Soubor JSON s cestami ke stažení souboru](./media/data-lake-analytics-data-lake-tools-for-vscode/download-multi-files.png)
