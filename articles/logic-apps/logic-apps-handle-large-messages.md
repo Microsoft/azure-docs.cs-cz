@@ -128,7 +128,7 @@ Tyto kroky popisují podrobný postup, který Logic Apps se používá pro nahr�
    | Pole hlavičky odpovědi koncového bodu | Type | Povinné | Popis |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Ne | Velikost bloku navrhované dat v bajtech |
-   | **Umístění** | String | Ne | Adresa URL umístění kam má odesílat zprávy HTTP PATCH |
+   | **Location** | String | Ne | Adresa URL umístění kam má odesílat zprávy HTTP PATCH |
    ||||
 
 3. Aplikace logiky vytvoří a odešle zpracování zpráv HTTP PATCH - spolu tyto informace:

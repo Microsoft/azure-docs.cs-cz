@@ -1,6 +1,6 @@
 ---
 title: Knihovny ověřování platforma identit Microsoft | Dokumentace Microsoftu
-description: Kompatibilní klientské knihovny a server knihovny middleware a související knihovny, zdroje a odkazy na ukázky, pro koncový bod služby Microsoft identity platform.
+description: Kompatibilní klientské knihovny a server knihovny middleware, související knihovny, zdroje a odkazy na ukázky, pro koncový bod služby Microsoft identity platform.
 services: active-directory
 documentationcenter: ''
 author: negoe
@@ -18,21 +18,21 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19718dc884685f6c1e1a588eea6a5de36e446fb1
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bce6e7a491250c285fb0304d8da213450af2bdb2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545534"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055947"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Knihovny ověřování platforma identit Microsoft
 
-[Koncového bodu Microsoft identity platform](active-directory-v2-compare.md) podporuje standardních oborových protokolů OAuth 2.0 a OpenID Connect 1.0. Knihovna Microsoft Authentication Library (MSAL) je navržené pro práci s koncovým bodem Microsoft identity platform. Je také možné použít open source knihoven, které podporují OAuth 2.0 a OpenID Connect 1.0.
+[Koncového bodu Microsoft identity platform](active-directory-v2-compare.md) podporuje standardních oborových protokolů OAuth 2.0 a OpenID Connect 1.0. Knihovna Microsoft Authentication Library (MSAL) je navržené pro práci s koncovým bodem Microsoft identity platform. Můžete také použít open source knihoven, které podporují OAuth 2.0 a OpenID Connect 1.0.
 
-Doporučuje se, že používáte knihovny napsané pomocí protokolu odborníci, kteří provádějí Security Development Lifecycle (SDL) metody, jako je třeba [společností Microsoft a potom je][Microsoft-SDL]. Pokud se rozhodnete ručně kód pro protokoly, postupujte jako SDL od Microsoftu a platit podle zavřete pozornost informace o zabezpečení ve specifikacích standardy pro každý protokol metody.
+Doporučujeme používat knihovny napsané pomocí protokolu odborníci, kteří provádějí metodologie Security Development Lifecycle (SDL). Zahrnout tyto knihovny [ten, který Microsoft postupuje][Microsoft-SDL]. Pokud předáte kód pro protokoly, postupujte podle metodologie, jako je například Microsoft SDL. Zaměřte na aspekty zabezpečení specifikací standardy pro každý protokol.
 
 > [!NOTE]
-> Hledáte služby Azure AD authentication library (ADAL)? Rezervace [knihovnu ADAL průvodce](active-directory-authentication-libraries.md).
+> Chcete najít pro Azure Active Directory Authentication Library (ADAL)? Podívejte se [knihovnu ADAL průvodce](active-directory-authentication-libraries.md).
 
 ## <a name="types-of-libraries"></a>Typy knihoven
 
@@ -46,28 +46,28 @@ Koncový bod Microsoft identity platform pracuje se dvěma typy knihoven:
 Knihovny jsou ve dvou kategoriích podpory:
 
 * **Microsoft-supported**: Microsoft poskytuje opravy pro tyto knihovny a dokončení procesu SDL vypršení platnosti co nejopatrněji na těchto knihovnách.
-* **Kompatibilní**: Microsoft testovala tyto knihovny v základní scénáře a potvrdit, že při práci s Microsoft identity platform endpoint. Společnost Microsoft neposkytuje oprav pro tyto knihovny a přehled těchto knihoven, jako jednička. Problémy a žádosti o funkce směrovat do projektu open source knihovny.
+* **Kompatibilní**: Společnost Microsoft testovala tyto knihovny v základní scénáře a potvrdí, že při práci s Microsoft identity platform endpoint. Společnost Microsoft neposkytuje oprav pro tyto knihovny a přehled těchto knihoven, jako jednička. Problémy a žádosti o funkce směrovat do projektu open source knihovny.
 
-Seznam knihoven, které využívají službu Microsoft identity platform endpoint najdete v další části tohoto článku.
+Seznam knihoven, které využívají službu Microsoft identity platform endpoint najdete v následující části.
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft nepodporuje klientské knihovny
 
-Klientské knihovny pro ověřování se používají k získání tokenu volat chráněné webové rozhraní API
+Pomocí klientských knihoven ověřování k získání tokenu pro volání chráněného webového rozhraní API.
 
 | Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace | Koncepční doc | Plán |
-| --- | --- | --- | --- | --- | --- | --- | ---|
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referenční informace](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Koncepční dokumentace](msal-overview.md)| [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  [Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referenční informace](https://htmlpreview.github.io/? https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Koncepční dokumentace](msal-overview.md)| [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 |![Angular JS](media/sample-v2-code/logo_angular.png) | Knihovna MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
-![Úhlová](media/sample-v2-code/logo_angular.png) | MSAL Angular(Preview) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | KNIHOVNA MSAL .NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Aplikace klasické pracovní plochy](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#conceptual-documentation) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
-| ![Python](media/sample-v2-code/logo_python.png) | Knihovna MSAL Pythonu (Preview) | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
+![Úhlová](media/sample-v2-code/logo_angular.png) | Knihovna MSAL Angular (Preview) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
+| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Aplikace klasické pracovní plochy](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#conceptual-documentation) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
+| ![Python](media/sample-v2-code/logo_python.png) | Knihovna MSAL Pythonu (Preview) | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | Knihovna MSAL Java (Preview) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | | | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
 | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | Knihovna MSAL obj_c (Preview) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [aplikace pro iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift) |  |
 |![Android / Javu](media/sample-v2-code/logo_Android.png) | MSAL (Preview) | [Centrální úložiště](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Aplikace pro Android](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | | |
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>Server nepodporuje Microsoft middleware knihovny
 
-Middleware knihovny se používají k ochraně webových aplikací a webových rozhraní API. Pro webovou aplikaci nebo webové rozhraní API, napsané v ASP.NET nebo ASP.NET Core, jsou knihovny middleware použitý technologií ASP.NET nebo ASP.NET Core
+Použití middlewaru knihovny k ochraně webových aplikací a webových rozhraní API. Webové aplikace nebo webové rozhraní API napsaných pomocí technologie ASP.NET nebo ASP.NET Core pomocí knihoven middlewaru.
 
 | Platforma | Knihovna | Ke stažení | Zdrojový kód | Ukázka | Referenční informace
 | --- | --- | --- | --- | --- | --- |
@@ -79,21 +79,21 @@ Middleware knihovny se používají k ochraně webových aplikací a webových r
 
 | Platforma | Název knihovny | Otestované verze | Zdrojový kód | Ukázka |
 |:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | Verze 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Scribe Java](https://github.com/scribejava/scribejava) | [Verze 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Knihovna Gluu OpenID Connect](https://github.com/GluuFederation/oxAuth) | [Verze 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Knihovna Gluu OpenID Connect](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | [Verzi 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | [Klient openid](https://github.com/panva/node-openid-client) | [Verze 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [Klient openid](https://github.com/panva/node-openid-client) | |
 | ![PHP](media/sample-v2-code/logo_php.png) | [PHP ligy oauth2 klienta](https://github.com/thephpleague/oauth2-client) | [Verze 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1<br />omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | ![iOS](media/sample-v2-code/logo_iOS.png) ![Android](media/sample-v2-code/logo_Android.png) | [React Native ověřování aplikace](https://github.com/FormidableLabs/react-native-app-auth) | [Verze 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native ověřování aplikace](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Pro všechny kompatibilní se standardy knihovny můžete použít Microsoft identity platform koncový bod, proto je důležité vědět, kde lze získat podporu.
+Pro všechny kompatibilní se standardy knihovny můžete použít koncový bod Microsoft identity platform. Je důležité vědět, kam se obrátit pro podporu:
 
 * Pro problémy a žádostí o nové funkce v kódu knihovny obraťte se na vlastníka knihovny.
 * Pro problémy a žádostí o nové funkce v implementaci protokolu na straně služby získáte od Microsoftu.
-* [Soubor žádosti o funkci](https://feedback.azure.com/forums/169401-azure-active-directory) pro další funkce, které byste chtěli vidět v protokolu.
-* [Vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Pokud narazíte na problém, kde není kompatibilní s OAuth 2.0 nebo OpenID Connect 1.0 koncového bodu Microsoft identity platform.
+* [Soubor žádosti o funkci](https://feedback.azure.com/forums/169401-azure-active-directory) pro další funkce, které chcete zobrazit v protokolu.
+* [Vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Pokud narazíte na problém, kdy není kompatibilní s OAuth 2.0 nebo OpenID Connect 1.0 koncového bodu Microsoft identity platform.
 
 ## <a name="related-content"></a>Související obsah
 
