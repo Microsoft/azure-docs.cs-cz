@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60588794"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí nástroj pro modelování hrozeb
@@ -199,7 +199,7 @@ Jak je vidět na předchozím obrázku, můžete změnit informace generovaný n
 
 ![Vlastnosti před internetovými útoky](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)
 
-## <a name="reports"></a>Reports
+## <a name="reports"></a>Sestavy
 
 Po změně priority a aktualizuje se stav každé vygenerované hrozeb můžete soubor uložit nebo vytisknout sestavu. Přejděte na **sestavy** > **vytvořit úplnou sestavu**. Název sestavy a by měl vypadat podobně jako na následujícím obrázku:
 

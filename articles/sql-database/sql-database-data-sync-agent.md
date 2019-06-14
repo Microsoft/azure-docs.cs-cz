@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: adb8917605a00208b328e7fd15f96d28c7838988
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60201643"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro synchronizaci dat Azure SQL
@@ -26,7 +26,7 @@ Synchronizace dat s místní databází SQL serveru z hlediska instalace a konfi
 > [!IMPORTANT]
 > Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
-## <a name="download-and-install"></a>Stáhnout a nainstalovat
+## <a name="download-and-install"></a>Stažení a instalace
 
 Chcete-li stáhnout agenta synchronizace dat, přejděte na [agenta synchronizace dat SQL Azure](https://www.microsoft.com/download/details.aspx?id=27693).
 
@@ -157,7 +157,7 @@ Zjistíte, zda není spuštěn agent na počítači, který je hostitelem systé
   1. Na **vlastnosti agenta synchronizace dat SQL**, vyberte **přihlášení** kartu.
   1. V **heslo** pole, zadejte své heslo.
   1. V **Potvrdit heslo** pole, zadejte znovu své heslo.
-  1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
+  1. Vyberte **použít**a pak vyberte **OK**.
   1. V **služby** okna, klikněte pravým tlačítkem na **agenta synchronizace dat SQL** služby a potom klikněte na tlačítko **Start**.
   1. Zavřít **služby** okna.
 

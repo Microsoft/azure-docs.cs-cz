@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d9e30bb8b31939b14d347369bbe88e23fcec49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778250"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050521"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivně vytvářet dotazy do seznamu prostředků služby Batch
 
@@ -80,7 +80,7 @@ Vyberte řetězec omezuje hodnoty vlastností, které pro každou položku jsou 
 * Vyberte řetězec se skládá z čárkou oddělený seznam názvů vlastností. Můžete určit kterékoli z vlastnosti pro typ entity, který se dotazuje.
 * Tento příklad vyberte řetězec Určuje, že má být vrácen pouze tři hodnoty vlastností pro každou úlohu: `id, state, stateTransitionTime`.
 
-### <a name="expand"></a>Rozbalit
+### <a name="expand"></a>Expand
 Řetězec rozbalení snižuje počet volání rozhraní API, které jsou nutné k získání určitých informací. Při použití jako řetězec rozbalení lze získat další informace o jednotlivých položkách pomocí jediného volání rozhraní API. Místo první získání seznamu entit, pak požaduje informace pro každou položku v seznamu, použijte řetězec rozbalení získat stejné informace v jednom volání rozhraní API. Méně volání rozhraní API znamená vyšší výkon.
 
 * Podobně jako když vyberte řetězec, řetězec rozbalení řídí, jestli je určitá data součástí seznamu výsledků dotazu.
@@ -89,7 +89,7 @@ Vyberte řetězec omezuje hodnoty vlastností, které pro každou položku jsou 
 * V tomto příkladu rozbalte položku řetězec Určuje, zda má být vrácen statistické informace pro každou položku v seznamu: `stats`.
 
 > [!NOTE]
-> Při vytváření jakýkoli z typů řetězec tři dotazu (filtrování, vyberte a rozbalte), musíte zajistit, že názvy vlastností a případ odpovídat jejich protějšky element rozhraní REST API. Například při práci s .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [ CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state). Najdete v následujících tabulkách pro mapování vlastností mezi .NET a rozhraní REST API.
+> Při vytváření jakýkoli z typů řetězec tři dotazu (filtrování, vyberte a rozbalte), musíte zajistit, že názvy vlastností a případ odpovídat jejich protějšky element rozhraní REST API. Například při práci s .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [ CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). Najdete v následujících tabulkách pro mapování vlastností mezi .NET a rozhraní REST API.
 > 
 > 
 
@@ -110,7 +110,7 @@ V rámci [Batch .NET] [ api_net] rozhraní API, [ODATADetailLevel] [ odata] tř�
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Zadejte každou položku jsou vráceny hodnot vlastností.
 * [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: Načíst data pro všechny položky v jednom volání rozhraní API namísto samostatné volání pro každou položku.
 
-Následující fragment kódu používá rozhraní Batch .NET API pro efektivní dotazy pro statistiku konkrétní sadu fondů služby Batch. V tomto scénáři má uživatel Batch testovacích i produkčních fondy. Test fondu identifikátorů mají předponu "test" a produkční fondu identifikátorů mají předponu "produkční". V tomto fragmentu kódu *myBatchClient* je správně inicializována instancí [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) třídy.
+Následující fragment kódu používá rozhraní Batch .NET API pro efektivní dotazy pro statistiku konkrétní sadu fondů služby Batch. V tomto scénáři má uživatel Batch testovacích i produkčních fondy. Test fondu identifikátorů mají předponu "test" a produkční fondu identifikátorů mají předponu "produkční". V tomto fragmentu kódu *myBatchClient* je správně inicializována instancí [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) třídy.
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Instance [ODATADetailLevel] [ odata] , který je nakonfigurovaný s vybranými a klauzule Expand může také být předán odpovídající metody Get, například [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), Chcete-li omezit množství dat, která je vrácena.
+> Instance [ODATADetailLevel] [ odata] , který je nakonfigurovaný s vybranými a klauzule Expand může také být předán odpovídající metody Get, například [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__), Chcete-li omezit množství dat, která je vrácena.
 > 
 > 
 

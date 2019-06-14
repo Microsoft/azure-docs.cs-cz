@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: d0a7199ff0e9cb17c3fbc179a9b37a6620f521f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544666"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
@@ -28,10 +28,10 @@ Spravujte repliky, které patří do oddílů služby.
 
 |Příkaz|Popis|
 | --- | --- |
-| nasazení | Načte podrobnosti repliky, které jsou nasazené na uzlu Service Fabricu. |
-| nasazení seznamu | Získá seznam replikami nasazenými na uzlu Service Fabric. |
-| zdravotnictví | Získá stav repliky stavové služby Service Fabric nebo instance bezstavové služby. |
-| informace | Získá informace o repliky oddílu Service Fabric. |
+| deployed | Načte podrobnosti repliky, které jsou nasazené na uzlu Service Fabricu. |
+| deployed-list | Získá seznam replikami nasazenými na uzlu Service Fabric. |
+| health | Získá stav repliky stavové služby Service Fabric nebo instance bezstavové služby. |
+| info | Získá informace o repliky oddílu Service Fabric. |
 | list | Získá informace o replikách oddílu služby Service Fabric. |
 | odebrat | Odstraní repliku služby běží na uzlu. |
 | report-health | Odešle zprávu o stavu v replice Service Fabric. |

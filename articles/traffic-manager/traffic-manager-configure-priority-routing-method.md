@@ -3,20 +3,21 @@ title: Konfigurace metody směrování priority provozu pomocí Azure Traffic Ma
 description: Tento článek vysvětluje postup konfigurace metody prioritního směrování provozu Traffic Manageru
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: 66c5bd9390d6fe0f26af66e18aed22c07a7da3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 259457a604727cba6e6964851ec4fcf4b13a20a6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60883991"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048483"
 ---
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu priority v Traffic Manageru
 
@@ -33,7 +34,7 @@ Běžným vzorem pro převzetí služeb při selhání je k posílání provozu 
     1. Pro **nastavení metodu směrování provozu**, ověřte, zda je metodu směrování provozu **Priority**. Pokud není, klikněte na tlačítko **Priority** z rozevíracího seznamu.
     2. Nastavte **nastavení sledování koncových bodů** shodné pro všechny každý koncový bod v rámci tohoto profilu následujícím způsobem:
         1. Vyberte příslušné **protokol**a zadejte **Port** číslo. 
-        2. Pro **cesta** zadejte lomítkem */*. Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
+        2. Pro **cesta** zadejte lomítkem */* . Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
         3. V horní části stránky klikněte na tlačítko **Uložit**.
 5. V **nastavení** klikněte na tlačítko **koncové body**.
 6. V **koncové body** okno, zkontrolujte pořadí priorit pro vaše koncové body. Když vyberete **Priority** metodu směrování provozu, pořadí otázek vybraných koncových bodů. Zkontrolujte pořadí podle priority koncových bodů.  Primární koncový bod je v horní části. Zkontrolujte v pořadí, ve kterém se zobrazí. všechny požadavky budou směrovat na první koncový bod a být není v pořádku, pokud se Traffic Manager zjistí, provoz automaticky převezme služby při selhání na další koncový bod. 

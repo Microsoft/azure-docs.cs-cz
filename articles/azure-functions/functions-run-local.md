@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 3c8d64f34f01e4339b27bdeba455fac143ad53ff
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 6c0732b33608105009eda9bba2e4970e8e12e652
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241160"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050575"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -173,7 +173,7 @@ Další informace najdete v tématu [aktivace Azure Functions a vazby koncepty](
 
 ## <a name="local-settings-file"></a>Soubor místního nastavení
 
-Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetězců a nastavení pro Azure Functions Core Tools. Nastavení v souboru local.settings.json používají pouze pomocí nástrojů funkce při místním spuštění. Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Všimněte si, že hodnoty v **ConnectionStrings** se nikdy publikováno. Soubor má následující strukturu:
+Soubor local.settings.json ukládá nastavení aplikace, připojovacích řetězců a nastavení pro Azure Functions Core Tools. Nastavení v souboru local.settings.json používají pouze pomocí nástrojů funkce při místním spuštění. Ve výchozím nastavení se nemigrují automaticky při publikování projektu do Azure. Použití `--publish-local-settings` přepnout [při publikování](#publish) k Ujistěte se, že tato nastavení jsou přidány do aplikace function app v Azure. Hodnoty v **ConnectionStrings** se nikdy publikováno. Soubor má následující strukturu:
 
 ```json
 {
@@ -419,43 +419,37 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Publikování do Azure
 
-Základní nástroje podporuje dva typy nasazení, nasazení soubory projektu funkce přímo do aplikace function app a nasazením vlastního kontejneru Linuxu, který je podporován pouze ve verzi 2.x. Musíte mít již [vytvoří aplikaci funkcí ve vašem předplatném Azure](functions-cli-samples.md#create).
+Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů projektu funkce přímo na aplikaci funkcí přes [Zip nasaďte](functions-deployment-technologies.md#zip-deploy) a [nasazením vlastního kontejneru Dockeru](functions-deployment-technologies.md#docker-container). Musíte mít již [vytvoří aplikaci funkcí ve vašem předplatném Azure](functions-cli-samples.md#create), do které budete nasazovat kód. Projekty, které vyžadují kompilace by měly být sestaveny tak, aby binární soubory je možné nasadit.
 
-Ve verzi 2.x, musíte mít [zaregistrovaný rozšíření](#register-extensions) ve vašem projektu před publikováním. Projekty, které vyžadují kompilace by měly být sestaveny tak, aby binární soubory je možné nasadit.
+### <a name="project-file-deployment"></a>Nasazení (soubory projektu)
 
-### <a name="project-file-deployment"></a>Nasazení souboru projektu
-
-Nejběžnější metoda nasazení zahrnuje použití základní nástroje pro balení projektu aplikace funkcí, binární soubory a závislosti a nasadit balíček do vaší aplikace function app. Volitelně můžete [spustit přímo z balíčku pro nasazení vašich funkcí](run-functions-from-deployment-package.md).
-
-Chcete-li publikovat projekt Functions do aplikace function app v Azure, použijte `publish` příkaz:
+Chcete-li publikovat místní kódu do aplikace function app v Azure, použijte `publish` příkaz:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Tento příkaz publikuje do existující aplikaci function app v Azure. Dojde k chybě při `<FunctionAppName>` neexistuje ve vašem předplatném. Zjistěte, jak vytvořit aplikaci function app z příkazového řádku nebo v okně terminálu pomocí Azure CLI, najdete v článku [vytvoření aplikace funkcí pro provádění bez serveru](./scripts/functions-cli-create-serverless.md).
-
-`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory lokálně, `publish` příkaz neodstranila z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [Azure Portal].
+Tento příkaz publikuje do existující aplikaci function app v Azure. Budete dojde k chybě při pokusu publikovat `<FunctionAppName>` , který neexistuje v rámci vašeho předplatného. Zjistěte, jak vytvořit aplikaci function app z příkazového řádku nebo v okně terminálu pomocí Azure CLI, najdete v článku [vytvoření aplikace funkcí pro provádění bez serveru](./scripts/functions-cli-create-serverless.md). Ve výchozím nastavení, tento příkaz povolí svoji aplikaci spouštět [spustit z balíčku](run-functions-from-deployment-package.md) režimu.
 
 >[!IMPORTANT]
 > Když vytvoříte aplikaci function app na webu Azure Portal, používá verzi 2.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 1.x modulu runtime, postupujte podle pokynů v [spustit ve verzi 1.x](functions-versions.md#creating-1x-apps).
 > Nelze změnit verzi modulu runtime aplikace function App, který má existující funkce.
 
-Následující projekt publikovat možnosti platí pro verze, 1.x a 2.x:
+Tyto možnosti publikovat platí pro verze, 1.x a 2.x:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Nastavení publikování v local.settings.json do Azure, s výzvou k přepsání, pokud nastavení už existuje. Pokud používáte emulátor úložiště, můžete změnit nastavení aplikace, které chcete [skutečného úložiště připojení](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | Potlačit výzva k nastavení aplikace přepsat při `--publish-local-settings -i` se používá.|
 
-Následující projekt možnosti publikování jsou podporovány pouze ve verzi 2.x:
+Následující možnosti publikování jsou podporovány pouze ve verzi 2.x:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only -o`** |  Pouze nastavení publikování a přejít obsah. Výchozí hodnota je prompt. |
 |**`--list-ignored-files`** | Zobrazí seznam souborů, které jsou během publikování, který je založen na souboru .funcignore ignorován. |
 | **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, který je založen na souboru .funcignore. |
-| **`--nozip`** | Výchozí hodnota se změní `Run-From-Zip` režimu vypnout. |
+| **`--nozip`** | Výchozí hodnota se změní `Run-From-Package` režimu vypnout. |
 | **`--build-native-deps`** | Aplikace function přeskočí .wheels složky při publikování pythonu. |
 | **`--additional-packages`** | Seznam balíčků, které mají nainstalovat při sestavování nativních závislosti. Například: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorujte předem publikování ověřování v některých scénářích. |
@@ -463,9 +457,9 @@ Následující projekt možnosti publikování jsou podporovány pouze ve verzi 
 | **`--no-build`** | Přeskočit sestavení dotnet funkce. |
 | **`--dotnet-cli-params`** | Při publikování zkompilován funkcí jazyka C# (.csproj), základní nástroje volá 'dotnet build--bin/publikovat výstup'. Všechny parametry předané tomuto se připojí k příkazovému řádku. |
 
-### <a name="custom-container-deployment"></a>Nasazení vlastního kontejneru
+### <a name="deployment-custom-container"></a>Nasazení (vlastního kontejneru)
 
-Funkce vám umožní nasadit projekt funkcí do vlastního kontejneru Linuxu. Další informace najdete v tématu [vytvoření funkce v Linuxu pomocí vlastní image](functions-create-function-linux-custom-image.md). Verze 2.x Core Tools podporuje nasazením vlastního kontejneru. Soubor Dockerfile musí mít vlastní kontejnery. Pomocí možnosti--soubor dockerfile v `func init`.
+Služba Azure Functions vám umožní nasadit projekt funkcí v [vlastního kontejneru Dockeru](functions-deployment-technologies.md#docker-container). Další informace najdete v tématu [vytvoření funkce v Linuxu pomocí vlastní image](functions-create-function-linux-custom-image.md). Soubor Dockerfile musí mít vlastní kontejnery. K vytvoření aplikace pomocí souboru Dockerfile, použijte možnost--soubor dockerfile v `func init`.
 
 ```bash
 func deploy

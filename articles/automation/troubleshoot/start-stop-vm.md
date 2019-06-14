@@ -10,10 +10,10 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60578993"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Řešení potíží s spuštění/zastavení virtuálních počítačů během vypnutí hodin řešení

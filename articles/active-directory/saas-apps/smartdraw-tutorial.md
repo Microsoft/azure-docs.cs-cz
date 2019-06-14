@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d811cd69185e77f50749fc48974dee684fb7cfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a2322636aab2e0f38e29063d958cb670b5e062f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65744707"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>Kurz: Integrace Azure Active Directory s SmartDraw
 
@@ -55,7 +55,7 @@ Konfigurace integrace SmartDraw do služby Azure AD, budete muset přidat SmartD
 
 **Chcete-li přidat SmartDraw z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SmartDraw, proveďte násle
     > [!NOTE]
     > Hodnota přihlašovací adresa URL není skutečný. Hodnota přihlašovací adresa URL bude aktualizován skutečné přihlašovací adresa URL, který je vysvětlen později v tomto kurzu. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-6. SmartDraw aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
+6. SmartDraw aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikony otevřete **atributy uživatele** dialogového okna.
 
     ![image](common/edit-attribute.png)
 
@@ -126,7 +126,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SmartDraw, proveďte násle
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail | user.mail |
+    | Email | user.mail |
     | Skupiny | user.groups |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -175,13 +175,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s SmartDraw, proveďte násle
 
     a. V **vaše doména (třeba acme.com)** textového pole zadejte vaši doménu.
 
-    b. Kopírovat **vaše SP iniciované přihlašovací adresa Url bude** pro vaši instanci a vložte ho do textového pole přihlašovací adresu URL v **základní konfiguraci SAML** na portálu Azure portal.
+    b. Kopírovat **vaše SP iniciované přihlašovací adresa Url bude** pro vaši instanci a vložte ho do textového pole přihlašovací adresu URL v **základní konfiguraci SAML** na portálu Azure portal.
     
     c. V **skupiny zabezpečení pro povolení přístupu k SmartDraw** textové pole, typ **Everyone**.
 
     d. V **vaše adresa Url vystavitele SAML** textového pole vložte hodnotu **Azure AD identifikátor** který jste zkopírovali z portálu Azure portal.
 
-    e. V poznámkovém bloku otevřete soubor metadat XML, který jste stáhli z portálu Azure portal, zkopírujte jeho obsah a vložte jej do **vaše MetaData SAML** pole.
+    e. V poznámkovém bloku otevřete soubor metadat XML, který jste stáhli z portálu Azure portal, zkopírujte jeho obsah a vložte jej do **vaše MetaData SAML** pole.
 
     f. Klikněte na tlačítko **uložit konfiguraci** 
 
@@ -240,7 +240,7 @@ V této části je povolit Britta Simon k udělení přístupu k SmartDraw použ
 
 V této části se vytvoří uživateli Britta Simon v SmartDraw. SmartDraw podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi SmartDraw, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

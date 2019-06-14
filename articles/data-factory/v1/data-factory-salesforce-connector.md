@@ -14,14 +14,14 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60309142"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat pomocí služby Azure Data Factory ze služby Salesforce
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-salesforce-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-salesforce.md)
 
@@ -286,24 +286,24 @@ Zobrazit [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezna
 
 | Typ Salesforce | . NET podle typu |
 | --- | --- |
-| Automatické číslo |String |
-| Zaškrtávací políčko |Boolean |
+| Auto Number |String |
+| Checkbox |Boolean |
 | Měna |Decimal |
 | Datum |DateTime |
 | Datum a čas |DateTime |
 | Email |String |
 | ID |String |
-| Relaci vyhledávání |String |
-| Vyberte rozevírací seznam |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
 | Číslo |Decimal |
 | Procento |Decimal |
 | Telefon |String |
-| Rozevírací seznam |String |
+| Picklist |String |
 | Text |String |
-| Textové pole |String |
-| Textová oblast (dlouhý) |String |
-| Textové pole (RTF) |String |
-| Text (zašifrovaný) |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
 | zprostředkovatele identity |String |
 
 > [!NOTE]

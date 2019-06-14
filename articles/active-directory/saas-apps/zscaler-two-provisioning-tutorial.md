@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 837014fde6962f64d7da023a001a4c41089a0097
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "67049419"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Kurz: Konfigurace dvou Zscalerem pro automatické zřizování uživatelů
 

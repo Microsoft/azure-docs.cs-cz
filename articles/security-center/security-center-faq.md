@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: de652f508f6946219627b3a3d51b148cbee58dbf
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 300d96a792663a32a326d5d01f281b77ccf9c4bf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966861"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050509"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -126,8 +126,10 @@ Další informace najdete v tématu [automatické zřizování v případech dř
 
 ### Co můžu měli agenta Microsoft Monitoring Agent je nainstalovaný přímo na počítači, ale ne jako rozšíření (přímý Agent)?<a name="directagentinstalled"></a>
 Pokud agenta Microsoft Monitoring Agent je nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center nainstaluje rozšíření Microsoft Monitoring Agent a upgradovat Microsoft Monitoring agent na nejnovější verzi.
-Nainstalovaného agenta bude dále generovat sestavy na jeho už nakonfigurovaných pracovních prostorech a kromě toho budou hlásit do pracovního prostoru nakonfigurované ve službě Security Center (vícenásobné navádění je podporována).
+Nainstalovaného agenta bude dále generovat sestavy na jeho už nakonfigurovaných pracovních prostorech a kromě toho budou hlásit do pracovního prostoru nakonfigurované ve službě Security Center (vícenásobné navádění je podporované na počítačích s Windows).
 Pokud má konfigurovaný pracovní prostor je uživatel pracovní prostor (není Security Center výchozího pracovního prostoru), budete muset nainstalovat "zabezpečení /"SecurityCenterFree"řešení v něm pro Security Center spuštění zpracování událostí z virtuálních počítačů a počítačů odesílajících sestavy do, který pracovní prostor.
+
+Pro počítače s Linuxem, vícenásobné navádění Agent ještě není podporováno – proto, pokud je nalezena existující instalace agenta, nedojde, automatické zřizování a konfiguraci počítače se nezmění.
 
 Pro existující počítače v předplatných připojili ke službě Security Center před 2019-03-17, když bude zjištěna existujícího agenta, nenainstalují se rozšíření Microsoft Monitoring Agent a nebude mít vliv počítače. Tyto počítače naleznete v tématu "Vyřešit problémy se stavem agenta na počítačích monitorování" doporučení k vyřešení problémů s instalací agenta na těchto počítačích
 

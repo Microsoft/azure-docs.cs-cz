@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ce57aae1119261c0545b59a037226fdc12ec115f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050668"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Nepřetržité doručování pomocí Azure DevOps
 
@@ -36,9 +36,7 @@ Jednotlivé jazyky mají konkrétní sestavení kroky k vytvoření nasazení ar
 Podle následující ukázky můžete použít k vytvoření souboru YAML k sestavení aplikace .NET.
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: 'VS2017-Win2016'
 steps:
 - script: |
@@ -69,9 +67,7 @@ steps:
 Podle následující ukázky můžete použít k vytvoření souboru YAML k sestavení aplikace JavaScript:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04 # Use 'VS2017-Win2016' if you have Windows native +Node modules
 steps:
 - bash: |
@@ -99,9 +95,7 @@ steps:
 Podle následující ukázky můžete použít k vytvoření souboru YAML k sestavení aplikace v Pythonu, Python je podporována pouze pro Linux Azure Functions:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
@@ -118,6 +112,25 @@ steps:
     source worker_venv/bin/activate
     pip3.6 install setuptools
     pip3.6 install -r requirements.txt
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    name: 'drop'
+```
+#### <a name="powershell"></a>PowerShell
+
+Podle následující ukázky můžete použít k vytvoření souboru YAML Powershellu aplikaci zabalit, se podporuje jenom prostředí PowerShell pro službu Windows Azure Functions:
+
+```yaml
+pool:
+      vmImage: 'VS2017-Win2016'
+steps:
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
@@ -175,6 +188,10 @@ Po dokončení konfigurace zdrojového kódu, vyhledávání šablon sestavení 
 
 ![Služba Azure Functions šablony sestavení](media/functions-how-to-azure-devops/build-templates.png)
 
+V některých případech se artefakty sestavení konkrétní složky struktura a je potřeba zkontrolovat **název kořenové složky Prepend cesty k archivu** možnost.
+
+![Předřaďte kořenovou složku](media/functions-how-to-azure-devops/prepend-root-folder.png)
+
 #### <a name="javascript-apps"></a>Aplikace jazyka JavaScript
 
 Pokud vaše aplikace jazyka JavaScript jsou závislé na nativní moduly Windows, musíte aktualizovat:
@@ -182,10 +199,6 @@ Pokud vaše aplikace jazyka JavaScript jsou závislé na nativní moduly Windows
 - Fond agentů se verze **hostované VS2017**
 
   ![Změna agenta sestavení operačního systému](media/functions-how-to-azure-devops/change-agent.png)
-
-- Skript v **vytvářet rozšíření** krok v šabloně `IF EXIST *.csproj dotnet build extensions.csproj --output ./bin`
-
-  ![Skript změn](media/functions-how-to-azure-devops/change-script.png)
 
 ### <a name="deploy-your-app"></a>Nasazení vaší aplikace
 
@@ -206,7 +219,7 @@ Předpoklady pro tento příkaz v závislosti na umístění kódu:
 
     - Máte oprávnění k vytváření osobního přístupového tokenu Githubu s dostatečnými oprávněními. [Požadavky na oprávnění token PAT Githubu.](https://aka.ms/azure-devops-source-repos)
 
-    - Nemáte oprávnění k potvrzení změn do hlavní větve ve vašem úložišti GitHub pro potvrzení automaticky generovaný soubor YAML.
+    - Nemáte oprávnění k potvrzení změn do hlavní větve ve vašem úložišti GitHub pro potvrzení automaticky vygenerovaný soubor YAML.
 
 - Pokud je váš kód v úložišti Azure:
 
