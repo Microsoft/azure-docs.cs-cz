@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023873"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Způsob vytvoření odkazu poznámky v dovedností kognitivního vyhledávání
@@ -28,7 +28,7 @@ Příklady v tomto článku jsou založeny na *obsah* pole automaticky vygenerov
 
 Před kontrola syntaxe, Vraťme se k pár důležitých konceptů k lepšímu pochopení příkladů uvedených dále v tomto článku.
 
-| Označení | Popis |
+| Termín | Popis |
 |------|-------------|
 | Bohatších možností dokumentu | Dokument bohatších možností je vnitřní struktury vytvoří a použije k uložení všechny poznámky související s dokumentem. Dokument bohatších možností můžete představit jako strom poznámky. Obecně platí anotaci vytvořené z předchozí poznámce se změní na podřízenou.<p/>Bohatších možností dokumenty existovat pouze po dobu trvání využití jeho dovedností. Jakmile obsah je mapován na index vyhledávání, se už nepotřebuje bohatších možností dokumentu. I když jste nespolupracují s bohatších možností dokumenty přímo, je užitečné mít myšlenkový model pro dokumenty, při vytváření dovedností. |
 | Rozšíření kontextu | Kontext, ve kterém obohacení probíhá, z hlediska, který je element rozšiřují. Ve výchozím nastavení, rozšíření kontextu je na `"/document"` úroveň, omezená na jednotlivé dokumenty. Když konkrétní dovednosti běží, výstupy dovednosti, stane [vlastnosti definované kontextu](#example-2).|

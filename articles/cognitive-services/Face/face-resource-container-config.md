@@ -3,20 +3,20 @@ title: Konfigurace kontejnerů
 titlesuffix: Face - Azure Cognitive Services
 description: Nastavení konfigurace pro kontejnery.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: d30c2218fe20d6b760f379caf52ca0bf97e1c750
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071495"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurace kontejnery Dockeru pro rozpoznávání tváře
 
@@ -122,9 +122,9 @@ Kontejnery pro rozpoznávání tváře nepoužívejte vstup nebo výstup připoj
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](face-how-to-install-containers.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Název | Typ dat | Popis |
+|Nepovinné| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | String | Kontejnery pro rozpoznávání tváře Nepoužívejte toto.|
+|Nepovoleno| `Input` | String | Kontejnery pro rozpoznávání tváře Nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 

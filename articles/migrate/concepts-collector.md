@@ -8,10 +8,10 @@ ms.date: 05/31/2019
 ms.author: snehaa
 services: azure-migrate
 ms.openlocfilehash: 865e0679ed05823d115baeb9eea3c01d7fb5f2a5
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66428475"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
@@ -214,7 +214,7 @@ Podrobnosti síťového adaptéru (pro síťové rozhraní) | Adresy protokolu I
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | IPv6 adresy | virtuální počítač. Guest.Net
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | MB za sekundu propustnost čtení | net.received.average
 Podrobnosti síťového adaptéru (pro síťové rozhraní) | MB za sekundu propustnosti zápisu | net.transmitted.average
-Podrobnosti o cestě inventáře | Název | container.GetType().Name
+Podrobnosti o cestě inventáře | Name | container.GetType().Name
 Podrobnosti o cestě inventáře | Typ podřízený objekt | container.ChildType
 Podrobnosti o cestě inventáře | Podrobné referenční informace | container.MoRef
 Podrobnosti o cestě inventáře | Cesta úplnou inventarizaci. | kontejner. Název s úplnou cestu

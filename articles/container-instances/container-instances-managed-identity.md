@@ -9,10 +9,10 @@ ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152326"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravované identity s Azure Container Instances
@@ -170,7 +170,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Teď pomocí přístupového tokenu pro ověření do služby Key Vault a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL (*https://mykeyvault.vault.azure.net/...*):
+Teď pomocí přístupového tokenu pro ověření do služby Key Vault a čtení tajného klíče. Nezapomeňte nahradit název trezoru klíčů v adrese URL ( *https://mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

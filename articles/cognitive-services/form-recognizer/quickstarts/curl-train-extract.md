@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: aed18cd33078d6af65e749cf9dd4950087b6b72c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063900"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API pomocí cURL
 
@@ -52,7 +52,7 @@ Nejprve budete potřebovat sadu trénovacích dat v objektu blob služby Azure S
 K natrénování modelu Rozlišovač formuláře pomocí dokumenty v kontejnerech objektů blob v Azure, zavolejte **trénování** rozhraní API pomocí příkazu cURL, který následuje. Před spuštěním příkazu, proveďte následující změny:
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
-1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data.  
+1. Nahraďte `<SAS URL>` s kontejnerem objektů Blob v Azure storage, sdílený přístup k adrese URL podpisu (SAS) umístění trénovací data. (Získat adresu SAS URL kliknutím sdíleného přístupového podpisu v nabídce nastavení v účtu úložiště a "vygenerovat SAS a připojovací řetězec". Tím se zobrazí adresa URL SAS služby Blob service. Upravit tuto adresu url tak, že přidáte containername po .net / a před? sv = v adrese url, třeba:.blob.core.windows.net/ < name_of_your_container > /? sv =... Toto je adresu URL SAS, pokud má být použit.)
 1. Nahraďte `<subscription key>` s klíči předplatného jste zkopírovali v předchozím kroku.
 
 ```bash
@@ -108,7 +108,7 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali váš klíč předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
 1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
-1. Nahraďte `<path to your form>` s cestou k souboru formuláře. Například c:\temp\file.pdf. 
+1. Nahraďte `<path to your form>` s cestou k souboru (například C:\temp\file.pdf) formuláře.
 1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
 

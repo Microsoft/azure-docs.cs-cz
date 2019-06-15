@@ -10,10 +10,10 @@ ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60308700"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Škálování oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
@@ -29,7 +29,7 @@ Použití méně výsledků SUs v proporcionálně snížení nákladů. Účtov
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: repliky a oddíly
 Repliky a oddíly, které jsou primární zdroje, které zálohují vyhledávací službu.
 
-| Prostředek | Definice |
+| Resource | Definice |
 |----------|------------|
 |*Oddíly* | Poskytuje index úložiště a vstupně-výstupních operací pro operace čtení a zápisu (například, když znovu sestavit nebo aktualizovat index).|
 |*Repliky* | Instance z vyhledávací služby, které se používají především pro operace dotazů Vyrovnávání zatížení. Každá replika vždy hostuje jedna kopie indexu. Pokud máte 12 repliky, budete mít 12 zkopíruje každý index načíst služby.|

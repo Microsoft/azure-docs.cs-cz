@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ec322758a3c3b83e7b24cfba37daaec02fc4c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Kurz: Integrace Azure Active Directory s Igloo softwaru
 
@@ -54,7 +54,7 @@ Konfigurace integrace Igloo softwaru do služby Azure AD, budete muset přidat I
 
 **Chcete-li přidat Igloo softwaru z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -179,7 +179,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Igloo softwaru, proveďte n
 
     a. Jako **vytvoření uživatele na přihlašovací**vyberte **vytvořte nového uživatele ve vaší lokalitě při přihlášení**.
 
-    b. Jako **nastavení přihlášení**vyberte **SAML použijte tlačítko na obrazovce "Sign in"**.
+    b. Jako **nastavení přihlášení**vyberte **SAML použijte tlačítko na obrazovce "Sign in"** .
 
     c. Klikněte na **Uložit**.
 

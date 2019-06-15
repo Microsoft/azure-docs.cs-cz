@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289911"
 ---
 # <a name="start-using-pim"></a>Zahájení práce s využitím PIM
@@ -64,11 +64,11 @@ Pokud chcete začít používat PIM ve vašem adresáři, musíte nejprve povoli
 
 1. Je-li další informace jsou nezbytné k ověření, provedeme vás procesem. Další informace najdete v tématu [potřebujete pomoc s dvoustupňovým ověřováním](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![Musí se zadat další informace](./media/pim-getting-started/more-information-required.png)
+    ![Další informace požadované](./media/pim-getting-started/more-information-required.png)
 
     Například může být požádáni o zadání ověření pomocí telefonu.
 
-    ![Ověření pro další úroveň zabezpečení](./media/pim-getting-started/additional-security-verification.png)
+    ![Další ověření zabezpečení](./media/pim-getting-started/additional-security-verification.png)
 
 1. Po dokončení procesu ověřování, klikněte na tlačítko **souhlas** tlačítko.
 

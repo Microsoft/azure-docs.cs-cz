@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7993ee1cb439ebeaa9f64bee55429aa54f9cee
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Kurz: Integrace Azure Active Directory s řešení SAP Fiori
 
@@ -193,7 +193,7 @@ V této části nakonfigurujete služby Azure AD jednotné přihlašování pomo
 
     1. Vyberte **upravit** otevřít **spravovat deklarace identity uživatelů** podokně.
 
-    1. V **transformace** seznamu vyberte **ExtractMailPrefix()**.
+    1. V **transformace** seznamu vyberte **ExtractMailPrefix()** .
 
     1. V **parametr 1** seznamu vyberte **user.userprinicipalname**.
 
@@ -272,7 +272,7 @@ V této části nakonfigurujete služby Azure AD jednotné přihlašování pomo
 
     **Scénář 1**: Uživatel systému SAP pro mapování uživatele Azure AD
 
-    1. V SAPU v rámci **podrobnosti o formátu NameID "Neuvedeno"**, poznamenejte si podrobnosti:
+    1. V SAPU v rámci **podrobnosti o formátu NameID "Neuvedeno"** , poznamenejte si podrobnosti:
 
         ![Pole "Neurčené" dialogové okno Podrobnosti o formátu NameID v SAP](./media/sapfiori-tutorial/nameiddetails.png)
 
@@ -282,7 +282,7 @@ V této části nakonfigurujete služby Azure AD jednotné přihlašování pomo
 
     **Scénář 2**: Vyberte nakonfigurovaný e-mailovou adresu v SU01 podle ID uživatele SAP. ID e-mailu v tomto případě byste měli nakonfigurovat v SU01 pro každý uživatel, který vyžaduje jednotného přihlašování.
 
-    1.  V SAPU v rámci **podrobnosti o formátu NameID "Neuvedeno"**, poznamenejte si podrobnosti:
+    1.  V SAPU v rámci **podrobnosti o formátu NameID "Neuvedeno"** , poznamenejte si podrobnosti:
 
         ![Pole "Neurčené" dialogové okno Podrobnosti o formátu NameID v SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
 
@@ -314,7 +314,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >**. Například **brittasimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >** . Například **brittasimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište hodnotu, která se zobrazí **heslo** pole.
 
@@ -352,7 +352,7 @@ V této části udělíte přístup Britta Simon na řešení SAP Fiori, které 
 
 V této části vytvoříte uživatele s názvem Britta Simon v řešení SAP Fiori. Spolupracovat s týmem SAP interní odborníci nebo váš partner SAP organizace přidat uživatele na platformě řešení SAP Fiori.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 1. Po aktivaci služby Azure AD zprostředkovatele identity v řešení SAP Fiori pokusu o přístup k některé z následujících adres URL, který chcete otestovat jednotné přihlašování (byste měli být vyzváni k zadání uživatelského jména a hesla):
 

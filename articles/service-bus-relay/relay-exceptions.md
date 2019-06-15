@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60749032"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay výjimky
@@ -59,7 +59,7 @@ Následující tabulka uvádí typy zasílání zpráv výjimek a jejich příč
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 
-[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) indikuje, že došlo k překročení kvóty pro některou z entit.
+[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) označuje, že byla překročena kvóta pro konkrétní entitu.
 
 Pro předávání, zabalí tuto výjimku [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx), což znamená, že byl překročen maximální počet naslouchacích procesů pro tento koncový bod. To je uvedeno v **MaximumListenersPerEndpoint** hodnotu zpráva o výjimce.
 

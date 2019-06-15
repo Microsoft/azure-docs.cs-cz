@@ -10,10 +10,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 905100f8a1444f6f6ee18d3bf9e9eab2ede8c805
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60616085"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úloh a zobrazení úloh pro Azure Data Lake Analytics
@@ -27,7 +27,7 @@ Zobrazit [nástrojů Data Lake pro Visual Studio požadavky](data-lake-analytics
 ## <a name="open-the-job-browser"></a>Otevřít prohlížeč úloh
 Přístup k prohlížeč úloh prostřednictvím **Průzkumník serveru > Azure > Data Lake Analytics > úlohy** v sadě Visual Studio.  Použití prohlížeče úloh, můžete přístup k úložišti dotazů účtu Data Lake Analytics. Prohlížeč úloh zobrazí Query Store na levé straně, informace o základních úlohách a zobrazení úloh na pravé zobrazení podrobné informace o úloze.
 
-## <a name="job-view"></a>Zobrazení úlohy
+## <a name="job-view"></a>Zobrazení úloh
 Zobrazení úlohy zobrazuje podrobné informace o úlohu. Spustit úlohu, můžete dvakrát klikněte na úlohu v prohlížeči projektu, nebo otevřete z nabídky Data Lake kliknutím zobrazení úloh. Zobrazí se dialogové okno vyplní adresa URL úlohy.
 
 ![Nástroje data Lake Visual Studio prohlížeč úloh](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
@@ -45,8 +45,8 @@ Obsahuje zobrazení úlohy:
       ![Fáze stav úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * Příprava: Nahrajte skript do cloudu, kompilaci a optimalizaci skriptu s použitím služby kompilace.
-    * Ve frontě: Úlohy se zařadí do fronty při čekání dostatek prostředků, nebo úlohy, které překračují maximální počet souběžných úloh na účet omezení. Nastavení priority určuje pořadí ve frontě úloh – Čím nižší je číslo, tím vyšší je priorita.
-    * Spuštěno: Úloha je ve skutečnosti spuštěná ve svém účtu Data Lake Analytics.
+    * Zařadit do fronty: Úlohy se zařadí do fronty při čekání dostatek prostředků, nebo úlohy, které překračují maximální počet souběžných úloh na účet omezení. Nastavení priority určuje pořadí ve frontě úloh – Čím nižší je číslo, tím vyšší je priorita.
+    * Spuštění: Úloha je ve skutečnosti spuštěná ve svém účtu Data Lake Analytics.
     * Dokončování: Úloha se dokončuje (například dokončení souboru).
       
       Úloha může selhat v každé fázi. Například chyby kompilace ve fázi Příprava, vypršení časového limitu ve fázi zařazeno do fronty a provádění chyby ve fázi spuštění atd.
@@ -67,7 +67,7 @@ Obsahuje zobrazení úlohy:
     * Paralelismus: Požadovaná maximální počet souběžných Azure Data Lake Analytics jednotek (ADLAUs), neboli vrcholy. V současné době jednoho vrcholu se rovná jednomu virtuálnímu počítači s dvě virtuální jádra a 6 GB paměti RAM, i když může být upgradována v budoucnu Data Lake Analytics aktualizuje.
     * Zbývající bajty: Počet bajtů, které potřebují ke zpracování, dokud se úloha nedokončí.
     * Načtených/zapsaných bajtů: Počet bajtů, které byly načtených/zapsaných od spuštění úlohy.
-    * Vrcholy celkem: Úloha je rozdělený do částí mnoho práce, každá část práce se nazývá vrcholu. Tuto hodnotu popisuje počet jednotek zpracování úlohy se skládá z. Jako jednotku základního procesu, označuje se také jako Azure Data Lake Analytics jednotek (ADLAU), můžete zvážit vrcholu a vrcholy můžete spustit v paralelismu. 
+    * Celkový počet vrcholů: Úloha je rozdělený do částí mnoho práce, každá část práce se nazývá vrcholu. Tuto hodnotu popisuje počet jednotek zpracování úlohy se skládá z. Jako jednotku základního procesu, označuje se také jako Azure Data Lake Analytics jednotek (ADLAU), můžete zvážit vrcholu a vrcholy můžete spustit v paralelismu. 
     * Dokončení/spuštění nebo se nezdařilo: Počet vrcholů dokončení/spuštění nebo se nezdařilo. Vrcholy může selhat z důvodu chyby kódu a systému i uživatele, ale systém opakované pokusy byly neúspěšné vrcholy automaticky několikrát. Pokud po opakovaném pokusu stále selhal vrchol, celá úloha skončí chybou.
 * Graf úlohy
   

@@ -14,10 +14,10 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07259d90c7119dec4ca9139e10af2fb20a439425
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289315"
 ---
 # <a name="assign-azure-ad-roles-in-pim"></a>Přiřazení role Azure AD v PIM
@@ -126,7 +126,7 @@ Postupujte podle těchto kroků přiřazení role správce přístupu uživatel�
 
 1. Zvolte vaše předplatné.
 
-1. Zvolte **Řízení přístupu (IAM)**.
+1. Zvolte **Řízení přístupu (IAM)** .
 
 1. Zvolte **přiřazení rolí** zobrazíte aktuální seznam přiřazení rolí v oboru předplatného.
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 0fe098bd644762fb291eb623a7b41cd987c7fa26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a953af3d9cd5a6748b79465a59b4a4284e58714c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070132"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Velkokapacitní vrstvy služby pro až 100 TB
 
@@ -111,7 +111,7 @@ Díky možnosti rozjedete směrem nahoru nebo dolů dalších jen pro čtení v�
 
 Velkokapacitní databázi lze vytvořit pomocí [webu Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) nebo [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Velkokapacitní databáze jsou k dispozici pouze prostřednictvím [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
-Pomocí následujícího příkazu T-SQL vytvoří databázi mírou škálování. Je nutné zadat cíl edition i služby v `CREATE DATABASE` příkazu.
+Pomocí následujícího příkazu T-SQL vytvoří databázi mírou škálování. Je nutné zadat cíl edition i služby v `CREATE DATABASE` příkazu. Odkazovat [omezení prostředků](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) seznam cílů platný.
 
 ```sql
 -- Create a HyperScale Database
@@ -146,8 +146,8 @@ Pokud budete potřebovat k obnovení Azure SQL Database Hyperškálovatelného D
 1. Vytvořte server služby SQL Database v cílové oblasti, pokud již nemáte příslušný server existuje.  Tento server musí být ve stejném předplatném jako původní server (zdroj) ve vlastnictví.
 2. Postupujte podle pokynů [geografické obnovení](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) téma na stránce o obnovení databází Azure SQL Database z automatických záloh.
 
-#### <a name="notes-on-geo-restores-of-a-hyperscale-database"></a>Poznámky k geografické obnovení mírou škálování databáze
-Protože zdroj a cíl nacházejí v oblastech, databázi nelze sdílet úložiště snímku s zdrojové databáze stejně jako v jiné geografické obnovení, které velmi rychlé dokončení.  V případě geografického obnovení databáze hyperškálovatelný systém bude velikost datové operace, i v případě, že cíl je v párované oblasti geograficky replikovaného úložiště.  To znamená, že provedení geografického obnovení bude trvat dobu přímo úměrná velikosti databáze, který se má obnovit.  Pokud je cílem v párované oblasti, kopie bude v rámci datového centra, která bude mnohem rychlejší než kopii přestupný přes internet, ale budou stále zkopírovány všechny bity.
+> [!NOTE]
+> Protože zdroj a cíl nacházejí v oblastech, databázi nelze sdílet úložiště snímku s zdrojové databáze stejně jako v jiné geografické obnovení, které velmi rychlé dokončení.  V případě geografického obnovení databáze hyperškálovatelný systém bude velikost datové operace, i v případě, že cíl je v párované oblasti geograficky replikovaného úložiště.  To znamená, že provedení geografického obnovení bude trvat dobu přímo úměrná velikosti databáze, který se má obnovit.  Pokud je cílem v párované oblasti, kopie bude v rámci datového centra, která bude mnohem rychlejší než kopii přestupný přes internet, ale budou stále zkopírovány všechny bity.
 
 ## <a name=regions></a>Dostupné oblasti
 
@@ -225,7 +225,7 @@ Jedná se o aktuální omezení na vrstvu služby Hyperškálovatelného od obec
 
 | Problém | Popis |
 | :---- | :--------- |
-| V podokně Správa zálohování pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno ze serveru SQL server ->  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
+| V podokně Správa zálohování pro logický server nezobrazují Hyperškálovatelného databáze bude filtrováno z SQL serveru  | Velkokapacitní má samostatné metodě pro správu zálohování a jako takový dlouhodobé uchovávání dat a bod v nastavení uchovávání záloh čas se nevztahují / nejsou zneplatněny. Podle toho Hyperškálovatelného databází se nezobrazují v podokně Správa zálohování. |
 | Obnovení k určitému bodu v čase | Po migraci databáze do vrstvy služby hyperškálovatelný systém se nepodporuje obnovení k určitému bodu v čase před migrací.|
 | Obnovení z jiných – velkokapacitní DB Hypserscale (a naopak) | Velkokapacitní databáze nelze obnovit do databáze hyperškálovatelný systém ani mohli obnovit databáze hyperškálovatelný systém do databáze Hyperškálováním.|
 | Pokud je soubor databáze roste během migrace z důvodu aktivní úlohy a překročí 1 TB za hranice souboru, se migrace nezdaří | Omezení rizik: <br> – Pokud je to možné, migrace databáze, pokud neexistuje žádné aktualizace zátěži.<br> – Zkuste to znovu migrace, bude úspěšné, tak dlouho, dokud není překročí hranice 1 TB během migrace.|

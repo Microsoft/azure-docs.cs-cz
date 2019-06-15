@@ -14,14 +14,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7ad328eec7e16b5368b78a0dfccbf5c09adb5c13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567227"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Zápis dat do indexu Azure Search pomocí služby Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-azure-search-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-azure-search.md)
 
@@ -79,7 +79,7 @@ Pro aktivitu kopírování, když je stok typu **AzureSearchIndexSink**, v čás
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, jestli se má sloučit nebo nahradit, již existuje dokument v indexu. Zobrazit [WriteBehavior vlastnost](#writebehavior-property).| Sloučit (výchozí)<br/>Odeslat| Ne |
+| WriteBehavior | Určuje, jestli se má sloučit nebo nahradit, již existuje dokument v indexu. Zobrazit [WriteBehavior vlastnost](#writebehavior-property).| Sloučit (výchozí)<br/>Nahrávání| Ne |
 | WriteBatchSize | Nahrání dat do indexu Azure Search writeBatchSize dosáhne velikosti vyrovnávací paměti. Zobrazit [WriteBatchSize vlastnost](#writebatchsize-property) podrobnosti. | 1 až 1 000. Výchozí hodnota je 1000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior

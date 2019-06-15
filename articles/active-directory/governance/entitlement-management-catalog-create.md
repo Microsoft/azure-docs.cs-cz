@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541612"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Vytvoření a správa katalog ve správě služby Azure AD oprávnění (Preview)
@@ -30,7 +30,7 @@ ms.locfileid: "64541612"
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="create-a-catalog"></a>Vytvořit katalog
+## <a name="create-a-catalog"></a>Vytvoření katalogu
 
 Katalog je kontejner, prostředků a přístup k balíčkům. Můžete vytvořit katalog, když chcete seskupovat související prostředky a přístup k balíčkům. Kdo vytvoří katalog se stane první Vlastník katalogu. Katalog vlastníka můžete přidat další katalogu vlastníky.
 
@@ -98,7 +98,7 @@ Odebrat prostředky z katalogu. Zdroj lze odebrat pouze z katalogu Pokud se nepo
 
 1. Vyberte prostředky, které chcete odebrat.
 
-1. Klikněte na tlačítko **odebrat** (nebo klikněte na tlačítko se třemi tečkami (**...** ) a potom klikněte na tlačítko **odebrat prostředek**).
+1. Klikněte na tlačítko **odebrat** (nebo klikněte na tlačítko se třemi tečkami ( **...** ) a potom klikněte na tlačítko **odebrat prostředek**).
 
 ## <a name="add-catalog-owners-or-access-package-managers"></a>Přidat vlastníky katalogu nebo přístup ke správci balíčků
 

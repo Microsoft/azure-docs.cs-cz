@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: ddc42023bae3403e7778327a40316462c85222c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390020"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření trasové brány VPN pomocí webu Azure portal
@@ -32,7 +32,7 @@ Kroky v tomto článku se vytvoří virtuální síť, podsíť, podsítě brán
    - **Předplatné**: Ověřte, že v předplatném uvedeným je ten, který chcete použít. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
    - **Skupina prostředků**: TestRG1
    - **Umístění**: USA – východ
-   - **Podsíť**: Front-end
+   - **Podsíť**: Front-endu
    - **Rozsah adres**: 10.1.0.0/24
 
    ![Stránka pro vytvoření virtuální sítě](./media/create-routebased-vpn-gateway-portal/create-virtual-network.png "Stránka pro vytvoření virtuální sítě")
@@ -49,7 +49,7 @@ Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brán
    ![Přidání podsítě brány](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Přidání podsítě brány")
 4. **Název** pro podsítě se automaticky vyplní požadovaná hodnota "GatewaySubnet". Upravte automaticky vyplněné **rozsah adres** hodnoty tak, aby odpovídala následující hodnoty:
 
-   **Rozsah adres (blok CIDR)**: 10.1.255.0/27
+   **Rozsah adres (blok CIDR)** : 10.1.255.0/27
 
    ![Přidání podsítě brány](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Přidání podsítě brány")
 5. Chcete-li vytvořit podsíť brány, klikněte na tlačítko **OK** v dolní části stránky.

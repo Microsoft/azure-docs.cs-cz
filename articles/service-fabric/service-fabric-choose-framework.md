@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: d764cbe2df78cb9029a4109caa2998ddded5d6ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60341960"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled programovacího modelu Service Fabric
@@ -43,7 +43,7 @@ Reliable Services může být také stavové, výhradně pro Service Fabric, ve 
 
 [Další informace o modelu Reliable Services](service-fabric-reliable-services-introduction.md) nebo začít tím, že [zápis první spolehlivé služby](service-fabric-reliable-services-quick-start.md).
 
-## <a name="aspnet-core"></a>Jádro ASP.NET
+## <a name="aspnet-core"></a>ASP.NET Core
 ASP.NET Core je nové open-source a multiplatformní rozhraní pro vytváření moderních cloudových připojeného k Internetu aplikací, jako jsou webové aplikace, aplikace IoT a mobilních back-endů. Service Fabric se integruje s ASP.NET Core, ASP.NET Core bezstavových a stavových můžete psát aplikace, které budou využívat Reliable Collections a možnosti pokročilé Orchestrace Service Fabric.
 
 [Další informace o ASP.NET Core v Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md) nebo začít tím, že [zápis svou první aplikaci ASP.NET Core Service Fabric](service-fabric-tutorial-create-dotnet-app.md).

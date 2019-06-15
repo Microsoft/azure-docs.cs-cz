@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bd7c5fe97d18d83f07db2b8b75ee556b0ad685d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 274477deb37006ba5fee6a92438e1763a4f36294
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Kurz: Integrace Azure Active Directory s skleníkových
 
@@ -52,7 +52,7 @@ Konfigurace integrace skleníkových do služby Azure AD, budete muset přidat s
 
 **Chcete-li přidat skleníkových z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -210,7 +210,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do skleníkových, musí 
       >[!NOTE]
       >Držiteli účtu Azure Active Directory obdrží e-mailu včetně odkaz pro potvrzení účtu, pak se změní na aktivní.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: a343caaa998505a1772096b058ec7ad300eec03c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725692"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
@@ -127,7 +127,7 @@ Sqoop používá MapReduce pro import a export dat, k poskytování paralelní o
 
 Apache Flume je distribuovaná, spolehlivé a k dispozici služba pro efektivní shromažďování, agregaci a přesouvání velkého objemu dat protokolu. Flume má jednoduché a flexibilní architekturu podle streamování datové toky. Flume je robustní a odolné proti chybám s možností vyladění spolehlivost mechanismy a mnoho mechanismů převzetí služeb při selhání a obnovení. Flume používá jednoduché extensible datový model, který umožňuje analytické aplikace v režimu online.
 
-Apache Flume nelze použít s Azure HDInsight.  Místní instalace Hadoop můžete použít Flume k odesílání dat do objektů BLOB Azure Storage nebo Azure Data Lake Storage.  Další informace najdete v tématu [pomocí Apache Flume s HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Apache Flume nelze použít s Azure HDInsight.  Místní instalace Hadoop můžete použít Flume k odesílání dat do objektů BLOB Azure Storage nebo Azure Data Lake Storage.  Další informace najdete v tématu [pomocí Apache Flume s HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Transformace
 

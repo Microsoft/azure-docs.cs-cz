@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486511"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
@@ -30,10 +30,10 @@ Tento článek obsahuje informace o funkcích a proměnné, které podporované 
 
 | Název proměnné | Popis | Objekt oboru | Rozsah JSON a případy použití |
 | --- | --- | --- | --- |
-| WindowStart |Začátek časový interval pro spuštění okno aktuální aktivity |aktivita |<ol><li>Zadejte dotazech pro výběr data. Najdete v článcích konektor odkazuje [aktivity přesunu dat](data-factory-data-movement-activities.md) článku.</li> |
-| WindowEnd |Konec časový interval pro spuštění okno aktuální aktivity |aktivita |stejné jako WindowStart. |
-| SliceStart |Začátek časového intervalu pro datový řez se vytváří |aktivita<br/>Datové sady |<ol><li>Zadejte cesty ke složkám dynamické a názvy souborů při práci s [objektů Blob v Azure](data-factory-azure-blob-connector.md) a [systému souborů datových sad](data-factory-onprem-file-system-connector.md).</li><li>Zadejte vstupní závislosti s funkce data factory v kolekci vstupů aktivity.</li></ol> |
-| SliceEnd |Konec časového intervalu pro aktuální datový řez. |aktivita<br/>Datové sady |stejné jako vlastnosti SliceStart. |
+| WindowStart |Začátek časový interval pro spuštění okno aktuální aktivity |Aktivita |<ol><li>Zadejte dotazech pro výběr data. Najdete v článcích konektor odkazuje [aktivity přesunu dat](data-factory-data-movement-activities.md) článku.</li> |
+| WindowEnd |Konec časový interval pro spuštění okno aktuální aktivity |Aktivita |stejné jako WindowStart. |
+| SliceStart |Začátek časového intervalu pro datový řez se vytváří |Aktivita<br/>Datové sady |<ol><li>Zadejte cesty ke složkám dynamické a názvy souborů při práci s [objektů Blob v Azure](data-factory-azure-blob-connector.md) a [systému souborů datových sad](data-factory-onprem-file-system-connector.md).</li><li>Zadejte vstupní závislosti s funkce data factory v kolekci vstupů aktivity.</li></ol> |
+| SliceEnd |Konec časového intervalu pro aktuální datový řez. |Aktivita<br/>Datové sady |stejné jako vlastnosti SliceStart. |
 
 > [!NOTE]
 > Objekt pro vytváření dat aktuálně vyžaduje, že plán určeného v aktivitě přesně odpovídá plán zadaná ve skupině dostupnosti výstupní datové sady. Proto WindowStart, WindowEnd a SliceStart a SliceEnd vždy mapují na stejné časové období a jednu výstupní řez.
@@ -75,7 +75,7 @@ V následující ukázce **sqlReaderQuery** vlastnost v souboru JSON je přiřaz
 
 V tématu [vlastní data a řetězce formátu časových](https://msdn.microsoft.com/library/8kb3ddd4.aspx) téma, které popisují různé možnosti formátování můžete použít (například: zobrazit vs. rrrr). 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 
 | Category | Funkce | Parametry | Popis |

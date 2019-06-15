@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90d4cdcecd08ae87b3a2ae6023b8a2557a515fb1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: de27afabe024f08cb80a7b31cfb1b664684315a8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899387"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>Kurz: Integrace Azure Active Directory s Aha!
 
@@ -54,7 +54,7 @@ Konfigurace integrace Aha! do služby Azure AD budete muset přidat Aha! z Galer
 
 **Chcete-li přidat Aha! v galerii proveďte následující kroky:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -188,11 +188,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části povolíte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Aha!.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Aha!**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Aha!** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Aha!**.
+2. V seznamu aplikací vyberte **Aha!** .
 
     ![Aha! odkaz v seznamu aplikací](common/all-applications.png)
 
@@ -214,7 +214,7 @@ V této části povolíte Britta Simon používat jednotné přihlašování Azu
 
 V této části se vytvoří uživateli Britta Simon v Aha!. AHA! podporuje just-in-time zřizování uživatelů, která je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Aha!, nová je jedna vytvořená po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 3881a6d0ee1139fa481908f09b6e96efda24a5cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60542539"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Spouštění skriptů v virtuálního počítače s Linuxem
@@ -29,7 +29,7 @@ K automatizaci úloh nebo řešení problémů, budete muset na virtuálním po�
 * Spustit skript prostředí PowerShell na počítačích s Windows nebo z prostředí Bash skript v počítačích s Linuxem.
 * Užitečné pro konfiguraci po nasazení, instalace softwaru a další konfigurace nebo úlohy správy.
 
-## <a name="run-command"></a>Spustit příkaz
+## <a name="run-command"></a>Spusťte příkaz
 
 [Spustit příkaz](run-command.md) funkce umožňuje virtuálních počítačů a správu aplikací a řešení problémů pomocí skriptů a je k dispozici, i když počítač není dostupný, pokud brána firewall hosta nemá port RDP nebo SSH Otevřete.
 

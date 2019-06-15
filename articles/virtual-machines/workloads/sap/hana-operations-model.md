@@ -15,10 +15,10 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 36a648e2d46cce96a8ff663f45ccf45326898a84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477868"
 ---
 # <a name="operations-model-and-responsibilities"></a>Provozní model a zodpovědnosti
@@ -68,5 +68,5 @@ Základní infrastruktury velká Instance HANA poskytuje funkce pro zálohován�
 
 Zobrazit [smlouva SLA pro SAP HANA v Azure (velké instance)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
 
-**Další kroky**
+**Další postup**
 - Přečtěte si [architektura SAP HANA (velké instance) v Azure](hana-architecture.md)

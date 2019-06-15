@@ -3,19 +3,19 @@ title: Podpora kontejnerů
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak získat Cognitive Services blíž ke svým datům kontejnery Dockeru.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: MT
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 9b2db8f913f2eecb4f320b6edde3c1d5a422691f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062126"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 

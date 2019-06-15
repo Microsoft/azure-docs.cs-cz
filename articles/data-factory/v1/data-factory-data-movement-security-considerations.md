@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487034"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – informace o zabezpečení pro přesun dat
@@ -127,7 +127,7 @@ Virtuální síť je logickou reprezentaci vaší vlastní sítě v cloudu. Mís
 
 Následující tabulka shrnuje doporučené konfigurace sítě a brány založené na různé kombinace zdrojové a cílové umístění pro přesun hybridních dat.
 
-| Zdroj | Cíl | Konfigurace sítě | Instalační program brány |
+| source | Cíl | Konfigurace sítě | Instalační program brány |
 | ------ | ----------- | --------------------- | ------------- | 
 | Lokálně | Virtuální počítače a cloudové aplikace nasazené ve virtuálních sítích | (Point-to-site a site-to-site) VPN typu IPSec | Může jí být nainstalována na místní nebo v Azure virtuální počítač (VM) ve virtuální síti | 
 | Lokálně | Virtuální počítače a cloudové aplikace nasazené ve virtuálních sítích | ExpressRoute (soukromého partnerského vztahu) | Může jí být nainstalované místně nebo na Virtuálním počítači Azure ve virtuální síti | 
@@ -183,7 +183,7 @@ Následující cloudovými úložišti dat vyžadují vytváření seznamu povol
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Otázka:** Může bránu sdílet mezi různé datové továrny?
-**Odpověď:** Tato funkce zatím nepodporujeme. Aktivně pracujeme na něj.
+**Odpověď:** Tato funkce zatím nepodporujeme. Aktivně na ní pracujeme.
 
 **Otázka:** Jaké jsou požadavky na porty pro funkci brány?
 **Odpověď:** Brána umožňuje připojení založené na protokolu HTTP do otevřeného Internetu. **Odchozí porty 443 a 80** musí být otevřen pro bránu pro toto připojení. Otevřít **příchozí Port 8050** pouze na úrovni počítače (ne na podnikové brány firewall na úrovni) pro aplikaci správce přihlašovacích údajů. Pokud se používá Azure SQL Database nebo Azure SQL Data Warehouse jako zdroj / cíl, budete muset otevřít **1433** i port. Další informace najdete v tématu [brány Firewall, konfigurace a vytváření seznamu povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of gateway) oddílu. 

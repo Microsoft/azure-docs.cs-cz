@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 915d1284d66438219fc9aba893512e5f6a5b02b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 6093e1017af2fb8c54eaf1c3192f937172567982
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305051"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080562"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí ve službě Azure Event Grid
 
@@ -78,9 +78,45 @@ Směrování událostí ve službě Event Grid přímo do fronty služby Service
 
 Nezapomeňte prosím, že při služby Service Bus jako obslužná rutina je ve verzi public preview, musíte nainstalovat rozšíření prostředí PowerShell nebo rozhraní příkazového řádku při jejich použití k vytvoření odběrů událostí.
 
-### <a name="using-cli"></a>Pomocí rozhraní příkazového řádku
+### <a name="install-extension-for-azure-cli"></a>Instalace rozšíření pro rozhraní příkazového řádku Azure
 
-Pro rozhraní příkazového řádku Azure, v následujícím příkladu přihlásí připojí a téma Event gridu do fronty služby Service Bus:
+Rozhraní příkazového řádku Azure, je nutné [rozšíření služby Event Grid](/cli/azure/azure-cli-extensions-list).
+
+V [cloud Shell](/azure/cloud-shell/quickstart):
+
+* Pokud jste dříve nainstalovali rozšíření, aktualizujte jej s použitím `az extension update -n eventgrid`.
+* Pokud jste nenainstalovali rozšíření dříve, nainstalujte ji pomocí `az extension add -n eventgrid`.
+
+Pro místní instalaci:
+
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, podle informací v `az --version`.
+1. Odinstalujte předchozí verze rozšíření s `az extension remove -n eventgrid`.
+1. Nainstalujte `eventgrid` rozšíření s `az extension add -n eventgrid`.
+
+### <a name="install-module-for-powershell"></a>Instalace modulu prostředí PowerShell
+
+Pro prostředí PowerShell, je nutné [AzureRM.EventGrid modulu](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview).
+
+V [cloud Shell](/azure/cloud-shell/quickstart-powershell):
+
+* Instalace modulu s `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+
+Pro místní instalaci:
+
+1. Otevřete konzolu Powershellu jako správce.
+1. Instalace modulu s `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+
+Pokud `-AllowPrerelease` parametru není k dispozici, použijte následující postup:
+
+1. Spusťte `Install-Module PowerShellGet -Force`.
+1. Spusťte `Update-Module PowerShellGet`.
+1. Zavřete konzolu Powershellu.
+1. Znovu spusťte PowerShell jako správce.
+1. Instalace modulu `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+
+### <a name="using-cli-to-add-a-service-bus-handler"></a>Přidání obslužné rutiny služby Service Bus pomocí rozhraní příkazového řádku
+
+Pro rozhraní příkazového řádku Azure v následujícím příkladu přihlásí a připojí téma Event gridu do fronty služby Service Bus:
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.

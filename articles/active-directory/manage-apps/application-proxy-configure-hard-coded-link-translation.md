@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956901"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
@@ -97,10 +97,10 @@ Existují dva běžné typy interní odkazů v místním aplikacím:
 * element IFrame
 * obrázek
 * vstup
-* odkaz
+* Odkaz
 * položku nabídky
 * meta
-* Objekt
+* objekt
 * script
 * source
 * Sledování
@@ -142,7 +142,7 @@ Začínáme s překladu odkazu je stejně snadné jako kliknutí na tlačítko:
 
 Teď když uživatelé přistoupí k této aplikaci, proxy automaticky vyhledá interní adresy URL, které byly publikované prostřednictvím Proxy aplikace ve svém tenantovi.
 
-## <a name="send-feedback"></a>Odeslat názor
+## <a name="send-feedback"></a>Váš názor
 
 Chceme, aby vaši pomoc, aby tuto funkci pro všechny vaše aplikace fungovat. Jsme vyhledat více než 30 značky v kódu HTML a CSS. Pokud máte příkladem generované odkazy, které se překlad vztahuje, pošlete fragment kódu pro [váš názor na aplikaci Proxy](mailto:aadapfeedback@microsoft.com). 
 

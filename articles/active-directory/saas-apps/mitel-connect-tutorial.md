@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: b656bbb7c5924f14b300f0352551530bb47f2a53
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Kurz: Integrace Azure Active Directory s Mitel MiCloud připojení
 
@@ -215,7 +215,7 @@ Vytvoření uživatele ve vašem účtu MiCloud připojení s následujícími p
 
 **POZNÁMKA:** Uživatelské jméno MiCloud připojení musí být stejný jako e-mailovou adresu uživatele v Azure.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části budete testovat vaše konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.
 

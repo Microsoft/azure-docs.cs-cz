@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 582533d23757de748b9cc7d40e45acc00240d384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83a65be50a3cec9cea47682ab5e207bd4ad9e984
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60599735"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072561"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů do požadovaného stavu a správa odchylek
 
@@ -145,6 +145,27 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 # Display the most recent report
 $reports[0]
 ```
+
+## <a name="removing-nodes-from-service"></a>Odebrání uzlů ze služby
+
+Při přidání uzlu do konfigurace stavu služby Azure Automation, jsou nastavení v Local Configuration Manageru nastavená zaregistrovat u služby a o přijetí změn konfigurace a požadované moduly pro konfiguraci počítače.
+Pokud se rozhodnete k odebrání uzlu ze služby, lze provést pomocí webu Azure portal nebo rutin Az.
+
+> [!NOTE]
+> Zrušení registrace uzlu ze služby pouze nastaví Local Configuration Manageru tak, že uzel už je připojení ke službě.
+> To vliv nemá odpovídající konfiguraci, která je aktuálně použité k uzlu.
+> Chcete-li odebrat aktuální konfiguraci, použijte [Powershellu](https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) nebo odstranit místní konfigurační soubor (to je jedinou možností pro uzly s Linuxem).
+
+### <a name="azure-portal"></a>portál Azure
+
+Ve službě Azure Automation, klikněte na **konfigurace stavu (DSC)** v obsahu.
+Klepnutím na tlačítko **uzly** zobrazíte seznam uzlů, které jsou registrované ve službě.
+Klikněte na název uzlu, na který chcete odebrat.
+V zobrazení uzlů, které se otevře, klikněte na tlačítko **Unregister**.
+
+### <a name="powershell"></a>PowerShell
+
+Zrušení registrace uzlu ze služby konfigurace stavu služby Azure Automation pomocí prostředí PowerShell, postupujte podle dokumentace pro rutinu [Unregister-AzAutomationDscNode](https://docs.microsoft.com/en-us/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Další postup
 

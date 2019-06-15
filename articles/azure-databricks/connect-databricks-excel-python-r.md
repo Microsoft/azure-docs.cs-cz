@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60236363"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Připojení k Azure Databricks z Excelu, Python nebo R
@@ -54,7 +54,7 @@ Název zdroje dat (DSN) obsahuje informace o konkrétní zdroj. Ovladač ODBC mu
 
     Následující tabulka obsahuje informace na tyto hodnoty zadat v dialogovém okně.
     
-    |Pole  | Value  |
+    |Pole  | Hodnota  |
     |---------|---------|
     |**Název zdroje dat**     | Zadejte název datového zdroje.        |
     |**Hostitele**     | Zadejte hodnotu, kterou jste zkopírovali z pracovního prostoru Databricks pro *název hostitele serveru*.        |

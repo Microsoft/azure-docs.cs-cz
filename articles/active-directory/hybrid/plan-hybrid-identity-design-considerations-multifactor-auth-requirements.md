@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dabb381c16aa107e41c1d556e61e020b8c6a6c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455733"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109296"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na ověření službou Multi-Factor Authentication pro vaše řešení hybridní identity
 V tomto světě nastavení mobilních zařízení s uživateli přístup k datům a aplikacím v cloudu a z jakéhokoli zařízení a zabezpečení těchto informací se stal prvořadá.  Každý den se nový nadpis o porušení zabezpečení.  I když není zaručeno před takové porušením, ověřování službou Multi-Factor Authentication poskytuje další úroveň zabezpečení, které pomáhají zabránit těchto porušení.

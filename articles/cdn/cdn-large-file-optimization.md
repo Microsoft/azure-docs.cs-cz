@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60636731"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace velkých souborů ke stažení s Azure CDN
@@ -104,14 +104,14 @@ Další informace o žádosti o rozsah bajtů, naleznete v tématu [RFC 7233](ht
 
 Síť CDN ukládá do mezipaměti všechny bloky dat po přijetí. Celý soubor nemusí být uložena do mezipaměti CDN mezipaměti. Odeslání dalších žádostí o souboru nebo bajt rozsahy se obsluhují z mezipaměti CDN. Není-li všechny bloky dat jsou uložené v mezipaměti v CDN, předběžné načtení slouží k vyžádání bloků dat z původního zdroje. Tato optimalizace se spoléhá na schopnost zdrojový server podporovat požadavky na zjištění rozsahu bajtů; Pokud zdrojový server nepodporuje požadavky na zjištění rozsahu bajtů, optimalizací není platná.
 
-### <a name="caching"></a>Ukládání do mezipaměti
+### <a name="caching"></a>Caching
 Optimalizace velkých souborů používá různé výchozí dobu ukládání do mezipaměti vypršení platnosti od obecné doručování webu. Rozlišuje mezi ukládání do mezipaměti kladné a záporné ukládání do mezipaměti na základě kódů odpovědí HTTP. Pokud zdrojový server určuje dobu vypršení platnosti prostřednictvím cache-control nebo expires hlaviček v odpovědi, CDN respektuje tuto hodnotu. Když soubor odpovídá podmínkám typu a velikosti pro tento typ optimalizace původ neurčuje, CDN používá výchozí hodnoty pro optimalizace velkých souborů. V opačném případě CDN používá výchozí nastavení pro obecné doručování webu.
 
 
 |    | Obecné web | Optimalizace velkých souborů 
 --- | --- | --- 
-Caching: Pozitivní <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
-Caching: Negativní <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda 
+Caching: Kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
+Caching: Záporný <br> HTTP 204, 305, 404, <br> a 405 | Žádný | 1 sekunda 
 
 ### <a name="deal-with-origin-failure"></a>Řešení selhání původu
 

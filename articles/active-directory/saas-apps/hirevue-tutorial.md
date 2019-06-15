@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7617889bfbdfecb421538cbc261dace5b4b8279c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 39aed992a2143065b0737d6a2dde3bcc9f2f958e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898233"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Kurz: Integrace Azure Active Directory s HireVue
 
@@ -53,7 +53,7 @@ Konfigurace integrace HireVue do služby Azure AD, budete muset přidat HireVue 
 
 **Chcete-li přidat HireVue z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -109,15 +109,15 @@ Ke konfiguraci Azure AD jednotné přihlašování s HireVue, proveďte následu
 
     | Prostředí | zprostředkovatele identity |
     |-------------|---|
-    | Provozní | `https://<companyname>.hirevue.com` |
-    | Fázování    | `https://<companyname>.stghv.com` |
+    | Výroba | `https://<companyname>.hirevue.com` |
+    | Staging    | `https://<companyname>.stghv.com` |
 
     b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
 
     | Prostředí | NÁZEV URN |
     |-------------|-----|
-    | Provozní |`urn:federation:hirevue.com:saml:sp:prod` |
-    | Fázování    | `urn:federation:hirevue.com:saml:sp:staging`|
+    | Výroba |`urn:federation:hirevue.com:saml:sp:prod` |
+    | Staging    | `urn:federation:hirevue.com:saml:sp:staging`|
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory HireVue klienta](mailto:samlsupport@hirevue.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
@@ -195,7 +195,7 @@ V této části je povolit Britta Simon k udělení přístupu k HireVue použit
 
 V této části vytvoříte uživatele v HireVue jako Britta Simon. Práce s [tým podpory HireVue](mailto:samlsupport@hirevue.com) přidat uživatele na platformě HireVue. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

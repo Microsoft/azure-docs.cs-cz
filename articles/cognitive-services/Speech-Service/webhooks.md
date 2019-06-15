@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60515395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072295"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhooky pro hlasové služby
 
@@ -39,7 +39,7 @@ V dalším kroku vytvoříme webhooku.
 
 Pojďme vytvořit webhook pro offline přepis. Scénář: uživatel má dlouho spuštěná zvukový soubor, který by chtěli přepisy asynchronně pomocí rozhraní API služby Batch určené k transkripci. 
 
-K vytvoření web hook příspěvek https://<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
+Webhooků je možné vytvořit tak, že požadavek POST na https://\<oblasti\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks.
 
 Parametry konfigurace pro žádost se poskytují jako JSON:
 
@@ -136,7 +136,7 @@ Pokud entitu pro typ předplacenému události (určené k transkripci) je k dis
 
 Akci můžete udělat rychle otestovat na webu https://bin.webhookrelay.com. Odtud můžete získat volání zpět adresy URL pro předání jako parametru HTTP POST pro vytvoření webhooku je popsáno výše v dokumentu.
 
-Klikněte na "Vytvoření kontejneru a použijte na obrazovce pokyny, jak získat hák. Potom použijte informace uvedené na této stránce k registraci háku službou Speech. Datová část přenos zprávy – v reakci na dokončení určené k transkripci – vypadá takto:
+Klikněte na "Vytvoření kontejneru a použijte na obrazovce pokyny, jak získat hák. Potom použijte informace uvedené na této stránce k registraci háku službou Speech. Datová část přenosu zprávy – v reakci na doplňování přepis – vypadá takto:
 
 ```json
 {

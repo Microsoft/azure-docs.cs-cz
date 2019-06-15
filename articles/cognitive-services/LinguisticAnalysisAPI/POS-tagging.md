@@ -11,10 +11,10 @@ ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60394485"
 ---
 # <a name="part-of-speech-tagging"></a>Označování částí řeči
@@ -37,11 +37,11 @@ Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představuj�
 | '' | uzavírací uvozovky | ' '' |
 | ( | Levá závorka | ( [ { |
 | ) | Pravá závorka | ) ] } |
-| ,  | Čárka | ,  |
+| , | Čárka | , |
 | -- | pomlčka | -- |
 | . | ukončovací znak větu | . ! ? |
 | : | dvojtečka nebo tlačítko se třemi tečkami | : ; ... |
-| Kopie | spojení, že koordinuje | a, ale nebo ještě|
+| CC | spojení, že koordinuje | a, ale nebo ještě|
 | CD | číslo, mohutnosti | devět 1980 20 "96 |
 | DT | determiner |všech obou ani|
 | EX | existenční zde | existuje |
@@ -56,7 +56,7 @@ Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představuj�
 | NNP | správné, jednotném čísle podstatné jméno, | Kennedy Roosevelt Chicago Weehauken |
 | NNPS | správné, plural podstatné jméno, | Springfields keře |
 | NNS | běžné, plural podstatné jméno, | kusů mice pole |
-| PDT (Tichomořský letní čas) | pre-determiner | všechny obou polovině mnoho poměrně takové že to |
+| PDT | pre-determiner | všechny obou polovině mnoho poměrně takové že to |
 | POS | genitive značky | ". |
 | PRP | zastupovat osobní | Jana si ho můžu jsme jejich můžete |
 | ZÁSADY REPLIKACE HESEL$ | zastupovat přivlastňovacího pádu | Acyklický jeho jeho Moje naše jejich vaší |
@@ -65,7 +65,7 @@ Patří mezi ně kategoriích, jako je *podstatné jméno* (obecně představuj�
 | RBS | příslovce superlative | nejlepší největší bluntest nejdřívější nejvíce první nejvzdálenější nejtěžší heartiest nejvyšší největší nejméně méně většinu nejbližší druhé tightest nejhorší |
 | RP | částicový | vypnutý nahoru o navýšení kapacity |
 | SYM | Symbol | % & |
-| DO | "do" jako mezerami nebo infinitive značky | na |
+| K | "do" jako mezerami nebo infinitive značky | na |
 | UH | interjection | uh hooray howdy hello |
 | VB | příkaz základního formuláře | umožňují přiřadit za běhu |
 | VBD | příkaz minulý čas | přiřadil přiřazené městečku |

@@ -13,10 +13,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311661"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformovat data spuštěním poznámkového bloku Databricks
@@ -59,7 +59,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 
 |Vlastnost|Popis|Požaduje se|
 |---|---|---|
-|jméno|Název aktivity v kanálu.|Ano|
+|name|Název aktivity v kanálu.|Ano|
 |description|Text popisující, jakým způsobem aktivita naloží.|Ne|
 |type|Pro aktivitu poznámkového bloku Databricks je typ aktivity DatabricksNotebook.|Ano|
 |linkedServiceName|Název propojené služby Databricks, na kterém běží poznámkového bloku Databricks. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|

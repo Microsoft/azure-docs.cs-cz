@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c2e23b0d60ca242549ebf2c058ea8f44f2b1c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60520136"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace síti na pracovišti ve službě Facebook pro automatické zřizování uživatelů
@@ -76,7 +76,7 @@ Azure AD podporuje možnost automatickou synchronizaci účtu podrobnosti o při
 
 4. Nastavte **režim zřizování** k **automatické**. 
 
-    ![zřizování](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![Zřizování](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
 5. V části **přihlašovacích údajů správce** části, zadejte Token přístupu ze svého pracoviště správcem sítě Facebook a nastavte hodnotu adresy URL Tenanta `https://www.facebook.com/scim/v1/` . Informace najdete v těchto [pokyny](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) týkající se vytvoření Token k přístupu k síti na pracovišti. 
 

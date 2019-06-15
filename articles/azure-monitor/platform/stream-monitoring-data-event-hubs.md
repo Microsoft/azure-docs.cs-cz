@@ -1,19 +1,19 @@
 ---
 title: Azure Stream monitorování dat do služby Event Hubs
 description: Naučíte se Streamovat do centra událostí k získání dat do partnerský server SIEM nebo nástroj pro analýzu Azure data monitorování.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: ''
-ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243455"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069341"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -43,8 +43,8 @@ Než začnete, budete muset [vytvoření Event Hubs oboru názvů a Centrum udá
 * Počet jednotek propustnosti můžete zvýšit propustnost škálování pro vaši službu event hubs. Počet oddílů umožňuje paralelní zpracování využití napříč mnoha příjemci. Jeden oddíl můžete provést až 20MBps nebo přibližně 20 000 zpráv za sekundu. V závislosti na využívání dat nástroj může nebo nemusí podporovat používání z několika oddílů. Pokud si nejste jistí, počet oddílů, chcete-li nastavit, doporučujeme začít s čtyřmi oddíly.
 * Doporučujeme nastavit uchovávání zpráv ve službě event hub do 7 dní. Pokud využívání nástroj ocitne mimo provoz pro více než jedním dnem, tím se zajistí, že můžete pokračovat tam, kde skončila nástroj (pro události až 7 dní).
 * Doporučujeme použít výchozí skupinu příjemců centra událostí. Není nutné vytvořit další skupiny uživatelů nebo používají skupiny konzumentů samostatné, pokud bude mít dva různé nástroje využívat stejná data ze stejného centra událostí.
-* Pro protokol aktivit Azure vyberte obor názvů služby Event Hubs a Azure Monitor vytvoří Centrum událostí v daném oboru názvů nazývá "insights protokoly operationallogs." Pro ostatní typy protokolů můžete buď zvolit existující centrum událostí (díky tomu umožňuje znovu použít stejné centra událostí insights. protokoly operationallogs) nebo Azure Monitor vytvořit Centrum událostí podle jednotlivých kategorií protokolu.
-* Obvykle je nutné otevřít port 5671 a 5672 v počítači využívající data z centra událostí.
+* Pro protokol aktivit Azure vyberte obor názvů služby Event Hubs a Azure Monitor vytvoří Centrum událostí v daném oboru názvů nazývá "insights protokoly operational-logs." Pro ostatní typy protokolů můžete buď zvolit existující centrum událostí (díky tomu umožňuje znovu použít stejné centra událostí insights protokoly operational-logs) nebo Azure Monitor vytvořit Centrum událostí podle jednotlivých kategorií protokolu.
+* Odchozí port 5671 a 5672 obvykle musí být otevřen na počítač nebo virtuální síť využívající data z centra událostí.
 
 Podrobnosti najdete také [Azure Event Hubs – nejčastější dotazy](../../event-hubs/event-hubs-faq.md).
 

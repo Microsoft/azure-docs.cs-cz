@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 4c22c9c202e6de3b31b99803dce4a07d38287a92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057283"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -36,6 +36,7 @@ Za běhu funkci v režimu auditování přiměřené dobu, můžete přepnout ko
 
 ## <a name="deployment-requirements"></a>Požadavky na nasazení
 
+* Licenční požadavky pro ochranu hesel Azure AD najdete v článku [eliminuje chybná hesla ve vaší organizaci](concept-password-ban-bad.md#license-requirements).
 * Všechny řadiče domény, které získávají agenta pro řadič domény služby pro ochranu heslem služby Azure AD nainstalovaný musí běžet Windows Server 2012 nebo novější. Tento požadavek neznamená, že služby Active Directory domény nebo doménové struktury musí být také ve Windows serveru 2012 doména nebo doménová struktura úroveň funkčnosti. Jak je uvedeno v [Principy návrhu](concept-password-ban-bad-on-premises.md#design-principles), neexistuje žádný minimální funkčnosti domény nebo FFL vyžaduje buď řadič domény agenta nebo proxy serveru ke spuštění softwaru.
 * Všechny počítače, které je nainstalovaná Služba agenta řadiče domény musí mít nainstalované rozhraní .NET 4.5.
 * Všechny počítače, které získávají proxy server služby pro ochranu heslem služby Azure AD nainstalovaný musí běžet Windows Server 2012 R2 nebo novější.

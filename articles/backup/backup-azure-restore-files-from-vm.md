@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
 ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240099"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
@@ -179,7 +179,7 @@ $ mount [RAID Disk Path] [/mountpath]
 
 Pokud RAID disk má jiné LVM jste v nich konfigurovali, použijte předchozí postup pro oddílech LVM ale použít název svazku místo názvu disku diskového pole RAID
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 ### <a name="for-windows-os"></a>Pro operační systém Windows
 
@@ -196,7 +196,7 @@ V následující tabulce jsou uvedeny kompatibilitu mezi serverem a počítačem
 
 V systému Linux musí podporovat operační systém počítače používá k obnovení souborů systému souborů chráněného virtuálního počítače. Při výběru počítače ke spuštění skriptu, zajistěte počítač kompatibilní operační systém a používá jednu z verzí, které jsou uvedené v následující tabulce:
 
-|Operační systém Linux | Verze  |
+|Linux OS | Verze  |
 | --------------- | ---- |
 | Ubuntu | 12.04 a vyšší |
 | CentOS | 6.5 a vyšší  |

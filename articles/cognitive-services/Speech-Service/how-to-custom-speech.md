@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: ab33feb1ffdbced193afaba8f52719b3c215652f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f9b9fc0a2939f601cbddafb6ac400130e794da2b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060884"
 ---
 # <a name="what-is-custom-speech"></a>Co je vlastní řeči?
 
@@ -29,7 +29,7 @@ Tento diagram zvýrazňuje částí, které tvoří portál Custom Speech. Dalš
 
 ![Ukazuje různé součásti tvořící portál Custom Speech.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Přihlášení odběru a vytvořte projekt](#set-up-your-azure-account) – vytvoření účtu Azure a odběru hlasové služby. Toto jednotné předplatné poskytuje přístup k rozpoznávání řeči na text, převodu textu na řeč, překlad řeči a portál custom speech. Pak pomocí svého předplatného služby řeči, vytvořte svůj první projekt vlastní řeči.
+1. [Přihlášení odběru a vytvořte projekt](#set-up-your-azure-account) – vytvoření účtu Azure a odběru hlasové služby. Toto jednotné předplatné poskytuje přístup k převodu řeči na text, převodu textu na řeč, překlad řeči a portál Custom Speech. Pak pomocí svého předplatného služby řeči, vytvořte svůj první projekt vlastní řeči.
 
 2. [Nahrát testovací data](how-to-custom-speech-test-data.md) -nahrát testovací data (zvukové soubory) pro vyhodnocení od Microsoftu speech-to-text nabídky pro vaše aplikace, nástroje a produkty.
 
@@ -52,7 +52,7 @@ Po vytvoření účtu Azure a hlasové služby předplatného, budete muset při
 
 1. Získejte klíč předplatného hlasové služby z webu Azure portal.
 2. Přihlaste se do [portál Custom Speech](https://aka.ms/custom-speech).
-3. Vyberte předplatné, které potřebujete k práci na a vytvoření projektu řeči.
+3. Vyberte předplatné, které je potřeba pracovat a vytvořte projekt řeči.
 4. Pokud chcete změnit vaše předplatné, použijte **ozubeného kola** ikona nachází v horním navigačním panelu.
 
 ## <a name="how-to-create-a-project"></a>Vytvoření projektu

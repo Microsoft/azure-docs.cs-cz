@@ -17,10 +17,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60543040"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Průvodce ukázkovou infrastrukturou Azure pro virtuální počítače s Linuxem
@@ -55,8 +55,8 @@ Všechny výše uvedené použijte tyto zásady vytváření názvů:
 * Adventure Works Cycles používá **[IT úlohy]-[umístění]-[prostředků Azure]** jako předponu
   * V tomto příkladu "**azos**" (Azure On-line Store) je název úlohy IT a "**použít**" je umístění (východní USA 2)
 * Virtuální sítě pomocí AZOS. POUŽIJTE VN<strong>[číslo]</strong>
-* Skupiny dostupnosti použijte azos-použití-jako-**[role]**
-* Názvy virtuálních počítačů použít azos-použití-vm -**[název_virtuálního_počítače]**
+* Skupiny dostupnosti použijte azos-použití-jako- **[role]**
+* Názvy virtuálních počítačů použít azos-použití-vm - **[název_virtuálního_počítače]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Účtů a předplatných Azure
 Adventure Works Cycles využívá svoje předplatné Enterprise s názvem předplatného Enterprise společnosti Adventure Works k vyúčtování pro danou úlohu IT.

@@ -2,24 +2,24 @@
 title: Úvod do služby Azure Stream Analytics okny
 description: Tento článek popisuje čtyři okny (přeskakujícího, kdy se skok provádí, klouzavé, relace), které se používají v úlohách Azure Stream Analytics.
 services: stream-analytics
-author: lingliw
-ms.author: v-lingwu
-manager: digimobile
+author: jseb225
+ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/21/19
-ms.openlocfilehash: 04c19e7e51777db4c59bfab3d5a8a7598560556a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 56b6f11d226f25e3094a90d8646fa13860ee306e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844724"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066764"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do služby Stream Analytics okny
+
 Ve scénářích streamování v čase provádění operací na data obsažená v dočasné systému windows je běžný vzor. Stream Analytics má nativní podporu pro okny, umožňuje vývojářům Autor zpracování komplexních datových proudů úloh s minimálním úsilím.
 
-Existují čtyři druhy dočasné windows na výběr: [**Přeskakujícího**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [ **dosáhneme**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [ **klouzavé**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics), a [ **relace**  ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) systému windows.  Použití funkcí okna v [ **Group** ](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) klauzule syntaxe dotazů ve svých úlohách Stream Analytics.
+Existují čtyři druhy dočasné windows na výběr: [**Přeskakujícího**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [ **dosáhneme**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [ **klouzavé**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics), a [ **relace**  ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) systému windows.  Použití funkcí okna v [ **Group** ](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) klauzule syntaxe dotazů ve svých úlohách Stream Analytics. Události můžete také agregovat přes pomocí více oken [ **Windows()** funkce](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
 
 Všechny [oddílová](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics) operací vypsání výsledků na **end** okna. Výstup v okně bude jedinou událost na základě agregační funkce používá. Výstupní událost může mít časové razítko konce okna a všech funkcí okna jsou definovány s pevnou délkou. 
 
@@ -51,6 +51,7 @@ Pokud události zachovat ke kterým dochází v rámci zadaného časového limi
 
 Pokud se poskytne klíč oddílu, události, které jsou seskupeny podle klíče a okno relace platí pro každou skupinu nezávisle na sobě. Toto rozdělení do oddílů je užitečné pro případy, kdy potřebujete jinou relací windows pro různé uživatele nebo zařízení.
 
+
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
@@ -58,4 +59,3 @@ Pokud se poskytne klíč oddílu, události, které jsou seskupeny podle klíče
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!--Update_Description: update meta properties -->

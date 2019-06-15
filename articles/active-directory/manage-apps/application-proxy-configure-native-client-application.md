@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb36d6a03da07681db468184a489a79f7f0deab7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825486"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
@@ -54,7 +54,7 @@ Teď musíte zaregistrovat aplikaci v Azure AD, následujícím způsobem:
    - Pokud chcete zaměřit pouze účty, které jsou interní v organizaci, vyberte **účty v tomto adresáři organizace jenom**.
    - Chcete-li cílit, pouze obchodní nebo vzdělávací zákazníků, vyberte **účty v libovolném adresáři organizace**.
    - Chcete-li cílit na nejširší sadu identit společnosti Microsoft, vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
-7. V **identifikátor URI pro přesměrování** záhlaví, vyberte **veřejným klientem (mobilních a desktopových)**, a pak zadejte identifikátor URI přesměrování pro aplikaci.
+7. V **identifikátor URI pro přesměrování** záhlaví, vyberte **veřejným klientem (mobilních a desktopových)** , a pak zadejte identifikátor URI přesměrování pro aplikaci.
 8. Vyberte a čtení **zásady platformy Microsoftu**a pak vyberte **zaregistrovat**. Stránka s přehledem pro registrace nové aplikace se vytvoří a zobrazí.
 
 Podrobné informace o vytváření registrace nové aplikace, najdete v článku [integrace aplikací s Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).

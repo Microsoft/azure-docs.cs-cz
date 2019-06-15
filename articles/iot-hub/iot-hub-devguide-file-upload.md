@@ -8,16 +8,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60950376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080424"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů pomocí služby IoT Hub
 
-Jak [koncové body IoT Hubu](iot-hub-devguide-endpoints.md) článku, zařízení můžete spustit nahrávání souborů pomocí odesílání oznámení prostřednictvím koncového bodu připojeného k zařízení (**/devices/ {deviceId} / soubory**). Když zařízení oznámí služby IoT Hub, nahrání je dokončena, IoT Hub odešle zprávu s oznámením nahrávání souboru prostřednictvím **/messages/servicebound/filenotifications** koncového bodu připojeného k služby.
+Jak [koncové body IoT Hubu](iot-hub-devguide-endpoints.md) článku, zařízení můžete spustit nahrávání souborů pomocí odesílání oznámení prostřednictvím koncového bodu připojeného k zařízení ( **/devices/ {deviceId} / soubory**). Když zařízení oznámí služby IoT Hub, nahrání je dokončena, IoT Hub odešle zprávu s oznámením nahrávání souboru prostřednictvím **/messages/servicebound/filenotifications** koncového bodu připojeného k služby.
 
 Místo zprostředkovatelské zpráv prostřednictvím služby IoT Hub, samotné služby IoT Hub místo funguje jako dispečer do přidruženého účtu Azure Storage. Zařízení vyžaduje úložiště token ze služby IoT Hub, která je specifická pro soubor, který chce zařízení nahrát. Zařízení využívá identifikátor URI SAS pro nahrání souboru do úložiště, a po dokončení nahrávání zařízení odešle oznámení o dokončení do služby IoT Hub. IoT Hub zkontroluje samotné nahrávání souborů je a pak přidá zprávu s oznámením nahrání souboru do koncového bodu služby připojeného souboru oznámení.
 
@@ -95,7 +95,7 @@ V následujících tématech vám poskytnout další informace o nahrávání so
 
 Volitelně když se zařízení upozornění služby IoT Hub, že se nahrávání dokončí, služby IoT Hub generuje zprávu s oznámením. Tato zpráva obsahuje název a úložiště umístění souboru.
 
-Jak je vysvětleno v [koncové body](iot-hub-devguide-endpoints.md), IoT Hub doručí oznámení o nahrávání souborů prostřednictvím koncového bodu připojeného k služby (**/messages/servicebound/fileuploadnotifications**) jako zprávy. Sémantika příjmu pro oznámení o nahrávání souborů je stejný jako u zprávy typu cloud zařízení a mají stejné [životní cyklus zpráv](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle). Každou zprávu načíst z koncového bodu oznámení nahrávání souborů je záznam JSON s následujícími vlastnostmi:
+Jak je vysvětleno v [koncové body](iot-hub-devguide-endpoints.md), IoT Hub doručí oznámení o nahrávání souborů prostřednictvím koncového bodu připojeného k služby ( **/messages/servicebound/fileuploadnotifications**) jako zprávy. Sémantika příjmu pro oznámení o nahrávání souborů je stejný jako u zprávy typu cloud zařízení a mají stejné [životní cyklus zpráv](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle). Každou zprávu načíst z koncového bodu oznámení nahrávání souborů je záznam JSON s následujícími vlastnostmi:
 
 | Vlastnost | Popis |
 | --- | --- |
@@ -125,10 +125,10 @@ Každé centrum IoT má následující možnosti konfigurace pro soubor, odeslat
 
 | Vlastnost | Popis | Rozsah a výchozí |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Určuje, zda oznámení o nahrávání souborů se zapisují do koncového bodu oznámení souboru. |Bool. Výchozí: Hodnota TRUE. |
-| **fileNotifications.ttlAsIso8601** |Výchozí hodnota TTL pro oznámení o nahrávání souborů. |ISO_8601 interval až 48 H (minimální 1 minuta). Výchozí: 1 hodina. |
-| **fileNotifications.lockDuration** |Doba trvání uzamknutí pro frontu oznámení nahrávání souboru. |5 do 300 sekund (minimální 5 sekund). Výchozí: 60 sekund. |
-| **fileNotifications.maxDeliveryCount** |Maximální počet doručení pro tento soubor nahrajte frontě oznámení. |1 až 100. Výchozí: 100. |
+| **enableFileUploadNotifications** |Určuje, zda oznámení o nahrávání souborů se zapisují do koncového bodu oznámení souboru. |Bool. Výchozí hodnota: Hodnota TRUE. |
+| **fileNotifications.ttlAsIso8601** |Výchozí hodnota TTL pro oznámení o nahrávání souborů. |ISO_8601 interval až 48 H (minimální 1 minuta). Výchozí hodnota: 1 hodina. |
+| **fileNotifications.lockDuration** |Doba trvání uzamknutí pro frontu oznámení nahrávání souboru. |5 do 300 sekund (minimální 5 sekund). Výchozí hodnota: 60 sekund. |
+| **fileNotifications.maxDeliveryCount** |Maximální počet doručení pro tento soubor nahrajte frontě oznámení. |1 až 100. Výchozí hodnota: 100. |
 
 ## <a name="additional-reference-material"></a>Další referenční materiál
 

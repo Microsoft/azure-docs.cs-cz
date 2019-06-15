@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa820d6c140251fce6b09110e65b45005b53afcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60289536"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivovat Moje role Azure AD v PIM
@@ -55,7 +55,7 @@ Když budete potřebovat k převzetí role služby Azure AD, můžete žádost o
 
 1. Klikněte na tlačítko **ověřit moji identitu** a postupujte podle pokynů a poskytují dodatečné ověření zabezpečení.
 
-    ![Ověření pro další úroveň zabezpečení](./media/pim-how-to-activate-role/additional-security-verification.png)
+    ![Další ověření zabezpečení](./media/pim-how-to-activate-role/additional-security-verification.png)
 
 1. Klikněte na tlačítko **aktivovat** a otevřete tak podokno aktivace.
 

@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60321677"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Vyměňovat hardwarové součásti na vašem zařízení řady StorSimple 8000
@@ -106,8 +106,8 @@ Primární skříň a skříně EBOD mají moduly dopravce jednotky. Skříň js
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
-| 3 |Řadič 0 |
-| 4 |Řadič 1 |
+| 3 |Kontroler 0 |
+| 4 |Kontroler 1 |
 
 ![Základní moduly plug-in skříň zařízení EBOD](./media/storsimple-hardware-component-replacement/IC769599.png)
 

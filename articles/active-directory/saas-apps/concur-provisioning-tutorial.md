@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60280409"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Kurz: Konfigurace Concur pro automatické zřizování uživatelů
@@ -101,7 +101,7 @@ Z následujících důvodů by neměla provést tuto akci s profilem, které pou
 
 9. Nastavte **režim zřizování** k **automatické**. 
  
-    ![zřizování](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Zřizování](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. V části **přihlašovacích údajů správce** části, zadejte **uživatelské jméno** a **heslo** Concur správce.
 

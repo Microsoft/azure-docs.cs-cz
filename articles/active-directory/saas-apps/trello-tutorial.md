@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff5ff12f18d1f85b3ca53adb42fee41e19fb4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865789"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Kurz: Integrace Azure Active Directory s Trello
 
@@ -132,7 +132,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Trello, proveďte následuj
 
 7. V **deklarace identity uživatelů** tématu **atributy uživatele** dialogového okna nastavte atribut tokenu SAML, jak je znázorněno na předchozím obrázku. Pak proveďte následující kroky:
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | --- | --- |
     | User.Email | user.mail |
     | User.FirstName | user.givenname |
@@ -142,7 +142,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Trello, proveďte následuj
 
     ![Dialogové okno deklarace identity uživatele](common/new-save-attribute.png)
 
-    ![Spravovat deklarace identity uživatele](common/new-attribute-details.png)
+    ![Správa deklarací identity uživatelů](common/new-attribute-details.png)
 
     b. V **název** zadejte název atributu, který je zobrazený pro tento řádek.
 
@@ -231,7 +231,7 @@ V této části vytvořte uživatele Britta Simon v Trellu. Trello podporuje pou
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [tým podpory Trello](mailto:support@trello.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu MyApps.
 

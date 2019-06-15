@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 57a3ea73783af1edaee069bf2770d5c58f81772a
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 94cc41890778e842cb2e4bd6e06b90361cbef1cd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066460"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
@@ -183,7 +183,7 @@ Cluster služby HDInsight můžete propojit s použitím Apache Ambari, spravova
         |Uživatelské jméno| Zadejte uživatelské jméno clusteru, výchozí hodnota je správce.|
         |Heslo| Zadejte heslo pro uživatelské jméno.|
     
-        ![propojit dialogu clusteru Hdinsight](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+        ![propojit dialogu clusteru HdInsight](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Služba Livy**  
   
@@ -457,12 +457,12 @@ Pokud cluster je zaneprázdněný, může se zobrazit následující chyba.
 
 ![Intellij zobrazí chybová zpráva při clusteru zaneprázdněný](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
-## <a name="feedback-and-known-issues"></a>Zpětná vazba a známé problémy
+## <a name="known-issues"></a>Známé problémy
+
 V současné době se nepodporuje zobrazení Spark výstupy přímo.
 
-Pokud máte nějaké návrhy nebo zpětnou vazbu, nebo pokud se vyskytnou potíže při použití tohoto modulu plug-in, pošlete nám e-mail na hdivstool@microsoft.com.
-
 ## <a name="seealso"></a>Další kroky
+
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Ukázka
@@ -482,7 +482,6 @@ Pokud máte nějaké návrhy nebo zpětnou vazbu, nebo pokud se vyskytnou potí�
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Ladění aplikací Apache Spark vzdáleně přes síť VPN pomocí sady Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Ladění aplikací Apache Spark vzdáleně přes SSH pomocí sady Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Vytváření aplikací Apache Spark pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse](apache-spark-eclipse-tool-plugin.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)

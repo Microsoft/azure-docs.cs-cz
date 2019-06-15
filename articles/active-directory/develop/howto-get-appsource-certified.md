@@ -19,10 +19,10 @@ ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540267"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Získání certifikace AppSource pro Azure Active Directory
@@ -40,7 +40,7 @@ Pokud chcete další informace o tom, jak integrovat aplikace s Azure AD pomocí
 A *aplikace s více tenanty* je aplikace, která přijímá přihlášení od uživatele z jakékoli společnost nebo organizace, kteří mají služby Azure AD bez nutnosti samostatné instance, konfigurace nebo nasazení. AppSource se doporučuje, aby aplikace implementovat více tenantů, aby *jedním kliknutím* bezplatné zkušební verze.
 
 Pokud chcete povolit více tenantů v aplikaci, postupujte takto:
-1. Nastavte `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace v [webu Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení, aplikace vytvořené na webu Azure Portal jsou nakonfigurované jako  *[jednoho tenanta](#single-tenant-applications)*.
+1. Nastavte `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace v [webu Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Ve výchozím nastavení, aplikace vytvořené na webu Azure Portal jsou nakonfigurované jako  *[jednoho tenanta](#single-tenant-applications)* .
 1. Aktualizujte svůj kód k odeslání žádosti o `common` koncového bodu. Provedete to tak, aktualizujte koncový bod z `https://login.microsoftonline.com/{yourtenant}` k `https://login.microsoftonline.com/common*`.
 1. Pro některé platformy, jako je ASP .NET budete muset taky aktualizovat váš kód tak, aby přijímal více vystavitelů.
 

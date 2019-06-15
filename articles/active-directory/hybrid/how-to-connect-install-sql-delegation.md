@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243515"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL
@@ -44,7 +44,7 @@ Zřízení databáze mimo IP síť a nainstalujte Azure AD Connect s oprávněn�
 >Ačkoli není vyžadována, je **důrazně doporučujeme** , že kolace Latin1_General_CI_AS určen při vytváření této databáze.
 
 
-1. Požádejte správce SQL vytvořit databázi ADSync pomocí pořadí řazení malá a velká písmena **(Latin1_General_CI_AS)**.  Databáze musí mít název **ADSync**.  Model obnovení, úroveň kompatibility a typ členství ve skupině se aktualizují na správné hodnoty při instalaci Azure AD Connect.  Ale pořadí kolace musí být správně nastaveny správcem SQL jinak Azure AD Connect bude blokovat instalaci.  K obnovení přidružení zabezpečení musíte odstranit a znovu vytvořit databázi.
+1. Požádejte správce SQL vytvořit databázi ADSync pomocí pořadí řazení malá a velká písmena **(Latin1_General_CI_AS)** .  Databáze musí mít název **ADSync**.  Model obnovení, úroveň kompatibility a typ členství ve skupině se aktualizují na správné hodnoty při instalaci Azure AD Connect.  Ale pořadí kolace musí být správně nastaveny správcem SQL jinak Azure AD Connect bude blokovat instalaci.  K obnovení přidružení zabezpečení musíte odstranit a znovu vytvořit databázi.
  
    ![Kolace](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Udělte oprávnění správce služby Azure AD Connect a doménu účtu služby:

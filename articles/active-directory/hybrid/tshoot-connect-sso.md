@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60381849"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
@@ -91,7 +91,7 @@ Použijte následující kontrolní seznam k řešení problémů bezproblémov�
 
 ### <a name="domain-controller-logs"></a>Protokoly řadiče domény
 
-Pokud povolíte auditování úspěšných na vašem řadiči domény a pak pokaždé, když se uživatel přihlásí pomocí bezproblémového jednotného přihlašování, záznam zabezpečení se zaznamená do protokolu událostí. Tyto události zabezpečení získáte pomocí následujícího dotazu. (Vyhledejte událost **4769** přidružené k účtu počítače **AzureADSSOAcc$**.)
+Pokud povolíte auditování úspěšných na vašem řadiči domény a pak pokaždé, když se uživatel přihlásí pomocí bezproblémového jednotného přihlašování, záznam zabezpečení se zaznamená do protokolu událostí. Tyto události zabezpečení získáte pomocí následujícího dotazu. (Vyhledejte událost **4769** přidružené k účtu počítače **AzureADSSOAcc$** .)
 
 ```
     <QueryList>

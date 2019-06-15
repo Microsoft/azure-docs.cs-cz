@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 24b18a07a4581eadc556e358f6505345610927c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bab2cc378d6dd3c94e20e6d2a2bf950d8793e629
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>Kurz: Integrace Azure Active Directory s Inkling
 
@@ -53,7 +53,7 @@ Konfigurace integrace Inkling do služby Azure AD, budete muset přidat Inkling 
 
 **Chcete-li přidat Inkling z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

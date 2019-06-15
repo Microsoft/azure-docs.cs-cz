@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60813566"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
@@ -68,7 +68,7 @@ Vzor syntaxe podporuje následující syntaxi:
 |Funkce|Syntaxe|Úroveň vnoření|Příklad:|
 |--|--|--|--|
 |entita| {} -složené závorky|2|Kde je formulář {název entity}?|
-|nepovinné|[] - hranaté závorky<BR><BR>Je stanovený limit 3 na úrovní vnoření z jakékoli kombinace volitelné a seskupování |2|Otazník je volitelné [?]|
+|Volitelné|[] - hranaté závorky<BR><BR>Je stanovený limit 3 na úrovní vnoření z jakékoli kombinace volitelné a seskupování |2|Otazník je volitelné [?]|
 |Seskupení|() – závorky|2|je ( \| b).|
 |nebo| \| -svislá čára (kanál)<br><br>Je stanovený limit 2 na svislé čáry (nebo) v jedné skupině |-|Kde je formulář ({formuláře krátký název} &#x7c; {formuláře název dlouho} &#x7c; {číslo formuláře})| 
 |začátek nebo konec utterance|^ – blikajícího kurzoru|-|^ začít utterance<br>provádí utterance ^<br>^ striktní literálu shodu celého utterance s entitou {number} ^|
@@ -170,7 +170,7 @@ Označit volitelný text, který v utterance pomocí syntaxe regulárních výra
 |Vzor s volitelným textem|Význam|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` a `from {person}` jsou volitelné|
-|' Je mi může pomoci [?] | Je volitelný interpunkčního znaménka.|
+|' Je mi může pomoci [?]|Je volitelný interpunkčního znaménka.|
 
 Interpunkční znaménka (`?`, `!`, `.`) ignorovat a je potřeba je pomocí syntaxe hranatá závorka ve vzorech ignorovat. 
 

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2b92b7673ed852e203ca0926421be6ee8cf977d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311160"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058173"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-zotavení po havárii
 
@@ -49,7 +49,7 @@ V tomto článku se používají následující termíny:
 
 -  *Převzetí služeb při selhání*: Proces aktivace sekundární obor názvů.
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 
 Následující části je uveden přehled nastavení párování mezi obory názvů.
 
@@ -102,7 +102,7 @@ Pokud se jedná o chybu; například spárované nesprávné oblasti při počá
 
 Pokud máte scénáře, ve kterém nelze změnit připojení producenti a spotřebitelé, můžete znovu použít název vašeho oboru názvů jako název aliasu. Zobrazit [ukázkový kód na Githubu tady](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 
 [Ukázky na Githubu](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a spustit převzetí služeb při selhání. Tyto ukázky ukazují následující pojmy:
 
@@ -120,7 +120,7 @@ Mějte na paměti následující aspekty brát v úvahu v této vydané verzi:
 
 2. Fakt, že žádná data se replikují znamená, že momentálně se nereplikují aktivní relace. Plánované zprávy a duplicit navíc nemusí fungovat. Nové relace, nové plánované zprávy a nové duplikáty budou fungovat. 
 
-3. Přebírání služeb při selhání komplexní distribuované infrastruktury by měla být [vyzkoušená](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) alespoň jednou.
+3. Přebírání služeb při selhání komplexní distribuované infrastruktury by měla být [vyzkoušená](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) alespoň jednou.
 
 4. Synchronizace entit může trvat nějakou dobu, přibližně 50 – 100 entit za minutu. Předplatná a pravidla i počítat jako entity.
 

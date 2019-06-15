@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d45b52ac6d51560f2a07de9f629d3b2ccfccb5e3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 246378771e3af3a449c111ee59c39df36de4a7ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899922"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním některé správce
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování k určité sp
 
 **Chcete-li přidat některé správce jednotné přihlašování z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ V této části je povolit Britta Simon udělení přístupu k určité jednotn�
 
 V této části vytvořte uživatele Britta Simon v některých správce jednotného přihlašování. Práce s [tým podpory jednotného přihlašování k určité správce](mailto:integrations@certain.com) přidat uživatele na platformě některé správce jednotného přihlašování. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

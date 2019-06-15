@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d03d4bd86367aa29bbf93062f7cc03f57f4cad83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075940"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro Azure Virtual Machines (Resource Manager)
 
@@ -67,10 +67,10 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 | **Automatizované zálohování** | Povolí nebo zakáže (zakázáno) | Povolí nebo zakáže automatické zálohování pro virtuální počítač Azure s SQL serverem 2016 a 2017 Developer, Standard nebo Enterprise. |
 | **Doba uchování** | 1 – 30 dnů (30 dnů) | Počet dní uchování záloh. |
 | **Účet úložiště** | Účet služby Azure Storage | Účet úložiště Azure k ukládání souborů automatizovaného zálohování ve službě blob storage. Kontejner se vytvoří v tomto umístění pro uložení všechny záložní soubory. Zásady vytváření názvů záložní soubor obsahuje data, času a GUID databáze. |
-| **Šifrování** |Povolí nebo zakáže (zakázáno) | Povolí nebo zakáže šifrování. Když je povoleno šifrování, certifikátů používaných pro obnovení zálohy jsou umístěny v zadaný účet úložiště. Používá stejný **automaticbackup** kontejner se stejné zásady vytváření názvů. Pokud se změní heslo, se toto heslo se vygeneruje nový certifikát, ale starý certifikát zůstane k obnovení předchozího záloh. |
+| **Šifrování** |Povolí nebo zakáže (zakázáno) | Povolí nebo zakáže šifrování. Když je povoleno šifrování, certifikátů používaných pro obnovení zálohy jsou umístěny v zadaný účet úložiště. Používá stejný **automatické zálohování** kontejner se stejné zásady vytváření názvů. Pokud se změní heslo, se toto heslo se vygeneruje nový certifikát, ale starý certifikát zůstane k obnovení předchozího záloh. |
 | **Heslo** |Heslo text | Heslo šifrovacích klíčů. Toto heslo je jenom nutné, pokud je povolené šifrování. Aby bylo možné obnovit šifrované zálohování, musíte mít správné heslo a související certifikát, který byl použit v době, kdy bylo provedeno zálohování. |
 
-### <a name="advanced-settings"></a>Upřesnit nastavení
+### <a name="advanced-settings"></a>Upřesňující nastavení
 
 | Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
@@ -107,8 +107,8 @@ Máte virtuálního počítače SQL serveru, který obsahuje počet velkých dat
 
 V pondělí povolíte automatizované zálohování v2 s následujícím nastavením:
 
-- Plán zálohování: Ručně
-- Frekvence úplného zálohování: Den
+- Plán zálohování: Manual
+- Frekvence úplného zálohování: Denně
 - Čas spuštění úplného zálohování: 22:00
 - Časový interval úplného zálohování: 6 hodin
 
@@ -127,7 +127,7 @@ Na webu Azure portal můžete použít ke konfiguraci automatizovaného zálohov
 
 Konfigurace automatizovaného zálohování v2, když vytvoříte nový SQL Server 2016 nebo 2017 virtuálního počítače v modelu nasazení Resource Manageru pomocí webu Azure portal.
 
-V **nastavení systému SQL Server** vyberte **automatizované zálohování**. Ukazuje následující snímek obrazovky Azure portal **automatizované zálohování SQL** nastavení.
+V **nastavení systému SQL Server** kartu, vyberte možnost **povolit** pod **automatizované zálohování**. Ukazuje následující snímek obrazovky Azure portal **automatizované zálohování SQL** nastavení.
 
 ![Konfigurace automatizovaného zálohování SQL na webu Azure portal](./media/virtual-machines-windows-sql-automated-backup-v2/automated-backup-blade.png)
 
@@ -136,15 +136,14 @@ V **nastavení systému SQL Server** vyberte **automatizované zálohování**. 
 
 ## <a name="configure-existing-vms"></a>Konfigurace existujících virtuálních počítačů
 
-Existující virtuální počítače systému SQL Server vyberte virtuální počítač systému SQL Server. Vyberte **konfigurace systému SQL Server** části virtuální počítač **nastavení**.
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Existující virtuální počítače systému SQL Server, přejděte [prostředků virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) a pak vyberte **zálohy** nakonfigurovat automatizované zálohování.
 
 ![Automatizované zálohování SQL pro stávající virtuální počítače](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
 
-V **konfigurace systému SQL Server** nastavení, klikněte na tlačítko **upravit** tlačítko v části pro automatizovaná zálohování.
 
-![Konfigurace automatizovaného zálohování SQL pro stávající virtuální počítače](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration-edit.png)
-
-Až budete hotovi, klikněte na tlačítko **OK** tlačítko v dolní části **konfigurace systému SQL Server** nastavení uložte provedené změny.
+Až budete hotovi, klikněte na tlačítko **použít** tlačítko v dolní části **zálohy** nastavení stránky uložte provedené změny.
 
 Pokud povolíte automatizované zálohování pro první, Azure nakonfiguruje agenta SQL Server IaaS na pozadí. Během této doby nemusí zobrazit na webu Azure portal, automatické zálohování je nakonfigurované. Počkejte několik minut, než agent nainstalován, nakonfigurován. Na webu Azure portal, projeví se nová nastavení.
 
@@ -169,7 +168,7 @@ $resourcegroupname = "resourcegroupname"
 
 Pokud je nainstalovaná rozšíření agenta SQL Server IaaS, měli byste vidět, že je uveden jako "SqlIaaSAgent" nebo "SQLIaaSExtension". **Stav zřizování** pro rozšíření by měl také zobrazí "ÚSPĚCH". 
 
-Pokud není nainstalovaná nebo se nepovedlo zřídit, můžete ho nainstalovat pomocí následujícího příkazu. Kromě virtuální počítač a skupinou prostředků, musíte zadat také oblast (**$region**), který váš virtuální počítač se nachází v.
+Pokud není nainstalovaná nebo se nepovedlo zřídit, můžete ho nainstalovat pomocí následujícího příkazu. Kromě virtuální počítač a skupinou prostředků, musíte zadat také oblast ( **$region**), který váš virtuální počítač se nachází v.
 
 ```powershell
 $region = “EASTUS2”

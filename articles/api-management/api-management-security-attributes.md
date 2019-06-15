@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001096"
 ---
 # <a name="security-attributes-for-api-management"></a>Atributy zabezpečení pro službu API Management
@@ -41,7 +41,7 @@ Tento článek popisuje atributy zabezpečení integrované do API managementu.
 | Izolace sítě a podporu funkce brány firewall| Ano | Použití skupin zabezpečení sítě (NSG) a Azure Application Gateway (nebo jiné softwarové zařízení) v uvedeném pořadí. |
 | Vynucené tunelování podpory| Ano | Sítě Azure poskytují vynucené tunelování. |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
@@ -72,6 +72,6 @@ Tento článek popisuje atributy zabezpečení integrované do API managementu.
 
 Tato část popisuje běžné chyby, které nemají vliv na Azure API Management.
 
-| Chyba zabezpečení               | Popis                                                                                                                                                                                                                                                                                                               |
+| Ohrožení zabezpečení               | Popis                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE 2016 9244) | Ticketbleed je chyba v implementaci TLS SessionTicket rozšíření v některé produkty F5. To umožňuje úniku ("vykrvení") až 31 bajtů dat z neinicializované paměti. To je způsobeno zásobníku TLS odsazení ID relace, předat z klienta, se data tak, aby 32 bitů. |

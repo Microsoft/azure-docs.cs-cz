@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062113"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuální verze](transform-data-using-dotnet-custom-activity.md)
 
@@ -104,7 +104,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | Název aktivity v kanálu     | Ano      |
 | description           | Text popisující, jakým způsobem aktivita naloží.  | Ne       |
-| Typ                  | Pro vlastní aktivitu, typ aktivity je **vlastní**. | Ano      |
+| type                  | Pro vlastní aktivitu, typ aktivity je **vlastní**. | Ano      |
 | linkedServiceName     | Propojená služba se službou Azure Batch. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.  | Ano      |
 | Příkaz               | Příkaz vlastní aplikace, který se spustí. Pokud aplikace je již k dispozici na uzlech fondu Azure Batch, můžete přeskočit resourceLinkedService a folderPath. Například můžete zadat příkaz, který má být `cmd /c dir`, která je nativně podporuje uzlu Windows fondu služby Batch. | Ano      |
 | resourceLinkedService | Propojená služba Azure Storage do účtu úložiště, kde je uložený vlastní aplikace | Ne&#42;       |
@@ -301,7 +301,7 @@ Activity Error section:
 Pokud chcete využívat obsah stdout.txt v podřízené aktivity, můžete získat cestu k souboru stdout.txt ve výrazu "\@activity('MyCustomActivity').output.outputs [0]".
 
 > [!IMPORTANT]
-> - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy služby Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/" cesta. V případě potřeby, musíte ho PROČISTIT samostatně.
+> - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy služby Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` cestu. V případě potřeby, musíte ho PROČISTIT samostatně.
 > - Pro propojené služby, která používá modul Integration Runtime citlivé informace, jako jsou klíče nebo hesla je jím zašifrovaná modul Integration Runtime k zajištění přihlašovacích údajů zůstávají v zákazník definovaný privátním síťovém prostředí. Při odkazu kód vlastní aplikace tímto způsobem, může být některá citlivá pole chybí. V extendedProperties namísto používání odkaz na propojenou službu, v případě potřeby použijte SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Předejte výstup do jiné
@@ -342,7 +342,7 @@ Následující tabulka popisuje rozdíly mezi Data Factory V2 vlastní aktivity 
 |Jak je definován vlastní logiku      |Tím, že poskytuje spustitelný soubor      |Implementací knihovny DLL .NET      |
 |Prostředí pro spouštění vlastní logiky      |Windows nebo Linux      |Windows (.NET Framework 4.5.2)      |
 |Spouštění skriptů      |Podporuje spouštění skriptů přímo (například "cmd /c odezvu hello world" na virtuálním počítači Windows)      |Vyžaduje implementaci v knihovně DLL .NET      |
-|Datová sada, povinné      |Volitelná      |Požadované aktivity zřetězit a předávají informace      |
+|Datová sada, povinné      |Nepovinné      |Požadované aktivity zřetězit a předávají informace      |
 |Předávání informací z aktivity do vlastní logiku      |Prostřednictvím ReferenceObjects (LinkedServices a datové sady) a ExtendedProperties (Vlastnosti)      |Prostřednictvím ExtendedProperties (Vlastnosti), vstupní a výstupní datové sady      |
 |Načtení informací vlastní logiku      |Analyzuje activity.json linkedServices.json a datasets.json uloženy ve stejné složce spustitelného souboru      |Pomocí sady .NET SDK (rámce .NET 4.5.2)      |
 |Protokolování      |Zapisuje přímo do STDOUT      |Implementace protokolovací nástroj v knihovně DLL .NET      |

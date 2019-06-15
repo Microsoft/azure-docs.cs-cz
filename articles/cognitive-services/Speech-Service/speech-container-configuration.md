@@ -3,19 +3,19 @@ title: Konfigurace kontejnery řeči
 titleSuffix: Azure Cognitive Services
 description: Kontejner řeči
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.author: diberry
-ms.openlocfilehash: e2ed29bb61f553f68b9f9802884169361d5d983f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 2dd1769d2d0a940176fb51954f44859cb42f30d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797927"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072444"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurace Speech Service kontejnery
 
@@ -78,10 +78,10 @@ Kontejnery řeči nepoužívejte vstup nebo výstup připojí k uložení škole
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](speech-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby docker a hostiteli připojit umístění oprávnění. 
 
-|Volitelná| Název | Typ dat | Popis |
+|Nepovinné| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | String | Kontejnery řeči Nepoužívejte toto.|
-|Volitelná| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Nepovoleno| `Input` | String | Kontejnery řeči Nepoužívejte toto.|
+|Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 
 

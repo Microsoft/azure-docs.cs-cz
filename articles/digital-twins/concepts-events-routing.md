@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60926268"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080661"
 ---
 # <a name="routing-events-and-messages"></a>Směrování událostí a zpráv
 
@@ -21,7 +21,7 @@ ms.locfileid: "60926268"
 
 ## <a name="route-types"></a>Typy směrování  
 
-Digitální dvojče Azure nabízí dva způsoby, jak integrace událostí IoT do jiných služeb Azure nebo obchodních aplikací:
+Digitální dvojče Azure nabízí dva způsoby, jak připojit událostí IoT s ostatními službami Azure nebo obchodních aplikací:
 
 * **Směrování událostí Azure digitální dvojče**: Objekt prostorový graf změny, telemetrická data, která se zobrazila, nebo uživatelem definovanou funkci, která vytvoří oznámení na základě předdefinovaných podmínek, mohou aktivovat události digitální dvojče Azure. Uživatelé můžou posílat událostí do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [témat Azure Service Bus](https://azure.microsoft.com/services/service-bus/), nebo [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) k dalšímu zpracování.
 

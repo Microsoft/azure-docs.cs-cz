@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe436632eee12157dde2b082a5c77e67e7977cc
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 114d29d11e51209d5ac788ae25413b5b989b84f4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957178"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106107"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Kurz: Integrace Azure Active Directory s Boomi
 
@@ -53,7 +53,7 @@ Konfigurace integrace Boomi do služby Azure AD, budete muset přidat Boomi z Ga
 
 **Chcete-li přidat Boomi z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Boomi, proveďte následuj�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ---------------|  --------- |
     | FEDERATION_ID | user.mail |
 
@@ -258,7 +258,7 @@ Chcete-li povolit uživatele Azure AD se přihlaste k Boomi, musí být poskytnu
     > [!NOTE]
     > Uživatel nebude dostávat oznámení uvítací e-mail obsahující heslo, které lze použít pro přihlášení k účtu AtomSphere, protože heslo je spravována prostřednictvím zprostředkovatele identity. Můžete použít jakékoli jiné Boomi uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Boomi uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

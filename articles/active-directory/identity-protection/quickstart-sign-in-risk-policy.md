@@ -1,8 +1,8 @@
 ---
 title: Rychlý start – zablokuje přístup, když se zjistí ohrožení relace s Azure Active Directory Identity Protection | Dokumentace Microsoftu
-description: V tomto rychlém startu zjistíte, jak nakonfigurovat zásadu podmíněného přístupu Azure Active Directory (Azure AD) Identity Protection rizika přihlašování k blokování přihlášení podle rizika relace.
+description: V tomto rychlém startu zjistíte, jak nakonfigurovat je riziko přihlášení Azure Active Directory (Azure AD) Identity Protection zásady podmíněného přístupu k blokování přihlášení podle rizika relace.
 services: active-directory
-keywords: podmíněný přístup aplikací, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu a podmíněný přístup s Azure AD identity protection
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu Azure AD identity protection
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -17,18 +17,18 @@ ms.date: 09/13/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c04d1a01c0ffd69e70dfa3b88b4f3c7f4b3576d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108806"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Rychlý start: Blokovat přístup, když se zjistí ohrožení relace s Azure Active Directory Identity Protection  
 
-Pokud chcete zachovat prostředí chráněný, můžete zablokovat podezřelé uživatele z přihlášení. Azure Active Directory (Azure AD) Identity Protection analyzuje každé přihlášení a vypočítá pravděpodobnost, že pokus přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu. Pravděpodobnost (nízká, střední, vysoká) je uveden v podobě počítané hodnoty nazvané úroveň rizika přihlášení. Tím, že nastavíte podmínku rizika přihlášení, můžete nakonfigurovat zásady podmíněného přístupu rizika přihlašování reagovat na určité riziko přihlášení úrovně. 
+Pokud chcete zachovat prostředí chráněný, můžete zablokovat podezřelé uživatele z přihlášení. Azure Active Directory (Azure AD) Identity Protection analyzuje každé přihlášení a vypočítá pravděpodobnost, že pokus přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu. Pravděpodobnost (nízká, střední, vysoká) je uveden v podobě počítané hodnoty nazvané úroveň rizika přihlášení. Tím, že nastavíte podmínku rizika přihlášení, můžete nakonfigurovat riziko přihlášení zásady podmíněného přístupu na reagují na konkrétní rizika přihlašování úrovně. 
 
-Tento rychlý start ukazuje, jak nakonfigurovat zásady podmíněného přístupu rizika přihlašování blokující u přihlášení při střední a vyšší riziko přihlášení byl zjištěn úroveň. 
+Tento rychlý start ukazuje, jak nakonfigurovat riziko přihlášení zásady podmíněného přístupu, které blokují u přihlášení při střední a vyšší riziko přihlášení byl zjištěn úroveň. 
 
 ![Vytvoření zásad](./media/quickstart-sign-in-risk-policy/1004.png)
 
@@ -65,9 +65,9 @@ Cílem tohoto kroku je zajistit, že testovací účet můžete přístup k vaš
 
 Scénář v tomto rychlém startu se používá u přihlášení v prohlížeči Tor k vygenerování zjištěné **přihlášení z anonymních IP adres** riziková událost. Úroveň rizika tuto rizikovou událost je střední. Reakce na tuto rizikovou událost, nastavte podmínku rizika přihlašování na médium. 
 
-Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje rizika přihlášení. V zásadách nastavte:
+Tato část ukazuje, jak vytvořit požadované riziko přihlášení zásady podmíněného přístupu. V zásadách nastavte:
 
-|Nastavení |Value|
+|Nastavení |Hodnota|
 |---     | --- |
 | Uživatelé  | Alain Charon  |
 | Podmínky | Riziko přihlášení, střední a vyšší |
@@ -110,7 +110,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje r
 14. Klikněte na stránce zásad **Uložit**.  
 
 
-## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
 
 K otestování vašich zásad, zkuste pro přihlášení k vaší [webu Azure portal](https://portal.azure.com) jako **Alan Charon** pomocí prohlížeče sítě Tor. Váš pokus o přihlášení by měl být blokovány své zásady podmíněného přístupu.
 
@@ -119,7 +119,7 @@ K otestování vašich zásad, zkuste pro přihlášení k vaší [webu Azure po
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete, odstraňte testovacího uživatele Tor prohlížeče a zakázat zásady podmíněného přístupu rizika přihlášení:
+Pokud už je nepotřebujete, odstraňte testovacího uživatele Tor prohlížeče a zakázat rizika přihlašování zásady podmíněného přístupu:
 
 - Pokud si nejste jisti, jak odstranit uživatele služby Azure AD, přečtěte si téma [postup přidání nebo odstranění uživatelů](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 

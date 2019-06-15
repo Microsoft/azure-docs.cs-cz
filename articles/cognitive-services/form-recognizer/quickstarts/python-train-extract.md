@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: ebed76c82b647d11e34a17ae94edf208929f8c56
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e799e4ae745d2dc2dea91aa0094b5ffb79ae6f77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475254"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063893"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý start: Trénování modelu Rozlišovač formuláře a extrahovat data formuláře pomocí rozhraní REST API s využitím Pythonu
 
@@ -127,7 +127,7 @@ Poznámka: `"modelId"` hodnotu. Budete ho potřebovat pro následující kroky.
 V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodnota a tabulky. Volání **Model – analýza** API spuštěním skriptu Pythonu, který následuje. Před spuštěním příkazu, proveďte následující změny:
 
 1. Nahraďte `<Endpoint>` s koncovým bodem, který jste získali s klíči předplatného Rozlišovač formuláře. Vyhledejte ji na váš prostředek formuláře Rozlišovač **přehled** kartu.
-1. Nahraďte `<File Path>` se cesta k souboru nebo adresu URL umístění ve formuláři, ze kterého se má extrahovat data.
+1. Nahraďte `<path to your form>` s cestou k souboru (například C:\temp\file.pdf) formuláře.
 1. Nahraďte `<modelID>` s ID modelu, který jste získali v předchozí části.
 1. Nahraďte `<file type>` s typem souboru. Podporované typy: pdf, image/jpeg, image/png.
 1. Místo `<subscription key>` použijte váš klíč předplatného.
@@ -138,7 +138,7 @@ V dalším kroku budete analýza dokumentu a z něj extrahovat páry klíč hodn
     
     # Endpoint URL
     base_url = r"<Endpoint>" + "/formrecognizer/v1.0-preview/custom"
-    file_path = r"<File Path>"
+    file_path = r"<path to your form>"
     model_id = "<modelID>"
     headers = {
         # Request headers

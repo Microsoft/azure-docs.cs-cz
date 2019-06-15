@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611562"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Nástroj Microsoft Threat modelování hrozeb
@@ -37,7 +37,7 @@ Umožňuje nástroj pro modelování hrozeb můžete nalézt odpovědi na někte
 
 Pro lepší nápovědu formulovali tyto druhy odkázáno dotazy, společnost Microsoft používá STRIDE modelu, který rozděluje různé typy hrozeb a zjednodušuje celkové zabezpečení konverzace.
 
-| Kategorie | Popis |
+| Category | Popis |
 | -------- | ----------- |
 | **Falšování identity** | Zahrnuje neoprávněně přístupu a pak pomocí informací o ověřování jiného uživatele, jako je například uživatelské jméno a heslo |
 | **Manipulace** | Zahrnuje škodlivé změny data. Mezi příklady patří neoprávněné změny trvalá data, jako například, které uloženy v databázi a změnu dat, jak probíhá mezi dvěma počítači otevřete sítě, jako je Internet |

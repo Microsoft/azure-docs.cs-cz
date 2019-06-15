@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 8b39866b990812913924118c564a5e93f898b1cb
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 7cfe19614b2107161dcce9c80690333212162045
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061312"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Doporučené postupy pro používání Azure Data Lake Storage Gen2
 
@@ -26,7 +26,7 @@ Azure Data Lake Storage Gen2 nabízí řízení přístupu POSIX pro uživatele,
 
 ### <a name="use-security-groups-versus-individual-users"></a>Pomocí skupin zabezpečení a jednotlivé uživatele
 
-Práce s velkými objemy dat v Data Lake Storage Gen2 WWhen, je pravděpodobné, že instanční objekt služby slouží k povolení služeb, jako je Azure HDInsight pro práci s daty. Ale může být případy, kdy jednotliví uživatelé potřebují přístup k datům stejně. Ve všech případech se důkladně zvážit možnost pomocí Azure Active Directory [skupiny zabezpečení](../common/storage-auth-aad.md) místo jednotlivým uživatelům přiřadí adresářů a souborů.
+Při práci s velkými objemy dat v Data Lake Storage Gen2, je pravděpodobné, že instanční objekt služby slouží k povolení služeb, jako je Azure HDInsight pro práci s daty. Ale může být případy, kdy jednotliví uživatelé potřebují přístup k datům stejně. Ve všech případech se důkladně zvážit možnost pomocí Azure Active Directory [skupiny zabezpečení](../common/storage-auth-aad.md) místo jednotlivým uživatelům přiřadí adresářů a souborů.
 
 Po přiřazení oprávnění skupiny zabezpečení, přidání nebo odebrání uživatele ze skupiny nevyžaduje žádné aktualizace na Gen2 úložiště Data Lake. Také pomůžete tím zajistit, že abyste nepřekročili maximální počet položek řízení přístupu na seznam řízení přístupu (ACL). V současné době toto číslo je 32 (včetně čtyři stylu POSIX seznamy ACL, které jsou vždy spojené s každou souborů a adresářů): vlastnícího uživatele, vlastnící skupinu, maska a další. Každý adresář můžete mít dva typy seznamu ACL, přístup k seznamu ACL a výchozího seznamu ACL, a cena celkem 64 položky řízení přístupu. Další informace o těchto seznamů řízení přístupu najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
@@ -40,7 +40,7 @@ Instanční objekty Azure Active Directory jsou obvykle používány služeb, ja
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Povolit bránu firewall Data Lake Storage Gen2 s přístup služby Azure
 
-Data Lake Storage Gen2 podporuje možnost zapnutí brány firewall a omezení přístupu jenom na služby Azure, která se doporučuje omezit vektor externím útokům. Na webu Azure Portal prostřednictvím účtu úložiště může být povolená brána firewall **brány Firewall** > **povolit bránu Firewall (ON)** > **povolit přístup ke službám Azure** možnosti.
+Data Lake Storage Gen2 podporuje možnost zapnutí brány firewall a omezení přístupu jenom na služby Azure, která se doporučuje omezit vektor externím útokům. Na webu Azure Portal prostřednictvím účtu úložiště může být povolená brána firewall **brány Firewall** > **povolit bránu Firewall (ON)**  > **povolit přístup ke službám Azure** možnosti.
 
 Přidání clusterů Azure Databricks k virtuální síti, která bude dát získat přístup přes bránu Firewall úložiště vyžaduje použití funkce ve verzi preview Databricks. Pokud chcete povolit tuto funkci, doplňte žádost o podporu.
 

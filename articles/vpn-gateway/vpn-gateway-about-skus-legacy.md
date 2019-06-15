@@ -3,8 +3,8 @@ title: Starší virtuální sítě Azure s SKU služby VPN gateway | Dokumentace
 description: Jak pracovat s staré SKU; brány virtuální sítě Basic, Standard a HighPerformance.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
-manager: digimobile
+author: cherylmc
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/20/2018
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: cherylmc
+ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159216"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056439"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Práce s SKU (starší verze SKU) brány virtuální sítě
 
@@ -30,6 +29,8 @@ Tento článek obsahuje informace o starší (staré) brány virtuální sítě 
 ## <a name="gwsku"></a>SKU brány
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
+
+Můžete zobrazit, starší verze brány ceny **brány virtuální sítě** části, která se nachází ve na [ExpressRoute stránce s cenami](https://azure.microsoft.com/pricing/details/expressroute).
 
 ## <a name="agg"></a>Odhadovaná agregovaná propustnost podle SKU
 
@@ -68,5 +69,3 @@ Můžete taky změnit velikost brány na webu Azure Portal.
 Další informace o nové SKU brány najdete v tématu [skladové položky brány](vpn-gateway-about-vpngateways.md#gwsku).
 
 Další informace o nastavení konfigurace, najdete v části [nastavení konfigurace služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md).
-
-<!--Update_Description: wording update-->

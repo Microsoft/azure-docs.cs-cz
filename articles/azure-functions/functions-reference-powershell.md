@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: fa82725174645a0e5f1d957d8423c97547682542
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065480"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Příručka pro vývojáře Azure Functions Powershellu
 
@@ -60,7 +60,7 @@ V kořenovém adresáři projektu neexistuje sdílené [ `host.json` ](functions
 
 Některé vazby vyžaduje přítomnost `extensions.csproj` souboru. Vazba rozšíření vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime, které jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
-V prostředí PowerShell aplikace Function App, může volitelně obsahovat `profile.ps1` která se spouští při spuštění aplikace function app (jinak znát pod některým z  *[studený start](#cold-start)*. Další informace najdete v tématu [Powershellu profilu](#powershell-profile).
+V prostředí PowerShell aplikace Function App, může volitelně obsahovat `profile.ps1` která se spouští při spuštění aplikace function app (jinak znát pod některým z  *[studený start](#cold-start)* . Další informace najdete v tématu [Powershellu profilu](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definice skriptu prostředí PowerShell jako funkce
 
@@ -84,7 +84,7 @@ $TriggerMetadata.sys
 | Vlastnost   | Description                                     | Type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Pokud ve standardu UTC, funkce aktivovalo        | DateTime |
-| MethodName | Název funkce, která byla aktivována.     | string   |
+| methodName | Název funkce, která byla aktivována.     | string   |
 | RandGuid   | Jedinečný identifikátor guid pro toto spuštění funkce | string   |
 
 Každý typ aktivační události má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id`, `DequeueCount`, mimo jiné. Další informace o aktivační událost fronty metadat, přejděte [oficiální dokumentaci pro aktivační procedury řízení front](functions-bindings-storage-queue.md#trigger---message-metadata). Přečtěte si dokumentaci k na [aktivační události](functions-triggers-bindings.md) pracujete, pokud chcete zobrazit, co se dodává v metadatech aktivační události.
@@ -133,7 +133,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Následují platné parametry pro volání `Push-OutputBinding`:
 
-| Název | Type | Umístění | Popis |
+| Název | Type | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | String | 1 | Název výstupní vazbu chcete nastavit. |
 | **`-Value`** | Object | 2 | Hodnota výstupní vazbu chcete nastavit, který je přijímán z kanálu ByValue. |
@@ -243,7 +243,7 @@ Protokolování v prostředí PowerShell funkce funguje jako regulární protoko
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informace | Zapíše do _informace_ úrovně protokolování. |
-| Ladit | **`Write-Debug`** |
+| Ladění | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Kromě těchto rutin, nic se zapisují do kanálu je přesměrován na `Information` protokolu úrovně a zobrazují se pomocí Powershellu výchozí formátování.
@@ -253,7 +253,7 @@ Kromě těchto rutin, nic se zapisují do kanálu je přesměrován na `Informat
 
 ### <a name="configure-the-function-app-log-level"></a>Nakonfigurujte úroveň protokolu aplikace – funkce
 
-Funkce umožňuje definovat prahové hodnoty úroveň k tomu, aby ovládací prvek způsob, jak funkce zapíše do protokolů. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `logging.logLevel.default` vlastnost v [ `host.json` souboru][referenční materiály k host.json]. Toto nastavení platí pro všechny funkce v aplikaci function app.
+Azure Functions umožňuje definovat prahové hodnoty úroveň k tomu, aby ovládací prvek způsob, jak funkce zapíše do protokolů. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `logging.logLevel.default` vlastnost v [ `host.json` souboru][referenční materiály k host.json]. Toto nastavení platí pro všechny funkce v aplikaci function app.
 
 Následující příklad nastaví prahovou hodnotu Zapnutí podrobného protokolování pro všechny funkce, ale nastaví prahovou hodnotu a povolit protokolování ladění pro funkci s názvem `MyFunction`:
 
@@ -304,7 +304,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 | Vlastnost  | Description                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje text žádosti. `Body` je serializován do nejlepší typ založené na datech. Například pokud jsou data JSON, to je předáno jako zatřiďovací tabulku. Pokud jsou data řetězce, je předán v podobě řetězce. | Objekt |
+| **`Body`**    | Objekt, který obsahuje text žádosti. `Body` je serializován do nejlepší typ založené na datech. Například pokud jsou data JSON, to je předáno jako zatřiďovací tabulku. Pokud jsou data řetězce, je předán v podobě řetězce. | objekt |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Dictionary < string, string ><sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | string                    |
 | **`Params`**  | Objekt, který obsahuje směrování parametry požadavku. | Dictionary < string, string ><sup>*</sup> |
@@ -319,7 +319,7 @@ Objekt odpovědi, který se má odeslat zpět je typu `HttpResponseContext`, kte
 
 | Vlastnost      | Description                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje text odpovědi.           | Objekt                    |
+| **`Body`**  | Objekt, který obsahuje text odpovědi.           | objekt                    |
 | **`ContentType`** | Krátký ručně k nastavení typu obsahu pro odpověď. | string                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulky   |
 | **`StatusCode`**  | Stavový kód HTTP odpovědi.                       | řetězec nebo int             |
@@ -598,7 +598,7 @@ Při vývoji v Azure Functions [bez serveru model hostingu](functions-scale.md#c
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Moduly sady místo použití `Install-Module`
 
-Spuštění skriptu na každé vyvolání. Vyhněte se použití `Install-Module` ve skriptu. Místo toho použijte `Save-Module` před publikováním tak, že funkce nebude muset ztrácet čas stahování modulu. Pokud souvisejícím s úplným spuštěním mají vliv na vaše funkce, zvažte nasazení aplikace function app na [plán služby App Service](functions-scale.md#app-service-plan) nastavena na *AlwaysOn* nebo [plán Premium](functions-scale.md#premium-plan-public-preview).
+Spuštění skriptu na každé vyvolání. Vyhněte se použití `Install-Module` ve skriptu. Místo toho použijte `Save-Module` před publikováním tak, že funkce nebude muset ztrácet čas stahování modulu. Pokud souvisejícím s úplným spuštěním mají vliv na vaše funkce, zvažte nasazení aplikace function app na [plán služby App Service](functions-scale.md#app-service-plan) nastavena na *AlwaysOn* nebo [plán Premium](functions-scale.md#premium-plan).
 
 ## <a name="next-steps"></a>Další postup
 

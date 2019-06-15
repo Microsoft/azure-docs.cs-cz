@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 75570d9d06cbbb08feba418f0bab229dca1c8b53
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3c286c004885cdc2cc83899bd06af19176c5581b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192252"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Kurz: Integrace Azure Active Directory s Voyance
 
@@ -55,7 +55,7 @@ Konfigurace integrace Voyance do služby Azure AD, budete muset přidat Voyance 
 
 **Chcete-li přidat Voyance z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -223,7 +223,7 @@ V této části se vytvoří uživateli Britta Simon v Voyance. Voyance podporuj
 >[!NOTE]
 >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Voyance](maiLto:support@nyansa.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

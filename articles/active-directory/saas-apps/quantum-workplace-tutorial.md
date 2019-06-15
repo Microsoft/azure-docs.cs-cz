@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00f6a5878d1afe35b9e155425275466ecfa07de9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 655a02e41311e6842351287e3615639c3cc95e0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Kurz: Integrace Azure Active Directory s pracoviště kvantové doby
 
@@ -54,7 +54,7 @@ Ke konfiguraci integrace Quantum pracoviště do služby Azure AD, budete muset 
 
 **K síti na pracovišti Quantum přidat z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -174,7 +174,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v síti na pracovišti Quantum jako Britta Simon. Práce s [tým podpory Quantum pracoviště](mailto:support@quantumworkplace.com) k přidání uživatelů v síti na pracovišti Quantum platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

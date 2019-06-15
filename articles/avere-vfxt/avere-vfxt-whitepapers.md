@@ -7,10 +7,10 @@ ms.author: v-erkell
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.openlocfilehash: cf111f2ebe4233ea5d02cf5c7fbc0967655475d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60409188"
 ---
 # <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX pro Azure dokumenty White Paper a další prostředky 
@@ -29,7 +29,7 @@ Tato příručka obsahuje podrobné pokyny pro instalaci Agisoft PhotoScan photo
 
 Tento článek dvě stránky obsahuje základní informace a scénáře použití diagramy, které popisují, jak používat Avere vFXT pro Azure v několika.
 
-## <a name="hybrid-cloud-for-file-based-workloads"></a>Hybridní cloud pro souborové úlohy
+## <a name="hybrid-cloud-for-file-based-workloads"></a>Hybridní cloud pro úlohy založené na souborech
 
 **Odkaz na:** [Infografika: Budování hybridního cloudu pro souborové úlohy](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
 

@@ -3,18 +3,18 @@ title: Konfigurace pravidel a akcí v Azure IoT Central | Microsoft Docs
 description: Tento kurz ukazuje, jak vy jako tvůrce nakonfigurujete v aplikaci Azure IoT Central pravidla a akce založené na telemetrii.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 01/28/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066012"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidla a akce pro vaše zařízení v Azure IoT Central
 
@@ -50,7 +50,7 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
     | Nastavení                                      | Hodnota                             |
     | -------------------------------------------- | ------------------------------    |
-    | Název                                         | Upozornění klimatizace na teplotu |
+    | Name                                         | Upozornění klimatizace na teplotu |
     | Enable rule for all devices of this template (Povolit pravidlo pro všechna zařízení této šablony) | Zapnuto                                |
     | Podmínka                                    | Teplota je větší než 90    |
     | Agregace                                  | Žádný                              |
@@ -71,7 +71,7 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
 
     | Nastavení   | Hodnota                          |
     | --------- | ------------------------------ |
-    | Akce        | Vaše e-mailová adresa             |
+    | Do        | Vaše e-mailová adresa             |
     | Poznámky     | Teplota klimatizace překročila prahovou hodnotu. |
 
     > [!NOTE]

@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130615"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
@@ -37,7 +37,7 @@ Na vysoké úrovni služby Azure App Service Environment se skládá z několika
 * Classic(V1) nebo Azure Manager(V2) prostředku virtuální sítě (VNet) 
 * Podsítě ve službě App Service Environment hostované spuštěná v ní
 
-### <a name="compute-resources"></a>Výpočet prostředků
+### <a name="compute-resources"></a>Výpočetní prostředky
 Výpočetní prostředky, které používáte pro vašich fondů zdrojů čtyři.  Každý App Service Environment (ASE) obsahuje sadu front-endů a tři fondy pracovních procesů je to možné. Není nutné používat všechny fondy pracovních procesů tři--Pokud chcete, můžete stačí použít jeden nebo dva.
 
 Hostitelé ve fondech zdrojů (front-endy ani pracovní procesy) nejsou přímo dostupné klientům. Nelze připojit se k nim, změnit jejich zřizování pomocí protokolu RDP (Remote Desktop) nebo fungují jako správce na ně.

@@ -10,10 +10,10 @@ ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ea6599152d3cbf1f50132f5b207c19148401f798
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60564255"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
@@ -56,7 +56,7 @@ Počítače se systémem Hybrid Runbook Worker by měl splňovat minimální po�
 
 Potvrďte, že počítač, který se spustí funkce Hybrid Runbook Worker splňuje minimální hardwarové požadavky. Pokud ano, monitorování využití procesoru a paměti použít k určení jakákoli korelace mezi výkonem procesy Hybrid Runbook Worker a Windows. Pokud je paměť nebo procesor přetížení, může to znamenat nutnosti upgradu prostředků. Můžete také vybrat jiný výpočetního prostředku, který podporuje požadavky na minimální a škálování při vytížení označující, že je nezbytné zvýšení.
 
-Zkontrolujte **Microsoft SMA** protokolu událostí pro odpovídající události s popisem *Win32 proces skončil s kódem [4294967295]*. Příčinou této chyby je nebyly nakonfigurované ověřování ve vašich sadách runbook nebo zadaná pověření spustit jako pro skupinu hybridních pracovních procesů. Kontrola [oprávnění sady Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) potvrďte jste správně nakonfigurovali ověřování pro vlastní runbooky.
+Zkontrolujte **Microsoft SMA** protokolu událostí pro odpovídající události s popisem *Win32 proces skončil s kódem [4294967295]* . Příčinou této chyby je nebyly nakonfigurované ověřování ve vašich sadách runbook nebo zadaná pověření spustit jako pro skupinu hybridních pracovních procesů. Kontrola [oprávnění sady Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) potvrďte jste správně nakonfigurovali ověřování pro vlastní runbooky.
 
 ### <a name="no-cert-found"></a>Scénář: Nebyl nalezen žádný certifikát v úložišti certifikátů v procesu Hybrid Runbook Worker
 

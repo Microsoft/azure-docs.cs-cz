@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 91dd716a595dd56c14b3be0bf11a7b69eeb470d6
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: c9b2a593a6943fe2e9577acc61b1d5a7bcd98607
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834125"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070665"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služeb
 
@@ -71,7 +71,7 @@ Ve verzi preview služba aktualizují přibližně měsíční čím dál. Pokud
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste vytvořili fond ověření hostitele, můžete volitelně naplnit váš fond ověření hostitele s aplikace RemoteApp. Další informace o tom, jak spravovat aplikace v virtuální plochy Windows, najdete v kurzu skupiny spravovat aplikace.
+Teď, když jste vytvořili fond ověření hostitele, se dozvíte, jak nasadit a připojit se k nástroj pro správu pro správu prostředků služby Microsoft virtuálního klienta.
 
 > [!div class="nextstepaction"]
-> [Správa kurz skupiny aplikací](./manage-app-groups.md)
+> [Kurz nástroj pro správu nasazení](./manage-resources-using-ui.md)

@@ -13,10 +13,10 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60474931"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Nastavení informací zabezpečení (preview) pro použití telefonních hovorů
@@ -86,11 +86,11 @@ Pokud chcete telefonní hovory, bude výchozí metodu použitou při přihláše
 
     ![Změnit vazbu pro výchozí přihlašovací – metoda](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Vyberte **Phone – volání (*_your_phone_number_*)** z rozevíracího seznamu dostupných metod a pak vyberte **potvrdit**.
+2. Vyberte **Phone – volání ( *_your_phone_number_* )** z rozevíracího seznamu dostupných metod a pak vyberte **potvrdit**.
 
     ![Vyberte metodu pro přihlášení výchozí](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    Výchozí metoda použitá pro přihlašování změny **Phone – volání (*_your_phone_number_*)**.
+    Výchozí metoda použitá pro přihlašování změny **Phone – volání ( *_your_phone_number_* )** .
 
 ## <a name="additional-security-info-methods"></a>Další bezpečnostní údaje metody
 Máte další možnosti pro jak kontakty vaší organizace k ověření své identity na základě toho, co jste se snažíte udělat. Mezi možnosti patří:

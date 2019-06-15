@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
 ms.openlocfilehash: a4aaf440856746895a31914aeee2bddec2ce23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60544974"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Vysvětlení doporučení prostředků služby Azure Security Center
@@ -47,29 +47,29 @@ V následujících tabulkách použijte jako vám pomůžou pochopit dostupné v
 | Doporučení | Popis |
 | --- | --- |
 | App Service by měly být dostupné jenom přes protokol HTTPS | Doporučuje se pouze omezit přístup služby App Service přes protokol HTTPS. |
-| Webové sokety by se měly pro webovou aplikaci zakázat| Doporučuje, abyste si pečlivě používání webových soketů ve webových aplikacích.  Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
+| Webové sokety by mělo být zakázáno pro webovou aplikaci| Doporučuje, abyste si pečlivě používání webových soketů ve webových aplikacích.  Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
 | Použijte vlastní domény pro webovou aplikaci | Doporučuje, použijte vlastní domény k ochraně webové aplikace před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
-| Nakonfigurujte omezení IP adres pro webovou aplikaci | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace.  Použití omezení IP adres, ochrání webovou aplikaci před běžnými útoky. |
-| Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci | Doporučuje, nenastavujte parametr WEBSITE_LOAD_CERTIFICATES na "*". Nastavení parametru na "*" znamená, že všechny certifikáty se načtou do úložiště osobních certifikátů webové aplikace.  To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu. |
+| Nakonfigurovat omezení IP adres pro webovou aplikaci | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace.  Použití omezení IP adres, ochrání webovou aplikaci před běžnými útoky. |
+| Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci | Doporučuje, nenastavujte parametr WEBSITE_LOAD_CERTIFICATES na " *". Nastavení parametru na "* " znamená, že všechny certifikáty se načtou do úložiště osobních certifikátů webové aplikace.  To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu. |
 | CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat přístup k webové aplikaci všem doménám. |
-| Použijte pro webovou aplikaci nejnovější podporované rozhraní .NET Framework | Doporučuje se, že používáte nejnovější verzi rozhraní .NET Framework pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| Použijte pro webovou aplikaci nejnovější verzi Javy | Doporučuje se, že používáte nejnovější verzi Javy pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| Použijte pro webovou aplikaci nejnovější verzi PHP | Doporučuje se, že používáte nejnovější verzi PHP pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použijte nejnovější podporované rozhraní .NET Framework pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi rozhraní .NET Framework pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použít nejnovější podporovanou verzi Javy pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Javy pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použít nejnovější podporovanou verzi PHP pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi PHP pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
 | [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje, firewall webových aplikací (WAF) pro koncové body webové nasazení. Doporučení WAF se zobrazí pro jakékoli veřejnou IP adresu (IP adresa na úrovni Instance nebo IP adresu s vyrovnáváním zatížení), který má skupinu zabezpečení sítě spojenou s otevřenými vstupními webovými porty (80,443).</br></br>Security Center doporučuje zřízení WAF, které pomáhají bránit útokům, které cílí na vaše webové aplikace na virtuálních počítačích a ve službě App Service Environment. App Service Environment (ASE) je [Premium](https://azure.microsoft.com/pricing/details/app-service/) služeb možnost plánu služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service. Další informace o službě ASE, najdete v článku [dokumentace pro App Service Environment](../app-service/environment/intro.md).</br></br>Přidáním těchto aplikací na vašich stávajících nasazení WAF může chránit několik webových aplikací ve službě Security Center. |
 | [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |K dokončení konfigurace brány WAF, musí přesměrovat provoz do zařízení WAF. Toto doporučení dokončení změny nezbytné instalační program. |
-| Použijte pro webovou aplikaci nejnovější verzi Node.js | Doporučuje se, že používáte nejnovější verzi Node.js pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
-| Sdílení CORS by nemělo umožňovat přístup k aplikaci funkcí všem prostředkům | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí. |
-| Použijte vlastní domény pro aplikaci funkcí | Doporučuje, použijte vlastní domény k ochraně aplikace function app před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
-| Konfigurace omezení IP adres pro aplikaci funkcí | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
-| Aplikace funkcí by měla být přístupná jen přes protokol HTTPS | Doporučuje se pouze omezit přístup z aplikace Function App přes protokol HTTPS. |
-| Vzdálené ladění by mělo být pro aplikaci funkcí vypnuté | Doporučuje vypnout ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App. |
-| Webové sokety by se měly pro aplikaci funkcí zakázat | Doporučuje, abyste pečlivě zkontrolujte použití procedury webové sokety v rámci aplikace Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
+| Použít nejnovější podporovanou verzi Node.js pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Node.js pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí. |
+| Použijte vlastní domény pro aplikaci Function App | Doporučuje, použijte vlastní domény k ochraně aplikace function app před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
+| Nakonfigurovat omezení IP adres pro aplikaci Function App | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
+| Funkce aplikace by měla být přístupná jen přes HTTPS | Doporučuje se pouze omezit přístup z aplikace Function App přes protokol HTTPS. |
+| Vzdálené ladění by měl být vypnuté pro aplikaci Function App | Doporučuje vypnout ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App. |
+| Webové sokety by mělo být zakázáno pro aplikaci Function App | Doporučuje, abyste pečlivě zkontrolujte použití procedury webové sokety v rámci aplikace Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-* [Monitorování identity a přístupu ve službě Azure Security Center](security-center-identity-access.md)
+* [Monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
 * [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
 

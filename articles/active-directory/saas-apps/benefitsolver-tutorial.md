@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39b285dd81347cb9ea031bfab168e372d4537f39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deb4ad1e5295600f32b243472c6b2332713bcc4b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Kurz: Integrace Azure Active Directory s Benefitsolver
 
@@ -53,7 +53,7 @@ Konfigurace integrace Benefitsolver do služby Azure AD, budete muset přidat Be
 
 **Chcete-li přidat Benefitsolver z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -120,7 +120,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Benefitsolver, proveďte n�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     |---------------|----------------|
     | ID klienta | Je potřeba získat tuto hodnotu z vašich [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact).|
     | ClientKey | Je potřeba získat tuto hodnotu z vašich [tým podpory Benefitsolver klienta](https://www.businessolver.com/contact).|
@@ -222,7 +222,7 @@ V této části je povolit Britta Simon k udělení přístupu k Benefitsolver p
 
 V této části vytvoříte uživatele v Benefitsolver jako Britta Simon. Práce s [tým podpory Benefitsolver](https://www.businessolver.com/contact) přidat uživatele na platformě Benefitsolver. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

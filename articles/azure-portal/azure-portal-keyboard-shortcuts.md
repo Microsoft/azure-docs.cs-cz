@@ -16,10 +16,10 @@ ms.date: 04/08/2019
 ms.author: kfollis
 ms.custom: accessibility
 ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551426"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky na webu Azure Portal
@@ -41,7 +41,7 @@ Tento článek uvádí klávesové zkratky, které fungují všude, kde na webu 
 
 |Provedete to tato navigace |Stisknutím klávesy |
 | --- | --- |
-|Přesunout fokus na panel příkazů |G+, |
+|Přesune fokus na panel příkazů |G+, |
 |Přepnout fokus mezi záhlavím a levém bočním panelu | G+. |
 
 ## <a name="go-to"></a>Přejít na
@@ -51,7 +51,7 @@ Tento článek uvádí klávesové zkratky, které fungují všude, kde na webu 
 |Přejděte na **řídicího panelu** |G + D |
 |Přejděte na **všechny prostředky**|G+A |
 |Přejděte na **skupiny prostředků**|G+R |
-|Otevřete položku levém bočním panelu na této pozici |G+číslo|
+|Otevřete položku levém bočním panelu na této pozici |G + číslo|
 
 ## <a name="next-steps"></a>Další postup
 

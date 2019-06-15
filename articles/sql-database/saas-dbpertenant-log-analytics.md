@@ -13,10 +13,10 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61389709"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Nastavit a začít používat Azure Monitor protokoly s víceklientské aplikace SaaS databáze SQL
@@ -57,7 +57,7 @@ Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
 1. Nyní spusťte generátor zatížení ke spuštění simulované zatížení na všech tenantů.
 
-    a. Nastavte **$DemoScenario = 2**, _generování normální intenzity zatížení (asi 30 jednotek DTU)_.
+    a. Nastavte **$DemoScenario = 2**, _generování normální intenzity zatížení (asi 30 jednotek DTU)_ .
 
     b. Stisknutím klávesy F5 spusťte skript.
 
@@ -83,7 +83,7 @@ V tomto cvičení otevřete pracovní prostor Log Analytics na webu Azure Portal
 
    ![Otevřete pracovní prostor Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Vyberte pracovní prostor s názvem _wtploganalytics -&lt;uživatele&gt;_.
+1. Vyberte pracovní prostor s názvem _wtploganalytics -&lt;uživatele&gt;_ .
 
 1. Vyberte **přehled** k otevření řešení log analytics na webu Azure Portal.
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
 ms.openlocfilehash: 1a0b6cf8ce272733c259283fdec9c215ac2b0fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61442558"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikovat se službou IoT hub pomocí protokolu MQTT
@@ -216,7 +216,7 @@ Pro příjem zpráv ze služby IoT Hub, zařízení by měl přihlášení k odb
 
 Zařízení přijme všechny zprávy ze služby IoT Hub, dokud ho se úspěšně připojila ke svůj koncový bod specifický pro zařízení, reprezentovaný `devices/{device_id}/messages/devicebound/#` tématu filtru. Po vytvoření předplatného se zařízení přijímá zprávy typu cloud zařízení, které byly odeslány do ní od chvíle, kdy předplatné. Pokud se zařízení připojuje pomocí **CleanSession** příznak nastaven na **0**, předplatné se uchovávají napříč různými relacemi. V takovém případě při příštím připojení zařízení s **CleanSession 0** přijme všechny nevyřízené zprávy odeslané do ní odpojené. Pokud zařízení používá **CleanSession** příznak nastaven na **1** však neobdrží všechny zprávy ze služby IoT Hub až si přihlásila, koncový bod jeho zařízení.
 
-IoT Hub doručí zprávy s **název tématu** `devices/{device_id}/messages/devicebound/`, nebo `devices/{device_id}/messages/devicebound/{property_bag}` po vlastnosti zprávy. `{property_bag}` obsahuje dvojice klíč/hodnota adresy url kóduje zprávy vlastností. Pouze vlastnosti aplikace a vlastnosti nastavit uživatele systému (například **messageId** nebo **correlationId**) jsou zahrnuty v kontejneru objektů a. Názvy vlastností systému mají předponu **$**, vlastnosti aplikace používat původní název vlastnosti se žádná předpona.
+IoT Hub doručí zprávy s **název tématu** `devices/{device_id}/messages/devicebound/`, nebo `devices/{device_id}/messages/devicebound/{property_bag}` po vlastnosti zprávy. `{property_bag}` obsahuje dvojice klíč/hodnota adresy url kóduje zprávy vlastností. Pouze vlastnosti aplikace a vlastnosti nastavit uživatele systému (například **messageId** nebo **correlationId**) jsou zahrnuty v kontejneru objektů a. Názvy vlastností systému mají předponu **$** , vlastnosti aplikace používat původní název vlastnosti se žádná předpona.
 
 Když aplikace pro zařízení se přihlásí k odběru tématu se **QoS 2**, uděluje maximální QoS úrovně 1 do služby IoT Hub **SUBACK** paketů. IoT Hub poté předává zprávy zařízení s využitím technologie QoS 1.
 

@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60290782"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
@@ -64,7 +64,7 @@ Klientská aplikace může požadovat spravovaných identit pro prostředky Azur
 
 Základní rozhraní pro získání přístupového tokenu je založené na REST, zpřístupnění pro všechny klientské aplikace běžící na virtuálním počítači, který mohl provádět volání HTTP REST. To se podobá programovací model služby Azure AD, s výjimkou klienta používá koncový bod na virtuálním počítači (vs Azure AD koncový bod).
 
-Ukázková žádost pomocí koncového bodu Azure Instance Metadata služby (IMDS) *(doporučeno)*:
+Ukázková žádost pomocí koncového bodu Azure Instance Metadata služby (IMDS) *(doporučeno)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 | `mi_res_id` | (Volitelné) Parametr řetězce dotazu, spravované identity, které chcete token určující mi_res_id (ID prostředku Azure). Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity. |
 
-Ukázková žádost pomocí spravované identity pro prostředky Azure koncového bodu virtuálního počítače rozšíření *(plánovaná k převedení na zastaralého v lednu 2019)*:
+Ukázková žádost pomocí spravované identity pro prostředky Azure koncového bodu virtuálního počítače rozšíření *(plánovaná k převedení na zastaralého v lednu 2019)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -373,7 +373,7 @@ Tato část popisuje možné chybové odpovědi. Objekt "200 OK" stav je úspě�
 
 | Kód stavu | Chyba | Popis chyby | Řešení |
 | ----------- | ----- | ----------------- | -------- |
-| 400 – Chybný požadavek | invalid_resource | AADSTS50001: Aplikace s názvem *\<URI\>* nebyl nalezen v tenantovi s názvem  *\<ID TENANTA\>*. To může nastat, pokud aplikace nebyla nainstalována správcem tenanta nebo souhlas. k libovolným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta. \ | (Pouze Linux) |
+| 400 – Chybný požadavek | invalid_resource | AADSTS50001: Aplikace s názvem *\<URI\>* nebyl nalezen v tenantovi s názvem  *\<ID TENANTA\>* . To může nastat, pokud aplikace nebyla nainstalována správcem tenanta nebo souhlas. k libovolným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta. \ | (Pouze Linux) |
 | 400 – Chybný požadavek | bad_request_102 | Není zadána hlavička požadovaná metadata | Buď `Metadata` pole hlavičky požadavku v požadavku chybí nebo je v nesprávném formátu. Hodnota musí být zadán jako `true`, malými písmeny. V předchozí části REST příklad naleznete v tématu "ukázkový požadavek".|
 | 401 Neautorizováno | unknown_source | Neznámý zdroj  *\<identifikátoru URI\>* | Ověřte, že váš požadavek HTTP GET identifikátoru URI je správný. `scheme:host/resource-path` Část musí být zadán jako `http://localhost:50342/oauth2/token`. V předchozí části REST příklad naleznete v tématu "ukázkový požadavek".|
 |           | invalid_request | Požadavku chybí povinný parametr, obsahuje neplatnou hodnotu parametru, obsahuje více než jednou. parametr nebo jinak je poškozený. |  |
@@ -381,7 +381,7 @@ Tato část popisuje možné chybové odpovědi. Objekt "200 OK" stav je úspě�
 |           | access_denied | Vlastník prostředku nebo autorizační server tuto žádost odmítl. |  |
 |           | unsupported_response_type | Autorizační server nepodporuje získání přístupového tokenu pomocí této metody. |  |
 |           | invalid_scope | Požadovaný rozsah je neplatný, neznámý nebo poškozený. |  |
-| Chyba 500 interní server | Neznámé | Nepovedlo se získat token ze služby Active directory. Podrobnosti najdete v protokolech  *\<cesta k souboru\>* | Ověřte, že spravovaných identit pro prostředky Azure je povoleno na virtuálním počítači. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.<br><br>Dál ověřte, že váš požadavek HTTP GET identifikátoru URI je správný, zejména zadaná v řetězci dotazu identifikátoru URI prostředku. V předchozí části REST pro příklad, naleznete v tématu "ukázkový požadavek" nebo [služby Azure, že podpora Azure AD ověřování](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředků.
+| Chyba 500 interní server | Neznámý | Nepovedlo se získat token ze služby Active directory. Podrobnosti najdete v protokolech  *\<cesta k souboru\>* | Ověřte, že spravovaných identit pro prostředky Azure je povoleno na virtuálním počítači. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.<br><br>Dál ověřte, že váš požadavek HTTP GET identifikátoru URI je správný, zejména zadaná v řetězci dotazu identifikátoru URI prostředku. V předchozí části REST pro příklad, naleznete v tématu "ukázkový požadavek" nebo [služby Azure, že podpora Azure AD ověřování](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředků.
 
 ## <a name="retry-guidance"></a>Pokyny pro opakování 
 

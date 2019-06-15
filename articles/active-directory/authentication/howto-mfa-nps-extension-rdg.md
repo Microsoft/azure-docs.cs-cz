@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 638703e4d67cbd004f0bd616ba31475f507dfd8a
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64873430"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
@@ -327,7 +327,7 @@ Jakmile úspěšně jste se ověřili pomocí metody sekundární ověřování,
 
 Zobrazení událostí úspěšného přihlášení v protokolech prohlížeče událostí Windows, můžete použít následující příkaz prostředí Windows PowerShell, který dotazování protokolů zabezpečení Windows a Windows Terminálové služby.
 
-K dotazování událostí úspěšného přihlášení v provozních protokolech brány _(událost prohlížeč událostí\protokoly aplikací a služeb Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_, použijte následující příkazy Powershellu:
+K dotazování událostí úspěšného přihlášení v provozních protokolech brány _(událost prohlížeč událostí\protokoly aplikací a služeb Logs\Microsoft\Windows\TerminalServices-Gateway\Operational)_ , použijte následující příkazy Powershellu:
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * Tento příkaz zobrazí události Windows, které uživatel splněny požadavky na zásady autorizace prostředků (VP pro autorizaci prostředků) a má umožněný přístup.

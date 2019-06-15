@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: absha
-ms.openlocfilehash: 5b1c0212205575f1d40f320fb959d98e55d87fb9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: c5285ac95a2f5813949f22aae3849fd7f55b1ada
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65963587"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052089"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -129,7 +129,7 @@ Pokud zjistíte anomálií, postupujte podle těchto kroků:
 * Pokud aplikace běží pomalu, určete, zda je nízký výkon aplikace z důvodu sítě nebo problém na straně aplikace zprostředkovatele.
 
 ## <a name="gcc-office-urls-for-us-government-customers"></a>GCC adresy URL Office pro státní správu USA
-Pro oblast US Government Virginie pouze adresy URL ministerstva obrany USA jsou předdefinované NPM. Zákazníci, kteří používají GCC adresy URL je nutné vytvořit vlastní testy a přidat inidividually každou adresu URL.
+Pro oblast US Government Virginie pouze adresy URL ministerstva obrany USA jsou předdefinované NPM. Zákazníci, kteří používají GCC adresy URL je nutné vytvořit vlastní testy a přidat jednotlivé adresy URL jednotlivě.
 
 | Pole | GCC |
 |:---   |:--- |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: e8f3cf3889b3f79e930630ff0e768a0c4875eec6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611694"
 ---
 # <a name="security-frame-session-management"></a>Zabezpečení rámce: Správa relací
@@ -34,7 +34,7 @@ ms.locfileid: "60611694"
 
 ## <a id="logout-adal"></a>Implementace správné odhlašování pomocí knihovny ADAL metod při použití služby Azure AD
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure AD | 
 | **SDL fáze**               | Sestavení |  
@@ -69,7 +69,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="finite-tokens"></a>Použití omezeného životnost generovaných tokenů SaS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Zařízení IoT | 
 | **SDL fáze**               | Sestavení |  
@@ -80,7 +80,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="resource-tokens"></a>Pomocí minimální životností tokenů pro generovaných tokenů prostředku
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Documentdb | 
 | **SDL fáze**               | Sestavení |  
@@ -91,7 +91,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="wsfederation-logout"></a>Implementace správné odhlašování pomocí metod WsFederation při použití služby AD FS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | ADFS | 
 | **SDL fáze**               | Sestavení |  
@@ -140,7 +140,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="proper-logout"></a>Implementace správné odhlášení při používání serveru identit
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Sestavení |  
@@ -151,7 +151,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 
 ## <a id="https-secure-cookies"></a>Aplikace je k dispozici prostřednictvím protokolu HTTPS, musíte použít bezpečné soubory cookie
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -170,7 +170,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 ```
 Nastavení se nevynucuje i v případě protokolu HTTP se používá pro přístup k aplikaci. Pokud HTTP slouží k přístupu k aplikaci, přeruší nastavení aplikace, protože soubory cookie jsou nastavené s atributem zabezpečené a prohlížeč nebude odeslat zpět do aplikace.
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -192,7 +192,7 @@ Nastavení se nevynucuje i v případě protokolu HTTP se používá pro příst
 
 ## <a id="cookie-definition"></a>Všechny aplikace na základě protokolu http měla určit pouze pro definici souboru cookie http
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -213,7 +213,7 @@ Všechny aplikace založené na protokolu HTTP, které používají soubory cook
 </system.web>
 ```
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -230,7 +230,7 @@ Následující příklad kódu nastaví atribut requireSSL v souboru Web.config.
 </authentication>
 ```
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -255,7 +255,7 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 
 ## <a id="csrf-asp"></a>Pomáhá zmírnit dopady útoků proti padělání žádosti mezi weby (CSRF) na rozhraní ASP.NET web pages
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -264,7 +264,7 @@ Následující konfigurace zobrazuje správnou konfiguraci:
 | **Odkazy**              | neuvedeno  |
 | **Kroky** | Proti padělání požadavků mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provádět akce v kontextu zabezpečení navázanou relaci jiného uživatele na webovém serveru. Cílem je upravit nebo odstranit obsah, pokud cílové webové stránky spoléhá výhradně na soubory cookie relace k ověření přijatý požadavek. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získáme prohlížeče jiný uživatel se načíst adresu URL pomocí příkazu z ohrožených lokality, na kterém je již přihlášeni. Existuje mnoho způsobů pro útočníka, stačí, třeba hostování na jiný web, který načítá prostředku z ohrožených serveru nebo získávání uživatel kliknutím na odkaz. Útok lze zabránit, pokud je server odešle klientovi další token, vyžaduje klient mají být zahrnuty všechny budoucí žádosti o token a ověřuje, že všechny budoucí požadavky zahrnují token, který se týká aktuální relace, například s použitím technologie ASP.NET AntiForgeryToken nebo vlastnosti ViewState. |
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -350,7 +350,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 }
 ```
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -370,7 +370,7 @@ void Page_Init (object sender, EventArgs e) {
 
 ## <a id="inactivity-lifetime"></a>Nastavení relace po dobu platnosti nečinnosti
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -390,7 +390,7 @@ void Page_Init (object sender, EventArgs e) {
 
 ## <a id="threat-detection"></a>Povolit detekci hrozeb v Azure SQL
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -405,7 +405,7 @@ void Page_Init (object sender, EventArgs e) {
 </forms>
 ```
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -440,7 +440,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ## <a id="proper-app-logout"></a>Implementace správné odhlášení z aplikace
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -451,7 +451,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ## <a id="csrf-api"></a>Pomáhá zmírnit dopady útoků proti padělání žádosti mezi weby (CSRF) na rozhraní ASP.NET Web API
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -460,7 +460,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | **Odkazy**              | neuvedeno  |
 | **Kroky** | Proti padělání požadavků mezi weby (CSRF nebo XSRF) je typ útoku, ve kterém může útočník provádět akce v kontextu zabezpečení navázanou relaci jiného uživatele na webovém serveru. Cílem je upravit nebo odstranit obsah, pokud cílové webové stránky spoléhá výhradně na soubory cookie relace k ověření přijatý požadavek. Útočník by mohl zneužít tuto chybu zabezpečení tím, že získáme prohlížeče jiný uživatel se načíst adresu URL pomocí příkazu z ohrožených lokality, na kterém je již přihlášeni. Existuje mnoho způsobů pro útočníka, stačí, třeba hostování na jiný web, který načítá prostředku z ohrožených serveru nebo získávání uživatel kliknutím na odkaz. Útok lze zabránit, pokud je server odešle klientovi další token, vyžaduje klient mají být zahrnuty všechny budoucí žádosti o token a ověřuje, že všechny budoucí požadavky zahrnují token, který se týká aktuální relace, například s použitím technologie ASP.NET AntiForgeryToken nebo vlastnosti ViewState. |
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -547,7 +547,7 @@ Filtr autorizace, která kontroluje, zda:
 * Příchozí požadavek má `Request.Form` položka __RequestVerificationToken
 * Tyto soubory cookie a `Request.Form` shody hodnoty za předpokladu, že všechny je dobře, požadavek prochází normálním způsobem. Ale pokud ne, pak chybě autorizace se zprávou "požadovaný token proti padělání nebyl zadán nebo byl neplatný".
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  

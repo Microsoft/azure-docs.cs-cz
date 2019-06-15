@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631631"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrovat data z StorSimple 5000 – 7000 series do zařízení 8000 series
@@ -109,7 +109,7 @@ Nástroj pro migraci StorSimple je nástroj uživatelského rozhraní, který v�
 Počítač je připojený k Internetu a:
 
 * Používá následující operační systém
-    * Windows 10.
+    * Windows 10.
     * Windows Server 2012 R2 (nebo vyšší) Chcete-li nainstalovat nástroj pro migraci StorSimple.
 * Má nainstalované rozhraní .NET 4.5.2.
 * Má minimálně 5 GB volného místa k instalaci a použití nástroje.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370316"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Vysvětlení využití Azure rezervace pro vaše předplatné s průběžnými platbami
@@ -33,7 +33,7 @@ Tento článek předpokládá, že se má rezervace použít na jedno předplatn
 
 V dalších částech předpokládají, že používáte virtuální počítač Windows Standard_DS1_v2 oblasti USA – východ a vaše rezervovaných virtuálních počítačů instance informace vypadá jako v následující tabulce:
 
-| Pole | Value |
+| Pole | Hodnota |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
 |Množství |1|
@@ -44,7 +44,7 @@ V dalších částech předpokládají, že používáte virtuální počítač 
 
 ### <a name="statement-section-of-csv-file-for-vms"></a>Příkaz části souboru .csv pro virtuální počítače
 
-Tato část souboru CSV se zobrazí celkové využití vaší rezervace. Použít filtr na **podkategorie měřiče** pole s údajem o **"Rezervace-"**. Zobrazit něco jako na následujícím snímku obrazovky:
+Tato část souboru CSV se zobrazí celkové využití vaší rezervace. Použít filtr na **podkategorie měřiče** pole s údajem o **"Rezervace-"** . Zobrazit něco jako na následujícím snímku obrazovky:
 
 ![Snímek obrazovky filtrované rezervace informací o využití a nákladů](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
@@ -68,11 +68,11 @@ V dalších částech používat Azure SQL Database jako příklad k popisu sest
 
 Předpokládejme, že používáte SQL Database Gen 4 oblasti USA – východ a vaší rezervace informace vypadá jako v následující tabulce:
 
-| Pole | Value |
+| Pole | Hodnota |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |Množství |2|
-|Produkt| SQL Database Gen 4 (2 jádra)|
+|Product| SQL Database Gen 4 (2 jádra)|
 |Oblast | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>Příkaz části ze souboru CSV

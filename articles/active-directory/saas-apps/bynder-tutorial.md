@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43d2cf1c833a160a5101d01170ce6923238795a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00bd25d3edf35356879975ec105ecabaa4e15b5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60282355"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bynder"></a>Kurz: Integrace Azure Active Directory s Bynder
 
@@ -54,7 +54,7 @@ Konfigurace integrace Bynder do služby Azure AD, budete muset přidat Bynder z 
 
 **Chcete-li přidat Bynder z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

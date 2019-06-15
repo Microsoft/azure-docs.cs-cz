@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5fb28b176ce14a9b871b2a6a775e0017fcc993d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052665"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty služby a aplikace Service Fabric
 Tento článek popisuje, jak aplikace Service Fabric a služby jsou definované a verzovaným pomocí souboru ApplicationManifest.xml a ServiceManifest.xml.  Podrobnější příklady najdete v článku [aplikací a službou manifest příklady](service-fabric-manifest-examples.md).  Schéma XML pro tyto soubory manifestu jsou uvedené v [dokumentace schématu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).
@@ -96,7 +96,7 @@ Další informace o tom, jak nakonfigurovat SetupEntryPoint najdete v tématu [n
 </Settings>
 ```
 
-Služba Service Fabric **koncový bod** je příkladem prostředek Service Fabric; Prostředek Service Fabric může být deklarován nebo upravené beze změny zkompilovaný kód. Přístup k prostředkům Service Fabric, které jsou určené v manifestu služby se dá řídit přes **skupiny SecurityGroup** v manifestu aplikace. Když prostředek koncového bodu je definovaný v manifestu služby, Service Fabric přiřazuje porty z rozsahu portů aplikace vyhrazené, pokud není explicitně zadán port. Další informace o [zadání nebo přepisující prostředky. koncový bod](service-fabric-service-manifest-resources.md).
+Služba Service Fabric **koncový bod** je příkladem služby prostředek infrastruktury. Prostředek Service Fabric může být deklarován nebo upravené beze změny zkompilovaný kód. Přístup k prostředkům Service Fabric, které jsou určené v manifestu služby se dá řídit přes **skupiny SecurityGroup** v manifestu aplikace. Když prostředek koncového bodu je definovaný v manifestu služby, Service Fabric přiřazuje porty z rozsahu portů aplikace vyhrazené, pokud není explicitně zadán port. Další informace o [zadání nebo přepisující prostředky. koncový bod](service-fabric-service-manifest-resources.md).
 
 
 <!--
@@ -163,7 +163,11 @@ Manifesty služby, jako jsou **verze** atributy jsou řetězce, nestrukturovaná
 
 **Certifikáty** (není nastaveno v předchozím příkladu) deklaruje certifikátů používaných pro [nastavení koncových bodů HTTPS](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) nebo [šifrování tajných kódů v manifestu aplikace](service-fabric-application-secret-management.md).
 
-**Zásady** (není nastaveno v předchozím příkladu) popisuje shromažďování protokolů [výchozí spustit jako](service-fabric-application-runas-security.md), [stavu](service-fabric-health-introduction.md#health-policies), a [zabezpečení přístupu](service-fabric-application-runas-security.md) zásady, které chcete nastavit úrovni aplikace.
+**Zásady** (není nastaveno v předchozím příkladu) popisuje shromažďování protokolů [výchozí spustit jako](service-fabric-application-runas-security.md), [stavu](service-fabric-health-introduction.md#health-policies), a [zabezpečení přístupu](service-fabric-application-runas-security.md) zásady, které chcete nastavit úrovni aplikace, včetně toho, jestli služeb mají přístup k modulu runtime Service Fabric.
+
+> [!NOTE] 
+> Ve výchozím nastavení aplikace Service Fabric mají přístup k modulu runtime Service Fabric, ve formě koncový bod přijímá požadavky specifické pro aplikaci a proměnných prostředí odkazující na cesty k souborům na hostitele obsahujícího službu prostředků infrastruktury a soubory specifické pro aplikaci . Zvažte zakázání tento přístup, když aplikace hostuje nedůvěryhodný kód (tedy jehož původ neznámý nebo ke kterým vlastník aplikace pozná, neměl by se bezpečně ke spuštění). Další informace najdete v tématu [osvědčené postupy zabezpečení ve službě Service Fabric](service-fabric-best-practices-security.md#platform-isolation). 
+>
 
 **Objekty zabezpečení** (není nastavený v předchozím příkladu) popisují objekty zabezpečení (uživatele nebo skupiny), potřeba [spuštění služby a prostředky služeb zabezpečené](service-fabric-application-runas-security.md).  Objekty odkazují **zásady** oddíly.
 

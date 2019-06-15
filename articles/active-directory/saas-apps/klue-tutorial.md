@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e1199826601f8f2ddd82164dac1a20013d9b7bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be9620b0bb19daed186cb4eb652311e58ea0adaf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60262627"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Kurz: Integrace Azure Active Directory s Klue
 
@@ -54,7 +54,7 @@ Konfigurace integrace Klue do služby Azure AD, budete muset přidat Klue z Gale
 
 **Chcete-li přidat Klue z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -129,7 +129,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Klue, proveďte následují
     | ------------------- | -------------------- |
     | křestní_jméno          | user.givenname |
     | Příjmení           | user.surname |
-    | e-mail               | user.userprincipalname|
+    | email               | user.userprincipalname|
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6b27b27fedf622908fa5c06bd2562d9049a4366b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230110"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052049"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -139,15 +139,15 @@ Z této tabulky jsme lze nakreslit následující závěry:
 | C0 | 250 MB | Sdílené | 100 / 12.5  |  15 000 |   7,500 |
 | C1 |   1 GB | 1      | 500 / 62.5  |  38,000 |  20,720 |
 | C2 | 2,5 GB | 2      | 500 / 62.5  |  41,000 |  37,000 |
-| C3 |   6 GB | 4      | 1000 / 125  | 100 000 |  90,000 |
-| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55,000 |
-| C5 |  26 GB | 4      | 1,000 / 125 | 102,000 |  93,000 |
-| C6 |  53 GB | 8      | 2,000 / 250 | 126,000 | 120,000 |
+| C3 |   6 GB | 4      | 1000 / 125  | 100 000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55,000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102,000 |  93,000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126,000 | 120,000 |
 | **Velikosti mezipaměti úrovně Premium** | |**Počet jader procesoru na horizontálních oddílů** | **Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý (předávajících stran) bez SSL, za horizontální oddíl** |**Požadavky na druhý protokol SSL (předávajících stran), za horizontální oddíl** |
-| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172,000 |
-| P2 |  13 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
-| P3 |  26 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
-| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373,000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172,000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350,000 | 341,000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400 000 | 373,000 |
 | P5 | 120 GB | 20 | 6,000 / 750   | 400 000 | 373,000 |
 
 Pokyny k nastavení stunnelu nebo stáhli Redis tools jako `redis-benchmark.exe`, najdete v článku [jak mohu spustit příkazy Redis?](#cache-commands) oddílu.
@@ -167,8 +167,8 @@ Ano, mezipaměti Redis Azure je dostupná v cloudu Azure Government, Azure China
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Veřejné  | *.redis.cache.windows.net       |
-| US Gov  | *.redis.cache.usgovcloudapi.net |
+| Public  | *.redis.cache.windows.net       |
+| Vláda USA  | *.redis.cache.usgovcloudapi.net |
 | Německo | *.redis.cache.cloudapi.de       |
 | Čína   | *.redis.cache.chinacloudapi.cn  |
 
@@ -251,7 +251,7 @@ Můžete použít některý z příkazů uvedený na [příkazy Redis](https://r
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nebude fungovat s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro redis Cache ve verzi Preview Verze](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
+> Nástroje příkazového řádku Redis nebude fungovat s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [jak používat nástroj příkazového řádku Redis s mezipamětí Azure pro Redis ](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) článku.
 >
 >
 
@@ -403,7 +403,7 @@ void Application_Start(object sender, EventArgs e)
 ```
 
   > [!NOTE]
-  > Hodnotu zadanou pomocí této metody je globální nastavení, by to ovlivnilo celé doméně AppDomain. Například, pokud máte 4jádrový počítač a chcete nastavit *minWorkerThreads* a *minIoThreads* až 50 jeden procesor a jsou za běhu, můžete využít **ThreadPool.SetMinThreads (200, 200)**.
+  > Hodnotu zadanou pomocí této metody je globální nastavení, by to ovlivnilo celé doméně AppDomain. Například, pokud máte 4jádrový počítač a chcete nastavit *minWorkerThreads* a *minIoThreads* až 50 jeden procesor a jsou za běhu, můžete využít **ThreadPool.SetMinThreads (200, 200)** .
 
 * Je také možné zadat pomocí nastavení minimální počet vláken [ *minIoThreads* nebo *minWorkerThreads* nastavení konfigurace](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) pod `<processModel>` element konfigurace v `Machine.config`obvykle umístěné v `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`. **Nastavování počet minimální počet vláken tímto způsobem se obecně nedoporučuje, protože se jedná systémové nastavení.**
 

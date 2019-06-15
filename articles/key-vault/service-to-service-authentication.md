@@ -10,10 +10,10 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.openlocfilehash: defb67c7e100a50a81d55afee03aa84be8e1e8e9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722469"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
@@ -53,7 +53,7 @@ Pro aplikace .NET, je nejjednodušší způsob, jak pracovat s spravovanou ident
 
 `GetAccessTokenAsync` Metoda vyžaduje identifikátor prostředku. Další informace najdete v tématu [které služby Azure podporují spravované identity pro prostředky Azure](../active-directory/msi-overview.md).
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 
 Následující ukázky show `Microsoft.Azure.Services.AppAuthentication` knihovny v akci:
 
@@ -177,7 +177,7 @@ Použití certifikátu k přihlašování do služby Azure AD:
           CertificateStoreLocation={CertificateStore}
     ```
  
-    Nahraďte *{AppId}*, *{TenantId}*, a *{Thumbprint}* s hodnotami, které jsou generovány v kroku 1. Nahraďte *{CertificateStore}* s oběma `LocalMachine` nebo `CurrentUser`, podle plánu nasazení.
+    Nahraďte *{AppId}* , *{TenantId}* , a *{Thumbprint}* s hodnotami, které jsou generovány v kroku 1. Nahraďte *{CertificateStore}* s oběma `LocalMachine` nebo `CurrentUser`, podle plánu nasazení.
 
 4. Spusťte aplikaci. 
 
@@ -191,7 +191,7 @@ Přihlaste se pomocí Azure AD sdíleného tajného kódu přihlašovacích úda
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret} 
     ```
 
-    Nahraďte _{AppId}_, _{TenantId}_, a _{ClientSecret}_ s hodnotami, které jsou generovány v kroku 1.
+    Nahraďte _{AppId}_ , _{TenantId}_ , a _{ClientSecret}_ s hodnotami, které jsou generovány v kroku 1.
 
 3. Spusťte aplikaci. 
 
@@ -212,9 +212,9 @@ Podporovány jsou následující možnosti:
 | `RunAs=CurrentUser` | Místní vývoj | AzureServiceTokenProvider používá integrované ověřování Azure AD k získání tokenu. |
 | `RunAs=App` | [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider používá spravované identity k získání tokenu. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Uživatelsky přiřazené identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | AzureServiceTokenProvider používá uživatelsky přiřazené identity k získání tokenu. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Instanční objekt | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Instanční objekt | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Instanční objekt |`AzureServiceTokenProvider` tajný kód používá k získání tokenu z Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Instanční objekt služby | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Instanční objekt služby | `AzureServiceTokenProvider` certifikát se používá k získání tokenu z Azure AD|
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Instanční objekt služby |`AzureServiceTokenProvider` tajný kód používá k získání tokenu z Azure AD. |
 
 
 

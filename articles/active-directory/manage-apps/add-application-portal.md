@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d3e79b00545f76dff9442a11864701d6d61f057
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d1688cc9317306e7f524536754854b6147ad3dd5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784574"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108768"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do svého tenanta Azure Active Directory
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) nabízí galerii obsahující tisíce předem 
 
 Po přidání aplikace do tenanta Azure AD můžete:
 
-- Spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
+- Správa přístupu uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Konfigurovat jednotné přihlašování uživatelů k aplikaci pomocí jejich účtů Azure AD.
 
 ## <a name="before-you-begin"></a>Než začnete
@@ -58,7 +58,7 @@ Přidání aplikace z galerie do tenanta Azure AD:
 
 1. K vyhledání aplikace, v části **přidat z Galerie**, zadejte název aplikace, které chcete přidat. Vyberte aplikaci z výsledků a vyberte **přidat**. Následující příklad ukazuje **přidat aplikaci** formulář, který se zobrazí po hledání webu github.com.
 
-    ![Přidat aplikaci](media/add-application-portal/add-an-application.png)
+    ![Přidání aplikace](media/add-application-portal/add-an-application.png)
 
 1. Ve formuláři pro konkrétní aplikaci můžete změnit informace o vlastnostech. Například můžete upravit název aplikace, aby odpovídal potřebám vaší organizace. V tomto příkladu se používá název **GitHub-test**.
 
@@ -72,7 +72,7 @@ Dokončení přidání aplikace. Můžete si udělat pauzu. V následujících �
 
 Předpokládejme, že jste se museli vzdálit a teď se vracíte dokončit konfiguraci aplikace. Prvním krokem je najít aplikace.
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
 
 1. V **Azure Active Directory** vyberte **podnikové aplikace**.
 
@@ -132,7 +132,7 @@ Postup úpravy vlastností aplikace:
        | ne  | ne  | ano | ne  | ne   |
        | ne  | ne  | ne  | ne  | ne   |
 
-     * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
+     \* Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
 
 ## <a name="use-a-custom-logo"></a>Použití vlastního loga
 

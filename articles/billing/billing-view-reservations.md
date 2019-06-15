@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60369165"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení Azure rezervací na webu Azure Portal
@@ -49,7 +49,7 @@ Pokud potřebujete změnit obor rezervace, rezervaci dělené tunelové propojen
 Chcete-li zobrazit transakce rezervace na webu Azure portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace**.
+1. Hledat na **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-cm-billing-search.png)
 

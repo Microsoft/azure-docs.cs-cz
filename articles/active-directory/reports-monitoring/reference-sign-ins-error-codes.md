@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3208afc7ec18013c6e70e148995d33114cf7e06c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107624"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestavě aktivit přihlašování 
 
@@ -107,7 +107,7 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |50128|Neplatný název domény – žádné informace o identifikaci tenanta najít v jednom požadavku nebo odvozené od všech zadaných přihlašovacích údajů.|
 |50129|Zařízení není místu - **Workplace join** požadovaných k registraci zařízení.|
 |50130|Hodnota deklarace identity se nedá interpretovat jako známé ověřovací metoda.|
-|50131|Používá se při různých chybách podmíněného přístupu. Například špatný stav zařízení s Windows, zablokování požadavku z důvodu podezřelé aktivity nebo rozhodnutí zásad přístupu a zabezpečení.|
+|50131|Použít v různých chybách podmíněného přístupu. Například špatný stav zařízení s Windows, zablokování požadavku z důvodu podezřelé aktivity nebo rozhodnutí zásad přístupu a zabezpečení.|
 |50132|Přihlašovací údaje byly odvolány z následujících důvodů:<ul><li>Artefakt jednotného přihlašování je neplatný nebo mu platnost vypršela.</li><li>Relace není pro aplikaci dostatečně nová.</li><li>Požadavek na přihlášení v tichému režimu byl odeslán, ale uživatelova relace s Azure AD je neplatná nebo skončila její platnost.</li></ul>|
 |50133|Relace je neplatná z důvodu vypršení platnosti nebo nedávné změny hesla.|
 |50135|Změna hesla se vyžaduje kvůli účet rizika.|
@@ -133,8 +133,8 @@ Můžete také programově přistupovat pomocí data přihlášení [API pro vyt
 |52004|Uživatel neposkytl souhlas pro přístup k prostředkům LinkedIn. |
 |53000|Zásady podmíněného přístupu vyžadují zařízení, které dodržuje předpisy, ale dané zařízení je nedodržuje. Požádejte uživatele zaregistrovat své zařízení s poskytovatelem služby schválené MDM, jako je Intune.|
 |53001|Zásady podmíněného přístupu vyžadují zařízení, které je připojené k doméně, a toto zařízení k doméně připojené není. Použití uživatele domény se připojili k zařízení.|
-|53002|Použitá aplikace není schválenou aplikací pro podmíněný přístup. Pokud chce uživatel získat přístup, musí použít jednu z aplikací na seznamu schválených aplikací.|
-|53003|Přístup se zablokoval kvůli zásadám podmíněného přístupu.|
+|53002|Aplikace používá není schválené aplikace pro podmíněný přístup. Pokud chce uživatel získat přístup, musí použít jednu z aplikací na seznamu schválených aplikací.|
+|53003|Přístup byl zablokován z důvodu zásad podmíněného přístupu.|
 |53004|Uživatel musí dokončit registraci pro vícefaktorové ověřování, než získá přístup k tomuto obsahu. Uživatel by se měl zaregistrovat k vícefaktorovému ověřování.|
 |65001|Aplikace X nemá oprávnění pro přístup k aplikaci Y nebo oprávnění bylo odvoláno. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. Nebo uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. odešlete správci tenanta žádost o autorizaci k jednání jménem aplikace: Y pro prostředek: Z.|
 |65004|Uživatel odmítl souhlas s udělením přístupu aplikace. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|

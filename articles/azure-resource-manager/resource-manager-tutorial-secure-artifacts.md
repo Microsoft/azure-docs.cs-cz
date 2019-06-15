@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fd68edcc727ab08ed9d3ba765bbe795e88de5fc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391310"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069269"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečené artefaktů v nasazení šablon Azure Resource Manageru
 
@@ -75,9 +75,9 @@ Stáhněte si [souboru BACPAC](https://armtutorials.blob.core.windows.net/sqlext
 
     * **Předplatné**: Vyberte své předplatné Azure.
     * **Skupina prostředků**: Vyberte **vytvořit nový** a pojmenujte ho. Skupina prostředků je kontejner pro prostředky Azure pro účely správy. V tomto kurzu můžete použít stejnou skupinu prostředků pro účet úložiště a Azure SQL Database. Poznamenejte si tento název skupiny prostředků, budete potřebovat při vytváření serveru Azure SQL Database později v kurzech.
-    * **Umístění**: Vyberte oblast. Například **USA (střed)**. 
+    * **Umístění**: Vyberte oblast. Například **USA (střed)** .
     * **Typ účtu úložiště**: použijte výchozí hodnotu, která je **Standard_LRS**.
-    * **Umístění**: Použijte výchozí hodnotu, která je **[resourceGroup () .location]**. To znamená, že používáte umístění skupiny prostředků pro účet úložiště.
+    * **Umístění**: Použijte výchozí hodnotu, která je **[resourceGroup () .location]** . To znamená, že používáte umístění skupiny prostředků pro účet úložiště.
     * **Souhlasím s podmínkami a podmínky spuštění výše**: (zaškrtnuto)
 3. Vyberte **Koupit**.
 4. Vyberte ikonu oznámení (ikona zvonku) v pravém horním rohu portálu, abyste zobrazili stav nasazení.
@@ -87,7 +87,7 @@ Stáhněte si [souboru BACPAC](https://armtutorials.blob.core.windows.net/sqlext
 
 ### <a name="create-a-blob-container"></a>Vytvořte kontejner objektů Blob
 
-Kontejner objektů Blob je potřeba předtím, než můžete nahrát všechny soubory. 
+Kontejner objektů Blob je potřeba předtím, než můžete nahrát všechny soubory.
 
 1. Výběrem účtu úložiště ho otevřete. Zobrazí se jenom jeden účet úložiště, které jsou uvedené ve skupině prostředků. Název svého účtu úložiště se liší od znázorněné na následujícím snímku obrazovky.
 
@@ -99,8 +99,8 @@ Kontejner objektů Blob je potřeba předtím, než můžete nahrát všechny so
 3. Vyberte **+ kontejner** z horní části, chcete-li vytvořit nový kontejner.
 4. Zadejte následující hodnoty:
 
-    * **Název**: Zadejte **sqlbacpac**. 
-    * **Úroveň veřejného přístupu**: použijte výchozí hodnotu **privátní (bez anonymního přístupu)**.
+    * **Název**: Zadejte **sqlbacpac**.
+    * **Úroveň veřejného přístupu**: použijte výchozí hodnotu **privátní (bez anonymního přístupu)** .
 5. Vyberte **OK**.
 6. Vyberte **sqlbacpac** otevřete nově vytvořený kontejner.
 
@@ -237,7 +237,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu se nasadit SQL Server, SQL Database a import souboru BACPAC pomocí tokenu SAS. Informace o nasazování prostředků Azure napříč několika oblastmi a používání postupů bezpečného nasazení najdete tady:
+V tomto kurzu se nasadit SQL Server, SQL Database a import souboru BACPAC pomocí tokenu SAS. Zjistěte, jak vytvoříte kanál Azure průběžně vyvíjet a nasazovat šablony Resource Manageru, najdete v tématu
 
 > [!div class="nextstepaction"]
-> [Použití Azure Deployment Manageru](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Průběžná integrace se sadou Azure kanálu](./resource-manager-tutorial-use-azure-pipelines.md)

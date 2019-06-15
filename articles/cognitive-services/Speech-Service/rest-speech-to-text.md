@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d5bceff004d1cc6ddac4046a2ddcd0b5f0b5e73
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487227"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072518"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST Speech to text API
 
@@ -164,7 +164,7 @@ Výsledky jsou k dispozici jako dokumenty JSON. `simple` Formát obsahuje tato p
 > [!NOTE]
 > Pokud se zvuk skládá pouze z vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči.
 
-`detailed` Formát obsahuje stejná data jako `simple` formátovat, spolu s `NBest`, seznam alternativních interpretace stejný výsledek rozpoznání. Tyto výsledky jsou seřazeny od nejpravděpodobněji nejméně pravděpodobně první položka je stejný jako výsledek hlavní rozpoznání.  Při použití `detailed` formátu `DisplayText` se poskytuje jako `Display` pro každého výsledku v `NBest` seznamu.
+`detailed` Formát obsahuje stejná data jako `simple` formátovat, spolu s `NBest`, seznam alternativních interpretace stejný výsledek rozpoznání. Tyto výsledky jsou řazeny od nejpodezřelejších po pravděpodobně k nejméně pravděpodobně. První položka je stejný jako výsledek hlavní rozpoznání.  Při použití `detailed` formátu `DisplayText` se poskytuje jako `Display` pro každého výsledku v `NBest` seznamu.
 
 Každý objekt v `NBest` seznam obsahuje:
 

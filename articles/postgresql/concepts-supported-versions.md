@@ -5,18 +5,24 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4dcbaf159fce6b5f5495a6a25a2a3420cad9e5e8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.openlocfilehash: 0fc4eb90d9bed3877b4618fd839d9e8bf1608718
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65067263"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063727"
 ---
 # <a name="supported-postgresql-database-versions"></a>Podporované verze databáze PostgreSQL
 Cíle společnosti Microsoft pro podporu n-2 verze stroje PostgreSQL v Azure Database for PostgreSQL – jeden Server. Verze by aktuální hlavní verze v Azure (n) a dvě předchozí hlavní verze (-2).
 
 Azure Database for PostgreSQL aktuálně podporuje následující verze:
+
+## <a name="postgresql-version-112"></a>Verze PostgreSQL 11.2
+Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/11/static/release-11-2.html) Další informace o vylepšeních a opravách v této podverze.
+
+>[!NOTE]
+> PostgreSQL verze 11 je dostupná ve verzi preview. Podpora pro vytváření pomocí webu Azure portal se nasazuje a ještě možná není k dispozici ve vaší oblasti. Můžete použít [rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md) Postgres 11 server vytvoříte v libovolné oblasti. Například, `az postgres server create -g group -n server -u username -p password -l westeurope --sku-name GP_Gen5_2 --version 11`.
 
 ## <a name="postgresql-version-107"></a>PostgreSQL Version 10.7
 Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/10/static/release-10-7.html) Další informace o vylepšeních a opravách v této podverze.

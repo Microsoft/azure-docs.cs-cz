@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/30/2019
 ms.openlocfilehash: 47bf59adb33f3685b31430c652b31880d383833e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232640"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
@@ -97,7 +97,7 @@ Můžete obnovit odstraněnou databázi času odstranění nebo dřívějšímu 
 > [!TIP]
 > Ukázkový skript prostředí PowerShell ukazuje, jak obnovit odstraněnou databázi, naleznete v tématu [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 > [!IMPORTANT]
-> Při odstranění instance serveru Azure SQL Database, jeho databáze se také odstraní a nejde obnovit. Aktuálně není dostupná podpora pro obnovení odstraněného serveru.
+> Při odstranění instance serveru Azure SQL Database, jeho databáze se také odstraní a nejde obnovit. Obnovení odstraněného serveru se momentálně nepodporuje.
 
 ### <a name="deleted-database-restore-using-the-azure-portal"></a>Obnovení odstraněné databáze pomocí webu Azure portal
 

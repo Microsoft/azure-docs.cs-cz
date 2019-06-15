@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359071"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním na základě certifikátů v Azure Active Directory
@@ -102,7 +102,7 @@ Pokud chcete navázat spojení se váš tenant, použijte [Connect-AzureAD](/pow
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Načíst
+### <a name="retrieve"></a>Načtení
 
 Pokud chcete načíst důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) rutiny.
 
@@ -119,7 +119,7 @@ Chcete-li vytvořit důvěryhodné certifikační autority, použijte [New-Azure
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>Odebrat
+### <a name="remove"></a>odebrat
 
 Chcete-li odebrat důvěryhodné certifikační autority, použijte [odebrat AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) rutiny:
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942774"
 ---
 # <a name="offer-settings-tab"></a>Karta nastavení nabídky
@@ -36,7 +36,7 @@ Jak je znázorněno v příkladu **ID nabídky** se připojí k vašemu ID vydav
 Tento identifikátor se vztahuje k vašemu účtu. Po přihlášení pomocí účtu organizace vaše **ID vydavatele** se zobrazí v rozevírací nabídce.
 
 
-### <a name="name"></a>Název*
+### <a name="name"></a>Název *
 
 Tento řetězec se zobrazí jako název nabídky na AppSource nebo na webu Azure Marketplace. **Název** pole je omezen na 50 znaků. Revidující může být nutné upravit dobu trvání připojení a nabízet typu na název nabídky svým názvem.
 

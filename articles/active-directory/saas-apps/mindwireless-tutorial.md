@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2fce8b628798ef38889f64d9409bf586a85463b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c320944e952dbea74c41ffd3471143f6713585b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65871853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Kurz: Integrace Azure Active Directory s mindWireless
 
@@ -52,7 +52,7 @@ Konfigurace integrace mindWireless do služby Azure AD, budete muset přidat min
 
 **Chcete-li přidat mindWireless z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -117,7 +117,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s mindWireless, proveďte ná
 
 6. Kromě toho výše mindWireless aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Obor názvů  |  Zdrojový atribut|
+    | Name | Obor názvů  |  Zdrojový atribut|
     | -------------- | --------------- | ----------------|
     | ID zaměstnance | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`| user.employeeid |
 
@@ -212,7 +212,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživatele v mindWireless jako Britta Simon. Práce s [tým podpory mindWireless](mailto:sdulloor@mindwireless.com) přidat uživatele na platformě mindWireless. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

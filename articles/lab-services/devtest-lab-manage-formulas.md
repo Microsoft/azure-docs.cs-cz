@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60562465"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Správa vzorců Azure DevTest Labs
@@ -44,7 +44,7 @@ Následující kroky vás provedou procesem vytvoření vzorce z vlastní image,
 
 3. V seznamu testovacích prostředí vyberte požadované prostředí.  
 
-4. Na stránce testovacího prostředí, vyberte možnost **vzorce (opakovaně použitelné báze)**.
+4. Na stránce testovacího prostředí, vyberte možnost **vzorce (opakovaně použitelné báze)** .
    
     ![Vzorec nabídky](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
@@ -88,7 +88,7 @@ Následující kroky vás provedou procesem vytvoření vzorce na základě exis
 4. Cvičení **přehled** stránky, vyberte virtuální počítač, ze kterého chcete vytvořit vzorec.
    
     ![Testovací prostředí virtuálních počítačů](./media/devtest-lab-create-formulas/my-vms.png)
-5. Na stránce Virtuálního počítače, vyberte možnost **vytvořit vzorec (opakovaně použitelná báze)**.
+5. Na stránce Virtuálního počítače, vyberte možnost **vytvořit vzorec (opakovaně použitelná báze)** .
    
     ![Vytvoření vzorce](./media/devtest-lab-create-formulas/create-formula-menu.png)
 6. Na **vytvořit vzorec** stránky, zadejte **název** a **popis** pro nový vzorec.
@@ -102,7 +102,7 @@ Pokud chcete upravit vzorec, postupujte takto:
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 3. V seznamu testovacích prostředí vyberte požadované prostředí.  
-4. Na stránce testovacího prostředí, vyberte možnost **vzorce (opakovaně použitelné báze)**.
+4. Na stránce testovacího prostředí, vyberte možnost **vzorce (opakovaně použitelné báze)** .
    
     ![Vzorec nabídky](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. Na **Lab vzorce** vyberte vzorec, který chcete upravit.

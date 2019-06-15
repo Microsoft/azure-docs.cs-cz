@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 22f56fb44737bab30b113e3afe6b8ba21518330d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4edee73e13c0490810706a0f7a028b54f37b287b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890424"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093058"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>Kurz: Integrace Azure Active Directory s RedVector
 
@@ -53,7 +53,7 @@ Konfigurace integrace RedVector do služby Azure AD, budete muset přidat RedVec
 
 **Chcete-li přidat RedVector z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon k udělení přístupu k RedVector použ
 
 V této části vytvoříte uživatele v RedVector jako Britta Simon. Práce s [tým podpory RedVector](mailto:sso@redvector.com) přidat uživatele na platformě RedVector. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

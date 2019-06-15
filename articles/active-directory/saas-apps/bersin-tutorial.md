@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ff026743ccda0a47ce176db51dbc7913376f46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 8bc292be68879a608df6662418bb9f59c758f660
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987997"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Kurz: Integrace Azure Active Directory s Bersin
 
@@ -53,7 +53,7 @@ Konfigurace integrace Bersin do služby Azure AD, budete muset přidat Bersin z 
 
 **Chcete-li přidat Bersin z Galerie**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ V této části je povolit Britta Simon k udělení přístupu k Bersin použit�
 
 V této části vytvoříte uživatele v Bersin jako Britta Simon. Práce s [tým podpory Bersin](mailto:USBersinServiceClient@deloitte.com) v platformě Bersin nebo domény, která musí být přidaný do seznamu povolených položek pro platformu Bersin přidejte uživatele. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Bersin platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

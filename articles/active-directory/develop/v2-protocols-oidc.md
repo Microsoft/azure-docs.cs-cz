@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544809"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Platforma identit Microsoft a protokolu OpenID Connect
@@ -57,7 +57,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 | `common` |Uživatele pomocí osobního účtu Microsoft a pracovní nebo školní účet ze služby Azure AD můžete přihlásit k aplikaci. |
 | `organizations` |Pouze uživatelé s pracovní nebo školní účty z Azure AD můžete přihlásit k aplikaci. |
 | `consumers` |Jenom uživatelé s osobním účtem Microsoft můžete přihlásit k aplikaci. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` Nebo `contoso.onmicrosoft.com` | Jenom uživatelé s pracovní či školní účty z konkrétní služby Azure AD tenanta můžete přihlásit k aplikaci. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. Můžete také použít tenanta příjemce `9188040d-6c67-4c5b-b112-36a304b66dad`, místo `consumers` tenanta.  |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` | Jenom uživatelé s pracovní či školní účty z konkrétní služby Azure AD tenanta můžete přihlásit k aplikaci. Lze použít buď popisný název tenanta Azure AD nebo identifikátor GUID vašeho tenanta. Můžete také použít tenanta příjemce `9188040d-6c67-4c5b-b112-36a304b66dad`, místo `consumers` tenanta.  |
 
 Metadata jsou jednoduché dokumentu JavaScript Object Notation (JSON). Prohlédněte si následující fragment kódu pro příklad. Jsou podrobně popsány v tomto fragmentu kódu obsah [OpenID Connect specifikace](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2).
 
@@ -120,9 +120,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Požaduje se | Hodnota zahrnutý v požadavku, vygenerované aplikaci, ve kterém se zahrnou výsledná hodnota id_token jako deklarace identity. Aplikace můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
 | `response_mode` | Doporučené | Určuje metodu, která se má použít k odeslání výsledný autorizační kód zpět do aplikace. Může být `form_post` nebo `fragment`. Pro webové aplikace, doporučujeme používat `response_mode=form_post`, aby bylo zajištěno nejbezpečnější přenos tokeny do vaší aplikace. |
 | `state` | Doporučené | Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec s žádný obsah, který chcete. Náhodně generované jedinečná hodnota se obvykle používá k [útokům padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které uživatel byl v. |
-| `prompt` | Volitelná | Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`. `prompt=login` Deklarace identity donutí uživatele k zadání přihlašovacích údajů tohoto požadavku, které negují jednotného přihlašování. `prompt=none` Deklarace identity je opak. Tento požadavek zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu v. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod Microsoft identity platform vrátí chybu. `prompt=consent` Deklarace identity se aktivuje dialogové okno souhlasu OAuth po přihlášení uživatele. Dialogové okno požádá uživatele a udělit oprávnění k aplikaci. |
-| `login_hint` | Volitelná | Tento parametr můžete předběžně vyplnit pole uživatelské jméno a e-mailová adresa stránky přihlášení pro uživatele, pokud víte, uživatelské jméno předem. Aplikace často, použijte tento parametr během opětovné ověření po již extrahování uživatelské jméno ze starší přihlášení s použitím `preferred_username` deklarací identity. |
-| `domain_hint` | Volitelná | Sféra uživatele v adresáři federované.  To přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránku, o něco jednodušší uživatelské prostředí. U klientů, které jsou federované pomocí v místním adresáři, jako je služba AD FS často výsledkem bezproblémové přihlašování z důvodu existující relaci přihlášení. |
+| `prompt` | Nepovinné | Určuje typ interakce s uživatelem, který je požadován. V tuto chvíli pouze platné hodnoty jsou `login`, `none`, a `consent`. `prompt=login` Deklarace identity donutí uživatele k zadání přihlašovacích údajů tohoto požadavku, které negují jednotného přihlašování. `prompt=none` Deklarace identity je opak. Tento požadavek zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu v. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod Microsoft identity platform vrátí chybu. `prompt=consent` Deklarace identity se aktivuje dialogové okno souhlasu OAuth po přihlášení uživatele. Dialogové okno požádá uživatele a udělit oprávnění k aplikaci. |
+| `login_hint` | Nepovinné | Tento parametr můžete předběžně vyplnit pole uživatelské jméno a e-mailová adresa stránky přihlášení pro uživatele, pokud víte, uživatelské jméno předem. Aplikace často, použijte tento parametr během opětovné ověření po již extrahování uživatelské jméno ze starší přihlášení s použitím `preferred_username` deklarací identity. |
+| `domain_hint` | Nepovinné | Sféra uživatele v adresáři federované.  To přeskočí proces zjišťování na základě e-mailu, který uživatel prochází na přihlašovací stránku, o něco jednodušší uživatelské prostředí. U klientů, které jsou federované pomocí v místním adresáři, jako je služba AD FS často výsledkem bezproblémové přihlašování z důvodu existující relaci přihlášení. |
 
 V tomto okamžiku bude uživatel vyzván k zadání přihlašovacích údajů a bylo možné ověření dokončit. Koncový bod platforma identit Microsoft ověřuje, že uživatel vyjádřil souhlas se oprávnění uvedená v `scope` parametr dotazu. Pokud uživatele. nevyjádřil souhlas některý z těchto oprávnění, koncový bod Microsoft identity platform zobrazí výzvu k požadovaná oprávnění vyjádřit souhlas. Další informace o [aplikace s více tenanty, oprávnění a souhlas](v2-permissions-and-consent.md).
 

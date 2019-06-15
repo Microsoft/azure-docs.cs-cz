@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 44959410b68439dd6a132c41d2a51dcdafdec846
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1f8041ecea7c297c6eafdedfbedaae62f61e0e8c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65889930"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Kurz: Integrace Azure Active Directory s SimpleNexus
 
@@ -53,7 +53,7 @@ Konfigurace integrace SimpleNexus do služby Azure AD, budete muset přidat Simp
 
 **Chcete-li přidat SimpleNexus z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -188,7 +188,7 @@ Chcete-li povolit uživatele Azure AD se přihlaste k SimpleNexus, musí být po
 > [!NOTE]
 > Můžete použít jakékoli jiné SimpleNexus uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných SimpleNexus uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

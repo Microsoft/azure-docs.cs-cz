@@ -3,20 +3,20 @@ title: Kontejnery Dockeru
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Kontejner LUIS načte trénovaného nebo publikované aplikace do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 02ac7b91622a3c8fe877ea9bcbc7224a67eb0ae5
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 68ff6a156e0d159816b184452f1f945cbce65216
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052024"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
@@ -108,9 +108,9 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 
 |Typ balíčku|Rozhraní API pro dotazy koncového bodu|Dostupnost dotazu|Formát názvu souboru balíčku|
 |--|--|--|--|
-|Trénovaný|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Fázování|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
-|Provozní|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Školení|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Staging|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
+|Výroba|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Přejmenovat, změnit, přepsat ani dekomprimovat soubory balíčku LUIS.
@@ -272,8 +272,8 @@ Použít hostitele, `https://localhost:5000`, pro kontejner rozhraní API.
 
 |Typ balíčku|Metoda|Trasa|Parametry dotazu|
 |--|--|--|--|
-|Publikováno|[Získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [příspěvku](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q = {q}<br>& pracovní<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]<br>|
-|Trénovaný|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]|
+|Publikování|[Získat](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [příspěvku](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q = {q}<br>& pracovní<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]<br>|
+|Školení|GET, Post|/luis/v2.0/apps/{appId}/versions/{versionId}?|q = {q}<br>[& timezoneOffset]<br>[& podrobné]<br>[& protokolu]|
 
 Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 

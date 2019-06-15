@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60538796"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integraci 3270 aplikace řízené modelem obrazovky na sálové počítače IBM v Azure s využitím konektoru Azure Logic Apps a IBM 3270
@@ -221,7 +221,7 @@ Předpokládejme také, že tento postup opakujte, ale zadejte nesprávná data 
 
 * MSG-10
 * Vítejte CICS
-* Prázdné
+* prázdný
 * WBGB_1 (vstup)
 * WBGB_2 (chyba)
 * Empty_1
@@ -355,7 +355,7 @@ Po dokončení těchto kroků, pomocí akce, kterou vytvoříte ve vaší aplika
    ![Vyberte akci 3270](./media/connectors-create-api-3270/select-3270-action.png)
 
    Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Pokud ještě neexistuje žádné připojení, zadejte informace potřebné pro připojení a zvolte **vytvořit**.
 
@@ -393,7 +393,7 @@ Po dokončení těchto kroků, pomocí akce, kterou vytvoříte ve vaší aplika
 
    **Vyberte metodu**
 
-   ![Vybrat metodu](./media/connectors-create-api-3270/select-method.png)
+   ![Vyberte metodu](./media/connectors-create-api-3270/select-method.png)
 
    **Vyberte parametry**
 

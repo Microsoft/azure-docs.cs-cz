@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083403"
 ---
 # <a name="vpn-gateways-overview"></a>Přehled bran VPN
 
@@ -52,7 +52,7 @@ Připojení VPN typu site-to-site používá následující kryptografické para
 | Verze IKE | IKEv1 | IKEv1 | IKEv1 |
 | Šifrování | AES 128 | AES 256 | AES 256 |
 | Hashovací algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Skupina Diffie Hellman (skupiny DH) | 1 | 1 | 1 |
+| Skupina Diffie Hellman (skupiny DH) | 2 | 2 | 2 |
 | Doba životnosti | 28 800 sekund | 28 800 sekund | 28 800 sekund |
 | Velikost dat | 4 GB | 4 GB | 4 GB |
 

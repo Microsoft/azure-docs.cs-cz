@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 04/16/2019
-ms.author: aahi
-ms.openlocfilehash: 9cb6a40e6ce53a6d82d4129db876a1b24269f166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/05/2019
+ms.author: raymondl
+ms.openlocfilehash: b7683b6d5932872f8cef2f6db9a1ec7e5e4fa86d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069184"
 ---
-# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: Postup extrakce klíčových frází pomocí analýzy textu
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: Extrakce klíčových frází s využitím Analýzy textu
 
 [Rozhraní API pro extrakci klíčových frází](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) vyhodnotí nestrukturovaný text a pro každý dokument JSON vrátí seznam klíčových frází. 
 
 Tato funkce je užitečná v případě, kdy potřebujete rychle identifikovat hlavní body v kolekci dokumentů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný), vrátí služba hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
 
-V současné době se extrakce klíčových frází podporuje v angličtině, němčině, španělštině a japonštině. Další jazyky jsou ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
+Zobrazit [podporované jazyky](../text-analytics-supported-languages.md) najdete další informace. 
 
 > [!TIP]
 > Rozhraní text Analytics také poskytuje Dockeru založených na Linuxu image kontejneru pro extrakci klíčových frází, tak, aby se [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.

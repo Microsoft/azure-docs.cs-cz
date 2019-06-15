@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60334071"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
@@ -21,7 +21,7 @@ Zjistěte, jak analýza webových protokolů pomocí Data Lake Analytics, zvlá�
 
 ## <a name="prerequisites"></a>Požadavky
 * **Visual Studio 2015 nebo Visual Studio 2013**.
-* **[Nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs)**.
+* **[Nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs)** .
 
     Po instalaci nástrojů Data Lake pro Visual Studio se zobrazí **Data Lake** položky v **nástroje** nabídky v sadě Visual Studio:
 
@@ -37,7 +37,7 @@ Předtím, než můžete vytvářet a testovat skripty U-SQL, musíte nejdřív 
 
 **Postup připojení ke službě Data Lake Analytics**
 
-1. Otevřete sadu Visual Studio.
+1. Otevřít Visual Studio.
 2. Klikněte na tlačítko **Data Lake > Možnosti a nastavení**.
 3. Klikněte na tlačítko **Sign In**, nebo **změnit uživatele** Pokud někdo přihlásil a postupujte podle pokynů.
 4. Klikněte na tlačítko **OK** zavřete dialogové okno Možnosti a nastavení.

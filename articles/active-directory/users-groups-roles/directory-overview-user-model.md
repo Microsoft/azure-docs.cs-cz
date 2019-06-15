@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775a03a82c1fc432e65ce45309a5af3febb448a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2053ad07e555cc04cea714524141068f1404796
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083893"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 
@@ -52,7 +52,7 @@ Mnoho velkých organizací chce takové možnosti pro své uživatele, aby mohli
 
  Název role | Souhrn oprávnění
  --------- | -------------------
- **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikace můžou zobrazit zásady podmíněného přístupu a zařízení, ale nemůžou je spravovat.
+ **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikace můžete zobrazit zásady podmíněného přístupu a zařízení, ale ne je spravovat.
  **Správce cloudové aplikace** | Může přidávat, spravovat a registrovat podnikové aplikace. Tato role má všechna oprávnění správce aplikace, nemůže však spravovat nastavení aplikačního proxy serveru.
 **Vývojář aplikace** | Může přidávat a aktualizovat registrace aplikací, ale nemůže spravovat podnikové aplikace ani konfigurovat nastavení aplikačního proxy serveru.
 

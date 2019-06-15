@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0bbbd73d1856ba5d3dc19873c56fce622b272939
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Kurz: Integrace Azure Active Directory pomocí konzoly pro správu Mimecast
 
@@ -53,7 +53,7 @@ Konfigurace integrace Mimecast konzoly pro správu do služby Azure AD, budete m
 
 **Chcete-li přidat Mimecast konzoly pro správu z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -164,7 +164,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí konzoly pro správu M
     >[!NOTE]
     >Hodnota adresy URL pro přihlášení a hodnota odhlašovací adresa URL jsou pro konzolu Správce Mimecast stejné.
     
-    g. Otevřít certifikát base-64 stáhnout z webu Azure portal v programu Poznámkový blok, odeberte první řádek ("*--*") a poslední řádek ("*--*"), zkopírujte ho do zbývající obsah vaší schránky a vložte ho do **certifikát zprostředkovatele Identity (Metadata)** textového pole.
+    g. Otevřít certifikát base-64 stáhnout z webu Azure portal v programu Poznámkový blok, odeberte první řádek (" *--* ") a poslední řádek (" *--* "), zkopírujte ho do zbývající obsah vaší schránky a vložte ho do **certifikát zprostředkovatele Identity (Metadata)** textového pole.
     
     h. Vyberte **povolit jednotné přihlašování na**.
     

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f4db76fe2a302dd5acce01b456ef3b676b187c6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078272"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (C#)
 
@@ -38,7 +38,7 @@ Balíček NuGet Microsoft.scp.NET.SDK, který, který používáte pro váš pro
 > [!IMPORTANT]  
 > V příkladu v tomto dokumentu očekává, že HDInsight 3.5 a 3.6 clusteru.
 >
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. 
 
 Topologií C# musí také cílit na .NET 4.5.
 
@@ -137,8 +137,8 @@ Event Hubs je zdroj dat pro účely tohoto příkladu. Použijte informace v č�
 
    | Název | Oprávnění |
    | --- | --- |
-   | zapisovatel |Odeslat |
-   | čtenář |Naslouchat |
+   | Zapisovač |Odeslat |
+   | Čtecí zařízení |Naslouchat |
 
     ![Okno zásad přístupu snímek sdílené složky](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
 

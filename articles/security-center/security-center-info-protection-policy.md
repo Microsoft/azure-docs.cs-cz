@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/29/2019
 ms.author: rkarlin
 ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875603"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Vlastní nastavení zásad ochrany informací SQL ve službě Azure Security Center (Preview)
@@ -53,7 +53,7 @@ Chcete-li upravit zásady služby information protection pro vašeho tenanta Azu
 2. V **označení citlivosti konfigurovat** obrazovky, můžete vytvořit nebo změnit název popisku a popis. Můžete také nastavit, jestli je popisek aktivní nebo zakázaný přepnutím **povoleno** zapnout nebo vypnout. Nakonec můžete přidat nebo odebrat typy informací, které jsou spojené s popiskem. Žádná data zjištění odpovídající, že typ informací automaticky zahrne označení citlivosti přidružené doporučení klasifikace.
 3. Klikněte na **OK**.
  
-   ![Nakonfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Konfigurace označení citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Popisky jsou uvedeny v pořadí podle vzestupně citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhnout a změnit jejich pořadí v tabulce, nebo použít popisky **nahoru** a **přesunout dolů** tlačítka, chcete-li změnit pořadí. 
  

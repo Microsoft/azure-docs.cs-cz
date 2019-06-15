@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835689"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059645"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky aplikací ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -38,7 +38,7 @@ Můžete povolit nebo zakázat následující typy protokolů:
 * **Se nezdařilo, trasování požadavku** – podrobné informace o neúspěšných požadavcích, včetně trasování součásti služby IIS používá ke zpracování požadavku a doba trvání v jednotlivých komponentách. To je užitečné, pokud chcete zlepšit výkon webu a izolovat konkrétní chyba protokolu HTTP. Jedna složka se vygeneruje pro každou chybu v systému souborů aplikace. Zásady uchovávání souborů jsou stejné jako podrobné protokolování nad chyb.
 * **Web, protokolování na Server** – informace o transakce HTTP pomocí [rozšířený formát protokolu W3C souboru](/windows/desktop/Http/w3c-logging). Je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 
-### <a name="application-diagnostics"></a>Diagnostika aplikace
+### <a name="application-diagnostics"></a>Konzole Application diagnostics
 Konzole Application diagnostics můžete zachytit informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) třídy k protokolování informací do protokolu diagnostiky aplikace. Příklad:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -55,7 +55,7 @@ Povolení diagnostiky v [webu Azure portal](https://portal.azure.com), přejdět
 
 Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. Následující tabulka zobrazuje kategorie protokolů, které obsahuje každou úroveň:
 
-| Úroveň| Kategorie součástí protokolu |
+| Level| Kategorie součástí protokolu |
 |-|-|
 |**Disabled** (Zakázáno) | Žádný |
 |**Chyba** | Chyby, kritické |
@@ -75,7 +75,7 @@ Pro **protokolování webového serveru**, můžete vybrat **úložiště** nebo
 
 Pokud uchováváte v systému souborů protokolů, soubory můžete získat přístup pomocí protokolu FTP nebo stáhnout jako archiv Zip s použitím rozhraní příkazového řádku Azure.
 
-Ve výchozím nastavení, nejsou automaticky odstraněny protokoly (s výjimkou produktů **protokolování aplikace (systém souborů)**). Pokud chcete automaticky odstranit protokoly, nastavte **doba uchování (dny)** pole.
+Ve výchozím nastavení, nejsou automaticky odstraněny protokoly (s výjimkou produktů **protokolování aplikace (systém souborů)** ). Pokud chcete automaticky odstranit protokoly, nastavte **doba uchování (dny)** pole.
 
 > [!NOTE]
 > Pokud jste [znovu vygenerovat přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte obnovit konfiguraci příslušných protokolování použití aktualizované klíčů. Použijte následující postup:
@@ -190,14 +190,14 @@ Při přihlašování do úložiště objektů blob, data se ukládají ve form�
 | Název vlastnosti | / Ve formátu |
 | --- | --- |
 | Datum |Datum a čas, kdy došlo k události |
-| Úroveň |Úroveň události (například Chyba, upozornění, informace) |
+| Level |Úroveň události (například Chyba, upozornění, informace) |
 | ApplicationName |Název aplikace |
-| ID instance |Instance aplikace, která na došlo k události |
+| InstanceId |Instance aplikace, která na došlo k události |
 | EventTickCount |Datum a čas, kdy došlo k události, formát značky (větší přesnost) |
 | ID události |ID události této události<p><p>Výchozí hodnota je 0, pokud zadaný žádný |
 | Identifikátor PID |ID procesu |
 | TID. |ID vlákna vlákna, která vytváří události |
-| Zpráva |Podrobná zpráva o události |
+| Message |Podrobná zpráva o události |
 
 Data uložená v objektu blob, by vypadalo podobně jako v následujícím příkladu:
 
@@ -205,7 +205,7 @@ Data uložená v objektu blob, by vypadalo podobně jako v následujícím pří
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Pro ASP.NET Core, protokolování se provádí pomocí [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) poskytovatele tohoto zprostředkovatele protokolu další vkladů soubory do kontejneru objektů blob. Další informace najdete v tématu [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
+> Pro ASP.NET Core, protokolování se provádí pomocí [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) poskytovatele tohoto zprostředkovatele protokolu další vkladů soubory do kontejneru objektů blob. Další informace najdete v tématu [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging).
 >
 >
 

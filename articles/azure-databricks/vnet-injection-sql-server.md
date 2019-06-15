@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770635"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Kurz: Dotaz kontejneru Dockeru Linux SQL serveru ve virtuální síti ze Azure Databricks Poznámkový blok
@@ -64,8 +64,8 @@ V tomto kurzu se naučíte:
     
     |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
-    |Zdroj|IP adresy|IP adresy určuje, že příchozí provoz z konkrétního zdroje IP adres budou povolené nebo zakázané tímto pravidlem.|
-    |Zdrojové IP adresy|< vaše veřejné IP adresy\>|Zadejte veřejnou IP adresu. Veřejné IP adresy můžete najít návštěvou [bing.com](https://www.bing.com/) a vyhledáte **"Moje IP adresa"**.|
+    |source|IP adresy|IP adresy určuje, že příchozí provoz z konkrétního zdroje IP adres budou povolené nebo zakázané tímto pravidlem.|
+    |Zdrojové IP adresy|< vaše veřejné IP adresy\>|Zadejte veřejnou IP adresu. Veřejné IP adresy můžete najít návštěvou [bing.com](https://www.bing.com/) a vyhledáte **"Moje IP adresa"** .|
     |Rozsahy zdrojových portů|*|Povolte provoz z jakéhokoli portu.|
     |Cíl|IP adresy|IP adresy určuje, že odchozí přenosy pro konkrétní zdroj IP adres budou povolené nebo zakázané tímto pravidlem.|
     |Cílové IP adresy|< veřejnou IP adresu vašeho virtuálního počítače\>|Zadejte veřejnou IP adresu virtuálního počítače. Tento nástroj naleznete na **přehled** stránku vašeho virtuálního počítače.|
@@ -80,7 +80,7 @@ V tomto kurzu se naučíte:
 
     |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
-    |Zdroj|IP adresy|IP adresy určuje, že příchozí provoz z konkrétního zdroje IP adres budou povolené nebo zakázané tímto pravidlem.|
+    |source|IP adresy|IP adresy určuje, že příchozí provoz z konkrétního zdroje IP adres budou povolené nebo zakázané tímto pravidlem.|
     |Zdrojové IP adresy|10.179.0.0/16|Zadejte rozsah adres vaší virtuální sítě.|
     |Rozsahy zdrojových portů|*|Povolte provoz z jakéhokoli portu.|
     |Cíl|IP adresy|IP adresy určuje, že odchozí přenosy pro konkrétní zdroj IP adres budou povolené nebo zakázané tímto pravidlem.|

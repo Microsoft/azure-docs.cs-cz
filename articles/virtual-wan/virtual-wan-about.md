@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 06/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ee6b2dd07a89de4f5347e82bde19990dbb6c995
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460202"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077548"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
-Azure virtuální síť WAN je síťová služba, která poskytuje větev optimalizované a automatické připojení k a prostřednictvím Azure. Oblasti Azure, které slouží jako rozbočovačů, které můžete zvolit připojení větvích. Po připojení se větve, můžete využít páteřní síť Azure k navázání připojení větev to-VNet a větve do větve. Seznam partnerů a umístění, které podporují virtuální sítě WAN VPN najdete v tématu [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) článku.
+Azure virtuální síť WAN je síťová služba, která poskytuje větev optimalizované a automatické připojení k a prostřednictvím Azure. Oblasti Azure, které slouží jako rozbočovačů, které můžete zvolit připojení větvích. Můžete využít páteřní síť Azure také připojit větví a využijte připojení větev to-VNet. Máme seznam partnerů, které podporují připojení automation s Azure VPN virtuální sítě WAN. Další informace najdete v tématu [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) článku.
 
 Azure virtuální sítě WAN spojuje mnoho připojení k Azure cloudové služby jako site-to-site VPN (obecně dostupné), ExpressRoute (Preview), uživatel point-to-site VPN (Preview) do jediného provozní rozhraní. Navázat připojení k virtuálním sítím Azure pomocí připojení k virtuální síti.
 

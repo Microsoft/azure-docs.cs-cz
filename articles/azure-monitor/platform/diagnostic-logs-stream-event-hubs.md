@@ -9,10 +9,10 @@ ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60237716"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Diagnostické protokoly Azure Stream do centra událostí
@@ -24,7 +24,7 @@ Můžete například použít funkci streamování pro diagnostické protokoly n
 * **Stream protokolů systémy telemetrie a protokolování 3. stran** – můžete Streamovat všechny diagnostických protokolů do jednoho centra událostí do datového kanálu protokolu do nástrojů třetích stran SIEM nebo log analytics.
 * **Zobrazit stav služby streamování "kritickou cestu" dat do Power BI** – pomocí služby Event Hubs, Stream Analytics a Power BI, můžete snadno transformovat vaše diagnostická data v k téměř v reálném čase přehledy o vašich službách Azure. [Tento článek dokumentace podává přehled o tom, jak nastavit službu Event Hubs, zpracování dat pomocí Stream Analytics a Power BI využívat jako výstup](../../stream-analytics/stream-analytics-power-bi-dashboard.md). Tady je pár tipů pro získání nastavení diagnostické protokoly:
 
-  * Centra událostí pro kategorii diagnostické protokoly se vytvoří automaticky při zaškrtnutím možnosti na portálu nebo povolit prostřednictvím prostředí PowerShell, takže vyberte Centrum událostí v oboru názvů s názvem, který začíná **insights -**.
+  * Centra událostí pro kategorii diagnostické protokoly se vytvoří automaticky při zaškrtnutím možnosti na portálu nebo povolit prostřednictvím prostředí PowerShell, takže vyberte Centrum událostí v oboru názvů s názvem, který začíná **insights -** .
   * Následující kód SQL je ukázkového dotazu Stream Analytics, který můžete použít k analýze všechna data protokolu do tabulky Power BI:
 
     ```sql
@@ -181,12 +181,12 @@ Tady je ukázkový výstup dat z Event Hubs:
 
 | Název elementu | Popis |
 | --- | --- |
-| záznamy |Pole všech protokolů událostí v této datové části. |
+| records |Pole všech protokolů událostí v této datové části. |
 | time |Čas, kdy došlo k události. |
 | category |Kategorie protokolu pro tuto událost. |
 | resourceId |ID prostředku prostředku, který vytvořil tuto událost. |
 | operationName |Název operace |
-| úroveň |Volitelné. Určuje úroveň protokolu událostí. |
+| level |Volitelné. Určuje úroveň protokolu událostí. |
 | properties |Vlastnosti události. |
 
 Můžete zobrazit seznam všech poskytovatelů prostředků, které podporují streamování do Event Hubs [tady](diagnostic-logs-overview.md).

@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989279"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Nakonfigurovat jednotné přihlašování do aplikace mimo galerii v platforma identit Microsoft
@@ -54,7 +54,7 @@ K připojení neuvedené aplikace pomocí šablony integrace aplikace, proveďte
 3. (Volitelné, ale doporučené) V **přidat z Galerie** vyhledávací pole, zadejte zobrazovaný název aplikace. Pokud se daná aplikace se zobrazí ve výsledcích hledání, vyberte ho a přeskočit zbývající část tohoto postupu.
 4. Vyberte **aplikace mimo galerii**. **Přidat vlastní aplikaci** se zobrazí stránka.
 
-   ![Přidat aplikaci](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
+   ![Přidání aplikace](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
 5. Zadejte zobrazovaný název pro novou aplikaci.
 6. Vyberte **Přidat**.
 
@@ -64,11 +64,11 @@ Tak, že přidáte aplikaci tak, poskytují předem integrovaných aplikací fun
 - **Založené na heslech**
 - **Propojené**
 
-![Vyberte metodu jednotného přihlašování.](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Vyberte metodu jednotné přihlašování](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Další informace o těchto možnostech najdete v následující části tohoto článku.
 
-## <a name="saml-based-single-sign-on"></a>Jednotné přihlašování pomocí SAML
+## <a name="saml-based-single-sign-on"></a>Založené na SAML jednotného přihlašování
 
 Vyberte **SAML** možnost nakonfigurovat ověřování pro aplikaci na základě SAML. (Tato možnost vyžaduje, aby podporoval aplikace SAML 2.0.) **Nastavte si jednotné přihlašování pomocí SAML** se zobrazí stránka.
 
@@ -125,7 +125,7 @@ Následující dvě pole jsou požadovány:
 
 Následující tři pole jsou volitelná:
 
-- **Přihlašovací adresa URL (iniciovaného Zprostředkovatelem přihlašování pouze)**. Tato hodnota označuje, kde uživatel přejde za účelem přihlášení k této aplikaci. Pokud aplikace provádí iniciovaného Zprostředkovatelem přihlašování jednotného přihlašování, pak když uživatel přejde na tuto adresu URL této uložené Procedury provede nezbytné přesměrování do služby Azure AD k ověření a přihlášení uživatele. Pokud chcete zadat toto pole, Azure AD používá tuto adresu URL ke spuštění aplikace z Office 365 a Azure AD přístupového panelu. Vynecháte-li toto pole, Azure AD místo toho provádí zahájené pomocí IdP přihlašování při spuštění aplikace z Office 365, Azure AD přístupového panelu nebo adresu URL jednotného přihlašování k Azure AD (který můžete zkopírovat z **řídicí panel** stránky).
+- **Přihlašovací adresa URL (iniciovaného Zprostředkovatelem přihlašování pouze)** . Tato hodnota označuje, kde uživatel přejde za účelem přihlášení k této aplikaci. Pokud aplikace provádí iniciovaného Zprostředkovatelem přihlašování jednotného přihlašování, pak když uživatel přejde na tuto adresu URL této uložené Procedury provede nezbytné přesměrování do služby Azure AD k ověření a přihlášení uživatele. Pokud chcete zadat toto pole, Azure AD používá tuto adresu URL ke spuštění aplikace z Office 365 a Azure AD přístupového panelu. Vynecháte-li toto pole, Azure AD místo toho provádí zahájené pomocí IdP přihlašování při spuštění aplikace z Office 365, Azure AD přístupového panelu nebo adresu URL jednotného přihlašování k Azure AD (který můžete zkopírovat z **řídicí panel** stránky).
 
 - **Stav přenosu**. Stav přenosu můžete zadat v SAML dáte pokyn, aby aplikace where přesměrovat uživatele po ověření. Hodnota je obvykle adresa nebo adresa URL cestu, která uživatelé přejdou do určitého umístění v rámci aplikace.
 
@@ -141,7 +141,7 @@ K zobrazení nebo úpravám deklarací identity odesílají v tokenu SAML pro ap
 
 - Přejděte **atributy uživatele a deklarace identity** nadpis a vyberte **upravit** ikonu. **Atributy uživatele a deklarace identity** se zobrazí stránka.
 
-![Atributy uživatele a deklarace identit](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![Atributy uživatele a deklarace identity](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 Je třeba upravit deklarací identity vystavených v tokenu SAML pro dva důvody:
 
@@ -181,12 +181,12 @@ Po dokončení konfigurace aplikace pro používání služby Azure AD jako zpro
 
 Přiřazení nové uživatele nebo skupinu do vaší aplikace:
 
-1. Na bočním panelu aplikace vyberte **uživatelů a skupin**.  **\<Název aplikace >-uživatelů a skupin** se zobrazí stránka, která obsahuje aktuální seznam přiřazení uživatelé a skupiny.
+1. Na bočním panelu aplikace vyberte **uživatelů a skupin**. **\<Název aplikace >-uživatelů a skupin** se zobrazí stránka, která obsahuje aktuální seznam přiřazení uživatelé a skupiny.
 2. Vyberte **přidat uživatele**. **Přidat přiřazení** zobrazí se stránka.
-3. Vyberte **uživatelům a skupinám (\<číslo > vybrané)**. **Uživatelů a skupin** se zobrazí stránka zobrazuje seznam dostupných uživatelů a skupin.
+3. Vyberte **uživatelům a skupinám (\<číslo > vybrané)** . **Uživatelů a skupin** se zobrazí stránka zobrazuje seznam dostupných uživatelů a skupin.
 4. Typ nebo přejděte k vyhledání uživatele nebo skupinu, kterou chcete přiřadit ze seznamu.
 5. Vyberte jednotlivé uživatele nebo skupiny, kterou chcete přidat a pak vyberte **vyberte** tlačítko. **Uživatelů a skupin** stránky zmizí.
-6. V **přidat přiřazení** stránce **přiřadit**.  **<application name> – Uživatelé a skupiny** se zobrazí stránka s dalšími uživateli v seznamu zobrazí.
+6. V **přidat přiřazení** stránce **přiřadit**. **<application name> – Uživatelé a skupiny** se zobrazí stránka s dalšími uživateli v seznamu zobrazí.
 
    ![Aplikace uživatele a skupiny](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
@@ -213,7 +213,7 @@ Tuto možnost použijte ke konfiguraci [založené na heslech jednotného přihl
 
 Po výběru **založené na heslech**, výzva k zadání adresy URL vaší aplikace webové přihlašovací stránky.
 
-![Jednotné přihlašování pomocí hesla](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Založené na heslech jednotného přihlašování](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Proveďte tyto kroky:
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066821"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (Public preview)
 
 K nasazení vaší služby napříč mnoha oblastmi a ujistěte se, že funguje podle očekávání v každé oblasti, můžete použít Azure Deployment Manager pro koordinaci postupné zavedení služby. Stejně jako pro nasazení v Azure, můžete definovat prostředky pro vaši službu v [šablon Resource Manageru](resource-group-authoring-templates.md). Po vytvoření šablony, pomocí Správce nasazení popisující topologii pro vaši službu a jak mají být zahrnuty navýšení kapacity.
 
-Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky. 
+Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky.
 
 Azure Deployment Manager je ve verzi preview. Pomozte nám vylepšit tím, že poskytuje funkci [zpětnou vazbu](https://aka.ms/admfeedback).
 
@@ -31,7 +31,12 @@ Pokud chcete použít nástroj Deployment Manager, budete muset vytvořit čtyř
 
 Nasazení šablony topologie před nasazením šablony nasazení.
 
-Referenční dokumentace rozhraní REST API služby Azure Deployment Manager můžete najít [tady](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Další zdroje informací:
+
+- [Reference k rozhraní REST API Azure Deployment Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Kurz: Pomocí Správce nasazení Azure pomocí šablon Resource Manageru](./deployment-manager-tutorial.md).
+- [Kurz: Použít kontrolu v nástroji Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+- [Ukázky Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identita a přístup
 
@@ -191,7 +196,7 @@ V šabloně zavedení vytvoříte zdroj artefaktu pro binární soubory, které 
 
 ### <a name="steps"></a>Kroky
 
-Můžete definovat krok provést před nebo po operaci nasazení. V současné době pouze `wait` krok a v kroku "healthCheck" jsou k dispozici. 
+Můžete definovat krok provést před nebo po operaci nasazení. V současné době pouze `wait` krok a v kroku "healthCheck" jsou k dispozici.
 
 Krok čekání pozastaví nasazení, než budete pokračovat. Umožňuje ověřit, že vaše služba je spuštěná podle očekávání před nasazením další jednotku služby. Následující příklad ukazuje obecný formát krok čekání.
 
@@ -262,13 +267,13 @@ Další informace najdete v tématu [referenčními informacemi k šablonám uve
 
 ## <a name="parameter-file"></a>Soubor s parametry
 
-Můžete vytvořit dva soubory parametrů. Jeden soubor parametr se používá při nasazování topologie služby a druhé se používá pro nasazení zavedení. Existují některé hodnoty, třeba Ujistěte se, že jsou stejné v obou souborech parametru.  
+Můžete vytvořit dva soubory parametrů. Jeden soubor parametr se používá při nasazování topologie služby a druhé se používá pro nasazení zavedení. Existují některé hodnoty, třeba Ujistěte se, že jsou stejné v obou souborech parametru.
 
 ## <a name="containerroot-variable"></a>containerRoot proměnné
 
 Se systémovou správou verzí nasazení se změní cesta k artefaktům s každou novou verzí. Při prvním spuštění nasazení cesta může být `https://<base-uri-blob-container>/binaries/1.0.0.0`. Při druhém volání může být `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager usnadňuje získávání správnou kořenovou cestu pro aktuální nasazení s použitím `$containerRoot` proměnné. Tato hodnota změní s jednotlivými verzemi a není známý před nasazením.
 
-Použití `$containerRoot` proměnné v souboru parametrů pro šablonu nasazení prostředků Azure. V době nasazení je tato proměnná nahradit skutečnými hodnotami od uvedení. 
+Použití `$containerRoot` proměnné v souboru parametrů pro šablonu nasazení prostředků Azure. V době nasazení je tato proměnná nahradit skutečnými hodnotami od uvedení.
 
 Třeba při uvedení vytvořit zdroj artefaktu binární artefaktů.
 

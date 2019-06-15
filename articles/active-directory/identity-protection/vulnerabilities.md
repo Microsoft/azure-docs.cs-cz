@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b481030c5d2d8e7d5e7061cdf256a202e08d6cbf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108790"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
 
@@ -33,11 +33,11 @@ Toto ohrožení zabezpečení pomáhá vyhodnotit nasazení služby Azure Multi-
 Azure Multi-Factor Authentication poskytuje druhou vrstvu zabezpečení pro ověřování uživatelů. To pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý přihlašovací proces. Azure Multi-Factor Authentication poskytuje snadno použitelný ověřování možností, jako jsou:
 
 * Telefonní hovor
-* Zpráva SMS
+* Textová zpráva
 * Oznámení mobilní aplikace
 * Ověřování jednorázovým HESLEM ověřovací kód
 
-Doporučujeme vyžadovat ověřování Azure Multi-Factor Authentication pro přihlášení uživatelů. Ověřování službou Multi-Factor Authentication hrají klíčovou roli v rámci zásad podmíněného přístupu na základě rizik k dispozici prostřednictvím služby Identity Protection.
+Doporučujeme vyžadovat ověřování Azure Multi-Factor Authentication pro přihlášení uživatelů. Ověřování službou Multi-Factor Authentication hrají klíčovou roli na základě rizik zásady podmíněného přístupu k dispozici prostřednictvím služby Identity Protection.
 
 Další informace najdete v tématu [Co je Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
 

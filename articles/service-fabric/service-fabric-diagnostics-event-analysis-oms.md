@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60393404"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Události analýzy a vizualizace s protokoly Azure monitoru
@@ -43,7 +43,7 @@ Po přijetí dat pomocí Azure monitoru protokoly Azure obsahuje několik *řeš
 
 V [webu Azure Portal](https://portal.azure.com), přejděte do skupiny prostředků, ve které jste vytvořili řešení analýza služby Service Fabric.
 
-Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**.
+Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>** .
 
 V `Summary`, zobrazí se dlaždice ve formě grafu pro každou z řešení povolené, včetně pro Service Fabric. Klikněte na tlačítko **Service Fabric** grafu a pokračujte v Service Fabric analytického řešení.
 

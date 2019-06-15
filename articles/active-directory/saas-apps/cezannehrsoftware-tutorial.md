@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc4d96b900090cd217b4b49b1af2f09762c0da84
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 78d259c0354a1519fa57633a68a1dcfa5a183890
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407019"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Kurz: Integrace Azure Active Directory s Cezanne HR softwaru
 
@@ -53,7 +53,7 @@ Konfigurace integrace Cezanne HR softwaru do služby Azure AD, budete muset při
 
 **Přidání Cezanne HR softwaru z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -156,7 +156,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Cezanne HR softwaru, prove�
 
     d. V **koncový bod služby tokenu zabezpečení** textového pole vložte hodnotu **přihlašovací adresa URL** který jste zkopírovali z portálu Azure portal.
 
-    e. Do textového pole Název atributu ID uživatele, zadejte `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    e. Do textového pole Název atributu ID uživatele, zadejte `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     f. Klikněte na tlačítko **nahrát** ikonu a nahrát na server certifikát stažený z webu Azure portal.
 
@@ -265,7 +265,7 @@ Chcete-li povolit uživatele Azure AD k přihlášení do Cezanne HR softwaru, m
 
     ![Uživatel](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "uživatele")
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

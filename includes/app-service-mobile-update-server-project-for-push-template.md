@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140102"
 ---
 V této části můžete aktualizovat kód v existujícím projektu back-end Mobile Apps k odesílání nabízených oznámení pokaždé, když se přidá nová položka. Tento proces využívá k tomu [šablony](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) vložení funkce služby Azure Notification Hubs, která umožňuje různé platformy. Různé klienty jsou registrovány pro nabízená oznámení pomocí šablony a můžete získat jednu univerzální nabízených oznámení pro všechny klientské platformy.

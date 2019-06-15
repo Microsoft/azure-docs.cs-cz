@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 86ca3080229f2a286e8aa4725fe13c40e2a38549
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054279"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (x64)
 
@@ -82,6 +82,18 @@ Nainstalujte Moby rozhraní příkazového řádku (CLI). Rozhraní příkazové
    ```bash
    sudo apt-get install moby-cli
    ```
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Ověření vašeho linuxového jádra pro kompatibilitu Moby
+
+Řada výrobců zařízení se systémem embedded dodávat obrázcích zařízení, které obsahují vlastní Linuxová jádra, které mohou chybět z důvodu kompatibility kontejner modulu runtime požadované funkce. Pokud narazíte na problémy při instalaci doporučenou [Moby](https://github.com/moby/moby) kontejner modulu runtime, je možné řešení potíží s vaší Linux jádra konfigurace pomocí [kontrola config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) skript zadaný v oficiální [úložiště Moby Github](https://github.com/moby/moby) spuštěním následujících příkazů na zařízení.
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+To poskytne podrobný výstup, který obsahuje stav funkce jádra, které se používají modulem Moby runtime. Budete chtít zajistit, že všechny položky v rámci `Generally Necessary` a `Network Drivers` jsou povolené tak, aby byl váš jádra plně kompatibilní s modulem runtime Moby.  Pokud jste našli žádné chybějící funkce, můžete je povolit znovu sestavit vaše jádra ze zdroje a výběrem přidružené moduly pro zahrnutí v příslušné jádra .config.  Podobně pokud používáte konfiguraci generátor jádra jako defconfig nebo menuconfig, je potřeba najít a povolit příslušné funkce a znovu sestavte vaše jádra odpovídajícím způsobem.  Po nasazení vaše nově upravené jádra spusťte skript kontrola config znovu k ověření, že zjištěné funkcí byl úspěšně povolen.
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalace démona zabezpečení Azure IoT Edge
 

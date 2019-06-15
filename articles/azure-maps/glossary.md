@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575359"
 ---
 # <a name="glossary"></a>Glosář
@@ -37,11 +37,11 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="antimeridian"></a> **Antimeridian**: Také 180<sup>th</sup> poledníků je se setkávají-180 stupňů a 180stupňový rozsah s orientací délky. Což je opačné poledníku, který na celém světě.
 
-<a name="application-programming-interface-api"></a> **Aplikační programovací rozhraní (API)**: Specifikace, která umožňuje vývojářům vytvářet aplikace.
+<a name="application-programming-interface-api"></a> **Aplikační programovací rozhraní (API)** : Specifikace, která umožňuje vývojářům vytvářet aplikace.
 
 <a name="api-key"></a> **Klíč rozhraní API**: Podívejte se na klíče Azure Maps.
 
-<a name="area-of-interest-aoi"></a> **Oblast zájmu (AOI)**: Rozsah sloužících k definování zaměření pro produkční prostředí na mapě nebo databáze.
+<a name="area-of-interest-aoi"></a> **Oblast zájmu (AOI)** : Rozsah sloužících k definování zaměření pro produkční prostředí na mapě nebo databáze.
 
 <a name="asset-tracking"></a> **Sledování prostředků**: Proces umístění prostředek, jako osoba, vozidel nebo některý objekt pro sledování.
 
@@ -51,7 +51,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="autosuggest"></a> **Pro automatické návrhy**: Funkce v aplikaci předpovídá logické možností pro zadání uživatele.
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)**: Původní název Azure Maps, že je ve verzi preview.
+<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** : Původní název Azure Maps, že je ve verzi preview.
 
 <a name="azure-maps-key"></a> **Klíč Azure Maps**: Klíč rozhraní Azure Maps je jedinečný řetězec, který se používá k ověření uživatele Azure Maps aplikace nebo žádosti o službu. 
 
@@ -109,7 +109,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="dbf-file"></a> **Soubor DBF není Podporován**: Formát souboru databáze, který se používá v kombinaci s soubory ve formátu Shapefile (SHP).
 
-<a name="degree-minutes-seconds-dms"></a> **Stupeň minut sekund (DMS)**: Jednotka měření pro popis zeměpisné šířky a délky. Takovou úroveň důvěryhodnosti je 1/360<sup>th</sup> kruhu. Takovou úroveň důvěryhodnosti se dál dělí na 60 minut, a chvíli je rozdělen do 60 sekund.
+<a name="degree-minutes-seconds-dms"></a> **Stupeň minut sekund (DMS)** : Jednotka měření pro popis zeměpisné šířky a délky. Takovou úroveň důvěryhodnosti je 1/360<sup>th</sup> kruhu. Takovou úroveň důvěryhodnosti se dál dělí na 60 minut, a chvíli je rozdělen do 60 sekund.
 
 <a name="delaunay-triangulation"></a> **Triangulační Delaunay**: Postup pro vytvoření sítě souvislé, nepřekrývající trojúhelníky z datové sady bodů. Každý trojúhelník vnější kruh neobsahuje žádné hodnoty z datové sady v jeho vnitřku.
 
@@ -117,7 +117,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="destination"></a> **Určení**: Koncový bod nebo umístění, ve kterém, někdo je na cestách.
 
-<a name="digital-elevation-model-dem"></a> **Digitálního modelu (zařízení DEM)**: Datová sada zvýšení hodnoty související se surface, zachytávat po určitou oblast v pravidelných intervalech pomocí běžných datum. DEMs se obvykle používají znázornit humanitární terénu.
+<a name="digital-elevation-model-dem"></a> **Digitálního modelu (zařízení DEM)** : Datová sada zvýšení hodnoty související se surface, zachytávat po určitou oblast v pravidelných intervalech pomocí běžných datum. DEMs se obvykle používají znázornit humanitární terénu.
 
 <a name="dijkstra's-algorithm"></a> **Algoritmus pro Dijkstra**: Algoritmus, který zkontroluje připojení sítě k nalezení nejkratší cesty mezi dvěma body.
 
@@ -273,7 +273,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="point"></a> **Bod**: Geometrii, která představuje jednu pozici na mapě. 
 
-<a name="points-of-interest-poi"></a> **Body zájmu (POI)**: Firmy, orientačních bodů nebo obvyklé místo, které vás zajímají.
+<a name="points-of-interest-poi"></a> **Body zájmu (POI)** : Firmy, orientačních bodů nebo obvyklé místo, které vás zajímají.
 
 <a name="polygon"></a> **Mnohoúhelník**: Ucelený geometrie, který představuje oblasti na mapě. 
 
@@ -297,7 +297,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="quadtree"></a> **Quadtree**: Datová struktura, ve kterém má každý uzel přesně čtyři podřízené položky. Dělení do bloků systém používá ve službě Azure Maps používá strukturu quadtree tak, aby jako uživatel přiblíží jednu úroveň, každý mapovou dlaždici se rozdělí do dílčích čtyři dlaždice.  Další informace najdete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) Další informace naleznete v dokumentaci.
 
-<a name="queries-per-second-qps"></a> **Dotazů za sekundu (QPS)**: Počet dotazy nebo požadavky, které je třeba služba nebo platforma v rámci jedné sekundy. 
+<a name="queries-per-second-qps"></a> **Dotazů za sekundu (QPS)** : Počet dotazy nebo požadavky, které je třeba služba nebo platforma v rámci jedné sekundy. 
 
 ## <a name="r"></a>R
 
@@ -321,7 +321,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="route"></a> **Trasa**: Cesta mezi dva nebo více umístění, které mohou zahrnovat také další informace, jako jsou pokyny, jak waypoints na trase.
 
-<a name="requests-per-second-rps"></a> **Počet požadavků za sekundu (předávajících stran)**: Zobrazit [dotazů za sekundu (QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a> **Počet požadavků za sekundu (předávajících stran)** : Zobrazit [dotazů za sekundu (QPS)](#queries-per-second-qps). 
 
 <a name="rss"></a> **RSS**: Zkratka pro Really Simple Syndication, Souhrn webu Framework popis prostředku (RDF) nebo Rich Site Summary, v závislosti na zdroji. Jednoduché, strukturované XML formátu pro sdílení obsahu mezi různé weby. RSS dokumenty obsahují prvky klíčových metadat – například autor, datum, název, stručný popis a hypertextový odkaz. Tato informace objasňují uživatele (nebo službě vydavatele RSS) rozhodnout materiály stojí za další šetření.
 
@@ -329,9 +329,9 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="satellite-imagery"></a> **Satelitní trénováním**: Obrázek, který zachytí rovin a satelity směřující přímo dolů.
 
-<a name="software-development-kit-sdk"></a> **Software development kit (SDK)**: Kolekce dokumentaci, ukázky kódu a ukázkové aplikace umožňující použití rozhraní API pro vytváření aplikací pro vývojáře.
+<a name="software-development-kit-sdk"></a> **Software development kit (SDK)** : Kolekce dokumentaci, ukázky kódu a ukázkové aplikace umožňující použití rozhraní API pro vytváření aplikací pro vývojáře.
 
-<a name="shapefile-shp"></a> **Soubor (SHP)**: Ve formátu ESRI Shapefile označované také jako je formát vektoru dat úložiště pro ukládání umístění, tvar a atributy funkce geografické. Soubor je uložen v nastavení sady souvisejících souborů.
+<a name="shapefile-shp"></a> **Soubor (SHP)** : Ve formátu ESRI Shapefile označované také jako je formát vektoru dat úložiště pro ukládání umístění, tvar a atributy funkce geografické. Soubor je uložen v nastavení sady souvisejících souborů.
 
 <a name="spherical-mercator-projection"></a> **Ke kulovému projekci Mercator**: Zobrazit [webové Mercator](#web-mercator). 
 
@@ -376,7 +376,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="vector-tile"></a> **Vektor, dlaždice**: Specifikaci dat pro ukládání geoprostorové vektorová data pomocí stejné systém dlaždic jako mapového ovládacího prvku. Viz také [Dlaždicovou vrstvu](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Potíže se směrováním vozidla (VRP)**: Třída problémy, ve kterých se počítá sadu seřazený trasy za flotilu vozidel při přihlédnutím jako sadu omezujících podmínek. Tato omezení může obsahovat věci, jako je doručování časových oken, více kapacit trasy a cestovní omezení doby trvání.
+<a name="vehicle-routing-problem-vrp"></a> **Potíže se směrováním vozidla (VRP)** : Třída problémy, ve kterých se počítá sadu seřazený trasy za flotilu vozidel při přihlédnutím jako sadu omezujících podmínek. Tato omezení může obsahovat věci, jako je doručování časových oken, více kapacit trasy a cestovní omezení doby trvání.
 
 <a name="voronoi-diagram"></a> **Voronoi diagram**: Rozdělení prostoru do oblastí nebo buňky, obklopující sadu geometrické objekty (obvykle funkce bodu). Tyto buňky nebo mnohoúhelníky, musí splňovat kritéria pro Delaunay trojúhelníky. Všechna umístění v rámci oblasti jsou podrobněji na objekt, který ji obklopuje než druhý objekt v sadě. Diagramy Voronoi se často používají od sebe odděluje oblasti vliv kolem geografické funkce. 
 
@@ -386,7 +386,7 @@ Následuje seznam běžná slova používat s Azure Maps.
 
 <a name="waypoint-optimization"></a> **Bod na trase optimalizace**: Proces změny pořadí sadu waypoints minimalizovat cestovní čas nebo vzdálenost budete muset projít všechna zadaná waypoints. Označovaný také jako [Traveling obchodníků problém](#traveling-salesmen-problem-tsp) nebo [vozidla směrování problém](#vehicle-routing-problem-vrp) záleží na složitosti optimalizace.
 
-<a name="web-map-service-wms"></a> **Webovou službu mapy (WMS)**: WMS je standard Open geografické W3c (OGC), který definuje bitové mapy služeb. WMS služby poskytují obrázky mapy pro konkrétní oblasti v mapě na vyžádání. Image zahrnout předem vykreslená Symbologie a může být vykreslen v jednom z několika pojmenované styly definovány službou.
+<a name="web-map-service-wms"></a> **Webovou službu mapy (WMS)** : WMS je standard Open geografické W3c (OGC), který definuje bitové mapy služeb. WMS služby poskytují obrázky mapy pro konkrétní oblasti v mapě na vyžádání. Image zahrnout předem vykreslená Symbologie a může být vykreslen v jednom z několika pojmenované styly definovány službou.
 
 <a name="web-mercator"></a> **Web Mercator**: Také ke Kulovému projekci Mercator je mírné varianta projekci Mercator se používá především v aplikacích založených na webu mapování. Používá stejné vzorce jako standardní projekci Mercator jako používané pro rozsáhlé mapy. Ale Web Mercator používá ke kulovému vzorce vůbec škáluje, zatímco ve velkém měřítku Mercator obvykle mapuje formulář elipsoidním projekce. Rozdíl je nepostřehnutelný v globálním měřítku, ale způsobí, že mapování z místní oblasti, které mírně liší od hodnotu true, elipsoidním Mercator mapuje na stejném měřítku.
 

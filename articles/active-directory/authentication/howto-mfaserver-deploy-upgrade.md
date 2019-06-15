@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c01c7a22800d633696382687feb7090a4ed8b60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dcafa3e2f2665e84856b80cc0911d2e83df1aa65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358323"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057343"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na Azure Multi-Factor Authentication Server nejnovější verzi
 
 Tento článek vás provedete upgrade Azure Multi-Factor Authentication (MFA) Server verze 6.0 nebo vyšší. Pokud je třeba upgradovat stará verze agenta PhoneFactor, podívejte se na [Upgrade agenta PhoneFactor na Server Azure Multi-Factor Authentication](howto-mfaserver-deploy-upgrade-pf.md).
 
 Při upgradu z verze 6.x nebo starší na v7.x nebo novější, změňte všechny součásti z rozhraní .NET 2.0 na .NET 4.5. Všechny součásti také vyžaduje Microsoft Visual C++ 2015 Redistributable Update 1 nebo novější. Instalační program MFA Server nainstaluje x86 a x64 verze těchto komponent, pokud ještě nejsou nainstalovány. Pokud portál User Portal a webová služba mobilní aplikace běží na samostatných serverech, musíte nainstalovat tyto balíčky před provedením upgradu těchto součástí. Můžete vyhledat nejnovější aktualizace Microsoft Visual C++ 2015 Redistributable na [Microsoft Download Center](https://www.microsoft.com/download/). 
+
+> [!IMPORTANT]
+> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
 
 Postup upgradu na první pohled:
 

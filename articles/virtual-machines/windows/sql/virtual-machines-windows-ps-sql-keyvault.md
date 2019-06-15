@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076014"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurace integrace Azure Key Vaultu pro SQL Server na Azure Virtual Machines (Resource Manager)
 
@@ -53,25 +53,21 @@ Pokud zřizujete nového virtuálního počítače SQL serveru s využitím Reso
 Podrobný postup zřizování, najdete v části [zřízení virtuálního počítače s SQL serverem na webu Azure Portal](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Stávající virtuální počítače
-Existující virtuální počítače systému SQL Server vyberte virtuální počítač systému SQL Server. Vyberte **konfigurace systému SQL Server** část **nastavení** okno.
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Existující virtuální počítače systému SQL Server, otevřete vaši [prostředků virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) a vyberte **zabezpečení** pod **nastavení**. Vyberte **povolit** povolení integrace Azure Key Vault. 
 
 ![Integrace se službou AZURE SQL pro stávající virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 
-V **konfigurace systému SQL Server** okna, klikněte na tlačítko **upravit** tlačítko v části Integrace automatické služby Key Vault.
-
-![Konfigurace integrace se službou AZURE SQL pro stávající virtuální počítače](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-configuration.png)
-
-Až budete hotovi, klikněte na tlačítko **OK** tlačítko v dolní části **konfigurace systému SQL Server** okno a uložte provedené změny.
+Až budete hotovi, vyberte **použít** tlačítko v dolní části **zabezpečení** stránky uložte provedené změny.
 
 > [!NOTE]
-> Název přihlašovacího údaje, které jsme vytvořili v tomto poli se namapují na přihlašovací údaje pro SQL později. Díky tomu přihlašovací jméno SQL pro přístup k trezoru klíčů. 
->
->
+> Název přihlašovacího údaje, které jsme vytvořili v tomto poli se namapují na přihlášení typu SQL později. Díky tomu přihlašovací jméno SQL pro přístup k trezoru klíčů. 
+
 
 > [!NOTE]
 > Můžete také nakonfigurovat integrace se službou AZURE pomocí šablony. Další informace najdete v tématu [šablona rychlého startu Azure pro integraci služby Azure Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update).
-> 
-> 
+
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
-

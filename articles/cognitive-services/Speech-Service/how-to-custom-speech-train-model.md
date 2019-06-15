@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 194ae477bb3cba4ac7e3350da6b793c6fea6ecdb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e12cef052db6aabad94b47283eda11f60f3b2b13
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025854"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063920"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro Custom Speech
 
@@ -27,7 +27,7 @@ Pokud máte problémy s rozpoznávání obsahující váš model, pomocí lidsk�
 
 | Případ použití | Typ dat | Množství dat |
 |----------|-----------|---------------|
-| Vlastní názvy jsou nesprávně rozpoznána | Text (věty/projevy) se týkají | 10 MB až 500 MB |
+| Vlastní názvy jsou nesprávně rozpoznána | Text související s (věty/projevy) | 10 MB až 500 MB |
 | Slova jsou nesprávně rozpoznána kvůli upozornění. | Text související s (výslovnost) | Zadejte misrecognized slova |
 | Běžná slova jsou odstraněny nebo nesprávně rozpoznána | Zvuk + lidských s názvem bez přípony záznamy o studiu | přepis 10 až 1 000 hodin |
 

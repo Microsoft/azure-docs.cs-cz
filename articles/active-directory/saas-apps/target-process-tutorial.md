@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ffb5da8abd9673d4922aeb4854b3dfa80349f284
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902216"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Kurz: Integrace Azure Active Directory s TargetProcess
 
@@ -54,7 +54,7 @@ Konfigurace integrace TargetProcess do služby Azure AD, budete muset přidat Ta
 
 **Chcete-li přidat TargetProcess z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -141,7 +141,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TargetProcess, proveďte n�
 
 4. V nabídce v horní části klikněte na tlačítko **nastavení**.
 
-    ![Nastavení](./media/target-process-tutorial/tutorial_target_process_05.png)
+    ![Instalace](./media/target-process-tutorial/tutorial_target_process_05.png)
 
 5. Klikněte na tlačítko **nastavení** kartu.
 
@@ -223,7 +223,7 @@ V této části se vytvoří uživateli Britta Simon v TargetProcess. TargetProc
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory TargetProcess](mailto:support@targetprocess.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

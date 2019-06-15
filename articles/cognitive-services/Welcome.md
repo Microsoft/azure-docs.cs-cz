@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: nitinme
 ms.openlocfilehash: d5a3226050901f6feb17c4d9d6a6582cb622618b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65020191"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?

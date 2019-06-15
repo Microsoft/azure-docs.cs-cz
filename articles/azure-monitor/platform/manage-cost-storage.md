@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 8eeb29b2d1fe17ae5581dab81c34d5c2c635a6c2
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 3cad3722a9d0a52b1a0e66c760e948ceb3c1671c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496347"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061052"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Spravovat využití a nákladů s protokoly Azure monitoru
 
@@ -108,10 +108,12 @@ Následující kroky popisují, jak nakonfigurovat jak dlouho protokol dat se uc
 
 ## <a name="legacy-pricing-tiers"></a>Starší verze cenové úrovně
 
-Předplatným, které pracovní prostor Log Analytics nebo prostředek Application Insights byla v něm před 2. dubnem 2018, nebo jsou propojeny do smlouvy Enterprise, které začínají před 1. února 2019, budou mít přístup ke starší verze cenové úrovně: Zdarma, samostatné (za GB) a za uzel (OMS).  Pracovní prostory v cenové úrovni Free, budou mít omezený na 500 MB (s výjimkou typů data zabezpečení shromážděná službou Azure Security Center) denní příjem dat a uchovávání dat je omezená na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v samostatné nebo cenovými úrovněmi uzlů za mít přístup k uchovávání dat až 2 roky. 
+Předplatným, které pracovní prostor Log Analytics nebo prostředek Application Insights byla v něm před 2. dubnem 2018, nebo jsou propojeny do smlouvy Enterprise, které začínají před 1. února 2019, budou mít přístup ke starší verze cenové úrovně: **Bezplatné**, **samostatné (za GB)** a **za uzel (OMS)** .  Pracovní prostory v cenové úrovni Free, budou mít omezený na 500 MB (s výjimkou typů data zabezpečení shromážděná službou Azure Security Center) denní příjem dat a uchovávání dat je omezená na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v samostatné nebo cenovými úrovněmi uzlů za obsahují uživatelem konfigurovatelné uchování až 2 roky. 
 
 > [!NOTE]
 > Chcete-li používat nároky z nákupu OMS E1 Suite, sadu E2 OMS nebo doplňku OMS pro System Center, zvolte Log Analytics *na jeden uzel* cenovou úroveň.
+
+Nejdřívější přechod Log Analytics mají také oprávnění k původní cenové úrovně **standardní** a **Premium**, které opravily uchování dat 30 až 365 dní v uvedeném pořadí. 
 
 ## <a name="changing-pricing-tier"></a>Změna cenové úrovně
 
@@ -410,6 +412,11 @@ Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hod
 Zadejte existující nebo vytvořte novou [Skupinu akcí](action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
 Pokud obdržíte upozornění, pomocí kroků v následující části můžete řešit potíže způsobující větší využití, než se čekalo.
+
+## <a name="limits-summary"></a>Souhrn omezení
+
+Existují některé další omezení Log Analytics, z nichž některé závisí na cenové úrovni Log Analytics. Ty jsou popsány [tady](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-limits).
+
 
 ## <a name="next-steps"></a>Další postup
 

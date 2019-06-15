@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 47f6678f8d18d734176d964f18a6febecea957ab
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481411"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108493"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure AD Application Proxy
 
@@ -36,7 +36,7 @@ Následující diagram ukazuje, jak lze pomocí Proxy aplikací Azure AD bezpeč
 
 Proxy aplikací služby Azure AD pomocí formuláře páteřní řešení, funguje jako veřejný koncový bod pro přístup k rozhraní API a poskytuje ověřování a autorizace. Dostanete vaše rozhraní API z velkého množství platforem s využitím [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) knihovny. 
 
-Protože Azure AD Application Proxy ověřování a autorizace jsou postavené na Azure AD, můžete použít podmíněný přístup Azure AD k zajištění, že pouze důvěryhodné zařízení mají přístup k rozhraní API publikované prostřednictvím Proxy aplikací. Použití Azure AD Join nebo připojeno k hybridní Azure AD pro stolní počítače a pro zařízení spravovaná pomocí Intune. Můžete taky využít výhod funkce Azure Active Directory Premium, jako je Azure Multi-Factor Authentication a machine learning zajišťuje zabezpečení [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
+Od Azure AD Application Proxy ověřování a autorizace jsou postavené na Azure AD, můžete použít podmíněný přístup Azure AD k zajištění, že pouze důvěryhodné zařízení mají přístup k rozhraní API publikované prostřednictvím Proxy aplikací. Použití Azure AD Join nebo připojeno k hybridní Azure AD pro stolní počítače a pro zařízení spravovaná pomocí Intune. Můžete taky využít výhod funkce Azure Active Directory Premium, jako je Azure Multi-Factor Authentication a machine learning zajišťuje zabezpečení [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
 
 ## <a name="prerequisites"></a>Požadavky
 

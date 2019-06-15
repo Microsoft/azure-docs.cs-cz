@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99cc3ea94422ea76a7fb71330fa234a4003f9467
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: d6bd02bcd52808af43c2254304c56fee76903c73
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902163"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Kurz: Integrace Azure Active Directory s lidstvo
 
@@ -53,7 +53,7 @@ Konfigurace integrace lidstvo do služby Azure AD, budete muset přidat lidstvo 
 
 **Chcete-li přidat lidstvo z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -235,7 +235,7 @@ Chcete-li povolit uživatele Azure AD se přihlaste k lidstvo, musí být poskyt
 > [!NOTE]
 > Můžete použít jakékoli jiné lidstvo uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných lidstvo uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -10,10 +10,10 @@ ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
 ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728314"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
@@ -106,7 +106,7 @@ Následující tabulka shrnuje operace objektů blob, které podmíněné hlavi�
 | Získání objektu Blob |Ano |Ano |
 | Získání vlastností objektu Blob |Ano |Ano |
 | Nastavit vlastnosti objektu Blob |Ano |Ano |
-| Získat metadata objektu blob |Ano |Ano |
+| Získat Metadata objektu Blob |Ano |Ano |
 | Nastavte Metadata objektu Blob |Ano |Ano |
 | Zapůjčení objektu Blob (*) |Ano |Ano |
 | Vytvoření snímku objektu Blob |Ano |Ano |
@@ -163,7 +163,7 @@ Následující operace objektů blob můžete použít ke správě Pesimistická
 * Získání objektu Blob
 * Získání vlastností objektu Blob
 * Nastavit vlastnosti objektu Blob
-* Získat metadata objektu blob
+* Získat Metadata objektu Blob
 * Nastavte Metadata objektu Blob
 * Odstranit objekt Blob
 * Vložit blok
@@ -238,12 +238,12 @@ Následující tabulka shrnuje použití značky ETag hodnoty operace entitu tab
 | Operace | Vrátí hodnotu značky ETag | Vyžaduje hlavičky žádosti If-Match |
 |:--- |:--- |:--- |
 | Dotazování entit |Ano |Ne |
-| Vloží entitu |Ano |Ne |
+| Vložte Entity |Ano |Ne |
 | Aktualizace Entity |Ano |Ano |
-| Sloučí entitu |Ano |Ano |
-| Odstraní entitu |Ne |Ano |
-| Vloží nebo nahradí entitu |Ano |Ne |
-| Vloží nebo sloučí entitu |Ano |Ne |
+| Sloučit Entity |Ano |Ano |
+| Odstranit entitu |Ne |Ano |
+| Vložení nebo nahrazení Entity |Ano |Ne |
+| Vložit nebo sloučit Entity |Ano |Ne |
 
 Všimněte si, že **vložení nebo nahrazení Entity** a **vložení nebo sloučit Entity** provést operace *není* provést jakékoli souběžnosti, protože se neodesílají na hodnotu značky ETag do tabulky Služba.  
 

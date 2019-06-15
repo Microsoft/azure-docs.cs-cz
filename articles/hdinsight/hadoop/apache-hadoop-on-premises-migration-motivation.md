@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: b45fb5cbfbef334b40ccadecd32f65fa9a59a610
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058556"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – výhody a motivace
 
@@ -21,7 +21,7 @@ Tento článek je první z řady na osvědčené postupy pro migraci v místním
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Důvod, proč k migraci do Azure HDInsight
 
-Azure HDInsight je Cloudová distribuce komponent Hadoop z [Hortonworks Data Platform(HDP)](https://hortonworks.com/products/data-center/hdp/). Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight obsahuje nejoblíbenější opensourcové architektury, jako například:
+Azure HDInsight je Cloudová distribuce komponent Hadoop. Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight obsahuje nejoblíbenější opensourcové architektury, jako například:
 
 - Apache Hadoop
 - Apache Spark
@@ -90,12 +90,11 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 | **Dotaz** | **Příklad** | **Answer** |
 |---|---|---|
 |**téma**: **Prostředí**|||
-|Typ clusteru distribuce|Hortonworks, Cloudera, MapR| |
 |Verze clusteru distribuce|HDP 2.6.5, CDH 5.7|
 |Komponenty ekosystému velkých objemů dat|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Typy clusterů|Hadoop, Spark, nesrostlé Kafka, Storm, Solr|
 |Počet clusterů|4|
-|Číslo hlavní uzly|2|
+|Počet řídicích uzlů|2|
 |Počet uzlů pracovního procesu|100|
 |Počet hraničních uzlů| 5|
 |Celkové místo na disku|100 TB|
@@ -199,7 +198,6 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 |Sdílet metaúložiště mezi různými clustery?|Ano||
 |Dekonstruovat úlohy?|Nahraďte úloh Hive Sparkových úloh||
 |Pro Orchestrace dat pomocí ADF?|Ne||
-|HDInsight vs datovou platformou Hortonworks na IaaS?|HDInsight||
 
 ## <a name="next-steps"></a>Další postup
 

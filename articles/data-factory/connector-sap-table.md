@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 06/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 4dee0e994c9e7be9677a8f1051481850990998e9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 49f07b4aaadfd45e9743bde58dc715230e5bc983
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66247166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074065"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Kopírování dat z tabulky SAP pomocí Azure Data Factory
 
@@ -29,7 +29,13 @@ Kopírování dat z tabulky SAP do jakékoli podporovaného úložiště dat jí
 
 Konkrétně tento konektor SAP tabulky podporuje:
 
-- Kopírování dat z tabulky SAP v **SAP Business Suite 7.01 nebo vyšší verze** (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015) nebo **S/4HANA**.
+- Kopírování dat z tabulky SAP v:
+
+    - **SAP ECC** s verzí 7.01 nebo vyšší (v posledních SAP podporu balíčku zásobníku vydanou po roce 2015)
+    - **SAP BW** 7.01 nebo novější verze
+    - **SAP S/4HANA**
+    - **Ostatní produkty SAP Business Suite** 7.01 nebo novější verze 
+
 - Kopírování dat z obou **transparentní tabulku SAP** a **zobrazení**.
 - Kopírování dat pomocí **základní ověřování** nebo **SNC** (zabezpečení síťové komunikace) Pokud je nakonfigurovaný SNC.
 - Připojení k **aplikační Server** nebo **Server zpráv**.
@@ -203,7 +209,7 @@ Ke zkopírování dat z tabulky SAP, jsou podporovány následující vlastnosti
 | type                             | Vlastnost type musí být nastavená na **SapTableSource**.       | Ano      |
 | Počet řádků                         | Počet řádků, které se mají načíst.                              | Ne       |
 | rfcTableFields                   | Pole pro kopírování z tabulky SAP. Například, `column0, column1`. | Ne       |
-| rfcTableOptions                  | Možnost filtrovat řádky v tabulce SAP. Například, `COLUMN0 EQ 'SOMEVALUE'`. | Ne       |
+| rfcTableOptions                  | Možnost filtrovat řádky v tabulce SAP. Například, `COLUMN0 EQ 'SOMEVALUE'`. Zobrazit další popis dál v této tabulce. | Ne       |
 | customRfcReadTableFunctionModule | Vlastní funkce modul RFC, který je možné číst data z tabulky SAP. | Ne       |
 | partitionOption                  | Mechanismus oddílu číst z tabulky SAP. Podporované možnosti patří: <br/>- **None**<br/>- **PartitionOnInt** (normální integer nebo celočíselné hodnoty s nulovou odsazení na levé straně, jako je například 0000012345)<br/>- **PartitionOnCalendarYear** (4 číslic ve formátu "YYYY")<br/>- **PartitionOnCalendarMonth** (6 číslic ve formátu "YYYYMM")<br/>- **PartitionOnCalendarDate** (8 číslic ve formátu "RRRRMMDD") | Ne       |
 | partitionColumnName              | Název sloupce pro rozdělení dat. | Ne       |
@@ -215,6 +221,18 @@ Ke zkopírování dat z tabulky SAP, jsou podporovány následující vlastnosti
 >- Pokud má vaše tabulka SAP velkého objemu dat, jako je například několik až miliardy řádků, použijte `partitionOption` a `partitionSetting` pro rozdělení dat do malých oddílů, v takovém případě se data načítají oddílů a každý oddíl dat je načten z vašeho serveru SAP prostřednictvím jednom Volání RFC.<br/>
 >- Pořízení `partitionOption` jako `partitionOnInt` jako například počet řádků v jednotlivých oddílech se vypočte tak (celkový počet řádků, které spadají mezi *partitionUpperBound* a *partitionLowerBound*) /*maxPartitionsNumber*.<br/>
 >- Pokud chcete dál běžet paralelně ke zrychlení kopírování oddíly, důrazně doporučujeme provést `maxPartitionsNumber` jako násobek čísla hodnotu `parallelCopies` (Další informace z [paralelní kopírování](copy-activity-performance.md#parallel-copy)).
+
+V `rfcTableOptions`, například následující běžné SAP operátory dotazu můžete filtrovat řádky: 
+
+| Operátor | Popis |
+| :------- | :------- |
+| EQ | Je rovno |
+| NE | Není rovno |
+| LT | Je menší než |
+| LE | Je menší nebo rovno |
+| GT | Větší než |
+| GE | Je větší nebo rovno |
+| STEJNĚ JAKO | Například jako "% Emmy. |
 
 **Příklad:**
 

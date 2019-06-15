@@ -1,20 +1,20 @@
 ---
-title: Automatické škálování a zónově redundantní Application Gateway v Azure
+title: Automatické škálování a zónově redundantní služba Application Gateway v2
 description: Tento článek představuje Standard_v2 aplikace Azure a SKU WAF_v2, který obsahuje funkce automatického škálování a zónově redundantní.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 7cf6b4984f3941da3b2cd0e4eada5eb1d87f2b01
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054745"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatické škálování a zónově redundantní služba Application Gateway 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatické škálování a zónově redundantní služba Application Gateway v2 
 
 Služba Application Gateway a Firewall webových aplikací (WAF) jsou dostupné v rámci Standard_v2 a WAF_v2 SKU. V2 SKU nabízí vylepšení výkonu a přidává podporu pro důležité nové funkce jako podporu pro virtuální IP adresy statické, automatické škálování a redundanci zón. Existující funkce v části Standard a WAF SKU nadále podporovány v rámci nové SKU v2 s několika výjimkami, které jsou uvedeny v [porovnání](#differences-with-v1-sku) oddílu.
 
@@ -71,7 +71,7 @@ Informace o cenách najdete v článku [stránce s cenami](https://azure.microso
 Application Gateway Standard_v2 je zřízený bez automatického škálování v režimu ručního škálování s pevnou kapacitu pět instancí.
 
 Pevná cena = 744(hours) * $0.20 = $148.8 <br>
-Kapacitní jednotky = 744 jednotku kapacity (hodiny) 10 za instanci * pět instancí * 0.008 $ za hodinu jednotky kapacity = $297.6
+Kapacitní jednotky = 744 (hodiny) * 10 jednotku kapacity za instanci * 5 instancí * 0.008 $ za hodinu jednotky kapacity = $297.6
 
 Celková cena = 148.8 $ + $297.6 = $446.4
 
@@ -85,6 +85,9 @@ Cena za jednotku kapacity = 744(hours) * Max (25/50 výpočetních jednotek pro 
 
 Celková cena = $148. 23.81 8 + = $172.61
 
+> [!NOTE]
+> Funkce Max vrátí největší hodnotu ve dvojici hodnot.
+
 **Příklad 3**
 
 Application Gateway WAF_v2 se zřizuje po dobu jednoho měsíce. Během této doby přijme 25 nová SSL připojení/s, průměrná přenosu dat 8.88 MB/s a nemá 80 požadavku za sekundu. Za předpokladu, že připojení jsou krátké žít a, podporuje výpočetní jednotka výpočtu pro aplikaci za výpočetní jednotka 10 RPS, vaše cena by byla:
@@ -95,11 +98,14 @@ Cena za jednotku kapacity = 744(hours) * Max (výpočetní jednotky Max(25/50 fo
 
 Celková cena = 267.84 $ + $85.71 = $353.55
 
+> [!NOTE]
+> Funkce Max vrátí největší hodnotu ve dvojici hodnot.
+
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Škálování Application Gateway a WAF v2
 
 Waf služby Application Gateway a dá se škálovat ve dvou režimech:
 
-- **Automatické škálování** – povolení automatického škálování Application Gateway a WAF v2 SKU vertikálně navyšovat nebo snižovat podle požadavků na provoz aplikace. Tento režim nabízí lepší pružnost do vaší aplikace a eliminuje nutnost odhadnout počet velikost nebo instance brány aplikací. Tento režim vám také umožní snížit náklady tím, které nevyžadují spuštění brány v ve špičce zřízené kapacity pro očekávané maximální zatížení. Zákazníkům musíte zadat minimální a volitelně maximálním počtem instancí. Minimální kapacitu zajistí, že služba Application Gateway a WAF v2 neklesne pod minimální počet instancí zadali, dokonce i v případě neexistence provoz. Bude se účtovat tuto minimální kapacitu i v případě neexistence veškerý provoz. Také v případě potřeby můžete zadat maximální počet instancí, které zajišťuje, že službu Application Gateway nemá škálování za zadaný počet instancí. Bude nadále účtovat množství přenos poskytovaný službou Gateway. Počet instancí musí být v rozsahu 0 až 125. Výchozí hodnota pro maximální počet instancí je 20, pokud není zadaný.
+- **Automatické škálování** – povolení automatického škálování Application Gateway a WAF v2 SKU vertikálně navyšovat nebo snižovat podle požadavků na provoz aplikace. Tento režim nabízí lepší pružnost do vaší aplikace a eliminuje nutnost odhadnout počet velikost nebo instance brány aplikací. Tento režim vám také umožní snížit náklady tím, které nevyžadují spuštění brány v ve špičce zřízené kapacity pro očekávané maximální zatížení. Zákazníkům musíte zadat minimální a volitelně maximálním počtem instancí. Minimální kapacitu zajistí, že služba Application Gateway a WAF v2 není klesnou pod minimální počet instancí zadali, dokonce i v případě neexistence provoz. Bude se účtovat tuto minimální kapacitu i v případě neexistence veškerý provoz. Také v případě potřeby můžete zadat maximální počet instancí, které zajišťuje, že službu Application Gateway nemá škálování za zadaný počet instancí. Bude nadále účtovat množství přenos poskytovaný službou Gateway. Počet instancí musí být v rozsahu 0 až 125. Výchozí hodnota pro maximální počet instancí je 20, pokud není zadaný.
 - **Ruční** -také další možnost – Ruční režim, ve kterém je brána nebude automatického škálování. V tomto režimu dojde větší provoz, než co Application Gateway nebo WAF může zpracovat, může to vést ke ztrátě provoz. S ruční režim určující počet instancí je povinný. Počet instancí se může lišit od 1 do 125 instancí.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Porovnání funkcí mezi v1 SKU a v2 SKU
@@ -142,11 +148,12 @@ Následující tabulka porovnává funkce, které jsou dostupné v jednotlivých
 |Režim FIPS|Ty nejsou aktuálně podporovány.|
 |Režim pouze ILB|To není aktuálně podporováno. Veřejné a režim ILB společně se nepodporuje.|
 |Integrace sledování sítě|Nepodporuje se.|
-|Integrace Azure Support Center|Zatím není k dispozici.
+|Integrace Azure Security Center|Zatím není k dispozici.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migrace z v1 na v2
 
-Skript Azure Powershellu je k dispozici v galerii prostředí PowerShell můžete migrovat z vaší verze 1/waf služby Application Gateway k automatickému škálování v2 SKU. Tento skript vám pomůže zkopírovat konfiguraci ze brána v1. Provoz migrace je stále vaší povinností. Další podrobnosti najdete v tématu [migrace Azure Application Gateway z v1 na v2](migrate-v1-v2.md).
+Skript Azure Powershellu je k dispozici v galerii prostředí PowerShell můžete migrovat z vaší verze 1/waf služby Application Gateway k automatickému škálování v2 SKU. Tento skript vám pomůže zkopírovat konfiguraci ze brána v1. Provoz migrace je stále vaší povinností. Další informace najdete v tématu [migrace Azure Application Gateway z v1 na v2](migrate-v1-v2.md).
+
 ## <a name="next-steps"></a>Další postup
 
 - [Rychlé zprovoznění: Přímé webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md)

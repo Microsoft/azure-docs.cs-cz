@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 77a2901ae2d81f42780110b1576c1f32c7ff397b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209493"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple virtual machines – přehled
@@ -31,7 +31,7 @@ CloudSimple virtuálních počítačů z webu Azure portal poskytují mechanismu
   * Přidání nebo odebrání síťových rozhraní
 * Operace Power CloudSimple virtuálního počítače
   * Zapnutí a vypnutí
-  * Resetovat virtuální počítač
+  * Resetování virtuálního počítače
 * Odstranění virtuálního počítače
 
 ## <a name="next-steps"></a>Další postup

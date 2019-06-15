@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
 ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60594120"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Několik front-Endů pro Azure Load Balancer
@@ -30,7 +30,7 @@ Při definování služby Azure Load Balancer front-endových a back-endová kon
 
 Následující tabulka obsahuje některé ukázkové konfigurace front-endu:
 
-| Front-end | IP adresa | Protokol | port |
+| Front-endu | IP adresa | protocol | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -54,7 +54,7 @@ Začněte s výchozí chování podíváme na další tyto scénáře.
 
 V tomto scénáři jsou nakonfigurované front-endů následujícím způsobem:
 
-| Front-end | IP adresa | Protokol | port |
+| Front-endu | IP adresa | protocol | port |
 | --- | --- | --- | --- |
 | ![zelená front-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![fialový front-endu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -65,12 +65,12 @@ Definujeme dvě pravidla:
 
 | Pravidlo | Mapování front-endu | Na back-endový fond |
 | --- | --- | --- |
-| 1 |![zelená front-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![Back-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![Back-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Back-endu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![Back-endu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![zelená front-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
 Kompletní mapování ve službě Azure Load Balancer je teď následujícím způsobem:
 
-| Pravidlo | IP adresa front-endu | Protokol | port | Cíl | port |
+| Pravidlo | Front-endové IP adresy | protocol | port | Cíl | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zelená pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Vyhrazené IP adresy IP adresa |80 |
 | ![fialový pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Vyhrazené IP adresy IP adresa |81 |
@@ -104,21 +104,21 @@ V tomto scénáři má každý virtuální počítač v back-endový fond tři s
 
 Předpokládejme, že stejnou konfiguraci front-endu jako v předchozím scénáři:
 
-| Front-end | IP adresa | Protokol | port |
+| Front-endu | IP adresa | protocol | port |
 | --- | --- | --- | --- |
 | ![zelená front-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![fialový front-endu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
 Definujeme dvě pravidla:
 
-| Pravidlo | Front-end | Mapování na back-endový fond |
+| Pravidlo | Front-endu | Mapování na back-endový fond |
 | --- | --- | --- |
-| 1 |![pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![Back-endu](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (v VM1 a VM2) |
-| 2 |![pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![Back-endu](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (v VM1 a VM2) |
+| 1 |![Pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (v VM1 a VM2) |
+| 2 |![Pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![back-end](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (v VM1 a VM2) |
 
 Následující tabulka ukazuje kompletní mapování v nástroji pro vyrovnávání zatížení:
 
-| Pravidlo | IP adresa front-endu | Protokol | port | Cíl | port |
+| Pravidlo | Front-endové IP adresy | protocol | port | Cíl | port |
 | --- | --- | --- | --- | --- | --- |
 | ![zelená pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |stejné jako front-endu (65.52.0.1) |stejné jako front-endu (80) |
 | ![fialový pravidlo](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |stejné jako front-endu (65.52.0.2) |stejné jako front-endu (80) |

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
 ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60306486"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilování webových aplikací ASP.NET Core Azure s Linuxem pomocí Application Insights Profiler
@@ -27,7 +27,7 @@ Zjistěte, jak dlouho se stráven v každé metody živé webové aplikace při 
 
 Po dokončení tohoto návodu, vaše aplikace může shromažďovat trasování Profiler jako trasování, které jsou uvedené na obrázku. V tomto příkladu trasování Profiler označuje, že je na konkrétní webový požadavek pomalé z důvodu čekací čas strávený. *Kritickou cestu* v kódu, který je zpomalení aplikace je označené ikonou bezpečnostní opatření. **o** metoda ve **HomeController** části zpomaluje webové aplikace, protože volání metody **Thread.Sleep** funkce.
 
-![Trasování Profileru](./media/profiler-aspnetcore-linux/profiler-traces.png)
+![Profiler trasování](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
 ## <a name="prerequisites"></a>Požadavky
 Následující pokyny platí pro všechna prostředí vývoj pro Windows, Linux a Mac:

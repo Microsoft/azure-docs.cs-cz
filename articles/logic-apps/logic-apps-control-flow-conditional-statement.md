@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60684760"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvoření podmíněné příkazy, které řídí akce pracovního postupu ve službě Azure Logic Apps
@@ -39,7 +39,7 @@ Předpokládejme například, že budete mít aplikaci logiky, která odesílá 
 
 1. V umístění, které chcete přidáte podmínku. 
 
-   Přidání podmínky mezi kroky, přesuňte ukazatel nad šipku, ve které chcete přidat podmínku. Zvolte **znaménko plus** (**+**), který se zobrazí, klikněte na tlačítko **přidat akci**. Příklad:
+   Přidání podmínky mezi kroky, přesuňte ukazatel nad šipku, ve které chcete přidat podmínku. Zvolte **znaménko plus** ( **+** ), který se zobrazí, klikněte na tlačítko **přidat akci**. Příklad:
 
    ![Přidání akce mezi kroky](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 

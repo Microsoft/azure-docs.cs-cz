@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60285488"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
@@ -66,10 +66,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Kontroly přístupu|Aktualizace kontroly přístupu|
 |Kontroly přístupu|Aktualizovat stav registrace kontrol přístupu Azure AD|
 |Kontroly přístupu|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Kontroly přístupu|Nastavení aktualizace počtu opakování kontrol přístupu|
-|Kontroly přístupu|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
-|Kontroly přístupu|Nastavení aktualizace typu konce opakování kontrol přístupu|
-|Kontroly přístupu|Nastavení aktualizace typu opakování kontrol přístupu|
+|Kontroly přístupu|Aktualizace přístupu k revizi počet opakování nastavení|
+|Kontroly přístupu|Doba trvání opakování kontroly přístupu ve dnech nastavení aktualizace|
+|Kontroly přístupu|Aktualizace opakování end nastavení typu kontroly přístupu|
+|Kontroly přístupu|Aktualizace opakování nastavení typu kontroly přístupu|
 |Kontroly přístupu|Aktualizace nastavení připomenutí kontroly přístupu|
 |Kontroly přístupu|Aktualizace programu|
 |Kontroly přístupu|Aktualizace žádosti o schválení|
@@ -103,9 +103,9 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Odebrání OAuth2PermissionGrant|
 |Správa adresářů|Odebrání přiřazení role aplikace z instančního objektu|
 |Správa adresářů|Odebrání vlastníka z aplikace|
-|Prostředek|Odebrání vlastníka z instančního objektu|
-|Prostředek|Odebrání zásad z instančního objektu|
-|Prostředek|Odebrání instančního objektu|
+|Resource|Odebrání vlastníka z instančního objektu|
+|Resource|Odebrání zásad z instančního objektu|
+|Resource|Odebrání instančního objektu|
 
 
 ## <a name="automated-password-rollover"></a>Automatická změna hesel
@@ -269,79 +269,79 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Klíč|Adresář je odstraněný|
 |Ostatní|Adresář je trvale odstraněný|
 |Ostatní|Adresář s naplánovaným odstraněním|
-|Prostředek|Propagace společnosti u partnera|
-|Prostředek|Vyprázdnění vlastností Rights Management|
-|Prostředek|Odebrání partnera ze společnosti|
-|Prostředek|Odebrání neověřené domény|
-|Prostředek|Odebrání ověřené domény|
-|Prostředek|Nastavení informací o společnosti|
-|Prostředek|Nastavení funkce DirSync|
-|Prostředek|Nastavení příznaku DirSyncEnabled|
-|Prostředek|Nastavení partnerství|
-|Prostředek|Nastavení prahové hodnoty náhodného odstranění|
-|Prostředek|Nastavení povoleného umístění dat společnosti|
-|Prostředek|Povolení vícejazykové funkce společnosti|
-|Prostředek|Nastavení funkce adresáře v tenantovi|
-|Prostředek|Nastavení doménového ověřování|
-|Prostředek|Nastavení federování v doméně|
-|Prostředek|Nastavení zásad hesel|
-|Prostředek|Nastavení vlastností Rights Management|
-|Prostředek|Aktualizace společnosti|
-|Prostředek|Aktualizace nastavení společnosti|
-|Prostředek|Aktualizace domény|
-|Prostředek|Ověření domény|
-|Prostředek|Ověření domény s e-mailovým ověřením|
-|Prostředek|Onboarding|
-|Prostředek|Aktualizace nastavení výstrah|
-|Prostředek|Aktualizace nastavení týdenního přehledu|
-|Prostředek|Zákaz zpětného zápisu hesel pro adresář|
-|Prostředek|Povolení zpětného zápisu hesel pro adresář|
-|Prostředek|Přidání přiřazení role aplikace ke skupině|
-|Prostředek|Přidání skupiny|
-|Prostředek|Přidání člena do skupiny|
-|Prostředek|Přidání vlastníka do skupiny|
-|Prostředek|Vytvoření nastavení skupin|
-|Prostředek|Odstranění skupiny|
-|Prostředek|Odstranění nastavení skupin|
-|Prostředek|Ukončení použití skupinové licence pro uživatele|
-|Prostředek|Trvalé odstranění skupiny|
-|Prostředek|Odebrání přiřazení role aplikace ze skupiny|
-|Prostředek|Odebrání člena ze skupiny|
-|Prostředek|Odebrání vlastníka ze skupiny|
-|Prostředek|Obnovení skupiny|
-|Prostředek|Nastavení skupinové licence|
-|Prostředek|Nastavení správy skupiny uživatelem|
-|Prostředek|Zahájení použití skupinové licence pro uživatele|
-|Prostředek|Aktivace přepočtu skupinové licence|
-|Prostředek|Aktualizace skupiny|
-|Prostředek|Aktualizace nastavení skupin|
-|Prostředek|Přidání člena|
-|Prostředek|Vytvoření skupiny|
-|Prostředek|Odstranění skupiny|
-|Prostředek|Odebrání člena|
-|Prostředek|Aktualizace skupiny|
-|Prostředek|Schválení čekající žádosti o připojení ke skupině|
-|Prostředek|Zrušení čekající žádosti o připojení ke skupině|
-|Prostředek|Vytvoření zásad správy životního cyklu|
-|Prostředek|Odstranění čekající žádosti o připojení ke skupině|
-|Prostředek|Odmítnutí čekající žádosti o připojení ke skupině|
-|Prostředek|Obnovení skupiny|
-|Prostředek|Žádost o připojení ke skupině|
-|Prostředek|Nastavení vlastností dynamických skupin|
-|Prostředek|Aktualizace zásad správy životního cyklu|
-|Prostředek|Přidání klíče založeného na tajném klíči ASCII do kontejneru klíčů CPIM|
-|Prostředek|Přidání klíče do kontejneru klíčů CPIM|
-|Prostředek|Odstranění kontejneru klíčů CPIM|
-|Prostředek|Odstranění kontejneru klíčů|
-|Prostředek|Získání metadat aktivního klíče kontejneru klíčů ve formátu JWK|
-|Prostředek|Získání metadat kontejneru klíčů|
-|Prostředek|Získá kontejner klíčů CPIM ve formátu JWK|
-|Prostředek|Získá seznam kontejnerů klíčů v tenantovi|
-|Prostředek|Obnovení zálohy kontejneru klíčů CPIM|
-|Prostředek|Uložení kontejneru klíčů|
-|Prostředek|Nahrání šifrovaného klíče CPIM|
-|Prostředek|Vydání ověřovacího kódu pro aplikaci|
-|Prostředek|Vydání tokentu id_token pro aplikaci|
+|Resource|Propagace společnosti u partnera|
+|Resource|Vyprázdnění vlastností Rights Management|
+|Resource|Odebrání partnera ze společnosti|
+|Resource|Odebrání neověřené domény|
+|Resource|Odebrání ověřené domény|
+|Resource|Nastavení informací o společnosti|
+|Resource|Nastavení funkce DirSync|
+|Resource|Nastavení příznaku DirSyncEnabled|
+|Resource|Nastavení partnerství|
+|Resource|Nastavení prahové hodnoty náhodného odstranění|
+|Resource|Nastavení povoleného umístění dat společnosti|
+|Resource|Povolení vícejazykové funkce společnosti|
+|Resource|Nastavení funkce adresáře v tenantovi|
+|Resource|Nastavení doménového ověřování|
+|Resource|Nastavení federování v doméně|
+|Resource|Nastavení zásad hesel|
+|Resource|Nastavení vlastností Rights Management|
+|Resource|Aktualizace společnosti|
+|Resource|Aktualizace nastavení společnosti|
+|Resource|Aktualizace domény|
+|Resource|Ověření domény|
+|Resource|Ověření domény s e-mailovým ověřením|
+|Resource|Onboarding|
+|Resource|Aktualizace nastavení výstrah|
+|Resource|Aktualizace nastavení týdenního přehledu|
+|Resource|Zákaz zpětného zápisu hesel pro adresář|
+|Resource|Povolení zpětného zápisu hesel pro adresář|
+|Resource|Přidání přiřazení role aplikace ke skupině|
+|Resource|Přidání skupiny|
+|Resource|Přidání člena do skupiny|
+|Resource|Přidání vlastníka do skupiny|
+|Resource|Vytvoření nastavení skupin|
+|Resource|Odstranění skupiny|
+|Resource|Odstranění nastavení skupin|
+|Resource|Ukončení použití skupinové licence pro uživatele|
+|Resource|Trvalé odstranění skupiny|
+|Resource|Odebrání přiřazení role aplikace ze skupiny|
+|Resource|Odebrání člena ze skupiny|
+|Resource|Odebrání vlastníka ze skupiny|
+|Resource|Obnovení skupiny|
+|Resource|Nastavení skupinové licence|
+|Resource|Nastavení správy skupiny uživatelem|
+|Resource|Zahájení použití skupinové licence pro uživatele|
+|Resource|Aktivace přepočtu skupinové licence|
+|Resource|Aktualizace skupiny|
+|Resource|Aktualizace nastavení skupin|
+|Resource|Přidání člena|
+|Resource|Vytvořit skupinu|
+|Resource|Odstranit skupinu|
+|Resource|Odebrání člena|
+|Resource|Aktualizace skupiny|
+|Resource|Schválení čekající žádosti o připojení ke skupině|
+|Resource|Zrušení čekající žádosti o připojení ke skupině|
+|Resource|Vytvoření zásad správy životního cyklu|
+|Resource|Odstranění čekající žádosti o připojení ke skupině|
+|Resource|Odmítnutí čekající žádosti o připojení ke skupině|
+|Resource|Obnovení skupiny|
+|Resource|Žádost o připojení ke skupině|
+|Resource|Nastavení vlastností dynamických skupin|
+|Resource|Aktualizace zásad správy životního cyklu|
+|Resource|Přidání klíče založeného na tajném klíči ASCII do kontejneru klíčů CPIM|
+|Resource|Přidání klíče do kontejneru klíčů CPIM|
+|Resource|Odstranění kontejneru klíčů CPIM|
+|Resource|Odstranění kontejneru klíčů|
+|Resource|Získání metadat aktivního klíče kontejneru klíčů ve formátu JWK|
+|Resource|Získání metadat kontejneru klíčů|
+|Resource|Získá kontejner klíčů CPIM ve formátu JWK|
+|Resource|Získá seznam kontejnerů klíčů v tenantovi|
+|Resource|Obnovení zálohy kontejneru klíčů CPIM|
+|Resource|Uložení kontejneru klíčů|
+|Resource|Nahrání šifrovaného klíče CPIM|
+|Resource|Vydání ověřovacího kódu pro aplikaci|
+|Resource|Vydání tokentu id_token pro aplikaci|
 
 
 ## <a name="core-directory"></a>Základní adresář
@@ -432,18 +432,18 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa zásad|GetIEFPolicies|
 |Správa zásad|GetIdentityProviders|
 |Správa zásad|GetTrustFrameworkPolicy|
-|Prostředek|MigrateTenantMetadata|
-|Prostředek|Přesunutí prostředků|
-|Prostředek|Oprava objektu IdentityProvider|
-|Prostředek|PutTrustFrameworkPolicy|
-|Prostředek|PutTrustFrameworkpolicy|
-|Prostředek|Odebrání cesty uživatele|
-|Prostředek|Aktualizace vlastního zprostředkovatele identity|
-|Prostředek|Aktualizace zprostředkovatele identity|
-|Prostředek|Aktualizace místního zprostředkovatele identity|
-|Prostředek|Aktualizace prostředku adresáře B2C|
-|Prostředek|Aktualizace zásad|
-|Prostředek|Aktualizace stavu předplatného|
+|Resource|MigrateTenantMetadata|
+|Resource|Přesunutí prostředků|
+|Resource|Oprava objektu IdentityProvider|
+|Resource|PutTrustFrameworkPolicy|
+|Resource|PutTrustFrameworkpolicy|
+|Resource|Odebrání cesty uživatele|
+|Resource|Aktualizace vlastního zprostředkovatele identity|
+|Resource|Aktualizace zprostředkovatele identity|
+|Resource|Aktualizace místního zprostředkovatele identity|
+|Resource|Aktualizace prostředku adresáře B2C|
+|Resource|Aktualizace zásad|
+|Resource|Aktualizace stavu předplatného|
 |Správa rolí|Aktualizace atributu uživatele|
 |Správa rolí|Ověření přesunu prostředků|
 |Správa rolí|Přidání zařízení|
@@ -518,10 +518,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa skupin|Kontrola žádosti o schválení žádosti|
 |Správa skupin|Aktualizace kontroly přístupu|
 |Správa skupin|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Správa skupin|Nastavení aktualizace počtu opakování kontrol přístupu|
-|Správa skupin|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
-|Správa uživatelů|Nastavení aktualizace typu konce opakování kontrol přístupu|
-|Správa uživatelů|Nastavení aktualizace typu opakování kontrol přístupu|
+|Správa skupin|Aktualizace přístupu k revizi počet opakování nastavení|
+|Správa skupin|Doba trvání opakování kontroly přístupu ve dnech nastavení aktualizace|
+|Správa uživatelů|Aktualizace opakování end nastavení typu kontroly přístupu|
+|Správa uživatelů|Aktualizace opakování nastavení typu kontroly přístupu|
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 360ffb3d2c682d6bd2344cb3ae95447ff3df278d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076876"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače s SQL serverem
 
@@ -41,7 +41,7 @@ Použití nastavení konfigurace automatického úložiště, virtuální počí
 
 Následující části popisují postup konfigurace úložiště pro nové virtuální počítače systému SQL Server.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Při zřizování virtuálního počítače Azure pomocí image z galerie systému SQL Server, můžete pro automatickou konfiguraci úložiště pro nový virtuální počítač. Určete velikost úložiště, limity pro výkon a typ úlohy. Na následujícím snímku obrazovky se zobrazí okno Konfigurace úložiště využitých virtuálních počítačů SQL zřizování.
 
@@ -67,24 +67,24 @@ Pokud použijete následující šablony Resource Manageru, jsou ve výchozím n
 
 ## <a name="existing-vms"></a>Stávající virtuální počítače
 
-Pro existující virtuální počítače SQL serveru můžete upravit některá nastavení úložiště na webu Azure Portal. Vyberte svůj virtuální počítač, přejděte do oblasti nastavení a pak vyberte konfiguraci systému SQL Server. Konfigurace systému SQL Server okno aktuální využití úložiště virtuálního počítače. V tomto grafu se zobrazují všechny jednotky, které existují na vašem virtuálním počítači. Pro každou jednotku v prostoru úložiště zobrazí v čtyři části:
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-* Data SQL
+Pro existující virtuální počítače SQL serveru můžete upravit některá nastavení úložiště na webu Azure Portal. Otevřete váš [prostředků virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)a vyberte **přehled**. Na stránce Přehled serveru SQL ukazuje aktuální využití úložiště virtuálního počítače. V tomto grafu se zobrazují všechny jednotky, které existují na vašem virtuálním počítači. Pro každou jednotku v prostoru úložiště zobrazí v čtyři části:
+
+* SQL data
 * Protokol SQL
 * Ostatní (úložiště bez SQL)
-* K dispozici.
+* K dispozici
+
+Chcete-li upravit nastavení úložiště, vyberte **konfigurovat** pod **nastavení**. 
 
 ![Konfigurace úložiště pro existující systém SQL Server VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
-
-Konfigurace úložiště, které chcete přidat novou jednotku nebo rozšířit existující jednotce, klikněte na odkaz upravit nad grafem.
 
 Možnosti konfigurace, které se zobrazí, se liší v závislosti na tom, jestli se mají použít tuto funkci před. Pokud používáte poprvé, můžete určit požadavky na úložiště pro nový disk. Pokud jste dříve používali tuto funkci Pokud chcete vytvořit jednotku, můžete rozšířit úložiště tuto jednotku.
 
 ### <a name="use-for-the-first-time"></a>Pro první použití
 
 Pokud je vaše první přihlášení pomocí této funkce, můžete zadat omezení velikosti a výkonu úložiště pro novou jednotku. Toto prostředí je podobný co se zobrazí na čas zřízení. Hlavní rozdíl je, že nemáte oprávnění k určení typu úlohy. Smyslem tohoto omezení přerušení všechny existující konfigurace systému SQL Server na virtuálním počítači.
-
-![Konfigurace SQL serveru úložiště posuvníky](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
 Azure vytvoří novou jednotku podle vašich požadavků. V tomto scénáři Azure provádí následující úlohy konfigurace úložiště:
 
@@ -99,13 +99,11 @@ Další podrobnosti o tom, jak Azure nakonfiguruje nastavení úložiště, najd
 
 Pokud jste už nakonfigurovali úložiště na virtuální počítač s SQL serverem, rozbalení úložiště zobrazí dvě nové možnosti. První možností je přidat novou jednotku, což může zvýšit úroveň výkonu virtuálního počítače.
 
-![Přidat novou jednotku k virtuálnímu počítači SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
-
 Ale po přidání jednotky, je nutné provést některé další ruční konfigurace dosáhnout zvýšení výkonu.
 
 ### <a name="extend-the-drive"></a>Rozšířit jednotku
 
-Další možností pro rozšíření úložiště je rozšířit existující jednotce. Tato možnost zvětší úložiště k dispozici pro váš disk, ale nezvyšuje výkon. Díky fondům úložiště není možné pozměnit počet sloupců po vytvoření fondu úložiště. Počet sloupců určuje počet paralelních zápisy, které může být rozdělená mezi datovými disky. Proto všechny přidané datové disky nelze zvýšit výkon. Další úložiště, může poskytnout pouze pro zapisovaných dat. Toto omezení také znamená, že při rozšiřování na jednotce, počet sloupců Určuje minimální počet datových disků, které můžete přidat. Proto pokud vytvoříte fond úložiště se čtyřmi datovými disky, počet sloupců, jsou také čtyři. Pokaždé, když rozšíření úložiště, je nutné přidat alespoň čtyři datové disky.
+Další možností pro rozšíření úložiště je rozšířit existující jednotce. Tato možnost zvětší úložiště k dispozici pro váš disk, ale nezvyšuje výkon. Díky fondům úložiště není možné pozměnit počet sloupců po vytvoření fondu úložiště. Počet sloupců určuje počet paralelních zápisy, které může být rozdělená mezi datovými disky. Proto všechny přidané datové disky nelze zvýšit výkon. Další úložiště, může poskytnout pouze pro zapisovaných dat. Toto omezení také znamená, že při rozšiřování na jednotce, počet sloupců Určuje minimální počet datových disků, které můžete přidat. Proto pokud vytvoříte fond úložiště se čtyřmi datovými disky, počet sloupců, jsou také čtyři. Pokaždé, když rozšíříte úložiště, je nutné přidat alespoň čtyři datové disky.
 
 ![Rozšířit jednotku pro virtuální počítač s SQL](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 

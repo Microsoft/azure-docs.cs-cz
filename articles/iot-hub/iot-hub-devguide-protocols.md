@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626175"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Odkaz – volba komunikačního protokolu
@@ -29,7 +29,7 @@ Informace o tom, jak tyto protokoly podporují konkrétní funkce služby IoT Hu
 
 Následující tabulka poskytuje podrobný doporučení podle vaší volby protokolu:
 
-| Protocol (Protokol) | Pokud byste zvolit tento protokol |
+| Protocol | Pokud byste zvolit tento protokol |
 | --- | --- |
 | MQTT <br> Protokol MQTT přes protokol WebSocket |Použít na všech zařízeních, které nevyžadují připojení několika zařízení (každý má svoje vlastní přihlašovací údaje podle zařízení) přes stejného připojení protokolu TLS. |
 | AMQP <br> AMQP přes WebSocket |Použít na pole a cloudové brány výhod připojení multiplexing napříč zařízeními. |
@@ -54,7 +54,7 @@ Pokud zvolíte protokol pro komunikaci na straně zařízení, zvažte následuj
 
 Zařízení může komunikovat s centrem IoT v Azure pomocí různých protokolů. Výběr protokolu obvykle doprovází konkrétních požadavků řešení. V následující tabulce jsou uvedeny Odchozí porty, které musí být otevřený, aby zařízení mohlo použít určitý protokol:
 
-| Protocol (Protokol) | Port |
+| Protocol | Port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT přes WebSockets |443 |

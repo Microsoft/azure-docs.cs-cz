@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d31bde1a33d622c2c0b7aa716cbbbfbc8ef42ecf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514581"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083928"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -91,24 +91,26 @@ K dispozici jsou následující role správce:
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazit všechna data auditu Intune
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Má oprávnění jen pro čtení a může spravovat upozornění<br>Můžete vytvořit a upravit zásady souborů a povolit akce zásad správného řízení souborů<br> Můžete zobrazit všechny předdefinované sestavy v správy dat
 
-<!--* **[Compliance Data Administrator](#compliance-data-administrator)**: Users with this role have permissions to protect and track data in the Microsoft 365 compliance center, Microsoft 365 admin center, and Azure. Users can also manage all features within the Exchange admin center, Compliance Manager, and Teams & Skype for Business admin center and create support tickets for Azure and Microsoft 365.
+* **[Správce dat dodržování předpisů](#compliance-data-administrator)** : Uživatelé s touto rolí mají oprávnění k ochraně a sledování dat v centru dodržování předpisů Microsoft 365, centra pro správu služeb Microsoft 365 a Azure. Uživatelé mohou také spravovat všechny funkce v rámci centra pro správu Exchange, správce dodržování předpisů a týmy a Skype pro firmy centra pro správu a vytvářet lístky podpory pro Azure a Microsoft 365.
 
-  In | Can do
+  V | Můžete provést
   ----- | ----------
-  [Microsoft 365 compliance center](https://protection.office.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
-  [Compliance Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Track, assign, and verify your organization's regulatory compliance activities
-  [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Manage data governance<br>Perform legal and data investigation<br>Manage Data Subject Request
-  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | View all Intune audit data
-  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Has read-only permissions and can manage alerts<br>Can create and modify file policies and allow file governance actions<br> Can view all the built-in reports under Data Management
--->
-* **[Správce podmíněného přístupu](#conditional-access-administrator)** : Uživatelé s touto rolí mají možnost spravovat nastavení podmíněného přístupu Azure Active Directory.
+  [Centrum pro dodržování předpisů Microsoft 365](https://protection.office.com) | Monitorování zásad dodržování předpisů související ve službách Microsoft 365<br>Správa výstrah dodržování předpisů
+  [Správce dodržování předpisů](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Sledování, přiřaďte a ověřte aktivit dodržování legislativních předpisů vaší organizace
+  [Office 365 zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad správného řízení dat<br>Proveďte šetření právní informace a data<br>Spravovat žádost o subjektu dat
+  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazit všechna data auditu Intune
+  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Má oprávnění jen pro čtení a může spravovat upozornění<br>Můžete vytvořit a upravit zásady souborů a povolit akce zásad správného řízení souborů<br> Můžete zobrazit všechny předdefinované sestavy v správy dat
+
+* **[Správce podmíněného přístupu](#conditional-access-administrator)** : Uživatelé s touto rolí mají možnost spravovat nastavení Azure Active Directory podmíněného přístupu.
   > [!NOTE]
   > Pokud chcete nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, musí uživatel také být globálním správcem.
   
 * **[Schvalovatel přístupu Lockboxu zákazníka](#customer-lockbox-access-approver)** : Spravuje [požádá zákazníka Lockboxu](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests) ve vaší organizaci. Dostávat e-mailová oznámení pro požadavky zákazníka Lockboxu a mohou schválit a odmítnout žádosti o Centru pro správu služeb Microsoft 365. Funkci Lockboxu zákazníka, můžete zapnout také v zapnutí nebo vypnutí. Jenom globální správci můžou resetovat hesla uživatelů přiřazených k této roli.
   <!--  This was announced in August of 2018. https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Customer-Lockbox-Approver-Role-Now-Available/ba-p/223393-->
 
-* **[Správci zařízení](#device-administrators)** : Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí stávají místními správci počítačů na všech zařízeních s Windows 10, která jsou připojená ke službě Azure Active Directory. Nemají možnost spravovat objekty zařízení v Azure Active Directory. 
+* **[Správce Analytics Desktop](#desktop-analytics-administrator)** : Uživatelé v této roli mohou spravovat Desktopu analýzy a přizpůsobení systému Office a zásady služby. Pro Desktop Analytics to zahrnuje možnost zobrazení inventáře majetku, vytvářet plány nasazení, zobrazení stavu nasazení a stavu. Pro přizpůsobení systému Office a zásad služby tato role umožňuje uživatelům spravovat zásady Office.
+
+* **[Správce zařízení](#device-administrators)** : Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí stávají místními správci počítačů na všech zařízeních s Windows 10, která jsou připojená ke službě Azure Active Directory. Nemají možnost spravovat objekty zařízení v Azure Active Directory. 
 
 * **[Uživatelé Čtoucí z adresáře](#directory-readers)** : Toto je role, která by mělo být přiřazeno pouze na starších aplikací, které nepodporují [souhlas Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Nemusíte přiřazovat uživatelům.
 
@@ -210,19 +212,20 @@ Kromě toho má uživatel přístup sestavy týkající se přijetí a využití
   [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení
   [Stav služby Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Zobrazení stavu služeb Office 365
 
-<!--* **[Security operator](#security-operator)**: Users with this role can manage alerts and have global read-only access on security-related feature, including all information in Microsoft 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management, as well as the ability to read Azure Active Directory sign-in reports and audit logs, and in Office 365 Security & Compliance Center.
+* **[Operátor zabezpečení](#security-operator)** : Uživatelé s touto rolí můžou Spravovat výstrahy a mají globální přístup jen pro čtení na funkce související se zabezpečením, včetně všech informací v Centru zabezpečení Microsoft 365, Azure Active Directory, Identity Protection, Privileged Identity Management a Office 365 Zabezpečení a dodržování předpisů. Další informace o oprávněních Office 365 je k dispozici na [oprávnění v centru dodržování předpisů a zabezpečení Office 365](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
-  In | Can do
+  V | Můžete provést
   --- | ---
-  [Microsoft 365 security center](https://protection.office.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
-  Identity Protection Center | All permissions of the Security Reader role<br>Additionally, the ability to perform all Identity Protection Center operations except for resetting passwords
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | All permissions of the Security Reader role
-  [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
-  Windows Defender ATP and EDR | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
-  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | All permissions of the Security Reader role
-  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | All permissions of the Security Reader role
-  [Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health) | View the health of Office 365 services
--->
+  [Centrum zabezpečení Microsoft 365](https://protection.office.com) | Všechna oprávnění role Čtenář zabezpečení<br>Zobrazení, prozkoumání a reakce na výstrahy ohrožení zabezpečení
+  Identity Protection Center | Všechna oprávnění role Čtenář zabezpečení<br>Kromě toho možnost provádět všechny operace Centrum Identity Protection kromě resetování hesel
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Všechna oprávnění role Čtenář zabezpečení
+  [Office 365 zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Všechna oprávnění role Čtenář zabezpečení<br>Zobrazení, prozkoumání a reakce na výstrahy zabezpečení
+  Windows Defender ATP a EDR | Všechna oprávnění role Čtenář zabezpečení<br>Zobrazení, prozkoumání a reakce na výstrahy zabezpečení
+  [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Všechna oprávnění role Čtenář zabezpečení
+  [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Všechna oprávnění role Čtenář zabezpečení
+  [Stav služby Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Zobrazení stavu služeb Office 365
+<!--* **[Security Operator](#security-operator)**: Users with this role can manage alerts and have global read-only access on security-related feature, including all information in Microsoft 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management.-->
+
 * **[Čtenář zabezpečení](#security-reader)** : Uživatelé s touto rolí mají globální přístup jen pro čtení na funkce související se zabezpečením, včetně všech informací v Microsoftu 365 security center, Azure Active Directory, Identity Protection, Privileged Identity Management, jakož i oprávnění ke čtení Azure Active Adresář přihlášení sestavy a protokoly auditu a v centru dodržování předpisů a zabezpečení Office 365. Další informace o oprávněních Office 365 je k dispozici na [oprávnění v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
   V | Můžete provést
@@ -406,22 +409,6 @@ Můžete provádět běžné úkoly související s fakturací třeba aktualizov
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
-### <a name="desktop-analytics-administrator"></a>Desktop Analytics správce
-Můžete spravovat Desktopu analýzy a přizpůsobení systému Office a zásad služby. Pro Desktop Analytics to zahrnuje možnost zobrazení inventáře majetku, vytvářet plány nasazení, zobrazení stavu nasazení a stavu. Pro přizpůsobení systému Office a zásad služby tato role umožňuje uživatelům spravovat zásady Office.
-
-  > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
-  >
-  >
-
-| **Akce** | **Popis** |
-| --- | --- |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
-| microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti pro všechny prostředky ve službě microsoft.office365.webPortal. |
-| microsoft.office365.desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktopu Analytics. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
-| microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
 ### <a name="cloud-application-administrator"></a>Správce cloudové aplikace
 Můžete vytvořit a spravovat všechny aspekty registrací aplikací a podnikových aplikací, kromě Proxy aplikací.
@@ -565,6 +552,28 @@ Může číst a spravovat konfiguraci dodržování předpisů a sestavy ve slu�
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Spravovat všechny aspekty skypu for Business Online. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
+### <a name="compliance-data-administrator"></a>Správce dat dodržování předpisů
+Vytváří a spravuje obsah dodržování předpisů.
+
+  > [!NOTE]
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Přečíst a nakonfigurovat Microsoft Cloud App Security. |
+| microsoft.azure.informationProtection/allEntities/allTasks | Spravujte všechny aspekty služby Azure Information Protection. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
+| microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti pro všechny prostředky ve službě microsoft.office365.webPortal. |
+| microsoft.office365.complianceManager/allEntities/allTasks | Spravovat všechny aspekty správce dodržování předpisů Office 365 |
+| microsoft.office365.exchange/allEntities/allTasks | Spravujte všechny aspekty produktu Exchange Online. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v microsoft.office365.sharepoint. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Spravovat všechny aspekty skypu for Business Online. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
+
 ### <a name="conditional-access-administrator"></a>Správce podmíněného přístupu
 Může spravovat funkce podmíněného přístupu.
 
@@ -608,6 +617,23 @@ Můžete schvalovat žádosti podpory Microsoftu o přístup k datům organizace
 | --- | --- |
 | microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti pro všechny prostředky ve službě microsoft.office365.webPortal. |
 | microsoft.office365.lockbox/allEntities/allTasks | Spravovat všechny aspekty Lockboxu zákazníků Office 365 |
+
+### <a name="desktop-analytics-administrator"></a>Desktop Analytics správce
+Můžete spravovat Desktopu analýzy a přizpůsobení systému Office a zásad služby. Pro Desktop Analytics to zahrnuje možnost zobrazení inventáře majetku, vytvářet plány nasazení, zobrazení stavu nasazení a stavu. Pro přizpůsobení systému Office a zásad služby tato role umožňuje uživatelům spravovat zásady Office.
+
+  > [!NOTE]
+  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
+| microsoft.office365.webPortal/allEntities/basic/read | Přečtěte si základní vlastnosti pro všechny prostředky ve službě microsoft.office365.webPortal. |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktopu Analytics. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
 ### <a name="device-administrators"></a>Správci zařízení
 Uživatelé s touto rolí se přidají do skupiny místních správců na Azure zařízení připojených k doméně AD.
@@ -1081,6 +1107,25 @@ Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve slu
 | microsoft.office365.protectionCenter/allEntities/update | Aktualizujte všechny prostředky v microsoft.office365.protectionCenter. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 
+### <a name="security-operator"></a>Operátor zabezpečení
+Vytváří a spravuje události zabezpečení.
+
+  > [!NOTE]
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.cloudAppSecurity/allEntities/allTasks | Přečíst a nakonfigurovat Microsoft Cloud App Security. |
+| microsoft.aad.identityProtection/allEntities/read | Číst všechny prostředky v microsoft.aad.identityProtection. |
+| microsoft.aad.privilegedIdentityManagement/allEntities/read | Číst všechny prostředky v microsoft.aad.privilegedIdentityManagement. |
+| microsoft.azure.advancedThreatProtection/allEntities/read | Umožňuje číst a konfigurovat Azure AD rozšířené ochrany před internetovými útoky. |
+| microsoft.intune/allEntities/allTasks | Spravujte všechny aspekty služby Intune. |
+| microsoft.office365.securityComplianceCenter/allEntities/allTasks | Přečíst a nakonfigurovat zabezpečení a dodržování předpisů. |
+| microsoft.office365.usageReports/allEntities/read | Sestavy využití Office 365 pro čtení. |
+| microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Umožňuje číst a konfigurovat rozšířené ochrany před internetovými útoky programu Windows Defender. |
+
 ### <a name="security-reader"></a>Čtenář zabezpečení
 Může číst informace o zabezpečení a sestavy ve službě Azure AD a Office 365.
 
@@ -1261,14 +1306,15 @@ Správce atributů uživatelských toků B2C | Správce atributů uživatelskýc
 Správce sady klíčů IEF B2C | Správce sady klíčů IEF B2C | aaf43236-0c0d-4d5f-883a-6955382ac081
 Správce zásad IEF B2C | Správce zásad IEF B2C | 3edaf663-341e-4475-9f94-5c398ef6c070
 Správce fakturace | Správce fakturace | b0f54661-2d74-4c50-afa3-1ec803f12efe
-Desktop Analytics správce | Desktop Analytics správce | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Správce cloudové aplikace | Správce cloudové aplikace | 158c047a-c907-4556-b7ef-446551a6b5f7
 Správce cloudových zařízení | Správce cloudových zařízení | 7698a772-787b-4ac8-901f-60d6b08affd2
 Správce společnosti | Globální správce | 62e90394-69f5-4237-9190-012177145e10
 Správce dodržování předpisů | Správce dodržování předpisů | 17315797-102d-40b4-93e0-432062caca18
+Správce dat dodržování předpisů | Správce dat dodržování předpisů | e6d1a23a-da11-4be4-9570-befc86d067a7
 Správce podmíněného přístupu | Správce podmíněného přístupu | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 Správce služby CRM | Dynamics 365 administrator | 44367163-eba1-44c3-98af-f5787879f96a
 Schvalovatel přístupu Lockboxu zákazníka | Schvalovatel přístupu Lockboxu zákazníka | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
+Desktop Analytics správce | Desktop Analytics správce | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Správci zařízení | Správci zařízení | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Připojení zařízení | Připojení zařízení | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 Správci zařízení | Správci zařízení | 2b499bcd-da44-4968-8aec-78e1674fa64d
@@ -1295,6 +1341,7 @@ Správce privilegované Role | Správce privilegovaných rolí | e8611ab8-c189-4
 Hledat správce | Hledat správce | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Editor vyhledávání | Editor vyhledávání | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Správce zabezpečení | Správce zabezpečení | 194ae4cb-b126-40b2-bd5b-6091b380977d
+Operátor zabezpečení | Operátor zabezpečení | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Čtenář zabezpečení | Čtenář zabezpečení | 5d6b6bb7-de71-4623-b4af-96380a352509
 Správce podpory služeb | Správce služeb | f023fd81-a637-4b56-95fd-791ac0226033
 Správce služeb Sharepointu | Správce Sharepointu | f28a1f50-f6e7-4571-818b-6a12f2af6b6c

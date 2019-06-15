@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: c72c4d21f948d6d6c4d1d4598efa0e13de9705a6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926199"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace databáze spravované instance Azure SQL Database
@@ -51,7 +51,7 @@ Konfigurace managed instance fungovat jako vydavatel a/nebo distributora vyžadu
 
 ## <a name="features"></a>Funkce
 
-Podporuje:
+Podporované platformy:
 
 - Transakční replikace a replikace snímků kombinaci místní SQL Server a spravované instance Azure SQL Database.
 - Předplatitelé můžou být v místních databází SQL serveru, jediné databáze/spravované instance v Azure SQL Database nebo databáze ve fondu v elastických fondů Azure SQL Database.
@@ -66,7 +66,7 @@ Ve službě Azure SQL Database managed instance nepodporuje následující funkc
 
 Použití [webu Azure portal](https://portal.azure.com) a vytvořte skupinu prostředků s názvem `SQLMI-Repl`.  
 
-## <a name="2---create-managed-instances"></a>2. vytvoření spravované instance
+## <a name="2---create-managed-instances"></a>2\. vytvoření spravované instance
 
 Použití [webu Azure portal](https://portal.azure.com) vytvořit dvě [spravované instance](sql-database-managed-instance-create-tutorial-portal.md) na stejnou virtuální síť a podsíť. By měl být pojmenován dva spravované instance:
 

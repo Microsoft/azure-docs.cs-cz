@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60359823"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Povolení zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
@@ -31,7 +31,7 @@ Kompletní [úloha 2 – exportujte certifikát protokolu secure LDAP pro. Soubo
 ## <a name="task-3-enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>Úloha 3: Povolení protokolu LDAPS pro spravované domény pomocí webu Azure portal
 Pokud chcete povolit protokol secure LDAP, proveďte následující kroky konfigurace:
 
-1. Přejděte  **[webu Azure portal](https://portal.azure.com)**.
+1. Přejděte  **[webu Azure portal](https://portal.azure.com)** .
 
 2. Vyhledejte "domain services" v **vyhledat prostředky** vyhledávacího pole. Vyberte **Azure AD Domain Services** z výsledku hledání. **Azure AD Domain Services** stránce uvedeny vaší spravované domény.
 

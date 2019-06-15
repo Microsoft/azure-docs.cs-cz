@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873bc340d738704418310e22c34b0042f71a96bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad7aedf90ead4b21bab661bdaf85316cd648fd75
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60276407"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101268"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Kurz: Integrace Azure Active Directory s HighGear
 
@@ -53,7 +53,7 @@ Konfigurace integrace HighGear do služby Azure AD, budete muset přidat HighGea
 
 **Chcete-li přidat HighGear z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

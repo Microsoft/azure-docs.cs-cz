@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 5bebdd77afb9e9c77624ea4266ca217567dbf143
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66425686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072396"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Rychlý start: Spuštění ukázkové aplikace sadou SDK pro řeč zařízení v Androidu
 
@@ -37,7 +37,7 @@ Než začnete používat sadou SDK pro řeč zařízení, bude nutné:
 
 * Chcete-li získat [klíč předplatného pro hlasové služby](get-started.md)
 
-* Pokud budete chtít použít jiné konverzace je nutné použít [cyklické mikrofon](get-speech-devices-sdk.md) a služba je momentálně dostupný jenom pro "en US" a "zh-CN" v oblastech, "centralus" a "východní Asie". V těchto oblastech použít určené k transkripci konverzace, musí mít klíč řeči.
+* Pokud budete chtít použít jiné konverzace je nutné použít [cyklické mikrofon](get-speech-devices-sdk.md) tato funkce je aktuálně dostupná jenom pro "en US" a "zh-CN" v oblastech, "centralus" a "východní Asie". V těchto oblastech použít určené k transkripci konverzace, musí mít klíč řeči.
 
 * Pokud máte v plánu můžete identifikovat záměry (nebo akce) z uživatele projevy hlasové služby, bude nutné [služby Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) předplatného. Další informace o LUIS a rozpoznání záměru, naleznete v tématu [rozpoznávání řeči záměry služba luis C# ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 

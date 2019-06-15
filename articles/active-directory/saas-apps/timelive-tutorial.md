@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: cd38da7cb640e53c90a209850bcd8386c75a8aa9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a3f1e74b67d30fc5d0b994093f159de0cc833628
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Kurz: Integrace Azure Active Directory s TimeLive
 
@@ -55,7 +55,7 @@ Konfigurace integrace TimeLive do služby Azure AD, budete muset přidat TimeLiv
 
 **Chcete-li přidat TimeLive z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -208,7 +208,7 @@ V této části je povolit Britta Simon k udělení přístupu k TimeLive použi
 
 V této části se vytvoří uživateli Britta Simon v TimeLive. TimeLive podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi TimeLive, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

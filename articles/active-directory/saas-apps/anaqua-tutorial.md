@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc60cb221b167f6157dbc767e780cd912cbfd7d8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 147ce4c898d29f08593019073d69bba78edb75b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481135"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106875"
 ---
 # <a name="tutorial-integrate-anaqua-with-azure-active-directory"></a>Kurz: ANAQUA integrovat s Azure Active Directory
 

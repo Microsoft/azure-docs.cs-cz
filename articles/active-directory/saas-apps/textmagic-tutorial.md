@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c919d02a72565f42c125e6d123b48e2cedaea508
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407978"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Kurz: Integrace Azure Active Directory s TextMagic
 
@@ -54,7 +54,7 @@ Konfigurace integrace TextMagic do služby Azure AD, budete muset přidat TextMa
 
 **Chcete-li přidat TextMagic z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -114,12 +114,12 @@ Ke konfiguraci Azure AD jednotné přihlašování s TextMagic, proveďte násle
 
 6. Kromě toho výše TextMagic aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název |   Zdrojový atribut| Obor názvů  |
+    | Name |   Zdrojový atribut| Obor názvů  |
     | --------------- | --------------- | --------------- |
-    | Společnosti | user.companyname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Jméno               | user.givenname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Příjmení            | user.surname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | user.telephonenumber |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Společnosti | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Jméno               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Příjmení            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Telefon               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -166,13 +166,13 @@ Ke konfiguraci Azure AD jednotné přihlašování s TextMagic, proveďte násle
 
     ![TextMagic Configuration](./media/textmagic-tutorial/config2.png)
 
-    a. V **zprostředkovatele Identity Entity ID:** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
+    a. V **zprostředkovatele Identity Entity ID:**  textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
 
-    b. V **zprostředkovatele Identity adresu URL jednotného přihlašování:** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    b. V **zprostředkovatele Identity adresu URL jednotného přihlašování:**  textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    c. V **zprostředkovatele Identity adresa URL cíle na úrovni služby:** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    c. V **zprostředkovatele Identity adresa URL cíle na úrovni služby:**  textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **x509 veřejný certifikát:** textového pole.
+    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **x509 veřejný certifikát:**  textového pole.
 
     e. Klikněte na **Uložit**.
 
@@ -194,7 +194,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**. Například BrittaSimon@contoso.com.
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension** . Například BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
@@ -231,7 +231,7 @@ V této části je povolit Britta Simon k udělení přístupu k TextMagic použ
 Aplikace podporuje **čas zřizování uživatelů podle potřeby** a po ověření uživatele budou vytvořeny v aplikaci automaticky. Je potřeba vyplnit informace jednou při prvním přihlášení k aktivaci dílčí účet do systému.
 Neexistuje žádná položka akce pro vás v této části.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

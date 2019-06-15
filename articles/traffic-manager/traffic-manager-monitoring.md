@@ -2,20 +2,20 @@
 title: Monitorování koncových bodů v Azure Traffic Manager | Dokumentace Microsoftu
 description: V tomto článku vám pomůžou pochopit, jak Traffic Manager pomocí monitorování koncových bodů a koncový bod automatické převzetí služeb při selhání pomáhá zákazníkům Azure nasazovat aplikací s vysokou dostupností
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: kumud
-ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 7aee68ef41b696549aa1db4386d467b55cd2d981
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071062"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -74,7 +74,7 @@ Stav monitorování koncového bodu je hodnota generované Traffic Manageru, kte
 | Enabled |Enabled |Online |Koncový bod se sleduje a je v pořádku. Je součástí odpovědí DNS a může přijímat provoz. |
 | Enabled |Enabled |Sníženo |Monitorování kontroly stavu koncových bodů se nedaří. Koncový bod není zahrnutý v odpovědi DNS a nepřijímá provoz. <br>Jedinou výjimkou je to je-li všechny koncové body jsou degradované, v takovém případě všechny z nich jsou považovány za který se má vrátit v odpovědi na dotaz).</br>|
 | Enabled |Enabled |CheckingEndpoint |Je monitorovaný koncový bod, ale ještě nebyly přijaty výsledky první test paměti. CheckingEndpoint se o dočasný stav, který se obvykle nachází bezprostředně po přidání nebo povolení koncového bodu v profilu. Koncový bod v tomto stavu je zahrnutý v odpovědi DNS a může přijímat provoz. |
-| Enabled |Enabled |Zastaveno |Cloudové služby nebo webové aplikace, odkazující na koncový bod není spuštěná. Zkontrolujte nastavení cloudové služby nebo webové aplikace. To může také dojít, pokud koncový bod je koncový bod typu vnořené a podřízené profilu je zakázán nebo je neaktivní. <br>Koncový bod s ve stavu Zastaveno není monitorován. Není součástí odpovědí DNS a ne přijímat provoz. Jedinou výjimkou je to je, pokud všechny koncové body jsou degradované, v takovém případě všechny z nich bude považovat za který se má vrátit v odpovědi na dotaz.</br>|
+| Enabled |Enabled |Zastaveno |Webová aplikace, koncový bod odkazující na neběží. Zkontrolujte nastavení webové aplikace. To může také dojít, pokud koncový bod je koncový bod typu vnořené a podřízené profilu je zakázán nebo je neaktivní. <br>Koncový bod s ve stavu Zastaveno není monitorován. Není součástí odpovědí DNS a ne přijímat provoz. Jedinou výjimkou je to je, pokud všechny koncové body jsou degradované, v takovém případě všechny z nich bude považovat za který se má vrátit v odpovědi na dotaz.</br>|
 
 Podrobnosti o tom, jak se počítá stav monitorování koncového bodu pro vnořené koncové body, naleznete v tématu [vnořené profily Traffic Manageru](traffic-manager-nested-profiles.md).
 
@@ -98,6 +98,7 @@ Stav monitorování profilu je kombinací stav nakonfigurovaný profil a koncov�
 Traffic Manager pravidelně kontroluje stav každé koncového bodu, včetně koncových bodů není v pořádku. Traffic Manager zjistí, že koncový bod bude v pořádku a přináší zpět do otočení.
 
 Koncový bod není v pořádku, když dojde k některé z následujících událostí:
+
 - Pokud je monitorovací protokol HTTP nebo HTTPS:
     - Než 200 odpovědi nebo odpovědi, která neobsahuje stav rozsahu zadaného v **byl očekáván stavový kód rozsahy** nastavení, přijetí (včetně kódu různé 2xx nebo přesměrovat 301/302).
 - Pokud je monitorovací protokol TCP: 
@@ -151,8 +152,6 @@ Další informace najdete v tématu [metody směrování provozu Traffic Manager
 > Důsledkem tohoto chování je, že pokud se Traffic Manager kontroly stavu nejsou správně nakonfigurované, může se zdát, od provozu, jako by směrování Traffic Manageru *je* funguje správně. Ale v takovém případě převzetí služeb při selhání koncového bodu nelze dojít, což má vliv na dostupnost aplikací. Je důležité zkontrolovat, že v profilu se zobrazí Online stavu, není stav snížený. Online stav označuje, že jsou kontroly stavu Traffic Manager funguje podle očekávání.
 
 Další informace o řešení problémů se nepovedlo kontroly stavu, najdete v článku [řešení potíží s Degradovaným stavem Azure Traffic Manageru](traffic-manager-troubleshooting-degraded.md).
-
-
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,19 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 7db40de921c0eb8826a2fee832c1a51c57796f6d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5d8a724a0b4dd6899a71187176b9d444e5fe19c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051678"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
 * Externí
 * Interní
 
-Když API Management se nasadí v režimu interní virtuální síti, jsou viditelné ve virtuální síti, které řídí přístup k pouze všechny koncové body služby (brána, portál pro vývojáře, webu Azure portal, Přímá správa a Git). Žádný z koncových bodů služby je zaregistrovaná na veřejném serveru DNS.
+Když API Management se nasadí v režimu interní virtuální síti, jsou viditelné v rámci virtuální sítě, které řídí přístup k pouze všechny koncové body služby (proxy server brány, Developer portal, Přímá správa a Git). Žádný z koncových bodů služby je zaregistrovaná na veřejném serveru DNS.
+
+> [!NOTE]
+> Vzhledem k tomu, že nejsou žádné záznamy DNS pro koncové body služby, nebudete mít přístup do těchto koncových bodů [je nakonfigurovaná služba DNS](#apim-dns-configuration) pro virtuální síť.
 
 Použití služby API Management v interní režimu, můžete dosáhnout následujících scénářů:
 
@@ -116,10 +119,12 @@ Pokud používáte vlastní server DNS ve virtuální síti, můžete také vytv
 2. Potom můžete vytvořit záznamy v serveru DNS pro přístup ke koncovým bodům, které jsou přístupné z v rámci vaší virtuální sítě.
 
 ## <a name="routing"> </a> Směrování
-+ Skupinu s vyrovnáváním zatížení privátní virtuální IP adresu z rozsahu podsítě se měla vyhradit a používat pro přístup ke koncovým bodům služby API Management z virtuální sítě.
-+ Skupinu s vyrovnáváním zatížení veřejnou IP adresu (VIP) se vyhradí také poskytnout přístup ke koncovému bodu service management jenom přes port 3443.
-+ IP adresu z rozsahu podsítě protokolu IP (DIP) se použije pro přístup k prostředkům v rámci virtuální sítě a veřejné IP adresy (VIP) se použije pro přístup k prostředkům mimo virtuální síť.
-+ S vyrovnáváním zatížení veřejných a privátních IP adres najdete v okně Přehled/Essentials na webu Azure Portal.
+
+* Skupinu s vyrovnáváním zatížení *privátní* virtuální IP adresu z rozsahu podsítě se měla vyhradit a používat pro přístup ke koncovým bodům služby API Management z v rámci virtuální sítě. To *privátní* IP adresu můžete najít na kartě s přehledem služby na webu Azure Portal. Tato adresa musí zaregistrovat servery DNS používané ve virtuální síti.
+* Skupinu s vyrovnáváním zatížení *veřejné* a zajistit tak přístup ke koncovému bodu správy služby přes port 3443 budou také rezervovat IP adresa (VIP). To *veřejné* IP adresu můžete najít na kartě s přehledem služby na webu Azure Portal. *Veřejné* IP adresa se používá pouze pro rovinu řízení přenosu do `management` koncového bodu přes port 3443 a jde zamknout dolů na [ApiManagement] [ ServiceTags] servicetag .
+* IP adresy z rozsahu podsítě protokolu IP (DIP), přiřadí se každý virtuální počítač ve službě a bude používat pro přístup k prostředkům ve virtuální síti. Veřejná IP adresa (VIP) se použije pro přístup k prostředkům mimo virtuální síť. Pokud IP omezení seznamy se používají k zabezpečení prostředků v rámci virtuální sítě, zadat celou oblast pro podsíť, ve kterém je nasazená služba API Management musí udělit nebo omezit přístup ze služby.
+* S vyrovnáváním zatížení veřejných a privátních IP adres najdete v okně Přehled na webu Azure Portal.
+* IP adresy přiřazené veřejné a privátní přístup může změnit, pokud služba je odebrán z a pak přidá zpátky do virtuální sítě. Pokud k tomu dojde, může být nutné aktualizovat registrace serveru DNS, pravidla směrování a seznamy omezení IP v rámci virtuální sítě.
 
 ## <a name="related-content"> </a>Související obsah
 Další informace naleznete v následujících článcích:

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60200608"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Pomocí okna Azure Cloud Shell
@@ -28,7 +28,7 @@ Tento dokument popisuje způsob použití okna služby Cloud Shell.
 ## <a name="swap-between-bash-and-powershell-environments"></a>Mezi prostředí Bash a PowerShell
 
 Pomocí selektoru prostředí na panelu nástrojů Cloud Shellu mezi prostředí Bash a PowerShell.  
-![Vybrat prostředí](media/using-the-shell-window/env-selector.png)
+![Vyberte prostředí](media/using-the-shell-window/env-selector.png)
 
 ## <a name="restart-cloud-shell"></a>Restartovat Cloud Shell
 Klikněte na ikonu restartování v panelu nástrojů Cloud Shellu můžete resetovat stav počítače.  
@@ -61,7 +61,7 @@ Klikněte na ikonu otevřít novou relaci na horní levé části okna. Otevře 
 ## <a name="cloud-shell-editor"></a>Cloud Shell editoru
 * Odkazovat [pomocí editoru Azure Cloud Shell](using-cloud-shell-editor.md) stránky.
 
-## <a name="web-preview"></a>Náhled webu
+## <a name="web-preview"></a>Webový náhled
 Klikněte na ikonu web ve verzi preview na horní levé části okna, vyberte "Configure", zadejte požadovaný port otevřete.  Vyberte buď "otevřený port" pouze otevřít port, nebo "otevřete a vyhledejte" otevřít port a port na nové kartě preview.  
 ![Webový náhled](media/using-the-shell-window/preview.png)  
 <br>

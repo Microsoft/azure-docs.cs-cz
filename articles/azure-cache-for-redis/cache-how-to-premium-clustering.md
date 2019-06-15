@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
 ms.openlocfilehash: 602d77f3d4e8ed10c2c964462bc2dc21240cef5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60541327"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurace Redis clusteringu pro Azure Cache úrovně Premium pro Redis
@@ -38,20 +38,20 @@ Clustering nezvyšuje počet připojení, které jsou k dispozici pro clusterov�
 
 Redis cluster se v Azure, nabízí jako primární/replika model, kde každý horizontální oddíl nemá dvojici primární/replika s replikací, kde replikaci spravuje Azure mezipaměti pro službu Redis. 
 
-## <a name="clustering"></a>Clustering
+## <a name="clustering"></a>Vytváření clusterů
 Clustering je zapnutá **nové mezipaměti Redis Azure** okno během vytváření mezipaměti. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
 Clustering je nakonfigurovaná na **Redis Cluster** okno.
 
-![Clustering][redis-cache-clustering]
+![Vytváření clusterů][redis-cache-clustering]
 
 Můžete mít až 10 horizontálními oddíly v clusteru. Klikněte na tlačítko **povoleno** a posuňte jezdec nebo zadejte číslo mezi 1 a 10 pro **počet horizontálních oddílů** a klikněte na tlačítko **OK**.
 
 Každý horizontální oddíl je pár mezipaměti primární/replika spravuje Azure a celková velikost mezipaměti se počítá vynásobením počtu horizontálních oddílů vybraná v cenové úrovni velikost mezipaměti. 
 
-![Clustering][redis-cache-clustering-selected]
+![Vytváření clusterů][redis-cache-clustering-selected]
 
 Po vytvoření mezipaměti k němu připojíte a distribuuje dat napříč horizontálními oddíly mezipaměti použít pouze jako mezipaměť neclusterovaný a Redis. Pokud je Diagnostika [povolené](cache-how-to-monitor.md#enable-cache-diagnostics), metrik se zachycuje, samostatně pro každý horizontální oddíl a může být [zobrazit](cache-how-to-monitor.md) v mezipaměti Azure Redis okno. 
 

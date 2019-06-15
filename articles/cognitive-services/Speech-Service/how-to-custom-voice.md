@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 8cf9dc6cbfc96448462aac3a64807f8beb6036ad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 016dcf32f2f846e43362f17bc9f4627113908352
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075149"
 ---
-# <a name="get-started-with-custom-voice"></a>Začínáme s vlastní hlasové
+# <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 
 Vlastní hlasové je sada online nástrojů, které vám umožňují vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky. Všechno potřebné, abyste mohli začít několik zvukové soubory a související přepisů. Pomocí odkazů níže a začněte vytvářet vlastní převod textu na řeč prostředí.
 
@@ -29,13 +29,13 @@ Následující diagram ukazuje kroky k vytvoření vlastní hlasové modelů pom
 
 ![Diagram architektury vlastní hlasové](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Přihlášení odběru a vytvořte projekt](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#set-up-your-azure-account) – vytvoření účtu Azure a vytvoření odběru hlasové služby. Toto jednotné předplatné poskytuje přístup k převodu řeči na text, převod textu na řeč, překlad řeči a vlastní hlasové portálu. Pomocí svého předplatného hlasové služby, pak vytvořte svůj první projekt vlastní hlasové.
+1.  [Přihlášení odběru a vytvořte projekt](#set-up-your-azure-account) – vytvoření účtu Azure a vytvoření odběru hlasové služby. Toto jednotné předplatné poskytuje přístup k převodu řeči na text, převod textu na řeč, překlad řeči a vlastní hlasové portálu. Pomocí svého předplatného hlasové služby, pak vytvořte svůj první projekt vlastní hlasové.
 
-2.  [Nahrání dat](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#upload-your-datasets) – nahrání dat (zvuk a textem) pomocí portálu pro vlastní hlasové nebo hlasových vlastní rozhraní API. Z portálu můžete prozkoumat a vyhodnotit výslovnost skóre a poměry signálu šumu. Další informace najdete v tématu [jak připravit data pro vlastní hlasové](how-to-custom-voice-prepare-data.md).
+2.  [Nahrání dat](how-to-custom-voice-create-voice.md#upload-your-datasets) – nahrání dat (zvuk a textem) pomocí portálu pro vlastní hlasové nebo hlasových vlastní rozhraní API. Z portálu můžete prozkoumat a vyhodnotit výslovnost skóre a poměry signálu šumu. Další informace najdete v tématu [jak připravit data pro vlastní hlasové](how-to-custom-voice-prepare-data.md).
 
-3.  [Vyzkoušejte svůj model](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#build-your-voice-font) – vaše data použít k vytvoření vlastní řeč modelu. Můžete tréninku modelů v různých jazycích. Po školení, testování modelu, a pokud jste s výsledkem spokojeni, můžete nasadit model.
+3.  [Vyzkoušejte svůj model](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) – vaše data použít k vytvoření vlastní řeč modelu. Můžete tréninku modelů v různých jazycích. Po školení, testování modelu, a pokud jste s výsledkem spokojeni, můžete nasadit model.
 
-4.  [Nasazení modelu](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#create-and-use-a-custom-endpoint) – vytvoření vlastního koncového bodu pro váš model řeč a jeho použití pro syntézu řeči v produktů, nástrojů a aplikací.
+4.  [Nasazení modelu](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) – vytvoření vlastního koncového bodu pro váš model řeč a jeho použití pro syntézu řeči v produktů, nástrojů a aplikací.
 
 ## <a name="set-up-your-azure-account"></a>Nastavení účtu Azure
 
@@ -55,7 +55,7 @@ Po vytvoření účtu Azure a hlasové služby předplatného, budete muset při
 
 Obsah, jako jsou data, modely, testy a koncové body jsou uspořádány do **projekty** vlastní hlasové portálu. Každý projekt je specifické pro zemi/jazyk a pohlaví hlasové, kterou chcete vytvořit. Můžete například vytvořit projekt u ženského hlasu pro volání centra chatovací roboty, používá angličtinu Spojené státy (en US).
 
-Chcete-li vytvořit svůj první projekt, vyberte **Text-k-Speech/vlastní hlasové** kartu a potom klikněte na **nový projekt**. Postupujte podle pokynů v Průvodci vytvořením projektu. Po vytvoření projektu, uvidíte čtyři karty: **Data**, **školení**, **testování**, a **nasazení**. Pomocí odkazů uvedených v [další kroky](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#next-steps) na další informace o použití každé kartě.
+Chcete-li vytvořit svůj první projekt, vyberte **Text-k-Speech/vlastní hlasové** kartu a potom klikněte na **nový projekt**. Postupujte podle pokynů v Průvodci vytvořením projektu. Po vytvoření projektu, uvidíte čtyři karty: **Data**, **školení**, **testování**, a **nasazení**. Pomocí odkazů uvedených v [další kroky](#next-steps) na další informace o použití každé kartě.
 
 ## <a name="next-steps"></a>Další postup
 

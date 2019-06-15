@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4b125649dee51680625ac5a92b31bdc9f6830529
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069458"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -41,7 +41,6 @@ Pokud vaše aplikace odešle požadavek DNS, který odpovídá konfigurovaný ko
 > [!NOTE]
 > To znamená, že snažte se vždy použijte název DNS pro hybridní připojení. Některé klientský software není nutné vyhledávání DNS, pokud koncový bod používá adresu IP místo.
 >
-
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Výhody hybridních připojení služby aplikace ###
 
@@ -122,7 +121,7 @@ Platí omezení na počet koncových bodů hybridní připojení, které lze pou
 
 Kromě zde probíhá požadavek na SKU plánu služby App Service je další náklady na pomocí hybridních připojení. Je poplatek za každý naslouchací proces hybridního připojení používá. Naslouchací proces je správce hybridního připojení. Pokud máte pět Hybrid Connections podporuje dvě správci hybridních připojení, který by 10 naslouchacích procesů. Další informace najdete v tématu [cenách služby Service Bus][sbpricing].
 
-## <a name="hybrid-connection-manager"></a>Správce hybridního připojení ##
+## <a name="hybrid-connection-manager"></a>Hybrid Connection Manager ##
 
 Funkce Hybrid Connections vyžaduje přenosový agent v síti, který je hostitelem vašeho koncového bodu hybridní připojení. Tento agent relay se nazývá hybridní připojení správce (HCM). Stáhnout HCM, z vaší aplikace v [webu Azure portal][portal]vyberte **sítě** > **konfiguracekoncovébodyhybridníhopřipojení**.  
 
@@ -140,7 +139,7 @@ K přidání jednoho nebo více hybridní připojení k vaší HCM:
 2. Vyberte **nakonfigurovat jiné hybridní připojení**.
 ![Snímek obrazovky konfigurace nové hybridní připojení][8]
 
-1. Přihlaste se pomocí svého účtu Azure.
+1. Získat vaše hybridní připojení k dispozici k vašemu předplatnému, přihlaste se pomocí svého účtu Azure. HCM není nadále používat nad rámec tohoto účtu Azure. 
 1. Zvolte předplatné.
 1. Vyberte hybridní připojení, který chcete HCM předat.
 ![Snímek obrazovky s hybridními připojeními][9]
@@ -226,7 +225,9 @@ Stav "Připojena" znamená, že aspoň jeden HCM má nakonfigurovanou toto hybri
 
 Primární důvod, proč klienti nemohou připojit k jejich koncový bod je, protože byl zadaný koncový bod s použitím IP adresy místo názvu DNS. Pokud aplikace nemá přístup na požadovaný koncový bod a použili jste IP adresu, přejdete k používání název DNS, který je platný v hostiteli se spuštěným HCM. Také zkontrolujte, jestli název DNS překládá správně na hostiteli, kde je spuštěný HCM. Ujistěte se, že připojení z hostitele se spuštěným HCM ke koncovému bodu hybridní připojení.  
 
-Ve službě App Service může být nástroj tcpping vyvolat pomocí konzoly nástroje Rozšířené nástroje (Kudu). Tento nástroj můžete říct, pokud máte přístup ke koncovému bodu TCP, ale jeho nezjistíte Pokud máte přístup ke koncovému bodu hybridní připojení. Když použijete nástroj v konzole proti koncovým bodem hybridního připojení, pouze potvrzujete, že používá kombinaci: port hostitele.  
+Ve službě App Service **tcpping** nástroj příkazového řádku lze vyvolat pomocí konzoly nástroje Rozšířené nástroje (Kudu). Tento nástroj můžete říct, pokud máte přístup ke koncovému bodu TCP, ale jeho nezjistíte Pokud máte přístup ke koncovému bodu hybridní připojení. Když použijete nástroj v konzole proti koncovým bodem hybridního připojení, pouze potvrzujete, že používá kombinaci: port hostitele.  
+
+Pokud máte klienta příkazového řádku pro koncový bod služby, můžete otestovat připojení z konzoly pro aplikaci. Například můžete otestovat přístup ke koncovým bodům webového serveru pomocí curl.
 
 ## <a name="biztalk-hybrid-connections"></a>Hybridní připojení BizTalk ##
 

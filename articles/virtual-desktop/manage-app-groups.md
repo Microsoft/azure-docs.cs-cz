@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: cba13012bf165a097bd1382da8ef9897b0584d28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066883"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Kurz: Správa skupiny aplikací pro Windows Virtual Desktop Preview
 
@@ -73,7 +73,7 @@ Než začnete, [stáhněte a naimportujte modul Powershellu virtuální plochy W
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak vytvořit skupiny aplikací, přidejte do ní aplikace RemoteApp a přiřadit uživatele do skupiny aplikací. Další informace o tom, jak se přihlásit k virtuálnímu klientovi Windows, i nadále připojit k virtuální ploše postupy Windows.
+V tomto kurzu jste zjistili, jak vytvořit skupiny aplikací, přidejte do ní aplikace RemoteApp a přiřadit uživatele do skupiny aplikací. Další informace o vytvoření fondu ověření hostitele, který vám umožní monitorovat služby aktualizací před jejich zavádět do produkčního prostředí, najdete v článku vytvořit fond hostitele pro ověření kurz aktualizace service.
 
-- [Připojte se ke klientovi vzdálené plochy na Windows 7 a Windows 10](connect-windows-7-and-10.md)
-- [Připojte se k Windows Virtual Desktop Preview webového klienta](connect-web.md)
+> [!div class="nextstepaction"]
+> [Vytvoření fondu hostitele k ověření kurzu aktualizace služby](./create-validation-host-pool.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
 ms.openlocfilehash: c96b924294286be57de90dae7e6534b5ed9306ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60586220"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool, vydání aktualizace 7.1.60126.1 – 29. 1. 2019
@@ -42,7 +42,7 @@ Možnost zapínat a vypínat ověření modelu najdete v souboru -> Nastavení -
 
 ![Možnost ověření modelu](./media/azure-security-threat-modeling-tool-releases-71601261/tmt_model_validation_option.png)
 
-## <a name="system-requirements"></a>Systémové požadavky
+## <a name="system-requirements"></a>Požadavky na systém
 
 - Podporované operační systémy
   - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) nebo novější
@@ -59,7 +59,7 @@ Možnost zapínat a vypínat ověření modelu najdete v souboru -> Nastavení -
 
 Uživatelé systémů Windows 10, které nejde nainstalovat .NET 4.7.1 nebo novější, jako je Windows 10 Enterprise LTSB (verze 1507), nelze otevřít nástroj po upgradu. Tyto starší verze Windows už nejsou podporované platformy pro nástroj pro modelování hrozeb a neměli instalovat nejnovější aktualizace.
 
-#### <a name="workaround"></a>Alternativní řešení
+#### <a name="workaround"></a>Alternativní řešení:
 
 Uživatelé Windows 10 Enterprise LTSB (verze 1507), které mají nainstalované nejnovější aktualizace můžete se vrátit k předchozí verzi nástroje modelování hrozeb pomocí dialogu odinstalovat v aplikace a funkce.
 

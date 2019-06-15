@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776029"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071658"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -187,6 +187,33 @@ Následující modul plug-in výstup, zrušte komentář u následující část
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problém: Se zobrazí chyba 500 a 404 v souboru protokolu hned po registraci
 Jde o známý problém, ke které dojde při prvním uložení dat s Linuxem do pracovního prostoru Log Analytics. Dat odeslaných nebo že služba prostředí to neovlivní.
+
+
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>Problém: Zobrazí omiagent pomocí 100 % využití procesoru
+
+### <a name="probable-causes"></a>Možných příčin
+Regrese v balíčku nss pem [v1.0.3 5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) způsobilo problém ovlivňuje výkon, který jsme jste zobrazuje mnohem objevují v distribucích 7.x Redhat a Centos. Další informace o tomto problému naleznete v následující dokumentaci: Chyba [1667121 regrese výkonu v libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+
+Výkon související chyby nedojde neustále, a jsou velmi obtížné reprodukovat. Pokud máte takový problém s omiagent používejte omiHighCPUDiagnostics.sh skript, který bude shromažďovat trasování zásobníku omiagent při překročení určité hranice.
+
+1. Stáhněte si skript <br/>
+`wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
+
+2. Spustit diagnostiku po dobu 24 hodin se prahová hodnota využití procesoru 30 % <br/>
+`bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
+
+3. Zásobník volání bude uložen v souboru omiagent_trace, pokud si všimnete mnoho Curl a NSS volání funkce, postupujte podle následujících kroků pro řešení.
+
+### <a name="resolution-step-by-step"></a>Rozlišení (krok za krokem)
+
+1. Upgradovat balíček nss pem [v1.0.3 5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html). <br/>
+`sudo yum upgrade nss-pem`
+
+2. Pokud není k dispozici pro upgrade nss pem (většinou dochází na Centos), poté downgradovat curl k 7.29.0-46. Pokud omylem spusťte "yumu update", curl se upgraduje na 7.29.0-51 a problému dojde znovu. <br/>
+`sudo yum downgrade curl libcurl`
+
+3. Restartujte (OMI): <br/>
+`sudo scxadmin -restart`
 
 ## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problém: Se nezobrazují žádná data na webu Azure Portal
 
@@ -399,7 +426,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Můžete dál reonboard po použití `--purge` možnost
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozšíření agenta log Analytics na portálu Azure portal je označena chybovém stavu: Chyba zřizování
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozšíření agenta log Analytics na portálu Azure portal je označena chybovém stavu: Nepovedlo se zřídit
 
 ### <a name="probable-causes"></a>Možných příčin
 * Agenta log Analytics se odebral z operačního systému

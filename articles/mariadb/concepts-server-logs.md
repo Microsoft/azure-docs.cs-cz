@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/12/2019
+ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065706"
 ---
-# <a name="server-logs-in-azure-database-for-mariadb"></a>Protokolů serveru ve službě Azure Database pro MariaDB
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Protokoly pomalých dotazů ve službě Azure Database pro MariaDB
 Ve službě Azure Database pro MariaDB protokol pomalých dotazů je dostupné pro uživatele. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží.
 
 Další informace o protokolu pomalých dotazů, najdete v dokumentaci MariaDB pro [protokol pomalých dotazů](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-server-logs"></a>Přístup k protokolům serveru
-Můžete seznam a stáhněte si – Azure Database pro MariaDB protokolů serveru pomocí webu Azure portal a rozhraní příkazového řádku Azure.
+## <a name="access-slow-query-logs"></a>Zobrazení protokolů pomalých dotazů
+Můžete seznam a stáhněte si – Azure Database pro MariaDB protokoly pomalých dotazů pomocí webu Azure portal a rozhraní příkazového řádku Azure.
 
 Na webu Azure Portal vyberte váš server Azure Database for MariaDB. V části **monitorování** záhlaví, vyberte **protokoly serveru** stránky.
 
@@ -30,7 +30,7 @@ Protokoly jsou k dispozici po dobu až sedmi dní od jejich vytvoření. Pokud c
 
 Protokoly jsou otočeny každých 24 hodin nebo 7 GB, co nastane dříve.
 
-## <a name="configure-logging"></a>Konfigurace protokolování
+## <a name="configure-slow-query-logging"></a>Nakonfigurovat protokolování pomalých dotazů
 Ve výchozím nastavení je zakázaný protokol pomalých dotazů. Ji Pokud chcete povolit, nastavte slow_query_log na ON.
 
 Další parametry, které můžete upravit patří:

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 73f0dc98d7d2c3e7aa77f6414cbd58e58599eae7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244800"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068831"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracovat s hledání výsledků ve službě Azure Search
 Tento článek obsahuje pokyny pro implementaci standardní elementy na stránce výsledků hledání, jako je například celkového počtu, načtení dokumentu, řazení a navigaci. Možnosti stránky, které přispívají data nebo informace, které výsledky hledání jsou určeny pomocí [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) požadavky odeslané do služby Azure Search. 
@@ -29,44 +29,47 @@ Několik vzorových kódů patří webového front-endové rozhraní, který naj
 >
 
 ## <a name="total-hits-and-page-counts"></a>Celkový počet přístupů a stránka počítá
+
 Zobrazuje celkový počet výsledků vrácená z dotazu a vrácení výsledků do menších bloků, je nezbytné k prakticky veškerému vyhledávací stránky.
 
 ![][1]
 
-Ve službě Azure Search, můžete použít `$count`, `$top`, a `$skip` parametry se mají vracet tyto hodnoty. Následující příklad ukazuje požadavky na ukázky pro celkový počet přístupů na indexu s názvem "onlineCatalog", vrací jako `@OData.count`:
+Ve službě Azure Search, můžete použít `$count`, `$top`, a `$skip` parametry se mají vracet tyto hodnoty. Následující příklad ukazuje požadavky na ukázky pro celkový počet volání na indexu s názvem "online katalogu", vrací jako `@odata.count`:
 
-        GET /indexes/onlineCatalog/docs?$count=true
+    GET /indexes/online-catalog/docs?$count=true
 
 Načtení dokumentů ve skupinách 15 a také zobrazit celkový počet přístupů, počínaje první stránka:
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
 
 Přestránkování výsledky vyžaduje `$top` a `$skip`, kde `$top` Určuje, kolik položek k vrácení v dávce, a `$skip` Určuje, kolik položek pro přeskočení. V následujícím příkladu, každá stránka zobrazuje vedle 15 položky indikován přírůstkové přejde v `$skip` parametru.
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=0&$count=true
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=15&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=15&$count=true
 
-        GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
+    GET /indexes/online-catalog/docs?search=*$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>Rozložení
+
 Na stránce výsledků hledání můžete chtít zobrazit obrázek miniatury, dílčí sadu polí a odkaz na stránku plné verze produktu.
 
  ![][2]
 
-Ve službě Azure Search, můžete využít `$select` a vyhledávání příkaz k implementaci tohoto prostředí.
+Ve službě Azure Search, můžete využít `$select` a [žádosti rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents) k implementaci tohoto prostředí.
 
 Chcete-li vrátí podmnožinu polí pro zobrazení vedle sebe:
 
-        GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
+    GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
 
 Image a mediální soubory nejsou přímo s možností vyhledávání a by měly být uloženy v jiné úložiště platformy, jako je například úložiště objektů Blob v Azure, abyste snížili náklady na. Index a dokumenty definujte pole, které obsahuje adresu URL externího obsahu. Pak můžete pole jako odkaz na obrázek. Adresa URL obrázku musí být v dokumentu.
 
-K načtení stránce popisu produktu **onClick** událost, použijte [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) a zajistěte tak předání klíč dokumentu, který má načíst. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*. 
+K načtení stránce popisu produktu **onClick** událost, použijte [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) a zajistěte tak předání klíč dokumentu, který má načíst. Datový typ klíče je `Edm.String`. V tomto příkladu je *246810*.
 
-        GET /indexes/onlineCatalog/docs/246810
+    GET /indexes/online-catalog/docs/246810
 
 ## <a name="sort-by-relevance-rating-or-price"></a>Seřadit podle relevance, hodnocení a ceny
+
 Pořadí řazení často výchozí relevance, ale je společná zpřístupnění alternativní řazení objednávky snadno tak, aby zákazníci můžete rychle změnit pořadí existující výsledky do jiné pořadí řazení.
 
  ![][3]
@@ -84,31 +87,33 @@ Vytvoříte metodu, která přijímá možnost vybrané řazení jako vstup a vr
  ![][5]
 
 > [!NOTE]
-> Při vyhodnocování výchozí je dostačující pro řadu scénářů, doporučujeme místo toho odvození podle relevance na vlastní bodovací profil. Vlastní bodovací profil, který poskytuje způsob, jak boost položky, které jsou užitečné informace pro vaši firmu. Zobrazit [přidat bodovací profily](index-add-scoring-profiles.md) Další informace. 
-> 
-> 
+> Při vyhodnocování výchozí je dostačující pro řadu scénářů, doporučujeme místo toho odvození podle relevance na vlastní bodovací profil. Vlastní bodovací profil, který poskytuje způsob, jak boost položky, které jsou užitečné informace pro vaši firmu. Zobrazit [přidat bodovací profily](index-add-scoring-profiles.md) Další informace.
+>
 
 ## <a name="faceted-navigation"></a>Fasetová navigace
+
 Navigace vyhledávání je běžné, na stránce výsledky, často nachází v horní části stránky nebo na straně. Fasetová navigace ve službě Azure Search poskytuje usnadní nastavení hledání na základě předdefinovaných filtrů. Zobrazit [Fasetové navigace ve službě Azure Search](search-faceted-navigation.md) podrobnosti.
 
 ## <a name="filters-at-the-page-level"></a>Filtry na úrovni stránky
-Pokud návrh vašeho řešení zahrnuje vyhrazené vyhledávací stránky pro určité typy obsahu (například online maloobchodní prodej aplikace, která má oddělení uvedených v horní části stránky), můžete vložit [výrazu filtru](search-filters.md) společně **onClick** událostí otevřít stránku v odkazující stavu. 
+
+Pokud návrh vašeho řešení zahrnuje vyhrazené vyhledávací stránky pro určité typy obsahu (například online maloobchodní prodej aplikace, která má oddělení uvedených v horní části stránky), můžete vložit [výrazu filtru](search-filters.md) společně **onClick** událostí otevřít stránku v předem filtrovaného stavu.
 
 Můžete odeslat filtr s nebo bez něj hledaný výraz. Například následující požadavek vyfiltrujete na název značky, vrací pouze dokumenty, které jí odpovídaly.
 
-        GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
+    GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
 Zobrazit [vyhledávání dokumentů (API služby Azure Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) Další informace o `$filter` výrazy.
 
 ## <a name="see-also"></a>Viz také
-* [Rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice)
-* [Operace indexu](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-* [Operace](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [Fasetová navigace ve službě Azure Search](search-faceted-navigation.md)
+
+- [Rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice)
+- [Operace indexu](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+- [Operace](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
+- [Fasetová navigace ve službě Azure Search](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG
 [2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
 [3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
 [4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png 
+[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png

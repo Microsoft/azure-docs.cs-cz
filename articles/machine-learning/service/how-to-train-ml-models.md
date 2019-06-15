@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075033"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trénování modelů Azure Machine Learning pomocí odhad
 
@@ -66,7 +66,7 @@ Parametr | Popis
 
 Konstruktor má jiný parametr s názvem `pip_packages` , který používáte pro všechny balíčky pip potřeby
 
-Teď, když jste vytvořili vaší `Estimator` objektu, odešlete úlohu školení k použití na vzdálený výpočetní voláním `submit` fungovat na vašich [Experiment](concept-azure-machine-learning-architecture.md#experiment) objekt `experiment`. 
+Teď, když jste vytvořili vaší `Estimator` objektu, odešlete úlohu školení k použití na vzdálený výpočetní voláním `submit` fungovat na vašich [Experiment](concept-azure-machine-learning-architecture.md#experiments) objekt `experiment`. 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -125,13 +125,13 @@ print(run.get_portal_url())
 Při spuštění školení spustit, pokud je zdrojový adresář místního úložiště Git, informace o úložišti jsou uloženy v historii spuštění. Například aktuální ID potvrzení pro úložiště se zaznamená jako část historie.
 
 ## <a name="examples"></a>Příklady
-Poznámkový blok, který zobrazuje základní informace o odhadu vzor naleznete v tématu:
+Poznámkový blok, který se dozvíte základní informace estimator vzor naleznete v tématu:
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-Poznámkový blok, který trénovat scikit-informace modelu pomocí odhad, naleznete v tématu:
+Poznámkový blok, trénovat scikit-informace modelu s použitím odhad, naleznete v tématu:
 * [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-Poznámkové bloky na trénování modelů pomocí konkrétní odhady architekturu obsáhlého learningu naleznete v tématu:
+Poznámkové bloky na trénování modelů s použitím konkrétní odhady architekturu obsáhlého learningu naleznete v tématu:
 * [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66140267"
 ---
 1. Vytvořte novou třídu v projektu volá `ToDoBroadcastReceiver`.
@@ -66,7 +66,7 @@ ms.locfileid: "66140267"
     Všimněte si, že tato třída je odvozena z **GcmServiceBase** a že **služby** atribut musí použít pro tuto třídu.
 
     > [!NOTE]
-    > **GcmServiceBase** implementuje třída **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** a  **OnError()** metody. Je nutné přepsat tyto metody v **PushHandlerService** třídy.
+    > **GcmServiceBase** implementuje třída **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** a  **OnError()** metody. Je nutné přepsat tyto metody v **PushHandlerService** třídy.
 
 6. Přidejte následující kód, který **PushHandlerService** třídu, která přepíše **OnRegistered** obslužné rutiny události.
 

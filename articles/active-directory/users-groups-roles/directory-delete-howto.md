@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60473062"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Odstranění adresáře v Azure Active Directory
@@ -63,7 +63,7 @@ Vypršela platnost (30 dnů) | Data dostupná pro všechny| Uživatelé mají no
 Zakázáno (30 dnů) | Data dostupná pouze správci | Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<br>Správci můžou přístup k centru pro správu služeb Microsoft 365, ale nelze přiřadit licence nebo aktualizace uživatelů
 Zruší (30 dnů po zakázáno) | Odstranění dat (automaticky odstraněn, pokud žádné služby se používá) | Uživatelé nemají přístup k Office 365 souborech nebo aplikacích<br>Správci můžou přístup k centru pro správu služeb Microsoft 365 si kupovat a spravovat další předplatná
 
-## <a name="delete-a-subscription"></a>Odstraní předplatné
+## <a name="delete-a-subscription"></a>Odstranění předplatného
 
 Předplatné můžete umístit do stavu zajištění zrušeno odstranění do tří dnů pomocí centra pro správu Microsoftu 365.
 
@@ -101,7 +101,7 @@ Co očekávat, když vyprší platnost zkušební verze předplatného Office 36
 Stav produktu | Data | Přístup k datům
 ------------- | ---- | --------------
 Aktivní (30denní zkušební verze) | Data dostupná pro všechny | Uživatelé mají normální přístup k samoobslužné registrace produktu, souborech nebo aplikacích<br>Správci mají normální přístup k centru pro správu služeb Microsoft 365 a prostředky
-Odstraněno | Data se odstranila. | Uživatelé nemají přístup k samoobslužné registrace produktu, souborech nebo aplikacích<br>Správci můžou přístup k centru pro správu služeb Microsoft 365 si kupovat a spravovat další předplatná
+Odstranění | Data se odstranila. | Uživatelé nemají přístup k samoobslužné registrace produktu, souborech nebo aplikacích<br>Správci můžou přístup k centru pro správu služeb Microsoft 365 si kupovat a spravovat další předplatná
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Jak mohu odstranit samoobslužné registrace produktu na webu Azure Portal?
 

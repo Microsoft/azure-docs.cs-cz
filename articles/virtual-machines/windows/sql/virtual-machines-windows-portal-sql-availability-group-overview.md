@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60325806"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupin dostupnosti AlwaysOn SQL serveru na virtuálních počítačích Azure #
@@ -34,7 +34,7 @@ Diagram ukazuje části kompletní skupiny dostupnosti SQL serveru ve službě A
 
 Klíčovým rozdílem pro skupinu dostupnosti v Azure Virtual Machines je, že virtuální počítače Azure vyžadují [nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md). Nástroje pro vyrovnávání zatížení obsahuje IP adresy pro naslouchací proces skupiny dostupnosti. Pokud máte více než jedné skupině dostupnosti vyžaduje každá skupina naslouchací proces. Jeden nástroj pro vyrovnávání zatížení může podporovat víc naslouchacích procesů.
 
-Kromě toho v clusteru převzetí služeb při selhání hosta virtuálního počítače Azure IaaS, doporučujeme jednu síťovou kartu na serveru (uzlu clusteru) a jednu podsíť. Sítě Azure má fyzický redundanci díky další síťové adaptéry a podsítě zbytečné v clusteru hostů virtuálních počítačů Azure IaaS. I když sestavu ověření clusteru, vydá upozornění, že uzly jsou pouze v jedné síti dostupný, toto upozornění můžete ignorovat v clusterech převzetí služeb při selhání hosta virtuálního počítače Azure IaaS. 
+Kromě toho v clusteru převzetí služeb při selhání hosta virtuálního počítače Azure IaaS, doporučujeme jednu síťovou kartu na serveru (uzlu clusteru) a jednu podsíť. Sítě Azure má fyzickou redundanci, díky níž je zbytečné používat další síťové adaptéry a podsítě na hostovaném clusteru ve virtuálním počítači Azure IaaS. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 
 |  | Verze systému Windows Server | Verze SQL serveru | SQL Server Edition | Konfigurace služby WSFC kvora | Zotavení po Havárii s více oblastí | Podpora více podsítí | Podpora pro existující AD | Zotavení po Havárii s více zón stejné oblasti | Podpora DIST AG se žádné domény služby AD | Podpora DIST AG se žádný cluster |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|

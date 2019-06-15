@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60415603"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla Azure AD
@@ -61,8 +61,8 @@ Když uživatel přejde na portál pro resetování hesla, pracovní postup je v
 
 Pokud je povolené samoobslužné resetování HESLA, musíte vybrat aspoň jednu z následujících možností pro metody ověřování. Někdy uslyšíte. Tyto možnosti uvedené jako "brány." Důrazně doporučujeme vám **zvolit dvě nebo více metod ověřování** tak, aby vaši uživatelé měli větší flexibilitu v případě, kdy ho potřebují nebudou moct získat přístup k některému. Další informace o metodách uvedené níže najdete v článku [jaké metody ověřování jsou?](concept-authentication-methods.md).
 
-* Oznámení mobilní aplikace (Preview)
-* Kód mobilní aplikace (Preview)
+* Oznámení mobilní aplikace (preview)
+* Kód mobilní aplikace (preview)
 * Email
 * Mobilní telefon
 * Telefon do kanceláře
@@ -93,7 +93,7 @@ Pokud používáte mobilní aplikace, jako je aplikace Microsoft Authenticator j
 * Když správci potřebují jednu metodu možné použít k resetování hesla, ověřovací kód je jediná dostupná možnost.
 * Když správci vyžadují dvě metody se používá k resetování hesla, uživatelé se můžou použít **buď** oznámení **nebo** ověřovací kód kromě jiných povolené metody.
 
-| Počet metod nutných pro resetování | Jeden | Dva |
+| Počet metod požadovaných k resetování | Jeden | Dva |
 | :---: | :---: | :---: |
 | Funkce mobilních aplikací, které jsou k dispozici | Kód | Kód nebo oznámení |
 

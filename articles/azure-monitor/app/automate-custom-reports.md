@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f57d80adc7c77f2d874d13a68214cd638a2ac2a0
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f22cb620bf8cf56110bec60a4dd809066393a8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957292"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067665"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastní sestavy s daty Azure Application Insights
 
@@ -92,7 +92,7 @@ availabilityResults
 
    ![Vytvořit nový snímek obrazovky – funkce](./media/automate-custom-reports/function-app-03.png)
 
-5. Vyberte  **_šablony Application Insights naplánované digest_**.
+5. Vyberte  **_šablony Application Insights naplánované digest_** .
 
      > [!NOTE]
      > Ve výchozím nastavení se aplikace function App vytvoří s modulem runtime verze 2.x. Je nutné [cílové verze modulu runtime Azure Functions](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) 1.x, jak pomocí Application Insights naplánováno ověřování algoritmem digest šablony.
@@ -120,7 +120,7 @@ availabilityResults
      > [!NOTE]
      > Pokud nemáte účet SendGrid, že můžete si ho vytvořit. Dokumentace ke službě Sendgridu pro službu Azure Functions je [tady](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Pokud je to jenom má minimální vysvětlení toho, jak nastavit SendGrid a vygenerovat klíč rozhraní API, které je k dispozici na konci tohoto článku. 
 
-9. Vyberte **integrace** a ve skupinovém rámečku výstupy **SendGrid ($return)**.
+9. Vyberte **integrace** a ve skupinovém rámečku výstupy **SendGrid ($return)** .
 
      ![Snímek obrazovky výstupu](./media/automate-custom-reports/function-app-09.png)
 

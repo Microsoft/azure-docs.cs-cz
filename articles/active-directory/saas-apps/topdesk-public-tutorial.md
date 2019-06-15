@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a2a0ffd670a03aeaaa262b83127a385be9efc978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65888576"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Kurz: Integrace Azure Active Directory s TOPdesk – veřejné
 
@@ -53,7 +53,7 @@ Konfigurace integrace TOPdesk - Public do služby Azure AD, potřebujete přidat
 
 **Chcete-li přidat TOPdesk - Public z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TOPdesk – veřejné, prov
     
     a. Chcete-li nahrát soubor metadat stažené z webu Azure portal v části **federačních metadat**, klikněte na tlačítko **Procházet**.
 
-    b. K nahrání souboru certifikátu v části **certifikátu (RSA)**, klikněte na tlačítko **Procházet**.
+    b. K nahrání souboru certifikátu v části **certifikátu (RSA)** , klikněte na tlačítko **Procházet**.
 
     c. Nahrát soubor loga jste získali v části z na tým podpory TOPdesk **ikona loga**, klikněte na tlačítko **Procházet**.
 
@@ -276,7 +276,7 @@ Chcete-li povolit Azure AD uživatelům přihlašovat se do TOPdesk - veřejný,
 > [!NOTE]
 > Můžete použít jakékoli jiné TOPdesk – zadáním hodnoty nástrojů pro vytváření veřejné uživatelského účtu nebo rozhraní API poskytovaných TOPdesk - Public zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

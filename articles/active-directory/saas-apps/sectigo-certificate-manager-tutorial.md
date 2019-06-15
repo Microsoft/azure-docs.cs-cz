@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 15-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573e06f0dd57b92f7621ecf77039159a64249f18
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2d7c7cf4972b1ee0a5add3b4611dc4c8655da875
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Kurz: Integrace s Azure Active Directory pomocí Správce certifikátů Sectigo
 
@@ -130,7 +130,7 @@ V této části nakonfigurujete služby Azure AD jednotné přihlašování pomo
 
       ![Správce certifikátů Sectigo domény a adresy URL jednotného přihlašování – informace](common/both-signonurl.png)
 
-1. V **nastavte si jednotné přihlašování pomocí SAML** podokno v **podpisový certifikát SAML** vyberte **Stáhnout** vedle **certifikát (Base64)**. Možnost stažení na základě vašich požadavků. Uložte si certifikát ve vašem počítači.
+1. V **nastavte si jednotné přihlašování pomocí SAML** podokno v **podpisový certifikát SAML** vyberte **Stáhnout** vedle **certifikát (Base64)** . Možnost stažení na základě vašich požadavků. Uložte si certifikát ve vašem počítači.
 
     ![Možnost stažení certifikát (Base64)](common/certificatebase64.png)
 
@@ -162,7 +162,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< rozšíření\>**. Například **brittasimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< rozšíření\>** . Například **brittasimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište hodnotu, která se zobrazí **heslo** pole.
 
@@ -200,7 +200,7 @@ V této části udělíte Britta Simon přístup k Sectigo správce certifikát�
 
 V této části vytvoříte uživatele s názvem Britta Simon ve Správci certifikátů Sectigo. Práce s [tým podpory správce certifikátů Sectigo](https://sectigo.com/support) přidejte uživatele na platformě Sectigo správce certifikátů. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

@@ -7,25 +7,25 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 57efbfe12df8072d619cf71f4b08da2e2e5be3ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942943"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068941"
 ---
 # <a name="handling-review-feedback"></a>Zpracování zpětné vazby
 
 Tento článek vysvětluje, jak získat přístup k prostředí Azure DevOps používají tým Microsoft Azure Marketplace kontroly.  Pokud se nenajdou důležité problémy ve vaší nabídce aplikace Azure během **revize Microsoft** kroku, se můžete přihlásit do systému a zobrazit podrobné informace o těchto problémech (přečtěte si zpětnou vazbu).  Po opravě těchto problémů musí znovu nabídkou, chcete-li pokračovat v publikování na webu Azure Marketplace.  Následující diagram znázorňuje, jak tento proces zpětná vazba se vztahuje k procesu publikování.
 
-![Publikování kroky VSTS odeslání zpětné vazby](./media/pub-flow-vsts-access.png)
+![Publikování kroky odeslání zpětné vazby Azure DevOps](./media/pub-flow-vsts-access.png)
 
 Kontrola problémů obvykle jsou odkazovány jako žádosti o přijetí změn (žádost o přijetí změn).  Každá žádost o přijetí změn je propojený s online [Azure DevOps](https://azure.microsoft.com/services/devops/) (dřív měla název Visual Studio Team Services (VSTS)) položky, který obsahuje podrobnosti o problému.  Následující obrázek ukazuje příklad odkazu na revizi žádosti o přijetí změn.  Pro složitých situacích revize a podporu týmy mohou také vám e-mail. 
 
 ![Stav karty zobrazení zpětné vazby z revize](./media/status-tab-ms-review.png)
 
 
-## <a name="vsts-access"></a>Přístup k VSTS
+## <a name="azure-devops-access"></a>Přístup ke službě Azure DevOps
 
 Chcete-li zobrazit žádost o přijetí změn položky odkazované v zpětné vazby z revize, vydavatel musí být nejprve udělena příslušná oprávnění.  Jinak se zobrazí nové vydavatelé `401 - Not Authorized` stránky odpovědi při pokusu o zobrazení žádosti o přijetí změn.  Chcete-li požádat o přístup k tomuto úložišti Azure DevOps, postupujte následovně:
 
@@ -40,7 +40,7 @@ Chcete-li zobrazit žádost o přijetí změn položky odkazované v zpětné va
     ![Kategorie lístku podpory](./media/support-incident1.png)
 
 4. V **krok 1 z 2** stránky, zadejte svoje kontaktní informace a vyberte **pokračovat**.
-5. V **krok 2 ze 2** stránky, zadejte název incidentu (například `Request VSTS access`) a zadejte informace shromážděné v prvním kroku (viz výše).  Přečtěte si a přijměte smlouvu a pak vyberte **odeslat**.
+5. V **krok 2 ze 2** stránky, zadejte název incidentu (například `Request Azure DevOps access`) a zadejte informace shromážděné v prvním kroku (viz výše).  Přečtěte si a přijměte smlouvu a pak vyberte **odeslat**.
 
 Pokud vytvářet incidenty byl úspěšný, zobrazí se stránka s potvrzením.  Uložte informace o potvrzení na této stránce pro vaši informaci.  Tým podpory společnosti Microsoft by měl odpovídat na vaše žádost o přístup do několika pracovních dnů.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 4788b65201792292d79cd8c4d1b22f22c5e67eb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9081e2962a225f15b64545b1db7aa18538a20b22
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nuclino"></a>Kurz: Integrace Azure Active Directory s Nuclino
 
@@ -54,7 +54,7 @@ Konfigurace integrace Nuclino do služby Azure AD, budete muset přidat Nuclino 
 
 **Chcete-li přidat Nuclino z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -185,7 +185,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Nuclino, proveďte následu
 
     ![Konfigurace Nuclino](./media/nuclino-tutorial/configure4.png)
 
-    a. Vyberte **založené na SAML jednotného přihlašování (SSO)**.
+    a. Vyberte **založené na SAML jednotného přihlašování (SSO)** .
 
     b. Kopírování **ACS URL (budete muset zkopírovat a vložit do svého poskytovatele jednotného přihlašování)** hodnotu a vložte ho do **adresy URL odpovědi** textové pole z **základní konfiguraci SAML** oddíl ve službě Azure portál.
 
@@ -257,7 +257,7 @@ V této části se vytvoří uživateli Britta Simon v Nuclino. Nuclino podporuj
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Nuclino](mailto:contact@nuclino.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

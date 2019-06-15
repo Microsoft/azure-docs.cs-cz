@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 73a19fa97a898e2c51912a18f46751e855ee0303
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c2c153d8e67ff952add177d8a98b7561c3165774
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60273329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100386"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Kurz: Integrace s Azure Active Directory s IMPAC riziko správce
 
@@ -53,7 +53,7 @@ Konfigurace integrace nástroje IMPAC riziko Manager do služby Azure AD, musít
 
 **Přidání správce IMPAC rizika z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -113,7 +113,7 @@ Konfigurace služby Azure AD jednotné přihlašování s IMPAC riziko Manager, 
     | ---------------|--------------- |
     | Pro produkční prostředí |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Při přípravě a školení  |`https://staging.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
-    | Pro vývojové prostředí  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | Pro vývoj  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Pro kontrolu kvality |`https://QA.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Pro Test |`https://test.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | | |
@@ -128,7 +128,7 @@ Konfigurace služby Azure AD jednotné přihlašování s IMPAC riziko Manager, 
     | ---------------|--------------- |
     | Pro produkční prostředí |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Při přípravě a školení  |`https://staging.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
-    | Pro vývojové prostředí  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | Pro vývoj  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Pro kontrolu kvality |`https://QA.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Pro Test |`https://test.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | | |

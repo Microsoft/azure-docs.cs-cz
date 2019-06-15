@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: ef2507a15579ea3d145bfe37df281e2c044d181c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7554f0739626520153196472a790ab672a932331
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722339"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066207"
 ---
 # <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Ladění aplikací Apache Spark místně nebo vzdáleně v clusteru služby HDInsight pomocí sady Azure Toolkit pro IntelliJ přes SSH
 
@@ -62,7 +62,7 @@ Tento článek obsahuje podrobné pokyny o tom, jak pomocí nástrojů HDInsight
 
    b. V **SDK projektu** rozevíracího seznamu vyberte **Java 1.8** pro **Spark 2.x** clusteru nebo vyberte **Java 1.7** pro **Spark 1.x**  clusteru.
 
-   c. V **verzi Sparku** rozevíracího seznamu, v Průvodci vytvořením projektu Scala Spark SDK a sady SDK Scala integruje správnou verzi. Pokud je starší než 2.0 verze clusteru spark, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x.** V tomto příkladu se používá **Spark 2.0.2 (Scala 2.11.8)**.
+   c. V **verzi Sparku** rozevíracího seznamu, v Průvodci vytvořením projektu Scala Spark SDK a sady SDK Scala integruje správnou verzi. Pokud je starší než 2.0 verze clusteru spark, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x.** V tomto příkladu se používá **Spark 2.0.2 (Scala 2.11.8)** .
 
    d. Vyberte **Finish** (Dokončit).
 
@@ -75,7 +75,7 @@ Chcete-li vyřešit tuto chybu [stažení spustitelného souboru](https://public
 
 ### <a name="scenario-2-perform-local-run"></a>Scénář 2: Proveďte místní spuštění
 1. Otevřít **SparkCore_wasbloTest** skriptu, klikněte pravým tlačítkem na editor skriptů a potom vyberte možnost **spuštění "XXX [úloha Sparku]"** provádět místní spuštění.
-1. Jednou místní spuštění dokončena, zobrazí se výstupní soubor uložte do aktuální project Exploreru **data** > **__výchozí__**.
+1. Jednou místní spuštění dokončena, zobrazí se výstupní soubor uložte do aktuální project Exploreru **data** >  **__výchozí__** .
 
     ![Místní spuštění výsledku](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
 1. Naše nástroje nastavili výchozí místní konfigurace spuštění automaticky při provádění místní spuštění a místní ladění. Otevřete konfiguraci **[Spark v HDInsight] XXX** v pravém horním rohu se zobrazí **[Spark v HDInsight] XXX** již vytvořené v rámci **Apache Spark v HDInsight**. Přepnout na **místně spustit** kartu.
@@ -84,7 +84,7 @@ Chcete-li vyřešit tuto chybu [stažení spustitelného souboru](https://public
     - [Proměnné prostředí](#prerequisite-for-windows): Pokud jste již nastavili proměnné prostředí systému **HADOOP_HOME** k **C:\WinUtils**, může automaticky zjistit, který není potřeba ručně přidat.
     - [Umístění WinUtils.exe](#prerequisite-for-windows): Pokud jste nenastavili proměnné prostředí systému, zjistíte kliknutím na jeho tlačítko umístění.
     - Zvolte pouze jednu ze dvou možností a nejsou potřebné v systémech MacOS a Linux.
-1. Můžete také nastavit konfiguraci ručně, než se pustíte do místní spuštění a místní ladění. Na předchozím snímku obrazovky, vyberte symbol plus (**+**). Vyberte **Apache Spark v HDInsight** možnost. Zadejte informace pro **název**, **hlavní název třídy** uložit, klikněte na tlačítko pro místní spuštění.
+1. Můžete také nastavit konfiguraci ručně, než se pustíte do místní spuštění a místní ladění. Na předchozím snímku obrazovky, vyberte symbol plus ( **+** ). Vyberte **Apache Spark v HDInsight** možnost. Zadejte informace pro **název**, **hlavní název třídy** uložit, klikněte na tlačítko pro místní spuštění.
 
 ### <a name="scenario-3-perform-local-debugging"></a>Scénář 3: Provést místní ladění
 1. Otevřít **SparkCore_wasbloTest** skriptu, nastavit zarážky.
@@ -99,10 +99,10 @@ Chcete-li vyřešit tuto chybu [stažení spustitelného souboru](https://public
 
    ![Upravit konfigurace](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
 
-1. V **konfigurace spuštění/ladění** dialogového okna, vyberte znaménko plus (**+**). Vyberte **Apache Spark v HDInsight** možnost.
+1. V **konfigurace spuštění/ladění** dialogového okna, vyberte znaménko plus ( **+** ). Vyberte **Apache Spark v HDInsight** možnost.
 
    ![Přidat novou konfiguraci](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
-1. Přepnout na **vzdáleně spouštět v clusteru** kartu. Zadejte informace pro **název**, **clusteru Spark**, a **hlavní název třídy**. Pak klikněte na tlačítko **pokročilou konfiguraci (vzdálené ladění)**. Naše nástroje podpory ladění s **prováděcí moduly**. **NumExectors**, výchozí hodnota je 5. Lepší není nastavíte vyšší než 3.
+1. Přepnout na **vzdáleně spouštět v clusteru** kartu. Zadejte informace pro **název**, **clusteru Spark**, a **hlavní název třídy**. Pak klikněte na tlačítko **pokročilou konfiguraci (vzdálené ladění)** . Naše nástroje podpory ladění s **prováděcí moduly**. **NumExectors**, výchozí hodnota je 5. Lepší není nastavíte vyšší než 3.
 
    ![Ladění konfigurace spuštění](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
@@ -174,7 +174,6 @@ Chcete-li vyřešit tuto chybu [stažení spustitelného souboru](https://public
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Vytváření aplikací Apache Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin.md)
 * [Ladění aplikací Apache Spark vzdáleně přes síť VPN pomocí sady Azure Toolkit pro IntelliJ](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Vytváření aplikací Apache Spark pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse](../hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)

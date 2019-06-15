@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
 ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60518469"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Migrace mezi oblastmi Azure Data Lake Storage Gen1
@@ -30,7 +30,7 @@ Jak Azure Data Lake Storage Gen1 přestane být k dispozici v nové oblasti, mů
 * **Azure Data Factory**. Další informace najdete v tématu [Úvod do Azure Data Factory](../data-factory/introduction.md).
 
 
-## <a name="migration-considerations"></a>Aspekty migrace
+## <a name="migration-considerations"></a>Požadavky na migraci
 
 Nejprve určete, která je nejvhodnější pro vaše aplikace, která zapíše čte a zpracovává data v Data Lake Storage Gen1 strategie migrace. Při výběru strategie, zvažte požadavky na dostupnost vaší aplikace a výpadků, ke které dojde během migrace. Například může být nejjednodušším přístupem k použití modelu migrace "lift and shift" cloud. V takovém případě aplikaci pozastavíte ve vaší existující oblasti při všechna data zkopírována do nové oblasti. Po dokončení kopírování obnovení aplikace v nové oblasti a pak odstraňte starý účet Data Lake Storage Gen1. Prostoje během migrace je povinný.
 

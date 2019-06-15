@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60565714"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
@@ -28,7 +28,7 @@ Tento článek vysvětluje výpočetní prostředí, které můžete použít k 
 
 Následující tabulka obsahuje seznam výpočetní prostředí, které jsou podporovány v objektu pro vytváření dat a aktivity, které v nich dají spustit. 
 
-| Výpočetní prostředí                      | Aktivity                               |
+| Výpočetní prostředí                      | Činnosti                               |
 | ---------------------------------------- | ---------------------------------------- |
 | [Cluster Azure HDInsight na vyžádání](#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [streamování Hadoop](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
@@ -215,7 +215,7 @@ Pokud chcete vytvořit D4 velikost hlavní uzly a uzly pracovního procesu, zade
 
 Pokud jste nastavili nesprávnou hodnotu pro tyto vlastnosti, může se zobrazit následující zpráva:
 
-  Nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: "Chyba". Zpráva: "PreClusterCreationValidationFailure". 
+  Nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: "Chyba". zpráva: "PreClusterCreationValidationFailure". 
   
 Pokud se zobrazí tato zpráva, ujistěte se, že používáte rutiny a názvy rozhraní API z tabulky v [velikostí virtuálních počítačů](../../virtual-machines/linux/sizes.md).  
 
@@ -261,7 +261,7 @@ Můžete vytvořit služby HDInsight propojený, můžete registrovat vlastní c
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Nastavit vlastnost typ **HDInsight**. | Ano      |
 | clusterUri        | Identifikátor URI clusteru HDInsight.        | Ano      |
-| uživatelské jméno          | Název uživatelského účtu pro připojení do existujícího clusteru HDInsight. | Ano      |
+| username jméno          | Název uživatelského účtu pro připojení do existujícího clusteru HDInsight. | Ano      |
 | password          | Heslo pro uživatelský účet.   | Ano      |
 | linkedServiceName | Název na propojenou službu storage, který odkazuje na objektu Blob úložiště používá HDInsight cluster. <p>V současné době není možné zadat že data Lake Store propojené služby pro tuto vlastnost. Pokud se HDInsight cluster má přístup k Data Lake Store, může přístup k datům v Data Lake Store pomocí skriptů Hive a Pig. </p> | Ano      |
 
@@ -392,7 +392,7 @@ Pro ověření pověření uživatele pro Data Lake Analytics zadejte následuj�
 
 | Vlastnost          | Popis                              | Požaduje se |
 | :---------------- | :--------------------------------------- | :------- |
-| Autorizace | V editoru služby Data Factory, vyberte **Authorize** tlačítko. Zadejte pověření, které přiřadí tuto vlastnost adresa URL automaticky generované autorizace. | Ano      |
+| authorization | V editoru služby Data Factory, vyberte **Authorize** tlačítko. Zadejte pověření, které přiřadí tuto vlastnost adresa URL automaticky generované autorizace. | Ano      |
 | ID relace     | ID relace OAuth z autorizační relace OAuth. Každé ID relace je jedinečný a může být použit pouze jednou. Toto nastavení není automaticky vygenerován při použití editoru služby Data Factory. | Ano      |
 
 **Příklad: Ověření přihlašovacích údajů uživatele**

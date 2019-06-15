@@ -17,10 +17,10 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60441319"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Zobrazit historii aktivit a auditu pro role prostředků Azure v PIM
@@ -43,7 +43,7 @@ Pokud chcete zjistit, jaké akce v různých prostředků provedli konkrétního
 
     Zobrazí grafické zobrazení akcí uživatele na prostředky Azure podle data. Také ukazuje poslední aktivace rolí za stejné období čas.
 
-    ![Podrobnosti uživatele](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![Podrobnosti o uživateli](media/azure-pim-resource-rbac/rbac-user-details.png)
 
 1. Kliknutím na konkrétní roli aktivace zobrazit podrobnosti a odpovídající aktivity prostředků Azure, ke které došlo během tento uživatel byl aktivní.
 
@@ -85,7 +85,7 @@ Audit prostředků umožňuje zobrazit všechny aktivity role pro prostředek.
 
     ![Filtr auditu prostředků](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
-1. Pro **typ auditu**vyberte **aktivovat (přiřazeno + aktivováno)**.
+1. Pro **typ auditu**vyberte **aktivovat (přiřazeno + aktivováno)** .
 
     ![Podrobnosti o aktivitě](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 

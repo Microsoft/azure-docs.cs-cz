@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61065167"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
@@ -43,7 +43,7 @@ Pokud chcete získat všechny nejnovější funkce a možnosti nejhladší při 
 2. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 3. V **připojit k serveru** dialogové okno, vložte název serveru, pak v **ověřování**, zvolte jednu z následujících typů ověřování:   
     > [!NOTE]
-    > Typ ověřování, **univerzální podporující vícefaktorové ověřování služby Active Directory –**, doporučuje se.
+    > Typ ověřování, **univerzální podporující vícefaktorové ověřování služby Active Directory –** , doporučuje se.
 
     > [!NOTE]
     > Pokud se přihlásíte Account Microsoft Live ID, Yahoo, Gmail, atd., ponechejte pole pro heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Připojit.

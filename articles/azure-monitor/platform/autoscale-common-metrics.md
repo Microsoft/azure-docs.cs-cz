@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129735"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor běžné metriky automatického škálování
@@ -53,22 +53,22 @@ Můžete vytvořit výstrahu pro následující metriky:
 
 | Název metriky | Jednotka |
 | --- | --- |
-| \Processor(_Total)\% Processor Time |Percent |
-| \Processor(_Total)\% privilegovaného času |Percent |
-| \Processor(_Total)\% čas uživatele |Percent |
+| \Processor(_Total)\% Processor Time |Procento |
+| \Processor(_Total)\% privilegovaného času |Procento |
+| \Processor(_Total)\% čas uživatele |Procento |
 | Frekvence \Processor \Processor informace o (využití _celkem) |Count |
 | \System\Processes |Count |
 | Počet \Thread \Process (využití _celkem) |Count |
 | Počet \Handle \Process (využití _celkem) |Count |
-| \Memory\% využívání svěřených bajtů |Percent |
+| \Memory\% využívání svěřených bajtů |Procento |
 | \Memory\Available Bytes |B |
 | \Memory\Committed bajtů |B |
 | \Memory\Commit limit |B |
 | \Memory\Pool stránkovaného fondu |B |
 | \Memory\Pool nestránkovaného |B |
-| \PhysicalDisk(_Total)\% čas na disku |Percent |
-| \PhysicalDisk(_Total)\% čas čtení disku |Percent |
-| \PhysicalDisk(_Total)\% čas zápisu na disku |Percent |
+| \PhysicalDisk(_Total)\% čas na disku |Procento |
+| \PhysicalDisk(_Total)\% čas čtení disku |Procento |
+| \PhysicalDisk(_Total)\% čas zápisu na disku |Procento |
 | Přenosy \Disk \PhysicalDisk (využití _celkem) za sekundu |CountPerSecond |
 | \PhysicalDisk (využití _celkem) \Disk přečtené strany/s |CountPerSecond |
 | \PhysicalDisk (využití _celkem) \Disk zapsané strany/s |CountPerSecond |
@@ -76,10 +76,10 @@ Můžete vytvořit výstrahu pro následující metriky:
 | \Disk \PhysicalDisk (využití _celkem) přečtené bajty/s |BytesPerSecond |
 | \PhysicalDisk (využití _celkem) \Disk zapsané bajty/s |BytesPerSecond |
 | \Avg \PhysicalDisk (využití _celkem). Délka fronty disku |Count |
-| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku pro čtení |Count |
-| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku zápisu |Count |
-| \LogicalDisk(_Total)\% volného místa |Percent |
-| \Free megabajty \LogicalDisk (využití _celkem) |Count |
+| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku pro čtení |Počet |
+| \Avg \PhysicalDisk (využití _celkem). Délka fronty disku zápisu |Počet |
+| \LogicalDisk(_Total)\% volného místa |Procento |
+| \Free megabajty \LogicalDisk (využití _celkem) |Počet |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Metriky hostovaného operačního systému virtuálních počítačů s Linuxem
 Při vytváření virtuálního počítače v Azure diagnostics je ve výchozím nastavení povoleno pomocí diagnostického rozšíření.
@@ -95,25 +95,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Název metriky | Jednotka |
 | --- | --- |
 | \Memory\AvailableMemory |B |
-| \Memory\PercentAvailableMemory |Percent |
+| \Memory\PercentAvailableMemory |Procento |
 | \Memory\UsedMemory |B |
-| \Memory\PercentUsedMemory |Percent |
-| \Memory\PercentUsedByCache |Percent |
+| \Memory\PercentUsedMemory |Procento |
+| \Memory\PercentUsedByCache |Procento |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
 | \Memory\AvailableSwap |B |
-| \Memory\PercentAvailableSwap |Percent |
+| \Memory\PercentAvailableSwap |Procento |
 | \Memory\UsedSwap |B |
-| \Memory\PercentUsedSwap |Percent |
-| \Processor\PercentIdleTime |Percent |
-| \Processor\PercentUserTime |Percent |
-| \Processor\PercentNiceTime |Percent |
-| \Processor\PercentPrivilegedTime |Percent |
-| \Processor\PercentInterruptTime |Percent |
-| \Processor\PercentDPCTime |Percent |
-| \Processor\PercentProcessorTime |Percent |
-| \Processor\PercentIOWaitTime |Percent |
+| \Memory\PercentUsedSwap |Procento |
+| \Processor\PercentIdleTime |Procento |
+| \Processor\PercentUserTime |Procento |
+| \Processor\PercentNiceTime |Procento |
+| \Processor\PercentPrivilegedTime |Procento |
+| \Processor\PercentInterruptTime |Procento |
+| \Processor\PercentDPCTime |Procento |
+| \Processor\PercentProcessorTime |Procento |
+| \Processor\PercentIOWaitTime |Procento |
 | \PhysicalDisk\BytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
 | \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
@@ -126,12 +126,12 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |B |
 | \NetworkInterface\BytesReceived |B |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Počet |
+| \NetworkInterface\PacketsReceived |Počet |
 | \NetworkInterface\BytesTotal |B |
 | \NetworkInterface\TotalRxErrors |Count |
 | \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalCollisions |Počet |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Běžně používané metriky webového (serverová farma)
 Můžete také provést automatické škálování podle běžné metriky webového serveru, jako je délka fronty Http. Je to název metriky **HttpQueueLength**.  V následující části jsou uvedeny metrik dostupné serveru farmy (webové aplikace).
@@ -147,10 +147,10 @@ Můžete výstrahy na nebo škálovat podle těchto metrikách.
 
 | Název metriky | Jednotka |
 | --- | --- |
-| CpuPercentage |Percent |
-| MemoryPercentage |Percent |
+| CpuPercentage |Procento |
+| MemoryPercentage |Procento |
 | DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| HttpQueueLength |Počet |
 | BytesReceived |B |
 | BytesSent |B |
 
@@ -190,3 +190,4 @@ Pro škálovací sady virtuálních počítačů můžete aktualizovat nastaven�
 > Služba Service Bus neexistuje koncept skupiny prostředků, ale vytvoří výchozí skupiny prostředků v jedné oblasti Azure Resource Manageru. Skupina prostředků je obvykle ve formátu "Default - ServiceBus-[Oblast]". Například: "Výchozí-ServiceBus-EastUS", 'Výchozí-ServiceBus-WestUS', 'výchozí-ServiceBus-AustraliaEast"atd.
 >
 >
+

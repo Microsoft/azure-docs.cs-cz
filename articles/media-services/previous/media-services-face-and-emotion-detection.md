@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61217202"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Zjištění tváří a Emocí pomocí Azure Media Analytics
@@ -77,7 +77,7 @@ Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nasta
 #### <a name="attribute-descriptions"></a>Popis atributu
 | Název atributu | Popis |
 | --- | --- |
-| Mode |Rychle – se rychlé zpracování rychlost, ale méně přesné (výchozí).|
+| Režim |Rychle – se rychlé zpracování rychlost, ale méně přesné (výchozí).|
 
 ### <a name="json-output"></a>Výstup ve formátu JSON
 Následující příklad výstupu JSON byl zkrácen.
@@ -152,7 +152,7 @@ Při vytváření úlohy s **Azure Media Face Detectoru**, je nutné zadat nasta
 #### <a name="attribute-descriptions"></a>Popis atributu
 | Název atributu | Popis |
 | --- | --- |
-| Mode |Tváří: Pouze rozpoznávání tváře.<br/>PerFaceEmotion: Vrátí pro rozpoznávání emocí nezávisle pro každý rozpoznávání tváře.<br/>AggregateEmotion: Návratové hodnoty průměrné pro rozpoznávání emocí pro všechny tváří v rámci. |
+| Režim |Tváří: Pouze rozpoznávání tváře.<br/>PerFaceEmotion: Vrátí pro rozpoznávání emocí nezávisle pro každý rozpoznávání tváře.<br/>AggregateEmotion: Návratové hodnoty průměrné pro rozpoznávání emocí pro všechny tváří v rámci. |
 | AggregateEmotionWindowMs |Použijte, pokud vybraný režim AggregateEmotion. Určuje délku videa použit k vytvoření každé agregace výsledků v milisekundách. |
 | AggregateEmotionIntervalMs |Použijte, pokud vybraný režim AggregateEmotion. Určuje, jak často k vytvoření agregované výsledky. |
 

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, službě Azure Kubernetes, kontejnery, Helm, služby sítě, směrování sítě služby, kubectl, k8s '
-ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 53571fdd7c5a93fef4df0832253542a5a6dfbec5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058550"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -36,24 +36,26 @@ V současné době Azure Dev prostory funguje nejlépe při ladění jednu insta
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Chyba "nepovedlo se vytvořit Azure Dev prostory kontroleru.
 
+### <a name="reason"></a>Reason
 Tato chyba může zobrazit, když dojde k chybě při vytváření kontroleru. Pokud se jedná o přechodnou chybu, odstranit a znovu vytvořte kontroler ho opravit.
 
-### <a name="try"></a>Zkuste:
+### <a name="try"></a>Vyzkoušení
 
-Pokud chcete odstranit kontroleru, použijte rozhraní příkazového řádku Azure Dev mezery. Není možné provést v sadě Visual Studio nebo službě Cloud Shell. Pokud chcete nainstalovat rozhraní příkazového řádku AZDS, nejprve nainstalovat rozhraní příkazového řádku Azure a pak spusťte tento příkaz:
+Odstraňte kontroleru:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+```
+
+Odstranit kontroler musíte použít rozhraní příkazového řádku Azure Dev mezery. Není možné odstranit kontroleru ze sady Visual Studio. Také nelze nainstalovat rozhraní příkazového řádku Azure Dev mezery ve službě Azure Cloud Shell, řadiči nelze odstranit z Azure Cloud Shell.
+
+Pokud nemáte Azure Dev prostory nainstalované rozhraní příkazového řádku, je nejprve nainstalujte ho pomocí následujícího příkazu potom odstranit řadiče:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-A pak spuštěním následujícího příkazu odstraňte kontroleru:
-
-```cmd
-azds remove -g <resource group name> -n <cluster name>
-```
-
-Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo rozhraní příkazového řádku. Postupujte podle pokynů v kurzech, jako kdyby spouští poprvé.
-
+Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo rozhraní příkazového řádku. Zobrazit [týmu vývoje](quickstart-team-development.md) nebo [vývoj s .NET Core](quickstart-netcore-visualstudio.md) rychlých startů pro příklady.
 
 ## <a name="error-service-cannot-be-started"></a>Chyba "službu nelze spustit."
 
@@ -408,4 +410,7 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 ## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Povolení prostorů vývoj služeb při selhání při fondy uzlů Windows se přidají do clusteru AKS
 
 ### <a name="reason"></a>Reason
-V současné době Azure Dev prostory je určena pro spuštění na systému Linux podů a pouze uzly. V tuto chvíli nelze povolit Azure Dev mezery na cluster AKS pomocí fond uzlů Windows.
+V současné době Azure Dev prostory je určena pro spuštění na systému Linux podů a pouze uzly. Pokud máte cluster AKS pomocí fond uzlů Windows, musíte zajistit, že Azure Dev prostory podů naplánováno jenom na uzly s Linuxem. Pokud Azure Dev prostory pod je naplánováno ke spuštění na uzlech Windows, nebude spuštěna tohoto podu a povolení prostorů vývoj se nezdaří.
+
+### <a name="try"></a>Vyzkoušení
+[Přidání změny chuti](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations) ke svému clusteru AKS zajistit Linux podů nejsou naplánovány ke spuštění na uzlech Windows.

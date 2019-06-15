@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609837"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
@@ -56,7 +56,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
     ![nový virtuální počítač z Galerie](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Klikněte na tlačítko **SQL Server 2014 RTM Standard – Windows Server 2012 R2** a poté klikněte na šipku pokračujte.
    
-    ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Pokud potřebujete data služby Reporting Services řízené funkce předplatných, zvolte **SQL serveru 2014 RTM Enterprise, Windows Server 2012 R2**. Další informace o edicích systému SQL Server a podporovaných funkcích najdete v tématu [funkce, které jsou podporovány edice systému SQL Server 2012](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Na **konfigurace virtuálního počítače** stránky, upravte následující pole:
@@ -74,14 +74,14 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
    * **Název DNS služby v cloudu**: Toto je veřejný název DNS cloudové služby, která souvisí s virtuálním Počítačem. Výchozí název je název, který jste zadali pro název virtuálního počítače. Pokud v dalších krocích tohoto tématu vytvořit důvěryhodný certifikát SSL a potom název DNS se používá pro hodnotu vlastnosti "**vydat**" certifikátu.
    * **Oblast nebo skupina vztahů/virtuální sítě**: Vyberte oblast nejbližší vašim koncovým uživatelům.
    * **Účet úložiště**: Použijte účet automaticky generované úložiště.
-   * **Skupina dostupnosti**: Žádné.
+   * **Skupina dostupnosti**: Žádné
    * **Koncové body** zachovat **vzdálené plochy** a **Powershellu** koncových bodů a potom přidat buď HTTP nebo HTTPS koncového bodu, v závislosti na vašem prostředí.
      
      * **HTTP**: Výchozí veřejné a soukromé porty jsou **80**. Všimněte si, že používáte privátní port než 80, upravte **$HTTPport = 80** ve skriptu http.
      * **HTTPS**: Výchozí veřejné a soukromé porty jsou **443**. Osvědčeným postupem zabezpečení je změnit privátní port a konfiguraci brány firewall a server sestav použít privátní port. Další informace o koncových bodech najdete v tématu [jak nastavit komunikaci s virtuálním počítačem](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že pokud používáte jiný port než 443, změňte parametr **$HTTPsport = 443** ve skriptu HTTPS.
-   * Klikněte na tlačítko Další. ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Klikněte na tlačítko Další. ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Na poslední stránce průvodce, ponechte výchozí **nainstalujte agenta virtuálního počítače** vybrané. Kroky v tomto tématu Neuvedeno agenta virtuálního počítače, ale pokud budete chtít zachovat tento virtuální počítač, agent virtuálního počítače a rozšíření vám umožní zajistit, že CM.  Další informace o agenta virtuálního počítače najdete v tématu [agenta virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Jednou z výchozí nainstalovaná rozšíření služby ad s je rozšíření "BGINFO", který zobrazuje na ploše virtuálního počítače, systémové informace, například interní IP adresa a volného místa na disku.
-9. Klikněte na dokončení. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
+9. Klikněte na dokončení. ![Ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. **Stav** virtuálního počítače se zobrazí jako **spuštění (zřizování)** během procesu zřizování a potom zobrazí jako **systémem** když virtuální počítač je zřízená a připravený k použití.
 
 ## <a name="step-2-create-a-server-certificate"></a>Krok 2: Vytvoření certifikátu serveru

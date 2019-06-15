@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0610ac9578b1aa85ae422275d69e651b0b4cfd
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1f3a3339481538cd38a1d26f97869ff55d3f6021
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65895774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Kurz: Integrace Azure Active Directory s YouEarnedIt
 
@@ -53,7 +53,7 @@ Konfigurace integrace YouEarnedIt do služby Azure AD, budete muset přidat YouE
 
 **Chcete-li přidat YouEarnedIt z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -109,15 +109,15 @@ Ke konfiguraci Azure AD jednotné přihlašování s YouEarnedIt, proveďte nás
 
     | Prostředí  | Vzor  |
     |:--- |:--- |
-    | Provozní | `https://<company name>.youearnedit.com/users/sign_in` |
-    | Izolovaný prostor  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
+    | Výroba | `https://<company name>.youearnedit.com/users/sign_in` |
+    | Sandbox  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujících vzorů:
 
     | Prostředí  | Vzor  |
     |:--- |:--- |
-    | Provozní | `<company name>.youearnedit.com` |
-    | Izolovaný prostor  |`<company name>.sandbox.youearnedit.com` |
+    | Výroba | `<company name>.youearnedit.com` |
+    | Sandbox  |`<company name>.sandbox.youearnedit.com` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontaktujte správce úspěchy zákazníků YouEarnedIt přiřazené k získání těchto hodnot.
@@ -198,7 +198,7 @@ V této části vytvoříte uživatele v YouEarnedIt jako Britta Simon. Správce
 > [!NOTE]
 > YouEarnedIt očekávat, že zprostředkovatel Identity k poskytování EmailAddress nebo uživatelské jméno v atributu NameID. Ověření se nezdaří, pokud odpovídající uživatelské jméno nebo EmailAddress nebyl nalezen v databázi nebo se neshoduje přesně. To vyžaduje, aby účty importuje i do systému YouEarnedIt před integraci jednotného přihlašování (obvykle buď prostřednictvím rozhraní API nebo CSV import).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

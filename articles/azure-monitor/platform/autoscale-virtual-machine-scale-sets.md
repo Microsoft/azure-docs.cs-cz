@@ -9,10 +9,10 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787759"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
@@ -31,7 +31,7 @@ V tomto názorném postupu používáme [Azure Resource Exploreru](https://resou
 
     ![Průzkumník služby Azure](media/autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
-    Zpracování šablony byla vytvořena ve výchozím nastavení automatického škálování s názvem **"autoscalewad"**. Na pravé straně se zobrazí úplné definice tohoto nastavení automatického škálování. V tomto případě obsahuje výchozí nastavení automatického škálování pravidlo horizontální navýšení kapacity a škálování na méně instancí % na základě procesoru.  
+    Zpracování šablony byla vytvořena ve výchozím nastavení automatického škálování s názvem **"autoscalewad"** . Na pravé straně se zobrazí úplné definice tohoto nastavení automatického škálování. V tomto případě obsahuje výchozí nastavení automatického škálování pravidlo horizontální navýšení kapacity a škálování na méně instancí % na základě procesoru.  
 
 3. Nyní můžete přidat další profily a pravidla podle plánu nebo konkrétní požadavky. Nastavení automatického škálování se nám vytvořit pomocí tří profilů. Informace o tom profily a pravidla automatického škálování, zkontrolujte [osvědčené postupy automatického škálování](autoscale-best-practices.md).  
 

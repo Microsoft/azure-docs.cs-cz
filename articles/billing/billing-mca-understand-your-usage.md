@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371304"
 ---
 # <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>Vysvětlení podmínek vašeho využití Azure a poplatky za sdíleného svazku clusteru zákaznické smlouvy Microsoft
@@ -42,27 +42,27 @@ Pokud jste zákazník EA, můžete si všimnout, která podmínkami fakturační
 | Měsíc| date |
 | Den | date |
 | Rok | date |
-| Produkt | produkt |
+| Product | Produkt |
 | ID měřiče | meterID |
-| Kategorie měřiče | meterCategory |
-| Podkategorie měřiče | meterSubCategory |
-| Oblast měřiče | meterRegion |
-| Název měřiče | meterName |
-| Využité množství | množství |
-| Sazba zdroje | effectivePrice | <!-- this was highlighted -->
-| Rozšířené náklady | náklad |
-| Umístění prostředku | resourceLocation |
-| Využívaná služba | consumedService |
-| ID instance | instanceId |
-| Informace o službách 1 | serviceInfo1 |
-| Informace o službách 2 | serviceInfo2 |
-| Další informace | additionalInfo |
-| Značky | tags |
-| Identifikátor služby úložiště | neuvedeno |
+| meterCategory | meterCategory |
+| meterSubCategory | meterSubCategory |
+| MeterRegion | meterRegion |
+| meterName | meterName |
+| ConsumedQuantity | množství |
+| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ExtendedCost | náklad |
+| resourceLocation | resourceLocation |
+| ConsumedService | consumedService |
+| InstanceId | instanceId |
+| ServiceInfo1 | serviceInfo1 |
+| ServiceInfo2 | serviceInfo2 |
+| AdditionalInfo | additionalInfo |
+| Tags | značky |
+| StoreServiceIdentifier | neuvedeno |
 | Název oddělení | invoiceSection | <!-- this was highlighted -->
-| Nákladové středisko | costCenter |
-| Měrná jednotka | unitofMeasure |
-| ResourceGroup | resourceGroup |
+| Nákladové středisko | Nákladové středisko |
+| unitOfMeasure | unitofMeasure |
+| ResourceGroup | Skupina prostředků |
 | ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
 
 <!-- TO DO: Marketplace CSV? -->
@@ -71,7 +71,7 @@ Pokud jste zákazník EA, můžete si všimnout, která podmínkami fakturační
 
 Následující část popisuje důležité termíny, které jsou uvedené v souboru využití a poplatky za Azure.
 
-Označení | Popis
+Termín | Popis
 --- | ---
 invoiceId | ID dokumentu jedinečné uvedené na faktuře PDF
 previousInvoiceId | Odkaz na původní faktury, pokud je tato položka řádku refundaci
@@ -81,7 +81,7 @@ billingProfileId | Název fakturačního profil, který vám totiž nabíhají p
 billingProfileName | Jedinečný identifikátor pro profil, který vám totiž nabíhají poplatky, které se fakturují fakturace
 invoiceSectionId | Jedinečný identifikátor pro části faktury
 invoiceSectionName | Název oddílu faktury
-costCenter | Nákladové středisko definované v rámci předplatného pro sledování nákladů (k dispozici pouze v open fakturačních období)
+Nákladové středisko | Nákladové středisko definované v rámci předplatného pro sledování nákladů (k dispozici pouze v open fakturačních období)
 billingPeriodStartDate | Počáteční datum fakturačního období, pro který je generován faktury
 billingPeriodEndDate | Koncové datum fakturačního období, pro který je generován faktury
 servicePeriodStartDate | Počáteční datum platnosti hodnocení která je definována a uzamčen, ceny za služby využité nebo co si
@@ -98,7 +98,7 @@ meterSubCategory | Název dílčí klasifikace kategorie měřiče
 meterRegion | Název oblasti, kde je k dispozici měřiče pro službu. Určuje polohu datového centra pro určité služby, které se počítají podle s umístěním datového centra.
 nabídka | Název nabídky zakoupili
 productId | Jedinečný identifikátor pro produkt, účtují se poplatky za
-produkt | Název produktu, účtují se poplatky za
+Produkt | Název produktu, účtují se poplatky za
 ID předplatného | Jedinečný identifikátor pro předplatné, účtují se poplatky za
 subscriptionName | Název předplatného, účtují se poplatky za
 reservationId | Jedinečný identifikátor pro zakoupené rezervované instance
@@ -118,7 +118,7 @@ isAzureCreditEligible | Příznak označující, pokud platí na službu se nár
 serviceInfo1 | Metadata konkrétních služeb
 serviceInfo2 | Starší verze pole, které zachycuje volitelná metadata konkrétních služeb
 additionalInfo | Další metadata konkrétních služeb.
-tags | Značky, které přiřadíte k prostředku
+značky | Značky, které přiřadíte k prostředku
 
 ### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Jak můžu se ujistit, že jsou správné poplatky v souboru využití a poplatky za Azure?
 

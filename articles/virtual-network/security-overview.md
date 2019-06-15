@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ee976f163bdb00511e2a8f85906aa59aaebbfa47
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056535"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -81,6 +81,7 @@ Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro v
 * **ServiceFabric** (pouze Resource Manager): Tato značka označuje předpony adres služby ServiceFabric. Pokud zadáte *ServiceFabric* pro hodnotu, je povolené nebo zakázané ServiceFabric přenosy. 
 * **AzureMachineLearning** (pouze Resource Manager): Tato značka označuje předpony adres AzureMachineLearning služby. Pokud zadáte *AzureMachineLearning* pro hodnotu, je povolené nebo zakázané AzureMachineLearning přenosy. 
 * **BatchNodeManagement** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure BatchNodeManagement. Pokud zadáte *BatchNodeManagement* pro hodnotu provoz je povolený nebo zakázaný ze služby Batch do výpočetních uzlů.
+* **AzureBackup**(pouze Resource Manager): Tato značka označuje předpony adres služby AzureBackup. Pokud zadáte hodnotu AzureBackup, provoz je povolený nebo zakázaný na AzureBackup.
 
 > [!NOTE]
 > Značky služeb služeb Azure, označuje předpony adres z konkrétní cloudu se používají. 
@@ -96,19 +97,19 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
+|Priorita|source|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Vše|Povolit|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
+|Priorita|source|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Vše|Povolit|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
+|Priorita|source|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Vše|Odepřít|
 
@@ -116,19 +117,19 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Vše | Povolit |
 
 #### <a name="allowinternetoutbound"></a>AllowVnetOutBound
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Vše | Povolit |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Vše | Odepřít |
 
@@ -148,7 +149,7 @@ Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplik
 
 Toto pravidlo je potřeba k povolení provozu směřujícího z internetu na webové servery. Vzhledem k tomu, že výchozí pravidlo zabezpečení [DenyAllInbound](#denyallinbound) odepírá příchozí provoz z internetu, není pro skupiny zabezpečení aplikací *AsgLogic* a *AsgDb* potřeba žádné další pravidlo.
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Povolit |
 
@@ -156,7 +157,7 @@ Toto pravidlo je potřeba k povolení provozu směřujícího z internetu na web
 
 Vzhledem k tomu, že výchozí pravidlo zabezpečení [AllowVNetInBound](#allowvnetinbound) povoluje veškerou komunikaci mezi prostředky ve stejné virtuální síti, je toto pravidlo potřeba k odepření provozu ze všech prostředků.
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Vše | Odepřít |
 
@@ -164,7 +165,7 @@ Vzhledem k tomu, že výchozí pravidlo zabezpečení [AllowVNetInBound](#allowv
 
 Toto pravidlo povoluje provoz ze skupiny zabezpečení aplikace *AsgLogic* do skupiny zabezpečení aplikace *AsgDb*. Priorita tohoto pravidla je vyšší než priorita pravidla *Deny-Database-All*. Díky tomu se toto pravidlo zpracuje před pravidlem *Deny-Database-All*, takže se povolí provoz ze skupiny zabezpečení aplikace *AsgLogic*, zatímco veškerý ostatní provoz se zablokuje.
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Povolit |
 

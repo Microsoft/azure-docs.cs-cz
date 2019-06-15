@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60551693"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazení monitorování Azure
@@ -28,7 +28,7 @@ Klikněte na datum časový rozsah v horní části zobrazení otevřete rozeví
 
 ![Příklad filtru](media/view-designer-filters/filters-example-time.png)
 
-Klikněte na tlačítko **+** přidejte filtr pomocí vlastní filtry, které jsou definovány pro zobrazení. Hodnota pro filtr buď vyberte z rozevíracího seznamu nebo zadejte hodnotu. Pokračujte kliknutím na Přidat filtry **+**. 
+Klikněte na tlačítko **+** přidejte filtr pomocí vlastní filtry, které jsou definovány pro zobrazení. Hodnota pro filtr buď vyberte z rozevíracího seznamu nebo zadejte hodnotu. Pokračujte kliknutím na Přidat filtry **+** . 
 
 
 ![Příklad filtru](media/view-designer-filters/filters-example-custom.png)

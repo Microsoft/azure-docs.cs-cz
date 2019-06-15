@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243244"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
@@ -70,13 +70,13 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |json-to-xml|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |Použít|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -vždy – vždy použijte převod.<br />obsah json typ - převodu pouze v případě, že hlavičku odpovědi Content-Type indikuje přítomnost JSON.|Ano|neuvedeno|
 |consider-accept-header|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> Pokud je požadováno JSON v požadavku hlavičku Accept - true – použijte převod.<br />-false - vždy použít převod.|Ne|true (pravda)|
@@ -120,7 +120,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |Typ|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> javascript – vhodných - JSON převedeného obsahuje formulář popisný pro vývojáře v JavaScriptu.<br />-direct - JSON převedeného strukturu původního dokumentu XML.|Ano|neuvedeno|
 |Použít|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -vždy - převeďte vždy.<br />convert – obsah xml typu – pouze v případě, že hlavičku odpovědi Content-Type indikuje přítomnost XML.|Ano|neuvedeno|
@@ -150,13 +150,13 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |Najít a nahradit|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |from|Hledaný řetězec.|Ano|neuvedeno|
 |na|Náhradní řetězec. Zadejte řetězec nulové délky nahrazení odebrat hledaný řetězec.|Ano|neuvedeno|
@@ -188,7 +188,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |redirect-content-urls|Kořenový element.|Ano|
 
@@ -261,13 +261,13 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |set-backend-service|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |Základní adresa url|Nový back-endu základní adresa URL služby.|Jeden z `base-url` nebo `backend-id` musí být k dispozici.|neuvedeno|
 |id back-endu|Identifikátor směrovat do back-endu. (Back-endu entity jsou spravované prostřednictvím [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) a [Powershellu](https://www.powershellgallery.com/packages?q=apimanagement).)|Jeden z `base-url` nebo `backend-id` musí být k dispozici.|neuvedeno|
@@ -403,7 +403,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 ### <a name="properties"></a>Vlastnosti
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |Šablony|Umožňuje změnit režim šablon, které nastavení zásad textu se spustí v. Momentálně je jediná podporovaná hodnota:<br /><br />-liquid – nastavení těla zásad bude používat modul šablon liquid. |Ne||
 
@@ -504,14 +504,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |set-header|Kořenový element.|Ano|
 |value|Určuje hodnotu hlavičky, která se má nastavit. Pro více záhlaví s názvem přidejte další `value` elementy.|Ano|
 
 ### <a name="properties"></a>Vlastnosti
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |existuje akce|Určuje, jaká akce se má provést, když je už zadaná hlavičce. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override - nahradí hodnotu existujícího hlavičky.<br />-skip - nenahrazuje existující hodnota hlavičky.<br />-Přidat – přidá hodnotu do existující hodnota hlavičky.<br />-delete - odstraní hlavičku ze žádosti.<br /><br /> Pokud je nastavena na `override` uvedení několik záznamů se stejným názvem výsledků v hlavičce nastavena podle všechny položky (které bude uveden více než jednou), nastaví se pouze uvedené hodnoty ve výsledku.|Ne|přepsání|
 |name|Určuje název hlavičky, která se má nastavit.|Ano|neuvedeno|
@@ -571,7 +571,7 @@ OriginalUrl.
 
 ### <a name="properties"></a>Vlastnosti
 
-|Název|Popis|Požaduje se|Výchozí|
+|Name|Popis|Požaduje se|Výchozí|
 |----------|-----------------|--------------|-------------|
 |existuje akce|Určuje, jaká akce se má provést, když je již zadán parametr dotazu. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override - nahradí hodnotu parametru existující.<br />-skip - nenahrazuje existující hodnota parametru dotazu.<br />-Přidat – přidá hodnotu do existující hodnota parametru dotazu.<br />-delete - Odstraní z požadavku parametr dotazu.<br /><br /> Pokud je nastavena na `override` uvedení několik záznamů se stejným názvem v parametru dotazu nastavena podle všechny položky (které bude uveden více než jednou) výsledky, nastaví se pouze uvedené hodnoty ve výsledku.|Ne|přepsání|
 |name|Určuje název parametru dotazu, která se má nastavit.|Ano|neuvedeno|
@@ -643,7 +643,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Popis|Požaduje se|
 |----------|-----------------|--------------|
 |Přepište uri|Kořenový element.|Ano|
 

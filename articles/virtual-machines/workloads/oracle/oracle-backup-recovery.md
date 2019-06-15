@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60566812"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure s Linuxem
@@ -303,7 +303,7 @@ Další informace najdete v tématu [konzistentní zálohování virtuálních p
 
     ![Stránku podrobností myVault trezory služeb zotavení](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Na **položky zálohování (virtuální počítač Azure)** okna na pravé straně stránky klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a pak klikněte na tlačítko **zálohovat nyní**.
+9.  Na **položky zálohování (virtuální počítač Azure)** okna na pravé straně stránky klikněte na tlačítko se třemi tečkami ( **...** ) tlačítko a pak klikněte na tlačítko **zálohovat nyní**.
 
     ![Příkaz Backup trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_09.png)
 
@@ -351,7 +351,7 @@ Pokud chcete obnovit odstraněné soubory, proveďte následující kroky:
 
     ![Počet zálohovaných položek virtuálního počítače Azure trezory služby Recovery Services](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. Na **myvm1** okna, klikněte na tlačítko **obnovení souborů (Preview)**.
+3. Na **myvm1** okna, klikněte na tlačítko **obnovení souborů (Preview)** .
 
     ![Snímek obrazovky služby Recovery Services trezory Recovery Services stránku obnovení souboru](./media/oracle-backup-recovery/recovery_service_14.png)
 
@@ -472,7 +472,7 @@ Místo obnovení odstraněných souborů z trezorů služby Recovery Services, m
 
     ![Obnovení virtuálního počítače stránky](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  Na **myvm1** okna, klikněte na tlačítko se třemi tečkami (**...** ) tlačítko a pak klikněte na tlačítko **obnovení virtuálního počítače**.
+4.  Na **myvm1** okna, klikněte na tlačítko se třemi tečkami ( **...** ) tlačítko a pak klikněte na tlačítko **obnovení virtuálního počítače**.
 
     ![Obnovení virtuálního počítače příkaz](./media/oracle-backup-recovery/recover_vm_05.png)
 
@@ -503,7 +503,7 @@ Po obnovení virtuálního počítače nastavte veřejnou IP adresu.
 
     ![Seznam veřejných IP adres](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Na **veřejné IP adresy** okna, klikněte na tlačítko **přidat**. Na **vytvoření veřejné IP adresy** okně pro **název**, vyberte název veřejné IP. V části **Skupina prostředků** vyberte **Použít existující**. Poté klikněte na možnost **Vytvořit**.
+2.  Na **veřejné IP adresy** okna, klikněte na tlačítko **přidat**. Na **vytvoření veřejné IP adresy** okně pro **název**, vyberte název veřejné IP. V části **Skupina prostředků** vyberte **Použít existující**. Potom klikněte na **vytvořit**.
 
     ![Vytvoření IP adresy](./media/oracle-backup-recovery/create_ip_01.png)
 

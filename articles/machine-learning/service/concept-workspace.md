@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 2f3d9eeca1404fcae121ae5fead222cbde4037b1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059256"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
@@ -32,16 +32,16 @@ Diagram znázorňuje následující součásti pracovního prostoru:
 
 + Pracovní prostor může obsahovat [virtuálních počítačů Poznámkový blok](quickstart-run-cloud-notebook.md), cloudové prostředky, které nakonfigurují prostředí Pythonu potřebné ke spuštění Azure Machine Learning.
 + [Role uživatelů](how-to-assign-roles.md) umožňují sdílet s ostatními uživateli, týmy nebo projekty pracovního prostoru.
-+ [Cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md#compute-target) umožňují spouštět své experimenty.
++ [Cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md#compute-targets) umožňují spouštět své experimenty.
 + Když vytváříte pracovní prostor, [přidružené prostředky](#resources) se také vytvoří za vás.
-+ [Experimenty](concept-azure-machine-learning-architecture.md#experiment) jsou tréninkových spuštění použijete k sestavení modelů.  Můžete vytvářet a spouštět experimenty s
++ [Experimenty](concept-azure-machine-learning-architecture.md#experiments) jsou tréninkových spuštění použijete k sestavení modelů.  Můžete vytvářet a spouštět experimenty s
     + [Azure Machine Learning pro Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
     + [Automatizované experimenty machine learning (preview)](how-to-create-portal-experiments.md) části webu Azure Portal.
     + [Vizuální rozhraní (preview)](ui-concept-visual-interface.md).
-+ [Kanály](concept-azure-machine-learning-architecture.md#pipeline) jsou opakovaně použitelných pracovních postupů pro trénování a přetrénování modelu.
-+ [Datové sady](concept-azure-machine-learning-architecture.md#dataset) podpory v správy dat můžete použít pro vytvoření modelu školení a kanálu.
-+ Jakmile budete mít modelu chcete nasadit, můžete vytvořit [registrovanému modelu](concept-azure-machine-learning-architecture.md#model-registry).
-+ Vytvoření pomocí registrovaného modelu a hodnoticí skript [nasazení](concept-azure-machine-learning-architecture.md#image-registry).
++ [Kanály](concept-azure-machine-learning-architecture.md#ml-pipelines) jsou opakovaně použitelných pracovních postupů pro trénování a přetrénování modelu.
++ [Datové sady](concept-azure-machine-learning-architecture.md#datasets-and-datastores) podpory v správy dat můžete použít pro vytvoření modelu školení a kanálu.
++ Jakmile budete mít model, který chcete nasadit, vytvořit registrovanému modelu.
++ Vytvoření pomocí registrovaného modelu a hodnoticí skript [nasazení](concept-azure-machine-learning-architecture.md#deployment).
 
 ## <a name="tools-for-workspace-interaction"></a>Nástroje pro interakci pracovního prostoru
 

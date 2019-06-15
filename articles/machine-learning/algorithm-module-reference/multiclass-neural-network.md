@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: a7bef225c001ebd9bbb9a45c8bcc301cfb49edb6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65029382"
 ---
 # <a name="multiclass-neural-network-module"></a>Víc tříd modulu Neuronové sítě
@@ -62,7 +62,7 @@ Pro výpočet výstupu sítě pro konkrétní vstup, hodnota se počítá v kaž
   
    
 
-5. **Počet skrytých uzlů:**: Tato možnost umožňuje upravit počet skrytých uzlů: ve výchozím nastavení architektura. Zadejte počet skrytých uzlů. Výchozí hodnota je jeden skryté vrstvě s 100 uzlů.
+5. **Počet skrytých uzlů:** : Tato možnost umožňuje upravit počet skrytých uzlů: ve výchozím nastavení architektura. Zadejte počet skrytých uzlů. Výchozí hodnota je jeden skryté vrstvě s 100 uzlů.
 
 6. **Rychlost učení**: Definujte velikost kroku v každé iteraci, před opravy. Větší hodnotu kurz vás naučí může způsobit modelu a umožňuje konvergovat rychleji, ale jeho překročení místní minima.
 

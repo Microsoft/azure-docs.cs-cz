@@ -9,10 +9,10 @@ ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60366484"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
@@ -83,7 +83,7 @@ Na této stránce **stav poskytovatele** poskytuje informace o aktuálním stavu
 
 Při vytváření nového okruhu ExpressRoute, je okruh v následujícím stavu:
 
-Stav poskytovatele: Není zajištěno<BR>
+Stav poskytovatele: Není zajišťováno<BR>
 Stav okruhu: Enabled
 
 ![Zahájení procesu zřizování](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
@@ -95,7 +95,7 @@ Stav okruhu: Enabled
 
 Abyste mohli použít okruhu ExpressRoute musí být v následujícím stavu:
 
-Stav poskytovatele: Zajištěno<BR>
+Stav poskytovatele: Zřízené<BR>
 Stav okruhu: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Pravidelně kontrolovat stav a stav okruhu klávesy

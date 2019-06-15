@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1985b7bbcfdaab2aa303f67a9b1d090c85eedd5d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825193"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování k aplikaci galerii konfigurované pro federované jednotné přihlašování
@@ -61,7 +61,7 @@ Ujistěte se, `Issuer` atribut v požadavku SAML odpovídá hodnotu Identifier n
 
 
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Tato adresa pro odpovědi neodpovídá adresám pro odpovědi nakonfigurovaným pro danou aplikaci.
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odpovědi neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci
 
 *Chyba AADSTS50011: Adresa pro odpovědi ' https:\//contoso.com' neodpovídá adresám pro odpovědi nakonfigurovaným pro aplikaci*
 
@@ -145,8 +145,8 @@ Po krátkou dobu budou moci spouštět tyto aplikace pomocí metod popsaných v 
 
 Azure AD nepodporuje požadavek SAML, kterou aplikace odeslala, pro jednotné přihlašování. Mezi běžné problémy patří:
 
--   V požadavku SAML chybí povinná pole.
--   Kódovaná metoda požadavku SAML
+-   Chybí povinná pole. v požadavku SAML
+-   Požadavek SAML zakódoval metodu
 
 **Řešení**
 
@@ -263,7 +263,7 @@ Odstraňte nepoužívané odpovědních adres URL nakonfigurované pro aplikaci.
 
 6.  Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
 
-7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)**, odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adresy URL odpovědi (adresa URL služby příjemce kontrolního výrazu)** , odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořených systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problém při přizpůsobování deklarací identity SAML, odesílá se do aplikace
 

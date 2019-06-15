@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b9fdc6bf46cff1f3a38d40a4e7abad5bfe56c47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95ce68547ca13d2395fcd447990c42c48c04eb5f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866384"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Kurz: Integrace s Azure Active Directory s Symantec webové zabezpečení služby (WSS)
 
@@ -56,7 +56,7 @@ Konfigurace integrace nástroje Symantec webové zabezpečení služby (WSS) do 
 
 **Chcete-li přidat Symantec webové zabezpečení služby (WSS) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -152,11 +152,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Symantec webové zabezpečení služby (WSS).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Symantec webové zabezpečení služby (WSS)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Symantec webové zabezpečení služby (WSS)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **Symantec webové zabezpečení služby (WSS)**.
+2. V seznamu aplikace zadejte a vyberte **Symantec webové zabezpečení služby (WSS)** .
 
     ![Odkaz Symantec webové zabezpečení služby (WSS) v seznamu aplikací](common/all-applications.png)
 
@@ -181,7 +181,7 @@ V této části vytvoříte uživateli Britta Simon v Symantec webové zabezpeč
 > [!NOTE]
 > Po klepnutí na [tady](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) získat váš počítač je veřejná IP adresa.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části budete testovat funkce přihlašování – teď, když jste nakonfigurovali WSS účet pro použití služby Azure AD pro ověřování SAML.
 

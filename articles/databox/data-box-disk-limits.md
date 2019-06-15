@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 32445e3f6859a6161eb2fae20233c598234f18a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400622"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení disku Azure Data Box
@@ -71,8 +71,8 @@ Tady jsou velikosti Azure objekty, které je možné zapisovat. Ujistěte se, ž
 
 | Typ objektu Azure | Výchozí omezení                                             |
 |-------------------|-----------------------------------------------------------|
-| Objekt blob bloku        | ~ 4,75 TB                                                 |
-| Objekt blob stránky         | 8 TiB <br> (Každý soubor odeslat ve formátu objektů Blob stránky musí být 512 bajtů zarovnána, jinak se odeslání nezdaří. <br> VHD i VHDX jsou 512 bajtů zarovnána.) |
+| Objekt Blob bloku        | ~ 4,75 TB                                                 |
+| Page Blob         | 8 TiB <br> (Každý soubor odeslat ve formátu objektů Blob stránky musí být 512 bajtů zarovnána, jinak se odeslání nezdaří. <br> VHD i VHDX jsou 512 bajtů zarovnána.) |
 |Soubory Azure        | 1 TiB <br> Max. velikost sdílené složky je 5 TiB     |
 | Spravované disky     |4 TiB <br> Další informace o velikosti a omezení naleznete v tématu: <li>[Cíle škálovatelnosti pro spravované disky](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 

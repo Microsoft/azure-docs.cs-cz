@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: erikre
 ms.openlocfilehash: d3db4166810da981ff0117536d8550a6b2203924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370981"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Zkontrolujte využití prostředků Azure pomocí rozhraní REST API
@@ -45,8 +45,8 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Typ obsahu:*| Povinná hodnota. Nastavte na `application/json`. |  
-|*Autorizace:*| Povinná hodnota. Nastaven na platné `Bearer` token. |
+|*Content-Type:*| Povinná hodnota. Nastavte na `application/json`. |  
+|*Authorization:*| Povinná hodnota. Nastaven na platné `Bearer` token. |
 
 Konfigurujte parametry sestavy v textu požadavku HTTP. V následujícím příkladu je nastavena sestavy ke generování každý den, kdy aktivní, je soubor CSV se zapisují do kontejneru objektů blob v Azure Storage a obsahuje informace o nákladech pro všechny prostředky ve skupině prostředků každou hodinu `westus`.
 
@@ -89,7 +89,7 @@ Konfigurujte parametry sestavy v textu požadavku HTTP. V následujícím přík
 }
 ```
 
-Na
+Prostředek
 
 ## <a name="filtering-reports"></a>Filtrování sestavy
 

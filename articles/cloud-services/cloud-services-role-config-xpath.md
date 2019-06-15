@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 53a262af421dd986e6b70af173a6e8b3f7c06f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527296"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Zpřístupnit nastavení konfigurace role jako proměnnou prostředí, jejichž výraz XPath
@@ -42,7 +42,7 @@ Načte identifikátor ID nasazení pro instanci.
 | Výraz XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | Kód |var deploymentId = RoleEnvironment.DeploymentId; |
 
-## <a name="role-id"></a>ID role
+## <a name="role-id"></a>Role ID
 Načte aktuální ID role pro instanci.
 
 | Type | Příklad: |
@@ -58,7 +58,7 @@ Načte aktualizační doména instance.
 | Výraz XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | Kód |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
-## <a name="fault-domain"></a>Chybná doména
+## <a name="fault-domain"></a>Doména selhání
 Načte doménu selhání instance.
 
 | Type | Příklad: |

@@ -2,7 +2,7 @@
 title: Událost zahájení úlohy služby Azure Batch | Dokumentace Microsoftu
 description: Referenční informace pro událost zahájení úlohy služby Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 04/20/2017
-ms.date: 05/15/2018
-ms.author: v-junlch
+ms.date: 04/20/2017
+ms.author: lahugh
 ms.openlocfilehash: d50a0a7082e409084fd966370934a638ca9bb013
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60549865"
 ---
 # <a name="task-start-event"></a>Událost zahájení úlohy
@@ -52,7 +51,7 @@ ms.locfileid: "60549865"
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
 |jobId|String|Id úlohy obsahující úlohu.|
-|id|String|Identifikátor úkolu|
+|id|String|Id úkolu.|
 |taskType|String|Typ úlohy. To může být JobManager oznamující, že je úkol Správce úloh nebo uživatel oznamující, že se nejedná o úkol Správce úloh.|
 |systemTaskVersion|Int32|Toto je čítač interní opakovaných pokusů pro úlohu. Interně služba Batch může pokus zopakovat úlohu, aby se zohlednily přechodné problémy. Tyto problémy mohou zahrnovat plánování s interními chybami nebo pokusy o obnovení z výpočetních uzlů ve špatném stavu.|
 |[nodeInfo](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém se úkol spustil.|
@@ -71,7 +70,7 @@ ms.locfileid: "60549865"
 
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|numberOfInstances|Int|Celkový počet výpočetních uzlů požadovaných úkolem|
+|numberOfInstances|Int|Počet výpočetních uzlů požadovaných úkolem.|
 
 ###  <a name="constraints"></a> Omezení
 
@@ -84,5 +83,3 @@ ms.locfileid: "60549865"
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
 |retryCount|Int32|Počet pokusů, které úlohy se pokus o pomocí služby Batch. Úloha je opakovat, pokud ukončen s nenulový ukončovací kód, až do zadaného MaxTaskRetryCount|
-
-<!-- Update_Description: update metedata properties -->

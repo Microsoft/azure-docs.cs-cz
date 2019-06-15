@@ -15,10 +15,10 @@ ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824644"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
@@ -184,7 +184,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **[appRoleAssignments]** |Požaduje se |Řetězec |**[appRoleAssignments]**  objektu. |
 
 - - -
-### <a name="split"></a>Rozdělit
+### <a name="split"></a>rozdělení
 **Funkce:**<br> Split (zdroj, oddělovač)
 
 **Popis:**<br> Rozdělí řetězec s hodnotou mulit pole, pomocí zadané oddělovací znak.
@@ -234,7 +234,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu |
-| **Jazyková verze** |Volitelná |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
+| **Jazyková verze** |Nepovinné |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
 
 - - -
 ### <a name="toupper"></a>toUpper
@@ -247,7 +247,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
-| **Jazyková verze** |Volitelná |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
+| **Jazyková verze** |Nepovinné |String |Formát pro název jazykové verze podle RFC 4646 *languagecode2 – země/regioncode2*, kde *languagecode2* je kód jazyka dvoupísmenné a *země/regioncode2*dvoupísmenné subkulturu kód. Mezi příklady patří ja-JP japonština (Japonsko) a en US pro angličtinu (Spojené státy). V případech, kdy kód jazyka dvoupísmenné není k dispozici se používá třípísmenný kód odvozené ze souboru ISO 639-2.|
 
 ## <a name="examples"></a>Příklady
 ### <a name="strip-known-domain-name"></a>Název domény známý pruhu

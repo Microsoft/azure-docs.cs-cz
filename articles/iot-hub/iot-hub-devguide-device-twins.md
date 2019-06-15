@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 883e81572218e39d84ad8793423b02468d49d00a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61321138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055365"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a použití dvojčat zařízení ve službě IoT Hub
 
@@ -182,7 +182,7 @@ Back-end řešení funguje v dvojčeti zařízení pomocí následující atomic
 
   - Vlastnosti
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  Čas odeslání oznámení |

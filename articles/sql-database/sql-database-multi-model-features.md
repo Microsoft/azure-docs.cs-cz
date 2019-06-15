@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
 ms.openlocfilehash: 84efdb0297a2dc69497baee5fb746fb51d02b1b7
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939514"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Více modelů možnosti služby Azure SQL Database
@@ -141,6 +141,6 @@ Zobrazit [jak BWin OLTP v paměti používá k zajištění mimořádného výko
 Více modelů možnosti v Azure SQL Database jsou také základní funkce databázového stroje SQL serveru, které jsou sdíleny mezi Azure SQL Database a SQL Server. Další informace o těchto funkcích najdete v tématu stránky dokumentace služby SQL relační databáze:
 
 * [Zpracování grafů](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
-* [Data JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
+* [JSON data](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
 * [Prostorový podpory](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
 * [XML data](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server)

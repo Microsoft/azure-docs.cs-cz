@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88cee825f132054eb1228e8930f82199c7f1812f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 13f68a4cfeb1d46137f671e97df491b54afc03e8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905426"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-useall"></a>Kurz: Integrace Azure Active Directory s Useall
 
@@ -54,7 +54,7 @@ Konfigurace integrace Useall do služby Azure AD, budete muset přidat Useall z 
 
 **Chcete-li přidat Useall z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -175,7 +175,7 @@ V této části je povolit Britta Simon k udělení přístupu k Useall použit�
 
 V této části vytvoříte uživatele v Useall jako Britta Simon. Práce s [tým podpory Useall](mailto:luizotavio@useall.com.br) přidat uživatele na platformě Useall. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

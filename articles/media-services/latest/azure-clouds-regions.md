@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409286"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve které Azure Media Services v3 existuje
@@ -26,9 +26,9 @@ Azure Media Services v3 je k dispozici prostřednictvím Azure Resource Manageru
 
 | Funkce|Globálními oblastmi Azure | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není dostupné | Není dostupné | Není dostupné |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není dostupné | Není dostupné | Není dostupné |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není dostupné | Není dostupné | Není dostupné |
+| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici. | Není k dispozici. | Není k dispozici. |
 | [StandardEncoderPreset](encoding-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
 | [LiveEvents](live-streaming-overview.md) | K dispozici | K dispozici | K dispozici | K dispozici |
 | [Koncové body streamování](streaming-endpoint-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
@@ -64,7 +64,7 @@ Například pro oblasti Azure USA – západ 2 (zobrazené níže), který použ
 
 Následující koncové body jsou důležité vědět, při připojení k účtů Media Services z různých národních cloudů Azure.
 
-### <a name="global-azure"></a>Globální Azure
+### <a name="global-azure"></a>Global Azure
 
 |Koncové body ||
 | --- | --- | 

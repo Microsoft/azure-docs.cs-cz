@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c26a5007c2dcaa5d41be46f685f0f259866ca2c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8240a487bdb01cdbe9017ddc7cb95ce4fc0e1503
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052352"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Pomocí MSAL.NET k přihlášení uživatelů se sociálními identitami
 
@@ -177,7 +177,7 @@ Navrhovaná alternativní řešení, je použít [ukládání do mezipaměti pod
 Alternativně můžete použít `tid` deklarace identity, pokud používáte [vlastní zásady B2C](https://aka.ms/ief), protože poskytuje schopnost vrátit další deklarace identity do aplikace. Další informace o [transformaci deklarací identity](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Zmírnění dopadů pro "Chybí z odpovědi tokenu"
-Jednou z možností je použít deklarace identity "name" jako upřednostňované uživatelské jméno. Proces je uvedený v tomto [B2C doc](/azure/active-directory-b2c/active-directory-b2c-reference-policies#frequently-asked-questions) -> "ve sloupci návratový deklarace identity, zvolte deklarace identit, se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšném upravování profilu. Vyberte například zobrazované jméno, poštovní směrovací číslo."
+Jednou z možností je použít deklarace identity "name" jako upřednostňované uživatelské jméno. Proces je uvedený v tomto [B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) -> "ve sloupci návratový deklarace identity, zvolte deklarace identit, se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšném upravování profilu. Vyberte například zobrazované jméno, poštovní směrovací číslo."
 
 ## <a name="next-steps"></a>Další postup 
 

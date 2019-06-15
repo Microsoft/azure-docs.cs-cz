@@ -11,10 +11,10 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646703"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Vytvoření trezoru služeb zotavení Azure pomocí rozhraní REST API
@@ -35,8 +35,8 @@ Vyžadují se následující hlavičky:
 
 | Hlavička požadavku   | Popis |
 |------------------|-----------------|
-| *Typ obsahu:*  | Povinná hodnota. Nastavte na `application/json`. |
-| *Autorizace:* | Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
+| *Authorization:* | Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Další informace o tom, jak vytvořit žádost, naleznete v tématu [součástí žádost/odpověď rozhraní REST API](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -44,13 +44,13 @@ Další informace o tom, jak vytvořit žádost, naleznete v tématu [součást�
 
 Následující běžné definice slouží k sestavení hlavní část žádosti:
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|značka eTag     |         |   String      |  Volitelná značka eTag       |
+|eTag     |         |   String      |  Volitelná značka eTag       |
 |location     |  true (pravda)       |String         |   Umístění prostředku      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
-|SKU     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný identifikátor systému každého prostředku Azure     |
-|tags     |         | Object        |     Značky prostředků    |
+|Skladová položka     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný identifikátor systému každého prostředku Azure     |
+|značky     |         | Object        |     Značky prostředků    |
 
 Všimněte si, že název trezoru a název skupiny prostředků jsou k dispozici v identifikátoru URI PUT. Tělo požadavku určuje umístění.
 

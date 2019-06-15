@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070355"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -276,6 +276,7 @@ Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/
 
 ### <a name="sql-server-agent"></a>Agent SQL Server
 
+- Povolení a zakázání agenta systému SQL Server není aktuálně podporován ve spravované instanci. Vždy je spuštěn Agent serveru SQL.
 - Nastavení agenta systému SQL Server jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno. 
 - Úlohy
   - Podporují se kroky úlohy T-SQL.
@@ -456,13 +457,13 @@ Různé instance služby Service broker se nepodporuje:
 - `Extended stored procedures` nejsou podporovány, což zahrnuje `sp_addextendedproc`  a `sp_dropextendedproc`. Zobrazit [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. Zobrazit [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
-## <a name="Environment"></a>Omezení Environmet
+## <a name="Environment"></a>Omezení prostředí
 
 ### <a name="subnet"></a>Podsíť
 - V podsíti vyhrazená pro vaši Managed Instance nelze umístit všechny další prostředky (například virtuální počítače). Tyto prostředky umístěte do jiné podsítě.
 - Podsíť musí mít dostatečný počet dostupných [IP adresy](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Minimální hodnota je 16, zatímco doporučení je k dispozici alespoň 32 IP adres v podsíti.
 - [Koncové body služeb nelze přidružit podsíť spravované instance](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Ujistěte se, že při vytváření virtuální sítě je zakázána možnost koncových bodů služby.
-- Počet a typy instancí, které můžete umístit do podsítě mají některé [omezení a omezení](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Počet virtuálních jader a typy instancí, které můžete nasadit v oblasti mají některé [omezení a limity](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Zde jsou některé [pravidel zabezpečení, která se musí použít na podsítě](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
 ### <a name="vnet"></a>VNET

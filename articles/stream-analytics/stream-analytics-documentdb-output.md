@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60402266"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
@@ -29,7 +29,7 @@ Pro ty, kteří zkušenosti se službou Cosmos DB, podívejte se na [výuky pro 
 Výstup Azure Cosmos DB ve službě Stream Analytics, který umožňuje zapisovat datový proud zpracování výsledky jako výstup ve formátu JSON do vašeho kolekcí Cosmos DB. Stream Analytics nepodporuje vytváření kolekcí v databázi, místo toho by bylo potřeba vytvořit předem. Je to tak, aby fakturačních nákladů kolekce Cosmos DB se řídí vám a tak, aby mohli vyladit výkon, konzistence a kapacitu vaší kolekce přímo pomocí [API služby Cosmos DB](https://msdn.microsoft.com/library/azure/dn781481.aspx).
 
 > [!Note]
-> 0.0.0.0 je nutné přidat do seznamu povolených IP adres ze brána firewall služby Azure Cosmos DB.
+> 0\.0.0.0 je nutné přidat do seznamu povolených IP adres ze brána firewall služby Azure Cosmos DB.
 
 Některé možnosti kolekce Cosmos DB je podrobně popsaný níže.
 
@@ -70,7 +70,7 @@ Počet příchozích událostí do centra událostí je 2 × vyšší než poče
 
 ![porovnání metrik cosmos db](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-1.2 Stream Analytics je inteligentnější v využívá 100 % k dispozici propustnosti ve službě Cosmos DB s velmi málo opakovaná odeslání z omezení využití sítě/rychlosti. To poskytuje lepší prostředí pro jiné úlohy, jako jsou dotazy, které běží na kolekci ve stejnou dobu. Abyste si případně mohli vyzkoušet, jak Azure Stream Analytics horizontálně navýší kapacitu pomocí služby Cosmos DB jako jímka pro 1 do 10 tis. zpráv za sekundu, tady je [projekt ukázky v azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , který umožňuje udělat.
+1\.2 Stream Analytics je inteligentnější v využívá 100 % k dispozici propustnosti ve službě Cosmos DB s velmi málo opakovaná odeslání z omezení využití sítě/rychlosti. To poskytuje lepší prostředí pro jiné úlohy, jako jsou dotazy, které běží na kolekci ve stejnou dobu. Abyste si případně mohli vyzkoušet, jak Azure Stream Analytics horizontálně navýší kapacitu pomocí služby Cosmos DB jako jímka pro 1 do 10 tis. zpráv za sekundu, tady je [projekt ukázky v azure](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , který umožňuje udělat.
 Mějte prosím na paměti, že propustnost výstupu služby Cosmos DB je identická se změnou 1.0 a 1.1. Protože 1.2 není aktuálně výchozí nastavení, můžete [nastavit úroveň kompatibility](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) pro úlohu Stream Analytics pomocí portálu nebo pomocí [vytvořit úlohu volání rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Má *důrazně doporučujeme* 1.2 úrovni kompatibility Azure Stream Analytics pomocí služby Cosmos DB. 
 
 

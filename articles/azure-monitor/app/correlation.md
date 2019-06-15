@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 030259f7773435760c09afd25ca674b63bb1b3ca
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073243"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -35,7 +35,7 @@ Všechny odchozí operace, jako je například HTTP volání pro jiné komponent
 
 Zobrazení distribuovaných logické operace můžete vytvářet pomocí `operation_Id`, `operation_parentId`, a `request.id` s `dependency.id`. Tato pole také definovat pořadí příčinnou souvislost volání telemetrická data.
 
-V prostředí mikroslužeb trasování z komponenty přejít na položky jiného úložiště. Každá komponenta může mít svůj vlastní Instrumentační klíč ve službě Application Insights. K získání telemetrických informací o logické operace, musíte zobrazit dotaz data z každé položce úložiště. Po velký počet položek úložiště, které budete potřebovat nápovědu o tom, kde hledat další. Datový model Application Insights definuje dvě pole pro vyřešení tohoto problému: `request.source` a `dependency.target`. První pole určuje komponentu, závislost žádost iniciovala a druhý určuje, jaká součást vrátil odpověď volání závislostí.
+V prostředí mikroslužeb trasování z komponenty přejít na položky jiného úložiště. Každá komponenta může mít svůj vlastní Instrumentační klíč ve službě Application Insights. K získání telemetrických informací o logické operace, uživatelského rozhraní Application Insights zadávání dotazů na data z každé položce úložiště. Po velký počet položek úložiště, které budete potřebovat nápovědu o tom, kde hledat další. Datový model Application Insights definuje dvě pole pro vyřešení tohoto problému: `request.source` a `dependency.target`. První pole určuje komponentu, závislost žádost iniciovala a druhý určuje, jaká součást vrátil odpověď volání závislostí.
 
 ## <a name="example"></a>Příklad:
 
@@ -51,12 +51,12 @@ Spuštěním dotazu lze analyzovat výsledná telemetrická data:
 
 Ve výsledcích, mějte na paměti, že všechny položky telemetrie sdílet kořenovou `operation_Id`. Při volání Ajax proběhne na stránce nové jedinečné ID (`qJSXU`) je přiřazen k telemetrii závislostí a ID zobrazení stránky se používá jako `operation_ParentId`. Požadavek serveru použije ID Ajax jako `operation_ParentId`.
 
-| itemType   | jméno                      | ID           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Základní stránka                |              | STYz               | STYz         |
-| závislost | / GET Home/Stock           | qJSXU        | STYz               | STYz         |
-| žádost    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| závislost | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
+| Závislost | / GET Home/Stock           | qJSXU        | STYz               | STYz         |
+| request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| Závislost | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
 Při volání `GET /api/stock/value` se provádí na externí služby, chcete znát identitu serveru, abyste mohli nastavit `dependency.target` pole odpovídajícím způsobem. Když nepodporuje externí služby monitorování, `target` je nastavena na název hostitele služby (například `stock-prices-api.com`). Nicméně, pokud služba identifikuje vrácením předdefinované záhlaví HTTP `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování pomocí dotazu na telemetrická data ze služby Application Insights.
 

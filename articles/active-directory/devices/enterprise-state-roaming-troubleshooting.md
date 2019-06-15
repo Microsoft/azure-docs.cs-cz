@@ -20,10 +20,10 @@ ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353172"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
@@ -71,7 +71,7 @@ Tato část poskytuje návrhy na řešení potíží a Diagnostikujte problémy 
 Enterprise State Roaming vyžaduje zařízení k registraci v Azure AD. I když nejsou specifické pro Enterprise State Roaming, postupujte podle pokynů níže může pomoct potvrdit, že klienta pro Windows 10 je zaregistrován a potvrdit stav kryptografický otisk, adresa URL nastavení služby Azure AD, NGC a další informace.
 
 1.  Otevřete příkazový řádek, který je pozastavené. Pokud chcete udělat ve Windows, otevřete Spouštěč spustit (Win + R) a zadejte "cmd" otevřete.
-2.  Jakmile příkazový řádek se otevře, zadejte "*/status dsregcmd.exe*".
+2.  Jakmile příkazový řádek se otevře, zadejte " */status dsregcmd.exe*".
 3.  Pro očekávaný výstup **AzureAdJoined** pole hodnota by měla být "Ano", **WamDefaultSet** pole hodnota by měla být "Ano" a **WamDefaultGUID** pole hodnota by měla být identifikátor GUID s "(Azure AD)" na konci.
 
 **Potenciální problém**: **WamDefaultSet** a **AzureAdJoined** "Ne" mají hodnoty pole, zařízení je připojené k doméně a registrované v Azure AD i ne synchronizaci zařízení. Pokud je to zobrazeno, zařízení mohou muset počkat, než zásady a použít nebo ověřování pro zařízení se nezdařila při připojování ke službě Azure AD. Uživatel může mít počkat několik hodin pro zásadu použít. Při řešení potíží může zahrnovat odhlásit a znovu v opakování pokusu o automatickou registraci, nebo spouštění úloh v Plánovači úloh. V některých případech se systémem "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
@@ -116,7 +116,7 @@ Ujistěte se, že má klient v1511 Windows 10. července 2016 kumulativní aktua
 Aby se zabránilo úniku dat, data, která je pak chráněn rozhraním [Windows Information Protection](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip) nebude synchronizovat prostřednictvím Enterprise State Roaming pro zařízení s Windows 10 Anniversary Update.
 
 **Doporučená akce**  
-Žádné. Tento problém může vyřešit budoucí aktualizace Windows.
+Žádné Tento problém může vyřešit budoucí aktualizace Windows.
 
 ---
 
@@ -125,7 +125,7 @@ Aby se zabránilo úniku dat, data, která je pak chráněn rozhraním [Windows 
 Zařízení, která jsou připojená k doméně nedojde k synchronizaci nastavení datum, čas a oblasti: Automatický čas. Pomocí automatického času může přepsat další nastavení datum, čas a oblast a tato nastavení nejsou pro synchronizaci. 
 
 **Doporučená akce**  
-Žádné. 
+Žádné 
 
 ---
 
@@ -143,7 +143,7 @@ Ujistěte se, že má klient Windows 10 v1511 kumulativní aktualizace ([KB31407
 Pokud se pokusíte přihlásit k zařízení Windows pomocí čipové karty nebo virtuální čipovou kartu, synchronizovat nastavení přestanou fungovat.     
 
 **Doporučená akce**  
-Žádné. Tento problém může vyřešit budoucí aktualizace Windows.
+Žádné Tento problém může vyřešit budoucí aktualizace Windows.
 
 ---
 

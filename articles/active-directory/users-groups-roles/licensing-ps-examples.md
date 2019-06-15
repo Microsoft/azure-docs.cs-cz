@@ -14,16 +14,16 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc6e31afbb7ced4699afef38b67b637914198e4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065501"
 ---
-# <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell a Graph pro licencování na základě skupiny ve službě Azure AD
 
-Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně je omezená podpora prostředí PowerShell a Microsoft Graph. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. Tento dokument obsahuje příklady, jaké jsou možnosti.
+Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně podpora prostředí PowerShell a Microsoft Graph je omezena na operacím jen pro čtení. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. Tento dokument obsahuje příklady, jaké jsou možnosti.
 
 > [!NOTE]
 > Než začnete, spuštěním rutin, ujistěte se, že připojení k vaší organizaci poprvé, spuštěním `Connect-MsolService`  rutiny.

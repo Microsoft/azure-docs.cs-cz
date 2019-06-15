@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/10/2019
+ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: e992aae17f1217803b411a49c5d942efc501fbdc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: fed991193e8d4a1f8e4e2fcf75ef8e2bf0d0a8d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606973"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074296"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -89,18 +89,18 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |MaxOperationTimeout |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Dynamické| Zadejte časový interval v sekundách. Maximální globální časový limit pro operace na ClusterManager zpracování interně. |
 |MaxTimeoutRetryBuffer | Čas v sekundách, výchozí hodnota je 600 |Dynamické|Zadejte časový interval v sekundách. Časový limit maximální operace při opakování interně z důvodu vypršení časového limitu je `<Original Time out> + <MaxTimeoutRetryBuffer>`. V krocích po MinOperationTimeout se přidá další časový limit. |
 |MinOperationTimeout | Čas v sekundách, výchozí hodnota je 60 |Dynamické|Zadejte časový interval v sekundách. Minimální globální časový limit pro operace na ClusterManager zpracování interně. |
-|MinReplicaSetSize |Int, výchozí hodnota je 3 |Nepovolené|MinReplicaSetSize pro ClusterManager. |
-|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovolené|PlacementConstraints pro ClusterManager. |
-|QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovolené| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ClusterManager. |
-|ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovolené|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro ClusterManager. |
+|MinReplicaSetSize |Int, výchozí hodnota je 3 |Nepovoleno|MinReplicaSetSize pro ClusterManager. |
+|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovoleno|PlacementConstraints pro ClusterManager. |
+|QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovoleno| Zadejte časový interval v sekundách. QuorumLossWaitDuration pro ClusterManager. |
+|ReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovoleno|Zadejte časový interval v sekundách. ReplicaRestartWaitDuration pro ClusterManager. |
 |ReplicaSetCheckTimeoutRollbackOverride |Čas v sekundách, výchozí hodnota je 1200 |Dynamické| Zadejte časový interval v sekundách. Pokud ReplicaSetCheckTimeout nastavená na maximální hodnotu DWORD; pak je přepsáno hodnotou tato konfigurace za účelem vrácení zpět. Hodnota použitá vpřed je nikdy přepsána. |
 |SkipRollbackUpdateDefaultService | Logická hodnota, výchozí hodnota je false |Dynamické|SP přeskočí vracení k uloženým standardním aktualizace výchozí služby během vrácení upgradu aplikace. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je (3600.0 * 2)|Nepovolené|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro ClusterManager. |
-|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovolené|TargetReplicaSetSize pro ClusterManager. |
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je (3600.0 * 2)|Nepovoleno|Zadejte časový interval v sekundách. StandByReplicaKeepDuration pro ClusterManager. |
+|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovoleno|TargetReplicaSetSize pro ClusterManager. |
 |UpgradeHealthCheckInterval |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Frekvence stavu kontroluje během upgradu monitorovanou aplikaci |
 |UpgradeStatusPollInterval |Čas v sekundách, výchozí hodnota je 60 |Dynamické|Frekvence dotazování na stav upgradu aplikace. Tato hodnota určuje frekvence aktualizace pro každé volání GetApplicationUpgradeProgress |
 
-## <a name="common"></a>Obecné
+## <a name="common"></a>Společné
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -125,14 +125,19 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
+|AdminOnlyHttpAudit |Logická hodnota, výchozí hodnota je true | Dynamické | Vylučte požadavky HTTP, které nemají vliv na stav clusteru z auditování. Aktuálně; nevylučují se pouze žádosti typu "GET"; ale to se může změnit. |
 |AppDiagnosticStoreAccessRequiresImpersonation |Logická hodnota, výchozí hodnota je true | Dynamické |Určuje, jestli je potřeba zosobnění, při přístupu k diagnostiky ukládá jménem aplikace. |
 |AppEtwTraceDeletionAgeInDays |Int, výchozí hodnota je 3 | Dynamické |Počet dní, po jejichž uplynutí jsme odstranit staré soubory ETL trasování událostí pro Windows trasování aplikací obsahující. |
 |ApplicationLogsFormatVersion |int, výchozí je 0 | Dynamické |Verze aplikace protokoluje formátu. Podporované hodnoty jsou 0 a 1. Verze 1 obsahuje více polí ze záznamu události trasování událostí pro Windows než verze 0. |
+|AuditHttpRequests |Logická hodnota, výchozí hodnota je false | Dynamické | Zapněte auditování protokolu HTTP nebo vypnout. Účelem auditování je zobrazíte aktivity, které byly provedeny clusteru; včetně, kdo inicioval žádost. Všimněte si, že se jedná o nejlepší pokus o protokolování. a může dojít ke ztrátě trasování. Požadavky HTTP s ověřováním "User", není zaznamenána. |
+|CaptureHttpTelemetry|Logická hodnota, výchozí hodnota je false | Dynamické | Telemetrie HTTP zapněte nebo vypnout. Účelem telemetrických dat je pro Service Fabric budete moci zachytávat data telemetrie vám pomůže plánovat budoucí práce a určení problémových oblastí. Telemetrie nezaznamenává všechny osobní údaje nebo textu požadavku. Telemetrie zachycuje všechny požadavky HTTP, pokud jinak nakonfigurován. |
 |ClusterId |String | Dynamické |Jedinečné id clusteru. Tím se vygeneruje, když se cluster vytvoří. |
 |ConsumerInstances |String | Dynamické |Seznam instancí DCA příjemce. |
 |DiskFullSafetySpaceInMB |Int, výchozí hodnota je 1024 | Dynamické |Zbývající místo na disku v MB k ochraně před používá DCA. |
 |EnableCircularTraceSession |Logická hodnota, výchozí hodnota je false | Statická |Příznak určuje, zda má být použita cyklické trasování relace. |
 |EnableTelemetry |Logická hodnota, výchozí hodnota je true | Dynamické |Tím vytvořím k zapnutí nebo vypnutí telemetrie. |
+|FailuresOnlyHttpTelemetry | Logická hodnota, výchozí hodnota je true | Dynamické | Pokud je povolené zachycování telemetrie HTTP; zachycení pouze neúspěšné požadavky. To je pomoct Omezit počtu událostí vygenerovaných telemetrie. |
+|HttpTelemetryCapturePercentage | Int, výchozí hodnota je 50 | Dynamické | Pokud je povolené zachycování telemetrie HTTP; zachycení pouze náhodné procento žádostí. To je pomoct Omezit počtu událostí vygenerovaných telemetrie. |
 |MaxDiskQuotaInMB |Int, výchozí hodnota je 65536 | Dynamické |Disková kvóta v MB pro Windows Fabric protokolových souborech. |
 |ProducerInstances |String | Dynamické |Seznam instancí DCA výrobce. |
 
@@ -217,14 +222,14 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ExpectedNodeFabricUpgradeDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávané době trvání pro uzel k upgradu při upgradu Windows Fabric. |
 |ExpectedReplicaUpgradeDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamické|Zadejte časový interval v sekundách. Toto je očekávané době trvání pro všechny repliky k upgradu na uzlu během upgradu aplikace. |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|Logická hodnota, výchozí hodnotu TRUE|Dynamické|Pokud nastavenou na hodnotu true; repliky s cílovou velikost sady replik 1 budou moci přesunout během upgradu. |
-|MinReplicaSetSize|Int, výchozí hodnota je 3|Nepovolené|Toto je velikost minimální sady replik pro převzetí služeb při selhání. Pokud klesne pod tuto hodnotu; počet aktivní repliky převzetí služeb při selhání převzetí služeb při selhání, bude taková změny do clusteru, dokud alespoň minimální počet replik se obnoví. |
-|PlacementConstraints|řetězec, výchozí hodnota je ""|Nepovolené|Žádné omezení umístění pro repliky Správce převzetí služeb při selhání |
+|MinReplicaSetSize|Int, výchozí hodnota je 3|Nepovoleno|Toto je velikost minimální sady replik pro převzetí služeb při selhání. Pokud klesne pod tuto hodnotu; počet aktivní repliky převzetí služeb při selhání převzetí služeb při selhání, bude taková změny do clusteru, dokud alespoň minimální počet replik se obnoví. |
+|PlacementConstraints|řetězec, výchozí hodnota je ""|Nepovoleno|Žádné omezení umístění pro repliky Správce převzetí služeb při selhání |
 |PlacementTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(600)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro dosažení počtu cílových replik; po jejímž uplynutí se iniciovalo sestava stavu upozornění |
 |QuorumLossWaitDuration |Čas v sekundách, výchozí hodnota je hodnota MaxValue |Dynamické|Zadejte časový interval v sekundách. Toto je maximální dobu trvání, pro kterou jsou povoleny oddíl a být ve stavu ztrátě kvora. Pokud oddíl je stále ve ztrátě kvora po tuto dobu trvání; oddíl je obnovena ze ztráty kvora vycházet dolů repliky jako ztracené. Všimněte si, že to může potenciálně dojít ke ztrátě dat. |
 |ReconfigurationTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(300)|Dynamické|Zadejte časový interval v sekundách. Časový limit pro změnu konfigurace; po jejímž uplynutí se iniciovalo sestava stavu upozornění |
-|ReplicaRestartWaitDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Nepovolené|Zadejte časový interval v sekundách. Toto je ReplicaRestartWaitDuration pro FMService |
-|StandByReplicaKeepDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Nepovolené|Zadejte časový interval v sekundách. Toto je StandByReplicaKeepDuration pro FMService |
-|TargetReplicaSetSize|Int, výchozí hodnota je 7|Nepovolené|Toto je cílový počet převzetí služeb při selhání replik, které bude udržovat Windows Fabric. Větší číslo má za následek vyšší spolehlivost dat převzetí služeb při selhání; s na úkor výkonu malé. |
+|ReplicaRestartWaitDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Nepovoleno|Zadejte časový interval v sekundách. Toto je ReplicaRestartWaitDuration pro FMService |
+|StandByReplicaKeepDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Nepovoleno|Zadejte časový interval v sekundách. Toto je StandByReplicaKeepDuration pro FMService |
+|TargetReplicaSetSize|Int, výchozí hodnota je 7|Nepovoleno|Toto je cílový počet převzetí služeb při selhání replik, které bude udržovat Windows Fabric. Větší číslo má za následek vyšší spolehlivost dat převzetí služeb při selhání; s na úkor výkonu malé. |
 |UserMaxStandByReplicaCount |int, výchozí je 1 |Dynamické|Výchozí maximální počet replik StandBy, které systém uchovává pro uživatele služby. |
 |UserReplicaRestartWaitDuration |Čas v sekundách, výchozí hodnota je 60.0 * 30 |Dynamické|Zadejte časový interval v sekundách. Když repliku trvalý ocitne mimo provoz; Windows Fabric počká na této hodnotě duration repliky a navrhněte zpět před vytvořením nové repliky nahrazení (které by vyžadovaly kopii stavu). |
 |UserStandByReplicaKeepDuration |Čas v sekundách, výchozí hodnota je 3600.0 * 24 * 7 |Dynamické|Zadejte časový interval v sekundách. Když repliku trvalý vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
@@ -246,7 +251,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |StoredChaosEventCleanupIntervalInSeconds | Int, výchozí hodnota je 3600 |Statická|To je, jak často se bude auditovat úložišti pro vyčištění Pokud počet událostí, které je více než 30000; čištění se rozjíždí. |
 |TargetReplicaSetSize |int, výchozí je 0 |Statická|NOT_PLATFORM_UNIX_START TargetReplicaSetSize pro FaultAnalysisService. |
 
-## <a name="federation"></a>Federace
+## <a name="federation"></a>metadata
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -313,7 +318,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |MaxPercentDeltaUnhealthyNodes|Int, výchozí hodnota je 10|Statická|Vyhodnocení zásad upgradu stav clusteru: maximální procento rozdílových uzlů není v pořádku, povolen pro cluster se stavem v pořádku |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, výchozí je 15|Statická|Vyhodnocení zásad upgradu stav clusteru: maximální procento rozdílových uzlů není v pořádku v upgradovací doméně povolený pro cluster se stavem v pořádku |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Hostování
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -399,7 +404,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |WriteBufferMemoryPoolMaximumInKB | int, výchozí je 0 |Dynamické|Číslo KB umožňující paměti fondu vyrovnávacích pamětí zápisu rozšířit až. Použijte hodnotu 0 označující bez omezení. |
 |WriteBufferMemoryPoolMinimumInKB |Int, výchozí hodnota je 8388608 |Dynamické|Číslo KB k začátku přidělení pro fond vyrovnávací paměti zápisu. Použijte hodnotu 0 označující bez omezení, výchozí by měl být konzistentní s SharedLogSizeInMB níže. |
 
-## <a name="management"></a>Vedení
+## <a name="management"></a>Správa
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
@@ -439,16 +444,16 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |MaxNamingServiceHealthReports | Int, výchozí hodnota je 10 |Dynamické|Maximální počet pomalých operací, které ukládají pojmenování služby v jednom okamžiku sestavy není v pořádku. Pokud je 0; všechny operace pomalé se odesílají. |
 |MaxOperationTimeout |Čas v sekundách, výchozí hodnota je 600 |Dynamické|Zadejte časový interval v sekundách. Maximální časový limit pro klientské operace povolena. Odmítne požadavky zadávání většího časového limitu. |
 |MaxOutstandingNotificationsPerClient |Int, výchozí hodnota je 1000 |Dynamické|Maximální počet nezpracovaných oznámení před registrace klienta je vynuceně ukončeno brány. |
-|MinReplicaSetSize | Int, výchozí hodnota je 3 |Nepovolené| Minimální počet replik pojmenování Service vyžadovaných k zápisu do dokončení aktualizace. Pokud jsou repliky míň než toto aktivní v systému spolehlivost systému zakazuje aktualizace Store služba pojmenování dokud repliky se obnoví. Tato hodnota by měla být nikdy víc než TargetReplicaSetSize. |
-|PartitionCount |Int, výchozí hodnota je 3 |Nepovolené|Počet oddílů služby pojmenování úložiště vytvořit. Každý oddíl vlastní jeden klíč oddílu, který odpovídá jeho index; takže klíče oddílů [0; PartitionCount) neexistuje. Zvýšení počtu oddílů zvýšení pojmenování Service měřítka, pojmenování Service můžete provést na snížením průměrné velikosti data ukládaná společností jakákoli replika zálohování nastavte; a účtuje se cenou vyšší využití prostředků (od PartitionCount * musí být udržovány ReplicaSetSize služby repliky).|
-|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovolené| Omezení umístění pro službu pojmenování. |
-|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovolené| Zadejte časový interval v sekundách. Při pojmenování Service dostane do ztráty kvora; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání bude vezměte v úvahu dolů repliky jako ztracené; a pokud se pokusíte obnovit kvora. Ne, která to může způsobit ztrátu dat. |
+|MinReplicaSetSize | Int, výchozí hodnota je 3 |Nepovoleno| Minimální počet replik pojmenování Service vyžadovaných k zápisu do dokončení aktualizace. Pokud jsou repliky míň než toto aktivní v systému spolehlivost systému zakazuje aktualizace Store služba pojmenování dokud repliky se obnoví. Tato hodnota by měla být nikdy víc než TargetReplicaSetSize. |
+|PartitionCount |Int, výchozí hodnota je 3 |Nepovoleno|Počet oddílů služby pojmenování úložiště vytvořit. Každý oddíl vlastní jeden klíč oddílu, který odpovídá jeho index; takže klíče oddílů [0; PartitionCount) neexistuje. Zvýšení počtu oddílů zvýšení pojmenování Service měřítka, pojmenování Service můžete provést na snížením průměrné velikosti data ukládaná společností jakákoli replika zálohování nastavte; a účtuje se cenou vyšší využití prostředků (od PartitionCount * musí být udržovány ReplicaSetSize služby repliky).|
+|PlacementConstraints | řetězec, výchozí hodnota je "" |Nepovoleno| Omezení umístění pro službu pojmenování. |
+|QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je hodnota MaxValue |Nepovoleno| Zadejte časový interval v sekundách. Při pojmenování Service dostane do ztráty kvora; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání bude vezměte v úvahu dolů repliky jako ztracené; a pokud se pokusíte obnovit kvora. Ne, která to může způsobit ztrátu dat. |
 |RepairInterval | Čas v sekundách, výchozí hodnota je 5 |Statická| Zadejte časový interval v sekundách. Interval, ve kterém se spustí pojmenování opravu nekonzistence mezi autority vlastníka a název vlastníka. |
-|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovolené| Zadejte časový interval v sekundách. Když se replika Naming Service ocitne mimo provoz; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání se začnou nahradit replik, které jsou mimo provoz (ji ještě je nepovažuje ztráty). |
+|ReplicaRestartWaitDuration | Čas v sekundách, výchozí hodnota je (60.0 * 30)|Nepovoleno| Zadejte časový interval v sekundách. Když se replika Naming Service ocitne mimo provoz; Tento časovač spustí. Po jeho vypršení převzetí služeb při selhání se začnou nahradit replik, které jsou mimo provoz (ji ještě je nepovažuje ztráty). |
 |ServiceDescriptionCacheLimit | int, výchozí je 0 |Statická| Maximální počet položek udržovat v mezipaměti popis služby LRU Naming Store Service (nastavena na hodnotu 0 pro žádné omezení). |
 |ServiceNotificationTimeout |Čas v sekundách, výchozí hodnota je 30 |Dynamické|Zadejte časový interval v sekundách. Časový limit při doručování oznámení služby klienta. |
-|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 3600.0 * 2 |Nepovolené| Zadejte časový interval v sekundách. Pokud replika Naming Service vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
-|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovolené|Nastaví počet replik pro každý oddíl úložiště pojmenování Service. Zvýšení počtu sady replik zvyšuje úroveň spolehlivosti informace ve Store služba pojmenování; snížení změn, informace, se ztratí v důsledku selhání uzlů; za cenu zvýšení zatížení Windows Fabric a dobu trvá provádění aktualizací na pojmenování data.|
+|StandByReplicaKeepDuration | Čas v sekundách, výchozí hodnota je 3600.0 * 2 |Nepovoleno| Zadejte časový interval v sekundách. Pokud replika Naming Service vrátit z dolů stavu; To může mít již bylo nahrazeno. Tento časovač Určuje, jak dlouho převzetí služeb při selhání budete mít pohotovostní repliky před budou zrušeny. |
+|TargetReplicaSetSize |Int, výchozí hodnota je 7 |Nepovoleno|Nastaví počet replik pro každý oddíl úložiště pojmenování Service. Zvýšení počtu sady replik zvyšuje úroveň spolehlivosti informace ve Store služba pojmenování; snížení změn, informace, se ztratí v důsledku selhání uzlů; za cenu zvýšení zatížení Windows Fabric a dobu trvá provádění aktualizací na pojmenování data.|
 
 ## <a name="nodebufferpercentage"></a>NodeBufferPercentage
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
@@ -478,7 +483,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|ClusterId |řetězec, výchozí hodnota je "" |Nepovolené|X509 certifikátu úložiště používané konvencemi prostředků infrastruktury pro ochranu konfigurace. |
+|ClusterId |řetězec, výchozí hodnota je "" |Nepovoleno|X509 certifikátu úložiště používané konvencemi prostředků infrastruktury pro ochranu konfigurace. |
 
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 
@@ -636,9 +641,9 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ClientIdentities|řetězec, výchozí hodnota je ""|Dynamické|Windows identity FabricClient; pojmenování brána používá toto povolit příchozí připojení. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny. Pro usnadnění práce; účet, který spouští fabric.exe je automaticky povolen; Proto jsou skupině ServiceFabricAllowedUsers a ServiceFabricAdministrators. |
 |ClientRoleEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Určuje, zda je povolena klientská role; Pokud je nastavena na hodnotu true; Klienti se přiřadí role na základě jejich identit. Pro V2; Umožňuje to znamená, že klient není v AdminClientCommonNames/AdminClientIdentities může být vykonávána pouze operace určené jen pro čtení. |
 |ClusterCertThumbprints|řetězec, výchozí hodnota je ""|Dynamické|Kryptografické otisky certifikátů, moct připojit ke clusteru; seznam čárkami oddělených názvů. |
-|ClusterCredentialType|řetězec, výchozí je "None"|Nepovolené|Určuje typ zabezpečovací přihlašovací údaje pro použití za účelem zabezpečení clusteru. Platné hodnoty jsou "None/X509/Windows" |
+|ClusterCredentialType|řetězec, výchozí je "None"|Nepovoleno|Určuje typ zabezpečovací přihlašovací údaje pro použití za účelem zabezpečení clusteru. Platné hodnoty jsou "None/X509/Windows" |
 |ClusterIdentities|řetězec, výchozí hodnota je ""|Dynamické|Identity Windows uzlů clusteru; používá pro autorizaci členství v clusteru. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny |
-|ClusterSpn|řetězec, výchozí hodnota je ""|Nepovolené|Hlavní název služby clusteru; Když fabric funguje jako jednu doménu uživatele (uživatelský účet gMSA a domény). Je název SPN naslouchacích procesů zapůjčení a moduly pro naslouchání v fabric.exe: federační naslouchacích procesů; naslouchací procesy interní replikace; naslouchací proces služby modulu runtime a pojmenování naslouchací proces brány. To by měla zůstat prázdná při fabric funguje jako účty počítače; v takovém případě připojení na straně služby compute naslouchací proces hlavního názvu služby z naslouchacího procesu přenosu adresy. |
+|ClusterSpn|řetězec, výchozí hodnota je ""|Nepovoleno|Hlavní název služby clusteru; Když fabric funguje jako jednu doménu uživatele (uživatelský účet gMSA a domény). Je název SPN naslouchacích procesů zapůjčení a moduly pro naslouchání v fabric.exe: federační naslouchacích procesů; naslouchací procesy interní replikace; naslouchací proces služby modulu runtime a pojmenování naslouchací proces brány. To by měla zůstat prázdná při fabric funguje jako účty počítače; v takovém případě připojení na straně služby compute naslouchací proces hlavního názvu služby z naslouchacího procesu přenosu adresy. |
 |CrlCheckingFlag|uint, výchozí je 0x40000000|Dynamické|Výchozí příznak ověření řetězu certifikátu; může být přepsána specifické komponenty příznak; například Federation/X509CertChainFlags 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ Podle dwFlags CertGetCertificateChain je uvedeno pouze nastavení 0 zakáže seznamu CRL kontrola, zda úplný seznam podporovaných hodnot: https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx |
 |CrlDisablePeriod|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(15)|Dynamické|Zadejte časový interval v sekundách. Jak dlouho kontrola CRL je zakázaná pro daný certifikát po zjištění chyby offline; Pokud seznam CRL offline chybu můžete ignorovat. |
 |CrlOfflineHealthReportTtl|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(1440)|Dynamické|Zadejte časový interval v sekundách. |
@@ -677,7 +682,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |CreateVolume|řetězec, výchozí je "Admin"|Dynamické|Vytvoří svazek |
 |DeactivateNode |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro deaktivace uzlu. |
 |DeactivateNodesBatch |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro deaktivaci více uzlů. |
-|Odstranit |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro image ukládání operace odstranění klienta. |
+|Odstranění |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro image ukládání operace odstranění klienta. |
 |DeleteApplication |řetězec, výchozí je "Admin" |Dynamické| Konfigurace zabezpečení pro odstranění aplikace. |
 |DeleteComposeDeployment|řetězec, výchozí je "Admin"| Dynamické|Odstraní nasazení compose |
 |DeleteGatewayResource|řetězec, výchozí je "Admin"| Dynamické|Odstraní prostředek brány |
@@ -798,30 +803,30 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, výchozí hodnota je None|Dynamické|Toto je seznam dvojic "Name" a "Hodnota". Každý "Name" je běžný název subjektu nebo DnsName X509 certifikáty, které jsou autorizované pro operace serveru. Pro daný "název", "Value" je na čárkami oddělený seznam kryptografické otisky certifikátů pro vystavitele, připínání, pokud není prázdná, přímého vystavitele certifikátů serveru musí být v seznamu.|
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
 |ContainerNetworkName|řetězec, výchozí hodnota je ""| Statická |Název sítě pro použití při vytváření kontejneru sítě.|
 |ContainerNetworkSetup|Logická hodnota, výchozí hodnotu FALSE| Statická |Určuje, zda nastavení sítě kontejneru.|
-|FabricDataRoot |String | Nepovolené |Service Fabric data kořenový adresář. Výchozí pro Azure je d:\svcfab |
-|FabricLogRoot |String | Nepovolené |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
+|FabricDataRoot |String | Nepovoleno |Service Fabric data kořenový adresář. Výchozí pro Azure je d:\svcfab |
+|FabricLogRoot |String | Nepovoleno |Service fabric protokolu kořenový adresář. Je to, kde jsou umístěny SF protokoly a trasování. |
 |NodesToBeRemoved|řetězec, výchozí hodnota je ""| Dynamické |Uzly, které byste měli odebrat jako součást konfigurace upgradu. (Pouze pro samostatné nasazení)|
-|ServiceRunAsAccountName |String | Nepovolené |Název účtu, pod kterým chcete spustit service fabric hostitele. |
-|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Nepovoleno|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
-|SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovolené |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
+|ServiceRunAsAccountName |String | Nepovoleno |Název účtu, pod kterým chcete spustit service fabric hostitele. |
+|SkipContainerNetworkResetOnReboot|Logická hodnota, výchozí hodnotu FALSE|Hodnotu NotAllowed|Určuje, zda se mají přeskočit obnovení kontejner sítě při restartování.|
+|SkipFirewallConfiguration |Logická hodnota, výchozí hodnota je false | Nepovoleno |Určuje, pokud nastavení brány firewall, který je potřeba nastavit v systému nebo ne. To platí jenom v případě, že používáte bránu windows firewall. Pokud používáte brány firewall třetích stran, pak je nutné otevřít porty pro systém a aplikace, aby používaly |
 
 ## <a name="tokenvalidationservice"></a>TokenValidationService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Zprostředkovatelé |řetězec, výchozí je "DSTS" |Statická|Čárkami oddělený seznam zprostředkovatelů ověření tokenu umožňující (platný zprostředkovatelé jsou: DSTS; AAD). Aktuálně lze kdykoli povolit pouze jednoho poskytovatele. |
+|Poskytovatelé |řetězec, výchozí je "DSTS" |Statická|Čárkami oddělený seznam zprostředkovatelů ověření tokenu umožňující (platný zprostředkovatelé jsou: DSTS; AAD). Aktuálně lze kdykoli povolit pouze jednoho poskytovatele. |
 
 ## <a name="traceetw"></a>Trasování/trasování událostí pro Windows
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-|Úroveň |Int, výchozí hodnota je 4 | Dynamické |Úroveň trasování událostí pro Windows trasování může přijmout hodnoty 1, 2, 3, 4. Podporovaná je nutné zachovat úroveň trasování na 4 |
+|Level |Int, výchozí hodnota je 4 | Dynamické |Úroveň trasování událostí pro Windows trasování může přijmout hodnoty 1, 2, 3, 4. Podporovaná je nutné zachovat úroveň trasování na 4 |
 
 ## <a name="transactionalreplicator"></a>Transakční Replikátor
 
@@ -866,12 +871,12 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 | --- | --- | --- | --- |
 |BaseUrl | řetězec, výchozí hodnota je "" |Statická|BaseUrl pro UpgradeService. |
 |ClusterId | řetězec, výchozí hodnota je "" |Statická|ClusterId pro UpgradeService. |
-|CoordinatorType | řetězec, výchozí je "WUTest"|Nepovolené|CoordinatorType pro UpgradeService. |
-|MinReplicaSetSize | Int, výchozí hodnota je 2 |Nepovolené| MinReplicaSetSize pro UpgradeService. |
+|CoordinatorType | řetězec, výchozí je "WUTest"|Nepovoleno|CoordinatorType pro UpgradeService. |
+|MinReplicaSetSize | Int, výchozí hodnota je 2 |Nepovoleno| MinReplicaSetSize pro UpgradeService. |
 |OnlyBaseUpgrade | Logická hodnota, výchozí hodnota je false |Dynamické|OnlyBaseUpgrade pro UpgradeService. |
-|PlacementConstraints |řetězec, výchozí hodnota je "" |Nepovolené|PlacementConstraints upgradu služby. |
+|PlacementConstraints |řetězec, výchozí hodnota je "" |Nepovoleno|PlacementConstraints upgradu služby. |
 |PollIntervalInSeconds|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60) |Dynamické|Zadejte časový interval v sekundách. Interval dotazování UpgradeService pro operace správy ARM. |
-|TargetReplicaSetSize | Int, výchozí hodnota je 3 |Nepovolené| TargetReplicaSetSize pro UpgradeService. |
+|TargetReplicaSetSize | Int, výchozí hodnota je 3 |Nepovoleno| TargetReplicaSetSize pro UpgradeService. |
 |TestCabFolder | řetězec, výchozí hodnota je "" |Statická| TestCabFolder for UpgradeService. |
 |X509FindType | řetězec, výchozí hodnota je ""|Dynamické| X509FindType pro UpgradeService. |
 |X509FindValue | řetězec, výchozí hodnota je "" |Dynamické| X509FindValue pro UpgradeService. |

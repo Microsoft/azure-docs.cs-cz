@@ -17,10 +17,10 @@ ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
 ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65594277"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
@@ -49,7 +49,7 @@ Všechny soubory Docker můžete najít na [Githubu](https://github.com/azure-ap
 
 Po spuštění integrované kontejneru Dockeru, ale ještě před aplikací je kód spuštěn, jsou spuštěny tyto příkazy nebo skripty.
 
-## <a name="management"></a>Vedení
+## <a name="management"></a>Správa
 
 **Co se stane při stisknutí tlačítka restartování na webu Azure Portal?**
 

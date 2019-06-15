@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059411"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytvořte clustery systému Apache Hadoop pomocí rozhraní Azure REST API
 
@@ -22,9 +22,6 @@ ms.locfileid: "64707349"
 Zjistěte, jak vytvořit cluster HDInsight pomocí šablony Azure Resource Manageru a rozhraní Azure REST API.
 
 Rozhraní Azure REST API umožňuje provádět operace správy služeb hostovaných na platformě Azure, včetně vytvoření nové prostředky, například clustery HDInsight.
-
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]  
 > Kroky v tomto dokumentu pomocí [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) nástroj ke komunikaci s rozhraním REST API Azure.
@@ -215,7 +212,7 @@ V tomto příkladu se používá v krocích v tomto dokumentu. V příkladu nahr
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="log-in-to-your-azure-subscription"></a>Přihlášení k předplatnému Azure
+## <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure.
 
 Postupujte podle kroků popsaných v [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) a připojte se k předplatnému pomocí `az login` příkazu.
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2019
+ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b40f62a90dbe7c822b95476abe6ec25cf3fb21d6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070030"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Image Red Hat Enterprise Linux v Azure
 Tento článek popisuje dostupných imagí Red Hat Enterprise Linux (RHEL) na webu Azure Marketplace spolu s zásady po jejich názvy a uchování.
@@ -63,9 +63,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 > Obecně platí, následuje porovnání verze k určení nejnovějšího pravidel [metoda CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
 
 ### <a name="current-naming-convention"></a>Aktuální zásady vytváření názvů
-Všechny aktuálně publikovaných imagí RHEL použít model průběžných plateb a jsou připojené k [Red Hat Update Infrastructure (RHUI) v Azure](https://aka.ms/rhui-update). Z důvodu omezení RHUI byla přijata novým zásadám vytváření názvů pro Image RHEL 7 řady. V tuto chvíli nebylo změněno řady systému RHEL 6 pojmenování.
+Všechny aktuálně publikovaných imagí RHEL použít model průběžných plateb a jsou připojené k [Red Hat Update Infrastructure (RHUI) v Azure](https://aka.ms/rhui-update). Byla přijata novým zásadám vytváření názvů pro řady imagí RHEL 7, ve kterých se schéma dělení disku (nezpracovaná, LVM) je zadán v SKU namísto verze. Verze image RHEL bude obsahovat buď 7 RAW nebo 7 LVM. V tuto chvíli nebylo změněno řady systému RHEL 6 pojmenování.
 
-Omezení je ve skutečnosti, že bez – selektivní `yum update` spustí pro virtuální počítač připojený k RHUI, verze RHEL se aktualizuje na nejnovější verzi aktuální řady. Další informace najdete v tématu [tento odkaz](https://aka.ms/rhui-update). Výsledkem může nejasnosti při zřízené image RHEL 7.2 RHEL 7.6 se stane po aktualizaci. Stále můžete zřídit ze starší image podle pokynů ve výše uvedených příkladech tak, že explicitně zadáte na požadovanou verzi. Pokud požadovaná verze není zadán při zřizování nové image RHEL 7, se zřídí nejnovější image.
+Bude existovat 2 typy image RHEL 7 SKU v tyto zásady vytváření názvů: Skladové položky, které uvádějí podverze a skladové položky, které ji nemají. Pokud chcete použít 7-RAW nebo 7 LVM SKU, můžete zadat podverze RHEL, kterou chcete nasadit ve verzi. Pokud se rozhodnete "posledního" verze, bude vytvořena nejnovější dílčí verzi RHEL.
 
 >[!NOTE]
 > RHEL for SAP sadu bitových kopií zůstane pevné verzi RHEL. V důsledku toho jejich zásady vytváření názvů obsahuje konkrétní verzi ve skladové Položce.
@@ -73,28 +73,65 @@ Omezení je ve skutečnosti, že bez – selektivní `yum update` spustí pro vi
 >[!NOTE]
 > RHEL 6 sadu bitových kopií nepřesunula k novým zásadám vytváření názvů.
 
+## <a name="extended-update-support-eus"></a>Aktualizace rozšířené podpory (EUS)
+Jako Image RHEL. 2019. dubna, jsou k dispozici, které jsou připojeny k úložišť rozšířenou podporu aktualizace (EUS) ve výchozím nastavení. Další podrobnosti o RHEL EUS jsou k dispozici v [dokumentace systému Red Hat](https://access.redhat.com/articles/rhel-eus).
+
+Pokyny o tom, jak přepnout virtuální počítač na EUS a další podrobnosti o EUS podporu ukončenou životností data jsou k dispozici [tady](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
+
+>[!NOTE]
+> EUS nepodporuje funkce RHEL. To znamená, že při instalaci balíčku, který je obvykle k dispozici z kanálu funkce RHEL, nebudete mít k tomu, když jste na EUS. Životní cyklus Red Hat funkce produktu je podrobně popsán [tady](https://access.redhat.com/support/policy/updates/extras/).
+
+### <a name="for-customers-that-want-to-use-eus-images"></a>Pro zákazníky, kteří chtějí používat EUS imagí:
+Zákazníci, které chcete použít Image, které jsou připojeny k úložištím EUS měli použít image RHEL, který obsahuje číslo podverze RHEL ve skladové Položce. Tyto Image bude nezpracovaná oddílů (tedy ne LVM).
+
+Například se může zobrazit následující 2 RHEL 7.4 dostupných imagí:
+```bash
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7.4:7.4.2019041718
+```
+V takovém případě `RedHat:RHEL:7.4:7.4.2019041718` bude připojen k úložištím EUS ve výchozím nastavení, a `RedHat:RHEL:7-RAW:7.4.2018010506` budou připojena k jiné EUS úložišť ve výchozím nastavení.
+
+### <a name="for-customers-that-dont-want-to-use-eus-images"></a>Pro zákazníky, které nechcete použít EUS imagí:
+Pokud nechcete použít obraz, který je připojený k EUS ve výchozím nastavení, nasazení, můžete použít bitovou kopii, která neobsahuje číslo podverze ve skladové Položce.
+
+#### <a name="rhel-images-with-eus"></a>Image RHEL s EUS
+V následující tabulce platí pro Image RHEL, které obsahují podverze ve skladové Položce.
+
+>[!NOTE]
+> V době psaní mají EUS podporují pouze RHEL 7.4 a pozdější podverze. EUS už není podporovaná pro RHEL < = 7.3.
+
+Podverze |Obrázek EUS – příklad              |Stav EUS                                                   |
+:-------------|:------------------------------|:------------------------------------------------------------|
+RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | Imagí publikovaných dubna 2019 a později bude EUS ve výchozím nastavení|
+RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | Imagí publikovaných 2019 dne a později bude EUS ve výchozím nastavení |
+RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | Obrázky publikovaná. května 2019 a později bude EUS ve výchozím nastavení  |
+RHEL 8.0      |neuvedeno                            | Žádné EUS aktuálně aktuálně dostupných imagí                 |
+
+
+## <a name="list-of-rhel-images-available"></a>Seznam dostupných imagí RHEL
 Tyto nabídky jsou že skladové položky jsou aktuálně k dispozici pro obecné použití:
 
 Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
-RHEL | NEZPRACOVANÁ 7 | RAW | Linuxový agent | RHEL 7 řady imagí
-| | 7-LVM | LVM | Linuxový agent | RHEL 7 řady imagí
-| | 7-RAW-CI | RAW-CI | Cloud-init | RHEL 7 řady imagí
-| | 6.7 | RAW | Linuxový agent | Image RHEL 6.7, staré pojmenování
-| | 6.8 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 6.8 stejný
-| | 6.9 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 6.9 stejný
-| | 6.10 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 6.10 stejný
-| | 7.2 | RAW | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.2
-| | 7.3 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 7.3 stejný
-| | 7.4 | RAW | Linuxový agent | Jak je uvedeno výše pro RHEL 7.4 stejný
-| | 7.5 | RAW | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.5
-RHEL-SAP | 7.4 | LVM | Linuxový agent | 7.4 RHEL for SAP HANA a obchodní aplikace
-| | 7.5 | LVM | Linuxový agent | 7.5 RHEL for SAP HANA a obchodní aplikace
-RHEL-SAP-HANA | 6.7 | RAW | Linuxový agent | RHEL 6.7 pro SAP HANA
-| | 7.2 | LVM | Linuxový agent | RHEL 7.2 pro SAP HANA
-| | 7.3 | LVM | Linuxový agent | 7.3 RHEL for SAP HANA
-RHEL-SAP-APPS | 6.8 | RAW | Linuxový agent | 6.8 RHEL for SAP Business Applications
-| | 7.3 | LVM | Linuxový agent | 7.3 RHEL for SAP Business Applications
+RHEL          | NEZPRACOVANÁ 7    | RAW    | Linuxový agent | RHEL 7 řady imagí. <br> Ve výchozím nastavení nejsou připojené k EUS úložišť.
+|             | 7-LVM    | LVM    | Linuxový agent | RHEL 7 řady imagí. <br> Ve výchozím nastavení nejsou připojené k EUS úložišť.
+|             | 7-RAW-CI | RAW-CI | Cloud-init  | RHEL 7 řady imagí. <br> Ve výchozím nastavení nejsou připojené k EUS úložišť.
+|             | 6.7      | RAW    | Linuxový agent | Image RHEL 6.7, staré pojmenování
+|             | 6.8      | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 6.8 stejný
+|             | 6.9      | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 6.9 stejný
+|             | 6.10     | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 6.10 stejný
+|             | 7.2      | RAW    | Linuxový agent | Stejný, jak je uvedeno výše pro RHEL 7.2
+|             | 7.3      | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 7.3 stejný
+|             | 7.4      | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 7.4 stejný. <br> Připojit k úložištím EUS ve výchozím nastavení od dubna 2019
+|             | 7.5      | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 7.5 stejný. <br> Připojit k úložištím EUS ve výchozím nastavení od června 2019
+|             | 7.6      | RAW    | Linuxový agent | Jak je uvedeno výše pro RHEL 7.6 stejný. <br> Připojit k úložištím EUS ve výchozím nastavení od května 2019
+RHEL-SAP      | 7.4      | LVM    | Linuxový agent | 7\.4 RHEL for SAP HANA a obchodní aplikace
+|             | 7.5      | LVM    | Linuxový agent | 7\.5 RHEL for SAP HANA a obchodní aplikace
+RHEL-SAP-HANA | 6.7      | RAW    | Linuxový agent | RHEL 6.7 pro SAP HANA
+|             | 7.2      | LVM    | Linuxový agent | RHEL 7.2 pro SAP HANA
+|             | 7.3      | LVM    | Linuxový agent | 7\.3 RHEL for SAP HANA
+RHEL-SAP-APPS | 6.8      | RAW    | Linuxový agent | 6\.8 RHEL for SAP Business Applications
+|             | 7.3      | LVM    | Linuxový agent | 7\.3 RHEL for SAP Business Applications
 
 ### <a name="old-naming-convention"></a>Stará konvence pojmenování
 RHEL 7 řady imagí a systému RHEL 6 řady imagí použít konkrétní verze jejich skladové položky až do názvů změnu konvence je vysvětleno výše.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60405983"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu
@@ -30,7 +30,7 @@ ms.locfileid: "60405983"
 > 
 
 ## <a name="how-startup-tasks-work"></a>Jak fungují úlohy po spuštění
-Úlohy po spuštění jsou akce prováděné před spuštěním vašich rolí a jsou definovány v [ServiceDefinition.csdef] souboru s použitím [Úkol] element v rámci [Startup] element. Často úlohy po spuštění jsou dávkové soubory ale mohou být také konzolové aplikace nebo dávkové soubory, které spouští skripty prostředí PowerShell.
+Úlohy po spuštění jsou akce prováděné před spuštěním vašich rolí a jsou definovány v [ServiceDefinition.csdef] souboru s použitím [Úloha] element v rámci [Startup] element. Často úlohy po spuštění jsou dávkové soubory ale mohou být také konzolové aplikace nebo dávkové soubory, které spouští skripty prostředí PowerShell.
 
 Proměnné prostředí předávání informací do úlohy po spuštění a místní úložiště slouží k předávání informací z úlohy po spuštění. Například proměnnou prostředí lze zadat cestu k programu, který chcete nainstalovat, a soubory se dají zapisovat do místního úložiště, který pak může číst později podle své role.
 
@@ -161,7 +161,7 @@ Zjistěte, jak provádět některé [běžné úlohy po spuštění](cloud-servi
 [Balíček](cloud-services-model-and-package.md) cloudové služby.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Úkol]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Úloha]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Modul runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Prostředí]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

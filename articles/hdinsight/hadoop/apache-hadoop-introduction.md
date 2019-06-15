@@ -7,15 +7,15 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 05/28/2019
-ms.openlocfilehash: 6e7e07d130c8c4c8fa776dcad539398a004ecea0
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.date: 06/11/2019
+ms.openlocfilehash: 42bfa571818efa4d4a5ad96f62a47fb2b80dca3c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298918"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057561"
 ---
-# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Apache hadoop?
+# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co je Apache Hadoop v Azure HDInsight?
 
 Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure HDInsight je plně spravovaná opensourcová, opensourcová analytická služba v cloudu pro podniky. Můžete použít open source architektury, jako jsou Hadoop, Apache Spark, Apache Hive, LLAP, Apache Kafka, Apache Storm, R a další. 
 
@@ -25,7 +25,7 @@ Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure
 [Apache Hadoop](https://hadoop.apache.org/) byl původní open source architekturou pro distribuované zpracování a analýzy velkých datových sad v clusterech. Součástí technologie hadoop souvisejícího softwaru a nástrojů, včetně Apache Hive, Apache HBase, Spark, Kafka a řada dalších.
 
 
-Azure HDInsight je cloudová distribuce komponent Hadoop z platformy [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/). Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. Můžete využít nejoblíbenější opensourcové architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, R a další. Tyto architektury podporují širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.
+Azure HDInsight je Cloudová distribuce komponent Hadoop. Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. Můžete využít nejoblíbenější opensourcové architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, R a další. Tyto architektury podporují širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.
 
 K dispozici komponenty technologie Hadoop v HDInsight najdete v tématu [komponenty a verze, které jsou k dispozici s HDInsight](../hdinsight-component-versioning.md). Další informace o platformě Hadoop v prostředí HDInsight najdete v tématu [Funkce Azure pro HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
@@ -140,7 +140,4 @@ Známé nástroje business intelligence (BI) načítají, analyzují a vykazují
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, co je Azure HDInisght a jakým způsobem poskytuje Hadoop a další typy clusteru v Azure. V dalším článku se dozvíte, jak ve službě HDInsight vytvořit cluster Apache Hadoop.
-
-> [!div class="nextstepaction"]
-> [Vytvořit cluster Apache Hadoop v HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Vytvořit cluster Apache Hadoop v HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371979"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Vytvořte další předplatné Azure pro smlouvy Microsoft zákazníka
@@ -59,7 +59,7 @@ Přidáte uživatele jako tvůrce předplatného Azure na oddíl faktury jim dá
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 
    ![Snímek obrazovky zobrazující vyhledávání v portálu pro předplatná](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
@@ -80,7 +80,7 @@ Přidáte uživatele jako tvůrce předplatného Azure na oddíl faktury jim dá
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu na základě smlouvy Microsoft
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

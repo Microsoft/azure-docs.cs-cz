@@ -14,15 +14,15 @@ ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 4093febd19d71512e3c80704e88f9d5cf669d7d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60567392"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory
 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Aktivity transformace"]
 > * [Aktivita hivu](data-factory-hive-activity.md)
 > * [Aktivita pig](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
@@ -303,7 +303,7 @@ Doporučujeme vám projít si [sestavit svůj první kanál pomocí služby Data
       }
       ```
 
-      Obě **start** a **end** času musí být v [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.**" Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
+      Obě **start** a **end** času musí být v [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.** " Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
 
       > [!NOTE]
       > Zadání vstupu pro AzureMLBatchExecution aktivita je volitelné.
@@ -407,7 +407,7 @@ Pokud používáte modul čtečky v jednom experimentu Azure Machine Learning, m
 V předchozím příkladu JSON:
 
 * V nasazované službě Azure Machine Learning Web používá čtečky a zapisovače modulu pro čtení a zápis dat z/do Azure SQL Database. Tato webová služba poskytuje následující čtyři parametry:  Název databázového serveru, název databáze, název serveru uživatelského účtu a heslo uživatelského účtu serveru.
-* Obě **start** a **end** času musí být v [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.**" Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
+* Obě **start** a **end** času musí být v [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **End** čas je volitelné. Pokud nezadáte hodnotu **end** vlastnost, vypočítá se jako "**start + 48 hodin.** " Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
 
 ### <a name="other-scenarios"></a>Další scénáře
 #### <a name="web-service-requires-multiple-inputs"></a>Webová služba vyžaduje více vstupů

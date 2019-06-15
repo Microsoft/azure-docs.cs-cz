@@ -12,10 +12,10 @@ ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401181"
 ---
 # <a name="analyze-method"></a>Analýza – metoda
@@ -26,7 +26,7 @@ ms.locfileid: "61401181"
 **Analyzovat** rozhraní REST API slouží k analýze vstup dané přirozeného jazyka.
 Která může zahrnovat jenom hledání [věty a tokeny](Sentences-and-Tokens.md) v rámci tento vstup, hledání [značek částí řeči](POS-tagging.md), nebo hledání [složková stromu](Constituency-Parsing.md).
 Můžete určit, jaké výsledky chcete výběrem příslušné analyzátory.
-Seznam všech dostupných analyzátory, podívejte se na  **[analyzátory](AnalyzersMethod.md)**.
+Seznam všech dostupných analyzátory, podívejte se na  **[analyzátory](AnalyzersMethod.md)** .
 
 Všimněte si, že je třeba zadat jazyk vstupního řetězce.
 
@@ -38,11 +38,11 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Název | Type | Povinné | Popis
+Name | Type | Povinné | Popis
 -----|-------|----------|------------
 **Jazyk**    | string | Ano | Dvě písmena kód ISO jazyka použitého pro analýzu. Angličtina je například "en".
 **analyzerIds** | seznam řetězců | Ano | Seznam identifikátorů GUID analyzátory použít. Další informace v dokumentaci analyzátory.
-**Text**        | string | Ano | Vstup nezpracovaných dat má být analyzován. To může být třeba slovo nebo frázi, úplné věty, nebo úplné odstavce nebo discourse krátký řetězec.
+**text**        | string | Ano | Vstup nezpracovaných dat má být analyzován. To může být třeba slovo nebo frázi, úplné věty, nebo úplné odstavce nebo discourse krátký řetězec.
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
@@ -50,7 +50,7 @@ Pole analýzy výstupy, jeden pro každý atribut v požadavku.
 
 Výsledky budou vypadat takto:
 
-Název | Typ | Popis
+Name | Typ | Popis
 -----|------|--------------
 analyzerId | string | Analyzátor zadaný identifikátor GUID
 výsledek | objekt | výsledek analyzátoru
@@ -59,7 +59,7 @@ Všimněte si, že typ výsledku závisí na typu vstupu analyzátor.
 
 ### <a name="tokens-response-json"></a>Tokeny odpovědí (JSON)
 
-Název | Typ | Popis
+Name | Typ | Popis
 -----|------|-------------
 výsledek | seznam objektů větu | hranice věty identifikované v textu |
 výsledek [x]. Posun | int | počáteční odsazení znaku každé věty. |

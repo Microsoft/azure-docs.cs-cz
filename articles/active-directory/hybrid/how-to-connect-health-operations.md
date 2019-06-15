@@ -15,10 +15,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60350072"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Na provoz Azure Active Directory Connect Health
@@ -67,7 +67,7 @@ Azure AD Connect Health pro Active Directory Federation Services (AD FS) a Azure
 2. Na **Server** oknu, na panelu akcí klikněte na tlačítko **odstranit**.
 ![Snímek obrazovky s Azure AD Connect Health se odstranit server](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potvrďte zadáním názvu serveru v potvrzovacím okně.
-4. Klikněte na **Odstranit**.
+4. Klikněte na tlačítko **odstranit**.
 
 Azure AD Connect Health pro službu Azure Active Directory Domain Services:
 
@@ -75,7 +75,7 @@ Azure AD Connect Health pro službu Azure Active Directory Domain Services:
 2. Vyberte řadič domény, která se má odebrat.
 3. Na panelu akcí klikněte na **odstranit vybrané**.
 4. Potvrďte akci odstranění serveru.
-5. Klikněte na **Odstranit**.
+5. Klikněte na tlačítko **odstranit**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Odstraňte instanci služby ze služby Azure AD Connect Health
 V některých případech můžete chtít odebrat instanci služby. Zde je, co potřebujete vědět o odebrání instance služby ze služby Azure AD Connect Health.
@@ -92,7 +92,7 @@ Když se odstranění instance služby, mějte na paměti toto:
 2. Na **služby** oknu, na panelu akcí klikněte na tlačítko **odstranit**. 
 ![Snímek obrazovky s Azure AD Connect Health se odstranit službu](./media/how-to-connect-health-operations/DeleteServer.png)
 3. V potvrzovacím okně zadejte název služby (například: sts.contoso.com).
-4. Klikněte na **Odstranit**.
+4. Klikněte na tlačítko **odstranit**.
    <br><br>
 
 [//]: # (Začátek části RBAC)

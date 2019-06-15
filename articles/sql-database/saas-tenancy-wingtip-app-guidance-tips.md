@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60326253"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s Wingtip Tickets ukázkové SaaS aplikace
@@ -90,7 +90,7 @@ Aby se zajistilo úspěšné ukázkové připojení, mají všechny servery [pra
     - **Samostatná aplikace:** servery jednotlivých tenantů (např.) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
     - **Databáze na tenanta:** *tenants1-dpt -&lt;uživatele&gt;. database.windows.net*
     - **Databázi s více tenanty:** *tenants1-mt –&lt;uživatele&gt;. database.windows.net* 
-2. Klikněte na **Připojit** > **Databázový stroj...**:
+2. Klikněte na **Připojit** > **Databázový stroj...** :
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 

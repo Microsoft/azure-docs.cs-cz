@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60303767"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv s dělením dat do bloků v Azure Logic Apps
@@ -57,7 +57,7 @@ Povolí koncový bod pro stahování a nahrávání dat, akce HTTP v aplikaci lo
 
 Navíc pokud akce HTTP již neumožňuje bloků, musíte také nastavit bloků v rámci akce `runTimeConfiguration` vlastnost. Tato vlastnost v akci, můžete nastavit, buď přímo v editoru kódu zobrazit, jak je popsáno dále, nebo v návrháři pro Logic Apps podle postupu popsaného tady:
 
-1. V pravém horním rohu akce HTTP, zvolte tlačítko se třemi tečkami (**...** ) a klikněte na tlačítko **nastavení**.
+1. V pravém horním rohu akce HTTP, zvolte tlačítko se třemi tečkami ( **...** ) a klikněte na tlačítko **nastavení**.
 
    ![Pro akci otevřete nabídku nastavení](./media/logic-apps-handle-large-messages/http-settings.png)
 
@@ -117,7 +117,7 @@ Tyto kroky popisují podrobný postup, který Logic Apps se používá pro nahr�
 
 1. Aplikace logiky odesílá počáteční požadavek HTTP POST a PUT s prázdným textem zprávy. Hlavičky žádosti obsahuje tyto informace o obsahu, který chce, aby se aplikace logiky k nahrání do bloků dat:
 
-   | Pole hlavičky požadavku Logic Apps | Value | Type | Popis |
+   | Pole hlavičky požadavku Logic Apps | Hodnota | Type | Popis |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | rozdělený do bloků dat | String | Označuje, že obsah se nahraje do bloků dat |
    | **x-ms-content-length** | <*content-length*> | Integer | Celý obsah velikost v bajtech před dělením dat do bloků |
@@ -137,7 +137,7 @@ Tyto kroky popisují podrobný postup, který Logic Apps se používá pro nahr�
 
    * Následující záhlaví obsahuje informace o obsahu bloku dat odeslaných v každé zprávě opravy:
 
-     | Pole hlavičky požadavku Logic Apps | Value | Type | Popis |
+     | Pole hlavičky požadavku Logic Apps | Hodnota | Type | Popis |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*rozsah*> | String | Rozsah bajtů u aktuálního bloku obsahu, včetně počáteční hodnotu, koncová hodnota a celková velikost obsahu, například: "bajtů = 0-1023/10100" |
      | **Content-Type** | <*content-type*> | String | Typ bloku obsahu |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60816456"
 ---
 # <a name="migrate-to-the-30-api"></a>Migrace na rozhraní 3.0 rozhraní API
@@ -30,7 +30,7 @@ Tato příručka se ukazují, jak aktualizovat vaše projekty pro práci s novou
 
 ## <a name="use-the-updated-prediction-api"></a>Použít aktualizované Prediction API.
 
-2.x rozhraní API používá stejné volání předpovědi pro klasifikátorů obrázků a objekt detektor projekty. Oba typy projektů byla akceptovatelná **PredictImage** a **PredictImageUrl** volání. Od verze 3.0, jsme rozdělili toto rozhraní API tak, aby vám musí odpovídat typu projektu volání:
+2\.x rozhraní API používá stejné volání předpovědi pro klasifikátorů obrázků a objekt detektor projekty. Oba typy projektů byla akceptovatelná **PredictImage** a **PredictImageUrl** volání. Od verze 3.0, jsme rozdělili toto rozhraní API tak, aby vám musí odpovídat typu projektu volání:
 
 * Použití **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** a **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** zobrazíte předpovědi pro projekty klasifikace obrázků.
 * Použití **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** a **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** zobrazíte předpovědi pro projekty zjišťování objektu.

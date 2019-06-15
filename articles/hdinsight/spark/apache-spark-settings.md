@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64681306"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
@@ -148,6 +148,6 @@ Existuje několik základních nastavení konfigurace, které potřebujete k mon
 
 * [Apache Hadoop dostupné komponenty a verze s HDInsight?](../hdinsight-component-versioning.md)
 * [Správa prostředků v clusteru Apache Spark v HDInsight](apache-spark-resource-manager.md)
-* [Nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Nastavení clusterů ve službě HDInsight se softwarem Apache Hadoop, Apache Spark, Apache Kafka a dalšími](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Konfigurace Apache Spark](https://spark.apache.org/docs/latest/configuration.html)
 * [Spuštěné Apache Spark na systému Apache Hadoop YARN](https://spark.apache.org/docs/latest/running-on-yarn.html)

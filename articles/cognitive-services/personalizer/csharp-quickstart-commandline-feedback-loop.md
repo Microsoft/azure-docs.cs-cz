@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 06/11/2019
 ms.author: edjez
-ms.openlocfilehash: a7f6c6fe25bf9dff2f102080f93fc1e0024ac660
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 2f2e3d01b02f7c06d69a09374528475301952179
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055506"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Rychlý start: Přizpůsobení obsahu pomocíC# 
 
@@ -54,6 +54,7 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 
 1. V sadě Visual Studio vytvořte novou konzolovou aplikaci Visual C#.
 1. Nainstalujte balíček NuGet Personalizer klienta knihovny. V nabídce vyberte **nástroje**vyberte **Nuget package Manager**, pak **spravovat balíčky NuGet pro řešení**.
+1. Zkontrolujte **zahrnout předběžné verze**.
 1. Vyberte **Procházet** kartu a **hledání** zadejte `Microsoft.Azure.CognitiveServices.Personalizer`.
 1. Vyberte **Microsoft.Azure.CognitiveServices.Personalizer** při zobrazí.
 1. Zaškrtněte políčko vedle názvu vašeho projektu a vyberte **nainstalovat**.

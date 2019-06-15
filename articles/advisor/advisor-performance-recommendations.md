@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
 ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66254655"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zvýšení výkonu aplikace na platformě Azure s využitím Azure Advisoru
@@ -106,7 +106,7 @@ Poradce zjistí účtům Azure Cosmos DB, které mají provoz z oblasti, který 
 
 Azure Advisor bude identifikovat kontejnery služby Cosmos DB, které používají výchozí zásady indexování, ale můžou mít užitek z vlastních zásad indexování založena na vzoru zatížení. Výchozí zásady indexování indexuje všechny vlastnosti, ale pomocí vlastních zásad indexování explicitní zahrnuté ani vyloučené cesty použít ve filtrech dotazů můžete snížit ru a úložiště využité pro indexování. [Další informace o úpravách indexu zásady](https://aka.ms/cosmosdb/modify-index-policy)
 
-## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Konfigurovat velikost stránky dotazu (MaxItemCount) služby Azure Cosmos DB na hodnotu -1 
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Konfigurace velikosti stránky dotazu Azure Cosmos DB (MaxItemCount) na -1 
 
 Azure Advisor bude identifikovat kontejnerů Azure Cosmos DB, které používají velikost stránky dotazu 100 a doporučujeme použít velikost stránky-1 pro rychlejší vyhledávání. [Další informace o maximální počet položek](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 

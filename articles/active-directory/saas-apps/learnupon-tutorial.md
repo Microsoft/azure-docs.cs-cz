@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 574c21dc2713f10513ac296e7db538e20a94c9d6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098243"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Kurz: Integrace Azure Active Directory s LearnUpon
 
@@ -58,7 +58,7 @@ Konfigurace integrace LearnUpon do služby Azure AD, budete muset přidat LearnU
 
 **Chcete-li přidat LearnUpon z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -165,9 +165,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s LearnUpon, proveďte násle
 
      ![Konfigurace jednotného přihlašování](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. V **křestní jméno identifikátor formátu** textového pole zadejte hodnotu, která nám sdělí v vaše kontrolní výraz SAML jméno uživatele se nachází – například: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. V **křestní jméno identifikátor formátu** textového pole zadejte hodnotu, která nám sdělí v vaše kontrolní výraz SAML jméno uživatele se nachází – například: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   
-    b. V **poslední formát názvu identifikátor** textového pole zadejte hodnotu, která nám sdělí v vaše kontrolní výraz SAML příjmení uživatele nachází – například: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    b. V **poslední formát názvu identifikátor** textového pole zadejte hodnotu, která nám sdělí v vaše kontrolní výraz SAML příjmení uživatele nachází – například: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -223,7 +223,7 @@ V této části je povolit Britta Simon k udělení přístupu k LearnUpon použ
 
 V této části se vytvoří uživateli Britta Simon v LearnUpon. LearnUpon podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi LearnUpon, vytvoří se nový po ověření. Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory LearnUpon](https://www.learnupon.com/features/support/).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,16 +16,16 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.openlocfilehash: 51d572ac324d0bc875e7ed81879f2456eeea4fbb
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506618"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="summary"></a>Souhrn:
+## <a name="summary"></a>Shrnutí:
 Určení, které vzor aplikací nebo vzorů pro svoje aplikace na serveru SQL v Azure prostředí je rozhodnutí o návrhu důležité a vyžaduje důkladného porozumění jak spolu fungují systému SQL Server a jednotlivé komponenty infrastruktury Azure. S SQL serverem ve službách infrastruktury Azure můžete snadno migrovat, udržovat a monitorovat stávajících aplikací SQL serveru vytvořené na Windows Server na virtuální počítače v Azure.
 
 Cílem tohoto článku je poskytnout architekti a vývojáři řešení základní kvalitní architektury a návrhu, které následují po migraci stávajících aplikací do Azure a jak vyvíjet nové aplikace v Azure.
@@ -41,7 +41,7 @@ Mnoho typů n vrstvé aplikace můžete vyvíjet oddělit součásti různých a
 
 Typické *n vrstvá* aplikace obsahuje prezentační vrstvou, obchodní vrstvou a datovou vrstvou:
 
-| Vrstva | Popis |
+| Úroveň | Popis |
 | --- | --- |
 | **Prezentace** |*Prezentační vrstva* (webová vrstva, úroveň front-endu) je vrstva, ve které uživatelé komunikují s aplikací. |
 | **firmy** |*Obchodní vrstvy* (střední úroveň) je vrstva, která prezentační vrstva a datová vrstva používají ke komunikaci mezi sebou a zahrnuje základní funkce systému. |

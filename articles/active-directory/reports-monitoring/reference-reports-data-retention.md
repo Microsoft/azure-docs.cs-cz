@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 41fa12c9d79d14a6602d995ed93b5d1a23be8a4d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65781046"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho Azure AD ukládat údaje o chybách?
@@ -66,7 +66,7 @@ Pro zabezpečení signály, proces shromažďování začíná můžete vyjádř
 
 **Sestavy aktivit**    
 
-| Nahlásit                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| Sestava                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
 | Protokoly auditu             | 7 dní        |  7 dní        | 30 dní             | 30 dní             |
 | Přihlášení               | neuvedeno           |  neuvedeno           | 30 dní             | 30 dní             |
@@ -76,7 +76,7 @@ Můžete zachovat data aktivit auditu a přihlaste se po dobu delší než vých
 
 **Signály zabezpečení**
 
-| Nahlásit         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| Sestava         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--            | :--                 | :--                 |
 | Ohrožení uživatelé  | 7 dní        | 7 dní         | 30 dní             | 90 dnů             |
 | Riziková přihlášení | 7 dní        | 7 dní         |  30 dní            | 90 dnů             |

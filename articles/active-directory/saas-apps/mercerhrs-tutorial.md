@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 8944e4533448f5787f5c85c12e4ab2747eb96e4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ae074e8732898524d917f2537023c4b506cff80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65872267"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097477"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Kurz: Integrace s Azure Active Directory s BenefitsCentral Mercer (MBC)
 
@@ -52,7 +52,7 @@ Konfigurace integrace BenefitsCentral Mercer (MBC) do služby Azure AD, budete m
 
 **Chcete-li přidat Mercer BenefitsCentral (MBC) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -158,11 +158,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu BenefitsCentral Mercer (MBC).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Mercer BenefitsCentral (MBC)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Mercer BenefitsCentral (MBC)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Mercer BenefitsCentral (MBC)**.
+2. V seznamu aplikací vyberte **Mercer BenefitsCentral (MBC)** .
 
     ![Odkaz Mercer BenefitsCentral (MBC) v seznamu aplikací](common/all-applications.png)
 
@@ -184,7 +184,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvoříte uživateli Britta Simon BenefitsCentral Mercer (MBC). Práce s [tým podpory Mercer BenefitsCentral (MBC)](https://www.mercer.com/contact-us.html) přidat uživatele na platformě Mercer BenefitsCentral (MBC). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -15,10 +15,10 @@ ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851418"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
@@ -41,7 +41,7 @@ Konfigurace portálu nenabízí klíč způsob, jak k dispozici více zprostřed
 
 V první **ověřování / autorizace** stránce na webu Azure Portal, nakonfigurujte všechny zprostředkovatele identity, které chcete povolit.
 
-V **akce má být provedena, když požadavek nebude ověřený**vyberte **povolit anonymní požadavky (NIC)**.
+V **akce má být provedena, když požadavek nebude ověřený**vyberte **povolit anonymní požadavky (NIC)** .
 
 V přihlašovací stránku, nebo na navigačním panelu nebo jiného umístění vaší aplikace, přidejte odkaz přihlásit ke každému zprostředkovatele jste povolili (`/.auth/login/<provider>`). Příklad:
 
@@ -186,7 +186,7 @@ Když váš poskytovatel přístupový token (není [tokenu relace](#extend-sess
 - **Microsoft Account**: Když [nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md), vyberte `wl.offline_access` oboru.
 - **Azure Active Directory**: V [ https://resources.azure.com ](https://resources.azure.com), proveďte následující kroky:
     1. V horní části stránky vyberte **r/w**.
-    2. V levém prohlížeč, přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **config** > **authsettings**. 
+    2. V levém prohlížeč, přejděte na **předplatná** >  ** _\<předplatné\_název_**   >  **resourceGroups** >  _ **\<prostředků\_skupiny\_name >** _   >  **poskytovatelé** > **Microsoft.Web** > **lokality** >  _ **\<aplikace \_name >** _ > **config** > **authsettings**. 
     3. Klikněte na **Upravit**.
     4. Upravte následující vlastnosti. Nahraďte  _\<aplikace\_id >_ s ID aplikace Azure Active Directory, služby, které chcete získat přístup.
 
@@ -233,7 +233,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Account Microsoft a Azure Active Directory umožňuje přihlášení z několika domén. Například Microsoft Account umožňuje _outlook.com_, _live.com_, a _hotmail.com_ účty. Azure Active Directory umožňuje libovolný počet vlastních domén pro účty přihlášení. Toto chování může způsobit nežádoucí pro interní aplikace, které nechcete, aby každý, kdo má _outlook.com_ účet pro přístup. Pokud chcete omezit název domény účtů přihlásit, postupujte takto.
 
-V [ https://resources.azure.com ](https://resources.azure.com), přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality**  >    _**\<aplikace\_name >**_ > **config** > **authsettings**. 
+V [ https://resources.azure.com ](https://resources.azure.com), přejděte na **předplatná** >  ** _\< předplatné\_ název_**   >  **resourceGroups** >  _ **\< prostředků\_ skupiny\_ name >** _   >  **poskytovatelé** > **Microsoft.Web** > **lokality**  >    _ **\< aplikace\_ name >** _ > **config** > **authsettings**. 
 
 Klikněte na tlačítko **upravit**upravit následující vlastnosti a pak klikněte na tlačítko **umístit**. Nezapomeňte nahradit  _\<domény\_name >_ s doménou chcete.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60458300"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru
@@ -172,7 +172,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci k
      1. Na panelu nástrojů v hlavním podokně vyberte **Nahrát** a pak v rozevírací nabídce vyberte **Nahrát soubory**.
 
         ![Nabídka Nahrát soubory][15]
-     2. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
+     2. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
 
         ![Nahrát soubory možnosti][16]
      3. Zadejte typ **typ blobu**. Zobrazit [vytvoření kontejneru a nastavení oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Další informace.
@@ -183,7 +183,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci k
      1. Na panelu nástrojů v hlavním podokně vyberte **Nahrát** a pak v rozevírací nabídce vyberte **Nahrát složku**.
 
         ![Nabídka Nahrát složku][17]
-     2. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
+     2. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
 
         ![Nahrát Možnosti složky][18]
      3. Zadejte typ **typ blobu**. Zobrazit [vytvoření kontejneru a nastavení oprávnění](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container) Další informace.

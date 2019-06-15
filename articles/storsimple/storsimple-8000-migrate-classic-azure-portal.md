@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 3cce18fa1890fc9e518294e294cc43e0e55065aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60631528"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrovat předplatná a účty úložiště přidružené služby Správce zařízení StorSimple
@@ -27,7 +27,7 @@ Budete muset přesunout služby StorSimple na nový registrace nebo do nového p
 
 ## <a name="account-changes"></a>Změny účtu
 
-| Lze je přesunout...| Podporováno| Prostoje| Azure procesu podpory| Přístup|
+| Lze je přesunout...| Podporováno| Výpadek| Azure procesu podpory| Přístup|
 |-----|-----|-----|-----|-----|
 | Celý předplatné (zahrnuje účty služby a úložiště StorSimple) a další registraci? | Ano       | Ne       | **Registrace přenosu**<br>Použití:<li>Při nákupu nových závazků Azure v rámci nové smlouvy.</li><li>Chcete provést migraci všech účtů a předplatných ze staré registrace na nový. To zahrnuje všechny služby Azure v rámci původní předplatného.</li> | **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li> Vyberte **Správa registrace** a pak vyberte **přenést z jednoho registrace do nové registrace**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
 | Služby StorSimple z existujícího účtu a novou registraci?    | Ano       | Ne       | **Převod účtu**<br>Použití:<li>Pokud nechcete, aby plně zaregistrované přenosu.</li><li>Chcete přesunout specifické účty a novou registraci.</li>| **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li>Vyberte **Správa registrace** a pak vyberte **přenést do nové registrace účtu EA**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
@@ -39,7 +39,7 @@ Budete muset přesunout služby StorSimple na nový registrace nebo do nového p
 
 ## <a name="datacenter-changes"></a>Změny datového centra
 
-| Lze je přesunout...| Podporováno|Prostoje| Azure procesu podpory| Přístup|
+| Lze je přesunout...| Podporováno|Výpadek| Azure procesu podpory| Přístup|
 |-----|-----|-----|-----|-----|
 | Služby StorSimple do jiného z jednoho datového centra Azure? | Ne | Ano |Žádný proces ručního nastavení  |<li>Migrace dat mimo zařízení StorSimple.</li><li>Proveďte obnovení do výrobního nastavení zařízení, tím se odstraní všechna místní data na zařízení.</li><li>Zařízení zaregistrujte nové předplatné k nové službě Správce zařízení StorSimple.</li><li>Migrace dat zpět do zařízení.|
 | Účet úložiště z jednoho datového centra Azure do jiného? | Ne |Ano  |Žádný proces ručního nastavení  | Stejné jako výše.|

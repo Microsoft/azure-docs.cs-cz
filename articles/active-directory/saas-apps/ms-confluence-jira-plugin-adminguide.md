@@ -15,10 +15,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60935761"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Od společnosti Atlassian Jira a Confluence příručky pro správce Azure Active Directory
@@ -112,11 +112,11 @@ Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obr
 
 * **Adresa URL metadat**: Adresa URL federačních metadat získat ze služby Azure AD.
 
-* **Identifikátory**: Adresa URL, která používá Azure AD ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*\<domény: port >*/.
+* **Identifikátory**: Adresa URL, která používá Azure AD ověřit zdroj požadavku. Mapuje **identifikátor** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domény: port >* /.
 
-* **Adresa URL pro odpověď**: Adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*\<domény: port >*/plugins/servlet/saml/auth.
+* **Adresa URL pro odpověď**: Adresa URL odpovědi ve zprostředkovateli identity (IdP), která inicializuje přihlášení SAML. Mapuje **adresy URL odpovědi** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domény: port >* /plugins/servlet/saml/auth.
 
-* **Přihlašovací adresa URL**: Přihlašovací adresa URL v svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https://*\<domény: port >*/plugins/servlet/saml/auth.
+* **Přihlašovací adresa URL**: Přihlašovací adresa URL v svého zprostředkovatele identity, který iniciuje přihlášení SAML. Mapuje **přihlašování** element ve službě Azure AD. Modul plug-in automaticky odvozuje tuto adresu URL jako https:// *\<domény: port >* /plugins/servlet/saml/auth.
 
 * **ID IdP Entity**: ID entity, která používá svého zprostředkovatele identity. Toto pole se vyplní když adresa URL metadat je vyřešený.
 
@@ -144,7 +144,7 @@ Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obr
 
 * **Certifikátu brzy vyprší platnost ve službě Azure AD**: Doplňky se postará o automatické výměny certifikátu. Pokud certifikátu brzy vyprší platnost, nový certifikát by měl být označena jako aktivní a nepoužívané certifikáty by měly být odstraněny. Když uživatel se pokusí přihlásit do nástroje Jira v tomto scénáři, modul plug-in načte a uloží nový certifikát.
 
-* **Chcete zakázat WebSudo (zakázání relace zabezpečení správce)**:
+* **Chcete zakázat WebSudo (zakázání relace zabezpečení správce)** :
 
   * Pro Jira jsou ve výchozím nastavení povoleno zabezpečené Správce relací (to znamená, potvrzení hesla před přístupem k funkcím pro správu). Pokud chcete odebrat tuto možnost v instanci systému Jira, zadejte následující řádek v souboru jira config.properties: `ira.websudo.is.disabled = true`
 
@@ -158,9 +158,9 @@ Na obrazovce pro konfiguraci v systému Jira a Confluence na následujícím obr
 
 * **Je interní chybu serveru**: Zkontrolujte protokoly v adresáři protokolu instalace. Pokud dochází k chybě při pokusu uživatele o přihlášení pomocí jednotného přihlašování k Azure AD, můžete protokoly sdílet se na tým podpory.
 
-* **Když se uživatel pokusí přihlásit dochází k chybě "ID uživatele nebyl nalezen"**: Vytvořte ID uživatele v systému Jira nebo Confluence.
+* **Když se uživatel pokusí přihlásit dochází k chybě "ID uživatele nebyl nalezen"** : Vytvořte ID uživatele v systému Jira nebo Confluence.
 
-* **Ve službě Azure AD je chyba "Aplikace nebyla nalezena"**: Podívejte se, pokud příslušné adrese URL se mapuje na aplikaci ve službě Azure AD.
+* **Ve službě Azure AD je chyba "Aplikace nebyla nalezena"** : Podívejte se, pokud příslušné adrese URL se mapuje na aplikaci ve službě Azure AD.
 
 * **Potřebujete podporu**: Oslovení [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpovídá ve 24 nebo 48 pracovní doby.
 

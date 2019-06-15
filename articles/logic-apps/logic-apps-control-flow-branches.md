@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685064"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvořit nebo připojit k paralelní větve pro akce pracovního postupu ve službě Azure Logic Apps
@@ -44,7 +44,7 @@ Počká, pro všechny větve na dokončení před pokračováním pracovní post
 
 1. V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete v návrháři aplikace logiky aplikace logiky.
 
-1. Přesuňte ukazatel myši na šipku nad krok, ve které chcete přidat paralelních větvích. Zvolte **plus** znaménko (**+**), který se zobrazí a klikněte na tlačítko **přidat paralelní větev**. 
+1. Přesuňte ukazatel myši na šipku nad krok, ve které chcete přidat paralelních větvích. Zvolte **plus** znaménko ( **+** ), který se zobrazí a klikněte na tlačítko **přidat paralelní větev**. 
 
    ![Přidat paralelní větev](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -56,7 +56,7 @@ Počká, pro všechny větve na dokončení před pokračováním pracovní post
 
    ![Vyhledejte a vyberte požadovanou akci](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Teď v jednotlivých paralelních větvích, přidejte kroky, které chcete. Přidání další akce na větev, přesuňte ukazatel v akci, ve které chcete přidat sekvenční akce. Zvolte **plus** (**+**) znak, který se zobrazí a pak vyberte **přidat akci**.
+1. Teď v jednotlivých paralelních větvích, přidejte kroky, které chcete. Přidání další akce na větev, přesuňte ukazatel v akci, ve které chcete přidat sekvenční akce. Zvolte **plus** ( **+** ) znak, který se zobrazí a pak vyberte **přidat akci**.
 
    ![Přidat paralelní větev sekvenční akci](media/logic-apps-control-flow-branches/add-sequential-action.png)
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60695279"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Použití testovacích prostředí v Učebnách pro školení
@@ -39,7 +39,7 @@ V tomto článku se dozvíte o různých funkcí Azure Lab Services, které lze 
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>Vytvořte účet testovacího prostředí jako správce účtu testovacího prostředí
 Prvním krokem při používání Azure Lab Services je na webu Azure Portal vytvořit účet testovacího prostředí. Poté, co správce účtu lab vytvoří účet testovacího prostředí, Správce přidá uživatele, kteří chtějí vytvářet testovací prostředí na **Autor testovacího prostředí** role. Školitelů vytvářet testovací prostředí s virtuálními počítači, aby studenti mohli dělat cvičení na kurz, který se vyučují. Podrobnosti najdete v tématu [vytvořit a spravovat účet testovacího prostředí](how-to-manage-lab-accounts.md).
 
-## <a name="create-and-manage-classroom-labs"></a>Vytvoření a správa testovacích prostředí v učebnách
+## <a name="create-and-manage-classroom-labs"></a>Vytváření a správa testovacích prostředí v učebnách
 Trainer, který je členem role Tvůrce prostředí v účtu testovacího prostředí, můžete vytvořit jeden nebo více testovacích prostředí v rámci účtu testovacího prostředí. Vytvořte a nakonfigurujte šablonu virtuálního počítače s požadovaný software plnit praktická cvičení v kurzu. Vyberte si předem připravená image z dostupných imagí pro vytvoření testovacího prostředí v učebně a potom jej přizpůsobte nainstalováním software potřebný pro testovací prostředí. Podrobnosti najdete v tématu [vytvořit a spravovat testovací prostředí v učebnách](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Konfigurace nastavení použití a zásady

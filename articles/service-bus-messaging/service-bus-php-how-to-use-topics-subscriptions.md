@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: f0ae734ac8814cc605ce03756fde5545c77c837d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063874"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak používat témata a odběry Service Bus pomocí PHP
 
@@ -51,7 +51,23 @@ Jediným požadavkem pro vytvoření aplikace v jazyce PHP, který přistupuje k
 Tento článek popisuje, jak používat funkce služby, které může být volána v rámci aplikace v jazyce PHP místně nebo v kódu v rámci webové role Azure, role pracovního procesu nebo webu.
 
 ## <a name="get-the-azure-client-libraries"></a>Získání knihoven Azure klienta
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+
+### <a name="install-via-composer"></a>Instalace přes Composer
+1. Vytvořte soubor s názvem **composer.json** v kořenovém adresáři vašeho projektu a přidejte do ní následující kód:
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. Stáhněte si **[composer.phar] [composer phar]** v kořenovém adresáři projektu.
+3. Otevřete příkazový řádek a spusťte následující příkaz v kořenovém adresáři projektu
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
 Použití rozhraní API služby Service Bus:
@@ -67,7 +83,7 @@ Následující příklad ukazuje, jak zahrnout automatického zavaděče souboru
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 

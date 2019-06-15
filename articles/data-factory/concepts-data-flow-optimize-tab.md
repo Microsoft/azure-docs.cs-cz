@@ -1,20 +1,19 @@
 ---
 title: Azure Data Factory mapování datový tok optimalizovat kartu
-description: Optimalizace mapování toků dat pomocí nastavení oddílu kartu Optimalizace pro vytváření dat Azure
+description: Optimalizace, Azure Data Factory mapování Data toky na kartě optimalizovat pomocí nastavení oddílu
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262259"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075102"
 ---
-# <a name="mapping-data-flow-transformation-optimize-tab"></a>Transformace toku dat mapování optimalizovat kartu
+# <a name="mapping-data-flow-transformation-optimize-tab"></a>Mapování dat transformace toku optimalizovat kartu
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -51,3 +50,8 @@ Je nutné vytvořit výraz, který poskytuje pevné rozsah hodnot ve sloupcích 
 ### <a name="key"></a>Klíč
 
 Pokud budete mít dostatečné povědomí o Kardinalita vašich dat, klíče dělení může být dobré oddílu strategie. Klíče dělení vytvoří oddíly pro každou jedinečnou hodnotu ve sloupci. Počet oddílů nelze nastavit, protože číslo bude založena na jedinečné hodnoty v datech.
+
+## <a name="next-steps"></a>Další postup
+
+[Průvodce výkonem se předávají data mapování](concepts-data-flow-performance.md)
+[monitorování toku dat](concepts-data-flow-monitoring.md)

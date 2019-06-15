@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: 9903339cbf0958893fb0d11a8c1b6ab7d156aae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626787"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
@@ -153,34 +153,34 @@ Služba odmítne všechny žádosti do služby Cosmos DB pomocí vyřazeno sady 
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [3.0.2](#3.0.2) |15. listopadu 2018 |--- |
-| [3.0.1](#3.0.1) |04. října 2018 |--- |
-| [2.3.3](#2.3.3) |08. září 2018 |--- |
-| [2.3.2](#2.3.2) |08. května 2018 |--- |
-| [2.3.1](#2.3.1) |21. prosince 2017 |--- |
-| [2.3.0](#2.3.0) |10. listopadu 2017 |--- |
-| [2.2.1](#2.2.1) |29. září 2017 |--- |
-| [2.2.0](#2.2.0) |10. května 2017 |--- |
-| [2.1.0](#2.1.0) |01. května 2017 |--- |
-| [2.0.1](#2.0.1) |30. října 2016 |--- |
-| [2.0.0](#2.0.0) |29. září 2016 |--- |
-| [1.9.0](#1.9.0) |07. července 2016 |--- |
-| [1.8.0](#1.8.0) |14. června 2016 |--- |
-| [1.7.0](#1.7.0) |26. dubna 2016 |--- |
-| [1.6.1](#1.6.1) |08. dubna 2016 |--- |
-| [1.6.0](#1.6.0) |29. března 2016 |--- |
-| [1.5.0](#1.5.0) |03. ledna 2016 |--- |
-| [1.4.2](#1.4.2) |06. října 2015 |--- |
-| 1.4.1 |06. října 2015 |--- |
-| [1.2.0](#1.2.0) |06. srpna 2015 |--- |
-| [1.1.0](#1.1.0) |09. července 2015 |--- |
-| [1.0.1](#1.0.1) |25. května 2015 |--- |
-| [1.0.0](#1.0.0) |07. dubna 2015 |--- |
-| 0.9.4-prelease |14. ledna 2015 |29. února 2016 |
-| 0.9.3-prelease |09 prosinec 2014 |29. února 2016 |
-| 0.9.2-prelease |K 25. listopadu 2014 |29. února 2016 |
-| 0.9.1-prelease |23. září 2014 |29. února 2016 |
-| 0.9.0-prelease |21. srpna 2014 |29. února 2016 |
+| [3.0.2](#3.0.2) |15\. listopadu 2018 |--- |
+| [3.0.1](#3.0.1) |04\. října 2018 |--- |
+| [2.3.3](#2.3.3) |08\. září 2018 |--- |
+| [2.3.2](#2.3.2) |08\. května 2018 |--- |
+| [2.3.1](#2.3.1) |21\. prosince 2017 |--- |
+| [2.3.0](#2.3.0) |10\. listopadu 2017 |--- |
+| [2.2.1](#2.2.1) |29\. září 2017 |--- |
+| [2.2.0](#2.2.0) |10\. května 2017 |--- |
+| [2.1.0](#2.1.0) |01\. května 2017 |--- |
+| [2.0.1](#2.0.1) |30\. října 2016 |--- |
+| [2.0.0](#2.0.0) |29\. září 2016 |--- |
+| [1.9.0](#1.9.0) |07\. července 2016 |--- |
+| [1.8.0](#1.8.0) |14\. června 2016 |--- |
+| [1.7.0](#1.7.0) |26\. dubna 2016 |--- |
+| [1.6.1](#1.6.1) |08\. dubna 2016 |--- |
+| [1.6.0](#1.6.0) |29\. března 2016 |--- |
+| [1.5.0](#1.5.0) |03\. ledna 2016 |--- |
+| [1.4.2](#1.4.2) |06\. října 2015 |--- |
+| 1.4.1 |06\. října 2015 |--- |
+| [1.2.0](#1.2.0) |06\. srpna 2015 |--- |
+| [1.1.0](#1.1.0) |09\. července 2015 |--- |
+| [1.0.1](#1.0.1) |25\. května 2015 |--- |
+| [1.0.0](#1.0.0) |07\. dubna 2015 |--- |
+| 0.9.4-prelease |14\. ledna 2015 |29\. února 2016 |
+| 0.9.3-prelease |09 prosinec 2014 |29\. února 2016 |
+| 0.9.2-prelease |K 25. listopadu 2014 |29\. února 2016 |
+| 0.9.1-prelease |23\. září 2014 |29\. února 2016 |
+| 0.9.0-prelease |21\. srpna 2014 |29\. února 2016 |
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

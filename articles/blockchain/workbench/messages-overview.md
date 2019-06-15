@@ -36,8 +36,8 @@ Požadavek vyžaduje následující pole:
 | **Název**             | **Popis**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | Klientem poskytnutý identifikátor GUID                                |
-| Jméno            | Křestní jméno uživatele                              |
-| Příjmení             | Příjmení uživatele                               |
+| firstName            | Křestní jméno uživatele                              |
+| lastName             | Příjmení uživatele                               |
 | emailAddress         | E-mailovou adresu uživatele                           |
 | externalId           | Azure AD ID objektu uživatele                      |
 | connectionId         | Jedinečný identifikátor pro připojení k blockchainu |

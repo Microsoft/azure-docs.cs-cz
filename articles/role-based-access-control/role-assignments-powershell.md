@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 002ebcbe8ba14b9f15ddea6deb21f0f2bc201ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deb7864c9f59427d6da9d27ede349c7532bf40d5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160322"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074030"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Správa přístupu k prostředkům Azure pomocí RBAC a Azure Powershellu
 
@@ -215,7 +215,7 @@ Seznam přiřazení rolí pro klasický správce předplatného a spolupracujíc
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="grant-access"></a>Udělit přístup
+## <a name="grant-access"></a>Udělení přístupu
 
 V RBAC se přístup uděluje vytvořením přiřazení role.
 
@@ -355,7 +355,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Odebrat přístup
+## <a name="remove-access"></a>Odebrání přístupu
 
 V RBAC, k odebrání přístupu, můžete odebrat přiřazení role pomocí [odebrat AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
@@ -366,6 +366,8 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales
 ```
+
+Pokud se zobrazí chybová zpráva: "Zadané informace se nemapuje na přiřazení role", ujistěte se, že zadáte také `-Scope` nebo `-ResourceGroupName` parametry. Další informace najdete v tématu [Poradce při potížích s RBAC pro prostředky Azure](troubleshooting.md#role-assignments-without-a-security-principal).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -18,10 +18,10 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353218"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
@@ -30,7 +30,7 @@ Následuje úplný seznam všech nastavení, které budou s roamingem nebo zálo
 ## <a name="devices-and-endpoints"></a>Zařízení a koncových bodů
 Najdete v následující tabulce najdete souhrn zařízení a typy účtů, které jsou podporovány synchronizace, zálohování, a obnovit framework v systému Windows 10.
 
-| Typ účtu a operace | Plocha | Mobilní |
+| Typ účtu a operace | Desktop | Mobilní zařízení |
 | --- | --- | --- |
 | Azure Active Directory: synchronizace |Ano |Ne |
 | Azure Active Directory: zálohování a obnovení |Ne |Ne |
@@ -67,7 +67,7 @@ V následující tabulce, ostatní položky ve sloupci skupina nastavení odkazu
 Vnitřní položky ve sloupci skupina nastavení naleznete nastavení a aplikace, které se dá deaktivovat jenom synchronizaci v aplikaci nebo vypnutí synchronizace pro celé zařízení pomocí správy mobilních zařízení (MDM) nebo nastavení zásad skupiny.
 Nastavení, která není roaming nebo synchronizace nebude patřit do skupiny.
 
-| Nastavení | Plocha | Mobilní | Skupina |
+| Nastavení | Desktop | Mobilní zařízení | Skupina |
 | --- | --- | --- | --- |
 | **Účty**: obrázek účtu |Synchronizace |X |Motiv |
 | **Účty**: Další nastavení účtu |X |X | |
@@ -109,8 +109,8 @@ Nastavení, která není roaming nebo synchronizace nebude patřit do skupiny.
 | **Prohlížeč Microsoft Edge**: soubory cookie předvoleb <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Microsoft Edge**: nechat lokality uložit licence chráněném médií v zařízení <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
 | **Prohlížeč Microsoft Edge**: nastavení čtečky obrazovky <sup> [[1]](#footnote-1)</sup> |Synchronizace |Synchronizace |Interní |
-| **Vysoký kontrast –**: Zapnutí nebo vypnutí |Synchronizace |X |usnadnění přístupu |
-| **Vysoký kontrast –**: Nastavení motiv |Synchronizace |X |usnadnění přístupu |
+| **Vysoký kontrast –** : Zapnutí nebo vypnutí |Synchronizace |X |usnadnění přístupu |
+| **Vysoký kontrast –** : Nastavení motiv |Synchronizace |X |usnadnění přístupu |
 | **Aplikace Internet Explorer**: otevřete karty (adresu URL a název) |Synchronizace |Synchronizace |Internet Explorer |
 | **Aplikace Internet Explorer**: čtení seznamu |Synchronizace |Synchronizace |Internet Explorer |
 | **Aplikace Internet Explorer**: zadané adresy URL |Synchronizace |Synchronizace |Internet Explorer |
@@ -145,25 +145,25 @@ Nastavení, která není roaming nebo synchronizace nebude patřit do skupiny.
 | **Jazyk**: Kontrola pravopisu – automatické opravy a zvýraznění pravopisné chyby |Synchronizace |zálohování |Jazyk |
 | **Jazyk**: seznam klávesnice |Synchronizace |zálohování |Jazyk |
 | **Zamknout obrazovku**: všechny zamknutí obrazovky nastavení |X |X | |
-| **Lupa**: zapnutí nebo vypnutí (hlavní přepnutí) |X |X |Usnadnění přístupu |
-| **Lupa**: zapněte nebo vypněte inverzi barev (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
-| **Lupa**: sledování – postupujte podle fokus klávesnice |Synchronizace |X |Usnadnění přístupu |
-| **Lupa**: sledování - ukazatele myši |Synchronizace |X |Usnadnění přístupu |
-| **Lupa**: spuštění při přihlášení uživatele (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
+| **Lupa**: zapnutí nebo vypnutí (hlavní přepnutí) |X |X |usnadnění přístupu |
+| **Lupa**: zapněte nebo vypněte inverzi barev (ve výchozím nastavení vypnuté) |Synchronizace |X |usnadnění přístupu |
+| **Lupa**: sledování – postupujte podle fokus klávesnice |Synchronizace |X |usnadnění přístupu |
+| **Lupa**: sledování - ukazatele myši |Synchronizace |X |usnadnění přístupu |
+| **Lupa**: spuštění při přihlášení uživatele (ve výchozím nastavení vypnuté) |Synchronizace |X |usnadnění přístupu |
 | **Myši**: Změna velikosti ukazatele myši |Synchronizace |X |ostatní |
 | **Myši**: Změna barvy kurzoru myši |Synchronizace |X |ostatní |
 | **Myši**: všechna ostatní nastavení |X |X | |
-| **Program Předčítání**: snadného spuštění |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: uživatelé mohou změnit program Předčítání mluvený od |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: uživatelé můžou zapnout nebo vypnout program Předčítání čtení pomocných parametrů pro společné položky (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: uživatelé můžou zapnout nebo vypnout, jestli jsou slyšet znakům (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: uživatelé můžou zapnout nebo vypnout Určuje, zda lze poslouchat typu slova (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: mít vložit kurzor po Předčítání (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: Povolit visual zvýraznění Předčítání kurzoru (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: přehrávání zvuku pomůcky (na ve výchozím nastavení) |Synchronizace |X |Usnadnění přístupu |
-| **Program Předčítání**: Aktivace klávesy na klávesnici pro dotykové ovládání, pokud lift prstu (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
-| **Usnadnění přístupu**: Nastavte tloušťku pozici blikajícího kurzoru |Synchronizace |X |Usnadnění přístupu |
-| **Usnadnění přístupu**: Odeberte obrázky na pozadí (ve výchozím nastavení vypnuté) |Synchronizace |X |Usnadnění přístupu |
+| **Program Předčítání**: snadného spuštění |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: uživatelé mohou změnit program Předčítání mluvený od |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: uživatelé můžou zapnout nebo vypnout program Předčítání čtení pomocných parametrů pro společné položky (na ve výchozím nastavení) |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: uživatelé můžou zapnout nebo vypnout, jestli jsou slyšet znakům (na ve výchozím nastavení) |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: uživatelé můžou zapnout nebo vypnout Určuje, zda lze poslouchat typu slova (na ve výchozím nastavení) |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: mít vložit kurzor po Předčítání (na ve výchozím nastavení) |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: Povolit visual zvýraznění Předčítání kurzoru (na ve výchozím nastavení) |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: přehrávání zvuku pomůcky (na ve výchozím nastavení) |Synchronizace |X |usnadnění přístupu |
+| **Program Předčítání**: Aktivace klávesy na klávesnici pro dotykové ovládání, pokud lift prstu (ve výchozím nastavení vypnuté) |Synchronizace |X |usnadnění přístupu |
+| **Usnadnění přístupu**: Nastavte tloušťku pozici blikajícího kurzoru |Synchronizace |X |usnadnění přístupu |
+| **Usnadnění přístupu**: Odeberte obrázky na pozadí (ve výchozím nastavení vypnuté) |Synchronizace |X |usnadnění přístupu |
 | **Napájení a režimu spánku**: všechna nastavení |X |X | |
 | **Přizpůsobení obrazovky Start**: zvýraznění barvy (pouze telefonní) |X |Synchronizace |Motiv |
 | **Zadáním**: slovníku |Synchronizace |zálohování |Jazyk |

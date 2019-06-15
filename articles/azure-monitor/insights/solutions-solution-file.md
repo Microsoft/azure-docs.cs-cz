@@ -15,10 +15,10 @@ ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60595769"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytváření souboru řešení správy v Azure (Preview)
@@ -129,7 +129,7 @@ Tady je struktura standardní parametry, které můžete zkopírovat a vložit d
     }
 
 
-Získat hodnoty parametrů v dalších prvků řešení se syntaxí **parametry (název parametru)**.  Například pro přístup k názvu pracovního prostoru, můžete využít **parameters('workspaceName')**
+Získat hodnoty parametrů v dalších prvků řešení se syntaxí **parametry (název parametru)** .  Například pro přístup k názvu pracovního prostoru, můžete využít **parameters('workspaceName')**
 
 ## <a name="variables"></a>Proměnné
 [Proměnné](../../azure-resource-manager/resource-group-authoring-templates.md#variables) jsou hodnoty, které budete používat ve zbytku řešení pro správu.  Tyto hodnoty nejsou zveřejněné uživatel, který instaluje řešení.  Jsou určeny Autor poskytnout na jednom místě, kde můžete spravovat hodnoty, které lze použít více než jednou v rámci řešení. Měli byste umístit všechny hodnoty konkrétní do svého řešení v proměnných na rozdíl od pevného kódování v **prostředky** elementu.  To usnadňuje kód lépe čitelný a vám umožní snadno změnit tyto hodnoty v pozdějších verzích.
@@ -144,7 +144,7 @@ Tady je příklad **proměnné** element s typické parametrů použitých v ře
         "AutomationApiVersion": "2015-10-31"
     },
 
-Odkazovat na proměnné hodnoty v řešení se syntaxí **proměnných ("Proměnná")**.  Například pro přístup k proměnné SolutionName, byste použili **variables('SolutionName')**.
+Odkazovat na proměnné hodnoty v řešení se syntaxí **proměnných ("Proměnná")** .  Například pro přístup k proměnné SolutionName, byste použili **variables('SolutionName')** .
 
 Můžete také definovat proměnné komplexní této více sad hodnot.  Tyto jsou zvláště užitečné při řešení pro správu, kde jsou definování více vlastností pro jednotlivé typy materiálů.  Například může změnit strukturu proměnné řešení uvedené výše následující.
 
@@ -213,7 +213,7 @@ Prostředek řešení má vlastnosti v následující tabulce.  To zahrnuje pros
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| workspaceResourceId |ID pracovního prostoru Log Analytics ve formě  *\<ID skupiny prostředků > /providers/Microsoft.OperationalInsights/workspaces/\<název pracovního prostoru\>*. |
+| workspaceResourceId |ID pracovního prostoru Log Analytics ve formě  *\<ID skupiny prostředků > /providers/Microsoft.OperationalInsights/workspaces/\<název pracovního prostoru\>* . |
 | referencedResources |Seznam prostředků v řešení, které by se neměly odebírat při odebrání řešení. |
 | containedResources |Seznam prostředků v řešení, které by měly být odstraněny při odebrání řešení. |
 
@@ -224,10 +224,10 @@ Výše uvedený příklad je pro řešení s sady runbook, plánu a zobrazení. 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| jméno |Název řešení. |
+| name |Název řešení. |
 | version |Verze řešení podle autora. |
-| produkt |Jedinečný řetězec k identifikaci řešení. |
-| vydavatele |Vydavatel řešení. |
+| Produkt |Jedinečný řetězec k identifikaci řešení. |
+| publisher |Vydavatel řešení. |
 
 
 

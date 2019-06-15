@@ -14,10 +14,10 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39b359ef7feeaec541ba17e98a5d1e9b74c6403a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957997"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Zavřít svůj pracovní nebo školní účet v nespravovaného adresáře
@@ -39,7 +39,7 @@ Předtím, než můžete zavřít svůj účet, ověřte, zda následující pol
 > [!WARNING]
 > Zavření účtu je nevratná operace. Při zavření účtu se odeberou všechna osobní data. Už máte přístup k účtu a data související s vaším účtem.
 
-## <a name="close-your-account"></a>Uzavřít váš účet
+## <a name="close-your-account"></a>Zavřít účet
 
 Zavřete nespravované pracovní nebo školní účet, postupujte takto:
 

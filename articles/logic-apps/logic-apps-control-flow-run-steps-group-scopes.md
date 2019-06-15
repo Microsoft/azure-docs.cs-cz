@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685311"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Spustit akce na základě stavu skupiny pomocí oborů v Azure Logic Apps
@@ -165,7 +165,7 @@ V dalším kroku přidáte obor, takže můžete seskupit konkrétní akce a vyh
 1. Umístění pracovního postupu, který chcete přidáte nový obor. Například chcete-li přidat obor mezi stávající kroky v postupu aplikace logiky, postupujte takto: 
 
    1. Přesuňte ukazatel myši na šipku, ve které chcete přidat oboru. 
-   Zvolte **znaménko plus** (**+**) > **přidat akci**.
+   Zvolte **znaménko plus** ( **+** ) > **přidat akci**.
 
       ![Přidat obor](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157129"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevTest Labs integrovat do Azure DevOps, průběžná integrace a doručování kanálu
@@ -179,7 +179,7 @@ Další fází je pro vytvoření image nově nasazeného virtuálního počíta
 
    d. (Volitelné) Pro **popis**, zadejte popis, který usnadňuje výběr správné bitové kopie později.
 
-   e. Pro **zdrojového virtuálního počítače testovacího prostředí – ID virtuálního počítače zdrojového testovacího prostředí**, pokud jste změnili výchozí název proměnné prostředí, které se automaticky vyplní s ID testovací virtuální počítač v předchozím úkolu, upravit ho tady. Výchozí hodnota je **$(labVMId)**.
+   e. Pro **zdrojového virtuálního počítače testovacího prostředí – ID virtuálního počítače zdrojového testovacího prostředí**, pokud jste změnili výchozí název proměnné prostředí, které se automaticky vyplní s ID testovací virtuální počítač v předchozím úkolu, upravit ho tady. Výchozí hodnota je **$(labVMId)** .
 
    f. Pro **výstupní proměnné – ID vlastní Image**, budete potřebovat ID nově vytvořené bitové kopie, pokud chcete spravovat nebo odstranit. Výchozí název proměnné prostředí, který je automaticky vyplněný s tímto ID je nastavena v **výstupní proměnné** oddílu. V případě potřeby můžete upravit proměnné.
 
@@ -194,7 +194,7 @@ Závěrečná fáze je odstranit virtuální počítač, který jste nasadili ve
 
    a. Pro **předplatné Azure RM**, vyberte připojení **dostupných připojení služby Azure** seznamu, nebo vytvořte omezenější oprávnění připojení ke svému předplatnému Azure. Další informace najdete v tématu [koncový bod služby Azure Resource Manageru](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
  
-   b. Pro **ID virtuálního počítače testovacího prostředí**, pokud jste změnili výchozí název proměnné prostředí, které se automaticky vyplní s ID testovací virtuální počítač v předchozím úkolu, upravit ho tady. Výchozí hodnota je **$(labVMId)**.
+   b. Pro **ID virtuálního počítače testovacího prostředí**, pokud jste změnili výchozí název proměnné prostředí, které se automaticky vyplní s ID testovací virtuální počítač v předchozím úkolu, upravit ho tady. Výchozí hodnota je **$(labVMId)** .
 
 1. Zadejte název pro kanál pro vydávání verzí a pak ho uložte.
 1. Vytvořit novou verzi, vyberte nejnovější verzi a nasaďte ho do jednotné prostředí v kanálu.

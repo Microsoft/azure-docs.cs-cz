@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5acf02c021fdfd9f85eeb2b6b1c697ce92c48a15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ea2a88c92dcd52e99bb98563cf76d2c5501ef6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65866041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Kurz: Integrace Azure Active Directory s Thoughtworks Mingle
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci Thoughtworks Mingle do služby Azure AD, m
 
 **Chcete-li přidat Thoughtworks Mingle z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -224,7 +224,7 @@ Pro uživatele Azure AD bude moct přihlásit musí být zřízená Thoughtworks
 >Můžete použít jakékoli jiné Thoughtworks Mingle uživatele účtu nástrojů pro vytváření nebo rozhraní API poskytovaných Thoughtworks Mingle uživatelským účtům, zřídit AAD.
 > 
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

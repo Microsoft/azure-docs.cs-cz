@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
 ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723302"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Použití služby Správce zařízení StorSimple ke správě zařízení StorSimple
@@ -64,7 +64,7 @@ Další informace o každém pracovním postupu klikněte na vhodný postup uved
 | Šablony šířky pásma</br>Přidat šablonu šířky pásma</br>Upravit šablonu šířky pásma</br>Odstranit šablonu šířky pásma</br>Použít výchozí šablonu šířky pásma</br>Vytvořit celodenní šablonu šířky pásma, který se spustí v zadaný čas |[Správa šablon šířky pásma](storsimple-8000-manage-bandwidth-templates.md) |
 | O záznamy řízení přístupu</br>Vytvořit záznam řízení přístupu</br>Upravit záznam řízení přístupu</br>Odstranit záznam řízení přístupu |[Spravovat záznamy řízení přístupu](storsimple-8000-manage-acrs.md) |
 | Zobrazení podrobností o úloze</br>Zrušení úlohy |[Správa úloh](storsimple-8000-manage-jobs-u2.md) |
-| Zobrazování oznámení o výstrahách</br>Správa upozornění</br>Zkontrolujte výstrahy |[Umožňuje zobrazit a spravovat výstrahy StorSimple](storsimple-8000-manage-alerts.md) |
+| Zobrazování oznámení o výstrahách</br>Správa výstrah</br>Zkontrolujte výstrahy |[Umožňuje zobrazit a spravovat výstrahy StorSimple](storsimple-8000-manage-alerts.md) |
 | Vytvoření grafů sledování |[Monitorování zařízení StorSimple](storsimple-monitor-device.md) |
 | Přidat kontejner svazků</br>Upravit kontejner svazku</br>Odstraňování kontejneru svazků |[Správa kontejnerů svazků](storsimple-8000-manage-volume-containers.md) |
 | Přidat svazek</br>Upravit svazek</br>Svazek převést do režimu offline</br>Odstranění svazku</br>Monitorování svazku |[Správa svazků](storsimple-8000-manage-volumes-u2.md) |

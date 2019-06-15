@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: fa92c836fc967f67b46f0417ec5182b41e980b18
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 7a7ac843960e253b3172d1ed22fe5b59633897dc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735403"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062476"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení ve službě Azure Database for MySQL
 Azure Database for MySQL připojení i architektura Tento článek vysvětluje, jak provoz se směřuje do Azure Database for MySQL – instance od klientů v rámci i mimo Azure.
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
-Připojení k Azure Database for MySQL SQL pokládáme stav, prostřednictvím brány, která zodpovídá za směrování příchozích připojení na fyzické umístění serveru v našich clusterů. Následující diagram znázorňuje tok provozu.
+Připojení k Azure Database for MySQL je vytvořeno prostřednictvím brány, která zodpovídá za směrování příchozích připojení na fyzické umístění serveru v našich clusterů. Následující diagram znázorňuje tok provozu.
 
 ![Architektura připojení](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 

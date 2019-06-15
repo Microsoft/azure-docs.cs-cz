@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60318297"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
@@ -109,7 +109,7 @@ Informace o virtuální počítač Windows, disků nebo konfigurace fondů úlo�
 | Systémové informace                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapování svazku                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapování disku                          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
-| Spuštěné úkoly                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
+| Spouštění úloh                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Spolehlivost čítače úložiště      | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Informace o úložiště               | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Výstup fsutil                     | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
@@ -167,7 +167,7 @@ Diskspd vstupně-výstupních operací úloh testy (Disk s operačním systémem
 
 -  Tento nástroj musíte spustit na virtuálním počítači, který má tyto problémy s výkonem. 
 
--  Podporovány jsou následující operační systémy: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016, Windows 8.1 a Windows 10.
+-  Následující operační systémy se podporují: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016, Windows 8.1 a Windows 10.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkčních virtuálních počítačů
 

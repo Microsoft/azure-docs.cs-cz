@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 69e51f23980aa1d4225f2e5062470f94e5ca9008
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 4888ea8473c50b8774add7a930612c585fc9cbde
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753787"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074347"
 ---
 # <a name="azure-service-fabric-security"></a>Zabezpečení služby Azure Service Fabric 
 
@@ -205,7 +205,13 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Doporučujeme vám, že implementujete standardní konfigurace, který je všeobecně známé a dobře otestovaný, jako je například směrné plány zabezpečení společnosti Microsoft, na rozdíl od vytvoření směrného plánu](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines); možnost pro zřízení těchto ve vašem virtuálním počítači Škálovací sady je obslužná rutina rozšíření Azure Desired State Configuration (DSC), můžete nakonfigurovat virtuální počítače, jak se do režimu online, tak, že jsou spuštěné provozního softwaru.
 
 ## <a name="azure-firewall"></a>Brána Azure Firewall
-[Brány Firewall na Azure je služba zabezpečení spravované sítě založené na cloudu, která chrání vaše prostředky Azure Virtual Network. Je plně stavová brána firewall jako služba s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený. ](https://docs.microsoft.com/azure/firewall/overview); to umožňuje omezit odchozí přenosy HTTP/S pro zadaný seznam plně kvalifikované názvy domény (FQDN) včetně zástupné znaky. Tato funkce nevyžaduje ukončení protokolu SSL. Jeho doporučená můžete využít [značky Azure bránu Firewall plně kvalifikovaný název domény](https://docs.microsoft.com/azure/firewall/fqdn-tags) aktualizací Windows a abyste umožnili síťový provoz na Microsoft Windows Update koncových bodů může probíhat přes bránu firewall. [Brána Firewall služby Azure pomocí šablony nasadit](https://docs.microsoft.com/azure/firewall/deploy-template) najdete vzorek pro definice šablony Microsoft.Network/azureFirewalls prostředků. Dvě pravidla brány firewall společné pro aplikace Service Fabric je umožnit sítě clusterů ke komunikaci s * download.microsoft.com, a * servicefabric.azure.com; Chcete-li stáhnout aktualizace Windows a kódu rozšíření Service Fabric výpočetní virtuální počítač.
+[Brány Firewall na Azure je služba zabezpečení spravované sítě založené na cloudu, která chrání vaše prostředky Azure Virtual Network. Je plně stavová brána firewall jako služba s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený. ](https://docs.microsoft.com/azure/firewall/overview); to umožňuje omezit odchozí přenosy HTTP/S pro zadaný seznam plně kvalifikované názvy domény (FQDN) včetně zástupné znaky. Tato funkce nevyžaduje ukončení protokolu SSL. Jeho doporučená můžete využít [značky Azure bránu Firewall plně kvalifikovaný název domény](https://docs.microsoft.com/azure/firewall/fqdn-tags) aktualizací Windows a abyste umožnili síťový provoz na Microsoft Windows Update koncových bodů může probíhat přes bránu firewall. [Brána Firewall služby Azure pomocí šablony nasadit](https://docs.microsoft.com/azure/firewall/deploy-template) najdete vzorek pro definice šablony Microsoft.Network/azureFirewalls prostředků. Pravidla brány firewall, které jsou společné pro aplikace Service Fabric je, aby byl pro vaši virtuální síť s clustery následující:
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+Tato pravidla brány firewall doplňují povolené odchozí skupinách zabezpečení sítě, která bude zahrnovat ServiceFabric a úložiště, jako Povolené cíle z vaší virtuální sítě.
 
 ## <a name="tls-12"></a>TLS 1.2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
@@ -243,6 +249,18 @@ Ve výchozím nastavení je nainstalovaný antivirový program Windows Defender 
 
 > [!NOTE]
 > V dokumentaci antimalwaru pro konfiguraci pravidla, pokud nepoužíváte Windows Defender. Program Windows Defender není v Linuxu podporováno.
+
+## <a name="platform-isolation"></a>Izolace platformy
+Ve výchozím nastavení, aplikace Service Fabric je udělen přístup k modulu runtime Service Fabric, který se projevuje v různých formách: [proměnné prostředí](service-fabric-environment-variables-reference.md) odkazující na cesty k souborům na hostiteli odpovídající aplikaci a Soubory prostředků infrastruktury, koncový bod komunikace mezi procesy, který přijímá požadavky specifické pro aplikaci a klient certifikátu, který Fabric očekává, že aplikace použije ke svému ověření. V případě, že služba je hostitelem samotné nedůvěryhodný kód, doporučuje se zakázat přístup k modulu runtime SF - Pokud není výslovně potřeba. Přístup k modulu runtime se odebere, v části zásady manifest aplikace pomocí následující deklarace: 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>Další postup
 

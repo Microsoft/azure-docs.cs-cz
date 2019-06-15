@@ -2,35 +2,60 @@
 title: Nasazení více instancí prostředku Azure | Dokumentace Microsoftu
 description: Použití operace kopírování a polí v šabloně Azure Resource Manageru k iteraci více než jednou při nasazování prostředků.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/01/2019
+ms.date: 06/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 05b68fde30587967f65ee362344eea9a258f89a7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205978"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807381"
 ---
-# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasadit více než jednu instanci zdroje nebo vlastnosti v šablonách Azure Resource Manageru
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Prostředek, vlastnost nebo proměnné iterace v šablonách Azure Resource Manageru
 
-Tento článek popisuje, jak k iteraci v šabloně Azure Resource Manageru k vytvoření více instancí prostředku. Pokud je potřeba určit, jestli je prostředek nasazený vůbec, přečtěte si téma [podmínky](resource-group-authoring-templates.md#condition).
+V tomto článku se dozvíte, jak vytvořit více než jednu instanci z prostředků, proměnné nebo vlastnosti v šabloně Azure Resource Manageru. Chcete-li vytvořit více instancí, přidejte `copy` objektu do šablony.
 
-Podívejte se kurz [kurz: vytvoření více instancí prostředků pomocí šablon Resource Manageru](./resource-manager-tutorial-create-multiple-instances.md).
+Při použití s prostředkem, kopírovat objekt má následující formát:
 
+```json
+"copy": {
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "mode": "serial" <or> "parallel",
+    "batchSize": <number-to-deploy-serially>
+}
+```
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Při použití s proměnnou nebo vlastnost, kopírovat objekt má následující formát:
+
+```json
+"copy": [
+  {
+      "name": "<name-of-loop>",
+      "count": <number-of-iterations>,
+      "input": <values-for-the-property-or-variable>
+  }
+]
+```
+
+Obě použití jsou popsány podrobněji v tomto článku. Podívejte se kurz [kurz: vytvoření více instancí prostředků pomocí šablon Resource Manageru](./resource-manager-tutorial-create-multiple-instances.md).
+
+Pokud je potřeba určit, jestli je prostředek nasazený vůbec, přečtěte si téma [podmínky](resource-group-authoring-templates.md#condition).
+
+## <a name="copy-limits"></a>Zkopírujte omezení
+
+Chcete-li určit počet iterací, zadejte hodnotu pro vlastnost count. Počet nemůže být delší než 800.
+
+Počet nemůže být záporné číslo. Pokud provádíte nasazení šablony pomocí rozhraní REST API verze **2019-05-10** nebo později, můžete nastavit počet na nulu. Starší verze rozhraní REST API nepodporují nula Count. V současné době Powershellu nebo rozhraní příkazového řádku Azure nepodporují nulu pro počet, ale tato podpora bude přidána v budoucí verzi.
+
+Omezení pro počet jsou stejné, jestli se použije s prostředku, proměnná nebo vlastnost.
 
 ## <a name="resource-iteration"></a>Iterace prostředků
 
-Pokud během nasazení se musíte rozhodnout vytvořit jednu nebo více instancí prostředku, přidejte `copy` element na typ prostředku. V prvku kopie určíte počet iterací a název pro tuto smyčku. Hodnota count musí být kladné celé číslo a nemůže mít více než 800. 
+Pokud během nasazení se musíte rozhodnout vytvořit jednu nebo více instancí prostředku, přidejte `copy` element na typ prostředku. V elementu copy určete počet iterací a název pro tuto smyčku.
 
 Prostředek pro vytvoření několikrát má následující formát:
 
@@ -71,7 +96,7 @@ Vytvoří tyto názvy:
 * storage1
 * storage2.
 
-Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Počet iterací provádět je stále zadaný v elementu copy, ale hodnota copyIndex je posunut o zadanou hodnotu. To, v následujícím příkladu:
+Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). V elementu copy je stále zadaný počet iterací, ale hodnota copyIndex je posunut o zadanou hodnotu. To, v následujícím příkladu:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -156,7 +181,7 @@ Informace o používání kopírování s vnořené šablony najdete v tématu [
 Chcete-li vytvořit více než jednu hodnotu pro vlastnost na prostředek, přidejte `copy` pole v elementu properties. Toto pole obsahuje objekty, a každý objekt má následující vlastnosti:
 
 * název – název vlastnosti pro vytvoření několika hodnot pro
-* počet – počet hodnot k vytvoření. Hodnota count musí být kladné celé číslo a nemůže mít více než 800.
+* počet – počet hodnot k vytvoření.
 * (vstup) – objekt, který obsahuje hodnoty pro přiřazení k vlastnosti  
 
 Následující příklad ukazuje, jak použít `copy` dataDisks vlastnost na virtuálním počítači:

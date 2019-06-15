@@ -18,10 +18,10 @@ ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60651624"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -327,7 +327,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Příprava infrastruktury v clusteru SOFS s použitím jiného hostitele globální SAP
 
-Můžete nakonfigurovat druhý server SOFS (například druhý server SOFS Clusterové role s  **\<SAPGlobalHost2 >** a jiné **Volume2** druhé  **\< SID2 >**).
+Můžete nakonfigurovat druhý server SOFS (například druhý server SOFS Clusterové role s  **\<SAPGlobalHost2 >** a jiné **Volume2** druhé  **\< SID2 >** ).
 
 ![Obrázek 4: SOFS s několika SID je stejný jako SAP globální název hostitele 2][sap-ha-guide-figure-8015]
 

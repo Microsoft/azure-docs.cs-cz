@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb03869cdea2150b6e922e2d6d81e577c3be02da
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65075382"
 ---
 # <a name="web-api-that-calls-web-apis---app-registration"></a>Webové rozhraní API, že volání webového rozhraní API – registrace aplikace
@@ -30,7 +30,7 @@ Však od webové aplikace teď volá webové rozhraní API, stane se aplikace d�
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
-## <a name="api-permissions"></a>Oprávnění rozhraní API
+## <a name="api-permissions"></a>Oprávnění k rozhraní API
 
 Webové aplikace volat rozhraní API jménem uživatele, pro kterého byla přijata nosný token. Budou muset požadovat delegovaná oprávnění. Podrobnosti najdete v tématu [přidat oprávnění pro přístup k webovým rozhraním API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 

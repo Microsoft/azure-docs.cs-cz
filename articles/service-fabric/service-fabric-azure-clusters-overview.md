@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310917"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled Service Fabric clustery v Azure
@@ -31,9 +31,9 @@ Cluster Service Fabric v Azure je prostředek Azure, která používá a pracuje
 * Virtuální počítače a virtuální síťové karty
 * škálovací sady virtuálních počítačů
 * virtuální sítě
-* nástroje pro vyrovnávání zatížení
-* účty úložiště
-* veřejné IP adresy
+* Nástroje pro vyrovnávání zatížení
+* Účty úložiště
+* Veřejné IP adresy
 
 ![Cluster Service Fabric][Image]
 
@@ -55,7 +55,7 @@ Při vytváření clusteru, definovat jeden nebo více typů uzlů.  Uzly nebo v
 Další informace najdete v článku [typy uzlů Service Fabric a virtuálního počítače škálovací sady](service-fabric-cluster-nodetypes.md).
 
 ### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
-Instance virtuálních počítačů jsou připojené za [nástroji Azure load balancer](/azure/load-balancer/load-balancer-overview), který je přidružený [veřejnou IP adresu](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) a název DNS.  Při zřizování clusteru s  *&lt;clustername&gt;*, název DNS  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com* je název DNS, který je přidružený k vyrovnávání zatížení před škálovací sady.
+Instance virtuálních počítačů jsou připojené za [nástroji Azure load balancer](/azure/load-balancer/load-balancer-overview), který je přidružený [veřejnou IP adresu](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) a název DNS.  Při zřizování clusteru s  *&lt;clustername&gt;* , název DNS  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com* je název DNS, který je přidružený k vyrovnávání zatížení před škálovací sady.
 
 Virtuální počítače v clusteru mají pouze [privátních IP adres](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Přenos pro správu a provoz služeb jsou směrovány veřejný internetový nástroj pro vyrovnávání zatížení.  Síťový provoz se směruje na těchto počítačích prostřednictvím pravidla překladu adres (klienti připojit k určité uzly/instance) nebo pravidla Vyrovnávání zatížení (provoz směruje do virtuálních počítačů round robin).  Nástroj pro vyrovnávání zatížení má přidružená veřejná IP adresa s názvem DNS ve formátu:  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com*.  Veřejná IP adresa je dalším prostředkem Azure ve skupině prostředků.  Pokud definujete více typy uzlů v clusteru, nástroj pro vyrovnávání zatížení se vytvoří pro každý uzel typu/škálovací sady. Nebo můžete nastavit nástroj pro vyrovnávání zatížení pro víc typů uzlů.  Primární typ uzlu je název DNS  *&lt;clustername&gt;.&lt; umístění&gt;. cloudapp.azure.com*, máte název DNS jiné typy uzlů  *&lt;clustername&gt;-&lt;nodetype&gt;.&lt; umístění&gt;. cloudapp.azure.com*.
 

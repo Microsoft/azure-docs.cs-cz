@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60527317"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schématu konfigurace Azure Diagnostics a historie
@@ -24,7 +24,7 @@ Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávaj
 > - Azure Virtual Machines
 > - Virtual Machine Scale Sets
 > - Service Fabric
-> - Cloud Services
+> - Cloudové služby
 > - Network Security Groups (Skupiny zabezpečení sítě)
 >
 > Tato stránka je pouze relevantní, pokud použijete jednu z těchto služeb.

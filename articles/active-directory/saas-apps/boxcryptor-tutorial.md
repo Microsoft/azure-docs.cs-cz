@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4beac0ab739d62eb7acb00e6b2db717b5f43e15
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 384a0d1161197bbe4d4335e27b72ed50755980f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987955"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Kurz: Integrace Azure Active Directory s Boxcryptor
 
@@ -54,7 +54,7 @@ Konfigurace integrace Boxcryptor do služby Azure AD, budete muset přidat Boxcr
 
 **Chcete-li přidat Boxcryptor z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -183,7 +183,7 @@ V této části je povolit Britta Simon k udělení přístupu k Boxcryptor pou�
 
 V této části vytvoříte uživatele v Boxcryptor jako Britta Simon. Práce s [tým podpory Boxcryptor](mailto:support@boxcryptor.com) přidat uživatele nebo doménu, která musí být přidaný do seznamu povolených položek pro platformu Boxcryptor. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Boxcryptor platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

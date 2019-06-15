@@ -18,10 +18,10 @@ ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61473905"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
@@ -31,7 +31,7 @@ Vytvoření virtuálního počítače s Linuxem (VM) je snadné provést z pří
 Toto téma předpokládá, že již máte funkční předplatného Azure ([registraci bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už zřízení virtuálního počítače do vašeho předplatného Azure. Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k předplatnému Azure pomocí [az login](/cli/azure/reference-index) před [vytvoření virtuálního počítače](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Azure Disk s operačním systémem
-Po vytvoření virtuálního počítače s Linuxem v Azure má dva disky, které s ním spojená. **/ dev/sda** je disk s operačním systémem **/dev/sdb** je dočasný disk.  Nepoužívejte hlavní disk s operačním systémem (**/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaný pro rychlé spuštění virtuálního počítače a neposkytuje dostatečný výkon pro vaše úlohy. Chcete se připojit jeden nebo víc disků k virtuálnímu počítači k získání trvalého a optimalizované úložiště pro vaše data. 
+Po vytvoření virtuálního počítače s Linuxem v Azure má dva disky, které s ním spojená. **/ dev/sda** je disk s operačním systémem **/dev/sdb** je dočasný disk.  Nepoužívejte hlavní disk s operačním systémem ( **/dev/sda**) pro všechno, co s výjimkou operačního systému, protože je optimalizovaný pro rychlé spuštění virtuálního počítače a neposkytuje dostatečný výkon pro vaše úlohy. Chcete se připojit jeden nebo víc disků k virtuálnímu počítači k získání trvalého a optimalizované úložiště pro vaše data. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Přidání disků pro velikost a výkonnostní cíle
 Na základě velikosti virtuálního počítače můžete připojit až 16 další disky na A-Series, 32 disky v D-Series a strojové 64 disků na G-Series – každá až do velikosti 1 TB. Podle potřeby za prostor a požadavky na vstupně-výstupních operací, přidejte další disky. Každý disk má cíl výkonnosti 500 iops pro úložiště úrovně Standard a maximálně 5000 IOps na disku pro Premium Storage.
@@ -51,7 +51,7 @@ Při práci s vysokým vstupně-výstupních operací úloh a rozhodli úložiš
  
 
 ## <a name="your-vm-temporary-drive"></a>Virtuální počítač dočasné jednotky
-Ve výchozím nastavení při vytváření virtuálního počítače, Azure vám poskytne disk s operačním systémem (**/dev/sda**) a dočasný disk (**/dev/sdb**).  Všechny další disky, zobrazit si můžete přidat jako **/dev/sdc**, **/dev/sdd**, **/dev/sde** a tak dále. Všechna data na dočasném disku (**/dev/sdb**) není trvalý a může dojít ke ztrátě určitých událostí, jako je změna velikosti virtuálního počítače, opětovné nasazení, nebo údržby vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku se týká velikost virtuálního počítače, kterou jste zvolili v době nasazení. Všechny premium velikosti virtuálních počítačů (řady DS, G a DS_V2) se zálohují dočasné jednotky na místní disk SSD pro další výkon až 48k vstupně-výstupních operací. 
+Ve výchozím nastavení při vytváření virtuálního počítače, Azure vám poskytne disk s operačním systémem ( **/dev/sda**) a dočasný disk ( **/dev/sdb**).  Všechny další disky, zobrazit si můžete přidat jako **/dev/sdc**, **/dev/sdd**, **/dev/sde** a tak dále. Všechna data na dočasném disku ( **/dev/sdb**) není trvalý a může dojít ke ztrátě určitých událostí, jako je změna velikosti virtuálního počítače, opětovné nasazení, nebo údržby vynutí restartování vašeho virtuálního počítače.  Velikost a typ dočasného disku se týká velikost virtuálního počítače, kterou jste zvolili v době nasazení. Všechny premium velikosti virtuálních počítačů (řady DS, G a DS_V2) se zálohují dočasné jednotky na místní disk SSD pro další výkon až 48k vstupně-výstupních operací. 
 
 ## <a name="linux-swap-file"></a>Linux stránkovacího souboru
 Pokud je váš virtuální počítač Azure z image Ubuntu nebo CoreOS, můžete použít CustomData odeslat konfiguraci cloudu cloud-init. Pokud jste [nahrát vlastní image Linuxu](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která používá cloud-init, můžete také nakonfigurovat odkládací oddíl použití cloud-init.

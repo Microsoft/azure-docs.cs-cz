@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
 ms.openlocfilehash: 0e9d87e5b344b7091a2a0cf41d6f7fa3484dfcf3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711318"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Přehled strukturovaného streamování Apache Sparku
@@ -38,7 +38,7 @@ Ve strukturované streamování data dorazí na systém a ingestuje se hned do v
 
 Zpracování dat ve výsledcích tabulek můžou obsahovat jenom data, která je nový od posledního času dotaz (*režimu připojení*), nebo v tabulce může být zcela aktualizují pokaždé, když se nová data tak, že v tabulce jsou zahrnuty všechny výstupní data od začátku datového proudu dotazu (*úplný režim*).
 
-### <a name="append-mode"></a>Režim připojení
+### <a name="append-mode"></a>Režimu připojení
 
 V režimu připojení, pouze řádky přidány do tabulky výsledků od posledního spuštění dotazu jsou k dispozici v tabulce výsledků a zapisovat do externího úložiště. Například nejjednodušší dotazu právě kopíruje veškerá data ze vstupní tabulky do tabulky výsledků v nezměněném stavu. Pokaždé, když trigger interval uplyne, se zpracují nová data a řádky, které představují tato nová data se zobrazí v tabulce výsledků. 
 

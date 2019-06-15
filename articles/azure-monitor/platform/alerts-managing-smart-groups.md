@@ -1,18 +1,18 @@
 ---
 title: Správa inteligentních skupin
 description: Správa inteligentní vytvořené přes upozornění instance skupiny
-author: lingliw
+author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 01/21/19
-ms.author: v-lingwu
+ms.date: 09/24/2018
+ms.author: anantr
 ms.subservice: alerts
 ms.openlocfilehash: a9434bebe82687b14f45b3c375572717d71d0e55
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60713334"
 ---
 # <a name="manage-smart-groups"></a>Správa inteligentních skupin
@@ -26,4 +26,5 @@ ms.locfileid: "60713334"
 ![Monitorování](./media/alerts-managing-smart-groups/sg-list.jpg)
 3.  Kliknutím na libovolnou skupinu Smart otevřete stránku podrobností, ve kterém uvidíte seskupení z důvodu taky výstrahy člena. Tato agregace umožňuje řešit singulární inteligentní skupiny, místo procházení více výstrah.   
 ![Monitorování](./media/alerts-managing-smart-groups/sg-details.jpg)
+
 

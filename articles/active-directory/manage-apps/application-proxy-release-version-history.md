@@ -17,10 +17,10 @@ ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783292"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Proxy aplikací Azure AD: Historie vydaných verzí
@@ -38,7 +38,7 @@ Stažení konektoru Proxy aplikace Azure AD |  [Stáhněte si nejnovější conn
 
 ### <a name="release-status"></a>Stav verze
 
-20. září 2018: Všeobecně dostupné ke stažení
+20\. září 2018: Všeobecně dostupné ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
@@ -56,7 +56,7 @@ Stažení konektoru Proxy aplikace Azure AD |  [Stáhněte si nejnovější conn
 
 ### <a name="release-status"></a>Stav verze
 
-19. ledna 2018: Všeobecně dostupné ke stažení
+19\. ledna 2018: Všeobecně dostupné ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
@@ -66,7 +66,7 @@ Stažení konektoru Proxy aplikace Azure AD |  [Stáhněte si nejnovější conn
 
 ### <a name="release-status"></a>Stav verze 
 
-25. května 2017: Všeobecně dostupné ke stažení 
+25\. května 2017: Všeobecně dostupné ke stažení 
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
 
@@ -76,7 +76,7 @@ Lepší kontrolu nad limity konektory odchozí připojení.
 
 ### <a name="release-status"></a>Stav verze
 
-15. dubna 2017: Všeobecně dostupné ke stažení
+15\. dubna 2017: Všeobecně dostupné ke stažení
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 

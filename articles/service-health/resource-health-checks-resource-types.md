@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60622279"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve službě Azure resource health
@@ -172,7 +172,7 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li> Zde se přihlášení k databázi?</li></ul>|
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts.
 |Provedený kontroly|
 |---|
 |<ul><li>Se žádostí o čtení dat z účtu úložiště nedaří zálohovat z důvodu problémů platformy Azure Storage?</li><li>Se žádostí o zápis dat do účtu úložiště nedaří zálohovat z důvodu problémů platformy Azure Storage?</li><li>Úložiště clusteru, ve které se nachází účet úložiště není k dispozici?</li></ul>|

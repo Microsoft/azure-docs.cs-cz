@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60592243"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Zajistěte splnění požadavků pro vytváření skupin dostupnosti AlwaysOn na virtuálních počítačích Azure
@@ -206,7 +206,7 @@ V následujících krocích konfigurace **řadiče domény ad primární** stroj
 1. Na portálu, otevřete **SQL-HA-RG** prostředku, skupiny a vyberte **řadiče domény ad primární** počítače. Na **řadiče domény ad primární**, klikněte na tlačítko **připojit** otevřete soubor RDP pro přístup přes vzdálenou plochu.
 
     ![Připojení k virtuálnímu počítači](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
-2. Přihlaste se pomocí účtu správce nakonfigurované (**\DomainAdmin**) a heslo (**Contoso! 0000**).
+2. Přihlaste se pomocí účtu správce nakonfigurované ( **\DomainAdmin**) a heslo (**Contoso! 0000**).
 3. Ve výchozím nastavení **správce serveru** by se mělo zobrazit řídicí panel.
 4. Klikněte na tlačítko **přidat role a funkce** odkaz na řídicím panelu.
 

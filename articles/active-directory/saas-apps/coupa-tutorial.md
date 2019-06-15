@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f7b4db749d1191179b3f4f1d9bb13d77925697f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Kurz: Integrace Azure Active Directory s Coupa
 
@@ -53,7 +53,7 @@ Konfigurace integrace Coupa do služby Azure AD, budete muset přidat Coupa z Ga
 
 **Chcete-li přidat Coupa z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -114,7 +114,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Coupa, proveďte následuj�
 
     | Prostředí  | zprostředkovatele identity |
     |:-------------|----|
-    | Izolovaný prostor | `sso-stg1.coupahost.com`|
+    | Sandbox | `sso-stg1.coupahost.com`|
     | Výroba | `sso-prd1.coupahost.com`|
     | | |
 
@@ -122,7 +122,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Coupa, proveďte následuj�
 
     | Prostředí | zprostředkovatele identity |
     |------------- |----|
-    | Izolovaný prostor | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Sandbox | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
     | Výroba | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 

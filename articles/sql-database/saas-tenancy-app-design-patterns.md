@@ -13,10 +13,10 @@ ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484415"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Vzory víceklientské SaaS databáze tenantů
@@ -33,8 +33,8 @@ Po platit nadřazené, každý tenant získá přístup k komponenty aplikace Sa
 
 Termín *tenantů modelu* odkazuje na uspořádání uložených dat klientů:
 
-- *Single – architektura:*&nbsp; Každá databáze uchovává data z pouze jednoho tenanta.
-- *Víceklientská architektura:*&nbsp; Každá databáze uchovává data z více tenantů v samostatných (s mechanismy pro ochranu dat o ochraně osobních údajů).
+- *Single – architektura:* &nbsp; Každá databáze uchovává data z pouze jednoho tenanta.
+- *Víceklientská architektura:* &nbsp; Každá databáze uchovává data z více tenantů v samostatných (s mechanismy pro ochranu dat o ochraně osobních údajů).
 - Hybridní tenantů modely jsou také k dispozici.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak zvolit odpovídající tenantů modelu
@@ -47,9 +47,9 @@ Obecně platí tenantů model nemá vliv na funkce aplikace, ale pravděpodobně
     - Úložiště v agregaci.
     - Úlohy.
 
-- **Izolaci klientů:**&nbsp; Izolace dat a výkonu (Určuje, zda pracovní zatížení jednoho tenanta má vliv na ostatní).
+- **Izolaci klientů:** &nbsp; Izolace dat a výkonu (Určuje, zda pracovní zatížení jednoho tenanta má vliv na ostatní).
 
-- **Náklady na tenanta:**&nbsp; Náklady na databázi.
+- **Náklady na tenanta:** &nbsp; Náklady na databázi.
 
 - **Vývoj složitost:**
     - Změny schématu.
@@ -61,7 +61,7 @@ Obecně platí tenantů model nemá vliv na funkce aplikace, ale pravděpodobně
     - Obnovení klienta.
     - Zotavení po havárii.
 
-- **Přizpůsobitelnost:**&nbsp; Snadné podpora schématu přizpůsobení, které jsou buď specifickým pro tenanta nebo tenanta specifický pro třídu.
+- **Přizpůsobitelnost:** &nbsp; Snadné podpora schématu přizpůsobení, které jsou buď specifickým pro tenanta nebo tenanta specifický pro třídu.
 
 Diskuze tenantů se zaměřuje na *data* vrstvy.  Ale zamysleme *aplikace* vrstvy.  Aplikační vrstvu je považován za monolitické entity.  Pokud budete provádět dělení aplikaci do mnoha malých součástí, podle vašeho výběru modelu tenantů může změnit.  Některé součásti může zpracovávat jinak než ostatní tenantů a technologie úložiště nebo platformu používá.
 
@@ -126,9 +126,9 @@ Další dostupné vzor je uložit velký počet klientů v databázi s více ten
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Publikovaný izolaci klientů
 
-*Data:*&nbsp; Databázi s více tenanty nutně upřednostňuje izolaci klientů.  Data z více tenantů se ukládají společně v jedné databázi.  Během vývoje Ujistěte se, že dotazy nikdy vystavit data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovní řádků][docu-sql-svr-db-row-level-security-947w], které můžete vynutit tato data vrácená z dotazu obor do jednoho tenanta.
+*Data:* &nbsp; Databázi s více tenanty nutně upřednostňuje izolaci klientů.  Data z více tenantů se ukládají společně v jedné databázi.  Během vývoje Ujistěte se, že dotazy nikdy vystavit data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovní řádků][docu-sql-svr-db-row-level-security-947w], které můžete vynutit tato data vrácená z dotazu obor do jednoho tenanta.
 
-*Zpracování:*&nbsp; Databázi s více tenanty sdílí výpočetních a úložných kapacit ve všech jeho tenantech.  K zajištění, že funguje přijatelně, je možné monitorovat databáze jako celek.  Systému Azure ale nemá možnost nijak integrované sledovat nebo spravovat pomocí těchto prostředků, jednotlivým tenantem.  Proto databázi s více tenanty přenáší je zvýšené riziko vzniku "hlučným sousedům," kde úloh jednoho tenanta overactive ovlivňuje výkon z jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace může monitorovat výkon na úrovni tenanta.
+*Zpracování:* &nbsp; Databázi s více tenanty sdílí výpočetních a úložných kapacit ve všech jeho tenantech.  K zajištění, že funguje přijatelně, je možné monitorovat databáze jako celek.  Systému Azure ale nemá možnost nijak integrované sledovat nebo spravovat pomocí těchto prostředků, jednotlivým tenantem.  Proto databázi s více tenanty přenáší je zvýšené riziko vzniku "hlučným sousedům," kde úloh jednoho tenanta overactive ovlivňuje výkon z jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace může monitorovat výkon na úrovni tenanta.
 
 #### <a name="lower-cost"></a>Nižší náklady
 
@@ -186,8 +186,8 @@ Následující tabulka shrnuje rozdíly mezi modely hlavních tenantů.
 
 | Měření | Samostatná aplikace | Databáze na tenanta | Horizontálně dělené více tenantů |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Měřítko | Střednědobé používání<br />1-100s | Velmi vysoké<br />1-100,000s | Unlimited<br />1-1,000,000s |
-| Izolaci klientů | Velmi vysoké | Vysoký | Nízká; s výjimkou (který je pouze ve službě db MT) jednoho tenanta. |
+| Měřítko | Střední<br />1-100s | Velmi vysoké<br />1-100,000s | Unlimited<br />1-1,000,000s |
+| Izolaci klientů | Velmi vysoké | Vysoká | Nízká; s výjimkou (který je pouze ve službě db MT) jednoho tenanta. |
 | Poplatky za databázi za tenanta | Vysoká; je velikost špičky. | Nízká; fondy použít. | Nejnižší pro malé tenanty v MT databází. |
 | Monitorování a správa výkonu | Na tenanta pouze | Agregace a na tenanta | Agregovat; i když je na tenanta jenom pro určené. |
 | Vývoj složitost | Nízká | Nízká | Střední; z důvodu horizontálního dělení. |

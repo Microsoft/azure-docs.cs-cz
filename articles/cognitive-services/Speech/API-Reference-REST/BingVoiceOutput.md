@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515426"
 ---
 # <a name="bing-text-to-speech-api"></a>Převod textu na řeč z Bingu rozhraní API
@@ -43,7 +43,7 @@ Informace o požadované záhlaví pro přístup pomocí tokenu je následujíc�
 
 Název| Formát | Popis
 ----|----|----
-OCP-Apim-Subscription-Key | ASCII | Váš klíč předplatného
+OCP-Apim-Subscription-Key | ASCII | Klíč předplatného.
 
 Vrátí token služby přístupový token JWT jako `text/plain`. Pak tokenů JWT je předán jako `Base64 access_token` ke koncovému bodu řeči jako hlavičku autorizace řetězec s předponou `Bearer`. Příklad:
 
@@ -62,7 +62,7 @@ V následující tabulce jsou uvedeny hlavičky protokolu HTTP, které se použ�
 
 Záhlaví |Hodnota |Komentáře
 ----|----|----
-Typ obsahu | aplikace/ssml + xml | Vstupní typ obsahu.
+Content-Type | aplikace/ssml + xml | Vstupní typ obsahu.
 X-Microsoft-OutputFormat | **1.** ssml – 16 khz – 16 bitů-mono – převod textu na řeč <br> **2.** nezpracovaná – 16 khz – 16 bitů-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff – 16 khz – 16 bitů-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Zvukový formát výstupu.
 X-Search-AppId | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje klientskou aplikaci. To může být ID úložiště pro aplikace. Pokud není k dispozici, může být ID uživatele vygenerované aplikace.
 X-Search-ClientID | Identifikátor GUID (pouze hex, pomlčky) | ID, které jednoznačně identifikuje instance aplikace pro každou instalaci.
@@ -271,7 +271,7 @@ zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Yating, Apo
 zh-TW | Žena | "Microsoft serveru řeči Text na řeč hlas (zh-TW, HanHanRUS)"
 zh-TW | Muž | "Microsoft serveru řeči Text na řeč hlas (zh-TW, Zhiwei, Apollo)"
 
- * ar – třeba podporuje moderní standardní Arabština (MSA).
+ \* ar – třeba podporuje moderní standardní Arabština (MSA).
 
 > [!NOTE]
 > Všimněte si, že předchozí názvy služeb **Microsoft Server řeči Text na řeč hlas (cs-CZ, Vit)** a **Microsoft serveru řeči Text na řeč hlas (en-IE, Shaun)** se přestanou používat po 3/31. ledna 2018, v pořadí pro optimalizaci funkcí rozhraní Bing Speech API. Aktualizujte prosím váš kód s aktualizované názvy.

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: danlep
 ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60430784"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Odstranit Image kontejnerů ve službě Azure Container Registry
@@ -20,7 +20,7 @@ Pokud chcete zachovat velikost svého registru kontejneru Azure, odstraníte pra
 
 Budete moct odstranit bitové kopie dat v několika různými způsoby, a proto je důležité pochopit, jak každá operace odstranění ovlivňuje využití úložiště. V tomto článku se nejdřív představuje komponenty imagí Dockeru registru a kontejner a potom zahrnuje několik metod pro odstranění dat obrázků. Ukázkové skripty pro automatizaci operace odstranění.
 
-## <a name="registry"></a>Registr
+## <a name="registry"></a>Registru
 
 Kontejner *registru* je služba, která ukládá a distribuuje imagí kontejnerů. Docker Hub je veřejného registru kontejnerů Dockeru, zatímco služba Azure Container Registry poskytuje privátní Docker registry kontejnerů v Azure.
 

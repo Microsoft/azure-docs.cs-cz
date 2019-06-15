@@ -12,10 +12,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 05/07/2019
 ms.openlocfilehash: d3e68a5287e59c576f85491e6e5eba33fac080ca
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65465184"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL Database
@@ -97,7 +97,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Zdroj**     |Všechny IP adresy nebo značka služby         |<ul><li>Pro služby Azure, jako je Power BI vyberte značku Azure Cloud Service</li> <li>Pro počítač nebo virtuální počítač Azure použijte adresu IP pro NAT</li></ul> |
     |**Rozsahy zdrojových portů**     |*         |Ponechte tuto hodnotu na * (jakýkoli) jsou obvykle dynamicky přidělené a jako takové, nepředvídatelné zdrojové porty |
-    |**cíl**     |Vše         |Opuštění cíl jako některý umožňující provoz v podsíti spravované instance |
+    |**cíl**     |Jakýkoli         |Opuštění cíl jako některý umožňující provoz v podsíti spravované instance |
     |**Rozsahy cílových portů**     |3342         |Obor cílový port 3342, což je koncový bod veřejné TDS spravované instance |
     |**Protokol**     |TCP         |Spravovaná instance protokolu TCP používá pro TDS |
     |**Akce**     |Povolit         |Povolí příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |

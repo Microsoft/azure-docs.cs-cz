@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 54c3ae22b9cc2e447960b9e3527bbbb0afae3e54
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65891206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Kurz: Integrace Azure Active Directory s PageDNA
 
@@ -163,7 +163,7 @@ V této části vytvoříte testovacího uživatele na webu Azure Portal s názv
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **BrittaSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BrittaSimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **BrittaSimon\@\<doména_společnosti >.\< Rozšíření >** . Například **BrittaSimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
@@ -199,7 +199,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 Uživatel se jménem Britta Simon se teď vytvoří v PageDNA. Nemusíte dělat nic k vytvoření tohoto uživatele. PageDNA podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Pokud uživatel se jménem Britta Simon již neexistuje mezi PageDNA, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

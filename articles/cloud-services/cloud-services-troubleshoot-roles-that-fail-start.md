@@ -16,10 +16,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653344"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolí cloudové služby, které nejde spustit
@@ -66,7 +66,7 @@ Vzdálená plocha můžete použít pro přístup k roli a vzdáleně zobrazit p
 2. Při nasazení řešení pomocí sady Visual Studio povolte vzdálenou plochu. Další informace najdete v tématu [povolit připojení ke vzdálené ploše pro roli v cloudových službách Azure pomocí sady Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. Na portálu Microsoft Azure, jakmile se zobrazí stav instance **připravené**, vzdáleně se přihlaste k instanci. Další informace o použití vzdálené plochy s cloudovými službami, naleznete v tématu [vzdáleném připojení k instancím rolí](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které se zadaly během konfigurace vzdálené plochy.
-6. Otevřete příkazové okno.
+6. Otevřete okno příkazového řádku.
 7. Zadejte `IPconfig`.
 8. Poznamenejte si IPV4 adresu hodnotu.
 9. Spusťte aplikaci Internet Explorer.

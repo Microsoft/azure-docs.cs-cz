@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ccb6944227208cee8601751cf43a53c111c09c6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65021626"
 ---
 # <a name="add-scoring-profiles-to-an-azure-search-index"></a>Přidání profilů vyhodnocování do indexu Azure Search
@@ -247,7 +247,7 @@ Skóre vyhledávání se počítá podle statistické vlastnosti dat a dotazu. S
 |`magnitude` &#124; `boostingRangeEnd`|Nastaví koncovou hodnotu rozsahu, který velikost magnitudu. Hodnota musí být celé číslo nebo číslo s plovoucí desetinnou čárkou. U hodnocení hvězdičkami 1 až 4 by to bylo 4.|  
 |`magnitude` &#124; `constantBoostBeyondRange`|Platné hodnoty jsou true nebo false (výchozí). Pokud je nastavena na hodnotu true, bude se skóre budou i nadále platí pro dokumenty s hodnotou cílového pole, která je vyšší než horní konec rozsahu. Pokud je hodnota NEPRAVDA, nárůst této funkce se nepoužije pro dokumenty s hodnotou cílového pole, která spadá mimo rozsah.|  
 |`freshness`|Aktuálnost vyhodnocení funkce se používá k Změna pořadí skóre pro položky na základě hodnot v `DateTimeOffset` pole. Položka s novější datum například lze seřadit vyšší než starší položky.<br /><br /> Je také možné řadit různé věci, třeba události kalendáře s budoucím datem tak, aby položky blíže až po současnost lze seřadit vyšší než v budoucnu další položky.<br /><br /> V aktuálním vydání služby opravíme v jednom konci rozsahu aktuální čas. Druhém konci je čas v minulosti na základě `boostingDuration`. Pro zvýšení rozsahu čas v budoucnosti, použít zápornou `boostingDuration`.<br /><br /> Rychlost zvýšení úrovně se změní z maximální a minimální rozsah určíte výběrem interpolace použitý pro bodovací profil (viz následující obrázek). Pokud chcete obrátit zvýšení skóre faktor, zvolte faktor zesílení menší než 1.|  
-|`freshness` &#124; `boostingDuration`|Nastaví konec platnosti, po kterém se u konkrétního dokumentu přestane zvyšovat skóre. Zobrazit [nastavit boostingDuration](#bkmk_boostdur) v následující části Syntaxe a příkladů.|  
+|`freshness` &#124; `boostingDuration`|Nastaví platnosti, po které zvýšení úrovně se zastaví u konkrétního dokumentu. Zobrazit [nastavit boostingDuration](#bkmk_boostdur) v následující části Syntaxe a příkladů.|  
 |`distance`|Vzdálenost, o kterou funkci bodování slouží k mít vliv na skóre dokumenty podle toho, jak zavřít nebo daleko jsou od referenční geografické polohy. Odkaz na umístění je uveden jako součást dotazu v parametru (pomocí `scoringParameterquery` řetězec možnost) jako fyzický pevný disk, lat argument.|  
 |`distance` &#124; `referencePointParameter`|Parametr má být předán do dotazů jako referenční umístění. `scoringParameter` je parametr dotazu. Zobrazit [vyhledávání dokumentů &#40;rozhraní REST API služby Azure Search&#41; ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) popisy parametrů dotazu.|  
 |`distance` &#124; `boostingDistance`|Číslo, která určuje vzdálenost v kilometrech od referenčního místa, kde končí oblast zvýšení skóre.|  

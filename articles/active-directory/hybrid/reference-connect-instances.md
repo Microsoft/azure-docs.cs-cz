@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298817"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Speciální aspekty pro instance
@@ -33,7 +33,7 @@ Azure AD Connect je nejčastěji používaná celosvětové instance služby Azu
 | --- |
 | \*.microsoftonline.de |
 | \*. windows.net |
-| + Seznamy odvolaných certifikátů |
+| \+ Seznamy odvolaných certifikátů |
 
 Při přihlášení k tenantovi Azure AD, musíte použít účet v doméně onmicrosoft.de.
 
@@ -53,7 +53,7 @@ Tento cloud má byla podporuje starší verze nástroje DirSync. Z buildu 1.1.18
 | \*.microsoftonline.us |
 | \*. windows.net (vyžadováno pro automatické zjišťování tenanta Azure Government) |
 | \*.gov.us.microsoftonline.com |
-| + Seznamy odvolaných certifikátů |
+| \+ Seznamy odvolaných certifikátů |
 
 > [!NOTE]
 > Od Azure AD Connect verze 1.1.647.0, nastavení AzureInstance hodnoty v registru se už nevyžaduje za předpokladu, že *. windows.net je otevřený na vašich serverech proxy serveru. Však pro zákazníky, které neumožňují připojení k Internetu z jejich serverech Azure AD Connect, následující ruční konfigurace můžete použít.

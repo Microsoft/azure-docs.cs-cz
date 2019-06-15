@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610568"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení rámce: Citlivá Data | Zmírnění rizik 
@@ -38,7 +38,7 @@ ms.locfileid: "60610568"
 
 ## <a id="binaries-info"></a>Ujistěte se, že binární soubory jsou zakódovány, pokud obsahují citlivé informace
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -49,7 +49,7 @@ ms.locfileid: "60610568"
 
 ## <a id="efs-user"></a>Vezměte v úvahu, že pomocí šifrované File System (EFS) se používá k ochraně důvěrných údajů konkrétního uživatele
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Sestavení |  
@@ -60,7 +60,7 @@ ms.locfileid: "60610568"
 
 ## <a id="filesystem"></a>Ujistěte se, že citlivá data uložená v aplikaci na systém souborů je šifrovaná
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti počítače | 
 | **SDL fáze**               | Nasazení |  
@@ -71,7 +71,7 @@ ms.locfileid: "60610568"
 
 ## <a id="cache-browser"></a>Ujistěte se, že není citlivý obsah do mezipaměti, v prohlížeči
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -124,7 +124,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="encrypt-data"></a>Šifrování oddíly konfiguračních souborů webové aplikace, které obsahují citlivá data
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -135,7 +135,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="autocomplete-input"></a>Explicitně zakážete automatické dokončování atributu HTML ve formulářích citlivé a vstupy
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -154,7 +154,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="data-mask"></a>Ujistěte se, že je zakryté hvězdičkami citlivá data zobrazí na obrazovce pro uživatele
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -165,7 +165,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="dynamic-users"></a>Maskování dynamických dat implementují omezení citlivá data bez ohrožení privilegovaných uživatelů
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -176,7 +176,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="salted-hash"></a>Ujistěte se, že hesla jsou uložena ve formátu hashe
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -187,7 +187,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="db-encrypted"></a>Ujistěte se, že je zašifrovaný citlivá data v databázi sloupce
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -198,7 +198,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="tde-enabled"></a>Ujistěte se, že je povoleno šifrování databáze (TDE)
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -209,7 +209,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="backup"></a>Ujistěte se, že jsou šifrovaná zálohování databáze
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -220,7 +220,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="api-browser"></a>Ujistěte se, že citlivá data, které jsou relevantní pro webové rozhraní API není uložený v úložišti v prohlížeči
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -244,7 +244,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="encrypt-docdb"></a>Šifrovat citlivá data uložená ve službě Cosmos DB
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Documentdb | 
 | **SDL fáze**               | Sestavení |  
@@ -255,7 +255,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="disk-vm"></a>Použití Azure Disk Encryption pro šifrování disků, které jsou používány virtuálními počítači
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti virtuálních počítačů Azure IaaS | 
 | **SDL fáze**               | Nasazení |  
@@ -266,7 +266,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="fabric-apps"></a>Šifrování tajných kódů aplikace Service Fabric
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Hranice vztahů důvěryhodnosti Service Fabric | 
 | **SDL fáze**               | Sestavení |  
@@ -277,7 +277,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="modeling-teams"></a>Provádět modelování zabezpečení a použití obchodní jednotky nebo týmy vyžadováno
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -288,7 +288,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="entities"></a>Minimalizovat přístup ke sdílení funkcí na důležité entity
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Nasazení |  
@@ -299,7 +299,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="good-practices"></a>Naučím uživatele na rizicích spojených s postupy vhodné zabezpečení a funkce sdílení Dynamics CRM
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Nasazení |  
@@ -310,7 +310,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="exception-mgmt"></a>Zahrnout pravidlo standardů vývoje proscribing zobrazující podrobnosti konfigurace v Správa výjimek
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Nasazení |  
@@ -321,7 +321,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="sse-preview"></a>Použijte šifrování služby Azure Storage (SSE) pro Data v klidovém stavu (Preview)
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -332,7 +332,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="client-storage"></a>Šifrování na straně klienta používá k ukládání citlivých dat ve službě Azure Storage
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -343,7 +343,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="pii-phones"></a>Šifrování citlivé nebo identifikovatelné osobní údaje data zapsaná do místního úložiště telefony
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
@@ -393,7 +393,7 @@ Pokud aplikace není podniková aplikace, pak použijte platformu poskytuje úlo
 
 ## <a id="binaries-end"></a>Před distribucí koncovým uživatelům obfuskaci generovaný binární soubory
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
@@ -404,7 +404,7 @@ Pokud aplikace není podniková aplikace, pak použijte platformu poskytuje úlo
 
 ## <a id="cert"></a>Typ clientCredentialType nastaven na certifikátu nebo Windows
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -423,7 +423,7 @@ Typ clientCredentialType nastaven na certifikátu nebo Windows.
 
 ## <a id="security"></a>Není povolen režim zabezpečení WCF
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -447,7 +447,7 @@ Následující konfigurace nastaví režim zabezpečení na hodnotu None.
 
 ### <a name="example"></a>Příklad:
 Režim zabezpečení přes všechny vazby služby jsou režimy pět možné zabezpečení: 
-* Žádné. Vypne zabezpečení. 
+* Žádné Vypne zabezpečení. 
 * Přenos. Zabezpečení pro vzájemné ověřování a zpráva ochranu přenosu používá. 
 * zpráva. Zabezpečení zpráv používá pro vzájemné ověřování a zpráva ochranu. 
 * Obojí. Umožňuje zadat nastavení přenosu a zabezpečení na úrovni zpráv (MSMQ pouze podporuje). 

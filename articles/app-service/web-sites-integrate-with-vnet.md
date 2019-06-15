@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dcb128d8793e3438d87e728bde069d07c72cf97b
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a5187ed299f77c11892c6e34c8dfd3f904c7e075
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493031"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067713"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování.  
@@ -33,8 +33,8 @@ Tento dokument prochází dvě funkce integrace virtuální sítě, který je ur
 
 Existují dva typy k funkci integrace virtuální sítě
 
-1. Jedna verze umožňuje integraci s virtuálními sítěmi ve stejné oblasti. Tato forma funkci vyžaduje velikost podsítě ve virtuální síti ve stejné oblasti
-2. Jiné verze umožňuje integraci s virtuálními sítěmi v jiných oblastech nebo s klasickými virtuálními sítěmi. Tato verze funkce vyžaduje nasazení brány virtuální sítě do virtuální sítě.
+1. Jedna verze umožňuje integraci s virtuálními sítěmi ve stejné oblasti. Tato forma funkci vyžaduje velikost podsítě ve virtuální síti ve stejné oblasti. Tato funkce je stále ve verzi preview, ale se podporuje pro úlohy v produkčním prostředí aplikace Windows s některé upozornění níže uvedené.
+2. Jiné verze umožňuje integraci s virtuálními sítěmi v jiných oblastech nebo s klasickými virtuálními sítěmi. Tato verze funkce vyžaduje nasazení brány virtuální sítě do virtuální sítě. Toto je funkce point-to-site VPN na základě.
 
 Aplikace lze použít pouze jednu formu funkci integrace virtuální sítě v čase. Pak otázkou je, které funkce byste měli použít. Můžete použít buď pro řadu věcí. Vymazat rozdíly ale jsou:
 
@@ -72,7 +72,7 @@ Při použití integrace virtuální sítě s virtuálními sítěmi ve stejné 
 * přístup k prostředkům ve virtuální síti připojeni k
 * přístup k prostředkům v partnerské připojení, včetně připojení ExpressRoute
 
-Tato funkce je ve verzi preview, ale podporují ji pro produkční úlohy s těmito omezeními:
+Tato funkce je ve verzi preview, ale podporují ji pro produkční aplikace Windows s těmito omezeními:
 
 * můžete přistupovat pouze adresy, které jsou v dokumentu RFC 1918 rozsahu. Toto jsou adresy 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 bloky adres.
 * budete mít přístup k prostředkům napříč globální partnerské vztahy virtuálních sítí
@@ -83,8 +83,9 @@ Tato funkce je ve verzi preview, ale podporují ji pro produkční úlohy s těm
 * Aplikace a virtuální síť musí být ve stejné oblasti
 * Jedna adresa se používá pro všechny instance plánu služby App Service. Protože se po přiřazení nelze změnit velikost podsítě, použijte podsíť, která může zahrnovat více než maximální měřítko. Možnost/27 s 32 adres je doporučená velikost, která by odpovídala plán služby App Service, který je škálovat, aby 20 instancí.
 * Nelze odstranit virtuální síť, která integrované aplikace. Je nutné nejprve odebrat integrace 
+* Může mít pouze jeden místní integrace virtuální sítě na plán služby App Service. Více aplikací v rámci stejného plánu služby App Service můžete použít stejné virtuální síti. 
 
-Jak používat funkci integrace virtuální sítě pomocí virtuální sítě Resource Manageru ve stejné oblasti:
+Tato funkce je také pro Linux ve verzi preview. Jak používat funkci integrace virtuální sítě pomocí virtuální sítě Resource Manageru ve stejné oblasti:
 
 1. Přejděte na uživatelské rozhraní sítě na portálu. Pokud je vaše aplikace využívat nové funkce, se zobrazí možnost přidání virtuální sítě (preview).  
 
@@ -110,7 +111,7 @@ Aplikace ve službě App Service jsou hostované na role pracovních procesů. Z
 
 Při zapnuté funkci integrace virtuální sítě, aplikace bude stále volání odchozí internetové stejnou cestou jako za normálních okolností. Odchozí adresy, které jsou uvedeny na vlastnosti portálu aplikace jsou stále adresy používané v aplikaci. Co jsou změny provedené u vaší aplikace, službám zabezpečeným přes službu volání koncového bodu služby, nebo RFC 1918 adres přejde do vaší virtuální sítě. 
 
-Funkce se podporuje jenom jeden virtuální rozhraní za pracovního procesu.  Jeden virtuální rozhraní za pracovního procesu znamená, že jedno virtuální rozhraní za plán služby App Service. Všechny aplikace v rámci stejného plánu služby App Service můžete použít stejné integrace virtuální sítě, ale pokud potřebujete připojit k další síti, musíte vytvořit jiný plán služby App Service. Virtuální rozhraní použité není prostředek, který zákazníci mají přímý přístup k.
+Funkce se podporuje jenom jeden virtuální rozhraní za pracovního procesu.  Jeden virtuální rozhraní za pracovního procesu znamená, že jeden místní integrace virtuální sítě na plán služby App Service. Všechny aplikace v rámci stejného plánu služby App Service můžete použít stejné integrace virtuální sítě, ale pokud potřebujete aplikaci připojit k další síti, musíte vytvořit jiný plán služby App Service. Virtuální rozhraní použité není prostředek, který zákazníci mají přímý přístup k.
 
 Vzhledem k povaze jak tato technologie funguje provoz, který se používá s integrace virtuální sítě není uveden v protokoly toku Network Watcher nebo skupiny zabezpečení sítě.  
 
@@ -123,12 +124,13 @@ Brána vyžaduje funkci integrace virtuální sítě:
 * umožňuje až pět virtuálních sítí s být integrován se službami v plán služby App Service 
 * Umožňuje stejné virtuální síti používané více aplikacemi v plánu služby App Service bez dopadu na celkový počet, který mohou využívat plán služby App Service.  Pokud máte 6 aplikace s využitím stejné virtuální síti ve stejném plánu služby App Service, který se počítá jako 1 virtuální sítě používá. 
 * vyžaduje bránu virtuální sítě, který je nakonfigurovaný s bodem pro síť VPN typu Site
-* podporuje SLA 99,9 % z důvodu smlouvu SLA na bráně
+* Není podporováno pro použití s aplikacemi pro Linux
+* Podporuje SLA 99,9 % z důvodu smlouvu SLA na bráně
 
 Tato funkce nepodporuje:
 
-* přístup k prostředkům prostřednictvím ExpressRoute 
-* přístup k prostředkům prostřednictvím koncových bodů služby 
+* Přístup k prostředkům napříč ExpressRoute 
+* Přístup k prostředkům napříč koncovými body služby 
 
 ### <a name="getting-started"></a>Začínáme
 
@@ -200,7 +202,7 @@ Integrace rozhraní ASP virtuální sítě se zobrazí všechny virtuálních s�
 * **Synchronizovat síť**. Síťové operace synchronizace je jenom pro brány závislé funkci integrace virtuální sítě. Provádění síťové operace synchronizace zajišťuje, že jsou certifikáty a informace o síti synchronizované. Je-li přidat nebo změnit DNS virtuální sítě, je třeba provést **synchronizovat síť** operace. Tato operace restartuje všechny aplikace s využitím této virtuální síti.
 * **Přidání tras** přidání trasy, se bude řídit odchozí provoz do vaší virtuální sítě.
 
-**Směrování** trasy, které jsou definovány ve virtuální síti se používají ke směrování provozu do vaší virtuální sítě z vaší aplikace. Pokud je nutné odeslat další odchozí provoz do virtuální sítě, můžete přidat tyto bloky adres tady. Tato capabilty funguje pouze s bránou vyžaduje integrace virtuální sítě.
+**Směrování** trasy, které jsou definovány ve virtuální síti se používají ke směrování provozu do vaší virtuální sítě z vaší aplikace. Pokud je nutné odeslat další odchozí provoz do virtuální sítě, můžete přidat tyto bloky adres tady. Tato funkce funguje pouze s bránou vyžaduje integrace virtuální sítě.
 
 **Certifikáty** integrace virtuální sítě povolené vyžádání brány je požadovaná výměny certifikáty pro zajištění zabezpečení připojení. Spolu s certifikáty jsou konfigurace DNS, postupy a další podobné věci, které popisují sítě.
 Pokud se změní certifikáty nebo informace o síti, budete muset klikněte na tlačítko "Synchronizovat síť". Po kliknutí na "Synchronizovat síť" způsobit výpadek připojení mezi vaší aplikací a virtuální síť. Když vaše aplikace nerestartuje, ztráta připojení by mohlo způsobit webu nebude fungovat správně. 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062168"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -55,7 +55,7 @@ Aplikace LUIS obsahuje model zpracování přirozeného jazyka specifický pro d
 ## <a name="build-the-luis-model"></a>Sestavení modelu LUIS
 Model můžete sestavit pomocí rozhraní API pro [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) nebo portálu služby LUIS.
 
-Model LUIS začíná kategoriemi záměrů uživatele, které se označují jako **[záměry](luis-concept-intent.md)**. Každý záměr potřebuje příklady **[promluv](luis-concept-utterance.md)** uživatele. Každá promluva může poskytovat různá data, která je potřeba extrahovat pomocí **[entit](luis-concept-entity-types.md)**. 
+Model LUIS začíná kategoriemi záměrů uživatele, které se označují jako **[záměry](luis-concept-intent.md)** . Každý záměr potřebuje příklady **[promluv](luis-concept-utterance.md)** uživatele. Každá promluva může poskytovat různá data, která je potřeba extrahovat pomocí **[entit](luis-concept-entity-types.md)** . 
 
 |Příklad promluvy uživatele|Záměr|Entity|
 |-----------|-----------|-----------|
@@ -101,7 +101,7 @@ Služba LUIS poskytuje nástroje, správu verzí a spolupráci s jinými autory 
 Služba LUIS jako rozhraní REST API umožňuje použití s jakýmkoli produktem, službou nebo architekturou odesílající požadavky HTTP. Následující seznam obsahuje produkty a služby Microsoftu nejčastěji používané se službou LUIS.
 
 Hlavní klientská aplikace služby LUIS je následující:
-* [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Úplné funkce chatbota zajišťuje rozhraní [Bot Framework][bot-framework] verze [3.x](https://github.com/Microsoft/BotBuilder) nebo [4.x](https://github.com/Microsoft/botbuilder-dotnet).
+* [Robot webové aplikace](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) umožňující rychlé vytvoření chatbota s podporou služby LUIS, který bude s uživatelem komunikovat prostřednictvím textového vstupu. Používá [Bot Framework] [ bot-framework] verze [4.x](https://github.com/Microsoft/botbuilder-dotnet) zajišťuje kompletní robota.
 
 Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
 * [Rozhraní příkazového řádku služby LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) poskytuje balíčku NPM vytváření obsahu a půjček s využitím jako nástroj příkazového řádku samostatné nebo import. 

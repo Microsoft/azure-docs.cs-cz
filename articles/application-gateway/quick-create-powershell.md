@@ -1,19 +1,19 @@
 ---
 title: Rychlý start – Směrování webového provozu pomocí služby Azure Application Gateway – Azure PowerShell | Microsoft Docs
-description: Přečtěte si o tom, jak pomocí Azure PowerShellu vytvořit aplikační bránu Azure Application Gateway, která bude směrovat webový provoz na virtuální počítače v back-endovém fondu.
+description: Zjistěte, jak pomocí prostředí Azure PowerShell k vytvoření služby Azure Application Gateway, která přesměruje webový provoz na virtuální počítače v back-endový fond.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/11/2019
+ms.date: 06/11/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c472c30514e6acd3b21822e31f2cefc0da5bc98
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c0e80b1354302f227cb448391c7a92100049cc3a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053350"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure PowerShell
 
@@ -36,7 +36,7 @@ Pokud se rozhodnete nainstalovat a používat prostředí Azure PowerShell míst
 
 ### <a name="resource-group"></a>Skupina prostředků
 
-V Azure přidělení související prostředky do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. V tomto příkladu vytvoříme novou skupinu prostředků s použitím [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) rutiny následujícím způsobem: 
+V Azure přidělení související prostředky do skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořte novou. V tomto příkladu vytvoříte novou skupinu prostředků s použitím [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) rutiny následujícím způsobem: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -44,7 +44,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ### <a name="required-network-resources"></a>Požadovaným síťovým zdrojům
 
-U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální sítě.  Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.  Můžete vytvořit novou podsíť pro aplikační bránu, nebo použijte již existující. V tomto příkladu vytvoříte v tomto příkladu dvě podsítě: jednu pro application gateway a jinou pro back-end serverů. Můžete nakonfigurovat IP front-endu služby Application Gateway jako veřejné a privátní podle vašemu případu použití. V tomto příkladu vybereme možnost veřejná IP adresa front-endu.
+U Azure ke komunikaci mezi prostředky, že vytvoříte potřebuje virtuální sítě.  Podsítě služby application gateway může obsahovat jenom aplikační brány. Jsou povoleny žádné další prostředky.  Můžete vytvořit novou podsíť pro aplikační bránu, nebo použijte již existující. V tomto příkladu vytvoříte v tomto příkladu dvě podsítě: jednu pro application gateway a jinou pro back-end serverů. Můžete nakonfigurovat IP front-endu služby Application Gateway jako veřejné a privátní podle vašemu případu použití. V tomto příkladu budete zvolte veřejnou IP adresu front-endu.
 
 1. Vytvořte Konfigurace podsítí voláním [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig).
 2. Vytvoření virtuální sítě s konfigurací podsítě voláním [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork). 
@@ -109,7 +109,7 @@ for ($i=1; $i -le 2; $i++)
   Add-AzVMNetworkInterface `
     -VM $vm `
     -Id $nic.Id
-  Set-AzVMBootDiagnostics `
+  Set-AzVMBootDiagnostic `
     -VM $vm `
     -Disable
   New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60583856"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
@@ -28,7 +28,7 @@ Zatímco tento návod ukazuje, jak nasadit aplikaci s front-endu na Node.js, kte
 
 Visual Studio můžete použít k vytvoření balíčku aplikace, která obsahuje několika hostujících spustitelných souborů. Zobrazit [pomocí sady Visual Studio zabalit existující aplikaci](service-fabric-deploy-existing-app.md). Po přidání první spustitelný soubor typu Host, klikněte pravým tlačítkem na projekt aplikace a vyberte **Přidat -> Nový Service Fabric service** přidáte druhý projekt spustitelný soubor typu Host do řešení. Poznámka: Pokud budete chtít propojit zdroje v projektu sady Visual Studio, vytváření řešení sady Visual Studio se ujistěte se, že je aktuální změny ve zdroji balíčku aplikace. 
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 * [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-containers)
 

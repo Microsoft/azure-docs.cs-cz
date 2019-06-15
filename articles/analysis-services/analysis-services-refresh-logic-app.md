@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
 ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142519"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
@@ -67,9 +67,9 @@ Nakonfigurujte aktivitu protokolu HTTP následujícím způsobem:
 |---------|---------|
 |**– Metoda**     |POST         |
 |**URI**     | https://*vaší oblasti server*/servers/*jako název serveru*/models/*název databáze*/ <br /> <br /> Například: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
-|**Záhlaví**     |   Typ obsahu, application/json <br /> <br />  ![Záhlaví](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Hlavičky**     |   Typ obsahu, application/json <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o tvořící tělo požadavku najdete v tématu [asynchronní aktualizace pomocí REST API – příspěvek /refreshes](analysis-services-async-refresh.md#post-refreshes). |
-|**Ověřování**     |Active Directory OAuth         |
+|**Ověřování**     |Služby Active Directory OAuth         |
 |**tenanta**     |Zadejte vaše ID Tenanta služby Azure Active Directory         |
 |**Cílová skupina**     |https://*.asazure.windows.net         |
 |**ID klienta**     |Zadejte vaše ClientID název instančního objektu         |

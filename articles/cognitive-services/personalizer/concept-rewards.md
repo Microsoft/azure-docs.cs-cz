@@ -1,21 +1,21 @@
 ---
 title: Skóre Reward – Personalizer
 titleSuffix: Azure Cognitive Services
-description: Potřebu skóre označuje, jak dobře přizpůsobení podle vlastní volby, RewardActionID, výsledkem je pro daného uživatele. Hodnota reward skóre je určeno obchodní logiky a podle pozorování chování uživatelů. Personalizer trénovat vyhodnocením výhody jeho modelů strojového učení.
+description: Potřebu skóre označuje, jak dobře přizpůsobení podle vlastní volby, RewardActionID, výsledkem je pro daného uživatele. Hodnota reward skóre je určeno obchodní logiky a podle pozorování chování uživatelů. Personalizer trénovat jeho modelů strojového učení s vyhodnocením výhody.
 services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/13/2019
+ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c64d43301fd173203bd1625b8d37120b71c22805
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244239"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077403"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Potřebu skóre znamená úspěch individuálního nastavení
 
@@ -30,6 +30,18 @@ Odměny se odesílají do Personalizer podle [Reward API](https://docs.microsoft
 Odměny jsou odeslány po chování uživatelů se stalo, které by mohly být dnů později. Maximální množství času Personalizer počká, až událost je považována za mít žádná odměna nebo výchozí účet je nakonfigurovaný s [Reward čekací doby](#reward-wait-time) na webu Azure Portal.
 
 Pokud nebyl přijat reward skóre pro události v rámci **Reward čekací doby**, pak bude **výchozí Reward** se použijí. Obvykle **[výchozí Reward](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** byl nakonfigurován jako nula.
+
+
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>Chování a dat, které je potřeba zvážit odměny
+
+Vezměte v úvahu tyto signály a chování pro daný kontext reward skóre:
+
+* Přímý vstup uživatele, pro návrhy při možnosti souvisejí ("se myslí pod X?").
+* Délka relace.
+* Čas mezi relacemi.
+* Analýza mínění interakcí uživatele.
+* Směrovat otázky a mini zjišťování, ve kterém robota požádá uživatele o zpětnou vazbu o použitelnosti, přesnost.
+* Odpověď na oznámení, nebo zpoždění k reakci na výstrahy.
 
 ## <a name="composing-reward-scores"></a>Vytváření reward skóre
 

@@ -16,10 +16,10 @@ ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61477157"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
@@ -74,7 +74,7 @@ Dostupné image virtuálních počítačů s Linuxem a SQL Serverem najdete v t�
 ### <a id="BYOL"></a> Používání vlastní licence
 Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte jenom za virtuální počítač bez jakýchkoli dalších poplatků za licencování SQL Serveru.  Používáním vlastní licence můžete časem ušetřit peníze za nepřetržité produkční úlohy. Požadavky k použití této možnosti najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
-Používání vlastní licence, můžete buď převést existující virtuální počítač SQL platby za využití nebo můžete nasadit bitovou kopii s předponou **{BYOL}**. Další informace o přepínání mezi platby za využití a BYOL váš licenční model, najdete v části [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
+Používání vlastní licence, můžete buď převést existující virtuální počítač SQL platby za využití nebo můžete nasadit bitovou kopii s předponou **{BYOL}** . Další informace o přepínání mezi platby za využití a BYOL váš licenční model, najdete v části [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
 
 | Version | Operační systém | Edice |
 | --- | --- | --- |

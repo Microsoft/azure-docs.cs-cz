@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108487"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure AD Application Proxy
 
@@ -64,7 +64,7 @@ Aby bylo možné konfigurovat a implementovat Proxy aplikací Azure AD musí bý
 
 *  **Registrace Azure**: Před nasazením proxy aplikací, musí být identit uživatelů synchronizované z místního adresáře nebo přímo v rámci vašich tenantů Azure AD. Umožňuje synchronizaci identit Azure AD pro předběžné ověření uživatelů před udělením přístupu k Proxy aplikace publikované aplikace a mít informace potřebné uživatelské identifikátor provádět jednotné přihlašování (SSO).
 
-* **Podmíněný přístup požadavky**: Nedoporučujeme, protože to zvyšuje latenci, která bude mít dopad na uživatele pomocí Proxy aplikace přístup k intranetu. Doporučujeme používat Proxy aplikací se zásadami předběžné ověření a podmíněného přístupu pro vzdálený přístup z Internetu.  Přístup k poskytování je podmíněný přístup pro použití v intranetu k modernizaci aplikací tak mohou diretly ověřování pomocí AAD. Odkazovat na [zdroje pro migraci aplikací do AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) Další informace. 
+* **Podmíněný přístup požadavky**: Nedoporučujeme, protože to zvyšuje latenci, která bude mít dopad na uživatele pomocí Proxy aplikace přístup k intranetu. Doporučujeme používat Proxy aplikací pomocí předběžného ověřování a zásady podmíněného přístupu pro vzdálený přístup z Internetu.  Přístup k poskytování je podmíněný přístup pro použití v intranetu k modernizaci aplikací tak mohou diretly ověřování pomocí AAD. Odkazovat na [zdroje pro migraci aplikací do AAD](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) Další informace. 
 
 * **Omezení služby**: K ochraně proti jsou overconsumption prostředků jednotlivé tenanty existuje omezení nastavte jednotlivé aplikace a tenanta. Do těchto omezeních najdete v tématu [limity a omezení služby Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Tato omezení jsou založené na srovnávací test mnohem vyšší než svazku typickému využití a poskytuje dostatek vyrovnávací paměti pro většinu nasazení.
 
@@ -262,7 +262,7 @@ Zabezpečení aplikací vyžaduje sadu pokročilé možnosti zabezpečení, kter
 
 Tyto funkce slouží k podpoře Azure AD Application Proxy:
 
-* A podmíněného přístupu na základě umístění uživatele: Zachovat citlivých dat chráněných omezením přístupu uživatelů na základě geografického umístění nebo IP adresu se [zásad podmíněného přístupu podle umístění](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+* A podmíněného přístupu na základě umístění uživatele: Zachovat citlivých dat chráněných omezením přístupu uživatelů na základě geografického umístění nebo IP adresu se [zásady podmíněného přístupu na základě umístění](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 * Podmíněný přístup podle zařízení: Ujistěte se pouze zaregistrovaná, schválené a vyhovujících zařízeních přístup k firemní data s [podmíněného přístupu podle zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications).
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310998"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím zasílání zpráv Service Bus
@@ -30,7 +30,7 @@ Pokud odesílatel odešle zprávu do fronty, obvykle dochází v rámci jiné lo
 Microsoft Azure Service Bus messaging definoval datovou část vlastnosti, které producenti a spotřebitelé by měl použít k předávání těchto trasování kontextu.
 Je na základě protokolu [protokolu HTTP korelace](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Property Name        | Popis                                                 |
+| Název vlastnosti        | Popis                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Jedinečný identifikátor externího volání od výrobce do fronty. Odkazovat na [Request-Id v protokolu HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) důvody, požadavky a formátu |
 |  Correlation-Context | Operace kontext, který se šíří napříč všemi službami, které jsou součástí operace zpracování. Další informace najdete v tématu [korelace kontextu protokolu HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
@@ -139,7 +139,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 V tomto příkladu naslouchací proces zaznamená dobu trvání, výsledek, jedinečný identifikátor a počáteční čas pro každou operaci služby Service Bus.
 
-#### <a name="events"></a>Události
+#### <a name="events"></a>Duration
 
 Pro všechny operace jsou zasílány dvě události: 'Start' a 'Stop'. Nejvíce pravděpodobně vás zajímá jenom 'Stop' události. Se získat výsledek operace, jakož i času spuštění a trvání jako vlastnosti aktivity.
 

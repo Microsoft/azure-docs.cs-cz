@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60626736"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
@@ -30,13 +30,13 @@ ms.locfileid: "60626736"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-|Prostředek  |Odkaz  |
+|Resource  |Odkaz  |
 |---------|---------|
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentace API  |  [Referenční dokumentace jazyka JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
 |Přispívat k sadě SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Ukázky | [Ukázky kódu Node.js](sql-api-nodejs-samples.md)
+| Ukázky kódu | [Ukázky kódu Node.js](sql-api-nodejs-samples.md)
 | Kurz Začínáme | [Začínáme se sadou SDK jazyka JavaScript](sql-api-nodejs-get-started.md)
 | Kurz vývoje webové aplikace | [Vytvoření webové aplikace Node.js využívající službu Azure Cosmos DB](sql-api-nodejs-application.md)
 | Aktuální podporovanou platformu | [Node.js verze 6.x](https://nodejs.org/en/blog/release/v6.10.3/) – povinný argument pro sadu SDK verze 2.0.0 a vyšší.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
@@ -214,41 +214,41 @@ Jakákoli žádost pomocí služby Cosmos DB je vyřazeno SDK zamítne službou.
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.0.0-3 (RC)](#2.0.0-3) |2. srpna 2018 |--- |
-| [1.14.4](#1.14.4) |03. května 2018 |--- |
-| [1.14.3](#1.14.3) |03. května 2018 |--- |
-| [1.14.2](#1.14.2) |21. prosince 2017 |--- |
-| [1.14.1](#1.14.1) |10. listopadu 2017 |--- |
-| [1.14.0](#1.14.0) |9. listopadu 2017 |--- |
-| [1.13.0](#1.13.0) |11. října 2017 |--- |
-| [1.12.2](#1.12.2) |10. srpna 2017 |--- |
-| [1.12.1](#1.12.1) |10. srpna 2017 |--- |
-| [1.12.0](#1.12.0) |10. května 2017 |--- |
-| [1.11.0](#1.11.0) |16. března 2017 |--- |
-| [1.10.2](#1.10.2) |27. ledna 2017 |--- |
-| [1.10.1](#1.10.1) |22. prosince 2016 |--- |
-| [1.10.0](#1.10.0) |03. října 2016 |--- |
-| [1.9.0](#1.9.0) |07. července 2016 |--- |
-| [1.8.0](#1.8.0) |14. června 2016 |--- |
-| [1.7.0](#1.7.0) |26. dubna 2016 |--- |
-| [1.6.0](#1.6.0) |29. března 2016 |--- |
-| [1.5.6](#1.5.6) |08. března 2016 |--- |
-| [1.5.5](#1.5.5) |02. února 2016 |--- |
-| [1.5.4](#1.5.4) |01. února 2016 |--- |
-| [1.5.2](#1.5.2) |26. ledna 2016 |--- |
-| [1.5.2](#1.5.2) |22. ledna 2016 |--- |
-| [1.5.1](#1.5.1) |4. ledna 2016 |--- |
-| [1.5.0](#1.5.0) |31. prosince 2015 |--- |
-| [1.4.0](#1.4.0) |06. října 2015 |--- |
-| [1.3.0](#1.3.0) |06. října 2015 |--- |
-| [1.2.2](#1.2.2) |10. září 2015 |--- |
-| [1.2.1](#1.2.1) |15. srpna 2015 |--- |
-| [1.2.0](#1.2.0) |05. srpna 2015 |--- |
-| [1.1.0](#1.1.0) |09. července 2015 |--- |
+| [2.0.0-3 (RC)](#2.0.0-3) |2\. srpna 2018 |--- |
+| [1.14.4](#1.14.4) |03\. května 2018 |--- |
+| [1.14.3](#1.14.3) |03\. května 2018 |--- |
+| [1.14.2](#1.14.2) |21\. prosince 2017 |--- |
+| [1.14.1](#1.14.1) |10\. listopadu 2017 |--- |
+| [1.14.0](#1.14.0) |9\. listopadu 2017 |--- |
+| [1.13.0](#1.13.0) |11\. října 2017 |--- |
+| [1.12.2](#1.12.2) |10\. srpna 2017 |--- |
+| [1.12.1](#1.12.1) |10\. srpna 2017 |--- |
+| [1.12.0](#1.12.0) |10\. května 2017 |--- |
+| [1.11.0](#1.11.0) |16\. března 2017 |--- |
+| [1.10.2](#1.10.2) |27\. ledna 2017 |--- |
+| [1.10.1](#1.10.1) |22\. prosince 2016 |--- |
+| [1.10.0](#1.10.0) |03\. října 2016 |--- |
+| [1.9.0](#1.9.0) |07\. července 2016 |--- |
+| [1.8.0](#1.8.0) |14\. června 2016 |--- |
+| [1.7.0](#1.7.0) |26\. dubna 2016 |--- |
+| [1.6.0](#1.6.0) |29\. března 2016 |--- |
+| [1.5.6](#1.5.6) |08\. března 2016 |--- |
+| [1.5.5](#1.5.5) |02\. února 2016 |--- |
+| [1.5.4](#1.5.4) |01\. února 2016 |--- |
+| [1.5.2](#1.5.2) |26\. ledna 2016 |--- |
+| [1.5.2](#1.5.2) |22\. ledna 2016 |--- |
+| [1.5.1](#1.5.1) |4\. ledna 2016 |--- |
+| [1.5.0](#1.5.0) |31\. prosince 2015 |--- |
+| [1.4.0](#1.4.0) |06\. října 2015 |--- |
+| [1.3.0](#1.3.0) |06\. října 2015 |--- |
+| [1.2.2](#1.2.2) |10\. září 2015 |--- |
+| [1.2.1](#1.2.1) |15\. srpna 2015 |--- |
+| [1.2.0](#1.2.0) |05\. srpna 2015 |--- |
+| [1.1.0](#1.1.0) |09\. července 2015 |--- |
 | [1.0.3](#1.0.3) |04 červen 2015 |--- |
-| [1.0.2](#1.0.2) |23. května 2015 |--- |
-| [1.0.1](#1.0.1) |15. května 2015 |--- |
-| [1.0.0](#1.0.0) |08. dubna 2015 |--- |
+| [1.0.2](#1.0.2) |23\. května 2015 |--- |
+| [1.0.1](#1.0.1) |15\. května 2015 |--- |
+| [1.0.0](#1.0.0) |08\. dubna 2015 |--- |
 
 ## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

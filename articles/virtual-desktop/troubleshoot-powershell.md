@@ -8,13 +8,13 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: ad32f7ff883812830dbcf2ed900c4034bd90abfc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64927504"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows virtuální plochy prostředí PowerShell
+# <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
 Použijte tento článek vyřešit chyby a problémy při použití Powershellu s virtuální plochy Windows. Další informace o Powershellu služby vzdálené plochy najdete v tématu [Windows Powershellu virtuální plochy](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/).
 

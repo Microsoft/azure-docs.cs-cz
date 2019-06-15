@@ -18,10 +18,10 @@ ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540247"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postup: Nakonfigurovat doménu vydavatele aplikace (Preview)
@@ -38,7 +38,7 @@ Následující tabulka shrnuje chování výchozí hodnoty domény vydavatele.
 
 | Ověření klienta domény | Výchozí hodnota doména vydavatele |
 |-------------------------|----------------------------|
-| null | null |
+| Hodnotu Null | Hodnotu Null |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | -*. onmicrosoft.com<br/>-Doménu1.cz<br/>-Doménu2.cz (primární) | domain2.com |
 

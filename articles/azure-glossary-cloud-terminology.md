@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60325421"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: Slovník terminologie cloudu na platformě Azure
@@ -39,7 +39,7 @@ Jiný název pro [aplikace služby App Service](#app-service-app).
 ## <a name="app-service-app"></a>Aplikace služby App Service
 Výpočetní prostředky, které [služby Azure App Service](app-service/overview.md) poskytuje k hostování webu či webové aplikace, webové rozhraní API, nebo [back-endu mobilní aplikace](app-service-mobile/app-service-mobile-value-prop.md). Aplikace služby App Service se také označují jako *App Services*, *webové aplikace*, *API apps*, a *mobilní aplikace*.
 
-## <a name="availability-set"></a>skupina dostupnosti
+## <a name="availability-set"></a>Skupina dostupnosti
 Kolekce virtuálních počítačů, které se spravují dohromady pro zajištění redundance aplikace a spolehlivost. Použití skupiny dostupnosti zajišťuje, že během události plánované i neplánované údržby je k dispozici alespoň jeden virtuální počítač.  
 Zobrazit [Správa dostupnosti virtuálních počítačů Windows](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Správa dostupnosti virtuálních počítačů s Linuxem](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -77,10 +77,10 @@ Zobrazit [vyhledání a výběr imagí virtuálních počítačů Windows v Azur
 Počet prostředků, které je možné vytvořit nebo srovnávacího testu výkonu, který jde dosáhnout. Omezení jsou obvykle přidruženy k předplatných, služeb a nabídky.  
 Zobrazit [předplatného Azure a limity, kvóty a omezení](azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>nástroj pro vyrovnávání zatížení
+## <a name="load-balancer"></a>Nástroj pro vyrovnávání zatížení
 Prostředek, který distribuuje příchozí provoz mezi počítači v síti. V Azure nástroje pro vyrovnávání zatížení distribuuje provoz do virtuálních počítačů, které jsou definovány v sadě nástroje pro vyrovnávání zatížení. A [nástroj pro vyrovnávání zatížení](load-balancer/load-balancer-overview.md) může být přístupem k Internetu, nebo může být vnitřní.  
 
-## <a name="mobile-app"></a>mobile app
+## <a name="mobile-app"></a>Mobilní aplikace
 Jiný název pro [aplikace služby App Service](#app-service-app).
 
 ## <a name="offer"></a>nabídka
@@ -94,7 +94,7 @@ Zabezpečený webový portál používá k nasazení a správy služeb Azure.
 Oblasti v rámci zeměpisné oblasti, která neobsahuje křížové národní ohraničení a obsahuje jeden nebo více datových centrech. Ceny, regionálních služeb a typy nabídek jsou přístupné na úrovni oblasti. Oblast je obvykle spárovaná s jinou oblastí, které můžou být až několik stovek mil okamžitě. Oblastní páry slouží jako mechanismus pro zotavení po havárii a scénáře s vysokou dostupností. Označuje také jako *umístění*.  
 Zobrazit [oblastí Azure](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>prostředek
+## <a name="resource"></a>resource
 Položka, která je součástí vašeho řešení Azure. Jednotlivé služby Azure můžete nasadit různé typy prostředků, jako jsou databáze nebo virtuální počítače.   
 Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md)
 
@@ -110,7 +110,7 @@ Zobrazit [šablon pro vytváření Azure Resource Manageru](resource-group-autho
 Služba poskytující prostředky, které můžete nasadit a spravovat prostřednictvím Resource Manageru. Každý poskytovatel prostředků nabízí operace pro práci s nasazenými prostředky. Poskytovatelé prostředků je možný prostřednictvím webu Azure portal, prostředí Azure PowerShell a několik programovacích sad SDK.  
 Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md)
 
-## <a name="role"></a>role
+## <a name="role"></a>roles
 Prostředky pro řízení přístupu, který je možné přiřadit uživatelům, skupinám a službám. Role budou moct provádět akce, jako je vytvářet, spravovat a přečtěte si o prostředky Azure.  
 See [RBAC: Předdefinované role](role-based-access-control/built-in-roles.md)
 
@@ -129,7 +129,7 @@ Zobrazit [účty Azure storage](storage/common/storage-create-storage-account.md
 Na základě smlouvy se společností Microsoft, který umožňuje získat služeb Azure. Ceník předplatného a jejími podmínkami se řídí nabídky vybrána pro předplatné.
 Zobrazit [Microsoft Online Subscription Agreement](https://azure.microsoft.com/support/legal/subscription-agreement/) a [předplatné Azure propojeno se službou Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>značka
+## <a name="tag"></a>tag
 Indexování termín, který umožňuje kategorizovat prostředky podle požadavků na správu nebo fakturaci. Když máte komplexní kolekci prostředků, můžete použít značky ve způsobu, jakým je nejvhodnější tyto assety vizualizovat. Můžete například označit prostředky, které mají v rámci organizace podobnou roli nebo které patří do stejného oddělení.  
 Zobrazit [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md)
 

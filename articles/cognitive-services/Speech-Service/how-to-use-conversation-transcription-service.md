@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jhakulin
-ms.openlocfilehash: 80ec606fee30c239d47bca94188d3b9cbb7c82d5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: f0838d345abfcfdf69ca6ea44d3206c23010b457
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604408"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073087"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Přepisy více účastníka konverzace se sadou SDK pro řeč
 
@@ -43,7 +43,7 @@ Prvním krokem je vytvoření hlasové podpisy pro účastníky konverzace. Vytv
 * Soubor vstupní zvuková pro vytváření podpisů hlasu musí být v 16bitové ukázky, 16 kHz vzorkovací frekvence a jeden kanál (Mono) formát.
 * Doporučená délka každé zvukové ukázce je 30 sekund až dvě minuty.
 
-Následující příklad ukazuje dva různé způsoby vytváření hlasové podpis [pomocí rozhraní REST API.] (https://aka.ms/cts/signaturegenservice) z C#:
+Následující příklad ukazuje dva různé způsoby vytváření hlasové podpisu [pomocí rozhraní REST API](https://aka.ms/cts/signaturegenservice) z C#:
 
 ```csharp
 class Program

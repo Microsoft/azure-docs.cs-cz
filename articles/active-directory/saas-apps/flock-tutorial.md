@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 93ac6009e593fa5eaefd14b09ce8eecd513688e5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 39f0db232e6207a5156707006c895473c5b5be77
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102424"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Kurz: Integrace Azure Active Directory s hejna
 
@@ -52,7 +52,7 @@ Konfigurace integrace hejna do služby Azure AD, budete muset přidat hejna z Ga
 
 **Přidání hejna z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -216,7 +216,7 @@ Přihlaste se k hejna Azure AD uživatelům umožnit, musí být poskytnuty do h
 
     ![Přidat zaměstnance](./media/flock-tutorial/user3.png)
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

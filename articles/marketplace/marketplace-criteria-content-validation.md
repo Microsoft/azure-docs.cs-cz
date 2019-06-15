@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: 3345dd82a1de4f9144cdeb5acd5d3e506dc55de8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937832"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro zařazení na Azure Marketplace
@@ -31,7 +31,7 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 | 3 | Logo | Správné zobrazení loga | Logo zobrazí správně a zahrnuje [ústřední obrázek](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish) tedy velké formát obrázku na webu Azure Portal |
 | 4 |  Popis nabídky | <br>• 2 až 3 odstavcích. <br>• Řešení, které nabízí snadno pochopitelný na první pohled <br>Popis nabídky • je zdarma pravopisné a gramatické chyby <br>Popis nabídky • je komplexní a zachytí: Typ uživatele, proč je důležité, cílová skupina (hodnota prop) <br>• Popis nabídky je v odstavci narativní formě tak s krátkou věty, který je snadno srozumitelná | <br>• Cílového oboru je popsána (Pokud je to potřeba) <br>• Dobré styl formátování pomocí záhlaví jednotlivých odstavců s větu jedním nebo frázi sumarizace včetně odrážky a obsahu, který sleduje zdůraznit klíčové výhody odkazuje (v případě potřeby). Cílem tady je pro čtečku pochopit nabídky na první pohled v snadno zobrazit formát a není nutné číst odstavcích. <br>• Jsou mezery mezi každou odstavec a čtení jako brožuru automobilu. To znamená ne technickou funkce nebo kód lingo ale popisný nabídky zjednodušeně řečeno a je komplexní. | 
 | 5 | Kategorie & obory | <br>• Kategorie odpovídat řešení nabízející funkce <br>• Netýkají kategorií, které není vhodná pro řešení <br>• Optimální odvětví, nebo všechny vybrané obory (Pokud není optimální odvětví) | <br>• Max. 3 kategorie <br>• Max. 3 odvětví |
-| 6 | Image | <br>• Žádný obrázek povinné, ale pokud k dispozici musí zobrazení a ve vysokém rozlišení obrázku. <br>• Požadavky na image jsou uvedeny v CPP a také zde <br>• Text součástí na snímku obrazovky je čitelné Vymazat obrázek | Řešení, které nabízí snadno pochopitelný na první pohled |
+| 6 | Obrázky | <br>• Žádný obrázek povinné, ale pokud k dispozici musí zobrazení a ve vysokém rozlišení obrázku. <br>• Požadavky na image jsou uvedeny v CPP a také zde <br>• Text součástí na snímku obrazovky je čitelné Vymazat obrázek | Řešení, které nabízí snadno pochopitelný na první pohled |
 | 7 | Videa | <br>• Potřeba žádná videa, ale pokud k dispozici musí bez jakýchkoli chyb přehrávání. <br>• Pokud je zadán, pravděpodobně neodkazuje na konkurence společnosti Pokud demonstrace řešení migrace |<br>• V ideálním případě 3 minut nebo více <br>• Řešení nabízí snadno srozumitelný prostřednictvím obsahu videa <br>• Ukázku možností řešení |
 | 8 | Stav seznamu (výzvu k akci) | <br>Musí být označeny jeden z následujících typů: <ul>o Kontaktujte mě</ul><ul>o zkušební verzi/Get zkušební verzi / Start zkušební verze nebo testovací verze</ul><ul>o koupit nebo stáhnout</ul> | Odběratele můžete snadno pochopit, jaké další kroky, které jsou k dispozici jsou: <ul>1. Zkuste platnost zkušební verze</ul> <ul>2. Koupit</ul><ul>3. Pošleme e-mail nebo telefonní číslo zařídit PoC, hodnocení nebo přehledové.</ul> | 
 | 9 | Ceny řešení | Musí mít kartu a podrobnosti o cenách řešení a v místní měně nabídkou partnerských řešení | Více možností fakturace k dispozici v úroveň cen pro zákazníky k dispozici možnosti |    
@@ -88,7 +88,7 @@ Musí splňovat všechny nabídky [všechny požadavky na výpis](https://docs.m
 | 6 | Podpora řešení a Nápověda  | Podpora a Nápověda není požadováno  | | 
 | 7 | Zásady ochrany osobních údajů a podmínky použití k dispozici  |  Zásady nebo podmínky nepožaduje se  | | 
 | 8 | Typy služeb | Ujistěte se, že služby typu odpovídá názvu | |
-| 9 | Kompetence |<br>• Musí být alespoň jeden z následujících akcí:<br>Vývoj aplikací • <br>• Integrace aplikací <br>• Správa životního cyklu aplikací <br>• Cloudovou platformu <br>• Analýzu dat <br>• Datového centra <br>• Datová platforma <br>• DevOps |
+| 9 | Možnosti |<br>• Musí být alespoň jeden z následujících akcí:<br>Vývoj aplikací • <br>• Integrace aplikací <br>• Správa životního cyklu aplikací <br>• Cloudovou platformu <br>• Analýzu dat <br>• Datového centra <br>• Datová platforma <br>• DevOps |
 | 10 | Products | Musí být Azure | |
 | 11 | Země/oblast | Zajištění shody zemí a oblastí zvolili měny | |
 | 12 | Další informace  | <br>• Odkazy dole (v části Popis není marketplace odkazy na levé straně) vede na další informace o řešení a jsou veřejně dostupné a zobrazování správně. <br>• Odkazy musí mít "popisný název" a nesmí být uvedené jako název souboru žádné soubory ke stažení | |

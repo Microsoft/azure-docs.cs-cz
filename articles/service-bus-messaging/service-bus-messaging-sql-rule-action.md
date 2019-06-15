@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307474"
 ---
 # <a name="sqlruleaction-syntax"></a>Syntaxe SQLRuleAction
@@ -197,7 +197,7 @@ Logické konstanty jsou reprezentovány klíčová slova `TRUE` nebo `FALSE`. Ho
   
 Řetězcové konstanty jsou uzavřeny v jednoduchých uvozovkách a obsahovat libovolné platné znaky Unicode. Jednoduché uvozovky součástí řetězcová konstanta je reprezentována jako dvě jednoduché uvozovky.  
   
-## <a name="function"></a>Funkce  
+## <a name="function"></a>– funkce  
   
 ```  
 <function> :=  

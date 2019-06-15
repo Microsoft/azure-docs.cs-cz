@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60372097"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Principy poplatků za na faktuře smlouvy zákazníka Microsoftu
@@ -52,7 +52,7 @@ Tento článek se týká fakturační účet Microsoft zákaznické smlouvy. [Za
     |Produktová řada     | Kategorie produktů, jako jsou výpočetní prostředky pro virtuální počítače nebo databáze pro službu Azure SQL database|
     |Sku produktu     | Jedinečný kód identifikující instanci produktu |
     |Částka     |  Částka transakce      |
-    |Oddíl faktury     | Transakce se zobrazí v této části billing invoice profilu |
+    |Část faktury     | Transakce se zobrazí v této části billing invoice profilu |
     |Fakturační profil     | Transakce se zobrazí na faktuře fakturační profil |
 
 5. Hledat na faktuře ID transakce faktury filtrovat.

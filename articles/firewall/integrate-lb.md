@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 4/1/2019
 ms.author: victorh
 ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60193755"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace brány Firewall na Azure s Azure Load balancer úrovně Standard
@@ -41,7 +41,7 @@ K tomuto problému vyhnout, vytvoření trasy další hostitele pro brány firew
 
 Například následující trasy jsou brány firewall na veřejnou IP adresu 13.86.122.41 a privátní IP adresu 10.3.1.4.
 
-![Tabulka směrování](media/integrate-lb/route-table.png)
+![Směrovací tabulky](media/integrate-lb/route-table.png)
 
 ## <a name="internal-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení
 

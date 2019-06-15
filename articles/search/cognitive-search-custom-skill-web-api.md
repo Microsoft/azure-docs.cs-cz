@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
 ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023860"
 ---
 # <a name="custom-web-api-skill"></a>Vlastních dovedností webového rozhraní API
@@ -38,7 +38,7 @@ Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| identifikátor uri | Identifikátor URI webového rozhraní API, ke kterému _JSON_ odešle datovou část. Pouze **https** schéma identifikátoru URI je povolen. |
+| uri | Identifikátor URI webového rozhraní API, ke kterému _JSON_ odešle datovou část. Pouze **https** schéma identifikátoru URI je povolen. |
 | httpMethod | Metody pro použití při odesílání datové části. Povolené metody jsou `PUT` nebo `POST` |
 | httpHeaders | Kolekce párů klíč hodnota, kde klíče představují hlavičky názvy a hodnoty představují hodnoty hlavičky, které se odešlou do webového rozhraní API spolu s datovou část. Nebudou v této kolekci jsou zakázány následující hlavičky: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | (Volitelné) -Li zadána, určuje časový limit pro volání rozhraní API klienta http. Musí být naformátovaná jako hodnotu "dayTimeDuration" XSD (omezená podmnožina [ISO 8601 trvání](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnota). Například `PT60S` po dobu 60 sekund. Pokud není sada, je vybrán výchozí hodnota je 30 sekund. Časový limit lze nastavit na maximálně 90 sekund a minimálně 1 sekunda. |

@@ -14,13 +14,13 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b74049833b055caa112c346b74798893f2c0febf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60476653"
 ---
-# <a name="get-help-with-two-step-verification"></a>Získat pomoc s dvoustupňovým ověřováním
+# <a name="get-help-with-two-step-verification"></a>Získejte pomoc s dvoustupňovým ověřováním
 
 Dvoustupňové ověření je funkce zabezpečení, které vaše organizace používá k ochraně vašich účtů. Dvoustupňové ověřování je bezpečnější než pouhé heslo, protože se spoléhá na dva způsoby ověření: něco, co znáte, a něco, co máte u sebe. Něco, které už znáte je vaše heslo, když něco, co máte s vámi telefonu nebo zařízení. Pomocí dvoustupňového ověření může pomoct hackerům škodlivý přihlašování jako vy, i když získávají své heslo.
 

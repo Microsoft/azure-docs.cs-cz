@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452819"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109000"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Slovník ochrany identit Azure Active Directory
 ### <a name="at-risk-user"></a>Riziko (uživatel)
@@ -160,7 +160,7 @@ Zásady podmíněného přístupu, který bere v úvahu přihlášení a použij
 ### <a name="users-flagged-for-risk"></a>Uživatelé označení příznakem rizika
 Uživatelé, kteří mají rizikové události, které jsou aktivní nebo opravená
 
-### <a name="vulnerability"></a>Chyba zabezpečení
+### <a name="vulnerability"></a>Ohrožení zabezpečení
 Konfigurace nebo stav ve službě Azure Active Directory, náchylné k zneužití nebo hrozby díky adresáři.
 
 ## <a name="see-also"></a>Další informace najdete v tématech

@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577342"
 ---
 # <a name="firewall-tables-overview"></a>Přehled brány firewall tabulky
@@ -53,12 +53,12 @@ Další pravidla mohou být vyžadovány pro tok přenosů, v opačném směru. 
 
 Následující výchozí pravidla se vytvoří v každé tabulce brány firewall.
 
-|Priorita|Název|Stav sledování|Direction|Typ přenosu|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|Akce|
+|Priorita|Name|Stav sledování|Direction|Typ přenosu|Protocol|source|Zdrojový port|Cíl|Cílový port|Akce|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet|Stavová|Odchozí|Veřejné IP adresy nebo internet provozu|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
-|65001|deny-all-from-internet|Stavová|Příchozí|Veřejné IP adresy nebo internet provozu|Vše|Všechny|Všechny|Všechny|Všechny|Odepřít|
-|65002|allow-all-to-intranet|Bezstavová|Odchozí|Interní privátní Cloud nebo přenosy VPN|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
-|65003|allow-all-from-intranet|Bezstavová|Příchozí|Interní privátní Cloud nebo přenosy VPN|Vše|Všechny|Všechny|Všechny|Všechny|Povolit|
+|65000|allow-all-to-internet|Stavová|Odchozí|Veřejné IP adresy nebo internet provozu|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Povolit|
+|65001|deny-all-from-internet|Stavová|Příchozí|Veřejné IP adresy nebo internet provozu|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Odepřít|
+|65002|allow-all-to-intranet|Bezstavová|Odchozí|Interní privátní Cloud nebo přenosy VPN|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Povolit|
+|65003|allow-all-from-intranet|Bezstavová|Příchozí|Interní privátní Cloud nebo přenosy VPN|Vše|Jakýkoli|Jakýkoli|Jakýkoli|Jakýkoli|Povolit|
 
 ## <a name="next-steps"></a>Další postup
 

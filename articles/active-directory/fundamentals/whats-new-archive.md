@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e55d11fa44aca65e2d4e487852bd242a4ba75a5f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43b5a051913ac762fe6b5a0ad11776ae911df864
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110372"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv co je nového? ve službě Azure Active Directory
 
@@ -177,10 +177,10 @@ Další informace o použití rozšíření vlastních vlastností pro pravidla 
 
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové klientem schválených aplikací pro Azure AD podmíněného přístupu na základě aplikace
 
 **Typ:** Plánování změn  
-**Kategorie služby:** podmíněný přístup  
+**Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
@@ -191,7 +191,7 @@ Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.mic
 
 Další informace naleznete v tématu:
 
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -439,7 +439,7 @@ Další informace o těchto nových funkcích najdete v blogovém [protokoly akt
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Do sestav o přihlašování k Azure AD se přidaly informace o podmíněném přístupu
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Podmíněný přístup k informacím, přidá do sestavy přihlášení Azure AD
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Vytváření sestav  
@@ -707,7 +707,7 @@ Další informace najdete v tématu [Azure Active Directory Terms of použít fu
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Nové šablony zásad "vlastní" podmíněného přístupu vytvořené během podmínky použití vytváření
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>Nový "vlastní" šablonu zásad podmíněného přístupu vytvořené během podmínky použití vytváření
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmínky použití  
@@ -891,7 +891,7 @@ Další informace o zobrazení aplikace v galerii aplikací Azure AD najdete v t
 **Kategorie služby:** Ostatní  
 **Funkce produktu:** Adresář
  
-Nové, podrobné pokyny o tom, jak nasadit Azure Active Directory (Azure AD), včetně samoobslužného resetování hesla (SSPR), jednotné přihlašování (SSO), podmíněného přístupu (CA), proxy aplikací, zřizování, Active Directory Federation Services (ADFS) pro uživatele Předávací ověřování (PTA) a služby AD FS na synchronizaci hodnot hash hesel (PHS).
+Nové, podrobné pokyny o tom, jak nasadit Azure Active Directory (Azure AD), včetně samoobslužného resetování, jednotné přihlašování (SSO), podmíněného přístupu (CA), proxy aplikací, zřizování, Active Directory Federation Services (ADFS) pro uživatele Předávací ověřování (PTA) a služby AD FS na synchronizaci hodnot hash hesel (PHS).
 
 Chcete-li zobrazit průvodcích nasazením, přejděte na [postupujte podle průvodců nasazením Identity](https://aka.ms/DeploymentPlans) úložišti na Githubu. Chcete-li poskytnout zpětnou vazbu o průvodcích nasazením, použijte [formulář pro odeslání názoru naplánovat nasazování](https://aka.ms/deploymentplanfeedback). Pokud máte nějaké dotazy ohledně průvodcích nasazením, kontaktujte nás na adrese [IDGitDeploy](mailto:idgitdeploy@microsoft.com).
 
@@ -1034,7 +1034,7 @@ Teď můžete zadat které partnerských organizacích, kterou chcete sdílet a 
 
 Díky tomu můžete řídit přístup k vašim prostředkům při povolování hladký pro schválení uživatelé.
 
-Tato funkce spolupráce B2B je k dispozici pro všechny zákazníky Azure Active Directory a můžou používat ve spojení s funkcí Azure AD Premium, jako je podmíněný přístup a identity protection pro podrobnější kontrolu nad kdy a jak podepsat externí podnikoví uživatelé v a získat přístup.
+Tato funkce spolupráce B2B ve službě je k dispozici pro všechny zákazníky Azure Active Directory a můžou používat ve spojení s Azure AD prémiové funkce jako ochrana podmíněného přístupu a identit pro podrobnější kontrolu nad kdy a jak podepsat externí podnikoví uživatelé v a získat přístup.
 
 Další informace najdete v tématu [povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
 
@@ -1086,7 +1086,7 @@ Pokud aplikace, která je uvedena v [Azure marketplace](https://azuremarketplace
  
 Dřív se zákazníci, kteří používají zřizování konektorů aplikací SaaS (například Salesforce, ServiceNow a pole) uživatelů Azure Active Directory může zaznamenat zpomalení výkonu více než 100 000 kombinované uživatelé s omezením jejich tenantů Azure AD a skupiny a jejich používali přiřazení uživatelů a skupin k určení, kteří by mělo proběhnout zřízení.
 
-2. dubna 2018 se nasadily významných vylepšení výkonu ke službě zřizování Azure AD, který výrazně omezit množství času potřebného k provedení počáteční synchronizace mezi Azure Active Directory a cílovým aplikacím SaaS.
+2\. dubna 2018 se nasadily významných vylepšení výkonu ke službě zřizování Azure AD, který výrazně omezit množství času potřebného k provedení počáteční synchronizace mezi Azure Active Directory a cílovým aplikacím SaaS.
 
 V důsledku toho mnoho zákazníků, které má počáteční synchronizace do aplikace, které trvalo počtu dnů nebo nikdy dokončeno, jsou teď dokončení v řádu minut nebo hodin.
 
@@ -1137,7 +1137,7 @@ Další informace najdete v tématu [co je spolupráce B2B ve službě Azure AD?
  
 ---
 
-### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Omezit přístup z prohlížeče pomocí Intune Managed Browseru s podmíněným přístupem založeným na aplikaci Azure AD pro iOS a Android
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>Omezení přístupu prohlížeče pomocí Intune Managed Browser s využitím Azure AD na základě aplikace podmíněný přístup pro zařízení s iOS a Android
 
 **Typ:** Nová funkce  
 **Kategorie služby:** Podmíněný přístup  
@@ -1494,7 +1494,7 @@ Tato verze má následující aktualizace a změny:
 
 ---
  
-### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Aplikace, které jsou přidány podpůrné zásady ochrany aplikací Intune pro použití s podmíněným přístupem založeným na aplikaci Azure AD
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Aplikace, které podporují zásady ochrany aplikací Intune přidat pro použití se službou Azure AD podmíněného přístupu na základě aplikace
 
 **Typ:** Změněná funkce  
 **Kategorie služby:** Podmíněný přístup  
@@ -1513,7 +1513,7 @@ Následující aplikace se přidají koncem února:
 Další informace naleznete v tématu:
 
 - [Požadavek schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1778,7 +1778,7 @@ V pozdní 2018 se vyřadí z Azure Active Directory Access Control (označované
 ### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>Omezit přístup z prohlížeče pro Intune Managed Browser 
 
 **Typ:** Plánování změn  
-**Kategorie služby:** podmíněný přístup  
+**Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Můžete omezit přístup z prohlížeče k Office 365 a dalším aplikacím Azure AD připojení cloudu s využitím jako schválenou aplikaci Intune Managed Browser. 
@@ -1797,10 +1797,10 @@ Další informace najdete v tématu [podmíněný přístup ve službě Azure AD
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové klientem schválených aplikací pro Azure AD podmíněného přístupu na základě aplikace
 
 **Typ:** Plánování změn  
-**Kategorie služby:** podmíněný přístup  
+**Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
@@ -1811,7 +1811,7 @@ Tyto aplikace jsou na seznamu [schválené klientské aplikace](https://docs.mic
 Další informace naleznete v tématu:
 
 - [Požadavek schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
@@ -1842,13 +1842,13 @@ Další informace najdete v tématu [integrace v místním](https://docs.microso
 
 ---
 
-### <a name="azure-ad-app-based-conditional-access"></a>Na základě aplikace podmíněný přístup Azure AD 
+### <a name="azure-ad-app-based-conditional-access"></a>Podmíněný přístup na základě aplikace Azure AD 
  
 **Typ:** Nová funkce  
 **Kategorie služby:** Azure AD  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
-Teď můžete omezit přístup k Office 365 a dalším aplikacím cloudu Azure AD připojené k [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , které podporují zásady ochrany aplikací Intune s využitím [podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zásady ochrany aplikací Intune se používají ke konfiguraci a ochraně dat společnosti na těchto klientských aplikací.
+Teď můžete omezit přístup k Office 365 a dalším aplikacím cloudu Azure AD připojené k [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , které podporují zásady ochrany aplikací Intune s využitím [Azure AD podmíněného přístupu na základě aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zásady ochrany aplikací Intune se používají ke konfiguraci a ochraně dat společnosti na těchto klientských aplikací.
 
 Tím, že zkombinujete [založeného na aplikacích](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) s [na základě zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) zásady podmíněného přístupu, máte možnost k ochraně dat pro osobní a firemní zařízení.
 
@@ -1867,7 +1867,7 @@ Následující ovládací prvky a podmínky jsou teď k dispozici pro použití 
 
 - Vyžaduje se klientem schválená aplikace.
 
-Další informace najdete v tématu [podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
+Další informace najdete v tématu [Azure AD podmíněného přístupu na základě aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access).
  
 ---
 
@@ -1891,14 +1891,14 @@ Další informace najdete v tématu [spravovat zařízení pomocí webu Azure po
 ### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Podpora pro macOS jako platformu zařízení pro podmíněný přístup Azure AD 
 
 **Typ:** Nová funkce    
-**Kategorie služby:** podmíněný přístup  
+**Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany 
 
-Nyní můžete zahrnout (nebo vyloučit) macOS jako podmínku platformy zařízení ve svojí zásadě podmíněného přístupu Azure AD. Přidání macOS na platformách podporovaných zařízení vám umožňuje:
+Nyní můžete zahrnout (nebo vyloučit) macOS jako podmínku pro platformu zařízení ve svojí zásadě podmíněného přístupu Azure AD. Přidání macOS na platformách podporovaných zařízení vám umožňuje:
 
 - **Registrovat a spravovat zařízení s macOS pomocí Intune.** Podobně jako jiné platformy jako iOS a Android, aplikace portálu společnosti je k dispozici pro macOS provést jednotné přihlášení. Nová aplikace portál společnosti pro macOS můžete použít k registraci zařízení v Intune a zaregistrovat ji pomocí služby Azure AD.
 - **Ujistěte se, že zařízení s macOS splňovat zásady dodržování předpisů vaší organizace definované v Intune.** V Intune na portálu Azure portal můžete teď můžete nastavit zásady dodržování předpisů pro zařízení s macOS. 
-- **Omezení přístupu k aplikacím v Azure AD pro pouze zařízení s macOS kompatibilní.** Vytváření zásad podmíněného přístupu má macOS jako možnost platformy samostatném zařízení. Nyní můžete vytvářet zásady podmíněného přístupu s macOS specifické pro cílové aplikace, nastavte v Azure.
+- **Omezení přístupu k aplikacím v Azure AD pro pouze zařízení s macOS kompatibilní.** Podmíněný přístup zásady vytváření má macOS jako možnost platformy samostatném zařízení. Nyní můžete vytvářet zásady podmíněného přístupu macOS specifické pro sadu cílových aplikací v Azure.
 
 Další informace naleznete v tématu:
 
@@ -1942,10 +1942,10 @@ V Centru pro správu Azure AD teď můžete:
  
 ---
 
-### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové schválené klientské aplikace pro podmíněný přístup na základě aplikace Azure AD
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nové klientem schválených aplikací pro Azure AD podmíněného přístupu na základě aplikace
  
 **Typ:** Změněná funkce  
-**Kategorie služby:** podmíněný přístup  
+**Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
 
 Tyto aplikace byly přidány do seznamu [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
@@ -1956,19 +1956,19 @@ Tyto aplikace byly přidány do seznamu [schválené klientské aplikace](https:
 Další informace naleznete v tématu:
 
 - [Požadavek schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
-- [Na základě aplikace podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
 
 ### <a name="use-or-between-controls-in-a-conditional-access-policy"></a>Použití "Nebo" mezi ovládacími prvky v zásadách podmíněného přístupu 
 
 **Typ:** Změněná funkce    
-**Kategorie služby:** podmíněný přístup  
+**Kategorie služby:** Podmíněný přístup  
 **Funkce produktu:** Identita zabezpečení a ochrany
  
 Teď můžete použít "nebo" (vyžadovat jeden z vybraných ovládacích prvků) pro řízení podmíněného přístupu. Tato funkce slouží k vytváření zásad s "nebo" mezi řízení přístupu. Například můžete použít tuto funkci můžete vytvořit zásadu, která vyžaduje uživatele k přihlášení pomocí služby Multi-Factor Authentication "nebo" na vyhovující zařízení.
 
-Další informace najdete v tématu [ovládacích prvků v podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
+Další informace najdete v tématu [ovládacích prvků v podmíněného přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls).
  
 ---
 

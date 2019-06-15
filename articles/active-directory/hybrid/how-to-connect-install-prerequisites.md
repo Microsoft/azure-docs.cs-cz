@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 1d17823c4ef4917f9f312b8f2f327e2b0395cfa3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508049"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109437"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -48,6 +48,9 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 * Doporučuje se [povolit odpadkový koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
+>[!IMPORTANT]
+>Server Azure AD Connect obsahuje data kritické identity a mají být považována za součást vrstvy 0, jak je uvedeno v [model vrstvy pro správu služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)
+
 * Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows serveru Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server standard nebo vyšší.
 * Instalace služby Azure AD Connect na řadiči domény se nedoporučuje kvůli postupy zabezpečení a víc omezující nastavení, které mohou zabránit v instalaci správně Azure AD Connect
 * Server Azure AD Connect musí mít úplným grafickým uživatelským rozhraním nainstalované. Je **nepodporuje** instalace jádra serveru.
@@ -90,7 +93,7 @@ Další informace naleznete v tématu:
 * Je-li použít Expresní nastavení nebo upgradu z nástroje DirSync, musíte mít účet správce podnikové sítě pro vaši místní službu Active Directory.
 * [Účty ve službě Active Directory](reference-connect-accounts-permissions.md) Pokud použijete vlastní nastavení Instalační cesta nebo účet správce podnikové sítě pro vaši místní službu Active Directory.
 
-### <a name="connectivity"></a>Možnosti připojení
+### <a name="connectivity"></a>Připojení
 * Server Azure AD Connect musí překlad názvů DNS pro intranetu i Internetu. DNS server musí být schopné překládat názvy do koncových bodů služby Azure AD a místní Active Directory.
 * Pokud máte brány firewall na vašem intranetu a je potřeba otevřít porty mezi servery služby Azure AD Connect a řadiče domény a pak naleznete v tématu [Azure AD Connect porty](reference-connect-ports.md) Další informace.
 * Pokud proxy server nebo brána firewall omezit adresy URL, které jsou přístupné, pak uvedené adresy URL v [Office 365 – adresy URL a rozsahy IP adres](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) musí být otevřeny.
@@ -130,7 +133,7 @@ Další informace naleznete v tématu:
 Další informace najdete v tématu MSDN [výchozí proxy server Element](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Další informace najdete v případě, že máte problémy s připojením, [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Další
+### <a name="other"></a>Ostatní
 * Volitelné: Testovací uživatelský účet k ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Požadavky na komponenty
@@ -138,7 +141,7 @@ Další informace najdete v případě, že máte problémy s připojením, [ře
 Azure AD Connect, závisí na Microsoft PowerShell a rozhraní .NET Framework 4.5.1. Je nutné tuto verzi nebo novější verze na serveru nainstalovaný. V závislosti na vaší verzi Windows serveru postupujte takto:
 
 * Windows Server 2012R2
-  * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Není vyžadována žádná akce.
+  * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Nevyžaduje se žádná akce.
   * Rozhraní .NET framework 4.5.1 a novějších verzí se nabízejí prostřednictvím služby Windows Update. Ujistěte se, že máte nainstalované nejnovější aktualizace na Windows Server v Ovládacích panelech.
 * Windows Server 2008 R2 a Windows Server 2012
   * Je k dispozici v nejnovější verzi Powershellu Microsoft **Windows Management Framework 4.0**, která je dostupná na [Microsoft Download Center](https://www.microsoft.com/downloads).
@@ -220,7 +223,7 @@ Následující tabulka uvádí minimální požadavky na počítač synchronizac
 
 Minimální požadavky na počítače se systémem služby AD FS nebo serverů webových aplikací je následující:
 
-* Procesor: Duální základní 1,6 GHz nebo vyšší
+* CPU: Duální základní 1,6 GHz nebo vyšší
 * PAMĚŤ: 2 GB nebo vyšší
 * Virtuální počítač Azure: Konfigurace a2 nebo vyšší
 

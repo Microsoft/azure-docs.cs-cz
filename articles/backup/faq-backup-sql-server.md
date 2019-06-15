@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: sachdevaswati
 ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700176"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se databáze SQL serveru, na kterých běží zálohování virtuálních počítačů Azure
@@ -37,7 +37,7 @@ Služba Azure Backup za určitých okolností spustí nápravné zálohování. 
 Automatické opravy jako funkce ve výchozím nastavení; zapnutá pro všechny uživatele Ale pak provést v případě, že vyberete možnost odhlásit se, níže:
 
   * V instanci SQL serveru v *C:\Program Files\Azure úlohy Backup\bin* složku, vytvořte nebo upravte **ExtensionSettingsOverrides.json** souboru.
-  * V **ExtensionSettingsOverrides.json**, nastavte *{"EnableAutoHealer": false}*.
+  * V **ExtensionSettingsOverrides.json**, nastavte *{"EnableAutoHealer": false}* .
   * Uložte změny a zavřete soubor.
   * Na instanci serveru SQL Server otevřete **spravovat úlohy** a restartujte **AzureWLBackupCoordinatorSvc** služby.  
 

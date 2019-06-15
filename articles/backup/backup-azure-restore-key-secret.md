@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
 ms.openlocfilehash: 13eb800cd64e0de736b1fdea308a03d8a8d0f046
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127909"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Obnovení služby Key Vault klíč a tajný klíč pro šifrované virtuální počítače pomocí služby Azure Backup
@@ -52,7 +52,7 @@ Get-AzStorageBlobContent -Blob $encryptedBlobName -Container $containerName -Des
 $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 ```
 
-## <a name="restore-key"></a>Obnovit klíč
+## <a name="restore-key"></a>Obnovení klíče
 
 Po vygenerování souboru JSON v cílové cestě uvedené výše vygenerovat soubor blob klíče z JSON a kanál na obnovení klíče rutiny vložte klíč (KEK) zpět ve službě key vault.
 
@@ -108,7 +108,7 @@ Pokud jste zálohovali šifrovaných virtuálních počítačů pomocí Azure Ba
 
 Přístup uvedených výše by fungovalo pro všechny body obnovení. Platné pro body obnovení starší než 11. července 2017 pro virtuální počítače jsou šifrované pomocí klíče BEK a KEK by však starším přístupem získání klíče a tajné informace z bodu obnovení. Po dokončení pro šifrované virtuální počítač pomocí úlohy obnovení disku [kroky PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm), ujistěte se, že se načtou $rp platnou hodnotu.
 
-### <a name="restore-key"></a>Obnovit klíč
+### <a name="restore-key"></a>Obnovení klíče
 
 Pomocí následujících rutin pro získání klíčů (KEK) informace z bodu obnovení a kanál na obnovení klíče rutiny pro její umístění zpět do služby key vault.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60499881"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
@@ -34,7 +34,7 @@ Tyto požadavky na použití a zobrazení pro žádnou implementaci obsah a při
 ## <a name="definitions"></a>Definice
 
 
-|Označení  |Popis  |
+|Termín  |Popis  |
 |---------|---------|
 |Odpověď     | Kategorie výsledky vrácené v odpovědi. Například odpověď z rozhraní API Bingu pro vyhledávání webu může obsahovat odpovědi v kategoriích webovou stránku výsledků, image, video, vizuál a zprávy. |
 |Odpověď     | Veškeré odpovědi a přidružená data přijatá v odpovědi na jednoho volání rozhraní API pro vyhledávání. |

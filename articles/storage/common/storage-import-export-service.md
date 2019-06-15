@@ -9,10 +9,10 @@ ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65603110"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure Import/Export?
@@ -119,7 +119,7 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 ### <a name="supported-shipping-locations"></a>Nepodporuje přesouvání umístění
 
 
-|Země nebo oblast  |Země nebo oblast  |Země nebo oblast  |Země nebo oblast  |
+|Země/oblast  |Země/oblast  |Země/oblast  |Země/oblast  |
 |---------|---------|---------|---------|
 |USA – východ    | Severní Evropa        | Střed Indie        |US Gov – Iowa         |
 |Západní USA     |Západní Evropa         | Indie – jih        | US DoD – východ        |

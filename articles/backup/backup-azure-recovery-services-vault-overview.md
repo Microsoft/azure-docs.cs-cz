@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 8/10/2018
 ms.author: raynew
 ms.openlocfilehash: 924b36701ecf21f6bd84938aeefbf25e47fcbaa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60699230"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezory služby Recovery Services
@@ -31,7 +31,7 @@ Trezory služby Recovery Services jsou založené na modelu Azure Resource Manag
 
 - **Centrální monitorování pro vaši hybridní IT prostředí**: S trezory služby Recovery Services, můžete monitorovat nejenom vaše [virtuálních počítačů Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portál. [Další informace](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Řízení přístupu na základě role (RBAC)**: RBAC poskytuje jemně odstupňované řízení řízení přístupu v Azure. [Azure nabízí různé předdefinované role](../role-based-access-control/built-in-roles.md), a Azure Backup obsahuje tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služby Recovery Services, musí být kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatelů. [Další informace](backup-rbac-rs-vault.md)
+- **Řízení přístupu na základě role (RBAC)** : RBAC poskytuje jemně odstupňované řízení řízení přístupu v Azure. [Azure nabízí různé předdefinované role](../role-based-access-control/built-in-roles.md), a Azure Backup obsahuje tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služby Recovery Services, musí být kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatelů. [Další informace](backup-rbac-rs-vault.md)
 
 - **Chránit všechny konfigurace virtuálních počítačů Azure**: Trezory Recovery Services chrání založené na správci prostředků virtuálních počítačů, včetně disků Premium Managed Disks a šifrovaných virtuálních počítačů. Upgrade úložiště záloh do trezoru služby Recovery Services vám dává příležitost k upgradu vašich virtuálních počítačů založené na portálu Service Manager na virtuální počítače založené na Resource Manageru. Při upgradu trezoru, můžete zachovat body obnovení virtuálního počítače založené na portálu Service Manager a nakonfigurujte ochranu pro upgradovaný virtuální počítače (Resource Manager s podporou). [Další informace](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080488"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Přizpůsobit způsob, jakým zobrazuje řešení připojená továrna dat ze serverů OPC UA
 
@@ -39,7 +39,7 @@ Tento článek popisuje:
 
 ## <a name="data-sources"></a>Zdroje dat
 
-Zobrazuje řešení připojená továrna data ze serverů OPC UA připojených k řešení. Výchozí instalace zahrnuje několik serverů OPC UA spuštění simulace objekt pro vytváření. Můžete přidat vlastní servery OPC UA, který [připojení prostřednictvím brány] [ lnk-connect-cf] do vašeho řešení.
+Zobrazuje řešení připojená továrna data ze serverů OPC UA připojených k řešení. Výchozí instalace zahrnuje několik serverů OPC UA spuštění simulace objekt pro vytváření. Můžete přidat vlastní servery OPC UA, který [připojení prostřednictvím brány] [lnk-connect-cf] do vašeho řešení.
 
 Můžete procházet datové položky, které můžete odeslat připojený server OPC UA do vašeho řešení na řídicím panelu:
 
@@ -79,8 +79,6 @@ Po dokončení provádění změn **ContosoTopologyDescription.json** souboru, j
 
 Další informace o akcelerátor řešení připojená továrna v následujících článcích:
 
-* [Seznámení s akcelerátorem řešení propojené továrny][lnk-rm-walkthrough]
-* [Nasazení brány pro propojenou továrnu][lnk-connect-cf]
 * [Oprávnění na webu azureiotsolutions.com][lnk-permissions]
 * [Propojená továrna – nejčastější dotazy](iot-accelerators-faq-cf.md)
 * [NEJČASTĚJŠÍ DOTAZY][lnk-faq]
@@ -93,7 +91,5 @@ Další informace o akcelerátor řešení připojená továrna v následující
 [img-published]: ./media/iot-accelerators-connected-factory-customize/published.png
 
 
-[lnk-rm-walkthrough]:iot-accelerators-connected-factory-sample-walkthrough.md
-[lnk-connect-cf]:iot-accelerators-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-accelerators-permissions.md
 [lnk-faq]: iot-accelerators-faq.md

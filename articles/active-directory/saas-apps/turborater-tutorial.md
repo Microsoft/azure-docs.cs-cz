@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e67f3c7f9413382d169837eaba50d6af18552e6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956671"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Kurz: Integrace Azure Active Directory s TurboRater
 
@@ -111,8 +111,8 @@ Ke konfiguraci Azure AD jednotné přihlašování s TurboRater, proveďte násl
 
        | Prostředí | zprostředkovatele identity |
        | ---------------| --------------- |
-       | Testovat  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
-       | Živé vysílání  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
+       | Test  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Živé  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. K získání těchto hodnot, obraťte se [tým podpory TurboRater](https://www.getitc.com/support). Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** podokně webu Azure Portal.
@@ -151,7 +151,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BSimon**.
   
-    1. V **uživatelské jméno** zadejte **BSimon\@\<doména_společnosti >.\< Rozšíření >**. Například **BSimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **BSimon\@\<doména_společnosti >.\< Rozšíření >** . Například **BSimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
@@ -187,7 +187,7 @@ V této části povolíte B. Simon používat jednotné přihlašování Azure t
 
 V této části vytvořte uživatele B. Simon v TurboRater. Práce s [tým podpory TurboRater](https://www.getitc.com/support) přidání B. Simon jako uživatele v TurboRater. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

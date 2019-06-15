@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 8bee0426f171b0fdb7793d18c352649928fdb2e8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65907253"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
@@ -109,17 +109,17 @@ Tady je příklad služby identifikátor URI SAS, který poskytuje oprávnění 
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| Název | Část SAS | Popis |
+| Name | Část SAS | Popis |
 | --- | --- | --- |
 | Identifikátor URI objektu BLOB |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adresa objektu blob. Všimněte si, že pomocí protokolu HTTPS se důrazně doporučuje. |
 | Verze služby úložiště |`sv=2015-04-05` |Pro verzi 2012-02-12 služeb úložiště a později tento parametr určuje verze se má použít. |
-| Počáteční čas |`st=2015-04-29T22%3A18%3A26Z` |Zadaná v čase UTC. Pokud chcete platit okamžitě SAS, vynechejte čas spuštění. |
-| Doba konce platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadaná v čase UTC. |
+| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadaná v čase UTC. Pokud chcete platit okamžitě SAS, vynechejte čas spuštění. |
+| Čas vypršení platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadaná v čase UTC. |
 | Resource |`sr=b` |Prostředek je v objektu blob. |
 | Oprávnění |`sp=rw` |Oprávnění udělená SAS Read (r) a zápisu (w). |
 | Rozsah IP adres |`sip=168.1.5.60-168.1.5.70` |Rozsah IP adres, ze kterých se žádost o přijetí. |
 | Protocol |`spr=https` |Jsou povoleny pouze žádosti přes protokol HTTPS. |
-| Podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Používá se k autorizaci přístupu k objektu blob. Podpis je kódu HMAC s vypočítaný přes řetězec přihlašování a klíč pomocí algoritmus SHA256 a potom zakódován pomocí kódování Base64. |
+| podpis |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Používá se k autorizaci přístupu k objektu blob. Podpis je kódu HMAC s vypočítaný přes řetězec přihlašování a klíč pomocí algoritmus SHA256 a potom zakódován pomocí kódování Base64. |
 
 ### <a name="account-sas-uri-example"></a>Příklad identifikátor URI SAS účtu
 

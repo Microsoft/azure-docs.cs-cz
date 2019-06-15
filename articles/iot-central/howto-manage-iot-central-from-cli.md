@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 9e5d842cece316bc9c53e1e8583f40a0f222b91d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66151961"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Spravovat z příkazového řádku Azure IoT Central
@@ -56,8 +56,8 @@ Tyto příkazy nejdřív vytvořte skupinu prostředků na východě USA oblast 
 | location          | Tento příkaz používá ve výchozím umístění, ze skupiny prostředků. V současné době můžete vytvořit aplikace IoT Central **USA – východ**, **USA – západ**, **Severní Evropa**, nebo **západní Evropa** oblastech. |
 | name              | Název aplikace na webu Azure Portal. |
 | subdomain         | Subdoména v adrese URL aplikace. V tomto příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
-| SKU               | V současné době je jediná hodnota **S1** (úrovně standard). Zobrazit [ceny Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-| šablona          | Šablony aplikace používat. Další informace najdete v tématu v následující tabulce: |
+| Skladová položka               | V současné době je jediná hodnota **S1** (úrovně standard). Zobrazit [ceny Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+| Šablony          | Šablony aplikace používat. Další informace najdete v tématu v následující tabulce: |
 | Zobrazovaný název      | Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
 **Šablony aplikací**

@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 970eeb871775e24abb87c8b977e214645e514d3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60789472"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace událostí řazení zásady pro Azure Stream Analytics
@@ -73,7 +73,9 @@ Kombinaci více oddílů ze stejného vstupního datového proudu tolerance pozd
 <br><code>
 {"message Time":"2/3/2019 8:54:16 PM UTC","message":"Input Partition [2] does not have additional data for more than [5] minute(s). Partition will not progress until either events arrive or late arrival threshold is met.","type":"InputPartitionNotProgressing","correlation ID":"2328d411-52c7-4100-ba01-1e860c757fc2"} 
 </code><br><br>
-Tuto zprávu informující, že aspoň jeden oddíl v váš vstup, je prázdný a bude zpozdit výstup prahovou hodnotu pozdní doručení. Abyste to vyřešili, je doporučeno buď: 1. Zajistěte, aby že všechny oddíly centra událostí centra/IoT vstup. 2. Oddílu použijte PartitionID klauzule v dotazu. 
+Tuto zprávu informující, že aspoň jeden oddíl v váš vstup, je prázdný a bude zpozdit výstup prahovou hodnotu pozdní doručení. Abyste to vyřešili, je doporučeno buď: 
+1. Zajistěte, aby že všechny oddíly centra událostí centra/IoT vstup. 
+2. Oddílu použijte PartitionID klauzule v dotazu. 
 
 ## <a name="next-steps"></a>Další postup
 * [Důležité informace o zpracování času](stream-analytics-time-handling.md)

@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e641025d49dd42125aa692925c0697235489b1db
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 2b3f4cf4099459b655fc0e370935ddc8079de810
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307149"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073944"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace na Azure prostorových ukotvení
 
@@ -56,7 +56,7 @@ Po dokončení, sada SDK zajistí výměny klíče účtu pro přístupový toke
 
 ## <a name="azure-ad-user-authentication"></a>Ověřování uživatelů Azure AD
 
-Pro aplikace zaměřená na uživatele v Azure Active Directory, je doporučený postup pro použití tokenu Azure AD pro uživatele, který můžete získat pomocí knihovny ADAL, jak je popsáno v následující dokumentaci: https://docs.microsoft.com/azure/active-directory/develop/v1-overview; postupujte podle kroků uvedených v tomto v části "Rychlého spuštění" mezi které patří:
+Pro aplikace zaměřená na uživatele v Azure Active Directory, je doporučený postup pro použití tokenu Azure AD pro uživatele, který můžete získat pomocí knihovny ADAL, jak je popsáno v následující dokumentaci: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); je postupujte podle kroků uvedených v části "Rychlého spuštění", mezi které patří:
 
 1. Konfigurace webu Azure portal
     1.  Registrace vaší aplikace ve službě Azure AD jako **nativní aplikace**. Jako součást registrace budete muset zjistit, jestli vaše aplikace by měla být více tenantů nebo Ne a poskytují přesměrování, na které povolené adresy URL pro vaši aplikaci.  
@@ -89,7 +89,7 @@ Doporučená možnost nasazovat aplikace s využitím prostorových kotvy Azure 
 
 Tady, se předpokládá, že vaše aplikace používá vlastní mechanismus (například: Účet Microsoft, PlayFab, Facebook, Google s ID, vlastního uživatelského jména a hesla atd.) k ověření svůj back-end služby. Po ověření uživatele do služby back-end, který služba získat token Azure AD, výměně pro přístupový token Azure prostorových ukotvení a vrátit zpět do klientské aplikace.
 
-Přístupový token Azure AD jsou načítány s použitím knihovny ADAL, jak je popsáno v následující dokumentaci: https://docs.microsoft.com/azure/active-directory/develop/v1-overview; postupujte podle kroků uvedených v části "Rychlého spuštění", mezi které patří:
+Přístupový token Azure AD jsou načítány s použitím knihovny ADAL, jak je popsáno v následující dokumentaci: [ https://docs.microsoft.com/azure/active-directory/develop/v1-overview ](../../active-directory/develop/v1-overview.md); postupujte podle kroků uvedených v části "Rychlého spuštění", mezi které patří:
 
 1.  Konfigurace webu Azure portal:
     1.  Registrace vaší aplikace ve službě Azure AD:

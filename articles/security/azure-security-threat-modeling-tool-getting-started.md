@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60610779"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s nástroj pro modelování hrozeb
 
-2018 pro nástroj pro modelování hrozeb Microsoft byla vydána jako GA v září 2018 jako bezplatná  **[klikněte na tlačítko Stáhnout](https://aka.ms/threatmodelingtool)**. Změnu v hodnotě mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj, což usnadňuje údržbě a používání.
+2018 pro nástroj pro modelování hrozeb Microsoft byla vydána jako GA v září 2018 jako bezplatná  **[klikněte na tlačítko Stáhnout](https://aka.ms/threatmodelingtool)** . Změnu v hodnotě mechanismus doručení umožňuje nabízet nejnovější vylepšení a opravy chyb pro zákazníky pokaždé, když otevřou nástroj, což usnadňuje údržbě a používání.
 Tento článek vás provede procesem Začínáme se službou Microsoft SDL hrozeb modelování přístup a ukazuje, jak pomocí nástroje pro vývoj modely skvělé hrozeb jako páteřní zabezpečení procesu.
 
 Tento článek vychází stávajících znalostí hrozeb SDL modelování přístup. Stručné shrnutí, najdete v tématu **[modelování ohrožení webových aplikací](https://msdn.microsoft.com/library/ms978516.aspx)** a archivované verze **[odkrýt zabezpečení chyby pomocí přístupu STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Publikování článku MSDN v 2006.
@@ -79,14 +79,14 @@ Probíhá proces vývoje jejich první model hrozeb.
 > - Při posílání příkazů do našich webového serveru – kruhu
 > - Webový server je consulting databáze (paralelní dva řádky)
 
-Co Ricardo chvilkou ukázal Cristina je diagramu toku dat, krátká pro  **[Diagram toku dat](https://en.wikipedia.org/wiki/Data_flow_diagram)**. Nástroj pro modelování hrozeb umožní uživatelům zadat hranicemi vztahů důvěryhodnosti označená červenou tečkované čáry, chcete-li zobrazit, kde jsou různé entity v ovládacím prvku. Například správci IT vyžadují systému Active Directory pro účely ověřování, proto je služba Active Directory nemá pod kontrolou.
+Co Ricardo chvilkou ukázal Cristina je diagramu toku dat, krátká pro  **[Diagram toku dat](https://en.wikipedia.org/wiki/Data_flow_diagram)** . Nástroj pro modelování hrozeb umožní uživatelům zadat hranicemi vztahů důvěryhodnosti označená červenou tečkované čáry, chcete-li zobrazit, kde jsou různé entity v ovládacím prvku. Například správci IT vyžadují systému Active Directory pro účely ověřování, proto je služba Active Directory nemá pod kontrolou.
 
 > Cristina: Vypadá dobře mně. Jaké informace o hrozbách?
 > Ricardo: Nechat mě můžete zobrazit.
 
 ## <a name="analyzing-threats"></a>Analýza hrozeb
 
-Jakmile se klikne na zobrazení analýzy z výběru nabídky ikonu (soubor s ikonou lupy), byl přijat do seznamu generovaných hrozeb najít nástroj pro modelování hrozeb na základě výchozí šablony, která používá přístupu SDL říká  **[ STRIDE (falšování identity, úmyslné poškozování, zpřístupnění informací, popírání odpovědnosti, odepření služby (DOS) a neautorizované zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Cílem je, že software pochází podle předvídatelné sadu hrozeb, které lze nalézt pomocí těchto 6 kategorií.
+Jakmile se klikne na zobrazení analýzy z výběru nabídky ikonu (soubor s ikonou lupy), byl přijat do seznamu generovaných hrozeb najít nástroj pro modelování hrozeb na základě výchozí šablony, která používá přístupu SDL říká  **[ STRIDE (falšování identity, úmyslné poškozování, zpřístupnění informací, popírání odpovědnosti, odepření služby (DOS) a neautorizované zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Cílem je, že software pochází podle předvídatelné sadu hrozeb, které lze nalézt pomocí těchto 6 kategorií.
 
 Tento přístup se podobá zabezpečení vaší organizace tím, že zajišťuje každý dveře a okno na místě před přidáním poplašný systém nebo dohledávání po bude moci zloděj má mechanismus zamykání.
 

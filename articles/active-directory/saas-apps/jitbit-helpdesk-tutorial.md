@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 851b28d10bdf0b2df67e1c0782a683e790b711bc
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 29addcd62afd193af83196b2d942e9778ff3f031
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898000"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Integrace Azure Active Directory s Jitbit helpdesku
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace Jitbit helpdesku do služby Azure AD, budete muset při
 
 **Přidat technickou podporu Jitbit z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -232,7 +232,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit se na technickou po
 
    a. V **uživatelské jméno** , jako je textové pole, zadejte uživatelské jméno uživatele **BrittaSimon**.
 
-   b. V **e-mailu** , jako je textové pole, typ e-mailu uživatele **BrittaSimon@contoso.com**.
+   b. V **e-mailu** , jako je textové pole, typ e-mailu uživatele **BrittaSimon@contoso.com** .
 
    c. V **křestní jméno** textového pole zadejte jméno uživatele, jako je **Britta**.
 
@@ -243,7 +243,7 @@ Chcete-li povolit Azure AD uživatelům umožní přihlásit se na technickou po
 > [!NOTE]
 > Další nástroje pro tvorbu účtu uživatele Jitbit helpdesku nebo rozhraní API poskytovaných Jitbit helpdesku můžete použít ke zřízení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,10 +16,10 @@ ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60766732"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Zřizování a nasazování mikroslužeb předvídatelně v Azure
@@ -140,7 +140,7 @@ Aplikace závisí na dvou různých zdrojů. To znamená, že Azure Resource Man
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
-##### <a name="app-settings"></a>Nastavení aplikací
+##### <a name="app-settings"></a>Nastavení aplikace
 Nastavení aplikace jsou také definovány jako vnořených prostředků.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
@@ -193,7 +193,7 @@ Opět vnořených prostředků by měl mít hierarchii velmi podobné těm v sou
 **Nasadit do Azure** tlačítko je skvělé, ale umožňuje nasadit šablonu skupiny prostředků v azuredeploy.json pouze v případě, že azuredeploy.json již byly přesunuty do Githubu. .NET SDK služby Azure také poskytuje nástroje, které můžete nasadit libovolný soubor šablony JSON přímo z místního počítače. Chcete-li to provést, postupujte podle kroků níže:
 
 1. V sadě Visual Studio klikněte na **Soubor** > **Nový** > **Projekt**.
-2. Klikněte na tlačítko **Visual C#** > **cloudu** > **skupiny prostředků Azure**, pak klikněte na tlačítko **OK**.
+2. Klikněte na tlačítko **Visual C#**  > **cloudu** > **skupiny prostředků Azure**, pak klikněte na tlačítko **OK**.
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. V **vybrat šablonu Azure**vyberte **prázdnou šablonu** a klikněte na tlačítko **OK**.
@@ -259,7 +259,7 @@ V DevOps opakovatelnost a předvídatelnost jsou klíče pro všechny úspěšn�
 
 <a name="resources"></a>
 
-## <a name="more-resources"></a>Další zdroje informací
+## <a name="more-resources"></a>Další materiály
 * [Jazyk šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Tvorba šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Funkce šablon Azure Resource Manageru](../azure-resource-manager/resource-group-template-functions.md)

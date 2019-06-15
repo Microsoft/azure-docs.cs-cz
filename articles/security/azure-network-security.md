@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587331"
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
@@ -70,7 +70,7 @@ V tomto dokumentu bude titulní následující sítě podnikové funkce Azure:
 
 -   Hybridní připojení
 
--   Ovládací prvky zabezpečení
+-   Kontrolní mechanismy zabezpečení
 
 -   Ověřování sítě
 
@@ -280,13 +280,13 @@ Skupiny Nsg 5-řazené kolekce členů se používá k vyhodnocení provozu (a s
 
 To znamená, že se že můžete řídit přístup mezi jeden virtuální počítač a skupinu virtuálních počítačů nebo jeden virtuální počítač k jinému virtuálnímu počítači jeden, nebo mezi celé podsítě. Znovu mějte na paměti, že je to jednoduché stavové filtrování paketů, kontrola paketu není úplná. Není žádný protokol ověřování nebo ID úrovně sítě nebo IP adresy schopností ve skupině zabezpečení sítě.
 
-Skupina zabezpečení sítě obsahuje některá vestavěné pravidla, které byste měli vědět. Jsou to:
+Skupina zabezpečení sítě obsahuje některá vestavěné pravidla, které byste měli vědět. Toto jsou:
 
 -   **Povolení veškerého provozu v rámci konkrétní virtuální sítě:** Všechny virtuální počítače ve stejné virtuální síti Azure můžete komunikovat mezi sebou.
 
--   **Povolit příchozí Vyrovnávání zatížení Azure:** toto pravidlo povoluje provoz z jakékoli zdrojové adresy na jakoukoli adresu v cílovém pro Azure load balancer.
+-   **Povolit příchozí Vyrovnávání zatížení Azure:**  toto pravidlo povoluje provoz z jakékoli zdrojové adresy na jakoukoli adresu v cílovém pro Azure load balancer.
 
--   **Odmítnout všechny příchozí:** toto pravidlo blokuje veškeré přenosy z Internetu, explicitně povolující sourcing.
+-   **Odmítnout všechny příchozí:**  toto pravidlo blokuje veškeré přenosy z Internetu, explicitně povolující sourcing.
 
 -   **Povolení veškerého provozu odchozího k Internetu:** Toto pravidlo umožňuje virtuálním počítačům, aby inicializoval připojení k Internetu. Pokud nechcete, aby se tato připojení inicializované, musíte vytvořit pravidlo na blokování tato připojení nebo vynutit vynucené tunelování.
 
@@ -547,7 +547,7 @@ Určuje, [dalšího segmentu směrování](https://docs.microsoft.com/azure/netw
 
 Další směrování také vrátí hodnotu směrovací tabulky přidružené k další segment směrování. Při dotazování na další segment směrování, pokud trasu je definován jako trasy definované uživatelem, vrátí se danou trasu. Další směrování v opačném případě vrátí "Systémová trasa".
 
-#### <a name="security-group-view"></a>Zobrazení skupiny zabezpečení
+#### <a name="security-group-view"></a>zobrazení skupin zabezpečení
 
 Získá pravidla efektivní a použité zabezpečení, které se použijí na virtuálním počítači. Skupiny zabezpečení sítě jsou spojeny na úrovni podsítě nebo na úrovni síťové karty. Pokud se související na úrovni podsítě, platí pro všechny instance virtuálních počítačů v podsíti. Síť [zobrazení skupiny zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) vrátí nakonfigurované skupiny Nsg a pravidla, které jsou spojeny na úrovni síťové karty NIC a podsítě pro virtuální počítač poskytuje přehled o konfiguraci. Kromě toho jsou vráceny platná pravidla zabezpečení pro jednotlivé síťové adaptéry na virtuálním počítači. Zobrazení pomocí skupiny zabezpečení sítě můžete vyhodnotit virtuálního počítače pro zranitelností sítí, jako je otevření portů. Můžete také ověřit, zda vaše skupiny zabezpečení sítě funguje podle očekávání, na základě [srovnání nakonfigurované a platná pravidla zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell).
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17c055b79b8b90bd56a1dcd6472cf74d2512137
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089169"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Kurz: Integrace Azure Active Directory s TalentLMS
 
@@ -54,7 +54,7 @@ Konfigurace integrace TalentLMS do služby Azure AD, budete muset přidat Talent
 
 **Chcete-li přidat TalentLMS z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -139,7 +139,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s TalentLMS, proveďte násle
 
     ![Účet a nastavení](./media/talentlms-tutorial/IC777296.png "účet a nastavení")
 
-1. Klikněte na tlačítko **jednotné přihlašování (SSO)**,
+1. Klikněte na tlačítko **jednotné přihlašování (SSO)** ,
 
 1. V části jednotného přihlašování proveďte následující kroky:
 
@@ -242,7 +242,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k TalentLMS, mus
 > [!NOTE]
 > Můžete použít jakékoli jiné TalentLMS uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných TalentLMS uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

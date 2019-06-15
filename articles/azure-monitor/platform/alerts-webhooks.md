@@ -9,10 +9,10 @@ ms.date: 04/03/2017
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60345770"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku
@@ -73,12 +73,12 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 |:--- |:--- |:--- |:--- |
 | status |Ano |Aktivováno, vyřešeno |Stav upozornění na základě podmínek, je nastavit. |
 | Kontext |Ano | |Kontext výstrahy. |
-| časové razítko |Ano | |Čas, kdy byla výstraha. |
+| timestamp |Ano | |Čas, kdy byla výstraha. |
 | id |Ano | |Každé pravidlo upozornění má jedinečné ID. |
-| jméno |Ano | |Název výstrahy. |
+| name |Ano | |Název výstrahy. |
 | description |Ano | |Popis výstrahy. |
 | conditionType |Ano |Metriky, události |Podporuje dva typy výstrah: metrik a událostí. Upozornění na metriky jsou založeny na podmínku metriky. Výstrahy na události jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li zkontrolovat, jestli upozornění je založené na metriku nebo události. |
-| condition |Ano | |Na základě konkrétních polí ke kontrole **conditionType** hodnotu. |
+| Podmínka |Ano | |Na základě konkrétních polí ke kontrole **conditionType** hodnotu. |
 | metricName |Pro upozornění na metriku | |Název metriky, která definuje, co pravidlo monitoruje. |
 | metricUnit |Pro upozornění na metriku |Počet bajtů, BytesPerSecond, Count, CountPerSecond, %, sekund |Jednotka povolené v metrice. Zobrazit [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Pro upozornění na metriku | |Skutečná hodnota metriky, který výstrahu způsobil. |

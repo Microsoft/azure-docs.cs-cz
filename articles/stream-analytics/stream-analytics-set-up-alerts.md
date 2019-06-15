@@ -7,20 +7,19 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/11/2019
+ms.openlocfilehash: 09a5c77c770f7709b90d4959da5be9134b0f0ad9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771903"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077686"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro úlohy Azure Stream Analytics
 
 Je důležité monitorovat úlohu Azure Stream Analytics zajistit, že úloha běží nepřetržitě bez problémů. Tento článek popisuje, jak nastavit výstrahy pro běžné scénáře, které by se měly monitorovat. 
 
-Pravidla lze nastavit na metrik na portálu a dá se [programově](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) nad daty protokoly operací.
+Můžete definovat pravidla týkající se metrik z dat protokolů operací pomocí portálu, stejně jako [programově](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a).
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Nastavte si upozornění na webu Azure Portal
 
@@ -30,7 +29,7 @@ Následující příklad ukazuje, jak nastavit upozornění, pokud vaše úloha 
 
 2. Na **úlohy** stránce, přejděte **monitorování** oddílu.  
 
-3. Vyberte **metriky**a potom klikněte na tlačítko **nové pravidlo upozornění**.
+3. Vyberte **metriky**a potom **nové pravidlo upozornění**.
 
    ![Azure portal nastavení výstrah Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
@@ -38,7 +37,7 @@ Následující příklad ukazuje, jak nastavit upozornění, pokud vaše úloha 
 
    ![Vyberte název signálu pro upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. V části **konfigurovat logiku signálů**, změnit **úroveň události** k **všechny** a změňte **stav** k **neúspěšné** . Ponechte **události iniciovaných** prázdné a klikněte na tlačítko **provádí**.
+5. V části **konfigurovat logiku signálů**, změnit **úroveň události** k **všechny** a změňte **stav** k **neúspěšné** . Ponechte **události iniciovaných** prázdné a vyberte **provádí**.
 
    ![Konfigurovat logiku signálů pro upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 

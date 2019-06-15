@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
 ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60653712"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z pro zpracování řeči Bingu ve službě řeči
@@ -50,7 +50,7 @@ Vlastní hlasové písmo | :heavy_check_mark: | :heavy_check_mark: | Pro zpracov
 Rozpoznání záměru řeči | Vyžaduje volání rozhraní API LUIS | Integrováno (SDK) |  LUIS klíč můžete použít se službou Speech.
 Jednoduché rozpoznání záměru | : heavy_minus_sign: | :heavy_check_mark:
 Batch přepis dlouho zvukové soubory | : heavy_minus_sign: | :heavy_check_mark:
-Režim rozpoznávání | Ruční prostřednictvím identifikátor URI koncového bodu | Automaticky | Rozpoznávání režim není k dispozici v Speech Service.
+Režim rozpoznávání | Ruční prostřednictvím identifikátor URI koncového bodu | Automatické | Rozpoznávání režim není k dispozici v Speech Service.
 Umístění koncového bodu | Globální | Místní | Místní koncové body Zlepšete latenci.
 Rozhraní REST API | :heavy_check_mark: | :heavy_check_mark: | Rozhraní REST API pro rozpoznávání řeči služby jsou kompatibilní se pro zpracování řeči Bingu (jiný koncový bod). Rozhraní REST API podporují převod textu na řeč a omezené funkce převodu řeči na text.
 Protokoly Websocket | :heavy_check_mark: | :heavy_check_mark: | Rozhraní Speech API služby objekty Websocket je kompatibilní s pro zpracování řeči Bingu (jiný koncový bod). Migrace do sady SDK k rozpoznávání řeči, pokud je to možné, pro zjednodušení kódu.

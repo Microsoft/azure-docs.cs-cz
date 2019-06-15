@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: juliako
-ms.openlocfilehash: f04ae727957d988e75ea0984d0005a6a140ca63f
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: c3ee35013cb0e653b1c554e662c63e5adc764865
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66732988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074928"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -54,14 +54,14 @@ Podívejte se na příklad kódu .NET v [MediaV3LiveApp](https://github.com/Azur
 
 ![Kódování v reálném čase](./media/live-streaming/live-encoding.svg)
 
-Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). Živá událost tento příchozí stream s jednou přenosovou rychlostí zakóduje do [streamu videa s několika přenosovými rychlostmi](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) a zpřístupní ho k doručení na zařízení pro přehrávání přes protokoly, jako jsou MPEG-DASH, HLS a Smooth Streaming. Při vytváření tohoto typu živé události jako typ kódování zadejte **Standard** (LiveEventEncodingType.Standard).
+Při použití kódování v reálném čase pomocí Media Services nakonfigurujte místní kodér pro kódování v reálném čase tak, aby jako informační kanál příspěvku do živé události odesílal video s jednou přenosovou rychlostí (pomocí protokolu RTMP nebo fragmentovaného MP4). By pak nastavíte živá událost tak, aby zakóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)a zpřístupňuje výstup pro doručování a přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS, Smooth Streamování.
 
-Informační kanál příspěvku můžete odeslat v rozlišení až 1080p a s obnovovací frekvencí 30 snímků za sekundu, s video kodekem H.264/AVC a se zvukovým kodekem AAC (AAC-LC, HE-AACv1 nebo HE-AACv2). Další podrobnosti najdete v článku popisujícím [porovnání typů živých událostí](live-event-types-comparison.md).
+Použijete-li kódování v reálném čase, můžete poslat příspěvek kanálu pouze na rozlišení k rozlišení 1080p rychlostí rámec 30 snímků/druhé kodek H.264/AVC videa a AAC (AAC-LC, HE-AACv1 nebo HE-AACv2) zvukový kodek. Všimněte si, že předávací živé události může podporovat řešení až po 4 kB na 60 snímků za sekundu. Další podrobnosti najdete v článku popisujícím [porovnání typů živých událostí](live-event-types-comparison.md).
 
-Při použití kódování v reálném čase (živá událost nastavená na Standard) **předvolba kódování** definuje způsob, jakým se příchozí stream kóduje do několika přenosových rychlostí nebo vrstev. Další informace najdete v tématu [Předvolby sytému](live-event-types-comparison.md#system-presets).
+Rozlišení a přenosových rychlostí obsažené ve výstupu kodér služby live Encoding je určeno přednastavený kontext. Pokud se používá **standardní** live encoder (LiveEventEncodingType.Standard), pak bude *Default720p* přednastavení určuje sadu párů 6 rychlost řešení/bit mezi 720 p na 3.5Mbps dolů 192 p na 200 kb/s. Jinak, pokud se používá **Premium1080p** live encoder (LiveEventEncodingType.Premium1080p), pak bude *Default1080p* přednastavení určuje sadu párů 6 rychlost řešení/bit mezi 1080 p na 3.5Mbps až 180 p na 200 kb/s. Další informace najdete v tématu [Předvolby sytému](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
-> Jedinou přednastavenou hodnotou pro živou událost typu Standard je v současné době *Default720p*. Pokud potřebujete použít vlastní předvolbu kódování v reálném čase, obraťte se na amshelp@microsoft.com. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva s rozlišením 720p a maximálně 6 vrstev celkem.
+> Pokud potřebujete přizpůsobit živé kódování předvolbu, otevřete prosím lístek podpory prostřednictvím webu Azure portal. Měli byste uvést tabulku požadovaných rozlišení a přenosových rychlostí. Ověřte, že existuje pouze jedna vrstva na 720p (Pokud se požaduje přednastavení kodér úrovně Standard za provozu) nebo na 1080p (Pokud se požaduje přednastavení Premium1080p live encoder) a maximálně 6 vrstvy.
 
 ## <a name="live-event-creation-options"></a>Možnosti vytvoření živé události
 

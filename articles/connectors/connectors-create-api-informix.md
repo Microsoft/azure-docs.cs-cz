@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60690810"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Začínáme s konektor Informix
@@ -44,7 +44,7 @@ Tento konektor podporuje následující akce logic Apps:
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Vypíše tabulky
+## <a name="list-tables"></a>Seznam tabulek
 Vytvoření aplikace logiky pro všechny operace se skládá z mnoha kroků, které se provádí prostřednictvím portálu Microsoft Azure.
 
 V rámci aplikace logiky můžete přidat akci do seznamu tabulek v databázi Informix. Tato akce nastaví konektoru ke zpracování příkazu schématu Informix, například `CALL SYSIBM.SQLTABLES`.
@@ -58,7 +58,7 @@ V rámci aplikace logiky můžete přidat akci do seznamu tabulek v databázi In
 2. V **triggery** seznamu vyberte **opakování**. 
 3. V **opakování** aktivační událost, vyberte **upravit**vyberte **frekvence** rozevíracího seznamu vyberte **den**a pak vyberte  **Interval** na typ **7**.  
 4. Vyberte **+ nový krok** a potom vyberte **přidat akci**.
-5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix - Get tabulky (Preview)**.
+5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix - Get tabulky (Preview)** .
    
    ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
 6. V **Informix - Get tabulky** konfigurační podokno, vyberte **zaškrtávací políčko** umožňující **připojit přes místní bránu dat**. Všimněte si, že nastavení změní z cloudu i místní.
@@ -83,11 +83,11 @@ Tento konektor podporuje připojení k místní databáze a v cloudu s využití
 | Vlastnost | Popis |
 | --- | --- |
 | server |Povinná hodnota. Přijímá řetězcovou hodnotu představující adresa TCP/IP nebo alias ve formátu IPv4 nebo IPv6, a potom (dvojtečka oddělený tabulátory) podle čísla portu TCP/IP. |
-| databáze |Povinná hodnota. Přijímá řetězcovou hodnotu představující architektury DRDA název pro relační databáze (RDBNAM). Informix přijímá řetězec 128 bajtů (databáze se označuje jako název databáze IBM Informix (dbname)). |
-| Ověřování |Volitelné. Přijímá hodnotu položky seznamu, Basic nebo Windows (kerberos). |
-| uživatelské jméno |Povinná hodnota. Přijímá řetězcovou hodnotu. |
+| database |Povinná hodnota. Přijímá řetězcovou hodnotu představující architektury DRDA název pro relační databáze (RDBNAM). Informix přijímá řetězec 128 bajtů (databáze se označuje jako název databáze IBM Informix (dbname)). |
+| ověřování |Volitelné. Přijímá hodnotu položky seznamu, Basic nebo Windows (kerberos). |
+| username jméno |Povinná hodnota. Přijímá řetězcovou hodnotu. |
 | password |Povinná hodnota. Přijímá řetězcovou hodnotu. |
-| brána |Povinná hodnota. Přijímá hodnotu položky seznamu, představující na místní bránu dat definované pro Logic Apps v rámci skupiny úložišť. |
+| gateway |Povinná hodnota. Přijímá hodnotu položky seznamu, představující na místní bránu dat definované pro Logic Apps v rámci skupiny úložišť. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Vytvořit místní připojení brány
 Tento konektor můžete přístup k databázi Informix lokálně místní bránu dat používat. Další informace naleznete v tématech brány. 
@@ -128,7 +128,7 @@ Můžete vytvořit akce aplikace logiky k načtení všech řádků v tabulce In
 2. V **triggery** seznamu vyberte **opakování**. 
 3. V **opakování** aktivační událost, vyberte **upravit**vyberte **frekvence** rozevíracího seznamu vyberte **den**a pak vyberte  **Interval** na typ **7**. 
 4. Vyberte **+ nový krok** a potom vyberte **přidat akci**.
-5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – získat řádky (Preview)**.
+5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – získat řádky (Preview)** .
 6. V **získat řádky (Preview)** akci, vyberte **změnit připojení**.
 7. V **připojení** konfigurační podokno, vyberte **vytvořit nový**. 
    
@@ -165,7 +165,7 @@ Můžete vytvořit akce aplikace logiky, chcete-li přidat jeden řádek v tabul
 2. V **triggery** seznamu vyberte **opakování**. 
 3. V **opakování** aktivační událost, vyberte **upravit**vyberte **frekvence** rozevíracího seznamu vyberte **den**a pak vyberte  **Interval** na typ **7**. 
 4. Vyberte **+ nový krok** a potom vyberte **přidat akci**.
-5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – vložit řádek (Preview)**.
+5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – vložit řádek (Preview)** .
 6. V **získat řádky (Preview)** akci, vyberte **změnit připojení**. 
 7. V **připojení** konfigurační podokno, vyberte k připojení k výběru. Vyberte například **hisdemo2**.
    
@@ -192,7 +192,7 @@ Můžete vytvořit akce aplikace logiky se načíst jeden řádek v tabulce Info
 2. V **triggery** seznamu vyberte **opakování**. 
 3. V **opakování** aktivační událost, vyberte **upravit**vyberte **frekvence** rozevíracího seznamu vyberte **den**a pak vyberte  **Interval** na typ **7**. 
 4. Vyberte **+ nový krok** a potom vyberte **přidat akci**.
-5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – získat řádky (Preview)**.
+5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – získat řádky (Preview)** .
 6. V **získat řádky (Preview)** akci, vyberte **změnit připojení**. 
 7. V **připojení** konfigurace podokně vyberte možnost a vyberte existující připojení. Vyberte například **hisdemo2**.
    
@@ -220,7 +220,7 @@ Můžete vytvořit akce aplikace logiky, chcete-li změnit jeden řádek v tabul
 2. V **triggery** seznamu vyberte **opakování**. 
 3. V **opakování** aktivační událost, vyberte **upravit**vyberte **frekvence** rozevíracího seznamu vyberte **den**a pak vyberte  **Interval** na typ **7**. 
 4. Vyberte **+ nový krok** a potom vyberte **přidat akci**.
-5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – aktualizovat řádek (Preview)**.
+5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – aktualizovat řádek (Preview)** .
 6. V **získat řádky (Preview)** akci, vyberte **změnit připojení**. 
 7. V **připojení** konfigurace podokně vyberte možnost a vyberte existující připojení. Vyberte například **hisdemo2**.
    
@@ -247,7 +247,7 @@ Můžete vytvořit akce aplikace logiky se odebrat jeden řádek v tabulce Infor
 2. V **triggery** seznamu vyberte **opakování**. 
 3. V **opakování** aktivační událost, vyberte **upravit**vyberte **frekvence** rozevíracího seznamu vyberte **den**a pak vyberte  **Interval** na typ **7**. 
 4. Vyberte **+ nový krok** a potom vyberte **přidat akci**.
-5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – odstranit řádek (Preview)**.
+5. V **akce** seznamu, zadejte **informix** v **kliknutím zobrazíte další akce** textové pole a pak vyberte **Informix – odstranit řádek (Preview)** .
 6. V **získat řádky (Preview)** akci, vyberte **změnit připojení**. 
 7. V **připojení** konfigurace podokně, vyberte existující připojení. Vyberte například **hisdemo2**.
    

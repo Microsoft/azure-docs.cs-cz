@@ -12,10 +12,10 @@ ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414949"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
@@ -80,12 +80,12 @@ Tato sada zásad příklad udělí vybraných uživatelů v **AppUsers**, přís
 * Zásady 1: Blokovat přístup k lidem, kteří nejsou cílové skupiny
   * Uživatelé a skupiny: Zahrňte všechny uživatele. Vyloučit AppUsers CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Zahrnout všechny aplikace
-  * Podmínky: (Žádný)
+  * Podmínky: (Žádné)
   * Udělit řízení: Zablokovat
 * Zásady 2: Udělení přístupu k AppUsers vyžadování vícefaktorového ověřování nebo důvěryhodné zařízení.
   * Uživatelé a skupiny: Zahrnout AppUsers. Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Zahrnout všechny aplikace
-  * Podmínky: (Žádný)
+  * Podmínky: (Žádné)
   * Udělit řízení: Udělit přístup, vyžadovat vícefaktorové ověřování, vyžadují, aby zařízení dodržovalo předpisy. Pro více ovládacích prvků: Vyžadovat jeden z vybraných ovládacích prvků.
 
 ### <a name="contingencies-for-user-lockout"></a>Pojistné události pro uzamčení uživatelů
@@ -143,7 +143,7 @@ V následujícím příkladu: **Příklad A – řešení nepředvídaných udá
   * Název: EM001 - POVOLIT NOUZOVÉ: MFA přerušení [1/4] - Exchange SharePoint - vyžadovala připojení k hybridní službě Azure AD
   * Uživatelé a skupiny: Zahrnout ContingencyAccess. Vyloučit CoreAdmins a EmergencyAccess
   * Cloudové aplikace: Exchange Online a SharePoint Online
-  * Podmínky: Všechny
+  * Podmínky: Jakýkoli
   * Udělit řízení: Vyžadovat připojených k doméně
   * Stav: Zakázáno
 * Zásady 2: Blok jiných platformách než Windows
@@ -259,7 +259,7 @@ Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můž
 >[!NOTE]
  > Konfigurace [důvěryhodné IP adresy](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) pro Azure MFA je k dispozici pouze [licence Azure AD Premium](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 * [Dokumentace ke službě Azure AD Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

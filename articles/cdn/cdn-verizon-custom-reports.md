@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
 ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60323547"
 ---
 # <a name="custom-reports-from-verizon"></a>Vlastní sestavy od Verizonu
@@ -78,12 +78,12 @@ Kliknutím na symbol Excel napravo od můžete exportovat data ve formátu aplik
 | Přístupy do mezipaměti                | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, který má za následek přístup do mezipaměti (například TCP_EXPIRED_HIT, TCP_HIT nebo TCP_PARTIAL_HIT). Přístup do mezipaměti dojde k verzi v mezipaměti požadovaný obsah nachází. |
 | Přenesená data (MB)     | Určuje celkové množství přenesených dat (MB) ze serverů edge klientům protokolu HTTP (webové prohlížeče) pro edge CNAME. Objem přenesených dat se vypočte tak přidání hlavičky odpovědi do těla odpovědi. V důsledku toho objemu dat přenesených pro každý prostředek je větší než skutečná velikost. |
 | Popis               | Identifikuje okraj CNAME podle jeho názvu hostitele |
-| Přístupy                      | Určuje celkový počet požadavků na hraničních zařízeních CNAME |
-| Neúspěšné přístupy                    | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, který má za následek Neúspěšné přístupy mezipaměti do (například TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS nebo TCP_MISS). Neúspěšný přístup do mezipaměti nastane, pokud požadovaný obsah nebyl uložen do mezipaměti na hraničním serveru, neuplatňují požadavku. | 
+| Počet přístupů                      | Určuje celkový počet požadavků na hraničních zařízeních CNAME |
+| Neúspěšné přístupy do                    | Určuje celkový počet požadavků nebo přenesená data (MB) pro edge CNAME, který má za následek Neúspěšné přístupy mezipaměti do (například TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS nebo TCP_MISS). Neúspěšný přístup do mezipaměti nastane, pokud požadovaný obsah nebyl uložen do mezipaměti na hraničním serveru, neuplatňují požadavku. | 
 | Žádná mezipaměť                  | Určuje celkový počet požadavků nebo přenesená data (MB) pro záznam CNAME, jejímž výsledkem stavový kód CONFIG_NOCACHE mezipaměti na hraničních zařízeních.  |
 | Ostatní                     | Určuje celkový počet požadavků nebo údaje přenesené (MB) pro edge CNAME, jehož výsledkem stavový kód HTTP, který spadá mimo 2xx – rozsahu 5xx. |
 | Platforma                  | Určuje platformu, která zpracovává přenosy edge CNAME. |
-| Nepřiřazeno               | Určuje celkový počet požadavků nebo přenesená data (MB) pro CNAME edge, pro které mezipaměti stavový kód nebo kód stavu HTTP nebyla protokolována informace.  |
+| Nepřiřazené               | Určuje celkový počet požadavků nebo přenesená data (MB) pro CNAME edge, pro které mezipaměti stavový kód nebo kód stavu HTTP nebyla protokolována informace.  |
 | Uncacheable               | Určuje celkový počet požadavků nebo přenesená data (MB) pro záznam CNAME, který vede stavový kód UNCACHEABLE mezipaměti na hraničních zařízeních.  |
 
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f31361dc3d7e24092677f1a78b2c405ae84578ed
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 07341c1ad30f1242bdff430826fdc82c45e09dac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Integrace Azure Active Directory s Zscaler Beta
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotného přihlašování se Zscalerem Beta, postupuj
 
 6. Aplikace Zscalerem Beta očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** tématu **atributy uživatele** dialogové okno, postupujte podle těchto kroků přidejte atribut tokenu SAML, jak je znázorněno v následující tabulce.
     
-    | Název | Zdrojový atribut | 
+    | Name | Zdrojový atribut | 
     | ---------------| --------------- |
     | MemberOf  | user.assignedroles |
 
@@ -297,7 +297,7 @@ V této části je uživatel Britta Simon vytvořené v betaverzi Zscalerem. Pod
 >[!Note]
 >Vytvořte uživatele ručně, obraťte se [tým podpory Zscalerem Beta](https://www.zscaler.com/company/contact).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 Testování Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

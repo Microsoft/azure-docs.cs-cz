@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 33c2d211fad16a81a307a5c0f2a9d048ef07bf4d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65904195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Kurz: Integrace Azure Active Directory s Questetra BPM Suite
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integraci sady BPM Questetra do služby Azure AD, bu
 
 **Přidat sadu BPM Questetra z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -134,7 +134,7 @@ Ke konfiguraci Azure AD jednotné přihlašování pomocí Questetra BPM Suite, 
    
     ![Azure AD jednotné přihlašování][10]
 
-3. Chcete-li otevřít **SingleSignOnSAML** klikněte na **jednotné přihlašování (SAML)**. 
+3. Chcete-li otevřít **SingleSignOnSAML** klikněte na **jednotné přihlašování (SAML)** . 
    
     ![Azure AD jednotné přihlašování][11]
 
@@ -234,7 +234,7 @@ Cílem této části je vytvořte uživatele Britta Simon Questetra BPM Suite.
     
     d. Klikněte na tlačítko **přidat nového uživatele**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

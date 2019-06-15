@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: danlep
 ms.openlocfilehash: f36b206ff015511dea7369617febe9220282bbe5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65069043"
 ---
 # <a name="azure-container-registry-skus"></a>Skladové položky registru kontejnerů Azure
 
 Azure Container Registry (ACR) je k dispozici v několika úrovních služeb, označované jako skladové položky. Tyto skladové položky poskytují předvídatelné ceny a několik možností, zarovnání struktury kapacitu a využití privátního registru Dockeru v Azure.
 
-| Skladová jednotka (SKU) | Spravované | Popis |
+| Skladová jednotka (SKU) | Spravovaní | Popis |
 | --- | :-------: | ----------- |
 | **Basic** | Ano | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové funkce jako Standard a Premium (jako je Azure Active Directory [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad), [obrázku odstranění][container-registry-delete], a [webhooky][container-registry-webhook]). Zahrnuté úložiště a propustnost bitové kopie jsou však nejvhodnější pro nižší scénáře použití. |
 | **Standard** | Ano | Standardními registry nabízí stejné funkce jako základní s zahrnuty vyšší propustnost úložiště a image. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |

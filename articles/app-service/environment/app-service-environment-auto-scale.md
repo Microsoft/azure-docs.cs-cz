@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955964"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatické škálování a App Service Environment v1
@@ -93,7 +93,7 @@ Frank je velmi dobře známé s aplikací. Ví, že špičku zátěže jsou mezi
 |  | |
 | **Pravidlo automatického škálování (vertikálně navýšit kapacitu)** |**Pravidlo automatického škálování (vertikálně navýšit kapacitu)** |
 | **prostředek:** Výrobní (App Service Environment) |**prostředek:** Výrobní (App Service Environment) |
-| **Metrika:** % CPU |**Metrika:** % CPU |
+| **Metrika:** VYUŽITÍ PROCESORU % |**Metrika:** VYUŽITÍ PROCESORU % |
 | **Operace:** Více než 60 % |**Operace:** Větší než 80 % |
 | **Doba trvání:** 5 minut |**Doba trvání:** 10 minut |
 | **Časová agregace:** Průměr |**Časová agregace:** Průměr |
@@ -102,7 +102,7 @@ Frank je velmi dobře známé s aplikací. Ví, že špičku zátěže jsou mezi
 |  | |
 | **Pravidlo automatického škálování (Škálovací dolů)** |**Pravidlo automatického škálování (Škálovací dolů)** |
 | **prostředek:** Výrobní (App Service Environment) |**prostředek:** Výrobní (App Service Environment) |
-| **Metrika:** % CPU |**Metrika:** % CPU |
+| **Metrika:** VYUŽITÍ PROCESORU % |**Metrika:** VYUŽITÍ PROCESORU % |
 | **Operace:** Méně než 30 % |**Operace:** Méně než 20 % |
 | **Doba trvání:** 10 minut |**Doba trvání:** 15 minut |
 | **Časová agregace:** Průměr |**Časová agregace:** Průměr |
@@ -209,7 +209,7 @@ V tomto scénáři Frank ví, že míra chyb zvyšuje po dosažení front-endů 
 |  |
 | **Pravidlo automatického škálování (vertikálně navýšit kapacitu)** |
 | **prostředek:** Front-endový fond |
-| **Metrika:** % CPU |
+| **Metrika:** VYUŽITÍ PROCESORU % |
 | **Operace:** Více než 60 % |
 | **Doba trvání:** 20 minut |
 | **Časová agregace:** Průměr |
@@ -218,7 +218,7 @@ V tomto scénáři Frank ví, že míra chyb zvyšuje po dosažení front-endů 
 |  |
 | **Pravidlo automatického škálování (Škálovací dolů)** |
 | **prostředek:** Fond pracovních procesů 1 |
-| **Metrika:** % CPU |
+| **Metrika:** VYUŽITÍ PROCESORU % |
 | **Operace:** Méně než 30 % |
 | **Doba trvání:** 20 minut |
 | **Časová agregace:** Průměr |

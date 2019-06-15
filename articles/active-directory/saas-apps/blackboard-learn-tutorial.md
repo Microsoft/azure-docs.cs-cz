@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60aacc3d4d5743187ec826fb9f544488171b1285
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 26d32c0ed471170dac3fa791ef5a77feef67b051
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Kurz: Integrace Azure Active Directory s další Tabule
 
@@ -54,7 +54,7 @@ Chcete-li konfigurovat integraci Tabule informace do služby Azure AD, přidáte
 
 **Pokud chcete přidat další Tabule z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -214,7 +214,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v další Tabule. Tabule další aplikace podporovat zřizování uživatelů čas. Ujistěte se, že jste nakonfigurovali deklarace identity, jak je popsáno v části **konfigurace služby Azure AD jednotného přihlašování**
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

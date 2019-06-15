@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60313640"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Správa záznamů Dynamics 365 s Azure Logic Apps
@@ -44,7 +44,7 @@ Nejprve přidejte triggerem Dynamics 365, který se aktivuje, když se objeví n
 
 1. Do vyhledávacího pole zadejte jako filtr "Dynamics 365". V tomto příkladu v seznamu triggerů vyberte tento trigger: **Při vytvoření záznamu**
 
-   ![Vybrat trigger](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
+   ![Výběr triggeru](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
 1. Pokud se zobrazí výzva k přihlášení k Dynamics 365, přihlaste se hned.
 
@@ -78,7 +78,7 @@ Teď přidejte akci Dynamics 365, který se vytvoří úkol záznam pro nový z�
    | **Název entity** | Ano | Entita, ve kterém chcete vytvořit záznam, třeba "Úloh" |
    | | |
 
-   ![Detaily akce](./media/connectors-create-api-crmonline/action-details.png)
+   ![Podrobnosti akce](./media/connectors-create-api-crmonline/action-details.png)
 
 1. Když **subjektu** pole se zobrazí v akci, klikněte do **subjektu** pole, zobrazí se seznam dynamického obsahu. Z tohoto seznamu vyberte pole hodnoty pro zahrnutí v záznamu úlohy spojené s nový záznam zájemce:
 

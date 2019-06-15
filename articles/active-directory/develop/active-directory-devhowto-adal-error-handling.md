@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 652175e99c800b8e4aa69c639f0bdb9aba838987
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544651"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL) pro zpracování chyb
@@ -52,7 +52,7 @@ Existuje sada chyby vygenerované nástrojem operačního systému, může být 
 
 Zásadním způsobem existují dva případy AcquireTokenSilent chyb:
 
-| Případ | Popis |
+| případ | Popis |
 |------|-------------|
 | **Případ 1**: Došlo k chybě je možné přeložit pomocí interaktivnímu přihlášení | Chyby způsobené chybějící platné tokeny je nutné interaktivní žádosti. Konkrétně vyhledávání v mezipaměti a tokenu vypršela platnost nebo neplatná aktualizace vyžadují volání rozhraní AcquireToken vyřešit.<br><br>V těchto případech koncový uživatel musí být vyzváni k přihlášení. Aplikace můžete provádět interaktivní žádosti okamžitě po interakce s koncovým uživatelem (například klepnutím tlačítko Přihlásit) nebo novější. Výběr závisí na požadované chování aplikace.<br><br>Zobrazit kód v následující části pro tento konkrétní případ a chyb, které ji diagnostikovat.|
 | **Případ 2**: Chyba není možné přeložit pomocí interaktivnímu přihlášení | Síť a přechodná nebo dočasná chyby nebo jiné chyby, provádí požadavek interaktivní AcquireToken problém nevyřeší. Zbytečné interaktivní výzvy k přihlášení můžete také frustrovat koncovým uživatelům. ADAL automaticky pokusí jednoho opakování pro většinu chyb v AcquireTokenSilent selhání.<br><br>Klientská aplikace může také pokusí zkuste to znovu později, ale kdy a jak na to závisí na chování aplikace a činnost koncového uživatele požadované. Aplikace například můžete provést AcquireTokenSilent zkuste to znovu za pár minut, nebo v reakci na určitou akci koncového uživatele. Okamžité opakování způsobí aplikace dochází k omezení a nesmí se pokusit.<br><br>Dalším pokusem služeb při selhání ke stejné chybě neznamená, že klient by měl provést požadavek interaktivní pomocí AcquireToken, jako chyba nevyřeší.<br><br>Zobrazit kód v následující části pro tento konkrétní případ a chyb, které ji diagnostikovat. |

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 44d5ce3e194c873a564039934f518cb3a0e142e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 2387f2546afa9d5af2cb909a1e6a2179548e3b5a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497180"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053325"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace Azure Application Gateway a Firewall webových aplikací z v1 na v2
 
@@ -96,7 +96,7 @@ Spuštění skriptu:
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:  Vyžaduje** – to je adresní prostor IP adres, který jste přidělili (nebo chcete přidělit) pro novou podsíť, která obsahuje vaše nová brána v2. To je třeba zadat v notaci CIDR. Příklad: 10.0.0.0/24. Nemusíte předem vytvářet tuto podsíť. Skript vytvoří ho za vás, pokud neexistuje.
+   * **subnetAddressRange: [String]:  Vyžaduje** – to je adresní prostor IP adres, který jste přiřadili (nebo chcete přidělit) pro novou podsíť, která obsahuje vaše nová brána v2. To je třeba zadat v notaci CIDR. Příklad: 10.0.0.0/24. Nemusíte předem vytvářet tuto podsíť. Skript vytvoří ho za vás, pokud neexistuje.
    * **appgwName: [String]: Volitelné**. Toto je řetězec, který chcete použít jako název pro novou bránu Standard_v2 nebo WAF_v2 zadáte. Pokud tento parametr nezadáte, název existující v1 brány se použije s příponou *_v2* připojí.
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: Volitelné**.  Čárkou oddělený seznam PSApplicationGatewaySslCertificate objekty, které vytvoříte pro reprezentaci ze brána v1 certifikáty SSL musí být odeslán do nové brány v2. Pro každý z vašich certifikáty SSL, které jsou nakonfigurované pro standardní verze 1 nebo v1 brány WAF, můžete vytvořit nový objekt PSApplicationGatewaySslCertificate prostřednictvím `New-AzApplicationGatewaySslCertificate` příkaz je vidět tady. Potřebujete cestu k souboru certifikátu protokolu SSL a heslo.
 
@@ -117,11 +117,11 @@ Spuštění skriptu:
 
       Vytvoření seznamu objektů PSApplicationGatewayTrustedRootCertificate najdete v tématu [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [String]: Volitelné**. Konkrétní privátní IP adresu, kterou chcete přidružit k nové bráně v2.  Toto musí být ze stejné virtuální síti, přidělit nový brány v2. Pokud není zadaný, skript přiděluje privátní IP adresy pro bránu v2.
-    * **publicIpResourceId: [String]: Volitelné**. ResourceId prostředek veřejné IP adresy ve vašem předplatném, které chcete přidělit k nové bráně v2. Pokud není zadaný, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s *- IP* připojí.
+    * **publicIpResourceId: [String]: Volitelné**. ResourceId prostředek veřejné IP adresy (standardní SKU) v rámci vašeho předplatného, které chcete přidělit k nové bráně v2. Pokud není zadaný, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s *- IP* připojí.
    * **validateMigration: [přepínače]: Volitelné**. Tento parametr použijte, pokud chcete skript provádět některé základní konfigurace porovnání ověření po vytvoření brány v2 a kopii konfigurace. Ve výchozím nastavení nebude ověřen.
    * **enableAutoScale: [přepínače]: Volitelné**. Tento parametr použijte, pokud chcete skript, který chcete povolit automatické škálování na novou bránu v2 po jeho vytvoření. Standardně je zakázáno automatické škálování. Můžete vždy ručně ji povolit později na nově vytvořený v2 brány.
 
-1. Spusťte skript pomocí příslušné parametry.
+1. Spusťte skript pomocí příslušné parametry. Může trvat 5 až sedm minut na dokončení.
 
     **Příklad**
 
@@ -176,7 +176,11 @@ Ne. Skript Azure Powershellu migruje pouze konfigurace. Skutečný provoz migrac
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Má nová brána v2 vytvořen skriptem prostředí Azure PowerShell správnou zpracovat veškerý provoz, který je aktuálně poskytovaný mám v1 bránu?
 
-Skript Azure Powershellu vytvoří novou bránu v2 s odpovídající velikost pro zpracování provozu na existující bránu V1. Automatické škálování je ve výchozím nastavení zakázané, ale při spuštění skriptu můžete povolit automatické škálování.
+Skript Azure Powershellu vytvoří novou bránu v2 s odpovídající velikost pro zpracování provozu na existující bránu v1. Automatické škálování je ve výchozím nastavení zakázané, ale při spuštění skriptu můžete povolit automatické škálování.
+
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Jsem nakonfiguroval Moje brány v1 odeslat protokoly do služby Azure storage. Skript replikovat tuto konfiguraci pro v2 také?
+
+Ne. Skript není replikovat tuto konfiguraci pro v2. Musíte přidat konfiguraci protokolu samostatně k bráně migrované v2.
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Můžu narazili na některé problémy s pomocí tohoto skriptu. Jak získám pomoc?
   

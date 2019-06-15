@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61388301"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Další informace o zřízení nových tenantů a jejich registrace v katalogu
@@ -84,7 +84,7 @@ Abyste pochopili, jak aplikace Wingtip Tickets implementované zřizování nov�
    * **$VenueType** = jeden z míst předdefinované typy: _blues, classicalmusic, dance, jazz, judo, zajišťující racing, multipurpose, opera, rockmusic, soccer_.
    * **$DemoScenario** = **1**, *zřizování jednoho tenanta*.
 
-2. Pro přidání zarážky, umístěte kurzor kdekoli na řádek, který říká *New-Tenant '*. Stiskněte klávesu F9.
+2. Pro přidání zarážky, umístěte kurzor kdekoli na řádek, který říká *New-Tenant '* . Stiskněte klávesu F9.
 
    ![Zarážky](media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 

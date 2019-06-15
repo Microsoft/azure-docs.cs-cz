@@ -13,10 +13,10 @@ ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60331374"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncové body služeb virtuální sítě a pravidel pro databázové servery
@@ -209,7 +209,7 @@ PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z ú
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
     
-   1. Vytvoření přihlašovacích údajů s rozsahem databáze s **IDENTITY = "Identita spravované služby"**:
+   1. Vytvoření přihlašovacích údajů s rozsahem databáze s **IDENTITY = "Identita spravované služby"** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -248,7 +248,7 @@ Chyba připojení 40914 má vztah k *pravidel virtuální sítě*, jak je určen
 
 ### <a name="error-40914"></a>Chyba 40914
 
-*Text zprávy:* Nejde otevřít server "*[název_serveru]*' požadovaný v přihlášení. Klient není povolen přístup k serveru.
+*Text zprávy:* Nejde otevřít server " *[název_serveru]* ' požadovaný v přihlášení. Klient není povolen přístup k serveru.
 
 *Popis chyby:* Klient je v podsíti, která má koncové body serveru virtuální sítě. Ale nemá žádné pravidlo virtuální sítě, která uděluje k podsíti práva ke komunikaci s databází SQL serveru Azure SQL Database.
 

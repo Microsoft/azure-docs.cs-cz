@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60246227"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace Azure AD Connect: Principy výchozí konfigurace
@@ -220,7 +220,7 @@ Priorita pro synchronizační pravidla nastavena ve skupinách pomocí Průvodce
 ### <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
 Teď už máte dostatek informací o pravidel tak, aby měli pochopit, jak služba konfigurace pracuje s různá pravidla synchronizace. Když se podíváte na uživatele a atributy, které se poskytly úložišti metaverse, pravidla se použijí v uvedeném pořadí:
 
-| Name | Poznámka |
+| Název | Komentář |
 |:--- |:--- |
 | V ze služby AD – připojení uživatele |Pravidla pro připojení k objekty prostor konektoru s úložiště metaverse. |
 | V ze služby AD – povolené uživatelské účty |Atributy vyžadované pro přihlášení ke službě Azure AD a Office 365. Chceme, aby tyto atributy z povolený účet. |

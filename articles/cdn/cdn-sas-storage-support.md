@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60324100"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN pomocí SAS
@@ -136,7 +136,7 @@ Protože SAS parametry nejsou viditelné pro Azure CDN, Azure CDN nelze změnit 
 | Název parametru SAS | Popis |
 | --- | --- |
 | Start | Čas, který Azure CDN získáte přístup k souboru objektu blob. Z důvodu hodin zkreslit (dorazí signál hodiny v různou dobu pro různé součásti), zvolte čas o 15 minut dřívější, pokud chcete asset bude okamžitě k dispozici. |
-| Konec | Doba, po jejímž uplynutí Azure CDN už mít přístup k souboru objektu blob. Dříve soubory uložené do mezipaměti ve službě Azure CDN, jsou stále přístupné. Pokud chcete řídit dobu vypršení platnosti souboru, nastavte čas odpovídající vypršení platnosti tokenu zabezpečení Azure CDN nebo odstranit i asset. |
+| End | Doba, po jejímž uplynutí Azure CDN už mít přístup k souboru objektu blob. Dříve soubory uložené do mezipaměti ve službě Azure CDN, jsou stále přístupné. Pokud chcete řídit dobu vypršení platnosti souboru, nastavte čas odpovídající vypršení platnosti tokenu zabezpečení Azure CDN nebo odstranit i asset. |
 | Povolené IP adresy | Volitelné. Pokud používáte **Azure CDN od Verizonu**, tento parametr lze nastavit na rozsahy definované v [Azure CDN od Verizonu rozšíření rozsahy IP adres serveru Edge](/azure/cdn/cdn-pop-list-api). Pokud používáte **Azure CDN od Akamai**, nelze nastavit parametr rozsahy IP, protože nejsou statické IP adresy.|
 | Povolené protokoly | Protokol povolen pro žádost vytvořenou s podpisem SAS účtu. Nastavení protokolu HTTPS se doporučuje.|
 

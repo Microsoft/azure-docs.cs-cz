@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108886"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co je Azure Active Directory Identity Protection (Aktualizovat)?
 
@@ -56,7 +56,7 @@ Reakce na ně, Azure AD Identity Protection vám dává možnost:
 
  
 
-Azure AD Identity Protection je funkce Azure Active Directory Premium P2, která vám umožní nakonfigurovat zásady, které automaticky reagují, když dojde k ohrožení identity uživatele nebo když je někdo jiný než vlastník účtu se pokouší přihlásit pomocí svých Identita. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup k dispozici službou Azure AD, můžete buď automaticky blokovat přístup nebo inicializace zmírňující opatření, jako je například resetování hesla nebo vynucení služby Multi-Factor authentication. Kromě toho Identity Protection poskytuje možnosti monitorování a vytváření sestav získat podrobnější přehled řízení rizik a potenciální ohrožení ve vaší organizaci. 
+Azure AD Identity Protection je funkce Azure Active Directory Premium P2, která vám umožní nakonfigurovat zásady, které automaticky reagují, když dojde k ohrožení identity uživatele nebo když je někdo jiný než vlastník účtu se pokouší přihlásit pomocí svých Identita. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup poskytuje Azure AD, můžete buď automaticky blokovat přístup nebo inicializace zmírňující opatření, jako je například resetování hesla nebo vynucení služby Multi-Factor authentication. Kromě toho Identity Protection poskytuje možnosti monitorování a vytváření sestav získat podrobnější přehled řízení rizik a potenciální ohrožení ve vaší organizaci. 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
@@ -67,13 +67,13 @@ Azure AD Identity Protection zjistí následujících rizikových událostí:
 
  
 
-| Typ rizikové události | Popis | Typ detekce |
+| Typ rizikové události | Popis | Typ zjištění |
 | ---             | ---         | ---            |
-| Neobvyklá cesta | Přihlášení z neobvyklé umístění podle uživatele poslední přihlášení. | Offline |
-| Anonymní IP adresa | Přihlášení z anonymní IP adresy (například: Tor prohlížeče, programu anonymizer VPN). | V reálném čase |
+| Atypické cesty | Přihlášení z neobvyklé umístění podle uživatele poslední přihlášení. | Offline |
+| Anonymní IP adresy | Přihlášení z anonymní IP adresy (například: Tor prohlížeče, programu anonymizer VPN). | V reálném čase |
 | Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastnosti, které nejsou zaznamenali nedávno pro daného uživatele. | V reálném čase |
-| IP adresy související s malwarem | Přihlášení z IP adresy propojené malwaru | Offline |
-| Úniku přihlašovacích údajů | Tato riziková událost znamená, že unikly platné přihlašovací údaje uživatele. | Offline |
+| Malware propojené IP adresa | Přihlášení z IP adresy propojené malwaru | Offline |
+| Úniku přihlašovacích údajů | Tato riziková událost označuje, že byl úniku platné přihlašovací údaje uživatele | Offline |
 
 
 
@@ -110,7 +110,7 @@ Riziko uživatele představuje pravděpodobnost, že dojde k ohrožení danou id
 
 Riziko uživatele se vypočte tak, že vzhledem k tomu všechna rizika spojená s uživatelem:
 
-- Všechna riziková přihlášení
+- Všechny riziková přihlášení
 - Všechny rizikové události není propojená se u přihlášení
 - Aktuální rizika uživatele
 - Všechny rizikové propouštění nebo nápravy akce prováděné na uživatele, pokladny data
@@ -153,7 +153,7 @@ Pojďme se podívat na příklad zaměstnanec společnosti Contoso.
 
 2. Azure AD zjistí, že zaměstnanec je přihlášení z anonymní IP adresy, aktivuje úroveň střední riziko přihlášení. 
 
-3. Zaměstnanec je vystaven výzvu k MFA, protože společnosti Contoso IT správce nakonfiguroval zásady podmíněného přístupu Identity Protection rizika přihlášení. Tato zásada vyžaduje vícefaktorové ověřování pro střední a vyšší riziko přihlášení. 
+3. Zaměstnanec je vystaven výzvu k MFA, protože správce společnosti Contoso IT nakonfigurované Identity Protection přihlaste riziko zásady podmíněného přístupu. Tato zásada vyžaduje vícefaktorové ověřování pro střední a vyšší riziko přihlášení. 
 
 4. Zaměstnanec předává řádku MFA a má přístup k Exchangi Online a jejich úroveň rizika uživatele se nemění. 
 
@@ -214,7 +214,7 @@ Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Activ
 | --- | --- | --- | --- |
 | Zásady rizik uživatelů | Ano | Ne | Ne |
 | Zásady rizik přihlašování | Ano | Ne | Ne |
-| Sestava o rizikových uživatelích | Úplný přístup | Omezené informace | Omezené informace |
+| Sestava rizikových uživatelů | Úplný přístup | Omezené informace | Omezené informace |
 | Sestava rizikových přihlášení | Úplný přístup | Omezené informace | Omezené informace |
 | Zásady registrace MFA | Ano | Ne | Ne |
 

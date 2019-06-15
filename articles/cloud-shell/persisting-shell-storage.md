@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
 ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60200183"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
@@ -70,7 +70,7 @@ Sdílené složky budou nadále existovat, dokud je neodstraníte ručně. Cloud
 ![Spuštění "clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> I když spustíte tento příkaz neodstraní všechny prostředky, ručně odstranit skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na službě Cloud Shell vymaže váš `$Home` image disku adresář a všechny soubory ve sdílené složce. Tato akce je nevratná
+> I když spustíte tento příkaz neodstraní všechny prostředky, ručně odstranit skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na službě Cloud Shell vymaže váš `$Home` image disku adresář a všechny soubory ve sdílené složce. Tuto akci nejde vrátit zpět.
 
 ### <a name="list-clouddrive"></a>Seznam `clouddrive`
 Chcete-li zjistit, které sdílenou složku je připojený jako `clouddrive`, spusťte `df` příkaz. 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128562"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Testování výkonu cloudové služby místně v emulátoru Azure Compute pomocí sady Visual Studio Profiler
@@ -31,7 +31,7 @@ Můžete také chtít profilování aplikace místně v emulátoru služby compu
 Tento článek se věnuje metodě profilování pomocí vzorkování procesoru, která se dá dělat místně v emulátoru. Vzorkování procesoru je metoda profilování, která není velmi nežádoucí. V intervalech určené vzorkování profileru pořídí snímek zásobníku volání. Data se shromažďují po určitou dobu a zobrazí v sestavě. Tato metoda profilování ukazuje kde ve výpočetně náročné aplikaci většina práce procesoru se provádí.  Získáte tak možnost se zaměřit na "kritické cestě" kde je vaše aplikace spotřebuje většinu času.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurace sady Visual Studio pro profilaci
-Nejprve se pár možností konfigurace sady Visual Studio, které můžou být užitečné při profilování. Dávat smysl profilování sestavy, budete potřebovat symboly (soubory PDB) pro aplikace a také symboly pro systémové knihovny. Bude potřeba Ujistěte se, že odkazují na servery symbolů k dispozici. K tomu, na **nástroje** nabídku v sadě Visual Studio, zvolte **možnosti**, klikněte na tlačítko **ladění**, pak **symboly**. Ujistěte se, že servery symbolů společnosti Microsoft je uveden v části **Symbol umístění souborů (.pdb)**.  Je také možné odkazovat https://referencesource.microsoft.com/symbols, který může mít soubory dalších symbolů.
+Nejprve se pár možností konfigurace sady Visual Studio, které můžou být užitečné při profilování. Dávat smysl profilování sestavy, budete potřebovat symboly (soubory PDB) pro aplikace a také symboly pro systémové knihovny. Bude potřeba Ujistěte se, že odkazují na servery symbolů k dispozici. K tomu, na **nástroje** nabídku v sadě Visual Studio, zvolte **možnosti**, klikněte na tlačítko **ladění**, pak **symboly**. Ujistěte se, že servery symbolů společnosti Microsoft je uveden v části **Symbol umístění souborů (.pdb)** .  Je také možné odkazovat https://referencesource.microsoft.com/symbols, který může mít soubory dalších symbolů.
 
 ![Možnosti symbolů][4]
 

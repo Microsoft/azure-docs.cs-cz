@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 17fead25840e45f98478a6eb6c146bcc261dfe75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2907b5be7f8d5fda3d510484179e80b065ab64b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074898"
 ---
 # <a name="live-event-states-and-billing"></a>Živé události stavů a fakturace
 
 Ve službě Azure Media Services, živá událost začne fakturace jako jeho stav přejde do **systémem**. Pokud chcete zastavit živá událost z fakturace, budete muset zastavit živá událost.
 
-Při **LiveEventEncodingType** na vaše [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) se nastaví na standardní, automaticky nevypne živá událost, která je stále v Media Services **systémem** stavu 12 hodin po ztratí vstupní kanál a neexistují žádné **Live výstup**s systémem. Však budou i nadále se vám účtovat čas živá událost byla v **systémem** stavu.
+Při **LiveEventEncodingType** na vaše [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) nastavená na úroveň Standard nebo Premium1080p, automaticky nevypne živá událost, která je stále v Media Services **systémem** stavu 12 hodin poté, co dojde ke ztrátě vstupní kanál a neexistují žádné **Live výstup**s systémem. Však budou i nadále se vám účtovat čas živá událost byla v **systémem** stavu.
 
 ## <a name="states"></a>Stavy
 

@@ -3,18 +3,18 @@ title: Konfigurace kontejnery – detekce anomálií
 titleSuffix: Azure Cognitive Services
 description: Detekce anomálií kontejneru běhové prostředí je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Tento kontejner má několik požadovaná nastavení, společně s pár volitelná nastavení.
 services: cognitive-services
-author: aahill
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: anomaly-detection
 ms.topic: article
-ms.date: 05/07/2019
-ms.author: aahi
-ms.openlocfilehash: 0d09ce29aa5431de3eb82e5d9fe7440d4e3352e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: 8e6f7e33bf8bae3bc76074093167650813d76a8b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026387"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073338"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Konfigurace kontejnery detekce anomálií
 
@@ -87,9 +87,9 @@ Detekce anomálií kontejnery nepoužívejte vstup nebo výstup připojí k ulo�
 
 Syntaxe umístění hostitele připojení se liší v závislosti na operačním systému hostitele. Kromě toho [hostitelský počítač](anomaly-detector-container-howto.md#the-host-computer)na umístění připojení nemusí být přístupné z důvodu konfliktu mezi oprávnění používat účet služby Docker a hostiteli připojit umístění oprávnění. 
 
-|Nepovinné| Název | Typ dat | Popis |
+|Nepovinné| Name | Typ dat | Popis |
 |-------|------|-----------|-------------|
-|Nepovolené| `Input` | String | Kontejnery detekce anomálií Nepoužívejte toto.|
+|Nepovoleno| `Input` | String | Kontejnery detekce anomálií Nepoužívejte toto.|
 |Nepovinné| `Output` | String | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad 

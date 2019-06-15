@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720996"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analýza protokolů Apache Hadoopu
@@ -32,22 +32,22 @@ Při vytváření clusteru služby HDInsight šest tabulky vytvářejí automati
 * ambariserverlog
 * ambariagentlog
 
-Soubor názvy tabulek jsou **u\<Název_clusteru > DDMonYYYYatHHMMSSsss\<název_tabulky >**.
+Soubor názvy tabulek jsou **u\<Název_clusteru > DDMonYYYYatHHMMSSsss\<název_tabulky >** .
 
 Tyto tabulky obsahují následující pole:
 
 * ClusterDnsName
 * Název komponenty
 * eventTimestamp
-* Hostitel
+* Host
 * MALoggingHash
-* Zpráva
+* Message
 * Ne
 * PreciseTimeStamp
 * Role
 * RowIndex
 * Tenant
-* ČASOVÉ RAZÍTKO
+* TIMESTAMP
 * TraceLevel
 
 ### <a name="tools-for-accessing-the-logs"></a>Nástroje pro přístup k protokoly
@@ -84,7 +84,7 @@ Teď můžete aplikaci Excel k filtrování a řazení podle potřeby. Můžete 
 #### <a name="use-visual-studio"></a>Použití Visual Studia
 **Použití sady Visual Studio**
 
-1. Otevřete sadu Visual Studio.
+1. Otevřít Visual Studio.
 2. Z **zobrazení** nabídky, klikněte na tlačítko **Průzkumníka cloudu**. Nebo jednoduše klikněte na tlačítko **CTRL +\, CTRL + X**.
 3. Z **Průzkumníka cloudu**vyberte **typy prostředků**.  Je k dispozici možnost **skupiny prostředků**.
 4. Rozbalte **účty úložiště**, výchozí účet úložiště pro váš cluster a potom **tabulky**.
@@ -142,7 +142,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
 * **Popis**: Server nemohl najít záznam požadovaný cluster.  
-* **Zmírnění dopadů**: Opakujte operaci.
+* **Zmírnění dopadů**: Zkuste operaci zopakovat.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
 * **Popis**: Název DNS clusteru *yourDnsName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
@@ -170,7 +170,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
 * **Popis**: Konfigurace clusteru neplatný. Nepovedlo se najít žádné definice data uzlu v velikost uzlu.  
-* **Zmírnění dopadů**: Opakujte operaci.
+* **Zmírnění dopadů**: Zkuste operaci zopakovat.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
 * **Popis**: Nepovedlo se odstranit nasazení clusteru  
@@ -190,7 +190,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 * **Popis**: Serveru se nepovedlo aktualizovat stav nasazení clusteru.  
-* **Zmírnění dopadů**: Opakujte operaci. Pokud se to stane více než jednou, obraťte se na šablony stylů CSS.
+* **Zmírnění dopadů**: Zkuste operaci zopakovat. Pokud se to stane více než jednou, obraťte se na šablony stylů CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
 * **Popis**: Cluster *yourClusterName* byla odstraněna jako součást údržby. Znovu prosím vytvořte cluster.
@@ -198,7 +198,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
 * **Popis**: Konfigurace clusteru neplatný. Požadované konfigurace hlavního uzlu se nenašla v velikosti uzlů.
-* **Zmírnění dopadů**: Opakujte operaci.
+* **Zmírnění dopadů**: Zkuste operaci zopakovat.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
 * **Popis**: Nejde vytvořit hostovanou službu *nameOfYourHostedService*. Zkuste prosím žádost.  
@@ -225,7 +225,7 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 * **Zmírnění dopadů**: Uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Popis**: Server zjistil interní chybu. Zkuste prosím žádost.  
+* **Popis**: Na serveru došlo k vnitřní chybě. Zkuste prosím žádost.  
 * **Zmírnění dopadů**: Zkuste požadavek.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation

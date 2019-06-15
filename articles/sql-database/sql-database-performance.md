@@ -6,17 +6,16 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: danimir
+ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: digimobile
-origin.date: 01/25/2019
-ms.date: 02/25/2019
+manager: craigg
+ms.date: 01/25/2019
 ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60584803"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorování a zlepšování výkonnosti
@@ -41,10 +40,10 @@ Toto zobrazení poskytuje přehled výkonu vaší databáze a pomáhá s výkone
 
 ![Výkon](./media/sql-database-performance/performance.png)
 
-* **Doporučení** dlaždice obsahuje rozpis systémů doporučení pro vaši databázi pro optimalizaci (první tři doporučení jsou zobrazena pokud existují další). Kliknutím na tuto dlaždici přejdete na  **[doporučení k výkonu](#performance-recommendations)**. 
+* **Doporučení** dlaždice obsahuje rozpis systémů doporučení pro vaši databázi pro optimalizaci (první tři doporučení jsou zobrazena pokud existují další). Kliknutím na tuto dlaždici přejdete na  **[doporučení k výkonu](#performance-recommendations)** . 
 * **Aktivita optimalizace** dlaždice obsahuje souhrn probíhající a dokončená ladění akce pro vaši databázi, získáte rychlý přehled historii aktivita optimalizace. Kliknutím na tuto dlaždici přejdete na zobrazení ladění úplné historie pro vaši databázi.
 * **Automatického ladění** dlaždice ukazuje [konfiguraci automatického ladění](sql-database-automatic-tuning-enable.md) pro vaši databázi (optimalizace pro možnosti, které jsou automaticky použity k vaší databázi). Kliknutím na tuto dlaždici, otevře se dialogové okno Konfigurace služby automation.
-* **Dotazy na databázi** dlaždici se zobrazuje souhrn výkonu pro vaši databázi (celkové DTU využití a zároveň klauzuli top dotazy využívající prostředky). Kliknutím na tuto dlaždici přejdete na  **[Query Performance Insight](#query-performance-insight)**.
+* **Dotazy na databázi** dlaždici se zobrazuje souhrn výkonu pro vaši databázi (celkové DTU využití a zároveň klauzuli top dotazy využívající prostředky). Kliknutím na tuto dlaždici přejdete na  **[Query Performance Insight](#query-performance-insight)** .
 
 ## <a name="performance-recommendations"></a>Doporučení k výkonu
 
@@ -74,7 +73,7 @@ Azure SQL Database může automaticky ladění výkonu databáze s použitím [d
 
   ![řídicí panel výkon](./media/sql-database-query-performance/performance.png)
 
-Další informace o této stránce najdete v článku  **[postup použití nástroje Query Performance Insight](sql-database-query-performance.md)**.
+Další informace o této stránce najdete v článku  **[postup použití nástroje Query Performance Insight](sql-database-query-performance.md)** .
 
 ## <a name="additional-resources"></a>Další materiály
 

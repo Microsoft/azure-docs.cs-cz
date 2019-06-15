@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7bb07fa00babb00d1b2af03f89ae6857cb79f5f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108394"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Informace o zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy
 
@@ -49,7 +49,7 @@ Použijte bohatší ovládací prvky zásad, předtím, než se naváže připoj
 
 S [podmíněného přístupu](../conditional-access/overview.md), na jaký provoz je povolený přístup k back endovým aplikacím můžete definovat omezení. Můžete vytvořit zásady, které omezují přihlášení podle umístění, síla ověření a profil rizika pro uživatele.
 
-Můžete také použít podmíněný přístup ke konfiguraci zásad ověřování službou Multi-Factor Authentication, přidává další vrstvu zabezpečení k ověřování vašich uživatelů. Kromě toho vaše aplikace je také možné směrovat do Microsoft Cloud App Security přes podmíněný přístup Azure AD, aby zajišťoval sledování v reálném čase a ovládací prvky, prostřednictvím [přístup](https://docs.microsoft.com/cloud-app-security/access-policy-aad) a [relace](https://docs.microsoft.com/cloud-app-security/session-policy-aad) zásady
+Můžete také použít podmíněný přístup ke konfiguraci zásad ověřování službou Multi-Factor Authentication, přidává další vrstvu zabezpečení k ověřování vašich uživatelů. Kromě toho vaše aplikace je možné směrovat také k Microsoft Cloud App Security pomocí podmíněného přístupu Azure AD pro zajištění monitorování v reálném čase a ovládací prvky, prostřednictvím [přístup](https://docs.microsoft.com/cloud-app-security/access-policy-aad) a [relace](https://docs.microsoft.com/cloud-app-security/session-policy-aad) zásady
 
 ### <a name="traffic-termination"></a>Ukončení provozu
 

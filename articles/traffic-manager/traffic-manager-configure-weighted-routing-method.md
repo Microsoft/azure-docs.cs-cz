@@ -3,20 +3,21 @@ title: Konfigurace metody směrování provozu vážené kruhové dotazování p
 description: Tento článek vysvětluje, jak vyrovnávat zatížení provozu pomocí metody kruhové dotazování v Traffic Manageru
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: ef39c09d4fc411937fdd6f4b5b5aec491efd0c5f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: allensu
+ms.openlocfilehash: 4ca43bf958606a71911bf5d35f31e4fe0b342601
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113283"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071285"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu vážený v Traffic Manageru
 
@@ -34,7 +35,7 @@ Běžným vzorem metodu směrování provozu je sada identické koncové body, j
     1. Pro **nastavení metodu směrování provozu**, ověřte, zda je metodu směrování provozu **vážená**. Pokud není, klikněte na tlačítko **vážená** z rozevíracího seznamu.
     2. Nastavte **nastavení sledování koncových bodů** shodné pro všechny každý koncový bod v rámci tohoto profilu následujícím způsobem:
         1. Vyberte příslušné **protokol**a zadejte **Port** číslo. 
-        2. Pro **cesta** zadejte lomítkem */*. Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
+        2. Pro **cesta** zadejte lomítkem */* . Monitorování koncových bodů, musíte zadat cestu a název souboru. Dopředné lomítko "/" je platná položka pro relativní cestu a znamená, že se soubor nachází v kořenovém adresáři (výchozí).
         3. V horní části stránky klikněte na tlačítko **Uložit**.
 5. Otestujte změny v konfiguraci následujícím způsobem:
     1.  Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru a klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
 ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66123550"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager můžete používat ke správě kvóty koncový bod napříč klíče
@@ -308,7 +308,7 @@ Nadřazené profil služby Traffic Manager vytvořit a připojit dva podřízen�
     Úspěšná odpověď je stejnou odpověď v kroku 3.
 
 ### <a name="powershell-variables"></a>Proměnné prostředí PowerShell
-V předchozích částech, byly vytvořeny tří proměnných prostředí PowerShell: `$eastprofile`, `$westprofile`, `$parentprofile`. Tyto proměnné se použijí na konci konfigurace Traffic Manageru. Pokud jste se rozhodli vytvořit proměnné nebo zapomněli, nebo prostředí PowerShell vyprší časový limit, můžete použít rutinu Powershellu  **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)**, abyste mohli získat profil znovu a přiřadit ji ke Proměnná. 
+V předchozích částech, byly vytvořeny tří proměnných prostředí PowerShell: `$eastprofile`, `$westprofile`, `$parentprofile`. Tyto proměnné se použijí na konci konfigurace Traffic Manageru. Pokud jste se rozhodli vytvořit proměnné nebo zapomněli, nebo prostředí PowerShell vyprší časový limit, můžete použít rutinu Powershellu  **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** , abyste mohli získat profil znovu a přiřadit ji ke Proměnná. 
 
 Nahraďte položky v lomených závorkách `<>`, s správné hodnoty pro všechny tři profily, které potřebujete. 
 

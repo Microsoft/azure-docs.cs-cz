@@ -5,19 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077496"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
 Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měřítku a je určená pro zajištění propustnosti, škálovatelnosti a snadného použití. Funkce připojení ExpressRoute a Point-to-Site jsou v současnosti ve verzi Preview. CPE větev autoprovision zařízení a připojení v Azure virtuální sítě WAN. Tato zařízení jsou dostupná od stále rostoucího ekosystému partnerů pro SD-WAN a VPN. Zobrazit [Upřednostňovaný seznam partnerů](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Co je větev připojení k Azure virtuální sítě WAN?
+
+Připojení z větve zařízení v Azure virtuální sítě WAN, se skládá ze dvou tunelů IPsec aktivní/aktivní.
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Kteří poskytovatelé zařízení (partneři pro Virtual WAN) se podporují při uvedení na trh?
 
@@ -45,7 +49,7 @@ Ano, Virtual WAN zavádí nové prostředky Resource Manageru. Další informace
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Kolik zařízení VPN se může připojit k jednomu rozbočovači?
 
-Podporuje se až 1000 připojení na jeden virtuální rozbočovač. Každé připojení se skládá ze dvou tunelů, které jsou v konfiguraci aktivní–aktivní. Tyto tunely končí v Azure Virtual Hub vpngateway.
+Za virtuální rozbočovač se podporují až 1 000 připojení. Každé připojení se skládá ze dvou tunelů, které jsou v konfiguraci aktivní–aktivní. Tyto tunely končí v Azure Virtual Hub vpngateway.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Může se místní zařízení VPN připojit k více rozbočovačům?
 
@@ -105,7 +109,7 @@ Ano.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Jak se Virtual WAN liší od existující brány virtuální sítě Azure?
 
-Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Ve všech oblastech kromě oblasti USA – středozápad můžete v centru připojit až 1000 připojení poboček s rychlostí 2 GB/s. Pro oblast USA – středozápad je dostupná rychlost 20 GB/s. V budoucnu budeme postupně zavádět rychlost 20 GB/s i do dalších oblastí. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V každé oblasti můžete mít jeden rozbočovač, což znamená, že můžete připojit více než 1000 poboček mezi různými rozbočovači.
+Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Až 1 000 připojení pro větev se můžete spojit s 2 GB/s v Centru pro všechny oblasti s výjimkou oblasti západní střed. Pro oblast USA – středozápad je dostupná rychlost 20 GB/s. V budoucnu budeme postupně zavádět rychlost 20 GB/s i do dalších oblastí. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V jedné oblasti, což znamená, že připojíte více než 1000 větví napříč centry může mít jednoho rozbočovače.
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Jak se virtuální sítě WAN podporu SD-WAN zařízení?
 
@@ -118,6 +122,14 @@ Ne, Virtual WAN nevyžaduje ExpressRoute z každé lokality. Využívá standard
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Platí při použití Azure Virtual WAN nějaké omezení propustnosti sítě?
 
 Počet poboček je omezený na 1000 připojení na rozbočovač/oblast a celkem 2 Gb/s v rozbočovači. Výjimkou je oblast USA – středozápad, která nabízí celkem 20 GB/s. Rychlost 20 GB/s budeme postupně zavádět i do jiných oblastí.
+
+### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Kolik připojení k síti VPN virtuální sítě WAN centra podpory?
+
+Centra Azure virtuální sítě WAN dokáže podporovat až 1 000 připojení S2S a 10 000 připojení typu P2S současně.
+
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>Co je celková propustnost VPN tunelového připojení sítě VPN a připojení?
+
+Celkovou propustnost sítě VPN rozbočovače je až 20 GB/s na základě zvolené škálovací jednotky. Propustnost je sdílen všechna existující připojení.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Umožňuje Virtual WAN místním zařízením využívat paralelně několik poskytovatelů internetových služeb, nebo jde vždycky o jeden tunel VPN?
 

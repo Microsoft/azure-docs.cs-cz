@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150021"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Zahájení převzetí služeb účtu storage (preview)
@@ -55,7 +55,7 @@ K zahájení účtu převzetí služeb při selhání z portálu Azure portal, p
 
 3. Ověřte, že je nakonfigurovaný účet úložiště pro geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště jen pro čtení (RA-GRS). Pokud není, vyberte **konfigurace** pod **nastavení** a aktualizujete účet geograficky redundantní. 
 4. **Čas poslední synchronizace** vlastnost určuje, jak daleko sekundární je za z primárního serveru. **Poslední čas synchronizace** poskytuje odhad rozsahu ztráty dat, ke které dojde po dokončení převzetí služeb při selhání.
-5. Vyberte **připravit pro převzetí služeb při selhání (preview)**. 
+5. Vyberte **připravit pro převzetí služeb při selhání (preview)** . 
 6. Zkontrolujte dialogové okno pro potvrzení. Až budete připravení, zadejte **Ano** potvrzení a zahájit převzetí služeb při selhání.
 
     ![Snímek obrazovky znázorňující potvrzovací dialogové okno účtem převzetí služeb při selhání](media/storage-initiate-account-failover/portal-failover-confirm.png)

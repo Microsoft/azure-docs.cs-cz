@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
 ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60516030"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
@@ -118,7 +118,7 @@ Chcete-li přidat úložiště objektů Blob po vytvoření clusteru, postupujte
 
 1. Zadejte následující informace o vytvoření přihlašovacích údajů pro základní filer cloudu: 
 
-   | Pole | Value |
+   | Pole | Hodnota |
    | --- | --- |
    | Název přihlašovacího údaje | jakýkoli popisný název |
    | Typ služby | (vyberte přístupový klíč k úložišti Azure) |

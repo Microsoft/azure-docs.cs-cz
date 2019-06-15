@@ -10,12 +10,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069691"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisoru
 
@@ -61,7 +61,9 @@ Můžete přistupovat doporučení Advisoru jako *vlastníka*, *Přispěvatel*, 
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jaké prostředky služby Advisor poskytuje doporučení pro?
 
-Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti, služby application Gateway, App Services, SQL servery a mezipaměti Azure Redis.
+Advisor poskytuje doporučení pro službu Application Gateway, aplikační služby, sady dostupnosti, mezipaměti Azure, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database pro MariaDB, Azure ExpressRoute, službu Azure Cosmos DB, Azure public IP adresy, SQL Data Warehouse, SQL servery, účty úložiště, profily Traffic Manageru a virtuální počítače.
+
+Azure Advisor také obsahuje doporučení z [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) zahrnující doporučení pro další typy prostředků.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Můžete posunout nebo zavřít doporučení?
 

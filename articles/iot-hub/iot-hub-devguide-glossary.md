@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62119805"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
@@ -21,7 +21,7 @@ Tento článek uvádí některé běžné pojmy používané v článcích služ
 ## <a name="advanced-message-queueing-protocol"></a>Rozšířené zprávy protokolu zařazení do fronty
 [Pokročilé protokolu služby Řízení front zpráv (AMQP)](https://www.amqp.org/) je jeden z zasílání zpráv, které protokoly [služby IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o protokoly zasílání zpráv, které podporuje službu IoT Hub najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Automatická správa zařízení
+## <a name="automatic-device-management"></a>Správa automatického zařízení
 Automatická správa zařízení ve službě Azure IoT Hub umožňuje automatizovat mnoho opakovaných a složité úlohy správy flotily nebo velké zařízení přes celého jejich životního cyklu. Automatická správa zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definují požadovanou konfiguraci a nechat pokaždé, když se do rozsahu sem přišli aktualizaci zařízení služby IoT Hub.  Se skládá z [automatické konfigurace](iot-hub-auto-device-config.md) a [automatické nasazení IoT Edge](../iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="automatic-device-configuration"></a>Konfigurace automatického zařízení
@@ -67,7 +67,7 @@ Každé centrum IoT obsahuje integrovaný [koncový bod](iot-hub-devguide-endpoi
 ## <a name="cloud-gateway"></a>Cloudová brána
 Cloudová brána umožňuje připojení pro zařízení, která se nemůže připojit přímo na [služby IoT Hub](#iot-hub). Cloudové brány je hostované v cloudu rozdíl od [hraniční brána](#field-gateway) , který spustí místní do zařízení. Typické použití případu pro cloudové brány je provádět překlad protokolu pro vaše zařízení.
 
-## <a name="cloud-to-device"></a>Cloud-zařízení
+## <a name="cloud-to-device"></a>Cloud zařízení
 Odkazuje na zprávy odeslané ze služby IoT hub na připojené zařízení. Tyto zprávy jsou často, příkazy, které dáte pokyn, aby zařízení a provést akci. Další informace najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="configuration"></a>Konfigurace
@@ -93,7 +93,7 @@ V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), požadované
 ## <a name="desired-properties"></a>Požadované vlastnosti
 V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), požadované vlastnosti je dílčí část objektu dvojče zařízení, která se použije [ohlášené vlastnosti](#reported-properties) k synchronizaci konfigurace zařízení nebo podmínku. Požadované vlastnosti lze nastavit pouze [back endové aplikace](#back-end-app) a jsou dodržovat [aplikace pro zařízení s](#device-app).
 
-## <a name="device-to-cloud"></a>Zařízení-cloud
+## <a name="device-to-cloud"></a>Typu zařízení cloud
 Odkazuje na zprávy odeslané z připojených zařízení a [služby IoT Hub](#iot-hub). Tyto zprávy mohou být [datový bod](#data-point-message) nebo [interaktivní](#interactive-message) zprávy. Další informace najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Zařízení
@@ -129,7 +129,7 @@ Zřizování zařízení je proces přidávání počáteční [data zařízení
 ## <a name="device-twin"></a>Dvojče zařízení
 A [dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON, který ukládá informace o stavu zařízení jako jsou metadata, konfigurace a podmínky. [IoT Hub](#iot-hub) udržuje takové dvojče pro každé zařízení, zřídíte ve službě IoT hub. Dvojčata zařízení umožní synchronizaci [zařízení podmínky](#device-condition) a konfigurací mezi zařízením a řešení back-endu. Dvojčata zařízení k vyhledání konkrétních zařízení a zjistit stav dlouhotrvající operace se můžete dotazovat.
 
-## <a name="direct-method"></a>Přímá metoda
+## <a name="direct-method"></a>Přímé metody
 A [přímá metoda](iot-hub-devguide-direct-methods.md) je způsob, jakým můžete aktivovat metodu ke spuštění na zařízení prostřednictvím volání rozhraní API ve službě IoT hub.
 
 ## <a name="endpoint"></a>Koncový bod
@@ -232,7 +232,7 @@ Můžete použít [rozhraní REST API služby](https://docs.microsoft.com/rest/a
 ## <a name="shared-access-signature"></a>Sdílený přístupový podpis
 Sdílených přístupových podpisů (SAS) je mechanismus ověřování na základě zabezpečené hodnoty hash SHA-256 nebo identifikátory URI. Ověřování SAS má dvě součásti: _zásady sdíleného přístupu_ a _sdílený přístupový podpis_ (často označované jako token). Zařízení SAS používá k ověření pomocí služby IoT hub. [Back endové aplikace](#back-end-app) také používají SAS k ověření koncových bodů určených pro služby ve službě IoT hub. Obvykle zahrnují token SAS v [připojovací řetězec](#connection-string) , že aplikace používá k navázání připojení do služby IoT hub.
 
-## <a name="shared-access-policy"></a>Zásada sdíleného přístupu
+## <a name="shared-access-policy"></a>Zásady sdíleného přístupu
 Definuje zásady sdíleného přístupu oprávnění udělená každý, kdo má platný [primárním nebo sekundárním klíčem](#primary-and-secondary-keys) přidružená k této zásadě. Zásady sdíleného přístupu a klíčů můžete spravovat centra [portál](#azure-portal).
 
 ## <a name="simulated-device"></a>Simulované zařízení
@@ -247,7 +247,7 @@ Předplatné Azure je, kde probíhá fakturace. Každý prostředek Azure vytvo�
 ## <a name="system-properties"></a>Systémové vlastnosti
 V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), systémové vlastnosti jsou jen pro čtení a obsahují informace týkající se využití zařízení, jako je poslední aktivita čas a připojení stavu.
 
-## <a name="tags"></a>Značky
+## <a name="tags"></a>Tags
 V kontextu [dvojče zařízení](iot-hub-devguide-device-twins.md), klíčová slova jsou metadata zařízení uložené a načítají pomocí back-end řešení ve formě dokumentu JSON. Značky nejsou viditelné pro aplikace na zařízení.
 
 ## <a name="telemetry"></a>Telemetrická data

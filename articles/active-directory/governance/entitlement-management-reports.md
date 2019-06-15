@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64541537"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Zobrazit sestavy a protokoly ve správě služby Azure AD oprávnění (Preview)
@@ -44,7 +44,7 @@ ms.locfileid: "64541537"
 
     Zobrazí se seznam prostředků, které má uživatel přístup k. Zahrnuje přístup k balíčku, zásad a data.
 
-    ![Sestava přiřazení uživatelů](./media/entitlement-management-reports/user-assignments-report.png)
+    ![Sestava uživatelů spadajících pod přiřazení](./media/entitlement-management-reports/user-assignments-report.png)
 
 ## <a name="determine-the-status-of-a-users-request"></a>Zjistit stav požadavku na uživatele
 
@@ -62,7 +62,7 @@ Novou žádost o přijetí služby Azure AD zapíše záznamu auditu, ve kterém
 
 Azure AD se zapište záznamy auditu, probíhá požadavek, včetně:
 
-| Kategorie | Aktivita | Stav žádosti |
+| Category | Aktivita | Stav žádosti |
 | :---- | :------------ | :------------ |
 | `EntitlementManagement` | `Auto approve access package assignment request` | Žádost o nevyžaduje schválení |
 | `UserManagement` | `Create request approval` | Požadavek vyžaduje schválení |

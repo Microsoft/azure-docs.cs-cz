@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875805"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
@@ -105,7 +105,7 @@ Následující vlastnosti jsou podporovány v rámci `translator`  ->  `mappings
 
 ### <a name="alternative-column-mapping"></a>Mapování alternativních sloupce
 
-Můžete zadat kopírování aktivita -> `translator`  ->  `columnMappings` k mapování mezi daty tabulkové ve tvaru. V tomto případě je požadované pro vstupní a výstupní datové sady část "struktura". Podporuje mapování sloupce **mapování všech nebo podmnožinu sloupců v datové sadě zdroj "struktura" všech sloupců v datové sadě jímky "struktura"**. Následují chybových podmínek, za následek výjimku:
+Můžete zadat kopírování aktivita -> `translator`  ->  `columnMappings` k mapování mezi daty tabulkové ve tvaru. V tomto případě je požadované pro vstupní a výstupní datové sady část "struktura". Podporuje mapování sloupce **mapování všech nebo podmnožinu sloupců v datové sadě zdroj "struktura" všech sloupců v datové sadě jímky "struktura"** . Následují chybových podmínek, za následek výjimku:
 
 * Zdrojového úložiště dat dotazu, že výsledek nemá název sloupce, které je definováno v sekci "struktura" vstupní datové sady.
 * Úložiště dat jímky (Pokud se předem definované schéma) nemá název sloupce, které je definováno v sekci "struktura" výstupní datovou sadu.

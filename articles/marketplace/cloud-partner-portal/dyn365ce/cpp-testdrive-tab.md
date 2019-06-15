@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: 5bb5f39ef5f5bce09a8639ba9eedc6d042e60c1d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942370"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement aplikaci Test Drive karta
@@ -40,7 +40,7 @@ Následující tabulka popisuje pole k nastavení testovací verze pro vaši apl
 |    ---------                  |  ---------------                |
 |      Popis\*            |   Popište, co se dá dělat na vaše testovací verze. Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.  |
 |  Uživatelská příručka\*                |   Nahrajte uživatelská příručka pro vaši zákazníci můžou použít pro vás provedl možnostmi, testovací verze. Tento dokument musí být soubor PDF. |
-|  Test jednotky – ukázkové Video (volitelné) |  Můžete zadat video s návodem, vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Název</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
+|  Test jednotky – ukázkové Video (volitelné) |  Můžete zadat video s návodem, vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Name</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
 |   |   |
 
 
@@ -54,7 +54,7 @@ Kde pole mají k těmto účelům.  Povinná pole jsou uvést hvězdičkou (*).
 
 |      Pole                    |    Popis                  |
 |    ---------                  |  ---------------                |
-| Typ testu jednotky\*            | Zvolte **Microsoft hostované (Dynamics 365 for Customer Engagement)**.  |
+| Typ testu jednotky\*            | Zvolte **Microsoft hostované (Dynamics 365 for Customer Engagement)** .  |
 | Maximálního počtu současných testovací verze\*    | Počet souběžných instancí aktivní testovací verze v libovolném časovém okamžiku dobu. Každý uživatel bude využívat licence Dynamics, jejich Test Drive je aktivní, proto budete muset zajistit, že máte alespoň tolik Dynamics licencí k dispozici pro uživatele testovací verze. Doporučená hodnota 3 – 5.  |
 | Jednotka doba trvání testu (hodiny)\*   | Maximální počet hodin, po které budou aktivní pro instanci testovací verze daného uživatele. Po překročení tohoto období budou instance zrušit z vašeho tenanta. Doporučená hodnota 2 až 24 hodin v závislosti na složitosti vaší aplikace. Je-li spustit mimo časový limit a chcete znovu vyhodnotit, může uživatel vždy požádat jiného testovací verze.  |
 | Adresa URL instance\*                  | Adresa URL, které testovací verze se nejprve přejděte do. Toto je obvykle adresa URL instance Dynamics 365, který má vaše aplikace a ukázková data nainstalována.  |
@@ -62,7 +62,7 @@ Kde pole mají k těmto účelům.  Povinná pole jsou uvést hvězdičkou (*).
 | ID aplikace Azure AD\*               | Identifikátor GUID aplikace Azure AD  |
 | Klíč aplikace Azure AD\*              | Tajný kód aplikace Azure AD, například: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
 | Název Tenanta Azure AD\*          | Název tenanta Azure pro vaši instanci Dynamics 365. Použijte formát < tenantname. > onmicrosoft.com, například: `testdrive.onmicrosoft.com`  |
-| Adresa URL instance webové rozhraní API\*          | Adresa URL webového rozhraní API pro vaši instanci Dynamics 365. Tuto hodnotu můžete načíst tak, že přihlášení k vaší instanci Microsoft Dynamics 365 a přejdete na **nastavení** > **přizpůsobení** > **pro vývojáře Prostředky** > **Instance webové rozhraní API (zkopírujte tuto adresu URL)**. Příklad hodnoty: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
+| Adresa URL instance webové rozhraní API\*          | Adresa URL webového rozhraní API pro vaši instanci Dynamics 365. Tuto hodnotu můžete načíst tak, že přihlášení k vaší instanci Microsoft Dynamics 365 a přejdete na **nastavení** > **přizpůsobení** > **pro vývojáře Prostředky** > **Instance webové rozhraní API (zkopírujte tuto adresu URL)** . Příklad hodnoty: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
 | Název role\*                     | Název vlastní role zabezpečení Dynamics 365 vytvořili pro vaše testovací verze a přiřadí uživatelům při spuštění, například `testdriveuser`. |
 |  |  |
 

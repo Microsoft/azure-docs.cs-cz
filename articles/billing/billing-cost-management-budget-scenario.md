@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 03/13/2019
 ms.author: erikre
 ms.openlocfilehash: 4bf76ac0bdd59764815f18a40a3e243d7cf9d920
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60617121"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
@@ -125,7 +125,7 @@ Následující kroky jsou potřeba k vytvoření aplikace logiky, která bude pr
 
 Jakmile Azure nasadí vaši aplikaci logiky **návrhář pro Logic Apps** otevře a zobrazí okno s úvodním videa a běžně používané aktivační události.
 
-### <a name="add-a-trigger"></a>Přidat trigger
+### <a name="add-a-trigger"></a>Přidání triggeru
 
 Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Akce jsou všechny kroky, ke kterým dochází po aktivaci triggeru.
 

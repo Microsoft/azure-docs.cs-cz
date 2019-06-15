@@ -3,18 +3,18 @@ title: Prohlídka uživatelského rozhraní Azure IoT Central | Microsoft Docs
 description: Jako tvůrce se seznamte s klíčovými oblastmi uživatelského rozhraní Azure IoT Central, které umožňují vytvořit řešení IoT.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/31/2019
+ms.date: 06/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 53306b2087a47f5a61fc2a228e2d1f527127f746
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 56ff40cb2b103c620b880792571549e2bdb17064
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476313"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064363"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 

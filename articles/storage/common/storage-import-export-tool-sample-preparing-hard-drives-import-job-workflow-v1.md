@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320580"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
@@ -29,7 +29,7 @@ Tento příklad importuje následující data do účtu úložiště Azure okno 
   
 Úlohy importu importuje těchto dat do následujících cílů v rámci účtu úložiště:  
   
-|Zdroj|Cílový virtuální adresář nebo objekt blob|  
+|source|Cílový virtuální adresář nebo objekt blob|  
 |------------|-------------------------------------------|  
 |H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  
@@ -103,7 +103,7 @@ Chcete-li nastavit tyto vlastnosti, vytvořte textový soubor, `c:\WAImportExpor
 </Properties>  
 ```
   
-Nyní jste připraveni ke spuštění nástroje Import/Export Azure Příprava dva pevné disky. Poznámky:  
+Nyní jste připraveni ke spuštění nástroje Import/Export Azure Příprava dva pevné disky. Všimněte si, že:  
   
 -   První disk připojený jako jednotky X.  
   

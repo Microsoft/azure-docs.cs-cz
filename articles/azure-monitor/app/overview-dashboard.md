@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mbullwin
 ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66497150"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights přehled řídicího panelu
@@ -37,7 +37,7 @@ Výběr časového rozsahu zjednodušenou topologickou jednoduché rozhraní jed
 
 Celkový výkon se výrazně zvýšil. Máte přístup jedním kliknutím k oblíbených funkcí, jako je **hledání** a **Analytics**. Každý výchozí dynamicky aktualizuje dlaždice klíčových ukazatelů výkonu poskytuje podrobné informace o odpovídající funkce Application Insights. Další informace o selhání vyberte požadavky **selhání** pod **prošetření** hlavičky:
 
-![selhání](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
+![Selhání](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Řídicí panel aplikací
 

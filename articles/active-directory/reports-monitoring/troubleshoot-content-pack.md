@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 06/07/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284958"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807522"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s Azure Active Directory aktivity chyby balíčku obsahu protokolů 
 
@@ -39,7 +39,7 @@ Při práci s balíčkem obsahu Power BI pro Azure Active Directory (Azure AD), 
 
 Tento článek obsahuje informace o možných příčinách a jak tyto chyby opravit.
  
-## <a name="refresh-failed"></a>Aktualizace se nezdařila 
+## <a name="refresh-failed"></a>Aktualizace se nezdařila. 
  
 **Jak se zobrazí tato chyba**: E-mailu z Power BI nebo stavu selhání v historii aktualizace. 
 
@@ -47,7 +47,7 @@ Tento článek obsahuje informace o možných příčinách a jak tyto chyby opr
 | Příčina | K vyřešení |
 | ---   | ---        |
 | Aktualizujte chyby, které chyby může být způsobena přihlašovacích údajů uživatele, připojení k balíčku obsahu byly obnovit, ale není aktualizovaná. v nastavení připojení balíčku obsahu. | V Power BI, vyhledejte sadu dat odpovídající panel protokolů aktivity služby Azure AD (**protokoly aktivit Azure Active Directory**), zvolte naplánovat aktualizaci a pak zadejte svoje přihlašovací údaje Azure AD. |
-| Obnovení může selhat kvůli problémům s daty v základní balíčku obsahu. | [Lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Obnovení může selhat kvůli velké datové sady. | V současné době balíčku obsahu Azure AD s Power BI podporuje jenom malé datové sady (méně než 500,00 řádků) z důvodu určitých omezení po vypršení časového limitu pro v rámci služby Power BI. Pokud dojde k chybám omezování, nebo pokud se aktualizace nezdaří z důvodu vypršení časového limitu, může se pokouší o načtení velkou datovou sadu. Zkrácením časového období v dotazu a zkuste to znovu.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Nepovedlo se aktualizovat přihlašovací údaje ke zdroji dat 

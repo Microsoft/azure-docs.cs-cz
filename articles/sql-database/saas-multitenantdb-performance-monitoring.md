@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485400"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu horizontálně dělené databázi Azure SQL s více tenanty v aplikaci SaaS s více tenanty
@@ -98,7 +98,7 @@ Databázi s více tenanty SaaS aplikace Wingtip Tickets je SaaS aplikace a reál
 
 Pokud chcete monitorovat využití prostředků, která je výsledkem použití zatížení, otevřete portál na databázi s více tenanty **tenants1**, obsahující klienty:
 
-1. Otevřít [webu Azure portal](https://portal.azure.com) a přejděte na server *tenants1-mt –&lt;uživatele&gt;*.
+1. Otevřít [webu Azure portal](https://portal.azure.com) a přejděte na server *tenants1-mt –&lt;uživatele&gt;* .
 1. Posuňte se dolů a najděte databáze a klikněte na tlačítko **tenants1**. Tato horizontálně dělené databázi s více tenanty obsahuje všechny dosud vytvořené klienty.
 
 ![databáze grafu](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)

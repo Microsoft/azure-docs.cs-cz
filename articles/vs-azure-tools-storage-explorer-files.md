@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60456607"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
@@ -203,7 +203,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         ![Nahrání souborů](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
+        b. V dialogovém okně **Nahrát soubory** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Soubory** a vyberte soubory, které chcete nahrát.
 
         ![Přidání souborů](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         ![Nabídka Nahrát složku](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami (**...**) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
+        b. V dialogovém okně **Nahrát složku** vyberte tlačítko se třemi tečkami ( **...** ) na pravé straně textového pole **Složka** a vyberte složku, jejíž obsah chcete nahrát.
 
         c. Volitelně můžete zadat cílovou složku, do které se obsah vybrané složky nahraje. Pokud cílová složka neexistuje, vytvoří se.
 

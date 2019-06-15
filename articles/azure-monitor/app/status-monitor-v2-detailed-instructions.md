@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d0960c749d74903acc778c0f21d5c49f380195ae
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074160"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Stav monitorování v2: Podrobné pokyny
 
@@ -204,7 +204,7 @@ Další informace najdete v tématu [instaluje se modul PowerShell](https://docs
 
 ### <a name="option-2-unzip-and-import-nupkg-manually"></a>Option 2: Rozbalte a importovat nupkg ručně
 Nainstalujte ručně stažené modul prostředí PowerShell do adresáře PowerShell tak bude zjistitelné relacemi Powershellu.
-Další informace najdete v tématu [instaluje se modul PowerShell](https://docs.mircrosoft.com/powershell/developer/module/installing-a-powershell-module).
+Další informace najdete v tématu [instaluje se modul PowerShell](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
 Pokud instalujete modulu do žádného jiného adresáře, modul naimportovat ručně pomocí [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6).
 

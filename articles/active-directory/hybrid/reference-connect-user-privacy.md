@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60455758"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Ochrana osobních údajů uživatelů a Azure AD Connect 
@@ -71,7 +71,7 @@ Použijte následující kroky plánování skript ke spuštění každých 48 h
     ![Systém](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  V části nástroje pro správu, klikněte na **plánovat úkoly**.
-    ![Úkol](./media/reference-connect-user-privacy/gdpr3.png)
+    ![Úloha](./media/reference-connect-user-privacy/gdpr3.png)
 3.  V Plánovači úloh, klikněte pravým tlačítkem na **knihovna plán úloh** a klikněte na **vytvořit základní úlohy...**
 4.  Zadejte název pro novou úlohu a klikněte na tlačítko **Další**.
 5.  Vyberte **denní** pro aktivační událost úlohy a klikněte na kartu **Další**.

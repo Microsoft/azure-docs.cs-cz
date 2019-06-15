@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7de892a0851e556c5046fe4b3691f39b42a9d237
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65074752"
 ---
 # <a name="web-api-that-calls-web-apis---move-to-production"></a>Webové rozhraní API, která volá webové rozhraní API – Přesun do produkčního prostředí
@@ -28,7 +28,7 @@ Jakmile tokenu pro volání webových rozhraní API, které jste získali, můž
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 Teď, když znáte základy toho, jak volat webové rozhraní API z vašeho vlastního webového rozhraní API, vás může zajímat, tento kurz, který popisuje kód, který se má použít k sestavení chráněné webové rozhraní API volá webové rozhraní API.
 

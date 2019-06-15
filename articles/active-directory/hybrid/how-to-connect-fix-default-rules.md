@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067636"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Oprava upravené výchozí pravidla ve službě Azure AD Connect
@@ -176,11 +176,11 @@ Vyberte **náhledu...**
 
 V okně verze Preview vyberte **generovat ve verzi Preview** a **toku atributu importu** v levém podokně.
 
-![Preview](media/how-to-connect-fix-default-rules/default14.png)
+![Náhled](media/how-to-connect-fix-default-rules/default14.png)
  
 Tady, Všimněte si, nově přidané pravidlo spustí na objekt a nastavil `cloudFiltered` atribut na hodnotu true.
 
-![Preview](media/how-to-connect-fix-default-rules/default15a.png)
+![Náhled](media/how-to-connect-fix-default-rules/default15a.png)
  
 Pro porovnání upravené pravidlo s výchozí pravidlo, exportujte z pravidel samostatně jako textové soubory. Tato pravidla jsou exportovány jako soubor skriptu Powershellu. Můžete porovnat je pomocí jakékoli nástroj pro porovnání souborů (například nástroje windiff) zobrazíte změny. 
  

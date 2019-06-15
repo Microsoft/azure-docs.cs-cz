@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60788492"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatickým Škálováním v Azure
@@ -46,7 +46,7 @@ Pojďme se teď projděte si jednoduchý podrobný postup k vytvoření vaší p
   ![Nastavení škálování pro novou webovou aplikaci][5]
 1. Zadejte název pro nastavení škálování a potom klikněte na tlačítko **přidat pravidlo**. Všimněte si, že pravidla možností škálování, které se otevřou jako kontextovém podokně na pravé straně. Ve výchozím nastavení tím se nastaví možnost škálování vašeho počtu instancí o 1, pokud procento využití procesoru prostředku přesáhne 70 procent. Ponechte jejich výchozí hodnoty a klikněte na tlačítko **přidat**.
   ![Vytvoření nastavení škálování webové aplikace][6]
-1. Právě jste vytvořili první škálovací pravidla. Mějte na paměti, že uživatelského rozhraní doporučuje osvědčené postupy a uvádí, že "se doporučuje mít alespoň jeden škálování v pravidle." Postupujte následovně:
+1. Právě jste vytvořili první škálovací pravidla. Mějte na paměti, že uživatelského rozhraní doporučuje osvědčené postupy a uvádí, že "se doporučuje mít alespoň jeden škálování v pravidle." Postup:
 
     a. Klikněte na tlačítko **přidat pravidlo**.
 
@@ -133,3 +133,4 @@ Můžete se kdykoli vrátit k automatickému škálování kliknutím **povolit 
 [12]: ./media/autoscale-get-started/scale-definition-json.png
 [13]: ./media/autoscale-get-started/disable-autoscale.png
 [14]: ./media/autoscale-get-started/set-manualscale.png
+

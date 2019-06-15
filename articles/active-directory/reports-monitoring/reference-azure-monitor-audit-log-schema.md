@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60437069"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretace schéma protokolů auditu Azure AD ve službě Azure Monitor (preview)
@@ -153,7 +153,7 @@ Tento článek popisuje schéma protokolů auditu Azure Active Directory (Azure 
 | operationName | Název operace. |
 | operationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
 | category | V současné době *auditu* je jediná podporovaná hodnota. |
-| ID Tenanta | Klient identifikátor GUID, který je spojen s protokoly. |
+| tenantId | Klient identifikátor GUID, který je spojen s protokoly. |
 | resultType | Výsledek operace. Výsledkem může být *úspěch* nebo *selhání*. |
 | resultSignature |  Toto pole není mapován a můžete ho bezpečně ignorovat. | 
 | resultDescription | Další popis výsledku, pokud je k dispozici. | 
@@ -161,7 +161,7 @@ Tento článek popisuje schéma protokolů auditu Azure Active Directory (Azure 
 | callerIpAddress | IP adresa klienta, který vytvořil požadavek. | 
 | correlationId | Volitelný GUID, který je předán klientem. Může být snazší korelovat operací na straně klienta s operací na straně serveru, a to je užitečné, když sledujete protokoly, které jsou rozmístěny služby. |
 | identity | Identita z tokenu, který byl předložený při provedení žádosti. Identita může být uživatelský účet, účet system nebo instanční objekt služby. |
-| úroveň | Typ zprávy. K protokolům auditu na úrovni je vždy *informativní*. |
+| level | Typ zprávy. K protokolům auditu na úrovni je vždy *informativní*. |
 | location | Umístění datového centra. |
 | properties | Obsahuje seznam podporovaných vlastností, které se vztahují k protokolu auditu. Další informace najdete v následující tabulce. | 
 

@@ -1,28 +1,32 @@
 ---
-title: Pomocí HeadPose nastavte obličejový obdélník
+title: Použijte atribut HeadPose
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak pomocí atributu HeadPose automaticky otočit obličejový obdélník.
+description: Zjistěte, jak pomocí atributu HeadPose obličejový obdélník automaticky otočit nebo zjištění hlavní gesta ve videu, kanálu.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
-ms.topic: conceptual
-ms.date: 04/26/2019
+ms.topic: sample
+ms.date: 05/29/2019
 ms.author: pafarley
-ms.openlocfilehash: ddc5bc522c0d3ac258581f2a48a5c3b755302f01
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 168b4fce873206e39a32a83da3dc5509b431d6a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576499"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058572"
 ---
-# <a name="use-the-headpose-attribute-to-adjust-the-face-rectangle"></a>Pomocí atributu HeadPose upravit obličejový obdélník
+# <a name="use-the-headpose-attribute"></a>Použijte atribut HeadPose
 
-V tomto průvodci použijete atribut zjištěných pro rozpoznávání tváře HeadPose, otočit obdélník objekt pro rozpoznávání tváře. Ukázkový kód v této příručce, od [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) ukázkovou aplikaci pomocí sady .NET SDK.
+V této příručce uvidíte, jak můžete použít atribut HeadPose zjištěné tváře povolit některé klíčové scénáře.
 
-Obličejový obdélník se vrátil s každou zjištěnou plošku, označuje umístění a velikost tvář na obrázku. Ve výchozím nastavení obdélníku je vždy v souladu s bitovou kopii (jeho stran jsou dokonale vertikálním a horizontálním); To může být neefektivní pro rámců zalomená tváří. V situacích, ve které chcete prostřednictvím kódu programu oříznout tváří v obrázku je výhodné umožnit otočit obdélník oříznutí.
+## <a name="rotate-the-face-rectangle"></a>Otočit obličejový obdélník
 
-## <a name="explore-the-sample-code"></a>Prozkoumejte vzorový kód
+Obličejový obdélník se vrátil s každou zjištěnou plošku, označuje umístění a velikost tvář na obrázku. Ve výchozím nastavení obdélníku je vždy v souladu s bitovou kopii (jeho stran jsou vertikálním a horizontálním); To může být neefektivní pro rámců zalomená tváří. V situacích, ve které chcete prostřednictvím kódu programu oříznout tváří v obrázku je lepší moct otočit obdélník oříznutí.
+
+[Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) ukázková aplikace používá atribut HeadPose obměna jeho zjištěné obdélníky.
+
+### <a name="explore-the-sample-code"></a>Prozkoumejte vzorový kód
 
 Pomocí atributu HeadPose můžete prostřednictvím kódu programu otočit obličejový obdélník. Pokud zadáte tento atribut při zjištění tváří (naleznete v tématu [jak rozpoznávat tváře](HowtoDetectFacesinImage.md)), budete moci dotaz později. Následující metody z [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) aplikace přebírá seznam **DetectedFace** objekty a vrátí seznam hodnot **[pro rozpoznávání tváře](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** objekty. **Rozpoznávání tváře** tady je vlastní třída, že úložiště pro rozpoznávání tváře data, včetně souřadnice aktualizované obdélník. Nové hodnoty se počítají pro **horní**, **levé**, **šířka**, a **výška**a nové pole **FaceAngle**určuje otočení.
 
@@ -102,7 +106,7 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 }
 ```
 
-## <a name="display-the-updated-rectangle"></a>Zobrazení aktualizované obdélník
+### <a name="display-the-updated-rectangle"></a>Zobrazení aktualizované obdélník
 
 Z tohoto místa můžete použít vráceného **pro rozpoznávání tváře** objekty v zobrazení. Následující řádky z [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) ukazují, jak je vykreslen nové obdélník z těchto dat:
 
@@ -116,6 +120,17 @@ Z tohoto místa můžete použít vráceného **pro rozpoznávání tváře** ob
 </DataTemplate>
 ```
 
+## <a name="detect-head-gestures"></a>Zjištění gest hlav
+
+Můžete zjistit hlavní gesta jako pokyvující a head, přičemž Díky sledování HeadPose změny v reálném čase. Tato funkce slouží jako detektor vlastní aktivity.
+
+Detekce aktivity je úloha určování, zda předmět je skutečná osoba a není reprezentaci obrázek nebo video. Detektor hlavní gesta může sloužit jako jedním ze způsobů, které pomůžou ověřit aktivity, zejména na rozdíl od reprezentaci image osoby.
+
+> [!CAUTION]
+> Ke zjištění hlavního gesta v reálném čase, budete potřebovat pro volání rozhraní API pro rozpoznávání tváře na vysokou míru (více než jednou za sekundu). Pokud máte předplatné bezplatné vrstvy (f0), to nebude možné. Pokud máte placené úrovně předplatné, ujistěte se, že jste vypočítat náklady na provedení rychlé API volání pro hlavní gesta zjišťování.
+
+Najdete v článku [ukázka HeadPose rozhraní API pro rozpoznávání tváře](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) na Githubu pro funkční příklad, head gesta zjišťování.
+
 ## <a name="next-steps"></a>Další postup
 
-Zobrazit [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) aplikace na Githubu pro funkční příklad otočený obdélníky. Nebo si přečtěte [ukázka HeadPose rozhraní API pro rozpoznávání tváře](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) aplikaci, která sleduje HeadPose atribut v reálném čase pro zjištění různých hlavní pohybů plb typu (pokyvující, přičemž).
+Zobrazit [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) aplikace na Githubu pro funkční příklad otočený obdélníky. Nebo si přečtěte [ukázka HeadPose rozhraní API pro rozpoznávání tváře](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) aplikaci, která sleduje HeadPose atribut v reálném čase k detekci pohybu hlavy.

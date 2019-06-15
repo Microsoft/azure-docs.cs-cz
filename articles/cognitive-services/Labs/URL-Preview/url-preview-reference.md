@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60462584"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na projekt ve verzi Preview se adresy URL v7
@@ -62,7 +62,7 @@ Informace o povolených použití a zobrazení výsledků najdete v tématu [pou
 ## <a name="headers"></a>Hlavičky
 Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 
-|Hlavička|Popis|
+|Záhlaví|Popis|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|Hlavička odpovědi.<br /><br /> Trh používaný požadavkem. Forma je \<kódJazyka\>-\<kódZemě\>. Například cs-CZ.|
 |<a name="traceid" />BingAPIs-TraceId|Hlavička odpovědi.<br /><br /> ID položky protokolu obsahující podrobnosti požadavku. Pokud dojde k chybě, toto ID zachyťte. Pokud problém nedokážete určit a vyřešit, uveďte toto ID spolu s dalšími informacemi, které poskytnete týmu podpory.|
@@ -73,7 +73,7 @@ Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.
 ## <a name="query-parameters"></a>Parametry dotazu
 Žádost mohou zahrnovat tyto parametry dotazu. Zobrazte požadovaný sloupec pro požadované parametry. Adresa URL musíte zakódovat parametry dotazu. Dotaz musí být absolutní adresa URL se schématem http nebo https; Nepodporujeme relativní adresy URL nebo jiná schémata, jako je ftp: / /
 
-|Name|Value|Type|Požaduje se|
+|Name|Hodnota|Type|Požaduje se|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Trh, odkud pochází výsledky. <br /><br />Seznam možných hodnot na trhu najdete v článku kódy na trhu.<br /><br /> **POZNÁMKA:** Rozhraní API ve verzi Preview URL aktuálně podporuje jenom USA podle zeměpisného umístění a angličtině.<br /><br />|String|Ano|
 |<a name="query" />q|Adresa URL ve verzi preview|String|Ano|
@@ -102,7 +102,7 @@ Definuje chyby, ke které došlo k chybě.
 ### <a name="errorresponse"></a>ErrorResponse
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 
-|Name|Value|Type|
+|Name|Hodnota|Type|
 |----------|-----------|----------|
 |_type|Pomocný parametr typu.|String|
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)]|
@@ -110,16 +110,16 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 ### <a name="webpage"></a>Webová stránka
 Definuje informace o webové stránce ve verzi preview.
 
-|Name|Value|Type|
+|Name|Hodnota|Type|
 |----------|-----------|----------|
-|jméno|Název stránky, ne tedy nutně Nadpis HTML|String|
+|name|Název stránky, ne tedy nutně Nadpis HTML|String|
 |url|Adresu URL, kterou byl ve skutečnosti procházen (žádosti může provedli přesměrování)|String|
 |description|Stručný popis stránky a obsahu|String|
 |isFamilyFriendly|Co nejvíce zpřesnili pro položky v rejstříku web. Tato detekce založené výhradně na adresu URL a obsah stránky se načte v reálném čase|Boolean|
 |primaryImageOfPage/contentUrl|Adresa URL reprezentativní image zahrnout ve verzi preview|String|
 
 ### <a name="identifiable"></a>Údaje
-|Name|Value|Type|
+|Name|Hodnota|Type|
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|String|
 
@@ -172,7 +172,7 @@ Jsou následující hodnoty možnou chybu kódu a dílčí chyba kódu.
 
 |Kód|Podřízeného|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Stavový kód protokolu HTTP je 500.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Stavový kód protokolu HTTP je 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud používáte protokol HTTP místo protokolu HTTPS, Bing vrátí HttpNotAllowed a je stavový kód HTTP 410.
 |RateLimitExceeded|Žádné dílčí kódy|Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Pokud překročíte QPS, Bing, vrátí stavový kód HTTP 429 a pokud překročíte QPM, Bing vrátí 403.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.

@@ -7,11 +7,11 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073785"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do Azure Kubernetes Service (AKS) pomocí Jenkinse průběžnou integraci a nasazování
@@ -48,6 +48,9 @@ K dokončení tohoto kurzu, budete potřebovat tyto položky:
 ## <a name="prepare-your-app"></a>Příprava aplikace
 
 V tomto článku použijete ukázkovou aplikaci Azure vote obsahuje webové rozhraní hostovaným v jeden nebo více podů a druhý pod hostování pro ukládání dočasných dat Redis. Před integrace Jenkinse a AKS pro automatizovaná nasazení, nejprve ručně připravit a nasadit aplikaci Azure vote ke svému clusteru AKS. Toto ruční nasazení je verze, jeden z aplikace a vám umožňují vidět aplikaci v akci.
+
+> [!NOTE]
+> Ukázková aplikace Azure vote používá pod Linuxem, který je naplánován ke spuštění na uzlech systému Linux. Tok uvedených v tomto článku funguje i pro Windows Server pod naplánované v uzlu Windows serveru.
 
 Vytvořit fork následující úložiště GitHub pro ukázkovou aplikaci - [ https://github.com/Azure-Samples/azure-voting-app-redis ](https://github.com/Azure-Samples/azure-voting-app-redis). Pokud chcete vytvořit fork úložiště do svého vlastního účtu GitHub, vyberte tlačítko **Fork** (Vytvořit fork) v pravém horním rohu.
 

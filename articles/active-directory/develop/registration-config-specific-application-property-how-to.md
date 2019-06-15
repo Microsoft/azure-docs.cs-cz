@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545489"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Jak vyplnit konkrétní pole pro vlastní vyvinuté aplikaci
@@ -55,8 +55,8 @@ Po vyplnění polí výše, aplikace je zaregistrovaný na webu Azure Portal a b
 | Nahrát nové logo | Může být využit k nahrání loga pro vaši aplikaci. Logo musí být ve formátu .bmp, .jpg nebo .png a velikost souboru by měla být menší než 100KB. Rozměry obrázku by měl být 215 × 215 pixelů a středové rozměry obrázku 94 x 94 pixelů.                                                       |
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná při registraci aplikace.                                                                                                                                                                                                                                              |
 | Adresa URL – odhlášení      | Tuto adresu URL jednotného odhlašování odhlašování. Azure AD odešle žádost o odhlášení na tuto adresu URL Pokud uživatel vymaže jejich relace s Azure AD pomocí jiných registrované aplikaci.                                                                                                                                       |
-| Více tenantů  | Tento přepínač určuje, jestli aplikace můžou využívat více tenantů. Obvykle to znamená, že externími organizacemi moci používat vaši aplikaci prostřednictvím registrace v rámci jejich tenanta a udělení přístupu k datům organizace.                                                                   |
-| Adresy URL pro odpověď      | Odpověď adresy URL jsou koncové body, kam Azure AD vrací všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
+| S více klienty  | Tento přepínač určuje, jestli aplikace můžou využívat více tenantů. Obvykle to znamená, že externími organizacemi moci používat vaši aplikaci prostřednictvím registrace v rámci jejich tenanta a udělení přístupu k datům organizace.                                                                   |
+| Adresy URL odpovědí      | Odpověď adresy URL jsou koncové body, kam Azure AD vrací všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
 | Identifikátory URI pro přesměrování   | Pro nativní aplikace to je, kde je uživatel přesměrován po úspěšném ověření. Kontrola Azure AD, poskytující identifikátor URI aplikace pro přesměrování v požadavku OAuth 2.0 odpovídá jednomu z registrovaných hodnoty na portálu.                                                            |
 | Klíče            | Vytvořit klíče k programově přístup k webovému rozhraní API zabezpečené pomocí Azure AD bez nutnosti zásahu uživatele. Z \* \*klíče\* \* stránky, zadejte popis klíče a datum vypršení platnosti a uložit ke generování klíče. Ujistěte se, uložte ho někam zabezpečené, nebudou mít přístup k později.             |
 

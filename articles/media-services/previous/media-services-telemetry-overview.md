@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60545516"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetrie  
@@ -101,7 +101,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Auto časové razítko z Azure Table 2016-09-09T22:43:42.241Z
 Type|Type|StreamingEndpoint
-Název|Název|StreamingEndpointRequestLog
+Name|Name|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ID služby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 název hostitele|Název hostitele koncového bodu|builddemoserver.origin.mediaservices.windows.net
@@ -120,7 +120,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
 Type|Type|Kanál
-Název|Název|ChannelHeartbeat
+Name|Název|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ID služby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Typ sledování video nebo audio/textu|video/audio
@@ -145,7 +145,7 @@ PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab701
 RowKey|RowKey|01688_00199
 Timestamp|Timestamp|Auto časové razítko z tabulky Azure 2016-09-09T22:43:42.241Z
 Type|Type|Archiv
-Název|Název|ArchiveHeartbeat
+Name|Název|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ID služby|ID služby|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|Adresa url aplikace|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism

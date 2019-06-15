@@ -3,7 +3,7 @@ title: Co je Azure Security Center? | Microsoft Docs
 description: Můžete se dozvědět o službě Azure Security Center, jejích klíčových funkcích a způsobu práce.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/06/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064334"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -125,6 +125,10 @@ Security Center pomáhá omezit vystavení útokům hrubou silou. Díky snížen
 ### <a name="protect-data-services"></a>Ochrana dat služby
 
 Security Center obsahuje funkce, které vám pomůžou provést automatické klasifikace dat v Azure SQL. Můžete také získat posouzeními assessments for potenciální ohrožení zabezpečení napříč službami Azure SQL a službu Storage a doporučení, jak je zmírnit.
+
+### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Ochrana IoT a hybridních cloudových úloh (Preview)
+
+Azure Security Center pro IoT (Internet of Things) zjednodušuje tím, že poskytuje jednotný přehled o a ovládací prvek, adaptivní ohrožení ochrany před únikem informací a inteligentní detekce hrozeb a reakce ve úlohy běžící na hraničních zařízeních, on-premises hybridní úlohy ochrany Azure nebo v jiných cloudech. Další informace najdete v tématu [Azure Security Center pro IoT (Preview)](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Zajištění zabezpečení rychleji
 

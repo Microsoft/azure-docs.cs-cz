@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 683580ba65ad775ccec105c78cc1af66fbb63c37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067975"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Pochopení a vyřešení chyb přijatých z WebHCat v HDInsight
 
@@ -32,8 +32,6 @@ Další informace o chyb oznámených při použití WebHCat s HDInsight a způs
 
 * Pro **Linux** clustery: Použití Apache Ambari (web nebo rozhraní REST API) ke změně hodnoty. Další informace najdete v tématu [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Výchozí konfigurace
 
@@ -41,7 +39,7 @@ Překročení následujících výchozích hodnot může snížit výkon WebHCat
 
 | Nastavení | Co dělá | Výchozí hodnota |
 | --- | --- | --- |
-| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10 000 |
+| [yarn.scheduler.capacity.maximum-applications][maximum-applications] |Maximální počet úloh, které mohou být souběžně aktivní (čekající na vyřízení nebo spuštěné) |10,000 |
 | [templeton.exec.max-procs][max-procs] |Maximální počet požadavků, které se dají obsluhovat současně |20 |
 | [mapreduce.jobhistory.max-age-ms][max-age-ms] |Počet dní, které historie úlohy se zachovají. |7 dní |
 

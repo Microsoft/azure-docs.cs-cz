@@ -15,10 +15,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5b7cc1744ac285df8ed502256c30f77bdc8db81f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60477562"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Velké instance SAP HANA vysokou dostupnost a zotavení po havárii v Azure 
@@ -86,7 +86,7 @@ Kromě předchozích požadavků pro nastavení zotavení po havárii s velkých
 - Objednat další úložiště v lokalitě zotavení po Havárii pro každou SAP HANA v Azure (velké instance) skladové položky, které chcete obnovit v lokalitě zotavení po havárii. Nakupování dalších úložišť vám umožní přidělit svazky úložiště. Můžete přidělit svazků, které jsou cílem replikace úložiště z oblasti Azure v produkčním prostředí na zotavení po havárii oblasti Azure.
 - V případě, kde máte HSR nastavený na primární a nastavení replikace úložiště založené na lokalitě zotavení po Havárii, je nutné zakoupit další úložiště v lokalitě zotavení po Havárii tak i primární a sekundární uzly data získá replikují do lokality pro zotavení po Havárii.
 
-  **Další kroky**
+  **Další postup**
 - Přečtěte si [zálohování a obnovení](hana-backup-restore.md).
 
 

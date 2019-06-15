@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843a4ef36d633b8b72453ba5eb2b969af4649531
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 674e2178ad5e9f58bbe691fd92f643750e0b91e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605315"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-templafy"></a>Kurz: Integrace Azure Active Directory s Templafy
 
@@ -55,7 +55,7 @@ Konfigurace integrace Templafy do služby Azure AD, budete muset přidat Templaf
 
 **Chcete-li přidat Templafy z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +118,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Templafy, proveďte násled
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Název | Zdrojový atribut| Obor názvů  |
+    | Name | Zdrojový atribut| Obor názvů  |
     | ---------------| --------------- | --------- |
     | givenName | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | Příjmení | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
@@ -216,7 +216,7 @@ V této části je povolit Britta Simon k udělení přístupu k Templafy použi
 
 V této části se vytvoří uživateli Britta Simon v Templafy. Templafy podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Templafy, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a1acde81baa596e71b7e39763b0464c8de2fb86
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 929d5d7a8e2b45aeb4ef71e4599cfcf23be83088
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Kurz: Integrace Azure Active Directory s NetDocuments
 
@@ -224,7 +224,7 @@ V případě NetDocuments zřizování se ruční úlohy.
     >[!NOTE]
     >Držitel účtu Azure Active Directory se zobrazí e-mailu, který obsahuje odkaz pro potvrzení účtu, pak se změní na aktivní. Můžete použít jakékoli jiné NetDocuments uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných NetDocuments ke zřízení služby Azure Active Directory uživatelské účty.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

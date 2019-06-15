@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: cf9356c2792781558c4403608ff5de0e3aaddb6a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 9339d891e8fe895f598e1a2615fcfa66b053b3e0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063853"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace v Javě v Linuxu pro Azure App Service
 
@@ -480,9 +480,7 @@ App Service pro Linux podporuje dva moduly runtime pro spravované hostování w
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK verze a údržba
 
-Azure podporovaná Java Development Kit (JDK) je [Zulu](https://www.azul.com/downloads/azure-only/zulu/) zajišťována [Azul Systems](https://www.azul.com/).
-
-Hlavní verze aktualizace bude poskytovat prostřednictvím nové možnosti modulu runtime ve službě Azure App Service pro Linux. Zákazníci, aktualizujte na tyto novější verze Javy podle konfigurace nasazení služby App Service a jsou zodpovědné za testování a zajištění hlavní aktualizace vyhovují jejich potřebám.
+Azul Zulu Enterprise sestavení OpenJDK jsou kombinace OpenJDK pro Azure a Azure Stackem zajišťovanou Microsoftem a Azul Systems bezplatného, multiplatformní a připravené pro produkční prostředí. Obsahují všechny komponenty pro vytváření a spouštění aplikací Java SE. Můžete nainstalovat sadu JDK od [Java JDK instalace](https://aka.ms/azure-jdks).
 
 Podporované JDK jsou automaticky opravit čtvrtletně v lednu, dubnu, červenci a říjnu každý rok.
 
@@ -493,18 +491,6 @@ Opravy chyb a opravy pro chyby zabezpečení hlavní vydá Jakmile budou k dispo
 ### <a name="deprecation-and-retirement"></a>Vyřazení a vyřazení z provozu
 
 Pokud podporovaného modulu runtime Java se vyřadí z provozu, vývojáře v Azure pomocí ovlivněné runtime dostanou oznámení o zastarání aspoň šest měsíců před modul runtime byl vyřazen z provozu.
-
-### <a name="local-development"></a>Místní vývoj
-
-Vývojáři mohou stáhnout produkční verzi z Azul Zulu Enterprise sadu JDK pro místní vývoj z [serveru pro stahování společnosti Azul](https://www.azul.com/downloads/azure-only/zulu/).
-
-### <a name="development-support"></a>Podpora vývoje
-
-Odborná pomoc pro [podporovaných systémem Azure Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) je k dispozici prostřednictvím při vývoji pro Azure nebo [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) s [kvalifikovaný plán podpory Azure](https://azure.microsoft.com/support/plans/).
-
-### <a name="runtime-support"></a>Podpora modulu CLR
-
-Mohou vývojáři [otevřete problém](/azure/azure-supportability/how-to-create-azure-support-request) s JDK Azul Zulu prostřednictvím podpory Azure, pokud mají [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Další postup
 

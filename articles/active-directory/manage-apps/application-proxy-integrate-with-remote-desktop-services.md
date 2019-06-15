@@ -16,12 +16,12 @@ ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233716"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108470"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -57,6 +57,8 @@ V nasazení vzdálené plochy VP webové role a role Brána vzdálené plochy sp
 - Při publikování webu, se doporučuje použít stejné interní a externí plně kvalifikovaný název. Pokud jsou různých plně kvalifikované názvy domény interních a externích byste měli zakázat požádat o překlad hlaviček Chcete-li klientovi příjem neplatné odkazy. 
 
 - V Internet Exploreru povolte doplněk ActiveX vzdálené plochy.
+
+- Pro tok předběžného ověřování služby Azure AD, uživatelé můžou připojit jenom k prostředky publikované na ně ve **aplikacím RemoteApp a vzdálené plochy** podokně. Uživatelé se nemohou připojit k klasické pracovní plochy pomocí **připojit ke vzdálenému počítači** podokně.
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Nasazení společné scénáře vzdálené plochy a Proxy aplikací
 
@@ -127,7 +129,7 @@ Konfigurace popsané v tomto článku je pro uživatele na Windows 7 nebo 10 se 
 | Předběžné ověření    | Windows 7/10 pomocí aplikace Internet Explorer + doplněk ActiveX vzdálené plochy |
 | Průchod | Libovolný operační systém, který podporuje aplikace Vzdálená plocha od Microsoftu |
 
-Tok předběžného ověření nabízí další výhody zabezpečení než průchozí toku. Předběžné ověření pomocí můžete funkce ověřování Azure AD jako jednotné přihlašování, podmíněného přístupu a dvoustupňové ověřování pro vaše místní prostředky. Můžete také zajistěte, aby, která jenom ověřené přenosy dosáhne vaší sítě.
+Tok předběžného ověření nabízí další výhody zabezpečení než průchozí toku. Předběžné ověření můžete pomocí funkce ověřování Azure AD, jako je jednotné přihlašování, podmíněného přístupu a dvoustupňové ověření pro vaše místní prostředky. Můžete také zajistěte, aby, která jenom ověřené přenosy dosáhne vaší sítě.
 
 Pokud chcete používat předávací ověřování, jsou jen dva způsobem upravit kroky uvedené v tomto článku:
 1. V [publikovat koncový bod vzdálené plochy hostiteli](#publish-the-rd-host-endpoint) kroku 1, nastavte jako metodu předběžného ověření **průchozí**.

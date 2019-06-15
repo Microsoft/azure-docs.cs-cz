@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9fb661e0b43e71cf9543e9b7042155763d1aa1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e84ec2d8895cf0cdaf933d6446b361a3e606feb5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Kurz: Integrace Azure Active Directory s Litmos
 
@@ -55,7 +55,7 @@ Konfigurace integrace Litmos do služby Azure AD, budete muset přidat Litmos z 
 
 **Chcete-li přidat Litmos z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

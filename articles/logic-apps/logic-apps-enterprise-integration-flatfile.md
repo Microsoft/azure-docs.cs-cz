@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
 ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61467257"
 ---
 # <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Kódovat a dekódovat ploché soubory s Azure Logic Apps a Enterprise Integration Pack
@@ -43,7 +43,7 @@ Postupujte podle těchto kroků přidejte plochého souboru kódování konektor
    ![Snímek obrazovky značky body](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
 1. Vyberte **Schemaname** seznam a zvolte možnost schématu, kterou chcete použít ke kódování vstupní obsah.    
    ![Název schématu snímek obrazovky pole se seznamem](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-1. Uložte svou práci.   
+1. Uložte si práci.   
    ![Snímek obrazovky uložit ikonu](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
 V tomto okamžiku budete mít nastavení konektoru kódování plochých souborů. V reálné aplikaci můžete data uložit do kódovaný – obchodní aplikace, jako je například Salesforce. Nebo můžete odeslat, kódovaných dat do obchodních partnerů. Můžete snadno přidat akce pro odeslání výstupu kódování akce k Salesforce, a váš obchodní partner, pomocí některého z jiných konektorů k dispozici.
@@ -72,7 +72,7 @@ Teď můžete svůj konektor otestovat požadavku na koncový bod protokolu HTTP
 1. Vyberte název schématu, který chcete použít k dekódování obsahu. Následující snímek obrazovky ukazuje, že *OrderFile* je název vybraného schématu. Tento název schématu dříve měli byla nahrána do účtu integrace.
    
    ![Dialogové okno snímek obrazovky z plochého souboru – dekódování](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-1. Uložte svou práci.  
+1. Uložte si práci.  
    ![Snímek obrazovky uložit ikonu](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
 V tomto okamžiku budete mít nastavení plochého souboru dekódování konektoru. V reálné aplikaci můžete data uložit do dekódovaný – obchodní aplikace, jako je například Salesforce. Můžete snadno přidat akce pro odeslání výstupu dekódování akce k Salesforce.

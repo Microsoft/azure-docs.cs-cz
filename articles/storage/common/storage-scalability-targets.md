@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a61c2577f79f32f97fe2ef10a2ac67fdbbc1feda
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101475"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073732"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Azure škálovatelnost a výkonnostní cíle Storage pro účty úložiště
 
@@ -43,6 +43,9 @@ Když aplikace dosáhne limitu co dokáže zpracovat oddíl pro vaši úlohu, za
 
 Další informace o škálování a výkonnostní cíle pro soubory Azure a Azure File Sync najdete v tématu [škálovatelnost a výkonnostní cíle Azure Files](../files/storage-files-scale-targets.md).
 
+> [!IMPORTANT]
+> Omezení účtů úložiště platí pro všechny sdílené složky. Škálování až maximální počet účtů úložiště je pouze dosažitelný, pokud existuje pouze jedna sdílená složka na účet úložiště.
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="premium-files-scale-targets"></a>Soubory typu Premium škálování cíle
@@ -53,27 +56,7 @@ Příklad: Jednou sdílenou složkou může dosáhnout 100 000 vstupně-výstupn
 
 #### <a name="premium-file-share-limits"></a>Limity sdílené složky souboru úrovně Premium
 
-> [!IMPORTANT]
-> Omezení účtů úložiště platí pro všechny sdílené složky. Škálování až maximální počet účtů úložiště je pouze dosažitelný, pokud existuje pouze jedna sdílená složka na účet úložiště.
-
-|Oblast  |Cíl  |
-|---------|---------|
-|Velikost min, zřízené                        |100 GiB      |
-|Maximální počet zřízení velikost                        |100 TiB      |
-|Minimální velikost zvětšit nebo zmenšit    |1 GiB      |
-|Standardní hodnoty vstupně-výstupních operací    |1 vstupně-výstupních operací za GiB maximálně 100 000|
-|Shlukování vstupně-výstupních operací    |3 x IOPS za GiB maximálně 100 000|
-|Frekvence odchozího přenosu dat         |60 MiB/s + 0,06 * zřízené GiB        |
-|Rychlost příchozího přenosu dat| 40 MiB/s + 0,04 * zřízené GiB |
-|Maximální počet snímků        |200       |
-
-#### <a name="premium-file-limits"></a>Omezení souboru Premium
-
-|Oblast  |Cíl  |
-|---------|---------|
-|Velikost                  |1 TiB         |
-|Maximální počet vstupně-výstupních operací na soubor     |5 000         |
-|Souběžné obslužné rutiny    |2 000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
 

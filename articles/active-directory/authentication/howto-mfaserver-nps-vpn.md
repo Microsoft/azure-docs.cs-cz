@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acbf27ca6f5b58d5c3cebb28698304c130381a7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ad2b3075ae9d5ccd7e32f039fbbbc8583cde73c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414915"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055956"
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Pokročilé scénáře se službou Azure Multi-Factor Authentication a řešeními sítí VPN třetích stran
 
 Azure Multi-Factor Authentication umožňuje bez problémů připojovat pomocí různých řešení VPN jiných výrobců. Tento článek se týká zařízení VPN Azure Stream Analytics® Cisco, Citrix NetScaler SSL VPN zařízení a Juniper sítě zabezpečený přístup/Pulse Secure připojení zabezpečení SSL zařízení VPN. Jsme vytvořili průvodců konfigurace k vyřešení těchto tří běžné zařízení. Multi-Factor Authentication Server můžete také integrovat s nejvíce jinými systémy, které pomocí protokolu RADIUS, LDAP, IIS nebo ověřování nezaloženého na deklaracích se službou AD FS. Můžete najít další informace naleznete v [konfigurace MFA serveru](howto-mfaserver-deploy.md#next-steps).
+
+> [!IMPORTANT]
+> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Zařízení Cisco ASA VPN a ověřování Azure Multi-Factor Authentication
 Azure Multi-Factor Authentication integruje do vašeho zařízení VPN Azure Stream Analytics® Cisco pro dodatečné zabezpečení pro sítě VPN Cisco AnyConnect® přihlášení a přístup k portálu.  Můžete použít protokol RADIUS nebo LDAP.  Vyberte jednu z následujících ke stažení podrobné podrobní průvodci konfigurací.

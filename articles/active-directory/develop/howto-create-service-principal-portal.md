@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 33ef65f09a4e7513738a6cc6b277d06cd4cb4da8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052399"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postup: Použití portálu k vytvoření aplikace Azure AD a instanční objekt, který má přístup k prostředkům
 
@@ -98,7 +98,7 @@ Při programově přihlášení, je potřeba předat ID tenanta žádosti o ově
    ![ID klienta](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="certificates-and-secrets"></a>Certifikáty a tajné kódy
-Deamon aplikací můžete používat dvě formy přihlašovacích údajů k ověření ve službě Azure AD: certifikátů a tajných klíčů aplikací.  Doporučujeme používat certifikát, ale můžete také vytvořit nový tajný klíč aplikace.
+Démon procesu aplikace můžete použít dvě formy přihlašovacích údajů pro ověření ve službě Azure AD: certifikátů a tajných klíčů aplikací.  Doporučujeme používat certifikát, ale můžete také vytvořit nový tajný klíč aplikace.
 
 ### <a name="upload-a-certificate"></a>Nahrání certifikátu
 

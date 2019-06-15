@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 41b35324ccca8cf40edbc53ed25a2d8615a9294e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8933cb90672e49305cd0fb7dc5e4f8f04f94093e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091558"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Kurz: Integrace Azure Active Directory s praktickými cvičeními úpravu - Mobile a testování webů
 
@@ -54,7 +54,7 @@ Konfigurace integrace úpravu Labs – mobilní a webové testování do služby
 
 **Chcete-li přidat úpravu Labs – mobilní a webové testy z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -204,7 +204,7 @@ V této části se vytvoří uživateli Britta Simon v co Labs – mobilní a we
 > [!Note]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se na [úpravu Labs – mobilní a webové testování tým podpory](mailto:support@saucelabs.com).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

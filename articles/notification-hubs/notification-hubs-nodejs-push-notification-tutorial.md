@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061608"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 
@@ -106,7 +106,7 @@ Získat připojení `connectionstring` hodnotu [Azure Portal] provedením násle
 - **Datová část** -JSON nebo nezpracovaného řetězce datovou část zprávy.
 - **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části, najdete v článku **datové části** část [implementace serveru GCM](https://developer.android.com/google/gcm/server.html#payload) dokumentu.
+Další informace o formátu datové části, najdete v článku **datové části** část [implementace serveru GCM](https://developers.google.com/cloud-messaging/) dokumentu.
 
 Následující kód používá `GcmService` instance vystavené `NotificationHubService` k odesílání nabízených oznámení na všechny registrované klienty.
 

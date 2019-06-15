@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60238053"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
@@ -22,7 +22,7 @@ ms.locfileid: "60238053"
 > - Azure Virtual Machines
 > - Virtual Machine Scale Sets
 > - Service Fabric
-> - Cloud Services
+> - Cloudové služby
 > - Network Security Groups (Skupiny zabezpečení sítě)
 >
 > Tato stránka je pouze relevantní, pokud použijete jednu z těchto služeb.
@@ -564,7 +564,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Umožňuje generovat tabulku čítače výkonu, který je optimalizovaný pro rychlé zpracování dotazů. Každý čítač výkonu, který je definován v **čítače výkonu** element je uložena v tabulce metrik kromě tabulce čítače výkonu.  
 
- **ResourceId** atribut je vyžadován.  ID prostředku virtuálního počítače nebo Škálovací sady virtuálních počítačů jsou diagnostiky Azure pro nasazení. Získejte **resourceID** z [webu Azure portal](https://portal.azure.com). Vyberte **Procházet** -> **skupiny prostředků** -> **< název\>**. Klikněte na tlačítko **vlastnosti** dlaždici a zkopírujte hodnotu z **ID** pole.  
+ **ResourceId** atribut je vyžadován.  ID prostředku virtuálního počítače nebo Škálovací sady virtuálních počítačů jsou diagnostiky Azure pro nasazení. Získejte **resourceID** z [webu Azure portal](https://portal.azure.com). Vyberte **Procházet** -> **skupiny prostředků** ->  **< název\>** . Klikněte na tlačítko **vlastnosti** dlaždici a zkopírujte hodnotu z **ID** pole.  
 
 |Podřízené prvky|Popis|  
 |--------------------|-----------------|  
@@ -644,7 +644,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atribut|Type|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|string|Řetězec, který identifikuje sinkname.|  
+|**name**|string|Řetězec, který identifikuje sinkname.|  
 
 |Element|Type|Popis|  
 |-------------|----------|-----------------|  
@@ -672,7 +672,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atributy|Type|Popis|  
 |----------------|----------|-----------------|  
 |**logLevel**|**řetězec**|Určuje minimální úroveň závažnosti pro položky protokolu, které byly převedeny. Výchozí hodnota je **Nedefinováno**, který převede všechny protokoly. Další možné hodnoty (v pořadí podle nejvíce alespoň informace) jsou **Verbose**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
-|**Jméno**|**řetězec**|Jedinečný název kanálu pro odkazování na|  
+|**name**|**řetězec**|Jedinečný název kanálu pro odkazování na|  
 
 
 ## <a name="privateconfig-element"></a>Elementu PrivateConfig

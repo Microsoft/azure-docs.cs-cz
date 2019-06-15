@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 295fc80c0b6d9a4554dc08d24d9167bea627144f
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 99b314fe34798099c73de419dc718c548fd5b623
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Integrace Azure Active Directory s Spacio
 
@@ -53,7 +53,7 @@ Konfigurace integrace Spacio do služby Azure AD, budete muset přidat Spacio z 
 
 **Chcete-li přidat Spacio z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -175,7 +175,7 @@ V této části je povolit Britta Simon k udělení přístupu k Spacio použit�
 
 V této části vytvoříte uživatele v Spacio jako Britta Simon. Práce s [tým podpory Spacio](mailto:support@spac.io) přidat uživatele na platformě Spacio. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

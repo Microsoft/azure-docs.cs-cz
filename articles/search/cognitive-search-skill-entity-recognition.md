@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: f05161dbbfd9293cd7b1cbf447bb7ca1c313250c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65023450"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Kognitivní dovednosti rozpoznávání entit
@@ -52,7 +52,7 @@ Toto jsou entity, které jsou dobře známé, ale nejsou klasifikovány jako sou
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
-| text          | Text, který se má analyzovat          |
+| text          | Text k analýze.          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
@@ -62,14 +62,14 @@ Toto jsou entity, které jsou dobře známé, ale nejsou klasifikovány jako sou
 | Název výstupního     | Popis                   |
 |---------------|-------------------------------|
 | osoby      | Pole řetězců, přičemž každý řetězec představuje jméno osoby. |
-| umístění  | Pole řetězců, kde každý řetězec představuje umístění. |
+| locations  | Pole řetězců, kde každý řetězec představuje umístění. |
 | organizations  | Pole řetězců, přičemž každý řetězec představuje organizace. |
 | množství  | Pole řetězců, přičemž každý řetězec představuje množství. |
 | data a času  | Pole řetězců, přičemž každý řetězec představuje datum a čas (jak se zobrazí v textu) hodnotu. |
 | adresy URL | Pole řetězců, přičemž každý řetězec představuje adresu URL |
-| e-maily | Pole řetězců, přičemž každý řetězec představuje e-mailu |
+| e-mailů | Pole řetězců, přičemž každý řetězec představuje e-mailu |
 | namedEntities | Pole komplexní typy, které obsahují následující pole: <ul><li>category</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (nepoužitý teď. Bude nastavena na hodnotu-1)</li></ul> |
-| entity | Pole komplexní typy, které obsahuje podrobné informace o entitách extrahovat z textu u následujících polí <ul><li> Name (název skutečné entity. To představuje "normalizovaných" formuláře)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedia entity)</li><li>bingId</li><li>Typ (kategorie entity rozpoznán)</li><li>Podtyp (k dispozici pouze pro určité kategorie, to dává s podrobnějším zobrazením typu entity)</li><li> odpovídá (komplexní kolekci, která obsahuje)<ul><li>text (nezpracovaný text entity)</li><li>posun (umístění, kde se nachází)</li><li>Length (délka textu nezpracované entity)</li></ul></li></ul> |
+| Entity | Pole komplexní typy, které obsahuje podrobné informace o entitách extrahovat z textu u následujících polí <ul><li> Name (název skutečné entity. To představuje "normalizovaných" formuláře)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedia entity)</li><li>bingId</li><li>Typ (kategorie entity rozpoznán)</li><li>Podtyp (k dispozici pouze pro určité kategorie, to dává s podrobnějším zobrazením typu entity)</li><li> odpovídá (komplexní kolekci, která obsahuje)<ul><li>text (nezpracovaný text entity)</li><li>posun (umístění, kde se nachází)</li><li>Length (délka textu nezpracované entity)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Ukázková definice
 

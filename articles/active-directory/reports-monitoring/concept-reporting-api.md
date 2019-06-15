@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2ff3e530dae3a6db4b7c84292a25e83c11000baf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60286800"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s Azure Active Directory API pro vytváření sestav
@@ -58,7 +58,7 @@ Kromě toho můžete použít [události rizika Identity Protection API](https:/
 
 Můžete použít [MSGraph explorer](https://developer.microsoft.com/graph/graph-explorer) ověřte vaše přihlášení a auditování dat rozhraní API. Ujistěte se, že pro přihlášení ke svému účtu pomocí tlačítek přihlášení v uživatelském rozhraní Graph Explorer a nastavte **AuditLog.Read.All** a **Directory.Read.All** oprávnění pro vašeho tenanta, jak je znázorněno.   
 
-![Graph Exploreru](./media/concept-reporting-api/graph-explorer.png)
+![Graph Explorer](./media/concept-reporting-api/graph-explorer.png)
 
 ![Upravit oprávnění uživatelského rozhraní](./media/concept-reporting-api/modify-permissions.png)
 

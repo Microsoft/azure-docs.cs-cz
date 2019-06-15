@@ -11,10 +11,10 @@ ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
 ms.openlocfilehash: 30a090aeb2d66c732e70a9acce67d5f3374c32fa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153154"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
@@ -98,8 +98,8 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>Jak: Vyřazení další zprávy z fronty
 Zpráva můžete odebrat z fronty ve dvou krocích.
 
-1. Při volání **seznamu\_messages()**, získáte další zprávu ve frontě ve výchozím nastavení. Můžete také určit počet zpráv, které chcete načíst. Zprávy vrácené **seznamu\_messages()** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. Můžete předat časový limit viditelnosti v řádu sekund jako parametr.
-2. K dokončení odebrání zprávy z fronty, musíte také zavolat **delete_message()**.
+1. Při volání **seznamu\_messages()** , získáte další zprávu ve frontě ve výchozím nastavení. Můžete také určit počet zpráv, které chcete načíst. Zprávy vrácené **seznamu\_messages()** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. Můžete předat časový limit viditelnosti v řádu sekund jako parametr.
+2. K dokončení odebrání zprávy z fronty, musíte také zavolat **delete_message()** .
 
 Tento dvoukrokový proces odebrání zprávy zaručuje, že pokud váš kód se nepodaří zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, jiná instance vašeho kódu můžete získat stejná zpráva a zkuste to znovu. Kód volá **odstranit\_message()** hned po zpracování zprávy.
 

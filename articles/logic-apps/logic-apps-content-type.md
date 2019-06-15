@@ -11,10 +11,10 @@ ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685722"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Zpracování typů obsahu v Azure Logic Apps
@@ -111,7 +111,7 @@ Logic Apps poskytuje možnosti pro vygenerování uživatelsky přívětivé tok
   Pak můžete snadno odkazovat a používat tyto vlastnosti v průběhu pracovního postupu aplikace logiky. Podobně jako u triggeru požadavku, můžete zadat nebo generování schématu JSON, který popisuje obsah JSON, který chcete analyzovat. 
   Díky tomu můžete snadněji zpracovat data ze služby Azure Service Bus, Azure Cosmos DB a tak dále.
 
-  ![Parsovat JSON](./media/logic-apps-content-type/parse-json.png)
+  ![Parsování formátu JSON](./media/logic-apps-content-type/parse-json.png)
 
 <a name="text-plain"></a>
 

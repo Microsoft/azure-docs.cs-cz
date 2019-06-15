@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40ae634897361219c39e60d2161d3576cc44a400
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077522"
 ---
-Rychle vytvořit virtuální síť, že můžete kliknete na tlačítko "Vyzkoušet" v tomto článku, otevřete konzolu Powershellu. Upravte hodnoty, potom příkazy zkopírujte a vložte je do okna konzoly. Další informace o novém modulu Az a kompatibility AzureRM najdete v tématu [představení nového modulu Azure PowerShell Az](/powershell/azure/new-azureps-module-az). Pokyny k instalaci modulu Az, naleznete v tématu [instalace Azure Powershellu](/powershell/azure/install-az-ps).
+Rychle vytvořit virtuální síť, že můžete kliknete na tlačítko "Vyzkoušet" v tomto článku, otevřete konzolu Powershellu ve službě Azure Cloud Shell. Upravte hodnoty, potom příkazy zkopírujte a vložte je do okna konzoly. 
 
 Nezapomeňte si ověřit, že se adresní prostor pro virtuální síť, kterou vytvoříte, nepřekrývá s žádným z rozsahů adres pro jiné virtuální sítě, ke kterým se chcete připojit, ani s adresními prostory místní sítě.
 

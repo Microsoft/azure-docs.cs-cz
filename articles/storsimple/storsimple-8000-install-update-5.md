@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126745"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Nainstalujte na zařízení StorSimple Update 5
@@ -47,7 +47,7 @@ Proveďte následující kroky a aktualizujete zařízení [aktualizace Update 5
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update5-via-portal.md)]
 
-Ověřte, že vaše zařízení běží **StorSimple 8000 Series Update 5 (6.3.9600.17845)**. **Datum poslední aktualizace** by měl být upraven.
+Ověřte, že vaše zařízení běží **StorSimple 8000 Series Update 5 (6.3.9600.17845)** . **Datum poslední aktualizace** by měl být upraven.
 
 Nyní uvidíte, že jsou k dispozici aktualizace režimu údržby (Tato zpráva může i nadále bude zobrazovat u až 24 hodin, po instalaci aktualizací). V další části jsou podrobně popsané kroky pro instalaci aktualizace režimu údržby.
 
@@ -78,21 +78,21 @@ Je nutné stáhnout a nainstalovat následující opravy hotfix předepsané po�
 
 | Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Aktualizace softwaru<br> Stáhněte si oba _HcsSoftwareUpdate.exe_ a _CisMSDAgent.exe_ |Normální <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
+| 1. |KB4037264 |Aktualizace softwaru<br> Stáhněte si oba _HcsSoftwareUpdate.exe_ a _CisMSDAgent.exe_ |Pravidelné <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
 
 Pokud aktualizace z zařízení s verzí Update 4, stačí nainstalovat kumulativní aktualizace operačního systému jako aktualizace druhého řádu.
 
 | Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |Balíček kumulativních aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2A. |KB4025336 |Balíček kumulativních aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 Pokud instalace ze zařízení s aktualizací Update 3 nebo starší, nainstalujte následující kromě kumulativní aktualizace.
 
 | Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |Adaptér LSI ovladače a firmware aktualizace <br> Aktualizace firmwaru USM (verze 3.38) |Normální <br></br>Bez přerušení |~ 3 hodiny <br> (včetně 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Balíček aktualizace zabezpečení operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
-| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2B. |KB4011841 <br> KB4011842 |Adaptér LSI ovladače a firmware aktualizace <br> Aktualizace firmwaru USM (verze 3.38) |Pravidelné <br></br>Bez přerušení |~ 3 hodiny <br> (včetně 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Balíček aktualizace zabezpečení operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stáhněte si verzi systému Windows Server 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 
 Budete také muset nainstalovat aktualizace firmwaru disku nad všechny aktualizace uvedené v předchozích tabulkách. Můžete ověřit, jestli potřebujete aktualizace firmwaru disku spuštěním `Get-HcsFirmwareVersion` rutiny. Pokud používáte tyto verze firmwaru: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, potom není potřeba instalovat tyto aktualizace.

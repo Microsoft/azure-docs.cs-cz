@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60240850"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Syslog zdroje dat ve službě Azure Monitor
@@ -54,7 +54,7 @@ Agenta Log Analytics pro Linux bude shromažďovat pouze události s zařízení
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurovat Syslog na webu Azure Portal
 Konfigurovat Syslog z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources). Tato konfigurace se doručí do konfiguračního souboru na každého agenta pro Linux.
 
-Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+**. Pro každé zařízení nebudou se shromažďovat pouze zprávy s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní zařízení, která chcete shromažďovat. Nelze zadat žádná další kritéria filtru zpráv.
+Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+** . Pro každé zařízení nebudou se shromažďovat pouze zprávy s vybranou závažnosti.  Zaškrtněte závažnosti pro konkrétní zařízení, která chcete shromažďovat. Nelze zadat žádná další kritéria filtru zpráv.
 
 ![Konfigurovat Syslog](media/data-sources-syslog/configure.png)
 

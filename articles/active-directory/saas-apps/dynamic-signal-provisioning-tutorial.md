@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: zchia
 ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470552"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Kurz: Nakonfigurovat dynamické signál pro automatické zřizování uživatelů
@@ -45,7 +45,7 @@ Před konfigurací dynamické signál pro automatické zřizování uživatelů 
 
 **Chcete-li přidat dynamické signál z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -116,7 +116,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 8. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
 
-    ![Oznamovací e-mail](common/provisioning-notification-email.png)
+    ![E-mailové oznámení](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 

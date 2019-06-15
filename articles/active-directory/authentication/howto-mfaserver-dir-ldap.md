@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093849e10e9776327a54ea3a9ae22b863a528d37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 214462977c160685a943cb64c517da37d96d8e47
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057362"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Ověřování pomocí protokolu LDAP a ověřování Azure Multi-Factor Authentication Server
 
@@ -24,9 +24,12 @@ Ve výchozím nastavení je server Azure Multi-Factor Authentication nakonfiguro
 
 Chcete-li použít Azure Multi-Factor Authentication jako proxy protokolu LDAP, vložte Azure Multi-Factor Authentication Server mezi klienta protokolu LDAP (například zařízení VPN, aplikace) a adresářový server LDAP. Azure Multi-Factor Authentication Server musí být nakonfigurován tak, aby komunikoval s klientskými servery i s adresářem LDAP. V této konfiguraci server Azure Multi-Factor Authentication přijímá požadavky LDAP od klientských serverů a aplikací a předává je cílovému adresářovému serveru LDAP pro ověření primárních pověření. Pokud adresář LDAP ověří primární přihlašovací údaje, ověřování Azure Multi-Factor Authentication provede druhé ověření identity a odešle odpověď zpět do klienta protokolu LDAP. Celkové ověření proběhne úspěšně pouze pokud je úspěšné ověření pomocí serveru LDAP i druhý krok ověření.
 
+> [!IMPORTANT]
+> Od 1. července 2019 společnost Microsoft již nabízí MFA Server pro nová nasazení. Noví zákazníci, kteří by chtěli požadovat použití vícefaktorového ověřování od jejich uživatelů by měla používat cloudové ověřování Azure Multi-Factor Authentication. Stávající zákazníci, kteří si aktivovali MFA Server před 1. července budou moct stáhnout nejnovější verzi aktualizace budoucí a vygenerovat aktivační přihlašovací údaje jako obvykle.
+
 ## <a name="configure-ldap-authentication"></a>Konfigurace ověřování pomocí protokolu LDAP
 
-Pro konfiguraci ověřování pomocí protokolu LDAP nainstalujte server Azure Multi-Factor Authentication na server Windows. Použijte následující postup:
+Pro konfiguraci ověřování pomocí protokolu LDAP nainstalujte server Azure Multi-Factor Authentication na server Windows. Pomocí následujícího postupu:
 
 ### <a name="add-an-ldap-client"></a>Přidání klienta protokolu LDAP
 
@@ -62,7 +65,7 @@ Pokud je Azure Multi-Factor Authentication nakonfigurováno pro příjem ověřo
 10. V dialogovém okně Upravit atributy upravte mapování atributů protokolu LDAP pro váš adresář. Názvy atributů můžete zadat nebo vybrat kliknutím na **...** na tlačítko vedle každého pole. Kliknutím na odkaz **Nápověda** zobrazíte další informace o atributech.
 11. Klikněte na tlačítko **OK**.
 12. Klikněte na ikonu **Nastavení společnosti** a vyberte kartu **Překlad uživatelského jména**.
-13. Pokud se připojujete ke službě Active Directory ze serveru připojeného k doméně, ponechejte vybraný přepínač **Pro porovnání uživatelských jmen použít identifikátory zabezpečení systému Windows (SID)**. Jinak vyberte přepínač **Pro porovnávání uživatelských jmen použít atribut jedinečného identifikátoru LDAP**.
+13. Pokud se připojujete ke službě Active Directory ze serveru připojeného k doméně, ponechejte vybraný přepínač **Pro porovnání uživatelských jmen použít identifikátory zabezpečení systému Windows (SID)** . Jinak vyberte přepínač **Pro porovnávání uživatelských jmen použít atribut jedinečného identifikátoru LDAP**.
 
 Když je vybraný přepínač **Pro porovnávání uživatelských jmen použít atribut jedinečného identifikátoru LDAP**, Azure Multi-Factor Authentication Server se pokusí každé uživatelské jméno přeložit na jedinečný identifikátor v adresáři LDAP. Provede se vyhledávání protokolu LDAP u atributů uživatelského jména definovaných v části Integrace adresáře na kartě Atributy. Při ověření uživatele uživatelské jméno přeloží na jedinečný identifikátor v adresáři protokolu LDAP. Jedinečný identifikátor se použije k porovnání s uživatelem v datovém souboru Azure Multi-Factor Authentication. To umožňuje porovnávání velkých a malých písmen a dlouhé a krátké formáty uživatelských jmen.
 

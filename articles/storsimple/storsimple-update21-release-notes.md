@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60531056"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Poznámky k verzi StorSimple 8000 Series Update 2.2
@@ -58,7 +58,7 @@ Následující tabulka obsahuje souhrn problémů, které byly opraveny v aktual
 | 6 |Kopie na straně hostitele |V dřívějších verzích softwaru občasné chyby související s ODX časování viděla při kopírování dat z jednoho svazku na jiný svazek. To způsobí selhání kontroleru a systém může potenciálně přejít do režimu obnovení. Tato chyba je opravené v této verzi. |Ano |Ne |
 | 7 |Windows Management Instrumentation (WMI) |V předchozích verzích softwaru, došlo k chybě proxy webu s výjimkou několik instancí "\<managementexception – > Chyba zprostředkovatele zatížení". Tato chyba byla přiřadit nevracení paměti WMI a nyní je opraveno. |Ano |Ne |
 | 8 |Aktualizace |V některých výjimečných případech v předchozích verzích softwaru uživatel přijal "CisPowershellHcsscripterror" při pokusu o skenování nebo instalace aktualizací. Tento problém je vyřešen v této verzi. |Ano |Ano |
-| 9 |Balíček pro podporu |V této verzi byly vylepšení způsobu, jakým shromážděné a nahrát balíček pro podporu. |Ano |Ano |
+| 9 |Balíček pro podporu. |V této verzi byly vylepšení způsobu, jakým shromážděné a nahrát balíček pro podporu. |Ano |Ano |
 
 ## <a name="known-issues-in-update-22"></a>Známé problémy v aktualizace 2.2
 V následující tabulce je uveden seznam známých problémů v této verzi.

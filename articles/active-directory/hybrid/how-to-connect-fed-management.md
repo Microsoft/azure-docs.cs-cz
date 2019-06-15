@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353456"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení služby AD FS pomocí služby Azure AD Connect
@@ -108,11 +108,11 @@ Konfigurace alternativního přihlašovacího ID pro službu AD FS zahrnuje dva 
 
    ![Heslo certifikátu](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![Zadání certifikátu SSL](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Zadejte certifikát SSL](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. Na **servery služby AD FS** stránky, zadejte název serveru nebo IP adresu přidat do farmy služby AD FS.
 
-   ![Servery AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
+   ![Servery služby AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
 6. Klikněte na tlačítko **Další**a projděte si poslední **konfigurovat** stránky. Po dokončení přidávání serverů do farmy služby AD FS Azure AD Connect budete mít možnost ověřit připojení.
 
@@ -136,7 +136,7 @@ Konfigurace alternativního přihlašovacího ID pro službu AD FS zahrnuje dva 
 3. Na **certifikát SSL zadejte** stránky, zadejte heslo pro soubor PFX, který jste zadali při konfiguraci farmy služby AD FS s Azure AD Connect.
    ![Heslo certifikátu](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![Zadání certifikátu SSL](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![Zadejte certifikát SSL](./media/how-to-connect-fed-management/WapServer4.PNG)
 
 4. Přidejte server přidat jako WAP server. Protože WAP server nemusí být připojen k doméně, v Průvodci vyzve k zadání přihlašovacích údajů správce ke přidávaný server.
 
@@ -172,7 +172,7 @@ Je snadné přidání domény k federaci s Azure AD pomocí služby Azure AD Con
 
 4. Na další stránce průvodce obsahuje seznam domén Azure AD, které může provést federaci s vaší místní adresář. Zvolte doménu, ze seznamu.
 
-   ![Doména Azure AD](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
     Až zvolíte, domény, Průvodce vám poskytne příslušné informace o další akce, které průvodce provede a vliv konfiguraci. V některých případech Pokud vyberete domény, který ještě není ověřen ve službě Azure AD, Průvodce poskytuje informace o ověření domény. Zobrazit [přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) další podrobnosti.
 

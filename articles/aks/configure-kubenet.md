@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: cde7d692e8bb37e874c6e55e5584d96e3b13af31
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 94a6ce87cf313fe283631e594a63f210c775c7a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808573"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Použít kubenet práce se sítěmi pomocí vlastní rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -62,7 +62,7 @@ Následující základní výpočty porovnat rozdíl v modelech sítě:
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Partnerský vztah virtuální sítě a připojení ExpressRoute
 
-K zajištění připojení s místními i *kubenet* a *Azure CNI* přístupy sítě můžete použít [partnerský vztah virtuální sítě Azure] [ vnet-peering]nebo [připojení ExpressRoute][express-route]. Plánování rozsahů IP adres pečlivě, aby se zabránilo překrytí a směrování síťového provozu na nesprávné. Například použít mnoho místních sítí *10.0.0.0/8* adresu rozsahu, který inzerován prostřednictvím připojení ExpressRoute. Doporučuje se vytvořit clusterům AKS do podsítí virtuální sítě Azure mimo tento rozsah adres, například *172.26.0.0/16*.
+K zajištění připojení s místními i *kubenet* a *Azure CNI* přístupy sítě můžete použít [partnerský vztah virtuální sítě Azure] [ vnet-peering]nebo [připojení ExpressRoute][express-route]. Plánování rozsahů IP adres pečlivě, aby se zabránilo překrytí a směrování síťového provozu na nesprávné. Například použít mnoho místních sítí *10.0.0.0/8* adresu rozsahu, který inzerován prostřednictvím připojení ExpressRoute. Doporučuje se vytvořit clusterům AKS do podsítí virtuální sítě Azure mimo tento rozsah adres, například *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Zvolte model sítě pro použití
 
@@ -92,15 +92,15 @@ Abyste mohli začít s používáním *kubenet* a vlastní podsítě virtuální
 az group create --name myResourceGroup --location eastus
 ```
 
-Pokud nemáte existující virtuální síť a podsíť, která se pomocí služby, vytvoření těchto síťových prostředků pomocí [az network vnet vytvořit] [ az-network-vnet-create] příkazu. V následujícím příkladu je virtuální síť s názvem *myVnet* s předponou adresy *10.0.0.0/8*. Podsíť je vytvořena s názvem *myAKSSubnet* s předponou adresy *10.240.0.0/16*.
+Pokud nemáte existující virtuální síť a podsíť, která se pomocí služby, vytvoření těchto síťových prostředků pomocí [az network vnet vytvořit] [ az-network-vnet-create] příkazu. V následujícím příkladu je virtuální síť s názvem *myVnet* s předponou adresy *192.168.0.0/16*. Podsíť je vytvořena s názvem *myAKSSubnet* s předponou adresy *192.168.1.0/24*.
 
 ```azurecli-interactive
 az network vnet create \
     --resource-group myResourceGroup \
     --name myAKSVnet \
-    --address-prefixes 10.0.0.0/8 \
+    --address-prefixes 192.168.0.0/16 \
     --subnet-name myAKSSubnet \
-    --subnet-prefix 10.240.0.0/16
+    --subnet-prefix 192.168.1.0/24
 ```
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Vytvoření instančního objektu a přiřazení oprávnění
@@ -150,7 +150,7 @@ Tyto rozsahy IP adres jsou také definovány jako součást clusteru vytvořit p
 
 * *– Pod cidr* by měl být velký adresní prostor, který se používá jinde ve vašem síťovém prostředí. Tento rozsah zahrnuje žádnými rozsahy adres místní sítě, pokud připojení, nebo v plánu připojit, virtuálním sítím Azure přes Express Route nebo připojení Site-to-Site VPN.
     * Tento rozsah adres musí být dostatečně velký, aby mohla pojmout množství uzly, které plánujete škálovat až. Tento rozsah adres nelze změnit, až se cluster nasazuje, pokud potřebujete další adresy pro další uzly.
-    * Rozsah IP adres pod slouží k přiřazení */24* adresní prostor k jednotlivým uzlům v clusteru. V následujícím příkladu *– pod cidr* z *192.168.0.0/16* přiřadí první uzel *192.168.0.0/24*, druhý uzel *192.168.1.0/24*a třetí uzly *192.168.2.0/24*.
+    * Rozsah IP adres pod slouží k přiřazení */24* adresní prostor k jednotlivým uzlům v clusteru. V následujícím příkladu *– pod cidr* z *10.244.0.0/16* přiřadí první uzel *10.244.0.0/24*, druhý uzel *10.244.1.0/24*a třetí uzly *10.244.2.0/24*.
     * Jako škálování clusteru nebo upgrady Platforma Azure nadále jste rozsah IP adres pod přiřadit každého nového uzlu.
     
 * *– Adresa mostu docker* umožňuje uzlů AKS komunikovat s základní platformy pro správu. Tato IP adresa nesmí být v rozsahu IP adres virtuální sítě clusteru a nesmí překrývat s rozsahy jiných adres používané ve vaší síti.
@@ -163,7 +163,7 @@ az aks create \
     --network-plugin kubenet \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
-    --pod-cidr 192.168.0.0/16 \
+    --pod-cidr 10.244.0.0/16 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \

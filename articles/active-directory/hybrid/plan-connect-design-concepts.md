@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60382205"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
@@ -175,7 +175,7 @@ Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí Consist
 
 ![Přidání nového adresáře do stávajícího nasazení](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Přihlášení k Azure AD
+## <a name="azure-ad-sign-in"></a>Azure AD přihlášení
 Při integraci místního adresáře s Azure AD, je důležité pochopit, jak nastavení synchronizace mohou ovlivnit způsob, jak uživatel se ověřuje. Azure AD userPrincipalName (UPN) používá k ověření uživatele. Ale pokud synchronizujete uživatele, musíte zvolit atribut, který chcete použít pro hodnota userPrincipalName pečlivě.
 
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Výběr atribut userPrincipalName

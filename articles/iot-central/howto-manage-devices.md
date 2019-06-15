@@ -3,17 +3,17 @@ title: Správa zařízení v aplikaci Azure IoT Central | Dokumentace Microsoftu
 description: Jakožto Obsluha zjistěte, jak spravovat zařízení v aplikaci Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/30/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: a4a22cc2161af444ba2169cc2f83124e80c7ec11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052993"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -86,13 +86,13 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 
 1. Na levém panelu, vyberte **zrušeno přiřazení zařízení**:
 
-    ![Nepřidružená zařízení](./media/howto-manage-devices/unassociateddevices1a.png)
+    ![Nepřidružené zařízení](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. Vyberte zařízení, které chcete přidružit šablonu:
 
 1. Vyberte **přidružit**:
 
-    ![Přidružit zařízení](./media/howto-manage-devices/unassociateddevices2a.png)
+    ![Přidružení zařízení](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. Vyberte šablonu ze seznamu dostupných šablon a vybrat **přidružit**.
 

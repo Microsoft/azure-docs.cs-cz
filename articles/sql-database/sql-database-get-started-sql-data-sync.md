@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/14/2019
 ms.openlocfilehash: 82b85ffd685df52e702db15e5a5b57a53a3b4f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60342088"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení synchronizace dat SQL mezi Azure SQL Database a SQL Server v místním
@@ -172,16 +172,16 @@ Minimální doba mezi synchronizacemi je pět minut.
 
 **Synchronizaci dat SQL plně vytvářet tabulky?**
 
-Pokud tabulky schématu synchronizace nebyly nalezeny v cílové databázi, vytvoří je synchronizace dat SQL s sloupce, které jste vybrali. Však to nemá za následek Plnohodnotná schéma z následujících důvodů:
+Pokud v cílové databázi chybí tabulky schématu synchronizace, Synchronizace dat SQL je vytvoří společně se sloupci, které jste vybrali. Však to nemá za následek Plnohodnotná schéma z následujících důvodů:
 
-- Pouze vybraných sloupců jsou vytvořeny v cílové tabulce. Není vybrané sloupce budou ignorovány.
-- Jenom vybrané sloupce indexy jsou vytvořeny v cílové tabulce. U sloupců není vybrána tyto indexy jsou ignorovány.
+- V cílové tabulce se vytvoří pouze vybrané sloupce. Nevybrané sloupce se ignorují.
+- V cílové tabulce se vytvoří pouze indexy vybraných sloupců. Indexy nevybraných sloupců se ignorují.
 - Indexy na sloupce typu XML nejsou vytvořeny.
 - Kontrola omezení nejsou vytvořeny.
 - Aktivační události zdrojových tabulkách nejsou vytvořeny.
 - Zobrazení a uložených procedur nejsou vytvořeny.
 
-Kvůli těmto omezením doporučujeme následující věci:
+Kvůli těmto omezením doporučujeme provést následující:
 
 - Pro produkční prostředí vytvořte schéma Plnohodnotná sami.
 - Při experimentování se službou, pomocí funkce automatického zřizování.

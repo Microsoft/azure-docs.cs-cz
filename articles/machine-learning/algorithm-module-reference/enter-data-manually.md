@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ee15b6fb7160ece907d55e790b0ae38ee458ab96
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65028602"
 ---
 # <a name="enter-data-manually-module"></a>Zadejte Data ručně modulu
@@ -31,7 +31,7 @@ Tento modul může být užitečné v situacích, jako je například tyto:
   
 - Psaní seznam názvů sloupců vkládat do datové sady
 
-## <a name="enter-data-manually"></a>Ruční zadání dat 
+## <a name="enter-data-manually"></a>Ruční zadávání dat 
   
 1.  Přidat [ručně zadat Data](./enter-data-manually.md) modulu do experimentu. V tomto modulu můžete najít **datový vstup a výstup** kategorie ve službě Azure Machine Learning. 
   

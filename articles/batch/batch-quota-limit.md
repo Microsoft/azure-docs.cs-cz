@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: de32ae16ea4d3c52b8017f35ae5af6009ab59205
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080908"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -32,12 +32,13 @@ Můžete spustit několik dávkových úloh služby Batch v jednom účtu Batch 
 
 Pokud máte v plánu pro spouštění úloh v produkčním prostředí ve službě Batch, budete muset zvýšit nejméně jeden z kvót nad výchozí. Pokud chcete kvótu zvýšit, můžete otevřít online [žádost o zákaznickou podporu](#increase-a-quota) bez poplatků.
 
-> [!NOTE]
-> Kvóta je kreditního limitu záruku kapacity. Pokud máte velkou kapacitu, kontaktujte prosím podporu Azure.
-
 ## <a name="resource-quotas"></a>Kvóty prostředků
-[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+Kvóta je kreditního limitu záruku kapacity. Pokud máte velkou kapacitu, kontaktujte prosím podporu Azure.
+
+Také Všimněte si, že kvóty není zaručena hodnoty. Kvóty se může lišit v závislosti na změnách ze služby Batch nebo požadavek uživatele Chcete-li změnit hodnoty kvóty na.
+
+[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kvóty jader v režimu předplatného uživatele
 
@@ -45,12 +46,14 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 
 ## <a name="pool-size-limits"></a>Omezení velikosti fondu
 
+Omezení velikosti fondu jsou nastaveny službou Batch. Na rozdíl od [kvóty prostředků](#resource-quotas), tyto hodnoty nelze změnit. Pouze fondy s komunikace v rámci uzlu a vlastních imagí mají omezení, které se liší od standardní kvóta.
+
 | **Prostředek** | **Maximální omezení** |
 | --- | --- |
 | **Výpočetní uzly v [fondu komunikace mezi uzly povolena](batch-mpi.md)**  ||
 | Režim přidělování fondů služba batch | 100 |
 | Režim přidělování fondů předplatné služby batch | 80 |
-| **Výpočetní uzly v [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md)**<sup>1</sup> ||
+| **Výpočetní uzly v [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md)** <sup>1</sup> ||
 | Vyhrazené uzly | 2000 |
 | Uzly s nízkou prioritou | 1000 |
 
@@ -58,11 +61,13 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 
 ## <a name="other-limits"></a>Další omezení
 
+Další omezení služby Batch. Na rozdíl od [kvóty prostředků](#resource-quotas), tyto hodnoty nelze změnit.
+
 | **Prostředek** | **Maximální omezení** |
 | --- | --- |
 | [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu | 4 x počet jader na uzel |
 | [Aplikace](batch-application-packages.md) jeden účet Batch | 20 |
-| Balíčky aplikací na jednu aplikaci | 40 |
+| Balíčky aplikací na aplikaci. | 40 |
 | Balíčky aplikací na fond | 10 |
 | Úloha maximální doba života | 180 dnů<sup>1</sup> |
 
@@ -84,7 +89,7 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit pro váš účet Batc
 
 ### <a name="increase-cores-quota-in-batch"></a>Navyšte kvótu jader ve službě Batch 
 
-1. Vyberte **Nápověda a podpora** dlaždici na řídicím panelu portálu nebo otazník (**?**) v pravém horním rohu portálu.
+1. Vyberte **Nápověda a podpora** dlaždici na řídicím panelu portálu nebo otazník ( **?** ) v pravém horním rohu portálu.
 1. Vyberte **nová žádost o podporu** > **Základy**.
 1. V **Základy**:
    

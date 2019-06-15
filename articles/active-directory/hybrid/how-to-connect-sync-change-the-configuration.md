@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60244338"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: Proveďte změnu výchozí konfigurace
@@ -71,7 +71,7 @@ Výčet nejběžnějších změn se toky atributů. Data ve zdrojovém adresář
    ![Příchozí pravidlo filtr oborů](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    V této části se používá k definování, pro které objekty má pravidlo platit. Pokud je ponecháno prázdné, pravidlo platit pro všechny objekty uživatelů. Nicméně, který bude zahrnovat konferenčních místnostech dojde, účty služeb a dalších objektů jiných osob uživatele.
 4. Na **připojení pravidla** stránce, nechejte pole prázdné.
-5. Na **transformace** stránce, změňte **typ toku** k **výraz**. Pro **cílový atribut**vyberte **givenName**. A pro **zdroj**, zadejte **PCase([givenName])**.
+5. Na **transformace** stránce, změňte **typ toku** k **výraz**. Pro **cílový atribut**vyberte **givenName**. A pro **zdroj**, zadejte **PCase([givenName])** .
    ![Příchozí pravidla transformace](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    Synchronizační modul je velká a malá písmena pro název funkce a název atributu. Pokud zadáte něco v pořádku, zobrazí upozornění, když přidáte pravidlo. Můžete uložit a pokračovat, ale budete muset znovu otevřít a opravte pravidlo.
 6. Klikněte na tlačítko **přidat** uložíte pravidlo.
@@ -266,7 +266,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 3. Klikněte na tlačítko **přidat nové pravidlo** tlačítko vytvořením nového příchozího pravidla.
 4. V části **popis** kartu, zadejte následující konfiguraci:
 
-    | Atribut | Value | Podrobnosti |
+    | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadejte název* | Například *v ze služby AD – UserType uživatele* |
     | Popis | *Zadejte popis* |  |
@@ -278,7 +278,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 
 5. Přejděte na **Scoping filtr** karta a přidat **jednoho oboru filtru skupiny** s následující klauzuli:
 
-    | Atribut | Operátor | Value |
+    | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Uživatel\_ |
 
@@ -286,13 +286,13 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 
 6. Přejděte **transformace** kartu a implementovat pravidlo požadovanou transformaci. Například, pokud jste určili nepoužité místní atribut AD (například extensionAttribute1) jako zdrojový atribut pro UserType, můžete implementovat tok s přímým přístupem atributů:
 
-    | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
+    | Typ toku | Cílový atribut | source | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
     | Direct | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
 
     Například budete chtít odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut userPrincipalName AD končí část domény <em>@partners.fabrikam123.org</em>. Můžete implementovat výrazu takto:
 
-    | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
+    | Typ toku | Cílový atribut | source | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
     | Výraz | UserType | IIf(IsPresent([userPrincipalName]),IIf(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0) "Členů", "Guest"), chyba ("hodnota UserPrincipalName není k dispozici k určení UserType")) | Není zaškrtnuto | Aktualizace |
 
@@ -308,9 +308,9 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 3. Klikněte na tlačítko **přidat nové pravidlo** tlačítko.
 4. V části **popis** kartu, zadejte následující konfiguraci:
 
-    | Atribut | Value | Podrobnosti |
+    | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Name | *Zadejte název* | Například *na AAD – UserType uživatele* |
+    | Název | *Zadejte název* | Například *na AAD – UserType uživatele* |
     | Popis | *Zadejte popis* ||
     | Připojený systém | *Vyberte konektor AAD* ||
     | Typ objektu systému připojené | **Uživatel** ||
@@ -320,7 +320,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 
 5. Přejděte na **Scoping filtr** karta a přidat **jednoho oboru filtru skupiny** pomocí dvou klauzulí:
 
-    | Atribut | Operátor | Value |
+    | Atribut | Operátor | Hodnota |
     | --- | --- | --- |
     | sourceObjectType | ROVNO | Uživatel |
     | cloudMastered | NOTEQUAL | True |
@@ -329,7 +329,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 
 6. Přejděte **transformace** kartu a implementovat následující pravidla transformace:
 
-    | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
+    | Typ toku | Cílový atribut | source | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
     | Direct | UserType | UserType | Není zaškrtnuto | Aktualizace |
 

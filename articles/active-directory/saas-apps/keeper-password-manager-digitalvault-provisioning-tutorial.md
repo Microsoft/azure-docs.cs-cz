@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: zchia
 ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65508562"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Kurz: Nakonfigurovat správce hesel držitel & digitální trezoru pro automatické zřizování uživatelů
@@ -45,7 +45,7 @@ Před konfigurací Správce hesel držitel & digitální trezoru pro automatick�
 
 **Chcete-li přidat správce hesel držitel & digitální trezoru z Galerie aplikací Azure AD, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu vyberte **Azure Active Directory**.
+1. V  **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu vyberte **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -124,7 +124,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
 8. V **e-mailové oznámení** zadejte e-mailovou adresu osoby nebo skupiny, který by měla přijímat oznámení zřizování chyba a zaškrtnutím políčka - **odeslání e-mailové oznámení, když dojde k selhání**.
 
-    ![Oznamovací e-mail](common/provisioning-notification-email.png)
+    ![E-mailové oznámení](common/provisioning-notification-email.png)
 
 9. Klikněte na **Uložit**.
 

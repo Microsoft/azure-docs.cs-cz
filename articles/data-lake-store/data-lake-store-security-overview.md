@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60195246"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Zabezpečení v Azure Data Lake Storage Gen1
@@ -34,7 +34,7 @@ Ověřování je proces, podle kterého se ověřit identitu uživatele při int
 Každé předplatné Azure může být přidružena k instanci služby Azure Active Directory. Pouze uživatelé a služby identit, které jsou definovány ve službě Azure Active Directory můžete přístup k účtu Data Lake Storage Gen1 pomocí webu Azure portal, nástrojů příkazového řádku, nebo prostřednictvím klientských aplikací vaší organizace sestavení pomocí Data Lake Storage Gen1 SDK. Jsou klíčové výhody používání služby Azure Active Directory jako vhodný mechanismus řízení centralizovaný přístup:
 
 * Zjednodušená správa životního cyklu identit. Identita uživatele nebo službu (objektu zabezpečení identity služby) se dají rychle vytvářet a rychle odvolat jednoduše odstranění nebo zakázání účtů v adresáři.
-* Multi-Factor Authentication [Ověřování službou Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro uživatelská přihlášení a transakce.
+* Ověřování službou Multi-Factor Authentication. [Ověřování službou Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro uživatelská přihlášení a transakce.
 * Ověřování z libovolného klienta přes standardní otevřený protokol, jako jsou OAuth nebo OpenID.
 * Federace se službou enterprise adresářových služeb a poskytovatelů cloudových identit.
 

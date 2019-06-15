@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 70e478ac70b7ab53f1357394f3a3cb0d92f41f00
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130806"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075805"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojte se k virtuálnímu počítači SQL serveru v Azure
 
@@ -94,13 +94,15 @@ Server=mysqlvm;Integrated Security=true
 
 ## <a id="change"></a> Změnit nastavení připojení SQL
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Můžete změnit nastavení připojení pro váš virtuální počítač systému SQL Server na webu Azure Portal.
 
-1. Na webu Azure Portal, vyberte **virtuálních počítačů**.
+1. Na webu Azure Portal, vyberte **virtuálních počítačů SQL**.
 
 2. Vyberte virtuální počítač SQL serveru.
 
-3. V části **nastavení**, klikněte na tlačítko **konfigurace systému SQL Server**.
+3. V části **nastavení**vyberte **zabezpečení**.
 
 4. Změnit **úroveň připojení SQL** požadovaná nastavení. Chcete-li změnit nastavení ověřování SQL nebo port serveru SQL Server můžete volitelně použít této oblasti.
 

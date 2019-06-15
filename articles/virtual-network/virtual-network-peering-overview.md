@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 22521abbc341fa9999738dd51301d3f84c18627a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919309"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077630"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -90,7 +90,7 @@ Informace o oprávněních požadovaných k vytvoření partnerského vztahu vir
 
 Za příchozí a výchozí přenos využívající partnerské propojení virtuálních sítí se účtuje nominální poplatek. Další informace o cenách partnerských vztahů virtuálních sítí a globálních partnerských vztahů virtuálních sítí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuální síť využila bránu VPN v partnerské virtuální síti pro připojení mezi více umístěními nebo virtuálními sítěmi. Datové přenosy procházející v takové situaci vzdálenou bránou podléhají [poplatkům za bránu VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/), ale ne [poplatkům za partnerský vztah virtuální sítě](https://azure.microsoft.com/pricing/details/virtual-network). Například pokud virtuální síť má bránu sítě VPN pro připojení k místním a VNetB je v partnerském vztahu pro virtuální síť s příslušné vlastnosti nakonfigurovat, provoz z VNetB k místnímu je účtovat jenom poplatky za výchozí přenos dat za ceny služby VPN gateway. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Průchod bránou se partnerský vztah vlastnost, která umožňuje virtuální síť používat bránu VPN/ExpressRoute v partnerské virtuální síti pro různé místní nebo připojení VNet-to-VNet. Přenosů HTTP procházejících vzdálené brány v tomto scénáři se vztahuje [poplatky za bránu VPN](https://azure.microsoft.com/pricing/details/vpn-gateway/) nebo poplatky za bránu ExpressRoute a na ně [poplatků za partnerský vztah virtuální sítě.](https://azure.microsoft.com/pricing/details/virtual-network) Například pokud virtuální síť má bránu sítě VPN pro připojení k místním a VNetB je v partnerském vztahu pro virtuální síť s příslušné vlastnosti nakonfigurovat, provoz z VNetB k místnímu je účtovat jenom poplatky za výchozí přenos dat za ceny služby VPN gateway nebo ExpressRoute ceny. V této situaci se neúčtují poplatky za partnerský vztah virtuálních sítí. Zjistěte, jak [nakonfigurovat průchod bránou VPN pro partnerský vztah virtuální sítě](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Další postup
 

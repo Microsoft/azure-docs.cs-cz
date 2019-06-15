@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630835"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Rozbalení připojení do racku a zapojení kabeláže zařízení StorSimple 8600
@@ -216,9 +216,9 @@ Pro podporu tohoto redundantní kontroler převzetí služeb při selhání, bud
 | Štítek | Popis |
 | --- | --- |
 | A |LAN s přístupem k Internetu |
-| B |Řadič 0 |
+| B |Kontroler 0 |
 | C |PCM 0 |
-| D |Řadič 1 |
+| D |Kontroler 1 |
 | E |PCM 1 |
 | F |Kontroleru EBOD 0 |
 | G |Kontroleru EBOD 1 |

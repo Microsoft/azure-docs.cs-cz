@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60633776"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple s Veeam jako cíl zálohování
@@ -257,7 +257,7 @@ V následujícím příkladu používáme GFS otočení. V příkladu se předpo
 
 Podle předchozí předpoklady, vytvořte 26-TiB StorSimple vrstveného svazku pro měsíční a roční úplné zálohování. Vytvoření 5 TiB StorSimple vrstveného svazku pro každý přírůstkové zálohování denně.
 
-| Typ zálohování uchovávání | Velikost (TiB) | Násobitel GFS\* | Celková kapacita (TB)  |
+| Typ zálohování uchovávání | Velikost (TB) | Násobitel GFS\* | Celková kapacita (TB)  |
 |---|---|---|---|
 | Týdenní úplné | 1 | 4  | 4 |
 | Každodenní přírůstkové | 0,5 | 20 (cykly stejný počet týdnů za měsíc) | 12 (2 pro další kvótu) |
@@ -319,8 +319,8 @@ Tady je příklad plánu otočení GFS čtyři týdny, měsíční nebo roční:
 | Typ frekvence/zálohování | Úplná | Přírůstkové (1-5 dní)  |   
 |---|---|---|
 | Každý týden (1 – 4 týdny) | Sobota | Pondělí – pátek |
-| měsíčně  | Sobota  |   |
-| Ročně | Sobota  |   |
+| Měsíční  | Sobota  |   |
+| Roční | Sobota  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Veeam úlohy zálohování přiřadit svazky zařízení StorSimple
@@ -378,7 +378,7 @@ Následující obrázek ukazuje typické krátkodobé uchování místní (pro s
 
 Následující tabulka ukazuje, jak nastavit zálohování pro místní i StorSimple disky. Obsahuje požadavky na kapacitu jednotlivých a celkový počet.
 
-| Typ zálohování a uchovávání | Úložiště | Velikost (TiB) | Násobitel GFS | Celková kapacita\* (TB) |
+| Typ zálohování a uchovávání | Úložiště | Velikost (TB) | Násobitel GFS | Celková kapacita\* (TB) |
 |---|---|---|---|---|
 | Týden 1 (úplných a přírůstkových) |Místní disk (krátkodobé)| 1 | 1 | 1 |
 | StorSimple týdnů 2 až 4 |StorSimple disku (dlouhodobé) | 1 | 4 | 4 |
@@ -399,8 +399,8 @@ Otočení GFS týdenní, měsíční a roční plán
 | Týdnu 2 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 3 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
 | Týdnu 4 | StorSimple týdnů 2 až 4 |   |   |   |   |   |
-| měsíčně | Každý měsíc StorSimple |   |   |   |   |   |
-| Ročně | Každý rok StorSimple  |   |   |   |   |   |
+| Měsíční | Každý měsíc StorSimple |   |   |   |   |   |
+| Roční | Každý rok StorSimple  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Úloha kopírování Veeam přiřadit svazky zařízení StorSimple
 

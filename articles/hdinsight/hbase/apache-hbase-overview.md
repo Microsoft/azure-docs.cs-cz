@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/23/2019
+ms.topic: overview
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 358b835b42862bd0ceb1a5c4a48ba4b18a567f4d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
-ms.translationtype: MT
+ms.openlocfilehash: 43243809454b7967648ea6502d7575cb4a7acdc6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235913"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078263"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Co je Apache HBase v Azure HDInsight
 
@@ -51,13 +51,8 @@ Byl vytvořen případ použití canonical, pro které je vytvořené BigTable (
   
     Aplikace lze nad HBase spouštět v případě použití jako datového úložiště. Příklady zahrnují Phoenix, [OpenTSDB](http://opentsdb.net/), Kiji a Titan. Aplikace lze také integrovat s HBase. Mezi příklady patří [Apache Hive](https://hive.apache.org/), [Apache Pig](https://pig.apache.org/), [Solr](https://lucene.apache.org/solr/), [Apache Storm](https://storm.apache.org/), [Apache Flume](https://flume.apache.org/), [ Apache Impala](https://impala.apache.org/), [Apache Spark](https://spark.apache.org/) , [Ganglia](http://ganglia.info/), a [Apache Drill](https://drill.apache.org/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+
 * [Začněte používat Apache HBase s Apache Hadoop v HDInsight](./apache-hbase-tutorial-get-started-linux.md)
 * [Vytváření clusterů HDInsight v síti Azure Virtual Network](./apache-hbase-provision-vnet.md)
 * [Konfigurace replikace Apache HBase v HDInsight](apache-hbase-replication.md)
-* [Vytváření aplikací v Javě, které používají Apache HBase s HDInsight (Hadoop) pomocí nástroje Apache Maven](./apache-hbase-build-java-maven-linux.md)
-
-## <a name="see-also"></a>Viz také
-* [Apache HBase](https://hbase.apache.org/)
-* [Apache HBase referenční příručka](https://hbase.apache.org/book.html)
-* [Bigtable: Systém distribuovaného úložiště pro strukturovaná Data](https://research.google.com/archive/bigtable.html)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 83cea56cecf9792c829e062965fe39b63201af3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 518f1048224a97943756c5b51b83cd509f82e11e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072499"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
 
@@ -80,12 +80,12 @@ Speech service také poskytuje koncové body REST pro požadavky na převod ře�
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-Převod řeči na text referenční dokumentaci, naleznete v tématu [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Převod řeči na text referenční dokumentaci, naleznete v tématu [rozhraní REST API pro rozpoznávání řeči na text](rest-speech-to-text.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
-Převod textu na řeč referenční dokumentaci najdete v tématu [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Převod textu na řeč referenční dokumentaci najdete v tématu [rozhraní REST API pro převod textu na řeč](rest-text-to-speech.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

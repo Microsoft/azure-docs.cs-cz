@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071629"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
@@ -36,6 +36,8 @@ Pravidlo upozornění metriky můžete definovat tak, že zadáte cílový prost
 - Prahová hodnota: 70
 
 Od doby, kdy se vytvoří pravidlo upozornění monitorování spouští každou 1 minutu a prohledá hodnoty metrik za posledních 5 minut a zkontroluje, pokud průměr těchto hodnot, které je vyšší než 70. Pokud tedy je splněna podmínka, průměrné procento CPU za posledních 5 minut vyšší než 70, pravidlo upozornění aktivuje aktivovaná upozornění. Pokud jste nakonfigurovali e-mailu nebo akce hook webové do skupiny akcí přidružené pravidlo upozornění, zobrazí se aktivovaná upozornění u obou.
+
+Při použití více podmínek v jednom pravidlu, pravidlo "a" podmínky společně.  To znamená upozornění je vyvoláno, když všechny podmínky upozornění vyhodnotí jako true a vyřešit, když jedna z podmínek už není true. A příkladem tohoto typu výstrahy může být výstraha při "CPU vyšší než 90 %" a "délka fronty je více než 300 položek". 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Pravidlo upozornění s typem dynamická podmínka
 

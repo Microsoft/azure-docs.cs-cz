@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60587916"
 ---
 # <a name="createuidefinition-functions"></a>Funkcí CreateUiDefinition
@@ -131,7 +131,7 @@ Následující příklad vrátí `"FOOBAR"`:
 ## <a name="collection-functions"></a>Kolekce funkcí
 Tyto funkce jde použít s kolekcí, jako jsou řetězce JSON, polí a objekty.
 
-### <a name="contains"></a>obsahuje
+### <a name="contains"></a>Obsahuje
 Vrátí `true` řetězec obsahuje zadaný podřetězec, pole obsahuje zadanou hodnotu, nebo obsahuje objekt se zadaným klíčem.
 
 #### <a name="example-1-string"></a>Příklad 1: řetězec
@@ -164,7 +164,7 @@ Následující příklad vrátí `true`:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>Délka
+### <a name="length"></a>length
 Vrátí počet znaků v řetězci, počet hodnot v poli nebo počet klíčů v objektu.
 
 #### <a name="example-1-string"></a>Příklad 1: řetězec
@@ -335,7 +335,7 @@ Následující příklad vrátí `{"key1": "foobar"}`:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>přeskočit
+### <a name="skip"></a>Přeskočit
 Vynechá zadaný počet prvků v kolekci a vrátí zbývající prvky.
 
 #### <a name="example-1-string"></a>Příklad 1: řetězec
@@ -469,7 +469,7 @@ Následující příklad vrátí `true`:
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>ne
+### <a name="not"></a>Not
 Vrátí `true` Pokud se vyhodnotí jako parametr `false`. Tato funkce podporuje jenom parametry typu logická hodnota.
 
 Následující příklad vrátí `true`:
@@ -493,7 +493,7 @@ Předpokládejme `element1` a `element2` nejsou definovány. Následující př�
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
-## <a name="conversion-functions"></a>Převodní funkce
+## <a name="conversion-functions"></a>Funkce pro převod
 Tyto funkce lze použít k převodu hodnoty mezi typy dat JSON a kódování.
 
 ### <a name="int"></a>int
@@ -653,7 +653,7 @@ Následující příklad vrátí `3`:
 "[add(1, 2)]"
 ```
 
-### <a name="sub"></a>Sub
+### <a name="sub"></a>sub
 Odečte druhé číslo z první čísla a vrátí výsledek.
 
 Následující příklad vrátí `1`:

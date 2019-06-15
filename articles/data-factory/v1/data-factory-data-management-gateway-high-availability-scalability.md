@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60488411"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána správy dat – vysoká dostupnost a škálovatelnost (Preview)
@@ -165,7 +165,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Každý uzel integration runtime musí důvěřovat tomuto certifikátu, stejně jako klientský počítač, na kterém běží aplikace Správce pověření. 
   > [!NOTE]
   > Aplikace Správce pověření se používá při bezpečně nastavení přihlašovacích údajů z Průvodce kopírováním a webu Azure Portal. A to může být z libovolného počítače ve stejné síti jako místní aktivace / soukromé úložiště.
-- Zástupné certifikáty jsou podporovány. Pokud je váš plně kvalifikovaný název domény **node1.domain.contoso.com**, můžete použít ***. domain.contoso.com** jako název subjektu certifikátu.
+- Zástupné certifikáty jsou podporovány. Pokud je váš plně kvalifikovaný název domény **node1.domain.contoso.com**, můžete použít * **. domain.contoso.com** jako název subjektu certifikátu.
 - Certifikátů SAN se nedoporučuje, protože se použijí jenom poslední položka alternativní názvy subjektů a všechny ostatní se bude ignorovat kvůli aktuálním omezením. Například máte certifikát SAN jehož SAN jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, tento certifikát můžete použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
 - Certifikátů CNG pomocí klíče nejsou podporovány.
@@ -186,7 +186,7 @@ Můžete povolit **upřesňující nastavení** v **brány** stránku, abyste zo
 
 Vlastnosti monitorování | Popis
 :------------------ | :---------- 
-Name | Název logické brány a uzly, které jsou přidružená k bráně.  
+Název | Název logické brány a uzly, které jsou přidružená k bráně.  
 Status | Stav logické brány a uzly brány. Příklad: Online/Offline/Limited/atd. Informace o těchto stavů najdete v tématu [stav brány](#gateway-status) oddílu. 
 Version | Zobrazuje verzi logické brány a každý uzel brány. Verze logické brány je určena na základě verze Většina uzlů ve skupině. Pokud nejsou správně uzly s různými verzemi v nastavení logické brány pouze uzly se stejným číslem verze jako funkci logické brány. Ostatní jsou v režimu omezen a potřeba ručně aktualizovat (pouze v případě automatických aktualizací selže). 
 Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímek téměř v reálném čase. 

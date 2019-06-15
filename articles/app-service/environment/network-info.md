@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b29dec76fb6b1f9883c5c594d4719c9f3032089e
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514626"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069382"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -58,24 +58,32 @@ Když škálujete směrem nahoru nebo dolů, se přidají nové role odpovídaj�
 
 ### <a name="ase-inbound-dependencies"></a>Služba ASE příchozí závislosti ###
 
-Služba ASE příchozí přístup, který se závislosti:
+Jenom pro službu ASE k provozu služby ASE vyžaduje následující porty otevřené:
 
 | Použití | Z | Do |
 |-----|------|----|
 | Správa | Adresy pro správu aplikace app Service | Podsíti služby ASE: 454, 455 |
 |  Interní komunikace služby ASE | Podsíti služby ASE: Všechny porty | Podsíti služby ASE: Všechny porty
-|  Povolit nástroji Azure load balancer příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíti služby ASE: Všechny porty
-|  Aplikace přiřazené IP adresy | Přiřazené adresy aplikace | Podsíti služby ASE: Všechny porty
+|  Povolit nástroji Azure load balancer příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíti služby ASE: 16001
 
-Řízení příchozích přenosů poskytuje příkazy a ovládání služby ase kromě systému sledování. Zdrojové adresy pro tento provoz jsou uvedeny v [adresy služby ASE správu] [ ASEManagement] dokumentu. Konfigurace zabezpečení sítě je potřeba povolit přístup ze všech IP adres na portech 454 a 455. Pokud zablokujete přístup z těchto adres, vaše služba ASE přestane není v pořádku a pak zablokuje.
+Existují 2 porty, které můžete zobrazit jako otevřený na portu kontroly 7654 a 1221. Tyto odpovídají IP adresu a nic víc. Může být blokované v případě potřeby. 
+
+Řízení příchozích přenosů poskytuje příkazy a ovládání služby ase kromě systému sledování. Zdrojové adresy pro tento provoz jsou uvedeny v [adresy služby ASE správu] [ ASEManagement] dokumentu. Konfigurace zabezpečení sítě je potřeba povolit přístup z adresy pro správu služby ASE na portech 454 a 455. Pokud zablokujete přístup z těchto adres, vaše služba ASE přestane není v pořádku a pak zablokuje. Provoz TCP, který je k dispozici ve na portech 454 a 455 musí vracet ze stejné virtuální IP adresy nebo je nutné kvůli problému asymetrického směrování. 
 
 V podsíti služby ASE jsou mnoho portech používaných ke komunikaci interní komponenty a můžete změnit. To vyžaduje všechny porty v podsíti služby ASE byla přístupná z podsítě služby ASE. 
 
-Minimální porty, které musí být otevřené pro komunikaci mezi Azure load balancer a podsíti služby ASE jsou 454 a 455 16001. 16001 port je používán pro keep alive přenosy mezi nástroje pro vyrovnávání zatížení a služby ASE. Pokud používáte službu ASE, pak můžete uzamknout provoz na právě 454, 455, 16001 porty.  Pokud používáte externí služby ASE, budete muset vzít v úvahu přístupové porty normální aplikace.  Pokud používáte aplikace přiřazené adresy, musíte otevřít na všech portech.  Když se konkrétní aplikaci přiřadí adresu, nástroje pro vyrovnávání zatížení bude používat porty, které nejsou známé z předem směrovat provoz protokolu HTTP a HTTPS do služby ASE.
+Minimální porty, které musí být otevřené pro komunikaci mezi Azure load balancer a podsíti služby ASE jsou 454 a 455 16001. 16001 port je používán pro keep alive přenosy mezi nástroje pro vyrovnávání zatížení a služby ASE. Pokud používáte službu ASE, pak můžete uzamknout provoz na právě 454, 455, 16001 porty.  Pokud používáte externí služby ASE, budete muset vzít v úvahu přístupové porty normální aplikace.  
 
-Pokud používáte aplikace přiřazené IP adresy, budete muset povolit přenosy z IP adres přiřazených k vašim aplikacím k podsíti služby ASE.
+Ostatní porty budete muset sami se týkají jsou porty aplikace:
 
-Provoz TCP, který je k dispozici ve na portech 454 a 455 musí vracet ze stejné virtuální IP adresy nebo je nutné kvůli problému asymetrického směrování. 
+| Použití | Porty |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Visual Studio vzdálené ladění  |  4020, 4022, 4024 |
+|  Webová služba pro nasazení | 8172 |
+
+Pokud zablokujete porty aplikací, vaše služba ASE může i nadále fungovat, ale vaše aplikace nemusí.  Pokud používáte aplikace přiřazené IP adresy s externí služby ASE, budete muset povolit přenosy z IP adres přiřazených k vašim aplikacím k podsíti služby ASE na porty uvedené na portálu služby ASE > stránky IP adresy.
 
 ### <a name="ase-outbound-dependencies"></a>Odchozí závislostí služby ASE ###
 
@@ -83,15 +91,15 @@ Pro odchozí přístup k službě ASE závisí na více externích systémů. Mn
 
 Služba ASE komunikuje navýšení kapacity k internetovým adresám přístupné na následující porty:
 
-| Port | Využití |
+| Využití | Porty |
 |-----|------|
-| 53 | DNS |
-| 123 | NTP |
-| 80/443 | Seznam CRL, aktualizace Windows, Linux závislosti, služby Azure |
-| 1433 | Azure SQL | 
-| 12000 | Monitorování |
+| DNS | 53 |
+| NTP | 123 |
+| 8CRL Windows, Linux závislosti, aktualizace služby Azure | 80/443 |
+| Azure SQL | 1433 | 
+| Monitorování | 12000 |
 
-Úplný seznam odchozí závislosti jsou uvedené v tomto dokumentu, který popisuje [omezovat se jenom odchozí provoz služby App Service Environment](./firewall-integration.md). Pokud službu ASE ztratí přístup k jeho závislostí, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, služba ASE je pozastaveno. 
+Odchozí závislosti jsou uvedené v tomto dokumentu, který popisuje [omezovat se jenom odchozí provoz služby App Service Environment](./firewall-integration.md). Pokud službu ASE ztratí přístup k jeho závislostí, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, služba ASE je pozastaveno. 
 
 ### <a name="customer-dns"></a>Zákazník DNS ###
 
@@ -165,12 +173,12 @@ Požadované položky v skupinu zabezpečení sítě pro službu ASE na funkci, 
 
 DNS port není nutné přidat, protože přenosy do DNS nemá vliv pravidla skupiny zabezpečení sítě. Tyto porty nezahrnují porty, které vaše aplikace potřebuje pro úspěšné používání. Běžná aplikace přístupové porty jsou:
 
-| Použití | Z | Do |
-|----------|---------|-------------|
-|  HTTP/HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
-|  FTP/FTPS    | Konfigurovatelná uživatelem |  21, 990, 10001-10020 |
-|  Visual Studio vzdálené ladění  |  Konfigurovatelná uživatelem |  4020, 4022, 4024 |
-|  Webová služba pro nasazení | Konfigurovatelná uživatelem | 8172 |
+| Použití | Porty |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Visual Studio vzdálené ladění  |  4020, 4022, 4024 |
+|  Webová služba pro nasazení | 8172 |
 
 Pokud příchozí a odchozí požadavky jsou vzít v úvahu, vypadat podobně jako na skupiny zabezpečení sítě v tomto příkladu skupiny zabezpečení sítě. 
 

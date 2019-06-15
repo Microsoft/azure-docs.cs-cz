@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312378"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Rozdílové kopírování z databáze s tabulkou ovládacího prvku
@@ -102,13 +102,13 @@ Tato šablona nejdřív načte staré hodnoty meze a porovná ho s aktuální ho
 
 7. Vyberte **pomocí této šablony**.
 
-     ![Použít tuto šablonu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
+     ![Pomocí této šablony](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable7.png)
     
 8. Zobrazí se dostupné kanál, jak je znázorněno v následujícím příkladu:
 
      ![Zkontrolujte kanálu](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Vyberte **uloženou proceduru**. Pro **název uložené procedury**, zvolte **[update_watermark]**. Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
+9. Vyberte **uloženou proceduru**. Pro **název uložené procedury**, zvolte **[update_watermark]** . Vyberte **importovat parametr**a pak vyberte **Přidat dynamický obsah**.  
 
      ![Nastavte aktivitu uložené procedury](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 

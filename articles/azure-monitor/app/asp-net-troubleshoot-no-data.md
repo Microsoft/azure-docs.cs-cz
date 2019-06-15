@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 23d7b0626dba5a88c100868907ecf868a895fc9e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299306"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059615"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -176,7 +176,7 @@ Lze je vypnout, ale to se nedoporučuje. Vzorkování je navržený tak, aby sou
 
 ## <a name="client-ip-address-is-0000"></a>IP adresa klienta je 0.0.0.0
 
-5. února 2018 jsme oznámili, že jsme odebrali protokolování IP adresu klienta. Geografické umístění to neovlivní.
+5\. února 2018 jsme oznámili, že jsme odebrali protokolování IP adresu klienta. Geografické umístění to neovlivní.
 
 > [!NOTE]
 > Pokud je nutné nejprve 3 oktety IP adresu, můžete použít [inicializátor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) přidat vlastní atribut.
@@ -232,6 +232,27 @@ Postupujte podle těchto pokynů k zachycení protokoly pro řešení potíží 
 3. Restart procesu tak, aby tato nová nastavení se prodlouží SDK
 
 4. Tyto změny vrátit, až budete hotovi.
+
+
+## <a name="PerfView"></a> Shromažďování protokolů pomocí nástroje PerfView
+[PerfView](https://github.com/Microsoft/perfview) je bezplatný nástroj Diagnostika a analýza výkonu, který vám pomůže určit procesoru, paměti a další potíže díky shromažďování a vizualizace diagnostické informace z mnoha zdrojů.
+
+Application Insights SDK protokol EventSource samoobslužné řešení potíží protokoly, které se dají zachytit pomocí nástroje PerfView.
+
+Shromažďování protokolů, stáhněte si nástroje PerfView a spusťte tento příkaz:
+```cmd
+PerfView.exe collect /onlyProviders=*Microsoft-ApplicationInsights-* -MaxCollectSec:300
+```
+
+Tyto parametry můžete upravit podle potřeby.
+
+- **MaxCollectSec**. Nastavte tento parametr, aby se zabránilo PerfView po neomezenou dobu a které mají vliv na výkon vašeho serveru.
+- **OnlyProviders**. Nastavte tento parametr pouze pro shromažďování protokolů ze sady SDK. Tento seznam podle konkrétní šetření můžete upravit. 
+
+
+Další informace
+- [Záznam trasování výkonu pomocí nástroje PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
+- [Zdroje událostí Application Insights](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>Pořád nefunguje...
 * [Fórum pro Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

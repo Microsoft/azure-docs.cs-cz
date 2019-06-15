@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60241594"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
@@ -29,7 +29,7 @@ ms.locfileid: "60241594"
 
 * V operaci Synchronization Service Manager, všechny importu nebo exportu v místním AD selže s **přihlašovací údaje bez zahájení** chyby.
 
-* V prohlížeči událostí pro Windows, protokolu událostí aplikace obsahuje chybu s **6000 ID události** a zpráva **'agenta pro správu "contoso.com" se nepodařilo spustit, protože pověření je neplatné'**.
+* V prohlížeči událostí pro Windows, protokolu událostí aplikace obsahuje chybu s **6000 ID události** a zpráva **'agenta pro správu "contoso.com" se nepodařilo spustit, protože pověření je neplatné'** .
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Jak aktualizovat službu synchronizace s nové heslo pro účet služby AD DS

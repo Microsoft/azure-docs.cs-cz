@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 22d85f7a1c5b89c005b4c5b92f2f6b9ea449fe8d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064072"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -66,8 +66,8 @@ Parametry konfigurace jsou k dispozici jako dokumenty JSON:
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
@@ -83,12 +83,14 @@ Parametry konfigurace jsou k dispozici jako dokumenty JSON:
 
 ### <a name="configuration-properties"></a>Vlastnosti konfigurace
 
-| Parametr | Popis | Povinné / volitelné |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže filtrování vulgárních výrazů `masked` hvězdičky, která nahradí vulgárních výrazů `removed` výsledek, který zruší všechny vulgárních výrazů nebo `tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `masked`. | Nepovinné |
-| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. | Volitelná |
- | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. | Volitelná |
- | `AddSentiment` | Určuje, že se přidaly subjektivního hodnocení utterance. Platné hodnoty jsou `true` umožňující subjektivního hodnocení na utterance a `false` (výchozí hodnota) pro jeho zakázání. | Volitelná |
+Použijte tyto volitelné vlastnosti konfigurace určené k transkripci:
+
+| Parametr | Popis |
+|-----------|-------------|
+| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže filtrování vulgárních výrazů `masked` hvězdičky, která nahradí vulgárních výrazů `removed` výsledek, který zruší všechny vulgárních výrazů nebo `tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `masked`. |
+| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
+ | `AddWordLevelTimestamps` | Určuje, pokud úroveň časová razítka slovo měla být přidána do výstupu. Platné hodnoty jsou `true` umožňující slovo úrovně časová razítka a `false` (výchozí hodnota) pro jeho zakázání. |
+ | `AddSentiment` | Určuje, že se přidaly subjektivního hodnocení utterance. Platné hodnoty jsou `true` umožňující subjektivního hodnocení na utterance a `false` (výchozí hodnota) pro jeho zakázání. |
 
 ### <a name="storage"></a>Úložiště
 
@@ -151,9 +153,9 @@ Ukázka výstupu JSON vypadá níže:
 ```
 Funkce používá model mínění, která je aktuálně ve verzi Beta.
 
-## <a name="sample-code"></a>Ukázkový kód
+## <a name="sample-code"></a>Ukázka kódu
 
-Celá ukázka je k dispozici v [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples) uvnitř `samples/batch` podadresáře.
+Kompletní ukázky jsou k dispozici v [ukázkového úložiště Githubu](https://aka.ms/csspeech/samples) uvnitř `samples/batch` podadresáře.
 
 Budete muset přizpůsobit vzorový kód s informace o vašem předplatném, oblasti služby SAS URI odkazující na zvukový soubor přepisy a modelování ID v případě, že chcete použít vlastní akustických nebo jazyka modelu. 
 

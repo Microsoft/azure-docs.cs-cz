@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d60ecfff4e634d6a92eaf1022761c2f23167918
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859139"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Kurz: Integrace Azure Active Directory s Andromeda
 
@@ -55,7 +55,7 @@ Konfigurace integrace Andromeda do služby Azure AD, budete muset přidat Androm
 
 **Chcete-li přidat Andromeda z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -129,9 +129,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s Andromeda, proveďte násle
 
 7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------ | -----------|
-    | role        | Konkrétní role aplikace |
+    | roles        | Konkrétní role aplikace |
     | type        | Typ aplikace |
     | Společnosti       | CompanyName |
 
@@ -260,7 +260,7 @@ V této části je povolit Britta Simon k udělení přístupu k Andromeda použ
 
 V této části se vytvoří uživateli Britta Simon v Andromeda. Andromeda podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Andromeda, vytvoří se nový po ověření. Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Andromeda klienta](https://www.ngcsoftware.com/support/).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

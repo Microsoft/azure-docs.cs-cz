@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dc08fd5cc4abbf5d16f9d49874ec2c70cace165b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60867382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067971"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Omezení přístupu ke službě Azure container registry pomocí služby Azure virtual network nebo pravidla brány firewall
 
@@ -216,7 +216,7 @@ I nadále [ověřit přístup k registru](#verify-access-to-the-registry).
 
 ## <a name="allow-access-from-an-ip-address"></a>Povolit přístup z IP adresy
 
-V této části konfigurace vašeho registru kontejneru, pokud chcete povolit přístup z podsítě ve virtuální síti Azure. Jsou k dispozici ekvivalentní kroky pomocí Azure CLI a webu Azure portal.
+V této části konfigurace vašeho registru kontejneru, pokud chcete povolit přístup z konkrétní IP adresu nebo rozsah. Jsou k dispozici ekvivalentní kroky pomocí Azure CLI a webu Azure portal.
 
 ### <a name="allow-access-from-an-ip-address---cli"></a>Povolit přístup z IP adresy – rozhraní příkazového řádku
 

@@ -16,10 +16,10 @@ ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60431701"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro automatické zřizování uživatelů
@@ -52,7 +52,7 @@ Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jak
 
 [Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-## <a name="assign-users-and-groups"></a>Přiřadit uživatele a skupiny
+## <a name="assign-users-and-groups"></a>Přiřazení uživatelů a skupin
 **Pole > Uživatelé a skupiny** karta na portálu Azure portal umožňuje určit, kteří uživatelé a skupiny by měl být udělen přístup k poli. Přiřazení uživatele nebo skupiny způsobí, že dojde k následující věci:
 
 * Azure AD umožňuje přiřazené uživateli (buď pomocí přímého přiřazení nebo členství ve skupině) k ověření pole. Pokud uživatel není přiřazen, Azure AD je k přihlášení do pole neumožňuje a vrátí chybu na přihlašovací stránce služby Azure AD.
@@ -95,7 +95,7 @@ Cílem této části se popisují, jak povolit zřizování uživatelských úč
 
 4. Nastavte **režim zřizování** k **automatické**. 
 
-    ![zřizování](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Zřizování](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. V části **přihlašovacích údajů správce** klikněte na tlačítko **Authorize** otevřete dialogové okno přihlášení pole v novém okně prohlížeče.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f80ecf02a7e517300c41e84986659a66cfa11c90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60414932"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
@@ -96,7 +96,7 @@ Pokud dojde k některé z těchto chyb, doporučujeme vám [obraťte se na podpo
 
 Pokud jsou vaši uživatelé [potíže s dvoustupňovým ověřováním](../user-help/multi-factor-authentication-end-user-troubleshoot.md), pomoci jim svým diagnostikovat problémy.
 
-### <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
+### <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
 
 Pokud potřebujete další pomoc, obraťte se na pracovníka podpory prostřednictvím [podporu ověřování Azure Multi-Factor Authentication Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Pokud nás kontaktujete, je užitečné, pokud zahrnete co nejvíce informací o svém problému nejvíce. Můžete zadat informace obsahuje stránka, kde jste viděli chyby, kód chyby ID konkrétní relace, ID uživatele, který viděli chyby a ladit protokoly.
 

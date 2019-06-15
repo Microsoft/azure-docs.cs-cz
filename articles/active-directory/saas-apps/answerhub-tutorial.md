@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901285"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106946"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Integrace Azure Active Directory s AnswerHub
 
@@ -180,11 +180,11 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
 3. Ve vlastnostech uživatele dokončete tyto kroky.
 
-    ![Vlastnosti uživatele](common/user-properties.png)
+    ![Uživatelské vlastnosti](common/user-properties.png)
 
     a. V **název** zadejte **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon\@< yourcompanydomain.extension >**.  
+    b. V **uživatelské jméno** zadejte **brittasimon\@< yourcompanydomain.extension >** .  
     Například, BrittaSimon@contoso.com.
 
     c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
@@ -242,7 +242,7 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k AnswerHub, bud
 > [!NOTE]
 > Můžete použít jakýkoli jiný nástroj vytváření uživatelského účtu nebo rozhraní API poskytovaných AnswerHub nastavení uživatelských účtů služby Azure AD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

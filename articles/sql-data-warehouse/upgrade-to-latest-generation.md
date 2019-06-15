@@ -11,10 +11,10 @@ ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
 ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60310269"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
@@ -27,7 +27,7 @@ Nově můžete bez problémů upgradovat na úroveň SQL Data Warehouse – Comp
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
-## <a name="applies-to"></a>Platí pro
+## <a name="applies-to"></a>Platná pro
 
 Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datové sklady v [podporované oblasti](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
@@ -205,7 +205,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 4. Vyberte buď **body obnovení automaticky** nebo **uživatelem definované body obnovení**.
 
-    ![Automatické body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Body obnovení automaticky](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Pro body obnovení uživatelsky definovaná **vyberte bod obnovení** nebo **vytvořit nový bod obnovení uživatelem definované**. Vyberte zeměpisnou oblast podporovaném serveru Gen2. 
 

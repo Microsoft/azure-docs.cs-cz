@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9dcc353d634d66d4bb972ed5ac7607a5cc823b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eef826f2987ca6e8d78841344359ea276e0f0fc3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65869326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>Kurz: Integrace Azure Active Directory s Pexip
 
@@ -53,7 +53,7 @@ Konfigurace integrace Pexip do služby Azure AD, budete muset přidat Pexip z Ga
 
 **Chcete-li přidat Pexip z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -180,7 +180,7 @@ V této části je povolit Britta Simon k udělení přístupu k Pexip použití
 
 V této části vytvoříte uživatele v Pexip jako Britta Simon. Práce s [tým podpory Pexip](https://support.videxio.com) přidat uživatele na platformě Pexip. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

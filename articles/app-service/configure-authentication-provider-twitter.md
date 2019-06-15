@@ -16,10 +16,10 @@ ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851533"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Konfigurace aplikace App Service pro použití přihlášení k Twitteru
@@ -35,7 +35,7 @@ K dokončení postupu v tomto tématu, musíte mít účtu sítě Twitter, kter�
 3. Zadejte **název** a **popis** pro novou aplikaci. Vložit ve vaší aplikaci **URL** pro **webu** hodnotu. Potom **adresu URL zpětného volání**, vložte **adresu URL zpětného volání** jste si zkopírovali dříve. Jde o vaše mobilní aplikace s cestu, */.auth/login/twitter/callback*. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že budou používat schéma HTTPS.
 4. V dolní části stránky přečtěte si a přijměte podmínky. Pak klikněte na tlačítko **vytvoření aplikace Twitter**. Registruje tato aplikace zobrazí podrobnosti o aplikaci.
 5. Klikněte na tlačítko **nastavení** kartě **povolit této aplikace se použije k přihlášení pomocí Twitteru**, pak klikněte na tlačítko **aktualizace nastavení**.
-6. Vyberte **klíče a přístupové tokeny** kartu. Poznamenejte si hodnoty **uživatelský klíč (klíč rozhraní API)** a **uživatelský tajný klíč (tajný klíč rozhraní API)**.
+6. Vyberte **klíče a přístupové tokeny** kartu. Poznamenejte si hodnoty **uživatelský klíč (klíč rozhraní API)** a **uživatelský tajný klíč (tajný klíč rozhraní API)** .
    
    > [!NOTE]
    > Uživatelský tajný klíč je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný kód nebo distribuovat s vaší aplikací.

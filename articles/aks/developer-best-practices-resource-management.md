@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: zarhoads
-ms.openlocfilehash: aebade14f3a8a1095925d17325ce99b78031dc32
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073953"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vývojáře aplikací ke správě prostředků ve službě Azure Kubernetes Service (AKS)
@@ -74,6 +74,8 @@ S Azure Dev mezery vývoj, ladění a testování aplikací přímo na clusteru 
 
 Tento integrované vývojové a testovací proces s mezerami Dev snižuje potřebu místní testovací prostředí, jako například [minikube][minikube]. Místo toho vyvíjejte a testujte proti clusteru AKS. Tento cluster budou zabezpečené a izolované, jak je uvedeno v předchozí části týkající se použití oborů názvů logicky izolovat clusteru. Pokud vaše aplikace jsou připraveny k nasazení do produkčního prostředí, můžete bez obav nasadit jako vývoj bylo provedeno proti skutečným clusterem AKS.
 
+Azure Dev prostory je určena pro použití s aplikací, které běží na systému Linux podů a uzly.
+
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Použití rozšíření Visual Studio Code pro Kubernetes
 
 **Osvědčené postupy pro moduly** – instalace a používání rozšíření VS Codu pro Kubernetes při psaní YAML manifesty. Rozšíření můžete také použít pro nasazení integrovaných řešení, které mohou pomoci počet vlastníků aplikace, které nevyužívají interakci s clusterem AKS.
@@ -87,6 +89,8 @@ Tento integrované vývojové a testovací proces s mezerami Dev snižuje potře
 **Osvědčené postupy pro moduly** – pravidelně používat nejnovější verzi `kube-advisor` open source nástroj a detekujte problémy ve vašem clusteru. Pokud použijete kvóty prostředků v existujícím clusteru AKS, spusťte `kube-advisor` nejprve k vyhledání podů, které nemají definovaná omezení a požadavky prostředků.
 
 [Kube advisor] [ kube-advisor] nástroj je přidružené AKS opensourcový projekt, který prohledá Kubernetes cluster a zprávy o problémech, které nalezne. Jeden užitečné se identifikovat podů, které nemají omezení a požadavky na zdroje v místě.
+
+Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru] [ k8s-node-selector] v konfiguraci pod.
 
 V clusteru AKS, který je hostitelem mnoho vývojových týmů a aplikace může být obtížné sledovat podů bez těchto prostředků požadavky a omezení sady. Jako osvědčený postup, pravidelně spouštět `kube-advisor` v clusterech služby AKS.
 
@@ -110,3 +114,4 @@ K provedení některých těchto osvědčených postupů, naleznete v následuj�
 [dev-spaces]: ../dev-spaces/get-started-netcore.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60323763"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
@@ -97,7 +97,7 @@ Přejděte na koncový bod v [webu Azure portal](https://portal.azure.com) a kli
 
 Používání nástrojů pro vývojáře v prohlížeči, zkontrolujte hlavičky odpovědi k zajištění, že soubor je uložen do mezipaměti v oblasti, ve kterém jsou požadovány.
 
-* Zkontrolujte, **Server** hlavičky odpovědi.  Záhlaví by měl mít formát **platformu (ID serveru/POP)**, jak je znázorněno v následujícím příkladu.
+* Zkontrolujte, **Server** hlavičky odpovědi.  Záhlaví by měl mít formát **platformu (ID serveru/POP)** , jak je znázorněno v následujícím příkladu.
 * Zkontrolujte **X-Cache** hlavičky odpovědi.  Údajů byste si přečíst hlavičku **PŘÍSTUPŮ**.  
 
 ![Hlavičky odpovědi CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)

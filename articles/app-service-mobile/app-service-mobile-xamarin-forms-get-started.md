@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b47e498754bad6917efca5b7f19f8ebce9cf0330
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062223"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Vytvoření aplikace na platformě Xamarin.Forms s využitím Azure
 
@@ -48,19 +48,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 K otevření řešení se vyžadují nástroje Visual Studio Tools for Xamarin, viz [pokyny k instalaci Xamarinu][Install Xamarin]. Pokud jsou tyto nástroje už nainstalované, použijte ke stažení a otevření tohoto řešení následující postup:
 
-### <a name="visual-studio"></a>Visual Studio
-
-1. Přejděte na [Azure Portal](https://portal.azure.com/).
-
-2. V okně nastavení mobilní aplikace klikněte na **Rychlý start** (v části Nasazení) > **Xamarin.Forms**. V kroku 3 klikněte na možnost **Vytvořit novou aplikaci**, pokud ještě nebyla vybrána.  Pak klikněte na tlačítko **Stáhnout**.
-
-   Touto akcí se stáhne projekt, který obsahuje klientskou aplikaci připojenou k mobilní aplikaci. Uložte komprimovaný soubor projektu do místního počítače a poznamenejte si, kam jste jej uložili.
-
-3. Extrahujte projekt, který jste stáhli a pak ho otevřete v sadě Visual Studio.
-
-4. Při spouštění projektů pro Android nebo Windows (a také pro iOS, pokud je v síti k dispozici počítač Mac) použijte následující pokyny.
-
-### <a name="visual-studio-for-mac"></a>Visual Studio pro Mac
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows a Mac)
 
 1. Přejděte [webu Azure portal](https://portal.azure.com/) a přejděte do mobilní aplikace, kterou jste vytvořili. Na `Overview` okno Vyhledat adresu URL, které je veřejný koncový bod pro mobilní aplikace. Například - sitename pro Moje aplikace název "test123" bude https://test123.azurewebsites.net.
 

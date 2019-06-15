@@ -13,10 +13,10 @@ ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60732361"
 ---
 # <a name="filtering-ordering-paging-of-media-services-entities"></a>Filtrování, řazení, stránkování entit Media Services
@@ -54,10 +54,10 @@ Pokud entity jsou vytvořeny nebo odstranili stránkování prostřednictvím ko
 
 Následující tabulka ukazuje, jak filtrování a řazení možnosti může použít u [Asset](https://docs.microsoft.com/rest/api/media/assets) vlastnosti: 
 
-|Název|Filtr|Objednání|
+|Name|Filtr|Objednání|
 |---|---|---|
 |id|||
-|jméno|eq, gt, lt| Vzestupným a sestupným|
+|name|eq, gt, lt| Vzestupným a sestupným|
 |properties.alternateId |EQ||
 |properties.assetId |EQ||
 |Properties.Container |||
@@ -144,7 +144,7 @@ Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [obsahu
 |Název|Filtr|Objednání|
 |---|---|---|
 |id|||
-|jméno|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
+|name|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
 |Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
 |Properties.Description |Eq, ne, ge, le, gt, lt||
 |properties.lastModified|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
@@ -176,9 +176,9 @@ ZBÝVAJÍCÍ příklady naleznete v tématu [obsahu klíč zásady – seznam](h
 
 Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [úlohy](https://docs.microsoft.com/rest/api/media/jobs) vlastnosti: 
 
-| Název    | Filtr                        | Objednání |
+| Name    | Filtr                        | Objednání |
 |---------|-------------------------------|-------|
-| jméno                    | EQ            | Vzestupným a sestupným|
+| name                    | EQ            | Vzestupným a sestupným|
 | properties.state        | Eq, ne        |                         |
 | Properties.Created      | gt, ge, lt, le| Vzestupným a sestupným|
 | properties.lastModified | gt, ge, lt, le | Vzestupným a sestupným| 
@@ -226,7 +226,7 @@ Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti 
 |Název|Filtr|Objednání|
 |---|---|---|
 |id |||
-|jméno|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
+|name|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
 |properties.alternativeMediaId  |||
 |properties.assetName   |||
 |properties.contentKeys |||
@@ -265,7 +265,7 @@ Následující tabulka ukazuje, jak tyto možnosti může použít u vlastnosti 
 |Název|Filtr|Objednání|
 |---|---|---|
 |id|||
-|jméno|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
+|name|Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
 |properties.commonEncryptionCbcs|||
 |properties.commonEncryptionCenc|||
 |Properties.Created |Eq, ne, ge, le, gt, lt|Vzestupným a sestupným|
@@ -298,9 +298,9 @@ ZBÝVAJÍCÍ příklady naleznete v tématu [streamování zásady – seznam](h
 
 Následující tabulka ukazuje, jak tyto možnosti mohou být použity u [transformuje](https://docs.microsoft.com/rest/api/media/transforms) vlastnosti: 
 
-| Název    | Filtr                        | Objednání |
+| Name    | Filtr                        | Objednání |
 |---------|-------------------------------|-------|
-| jméno                    | EQ            | Vzestupným a sestupným|
+| name                    | EQ            | Vzestupným a sestupným|
 | Properties.Created      | gt, ge, lt, le| Vzestupným a sestupným|
 | properties.lastModified | gt, ge, lt, le | Vzestupným a sestupným|
 

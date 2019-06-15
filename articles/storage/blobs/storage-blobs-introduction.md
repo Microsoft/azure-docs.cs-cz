@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e8a68ca87307e1265c200f2e05464ff87983c1e6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 450e3b0a25f4be90aea26adfd4c35efc3077af57
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071394"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -29,7 +29,7 @@ ms.locfileid: "66258409"
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
-![Diagram architektury úložiště objektů Blob](./media/storage-blob-introduction/blob1.png)
+![vztah mezi objektem Blob účet a kontejner prostředku](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Účty úložiště
 

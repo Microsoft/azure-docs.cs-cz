@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 699e4830b6399fbce07dfc125e69513b58f58dd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f045d5f880179827a00078419fc2c67d18db774a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60274880"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>Kurz: Integrace Azure Active Directory s IBM OpenPages
 
@@ -53,7 +53,7 @@ Konfigurace integrace IBM OpenPages do služby Azure AD, budete muset přidat IB
 
 **Chcete-li přidat IBM OpenPages z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

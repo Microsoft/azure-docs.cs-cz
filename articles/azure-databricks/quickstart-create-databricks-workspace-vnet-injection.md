@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60770518"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Rychlý start: Vytvoření pracovního prostoru Azure Databricks ve virtuální síti
@@ -33,8 +33,8 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
     |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
-    |Název|databricks – rychlý start|Vyberte název vaší virtuální sítě.|
-    |Adresní prostor|10.1.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR|
+    |Name|databricks – rychlý start|Vyberte název vaší virtuální sítě.|
+    |Adresní prostor|10.1.0.0/16|Rozsah adres virtuální sítě v zápisu CIDR.|
     |Předplatné|\<Vaše předplatné\>|Vyberte předplatné Azure, které chcete použít.|
     |Skupina prostředků|databricks – rychlý start|Vyberte **vytvořit nový** a zadejte nový název skupiny prostředků pro váš účet.|
     |Location|\<Vyberte oblast nejbližší vašim uživatelům.\>|Vyberte zeměpisné umístění, kde je možné hostovat vaše virtuální síť. Použijte umístění co nejblíže vašim uživatelům.|
@@ -84,7 +84,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Vraťte se do služby Azure Databricks a vyberte **spustit pracovní prostor** na **přehled** stránky.
 
-2. Vyberte **clustery** > **+ vytvořit Cluster**. Pak vytvořte název clusteru, jako je *databricks – rychlý start – cluster*a potvrďte zbývající výchozí nastavení. Vyberte **vytvoření clusteru**.
+2. Vyberte **clustery** >  **+ vytvořit Cluster**. Pak vytvořte název clusteru, jako je *databricks – rychlý start – cluster*a potvrďte zbývající výchozí nastavení. Vyberte **vytvoření clusteru**.
 
     ![Vytvoření clusteru Azure Databricks](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 

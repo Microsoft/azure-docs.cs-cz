@@ -11,10 +11,10 @@ manager: yuvalm
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60687265"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD pomocí Azure Dev mezery
@@ -43,7 +43,7 @@ Vytvoření nového prostoru volá _dev_ pomocí `azds space select` příkazu. 
 azds space select -n dev
 ```
 
-Po zobrazení výzvy k výběru místa dev nadřazené vyberte  _\<žádný\>_.
+Po zobrazení výzvy k výběru místa dev nadřazené vyberte  _\<žádný\>_ .
 
 Po vytvoření prostoru dev, je nutné určit přípona hostitele. Použití `azds show-context` příkazu můžete zobrazit hostitele příponu Kontroleru příchozího přenosu dat Azure Dev mezery.
 

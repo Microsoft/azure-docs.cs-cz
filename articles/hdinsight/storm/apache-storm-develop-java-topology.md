@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 43f68908c8549c2f1d8322b5c4ad3985618cfe6e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 89cee70c9d7c5dffdb3078756cf4fa94d7cd1a9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695649"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078226"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
-Zjistěte, jak vytvořit topologie založené na jazyce Java pro [Apache Storm](https://storm.apache.org/). Můžete zde vytvářet topologie Storm, který implementuje aplikace počet slov. Použijete [Apache Maven](https://maven.apache.org/) chcete sestavit a zabalit projekt. Potom se dozvíte, jak chcete definovat pomocí topologie [Apache Storm tok](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) rozhraní framework.
+Zjistěte, jak vytvořit topologie založené na jazyce Java pro [Apache Storm](https://storm.apache.org/). Můžete zde vytvářet topologie Storm, který implementuje aplikace počet slov. Použijete [Apache Maven](https://maven.apache.org/) chcete sestavit a zabalit projekt. Potom se dozvíte, jak chcete definovat pomocí topologie [Apache Storm tok](https://storm.apache.org/releases/2.0.0/flux.html) rozhraní framework.
 
 Po dokončení kroků v tomto dokumentu, můžete nasadit topologii do Apache Storm v HDInsight.
 
@@ -621,7 +621,7 @@ Mezi emisí slov a počty je interval 5 sekund. **WordCount** součást je nakon
 
 ## <a name="convert-the-topology-to-flux"></a>Převést na topologii na tok
 
-[Tok](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) je nový rámec dostupná se Stormem 0.10.0 a vyšší, který umožňuje oddělit konfiguraci z implementace. Vaše komponenty jsou stále definována v Javě, ale topologii je definováno pomocí souboru YAML. Můžete balíček výchozí definici topologie s projektem, nebo použijte samostatný soubor při odesílání topologie. Při odesílání topologie do Storm, můžete použít proměnné prostředí nebo konfigurační soubory k naplnění hodnot v definici topologie YAML.
+[Tok](https://storm.apache.org/releases/2.0.0/flux.html) je nový rámec dostupná se Stormem 0.10.0 a vyšší, který umožňuje oddělit konfiguraci z implementace. Vaše komponenty jsou stále definována v Javě, ale topologii je definováno pomocí souboru YAML. Můžete balíček výchozí definici topologie s projektem, nebo použijte samostatný soubor při odesílání topologie. Při odesílání topologie do Storm, můžete použít proměnné prostředí nebo konfigurační soubory k naplnění hodnot v definici topologie YAML.
 
 Soubor YAML definuje součásti, které budou používat pro topologii a data tok mezi nimi. Soubor YAML můžete zahrnout jako součást na soubor jar nebo můžete použít externí soubor YAML.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a216e720523767f428036290aea7151c2dca34
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 38ce83df4d4de6d7816ee969a4fee153ad5457d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Kurz: Integrace Azure Active Directory s LinkedIn Sales Navigatoru
 
@@ -58,7 +58,7 @@ Konfigurace integrace LinkedIn Sales Navigatoru do služby Azure AD, budete muse
 
 **Chcete-li přidat LinkedIn Sales Navigatoru z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -126,9 +126,9 @@ Ke konfiguraci Azure AD jednotné přihlašování s LinkedIn Sales Navigatoru, 
 
 7. Kromě toho výše LinkedIn Sales Navigatoru aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V části deklarace identity uživatelů na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --- | --- |
-    | e-mail| user.mail |
+    | email| user.mail |
     | Oddělení| user.department |
     | jméno| user.givenname |
     | Příjmení| user.surname |

@@ -11,10 +11,10 @@ manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
 ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60683866"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření cyklů, které opakování akce pracovního postupu nebo zpracování pole v Azure Logic Apps
@@ -54,7 +54,7 @@ Tento příklad aplikace logiky odešle denní souhrn pro informační kanál RS
 2. Mezi RSS aktivovat a odeslat e-mailové akce, přidání smyčky "Foreach". 
 
    1. Přidání smyčky mezi kroky, přesuňte ukazatel nad šipku mezi tyto kroky. 
-   Zvolte **znaménko plus** (**+**), který se zobrazí, vyberte **přidat akci**.
+   Zvolte **znaménko plus** ( **+** ), který se zobrazí, vyberte **přidat akci**.
 
       ![Vyberte "Přidat akci"](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -122,11 +122,11 @@ Pokud pracujete v zobrazení kódu pro vaši aplikaci logiky, můžete definovat
 
 <a name="sequential-foreach-loop"></a>
 
-## <a name="foreach-loop-sequential"></a>"Foreach" smyčka: Sequential
+## <a name="foreach-loop-sequential"></a>"Foreach" smyčka: Sekvenční
 
 Ve výchozím nastavení cykly ve smyčce "Foreach" běžet paralelně. Každý cyklus spouští sekvenčně, nastavte smyčky **sekvenční** možnost. "Foreach" smyčky musí jsou spouštěny postupně po mít člověk vnořené smyčky nebo proměnných uvnitř smyčky kde očekáváte, že předvídatelné výsledky. 
 
-1. V horním pravém rohu smyčky, zvolte **symbol tří teček** (**...** ) > **Nastavení**.
+1. V horním pravém rohu smyčky, zvolte **symbol tří teček** ( **...** ) > **Nastavení**.
 
    ![Smyčka "Foreach" tlačítko "..." > "Nastavení"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 

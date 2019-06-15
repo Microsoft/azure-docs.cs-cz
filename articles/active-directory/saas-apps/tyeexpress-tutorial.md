@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d84a7060fadcb3f3d80b7fbbff9d91f8812388b2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 10ebe796f5aed827a4934a94d568aedbef704503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920619"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Kurz: Integrace Azure Active Directory s T & E Express
 
@@ -53,7 +53,7 @@ Pokud chcete nakonfigurovat integrace T & E Express do služby Azure AD, budete 
 
 **Chcete-li přidat k & E Express z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -134,7 +134,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s T & E, Express, proveďte n
 
     ![Konfigurace jednotného přihlašování](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. Vyberte **Activar(Activate)** možnost **ne** k **SI(Yes)**. V **metadat zprostředkovatele Identity** textového pole vložte kód XML, který jste si stáhli z portálu Azure portal metadat.
+1. Vyberte **Activar(Activate)** možnost **ne** k **SI(Yes)** . V **metadat zprostředkovatele Identity** textového pole vložte kód XML, který jste si stáhli z portálu Azure portal metadat.
 
     ![Konfigurace jednotného přihlašování](./media/tyeexpress-tutorial/tyeAdmin.png)
 

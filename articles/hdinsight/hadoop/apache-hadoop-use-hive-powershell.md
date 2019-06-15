@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 243713d7961c911cdda93d3d680a952d424da22b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078380"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštějte dotazy Apache Hive pomocí Powershellu
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -28,9 +28,6 @@ Tento dokument obsahuje příklad použití Azure Powershellu v režimu skupiny 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Apache Hadoop s linuxem v clusteru HDInsight verze 3.4 nebo vyšší.
-
-  > [!IMPORTANT]  
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Klient pomocí Azure Powershellu.
 

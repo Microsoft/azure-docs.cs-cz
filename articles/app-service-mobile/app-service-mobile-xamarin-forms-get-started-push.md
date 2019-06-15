@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098692"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Přidání nabízených oznámení do aplikace Xamarin.Forms
@@ -232,7 +232,7 @@ První dva kroky jsou povinné, pouze při testování na emulátoru.
 2. Kliknutím přidejte účet Google na zařízení s Androidem **aplikace** > **nastavení** > **přidat účet**. Postupujte podle pokynů, které chcete přidat existující účet Google do zařízení, nebo vytvořte novou.
 3. V sadě Visual Studio nebo Xamarin Studio, klikněte pravým tlačítkem **Droid** projektu a klikněte na tlačítko **nastavit jako spouštěný projekt**.
 4. Klikněte na tlačítko **spustit** se projekt sestavil a aplikace se spustila v emulátoru nebo zařízení s Androidem.
-5. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus (**+**) ikonu.
+5. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus ( **+** ) ikonu.
 6. Ověřte, že obdržení oznámení při přidání položky.
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>Nakonfigurujte a spusťte projekt pro iOS (volitelné)
@@ -326,7 +326,7 @@ Vaše aplikace je nyní aktualizována o podporu nabízených oznámení.
    > [!NOTE]
    > Je nutné explicitně přijmout nabízená oznámení z vaší aplikace. Tento požadavek dochází pouze při prvním spuštění aplikace.
 
-3. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus (**+**) ikonu.
+3. V aplikaci, zadejte úlohu a potom klikněte na znaménko plus ( **+** ) ikonu.
 4. Ověřte, že přijetí oznámení a potom klikněte na tlačítko **OK** chcete oznámení zavřít.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Konfigurace a spuštění projektů Windows (volitelné)
@@ -398,7 +398,7 @@ Tato část se týká s Xamarin.Forms WinApp a WinPhone81 projekty pro zařízen
 
 1. V sadě Visual Studio, klikněte pravým tlačítkem na projekt Windows a klikněte na tlačítko **nastavit jako spouštěný projekt**.
 2. Stiskněte tlačítko **Spustit** a sestavte projekt a spusťte aplikaci.
-3. V aplikaci, zadejte název nového úkolu a potom klikněte na znaménko plus (**+**) ikonu a přidejte ji.
+3. V aplikaci, zadejte název nového úkolu a potom klikněte na znaménko plus ( **+** ) ikonu a přidejte ji.
 4. Ověřte, že je přijato oznámení, když je položka přidána.
 
 ## <a name="next-steps"></a>Další postup

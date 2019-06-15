@@ -9,14 +9,13 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-origin.date: 06/20/2018
-ms.date: 12/31/2018
-ms.author: v-yiso
+ms.date: 06/20/2018
+ms.author: apimpm
 ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62123463"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  
@@ -106,7 +105,7 @@ Podle následujících pokynů ke konfiguraci automatického škálování pro s
     | Časová agregace      | Průměr           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Název metriky           | Kapacita          | Stejné metriky, jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Statistika agregačního intervalu  | Průměr           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operátor              | Méně než         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Operátor              | Je menší než         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Prahová hodnota             | 35%               | Podobně pro horizontální navýšení kapacity pravidla, tato hodnota silně závisí na vzory používání služby Azure API Management. |
     | Doba trvání (v minutách) | 30                | Stejnou hodnotu jako jste použili pro horizontální navýšení kapacity pravidlo.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Akce*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |

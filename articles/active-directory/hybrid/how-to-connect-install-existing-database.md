@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245159"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace Azure AD Connect pomocí existující databáze ADSync
@@ -98,7 +98,7 @@ Následující tabulku použijte k ověření dalších kroků, které jsou pož
 
 |Funkce|Kroky|
 |-----|-----|
-|Synchronizace hodnot hash hesel| Synchronizace hodnot Hash hesel a zpětný zápis hesla budou plně obnoveny pro verze služby Azure AD Connect počínaje 1.2.65.0.  Pokud obnovujete, používá starší verzi služby Azure AD Connect, zkontrolujte nastavení možností synchronizace pro tyto funkce zajistit, že aby odpovídaly serveru synchronizace služby active.  Žádné další kroky konfigurace by měl být nezbytné.|
+|Synchronizace hodnot Hash hesel| Synchronizace hodnot Hash hesel a zpětný zápis hesla budou plně obnoveny pro verze služby Azure AD Connect počínaje 1.2.65.0.  Pokud obnovujete, používá starší verzi služby Azure AD Connect, zkontrolujte nastavení možností synchronizace pro tyto funkce zajistit, že aby odpovídaly serveru synchronizace služby active.  Žádné další kroky konfigurace by měl být nezbytné.|
 |Federace se službou AD FS|Ověřování Azure bude dál používat zásady služby AD FS nakonfigurovaný pro váš server synchronizace služby active.  Pokud používáte Azure AD Connect ke správě farmu služby AD FS, můžete volitelně změnit metodu přihlašování na federační služba AD FS v rámci přípravy pro pohotovostní server stávají instance synchronizace služby active.   Pokud na serveru synchronizace služby active jsou povolené možnosti zařízení, nakonfigurujte tyto možnosti na tomto serveru spuštěním úlohy "Konfigurovat možnosti zařízení".|
 |Předávací ověřování a Desktop jednotného přihlašování|Aktualizujte přihlašovací metoda tak, aby odpovídaly konfiguraci na serveru synchronizace služby active.  Pokud se nedodrží předtím, než na zvyšování úrovně serveru pro primární a předávací ověřování spolu s bezproblémové jednotné přihlašování bude zakázáno a může být váš tenant uzamčený, pokud nemáte přihlášení synchronizace hodnot hash hesel jako záložní možnost. Všimněte si také, že když povolíte předávací ověřování v pracovním režimu, nové ověřovací agent se nainstaluje, registrované a poběží jako vysokou dostupnost agenta, který bude přijímat žádosti o přihlášení.|
 |Federace s PingFederate|Ověřování Azure bude nadále používat PingFederate zásady nakonfigurované pro váš server synchronizace služby active.  V rámci přípravy pro pohotovostní server stávají instance synchronizace služby active může volitelně můžete změnit metodu přihlašování do služby PingFederate.  Tento krok může odloženo, dokud nebudete potřebovat pro vytvoření federace s PingFederate další domény.|

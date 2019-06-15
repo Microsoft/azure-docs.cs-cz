@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: lahugh
-ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b6b28b9f55623fbdff6ab80c889141c8815600f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071519"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Nastavit či vypnout vzdálený přístup k výpočetní uzlům ve fondu služby Azure Batch
 
@@ -27,7 +27,7 @@ Konfigurace koncového bodu se skládá z jedné nebo více [sítě překladu ad
 Každá konfigurace fondu NAT zahrnuje jednu nebo více [pravidel zabezpečení skupiny (NSG) sítě](/rest/api/batchservice/pool/add#networksecuritygrouprule). Každé pravidlo skupiny zabezpečení sítě povoluje nebo odepírá provoz určité síti ke koncovému bodu. Můžete povolit nebo odepřít veškerý provoz, provoz identifikovaný [značka služby](../virtual-network/security-overview.md#service-tags) (jako je například "Internet"), nebo provoz z konkrétní IP adresy nebo podsítě.
 
 ### <a name="considerations"></a>Požadavky
-* Konfigurace koncového bodu fondu je součástí fondu [konfigurace sítě](/rest/api/batchservice/pool/add#NetworkConfiguration). Konfigurace sítě může volitelně zahrnovat nastavení připojení fondu, aby [virtuální síť Azure](batch-virtual-network.md). Pokud jste nastavili fondu ve virtuální síti, můžete vytvořit pravidla NSG, které používají nastavení adresy ve virtuální síti.
+* Konfigurace koncového bodu fondu je součástí fondu [konfigurace sítě](/rest/api/batchservice/pool/add#networkconfiguration). Konfigurace sítě může volitelně zahrnovat nastavení připojení fondu, aby [virtuální síť Azure](batch-virtual-network.md). Pokud jste nastavili fondu ve virtuální síti, můžete vytvořit pravidla NSG, které používají nastavení adresy ve virtuální síti.
 * Při konfiguraci fondu NAT, můžete nakonfigurovat víc pravidel skupiny zabezpečení sítě. Pravidla se kontrolují v pořadí podle priority. Jakmile se pravidlo aplikuje, u dalších pravidel se už shoda nekontroluje.
 
 

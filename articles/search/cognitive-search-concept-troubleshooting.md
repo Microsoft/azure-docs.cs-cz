@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696602"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipy pro řešení potíží pro kognitivního vyhledávání
 
@@ -84,7 +84,7 @@ Přidat ```enriched``` pole jako součást definice indexu pro účely ladění:
 
 Chybějící obsah může být způsobeno získávání vyřadit během indexování dokumentů. Úrovně Free a Basic mají nízké omezení velikosti dokumentu. Všechny soubory při překročení tohoto limitu je vyřazeno během indexování. Můžete vyhledat vyřazené dokumenty na webu Azure Portal. V řídicím panelu služby search service dvakrát klikněte na dlaždici indexery. Projděte si poměr úspěšné dokumenty indexované. Pokud není 100 %, můžete kliknout na poměr, abyste získali více podrobností. 
 
-Pokud problém souvisí s velikost souboru, může se zobrazit chyba takto: Velikost < velikost souboru > bajtů, která překračuje maximální velikost pro extrakci dokument pro vaši aktuální úroveň služby má "Blob < název_souboru >"." Další informace o limitech indexer, naleznete v tématu [omezení služby](search-limits-quotas-capacity.md).
+Pokud problém souvisí s velikost souboru, může se zobrazit chyba takto: "Objekt blob \<název souboru >" má velikost \<velikost souboru > bajtů, což přesahuje maximální velikost pro extrakci dokument pro vaši aktuální úroveň služby. " Další informace o limitech indexer, naleznete v tématu [omezení služby](search-limits-quotas-capacity.md).
 
 Druhý důvod selhání se zobrazí obsah může dojít k chybám související vstupní a výstupní mapování. Například cílový název výstupního je "Lidé", ale název pole indexu je malá "osob". Systém může vrátit 201 zpráv o úspěchu operací pro celý kanál, takže si myslíte, že indexování úspěšné, když ve skutečnosti je pole prázdné. 
 

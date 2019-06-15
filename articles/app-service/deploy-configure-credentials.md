@@ -14,10 +14,10 @@ ms.date: 03/10/2019
 ms.author: cephalin;byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: b054e56afdec65ac000b0dc18a0c1a3fd845b4c3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955974"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurujte přihlašovací údaje nasazení pro službu Azure App Service
@@ -33,7 +33,7 @@ Nakonfigurujete své přihlašovací údaje uživatele ve všech aplikacích [st
 
 Postup konfigurace vaše přihlašovací údaje na úrovni uživatele:
 
-1. V [webu Azure portal](https://portal.azure.com), v levé nabídce klikněte na tlačítko **App Services** > **&lt;any_app >** > **nasazení System Center** > **přihlašovací údaje pro nasazení**.
+1. V [webu Azure portal](https://portal.azure.com), v levé nabídce klikněte na tlačítko **App Services** >  **&lt;any_app >**  > **nasazení System Center** > **přihlašovací údaje pro nasazení**.
 
     Na portálu musíte mít aspoň jednu aplikaci mohli získat přístup ke stránce přihlašovací údaje nasazení. Nicméně s [rozhraní příkazového řádku Azure](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set), můžete nakonfigurovat přihlašovací údaje na úrovni uživatele bez existující aplikace.
 
@@ -63,7 +63,7 @@ Protože přihlašovací údaje na úrovni uživatele jsou propojeny s uživatel
 ## <a name="appscope"></a>Získat a obnovit přihlašovací údaje na úrovni aplikace
 Pokud chcete získat přihlašovací údaje úrovni aplikace:
 
-1. V [webu Azure portal](https://portal.azure.com), v levé nabídce klikněte na tlačítko **App Services** > **&lt;any_app >** > **nasazení System Center** > **přihlašovací údaje pro nasazení**.
+1. V [webu Azure portal](https://portal.azure.com), v levé nabídce klikněte na tlačítko **App Services** >  **&lt;any_app >**  > **nasazení System Center** > **přihlašovací údaje pro nasazení**.
 
 2. Klikněte na tlačítko **aplikace pověření**a klikněte na tlačítko **kopírování** odkaz na kopírování uživatelské jméno nebo heslo.
 

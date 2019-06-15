@@ -76,10 +76,10 @@ Následují popisy vlastností:
 
 | **Název** | **Povolené hodnoty** | ** --- ** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| jméno | string | --- | Jedinečný název pro rozšíření |
+| name | string | --- | Jedinečný název pro rozšíření |
 | type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode | --- | Identifikuje se na spuštění operačního systému Service Fabric |
 | autoUpgradeMinorVersion | PRAVDA nebo NEPRAVDA | --- | Povolit automatický Upgrade modulu Runtime SF podverze |
-| vydavatele | Microsoft.Azure.ServiceFabric | --- | Název vydavatele rozšíření Service Fabric |
+| publisher | Microsoft.Azure.ServiceFabric | --- | Název vydavatele rozšíření Service Fabric |
 | clusterEndpont | string | --- | URI:port ke koncovému bodu správy |
 | nodeTypeRef | string | --- | Název nodeType |
 | durabilityLevel | bronzová, silver, zlatá, platinum | --- | čas, moct pozastavit neměnná infrastruktura Azure |

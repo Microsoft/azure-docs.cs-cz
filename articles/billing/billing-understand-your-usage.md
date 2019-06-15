@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683990"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení podmínky v souboru využití a poplatky za Azure
@@ -40,11 +40,11 @@ Je k dispozici ve formátu souboru hodnot oddělených čárkami (CSV), který m
 Následující tabulka popisuje důležité termíny používané v nejnovější verzi Azure file využití a poplatků.
 Seznam popisuje průběžných plateb (PAYG), smlouvy Enterprise (EA) a účty Microsoft zákazníka smlouvy (MCA).
 
-Označení | Typ účtu | Popis
+Termín | Typ účtu | Popis
 --- | --- | ---
-Název účtu | EA | Zobrazovaný název registrace účtu.
-ID vlastníka účtu | EA | Jedinečný identifikátor pro účet pro zápis.
-Další informace | Vše | Metadata konkrétních služeb. Například typ image u virtuálního počítače.
+AccountName | EA | Zobrazovaný název registrace účtu.
+AccountOwnerId | EA | Jedinečný identifikátor pro účet pro zápis.
+AdditionalInfo | Vše | Metadata konkrétních služeb. Například typ image u virtuálního počítače.
 BillingAccountId | EA, MCA | Jedinečný identifikátor pro kořenovou fakturační účet.
 BillingAccountName | EA, MCA | Název fakturačního účtu.
 BillingCurrency | EA, MCA | Měně přidružené k fakturačnímu účtu.
@@ -54,8 +54,8 @@ BillingPeriodStartDate | EA, MCA | Počáteční datum fakturačního období.
 BillingProfileId | EA, MCA | Jedinečný identifikátor registraci smlouvy Enterprise nebo MCA fakturační profil.
 BillingProfileName | EA, MCA | Název registraci smlouvy Enterprise nebo MCA fakturační profil.
 ChargeType | EA, MCA | Určuje, zda se příslušný poplatek představuje využití (**využití**), nákup (**zakoupit**), nebo refundaci (**refundaci**).
-Využité množství | PRŮBĚŽNÉ PLATBY | Podívejte se na množství.
-Využívaná služba | Vše | Název služby pro příslušný poplatek souvisí s.
+ConsumedQuantity | PRŮBĚŽNÉ PLATBY | Podívejte se na množství.
+ConsumedService | Vše | Název služby pro příslušný poplatek souvisí s.
 Náklady | EA | Zobrazit CostInBillingCurrency.
 Nákladové středisko | EA, MCA | Nákladové středisko definované pro předplatné pro sledování nákladů (k dispozici pouze v open fakturačních období pro MCA účty).
 CostInBillingCurrency | MCA | Náklady na poplatek za fakturační měna před kredity nebo daně.
@@ -66,25 +66,25 @@ ExchangeRateDate | MCA | Datum, kdy bylo vytvořeno kurzu.
 ExchangeRatePricingToBilling | MCA | Směnného kurzu slouží k převodu náklady v cenách měně fakturační Měna.
 Frekvence | EA, MCA | Určuje, zda částkou, která má opakujte. Poplatky za buď může dojít po (**OneTime**), opakování na základě měsíční nebo roční (**periodický**), nebo v závislosti na využití (**UsageBased**).
 includedQuantity | PRŮBĚŽNÉ PLATBY | Množství měřiče, které je zdarma v aktuálním fakturačním období.
-ID instance | PAGY | Zobrazit ID prostředku.
+InstanceId | PAGY | Zobrazit ID prostředku.
 InvoiceId | EA, MCA | ID dokumentu jedinečné uvedené na faktuře PDF.
 invoiceSection | MCA | See InvoiceSectionName.
 InvoiceSectionId | EA, MCA | Jedinečný identifikátor pro EA oddělení nebo MCA části faktury.
 InvoiceSectionName | EA, MCA | Název smlouvy EA oddělení nebo MCA části faktury.
 IsAzureCreditEligible | EA, MCA | Určuje, zda je příslušný poplatek nárok na používání kreditů Azure se budou hradit (hodnoty: Hodnota TRUE, False).
 Location | EA, MCA | Umístění datového centra, ve kterém prostředek běží.
-Kategorie měřiče | Vše | Název kategorie klasifikace pro měřidla. Například *cloudových služeb* a *sítě*.
+meterCategory | Vše | Název kategorie klasifikace pro měřidla. Například *cloudových služeb* a *sítě*.
 ID měřiče | Vše | Jedinečný identifikátor pro měřidla.
-Název měřiče | Vše | Název měřidla.
-Oblast měřiče | Vše | Název umístění datacentra u služeb, jejichž cena podle umístění. Podívejte se na umístění.
-Podkategorie měřiče | Vše | Název dílčí klasifikace v rámci kategorie měřiče.
-OfferId | EA, MCA | Název nabídky zakoupili.
+meterName | Vše | Název měřidla.
+MeterRegion | Vše | Název umístění datacentra u služeb, jejichž cena podle umístění. Podívejte se na umístění.
+meterSubCategory | Vše | Název dílčí klasifikace v rámci kategorie měřiče.
+offerId | EA, MCA | Název nabídky zakoupili.
 PartNumber | EA | Identifikátor sloužící k získání konkrétní měřičů, ceny.
 PlanName | EA | Název plánu služby webu Marketplace.
 PreviousInvoiceId | MCA | Odkaz na původní faktury, pokud je tato položka řádku refundaci.
 pricingCurrency | MCA | Měna použitá při hodnocení podle vyjednávaný ceny.
 Product | MCA | Zobrazit ProductName.
-ID produktu | EA, MCA | Jedinečný identifikátor pro produkt.
+productId | EA, MCA | Jedinečný identifikátor pro produkt.
 ProductName | EA | Název produktu.
 productOrderId | EA, MCA | Jedinečný identifikátor pro produkt pořadí.
 productOrderName | EA, MCA | Jedinečný název pro objednávku produktu.
@@ -97,19 +97,19 @@ ReservationName | EA, MCA | Název instance zakoupenou rezervaci.
 ResourceGroupId | EA, MCA | Jedinečný identifikátor [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) prostředek je v.
 ResourceGroupName | EA, MCA | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) prostředek je v.
 ResourceId | EA, MCA | Jedinečný identifikátor [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources) prostředků.
-Umístění prostředku | EA, MCA | Umístění datového centra, ve kterém prostředek běží. Podívejte se na umístění.
-ResourceName | EA | Název prostředku
+resourceLocation | EA, MCA | Umístění datového centra, ve kterém prostředek běží. Podívejte se na umístění.
+ResourceName | EA | Název prostředku.
 ResourceType | MCA | Typ instance prostředku.
 serviceFamily | EA, MCA | Řada služby, které patří službě.
-Informace o službách 1 | Vše | Metadata konkrétních služeb.
-Informace o službách 2 | Vše | Starší verze pole s volitelná metadata konkrétních služeb.
+ServiceInfo1 | Vše | Metadata konkrétních služeb.
+ServiceInfo2 | Vše | Starší verze pole s volitelná metadata konkrétních služeb.
 ServicePeriodEndDate | MCA | Datum ukončení hodnocení období, které definované a uzamčen, ceny za služby využité nebo co si.
 ServicePeriodStartDate | MCA | Počáteční datum platnosti hodnocení, které definované a uzamčen, ceny za služby využité nebo co si.
 SubscriptionId | Vše | Jedinečný identifikátor pro předplatné.
-Název odběru | Vše | Název předplatného.
-Značky | Vše | Značky přiřazenou k prostředku. Neobsahuje značky skupiny prostředků. Slouží k seskupení nebo rozdělit náklady na interní vrácení peněz. Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+subscriptionName | Vše | Název předplatného.
+Tags | Vše | Značky přiřazenou k prostředku. Neobsahuje značky skupiny prostředků. Slouží k seskupení nebo rozdělit náklady na interní vrácení peněz. Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
 Jednotka | PRŮBĚŽNÉ PLATBY | Zobrazit UnitOfMeasure.
-Měrná jednotka | Vše | Jednotka měření pro fakturaci pro službu. Například výpočetní služby se účtují po hodinách.
+unitOfMeasure | Vše | Jednotka měření pro fakturaci pro službu. Například výpočetní služby se účtují po hodinách.
 UnitPrice | EA | Cena za jednotku pro příslušný poplatek.
 UsageDate | PRŮBĚŽNÉ PLATBY | Podívejte se na data.
 

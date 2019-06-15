@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116204"
 ---
 # <a name="understand-azure-policy-effects"></a>Principy Azure Policy efekty
@@ -88,7 +88,7 @@ Příklad 2: Dvě **pole/hodnota** páry připojit sady značek.
 }
 ```
 
-Příklad 3: Jeden **pole/hodnota** párovat pomocí non -**[\*]** [alias](definition-structure.md#aliases) s polem **hodnotu** nastavování pravidel IP pro účet úložiště. Když non -**[\*]** alias je pole, připojí vliv **hodnota** jako celého pole. Pokud pole již existuje, dojde k události odepřít z konflikt.
+Příklad 3: Jeden **pole/hodnota** párovat pomocí non - **[\*]** [alias](definition-structure.md#aliases) s polem **hodnotu** nastavování pravidel IP pro účet úložiště. Když non - **[\*]** alias je pole, připojí vliv **hodnota** jako celého pole. Pokud pole již existuje, dojde k události odepřít z konflikt.
 
 ```json
 "then": {
@@ -118,7 +118,7 @@ Příklad 4: Jeden **pole/hodnota** párovat pomocí **[\*]** [alias](definition
 }
 ```
 
-## <a name="deny"></a>Odepření
+## <a name="deny"></a>Odepřít
 
 Odepřít se používá při prevenci požadavkem na prostředky, které neodpovídá definované standardů prostřednictvím definice zásad a požadavek selže.
 

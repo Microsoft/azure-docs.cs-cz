@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6874258c31d4dd7d2a0aa0042624ee57616c0a89
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 16a556264cda3ed4eb93e8fb738765ddcb379f69
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068576"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption
 
@@ -39,7 +39,7 @@ Pro Windows Server 2008 R2 musíte mít rozhraní .NET Framework 4.5 nainstalova
 ## <a name="bkmk_LinuxPrereq"></a> Další požadavky pro virtuální počítače IaaS s Linuxem 
 
 - Azure Disk Encryption pro Linux vyžaduje 7 GB paměti RAM ve virtuálním počítači povolit šifrování disku operačního systému na [podporované obrázky](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport). Po dokončení procesu šifrování disku operačního systému virtuálního počítače může být nakonfigurován pro spouštění s méně paměti.
-- Azure Disk Encryption vyžaduje modul vfat nacházet v systému.  Odebrání nebo zakázání tohoto modulu z výchozí bitové kopie zabrání tomu nebudou moct číst klíče svazku a získat klíč potřebný k odemknutí disky na následné restartování systému. Kroků posílení zabezpečení systému, které modul vfat odebrat ze systému nejsou kompatibilní s Azure Disk Encryption. 
+- Azure Disk Encryption vyžaduje dm-crypt a moduly vfat bude k dispozici v systému. Odebrání nebo zakázání vfat z výchozí bitové kopie, nebudou moct systém čtení klíče svazku a získání klíče potřebné pro odemknutí disky na následné restartování. Kroků posílení zabezpečení systému, které modul vfat odebrat ze systému nejsou kompatibilní s Azure Disk Encryption. 
 - Před povolením šifrování, třeba správně zobrazeny v /etc/fstab datových disků k šifrování. Použijte název zařízení trvalé bloku pro tuto položku jako zařízení, které názvy ve formátu "/ dev/sdX" nelze spoléhat na přidruženy stejném disku mezi restartováními, zejména po šifrování se použije. Další podrobnosti o tomto chování najdete v článku: [Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem](../virtual-machines/linux/troubleshoot-device-names-problems.md)
 - Ujistěte se, že nastavení /etc/fstab jsou správně nakonfigurovány pro připojení. Tato nastavení nakonfigurujete, spusťte připojení – příkaz nebo restartujte virtuální počítač a aktivuje tímto způsobem opětovné připojení. Jakmile, která se dokončí, zkontrolujte výstup příkazu lsblk k ověření, že na jednotce je pořád připojený. 
   - Pokud soubor /etc/fstab není správně připojit jednotku před povolením šifrování, Azure Disk Encryption nebude možné ji správně připojit.
@@ -63,7 +63,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 -  Zásady nástroje BitLocker na virtuálních počítačích připojených k doméně pomocí zásad vlastní skupiny, musí obsahovat následující nastavení: [Konfigurace úložiště uživatele bitlockeru informace recovery -> Povolit 256bitový obnovovací klíč](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption selže, když jsou nekompatibilní nastavení zásad vlastní skupiny pro BitLocker. Na počítačích, které nebyly k dispozici nastavení správné zásady, použijí nové zásady vynutí nové zásady aktualizace (gpupdate.exe/Force) a následného restartování může být nutné.
 
-- Azure Disk Encryption se nezdaří, pokud zásady skupiny na úrovni domény blokuje algoritmus AES-CBC, který se používá nástrojem Bitlocker.
+- Azure Disk Encryption se nezdaří, pokud zásady skupiny na úrovni domény blokuje algoritmus AES-CBC, který se používá nástrojem BitLocker.
 
 
 ## <a name="bkmk_PSH"></a> Prostředí Azure PowerShell
@@ -243,7 +243,7 @@ Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit �
 3. Vyberte **povolit přístup k Azure Virtual Machines pro nasazení** a/nebo **povolit přístup k Azure Resource Manageru pro nasazení šablony**, v případě potřeby. 
 4. Klikněte na **Uložit**.
 
-![Azure key vaultu pokročilé zásady přístupu](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
+    ![Azure key vaultu pokročilé zásady přístupu](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="bkmk_KEK"></a> Nastavit šifrovací klíč klíče (volitelné)

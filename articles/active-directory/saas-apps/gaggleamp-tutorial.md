@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 57d80394c89072a0d0a2c87a378942c32ade6844
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 678f4e52fd8d3adf802bd89a1cc07ff585e696ef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Kurz: Integrace Azure Active Directory s GaggleAMP
 
@@ -54,7 +54,7 @@ Konfigurace integrace GaggleAMP do služby Azure AD, budete muset přidat Gaggle
 
 **Chcete-li přidat GaggleAMP z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -133,7 +133,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s GaggleAMP, proveďte násle
 
 ### <a name="configure-gaggleamp-single-sign-on"></a>Konfigurace GaggleAMP jednotné přihlašování
 
-1. V jiné instanci prohlížeče, přejděte na stránku jednotné přihlašování SAML vytvořené pro tým vám Gaggle podpory (třeba: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*).
+1. V jiné instanci prohlížeče, přejděte na stránku jednotné přihlašování SAML vytvořené pro tým vám Gaggle podpory (třeba: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit* ).
 
 2. Na vaše **SAML SSO** stránce, proveďte následující kroky:  
    

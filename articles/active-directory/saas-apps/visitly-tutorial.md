@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9842c681c655bb2a69126806400d1de8e9779c88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 18517f8f0022b8347d8a3bb8a978c513db5f6f85
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-visitly"></a>Kurz: Integrace Azure Active Directory s Visitly
 
@@ -53,7 +53,7 @@ Konfigurace integrace Visitly do služby Azure AD, budete muset přidat Visitly 
 
 **Chcete-li přidat Visitly z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -206,7 +206,7 @@ V této části je povolit Britta Simon k udělení přístupu k Visitly použit
 
 V této části vytvoříte uživatele v Visitly jako Britta Simon. Práce s [tým podpory Visitly](mailto:support@visitly.io) přidejte uživatele Visitly platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
 ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485744"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Spouštění dotazů ad hoc analýzy napříč několika databázemi Azure SQL
@@ -96,7 +96,7 @@ V tomto cvičení přidá schématu (externí zdroj dat a definice externí tabu
 
     ![Vytvoření externího zdroje dat](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
-   S definovanými externími tabulkami, odkazující na tabulky tenanta **distribuce = SHARDED(VenueId)**. Ten přesměruje dotazu pro konkrétní *VenueId* k příslušné databázi a zvyšuje výkon pro řadu scénářů, jak je znázorněno v následující části.
+   S definovanými externími tabulkami, odkazující na tabulky tenanta **distribuce = SHARDED(VenueId)** . Ten přesměruje dotazu pro konkrétní *VenueId* k příslušné databázi a zvyšuje výkon pro řadu scénářů, jak je znázorněno v následující části.
 
     ![Vytvoření externích tabulek](media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 

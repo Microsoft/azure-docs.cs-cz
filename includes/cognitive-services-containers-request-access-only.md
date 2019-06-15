@@ -4,16 +4,16 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/24/2019
-ms.openlocfilehash: b1889230e9abfbafbdeddcbf4f4c1f74fc3f8843
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 79e9dbc1edd830093d1d90d10350b8fb018492de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125124"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063976"
 ---
-Formulář požádá o informace o vás, vaše společnost a uživatelský scénář, který budete používat kontejneru. Po odeslání týmu Azure Cognitive Services zkontroluje formulář pro ověření, že splňujete kritéria pro přístup k registru kontejneru soukromého.
+Formulář požádá o informace o vás, vaše společnost a uživatelský scénář, který budete používat kontejneru. Jakmile odešlete kompletně formuláře, tým Azure Cognitive Services k zajištění, že splňují kritéria pro přístup k registru kontejneru soukromého kontroly.
 
 > [!IMPORTANT]
-> Musíte použít e-mailovou adresu, přidružené k účtu Microsoft (MSA) nebo Azure Active Directory (Azure AD) účtu ve formuláři.
+> Musíte použít e-mailovou adresu, která má přidružené k účtu Microsoft (MSA) nebo Azure Active Directory (Azure AD) účet ve tvaru.
 
-Pokud vaše žádost se schválí, pak dostanete e-mail s pokyny popisují, jak získat vaše přihlašovací údaje a přístup privátním registru kontejneru.
+Pokud vaše žádost se schválí, obdržíte e-mail s pokyny, které popisují, jak získat vaše přihlašovací údaje a přístup privátním registru kontejneru.

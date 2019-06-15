@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c9b07e7524488d0336a55af6e1d5f36af59a870
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c5ccc4ef6c095eacd29590504d46756ead856574
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729829"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058616"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 Tento článek obsahuje pokyny, jak pomocí rutin Powershellu pro Azure Active Directory (Azure AD) k vytvoření a aktualizaci skupiny. Tento obsah platí jenom pro skupiny Office 365 (říká se jim sjednocené skupiny). 
@@ -78,7 +78,7 @@ Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechn
    ```
 6. Může číst hodnoty pomocí:
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```  
 ## <a name="update-settings-at-the-directory-level"></a>Aktualizovat nastavení na úrovni adresáře
@@ -86,7 +86,7 @@ Aktualizujte hodnotu pro UsageGuideLinesUrl v nastavení šablony, jednoduše up
 
 Odebrat hodnotu UsageGuideLinesUrl, upravte adresu URL na prázdný řetězec pomocí výše uvedeného kroku 4:
 
- ```powershell
+   ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
 Proveďte krok 5 a nastavte novou hodnotu.
@@ -112,7 +112,7 @@ Tady je nastavení definované v Group.Unified SettingsTemplate. Pokud není uve
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Příklad: Konfigurace zásad hosta pro skupiny na úrovni adresáře
 1. Načtení všech šablon nastavení:
-  ```powershell
+   ```powershell
    Get-AzureADDirectorySettingTemplate
    ```
 2. Nastavit hosta zásady pro skupiny na úrovni adresáře, budete potřebovat Group.Unified šablony
@@ -135,7 +135,7 @@ Tady je nastavení definované v Group.Unified SettingsTemplate. Pokud není uve
    ```
 6. Může číst hodnoty pomocí:
 
-  ```powershell
+   ```powershell
    $Setting.Values
    ```   
 
@@ -143,9 +143,9 @@ Tady je nastavení definované v Group.Unified SettingsTemplate. Pokud není uve
 
 Pokud znáte název nastavení, které chcete načíst, můžete použít následující rutinu k získání aktuální hodnoty nastavení. V tomto příkladu jsme při načítání hodnoty pro nastavení s názvem "UsageGuidelinesUrl." 
 
-  ```powershell
-  (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
-  ```
+   ```powershell
+   (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value UsageGuidelinesUrl -EQ
+   ```
 Tyto kroky číst nastavení na úrovni adresáře, které platí pro všechny skupiny Office v adresáři.
 
 1. Přečtěte si všechna existující nastavení adresáře:
@@ -188,11 +188,11 @@ Tyto kroky číst nastavení na úrovni adresáře, které platí pro všechny s
 
 ## <a name="remove-settings-at-the-directory-level"></a>Odebrání nastavení na úrovni adresáře
 Tento krok odstraní nastavení na úrovni adresáře, které platí pro všechny skupiny Office v adresáři.
-  ```powershell
-  Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
-  ```
+   ```powershell
+   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
+   ```
 
-## <a name="update-settings-for-a-specific-group"></a>Aktualizovat nastavení pro konkrétní skupinu
+## <a name="create-settings-for-a-specific-group"></a>Vytvoření nastavení pro konkrétní skupinu
 
 1. Vyhledejte požadovanou šablonu nastavení s názvem "Groups.Unified.Guest"
    ```powershell
@@ -219,13 +219,49 @@ Tento krok odstraní nastavení na úrovni adresáře, které platí pro všechn
    ```powershell
    $SettingCopy["AllowToAddGuests"]=$False
    ```
-5. Vytvořte nové nastavení pro požadované skupiny v adresáři:
+5. Získejte ID skupiny, které chcete použít toto nastavení:
    ```powershell
-   New-AzureADObjectSetting -TargetType Groups -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -DirectorySetting $SettingCopy
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
    ```
-6. Pokud chcete ověřit nastavení, spusťte tento příkaz:
+6. Vytvořte nové nastavení pro požadované skupiny v adresáři:
    ```powershell
-   Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups | fl Values
+   New-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -DirectorySetting $SettingCopy
+   ```
+7. Pokud chcete ověřit nastavení, spusťte tento příkaz:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
+   ```
+
+## <a name="update-settings-for-a-specific-group"></a>Aktualizovat nastavení pro konkrétní skupinu
+1. Získejte ID skupiny, jehož nastavení chcete aktualizovat:
+   ```powershell
+   $groupID= (Get-AzureADGroup -SearchString "YourGroupName").ObjectId
+   ```
+2. Načtěte nastavení skupiny:
+   ```powershell
+   $Setting = Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+3. Aktualizovat nastavení skupiny podle potřeby, například
+   ```powershell
+   $Setting["AllowToAddGuests"] = $True
+   ```
+4. Potom Získejte ID nastavení pro konkrétní skupiny:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups
+   ```
+   Obdržíte odpovědi podobně jako tato:
+   ```powershell
+   Id                                   DisplayName            TemplateId                             Values
+   --                                   -----------            -----------                            ----------
+   2dbee4ca-c3b6-4f0d-9610-d15569639e1a Group.Unified.Guest    08d542b9-071f-4e16-94b0-74abb372e3d9   {class SettingValue {...
+   ```
+5. Potom můžete nastavit novou hodnotu pro toto nastavení:
+   ```powershell
+   Set-AzureADObjectSetting -TargetType Groups -TargetObjectId $groupID -Id 2dbee4ca-c3b6-4f0d-9610-d15569639e1a -DirectorySetting $Setting
+   ```
+6. Hodnota nastavení zajistit, aby že byl správně aktualizován si můžete přečíst:
+   ```powershell
+   Get-AzureADObjectSetting -TargetObjectId $groupID -TargetType Groups | fl Values
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Reference k rutinám syntaxe

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8252dea33ff5cde07e021421d9772a69ea9f143b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 0b36d34babcbb0241118e895cfe0cc8e4c3bb363
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899964"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Kurz: Integrace Azure Active Directory s spolupráci inovace
 
@@ -54,7 +54,7 @@ Ke konfiguraci integrace spolupráci inovace do služby Azure AD, budete muset p
 
 **Přidání spolupráci inovace z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -119,7 +119,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s spolupráci inovace, prove�
 
 6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | givenName | user.givenname |
     | Příjmení | user.surname |
@@ -219,7 +219,7 @@ Přihlaste se ke spolupráci inovace Azure AD uživatelům umožnit, musí být 
 
 V případě této aplikace je zřízení automatické jako aplikace podporuje pouze v době zřizování uživatelů. Proto není nutné provádět žádné kroky.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

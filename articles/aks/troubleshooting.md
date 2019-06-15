@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
 ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966393"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
@@ -78,8 +78,8 @@ Vám může zobrazovat tato chyba vzhledem k tomu, že jste upravili značky v a
 Tato chyba nastane, pokud clustery zadejte stavu selhání z několika důvodů. Postupujte podle následujících kroků, abyste před opakováním dříve nezdařené operace vyřešit stav vašeho clusteru se nezdařilo:
 
 1. Dokud je cluster z `failed` stavu, `upgrade` a `scale` operace nebude úspěšné. Běžné problémy kořenové a jejich řešení patří:
-    * Škálování s **kvóta dostatek výpočetních prostředků (CRP)**. Pokud chcete vyřešit, nejprve škálování clusteru zpět do stavu stabilní cíle v rámci kvóty. Potom postupujte podle těchto [postup k vyžádání kvóta výpočetních prostředků zvýšit](../azure-supportability/resource-manager-core-quotas-request.md) před pokusem o vertikální navýšení kapacity znovu za počáteční kvóty.
-    * Škálování clusteru se službou rozšířeného sítě a **prostředků nedostatečná podsítě (síť)**. Pokud chcete vyřešit, nejprve škálování clusteru zpět do stavu stabilní cíle v rámci kvóty. Potom postupujte podle [zvýšení postupem požadovat kvóty prostředků](../azure-resource-manager/resource-manager-quota-errors.md#solution) před pokusem o vertikální navýšení kapacity znovu za počáteční kvóty.
+    * Škálování s **kvóta dostatek výpočetních prostředků (CRP)** . Pokud chcete vyřešit, nejprve škálování clusteru zpět do stavu stabilní cíle v rámci kvóty. Potom postupujte podle těchto [postup k vyžádání kvóta výpočetních prostředků zvýšit](../azure-supportability/resource-manager-core-quotas-request.md) před pokusem o vertikální navýšení kapacity znovu za počáteční kvóty.
+    * Škálování clusteru se službou rozšířeného sítě a **prostředků nedostatečná podsítě (síť)** . Pokud chcete vyřešit, nejprve škálování clusteru zpět do stavu stabilní cíle v rámci kvóty. Potom postupujte podle [zvýšení postupem požadovat kvóty prostředků](../azure-resource-manager/resource-manager-quota-errors.md#solution) před pokusem o vertikální navýšení kapacity znovu za počáteční kvóty.
 2. Po vyřešení základní příčinu selhání upgradu clusteru musí být v úspěšném stavu. Po ověření bylo úspěšné. stav původní operaci opakujte.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Zobrazuje chyby při pokusu o upgrade nebo určený počet číslic, které stav clusteru se aktuálně vrácení upgradu nebo selhal upgrade

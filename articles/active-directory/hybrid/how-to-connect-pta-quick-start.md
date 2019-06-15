@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60243680"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Předávací ověřování služby Azure Active Directory: Rychlý start
@@ -83,7 +83,7 @@ Pokud Azure AD Connect instalujete poprvé, zvolte [vlastní instalační cesta]
 
 Pokud jste již nainstalovali Azure AD Connect s použitím [Expresní instalace](how-to-connect-install-express.md) nebo [vlastní instalaci](how-to-connect-install-custom.md) cestu, vyberte **změnit přihlášení uživatele** úloh v Azure AD Připojení a pak vyberte **Další**. Potom vyberte **předávací ověřování** jako metodu přihlašování. Při úspěšném dokončení předávací ověřovací Agent je nainstalovaný na stejném serveru jako Azure AD Connect a aby byla povolená funkce ve svém tenantovi.
 
-![Azure AD Connect: Změna přihlašovacích údajů uživatele](./media/how-to-connect-pta-quick-start/changeusersignin.png)
+![Azure AD Connect: Změnit přihlášení uživatele](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
 >Předávací ověřování je funkce úrovni tenanta. Zapnutí ovlivňuje přihlášení pro uživatele napříč _všechny_ spravovaných domén ve vašem tenantovi. Pokud přecházíte z Active Directory Federation Services (AD FS) na předávací ověřování, byste měli počkat alespoň 12 hodin před ukončením infrastruktury služby AD FS. Tato čekací doba je zajistit, že uživatelé můžete zachovat přihlášení k Exchange ActiveSync během přechodu. Další nápovědu o migraci ze služby AD FS na předávací ověřování, podívejte se na náš podrobný nasazení plán publikování [tady](https://aka.ms/adfstoptadpdownload).
@@ -140,7 +140,7 @@ Nejdřív to zvládnete interaktivně jenom spuštěním staženého spustiteln�
 Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je užitečné, pokud chcete nasadit více agentů ověřování najednou, nebo instalace agentů ověřování na Windows serverech, které nemají uživatelské rozhraní povolená, nebo pomocí vzdálené plochy nelze získat přístup. Toto jsou pokyny o tom, jak pomocí tohoto postupu:
 
 1. Spusťte následující příkaz k instalaci agenta ověřování: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Ověřovací Agent můžete zaregistrovat v naší službě pomocí Windows Powershellu. Vytvořte objekt pověření prostředí PowerShell `$cred` , která obsahuje uživatelské jméno globálního správce a heslo pro vašeho tenanta. Spusťte následující příkaz a nahraďte *\<uživatelské jméno\>* a  *\<heslo\>*:
+2. Ověřovací Agent můžete zaregistrovat v naší službě pomocí Windows Powershellu. Vytvořte objekt pověření prostředí PowerShell `$cred` , která obsahuje uživatelské jméno globálního správce a heslo pro vašeho tenanta. Spusťte následující příkaz a nahraďte *\<uživatelské jméno\>* a  *\<heslo\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60630164"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 series: řešení hybridního cloudového úložiště
@@ -222,7 +222,7 @@ Přehled podporovaných úloh StorSimple v následující tabulce.
 Následující úlohy nejsou podporovány zařízeních StorSimple řady 8000. Pokud nasadíte na StorSimple, způsobí tyto úlohy má nepodporovanou konfiguraci.
 
 * Lékařské vytvoření bitové kopie
-* Výměna
+* Exchange
 * VDI
 * Oracle
 * SAP
@@ -273,7 +273,7 @@ Před nasazením řešení Microsoft Azure StorSimple, doporučujeme, abyste si 
 | šifrovací klíč cloudového úložiště |Heslo nebo klíč, vaše zařízení StorSimple používá k přístupu k zašifrovaným datům ve vašem zařízení odesílají do cloudu. |
 | aktualizace pro clustery |Správa aktualizací softwaru na serverech v clusteru převzetí služeb při selhání tak, aby se aktualizace minimální nebo žádný vliv na dostupnost služeb. |
 | DataPath |Kolekce funkční jednotky, které provádějí operace propojených dat zpracování. |
-| deaktivovat |Trvalé akce, která přestane fungovat připojení mezi zařízením StorSimple a související cloudové služby. Cloudové snímky zařízení zůstat po dokončení tohoto procesu a můžete klonovat nebo je použitý pro zotavení po havárii. |
+| Deaktivace |Trvalé akce, která přestane fungovat připojení mezi zařízením StorSimple a související cloudové služby. Cloudové snímky zařízení zůstat po dokončení tohoto procesu a můžete klonovat nebo je použitý pro zotavení po havárii. |
 | zrcadlení disků |Replikace pro logické diskové svazky na samostatné pevné disky v reálném čase k zajištění trvalé dostupnosti. |
 | zrcadlení dynamického disku |Replikace pro logické diskové svazky na dynamických discích. |
 | dynamické disky |Formát disku svazku, který používá Správce logických disků (LDM) k ukládání a správě dat mezi několik fyzických disků. Dynamické disky můžete zvětšit poskytnout další volné místo. |

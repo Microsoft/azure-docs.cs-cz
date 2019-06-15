@@ -18,10 +18,10 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3a2a81bd8aa3fc99d033564e8a8782c79261305
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60353138"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Co je Enterprise State Roaming?
@@ -40,7 +40,7 @@ Enterprise State Roaming je k dispozici v několika oblastech Azure. Aktualizova
 | [Nastavení a datovému roamingu – nejčastější dotazy](enterprise-state-roaming-faqs.md) |Toto téma odpovědi na některé dotazy, které správce IT může mít informace o nastavení a synchronizace dat aplikace. |
 | [Skupina zásad a nastavení MDM pro nastavení synchronizace](enterprise-state-roaming-group-policy-settings.md) |Windows 10 nabízí zásad skupiny a správy mobilních zařízení (MDM) nastavení zásad k omezení nastavení synchronizace. |
 | [Informace o cestovní nastavení Windows 10](enterprise-state-roaming-windows-settings-reference.md) |Následuje úplný seznam všech nastavení, které bude možné s roamingem a/nebo zálohování ve Windows 10. |
-| [Řešení potíží](enterprise-state-roaming-troubleshooting.md) |Toto téma prochází některé základní kroky pro řešení potíží a obsahuje seznam známých problémů. |
+| [Odstraňování potíží](enterprise-state-roaming-troubleshooting.md) |Toto téma prochází některé základní kroky pro řešení potíží a obsahuje seznam známých problémů. |
 
 ## <a name="next-steps"></a>Další postup
 

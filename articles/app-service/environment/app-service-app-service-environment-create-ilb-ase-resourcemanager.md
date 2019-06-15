@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62130751"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
@@ -58,12 +58,12 @@ Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno pro službu ASE, sl
 Po Azure Resource Manageru šablony se odešle, že bude trvat několik hodin služba ASE s ILB, který se má vytvořit.  Po dokončení vytváření služba ASE s ILB se zobrazí v seznamu prostředí App Service pro předplatné, které aktivuje nasazení portálu uživatelského prostředí.
 
 ## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Nahrání a konfigurace certifikátu SSL "Výchozí"
-Po vytvoření služba ASE s ILB certifikát SSL by měly být přidružené služby ASE, použijte "Výchozí" certifikát SSL pro navazování připojení SSL k aplikacím.  Pokračování hypotetickým příkladem společnosti Contoso Corporation v případě, že služba ASE výchozí DNS přípona je *interní contoso.com*, pak připojení k *https://some-random-app.internal-contoso.com* vyžaduje certifikát SSL, který je platné pro **.internal contoso.com*. 
+Po vytvoření služba ASE s ILB certifikát SSL by měly být přidružené služby ASE, použijte "Výchozí" certifikát SSL pro navazování připojení SSL k aplikacím.  Pokračování hypotetickým příkladem společnosti Contoso Corporation v případě, že služba ASE výchozí DNS přípona je *interní contoso.com*, pak připojení k *https://some-random-app.internal-contoso.com* vyžaduje certifikát SSL, který je platné pro * *.internal contoso.com*. 
 
 Existuje řada různých způsobů, jak získat platný certifikát SSL, včetně interní certifikační autority, nákupu certifikát od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem.  Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
-* *Předmět*:  Tento atribut musí být nastaven **.vase kořenové domain-here.com*
-* *Alternativní název subjektu*:  Tento atribut musí obsahovat **.vase kořenové domain-here.com*, a **.vase-kořenové-domain-here.com*.  Důvodem pro druhou položku je, že připojení SSL k webu SCM/kudu spojenému s každou aplikací se bude realizovat pomocí adresy formuláře *your-app-name.scm.your-root-domain-here.com*.
+* *Předmět*:  Tento atribut musí být nastaven * *.vase kořenové domain-here.com*
+* *Alternativní název subjektu*:  Tento atribut musí obsahovat * *.vase kořenové domain-here.com*, a * *.vase-kořenové-domain-here.com*.  Důvodem pro druhou položku je, že připojení SSL k webu SCM/kudu spojenému s každou aplikací se bude realizovat pomocí adresy formuláře *your-app-name.scm.your-root-domain-here.com*.
 
 Pomocí platného certifikátu SSL v rukou jsou potřeba další dva přípravné kroky.  Certifikát SSL musí být převeden a uložen jako soubor .pfx.  Mějte na paměti, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty a také musí být zabezpečené pomocí hesla.
 
@@ -91,7 +91,7 @@ Parametry v *azuredeploy.parameters.json* souboru jsou uvedeny níže:
 * *existingAseLocation*:  Textový řetězec obsahující oblast Azure, ve kterém byla nasazena služba ASE s ILB.  Příklad:  "Střední část jihu USA".
 * *pfxBlobString*:  Based64 kódovaný řetězcová reprezentace souboru .pfx.  Pomocí fragmentu kódu je uvedeno výše, by řetězec obsažený v "exportedcert.pfx.b64" zkopírujte a vložte ji jako hodnotu *pfxBlobString* atribut.
 * *password*:  Heslo používané k zabezpečení souboru .pfx.
-* *certificateThumbprint*:  Kryptografický otisk certifikátu  Pokud se načetlo tuto hodnotu z prostředí Powershell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu jako-je.  Při kopírování hodnoty z dialogového okna certifikátu Windows, ale nezapomeňte odstranit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateThumbprint*:  Kryptografický otisk certifikátu.  Pokud se načetlo tuto hodnotu z prostředí Powershell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu jako-je.  Při kopírování hodnoty z dialogového okna certifikátu Windows, ale nezapomeňte odstranit nadbytečné mezery.  *CertificateThumbprint* by měl vypadat nějak takto:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
 * *název certifikátu*:  Vlastní výběr identifikátor popisný řetězec použít na identitu certifikátu.  Název se používá jako součást jedinečný identifikátor pro Azure Resource Manageru *Microsoft.Web/certificates* entita, která představuje certifikát SSL.  Název **musí** končit následující příponu: \_yourASENameHere_InternalLoadBalancingASE.  Tato přípona se používá portálem jako indikátor, že certifikát se používá k zabezpečení služby ASE s ILB povolena.
 
 Příklad zkrácený *azuredeploy.parameters.json* je uveden níže:
@@ -130,7 +130,7 @@ Jakmile *azuredeploy.parameters.json* souboru bylo vyplněno, výchozího certif
 
 Po Azure Resource Manageru šablony se odešle, že bude trvat přibližně 40 minut za službu ASE front-endu na použití změny.  Například s výchozí velikost služby ASE pomocí dvou front endů, šablona bude trvat přibližně jednu hodinu a dvacet minut dokončení.  Je spuštěn v šabloně služby ASE nebude možné škálovat.  
 
-Po dokončení šablonu aplikace na služba ASE s ILB je přístupná přes protokol HTTPS a připojení, bude možné zabezpečit pomocí výchozího certifikátu SSL.  Výchozí certifikát SSL se použije při aplikací v prostředí ILB ASE se tak vyřeší, pomocí kombinace výchozí název hostitele a název aplikace.  Například *https://mycustomapp.internal-contoso.com* využije výchozí certifikát SSL pro **.internal contoso.com*.
+Po dokončení šablonu aplikace na služba ASE s ILB je přístupná přes protokol HTTPS a připojení, bude možné zabezpečit pomocí výchozího certifikátu SSL.  Výchozí certifikát SSL se použije při aplikací v prostředí ILB ASE se tak vyřeší, pomocí kombinace výchozí název hostitele a název aplikace.  Například *https://mycustomapp.internal-contoso.com* využije výchozí certifikát SSL pro * *.internal contoso.com*.
 
 Však stejně jako aplikace běžící na veřejné víceklientská služba, vývojáři mohou také nakonfigurovat vlastní hostitele pro jednotlivé aplikace a nakonfigurujte jedinečných vazeb certifikátů SNI SSL pro jednotlivé aplikace.  
 

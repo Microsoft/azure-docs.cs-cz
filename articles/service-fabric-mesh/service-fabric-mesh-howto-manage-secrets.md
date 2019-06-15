@@ -2,7 +2,7 @@
 title: Správa tajných klíčů aplikací Azure Service Fabric sítě | Dokumentace Microsoftu
 description: Správa tajných klíčů aplikací vám umožní bezpečně vytvoření a nasazení aplikace Service Fabric mřížky.
 services: service-fabric-mesh
-keywords: tajné kódy
+keywords: Tajné kódy
 author: aljo-microsoft
 ms.author: aljo
 ms.date: 4/2/2019
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
 ms.openlocfilehash: 251611e814f890e3cebf0fda2d33ab548a8ff213
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506449"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Správa tajných klíčů aplikací Service Fabric sítě

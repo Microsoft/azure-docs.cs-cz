@@ -1,18 +1,18 @@
 ---
 title: Implementace Azure Databricks s koncovým bodem služby Cosmos DB
 description: Tento kurz popisuje, jak implementovat Azure Databricks ve virtuální síti s koncový bod služby povolený pro službu Cosmos DB.
-services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
+ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: 0d5442a63680227f3a6186330502666c92dc3129
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d1268ea2cfc22e6350edb32230588a497be8bc79
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054452"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Kurz: Implementace Azure Databricks s koncovým bodem služby Cosmos DB
 
@@ -69,7 +69,7 @@ Než začnete, postupujte takto:
 
 3. Vyberte **sítě** kartu a konfigurace virtuální sítě. 
 
-   a. Zvolte virtuální síť, kterou jste vytvořili jako předpoklad a pak vyberte *veřejné podsítě*. Všimněte si, že *privátní podsítě* má poznámku *koncového bodu "Microsoft AzureCosmosDB" chybí "*. Důvodem je, že jste pouze povolili koncový bod služby Cosmos DB *veřejné podsítě*.
+   a. Zvolte virtuální síť, kterou jste vytvořili jako předpoklad a pak vyberte *veřejné podsítě*. Všimněte si, že *privátní podsítě* má poznámku *koncového bodu "Microsoft AzureCosmosDB" chybí "* . Důvodem je, že jste pouze povolili koncový bod služby Cosmos DB *veřejné podsítě*.
 
    b. Zkontrolujte, že máte **povolit přístup z portálu Azure portal** povolena. Toto nastavení umožňuje přístup k účtu služby Cosmos DB na webu Azure Portal. Pokud je tato možnost nastavená na **Odepřít**, zobrazí se chyby při pokusu o přístup ke svému účtu. 
 

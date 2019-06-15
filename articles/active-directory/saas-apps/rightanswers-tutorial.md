@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: b45c88ddf3e4a5781e48641d26a9487e5861880c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 5f083178ca7e28831bf4f60940c3ced73a427dda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890029"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092786"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Kurz: Integrace Azure Active Directory s RightAnswers
 
@@ -53,7 +53,7 @@ Konfigurace integrace RightAnswers do služby Azure AD, budete muset přidat Rig
 
 **Chcete-li přidat RightAnswers z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -193,7 +193,7 @@ Uživatelé se automaticky vytvoří v případě potřeby během první jednotn
 > [!NOTE]
 > Můžete použít jakékoli jiné RightAnswers uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných RightAnswers uživatelským účtům, zřídit AAD.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

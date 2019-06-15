@@ -18,10 +18,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540298"
 ---
 # <a name="service-to-service-apps"></a>Služba služba aplikace
@@ -57,11 +57,11 @@ Viz následující popis toku předpokládá, že uživatel byl ověřen na jino
 1. Azure AD ověří, jestli webové rozhraní API první úrovně má oprávnění pro přístup k druhé úrovně webového rozhraní API a ověří žádost vrácení přístupový token JWT, token JWT obnovovací token do první úrovně webového rozhraní API.
 1. První úrovně webového rozhraní API přes protokol HTTPS, pak zavolá druhé úrovně webového rozhraní API přidáním řetězec tokenu v autorizační hlavičky v požadavku. První úrovně webového rozhraní API můžete nadále volají druhé úrovně webového rozhraní API jako přístupový token a obnovovací tokeny jsou platné.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 Zobrazit ukázky kódu pro proces démon nebo serverové aplikace na scénáře webového rozhraní API. A vrácení zpět často, jak často jsou přidávány nové ukázky. [Server nebo proces démon aplikace webového rozhraní API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
-## <a name="app-registration"></a>Registrace aplikace
+## <a name="app-registration"></a>Registrace aplikací
 
 * Jednoho tenanta – identita aplikace i delegovaný uživatel případech identity proces démon nebo serverové aplikace musí být zaregistrovaný ve stejném adresáři, ve službě Azure AD. Webové rozhraní API je možné nakonfigurovat k vystavení sady oprávnění, které slouží k omezení proces démon nebo serveru pro přístup k jeho prostředkům. Pokud typ identity delegovaný uživatel serverová aplikace musí z rozevírací nabídky "Oprávnění do jiných aplikací" na webu Azure Portal vyberte požadovaná oprávnění. Tento krok není povinný, pokud se používá typ identity aplikace.
 * Víceklientské-First, proces démon nebo serveru aplikace je nakonfigurovaná k označení oprávnění, která ho, aby byl funkční. Tento seznam požadovaných oprávnění se zobrazí v dialogovém okně, když uživatel nebo správce v cílovém adresáři dává souhlas pro aplikaci, které zpřístupní jejich organizace. Některé aplikace vyžadují jenom oprávnění na úrovni uživatele, které každý uživatel v organizaci můžou udělit souhlas s. Jiné aplikace vyžadují oprávnění na úrovni správce, které nelze vyjádřit souhlas uživatele v organizaci. Pouze správce adresáře lze udělit souhlas aplikacím, které vyžadují tuto úroveň oprávnění. Když uživatel nebo správce souhlasí, i webové rozhraní API jsou registrovány v jejich adresáře.

@@ -4,14 +4,14 @@ description: Použití Azure Resource Manageru k přesunutí prostředků do nov
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083526"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -88,7 +88,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Logic Apps
 * Machine Learning – Machine Learning Studio webové služby je možné přesunout do skupiny prostředků ve stejném předplatném, ale jiné předplatné. Další prostředky služby Machine Learning je možné přesunout mezi předplatnými.
 * Managed Disks – spravované disky v zónách dostupnosti nelze přesunout do jiného předplatného
-* Spravovaná identita - přiřazená uživatelem
 * Media Services
 * Monitorování – zkontrolujte, že přesun do nového předplatného nepřekračuje [kvóty předplatných](../azure-subscription-service-limits.md#monitor-limits)
 * Notification Hubs
@@ -141,6 +140,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * ExpressRoute
 * Služby testovacího prostředí – testovacím prostředím v Učebnách nelze přesunout do nové skupiny prostředků nebo předplatného. DevTest Labs můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
 * Managed Applications
+* Spravovaná identita - přiřazená uživatelem
 * Microsoft Genomics
 * Zabezpečení
 * Site Recovery

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60358021"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
@@ -43,7 +43,7 @@ Pokud používáte výchozí nastavení ve službě Azure AD Connect, jsou prove
 
 Když uživatel zadání čísla mobilního telefonu, pole Telefon pod kontaktní údaje pro ověření ve službě Azure AD také naplní se s tímto číslem.
 
-## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověřování
+## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověření
 
 Globální správce, můžete ručně nastavit kontaktní údaje pro ověření pro uživatele, jako je zobrazena na následujícím snímku obrazovky.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
 ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60851858"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
@@ -338,7 +338,7 @@ Pokud brána firewall nebo proxy serveru brání přístupu k Azure, seznam povo
 - \*.Microsoft.com
 - \*.WindowsAzure.com
 - \*.microsoftonline.com
-- \*.windows.net
+- \*. windows.net
 
 Po obnovení připojení k Azure do Azure Backup serveru stav předplatného Azure určuje operace, které lze provést. Jakmile je server **připojeno**, pomocí tabulky uvedené v [připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) zobrazíte dostupné operace.
 

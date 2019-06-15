@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60362284"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
@@ -87,7 +87,7 @@ Chcete-li tento problém vyřešit, povolte protokol DHCP pomocí sériového po
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
     |1069 - ERROR_SERVICE_LOGON_FAILED   |  Zobrazit [služba Klient DHCP selže z důvodu selhání přihlášení](#dhcp-client-service-fails-because-of-logon-failure) |
     | 1070 - ERROR_SERVICE_START_HANG  | Zobrazit [služba Klient DHCP selže nebo přestane reagovat](#dhcp-client-service-crashes-or-hangs).  |
-    | 1077. - ERROR_SERVICE_NEVER_STARTED  | Zobrazit [zakázána služba Klient DHCP](#dhcp-client-service-is-disabled).  |
+    | 1077\. - ERROR_SERVICE_NEVER_STARTED  | Zobrazit [zakázána služba Klient DHCP](#dhcp-client-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
     |1053 | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.  |
 

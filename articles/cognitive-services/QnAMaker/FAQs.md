@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 06/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 896680b38d6861b09b133680487aa90ad11dec77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064349"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>Nejčastější dotazy pro QnA Maker
 
@@ -114,7 +114,7 @@ Název prostředku Azure Search je název prostředku QnA Maker se některé ná
 
 ### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Pokud chci používat QnA Maker, musím používat Bot Framework?
 
-Ne, není potřeba rozhraní Bot Framework pomocí nástroje QnA Maker. Nástroj QnA Maker se ale nabízí jako jeden z několika šablon služby Azure Bot Service. Bot Service umožňuje rychlý vývoj inteligentních robotů prostřednictvím Microsoft Bot Framework a běží v prostředí bez serveru.
+Ne, není potřeba použít [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) pomocí nástroje QnA Maker. Ale QnA Maker se nabízí jako jedna z několika šablon [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0). Bot Service umožňuje rychlý vývoj inteligentních robotů prostřednictvím Microsoft Bot Framework a běží v prostředí bez serveru.
 
 ### <a name="how-can-i-create-a-bot-with-qna-maker"></a>Jak lze vytvořit robota pomocí nástroje QnA Maker?
 

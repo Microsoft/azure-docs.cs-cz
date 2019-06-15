@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60563409"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
@@ -69,7 +69,7 @@ Další informace o tom, jak nakonfigurovat automatizované zálohování pro vi
 - **Centrální správy a monitorování**: Centrálně Spravujte všechny zálohy, včetně jiné úlohy, které podporuje Azure Backup z jednoho řídicího panelu v Azure.
 - **Zásady zálohování a uchovávání řízené**: Vytvořte standardní zásady zálohování pravidelného zálohování. Vytvořte zásady uchovávání informací, které chcete zachovat zálohy po dobu let.
 - **Podpora SQL vždy na**: Zjišťování a ochranu konfigurace AlwaysOn SQL serveru a bude respektovat zálohování předvolbu zálohování skupiny dostupnosti.
-- **Cíl bodu obnovení 15 minut (RPO)**: Konfigurace zálohování protokolu transakcí SQL až každých 15 minut.
+- **Cíl bodu obnovení 15 minut (RPO)** : Konfigurace zálohování protokolu transakcí SQL až každých 15 minut.
 - **Bod v čase**: Použití portálu k obnovení databáze k určitému bodu v čase, aniž byste museli ručně obnovit více plný, rozdílového a zálohu protokolu.
 - **Konsolidované e-mailové výstrahy pro selhání**: Nakonfigurujte konsolidované e-mailová oznámení pro všechny chyby.
 - **Řízení přístupu na základě rolí**: Zjistěte, kdo může Správa zálohování a obnovení prostřednictvím portálu.

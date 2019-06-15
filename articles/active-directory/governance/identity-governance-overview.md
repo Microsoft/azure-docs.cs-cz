@@ -16,12 +16,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be6fc2b7d6da85778524cb8986f399c341370c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 4b4f1563aa0437cd45c297b95a83119318a24624
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109579"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je zásady správného řízení identit Azure AD?
 
@@ -68,7 +68,7 @@ V minulosti privilegovaného přístupu je popsán pomocí jiných dodavatelů j
 
 ![Životní cyklus privilegovaného přístupu](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
-Azure AD Privileged Identity Management (PIM) obsahuje další ovládací prvky přizpůsobená pro zabezpečení přístupu práv pro prostředky, v Azure AD, Microsoft Online Services, Azure a dalších.  Just-in-time přístup a upozorňování, které poskytuje Azure AD PIM, kromě vícefaktorové ověřování a podmíněný přístup, změna role poskytují že komplexní sadu kontrolu zásad správného řízení zabezpečení prostředků vaší společnosti (adresář, Office 365 a role prostředků Azure). Stejně jako u jiných forem přístup organizace můžou použít kontroly přístupu ke konfiguraci opakované vydal přístup pro všechny uživatele v rolích správce.
+Azure AD Privileged Identity Management (PIM) obsahuje další ovládací prvky přizpůsobená pro zabezpečení přístupu práv pro prostředky, v Azure AD, Microsoft Online Services, Azure a dalších.  Just-in-time přístup a role změnit upozorňování poskytuje kromě vícefaktorové ověřování a podmíněného přístupu Azure AD PIM, poskytují že komplexní sadu kontrolu zásad správného řízení zabezpečení prostředků vaší společnosti (adresář, Office 365 a role prostředků Azure). Stejně jako u jiných forem přístup organizace můžou použít kontroly přístupu ke konfiguraci opakované vydal přístup pro všechny uživatele v rolích správce.
 
 ## <a name="getting-started"></a>Začínáme
 

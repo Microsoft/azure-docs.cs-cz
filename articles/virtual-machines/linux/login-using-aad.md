@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
 ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155953"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
@@ -64,7 +64,7 @@ Následující oblasti Azure jsou aktuálně podporované ve verzi preview tato 
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
 
 Vytvořte skupinu prostředků s [vytvořit skupiny az](/cli/azure/group#az-group-create), pak vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm#az-vm-create) pomocí podporované distribuce a v podporované oblasti. Tento příklad nasadí virtuální počítač s názvem *myVM* , která používá *Ubuntu 16.04 LTS* do skupiny prostředků s názvem *myResourceGroup* v *southcentralus*  oblasti. V následujících příkladech můžete zadat vlastní skupiny prostředků a názvy virtuálních počítačů podle potřeby.
 

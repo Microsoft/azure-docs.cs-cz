@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb066ce346d56b9b879a5e3cdcf30e7da77d94fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 81032fbad21b18b0b7ca2e7662b0c4b4b6c10901
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65859314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Kurz: Integrace s Azure Active Directory s Adobe Experience Manager
 
@@ -55,7 +55,7 @@ Konfigurace integrace nástroje Adobe Experience Manager do služby Azure AD, bu
 
 **Chcete-li přidat Adobe Experience Manager z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -182,7 +182,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. V **cesta** zadejte **/**.
+    a. V **cesta** zadejte **/** .
 
     b. V **adresa URL zprostředkovatele identity** zadejte **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
@@ -259,7 +259,7 @@ V této části vytvoříte uživateli Britta Simon v aplikaci Adobe Experience 
 
 Pokud chcete ručně vytvořit uživatele, pracovat [tým podpory Adobe Experience Manager](https://helpx.adobe.com/support/experience-manager.html) přidat uživatele na platformě Adobe Experience Manager.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60608115"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spouštění kontejnerizovaných úloh pomocí zásady restartování
@@ -26,7 +26,7 @@ Příklady uvedené v tomto článku využívají Azure CLI. Musíte mít Azure 
 
 Když vytvoříte [skupinu kontejnerů](container-instances-container-groups.md) ve službě Azure Container Instances, můžete určit jednu z tři nastavení zásad restartovat.
 
-| Restartovat zásadu   | Popis |
+| Zásady restartování   | Popis |
 | ---------------- | :---------- |
 | `Always` | Kontejnery ve skupině kontejnerů se vždy restartuje. Toto je **výchozí** nastavení použijí v případě, že žádné zásady restartování je určený při vytvoření kontejneru. |
 | `Never` | Nikdy se restartují kontejnerů ve skupině kontejnerů. Kontejnery spustit maximálně jednou. |

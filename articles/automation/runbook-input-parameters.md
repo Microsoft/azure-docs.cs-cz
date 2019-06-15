@@ -10,10 +10,10 @@ ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60499956"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
@@ -31,7 +31,7 @@ Sady runbook Powershellu a pracovní postup prostředí PowerShell ve službě A
 | **Vlastnost** | **Popis** |
 |:--- |:--- |
 | `Type` |Povinná hodnota. Datový typ, očekávání pro hodnotu parametru. Libovolný typ rozhraní .NET je platný. |
-| `Name` |Povinná hodnota. Název parametru Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znaky podtržení. Musí začínat písmenem. |
+| `Name` |Povinná hodnota. Název parametru. Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znaky podtržení. Musí začínat písmenem. |
 | `Mandatory` |Volitelné. Určuje, zda je nutné zadat hodnotu pro parametr. Pokud nastavíte  **\$true**, pak je nutné zadat hodnotu při spuštění runbooku. Pokud nastavíte  **\$false**, pak hodnota je volitelná. |
 | `Default value` |Volitelné. Určuje hodnotu, která se používá pro parametr, pokud není hodnota předávané při spuštění runbooku. Výchozí hodnota je možné nastavit pro libovolný parametr a bude automaticky nastavit parametr volitelný bez ohledu na to povinné nastavení. |
 
@@ -94,7 +94,7 @@ Můžete použít [ **Write-Output** ](/powershell/module/microsoft.powershell.u
 
    | **Vlastnost** | **Popis** |
    |:--- |:--- |
-   | `Name` |Povinná hodnota. Název parametru Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znaky podtržení. Musí začínat písmenem. |
+   | `Name` |Povinná hodnota. Název parametru. Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znaky podtržení. Musí začínat písmenem. |
    | `Description` |Volitelné. Popis účelu vstupního parametru. |
    | `Type` |Volitelné. Datový typ, který je možné očekávat u hodnotu parametru. Jsou podporované typy parametrů **řetězec**, **Int32**, **Int64**, **desítkové**, **logická**,  **Datum a čas**, a **objekt**. Pokud datový typ není zaškrtnuto, bude výchozí **řetězec**. |
    | `Mandatory` |Volitelné. Určuje, zda je nutné zadat hodnotu pro parametr. Pokud se rozhodnete **Ano**, pak je nutné zadat hodnotu při spuštění runbooku. Pokud se rozhodnete **žádné**, pak hodnota není požadovaný při spuštění runbooku a může být nastaven výchozí hodnotu. |

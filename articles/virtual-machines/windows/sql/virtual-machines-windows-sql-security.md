@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076936"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
 
@@ -42,7 +42,7 @@ Následující části obsahují návrhy na přemýšlení prostřednictvím tě
 
 ## <a name="secure-connections"></a>Zabezpečená připojení
 
-Při vytváření virtuálního počítače s SQL serverem pomocí image Galerie **připojení k SQL serveru** možnost vám poskytne možnost **místní (uvnitř virtuálního počítače)**, **privátní (uvnitř virtuální sítě)**, nebo **veřejné (Internet)**.
+Při vytváření virtuálního počítače s SQL serverem pomocí image Galerie **připojení k SQL serveru** možnost vám poskytne možnost **místní (uvnitř virtuálního počítače)** , **privátní (uvnitř virtuální sítě)** , nebo **veřejné (Internet)** .
 
 ![Připojení k SQL serveru](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
@@ -62,9 +62,11 @@ Nakonec je třeba zvážit povolení šifrované připojení k instanci databáz
 
 Ve výchozím nastavení SQL Server naslouchá na dobře známém portu 1433. Pro zvýšení zabezpečení a konfigurace SQL serveru tak, aby naslouchala na jiný než výchozí port, jako je například 1401. Pokud si zřídíte Galerie image SQL serveru na webu Azure Portal, můžete zadat Tento port v **nastavení systému SQL Server** okno.
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Pokud chcete nastavit tuto konfiguraci po zřízení, máte dvě možnosti:
 
-- Pro virtuální počítače Resource Manageru, můžete vybrat **konfigurace systému SQL Server** v okně Přehled virtuálních počítačů. To poskytuje možnost změnit číslo portu.
+- Pro virtuální počítače Resource Manageru, můžete vybrat **zabezpečení** z [prostředků virtuálních počítačů SQL](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource). To poskytuje možnost změnit číslo portu.
 
   ![Změňte TCP port na portálu](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

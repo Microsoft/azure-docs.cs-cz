@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: daec6e169805c193b48781dfecbabd9349bdc59b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd4eab2d8e877cac468097c0a6ed6aa3cfb750b9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278670"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67102455"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Kurz: Integrace Azure Active Directory s Five9 Plus adaptérem (CTI, agenti System Center kontakt)
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace Five9 Plus adaptér (CTI, agenti System Center kontakt)
 
 **Chcete-li přidat Five9 Plus adaptér (CTI, agenti System Center kontakt) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -173,11 +173,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Five9 Plus adaptéru (CTI, agenti System Center kontakt).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Five9 Plus adaptér (CTI, agenti System Center kontakt)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Five9 Plus adaptér (CTI, agenti System Center kontakt)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Five9 Plus adaptér (CTI, agenti System Center kontakt)**.
+2. V seznamu aplikací vyberte **Five9 Plus adaptér (CTI, agenti System Center kontakt)** .
 
     ![Propojení Five9 Plus adaptéru (CTI, agenti System Center kontakt) v seznamu aplikací](common/all-applications.png)
 

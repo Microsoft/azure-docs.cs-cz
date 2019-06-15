@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 149452bd7d43ce46f320b9bae63a6f9cd48d98d4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730704"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068785"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -33,7 +33,7 @@ Neplatí žádné poplatky pro šifrování disků virtuálních počítačů po
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Jaké úrovně virtuálních počítačů Azure Disk Encryption podporuje?
 
-Azure Disk Encryption je k dispozici na virtuálních počítačích úrovně standard, včetně [A, D, DS, G, GS a F](https://azure.microsoft.com/pricing/details/virtual-machines/) řady virtuálních počítačů IaaS. Je také k dispozici pro virtuální počítače s premium storage. Není k dispozici na úrovni basic virtuálních počítačů.
+Azure Disk Encryption je k dispozici na virtuálních počítačích úrovně standard, včetně [A, D, DS, E, G, GS a F](https://azure.microsoft.com/pricing/details/virtual-machines/) řady virtuálních počítačů IaaS. Je také k dispozici pro virtuální počítače s premium storage. Není k dispozici na úrovni basic virtuálních počítačů.
 
 ## <a name="bkmk_LinuxOSSupport"></a> Jaké distribuce Linuxu podporuje Azure Disk Encryption?
 
@@ -121,7 +121,9 @@ Ano. Šifrování disku pomocí aplikace Azure AD je nadále podporován. Ale p�
 Použijte nejnovější verzi sady SDK Azure Powershellu ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Azure Disk Encryption je *není* podporuje sadu Azure SDK verze 1.1.0.
 
 > [!NOTE]
-> Ve verzi preview rozšíření Linux Azure disk encryption je zastaralý. Podrobnosti najdete v tématu [rozšíření ukončení podpory pro Azure disk encryption ve verzi preview pro virtuální počítače IaaS s Linuxem](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/).
+> Rozšíření Linux Azure disk encryption ve verzi preview "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" je zastaralá. Toto rozšíření bylo publikováno pro Azure disk encryption ve verzi preview. Rozšíření ve verzi preview byste neměli používat v rámci testování nebo produkčním nasazení.
+
+> Pro scénáře nasazení, jako je Azure Resource Manager (ARM), kde máte třeba nasadit rozšíření Azure disk encryption pro virtuální počítač s Linuxem povolíte šifrování u virtuálního počítače IaaS s Linuxem, je nutné použít rozšíření Azure disk encryption produkčním prostředí podporované" Microsoft.Azure.Security.AzureDiskEncryptionForLinux".
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Můžete použít Azure Disk Encryption na své vlastní image Linuxu?
 

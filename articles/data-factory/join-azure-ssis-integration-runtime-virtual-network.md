@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152781"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
@@ -110,7 +110,7 @@ Další informace najdete v tématu [překlad názvů, který používá vlastn�
 ### <a name="nsg"></a> Skupina zabezpečení sítě
 Pokud potřebujete implementovat skupinu zabezpečení sítě (NSG) pro podsíť používá prostředí Azure-SSIS integration runtime, povolený příchozí/odchozí provoz přes následující porty: 
 
-| Direction | Přenosový protokol | Zdroj | Rozsah zdrojových portů | Cíl | Rozsah cílových portů | Komentáře |
+| Direction | Přenosový protokol | source | Rozsah zdrojových portů | Cíl | Rozsah cílových portů | Komentáře |
 |---|---|---|---|---|---|---|
 | Příchozí | TCP | AzureCloud<br/>(nebo větší rozsah, jako je Internet) | * | VirtualNetwork | 29876, 29877 (když se do programu prostředí IR k virtuální síti Azure Resource Manageru) <br/><br/>10100, 20100, 30100 (když se do programu prostředí IR k virtuální síti classic)| Služba Data Factory používá následující porty pro komunikaci s uzly prostředí Azure-SSIS integration runtime ve virtuální síti. <br/><br/> Jestli NSG úrovni podsítě vytvořit, nebo Ne, služby Data Factory vždy nakonfiguruje skupiny NSG na úrovni karty síťového rozhraní (NIC) připojených k virtuálním počítačům, které jsou hostiteli Azure-SSIS IR. V této úrovni síťové karty, skupiny zabezpečení sítě je povolen pouze příchozí provoz z Data Factory IP adresy zadané porty. I v případě, že otevřete tyto porty pro přenosy z Internetu na úrovni podsítě, jsou blokovány přenosy z IP adresy, které nejsou Data Factory IP adresy na úrovni síťové karty. |
 | Odchozí | TCP | VirtualNetwork | * | AzureCloud<br/>(nebo větší rozsah, jako je Internet) | 443 | Uzly vašeho prostředí Azure-SSIS integration runtime ve službě virtual network používat tento port pro přístup ke službám Azure, jako je například Azure Storage a Azure Event Hubs. |
@@ -127,7 +127,7 @@ Nebo můžete definovat trasy definované uživatelem (udr) k vynucení odchozí
 
 V obou případech platí trasy 0.0.0.0/0 s typem dalšího segmentu směrování jako **Internet** v podsíti, který je hostitelem prostředí Azure-SSIS IR, aby komunikace mezi službou Data Factory a Azure-SSIS IR je úspěšné. 
 
-![Přidat trasu](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
+![Přidání trasy](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
 
 Pokud máte obavy o ztrátu schopnost kontrolovat odchozího internetového provozu z dané podsítě, můžete také přidat pravidlo skupiny zabezpečení sítě na podsíť, kterou chcete omezit odchozí cíle [Azure datových center IP adresy](https://www.microsoft.com/download/details.aspx?id=41653). 
 
@@ -185,7 +185,7 @@ Musíte nakonfigurovat virtuální sítě, než bude možné připojit Azure-SSI
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-1. Vyberte **další služby**. Filtrovat a vybrat **virtuální sítě (klasické)**. 
+1. Vyberte **další služby**. Filtrovat a vybrat **virtuální sítě (klasické)** . 
 
 1. Filtrovat a v seznamu vyberte virtuální síť. 
 

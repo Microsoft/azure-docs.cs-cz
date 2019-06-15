@@ -17,10 +17,10 @@ ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60607704"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizovaná záloha pro SQL Server na virtuálních počítačích Azure (klasické)
@@ -74,7 +74,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 | **Účet úložiště** |Účet úložiště Azure (pro zadaný virtuální počítač vytvořit účet úložiště) |Účet úložiště Azure k ukládání souborů automatizovaného zálohování ve službě blob storage. Kontejner se vytvoří v tomto umístění pro uložení všechny záložní soubory. Zásady vytváření názvů záložní soubor obsahuje data, času a název počítače. |
 | **Šifrování** |Povolí nebo zakáže (zakázáno) |Povolí nebo zakáže šifrování. Když je povoleno šifrování, certifikátů používaných pro obnovení zálohy jsou umístěny v zadaný účet úložiště ve stejném kontejneru automaticbackup pomocí stejné zásady vytváření názvů. Pokud se změní heslo, se toto heslo se vygeneruje nový certifikát, ale starý certifikát zůstane k obnovení předchozího záloh. |
 | **Heslo** |Text heslo, (žádné) |Heslo šifrovacích klíčů. Toto je jenom nutné, pokud je povolené šifrování. Aby bylo možné obnovit šifrované zálohování, musíte mít správné heslo a související certifikát, který byl použit v době, kdy bylo provedeno zálohování. |
-| **Zálohování systémových databází** | Povolí nebo zakáže (zakázáno) | Provést úplnou zálohu hlavní a modelové databáze a MSDB |
+| **Zálohování systémových databází** | Povolí nebo zakáže (zakázáno) | Provést úplnou zálohu Master, Model a databázi MSDB |
 | **Konfigurování plánu zálohování** | Ruční nebo automatizované (automatizované) | Vyberte **automatizovaná** k automaticky provede úplnou zálohu a zálohu založené na protokolu růst protokolu. Vyberte **ruční** a zadejte plán pro úplnou zálohu a zálohu protokolu. |
 
 ## <a name="configuration-with-powershell"></a>Konfigurace pomocí Powershellu

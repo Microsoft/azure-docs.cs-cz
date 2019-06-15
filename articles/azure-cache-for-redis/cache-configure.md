@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60554362"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Postup konfigurace mezipaměti Azure Redis
@@ -82,7 +82,7 @@ Klikněte na tlačítko **protokolu aktivit** Chcete-li zobrazit akce prováděn
 
 **Řízení přístupu (IAM)** oddíl poskytuje podporu pro řízení přístupu na základě rolí (RBAC) na webu Azure Portal. Tato konfigurace pomáhá organizacím vyhovuje jejich požadavkům na řízení přístupu, jednoduše a přesně. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure portal](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="tags"></a>Značky
+### <a name="tags"></a>Tags
 
 **Značky** část vám pomůže organizovat vašich prostředků. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -347,7 +347,7 @@ Chcete restartovat jeden nebo více uzly mezipaměti, vyberte požadované uzly 
 * [Pravidla upozornění](#alert-rules)
 * [Diagnostika](#diagnostics)
 
-### <a name="redis-metrics"></a>Metrika mezipaměti Redis
+### <a name="redis-metrics"></a>Metrika mezipaměti redis
 Klikněte na tlačítko **metrika mezipaměti Redis** k [zobrazujte metriky](cache-how-to-monitor.md#view-cache-metrics) ke svojí mezipaměti.
 
 ### <a name="alert-rules"></a>Pravidla upozornění
@@ -406,7 +406,7 @@ Novou mezipaměť Azure pro instance Redis jsou nakonfigurovány s následujíc�
 | `maxmemory-samples` |3 |Šetří paměť, minimální hodnota TTL algoritmy LRU a jsou přibližně algoritmy místo přesné algoritmy. Ve výchozím nastavení Redis tři klíče kontroly a vyskladnění ten, který byl použit méně nedávno. |
 | `lua-time-limit` |5 000 |Maximální doba spuštění skript Lua v milisekundách. Při dosažení maximální doba spuštění Redis zaznamená, že skript je stále v provádění po maximální povolenou dobu a spustí odpovídání na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupního klienta slouží k vynucení odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (běžným důvodem je, že klient Pub/Sub nemůže využívat zprávy tak rychle, jak vydavatele zapříčinit). Další informace najdete na adrese [https://redis.io/topics/clients](https://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Omezení vyrovnávací paměti výstupního klienta slouží k vynucení odpojení klienti, kteří nejsou čtení dat ze serveru dostatečně rychle z nějakého důvodu (běžným důvodem je, že klient Pub/Sub nemůže využívat zprávy tak rychle, jak vydavatele zapříčinit). Další informace najdete na webu [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
 <sup>1</sup>limit `databases` se liší pro každý mezipaměti Azure Redis cenovou úroveň a můžete nastavit při vytváření mezipaměti. Pokud ne `databases` nastavení zadané během vytváření mezipaměti, výchozí hodnota je 16.

@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072157"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ruční vytváření a používání svazku s disky Azure ve službě Azure Kubernetes Service (AKS)
@@ -41,12 +41,12 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teď vytvořte disk s využitím [az disk vytvořit] [ az-disk-create] příkazu. Zadejte název skupiny prostředků uzlu získaný v předchozím příkazem a pak název prostředku disku, jako *myAKSDisk*. Následující příklad vytvoří *20*GiB disku a výstupy ID disku po vytvoření:
+Teď vytvořte disk s využitím [az disk vytvořit] [ az-disk-create] příkazu. Zadejte název skupiny prostředků uzlu získaný v předchozím příkazem a pak název prostředku disku, jako *myAKSDisk*. Následující příklad vytvoří *20*GiB disku a výstupy ID disku po vytvoření. Pokud potřebujete k vytvoření disku pro použití s kontejnery Windows serveru (aktuálně ve verzi preview ve službě AKS), přidejte `--os-type windows` parametr správně a disk naformátujte.
 
 ```azurecli-interactive
 az disk create \
   --resource-group MC_myResourceGroup_myAKSCluster_eastus \
-  --name myAKSDisk  \
+  --name myAKSDisk \
   --size-gb 20 \
   --query id --output tsv
 ```
@@ -62,7 +62,7 @@ ID prostředku disku se zobrazí, jakmile se příkaz úspěšně dokončil, jak
 
 ## <a name="mount-disk-as-volume"></a>Připojení disku jako svazek
 
-Připojit Azure disk do podu, nakonfigurujte u svazku v kontejneru specifikace. Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s následujícím obsahem. Aktualizace `diskName` s názvem disk vytvořený v předchozím kroku, a `diskURI` s ID disku znázorňuje výstup disku vytvořit příkaz. V případě potřeby aktualizovat `mountPath`, což je cesta kde je Azure disk připojený v pod.
+Připojit Azure disk do podu, nakonfigurujte u svazku v kontejneru specifikace. Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s následujícím obsahem. Aktualizace `diskName` s názvem disk vytvořený v předchozím kroku, a `diskURI` s ID disku znázorňuje výstup disku vytvořit příkaz. V případě potřeby aktualizovat `mountPath`, což je cesta kde je Azure disk připojený v pod. Pro systém Windows Server kontejnery (aktuálně ve verzi preview ve službě AKS), zadejte *mountPath* pomocí konvence cestu Windows, například *"D:"* .
 
 ```yaml
 apiVersion: v1

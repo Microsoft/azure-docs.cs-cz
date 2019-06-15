@@ -10,10 +10,10 @@ ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65070852"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
@@ -24,13 +24,13 @@ Tento článek ukazuje, jak řešení běžných potíží pro řízení a nasaz
 
 Při definování vašeho kontejneru specifikace, vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka s konkrétní požadavky pro kontejner vlastnosti skupiny. Další informace o vytváření názvů Azure najdete v tématu [zásady vytváření názvů] [ azure-name-restrictions] v Azure Architecture Center.
 
-| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad: |
+| Scope | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad: |
 | --- | --- | --- | --- | --- | --- |
 | Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontejneru | Mezi 1 a 65535. |Integer |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
 | Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
+| Proměnná prostředí | 1-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
 | Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a spojovníky kdekoli s výjimkou první ani poslední znak. Nesmí obsahovat dvě po sobě jdoucí pomlčky. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Verze operačního systému z bitové kopie není podporována

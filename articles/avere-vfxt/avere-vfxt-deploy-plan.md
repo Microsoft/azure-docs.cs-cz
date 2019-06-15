@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
 ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60409872"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
@@ -42,7 +42,7 @@ Při plánování síťové infrastruktury vašeho systému vFXT Avere, postupuj
 
 * Většinu prostředků infrastruktury potřebné pro cluster, včetně skupin prostředků, virtuální sítě, podsítě a účty úložiště můžete vytvořit šablonu pro vytvoření clusteru. Pokud chcete používat prostředky, které již existují, ujistěte se, že splňují požadavky uvedené v této tabulce. 
 
-  | Prostředek | Použít existující? | Požadavky |
+  | Resource | Použít existující? | Požadavky |
   |----------|-----------|----------|
   | Skupina prostředků | Ano, pokud je prázdný | Musí být prázdný| 
   | Účet úložiště | Ano, pokud připojení existující kontejner objektů Blob po vytvoření clusteru <br/>  Není-li vytvořit nový kontejner objektů Blob při vytváření clusteru | Existující kontejner objektů Blob musí být prázdný <br/> &nbsp; |
@@ -74,7 +74,7 @@ Virtuální počítače, které slouží jako uzly clusteru určit požadavek ka
 
 Každý uzel vFXT budou stejné. To znamená pokud vytvoříte cluster se třemi uzly budete mít tři virtuální počítače stejného typu a velikosti. 
 
-| Typ instance | vCPU | Memory (Paměť)  | Místní úložiště SSD  | Max. datových disků | Propustnost disku bez mezipaměti | Síťová karta (počet) |
+| Typ instance | virtuální procesory | Memory (Paměť)  | Místní úložiště SSD  | Max. datových disků | Propustnost disku bez mezipaměti | Síťová karta (počet) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51 200 VSTUPNĚ-VÝSTUPNÍCH OPERACÍ <br/> 768 MBps | 16 000 MB/s (8)  |
 

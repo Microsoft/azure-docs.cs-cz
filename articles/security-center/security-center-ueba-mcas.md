@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60332367"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>UEBA pro uživatele a prostředky Azure 
 
-Partneři Azure Security Center pomocí Microsoft Cloud App Security, aby vám oznámení na základě uživatele a entity behaviorální analýzy (Behavioral) pro vaše prostředky Azure a uživatele (aktivit Azure). Tyto výstrahy zjišťovat anomálie v chování uživatelů a jsou založené na uživatele a entity pro vypracování analýzy chování a machine learning (ML) tak, aby ihned spustíte rozšířeného zjišťování hrozeb napříč aktivity vašich předplatných. Protože jsou automaticky povolené, nové detekce anomálií poskytnout okamžitou výsledky tím, že poskytuje okamžitou detekce, cílení na mnoho anomálií chování uživatelů a prostředcích přidružených k vašemu předplatnému. Tyto výstrahy navíc využít další data, která již existuje v modulu detekce Microsoft Cloud App Security, které vám pomohou zrychlit proces šetření a obsahovat trvalých hrozeb. 
+Partneři Azure Security Center pomocí Microsoft Cloud App Security, aby vám oznámení na základě uživatele a entity behaviorální analýzy (Behavioral) pro vaše prostředky Azure a uživatele (aktivit Azure). Tato upozornění detekují anomálie v chování uživatelů a jsou založená na analýze chování uživatelů a entit a strojovém učení tak, abyste ihned mohli spouštět rozšířenou detekci hrozeb napříč aktivitami v rámci svých předplatných. Protože jsou nové detekce anomálií automaticky povolené, poskytují okamžité výsledky na základě okamžitých detekcí, které jsou zacílené na řadu anomálií v chování uživatelů a prostředků přidružených k vašemu předplatnému. Tato upozornění navíc využívají další data, která již existují v detekčním modulu Microsoft Cloud App Security, a pomáhají tak urychlit proces šetření a zahrnout informace o existujících hrozbách. 
 
 > [!NOTE]
 > Azure Security Center, která může ukládat kopie související se zabezpečením zákaznická data, shromážděná z nebo související s prostředkem zákazníka (např. virtuální počítač nebo Azure Active Directory tenanta): (a) ve stejné zeměpisné oblasti jako prostředek, s výjimkou těchto zeměpisné oblasti kde Microsoft ještě musíme nasazení Azure Security Center, ve kterém se uloží případ kopii těchto dat v USA. a (b) Pokud Azure Security Center používá ke zpracování těchto dat jiné Online službu Microsoftu, může ukládat taková data v souladu s pravidly informace o zeměpisné poloze tuto Online službu.

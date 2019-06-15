@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7d844f4d2ad77f5b7cc53275a24167e5f2e71b78
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027030"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064138"
 ---
 # <a name="speech-services-for-telephony-data"></a>Hlasových služeb pro data telefonního subsystému
 
@@ -34,7 +34,7 @@ Pojďme se podívat na některé technologie a nabídky Azure hlasové služby s
 
 ## <a name="azure-technology-for-call-centers"></a>Technologie pro volání centra Azure
 
-Dále funkční aspekty hlasové služby jejich hlavním účelem – při použití do call-centrum – je ke zlepšení zkušeností zákazníků. Existují tři vymazat domény v tomto ohledu 
+Nad rámec funkční aspekty hlasové služby je jejich hlavním účelem – při použití do call-Centrum – ke zlepšení zkušeností zákazníků. V tomto ohledu existují tři vymazat domény:
 
 * Po volání analytics to znamená, dávkové zpracování záznamů volání 
 * Zpracování analýzy v reálném čase zvukový signál k extrahování přehledů různé, protože volání probíhat (s právě případu použití viditelného mínění) a
@@ -48,7 +48,7 @@ Zda je doména po volání nebo v reálném čase, Azure nabízí sadu až po zr
 
 ### <a name="speech-to-text-stt"></a>Převod řeči na text (STT) 
 
-[Převod řeči na text](speech-to-text.md) je nejvíce hledané kombinaci po funkci v žádném volání řešení System center. Protože mnoho analytics podřízené procesy, které využívají přepisována text, míra chyb aplikace word (zasílání) je naprosto. Jeden z klíčových problémů v centru přepis volání je šum, který je běžně se vyskytujícím call-centrum (například – jiní agenti pro čtení na pozadí), bohatou řadu národní prostředí a dialekty, jakož i nízká kvalita signál, který se telefonu. Zasílání je vysoce korelují s jak dobře jsou akustických a jazykových modelů trénovaných pro dané národní prostředí, proto ji bude možné přizpůsobení modelu, který má národní prostředí je důležité. Naše nejnovější Unified verze 4.x modely jsou řešení tak, aby určené k transkripci přesnost a latenci. Školení s desítkami tisíc hodin akustických dat a miliardy lexikální informace Unified modely jsou velmi přesné modely na trhu pro přepisy data center volání.
+[Převod řeči na text](speech-to-text.md) je nejvíce hledané kombinaci po funkci v žádném volání řešení System center. Protože mnoho analytics podřízené procesy, které využívají přepisována text, míra chyb aplikace word (zasílání) je naprosto. Jeden z klíčových problémů v centru přepis volání je šum, který je běžně se vyskytujícím call-centrum (například jiní agenti pro čtení na pozadí), bohatou řadu národní prostředí a dialekty, jakož i nízká kvalita signál, který se telefonu. Zasílání je vysoce korelují s jak dobře jsou akustických a jazykových modelů trénovaných pro dané národní prostředí, proto ji bude možné přizpůsobení modelu, který má národní prostředí je důležité. Naše nejnovější Unified verze 4.x modely jsou řešení tak, aby určené k transkripci přesnost a latenci. Školení s desítkami tisíc hodin akustických dat a miliardy lexikální informace Unified modely jsou velmi přesné modely na trhu pro přepisy data center volání.
 
 ### <a name="sentiment"></a>Mínění
 Měření, zda měl zákazník kvalitní prostředí je jedna z vašich nejdůležitějších oblastí Řečovou analýzu, při použití na System center místa volání. Naše [rozhraní API služby Batch určené k transkripci](batch-transcription.md) nabízí analýzu subjektivního hodnocení na utterance. Můžete shromažďovat sadu hodnot zjištěných jako součást volání přepis můžete zjistit mínění volání pro agenty a zákazníka.
@@ -62,7 +62,7 @@ Některé společnosti jsou experimentování s poskytující přeložený zázn
 ### <a name="text-to-speech"></a>Převod textu na řeč
 [Převod textu na řeč](text-to-speech.md) je jiné důležité oblasti při implementaci roboty, kteří komunikovat se zákazníky. Typickou cestu je, že zákazník mluví, je přepisována hlasu na text, text je analyzován z hlediska záměry, odpověď je syntetizovat založené na uznávané záměr a pak buď prezentované prostředek zákazníkovi nebo syntetizovaný hlasové odezvy je vygenerovat. Samozřejmě to všechno dojít k žádnému rychle – tedy latence je jejich důležitou součástí úspěchu tyto systémy. 
 
-Naše začátku do konce latence je poměrně málo zvažování různých technologií, které jsou zahrnuty jako [Speech to text](speech-to-text.md), [Luis](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Převod textu na řeč](text-to-speech.md). 
+Naše začátku do konce latence je poměrně málo zvažování různých technologií, které jsou zahrnuty jako [Speech to text](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/), [ Převod textu na řeč](text-to-speech.md). 
 
 Naše nové hlasy jsou také nerozeznatelná od lidí hlasy. Můžete si hlasy Zajistěte svému robotovi jeho jedinečný vzhled.
 
@@ -82,7 +82,7 @@ Pro přepisování hromadné zvuk jsme vyvinuli [rozhraní API služby Batch ur�
 * **Latence**: Chápeme, že při provádění hromadných přepisů přepisy jsou potřeba rychle. Přepis úloh spuštěných prostřednictvím [rozhraní API služby Batch určené k transkripci](batch-transcription.md) se zařadí do fronty okamžitě, a po spuštění úlohy se provádí rychleji, než v reálném čase určené k transkripci.
 * **Zabezpečení:** Chápeme, že volání mohou obsahovat citlivá data. Buďte bez obav, že zabezpečení je jedním z našich nejvyšší prioritu. Naše služba získal ISO, SOC, HIPAA, PCI certifikace.
 
-Volání centra generují velké objemy zvukových dat denně. Pokud váš podnik ukládá data telefonních v centrálním umístění, jako je Azure Storage, můžete použít [Batch určené k transkripci API]((batch-transcription.md) asynchronně požadovat a přijímat přepisů.
+Volání centra generují velké objemy zvukových dat denně. Pokud váš podnik ukládá data telefonních v centrálním umístění, jako je Azure Storage, můžete použít [rozhraní API služby Batch určené k transkripci](batch-transcription.md) asynchronně požadovat a přijímat přepisů.
 
 Typické řešení používá tyto služby:
 
@@ -98,7 +98,7 @@ Interně používáme výše uvedené technologie pro podporu Microsoft volá z�
 
 Některé podniky se vyžadují pro přepisy konverzace v reálném čase. V reálném čase přepis je možné identifikovat klíčových slov a aktivovat vyhledávání pro obsah a prostředky, které jsou relevantní pro konverzace pro sledování mínění, zlepšení dostupnosti, nebo zajistit překlady pro zákazníky a agenty, kteří nejsou nativní přednášející.
 
-Pro scénáře, které vyžadují v reálném čase přepis, doporučujeme použít [sadou SDK pro řeč](speech-sdk.md). V současné době je k dispozici v speech to text [více než 20 jazycích](language-support.md), a je k dispozici v sadě SDK C++, C#, Java, Python, Node.js a Javascript. Ukázky jsou dostupné v každém jazyce na [Githubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Nejnovější novinky a aktualizace naleznete v tématu [poznámky k verzi](releasenotes.md).
+Pro scénáře, které vyžadují v reálném čase přepis, doporučujeme použít [sadou SDK pro řeč](speech-sdk.md). V současné době je k dispozici v speech to text [více než 20 jazycích](language-support.md), a je k dispozici v sadě SDK C++, C#, Java, Python, Node.js, Objective-C a jazyka JavaScript. Ukázky jsou dostupné v každém jazyce na [Githubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Nejnovější novinky a aktualizace naleznete v tématu [poznámky k verzi](releasenotes.md).
 
 Výše uvedené technologie se používá interně k analýze ve voláních zákazníků v reálném čase Microsoft při jejich provádění.
 
@@ -110,7 +110,7 @@ Hlasové služby je možné snadno integrovat do řešení pomocí [sadou SDK pr
 
 Několik IRV nebo telefonní služby produkty (například Genesys nebo AudioCodes) nabízí možnosti integrace, které můžete využít pro povolení příchozích a odchozích zvuku průchodu do služby Azure. V podstatě vlastní služby Azure může poskytnout určité rozhraní k definování relací telefonního hovoru (například volání Start nebo End volání) a vystavit WebSocket API pro příjem příchozího datového proudu zvuku, který se používá s hlasové služby. Odchozí odpovědi, jako jsou určené k transkripci konverzace nebo připojení s použitím rozhraní Bot Framework, můžete syntetizovat převod textu na řeč službou od Microsoftu a vrátí IRV pro přehrávání.
 
-Další možností je integrace s přímým přístupem SIP. Služba Azure připojuje k serveru SIP, tedy získávání příchozího datového proudu a výstupního datového proudu, který se používá pro fáze převodu řeči na text a převod textu na řeč. Pro připojení k SIP Server i tam jsou obchodní softwarové produkty, jako je například Ozieki SDK nebo [volání The týmy a rozhraní API schůzky](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (aktuálně ve verzi beta), který jsou navrženy pro podporu tento druh scénář pro zvuk volání.
+Další možností je integrace s přímým přístupem SIP. Služba Azure připojuje k serveru SIP, tedy získávání příchozího datového proudu a výstupního datového proudu, který se používá pro fáze převodu řeči na text a převod textu na řeč. Pro připojení k SIP Server i tam jsou obchodní softwarové produkty, jako je například Ozeki SDK nebo [týmy volání a rozhraní API schůzky](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (aktuálně ve verzi beta), který jsou navrženy pro podporu tento druh scénář pro zvuk volání.
 
 ## <a name="customize-existing-experiences"></a>Přizpůsobení současné prostředí
 

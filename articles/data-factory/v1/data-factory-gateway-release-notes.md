@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60486460"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
@@ -103,7 +103,7 @@ Udržujeme žádné další poznámky k verzi tady. Získat nejnovější pozná
 *  Podporuje nastavení proxy serveru HTTP pro bránu pomocí Správce konfigurace brány. Pokud nakonfigurované, objektů Blob v Azure, Azure Data Lake, tabulky Azure a Documentdb se přistupuje prostřednictvím proxy serveru HTTP.
 *  Záhlaví podporuje zpracování TextFormat při kopírování dat z/do objektů Blob v Azure, Azure Data Lake Store, v místním systému souborů a místní HDFS.
 *  Podporuje kopírování dat z doplňovací objekt Blob a objekty Blob stránky spolu s již podporovaných objektů Blob bloku.
-*  Zavádí nový stav brány **Online (s omezením)**, což znamená, že hlavní funkce brány funguje s výjimkou interaktivní operace podporu pro Průvodce kopírováním.
+*  Zavádí nový stav brány **Online (s omezením)** , což znamená, že hlavní funkce brány funguje s výjimkou interaktivní operace podporu pro Průvodce kopírováním.
 *  Zvyšuje odolnost registrace brány pomocí registračního klíče.
 
 ## <a name="216040"></a>2.1.6040.

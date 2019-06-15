@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 06/12/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: dc43e2ad2668a7d3a808e398857cbf1d28c9aa1c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 97a0f58b0b4fb3dc1d5b2f1babda22672ef27c3b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064398"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -50,7 +50,11 @@ V tomto kurzu se naučíte:
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [rychlý start: Vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).
 
-Kromě toho musíte ke koncovému bodu CDN přidružit vlastní doménu Azure CDN. Další informace najdete v tématu [kurzu: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
+Kromě toho musíte ke koncovému bodu CDN přidružit vlastní doménu Azure CDN. Další informace najdete v tématu [kurzu: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md) 
+
+> [!IMPORTANT]
+> Spravovat CDN certifikáty nejsou k dispozici pro kořenový adresář nebo vrcholu domény. Pokud vaši vlastní doménu Azure CDN je kořenový adresář nebo vrcholu domény, je nutné použít přineste vlastní funkce certifikátů. 
+>
 
 ---
 
@@ -197,9 +201,9 @@ Po odeslání žádosti pro povolení HTTPS pro vlastní doménu certifikační 
 DigiCert odešle ověřovací e-mail také na další e-mailové adresy. Pokud jsou informace o žadateli o registraci v registru WHOIS privátní, ujistěte se, že můžete provést schválení přímo z některé z následujících adres:
 
 admin@&lt;název_vaší_domény.com&gt;  
-administrator@&lt;název_vaší_domény.com&gt;  
-webmaster@&lt;název_vaší_domény.com&gt;  
-hostmaster@&lt;název_vaší_domény.com&gt;  
+administrator@&lt;your-domain-name.com&gt;  
+webmaster@&lt;your-domain-name.com&gt;  
+hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;název_vaší_domény.com&gt;  
 
 Během několika minut byste měli obdržet podobný e-mail jako v následujícím příkladu s výzvou ke schválení žádosti. Pokud používáte filtr proti spamu, přidejte v něm adresu admin@digicert.com na seznam povolených. Pokud e-mail neobdržíte do 24 hodin, kontaktujte podporu Microsoftu.
@@ -230,17 +234,17 @@ Následující tabulka ukazuje průběh operace, která proběhne při povolení
 
 | Krok operace | Podrobnosti o dílčím kroku operace | 
 | --- | --- |
-| 1. Odesílání žádosti | Odesílání žádosti |
+| 1\. Odesílání žádosti | Odesílání žádosti |
 | | Vaše žádost o HTTPS se právě odesílá. |
 | | Vaše žádost o HTTPS se úspěšně odeslala. |
-| 2. Ověření domény | Doména ser ověří automaticky, pokud se pomocí záznamu CNAME mapuje na koncový bod CDN. Jinak se na e-mail uvedený v záznamu o registraci vaší domény (žadatel o registraci v registru WHOIS) odešle žádost o ověření. Ověřte doménu co nejdříve. |
+| 2\. Ověření domény | Doména ser ověří automaticky, pokud se pomocí záznamu CNAME mapuje na koncový bod CDN. Jinak se na e-mail uvedený v záznamu o registraci vaší domény (žadatel o registraci v registru WHOIS) odešle žádost o ověření. Ověřte doménu co nejdříve. |
 | | Vaše vlastnictví domény se úspěšně ověřilo. |
 | | Platnost požadavku na ověření vlastnictví domény vypršela (zákazník pravděpodobně neodpověděl ve lhůtě 6 dní). HTTPS se pro vaši doménu nepovolí. * |
 | | Požadavek na ověření vlastnictví domény byl zamítnut zákazníkem. HTTPS se pro vaši doménu nepovolí. * |
-| 3. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS pro vaši doménu. |
+| 3\. Zřizování certifikátu | Certifikační autorita momentálně vystavuje certifikát nutný pro povolení HTTPS pro vaši doménu. |
 | | Certifikát byl vystaven a momentálně se nasazuje do sítě CDN. Může to trvat až 6 hodin. |
 | | Certifikát se úspěšně nasadil do sítě CDN. |
-| 4. Hotovo | Protokol HTTPS se ve vaší doméně úspěšně povolil. |
+| 4\. Hotovo | Protokol HTTPS se ve vaší doméně úspěšně povolil. |
 
 \* Tato zpráva se zobrazí pouze v případě, že dojde k chybě. 
 
@@ -282,9 +286,9 @@ Následující tabulka ukazuje průběh operace, která proběhne při zákazu H
 
 | Průběh operace | Podrobnosti o operaci | 
 | --- | --- |
-| 1. Odesílání žádosti | Odesílání vaší žádosti |
-| 2. Zrušení zřízení certifikátu | Odstraňování certifikátu |
-| 3. Hotovo | Certifikát odstraněn |
+| 1\. Odesílání žádosti | Odesílání vaší žádosti |
+| 2\. Zrušení zřízení certifikátu | Odstraňování certifikátu |
+| 3\. Hotovo | Certifikát odstraněn |
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

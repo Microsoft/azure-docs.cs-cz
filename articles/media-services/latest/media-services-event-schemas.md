@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60322229"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
@@ -457,7 +457,7 @@ Datový objekt má následující vlastnosti:
 | trackType | string | Typ stopě (zvuk / Video). |
 | TrackName | string | Jeden směr určený název. |
 | S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
-| časové razítko | string | Časové razítko datové dávky vyřazen. |
+| timestamp | string | Časové razítko datové dávky vyřazen. |
 | Časová osa | string | Časové razítko. |
 | Kód výsledku | string | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
@@ -500,7 +500,7 @@ Datový objekt má následující vlastnosti:
 | ingestUrl | string | Ingestování adresy URL poskytnuté živé události. |
 | encoderIp | string  | IP adresa z kodéru. |
 | encoderPort | string | Port kodér, ve kterém je tento datový proud zapnout. |
-| časové razítko | string | První časové razítko přijetí datové dávky. |
+| timestamp | string | První časové razítko přijetí datové dávky. |
 | Časová osa | string | Časový rámec, ve kterém je reprezentován časové razítko. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
@@ -622,7 +622,7 @@ Datový objekt má následující vlastnosti:
 | nonIncreasingCount | integer | Počet bloků dat s časovými razítky v minulosti byly přijaty v posledních 20 sekund. |
 | unexpectedBitrate | bool | Pokud očekávaných a aktuálních přenosových rychlostí lišit o více než povolený limit v posledních 20 sekund. Je hodnota true v případě a pouze tehdy, pokud incomingBitrate > = 2 * s přenosovou rychlostí nebo incomingBitrate < = nebo IncomingBitrate s přenosovou rychlostí/2 = 0. |
 | state | string | Stav živé události. |
-| v pořádku | bool | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| V pořádku | bool | Označuje, zda ingestování je v pořádku na základě počtu a příznaky. V pořádku má hodnotu true Pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -669,10 +669,10 @@ Událost má následující dat nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | string | EventGrid tématu. Tato vlastnost má ID prostředku účtu Media Services. |
-| předmět | string | Cesta prostředku pro kanál služby Media Services v rámci účtu Media Services. Zřetězení tématu a předmět uveďte jste prostředek ID pro úlohu. |
+| topic | string | EventGrid tématu. Tato vlastnost má ID prostředku účtu Media Services. |
+| subject | string | Cesta prostředku pro kanál služby Media Services v rámci účtu Media Services. Zřetězení tématu a předmět uveďte jste prostředek ID pro úlohu. |
 | eventType | string | Jeden z typů registrované události pro tento zdroj událostí. Například "Microsoft.Media.JobStateChange". |
-| čas události | string | Vygenerování události podle času UTC poskytovatele. |
+| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor pro událost. |
 | data | objekt | Data událostí Media Services. |
 | dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60347532"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce služby synchronizace Azure AD Connect
@@ -41,7 +41,7 @@ Mnohé z těchto nastavení můžete změnit jenom pomocí služby Azure AD Conn
 
 Následující nastavení lze nakonfigurovat podle `Set-MsolDirSyncFeature`:
 
-| DirSyncFeature | Poznámka |
+| DirSyncFeature | Komentář |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Umožňuje objekty spojit userPrincipalName kromě primární adresu SMTP. |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Umožňuje synchronizační modul aktualizovat atribut userPrincipalName pro spravované/licencovaní uživatelé (jiné než federované). |
@@ -55,7 +55,7 @@ Po povolení funkce nejde znovu zakázat.
 
 Následující nastavení jsou nakonfigurovány pomocí služby Azure AD Connect a nelze ji změnit pomocí `Set-MsolDirSyncFeature`:
 
-| DirSyncFeature | Poznámka |
+| DirSyncFeature | Komentář |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: Povolení zpětného zápisu zařízení](how-to-connect-device-writeback.md) |
 | DirectoryExtensions |[Synchronizace Azure AD Connect: Rozšíření adresáře](how-to-connect-sync-feature-directory-extensions.md) |

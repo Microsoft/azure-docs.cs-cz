@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 19ced9767d77b0d7bfcec6f01425ab1089a55d54
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242557"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069231"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -48,6 +48,9 @@ Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure
    ![Výběr týmového projektu, úložiště a větve pro kanál sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. 
+
+> [!NOTE]
+> Docker pro Windows nainstaluje jenom v případě se k instalaci ručně v předchozí úloze jako součást CI by měl mít fond agenta má být vybrán k této položce konfigurace. Zobrazit [Microsoft hostovaní agenti](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) článek pro výběr fondy agentů, doporučujeme začít s `Hosted VS2017` nebo `Hosted VS2019`. 
 
 Teď máme kanál sestavení, který můžeme nastavit pro používání úlohy sestavení emulátoru služby Azure Cosmos DB. 
 

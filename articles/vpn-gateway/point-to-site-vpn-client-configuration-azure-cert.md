@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113953"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S konfigurace nativního certifikátu Azure
@@ -94,7 +94,7 @@ Pomocí následujících kroků konfigurace nativního klienta VPN v systému Ma
 
    **Rozhraní** hodnota je "VPN" a **typ sítě VPN** hodnota je "IKEv2". Zadejte název profilu, který **název služby** pole a potom klikněte na **vytvořit** k vytvoření profilu připojení klienta VPN.
 
-   ![síť](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![Sítě](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. V **obecný** složky, ze **VpnSettings.xml** soubor, zkopírujte **VpnServer** hodnota značky. Vložte tuto hodnotu v **adresa serveru** a **vzdáleného ID** pole profilu.
 
    ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -109,7 +109,7 @@ Pomocí následujících kroků konfigurace nativního klienta VPN v systému Ma
    ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. V **místní ID** uveďte název certifikátu (z kroku 6). V tomto příkladu je "ikev2Client.com". Potom klikněte na **použít** tlačítko Uložit změny.
 
-   ![použít](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![Použít](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Na **sítě** dialogového okna, klikněte na tlačítko **použít** uložte všechny změny. Potom klikněte na **připojit** spustit připojení typu P2S k virtuální síti Azure.
 
 ## <a name="linuxgui"></a>Linux (strongSwan grafického uživatelského rozhraní)

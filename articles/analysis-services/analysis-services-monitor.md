@@ -9,10 +9,10 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61065035"
 ---
 # <a name="monitor-server-metrics"></a>Monitorování metrik serveru
@@ -40,14 +40,14 @@ Tato tabulka slouží k určení, které metriky jsou nejvhodnější pro váš 
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|
 |---|---|---|---|---|
-|CommandPoolJobQueueLength|Délka fronty fondu úloh příkazu|Počet|Průměr|Počet úloh ve frontě fondu vláken příkazů.|
+|CommandPoolJobQueueLength|Délka fronty fondu úloh příkazu|Count|Průměr|Počet úloh ve frontě fondu vláken příkazů.|
 |CurrentConnections|Připojení: Aktuální počet připojení|Počet|Průměr|Aktuální počet navázaných připojení klientů.|
-|CurrentUserSessions|Aktuální uživatelské relace|Počet|Průměr|Aktuální počet navázaných uživatelských relací.|
+|CurrentUserSessions|Aktuální uživatelské relace|Count|Průměr|Aktuální počet navázaných uživatelských relací.|
 |mashup_engine_memory_metric|Paměť modulu M|B|Průměr|Využití paměti procesy modulu mashupu|
-|mashup_engine_qpu_metric|QPU modulu M|Počet|Průměr|Využití QPU procesy modulu mashupu|
+|mashup_engine_qpu_metric|QPU modulu M|Count|Průměr|Využití QPU procesy modulu mashupu|
 |memory_metric|Memory (Paměť)|B|Průměr|Paměť. V rozsahu 0-25 GB pro S1, 0 – 50 GB pro S2 a 0 – 100 GB pro S4|
 |memory_thrashing_metric|Thrashing paměti|Procento|Průměr|Průměrný thrashing paměti.|
-|CleanerCurrentPrice|Paměť: Aktuální cena čisticího modulu|Počet|Průměr|Aktuální cena paměti a $/ bajt/čas, normalizovaná na 1000.|
+|CleanerCurrentPrice|Paměť: Aktuální cena čisticího modulu|Count|Průměr|Aktuální cena paměti a $/ bajt/čas, normalizovaná na 1000.|
 |CleanerMemoryNonshrinkable|Paměť: Nezmenšitelná paměť|B|Průměr|Velikost paměti v bajtech, která není v souladu s čisticí vyprazdňování procesem na pozadí.|
 |CleanerMemoryShrinkable|Paměť: Zmenšitelná paměť čisticího modulu|B|Průměr|Velikost paměti v bajtech, která čisticí procesem na pozadí se vyprázdňuje.|
 |MemoryLimitHard|Paměť: Limit paměti – pevná|B|Průměr|Limit pevné paměti, z konfiguračního souboru.|
@@ -63,26 +63,26 @@ Tato tabulka slouží k určení, které metriky jsou nejvhodnější pro váš 
 |RowsConvertedPerSec|Zpracování: Řádky převést za sekundu|CountPerSecond|Průměr|Rychlost převodu řádků během zpracování.|
 |RowsReadPerSec|Zpracování: Počet přečtených řádků za sekundu|CountPerSecond|Průměr|Rychlost čtení řádků ze všech relačních databází.|
 |RowsWrittenPerSec|Zpracování: Počet zapsaných řádků za sekundu|CountPerSecond|Průměr|Rychlost zápisu řádků během zpracování.|
-|qpu_metric|QPU|Počet|Průměr|QPU. Rozsah 0 až 100 pro S1, 0 až 200 pro S2 a 0 až 400 pro S4|
+|qpu_metric|QPU|Count|Průměr|QPU. Rozsah 0 až 100 pro S1, 0 až 200 pro S2 a 0 až 400 pro S4|
 |QueryPoolBusyThreads|Zaneprázdněná vlákna fondu dotazů|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dotazů.|
 |SuccessfullConnectionsPerSec|Úspěšná spojení za sekundu|CountPerSecond|Průměr|Míra úspěšně navázaných spojení.|
 |CommandPoolBusyThreads|Vlákna: Příkaz zaneprázdněná vlákna fondu|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken příkazů.|
-|CommandPoolIdleThreads|Vlákna: Příkaz nečinná vlákna fondu|Počet|Průměr|Počet nečinných vláken ve fondu vláken příkazů.|
+|CommandPoolIdleThreads|Vlákna: Příkaz nečinná vlákna fondu|Count|Průměr|Počet nečinných vláken ve fondu vláken příkazů.|
 |LongParsingBusyThreads|Vlákna: Zaneprázdněná vlákna dlouhého parsování|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken dlouhého parsování.|
-|LongParsingIdleThreads|Vlákna: Nečinná vlákna dlouhého parsování|Počet|Průměr|Počet nečinných vláken ve fondu vláken dlouhého parsování.|
-|LongParsingJobQueueLength|Vlákna: Dlouhého parsování délka fronty úloh|Počet|Průměr|Počet úloh ve frontě fondu vláken dlouhého parsování.|
+|LongParsingIdleThreads|Vlákna: Nečinná vlákna dlouhého parsování|Count|Průměr|Počet nečinných vláken ve fondu vláken dlouhého parsování.|
+|LongParsingJobQueueLength|Vlákna: Dlouhého parsování délka fronty úloh|Count|Průměr|Počet úloh ve frontě fondu vláken dlouhého parsování.|
 |ProcessingPoolIOJobQueueLength|Vlákna: Délka fronty úloh vstupně-výstupní operace v fondu zpracování|Počet|Průměr|Počet vstupně-výstupních operací úloh ve frontě fondu vláken zpracování.|
-|ProcessingPoolBusyIOJobThreads|Vlákna: Zaneprázdněná vlákna úloh vstupně-výstupní operace fondu zpracování|Počet|Průměr|Počet vláken ve fondu vláken zpracování spuštění vstupně-výstupních operací úloh.|
-|ProcessingPoolBusyNonIOThreads|Vlákna: Zaneprázdněná vlákna jiných vstupně-fondu zpracování|Počet|Průměr|Počet vláken, spouštění úloh bez vstupně-ve fondu vláken zpracování.|
-|ProcessingPoolIdleIOJobThreads|Vlákna: Nečinná vlákna úloh vstupně-výstupní operace fondu zpracování|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|
+|ProcessingPoolBusyIOJobThreads|Vlákna: Zaneprázdněná vlákna úloh vstupně-výstupní operace fondu zpracování|Count|Průměr|Počet vláken ve fondu vláken zpracování spuštění vstupně-výstupních operací úloh.|
+|ProcessingPoolBusyNonIOThreads|Vlákna: Zaneprázdněná vlákna jiných vstupně-fondu zpracování|Count|Průměr|Počet vláken, spouštění úloh bez vstupně-ve fondu vláken zpracování.|
+|ProcessingPoolIdleIOJobThreads|Vlákna: Nečinná vlákna úloh vstupně-výstupní operace fondu zpracování|Count|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|
 |ProcessingPoolIdleNonIOThreads|Vlákna: Nečinná vlákna jiných vstupně-fondu zpracování|Počet|Průměr|Počet nečinných vláken ve fondu vláken zpracování vyhrazeném pro úlohy bez vstupně.|
-|QueryPoolIdleThreads|Vlákna: Nečinná vlákna fondu dotazů|Počet|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|
+|QueryPoolIdleThreads|Vlákna: Nečinná vlákna fondu dotazů|Count|Průměr|Počet nečinných vláken pro vstupně-výstupní úlohy do fondu vláken zpracování.|
 |QueryPoolJobQueueLength|Vlákna: Délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|
-|ShortParsingBusyThreads|Vlákna: Zaneprázdněná vlákna krátkého parsování|Počet|Průměr|Počet zaneprázdněných vláken ve fondu vláken krátkého parsování.|
+|ShortParsingBusyThreads|Vlákna: Zaneprázdněná vlákna krátkého parsování|Count|Průměr|Počet zaneprázdněných vláken ve fondu vláken krátkého parsování.|
 |ShortParsingIdleThreads|Vlákna: Nečinná vlákna krátkého parsování|Počet|Průměr|Počet nečinných vláken ve fondu vláken krátkého parsování.|
 |ShortParsingJobQueueLength|Vlákna: Krátkého parsování délka fronty úloh|Počet|Průměr|Počet úloh ve frontě fondu vláken krátkého parsování.|
-|TotalConnectionFailures|Celkem nezdařených spojení|Počet|Průměr|Celkový počet neúspěšných pokusů o připojení.|
-|TotalConnectionRequests|Celkem žádostí o spojení|Počet|Průměr|Celkem žádostí o spojení. |
+|TotalConnectionFailures|Celkem nezdařených spojení|Count|Průměr|Celkový počet neúspěšných pokusů o připojení.|
+|TotalConnectionRequests|Celkem žádostí o spojení|Count|Průměr|Celkem žádostí o spojení. |
 
 ## <a name="next-steps"></a>Další postup
 [Monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   

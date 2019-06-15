@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
 ms.openlocfilehash: ba2041495e1e3c63ee322a0b748753ad6cb68914
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870129"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Ve službě Azure Data Factory propojené služby
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-create-datasets.md)
 > * [Aktuální verze](concepts-datasets-linked-services.md)
 
@@ -64,7 +64,7 @@ Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 
 Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
-jméno | Název propojené služby. Zobrazit [Azure Data Factory – pravidla pojmenování](naming-rules.md). |  Ano |
+name | Název propojené služby. Zobrazit [Azure Data Factory – pravidla pojmenování](naming-rules.md). |  Ano |
 type | Typ propojené služby. Příklad: AzureStorage (úložiště dat) nebo AzureBatch (compute). Zobrazit popis typeProperties. | Ano |
 typeProperties | Vlastnosti typu se liší pro jednotlivé obchody dat nebo výpočetní. <br/><br/> Podporované datové úložiště typy a jejich vlastnosti typu, najdete v článku [typ datové sady](concepts-datasets-linked-services.md#dataset-type) tabulky v tomto článku. Přejděte na článek konektor úložiště dat. Další informace o typu vlastnosti specifické pro úložiště dat. <br/><br/> Typy podporovaných výpočetních a jejich vlastnosti typu naleznete v tématu [propojené služby Compute](compute-linked-services.md). | Ano |
 connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne

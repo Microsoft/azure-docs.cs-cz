@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60679529"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
@@ -44,7 +44,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    
     ![Přidat stránku koncového bodu](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. Do pole **Název** zadejte jedinečný název pro nový koncový bod CDN. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně  _\<název_koncového_bodu >_. azureedge.net.
+3. Do pole **Název** zadejte jedinečný název pro nový koncový bod CDN. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně  _\<název_koncového_bodu >_ . azureedge.net.
 
 4. Pro **typ počátku**, zvolte jednu z následujících typů původu: 
    - **Úložiště** pro Azure Storage
@@ -62,7 +62,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    > Některé typy původu (například Azure Storage a Web Apps) vyžadují, aby se hlavička hostitele shodovala s doménou původu. Pokud nemáte původ, který vyžaduje hlavičku hostitele odlišnou od své domény, je vhodné ponechat výchozí hodnotu.
    > 
     
-8. Pro **protokol** a **port původu**, určete protokoly a porty, které používáte pro přístup k prostředkům v původu server. Je nutné vybrat alespoň jeden protokol (HTTP nebo HTTPS). Použít doménu poskytnutou systémem CDN (_\<název_koncového_bodu >_. azureedge.net) pro přístup k obsahu HTTPS. 
+8. Pro **protokol** a **port původu**, určete protokoly a porty, které používáte pro přístup k prostředkům v původu server. Je nutné vybrat alespoň jeden protokol (HTTP nebo HTTPS). Použít doménu poskytnutou systémem CDN ( _\<název_koncového_bodu >_ . azureedge.net) pro přístup k obsahu HTTPS. 
    
    > [!NOTE]
    > **Port původu** hodnota určuje jenom port použitý koncovým bodem k načtení informací ze zdrojového serveru. Koncový bod jako takový je dostupný jenom koncovým klientům na výchozích portech HTTP a HTTPS (80 a 443), a to bez ohledu na nastavení **Počáteční port**.  

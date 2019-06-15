@@ -16,18 +16,18 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b21c4727e7679c25dc2574a6506f8d3932aec2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d12991813f68a42f9846c1c9c9c31c01d371d1d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437396"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107637"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rychlý start: Konfigurace pojmenovaných umístění ve službě Azure Active Directory
 
 Pomocí pojmenovaných umístění můžete označit důvěryhodné rozsahy IP adres ve vaší organizaci. Azure AD používá pojmenovaná umístění ke:
 - Zjištění falešně pozitivních výsledků v [rizikových událostech](concept-risk-events.md). Přihlášení z důvěryhodného umístění snižuje riziko při přihlášení uživatele.   
-- Konfiguraci [podmíněného přístupu na základě umístění](../conditional-access/location-condition.md).
+- Konfigurace [podmíněného přístupu na základě umístění](../conditional-access/location-condition.md).
 
 V tomto rychlém startu se dozvíte, jak nakonfigurovat pojmenovaná umístění ve vašem prostředí.
 
@@ -43,9 +43,9 @@ K dokončení tohoto rychlého startu je potřeba:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. V levém podokně vyberte **Azure Active Directory** a pak v části **Zabezpečení** vyberte **Podmíněný přístup**.
+2. V levém podokně vyberte **Azure Active Directory**a pak vyberte **podmíněného přístupu** z **zabezpečení** oddílu.
 
-    ![Karta Podmíněný přístup](./media/quickstart-configure-named-locations/entrypoint.png)
+    ![Karta podmíněný přístup](./media/quickstart-configure-named-locations/entrypoint.png)
 
 3. Na stránce **Podmíněný přístup** vyberte **Pojmenovaná umístění** a pak vyberte **Nové umístění**.
 
@@ -63,6 +63,6 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Další informace naleznete v tématu:
 
-- [Přístup ke službě Azure AD podmíněné](../active-directory-conditional-access-azure-portal.md).
-- [Podmínky umístění v podmíněném přístupu Azure AD](../conditional-access/location-condition.md)
+- [Podmíněný přístup Azure AD](../active-directory-conditional-access-azure-portal.md).
+- [Podmínky umístění v podmíněného přístupu Azure AD](../conditional-access/location-condition.md)
 - [Sestavy rizikových přihlášení](concept-risky-sign-ins.md).  

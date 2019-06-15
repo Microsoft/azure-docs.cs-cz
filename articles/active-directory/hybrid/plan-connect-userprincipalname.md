@@ -11,10 +11,10 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60382069"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Naplnění Azure AD UserPrincipalName
@@ -25,7 +25,7 @@ Hodnota atributu UserPrincipalName je uživatelské jméno Azure AD pro uživate
 ## <a name="upn-terminology"></a>Terminologie hlavní název uživatele
 V tomto článku se používá následující terminologií:
 
-|Označení|Popis|
+|Termín|Popis|
 |-----|-----|
 |Počáteční doména|Výchozí doména (onmicrosoft.com) v Tenantovi Azure AD. Například contoso.onmicrosoft.com.|
 |Microsoft e-mailu Online směrování adres (MOERA)|Azure AD vypočítá MOERA z atributu Azure AD MailNickName a Azure AD jako počáteční doména &lt;MailNickName&gt;&#64;&lt;počáteční doména&gt;.|

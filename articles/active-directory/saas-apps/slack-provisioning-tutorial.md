@@ -16,10 +16,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 036112027fcf210f0ac2ff1e631c8b0bd4b5e9ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964390"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro automatické zřizování uživatelů
@@ -116,7 +116,7 @@ Další informace o tom, jak číst zřizování protokoly Azure AD najdete v t�
 
   * Podporuje jiných než anglických znaků, mezer, malá a velká písmena. 
   
-  * Povolené obsahuje interpunkční znaménka, tečky, podtržítka, pomlčky, apostrofy, hranaté závorky (třeba **([{}])**) a oddělovače (třeba **, /;**).
+  * Povolené obsahuje interpunkční znaménka, tečky, podtržítka, pomlčky, apostrofy, hranaté závorky (třeba **([{}])** ) a oddělovače (třeba **, /;** ).
   
   * Aktualizuje pouze pokud jsou tato dvě nastavení nakonfigurované v síti na pracovišti na Slack a organizace – **synchronizaci profilu je povolená** a **uživatelé nemohou změnit jejich zobrazovaného jména**.
   

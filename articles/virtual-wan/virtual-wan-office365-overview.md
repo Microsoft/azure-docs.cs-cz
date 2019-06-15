@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 9/24/2018
 ms.author: cherylmc
 ms.openlocfilehash: cb91c1364a91c101ecf8362acd7aab01440143fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60458591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685263"
 ---
 # <a name="office-365-control-plane-in-virtual-wan"></a>Rovina řízení Office 365 ve službě Virtual WAN
 
@@ -26,7 +26,7 @@ Virtuální sítě WAN zákazníkům vybrat SDWAN zařízení můžete nakonfigu
 Pomocí této funkce do virtuální sítě WAN, zákazníci teď můžou určit provoz kategorie Office 365, které důvěřují pro přímé užitečných internet. Tento důvěryhodný O365 provoz se obejít proxy a postup přímo z umístění uživatele do nejbližší POP Microsoft. Tím se vyhnete back tažení provoz a vlasů pining, proto poskytuje optimální uživatelské prostředí a šetřit náklady na síť WAN. 
 
 ### <a name="what-are-the-office-365-traffic-categories"></a>Co jsou kategorie provoz služeb Office 365?
-Office 365 představují síťových adres a podsítí. Koncové body mohou být adresy URL, rozsahů IP adres nebo IP adres. Adresy URL může být plně kvalifikovaný název domény, jako je *account.office.net*, nebo jako adresa URL zástupný znak **. office365.com*. Koncové body jsou odděleni do tří kategorií - **optimalizace**, **povolit**, a **výchozí**podle jejich závažnosti. Další informace o kategoriích koncový bod se [tady](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories).
+Office 365 představují síťových adres a podsítí. Koncové body mohou být adresy URL, rozsahů IP adres nebo IP adres. Adresy URL může být plně kvalifikovaný název domény, jako je *account.office.net*, nebo jako adresa URL zástupný znak * *. office365.com*. Koncové body jsou odděleni do tří kategorií - **optimalizace**, **povolit**, a **výchozí**podle jejich závažnosti. Další informace o kategoriích koncový bod se [tady](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories).
 
 ### <a name="which-office-365-traffic-category-is-recommended-by-microsoft-for-direct-internet-breakout"></a>Kategorie Office 365 provozu se doporučuje společností Microsoft pro přímé užitečných Internetu?
 **Optimalizace** kategorie je nejdůležitější koncové body sítě a je potřeba obejít konec protokolu SSL a kontrolovat a další síťová zařízení zabezpečení. Měl by mít přímé Internet odchozího přenosu dat co nejblíž uživatelům. Tyto koncové body představují Office 365 scénáře, které jsou nejvíce citlivé na výkon, latenci a dostupnosti sítě. Tato kategorie zahrnuje (v řádu ~ 10) malého počtu klíč adresy URL a definovanou sadu IP podsítí vyhrazený pro úlohy základní Office 365, jako jsou Exchange Online, SharePoint Online, Skype pro firmy Online a Microsoft Teams. 

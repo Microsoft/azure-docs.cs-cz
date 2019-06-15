@@ -8,19 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859658"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059381"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
 Azure clustery HDInsight poskytují Apache Hadoop ve známém prostředí Linux spuštěné v cloudu Azure. Pro většinu toho, co by měl pracovat přesně jako jakékoliv jiné instalace Hadoop na Linuxu. Tento dokument, volá konkrétní rozdíly, které byste měli vědět.
-
-> [!IMPORTANT]  
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +52,7 @@ Tento příkaz vrátí dokument JSON popisující službu a potom [jq](https://s
 
 ## <a name="remote-access-to-services"></a>Vzdálený přístup ke službám
 
-* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
 
     Ověřování pomocí Správce clusteru a heslo a pak se přihlaste k Ambari.
 
@@ -66,14 +63,14 @@ Tento příkaz vrátí dokument JSON popisující službu a potom [jq](https://s
     >
     > Pokud chcete používat všechny funkce webové uživatelské rozhraní Ambari, použijte tunelového propojení SSH pro proxy webový provoz k hlavnímu uzlu clusteru. Zobrazit [používání tunelového propojení SSH pro přístup k webové uživatelské rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > Ověřování pomocí Správce clusteru a heslo.
     >
     > Ověřování je ve formátu prostého textu – používejte vždy HTTPS, abyste zajistili, že připojení je zabezpečené.
 
-* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > Ověřování pomocí Správce clusteru a heslo.
@@ -288,7 +285,6 @@ Chcete-li použít různé verze komponenty, nahrajte verze a použít je ve sv�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Migrace z HDInsight se systémem Windows do založených na Linuxu](hdinsight-migrate-from-windows-to-linux.md)
 * [Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)

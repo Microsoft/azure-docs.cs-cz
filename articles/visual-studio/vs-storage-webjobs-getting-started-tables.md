@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390791"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Začínáme s Azure Storage (webová úloha Azure projektů)
@@ -25,7 +25,7 @@ ms.locfileid: "60390791"
 ## <a name="overview"></a>Přehled
 Tento článek obsahuje ukázky kódu C#, které ukazují, jak pomocí sady Azure WebJobs SDK verze 1.x pomocí služby Azure table storage. Ukázky kódu použijte [sada WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) verzi 1.x.
 
-Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Tabulky Azure jsou ideální pro ukládání strukturovaných, nerelačních dat.  Zobrazit [Začínáme s Azure Table storage pomocí .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) Další informace.
+Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných dat. Tato služba je úložiště dat typu NoSQL, která přijímá ověřených volání z uvnitř i mimo Azure cloud. Jsou ideální pro ukládání strukturovaných, nerelačních dat tabulky Azure.  Zobrazit [Začínáme s Azure Table storage pomocí .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) Další informace.
 
 Některé z kódu fragmenty kódu ukazují **tabulky** atributu použitého v funkcí, které jsou volány ručně, to znamená, nikoli pomocí jeden z atributů aktivační události.
 

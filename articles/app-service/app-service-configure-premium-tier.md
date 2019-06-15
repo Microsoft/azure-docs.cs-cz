@@ -17,10 +17,10 @@ ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139780"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace úrovně PremiumV2 pro službu Azure App Service
@@ -66,7 +66,7 @@ V závislosti na prostředí hostingu vertikální navýšení kapacity může v
 
 V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete stránku aplikace služby App Service.
 
-V levém navigačním panelu na stránce aplikace služby App Service, vyberte **vertikálně navýšit kapacitu (plán služby App Service)**.
+V levém navigačním panelu na stránce aplikace služby App Service, vyberte **vertikálně navýšit kapacitu (plán služby App Service)** .
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 

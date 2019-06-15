@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
 ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60589723"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro izolační aplikace využívající službu Service Bus výpadků a havárií
@@ -27,7 +27,7 @@ Havárii je definován jako trvalé ztrátě jednotka škálování služby Serv
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Ochrana proti výpadků a havárií - Service Bus úrovně Premium
 Vysoká dostupnost a zotavení po havárii koncepty jsou zabudovány do vrstvy Azure Service Bus úrovně Premium, oba ve stejné oblasti (prostřednictvím zón dostupnosti) a v různých oblastech (prostřednictvím geografického zotavení).
 
-### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
+### <a name="geo-disaster-recovery"></a>Geografické zotavení
 
 Service Bus úrovně Premium podporuje zotavení po havárii geograficky, na úrovni oboru názvů. Další informace najdete v tématu [Azure Service Bus Geo-zotavení po havárii](service-bus-geo-dr.md). Po havárii funkci obnovení, k dispozici pro [SKU úrovně Premium](service-bus-premium-messaging.md) pouze, implementuje zotavení po havárii metadata a spoléhá na obory názvů zotavení po havárii primární a sekundární.
 

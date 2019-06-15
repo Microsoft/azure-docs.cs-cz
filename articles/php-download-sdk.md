@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411597"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Stažení sady Azure SDK pro PHP
@@ -28,9 +28,9 @@ ms.locfileid: "65411597"
 Sada Azure SDK pro PHP obsahuje součásti, které umožňují vyvíjet, nasazovat a spravovat aplikace PHP pro Azure. Konkrétně sady Azure SDK pro PHP obsahuje následující:
 
 * **Klientské knihovny PHP pro Azure**. Tyto knihovny tříd poskytují rozhraní pro přístup k funkcím Azure, jako je například služeb správy dat. a cloudové služby.
-* **Rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)**. Toto je sadu příkazů pro nasazení a správu služeb Azure, jako jsou Azure Websites a Azure Virtual Machines. Rozhraní příkazového řádku Azure práci na všechny platformy včetně Windows, Mac a Linux.
-* **Prostředí Azure PowerShell (jenom Windows)**. To je sada rutin Powershellu pro nasazení a správu služeb Azure, jako je například Cloud Services a Virtual Machines.
-* **Emulátory Azure (jenom Windows)**. Emulátory výpočetní výkon a úložiště jsou místní emulátory cloudových služeb a služeb správy dat., které umožňují otestovat aplikaci místně. Emulátory Azure spustit jenom na Windows.
+* **Rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)** . Toto je sadu příkazů pro nasazení a správu služeb Azure, jako jsou Azure Websites a Azure Virtual Machines. Rozhraní příkazového řádku Azure práci na všechny platformy včetně Windows, Mac a Linux.
+* **Prostředí Azure PowerShell (jenom Windows)** . To je sada rutin Powershellu pro nasazení a správu služeb Azure, jako je například Cloud Services a Virtual Machines.
+* **Emulátory Azure (jenom Windows)** . Emulátory výpočetní výkon a úložiště jsou místní emulátory cloudových služeb a služeb správy dat., které umožňují otestovat aplikaci místně. Emulátory Azure spustit jenom na Windows.
 
 Následující části popisují, jak stáhnout a nainstalovat komponenty popsané výše.
 

@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 8e3d12db8d2500a2675e451580bee7072d22d41c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 20fb352e65a570063d9a0f55667db073f8a4ee27
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225432"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062428"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -54,6 +54,25 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 Můžete přidat další úložiště kapacitu během a po vytvoření serveru a povolit systému, které zvětší úložiště automaticky na základě úložiště využití vašich úloh. Úroveň Basic neposkytuje záruka vstupně-výstupních operací. V obecné účely a optimalizovaný pro paměť cenové úrovně se škálují vstupně-výstupních operací s velikost zřízeného úložiště poměr 3:1.
 
 Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Portal nebo pomocí příkazů rozhraní příkazového řádku Azure. Jsou důležité metriky pro monitorování [limitu úložiště, procento úložiště, využité úložiště a vstupně-výstupních operací procent](concepts-monitoring.md).
+
+### <a name="large-storage-preview"></a>Rozsáhlá úložiště (Preview)
+
+Omezení úložiště zvyšujeme na naše úrovni obecné účely a optimalizované pro paměť. Nově vytvořené servery této vyjádřit výslovný souhlas pro verzi preview můžete zřídit až 16 TB úložiště. Vstupně-výstupních operací škálování na poměr 3:1 až 20 000 IOPS. Stejně jako u aktuální obecně dostupné úložiště, můžete přidat další úložiště kapacity po vytvoření serveru a umožnit systému, které zvětší úložiště automaticky na základě úložiště využití vašich úloh.
+
+|              | **Obecné účely** | **Optimalizované z hlediska paměti** |
+|:-------------|:--------------------|:---------------------|
+| Typ úložiště | Azure Premium Storage | Azure Premium Storage |
+| Velikost úložiště | 32 GB až 16 TB| 32 až 16 TB |
+| Zvýšení velikosti úložiště | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimum 100 vstupně-výstupních operací<br/>Max. 20 000 IOPS |
+
+> [!IMPORTANT]
+> Rozsáhlá úložiště je aktuálně ve verzi public preview v těchto oblastech: USA – východ, USA – východ 2, střed USA, západní USA, západní USA 2, Severní Evropa, západní Evropa, jihovýchodní Asie, Japonsko – východ, Korea – střed, Austrálie – východ.
+>
+> Rozsáhlá úložiště ve verzi preview v současné době nepodporuje:
+>
+> * Geograficky redundantní zálohy
+> * Pro různé oblasti replikace
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 

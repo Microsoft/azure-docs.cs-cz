@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60457098"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Navrhované komunitou třetích stran VPN nastavení brány firewall nebo zařízení pro službu Azure VPN gateway
@@ -33,13 +33,13 @@ Tento článek obsahuje několik doporučených postupů pro síť VPN třetích
 
 Následující tabulka uvádí několik běžných zařízení a související Nápověda:
 
-|Produkt    |Referenční informace                                                |
+|Product    |Referenční informace                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[Společenství navrhované řešení pro Azure VPN Cisco ASA](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[Společenství navrhované řešení pro ISR Cisco VPN Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[Společenství navrhované řešení pro Azure Site Recovery Cisco VPN Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |SonicWALL |Vyhledejte **Azure VPN** na [Sonicwall lokality](https://www.sonicwall.com/en-us/support) |
-| Checkpoint    |Vyhledejte **Azure VPN** na [kontrolního bodu lokality](https://supportcenter.checkpoint.com/supportcenter/portal) |
+| CheckPoint    |Vyhledejte **Azure VPN** na [kontrolního bodu lokality](https://supportcenter.checkpoint.com/supportcenter/portal) |
 |Juniper |Vyhledejte **Azure VPN** na [Juniper lokality]( https://www.juniper.net/search/public/)|
 |Barracuda  |[Společenství navrhované řešení pro Barracuda Azure VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Společenství navrhované řešení pro F5 VPN Azure](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |

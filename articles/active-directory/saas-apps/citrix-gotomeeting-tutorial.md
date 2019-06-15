@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faf82918619301335f191d39453d317dcf5988b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6068a8d2d50521d8513a2ebad5a62649ef61b1e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60281353"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Kurz: Integrace Azure Active Directory s GoToMeeting
 
@@ -53,7 +53,7 @@ Konfigurace integrace GoToMeeting do služby Azure AD, budete muset přidat GoTo
 
 **Chcete-li přidat GoToMeeting z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

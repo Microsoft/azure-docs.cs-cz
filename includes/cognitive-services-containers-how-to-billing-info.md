@@ -4,14 +4,14 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/16/2019
-ms.openlocfilehash: 05961f8dd2788179a15e6bfe094484cf4770067b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: bfda8b83f1bedf11151ba89b58c95347aa35839a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124357"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052031"
 ---
-Účtují se podle cenové úrovně prostředků Azure používá pro dotazy do kontejneru `<ApiKey>`.
+Účtují se podle cenové úrovně prostředků Azure, který se používá pro dotazy do kontejneru `<ApiKey>`.
 
 Kontejnery služby Azure Cognitive Services nejsou licencované k používání bez připojení ke koncovému bodu fakturace pro monitorování míry využívání. Je nutné povolit kontejnery pro komunikaci fakturační údaje s koncovým bodem fakturace za všech okolností. Kontejnery služby cognitive Services není zákaznická data, jako je image nebo text, který se právě analyzuje, odeslat společnosti Microsoft. 
 
@@ -21,12 +21,12 @@ Kontejner potřebuje fakturační hodnoty argumentů pro spuštění. Tyto hodno
 
 ### <a name="billing-arguments"></a>Argumenty fakturace
 
-Všechny tři z následujících možností musí být zadaný pomocí platné hodnoty, aby `docker run` příkaz ke spuštění kontejneru.
+Pro `docker run` příkaz ke spuštění kontejneru, všechny tři z následujících možností musí být zadaný pomocí platné hodnoty:
 
 | Možnost | Popis |
 |--------|-------------|
-| `ApiKey` | Klíč rozhraní API služeb Cognitive Services prostředku lze sledovat fakturační údaje.<br/>Hodnota této možnosti musí být nastavená na klíče rozhraní API pro zřízené prostředek určený v `Billing`. |
-| `Billing` | Koncový bod prostředku služeb Cognitive Services lze sledovat fakturační údaje.<br/>Hodnota této možnosti musíte ke koncovému bodu identifikátor URI se zřídil prostředek Azure.|
-| `Eula` | Označuje, že jste přijali licenční pro kontejner.<br/>Hodnota této možnosti musí být nastavená na `accept`. |
+| `ApiKey` | Klíč rozhraní API služeb Cognitive Services prostředku, který se používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musí být nastavená na klíče rozhraní API pro se zřídil prostředek, který je zadán v `Billing`. |
+| `Billing` | Koncový bod prostředku služeb Cognitive Services, který se používá ke sledování fakturační údaje.<br/>Hodnota této možnosti musíte ke koncovému bodu identifikátor URI se zřídil prostředek Azure.|
+| `Eula` | Označuje, že jste přijali licenční pro kontejner.<br/>Hodnota této možnosti musí být nastavená na **přijmout**. |
 
 

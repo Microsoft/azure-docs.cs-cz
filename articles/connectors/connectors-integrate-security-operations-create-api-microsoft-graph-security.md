@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
 ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448042"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zlepšení ochrany před internetovými útoky integrací operace zabezpečení pomocí zabezpečení Microsoft Graph a Azure Logic Apps
@@ -36,7 +36,7 @@ Další informace o zabezpečení společnosti Microsoft Graphu, najdete v člá
 
 * K používání konektoru Microsoft Graph zabezpečení, musíte mít *explicitně dané* souhlas správce tenanta Azure Active Directory (AD), která je součástí sady [požadavky na ověřování zabezpečení Microsoft Graphu ](https://aka.ms/graphsecurityauth). Toto vyjádření souhlasu vyžaduje ID aplikace a název, který najdete také v Microsoft Graphu Security connector [webu Azure portal](https://portal.azure.com):
 
-   | Vlastnost | Value |
+   | Vlastnost | Hodnota |
    |----------|-------|
    | **Název aplikace** | `MicrosoftGraphSecurityConnector` |
    | **ID aplikace** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
@@ -75,11 +75,11 @@ Další informace o zabezpečení společnosti Microsoft Graphu, najdete v člá
 
 1. Zadejte potřebné podrobnosti pro vybranou akci a pokračujte v rozvíjení pracovní postup aplikace logiky.
 
-## <a name="add-actions"></a>Přidat akce
+## <a name="add-actions"></a>Přidání akce
 
 Tady jsou další konkrétní podrobnosti o použití různé akce, které jsou k dispozici s konektorem zabezpečení společnosti Microsoft Graph.
 
-### <a name="manage-alerts"></a>Správa upozornění
+### <a name="manage-alerts"></a>Správa výstrah
 
 K filtrování, řazení, nebo získat nejnovější výsledky, poskytují *pouze* [parametry dotazu ODATA podporuje Microsoft Graphu](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* dokončení základní adresu URL nebo akce HTTP, třeba `https://graph.microsoft.com/v1.0/security/alerts`, nebo `GET` nebo `PATCH` operace. Tady je konkrétní příklad, který ukazuje parametry **výstrahy** akce, pokud chcete seznam s vysokou závažností výstrahy:
 

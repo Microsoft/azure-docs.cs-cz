@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/07/2019
+ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: d15b61c70f1587cdd1c0d76d2e3eab81294674fc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4ab30f5f737b0f5188958c4686f82a0084c3ac35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721263"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059355"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API
 
@@ -22,9 +22,11 @@ ms.locfileid: "64721263"
 Zjistěte, jak použít rozhraní Apache Ambari REST API ke správě a monitorování clusterů systému Apache Hadoop v Azure HDInsight.
 
 ## <a id="whatis"></a>Co je Apache Ambari
+
 [Apache Ambari](https://ambari.apache.org) zjednodušuje správu a monitorování clusterů systému Hadoop tím, že poskytuje snadno použitelné webové uživatelské rozhraní se opírá o jeho [rozhraní REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari je dostupné ve výchozím nastavení s clustery HDInsight založené na Linuxu.
 
 ## <a name="prerequisites"></a>Požadavky
+
 * **Cluster Hadoop v HDInsight**. Zobrazit [Začínáme s HDInsight v Linuxu](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 * **Bash na Ubuntu ve Windows 10**.  V příkladech v tomto článku se používá prostředí Bash ve Windows 10. Zobrazit [subsystém Windows pro Linux Instalační příručka pro Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) kroky instalace.  Další [prostředí Unix](https://www.gnu.org/software/bash/) fungují stejně.  Příklady s drobné úpravy, můžete pracovat na příkazovém řádku Windows.  Alternativně můžete použít prostředí Windows PowerShell.
@@ -35,7 +37,7 @@ Zjistěte, jak použít rozhraní Apache Ambari REST API ke správě a monitorov
 
 ## <a name="base-uri-for-ambari-rest-api"></a>Základní identifikátor URI pro Ambari Rest API
 
- Základní identifikátor URI pro rozhraní Ambari REST API na HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI **malá a velká písmena**.  Název clusteru v části plně kvalifikovaný název (FQDN) identifikátoru URI (CLUSTERNAME.azurehdinsight.net) je velká a malá písmena, další výskyty v identifikátoru URI jsou malá a velká písmena.
+ Základní identifikátor URI (Uniform Resource) pro rozhraní Ambari REST API na HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI **malá a velká písmena**.  Zatímco název clusteru v části plně kvalifikovaný název (FQDN) identifikátoru URI (`CLUSTERNAME.azurehdinsight.net`) je velká a malá písmena, další výskyty v identifikátoru URI jsou malá a velká písmena.
 
 ## <a name="authentication"></a>Authentication
 
@@ -60,11 +62,9 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Zjištění názvu správně malá a velká použita clusteru
-Skutečné malých a velkých písmen na název clusteru může být jiný než byste očekávali v závislosti na způsobu vytvoření clusteru.  Zde uvedené kroky se zobrazí skutečné velká a malá písmena a uložte ho do proměnné pro všechny další příklady.
+Skutečné malých a velkých písmen na název clusteru může být jiný než byste očekávali, v závislosti na způsobu vytvoření clusteru.  Zde uvedené kroky se zobrazí skutečné velká a malá písmena a uložte ho do proměnné pro všechny další příklady.
 
 Upravit skripty níže nahraďte `CLUSTERNAME` názvem vašeho clusteru. Potom zadejte příkaz. (Název clusteru plně kvalifikovaného názvu domény není malá a velká písmena.)
-
-**A. Bash**  
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -95,7 +95,7 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
     -Credential $creds -UseBasicParsing
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
-```   
+```
 
 ### <a name="example-get-the-fqdn-of-cluster-nodes"></a> Získat plně kvalifikovaný název domény uzlů clusteru
 
@@ -105,7 +105,7 @@ Při práci s HDInsight, budete muset vědět, plně kvalifikovaný název domé
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" \
-| jq '.items[].Hosts.host_name'
+| jq -r '.items[].Hosts.host_name'
 ```  
 
 ```powershell
@@ -119,7 +119,7 @@ $respObj.items.Hosts.host_name
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/NAMENODE" \
-| jq '.host_components[].HostRoles.host_name'
+| jq -r '.host_components[].HostRoles.host_name'
 ```
 
 ```powershell
@@ -133,7 +133,7 @@ $respObj.host_components.HostRoles.host_name
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/DATANODE" \
-| jq '.host_components[].HostRoles.host_name'
+| jq -r '.host_components[].HostRoles.host_name'
 ```
 
 ```powershell
@@ -147,7 +147,7 @@ $respObj.host_components.HostRoles.host_name
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
-| jq ".host_components[].HostRoles.host_name"
+| jq -r ".host_components[].HostRoles.host_name"
 ```
 
 ```powershell
@@ -195,7 +195,7 @@ Následující příklady načíst výchozí konfigurace úložiště v clusteru
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
-| jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+| jq -r '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
 ```
 
 ```powershell
@@ -210,7 +210,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 Vrácená hodnota je podobná následující příklady:
 
-* `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Tato hodnota označuje, že cluster používá účet Azure Storage pro výchozí úložiště. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů blob v účtu úložiště. Kontejner je kořenový adresář HDFS kompatibilní úložiště pro cluster.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Tato hodnota označuje, že cluster používá účet Azure Storage pro výchozí úložiště. `ACCOUNTNAME` Hodnota je název účtu úložiště. `CONTAINER` Část je název kontejneru objektů blob v účtu úložiště. Kontejner je kořenový adresář HDFS kompatibilní úložiště pro cluster.
 
 * `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` – Tato hodnota označuje, že cluster používá Azure Data Lake Storage Gen2 pro výchozí úložiště. `ACCOUNTNAME` a `CONTAINER` hodnoty mají stejný význam jako pro Azure Storage, již bylo zmíněno dříve.
 
@@ -220,7 +220,7 @@ Vrácená hodnota je podobná následující příklady:
 
     ```bash
     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
-    | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
+    | jq -r '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
     ```powershell
@@ -236,7 +236,7 @@ Vrácená hodnota je podobná následující příklady:
 
     ```bash
     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
-    | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
+    | jq -r '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```  
 
     ```powershell
@@ -250,7 +250,6 @@ Vrácená hodnota je podobná následující příklady:
 
 > [!NOTE]  
 > [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) rutiny poskytované [prostředí Azure PowerShell](/powershell/azure/overview) také vrátí informace o úložiště pro cluster.
-
 
 ### <a name="get-all-configurations"></a> Získat všechny konfigurace
 
@@ -267,7 +266,7 @@ $respObj.Content
 ```
 
 V tomto příkladu vrátí dokument JSON obsahující aktuální konfiguraci (identifikovaný *značka* hodnotu) pro součásti nainstalované v clusteru. Následující příklad je výpisem z data vrácená z typu clusteru Spark.
-   
+
 ```json
 "jupyter-site" : {
   "tag" : "INITIAL",
@@ -311,10 +310,9 @@ V tomto příkladu vrátí dokumentu JSON, který obsahuje aktuální konfigurac
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
-
      ```
 
-     **B. prostředí powershell**  
+     **B. PowerShell**  
      Tento skript Powershellu využívá [jq](https://stedolan.github.io/jq/).  Upravit `C:\HD\jq\jq-win64` níže tak, aby odrážely skutečné cesty a verze [jq](https://stedolan.github.io/jq/).
 
      ```powershell
@@ -402,7 +400,6 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo": {"context": "turning on maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}'
-    $resp.Content
     ```
 
 2. Ověření režimu údržby  
@@ -428,16 +425,16 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
-    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
-    "https://girouxSpark.azurehdinsight.net/api/v1/clusters/girouxspark/services/SPARK2"
+    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
+    "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2" `
-        -Credential $creds `
+        -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
-        -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}'
+        -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}'
     $resp.Content
     ```
 
@@ -454,7 +451,7 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
     ```
 
     > [!IMPORTANT]  
-    > `href` Hodnoty vrácené pomocí tohoto identifikátoru URI používá interní IP adresa uzlu clusteru. Pro použití z mimo cluster, nahraďte část "10.0.0.18:8080" plně kvalifikovaný název domény clusteru.  
+    > `href` Hodnoty vrácené pomocí tohoto identifikátoru URI používá interní IP adresa uzlu clusteru. Chcete-li použít z mimo cluster, nahraďte `10.0.0.18:8080` část s plně kvalifikovaný název domény clusteru.  
 
 4. Ověření požadavku.  
     Upravte následující příkaz tak, že nahradíte `29` se skutečnou hodnotou `id` vrácená z předchozího kroku.  Následující příkazy načtou stav požadavku:
@@ -475,10 +472,10 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
     Odpověď `COMPLETED` označuje, že žádost byla dokončena.
 
 5. Po dokončení předchozího požadavku, použijte následující postup ke spuštění služby Spark2.
-   
+
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
-    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
+    -X PUT -d '{"RequestInfo":{"context":"_PARSE_.START.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
     "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/SPARK2"
     ```
 
@@ -487,7 +484,8 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
         -Credential $creds -UseBasicParsing `
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
-        -Body '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
+        -Body '{"RequestInfo":{"context":"_PARSE_.START.SPARK2","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}'
+    $resp.Content
     ```
 
     Služba teď používá novou konfiguraci.
@@ -506,10 +504,8 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
         -Method PUT `
         -Headers @{"X-Requested-By" = "ambari"} `
         -Body '{"RequestInfo": {"context": "turning off maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}'
-
     ```
 
 ## <a name="next-steps"></a>Další postup
 
 Úplný popis rozhraní REST API najdete v části [Apache Ambari API Reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
-

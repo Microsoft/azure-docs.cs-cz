@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab705b6131bd43a7ab70bab16cef81d33f07c055
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: e4aa5314811ceac9e1f9d1136fc8ae5557a3d71d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063258"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Vytvoření první funkce pomocí Javy a Mavenu
 
@@ -79,7 +79,7 @@ Define value for property 'appName' fabrikam-functions-20170927220323382:
 Confirm properties configuration: Y
 ```
 
-Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Vygenerovaný kód připravený k použití v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook), která vypisuje text žádosti:
+Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Je připravený k použití generovaného kódu v projektu [aktivovanou protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) funkce, která vypisuje text žádosti:
 
 ```java
 public class Function {
@@ -150,13 +150,13 @@ Pomocí klávesové zkratky `Ctrl-C` v terminálu zastavte kód aplikace.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 
-V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. Než budete pokračovat, [přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+V procesu nasazení do služby Azure Functions se používají přihlašovací údaje účtu z Azure CLI. [Přihlaste se pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) než budete pokračovat.
 
 ```azurecli
 az login
 ```
 
-Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-functions:deploy`.
+Nasaďte svůj kód do nové aplikace funkcí s použitím cíle Maven `azure-functions:deploy`. Provede [Zip nasazení s využitím spustit z balíčku](functions-deployment-technologies.md#zip-deploy) režimu povolené.
 
 > [!NOTE]
 > Pokud chcete nasadit aplikaci Function app používáte Visual Studio Code, nezapomeňte si zvolte placené předplatné nebo se zobrazí chyba. Podívejte se na vaše předplatné na levé straně rozhraní IDE.

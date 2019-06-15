@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: abb4a43176026fca5a80409ade13af1f8f96d9f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60390399"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa služby Azure Active Directory ověřování pomocí SQL
@@ -345,7 +345,7 @@ Tuto metodu použijte, pokud jsou přihlášení k Windows pomocí přihlašovac
 
     ![Vyberte název databáze][13]
 
-## <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
+## <a name="active-directory-password-authentication"></a>Ověřování hesla Active Directory
 
 Tuto metodu použijte, pokud připojení s názvem instančního objektu Azure AD pomocí služby Azure AD spravované domény. Můžete také použít jej pro federované účty bez přístupu k doméně, například když pracujete vzdáleně.
 
@@ -377,7 +377,7 @@ conn.Open();
 
 Klíčové slovo připojovacího řetězce ``Integrated Security=True`` není podporována pro připojení ke službě Azure SQL Database. Při vytváření připojení rozhraní ODBC, je potřeba odebrat mezery a nastavte ověřování na "ActiveDirectoryIntegrated".
 
-### <a name="active-directory-password-authentication"></a>Ověřování hesla služby Active Directory
+### <a name="active-directory-password-authentication"></a>Ověřování hesla Active Directory
 
 Pro připojení k databázi pomocí integrovaného ověřování a identitu služby Azure AD, musí být nastavena – klíčové slovo ověřování hesla Active Directory. Připojovací řetězec musí obsahovat uživatelské ID nebo UID a hesla/PWD klíčová slova a hodnoty. Následující vzorový kód jazyka C# používá ADO .NET.
 

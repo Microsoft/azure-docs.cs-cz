@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
 ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60600411"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Spravovat VMware vCenter server
@@ -33,7 +33,7 @@ Trvá přibližně 15 minut pro informace o účtu možné synchronizovat se slu
 
 ### <a name="account-permissions"></a>Oprávnění účtu
 
-|**Úkol** | **Účet** | **Oprávnění** | **Podrobnosti**|
+|**Úloha** | **Účet** | **Oprávnění** | **Podrobnosti**|
 |--- | --- | --- | ---|
 |**Automatické zjišťování/migrace (bez navrácení služeb po obnovení)** | Budete potřebovat alespoň uživatel jen pro čtení | Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte **bez přístupu** role s **rozšířit na podřízený** objekt podřízeným objektům (hostitelé vSphere, úložiště, virtuální počítače a sítě).|
 |**Replikace a převzetí služeb při selhání** | Budete potřebovat alespoň uživatel jen pro čtení| Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte **bez přístupu** role s **rozšířit na podřízený** objekt podřízeným objektům (hostitelé vSphere, úložiště, virtuální počítače a sítě).<br/><br/> Užitečné pro účely migrace, ale ne úplná replikace, převzetí služeb při selhání, navrácení služeb po obnovení.|
@@ -98,7 +98,7 @@ Poté, co se aktualizuje IP adresu, součásti Site Recovery se začít přijím
 ## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Několik chráněné virtuální počítače migrovat do nového serveru vCenter
 
 > [!NOTE]
-> Tato část se vztahuje pouze když migrujete některé z vašich chráněných virtuálních počítačů do nového serveru vCenter. Pokud chcete chránit nové sady virtuálních počítačů z nové vCenter [přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault) a začínat  **[povolit ochranu](vmware-azure-tutorial.md#enable-replication)**.
+> Tato část se vztahuje pouze když migrujete některé z vašich chráněných virtuálních počítačů do nového serveru vCenter. Pokud chcete chránit nové sady virtuálních počítačů z nové vCenter [přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault) a začínat  **[povolit ochranu](vmware-azure-tutorial.md#enable-replication)** .
 
 Přesunout do nového serveru vCenter několik virtuálních počítačů:
 
@@ -108,7 +108,7 @@ Přesunout do nového serveru vCenter několik virtuálních počítačů:
 4. Nyní, ochrana migrovaných virtuálních počítačů podle [vyberete nový vCenter při povolení ochrany](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Pokud je počet migrovaných virtuálních počítačů **vyšší** , že počet virtuálních počítačů v původní server vCenter, aktualizovat IP adresu nového vcenter pomocí podle pokynů. Pro několik virtuálních počítačů, které se zachovají na starý server vCenter [zakázat replikaci](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault)a spusťte  **[povolit ochranu](vmware-azure-tutorial.md#enable-replication)**.
+> Pokud je počet migrovaných virtuálních počítačů **vyšší** , že počet virtuálních počítačů v původní server vCenter, aktualizovat IP adresu nového vcenter pomocí podle pokynů. Pro několik virtuálních počítačů, které se zachovají na starý server vCenter [zakázat replikaci](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [přidat nové podrobnosti vCenter do konfiguračního serveru](#add-vmware-server-to-the-vault)a spusťte  **[povolit ochranu](vmware-azure-tutorial.md#enable-replication)** .
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

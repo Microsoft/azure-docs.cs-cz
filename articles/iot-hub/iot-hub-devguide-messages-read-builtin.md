@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61363996"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
@@ -46,7 +46,7 @@ Pokud používáte Event Hubs sad SDK nebo integrace produktů, které nejste v�
 
 3. **Události** oddíl obsahuje následující hodnoty: **Oddíly**, **název kompatibilní s centrem událostí**, **koncový bod kompatibilní s centrem událostí**, **doba uchovávání**, a **skupiny příjemců**.
 
-    ![Nastavení zařízení-cloud](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
+    ![Nastavení zařízení cloud](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 Na portálu pole pro koncový bod kompatibilní s centrem událostí obsahuje úplný připojovací řetězec služby Event Hubs, bude vypadat takto: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Pokud používáte sadu SDK vyžaduje jiné hodnoty, pak by:
 

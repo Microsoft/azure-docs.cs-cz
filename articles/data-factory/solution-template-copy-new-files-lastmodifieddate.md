@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
 ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60312705"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírovat nové a změněné soubory podle LastModifiedDate s Azure Data Factory
@@ -53,19 +53,19 @@ Tato šablona nových a změněných souborů nejprve vybere pouze podle jejich 
 
 4. Vyberte **pomocí této šablony**.
 
-    ![Použít tuto šablonu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
+    ![Pomocí této šablony](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
 5. K dispozici v panelu, kanál se zobrazí, jak je znázorněno v následujícím příkladu:
 
     ![Zobrazení kanálu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. Vyberte **ladění**, zapsat hodnotu pro **parametry** a vyberte **Dokončit**.  Na obrázku nastavíme jako následující parametry.
-   - **FolderPath_Source** = **/source/**
-   - **FolderPath_Destination** = **/destination/**
+   - **FolderPath_Source** =  **/source/**
+   - **FolderPath_Destination** =  **/destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
-     V příkladu je určující soubory, které byly naposledy změněny v rámci časový interval mezi *2019-02-01T00:00:00Z* a *2019-03-01T00:00:00Z* se zkopírují ze složky */source/*  do složky */destination/*.  Můžete nahradit tyto vlastními parametry.
+     V příkladu je určující soubory, které byly naposledy změněny v rámci časový interval mezi *2019-02-01T00:00:00Z* a *2019-03-01T00:00:00Z* se zkopírují ze složky */source/*  do složky */destination/* .  Můžete nahradit tyto vlastními parametry.
     
      ![Spuštění kanálu](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
 
@@ -86,10 +86,10 @@ Tato šablona nových a změněných souborů nejprve vybere pouze podle jejich 
     ![Vytvoření aktivační události](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Hodnota pro zápis **parametry spuštění aktivační události** následující a vyberte **Dokončit**.
-    - **FolderPath_Source** = **/source/**.  Můžete nahradit složky v úložišti datového zdroje.
-    - **FolderPath_Destination** = **/destination/**.  Můžete nahradit složky v cílovém úložišti.
-    - **LastModified_From** =  **@trigger().outputs.windowStartTime**.  Je systémová proměnná z triggeru určení času kanálu byl při aktivaci naposledy.
-    - **LastModified_To** = **@trigger().outputs.windowEndTime**.  Je systémová proměnná z triggeru určení času kanálu při aktivaci této doby.
+    - **FolderPath_Source** =  **/source/** .  Můžete nahradit složky v úložišti datového zdroje.
+    - **FolderPath_Destination** =  **/destination/** .  Můžete nahradit složky v cílovém úložišti.
+    - **LastModified_From** =   **@trigger().outputs.windowStartTime**.  Je systémová proměnná z triggeru určení času kanálu byl při aktivaci naposledy.
+    - **LastModified_To** =  **@trigger().outputs.windowEndTime**.  Je systémová proměnná z triggeru určení času kanálu při aktivaci této doby.
     
     ![Vstupní parametry](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

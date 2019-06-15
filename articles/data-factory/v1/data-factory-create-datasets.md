@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60487248"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-create-datasets.md)
 > * [Verze 2 (aktuální verze)](../concepts-datasets-linked-services.md)
 
@@ -203,7 +203,7 @@ Podle následujících pokynů můžete určit, kdy se mají zahrnout informace 
 * **Pro strukturovaná data zdroje**, zadejte v části struktury jenom v případě, že chcete, aby mapování sloupců zdroje do jímky sloupců a jejich názvy se neshodují. Tento druh zdroje strukturovaná data ukládá informace schématu a typu dat spolu s vlastní data. Příklady zdrojů strukturovaných dat: SQL Server, Oracle a tabulek v Azure.
   
     Informace o typu je již k dispozici pro strukturované datové zdroje, by neměl obsahovat informace o typu, pokud zahrnete oddíl struktury.
-* **Pro schéma na zdroje dat pro čtení (konkrétně služby Blob storage)**, můžete k ukládání dat bez ukládání žádné schéma nebo typ informací s daty. Pro tyto typy zdrojů dat patří struktura Pokud chcete mapování sloupců zdroje do jímky sloupce. Také zahrnovat struktury datová sada je vstupní hodnota pro aktivitu kopírování a datové typy zdrojové datové sady mají být převedeny na nativní typy pro jímku.
+* **Pro schéma na zdroje dat pro čtení (konkrétně služby Blob storage)** , můžete k ukládání dat bez ukládání žádné schéma nebo typ informací s daty. Pro tyto typy zdrojů dat patří struktura Pokud chcete mapování sloupců zdroje do jímky sloupce. Také zahrnovat struktury datová sada je vstupní hodnota pro aktivitu kopírování a datové typy zdrojové datové sady mají být převedeny na nativní typy pro jímku.
     
     Data Factory podporuje následující hodnoty pro poskytnutí informací o typu struktury: **Int16, Int32, Int64, Single, Double, Decimal, bajtů [], datový typ Boolean, řetězec, Guid, data a času, Datetimeoffset a časový interval**. Tyto hodnoty jsou specifikace CLS (Common Language)-kompatibilní. Na základě NET typ hodnoty.
 

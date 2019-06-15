@@ -4,7 +4,7 @@ titlesuffix: Azure Traffic Manager
 description: Tento článek vysvětluje funkce "vnořených profilů Azure Traffic Manageru
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: kumud
-ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3c5459d0474ecd45501e634c4777fa178386183c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071157"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Vnořené profily Traffic Manageru
 

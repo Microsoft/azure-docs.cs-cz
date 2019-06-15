@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d7e137986b4b6a1d0dcf96bf890e7e7be2cac02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fc6abf9efc9014703eceda9a8b52a7204d8dae5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65858960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Kurz: Integrace Azure Active Directory s ClearCompany
 
@@ -53,7 +53,7 @@ Konfigurace integrace ClearCompany do služby Azure AD, budete muset přidat Cle
 
 **Chcete-li přidat ClearCompany z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -189,7 +189,7 @@ V této části je povolit Britta Simon k udělení přístupu k ClearCompany po
 
 V této části vytvoříte uživatele v ClearCompany jako Britta Simon. Práce s [tým podpory ClearCompany](https://www.clearcompany.com/support) přidat uživatele na platformě ClearCompany. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

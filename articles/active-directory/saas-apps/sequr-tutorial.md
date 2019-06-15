@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dace26f9eb4948a8cfd06be568ab9ec471765d1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2eed00aab4296cb5352e74d9e6bfc014f2340646
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Kurz: Integrace Azure Active Directory s Sequr
 
@@ -54,7 +54,7 @@ Konfigurace integrace Sequr do služby Azure AD, budete muset přidat Sequr z Ga
 
 **Chcete-li přidat Sequr z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

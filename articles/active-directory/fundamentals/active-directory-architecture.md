@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235181"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055711"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura služby Azure Active Directory?
 Azure Active Directory (Azure AD) umožňuje zabezpečeně spravovat přístup k prostředkům a službám Azure pro vaše uživatele. Součástí Azure AD je kompletní sada funkcí pro správu identit. Informace o funkcích služby Azure AD najdete v tématu [Co je Azure Active Directory?](active-directory-whatis.md)
@@ -95,7 +95,7 @@ Adresářový model zajišťuje jednu konečnou už. Jedním z typických probl�
 
 Azure AD poskytuje konzistenci čtení a zápisu pro aplikace cílením na sekundární repliku. Směřuje svoje zápisy do primární repliky a synchronně stahuje zápisy zpátky do sekundární repliky.
 
-Aplikace, které zapisují pomocí rozhraní Graph API služby Azure AD, nezachovávají vztahy spřažení k replice adresáře pro zajištění konzistence čtení a zápisu. Služba Azure AD Graph udržuje logickou relaci, která je spřažená se sekundární replikou používanou pro čtení. Tento vztah spřažení zachycuje „token repliky“, který služba Graph ukládá do mezipaměti pomocí distribuované mezipaměti. Tento token se potom využívá pro následné operace ve stejné logické relaci. 
+Aplikace, které zapisují pomocí rozhraní Graph API služby Azure AD, nezachovávají vztahy spřažení k replice adresáře pro zajištění konzistence čtení a zápisu. Služba Azure AD Graph udržuje logickou relaci, která je spřažená sekundární replikou používanou pro čtení; spřažení zachycuje "token repliky", že služba graph ukládá do mezipaměti, pomocí distribuované mezipaměti v datovém centru sekundární repliky. Tento token se potom využívá pro následné operace ve stejné logické relaci. Dál používat stejné logické relaci, musejí směrovat další požadavky na stejném datovém centru služby Azure AD. Není možné pokračovat logickou relaci, když adresář klient požádá, jsou směrovány na několika datových centrech Azure AD; v takovém případě má klient více logické relací, které mají nezávislé už čtení i zápis.
 
  >[!NOTE]
  >Zápisy se okamžitě replikují do sekundární repliky, pro kterou byla provedena čtení logické relace.

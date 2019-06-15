@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 08/13/2018
 ms.author: genli
 ms.openlocfilehash: ec2da7d9f659f32c40f7a2685ab08be4eec27ed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60320697"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Odstranění virtuálního počítače s Windows pomocí připojení disku s operačním systémem k obnovení virtuálního počítače pomocí webu Azure portal
@@ -105,7 +105,7 @@ Pro několik dalších kroků použijte jiný virtuální počítač pro účely
 
     ![Vyberte Souborová služba a služba úložiště ve Správci serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-3. Datový disk je automaticky zjistil a připojené. Pokud chcete zobrazit seznam připojených disků, vyberte **disky**. Můžete vybrat váš datový disk, chcete-li zobrazit informace o svazku, včetně písmeno jednotky. Následující příklad ukazuje datový disk připojený a pomocí **F:**:
+3. Datový disk je automaticky zjistil a připojené. Pokud chcete zobrazit seznam připojených disků, vyberte **disky**. Můžete vybrat váš datový disk, chcete-li zobrazit informace o svazku, včetně písmeno jednotky. Následující příklad ukazuje datový disk připojený a pomocí **F:** :
 
     ![Disk připojený a informace o svazku ve Správci serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 

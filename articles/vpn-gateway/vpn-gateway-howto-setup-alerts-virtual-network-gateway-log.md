@@ -5,18 +5,26 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptional
-ms.date: 04/22/2019
+ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 48725ed8cdf3df30f8df31966aa632bfb2a4ef1f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510205"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066893"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Nastavení výstrah u diagnostický protokol událostí ze služby VPN Gateway
 
-Tento článek vám pomůže nastavit výstrahy na základě diagnostický protokol událostí ze služby Azure VPN Gateway.
+Tento článek vám pomůže nastavit výstrahy na základě diagnostický protokol událostí ze služby Azure VPN Gateway. Tyto protokoly jsou k dispozici.
+
+|***Název*** | ***Popis*** |
+|---        | ---               |
+|GatewayDiagnosticLog | Obsahuje diagnostické protokoly pro události konfigurace služby brány, primární změny a události údržby |
+|TunnelDiagnosticLog | Obsahuje tunelové propojení událostí změny stavu. Tunelové propojení připojení/odpojení události mají souhrnný důvod pro změnu stavu, pokud je k dispozici |
+|RouteDiagnosticLog | Protokoly se změní na statické trasy a protokolu BGP události, které brána |
+|IKEDiagnosticLog | Protokoly IKE řídicí zprávy a události na bráně |
+|P2SDiagnosticLog | Protokoly point-to-site řídicí zprávy a události na bráně |
 
 ## <a name="setup"></a>Nastavení výstrah
 

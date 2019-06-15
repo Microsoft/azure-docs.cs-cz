@@ -17,10 +17,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: edf5f2b681123243f55b1c2bf19a500e68171c0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165736"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak zřídit virtuální počítače SQL serveru pomocí Azure Powershellu
@@ -427,7 +427,7 @@ Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName
 ## <a name="next-steps"></a>Další postup
 Po vytvoření virtuálního počítače můžete:
 
-- Připojte se k virtuálnímu počítači pomocí protokolu RDP
+- Připojení k virtuálnímu počítači pomocí protokolu RDP
 - Konfigurace nastavení SQL serveru na portálu pro váš virtuální počítač, včetně:
    - [Nastavení úložiště](virtual-machines-windows-sql-server-storage-configuration.md) 
    - [Automatizované úlohy správy](virtual-machines-windows-sql-server-agent-extension.md)

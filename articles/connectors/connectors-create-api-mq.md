@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 9e6ae5cb0afd75a1e87fe4d4d0cf307abab5a02a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60688736"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-logic-apps-using-the-mq-connector"></a>Připojení k IBM MQ serveru z aplikací logiky pomocí konektoru MQ
@@ -48,7 +48,7 @@ Konektor MQ zahrnuje následující akce. Neexistují žádné triggery.
 2. Zadejte **název**, jako je například MQTestApp, **předplatné**, **skupiny prostředků**, a **umístění** (použít tak umístění kde místní Připojení k bráně dat je nakonfigurovaná). Vyberte **připnout na řídicí panel**a vyberte **vytvořit**.  
 ![Vytvoření aplikace logiky](media/connectors-create-api-mq/Create_Logic_App.png)
 
-## <a name="add-a-trigger"></a>Přidat trigger
+## <a name="add-a-trigger"></a>Přidání triggeru
 
 > [!NOTE]
 > Konektor MQ nemá žádné aktivační události. Tedy použít další trigger spustíte svou aplikaci logiky, jako **opakování** aktivační události.

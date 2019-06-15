@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964115"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
@@ -30,7 +30,7 @@ Prodejní místa jsou v souladu s cílovým skupinám na místě a produkty spol
 |Řešení podle Relevance     |Technické aplikace vytvořené pro nebo založené na Azure|Obchodní aplikace, které využívají / rozšíření D365, Power BI, O365, Azure. (Dokončení doplňku nebo doplněk aplikace)|
 |Možnosti publikování     |Obraťte se na mě, zkušební verze, Transact nebo konzultační služby|Kontaktujte mě, zkušební verze nebo konzultační služby|
 |V prostředí produktu      |Portál pro správu Azure|Dynamics 365, Office 365, klientské aplikace Office| 
-|Další      |Místní publikování pomocí služby Azure Stack|Konzultační služby Dynamics a Power BI|
+|Ostatní      |Místní publikování pomocí služby Azure Stack|Konzultační služby Dynamics a Power BI|
 
 Nabídky služeb, které jsou založeny na Microsoft Dynamics 365, Office 365 a Power BI mají nárok na uvedené na AppSource. Další informace najdete v tématu [Microsoft AppSource konzultačních služeb pokyny pro výpis](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
@@ -100,7 +100,7 @@ Před registrací můžete spustit shromažďování a příprava obsah, který 
 |Nastavení pro nové nabídky  |
 |---------|
 |Název (200 znaků) a popis (2000 znaků)    |
-|Kompetence     |
+|Možnosti     |
 |Dostupnost země/oblast     |
 |Doba trvání zapojení     |
 |Příslušné odvětví, kategorie a klíčová slova pro vyhledávání     |
@@ -166,7 +166,7 @@ V rámci portál Cloud Partner, můžete přidat na váš výpis formátování 
 * ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>místo pro nadpis (Ex: ###(space)Agenda/Deliverables)
 * Konec řádku po záhlaví
 * ** = tučného písma 
-* * Kurzívu souhrn nabídky
+* \* Kurzívu souhrn nabídky
 
 
 ## <a name="next-steps"></a>Další postup

@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 8ab24d478efa0d0006cff618d7760d4396d0e45e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60495247"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069250"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: Extrahování dat volného tvaru pomocí Pattern.any entity
 
@@ -65,24 +65,20 @@ Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat 
 |{FormName} is published in French[?] (Je {FormName} ve francouzštině[?])|
 
 ## <a name="import-example-app"></a>Importovat ukázková aplikace
-Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Použijte k tomu následující postup:
+1. Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) a uložte si ho.
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) a uložte si ho.
+1. V [LUIS portál](https://www.luis.ai)na **Moje aplikace** stránce, importovat do nové aplikace ve formátu JSON.
 
-2. Naimportujte soubor JSON do nové aplikace.
-
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 ## <a name="add-example-utterances"></a>Přidat ukázkové promluvy 
-Pokud je obtížné vytvořit a označit entitu FormName, odeberte předem připravenou entitu keyPhrase. 
 
 1. V horní navigaci vyberte **Build** (Sestavení) a pak v levé navigaci vyberte **Intents** (Záměry).
 
-2. V seznamu záměrů vyberte **FindForm** (Vyhledat formulář).
+1. V seznamu záměrů vyberte **FindForm** (Vyhledat formulář).
 
-3. Přidejte několik ukázkových promluv:
+1. Přidejte několik ukázkových promluv:
 
     |Ukázková promluva|
     |--|
@@ -94,13 +90,13 @@ Pokud je obtížné vytvořit a označit entitu FormName, odeberte předem přip
     Bez entity Pattern.any by pro službu LUIS bylo kvůli mnoha variantám názvů formulářů obtížné zjistit, kde končí název formuláře.
 
 ## <a name="create-a-patternany-entity"></a>Vytvoření entity Pattern.any
-Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, protože vzor označuje začátek a konec entity. Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists). 
+Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, protože vzor označuje začátek a konec entity.  
 
 1. V levé navigaci vyberte **Entities** (Entity).
 
-2. Vyberte **Create new entity** (Vytvořit novou entitu), zadejte název `FormName` a jako typ vyberte **Pattern.any**. Vyberte **Done** (Hotovo). 
+1. Vyberte **Create new entity** (Vytvořit novou entitu), zadejte název `FormName` a jako typ vyberte **Pattern.any**. Vyberte **Done** (Hotovo). 
 
-    Entitu není možné označit v záměru, protože entita Pattern.any je platná pouze ve vzoru. 
+    Entity v záměr projevů příklad nelze popisek, protože Pattern.any platí pouze ve vzorku. 
 
     Pokud chcete, aby extrahovaná data zahrnovala i další entity, jako jsou entity number nebo datetimeV2, budete muset vytvořit složenou entitu obsahující entity Pattern.any i number a datetimeV2.
 
@@ -108,9 +104,9 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 
 1. V levé navigaci vyberte **Patterns** (Vzory).
 
-2. Vyberte záměr **FindForm** (Vyhledat formulář).
+1. Vyberte záměr **FindForm** (Vyhledat formulář).
 
-3. Zadejte následující šablony promluv, které používají novou entitu:
+1. Zadejte následující šablony promluv, které používají novou entitu:
 
     |Šablony promluv|
     |--|
@@ -121,8 +117,6 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 
     Pokud chcete zohlednit různé varianty formuláře, jako je použití jednoduchých uvozovek místo dvojitých nebo tečky místo otazníku, vytvořte pro každou variantu nový vzor.
 
-4. Pokud jste odebrali entitu keyPhrase, přidejte ji zpátky do aplikace. 
-
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
@@ -130,15 +124,20 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Test nového vzoru pro extrakci dat volného tvaru
 1. Výběrem možnosti **Test** na horním panelu otevřete panel testování. 
 
-2. Zadejte následující promluvu: 
+1. Zadejte následující promluvu: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. Pod výsledkem vyberte **Inspect** (Prozkoumat) a zobrazte výsledky testu pro entitu a záměr.
+1. Pod výsledkem vyberte **Inspect** (Prozkoumat) a zobrazte výsledky testu pro entitu a záměr.
 
     Jako první se našla entita `FormName` a pak vzor určující záměr. Pokud máte výsledek testu, kde se nezjistily entity a tedy se ani nenašel vzor, musíte do záměru (ne do vzoru) přidat více ukázkových promluv.
 
-4. Zavřete panel testování výběrem tlačítka **Test** v horní navigaci.
+1. Zavřete panel testování výběrem tlačítka **Test** v horní navigaci.
+
+## <a name="using-an-explicit-list"></a>Použít explicitní seznam
+
+Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists).
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

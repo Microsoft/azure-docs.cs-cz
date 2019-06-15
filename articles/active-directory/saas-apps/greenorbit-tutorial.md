@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b05c91138f3140abe6a08964fa06caef988e5f49
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 248b5cf554b743e86f3580174190a93cca1aa8d9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67101460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenorbit"></a>Kurz: Integrace Azure Active Directory s GreenOrbit
 
@@ -56,7 +56,7 @@ Konfigurace integrace GreenOrbit do služby Azure AD, budete muset přidat Green
 
 **Chcete-li přidat GreenOrbit z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -187,7 +187,7 @@ V této části je povolit Britta Simon k udělení přístupu k GreenOrbit pou�
 
 V této části se vytvoří uživateli Britta Simon v GreenOrbit. GreenOrbit podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi GreenOrbit, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570637"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
@@ -153,7 +153,7 @@ V tomto scénáři, fungovat správně, NPS server musí být zaregistrovaný ve
 
 Můžete použít standard (založené na průvodci) nebo rozšířené možnosti konfigurace konfigurace serveru RADIUS. V této části se předpokládá, že používáte možnost založené na průvodci standardní konfigurace.
 
-1. V konzole serveru Network Policy Server vyberte **server NPS (místní)**.
+1. V konzole serveru Network Policy Server vyberte **server NPS (místní)** .
 
 2. V části **standardní konfigurace**vyberte **Server RADIUS pro vytáčená nebo VPN připojení**a pak vyberte **konfigurace sítě VPN nebo telefonické**.
 
@@ -269,7 +269,7 @@ V této části si ověřit, že klient VPN ověří a autorizuje serverem RADIU
 
 4. Vyberte **přidat připojení k síti VPN**.
 
-5. V **přidat připojení k síti VPN** okno v **poskytovatele připojení VPN** vyberte **Windows (vestavěné)**, vyplňte zbývající pole, podle potřeby a pak vyberte **Uložit**.
+5. V **přidat připojení k síti VPN** okno v **poskytovatele připojení VPN** vyberte **Windows (vestavěné)** , vyplňte zbývající pole, podle potřeby a pak vyberte **Uložit**.
 
     ![V okně "Přidat připojení VPN."](./media/howto-mfa-nps-extension-vpn/image17.png)
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60313964"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>IBM DB2 prostředky spravovat pomocí Azure Logic Apps
@@ -160,7 +160,7 @@ Chcete-li načíst jeden záznam v tabulce databáze DB2, použijte **získat ř
    | **ID oblasti** | Ano | ID záznamu, třeba "99999" v tomto příkladu |
    ||||
 
-   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+   ![Výběr tabulky](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
 1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
 
@@ -195,7 +195,7 @@ Chcete-li načíst všechny záznamy v tabulce databáze DB2, použijte **získa
 
 1. Otevřít **název tabulky** seznamu a potom vyberte tabulku, kterou, což je "Oblasti" v tomto příkladu:
 
-   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+   ![Výběr tabulky](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
 1. Chcete-li zadat filtr nebo dotaz pro výsledky, zvolte **zobrazit pokročilé možnosti**.
 
@@ -244,7 +244,7 @@ Chcete-li přidat jeden záznam do DB2 databázové tabulky, použijte **vložit
 
    Příklad:
 
-   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+   ![Výběr tabulky](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
 1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
 
@@ -292,7 +292,7 @@ Chcete-li aktualizovat jeden záznam v tabulce databáze DB2, použijte **aktual
 
    Příklad:
 
-   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+   ![Výběr tabulky](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
 1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
 
@@ -337,7 +337,7 @@ Chcete-li odstranit jednoho záznamu z tabulky DB2. databáze, použijte **odstr
 
    Příklad:
 
-   ![Vyberte tabulku](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+   ![Výběr tabulky](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
 1. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
 

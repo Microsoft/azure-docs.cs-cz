@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60329479"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Postup použití Twilia pro hlasové hovory a SMS z Azure
@@ -176,7 +176,7 @@ catch (TwilioException ex)
 Pokud aplikace zahájí volání rozhraní API Twilia – například prostřednictvím **CallResource.Create** metoda - Twilio odešle požadavek na adresu URL, která se má vrátit odpověď TwiML. V příkladu v [jak: Ujistěte se, odchozí volání](#howto_make_call) používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url] vrátit odpověď.
 
 > [!NOTE]
-> TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) zobrazíte `<Response>` element, který obsahuje &lt;Say&gt; elementu.
+> TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) zobrazíte `<Response>` element, který obsahuje &lt; Say&gt; elementu.
 >
 
 Aniž byste museli spoléhat na URL poskytnutou Twilio, můžete vytvořit vlastní adresu URL webu, který vrací odpovědi protokolu HTTP. Můžete vytvořit web v jakémkoli jazyce, který vrací odpovědi protokolu HTTP. Toto téma předpokládá, že budete hostovat adresu URL z ASP.NET obecné obslužné rutiny.

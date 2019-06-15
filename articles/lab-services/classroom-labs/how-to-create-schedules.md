@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60695949"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Vytvořit a spravovat plány pro testovací prostředí v učebnách ve službě Azure Lab Services 
@@ -32,10 +32,10 @@ Plány umožňují konfigurovat testovacího prostředí v učebně, tak, aby vi
 
     ![Přidejte tlačítko plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
 2. Na **přidat plán** stránky, ujistěte se, že **jednou** je vybraná možnost v horní části. Pokud není, vyberte **jednou**. 
-3. Pro **naplánovat datum (povinné)**, zadejte datum, nebo vyberte ikonu kalendáře pro výběr data. 
+3. Pro **naplánovat datum (povinné)** , zadejte datum, nebo vyberte ikonu kalendáře pro výběr data. 
 4. Pro **počáteční čas**, vyberte čas, kdy chcete spustit virtuální počítače. Počáteční čas je vyžadována, pokud čas ukončení není nastaven. Vyberte **odebrat zahájit událost** Pokud chcete určit pouze čas ukončení. Pokud **počáteční čas** je zakázaná, vyberte **přidat počáteční událost** vedle rozevíracího seznamu, aby je. 
 5. Pro **čas ukončení**, vyberte čas, kdy chcete vypnout virtuální počítače. Čas ukončení je vyžadována, pokud není nastaven počáteční čas. Vyberte **událost odebrání po zastavení** Pokud chcete zadat čas spuštění. Pokud **čas ukončení** je zakázaná, vyberte **události zastavení přidat** vedle rozevíracího seznamu, aby je.
-6. Pro **časové pásmo (povinné)**, vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali. 
+6. Pro **časové pásmo (povinné)** , vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali. 
 7. Pro **poznámky**, zadejte popis případné poznámky pro daný plán. 
 8. Vyberte **Uložit**. 
 
@@ -47,12 +47,12 @@ Plány umožňují konfigurovat testovacího prostředí v učebně, tak, aby vi
 
     ![Přidejte tlačítko plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
 2. Na **přidat plán** stránce, přepněte na **týdenní** v horní části. 
-3. Pro **naplánovat dnů (povinné)**, vyberte dny, ve které chcete plánu se projeví. V následujícím příkladu je vybrána pondělí až pátek. 
+3. Pro **naplánovat dnů (povinné)** , vyberte dny, ve které chcete plánu se projeví. V následujícím příkladu je vybrána pondělí až pátek. 
 4. Pro **z** zadejte **naplánovat datum zahájení** nebo vyberte datum tak, že vyberete **kalendáře** tlačítko. Toto pole je povinné. 
 5. Pro **datum ukončení plánu**, zadejte nebo vyberte koncové datum, na kterém jsou virtuální počítače vypnou. 
 6. Pro **počáteční čas**, vyberte čas, kdy chcete spustit virtuální počítače. Počáteční čas je vyžadována, pokud čas ukončení není nastaven. Vyberte **odebrat zahájit událost** Pokud chcete určit pouze čas ukončení. Pokud **počáteční čas** je zakázaná, vyberte **přidat počáteční událost** vedle rozevíracího seznamu, aby je. 
 7. Pro **čas ukončení**, vyberte čas, kdy chcete vypnout virtuální počítače. Čas ukončení je vyžadována, pokud není nastaven počáteční čas. Vyberte **událost odebrání po zastavení** Pokud chcete zadat čas spuštění. Pokud **čas ukončení** je zakázaná, vyberte **události zastavení přidat** vedle rozevíracího seznamu, aby je.
-8. Pro **časové pásmo (povinné)**, vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali.  
+8. Pro **časové pásmo (povinné)** , vyberte časové pásmo pro spuštění a zastavení časy, které jste zadali.  
 9. Pro **poznámky**, zadejte popis případné poznámky pro daný plán. 
 10. Vyberte **Uložit**. 
 

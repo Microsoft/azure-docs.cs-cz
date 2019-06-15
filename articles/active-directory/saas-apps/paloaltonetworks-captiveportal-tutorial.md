@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3651e81cd3916bccc859bc3bc010511b2a114a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095261"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Kurz: Integrace Azure Active Directory pomocí portálu vnitropodnikové Palo Alto sítě
 
@@ -78,12 +78,12 @@ Konfigurace a testování Azure AD jednotné přihlašování pomocí portálu v
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování pomocí portálu vnitropodnikové Palo Alto sítě, proveďte následující úkoly:
 
-1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)**: Povolte uživateli tuto funkci používat.
-2. **[Konfigurace portálu vnitropodnikové sítě Palo Alto jednotného přihlašování](#configure-palo-alto-networks-captive-portal-single-sign-on)**: Konfigurovat nastavení jednotného přihlašování v aplikaci.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**: Testování Azure AD jednotné přihlašování s uživatelem *Britta Simon*.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**: Nastavení Britta Simon pro použití služby Azure AD jednotného přihlašování.
+1. **[Konfigurace služby Azure AD jednotného přihlašování](#configure-azure-ad-single-sign-on)** : Povolte uživateli tuto funkci používat.
+2. **[Konfigurace portálu vnitropodnikové sítě Palo Alto jednotného přihlašování](#configure-palo-alto-networks-captive-portal-single-sign-on)** : Konfigurovat nastavení jednotného přihlašování v aplikaci.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** : Testování Azure AD jednotné přihlašování s uživatelem *Britta Simon*.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)** : Nastavení Britta Simon pro použití služby Azure AD jednotného přihlašování.
 5. **Vytvoření zkušebního uživatele Palo Alto sítě vnitropodnikové portál**: Vytvoření uživatele protějšek *Britta Simon* portálu Palo Alto sítě další zpracování, který je propojený s uživatele Azure AD.
-6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**: Zkontrolujte, jestli funguje v konfiguraci.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)** : Zkontrolujte, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -158,7 +158,7 @@ Dále vytvořte testovacího uživatele s názvem *Britta Simon* na webu Azure P
 
     1. Pro **název**, zadejte **BrittaSimon**.
   
-    2. Pro **uživatelské jméno**, zadejte **BrittaSimon\@\<your_company_domain\>**. Například **BrittaSimon\@contoso.com**.
+    2. Pro **uživatelské jméno**, zadejte **BrittaSimon\@\<your_company_domain\>** . Například **BrittaSimon\@contoso.com**.
 
     3. Pro **heslo**, zadejte heslo. Doporučujeme, abyste záznam o heslo, které zadáte. Můžete vybrat **zobrazit heslo** políčka zobrazíte heslo.
 
@@ -197,7 +197,7 @@ V dalším kroku vytvoření uživatele s názvem *Britta Simon* Palo Alto sít�
 > [!NOTE]
 > Pokud chcete ručně vytvořit uživatele, obraťte se [tým podpory Palo Alto sítě vnitropodnikové portál klienta](https://support.paloaltonetworks.com/support).
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 Za branou firewall na virtuálním počítači s Windows je nainstalován portál vnitropodnikové Palo Alto sítě. Pokud chcete otestovat jednotné přihlašování na portálu vnitropodnikové Palo Alto sítě, přihlaste se k virtuálnímu počítači Windows pomocí protokolu RDP (Remote Desktop). V této relaci RDP otevřete prohlížeč a přejděte na libovolném webu. Otevře adresu URL jednotného přihlašování a zobrazí se výzva k ověření. Po dokončení ověření můžete přístup k webům.
 

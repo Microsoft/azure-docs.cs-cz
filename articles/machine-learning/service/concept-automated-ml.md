@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 05/21/2019
+ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93eb0fba91ce5064d04a340e8b3e5b984ee73081
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1dcdbbf0a2a71fa38b6eacd6a8d179cdad979937
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059292"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -62,6 +62,19 @@ Při vytváření modelů je automatické, můžete také [zjistěte, jak důle�
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 <a name="preprocess"></a>
+
+## <a name="time-series-forecasting"></a>Vytváření prognóz časových řad
+Vytváření prognóz je nedílnou součástí jakoukoli firmu, ať už jde výnosy, inventáře, sales nebo zákazníků. Automatizované ml používá řadu kombinované techniky a přístupy k doporučujeme prognózy vysoce kvalitní časovou řadu. Časových řad experimentů v ml automatizovaná jsou považovány za problém regrese s množstvím proměnných. Poslední časové řady hodnoty jsou "neseskupené" se další dimenze pro regresor společně s další prediktory. 
+
+Tento přístup, na rozdíl od klasického čas řady metod, má výhodu přirozeně začlenění více kontextových proměnných a jejich vzájemných vztazích během cvičení. Ve skutečných aplikacích prognóz několika faktory mohou mít vliv na prognózy. Například při Prognózování prodeje, interakce historické trendy, exchange sazba a cena všechny společně jednotka prodejní výsledky. Další výhodou je, všechny nejnovější inovace v regresních modelů ihned k předpovědi.
+
+Jak daleko dopředu prognózy by měl rozšířit (prognózy horizontu) je součástí základní specifikace prognózy. Nastavení požadovaný parametr `max_horizon` v experimentu definuje kolik jednotek období (podle časového intervalu cvičných dat, např. měsíčně, každý týden uživatel by měl předpovědět navýšení kapacity. 
+
+Automatizované ML zjistí model jednu, ale často interně větvenou pro všechny položky v datové sady a predikcí možností. Další data jsou tedy k dispozici k odhadu parametry modelu a je možné generalizace nezobrazený řady. 
+
+Funkce z trénovací data extrahovat hrát důležitou roli. Automatizované ML provede standardní předběžného zpracování kroky a vygeneruje další funkce časových řad (např. rok, měsíc, den v týdnu atd.) pro zachycení sezónní efekty a maximalizovat prediktivní přesnost. 
+
+Pokud se hodí pro váš scénář, můžete nastavit automatizované ML k vytvoření zjevně demonstruje výskyt pomalé (`target_lags`) nebo se zajištěním provozu okno agregaci dat (`target_rolling_window_size`) z vaší cílovou (`y_value`) za hodnoty. 
 
 ## <a name="preprocessing"></a>Předzpracování
 
@@ -160,6 +173,7 @@ Automatizované ML je také dostupná v dalších řešení Microsoftu, jako:
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Výběr automatického modelu a školení v aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s ML.NET automatizované ML (Preview).|
 |[HDIsnight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Horizontální navýšení kapacity vašeho automatizované úlohy trénování ML ve Sparku v HDInsight clustery paralelně.|
 |[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Vyvolání modelů strojového učení přímo v Power BI (Preview).|
+|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Vytvořte nové modely strojového učení nad vašimi daty v clusterech velké objemy dat SQL serveru 2019.|
 
 ## <a name="next-steps"></a>Další postup
 

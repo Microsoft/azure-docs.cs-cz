@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60245504"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace Azure AD Connect: Principy výrazů deklarativního zřizování
@@ -41,7 +41,7 @@ Atributy jsou silného typu. Funkce přijímá pouze atributy nesprávného typu
 * Logické hodnoty jsou vyjádřeny pomocí konstant: Hodnota TRUE, False.
 * Předdefinované konstanty a literály jsou vyjádřeny včetně pouze jejich jména: Hodnota NULL, CRLF, IgnoreThisFlow
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 Deklarativní zřizování využívá mnoho funkcí k zajištění možnost transformovat hodnoty atributů. Tyto funkce mohou být vnořené, takže výsledkem jedna funkce je předáno do jiné funkce.
 
 `Function1(Function2(Function3()))`
@@ -53,7 +53,7 @@ Definování získá parametr konektor nebo správce pomocí prostředí PowerSh
 
 Konektor služby Active Directory k dispozici následující parametry pro příchozí pravidla synchronizace:
 
-| Název parametru | Poznámka |
+| Název parametru | Komentář |
 | --- | --- |
 | Domain.Netbios |Formátu NetBIOS domény aktuálně importována, například FABRIKAMSALES |
 | Domain.FQDN |Plně kvalifikovaný název domény formát domény aktuálně importována, například sales.fabrikam.com |

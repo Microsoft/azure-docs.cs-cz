@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60199067"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Otestujte aplikaci LUIS na portálu služby LUIS
@@ -103,9 +103,9 @@ Pomocí následujícího postupu Pokud chcete zahrnout [kontrolu pravopisu Bingu
 
 1. V **Test** podokně, zadejte utterance. Když očekává se, utterance, vyberte **[zkontrolujte, jestli se](#inspect-score)** pod utterance jste zadali. 
 
-2. Když **zkontrolujte, jestli se** panelu otevře, vyberte  **[porovnat s publikovanou](#compare-with-published-version)**. 
+2. Když **zkontrolujte, jestli se** panelu otevře, vyberte  **[porovnat s publikovanou](#compare-with-published-version)** . 
 
-3. Když **publikováno** panelu otevře, vyberte  **[další nastavení](#additional-settings-in-test-panel)**.
+3. Když **publikováno** panelu otevře, vyberte  **[další nastavení](#additional-settings-in-test-panel)** .
 
 4. V místním dialogovém okně zadejte vaše **kontrolu pravopisu Bingu** klíč služby. 
     ![Zadejte klíč služby pro kontrolu pravopisu Bingu](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)

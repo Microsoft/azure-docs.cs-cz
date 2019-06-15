@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.component: autoscale
+ms.subservice: autoscale
 ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60787555"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování v Microsoft Azure Virtual Machines, Cloud Services a webových aplikací
@@ -102,11 +102,10 @@ Můžete nastavit automatické škálování prostřednictvím
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Podporované služby pro automatické škálování
-
 | Služba | Schéma a dokumentace |
 | --- | --- |
 | Web Apps |[Škálování webové aplikace](../../azure-monitor/platform/autoscale-get-started.md) |
-| Cloud Services |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Cloudové služby |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtuální počítače: Classic |[Škálovací sady dostupnosti klasický virtuální počítač](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtuální počítače: Windows Škálovací sady |[Škálování virtuálního počítače škálovací sady v Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtuální počítače: Linux Škálovací sady |[Škálování virtuálního počítače škálovací sady v Linuxu](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
@@ -121,3 +120,4 @@ Další informace o automatické škálování, použití automatického škálo
 * [Pomocí akcí automatického škálování můžete odeslat emailová a webhooková oznámení výstrah](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Rozhraní REST API pro automatické škálování](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Řešení potíží virtuální počítač automatické škálování Škálovací sady](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+

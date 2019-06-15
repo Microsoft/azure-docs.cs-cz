@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d4b154b8ce55c381f1398c696bc439067dccfab
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: bdfd19d9a0e928e26ad6f01ba4b9c3f493aacb0c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65899751"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Kurz: Integrace Azure Active Directory s Cloudovou službou Alibaba (jednotné přihlašování založené na roli)
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat integraci Alibaba Cloudovou službu (jednotné přih
 
 **Chcete-li přidat Alibaba Cloudovou službu (jednotné přihlašování založené na roli) z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -282,11 +282,11 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že uděluje přístup ke cloudové službě Alibaba (jednotné přihlašování založené na roli).
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Alibaba cloudové služby (jednotné přihlašování založené na roli)**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Alibaba cloudové služby (jednotné přihlašování založené na roli)** .
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Alibaba cloudové služby (jednotné přihlašování založené na roli)**.
+2. V seznamu aplikací vyberte **Alibaba cloudové služby (jednotné přihlašování založené na roli)** .
 
     ![Odkaz Alibaba Cloudovou službu (jednotné přihlašování založené na roli) v seznamu aplikací](common/all-applications.png)
 
@@ -313,7 +313,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 V této části vytvořte uživatele Britta Simon v cloudové službě Alibaba (jednotné přihlašování založené na roli). Práce s [Alibaba cloudové služby (jednotné přihlašování založené na roli) tým podpory](https://www.aliyun.com/service/) přidat uživatele na platformě Alibaba Cloudovou službu (jednotné přihlašování založené na roli). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 Po dokončení předchozí konfigurace testů Alibaba Cloudovou službu (jednotné přihlašování založené na roli) pomocí následujících kroků:
 

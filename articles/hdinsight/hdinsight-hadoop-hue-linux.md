@@ -9,19 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 74ccf2af2d379b3c1966543885df6ebe5cf0f47a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059434"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat rozhraní Hue v clusterech HDInsight Hadoop
 
 Zjistěte, jak instalace aplikace Hue v clusterech HDInsight a směrovat požadavky na odstín, který pomocí tunelové propojení.
-
-> [!IMPORTANT]  
-> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-is-hue"></a>Co je Hue?
 Odstín, který je sada webových aplikací používaných pro interakci s clusterem Apache Hadoop. Použití Hue procházet úložiště spojené s clusterem Hadoop (v případě clusterů HDInsight WASB), spouštět úlohy Hive a Pig skripty a tak dále. Následující komponenty jsou k dispozici instalace aplikace Hue v clusteru HDInsight Hadoop.
@@ -64,9 +61,9 @@ Tato část obsahuje informace o tom, jak pomocí skriptu při zřizování clus
    * **NÁZEV**: Zadejte popisný název akce skriptu.
    * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **HLAVNÍ**: Zaškrtněte tuto možnost.
-   * **PRACOVNÍK**: Ponechte toto nastavení prázdné.
-   * **ZOOKEEPER**: Ponechte toto nastavení prázdné.
-   * **PARAMETRY**: Ponechte toto nastavení prázdné.
+   * **PRACOVNÍK**: Nechte prázdné.
+   * **ZOOKEEPER**: Nechte prázdné.
+   * **PARAMETRY**: Nechte prázdné.
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **vyberte** tlačítko v dolní části **volitelná konfigurace** okno a uložte informace o konfiguraci volitelné.
 4. Pokračovat zřizování clusteru, jak je popsáno v [zřídit HDInsight clustery v Linuxu](hdinsight-hadoop-provision-linux-clusters.md).
 

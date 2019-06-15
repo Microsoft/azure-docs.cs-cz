@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 5092872433529f11f699aa8a0c5e87d110cb59f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077428"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Používání Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -85,7 +85,7 @@ Pokud se shoduje s regulárním výrazem, dojde k nahrazení pravidlo **Access-C
 ![Příklad pravidla s regulárním výrazem](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Žádost o pravidlo záhlaví pro každý původu.
-Místo regulárních výrazů, můžete místo toho vytvořit samostatné pravidlo pro každý původ chcete povolit používání **zástupné záhlaví požadavku** [odpovídají podmínce](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1). Stejně jako u metody regulárních výrazů stroj pravidel samostatně nastaví hlavičky CORS. 
+Místo regulárních výrazů, můžete místo toho vytvořit samostatné pravidlo pro každý původ chcete povolit používání **zástupné záhlaví požadavku** [odpovídají podmínce](/previous-versions/azure/mt757336(v=azure.100)#match-conditions). Stejně jako u metody regulárních výrazů stroj pravidel samostatně nastaví hlavičky CORS. 
 
 ![Příklad pravidla bez regulárního výrazu](./media/cdn-cors/cdn-cors-no-regex.png)
 

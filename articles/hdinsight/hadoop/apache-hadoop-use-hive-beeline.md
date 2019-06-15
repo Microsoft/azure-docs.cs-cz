@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
 ms.openlocfilehash: dcfcd4b55f848e1725e286e6ef2a87a2c36e5a71
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684931"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití Apache Beeline klienta s Apache Hive
@@ -187,7 +187,7 @@ Tento příklad je založen na použití Beeline klienta z připojení SSH.
 
     * `STORED AS TEXTFILE LOCATION` -Pokud jsou data uložená a v jakém formátu souboru.
 
-    * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]**. Tento dotaz vrátí hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
+    * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]** . Tento dotaz vrátí hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
 
     * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresář obsahuje soubory, které neodpovídají schématu. Chcete-li zabránit uvolňování paměti ve výsledcích, tento příkaz sděluje Hive, že ji by měl vrátit pouze data ze souborů s koncovkou. log.
 
@@ -243,12 +243,12 @@ To je pokračováním z předchozího příkladu. Pomocí následujících krok�
 
    * **Vytvoření tabulky IF NOT EXISTS** – Pokud tabulka již neexistuje, vytvoří se. Vzhledem k tomu, **externí** – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v datovém skladu Hive a jsou kompletně spravované pomocí Hive.
    * **ULOŽENÉ jako ORC** – ukládá data ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). Formát ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
-   * **VLOŽIT PŘEPSÁNÍ... Vyberte** -vybere řádky z **log4jLogs** tabulce, která obsahuje **[Chyba]**, pak vloží data do **nepřenesl** tabulky.
+   * **VLOŽIT PŘEPSÁNÍ... Vyberte** -vybere řádky z **log4jLogs** tabulce, která obsahuje **[Chyba]** , pak vloží data do **nepřenesl** tabulky.
 
     > [!NOTE]  
     > Na rozdíl od externích tabulek vyřadit interní tabulku odstraní podkladová data.
 
-3. Chcete-li uložit soubor, použijte **Ctrl**+**_X**, zadejte **Y**a nakonec **Enter**.
+3. Chcete-li uložit soubor, použijte **Ctrl**+ **_X**, zadejte **Y**a nakonec **Enter**.
 
 4. Pomocí následujících spusťte soubor pomocí Beeline:
 

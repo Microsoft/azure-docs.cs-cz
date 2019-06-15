@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141039"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080035"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy entit a jejich účely v LUIS
 
@@ -47,7 +47,7 @@ Entity jsou data, která chcete načítat utterance. To může být název, datu
 |Promluva|Entita|Data|
 |--|--|--|
 |Zakoupit 3 lístky pro New York|Předem připravené číslo<br>Location.Destination|3<br>New York|
-|Nákup lístků z New Yorku do Londýna na 5. března|Location.Origin<br>Location.Destination<br>Předem připravené datetimeV2|New York<br>Londýn<br>5. března 2018|
+|Nákup lístků z New Yorku do Londýna na 5. března|Location.Origin<br>Location.Destination<br>Předem připravené datetimeV2|New York<br>Londýn<br>5\. března 2018|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Entity jsou volitelné, ale důrazně doporučené
 
@@ -98,7 +98,7 @@ Po extrahování entity entity data můžete vyjádřena jako jedna jednotka inf
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Složené**](#composite-entity)|Seskupení entit, bez ohledu na typ entity.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Seznam**](#list-entity)|Seznam položek a jejich synonyma extrahuje text přesně shodovat.|
-|Smíšený||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entita, ve kterém je obtížné určit koncové entity.|
+|Smíšené||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entita, ve kterém je obtížné určit koncové entity.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Předem připravené**](#prebuilt-entity)|Extrahovat různé druhy dat je už vytrénovaný.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulární výraz**](#regular-expression-entity)|Používá regulární výraz pro porovnání textu.|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Jednoduché**](#simple-entity)|Obsahuje jeden koncept v slova nebo fráze.|
@@ -108,6 +108,30 @@ Jenom entity zjištěné počítače musí být označené v příkladu projevy.
 Pattern.Any entity musí být označeny [vzor](luis-how-to-model-intent-pattern.md) Příklady šablon, ne příklady záměru uživatele. 
 
 Smíšené entity pomocí kombinace metod zjišťování entit.
+
+## <a name="machine-learned-entities-use-context"></a>Počítače zjištěné entity používají položku kontextu
+
+Učte se od kontextu v utterance zjištěné počítače entity. Díky tomu Změna umístění v příkladu projevy významné. 
+
+## <a name="non-machine-learned-entities-dont-use-context"></a>Entity se naučili mimo počítač nepoužívejte kontextu
+
+Následující mimo počítač zjistili, že entity se nedají zadat utterance kontextu v úvahu při porovnávání entity: 
+
+* [Předem připravených entit](#prebuilt-entity)
+* [Regulární výraz entity](#regular-expression-entity)
+* [Seznam entit](#list-entity) 
+
+Tyto entity se nevyžadují, označování popisky nebo trénování modelu. Po přidání nebo konfigurace entitu, se extrahují entity. Výměnou za to je, že tyto entity můžete overmatched kde Pokud kontext byl vzít v úvahu, porovnání by byly provedeny. 
+
+To se stane s seznamu entit na nové modely často. Při vývoji a testování modelu s entitou seznamu, ale při publikování modelu a přijímat dotazy z koncového bodu, zjistíte, že je váš model overmatching vzhledem k absenci kontextu. 
+
+Pokud chcete odpovídají slova nebo fráze a vezměte v úvahu kontext, máte dvě možnosti. První je použití jednoduché entity spárované se seznamem frázi. Seznam frází nebude se použije k porovnání, ale místo toho vám pomůže signál relativně podobná slova (zaměnitelné seznamu). Pokud musíte mít přesnou shodu namísto seznamu frází variace, použijte seznam entit s rolí, je popsáno níže.
+
+### <a name="context-with-non-machine-learned-entities"></a>Kontext s mimo počítač zjistili entity
+
+Pokud chcete, aby kontext utterance nejdůležitější pro počítač bez zjištěná entity, měli byste použít [role](luis-concept-roles.md).
+
+Pokud máte jiné počítače zjistili entity, jako například [předem připravených entit](#prebuilt-entity), [regulární výraz](#regular-expression-entity) entity nebo [seznamu](#list-entity) entit, které je nad rámec instance, má odpovídající, vezměte v úvahu vytváří jednu entitu s dvě role. Zaznamená jednu roli, co jste hledali a zaznamená jednu roli nejsou hledání. Obě verze bude muset být označené jako v příkladu projevy.  
 
 ## <a name="composite-entity"></a>Složený entity
 
@@ -133,8 +157,9 @@ Seznam entit představují sadu související slova spolu s jejich synonyma pevn
 Entita je vhodná podle při textová data:
 
 * Jsou známé sady.
+* Nemění příliš často. Pokud potřebujete změnit seznamu často nebo seznamu vlastní rozšíření, jednoduché entity boosted se seznamem frázi je lepší volbou. 
 * Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
-* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. Služba LUIS nepoužívá seznamu nad rámec textu přesné shody. Seznam entit nejsou vyřešil slovního rozboru, množné číslo a další varianty konfigurací. Chcete-li spravovat změny, zvažte použití [vzor](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) syntaxí volitelný text, který.
+* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. Služba LUIS nepoužívá seznamu nad rámec textu přesné shody. Seznam entit nejsou vyřešil přibližné shody, ignorování, slovního rozboru, množné číslo a další varianty konfigurací. Chcete-li spravovat změny, zvažte použití [vzor](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) syntaxí volitelný text, který.
 
 ![seznam entit](./media/luis-concept-entities/list-entity.png)
 
@@ -158,10 +183,11 @@ Každý řádek v následující tabulce, má dvě verze utterance. Začátek ut
 
 |Promluva|
 |--|
-|"Byl The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky zapsal American tento rok?<br>Byl **The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky** zapsal American tento rok?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
+|The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky zapsal American tento rok?<br><br>Byl **The Man kdo Mistook jeho manželkou Hat a další klinické kontrolky** zapsal American tento rok?|
+|Byl poloviční režimu spánku v žába Pajamas zapsal American tento rok?<br><br>Byl **poloviční režimu spánku v žába Pajamas** zapsal American tento rok?|
+|Byla konkrétní smutek Citronový koláč: Nové, zapisuje American tento rok?<br><br>Byl **konkrétní smutek Citronový koláč: Nové** zapsal American tento rok?|
+|Bylo, že v mé kapesního zařízení Wocket! zapisuje American tento rok?<br><br>Byl **je Moje Pocket Wocket!** zapisuje American tento rok?|
+||
 
 ## <a name="prebuilt-entity"></a>Předem připravených entit
 
@@ -225,6 +251,18 @@ Entita je vhodná podle při:
 
 [Kurz](luis-quickstart-intents-regex-entity.md)<br>
 [Příklad odpovědi JSON pro entitu](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+
+Regulární výrazy může odpovídat více, než byste očekávali tak, aby odpovídaly. Příkladem je číselné slovo jako například porovnávání `one` a `two`. Příkladem je následující regulární výraz, který se shoduje s počtem `one` společně s další čísla:
+
+```javascript
+(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
+``` 
+
+Tento výraz regex také odpovídá všem slovům, která tato čísla, jako například končit `phone`. Chcete-li opravit problémy s tímto způsobem, ujistěte se, že odpovídá regulárnímu bere v hranicích slov účtu. Regulární výraz určený hranicích slov v tomto příkladu se používá v následující regulární výraz:
+
+```javascript
+\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
+```
 
 ## <a name="simple-entity"></a>Jednoduchá entita 
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d6ee5d4d9db8f6c91d43f72135ba42d6735287
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bd9efbd3f0d445174f6db4395cbeee789313f6c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863117"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104767"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>Kurz: Integrace Azure Active Directory s ContractWorks
 
@@ -53,7 +53,7 @@ Konfigurace integrace ContractWorks do služby Azure AD, budete muset přidat Co
 
 **Chcete-li přidat ContractWorks z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -119,7 +119,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s ContractWorks, proveďte n�
 
 7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | mail | user.mail |
     | displayName | user.displayname |
@@ -205,7 +205,7 @@ V této části je povolit Britta Simon k udělení přístupu k ContractWorks p
 
 V této části vytvoříte uživatele v ContractWorks jako Britta Simon. Práce s [tým podpory ContractWorks](mailto:support@contractworks.com) přidat uživatele na platformě ContractWorks. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

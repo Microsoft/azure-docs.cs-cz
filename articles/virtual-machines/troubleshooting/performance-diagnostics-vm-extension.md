@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60307852"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače výkonu Azure Diagnostics pro Windows
@@ -70,10 +70,10 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 |   **Název**   |**Hodnota / příklad**|       **Popis**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Verze rozhraní API.
-|vydavatele|Microsoft.Azure.Performance.Diagnostics|Obor názvů vydavatele pro rozšíření.
+|publisher|Microsoft.Azure.Performance.Diagnostics|Obor názvů vydavatele pro rozšíření.
 |type|AzurePerformanceDiagnostics|Typ rozšíření virtuálního počítače.
 |typeHandlerVersion|1.0|Verze rozšíření obslužné rutiny.
-|performanceScenario|Basic|Výkon scénář, pro které se mají zachytávat data. Platné hodnoty jsou: **základní**, **vmslow**, **azurefiles**, a **vlastní**.
+|performanceScenario|Základní|Výkon scénář, pro které se mají zachytávat data. Platné hodnoty jsou: **základní**, **vmslow**, **azurefiles**, a **vlastní**.
 |traceDurationInSeconds|300|Doba trvání trasování, pokud vyberete některou z možností trasování.
 |perfCounterTrace|p|Možnost povolit trasování čítače výkonu. Platné hodnoty jsou **p** nebo prázdnou hodnotu. Pokud nechcete k zaznamenání trasování, ponechte hodnotu jako prázdný.
 |networkTrace|n|Možnost povolit trasování sítě. Platné hodnoty jsou **n** nebo prázdnou hodnotu. Pokud nechcete k zaznamenání trasování, ponechte hodnotu jako prázdný.
@@ -109,11 +109,11 @@ Postupujte podle těchto pokynů k instalaci rozšíření na virtuálních poč
     > [!NOTE]
     > Rozšíření spustí po úspěšném zřízení. Má dvě minuty nebo méně k dokončení pro základní scénáře. Pro další scénáře spustí během trvání zadaly během instalace.
 
-## <a name="remove-the-extension"></a>Odebrání rozšíření
+## <a name="remove-the-extension"></a>Odebrat rozšíření
 Odebrat rozšíření z virtuálního počítače, postupujte podle těchto kroků:
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com), vyberte virtuální počítač, ze kterého chcete odebrat toto rozšíření a pak vyberte **rozšíření** okno. 
-2. Vyberte (**...** ) pro rozšíření diagnostiky výkonu položku ze seznamu a vyberte **odinstalovat**.
+2. Vyberte ( **...** ) pro rozšíření diagnostiky výkonu položku ze seznamu a vyberte **odinstalovat**.
 
     ![Rozšíření – snímek obrazovky okna s odinstalovat zvýrazněnou](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
@@ -234,7 +234,7 @@ Nástroj PerfInsights shromáždí různé protokoly, konfigurace a diagnostick�
 
 ## <a name="view-and-share-the-results"></a>Zobrazit a sdílet výsledky
 
-Výstup z rozšíření najdete v souboru zip, který nahráli do účtu úložiště zadaný během instalace a je sdíleno po dobu 30 dnů pomocí [sdílených přístupových podpisů (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tento soubor zip obsahuje diagnostické protokoly a sestavy s výsledky a doporučení. Odkaz SAS k výstupnímu souboru zip najdete uvnitř textový soubor s názvem *zipfilename*_saslink.txt ve složce **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verze >**. Každý, kdo má tento odkaz je možné stáhnout soubor zip.
+Výstup z rozšíření najdete v souboru zip, který nahráli do účtu úložiště zadaný během instalace a je sdíleno po dobu 30 dnů pomocí [sdílených přístupových podpisů (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md). Tento soubor zip obsahuje diagnostické protokoly a sestavy s výsledky a doporučení. Odkaz SAS k výstupnímu souboru zip najdete uvnitř textový soubor s názvem *zipfilename*_saslink.txt ve složce **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<verze >** . Každý, kdo má tento odkaz je možné stáhnout soubor zip.
 
 Jako pomoc pracovníka podpory pracující na vašeho lístku podpory, může Microsoft pomocí tohoto odkazu SAS ke stažení diagnostická data.
 

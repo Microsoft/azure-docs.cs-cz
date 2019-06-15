@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: d4b33c06ab023023aadf403cf0ef0b08c2bafc5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60609747"
 ---
 # <a name="author-entity"></a>Autor Entity
@@ -22,12 +22,12 @@ ms.locfileid: "60609747"
 
 Název    |Popis                            |Type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |ID entity                              |Int64      |Rovná se
-AuN     |Normalizovaná jméno autora                 |String     |Rovná se
-DAuN    |Zobrazované jméno autora                    |String     |žádný
-Kopie      |Autor citace celkový počet            |Int32      |žádný  
-ECC     |Autor citace celkový odhadovaný počet  |Int32      |žádný
-E       |Rozšířený metadata (viz tabulka "Rozšířené atributy metadat")  |String     |žádný  
+ID      |Entity ID                              |Int64      |Je rovno
+AuN     |Normalizovaná jméno autora                 |String     |Je rovno
+DAuN    |Zobrazované jméno autora                    |String     |None
+CC      |Autor citace celkový počet            |Int32      |None  
+ECC     |Autor citace celkový odhadovaný počet  |Int32      |None
+E       |Rozšířený metadata (viz tabulka "Rozšířené atributy metadat")  |String     |None  
 
 
 ## <a name="extended-metadata-attributes"></a>Rozšířené atributy metadat ##

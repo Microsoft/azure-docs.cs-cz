@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
 ms.openlocfilehash: 6119f1116d255f7cd2a2bfc20e86eeca9e5dfe82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60523490"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
@@ -107,7 +107,7 @@ Klepněte na graf, abyste získali více podrobností:
 
 ![Počet relací podle verze prohlížeče](./media/sample-mscrm/23.png)
 
-#### <a name="geolocation"></a>Zeměpisná poloha
+#### <a name="geolocation"></a>Geografická poloha
 ![Počet relací podle země](./media/sample-mscrm/24.png)
 
 ![Relace a uživatelé podle země](./media/sample-mscrm/25.png)
@@ -132,7 +132,7 @@ Můžete provést i hlubší analýzu, pokud jste [export dat do Microsoft Power
 ## <a name="sample-microsoft-dynamics-crm-solution"></a>Ukázkové aplikace Microsoft Dynamics CRM řešení
 [Tady je ukázka řešení implementované v aplikaci Microsoft Dynamics CRM](https://dynamicsandappinsights.codeplex.com/).
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 * [Co je Application Insights?](../../azure-monitor/app/app-insights-overview.md)
 * [Application Insights pro webové stránky](../../azure-monitor/app/javascript.md)
 * [Další ukázky a návody](../../azure-monitor/app/app-insights-overview.md)

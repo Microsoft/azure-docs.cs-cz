@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 2bde63bb668188936b3dd3cf5ecbf3b8c604eb95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704444"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásady služby API Management
 
@@ -77,13 +77,13 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
 
  Když dojde k chybě a řízení přejde `on-error` části zásady, chyba je uložen v [kontextu. LastError](api-management-policy-expressions.md#ContextVariables) vlastnost, která je přístupná v rámci zásad v `on-error` oddílu. LastError má následující vlastnosti.  
   
-| Název     | Typ   | Popis                                                                                               | Požaduje se |
-|----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Source   | string | Název elementu, kde došlo k chybě. Může být zásad nebo název kroku integrované kanálu.     | Ano      |
-| Reason   | string | Kód chyby přívětivá počítač, který by se použil při zpracování chyb.                                       | Ne       |
-| Message  | string | Popis chyby čitelné.                                                                         | Ano      |
-| Scope    | string | Název oboru, ve kterém chyba došlo k chybě a můžou mít jednu z "globální", "produkt", "rozhraní api" nebo "operace" | Ne       |
-| Section  | string | Název oddílu, ve kterém došlo k chybě. Možné hodnoty: "příchozí", "backend", "výstupní" nebo "na chybu".       | Ne       |
+| Name       | Typ   | Popis                                                                                               | Požaduje se |
+|------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
+| `Source`   | string | Název elementu, kde došlo k chybě. Může být zásad nebo název kroku integrované kanálu.     | Ano      |
+| `Reason`   | string | Kód chyby přívětivá počítač, který by se použil při zpracování chyb.                                       | Ne       |
+| `Message`  | string | Popis chyby čitelné.                                                                         | Ano      |
+| `Scope`    | string | Název oboru, ve kterém chyba došlo k chybě a můžou mít jednu z "globální", "produkt", "rozhraní api" nebo "operace" | Ne       |
+| `Section`  | string | Název oddílu, ve kterém došlo k chybě. Možné hodnoty: "příchozí", "backend", "výstupní" nebo "na chybu".       | Ne       |
 | `Path`     | string | Určuje vnořené zásady, třeba "zvolte [3] / při [2]".                                                        | Ne       |
 | `PolicyId` | string | Hodnota `id` atribut, pokud zadaný výhradně zákazník, a to na zásadách, kde došlo k chybě             | Ne       |
 
@@ -99,8 +99,8 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
 | Source        | Podmínka                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | konfigurace | Identifikátor URI neodpovídá žádné operaci nebo rozhraní API | OperationNotFound       | Nelze spárovat příchozího požadavku pro operaci.                                                                      |
-| Autorizace | Není zadaný klíč předplatného             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíč předplatného. Ujistěte se, že při zasílání požadavků na toto rozhraní API obsahovat klíč předplatného. |
-| Autorizace | Hodnota klíče předplatného není platná.         | SubscriptionKeyInvalid  | Přístup byl odepřen z důvodu neplatné předplatné klíč. Je nutné zadat platný klíč pro aktivní předplatné.            |
+| authorization | Není zadaný klíč předplatného             | SubscriptionKeyNotFound | Přístup byl odepřen z důvodu chybějícího klíč předplatného. Ujistěte se, že při zasílání požadavků na toto rozhraní API obsahovat klíč předplatného. |
+| authorization | Hodnota klíče předplatného není platná.         | SubscriptionKeyInvalid  | Přístup byl odepřen z důvodu neplatné předplatné klíč. Je nutné zadat platný klíč pro aktivní předplatné.            |
   
 ## <a name="predefined-errors-for-policies"></a>Předdefinované chyby pro zásady  
  Tyto chyby jsou předdefinované pro chybové podmínky, které se můžou objevit během vyhodnocení zásad.  
@@ -108,21 +108,21 @@ Během zpracování žádosti o provádění předdefinované kroků spolu se v�
 | Source       | Podmínka                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | omezení četnosti   | Překročil se limit frekvence                                             | RateLimitExceeded         | Překročení limitu přenosové rychlosti                                                                                                               |
-| kvóta        | Překročení kvóty                                                  | QuotaExceeded             | Překročení kvóty volání. Kvótu se doplnit v xx:xx:xx. - nebo - šířku pásma kvóty. Kvótu se doplnit v xx:xx:xx. |
+| kvóta        | Překročila se kvóta                                                  | QuotaExceeded             | Překročení kvóty volání. Kvótu se doplnit v xx:xx:xx. \- nebo - šířku pásma kvóty. Kvótu se doplnit v xx:xx:xx. |
 | jsonp        | Hodnota parametru zpětného volání je neplatný (obsahuje chybné znaky) | CallbackParameterInvalid  | Hodnota parametru zpětného volání {zpětného volání název parametru} není platný identifikátor jazyka JavaScript.                                          |
-| Filtr IP    | Nepovedlo se parsovat volající IP z požadavku                          | FailedToParseCallerIP     | Nepovedlo se vytvořit IP adresu pro volajícího. Přístup byl odepřen.                                                                        |
-| Filtr IP    | Volající IP není v seznamu povolených aplikací                                | CallerIpNotAllowed        | IP adresy volajícího {ip-address} není povolena. Přístup byl odepřen.                                                                        |
-| Filtr IP    | Volající IP je v seznamu blokovaných položek                                    | CallerIpBlocked           | IP adresy volajícího blokovaný. Přístup byl odepřen.                                                                                         |
-| check-header | Chybí požadované záhlaví není uvedené nebo hodnota               | HeaderNotFound            | Hlavička {název hlavičky} se nenašla v požadavku. Přístup byl odepřen.                                                                    |
-| check-header | Chybí požadované záhlaví není uvedené nebo hodnota               | HeaderValueNotAllowed     | Hodnota hlavičky {název hlavičky} z {hodnota hlavičky} není povolena. Přístup byl odepřen.                                                          |
-| validate-jwt | V požadavku chybí Jwt token                                 | TokenNotFound             | Nebyl nalezen v žádosti o token JWT. Přístup byl odepřen.                                                                                         |
-| validate-jwt | Nepovedlo se ověřit podpis                                     | TokenSignatureInvalid     | < zprávu z knihovny jwt\>. Přístup byl odepřen.                                                                                          |
-| validate-jwt | Neplatná cílová skupina                                                | TokenAudienceNotAllowed   | < zprávu z knihovny jwt\>. Přístup byl odepřen.                                                                                          |
-| validate-jwt | Neplatný vydavatel                                                  | TokenIssuerNotAllowed     | < zprávu z knihovny jwt\>. Přístup byl odepřen.                                                                                          |
-| validate-jwt | Vypršela platnost tokenu.                                                   | TokenExpired              | < zprávu z knihovny jwt\>. Přístup byl odepřen.                                                                                          |
-| validate-jwt | Podpisový klíč se nepodařilo přeložit podle ID                            | TokenSignatureKeyNotFound | < zprávu z knihovny jwt\>. Přístup byl odepřen.                                                                                          |
-| validate-jwt | Chybí požadované deklarace identit z tokenu                          | TokenClaimNotFound        | JWT token neobsahuje následující deklarace: < c1\>, < c2\>,... Přístup byl odepřen.                                                            |
-| validate-jwt | Neshoda hodnot deklarací identity                                           | TokenClaimValueNotAllowed | Hodnota deklarace identity {název deklarace} z {hodnota deklarace} není povolena. Přístup byl odepřen.                                                             |
+| Filtr IP    | Nepovedlo se parsovat volající IP z požadavku                          | FailedToParseCallerIP     | Nepovedlo se vytvořit IP adresu pro volajícího. Přístup se odepřel.                                                                        |
+| Filtr IP    | Volající IP není v seznamu povolených aplikací                                | CallerIpNotAllowed        | IP adresy volajícího {ip-address} není povolena. Přístup se odepřel.                                                                        |
+| Filtr IP    | Volající IP je v seznamu blokovaných položek                                    | CallerIpBlocked           | IP adresy volajícího blokovaný. Přístup se odepřel.                                                                                         |
+| check-header | Chybí požadované záhlaví není uvedené nebo hodnota               | HeaderNotFound            | Hlavička {název hlavičky} se nenašla v požadavku. Přístup se odepřel.                                                                    |
+| check-header | Chybí požadované záhlaví není uvedené nebo hodnota               | HeaderValueNotAllowed     | Hodnota hlavičky {název hlavičky} z {hodnota hlavičky} není povolena. Přístup se odepřel.                                                          |
+| validate-jwt | V požadavku chybí Jwt token                                 | TokenNotFound             | Nebyl nalezen v žádosti o token JWT. Přístup se odepřel.                                                                                         |
+| validate-jwt | Nepovedlo se ověřit podpis                                     | TokenSignatureInvalid     | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
+| validate-jwt | Neplatná cílová skupina                                                | TokenAudienceNotAllowed   | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
+| validate-jwt | Neplatný vydavatel                                                  | TokenIssuerNotAllowed     | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
+| validate-jwt | Vypršela platnost tokenu.                                                   | TokenExpired              | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
+| validate-jwt | Podpisový klíč se nepodařilo přeložit podle ID                            | TokenSignatureKeyNotFound | < zprávu z knihovny jwt\>. Přístup se odepřel.                                                                                          |
+| validate-jwt | Chybí požadované deklarace identit z tokenu                          | TokenClaimNotFound        | JWT token neobsahuje následující deklarace: < c1\>, < c2\>,... Přístup se odepřel.                                                            |
+| validate-jwt | Neshoda hodnot deklarací identity                                           | TokenClaimValueNotAllowed | Hodnota deklarace identity {název deklarace} z {hodnota deklarace} není povolena. Přístup se odepřel.                                                             |
 | validate-jwt | Jiné chyby ověření                                       | JwtInvalid                | < zprávu z knihovny tokenů jwt\>                                                                                                          |
 
 ## <a name="example"></a>Příklad:

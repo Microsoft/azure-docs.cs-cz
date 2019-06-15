@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: zarhoads
 ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60465138"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použití konceptu s Azure Kubernetes Service (AKS)
@@ -219,7 +219,7 @@ V tomto příkladu aktualizujte ukázkovou aplikaci Java ke změně zobrazení t
 vi src/main/java/helloworld/Hello.java
 ```
 
-Aktualizace textu výstup zobrazíte *Hello World, jsem v jazyce Java ve službě AKS!*:
+Aktualizace textu výstup zobrazíte *Hello World, jsem v jazyce Java ve službě AKS!* :
 
 ```java
 package helloworld;

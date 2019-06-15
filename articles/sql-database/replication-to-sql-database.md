@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: b9d6569504b5352c6187afe12d903c986019c517
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60646802"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do jednoho a ve fondu databází SQL Database
@@ -107,7 +107,7 @@ Následující možnosti nejsou podporovány pro předplatná Azure SQL Database
 Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématu:
   
 - [Vytvořit publikaci](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvoření odběru Push](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Database jako odběratele (například **N'azuresqldbdns.database.windows.net "**) a název databáze Azure SQL jako cílové databáze (pro Příklad **AdventureWorks**).  
+- [Vytvoření odběru Push](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Database jako odběratele (například **N'azuresqldbdns.database.windows.net "** ) a název databáze Azure SQL jako cílové databáze (pro Příklad **AdventureWorks**).  
 
 ## <a name="see-also"></a>Viz také  
 

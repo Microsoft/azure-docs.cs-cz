@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60371355"
 ---
 # <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>Vysvětlení podmínek vašeho ceníku zákaznické smlouvy Microsoft
@@ -40,7 +40,7 @@ Následující část popisuje důležité termíny, které jsou zobrazeny v cen
 | billingProfileName  | Název fakturačního profil, který je nastaven na přijímání faktur. Ceny v ceníku jsou spojeny s tímto profilem fakturace. |
 | productOrderName  | Název plánu zakoupených produktů. |
 | serviceFamily  | Typ služby Azure. Např.: Výpočetní prostředky, analýz, zabezpečení |
-| Produkt  | Název produktu, účtují se poplatky za. Např.: Základní SQL DB vs. Standard SQL DB  |
+| Product  | Název produktu, účtují se poplatky za. Např.: Základní SQL DB vs. Standard SQL DB  |
 | productId  | Jedinečný identifikátor pro produkt, jehož měření je zpracován. |
 | unitOfMeasure  | Určuje jednotky pro účely fakturace pro službu. Například výpočetní služby se účtují po hodinách. |
 | meterId  | Jedinečný identifikátor pro měřidla. |

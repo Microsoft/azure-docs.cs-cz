@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: b5a13254fc9dfd58db83a1bc8b9dd071cfbbdab2
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 9d872a6d753a206dcfb03761e50e5854db4f146e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015588"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071592"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Pochopit, jak funguje nástroj pro migraci
 
@@ -55,10 +55,11 @@ S výjimkou oznámení na tyto metriky se dají migrovat všechny klasických up
 - PercentTimeoutError
 - AnonymousThrottlingError
 - SASThrottlingError
+- ThrottlingError
 
 Klasické výstraha pravidla na procenta metriky se musí migrovat na základě [mapování mezi metriky staré a nové úložiště](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Bude nutné prahové hodnoty odpovídajícím způsobem upravit, protože nové metriky, které jsou k dispozici je některý z absolutní.
 
-Klasické pravidla upozornění na AnonymousThrottlingError a SASThrottlingError musí rozdělit na dvě nové výstrahy, protože neexistuje žádný kombinované metriku, která poskytuje stejné funkce. Prahové hodnoty bude třeba ho upravit odpovídajícím způsobem.
+Klasické pravidla upozornění na AnonymousThrottlingError, SASThrottlingError a ThrottlingError musí rozdělit na dvě nové výstrahy, protože neexistuje žádný kombinované metriku, která poskytuje stejné funkce. Prahové hodnoty bude třeba ho upravit odpovídajícím způsobem.
 
 ## <a name="rollout-phases"></a>Fáze uvedení
 
@@ -97,7 +98,7 @@ Aktuálně podmnožinu předplatných je označen jako připravený pro migraci.
 
 Každý uživatel, který má předdefinovaná role Přispěvatel monitorování na úrovni předplatného můžete aktivovat migrace. Migraci můžete aktivovat také uživatelé, kteří mají vlastní roli s následujícími oprávněními:
 
-- * / čtení
+- \* / čtení
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
 - Microsoft.Insights/metricAlerts/*
@@ -106,7 +107,7 @@ Každý uživatel, který má předdefinovaná role Přispěvatel monitorování
 
 Poté co [aktivovat migrace](alerts-using-migration-tool.md), obdržíte e-mail na adresy, které jste zadali, které vás upozorní, že se migrace dokončí, nebo pokud není nutné provádět žádnou akci od vás. Tato část popisuje některé běžné problémy a řešení problémů s nimi.
 
-### <a name="validation-failed"></a>Ověření se nepovedlo
+### <a name="validation-failed"></a>Ověření se nezdařilo
 
 Z důvodu některých nedávné změny classic pravidla výstrah v rámci vašeho předplatného není možné migrovat předplatné. Tento problém je dočasný. Migraci můžete restartovat po stavu migrace přesune zpět **připravený pro migraci** za několik dnů.
 

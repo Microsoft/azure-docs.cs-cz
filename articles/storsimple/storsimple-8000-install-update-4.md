@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60860378"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Instalace aktualizace 4 na zařízení StorSimple
@@ -45,7 +45,7 @@ Proveďte následující kroky a aktualizujete zařízení [s aktualizací Updat
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-Ověřte, že vaše zařízení běží **StorSimple 8000 Series Update 4 (6.3.9600.17820)**. **Datum poslední aktualizace** také by měl být upraven.
+Ověřte, že vaše zařízení běží **StorSimple 8000 Series Update 4 (6.3.9600.17820)** . **Datum poslední aktualizace** také by měl být upraven.
 
 * Nyní uvidíte, že jsou k dispozici aktualizace režimu údržby (Tato zpráva může i nadále bude zobrazovat u až 24 hodin, po instalaci aktualizací). Aktualizace režimu údržby se o narušující aktualizace způsobit výpadek zařízení, jež lze použít pouze prostřednictvím rozhraní Windows PowerShell vašeho zařízení.
 
@@ -76,10 +76,10 @@ Je nutné stáhnout a nainstalovat následující opravy hotfix předepsané po�
 
 | Objednání | kB | Popis | Typ aktualizace | Čas instalace |Instalovat do složky|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4011839 |Aktualizace softwaru |Normální <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
-| 2A. |KB4011841 <br> KB4011842 |Adaptér LSI ovladače a firmware aktualizace <br> Aktualizace firmwaru USM (verze 3.38) |Normální <br></br>Bez přerušení |~ 3 hodiny <br> (včetně 2A. + 2B. + 2C.)|SecondOrderUpdate|
-| 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Balíček aktualizace zabezpečení operačního systému <br> Stažení Windows serveru 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
-| 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stažení Windows serveru 2012 R2 |Normální <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 1. |KB4011839 |Aktualizace softwaru |Pravidelné <br></br>Bez přerušení |~ 25 minut |FirstOrderUpdate|
+| 2A. |KB4011841 <br> KB4011842 |Adaptér LSI ovladače a firmware aktualizace <br> Aktualizace firmwaru USM (verze 3.38) |Pravidelné <br></br>Bez přerušení |~ 3 hodiny <br> (včetně 2A. + 2B. + 2C.)|SecondOrderUpdate|
+| 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Balíček aktualizace zabezpečení operačního systému <br> Stažení Windows serveru 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
+| 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Balíček aktualizací operačního systému <br> Stažení Windows serveru 2012 R2 |Pravidelné <br></br>Bez přerušení |- |SecondOrderUpdate|
 
 Budete také muset nainstalovat aktualizace firmwaru disku nad všechny aktualizace uvedené v předchozích tabulkách. Můžete ověřit, jestli potřebujete aktualizace firmwaru disku spuštěním `Get-HcsFirmwareVersion` rutiny. Pokud používáte tyto verze firmwaru: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106`, potom není potřeba instalovat tyto aktualizace.
 

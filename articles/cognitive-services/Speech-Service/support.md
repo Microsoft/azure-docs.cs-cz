@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138158"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072378"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
@@ -64,7 +64,7 @@ Přetečení zásobníku je upřednostňovaný kanál pro dotazy související s
 
 Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledávání, odešlete nový dotaz na Stack Overflow. Když jste formulovali dotaz, použijte jednu z následujících značek:
 
-|Komponenta nebo oblast  |Značky  |
+|Komponenta nebo oblast  |Tags  |
 |---------|---------|
 |Rozpoznávání řeči |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Syntézu řeči |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
@@ -83,9 +83,9 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 Ukázky jsou často odeslány jako open source. Pro dotazy a problémy, vytvořte *problém* v příslušné úložiště GitHub. Příliš můžete odeslat žádost o přijetí změn. Následující seznam obsahuje odkazy na ukázkové úložiště:
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Sada SDK zařízení](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Rozpoznávání řeči zařízení SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-Můžete vytvořit hlášení o chybě, žádost o funkci, nebo požádejte obecný dotaz a osvědčenými postupy. Sestavy chyb postupujte prosím podle poskytnuté šabloně:
+Můžete vytvořit hlášení o chybě, žádost o funkci nebo položit otázku obecné a osvědčenými postupy. Sestavy chyb postupujte prosím podle poskytnuté šabloně:
 
 **Popis chyby**
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a11602919a8b68a078b0b2690411358b4b5f814
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65913855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063491"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Spravovat skripty před a po
 
@@ -42,7 +42,7 @@ Dokončení konfigurace nasazení aktualizace.
 
 Po dokončení aktualizace nasazení můžete přejít na **nasazení aktualizací** zobrazíte výsledky. Jak vidíte, jsou k dispozici stav předsnímkových a posnímkových skriptů.
 
-![Aktualizovat výsledky](./media/pre-post-scripts/update-results.png)
+![Aktualizace výsledků](./media/pre-post-scripts/update-results.png)
 
 Kliknutím na spustit nasazení aktualizací, zadáte do skriptů před a po další podrobnosti. Odkaz na zdroj skriptu v době běhu je k dispozici.
 
@@ -68,7 +68,7 @@ Kromě standardní sada runbook parametry je k dispozici další parametr. Tento
 
 ## <a name="stopping-a-deployment"></a>Zastavuje se nasazení
 
-Pokud chcete zastavit nasazení založené na skriptu Pre musíte [throw](automation-runbook-execution.md#throw) výjimku. Pokud není vyvolat výjimku, nasazení a Pozálohovacího skriptu bude stále spuštěn. [Ukázkového runbooku](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) ve galerii ukazuje, jak to udělat. Tady je fragment kódu z dané sady runbook.
+Pokud chcete zastavit nasazení založené na skriptu předem, je nutné [throw](automation-runbook-execution.md#throw) výjimku. Pokud není vyvolat výjimku, nasazení a Pozálohovacího skriptu bude stále spuštěn. [Ukázkového runbooku](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) ve galerii ukazuje, jak to udělat. Tady je fragment kódu z dané sady runbook.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -206,11 +206,11 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-machines"></a>Interakce s počítače
 
-Úlohy před a po spuštění jako sady runbook ve vašem účtu Automation a ne přímo na počítačích ve vašem nasazení. Úlohy před a po také spustit v rámci Azure a nebudete mít přístup pro počítače mimo Azure. Následující části vysvětlují, jak můžete pracovat s počítače přímo, jestli se virtuální počítač Azure nebo počítač mimo Azure:
+Úlohy před a po spuštění jako sady runbook ve vašem účtu Automation a ne přímo na počítačích ve vašem nasazení. Úlohy před a po také spustit v rámci Azure a nebudete mít přístup pro počítače mimo Azure. Následující části vysvětlují, jak můžete pracovat s počítače přímo, ať už jsou to virtuální počítač Azure nebo počítač mimo Azure:
 
 ### <a name="interacting-with-azure-machines"></a>Interakce s počítači Azure
 
-Před a po úkoly jsou spuštěny pod sady runbook a nativně nespouštějte na virtuální počítače Azure ve vašem nasazení. K interakci s virtuální počítače Azure, musíte mít následující položky:
+Před a po úkoly jsou spouštěny jako sady runbook a nespouštět nativně na virtuální počítače Azure ve vašem nasazení. K interakci s virtuální počítače Azure, musíte mít následující položky:
 
 * Účet Spustit jako
 * Sady runbook, který chcete spustit
@@ -239,9 +239,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>Známé problémy
 
-* Pro parametry nelze předat objekty nebo pole, při použití skriptů před a po. Runbook se nezdaří.
+* Logická hodnota, objekty nebo pole nelze předat parametry při použití skriptů před a po. Runbook se nezdaří. Úplný seznam podporovaných typů najdete v tématu [parametry](#passing-parameters).
 
 ## <a name="next-steps"></a>Další postup
 

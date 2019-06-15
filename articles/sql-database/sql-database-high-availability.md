@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066918"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -62,7 +62,7 @@ Ve výchozím nastavení vytvoření clusteru uzlů pro model dostupnost premium
 Vzhledem k tomu zónu databáze redundantní repliky v různých datových centrech některé vzdálenost mezi nimi, latence sítě může prodloužit dobu potvrzení a tedy mít vliv na výkon některé úlohy OLTP. Můžete se kdykoli vrátit v konfiguraci s jednou zónou zakázáním nastavení redundance zóny. Tento proces je podobný upgrade úroveň regulární služby online operace. Na konci procesu databáze nebo fondu migrován z kanál redundantní zóny v jedné zóně kanál nebo naopak.
 
 > [!IMPORTANT]
-> Zóna redundantní databáze a elastické fondy jsou aktuálně podporuje jenom na úrovních služby úrovně Premium a pro důležité obchodní informace. Ve výchozím nastavení, zálohování a auditu záznamy se ukládají v úložišti RA-GRS a proto nemusí být automaticky dostupná i v případě výpadku celé zóny. 
+> Zóna redundantní databáze a elastické fondy jsou aktuálně podporuje jenom v úrovních služby úrovně Premium a pro důležité obchodní informace ve vybraných oblastech. Pokud používáte úroveň pro důležité obchodní informace, redundantní konfigurace je k dispozici pouze pokud je vybrána hardwaru compute Gen5. Aktuální informace o oblastech, které podporují zónu databáze redundantní najdete v tématu [služeb podpory podle oblasti](../availability-zones/az-overview.md#services-support-by-region).  
 
 Zóna redundantní verzi architektury vysoké dostupnosti je znázorněn v následujícím diagramu:
 

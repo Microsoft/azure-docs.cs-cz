@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 120be3ef7299391e611dc393e70af697c1daf2ba
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a5ec603b65161f3b0b2d9c88224aef0004cc686a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896846"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>Kurz: Integrace Azure Active Directory s MobiControl
 
@@ -53,7 +53,7 @@ Konfigurace integrace MobiControl do služby Azure AD, budete muset přidat Mobi
 
 **Chcete-li přidat MobiControl z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -174,7 +174,7 @@ V této části je povolit Britta Simon k udělení přístupu k MobiControl pou
 
 V této části vytvoříte uživatele v MobiControl jako Britta Simon. Práce s [tým podpory MobiControl](https://www.soti.net/about/contact-us/) přidat uživatele na platformě MobiControl. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

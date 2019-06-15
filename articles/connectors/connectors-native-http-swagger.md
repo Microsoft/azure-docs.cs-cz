@@ -12,10 +12,10 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60448618"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Koncové body REST s HTTP + Swagger pro volání konektoru v Azure Logic Apps
@@ -85,26 +85,26 @@ Akce je operace, která provádí pracovní postup, který je definován v aplik
 | --- | --- |
 | HTTP + Swagger |Volání HTTP a vrátí obsah odpovědi |
 
-### <a name="action-details"></a>Detaily akce
+### <a name="action-details"></a>Podrobnosti akce
 HTTP + Swagger konektoru obsahuje jednu akci je to možné. Toto je informace o jednotlivých akcí, jejich požadované a volitelné vstupní pole a odpovídající podrobnosti výstupu, které jsou spojeny s jejich využití.
 
 #### <a name="http--swagger"></a>HTTP + Swagger
 Ujistěte se, odchozí požadavek HTTP, podporu metadat Swagger.
 Hvězdička (*) znamená, že požadované pole.
 
-| Zobrazované jméno | Název vlastnosti | Popis |
+| Display name | Název vlastnosti | Popis |
 | --- | --- | --- |
 | Metoda * |method |Příkaz HTTP použít. |
-| URI* |identifikátor uri |Identifikátor URI pro požadavek HTTP. |
+| URI* |uri |Identifikátor URI pro požadavek HTTP. |
 | Hlavičky |Záhlaví |Objekt JSON záhlaví HTTP, které chcete zahrnout. |
-| Tělo |hlavní část |Požadavku HTTP. |
-| Authentication |Ověřování |Ověřování pro žádosti. Další informace najdete v tématu [konektor HTTP](connectors-native-http.md#authentication). |
+| Tělo |Text |Požadavku HTTP. |
+| Authentication |ověřování |Ověřování pro žádosti. Další informace najdete v tématu [konektor HTTP](connectors-native-http.md#authentication). |
 
 **Podrobnosti výstupu**
 
-Odpověď protokolu HTTP
+Odpověď HTTP
 
-| Property Name | Typ dat | Popis |
+| Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
 | Hlavičky |objekt |Hlavičky odpovědi |
 | Tělo |objekt |Objekt odpovědi |
@@ -113,15 +113,15 @@ Odpověď protokolu HTTP
 ### <a name="http-responses"></a>Odpovědi protokolu HTTP
 Při volání různé akce, může se zobrazit některé odpovědi. Následuje tabulka, která bude uvádět odpovídající odpovědí a popisy.
 
-| Name | Popis |
+| Název | Popis |
 | --- | --- |
 | 200 |OK |
 | 202 |Přijato |
 | 400 |Nesprávná žádost |
 | 401 |Neautorizováno |
 | 403 |Zakázáno |
-| 404 |Nenalezené |
-| 500 |Vnitřní chyba serveru Došlo k neznámé chybě. |
+| 404 |Nebyl nalezen |
+| 500 |Vnitřní chyba serveru. Došlo k neznámé chybě. |
 
 ## <a name="next-steps"></a>Další postup
 

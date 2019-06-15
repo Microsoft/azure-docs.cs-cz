@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
-ms.translationtype: MT
+ms.openlocfilehash: 25bf4653db2008559c1fe3f13b30c5c82a202ffd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988583"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052455"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace ověřování relace správy s podmíněným přístupem
 
@@ -53,11 +53,11 @@ Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživ
 Podmíněný přístup je schopnost Azure AD Premium a vyžaduje licenci premium. Pokud chcete další informace o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Pokud používáte [konfigurovatelné životnost tokenu](../develop/active-directory-configurable-token-lifetimes.md) funkce aktuálně ve verzi public preview, mějte prosím na paměti, že nepodporujeme vytvoříte dva různé zásady pro stejného uživatele nebo aplikaci kombinaci: jednu s tuto funkci a jinou s Funkce konfigurovat doba platnosti tokenu. Společnost Microsoft plánuje vyřadit z provozu funkci konfigurovatelné doby života tokenů na 15. října a nahraďte ji metodou funkce podmíněného přístupu ověřování relace správy.  
+> Pokud používáte [konfigurovatelné životnost tokenu](../develop/active-directory-configurable-token-lifetimes.md) funkce aktuálně ve verzi public preview, mějte prosím na paměti, že nepodporujeme vytvoříte dva různé zásady pro stejného uživatele nebo aplikaci kombinaci: jednu s tuto funkci a jinou s Funkce konfigurovat doba platnosti tokenu. Společnost Microsoft plánuje vyřadit z provozu funkci konfigurovatelné doby života tokenů na 1. listopadu a nahraďte ji metodou funkce podmíněného přístupu ověřování relace správy.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: Řízení přihlašování frekvence
 
-1. Vytvořit novou zásadu
+1. Vytvořit nové zásady
 1. Vyberte všechny požadované podmínky pro prostředí zákazníků, včetně cílové cloudové aplikace.
 
    > [!NOTE]
@@ -74,9 +74,9 @@ V Azure AD registrované Windows zařízení přihlašovat do zařízení se pov
 
 Pokud jste nakonfigurovali jinou frekvencí přihlášení pro jiné webové aplikace, které jsou spuštěny ve stejné relaci prohlížeče, nejpřísnější zásady použijí pro obě aplikace sdílejí všechny aplikace spuštěné ve stejné relaci prohlížeče token jedné relace.
 
-### <a name="policy-2-persistent-browser-session"></a>Zásady 2: Trvalá relace prohlížeče
+### <a name="policy-2-persistent-browser-session"></a>Zásady 2: Trvalé prohlížeče relace
 
-1. Vytvořit novou zásadu
+1. Vytvořit nové zásady
 1. Vyberte všechny požadované podmínky.
 
    > [!NOTE]
@@ -91,7 +91,7 @@ Pokud jste nakonfigurovali jinou frekvencí přihlášení pro jiné webové apl
 > [!NOTE]
 > Trvalé konfigurace relace prohlížeče v podmíněného přístupu Azure AD se přepíšou "zůstat přihlášení?" nastavení firemního brandingu podokně webu Azure Portal pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
 
-## <a name="validation"></a>Ověřování
+## <a name="validation"></a>Ověření
 
 Použijte nástroj What If pro simulaci přihlášení od uživatele pro cílovou aplikaci a jiných podmínek založených na tom, jak jste nakonfigurovali zásady. Ovládací prvky ověřování relací správu se zobrazí ve výsledku tohoto nástroje.
 

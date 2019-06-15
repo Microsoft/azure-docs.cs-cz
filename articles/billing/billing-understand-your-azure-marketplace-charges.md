@@ -17,10 +17,10 @@ ms.date: 06/15/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae9c2c975bf49725be1858ad02a1c4b90ef58a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60370496"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Porozumět fakturaci Azure pro poplatků za externí služby
@@ -76,7 +76,7 @@ Aktualizovat způsobů platby za objednávky externí služby z [centra pro úč
     ![Vyberte externí službu, kterou chcete spravovat](./media/billing-understand-your-azure-marketplace-charges/select-ext-service.png)
 3. Klikněte na tlačítko **změnit způsob platby** na pravé straně stránky. Tento odkaz vám přináší pro jiný portál pro správu vaším způsobem platby.
    
-    ![Shrnutí objednávky](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
+    ![Přehled objednávek](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
 4. Klikněte na tlačítko **upravit informace o** a postupujte podle pokynů a aktualizovat platební údaje.
    
     ![Informace o vybrání možnosti Upravit](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)

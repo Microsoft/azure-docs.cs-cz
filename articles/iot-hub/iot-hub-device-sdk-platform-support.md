@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
 ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60398701"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Podpora platformy sady SDK Azure IoT

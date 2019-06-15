@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
 ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64691526"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do HDInsight Azure - storage osvědčené postupy
@@ -73,7 +73,7 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 
 Další informace najdete v následujících článcích:
 
-- [Použití služby Azure storage s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
+- [Použití úložiště Azure s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Škálovatelnost a výkonnostní cíle Azure Storage](../../storage/common/storage-scalability-targets.md)
 - [Kontrolní seznam pro výkon a škálovatelnost služby Microsoft Azure Storage](../../storage/common/storage-performance-checklist.md)
 - [Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
@@ -92,7 +92,7 @@ Další informace najdete v následujících článcích:
 
 Azure Data Lake Storage Gen2 je nejnovější úložiště nabízí. Základní funkce z první generace služby Azure Data Lake Storage sjednocuje s koncovým bodem systém Hadoop kompatibilní soubor přímo integrované do Azure Blob Storage. Toto vylepšení kombinuje výhody škálování a náklady na úložiště objektů s spolehlivost a výkon, obvykle související jenom s místní systémy souborů.
 
-2. generace ADLS je postavený na [úložiště objektů Blob v Azure](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí obou paradigmat souboru systému a objektu úložiště. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), například sémantiku systému souborů, souboru úroveň zabezpečení a škálování se sloučí s vrstveného úložiště s nízkými náklady, funkcím pro obnovení vysoká dostupnost/zotavení po havárii a velké sady SDK a nástroje ekosystém z [úložiště objektů Blob v Azure](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 zůstanou všechny vlastnosti objektu úložiště při přidávání výhody rozhraní systému souborů optimalizované pro analýzy úloh.
+2\. generace ADLS je postavený na [úložiště objektů Blob v Azure](../../storage/blobs/storage-blobs-introduction.md) a umožňuje rozhraní s daty pomocí obou paradigmat souboru systému a objektu úložiště. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), například sémantiku systému souborů, souboru úroveň zabezpečení a škálování se sloučí s vrstveného úložiště s nízkými náklady, funkcím pro obnovení vysoká dostupnost/zotavení po havárii a velké sady SDK a nástroje ekosystém z [úložiště objektů Blob v Azure](../../storage/blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 zůstanou všechny vlastnosti objektu úložiště při přidávání výhody rozhraní systému souborů optimalizované pro analýzy úloh.
 
 Základní funkcí služby Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](../../storage/data-lake-storage/namespace.md) do služby Blob storage, který slouží k uspořádání objektů nebo souborů do hierarchie adresářů pro přístup k datům výkonné. Hierarchické struktuře umožňuje operace, jako je přejmenování nebo odstranění adresáře, které mají být metadat jednotného atomické operace na adresář místo vytváření výčtů a zpracování všech objektů, které sdílejí předpona názvu adresáře.
 

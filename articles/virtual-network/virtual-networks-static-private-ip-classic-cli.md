@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62107972"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Konfigurace privátních IP adres pro virtuální počítač (Classic) pomocí Azure classic CLI
@@ -64,10 +64,10 @@ Chcete-li vytvořit nový virtuální počítač s názvem *DNS01* v novou cloud
         info:    OK
         info:    vm create command OK
    
-   * **-l (nebo --location)**. Oblasti Azure, ve kterém se vytvoří virtuální počítač. V našem scénáři je to *centralus*.
-   * **-n (nebo--vm-name)**. Název virtuálního počítače, který se má vytvořit.
-   * **-w (nebo--virtuální síťový název)**. Název sítě VNet, ve kterém se vytvoří virtuální počítač. 
-   * **-S (nebo--statické ip)**. Statické privátní IP adresu pro virtuální počítač.
+   * **-l (nebo --location)** . Oblasti Azure, ve kterém se vytvoří virtuální počítač. V našem scénáři je to *centralus*.
+   * **-n (nebo--vm-name)** . Název virtuálního počítače, který se má vytvořit.
+   * **-w (nebo--virtuální síťový název)** . Název sítě VNet, ve kterém se vytvoří virtuální počítač. 
+   * **-S (nebo--statické ip)** . Statické privátní IP adresu pro virtuální počítač.
    * **TestService**. Název cloudové služby, kde se vytvoří virtuální počítač.
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012 R2-x64-v14.2**. Bitová kopie používaná k vytvoření virtuálního počítače.
    * **AdminUser**. Místní správce pro virtuální počítač Windows.

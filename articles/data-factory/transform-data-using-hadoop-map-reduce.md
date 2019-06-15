@@ -12,14 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60611504"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop MapReduce ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-map-reduce.md)
 > * [Aktuální verze](transform-data-using-hadoop-map-reduce.md)
 
@@ -62,7 +62,7 @@ Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using
 
 | Vlastnost          | Popis                              | Požaduje se |
 | ----------------- | ---------------------------------------- | -------- |
-| jméno              | Název aktivity                     | Ano      |
+| name              | Název aktivity                     | Ano      |
 | description       | Text popisující, k čemu aktivita slouží | Ne       |
 | type              | Pro činnost MapReduce typ aktivity je HDinsightMapReduce | Ano      |
 | linkedServiceName | Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |
@@ -70,9 +70,9 @@ Zobrazit [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-using
 | jarLinkedService  | Odkaz na propojená služba Azure Storage pro ukládání souborů Jar. Pokud nezadáte tuto propojenou službu, použije se propojená služba Azure Storage, definované v propojené službě HDInsight. | Ne       |
 | jarFilePath       | Zadejte cestu pro soubory Jar uložené ve službě Azure Storage, která odkazují jarLinkedService. Název souboru je velká a malá písmena. | Ano      |
 | jarlibs           | Pole cesty k souborům knihovny soubor Jar odkazovat úlohy ve službě Azure Storage definované v jarLinkedService řetězce. Název souboru je velká a malá písmena. | Ne       |
-| getDebugInfo      | Určuje, kdy se zkopírují soubory protokolů do služby Azure Storage používaný v clusteru HDInsight (a) určená jarLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne       |
+| getDebugInfo      | Určuje, kdy se zkopírují soubory protokolů do služby Azure Storage používaný v clusteru HDInsight (a) určená jarLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné | Ne       |
 | argumenty         | Určuje pole argumentů pro úlohy Hadoopu. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
-| definuje           | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
+| defines           | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
 
 
 

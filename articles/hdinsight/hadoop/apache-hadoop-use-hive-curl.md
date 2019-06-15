@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: e020cbc9c18db2142ee7f52cdac22a3518683fce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 82e08a8eeeb86d407be61c299656abe79a6f90f4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695811"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078329"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spustit dotazy Apache Hive s Apache Hadoop v HDInsight pomocí rozhraní REST
 
@@ -24,9 +24,6 @@ Zjistěte, jak spustit dotazy Apache Hive v clusteru Azure HDInsight s Apache Ha
 ## <a name="prerequisites"></a>Požadavky
 
 * Hadoop založených na Linuxu v clusteru HDInsight verze 3.4 nebo vyšší.
-
-  > [!IMPORTANT]  
-  > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Klient REST. Tento dokument používá prostředí Windows PowerShell a [Curl](https://curl.haxx.se/) příklady.
 
@@ -141,7 +138,7 @@ Tento dokument taky využívá prostředí Windows PowerShell a [Jq](https://ste
 
    * `ROW FORMAT` -Způsob formátování data. Pole v každém protokolu jsou oddělené mezerou.
    * `STORED AS TEXTFILE LOCATION` -Data se mají ukládat (do adresáře příkladu/dat) a, která je uložená jako text.
-   * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
+   * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
 
      > [!NOTE]  
      > Všimněte si, že jsou nahrazené mezery mezi příkazy HiveQL `+` znaků při použití s Curl. Hodnoty v uvozovkách, které obsahují mezeru, jako jsou oddělovač, by neměly být nahrazen `+`.

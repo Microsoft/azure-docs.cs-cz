@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712390"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
@@ -46,7 +46,7 @@ Společně s výběrem nejlepší těsně algoritmy, je potřeba zvážit, jestl
 | Algoritmus kategorie| Použití | Typ studijního | Algoritmy |
 | --- | --- | --- | -- |
 | Klasifikace | Klasifikace lidé, případně věci do skupin | Pod dohledem | Rozhodovací stromy, logistické regrese, neuronových sítí |
-| Clustering | Rozdělení sadu příklady do homogenní skupin | Nastavenou možnost bez dohledu | K-means clustering |
+| Vytváření clusterů | Rozdělení sadu příklady do homogenní skupin | Nastavenou možnost bez dohledu | K-means clustering |
 | Vzor detekce | Určení častým přidružení v datech | Nastavenou možnost bez dohledu | Asociačních pravidel |
 | Regrese | Předpověď číselných výsledků | Pod dohledem | Lineární regrese, neuronových sítí |
 | Posílení | Určit optimální chování pro roboty | Posílení | Simulace typu Monte Carlo, DeepMind |
@@ -98,7 +98,7 @@ V tomto scénáři pokročilých analýz existují tři klíčové úkoly:
 
 Tento příklad používá sada kompilované a distribuované Alex Krizhevsky, Vinod Nair a Geoffrey Hinton CIFAR 10 obrázků. Datová sada CIFAR 10 obsahuje 60 000 32 × 32 bitové kopie, které patří k 10 vzájemně se vylučuje třídám barev:
 
-![Image](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![Obrázky](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
 
 Podrobné informace o datové sady, naleznete v tématu Alex Krizhevsky [Learning funkce více vrstev z velmi malé obrázky](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 

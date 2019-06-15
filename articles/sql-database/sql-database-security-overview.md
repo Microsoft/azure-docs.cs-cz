@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6b9a5ca350377777beebda24e52bc678c976ad19
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258632"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070205"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database
 
@@ -100,7 +100,7 @@ SQL Database chrání vaše zákaznická data tím, že šifruje data přenáše
 
 SQL Server vynutí šifrování (SSL/TLS) na všechny časy pro všechna připojení. To zajistí, že všechna data jsou zašifrovaná "při přenosu" mezi klientem a serverem bez ohledu na nastavení **šifrovat** nebo **TrustServerCertificate** v připojovacím řetězci.
 
-Jako osvědčený postup, doporučit, připojení aplikace řetězec můžete zadat šifrované připojení a _**není**_ důvěřovat certifikátu serveru. To přinutí vaše aplikace se ověřit certifikát serveru a znemožňuje, aby vaše aplikace nebudou ohrožena dál pohání muže v prostředním typů útoků.
+Jako osvědčený postup, doporučit, připojení aplikace řetězec můžete zadat šifrované připojení a _**není**_ důvěřovat certifikátu serveru. To přinutí aplikaci ověřit certifikát serveru a znemožňuje, aby vaše aplikace nebudou ohrožena dál pohání muže v prostředním typů útoků.
 
 Například při použití ovladače ADO.NET to lze provést prostřednictvím **Encrypt = True** a **TrustServerCertificate = False**. Připojovací řetězec můžete získat z webu Azure portal, bude mít správné nastavení.
 

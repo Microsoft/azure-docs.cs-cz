@@ -13,10 +13,10 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: 19a8400a076825f17501fabdb3f38ea05915822e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65138717"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurace deklarace skupiny pro aplikace pomocí Azure Active Directory (Public Preview)
@@ -97,7 +97,7 @@ Vygenerovat skupiny pomocí atributů služby Active Directory synchronizované 
 
 ![deklarace identity uživatelského rozhraní](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
-### <a name="advanced-options"></a>Pokročilá nastavení
+### <a name="advanced-options"></a>Rozšířené možnosti
 
 Způsob, jakým jsou emitovány deklarace skupiny lze upravit pomocí nastavení v části Upřesnit možnosti
 

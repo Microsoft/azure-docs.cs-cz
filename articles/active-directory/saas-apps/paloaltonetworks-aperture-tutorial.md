@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 375b58f47454a7f5904bcdbd132b8318091e9ebd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd498dc1c37ed6e9518fcefbdb237153504b5e98
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870022"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67095062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Kurz: Integrace Azure Active Directory s Palo Alto Networks - clona
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace Palo Alto Networks - clona do služby Azure AD, budete 
 
 **Chcete-li přidat Palo Alto Networks - clona z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -215,7 +215,7 @@ V této části je povolit Britta Simon k udělení přístupu k Palo Alto Netwo
 
 V této části vytvoříte uživatele v Palo Alto Networks - clona jako Britta Simon. Práce s [Palo Alto Networks - tým podpory clona klienta](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) k přidání uživatelů do Palo Alto Networks - clona platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

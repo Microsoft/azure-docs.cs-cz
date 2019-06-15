@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: 05befc72f512f502456f798f25b6c72571451363
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82045ddcc204fe369b7330fe9b3c2a8cadd56d88
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450905"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067930"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Použití funkcí na řídicím panelu akcelerátor řešení připojená továrna
 
@@ -42,7 +42,7 @@ Můžete filtrovat informace zobrazené na řídicím panelu buď v **umístěn�
 
 ## <a name="browse-an-opc-ua-server"></a>Procházení serveru OPC UA
 
-Při nasazení akcelerátoru řešení automaticky zřídíte sadu simulované servery OPC UA, které můžete přejít z řídicího panelu. Simulované servery umožňují snadno experimentovat s akcelerátor řešení, aniž by bylo nutné nasazovat skutečná servery. Pokud chcete k řešení připojit skutečný server OPC UA, přečtěte si článek [připojení zařízení OPC UA na akcelerátor řešení připojená továrna](iot-accelerators-connected-factory-gateway-deployment.md) kurzu.
+Při nasazení akcelerátoru řešení automaticky zřídíte sadu simulované servery OPC UA, které můžete přejít z řídicího panelu. Simulované servery umožňují snadno experimentovat s akcelerátor řešení, aniž by bylo nutné nasazovat skutečná servery.
 
 1. Klikněte na tlačítko **ikonu prohlížeče** na navigačním panelu řídicího panelu:
 
@@ -111,6 +111,5 @@ Jakmile budete hotovi, můžete odstranit akcelerátor řešení z vašeho před
 
 Když jste teď nasadili fungující akcelerátor řešení, můžete pokračovat v seznamování se s akcelerátory řešení IoT přečtením následujících článků:
 
-* [Propojené továrny seznámení s akcelerátory řešení](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Připojení zařízení k akcelerátoru řešení připojená továrna](iot-accelerators-connected-factory-gateway-deployment.md)
+* [Konfigurace akcelerátor řešení připojená továrna](iot-accelerators-connected-factory-configure.md)
 * [Oprávnění na webu azureiotsolutions.com](iot-accelerators-permissions.md)

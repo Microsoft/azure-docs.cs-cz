@@ -3,7 +3,7 @@ title: Hierarchie zemí/oblastí, které používají Azure Traffic Manageru geo
 description: Tento článek uvádí používá Azure Traffic Manageru geografické směrování typu hierarchie zemí/oblastí
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e3ea1d2a0c3e8501222d57a92fad917d465022e
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: allensu
+ms.openlocfilehash: d16529e966fb2e16d1012f4aa0aafcff204a3093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866991"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071165"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie zemí/oblastí používaná pro geografickou metodu směrování provozu Azure Traffic Managerem
 

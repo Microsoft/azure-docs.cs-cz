@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
 ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60591519"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
@@ -74,7 +74,7 @@ Měli byste provozní znalost následujících technologií:
 - [Technologie clusteru Windows](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
 - [Instance clusteru převzetí služeb při selhání SQL serveru](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Jeden důležitý rozdíl je, že v clusteru převzetí služeb při selhání hosta virtuálního počítače Azure IaaS, doporučujeme jednu síťovou kartu na serveru (uzlu clusteru) a jednu podsíť. Sítě Azure má fyzický redundanci díky další síťové adaptéry a podsítě zbytečné v clusteru hostů virtuálních počítačů Azure IaaS. I když sestavu ověření clusteru, vydá upozornění, že uzly jsou pouze v jedné síti dostupný, toto upozornění můžete ignorovat v clusterech převzetí služeb při selhání hosta virtuálního počítače Azure IaaS. 
+Jeden důležitý rozdíl je, že v clusteru převzetí služeb při selhání hosta virtuálního počítače Azure IaaS, doporučujeme jednu síťovou kartu na serveru (uzlu clusteru) a jednu podsíť. Sítě Azure má fyzickou redundanci, díky níž je zbytečné používat další síťové adaptéry a podsítě na hostovaném clusteru ve virtuálním počítači Azure IaaS. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 
 Kromě toho byste měli mít obecné principy systému následující technologie:
 
@@ -175,7 +175,7 @@ Tyto požadavky můžete pokračovat s vytvářením clusteru převzetí služeb
 
    Na každý virtuální počítač otevřete následující porty v bráně Windows Firewall.
 
-   | Účel | TCP Port | Poznámky
+   | Účel | Port TCP | Poznámky
    | ------ | ------ | ------
    | SQL Server | 1433 | Normální port pro výchozí instance systému SQL Server. Pokud jste použili image z galerie, se automaticky otevře tento port.
    | Sonda stavu | 59999 | Některé otevřete TCP port. V pozdějším kroku, nakonfigurujte nástroj pro vyrovnávání zatížení [sondu stavu](#probe) a cluster používat tento port.  
@@ -416,12 +416,12 @@ Pokud chcete vytvořit nástroj pro vyrovnávání zatížení:
    - **Název**: Název pravidla Vyrovnávání zatížení.
    - **Front-endovou IP adresu**: Použijte IP adresu pro síťový prostředek clusteru SQL serveru FCI.
    - **Port**: Nastavte pro port TCP systému SQL Server FCI. Výchozí instanci port je 1433.
-   - **Back-endový port**: Tato hodnota používá stejný port jako **Port** hodnotu, pokud povolíte **plovoucí IP (přímá odpověď ze serveru vrácené)**.
+   - **Back-endový port**: Tato hodnota používá stejný port jako **Port** hodnotu, pokud povolíte **plovoucí IP (přímá odpověď ze serveru vrácené)** .
    - **Back-endový fond**: Použijte název fondu back-end, který jste nakonfigurovali v předchozích krocích.
    - **Sonda stavu**: Použijte sondu stavu, který jste nakonfigurovali v předchozích krocích.
-   - **Trvalost relace**: Žádné.
+   - **Trvalost relace**: Žádné
    - **Časový limit (minuty) nečinnosti**: 4.
-   - **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)**: Enabled
+   - **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** : Enabled
 
 1. Klikněte na **OK**.
 

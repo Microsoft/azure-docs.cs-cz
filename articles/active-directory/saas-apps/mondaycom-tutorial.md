@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc142bf02a44ea85861f4cc648fd7ee8602c7520
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 08108a1718ee917a317b4864de81959ae139eaa5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65896877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mondaycom"></a>Kurz: Integrace Azure Active Directory s monday.com
 
@@ -154,7 +154,7 @@ V této části můžete nakonfigurovat služby Azure AD jednotného přihlašov
 
        ![Deklarace identity uživatelů spravovat](common/new-attribute-details.png)
 
-1. V **nastavte si jednotné přihlašování pomocí SAML** podokně v části **podpisový certifikát SAML**vyberte **Stáhnout** vedle **certifikát (Base64)**. Možnost stažení na základě vašich požadavků. Uložte si certifikát ve vašem počítači.
+1. V **nastavte si jednotné přihlašování pomocí SAML** podokně v části **podpisový certifikát SAML**vyberte **Stáhnout** vedle **certifikát (Base64)** . Možnost stažení na základě vašich požadavků. Uložte si certifikát ve vašem počítači.
 
     ![Možnost stažení certifikát (Base64)](common/certificatebase64.png)
 
@@ -186,7 +186,7 @@ V této části vytvoříte testovacího uživatele s názvem Britta Simon na we
 
     1. V **název** zadejte **BrittaSimon**.
   
-    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >**. Například **brittasimon\@contoso.com**.
+    1. V **uživatelské jméno** zadejte **brittasimon\@\<your domény společnosti >.\< Rozšíření >** . Například **brittasimon\@contoso.com**.
 
     1. Vyberte **zobrazit heslo** zaškrtávací políčko. Zapište hodnotu, která se zobrazí **heslo** pole.
 
@@ -224,7 +224,7 @@ V této části udělíte přístup Britta Simon k monday.com, které můžete p
 
 V této části se vytvoří uživatele s názvem Britta Simon monday.com aplikace. Monday.com podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi monday.com, vytvoří se nový po ověření.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace s použitím portálu Moje aplikace.
 

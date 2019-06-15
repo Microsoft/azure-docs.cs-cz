@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea17794a5ca57ae0d38d9a90857706cf380cab36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aeabb1881eb76df5f482f8c4f883357f12b9f56b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65862211"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104505"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deskradar"></a>Kurz: Integrace Azure Active Directory s Deskradar
 
@@ -53,7 +53,7 @@ Konfigurace integrace Deskradar do služby Azure AD, budete muset přidat Deskra
 
 **Chcete-li přidat Deskradar z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -124,11 +124,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s [název aplikace], proveďt
 
 7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail | user.userprincipalname |
+    | Email | user.userprincipalname |
     | | |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
@@ -240,7 +240,7 @@ V této části je povolit Britta Simon k udělení přístupu k Deskradar použ
 
 V této části vytvoříte uživatele v Deskradar jako Britta Simon. Práce s [tým podpory Deskradar klienta](mailto:support@deskradar.com) přidat uživatele na platformě Deskradar. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063636"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: Odesílání nabízených oznámení do zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (zastaralé)
 
@@ -110,7 +110,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>Aktualizace souboru AndroidManifest.xml v projektu
 
-1. Aby bylo možné podporovat GCM, implementujte do kódu, který se používá k [získání registračních tokenů](https://developers.google.com/cloud-messaging/android/client#sample-register) službu naslouchání ID instance. Použijte k tomu [rozhraní API ID instance od Googlu](https://developers.google.com/instance-id/). V tomto kurzu je název třídy `MyInstanceIDService`.
+1. Aby bylo možné podporovat GCM, implementujte do kódu, který se používá k [získání registračních tokenů](https://developers.google.com/cloud-messaging/) službu naslouchání ID instance. Použijte k tomu [rozhraní API ID instance od Googlu](https://developers.google.com/instance-id/). V tomto kurzu je název třídy `MyInstanceIDService`.
 
     Přidejte následující definice služby do souboru AndroidManifest.xml uvnitř značky `<application>`. Nahraďte zástupný symbol `<your package>` skutečným názvem vašeho balíčku zobrazeného v horní části souboru `AndroidManifest.xml`.
   
@@ -144,7 +144,7 @@ Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Z
     ```
 4. Pod značku `</application>` přidejte následující oprávnění potřebné pro GCM. Nahraďte `<your package>` názvem balíčku, který je zobrazený nahoře v souboru `AndroidManifest.xml`.
 
-    Další informace o těchto oprávnění naleznete v tématu [Nastavení klientské aplikace GCM pro Android](https://developers.google.com/cloud-messaging/android/client#manifest).
+    Další informace o těchto oprávnění naleznete v tématu [Nastavení klientské aplikace GCM pro Android](https://developers.google.com/cloud-messaging/).
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>

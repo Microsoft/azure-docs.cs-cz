@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60952355"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Monitorování výkonu pomocí protokolů Azure Monitor
@@ -76,7 +76,7 @@ Můžete stáhnout a upravit této šablony můžete nasadit do clusteru, který
 
 Teď, když jste přidali agenta Log Analytics, přejděte na přes portál Log Analytics k výběru, které čítače výkonu je chcete shromáždit.
 
-1. Na webu Azure Portal přejděte do skupiny prostředků, ve které jste vytvořili řešení analýza služby Service Fabric. Vyberte **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. Na webu Azure Portal přejděte do skupiny prostředků, ve které jste vytvořili řešení analýza služby Service Fabric. Vyberte **ServiceFabric\<nameOfLog AnalyticsWorkspace\>** .
 
 2. Klikněte na **Log Analytics**.
 

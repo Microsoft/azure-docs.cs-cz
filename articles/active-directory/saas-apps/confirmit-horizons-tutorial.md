@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fce2451c915eb4480f6068667350da80e5cf7c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6127f149141db275c4b13c25fd6fbd0241b3e404
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280826"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Kurz: Integrace Azure Active Directory s možností Confirmit
 
@@ -55,7 +55,7 @@ Konfigurace integrace možností Confirmit do služby Azure AD, budete muset př
 
 **Přidání možností Confirmit z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 

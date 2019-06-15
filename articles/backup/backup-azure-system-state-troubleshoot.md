@@ -9,16 +9,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 53b9f8fb58a6e70a4bd2cd02adb9ce824466d7de
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8a94994d697784fb9dab8027e5a43f24c135b32c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059733"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží s zálohování stavu systému
 
 Tento článek popisuje řešení problémů, které se můžete setkat při používání zálohování stavu systému.
+
+## <a name="basic-troubleshooting"></a>Základní řešení potíží
+Doporučujeme provést ověření, než začnete řešení potíží s zálohování stavu systému:
+
+- [Ujistěte se, že Agent Microsoft Azure Recovery Services (MARS) je aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](https://aka.ms/AB-A4dp50)
+- Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby ji restartujte a opakujte operaci.
+- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](https://aka.ms/AB-AA4dwtt)
+- [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software.](https://aka.ms/AB-AA4dwtk)
+- [Plánované zálohování se nedaří, ale ruční zálohování funguje](https://aka.ms/ScheduledBackupFailManualWorks)
+- Ujistěte se, že má váš operační systém nainstalované nejnovější aktualizace.
+- [Zajištění nepodporované disky a soubory s nepodporované atributy jsou vyloučeny ze zálohy](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- Ujistěte se, že **systémové hodiny** v chráněném systému jsou nakonfigurované na správné časové pásmo. <br>
+- [Ujistěte se, že má server minimálně rozhraní .Net Framework verze 4.5.2 nebo novější](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- Pokud se pokoušíte **znovu zaregistrovat server** k trezoru, postupujte takto: <br>
+  - Ujistěte se, že je agent odinstalovaný ze serveru a odstraněný z portálu. <br>
+  - Použijte stejné heslo, jaké jste původně použili k registraci serveru. <br>
+- V případě offline zálohování zkontrolujte, zda prostředí Azure PowerShell verze 3.7.0 je nainstalován na počítači zdroje a zkopírujte před zahájením práce offline zálohování
+- [Poslední informací Backup agent běží na virtuálním počítači Azure](https://aka.ms/AB-AA4dwtr)
+
+### <a name="limitation"></a>Omezení
+- Microsoft nedoporučuje obnovování pomocí obnovení stavu systému na jiný hardware.
+- Zálohování stavu systému v současné době podporuje "místní" servery Windows, tato funkce není k dispozici pro virtuální počítače Azure.
 
 ## <a name="pre-requisite"></a>Předpoklad
 

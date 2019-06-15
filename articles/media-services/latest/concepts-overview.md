@@ -13,10 +13,10 @@ ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762313"
 ---
 # <a name="media-services-concepts"></a>Koncepty služby Media Services
@@ -62,7 +62,7 @@ Ke kódování pomocí Media Services v3, je potřeba vytvořit **transformuje**
 - [Transformace a úlohy](transforms-jobs-concept.md)
 - [Kódování pomocí Media Services](encoding-concept.md)
 
-## <a name="media-analytics"></a>Media Analytics
+## <a name="media-analytics"></a>Analýzy mediálních služeb
 
 K analýze videí a zvukových souborů, je také potřeba vytvořit **transformuje** a **úlohy**.
 
@@ -114,7 +114,7 @@ Následující obrázek ukazuje pracovní postup předávací typu:
 
 ## <a name="monitoring"></a>Monitorování
 
-### <a name="event-grid"></a>Mřížka událostí
+### <a name="event-grid"></a>Event Grid
 
 Chcete-li zobrazit průběh úlohy, měli byste použít **služby Event Grid**. Služba Media Services také vysílá typy živé události. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. 
 

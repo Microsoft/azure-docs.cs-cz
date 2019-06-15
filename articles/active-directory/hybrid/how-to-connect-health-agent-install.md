@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3d1a8afdbad1878f4ce134edeeb95dad79e98a1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784817"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
@@ -33,7 +33,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 | Požadavek | Popis |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health je funkcí služby Azure AD Premium a vyžaduje Azure AD Premium. <br /><br />Další informace najdete v článku [Začínáme s Azure AD Premium](../fundamentals/active-directory-get-started-premium.md). <br />Pokud chcete začít používat bezplatnou 30denní zkušební verzi, přečtěte si článek o tom, jak [začít se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/). |
-| Abyste mohli Azure AD Connect Health začít používat, musíte být globálním správcem služby Azure AD.  |Ve výchozím nastavení můžou agenty stavu instalovat a konfigurovat jenom globální správci. Bez nich agenty nespustíte, nebudete mít přístup na portál ani nebudete moct v rámci Azure AD Connect Health provádět jakékoli operace. Další informace najdete v článku o [správě adresáře Azure AD](../fundamentals/active-directory-administer.md). <br /><br /> Pomocí řízení přístupu na základě rolí můžete povolit přístup k Azure AD Connect Health i ostatním uživatelům z vaší organizace. Další informace najdete v článku o [řízení přístupu k Azure AD Connect Health na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). <br /><br />**Důležité:** Účet použitý při instalaci agentů musí být pracovní nebo školní účet. Nemůže to být účet Microsoft. Další informace najdete v článku o [registraci do Azure jako organizace](../fundamentals/sign-up-organization.md). |
+| Abyste mohli Azure AD Connect Health začít používat, musíte být globálním správcem služby Azure AD. |Ve výchozím nastavení můžou agenty stavu instalovat a konfigurovat jenom globální správci. Bez nich agenty nespustíte, nebudete mít přístup na portál ani nebudete moct v rámci Azure AD Connect Health provádět jakékoli operace. Další informace najdete v článku o [správě adresáře Azure AD](../fundamentals/active-directory-administer.md). <br /><br /> Pomocí řízení přístupu na základě rolí můžete povolit přístup k Azure AD Connect Health i ostatním uživatelům z vaší organizace. Další informace najdete v článku o [řízení přístupu k Azure AD Connect Health na základě rolí](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). <br /><br />**Důležité:** Účet použitý při instalaci agentů musí být pracovní nebo školní účet. Nemůže to být účet Microsoft. Další informace najdete v článku o [registraci do Azure jako organizace](../fundamentals/sign-up-organization.md). |
 | Agent Azure AD Connect Health je nainstalovaný na každém cílovém serveru | Azure AD Connect Health kvůli získávání dat a poskytování možností monitorování a analýzy vyžaduje, aby na cílových serverech byli nainstalovaní a nakonfigurovaní agenti služby Health. <br /><br />Pokud například potřebujete získávat data z infrastruktury služby AD FS, musí být agent nainstalovaný na serverech služby AD FS a na proxy serverech webových aplikací. Podobně pro načtení dat ve vaší místní infrastruktuře služby AD DS musí být agent nainstalován na řadičích domény. <br /><br /> |
 | Odchozí připojení ke koncovým bodům služby Azure | Agent během instalace a za běhu vyžaduje připojení ke koncovým bodům služby Azure AD Connect Health. Pokud je odchozí připojení blokováno pomocí bran firewall, nezapomeňte do seznamu povolených výjimek přidat následující koncové body: Přečtěte si téma [Odchozí připojení pro koncové body](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints). |
 |Odchozí připojení na základě IP adres | Informace o filtrování podle IP adres v branách firewall najdete v článku [Rozsahy IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
@@ -131,7 +131,7 @@ Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje
 5. Zavřete **místní zásady zabezpečení**.
 <br />   -- **Následující kroky se vyžadují pouze pro primární servery AD FS.** -- <br />
 6. Otevřete modul snap-in **Správa služby AD FS**. Pokud chcete otevřít snap-in Správa služby AD FS, klikněte na **Start**, najeďte myší na **Programy**, potom na **Nástroje pro správu** a potom klikněte na **Správa služby AD FS 2.0**.
-7. V podokně **Akce** klikněte na **Upravit vlastnosti služby FS (Federation Service)**.
+7. V podokně **Akce** klikněte na **Upravit vlastnosti služby FS (Federation Service)** .
 8. V dialogovém okně **Vlastnosti služby FS (Federation Service)** klikněte na kartu **Události**.
 9. Zaškrtněte políčka **Úspěšné audity** a **Neúspěšné audity**.
 10. Klikněte na **OK**.
@@ -145,7 +145,7 @@ Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje
 5. Zavřete **místní zásady zabezpečení**.
 <br />   -- **Následující kroky se vyžadují pouze pro primární servery AD FS.** -- <br />
 6. Otevřete snap-in **Správa služby AD FS** (ve Správci serveru klikněte na Nástroje a potom vyberte správu služby AD FS).
-7. V podokně **Akce** klikněte na **Upravit vlastnosti služby FS (Federation Service)**.
+7. V podokně **Akce** klikněte na **Upravit vlastnosti služby FS (Federation Service)** .
 8. V dialogovém okně **Vlastnosti služby FS (Federation Service)** klikněte na kartu **Události**.
 9. Zaškrtněte políčka **Úspěšné audity a Neúspěšné audity** a klikněte na tlačítko **OK**.
 
@@ -158,7 +158,7 @@ Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje
 5. Zavřete **místní zásady zabezpečení**.
 <br />   -- **Následující kroky se vyžadují pouze pro primární servery AD FS.** -- <br />
 6. Otevřete snap-in **Správa služby AD FS** (ve Správci serveru klikněte na Nástroje a potom vyberte správu služby AD FS).
-7. V podokně **Akce** klikněte na **Upravit vlastnosti služby FS (Federation Service)**.
+7. V podokně **Akce** klikněte na **Upravit vlastnosti služby FS (Federation Service)** .
 8. V dialogovém okně **Vlastnosti služby FS (Federation Service)** klikněte na kartu **Události**.
 9. Zaškrtněte políčka **Úspěšné audity a Neúspěšné audity** a klikněte na tlačítko **OK**. Tyto možnosti by měly být povolené ve výchozím nastavení.
 10. Otevřete okno PowerShellu a spusťte následující příkaz: ```Set-AdfsProperties -AuditLevel Verbose```.

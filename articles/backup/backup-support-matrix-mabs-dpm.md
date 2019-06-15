@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 704bb409d2b21e2ae258dbb2d627b1c088d80db7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60254641"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí Microsoft Azure Backup Server nebo System Center DPM
@@ -46,7 +46,7 @@ Zálohování pomocí aplikace DPM nebo MABS a Azure Backup pracuje následujíc
 1. Agent Microsoft Azure Recovery Services (MARS) je nainstalována na serveru aplikace DPM nebo MABS.
 1. Agenta MARS zálohovat disků DPM nebo MABS do zálohování trezoru služby Recovery Services v Azure pomocí Azure Backup.
 
-Další informace najdete tady:
+Další informace:
 
 - [Další informace](backup-architecture.md#architecture-back-up-to-dpmmabs) o architektuře MABS.
 - [Přečtěte si, co je podporováno](backup-support-matrix-mars-agent.md) pro agenta MARS.

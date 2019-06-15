@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fcb09720d188150736dbe7da0c925f5762ff6a10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800103"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072320"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -30,7 +30,7 @@ Můžete snadno zaznamenat zvuk z mikrofonu, čtení z datového proudu nebo př
 
 Zde jsou funkce k dispozici prostřednictvím rozhraní REST API a sadou SDK pro řeč:
 
-| Případ použití | SDK | REST |
+| Případ použití | Sada SDK | REST |
 |----------|-----|------|
 | Přepisy krátký projevy (< 15 sekund). Podporuje jenom určené k transkripci konečný výsledek. | Ano | Ano |
 | Průběžné určené k transkripci promluvy dlouhé a streamování zvuku (> 15 sekund). Podporuje určené k transkripci dočasné a finální výsledky. | Ano | Ne |
@@ -49,7 +49,7 @@ Zde jsou funkce k dispozici prostřednictvím rozhraní REST API a sadou SDK pro
 
 Nabízíme rychlé starty v nejoblíbenějších programovacích jazyků, každý navržené tak, aby se spouštěním kódu za méně než 10 minut. Tato tabulka obsahuje úplný seznam šablon rychlý start sadou SDK pro řeč uspořádané podle jazyka.
 
-| Rychlý start | Platforma | Referenční informace k rozhraní API |
+| Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
 | [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
@@ -57,7 +57,7 @@ Nabízíme rychlé starty v nejoblíbenějších programovacích jazyků, každ�
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Procházet](https://aka.ms/csspeech/cppref)|
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Procházet](https://aka.ms/csspeech/cppref) |
 | [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Procházet](https://aka.ms/csspeech/javaref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux, macOS | [Procházet](https://aka.ms/csspeech/javaref) |
 | [JavaScript, Browser](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Browser, Windows, Linux, macOS | [Procházet](https://aka.ms/AA434tv) |
 | [JavaScript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Procházet](https://aka.ms/AA434tv) |
 | [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Procházet](https://aka.ms/csspeech/objectivecref) |

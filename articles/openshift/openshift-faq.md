@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 2001b849e9c43d552889475ca237c52b141f3f04
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
-ms.translationtype: MT
+ms.openlocfilehash: c0cb9c24de0a61e43a806c3bc6fd9fbcea55ad98
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306264"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052694"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – nejčastější dotazy
 
@@ -49,9 +49,13 @@ Zobrazit [velikostí virtuálních počítačů Azure Red Hat OpenShift](support
 
 Ve výchozím nastavení je šifrování v klidovém stavu. Platforma Azure Storage automaticky šifruje vaše data před uložením a dešifruje data před načítání. Zobrazit [šifrování služby Azure Storage pro neaktivní uložená data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) podrobnosti.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-containers-and-manage-capacity"></a>Můžete použít Prometheus/Grafana monitorování kontejnerů a spravovat kapacity?
+## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Můžete použít Prometheus/Grafana monitorovat Moje aplikace?
 
-Ne, není v současné době.
+Ano, můžete nasadit Prometheus v oboru názvů a monitorování aplikací ve vašem oboru názvů.
+
+## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Můžete monitorovat metriky týkající se stavu clusteru a kapacity použít Prometheus/Grafana?
+
+Ne, není v aktuální čas.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Registr Dockeru je k dispozici, externě, takže lze použít nástroje, jako je Jenkins?
 

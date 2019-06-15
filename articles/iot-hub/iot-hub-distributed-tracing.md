@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60400786"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv typu zařízení cloud Azure IoT s distribuované trasování (preview)
@@ -80,7 +80,7 @@ Po zapnutí protokolování služby IoT Hub záznamy protokolu zprávu obsahují
 
 Další informace o těchto protokolů a jejich schémata, naleznete v tématu [distribuované trasování v diagnostické protokoly služby IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
 
-## <a name="set-up-device"></a>Nainstalovat zařízení
+## <a name="set-up-device"></a>Nastavení zařízení
 
 V této části Příprava vývojového prostředí pro použití se službou [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Potom upravte jednou z ukázek povolit distribuované trasování na vaše zařízení telemetrické zprávy.
 
@@ -213,7 +213,7 @@ Chcete-li změnit procento zprávy k trasování z cloudu, je nutné aktualizova
 
 1. Otevřít VS Code a [nastavit připojovací řetězec služby IoT Hub](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
-1. Rozbalte zařízení a vyhledejte **distribuované trasování nastavení (Preview)**. Klikněte **aktualizace distribuované trasování nastavení (Preview)** sub uzlu.
+1. Rozbalte zařízení a vyhledejte **distribuované trasování nastavení (Preview)** . Klikněte **aktualizace distribuované trasování nastavení (Preview)** sub uzlu.
 
     ![Povolit distribuované trasování v sadě Azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
@@ -263,7 +263,7 @@ AzureDiagnostics
 
 Příklad protokoly, jak je znázorněno v Log Analytics:
 
-| TimeGenerated | OperationName | Category | Úroveň | CorrelationId | DurationMs | Vlastnosti |
+| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Vlastnosti |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |

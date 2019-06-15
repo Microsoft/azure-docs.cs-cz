@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62112353"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Práce s hodnotami data a času v dotazů na protokoly Azure monitoru
@@ -38,9 +38,9 @@ Dotazovací jazyk Kusto má dva hlavní datové typy související s daty a čas
 |Zkrácený tvar vlastností   | Časová jednotka    |
 |:---|:---|
 |d           | den          |
-|hod.           | hodina         |
-|min.           | minuta       |
-|s           | sekunda       |
+|h           | hodina         |
+|min.           | Minuta       |
+|s           | Sekundy       |
 |ms          | Milisekundy  |
 |úrovni mikrosekund | úrovni mikrosekund  |
 |značky        | nanosekund   |
@@ -134,7 +134,7 @@ Event
 
 Tento dotaz vytvoří se následující výsledky:
 
-|časové razítko|count_|
+|timestamp|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7,136|
 |2018-07-29T00:00:00.000|12,315|
@@ -153,7 +153,7 @@ Event
 
 ## <a name="related-functions"></a>Související funkce
 
-| Kategorie | Funkce |
+| Category | Funkce |
 |:---|:---|
 | Převést datové typy | [ToDateTime](/azure/kusto/query/todatetimefunction)[totimespan](/azure/kusto/query/totimespanfunction)  |
 | Kruhové hodnota, která má velikost přihrádky | [Koš](/azure/kusto/query/binfunction) |

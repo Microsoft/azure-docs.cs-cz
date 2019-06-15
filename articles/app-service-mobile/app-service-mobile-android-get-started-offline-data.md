@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62126898"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Povolení offline synchronizace u vaší mobilní aplikace pro Android
@@ -74,7 +74,7 @@ K zadání a vyžádání změn mezi zařízením a Azure Mobile Services, můž
             return runAsyncTask(task);
         }
 
-## <a name="test-the-app"></a>Otestování aplikace
+## <a name="test-the-app"></a>Testování aplikace
 V této části testování chování pomocí Wi-Fi na a pak vypněte Wi-Fi, k vytvoření scénáři offline.
 
 Při přidávání položek dat, jsou uloženy v místní úložiště SQLite, ale není synchronizované do mobilní služby, dokud nestisknete klávesu **aktualizovat** tlačítko. Ostatní aplikace můžou mít různé požadavky týkající se při data musí být synchronizovány, ale pro účely ukázky v tomto kurzu má uživatel explicitně si ji vyžádat.

@@ -17,10 +17,10 @@ ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d71bfd5e560bb1509337ac371fbe101b4c6d63b5
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540639"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
@@ -49,7 +49,7 @@ Následující diagram a tabulka poskytují informace o stavebních bloků výzv
 | 1 | Identifikátor uživatele | Tento identifikátor představuje uživatele, který žádá o přístup k chráněným prostředkům jménem klienta aplikace. |
 | 2 | Titul | Změny názvů založené na tom, jestli uživatelé projít tok vyjádření souhlasu uživatele nebo správce. V toku souhlasu uživatele název bude "Požadováno oprávnění" při v toku souhlasu správce názvu bude mít další řádek "Accept pro vaši organizaci". |
 | 3 | Logo aplikace | Tato image by měly pomoci uživatelům mají vizuální upozornění, jestli tato aplikace je aplikace určené pro přístup k. Tento obrázek pochází od vývojáře aplikací a vlastnictví tohoto obrázku není ověřený. |
-| 4 | Název aplikace | Tato hodnota by měla informovat uživatele, který aplikace žádá o přístup ke svým datům. Poznámka: Tento název je k dispozici vývojáři a vlastnictví tento název aplikace není ověřený. |
+| 4 | App name (Název aplikace) | Tato hodnota by měla informovat uživatele, který aplikace žádá o přístup ke svým datům. Poznámka: Tento název je k dispozici vývojáři a vlastnictví tento název aplikace není ověřený. |
 | 5 | Doména vydavatele | Tato hodnota by měla poskytnout uživatelům s doménou, které mohou být možné vyhodnotit důvěryhodnost. Tato doména je poskytována vývojáři a ověřit vlastnictví domény vydavatele. |
 | 6 | Oprávnění | Tento seznam obsahuje klientská aplikace požaduje oprávnění. Uživatelé by měla vždy posoudíte typy vašich oprávnění žádá chcete pochopit, jaká data aplikace klienta se oprávnění pro přístup k jejich jménem, pokud je přijmou. Jako vývojář aplikací je nejvhodnější pro vyžádání přístupu k oprávnění s nejnižšími oprávněními. |
 | 7 | Popis oprávnění | Tato hodnota je poskytována služba zveřejňující oprávnění. Chcete-li zobrazit popis oprávnění, musí přepnout na dvojitou šipku vedle oprávnění. |

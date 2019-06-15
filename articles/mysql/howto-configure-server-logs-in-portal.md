@@ -1,21 +1,21 @@
 ---
-title: Konfigurace a získat přístup k protokolům serveru pro službu Azure Database for MySQL na webu Azure Portal
-description: Tento článek popisuje, jak nakonfigurovat a přístup k protokolům serveru ve službě Azure Database for MySQL z webu Azure Portal.
+title: Konfigurace a přístup k protokoly pomalých dotazů pro službu Azure Database for MySQL na webu Azure portal
+description: Tento článek popisuje, jak nakonfigurovat a přístup k pomalé protokolů ve službě Azure Database for MySQL z portálu Azure portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: e0701d2e10b366a6bf849512484fb216c42823bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/29/2019
+ms.openlocfilehash: b16ac525d41eb2423828a647fdb75fd3f4a80a31
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052713"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurace a přístup k serveru přihlášení na webu Azure portal
+# <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Konfigurace a protokoly pomalých dotazů přístup na webu Azure Portal
 
-Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database for MySQL – protokoly serveru](concepts-server-logs.md) z portálu Azure portal.
+Můžete nakonfigurovat, seznamu a stáhněte si [– Azure Database for MySQL – protokoly pomalých dotazů](concepts-server-logs.md) z portálu Azure portal.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro jednotlivé kroky v této příručce s postupy, musíte:
@@ -42,7 +42,7 @@ Konfigurace přístupu k protokolu pomalých dotazů MySQL.
 6. Přejděte zpět na seznam protokolů po kliknutí **tlačítko Zavřít** (X ikonu) na **parametry serveru** stránky.
 
 ## <a name="view-list-and-download-logs"></a>Zobrazení seznamu a stáhnout protokoly
-Po zahájení protokolování, můžete zobrazit seznam dostupných protokolů a stažení jednotlivých souborů protokolu v podokně protokolů serveru. 
+Po zahájení protokolování, můžete zobrazit seznam protokoly pomalých dotazů k dispozici a stažení jednotlivých souborů protokolu v podokně protokolů serveru.
 
 1. Otevřete web Azure Portal.
 
@@ -61,9 +61,7 @@ Po zahájení protokolování, můžete zobrazit seznam dostupných protokolů a
 
    ![Klikněte na ikonu stažení](./media/howto-configure-server-logs-in-portal/5-download.png)
 
-
 ## <a name="next-steps"></a>Další postup
-- Zobrazit [přístup k protokolům serveru v rozhraní příkazového řádku](howto-configure-server-logs-in-cli.md) Další informace o stažení protokolů prostřednictvím kódu programu.
-- Další informace o [protokoly serveru](concepts-server-logs.md) ve službě Azure Database for MySQL. 
+- Zobrazit [protokoly pomalých dotazů přístup v rozhraní příkazového řádku](howto-configure-server-logs-in-cli.md) informace o stažení protokolů pomalých dotazů prostřednictvím kódu programu.
+- Další informace o [zpomalit protokoly dotazů](concepts-server-logs.md) ve službě Azure Database for MySQL.
 - Další informace o protokolování MySQL a definicemi parametrů najdete v dokumentaci MySQL na [protokoly](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
-

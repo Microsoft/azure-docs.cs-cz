@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62118374"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric s Linuxem v procesu Syslog
@@ -29,12 +29,12 @@ Service Fabric poskytuje sadu událostí platformy, které informují o důleži
 
 ## <a name="introduction"></a>Úvod
 
-6.4 verze SyslogConsumer zavedl k odeslání události platformy Service Fabric s protokolem Syslog pro Linuxové clustery. Po zapnutí událostí bude automaticky směrovat do Syslog, které můžete shromažďovat a odesílaných agenta Log Analytics.
+6\.4 verze SyslogConsumer zavedl k odeslání události platformy Service Fabric s protokolem Syslog pro Linuxové clustery. Po zapnutí událostí bude automaticky směrovat do Syslog, které můžete shromažďovat a odesílaných agenta Log Analytics.
 
 Každá událost procesu Syslog má 4 komponenty
 * Zařízení
 * Identita
-* Zpráva
+* Message
 * Severity
 
 SyslogConsumer zapisuje všechny události platformy pomocí zařízení `Local0`. Jakékoli platné zařízení můžete aktualizovat změnou konfigurace config. Je identita používaná `ServiceFabric`. Pole zprávy obsahuje celou událost serializovanou ve formátu JSON tak, aby se jde dotazovat a používané celou řadu nástrojů. 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2d41af8fa04b03ab8d18277d377f3700575cd1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 37b7fe05f306f08d83de0832c5b1dd814f5560ed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65898159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Kurz: Integrace Azure Active Directory s Image Relay
 
@@ -53,7 +53,7 @@ Ke konfiguraci integrace služby Image Relay do služby Azure AD, budete muset p
 
 **Chcete-li přidat Image Relay z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)** , v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
@@ -249,7 +249,7 @@ Cílem této části je vytvořte uživatele Britta Simon Relay bitové kopie.
 
 4. Klikněte na možnost **Vytvořit**.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

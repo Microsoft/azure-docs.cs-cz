@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60311396"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele ve službě Azure DevTest Labs
@@ -32,7 +32,7 @@ Přístup ve službě Azure DevTest Labs je řízen [Azure Role-Based řízení 
 Existují tři hlavní role, kterou můžete přiřadit uživatele:
 
 * Vlastník
-* Uživatel služby DevTest Labs
+* DevTest Labs User
 * Přispěvatel
 
 Následující tabulka popisuje akce, které mohou provádět uživatelé v každé z těchto rolí:
