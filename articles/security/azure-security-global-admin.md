@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7d40b8f0ca05000a51e70d7a124e9cb143aa2dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127240"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Vynutit ověřování Multi-Factor Authentication (MFA) pro správce předplatného
 
@@ -44,5 +44,5 @@ Pokud vaši uživatelé mají licence, které zahrnují službu Azure Multi-Fact
 
 ## <a name="turn-on-two-step-verification-for-users"></a>Zapnutí dvoustupňového ověřování pro uživatele
 
-Použijte jeden z postupů uvedených v [vyžadování dvoustupňového ověřování](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) pro uživatele nebo skupinu, pokud chcete začít používat Azure MFA. Můžete se rozhodnout vynucovat dvoustupňové ověřování pro všechna přihlášení nebo můžete vytvořit zásady podmíněného přístupu a vyžadovat dvoustupňové ověřování, jenom když potřebujete.
+Použijte jeden z postupů uvedených v [vyžadování dvoustupňového ověřování](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) pro uživatele nebo skupinu, pokud chcete začít používat Azure MFA. Můžete se rozhodnout vynucovat dvoustupňové ověřování pro všechna přihlášení nebo můžete vytvořit zásady podmíněného přístupu a vyžadovat dvoustupňové ověřování jenom v případě, že to je pro vás.
 

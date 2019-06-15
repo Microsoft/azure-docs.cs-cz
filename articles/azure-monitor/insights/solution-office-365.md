@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: bwren
 ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357581"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
@@ -25,7 +25,7 @@ ms.locfileid: "66357581"
 
 
 > [!NOTE]
-> Povolení doporučovaná metoda pro instalaci a konfiguraci řešení Office 365 [konektor Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) místo pomocí kroků v tomto článku. Toto je řešení pro Office 365 Vylepšená konfigurace prostředí s aktualizovanou verzi. Chcete-li připojit protokoly služby Azure AD, použijte [Azure ověřovací služby Azure AD connector](../../sentinel/connect-azure-active-directory.md), který nabízí bohatší data protokolu než protokoly pro správu Office 365. 
+> Povolení doporučovaná metoda pro instalaci a konfiguraci řešení Office 365 [konektor Office 365](../../sentinel/connect-office-365.md) v [Azure Sentinelu](../../sentinel/overview.md) místo pomocí kroků v tomto článku. Toto je řešení pro Office 365 Vylepšená konfigurace prostředí s aktualizovanou verzi. Pokud chcete připojit protokoly Azure AD, použijte [konektor Azure AD pro Azure Sentinel](../../sentinel/connect-azure-active-directory.md), který poskytuje bohatší data protokolů než protokoly správy Office 365. 
 >
 > Když jste [Sentinelu připojení Azure](../../sentinel/quickstart-onboard.md), zadejte pracovní prostor Log Analytics, který má nainstalované v řešení sady Office 365. Jakmile povolíte konektor, řešení bude k dispozici v pracovním prostoru a použít stejně jako jakékoli jiné řešení monitorování, který jste si nainstalovali.
 >
@@ -550,7 +550,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, částečně úspěšném nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Vyhrazeno<br>ServicePrincipal<br>Systém |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Vyhrazeno<br>ServicePrincipal<br>Systémový |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory base

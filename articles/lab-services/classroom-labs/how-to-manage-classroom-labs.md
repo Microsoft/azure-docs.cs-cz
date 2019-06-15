@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 06/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 332f899f3502f34e46b4f158a6980dc96248140e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ba41132c93ebdb2578bafb100416ca3fe579298
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123291"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa testovacích prostředí v učebnách ve službě Azure Lab Services 
 Tento článek popisuje, jak vytvářet a odstraňovat prostředí v učebně. Je také ukazuje, jak zobrazit všechny testovací prostředí v učebnách účtu testovacího prostředí. 
@@ -37,10 +37,10 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stránce **Select virtual machine specifications** (Výběr specifikací virtuálních počítačů) proveďte následující kroky:
-    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. V současné době **malé**, **střední**, **velké**, a **GPU** velikosti jsou povoleny.
-    2. Vyberte **oblast**, ve které se mají virtuální počítače vytvořit. 
-    3. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. Pokud vyberete image Linuxu, zobrazí se možnost Povolit připojení ke vzdálené ploše pro něj. Podrobnosti najdete v tématu [povolit připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
-    4. Vyberte **Další**.
+    1. Vyberte **velikost** virtuálních počítačů vytvořených v testovacím prostředí. V současné době **malé**, **střední**, **střední (virtualizace)** , **velké**, a **GPU** velikosti jsou povolené. Podrobnosti najdete v tématu [velikosti virtuálních počítačů](#vm-sizes) oddílu.
+    1. Vyberte **oblast**, ve které se mají virtuální počítače vytvořit. 
+    1. Vyberte **image virtuálního počítače**, která se má použít k vytvoření virtuálních počítačů v testovacím prostředí. Pokud vyberete image Linuxu, zobrazí se možnost Povolit připojení ke vzdálené ploše pro něj. Podrobnosti najdete v tématu [povolit připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
+    1. Vyberte **Další**.
 
         ![Zadání specifikací virtuálních počítačů](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
 5. Na stránce **Set credentials** (Nastavení přihlašovacích údajů) zadejte výchozí přihlašovací údaje ke všem virtuálním počítačům v testovacím prostředí. 
@@ -49,7 +49,10 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
         > [!IMPORTANT]
         > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.
-    3. Vyberte **Vytvořit**. 
+    3. Zakázat **použít stejné heslo pro všechny virtuální počítače** možnost, pokud chcete, aby studenti mohli nastavit hesla. Tento krok je **volitelný**. 
+
+        Učitel můžete použít stejné heslo pro virtuální počítače v testovacím prostředí, nebo povolíte studenty k nastavení hesla pro své virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny Windows a Linuxem Image s výjimkou Ubuntu. Když vyberete **Ubuntu** virtuálních počítačů, toto nastavení je zakázané, takže studenty vyzve k nastavení hesla, při prvním přihlášení.
+    1. Vyberte **Vytvořit**. 
 
         ![Nastavení přihlašovacích údajů](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. Na stránce **Configure template** (Konfigurace šablony) se zobrazí stav vytváření testovacího prostředí. Vytvoření šablony v testovacím prostředí může trvat až 20 minut. Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout.  
@@ -59,13 +62,11 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
     ![Stránka Configure template (Konfigurace šablony) po dokončení konfigurace](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Následující kroky jsou pro tento kurz volitelné: 
-    1. Vyberte **Start** (Spustit) a spusťte virtuální počítač šablony.
     2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud je šablona Linux virtuálního počítače, můžete vybrat, jestli se chcete připojit pomocí SSH nebo RDP (Pokud je povolen protokol RDP).
-    3. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
-    4. **Zastavte** virtuální počítač.  
-    5. Zadejte **popis** šablony.
-
-        ![Tlačítko Next (Další) na stránce Configure template (Konfigurace šablony)](../media/tutorial-setup-classroom-lab/configure-template-next.png)
+    1. Vyberte **resetovat heslo** k resetování hesla pro virtuální počítač. 
+    1. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
+    1. **Zastavte** virtuální počítač.  
+    1. Zadejte **popis** šablony.
 9. Na stránce šablony vyberte **Next** (Další). 
 10. Na stránce **Publish the template** (Publikování šablony) proveďte následující akce. 
     1. Pokud chcete šablonu publikovat okamžitě, zaškrtněte políčko *I understand I can't modify the template after publishing. This process can only be done once and can take up to an hour* (Chápu, že publikovanou šablonu není možné upravit. Tento postup je možné provést pouze jednou a může trvat až hodinu.) a vyberte **Publish** (Publikovat).  Publikujte šablonu, aby instance šablony virtuálního počítače byly dostupné všem uživatelům testovacího prostředí.
@@ -88,6 +89,15 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
+
+| Velikost | Jádra | Paměť RAM | Popis | 
+| ---- | ----- | --- | ----------- | 
+| Malé | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevřete webový prohlížeč, webové servery s malým provozem, malé až střední databáze. |
+| Střední | 4 | 7 GB | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti a analýzu | 
+| Střední (vnořené virtualizace) | 4 | 16 GB | Tato velikost je nejvhodnější pro relační databáze, ukládání do mezipaměti a analýzu. Tato velikost podporuje také vnořené virtualizace. <p>Tato velikost je možné ve scénářích, kde každý student potřebovat víc virtuálních počítačů. Učitelé můžete použít vnořená virtualizace zřídit několik virtuálních počítačů pro krátkodobé vnořené uvnitř virtuálního počítače. </p> |
+| Velké | 8 | 32 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, vyšší výkon místního disku, velkých databází, mezipaměti velké paměti. Tato velikost podporuje také vnořené virtualizace |  
+| GPU | 12 | 112 GB | Tato velikost je nejvhodnější pro úlohy náročné na výpočetní prostředky, náročné na grafiku a vizualizace | 
 
 ## <a name="view-all-classroom-labs"></a>Zobrazit všechny testovací prostředí v učebnách
 1. Přejděte do [portálu Azure Lab Services](https://labs.azure.com).

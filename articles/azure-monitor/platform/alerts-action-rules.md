@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
 ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66734935"
 ---
 # <a name="action-rules-preview"></a>Akce pravidla (preview)
@@ -98,7 +98,7 @@ Pokud vyberete **skupiny akcí** přepínací tlačítko, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti akce pravidla
 
 A konečně nakonfigurujte následující podrobnosti pro pravidlo akce
-* Název
+* Name
 * Skupina prostředků, ve kterém bude uložen
 * Popis 
 
@@ -162,8 +162,8 @@ Na upozornění protokolu nejlepší využití s pravidly akci, doporučujeme vy
 
     A. Jakmile definujete obor při konfiguraci pravidla činnosti, zobrazí se seznam pravidel akce, které se překrývají ve stejném oboru (pokud existuje). Tento překrytí může být jedna z následujících možností:
     * Přesná shoda: Například akce pravidlo, které definujete a překrývající se akce pravidla jsou ve stejném předplatném.
-    * Dílčí: Například je pravidlo akce, které definujete v rámci předplatného a překrývající se akce pravidlo je na skupinu prostředků v rámci předplatného.
-    * Nadmnožinou: Například je pravidlo akce, které definujete pro skupinu prostředků a překrývající se pravidlo akce není v předplatném, která obsahuje skupiny prostředků.
+    * Podmnožina: Například je pravidlo akce, které definujete v rámci předplatného a překrývající se akce pravidlo je na skupinu prostředků v rámci předplatného.
+    * Nadmnožina: Například je pravidlo akce, které definujete pro skupinu prostředků a překrývající se pravidlo akce není v předplatném, která obsahuje skupiny prostředků.
     * Průnik: Například akce pravidlo, které definujete je na "VM1" a "VM2" a překrývající se akce pravidlo je na "VM2" a "VM3".
 
     ![Překrývající se akce pravidla](media/alerts-action-rules/action-rules-overlapping.png)
@@ -172,8 +172,8 @@ Na upozornění protokolu nejlepší využití s pravidly akci, doporučujeme vy
 
     A. Jakmile definujete cílový prostředek pro pravidlo výstrahy, zobrazí se seznam pravidel akce, které fungují ve stejném oboru (pokud existuje) kliknutím na "Zobrazit nakonfigurovaná akce" v části "Akce". Tento seznam se vyplní na základě následujících scénářů pro obor:
     * Přesná shoda: Pravidlo výstrahy, kterou definujete a pravidlo akce, třeba jsou ve stejném předplatném.
-    * Dílčí: Například se pravidlo upozornění, které definujete v rámci předplatného, a akce pravidlo je na skupinu prostředků v rámci předplatného.
-    * Nadmnožinou: Například, kterou definujete pravidlo výstrahy je na skupinu prostředků a akce pravidla je v předplatném, která obsahuje skupiny prostředků.
+    * Podmnožina: Například se pravidlo upozornění, které definujete v rámci předplatného, a akce pravidlo je na skupinu prostředků v rámci předplatného.
+    * Nadmnožina: Například, kterou definujete pravidlo výstrahy je na skupinu prostředků a akce pravidla je v předplatném, která obsahuje skupiny prostředků.
     * Průnik: Například, které definujete pravidlo výstrahy je na "VM1" a "VM2" a akce pravidlo je na "VM2" a "VM3".
     
     ![Překrývající se akce pravidla](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
