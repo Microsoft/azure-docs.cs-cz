@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 00393395745ca96ae14269ae80e4f3d25673fbfa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526652"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64723003"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovým virtuálním zařízením v Azure
 
@@ -74,7 +74,14 @@ Použití prostředí PowerShell
 3. Zkontrolujte, **EnableIPForwarding** vlastnost.
 4. Pokud není povolené předávání IP, spusťte následující příkazy, aby je:
 
-   $nic2 = Get-AzNetworkInterface - ResourceGroupName <ResourceGroupName> – název <NicName> $nic2. EnableIPForwarding = 1 provést Set AzNetworkInterface - NetworkInterface $nic2: $nic2 #and vyhledat očekávaný výstup: EnableIPForwarding: True NetworkSecurityGroup : null
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
 
 **Zkontrolujte skupiny zabezpečení sítě při použití standardní SKU Pubilc IP** při použití standardní SKU a veřejné IP adresy, musí existovat skupina zabezpečení sítě vytvořené a explicitní pravidla umožňují provoz na síťové virtuální zařízení.
 

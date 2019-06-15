@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
 ms.openlocfilehash: 84b93005941acf625d05a48f0df7b685e1bea0bd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785502"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů jazyka Transact-SQL během migrace do služby SQL Database
@@ -83,7 +83,7 @@ Další informace o gramatice jazyka Transact-SQL, použití a příkladů, najd
 
 ### <a name="about-the-applies-to-tags"></a>Informace o značkách „Platí pro“
 
-Referenční dokumentace jazyka Transact-SQL obsahuje články související s verzí SQL serveru 2008 až po současnost. Pod nadpisem článku existuje je ikona řádku, výpis čtyřmi platformami SQL serveru a vyznačenou. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012.  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) článku označuje, že příkaz platí pro systému  **SQL Server (počínaje verzí 2012)**. Příkaz neplatí pro SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse ani pro Parallel Data Warehouse.
+Referenční dokumentace jazyka Transact-SQL obsahuje články související s verzí SQL serveru 2008 až po současnost. Pod nadpisem článku existuje je ikona řádku, výpis čtyřmi platformami SQL serveru a vyznačenou. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012.  [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) článku označuje, že příkaz platí pro systému  **SQL Server (počínaje verzí 2012)** . Příkaz neplatí pro SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse ani pro Parallel Data Warehouse.
 
 V některých případech lze použít obecný předmět článek v produktu, ale existují malé rozdíly mezi produkty. Rozdíly jsou uvedené u středových bodů v článku znalostní báze podle potřeby. V některých případech lze použít obecný předmět článek v produktu, ale existují malé rozdíly mezi produkty. Rozdíly jsou uvedené u středových bodů v článku znalostní báze podle potřeby. Například je k dispozici ve službě SQL Database článku vytvořit aktivační událost. Ale **všechny SERVER** možnost pro triggery na úrovni serveru, označuje, že úroveň serveru triggery nejde použít ve službě SQL Database. Místo toho použití aktivačních procedur úrovni databáze.
 

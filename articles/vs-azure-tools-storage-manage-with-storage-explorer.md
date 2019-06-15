@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
 ms.openlocfilehash: 4ee91a91a20cbffebf7453ba573266962aa35806
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924744"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
@@ -89,7 +89,7 @@ Kromě toho můžete pracovat s účty úložiště v globálním i národním A
 
 1. V Průzkumníku služby Storage vyberte **spravovat účty** přejdete **Panel pro správu účtu**.
 
-    ![Spravovat účty][1]
+    ![Správa účtů][1]
 
 2. V levém podokně se teď zobrazí všem účtům Azure, které jste přihlášeni. Chcete-li připojit k jinému účtu, vyberte **přidat účet**
 

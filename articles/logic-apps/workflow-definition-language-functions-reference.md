@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66733071"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps a Microsoft Flow
@@ -297,7 +297,7 @@ Pro práci s objekty JSON a z uzlů XML, můžete tyto funkce pro zpracování.
 <a name="alphabetical-list"></a>
 <a name="action"></a>
 
-### <a name="action"></a>Akce
+### <a name="action"></a>action
 
 Vrátit *aktuální* výstupu akce modulu runtime nebo hodnoty z jiných dvojice název a hodnota JSON, které můžete přiřadit k výrazu.
 Ve výchozím nastavení tato funkce odkazuje na objekt celou akci, ale můžete volitelně zadat vlastnost, jejíž hodnotu chcete.
@@ -2573,7 +2573,7 @@ A vrátí výsledek: `6`
 
 <a name="length"></a>
 
-### <a name="length"></a>Délka
+### <a name="length"></a>length
 
 Vrátí počet položek v kolekci.
 

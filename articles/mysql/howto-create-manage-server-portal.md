@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459438"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření a správa Azure Database for MySQL pomocí webu Azure portal
@@ -41,7 +41,7 @@ Následující postup použijte k vytvoření serveru Azure Database for MySQL s
     | *Přihlašovací jméno správce serveru* | myadmin (název účtu správce instalace) |
     | *Heslo* | Nastavit heslo účtu správce |
     | *Potvrdit heslo* | potvrďte heslo účtu správce |
-    | *Umístění* | Jihovýchodní Asie (vyberte mezi Severní Evropa a západní USA) |
+    | *Location* | Jihovýchodní Asie (vyberte mezi Severní Evropa a západní USA) |
     | *Verze* | 5.7 (zvolte databázi Azure pro verzi serveru MySQL) |
 
 4. Klikněte na tlačítko **cenová úroveň** k určení úrovně vrstvy a výkon služby pro nový server. Vyberte **Obecné** kartu. *Gen 5*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**.

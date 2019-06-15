@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: roaror
 ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61330852"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Před migrací postup pro migraci dat z MongoDB API služby Azure Cosmos DB pro MongoDB
@@ -60,7 +60,7 @@ Ve službě Azure Cosmos DB propustnost je předem zřízený a se měří v jed
 Na rozdíl od virtuálních počítačů nebo na místních serverech se snadno škálovat nahoru a dolů v každém okamžiku RU. Počet zřízených ru můžete změnit během několika sekund a fakturuje se vám jenom pro maximální počet jednotek RU, které zřizujete za dané období hodinová. Další informace najdete v tématu [jednotky žádosti v Azure Cosmos DB](request-units.md).
 
 Toto jsou klíčové faktory, které ovlivňují počet požadovaných jednotek ru:
-- **Velikost položky (například dokument)**: Jak se zvyšuje velikost položky či dokumentu, počet jednotek ru spotřebovaných pro čtení nebo zápis dokumentu nebo položky také zvyšuje.
+- **Velikost položky (například dokument)** : Jak se zvyšuje velikost položky či dokumentu, počet jednotek ru spotřebovaných pro čtení nebo zápis dokumentu nebo položky také zvyšuje.
 - **Počet vlastností položky**: Za předpokladu, že [výchozí indexování](index-overview.md) u všech vlastností, počet jednotek ru spotřebovaných pro zápis položky se zvyšuje s rostoucím zvýší počet vlastností položky. Můžete snížit spotřebu jednotek žádosti pro operace zápisu podle [omezením počtu indexovaných vlastností](index-policy.md).
 - **Souběžné operace**: Požádat o spotřebované jednotky závisí také na frekvenci, se kterou různé operace CRUD (jako jsou zápisy, čtení, aktualizace, odstranění) a že jsou provedeny složitější dotazy. Můžete použít [mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/) výstup souběžnosti potřeby aktuální data MongoDB.
 - **Dotazování vzory**: Složitost dotazu má vliv na tom, kolik jednotek žádosti se spotřebovávají dotazu.

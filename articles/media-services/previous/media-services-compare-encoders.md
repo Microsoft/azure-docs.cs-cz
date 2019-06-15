@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: bb827b80f79a53f30074b9230efe3e2049471051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61465707"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Porovnání Azure na vyžádání kodérů médií  
@@ -76,7 +76,7 @@ Následující tabulka obsahuje porovnání funkcí mezi Media Encoder Standard 
 | MPEG-1 |Ano |Ano |
 | Windows Media Video/VC-1 |Ano |Ano |
 | Canopus HQ a HQX |Ne |Ne |
-| 2. část MPEG-4 |Ano |Ne |
+| 2\. část MPEG-4 |Ano |Ne |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Ano |Ne |
 | Apple ProRes 422 |Ano |Ne |
 | Apple ProRes 422 LT |Ano |Ne |

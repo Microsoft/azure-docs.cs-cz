@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60815114"
 ---
 # <a name="structured-query-expression"></a>Výraz strukturovaných dotazů
@@ -47,7 +47,7 @@ Například výraz "Title = 'latentní s'..." odpovídá všechny academic publi
 Pro atributy se přidružené synonyma výrazu dotazu může určit objekty, jejichž Kanonická hodnota odpovídá dané řetězec za použití "==" operátor nebo objekty, kde některé z jeho canonical synonymum/hodnoty shodují pomocí operátoru "=".  Oba vyžadují operátor "je rovno" pro zadaný v definici atributu.
 
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Je integrovaná sada funkce umožňující vytváření sofistikovanějších – výrazy dotazů z dotazů základní atribut.
 

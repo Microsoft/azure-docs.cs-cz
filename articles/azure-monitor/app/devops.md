@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
 ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60899638"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
@@ -133,7 +133,7 @@ Například velmi snadno:
 * Sledování relací a doby odezvy pro konkrétního uživatele pro povolení podpory a provozní týmy k zajištění podpory rychlých zákazníka.
 * Určení často používaných aplikací funkcí odpovědi na otázky stanovení priorit funkce.
 
-Říká, že zákazník DNN: "Application Insights poskytuje nám s chybějící součást rovnice se možnost kombinovat, řazení, dotazu a filtrování dat podle potřeby. Náš tým používat vlastní vynalézavosti a prostředí a zjistit, že nám umožňuje získat přehledy a řešit problémy má povoleno data s výkonný dotazovací jazyk umožňující neměli i víme, že jsme měli. Spoustu zajímavých odpovědi pocházejí z dotazy počínaje *"můžu wonder if...".*"
+Říká, že zákazník DNN: "Application Insights poskytuje nám s chybějící součást rovnice se možnost kombinovat, řazení, dotazu a filtrování dat podle potřeby. Náš tým používat vlastní vynalézavosti a prostředí a zjistit, že nám umožňuje získat přehledy a řešit problémy má povoleno data s výkonný dotazovací jazyk umožňující neměli i víme, že jsme měli. Spoustu zajímavých odpovědi pocházejí z dotazy počínaje *"můžu wonder if...".* "
 
 ## <a name="development-tools-integration"></a>Integrace nástroje pro vývoj
 ### <a name="configuring-application-insights"></a>Konfigurace Application Insights

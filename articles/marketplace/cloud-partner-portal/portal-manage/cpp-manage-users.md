@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
 ms.openlocfilehash: 21c49ad0d73721dd204a7a3899d11cf10d43521b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942091"
 ---
 # <a name="managing-users-on-the-cloud-partner-portal"></a>Správa uživatelů na portál Cloud Partner
@@ -40,7 +40,7 @@ Použijte následující postup k přidání uživatelů a přiřazení rolí pr
     - Přidat "týmu nebo e-mailu alias/skupiny zabezpečení" pro ochranu proti jednotlivých opustí organizaci.
     - Zkontrolujte tuto e-mailu, které jsou monitorovány ID, které jsou k dispozici na na portál Cloud Partner pro jakékoli komunikaci od Microsoftu.
     
-    ![Přiřadit roli](./media/assignrole.png)
+    ![Přiřazení Role](./media/assignrole.png)
 
     **Role**: Naleznete v tabulce níže identifikovat typ odpovídající uživatelské role.
 

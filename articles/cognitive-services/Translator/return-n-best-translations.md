@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-pawal
 ms.openlocfilehash: 27138fc82515983bb07df845e1204fe04dff915a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389678"
 ---
 # <a name="how-to-return-n-best-translations"></a>Jak vracet N-Best překlady
@@ -42,7 +42,7 @@ Podpis je:
 | from | **Vyžaduje** řetězec představující kód jazyka textu pro převod. |
 | na | **Vyžaduje** řetězec představující kód jazyka můžete přeložit text do. |
 | maxTranslations | **Vyžaduje** celé číslo představující maximální počet překlady se vraťte. |
-| Možnosti | **Volitelné** A TranslateOptions objekt, který obsahuje níže uvedené hodnoty. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení.
+| options | **Volitelné** A TranslateOptions objekt, který obsahuje níže uvedené hodnoty. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení.
 
 * Kategorie: Jediný podporovaný a výchozí možnost je "general".
 * ContentType: Jediný podporovaný a výchozí hodnota, je možnost "text/plain".

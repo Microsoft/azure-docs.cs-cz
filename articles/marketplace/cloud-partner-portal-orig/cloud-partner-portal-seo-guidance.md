@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
 ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935105"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Doprovodné materiály k Azure Marketplace optimalizace pro vyhledávací weby
@@ -27,13 +27,13 @@ Obecně platí veškerý text pole, kategorie a odvětví a zahrnut do weightage
 Níže jsou uvedeny nejdůležitější pole vzít v úvahu.
 
  
-|  Pole                   | Důležitost | Doprovodné materiály                                                                                            |
+|  Pole                   | Význam | Doprovodné materiály                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
-| Název nabídky               |  Vysoký      | Přesné nebo blízko úplnou shodu s vyhledávací dotaz získáte vysoké hodnocení.                       |
-| Název vydavatele           |  Vysoký      | Přesné nebo blízko úplnou shodu s vyhledávací dotaz získáte vysoké hodnocení.                       |
-| Krátký popis        |  Střednědobé používání    | Zadané názvy aplikací a vydavatel názvy téměř zaručí vysoké hodnocení, nemusí být nejdůležitější. V tomto případě je důležité krátký popis. Zachovat text, stručné a výstižně. Klíčová slova a očekávané hledané termíny by měly být zahrnuty pro nejlepší výsledek.  Například "Toto je nejlepší maloobchodní POS plně postavené na Dynamics 365" je méně efektivní než "Retail POS (point prodeje) pro Dynamics 365".  | 
+| Název nabídky               |  Vysoká      | Přesné nebo blízko úplnou shodu s vyhledávací dotaz získáte vysoké hodnocení.                       |
+| Název vydavatele           |  Vysoká      | Přesné nebo blízko úplnou shodu s vyhledávací dotaz získáte vysoké hodnocení.                       |
+| Krátký popis        |  Střední    | Zadané názvy aplikací a vydavatel názvy téměř zaručí vysoké hodnocení, nemusí být nejdůležitější. V tomto případě je důležité krátký popis. Zachovat text, stručné a výstižně. Klíčová slova a očekávané hledané termíny by měly být zahrnuty pro nejlepší výsledek.  Například "Toto je nejlepší maloobchodní POS plně postavené na Dynamics 365" je méně efektivní než "Retail POS (point prodeje) pro Dynamics 365".  | 
 | Dlouhý popis         |  Nízká       | Popis nabízí způsob, jak do větší hloubky. Nejúčinnější popisy jsou přiměřené a klíčová slova jsou používány.  Do bodu popisy pomocí klíčových slov bude přínosem pro více než dlouho dlouhý text. Zkontrolujte že klíčových pojmů, jako je například "IoT", jsou k dispozici v popisu.  |
-| Kategorie produktů       | Střednědobé používání     |  Kategorie produktů jsou určeny kombinaci možností vydavatele a Microsoftu. Správný výběr těchto kategorií tak, aby uživatelé snadno najít aplikace správnou kategorii. |
+| Kategorie produktů       | Střední     |  Kategorie produktů jsou určeny kombinaci možností vydavatele a Microsoftu. Správný výběr těchto kategorií tak, aby uživatelé snadno najít aplikace správnou kategorii. |
 |  |  |  |
 
 

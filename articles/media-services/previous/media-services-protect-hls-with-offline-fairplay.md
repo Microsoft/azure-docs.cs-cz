@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
 ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935409"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming pro iOS 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 3](../latest/offline-fairplay-for-ios.md)
 > * [Verze 2](media-services-protect-hls-with-offline-fairplay.md)
 
@@ -207,7 +207,7 @@ Následující nejčastější dotazy poskytovat pomoc při řešení potíží:
 - **Proč ho stále přehrajte zvuk pouze bez video v režimu offline po přidání pouze se zvukem = false?** V závislosti na klíče návrhu mezipaměti content delivery network (CDN) může do mezipaměti obsah. Vymazání mezipaměti.
 - **Snímků za Sekundu offline režimu také podporováno od Iosu 11 kromě iOS 10?** Ano. Snímků za Sekundu offline režimu se podporuje pro zařízení s iOS 10 a iOS 11.
 - **Proč nelze nalézt dokument "Do offline režimu přehrávání s FairPlay Streaming a HTTP Live Streaming" v sadě SDK serveru snímků za Sekundu?** Od snímků za Sekundu Server SDK verze 4 Tento dokument se nesloučila do "FairPlay Streaming programování průvodce."
-- **Co poslední parametr nebudete při tom muset následující rozhraní API pro offline režim snímků za Sekundu?**
+- **Co poslední parametr nebudete při tom muset následující rozhraní API pro offline režim snímků za Sekundu?** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     Dokumentaci pro toto rozhraní API najdete v tématu [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration metoda](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). Parametr představuje dobu trvání offline pronájem s hodiny za jednotku.

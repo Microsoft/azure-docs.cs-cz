@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 79cb9bb82862f5720d5ec2262ba30dbbcf3e3f66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60930137"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Odesílání e-mailu pomocí SendGrid z Javy v nasazení Azure
@@ -28,7 +28,7 @@ Následující příklad ukazuje, jak můžete SendGrid k odesílání e-mailů 
 
 Výsledný e-mailu bude vypadat podobně jako na následujícím snímku obrazovky.
 
-![E-mailová zpráva][emailsent]
+![e-mailové zprávy][emailsent]
 
 Bude potřeba ji pomocí kódu v tomto tématu následujícím způsobem:
 

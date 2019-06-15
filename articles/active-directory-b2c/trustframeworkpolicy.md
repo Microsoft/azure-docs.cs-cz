@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 1102aee9d7fa5fe3df0e048398cdc8bd71ff0a3c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512301"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -88,7 +88,7 @@ Dědit z jiné zásady, zásady **BasePolicy** elementu musí být deklarována 
 
 **BasePolicy** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Identifikátor tenanta Azure AD B2C. |
 | `PolicyId` | 1:1 | Identifikátor nadřazené zásady. |

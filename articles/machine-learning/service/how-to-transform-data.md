@@ -13,10 +13,10 @@ ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
 ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65471837"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
@@ -177,11 +177,11 @@ builder.preview(count=5)
 
 ||DATE (Datum)|date_timerange|
 |----|----|----|
-|0|1/1/2015 0:54|1. ledna 2015 12 AM - 2 AM|
-|1|1/1/2015 1:00|1. ledna 2015 12 AM - 2 AM|
-|2|1/1/2015 1:54|1. ledna 2015 12 AM - 2 AM|
-|3|1/1/2015 2:54|1. ledna 2015 2 AM - 4 AM|
-|4|1/1/2015 3:54|1. ledna 2015 2 AM - 4 AM|
+|0|1/1/2015 0:54|1\. ledna 2015 12 AM - 2 AM|
+|1|1/1/2015 1:00|1\. ledna 2015 12 AM - 2 AM|
+|2|1/1/2015 1:54|1\. ledna 2015 12 AM - 2 AM|
+|3|1/1/2015 2:54|1\. ledna 2015 2 AM - 4 AM|
+|4|1/1/2015 3:54|1\. ledna 2015 2 AM - 4 AM|
 
 Výše uvedený kód nejprve vytvoří tvůrce odvozené sloupce. Zadejte pole zdrojové sloupce, které byste měli zvážit (`DATE`) a název pro nový sloupec, který chcete přidat. Jako v prvním příkladu předejte ve druhém řádku (index 1) a poskytují očekávaná hodnota pro odvozených sloupců.
 
@@ -198,11 +198,11 @@ builder.preview(skip=30, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/1/2015 22:54|1. ledna 2015 22: 00 - 00: 00|
-|1|1/1/2015 23:54|1. ledna 2015 22: 00 - 00: 00|
-|2|1/1/2015 23:59|1. ledna 2015 22: 00 - 00: 00|
-|3|1/2/2015 0:54|1. února 2015 12 AM - 2 AM|
-|4|1/2/2015 1:00|1. února 2015 12 AM - 2 AM|
+|0|1/1/2015 22:54|1\. ledna 2015 22: 00 - 00: 00|
+|1|1/1/2015 23:54|1\. ledna 2015 22: 00 - 00: 00|
+|2|1/1/2015 23:59|1\. ledna 2015 22: 00 - 00: 00|
+|3|1/2/2015 0:54|1\. února 2015 12 AM - 2 AM|
+|4|1/2/2015 1:00|1\. února 2015 12 AM - 2 AM|
 
 Tady najdete v článku o problém s generovaného programu. Založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě. Chcete-li vyřešit tento problém, cílit na konkrétní záznam indexu a zadejte jiný příklad použití `add_example()` na fungovat `builder` proměnné.
 
@@ -213,11 +213,11 @@ builder.preview(skip=30, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/1/2015 22:54|1. ledna 2015 22: 00 - 00: 00|
-|1|1/1/2015 23:54|1. ledna 2015 22: 00 - 00: 00|
-|2|1/1/2015 23:59|1. ledna 2015 22: 00 - 00: 00|
-|3|1/2/2015 0:54|2. ledna 2015 12 AM - 2 AM|
-|4|1/2/2015 1:00|2. ledna 2015 12 AM - 2 AM|
+|0|1/1/2015 22:54|1\. ledna 2015 22: 00 - 00: 00|
+|1|1/1/2015 23:54|1\. ledna 2015 22: 00 - 00: 00|
+|2|1/1/2015 23:59|1\. ledna 2015 22: 00 - 00: 00|
+|3|1/2/2015 0:54|2\. ledna 2015 12 AM - 2 AM|
+|4|1/2/2015 1:00|2\. ledna 2015 12 AM - 2 AM|
 
 Nyní správně ošetřit řádků "1/2/2015' jako"2 ledna 2015", ale když se podíváte nad rámec indexu 76 odvozených sloupců, uvidíte, že hodnoty na konci nesouvisí v odvozených sloupců.
 
@@ -228,8 +228,8 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|3. ledna 2015 6: 00 - 8: 00|
-|1|1/3/2015 7:54|3. ledna 2015 6: 00 - 8: 00|
+|0|1/3/2015 7:00|3\. ledna 2015 6: 00 - 8: 00|
+|1|1/3/2015 7:54|3\. ledna 2015 6: 00 - 8: 00|
 |2|1/29/2015 6:54|Žádný|
 |3|1/29/2015 7:00|Žádný|
 |4|1/29/2015 7:54|Žádný|
@@ -241,11 +241,11 @@ builder.preview(skip=75, count=5)
 
 ||DATE|date_timerange|
 |-----|-----|-----|
-|0|1/3/2015 7:00|3. ledna 2015 6: 00 - 8: 00|
-|1|1/3/2015 7:54|3. ledna 2015 6: 00 - 8: 00|
-|2|1/29/2015 6:54|29. ledna 2015 6: 00 - 8: 00|
-|3|1/29/2015 7:00|29. ledna 2015 6: 00 - 8: 00|
-|4|1/29/2015 7:54|29. ledna 2015 6: 00 - 8: 00|
+|0|1/3/2015 7:00|3\. ledna 2015 6: 00 - 8: 00|
+|1|1/3/2015 7:54|3\. ledna 2015 6: 00 - 8: 00|
+|2|1/29/2015 6:54|29\. ledna 2015 6: 00 - 8: 00|
+|3|1/29/2015 7:00|29\. ledna 2015 6: 00 - 8: 00|
+|4|1/29/2015 7:54|29\. ledna 2015 6: 00 - 8: 00|
 
  Chcete zobrazit seznam aktuální odvození příkladu volání `list_examples()` tvůrce objektu.
 
@@ -255,9 +255,9 @@ examples = builder.list_examples()
 
 | |DATE|Příklad|example_id|
 | -------- | -------- | -------- | -------- |
-|0|1/1/2015 1:00|1. ledna 2015 12 AM - 2 AM|-1|
-|1|1/2/2015 0:54|2. ledna 2015 12 AM - 2 AM|-2|
-|2|29/1/2015 20:54|29. ledna 2015 20: 00 – 22: 00|-3|
+|0|1/1/2015 1:00|1\. ledna 2015 12 AM - 2 AM|-1|
+|1|1/2/2015 0:54|2\. ledna 2015 12 AM - 2 AM|-2|
+|2|29/1/2015 20:54|29\. ledna 2015 20: 00 – 22: 00|-3|
 
 
 V některých případech, pokud chcete odstranit příklady, které jsou nesprávné, můžete předat buď `example_row` z pandas DataFrame, nebo `example_id` hodnotu. Například pokud spustíte `builder.delete_example(example_id=-1)`, odstraní se v prvním příkladu transformace.

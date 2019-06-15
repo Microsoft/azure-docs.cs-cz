@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952204"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Správa přístupu k prostředkům Azure pro externí uživatele pomocí RBAC
@@ -44,7 +44,7 @@ Role RBAC lze udělit pouze **vlastníky** předplatného. Proto správce musít
 Na webu Azure Portal vyberte po přihlášení jako správce "Předplatné" a vyberte možnost použít.
 ![okno předplatné na webu Azure portal](./media/role-assignments-external-users/0.png) ve výchozím nastavení, pokud uživatel s rolí správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, to se role předplatného. Další informace o rolích předplatné Azure, najdete v části [přidat nebo změnit správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md).
 
-V tomto příkladu, uživateli "alflanigan@outlook.com" je **vlastníka** "Bezplatné zkušební verze" tenant "Výchozí tenanta Azure" předplatného v AAD. Jelikož tento uživatel je Tvůrce předplatné Azure s počáteční Account Microsoft "Aplikace Outlook" (Account Microsoft = Outlook, Live atd.) budou mít výchozí název domény pro všechny uživatele v tomto tenantovi přidán **"\@ alflaniganuoutlook.onmicrosoft.com"**. Standardně je vytvořen syntaxe nové domény sestavení název uživatelské jméno a doménu uživatele, který vytvořil tenanta a přidáním rozšíření **". onmicrosoft.com"**.
+V tomto příkladu, uživateli "alflanigan@outlook.com" je **vlastníka** "Bezplatné zkušební verze" tenant "Výchozí tenanta Azure" předplatného v AAD. Jelikož tento uživatel je Tvůrce předplatné Azure s počáteční Account Microsoft "Aplikace Outlook" (Account Microsoft = Outlook, Live atd.) budou mít výchozí název domény pro všechny uživatele v tomto tenantovi přidán **"\@ alflaniganuoutlook.onmicrosoft.com"** . Standardně je vytvořen syntaxe nové domény sestavení název uživatelské jméno a doménu uživatele, který vytvořil tenanta a přidáním rozšíření **". onmicrosoft.com"** .
 Navíc uživatelé můžou přihlásit se pomocí vlastního názvu domény v tenantovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v tenantovi Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře služby](../active-directory/fundamentals/add-custom-domain.md).
 
 V tomto příkladu adresáři "Výchozímu tenantu Azure" obsahuje pouze uživatele s názvem domény "\@alflanigan.onmicrosoft.com".

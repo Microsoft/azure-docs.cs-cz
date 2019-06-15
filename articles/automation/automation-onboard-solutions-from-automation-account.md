@@ -10,10 +10,10 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: a1bb5534d2f98a4e5143038ab1d5fbbcc76184fe
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133189"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
@@ -59,20 +59,20 @@ Pokud vybraný pracovní prostor dosud nemá řešení Update Management nebo Ch
 
 Pokud je vybraný pracovní prostor už řešení, se znovu nasadí řešení a konfigurace oboru se nepřidal do něj.
 
-## <a name="saved-searches"></a>Uložené výsledky hledání
+## <a name="saved-searches"></a>Uložená hledání
 
 Když počítač se přidá do Update Management nebo Change Tracking a Inventory řešení, se přidají do jedné ze dvou uložené výsledky hledání ve vašem pracovním prostoru. Tyto uložené výsledky hledání jsou dotazy, které obsahují počítače, které cílí na tato řešení.
 
 Přejděte do účtu Automation a vyberte **uložená hledání** pod **Obecné**. Dvě uložené výsledky hledání používat tato řešení můžete vidět v následující tabulce:
 
-|Název     |Category  |Alias  |
+|Name     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 
 Vyberte buď uložené výsledky hledání, chcete-li zobrazit dotaz použitý k naplnění skupiny. Následující obrázek ukazuje dotaz a jeho výsledky:
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+![Uložená hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
 ## <a name="onboard-azure-vms"></a>Připojení virtuálních počítačů Azure
 
@@ -94,7 +94,7 @@ Ručně nainstalovat počítače nebo počítače, které již hlásí do vašeh
 
 Vyberte **spravovat počítače**. Tato akce otevře **Správa počítačů** stránky. Tato stránka umožňuje povolit řešení na vybraná sada počítačů, všech dostupných počítačích nebo povolit řešení pro všechny aktuální počítače a jeho povolení pro všechny budoucí počítače. **Spravovat počítače** může být tlačítko zašedlé, pokud jste dříve vybrali možnost **povolit na všech dostupných a budoucích počítačích**.
 
-![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
+![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="all-available-machines"></a>Všechny dostupné počítače
 

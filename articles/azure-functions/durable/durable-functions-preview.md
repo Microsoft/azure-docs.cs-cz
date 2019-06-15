@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596079"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Náhled odolné Functions 2.0 (Azure Functions)
@@ -154,8 +154,8 @@ Entita podpora zahrnuje několik rozhraní API. Za prvé je nové rozhraní API 
 Provádění operací na entity můžete volat tyto členy objektu context (`IDurableEntityContext` v rozhraní .NET):
 
 * **OperationName**: získá název operace.
-* **GetInput\<T >**: získá vstupu pro tuto operaci.
-* **GetState\<T >**: získá aktuální stav entity.
+* **GetInput\<T >** : získá vstupu pro tuto operaci.
+* **GetState\<T >** : získá aktuální stav entity.
 * **SetState**: aktualizuje stav entity.
 * **SignalEntity**: odešle jednosměrná zpráva do entity.
 * **Self**: získá ID entity.
@@ -172,7 +172,7 @@ Operace omezeny méně než Orchestrace:
 
 Trvalý entity lze volat z běžné funkce prostřednictvím `orchestrationClient` vazby (`IDurableOrchestrationClient` v rozhraní .NET). Jsou podporovány následující metody:
 
-* **ReadEntityStateAsync\<T >**: načte stav entity.
+* **ReadEntityStateAsync\<T >** : načte stav entity.
 * **SignalEntityAsync**: odešle jednosměrná zpráva do entity a čeká na jeho bude zařazených do fronty.
 
 Tyto metody upřednostnit výkonu přes konzistence: `ReadEntityStateAsync` může vrátit hodnotu zastaralé a `SignalEntityAsync` může vrátit před dokončením operace. Volání entity z Orchestrace (jak je popsáno dále) je naproti tomu vysoce konzistentní.
@@ -183,7 +183,7 @@ Orchestrace přístupná entit s využitím objektu kontextu. Můžete vybrat me
 
 * **SignalEntity**: odešle jednosměrná zpráva do entity.
 * **CallEntityAsync**: odešle zprávu do entity a čeká na odpověď označující, že operace byla dokončena.
-* **CallEntityAsync\<T >**: odešle zprávu do entity a čeká na odpověď obsahující výsledek typu T.
+* **CallEntityAsync\<T >** : odešle zprávu do entity a čeká na odpověď obsahující výsledek typu T.
 
 Při použití obousměrnou komunikaci, zůstanou veškeré výjimky vyvolané při provádění operace jsou také odeslaných zpět do volajícího Orchestrace a znovu vyvolána. Naopak při použití fire a zapomenout, nejsou dodrženy výjimky.
 
@@ -194,7 +194,7 @@ Orchestrace lze uzamčení entity. Tato funkce poskytuje jednoduchý způsob, ja
 Objekt kontextu poskytuje následující metody:
 
 * **LockAsync**: získá uzamčení na jeden nebo více entit.
-* **Islocked –**: vrací hodnotu true, pokud v současné době kritický oddíl, false v opačném případě.
+* **Islocked –** : vrací hodnotu true, pokud v současné době kritický oddíl, false v opačném případě.
 
 Kritická sekce skončí a všech zámků jsou uvolněny, při ukončení orchestraci. V rozhraní .NET `LockAsync` vrátí `IDisposable` , který končí kritický oddíl při uvolnění, což je možné společně s `using` klauzule syntaktické reprezentaci kritický oddíl.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
 ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65515381"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Export jednoho a víc prostředků šablony na webu Azure portal
@@ -88,7 +88,7 @@ Chcete-li exportovat jeden prostředek:
 
 1. Po úspěšném ověření, ale před zahájením nasazení, vyberte **stáhnout šablonu pro automatizaci**.
 
-   ![Stáhnout šablonu](./media/export-template-portal/download-before-deployment.png)
+   ![Stažení šablony](./media/export-template-portal/download-before-deployment.png)
 
 1. Šablona se zobrazí a je k dispozici ke stažení.
 
@@ -110,7 +110,7 @@ Můžete exportovat šablonu, která byla použita k nasazení existujících pr
 
 1. Vyberte **šablony**. Šablona použitá pro toto nasazení se zobrazí a je k dispozici ke stažení.
 
-   ![Vybrat šablonu](./media/export-template-portal/show-template-from-history.png)
+   ![Vyberte šablonu](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Další postup
 

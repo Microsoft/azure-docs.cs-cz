@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 4b738f34ae75478c0120832e7ad2b6a6a83dbf69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61224759"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Doprovodných materiálech ke komunikaci typu cloud zařízení
@@ -37,7 +37,7 @@ Tady je podrobné porovnání různých možností komunikace typu cloud zaříz
 | Cíle | Pomocí jednoho zařízení **deviceId**, nebo více zařízení pomocí [úlohy](iot-hub-devguide-jobs.md). | Pomocí jednoho zařízení **deviceId**, nebo více zařízení pomocí [úlohy](iot-hub-devguide-jobs.md). | Jedno zařízení podle **deviceId**. |
 | Velikost | Přímé metody maximální velikost datové části je 128 KB. | Maximální požadovaný činí vlastnosti velikosti 8 KB. | Až 64 KB zpráv. |
 | Frekvence | Vysoká. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). |
-| Protocol (Protokol) | K dispozici používat protokol MQTT nebo AMQP. | K dispozici používat protokol MQTT nebo AMQP. | K dispozici na všechny protokoly. Zařízení se musí dotazovat při použití protokolu HTTPS. |
+| Protocol | K dispozici používat protokol MQTT nebo AMQP. | K dispozici používat protokol MQTT nebo AMQP. | K dispozici na všechny protokoly. Zařízení se musí dotazovat při použití protokolu HTTPS. |
 
 Další informace o použití přímých metod, požadované vlastnosti a zprávy typu cloud zařízení v následujících kurzech:
 

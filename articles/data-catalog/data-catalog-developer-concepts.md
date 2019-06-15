@@ -9,10 +9,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727406"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Koncepce pro vývojáře Azure Data Catalog
@@ -78,13 +78,13 @@ Uživatelském prostředí pak můžete vybrat způsob zobrazení kombinace. Exi
 Jak představíme v části klíčové koncepty nástroje **Azure Data Catalog** objektový model obsahuje položky, které je možné prostředky nebo poznámky. Položky mají vlastnosti, které můžou být nepovinné nebo povinné. Některé vlastnosti se vztahují na všechny položky. Některé vlastnosti se vztahují na všechny prostředky. Některé vlastnosti se vztahují jenom na konkrétní majetek typy.
 
 ### <a name="system-properties"></a>Systémové vlastnosti
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr><tr><td>časové razítko</td><td>DateTime</td><td>Čas poslední změny položky. Toto pole je generován serveru při vložení položky a pokaždé, když se aktualizuje položku. Hodnota této vlastnosti se ignoruje na vstupu operace publikování.</td></tr><tr><td>id</td><td>URI</td><td>Absolutní adresa url položky (jen pro čtení). Je jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje na vstupu operace publikování.</td></tr><tr><td>type</td><td>String</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>etag</td><td>String</td><td>Řetězec odpovídající verzi položky, která se dá použít pro optimistického řízení souběžnosti při provádění operací, které aktualizovat položky v katalogu. "*" lze hledat jakoukoli jinou hodnotu.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Čas poslední změny položky. Toto pole je generován serveru při vložení položky a pokaždé, když se aktualizuje položku. Hodnota této vlastnosti se ignoruje na vstupu operace publikování.</td></tr><tr><td>id</td><td>Uri</td><td>Absolutní adresa url položky (jen pro čtení). Je jedinečný adresovatelný identifikátor URI pro položku.  Hodnota této vlastnosti se ignoruje na vstupu operace publikování.</td></tr><tr><td>type</td><td>String</td><td>Typ prostředku (jen pro čtení).</td></tr><tr><td>etag</td><td>String</td><td>Řetězec odpovídající verzi položky, která se dá použít pro optimistického řízení souběžnosti při provádění operací, které aktualizovat položky v katalogu. "*" lze hledat jakoukoli jinou hodnotu.</td></tr></table>
 
 ### <a name="common-properties"></a>Společné vlastnosti
 Tyto vlastnosti se vztahují na všechny typy prostředků kořenové a všechny typy poznámek.
 
 <table>
-<tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
+<tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr>
 <tr><td>fromSourceSystem</td><td>Boolean</td><td>Označuje, zda dat položky je odvozen ze zdrojového systému (např. Sql Server Database, Oracle Database) nebo definovaných uživatelem.</td></tr>
 </table>
 
@@ -92,33 +92,33 @@ Tyto vlastnosti se vztahují na všechny typy prostředků kořenové a všechny
 <p>
 Tyto vlastnosti se vztahují na všechny typy prostředků root.
 
-<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr><tr><td>jméno</td><td>String</td><td>Název odvozené z umístění zdroje dat</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Jednoznačně popisuje zdroje dat a je jeden z identifikátorů pro prostředek. (Viz oddíl duální identity).  Struktura dsl se liší podle typu protokolu a zdroj.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Další podrobnosti o typu prostředku.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Uživatel, který naposledy zaregistrována tento prostředek popisuje.  Obsahuje jedinečné id pro uživatele (upn) a zobrazovaný název (jméno a příjmení).</td></tr><tr><td>containerId</td><td>String</td><td>ID assetu kontejneru pro zdroj dat Tato vlastnost není podporována pro typ kontejneru.</td></tr></table>
+<table><tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr><tr><td>name</td><td>String</td><td>Název odvozené z umístění zdroje dat</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>Jednoznačně popisuje zdroje dat a je jeden z identifikátorů pro prostředek. (Viz oddíl duální identity).  Struktura dsl se liší podle typu protokolu a zdroj.</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>Další podrobnosti o typu prostředku.</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>Uživatel, který naposledy zaregistrována tento prostředek popisuje.  Obsahuje jedinečné id pro uživatele (upn) a zobrazovaný název (jméno a příjmení).</td></tr><tr><td>containerId</td><td>String</td><td>ID assetu kontejneru pro zdroj dat Tato vlastnost není podporována pro typ kontejneru.</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>Společné vlastnosti anotace typu singleton
 Tyto vlastnosti se vztahují na všechny typy není typu singleton poznámky (poznámky, které může být víc za asset).
 
 <table>
-<tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
+<tr><td><b>Název vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr>
 <tr><td>key</td><td>String</td><td>Uživatel zadaný klíč, který jednoznačně identifikuje poznámky v aktuální kolekci. Délka klíče nesmí překročit 256 znaků.</td></tr>
 </table>
 
 ### <a name="root-asset-types"></a>Typy prostředků kořenové
 Kořenové asset typy jsou typy, které představují různé druhy datových assetů, které mohou být registrovány v katalogu. Pro každý typ kořenového je zobrazení, která popisuje asset a poznámky, které jsou zahrnuté v zobrazení. Název zobrazení byste měli použít ve odpovídající segment adresy url {view_name} při publikování assetu pomocí rozhraní REST API.
 
-<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Povolené poznámky</b></td><td><b>Komentáře</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje žádná tabulková data.  Příklad: SQL tabulka, zobrazení SQL, tabulka tabulkové služby Analysis Services, Analysis Services Multidimensional dimenze, tabulka Oracle atd.   </td></tr><tr><td>Míry ("opatření")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje míra Analysis Services.</td></tr><tr><td></td><td>Míra</td><td>Sloupec</td><td></td><td>Metadata popisující míry</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Určuje, pokud je míra počítá nebo ne.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><td>Klíčový ukazatel výkonu "(KPI)</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrátí cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Multidimenzionální číselný výraz, který vrací aktuální hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu k určitému bodu v čase.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Výraz MDX, který se vyhodnotí jako hodnota klíčového ukazatele výkonu v čase. Trend může být jakékoli podle času kritérium, které je užitečné v kontextu konkrétní obchodní.</td>
+<table><tr><td><b>Typ prostředku (název zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Povolené poznámky</b></td><td><b>Komentář</b></td></tr><tr><td>Tabulka ("tabulky")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Schéma<p>ColumnDescription<p>ColumnTag<p> Odborník<p>Náhled<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentace<p></td><td>Tabulka představuje žádná tabulková data.  Příklad: SQL tabulka, zobrazení SQL, tabulka tabulkové služby Analysis Services, Analysis Services Multidimensional dimenze, tabulka Oracle atd.   </td></tr><tr><td>Míry ("opatření")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje míra Analysis Services.</td></tr><tr><td></td><td>Míra</td><td>Sloupec</td><td></td><td>Metadata popisující míry</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Určuje, pokud je míra počítá nebo ne.</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><td>Klíčový ukazatel výkonu "(KPI)</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>Hmotných kontejnerů pro míru</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>Číselný výraz MDX nebo výpočet, který vrátí cílovou hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>Multidimenzionální číselný výraz, který vrací aktuální hodnotu klíčového ukazatele výkonu.</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>Výraz MDX, který představuje stav klíčového ukazatele výkonu k určitému bodu v čase.</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>Výraz MDX, který se vyhodnotí jako hodnota klíčového ukazatele výkonu v čase. Trend může být jakékoli podle času kritérium, které je užitečné v kontextu konkrétní obchodní.</td>
 <tr><td>Sestavy ("zprávy")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje sestavy služby SQL Server Reporting Services </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Kontejner ("kontejnery")</td><td></td><td></td><td>Popis<p>FriendlyName<p>Značka<p>Odborník<p>AccessInstruction<p>Dokumentace<p></td><td>Tento typ reprezentuje kontejner jiných prostředcích, třeba SQL database, kontejneru objektů BLOB systému Azure nebo model služby Analysis Services.</td></tr></table>
 
 ### <a name="annotation-types"></a>Anotace typů
 Anotace typů představují typy metadat, které je možné přiřadit na jiné typy v katalogu.
 
 <table>
-<tr><td><b>Typ poznámky (název vnořené zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
+<tr><td><b>Typ poznámky (název vnořené zobrazení)</b></td><td><b>Další vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr>
 
 <tr><td>Popis ("Popis")</td><td></td><td></td><td>Tato vlastnost obsahuje popis pro určitý prostředek. Každý uživatel systému můžete přidat vlastní popis.  Jenom tento uživatel může upravit popis objektu.  (Vlastníci Admins a prostředků můžete odstranit objekt popisu, ale nikoli upravovat). Systém udržuje popisy uživatelova samostatně.  Proto je pole popisy jednotlivých prostředků (jeden pro každý uživatel, který se přidal své znalosti o majetku, kromě může být takový, který obsahuje informace získané ze zdroje dat).</td></tr>
 <tr><td></td><td>description</td><td>string</td><td>Krátký popis prostředku (2 až 3 řádky)</td></tr>
 
 <tr><td>Značky ("tags")</td><td></td><td></td><td>Tato vlastnost definuje značky pro prostředek. Každý uživatel systému můžete přidat více značky pro prostředek.  Pouze uživatel, který vytvořil objekty značky můžete upravovat.  (Vlastníci Admins a prostředků můžete odstranit objekt značky, ale nikoli upravovat). Systém samostatně udržuje značky uživatelů.  Proto je pole objektů značka jednotlivých prostředků.</td></tr>
-<tr><td></td><td>značka</td><td>string</td><td>Značka s popisem prostředku.</td></tr>
+<tr><td></td><td>tag</td><td>string</td><td>Značka s popisem prostředku.</td></tr>
 
 <tr><td>FriendlyName ("friendlyName")</td><td></td><td></td><td>Tato vlastnost obsahuje popisný název pro určitý prostředek. FriendlyName je anotaci typu singleton – pouze jeden FriendlyName lze přidat do assetu.  Pouze uživatel, který vytvořil objekt FriendlyName můžete upravit ho. (Vlastníci Admins a prostředků můžete odstranit objekt FriendlyName, ale nikoli upravovat). Systém samostatně udržuje popisné názvy uživatelů.</td></tr>
 <tr><td></td><td>friendlyName</td><td>string</td><td>Popisný název assetu.</td></tr>
@@ -132,10 +132,10 @@ Anotace typů představují typy metadat, které je možné přiřadit na jiné 
 
 <tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Tato vlastnost obsahuje značku pro sloupec. Každý uživatel systému můžete přidat více značek pro daný sloupec a můžete přidat značky pro více sloupců. Pouze uživatel, který vytvořil objekty ColumnTag můžete upravovat. (Vlastníci Admins a prostředků můžete odstranit objekt ColumnTag, ale nikoli upravovat). Systém udržuje značky sloupec tyto uživatele samostatně.  Proto je pole objektů ColumnTag jednotlivých prostředků.  ColumnTag volně vázán na schéma tak můžete získat synchronizovaný. ColumnTag popisuje sloupec, který již existuje ve schématu.  Záleží zapisovač, který má udržovat synchronizované sloupec značku a schéma.</td></tr>
 <tr><td></td><td>Názevsloupce</td><td>String</td><td>Název sloupce, na který odkazuje tato značka.</td></tr>
-<tr><td></td><td>značka</td><td>String</td><td>Značky popisující sloupce.</td></tr>
+<tr><td></td><td>tag</td><td>String</td><td>Značky popisující sloupce.</td></tr>
 
 <tr><td>Odborníky "(odborníci)</td><td></td><td></td><td>Tato vlastnost obsahuje uživatele, který je považován za experti v datové sadě. Odborné opinions(descriptions) bublin k hornímu okraji uživatelského rozhraní při výpisu popisy. Každý uživatel může určit vlastní odborníky. Jenom tento uživatel může upravovat objektů experty. (Vlastníci Admins a prostředků můžete odstranit odborné objekty, ale nikoli upravovat).</td></tr>
-<tr><td></td><td>Odborník</td><td>SecurityPrincipal</td><td></td></tr>
+<tr><td></td><td>Expert</td><td>SecurityPrincipal</td><td></td></tr>
 
 <tr><td>Ve verzi Preview ("verze Preview")</td><td></td><td></td><td>Verze preview obsahuje snímek toho prvních 20 řádků dat pro prostředek. Ve verzi Preview smysl jenom pro některé typy prostředků (dává smysl pro tabulku, ale ne pro míru).</td></tr>
 <tr><td></td><td>preview</td><td>Object]</td><td>Pole objektů, které představují sloupce.  Každý objekt má vlastnost mapování na sloupec s hodnotou pro tento sloupec řádku.</td></tr>
@@ -146,7 +146,7 @@ Anotace typů představují typy metadat, které je možné přiřadit na jiné 
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>Počet řádků v datové sadě</td></tr>
-<tr><td></td><td>velikost</td><td>Long</td><td>Velikost v bajtech datové sady.  </td></tr>
+<tr><td></td><td>size</td><td>long</td><td>Velikost v bajtech datové sady.  </td></tr>
 <tr><td></td><td>schemaModifiedTime</td><td>string</td><td>Čas posledního schématu byla změněna.</td></tr>
 <tr><td></td><td>dataModifiedTime</td><td>string</td><td>Čas poslední změnil sady dat (data byla přidána, upravit, nebo odstranění)</td></tr>
 
@@ -155,7 +155,7 @@ Anotace typů představují typy metadat, které je možné přiřadit na jiné 
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>Názevsloupce</td><td>String</td><td>Název sloupce, na který odkazuje tato klasifikace.</td></tr>
-<tr><td></td><td>klasifikace</td><td>String</td><td>Klasifikace dat v tomto sloupci.</td></tr>
+<tr><td></td><td>Klasifikace</td><td>String</td><td>Klasifikace dat v tomto sloupci.</td></tr>
 
 <tr><td>Dokumentace ke službě dokumentace ("k")</td><td></td><td></td><td>Daný prostředek může mít pouze jeden dokumentaci s ním spojená.</td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>Typ mime obsahu.</td></tr>
@@ -167,15 +167,15 @@ Anotace typů představují typy metadat, které je možné přiřadit na jiné 
 Běžné typy může sloužit jako typy vlastností, ale nejsou položky.
 
 <table>
-<tr><td><b>Společný typ.</b></td><td><b>Vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
+<tr><td><b>Společný typ.</b></td><td><b>Vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>sourceType</td><td>string</td><td>Popisuje typ datového zdroje.  Příklad: SQL Server, Oracle Database, atd.  </td></tr>
 <tr><td></td><td>objectType</td><td>string</td><td>Popisuje typ objektu v datovém zdroji. Příklad: Tabulka, zobrazení pro SQL Server.</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>Protokol</td><td>string</td><td>Povinná hodnota. Popisuje protokol používaný ke komunikaci se zdrojem dat. Příklad: "tds" pro SQl Server, "oracle" pro Oracle, atd. Odkazovat na <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">specifikace odkazu - DSL struktury zdroje dat</a> seznam aktuálně podporovaných protokolů.</td></tr>
-<tr><td></td><td>adresa</td><td>Slovník&lt;řetězec, objekt&gt;</td><td>Povinná hodnota. Adresa je sada data specifická pro protokol, který se používá k identifikaci zdroje dat, na kterou se odkazuje. Adresa data na protokol pro konkrétní obor, to znamená, ho je význam bez znalosti protokolu.</td></tr>
-<tr><td></td><td>Ověřování</td><td>string</td><td>Volitelné. Schéma ověřování používaný ke komunikaci se zdrojem dat. Příklad: windows, oauth, atd.</td></tr>
+<tr><td></td><td>protocol</td><td>string</td><td>Povinná hodnota. Popisuje protokol používaný ke komunikaci se zdrojem dat. Příklad: "tds" pro SQl Server, "oracle" pro Oracle, atd. Odkazovat na <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">specifikace odkazu - DSL struktury zdroje dat</a> seznam aktuálně podporovaných protokolů.</td></tr>
+<tr><td></td><td>Adresa</td><td>Slovník&lt;řetězec, objekt&gt;</td><td>Povinná hodnota. Adresa je sada data specifická pro protokol, který se používá k identifikaci zdroje dat, na kterou se odkazuje. Adresa data na protokol pro konkrétní obor, to znamená, ho je význam bez znalosti protokolu.</td></tr>
+<tr><td></td><td>ověřování</td><td>string</td><td>Volitelné. Schéma ověřování používaný ke komunikaci se zdrojem dat. Příklad: windows, oauth, atd.</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Slovník&lt;řetězec, objekt&gt;</td><td>Volitelné. Další informace o tom, jak se připojit ke zdroji dat</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Back-endu neprovádí žádné ověřování zadané vlastnosti pro AAD během publikování.</td></tr>
@@ -185,7 +185,7 @@ Běžné typy může sloužit jako typy vlastností, ale nejsou položky.
 <tr><td></td><td>Příjmení</td><td>string</td><td>Příjmení uživatele (pro účely zobrazení). Volitelné. Jediná platná v kontextu "lastRegisteredBy" vlastnosti. Nelze zadat při zadávání objektu zabezpečení pro "role", "oprávnění" a "odborníky".</td></tr>
 
 <tr><td>Sloupec</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>jméno</td><td>string</td><td>Název sloupce nebo atributu.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Název sloupce nebo atributu.</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>datový typ sloupce nebo atributu. Povolené typy závisí na sourceType datového prostředku.  Je podporován pouze podmnožinu typů.</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>Maximální povolená délka pro sloupec nebo atributu. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
 <tr><td></td><td>Přesnost</td><td>byte</td><td>Přesnost sloupce nebo atributu. Odvozena z datového zdroje. Platí jenom pro některé typy zdrojů.</td></tr>
@@ -197,7 +197,7 @@ Běžné typy může sloužit jako typy vlastností, ale nejsou položky.
 <tr><td></td><td>type </td><td>string</td><td>Typ sloupce</td></tr>
 <tr><td></td><td>min </td><td>string</td><td>Minimální hodnota v datové sadě</td></tr>
 <tr><td></td><td>max </td><td>string</td><td>Maximální hodnota v datové sadě</td></tr>
-<tr><td></td><td>prům. </td><td>double</td><td>Průměrná hodnota v datové sadě</td></tr>
+<tr><td></td><td>avg </td><td>double</td><td>Průměrná hodnota v datové sadě</td></tr>
 <tr><td></td><td>stdev </td><td>double</td><td>Směrodatná odchylka pro datovou sadu</td></tr>
 <tr><td></td><td>nullCount </td><td>int</td><td>Počet hodnot null v datové sadě</td></tr>
 <tr><td></td><td>distinctCount  </td><td>int</td><td>Počet jedinečných hodnot v datové sadě</td></tr>
@@ -213,22 +213,22 @@ Prostřednictvím kódu programu je možné rozšířit sadu podporovaných prot
 
 ### <a name="custom-data-source-protocol-specification"></a>Specifikace protokolu zdroj vlastních dat
 <table>
-<tr><td><b>Typ</b></td><td><b>Vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentáře</b></td></tr>
+<tr><td><b>Typ</b></td><td><b>Vlastnosti</b></td><td><b>Datový typ</b></td><td><b>Komentář</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>Obor názvů</td><td>string</td><td>Obor názvů protokolu. Namespace musí mít 1 až 255 znaků, obsahovat jednu nebo více částí neprázdný oddělené tečkou (.). Každá část musí mít délku 1 až 255 znaků, začínat písmenem a obsahovat jenom písmena a číslice.</td></tr>
-<tr><td></td><td>jméno</td><td>string</td><td>Název protokolu. Název musí mít délku 1 až 255 znaků, začínat písmenem a obsahovat jenom písmena, číslice a znak spojovníku (-).</td></tr>
+<tr><td></td><td>– obor názvů</td><td>string</td><td>Obor názvů protokolu. Namespace musí mít 1 až 255 znaků, obsahovat jednu nebo více částí neprázdný oddělené tečkou (.). Každá část musí mít délku 1 až 255 znaků, začínat písmenem a obsahovat jenom písmena a číslice.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Název protokolu. Název musí mít délku 1 až 255 znaků, začínat písmenem a obsahovat jenom písmena, číslice a znak spojovníku (-).</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>Seznam vlastností identity, musí obsahovat alespoň jednu, ale žádné vlastnosti více než 20. Příklad: "server", "databázi", "schéma", "objekt" jsou vlastnosti identity protokolu "tds".</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>Seznam sad identit. Definuje sadu vlastností identity, které reprezentuje identitu platný asset. Musí obsahovat alespoň jednu, ale žádné sady více než 20. Příklad: {"server", "databáze", "schéma" a "objekt"} je identita nastavená pro protokol "tds", který definuje totožnost asset tabulky serveru Sql Server.</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>jméno</td><td>string</td><td>Název vlastnosti. Název musí mít délku 1 až 100 znaků, začínat písmenem a může obsahovat jenom písmena a číslice.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Název vlastnosti. Název musí mít délku 1 až 100 znaků, začínat písmenem a může obsahovat jenom písmena a číslice.</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>Typ vlastnosti. Podporované hodnoty: "bool", logická hodnota ","bajtů","guid","int","celočíselné","dlouhý","řetězec","url"</td></tr>
 <tr><td></td><td>IgnoreCase</td><td>bool</td><td>Určuje, zda by měl být ignoruje velikost písmen při použití hodnoty vlastnosti. Lze zadat pouze pro vlastnosti typu "řetězec". Výchozí hodnota je false.</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>[] BOOL</td><td>Určuje, zda by měl pro každou část cesty adresy url ignoruje velikost písmen. Lze zadat pouze pro vlastnosti typu "url". Výchozí hodnota je [false].</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>jméno</td><td>string</td><td>Název sady identity.</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>Název sady identity.</td></tr>
 <tr><td></td><td>properties</td><td>řetězec]</td><td>Nastavit seznam vlastnosti identity, které jsou součástí této identity. Nesmí obsahovat duplicitní hodnoty. Každou vlastnost odkazuje sada identity musí být definován v seznamu "identityProperties" protokolu.</td></tr>
 
 </table>

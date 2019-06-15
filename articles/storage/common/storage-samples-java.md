@@ -10,10 +10,10 @@ ms.date: 05/03/2019
 ms.author: mhopkins
 ms.subservice: common
 ms.openlocfilehash: 3d241f1905244d3a8039372262f84ba0fd25220d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209772"
 ---
 # <a name="azure-storage-samples-using-java"></a>Ukázky pro Azure Storage pomocí Javy
@@ -25,11 +25,11 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody>
 <tr>
 <td rowspan="16"><b>Objekt blob</b></td>
-<td>Připojit objekt blob</td>
+<td>Doplňovací objekt Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
 </tr>
 <tr>
-<td>Objekt blob bloku</td>
+<td>Objekt Blob bloku</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
 </tr>
 <tr>
@@ -73,7 +73,7 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
 </tr>
 <tr>
-<td>Objekt blob stránky</td>
+<td>Page Blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Začínáme se službou Azure Blob Service v Javě</a></td>
 </tr>
 <tr>
@@ -160,7 +160,7 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 </tr>
 <tr>
 <td rowspan="7"><b>Tabulka</b></td>
-<td>Vytvořit tabulku</td>
+<td>Vytvoření tabulky</td>
 <td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td>
 </tr>
 <tr>

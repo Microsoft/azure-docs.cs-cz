@@ -14,14 +14,14 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61250514"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesun dat z tabulky webovému zdroji pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-web-table-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-web-table.md)
 
@@ -74,8 +74,8 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **Web** |Ano |
-| URL |Adresa URL k webovému zdroji |Ano |
-| authenticationType. |Anonymní. |Ano |
+| Adresa URL |Adresa URL k webovému zdroji |Ano |
+| authenticationType |Anonymní. |Ano |
 
 ### <a name="using-anonymous-authentication"></a>Anonymní ověřování
 

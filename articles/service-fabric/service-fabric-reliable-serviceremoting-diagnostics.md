@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
 ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925939"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostika a sledování výkonu pro vzdálenou komunikaci Reliable Service
@@ -28,7 +28,7 @@ Generuje runtime spolehlivé ServiceRemoting [čítače výkonu](https://msdn.mi
 ## <a name="performance-counters"></a>Čítače výkonu
 Spolehlivé ServiceRemoting runtime definuje následující kategorie čítačů výkonu:
 
-| Kategorie | Popis |
+| Category | Popis |
 | --- | --- |
 | Služba Service Fabric |Čítače specifické pro Azure Service Fabric vzdálené komunikace služby, například průměrná doba zpracování žádosti |
 | Metoda služby Service Fabric |Čítače specifické pro metody implementované vzdálené komunikace služby Service Fabric, například jak často je vyvolána metoda služby |
@@ -85,7 +85,7 @@ Modul runtime spolehlivé služby zveřejňuje následující čítače výkonu 
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Metoda služby Service Fabric |Vyvolání/s |Kolikrát vyvolala metoda služby za sekundu |
+| Metoda služby Service Fabric |Volání za sekundu |Kolikrát vyvolala metoda služby za sekundu |
 | Metoda služby Service Fabric |Průměrný počet milisekund na vyvolání |Čas potřebný k provedení metody služby v milisekundách |
 | Metoda služby Service Fabric |Vyvolané výjimky/s |Počet pokusů, že metoda služby došlo k výjimce za sekundu |
 

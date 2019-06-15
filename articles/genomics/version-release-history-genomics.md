@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: article
 ms.date: 01/11/2019
 ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60780946"
 ---
 # <a name="version-release-history"></a>Historie vydaných verzí
 Tým Microsoft Genomics pravidelně aktualizuje Pythonového klienta Microsoft Genomics pro opravy a nové funkce. 
 
 ## <a name="latest-release"></a>Nejnovější vydaná verze
-Aktuální Pythonového klienta je verze 0.8.1. 3. prosince 2018 a podporuje spouštění pracovních postupů s GATK 3.5 a GATK4 byl vydán. Podporuje také gVCF výstup.
+Aktuální Pythonového klienta je verze 0.8.1. 3\. prosince 2018 a podporuje spouštění pracovních postupů s GATK 3.5 a GATK4 byl vydán. Podporuje také gVCF výstup.
 
 
 ## <a name="release-history"></a>Historie vydaných verzí 
