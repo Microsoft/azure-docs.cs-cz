@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2019
 ms.author: magoedte
 ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61387060"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav se sešity Azure Monitor
@@ -33,7 +33,7 @@ Sešity jsou užitečné pro scénáře, jako je například:
 
 Azure Monitor pro virtuální počítače obsahuje několik sešitů, které vám pomůžou začít a následující tabulka shrnuje jejich.
 
-| Sešit | Popis | Rozsah |
+| Sešit | Popis | Scope |
 |----------|-------------|-------|
 | Výkon | Poskytuje přizpůsobitelné verze našich nejlepších N a zobrazení grafů v jedné sešitu, který využívá všechny čítače výkonu Log Analytics, které jste povolili.| Ve velkém měřítku |
 | Čítače výkonu | Zobrazení grafu N nejlepších napříč celou sadu čítačů výkonu. | Ve velkém měřítku |
@@ -57,7 +57,7 @@ Sešit je tvořené oddíly skládající se z nezávisle upravovat grafy, tabul
 
 3. V seznamu vyberte virtuální počítač.
 
-4. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)**.
+4. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
 
 5. Na stránce přehledu virtuálního počítače, vyberte **výkonu** nebo **mapy** kartu a potom vyberte **zobrazení sešitů** z odkazu na stránce. 
 
@@ -166,14 +166,14 @@ Existují čtyři různé typy parametrů, které jsou aktuálně podporovány:
 
 |                  |      |
 | ---------------- |:-----|
-| **Text**    | Umožňuje uživateli upravit textové pole a volitelně může zadat dotaz vyplnit výchozí hodnotu. |
+| **text**    | Umožňuje uživateli upravit textové pole a volitelně může zadat dotaz vyplnit výchozí hodnotu. |
 | **Rozevírací seznam** | Umožňuje uživateli zvolit ze sady hodnot. |
 | **Výběr časového rozsahu**| Umožňuje uživateli vybrat z předdefinovanou sadu hodnot rozsahu času, nebo si můžete vybrat z vlastní časový rozsah.|
 | **Výběr prostředku** | Umožňuje uživateli zvolit ze sešitu počet vybraných prostředků.|
 
 ### <a name="using-a-text-parameter"></a>Pomocí parametru text
 
-Hodnota, která nahrazuje uživatelské typy v textovém poli přímo v dotazu bez uvozovací znaky nebo uvozovky u. Pokud je hodnota, je třeba řetězec, dotaz by měl mít uvozovky kolem parametru (jako je **'{parameter}'**).
+Hodnota, která nahrazuje uživatelské typy v textovém poli přímo v dotazu bez uvozovací znaky nebo uvozovky u. Pokud je hodnota, je třeba řetězec, dotaz by měl mít uvozovky kolem parametru (jako je **'{parameter}'** ).
 
 Text parametr povoluje hodnotu v textovém poli, který se má použít kdekoli. Může být název tabulky, název sloupce, název funkce, operátor, atd.  Typ parametru text má nastavení **získat výchozí hodnotu z analytického dotazu**, který umožňuje Autor sešitu použít dotaz k naplnění výchozí hodnotu pro toto textové pole.
 

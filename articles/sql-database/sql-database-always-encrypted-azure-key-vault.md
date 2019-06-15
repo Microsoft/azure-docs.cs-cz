@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66168183"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
@@ -160,7 +160,7 @@ Tento kurz ukazuje, jak ukládat klíče ve službě Azure Key Vault.
 
 ![Konfigurace hlavního klíče](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
-### <a name="validation"></a>Ověřování
+### <a name="validation"></a>Ověření
 Můžete teď šifrování sloupce nebo uložit skript prostředí PowerShell spustit později. Pro účely tohoto kurzu vyberte **pokračovat, dokončete nyní** a klikněte na tlačítko **Další**.
 
 ### <a name="summary"></a>Souhrn

@@ -18,10 +18,10 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60833037"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení potíží s chybami HTTP typu "502 – Chybná brána" a "503 Služba není dostupná" ve službě Azure App Service
@@ -83,7 +83,7 @@ Pro přístup k diagnostice App Service, přejděte do App Service Environment v
 #### <a name="use-the-kudu-debug-console"></a>Použijte konzolu pro ladění Kudu
 App Service se dodává s konzolou pro ladění, který můžete použít pro ladění, zkoumat a nahrávání souborů, stejně jako koncové body JSON pro získání informací o vašem prostředí. Tento postup se nazývá *konzola Kudu* nebo *řídicího panelu SCM* pro vaši aplikaci.
 
-Tento řídicí panel můžete přistupovat tak, že přejdete na odkaz **https://&lt;název vaší aplikace >.scm.azurewebsites.net/**.
+Tento řídicí panel můžete přistupovat tak, že přejdete na odkaz **https://&lt;název vaší aplikace >.scm.azurewebsites.net/** .
 
 Zde jsou některé z akcí, které poskytuje Kudu:
 

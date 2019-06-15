@@ -3,8 +3,8 @@ title: Azure Service Fabric Docker Compose ve verzi Preview nasazení
 description: Azure Service Fabric přijímá Docker Compose formát, aby bylo snazší orchestrujte existující kontejnery pomocí Service Fabric. Tato podpora je aktuálně ve verzi preview.
 services: service-fabric
 documentationcenter: .net
-author: rockboyfor
-manager: digimobile
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -12,14 +12,13 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-origin.date: 02/23/2018
-ms.date: 04/29/2019
-ms.author: v-yeche
+ms.date: 2/23/2018
+ms.author: aljo, subramar
 ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60948830"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Podpora nasazení docker Compose v Azure Service Fabric (verze Preview)
@@ -139,8 +138,8 @@ Nastavení clusteru pro vynucení omezení prostředků, jak je popsáno v [zás
 ### <a name="ports-section"></a>Část porty
 
 Zadejte protokol http nebo https v sekci portů, který bude používat naslouchací proces služby Service Fabric. Tím se zajistí, že protokol koncového bodu je správně publikována ve službě pojmenování povolit reverzní proxy server pro předávání požadavků:
-* Směrovat do nezabezpečených služby Service Fabric tvoří, zadejte **/http**. Například- **"80:80 / http"**.
-* Pokud chcete směrovat zabezpečených služeb Service Fabric tvoří, zadejte **/https**. Například- **"443:443 / https"**.
+* Směrovat do nezabezpečených služby Service Fabric tvoří, zadejte **/http**. Například- **"80:80 / http"** .
+* Pokud chcete směrovat zabezpečených služeb Service Fabric tvoří, zadejte **/https**. Například- **"443:443 / https"** .
 
 > [!NOTE]
 > Syntaxe oddílu /http a porty /https je specifický pro Service Fabric k registraci správnou adresu URL naslouchací proces Service Fabric.  Pokud Docker compose syntaxi souboru se ověří prostřednictvím kódu programu, může to způsobit chybu ověřování.
@@ -166,5 +165,3 @@ I když tento model nabízí flexibilitu, plánujeme také podporují model nasa
 
 * Přečtěte si [aplikačním modelem Service Fabric](service-fabric-application-model.md)
 * [Začínáme s rozhraním příkazového řádku Service Fabric](service-fabric-cli.md)
-
-<!-- Update_Description: wording update -->

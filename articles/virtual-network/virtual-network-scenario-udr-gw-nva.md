@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64575581"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuálního zařízení
@@ -42,11 +42,11 @@ Následující řešení používá virtuální zařízení brány firewall k im
 ## <a name="considerations"></a>Požadavky
 Můžete nasadit prostředí je vysvětleno výše v Azure ještě dnes, následujícím způsobem pomocí různých funkcí, které jsou k dispozici.
 
-* **Virtuální síť (VNet)**. Virtuální síť Azure funguje podobně jako ochrana čipem v místní síti a je možné segmentovat do jedné nebo několika podsítí pro zajištění izolace provozu a oddělení oblastí zájmu.
+* **Virtuální síť (VNet)** . Virtuální síť Azure funguje podobně jako ochrana čipem v místní síti a je možné segmentovat do jedné nebo několika podsítí pro zajištění izolace provozu a oddělení oblastí zájmu.
 * **Virtuální zařízení**. Několik partneři poskytovat virtuální zařízení na webu Azure Marketplace, který lze použít pro tři brány firewall, je popsáno výše. 
-* **Uživatelem definované trasy (UDR)**. Směrovací tabulky mohou obsahovat používá sítě Azure k řízení toku paketů ve virtuální síti trasy definované uživatelem. Tyto směrovacích tabulek můžete použít na podsítě. Jednou z nejnovějších funkcí v Azure je možnost použití směrovací tabulky podsítě GatewaySubnet, veškerý provoz přicházející do virtuální sítě Azure z hybridní připojení do virtuálního zařízení možnost, že.
+* **Uživatelem definované trasy (UDR)** . Směrovací tabulky mohou obsahovat používá sítě Azure k řízení toku paketů ve virtuální síti trasy definované uživatelem. Tyto směrovacích tabulek můžete použít na podsítě. Jednou z nejnovějších funkcí v Azure je možnost použití směrovací tabulky podsítě GatewaySubnet, veškerý provoz přicházející do virtuální sítě Azure z hybridní připojení do virtuálního zařízení možnost, že.
 * **Předávání IP**. Ve výchozím nastavení modulu Azure sítě přesměrovávat pakety pro virtuální síťové karty (síťové adaptéry) pouze v případě, že paketů cílová IP adresa shoduje s adresou IP adresy NIC. Proto pokud trasu UDR definuje, paket se musí odeslat na danou virtuální zařízení, modul Azure sítě by vyřadit paketu. Chcete-li zajistit, že paket se doručí na virtuální počítač (v tomto případě virtuální zařízení), který není na skutečné místo určení paketu, budete muset povolit předávání IP adres pro virtuální zařízení.
-* **Skupiny zabezpečení sítě (Nsg)**. Následující příklad nevyužívá skupin nsg, ale můžete použít skupiny zabezpečení sítě u podsítí a/nebo síťové karty v tomto řešení Chcete-li dál filtrovat provoz do a z těchto podsítí a síťových karet.
+* **Skupiny zabezpečení sítě (Nsg)** . Následující příklad nevyužívá skupin nsg, ale můžete použít skupiny zabezpečení sítě u podsítí a/nebo síťové karty v tomto řešení Chcete-li dál filtrovat provoz do a z těchto podsítí a síťových karet.
 
 ![Připojení pomocí protokolu IPv6](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 

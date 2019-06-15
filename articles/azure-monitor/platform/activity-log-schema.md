@@ -9,10 +9,10 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: ba5e0f696f54f46fb14086b542dc3b2e64155975
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244940"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure schéma událostí protokolu aktivit
@@ -112,17 +112,17 @@ Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a 
 ### <a name="property-descriptions"></a>Popisy vlastností
 | Název elementu | Popis |
 | --- | --- |
-| Autorizace |Objekt BLOB RBAC vlastností události. Obvykle obsahuje vlastnosti "action", "role" a "rozsah". |
+| authorization |Objekt BLOB RBAC vlastností události. Obvykle obsahuje vlastnosti "action", "role" a "rozsah". |
 | Volající |E-mailová adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. |
 | kanály |Jeden z následujících hodnot: "Admin", "Operace" |
-| deklarace identity |Token JWT, používá služba Active Directory k ověření uživatele nebo aplikaci k provedení této operace v Resource Manageru. |
+| claims |Token JWT, používá služba Active Directory k ověření uživatele nebo aplikaci k provedení této operace v Resource Manageru. |
 | correlationId |Obvykle GUID ve formátu řetězce. Události, které sdílejí ID korelace patřit do stejné akce uber. |
 | description |Statický text popisu události. |
 | eventDataId |Jedinečný identifikátor události. |
 | eventName | Popisný název pro správu událostí. |
 | category | Vždy "správce" |
 | httpRequest |Objekt BLOB popisující požadavku Http. Obvykle obsahuje "ID žádosti klienta", "clientIpAddress" a "method" (metoda protokolu HTTP. For example, Vložit). |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
+| level |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
 | resourceGroupName |Název skupiny prostředků pro ovlivněných prostředků. |
 | resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek |
 | Typ prostředku | Typ prostředku, který byl ovlivněn událost pro správu. |
@@ -265,7 +265,7 @@ Tato kategorie obsahuje záznam všechny události stavu prostředků, ke který
 | eventDataId |Jedinečný identifikátor události upozornění. |
 | category | Vždy ResourceHealth"" |
 | eventTimestamp |Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události. |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování", "Informační" a "Verbose" |
+| level |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování", "Informační" a "Verbose" |
 | operationId |Identifikátor GUID sdílen události, které odpovídají jedné operace. |
 | operationName |Název operace |
 | resourceGroupName |Název skupiny prostředků, který obsahuje prostředek. |
@@ -354,12 +354,12 @@ Tato kategorie obsahuje záznam všech aktivací upozornění v Azure. Je např�
 | --- | --- |
 | Volající | Vždy Microsoft.Insights/alertRules |
 | kanály | Vždy "Admin, operace" |
-| deklarace identity | Objekt blob JSON s typem hlavní název služby (hlavní název služby), nebo zdroj výstrahy stroje. |
+| claims | Objekt blob JSON s typem hlavní název služby (hlavní název služby), nebo zdroj výstrahy stroje. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
 | description |Popis statický text oznámení události. |
 | eventDataId |Jedinečný identifikátor události upozornění. |
 | category | Vždy "upozornění" |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
+| level |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
 | resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je název skupiny prostředků, které obsahuje výstrahu samotnou. |
 | resourceProviderName |Název poskytovatele prostředků pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je název poskytovatele prostředků pro výstrahu samotnou. |
 | resourceId | Název ID prostředku pro ovlivněný prostředek, pokud se jedná upozornění na metriku. Pro ostatní typy výstrah je ID prostředku upozornění vlastního prostředku. |
@@ -464,11 +464,11 @@ Tato kategorie obsahuje záznam žádné události vztahující se k operaci mod
 | --- | --- |
 | Volající | Vždy Microsoft.Insights/autoscaleSettings |
 | kanály | Vždy "Admin, operace" |
-| deklarace identity | Objekt blob JSON pomocí hlavního názvu služby (hlavní název služby), nebo prostředek typu, modul automatického škálování. |
+| claims | Objekt blob JSON pomocí hlavního názvu služby (hlavní název služby), nebo prostředek typu, modul automatického škálování. |
 | correlationId | Identifikátor GUID ve formátu řetězce. |
 | description |Statický text popisu události automatického škálování. |
 | eventDataId |Jedinečný identifikátor události automatického škálování. |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
+| level |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění" a "Informační" |
 | resourceGroupName |Název skupiny prostředků pro nastavení automatického škálování. |
 | resourceProviderName |Název poskytovatele prostředků pro nastavení automatického škálování. |
 | resourceId |ID prostředku nastavení automatického škálování. |
@@ -559,7 +559,7 @@ Tato kategorie obsahuje záznam všech výstrah generovaných v Azure Security C
 | eventName |Popisný název události zabezpečení. |
 | category | Vždy "zabezpečení" |
 | id |Jedinečný identifikátor události zabezpečení. |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
+| level |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
 | resourceGroupName |Název skupiny prostředků pro prostředek. |
 | resourceProviderName |Název poskytovatele prostředků pro Azure Security Center. Vždy "Microsoft.Security". |
 | Typ prostředku |Typ prostředku, které vygenerovalo událost zabezpečení, jako je například "Microsoft.Security/locations/alerts" |
@@ -639,7 +639,7 @@ Tato kategorie obsahuje záznam žádná nová doporučení, které jsou generov
 | eventDataId | Jedinečný identifikátor události doporučení. |
 | category | Vždy "doporučení" |
 | id |Jedinečný identifikátor události doporučení. |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
+| level |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Varování" nebo "Informační" |
 | operationName |Název operace  Vždy Microsoft.Advisor/generateRecommendations/action""|
 | resourceGroupName |Název skupiny prostředků pro prostředek. |
 | resourceProviderName |Název poskytovatele prostředků pro prostředek, který toto doporučení vztahuje, například "MICROSOFT.COMPUTE" |
@@ -743,10 +743,10 @@ Tato kategorie obsahuje záznamy všech operací efekt akce prováděné [Azure 
 
 | Název elementu | Popis |
 | --- | --- |
-| Autorizace | Pole vlastnosti RBAC události. U nových prostředků Toto je akce a oboru požadavku, který aktivuje hodnocení. Pro existující prostředky je akce "Microsoft.Resources/checkPolicyCompliance/read". |
+| authorization | Pole vlastnosti RBAC události. U nových prostředků Toto je akce a oboru požadavku, který aktivuje hodnocení. Pro existující prostředky je akce "Microsoft.Resources/checkPolicyCompliance/read". |
 | Volající | U nových prostředků, identitu, která iniciovala nasazení. Pro existující prostředky, GUID RP Insights zásad Microsoft Azure. |
 | kanály | Události zásad použijte pouze kanál "Operace". |
-| deklarace identity | Token JWT, používá služba Active Directory k ověření uživatele nebo aplikaci k provedení této operace v Resource Manageru. |
+| claims | Token JWT, používá služba Active Directory k ověření uživatele nebo aplikaci k provedení této operace v Resource Manageru. |
 | correlationId | Obvykle GUID ve formátu řetězce. Události, které sdílejí ID korelace patřit do stejné akce uber. |
 | description | Je toto pole prázdné pro události zásad. |
 | eventDataId | Jedinečný identifikátor události. |
@@ -754,7 +754,7 @@ Tato kategorie obsahuje záznamy všech operací efekt akce prováděné [Azure 
 | category | Deklaruje jako patřící do "Zásady" události protokolu aktivit. |
 | eventTimestamp | Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události. |
 | id | Jedinečný identifikátor události na konkrétní prostředek. |
-| úroveň | Úroveň události. Audit používá "Upozornění" a odepřít "Chyba". Chybu auditIfNotExists nebo deployIfNotExists může generovat "Varování" nebo "Chyba" v závislosti na závažnosti. Všechny ostatní zásady události pomocí "Informační". |
+| level | Úroveň události. Audit používá "Upozornění" a odepřít "Chyba". Chybu auditIfNotExists nebo deployIfNotExists může generovat "Varování" nebo "Chyba" v závislosti na závažnosti. Všechny ostatní zásady události pomocí "Informační". |
 | operationId | Identifikátor GUID sdílen události, které odpovídají jedné operace. |
 | operationName | Název operace a přímo souvisí s účinku zásad. |
 | resourceGroupName | Název skupiny prostředků vyhodnoceném prostředku. |

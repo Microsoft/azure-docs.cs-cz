@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8804988387ba4a6cdc8dff5d93077de42ea2051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4af8cdc1072678de7e34458fc4b54d52aae9eff1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546177"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111594"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 
@@ -81,7 +81,7 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují psát da
 
 **Neobvyklé přihlášení zjišťování.**  Azure AD zpracovává více než miliard přihlášení denně, při použití algoritmů strojového učení ke zjištění podezřelé aktivity a upozornit správce IT o možných problémech. Díky podpoře přihlášení Azure AD, vaše aplikace získá Výhodou této ochrany. Další informace o [zobrazení sestav přístupu Azure Active Directory](../active-directory-view-access-usage-reports.md).
 
-**Podmíněný přístup.**  Kromě ověřování službou Multi-Factor Authentication, můžou správci vyžadují určitých podmínek splnit, předtím než uživatelé můžou přihlásit do vaší aplikace. Podmínky, které je možné nastavit zahrnují rozsah IP adres z klientských zařízení, členství v zadaných skupinách a stav zařízení se používají pro přístup. Další informace o [podmíněného přístupu Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+**Podmíněný přístup.**  Kromě ověřování službou Multi-Factor Authentication, můžou správci vyžadují určitých podmínek splnit, předtím než uživatelé můžou přihlásit do vaší aplikace. Podmínky, které je možné nastavit zahrnují rozsah IP adres z klientských zařízení, členství v zadaných skupinách a stav zařízení se používají pro přístup. Další informace o [Azure Active Directory podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
 
 ### <a name="easy-development"></a>Snadný vývoj
 

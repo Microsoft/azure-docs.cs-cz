@@ -12,10 +12,10 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957388"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
@@ -26,7 +26,7 @@ Pokud chcete začít, přejděte [webu Azure portal](https://portal.azure.com) a
 
 ![Přehled funkcí aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-Můžete přejít na všechno, co potřebujete ke správě aplikace function app na stránce Přehled zejména **[nastavení aplikace](#settings)** a **[funkce:](#platform-features)**.
+Můžete přejít na všechno, co potřebujete ke správě aplikace function app na stránce Přehled zejména **[nastavení aplikace](#settings)** a **[funkce:](#platform-features)** .
 
 ## <a name="settings"></a>Nastavení aplikace
 

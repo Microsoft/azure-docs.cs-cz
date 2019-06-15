@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65069101"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL – jeden Server pomocí rozhraní příkazového řádku Azure

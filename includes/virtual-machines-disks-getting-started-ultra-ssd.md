@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 326382339e2b4aeaa488d3d7f76b7ff35f9bc620
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67132942"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Povolit a nasadit Azure ultra SSD disky (preview)
 
@@ -33,11 +33,12 @@ Odpověď bude podobná formuláři níže, kde X je pásmo má být použito pr
 
 Zachovat **zóny** hodnota představuje zónu dostupnosti, a budete ho potřebovat za účelem nasazení ultra SSD.
 
-|ResourceType  |Název  |Location  |Zóny  |Omezení  |Schopnost  |Hodnota  |
+|ResourceType  |Name  |Location  |Zóny  |Omezení  |Schopnost  |Hodnota  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
-Pokud neodpověděl z příkazu, je registrace k funkci buď stále čekající na vyřízení nebo není schváleno ještě.
+> [!NOTE]
+> Pokud neodpověděl z příkazu, je registrace k funkci buď stále čekající na vyřízení nebo není schváleno ještě.
 
 Teď, když znáte zóně, ve které chcete nasadit, postupujte podle kroků nasazení v tomto článku se získat první virtuální počítače nasazené pomocí ultra SSD.
 

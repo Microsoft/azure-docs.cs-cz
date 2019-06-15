@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
 ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922445"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
@@ -138,7 +138,7 @@ Postupujte podle těchto kroků na webu Azure Portal:
 K ověření pomocí instančního objektu, musíte přiřadit roli RBAC pro vaši aplikaci. Postupujte následovně:
 
 1. Na webu Azure Portal přejděte na účet Batch používá vaše aplikace.
-2. V **nastavení** okno účtu Batch vyberte **řízení přístupu (IAM)**.
+2. V **nastavení** okno účtu Batch vyberte **řízení přístupu (IAM)** .
 3. Klikněte na tlačítko **přiřazení rolí** kartu.
 4. Klikněte na tlačítko **přidat přiřazení role** tlačítko. 
 5. Z **Role** rozevíracího seznamu, zvolte buď _Přispěvatel_ nebo _čtečky_ role pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).  

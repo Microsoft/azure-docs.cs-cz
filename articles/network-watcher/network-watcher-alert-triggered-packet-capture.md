@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 37e42b05046be27254d2ceb15a59fbdb931ae161
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711909"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Použití zachytávání paketů pro Proaktivní monitorování sítě pomocí výstrah a Azure Functions
@@ -81,10 +81,10 @@ Prvním krokem je vytvoření funkce Azure ke zpracování upozornění a vytvo�
     |**Předplatné**|[Vaše předplatné] Předplatné, pro který chcete vytvořit aplikaci function app.||
     |**Skupina prostředků**|PacketCaptureRG|Skupinu prostředků k obsáhnutí aplikace function app.|
     |**Plán hostování**|Plán Consumption| Typ plánu vaše aplikace používá funkce. Možnosti jsou spotřeby nebo plán služby App Service. |
-    |**Umístění**|USA – střed| Oblast, ve kterém chcete vytvořit aplikaci function app.|
+    |**Location**|USA – střed| Oblast, ve kterém chcete vytvořit aplikaci function app.|
     |**Účet úložiště**|{automaticky generované}| Účet úložiště, Azure Functions potřebuje pro úložiště pro obecné účely.|
 
-3. Na **aplikace Function App PacketCaptureExample** okně vyberte **funkce** > **vlastní funkce**  >  **+**.
+3. Na **aplikace Function App PacketCaptureExample** okně vyberte **funkce** > **vlastní funkce**  >  **+** .
 
 4. Vyberte **HttpTrigger – Powershell**a pak zadejte zbývající informace. Nakonec vytvořte novou funkci, vyberte **vytvořit**.
 
@@ -208,7 +208,7 @@ ID klienta je ID aplikace pro aplikaci v Azure Active Directory.
    > [!NOTE]
    > Heslo, které používáte při vytváření aplikace by měly být stejné heslo, které jste předtím vytvořili při ukládání souboru klíče.
 
-1. Na webu Azure Portal, vyberte **předplatná**. Vyberte předplatné, které chcete použít a potom vyberte **řízení přístupu (IAM)**.
+1. Na webu Azure Portal, vyberte **předplatná**. Vyberte předplatné, které chcete použít a potom vyberte **řízení přístupu (IAM)** .
 
     ![Funkce IAM][functions9]
 
@@ -253,7 +253,7 @@ $Encryptedpassword
 
 1. Přidání proměnné prostředí a jejich hodnoty nastavení aplikace a pak vyberte **Uložit**.
 
-    ![Nastavení aplikací][functions12]
+    ![Nastavení aplikace][functions12]
 
 ### <a name="add-powershell-to-the-function"></a>Přidání prostředí PowerShell do funkce
 

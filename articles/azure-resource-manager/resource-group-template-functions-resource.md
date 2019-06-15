@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 05/21/2019
 ms.author: tomfitz
 ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990764"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
@@ -112,9 +112,9 @@ V následující tabulce jsou uvedeny možné použití seznamu *.
 | Microsoft.ServiceBus/namespaces/queues/authorizationRules | [klíče listkey](/rest/api/servicebus/queues/listkeys) |
 | Microsoft.ServiceBus/namespaces/topics/authorizationRules | [klíče listkey](/rest/api/servicebus/topics/listkeys) |
 | Microsoft.SignalRService/SignalR | [klíče listkey](/rest/api/signalr/signalr/listkeys) |
-| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.Storage/storageAccounts. | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageAccounts. | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts. | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Microsoft.StorSimple/managers/devices | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Microsoft.StorSimple/managers/devices | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft.StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
@@ -506,7 +506,7 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-## <a name="resourcegroup"></a>resourceGroup
+## <a name="resourcegroup"></a>Skupina prostředků
 
 `resourceGroup()`
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: f42a97cdd74d360bc047ef561cbe626d526f9e4a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136247"
 ---
 V systému DNS (Domain Name) slouží k vyhledání věci na Internetu. Například pokud v prohlížeči zadejte adresu nebo kliknutím na odkaz na webové stránce, používá DNS přeložit doménu na IP adresu. IP adresa je ze například adresu ulice, ale nejedná se o velmi lidské popisný. Například je mnohem jednodušší pamatovat název DNS jako **contoso.com** než adresu IP, jako je například 192.168.1.88 nebo 2001:0:4137:1f67:24a2:3888:9cce:fea3 mějte na paměti.

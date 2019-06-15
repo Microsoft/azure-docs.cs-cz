@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64870309"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Spravovat náklady na AWS a jeho použití v Azure
@@ -83,7 +83,7 @@ Následující tabulka popisuje dimenze, které jsou k dispozici pro skupinu a f
 | Kategorie měřiče | lineItem/ProductCode | Vše |   |
 | Podkategorie měřiče | lineitem/UsageType | Vše |   |
 | Operace | lineItem/operace | Vše |   |
-| Prostředek | lineItem/ResourceId | Vše |   |
+| Resource | lineItem/ResourceId | Vše |   |
 | Typ prostředku | product/instanceType | Vše | Pokud produkt/instanceType má hodnotu null, použije se lineItem/UsageType. |
 | ResourceGuid | neuvedeno | Vše | Měřičů Azure identifikátor GUID. |
 | Název služby | produkt/ProductName | Vše | Pokud produkt/ProductName má hodnotu null, použije se lineItem/kód ProductCode souboru. |
@@ -91,8 +91,8 @@ Následující tabulka popisuje dimenze, které jsou k dispozici pro skupinu a f
 | ID předplatného | lineItem/UsageAccountId | Konsolidované skupiny účet a správu |   |
 | Název předplatného | neuvedeno | Konsolidované skupiny účet a správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
 | Značka | resourceTags/\* | Vše | _Uživatele:_ předpona je odebrán z uživatelské značky povolit značky cloudu. _Aws:_ předponu zůstává nedotčeno. |
-| ID fakturačního účtu | bill/PayerAccountId | Skupina pro správu |   |
-| Název fakturačního účtu | neuvedeno | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
+| ID účtu fakturace | bill/PayerAccountId | Skupina pro správu |   |
+| Název účtu fakturace | neuvedeno | Skupina pro správu | Názvy účtů se shromažďují pomocí rozhraní API pro organizaci AWS. |
 | Poskytovatel | neuvedeno | Skupina pro správu | AWS a Azure. |
 
 ## <a name="set-budgets-on-aws-scopes"></a>Sada rozpočty na AWS obory

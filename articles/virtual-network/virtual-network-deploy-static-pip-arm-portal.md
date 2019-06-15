@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
 ms.openlocfilehash: f6914a9894db07a40b372a8c247a7623c3957d86
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692426"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresu pomocí webu Azure portal
@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVM|
+    |Name|myVM|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|

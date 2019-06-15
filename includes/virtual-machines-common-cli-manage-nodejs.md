@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158528"
 ---
 Než budete moct použít Azure CLI s příkazy a šablonami Resource Manageru k nasazení prostředků a úloh Azure pomocí skupin prostředků, budete potřebovat účet s Azure. Pokud účet nemáte, [tady můžete získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -35,7 +35,7 @@ Tento článek popisuje základní příkazy, které můžete použít ke správ
 | Vytvoření nejzákladnějšího virtuálního počítače |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Získejte hodnotu `image-urn` z příkazu `azure vm image list`. Příklady najdete v [tomto článku](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).) |
 | Vytvoření virtuálního počítače s Linuxem |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | Vytvoření virtuálního počítače s Windows |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
-| Vypsat virtuální počítače |`azure  vm list [options]` |
+| Výpis virtuálních počítačů |`azure  vm list [options]` |
 | Získání informací o virtuálním počítači |`azure  vm show [options] <resource_group> <name>` |
 | Spuštění virtuálního počítače |`azure vm start [options] <resource_group> <name>` |
 | Zastavení virtuálního počítače |`azure vm stop [options] <resource_group> <name>` |

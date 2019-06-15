@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836240"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure

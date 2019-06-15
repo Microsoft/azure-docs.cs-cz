@@ -14,10 +14,10 @@ ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
 ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61461557"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Spravovat pravidla inteligentního zjišťování služby Application Insights pomocí šablon Azure Resource Manageru
@@ -39,7 +39,7 @@ Pro maximální flexibilitu a každé pravidlo inteligentní zjišťování mů�
 ## <a name="examples"></a>Příklady
 
 Níže jsou příklady ukazující, jak nakonfigurovat nastavení pravidla inteligentního zjišťování pomocí šablon Azure Resource Manageru.
-Všechny ukázky odkazovat na prostředek Application Insights s názvem _"myApplication"_, a "dlouhý závislost doba trvání inteligentního zjišťování pravidla", který interně názvem _"longdependencyduration"_.
+Všechny ukázky odkazovat na prostředek Application Insights s názvem _"myApplication"_ , a "dlouhý závislost doba trvání inteligentního zjišťování pravidla", který interně názvem _"longdependencyduration"_ .
 Ujistěte se, že chcete nahradit název prostředku Application Insights a k určení příslušné inteligentního zjišťování interní název pravidla. Zkontrolujte v následující tabulce seznamu odpovídající vnitřní názvů Azure Resource Manageru pro každé pravidlo inteligentní zjišťování.
 
 ### <a name="disable-a-smart-detection-rule"></a>Zakázat pravidlo inteligentního zjišťování
@@ -145,10 +145,10 @@ Níže je tabulka názvů pravidla inteligentního zjišťování, jak se objev�
 
 | Název pravidla Azure portal | Interní název
 |:---|:---|
-| Pomalé načítání stránky | slowpageloadtime |
+| Čas načítání stránky pomalé | slowpageloadtime |
 | Dlouhá doba odezvy serveru | slowserverresponsetime |
 | Dlouhá doba trvání závislosti | longdependencyduration |
-| Prodloužení doby odezvy serveru | degradationinserverresponsetime |
+| Snížení doby odezvy serveru | degradationinserverresponsetime |
 | Pokles v trvání závislosti | degradationindependencyduration |
 | Snížení výkonnosti v poměru závažnost trasování (preview) | extension_traceseveritydetector |
 | Neobvyklý nárůst počtu výjimek (preview) | extension_exceptionchangeextension |

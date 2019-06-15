@@ -17,12 +17,12 @@ ms.date: 01/30/2019
 ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c4aa4d3a4425c93cb495d27d0fe38d329ddea7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c61c62555b3712983d7eb5c1478ed193730ed9b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110576"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Jak: Správa zastaralých zařízení ve službě Azure AD
 
@@ -54,7 +54,7 @@ Protože se zastaralé zařízení definuje jako registrované zařízení, kter
 
 Vyhodnocení časového razítka aktivity se aktivuje při pokusu o ověření zařízení. Služba Azure AD časové razítko aktivity vyhodnocuje, když:
 
-- Byly aktivovány zásady podmíněného přístupu, které vyžadují [spravovaná zařízení](../conditional-access/require-managed-devices.md) nebo [schválené klientské aplikace](../conditional-access/app-based-conditional-access.md).
+- Zásady podmíněného přístupu, které vyžadují [spravovaných zařízeních](../conditional-access/require-managed-devices.md) nebo [schválené klientské aplikace](../conditional-access/app-based-conditional-access.md) byla aktivována.
 
 - Jsou v síti aktivní zařízení s Windows 10, která jsou připojená k Azure AD nebo hybridně připojená k Azure AD. 
 

@@ -13,10 +13,10 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002835"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformovat data spuštěním aktivity Python v Azure Databricks
@@ -66,7 +66,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 |---|---|---|
 |name|Název aktivity v kanálu.|Ano|
 |description|Text popisující, jakým způsobem aktivita naloží.|Ne|
-|Typ|Pro aktivitu Python Databricks typ aktivity je DatabricksSparkPython.|Ano|
+|type|Pro aktivitu Python Databricks typ aktivity je DatabricksSparkPython.|Ano|
 |linkedServiceName|Název propojené služby Databricks, ve kterém se spouští aktivity Python. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
 |pythonFile|Identifikátor URI soubor Pythonu, který má být proveden. Jsou podporovány pouze DBFS cesty.|Ano|
 |parameters|Parametry příkazového řádku, které se předají do souboru Python. Toto je pole řetězců.|Ne|

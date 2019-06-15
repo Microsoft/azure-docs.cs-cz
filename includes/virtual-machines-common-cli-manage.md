@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: beece95164f0d82b1aa7f22d56f4dce02f4bb38c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117261"
 ---
 Rozhraní příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure v systémech macOS, Linux a Windows. Tento článek podrobně popisuje některé z nejčastěji používané příkazy k vytvoření a správa virtuálních počítačů (VM).
@@ -38,7 +38,7 @@ Podrobnější nápovědu přepínače konkrétní příkazového řádku a mož
 ### <a name="get-vm-info"></a>Získání informací o virtuálním počítači
 | Úkol | Příkazy Azure CLI |
 | --- | --- |
-| Vypsat virtuální počítače | `az vm list` |
+| Výpis virtuálních počítačů | `az vm list` |
 | Získání informací o virtuálním počítači | `az vm show --resource-group myResourceGroup --name myVM` |
 | Získání využití prostředků virtuálního počítače | `az vm list-usage --location eastus` |
 | Získání všech dostupných velikostí virtuálních počítačů | `az vm list-sizes --location eastus` |

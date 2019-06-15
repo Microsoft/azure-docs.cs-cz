@@ -9,10 +9,10 @@ ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ee9b70827c19236287f81f66f4b9c6e1004a54fd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114507"
 ---
 Následující tabulka popisuje výchozí limity pro Azure pro obecné účely v1, v2 a účty Blob storage. *Příchozího přenosu dat* limit odkazuje na všechna data z požadavků, které se odesílají na účet úložiště. *Odchozího přenosu dat* limit odkazuje na všechna data z odpovědi, které byly přijaty z účtu úložiště.

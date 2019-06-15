@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
 ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60768658"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání ve službě Azure Data Factory
@@ -54,7 +54,7 @@ Následující zdroje dat nejsou podporovány pro aktivitu vyhledávání. Nejv�
 
 ## <a name="type-properties"></a>Typ vlastnosti
 
-Název | Popis | Type | Povinné?
+Name | Popis | Type | Požadováno?
 ---- | ----------- | ---- | --------
 Datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získat tak podrobné údaje z **vlastnosti datové sady** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
 source | Obsahuje vlastnosti zdroje specifických pro datovou sadu, stejně jako zdroj kopírování. Získat tak podrobné údaje z **vlastnosti aktivity kopírování** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
@@ -70,7 +70,7 @@ firstRowOnly | Určuje, jestli se mají vrátit pouze první řádek nebo všech
 
 Výsledek vyhledávání se vrátí v `output` část výsledky spuštění aktivit.
 
-* **Když `firstRowOnly` je nastavena na `true` (výchozí)**, formát výstupu se, jak je znázorněno v následujícím kódu. Výsledek vyhledávání je pod určitou `firstRow` klíč. Výsledek v následné aktivity, použijte vzor `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Když `firstRowOnly` je nastavena na `true` (výchozí)** , formát výstupu se, jak je znázorněno v následujícím kódu. Výsledek vyhledávání je pod určitou `firstRow` klíč. Výsledek v následné aktivity, použijte vzor `@{activity('MyLookupActivity').output.firstRow.TableName}`.
 
     ```json
     {
@@ -302,7 +302,7 @@ Tuto instanci Azure SQL Database s daty, které se mají zkopírovat do úloži�
 
 Tady jsou některá omezení, aktivita vyhledávání a navrhovaná alternativní řešení.
 
-| Omezení | Alternativní řešení |
+| Omezení | Alternativní řešení: |
 |---|---|
 | Aktivita vyhledávání má maximálně 5 000 řádků a maximální velikosti 2 MB. | Navrhněte dvouúrovňová kanálu, kde vnější kanálu Iteruje přes vnitřní kanál, který načte data, která nepřekračuje maximální počet řádků nebo velikosti. |
 | | |

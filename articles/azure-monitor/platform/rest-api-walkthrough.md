@@ -9,10 +9,10 @@ ms.date: 03/19/2018
 ms.author: robb
 ms.subservice: ''
 ms.openlocfilehash: bbc5aaf02f4ab4388e816faaf8df536770f3302a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205634"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
@@ -98,7 +98,7 @@ Použití [definice metrik Azure monitoru rozhraní REST API](https://docs.micro
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/poskytovatelé/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
+**Identifikátor URI žádosti**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /poskytovatelé/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{ apiVersion}*
 
 Například pokud chcete načíst definice metrik pro účet služby Azure Storage, žádost by vypadat takto:
 
@@ -242,7 +242,7 @@ Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požada
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https\://management.azure.com/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/poskytovatelé/*{ – obor názvů zprostředkovatele prostředků}*/*{typ prostředku}*/*{název prostředku}*/providers/microsoft.insights/metrics? metricnames =*{metrika}*& časový rozsah =*{starttime a endtime}*& $filter =*{filter}*& hodnotu resultType = & metadat rozhraní api-version = *{apiVersion}*
+**Identifikátor URI žádosti**: https\://management.azure.com/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /poskytovatelé/ *{ – obor názvů zprostředkovatele prostředků}* / *{typ prostředku}* / *{název prostředku}* /providers/microsoft.insights/metrics? metricnames = *{metrika}* & časový rozsah = *{starttime a endtime}* & $filter = *{filter}* & hodnotu resultType = & metadat rozhraní api-version = *{apiVersion}*
 
 Například chcete-li načíst seznam hodnot dimenzí, které byly vygenerován pro název rozhraní API dimenzi metriky "Transakcí", kde dimenze GeoType = 'Primární' během zadaného časového rozsahu, žádost by měl vypadat takto:
 
@@ -315,7 +315,7 @@ Použijte název tuto metriku 'value' (ne "localizedValue") pro všechny požada
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{id předplatného}*/resourceGroups/*{resource-group name}*/poskytovatelé/*{-– obor názvů zprostředkovatele prostředků}* / *{typ prostředku}*/*{název prostředku}*/providers/microsoft.insights/metrics?metricnames=*{metrika}*& časový rozsah =*{starttime a endtime}*& $filter =*{filter}*& interval =*{timeGrain}*& agregace =*{ aggreation}*& verzi api-version =*{apiVersion}*
+**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /poskytovatelé/ *{-– obor názvů zprostředkovatele prostředků}* / *{typ prostředku}* / *{název prostředku}* /providers/microsoft.insights/metrics?metricnames= *{metrika}* & časový rozsah = *{starttime a endtime}* & $filter = *{filter}* & interval = *{timeGrain}* & agregace = *{ aggreation}* & verzi api-version = *{apiVersion}*
 
 Například načíst první 3 rozhraní API, sestupně podle hodnoty podle počtu "Transakcí" během 5 minut rozsah, kterých se spustil GeotType 'Primární', žádost by měl vypadat takto:
 
@@ -394,7 +394,7 @@ Použití [definice metrik Azure monitoru rozhraní REST API](https://msdn.micro
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https:\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/poskytovatelé/*{resourceProviderNamespace}* / *{resourceType}*/*{resourceName}*/providers/microsoft.insights/metricDefinitions?api-version=*{ apiVersion}*
+**Identifikátor URI žádosti**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /poskytovatelé/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{ apiVersion}*
 
 Například pokud chcete načíst definice metrik pro aplikaci logiky Azure, žádost by vypadat takto:
 
@@ -467,7 +467,7 @@ Jakmile je k dispozici definice metriky jsou známé, je pak možné načíst so
 
 **Metoda**: GET
 
-**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{id předplatného}*/resourceGroups/*{resource-group name}*/poskytovatelé/*{-– obor názvů zprostředkovatele prostředků}* / *{typ prostředku}*/*{název prostředku}*/providers/microsoft.insights/metrics?$filter=*{filter}*& verzi api-version =*{apiVersion}*
+**Identifikátor URI žádosti**: https://management.azure.com/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /poskytovatelé/ *{-– obor názvů zprostředkovatele prostředků}* / *{typ prostředku}* / *{název prostředku}* /providers/microsoft.insights/metrics?$filter= *{filter}* & verzi api-version = *{apiVersion}*
 
 Například pokud chcete načíst data metriky body RunsSucceeded pro dané časové rozmezí a pro časový interval 1 hodina, žádost by měl vypadat takto:
 
@@ -605,13 +605,13 @@ Identifikátor prostředku použít předchozí kód, je úplná cesta k požado
 
 Následující seznam obsahuje několik příkladů z formátů ID prostředků pro různé prostředky Azure:
 
-* **IoT Hub** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Devices/IotHubs/*{iot-hub-name}*
-* **Elastický fond SQL** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Sql/servers/*{fondu db}*/elasticpools/*{sql název fondu}*
-* **SQL Database (v12)** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Sql/servers/*{název serveru}*/databases/*{název databáze}*
-* **Service Bus** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.ServiceBus/*{namespace}* / *{název služby Service Bus}*
-* **Škálovací sady virtuálních počítačů** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Compute/virtualMachineScaleSets/ *{název_virtuálního_počítače}*
-* **Virtuální počítače** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.Compute/virtualMachines/*{název_virtuálního_počítače}*
-* **Event Hubs** -/subscriptions/*{id předplatného}*/resourceGroups/*{resource-group name}*/providers/Microsoft.EventHub/namespaces/*{ oboru názvů eventhubu}*
+* **IoT Hub** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.Devices/IotHubs/ *{iot-hub-name}*
+* **Elastický fond SQL** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.Sql/servers/ *{fondu db}* /elasticpools/ *{sql název fondu}*
+* **SQL Database (v12)** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.Sql/servers/ *{název serveru}* /databases/ *{název databáze}*
+* **Service Bus** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.ServiceBus/ *{namespace}* / *{název služby Service Bus}*
+* **Škálovací sady virtuálních počítačů** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.Compute/virtualMachineScaleSets/ *{název_virtuálního_počítače}*
+* **Virtuální počítače** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.Compute/virtualMachines/ *{název_virtuálního_počítače}*
+* **Event Hubs** -/subscriptions/ *{id předplatného}* /resourceGroups/ *{resource-group name}* /providers/Microsoft.EventHub/namespaces/ *{ oboru názvů eventhubu}*
 
 Existuje alternativní přístupy k načítání ID prostředku, včetně použití Azure Resource Exploreru, zobrazení požadovaných prostředků na webu Azure Portal a pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 

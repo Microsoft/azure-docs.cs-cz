@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6f9064c6027499fff3a8551ee60722cd66c54dc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60877638"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 pomocí webu Azure portal
@@ -56,7 +56,7 @@ V této části vytvoříte HDInsight cluster s účty Data Lake Storage Gen1 ja
     ![Přidání instančního objektu pro HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "přidat instančního objektu pro HDInsight cluster")
 
     - **Vyberte Data Lake Store účtu**: Vyberte existující účet Data Lake Storage Gen1. Existující účet Data Lake Storage Gen1 je povinný.  Viz [Požadavky](#prerequisites).
-    - **Kořenová cesta**: Zadejte cestu, kam se mají ukládat soubory specifických pro cluster. Na snímku obrazovky, je __/clusterů/myhdiadlcluster/__, ve kterém __/clusterů__ složka musí existovat a portál vytvoří *myhdicluster* složky.  *Myhdicluster* je název clusteru.
+    - **Kořenová cesta**: Zadejte cestu, kam se mají ukládat soubory specifických pro cluster. Na snímku obrazovky, je __/clusterů/myhdiadlcluster/__ , ve kterém __/clusterů__ složka musí existovat a portál vytvoří *myhdicluster* složky.  *Myhdicluster* je název clusteru.
     - **Přístup k data Lake Store**: Nakonfigurujte přístup mezi účtem Data Lake Storage Gen1 a HDInsight cluster. Pokyny najdete v tématu Konfigurace Gen1 úložiště Data Lake přístup.
     - **Další účty úložiště**: Přidáte účty služby Azure storage jako další účty úložiště pro cluster. Chcete-li přidat další účty Data Lake Storage Gen1 se provádí tak, že udělíte oprávnění clusteru na datech z další účty Data Lake Storage Gen1 při konfiguraci účtu Data Lake Storage Gen1 jako typ primárního úložiště. Viz konfigurovat Data Lake Storage Gen1 přístup.
 

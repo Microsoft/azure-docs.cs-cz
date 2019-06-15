@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c426df2293cfb2d8ba4dc02e8fc5519c3d822168
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128724"
 ---
 Použití značek k prostředkům Azure poskytuje metadata pro jejich logické uspořádání do taxonomie. Každá značka se skládá z názvu a hodnoty pár. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.

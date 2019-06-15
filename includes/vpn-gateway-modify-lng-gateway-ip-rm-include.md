@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6505b12b35ee436930ba6571c27db30c12030041
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157720"
 ---
 ### <a name="gwipnoconnection"></a>Úprava IP adresy brány místní sítě (GatewayIpAddress) – žádné připojení brány

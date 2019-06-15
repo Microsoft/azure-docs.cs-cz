@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.openlocfilehash: 0c9cd513f4d5842d14077bb7470ebd18c7a46340
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511871"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 
@@ -503,8 +503,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | neuvedeno | Musí být nastaveno na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky při vytváření vazby na webu Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje tabulky nebo entity v kódu funkce. | 
-|**tableName** | **TableName** | Název tabulky| 
+|**name** | neuvedeno | Název proměnné, která představuje tabulky nebo entity v kódu funkce. | 
+|**tableName** | **TableName** | Název tabulky.| 
 |**partitionKey** | **partitionKey** |Volitelné. Klíč oddílu entitu tabulky ke čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
 |**RowKey** |**RowKey** | Volitelné. Klíč řádku entity tabulky pro čtení. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
 |**Take** |**Take** | Volitelné. Maximální počet entit ke čtení v jazyce JavaScript. Najdete v článku [využití](#input---usage) části Pokyny o tom, jak pomocí této vlastnosti.| 
@@ -763,8 +763,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type** | neuvedeno | Musí být nastaveno na `table`. Tato vlastnost je nastavena automaticky při vytváření vazby na webu Azure Portal.|
 |**direction** | neuvedeno | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky při vytváření vazby na webu Azure Portal. |
-|**Jméno** | neuvedeno | Název této proměnné v kódu funkce, která představuje tabulky nebo entity. Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.| 
-|**tableName** |**TableName** | Název tabulky| 
+|**name** | neuvedeno | Název této proměnné v kódu funkce, která představuje tabulky nebo entity. Nastavte na `$return` tak, aby odkazovaly návratovou hodnotu funkce.| 
+|**tableName** |**TableName** | Název tabulky.| 
 |**partitionKey** |**partitionKey** | Klíč oddílu entitu tabulky pro zápis. Najdete v článku [části využívání](#output---usage) pokyny o tom, jak pomocí této vlastnosti.| 
 |**RowKey** |**RowKey** | Klíč řádku entity tabulky pro zápis. Najdete v článku [části využívání](#output---usage) pokyny o tom, jak pomocí této vlastnosti.| 
 |**připojení** |**připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
@@ -795,7 +795,7 @@ Table storage Výstupní vazba podporuje následující scénáře:
 |---|---|
 | Table | [Kódy chyb tabulky](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Objekt BLOB, tabulky, fronty | [Kódy chyb úložiště](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Objekt BLOB, tabulky, fronty | [Řešení potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Objekt BLOB, tabulky, fronty | [Odstraňování potíží](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Další postup
 

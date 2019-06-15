@@ -1,6 +1,6 @@
 ---
-title: Jak vyžadovat – spravovaná zařízení pro přístup k aplikaci cloud s podmíněným přístupem Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu podle zařízení služby Azure Active Directory (Azure AD), které vyžadují spravovaných zařízení pro přístup k aplikaci cloudu.
+title: Jak vyžadovat – spravovaná zařízení pro přístup k aplikaci cloudu s Azure Active Directory podmíněným přístupem | Dokumentace Microsoftu
+description: Zjistěte, jak nakonfigurovat služby Azure Active Directory (Azure AD) na základě zařízení zásady podmíněného přístupu, které vyžadují spravovaných zařízení pro přístup k aplikaci cloudu.
 services: active-directory
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -17,12 +17,12 @@ ms.date: 06/14/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 459dd981b73ae840b3fc61bd0cc83ecefb1cf393
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354742"
+ms.locfileid: "67112146"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Jak: Spravovaná zařízení vyžadovat pro přístup k aplikaci cloud s podmíněným přístupem
 
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak nakonfigurovat zásady podmíněného přístupu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vyžadování spravovaných zařízení pro cloudové aplikace access ties **podmíněný přístup Azure AD** a **správu zařízení Azure AD** společně. Pokud nejste obeznámeni s jedním z těchto oblastí ještě, přečtěte si následující témata, nejdřív:
+Vyžadování spravovaných zařízení pro cloudové aplikace access ties **podmíněného přístupu Azure AD** a **správu zařízení Azure AD** společně. Pokud nejste obeznámeni s jedním z těchto oblastí ještě, přečtěte si následující témata, nejdřív:
 
 - **[Podmíněný přístup ve službě Azure Active Directory](../active-directory-conditional-access-azure-portal.md)**  – Tento článek obsahuje koncepční přehled podmíněného přístupu a související terminologie.
 
@@ -112,5 +112,5 @@ Pro zařízení, která je označena jako vyhovující můžete předpokládat, 
 
 ## <a name="next-steps"></a>Další postup
 
-Před konfigurací zásad podmíněného přístupu podle zařízení ve vašem prostředí, byste měli podniknout podívat [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md).
+Před konfigurací zásad podmíněného přístupu na základě zařízení ve vašem prostředí, byste měli podniknout podívat [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
 

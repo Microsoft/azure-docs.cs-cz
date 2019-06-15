@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 8823aebe17a5446b3c507878833c2525c338dde1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60756158"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717999"
 ---
 # <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge zabezpečení a ochranu dat.
 

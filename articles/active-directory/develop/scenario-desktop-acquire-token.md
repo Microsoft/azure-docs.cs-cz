@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d18c92cccac6bfb0bd359767ecdb51951268735
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962532"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111253"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Aplikace klasické pracovní plochy, která volá webové rozhraní API – získání tokenu
 

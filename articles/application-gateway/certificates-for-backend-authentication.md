@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/14/2019
 ms.author: absha
 ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831584"
 ---
 # <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Vytvoření certifikátů pro přidávání na seznam povolených back-end pomocí služby Azure Application Gateway
 
-K provedení kompletního protokolu SSL, služba application gateway vyžaduje instance back-endu tím, že nahrajete ověřování/důvěryhodných kořenových certifikátů uvedení na seznamu povolených. V případě v1 SKU, se vyžadují certifikáty pro ověřování, že v případě v2 SKU důvěryhodné kořenové certifikáty jsou nutné k vytvoření seznamu povolených certifikátů
+K provedení kompletního protokolu SSL, služba application gateway vyžaduje instance back-endu tím, že nahrajete ověřování/důvěryhodných kořenových certifikátů uvedení na seznamu povolených. V případě skladové položky v1 se k přidání certifikátů na seznam povolených vyžadují ověřovací certifikáty, zatímco v případě skladové položky v2 se vyžadují důvěryhodné kořenové certifikáty.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -65,7 +65,7 @@ Z certifikátu SSL vyexportovat soubor .cer veřejného klíče (ne privátní k
 
    Exportovaný certifikát vypadá nějak takto:
 
-   ![Exportováno](./media/certificates-for-backend-authentication/exported.png)
+   ![Exportovat](./media/certificates-for-backend-authentication/exported.png)
 
 8. Pokud otevřete exportovaný certifikát pomocí poznámkového bloku, vypadá podobně jako tento příklad. Modrá obsahuje informace, které se nahraje k službě application gateway. Pokud otevřete certifikát v aplikaci Poznámkový blok a není vypadat podobně jako tento, obvykle to znamená, že není ho exportovat pomocí Base-64 formát X.509 (. Formátu CER). Pokud chcete použít v jiném textovém editoru, Pochopte, že některé editory může způsobovat nežádoucí formátování na pozadí. To můžete vytvářet problémy při nahrání text z tohoto certifikátu do Azure.
 

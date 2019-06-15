@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7da382a644c1db92b9915f1d3f1f3a459e8893b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712219"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Přehled záznamů a zón DNS
 
@@ -28,7 +28,7 @@ Tato stránka vysvětluje hlavní Principy domén, zóny DNS a záznamy DNS a sa
 
 ## <a name="domain-names"></a>Názvy domén
 
-Domain Name System je hierarchie domén. Hierarchie začíná od kořenové domény, jejíž název je jednoduše „**.**“.  Následují domény nejvyšší úrovně, jako jsou „com“, „net“, „org“, „uk“ nebo „jp“.  Následují domény druhé úrovně, jako jsou „org.uk“ nebo „co.jp“. Domény v hierarchii DNS jsou globálně distribuované a hostované názvovými servery DNS po celém světě.
+Domain Name System je hierarchie domén. Hierarchie začíná od kořenové domény, jejíž název je jednoduše „ **.** “.  Následují domény nejvyšší úrovně, jako jsou „com“, „net“, „org“, „uk“ nebo „jp“.  Následují domény druhé úrovně, jako jsou „org.uk“ nebo „co.jp“. Domény v hierarchii DNS jsou globálně distribuované a hostované názvovými servery DNS po celém světě.
 
 Registrátora názvu domény je organizace, která umožňuje zakoupit název domény, jako je například "contoso.com".  Nákupu názvu domény vám právo na kontrolu hierarchii DNS pod daným jménem, například umožňuje přímé název "www.contoso.com" na web vaší společnosti. Doménový Registrátor může hostovat domény v jeho vlastní názvové servery za vás nebo vám umožňují určit alternativní názvové servery.
 
@@ -111,7 +111,7 @@ Více řetězců v záznamu DNS, neměly by být zaměňovány s více záznamů
 
 ## <a name="tags-and-metadata"></a>Značky a metadat
 
-### <a name="tags"></a>Značky
+### <a name="tags"></a>Tags
 
 Značky jsou páry název hodnota a slouží k označování prostředků pomocí Azure Resource Manageru.  Azure Resource Manageru pomocí značek filtrované zobrazení vaší faktuře za Azure a také umožňuje nastavit zásady, na kterém jsou požadované značky. Další informace o značkách najdete v tématu [Použití značek k uspořádání prostředků Azure](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -131,10 +131,10 @@ Ve výchozím nastavení používá Azure DNS Powershellu značek entit k blokov
 
 Na úrovni rozhraní REST API pro Azure DNS značek etag určeny pomocí hlavičky protokolu HTTP.  Jejich chování je uveden v následující tabulce:
 
-| Hlavička | Chování |
+| Záhlaví | Chování |
 | --- | --- |
 | Žádný |PUT vždy úspěšné (žádné kontroly Etag) |
-| If-match <etag> |PUT úspěšná, pouze pokud prostředek existuje a Značka Etag odpovídá |
+| If-match \<etag > |PUT úspěšná, pouze pokud prostředek existuje a Značka Etag odpovídá |
 | If-match * |PUT úspěšná, pouze pokud existuje prostředek |
 | If-none-match * |PUT úspěšná, pouze pokud prostředek neexistuje. |
 
