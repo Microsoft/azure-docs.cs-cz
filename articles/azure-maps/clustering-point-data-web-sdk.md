@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957331"
 ---
 # <a name="clustering-point-data"></a>Clustering datového bodu
@@ -86,7 +86,7 @@ Při výskytu události myši na vrstvu, která obsahují clusterovaná data bod
 
 | Název vlastnosti | Type | Popis |
 |---------------|------|-------------|
-| Cluster | Boolean | Označuje, pokud funkce představuje cluster. |
+| Clusteru | Boolean | Označuje, pokud funkce představuje cluster. |
 | cluster_id | string | Jedinečné ID pro cluster, který jde použít s zdroj dat `getClusterExpansionZoom`, `getClusterChildren`, a `getClusterLeaves` metody. |
 | point_count | číslo | Počet bodů, které obsahuje cluster. |
 | point_count_abbreviated | string | Řetězec, který se zkrátí `point_count` hodnotu, pokud je dlouhá. (například 4 000 stane 4 kB) |
