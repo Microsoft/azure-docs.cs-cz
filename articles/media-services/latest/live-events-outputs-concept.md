@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/12/2019
 ms.author: juliako
-ms.openlocfilehash: c3ee35013cb0e653b1c554e662c63e5adc764865
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ab52f031e24ac77a534c86061fe831bbec39ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074928"
+ms.locfileid: "67114672"
 ---
 # <a name="live-events-and-live-outputs"></a>Živé události a výstupy
 
@@ -93,6 +93,14 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
 
     Přístupový token musí být jedinečný ve vašem datovém centru. Pokud vaše aplikace potřebuje používat jednoduché adrese URL, doporučujeme vždy vytváří nové instance identifikátoru GUID pro váš přístupový token (namísto opakovaného použití jakékoli existující identifikátor GUID). 
 
+    Pomocí následující rozhraní API můžete povolit jednoduché adrese URL a nastavit přístupový token platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`):
+    
+    |Jazyk|Povolit jednoduché adrese URL|Nastavení přístupového tokenu|
+    |---|---|---|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |Rozhraní příkazového řádku|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    
 ### <a name="live-ingest-url-naming-rules"></a>Živé ingestování – pravidla pojmenování adresy URL
 
 Řetězec *random* dále je 128bitové šestnáctkové číslo (skládající se z 32 znaků 0-9 a-f).<br/>

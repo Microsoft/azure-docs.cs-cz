@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: d1704220a13b6d6b5a48b7167d7912a38057127d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466524"
 ---
 # <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
@@ -149,7 +149,7 @@ Například můžete přidat nové nastavení rychlost ventilátor tak, že vybe
 
 Po výběru **Uložit**, **ventilátor rychlost** nastavení se zobrazí jako dlaždice. Operátor můžete použít ve **Device Explorer** stránky Změna rychlosti ventilátor zařízení.
 
-## <a name="properties"></a>Vlastnost
+## <a name="properties"></a>Vlastnosti
 
 Vlastnosti jsou metadata, která má přidružený k zařízení, jako je například umístění zařízení a sériové číslo. Přidat do šablony zařízení, která se zobrazí jako dlaždice na více vlastností **vlastnosti** kartu. Vlastnost může mít typ, jako je číslo, text, datum, přepínací tlačítko, vlastnosti zařízení, popisku nebo umístění. Operátor můžete zadat hodnoty vlastností při jejich vytvoření zařízení, a mohli upravit tyto hodnoty v každém okamžiku. Vlastnosti zařízení jsou jen pro čtení a odesílány ze zařízení do aplikace. Operátor nelze změnit vlastnosti zařízení. Po připojení skutečných zařízení, na dlaždici vlastnosti zařízení je aktualizace v aplikaci.
 
