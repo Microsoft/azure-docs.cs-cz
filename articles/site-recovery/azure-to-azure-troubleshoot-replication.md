@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: bf24b2d1395e128dc73361670ea93ac938574146
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258786"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Průběžné řešení problémů s v replikaci virtuálních počítačů Azure do Azure
@@ -81,14 +81,14 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 
 Níže jsou uvedeny některé z nejběžnějších problémů
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1. příčina: Známý problém v systému SQL server 2008 a 2008 R2 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. příčina: Známý problém v systému SQL server 2008 a 2008 R2 
 **K vyřešení** : Existuje známý problém se systémem SQL server 2008 a 2008 R2. Naleznete v tomto článku znalostní BÁZE [agenta Azure Site Recovery nebo jiné ne komponentu VSS zálohování se nezdaří pro server hostující SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2. příčina: Selhání úlohy Azure Site Recovery na servery, které hostují všechny verze instance SQL serveru s databází AUTO_CLOSE 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>2\. příčina: Selhání úlohy Azure Site Recovery na servery, které hostují všechny verze instance SQL serveru s databází AUTO_CLOSE 
 **K vyřešení** : Přečtěte si Kb [článku](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3. důvod: Známý problém nástroje SQL Server 2016 a 2017
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>3\. důvod: Známý problém nástroje SQL Server 2016 a 2017
 **K vyřešení** : Přečtěte si Kb [článku](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
 #### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>Příčina 4: Použití s přímým přístupem konfigurace prostorů úložiště

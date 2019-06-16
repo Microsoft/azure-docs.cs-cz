@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.openlocfilehash: f6971038be7404850d958de67eb4755ae7d21a29
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761972"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Příklady pro běžné vzory využití Stream Analytics dotazů
@@ -35,14 +35,14 @@ Komplexní typy, jako jsou vnořené objekty (záznamy) nebo pole může obsahov
 
 **Vstup**:
 
-| Vytvoření | Time | Váha |
+| Vytvoření | Čas | Hmotnost |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Výstup**:
 
-| Vytvoření | Váha |
+| Vytvoření | Hmotnost |
 | --- | --- |
 | Honda |3000 |
 
@@ -68,7 +68,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Vstup**:
 
-| Vytvoření | LicensePlate | Time |
+| Vytvoření | LicensePlate | Čas |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -76,7 +76,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Výstup**:
 
-| Vytvoření | LicensePlate | Time |
+| Vytvoření | LicensePlate | Čas |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -100,7 +100,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Vstup**:
 
-| Vytvoření | Time |
+| Vytvoření | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -108,7 +108,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Výstup**:
 
-| CarsPassed | Time |
+| CarsPassed | Čas |
 | --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
@@ -137,7 +137,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Vstup**:
 
-| Vytvoření | Time |
+| Vytvoření | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -147,7 +147,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Output1**:
 
-| Vytvoření | Time |
+| Vytvoření | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -157,7 +157,7 @@ Třeba zkontrolujte, že výsledek vrátí talířů licence, které začínají
 
 **Output2**:
 
-| Vytvoření | Time | Count |
+| Vytvoření | Čas | Počet |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -211,7 +211,7 @@ Příklad:
 
 **Vstup**:
 
-| Vytvoření | Time |
+| Vytvoření | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -221,7 +221,7 @@ Příklad:
 
 **Výstup:**
 
-| CountMake | Time |
+| CountMake | Čas |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
@@ -238,7 +238,7 @@ GROUP BY
 ```
 
 
-**Vysvětlení:**
+**Vysvětlení:** 
 **COUNT (DISTINCT zkontrolujte)** vrátí počet jedinečných hodnot v **zkontrolujte** sloupce v rámci časové okno.
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Příklad dotazu: Určit, pokud byla hodnota změněna
@@ -247,14 +247,14 @@ GROUP BY
 
 **Vstup**:
 
-| Vytvoření | Time |
+| Vytvoření | Čas |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Výstup**:
 
-| Vytvoření | Time |
+| Vytvoření | Čas |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -278,7 +278,7 @@ GROUP BY
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Time |
+| LicensePlate | Vytvoření | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -290,7 +290,7 @@ GROUP BY
 
 **Výstup**:
 
-| LicensePlate | Vytvoření | Time |
+| LicensePlate | Vytvoření | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -310,7 +310,7 @@ GROUP BY
 
 Teď můžeme změnit problém a najít první auto konkrétní značku v každé každých 10 minut.
 
-| LicensePlate | Vytvoření | Time |
+| LicensePlate | Vytvoření | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -337,7 +337,7 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Time |
+| LicensePlate | Vytvoření | Čas |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -349,7 +349,7 @@ Teď můžeme změnit problém a najít první auto konkrétní značku v každ�
 
 **Výstup**:
 
-| LicensePlate | Vytvoření | Time |
+| LicensePlate | Vytvoření | Čas |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -386,7 +386,7 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Vstup**:
 
-| Vytvoření | LicensePlate | Time |
+| Vytvoření | LicensePlate | Čas |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -395,7 +395,7 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Výstup**:
 
-| Vytvoření | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Vytvoření | Čas | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -422,14 +422,14 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
 
 **Vstup**:  
 
-| Uživatel | Funkce | Událost | Time |
+| Uživatel | Funkce | Událost | Čas |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Spustit |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |Konec |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
 
 **Výstup**:  
 
-| Uživatel | Funkce | Trvání |
+| Uživatel | Funkce | Doba trvání |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -443,7 +443,7 @@ Například 2 po sobě jdoucích auta ze stejné značky zadali silniční linka
         Event = 'end'
 ```
 
-**Vysvětlení**: Použití **poslední** funkce k načtení poslední **čas** hodnotu, pokud byl typ události **Start**. **Poslední** funkce používá **PARTITION BY [user]** k označení, že výsledek je vypočítán na jedinečného uživatele. Dotaz musí maximální prahovou hodnotu 1 hodina časový rozdíl mezi **Start** a **Zastavit** události, ale je možné konfigurovat podle potřeby **(LIMIT DURATION(hour, 1)**.
+**Vysvětlení**: Použití **poslední** funkce k načtení poslední **čas** hodnotu, pokud byl typ události **Start**. **Poslední** funkce používá **PARTITION BY [user]** k označení, že výsledek je vypočítán na jedinečného uživatele. Dotaz musí maximální prahovou hodnotu 1 hodina časový rozdíl mezi **Start** a **Zastavit** události, ale je možné konfigurovat podle potřeby **(LIMIT DURATION(hour, 1)** .
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Příklad dotazu: Zjistit dobu trvání podmínku
 **Popis**: Zjištění jak dlouho podmínku došlo k chybě.
@@ -451,7 +451,7 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 
 **Vstup**:
 
-| Vytvoření | Time | Váha |
+| Vytvoření | Čas | Hmotnost |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -506,7 +506,7 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Výstup (prvních 10 řádků)**:
+**Výstup (prvních 10 řádků)** :
 
 | windowend | lastevent.t | lastevent.Value |
 | --- | --- | --- |
@@ -562,7 +562,7 @@ Předpokládejme například, že chyby výsledkem všech auta mají nesprávnou
 
 **Výstup**:
 
-| čas události | deviceId | temp | alertMessage | maxPowerDuringLast3mins |
+| eventTime | deviceId | temp | alertMessage | maxPowerDuringLast3mins |
 | --- | --- | --- | --- | --- | 
 | "2018-01-01T16:05:00" | "Oven1" |30 | "Zkrácené vytápění prvky" |15 |
 | "2018-01-01T16:06:00" | "Oven1" |20 | "Zkrácené vytápění prvky" |15 |
@@ -614,7 +614,7 @@ WHERE
 
 **Vstup**:
 
-| LicensePlate | Vytvoření | Time | TollID |
+| LicensePlate | Vytvoření | Čas | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
 | YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
@@ -655,7 +655,7 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 **Vstup**:  
 
-| DeviceId | Time | Atribut | Hodnota |
+| DeviceId | Čas | Atribut | Hodnota |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Teplota |50 |
@@ -696,7 +696,7 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 
 **Vysvětlení**: [COUNT (DISTINCT času)](/stream-analytics-query/count-azure-stream-analytics) vrátí počet jedinečných hodnot ve sloupci čas v rámci časové okno. Pak můžete výstup tohoto kroku k výpočtu průměru za zařízení vypuštěním duplicitní položky.
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 

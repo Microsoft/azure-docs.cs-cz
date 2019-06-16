@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c4332f4aac40fb15c5612dfbc673727935e66717
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3635cd422e4c7a064d3317401b734f3bc6ccb6c6
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057586"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67136453"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Kurz: Nasaďte nástroj pro správu
 
@@ -29,11 +29,14 @@ Tento nástroj pro správu je ukázka. Microsoft bude poskytovat důležité zab
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Co je potřeba spustit šablonu Azure Resource Manageru
 
-Před nasazením šablony Azure Resource Manageru, musíte uživatele služby Azure Active Directory, který účet:
+Před nasazením šablony Azure Resource Manageru, musíte uživatele služby Azure Active Directory k nasazení uživatelské rozhraní pro správu. Tento uživatel musí:
 
-- Zakázal Azure Multi-Factor Authentication (MFA)
-- Má oprávnění k vytváření prostředků v předplatném Azure
-- Má oprávnění ke čtení tenanta virtuálního klienta Windows
+- Zakázali Azure Multi-Factor Authentication (MFA)
+- Nemáte oprávnění k vytváření prostředků v předplatném Azure
+- Oprávnění k vytvoření aplikace Azure AD. Postupujte podle těchto kroků zkontrolujte, jestli má uživatel [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+
+Po nasazení šablony Azure Resource Manageru, budete chtít spustit uživatelské rozhraní pro ověření pro správu. Tento uživatel musí:
+- Máte přiřazení role k zobrazení nebo úpravám tenanta virtuálního klienta Windows
 
 ## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>Spustit šablonu Azure Resource Manageru pro zřízení uživatelské rozhraní pro správu
 

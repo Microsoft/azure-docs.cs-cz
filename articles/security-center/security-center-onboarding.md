@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 19/02/2019
 ms.author: v-mohabe
 ms.openlocfilehash: fe8ceb8c196f7329027502847fba481169458d86
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966787"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
@@ -57,7 +57,7 @@ Chcete-li upgradovat předplatné nebo si pracovní prostor na úroveň Standard
    >
    >
 
-## <a name="onboard-non-azure-computers"></a>Místní počítače mimo Azure
+## <a name="onboard-non-azure-computers"></a>Připojení počítače mimo Azure
 Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Můžete přidat počítače umístěné mimo Azure z **Začínáme** okno nebo **Compute** okno. Projdeme obě metody.
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Přidat počítače umístěné mimo Azure z **Začínáme**
@@ -65,7 +65,7 @@ Security Center může monitorovat stav zabezpečení počítačů mimo Azure, t
 1. Vraťte se na **Začínáme**.   
 2. Vyberte kartu **Začínáme**.
 
-   ![Mimo službu Azure](./media/security-center-onboarding/non-azure.png)
+   ![Non-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 

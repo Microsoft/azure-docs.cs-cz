@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161416"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 jako výchozí úložiště pomocí prostředí PowerShell
@@ -45,7 +45,7 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
 
 * **Předplatné Azure**: Přejděte na [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Prostředí Azure PowerShell 1.0 nebo vyšší**: Zobrazit [instalace a konfigurace Powershellu](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Chcete-li nainstalovat sadu Windows SDK, přejděte na [soubory ke stažení a nástroje pro Windows 10](https://dev.windows.com/downloads). Sada SDK se používá k vytvoření certifikátu zabezpečení.
+* **Windows Software Development Kit (SDK)** : Chcete-li nainstalovat sadu Windows SDK, přejděte na [soubory ke stažení a nástroje pro Windows 10](https://dev.windows.com/downloads). Sada SDK se používá k vytvoření certifikátu zabezpečení.
 * **Instanční objekt Azure Active Directory**: Tento kurz popisuje, jak vytvořit instanční objekt v Azure Active Directory (Azure AD). K vytvoření instančního objektu, ale musí být správce Azure AD. Pokud jste správce, můžete tuto požadovanou součást přeskočit a pokračovat v tomto kurzu.
 
     >[!NOTE]

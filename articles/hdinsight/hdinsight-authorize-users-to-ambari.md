@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
 ms.openlocfilehash: 69ae1bd05b64912b3d53ca88b468a72a90ff5a74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718308"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
@@ -28,7 +28,7 @@ Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/a
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
-Zobrazíte **stránku Správa Ambari** na [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytváření clusteru. V dalším kroku vyberte na řídicím panelu Ambari **spravovat Ambari** pod **správce** nabídky:
+Zobrazíte **stránku Správa Ambari** na [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** . Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytváření clusteru. V dalším kroku vyberte na řídicím panelu Ambari **spravovat Ambari** pod **správce** nabídky:
 
 ![Správa Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 

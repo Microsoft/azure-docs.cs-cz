@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
 ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66019824"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s problémy s připojením k databázi SQL a přechodných chyb
@@ -91,7 +91,7 @@ Otestovat svoji logiku opakování, můžete simulovat nebo způsobit chybu, kte
 Jedním ze způsobů můžete otestovat svoji logiku opakování je klientský počítač odpojit od sítě, zatímco program běží. Chyba je:
 
 - **SqlException.Number** = 11001
-- Zpráva: "Je znám žádný takový hostitel"
+- zpráva: "Je znám žádný takový hostitel"
 
 Jako součást první pokus o opakování můžete program opravte chyba a pak se pokusíte připojit.
 
@@ -109,7 +109,7 @@ Chcete-li tento test praktické, odpojte před spuštěním programu počítači
 Váš program může záměrně chybně uživatelské jméno před první pokus o připojení. Chyba je:
 
 - **SqlException.Number** = 18456
-- Zpráva: "Přihlášení se nezdařilo pro uživatele"WRONG_MyUserName"."
+- zpráva: "Přihlášení se nezdařilo pro uživatele"WRONG_MyUserName"."
 
 Jako součást první pokus o opakování můžete program opravte chyba a pak se pokusíte připojit.
 

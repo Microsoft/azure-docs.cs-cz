@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: cd40f59cfa7846911c68206c3bc1e85a770b0fcc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723838"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení modelu Reliable Services a Reliable Actors
@@ -106,7 +106,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 V předchozím příkladu `ExternalBackupStore` je ukázkovou třídu, která slouží k rozhraní Azure Blob Storage a `UploadBackupFolderAsync` metodu komprimuje složce a umístí jej do úložiště objektů Blob v Azure.
 
-Poznámky:
+Všimněte si, že:
 
   - Může existovat pouze jedna operace zálohování vydávaných za pochodu na repliku v daném okamžiku. Více než jeden `BackupAsync` volání vždy vyvolá výjimku `FabricBackupInProgressException` omezit aktivních pořadových zálohování do jednoho.
   - Pokud replika převezme služby při selhání během zálohování, zálohování nemusí byly dokončeny. Proto po dokončení převzetí služeb při selhání, zodpovídá za služby restartujte zálohování vyvoláním `BackupAsync` podle potřeby.
@@ -175,7 +175,7 @@ Pokud si nejste jisti, které zálohování je poškozený, můžete nasadit nov
 
 Nyní, kroky v "odstraněno nebo ke ztrátě služeb" oddílu je možné obnovit stav služby do stavu před chybový kód poškozený stav.
 
-Poznámky:
+Všimněte si, že:
 
   - Při obnovení, může se stát, že je zálohování, který se má obnovit starší než stav oddílu předtím, než data byla ztracena. Z tohoto důvodu musíte obnovit pouze jako poslední možnost obnovit data, která možná.
   - Řetězec, který představuje cestu ke složce pro zálohování a cest souborů ve složce backup, které může být větší než 255 znaků, v závislosti na FabricDataRoot cestu a název typu aplikace. To může způsobit některých metod rozhraní .NET, jako je třeba `Directory.Move`, chcete-li vyvolat `PathTooLongException` výjimky. Jeden alternativním řešením je přímo volat rozhraní API kernel32, jako je `CopyFile`.

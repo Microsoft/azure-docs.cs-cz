@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
 ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61291885"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Příklad: Model databáze AdventureWorks inventáře pro službu Azure Search
@@ -43,7 +43,7 @@ Všimněte si, že model silniční 650 má dvanáct možnosti. Jeden na mnoho e
 
 ## <a name="use-a-collection-data-type"></a>Použijte datový typ kolekce
 
-"Správný přístup" je využívat funkce schéma vyhledávání, která nemá přímé paralelní databázový model: **Collection(EDM.String)**. Datový typ kolekce se používá v případě, že máte seznam jednotlivých řetězců, spíše než velmi dlouhý řetězec (jeden). Pokud už máte značky nebo klíčová slova, použijete datový typ kolekce pro toto pole.
+"Správný přístup" je využívat funkce schéma vyhledávání, která nemá přímé paralelní databázový model: **Collection(EDM.String)** . Datový typ kolekce se používá v případě, že máte seznam jednotlivých řetězců, spíše než velmi dlouhý řetězec (jeden). Pokud už máte značky nebo klíčová slova, použijete datový typ kolekce pro toto pole.
 
 Definováním více hodnotami indexu pole **Collection(Edm.String)** "color", "velikost" a "image" pomocné informace jsou zachované pro "faceting" a filtrování bez zahlcení index s duplicitní položky. Podobně platí agregační funkce pro číselná pole produktu indexování **minListPrice** namísto každých jednoho produktu **listPrice**.
 

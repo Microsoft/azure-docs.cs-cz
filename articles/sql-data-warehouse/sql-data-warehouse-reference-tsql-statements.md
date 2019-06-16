@@ -11,10 +11,10 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 984d8ffa9f901437f1413e1d5d3145cabba80883
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954986"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse

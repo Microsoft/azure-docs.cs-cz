@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61459704"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Vlastní pravidla pro firewall webových aplikací s Azure branou
@@ -45,7 +45,7 @@ Můžete řídit přístup pomocí vlastního pravidla WAf, která definuje prio
     - IPMatch: omezení IP adres pro proměnnou RemoteAddr definovat
     - GeoMatch: geografické filtrování pro proměnnou RemoteAddr definovat
     - rovno
-    - Contains
+    - Obsahuje
     - LessThan: omezení velikosti
     - GreaterThan: omezení velikosti
     - LessThanOrEqual: omezení velikosti
@@ -60,7 +60,7 @@ Podporovaná metoda požadavku HTTP, který mezi hodnoty patří:
 - GET
 - POST
 - PUT
-- HEAD
+- HLAVNÍ
 - DELETE
 - ZÁMEK
 - ODEMKNUTÍ

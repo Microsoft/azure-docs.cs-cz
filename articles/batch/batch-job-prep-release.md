@@ -3,7 +3,7 @@ title: Vytvoření úkolů přípravy úloh a dokončení úlohy na výpočetní
 description: Můžete omezit přenosy dat do výpočetních uzlů služby Azure Batch, úrovní úlohy přípravy úlohy a uvolnění úlohy pro uzel vyčištění po dokončení úlohy.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,15 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-origin.date: 02/27/2017
-ms.date: 06/29/2018
-ms.author: v-junlch
-ms.custom: H1Hack27Feb2017
+ms.date: 02/27/2017
+ms.author: lahugh
+ms.custom: seodec18
 ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776196"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úlohy přípravy a uvolnění úloh v Batch výpočetních uzlů
@@ -59,7 +58,7 @@ Můžete chtít zachovat kopii soubory protokolů, které vaše úlohy generují
 > 
 > 
 
-## <a name="job-preparation-task"></a>Příprava na úlohu
+## <a name="job-preparation-task"></a>Úkol přípravy úlohy
 Před spuštěním úkolů úlohy služby Batch spustí úkol přípravy úlohy na každém výpočetním uzlu, který je naplánován ke spuštění úlohy. Ve výchozím nastavení čeká služba Batch úkol přípravy úlohy dokončení před spuštěním úlohy naplánované na uzlu. Můžete ale nakonfigurovat službu nečekat. Pokud se uzel restartuje, úkol přípravy úlohy znovu spustí, ale toto chování můžete také zakázat.
 
 Úkol přípravy úlohy je provedena pouze na uzlech, které jsou naplánovány ke spuštění úlohy. To zabraňuje zbytečné spouštění přípravný úkol v případě, že uzlu se nepřiřazují úkolu. Tato situace může nastat, pokud počet úkolů pro úlohu je menší než počet uzlů ve fondu. Také platí, kdy [provedení souběžné úlohy](batch-parallel-node-tasks.md) je povoleno, který ponechá některé if nečinných uzlů počet úkolů je nižší než celkový počet možných souběžných úkolů. Nespouštíte úkol přípravy úlohy na nečinné uzly, můžete strávit méně peněz na poplatky za přenos dat.
@@ -69,7 +68,7 @@ Před spuštěním úkolů úlohy služby Batch spustí úkol přípravy úlohy 
 > 
 > 
 
-## <a name="job-release-task"></a>Uvolnění úlohy
+## <a name="job-release-task"></a>Úkol uvolnění úlohy
 Jakmile úloha označena jako dokončená, je proveden úkol uvolnění úlohy na každém uzlu ve fondu, ve kterém se spustil alespoň jeden úkol. Úloha se označit jako dokončený vydáním žádost o ukončení. Služba Batch pak nastaví stav úlohy na *ukončení*, ukončí všechny aktivní nebo spuštěné úkoly spojené s úlohou a úkol uvolnění úlohy se spustí. Úloha je následně přesunuto do *Dokončit* stavu.
 
 > [!NOTE]
@@ -196,11 +195,11 @@ Tento příspěvek na fóru MSDN poskytuje přehled o několik metod pro spoušt
 
 Zapsat pomocí některého z členů týmu služby Azure Batch, popisuje několik technik, které můžete použít k nasazení aplikací a dat do výpočetních uzlů.
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[azure_storage]: https://www.azure.cn/home/features/storage/
-[portal]: https://portal.azure.cn
+[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[azure_storage]: https://azure.microsoft.com/services/storage/
+[portal]: https://portal.azure.com
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
@@ -226,5 +225,3 @@ Zapsat pomocí některého z členů týmu služby Azure Batch, popisuje několi
 [net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-
-<!-- Update_Description: wording update -->

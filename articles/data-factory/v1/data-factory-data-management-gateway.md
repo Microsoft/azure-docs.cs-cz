@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143308"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
@@ -511,7 +511,7 @@ Tato část popisuje, jak vytvořit a zaregistrovat bránu pomocí rutin prostř
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. V prostředí Azure PowerShell přejděte do složky: *C:\\\\programové soubory\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*. Spustit *RegisterGateway.ps1* přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
+1. V prostředí Azure PowerShell přejděte do složky: *C:\\\\programové soubory\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* . Spustit *RegisterGateway.ps1* přidružený k místní proměnné **$Key** jak je znázorněno v následujícím příkazu. Tento skript zaregistruje Klientský agent nainstalovaný na vašem počítači využít logické brány, kterou vytvořili dříve.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

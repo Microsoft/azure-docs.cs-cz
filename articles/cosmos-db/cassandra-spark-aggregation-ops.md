@@ -1,22 +1,20 @@
 ---
 title: Agregační operace pro tabulky Azure Cosmos DB Cassandra API z aplikace Spark
 description: V tomto článku najdete základní agregační operace na tabulky Azure Cosmos DB Cassandra API z aplikace Spark
-author: rockboyfor
-ms.author: v-yeche
+author: kanshiG
+ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 04/15/2019
+ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60894182"
 ---
-<!--Verify sucessfully-->
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Agregační operace pro tabulky Azure Cosmos DB Cassandra API z aplikace Spark 
 
 Tento článek popisuje základní agregační operace na tabulky Azure Cosmos DB Cassandra API z aplikace Spark. 
@@ -36,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -71,6 +69,7 @@ booksDF.write
 
 ## <a name="count-operation"></a>Počet operací
 
+
 ### <a name="rdd-api"></a>ROZHRANÍ API RDD
 
 ```scala
@@ -102,28 +101,28 @@ Zvolte [možnost úložiště]( https://spark.apache.org/docs/2.2.0/rdd-programm
 
 * OFF_HEAP (experimentální): Podobně jako MEMORY_ONLY_SER, ale ukládá data v vypnout haldy paměti a vyžaduje vypnutí haldy paměti povolení předem. 
 
-    ```scala
-    //Workaround
-    import org.apache.spark.storage.StorageLevel
+```scala
+//Workaround
+import org.apache.spark.storage.StorageLevel
 
-    //Read from source
-    val readBooksDF = spark
-      .read
-      .cassandraFormat("books", "books_ks", "")
-      .load()
+//Read from source
+val readBooksDF = spark
+  .read
+  .cassandraFormat("books", "books_ks", "")
+  .load()
 
-    //Explain plan
-    readBooksDF.explain
+//Explain plan
+readBooksDF.explain
 
-    //Materialize the dataframe
-    readBooksDF.persist(StorageLevel.MEMORY_ONLY)
+//Materialize the dataframe
+readBooksDF.persist(StorageLevel.MEMORY_ONLY)
 
-    //Subsequent execution against this DF hits the cache 
-    readBooksDF.count
+//Subsequent execution against this DF hits the cache 
+readBooksDF.count
 
-    //Persist as temporary view
-    readBooksDF.createOrReplaceTempView("books_vw")
-    ```
+//Persist as temporary view
+readBooksDF.createOrReplaceTempView("books_vw")
+```
 
 ### <a name="sql"></a>SQL
 
@@ -370,6 +369,3 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 K provedení operace kopírování tabulky, naleznete v tématu:
 
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
-
-<!--Verify sucessfully-->
-<!--Update_Description: wording update -->

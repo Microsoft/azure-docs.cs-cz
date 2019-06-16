@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.openlocfilehash: cdc0f189daebcda592338b463954efab4fc2db96
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864436"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub pomocí .NET
@@ -29,7 +29,7 @@ V tomto kurzu vychází z kódu v [odesílat zprávy typu Cloud-zařízení pomo
 [Odesílání telemetrických dat ze zařízení do služby IoT hub](quickstart-send-telemetry-dotnet.md) a [odesílat zprávy typu Cloud-zařízení pomocí služby IoT Hub](iot-hub-csharp-csharp-c2d.md) články popisují základní funkce typu zařízení cloud a cloud zařízení zasílání zpráv služby IoT Hub. [Konfigurace směrování zpráv pomocí služby IoT Hub](tutorial-routing.md) kurz popisuje způsob, jak spolehlivě ukládat zprávy typu zařízení cloud ve službě Azure blob storage. Nicméně v některých scénářích nelze mapovat snadno data, která vaše zařízení odesílají do poměrně málo početnému zpráv typu zařízení cloud, které služby IoT Hub přijímá. Příklad:
 
 * Velké soubory, které obsahují obrázky
-* Video
+* Videa
 * Data pronikavost odebírána data v vysoká frekvence
 * Určitou formu předzpracovaná dat
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518142"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Vytváření projektů pomocí editoru Video Indexer
@@ -77,7 +77,7 @@ Pokud kliknete na šipku dolů na pravé straně každého videa, se otevře ins
 1. Pokud chcete vytvořit dotazy na konkrétní klipy, použijte vyhledávací pole s textem "Hledat v přepisu, visual text, lidé a popisky".
 1. Přidejte filtry, které dále určit podrobnosti, jaké scén hledáte tak, že vyberete **možnosti filtru**.
 
-    ![Nastavení filtru](./media/video-indexer-view-edit/filter-options.png)
+    ![Možnosti filtru](./media/video-indexer-view-edit/filter-options.png)
 
     Můžete například zobrazit klipy, ve kterém je uvedený Githubu Donovan Brown je na obrazovce. V takovém případě budete muset přidat filtr "zahrnutí", který má "Osob" jako typ insight. Pak je třeba zadat v "Donovan Brown" do vyhledávacího pole filtru.
     
@@ -119,7 +119,7 @@ Nezapomeňte uložit projekt, pokud provedete změny tak, že vyberete **uložit
 
     Pokud vyberete tento projekt, se zobrazí všechny přehledy a časová osa tohoto projektu. Pokud vyberete **Video editor**, můžete pokračovat ve vytváření úpravy pro tento projekt. Úpravy patří přidání nebo odebrání videa a klipy nebo přejmenování projektu.
 
-    ![Editor videa](./media/video-indexer-view-edit/video-editor.png)
+    ![Video editoru](./media/video-indexer-view-edit/video-editor.png)
      
 ## <a name="create-a-project-from-your-video"></a>Vytvoření projektu z videa
 

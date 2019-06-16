@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60882193"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Změny konfigurace v Azure Service Fabric
 A *konfigurace* je definován jako repliky a jejich rolí pro rozdělení stavové služby.
 
-A *Rekonfigurace* je proces přechodu jedna konfigurace do jiné konfigurace. Odešle změnu sady replik pro rozdělení stavové služby. Původní konfigurace se nazývá *předchozí konfiguraci (PC)*, a aby se nová konfigurace se nazývá *aktuální konfiguraci (kopie)*. Protokol změny konfigurace v Azure Service Fabric zachová konzistence a udržuje dostupnost během změny do replik.
+A *Rekonfigurace* je proces přechodu jedna konfigurace do jiné konfigurace. Odešle změnu sady replik pro rozdělení stavové služby. Původní konfigurace se nazývá *předchozí konfiguraci (PC)* , a aby se nová konfigurace se nazývá *aktuální konfiguraci (kopie)* . Protokol změny konfigurace v Azure Service Fabric zachová konzistence a udržuje dostupnost během změny do replik.
 
 Správce převzetí služeb při selhání iniciuje rekonfigurací v reakci na různé události v systému. Například pokud selže primární pak Rekonfigurace je zahájeno podporovat aktivní sekundární do primární. Dalším příkladem je v reakci na upgrady aplikací, když bude pravděpodobně nutné přesunout do jiného uzlu primární před upgradem uzlu.
 

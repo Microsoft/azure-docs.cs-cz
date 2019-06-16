@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773260"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Získat metriky využití virtuálního počítače pomocí rozhraní REST API
@@ -37,18 +37,18 @@ Vyžadují se následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Authorization:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Název | Popis |
+| Name | Popis |
 | :--- | :---------- |
 | subscriptionId | ID předplatného, který identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Název skupiny prostředků Azure, které jsou přidružené k prostředku. Tuto hodnotu lze získat z rozhraní API Azure Resource Manageru, rozhraní příkazového řádku nebo portálu. |
 | vmname | Název virtuálního počítače Azure. |
 | metricnames | Čárkami oddělený seznam platných [metriky Load balanceru úrovně](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| verze API-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2018-01-01`, který je obsažen v adrese URL výše.  |
+| api-version | Verze rozhraní API, která se má použít pro daný požadavek.<br /><br /> Tento dokument popisuje verzi api-version `2018-01-01`, který je obsažen v adrese URL výše.  |
 | TimeSpan | Řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO` , který definuje časový rozsah vrácené metrik. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
 | &nbsp; | &nbsp; |
 

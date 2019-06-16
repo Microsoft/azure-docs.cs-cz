@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
 ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472202"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Připojení zařízení SensorTile.box do aplikace Azure IoT Central
@@ -37,7 +37,7 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **SensorTile.box**
     * Zadejte malé **ID zařízení**, nebo použijte navržené **ID zařízení**.
     * Zadejte **název zařízení**, nebo použijte navrhovaný název
 
-    ![Přidat zařízení](media/howto-connect-sensortile/real-device.png)
+    ![Přidání zařízení](media/howto-connect-sensortile/real-device.png)
 
 1. Chcete-li získat podrobné informace o připojení zařízení **ID oboru**, **ID zařízení**, a **primární klíč**vyberte **připojit** na stránce zařízení.
 
@@ -51,7 +51,7 @@ V této části se dozvíte, jak nabízet firmware aplikace do zařízení. Mů�
 
 1. Otevřete ST volit senzor aplikace a stiskněte klávesu **vytvořit novou aplikaci** tlačítko.
 
-    ![Vytvořit aplikaci](media/howto-connect-sensortile/create-app.png)
+    ![Vytvoření aplikace](media/howto-connect-sensortile/create-app.png)
 
 1. Vyberte **měřítko** aplikace.
 1. Stisknutím tlačítka Odeslat.

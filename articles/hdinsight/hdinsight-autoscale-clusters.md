@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000101"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatické škálování clusterů Azure HDInsight (preview)
@@ -221,9 +221,9 @@ Všechny stavové zprávy na clusteru, které se můžou objevit jsou popsány v
 
 | Stav clusteru | Vysvětlení |
 |---|---|
-| Běží | Cluster se normálně. Všechny předchozí aktivity automatického škálování, byly úspěšně dokončeny. |
-| Aktualizuje se  | Konfigurace automatického škálování clusteru se aktualizuje.  |
-| Konfigurace HdInsight  | Vertikální navýšení kapacity clusteru nebo vertikální snížení kapacity operace právě probíhá.  |
+| Spuštěno | Cluster se normálně. Všechny předchozí aktivity automatického škálování, byly úspěšně dokončeny. |
+| Aktualizace  | Konfigurace automatického škálování clusteru se aktualizuje.  |
+| Konfigurace HDInsight  | Vertikální navýšení kapacity clusteru nebo vertikální snížení kapacity operace právě probíhá.  |
 | Chyba aktualizace  | HDInsight nastaly problémy při aktualizaci konfigurace automatického škálování. Zákazníci můžou zvolit zopakujte aktualizaci nebo zakázat automatické škálování.  |
 | Chyba  | Něco se nepovedlo s clusterem. proto se nedá použít. Tento cluster odstranit a vytvořit nové.  |
 

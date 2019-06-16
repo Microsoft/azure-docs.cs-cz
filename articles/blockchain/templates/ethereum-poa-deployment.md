@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126368"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum během testování of-authority W3C
@@ -152,7 +152,7 @@ Po instalaci MetaMask, přejděte na zásady správného řízení DApp v prohl�
 #### <a name="becoming-an-admin"></a>Stát správcem
 Pokud jste první člen, který je nasazený v síti, pak bude automaticky stane správcem a parita uzly budou uvedené jako validátory.  Pokud jste se zapojili sítě, budete muset získat hlasovali správcem, většinou (větší než 50 %) stávající sady správce.  Pokud jste vybrali možnost stát správcem uzly budou stále synchronizovat a ověřit blockchain; nebudou však účastnit v procesu vytváření bloku. Pokud chcete zahájit proces hlasování se stát správcem, klikněte na tlačítko __Nominate__ a zadejte adresu Ethereem a alias.
 
-![Jmenovat](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
+![Nominujte](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
 #### <a name="candidates"></a>Kandidáti
 Výběr __kandidáty__ kartě se zobrazí aktuální sadu Release candidate správci.  Jakmile kandidát dosáhne většinou aktuální správci, bude získat kandidát povýšen na správce.  Hlasovat o kandidát, vyberte řádek a klikněte na tlačítko "Hlas" v horní části.  Pokud změníte své rozhodnutí o hlasování, můžete vybrat Release candidate a klikněte na tlačítko "Rescind hlas".
@@ -175,7 +175,7 @@ Adresa každého program pro ověření se automaticky přiřadí prostřednictv
 #### <a name="consortium-name"></a>Název W3C
 Správci, který může aktualizovat název Consortium, zobrazený v horní části stránky.  Vyberte ikonu ozubeného kola vlevo nahoře a aktualizovat příslušný název Consortium.
 
-#### <a name="account-menu"></a>Nabídka Účet
+#### <a name="account-menu"></a>Nabídka účet
 V pravém horním je alias účtu Ethereem a identicon.  Pokud jste správce budete mít možnost aktualizovat váš alias.
 
 ![Účet](./media/ethereum-poa-deployment/governance-dapp-account.png)
@@ -260,9 +260,9 @@ Výkon sítě bude mít vliv na virtuální počítač a vrstva úložiště.  D
 
   SKU virtuálního počítače|Úroveň úložiště|Cena|Propustnost|Latence
   ---|---|---|---|---
-  F1|SSD úrovně Standard|nízká|nízká|Vysoká
-  D2_v3|SSD úrovně Standard|středně silné|středně silné|středně silné
-  F16s|SSD úrovně Premium|Vysoká|Vysoká|nízká
+  F1|SSD úrovně Standard|Nízká|Nízká|Vysoká
+  D2_v3|SSD úrovně Standard|Střední|Střední|Střední
+  F16s|Premium SSD|Vysoká|Vysoká|Nízká
 
 Ukázkové nasazení se zobrazí pod: ![velikost a výkon sítě](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -277,7 +277,7 @@ Podrobný popis každého parametru takto:
 ID člena W3C|ID přidružené k kolizí, aby každý člen účastnících se sítě konsorcia slouží ke konfiguraci adresní prostory IP adres. V případě privátní sítě musí být ID člena jedinečná napříč různými organizacemi ve stejné síti.  Unique – člen ID je potřeba i v případě, že stejné organizace nasadí do víc oblastí. Poznamenejte si hodnotu tohoto parametru vzhledem k tomu je potřeba sdílet s ostatními spojovacího členy zajistit, že není žádná kolizí.|0-255|Není k dispozici
 ID sítě|ID sítě pro síť consortium ethereum během nasazení.  Každá síť Etherea má svůj vlastní ID sítě, kdy 1 je ID pro veřejnou síť.|5 - 999,999,999|10101010
 Adresa správce ethereum během|Adresa účtu Etherea, který slouží k účasti v PoA zásad správného řízení.  Doporučujeme používat MetaMask ke generování adresy Etherea.|42 alfanumerických znaků počínaje 0 x|Není k dispozici
-Upřesnit možnosti|Rozšířené možnosti pro ethereum během nastavení|Povolit nebo zakázat|Vypnout
+Rozšířené možnosti|Rozšířené možnosti pro ethereum během nastavení|Povolit nebo zakázat|Zakázat
 Veřejná IP adresa (Upřesnit možnosti = Enable)|Nasadí sítě bránou virtuální sítě a odebere partnerského vztahu přístup. Pokud je vybraná tato možnost, všichni členové musíte použít pro připojení brány virtuální sítě jako kompatibilní.|Veřejnou IP adresu privátní virtuální sítě|Veřejná IP adresa
 Blokovat plynu Limit (Upřesnit možnosti = Enable)|Omezit plynu počáteční blok sítě|Všechny číselné|50000000
 Autorizovat dobu blokování (sekundy)|Frekvence, ve kterém se vytvoří prázdný bloky při neexistují transakce v síti. Rychlejší neodvolatelnost zúčtování ale náklady na úložiště vyšší budou mít vyšší frekvence.|Všechny číselné|15
@@ -293,7 +293,7 @@ V okně monitorování umožňuje nakonfigurovat prostředek protokoly Azure mon
 
   Název parametru|Popis|Povolené hodnoty|Výchozí hodnoty
   ---|---|---|---
-Monitorování|Možnost povolit monitorování|Povolit nebo zakázat|Zapnout
+Monitorování|Možnost povolit monitorování|Povolit nebo zakázat|Povolení
 Připojte se k existující protokoly Azure monitoru|Vytvořit novou instanci protokoly Azure monitoru nebo připojit k existující instanci|Vytvořit nový nebo existující připojení|Vytvořit nový
 Monitorování umístění (připojit k existující protokoly Azure monitoru = vytvořit nový)|Oblast, kde na nový Azure Monitor protokoly instance se nasadí.|Azure Monitor všechny protokoly oblastí|Není k dispozici
 ID pracovního prostoru log analytics existující (připojit k existující protokoly Azure monitoru = připojte se k existující)|ID pracovního prostoru z existující Azure Monitor protokoly instance||Není k dispozici
@@ -413,7 +413,7 @@ $MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName
 New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
-### <a name="service-monitoring"></a>Sledování služby
+### <a name="service-monitoring"></a>Monitorování služeb
 
 Můžete najít na portálu Azure Monitor odkaz v e-mailu nasazení nebo vyhledání parametru ve výstupu nasazení \[OMS\_portál\_URL\].
 

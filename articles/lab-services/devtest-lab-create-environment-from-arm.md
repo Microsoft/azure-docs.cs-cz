@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833987"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
@@ -99,7 +99,7 @@ Jakmile je úložiště na šablony Azure Resource Manageru není nakonfigurovan
 1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 1. V seznamu testovacích prostředí vyberte požadované prostředí.   
-1. V podokně testovacího prostředí, vyberte **přidat +**.
+1. V podokně testovacího prostředí, vyberte **přidat +** .
 1. **Vyberte bázi** podokno zobrazuje základní Image, můžete použít s šablonami Azure Resource Manageru uvedená jako první. Vyberte požadovanou šablonu Azure Resource Manageru.
 
     ![Výběr základní image](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)

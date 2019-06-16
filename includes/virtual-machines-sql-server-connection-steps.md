@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165525"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otevření portů TCP v bráně Windows Firewall pro výchozí instanci databázového stroje
@@ -74,7 +74,7 @@ Databázový stroj SQL Serveru nemůže používat ověřování systému Window
 Pokud se chcete připojit k databázovému stroji z jiného počítače, musíte vytvořit nejméně jeden účet ověřování SQL Serveru.
 
 1. V Průzkumníku objektů systému SQL Server rozbalte složku instance serveru, ve které chcete vytvořit nové přihlášení.
-2. Klikněte pravým tlačítkem na **Zabezpečení**, přejděte na **Nové** a vyberte **Přihlášení...**.
+2. Klikněte pravým tlačítkem na **Zabezpečení**, přejděte na **Nové** a vyberte **Přihlášení...** .
    
     ![Nové přihlášení](./media/virtual-machines-sql-server-connection-steps/23New-Login.png)
 3. V dialogovém okně **Přihlášení – nové** na stránce **Obecné** zadejte jméno nového uživatele do pole **Přihlašovací jméno**.

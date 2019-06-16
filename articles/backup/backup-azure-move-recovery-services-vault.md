@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
 ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64876853"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesouvat trezor služby Recovery Services v rámci skupiny prostředků a předplatná Azure
@@ -68,7 +68,7 @@ Chcete-li přesunout obnovení služby trezor a její přidružené prostředky 
 
 5. Přidání cílová skupina prostředků v **skupiny prostředků** rozevíracího seznamu vyberte existující prostředek skupiny nebo klikněte na tlačítko **vytvořte novou skupinu** možnost.
 
-   ![Vytvořit prostředek](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Vytvoření prostředku](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Po přidání skupiny prostředků, zkontrolujte **beru na vědomí, že nástroje a skripty přidružené k přesunutým prostředkům nebudou fungovat, dokud můžu aktualizovat je, aby používaly nové ID prostředků** možnost a potom klikněte na tlačítko **OK** k dokončení Přesun trezoru.
 

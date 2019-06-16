@@ -9,10 +9,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7f2abbb355513c175329d01b9d5ed8884f2c27ef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715945"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Připojení sdílené složky Azure přes protokol SMB v systému macOS
@@ -38,7 +38,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 1. **Otevřete Finder**: Finder je otevřít v systému macOS ve výchozím nastavení, ale můžete zajistit, že je aktuálně vybranou aplikaci kliknutím "ikona obličeje macOS" do doku:  
     ![Ikona obličeje macOS](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **Vyberte "Připojení k serveru" v nabídce "Go"**: Použijte cestu UNC z požadovaných součástí, převeďte počáteční dvojité zpětné lomítko (`\\`) k `smb://` a všechna ostatní zpětná lomítka (`\`) na lomítka (`/`). Odkaz by měl vypadat nějak takto: ![Dialogové okno "Připojení k serveru"](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **Vyberte "Připojení k serveru" v nabídce "Go"** : Použijte cestu UNC z požadovaných součástí, převeďte počáteční dvojité zpětné lomítko (`\\`) k `smb://` a všechna ostatní zpětná lomítka (`\`) na lomítka (`/`). Odkaz by měl vypadat nějak takto: ![Dialogové okno "Připojení k serveru"](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **Použijte název účtu úložiště a klíč účtu úložiště po zobrazení výzvy k zadání uživatelského jména a hesla**: Po kliknutí na "Připojit" v dialogovém okně "Připojení k serveru", zobrazí se výzva k zadání uživatelského jména a hesla (automaticky se vyplní uživatelské jméno macOS). Máte možnost uložit název účtu úložiště a klíč účtu úložiště do klíčenky macOS.
 

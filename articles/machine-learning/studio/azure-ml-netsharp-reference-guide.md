@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751664"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
@@ -113,7 +113,7 @@ output Result[2] from Hidden all;
 Chcete-li určit počet uzlů ve vrstvě automaticky určit, použijte `auto` – klíčové slovo. `auto` – Klíčové slovo má různé účinky, v závislosti na vrstvě:
 
 + Počet uzlů v deklaraci vstupní vrstvy je mnoho funkcí v vstupní data.
-+ V deklaraci skryté vrstvě počet uzlů, je číslo, které je zadána hodnota parametru pro **počet skrytých uzlů:**.
++ V deklaraci skryté vrstvě počet uzlů, je číslo, které je zadána hodnota parametru pro **počet skrytých uzlů:** .
 + Počet uzlů v deklaraci výstupu vrstvy je 2 pro klasifikaci dvěma třídami, 1 pro regresní a stejný počet výstupních uzlů pro klasifikace víc tříd.
 
 Například následující definice sítě umožňuje všechny vrstvy se automaticky určit velikost:

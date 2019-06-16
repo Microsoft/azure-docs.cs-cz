@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475809"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
@@ -456,7 +456,7 @@ Popis úlohy. Popis je nvarchar(512), výchozí hodnota je NULL. Pokud popis je 
 [  **\@povoleno =** ] povolená  
 Plán úloh Určuje, zda je povoleno. Povolena je bit, výchozí hodnota je 0 (zakázáno). Pokud je 0, úloha není povoleno a nespustí podle zadaného plánu; Nicméně jej lze spustit ručně. Pokud 1, úloha se spustí podle zadaného plánu a můžete spustit také ručně.
 
-[ **\@schedule_interval_type =**] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 Hodnota znamená, když je úloha má být proveden. schedule_interval_type je nvarchar(50), výchozí hodnota je jednou a může být jedna z následujících hodnot:
 - Jednou,
 - 'Minuty'
@@ -907,7 +907,7 @@ Výstupní parametr, který se přiřadí id spuštění úlohy. job_version je 
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné.
+Žádné
  
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
@@ -935,7 +935,7 @@ Identifikační číslo provádění úlohy zastavení. job_execution_id je uniq
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné.
+Žádné
  
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
@@ -995,7 +995,7 @@ Název cílové skupiny odstraňte. target_group_name je nvarchar(128) bez vých
 0 (úspěch) nebo 1 (chyba)
 
 #### <a name="remarks"></a>Poznámky
-Žádné.
+Žádné
 
 #### <a name="permissions"></a>Oprávnění
 Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
 ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60723989"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
@@ -28,7 +28,7 @@ Tento příspěvek je zaměřené na vývojáře v C a C++ pokusu o připojení 
 Ujistěte se, že máte následující položky:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Sadu [Visual Studio](https://www.visualstudio.com/downloads/). Je nutné nainstalovat komponentami jazyka C++, sestavte a spusťte tuto ukázku.
+* [Visual Studio](https://www.visualstudio.com/downloads/). Je nutné nainstalovat komponentami jazyka C++, sestavte a spusťte tuto ukázku.
 * [Vývoj Linuxových aplikací v sadě Visual Studio](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e). Pokud vyvíjíte v systému Linux, je nutné nainstalovat rozšíření Visual Studio Linuxu.
 
 ## <a id="AzureSQL"></a>Azure SQL Database a SQL Server na virtuálních počítačích
@@ -69,7 +69,7 @@ Ujistěte se, že zadáte podrobnosti správné ověřování pro vaši databáz
 
 Spusťte aplikaci a sestavte ho. Zobrazí se následující okno ověření v případě úspěšného připojení. Můžete dokonce spouštět některé základní příkazy SQL jako **vytvořit tabulku** k ověření připojení k databázi:
 
-![Příkazy SQL](./media/sql-database-develop-cplusplus-simple/sqlcommands.png)
+![Příkazy jazyka SQL](./media/sql-database-develop-cplusplus-simple/sqlcommands.png)
 
 Alternativně můžete vytvořit soubor DSN pomocí průvodce, který se spustí, když nejsou zadány žádné argumenty příkazu. Doporučujeme tuto možnost a zkuste to. Tento soubor název zdroje dat můžete použít pro automatizaci a nastavení ověřování ochrana:
 

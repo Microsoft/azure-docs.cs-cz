@@ -8,10 +8,10 @@ ms.topic: conceptional
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: e54dadbda0582095e8152ea30376d369177bfd86
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509907"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Nastavte si upozornění na metriky brány sítě VPN
@@ -21,13 +21,13 @@ Tento článek vám pomůže nastavit upozornění na metriky Azure VPN Gateway.
 
 |**Metrika**   | **Jednotka** | **Členitost** | **Popis** | 
 |---       | ---        | ---       | ---            | ---       |
-|**AverageBandwidth**| B/s  | 5 minut| Průměrné využití šířky pásma kombinované všechna připojení site-to-site k bráně.     |
-|**P2SBandwidth**| B/s  | 1 minutu  | Průměrné využití šířky pásma kombinované všechna připojení point-to-site k bráně.    |
-|**P2SConnectionCount**| Count  | 1 minutu  | Počet připojení point-to-site k bráně.   |
-|**TunnelAverageBandwidth** | B/s    | 5 minut  | Průměrné využití šířky pásma tunely vytvořené v bráně. |
+|**AverageBandwidth**| Bajty/s  | 5 minut| Průměrné využití šířky pásma kombinované všechna připojení site-to-site k bráně.     |
+|**P2SBandwidth**| Bajty/s  | 1 minuta  | Průměrné využití šířky pásma kombinované všechna připojení point-to-site k bráně.    |
+|**P2SConnectionCount**| Count  | 1 minuta  | Počet připojení point-to-site k bráně.   |
+|**TunnelAverageBandwidth** | Bajty/s    | 5 minut  | Průměrné využití šířky pásma tunely vytvořené v bráně. |
 |**TunnelEgressBytes** | B | 5 minut | Odchozí přenosy na tunely vytvořené v bráně.   |
 |**TunnelEgressPackets** | Count | 5 minut | Počet odchozích paketů v tunely vytvořené v bráně.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minut | Počet odchozích paketů přesunuta tunely způsobené neshoda selektor provozu. |
+|**TunnelEgressPacketDropTSMismatch** | Počet | 5 minut | Počet odchozích paketů přesunuta tunely způsobené neshoda selektor provozu. |
 |**TunnelIngressBytes** | B | 5 minut | Příchozí provoz na tunely vytvořené v bráně.   |
 |**TunnelIngressPackets** | Count | 5 minut | Počet příchozích paketů na tunely vytvořené v bráně.   |
 |**TunnelIngressPacketDropTSMismatch** | Count | 5 minut | Počet příchozích paketů na tunely způsobené neshoda selektor provozu. |
@@ -40,7 +40,7 @@ Následující příklady postupu bude vytvoření výstrahy pro bránu pro:
 - **Metrika:** TunnelAverageBandwidth
 - **Podmínka:** Šířka pásma > 10 bajtů za sekundu
 - **Okno:** 5 minut
-- **Akce upozornění:** E-mail
+- **Akce upozornění:** Email
 
 
 

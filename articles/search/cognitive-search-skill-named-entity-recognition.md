@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: b7af4d0a48f002f7523def971a306d1fa2077c70
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952030"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované rozpoznávání entit kognitivních dovedností
@@ -43,7 +43,7 @@ Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| Kategorie    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
+| categories    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
 |defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `de, en, es, fr, it`|
 | minimumPrecision  | Číslo mezi 0 a 1. Pokud přesnost je menší než tato hodnota, se vrátí entity. Výchozí hodnota je 0.|
 
@@ -52,16 +52,16 @@ Parametry rozlišují malá a velká písmena.
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
-| text          | Text, který se má analyzovat          |
+| text          | Text k analýze.          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 | Název výstupního     | Popis                   |
 |---------------|-------------------------------|
 | osoby      | Pole řetězců, přičemž každý řetězec představuje jméno osoby. |
-| umístění  | Pole řetězců, kde každý řetězec představuje umístění. |
+| locations  | Pole řetězců, kde každý řetězec představuje umístění. |
 | organizations  | Pole řetězců, přičemž každý řetězec představuje organizace. |
-| entity | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`, nebo `"location"`)</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (hodnotu mezi 0 a 1, který představuje tuto jistotu, že hodnota je skutečné entity)</li></ul> |
+| Entity | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`, nebo `"location"`)</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (hodnotu mezi 0 a 1, který představuje tuto jistotu, že hodnota je skutečné entity)</li></ul> |
 
 ##  <a name="sample-definition"></a>Ukázková definice
 

@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: daf6538427ea6effef898f2ee3d857e5fa2dccbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64476538"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Získat další data, položky nebo záznamů pomocí stránkování v Azure Logic Apps
@@ -51,7 +51,7 @@ Tady je seznam s jen některé z konektorů, kde může přesáhnout výchozí v
 
 Pokud chcete zjistit, zda akce podporuje stránkování v návrháři aplikace logiky, zkontrolujte nastavení na akci pro **stránkování** nastavení. Tento příklad ukazuje, jak zapnout stránkování v systému SQL Server **získat řádky** akce.
 
-1. V pravém horním rohu akce, klikněte na trojtečku (**...** ) tlačítko a vyberte **nastavení**.
+1. V pravém horním rohu akce, klikněte na trojtečku ( **...** ) tlačítko a vyberte **nastavení**.
 
    ![Otevřete nastavení akce](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 

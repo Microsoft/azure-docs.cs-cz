@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967236"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migraci na smlouvu Enterprise pro smlouvy zákazníků společnosti Microsoft
@@ -91,7 +91,7 @@ Pokud použijete všechny existující rozhraní API EA, musíte je pro faktura�
 - Nové nákupy
 - Poplatky za služby Azure Marketplace
 - Úpravy
-- Poplatky za nadlimitní využití služby
+- Poplatky za Nadlimitní využití služby
 
 Všechna rozhraní API využití jsou nahrazené nativních rozhraní API Azure, které používají Azure AD pro ověřování a autorizaci. Další informace o volání rozhraní Azure REST API najdete v tématu [Začínáme se službou REST](/rest/api/azure/#create-the-request).
 
@@ -172,63 +172,63 @@ Název vlastnosti obsahující pole záznamů využití změněn od dat k _hodno
 
 | Původní vlastnosti | Nové vlastnosti | Poznámky |
 | --- | --- | --- |
-| ID účtu | neuvedeno | Vytvoření odběru se nesleduje. Použijte invoiceSectionId (stejné jako departmentId). |
+| AccountId | neuvedeno | Vytvoření odběru se nesleduje. Použijte invoiceSectionId (stejné jako departmentId). |
 | AccountNameAccountOwnerId a AccountOwnerEmail | neuvedeno | Vytvoření odběru se nesleduje. Použijte invoiceSectionName (stejné jako departmentName). |
-| Další informace | additionalInfo | &nbsp;  |
+| AdditionalInfo | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Všimněte si, že tyto vlastnosti jsou opaky. Pokud isAzureCreditEnabled hodnotu true, bude ChargesBilledSeparately vracet hodnotu false. |
-| Využité množství | quantity | &nbsp; |
-| Využívaná služba | consumedService | Přesné řetězcové hodnoty se mohou lišit. |
-| ID využívané služby | Žádný | &nbsp; |
-| Nákladové středisko | costCenter | &nbsp; |
+| ConsumedQuantity | množství | &nbsp; |
+| ConsumedService | consumedService | Přesné řetězcové hodnoty se mohou lišit. |
+| ConsumedServiceId | Žádný | &nbsp; |
+| Nákladové středisko | Nákladové středisko | &nbsp; |
 | Datum a usageStartDate | date | &nbsp;  |
 | Den | Žádný | Analyzuje den od data. |
-| ID oddělení | invoiceSectionId | Přesné hodnoty se liší. |
+| DepartmentId | invoiceSectionId | Přesné hodnoty se liší. |
 | Název oddělení | invoiceSectionName | Přesné řetězcové hodnoty se mohou lišit. Části faktury tak, aby odpovídaly oddělení, nakonfigurujte v případě potřeby. |
 | ExtendedCost a nákladů | costInBillingCurrency | &nbsp;  |
-| ID instance | resourceId | &nbsp;  |
-| Je pravidelný poplatek | Žádný | &nbsp;  |
+| InstanceId | resourceId | &nbsp;  |
+| Opakované poplatky | Žádný | &nbsp;  |
 | Location | location | &nbsp;  |
-| Kategorie měřiče | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
+| meterCategory | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
 | ID měřiče | meterId | Přesné řetězcové hodnoty se liší. |
-| Název měřiče | meterName | Přesné řetězcové hodnoty se mohou lišit. |
-| Oblast měřiče | meterRegion | Přesné řetězcové hodnoty se mohou lišit. |
-| Podkategorie měřiče | meterSubCategory | Přesné řetězcové hodnoty se mohou lišit. |
+| meterName | meterName | Přesné řetězcové hodnoty se mohou lišit. |
+| MeterRegion | meterRegion | Přesné řetězcové hodnoty se mohou lišit. |
+| meterSubCategory | meterSubCategory | Přesné řetězcové hodnoty se mohou lišit. |
 | Měsíc | Žádný | Analyzuje měsíců od data. |
 | Název nabídky | Žádný | Použití publisherName a productOrderName. |
-| OfferId | Žádný | &nbsp;  |
-| Číslo objednávky | Žádný | &nbsp;  |
+| offerId | Žádný | &nbsp;  |
+| Pořadové číslo | Žádný | &nbsp;  |
 | PartNumber | Žádný | Použijte meterId a productOrderName k jednoznačné identifikaci ceny. |
 | Název plánu | productOrderName | &nbsp;  |
 | Product | Product |   |
-| ID produktu | productId | Přesné řetězcové hodnoty se liší. |
+| productId | productId | Přesné řetězcové hodnoty se liší. |
 | Název vydavatele | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | Přesné řetězcové hodnoty se liší. |
-| Umístění prostředku | resourceLocation | &nbsp;  |
-| ID umístění prostředku | Žádný | &nbsp;  |
-| Sazba zdroje | effectivePrice | &nbsp;  |
-| ID správce služby | neuvedeno | &nbsp;  |
-| Informace o službách 1 | serviceInfo1 | &nbsp;  |
-| Informace o službách 2 | serviceInfo2 | &nbsp;  |
+| resourceLocation | resourceLocation | &nbsp;  |
+| ResourceLocationId | Žádný | &nbsp;  |
+| ResourceRate | effectivePrice | &nbsp;  |
+| ServiceAdministratorId | neuvedeno | &nbsp;  |
+| ServiceInfo1 | serviceInfo1 | &nbsp;  |
+| ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | Přesné řetězcové hodnoty se mohou lišit. |
 | ServiceTier | meterSubCategory | Přesné řetězcové hodnoty se mohou lišit. |
-| Identifikátor služby úložiště | neuvedeno | &nbsp;  |
-| GUID odběru | subscriptionId | &nbsp;  |
+| StoreServiceIdentifier | neuvedeno | &nbsp;  |
+| subscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| Název odběru | subscriptionName | &nbsp;  |
+| subscriptionName | subscriptionName | &nbsp;  |
 | Tags | značky | Vlastnosti značky se vztahují na kořenový objekt, nikoli na vnořené vlastnosti. |
-| Měrná jednotka | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
+| unitOfMeasure | unitOfMeasure | Přesné řetězcové hodnoty se liší. |
 | usageEndDate | date | &nbsp;  |
 | Rok | Žádný | Analyzuje rok od data. |
-| (nové)  | billingCurrency | Měna použitá pro příslušný poplatek. |
-| (nové)  | billingProfileId | Jedinečné ID pro fakturační profil (stejně jako s registrací). |
-| (nové)  | billingProfileName | Název fakturačního profilu (stejně jako s registrací). |
-| (nové)  | chargeType | Slouží k rozlišení využití služeb Azure, využití webu Marketplace a nákupy. |
-| (nové)  | invoiceId | Jedinečné ID pro fakturu. Prázdná pro aktuální, otevřete měsíce. |
-| (nové)  | publisherType | Typ vydavatele pro nákupy od jiných. Prázdná pro využití. |
-| (nové)  | serviceFamily | Typ nákupu. Prázdná pro využití. |
-| (nové)  | servicePeriodEndDate | Datum ukončení zakoupené služby. |
-| (nové)  | servicePeriodStartDate | Počáteční datum zakoupené služby. |
+| (nové) | billingCurrency | Měna použitá pro příslušný poplatek. |
+| (nové) | billingProfileId | Jedinečné ID pro fakturační profil (stejně jako s registrací). |
+| (nové) | billingProfileName | Název fakturačního profilu (stejně jako s registrací). |
+| (nové) | chargeType | Slouží k rozlišení využití služeb Azure, využití webu Marketplace a nákupy. |
+| (nové) | invoiceId | Jedinečné ID pro fakturu. Prázdná pro aktuální, otevřete měsíce. |
+| (nové) | publisherType | Typ vydavatele pro nákupy od jiných. Prázdná pro využití. |
+| (nové) | serviceFamily | Typ nákupu. Prázdná pro využití. |
+| (nové) | servicePeriodEndDate | Datum ukončení zakoupené služby. |
+| (nové) | servicePeriodStartDate | Počáteční datum zakoupené služby. |
 
 ## <a name="billing-periods-api-replaced-by-invoices-api"></a>Rozhraní API období nahrazuje faktury rozhraní API pro fakturaci
 
@@ -373,7 +373,7 @@ Pole v starší API Enterprise získáte seznam ceny v následující tabulce. O
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Přesné řetězcové hodnoty se mohou lišit. |
 | includedQuantity  | includedQuantity | Není k dispozici pro služby v Microsoft zákaznických smluv. |
-| partNumber  | _Není k dispozici_ | Místo toho použijte kombinaci productOrderName (stejné jako offerId) a meterid. |
+| PartNumber  | _Není k dispozici_ | Místo toho použijte kombinaci productOrderName (stejné jako offerId) a meterid. |
 | UnitPrice  | UnitPrice | Cena za jednotku platí za služby využité v Microsoft zákaznických smluv. |
 | Kód měny  | pricingCurrency | Microsoft zákaznických smluv mají cenu reprezentace v cenách měn a fakturační Měna. Kód měny odpovídá pricingCurrency ve smlouvách Microsoft zákazníka. |
 | offerId | productOrderName | Místo OfferId můžete použít productOrderName ale není stejná jako OfferId. Ale productOrderName a měření určit, že ceny ve smlouvách Microsoft zákazníků týkající se meterId a Offerid ve starší verzi registrace. |
@@ -436,12 +436,12 @@ Starší vlastnosti [rozhraní API Azure Resource Manageru cena list](/rest/api/
 | Podkategorie měřiče | meterSubCategory | Název dílčí klasifikace v rámci kategorie měřiče. Podle klasifikace rozdílů mezi sadu základních funkcí ve službě. Například základní SQL DB vs. standardní databázi SQL. |
 | Oblast měřiče | meterRegion | &nbsp;  |
 | Jednotka | _Není k dispozici_ | Může být analyzován z unitOfMeasure. |
-| Měrná jednotka | unitOfMeasure | &nbsp;  |
-| Číslo části | _Není k dispozici_ | Místo partNumber použijte k jednoznačné identifikaci cena za fakturační profil productOrderName a MeterId. Na faktuře MCA místo partNumber v MCA faktury jsou uvedena pole. |
-| Jednotková cena | UnitPrice | Cena za jednotku smlouvy zákazníka se společností Microsoft. |
+| Jednotka měření | unitOfMeasure | &nbsp;  |
+| Výrobní číslo | _Není k dispozici_ | Místo partNumber použijte k jednoznačné identifikaci cena za fakturační profil productOrderName a MeterId. Na faktuře MCA místo partNumber v MCA faktury jsou uvedena pole. |
+| Cena za jednotku | UnitPrice | Cena za jednotku smlouvy zákazníka se společností Microsoft. |
 | Kód měny | pricingCurrency | Microsoft zákaznických smluv představují ceny v měně ceny a fakturace měny. Kód měny je stejný jako pricingCurrency ve smlouvách Microsoft zákazníka. |
 | Zahrnuté množství | includedQuantity | Není k dispozici ke službám ve smlouvách Microsoft zákazníka. Zobrazit s hodnotou nula. |
-|  ID nabídky  | productOrderName | Namísto OfferId použijte productOrderName. Není stejný jako OfferId, productOrderName a měření zjistit ceny ve smlouvách Microsoft zákazníka. Ve starší verzi registrací souvisejících s meterId a Offerid. |
+|  Id nabídky  | productOrderName | Namísto OfferId použijte productOrderName. Není stejný jako OfferId, productOrderName a měření zjistit ceny ve smlouvách Microsoft zákazníka. Ve starší verzi registrací souvisejících s meterId a Offerid. |
 
 Ceny pro smlouvy Microsoft zákazníků je definován jiným způsobem než smlouvy Enterprise. Cena služby v podnikového zápisu je jedinečný pro produkt, PartNumber, měřidla a nabídky. PartNumber není používanými ve smlouvách Microsoft zákazníka.
 
@@ -462,7 +462,7 @@ Následující pole jsou buď není k dispozici v rozhraní API od Microsoftu z�
 | billingPeriodId | Nejsou k dispozici. Odpovídá InvoiceID nebyl pro MCA. |
 | offerId | Není k dispozici. Odpovídá productOrderName v MCA. |
 | meterCategory  | Není k dispozici. Služba v MCA odpovídá. |
-| jednotka | Není k dispozici. Může být analyzován z unitOfMeasure. |
+| Jednotka | Není k dispozici. Může být analyzován z unitOfMeasure. |
 | Kód měny | Stejné jako pricingCurrency v MCA. |
 | meterLocation | Stejné jako meterRegion v MCA. |
 | partNumber partnumber | Nedá se použít kvůli výrobní číslo není uveden ve MCA faktury. Místo partnumber použijte kombinaci meterId a productOrderName k jednoznačné identifikaci ceny. |

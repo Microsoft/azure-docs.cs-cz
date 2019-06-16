@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: aahi
 ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831388"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Volání REST API pro analýzu textu
@@ -40,7 +40,7 @@ Vstup musí být v nezpracované nestrukturovaného textu JSON. XML není podpor
 
 Aktuálně můžete odeslat dokumenty stejný pro všechny operace rozhraní Text Analytics: zabarvení, klíčových frází, rozpoznávání jazyka a identifikace entit. (Schéma je pravděpodobně lišit pro každou analýzy v budoucnu.)
 
-| Element | Platné hodnoty | Povinné? | Využití |
+| Element | Platné hodnoty | Požadováno? | Využití |
 |---------|--------------|-----------|-------|
 |`id` |Datový typ je řetězec, ale v praxi ID dokumentu mají být celá čísla. | Požaduje se | Systém používá ID zadáte strukturovat výstup. Pro každé ID v požadavku se generují kódech jazyků, klíčové fráze a skóre mínění.|
 |`text` | Nestrukturované nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | Pro rozpoznávání jazyka lze vyjádřit text v libovolném jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikace entit, musí mít text [podporovaný jazyk](../text-analytics-supported-languages.md). |

@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60751773"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
@@ -52,7 +52,7 @@ Jeden z tajemství datové vědy je stále ostatním uživatelům práci za vás
 
 Microsoft má cloudové služby zvané [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) , že si klidně můžete vyzkoušet zdarma. To vám poskytne pracovní prostor tam, kde můžete experimentovat s algoritmů různých strojového učení, a pokud máte řešení dobře fungoval, můžete ji spustit jako webovou službu.
 
-Součástí této služby je něco volá se,  **[galerii Azure AI](https://gallery.azure.ai/)**. Obsahuje prostředky, včetně kolekce experimenty Azure Machine Learning Studio, nebo modely, které lidé mít vytvořené a které přispívají k použití jiným uživatelům. Tyto experimenty jsou skvělý způsob, jak využít myšlenek a těžkou práci ostatních začít pracovat na své vlastní řešení. Všichni uživatelé jsou Vítá vás procházet přes něj.
+Součástí této služby je něco volá se,  **[galerii Azure AI](https://gallery.azure.ai/)** . Obsahuje prostředky, včetně kolekce experimenty Azure Machine Learning Studio, nebo modely, které lidé mít vytvořené a které přispívají k použití jiným uživatelům. Tyto experimenty jsou skvělý způsob, jak využít myšlenek a těžkou práci ostatních začít pracovat na své vlastní řešení. Všichni uživatelé jsou Vítá vás procházet přes něj.
 
 ![Galerie Azure AI](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 

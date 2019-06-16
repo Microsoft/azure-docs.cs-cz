@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606936"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technické specifikace a dodržování předpisů pro zařízení StorSimple
@@ -104,7 +104,7 @@ V následující tabulce jsou uvedeny dimenze skříň v milimetrech a palců.
 
 V závislosti na konfiguraci úplným načtením primární skříně můžete naváží od 21 33 kg a vyžaduje dvě osoby, aby to zvládnul.
 
-| Skříň | Váha |
+| Skříň | Hmotnost |
 | --- | --- |
 | Maximální tloušťka (závisí na konfiguraci) |30 kg – 33 kg |
 | Prázdný (instalováno žádné jednotky) |21 – kg 23 |
