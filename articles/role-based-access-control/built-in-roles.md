@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
 ms.openlocfilehash: 427c4615fcbb036ffff56a8fc592f258fb98845e
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66755124"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
@@ -190,7 +190,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Umožňuje zobrazit všechno, ale ne provádět změny. |
 > | **ID** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | **notActions** |  |
 > | *None* |  |
 > | **DataActions** |  |
@@ -1578,7 +1578,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Přispěvatel log Analytics může číst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování, zahrnuje přidání rozšíření virtuálního počítače na virtuální počítače; čtení klíčů účtů úložiště, abyste mohli konfigurovat shromažďování protokolů ze služby Azure Storage; Vytvoření a konfigurace účtů služby Automation; přidávání řešení a konfigurace diagnostik Azure na všech prostředcích Azure. |
 > | **ID** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Automation/automationAccounts/* |  |
 > | Microsoft.ClassicCompute/virtualMachines/extensions/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Vypíše přístupové klíče pro účty úložiště. |
@@ -1605,7 +1605,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Čtenář log Analytics můžete zobrazit a vyhledat všechna data monitorování a zobrazení nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. |
 > | **ID** | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Hledejte pomocí nového modulu. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Spouští vyhledávací dotaz |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
@@ -1687,7 +1687,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Umožňuje číst a provádět akce s prostředky spravované aplikace |
 > | **ID** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
 > | Microsoft.Solutions/*/action |  |
 > | **notActions** |  |
@@ -1704,7 +1704,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Umožňuje číst prostředky ve spravované aplikaci a požádejte o přístup JIT. |
 > | **ID** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Solutions/jitRequests/* |  |
 > | **notActions** |  |
@@ -1798,7 +1798,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 > | **ID** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
 > | Microsoft.Insights/actiongroups/* |  |
@@ -1853,7 +1853,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 > | **ID** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Spouští vyhledávací dotaz |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |
@@ -1950,7 +1950,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | (Preview) Obnovení uživatelé z EA s oprávněními vytvářet a upravovat zásady prostředků, vytvořte lístek podpory a číst prostředky a hierarchii. |
 > | **ID** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Authorization/policyassignments/* | Vytvářet a spravovat přiřazení zásad |
 > | Microsoft.Authorization/policydefinitions/* | Vytvářet a spravovat definice zásad |
 > | Microsoft.Authorization/policysetdefinitions/* | Vytváření a správě sady zásad |
@@ -2688,7 +2688,7 @@ Následující tabulka obsahuje stručný popis jednotlivých předdefinovaných
 > | **Popis** | Umožňuje spravovat přístup uživatelů k prostředkům Azure. |
 > | **ID** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Akce** |  |
-> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | \* / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Authorization/* | Správa autorizací |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | **notActions** |  |

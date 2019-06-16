@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153769"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
@@ -180,11 +180,11 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
 
     Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
-   * **/ Zdroj:  *&lt;zdroj&gt;:*** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/SourceKey: *&lt;source-account-key&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
-   * **/ Dest:  *&lt;cílové&gt;:*** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
-   * **/ DestKey:  *&lt;klíč účtu dest&gt;:*** Klíč účtu úložiště účtu cílového úložiště.
-   * **Nebo vzor, který:  *&lt;název souboru&gt;:*** Zadejte název souboru VHD, který chcete zkopírovat.
+   * **/ Zdroj:  *&lt;zdroj&gt;:* ** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
+   * **/SourceKey: *&lt;source-account-key&gt;:* ** Klíč účtu úložiště účtu zdrojového úložiště.
+   * **/ Dest:  *&lt;cílové&gt;:* ** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
+   * **/ DestKey:  *&lt;klíč účtu dest&gt;:* ** Klíč účtu úložiště účtu cílového úložiště.
+   * **Nebo vzor, který:  *&lt;název souboru&gt;:* ** Zadejte název souboru VHD, který chcete zkopírovat.
 
 Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
 
@@ -277,12 +277,12 @@ Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na ve
 
     Tady jsou popisy parametrů použitých v příkazu AzCopy:
 
-   * **/ Zdroj:  *&lt;zdroj&gt;:*** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
-   * **/SourceKey: *&lt;source-account-key&gt;:*** Klíč účtu úložiště účtu zdrojového úložiště.
-   * **/ Dest:  *&lt;cílové&gt;:*** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
-   * **/ DestKey:  *&lt;klíč účtu dest&gt;:*** Klíč účtu úložiště účtu cílového úložiště.
+   * **/ Zdroj:  *&lt;zdroj&gt;:* ** Umístění složky nebo adresa URL kontejneru úložiště, která obsahuje virtuální pevný disk.
+   * **/SourceKey: *&lt;source-account-key&gt;:* ** Klíč účtu úložiště účtu zdrojového úložiště.
+   * **/ Dest:  *&lt;cílové&gt;:* ** Adresa URL kontejneru úložiště VHD, který chcete zkopírovat.
+   * **/ DestKey:  *&lt;klíč účtu dest&gt;:* ** Klíč účtu úložiště účtu cílového úložiště.
    * **/ BlobType: stránka:** Určuje, že cíl je objekt blob stránky.
-   * **Nebo vzor, který:  *&lt;název souboru&gt;:*** Zadejte název souboru VHD, který chcete zkopírovat.
+   * **Nebo vzor, který:  *&lt;název souboru&gt;:* ** Zadejte název souboru VHD, který chcete zkopírovat.
 
 Podrobnosti o použití nástroje AzCopy nástroj, najdete v článku [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
 

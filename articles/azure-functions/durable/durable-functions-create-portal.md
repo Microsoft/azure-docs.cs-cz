@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
 ms.openlocfilehash: 705a43f1ef35f953d1b87c7c44bbc45fcb4334be
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872866"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
@@ -38,7 +38,7 @@ Ve výchozím nastavení používá aplikace function app vytvořena verze 2.x m
 
 Pokud vytváříte odolné funkce jazyka JavaScript, budete muset nainstalovat [ `durable-functions` balíčku npm](https://www.npmjs.com/package/durable-functions).
 
-1. Vyberte název vaší aplikace funkcí, za nímž následuje **funkce platformy**, pak **Rozšířené nástroje (Kudu)**.
+1. Vyberte název vaší aplikace funkcí, za nímž následuje **funkce platformy**, pak **Rozšířené nástroje (Kudu)** .
 
    ![Funkce platformy funkcí zvolte Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
 

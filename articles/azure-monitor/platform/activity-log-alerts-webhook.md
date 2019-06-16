@@ -9,10 +9,10 @@ ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
 ms.openlocfilehash: 63f59d59712d851f9bb7ace27335fe665a598f9f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66477912"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
@@ -179,12 +179,12 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 | id |ID prostředku výstrahy. |
 | description |Popis výstrahy nastavit, pokud je výstraha vytvořena. |
 | subscriptionId |ID předplatného Azure. |
-| časové razítko |Čas, kdy byla událost vygenerována podle služeb Azure, který požadavek zpracoval. |
+| timestamp |Čas, kdy byla událost vygenerována podle služeb Azure, který požadavek zpracoval. |
 | resourceId |ID prostředku ovlivněných prostředků. |
 | resourceGroupName |Název skupiny prostředků pro ovlivněných prostředků. |
 | properties |Sada `<Key, Value>` páry (to znamená `Dictionary<String, String>`), který obsahuje podrobnosti o události. |
 | událost |Element, který obsahuje metadata o události. |
-| Autorizace |Řízení přístupu na základě Role vlastnosti události. Tyto vlastnosti se obvykle zahrnují akce, role a obor. |
+| authorization |Řízení přístupu na základě Role vlastnosti události. Tyto vlastnosti se obvykle zahrnují akce, role a obor. |
 | category |Kategorie události. Mezi podporované hodnoty patří pro správu, oznámení, zabezpečení, ServiceHealth a doporučení. |
 | Volající |E-mailová adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. Nesmí být null u některých systémových volání. |
 | correlationId |Obvykle GUID ve formátu řetězce. Události s ID korelace patřit do stejné akce větší a obvykle sdílet ID korelace. |
@@ -192,7 +192,7 @@ Podrobnosti konkrétní schématu na všechny ostatní upozornění protokolu ak
 | eventDataId |Jedinečný identifikátor pro událost. |
 | eventSource |Název služby Azure nebo infrastruktury, které vygenerovalo událost. |
 | httpRequest |Požadavek obvykle zahrnuje ID žádosti klienta, clientIpAddress a metodou HTTP (například UMÍSTIT). |
-| úroveň |Jeden z následujících hodnot: Kritické, chyba, upozornění a informativní. |
+| level |Jeden z následujících hodnot: Kritické, chyba, upozornění a informativní. |
 | operationId |Obvykle GUID sdílen události odpovídá jedné operace. |
 | operationName |Název operace |
 | properties |Vlastnosti události. |

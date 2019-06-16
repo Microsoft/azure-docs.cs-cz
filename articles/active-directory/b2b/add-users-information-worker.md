@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65812534"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak uživatelé ve vaší organizaci můžete pozvat uživatele typu Host do aplikace
@@ -35,11 +35,11 @@ Po Host uživatel přidaný do adresáře ve službě Azure AD, vlastníka aplik
 Po dokončení konfigurace aplikace pro samoobslužné funkce, můžete počet vlastníků aplikace použít přístupovém panelu se pozvat uživatele typu Host do aplikace, které chtějí. Uživatel typu Host nemusí nutně být přidány do služby Azure AD předem. 
 
 1. Otevřete tak, že přejdete na přístupovém panelu `https://myapps.microsoft.com`.
-2. Přejděte na aplikaci, vyberte symbol tří teček (**...** ) a pak vyberte **spravovat aplikaci**.
+2. Přejděte na aplikaci, vyberte symbol tří teček ( **...** ) a pak vyberte **spravovat aplikaci**.
  
    ![Snímek obrazovky aplikace spravovat dílčí nabídky pro aplikaci Salesforce](media/add-users-iw/access-panel-manage-app.png)
  
-3. V horní části seznamu uživatelů vyberte **+**.
+3. V horní části seznamu uživatelů vyberte **+** .
    
    ![Snímek obrazovky ukazující na symbol plus pro přidávání členů do aplikace](media/add-users-iw/access-panel-manage-app-add-user.png)
    
@@ -62,7 +62,7 @@ Po dokončení konfigurace aplikace pro samoobslužné funkce, počet vlastník�
    
    ![Snímek obrazovky znázorňující, kde chcete vybrat skupinu v rámci skupiny moje](media/add-users-iw/access-panel-groups-i-own.png)
    
-5. V horní části seznamu členů skupiny, vyberte **+**.
+5. V horní části seznamu členů skupiny, vyberte **+** .
    
    ![Snímek obrazovky ukazující na symbol plus pro přidávání členů do skupiny](media/add-users-iw/access-panel-groups-add-member.png)
    

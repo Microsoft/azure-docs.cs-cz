@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165461"
 ---
 Je důležité si uvědomit, že existují dva způsoby, jak konfigurace naslouchacího procesu skupiny dostupnosti v Azure. Způsoby, kterými se liší v typu nástroje pro vyrovnávání zatížení Azure, které používáte při vytváření naslouchacího procesu. Následující tabulka popisuje rozdíly:

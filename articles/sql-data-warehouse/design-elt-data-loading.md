@@ -11,10 +11,10 @@ ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: de5649498dddcec8c65f2cfca6dcb39fa20a9267
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242248"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Navrhování dat pomocí PolyBase načítání strategie pro Azure SQL Data Warehouse
@@ -68,11 +68,11 @@ PolyBase načte data z kódování UTF-8 a UTF-16 textových souborů s oddělov
 |        string         |                           varchar                            |
 |        binary         |                            binary                            |
 |        binary         |                          varbinary                           |
-|       časové razítko       |                             date                             |
-|       časové razítko       |                        smalldatetime                         |
-|       časové razítko       |                          datetime2                           |
-|       časové razítko       |                           datetime                           |
-|       časové razítko       |                             time                             |
+|       timestamp       |                             date                             |
+|       timestamp       |                        smalldatetime                         |
+|       timestamp       |                          datetime2                           |
+|       timestamp       |                           datetime                           |
+|       timestamp       |                             time                             |
 |       date        | ((1) zatížení jako int a přetypování na data </br> (2) [použít konektor datového skladu SQL Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) s </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**aktualizovat, už brzy**) |
 |        decimal        | [Použití konektoru SQL datový Sklad Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) s </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**aktualizovat, už brzy**) |
 

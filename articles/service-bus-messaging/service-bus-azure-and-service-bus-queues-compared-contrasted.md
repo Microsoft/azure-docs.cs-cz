@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: dbbc43bc7a2f42f8a72ce12d84da1ae406a588d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799353"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty služby Storage a fronty služby Service Bus – porovnání a rozdíly
@@ -65,7 +65,7 @@ Tabulky v následujících částech poskytují možnost logického seskupován�
 ## <a name="foundational-capabilities"></a>Základní možnosti
 Tato část porovnává některých základních funkcí front zpráv poskytuje fronty úložiště a front služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
+| Porovnání kritérií | Fronty služby Storage | Fronty služby Service Bus |
 | --- | --- | --- |
 | Řazení se zárukou |**Ne** <br/><br>Další informace najdete v tématu první poznámky v části "Další informace".</br> |**Ano - First-In-First-Out (FIFO)**<br/><br>(pomocí zasílání zpráv relací) |
 | Garance doručení |**Na alespoň jedno** |**Na alespoň jedno**<br/><br/>**Jednou na většinu** |
@@ -98,7 +98,7 @@ Tato část porovnává některých základních funkcí front zpráv poskytuje 
 ## <a name="advanced-capabilities"></a>Pokročilé funkce
 Tato část porovnává pokročilé funkce, která poskytuje fronty úložiště a front služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
+| Porovnání kritérií | Fronty služby Storage | Fronty služby Service Bus |
 | --- | --- | --- |
 | Naplánované doručení |**Ano** |**Ano** |
 | Automatické nedoručení |**Ne** |**Ano** |
@@ -129,7 +129,7 @@ Tato část porovnává pokročilé funkce, která poskytuje fronty úložiště
 ## <a name="capacity-and-quotas"></a>Kapacity a kvót
 Tato část porovnává fronty služby Storage a fronty služby Service Bus z hlediska [kapacity a kvót](service-bus-quotas.md) , který může použít.
 
-| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
+| Porovnání kritérií | Fronty služby Storage | Fronty služby Service Bus |
 | --- | --- | --- |
 | Maximální velikost fronty |**500 TB**<br/><br/>(omezeno na [jednotné kapacitě účtu úložiště](../storage/common/storage-introduction.md#queue-storage)) |**1 GB až 80 GB**<br/><br/>(definované při vytvoření fronty a [povolení dělení](service-bus-partitioning.md) – naleznete v části "Další informace") |
 | Maximální velikost zprávy |**64 KB**<br/><br/>(48 KB při použití **Base64** kódování)<br/><br/>Azure podporuje velké zprávy kombinací fronty a objekty BLOB – v tomto okamžiku je možné zařadit do fronty až 200 GB pro jednu položku. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a text záhlaví maximální velikost: 64 KB).<br/><br/>Závisí [úroveň služby](service-bus-premium-messaging.md). |
@@ -148,7 +148,7 @@ Tato část porovnává fronty služby Storage a fronty služby Service Bus z hl
 ## <a name="management-and-operations"></a>Operace a Správa
 Tato část obsahuje porovnání funkcí správy, poskytuje fronty úložiště a front služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
+| Porovnání kritérií | Fronty služby Storage | Fronty služby Service Bus |
 | --- | --- | --- |
 | Protokol pro správu |**Rozhraní REST přes protokol HTTP/HTTPS** |**Rozhraní REST přes protokol HTTPS** |
 | Modul runtime protokolu |**Rozhraní REST přes protokol HTTP/HTTPS** |**Rozhraní REST přes protokol HTTPS**<br/><br/>**AMQP 1.0 Standard (TCP s TLS)** |
@@ -172,7 +172,7 @@ Tato část obsahuje porovnání funkcí správy, poskytuje fronty úložiště 
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Tento oddíl popisuje funkce ověřování a autorizaci podporovaných front služby Storage a fronty služby Service Bus.
 
-| Porovnání kritérií | Fronty úložiště | Fronty služby Service Bus |
+| Porovnání kritérií | Fronty služby Storage | Fronty služby Service Bus |
 | --- | --- | --- |
 | Authentication |**Symetrický klíč** |**Symetrický klíč** |
 | Model zabezpečení |Delegovaný přístup prostřednictvím tokeny SAS. |SAS |

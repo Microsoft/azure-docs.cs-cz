@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
 ms.openlocfilehash: b2ae24c0449b009db6fcecdd8a1366ea5154629a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257790"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Jádra pro poznámkový blok Jupyter v clusterech Apache Spark v Azure HDInsight 
@@ -72,7 +72,7 @@ Tady je několik výhod pomocí jádrech nový poznámkový blok Jupyter v clust
    | Magic | Příklad: | Popis |
    | --- | --- | --- |
    | Nápověda |`%%help` |Vytvoří tabulku ze všech dostupných Magic příklad a popis |
-   | Informace o |`%%info` |Informace o relaci výstupy pro aktuální koncový bod Livy |
+   | info |`%%info` |Informace o relaci výstupy pro aktuální koncový bod Livy |
    | Konfigurace |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Nakonfiguruje parametry pro vytvoření relace. Příznak force (-f) je povinný, pokud relace již byla vytvořena, což zajistí, že je relace vyřadit a vytvořit znovu. Podívejte se na [/sessions příspěvek Livy text žádosti](https://github.com/cloudera/livy#request-body) seznam platných parametrů. Parametry musí být předán v podobě řetězce JSON a musí být na dalším řádku za všechno, jak je znázorněno v příkladu sloupce. |
    | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Spustí dotaz Hive proti kontext sqlContext. Pokud `-o` parametr se předává, výsledek dotazu se ukládají v %% místní kontext Python jako [Pandas](https://pandas.pydata.org/) datového rámce. |
    | místní |`%%local`<br>`a=1` |Veškerý kód v dalších řádcích je spuštěn místně. Kód musí být platný kód Python2 i bez ohledu na jádro, které používáte. Ano, i v případě, že jste vybrali **PySpark3** nebo **Spark** jádrech při vytváření Poznámkový blok, pokud použijete `%%local` magic v buňce, tato buňka musí mít pouze platný kód Python2. |

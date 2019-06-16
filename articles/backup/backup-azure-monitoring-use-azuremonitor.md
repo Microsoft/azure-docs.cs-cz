@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2d7c158b32c15fb8be153511136eafb73147afa6
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
-ms.translationtype: MT
+ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734854"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808523"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure monitoru
 
@@ -257,7 +257,7 @@ Zde je prostředek samotný trezor služby Recovery Services a proto je nutné o
 Oznámení přes protokoly aktivit můžete využít, ***služby Azure Backup se důrazně doporučuje použít LA pro monitorování na škálování a ne protokolů aktivit z následujících důvodů***.
 
 - **Omezeném počtu scénářů:** Vztahuje se jenom zálohy virtuálních počítačů Azure a je potřeba zopakovat pro každý trezor RS.
-- **Podle definice:** Naplánované zálohování aktivity nevejde se nejnovější definice protokolů aktivit a v souladu s [diagnostické protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). Tato vést k neočekávaným dopad při změně dat – čerpání přes kanál protokolu aktivit, jak níže.
+- **Podle definice:** Naplánované zálohování aktivity nevejde se nejnovější definice protokolů aktivit a v souladu s [diagnostické protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Tato vést k neočekávaným dopad při změně dat – čerpání přes kanál protokolu aktivit, jak níže.
 - **Problémy s kanálem protokolu činnosti:** Jsme přesunuli na nový model čerpání protokoly aktivit z Azure Backup na trezory služby Recovery Services. Přesunutí bohužel má vliv na generování protokolů aktivit v suverénních Cloudech Azure. Pokud uživatelé suverénní Cloud Azure vytvořili/nakonfigurované všechny výstrahy na základě protokolů aktivit prostřednictvím služby Azure Monitor, nebylo aktivované. Ve všech veřejných oblastech Azure, pokud uživatel je shromažďování protokolů aktivit služby obnovení do pracovního prostoru analýzy protokolů jak už bylo zmíněno [tady](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), neobjevila by se také tyto protokoly.
 
 Proto se důrazně doporučujeme používat pracovní prostor analýzy protokolů pro monitorování a upozorňování v různém rozsahu pro všechny Azure Backup chráněných pracovních vytížení.

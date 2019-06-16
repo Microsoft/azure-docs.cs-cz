@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/15/2019
 ms.author: aljo
 ms.openlocfilehash: c02e38880fdf8e8f1a2229f009b343d6431af853
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125132"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavení Azure Active Directory pro ověřování klientů
@@ -85,7 +85,7 @@ Po přihlášení úspěšně do služby Azure AD v Service Fabric Explorer, pro
 
 ![Dialogové okno certifikát SFX][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>Důvod
+#### <a name="reason"></a>Reason
 Uživatel není přiřazena role v clusteru aplikaci Azure AD. Ověřování Azure AD díky tomu se nezdaří v clusteru Service Fabric. Service Fabric Explorer spadne zpět na ověření certifikátu.
 
 #### <a name="solution"></a>Řešení
@@ -104,7 +104,7 @@ Při pokusu o přihlášení k Azure AD v Service Fabric Exploreru na stránce v
 
 ![Adresa pro odpovědi SFX neodpovídá.][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>Důvod
+#### <a name="reason"></a>Reason
 Aplikace clusteru (web), který představuje Service Fabric Exploreru pokusí ověřit ve službě Azure AD a jako součást požadavku poskytuje návratová adresa URL přesměrování. Adresa URL není uvedena v aplikaci Azure AD, ale **adresy URL odpovědi** seznamu.
 
 #### <a name="solution"></a>Řešení

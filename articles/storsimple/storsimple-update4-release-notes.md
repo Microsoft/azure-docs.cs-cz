@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60530988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64698645"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Poznámky k verzi StorSimple 8000 Series Update 4
 
@@ -70,7 +70,7 @@ Následující tabulka obsahuje souhrn problémy, které byly opraveny v aktuali
 | --- | --- | --- | --- | --- |
 | 1 |Převzetí služeb při selhání |V předchozí verzi po převzetí služeb při selhání, došlo k nějakému problému související s vyčištění zjištěnou na webu zákazníka. Tento problém je vyřešen v této verzi. |Ano |Ano |
 | 2 |Místně připojené svazky |V předchozí verzi došlo k nějakému problému na příslušný svazek vytváření místně vázaných svazků, které způsobí chyby při vytváření svazku. Tento problém byl způsobila kořenové a opravené v této verzi. |Ano |Ne |
-| 3 |Balíček pro podporu |V předchozí verzi byly problémy související se balíček pro podporu, která způsobí System.OutOfMemory výjimky nebo jiné chyby, což vede k selhání vytváření balíčků podpory. Tyto chyby jsou opravené v této verzi. |Ano |Ano |
+| 3 |Balíček pro podporu. |V předchozí verzi byly problémy související se balíček pro podporu, která způsobí System.OutOfMemory výjimky nebo jiné chyby, což vede k selhání vytváření balíčků podpory. Tyto chyby jsou opravené v této verzi. |Ano |Ano |
 | 4 |Monitorování |V předchozí verzi existuje problém týkající se sledování grafů pro místně připojené svazky ve kterém se zobrazilo spotřebu v EB. Tato chyba se vyřeší v této verzi. |Ano |Ano |
 | 5 |Migrace |V předchozí verzi byly několik problémů souvisejících s spolehlivost migrace z řad 5000 – 7000 zařízení řady 8000. V této verzi mají tyto problémy vyřeší. |Ano |Ano |
 | 6 |Aktualizace |V předchozích verzích, pokud došlo k selhání aktualizace, řadiče přejde do režimu obnovení a proto nelze pokračovat v aktualizaci uživatele a bude nutné kontaktovat Microsoft Support. <br> Toto chování se změnil v této verzi. Pokud má uživatel k selhání aktualizace po obou řadičích spuštěna stejná verze (s aktualizací Update 4), řadiče nepřejdou do režimu obnovení. Pokud uživatel zaznamená toto selhání, doporučujeme, aby čekat bit a pak zkuste aktualizaci zopakovat. Opakování může uspět. Pokud se nový pokus nezdaří, měli byste kontaktovat Microsoft Support. |Ano |Ano |

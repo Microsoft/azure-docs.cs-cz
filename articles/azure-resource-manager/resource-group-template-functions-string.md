@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431215"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Řetězec funkce pro šablony Azure Resource Manageru
@@ -1015,7 +1015,7 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 | lastString | Int | 0 |
 | NotFound | Int | -1 |
 
-## <a name="length"></a>Délka
+## <a name="length"></a>length
 
 `length(string)`
 
@@ -1123,7 +1123,7 @@ Následující příklad šablony ukazuje parametr s novým identifikátorem.
 
 Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1550,7 +1550,7 @@ Vrátí dílčí řetězec, který začíná na pozici zadaného znaku a obsahuj
 |:--- |:--- |:--- |:--- |
 | stringToParse |Ano |string |Původní řetězec, ze které je dílčí řetězec extrahován. |
 | Počáteční index |Ne |int |Počáteční znak pozice s nulovým základem pro dílčí řetězec. |
-| Délka |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. Musí být nulová nebo větší. |
+| length |Ne |int |Počet znaků pro dílčí řetězec. Musí odkazovat na umístění v rámci řetězce. Musí být nulová nebo větší. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -2134,7 +2134,7 @@ Následující příklad šablony ukazuje různé formáty pro hodnoty data a č
 
 Výstup z předchozího příkladu se liší u každého nasazení ale bude vypadat podobně jako:
 
-| Name | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |

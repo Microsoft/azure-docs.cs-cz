@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e0f2d3491db24ecbb49c189232dbc7f698e09fb1
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66430773"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Dál stavu úlohy a datové proudy úlohy ze služby Automation na protokoly Azure monitoru
@@ -116,7 +116,7 @@ Diagnostika ve službě Azure Automation vytvoří dva typy záznamů v protokol
 | TimeGenerated |Datum a čas provedení úlohy runbooku. |
 | RunbookName_s |Název runbooku. |
 | Caller_s |Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy. |
-| StreamType_s |Typ datového proudu úlohy. Možné hodnoty:<br>- Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné |
+| StreamType_s |Typ datového proudu úlohy. Možné hodnoty:<br>\- Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné |
 | Tenant_g | Identifikátor GUID, který identifikuje klienta pro volajícího. |
 | JobId_g |Identifikátor GUID, který představuje ID úlohy runbooku. |
 | ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |

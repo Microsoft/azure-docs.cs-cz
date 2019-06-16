@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925154"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147517"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na disku Azure Data Box a ověřit
 
@@ -88,7 +88,7 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     
     |Parametry/možnosti  |Popis |
     |--------------------|------------|
-    |Zdroj            | Určuje cestu ke zdrojovému adresáři.        |
+    |source            | Určuje cestu ke zdrojovému adresáři.        |
     |Cíl       | Určuje cestu k cílovému adresáři.        |
     |/E                  | Zkopíruje podadresáře včetně prázdných adresářů. |
     |/MT[:N]             | Vytvoří vícevláknové kopie s N vlákny, kde N je celé číslo mezi 1 a 128. <br>Výchozí hodnota N je 8.        |
@@ -250,6 +250,8 @@ Tento volitelný postup můžete použít v případě, že používáte více d
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Pokud se zobrazí chyby pomocí nástroje pro kopírování rozdělení, přejděte na tom, jak [řešení potíží s chybami nástroj pro kopírování rozdělení](data-box-disk-troubleshoot-data-copy.md).
+
 Jakmile se kopírování dat dokončí, můžete přejít k ověření vaše data. Pokud jste použili nástroj pro kopírování rozdělení, přeskočit ověření (nástroj také ověří rozdělení kopie) a přejděte k dalšímu kurzu.
 
 
@@ -270,6 +272,8 @@ Pokud nástroj pro kopírování rozdělení není použili ke kopírování dat
     > - Možnost 1 použijte, pokud pracujete s rozsáhlou sadou dat obsahující malých souborů (~ znalostní báze). Tuto možnost pouze ověří soubory, protože kontrolní součet generování může trvat velmi dlouho a výkon může být velmi pomalé.
 
 3. Pokud používáte víc disků, spusťte příkaz pro každý disk.
+
+Pokud se zobrazí chyby při ověřování, přečtěte si téma [řešení chyb při ověřování](data-box-disk-troubleshoot.md).
 
 ## <a name="next-steps"></a>Další postup
 

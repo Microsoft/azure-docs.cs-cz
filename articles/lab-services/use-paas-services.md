@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
 ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65833913"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Použití služeb Platform-as-a-Service (PaaS) ve službě Azure DevTest Labs
@@ -39,7 +39,7 @@ Ve velkých organizacích vývojové týmy obvykle poskytují prostředí, jako 
 
 ## <a name="customizations"></a>Vlastní nastavení
 
-#### <a name="sandbox"></a>Izolovaný prostor 
+#### <a name="sandbox"></a>Sandbox 
 Vlastník testovacího prostředí můžete přizpůsobit testovací prostředí, chcete-li změnit na roli uživatele z **čtečky** k **Přispěvatel** v rámci skupiny prostředků. Tato funkce je v **nastavení testovacího prostředí** stránky **konfigurace a zásad** testovacího prostředí. Tato změna v roli umožňuje uživateli přidat nebo odebrat prostředky v tomto prostředí. Pokud chcete omezit přístup další, pomocí zásad Azure. Tato funkce umožňuje přizpůsobit prostředky nebo konfigurace bez přístupu na úrovni předplatného.
 
 #### <a name="custom-tokens"></a>Vlastní tokeny
@@ -57,7 +57,7 @@ DevTest Labs podporuje použití [vnořené šablony Resource Manageru](../azure
 
 ## <a name="user-experience"></a>Činnost koncového uživatele
 
-## <a name="developer"></a>Vývojář
+## <a name="developer"></a>Developer
 Vývojáři použít stejný pracovní postup pro vytvoření virtuálního počítače k vytvoření konkrétní prostředí. Vyberte prostředí, a image počítače a zadejte potřebné informace vyžadované šablonou. Každý vývojář má prostředí umožňuje nasazení změny a ladění vylepšené vnitřní smyčku. Prostředí lze vytvořit kdykoli pomocí nejnovější šablony.  Tato funkce umožňuje se odstraní a znovu vytvořen, aby pomoct snížit prostoje odpadne ruční vytváření systému a zotavení z chyb testování prostředí.  
 
 ### <a name="testing"></a>Testování

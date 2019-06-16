@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832581"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Vytvoření a otestování nového simulovaného zařízení
@@ -30,7 +30,7 @@ V druhém scénáři Contoso chce testovat nové zařízení inteligentní žár
 
 *Vlastnosti*
 
-| Název                     | Hodnoty                      |
+| Name                     | Hodnoty                      |
 | ------------------------ | --------------------------- |
 | Barva                    | Prázdné, červená, modrá            |
 | Jas               | 0 až 100                    |
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny data na žárovku zprávy do cloudu jako d
 
 V následující tabulce jsou uvedeny akce, které podporuje nové zařízení:
 
-| Název        |
+| Name        |
 | ----------- |
 | Přepnout   |
 | Vypnout  |
@@ -64,7 +64,7 @@ Následující tabulka uvádí počáteční stav zařízení:
 
 | Název                     | Hodnoty |
 | ------------------------ | -------|
-| Počáteční barva            | Bílý  |
+| Počáteční barva            | White  |
 | Počáteční jas       | 75     |
 | Počáteční zbývající životnost   | 10,000 |
 | Telemetrie počáteční stav | "na"   |
@@ -123,7 +123,7 @@ V této části přidáte nový **vnitřní teplota** typ telemetrie k existují
 
 1. Zkopírujte následující soubory ze staženého kopie mikroslužeb simulace zařízení do nové složky:
 
-    | Zdroj | Cíl |
+    | source | Cíl |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |

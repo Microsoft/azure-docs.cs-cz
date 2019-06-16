@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2010
 ms.author: mstephen
 ms.openlocfilehash: 1f21d71bba01eb4bec24dbb558a126ecbbd78bbf
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246941"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Důležité informace o sítích pro Azure AD Domain Services
@@ -69,7 +69,7 @@ Následující porty jsou povinné pro Azure AD Domain Services do služby a udr
 | 443 | Povinné |Synchronizace v tenantu Azure AD |
 | 5986 | Povinné | Správa domény |
 | 3389 | Povinné | Správa domény |
-| 636 | Volitelná | Zabezpečený LDAP (LDAPS) přístup k vaší spravované domény |
+| 636 | Nepovinné | Zabezpečený LDAP (LDAPS) přístup k vaší spravované domény |
 
 **Port 443 (synchronizaci se službou Azure AD)**
 * Používá se pro synchronizaci adresáře Azure AD s vaší spravované domény.

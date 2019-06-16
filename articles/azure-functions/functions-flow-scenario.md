@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: d3e777b5611dec382dc4eaaac5ec1594abcdab31
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787672"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Volání funkce z Microsoft Flow
@@ -50,7 +50,7 @@ Začněte tím, že vytvoření seznamu, který použijete jako zdroj dat pro p�
 | Sloupec seznamu     | Typ dat           | Poznámky                                    |
 |-----------------|---------------------|------------------------------------------|
 | **Název**           | Jeden řádek textu | Název turbíny                      |
-| **LastServiceDate** | Date                |                                          |
+| **LastServiceDate** | Datum                |                                          |
 | **MaxOutput**       | Číslo              | Výstup turbíny v KwH            |
 | **ServiceRequired** | Ano/Ne              |                                          |
 | **EstimatedEffort** | Číslo              | Odhadovaný čas na opravě v hodinách |
@@ -158,7 +158,7 @@ Nyní přidejte vlastní konektor, který volá funkci v Azure. Přidání vlast
 
 1. V **Pokud Ano** větev, klikněte na tlačítko **přidat akci**.
 
-    ![Přidat akci](media/functions-flow-scenario/condition1-yes-add-action.png)
+    ![Přidání akce](media/functions-flow-scenario/condition1-yes-add-action.png)
 
 2. V **zvolte akci** dialogovém okně vyhledejte `Turbine Repair`, pak vyberte akci **opravy turbíny - vypočítá náklady**.
 
@@ -198,7 +198,7 @@ V tomto okamžiku v toku, funkce vrátila **zpráva** hodnotu `Yes` nebo `No` z 
 
 1. V **Pokud Ano** větev druhou podmínku, můžete kliknout na tlačítko **přidat akci**.
 
-    ![Přidat akci](media/functions-flow-scenario/condition2-yes-add-action.png)
+    ![Přidání akce](media/functions-flow-scenario/condition2-yes-add-action.png)
 
 2. V **zvolte akci** dialogovém okně vyhledejte `email`, pak vyberte akci odeslání e-mailu podle e-mailovému systému, použít (v tomto případu Outlook).
 
@@ -246,7 +246,7 @@ Teď hotový, můžete přidat řádek do Sharepointového seznamu a zobrazit ja
 
 5. V části **HISTORIE BĚHŮ**, klikněte na tlačítko spuštění toku.
 
-    ![Historie běhů](media/functions-flow-scenario/run-history.png)
+    ![Historie spuštění](media/functions-flow-scenario/run-history.png)
 
     Pokud spuštění úspěšné, můžete zkontrolovat tok operací na další stránku. Pokud z nějakého důvodu se nepodařilo spustit, další stránka obsahuje informace o odstraňování potíží.
 
