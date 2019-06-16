@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687452"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
@@ -337,7 +337,7 @@ Tady jsou chyby, které může dojít při používání skriptů, kterou jste v
 
 Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Windows CRLF je běžné řádku ukončení pro mnoho textových editorů na Windows.
 
-*Řešení:* Pokud je možnost v textovém editoru, vyberte formát operačního systému Unix nebo LF pro ukončení řádku. Chcete-li změnit znaky CRLF LF může také použít následující příkazy v systému Unix:
+*Rozlišení*: Pokud je možnost v textovém editoru, vyberte formát operačního systému Unix nebo LF pro ukončení řádku. Chcete-li změnit znaky CRLF LF může také použít následující příkazy v systému Unix:
 
 > [!NOTE]  
 > Následující příkazy jsou zhruba ekvivalentní v tom, že by měl mění konce řádků CRLF k LF. Vyberte jednu podle nástrojů, které jsou k dispozici ve vašem systému.
@@ -353,7 +353,7 @@ Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Wi
 
 *Příčina:* Tato chyba nastane, pokud skript byl uložen jako UTF-8 s značky pořadí bajtů (BOM).
 
-*Řešení:* Uložte soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
+*Rozlišení*: Uložte soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

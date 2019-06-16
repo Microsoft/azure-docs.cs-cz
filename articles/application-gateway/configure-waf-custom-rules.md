@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 6/7/2019
 ms.author: victorh
 ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743060"
 ---
 # <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>Konfigurace firewallu webových aplikací pomocí vlastního pravidla pomocí Azure Powershellu

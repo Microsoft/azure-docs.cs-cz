@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.openlocfilehash: 46bd1bdd55725878bc7b1bd55d5e24b78d82aada
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66124554"
 ---
 # <a name="get-face-detection-data"></a>Získat data o detekci pro rozpoznávání tváře
@@ -27,7 +27,7 @@ Tento průvodce vám ukáže, jak do:
 - Získání umístění různých orientačních bodů pro rozpoznávání tváře, jako je například žáků nos a přidržte v obraze.
 - Odhad, pohlaví, věk, pro rozpoznávání emocí a další atributy zjištěné rozpoznávání tváře.
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 
 Tento průvodce to předpokládá, že už vytvořená [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) objekt s názvem `faceClient`, pomocí Face předplatné key a koncového bodu adresy URL. Z tohoto místa můžete použít buď voláním funkce rozpoznávání tváře [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), který se používá v této příručce, nebo [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Návod, jak tuto funkci nastavit, najdete v článku [rozpoznat čelí rychlý start pro C# ](../quickstarts/csharp-detect-sdk.md).
 

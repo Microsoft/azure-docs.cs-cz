@@ -9,13 +9,13 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a8d2b71899cdd6b7f9c8cb803732b760f3009811
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/25/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64513344"
 ---
-# <a name="toggle-live-chat"></a>Přepnout živý chat
+# <a name="toggle-live-chat"></a>Přepnutí živého chatu
 
 Tento článek ukazuje, jak přepnout na živém chatu ve vaší aplikaci IoT Central. Živý chat můžete použít pro přístup k technické podpoře.
 
@@ -32,17 +32,17 @@ Můžete zadat otázku, jak je znázorněno na následujícím snímku obrazovky
 
 !["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](media/howto-show-hide-chat/sample-chat.png)
 
-## <a name="hide-chat"></a>Skrýt chat
+## <a name="hide-chat"></a>Skrýt chatu
 
 Chcete-li skrýt chat, zvolte **skrýt Chat** v **pomáhají** panelu:
 
- ![Skrýt chat](media/howto-show-hide-chat/hide-chat.png)
+ ![Skrýt chatu](media/howto-show-hide-chat/hide-chat.png)
 
 ## <a name="enable-chat"></a>Povolit Chat
 
 Chcete-li zobrazit chat, zvolte **zobrazit Chat** v **pomáhají** panelu:
 
- ![Zobrazit chat](media/howto-show-hide-chat/show-chat.png)
+ ![Zobrazit chatu](media/howto-show-hide-chat/show-chat.png)
 
 ## <a name="next-steps"></a>Další postup
 

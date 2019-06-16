@@ -9,13 +9,13 @@ ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 2614c9290bf31813d59ee753a31622bccf0682b8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114524"
 ---
-| Resource | Cíl | Pevný limit |
+| Resource | Target | Pevný limit |
 |----------|--------------|------------|
 | Služby synchronizace úložiště na oblast | 20 služby synchronizace úložiště | Ano |
 | Skupiny synchronizace služby synchronizace úložiště | 100 skupiny synchronizace. | Ano |

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 03d39ed01907a2ad61e089946673b96b8a2cc83e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65916971"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
@@ -102,7 +102,7 @@ V této části vytvoříte novou skupinu registrace, který používá vlastní
 
     **Automaticky vygenerovat klíče**: Toto políčko mělo být již zaškrtnuté.
 
-    **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **vlastní (pomocí funkce Azure Functions)**.
+    **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **vlastní (pomocí funkce Azure Functions)** .
 
     ![Přidat vlastní přidělení skupinu registrací pro ověření identity symetrického klíče](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -404,7 +404,7 @@ V této části budete aktualizovat ukázkou zřizování s názvem **prov\_dev\
 
 Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která odešle žádost o zřízení instance služby Device Provisioning. Pořadí spouštění způsobí, že toaster zařízení bude používat a přiřazené k IoT hubu pomocí zásad vlastní přidělení.
 
-1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_**.
+1. Na webu Azure Portal vyberte okno **Přehled** vaší služby Device Provisioning Service a poznamenejte si hodnotu **_Rozsah ID_** .
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -508,12 +508,12 @@ V následující tabulce jsou uvedeny očekávané scénáře a výsledky kódy 
 
 | Scénář | Výsledek registrace ze služby zřizování | Zřizování výsledky sady SDK |
 | -------- | --------------------------------------------- | ------------------------ |
-| Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Výsledný stav: Přiřazená  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
-| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Nezdařilo se<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Webhook vrátí 401 Neautorizováno | Výsledný stav: Nezdařilo se<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Výsledný stav: Přiřazené  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
+| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Selhalo<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook vrátí 401 Neautorizováno | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
 | Jednotlivé registrace byl vytvořen za účelem zakázání zařízení | Výsledný stav: Zakázáno | Sada SDK vrátí PROV_DEVICE_RESULT_DISABLED |
 | Webhook vrátí kód chyby: > = 429 | Orchestrace distribučních bodů se bude opakovat několikrát. Zásady opakování je aktuálně:<br><br>&nbsp;&nbsp;-Počet opakování: 10<br>&nbsp;&nbsp;-Počátečního intervalu: 1s<br>&nbsp;&nbsp;-Inkrementace: 9s | Sada SDK bude chybu ignorovat a odeslat další get stavová zpráva v zadaném čase |
-| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Nezdařilo se<br><br>Kód chyby: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

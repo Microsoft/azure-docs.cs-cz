@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66119370"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
@@ -26,7 +26,7 @@ Správci můžou určit v zásadách, které metody ověřování jsou k dispozi
 
 Společnost Microsoft důrazně doporučuje správcům umožňuje uživatelům vybrat více než minimální požadovaný počet metod ověřování v případě, že nemají přístup k jednomu.
 
-|Metoda ověření|Využití|
+|Metoda ověřování|Využití|
 | --- | --- |
 | Heslo | Vícefaktorové ověřování a samoobslužné resetování HESLA |
 | Bezpečnostní otázky | Pouze samoobslužné resetování HESLA |
@@ -60,41 +60,41 @@ Pokud používáte bezpečnostní otázky, doporučujeme používat je společn�
 
 ### <a name="predefined-questions"></a>Předdefinované dotazy
 
-* Ve kterém městě jste se seznámili s prvním manželem či manželkou (případně partnerem či partnerkou)?
-* Ve kterém městě se seznámili vaši rodiče?
-* Ve kterém městě žije váš sourozenec, kterého máte nejblíže?
+* Ve kterém městě jste se seznámili s prvním manželem/partnera?
+* Ve kterém městě seznámili vaši rodiče?
+* Ve kterém městě váš sourozenec, kterého live?
 * Ve kterém městě se narodil váš otec?
-* Ve kterém městě jste vykonávali své první zaměstnání?
+* Ve kterém městě bylo vaším prvním zaměstnáním?
 * Ve kterém městě se narodila vaše matka?
-* Ve kterém městě jste byli na Nový rok 2000?
-* Uveďte příjmení svého nejoblíbenějšího učitele na střední škole.
-* Jak se nazývá vysoká škola, na kterou jste se hlásili, ale pak na ni nenastoupili?
-* Jak se nazývá místo, kde se konala vaše první svatební oslava?
+* Městě jste v byli na nový rok 2000?
+* Co je příjmení váš oblíbený učitel na střední škole?
+* Co je název školy použitý pro ale konferenci?
+* Jaký je název místa, ve kterém můžete uchovávat vaše první svatební příjem?
 * Jaké je druhé křestní jméno vašeho otce?
-* Jaké je vaše oblíbené jídlo?
-* Uveďte celé jméno své babičky ze strany matky.
+* Co je vaše oblíbené jídlo?
+* Co je vaše matka matky a příjmení název?
 * Jaké je druhé křestní jméno vaší matky?
 * Co je měsíci a roce svého nejstaršího sourozence? (např. listopad 1985)
 * Jaké je druhé křestní jméno vašeho nejstaršího sourozence?
-* Uveďte celé jméno svého dědečka ze strany otce.
+* Co je uveďte historická a příjmení název?
 * Jaké je druhé křestní jméno vašeho nejmladšího sourozence?
 * Do které školy jste chodili v šestém ročníku?
-* Uveďte celé jméno svého nejlepšího kamaráda nebo kamarádky z dětství.
-* Uveďte celé jméno svého prvního partnera nebo partnerky.
-* Uveďte příjmení svého nejoblíbenějšího učitele na prvním stupni.
-* Uveďte značku a model svého prvního auta nebo motocyklu.
-* Jak se jmenovala první škola, do které jste docházeli?
-* Uveďte název nemocnice, ve které jste se narodili.
-* Na jaké ulici jste bydleli v dětství v úplně prvním bydlišti?
+* Jak se jmenuje první a poslední název svého nejlepšího kamaráda?
+* Jak se jmenuje první a poslední název vaší první partnerky?
+* Jaký byl váš oblíbený na podnikové úrovni učitele na prvním stupni příjmení?
+* Jak se jmenuje značku a model svého prvního auta nebo motocyklu?
+* Jak se jmenovala první škola, které jste docházeli?
+* Jak se jmenoval nemocnice, ve kterém jste se narodili?
+* Jak se jmenoval ulici jste bydleli vaší úplně prvním bydlišti?
 * Jak se jmenoval váš dětský hrdina?
-* Jak se jmenuje váš nejoblíbenější plyšák?
+* Co se jmenoval váš nejoblíbenější plyšák?
 * Jak se jmenoval váš první domácí mazlíček?
-* Jakou jste měli v dětství přezdívku?
-* Jaký byl váš oblíbený sport na střední škole?
+* Jaký byl váš dětství přezdívku?
+* Jak se jmenuje váš oblíbený sport na střední škole?
 * Co bylo vaším prvním zaměstnáním?
-* Uveďte poslední čtyři číslice telefonního čísla, které jste používali v dětství?
-* Čím jste jako dítě chtěli být, až vyrostete?
-* Uveďte nejslavnějšího člověka, se kterým jste se v životě setkali.
+* Co bylo poslední čtyři číslice vašeho telefonního čísla dětství?
+* Pokud jste byli mladé, co mají být až vyrostete?
+* Kdo je nejslavnějšího člověka, který jste?
 
 Všechny předdefinované bezpečnostní otázky jsou přeloženy a lokalizován do úplnou sadu Office 365 jazyky podle národního prostředí prohlížeče uživatele.
 
@@ -193,7 +193,7 @@ Pro vše správně fungovalo, musí být telefonní čísla ve formátu *+ Count
 >
 > Resetování hesla nepodporuje telefonní linky. Dokonce i ve formátu 12345 4255551234 + 1 X se odeberou rozšíření před uvedením volání.
 
-### <a name="text-message"></a>Zpráva SMS
+### <a name="text-message"></a>Textová zpráva
 
 Číslo mobilního telefonu s ověřovacím kódem se pošle zprávu SMS. Zadejte ověřovací kód, který je k dispozici v rozhraní přihlášení pokračujte.
 

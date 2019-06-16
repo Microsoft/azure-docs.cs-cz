@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83eb1f6525c54bc44386f84498789b50bf19043
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387264"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721131"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření virtuálních počítačů a funkce pro Linux
 
@@ -264,7 +264,7 @@ Důrazně doporučujeme mít vždy Automatická aktualizace pro agenta, [AutoUpd
 
 #### <a name="extension-updates"></a>Aktualizace rozšíření
 
-Při aktualizaci rozšíření je k dispozici, soubory ke stažení agenta pro Linux a upgraduje rozšíření. Aktualizace automatické rozšíření jsou buď *menší* nebo *opravu Hotfix*. Můžete vyjádřit výslovný souhlas nebo vyjádřit výslovný nesouhlas rozšíření *menší* aktualizuje při zřizování rozšíření. Následující příklad ukazuje, jak automaticky aktualizovat dílčí verze v šabloně Resource Manageru s *autoUpgradeMinorVersion ": true,"*:
+Při aktualizaci rozšíření je k dispozici, soubory ke stažení agenta pro Linux a upgraduje rozšíření. Aktualizace automatické rozšíření jsou buď *menší* nebo *opravu Hotfix*. Můžete vyjádřit výslovný souhlas nebo vyjádřit výslovný nesouhlas rozšíření *menší* aktualizuje při zřizování rozšíření. Následující příklad ukazuje, jak automaticky aktualizovat dílčí verze v šabloně Resource Manageru s *autoUpgradeMinorVersion ": true,"* :
 
 ```json
     "publisher": "Microsoft.Azure.Extensions",
@@ -337,7 +337,7 @@ Následující postup platí pro všechna rozšíření virtuálních počítač
 
 1. Zkontrolujte protokol agenta systému Linux, podívejte se na aktivity při rozšíření se zřídí */var/log/waagent.log*
 
-2. Pro další informace naleznete v protokolech skutečné rozšíření   */var/protokolu/azure /<extensionName>*
+2. Pro další informace naleznete v protokolech skutečné rozšíření */var/protokolu/azure/\<extensionName >*
 
 3. Zkontrolujte rozšíření příslušnou část dokumentace Poradce při potížích s oddíly pro kódy chyb, známé problémy atd.
 

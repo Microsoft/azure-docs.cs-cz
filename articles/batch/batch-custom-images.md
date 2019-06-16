@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
 ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706325"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů 
@@ -27,7 +27,7 @@ Použití vlastní image šetří čas při přípravě váš fond výpočetníc
 
 Použití vlastní image nakonfigurovaný pro váš scénář poskytují několik výhod:
 
-- **Nakonfigurujte operační systém (OS)**. Můžete přizpůsobit konfiguraci disku image operačního systému. 
+- **Nakonfigurujte operační systém (OS)** . Můžete přizpůsobit konfiguraci disku image operačního systému. 
 - **Před instalací aplikace.** Předinstalační aplikace na disk s operačním systémem, což je méně náchylný než instalace aplikací po zřízení výpočetních uzlů pomocí spouštěcího úkolu a efektivnější.
 - **Ušetřete čas restartování na virtuálních počítačích.** Instalace aplikace obvykle vyžaduje restartování virtuálního počítače, který je časově náročné. Před nainstalováním aplikace můžete ušetřit čas restartování. 
 - **Zkopírujte velmi velké objemy dat jednou.** Zařazení statická data spravovanou vlastní image zkopírováním do spravované image datové disky. To jenom je potřeba provést jednou a díky tomu budou data k dispozici pro každý uzel ve fondu.
@@ -41,7 +41,7 @@ Použití vlastní image nakonfigurovaný pro váš scénář poskytují několi
   - Vytvoření fondu s použitím image pomocí rozhraní API služby Batch, zadejte **ID prostředku** obrázku, který je ve formátu `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. Na portálu, použijte **název** bitové kopie.  
   - Prostředek spravované image by měla existovat po dobu životnosti fondu umožňuje vertikálně navýšit kapacitu a je možné odebrat po odstranění fondu.
 
-- **Ověřování Azure Active Directory (AAD)**. Rozhraní API klienta Batch musí používat ověřování AAD. Podpora Azure Batch pro AAD je popsána v [ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
+- **Ověřování Azure Active Directory (AAD)** . Rozhraní API klienta Batch musí používat ověřování AAD. Podpora Azure Batch pro AAD je popsána v [ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 
 ## <a name="prepare-a-custom-image"></a>Příprava vlastní image
 

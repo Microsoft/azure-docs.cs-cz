@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713040"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
@@ -28,7 +28,7 @@ Azure HDInsight je jedním z nejoblíbenějších služeb mezi podnikovými zák
 
 Nové aktualizace a funkce spadají do následujících kategorií:
 
-*  ***Aktualizovat Hadoop a další projekty open source*** – kromě více než 1000 opravy chyb napříč 20 + open source projekty, tato aktualizace obsahuje novou verzi **Spark (2.3)** a **Kafka (1.0)**.
+*  ***Aktualizovat Hadoop a další projekty open source*** – kromě více než 1000 opravy chyb napříč 20 + open source projekty, tato aktualizace obsahuje novou verzi **Spark (2.3)** a **Kafka (1.0)** .
 
     a.  [**Nové funkce v Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
@@ -822,73 +822,73 @@ Tato část zahrnuje všechny známých chyb zabezpečení a rizika (CVE), kter�
 
 ### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **Shrnutí:** vyhodnocení zásad Apache Ranger ignoruje znaky po "\*' zástupný znak |
+| **Shrnutí:**  vyhodnocení zásad Apache Ranger ignoruje znaky po "\*' zástupný znak |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Závažnost:** kritické                                                                           |
-| **Dodavatel:** Hortonworks                                                                          |
-| **Verze chybu:** verze HDInsight 3.6, včetně verzí 0.5.x/0.6.x/0.7.0 Apache Ranger     |
-| **Ovlivnění uživatelé:** prostředí, které používají zásady Ranger se znaky po "\*" zástupný znak – například Moje\*test, test\*.txt |
-| **Dopad:** zásad prostředků předávaný ignoruje znaky po "\*' zástupný znak, který může způsobit nežádoucí chování.      |
-| **Opravte podrobnosti:** předávaný prostředků zásad Ranger aktualizoval správně ošetřit zástupný znak odpovídá.           |
-| **Doporučená akce:** upgradovat na HDI 3.6 (s Apache Rangerem 0.7.1+).                                |
+| **Závažnost:**  kritické                                                                           |
+| **Dodavatel:**  Hortonworks                                                                          |
+| **Verze chybu:**  verze HDInsight 3.6, včetně verzí 0.5.x/0.6.x/0.7.0 Apache Ranger     |
+| **Ovlivnění uživatelé:**  prostředí, které používají zásady Ranger se znaky po "\*" zástupný znak – například Moje\*test, test\*.txt |
+| **Dopad:**  zásad prostředků předávaný ignoruje znaky po "\*' zástupný znak, který může způsobit nežádoucí chování.      |
+| **Opravte podrobnosti:**  předávaný prostředků zásad Ranger aktualizoval správně ošetřit zástupný znak odpovídá.           |
+| **Doporučená akce:**  upgradovat na HDI 3.6 (s Apache Rangerem 0.7.1+).                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **Shrnutí:** Apache Ranger Hive Authorizer by měla vyhledávat oprávnění RWX, pokud je zadán externí umístění |
+| **Shrnutí:**  Apache Ranger Hive Authorizer by měla vyhledávat oprávnění RWX, pokud je zadán externí umístění |
 |--------------------------------------------------------------------------------------------------|
-| **Závažnost:** kritické                                                                           |
-| **Dodavatel:** Hortonworks                                                                          |
-| **Verze chybu:** verze HDInsight 3.6, včetně verzí 0.5.x/0.6.x/0.7.0 Apache Ranger |
-| **Ovlivnění uživatelé:** prostředí, které používá externí umístění pro tabulky hive |
-| **Dopad:** v prostředí, která používat externí umístění tabulek hive, Apache Ranger Hive Authorizer by měla vyhledávat oprávnění RWX pro externí umístění zadané pro vytvoření tabulky. |
-| **Opravte podrobnosti:** Ranger Hive Authorizer aktualizoval správně ošetřit kontrola oprávnění externího umístění. |
-| **Doporučená akce:** uživatelé by měli upgradovat HDI 3.6 (s Apache Rangerem 0.7.1+). |
+| **Závažnost:**  kritické                                                                           |
+| **Dodavatel:**  Hortonworks                                                                          |
+| **Verze chybu:**  verze HDInsight 3.6, včetně verzí 0.5.x/0.6.x/0.7.0 Apache Ranger |
+| **Ovlivnění uživatelé:**  prostředí, které používá externí umístění pro tabulky hive |
+| **Dopad:**  v prostředí, která používat externí umístění tabulek hive, Apache Ranger Hive Authorizer by měla vyhledávat oprávnění RWX pro externí umístění zadané pro vytvoření tabulky. |
+| **Opravte podrobnosti:**  Ranger Hive Authorizer aktualizoval správně ošetřit kontrola oprávnění externího umístění. |
+| **Doporučená akce:**  uživatelé by měli upgradovat HDI 3.6 (s Apache Rangerem 0.7.1+). |
 
 ### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **Shrnutí:** potenciální provádění kódu jako chybné uživatelské v Apache Storm |
+| **Shrnutí:**  potenciální provádění kódu jako chybné uživatelské v Apache Storm |
 |--------------------------------------------------------------------------------------------------|
-|**Závažnost:** důležité |
-| **Dodavatel:** Hortonworks |
-| **Verze vliv:** HDP 2.4.0 HDP-2.5.0 HDP 2.6.0 |
-| **Ovlivnění uživatelé:** artefakty nebo úložiště objektů BLOB pomocí distribuovat žádné prostředky topologie na základě uživatele, kteří používat Storm v zabezpečeném režimu a používají k distribuci topologii úložiště objektů BLOB. |
-| **Dopad:** v některých situacích a konfigurace storm je možné teoreticky vlastníka topologie na přesvědčit správce spusťte pracovní proces jako jiný, nekořenovými, uživatel. V nejhorším případě to může vést k zabezpečené přihlašovací údaje uživatele, jejichž zabezpečení je ohrožené. Toto ohrožení zabezpečení platí jenom pro Apache Storm zařízení s povoleným zabezpečením. |
-| **Omezení rizik:** Upgrade na HDP 2.6.2.1, protože nejsou momentálně žádné alternativní řešení.  |
+|**Závažnost:**  důležité |
+| **Dodavatel:**  Hortonworks |
+| **Verze vliv:**  HDP 2.4.0 HDP-2.5.0 HDP 2.6.0 |
+| **Ovlivnění uživatelé:**  artefakty nebo úložiště objektů BLOB pomocí distribuovat žádné prostředky topologie na základě uživatele, kteří používat Storm v zabezpečeném režimu a používají k distribuci topologii úložiště objektů BLOB. |
+| **Dopad:**  v některých situacích a konfigurace storm je možné teoreticky vlastníka topologie na přesvědčit správce spusťte pracovní proces jako jiný, nekořenovými, uživatel. V nejhorším případě to může vést k zabezpečené přihlašovací údaje uživatele, jejichž zabezpečení je ohrožené. Toto ohrožení zabezpečení platí jenom pro Apache Storm zařízení s povoleným zabezpečením. |
+| **Omezení rizik:**  Upgrade na HDP 2.6.2.1, protože nejsou momentálně žádné alternativní řešení.  |
 
 ### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **Shrnutí:** handler/ssl/OpenSslEngine.java v Netty 4.0.x před 4.0.37.Final a 4.1.x před 4.1.1.Final umožňuje vzdáleným útočníkům způsobit odepření služby (nekonečné smyčce) |
+| **Shrnutí:**  handler/ssl/OpenSslEngine.java v Netty 4.0.x před 4.0.37.Final a 4.1.x před 4.1.1.Final umožňuje vzdáleným útočníkům způsobit odepření služby (nekonečné smyčce) |
 |--------------------------------------------------------------------------------------------------|
 | **Závažnost:** Střední  |
-| **Dodavatel:** Hortonworks  |
-| **Verze vliv:** HDP 2.x.x od 2.3.x  |
-| **Uživatelé chybu:** všechny uživatele, kteří používají HDFS. |
-| **Dopad:** jako Hortonworks nepoužívá OpenSslEngine.java přímo v kódové základně s Hadoop je nízký dopad.     |
-| **Doporučená akce:** upgradovat na HDP 2.6.3.   |
+| **Dodavatel:**  Hortonworks  |
+| **Verze vliv:**  HDP 2.x.x od 2.3.x  |
+| **Uživatelé chybu:**  všechny uživatele, kteří používají HDFS. |
+| **Dopad:**  jako Hortonworks nepoužívá OpenSslEngine.java přímo v kódové základně s Hadoop je nízký dopad.     |
+| **Doporučená akce:**  upgradovat na HDP 2.6.3.   |
 
 ### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **Shrnutí:** Apache Ranger cesta odpovídající problém ve vyhodnocování zásad                                                                    |
+| **Shrnutí:**  Apache Ranger cesta odpovídající problém ve vyhodnocování zásad                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **Závažnost:** normální                                                                                                                   |
+| **Závažnost:**  normální                                                                                                                   |
 | **Výrobce:** Hortonworks                                                                                                                |
-| **Verze chybu:** všechny verze HDP 2.5, včetně verzí 0.6.0/0.6.1/0.6.2 Apache Ranger                                         |
-| **Ovlivnění uživatelé:** všichni uživatelé nástroj pro správu zásad ranger.                                                                         |
-| **Dopad:** modul zásad Ranger nesprávně odpovídá cesty za určitých podmínek, pokud zásady obsahují zástupné znaky a rekurzivní příznaky. |
+| **Verze chybu:**  všechny verze HDP 2.5, včetně verzí 0.6.0/0.6.1/0.6.2 Apache Ranger                                         |
+| **Ovlivnění uživatelé:**  všichni uživatelé nástroj pro správu zásad ranger.                                                                         |
+| **Dopad:**  modul zásad Ranger nesprávně odpovídá cesty za určitých podmínek, pokud zásady obsahují zástupné znaky a rekurzivní příznaky. |
 | **Opravte podrobnosti:** Logika vyhodnocení pevné zásad                                                                                          |
-| **Doporučená akce:** uživatelé by měli upgradovat 2.5.4+ HDP (s Apache Rangerem 0.6.3+) nebo HDP 2.6 + (s Apache Rangerem 0.7.0+)         |
+| **Doporučená akce:**  uživatelé by měli upgradovat 2.5.4+ HDP (s Apache Rangerem 0.6.3+) nebo HDP 2.6 + (s Apache Rangerem 0.7.0+)         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **Shrnutí:** Apache Ranger uložené problém skriptování mezi weby  |
+| **Shrnutí:**  Apache Ranger uložené problém skriptování mezi weby  |
 |--------------------------------------------------------------------------------------------------|
-| **Závažnost:** normální |
-| **Dodavatel:** Hortonworks |
-| **Verze chybu:** všechny verze 2.3/2.4/2.5 HDP včetně 0.5.x/0.6.0/0.6.1/0.6.2 verze Apache Ranger  |
-| **Ovlivnění uživatelé:** všichni uživatelé nástroj pro správu zásad ranger. |
-| **Dopad:** Apache Ranger je snadno napadnutelný uložené skriptování napříč weby při vstupu do vlastní zásady pro podmínky. Správci mohou uživatelé ukládat určitého kódu javascript libovolný kód spuštěn, když běžným uživatelům přihlásit a získat přístup k zásadám. |
-| **Opravte podrobnosti:** přidat logiku pro neupravují uživatelský vstup.  |
-| **Doporučená akce:** uživatelé by měli upgradovat 2.5.4+ HDP (s Apache Rangerem 0.6.3+) nebo HDP 2.6 + (s Apache Rangerem 0.7.0+)  |
+| **Závažnost:**  normální |
+| **Dodavatel:**  Hortonworks |
+| **Verze chybu:**  všechny verze 2.3/2.4/2.5 HDP včetně 0.5.x/0.6.0/0.6.1/0.6.2 verze Apache Ranger  |
+| **Ovlivnění uživatelé:**  všichni uživatelé nástroj pro správu zásad ranger. |
+| **Dopad:**  Apache Ranger je snadno napadnutelný uložené skriptování napříč weby při vstupu do vlastní zásady pro podmínky. Správci mohou uživatelé ukládat určitého kódu javascript libovolný kód spuštěn, když běžným uživatelům přihlásit a získat přístup k zásadám. |
+| **Opravte podrobnosti:**  přidat logiku pro neupravují uživatelský vstup.  |
+| **Doporučená akce:**  uživatelé by měli upgradovat 2.5.4+ HDP (s Apache Rangerem 0.6.3+) nebo HDP 2.6 + (s Apache Rangerem 0.7.0+)  |
 
 ## <a name="fixed-issues-for-support"></a>Opravené problémy podpory
 
@@ -896,7 +896,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Nesprávné výsledky**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                | **Souhrn**                                                                                                            |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                | **Shrnutí**                                                                                                            |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | BUG-100019             | [YARN-8145](https://issues.apache.org/jira/browse/YARN-8145)                                                                                                                                                                                                                   | yarn rmadmin - getGroups nevrací aktualizované skupiny pro uživatele                                                         |
 | BUG-100058             | [PHOENIX-2645](https://issues.apache.org/jira/browse/PHOENIX-2645)                                                                                                                                                                                                             | Zástupné znaky se neshodují s znaky nového řádku                                                                    |
@@ -930,7 +930,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Jiné**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                        | **Souhrn**                                                                                                                                |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                        | **Shrnutí**                                                                                                                                |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | BUG-100267             | [HBASE-17170](https://issues.apache.org/jira/browse/HBASE-17170)                                                                       | HBase je také opakování DoNotRetryIOException kvůli rozdílům zavaděč tříd.                                                          |
 | BUG-92367              | [YARN-7558](https://issues.apache.org/jira/browse/YARN-7558)                                                                           | příkaz "protokoly yarn" selže vám pomůže získat protokoly pro spouštění kontejnerů, pokud je povolené ověřování uživatelského rozhraní.                                              |
@@ -946,7 +946,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Výkon**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                                                                                                                                                                                                              | **Souhrn**                                                                                                                         |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                                                                                                                                                                                                              | **Shrnutí**                                                                                                                         |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | BUG-83282              | [HBASE-13376](https://issues.apache.org/jira/browse/HBASE-13376), [HBASE-14473](https://issues.apache.org/jira/browse/HBASE-14473), [HBASE-15210](https://issues.apache.org/jira/browse/HBASE-15210), [HBASE-15515](https://issues.apache.org/jira/browse/HBASE-15515), [HBASE-16570](https://issues.apache.org/jira/browse/HBASE-16570), [HBASE-16810](https://issues.apache.org/jira/browse/HBASE-16810), [HBASE-18164](https://issues.apache.org/jira/browse/HBASE-18164) | Výpočet rychlé lokalitě v nástroji pro vyrovnávání                                                                                               |
 | BUG-91300              | [HBASE-17387](https://issues.apache.org/jira/browse/HBASE-17387)                                                                                                                                                                                                                                                                                                                                                                                                             | Snížení režie sestavy výjimek v RegionActionResult pro multi() použít                                                           |
@@ -970,7 +970,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Potenciální ztráty dat**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                  | **Souhrn**                                                       |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                  | **Shrnutí**                                                       |
 |------------------------|------------------------------------------------------------------|-------------------------------------------------------------------|
 | BUG-95613              | [HBASE-18808](https://issues.apache.org/jira/browse/HBASE-18808) | Neúčinná config vrácení se změnami BackupLogCleaner\#getDeletableFiles() |
 | BUG-97051              | [HIVE-17403](https://issues.apache.org/jira/browse/HIVE-17403)   | Selhání zřetězení pro nespravované a transakční tabulky         |
@@ -979,7 +979,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Chyba dotazu**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                        | **Souhrn**                                                                                            |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                        | **Shrnutí**                                                                                            |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | BUG-100180             | [CALCITE-2232](https://issues.apache.org/jira/browse/CALCITE-2232)                                                                     | Chyba kontrolního výrazu na AggregatePullUpConstantsRule při nastavování agregační indexů                      |
 | BUG-100422             | [HIVE-19085](https://issues.apache.org/jira/browse/HIVE-19085)                                                                         | Nastaví FastHiveDecimal abs(0) znaménko + rat                                                                |
@@ -1003,7 +1003,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Zabezpečení**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                            | **Souhrn**                                                                                                           |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                            | **Shrnutí**                                                                                                           |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | BUG-100436             | [RANGER 2060](https://issues.apache.org/jira/browse/RANGER-2060)                                                                                                                                           | Knox proxy s knox jednotného přihlašování nefunguje pro ranger                                                                    |
 | BUG-101038             | [SPARK-24062](https://issues.apache.org/jira/browse/SPARK-24062)                                                                                                                                           | Zeppelin % Spark překladač "Připojení se odmítlo" Chyba "tajný klíč musí být zadán..." Chyba v HiveThriftServer |
@@ -1041,7 +1041,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Stability**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Souhrn**                                                                                                                                    |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | **Shrnutí**                                                                                                                                    |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | BUG-100040             | [ATLAS-2536](https://issues.apache.org/jira/browse/ATLAS-2536)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | NPE v Atlas Hive háku                                                                                                                         |
 | BUG-100057             | [HIVE-19251](https://issues.apache.org/jira/browse/HIVE-19251)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | ObjectStore.getNextNotification limit by měl používat méně paměti                                                                              |
@@ -1164,7 +1164,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Možnosti podpory**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                  | **Souhrn**                                                                                   |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                  | **Shrnutí**                                                                                   |
 |------------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
 | BUG-87343              | [HIVE-18031](https://issues.apache.org/jira/browse/HIVE-18031)   | Replikace se podporují pro operaci Alter Database.                                             |
 | BUG-91293              | [RANGER 2060](https://issues.apache.org/jira/browse/RANGER-2060) | Knox proxy s knox jednotného přihlašování nefunguje pro ranger                                            |
@@ -1177,7 +1177,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Upgrade**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                | **Souhrn**                                                                 |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                | **Shrnutí**                                                                 |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | BUG-100134             | [SPARK-22919](https://issues.apache.org/jira/browse/SPARK-22919)                                                               | Vrátit "Hrbolů Apache httpclient verzí"                                 |
 | BUG-95823              | neuvedeno                                                                                                                            | Knox: Upgrade Beanutils                                                     |
@@ -1188,7 +1188,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 **Použitelnosti**
 
-| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                | **Souhrn**                                                                                                                                                  |
+| **Hortonworks Bug ID** | **Apache JIRA**                                                                                                                                                                                                                                                                | **Shrnutí**                                                                                                                                                  |
 |------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BUG-100045             | [HIVE-19056](https://issues.apache.org/jira/browse/HIVE-19056)                                                                                                                                                                                                                 | IllegalArgumentException v FixAcidKeyIndex po souboru ORC 0 řádků                                                                                         |
 | BUG-100139             | [KNOX-1243](https://issues.apache.org/jira/browse/KNOX-1243)                                                                                                                                                                                                                   | Normalizovat vyžaduje DNs, které jsou nakonfigurované ve službě KnoxToken                                                                                          |
@@ -1295,7 +1295,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 ## <a name="behavioral-changes"></a>Změny chování
 
-|**Apache komponenty**|**Apache JIRA**|**Souhrn**|**Podrobnosti**|
+|**Apache komponenty**|**Apache JIRA**|**Shrnutí**|**Podrobnosti**|
 |--|--|--|--|
 |**Spark 2.3** |**–** |**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |-Je dokument "Vyřazení" a "Změnit chování" vodítko, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Pro část SQL je jiného průvodce podrobné "Migration" (z 2.2 k 2.3) https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku dokončí úspěšně, ale je chyba úplné kvóty disku HDFS |**Scénář:** Spuštění **vložit přepsat** Pokud kvótu nastavená na uživatele, který spouští příkaz složky Koš.<br /><br />**Předchozí chování:** Úloha úspěšně dokončí, i v případě, že ji nebude možné přesunout data do koše. Výsledek může obsahovat chybně některá data v tabulce dříve k dispozici.<br /><br />**Nové chování:** Při přesunu do složky Koš selže, se trvale odstraní soubory.|

@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: 351b6a8e056d22fa8f2d695a2722b39b9771c8b0
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299389"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další
@@ -50,7 +50,7 @@ Postupujte podle pokynů na obrazovce a proveďte nastavení základního cluste
 * [Název skupiny prostředků](#resource-group-name)
 * [Typy clusterů a konfigurace](#cluster-types) 
 * Přihlášení ke clusteru a uživatelské jméno SSH
-* [Umístění](#location)
+* [Location](#location)
 
 ## <a name="resource-group-name"></a>Název skupiny prostředků
 

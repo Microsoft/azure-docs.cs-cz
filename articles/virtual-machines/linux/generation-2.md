@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66390552"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>Virtuální počítače generace 2 (preview) v Azure
@@ -30,7 +30,7 @@ ms.locfileid: "66390552"
 
 Podpora pro 2. generace virtuálních počítačů (VM) je teď dostupná ve verzi public preview v Azure. Nelze změnit generaci virtuálního počítače po jeho vytvoření. Proto doporučujeme, abyste si na základě aspektů [tady](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) i informace na této stránce před výběrem generace.
 
-2. generace virtuálních počítačů podporu klíčových funkcí, které nejsou podporovány na virtuálních počítačích generace 1, jako například: zvýšili paměti, Intel® Software Guard rozšíření (SGX) a virtuální trvalé paměti (vPMEM). Virtuální počítače generace 2 mají také některé funkce, které zatím nejsou podporované v Azure. Další informace najdete v tématu [funkce a možnosti](#features-and-capabilities) oddílu.
+2\. generace virtuálních počítačů podporu klíčových funkcí, které nejsou podporovány na virtuálních počítačích generace 1, jako například: zvýšili paměti, Intel® Software Guard rozšíření (SGX) a virtuální trvalé paměti (vPMEM). Virtuální počítače generace 2 mají také některé funkce, které zatím nejsou podporované v Azure. Další informace najdete v tématu [funkce a možnosti](#features-and-capabilities) oddílu.
 
 Virtuální počítače generace 2 pomocí nové vs architektury založené na režimu UEFI spouštění systémem BIOS architektura používány virtuálními počítači 1. generace. Ve srovnání s 1. generace virtuálních počítačů, virtuální počítače generace 2 může mít lepší časů spuštění a instalace. Přehled virtuálních počítačů 2. generace a některé hlavní rozdíly mezi 1 a generace 2 najdete v tématu [bych si měl vytvořit virtuální počítač generace 1 nebo 2 v Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
@@ -70,7 +70,7 @@ Azure aktuálně nepodporuje některé funkce, které on-premises Hyper-V podpor
 
 ### <a name="generation-1-vs-generation-2-features"></a>Funkce 2. generace 1. generace vs
 
-| Funkce | 1. generace | 2. generace |
+| Funkce | 1\. generace | 2\. generace |
 |---------|--------------|--------------|
 | Spouštění             | PCAT                      | UEFI                               |
 | Disk řadiče | IDE – integrované vývojové prostředí                       | SCSI                               |
@@ -78,7 +78,7 @@ Azure aktuálně nepodporuje některé funkce, které on-premises Hyper-V podpor
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Možnosti 2. generace 1. generace vs
 
-| Schopnost | 1. generace | 2. generace |
+| Schopnost | 1\. generace | 2\. generace |
 |------------|--------------|--------------|
 | Operační systém na disku > 2 TB                    | : x:.                        | :heavy_check_mark: |
 | Vlastní/Image/prohození disků operačního systému         | :heavy_check_mark:         | :heavy_check_mark: |

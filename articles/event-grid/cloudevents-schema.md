@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
 ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61436592"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents pomocí služby Event Grid
@@ -69,7 +69,7 @@ CloudEvents v0.1 má k dispozici následující vlastnosti:
 | cloudEventsVersion | String   | "0.1"                            | Verzi CloudEvents specifikace, které používá událost        | *předat prostřednictvím*
 | source             | Identifikátor URI      | "/ mycontext"                     | Popisuje Tvůrce událostí                                       | téma #subject
 | ID události            | String   | "1234-1234-1234"                 | ID události                                                    | id
-| čas události          | Timestamp| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | čas události
+| eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | eventTime
 | schemaURL          | Identifikátor URI      | "https:\//myschema.com"           | Odkaz na schéma, které používá atribut dat (volitelné) | *Nepoužito*
 | contentType        | String   | "application/json"               | Popište formát kódování dat (volitelné)                       | *Nepoužito*
 | Rozšíření         | Mapa      | {"nadbytečné": "posouzení ohrožení zabezpečení", "extB", "vB"}  | Žádné další metadata (volitelné)                                 | *Nepoužito*

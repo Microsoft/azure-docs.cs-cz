@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.openlocfilehash: 1a70d1b2ea504d0ccfba925810a2d19d0c7583cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759601"
 ---
 # <a name="language-support-for-computer-vision"></a>Podpora jazyků pro počítačové zpracování obrazu
@@ -60,7 +60,7 @@ OCR jazyk se detekuje automaticky vstupní materiálu, takže není nutné urči
 
 Některé akce [analyzovat – obrázek](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) rozhraní API může vrátit výsledky v jiných jazycích, zadaný `language` parametr dotazu. Další akce vracejí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán a ostatní vyvolat výjimku u nepodporovaných jazyků. Akce jsou určeny pomocí `visualFeatures` a `details` parametrů dotazu; viz [přehled](home.md) seznam všechny akce, které vám pomůžou s analýzu obrázku.
 
-|Jazyk | Kód jazyka | Categories | Značky | Popis | Adult | Značky | Barva | Tváře | Typ obrázku | Objekty | Celebrity | Zajímavá |
+|Jazyk | Kód jazyka | Categories | Tags | Popis | Adult | Značky | Barva | Tváře | Typ obrázku | Objekty | Celebrity | Zajímavá |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

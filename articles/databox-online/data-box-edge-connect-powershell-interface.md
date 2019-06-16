@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717500"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Správa Azure Data Box hraničního zařízení pomocí Windows Powershellu
@@ -43,7 +43,7 @@ Tento článek obsahuje následující postupy:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Můžete také nahrát certifikáty IoT Edge umožňuje zabezpečené připojení mezi zařízení IoT Edge a podřízené zařízení může připojit k němu. Existují tři certifikáty IoT Edge (*.pem* formátu), který je potřeba nainstalovat:
+Můžete také nahrát certifikáty IoT Edge umožňuje zabezpečené připojení mezi zařízení IoT Edge a podřízené zařízení může připojit k němu. Existují tři certifikáty IoT Edge ( *.pem* formátu), který je potřeba nainstalovat:
 
 - Certifikát kořenové certifikační Autority nebo vlastník certifikační Autority
 - Certifikát certifikační Autority zařízení

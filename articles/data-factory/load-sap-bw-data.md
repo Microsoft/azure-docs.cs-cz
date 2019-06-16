@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
 ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152417"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse s využitím Azure Data Factory
@@ -29,7 +29,7 @@ Tento článek ukazuje, jak pomocí Azure Data Factory ke zkopírování dat z S
 
 - **Azure Data Factory**: Pokud ho nemáte, postupujte podle kroků pro [vytvoření datové továrny](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-- **SAP BW Open Centrum cílový (OHD) s typem cílového "Databázové tabulky"**: Vytvoření OHD zkontrolujte, jestli je vaše OHD správně nakonfigurovaný pro integraci služby Data Factory najdete v článku [konfigurace SAP BW otevřít Centrum cílový](#sap-bw-open-hub-destination-configurations) části tohoto článku.
+- **SAP BW Open Centrum cílový (OHD) s typem cílového "Databázové tabulky"** : Vytvoření OHD zkontrolujte, jestli je vaše OHD správně nakonfigurovaný pro integraci služby Data Factory najdete v článku [konfigurace SAP BW otevřít Centrum cílový](#sap-bw-open-hub-destination-configurations) části tohoto článku.
 
 - **SAP BW uživatel potřebuje následující oprávnění**:
 
@@ -162,7 +162,7 @@ V datové továrně **pusťme se do práce** stránce **vytvořit kanál ze šab
 
    - **HighWatermarkBlobName**: Zadejte název objektu blob pro ukládání hodnoty horní meze, jako například `requestIdCache.txt`. V úložišti objektů Blob, přejděte na odpovídající cesta HighWatermarkBlobPath + HighWatermarkBlobName, jako například *container/path/requestIdCache.txt*. Vytvoření objektu blob s obsahem 0.
 
-      ![Obsah objektu blob](media/load-sap-bw-data/blob.png)
+      ![Obsah objektu BLOB](media/load-sap-bw-data/blob.png)
 
    - **LogicAppURL**: V této šabloně používáme WebActivity volání Azure Logic Apps se nastavit hodnotu meze v úložišti objektů Blob. Nebo můžete použít Azure SQL Database a uložit. Aktualizujte hodnotu pomocí aktivity uložených procedur.
 

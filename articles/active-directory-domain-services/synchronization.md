@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mstephen
 ms.openlocfilehash: 295a991e610e76971413a2abdba1e2fcc5f9eba6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66246686"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizace ve spravované doméně služby Azure AD Domain Services
@@ -60,7 +60,7 @@ Následující objekty nebo atributy nejsou synchronizovány do svého tenanta A
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>Jak se konkrétní atributy synchronizují do spravované domény
 Následující tabulka uvádí některé běžné atributy a popisuje, jak se synchronizují do spravované domény.
 
-| Atribut ve vaší spravované doméně | Zdroj | Poznámky |
+| Atribut ve vaší spravované doméně | source | Poznámky |
 |:--- |:--- |:--- |
 | HLAVNÍ NÁZEV UŽIVATELE |Atribut uživatele (UPN) ve vašem tenantovi Azure AD |Atribut (UPN) ve svém tenantovi Azure AD se synchronizuje je do spravované domény. Proto je nejspolehlivější způsob, jak se přihlásit ke spravované doméně pomocí hlavní název uživatele. |
 | SAMAccountName |MailNickname uživatele atribut ve vašem tenantovi Azure AD nebo automaticky generované |Atribut SAMAccountName pochází z atributu mailNickname ve vašem tenantovi Azure AD. Pokud stejný atribut mailNickname víc uživatelských účtů, SAMAccountName se generuje automaticky. Pokud uživatele mailNickname nebo hlavní název uživatele předpona je delší než 20 znaků, SAMAccountName je automaticky generovaná splňovat limit 20 znaků na atributy SAMAccountName. |
@@ -84,7 +84,7 @@ Následující tabulka ukazuje, jak se konkrétní atributy pro uživatelské ob
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | pracovní funkce |název |
-| e-mailu |e-mailu |
+| mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (může být někdy automaticky vygenerovaný) |
 | Mobilní zařízení |Mobilní zařízení |
@@ -107,7 +107,7 @@ Následující tabulka popisuje, jak se konkrétní atributy pro skupinu objekt�
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName (může být někdy automaticky vygenerovaný) |
-| e-mailu |e-mailu |
+| mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | ID objektu |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |historie čísel SID |

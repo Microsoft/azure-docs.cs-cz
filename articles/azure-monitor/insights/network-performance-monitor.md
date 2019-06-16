@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
 ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64916763"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
@@ -37,7 +37,7 @@ Network Performance Monitor nabízí tři různé možnosti:
 
     Tato funkce umožňuje provádět testy založené na protokolu HTTP, HTTPS, TCP a ICMP monitorování v téměř reálném čase nebo v minulosti dostupnost a dobu odezvy služby. Také můžete monitorovat příspěvku v ztrátu paketů a latenci sítě. Pomocí mapy topologie sítě můžete izolovat zpomalení sítě. Můžete identifikovat problém míst, ke kterým dochází na síťové cestě z uzlu do služby s daty čekací doba na každého směrování. Pomocí integrovaných testů můžete monitorovat síťové připojení k Office 365 a Dynamics CRM, bez jakékoli přednastavení. Díky této funkci můžete monitorovat připojení k síti do koncového bodu TCP podporuje, například z webů, aplikací SaaS, PaaS aplikací nebo databází SQL.
 
-* [ExpressRoute Monitor](network-performance-monitor-expressroute.md): Přes Azure ExpressRoute můžete monitorovat připojení a výkon mezi vašimi pobočkami a Azure.  
+* [ExpressRoute Monitor](network-performance-monitor-expressroute.md): Monitorování připojení začátku do konce a výkon mezi vašimi pobočkami a Azure přes Azure ExpressRoute.  
 
 Další informace o různých možnostech nepodporuje [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je k dispozici online.
  

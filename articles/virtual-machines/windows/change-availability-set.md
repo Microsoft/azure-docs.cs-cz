@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 1935286d94b0d72a59fc5d478705e23a7f7425e9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 59e28591bda0bada24929fe95fba248d333833e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64723373"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Změna skupiny dostupnosti pro virtuální počítač s Windows
 Následující kroky popisují, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure Powershellu. Virtuální počítač lze přidat pouze do skupiny dostupnosti při jeho vytvoření. Chcete-li změnit dostupnost nastavit, je potřeba odstranit a znovu vytvoříte virtuální počítač. 
 
 Tento článek byl testován poslední o 2/12/2019 používání [Azure Cloud Shell](https://shell.azure.com/powershell) a [modulu Powershellu pro Az](https://docs.microsoft.com/powershell/azure/install-az-ps) verzi 1.2.0.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-availability-set"></a>Změnit skupinu dostupnosti 
 

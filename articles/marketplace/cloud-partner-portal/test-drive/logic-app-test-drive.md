@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 3dc5642541f411acc93301f6bb9828e901aba449
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64940011"
 ---
 <a name="logic-app-test-drive"></a>Jednotky Test aplikace logiky
@@ -61,11 +61,11 @@ Další části a vyplňte je můžete konfigurovat aplikaci logiky testovací j
 
 ![Technické konfiguraci testu jednotky](./media/azure-resource-manager-test-drive/howtopub5_logicapp.png)
 
-- **Oblast** - *[vyžaduje pole]* oblasti je vybrat je, kde vyberete, ve které jsou nasazené prostředky Test Drive aplikace logiky v.
+- **Oblast** -  *[vyžaduje pole]* oblasti je vybrat je, kde vyberete, ve které jsou nasazené prostředky Test Drive aplikace logiky v.
 
     *Poznámka:* Pokud vaše aplikace logiky má všechny vlastní prostředky, které jsou uloženy v oblasti, ujistěte se, že se tady vyberete danou oblast. Je nejlepší způsob, jak to udělat **plně nasadit svou aplikaci logiky místně v rámci předplatného Azure na portálu a ověřte, zda funguje** před zápisem tady.
 
-- **Maximální souběžných testovacími verzemi** - *[vyžaduje pole]* instance číslo jednotky testů, které už jsou nasazené a čeká se na přístup za vybrané oblasti. Zákazníci mají okamžitě přístup k tento Test jednotky a nemusíte čekat pro nasazení.
+- **Maximální souběžných testovacími verzemi** -  *[vyžaduje pole]* instance číslo jednotky testů, které už jsou nasazené a čeká se na přístup za vybrané oblasti. Zákazníci mají okamžitě přístup k tento Test jednotky a nemusíte čekat pro nasazení.
 
     *Poznámka:* Pokud používáte webinář/třídy místo všechny studenty, aby si testovací jízdu číslo N, se doporučuje pro publikování s číslem N horké instancí a pak jednou třída je více než znovu publikovat zpět na vaše číslo normální výměně instancí.
 
@@ -77,7 +77,7 @@ Další části a vyplňte je můžete konfigurovat aplikaci logiky testovací j
 
 - **Název aplikace logiky – zrušení zřízení** *[povinné pole]* zápisu v názvu aplikace logiky pro vaše zrušení všechny prostředky vytvořené v testovací verze. Ujistěte se, že tento soubor je uložen ve skupině prostředků výše.
 
-- **Přístup k informacím o -** *[povinné pole]* po zákazník dostane jejich Test Drive, se jim prezentují přístup k informacím. Tyto pokyny jsou určené ke sdílení užitečné výstupní parametry z testovacího správce prostředků disku šablony. Chcete-li zahrnout výstupních parametrů, použijte dvojitých složených závorkách (například **{{outputname}}**), a že bude správně vložena do umístění. (Formátování řetězce ve formátu HTML je zde doporučeného k vykreslení v části front end).
+- **Přístup k informacím o -** *[povinné pole]* po zákazník dostane jejich Test Drive, se jim prezentují přístup k informacím. Tyto pokyny jsou určené ke sdílení užitečné výstupní parametry z testovacího správce prostředků disku šablony. Chcete-li zahrnout výstupních parametrů, použijte dvojitých složených závorkách (například **{{outputname}}** ), a že bude správně vložena do umístění. (Formátování řetězce ve formátu HTML je zde doporučeného k vykreslení v části front end).
 
 ### <a name="test-drive-deployment-subscription-details"></a>Podrobnosti předplatného nasazení testu jednotky
 
@@ -119,7 +119,7 @@ Klikněte na Uložit. Posledním krokem je zkopírovat ID aplikace pro tuto regi
 Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro tuto aplikaci přidat jako přispěvatele daného předplatného. Tyto pokyny jsou jako níže:
 
 1. Přejděte do okna odběry a vyberte odpovídající předplatné, který používáte pro pouze na testovací verzi.
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 1. Klikněte na tlačítko **přiřazení rolí** kartu.  ![Azure Active Directory, přidání nového objektu zabezpečení řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Klikněte na tlačítko **přidat přiřazení role**.
 1. Nastavit jako roli **Přispěvatel**.

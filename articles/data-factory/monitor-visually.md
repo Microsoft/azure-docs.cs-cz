@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
 ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60716749"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorovat objekty pro vytváření dat Azure
@@ -43,11 +43,11 @@ Zobrazení seznamu předvádí jednotlivá spuštění pro kanály Data Factory 
 | Akce | Chcete-li zobrazit spuštění aktivit jedné akce. |
 | Spuštění | Kanál datum a čas spuštění (MM/DD/RRRR HH: mm: SS AM/PM) |
 | Doba trvání | Doba trvání (hh: mm:) |
-| Inicializoval | Ruční spuštění aktivační události plánovače |
+| Aktivoval | Ruční spuštění aktivační události plánovače |
 | Status | Se nezdařilo, probíhá úspěšně |
 | Parametry | Parametry (název, hodnotu páry) spuštění kanálu |
 | Chyba | Spuštění kanálu chyb (if/any) |
-| ID běhu | ID spuštění kanálu |
+| ID spuštění | ID spuštění kanálu |
 
 ![Monitorování spuštění kanálu](media/monitor-visually/pipeline-runs.png)
 
@@ -94,7 +94,7 @@ Spuštění kanálu pořadí ve vzestupném nebo sestupném podle začátku spu�
 ### <a name="add-or-remove-columns"></a>Přidání nebo odebrání sloupců
 Klikněte pravým tlačítkem na záhlaví zobrazení seznamu a vybrat sloupce, které chcete zobrazit v zobrazení seznamu
 
-![Sloupce](media/monitor-visually/columns.png)
+![Columns](media/monitor-visually/columns.png)
 
 ### <a name="adjust-column-widths"></a>Nastavit šířku sloupců
 Zvýšení a snížení šířky sloupců v seznamu zobrazit ukázáním myší na záhlaví sloupce

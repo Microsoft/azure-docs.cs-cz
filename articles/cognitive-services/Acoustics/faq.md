@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1f2b4d25b39e9b3ebc6659e736d47640964251dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61335326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693879"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akustika – nejčastější dotazy
 
@@ -27,7 +27,7 @@ Projekt Akustika sadu modulů plug-in je Akustika systém, který vypočítá zv
 
 Si můžete stáhnout [modulu plug-in Unity projektu Akustika](https://www.microsoft.com/download/details.aspx?id=57346) nebo [projektu Akustika Unreal modulu plug-in](https://www.microsoft.com/download/details.aspx?id=58090).
 
-## <a name="does-project-acoustics-support-x-platform"></a>Podporuje projektu Akustika <x> platformy?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Podporuje projektu Akustika &lt;x&gt; platformy?
 
 Podpora platformy projektu Akustika vyvíjí podle potřeb zákazníků. Kontaktujte nás prosím na [projektu Akustika fóra](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) mohli dotázat na podporu pro další platformy.
 
