@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148198"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu služby LUIS
@@ -81,7 +81,7 @@ Možné chyby jsou:
 
     Pokud vás zajímají export trénovaného ale ne, ale publikované model se má použít s kontejnerem služby LUIS, pokračujte **verze** stránku a z něj exportovat. 
 
-## <a name="delete-app"></a>Odstranit aplikaci
+## <a name="delete-app"></a>Odstranění aplikace
 
 1. Na **Moje aplikace** vyberte tři tečky (...) na konci řádku aplikace.
 1. Vyberte **odstranit** z nabídky.

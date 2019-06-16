@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: e8c1c2e51ca14ae9b17f0d7efb20552cdd55139b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65077287"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-preview-performance-options"></a>Azure Database for PostgreSQL – velkokapacitní (Citus) (preview) možnosti výkonu
@@ -20,7 +20,7 @@ ms.locfileid: "65077287"
  
 Ve skupině serverů Hyperškálovatelného (Citus) můžete vybrat nastavení výpočty a úložiště nezávisle na pracovní uzly a koordinační uzel.  Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. Velikost úložiště pro zřizování odkazuje na kapacity k dispozici pro koordinátor a pracovní uzly ve skupině serveru Hyperškálovatelného (Citus). Úložiště obsahuje soubory databáze, dočasné soubory, transakční protokoly a protokoly Postgres server. Celkový objem úložiště, který zřídíte také definuje vstupně-výstupní kapacity k dispozici pro každý pracovní procesy a koordinační uzel.
  
-|                       | Pracovní uzel           | Uzel koordinátora      |
+|                       | Pracovní uzel           | Koordinační uzel      |
 |-----------------------|-----------------------|-----------------------|
 | Výpočetní prostředky, virtuální jádra       | 4, 8, 16, 32          | 4, 8, 16, 32          |
 | Paměť na vCore, GiB | 8                     | 4                     |

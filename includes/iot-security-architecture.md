@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66166340"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpečení Internetu věcí (IoT)
@@ -169,22 +169,22 @@ Tato část popisuje architekturu uvedených dříve přehledu modelování hroz
 
 V každém z kategorií uvedených v architektuře Azure IoT pokusí zmírnit celou řadou různých hrozby v různých fázích/informace o datech existuje v tomto příkladu: proces, komunikace a úložiště. Tady je přehled nejběžnějších ty pro kategorii "procesu", za nímž následuje přehled o tom, jak může nejlépe zmírnit tyto hrozby:
 
-**Falšování identity (S)**: Útočník může extrahujte kryptografický materiál klíče ze zařízení, buď na softwarové nebo hardwarové úrovni a následně přístup, který je už zabraný systému pomocí jiné fyzické nebo virtuální zařízení s identitou zařízení materiál klíče z. Dobré obrázku je dálková ovládání, který můžete zapnout jakékoli Televizi a, které jsou prankster oblíbených nástrojů.
+**Falšování identity (S)** : Útočník může extrahujte kryptografický materiál klíče ze zařízení, buď na softwarové nebo hardwarové úrovni a následně přístup, který je už zabraný systému pomocí jiné fyzické nebo virtuální zařízení s identitou zařízení materiál klíče z. Dobré obrázku je dálková ovládání, který můžete zapnout jakékoli Televizi a, které jsou prankster oblíbených nástrojů.
 
-**Útok DoS (D)**: U zařízení je možné způsobit, že je neschopné funkce nebo komunikace, pomocí rušení rádiových frekvencí nebo přerušením drátů. Například bezpečnostní kamera, u které někdo záměrně odpojil napájení nebo síťové připojení, nemůže předávat žádná data.
+**Útok DoS (D)** : U zařízení je možné způsobit, že je neschopné funkce nebo komunikace, pomocí rušení rádiových frekvencí nebo přerušením drátů. Například bezpečnostní kamera, u které někdo záměrně odpojil napájení nebo síťové připojení, nemůže předávat žádná data.
 
-**Manipulaci (T)**: Útočník může částečně nebo zcela nahradit software spuštěný v zařízení, což potenciálně dovoluje nahrazenému softwaru využít reálnou identitu zařízení, pokud byly ilegálnímu programu dostupné klíčové materiály nebo kryptografické vybavení držící klíčové materiály. Například může útočník využít extrahované materiál klíče zachytí a potlačit dat ze zařízení na cestě pro komunikaci a nahraďte ji metodou false data, která se ověřuje pomocí odcizeného materiál klíče.
+**Manipulaci (T)** : Útočník může částečně nebo zcela nahradit software spuštěný v zařízení, což potenciálně dovoluje nahrazenému softwaru využít reálnou identitu zařízení, pokud byly ilegálnímu programu dostupné klíčové materiály nebo kryptografické vybavení držící klíčové materiály. Například může útočník využít extrahované materiál klíče zachytí a potlačit dat ze zařízení na cestě pro komunikaci a nahraďte ji metodou false data, která se ověřuje pomocí odcizeného materiál klíče.
 
-**Přístup k informacím (I)**: Pokud je na zařízení spuštěný s ní manipulováno softwaru, s ní manipulováno software může potenciálně způsobit únik těchto dat neoprávněným osobám. Například může útočník využít extrahované materiál klíče se vložit samotné do komunikační trasa mezi zařízení a brána kontroler nebo pole nebo Cloudová brána k siphon vypnout informace.
+**Přístup k informacím (I)** : Pokud je na zařízení spuštěný s ní manipulováno softwaru, s ní manipulováno software může potenciálně způsobit únik těchto dat neoprávněným osobám. Například může útočník využít extrahované materiál klíče se vložit samotné do komunikační trasa mezi zařízení a brána kontroler nebo pole nebo Cloudová brána k siphon vypnout informace.
 
-**Zvýšení úrovně oprávnění (E)**: U zařízení, které provádí určitou funkci, lze vynutit, aby dělalo něco jiného. Například může být ventilu, který je naprogramovaný tak, aby otevřete poloviční způsobem svých otevřete úplně.
+**Zvýšení úrovně oprávnění (E)** : U zařízení, které provádí určitou funkci, lze vynutit, aby dělalo něco jiného. Například může být ventilu, který je naprogramovaný tak, aby otevřete poloviční způsobem svých otevřete úplně.
 
 | **Komponenta** | **Před internetovými útoky** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
-| Zařízení |ne |Přiřazení identit zařízení a ověřování zařízení |Nahrazení část zařízení nebo zařízení s jiným zařízením. Jak víte, že jsou kdekoliv na správné zařízení? |Ověřování zařízení, pomocí zabezpečení TLS (Transport Layer) nebo protokol IPSec. Infrastruktura by měla podporovat použití předsdílený klíč (PSK) na těchto zařízeních, které nelze zpracovat úplnou asymetrické šifrování. Využijte Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
+| Zařízení |S |Přiřazení identit zařízení a ověřování zařízení |Nahrazení část zařízení nebo zařízení s jiným zařízením. Jak víte, že jsou kdekoliv na správné zařízení? |Ověřování zařízení, pomocí zabezpečení TLS (Transport Layer) nebo protokol IPSec. Infrastruktura by měla podporovat použití předsdílený klíč (PSK) na těchto zařízeních, které nelze zpracovat úplnou asymetrické šifrování. Využijte Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Použijte mechanismy tamperproof do zařízení, například tím, že pevné na možné extrahovat klíčů a dalších kryptografický materiál ze zařízení. |Riziko je, pokud někdo je falšování zařízení (fyzické rušení). Jak jste si jisti, že zařízení nebylo manipulováno. |Nejúčinnější omezení rizik je TPM module (TPM), která umožňuje ukládat klíče ve speciální na čipu obvod, ze kterého klíče nelze číst, ale jde použít jenom pro kryptografické operace využívající klíč, ale nikdy odkrývat klíč. Paměť šifrování zařízení. Klíčová Správa pro zařízení. Podepisování kódu. |
 || E |S řízení přístupu zařízení. Schéma autorizace. |Pokud zařízení povoluje pro jednotlivé akce, která se má provést podle příkazy z vnějšího zdroje nebo dokonce ohrožených senzory, umožňuje útoku k provádění operací jinak nejsou přístupné. |Povolení režimu pro zařízení s |
-| Brána pole |ne |Brána pole do cloudové brány ověřování (například certifikátu na základě PSK, nebo na základě deklarací identity.) |Pokud někdo může zfalšovat Field Gateway, pak se může zobrazit jako jakékoli zařízení. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Stejné zásadními obavami úložiště a ověření zařízení v obecné – nejlepší případ je pomocí čipu TPM. 6LowPAN rozšíření pro protokol IPSec pro podporu sítí senzor bezdrátové sítě (WSN). |
+| Brána pole |S |Brána pole do cloudové brány ověřování (například certifikátu na základě PSK, nebo na základě deklarací identity.) |Pokud někdo může zfalšovat Field Gateway, pak se může zobrazit jako jakékoli zařízení. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Stejné zásadními obavami úložiště a ověření zařízení v obecné – nejlepší případ je pomocí čipu TPM. 6LowPAN rozšíření pro protokol IPSec pro podporu sítí senzor bezdrátové sítě (WSN). |
 || TRID |Ochrana hraniční brána proti manipulaci (TPM)? |Falšování útokům, které se přesvědčit přemýšlení brány cloud se mluví na hraniční brána může způsobit zpřístupnění informací a úpravám dat. |Paměť šifrování, TPM společnosti, ověřování. |
 || E |Mechanismus řízení přístupu pro bránu | | |
 

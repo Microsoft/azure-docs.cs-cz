@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
 ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65539285"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Řešení běžných potíží indexeru ve službě Azure Search
@@ -27,7 +27,7 @@ Indexery můžete spustit do celé řady důvodů, názvy při indexování dat 
 
 ## <a name="data-source-connection-errors"></a>Chyby připojení zdroje dat
 
-### <a name="blob-storage"></a>Úložiště objektů blob
+### <a name="blob-storage"></a>Blob Storage
 
 #### <a name="storage-account-firewall"></a>Brány firewall na účet úložiště
 

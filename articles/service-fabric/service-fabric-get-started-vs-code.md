@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60946559"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
@@ -59,7 +59,7 @@ Musí být nainstalován následující požadované součásti pro .NET Core /C
 * [.NET core](https://www.microsoft.com/net/learn/get-started) (verze 2.0.0 nebo novější)
 * [C#pro Visual Studio Code (využívající omnisharp) VS Code příponou](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) potřebné k ladění C# služby. Můžete nainstalovat buď kliknutím na ikonu rozšíření **aktivity panelu** ve VS Code a vyhledávání rozšíření nebo z VS Code Marketplace.
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 
 1. Otevřít VS Code.
 2. Klikněte na ikonu rozšíření **aktivity panelu** na levé straně VS Code. Vyhledejte "Service Fabric". Klikněte na tlačítko **nainstalovat** pro rozšíření Service Fabric Reliable Services.
@@ -70,7 +70,7 @@ Service Fabric Reliable Services rozšíření pro VS Code obsahuje mnoho přík
 * Service Fabric: Vytvoření aplikace 
 * Service Fabric: Publikování aplikace 
 * Service Fabric: Nasazení aplikace 
-* Service Fabric: Odstranit aplikaci  
+* Service Fabric: Odebrání aplikace  
 * Service Fabric: Sestavení aplikace 
 * Service Fabric: Clean Application 
 
@@ -113,7 +113,7 @@ Service Fabric Reliable Services rozšíření pro VS Code obsahuje mnoho přík
 > [!NOTE]
 > Nasazení aplikace v Javě do místního clusteru se nepodporuje na počítačích s Windows.
 
-### <a name="service-fabric-remove-application"></a>Service Fabric: Odstranit aplikaci
+### <a name="service-fabric-remove-application"></a>Service Fabric: Odebrání aplikace
 **Service Fabric: Odebrání aplikace** příkaz odebere z clusteru, aby byl dříve nasazen do používání rozšíření VS Codu aplikace Service Fabric. 
 
 1.  Vyberte **Service Fabric: Odebrat aplikaci** příkazu.

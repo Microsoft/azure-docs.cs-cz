@@ -11,10 +11,10 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 95c5b592d5ca46aed5f7123ff2b3eb688c5c0caf
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873486"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse
@@ -231,7 +231,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure S
 ## <a name="diagnostic-sessions"></a>Relace diagnostiky
 * [VYTVOŘENÍ RELACE DIAGNOSTIKY](https://msdn.microsoft.com/library/mt204029.aspx)
 
-## <a name="procedures"></a>Procedury
+## <a name="procedures"></a>Postupy
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)

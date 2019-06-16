@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943553"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Nastavení aplikace na portálu publikování
@@ -47,7 +47,7 @@ Formulář pro nastavení nabídky je základní formulář a zadejte nastavení
 
 Toto je jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID se nebude zobrazovat v adresách URL produktu. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. Toto pole je uzamčen, jakmile uvedete nabídky.
 
-například, pokud vydavatele **"contoso"** vydavatelé vytvoří v rámci nabídky s ID nabídky **"ukázkové webové aplikace"**, se zobrazí v AppSource jako "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+například, pokud vydavatele **"contoso"** vydavatelé vytvoří v rámci nabídky s ID nabídky **"ukázkové webové aplikace"** , se zobrazí v AppSource jako "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>ID vydavatele
 

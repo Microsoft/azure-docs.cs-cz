@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935866"
 ---
 <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
@@ -19,7 +19,7 @@ ms.locfileid: "64935866"
 
 Tento článek popisuje, jak se stát schválené Microsoft Developer pro publikování na webu Azure Marketplace.
 
-## <a name="create-a-microsoft-account"></a>Vytvoření účtu Microsoft
+## <a name="create-a-microsoft-account"></a>Vytvořit účet Microsoft
 
 Chcete-li zahájit proces publikování, budete potřebovat k dokončení **Microsoft Developer Center** registrace. Budete používat stejný účet registrované na **[portál partnerů cloudu](https://cloudpartner.azure.com/)** zahájíte proces publikování.
 

@@ -17,10 +17,10 @@ ms.date: 01/25/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 453628dca04fbc3c48564f15b6cf61802165b0cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60880543"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Vyhledání imagí virtuálních počítačů s Linuxem na webu Azure Marketplace pomocí Azure CLI
@@ -335,7 +335,7 @@ Výstup:
 }
 ```
 
-### <a name="accept-the-terms"></a>Přijmout podmínky
+### <a name="accept-the-terms"></a>Přijměte podmínky
 
 Chcete-li zobrazit a přijměte licenční podmínky, použijte [az vm image přijmout – podmínky](/cli/azure/vm/image?) příkazu. Pokud souhlasíte s podmínkami, povolit programové nasazení v rámci vašeho předplatného. Stačí přijmout podmínky jednou za předplatné pro bitovou kopii. Příklad:
 

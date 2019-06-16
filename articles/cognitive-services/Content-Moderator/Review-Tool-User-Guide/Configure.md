@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61285397"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
@@ -64,7 +64,7 @@ Pokud jste členem více než jednoho dílčího týmu, můžete přepínat mezi
 
 ![Přepínání mezi podtýmy](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Značky
+## <a name="tags"></a>Tags
 
 **Značky** kartu umožňuje definovat vlastní moderování značky kromě značek moderování dvě výchozí&mdash;**isadult** (**a**) **isracy**  (**r**). Když vytvoříte vlastní značky, bude k dispozici v revize spolu s výchozí značky. Můžete změnit, které značky se zobrazí v revize přepnutím jejich nastavení viditelnosti.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: diberry
 ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66236946"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Použití řídicího panelu můžete aplikaci vylepšovat
@@ -33,7 +33,7 @@ Jsou tři problémy vyřešené v řídicím panelu:
 |Problém|Barva grafu|Vysvětlení|
 |--|--|--|
 |Nevyváženosti dat|-|Proběhne, když se výrazně liší množství projevy příklad. Musí mít všechny záměry _zhruba_ stejný počet příklad projevy – s výjimkou záměru None. 10 – 15 % z celkového množství projevy by měl mít jenom v aplikaci.<br><br> Pokud data jsou imbalanced ale záměru přesnost je nad určitou prahovou hodnotu, není tento imbalance označení problém.<br><br>**Začněte s tímto problémem - může být původní příčiny jiných problémů.**|
-|Jasné predikcí|Oranžová|Proběhne, když hlavní záměr a další záměr skóre jsou dost blízko, že může překlopit na další školicí kvůli [negativní vzorkování](luis-how-to-train.md#train-with-all-data) nebo další projevy příklad přidá k záměru. |
+|Jasné predikcí|Orange|Proběhne, když hlavní záměr a další záměr skóre jsou dost blízko, že může překlopit na další školicí kvůli [negativní vzorkování](luis-how-to-train.md#train-with-all-data) nebo další projevy příklad přidá k záměru. |
 |Nesprávný predikcí|Červená|Proběhne, když není příkladu utterance předpovědět pro označené záměr (záměru, který je v).|
 
 Správné předpovědi jsou reprezentovány s modrou barvu.

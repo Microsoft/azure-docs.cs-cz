@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 6f831dd0cde4641eb48f3c23e010f8c5e8aa3fa2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939362"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimalizace výkonu pro Azure Data Lake Storage Gen2
@@ -44,7 +44,7 @@ Připojení k síti mezi zdrojem dat a Data Lake Storage Gen2 může být někdy
 
 Jakmile vyřešili zdrojového hardwaru a výše kritické body připojení k síti, jste připraveni ke konfiguraci nástroje pro ingestování. Následující tabulka shrnuje nastavení klíče pro nástroje pro několik oblíbených ingestování a poskytuje podrobné výkonů články pro ně.  Další informace o nástroji pro váš scénář, navštivte tuto [článku](data-lake-storage-data-scenarios.md).
 
-| Tool               | Nastavení     | Další podrobnosti                                                                 |
+| Nástroj               | Nastavení     | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (mapování)   | [Odkaz](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Odkaz](../../data-factory/copy-activity-performance.md)                          |

@@ -11,10 +11,10 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66508964"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostránková přihlášení pomocí implicitního toku OAuth 2.0 v Azure Active Directory B2C
@@ -86,7 +86,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri | Ne | Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Ho musí přesně odpovídat jedné z přesměrování identifikátory URI, které jste zaregistrovali na portálu s tím rozdílem, že musí být kódovaná adresou URL. |
 | response_mode | Ne | Určuje metodu sloužící k odeslání výsledný token zpátky do vaší aplikace.  Implicitní tok, použijte `fragment`. |
 | scope | Ano | Seznam oborů oddělených mezerami. Hodnota jeden obor značí do služby Azure AD i oprávnění, které jsou požadovány. `openid` Rozsah Určuje oprávnění pro uživatele a získat data o uživateli v podobě ID tokenů. `offline_access` Obor je nepovinné pro webové aplikace. Znamená to, že vaše aplikace potřebuje obnovovací token pro dlouhodobé přístup k prostředkům. |
-| stav | Ne | Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete použít. Obvykle, náhodně generované, jedinečné je použita hodnota, aby se zabránilo útokům padělání žádosti více webů. Stav slouží také ke kódování informace o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako jsou stránky na. |
+| state | Ne | Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete použít. Obvykle, náhodně generované, jedinečné je použita hodnota, aby se zabránilo útokům padělání žádosti více webů. Stav slouží také ke kódování informace o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako jsou stránky na. |
 | nonce | Ano | Hodnota zahrnutý v požadavku (generovaný aplikací), který je součástí výsledný token ID jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. |
 | p | Ano | Zásady ke spuštění. Jde o název zásady (tok uživatele), která se vytvoří ve vašem tenantovi Azure AD B2C. Hodnota názvu zásad by měl začínat **b2c\_1\_** . |
 | řádek | Ne | Typ interakce s uživatelem, který je potřeba. V současné době je jedinou platnou hodnotou `login`. Tento parametr donutí uživatele k zadání přihlašovacích údajů tohoto požadavku. Jednotné přihlašování se projeví. |
@@ -115,7 +115,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | expires_in | Časový úsek, který je přístupový token platný (v sekundách). |
 | scope | Obory, které je token platný pro. Můžete také pomocí oborů tokeny v mezipaměti pro pozdější použití. |
 | id_token | ID tokenu požadovanou aplikaci. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Další informace o tokeny typu ID a jejich obsah, najdete v článku [odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md). |
-| stav | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
+| state | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 ### <a name="error-response"></a>Odpověď na chybu
 Chybové odpovědi lze také odešle do identifikátor URI pro přesměrování tak, aby aplikace můžete odpovídajícím způsobem zpracovat:
@@ -131,7 +131,7 @@ error=access_denied
 | --------- | ----------- |
 | error | Kód, který se používá ke klasifikaci typy chyb, ke kterým dochází. |
 | error_description | Určité chybové zprávě, které vám pomohou identifikovat hlavní příčinu chyby ověřování. |
-| stav | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické.|
+| state | Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické.|
 
 ## <a name="validate-the-id-token"></a>Ověřit ID token
 
@@ -198,7 +198,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |Doporučené |Identifikátor URI přesměrování vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Se musí přesně odpovídat jednu registraci na portálu pro identifikátory URI přesměrování s tím rozdílem, že musí být kódovaná adresou URL. |
 | scope |Požaduje se |Seznam oborů oddělených mezerami.  Jak získat tokeny, zahrnují všechny obory, které požadujete pro požadovaný prostředek. |
 | response_mode |Doporučené |Určuje metodu, která se používá k odesílání výsledný token zpátky do vaší aplikace.  Může být `query`, `form_post`, nebo `fragment`. |
-| stav |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu.  Může být řetězec jakéhokoli obsahu, který chcete použít.  Obvykle, náhodně generované, jedinečné je použita hodnota, aby se zabránilo útokům padělání žádosti více webů.  Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránky nebo zobrazení uživatel byl v. |
+| state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu.  Může být řetězec jakéhokoli obsahu, který chcete použít.  Obvykle, náhodně generované, jedinečné je použita hodnota, aby se zabránilo útokům padělání žádosti více webů.  Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránky nebo zobrazení uživatel byl v. |
 | nonce |Požaduje se |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je součástí výsledný token ID jako deklarace identity.  Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec, který identifikuje původcem požadavku. |
 | řádek |Požaduje se |Chcete-li obnovit a získat tokeny v skrytý element iframe, použijte `prompt=none` zajistíte, že iframe není zablokuje na přihlašovací stránku a vrátí hodnotu okamžitě. |
 | login_hint |Požaduje se |Aktualizace a získat tokeny v skrytý element iframe, zahrňte uživatelské jméno uživatele, tato Nápověda k rozlišení mezi více relací, které uživatel může mít v daném okamžiku. Uživatelské jméno se dají extrahovat z předchozí znak v s použitím `preferred_username` deklarací identity. |
@@ -222,7 +222,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | --- | --- |
 | access_token |Token, který požadované aplikace. |
 | token_type |Typ tokenu bude vždy nosiče. |
-| stav |Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
+| state |Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
 | expires_in |Jak dlouho je přístupový token platný (v sekundách). |
 | scope |Obory, které je přístupový token platný pro. |
 

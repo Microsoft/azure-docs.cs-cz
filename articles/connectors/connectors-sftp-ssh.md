@@ -11,10 +11,10 @@ ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
 ms.openlocfilehash: 5f82c654b443d58c9ce38c2fb0f48c1654daeb34
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922248"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytvářet a spravovat soubory protokolu SFTP pomocí SSH a Azure Logic Apps
@@ -99,7 +99,7 @@ Tady jsou další hlavní rozdíly mezi konektoru SFTP-SSH a SFTP konektor, kde 
    V seznamu akcí vyberte požadovanou akci.
 
    Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Zadejte potřebné podrobnosti o připojení.
 
@@ -138,7 +138,7 @@ Když aktivační události vyhledá nový soubor, trigger zkontroluje, zda nov�
 
 Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 15 MB. Pokud chcete získat soubory větší než 15 MB, postupujte podle tohoto vzoru: 
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)** .
 
 * Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -146,7 +146,7 @@ Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory vě
 
 <a name="file-added-modified"></a>
 
-### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - aktivovat SSH: Když je přidán nebo upraven soubor
+### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP - aktivovat SSH: Při přidání nebo změně souboru
 
 Tato aktivační událost se spustí pracovní postup aplikace logiky souboru při přidání nebo změně na SFTP server. Například můžete přidat podmínku, která zkontroluje obsah souboru a získá obsah založen na tom, jestli obsah splňují zadanou podmínku. Potom přidáte akci, která získá obsah souboru a umístí tento obsah do složky na serveru SFTP. 
 
@@ -154,7 +154,7 @@ Tato aktivační událost se spustí pracovní postup aplikace logiky souboru p�
 
 Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 15 MB. Pokud chcete získat soubory větší než 15 MB, postupujte podle tohoto vzoru: 
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)** .
 
 * Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 
@@ -166,7 +166,7 @@ Tato akce načte obsah ze souboru na SFTP server. Takže například můžete p�
 
 Pokud se požaduje obsah souboru, aktivační události Nezískávat soubory větší než 15 MB. Pokud chcete získat soubory větší než 15 MB, postupujte podle tohoto vzoru: 
 
-* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)**.
+* Pomocí aktivační události, která vrací vlastnosti souboru, například **kdy soubor se přidá nebo upraví (jen vlastnosti)** .
 
 * Postupujte podle aktivační událost s akci, která načte celý soubor, jako například **získat obsah souboru pomocí cesty**, a mít akci použít [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md).
 

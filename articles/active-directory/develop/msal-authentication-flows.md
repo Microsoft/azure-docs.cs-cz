@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9a6f162a10408469669cf40b29efc6d2903944
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 612bdd2a5813237f05e9a30a0c90c3b643ece4b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111444"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -51,7 +51,7 @@ Další informace o pomocí MSAL.NET interaktivně získat tokeny na konkrétní
 
 Další informace o interaktivní volání ve MSAL.js [výzvu chování v MSAL.js interaktivních požadavků](msal-js-prompt-behavior.md)
 
-## <a name="implicit-grant"></a>Implicitní udělení
+## <a name="implicit-grant"></a>Implicitní grant
 
 Podporuje MSAL [OAuth 2 implicitní tok poskytování](v2-oauth2-implicit-grant-flow.md), který umožňuje aplikaci získat tokeny z Microsoft identity platform bez provedení back-end serveru výměnou přihlašovacích údajů. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API vše v rámci klienta kódu jazyka JavaScript.
 
@@ -61,7 +61,7 @@ Podporuje MSAL [OAuth 2 implicitní tok poskytování](v2-oauth2-implicit-grant-
 
 Tento tok ověřování nezahrnuje scénáře aplikací pomocí rozhraní JavaScript napříč platformami jako elektronovým a React-Native, protože vyžadují další možnosti pro interakci s nativní platformy.
 
-## <a name="authorization-code"></a>Autorizační kód
+## <a name="authorization-code"></a>autorizační kód
 Podporuje MSAL [udělení autorizačního kódu OAuth 2](v2-oauth2-auth-code-flow.md), které lze použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. To umožňuje přidat přihlášení a přístup k rozhraní API do vašich mobilních a desktopových aplikací. 
 
 Po přihlášení uživatelů do webových aplikací (webové servery) webová aplikace obdrží autorizační kód.  K získání tokenu pro volání webových rozhraní API je uplatnit autorizační kód. V technologii ASP.NET nebo ASP.NET core webových aplikací, jenom cílem `AcquireTokenByAuthorizationCode` je přidat token do mezipaměti tokenů, takže je pak možné aplikaci (obvykle v zařízení), které právě získání tokenu pro rozhraní API pomocí `AcquireTokenSilent`.
@@ -124,7 +124,7 @@ Podporuje MSAL [tok OAuth 2 zařízení kódu](v2-oauth2-device-code.md), což u
 
 Pomocí toku kódu zařízení, aplikace získá tokeny krocích zvláště určené pro zařízení nebo operačního systému. Příkladem takové aplikace jsou aplikace běžící na zařízení iOT nebo nástroje příkazového řádku (CLI). 
 
-![Tok kódu zařízení](media/msal-authentication-flows/device-code.png)
+![Tok kódu při zařízení](media/msal-authentication-flows/device-code.png)
 
 1. Pokaždé, když se vyžaduje ověření uživatele, poskytuje kód a žádá uživatele, aby pomocí jiného zařízení (jako jsou připojené k Internetu smartphone) přejděte na adresu URL aplikace (například https://microsoft.com/devicelogin), ve kterém uživateli zobrazí výzva k zadání kódu. Že budete hotovi, webové stránky přejde uživatele prostřednictvím normální ověřování prostředí, a v případě potřeby včetně výzev k udělení souhlasu a ověřování službou Multi-Factor Authentication.
 
@@ -138,10 +138,10 @@ Pomocí toku kódu zařízení, aplikace získá tokeny krocích zvláště urč
   - nebo jakékoli pracovním a školním účtům (`https://login.microsoftonline.com/organizations/`).
 - Osobní účty Microsoft se zatím nepodporují pomocí koncového bodu Azure AD v2.0 (nelze použít `/common` nebo `/consumers` tenantů).
 
-## <a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
+## <a name="integrated-windows-authentication"></a>Ověření integrované Windows
 Knihovna MSAL podporuje integrované ověřování Windows (IWA) pro stolní počítače nebo mobilní aplikace, které běží na Azure AD nebo připojené k doméně připojené k počítači s Windows. Pomocí IWA, tyto aplikace můžete získat token tiše (bez nutnosti zásahu uživatelského rozhraní od uživatele). 
 
-![Integrované ověřování systému Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
+![Ověření integrované Windows](media/msal-authentication-flows/integrated-windows-authentication.png)
 
 1. Získá token pomocí integrovaného ověřování Windows.
 2. Token, který se používá k podání žádostí o prostředku.

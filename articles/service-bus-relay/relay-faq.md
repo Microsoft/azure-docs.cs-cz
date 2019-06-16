@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111471"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure Relay
@@ -86,7 +86,7 @@ Přenosy, které jsou otevřeny pomocí **netTCPRelay** vazby WCF zpracovávat z
 | Předávání souběžných připojení za všechny koncové body relay v oboru názvů služby |Obor názvů |- |5 000 |
 | Obor názvů služby Relay koncových bodů |Obor názvů |- |10,000 |
 | Velikost pro zprávy [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) přenosu |Obor názvů |Odmítne příchozí zprávy, které přesahují tyto kvóty a obdrží výjimku ve volajícím kódu. |64 kB |
-| Velikost pro zprávy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) přenosu |Obor názvů |Žádné omezení velikosti zpráv. |Neomezené |
+| Velikost pro zprávy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) přenosu |Obor názvů |Žádné omezení velikosti zpráv. |Unlimited |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Má propojení jakékoli využití kvóty?
 Ve výchozím nastavení pro kteroukoli cloudovou službu nastaví Microsoft agregační měsíční využití kvóty, vypočtené ve všech předplatných zákazníka. Chápeme, že v některých případech vašim potřebám může tyto limity překročit. Abychom mohli o vašich potřebách a odpovídajícím způsobem nastavit limity, můžete kdykoli, požádejte služby zákazníkům. Agregované využití kvóty pro Service Bus, jsou následující:

@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 04/24/2019
 ms.author: tomfitz
 ms.openlocfilehash: 21b3972a96c1601b15c403275474d58873753b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712986"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Odstranění prostředků Azure pro úplný režim nasazení
@@ -44,10 +44,10 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- |
 | aadsupportcases | Ne | 
 | addsservices | Ne | 
-| agenti | Ne | 
+| Agenti | Ne | 
 | anonymousapiusers | Ne | 
 | konfigurace | Ne | 
-| Protokoly | Ne | 
+| logs | Ne | 
 | sestavy | Ne | 
 | services | Ne | 
 
@@ -56,7 +56,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- |
 | Konfigurace | Ne | 
 | generateRecommendations | Ne | 
-| doporučení | Ne | 
+| Doporučení | Ne | 
 | potlačení | Ne | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
@@ -243,7 +243,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | reservationOrders/rozdělení | Ne | 
 | reservationOrders/swap | Ne | 
 | rezervace | Ne | 
-| prostředky | Ne | 
+| Prostředky | Ne | 
 | validateReservationOrder | Ne | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -355,7 +355,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | AggregatedCost | Ne | 
 | Zůstatky | Ne | 
 | Rozpočty | Ne | 
-| Poplatky | Ne | 
+| Poplatky za | Ne | 
 | CostTags | Ne | 
 | Kredity | Ne | 
 | stránka events | Ne | 
@@ -363,12 +363,12 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Velké | Ne | 
 | Marketplaces | Ne | 
 | Pricesheets | Ne | 
-| produkty | Ne | 
+| Produkty | Ne | 
 | ReservationDetails | Ne | 
 | ReservationRecommendations | Ne | 
 | ReservationSummaries | Ne | 
 | ReservationTransactions | Ne | 
-| Značky | Ne | 
+| Tags | Ne | 
 | Výrazy | Ne | 
 | UsageDetails | Ne | 
 
@@ -433,7 +433,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Dotaz | Ne | 
 | Registrace | Ne | 
 | Reportconfigs | Ne | 
-| Reports | Ne | 
+| Sestavy | Ne | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Typ prostředku | Úplné odstranění režimu |
@@ -616,7 +616,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | myareas/oblasti/galleryitems | Ne | 
 | myareas/galleryitems | Ne | 
 | Registrace | Ne | 
-| prostředky | Ne | 
+| Prostředky | Ne | 
 | retrieveresourcesbyid | Ne | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
@@ -658,7 +658,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | alertrules | Ano | 
 | automatedExportSettings | Ne | 
 | autoscalesettings | Ano | 
-| základní hodnota | Ne | 
+| Standardní hodnoty | Ne | 
 | calculatebaseline | Ne | 
 | components | Ano | 
 | součásti/události | Ne | 
@@ -671,7 +671,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | extendedDiagnosticSettings | Ne | 
 | logDefinitions | Ne | 
 | logprofiles | Ne | 
-| Protokoly | Ne | 
+| logs | Ne | 
 | metricAlerts | Ano |
 | migrateToNewPricingModel | Ne | 
 | myWorkbooks | Ne | 
@@ -733,7 +733,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
-| Protokoly | Ne | 
+| logs | Ne | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Typ prostředku | Úplné odstranění režimu |
@@ -780,7 +780,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | ------------- | ----------- |
 | getEntities | Ne | 
 | managementGroups | Ne | 
-| prostředky | Ne | 
+| Prostředky | Ne | 
 | startTenantBackfill | Ne | 
 | tenantBackfillStatus | Ne | 
 
@@ -802,7 +802,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | offerTypes/publishers/offers/plans/configs | Ne | 
 | offerTypes/publishers/offers/plans/configs/importImage | Ne | 
 | privategalleryitems | Ne | 
-| produkty | Ne | 
+| Produkty | Ne | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Typ prostředku | Úplné odstranění režimu |
@@ -868,7 +868,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | dnszones/TXT | Ne | 
 | expressRouteCircuits | Ano | 
 | expressRouteServiceProviders | Ne | 
-| frontdoory | Ano | 
+| frontdoors | Ano | 
 | frontdoorWebApplicationFirewallPolicies | Ano | 
 | getDnsResourceReference | Ne | 
 | interfaceEndpoints | Ano | 
@@ -976,7 +976,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 | Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
-| prostředky | Ne | 
+| Prostředky | Ne | 
 | subscriptionsStatus | Ne | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
@@ -987,19 +987,19 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | childResources | Ne | 
 | stránka events | Ne | 
 | impactedResources | Ne | 
-| oznámení | Ne | 
+| Oznámení | Ne | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
 | Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
-| nasazení | Ne | 
+| Nasazení | Ne | 
 | Nasazení/operace | Ne | 
 | Odkazy | Ne | 
 | notifyResourceJobs | Ne | 
 | Zprostředkovatelé | Ne | 
 | resourceGroups | Ne | 
-| prostředky | Ne | 
-| předplatná | Ne | 
+| Prostředky | Ne | 
+| Předplatná | Ne | 
 | Předplatná a poskytovatelé | Ne | 
 | subscriptions/resourceGroups | Ne | 
 | předplatné/resourcegroups/prostředky | Ne | 
@@ -1041,11 +1041,11 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | externalSecuritySolutions | Ne | 
 | InformationProtectionPolicies | Ne | 
 | jitNetworkAccessPolicies | Ne | 
-| sledování | Ne | 
+| Monitorování | Ne | 
 | Monitoring/antimalwaru | Ne | 
 | monitorování a standardních hodnot | Ne | 
 | Monitoring/patch | Ne | 
-| zásady | Ne | 
+| Zásady | Ne | 
 | ceny | Ne | 
 | securityContacts | Ne | 
 | securitySolutions | Ne | 
@@ -1094,7 +1094,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | applications | Ano | 
 | gateways | Ano | 
 | networks | Ano | 
-| tajné kódy | Ano | 
+| Tajné kódy | Ano | 
 | volumes | Ano | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
@@ -1197,7 +1197,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | Typ prostředku | Úplné odstranění režimu |
 | ------------- | ----------- |
 | providerRegistrations | Ano | 
-| prostředky | Ano | 
+| Prostředky | Ano | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Typ prostředku | Úplné odstranění režimu |
@@ -1240,7 +1240,7 @@ Chcete-li získat stejná data jako soubor hodnot oddělených čárkami, stáhn
 | hostingEnvironments/workerPools | Ne | 
 | hostingEnvironments/workerPools/instances | Ne | 
 | publishingUsers | Ne | 
-| doporučení | Ne | 
+| Doporučení | Ne | 
 | resourceHealthMetadata | Ne | 
 | Moduly runtime | Ne | 
 | serverFarms | Ano | 

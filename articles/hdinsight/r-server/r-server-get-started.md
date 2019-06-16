@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 465b53e1c5f56c5c05c860ebd69a825141f7e703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706073"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
@@ -22,7 +22,7 @@ Azure HDInsight umožňuje vytvořit cluster služby ML Services. Tato možnost 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**: Než začnete tento kurz, musíte mít předplatné Azure. Další informace najdete v článku [Získání bezplatné zkušební verze Microsoft Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Klient Secure Shell (SSH)**: Klient SSH slouží ke vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo na clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient Secure Shell (SSH)** : Klient SSH slouží ke vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo na clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -37,7 +37,7 @@ Azure HDInsight umožňuje vytvořit cluster služby ML Services. Tato možnost 
     * **Název clusteru**: Název clusteru HDInsight.
     * **Předplatné**: Vyberte předplatné, které chcete použít.
     * **Uživatelské jméno přihlášení clusteru** a **přihlašovací heslo clusteru**: Přihlašovací údaje pro přístup ke clusteru přes protokol HTTPS. Pomocí těchto přihlašovacích údajů pro přístup ke službám, jako jsou webové uživatelské rozhraní Apache Ambari nebo REST API.
-    * **Uživatelské jméno Secure Shell (SSH)**: Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
+    * **Uživatelské jméno Secure Shell (SSH)** : Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
     * **Skupina prostředků**: Skupina prostředků, ve které se cluster vytváří.
     * **Umístění**: Oblast Azure, ve které se cluster vytváří.
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/25/2019
 ms.author: cshoe
 ms.openlocfilehash: 53eb5fc9389d913ecacec3729a06e47a1c2bf56b
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864551"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrace rozšíření vazby Azure Functions
@@ -31,8 +31,8 @@ Následující tabulka udává, kdy a jak zaregistrujete vazby.
 
 | Vývojové prostředí |Registrace<br/> ve funkcích 1.x  |Registrace<br/> ve funkcích 2.x  |
 |-------------------------|------------------------------------|------------------------------------|
-|portál Azure|Automaticky|Automaticky|
-|Jazyky mimo rozhraní .NET nebo místním vývojovém základní nástroje pro Azure|Automaticky|[Použití nástrojů Azure Functions Core a rozšíření sady](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
+|portál Azure|Automatické|Automatické|
+|Jazyky mimo rozhraní .NET nebo místním vývojovém základní nástroje pro Azure|Automatické|[Použití nástrojů Azure Functions Core a rozšíření sady](#local-development-with-azure-functions-core-tools-and-extension-bundles)|
 |C#knihovny tříd pomocí Visual Studio 2019|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2019)|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2019)|
 |Knihovny tříd C# pomocí nástroje Visual Studio Code|neuvedeno|[Použití .NET Core CLI](#c-class-library-with-visual-studio-code)|
 

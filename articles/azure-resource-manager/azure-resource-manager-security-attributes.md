@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002261"
 ---
 # <a name="security-attributes-for-azure-resource-manager"></a>Atributy zabezpečení pro Azure Resource Manageru
@@ -40,7 +40,7 @@ Tento článek popisuje atributy zabezpečení integrované do Azure Resource Ma
 | Izolace sítě a podporu funkce brány firewall| Ne |  |
 | Vynucené tunelování podpory| Ne |  |
 
-## <a name="detection"></a>Detekce
+## <a name="detection"></a>Detection (Detekce)
 
 | Atribut zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|

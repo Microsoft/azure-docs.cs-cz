@@ -12,10 +12,10 @@ ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: c989f1115bc5a85bf09270c553ac1cb51bb4f170
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954699"
 ---
 # <a name="analyzer-names"></a>Názvy analyzátorů
@@ -31,7 +31,7 @@ Role jednotlivých komponent je definována níže.
 Analyzátor jako první, má jedinečné ID; identifikátor GUID.
 Tyto identifikátory GUID by se měla změnit poměrně zřídka, ale je jediný způsob, jak jednoznačně popisují konkrétní analyzátor.
 
-## <a name="kind"></a>Kind
+## <a name="kind"></a>Typ
 V dalším kroku je každý analyzátoru **druh**.
 Definuje v velmi široké podmínky typu analýzu vrátil a jednoznačně by měl definovat strukturu dat používá k reprezentování analýzy.
 V současné době jsou tři odlišné typy:

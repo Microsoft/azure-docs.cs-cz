@@ -4,18 +4,17 @@ description: Ukázky kódu pro akce definice operace dat v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
-ms.author: v-yiso
+ms.author: estfan
 manager: jeconnoc
 ms.topic: reference
-origin.date: 07/25/2018
-ms.date: 12/10/2018
+ms.date: 07/25/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128545"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Data operace ukázky pro Azure Logic Apps
@@ -96,7 +95,7 @@ Vyzkoušet [ **Compose** příklad akce](../logic-apps/logic-apps-perform-data-o
 
 <a name="create-csv-table-action-example"></a>
 
-## <a name="create-csv-table"></a>Vytvořit tabulku CSV
+## <a name="create-csv-table"></a>Vytvoření tabulky CSV
 
 Vyzkoušet [ **vytvoření tabulky CSV** příklad akce](../logic-apps/logic-apps-perform-data-operations.md#create-csv-table-action), tady jsou definice akce můžete použít:
 
@@ -141,7 +140,7 @@ Vyzkoušet [ **vytvoření tabulky CSV** příklad akce](../logic-apps/logic-app
 
 <a name="create-html-table-action-example"></a>
 
-## <a name="create-html-table"></a>Vytvořit tabulku HTML
+## <a name="create-html-table"></a>Vytvoření tabulky HTML
 
 Vyzkoušet [ **vytvoření tabulky HTML** příklad akce](../logic-apps/logic-apps-perform-data-operations.md#create-html-table-action), tady jsou definice akce můžete použít:
 
@@ -186,7 +185,7 @@ Vyzkoušet [ **vytvoření tabulky HTML** příklad akce](../logic-apps/logic-ap
 
 <a name="filter-array-action-example"></a>
 
-## <a name="filter-array"></a>Filtrovat pole
+## <a name="filter-array"></a>Filtrování pole
 
 Vyzkoušet [ **filtrování pole** příklad akce](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action), tady jsou definice akce můžete použít:
 
@@ -227,7 +226,7 @@ Vyzkoušet [ **filtrování pole** příklad akce](../logic-apps/logic-apps-perf
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Spojit
+## <a name="join"></a>Připojit
 
 Vyzkoušet [ **připojení** příklad akce](../logic-apps/logic-apps-perform-data-operations.md#join-action), tady jsou definice akce můžete použít:
 
@@ -268,7 +267,7 @@ Vyzkoušet [ **připojení** příklad akce](../logic-apps/logic-apps-perform-da
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>Parsovat JSON
+## <a name="parse-json"></a>Parsování formátu JSON
 
 Vyzkoušet [ **Parsovat JSON** příklad akce](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), tady jsou definice akce můžete použít:
 

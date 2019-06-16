@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 68f62a6945f3b651781414e3194104b6d2e6295c
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455813"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808582"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -58,7 +58,7 @@ Proveďte následující kroky pro přípravu disků.
 6.  Příprava na disk, spusťte následující příkaz. **V závislosti na velikosti dat může to trvat několik hodin na dny.** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite /enablecontentmd5 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite 
     ```
     Soubor deníku se vytvoří ve stejné složce, kam jste nástroj spustili. Také se vytvoří dva další soubory – *.xml* soubor (složku, ve kterém spouštíte nástroj) a *jednotky manifest.xml* soubor (složku, ve které se nachází data).
     
@@ -74,7 +74,7 @@ Proveďte následující kroky pro přípravu disků.
     |/dstdir:     |Název cílový kontejner ve službě Azure Storage.         |
     |/blobtype:     |Tato možnost určuje typ objektů BLOB, kterou chcete importovat data. Pro objekty BLOB bloku, to je `BlockBlob` a pro objekty BLOB stránky je `PagaBlob`.         |
     |/skipwrite:     |Abyste byli připraveni je možnost, která určuje, že neexistuje žádná nová data muset zkopírovat a existující data na disku.          |
-    |/enablecontentmd5:     |Možnost při povolené, zajistí, že je vypočítán MD5 při nahrávání objekty BLOB bloku do Azure.          |
+    |/enablecontentmd5:     |Možnost při povolené, zajistí, že je vypočítán a nastavit jako MD5 `Content-md5` vlastnost pro každý objekt blob. Tuto možnost použijte pouze v případě, že chcete použít `Content-md5` pole po nahrání dat do Azure. <br> Tato možnost nemá vliv na kontrolu integrity dat (nacházející se ve výchozím nastavení). Nastavení zvýšit čas potřebný k nahrání dat do cloudu.          |
 7. Opakujte předchozí krok u každého disku, který potřebuje k odeslání. Pro každé spuštění příkazového řádku se vytvoří soubor deníku se zadaným názvem.
     
     > [!IMPORTANT]

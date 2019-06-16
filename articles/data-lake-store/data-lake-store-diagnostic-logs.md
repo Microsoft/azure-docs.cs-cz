@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878686"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Storage Gen1
@@ -113,7 +113,7 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
     }
 
 #### <a name="request-log-schema"></a>Schéma požadavku protokolu
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | time |String |Časové razítko (ve standardu UTC) v protokolu |
 | resourceId |String |ID prostředku, který operace trvalo umístit na |
@@ -126,7 +126,7 @@ Zde je vstup vzorového v protokol žádosti ve formátu JSON. Každý objekt bl
 | properties |JSON |Podrobnosti najdete níže |
 
 #### <a name="request-log-properties-schema"></a>Požadavek protokolu vlastnosti schématu
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | HttpMethod |String |Metoda protokolu HTTP se používá pro operaci. Třeba získáte. |
 | `Path` |String |Cesta operaci byla provedena |
@@ -173,7 +173,7 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 | properties |JSON |Podrobnosti najdete níže |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastnosti protokolu auditu
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | --- | --- | --- |
 | StreamName |String |Cesta operaci byla provedena |
 

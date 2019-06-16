@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067184"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
@@ -86,7 +86,7 @@ Tyto možnosti jsou k dispozici pro konfiguraci Query Store parametry.
 
 | **Parametr** | **Popis** | **Výchozí** | **rozsah**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádný | NONE, top, vše |
+| pg_qs.query_capture_mode | Nastaví, které příkazy jsou sledovány. | None | NONE, top, vše |
 | pg_qs.max_query_text_length | Nastaví maximální dotazu, který lze uložit. Dotazy na delší dobu se zkrátí. | 6000 | 100 – 10 TISÍC |
 | pg_qs.retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
 | pg_qs.track_utility | Nastaví, zda jsou sledovány příkazy nástroje | zapnuté | vypnutý |
@@ -95,7 +95,7 @@ Tyto možnosti platí konkrétně pro počkejte statistiky.
 
 | **Parametr** | **Popis** | **Výchozí** | **rozsah**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Sady, které příkazy jsou sledována pro čekání statistiky. | žádný | NONE, vše|
+| pgms_wait_sampling.query_capture_mode | Sady, které příkazy jsou sledována pro čekání statistiky. | None | NONE, vše|
 | Pgms_wait_sampling.history_period | Nastavte četnost, v milisekundách, na které čekání jsou odebírána data události. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -115,20 +115,20 @@ Toto zobrazení vrátí všechna data v dotazu Store. Existuje jeden řádek pro
 |**Název**   |**Typ** | **Odkazy**  | **Popis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID z tabulky runtime_stats_entries|
-|user_id    |identifikátor objektu    |pg_authid.oid  |Identifikátor objektu uživatele, který je proveden příkaz|
-|db_id  |identifikátor objektu    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
+|user_id    |oid    |pg_authid.oid  |Identifikátor objektu uživatele, který je proveden příkaz|
+|db_id  |oid    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
 |query_id   |bigint  || Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
 |query_sql_text |Varchar(10000)  || Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
 |hodnotou plan_id    |bigint |   |ID plánu ještě odpovídající tento dotaz není k dispozici|
-|start_time |časové razítko  ||  Dotazy jsou agregované podle časovým intervalům - časový rozsah interval je 15 minut, ve výchozím nastavení. Toto je počáteční čas odpovídající časovém intervalu pro tuto položku.|
-|end_time   |časové razítko  ||  Koncový čas odpovídající časovém intervalu pro tuto položku.|
+|start_time |timestamp  ||  Dotazy jsou agregované podle časovým intervalům - časový rozsah interval je 15 minut, ve výchozím nastavení. Toto je počáteční čas odpovídající časovém intervalu pro tuto položku.|
+|end_time   |timestamp  ||  Koncový čas odpovídající časovém intervalu pro tuto položku.|
 |volání  |bigint  || Počet, kolikrát dotaz proveden|
 |TOTAL_TIME |dvojitou přesností   ||  Celkový počet dotazů doby spuštění, v milisekundách|
 |min_time   |dvojitou přesností   ||  Doba spuštění minimální dotazu v milisekundách|
 |max_time   |dvojitou přesností   ||  Doba provádění maximální dotazu v milisekundách|
 |mean_time  |dvojitou přesností   ||  Střední čas spuštění dotazu, v milisekundách|
 |stddev_time|   dvojitou přesností    ||  Směrodatná odchylka doby provádění dotazu, v milisekundách |
-|řádky   |bigint ||  Celkový počet řádků načíst vliv na jeden nebo příkaz|
+|Řádky   |bigint ||  Celkový počet řádků načíst vliv na jeden nebo příkaz|
 |shared_blks_hit|   bigint  ||  Celkový počet přístupů k mezipaměti bloku sdíleného příkazem|
 |shared_blks_read|  bigint  ||  Celkový počet sdílených bloků čtení příkazem|
 |shared_blks_dirtied|   bigint   || Celkový počet změněných příkazem sdílené bloků |
@@ -155,15 +155,15 @@ Toto zobrazení, že se vrátí čekání dat události v Query Store. Existuje 
 
 |**Název**|  **Typ**|   **Odkazy**| **Popis**|
 |---|---|---|---|
-|user_id    |identifikátor objektu    |pg_authid.oid  |Identifikátor objektu uživatele, který je proveden příkaz|
-|db_id  |identifikátor objektu    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
+|user_id    |oid    |pg_authid.oid  |Identifikátor objektu uživatele, který je proveden příkaz|
+|db_id  |oid    |pg_database.oid    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
 |query_id   |bigint     ||Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
 |event_type |text       ||Typ události, pro které čeká na back-endu|
 |událost  |text       ||Název události čekání, pokud aktuálně čekají na back-endu|
 |volání  |Integer        ||Počet stejnou událost zachycena|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 Query_store.qs_reset() returns void
 
 `qs_reset` zahodí všechny statistiky zatím shromážděné Query Store. Tato funkce může provádět jenom role správce serveru.

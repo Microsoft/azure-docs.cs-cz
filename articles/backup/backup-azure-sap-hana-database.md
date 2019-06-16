@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
 ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237804"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Zálohovat databázi SAP HANA
@@ -40,7 +40,7 @@ ms.locfileid: "65237804"
 - Můžete zálohovat databázi protokolů každých 15 minut. Zálohy protokolů pouze začít tok po dokončení úspěšného úplné zálohy databáze.
 - Můžete provést úplné a rozdílové zálohy. Přírůstkové zálohování se momentálně nepodporuje.
 - Zásady zálohování nelze změnit po použití zálohování SAP HANA. Pokud chcete zálohování s různými nastaveními, vytvořte novou zásadu nebo přiřazení různých zásad. 
-    - Chcete-li vytvořit novou zásadu, v trezoru klikněte na tlačítko **zásady** > **zásady zálohování** > **+ přidat** > **SAP HANA v Virtuální počítač Azure**a zadejte nastavení zásad.
+    - Chcete-li vytvořit novou zásadu, v trezoru klikněte na tlačítko **zásady** > **zásady zálohování** >  **+ přidat** > **SAP HANA v Virtuální počítač Azure**a zadejte nastavení zásad.
     - Pro přiřazení různých zásad ve vlastnostech virtuálního počítače s databází, klikněte na název aktuální zásady. Pak na **zásady zálohování** stránky můžete vybrat jinou zásadu pro zálohování.
 
 

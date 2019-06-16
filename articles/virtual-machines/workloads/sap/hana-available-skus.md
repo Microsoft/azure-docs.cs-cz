@@ -15,10 +15,10 @@ ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60794027"
 ---
 # <a name="available-skus-for-hli"></a>Dostupné skladové položky pro HLI
@@ -31,16 +31,16 @@ SAP HANA v Azure (velké instance) služba je k dispozici v několika konfigurac
 | --- | --- | --- | --- | --- |
 | Optimalizováno pro OLAP: SAP BW, BW/4HANA<br /> nebo SAP HANA pro obecné úlohy OLAP | SAP HANA v Azure S72<br /> – 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 Procesorových jader a 72 vlákna CPU |  768 GB |  3 TB | Nenabízí se už |
 | --- | SAP HANA v Azure S144<br /> – 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 jader procesoru a 144 vlákna CPU |  1,5 TB |  6 TB | Nenabízí se už |
-| --- | SAP HANA v Azure S192<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  2.0 TB |  8 TB | K dispozici. |
-| --- | SAP HANA v Azure S384<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  4.0 TB |  16 TB | K dispozici. |
+| --- | SAP HANA v Azure S192<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  2.0 TB |  8 TB | K dispozici |
+| --- | SAP HANA v Azure S384<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  4.0 TB |  16 TB | K dispozici |
 | Optimalizováno pro OLTP: SAP Business Suite<br /> v SAP HANA nebo S/4HANA (OLTP)<br /> Obecné OLTP | SAP HANA v Azure S72m<br /> – 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 Procesorových jader a 72 vlákna CPU |  1,5 TB |  6 TB | Nenabízí se už |
 |---| SAP HANA v Azure S144m<br /> – 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 jader procesoru a 144 vlákna CPU |  3.0 TB |  12 TB | Nenabízí se už |
-|---| SAP HANA v Azure S192m<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU  |  4.0 TB |  16 TB | K dispozici. |
-|---| SAP HANA v Azure S384m<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  6.0 TB |  18 TB | K dispozici. |
-|---| SAP HANA v Azure S384xm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  8.0 TB |  22 TB |  K dispozici. |
-|---| SAP HANA v Azure S576m<br /> – 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 Procesorových jader a 576 vlákna CPU |  12.0 TB |  28 TB | K dispozici. |
-|---| SAP HANA v Azure S768m<br /> až 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 Procesorových jader a 768 vlákna CPU |  16.0 TB |  36 TB | K dispozici. |
-|---| SAP HANA v Azure S960m<br /> – 20 x procesor Intel® Xeon® E7-8890 v4<br /> 480 Procesorových jader a 960 vlákna CPU |  20.0 TB |  46 TB | K dispozici. |
+|---| SAP HANA v Azure S192m<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU  |  4.0 TB |  16 TB | K dispozici |
+|---| SAP HANA v Azure S384m<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  6.0 TB |  18 TB | K dispozici |
+|---| SAP HANA v Azure S384xm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  8.0 TB |  22 TB |  K dispozici |
+|---| SAP HANA v Azure S576m<br /> – 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 Procesorových jader a 576 vlákna CPU |  12.0 TB |  28 TB | K dispozici |
+|---| SAP HANA v Azure S768m<br /> až 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 Procesorových jader a 768 vlákna CPU |  16.0 TB |  36 TB | K dispozici |
+|---| SAP HANA v Azure S960m<br /> – 20 x procesor Intel® Xeon® E7-8890 v4<br /> 480 Procesorových jader a 960 vlákna CPU |  20.0 TB |  46 TB | K dispozici |
 
 
 V části TDIv5 SAP HANA SAP umožňuje zákaznického velikosti a zákaznické projekty, které by mohly vést k konfigurace serveru, které nejsou uvedeny jako certifikuje:
@@ -52,15 +52,15 @@ V mnoha případech tyto konfigurace specifické pro zákazníka server provád�
 
 | Skladová jednotka (SKU)|Procesor | Memory (Paměť) | Úložiště | Dostupnost |
 | ---| --- | --- | --- | --- |
-| S96 | SAP HANA v Azure S96<br /> – 2 x procesor Intel® Xeon® E7-8890 v4<br /> 48 Procesorových jader a 96 vlákna CPU |  768 GB |  3 TB | K dispozici. |
+| S96 | SAP HANA v Azure S96<br /> – 2 x procesor Intel® Xeon® E7-8890 v4<br /> 48 Procesorových jader a 96 vlákna CPU |  768 GB |  3 TB | K dispozici |
 
 
 | Původní skladovou Položku, kterou může být <br /> Rozšířené v paměti | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
 | --- | --- | --- | --- | --- |
-| S192m je možné rozšířit na | SAP HANA v Azure S192xm<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  6.0 TB |  16 TB | K dispozici. |
-| S384xm je možné rozšířit na | SAP HANA v Azure S384xxm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  12.0 TB |  28 TB | K dispozici. |
-| S576m je možné rozšířit na | SAP HANA v Azure S576xm<br /> – 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 Procesorových jader a 576 vlákna CPU |  18.0 TB |  41 TB | K dispozici. |
-| S768m je možné rozšířit na | SAP HANA v Azure S768xm<br /> až 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 Procesorových jader a 768 vlákna CPU |  24,0 TB |  56 TB | K dispozici. |
+| S192m je možné rozšířit na | SAP HANA v Azure S192xm<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  6.0 TB |  16 TB | K dispozici |
+| S384xm je možné rozšířit na | SAP HANA v Azure S384xxm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  12.0 TB |  28 TB | K dispozici |
+| S576m je možné rozšířit na | SAP HANA v Azure S576xm<br /> – 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 Procesorových jader a 576 vlákna CPU |  18.0 TB |  41 TB | K dispozici |
+| S768m je možné rozšířit na | SAP HANA v Azure S768xm<br /> až 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 Procesorových jader a 768 vlákna CPU |  24,0 TB |  56 TB | K dispozici |
 
 - Jádra procesoru = SUMA bez hyper-threaded Procesorových jader součtu procesory jednotky serverů.
 - Vlákna CPU = SUMA výpočetní vláken poskytuje hyper-threaded Procesorových jader součtu procesory jednotky serverů. Většina jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
@@ -90,5 +90,5 @@ Existují významné rozdíly mezi službou SAP HANA na velká Instance HANA a S
 - Na rozdíl od Azure SAP HANA v Azure (velké instance) server je vyhrazen pro konkrétního zákazníka. Není možné, že jednotka serveru nebo hostitele je pevně nebo obnovitelné dělit na oddíly. V důsledku toho jednotka velká Instance HANA se používá jako přiřazená jako celek na tenanta a s ním pro vás. Restartování nebo vypnutí serveru nebude automaticky vést k operačního systému a SAP HANA se nasazuje na jiný server. (Pro typ můžu třídy SKU, jedinou výjimkou je, pokud server zaznamená problémy a opětovné nasazení je třeba provést na jiném serveru.)
 - Na rozdíl od Azure, kde typy procesoru hostitele jsou vybrány pro nejlepší poměr cena/výkon, jsou tyto typy procesoru, zvolená pro SAP HANA v Azure (velké instance), nejvyšší provádění řádku procesor Intel E7v3 a E7v4.
 
-**Další kroky**
+**Další postup**
 - Přečtěte si [HLI velikosti](hana-sizing.md)

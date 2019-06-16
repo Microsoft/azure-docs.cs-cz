@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66125220"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>Přenos místních souborů do služby Cloud Shell
@@ -21,7 +21,7 @@ ms.locfileid: "66125220"
 2. Vyberte cílový soubor.
 3. Vyberte **Stáhnout** tlačítko.
 
-### <a name="upload-files"></a>Nahrát soubory
+### <a name="upload-files"></a>Nahrání souborů
 
 ![Místní soubory k odeslání](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. Přejdete na připojené sdílené složky.

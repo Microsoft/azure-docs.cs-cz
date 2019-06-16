@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935522"
 ---
 <a name="create-or-modify-an-offer"></a>Vytvořit nebo upravit nabídku
@@ -29,15 +29,15 @@ Toto volání aktualizuje konkrétní nabídky v rámci oboru názvů vydavatele
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  Identifikátor vydavatel, například `contoso` |   String |
 | offerId           |  Identifikátor nabídky                     |   String        |
-| verze API-version       |  Nejnovější verzi rozhraní API            |   Datum           |
+| api-version       |  Nejnovější verzi rozhraní API            |   Datum           |
 |  |  |  |
 
-<a name="header"></a>Hlavička
+<a name="header"></a>Záhlaví
 ------
 
 |  **Název**        |  **Hodnota**               |
 |  ---------       |  ----------              | 
-| Typ obsahu     | `application/json`       |
+| Content-Type     | `application/json`       |
 | Autorizace    | `Bearer YOUR_TOKEN`      |
 |  |  |
 

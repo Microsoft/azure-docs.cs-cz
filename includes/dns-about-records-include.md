@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160937"
 ---
 ### <a name="record-names"></a>Názvy záznamů
 
 V Azure DNS se záznamy zadávají pomocí relativních názvů. „Plně kvalifikovaný“ *název* domény (FQDN) obsahuje název zóny, zatímco „relativní“ název ho *neobsahuje.* Například relativní název záznamu „www“ v zóně „contoso.com“ dává plně kvalifikovaný název záznamu www.contoso.com.
 
-Záznam *„vrcholu“* je záznam DNS v kořeni (nebo *„vrcholu“*) zóny DNS. Například v zóně DNS nazvané „contoso.com“ má název vrcholu také plně kvalifikovaný název „contoso.com“ (někdy se označuje jako *základní* doména).  Podle konvence, relativní název '\@' slouží k vyjádření záznamů vrcholu.
+Záznam *„vrcholu“* je záznam DNS v kořeni (nebo *„vrcholu“* ) zóny DNS. Například v zóně DNS nazvané „contoso.com“ má název vrcholu také plně kvalifikovaný název „contoso.com“ (někdy se označuje jako *základní* doména).  Podle konvence, relativní název '\@' slouží k vyjádření záznamů vrcholu.
 
 ### <a name="record-types"></a>Typy záznamů
 

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952566"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Spravovat ověřování ve službě Azure Maps
@@ -34,7 +34,7 @@ Po vytvoření účtu Azure Maps, budete muset vytvořit propojení mezi vaším
 
 1. Přejděte do okna Azure AD a vytvořit registrace aplikace. Zadejte název pro registraci. V **přihlašovací adresa URL** zadejte Domovská stránka webové aplikace a rozhraní API (například https:\//localhost/). Pokud už máte registrovaná aplikace, přejděte ke kroku 2.
 
-    ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
+    ![Registrace aplikací](./media/how-to-manage-authentication/app-registration.png)
 
     ![Podrobnosti registrace aplikace](./media/how-to-manage-authentication/app-create.png)
 
@@ -65,9 +65,9 @@ Poté, co přidružíte účet Azure Maps v tenantu Azure AD, můžete udělit �
 
     ![Udělení RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. V **přidat přiřazení role** okně v části **Role**vyberte **Azure Maps data Reader (Preview)**. V části **přiřadit přístup k**vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**. V části **vyberte**, vyberte uživatele nebo aplikace. Vyberte **Uložit**.
+2. V **přidat přiřazení role** okně v části **Role**vyberte **Azure Maps data Reader (Preview)** . V části **přiřadit přístup k**vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**. V části **vyberte**, vyberte uživatele nebo aplikace. Vyberte **Uložit**.
 
-    ![Přidat přiřazení role](./media/how-to-manage-authentication/add-role-assignment.png)
+    ![Přidání přiřazení role](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Zobrazit dostupné role Azure RBAC mapy
 

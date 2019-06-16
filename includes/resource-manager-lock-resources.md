@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tomfitz
 ms.openlocfilehash: 03e4053b65cf39101e8cb5d35ce439a759ec11d6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129039"
 ---
 1. V okně Nastavení prostředku, skupiny prostředků nebo předplatného, které chcete zamknout, vyberte **uzamkne**.

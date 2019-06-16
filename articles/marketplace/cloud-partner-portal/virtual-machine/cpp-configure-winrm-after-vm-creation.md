@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
 ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938518"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurace WinRM po vytvoření virtuálního počítače
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak nakonfigurovat existující hostované v Azure v
 
 Služba WinRM přes protokol HTTPS používá port 5896, které není povoleno ve výchozím nastavení na předem nakonfigurovaných virtuálních počítačů Windows, které nabízíme na webu Azure Marketplace. Pokud chcete povolit tento protokol, následujícím postupem přidáte nové pravidlo na skupinu zabezpečení sítě (NSG) s [webu Azure portal](https://portal.azure.com).  Další informace o skupinách Nsg najdete v tématu [skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  Přejděte do okna **virtuální počítače >**  <*název virtuálního počítače*>  **> Nastavení/síť**.
+1.  Přejděte do okna **virtuální počítače >**   <*název virtuálního počítače*>   **> Nastavení/síť**.
 2.  Klikněte na název skupiny zabezpečení sítě (v tomto příkladu **testvm11002**) zobrazíte jeho vlastnosti:
 
     ![Vlastnosti skupiny zabezpečení sítě](./media/nsg-properties.png)

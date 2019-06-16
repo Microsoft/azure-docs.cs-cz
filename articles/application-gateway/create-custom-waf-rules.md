@@ -8,10 +8,10 @@ ms.service: application-gateway
 ms.date: 6/5/2019
 ms.author: victorh
 ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66689028"
 ---
 # <a name="create-and-use-web-application-firewall-custom-rules"></a>Vytvoření a používání vlastních pravidel brány Firewall webových aplikací

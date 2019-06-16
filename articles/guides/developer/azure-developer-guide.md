@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
 ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64570567"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
@@ -158,7 +158,7 @@ Azure poskytuje několik způsobů, jak používat kontejnery ve svých aplikac�
 
 Je nezbytné pouze vědět, kdo používá vaše aplikace, ale také zabránit neoprávněnému přístupu k vašim prostředkům. Azure poskytuje několik způsobů, jak ověřovat klienty aplikace.
 
-- **Azure Active Directory (Azure AD)**: Microsoft víceklientské, cloudových identit a přístupu management service. Jednotného přihlašování (SSO) můžete přidat do vašich aplikací díky integraci s Azure AD. Vlastnosti adresáře můžete přistupovat pomocí Azure AD Graph API přímo nebo pomocí rozhraní Microsoft Graph API. Podpora služby Azure AD pro rozhraní framework autorizace OAuth 2.0 a Open ID Connect můžete integrovat s využitím nativní koncové body HTTP/REST a knihovny ověřování multiplatformní Azure AD.
+- **Azure Active Directory (Azure AD)** : Microsoft víceklientské, cloudových identit a přístupu management service. Jednotného přihlašování (SSO) můžete přidat do vašich aplikací díky integraci s Azure AD. Vlastnosti adresáře můžete přistupovat pomocí Azure AD Graph API přímo nebo pomocí rozhraní Microsoft Graph API. Podpora služby Azure AD pro rozhraní framework autorizace OAuth 2.0 a Open ID Connect můžete integrovat s využitím nativní koncové body HTTP/REST a knihovny ověřování multiplatformní Azure AD.
 
   > **Kdy použít**: Pokud chcete poskytnout Jednotným přihlašováním, pracovat s daty grafické nebo ověřování založené na doméně uživatelů.
   > 
@@ -229,7 +229,7 @@ Na webu Azure portal je webová aplikace, který vám pomůže vytvořit, spravo
 
 Azure je postavený na sadu rozhraní REST API, která podporuje uživatelské rozhraní portálu Azure. Většina těchto rozhraní REST API jsou podporovány také umožňuje programově zřizovat a spravovat vaše prostředky Azure a aplikace z jakéhokoli zařízení využívajících Internet. Kompletní sada dokumentace k rozhraní REST API najdete v článku [reference k sadě Azure REST SDK](https://docs.microsoft.com/rest/api/).
 
-### <a name="apis"></a>Rozhraní API
+### <a name="apis"></a>API
 
 Kromě rozhraní REST API pro řadou služeb Azure vám také umožní prostřednictvím kódu programu spravovat prostředky z vašich aplikací pomocí sady SDK Azure specifické pro platformu, včetně sad SDK pro vývoj s následujícími platformami:
 
@@ -281,7 +281,7 @@ V Průzkumníku prostředků Azure je skvělý nástroj pro vizualizaci prostře
 
 Když povolíte přístup k prostředkům Azure, je vždy vhodné zajistit uživatele s nejnižšími oprávněními, který je potřeba provést danou úlohu.
 
-- **Řízení přístupu na základě role (RBAC)**: V Azure, můžete udělit přístup k uživatelským účtům (objekty zabezpečení) v zadaném oboru: předplatné, skupinu prostředků nebo jednotlivé prostředky. RBAC umožňuje nasadit sadu prostředků do skupiny prostředků a udělení oprávnění pro konkrétního uživatele nebo skupiny. Umožňuje taky omezit přístup k prostředkům, které patří k cílové skupině prostředků. Můžete také udělit přístup na jeden prostředek, jako je například virtuální počítač nebo virtuální sítě. Pokud chcete udělit přístup, přiřadíte roli pro uživatele, skupinu nebo instanční objekt. Existuje mnoho předdefinovaných rolí, a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě rolí (RBAC)?](../../role-based-access-control/overview.md).
+- **Řízení přístupu na základě role (RBAC)** : V Azure, můžete udělit přístup k uživatelským účtům (objekty zabezpečení) v zadaném oboru: předplatné, skupinu prostředků nebo jednotlivé prostředky. RBAC umožňuje nasadit sadu prostředků do skupiny prostředků a udělení oprávnění pro konkrétního uživatele nebo skupiny. Umožňuje taky omezit přístup k prostředkům, které patří k cílové skupině prostředků. Můžete také udělit přístup na jeden prostředek, jako je například virtuální počítač nebo virtuální sítě. Pokud chcete udělit přístup, přiřadíte roli pro uživatele, skupinu nebo instanční objekt. Existuje mnoho předdefinovaných rolí, a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě rolí (RBAC)?](../../role-based-access-control/overview.md).
 
   > **Kdy použít**: Když potřebujete propracovanou správu přístupu pro uživatele a skupiny, nebo když budete chtít nastavit uživatele jako vlastníka předplatného.
   > 
@@ -291,7 +291,7 @@ Když povolíte přístup k prostředkům Azure, je vždy vhodné zajistit uživ
 
   > **Kdy použít**: Když už prostřednictvím kódu programu správu prostředků Azure nebo udělení přístupu pro aplikace. Další informace najdete v tématu [vytvoření aplikace Active Directory a instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-#### <a name="tags"></a>Značky
+#### <a name="tags"></a>Tags
 
 Azure Resource Manager vám umožňuje přiřazení vlastních značek k jednotlivé prostředky. Značky, které jsou páry klíč hodnota, může být užitečné, když potřebujete uspořádat prostředky pro fakturaci nebo monitorování. Značky poskytují způsob, jak sledovat prostředky v rámci více skupin prostředků. Můžete přiřadit značky na portálu pro šablonu Azure Resource Manageru, nebo prostřednictvím kódu programu, pomocí rozhraní REST API, rozhraní příkazového řádku Azure nebo Powershellu. Jednotlivé prostředky můžete přiřadit více značek. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../../resource-group-using-tags.md).
 

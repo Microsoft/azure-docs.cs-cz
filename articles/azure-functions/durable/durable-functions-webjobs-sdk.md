@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 39a757900b4307d702a0ce0ce1c20694418aa8dd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872823"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
@@ -53,9 +53,9 @@ Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs (ekv
 
 Spustit Durable Functions jako WebJobs, musíte nejprve vytvořit konzolovou aplikaci. Sada WebJobs SDK projektu je právě projekt konzolové aplikace s odpovídající nainstalované balíčky NuGet.
 
-V sadě Visual Studio **nový projekt** dialogu **klasická plocha Windows** > **Konzolová aplikace (.NET Framework)**. V souboru projektu `TargetFrameworkVersion` by měl být `v4.6.1`.
+V sadě Visual Studio **nový projekt** dialogu **klasická plocha Windows** > **Konzolová aplikace (.NET Framework)** . V souboru projektu `TargetFrameworkVersion` by měl být `v4.6.1`.
 
-Visual Studio také poskytuje šablony projektu úlohy WebJob, který můžete použít tak, že vyberete **cloudu** > **webová úloha Azure (.NET Framework)**. Tato šablona nainstaluje počtem balíčků, z nichž některé pravděpodobně nebudete potřebovat.
+Visual Studio také poskytuje šablony projektu úlohy WebJob, který můžete použít tak, že vyberete **cloudu** > **webová úloha Azure (.NET Framework)** . Tato šablona nainstaluje počtem balíčků, z nichž některé pravděpodobně nebudete potřebovat.
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
@@ -222,7 +222,7 @@ Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs. Pok
 
 Hlavní změny zavedené je použití .NET Core namísto rozhraní .NET Framework. Vytvoření projektu 3.x sada WebJobs SDK, pokyny jsou stejné, s následujícími výjimkami:
 
-1. Vytvoření konzolové aplikace .NET Core. V sadě Visual Studio **nový projekt** dialogu **.NET Core** > **Konzolová aplikace (.NET Core)**. Soubor projektu určuje, že `TargetFramework` je `netcoreapp2.x`.
+1. Vytvoření konzolové aplikace .NET Core. V sadě Visual Studio **nový projekt** dialogu **.NET Core** > **Konzolová aplikace (.NET Core)** . Soubor projektu určuje, že `TargetFramework` je `netcoreapp2.x`.
 
 1. Vyberte verzi sady SDK pro WebJobs 3.x následujících balíčků:
 

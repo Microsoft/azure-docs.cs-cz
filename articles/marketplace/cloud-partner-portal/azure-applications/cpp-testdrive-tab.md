@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
 ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942872"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Karta testovací verze aplikace Azure
@@ -57,7 +57,7 @@ Následující tabulka popisuje pole k nastavení testů jednotky pro spravovan�
 |  ---------------   |  ---------------  |
 | **Popis\***  |  Popište, co se dá dělat na vaše testovací verze. Základní značky HTML můžete použít k formátování tento popis. Například &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;a záhlaví.                |
 | **Uživatelská příručka\***  |  Nahrajte uživatelská příručka pro vaši zákazníci můžou použít pro vás provedl možnostmi, testovací verze. Tento dokument musí být soubor PDF.    |
-| **Test jednotky – ukázkové Video** |  Volitelné video návod vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Název</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
+| **Test jednotky – ukázkové Video** |  Volitelné video návod vaše testovací verze. Zákazník může sledovat toto video předtím, než si testovací jízdu. Zadejte URL adresu videa na YouTube nebo Vimeo. Pokud vyberete **+ přidat Video**, budete vyzváni k zadání následujících informací:<ul><li>Name</li><li>zprostředkovatele identity</li><li>Miniatura (ve formátu PNG, 533 x 324 pixelů)</li></ul>  |
 | **Instance\***      | Kolik instancí, které chcete nakonfigurovat, v jaké oblasti a jak rychle vaši zákazníci mohou získat testovací verze. Další informace najdete v tématu [publikování si testovací jízdu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
 | **Jednotka doba trvání testu (hodiny)\*** | Zadejte celé číslo pro počet hodin. Povolený rozsah je od 1 do 999. |
 | **Šablona ARM testu jednotky\***     | Nahrání komprimovaný soubor (ZIP), který má své šablony Azure Resource Manageru pro vaši aplikaci. Další informace najdete v tématu [Azure Resource Manageru Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |

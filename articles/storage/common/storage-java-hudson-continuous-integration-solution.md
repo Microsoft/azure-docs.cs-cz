@@ -10,10 +10,10 @@ ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154343"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
@@ -111,7 +111,7 @@ Pro účely instrukce nejprve potřebujeme vytvořit úlohu, která vytvoří n�
 8. Klikněte na tlačítko **zveřejnit nový kontejner ve výchozím nastavení** pro účely tohoto příkladu. (Pokud chcete použít kontejner privátní, bude potřeba vytvořit sdílený přístupový podpis pro povolení přístupu. To je nad rámec tohoto článku. Další informace o sdílených přístupových podpisů v [použití sdílených přístupových podpisů (SAS)](../storage-dotnet-shared-access-signature-part-1.md).)
 9. [Volitelné] Klikněte na tlačítko **čisté kontejneru před nahráním** Pokud chcete, aby kontejneru vymazání obsahu předtím, než se nahrají artefakty sestavení (políčko nechte nezaškrtnuté Pokud nechcete vyčistit obsah kontejneru).
 10. Pro **seznamu artefaktů k odeslání**, zadejte **text/*.txt**.
-11. Pro **běžné virtuální cestu pro nahrané artefakty**, zadejte **${sestavení\_ID} a$ {sestavení\_číslo}**.
+11. Pro **běžné virtuální cestu pro nahrané artefakty**, zadejte **${sestavení\_ID} a$ {sestavení\_číslo}** .
 12. Klikněte na tlačítko **Uložit** uložte nastavení.
 13. Na řídicím panelu Hudson, klikněte na tlačítko **Build Now** spuštění **MyJob**. Prohlédněte si výstup konzoly stav. Stavové zprávy pro službu Azure Storage se zahrnou výstup konzoly při spuštění akce po sestavení k odeslání artefaktů sestavení.
 14. Po úspěšném dokončení úlohy můžete zkontrolovat artefakty sestavení tak, že otevřete veřejných objektů blob.
@@ -134,7 +134,7 @@ Následující kroky ukazují, jak nakonfigurovat krok sestavení ke stažení p
 1. V **sestavení** část konfigurace úlohy můžete kliknout na tlačítko **přidat krok sestavení** a zvolte **stáhnout z úložiště objektů Blob v Azure**.
 2. Pro **název účtu úložiště**, vyberte účet úložiště.
 3. Pro **název kontejneru**, zadejte název kontejneru, který obsahuje objekty BLOB, kterou chcete stáhnout. Můžete použít proměnné prostředí.
-4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\\*** vyberete všechny objekty BLOB, jejichž jména začínají **projektu**.
+4. Pro **název objektu Blob**, zadejte název objektu blob. Můžete použít proměnné prostředí. Navíc můžete použít hvězdičku, jako zástupný znak po zadání počátečního písmena názvu objektu blob. Například **projektu\\** * vyberete všechny objekty BLOB, jejichž jména začínají **projektu**.
 5. [Volitelné] Pro **cestu pro stažení**, zadejte cestu na počítači Hudson, kam chcete soubory stáhnout z úložiště objektů Blob v Azure. Můžete také použít proměnné prostředí. (Pokud nezadáte hodnotu **cestu pro stažení**, stáhnou se soubory z úložiště objektů Blob v Azure do pracovního prostoru úlohy.)
 
 Pokud máte další položky, které chcete stáhnout z úložiště objektů Blob v Azure, můžete vytvořit další kroky sestavení.
@@ -153,7 +153,7 @@ Následující body nabízí přehled komponent služby objektů Blob.
   
     (Formát výše uvedené platí do veřejného cloudu Azure. Pokud používáte jiný cloud Azure, použijte koncový bod v rámci [webu Azure Portal](https://portal.azure.com) určit váš koncový bod adresy URL.)
   
-    Ve výše uvedené, formátu `storageaccount` představuje název účtu úložiště `container_name` představuje název vašeho kontejneru a `blob_name` představuje název objektu blob služby v uvedeném pořadí. V rámci název kontejneru může mít několik cest oddělených lomítkem, **/**. Název kontejneru příklad v tomto kurzu byla **MyJob**, a **${sestavení\_ID} / ${sestavení\_číslo}** byl použit pro běžné virtuální cestu, což vede k nutnosti adresu URL objektu blob následující tvar:
+    Ve výše uvedené, formátu `storageaccount` představuje název účtu úložiště `container_name` představuje název vašeho kontejneru a `blob_name` představuje název objektu blob služby v uvedeném pořadí. V rámci název kontejneru může mít několik cest oddělených lomítkem, **/** . Název kontejneru příklad v tomto kurzu byla **MyJob**, a **${sestavení\_ID} / ${sestavení\_číslo}** byl použit pro běžné virtuální cestu, což vede k nutnosti adresu URL objektu blob následující tvar:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 

@@ -15,10 +15,10 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924652"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure classic
@@ -38,7 +38,7 @@ Tento článek popisuje postup přidání nebo změna role spolupracujícího sp
 
     Spolusprávci můžete přiřadit jenom v oboru předplatného.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
 1. Klikněte na tlačítko **klasického správce** kartu.
 
@@ -71,7 +71,7 @@ Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-a
 
 1. Otevřít [předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) a vyberte předplatné.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** .
 
 1. Klikněte na tlačítko **klasického správce** kartu.
 
@@ -87,7 +87,7 @@ Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-a
 
 Pouze správce účtu může změnit správce služeb pro předplatné. Ve výchozím nastavení při registraci předplatného Azure, Správce služeb je stejný jako účet správce. Uživatel s rolí správce účet nemá přístup k webu Azure portal. Uživatel s rolí Správce služeb má úplný přístup k webu Azure portal. Pokud účet správce a Správce služby se stejným uživatelem a změnit správce služeb na jiného uživatele, správce účtu ztratí přístup k webu Azure portal. Však správce účtu můžete vždy použít centra pro účty změnit správce služeb samy na sebe.
 
-Existují dva způsoby, jak změním Správce služeb. Můžete změnit v **webu Azure portal** nebo **centra pro účty**.
+Správce služeb je možné změnit dvěma způsoby. Můžete změnit v **webu Azure portal** nebo **centra pro účty**.
 
 ### <a name="azure-portal"></a>portál Azure
 

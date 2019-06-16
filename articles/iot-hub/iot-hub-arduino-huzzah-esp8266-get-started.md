@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: 00d0e3a749c4af8faacfed5f725ce16e0492c399
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409083"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Sada Adafruit Feather HUZZAH ESP8266 připojit ke službě Azure IoT Hub v cloudu
@@ -186,7 +186,7 @@ Ukázkové aplikace jsou hostované na Githubu. Naklonujte ukázkové úložišt
 
 13. Zadejte `F1`, zadejte **Arduino** a vyberte **Arduino: Board Config**.
 
-14. Klikněte na pole pro **panelu vybrali:** a typ **esp8266**a pak vyberte **sada Adafruit HUZZAH ESP8266 (esp8266)**.
+14. Klikněte na pole pro **panelu vybrali:** a typ **esp8266**a pak vyberte **sada Adafruit HUZZAH ESP8266 (esp8266)** .
 
     ![Vybrat esp8266 panel](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
@@ -224,7 +224,7 @@ Ukázkové aplikace můžete simulovat teploty a vlhkosti dat v případě, že 
 
 2. Zadejte `F1`, zadejte **Arduino** a vyberte **Arduino: Nahrát** k sestavení a nasazení ukázkové aplikace pro Feather HUZZAH ESP8266.
 
-### <a name="enter-your-credentials"></a>Zadejte přihlašovací údaje.
+### <a name="enter-your-credentials"></a>Zadejte svoje přihlašovací údaje
 
 Po úspěšném dokončení nahrávání, zadejte svoje přihlašovací údaje pomocí těchto kroků:
 

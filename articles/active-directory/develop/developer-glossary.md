@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235359"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Glosář pro vývojáře platforma identit Microsoft
@@ -54,7 +54,7 @@ Když jste register nebo aktualizovat aplikace v [webu Azure portal][AZURE-porta
 
 Další informace najdete v tématu [aplikační a instanční objekty][AAD-App-SP-Objects].
 
-## <a name="application-registration"></a>Registrace aplikace
+## <a name="application-registration"></a>registrace aplikací
 
 Aby bylo možné povolit aplikace a integrovat delegovat funkce správy identit a přístupu ke službě Azure AD, je nutné jej zaregistrovat s Azure AD [tenanta](#tenant). Při registraci vaší aplikace s Azure AD poskytujete konfigurace identity pro vaši aplikaci, což umožňuje integraci s Azure AD a pomocí funkcí, jako:
 
@@ -64,11 +64,11 @@ Aby bylo možné povolit aplikace a integrovat delegovat funkce správy identit 
 
 Zobrazit [integrace aplikací s Azure Active Directory] [ AAD-Integrating-Apps] další podrobnosti.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>ověřování
 
 Operace náročné stranu pro legitimních přihlašovacích údajů, poskytují základ pro vytvoření objektu zabezpečení pro řízení přístupu a identit. Během [udělení autorizace OAuth2](#authorization-grant) stran ověřování je třeba vyplnění roli buď [vlastníka prostředku](#resource-owner) nebo [klientská aplikace](#client-application), v závislosti na udělení použít.
 
-## <a name="authorization"></a>Autorizace
+## <a name="authorization"></a>authorization
 
 V rámci udělení oprávnění objektu zabezpečení v ověření zabezpečení něco udělat. V modelu programování Azure AD existují dva hlavní případy použití:
 
@@ -156,7 +156,7 @@ Server prostředků zpřístupňuje rozhraní API a vynucuje přístup k jeho ch
 
 Stejně jako klientská aplikace pokládáme stav konfigurace identity aplikace prostředků prostřednictvím [registrace](#application-registration) v tenantovi Azure AD, zadejte do něj aplikaci a instanční objekt. Některá poskytovaný společností Microsoft rozhraní API, jako je například Azure AD Graph API, jste se zaregistrovali před instančních objektů k dispozici ve všech tenantech během zřizování.
 
-## <a name="roles"></a>role
+## <a name="roles"></a>roles
 
 Stejně jako [obory](#scopes), role poskytují způsob, jak [server prostředků](#resource-server) řízení přístupu na chráněné prostředky. Existují dva typy: "user" role implementuje řízení přístupu na základě rolí pro uživatele nebo skupiny, které vyžadují přístup k prostředku, zatímco roli "aplikace" implementuje stejné pro [klientské aplikace](#client-application) , které vyžadují přístup.
 

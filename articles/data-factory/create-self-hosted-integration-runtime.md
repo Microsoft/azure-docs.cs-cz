@@ -12,10 +12,10 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 90e43ab0448646650067dbf151702132f434c01e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967961"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
@@ -126,11 +126,11 @@ Po instalaci softwaru místní prostředí integration runtime z můžete přidr
 
 ### <a name="scale-considerations"></a>Důležité informace o škálování
 
-#### <a name="scale-out"></a>Horizontálně navýšit kapacitu
+#### <a name="scale-out"></a>Horizontální navýšení kapacity
 
 Když je málo dostupné paměti na místní prostředí IR a využití CPU je vysoké, přidání nového uzlu pomáhá horizontální navýšení kapacity zatížení napříč počítači. Pokud aktivity selhávají, protože jste vypršení časového limitu nebo protože uzel v místním prostředí IR je offline, pomůže, pokud chcete přidat uzel do brány.
 
-#### <a name="scale-up"></a>Škálovat nahoru
+#### <a name="scale-up"></a>Vertikální navýšení kapacity
 
 Pokud nejsou dostupné paměti a procesoru využívá dobře, ale spuštění souběžných úloh se blíží limitu, by měla vertikálně navýšit kapacitu zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu, když aktivity jsou vypršení časového limitu, protože místní prostředí IR je přetížena. Jak je znázorněno na následujícím obrázku, můžete zvýšit maximální kapacita pro uzel:  
 

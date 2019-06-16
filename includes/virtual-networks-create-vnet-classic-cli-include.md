@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: cd686e1bf62bbd7f37f61ced767e92918edf919c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116911"
 ---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>Jak vytvořit klasickou virtuální síť pomocí rozhraní příkazového řádku Azure
@@ -32,12 +32,12 @@ Pomocí rozhraní příkazového řádku Azure můžete spravovat svoje prostře
             info:    network vnet create command OK
    
    * **--vnet**. Název sítě VNet, která se má vytvořit. Pro scénář *TestVNet*
-   * **-e (nebo--adresního prostoru)**. Adresní prostor virtuální sítě. Pro scénář *192.168.0.0*
-   * **-i (nebo - cidr)**. Maska sítě ve formátu CIDR. Pro scénář *16*.
+   * **-e (nebo--adresního prostoru)** . Adresní prostor virtuální sítě. Pro scénář *192.168.0.0*
+   * **-i (nebo - cidr)** . Maska sítě ve formátu CIDR. Pro scénář *16*.
    * **-n (nebo--subnet-name**). Název první podsítě. Pro scénář *front-endu*.
-   * **-p (nebo--podsíť start-ip)**. Počáteční IP adresu podsítě a adresní prostor podsítě. Pro scénář *192.168.1.0*.
-   * **-r (nebo--podsítě cidr)**. Maska sítě ve formátu CIDR podsítě. Pro scénář *24*.
-   * **-l (nebo --location)**. Oblasti Azure, kde se vytvoří virtuální síť. Pro scénář *USA (střed)*.
+   * **-p (nebo--podsíť start-ip)** . Počáteční IP adresu podsítě a adresní prostor podsítě. Pro scénář *192.168.1.0*.
+   * **-r (nebo--podsítě cidr)** . Maska sítě ve formátu CIDR podsítě. Pro scénář *24*.
+   * **-l (nebo --location)** . Oblasti Azure, kde se vytvoří virtuální síť. Pro scénář *USA (střed)* .
 3. Pokud chcete vytvořit podsítě, spusťte **vytvořit sítě azure vnet podsíť** příkaz:
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
@@ -55,8 +55,8 @@ Pomocí rozhraní příkazového řádku Azure můžete spravovat svoje prostře
             info:    network vnet subnet create command OK
    
    * **-t (nebo--vnet-name**. Název sítě VNet, ve které se vytvoří podsíť. Pro scénář *TestVNet*.
-   * **-n (nebo --name)**. Název nové podsítě. Pro scénář *back-endu*.
-   * **-a (nebo --address-prefixes)**. Blok CIDR podsítě. Pro scénář *192.168.2.0/24*.
+   * **-n (nebo --name)** . Název nové podsítě. Pro scénář *back-endu*.
+   * **-a (nebo --address-prefixes)** . Blok CIDR podsítě. Pro scénář *192.168.2.0/24*.
 4. Chcete-li zobrazit vlastnosti nové sítě vnet, spusťte **azure network vnet show** příkaz:
    
             azure network vnet show
