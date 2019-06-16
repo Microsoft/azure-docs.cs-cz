@@ -27,6 +27,7 @@
       items:
         - name: S využitím .NET
           href: stream-live-tutorial-with-api.md
+          displayName: 'Live Events, Live Outputs, ingest'
     - name: Analýza videa
       items:
         - name: S využitím .NET
@@ -47,7 +48,7 @@
       href: concepts-overview.md
     - name: Nahrávání na cloud a úložiště
       items:
-        - name: Úložiště
+        - name: Storage
           href: storage-account-concept.md
           displayName: Storage side encryption
         - name: Prostředky
@@ -122,6 +123,7 @@
           href: live-streaming-overview.md
         - name: Živé události a výstupy
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: Doporučené kodéry pro kódování v reálném čase
           href: recommended-on-premises-live-encoders.md
         - name: Použití cloudového DVR
