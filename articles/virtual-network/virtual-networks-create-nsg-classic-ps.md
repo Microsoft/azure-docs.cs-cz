@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.openlocfilehash: d685f395aa25580c009fe3be660a8afc42dc79d9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62125759"
 ---
 # <a name="create-a-network-security-group-classic-using-powershell"></a>Vytvořte skupinu zabezpečení sítě (classic) pomocí Powershellu

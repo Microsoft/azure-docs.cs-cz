@@ -1,6 +1,6 @@
 ---
 title: Základní zásady vyžadovat vícefaktorové ověřování pro správce – Azure Active Directory
-description: Zásady podmíněného přístupu na vyžadovat vícefaktorové ověřování pro správce
+description: Zásady podmíněného přístupu tak, aby vyžadovala ověření službou Multi-Factor Authentication pro správce
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1ce48126c3e8867ac7f2696d8cf7db992a9a60a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 4f8b7f281ad5ed8424110696544ffdb49e50ce59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003278"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112427"
 ---
 # <a name="baseline-policy-require-mfa-for-admins"></a>Základní zásady: Vyžadování MFA pro správce
 
@@ -76,6 +76,6 @@ Tuto zásadu povolit a chránit vaše správce:
 
 Další informace naleznete v tématu:
 
-* [Zásady podmíněného přístupu směrný plán ochrany](concept-baseline-protection.md)
+* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
 * [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

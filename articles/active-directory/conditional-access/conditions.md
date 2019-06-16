@@ -1,8 +1,8 @@
 ---
-title: Jaké jsou podmínky podmíněného přístupu Azure Active Directory? | Dokumenty Microsoft
-description: Zjistěte, jak se používají podmínky podmíněného přístupu Azure Active Directory k aktivaci zásad.
+title: Jaké jsou podmínky v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
+description: Zjistěte, jak se používají podmínky v Azure Active Directory podmíněný přístup pro aktivaci zásad.
 services: active-directory
-keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 83263b3536100ce16819002c833754d18ac12816
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112601"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory?
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky v Azure Active Directory podmíněného přístupu?
 
 Můžete řídit přístup uživatelů k vašim cloudovým aplikacím pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). V zásadách podmíněného přístupu, definujte odpověď ("proveďte to") důvod Aktivace zásady ("Když taková situace nastane").
 
@@ -73,7 +73,7 @@ Organizace, můžete vybrat z následujících možností:
 > [!NOTE]
 > Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup.
 
-**Akce uživatelů** jsou úkoly provedené uživatelem. Pouze aktuálně podporované akce **zaregistrovat informace o zabezpečení (preview)**, což umožňuje zásady podmíněného přístupu vynucovat, když uživatelé, kteří jsou povoleny pro kombinované registraci pokus o registraci jejich zabezpečení informace. Další informace najdete v článku, [povolit kombinovat informace o registraci zabezpečení (preview)](../authentication/howto-registration-mfa-sspr-combined.md).
+**Akce uživatelů** jsou úkoly provedené uživatelem. Pouze aktuálně podporované akce **zaregistrovat informace o zabezpečení (preview)** , což umožňuje zásady podmíněného přístupu vynucovat, když uživatelé, kteří jsou povoleny pro kombinované registraci pokus o registraci jejich zabezpečení informace. Další informace najdete v článku, [povolit kombinovat informace o registraci zabezpečení (preview)](../authentication/howto-registration-mfa-sspr-combined.md).
 
 ## <a name="sign-in-risk"></a>Riziko přihlášení
 
@@ -117,7 +117,7 @@ Tato podmínka je užitečné, když zásady by se měly používat jenom k nesp
 
 Pomocí umístění můžete definovat podmínky založené na kde došlo k pokusu připojení. 
 
-![Konfigurovat místa](./media/conditions/25.png)
+![Konfigurace umístění](./media/conditions/25.png)
 
 Běžné případy použití pro tuto podmínku jsou zásady ochrany, které následující:
 
@@ -125,10 +125,10 @@ Běžné případy použití pro tuto podmínku jsou zásady ochrany, které ná
 
 - Blokovat přístup pro uživatele, kteří používají službu z určitých zemích nebo oblastech. 
 
-Další informace najdete v tématu [co je podmínka umístění podmíněného přístupu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
+Další informace najdete v tématu [co je podmínka umístění v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations).
 
 
-## <a name="client-apps"></a>Klientské aplikace
+## <a name="client-apps"></a>Klientské aplikace.
 
 Ve výchozím nastavení zásady podmíněného přístupu platí pro následující aplikace:
 
@@ -143,7 +143,7 @@ Kromě toho je možné cílit na zásady pro konkrétní klientské aplikace, kt
 
 - **[Jiní klienti](block-legacy-authentication.md)**  – tyto aplikace zahrnovat klienty, kteří používají základní ověřování pomocí protokolů e-mailu, jako jsou IMAP, MAPI, POP, SMTP a starší aplikace Office, které nepoužívají moderní ověřování. Další informace najdete v tématu [jak moderní ověřování funguje pro klientské aplikace Office 2013 a Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
-![Klientské aplikace](./media/conditions/41.png)
+![Klientské aplikace.](./media/conditions/41.png)
 
 Běžné případy použití pro tuto podmínku jsou zásady s následujícími požadavky:
 
@@ -182,15 +182,15 @@ Můžete cílit pouze tohoto nastavení můžete uživatelům a skupinám. Nepod
 
  Další informace naleznete v tématu:
 
-- [Nastavení Sharepointu Online a Exchange Online pro podmíněný přístup Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
+- [Nastavení Sharepointu Online a Exchange Online pro Azure Active Directory podmíněný přístup](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
  
-- [Azure Active Directory podmíněného přístupu k aplikacím](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
+- [Podmíněný přístup na základě aplikace Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). 
 
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Chcete-li zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+- Chcete-li zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
 
-- Pokud chcete nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md). 
+- Pokud chcete nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
 

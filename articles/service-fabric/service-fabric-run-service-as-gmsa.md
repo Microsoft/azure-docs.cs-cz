@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: 5c3781c2111fff7483a7fb65bd7b2e69c2011d18
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837738"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
 Na samostatného clusteru Windows Server můžete spustit službu jako skupinu pomocí zásad spustit jako účtu spravované služby (gMSA).  Ve výchozím nastavení aplikace Service Fabric spustit pod účtem, který spouští proces Fabric.exe pod. Spouštění aplikací pomocí jiných účtů, dokonce i ve sdíleném prostředí prostředí, je mezi nimi vlastně bezpečnější od sebe. Všimněte si, že to používá služby Active Directory místně v rámci vaší domény a ne Azure Active Directory (Azure AD). Pomocí gMSA není žádné heslo nebo šifrované heslo, které jsou uloženy v manifestu aplikace.  Můžete také spustit službu jako [uživatele služby Active Directory nebo skupiny](service-fabric-run-service-as-ad-user-or-group.md).
 
-Následující příklad ukazuje, jak vytvořit účet gMSA s názvem *svc Test$*; jak nasadit tento spravovaný účet služby na uzlech clusteru a jak nakonfigurovat hlavní název uživatele.
+Následující příklad ukazuje, jak vytvořit účet gMSA s názvem *svc Test$* ; jak nasadit tento spravovaný účet služby na uzlech clusteru a jak nakonfigurovat hlavní název uživatele.
 
 Předpoklady:
 - Doména musí kořenový klíč KDS.

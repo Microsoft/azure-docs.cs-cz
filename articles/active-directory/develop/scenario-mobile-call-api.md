@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b6c203583a082228c2ba1f4c5f6fdb04d059be
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962383"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111175"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Mobilní aplikace, která volá webové rozhraní API – volání webového rozhraní API
 
@@ -131,7 +131,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 Pokud je potřeba volat několikrát stejného rozhraní API, nebo pokud je potřeba volat více rozhraní API, zvažte následující v úvahu při vytváření vaší aplikace:
 
 - **Přírůstkové souhlasu**: Platforma identit Microsoft umožňuje aplikacím získat souhlas uživatele, jako jsou vyžadována oprávnění, nikoli na začátku. Pokaždé, když vaše aplikace je připravená k volání rozhraní API, ji by měl požádat o rozsahy, které je třeba použít.
-- **Podmíněný přístup**: V některých scénářích se mohou zobrazovat požadavky další podmíněného přístupu při provedení žádosti více rozhraní API. To může nastat, pokud první požadavek nemá žádné zásady podmíněného přístupu a vaší aplikace se pokusí tiše přístup k nové rozhraní API, která vyžaduje podmíněný přístup. Pro zpracování tohoto scénáře, je potřeba zachytávat chyby tiché požadavků a připravte se na interaktivní požadavku.  Další informace najdete v tématu [pokyny pro podmíněný přístup](conditional-access-dev-guide.md).
+- **Podmíněný přístup**: V některých scénářích se mohou zobrazovat další požadavky podmíněného přístupu, když vytvoříte několik požadavků rozhraní API. To může nastat, pokud první požadavek nemá žádné zásady podmíněného přístupu a vaší aplikace se pokusí tiše přístup k nové rozhraní API, která vyžaduje podmíněný přístup. Pro zpracování tohoto scénáře, je potřeba zachytávat chyby tiché požadavků a připravte se na interaktivní požadavku.  Další informace najdete v tématu [pokyny pro podmíněný přístup](conditional-access-dev-guide.md).
 
 ## <a name="next-steps"></a>Další postup
 

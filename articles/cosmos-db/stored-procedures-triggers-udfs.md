@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65965700"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelem definovaných funkcí
@@ -73,7 +73,7 @@ Buď můžete zajistit, že vaše funkce jazyka JavaScript dokončit během čas
 
 Funkce jazyka JavaScript jsou také podléhá [zřízené kapacity propustnosti](request-units.md). Funkce jazyka JavaScript může potenciálně skončit pomocí velký počet jednotek žádostí za krátkou dobu a může být míra časově omezené při dosažení limitu kapacity zřízenou propustnost. Je důležité si uvědomit, že skripty využívají větší propustnost kromě propustnost trvání provádění databázových operací, i když tyto databázové operace jsou mírně levnější než provádění stejné operace z klienta.
 
-## <a name="triggers"></a>Aktivační události
+## <a name="triggers"></a>Aktivační procedury
 
 Tato část popisuje dva typy aktivačních událostí:
 

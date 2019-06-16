@@ -11,10 +11,10 @@ ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66233844"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Důležitost pracovního vytížení Azure SQL Data Warehouse
@@ -42,10 +42,10 @@ Přístup na zámků pro čtení a zápisu aktivit je jedné oblasti přírodní
 Vezměte v úvahu v následujícím příkladu:
 
 Q1 je aktivně spuštěná a výběr dat z SalesFact.
-2. čtvrtletí je ve frontě čeká Q1 dokončete.  Byla odeslána v 9: 00 a pokouší se oddíl přepínače nová data do SalesFact.
-3. čtvrtletí odeslání v 9:01:00 a chce, aby se k výběru dat z SalesFact.
+2\. čtvrtletí je ve frontě čeká Q1 dokončete.  Byla odeslána v 9: 00 a pokouší se oddíl přepínače nová data do SalesFact.
+3\. čtvrtletí odeslání v 9:01:00 a chce, aby se k výběru dat z SalesFact.
 
-Pokud stále provádí Q1 F2 a F3 mají stejnou důležitost, 3. čtvrtletí začne provádění. 2. čtvrtletí bude dál čekat na SalesFact pro výhradní zámek.  Pokud Q2 má větší význam než 3. čtvrtletí, 3. čtvrtletí počká, až 2. čtvrtletí dokončení před zahájením provádění.
+Pokud stále provádí Q1 F2 a F3 mají stejnou důležitost, 3. čtvrtletí začne provádění. 2\. čtvrtletí bude dál čekat na SalesFact pro výhradní zámek.  Pokud Q2 má větší význam než 3. čtvrtletí, 3. čtvrtletí počká, až 2. čtvrtletí dokončení před zahájením provádění.
 
 ### <a name="non-uniform-requests"></a>Neuniformní žádosti
 

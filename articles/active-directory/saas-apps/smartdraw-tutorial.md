@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: a2322636aab2e0f38e29063d958cb670b5e062f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 9bafad5d28ef25f7f7bebe3899f288d0dfa72acb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050407"
+ms.locfileid: "67090259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartdraw"></a>Kurz: Integrace Azure Active Directory s SmartDraw
 
@@ -122,7 +122,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s SmartDraw, proveďte násle
 
 7. Kromě toho výše SmartDraw aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulka: 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |

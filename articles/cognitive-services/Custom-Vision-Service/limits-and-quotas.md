@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
 ms.openlocfilehash: 85abc4a50710629d3485d05115698e59a93fc96e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60995612"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
@@ -27,7 +27,7 @@ Počet trénovacích obrázků na projekt a značky pro každý projekt se oček
 |-----|-----|-----|
 |Projekty|2|100|
 |Trénovacích obrázků na projekt |5 000|100 000|
-|Predikce / měsíc|10 000 |Unlimited|
+|Predikce / měsíc|10,000 |Unlimited|
 |Značky / project|50|500|
 |Iterace |10|10|
 |Min označené obrázky značek klasifikace (50 + doporučeno) |5|5|

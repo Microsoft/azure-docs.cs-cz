@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/29/2019
 ms.author: jowargo
-ms.openlocfilehash: edd0e12460e07cfd2990cc43a9056ed06b84fb1d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: abc77ad4d06dc719ee1a89cd8fcf29d42d96b483
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927019"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147658"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Začínáme s použitím Notification Hubs pro aplikace Kindle
 
@@ -58,24 +58,35 @@ V tomto kurzu vytvoříte nebo aktualizujete kód tak, aby prováděl následuj�
     5. Vyberte **Uložit**.
 
         ![Nová stránka odesílání aplikace](./media/notification-hubs-kindle-get-started/new-app-submission-page.png) 
-2.  V horní části stránky, přejděte **Mobile Ads** kartu, a proveďte následující kroky: 
+2.  V horní části stránky, přejděte **App Services** kartu.
+
+    ![Karta aplikace služby](./media/notification-hubs-kindle-get-started/app-services-tab.png)
+1. Na **App Services** kartu, posuňte se dolů a vyberte **zobrazení Mobile Ads** v **Mobile Ads** oddílu. Zobrazí **Mobile Ads** stránku na nové kartě ve webovém prohlížeči. 
+
+    ![Části Mobile Ads - propojení zobrazení Mobile Ads](./media/notification-hubs-kindle-get-started/view-mobile-ads-link.png)
+1. Na **Mobile Ads** stránce, proveďte následující kroky: 
     1. Určete, jestli je vaše aplikace směrovat primárně na děti v části 13. Pro účely tohoto kurzu vyberte **ne**.
-    2. Vyberte **odeslat**. 
+    1. Vyberte **odeslat**. 
 
         ![Stránka Mobile Ads](./media/notification-hubs-kindle-get-started/mobile-ads-page.png)
     3. Kopírovat **klíč aplikace** z **Mobile Ads** stránky. 
 
         ![Klíč aplikace](./media/notification-hubs-kindle-get-started/application-key.png)
-3.  Vyberte **aplikace a služby** nabídce v horní části a vyberte svou aplikaci v seznamu. 
+3.  Teď přepněte na kartu webový prohlížeč, který má **App Services** kartě otevřít, a proveďte následující kroky:
+    1. Přejděte **zasílání zpráv zařízení** oddílu.     
+    1. Rozbalte **vyberte existující profil zabezpečení nebo vytvořit nový**a pak vyberte **vytvořit profil zabezpečení**. 
 
-    ![Vyberte ze seznamu vaši aplikaci](./media/notification-hubs-kindle-get-started/all-apps-select.png)
-4. Přepněte **zasílání zpráv zařízení** kartu a postupujte podle těchto kroků: 
-    1. Vyberte **vytvoření nového profilu zabezpečení**.
-    2. Zadejte **název** pro svůj profil zabezpečení. 
-    3. Zadejte **popis** pro svůj profil zabezpečení. 
-    4. Vyberte **Uložit**. 
-    5. Vyberte **zobrazit profil zabezpečení** na stránce výsledků. 
-5. Nyní na **profil zabezpečení** stránce, proveďte následující kroky: 
+        ![Vytvoření tlačítka profil zabezpečení](./media/notification-hubs-kindle-get-started/create-security-profile-button.png)
+    1. Zadejte **název** pro svůj profil zabezpečení. 
+    2. Zadejte **popis** pro svůj profil zabezpečení. 
+    3. Vyberte **Uložit**. 
+
+        ![Uložit profil zabezpečení](./media/notification-hubs-kindle-get-started/save-security-profile.png)
+    1. Vyberte **povolit zasílání zpráv zařízení** povolit zasílání zpráv na tento profil zabezpečení zařízení. 
+
+        ![Povolením zasílání zpráv zařízení](./media/notification-hubs-kindle-get-started/enable-device-messaging.png)
+    1. Vyberte **zobrazit profil zabezpečení** na stránce výsledků. 
+1. Nyní na **profil zabezpečení** stránce, proveďte následující kroky: 
     1. Přepněte **nastavení webového** kartu a zkopírujte **ID klienta** a **tajný kód klienta** hodnoty pro pozdější použití. 
 
         ![Získání ID klienta a tajný klíč](./media/notification-hubs-kindle-get-started/client-id-secret.png) 
@@ -314,6 +325,36 @@ V tomto kurzu vytvoříte nebo aktualizujete kód tak, aby prováděl následuj�
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
     }
     ```
+## <a name="create-an-adm-object"></a>Vytvoření objektu ADM
+1 v `MainActivity.java` přidejte následující příkazy pro import:
+
+    ```java
+    import android.os.AsyncTask;
+    import android.util.Log;
+    import com.amazon.device.messaging.ADM;
+    ```
+2. Na konec metody `OnCreate` přidejte následující kód:
+
+    ```java
+    final ADM adm = new ADM(this);
+    if (adm.getRegistrationId() == null)
+    {
+        adm.startRegister();
+    } else {
+        new AsyncTask() {
+                @Override
+                protected Object doInBackground(Object... params) {
+                    try {                         MyADMMessageHandler.getNotificationHub(getApplicationContext()).register(adm.getRegistrationId());
+                    } catch (Exception e) {
+                        Log.e("com.wa.hellokindlefire", "Failed registration with hub", e);
+                        return e;
+                    }
+                    return null;
+                }
+            }.execute(null, null, null);
+    }
+    ```
+
 
 ## <a name="add-your-api-key-to-your-app"></a>Přidejte do aplikace svůj klíč rozhraní API
 1. Postupujte podle těchto kroků přidejte složku prostředků do projektu. 

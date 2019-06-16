@@ -12,10 +12,10 @@ ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104877"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Správa informačních kanálů RSS s využitím Azure Logic Apps

@@ -9,18 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 27c0edfab08799ddf0a8b714853547604e458083
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97083142066e59acbefe60181743e5aa32541bac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078191"
+ms.locfileid: "67115828"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
 [Apache Storm](https://storm.apache.org/) je distribuovaný výpočetní systém typu open source a je odolný vůči poruchám. Prostřednictvím Stormu můžete zpracovávat proudy dat v reálném čase pomocí [Apache Hadoop](https://hadoop.apache.org/). Řešení Storm také zajišťují garantované zpracování data se schopností opakování dat, která nebyla úspěšně zpracována na první pokus.
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ## <a name="why-use-apache-storm-on-hdinsight"></a>Proč používat Apache Storm v HDInsight?
 
@@ -38,8 +36,7 @@ Storm v HDInsight poskytuje následující funkce:
 
 * **Dynamické škálování**: Můžete přidávat a odebírat pracovní uzly bez jakéhokoli dopadu na činnost topologií Storm.
 
-    > [!NOTE]  
-    > Abyste mohli využít nové uzly přidané prostřednictvím operací škálování, musíte deaktivovat a znovu aktivovat spuštěné topologie.
+    * Abyste mohli využít nové uzly přidané prostřednictvím operací škálování, musíte deaktivovat a znovu aktivovat spuštěné topologie.
 
 * **Vytváření streamovacích kanálů pomocí několika služeb Azure**: Storm v HDInsight se integruje s dalšími službami Azure, jako jsou Event Hubs, SQL Database, Azure Storage a Azure Data Lake Storage.
 
@@ -149,7 +146,9 @@ Způsob spojení datových proudů se v jednotlivých aplikacích liší. Může
 
 V následujícím příkladu Java se příkaz fieldsGrouping využívá ke směrování řazených kolekcí členů, které pocházejí z komponent „1“, „2“ a „3“, do boltu MyJoiner:
 
-    builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
+```java
+builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
+```
 
 ### <a name="batches"></a>Dávky
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61069927"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
@@ -121,7 +121,7 @@ Tento řídicí panel se skládá ze:
 | Komprimované žádostí |Informuje o procentu přístupů, které byly dodány z CDN (hraniční servery) žadateli (například webový prohlížeč) ve formátu komprimované. |
 | Míra chyb 4xx |Informuje o procentu přístupů, které generují stavový kód 4xx. |
 | Míra chyb 5xx |Informuje o procentu přístupů, které generují stavový kód 5xx. |
-| Přístupy |Označuje počet žádostí o obsahu CDN. |
+| Počet přístupů |Označuje počet žádostí o obsahu CDN. |
 
 #### <a name="secure-traffic-metrics"></a>Zabezpečení provozu metriky
 Účelem těchto metrikách je sledovat výkon sítě CDN pro komunikaci přes protokol HTTPS.
@@ -134,7 +134,7 @@ Tento řídicí panel se skládá ze:
 | Zabezpečené přístupů |Označuje počet požadavky HTTPS k obsahu CDN. |
 | Zabezpečit odchozí bajty |Určuje objem provozu HTTPS v bajtech, které byly dodány z CDN (hraniční servery) žadateli (například webový prohlížeč). |
 
-## <a name="reports"></a>Reports
+## <a name="reports"></a>Sestavy
 Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky pásma a provoz pro různé typy metriky (například stavové kódy HTTP, mezipaměť stavové kódy, žádost o adresu URL, atd.). Tyto informace slouží delve hlouběji do jak se obsah obsluhuje klienty a optimalizovat chování CDN ke zlepšení výkonu při doručování dat.
 
 ### <a name="accessing-the-edge-performance-reports"></a>Přístup k hraniční sestavy výkonu
@@ -155,7 +155,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky p
 | Metody HTTP |Umožňuje získat rychlý přehled o tom HTTP, které metody se používají k vyžádání vaše data. Obvykle jsou nejběžnější metody požadavku HTTP GET, HEAD a příspěvku. Prstencový graf informuje o procentu úspěšných, ke kterým došlo u každého typu metoda požadavku HTTP. |
 | Adresy URL |Obsahuje graf zobrazující hlavní 10 požadované adresy URL. Panelu se zobrazí pro každou adresu URL. Výška pruhu určuje počet přístupů, generovaných určité adresy URL za časové období, kterou sestava postihuje. Statistika pro 100 nejoblíbenějších požadovaného že adresy URL se zobrazí přímo pod tohoto grafu. |
 | CNAMEs |Obsahuje graf zobrazující top 10 záznamů CNAME používaná pro požádání o prostředky čase span sestavy. Statistika pro 100 nejoblíbenějších požadovaného že záznamy CNAME se zobrazí přímo pod tohoto grafu. |
-| Počátky |Obsahuje graf zobrazující hlavní 10 CDN nebo zákazník původních serverů, ze kterých byly požadované prostředky v zadaném časovém období. Statistika pro 100 nejoblíbenějších požadovaného přímo pod tento graf se zobrazují servery původu CDN nebo zákazníků. Zákazník původních serverů jsou identifikovány názvem definovaným ve variantě pro název adresáře. |
+| Zdroje |Obsahuje graf zobrazující hlavní 10 CDN nebo zákazník původních serverů, ze kterých byly požadované prostředky v zadaném časovém období. Statistika pro 100 nejoblíbenějších požadovaného přímo pod tento graf se zobrazují servery původu CDN nebo zákazníků. Zákazník původních serverů jsou identifikovány názvem definovaným ve variantě pro název adresáře. |
 | Geograficky POP |Ukazuje, jak velká část provozu je směrovány přes určitého bodu of-presence (POP). Dvoupísmennou zkratku představuje místní nabídky v naší síti CDN. |
 | Klienti |Obsahuje graf zobrazující hlavní 10 klientů, které požadované prostředky v zadaném časovém období. Pro účely této sestavy se všechny požadavky, které pocházejí ze stejné IP adresy jsou považovány za ze stejného klienta. Přímo pod tento graf se zobrazují statistiky pro začátek 100 klientů. Tato sestava je užitečná pro určení vzory aktivity ke stažení pro začátek klienty. |
 | Stavy mezipaměti |Je podrobný rozpis chování mezipaměti, což může vést k odhalení přístupy k zlepšení celkové prostředí koncového uživatele. Vzhledem k tomu, abyste dosáhli nejlepšího výkonu pochází z přístupů k mezipaměti, můžete optimalizovat doručování rychlosti dat tak, že minimalizovat Neúspěšné přístupy do mezipaměti a přístupů k mezipaměti vypršela platnost. |
@@ -168,7 +168,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiky o využití šířky p
 | Podrobnosti o TCP_EXPIRED_MISS |Obsahuje graf zobrazující hlavní 10 adresy URL pro zastaralé prostředky, u kterých musel načíst ze zdrojového serveru novou verzi. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy prostředků. |
 | TCP_CLIENT_REFRESH_MISS Details |Obsahuje pruhový graf, který zobrazuje prvních 10 adres URL pro prostředky, které byly získány ze zdrojového serveru z důvodu no-cache žádosti z klienta. Přímo pod tento graf se zobrazují statistiky pro hlavní 100 adresy URL pro tyto typy požadavků. |
 | Typy žádostí klienta |Určuje typy požadavků, které byly provedeny klienty HTTP (například prohlížeče). Tato sestava obsahuje prstencový graf, který poskytuje představu, jak se právě zpracovává požadavky. Informace o šířku pásma a provoz pro každý typ žádosti se zobrazí pod grafem. |
-| Identifikační řetězec |Obsahuje pruhový graf zobrazující hlavní 10 Uživatelští agenti pro vyžádání obsahu prostřednictvím naší síti CDN. Uživatelský agent je obvykle webový prohlížeč, media player nebo prohlížeči mobilního telefonu. Přímo pod tento graf se zobrazují statistiky pro začátek 100 Uživatelští agenti. |
+| Uživatelský Agent |Obsahuje pruhový graf zobrazující hlavní 10 Uživatelští agenti pro vyžádání obsahu prostřednictvím naší síti CDN. Uživatelský agent je obvykle webový prohlížeč, media player nebo prohlížeči mobilního telefonu. Přímo pod tento graf se zobrazují statistiky pro začátek 100 Uživatelští agenti. |
 | Odkazující servery |Obsahuje pruhový graf zobrazující hlavní 10 odkazující servery k obsahu přistupovat prostřednictvím naší síti CDN. Adresa URL webové stránky nebo prostředek, který obsahuje odkazy na váš obsah je obvykle odkazující server. Podrobné informace jsou uvedeny níže grafu pro 100 nejoblíbenějších odkazující servery. |
 | Kompresní typy |Obsahuje prstencový graf, který rozděluje požadovaných prostředků tak, zda byly komprimované naše servery edge. Procento komprimované prostředky je rozdělené podle typu použít kompresi. Podrobné informace jsou poskytovány pod grafem pro každý typ komprese a stav. |
 | Typy souborů |Obsahuje pruhový graf zobrazující hlavní typy 10 souborů, které bylo vyžádáno prostřednictvím naší síti CDN pro váš účet. Pro účely této sestavy je definován typ souboru příponu názvu souboru assetu a typ média Internetu (například HTML \[text/html\], .htm \[text/html\], aspx \[text/html\]atd.). Podrobné informace jsou uvedeny níže grafu pro hlavní typy 100 souborů. |

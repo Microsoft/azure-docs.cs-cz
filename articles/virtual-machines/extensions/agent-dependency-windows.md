@@ -1,6 +1,6 @@
 ---
 title: Rozšíření virtuálního počítače Azure monitoru závislostí pro Windows | Dokumentace Microsoftu
-description: Nasaďte agenta nástroje Azure Monitor závislosti na virtuálním počítači Windows pomocí rozšíření virtuálního počítače.
+description: Nasazení agenta Azure monitoru závislosti na virtuálním počítači Windows pomocí rozšíření virtuálního počítače.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mgoedtel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2cdde2f9dbba9676ba8a4d35ed6b79940668d684
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 34dd872db199a4c10e9f321457188b7f7642944d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67120226"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Azure monitoru závislostí pro Windows
 
@@ -36,7 +36,7 @@ Rozšíření agenta závislosti virtuálních počítačů Azure pro Windows m�
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující kód JSON ukazuje schéma rozšíření Azure VM závislost agenta na virtuálním počítači Windows Azure. 
+Následující kód JSON ukazuje schéma rozšíření Azure VM závislost agenta na virtuálním počítači Windows Azure.
 
 ```json
 {
@@ -76,20 +76,20 @@ Následující kód JSON ukazuje schéma rozšíření Azure VM závislost agent
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota / příklad |
+| Název | Příklad hodnoty / |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Nasazení šablony
+## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění rozšíření agenta závislostí virtuálního počítače Azure při nasazení šablony Azure Resource Manageru. 
+Rozšíření virtuálního počítače Azure pomocí šablon Azure Resource Manageru můžete nasadit. Schéma JSON, které jsou podrobně popsané v předchozí části šablony Azure Resource Manageru můžete použít ke spuštění rozšíření agenta závislostí virtuálního počítače Azure při nasazení šablony Azure Resource Manageru.
 
-JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění ve formátu JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
+JSON pro rozšíření virtuálního počítače může být vnořena v prostředku virtuálního počítače. Nebo je možné je umístit na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění ve formátu JSON má vliv na hodnotu názvu prostředku a typů. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources).
 
-V následujícím příkladu se předpokládá, že rozšíření agenta závislostí je vnořená do prostředku virtuálního počítače. Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"resources": []` objekt virtuálního počítače.
+V následujícím příkladu se předpokládá, že rozšíření agenta závislostí je vnořená do prostředku virtuálního počítače. Když je vnořovat rozšíření prostředků, ve formátu JSON najdete v `"resources": []` objekt virtuálního počítače.
 
 
 ```json
@@ -110,7 +110,7 @@ V následujícím příkladu se předpokládá, že rozšíření agenta závisl
 }
 ```
 
-Při vkládání rozšíření JSON v kořenovém adresáři šablony, název prostředku obsahuje odkaz na nadřazený virtuální počítač a typ odráží vnořené konfigurace. 
+Umístíte-li v kořenovém adresáři šablony rozšíření JSON, název prostředku obsahuje odkaz na nadřazený virtuální počítač. Typ odráží vnořené konfigurace.
 
 ```json
 {
@@ -132,7 +132,7 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, název pr
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 
-`Set-AzVMExtension` Příkaz lze použít k nasazení rozšíření virtuálního počítače agenta závislostí do existujícího virtuálního počítače. Před spuštěním příkazu, veřejné a privátní konfigurace muset být uložena v tabulce hash prostředí PowerShell. 
+Můžete použít `Set-AzVMExtension` příkaz pro nasazení do existujícího virtuálního počítače rozšíření virtuálního počítače agenta závislostí. Před spuštěním příkazu konfigurace veřejných a privátních muset být uložena v tabulce hash prostředí PowerShell.
 
 ```powershell
 
@@ -149,7 +149,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell.
+Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure Powershellu:
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
@@ -163,4 +163,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**. Informace o tom, jak pomocí podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).

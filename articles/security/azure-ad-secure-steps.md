@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f63ceb6a80f253ea1661d215939705f8e39f3e58
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236764"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119288"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
@@ -36,7 +36,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit důležité doporučené ak
 
 Doporučení v tomto dokumentu jsou v souladu s [skóre zabezpečení Identity](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score), automatizované posuzování konfigurace zabezpečení identity tenanta Azure AD. Organizace můžete použít stránku skóre zabezpečení identit na portálu Azure AD najít mezery v jejich aktuální konfigurace zabezpečení a ujistěte se, že řídí aktuální Microsoft osvědčené postupy pro zabezpečení. Implementace jednotlivých doporučení na stránce zabezpečení skóre zvýší vaše skóre a umožňují sledovat svůj postup a navíc můžete porovnat vaše implementace proti jiné podobné velikost organizace nebo vaše odvětví.
 
-![Identity Secure Score](media/azure-ad/azure-ad-sec-steps0.png)
+![Skóre zabezpečení identit](media/azure-ad/azure-ad-sec-steps0.png)
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Než začnete: Ochranu privilegovaných účtů s MFA
 
@@ -103,7 +103,7 @@ Aplikace s využitím vlastní starší verze metody pro ověřování ve služb
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokovat ověřování Neplatný vstupní body
 
-Pomocí mentality předpokládat porušení zabezpečení, by měla snížit dopad ohrožení uživatelských přihlašovacích údajů když k nim dojde. Pro každou aplikaci ve vašem prostředí vezměte v úvahu případy platné použití: které skupiny, které sítě, která zařízení a další prvky mají oprávnění – a blokovat zbývající. S [podmíněný přístup Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), můžete řídit, jak ověřeného přístupu uživatele jejich aplikací a prostředků na základě určitých podmínek definujete.
+Pomocí mentality předpokládat porušení zabezpečení, by měla snížit dopad ohrožení uživatelských přihlašovacích údajů když k nim dojde. Pro každou aplikaci ve vašem prostředí vezměte v úvahu případy platné použití: které skupiny, které sítě, která zařízení a další prvky mají oprávnění – a blokovat zbývající. S [podmíněného přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), můžete řídit, jak ověřeného přístupu uživatele jejich aplikací a prostředků na základě určitých podmínek definujete.
 
 ### <a name="block-end-user-consent"></a>Blok svolení koncového uživatele
 

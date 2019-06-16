@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
 ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62128377"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurace připojení brány VPN typu VNet-to-VNet pomocí webu Azure portal
@@ -190,7 +190,7 @@ Po dokončení vytváření bran virtuálních sítí pro TestVNet1 a TestVNet4 
 
      - Vyberte bránu virtuální sítě, ke kterému chcete připojit.
 
-     - **Sdílený klíč (PSK)**: V tomto poli zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. Klíč, který používáte v připojení site-to-site, je stejný pro místní zařízení i pro připojení brány virtuální sítě. Tady platí podobný, akorát se místo připojování k zařízení VPN, se připojujete k jiné bráně virtuální sítě.
+     - **Sdílený klíč (PSK)** : V tomto poli zadejte sdílený klíč pro vaše připojení. Tento klíč si můžete vygenerovat nebo vytvořit sami. Klíč, který používáte v připojení site-to-site, je stejný pro místní zařízení i pro připojení brány virtuální sítě. Tady platí podobný, akorát se místo připojování k zařízení VPN, se připojujete k jiné bráně virtuální sítě.
     
 4. Vyberte **OK** uložte provedené změny.
 

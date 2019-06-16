@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cc529fbf9b24335be1bec07f81c732ced7a2b72
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60773838"
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Správa základních zásad testovacího prostředí ve službě Azure DevTest Labs
@@ -60,7 +60,7 @@ Zásady automatického vypínání pomáhá minimalizovat plýtvání testovací
 
 1. Cvičení **konfigurace a zásad** vyberte **automatického vypínání**.
    
-    ![Automatické vypínání](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+    ![Automatické vypnutí](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
 1. Vyberte **na** pro tuto zásadu povolit a **vypnout** ho zakážete.
 

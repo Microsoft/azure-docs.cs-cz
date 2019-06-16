@@ -6,12 +6,12 @@ ms.date: 05/14/2019
 ms.topic: include
 ms.author: pmorgan
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 06b4d6440bb3703ea62556d82152315630438376
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 3eee0b304f36847677167ada275451c4be9e9885
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969472"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135278"
 ---
 ## <a name="putting-everything-together"></a>Umístění všeho najednou
 
@@ -398,4 +398,4 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 V tomto kurzu jste další informace o tom, jak používat Azure prostorových kotvy v nové aplikace Unity HoloLens. Další informace o tom, jak používat Azure prostorových kotvy vztahů v nové aplikace pro Android, pokračujte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]
-> [Spuštění nové aplikace pro Android](/azure/spatial-anchors/tutorials/tutorial-new-android-app.md)
+> [Spuštění nové aplikace pro Android](/azure/spatial-anchors/tutorials/tutorial-new-android-app)

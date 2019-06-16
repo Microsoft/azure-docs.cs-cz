@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
 ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60706172"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Přidat firewall webových aplikací ve službě Azure Security Center
@@ -59,7 +59,7 @@ Security Center doporučuje zřízení WAF, které pomáhají bránit útokům c
 2. Vyberte **finalizace ochrany aplikací**. Otevře se nové okno. Uvidíte, že je webová aplikace, musí mít jeho provoz přesměruje.
 3. Vyberte webová aplikace. Otevře se okno, který obsahuje kroky k dokončení nastavení firewallu webových aplikací. Proveďte kroky a pak vyberte **omezení provozu**. Security Center pak provede její nahoru za vás.
 
-   ![Omezit přenosy][6]
+   ![Omezení provozu][6]
 
 > [!NOTE]
 > Přidáním těchto aplikací na vašich stávajících nasazení WAF může chránit několik webových aplikací ve službě Security Center.

@@ -10,10 +10,10 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c95af40c3fa3f9dad2bfb5ea4a1b9f585c636928
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60881066"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integrace správy zdrojového kódu ve službě Azure Automation – starší verze
@@ -42,10 +42,10 @@ Pokud už máte účet GitHub a úložiště, který chcete propojit s Azure Aut
 
    | **Parametr** | **Popis** |
    |:--- |:--- |
-   | Vyberte zdroj |Vyberte zdroj. V současné době pouze **Githubu** je podporována. |
+   | Zvolit zdroj |Vyberte zdroj. V současné době pouze **Githubu** je podporována. |
    | Autorizace |Klikněte na tlačítko **Authorize** tlačítko pro udělení přístupu službě Azure Automation do vašeho úložiště GitHub. Pokud již jste přihlášeni ke svému účtu GitHub v jiném okně, se používají pověření tohoto účtu. Po úspěšném ověření na stránce se zobrazí vaše uživatelské jméno v Githubu pod **autorizace vlastnost**. |
    | Zvolit úložiště |Vyberte ze seznamu dostupných úložišť úložiště GitHub. |
-   | Zvolte větev |Vyberte větev ze seznamu dostupných větví. Pouze **hlavní** větve se zobrazí, pokud jste ještě nevytvořili žádné větve. |
+   | Zvolit větev |Vyberte větev ze seznamu dostupných větví. Pouze **hlavní** větve se zobrazí, pokud jste ještě nevytvořili žádné větve. |
    | Cesta ke složce Runbooků |Cesta ke složce runbooků Určuje cestu v úložišti GitHub, ze kterého chcete vložit ani přijmout jejich změny kódu. Musí být zadána ve formátu **/název_složky/subfoldername**. Jenom runbooky v cesta ke složce runbooků se synchronizují do vašeho účtu Automation. Sady Runbook v podsložkách cesta ke složce runbooků se **není** synchronizovat. Použití **/** synchronizovat všechny sady runbook v úložišti. |
 3. Například, pokud máte úložiště s názvem **PowerShellScripts** , která obsahuje složku s názvem **RootFolder**, která obsahuje složku s názvem **podsložky**. Na jednotlivých úrovních složka synchronizace můžete použít následující řetězce:
 

@@ -15,24 +15,24 @@ ms.workload: na
 ms.date: 1/9/2018
 ms.author: rkarlin
 ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60909265"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Poskytnutí podrobností kontaktů zabezpečení ve službě Azure Security Center
 Azure Security Center vám doporučí poskytnutí podrobností kontaktů zabezpečení pro vaše předplatné Azure, pokud jste tak již neučinili. Prostřednictvím tohoto kontaktu se na vás společnost Microsoft obrátí, pokud středisko Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka nezákonně nebo neoprávněně přistupovala třetí strana. Střediska MSRC provádí monitorování zabezpečení vyberte síť Azure a infrastrukturou a přijímá threat intelligence a zneužití stížností od třetích stran.
 
-E-mailové oznámení se odešle při prvním výskytu výstrahy a pouze u výstrah s vysokou závažností. Předvolby e-mailu lze konfigurovat pouze pro zásady předplatného. Skupiny prostředků v rámci předplatného zdědí tato nastavení. 
+E-mailové oznámení se odešle při prvním výskytu výstrahy během dne a pouze u výstrah s vysokou závažností. Předvolby e-mailu lze konfigurovat pouze pro zásady předplatného. Skupiny prostředků v rámci předplatného zdědí tato nastavení. 
 
-Upozornění e-mailová oznámení jsou zasílány:
-- Pouze pro upozornění s vysokou závažností
-- Příjemci jednoho e-mailu na typ výstrahy za den  
+E-mailová oznámení o upozornění se posílají:
+- Pouze pro výstrahy s vysokou závažností.
+- Jednomu příjemci e-mailu na typ výstrahy a den.  
 - Více než 3 zprávy e-mailu se odesílají do jednoho příjemce v jeden den
-- Každou e-mailová zpráva obsahuje jedinou výstrahu, není souhrn výstrah
+- Každá e-mailová zpráva obsahuje upozornění, nikoli souhrn upozornění.
  
-Například pokud už se e-mailovou zprávu poslala upozornila vás útok na protokol RDP, neobdržíte žádné jiné e-mailovou zprávu o útok RDP ve stejný den i v případě, že se aktivuje upozornění na jiný. 
+Pokud vám například byla odeslána e-mailová zpráva s upozorněním na útok RDP, nedostanete další e-mailovou zprávu o útoku RDP ve stejný den, i když se aktivuje další upozornění. 
  
 
 > [!NOTE]

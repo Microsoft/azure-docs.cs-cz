@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60725563"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
@@ -53,7 +53,7 @@ Zdrojový počítač zaregistruje s konfiguračním serverem při instalaci agen
     c. Otevřete soubor Installation_Directory/Fx/uninstall.sh a Odkomentujte celý oddíl, který se pokouší zastavit službu Fx.
     d. [Odinstalujte](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) agenta mobility. Po úspěšné odinstalaci, restartujte počítač systému a poté přeinstalujte agenta mobility.
 
-## <a name="installation-failure-failed-to-load-accounts"></a>Instalace se nezdařila: Nepovedlo se načíst účty.
+## <a name="installation-failure-failed-to-load-accounts"></a>Instalace se nezdařila: Nepovedlo se načíst účty
 
 Tato chyba nastane, pokud služba nelze číst data z přenosového připojení, když je instalace agenta mobility a registrace konfiguračního serveru. Chcete-li vyřešit tento problém, povolte protokol TLS 1.0 je na zdrojovém počítači.
 

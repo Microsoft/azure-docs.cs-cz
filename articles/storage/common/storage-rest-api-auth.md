@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66306664"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
@@ -65,7 +65,7 @@ Podívejme se na stránce v referenci rozhraní REST API pro [ListContainers](/r
 
 **Metoda požadavku**: GET. Tento příkaz je metoda HTTP, který zadáte jako vlastnost objektu požadavku. Ostatní hodnoty pro tuto operaci zahrnují HEAD, PUT a DELETE, v závislosti na rozhraní API, se označuje jako volání.
 
-**Identifikátor URI žádosti**: https://myaccount.blob.core.windows.net/?comp=list  Tím se vytvoří z koncového bodu účtu úložiště objektů blob `http://myaccount.blob.core.windows.net` a řetězec prostředku `/?comp=list`.
+**Identifikátor URI žádosti**: https://myaccount.blob.core.windows.net/?comp=list   Tím se vytvoří z koncového bodu účtu úložiště objektů blob `http://myaccount.blob.core.windows.net` a řetězec prostředku `/?comp=list`.
 
 [Parametry identifikátoru URI](/rest/api/storageservices/List-Containers2#uri-parameters): Existují další parametry dotazu, které můžete použít při volání metody ListContainers. Několik z těchto parametrů se *vypršení časového limitu* volání (v sekundách) a *předponu*, který se používá k filtrování.
 

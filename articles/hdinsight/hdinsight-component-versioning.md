@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/07/2019
-ms.openlocfilehash: bbcb2cc87613bbaf812a4eb682a0eb25db28682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 847b6f12a2be0b92fe59b19b81e7953e261d1dd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070562"
+ms.locfileid: "67129254"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -46,7 +46,7 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
 | Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.2 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (jenom Windows) |
+| Apache Spark | 2.3.1 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (jenom Windows) |
 | Apache Livy | 0,5 | 0.4, 0.4, 0.3 | 0.3 | 0.3 | 0.2 | - |
 | Apache Kafka | 1.1.1 | 1.1, 1.0 * (viz poznámka níže) | 0.10.0 | 0.9.0 | - | - |
 | Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |

@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61429875"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
@@ -42,7 +42,7 @@ K provedení úloh popsaných v tomto článku, musíte mít předplatné Azure 
 
 Použít **konektorů SSIS**, je nutné stáhnout:
 
-* **SQL Server 2014 nebo 2016 Standard (nebo novější)**: Instalace zahrnuje SQL Server Integration Services.
+* **SQL Server 2014 nebo 2016 Standard (nebo novější)** : Instalace zahrnuje SQL Server Integration Services.
 * **Microsoft SQL Server 2014 nebo 2016 Integration Services Feature Pack for Azure**: Tyto soubory můžete stáhnout, v uvedeném pořadí, z [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) a [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) stránky.
 
 > [!NOTE]

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772954"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostické funkce pro stavové služby Reliable Services
@@ -29,8 +29,8 @@ EventSource – název pro třídu StatefulServiceBase služby Reliable Stateful
 
 Příklady nástrojů a technologií, které pomáhají při shromažďování nebo zobrazování událostí EventSource [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md)a [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Události
-| Název události | ID události | Úroveň | Popis události |
+## <a name="events"></a>Duration
+| Název události | ID události | Level | Popis události |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Informační |Když je spuštěná úloha RunAsync služby |
 | StatefulRunAsyncCancellation |2 |Informační |Emitovány při zrušení úkolu RunAsync služby |
@@ -50,9 +50,9 @@ StatefulRunAsyncSlowCancellation je vygenerován pokaždé, když se požadavek 
 ## <a name="performance-counters"></a>Čítače výkonu
 Reliable Services v modulu runtime definuje následující kategorie čítačů výkonu:
 
-| Kategorie | Popis |
+| Category | Popis |
 | --- | --- |
-| Transakční replikátor Service Fabricu |Čítače specifické pro transakční Replikátor Service Fabricu Azure |
+| Transakční Replikátor Service Fabricu |Čítače specifické pro transakční Replikátor Service Fabricu Azure |
 | Service Fabric TStore |Čítače specifické pro Azure Service Fabric TStore |
 
 Transakční Replikátor Service Fabricu používá [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) k replikaci transakcí v rámci dané sady [repliky](service-fabric-concepts-replica-lifecycle.md).
@@ -104,9 +104,9 @@ Modul runtime Reliable Services generuje následující události v rámci `Serv
 
  Název čítače | Popis |
 | --- | --- |
-| Operace zahájení transakce/s | Počet nových zápisu transakce vytvořené za sekundu.|
-| Operace s transakcemi/s | Počet operací přidání, aktualizace nebo odstranění provedených na spolehlivé kolekce za sekundu.|
-| Vyprázdněné bajty protokolu/s | Počet bajtů vyprazdňuje na disk transakční Replikátor za sekundu |
+| Začněte Txn operace/s | Počet nových zápisu transakce vytvořené za sekundu.|
+| Operace transakcí za sekundu | Počet operací přidání, aktualizace nebo odstranění provedených na spolehlivé kolekce za sekundu.|
+| Vyprázdnění bajty protokolu/s | Počet bajtů vyprazdňuje na disk transakční Replikátor za sekundu |
 | Omezené operace/s | Počet operací odmítl za sekundu, které transakční Replikátor kvůli omezování. |
 | Střední Ms transakce na potvrzení | Latence průměrné potvrzení na transakci v milisekundách |
 | Střední Latence vyprázdnění (ms) | Průměrná doba trvání vyprázdnění operací disku Inicializuje transakční Replikátor v milisekundách |
@@ -119,8 +119,8 @@ Modul runtime Reliable Services generuje následující události v rámci `Serv
 | --- | --- |
 | Počet položek | Počet položek v úložišti.|
 | Velikost disku | Celkové velikosti disku, v bajtech souborů kontrolních bodů pro úložiště.|
-| Bajty zápisu do souboru kontrolního bodu/s | Počet bajtů zapsaných za sekundu pro aktuální soubor kontrolního bodu.|
-| Bajty přenosu při kopírování na disk / s | Počet bajtů disku (v primární replice) čteným nebo zapsaným (na sekundární replice) za sekundu během kopii úložiště.|
+| Kontrolní bod soubor zapsané bajty/s | Počet bajtů zapsaných za sekundu pro aktuální soubor kontrolního bodu.|
+| Zkopírujte přenos disku bajtů/s | Počet bajtů disku (v primární replice) čteným nebo zapsaným (na sekundární replice) za sekundu během kopii úložiště.|
 
 ## <a name="next-steps"></a>Další postup
 [Poskytovatelé EventSource v PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

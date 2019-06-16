@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 5197fdfe78b1b091de713754967f58157cc4a1b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66481651"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN od Verizonu Premium stroj pravidel splňují podmínky
@@ -30,7 +30,7 @@ Můžete například použít podmínku shody pro:
 
 Podmínka shody vždy platí výchozí sadu funkcí pro všechny požadavky.
 
-Název | Účel
+Name | Účel
 -----|--------
 [Vždy](#always) | Výchozí sada funkcí se vztahuje na všechny požadavky.
 
@@ -81,7 +81,7 @@ Název | Účel
 
 Podmínky shody URL identifikaci požadavků podle jejich adresy URL.
 
-Name | Účel
+Název | Účel
 -----|--------
 [Adresář cesty URL](#url-path-directory) | Identifikuje požadavky podle jejich relativní cesty.
 [Rozšíření cesty adresy URL](#url-path-extension) | Identifikuje požadavky podle jejich přípony názvu souboru.
@@ -804,7 +804,7 @@ Informace o klíči:
 - Okraj CNAME adresa URL je přepsán na adresu URL CDN před porovnání adresy URL.
 
     Například obě následující adresy URL přejděte na stejný prostředek a proto mají stejnou cestu URL:
-     - Adresa URL pro CDN: http://wpc.0001.&lt; domény&gt;/800001/CustomerOrigin/path/asset.htm
+     - Adresa URL pro CDN: http://wpc.0001.&lt ; domény&gt; /800001/CustomerOrigin/path/asset.htm
      - Adresa URL CNAME Edge: http:\//&lt;koncový bod&gt;.azureedge.net/path/asset.htm
     
     Další informace:

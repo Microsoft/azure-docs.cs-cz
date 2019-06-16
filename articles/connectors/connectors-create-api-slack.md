@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105645"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorování a správa Slack s Azure Logic Apps
@@ -56,7 +56,7 @@ Můžete použít aktivační události, které odpovědi ze svého účtu Slack
    V seznamu akcí vyberte požadovanou akci.
 
    Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Pokud se zobrazí výzva k přihlášení na Slack, přihlaste se do pracovního prostoru Slack. 
 

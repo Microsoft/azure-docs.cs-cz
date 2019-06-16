@@ -10,10 +10,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: aa3c942448be6444044981eacc2bbc3214b9c1b4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939393"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Průvodce laděním výkonu pro Storm v HDInsight a Azure Data Lake Storage Gen2
@@ -111,7 +111,7 @@ Pokud dosáhnete limitů šířky pásma poskytuje Data Lake Storage Gen2, můž
 
 A zkontrolujte, zda jste se získávání omezují, povolte protokolování na straně klienta ladění:
 
-1. V **Ambari** > **Storm** > **Config** > **Advanced storm pracovního log4j**, změnit **&lt;kořenové úrovně = "informace"&gt;** k  **&lt;kořenové úrovně = "debug"&gt;**. Restartujte všechny uzly nebo službu k provedení změn konfigurace.
+1. V **Ambari** > **Storm** > **Config** > **Advanced storm pracovního log4j**, změnit **&lt;kořenové úrovně = "informace"&gt;** k  **&lt;kořenové úrovně = "debug"&gt;** . Restartujte všechny uzly nebo službu k provedení změn konfigurace.
 2. Monitorování topologie Storm protokoly na pracovních uzlech (v části /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;port&gt;/worker.log) pro Data Lake Storage Gen2 omezování výjimky.
 
 ## <a name="next-steps"></a>Další postup

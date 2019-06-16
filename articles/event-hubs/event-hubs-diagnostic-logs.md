@@ -17,18 +17,18 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60822355"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostické protokoly pro centra událostí Azure
 
 Dva typy protokolů můžete zobrazit pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)**: Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)**: Můžete nakonfigurovat diagnostické protokoly pro bohatší zobrazení všechno, co se děje s úlohou. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
+* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)** : Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
+* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)** : Můžete nakonfigurovat diagnostické protokoly pro bohatší zobrazení všechno, co se děje s úlohou. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
 
 ## <a name="enable-diagnostic-logs"></a>Povolení diagnostických protokolů
 
