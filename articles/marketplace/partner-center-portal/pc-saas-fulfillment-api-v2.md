@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ms.openlocfilehash: da23b90e44869dcbd21acf9b2c4e04f30153ae09
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66751779"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro SaaS splnění verze 2 
@@ -107,7 +107,7 @@ Umožňuje vyřešit koncový bod vydavatele řešení marketplace token trvalé
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 |  x-ms-marketplace-token  |  Parametr token dotazu v adrese URL, když se uživatel přesměruje na web SaaS ISV od Azure (například: `https://contoso.com/signup?token=..`). *Poznámka:* Adresa URL dekóduje hodnoty tokenu z prohlížeče před jeho použitím.  |
 
 *Kódy odpovědí:*
@@ -171,7 +171,7 @@ Zobrazí všechny odběry SaaS pro vydavatele.
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 | x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-| Autorizace      |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kódy odpovědí:*
 
@@ -241,7 +241,7 @@ Získá určený odběr SaaS. Pomocí tohoto volání můžete získat informace
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kódy odpovědí:*
 
@@ -305,7 +305,7 @@ Pomocí tohoto volání můžete zjistit, jestli jsou všechny nabídky private/
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 |  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *Kódy odpovědí:*
 
@@ -359,7 +359,7 @@ Vnitřní chyba serveru<br>
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  x-ms-correlationid  | Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento řetězec koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *Žádost:*
 
@@ -416,7 +416,7 @@ Aktualizujte plán v rámci předplatného.
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  x-ms-correlationid  |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.    |
-| Autorizace      |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Datová část požadavku:*
 
@@ -482,7 +482,7 @@ Aktualizujte množství u daného předplatného.
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  x-ms-correlationid  |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.    |
-| Autorizace      |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+| authorization      |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Datová část požadavku:*
 
@@ -548,7 +548,7 @@ Odhlásit a odstranit zadaný odběr.
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.   |
 |  x-ms-correlationid  |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.   |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kódy odpovědí:*
 
@@ -601,7 +601,7 @@ Vypíše zbývající operace pro aktuální vydavatele.
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kódy odpovědí:*
 
@@ -664,7 +664,7 @@ Umožňuje vydavatele a sledovat stav zadaného aktivovaných asynchronní opera
 |  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi.  |
-|  Autorizace     |[Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |[Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Kódy odpovědí:* Kód: 200<br> Získá zadaný nevyřízenou operaci SaaS<br>
 Vrácená data:
@@ -727,7 +727,7 @@ Aktualizujte stav operace pro označení úspěchu nebo selhání pomocí zadan�
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   Jedinečnou hodnotu řetězce pro sledování žádosti z klienta, pokud možno identifikátor GUID. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
 |  x-ms-correlationid |  Jedinečnou hodnotu řetězce pro operaci na straně klienta. Tento parametr koreluje všech událostí z operace klienta s událostmi na straně serveru. Pokud tuto hodnotu nezadáte, jeden se vygeneruje a k dispozici v hlavičkách odpovědi. |
-|  Autorizace     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+|  authorization     |  [Získání tokenu JSON web token (JWT) nosiče.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *Datová část požadavku:*
 
