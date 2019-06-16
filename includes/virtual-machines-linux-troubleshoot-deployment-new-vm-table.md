@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d93de4ed758afb5e951bb5e19f4f7adb290e461c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160342"
 ---
 V následující tabulce jsou uvedeny možné nahrát a zachycení kombinací Linux generalizovaných a specializovaných bitové kopie operačního systému. Kombinace, které budou zpracovávat bez chyb, které jsou označeny Y a ty, které vyvolá výjimku chyby jsou označeny N. Příčiny a řešení pro různé chyby, na které narazíte, jsou uvedeny níže v tabulce.

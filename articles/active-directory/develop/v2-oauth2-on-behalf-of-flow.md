@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0c1c4dcf7e4ff0c82157af83aa15544cf092e2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1bdd91f8ee1228febe71244530a63fe992df56d9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544761"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110848"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Platforma identit Microsoft a tok OAuth 2.0 On-Behalf-Of
 
@@ -201,7 +201,7 @@ Pro aplikace, které je potřeba pouze přihlášení pracovní nebo školní ú
 
 V tuto chvíli osobní systémem účtů Microsoft nepodporuje kombinované souhlasu a proto se tento přístup nefunguje pro aplikace, které chcete konkrétně přihlašovat osobní účty. Osobní účty Microsoft, který používáte jako účty hostů v tenantovi se určují pomocí šablon v systému Azure AD a můžete projít kombinované souhlas.
 
-#### <a name="pre-authorized-applications"></a>Předběžně autorizované aplikace
+#### <a name="pre-authorized-applications"></a>Předběžně autorizovaných aplikacích
 
 Funkce portálu aplikaci je "předběžně autorizovaných aplikacích". Tímto způsobem můžete určit zdroj, vždy určité aplikace má oprávnění k příjmu určité obory. To je užitečné především k navázání připojení mezi klientem front-endu a back-end zdroj snadnější. Prostředek může deklarovat více předběžně autorizovaných aplikacích – tyto aplikace můžete požádat o tato oprávnění v OBO tok a přijímat je bez poskytnutí souhlasu uživatele.
 

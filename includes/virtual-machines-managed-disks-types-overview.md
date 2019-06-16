@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133224"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou dostupné v Azure?
 
@@ -23,17 +23,17 @@ Spravované disky Azure nyní nabízí čtyři typy disků, tři, z nichž jsou 
 
 Následující tabulka obsahuje porovnání ultra solid-stát disky (SSD) (preview), premium SSD, SSD na úrovni standard a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou při rozhodování, co se má použít.
 
-|   | Ultra SSD (preview)   | SSD úrovně Premium   | SSD úrovně Standard   | Disk HDD úrovně Standard   |
+|   | Ultra SSD (preview)   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na vstupně-výstupních operací, jako jsou SAP HANA, databáze na nejvyšší úrovni (třeba SQL, Oracle) a dalších transakcí náročná na výkon úloh.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používaná podnikové aplikace a pro vývoj/testování   |Zálohování méně náročné úlohy s řídkým přístupem   |
 |Velikost disku   |gibibajt 65 536 (GiB) (Preview)   |32 767 giB    |32 767 giB   |32 767 giB   |
 |Maximální propustnost   |2 000 MiB/s (Preview)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Maximální počet vstupně-výstupních operací za sekundu   |160,000 (preview)   |20,000   |6,000   |2 000   |
+|Maximální počet vstupně-výstupních operací   |160,000 (preview)   |20,000   |6,000   |2 000   |
 
 ## <a name="ultra-ssd-preview"></a>Ultra SSD (preview)
 
-Ultra SSD Azure (preview) poskytovat vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Některé další výhody ultra SSD patří schopnost dynamicky měnit výkon disku spolu s úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy. Ultra SSD jde použít jenom jako datové disky. Doporučujeme použít disky premium SSD jako disky s operačním systémem.
+Ultra SSD Azure (preview) poskytuje vysokou propustnost, vysoké IOPS a stálá nízká latence diskové úložiště pro virtuální počítače Azure IaaS. Některé další výhody ultra SSD patří schopnost dynamicky měnit výkon disku spolu s úlohami, aniž byste museli restartovat své virtuální počítače. Ultra SSD disky jsou vhodné pro úlohy náročné na data, jako je SAP HANA, databáze na nejvyšší úrovni a transakce náročné úlohy. Ultra SSD jde použít jenom jako datové disky. Doporučujeme použít disky premium SSD jako disky s operačním systémem.
 
 ### <a name="performance"></a>Výkon
 
@@ -73,7 +73,8 @@ Ve verzi preview, ultra SSD:
 - Jsou podporovány pouze na virtuálních počítačích ES/DS v3
 - Jsou k dispozici pouze jako datové disky a pouze velikost fyzického sektoru 4k podpoře  
 - Je možné vytvořit pouze jako prázdné disky  
-- Aktuálně lze nasadit pouze pomocí šablony Azure Resource Manageru, rozhraní příkazového řádku a python SDK.
+- Aktuálně lze nasadit pouze pomocí šablony Azure Resource Manageru, rozhraní příkazového řádku, Powershellu a sadě Python SDK.
+- Nelze nasadit pomocí webu Azure portal (ještě).
 - Zatím nepodporuje snímky disků, imagí virtuálních počítačů, dostupnosti, škálovací sady virtuálních počítačů a Azure disk encryption.
 - Zatím nepodporuje integraci s Azure Backup nebo Azure Site Recovery.
 - Stejně jako u [většina náhledy](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), tuto funkci neměli používat pro produkční úlohy až do obecné dostupnosti (GA).

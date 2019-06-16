@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
 ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60752880"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
@@ -41,7 +41,7 @@ Tato doporučení jsou kompilované zpětnou vazbu a tipy od mnoha odborníci p�
 
 ### <a name="how-to-use-the-cheat-sheet"></a>Jak používat tahák
 
-Čtení cesty a algoritmus popisků v grafu jako "pro  *&lt;popisek cesty&gt;*, použijte  *&lt;algoritmus&gt;*." Například "pro *rychlost*, použijte *dvě třídy logistické regrese*." Platí se někdy více než jedna větev.
+Čtení cesty a algoritmus popisků v grafu jako "pro  *&lt;popisek cesty&gt;* , použijte  *&lt;algoritmus&gt;* ." Například "pro *rychlost*, použijte *dvě třídy logistické regrese*." Platí se někdy více než jedna větev.
 Žádná z nich jsou někdy dokonale vyhovovat. Jejich smyslem je bude pravidlo thumb doporučení, tak Nestarejte se o to je přesné.
 Několik odborníci přes data, kterou jsme už mluvili s uvedené, které pouze že způsob, jak najít ten nejlepší algoritmus je vyzkoušet všechno, co je.
 
@@ -66,7 +66,7 @@ Učení je Oblíbené a vhodné typ služby machine learning. S jedinou výjimko
 
 Datové body mají ve službě learning bez dohledu, se k nim má přiřazené žádné popisky. Místo toho je cílem algoritmus učení bez dohledu uspořádání dat nějakým způsobem nebo k popisu struktury. To může znamenat seskupení do clusterů nebo vyhledání různé způsoby prohlížení komplexní data, aby se zobrazovala jednodušší nebo organizovanější.
 
-### <a name="reinforcement-learning"></a>Zpětnovazebnému učení
+### <a name="reinforcement-learning"></a>Zpětnovazební učení
 
 V zpětnovazební učení získá algoritmu a vybrat akci v reakci na každý datový bod. Algoritmus učení také obdrží signál reward krátkou dobu později, určující, jak kvalitní byl rozhodnutí.
 Na základě toho algoritmus změní svoji strategii, abyste dosáhli nejvyšší potřebu. Aktuálně nejsou žádné zpětnovazební učení algoritmu moduly ve službě Azure Machine Learning Studio. Zpětnovazebnému učení je běžné v robotika, kde je sada údajů snímačů přes v jednom bodě v čase na datový bod a algoritmus musíte zvolit robot další akci. Také je, že přírodní přizpůsobit pro Internet věcí, které aplikace.

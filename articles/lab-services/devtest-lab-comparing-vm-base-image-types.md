@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64680306"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Porovnání vlastních imagí a vzorců ve službě DevTest Labs
 Obě [vlastních imagí](devtest-lab-create-template.md) a [vzorce](devtest-lab-manage-formulas.md) slouží jako základ pro [vytvořit nové virtuální počítače](devtest-lab-add-vm.md). Klíče rozdílu mezi vlastní imagí a vzorců je však, že vlastní image je jednoduše image založenou na virtuální pevný disk, když vzorec je image založenou na virtuální pevný disk *kromě* předkonfigurovaném nastavení – třeba velikost virtuálního počítače, virtuální sítě podsíť a artefakty. Tato předem nakonfigurovaná nastavení se nastavují s výchozími hodnotami, které se dá přepsat v době vytvoření virtuálního počítače. Tento článek vysvětluje některé (profesionály) výhody a nevýhody (nevýhody) pomocí vlastních imagí a vzorců.

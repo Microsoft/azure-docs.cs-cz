@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
 ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510641"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
@@ -216,7 +216,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název se nedá rozpoznat.
+* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název nelze rozpoznat.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -251,38 +251,38 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.4.0](#2.4.0) |05. května 2019 |--- |
-| [2.3.0](#2.3.0) |04. dubna 2019 |--- |
-| [2.2.3](#2.2.3) |11. března 2019 |--- |
-| [2.2.2](#2.2.2) |06. února 2019 |--- |
+| [2.4.0](#2.4.0) |05\. května 2019 |--- |
+| [2.3.0](#2.3.0) |04\. dubna 2019 |--- |
+| [2.2.3](#2.2.3) |11\. března 2019 |--- |
+| [2.2.2](#2.2.2) |06\. února 2019 |--- |
 | [2.2.1](#2.2.1) |Prosinec 24. května 2018 |--- |
 | [2.2.0](#2.2.0) |07 prosince 2018 |--- |
-| [2.1.3](#2.1.3) |15. října 2018 |--- |
-| [2.1.2](#2.1.2) |04. října 2018 |--- |
-| [2.1.1](#2.1.1) |27. září 2018 |--- |
-| [2.1.0](#2.1.0) |21. září 2018 |--- |
-| [2.0.0](#2.0.0) |07. září 2018 |--- |
-| [1.9.1](#1.9.1) |09. března 2018 |--- |
-| [1.8.2](#1.8.2) |21. února 2018 |--- |
-| [1.8.1](#1.8.1) |05. února 2018 |--- |
-| [1.7.1](#1.7.1) |16. listopadu 2017 |--- |
-| [1.7.0](#1.7.0) |10. listopadu 2017 |--- |
-| [1.6.0](#1.6.0) |17. října 2017 |--- |
-| [1.5.1](#1.5.1) |02. října 2017 |--- |
-| [1.5.0](#1.5.0) |10. srpna 2017 |--- | 
-| [1.4.1](#1.4.1) |07. srpna 2017 |--- |
-| [1.4.0](#1.4.0) |02. srpna 2017 |--- |
-| [1.3.2](#1.3.2) |12. června 2017 |--- |
-| [1.3.1](#1.3.1) |23. května 2017 |--- |
-| [1.3.0](#1.3.0) |10. května 2017 |--- |
-| [1.2.2](#1.2.2) |19. dubna 2017 |--- |
-| [1.2.1](#1.2.1) |29. března 2017 |--- |
-| [1.2.0](#1.2.0) |25. března 2017 |--- |
-| [1.1.2](#1.1.2) |20. března 2017 |--- |
-| [1.1.1](#1.1.1) |14. března 2017 |--- |
-| [1.1.0](#1.1.0) |16. února 2017 |--- |
-| [1.0.0](#1.0.0) |21. prosince 2016 |--- |
-| [0.1.0-preview](#0.1.0-preview) |15. listopadu 2016 |Do 31. prosince 2016 |
+| [2.1.3](#2.1.3) |15\. října 2018 |--- |
+| [2.1.2](#2.1.2) |04\. října 2018 |--- |
+| [2.1.1](#2.1.1) |27\. září 2018 |--- |
+| [2.1.0](#2.1.0) |21\. září 2018 |--- |
+| [2.0.0](#2.0.0) |07\. září 2018 |--- |
+| [1.9.1](#1.9.1) |09\. března 2018 |--- |
+| [1.8.2](#1.8.2) |21\. února 2018 |--- |
+| [1.8.1](#1.8.1) |05\. února 2018 |--- |
+| [1.7.1](#1.7.1) |16\. listopadu 2017 |--- |
+| [1.7.0](#1.7.0) |10\. listopadu 2017 |--- |
+| [1.6.0](#1.6.0) |17\. října 2017 |--- |
+| [1.5.1](#1.5.1) |02\. října 2017 |--- |
+| [1.5.0](#1.5.0) |10\. srpna 2017 |--- | 
+| [1.4.1](#1.4.1) |07\. srpna 2017 |--- |
+| [1.4.0](#1.4.0) |02\. srpna 2017 |--- |
+| [1.3.2](#1.3.2) |12\. června 2017 |--- |
+| [1.3.1](#1.3.1) |23\. května 2017 |--- |
+| [1.3.0](#1.3.0) |10\. května 2017 |--- |
+| [1.2.2](#1.2.2) |19\. dubna 2017 |--- |
+| [1.2.1](#1.2.1) |29\. března 2017 |--- |
+| [1.2.0](#1.2.0) |25\. března 2017 |--- |
+| [1.1.2](#1.1.2) |20\. března 2017 |--- |
+| [1.1.1](#1.1.1) |14\. března 2017 |--- |
+| [1.1.0](#1.1.0) |16\. února 2017 |--- |
+| [1.0.0](#1.0.0) |21\. prosince 2016 |--- |
+| [0.1.0-preview](#0.1.0-preview) |15\. listopadu 2016 |Do 31. prosince 2016 |
 
 ## <a name="see-also"></a>Viz také
 Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.

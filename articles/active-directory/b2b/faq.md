@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40fc631e84336b684f981a2fef1515a1febec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: df4f06528d0dd261dd92ab84b07bb705e23f7fd6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65811912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113072"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -85,7 +85,7 @@ Ano, Dynamics 365 (online) podporuje spolupráci B2B ve službě Azure AD. Dalš
 Azure AD má pevnou sadu znaků, síly hesla a účtu, že požadavky na uzamčení, které se vztahují na všechny Azure AD i cloudové uživatelské účty. Cloudové uživatelské účty jsou účty, které nejsou Federovaná pomocí jiného zprostředkovatele identity, jako například 
 * Účet Microsoft
 * Facebook
-* Active Directory Federation Services (AD FS)
+* Active Directory Federation Services
 * Jiného tenanta cloudu (pro spolupráci B2B)
 
 Pro federované účty zásady pro hesla závisí na zásady, které jsou použity v místních tenantů a nastavení účtu Microsoft uživatele.

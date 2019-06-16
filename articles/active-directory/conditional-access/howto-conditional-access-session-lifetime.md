@@ -1,5 +1,5 @@
 ---
-title: Konfigurace ověřování relace správy s podmíněným přístupem Azure Active Directory
+title: Konfigurace správy relace ověřování pomocí Azure Active Directory podmíněného přístupu
 description: Vlastní konfigurace relací ověřování Azure AD, včetně frekvence a prohlížeč trvalost relace přihlášení uživatele.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25bf4653db2008559c1fe3f13b30c5c82a202ffd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052455"
+ms.locfileid: "67112327"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace ověřování relace správy s podmíněným přístupem
 
@@ -95,13 +95,13 @@ Pokud jste nakonfigurovali jinou frekvencí přihlášení pro jiné webové apl
 
 Použijte nástroj What If pro simulaci přihlášení od uživatele pro cílovou aplikaci a jiných podmínek založených na tom, jak jste nakonfigurovali zásady. Ovládací prvky ověřování relací správu se zobrazí ve výsledku tohoto nástroje.
 
-![Podmíněný přístup, jak postupovat, pokud nástroj pro výsledky](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
+![Výsledky nástroje pro podmíněný přístup What If](media/howto-conditional-access-session-lifetime/conditional-access-what-if-tool-result.png)
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
-Pokud chcete mít jistotu, že vaše zásady funguje podle očekávání, doporučené osvědčeným postupem je otestovat před zavedením do produkčního prostředí. V ideálním případě ověřte, zda vaše nová zásada funguje očekávaným způsobem pomocí testovacího tenanta. Další informace najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md).
+Pokud chcete mít jistotu, že vaše zásady funguje podle očekávání, doporučené osvědčeným postupem je otestovat před zavedením do produkčního prostředí. V ideálním případě ověřte, zda vaše nová zásada funguje očekávaným způsobem pomocí testovacího tenanta. Další informace najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu, najdete v článku [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
-* Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md).
+* Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu, najdete v článku [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
+* Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

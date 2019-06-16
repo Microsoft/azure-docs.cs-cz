@@ -16,10 +16,10 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61418823"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Nasazení virtuálních polí StorSimple – zřizování v prostředí VMware
@@ -131,7 +131,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte virtuální zaří
 18. Na **verze virtuálního počítače** stránce **verze virtuálního počítače: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. Na **hostovaný operační systém** stránky, vyberte **hostovaný operační systém** jako **Windows**. Pro **verze**, z rozevíracího seznamu vyberte **Microsoft Windows Server 2012 (64-bit)**.
+19. Na **hostovaný operační systém** stránky, vyberte **hostovaný operační systém** jako **Windows**. Pro **verze**, z rozevíracího seznamu vyberte **Microsoft Windows Server 2012 (64-bit)** .
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. Na **procesory** stránky, upravte **virtuální soketů** a **počet jader na virtuální soketu** tak, aby **celkový počet jader** je 4 (nebo více). Klikněte na **Další**.

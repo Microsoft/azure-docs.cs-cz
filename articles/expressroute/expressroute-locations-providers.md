@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jaredr80
-ms.openlocfilehash: 48b75bee6eddda6591ac0285cd8c0c8a43ac0dbe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f7006a8162aab87bc36f3dae034f10daa3f37ac1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054385"
+ms.locfileid: "67115459"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -74,7 +74,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 
 
 ### <a name="production-azure"></a>Produkční prostředí Azure
-| **Umístění** | **Vlastník umístění partnerského vztahu** | **Místní oblasti Azure** | **Poskytovatelé služeb** |
+| **Location** | **Vlastník umístění partnerského vztahu** | **Místní oblasti Azure** | **Poskytovatelé služeb** |
 | --- | --- | --- | --- |
 | **Amsterdam** | Equinix | Západní Evropa | Aryaka Networks, AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, GÉANT, InterCloud, Interxion, KPN, IX Reach, Level 3 Communications, Megaport, NTT Communications, Orange, Tata Communications, TeleCity Group, Telefonica, Telenor, Telia Carrier, Verizon, Zayo |
 | **Amsterdam2** | Interxion | Západní Evropa | DE-CIX, Interxion |
@@ -132,7 +132,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 ### <a name="national-cloud-environments"></a>Prostředí národních cloudů
 
 ### <a name="us-government-cloud"></a>Cloud vlády USA
-| **Umístění** | **Poskytovatelé služeb** |
+| **Location** | **Poskytovatelé služeb** |
 | --- | --- |
 | **Chicago** |AT&T NetBond, Equinix, Level 3 Communications, Verizon |
 | **Dallas** |Equinix, Megaport, Verizon |
@@ -144,7 +144,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Washington, D.C.** |AT&T NetBond, Equinix, Level 3 Communications, Megaport, Verizon |
 
 ### <a name="china"></a>Čína
-| **Umístění** | **Poskytovatelé služeb** |
+| **Location** | **Poskytovatelé služeb** |
 | --- | --- |
 | **Peking** |China Telecom |
 | **Beijing2** | Čína Telecom, GDS |
@@ -177,32 +177,33 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
   * Při nastavení připojení postupujte podle kroků v tématu [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
 
 ## <a name="c1partners"></a>Možnosti připojení prostřednictvím dalších poskytovatelů služeb
-| **Umístění** | **Výměna** | **Poskytovatelé připojení** |
+| **Location** | **Výměna** | **Poskytovatelé připojení** |
 | --- | --- | --- |
 | **Amsterdam** | Equinix, Telecity | BICS, CloudXpress, Eurofiber, Fastweb S.p.A, Gulf Bridge International, MainOne, Nianet, Post, Proximus, TDC Erhverv, Telecom Italia Sparkle, Telia |
+| **Atlanta** | Equinix| Castle koruna
 | **Kapské město** | Teraco | MTN |
-| **Chicago** | Equinix | Windstream Lightower spektra Enterprise |
-| **Dallas** | Equinix, Megaport | Firma Axtel C3ntro Telecom Cox obchodní Data Foundry spektra Enterprise, Transtelco |
+| **Chicago** | Equinix | Windstream koruna Castle, Opensourcová Enterprise |
+| **Dallas** | Equinix, Megaport | Firma Axtel C3ntro Telecom Cox obchodní koruna Castle Data Foundry spektrum podnikových Transtelco |
 | **Frankfurt** | Telecity | BICS, Cinia, Nianet, QSC AG |
 | **Hamburg** | Equinix | Cinia |
 | **Hongkong – zvláštní administrativní oblast** | Equinix | Ředitel pro Macroview telekomunikaci |
 | **Johannesburg** | Teraco | MTN |
 | **Londýn** | BICS, Equinix, euNetworks, Telecity | Bezeq International Ltd., CoreAzure, Epsilon Telecommunications Limited, Exponential E, HSO, NexGen Networks, Proximus, Tamares Telecom, Zain |
-| **Los Angeles** | Equinix |Spektrum podnikových, Transtelco |
+| **Los Angeles** | Equinix |Transtelco koruna Castle, Opensourcová Enterprise |
 | **Madrid** | Level3 | Zertia |
 | **Montreal** | Cologix, Equinix | Airgate Technologies, Inc. Cogeco Peer 1, Rogers, Zirro |
-| **New York** |Equinix, Megaport | Altice obchodní Lightower, Opensourcová Enterprise, Webair |
+| **New York** |Equinix, Megaport | Altice firmy, koruna Castle spektra Enterprise, Webair |
 | **Paříž** | Equinix | Proximus |
 | **Québec** | Megaport | Fibrenoire |
 | **Sao Paula** | Equinix | Venha Pra Nuvem |
 | **Seattle** |Equinix | Alaska Communications |
-| **Silicon Valley** |Equinix | Cox Business, Enterprise spektra Windstream |
+| **Silicon Valley** |Coresite, Equinix | Cox firmy, Opensourcová Enterprise, Windstream, X2nsat Inc. |
 | **Singapur** |Equinix |1CLOUDSTAR, BICS, Epsilon Telecommunications Limited, LGA Telecom, United Information Highway (UIH) |
 | **Slough** | Equinix | HSO|
 | **Sydney** | Megaport | Macquarie Telecom Group|
 | **Tokio** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
-| **Toronto** | Equinix | Airgate Technologies, Inc. Cogeco Peer 1, IVedha Inc, Rogers, Thinktel, Zirro|
-| **Washington, D.C.** |Equinix | Altice Business, BICS, Cox Business, Gtt Communications Inc, Epsilon Telecommunications Limited, Lightower, Masergy, Windstream |
+| **Toronto** | Equinix, Megaport | Airgate Technologies Inc., Beanfield Metroconnect, Cogeco Peer 1, IVedha Inc, Rogers, Thinktel, Zirro|
+| **Washington, D.C.** |Equinix | Altice Business, BICS, Cox Business, Crown Castle, Gtt Communications Inc, Epsilon Telecommunications Limited, Masergy, Windstream |
 
 ## <a name="expressroute-system-integrators"></a>Systémoví integrátoři ExpressRoute
 Povolení soukromého připojení podle vlastních potřeb může být náročné, v závislosti na rozsahu vaší sítě. Můžete spolupracovat s kterýmkoli systémovým integrátorem uvedeným v následující tabulce, aby vám pomohl s připojením k ExpressRoute.

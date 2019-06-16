@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: d7debbc760e103046ce9bb1a8bdf25a954d9891c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65138559"
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
@@ -26,9 +26,9 @@ Poskytujeme jenom snímek dostupné nástroje klienta služby Azure Storage. Tyt
 <table>
   <tr>
     <th rowspan="2">Nástroj pro klienta služby Azure Storage</th>
-    <th rowspan="2">Objekt blob bloku</th>
-    <th rowspan="2">Objekt blob stránky</th>
-    <th rowspan="2">Připojit objekt blob</th>
+    <th rowspan="2">Objekt Blob bloku</th>
+    <th rowspan="2">Page Blob</th>
+    <th rowspan="2">Doplňovací objekt Blob</th>
     <th rowspan="2">Tabulky</th>
     <th rowspan="2">Fronty</th>
     <th rowspan="2">Soubory</th>
@@ -92,9 +92,9 @@ Jsme neověřili kvality převzatá podle následujících nástrojů třetích 
 <table>
   <tr>
     <th rowspan="2">Nástroj pro klienta služby Azure Storage</th>
-    <th rowspan="2">Objekt blob bloku</th>
-    <th rowspan="2">Objekt blob stránky</th>
-    <th rowspan="2">Připojit objekt blob</th>
+    <th rowspan="2">Objekt Blob bloku</th>
+    <th rowspan="2">Page Blob</th>
+    <th rowspan="2">Doplňovací objekt Blob</th>
     <th rowspan="2">Tabulky</th>
     <th rowspan="2">Fronty</th>
     <th rowspan="2">Soubory</th>

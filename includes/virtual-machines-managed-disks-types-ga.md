@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66249037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133226"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
@@ -45,7 +45,7 @@ Pro standardní jednotky SSD každý vstupně-výstupní operace menší než ne
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Azure standardní pevné disky poskytovat podporu spolehlivé, úsporné disků pro virtuální počítače běžící úlohu kterému latence nevadí. Se standardním úložiště jsou data uložená na pevných disků (HDD). Porovnání s jednotkami SSD disky může více výrazně lišit latenci, vstupně-výstupních operací a propustnosti standardní HDD disky. Při práci s virtuálními počítači, můžete použít standardní HDD disky, pro scénáře vývoje/testování a méně důležité úlohy. Standardní pevné disky jsou dostupné ve všech oblastech Azure a můžou používat všechny virtuální počítače Azure.
+Azure standardní pevné disky poskytovat podporu spolehlivé, úsporné disků pro virtuální počítače běžící úlohu kterému latence nevadí. Se standardním úložiště jsou data uložená na pevných disků (HDD). Porovnání s jednotkami SSD disky může více výrazně lišit latenci, vstupně-výstupních operací a propustnosti standardní HDD disky. Standardní HDD disky jsou navržené tak poskytovat latence zápisu pod 10 ms a latenci pod 20ms pro většinu operací vstupně-výstupních operací čtení, ale skutečný výkon se může lišit v závislosti na velikost a úlohy vzor vstupně-výstupních operací. Při práci s virtuálními počítači, můžete použít standardní HDD disky, pro scénáře vývoje/testování a méně důležité úlohy. Standardní pevné disky jsou dostupné ve všech oblastech Azure a můžou používat všechny virtuální počítače Azure.
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

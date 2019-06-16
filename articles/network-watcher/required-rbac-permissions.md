@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
 ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685694"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Oprávnění pro řízení přístupu na základě rolí vyžaduje používat funkce služby Network Watcher
@@ -27,7 +27,7 @@ ms.locfileid: "64685694"
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/read                              | Získat network watcher                                          |
 | Microsoft.Network/networkWatchers/write                             | Vytvořit nebo aktualizovat sledovací proces sítě                             |
@@ -35,14 +35,14 @@ ms.locfileid: "64685694"
 
 ## <a name="nsg-flow-logs"></a>Protokoly toku NSG
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Konfigurace protokolů toku                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Stav dotazu protokolu toku                                    |
 
 ## <a name="connection-troubleshoot"></a>Řešení potíží s připojením
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectivityCheck/action          | Zahájení připojení k řešení potíží s testu
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Výsledky dotazu připojení k řešení potíží s testu                |
@@ -50,7 +50,7 @@ ms.locfileid: "64685694"
 
 ## <a name="connection-monitor"></a>Monitorování připojení
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Spustit monitorování připojení                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Zastavit monitorování připojení                                      |
@@ -71,31 +71,31 @@ ms.locfileid: "64685694"
 
 ## <a name="ip-flow-verify"></a>Ověření toku protokolu IP
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | Ověření IP toku                                              |
 
 ## <a name="next-hop"></a>Další směrování
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/nextHop/action                    | Získejte další segment směrování z virtuálního počítače                                     |
 
 ## <a name="network-security-group-view"></a>Zobrazení skupin zabezpečení sítě
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | Zobrazení skupin zabezpečení                                           |
 
 ## <a name="topology"></a>Topologie
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | Získat topologii                                                   |
 
 ## <a name="reachability-report"></a>Sestava dostupnosti
 
-| Akce                                                              | Název                                                           |
+| Akce                                                              | Name                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Získat zprávu o dostupnosti Azure                               |
 

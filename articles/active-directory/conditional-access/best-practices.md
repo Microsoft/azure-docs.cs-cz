@@ -1,8 +1,8 @@
 ---
-title: Osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Další informace o co byste měli vědět a co to je, že při konfiguraci zásad podmíněného přístupu, měli byste se vyhnout tím.
+title: Osvědčené postupy pro podmíněný přístup v Azure Active Directory | Dokumentace Microsoftu
+description: Další informace o co byste měli vědět a co to je byste se měli vyhnout postupu při konfiguraci zásad podmíněného přístupu.
 services: active-directory
-keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67811e03bfa87a991b9eeb6f80ddddd87f781335
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 8e7b77376989031dc1697d155cccf59954233a85
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112660"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory
 
@@ -109,7 +109,7 @@ Pro každé přihlášení Azure Active Directory vyhodnotí všechny zásady a 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Podmíněný přístup funguje s Exchange ActiveSync?
 
-Ano, pomocí protokolu Exchange ActiveSync v zásadách podmíněného přístupu s některými [omezení](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync). 
+Ano, pomocí protokolu Exchange ActiveSync v zásadách podmíněného přístupu s některými [omezení](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo). 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak byste měli nakonfigurovat podmíněný přístup aplikací Office 365?
 
@@ -183,5 +183,5 @@ Další informace najdete v tématu [migrace klasických zásad na webu Azure Po
 
 Pokud budete chtít vědět:
 
-- Jak nakonfigurovat zásady podmíněného přístupu, [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+- Jak nakonfigurovat zásady podmíněného přístupu, [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
 - Plánování zásad podmíněného přístupu, naleznete v tématu [postup plánování vašeho nasazení podmíněného přístupu v Azure Active Directory](plan-conditional-access.md).

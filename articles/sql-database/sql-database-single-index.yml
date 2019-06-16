@@ -131,7 +131,7 @@ sections:
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení služby SQL database</a>.
           - html: Globální distribuce dat pomocí <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>.
           - html: 'Další informace najdete <a href="sql-database-howto-single-database.md">návody</a> , která můžete nakonfigurovat svou databázi.'
-  - title: Ukázky
+  - title: Ukázky kódu
     items:
       - type: paragraph
         text: Vyhledání skriptů pro správu běžných úkolů

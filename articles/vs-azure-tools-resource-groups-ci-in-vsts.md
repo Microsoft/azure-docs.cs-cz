@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
 ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66019773"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
@@ -80,9 +80,9 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
       
       * ID předplatného
       * Název předplatného
-      * ID instančního objektu
+      * Id instančního objektu
       * Klíč objektu služby
-      * ID tenanta
+      * Id tenanta
    6. Přidání názvu vlastní volby **předplatné** pole název. Tato hodnota se zobrazí později v **předplatné Azure** rozevíracího seznamu ve službě Azure DevOps Services. 
 
    7. Pokud si nejste jisti ID vašeho předplatného Azure, můžete použít jednu z následujících příkazů ho načíst.
@@ -111,7 +111,7 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
    
    | Parametr | Popis |
    | --- | --- |
-   | -ResourceGroupLocation |Hodnota geografického umístění, kde je umístěna, například skupina prostředků **eastus** nebo **: východní USA"**. (Jednoduché uvozovky přidejte, pokud název obsahuje mezery.) Zobrazit [oblastí Azure](https://azure.microsoft.com/regions/) Další informace. |
+   | -ResourceGroupLocation |Hodnota geografického umístění, kde je umístěna, například skupina prostředků **eastus** nebo **: východní USA"** . (Jednoduché uvozovky přidejte, pokud název obsahuje mezery.) Zobrazit [oblastí Azure](https://azure.microsoft.com/regions/) Další informace. |
    | – Název skupiny prostředků |Název skupiny prostředků, použijete pro toto nasazení. |
    | -UploadArtifacts |Tento parametr, pokud je přítomen, určuje, že artefakty, které je třeba nahrát do Azure z místního systému. Stačí nastavit tento přepínač, pokud vaše nasazení šablony vyžaduje další artefakty, které chcete připravit pomocí skriptu prostředí PowerShell (například konfigurační skripty nebo vnořené šablony). |
    | -StorageAccountName |Název účtu úložiště pro artefakty fáze pro toto nasazení. Tento parametr se používá, pouze pokud představují přípravné artefakty pro nasazení. Pokud tento parametr zadán, je vytvořen nový účet úložiště, pokud skript není vytvořen během předchozích nasazení. Pokud je zadán parametr, již musí existovat účet úložiště. |
@@ -172,8 +172,8 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
    * Akce – vyberte **vytvořit nebo aktualizovat skupinu prostředků.**
    * Skupina prostředků – vyberte skupinu prostředků, nebo zadejte název nové skupiny prostředků pro nasazení
    * Umístění, vyberte umístění pro skupinu prostředků
-   * Šablona – zadejte cestu a název šablony, které mají být nasazeny předřazení **$(Build.StagingDirectory)**, například: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
-   * Parametry šablony – zadejte cestu a název parametrů, kterou chcete použít předřazení **$(Build.StagingDirectory)**, například: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
+   * Šablona – zadejte cestu a název šablony, které mají být nasazeny předřazení **$(Build.StagingDirectory)** , například: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
+   * Parametry šablony – zadejte cestu a název parametrů, kterou chcete použít předřazení **$(Build.StagingDirectory)** , například: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
    * Přepsání parametrů šablony – zadejte nebo zkopírujte a vložte následující kód:
      
      ```    

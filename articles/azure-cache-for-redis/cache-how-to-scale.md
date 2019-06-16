@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
 ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132916"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Postup škálování Azure mezipaměti Redis
@@ -29,7 +29,7 @@ Můžete použít [monitorování](cache-how-to-monitor.md) funkce mezipaměti A
 
 Můžete monitorovat následující metriky pro určení toho, pokud je potřeba škálovat.
 
-* Zatížení serveru Redis
+* Redis Server Load
 * Využití paměti
 * Šířka pásma sítě
 * Využití procesoru
@@ -39,7 +39,7 @@ Pokud zjistíte, že mezipaměť už splňuje požadavky vaší aplikace, může
 ## <a name="scale-a-cache"></a>Škálování mezipaměti
 Se dá škálovat mezipaměť, [přejděte do mezipaměti](cache-configure.md#configure-azure-cache-for-redis-settings) v [webu Azure portal](https://portal.azure.com) a klikněte na tlačítko **škálování** z **nabídce prostředků**.
 
-![Škálovat](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+![Měřítko](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
 Vyberte požadovanou cenovou úroveň z **Vyberte cenovou úroveň** okna a kliknutím na **vyberte**.
 

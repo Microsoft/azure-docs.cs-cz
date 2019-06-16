@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399600"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
@@ -43,10 +43,10 @@ Pomocí tohoto postupu dokončení můžete spustit úplné převzetí služeb p
 
 ![Architektura](./media/azure-stack-site-recovery/architecture.png)
 
-**Umístění** | **Komponenta** |**Podrobnosti**
+**Location** | **Komponenta** |**Podrobnosti**
 --- | --- | ---
 **Konfigurační server** | Běží na jednom virtuálním počítači Azure Stack. | V každém předplatném nastavíte konfigurační server virtuálního počítače. Tento virtuální počítač spustí následující součásti Site Recovery:<br/><br/> -Konfigurace serveru: Koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat. -Procesový server: Funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do úložiště Azure.<br/><br/> Pokud chcete replikovat virtuální počítače překročí omezení uvedená níže, můžete nastavit samostatného procesový server. [Další informace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
-**Služba mobility** | Nainstalovat na každý virtuální počítač, který chcete replikovat. | V krocích v tomto článku jsme připravit účet tak, aby služba Mobility se instaluje automaticky na virtuálním počítači po povolení replikace. Pokud nechcete instalovat službu automaticky, existuje mnoho dalších metod, které můžete použít. [Další informace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
+**Služba Mobility** | Nainstalovat na každý virtuální počítač, který chcete replikovat. | V krocích v tomto článku jsme připravit účet tak, aby služba Mobility se instaluje automaticky na virtuálním počítači po povolení replikace. Pokud nechcete instalovat službu automaticky, existuje mnoho dalších metod, které můžete použít. [Další informace](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
 **Azure** | V Azure budete potřebovat trezor služby Recovery Services, účet úložiště a virtuální síť. |  Replikovaná data jsou uložena v účtu úložiště. Virtuální počítače Azure jsou přidány do sítě Azure, když dojde k převzetí služeb při selhání. 
 
 

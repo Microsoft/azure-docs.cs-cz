@@ -9,10 +9,10 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: 6711506c1e489dcbd50aedd36241affc3bbed80b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113389"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>Zásady: Pro uživatele ve vašem adresáři
@@ -69,7 +69,7 @@ Následujícím postupem, potřebujete zásady obejít žádosti o přístup a P
 
 1. Přejděte dolů k [zásad: Vypršení platnosti](#policy-expiration) oddílu.
 
-### <a name="policy-request"></a>Zásady: Požadavek
+### <a name="policy-request"></a>Zásady: Žádost
 
 V části žádosti zadejte nastavení schválení Pokud uživatelé požadují přístup k balíčku.
 
@@ -95,7 +95,7 @@ V části žádosti zadejte nastavení schválení Pokud uživatelé požadují 
 
 1. V **časový limit žádosti o schválení (dny)** zadejte množství času schvalovatelů nutné zkontrolovat žádost. Pokud žádné schvalovatelů projedná za tento počet dní, žádost vyprší a uživatel bude muset odeslat další požadavek pro přístup k balíčku.
 
-### <a name="policy-expiration"></a>Zásady: Konec platnosti
+### <a name="policy-expiration"></a>Zásady: vypršení platnosti
 
 V části vypršení platnosti můžete určit, kdy vyprší platnost přiřazení uživatele k přístupu k balíčku.
 
@@ -115,7 +115,7 @@ V části vypršení platnosti můžete určit, kdy vyprší platnost přiřazen
 
     ![Přístup k balíčku - nastavení zásad vypršení platnosti](./media/active-directory-entitlement-management-policy/policy-expiration.png)
 
-### <a name="policy-enable-policy"></a>Zásady: Povolit zásadu
+### <a name="policy-enable-policy"></a>Zásady: Povolení zásady
 
 1. Pokud chcete balíček přístupu budou okamžitě dostupné uživatelům v zásadách, klikněte na tlačítko **Ano** povolit příslušné zásady.
 

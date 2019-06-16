@@ -15,10 +15,10 @@ ms.date: 08/21/2017
 ms.author: cynthn
 ms.topic: conceptual
 ms.openlocfilehash: 1457c22034a9d6994485a297b3cb01bc05dcd9d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62127119"
 ---
 # <a name="automatically-scale-virtual-machines-in-azure"></a>Automatické škálování virtuálních počítačů v Azure

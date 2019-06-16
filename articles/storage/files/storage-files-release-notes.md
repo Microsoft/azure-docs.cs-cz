@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 6/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 421f255353a3cf0b6cc000677c91d0f8c84cbc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c90e466bb7798fae3008dd72a4a4a0e2a0e7a0b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540616"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125765"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,22 +25,31 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Kumulativní – aktualizace. května 2019 [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7. května 2019 | Podporované (doporučená verze) |
-| V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. dubna 2019 | Podporováno |
-| 2019 dubna kumulativní - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4. dubna 2019 | Podporováno |
-| Kumulativní – aktualizace březen 2019 [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. března 2019 | Podporováno |
-| Verze 5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno |
+| Červen 2019 kumulativní - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13\. června 2019 | Podporované (doporučená verze) |
+| Kumulativní – aktualizace. května 2019 [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7\. května 2019 | Podporováno |
+| V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21\. dubna 2019 | Podporováno |
+| 2019 dubna kumulativní - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. dubna 2019 | Podporováno |
+| Kumulativní – aktualizace březen 2019 [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7\. března 2019 | Podporováno |
+| Verze 5 Release - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12\. února 2019 | Podporováno |
 | 2019 ledna kumulativní - [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | Od 14. května 2019 | Podporováno |
-| Kumulativní – aktualizace z prosince 2018 [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Podporováno |
-| Kumulativní aktualizace z prosince 2018 | 4.1.0.0 | 4. prosince 2018 | Podporováno |
-| Verzi V4 | 4.0.1.0 | 13. listopadu 2018 | Podporováno |
-| Kumulativní aktualizace. září 2018 | 3.3.0.0 | 24. září 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
-| Kumulativní aktualizace. srpna 2018 | 3.2.0.0 | 15. srpna 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
-| Všeobecná dostupnost | 3.1.0.0 | 19. července 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
+| Kumulativní – aktualizace z prosince 2018 [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10\. prosince 2018 | Podporováno |
+| Kumulativní aktualizace z prosince 2018 | 4.1.0.0 | 4\. prosince 2018 | Podporováno |
+| Verzi V4 | 4.0.1.0 | 13\. listopadu 2018 | Podporováno |
+| Kumulativní aktualizace. září 2018 | 3.3.0.0 | 24\. září 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
+| Kumulativní aktualizace. srpna 2018 | 3.2.0.0 | 15\. srpna 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
+| Všeobecná dostupnost | 3.1.0.0 | 19\. července 2018 | Podporuje se – agenta verze vyprší dne 19. května 2019 |
 | Vypršela platnost agentů | 1.1.0.0 - 3.0.13.0 | neuvedeno | Nepodporuje se – verze agentů platnost 1. října 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-6200"></a>Verze agenta 6.2.0.0
+Následující poznámky k verzi platí pro verze 6.2.0.0 agenta Azure File Sync vydáno 13. června 2019. Tyto poznámky doplňují uvedené pro verzi 6.0.0.0 poznámky.
+
+Seznam opravených chybách v této verzi:  
+- Po vytvoření koncový bod serveru se vysoké využití procesoru může dojít při vyvolání na pozadí je stahování souborů na server
+- Synchronizace a operace vrstvení cloudu může selhat s chybou ECS_E_SERVER_CREDENTIAL_NEEDED z důvodu vypršení platnosti tokenu
+- Vracení souboru může selhat, pokud adresa URL pro stažení souboru obsahuje vyhrazené znaky 
 
 ## <a name="agent-version-6100"></a>Verze agenta 6.1.0.0
 Následující poznámky k verzi platí pro verze 6.1.0.0 agenta Azure File Sync vydáno 6. května 2019. Tyto poznámky doplňují uvedené pro verzi 6.0.0.0 poznámky.

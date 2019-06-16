@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 711fce9627537e68171c3b170121900d6b14ca1e
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743647"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808614"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Řešení aplikace Oracle integrace Microsoft Azure a Oracle cloudové infrastruktury (preview)
 
@@ -45,7 +45,7 @@ Aplikace, které můžete spustit v konfiguraci cloudu patří:
 * Aplikace Oracle maloobchodního prodeje
 * Oracle, Hyperion finanční správy
 
-V následujícím diagramu je podrobný přehled připojených řešení. Pro zjednodušení diagram znázorňuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architecutre aplikace může vaše řešení obsahovat další vrstvy, jako je například webová vrstva v Azure. Další informace najdete v následující části.
+V následujícím diagramu je podrobný přehled připojených řešení. Pro zjednodušení diagram znázorňuje pouze aplikační vrstvu a datovou vrstvu. V závislosti na architektuře aplikace by mohly vaše řešení obsahovat další vrstvy, jako je například webová vrstva v Azure. Další informace najdete v následující části.
 
 ![Přehled řešení Azure OCI](media/oracle-oci-overview/crosscloud.png)
 

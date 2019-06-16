@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f47735a6e41ae14cb439e10803b82c0dbd3e64d7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015273"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115028"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí serveru založené na cloudu poznámkového bloku
 
@@ -84,10 +84,12 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 1. Vyberte **01.run experiment.ipynb** otevřete Poznámkový blok.
 
+1. Pokud se zobrazí upozornění "Jádra nebyl nalezen", vyberte jádra **Python 3.6 – AzureML** (přibližně střední směrem dolů v seznamu) a nastavte jádra.
+
 1. Klikněte do první buňky kódu a vyberte **spustit**.
 
     > [!NOTE]
-    > Buňky kódu mají hranaté závorky před sebou. Pokud jsou prázdné hranaté závorky (__[] č.__), kód nebyl spuštěn. Když je kód spuštěn, se zobrazí hvězdičku (__[*]__). Po dokončení kódu, číslo **[1]** se zobrazí.  Číslo vám říká pořadí, ve kterém byl spuštěn buňky.
+    > Buňky kódu mají hranaté závorky před sebou. Pokud jsou prázdné hranaté závorky ( __[] č.__ ), kód nebyl spuštěn. Když je kód spuštěn, se zobrazí hvězdičku ( __[*]__ ). Po dokončení kódu, číslo **[1]** se zobrazí.  Číslo vám říká pořadí, ve kterém byl spuštěn buňky.
     >
     > Použití **Shift + Enter** jako zástupce spustit buňky.
 
@@ -95,7 +97,7 @@ Spuštění poznámkového bloku, který odhaduje pi a zaznamená chybu do praco
 
 1. Spuštění druhého buňky kódu. Pokud se zobrazí pokyny k ověření, zkopírujte kód a přejděte na odkaz pro přihlášení. Po přihlášení bude váš prohlížeč nezapomeňte toto nastavení.  
 
-    ![Ověřit](media/quickstart-run-cloud-notebook/authenticate.png)
+    ![Ověření](media/quickstart-run-cloud-notebook/authenticate.png)
 
 1. Po dokončení počet buněk __[2]__ se zobrazí.  Pokud jste měli k přihlášení, zobrazí se zpráva stav úspěšné ověření.   Pokud máte nepovedlo se přihlásit, nezobrazí žádný výstup pro tuto buňku, jenom číslo, zobrazí se úspěšně spustil buňku.
 

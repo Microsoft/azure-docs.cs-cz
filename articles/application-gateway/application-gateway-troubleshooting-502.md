@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: amsriva
 ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697167"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
@@ -84,10 +84,10 @@ V následující tabulce jsou uvedeny hodnoty přiřazené výchozí kontroly st
 
 | Vlastnosti testu | Hodnota | Popis |
 | --- | --- | --- |
-| Adresa URL testu |`http://127.0.0.1/` |Cesta URL |
+| Adresa URL testu paměti |`http://127.0.0.1/` |Cesta adresy URL |
 | Interval |30 |Interval testu v sekundách |
 | Časový limit |30 |Časový limit testu v sekundách |
-| Prahová hodnota pro poškozený stav |3 |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota špatného stavu |3 |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 ### <a name="solution"></a>Řešení
 
@@ -108,13 +108,13 @@ Byla přidána následující další vlastnosti:
 
 | Vlastnosti testu | Popis |
 | --- | --- |
-| Název |Název testu. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
-| Protocol (Protokol) |Protokol používaný k posílání sondy. Test paměti používá protokol definované v nastavení HTTP back-end |
-| Hostitel |Název hostitele k odeslání testu. Vztahuje se pouze v případě, že je nakonfigurovaný více webů ve službě application gateway. Tím se liší od názvu hostitele virtuálního počítače. |
+| Name |Název testu. Tento název se používá k odkazování na test v nastavení HTTP back-end. |
+| Protocol |Protokol používaný k posílání sondy. Test paměti používá protokol definované v nastavení HTTP back-end |
+| Host |Název hostitele k odeslání testu. Vztahuje se pouze v případě, že je nakonfigurovaný více webů ve službě application gateway. Tím se liší od názvu hostitele virtuálního počítače. |
 | `Path` |Relativní cesta testu. Platná cesta začíná od "/". Sonda se odesílá do \<protokol\>://\<hostitele\>:\<port\>\<cesta\> |
 | Interval |Interval testu paměti v sekundách. Toto je časový interval mezi dvěma po sobě jdoucích sondy. |
 | Časový limit |Časový limit testu v sekundách. Pokud není přijetí platné odpovědi během tohoto období časového limitu testu označen jako neúspěšný. |
-| Prahová hodnota pro poškozený stav |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
+| Prahová hodnota špatného stavu |Počet opakování testu. Back endového serveru je označena po počet selhání testu po sobě jdoucích dosáhne prahová hodnota špatného stavu. |
 
 ### <a name="solution"></a>Řešení
 
