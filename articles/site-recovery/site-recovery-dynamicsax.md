@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61281435"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX   
@@ -109,7 +109,7 @@ Ve službě Site Recovery k automatizaci procesu převzetí služeb při selhán
 
 4. Vyberte aplikační Server objektu a klientské virtuální počítače v plánu obnovení a vyberte ✓.
 
-    ![Výběr položek](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Vybrat položky](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Příklad plánu obnovení:
 

@@ -8,12 +8,12 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 682b3d3fee4ff1cdbed6e05a51fd8828b6eb155f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117276"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133326"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Nastavení Azure PowerShellu pro Azure DNS
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
 
-Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Další informace najdete v tématu [přihlášení](/powershell/azure/install-az-ps?view=azps-1.4.0#sign-in).
+Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Další informace najdete v tématu [Přihlaste se pomocí AzureRM](/powershell/azure/azurerm/authenticate-azureps).
 
 ```powershell
 Connect-AzureRmAccount

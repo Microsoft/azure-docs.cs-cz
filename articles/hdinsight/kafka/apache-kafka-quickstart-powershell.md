@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 618cbbb198b233fb8a2b73bdaff58d09767866f5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: a1ccfd23338e2ee18c335fe8bd9869ecdf9c2f08
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060547"
+ms.locfileid: "67120802"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Powershellu
 
@@ -23,10 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]  
-> Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky.
->
-> Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
+Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -132,19 +129,13 @@ New-AzHDInsightCluster `
         -DisksPerWorkerNode $disksPerNode
 ```
 
-> [!WARNING]  
-> Vytvoření clusteru HDInsight může trvat až 20 minut.
+Vytvoření clusteru HDInsight může trvat až 20 minut.
 
-> [!TIP]  
-> Parametr `-DisksPerWorkerNode` konfiguruje škálovatelnost platformy Kafka v HDInsight. Kafka ve službě HDInsight používá k ukládání dat místní disk virtuálního počítače v clusteru. Platforma Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívají [Spravované disky Azure](../../virtual-machines/windows/managed-disks-overview.md). 
->
-> Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky. Typ virtuálního počítače můžete nastavit pomocí parametru `-WorkerNodeSize`. Další informace o parametrech najdete v článku [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) dokumentaci.
+Parametr `-DisksPerWorkerNode` konfiguruje škálovatelnost platformy Kafka v HDInsight. Kafka ve službě HDInsight používá k ukládání dat místní disk virtuálního počítače v clusteru. Platforma Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívají [Spravované disky Azure](../../virtual-machines/windows/managed-disks-overview.md).
 
+Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky. Typ virtuálního počítače můžete nastavit pomocí parametru `-WorkerNodeSize`. Další informace o parametrech najdete v článku [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) dokumentaci.
 
-> [!IMPORTANT]  
-> Pokud hodláte použít víc než 32 pracovních uzlů (při vytvoření clusteru nebo škálováním clusteru po vytvoření), musíte pomocí parametru `-HeadNodeSize` určit velikost virtuálního počítače s aspoň 8 jádry a 14 GB RAM.
->
-> Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
+Pokud hodláte použít víc než 32 pracovních uzlů (při vytvoření clusteru nebo škálováním clusteru po vytvoření), musíte pomocí parametru `-HeadNodeSize` určit velikost virtuálního počítače s aspoň 8 jádry a 14 GB RAM. Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
@@ -202,16 +193,13 @@ V této části můžete získat informace o hostiteli od Apache Ambari REST API
 
     Po zobrazení výzvy zadejte název clusteru Kafka.
 
-3. K nastavení proměnné prostředí s použitím informací o hostiteli Zookeeper použijte následující příkaz:
+3. Chcete-li nastavit proměnné prostředí s informace o hostiteli Zookeeper, pomocí následujícího příkazu. Příkaz načte všechny hostitelích Zookeeper a potom vrátí pouze první dvě položky. Je to proto, že chcete určitou redundanci pro případ, že jeden hostitel bude nedosažitelný.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
     Po zobrazení výzvy zadejte heslo účtu pro přihlášení ke clusteru (ne účtu SSH).
-
-    > [!NOTE]  
-    > Tento příkaz načte všechny hostitele Zookeeper a pak vrátí jenom první dva záznamy. Je to proto, že chcete určitou redundanci pro případ, že jeden hostitel bude nedosažitelný.
 
 4. Pokud chcete ověřit správné nastavení proměnné prostředí, použijte následující příkaz:
 
@@ -257,15 +245,13 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
 
     * Každý oddíl se replikuje mezi tři pracovní uzly v clusteru.
 
-        > [!IMPORTANT]  
-        > Pokud jste vytvořili cluster v oblasti Azure, která poskytuje tři domény selhání, použijte faktor replikace 3. Jinak použijte faktor replikace 4.
+        Pokud jste vytvořili cluster v oblasti Azure, která poskytuje tři domény selhání, použijte faktor replikace 3. Jinak použijte faktor replikace 4.
         
         V oblastech se třemi doménami selhání faktor replikace 3 umožní rozložení replik mezi domény selhání. V oblastech se dvěma doménami selhání faktor replikace 4 rozloží repliky rovnoměrně mezi domény selhání.
         
         Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-        > [!IMPORTANT]   
-        > Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
+        Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 
         Pokud chcete zajistit vysokou dostupnost, použijte [nástroj pro obnovení rovnováhy oddílů Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
 
@@ -324,8 +310,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
    
     Tento příkaz načte záznamy z tématu a zobrazí je. Parametr `--from-beginning` způsobí, že konzument začne načítat od začátku datového proudu a zpracuje tak všechny záznamy.
 
-    > [!NOTE]  
-    > Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` za `--zookeeper $KAFKAZKHOSTS`.
+    Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` za `--zookeeper $KAFKAZKHOSTS`.
 
 4. Konzumenta zastavíte stisknutím __Ctrl+C__.
 

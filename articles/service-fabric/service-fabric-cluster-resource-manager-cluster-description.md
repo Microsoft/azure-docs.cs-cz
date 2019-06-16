@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 082abd89cd84fc34180f333b54664d7dddfa0ccf
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561220"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Popis clusteru service fabric
@@ -369,7 +369,7 @@ Hodnota zadaná ve vlastnosti uzlu může být string, bool, nebo podepsaný dlo
 
 1) Podmíněné kontroly pro vytváření konkrétní příkazy
 
-| Výraz | Syntaxe |
+| – Příkaz | Syntaxe |
 | --- |:---:|
 | "rovno" | "==" |
 | "nerovná se" | "!=" |
@@ -380,7 +380,7 @@ Hodnota zadaná ve vlastnosti uzlu může být string, bool, nebo podepsaný dlo
 
 2) Logická příkazů pro seskupení a logické operace
 
-| Výraz | Syntaxe |
+| – Příkaz | Syntaxe |
 | --- |:---:|
 | "a" | "&&" |
 | "nebo" | "&#124;&#124;" |

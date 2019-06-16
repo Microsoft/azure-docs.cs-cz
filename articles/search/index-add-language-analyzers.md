@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65790899"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Přidat do indexu Azure Search analyzátory jazyka
@@ -61,17 +61,17 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 
 |Jazyk|Název analyzátoru Microsoft|Název analyzátor Lucene|  
 |--------------|-----------------------------|--------------------------|  
-|Arabština|ar.microsoft|ar.lucene|  
+|arabština|ar.microsoft|ar.lucene|  
 |Arménština||hy.lucene|  
 |Bengálština|bn.microsoft||  
 |Baskičtina||EU.lucene|  
 |Bulharština|bg.microsoft|BG.lucene|  
 |Katalánština|ca.microsoft|CA.lucene|  
-|čínština (zjednodušená)|zh-Hans.microsoft|zh-Hans.lucene|  
+|Zjednodušená čínština|zh-Hans.microsoft|zh-Hans.lucene|  
 |Tradiční čínština|zh-Hant.microsoft|zh-Hant.lucene|  
 |Chorvatština|hr.microsoft||  
 |Čeština|cs.microsoft|cs.lucene|  
-|Dánština|da.microsoft|da.lucene|  
+|dánština|da.microsoft|da.lucene|  
 |Holandština|nl.microsoft|NL.lucene|  
 |Angličtina|en.microsoft|en.lucene|  
 |Estonština|et.microsoft||  
@@ -96,7 +96,7 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 |Malajálamština|ml.microsoft||  
 |Malajština (latinka)|ms.microsoft||  
 |Maráthština|mr.microsoft||  
-|Norština|nb.microsoft|No.lucene|  
+|norština|nb.microsoft|No.lucene|  
 |Perština||fa.lucene|  
 |polština|pl.microsoft|PL.lucene|  
 |Portugalština (Brazílie)|pt-Br.microsoft|PT Br.lucene|  
@@ -109,11 +109,11 @@ Další informace o vlastnosti indexu, naleznete v tématu [Create Index &#40;ro
 |Slovenština|sk.microsoft||  
 |Slovinština|sl.microsoft||  
 |Španělština|es.microsoft|ES.lucene|  
-|Švédština|sv.microsoft|Sv.lucene|  
+|švédština|sv.microsoft|Sv.lucene|  
 |Tamilština|ta.microsoft||  
 |Telugština|te.microsoft||  
 |Thajština|th.microsoft|TH.lucene|  
-|Turečtina|tr.microsoft|TR.lucene|  
+|turečtina|tr.microsoft|TR.lucene|  
 |Ukrajinština|uk.microsoft||  
 |Urdština|ur.microsoft||  
 |Vietnamština|vi.microsoft||  

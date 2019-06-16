@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: f477a0f99c3eaa82568d8188bfaae03818fb72dc
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65827947"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Testování dotazů Stream Analytics místně pomocí Visual Studio Code

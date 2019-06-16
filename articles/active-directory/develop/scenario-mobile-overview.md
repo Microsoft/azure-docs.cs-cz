@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5b53ccdcd33e2542834769baff5b759ff7b170
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0f007ad1d5bf99136328ec5706f7ccbb5f6593c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111235"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: Mobilní aplikace, že volání webových rozhraní API
 
@@ -52,7 +52,7 @@ Důležité informace pro mobilní aplikace:
 
 - **Činnost koncového uživatele je klíč**: Povolit uživatelům zobrazit hodnotu aplikace před s žádostí o přihlášení a vyžádat pouze požadovaná oprávnění.
 - **Podpora všech uživatelských konfigurací**: Mnoho mobilních podnikoví uživatelé jsou poskytovány podmíněného přístupu a zásady dodržování předpisů zařízením. Ujistěte se, že podporují tyto klíčové scénáře.
-- **Implementaci jednotného přihlašování (SSO)**: Knihovna MSAL a platforma identit Microsoft zjednodušení povolení jednotného přihlašování přes prohlížeč zařízení nebo aplikace Microsoft Authenticator (a portál společnosti Intune v Androidu).
+- **Implementaci jednotného přihlašování (SSO)** : Knihovna MSAL a platforma identit Microsoft zjednodušení povolení jednotného přihlašování přes prohlížeč zařízení nebo aplikace Microsoft Authenticator (a portál společnosti Intune v Androidu).
 
 ## <a name="specifics"></a>Specifika
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
 ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606863"
 ---
 # <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
@@ -31,7 +31,7 @@ Správce zařízení StorSimple poskytuje schopnost **protokolu novou žádost o
 
 Zkontrolujte [StorSimple 8000 Series podpora smlouvy o úrovni služeb a informace o](https://msdn.microsoft.com/library/mt433077.aspx) předtím, než vytvoříte žádost o podporu.
 
-## <a name="create-a-support-request"></a>Vytvořit žádost o podporu
+## <a name="create-a-support-request"></a>Vytvoření žádosti o podporu
 
 V závislosti na vaší [plán podpory](https://azure.microsoft.com/support/plans/), nemůžete vytvářet lístky žádostí o podporu pro problém na zařízení StorSimple přímo v okně s přehledem služby Správce zařízení StorSimple. Proveďte následující kroky a vytvoříte žádost o podporu:
 

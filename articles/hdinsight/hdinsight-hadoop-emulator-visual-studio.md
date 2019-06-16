@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65605452"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s Hortonworks Sandbox
@@ -120,7 +120,7 @@ Můžete také vytvořit projekt, který obsahuje několik skriptů Hive. Projek
 
 1. V sadě Visual Studio, vyberte **souboru**, **nový**a potom **projektu**.
 
-2. Ze seznamu projektů, rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **HIVE (HDInsight)**. V seznamu šablon vyberte **Hive ukázka**. Zadejte název a umístění a pak vyberte **OK**.
+2. Ze seznamu projektů, rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **HIVE (HDInsight)** . V seznamu šablon vyberte **Hive ukázka**. Zadejte název a umístění a pak vyberte **OK**.
 
     ![Zvýrazněný okno snímek obrazovky nového projektu s Azure Data Lake, HIVE, ukázka Hive a OK](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
@@ -130,7 +130,7 @@ Můžete také vytvořit projekt, který obsahuje několik skriptů Hive. Projek
 
 Zatímco Hive poskytuje jazyk typu SQL pro práci se strukturovanými daty, Pig funguje tak, že provádění transformací na datech. Pig poskytuje jazyk (Pig Latin), který umožňuje vývoj kanál transformace. Použití Pigu se službou místního clusteru, postupujte podle těchto kroků:
 
-1. Otevřít Visual Studio a vyberte **souboru**, **nový**a potom **projektu**. Ze seznamu projektů, rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **Pig (HDInsight)**. V seznamu šablon vyberte **Pig aplikace**. Zadejte název, umístění a pak vyberte **OK**.
+1. Otevřít Visual Studio a vyberte **souboru**, **nový**a potom **projektu**. Ze seznamu projektů, rozbalte **šablony**, rozbalte **Azure Data Lake**a pak vyberte **Pig (HDInsight)** . V seznamu šablon vyberte **Pig aplikace**. Zadejte název, umístění a pak vyberte **OK**.
 
     ![Zvýrazněný okno snímek obrazovky nového projektu s Azure Data Lake, Pig, Pig, aplikace a OK](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 

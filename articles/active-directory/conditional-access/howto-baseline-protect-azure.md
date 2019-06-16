@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00ed40bef3f3cbe59825f546ffa39c3ebfb2e41f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 24b54a3645fe97903219841dd148c0942dfcda76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112391"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Základní zásady: Vyžadovat vícefaktorové ověřování pro službu správy (preview)
 
@@ -40,7 +40,7 @@ Provádět interaktivní přihlášení pomocí [prostředí Azure Powershell](h
 Connect-AzAccount
 ```
 
-Po spuštění této rutiny se zobrazí řetězec tokenu. Pro přihlášení, zkopírujte tento řetězec a vložte ho do [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) v prohlížeči. Vaše relace PowerShellu se ověří pro připojení k Azure.
+Po spuštění této rutiny se zobrazí řetězec tokenu. Pro přihlášení, zkopírujte tento řetězec a vložte ho do [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  v prohlížeči. Vaše relace PowerShellu se ověří pro připojení k Azure.
 
 K provádění interaktivního přihlášení pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest), spusťte [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) příkazu.
 
@@ -73,7 +73,7 @@ Tuto zásadu povolit a chránit vaše správce:
 
 1. Přihlaste se k **webu Azure portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 1. Přejděte do **Azure Active Directory** > **podmíněného přístupu**.
-1. V seznamu zásad, vyberte **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro službu správy (preview)**.
+1. V seznamu zásad, vyberte **směrný plán zásad: Vyžadovat vícefaktorové ověřování pro službu správy (preview)** .
 1. Nastavte **povolit zásady** k **použít zásady okamžitě**.
 1. Kliknutím na Přidat všechny uživatele vyloučení **uživatelé** > **vybrat vyloučené uživatele** a výběru uživatelů, které je třeba vyloučit. Klikněte na tlačítko **vyberte** pak **provádí**.
 1. Klikněte na tlačítko **Uložit**.
@@ -82,6 +82,6 @@ Tuto zásadu povolit a chránit vaše správce:
 
 Další informace naleznete v tématu:
 
-* [Zásady podmíněného přístupu směrný plán ochrany](concept-baseline-protection.md)
+* [Zásady ochrany směrného plánu podmíněného přístupu](concept-baseline-protection.md)
 * [Zabezpečení vaší infrastruktury identit v pěti krocích](../../security/azure-ad-secure-steps.md)
 * [Co je podmíněný přístup v Azure Active Directory?](overview.md)

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: c0cb9c24de0a61e43a806c3bc6fd9fbcea55ad98
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 32eb2c47ed46aed8e2e3755a83437a21391295c5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052694"
+ms.locfileid: "67122967"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – nejčastější dotazy
 
@@ -84,3 +84,7 @@ Ne. Všechny prostředky, včetně předlohy clusteru spustit ve vašem předpla
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>Je zprostředkovatele Open Service Broker for Azure (OSBA) podporované?
 
 Ano. Můžete použít osba, POUŽIJTE s Azure Red Hat OpenShift. Zobrazit [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) Další informace.
+
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Jsem jsem pokusu o vytvoření partnerského vztahu do virtuální sítě v jiném předplatném, ale získání `Failed to get vnet CIDR` chyby.
+
+V předplatném, která obsahuje virtuální síť, ujistěte se, že k registraci `Microsoft.ContainerService` zprostředkovatele s `az provider register -n Microsoft.ContainerService --wait` 

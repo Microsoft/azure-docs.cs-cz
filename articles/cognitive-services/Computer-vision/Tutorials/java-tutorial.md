@@ -12,10 +12,10 @@ ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
 ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232627"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Používat funkce pro počítačové zpracování obrazu pomocí rozhraní REST API a Javy.
@@ -63,8 +63,8 @@ Soubor **cognitive-services-java-computer-vision-tutorial-master.zip** importujt
 1. V NetBeans, klikněte na **File** > **Import Project** > **From ZIP...** (Soubor > Importovat projekt > Ze souboru ZIP...). Zobrazí se dialogové okno **Import Project(s) from ZIP** (Import projektu/projektů ze souboru ZIP).
 1. V poli **ZIP File:** (Soubor ZIP:) klikněte na tlačítko **Browse** (Procházet), vyhledejte soubor **cognitive-services-java-computer-vision-tutorial-master.zip** a potom klikněte na **Open** (Otevřít).
 1. V dialogovém okně **Import Project(s) from ZIP** klikněte na **Import**.
-1. Na panelu **Projects** (Projekty) rozbalte **ComputerVision** > **Source Packages** > **&lt;default package&gt;** (ComputerVision > Zdrojové balíčky > výchozí balíček). 
-   Některé verze NetBeans místo **Source Packages** > **&lt;default package&gt;** používají **src**. V takovém případě rozbalte **src**.
+1. Na panelu **Projects** (Projekty) rozbalte **ComputerVision** > **Source Packages** >  **&lt;default package&gt;** (ComputerVision > Zdrojové balíčky > výchozí balíček). 
+   Některé verze NetBeans místo **Source Packages** >  **&lt;default package&gt;** používají **src**. V takovém případě rozbalte **src**.
 1. Dvakrát klikněte na **Mainframe.java**, aby se soubor načetl do editoru NetBeans. Zobrazí se karta **Design** (Návrh) souboru **MainFrame.java**.
 1. Klikněte na kartu **Source** (Zdroj), abyste si zobrazili zdrojový kód v Javě.
 

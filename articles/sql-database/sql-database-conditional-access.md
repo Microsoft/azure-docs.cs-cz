@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/29/2019
-ms.openlocfilehash: 79d15a46affb2a6b7159ba080d4235073c59919c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b2a4a8f7de7e23997b2d8ba0c1c35dfd97f2541
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61413644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118769"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Podmíněný přístup (MFA) s Azure SQL Database a Data Warehouse  
 
@@ -34,13 +34,13 @@ Následující kroky ukazují, jak nakonfigurovat databázi SQL k vynucení zás
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurace certifikační Autority pro Azure SQL DB/DW  
 1. Přihlaste se k portálu vyberte **Azure Active Directory**a pak vyberte **podmíněného přístupu**. Další informace najdete v tématu [technické informace o Azure Active Directory podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-   ![okna podmíněného přístupu](./media/sql-database-conditional-access/conditional-access-blade.png) 
+   ![Okna podmíněného přístupu](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2. V **zásady podmíněného přístupu** okna, klikněte na tlačítko **nové zásady**, zadejte název a potom klikněte na tlačítko **nakonfigurovat pravidla**.  
 3. V části **přiřazení**vyberte **uživatelů a skupin**, zkontrolujte **výběr uživatelů a skupin**a pak vyberte uživatele nebo skupinu pro podmíněný přístup. Klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **provádí** potvrďte svůj výběr.  
    ![Vyberte uživatele a skupiny](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
-4. Vyberte **cloudové aplikace**, klikněte na tlačítko **vyberte aplikace**. Zobrazí všechny aplikace dostupné pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **provádí**.  
+4. Vyberte **cloudové aplikace**, klikněte na tlačítko **vyberte aplikace**. Zobrazit všechny aplikace, které jsou k dispozici pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **provádí**.  
    ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
    Pokud nemůžete najít **Azure SQL Database** uvedené v následující třetí snímek obrazovky, proveďte následující kroky:   
    - Přihlaste se k vaší instanci Azure SQL DB/DW pomocí aplikace SSMS pomocí účtu správce AAD.  

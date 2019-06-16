@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
 ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620430"
 ---
 # <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
@@ -37,15 +37,15 @@ Network Performance Monitor (NPM) je sada funkcí, z nichž každý je zaměřen
 
 Sledování výkonu, monitorování ExpressRoute a připojení k monitorování služby monitorování funkcí v rámci NPM a jsou popsané níže.
 
-## <a name="performance-monitor"></a>Monitor výkonu
+## <a name="performance-monitor"></a>Monitorování výkonu
 
 Sledování výkonu je součástí NPM a je monitorování sítě pro cloud, hybridní a v místních prostředích. Můžete monitorovat připojení k síti napříč vzdálenými pobočkami a dočasnými kancelářemi, skladovými lokalitami, datovými centry a cloudy. Předtím, než si vaši zákazníci začnou stěžovat můžete detekovat problémy se sítí. Jsou klíčové výhody:
 
-* Monitorování ztrát a latence mezi různými podsítěmi a nastavování upozornění
+* Monitorování ztrát a latence napříč různými podsítěmi a nastavování upozornění
 * Monitorování všech cest (včetně redundantní cesty) v síti
 * Řešení potíží s problémy se sítí přechodné a bodu v čase, které se těžko replikují
 * Určení konkrétního segmentu sítě, který je důvodem sníženého výkonu
-* Monitorování stavu sítě bez nutnosti používat protokol SNMP
+* Monitorování stavu sítě bez nutnosti využití SNMP
 
 ![Mapu NPM](./media/network-monitoring-overview/npm-topology-map.png) 
 

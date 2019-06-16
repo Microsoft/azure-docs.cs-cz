@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620488"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
@@ -49,7 +49,7 @@ Tento článek obsahuje poznámky k vydání verze 1.8.1 Průzkumníka služby A
 * Pro nahrávání AzCopy je nyní povolen příznak pro výpočet a nastavte hodnotu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Funkce Preview
+### <a name="preview-features"></a>Preview – funkce
 
 * Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
 * Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
@@ -145,7 +145,7 @@ Tento článek obsahuje poznámky k vydání verze 1.8.1 Průzkumníka služby A
 * Pro nahrávání AzCopy je nyní povolen příznak pro výpočet a nastavte hodnotu hash MD5. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Funkce Preview
+### <a name="preview-features"></a>Preview – funkce
 
 * Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení.
 * Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
@@ -198,7 +198,7 @@ Tento článek obsahuje poznámky k vydání verze 1.8.1 Průzkumníka služby A
 * Nyní můžete změnit vlastníka a vlastnící skupinu při správě přístupu pro kontejner ADLS Gen2, soubor nebo složku.
 * Na Windows aktualizace Průzkumníka služby Storage z v rámci produktu je nyní přírůstkové instalace. Výsledkem by měl být rychlejší prostředí aktualizace. Pokud dáváte přednost čistou instalaci, pak si můžete stáhnout [instalační program](https://azure.microsoft.com/features/storage-explorer/) sami a pak nainstalujte ručně. #1089
 
-### <a name="preview-features"></a>Funkce Preview
+### <a name="preview-features"></a>Preview – funkce
 
 * Zařízení kód toku přihlášení je teď dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití zařízení kód toku přihlášení". Doporučujeme všechny uživatele, kteří měli problémy s prázdnou přihlášení systému windows chcete tuto funkci vyzkoušet, jak může být spolehlivější formulář přihlášení. #938
 * Průzkumník služby Storage integrované pomocí nástroje AzCopy je aktuálně dostupná ve verzi preview. Ho Pokud chcete povolit, přejděte na "Náhled" → "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Objekt BLOB přenosy byl dokončeny. pomocí nástroje AzCopy musí být rychlejší a výkonnější.
@@ -261,7 +261,7 @@ Tento článek obsahuje poznámky k vydání verze 1.8.1 Průzkumníka služby A
 ### <a name="hotfixes"></a>Opravy hotfix
 * V 1.6.1 byly entit ADLS Gen2 seznamů řízení přístupu přidal ObjectId, které nebyly uživatelé vždy přidán jako skupiny. Nyní pouze skupiny, se přidají jako skupiny a entitami, jako je například andService podnikové aplikace, které objekty jsou přidány jako uživatelé. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
 * Pokud účet úložiště ADLS Gen2 měli žádné kontejnery a byl připojen pomocí názvu a klíče, pak Průzkumníka služby Storage by zjistit, že byl účet úložiště ADLS Gen2. Tato chyba byla opravena. [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
-* 1.6.0 by je v konfliktu během kopírování a vložení řádku, vyřešení tohoto problému. Místo toho konfliktních kopírování jednoduše selže. Teď na první konfliktu, vyzve vás jak byste chtěli být vyřešen. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
+* 1\.6.0 by je v konfliktu během kopírování a vložení řádku, vyřešení tohoto problému. Místo toho konfliktních kopírování jednoduše selže. Teď na první konfliktu, vyzve vás jak byste chtěli být vyřešen. [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * Z důvodu omezení rozhraní API byly zakázány všechny ověřovací objectid v dialogovém okně Spravovat přístup. Ověření se nyní vztahuje pouze na uživatele UPN. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
 * V dialogovém okně ADLS Gen2 Správa přístupu se nepodařilo upravit oprávnění pro skupinu. Tato chyba byla opravena. [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * Přidání operace přetažení nahrát do editoru ADLS Gen2 podpory. [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)

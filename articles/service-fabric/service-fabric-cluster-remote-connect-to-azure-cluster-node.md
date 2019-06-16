@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
 ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110919"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Vzdálené připojení k instanci virtuálního počítače škálovací sady nebo uzel clusteru.
@@ -28,7 +28,7 @@ Pokud chcete zjistit IP adresu a port, který můžete použít pro vzdálené p
 
 1. Získejte příchozích pravidel NAT pro protokol RDP (Remote Desktop).
 
-    Každý typ uzlu definována ve vašem clusteru má obvykle své vlastní virtuální IP adresa a nástroj pro vyrovnávání zatížení vyhrazenou. Nástroje pro vyrovnávání zatížení pro typ uzlu je ve výchozím nastavení název v následujícím formátu: *LB-{název clusteru} – {typ uzlu}*; například *LB-clusteru FrontEnd*. 
+    Každý typ uzlu definována ve vašem clusteru má obvykle své vlastní virtuální IP adresa a nástroj pro vyrovnávání zatížení vyhrazenou. Nástroje pro vyrovnávání zatížení pro typ uzlu je ve výchozím nastavení název v následujícím formátu: *LB-{název clusteru} – {typ uzlu}* ; například *LB-clusteru FrontEnd*. 
     
     Na stránce pro nástroj pro vyrovnávání zatížení na webu Azure portal vyberte **nastavení** > **pravidla příchozího překladu adres**: 
 

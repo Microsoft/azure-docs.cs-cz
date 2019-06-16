@@ -11,10 +11,10 @@ ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65539275"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
@@ -43,7 +43,7 @@ V rámci úrovně, je možné [upravit repliky a oddílu prostředků](search-ca
 
 V následující tabulce jsou uvedeny dostupné úrovně. Můžete najít další informace o různých úrovních na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/)v [omezení služby Azure Search](search-limits-quotas-capacity.md) článku a na portálu stránce, pokud zřizujete služby.
 
-|Vrstva | Kapacita |
+|Úroveň | Kapacita |
 |-----|-------------|
 |Free | Sdílenou s jinými odběrateli. Škálovatelné. Je omezená na tři indexy a přes 50 MB úložiště. |
 |Basic | Vyhrazené výpočetní prostředky pro produkční úlohy v menším měřítku. Jeden oddíl 2 GB a až tři repliky. |
@@ -80,7 +80,7 @@ Když jste odhadnout náklady na řešení pro hledání, zachovat v paměti, kt
 
 Nejdůležitější fakturační koncept pochopit pro operace Azure Search je *jednotka služby search* (SU). Protože Azure Search závisí na repliky a oddíly pro indexování a dotazy, nemá smysl pro fakturaci podle právě jeden z nich. Místo toho fakturace vychází složeného obou.
 
-Produkt je SU *repliky* a *oddíly* používané službou: **(R x P = SU)**.
+Produkt je SU *repliky* a *oddíly* používané službou: **(R x P = SU)** .
 
 Každá služba začíná u jedné SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su. To se dá kontaktovat několika různými způsoby: 6 oddíly x 6 repliky, nebo 3 oddíly x 12 replik pro pro příklad. Je běžné použití nižší, než celkové kapacity (například 3 repliky se 3 oddíly služby účtovat jako 9 su). Zobrazit [kombinace oddílů a replik](search-capacity-planning.md#chart) graf pro platné kombinace.
 

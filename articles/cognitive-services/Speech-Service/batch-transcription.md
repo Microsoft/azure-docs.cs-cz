@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 22d85f7a1c5b89c005b4c5b92f2f6b9ea449fe8d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1828cdce66104424cc7845fea89127219e6b77a0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064072"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137265"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
@@ -102,6 +102,40 @@ Dotazování na stav určené k transkripci nemusí být většina výkonné a p
 
 Další podrobnosti najdete v tématu [Webhooky](webhooks.md).
 
+## <a name="speaker-separation-diarization"></a>Oddělení mluvčího (Diarization)
+
+Diarization je proces oddělení reproduktorů část zvuk. Náš kanál Batch podporuje Diarization a dokáže rozpozná dva přednášející na záznamy mono kanálu.
+
+Budete muset požádat o, pro diarization zpracování vaší žádosti vám přepisování zvukového záznamu, jednoduše přidat odpovídající parametr v požadavku HTTP, jak je znázorněno níže.
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+Úroveň časová razítka Word by také musel "zapnout" jako parametry v výše uvedeného požadavku označení. 
+
+Odpovídající zvuk bude obsahovat přednášející identifikována číslem (aktuálně podporujeme jenom dva hlasů, takže mluvčích budou označeny jako "mluvčího 1 ' a 'Mluvčího 2') následovanou výstupem určené k transkripci.
+
+Všimněte si také, že Diarization není k dispozici v Stereo záznamy. Kromě toho všechny JSON výstup bude obsahovat značku mluvčího. Pokud se nepoužívá diarization, se zobrazí "mluvčího: Hodnotu NULL' v kódu JSON výstupu.
+
+Podporovaná národní prostředí jsou uvedeny níže.
+
+| Jazyk | Národní prostředí |
+|--------|-------|
+| Angličtina | en-US |
+| Čínština | zh-CN |
+| Deutsch | de-DE |
+
 ## <a name="sentiment"></a>Mínění
 
 Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci a je důležité funkce v doméně center volání. Zákazníci můžou využít `AddSentiment` parametry na jejich požadavky na 
@@ -112,7 +146,7 @@ Zabarvení je nová funkce v rozhraní API služby Batch určené k transkripci 
 4.  Přesně určit, co šlo dobře jenom v případě zapnutí negativní volání pozitivní
 5.  Určit, co se zákazníkům líbí a co se nelíbí produkt nebo službu
 
-Má skóre mínění na zvukový segmentu kde zvuku segmentu je definován jako časová prodleva mezi začátkem utterance (posun) a nečinnosti zjištění konce datového proudu bajtů. Celý text v rámci tohoto segmentu se používá k výpočtu mínění. Neměňte výpočtu všechny agregované mínění hodnoty pro celý volání nebo celý řeči každý kanál. Toto je ponecháno ke vlastník domény další použití.
+Má skóre mínění na zvukový segmentu kde zvuku segmentu je definován jako časová prodleva mezi začátkem utterance (posun) a nečinnosti zjištění konce datového proudu bajtů. Celý text v rámci tohoto segmentu se používá k výpočtu mínění. Neměňte výpočtu všechny agregované mínění hodnoty pro celý volání nebo celý řeči každý kanál. Tato agregace je ponecháno ke vlastník domény další použití.
 
 Zabarvení se použije na lexikální formuláře.
 
@@ -151,7 +185,7 @@ Ukázka výstupu JSON vypadá níže:
   ]
 }
 ```
-Funkce používá model mínění, která je aktuálně ve verzi Beta.
+Tato funkce používá model mínění, která je aktuálně ve verzi Beta.
 
 ## <a name="sample-code"></a>Ukázka kódu
 

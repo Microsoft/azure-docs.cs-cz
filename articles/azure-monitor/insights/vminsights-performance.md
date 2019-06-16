@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: magoedte
 ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522092"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (preview)
@@ -78,7 +78,7 @@ Chcete-li zobrazit využití prostředků podle konkrétního virtuálního poč
 
 K filtrování výsledků na konkrétní virtuální počítač v seznamu, zadejte jeho název počítače **hledat podle názvu** textového pole.  
 
-Pokud by místo toho zobrazit využití z jiné výkonové metriky z **metrika** rozevíracího seznamu vyberte **dostupnou paměť**, **používá logické místa na disku %**,  **Přijaté bajty/s sítě**, nebo **sítě odeslaných bajtů/s** a aktualizuje seznamu zobrazíte využití obor pro tuto metriku.  
+Pokud by místo toho zobrazit využití z jiné výkonové metriky z **metrika** rozevíracího seznamu vyberte **dostupnou paměť**, **používá logické místa na disku %** ,  **Přijaté bajty/s sítě**, nebo **sítě odeslaných bajtů/s** a aktualizuje seznamu zobrazíte využití obor pro tuto metriku.  
 
 Výběr virtuálního počítače ze seznamu se otevře **vlastnosti** panelu na pravé straně stránky a pak můžete vybrat **podrobností výkonu**.  **Podrobnosti virtuálních počítačů** otevře se stránka a působí na tento virtuální počítač, podobně jako v prostředí při přístupu k Insights výkon virtuálního počítače přímo z virtuálního počítače Azure.  
 
@@ -86,7 +86,7 @@ Výběr virtuálního počítače ze seznamu se otevře **vlastnosti** panelu na
 Pro přístup k přímo z virtuálního počítače, proveďte následující kroky.
 
 1. Na webu Azure Portal, vyberte **virtuálních počítačů**. 
-2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)**.  
+2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)** .  
 3. Vyberte **výkonu** kartu. 
 
 Tato stránka nejen zahrnuje grafy využití výkonu, ale také tabulka zobrazující pro každý logický disk zjištění své kapacity, využití a celkový průměrný podle jednotlivých míry.  
@@ -119,7 +119,7 @@ Kliknutím na ikonu připínáčku v pravém horním rohu některý z kódů PIN
 ![Virtuální počítač insights výkon přímo z virtuálního počítače škálovací nastavení zobrazení](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
 >[!NOTE]
->Zobrazení podrobné výkonu pro konkrétní instanci se můžete dostat taky z zobrazení instance škálovací sady pro. Přejděte do **instance** pod **nastavení** části a klikněte na tlačítko **Insights (preview)**.
+>Zobrazení podrobné výkonu pro konkrétní instanci se můžete dostat taky z zobrazení instance škálovací sady pro. Přejděte do **instance** pod **nastavení** části a klikněte na tlačítko **Insights (preview)** .
 
 ## <a name="alerts"></a>Výstrahy  
 Metriky výkonu, které jsou povolené v rámci služby Azure Monitor pro virtuální počítače neobsahují předem nakonfigurovaná pravidla upozornění. Existují [výstrahy týkající se stavu](vminsights-health.md#alerts) odpovídající problémy s výkonem, které jsou zjištěny na vašem virtuálním počítači Azure, jako je například vysoké využití procesoru, velikost místa na disku k dispozici, nízká nedostatku paměti atd.  Ale tyto výstrahy týkající se stavu platí jenom pro všechny virtuální počítače, které jsou povolené pro monitorování Azure pro virtuální počítače. 

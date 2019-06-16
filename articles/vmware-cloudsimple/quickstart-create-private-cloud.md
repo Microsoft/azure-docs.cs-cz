@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209542"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rychlý start – konfigurace prostředí privátního cloudu
@@ -104,7 +104,7 @@ Klient VPN je potřeba pro připojení k CloudSimple z vašeho počítače.  St�
 4. Vyberte **uživatelé**.
 5. Klikněte na **stáhnout konfiguraci sítě VPN**
 
-    ![Stáhnout konfiguraci sítě VPN](media/download-p2s-vpn-configuration.png)
+    ![Stažení konfigurace zařízení VPN](media/download-p2s-vpn-configuration.png)
 
 6. Importujte konfiguraci na klienta VPN
 

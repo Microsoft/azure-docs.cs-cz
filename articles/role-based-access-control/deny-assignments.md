@@ -11,27 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 432703b5acb4cd56dac9b25edf99165ca26b0aa0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197132"
+ms.locfileid: "67118281"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Vysvětlení zamítnout přiřazení pro prostředky Azure
 
-Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupinu nebo instanční objekt v určitém rozsahu pro účely odepření přístupu. Zamítnout přiřazení zablokovat uživatelům provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Některé prostředek, který poskytovatelů služeb v Azure teď obsahují zamítnout přiřazení.
-
-V některých ohledech odeprete přiřazení se liší od přiřazení rolí. Zamítnout přiřazení můžete vyloučit objekty zabezpečení a zabránit dědění za účelem podřízených oborech. Zamítnout přiřazení platí také pro [klasický správce předplatného](rbac-and-directory-admin-roles.md) přiřazení.
+Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupinu nebo instanční objekt v určitém rozsahu pro účely odepření přístupu. Zamítnout přiřazení zablokovat uživatelům provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup.
 
 Tento článek popisuje, jak zakázat přiřazení jsou definovány.
 
-> [!NOTE]
-> V tuto chvíli odepřít jediný způsob, jakým můžete přidat vlastní přiřazení je s využitím Azure podrobné plány. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+## <a name="how-deny-assignments-are-created"></a>Jak zakázat, že se vytvoří přiřazení
+
+Zamítnout přiřazení vytvoření a správa Azure k ochraně prostředků. Například plány Azure a Azure spravované aplikace používá zamítnout přiřazení k ochraně systému spravovaných prostředků. Další informace najdete v tématu [chránit nové prostředky podle zámky prostředků Azure plány](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="compare-role-assignments-and-deny-assignments"></a>Porovnat přiřazení rolí a Odepřít přiřazení
+
+Zamítnout přiřazení podle podobný vzorec zamítnout přiřazení, ale také mít několik rozdílů.
+
+| Schopnost | Přiřazení role | Zamítnout přiřazení |
+| --- | --- | --- |
+| Udělení přístupu | :heavy_check_mark: |  |
+| Odepření přístupu |  | :heavy_check_mark: |
+| Mohou být přímo vytvořeny. | :heavy_check_mark: |  |
+| Použít v oboru | :heavy_check_mark: | :heavy_check_mark: |
+| Vyloučit objekty zabezpečení |  | :heavy_check_mark: |
+| Zabránit dědění za účelem podřízené obory |  | :heavy_check_mark: |
+| Platí pro [klasický správce předplatného](rbac-and-directory-admin-roles.md) přiřazení |  | :heavy_check_mark: |
 
 ## <a name="deny-assignment-properties"></a>Zamítnout přiřazení vlastnosti
 
@@ -54,14 +67,24 @@ Tento článek popisuje, jak zakázat přiřazení jsou definovány.
 > | `ExcludePrincipals[i].Type` | Ne | Řetězec] | Pole typů objekt reprezentovaný .id ExcludePrincipals [i]. |
 > | `IsSystemProtected` | Ne | Boolean | Určuje, zda to zamítnout přiřazení vytvořil Azure a nelze upravovat ani odstranit. V současné době všechny odepřít systému chráněné jsou odevzdané úkoly. |
 
-## <a name="system-defined-principal"></a>Objekt zabezpečení definované v systému
+## <a name="the-all-principals-principal"></a>Objekt zabezpečení pro všechny objekty zabezpečení
 
-Pro podporu zamítnout přiřazení, **systémem definovaná hlavní** je zavedený. Tento objekt zabezpečení představuje uživatele, skupiny, instančních objektů a spravovaných identit v adresáři Azure AD. Pokud je ID objektu zabezpečení žádný identifikátor GUID `00000000-0000-0000-0000-000000000000` a typ objektu zabezpečení je `SystemDefined`, objekt zabezpečení představuje všechny objekty zabezpečení. `SystemDefined` je možné kombinovat s `ExcludePrincipals` pro všechny objekty zabezpečení, s výjimkou někteří uživatelé odepření. `SystemDefined` má následující omezení:
+Pro podporu zamítnout přiřazení, objekt definované v systému s názvem *všechny objekty zabezpečení* je zavedený. Tento objekt zabezpečení představuje uživatele, skupiny, instančních objektů a spravovaných identit v adresáři Azure AD. Pokud je ID objektu zabezpečení žádný identifikátor GUID `00000000-0000-0000-0000-000000000000` a typ objektu zabezpečení je `SystemDefined`, objekt zabezpečení představuje všechny objekty zabezpečení. Ve výstupu prostředí Azure PowerShell všechny objekty zabezpečení vypadá takto:
+
+```azurepowershell
+Principals              : {
+                          DisplayName:  All Principals
+                          ObjectType:   SystemDefined
+                          ObjectId:     00000000-0000-0000-0000-000000000000
+                          }
+```
+
+Všechny objekty zabezpečení je možné kombinovat s `ExcludePrincipals` pro všechny objekty zabezpečení, s výjimkou někteří uživatelé odepření. Všechny objekty zabezpečení má následující omezení:
 
 - Lze použít pouze ve `Principals` a nelze jej použít v `ExcludePrincipals`.
 - `Principals[i].Type` musí být nastaveno na `SystemDefined`.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zobrazení zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal](deny-assignments-portal.md)
+* [Seznam zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal](deny-assignments-portal.md)
 * [Pochopení definic rolí pro prostředky Azure](role-definitions.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 465725c69d7aedd7ca7cda35e798ce52416eb929
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055246"
+ms.locfileid: "67125734"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 
@@ -34,22 +34,22 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
     Podpora šifrování protokolu SMB 3.0 byla zavedena v systému Linux verze jádra 4.11 a jestli se přeneseny zpět do starší verze jádra pro oblíbené distribuce Linuxu. V době publikování tohoto dokumentu následujících distribucích z Galerie Azure podporují možnost připojení zadaný v záhlaví tabulky. 
 
-* **Minimální doporučená verze s odpovídající možností připojení (verze protokolu SMB 2.1 vs verze protokolu SMB 3.0)**    
+### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>Minimální doporučená verze s odpovídající možností připojení (verze protokolu SMB 2.1 vs verze protokolu SMB 3.0)
 
-    |   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z na místě a mezi oblastmi) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+|   | SMB 2.1 <br>(Připojení na virtuálních počítačích v rámci stejné oblasti Azure) | SMB 3.0 <br>(Připojení z na místě a mezi oblastmi) |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04+ |
+| RHEL | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ |   |
+| openSUSE | 13.2+ | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-    Pokud tu není uvedený vaší distribuci Linuxu, můžete zkontrolovat verzi jádra systému Linux pomocí následujícího příkazu:
+Pokud tu není uvedený vaší distribuci Linuxu, můžete zkontrolovat verzi jádra systému Linux pomocí následujícího příkazu:
 
-   ```bash
-   uname -r
-   ```
+```bash
+uname -r
+```
 
 * <a id="install-cifs-utils"></a>**Je nainstalován balíček cifs utils.**  
     Balíček cifs utils můžete nainstalovat pomocí Správce balíčků na distribucí Linuxu podle vašeho výběru. 

@@ -5,21 +5,21 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/30/2019
+ms.date: 06/05/2019
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 7907504401f4b47aafe6032ea895d9647e6c303c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: ea87e51e66985f860cd6d10595a32facde1dc639
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133781"
 ---
 Je maximální počet pro každý typ objektu pro Azure Policy. Položka _Obor_ udává buď předplatné, nebo [skupinu pro správu](../articles/governance/management-groups/overview.md).
 
 | Kde | Co | Maximální počet |
 |---|---|---|
-| Scope | Definice zásad | 250 |
+| Scope | Definice zásad | 500 |
 | Scope | Definice iniciativ | 100 |
 | Tenant | Definice iniciativ | 1 000 |
 | Scope | Přiřazení zásady nebo iniciativa | 100 |
