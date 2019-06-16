@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447496"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
@@ -77,7 +77,7 @@ Model Machine Learning je dostupná jako šablonu, která ukazuje, jak pracovat 
 
 Akcelerátor řešení prediktivní údržby Azure IoT používá regresní model vytvořený z této šablony. Model je nasazený do vašeho předplatného Azure a k dispozici prostřednictvím automaticky generovaného rozhraní API. Řešení obsahuje podmnožinu testovacích dat pro 4 (z celkem 100) modulů a 4 (z celkem 21) datové proudy ze snímačů. Tato data jsou dostatečná pro poskytování přesných výsledků z trénovaného modelu.
 
-*\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, datové úložiště NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/)), NASA Ames Research Center, Moffett Field, CA*
+*\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, datové úložiště NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/) ), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="next-steps"></a>Další postup
 Když jste se seznámili s klíčovými součástmi akcelerátoru řešení prediktivní údržby, můžete si jej přizpůsobit.

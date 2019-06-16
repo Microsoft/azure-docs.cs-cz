@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707970"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
@@ -105,7 +105,7 @@ V předchozí části vytvoří šablona virtuálního počítače s Ubuntu v ka
 K instalaci vazby yon muset zjistit veřejnou IP adresu dva virtuální počítače DNS.
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. Spusťte virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]**.  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy DNS virtuálního počítače jsou *vnet1DNS* a *vnet2NDS*.
+2. Spusťte virtuální počítač DNS tak, že vyberete **skupiny prostředků > [název skupiny prostředků] > [vnet1DNS]** .  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy DNS virtuálního počítače jsou *vnet1DNS* a *vnet2NDS*.
 3. Vyberte **vlastnosti** otevřete stránku vlastnosti ve virtuální síti.
 4. Zapište **veřejnou IP adresu**a taky ověřit **privátní IP adresa**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
 5. Změníte na servery DNS pro obě virtuální sítě pomocí serverů DNS výchozí (poskytováno Azure) příchozí a odchozí přístup ke stažení balíčků pro instalaci vazby v následujících krocích.
@@ -288,7 +288,7 @@ Následující kroky popisují, jak volat skript akce skriptu z webu Azure porta
 5. Vyberte nebo zadejte následující informace:
 
    1. **Název**: Zadejte **povolit replikaci**.
-   2. **Adresa URL skriptu bash**: Zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
+   2. **Adresa URL skriptu bash**: Zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
    3. **Hlavní**: Ujistěte se, že je vybrána tato možnost. Zrušte jiné typy uzlů.
    4. **Parametry**: Následující ukázkové parametry povolíte replikaci pro všechny existující tabulky a pak zkopírujte všechna data ze zdrojového clusteru do cílového clusteru:
 
@@ -360,7 +360,7 @@ Můžete postupujte stejným způsobem, který je popsaný v [povolit replikaci]
 
 ### <a name="scenarios"></a>Scénáře
 
-- **Zkopírujte konkrétní tabulky (test1, test2 a test3) pro všechny řádky upravit až doteď (aktuální časové razítko)**:
+- **Zkopírujte konkrétní tabulky (test1, test2 a test3) pro všechny řádky upravit až doteď (aktuální časové razítko)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
   nebo:
@@ -390,7 +390,7 @@ Pokud chcete zakázat replikaci, použijte jiný skript akce skriptu z [Githubu]
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
-- **Zakažte replikaci na zadaných tabulek (table1, table2 a tabulka3)**:
+- **Zakažte replikaci na zadaných tabulek (table1, table2 a tabulka3)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 

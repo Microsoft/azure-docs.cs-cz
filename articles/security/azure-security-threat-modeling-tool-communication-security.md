@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121319"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Zabezpečení rámce: Zabezpečení komunikace | Zmírnění rizik 
@@ -40,7 +40,7 @@ ms.locfileid: "62121319"
 
 ## <a id="comm-ssltls"></a>Zabezpečená komunikace do centra událostí pomocí protokolu SSL/TLS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Centrum událostí Azure | 
 | **SDL fáze**               | Sestavení |  
@@ -51,7 +51,7 @@ ms.locfileid: "62121319"
 
 ## <a id="priv-aspnet"></a>Zkontrolujte oprávnění k účtu služby a zkontrolujte, že vlastní služby nebo stránky ASP.NET respektovat zabezpečení CRM
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Dynamics CRM | 
 | **SDL fáze**               | Sestavení |  
@@ -62,7 +62,7 @@ ms.locfileid: "62121319"
 
 ## <a id="sqlserver-factory"></a>Brána správy dat používané k připojení místního SQL serveru do služby Azure Data Factory
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Data Factory | 
 | **SDL fáze**               | Nasazení |  
@@ -73,7 +73,7 @@ ms.locfileid: "62121319"
 
 ## <a id="identity-https"></a>Ujistěte se, že veškerý provoz do serveru identit přes připojení HTTPS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Serveru identit | 
 | **SDL fáze**               | Nasazení |  
@@ -84,7 +84,7 @@ ms.locfileid: "62121319"
 
 ## <a id="x509-ssltls"></a>Ověření X.509 certifikáty sloužící k ověření připojení SSL, TLS a DTLS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -95,7 +95,7 @@ ms.locfileid: "62121319"
 
 ## <a id="ssl-appservice"></a>Konfigurace certifikátu SSL pro vlastní domény ve službě Azure App Service
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -106,7 +106,7 @@ ms.locfileid: "62121319"
 
 ## <a id="appservice-https"></a>Vynutit veškerý provoz do služby Azure App Service přes připojení HTTPS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -139,7 +139,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="http-hsts"></a>Povolit zabezpečení striktní přenosu HTTP (HSTS)
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -150,7 +150,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="sqlserver-validation"></a>Ujistěte se SQL server šifrování a certifikát ověření platnosti připojení
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -161,7 +161,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="encrypted-sqlserver"></a>Platnost šifrované komunikace se serverem SQL
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Databáze | 
 | **SDL fáze**               | Sestavení |  
@@ -172,7 +172,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="comm-storage"></a>Ujistěte se, že komunikace s Azure Storage prostřednictvím protokolu HTTPS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Nasazení |  
@@ -183,7 +183,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="md5-https"></a>Ověřit hodnotu hash MD5 po stažení objektů blob, pokud nelze povolit HTTPS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -194,7 +194,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="smb-shares"></a>Použití protokolu SMB 3.0 kompatibilní klient k zajištění šifrování během přenosu dat do sdílené složky Azure
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Mobilního klienta | 
 | **SDL fáze**               | Sestavení |  
@@ -205,7 +205,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 
 ## <a id="cert-pinning"></a>Implementace Připnutí certifikátu
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Storage | 
 | **SDL fáze**               | Sestavení |  
@@ -282,7 +282,7 @@ namespace CertificatePinningExample
 
 ## <a id="https-transport"></a>Povolení HTTPS – Zabezpečte přenosový kanál
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -293,7 +293,7 @@ namespace CertificatePinningExample
 
 ## <a id="message-protection"></a>WCF: Nastavení zabezpečení zpráv úroveň ochrany EncryptAndSign
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -322,7 +322,7 @@ string GetData(int value);
 
 ## <a id="least-account-wcf"></a>WCF: Použijte nejméně privilegovaný účet ke spuštění služby WCF
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
@@ -333,7 +333,7 @@ string GetData(int value);
 
 ## <a id="webapi-https"></a>Vynutit veškerý provoz přes připojení HTTPS k webovým rozhraním API
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
@@ -374,7 +374,7 @@ public class ValuesController : ApiController
  
 ## <a id="redis-ssl"></a>Ujistěte se, že komunikaci do mezipaměti Azure Redis pomocí protokolu SSL
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Azure Cache for Redis | 
 | **SDL fáze**               | Sestavení |  
@@ -387,7 +387,7 @@ Všimněte si, že Redis je určený ke přístupná pomocí důvěryhodné klie
 
 ## <a id="device-field"></a>Hraniční brána komunikaci zabezpečit zařízení
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Brána IoT pole | 
 | **SDL fáze**               | Sestavení |  
@@ -398,7 +398,7 @@ Všimněte si, že Redis je určený ke přístupná pomocí důvěryhodné klie
 
 ## <a id="device-cloud"></a>Zabezpečení zařízení pro Cloudová brána komunikaci pomocí protokolu SSL/TLS
 
-| Název                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | IoT Cloud Gateway | 
 | **SDL fáze**               | Sestavení |  

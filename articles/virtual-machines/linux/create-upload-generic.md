@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ef273b65bb3a8b8536d27c70e8ba05e74faa39b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327962"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64702491"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -74,7 +74,7 @@ Mechanismus pro nové sestavení image initrd nebo initramfs může lišit v zá
 ### <a name="resizing-vhds"></a>Změna velikosti virtuálních pevných disků
 Image virtuálních pevných disků v Azure musí mít virtuální velikost, zarovnání na 1 MB.  Obvykle je správně zarovnán virtuální pevné disky vytvořené pomocí technologie Hyper-V.  Pokud virtuální pevný disk není správně zarovnán, zobrazí chybová zpráva podobná následující při pokusu o vytvoření image z vašeho virtuálního pevného disku.
 
-* Virtuální pevný disk http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
+* Virtuální pevný disk http:\//\<mystorageaccount >.blob.core.windows.net/vhds/MyLinuxVM.vhd má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
 
 V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo [změny velikosti virtuálního pevného disku](https://technet.microsoft.com/library/hh848535.aspx) rutiny Powershellu.  Pokud nejsou spuštěny v prostředí s Windows, doporučujeme použít `qemu-img` pro převod (v případě potřeby) a změna velikosti virtuálního pevného disku.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095437"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému ve službě Azure Security Center
@@ -57,7 +57,7 @@ V tomto příkladu budeme používat **Compute**.
 
       - Vysoká: Ohrožení zabezpečení existuje u významného prostředku (aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
       - Střední: Nekritická nebo další kroky jsou nutné k dokončení procesu nebo odstranění ohrožení.
-      - Nízký: Ohrožení zabezpečení, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
+      - Nízká: Ohrožení zabezpečení, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
 3. Vyberte chybějící aktualizace v seznamu zobrazíte podrobnosti.
 
@@ -77,7 +77,7 @@ V tomto příkladu budeme používat **Compute**.
    ![Restartovat po aktualizacích systému][6]
 2. Vyberte **restartovat po aktualizacích systému**. Tím se otevře **čeká na dokončení aktualizace systému** okno zobrazení seznamu virtuálních počítačů, které je třeba restartovat, aby mohla dokončit použít systém procesu aktualizací.
 
-   ![Čeká na restartování][7]
+   ![Čekání na restartování][7]
 
 Restartujte virtuální počítač z Azure na dokončení procesu.
 

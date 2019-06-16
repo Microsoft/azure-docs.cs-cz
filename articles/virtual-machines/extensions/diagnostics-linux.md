@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
 ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710406"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu pro monitorování metrik a protokolů
@@ -127,7 +127,7 @@ Tato sada konfiguračních informací obsahuje citlivé informace, které by mě
 }
 ```
 
-Název | Hodnota
+Name | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se data zapisují rozšíření.
 storageAccountEndPoint | (volitelné) Koncový bod identifikace cloud, ve kterém se účet úložiště existuje. Pokud toto nastavení chybí, výchozí hodnota LAD veřejného cloudu Azure `https://core.windows.net`. Pokud chcete použít účet úložiště v Azure Germany, Azure Government nebo Azure China, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -169,7 +169,7 @@ Tento volitelný oddíl definuje další cíle, na které rozšíření odešle 
 
 Element | Hodnota
 ------- | -----
-jméno | Řetězec se používá k odkazování na tuto jímku jinde v konfiguraci rozšíření.
+name | Řetězec se používá k odkazování na tuto jímku jinde v konfiguraci rozšíření.
 type | Typ jímky je definována. Určuje jiné hodnoty v instance tohoto typu (pokud existuje).
 
 Diagnostické rozšíření Linux verze 3.0 podporuje dva typy jímku: Centra událostí a JsonBlob.
@@ -257,7 +257,7 @@ Element | Hodnota
 eventVolume | (volitelné) Určuje počet oddílů v rámci tabulky úložiště. Musí být jedna z `"Large"`, `"Medium"`, nebo `"Small"`. Pokud není zadán, výchozí hodnota je `"Medium"`.
 sampleRateInSeconds | (volitelné) Výchozí interval mezi shromažďování metrik nezpracované (neagregovaným). Nejmenší podporované vzorkovací frekvence je 15 sekund. Pokud není zadán, výchozí hodnota je `15`.
 
-#### <a name="metrics"></a>Průzkumníku metrik
+#### <a name="metrics"></a>metrics metrik
 
 ```json
 "metrics": {
@@ -313,15 +313,15 @@ Element | Hodnota
 ------- | -----
 jímky | (volitelné) Čárkou oddělený seznam názvů jímky, do které LAD odešle agregovaná metrika výsledky. Všechna agregovaná metrika se publikují do jednotlivých uvedených jímky. Zobrazit [sinksConfig](#sinksconfig). Příklad: `"EHsink1, myjsonsink"`.
 type | Identifikuje skutečné zprostředkovatele metriky.
-Třída | Spolu s informací, že čítač"identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
+třída | Spolu s informací, že čítač"identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
 counter | Spolu s "třída" identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
 counterSpecifier | Identifikuje konkrétní metriky v rámci oboru názvů Azure metriky.
-condition | (volitelné) Vybere konkrétní instanci objektu, ke kterému metriku použije nebo vybere agregaci za všechny instance daného objektu. Další informace najdete v tématu `builtin` definice metrik.
+Podmínka | (volitelné) Vybere konkrétní instanci objektu, ke kterému metriku použije nebo vybere agregaci za všechny instance daného objektu. Další informace najdete v tématu `builtin` definice metrik.
 sampleRate | JE 8601 interval, který nastaví četnost, kdy se shromažďují nezpracovaná ukázek pro tuto metriku. Pokud není nastavený, intervalem sběru hodnot nastavená hodnota [sampleRateInSeconds](#ladcfg). Nejkratší podporované vzorkovací frekvence je 15 sekund (PT15S).
-jednotka | By měla být jedna z těchto řetězců: "Count", "Bajtů", "Seconds", "Procenta", "CountPerSecond", "BytesPerSecond", "Milisekund". Definuje jednotku pro metriku. Spotřebitelé dat shromážděných očekávat, že hodnoty shromážděná data tak, aby odpovídala této jednotky. LAD ignoruje toto pole.
+Jednotka | By měla být jedna z těchto řetězců: "Count", "Bajtů", "Seconds", "Procenta", "CountPerSecond", "BytesPerSecond", "Milisekund". Definuje jednotku pro metriku. Spotřebitelé dat shromážděných očekávat, že hodnoty shromážděná data tak, aby odpovídala této jednotky. LAD ignoruje toto pole.
 displayName | Popisek (v jazyce určeném v nastavení národního prostředí přidružené) připojené k těmto datům v Azure metriky. LAD ignoruje toto pole.
 
-CounterSpecifier je libovolný identifikátor. Příjemci metrik, jako je Azure portal grafů a výstrah funkce, použijte counterSpecifier jako "klíče", který identifikuje metriku nebo instance metriky. Pro `builtin` metriky, doporučujeme použít counterSpecifier hodnoty, které začínají `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme, že se že připojíte k hodnotě counterSpecifier identifikátor instance. Několik příkladů:
+CounterSpecifier je libovolný identifikátor. Příjemci metrik, jako je Azure portal grafů a výstrah funkce, použijte counterSpecifier jako "klíče", který identifikuje metriku nebo instance metriky. Pro `builtin` metriky, doporučujeme použít counterSpecifier hodnoty, které začínají `/builtin/`. Pokud shromažďujete konkrétní instanci metriky, doporučujeme, že se že připojíte k hodnotě counterSpecifier identifikátor instance. Příklady:
 
 * `/builtin/Processor/PercentIdleTime` -Nečinnost průměrovaný napříč všechny virtuální procesory
 * `/builtin/Disk/FreeSpace(/mnt)` -Volného místa pro /mnt systému souborů
@@ -386,9 +386,9 @@ V této volitelné části řídí spuštění libovolného [OMI](https://github
 
 Element | Hodnota
 ------- | -----
-Obor názvů | (volitelné) OMI obor názvů, ve kterém by měl provést dotaz. Pokud tento parametr zadán, výchozí hodnota je "kořenový/scx", implementovaných [poskytovatelé Cross-platform System Center](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
+– obor názvů | (volitelné) OMI obor názvů, ve kterém by měl provést dotaz. Pokud tento parametr zadán, výchozí hodnota je "kořenový/scx", implementovaných [poskytovatelé Cross-platform System Center](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
 query | OMI dotazu, který má být proveden.
-tabulka | (volitelné) V tabulce Azure storage, v účtu úložiště určený (viz [nastavení chráněné](#protected-settings)).
+table | (volitelné) V tabulce Azure storage, v účtu úložiště určený (viz [nastavení chráněné](#protected-settings)).
 frequency | (volitelné) Počet sekund mezi provádění dotazu. Výchozí hodnota je 300 (5 minut); minimální hodnota je 15 sekund.
 jímky | (volitelné) Čárkou oddělený seznam názvů další jímky, ke kterým by se měly zveřejňovat výsledky metriky nezpracovaná ukázková. Žádné agregace nezpracovaných ukázek se počítá podle rozšíření nebo metriky Azure.
 
@@ -410,8 +410,8 @@ Ovládací prvky sběr souborů protokolů. LAD zachycuje nové řádky textu, j
 
 Element | Hodnota
 ------- | -----
-soubor | Úplný název cesty souboru protokolu určeného k viděli a zachytit. Cesta musí název jednoho souboru; nemůže název adresáře nebo obsahovat zástupné znaky.
-tabulka | (volitelné) Tabulky Azure storage v účtu úložiště určený (jak je uvedeno v chráněné konfigurace), do kterého se zapisují nové řádky z "konec" soubor.
+file | Úplný název cesty souboru protokolu určeného k viděli a zachytit. Cesta musí název jednoho souboru; nemůže název adresáře nebo obsahovat zástupné znaky.
+table | (volitelné) Tabulky Azure storage v účtu úložiště určený (jak je uvedeno v chráněné konfigurace), do kterého se zapisují nové řádky z "konec" soubor.
 jímky | (volitelné) Čárkou oddělený seznam názvy další jímek pro odeslání protokolu řádků.
 
 Buď "table" nebo "jímky" nebo obojí, musí být zadán.
@@ -423,7 +423,7 @@ Zprostředkovatel metriky builtin je zdroj metriky zajímá nejvíce, široké �
 * Procesor
 * Memory (Paměť)
 * Síť
-* Systém souborů
+* systém souborů
 * Disk
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>předdefinované metriky pro třídu procesoru

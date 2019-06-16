@@ -11,10 +11,10 @@ ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61077698"
 ---
 # <a name="my-first-graphical-runbook"></a>Můj první grafický runbook
@@ -209,13 +209,13 @@ Teď runbook upravíte, aby se pokusil virtuální počítač spustit jenom v p�
 
 1. Propojte modul **Získání stavu** se **Start-AzureRmVM**.<br> ![Runbook s modulem kódu](media/automation-first-runbook-graphical/runbook-startvm-get-status.png)  
 1. Vyberte propojení a v podokně Konfigurace změňte možnost **Použít podmínku** na **Ano**. Všimněte si, že propojení se změní na přerušovanou čáru, která označuje, že cílová aktivita se spustí jenom v případě, že se podmínka přeloží na hodnotu pravda.  
-1. V případě **výrazu podmínky** zadejte text *$ActivityOutput['Get Status'] -eq "Stopped"*. Rutina **Start-AzureRmVM** se spustí jenom v případě, že je virtuální počítač zastavený.
+1. V případě **výrazu podmínky** zadejte text *$ActivityOutput['Get Status'] -eq "Stopped"* . Rutina **Start-AzureRmVM** se spustí jenom v případě, že je virtuální počítač zastavený.
 1. V ovládacím prvku Knihovna rozbalte položku **Rutiny** a potom **Microsoft.PowerShell.Utility**.
 1. Přidejte **Write-Output** dvakrát na plátno.
 1. V prvním ovládacím prvku **Write-Output** klikněte na **Parametry** a změňte hodnotu **Popisek** na *Oznámit spuštění virtuálního počítače*.
-1. U položky **InputObject** změňte**Zdroj dat** na **Powershellový výraz** a zadejte výraz *"$VMName successfully started."*.
+1. U položky **InputObject** změňte**Zdroj dat** na **Powershellový výraz** a zadejte výraz *"$VMName successfully started."* .
 1. V druhém ovládacím prvku **Write-Output** klikněte na **Parametry** a změňte hodnotu **Popisek** na *Oznámit neúspěšné spuštění virtuálního počítače*.
-1. U položky **InputObject** změňte **Zdroj dat** na **Powershellový výraz** a zadejte výraz *"$VMName could not start."*.
+1. U položky **InputObject** změňte **Zdroj dat** na **Powershellový výraz** a zadejte výraz *"$VMName could not start."* .
 1. Propojte **Start-AzureRmVM** s **Oznámit spuštění virtuálního počítače** a **Oznámit neúspěšné spuštění virtuálního počítače**.
 1. Vyberte propojení s **Oznámit spuštění virtuálního počítače** a změňte možnost **Použít podmínku** na **Pravda**.
 1. V případě **výrazu podmínky** zadejte *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true*. Tato rutina Write-Output se teď spustí jenom v případě, že je virtuální počítač úspěšně spuštěn.

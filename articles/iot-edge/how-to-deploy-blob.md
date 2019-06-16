@@ -10,10 +10,10 @@ ms.custom: seodec18
 ms.reviewer: arduppal
 manager: philmea
 ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990471"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Nasazení Azure Blob Storage na modul IoT Edge do zařízení
@@ -157,7 +157,7 @@ Azure IoT Edge poskytuje šablony ve Visual Studio Code a pomohou vám vytvořit
    | ----- | ----- |
    | Vyberte složku | Vyberte umístění na vývojovém počítači pro Visual Studio Code k vytvoření těchto souborů řešení. |
    | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
-   | Vyberte šablonu modulu | Zvolte **existujícímu modulu (úplnou bitovou kopii zadejte adresu URL)**. |
+   | Vyberte šablonu modulu | Zvolte **existujícímu modulu (úplnou bitovou kopii zadejte adresu URL)** . |
    | Zadejte název modulu | Zadejte název všechna malá pro modul, jako je třeba **službě Azure BLOB Storage**.<br /><br />Je důležité používat malá písmena název pro službu Azure Blob Storage na modul IoT Edge. IoT Edge je velká a malá písmena, při odkazování na moduly a sady SDK služby Storage výchozí hodnoty na malá písmena. |
    | Použijte image Dockeru pro modul | Zadejte identifikátor URI image: **mcr.microsoft.com/azure-blob-storage:latest** |
 

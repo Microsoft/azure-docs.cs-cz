@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935436"
 ---
 <a name="retrieve-a-specific-offer"></a>Načtení konkrétní nabídky
@@ -44,16 +44,16 @@ Můžete také načíst konkrétní verzi nabídky nebo načíst nabídky v náv
 | offerId     | Identifikátor GUID, který jedinečně identifikuje tuto nabídku.                                                 | String        |
 | version     | Verze nabídky načítají. Ve výchozím nastavení se načte nejnovější nabídky. | Integer       |
 | slotId      | Slot, ze kterého má být načtena, nabídka může být jedna z:      <br/>  - `Draft` (výchozí) načte verzi nabídky aktuálně v návrhu.  <br/>  -  `Preview` načte verzi nabídky aktuálně ve verzi preview.     <br/>  -  `Production` načte verzi nabídky aktuálně v produkčním prostředí.          |      Výčet |
-| verze API-version | Nejnovější verzi rozhraní API                                                                    | Datum          |
+| api-version | Nejnovější verzi rozhraní API                                                                    | Datum          |
 |  |  |  |
 
 
-<a name="header"></a>Hlavička
+<a name="header"></a>Záhlaví
 ------
 
 |  **Název**          |   **Hodnota**            |
 |  ---------------   |  --------------        |
-|  Typ obsahu      | `application/json`     |
+|  Content-Type      | `application/json`     |
 |  Autorizace     | `Bearer YOUR_TOKEN`    |
 |  |  |
 

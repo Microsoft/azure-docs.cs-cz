@@ -10,10 +10,10 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60811702"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics pomocí Pythonu
@@ -24,8 +24,8 @@ Tento článek popisuje, jak spravovat účtů Azure Data Lake Analytics, zdroje
 ## <a name="supported-python-versions"></a>Podporované verze Pythonu
 
 * Použijte 64bitovou verzi jazyka Python.
-* Můžete použít standardní, distribuci jazyka Python nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)**. 
-* Celá řada vývojářů považuje pohodlné používat ho  **[distribuci jazyka Python Anaconda](https://www.anaconda.com/download/)**.  
+* Můžete použít standardní, distribuci jazyka Python nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)** . 
+* Celá řada vývojářů považuje pohodlné používat ho  **[distribuci jazyka Python Anaconda](https://www.anaconda.com/download/)** .  
 * Tento článek byl napsané pomocí Pythonu 3.6 verze ze standardní distribuci jazyka Python
 
 ## <a name="install-azure-python-sdk"></a>Instalace sady Azure Python SDK
@@ -97,7 +97,7 @@ Spusťte tento skript k ověření, že lze importovat moduly.
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktivním ověřování uživatelů pomocí automaticky otevírané okno
 
-Tato metoda se nepodporuje.
+Tato metoda není podporována.
 
 ### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktivním ověřování uživatelů pomocí kódu zařízení
 
@@ -115,7 +115,7 @@ credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = '
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Neinteraktivní ověřování s rozhraním API a certifikátu
 
-Tato metoda se nepodporuje.
+Tato metoda není podporována.
 
 ## <a name="common-script-variables"></a>Společné proměnné skriptu
 

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
 ms.openlocfilehash: 28bb96099acb800d9095325b8c7b46a6b5124b4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61066024"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-a-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu webové služby
@@ -67,7 +67,7 @@ V tomto procesu převodu se zahodí výukového experimentu. Po dokončení proc
 >
 
 ### <a name="the-web-service"></a>Webová služba
-Jakmile budete spokojeni, prediktivní experiment je připraven, můžete nasadit službu jako buď klasickou webovou službou nebo nové webové služby založené na Azure Resource Manageru. Pro zprovoznění modelu a nasadit ho jako *klasická Machine Learning webová služba*, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]**. Nasadit jako *nové Machine Learning webová služba*, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení [nové] webová služba**. Uživatelé teď můžete odesílat data do modelu pomocí rozhraní REST API služby Web a získat zpět výsledky. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](consume-web-services.md).
+Jakmile budete spokojeni, prediktivní experiment je připraven, můžete nasadit službu jako buď klasickou webovou službou nebo nové webové služby založené na Azure Resource Manageru. Pro zprovoznění modelu a nasadit ho jako *klasická Machine Learning webová služba*, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** . Nasadit jako *nové Machine Learning webová služba*, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení [nové] webová služba**. Uživatelé teď můžete odesílat data do modelu pomocí rozhraní REST API služby Web a získat zpět výsledky. Další informace najdete v tématu o [využívání webové služby Azure Machine Learning](consume-web-services.md).
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>Typické případy: vytváření – prediktivní webové služby
 Pokud není trénování experimentu model prediktivní analýzy, pak nemusíte vytvářet výukového experimentu a bodovací experiment – je právě jednoho experimentu a ji můžete nasadit jako webovou službu. Machine Learning Studio zjistí, zda obsahuje experiment prediktivní model díky analýze modulů, které jste použili.
@@ -89,7 +89,7 @@ To záleží na co je potřeba aktualizovat:
 
 Pokud nejsou Změna modelu, ale jsou stačí, když změníte způsob, jakým zpracovává data webové služby, můžete upravit prediktivní experiment a pak klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** znovu. Webová služba je zastavena, se nasadí aktualizované prediktivní experiment a restartovat webovou službu.
 
-Zde naleznete příklad: Předpokládejme, že prediktivní experiment vrátí celý řádek vstupní data s predikované výsledky. Můžete rozhodnout, který má webová služba právě vrátit výsledek. Proto můžete přidat **sloupce projektu** modulu v prediktivní experiment, bezprostředně před na výstupní port pro vyloučení sloupce mimo výsledek. Po kliknutí na **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** znovu, webová služba se aktualizuje.
+Tady je příklad: Předpokládejme, že prediktivní experiment vrátí celý řádek vstupní data s predikované výsledky. Můžete rozhodnout, který má webová služba právě vrátit výsledek. Proto můžete přidat **sloupce projektu** modulu v prediktivní experiment, bezprostředně před na výstupní port pro vyloučení sloupce mimo výsledek. Po kliknutí na **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** znovu, webová služba se aktualizuje.
 
 **Chcete programovém přeučení modelů s novými daty**
 

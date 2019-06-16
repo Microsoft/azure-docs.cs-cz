@@ -15,16 +15,16 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60774008"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
 Spolehlivá souběžná fronta je asynchronní, transakční a replikované fronty které funkce vysoké souběžnost pro zařazení do fronty a operace odstranění z fronty. Je navržena pro zajištění vysoké propustnosti a nízké latence zmírněním striktní řazení FIFO poskytované [spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
 
-## <a name="apis"></a>Rozhraní API
+## <a name="apis"></a>API
 
 |Souběžná fronta                |Spolehlivá souběžná fronta                                         |
 |--------------------------------|------------------------------------------------------------------|

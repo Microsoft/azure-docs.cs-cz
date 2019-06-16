@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507230"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Správa skupin prostředků Azure Resource Manageru pomocí webu Azure portal
@@ -31,7 +31,7 @@ Další články o správě skupin prostředků:
 
 ## <a name="what-is-a-resource-group"></a>Co je skupina prostředků
 
-Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, takže můžete snadno nasadit, aktualizovat a odstranit jako skupina.
+Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků. Obecně platí přidejte prostředky, které sdílejí stejný životní cyklus do stejné skupiny prostředků, takže můžete snadno nasadit, aktualizovat a odstranit jako skupina.
 
 Skupina prostředků ukládá metadata o prostředcích. Při zadávání umístění skupiny prostředků tedy určujete, kde se tato metadata ukládají. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
@@ -48,7 +48,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
    - **Předplatné**: Vyberte své předplatné Azure. 
    - **Skupina prostředků**: Zadejte název nové skupiny prostředků. 
-   - **Oblast**: Vyberte umístění Azure, jako je například **USA (střed)**.
+   - **Oblast**: Vyberte umístění Azure, jako je například **USA (střed)** .
 
      ![Vytvořte skupinu prostředků](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Vyberte **zkontrolovat a vytvořit**
@@ -57,7 +57,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
 
     ![Přejděte do skupiny prostředků](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
-## <a name="list-resource-groups"></a>Vypsat skupiny prostředků
+## <a name="list-resource-groups"></a>Seznam skupin prostředků
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Seznam skupin prostředků, vyberte **skupiny prostředků**

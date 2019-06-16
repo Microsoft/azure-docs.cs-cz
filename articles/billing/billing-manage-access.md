@@ -17,10 +17,10 @@ ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918516"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačních údajů pro Azure
@@ -71,7 +71,7 @@ Pokud jste zákazník EA, vlastník účtu nebo správce oddělení můžete př
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyberte požadované předplatné v [okně Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal.
 
-1. Vyberte **řízení přístupu (IAM)**.
+1. Vyberte **řízení přístupu (IAM)** .
 1. Vyberte **přiřazení rolí** zobrazíte všechna přiřazení rolí pro toto předplatné.
 1. Vyberte **přidat přiřazení role**.
 1. V **Role** rozevíracího seznamu, zvolte **Čtenář fakturace**.

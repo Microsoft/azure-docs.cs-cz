@@ -9,10 +9,10 @@ ms.date: 04/30/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: e0f93b0a95a228b26fae266129aea4b595b05e0f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148359"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
@@ -143,7 +143,7 @@ Následující tabulka uvádí operace, které může být volána anonymně př
 | Získání objektu Blob | Anonymních požadavků | Anonymních požadavků |
 | Získání vlastností objektu Blob | Anonymních požadavků | Anonymních požadavků |
 | Nastavit vlastnosti objektu Blob | Jenom autorizované požadavky | Jenom autorizované požadavky |
-| Získat metadata objektu blob | Anonymních požadavků | Anonymních požadavků |
+| Získat Metadata objektu Blob | Anonymních požadavků | Anonymních požadavků |
 | Nastavte Metadata objektu Blob | Jenom autorizované požadavky | Jenom autorizované požadavky |
 | Vložit blok | Jenom autorizované požadavky | Jenom autorizované požadavky |
 | Získat seznam blokovaných položek (pouze potvrzené bloků) | Anonymních požadavků | Anonymních požadavků |
@@ -155,7 +155,7 @@ Následující tabulka uvádí operace, které může být volána anonymně př
 | Zapůjčení objektu Blob | Jenom autorizované požadavky | Jenom autorizované požadavky |
 | Vložit stránky | Jenom autorizované požadavky | Jenom autorizované požadavky |
 | Získání rozsahů stránek | Anonymních požadavků | Anonymních požadavků |
-| Připojit objekt blob | Jenom autorizované požadavky | Jenom autorizované požadavky |
+| Doplňovací objekt Blob | Jenom autorizované požadavky | Jenom autorizované požadavky |
 
 ## <a name="next-steps"></a>Další postup
 

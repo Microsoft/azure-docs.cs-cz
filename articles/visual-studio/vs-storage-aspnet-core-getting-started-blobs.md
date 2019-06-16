@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
 ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62110508"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET Core)
 
 > [!div class="op_single_selector"]
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
-> - [Jádro ASP.NET](./vs-storage-aspnet-core-getting-started-blobs.md)
+> - [ASP.NET Core](./vs-storage-aspnet-core-getting-started-blobs.md)
 
 Azure Blob storage je služba, která ukládá Nestrukturovaná data v cloudu jako objekty nebo objekty BLOB. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů. Další informace o službě Blob storage najdete v tématu [seznámení se službou Azure Blob storage](../storage/blobs/storage-blobs-introduction.md).
 
@@ -43,7 +43,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
 ### <a name="create-an-aspnet-mvc-app-project"></a>Vytvoření projektu aplikace ASP.NET MVC
 
-1. Otevřete sadu Visual Studio.
+1. Otevřít Visual Studio.
 
 1. V hlavní nabídce vyberte **souboru** > **nový** > **projektu**.
 
@@ -51,7 +51,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
     ![Dialogové okno snímek obrazovky Visual Studio nový projekt](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. V **nová webová aplikace ASP.NET Core** dialogu **.NET Core** > **ASP.NET Core 2.0** > **(webová aplikace Model-View-Controller)**. Pak vyberte **OK**.
+1. V **nová webová aplikace ASP.NET Core** dialogu **.NET Core** > **ASP.NET Core 2.0** >  **(webová aplikace Model-View-Controller)** . Pak vyberte **OK**.
 
     ![Dialogové okno snímek obrazovky z nové webové aplikace ASP.NET Core](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 

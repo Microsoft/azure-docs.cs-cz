@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: tamram
 ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484237"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Spravovat nastavení účtu úložiště na webu Azure Portal
@@ -27,7 +27,7 @@ Azure Storage podporuje ověřování pomocí Azure Active Directory pro úloži
 > [!NOTE]
 > Ověřování uživatelů a aplikací s použitím přihlašovacích údajů Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiným způsobem autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Můžete taky dál používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení. 
 
-## <a name="tags"></a>Značky
+## <a name="tags"></a>Tags
 
 Azure Storage podporuje značky Azure Resource Manageru pro uspořádání vašich prostředků Azure s vlastní taxonomii. Značky můžete použít k účtům úložiště tak, že je můžete seskupit v rámci vašeho předplatného logickým způsobem. 
 

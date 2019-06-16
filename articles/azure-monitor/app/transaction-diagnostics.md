@@ -13,10 +13,10 @@ ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60783627"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostika jednotné transakcí mezi komponentami
@@ -102,4 +102,4 @@ V tuto chvíli jsme se zobrazují volání odchozí závislost odděleně od př
 
 *Proč je nové prostředí chybí většinu dotazů související položky?*
 
-Toto chování je úmyslné. Všechny související položky pro všechny součásti, jsou už k dispozici na levé straně (horní a dolní části). Nové prostředí má dva související položky, které nepokrývá na levé straně: veškerá telemetrie 5 minut před a po této události a časová osa uživatele.
+Jedná se o účel. Všechny související položky pro všechny součásti, jsou už k dispozici na levé straně (horní a dolní části). Nové prostředí má dva související položky, které nepokrývá na levé straně: veškerá telemetrie 5 minut před a po této události a časová osa uživatele.

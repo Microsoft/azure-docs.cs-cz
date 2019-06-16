@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60878779"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí rozhraní REST API
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak k provádění operací systému souborů ve s
 
 * **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md).
 
-* **[cURL](https://curl.haxx.se/)**. Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
+* **[cURL](https://curl.haxx.se/)** . Tento článek používá cURL k předvedení jak volat rozhraní REST API vůči účtu Data Lake Storage Gen1.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Jak můžu ověřovat pomocí služby Azure Active Directory?
 Ověřování pomocí služby Azure Active Directory můžete provádět dvěma přístupy.

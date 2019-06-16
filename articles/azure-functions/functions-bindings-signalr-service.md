@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: f0d4a607676285ed4f0f91d8ce8c83ddf1313b89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511132"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -601,7 +601,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type**|| Musí být nastaveno na `signalRConnectionInfo`.|
 |**direction**|| Musí být nastaveno na `in`.|
-|**Jméno**|| Název proměnné používá v kódu funkce pro objekt informací o připojení. |
+|**name**|| Název proměnné používá v kódu funkce pro objekt informací o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název rozbočovače SignalR, pro které se generuje informace o připojení.|
 |**userId**|**UserId**| Volitelné: Nastavení přístupového klíče tokenu deklarací identity hodnota identifikátoru uživatele. |
 |**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby SignalR (výchozí nastavení "AzureSignalRConnectionString") |
@@ -614,7 +614,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**type**|| Musí být nastaveno na `signalR`.|
 |**direction**|| Musí být nastaveno na `out`.|
-|**Jméno**|| Název proměnné používá v kódu funkce pro objekt informací o připojení. |
+|**name**|| Název proměnné používá v kódu funkce pro objekt informací o připojení. |
 |**hubName**|**HubName**| Tato hodnota musí být nastavena na název rozbočovače SignalR, pro které se generuje informace o připojení.|
 |**connectionStringSetting**|**connectionStringSetting**| Název nastavení aplikace, které obsahuje připojovací řetězec služby SignalR (výchozí nastavení "AzureSignalRConnectionString") |
 
@@ -626,4 +626,4 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 > [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Azure Functions vývoje a konfigurace pomocí služby Azure SignalR](../azure-signalr/signalr-concept-serverless-development-config.md)
+> [Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)

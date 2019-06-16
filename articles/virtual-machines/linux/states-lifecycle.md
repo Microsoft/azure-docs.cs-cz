@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
 ms.openlocfilehash: d7341c40b8a130b81e61277daf306f7a900d24ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704476"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Životní cyklus virtuálních počítačů a stavy
 

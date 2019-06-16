@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60774059"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transakce a režimy zamykání v Azure Service Fabric Reliable Collections
@@ -75,9 +75,9 @@ Aktualizační zámek je asymetrického uzamčen, použít k zabránění tedy v
 
 Matice kompatibility zámek najdete v následující tabulce:
 
-| Požádat o \ udělena | Žádný | Shared | Aktualizace | Exkluzivní |
+| Požádat o \ udělena | Žádný | Sdílené | Aktualizace | Exkluzivní |
 | --- |:--- |:--- |:--- |:--- |
-| Shared |Žádný konflikt. |Žádný konflikt. |Konflikt |Konflikt |
+| Sdílené |Žádný konflikt. |Žádný konflikt. |Konflikt |Konflikt |
 | Aktualizace |Žádný konflikt. |Žádný konflikt. |Konflikt |Konflikt |
 | Exkluzivní |Žádný konflikt. |Konflikt |Konflikt |Konflikt |
 

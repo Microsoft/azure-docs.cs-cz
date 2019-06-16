@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002030"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
@@ -118,7 +118,7 @@ Chcete-li přidat další účty poskytovatele CSP s entitou, **přístup účas
 
 Můžete mít několika účtům Azure používají různé měny. Sestavy nákladů ve službě Cloudyn však není uveden více než jeden typ currency na sestavu.
 
-Pokud máte více předplatných, které používají různé měny, nadřazená entita a jeho podřízené entity měny se zobrazují v USD **$**. Naše navrhované osvědčeným postupem je vyhýbat se použití různých měnách ve stejné hierarchii entity. Jinými slovy všechna vaše předplatná uspořádány do struktury entity používali stejné měně.
+Pokud máte více předplatných, které používají různé měny, nadřazená entita a jeho podřízené entity měny se zobrazují v USD **$** . Naše navrhované osvědčeným postupem je vyhýbat se použití různých měnách ve stejné hierarchii entity. Jinými slovy všechna vaše předplatná uspořádány do struktury entity používali stejné měně.
 
 Cloudyn automaticky detekuje vaše předplatné měny smlouvy Enterprise a zobrazí správně v sestavách.  Zobrazí se však pouze Cloudyn USD **$** pro CSP a účty Azure přímo na webu.
 

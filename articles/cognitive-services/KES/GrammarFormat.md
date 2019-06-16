@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60814875"
 ---
 # <a name="grammar-format"></a>Formát gramatiky
@@ -99,7 +99,7 @@ Když `item` zobrazení prvků jako podřízených prvků `one-of` elementu, def
 
 ### <a name="attrref-element"></a>attrref – Element
 
-`attrref` Element odkazuje atribut index, což porovnání hodnoty atributů pozorovaná v indexu.  Požadovaný `uri` atribut určuje název schématu indexu a název atributu pomocí syntaxe "*%{schemaname/*#*%{attrname/*".  Musí existovat předchozí `import` element, který importuje schéma s názvem *%{schemaname/*.  Název atributu se názvu atributu definovaná ve schématu odpovídající.
+`attrref` Element odkazuje atribut index, což porovnání hodnoty atributů pozorovaná v indexu.  Požadovaný `uri` atribut určuje název schématu indexu a název atributu pomocí syntaxe " *%{schemaname/* # *%{attrname/* ".  Musí existovat předchozí `import` element, který importuje schéma s názvem *%{schemaname/* .  Název atributu se názvu atributu definovaná ve schématu odpovídající.
 
 Kromě odpovídající vstup uživatele `attrref` element také vrátí objekt strukturovaných dotazů jako výstup, který vybere podmnožinu objektů v indexu odpovídající vstupní hodnota.  Použít nepovinný `name` atributy název proměnné, kde se má uložit výstup objektu dotazu.  Objekt dotazu se může skládat s jinými objekty dotaz k vytvoření více složité výrazy.  Zobrazit [sémantického výkladu](SemanticInterpretation.md) podrobnosti.  
 

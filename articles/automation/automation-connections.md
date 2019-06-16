@@ -10,10 +10,10 @@ ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61074236"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
@@ -46,11 +46,11 @@ Rutiny v následující tabulce se používají k vytváření a Správa připoj
 |[Remove-AzureRmAutomationConnection](/powershell/module/azurerm.automation/remove-azurermautomationconnection)|Odebere existující připojení.|
 |[Set-AzureRmAutomationConnectionFieldValue](/powershell/module/azurerm.automation/set-azurermautomationconnectionfieldvalue)|Nastaví hodnotu konkrétního pole pro existující připojení.|
 
-## <a name="activities"></a>Aktivity
+## <a name="activities"></a>Činnosti
 
 Aktivity v následující tabulce se používají pro přístup k připojením v runbooku nebo konfigurace DSC.
 
-|Aktivity|Popis|
+|Činnosti|Popis|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Získá připojení pro použití. Vrátí zatřiďovací tabulku s vlastnostmi připojení.|
 

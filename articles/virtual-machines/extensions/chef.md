@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
 ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60800278"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef rozšíření virtuálního počítače pro systémy Linux a Windows
@@ -71,13 +71,13 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 | Název | Hodnota / příklad | Typ dat
 | ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | řetězec (date) |
-| vydavatele | `Chef.Bootstrap.WindowsAzure` | string |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | řetězec (double) |
 
 ### <a name="settings"></a>Nastavení
 
-| Název | Hodnota / příklad | Typ dat | Povinné?
+| Název | Hodnota / příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (url) | Ano |
 | nastavení/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
@@ -85,7 +85,7 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 
 ### <a name="protected-settings"></a>Chráněné nastavení
 
-| Název | Příklad: | Typ dat | Povinné?
+| Název | Příklad: | Typ dat | Požadováno?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Ano |
 

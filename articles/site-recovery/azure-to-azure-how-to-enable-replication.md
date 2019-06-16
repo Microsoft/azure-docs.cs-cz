@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
 ms.openlocfilehash: 86bd41d518006b0601a5c9d18e5429f76d5a4fc5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926620"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
@@ -54,8 +54,8 @@ Povolení replikace. Tento postup předpokládá, že primární oblast Azure je
        - Můžete upravit nastavení skupiny prostředků.
        - Umístění cílové skupiny prostředků může být libovolné oblasti Azure, s výjimkou oblasti, ve které jsou hostitelem zdrojových virtuálních počítačů.
    - **Cílová virtuální síť**: Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti s příponou "Azure Site Recovery" v názvu nové virtuální sítě. To je namapována na zdrojovou síť a použít pro všechny budoucí ochrany. [Další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
-   - **Cílové účty úložiště (zdrojový virtuální počítač nepoužívá spravované disky)**: Ve výchozím nastavení vytvoří Site Recovery nový cílový účet úložiště tak napodobuje konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště už existuje, je znovu.
-   - **Repliky spravovaných disků (zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové repliky spravovaných disků v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk.
+   - **Cílové účty úložiště (zdrojový virtuální počítač nepoužívá spravované disky)** : Ve výchozím nastavení vytvoří Site Recovery nový cílový účet úložiště tak napodobuje konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště už existuje, je znovu.
+   - **Repliky spravovaných disků (zdrojový virtuální počítač používá spravované disky)** : Site Recovery vytvoří nové repliky spravovaných disků v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk.
    - **Účty úložiště mezipaměti**: Site Recovery potřebuje účet úložiště s názvem úložiště mezipaměti ve zdrojové oblasti. Všechny změny aktivit ve zdrojových virtuálních počítačů jsou sledovány a odeslat do účtu úložiště mezipaměti před replikaci do cílového umístění.
    - **Cílové skupiny dostupnosti**: Ve výchozím nastavení vytvoří Site Recovery nové skupiny dostupnosti v cílové oblasti s příponou "Azure Site Recovery" v názvu pro virtuální počítače, které jsou součástí skupiny dostupnosti ve zdrojové oblasti. Pokud skupinu dostupnosti, Site Recovery vytvoří již existuje, je znovu.
    - **Cílové zóny dostupnosti**: Ve výchozím nastavení Site Recovery přiřadí číslo zóny jako zdrojové oblasti v cílové oblasti, v případě, že cílové oblasti podporují zóny dostupnosti.

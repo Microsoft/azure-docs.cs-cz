@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424724"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Provést akci s Runbook Automation z výsledků na vyhledávacím protokolu Log Analytics
@@ -38,7 +38,7 @@ Reagovat na události a zahájit z výsledků vyhledávání protokolu sady runb
 
 1. Na webu Azure Portal, klikněte na tlačítko **všechny služby** a vyberte **Log Analytics**.  
 2. Vyberte pracovní prostor Log Analytics.
-3. V pracovním prostoru vyberte **protokoly (classic)**.  
+3. V pracovním prostoru vyberte **protokoly (classic)** .  
 4. Na stránce hledání v protokolu proveďte hledání v protokolu.  
 5. Z výsledků prohledávání protokolu, klikněte na tlačítko se třemi tečkami nalevo od polí a v místní nabídce vyberte **provádět akce na**.<br><br> ![Vyberte akci přijmout z výsledku hledání](./media/take-action/log-search-takeaction-menuoption.png) 
 6. Vyberte **spuštění sady runbook** a vyberte spuštění sady runbook.  Můžete vybrat jakoukoli sadu runbook v účtu Automation, který je propojený s pracovním prostorem Log Analytics.  Je třeba počítat s následujícím:
