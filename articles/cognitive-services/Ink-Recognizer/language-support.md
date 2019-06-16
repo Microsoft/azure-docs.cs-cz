@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 98962182da86fceb0b6fcc8540422f93bc0058f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65026296"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání rukopisu
@@ -30,15 +30,15 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro rozhraní API pro
 | Baskičtina                                     |     `eu-ES`     |
 | Bosenština (latinka)                            | `bs-Latn-BA`    |
 | Katalánština                                    |     `ca-ES`     |
-| čínština (zjednodušená, Čína)                |     `zh-CN`     |
-| čínština (tradiční, Tchaj-wan)              |     `zh-TW`     |
+| Čínština (zjednodušená, Čína)                |     `zh-CN`     |
+| Čínština (tradiční, Tchaj-wan)              |     `zh-TW`     |
 | Chorvatština (Chorvatsko)                         |     `hr-HR`     |
 | Čeština                                      |     `cs-CZ`     |
 | dánština                                     |     `da-DK`     |
-| nizozemština (Belgie)                            |     `nl-BE`     |
-| nizozemština (Nizozemsko)                        |     `nl-NL`     |
-| Angličtina (Austrálie)                        |     `en-AU`     |
-| Angličtina (Kanada)                           |     `en-CA`     |
+| Holandština (Belgie)                            |     `nl-BE`     |
+| Nizozemština (Nizozemsko)                        |     `nl-NL`     |
+| angličtina (Austrálie)                        |     `en-AU`     |
+| angličtina (Kanada)                           |     `en-CA`     |
 | Angličtina (Spojené království)                   |     `en-GB`     |
 | English (India)                            |     `en-IN`     |
 | Angličtina (Spojené státy)                    |     `en-US`     |
@@ -53,30 +53,30 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro rozhraní API pro
 | Irština                                      |     `ga-IE`     |
 | Italština (Itálie)                            |     `it-IT`     |
 | Japonština                                   |     `ja-JP`     |
-| Kiňarwandština                                |     `rw-RW`     |
-| svahilština (Keňa)                          |     `sw-KE`     |
+| Kinyarwanda                                |     `rw-RW`     |
+| Svahilština (Keňa)                          |     `sw-KE`     |
 | Korejština                                     |     `ko-KR`     |
 | Lucemburština                              |     `lb-LU`     |
 | Malajština (Sultanát Brunej)                  |     `ms-BN`     |
 | Malajština (Malajsie)                           |     `ms-MY`     |
-| Maorština                                      |     `mi-NZ`     |
-| norština (bokmal)                         |     `nb-NO`     |
+| Maori                                      |     `mi-NZ`     |
+| Norština (Bokmal)                         |     `nb-NO`     |
 | Norština (Nynorsk)                        |     `nn-NO`     |
 | polština                                     |     `pl-PL`     |
 | Portugalština (Brazílie)                        |     `pt-BR`     |
 | Portugalština (Portugalsko)                      |     `pt-PT`     |
-| Rétorománština                                    |     `rm-CH`     |
+| Románština                                    |     `rm-CH`     |
 | Rumunština                                   |     `ro-RO`     |
 | ruština                                    |     `ru-RU`     |
-| Skotská gaelština                            |     `gd-GB`     |
-| Severní sótština                           |    `nso-ZA`     |
+| Scottish Gaelic                            |     `gd-GB`     |
+| Severní sotština                           |    `nso-ZA`     |
 | Srbština (cyrilice, Bosna a Hercegovina) |  `sr-Cyrl-BA`   |
-| srbština (cyrilice, Černá hora)             |  `sr-Cyrl-ME`   |
-| srbština (cyrilice, Srbsko)                 |  `sr-Cyrl-RS`   |
+| Serbian (Cyrillic, Montenegro)             |  `sr-Cyrl-ME`   |
+| Srbština (cyrilice, Srbsko)                 |  `sr-Cyrl-RS`   |
 | Srbština (latinka, Bosna a Hercegovina)    |  `sr-Latn-BA`   |
-| srbština (latinka, Černá hora)                |  `sr-Latn-ME`   |
-| srbština (latinka, Srbsko)                    |  `sr-Latn-RS`   |
-| setswanština (Jihoafrická republika)                    |     `tn-ZA`     |
+| Serbian (Latin, Montenegro)                |  `sr-Latn-ME`   |
+| Srbština (latinka, Srbsko)                    |  `sr-Latn-RS`   |
+| Čvanština (Jižní Afrika)                    |     `tn-ZA`     |
 | Slovenština                                     |     `sk-SK`     |
 | Slovinština                                  |     `sl-SI`     |
 | Španělština (Argentina)                        |     `es-AR`     |
@@ -85,9 +85,9 @@ Tento článek vysvětluje, jaké jazyky jsou podporovány pro rozhraní API pro
 | Švédština (Švédsko)                           |     `sv-SE`     |
 | turečtina                                    |     `tr-TR`     |
 | Velština                                      |     `cy-GB`     |
-| Wolofština                                      |     `wo-SN`     |
-| Xhoština                                      |     `xh-ZA`     |
-| Zulština                                       |     `zu-ZA`     |
+| Wolof                                      |     `wo-SN`     |
+| Xhosa                                      |     `xh-ZA`     |
+| Zulu                                       |     `zu-ZA`     |
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

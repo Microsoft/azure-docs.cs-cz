@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339120"
 ---
 # <a name="graph-search-method"></a>Metoda prohledávání grafů
@@ -30,7 +30,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 
 ## <a name="request-parameters"></a>Parametry žádosti  
 
-Název     | Hodnota | Povinné?  | Popis
+Name     | Hodnota | Požadováno?  | Popis
 -----------|-----------|---------|--------
 **Režim**       | Textový řetězec | Ano | Název režimu, který chcete použít. Hodnota je buď *json* nebo *lambda*.
 
@@ -49,7 +49,7 @@ Pro *lambda* hledání textu POST je řetězec ve formátu prostého textu. Těl
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
-Název | Popis
+Name | Popis
 -------|-----   
 **výsledky** | Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje hodnoty požadovaných atributů. Toto pole je k dispozici v případě, že byla žádost úspěšně zpracována.
 **error** | Stavové kódy HTTP. Toto pole je k dispozici, pokud požadavek selže.

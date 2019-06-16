@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
 ms.openlocfilehash: b5da253c699c895c61df14ff50062a99e82d6913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60541594"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64512294"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Velikosti virtuálních počítačů předchozí generace
 

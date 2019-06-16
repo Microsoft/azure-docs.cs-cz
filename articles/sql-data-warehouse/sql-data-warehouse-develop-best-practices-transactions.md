@@ -11,10 +11,10 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 9ab1da9fce74359448311591986d57abbbcef066
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873650"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakcí ve službě Azure SQL Data Warehouse
@@ -67,12 +67,12 @@ Funkce CTAS a vložit... Vybrat jsou obě operace hromadného načtení. Však o
 
 | Primární Index | Scénář zatížení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Vše |**Minimální** |
+| Halda |Jakýkoli |**Minimální** |
 | Clusterovaný Index |Prázdná cílová tabulka |**Minimální** |
 | Clusterovaný Index |Načtené řádky nepřekrývají s existující stránky v cíli |**Minimální** |
-| Clusterovaný Index |Načtené řádky se překrývá s existující stránky v cíli |Úplný |
+| Clusterovaný Index |Načtené řádky se překrývá s existující stránky v cíli |Úplná |
 | Clusterovaný Index Columnstore |Velikost dávky > = 102,400 na distribuci zarovnání oddílu |**Minimální** |
-| Clusterovaný Index Columnstore |Batch velikost < 102,400 na distribuci zarovnání oddílu |Úplný |
+| Clusterovaný Index Columnstore |Batch velikost < 102,400 na distribuci zarovnání oddílu |Úplná |
 
 Je vhodné poznamenat, že jakékoli zápisy aktualizovat sekundární či neclusterované indexy budou vždy plně protokolované operace.
 

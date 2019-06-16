@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
 ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61098485"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času dělené názvu souboru s použitím nástroje pro kopírování dat
@@ -48,7 +48,7 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     ![Nahrání souborů](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
-    > Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 14:03:00 26. února 2019 můžete vytvořit cestu ke složce jako **zdroj/2019/02/26/14/** pravidlem z **zdroj / {Year} / {Month} / {Day} / {Hour} /**.
+    > Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 14:03:00 26. února 2019 můžete vytvořit cestu ke složce jako **zdroj/2019/02/26/14/** pravidlem z **zdroj / {Year} / {Month} / {Day} / {Hour} /** .
 
 2. Vytvořte kontejner s názvem **cílové**. K provedení těchto úloh můžete použít různé nástroje, například [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
@@ -66,7 +66,7 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
    
    ![Nová datová továrna – chybová zpráva](./media/tutorial-copy-data-tool/name-not-available-error.png)
    
-   Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_**ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+   Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. Použijte například název _**vaše_jméno**_ **ADFTutorialDataFactory**. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 3. Vyberte **předplatné** Azure, v rámci kterého se má nová datová továrna vytvořit. 
 4. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
@@ -184,7 +184,7 @@ Připravte úložiště objektů Blob pro tento kurz provedením následujícíc
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
     > [!NOTE]
-    > Možná budete vědět, že je potřeba vytvořit nová cesta ke složce. Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 3:20 hodin 26. února 2019, můžete vytvořit cesta ke složce jako **zdroj/2019/02/26/15/** pravidlem z **{Year} / {Month} / {Day} / {Hour} /**.
+    > Možná budete vědět, že je potřeba vytvořit nová cesta ke složce. Upravte prosím název složky pomocí času UTC.  Například pokud je aktuální čas UTC 3:20 hodin 26. února 2019, můžete vytvořit cesta ke složce jako **zdroj/2019/02/26/15/** pravidlem z **{Year} / {Month} / {Day} / {Hour} /** .
     
 13. Chcete přejít zpátky k **spuštění kanálu** zobrazit, vyberte možnost **všechna spuštění kanálů**a počkat na stejném kanálu znovu aktivuje automaticky po jiné jedné hodině.  
 

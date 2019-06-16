@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 25cf9c3b7968be16dcc22f4140725efc22d785f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156537"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
@@ -320,9 +320,9 @@ Následující tabulka popisuje vlastnosti, které můžete použít v **dostupn
 | --- | --- | --- | --- |
 | frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: Minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
 | interval |Určuje multiplikátor pro četnost<br/><br/>"Interval četnosti x" Určuje, jak často se řez.<br/><br/>Pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/><b>Poznámka:</b> Pokud chcete zadat frekvenci jako minutu, doporučujeme nastavit interval na menší než 15 |Ano |Není k dispozici |
-| Styl |Určuje, zda by měl být řez na začátek/konec intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je nastaven styl EndOfInterval Frequency je nastavená na měsíc, řez na poslední den v měsíci. Pokud je nastaven styl StartOfInterval, řez v první den v měsíci.<br/><br/>Pokud je nastaven styl EndOfInterval Frequency je nastavená na den, řez za poslední hodinu dne.<br/><br/>Je-li Frequency je nastavená na Hour a je nastaven styl EndOfInterval, řez je vytvořen na konec hodiny. Například pro určitý řez pro dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
+| style |Určuje, zda by měl být řez na začátek/konec intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je nastaven styl EndOfInterval Frequency je nastavená na měsíc, řez na poslední den v měsíci. Pokud je nastaven styl StartOfInterval, řez v první den v měsíci.<br/><br/>Pokud je nastaven styl EndOfInterval Frequency je nastavená na den, řez za poslední hodinu dne.<br/><br/>Je-li Frequency je nastavená na Hour a je nastaven styl EndOfInterval, řez je vytvořen na konec hodiny. Například pro určitý řez pro dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
 | anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/><b>Poznámka:</b> Pokud je AnchorDateTime částí data, která jsou podrobnější než je četnost podrobnější částí ignorovány. <br/><br/>Například pokud <b>interval</b> je <b>každou hodinu</b> (frekvence: hour a interval je: (1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b> pak bude <b>minuty a sekundy</b> části AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
-| Posun |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/><b>Poznámka:</b> Pokud nejsou zadány anchorDateTime a posun, výsledkem je kombinované shift. |Ne |Není k dispozici |
+| offset |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/><b>Poznámka:</b> Pokud nejsou zadány anchorDateTime a posun, výsledkem je kombinované shift. |Ne |Není k dispozici |
 
 Následující části Dostupnost určuje, zda výstupní datové sady vyprodukované každou hodinu (nebo) vstupní datová sada je k dispozici po hodinách:
 
@@ -599,7 +599,7 @@ K definování Azure Data Lake Store propojenou službu, nastavte typ propojenou
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano (pro ověřování instančních objektů) |
 | servicePrincipalKey | Zadejte klíč aplikace. | Ano (pro ověřování instančních objektů) |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Podržením ukazatele myši v pravém horním rohu webu Azure portal můžete načíst ji. | Ano (pro ověřování instančních objektů) |
-| Autorizace | Klikněte na tlačítko **Authorize** tlačítko **editoru služby Data Factory** a zadejte svoje přihlašovací údaje, které přiřadí tuto vlastnost adresa URL automaticky generované autorizace. | Ano (pro ověření pověření uživatele)|
+| authorization | Klikněte na tlačítko **Authorize** tlačítko **editoru služby Data Factory** a zadejte svoje přihlašovací údaje, které přiřadí tuto vlastnost adresa URL automaticky generované autorizace. | Ano (pro ověření pověření uživatele)|
 | ID relace | Id relace OAuth z autorizační relace OAuth. Každé id relace je jedinečný a může být použit pouze jednou. Toto nastavení není automaticky vygenerován při použití editoru služby Data Factory. | Ano (pro ověření pověření uživatele) |
 
 #### <a name="example-using-service-principal-authentication"></a>Příklad: použití ověřování instančních objektů
@@ -1710,7 +1710,7 @@ K definování IBM DB2 propojenou službu, nastavte **typ** propojené služby p
 | database |Název databáze DB2. |Ano |
 | schema |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
 | authenticationType |Typ ověřování používaný pro připojení k databázi DB2. Možné hodnoty: Anonymní, základní a Windows. |Ano |
-| username jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
+| username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
 
@@ -1826,7 +1826,7 @@ K definování MySQL propojenou službu, nastavte **typ** propojené služby pro
 | database |Název databáze MySQL. |Ano |
 | schema |Název schématu databáze. |Ne |
 | authenticationType |Typ ověřování používaný pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
-| username jméno |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
+| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
 
@@ -2117,7 +2117,7 @@ K definování PostgreSQL propojenou službu, nastavte **typ** propojené služb
 | database |Název databáze PostgreSQL. |Ano |
 | schema |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
 | authenticationType |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty: Anonymní, základní a Windows. |Ano |
-| username jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
+| username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
 
@@ -2674,8 +2674,8 @@ K definování Sybase propojenou službu, nastavte **typ** propojené služby pr
 | server |Název serveru Sybase. |Ano |
 | database |Název databáze Sybase. |Ano |
 | schema |Název schématu databáze. |Ne |
-| authenticationType |Typ ověřování používaný pro připojení k databázi Sybase. Možné hodnoty: Anonymní, základní a Windows. |Ano |
-| username jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi Sybase. Možné hodnoty: Anonymní, základní a Windows. |Ano |
+| username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Sybase. |Ano |
 
@@ -2792,8 +2792,8 @@ K definování Teradata propojenou službu, nastavte **typ** propojené služby 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | server |Název serveru Teradata. |Ano |
-| authenticationType |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty: Anonymní, základní a Windows. |Ano |
-| username jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty: Anonymní, základní a Windows. |Ano |
+| username |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
 
@@ -3880,7 +3880,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| username jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
+| username | Uživatel, který má přístup k serveru SFTP. |Ano |
 | password | Heslo pro uživatele (uživatelské jméno). | Ano |
 
 ```json
@@ -3929,7 +3929,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| username jméno |Uživatel, který má přístup k serveru SFTP |Ano |
+| username |Uživatel, který má přístup k serveru SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče můžete přístup k této brány. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. <br><br> Platí pouze při kopírování dat z místní server SFTP. |
 | privateKeyContent | Serializovaný řetězec soukromého klíče obsahu. Průvodce kopírováním může číst soubor privátního klíče a automaticky extrahovat obsah privátního klíče. Pokud používáte žádné další nástroj nebo sadu SDK, použijte vlastnost privateKeyPath. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. |
 | passPhrase | Zadejte pass frázi/heslo k dešifrování privátního klíče, pokud soubor klíče je chráněn heslo. | Ano, pokud se soubor privátního klíče je chráněn heslo. |
@@ -4273,7 +4273,7 @@ K definování OData propojenou službu, nastavte **typ** propojené služby pro
 | --- | --- | --- |
 | url |Adresa URL služby OData. |Ano |
 | authenticationType |Typ ověřování používaný pro připojení ke zdroji OData. <br/><br/> Pro cloudové prostředí OData možné hodnoty jsou Anonymous, Basic a protokolem OAuth (Poznámka: momentálně se podporuje jenom podpory Azure Data Factory, Azure Active Directory na základě OAuth). <br/><br/> V místním prostředí OData možné hodnoty jsou Anonymous, Basic a Windows. |Ano |
-| username jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
+| username |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze v případě, že používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **Authorize** tlačítko Průvodce kopírováním služby Data Factory nebo editoru a zadejte svoje přihlašovací údaje, pak hodnota této vlastnosti bude možné automaticky vygenerovat. |Ano (pouze v případě, že používáte ověřování OAuth) |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení ke službě OData s místními. Zadejte, pokud se kopírování dat z na místní zdroj OData. |Ne |
@@ -4442,9 +4442,9 @@ K definování ODBC propojenou službu, nastavte **typ** propojené služby pro 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | connectionString |– Přístup k pověření část připojovací řetězec a případně zašifrované přihlašovací údaje. Příklady v následujících částech. |Ano |
-| pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Ne |
+| credential |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Ne |
 | authenticationType |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty: Anonymní a Basic. |Ano |
-| username jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
+| username |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
 | password |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | gatewayName |Název brány, který služba Data Factory měla použít pro připojení k úložišti dat rozhraní ODBC. |Ano |
 
@@ -4972,7 +4972,7 @@ Následující tabulka obsahuje popis vlastností použitých v definici JSON sl
 | Type |Vlastnost type by měla být nastavená na: **AzureDataLakeAnalytics**. |Ano |
 | accountName |Název účtu Azure Data Lake Analytics. |Ano |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI. |Ne |
-| Autorizace |Autorizační kód se načte automaticky po kliknutí na tlačítko **Authorize** tlačítko v editoru služby Data Factory a dokončí se přihlášení OAuth. |Ano |
+| authorization |Autorizační kód se načte automaticky po kliknutí na tlačítko **Authorize** tlačítko v editoru služby Data Factory a dokončí se přihlášení OAuth. |Ano |
 | subscriptionId |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
 | resourceGroupName |Název skupiny prostředků Azure |Ne (když není určeno, skupina prostředků objektu pro vytváření dat se používá). |
 | ID relace |id relace z autorizační relace OAuth. Každé id relace je jedinečný a může být použit pouze jednou. Při použití editoru služby Data Factory toto ID se generuje automaticky. |Ano |
@@ -5130,8 +5130,8 @@ V definici JSON aktivity Hive můžete zadat následující vlastnosti. Vlastnos
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | script |Zadejte vložený skript Hive |Ne |
-| Cesta ke skriptu |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
+| script path |Store skriptu Hivu ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
+| defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu Hive pomocí "hiveconf. |Ne |
 
 Tyto vlastnosti typu jsou specifická pro aktivitu Hive. Další vlastnosti (mimo části typeProperties) jsou podporované pro všechny aktivity.
 
@@ -5176,8 +5176,8 @@ Zadejte následující vlastnosti v definici JSON aktivity Pig. Vlastnost typu a
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | script |Zadejte vložený skript Pig |Ne |
-| Cesta ke skriptu |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
-| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
+| script path |Skript Pig Store ve službě Azure blob storage a zadejte cestu k souboru. Vlastnost 'script' nebo "scriptPath". Obě nelze použít společně. Název souboru je velká a malá písmena. |Ne |
+| defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig |Ne |
 
 Tyto vlastnosti typu jsou specifická pro aktivitu Pig. Další vlastnosti (mimo části typeProperties) jsou podporované pro všechny aktivity.
 

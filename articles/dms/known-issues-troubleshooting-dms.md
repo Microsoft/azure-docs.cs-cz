@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 05/22/2019
 ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002214"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů služby Azure Database Migration Service a chyb
@@ -96,7 +96,7 @@ Při migraci databáze MySQL do Azure Database for MySQL instanci prostřednictv
 
 | Příčina         | Řešení    |
 | ------------- | ------------- |
-| Tato chyba nastane, pokud migrace selže kvůli vypršení časového limitu čekání zámek během migrace. | Zvažte zvýšení hodnoty parametru server **"innodb_lock_wait_timeout"**. Nejvyšší povolená hodnota je 1073741824. |
+| Tato chyba nastane, pokud migrace selže kvůli vypršení časového limitu čekání zámek během migrace. | Zvažte zvýšení hodnoty parametru server **"innodb_lock_wait_timeout"** . Nejvyšší povolená hodnota je 1073741824. |
 
 ## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>Chyba při připojování ke zdroji systému SQL Server při používání dynamických portů nebo pojmenované instance
 

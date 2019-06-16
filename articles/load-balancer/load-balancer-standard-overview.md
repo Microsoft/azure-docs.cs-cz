@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
 ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957486"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
-Azure Load Balancer umožňuje škálovat aplikace a poskytovat vysokou dostupnost služeb. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a poskytuje nízkou latenci a vysokou propustnost a škálování až na úrovni milionů toků pro všechny aplikace TCP a UDP. 
+Nástroj Azure Load Balancer umožňuje škálovat svoje aplikace a poskytovat vysokou dostupnost vaší služby. Nástroj pro vyrovnávání zatížení lze použít pro příchozí i odchozí scénáře a poskytuje nízkou latenci a vysokou propustnost a škálování až na úrovni milionů toků pro všechny aplikace TCP a UDP. 
 
 Tento článek se zaměřuje na Load balanceru úrovně Standard.  Obecnější přehled nástroje pro vyrovnávání zatížení Azure, najdete v tématu [Load Balancer – přehled](load-balancer-overview.md) také.
 

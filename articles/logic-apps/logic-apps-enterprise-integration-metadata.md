@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60846133"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Správa metadat artefakt v účty pro integraci s Azure Logic Apps a Enterprise Integration Pack
@@ -87,7 +87,7 @@ Můžete definovat vlastních metadat pro artefakty v integračních účtů a z
 
       | Vlastnost | Požaduje se | Value | Popis | 
       |----------|----------|-------|-------------| 
-      | **Metoda** | Ano | <*operation-to-run*> | Operace protokolu HTTP pro spuštění na artefakt. Například používá tuto akci HTTP **získat** metody. | 
+      | **– Metoda** | Ano | <*operation-to-run*> | Operace protokolu HTTP pro spuštění na artefakt. Například používá tuto akci HTTP **získat** metody. | 
       | **URI** | Ano | <*metadata-location*> | Pro přístup `routingUrl` metadat hodnotu v artefaktu načíst, můžete použít ve výrazu, například: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **Hlavičky** | Ne | <*hodnoty hlavičky*> | Libovolné záhlaví výstupy z aktivační události, které chcete předat do akce HTTP. Pro příklad, a zajistěte tak předání triggeru `headers` hodnota vlastnosti: můžete použít ve výrazu, například: <p>`@triggeroutputs()['headers']` | 
       | **Text** | Ne | <*body-content*> | Další obsah, které chcete předat prostřednictvím akce HTTP `body` vlastnost. Tento příklad předává na artefakt `properties` hodnoty na akci HTTP: <p>1. Klikněte do **tělo** vlastnosti, takže se zobrazí v seznamu dynamického obsahu. Pokud se nezobrazí žádné vlastnosti, zvolte **zobrazit další**. <br>2. Ze seznamu dynamického obsahu v části **vyhledání artefaktu účtu pro integraci**vyberte **vlastnosti**. | 

@@ -14,14 +14,14 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60823976"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-onprem-cassandra-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-cassandra.md)
 
@@ -67,10 +67,10 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost type musí být nastavená na: **OnPremisesCassandra** |Ano |
-| hostitel |Jeden nebo více IP adres nebo názvů hostitele serveru Cassandra.<br/><br/>Zadejte seznam IP adres nebo názvů hostitele pro připojení ke všem serverům současně. |Ano |
+| host |Jeden nebo více IP adres nebo názvů hostitele serveru Cassandra.<br/><br/>Zadejte seznam IP adres nebo názvů hostitele pro připojení ke všem serverům současně. |Ano |
 | port |Port TCP, který Cassandra server používá k naslouchání pro připojení klientů. |Ne, výchozí hodnota: 9042 |
-| authenticationType. |Základní nebo anonymní |Ano |
-| uživatelské jméno |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
+| authenticationType |Základní nebo anonymní |Ano |
+| username |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
 | password |Zadejte heslo pro uživatelský účet. |Ano, pokud typ ověřování je nastavena na Basic. |
 | gatewayName |Název brány, který se používá pro připojení k místní databázi Cassandra. |Ano |
 | encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |Ne |
@@ -85,7 +85,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| prostor klíčů |Název prostor klíčů nebo schéma databáze Cassandra. |Ano (Pokud **dotazu** pro **CassandraSource** není definován). |
+| keySpace |Název prostor klíčů nebo schéma databáze Cassandra. |Ano (Pokud **dotazu** pro **CassandraSource** není definován). |
 | tableName |Název tabulky v databázi Cassandra. |Ano (Pokud **dotazu** pro **CassandraSource** není definován). |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
@@ -265,14 +265,14 @@ Zobrazit [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezna
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| DATOVÝ TYP BOOLEAN |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
-| PLOVOUCÍ DESETINNOU ČÁRKOU |Single |
+| FLOAT |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| ČASOVÉ RAZÍTKO |DateTime |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |

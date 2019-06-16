@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.openlocfilehash: 0bfb66f54ec09e86b46a41499211e93a0083e8d1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65779914"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavit X.509 zabezpečení ve službě Azure IoT hub
 
-Tento kurz simuluje kroky nutné k zabezpečení pomocí Azure IoT hub *ověřování pomocí certifikátu X.509*. Pro účely ilustrace vám ukážeme, jak vytvářet certifikáty místně na svém počítači Windows pomocí open source nástroj OpenSSL. Doporučujeme použít tento kurz pouze pro účely testování. Pro produkční prostředí, byste si zakoupit certifikáty vydané *kořenové certifikační autority (CA)*.
+Tento kurz simuluje kroky nutné k zabezpečení pomocí Azure IoT hub *ověřování pomocí certifikátu X.509*. Pro účely ilustrace vám ukážeme, jak vytvářet certifikáty místně na svém počítači Windows pomocí open source nástroj OpenSSL. Doporučujeme použít tento kurz pouze pro účely testování. Pro produkční prostředí, byste si zakoupit certifikáty vydané *kořenové certifikační autority (CA)* .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Zabezpečení pomocí certifikátů X.509 ve službě IoT Hub je nutné začít 
 
 Můžete zvolit jednu z následujících způsobů, jak získat certifikáty:
 
-* Zakoupení certifikátů X.509 z *kořenové certifikační autority (CA)*. To se doporučuje pro produkční prostředí.
+* Zakoupení certifikátů X.509 z *kořenové certifikační autority (CA)* . To se doporučuje pro produkční prostředí.
 
 * Vytvořit vlastní certifikáty X.509 pomocí nástroje třetích stran, jako [OpenSSL](https://www.openssl.org/). To bude bez problémů pro vývoj a testování účely. Zobrazit [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) informace o generování testovací certifikáty certifikační Autority pomocí prostředí PowerShell nebo Bash. Zbývající části tohoto kurzu používá testovací certifikační Autority certifikáty generované infrastrukturou podle pokynů v [Správa testu certifikační Autority certifikáty pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
@@ -52,7 +52,7 @@ Tyto kroky ukazují, jak přidat nové certifikační autority do služby IoT hu
 
 4. Jakmile obdržíte oznámení, že váš certifikát se úspěšně nahraje, klikněte na tlačítko **Uložit**.
 
-    ![Nahrát certifikát](./media/iot-hub-security-x509-get-started/add-new-cert.png)  
+    ![Nahrání certifikátu](./media/iot-hub-security-x509-get-started/add-new-cert.png)  
 
    Tím se zobrazí váš certifikát v **Průzkumník certifikátů** seznamu. Poznámka: **stav** tento certifikát je *neověřené*.
 

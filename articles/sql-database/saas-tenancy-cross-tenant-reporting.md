@@ -13,10 +13,10 @@ ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484661"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Vytváření sestav pomocí služby napříč tenanty distribuovaných dotazů
@@ -128,7 +128,7 @@ V tomto cvičení přidá do schématu (externí zdroj dat a definice externí t
 
     ![Vytvoření externího zdroje dat](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   Externí tabulky, které odkazují na globální zobrazení je popsáno v předchozí části a definované pomocí **distribuce = SHARDED(VenueId)**. Protože každý *VenueId* mapuje na jednotlivé databáze, zlepší se výkon pro řadu scénářů, jak je znázorněno v následující části.
+   Externí tabulky, které odkazují na globální zobrazení je popsáno v předchozí části a definované pomocí **distribuce = SHARDED(VenueId)** . Protože každý *VenueId* mapuje na jednotlivé databáze, zlepší se výkon pro řadu scénářů, jak je znázorněno v následující části.
 
     ![Vytvoření externích tabulek](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 

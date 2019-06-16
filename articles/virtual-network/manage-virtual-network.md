@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 235a82c6bba4165790c370c2641ee6cd41f10840
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700470"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Vytvoření, změna nebo odstranění virtuální sítě
@@ -30,7 +30,7 @@ Zjistěte, jak vytvořit a odstranit virtuální síť a změnit nastavení, jak
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
 - Pokud ještě nemáte účet Azure, zaregistrujte si [Bezplatný zkušební účet](https://azure.microsoft.com/free).
-- Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí svého účtu Azure.
+- Pokud používáte portál, otevřete https://portal.azure.com a přihlaste se pomocí svého účtu Azure.
 - Pokud používáte příkazy prostředí PowerShell k dokončení úkolů v tomto článku, buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/powershell), nebo pomocí prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 - Pokud k dokončení úkolů v tomto článku pomocí příkazů rozhraní příkazového řádku Azure (CLI), buď spusťte příkazy [Azure Cloud Shell](https://shell.azure.com/bash), nebo pomocí rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje použití Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení k Azure.
 - Účet přihlásit nebo připojit k Azure, musíte být přiřazeni k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
@@ -138,7 +138,7 @@ Všechny virtuální počítače, které jsou připojeny k registru virtuální 
 2. Seznam virtuálních sítí vyberte virtuální síť, pro kterou chcete změnit serverů DNS.
 3. Vyberte **servery DNS**v části **nastavení**.
 4. Vyberte jednu z následujících možností:
-   - **Výchozí (poskytováno Azure)**: Všechny názvy prostředků a privátních IP adres jsou automaticky registrované servery Azure DNS. Lze přeložit názvy mezi všechny prostředky, které jsou připojené ke stejné virtuální síti. Tuto možnost nelze použít k překladu názvů mezi virtuálními sítěmi. K překladu názvů mezi virtuálními sítěmi, musíte použít vlastní server DNS.
+   - **Výchozí (poskytováno Azure)** : Všechny názvy prostředků a privátních IP adres jsou automaticky registrované servery Azure DNS. Lze přeložit názvy mezi všechny prostředky, které jsou připojené ke stejné virtuální síti. Tuto možnost nelze použít k překladu názvů mezi virtuálními sítěmi. K překladu názvů mezi virtuálními sítěmi, musíte použít vlastní server DNS.
    - **Vlastní**: Můžete přidat jeden nebo více serverů, až do limitu Azure pro virtuální síť. Další informace o omezeních server DNS, najdete v článku [omezení Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-networking-limits-classic). Máte následující možnosti:
    - **Přidat adresu**: Přidá server do seznamu serverů DNS virtuální sítě. Tato možnost také zaregistruje DNS server s využitím Azure. Pokud už zaregistrovaný DNS server s využitím Azure, můžete vybrat tento server DNS v seznamu.
    - **Odebrat adresu**: U serveru, který chcete odebrat, vyberte **...** , pak **odebrat**. Odstraněním serveru dojde k odebrání serveru pouze z tohoto seznamu virtuální sítě. DNS server zůstávají registrované v Azure pro vaše virtuální sítě a použít.
@@ -171,7 +171,7 @@ Virtuální síť můžete odstranit pouze v případě, že neexistují žádn�
 
 K provedení úlohy ve virtuálních sítích, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
 
-| Akce                                  |   Název                                |
+| Akce                                  |   Name                                |
 |---------------------------------------- |   --------------------------------    |
 |Microsoft.Network/virtualNetworks/read   |   Načíst virtuální sítě              |
 |Microsoft.Network/virtualNetworks/write  |   Vytvořit nebo aktualizovat virtuální síť  |

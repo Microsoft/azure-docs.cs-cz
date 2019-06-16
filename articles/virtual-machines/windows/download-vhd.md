@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61076296"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Stáhněte si Windows virtuálního pevného disku z Azure
@@ -56,7 +56,7 @@ Stáhněte soubor virtuálního pevného disku, budete muset vygenerovat [sdíle
 3.  Nastavit čas vypršení platnosti adresy URL, aby *36000*.
 4.  Klikněte na tlačítko **generování adresy URL**.
 
-    ![Vygenerovat URL](./media/download-vhd/export-generate.png)
+    ![Generování adresy URL](./media/download-vhd/export-generate.png)
 
 > [!NOTE]
 > Čas vypršení platnosti se zvýšil z výchozí poskytnout dostatek času na stažení velkých souborů virtuálního pevného disku pro operační systém Windows Server. Můžete očekávat virtuálního pevného disku obsahující operační systém Windows Server do trvat několik hodin, stáhněte si v závislosti na připojení. Pokud stahujete virtuální pevný disk pro datový disk, výchozí doba je dostačující. 

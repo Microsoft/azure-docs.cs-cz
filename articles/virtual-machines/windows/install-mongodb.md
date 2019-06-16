@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60711399"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalace a konfigurace MongoDB na virtuálním počítači s Windows v Azure
@@ -47,7 +47,7 @@ Chcete-li zahájit instalaci a konfiguraci MongoDB, [Přihlaste se k virtuální
      
      ![Konfigurovat nastavení zabezpečení aplikace Internet Explorer](./media/install-mongodb/configure-internet-explorer-security.png)
 4. Přejděte [MongoDB – soubory ke stažení](https://www.mongodb.com/downloads) stránky (https://www.mongodb.com/downloads).
-5. V případě potřeby vyberte **Community Server** edition a pak vyberte nejnovější aktuální stabilní verzi pro*systému Windows Server 2008 R2 64-bit a novější*. Stažení instalačního programu, klikněte na tlačítko **stahování (msi)**.
+5. V případě potřeby vyberte **Community Server** edition a pak vyberte nejnovější aktuální stabilní verzi pro*systému Windows Server 2008 R2 64-bit a novější*. Stažení instalačního programu, klikněte na tlačítko **stahování (msi)** .
    
     ![Stažení instalačního programu MongoDB](./media/install-mongodb/download-mongodb.png)
    

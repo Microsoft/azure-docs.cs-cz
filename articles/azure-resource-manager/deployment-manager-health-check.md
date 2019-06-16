@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
 ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796257"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Zavést stavu zavedení integrace pro Azure Deployment Manager (Public preview)
@@ -140,7 +140,7 @@ Chcete-li si příklad, přečtěte si téma [kurzu: Použít kontrolu v nástro
 
 V tuto chvíli Azure Deployment Manager ví, jak zadávat dotazy na stav služby a na co fáze zaváděním Uděláte to tak. Ale Azure Deployment Manager také umožňuje konfigurovat podrobné načasování těchto kontrol. Krok healthCheck je proveden v 3 sekvenční fází, které mají všechny konfigurovatelné doby trvání: 
 
-1. Čekání
+1. Wait
 
     1. Po dokončení operace nasazení může být restartování virtuálních počítačů, opětovná konfigurace na základě nová data, nebo dokonce se spouští poprvé. Přijímá také čas pro služby generování signálů stavu mají agregovat do něco užitečné monitorování zprostředkovatele stavu spuštění. Během tohoto procesu tumultuous nemusí mít smysl ke kontrole služby service health, protože aktualizace nebyla ještě nedostaly do stabilního stavu. Služba může ve skutečnosti oscilační mezi stavy funkčních a nefunkčních jako vyrovnat prostředky. 
     1. Během fáze čekání není monitorovat stav služby. To slouží k povolení nasazených prostředků čas vytvoření před zahájením procesu kontroly stavu. 

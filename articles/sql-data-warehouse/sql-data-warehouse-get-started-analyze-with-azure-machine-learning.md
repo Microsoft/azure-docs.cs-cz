@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65860829"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
@@ -75,7 +75,7 @@ Po úspěšném dokončení experimentu klikněte v dolní části modulu Reader
 ![Zobrazení naimportovaných dat][3]
 
 ## <a name="2-clean-the-data"></a>2. Vymazání dat
-Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důležité. To uděláte takto:
+Pro vymazání dat odstraňte některé sloupce, které nejsou pro model důležité. Použijte následující postup:
 
 1. Přetáhněte **výběr sloupců v datové sadě** modul v rámci **transformace dat. < manipulaci s** na plátno. Připojení tohoto modulu **Import dat** modulu.
 2. V podokně vlastností klikněte na **Launch column selector** (Spustit selektor sloupců) a určete sloupce, které se mají odstranit.

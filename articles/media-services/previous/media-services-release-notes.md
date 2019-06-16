@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991918"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
@@ -45,13 +45,13 @@ Chceme slyšet od našich zákazníků, takže se můžeme zaměřit na opravu p
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historie verzí rozhraní REST API
 Informace o historii verzí rozhraní API REST služby Media Services, najdete v článku [Referenční informace k Azure Media Services REST API].
 
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>2019\. března
 
 Funkce Media Hyperlapse ve verzi Preview v Azure Media Services je zastaralá.
 
 ## <a name="december-2018"></a>Prosinec 2018
 
-Funkce Azure Media Services k Media Hyperlapse ve verzi Preview brzo skončí. Od 19. prosince 2018, Media Services se už provést změny nebo vylepšení Media Hyperlapse. 29. března 2019 je vyřazený a už nebudou dostupné.
+Funkce Azure Media Services k Media Hyperlapse ve verzi Preview brzo skončí. Od 19. prosince 2018, Media Services se už provést změny nebo vylepšení Media Hyperlapse. 29\. března 2019 je vyřazený a už nebudou dostupné.
 
 ## <a name="october-2018"></a>Říjen 2018
 
@@ -73,7 +73,7 @@ Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu 
 
 ## <a name="october-2017-release"></a>Verze z října 2017
 > [!IMPORTANT] 
-> Služba Media Services je ukončení podpory pro Azure Access Control Service ověřovací klíče. 22. června 2018 můžete už k ověření Media Services back-endu prostřednictvím kódu pomocí klíčů Access Control Service. Je potřeba aktualizovat kód Refaktorovat pro použití služby Azure Active Directory (Azure AD) za [ověřování Azure AD na základě](media-services-use-aad-auth-to-access-ams-api.md). Podívejte se na upozornění o této změně na webu Azure Portal.
+> Služba Media Services je ukončení podpory pro Azure Access Control Service ověřovací klíče. 22\. června 2018 můžete už k ověření Media Services back-endu prostřednictvím kódu pomocí klíčů Access Control Service. Je potřeba aktualizovat kód Refaktorovat pro použití služby Azure Active Directory (Azure AD) za [ověřování Azure AD na základě](media-services-use-aad-auth-to-access-ams-api.md). Podívejte se na upozornění o této změně na webu Azure Portal.
 
 ### <a name="updates-for-october-2017"></a>Aktualizace. října 2017
 #### <a name="sdks"></a>Sady SDK
@@ -538,7 +538,7 @@ Následující funkce byla v listopadu verzi sady SDK:
   
     * Přidala se asynchronní podpora pro všechny metody.
 
-## <a name="provide-feedback"></a>Poslat názor
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

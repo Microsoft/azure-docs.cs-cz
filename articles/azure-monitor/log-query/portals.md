@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61425928"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Zobrazení a analýza dat protokolu ve službě Azure Monitor
@@ -55,11 +55,11 @@ Následující možnosti nejsou k dispozici prostřednictvím zobrazení prostř
 ## <a name="firewall-requirements"></a>Požadavky na bránu firewall
 Váš prohlížeč vyžaduje přístup na následující adresy pro přístup k Log Analytics.  Pokud váš prohlížeč je přístup k portálu Azure přes bránu firewall, je třeba povolit přístup pro tyto adresy.
 
-| URI | IP adresa | Porty |
+| Uri | IP adresa | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamická | 80,443 |
-| api.loganalytics.io    | Dynamická | 80,443 |
-| docs.loganalytics.io   | Dynamická | 80,443 |
+| portal.loganalytics.io | Dynamické | 80,443 |
+| api.loganalytics.io    | Dynamické | 80,443 |
+| docs.loganalytics.io   | Dynamické | 80,443 |
 
 
 ## <a name="next-steps"></a>Další postup

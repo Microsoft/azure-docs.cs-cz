@@ -11,16 +11,16 @@ ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154253"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 Tento článek uvádí běžné otázka Poradce při potížích.
 
-## <a name="connecting"></a>Připojování
+## <a name="connecting"></a>Připojení
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Přihlášení uživatele "NT AUTHORITY\ANONYMOUS přihlásit" se nezdařilo. (Microsoft SQL Server, Error: 18456) | K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |

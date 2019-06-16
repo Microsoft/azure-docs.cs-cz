@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1db1535779d180994c9ce4350d11f4c696da9e3e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61075535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721552"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Maskování dynamických dat SQL Database
 
@@ -43,9 +43,9 @@ Dynamické maskování dat se dá nakonfigurovat pomocí Správce Azure SQL Data
 
 | Funkce maskování | Logika maskování |
 | --- | --- |
-| **Výchozí** |**Úplné maskování podle datové typy určené pole**<br/><br/>• Použijte XXXX nebo méně Xs, pokud je velikost pole menší než 4 znaky pro datové typy řetězec (nchar, ntext, nvarchar).<br/>• Využijte nulovou hodnotu pro číselné datové typy (bigint, bit, decimal, int, peníze, číselné, smallint, smallmoney, tinyint, float, reálném).<br/>• Využijte 01-01-1900 pro datové typy data a času (datum, datetime2, datetime, datetimeoffset, smalldatetime, čas).<br/>• Pro variantu jazyka SQL, výchozí hodnota aktuální typ se používá.<br/>• Pro formát XML dokumentu <masked/> se používá.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (časové razítko tabulky, hierarchyid, GUID, binary, image, varbinary prostorové typy). |
+| **Výchozí** |**Úplné maskování podle datové typy určené pole**<br/><br/>• Použijte XXXX nebo méně Xs, pokud je velikost pole menší než 4 znaky pro datové typy řetězec (nchar, ntext, nvarchar).<br/>• Využijte nulovou hodnotu pro číselné datové typy (bigint, bit, decimal, int, peníze, číselné, smallint, smallmoney, tinyint, float, reálném).<br/>• Využijte 01-01-1900 pro datové typy data a času (datum, datetime2, datetime, datetimeoffset, smalldatetime, čas).<br/>• Pro variantu jazyka SQL, výchozí hodnota aktuální typ se používá.<br/>• Pro formát XML dokumentu \<maskované / > se používá.<br/>• Použijte prázdnou hodnotu pro speciální datové typy (časové razítko tabulky, hierarchyid, GUID, binary, image, varbinary prostorové typy). |
 | **Platební karty** |**Maskování metodu, která zveřejňuje poslední čtyři číslice určené pole** a přidá konstantní řetězec jako předponu ve formě platební kartu.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-mail** |**Maskování metodu, která zveřejňuje první písmeno jednotky a domény nahradí XXX.com** pomocí předpony konstantní řetězec ve formě e-mailovou adresu.<br/><br/>aXX@XXXX.com |
+| **E-mailu** |**Maskování metodu, která zveřejňuje první písmeno jednotky a domény nahradí XXX.com** pomocí předpony konstantní řetězec ve formě e-mailovou adresu.<br/><br/>aXX@XXXX.com |
 | **Náhodné číslo** |**Maskování metodu, která generuje náhodné číslo** podle vybrané hranice a skutečné datové typy. Pokud určené oblasti jsou stejné funkce maskování je číslo, konstantní.<br/><br/>![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
 | **Vlastní text** |**Metoda, která zpřístupňuje první a poslední znak maskování** a přidá řetězec vlastní odsazení uprostřed. Pokud původní řetězec je kratší než vystavená Předpona a přípona, použije se pouze řetězec odsazení. <br/>prefix[padding]suffix<br/><br/>![Navigační podokno](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 

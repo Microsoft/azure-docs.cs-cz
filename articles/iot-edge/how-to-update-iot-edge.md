@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65152636"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
@@ -72,7 +72,7 @@ Kontrola verze agenta IoT Edge a moduly IoT Edge hub aktuálně na vašem zaří
 
 Agenta IoT Edge a IoT Edge hub obrázky jsou označené verzí IoT Edge, které jsou přidružené. Existují dva různé způsoby použití značky pomocí bitové kopie modulu runtime: 
 
-* **Značky se zajištěním provozu** – pouze první dvě hodnoty čísla verze můžete získat nejnovější image, která odpovídá těchto číslic. 1.0 je třeba aktualizovat vždycky, když je nová verze tak, aby odkazoval na nejnovější verzi 1.0.x. Pokud modul runtime kontejneru na vašem zařízení IoT Edge znovu stáhne bitovou kopii, moduly runtime jsou aktualizovány na nejnovější verzi. Tento přístup je určeno pro účely vývoje. Nasazení z portálu Azure výchozí značky se zajištěním provozu. 
+* **Značky se zajištěním provozu** – pouze první dvě hodnoty čísla verze můžete získat nejnovější image, která odpovídá těchto číslic. 1\.0 je třeba aktualizovat vždycky, když je nová verze tak, aby odkazoval na nejnovější verzi 1.0.x. Pokud modul runtime kontejneru na vašem zařízení IoT Edge znovu stáhne bitovou kopii, moduly runtime jsou aktualizovány na nejnovější verzi. Tento přístup je určeno pro účely vývoje. Nasazení z portálu Azure výchozí značky se zajištěním provozu. 
 * **Konkrétními značkami** -použít všechny tři hodnoty čísla verze explicitně nastavit verzi image. Například 1.0.2 nedojde ke změně po its vitial release. Jakmile budete připraveni k aktualizaci je možné deklarovat nové číslo verze v manifestu nasazení. Tento přístup doporučuje pro produkční účely.
 
 ### <a name="update-a-rolling-tag-image"></a>Aktualizovat bitovou kopii postupné značky

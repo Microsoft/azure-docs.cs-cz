@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 22490599b6f7a8d87c546cd84ca2fc6fbb2bfa3c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65806158"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na webu Marketplace obchodní
@@ -42,7 +42,7 @@ Až budete připraveni publikovat vaši aktualizovanou nabídku, vyberte **publi
 Plán na stávající nabídky, kterou jste již publikovali provádět změny:
 
 - S **nabízí přehled** stránce otevřít stávající nabídky, zvolte příslušný plán, který chcete změnit. Pokud není přístupný z plánu **plán přehled** seznamu vyberte **všechny plány**.
-- Můžete také vybrat plán **název**, **cenový model**, nebo **dostupnosti**. *Aktuálně plány jsou dostupné jenom v angličtině (USA)*.
+- Můžete také vybrat plán **název**, **cenový model**, nebo **dostupnosti**. *Aktuálně plány jsou dostupné jenom v angličtině (USA)* .
 - Vyberte **Uložit** po provedení požadované změny plánu název, popis, ceny nebo cílové skupiny dostupnosti. 
 - Vyberte **publikovat** až budete připraveni publikovat provedené změny. **[Revize a publikovat](#review-and-publish-an-updated-offer)** bude otevřete a zadejte stav dokončení aktualizace stránky. 
 

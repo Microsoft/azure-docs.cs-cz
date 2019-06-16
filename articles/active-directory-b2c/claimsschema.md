@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511851"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
@@ -48,7 +48,7 @@ ms.locfileid: "66511851"
 
 **Typu deklarace identity** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | displayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Datové typy logická hodnota, date, dateTime, int, long, string, třída stringCollection, je možné alternativeSecurityIdCollection. |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Odkaz na **PredicateValidationsInput** eleme
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Protocol | 0: n | Seznam protokolů s příslušným partnerem výchozí název typu deklarace. |
 
@@ -150,7 +150,7 @@ Architekturu rozhraní identit vykreslí pouze první písmeno e-mailovou adresu
 
 **Omezení** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele a vyberte deklaraci identity, jako jsou hodnoty v rozevíracího seznamu. |
 | Vzor | 1:1 | Regulární výraz k použití. |
