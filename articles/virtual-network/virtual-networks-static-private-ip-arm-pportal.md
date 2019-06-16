@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: kumud
 ms.openlocfilehash: 31aeab946b9ad740e2f56eb1ecaafd3e76cc42b3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64723785"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Konfigurace privátních IP adres pro virtuální počítač pomocí webu Azure portal
@@ -55,7 +55,7 @@ Vytvoření virtuálního počítače s názvem *DNS01* v *front-endu* podsíti 
 3. V **Základy** podokně, zadejte název virtuálního počítače k vytvoření (*DNS01* ve scénáři), účet místního správce a heslo, jak je znázorněno na následujícím obrázku.
    
     ![Základní informace o podokně](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. Ujistěte se, že **umístění** vybraného je *USA (střed)*, klikněte na **vybrat existující** pod **skupinu prostředků**, pak klikněte na tlačítko **Skupiny prostředků** znovu, klikněte na *TestRG*a potom klikněte na tlačítko **OK**.
+4. Ujistěte se, že **umístění** vybraného je *USA (střed)* , klikněte na **vybrat existující** pod **skupinu prostředků**, pak klikněte na tlačítko **Skupiny prostředků** znovu, klikněte na *TestRG*a potom klikněte na tlačítko **OK**.
    
     ![Základní informace o podokně](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
 5. V **zvolte velikost** vyberte **A1 Standard**a potom klikněte na tlačítko **vyberte**.

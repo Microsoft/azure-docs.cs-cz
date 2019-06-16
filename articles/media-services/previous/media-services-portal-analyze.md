@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61131755"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Analýza médií s využitím webu Azure Portal 
@@ -53,7 +53,7 @@ Toto téma popisuje, jak zpracovat vašich multimédií pomocí Media Analytics 
 ### <a name="language"></a>Jazyk
 Přirozeného jazyka k rozpoznat v multimediálním souboru. Například angličtina nebo španělština. 
 
-### <a name="captions"></a>Titulky
+### <a name="captions"></a>titulky
 Můžete zvolit popisek formátu, který se vygeneruje ze svého obsahu. Úloha indexování můžete vygenerovat soubory s titulky uvedené v následujících formátech:  
 
 * **SAMI**
@@ -65,7 +65,7 @@ Zavření titulek (kopie) soubory do těchto formátů je možné provést zvuko
 ### <a name="aib-file"></a>Soubor AIB
 Tuto možnost vyberte, pokud chcete vygenerovat soubor Audio Index Blob pro použití s vlastním Ifilterem SQL serveru. Další informace najdete v tématu [to](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blogu.
 
-### <a name="keywords"></a>Klíčová slova
+### <a name="keywords"></a>klíčová slova
 Tuto možnost vyberte, pokud chcete vygenerovat soubor XML klíčových slov. Tento soubor obsahuje klíčová slova extrahovaná z mluveného obsahu s frekvencí a informace o posunu.
 
 ### <a name="job-name"></a>Název úlohy
@@ -139,7 +139,7 @@ Tento procesor pomáhá detekovat potenciální obsahu pro dospělé nebo pikant
 ### <a name="version"></a>Version 
 Použití "2.0".
 
-### <a name="mode"></a>Mode
+### <a name="mode"></a>Režim
 Ignorovat verze 2.0 `Mode` nastavení.
 
 ## <a name="next-steps"></a>Další postup

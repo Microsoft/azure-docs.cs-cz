@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b14dcb5f5af971b10c83ea7fd9064a08cde3ab35
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 1858b3e8d659d8810c54cab96566d03c24c92adf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111286"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -86,9 +86,9 @@ Mobilní zařízení (UPW)            | .![.NET/C#/UWP](media/sample-v2-code/log
 Mobilní zařízení (Android, iOS, UPW)   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktivní | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 Mobilní zařízení (Android)           | ![Android / Javu](media/sample-v2-code/logo_Android.png) | Interaktivní |   [android](https://github.com/Azure-Samples/active-directory-android) |
 Mobilní zařízení (iOS)           | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | Interaktivní |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-Plocha (konzola)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Uživatelské jméno / heslo </p>  Integrované ověřování systému Windows | | [DotNet – nativní bezobslužného](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+Plocha (konzola)          | ![.NET/C#](media/sample-v2-code/logo_NET.png) | Uživatelské jméno / heslo </p>  Ověření integrované Windows | | [DotNet – nativní bezobslužného](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Plocha (konzola)          | ![Konzola jazyka Java](media/sample-v2-code/logo_Java.png) | Uživatelské jméno / heslo | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
-Plocha (konzola)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Tok kódu zařízení | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
+Plocha (konzola)           | ![.NET Core/C#](media/sample-v2-code/logo_NETcore.png) | Tok kódu při zařízení | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
 ## <a name="daemon-applications-accessing-web-apis-with-the-applications-identity"></a>Démon procesu aplikace (přístup k webovým rozhraním API s identitou aplikace)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414949"
+ms.locfileid: "67113472"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Vytvořit strategie správy řízení odolné přístupu v Azure Active Directory
 
@@ -37,7 +37,7 @@ Tento dokument obsahuje pokyny ke strategiím, což je organizace by měl přijm
 Existují čtyři stěžejní v tomto dokumentu:
 
 * Použití účtů pro nouzový přístup se vyhněte uzamčení správce.
-* Implementovat vícefaktorové ověřování pomocí podmíněného přístupu (CA) namísto jednotlivých uživatelů MFA.
+* Implementujte vícefaktorové ověřování pomocí podmíněného přístupu (CA), spíše než jednotlivé uživatele vícefaktorové ověřování.
 * Zmírnění uzamčení uživatelů s využitím více ovládacích prvků podmíněného přístupu (CA).
 * Zmírnění uzamčení uživatelů tím, že zajistíte více metod ověřování nebo ekvivalenty pro každého uživatele.
 
@@ -109,7 +109,7 @@ Principy vystavení během přerušení pomáhá snižovat riziko a je zásadní
 
 #### <a name="microsoft-recommendations"></a>Doporučení Microsoftu
 
-Zásady pohotovostní podmíněného přístupu je **zakázali zásadu** , která vynechává Azure MFA, používá služba MFA třetích stran, na základě rizik nebo na základě zařízení ovládacích prvků. Potom, pokud vaše organizace rozhodne aktivovat váš plán řešení nepředvídaných událostí, správci můžou zásadu povolit a zakázat regulární zásad založených na ovládací prvek.
+Je řešení nepředvídaných událostí zásady podmíněného přístupu **zakázali zásadu** , která vynechává Azure MFA, používá služba MFA třetích stran, na základě rizik nebo na základě zařízení ovládacích prvků. Potom, pokud vaše organizace rozhodne aktivovat váš plán řešení nepředvídaných událostí, správci můžou zásadu povolit a zakázat regulární zásad založených na ovládací prvek.
 
 >[!IMPORTANT]
 > Zakázání zásady, které vynutit zabezpečení pro vaše uživatele, i dočasně sníží tak stav zabezpečení plán řešení nepředvídaných událostí je na místě.
@@ -268,5 +268,5 @@ Pokud vaše organizace používá starší verzi zásad MFA na uživatele, můž
 * [Jak nakonfigurovat zařízení Azure Active Directory připojená k hybridní](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Průvodce nasazením Windows Hello pro firmy](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Heslo – doprovodné materiály týmem Microsoft Research.](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Jaké jsou podmínky podmíněného přístupu Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [Jaké jsou podmínky v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [Co je řízení přístupu v Azure Active Directory podmíněného přístupu?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

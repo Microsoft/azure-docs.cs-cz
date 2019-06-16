@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65408777"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Připravit infrastrukturu Azure pro SAP HA pomocí Windows cluster převzetí služeb při selhání a sdíleného disku pro SAP ASCS/SCS
@@ -204,7 +204,7 @@ _**Obrázek 1:** Nastavení parametrů Azure Resource Manageru vysoké dostupnos
     * \<SAPSystemSID\>-nic-ascs-\<Number\>
     * \<SAPSystemSID\>-nic-db-\<Number\>
 
-  * **Účty úložiště Azure (pouze nespravovaných disků)**:
+  * **Účty úložiště Azure (pouze nespravovaných disků)** :
 
   * **Skupiny dostupnosti** pro:
     * Virtuální počítače aplikačního serveru SAP: \<SAPSystemSID\>-avset-di
@@ -525,7 +525,7 @@ Pokud chcete použít různá čísla pro instance SAP ASCS nebo SCS, musíte zm
 1. Na webu Azure Portal, vyberte  **\<SID\>nástroj pro vyrovnávání zatížení -lb ascs** > **pravidla Vyrovnávání zatížení**.
 2. Pro všechny zátěže pravidla, která patří k instanci SAP ASCS nebo SCS změňte tyto hodnoty:
 
-   * Název
+   * Name
    * Port
    * Port back-end
 
@@ -555,7 +555,7 @@ Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SC
 | --- | --- |
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Value |120000 |
+| Hodnota |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **Tabulka 3:** Změnit první parametr protokolu TCP/IP
@@ -566,7 +566,7 @@ Pak přidejte tato položka registru Windows na oba uzly clusteru Windows pro SA
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Value |120000 |
+| Hodnota |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **Tabulka 4:** Změňte druhý parametr protokolu TCP/IP

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 7725563a80182be8f8c02d94ef1e6cfa382c04d3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924852"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server
@@ -27,7 +27,7 @@ Než začnete, ujistěte se, že rozumíte možnosti zotavení po havárii serve
 Mnoho úloh SQL serveru použít jako základ a dá se integrovat s aplikací, jako jsou SharePoint, Dynamics a SAP, implementovat datové služby.  SQL Server se dá nasadit v několika způsoby:
 
 * **Standalone SQL Server**: SQL Server a všechny databáze jsou hostované na jednom počítači (fyzický nebo virtuální). Pokud virtualizovaný, hostitele clustering slouží pro místní vysokou dostupnost. Vysoká dostupnost na úrovni hosta není implementována.
-* **SQL Server Failover Clustering instance (vždy pro FCI)**: Dva nebo více uzlů se systémem SQL Server instance se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání Windows. Pokud uzel je vypnutý, clusteru můžete předat serveru SQL Server do jiné instance. Toto nastavení se obvykle používá pro implementaci vysoké dostupnosti v primární lokalitě. Toto nasazení nebude chránit proti selhání nebo kvůli výpadku ve vrstvě sdíleného úložiště. Sdílený disk je možné implementovat pomocí iSCSI, fiber channel nebo sdílený soubor vhdx.
+* **SQL Server Failover Clustering instance (vždy pro FCI)** : Dva nebo více uzlů se systémem SQL Server instance se sdílenými disky jsou konfigurované v clusteru převzetí služeb při selhání Windows. Pokud uzel je vypnutý, clusteru můžete předat serveru SQL Server do jiné instance. Toto nastavení se obvykle používá pro implementaci vysoké dostupnosti v primární lokalitě. Toto nasazení nebude chránit proti selhání nebo kvůli výpadku ve vrstvě sdíleného úložiště. Sdílený disk je možné implementovat pomocí iSCSI, fiber channel nebo sdílený soubor vhdx.
 * **SQL skupin dostupnosti Always On**: Dva nebo více uzlů jsou nastavené ve sdílené nic cluster s databází serveru SQL Server nakonfigurován ve skupině dostupnosti s synchronní replikace a automatické převzetí služeb při selhání.
 
   V tomto článku využívají následující nativní SQL po havárii obnovení technologie pro obnovení databází do vzdálené lokality:
@@ -179,7 +179,7 @@ U clusteru se systémem SQL Server Standard edition nebo SQL Server 2008 R2 dopo
 * Pokud aplikace využívá distribuované transakce doporučujeme nasadíte [Site Recovery pomocí replikace sítě SAN](site-recovery-vmm-san.md) pro prostředí Hyper-V nebo [server VMware/fyzických prostředků do VMware](site-recovery-vmware-to-vmware.md) pro prostředí VMware.
 * Pro aplikace bez DTC použijte výše uvedené přístup k obnově clusteru jako samostatný server s využitím místní vysokou bezpečnost zrcadlení databáze.
 
-### <a name="on-premises-to-azure"></a>Z místního nasazení do služby Azure
+### <a name="on-premises-to-azure"></a>On-premises do Azure
 
 Site Recovery neposkytuje hostovaného clusteru podporu při replikaci do Azure. SQL Server také neposkytuje řešení zotavení po havárii s nízkými náklady pro edici Standard. V tomto scénáři doporučujeme chránit místní cluster serveru SQL Server do samostatného systému SQL Server a obnovení v Azure.
 

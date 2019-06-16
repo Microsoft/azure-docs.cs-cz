@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65413717"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovení zálohy v Azure Service Fabric
@@ -161,7 +161,7 @@ Pro rozhraní API pro obnovení, je potřeba zadat _BackupId_ a _BackupLocation_
 
 Musíte také vybrat cílový oddíl v alternativní clusteru podle popisu v [schéma oddílu](service-fabric-concepts-partitioning.md#get-started-with-partitioning). Obnovení zálohy alternativní clusteru oddíl určený ve schématu oddílu z původního clusteru ztraceny.
 
-Pokud je ID oddílu na alternativní clusteru `1c42c47f-439e-4e09-98b9-88b8f60800c6`, můžete ho namapovat na původní ID oddílu clusteru `974bd92a-b395-4631-8a7f-53bd4ae9cf22` porovnáním vysoká hodnota klíče a nízká hodnota klíče pro _Rozsahové dělení (UniformInt64Partition)_.
+Pokud je ID oddílu na alternativní clusteru `1c42c47f-439e-4e09-98b9-88b8f60800c6`, můžete ho namapovat na původní ID oddílu clusteru `974bd92a-b395-4631-8a7f-53bd4ae9cf22` porovnáním vysoká hodnota klíče a nízká hodnota klíče pro _Rozsahové dělení (UniformInt64Partition)_ .
 
 Pro _s názvem dělení_, hodnota názvu se porovnává se identifikovat cílový oddíl v alternativní clusteru.
 

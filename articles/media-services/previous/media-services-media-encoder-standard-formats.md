@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako;anilmur
 ms.openlocfilehash: c862de2eec4e6c116218457a20b567dc02778685
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61463731"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Media Services, kterou používáte:"]
 > * [Verze 2](media-services-media-encoder-standard-formats.md)
 > * [Verze 3](../latest/media-encoder-standard-formats.md)
 
@@ -69,7 +69,7 @@ nebo
 | MPEG-1 |Ano |
 | VC-1/WMV9 |Ano |
 | Canopus HQ a HQX |Ne |
-| 2. část MPEG-4 |Ano |
+| 2\. část MPEG-4 |Ano |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Ano |
 | Nekomprimovaný formát YUV420 nebo mezzanine |Ano |
 | Apple ProRes 422 |Ano |

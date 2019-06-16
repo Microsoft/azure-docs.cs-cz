@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 037996385f34c5037e0386686e3bdf8dc1b7a37a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d25efa8c666fa91c7bd652a7cf931ea6ca379aa2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133305"
 ---
-Zónově redundantní úložiště (ZRS) vaše data synchronně replikuje mezi tři úložnými clustery v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a nachází se ve své vlastní zóně dostupnosti (AZ). Každá zóna dostupnosti&mdash;a ZRS clusteru v rámci něj&mdash;je autonomní a zahrnuje samostatné nástroje a funkce sítě.
+Zónově redundantní úložiště (ZRS) vaše data synchronně replikuje mezi tři úložnými clustery v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a nachází se ve své vlastní zóně dostupnosti (AZ). Každá zóna dostupnosti&mdash;a ZRS clusteru v rámci něj&mdash;je autonomní a zahrnuje samostatné nástroje a funkce sítě. Žádost o zápis do účtu úložiště ZRS skončí úspěšně, až data se zapisují do všech replik napříč tři clustery.
 
 Při ukládání vašich dat v účtu úložiště pomocí replikací zónově redundantního úložiště, můžete nadále přístup k a spravovat vaše data, pokud se stane nedostupným zóně dostupnosti. ZRS poskytuje vynikající výkon a nízkou latencí. ZRS poskytuje stejné [cíle škálovatelnosti](../articles/storage/common/storage-scalability-targets.md) jako [místně redundantní úložiště (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
 

@@ -16,10 +16,10 @@ ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
 ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65232474"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Scénáře automatizace pro správu nákladů a fakturace
@@ -52,7 +52,7 @@ Můžete použít fakturace a rozhraní API pro správu v několika situacích o
 | Doporučení pro rezervace |                           |                  |           X          |                  |                    |           |
 | Podrobnosti rezervace         |                           |                  |           X          |         X        |                    |           |
 | Přehledy rezervace       |                           |                  |           X          |         X        |                    |           |
-| Využití: podrobnosti               |             X             |         X        |           X          |         X        |          X         |     X     |
+| Podrobnosti využití               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Fakturační období             |             X             |         X        |           X          |         X        |                    |           |
 | Faktury                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
@@ -63,7 +63,7 @@ Můžete použít fakturace a rozhraní API pro správu v několika situacích o
 
 ## <a name="api-summaries"></a>Souhrny rozhraní API
 
-### <a name="consumption"></a>Spotřeba
+### <a name="consumption"></a>Využití
 Všechny následující rozhraní API, pokud není uvedeno jinak můžete použít web Direct a podnikovými zákazníky:
 
 -   [Rozhraní API rozpočty](https://docs.microsoft.com/rest/api/consumption/budgets) (*podnikoví zákazníci pouze*): Vytvoření rozpočty nákladech nebo využití pro prostředky, skupiny prostředků nebo měřiče. Pokud jste vytvořili rozpočty, můžete nakonfigurovat upozornění byli informováni vždy, když jste překročili definované prahové hodnoty. Můžete také nakonfigurovat akce dojít, když jste dosáhli rozpočet.

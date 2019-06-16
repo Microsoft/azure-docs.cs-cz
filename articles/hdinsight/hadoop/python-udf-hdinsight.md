@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702227"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití Pythonu uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight
@@ -73,7 +73,7 @@ Zde je, co dělá v tomto příkladu:
 
 <a name="streamingpy"></a>
 
-### <a name="create-file"></a>Vytvořit soubor
+### <a name="create-file"></a>Vytvoření souboru
 
 Ve svém vývojovém prostředí, vytvořte textový soubor s názvem `hiveudf.py`. Použijte následující kód jako obsah souboru:
 
@@ -316,7 +316,7 @@ Zde je, co dělá v tomto příkladu:
 3. Pak Iteruje přes záznamy v `LOG` a používá `GENERATE` vyvolat `create_structure` metoda obsažených ve skriptu Python/Jython načíst jako `myfuncs`. `LINE` slouží k předání do funkce aktuální záznam.
 4. Nakonec jsou zálohované výstupy STDOUT pomocí `DUMP` příkazu. Tento příkaz zobrazí výsledky po dokončení operace.
 
-### <a name="create-file"></a>Vytvořit soubor
+### <a name="create-file"></a>Vytvoření souboru
 
 Ve svém vývojovém prostředí, vytvořte textový soubor s názvem `pigudf.py`. Použijte následující kód jako obsah souboru:
 

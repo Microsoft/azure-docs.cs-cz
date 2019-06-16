@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067300"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Nastavte si upozornění na metriky pro službu Azure Database for PostgreSQL – jeden Server pomocí webu Azure portal
@@ -46,13 +46,13 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění:
 
 6. Vyberte ze seznamu signálů, které se mají generovat výstrahy na metriku. V tomto příkladu vyberte "Procenta úložiště".
    
-   ![Vybrat metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
+   ![Vyberte metriku](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
 7. Konfigurace, včetně logika upozornění **podmínku** (např.) "Větší než"), **prahová hodnota** (např.) 85 procent), **Časová agregace**, **období** času musí být splněny pravidlo metriky před výstrah aktivačních událostí (např.) "Za posledních 30 minut") a **frekvence**.
    
    Vyberte **provádí** po dokončení.
 
-   ![Vybrat metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
+   ![Vyberte metriku](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
 8. V rámci **skupiny akcí** vyberte **vytvořit nový** k vytvoření nové skupiny pro příjem oznámení o výstraze.
 

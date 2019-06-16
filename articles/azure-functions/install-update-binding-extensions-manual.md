@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
 ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61035716"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ruční instalace nebo aktualizace rozšíření vazby Azure Functions na portálu
@@ -30,7 +30,7 @@ Pomocí následujících kroků ruční instalace nebo aktualizace rozšíření
 
 1. V [webu Azure portal](https://portal.azure.com), vyhledejte aplikaci function app a vyberte ho. Zvolte **přehled** kartě a vyberte **Zastavit**.  Zastavuje se aplikace function app odemkne soubory tak, že lze provést změny.
 
-1. Zvolte **funkce platformy** kartu a v části **nástroje pro vývoj** vyberte **Rozšířené nástroje (Kudu)**. Koncový bod Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) se otevře v novém okně.
+1. Zvolte **funkce platformy** kartu a v části **nástroje pro vývoj** vyberte **Rozšířené nástroje (Kudu)** . Koncový bod Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) se otevře v novém okně.
 
 1. V okně Kudu vyberte **konzolou pro ladění** > **CMD**.  
 

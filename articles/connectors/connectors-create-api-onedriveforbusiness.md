@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 87a162338cc67a3f2d2fc425bbcbefe2976661e5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104914"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Začínáme s Onedrivem pro firmy konektoru
@@ -28,7 +28,7 @@ K vytváření aplikací logiky s Onedrivem pro firmy, musíte nejprve vytvořit
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| Podpisový |Ano |Zadat přihlašovací údaje k OneDrivu pro firmy |
+| Podpisový |Ano |Zadejte OneDrive pro firmy pověření |
 
 Po vytvoření připojení, můžete k provedení akce a naslouchat aktivační procedury popsané v tomto článku.
 

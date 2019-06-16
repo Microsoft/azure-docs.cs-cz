@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud;anavin
 ms.openlocfilehash: 2cdf136a01678f7fb2e594b325cd78e8e0240c70
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683405"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a předplatná
@@ -28,7 +28,7 @@ Postup vytvoření partnerského vztahu virtuálních sítí se liší v závisl
 |Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
 |[Obě Resource Manageru](tutorial-connect-virtual-networks-portal.md) |Stejné|
-|[Obě Resource Manageru](create-peering-different-subscriptions.md) |Odlišné|
+|[Obě Resource Manageru](create-peering-different-subscriptions.md) |Různé|
 |[Jedna Resource Manager, druhá classic](create-peering-different-deployment-models.md) |Stejné|
 
 Partnerský vztah virtuální sítě nejde vytvořit mezi dvěma virtuálními sítěmi, které jsou nasazené prostřednictvím modelu nasazení classic. Tento kurz používá virtuálními sítěmi ve stejné oblasti. V tomto kurzu partnerský vztah virtuálních sítí ve stejné oblasti. Můžete také vytvořit partnerský vztah virtuálních sítí v různých [podporované oblasti](virtual-network-manage-peering.md#cross-region). Je doporučeno, aby měli seznámit s [partnerského vztahu požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints) před partnerský vztah virtuálních sítí.

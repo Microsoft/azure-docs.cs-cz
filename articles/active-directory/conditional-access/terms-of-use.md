@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1abae0a454e17e8f633f68bc5853bfb4a4b24d14
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0534613a9df3177290e9b4b57e9830fe62f9741a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112133"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínky použití
 
@@ -101,21 +101,21 @@ Jakmile dokončíte vaše podmínky použití dokumentů, použijte následujíc
 
    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
    | --- | --- | --- | --- | --- |
-   | Alice | 1. ledna | 1. února | 1. března | Dubna 1 |
-   | Bob | 15. ledna | 1. února | 1. března | Dubna 1 |
+   | Alice | 1\. ledna | 1\. února | 1\. března | Dubna 1 |
+   | Bob | 15\. ledna | 1\. února | 1\. března | Dubna 1 |
 
 1. Použít **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení určuje počet dní, než uživatel musí znovu přijali jako podmínky použití. To umožňuje uživatelům, postupovat podle svého vlastního plánu. Například pokud nastavíte dobu trvání na **30** dnů, zde je, jak může dojít k vypršení platnosti dva uživatelé:
 
    | Uživatel | Nejdřív přijmout data | Nejprve vyprší dne | Za druhé vyprší dne | Třetí vyprší dne |
    | --- | --- | --- | --- | --- |
-   | Alice | 1. ledna | 31. ledna | Března 2 | Dubna 1 |
-   | Bob | 15. ledna | 14. února | Března 16 | Dubna 15 |
+   | Alice | 1\. ledna | 31\. ledna | Března 2 | Dubna 1 |
+   | Bob | 15\. ledna | 14\. února | Března 16 | Dubna 15 |
 
    Je možné použít **vyprší souhlasy** a **dobu trvání než (dnů) vyžaduje opětovné přijetí** nastavení, ale většinou můžete použít jeden z nich.
 
 1. V části **podmíněného přístupu**, použijte **vynutit šablonou zásad podmíněného přístupu** seznam a vyberte šablonu, kterou chcete vynucovat podmínky použití.
 
-   ![Šablony podmíněného přístupu](./media/terms-of-use/conditional-access-templates.png)
+   ![Podmíněný přístup šablony](./media/terms-of-use/conditional-access-templates.png)
 
    | Šablona | Popis |
    | --- | --- |
@@ -125,13 +125,13 @@ Jakmile dokončíte vaše podmínky použití dokumentů, použijte následujíc
    | **Vytvoření zásad podmíněného přístupu později** | Tyto podmínky použití se zobrazí v seznamu pro udělení řízení při vytváření zásad podmíněného přístupu. |
 
    >[!IMPORTANT]
-   >Zásady podmíněného přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb. Doporučujeme, abyste ze zásad podmíněného přístupu všechny účty služeb vyloučili.
+   >Podmíněné zásady řízení přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb. Doporučujeme všechny účty služeb vyloučili ze zásad podmíněného přístupu.
 
     Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití konkrétních cloudových aplikací nebo skupinu uživatelů. Další informace najdete v tématu [rychlý start: Podmínky použití přijmout před přístup ke cloudovým aplikacím vyžadovat](require-tou.md).
 
 1. Klikněte na možnost **Vytvořit**.
 
-   Pokud jste vybrali vlastní šablonu podmíněného přístupu, pak nová obrazovka se zobrazí, který vám umožní vytvořit vlastních zásad podmíněného přístupu.
+   Pokud jste vybrali vlastní šablonu podmíněného přístupu, pak nová obrazovka se zobrazí, které vám umožní vytvořit vlastní zásady podmíněného přístupu.
 
    ![Vlastní zásady](./media/terms-of-use/custom-policy.png)
 
@@ -302,12 +302,12 @@ Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure AD v 
 
 ## <a name="policy-changes"></a>Změny zásad
 
-Zásady podmíněného přístupu vstupují v platnost okamžitě. Pokud k tomu dojde, správci se začnou naleznete v tématu "smutné cloudy" nebo "Token problémy s Azure AD". Správce musí odhlásit a znovu se přihlaste k tyto nové zásady.
+Zásady podmíněného přístupu se projeví okamžitě. Pokud k tomu dojde, správci se začnou naleznete v tématu "smutné cloudy" nebo "Token problémy s Azure AD". Správce musí odhlásit a znovu se přihlaste k tyto nové zásady.
 
 > [!IMPORTANT]
 > Příslušní uživatelé se musí odhlásit a znovu přihlásit, aby vyhověli novým zásadám:
 >
-> - pokud jsou u podmínek použití povolené zásady podmíněného přístupu
+> - povolené zásady podmíněného přístupu u podmínek použití
 > - nebo pokud se vytvoří druhé podmínky použití.
 
 ## <a name="b2b-guests-preview"></a>Hosté B2B (Preview)
@@ -384,4 +384,4 @@ Odpověď: Podmínky použití využívá následující koncové body pro ově�
 ## <a name="next-steps"></a>Další postup
 
 - [Rychlé zprovoznění: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací](require-tou.md)
-- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md)
+- [Osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md)

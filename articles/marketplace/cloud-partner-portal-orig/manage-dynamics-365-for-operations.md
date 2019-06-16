@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: a9ada25641e2a56beb9083b145a507c8fd41a46f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935120"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Jak vytvořit Dynamics 365 pro operace nabízejí přes portál Cloud Partner
@@ -51,7 +51,7 @@ Například pokud vydavatele contoso vydavatele vytvoří nabídka s ID nabídky
 
 Tento rozevírací seznam umožňuje zvolit profil vydavatele, který chcete publikovat v rámci této nabídky. Toto pole je uzamčen, jakmile uvedete nabídky.
 
-Název
+Name
 
 Toto je zobrazovaný název nabídky. Toto je název, který se zobrazí v [AppSource](https://appsource.microsoft.com). Může mít maximálně 50 znaků.
 

@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258732"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -30,10 +30,10 @@ Spravujte uzly, které tvoří cluster.
 | --- | --- |
 | Zakázat | Deaktivujte uzel clusteru Service Fabric se zadaným deaktivaci záměr. |
 | Povolit | Aktivujte uzel clusteru Service Fabric, která je právě deaktivována. |
-| zdravotnictví | Získá stav uzlu Service Fabricu. |
-| Informace o | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
+| health | Získá stav uzlu Service Fabricu. |
+| info | Získá informace o konkrétním uzlu v clusteru Service Fabric. |
 | list | Získá seznam uzlů v clusteru Service Fabric. |
-| načítání | Získá informace o načtení uzlu Service Fabric. |
+| load | Získá informace o načtení uzlu Service Fabric. |
 | remove-state | Service Fabric oznámí, že trvalého stavu na uzlu trvale odstraněn nebo ztráty. |
 | report-health | Odešle zprávu o stavu na uzlu Service Fabric. |
 | restart | Restartování uzlu clusteru Service Fabric. |

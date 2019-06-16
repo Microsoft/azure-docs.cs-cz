@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: 424453e70e5b62e408f408cd5ae8169cddb14dd7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62121687"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure databáze
@@ -34,7 +34,7 @@ Mezi ně patří:
 -   Použití řízení přístupu
 -   Šifrování dat
 -   Auditování služby SQL Database
--   Detekce hrozeb SQL Database
+-   Detekce hrozeb služby SQL Database
 
 ## <a name="introduction"></a>Úvod
 Cloud computing vyžaduje nové modely zabezpečení, které neznámého mnoha uživatelům aplikace, správci databází a programátory. V důsledku toho některé organizace mají váhají k implementaci cloudové infrastruktury pro správu dat z důvodu vnímaná bezpečnostní rizika. Ale velká část tento problém můžete zmírnit prostřednictvím lepší přehled o funkcích zabezpečení integrované do Microsoft Azure a Microsoft Azure SQL Database.

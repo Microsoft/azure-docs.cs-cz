@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
 ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61035926"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse s využitím webu Azure portal
@@ -79,7 +79,7 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 | --- | --- | --- | --- | --- |
 | Databáze SQL | cpu_percent | Procento CPU | Průměr | 5 minut |
 | Databáze SQL | physical_data_read_percent | Procento datových V/V | Průměr | 5 minut |
-| Databáze SQL | log_write_percent | Procento V/V protokolu | Průměr | 5 minut |
+| Databáze SQL | log_write_percent | Procento v/v protokolu | Průměr | 5 minut |
 | Databáze SQL | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
 | Databáze SQL | úložiště | Celkovou velikost databáze | Maximum | 30 minut |
 | Databáze SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
@@ -88,31 +88,31 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 | Databáze SQL | Zablokování | Zablokování | Celkem | 10 minut |
 | Databáze SQL | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
 | Databáze SQL | xtp_storage_percent | Percent(Preview) úložiště OLTP v paměti | Průměr | 5 minut |
-| Databáze SQL | workers_percent | Procento prac. procesů | Průměr | 5 minut |
+| Databáze SQL | workers_percent | Procento pracovních procesů | Průměr | 5 minut |
 | Databáze SQL | sessions_percent | Procento relací | Průměr | 5 minut |
 | Databáze SQL | dtu_limit | Omezení jednotek DTU | Průměr | 5 minut |
 | Databáze SQL | dtu_used | DTU použít | Průměr | 5 minut |
 ||||||
 | Elastický fond | cpu_percent | Procento CPU | Průměr | 10 minut |
 | Elastický fond | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| Elastický fond | log_write_percent | Procento V/V protokolu | Průměr | 10 minut |
+| Elastický fond | log_write_percent | Procento v/v protokolu | Průměr | 10 minut |
 | Elastický fond | dtu_consumption_percent | Procento DTU | Průměr | 10 minut |
 | Elastický fond | storage_percent | Procento úložiště | Průměr | 10 minut |
-| Elastický fond | workers_percent | Procento prac. procesů | Průměr | 10 minut |
+| Elastický fond | workers_percent | Procento pracovních procesů | Průměr | 10 minut |
 | Elastický fond | eDTU_limit | omezení eDTU | Průměr | 10 minut |
 | Elastický fond | storage_limit | Limit úložiště. | Průměr | 10 minut |
 | Elastický fond | eDTU_used | použít eDTU | Průměr | 10 minut |
 | Elastický fond | storage_used | Využité úložiště | Průměr | 10 minut |
 ||||||               
-| SQL Data Warehouse | cpu_percent | Procento CPU | Průměr | 10 minut |
-| SQL Data Warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
-| SQL Data Warehouse | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| SQL Data Warehouse | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
-| SQL Data Warehouse | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |
-| SQL Data Warehouse | service_level_objective | Úrovně služby databáze | Celkem | 10 minut |
-| SQL Data Warehouse | dwu_limit | limit jednotky | Maximum | 10 minut |
-| SQL Data Warehouse | dwu_consumption_percent | Procento DWU | Průměr | 10 minut |
-| SQL Data Warehouse | dwu_used | Použít DWU | Průměr | 10 minut |
+| SQL data warehouse | cpu_percent | Procento CPU | Průměr | 10 minut |
+| SQL data warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
+| SQL data warehouse | connection_successful | Úspěšná připojení | Celkem | 10 minut |
+| SQL data warehouse | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
+| SQL data warehouse | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |
+| SQL data warehouse | service_level_objective | Úrovně služby databáze | Celkem | 10 minut |
+| SQL data warehouse | dwu_limit | limit jednotky | Maximum | 10 minut |
+| SQL data warehouse | dwu_consumption_percent | Procento DWU | Průměr | 10 minut |
+| SQL data warehouse | dwu_used | Použít DWU | Průměr | 10 minut |
 ||||||
 
 

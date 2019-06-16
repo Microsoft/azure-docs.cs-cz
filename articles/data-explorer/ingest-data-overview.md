@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60759326"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Příjem dat Azure Průzkumník dat
@@ -90,7 +90,7 @@ Kusto nabízí klientské sady SDK, který slouží k ingestování a dotazován
 
 | Metoda | Latence |
 | --- | --- |
-| **Vložené příjmu** | Okamžitý |
+| **Vložené příjmu** | Okamžité |
 | **Ingestování z dotazu** | Doba dotazu + doba zpracování |
 | **Ingestování ze služby storage** | Doba stahování + doba zpracování |
 | **Ingestování zařazených do fronty** | Dávkování čas + doba zpracování |

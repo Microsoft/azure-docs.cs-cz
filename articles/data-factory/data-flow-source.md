@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 5d8a339049ebda02c2fe470c5d8dc2c743d547ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 5b53819c1d30f6cd62c5941d4b44d70a4996daad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077238"
+ms.locfileid: "67117885"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro mapování toku dat 
 
@@ -84,9 +84,39 @@ Při volbě nastavení pro správu souborů ve zdroji.
 ![Nová nastavení zdroje](media/data-flow/source2.png "nové nastavení")
 
 * **Cesta se zástupným znakem**: Ze zdrojové složky zvolte řadu soubory, které odpovídají vzoru. Toto nastavení potlačí všechny soubory v definici datové sady.
+
+Zástupný znak příklady:
+
+* ```*``` Představuje libovolnou sadu znaků
+* ```**``` Představuje rekurzivní directory vnoření
+* ```?``` Nahrazuje jeden znak
+* ```[]``` Odpovídá jednomu z více znaků v závorkách
+
+* ```/data/sales/**/*.csv``` Získá všechny soubory sdíleného svazku clusteru v rámci /data/sales
+* ```/data/sales/20??/**``` Získá všechny soubory ve 20. prosincem století
+* ```/data/sales/2004/*/12/[XY]1?.csv``` Získá všechny soubory csv v 2004 v prosinci od verze X nebo Y předchází 2 číslice
+
+Kontejner musí být zadaný v datové sadě. Vaše cesta se zástupným znakem proto musí také obsahovat vaše cesta ke složce z kořenové složky.
+
 * **Seznam souborů**: Toto je sada souborů. Vytvořte textový soubor, který obsahuje seznam souborů relativní cestu ke zpracování. Přejděte na tento textový soubor.
 * **Sloupce pro uložení názvu souboru**: Název zdrojového souboru Store ve sloupci ve vašich datech. Zadejte nový název pro uložení řetězce názvu souboru.
 * **Po dokončení**: Zvolte po data spouštění toků, odstranění souboru se zdrojovým nebo přesunutí zdrojového souboru se zdrojovým souborem neprovede žádnou akci. Jsou relativní cesty pro přesunutí.
+
+Pokud chcete přesunout do jiného umístění následující po zpracování zdrojové soubory, vyberte nejdřív "Přesun" pro operace se soubory. Nastavte adresář "z". Pokud nepoužíváte žádné zástupné znaky pro cestu, pak bude "od" nastavení budou stejné složce jako zdrojové složky.
+
+Pokud máte cestu ke zdroji se zástupnými znaky, například:
+
+```/data/sales/20??/**/*.csv```
+
+Můžete zadat jako "z"
+
+```/data/sales```
+
+A "do" jako
+
+```/backup/priorSales```
+
+V takovém případě všechny podadresáře v rámci /data/sales, které byly Source přesunou vzhledem k /backup/priorSales.
 
 ### <a name="sql-datasets"></a>Datové sady SQL
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233893"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Informace o předem připravených domény pro aplikace LUIS
@@ -56,7 +56,7 @@ The table below summarizes the currently supported domains. Support for English 
 |--|--|
 |Kalendář|Kalendáře, se něco o osobní schůzky a události, _není_ veřejné události (například světa ve fotbale plány, kalendářů událostí Seattle nebo obecný kalendáře (například určitý den je dnes, co fall začít, pokud je Labor Day).|
 |Komunikace|Požadavky pro volání, odesílat texty nebo rychlých zpráv, najděte a přidejte kontakty a různé další komunikaci žádosti týkající se (obecně odchozí). Jméno kontaktní osoby pouze dotazy nepatří do domény komunikace.|
-|E-mail|E-mailu je subdoména domény, komunikace. Obsahuje především požadavky na odesílání a příjem zpráv prostřednictvím e-mailů.|
+|Email|E-mailu je subdoména domény, komunikace. Obsahuje především požadavky na odesílání a příjem zpráv prostřednictvím e-mailů.|
 |HomeAutomation|Doména HomeAutomation poskytuje záměry a entity související řízení domácí chytrými zařízeními. Především podporuje příkaz Ovládací prvek související s indikátory a klimatizace, ale má některé schopnosti generalizace pro ostatní electric zařízení.|
 |Poznámky|Poznámka: doména poskytuje záměry a entity pro vytváření poznámek a zápis dolů položky pro uživatele.|
 |Místa|Místa vložení firmám, instituce, restaurace, veřejné mezer a adresy. Doména podporuje místo hledání a zeptat se na informace na veřejném místě, jako je například umístění, pracovní hodiny a vzdálenost.|

@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935462"
 ---
 <a name="retrieve-offer-status"></a>Načtení stavu nabídky 
@@ -28,16 +28,16 @@ Načte aktuální stav nabídky.
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | Identifikátor vydavatel, například `Contoso`  |     String     |
 |  offerId        | Identifikátor GUID, který jednoznačně identifikuje nabídky      |     String     |
-|  verze API-version    | Nejnovější verzi rozhraní API                        |     Datum       |
+|  api-version    | Nejnovější verzi rozhraní API                        |     Datum       |
 |  |  |
 
 
-<a name="header"></a>Hlavička
+<a name="header"></a>Záhlaví
 ------
 
-|  Název           |  Hodnota               |
+|  Name           |  Hodnota               |
 |  -------------  | -------------------  |
-|  Typ obsahu   |  `application/json`  |
+|  Content-Type   |  `application/json`  |
 |  Autorizace  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
@@ -169,7 +169,7 @@ Načte aktuální stav nabídky.
 |  **Název**                    |    **Popis**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | Krok nebyl spuštěn.                        |
-|  Probíhá                  | Krok běží.                             |
+|  Probíhá zpracování                  | Krok běží.                             |
 |  WaitingForPublisherReview   | Krok je čekání na schválení vydavatele.      |
 |  WaitingForApproval          | Krok je čekání na schválení procesu.        |
 |  Blokováno                     | Krok blokovaný.                             |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61339082"
 ---
 # <a name="evaluate-method"></a>vyhodnocení metody
@@ -30,20 +30,20 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 ## <a name="request-parameters"></a>Parametry žádosti  
 
-Název     | Hodnota | Povinné?  | Popis
+Název     | Hodnota | Požadováno?  | Popis
 -----------|-----------|---------|--------
 **výraz**       | Textový řetězec | Ano | Výraz dotazu, který určuje entit, které má být vrácen.
 **model**      | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
 **Atributy** | Textový řetězec | Ne<br>Výchozí hodnota: ID | Čárkami oddělený seznam, který určuje hodnoty atributů, které jsou zahrnuty v odpovědi. Názvy atributů rozlišují malá a velká písmena.
-**count**        | Číslo | Ne<br>Výchozí: 10 | Číslo s vrácenými výsledky.
-**Posun**     | Číslo |   Ne<br>Výchozí: 0    | Index první výsledek vrátit.
+**count**        | Číslo | Ne<br>Výchozí hodnota: 10 | Číslo s vrácenými výsledky.
+**Posun**     | Číslo |   Ne<br>Výchozí hodnota: 0    | Index první výsledek vrátit.
 **Řadit podle** |   Textový řetězec | Ne<br>Výchozí hodnota: snížením prob | Název atributu, který se používá pro řazení entity. Volitelně můžete Vzestupně/sestupně lze zadat. Formát je: *název: asc* nebo *název: desc*.
   
  <br>
 
 ## <a name="response-json"></a>Odpověď (JSON)
 
-Název | Popis
+Name | Popis
 -------|-----   
 **výraz** |  *Expr* parametr z požadavku.
 **Entity** |  Pole 0 nebo více entit, které odpovídají výrazu dotazu. Každá entita obsahuje přirozený logaritmus hodnota pravděpodobnosti a hodnot jiných požadovaných atributů.

@@ -17,10 +17,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098112"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Vytvoření virtuální sítě (klasické) s několika podsítěmi
@@ -39,7 +39,7 @@ Můžete vytvořit virtuální síť (classic) pomocí [webu Azure portal](#port
 
 ## <a name="portal"></a>Portál
 
-1. V internetovém prohlížeči přejděte [webu Azure portal](https://portal.azure.com). Přihlaste se pomocí vaší [účtu Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Pokud účet Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/offers/ms-azr-0044p).
+1. V internetovém prohlížeči přejděte [webu Azure portal](https://portal.azure.com). Přihlaste se pomocí vaší [účtu Azure](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account). Pokud nemáte účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/offers/ms-azr-0044p).
 2. Klikněte na tlačítko **vytvořit prostředek** na portálu.
 3. Zadejte *virtuální síť* v **Hledat na Marketplace** pole v horní části **nový** podokno, které se zobrazí. Klikněte na tlačítko **virtuální síť** když se zobrazí ve výsledcích hledání.
 4. Vyberte **Classic** v **vybrat model nasazení** pole **virtuální sítě** podokno, které se zobrazí, klikněte na **vytvořit**. 
@@ -47,7 +47,7 @@ Můžete vytvořit virtuální síť (classic) pomocí [webu Azure portal](#port
 
     |Nastavení|Hodnota|
     |---|---|
-    |Název|myVnet|
+    |Name|myVnet|
     |Adresní prostor|10.0.0.0/16|
     |Název podsítě|Public|
     |Rozsah adres podsítě|10.0.0.0/24|

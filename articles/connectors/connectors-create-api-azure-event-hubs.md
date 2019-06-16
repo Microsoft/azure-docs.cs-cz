@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/23/2019
 tags: connectors
 ms.openlocfilehash: 882bae14678d8bfff15b35c63c666a20aeee3d1d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720043"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Monitorování, příjem a odesílání událostí pomocí Azure Event Hubs a Azure Logic Apps
@@ -69,7 +69,7 @@ Tento příklad ukazuje, jak spustit pracovní postup aplikace logiky odeslání
 
 1. Do vyhledávacího pole zadejte jako filtr "event hubs". Ze seznamu triggerů vyberte tento trigger: **Když jsou události dostupné v Centru událostí – Event Hubs**
 
-   ![Vybrat trigger](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
+   ![Výběr triggeru](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
 1. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení služby Event Hubs](#create-connection). 
 
@@ -120,7 +120,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 1. V části triggeru nebo akce, zvolte **nový krok**.
 
    Přidání akce mezi stávající kroky, najeďte myší na připojení šipku. 
-   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte jako filtr "event hubs".
 Ze seznamu akcí vyberte tuto akci: **Odeslání události – Event Hubs**

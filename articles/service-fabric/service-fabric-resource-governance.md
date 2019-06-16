@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: aljo, subramar
 ms.openlocfilehash: e011554e61411fddca034f024c30c2270593e07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60772531"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
@@ -58,7 +58,7 @@ Nicméně existují dvě situace, ve kterých může být jiné procesy soupeř�
 
 * *Kombinování řídí a nespravované služby a kontejnery*: Pokud uživatel vytváří službu bez jakékoli zásady správného řízení prostředků zadané, modul runtime považuje využívání žádné prostředky a můžete umístit na uzlu v našem příkladu. V takovém případě tento nový proces efektivně využívá některé procesoru za služby, které jsou již spuštěny na uzlu cenu. Existují dva způsoby řešení tohoto problému. Buď není kombinovat řídí a nespravované služby ve stejném clusteru, nebo použijte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) tak, aby tyto dva typy služeb není ukládaly na stejnou sadu uzlů.
 
-* *Při spuštění jiným procesem na uzlu, mimo Service Fabric (například služby operačního systému)*: V takovém případě procesu mimo Service Fabric také contends pro procesor s existujícími službami. Řešení tohoto problému je nastavení kapacity uzlů správně k účtu pro režijní náklady na operační systém, jak je znázorněno v následující části.
+* *Při spuštění jiným procesem na uzlu, mimo Service Fabric (například služby operačního systému)* : V takovém případě procesu mimo Service Fabric také contends pro procesor s existujícími službami. Řešení tohoto problému je nastavení kapacity uzlů správně k účtu pro režijní náklady na operační systém, jak je znázorněno v následující části.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Nastavení clusteru pro povolení zásad správného řízení prostředků
 

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61443092"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
@@ -91,7 +91,7 @@ Následující kroky popisují, jak přidat roli do aplikace v Azure Active Dire
 
 1. Najít **registrace aplikace** pro vaše řešení na webu Azure Portal. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky zobrazované názvy řešení a aplikace jsou **contoso-rm4**.
 
-    ![Registrace aplikace](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
 
 1. Vyberte svou aplikaci a pak klikněte na tlačítko **Manifest**. Zobrazí se dva existující [role aplikace](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) definované pro aplikaci:
 

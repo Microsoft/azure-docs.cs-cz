@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 6/6/2019
 ms.author: raiye
 ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743031"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
@@ -95,13 +95,13 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.7.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-6.7_201905-01 |6. června 2019 |Příspěvek 6.9 |
-| WA-GUEST-OS-6.6_201904-01 |7. května 2019 |Příspěvek 6.8 |
-|~~WA-GUEST-OS-6.5_201903-01~~ |26. března 2019 |6. června 2019 |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12. března 2019 |7. května 2019 |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5. února 2019 |26. března 2019 |
-|~~WA-GUEST-OS-6.2_201812-01~~ |24. ledna 2019 |12. března 2019 |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24. ledna 2019 |5. února 2019 |
+| WA-GUEST-OS-6.7_201905-01 |6\. června 2019 |Příspěvek 6.9 |
+| WA-GUEST-OS-6.6_201904-01 |7\. května 2019 |Příspěvek 6.8 |
+|~~WA-GUEST-OS-6.5_201903-01~~ |26\. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-6.4_201902-01~~ |12\. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-6.3_201901-01~~ |5\. února 2019 |26\. března 2019 |
+|~~WA-GUEST-OS-6.2_201812-01~~ |24\. ledna 2019 |12\. března 2019 |
+|~~WA-GUEST-OS-6.1_201811-01~~ |24\. ledna 2019 |5\. února 2019 |
 
 ## <a name="family-5-releases"></a>Uvolní řady 5
 **Windows Server 2016**
@@ -115,15 +115,15 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.6.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-5.31_201905-01 |6. června 2019 |Příspěvek 5.33 |
-| WA-GUEST-OS-5.30_201904-01 |7. května 2019 |Příspěvek 5.32 |
-|~~WA-GUEST-OS-5.29_201903-01~~ |26. března 2019 |6. června 2019 |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12. března 2019 |7. května 2019 |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5. února 2019 |26. března 2019 |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7. ledna 2019 |12. března 2019 |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14. prosince 2018 |5. února 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8. listopadu 2018 |7. ledna 2019 |
-|~~WA-GUEST-OS-5.23_201809-01~~ |12. října 2018 |14. prosince 2018 |
+| WA-GUEST-OS-5.31_201905-01 |6\. června 2019 |Příspěvek 5.33 |
+| WA-GUEST-OS-5.30_201904-01 |7\. května 2019 |Příspěvek 5.32 |
+|~~WA-GUEST-OS-5.29_201903-01~~ |26\. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-5.28_201902-01~~ |12\. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-5.27_201901-01~~ |5\. února 2019 |26\. března 2019 |
+|~~WA-GUEST-OS-5.26_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
+|~~WA-GUEST-OS-5.25_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-5.24_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
+|~~WA-GUEST-OS-5.23_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
 
 ## <a name="family-4-releases"></a>Uvolní řady 4
 **Windows Server 2012 R2**
@@ -132,15 +132,15 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5.1
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-4.66_201905-01 |6. června 2019 |Příspěvek 4.68 |
-| WA-GUEST-OS-4.65_201904-01 |7. května 2019 |Příspěvek 4.67 |
-|~~WA-GUEST-OS-4.64_201903-01~~ |26. března 2019 |6. června 2019 |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12. března 2019 |7. května 2019 |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5. února 2019 |26. března 2019 |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7. ledna 2019 |12. března 2019 |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14. prosince 2018 |5. února 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8. listopadu 2018 |7. ledna 2019 |
-|~~WA-GUEST-OS-4.58_201809-01~~ |12. října 2018 |14. prosince 2018 |
+| WA-GUEST-OS-4.66_201905-01 |6\. června 2019 |Příspěvek 4.68 |
+| WA-GUEST-OS-4.65_201904-01 |7\. května 2019 |Příspěvek 4.67 |
+|~~WA-GUEST-OS-4.64_201903-01~~ |26\. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-4.63_201902-01~~ |12\. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-4.62_201901-01~~ |5\. února 2019 |26\. března 2019 |
+|~~WA-GUEST-OS-4.61_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
+|~~WA-GUEST-OS-4.60_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-4.59_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
+|~~WA-GUEST-OS-4.58_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
 
 ## <a name="family-3-releases"></a>Uvolní řady 3
 **Windows Server 2012**
@@ -150,14 +150,14 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
 | WA-GUEST-OS-3.73_201905-01 |Červen 67. 2019 |Příspěvek je 3,75 operace |
-| WA-GUEST-OS-3.72_201904-01 |7. května 2019 |Příspěvek 3.74 |
-|~~WA-GUEST-OS-3.71_201903-01~~ |26. března 2019 |6. června 2019 |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12. března 2019 |7. května 2019 |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5. února 2019 |26. března 2019 |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7. ledna 2019 |12. března 2019 |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14. prosince 2018 |5. února 2019 |
-|~~WA-GUEST-OS-3.66_201810-01~~ |8. listopadu 2018 |7. ledna 2019 |
-|~~WA-GUEST-OS-3.65_201809-01~~ |12. října 2018 |14. prosince 2018 |
+| WA-GUEST-OS-3.72_201904-01 |7\. května 2019 |Příspěvek 3.74 |
+|~~WA-GUEST-OS-3.71_201903-01~~ |26\. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-3.70_201902-01~~ |12\. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-3.69_201901-01~~ |5\. února 2019 |26\. března 2019 |
+|~~WA-GUEST-OS-3.68_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
+|~~WA-GUEST-OS-3.67_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-3.66_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
+|~~WA-GUEST-OS-3.65_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
 
 ## <a name="family-2-releases"></a>Uvolní řady 2
 **Windows Server 2008 R2 SP1**
@@ -166,15 +166,15 @@ Nainstalováno rozhraní .NET framework: 3.5 (zahrnuje 2.0 a 3.0)
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.86_201905-01 |6. června 2019 |Příspěvek 2,88 |
-| WA-GUEST-OS-2.85_201904-01 |7. května 2019 |Příspěvek 2.87 |
-|~~WA-GUEST-OS-2.84_201903-01~~ |26. března 2019 |6. června 2019 |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12. března 2019 |7. května 2019 |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5. února 2019 |26. března 2019 |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7. ledna 2019 |12. března 2019 |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14. prosince 2018 |5. února 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8. listopadu 2018 |7. ledna 2019 |
-|~~WA-GUEST-OS-2.78_201809-01~~ |12. října 2018 |14. prosince 2018 |
+| WA-GUEST-OS-2.86_201905-01 |6\. června 2019 |Příspěvek 2,88 |
+| WA-GUEST-OS-2.85_201904-01 |7\. května 2019 |Příspěvek 2.87 |
+|~~WA-GUEST-OS-2.84_201903-01~~ |26\. března 2019 |6\. června 2019 |
+|~~WA-GUEST-OS-2.83_201902-01~~ |12\. března 2019 |7\. května 2019 |
+|~~WA-GUEST-OS-2.82_201901-01~~ |5\. února 2019 |26\. března 2019 |
+|~~WA-GUEST-OS-2.81_201812-01~~ |7\. ledna 2019 |12\. března 2019 |
+|~~WA-GUEST-OS-2.80_201811-01~~ |14\. prosince 2018 |5\. února 2019 |
+|~~WA-GUEST-OS-2.79_201810-01~~ |8\. listopadu 2018 |7\. ledna 2019 |
+|~~WA-GUEST-OS-2.78_201809-01~~ |12\. října 2018 |14\. prosince 2018 |
 
 ## <a name="msrc-patch-updates"></a>Aktualizace MSRC
 Seznam oprav, které jsou součástí jednotlivých vydání měsíční aktualizace operačního systému hosta je k dispozici [tady][patches].

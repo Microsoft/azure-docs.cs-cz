@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61457664"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Postup použití Twilia pro hlasové hovory a SMS v Pythonu
@@ -46,17 +46,17 @@ Rozhraní API využívá Twilio příkazů například **&lt;Say&gt;** příkaz 
 
 Následuje seznam příkazů Twilio. Další informace o ostatních příkazů a funkce prostřednictvím [Twilio Markup Language dokumentaci][twiml].
 
-* **&lt;Volání&gt;**: Volající se připojí k jiný telefon.
-* **&lt;Shromážděte&gt;**: Shromažďuje číslice zadané na klávesnici telefonu.
-* **&lt;Zavěšení&gt;**: Ukončí volání.
-* **&lt;Pause&gt;**: Bezobslužná počká zadaný počet sekund.
-* **&lt;Přehrát&gt;**: Přehraje zvukový soubor.
-* **&lt;Fronty&gt;**: Přidejte do fronty pro volající.
-* **&lt;Record&gt;**: Zaznamenává hlasu volajícího a vrátí adresu URL souboru, který obsahuje záznam.
-* **&lt;Přesměrovat&gt;**: Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
-* **&lt;Odmítnout&gt;**: Odmítne příchozí volání na vaše číslo Twilio bez fakturace je.
-* **&lt;Řekněme, že&gt;**: Převede text na řeč, který je k volání.
-* **&lt;Sms&gt;**: Odešle zprávu SMS.
+* **&lt;Volání&gt;** : Volající se připojí k jiný telefon.
+* **&lt;Shromážděte&gt;** : Shromažďuje číslice zadané na klávesnici telefonu.
+* **&lt;Zavěšení&gt;** : Ukončí volání.
+* **&lt;Pause&gt;** : Bezobslužná počká zadaný počet sekund.
+* **&lt;Přehrát&gt;** : Přehraje zvukový soubor.
+* **&lt;Fronty&gt;** : Přidejte do fronty pro volající.
+* **&lt;Record&gt;** : Zaznamenává hlasu volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* **&lt;Přesměrovat&gt;** : Řízení přenosů volání nebo odeslání SMS TwiML na jinou adresu URL.
+* **&lt;Odmítnout&gt;** : Odmítne příchozí volání na vaše číslo Twilio bez fakturace je.
+* **&lt;Řekněme, že&gt;** : Převede text na řeč, který je k volání.
+* **&lt;Sms&gt;** : Odešle zprávu SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založený na formátu XML podle Twilio příkazy, které informují o Twilio, jak zpracovat hovor nebo SMS.
@@ -103,7 +103,7 @@ Můžete nakonfigurovat aplikaci použít knihovnu Twilio pro Python dvěma způ
    
         $ pip install twilio
 
-    - nebo -
+    -OR-
 
 * Stáhněte si knihovny Twilio pro Pythonu z Githubu ([https://github.com/twilio/twilio-python][twilio_python]) a nainstalujte ho následujícím způsobem:
 

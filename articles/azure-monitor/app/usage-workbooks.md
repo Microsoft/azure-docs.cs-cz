@@ -14,10 +14,10 @@ ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
 ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64569599"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Vytváření interaktivních sestav se sešity Azure Monitor
@@ -159,14 +159,14 @@ Existují čtyři různé typy parametrů, které jsou aktuálně podporovány:
 
   |         |          |
    | ---------------- |:-----|
-   | **Text**    | Uživatel se upravit textové pole a volitelně může zadat dotaz vyplnit výchozí hodnotu. |
+   | **text**    | Uživatel se upravit textové pole a volitelně může zadat dotaz vyplnit výchozí hodnotu. |
    | **Rozevírací seznam** | Uživatel zvolí ze sady hodnot. |
    | **Výběr časového rozsahu**| Uživatel vybírat předdefinovanou sadu hodnot rozsahu času, nebo si můžete vybrat z vlastní časový rozsah.|
    | **Výběr prostředku** | Uživatel zvolí z prostředků vybrané pro sešit.|
 
 ### <a name="using-a-text-parameter"></a>Pomocí parametru text
 
-Hodnota, která nahrazuje uživatelské typy v textovém poli přímo v dotazu bez uvozovací znaky nebo uvozovky u. Pokud je hodnota, je třeba řetězec, dotaz by měl mít uvozovky kolem parametru (jako je **'{parameter}'**).
+Hodnota, která nahrazuje uživatelské typy v textovém poli přímo v dotazu bez uvozovací znaky nebo uvozovky u. Pokud je hodnota, je třeba řetězec, dotaz by měl mít uvozovky kolem parametru (jako je **'{parameter}'** ).
 
 To umožňuje hodnotu v textovém poli, který se má použít kdekoli. Může být název tabulky, název sloupce, název funkce, operátor, atd.
 

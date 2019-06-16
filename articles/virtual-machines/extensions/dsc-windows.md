@@ -15,10 +15,10 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475503"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
@@ -101,13 +101,13 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| vydavatele | Microsoft.Powershell.DSC | string |
+| publisher | Microsoft.Powershell.DSC | string |
 | type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Nastavení hodnoty vlastností
 
-| Název | Typ dat | Popis
+| Name | Typ dat | Popis
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | Určuje verzi Windows Management Framework, který musí být nainstalován na váš virtuální počítač. Nastavení této vlastnosti 'nejnovější' nainstaluje nejaktuálnější verzi WMF. Pouze aktuální možné hodnoty této vlastnosti jsou "4.0", '5.0' a 'nejnovější'. Tyto možné hodnoty jsou v souladu s aktualizací. Výchozí hodnota je 'nejnovější'. |
 | settings.configuration.url | string | Určuje adresu URL umístění, ze kterého chcete stáhnout konfigurační soubor zip DSC. Pokud zadaná adresa URL vyžaduje SAS token pro přístup, musíte nastavit vlastnost protectedSettings.configurationUrlSasToken hodnotu váš token SAS. Tato vlastnost je vyžadována, pokud jsou definovány settings.configuration.script a/nebo settings.configuration.function.

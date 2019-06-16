@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9a1b8cf0fe74554c78f2d06d601231ed2740172a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 30ab8a3fec459bef1a85c44e9a7cdb91b541fa2d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052355"
+ms.locfileid: "67111381"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Zpracování výjimek a chyb s použitím MSAL
 Výjimky v Microsoft Authentication Library (MSAL) jsou určené pro vývojáře aplikací pro řešení potíží a ne pro zobrazení koncovým uživatelům. Zprávy o výjimkách nejsou lokalizovány.
@@ -142,7 +142,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ## <a name="conditional-access-and-claims-challenges"></a>Podmíněného přístupu a deklarace identity výzvy
 Při získávání tokenů tiše, vaše aplikace může dojít k chybám při [podmíněného přístupu deklarací challenge](conditional-access-dev-guide.md) , jako je rozhraní API vyžaduje zásad vícefaktorového ověřování se pokoušíte získat přístup.
 
-Vzor pro zpracování této chyby je interaktivní získání tokenu s využitím MSAL. Interaktivní získávání tokenu se zobrazí výzva a dává jim možnost splňovat zásady podmíněného přístupu vyžaduje.
+Vzor pro zpracování této chyby je interaktivní získání tokenu s využitím MSAL. Interaktivní získávání tokenu se zobrazí výzva a dává jim možnost splnit požadované zásady podmíněného přístupu.
 
 V některých případech při volání rozhraní API, které vyžadují podmíněný přístup může přijímat deklarace identity výzvu v chybě z rozhraní API. Pro instance, pokud zásady podmíněného přístupu je, aby spravovaná zařízení (Intune) Chyba bude vypadat [AADSTS53000: Vaše zařízení je potřeba spravovat přístup k danému prostředku](reference-aadsts-error-codes.md) nebo něco podobného. V takovém případě můžete předat deklarace identity v tokenu volání získání tak, že bude uživatel vyzván k uspokojení příslušnou zásadu.
 
@@ -170,7 +170,7 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 });
 ```
 
-Interaktivní získání tokenu se zobrazí výzva a dává jim možnost splňovat zásady podmíněného přístupu vyžaduje.
+Interaktivní získání tokenu se zobrazí výzva a dává jim možnost splnit požadované zásady podmíněného přístupu.
 
 Při volání rozhraní API, které vyžadují podmíněný přístup, se zobrazí výzva deklarací identity v chybě z rozhraní API. V takovém případě může předat deklarace identity vrátil chybu jako `extraQueryParameters` při volání funkce získávat tokeny tak, že bude uživatel vyzván k uspokojení příslušnou zásadu:
 

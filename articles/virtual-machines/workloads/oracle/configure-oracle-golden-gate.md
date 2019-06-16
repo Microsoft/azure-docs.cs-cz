@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c8d2a948dd82fb2c04aceb24815e63be13e35919
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722601"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace brány Golden Oracle na virtuálním počítači Azure s Linuxem 
@@ -795,7 +795,7 @@ Chcete-li zobrazit stav a historie na myVM2, spusťte následující příkazy:
 Tím dokončíte instalaci a konfiguraci brány Golden v Oracle linuxu.
 
 
-## <a name="delete-the-virtual-machine"></a>Odstranění virtuálního počítače
+## <a name="delete-the-virtual-machine"></a>Odstraňte virtuální počítač
 
 Pokud už je nepotřebujete, slouží následující příkaz k odebrání skupiny prostředků, virtuálního počítače a všechny související prostředky.
 

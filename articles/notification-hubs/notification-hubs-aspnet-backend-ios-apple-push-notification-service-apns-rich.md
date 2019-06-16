@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60873055"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs bohaté Push
@@ -135,7 +135,7 @@ Na vysoké úrovni:
     }
     ```
 8. Nyní jsme se znovu nasadit tuto aplikaci na web Azure aby byla přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-9. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku, poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na **Publikovat**.
+9. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku, poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na tlačítko **publikovat**.
 
 ## <a name="modify-the-ios-project"></a>Upravit projekt pro iOS
 
