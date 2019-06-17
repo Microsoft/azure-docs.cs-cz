@@ -13,11 +13,11 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306628"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511806"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Vazba Twilio pro službu Azure Functions
 
@@ -403,12 +403,12 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|---------|----------------------|
 |**type**|**type**| Musí být nastaveno na `twilioSms`.|
 |**direction**|**direction**| Musí být nastaveno na `out`.|
-|**Jméno**|**Jméno**| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
+|**name**|**name**| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio, např TwilioAccountSid. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Tato hodnota musí být nastavena název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio například TwilioAccountAuthToken. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAuthToken". |
 |**to**| Není k dispozici – zadání v kódu | **Komu**| Tato hodnota nastavena na telefonní číslo, která bude zaslána textová zpráva.|
-|**z**|**z** | **z**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
-|**Text**|**Text** | **Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |  
+|**from**|**from** | **from**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
+|**body**|**body** | **Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

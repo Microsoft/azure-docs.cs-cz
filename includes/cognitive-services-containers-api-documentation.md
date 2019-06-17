@@ -5,17 +5,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2019
 ms.openlocfilehash: f4925401235aedb341a7e29ca36b079126647f7b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66124330"
 ---
 ## <a name="validate-that-a-container-is-running"></a>Ověřit, jestli je spuštěná kontejneru 
 
 Existuje několik způsobů, jak ověřit, že je kontejner spuštěný. 
 
-|Požadavek|Účel|
+|Žádost|Účel|
 |--|--|
 |`http://localhost:5000/`|Poskytuje kontejner domovskou stránku.|
 |`http://localhost:5000/status`|Vyžádáno with GET, ověřte, že je kontejner spuštěný bez způsobení dotazu koncový bod. Tento požadavek může být použit pro Kubernetes [sondy aktivity a připravenosti](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|

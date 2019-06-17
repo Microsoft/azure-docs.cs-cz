@@ -16,10 +16,10 @@ ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
 ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60833469"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
@@ -41,7 +41,7 @@ Služba Azure Functions poskytuje jiný způsob spouštění programů a skript�
 Následující tabulka popisuje rozdíly mezi *průběžné* a *aktivuje* WebJobs.
 
 
-|Průběžný  |Aktivované  |
+|Průběžný  |Aktivuje  |
 |---------|---------|
 | Spustí se okamžitě, když se vytvoří webová úloha. Zabránit koncové úlohy, programu nebo skriptu obvykle provede svou práci v nekonečné smyčce. Je-li ukončit úlohu, můžete ji restartovat. | Spustí pouze v případě, že se aktivuje ručně, nebo podle plánu. |
 | Spustí se všechny instance webové aplikace, na kterých běží. Webové úlohy můžete volitelně omezit na jednu instanci. |Spuštění na jednu instanci, Azure vybere pro vyrovnávání zatížení.|
@@ -124,7 +124,7 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
    | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
-   | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
+   | **Typ** | Aktivuje | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
    | **Aktivační události** | Manual | |
 
 4. Klikněte na **OK**.
@@ -135,7 +135,7 @@ when making changes in one don't forget the other two.
 
 7. Ke spuštění webové úlohy, klikněte pravým tlačítkem na jeho název v seznamu a klikněte na tlačítko **spustit**.
    
-    ![Zprovoznění webové úlohy](./media/web-sites-create-web-jobs/runondemand.png)
+    ![Spuštění úlohy WebJob](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="CreateScheduledCRON"></a> Vytvoření plánované webové úlohy
 
@@ -162,8 +162,8 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
    | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
-   | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
-   | **Aktivační události** | Naplánované | Pro plánování spolehlivé fungování povolte funkci Always On. Always On je k dispozici pouze na Basic, Standard a cenových úrovní Premium.|
+   | **Typ** | Aktivuje | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
+   | **Aktivační události** | Naplánováno | Pro plánování spolehlivé fungování povolte funkci Always On. Always On je k dispozici pouze na Basic, Standard a cenových úrovní Premium.|
    | **Výraz CRON** | 0 0/20 * * * * | [Výrazů CRON](#cron-expressions) jsou popsány v následující části. |
 
 4. Klikněte na **OK**.

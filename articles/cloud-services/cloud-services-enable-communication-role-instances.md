@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fa3885f9c273cf6aaf9173ebd3fee3d4499be34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60519439"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808093"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Povolit komunikaci pro instance rolí v azure
 Role cloudové služby komunikují prostřednictvím interní a externí připojení. Externí připojení, se nazývají **vstupní koncové body** při interní připojení se nazývají **koncovým bodům s interním**. Toto téma popisuje postup úpravy [služby definice](cloud-services-model-and-package.md#csdef) k vytvoření koncových bodů.
 
 ## <a name="input-endpoint"></a>Vstupní koncový bod
-Vstupní koncový bod se používá, když chcete vystavit port na vnější. Zadejte typ protokolu a portu koncového bodu, který se použije pro externí a interní porty koncového bodu. Pokud chcete, můžete zadat jiný interní port koncového bodu se [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) atribut.
+Vstupní koncový bod se používá, když chcete vystavit port na vnější. Zadejte typ protokolu a portu koncového bodu, který se použije pro externí a interní porty koncového bodu. Pokud chcete, můžete zadat jiný interní port koncového bodu se [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) atribut.
 
 Vstupní koncový bod pomocí těchto protokolů: **http, https, tcp, udp**.
 

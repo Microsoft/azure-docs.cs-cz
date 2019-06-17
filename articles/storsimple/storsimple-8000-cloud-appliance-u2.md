@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62117320"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
@@ -62,7 +62,7 @@ V následující tabulce je uvedeno několik klíčových rozdílů mezi řešen
 
 |  | Fyzické zařízení | Cloudové zařízení |
 | --- | --- | --- |
-| **Umístění** |Nachází se v datovém centru. |Běží v Azure. |
+| **Location** |Nachází se v datovém centru. |Běží v Azure. |
 | **Síťová rozhraní** |Má šest síťových rozhraní: DATA 0 až DATA 5. |Má pouze jedno síťové rozhraní: DATA 0. |
 | **Registrace** |Registruje se v rámci kroku počáteční konfigurace. |Registrace je samostatná úloha. |
 | **Šifrovací klíč dat služby** |Znovu se vygeneruje na fyzickém zařízení a cloudové zařízení se pak aktualizuje s použitím nového klíče. |Nelze znovu vygenerovat z cloudového zařízení. |

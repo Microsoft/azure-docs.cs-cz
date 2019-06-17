@@ -12,10 +12,10 @@ ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64573766"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
@@ -230,10 +230,10 @@ Technické specifikace zařízení, jako je například datum výroby, číslo m
 | ID assetu | Čas | \<Funkce sloupce > | Štítek |
 | ---- | ---- | --- | --- |
 | A123 |1 den | . . . | . |
-| A123 |2. den | . . . | . |
+| A123 |2\. den | . . . | . |
 | ...  |...   | . . . | . |
 | B234 |1 den | . . . | . |
-| B234 |2. den | . . . | . |
+| B234 |2\. den | . . . | . |
 | ...  |...   | . . . | . |
 
 Posledním krokem při vytváření funkcí je **označování** z Cílová proměnná. Tento proces je závislý na techniku modelování. Zase techniku modelování závisí na obchodní problém a povaze dostupná data. Popisky jsou popsány v následující části.
@@ -291,7 +291,7 @@ Tady otázkou je: "Co je pravděpodobnost, že prostředek se nezdaří v pří�
 
 ![Obrázek 5. Chyba času predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) obr. 5. Popisky pro klasifikaci roc pro předpověď časové selhání
 
-Tady otázkou je: "Co je pravděpodobnost, že prostředek se nezdaří v příštích X jednotkami času z důvodu hlavní příčinu/problém _P<sub>můžu</sub>_?" kde _můžu_ je počet možné hlavní příčiny. Na tuto otázku, popisek X záznamů před selháním prostředek jako "o selhat z důvodu hlavní příčinu _P<sub>můžu</sub>_" (popisek = _P<sub>můžu</sub>_). Označte všechny záznamy, jako je "normální" (label = 0). V této metodě také popisky jsou zařazené do kategorií (viz obrázek 6).
+Tady otázkou je: "Co je pravděpodobnost, že prostředek se nezdaří v příštích X jednotkami času z důvodu hlavní příčinu/problém _P<sub>můžu</sub>_ ?" kde _můžu_ je počet možné hlavní příčiny. Na tuto otázku, popisek X záznamů před selháním prostředek jako "o selhat z důvodu hlavní příčinu _P<sub>můžu</sub>_ " (popisek = _P<sub>můžu</sub>_ ). Označte všechny záznamy, jako je "normální" (label = 0). V této metodě také popisky jsou zařazené do kategorií (viz obrázek 6).
 
 ![Obrázek 6. Hlavní příčina predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) obrázek 6. Popisky pro klasifikaci roc pro kořenové příčiny predikcí
 

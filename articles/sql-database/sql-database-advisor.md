@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61417579"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Doporučení k výkonu pro SQL Database
@@ -77,9 +77,9 @@ Po použití tohoto doporučení, povolí vynucené Parametrizace během několi
 
 "Opravit problém schématu" doporučení se zobrazí, když služba Azure SQL Database oznámení anomálie v čísle schématu chyby související s SQL, které se dějí v SQL database. Následující tabulka obsahuje chyby, které se vztahují na schéma problémy:
 
-| Kód chyby SQL | Zpráva |
+| Kód chyby SQL | Message |
 | --- | --- |
-| 201 |Procedura nebo funkce "*"očekává, že parametr"*", který nebyl uveden. |
+| 201 |Procedura nebo funkce " *"očekává, že parametr"* ", který nebyl uveden. |
 | 207 |Neplatný název sloupce ' *'. |
 | 208 |Neplatný název objektu "*". |
 | 213 |Název sloupce nebo počet zadaných hodnot neodpovídá definici tabulky. |

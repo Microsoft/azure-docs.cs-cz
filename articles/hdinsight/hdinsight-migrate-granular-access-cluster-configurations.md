@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66754533"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
@@ -148,7 +148,7 @@ Aktualizace na [verze 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/mas
 Aktualizace na [Az PowerShell verze 2.0.0](https://www.powershellgallery.com/packages/Az) nebo později, aby se zabránilo přerušení.  Úpravy jen minimum kódu může být vyžadováno, pokud používáte metodu těmito změnami ovlivněny.
 - `Grant-AzHDInsightHttpServicesAccess` je nyní zastaralá a nahradila ji nové `Set-AzHDInsightGatewayCredential` rutiny.
 - `Get-AzHDInsightJobOutput` má byla aktualizována o podporu granulární přístup na základě rolí k klíč úložiště.
-    - Uživatelé s rolí operátora clusteru HDInsight, Přispěvatel nebo vlastník nebude mít vliv.
+    - Uživatelů s rolemi Vlastník, Přispěvatel a Operátor clusteru HDInsight se tato změna nedotkne.
     - Uživatelé s pouze roli Čtenář muset zadat `DefaultStorageAccountKey` parametr explicitně.
 - `Revoke-AzHDInsightHttpServicesAccess` je nyní zastaralá. Je povolený protokol HTTP teď vždy, takže tuto rutinu je už je nepotřebujete.
  Zobrazit [az. Průvodce migrací HDInsight](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight) další podrobnosti.

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64694225"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojit ID partnera účtů Azure
@@ -34,7 +34,7 @@ Předtím, než je propojit ID partnera, musí vaše zákazníky poskytují př�
 
 - **Instanční objekt služby**: Vašich zákazníků můžete přidat aplikace nebo skriptu z vaší organizace v jejich directory a přiřadit libovolnou roli RBAC. Identita aplikace nebo skriptu, se označuje jako instanční objekt služby.
 
-## <a name="link-to-a-partner-id"></a>Propojit s ID partnera
+## <a name="link-to-a-partner-id"></a>Propojit ID partnera.
 
 Až budete mít přístup k prostředkům zákazníka, použijte na webu Azure portal, Powershellu nebo rozhraní příkazového řádku Azure k propojení vaší společnosti Microsoft ID Partner Network (MPN ID) vaše ID uživatele nebo instanční objekt. Propojte ID partnera v tenantovi každého zákazníka.
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60736632"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Podpora protokolů pro hlavičky protokolu HTTP branou služby Azure
@@ -33,9 +33,9 @@ Přední dveře služba přijímá beze změny, je většina hlaviček z přích
 
 Branou služby zahrnuje záhlaví z příchozího požadavku, pokud je odebrán z důvodu omezení. Přední dveře také přidá následující hlavičky:
 
-| Hlavička  | Příklad a popis |
+| Záhlaví  | Příklad a popis |
 | ------------- | ------------- |
-| Přes |  Via: 1.1 azure </br> Verze klienta protokolu HTTP, za nímž následuje přidá branou *Azure* hodnotu hlavičky Via. Označuje verzi klienta protokolu HTTP a že branou byl zprostředkující příjemce pro žádost mezi klientem a back-endu.  |
+| Via |  Via: 1.1 azure </br> Verze klienta protokolu HTTP, za nímž následuje přidá branou *Azure* hodnotu hlavičky Via. Označuje verzi klienta protokolu HTTP a že branou byl zprostředkující příjemce pro žádost mezi klientem a back-endu.  |
 | X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> Představuje IP adresu klienta, který je přidružený k požadavku právě zpracovává. Požadavek pocházející z proxy serveru může například přidat hlavičku X-předané-pro určení IP adresy původní volajícího. |
 | X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Představuje socket IP adresu spojenou s připojením TCP, který aktuální požadavek pochází z. IP adresa požadavku klienta nemusí být rovna socket IP adresu, protože může být libovolně přepsat uživatelem.|
 | X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Odkaz na jedinečný řetězec, který identifikuje požadavek obsluhuje branou. Používá se pro přístup k protokolům vyhledávání a kritické pro řešení potíží.|
@@ -48,7 +48,7 @@ Branou služby zahrnuje záhlaví z příchozího požadavku, pokud je odebrán 
 
 Záhlaví odeslaných branou z back-end jsou také předává do klienta. Níže jsou hlavičky posílané z přední dveře do klientů.
 
-| Hlavička  | Příklad: |
+| Záhlaví  | Příklad: |
 | ------------- | ------------- |
 | X-Azure-Ref |  *X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Toto je odkaz na jedinečný řetězec, který identifikuje požadavek obsluhuje branou. To je zásadní pro řešení potíží, protože se používá pro přístup k protokolům vyhledávání.|
 

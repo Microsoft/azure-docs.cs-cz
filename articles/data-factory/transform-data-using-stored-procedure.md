@@ -11,14 +11,14 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60764403"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložená procedura SQL serveru ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-stored-proc-activity.md)
 > * [Aktuální verze](transform-data-using-stored-procedure.md)
 
@@ -67,7 +67,7 @@ Následující tabulka popisuje tyto vlastnosti JSON:
 
 | Vlastnost                  | Popis                              | Požaduje se |
 | ------------------------- | ---------------------------------------- | -------- |
-| jméno                      | Název aktivity                     | Ano      |
+| name                      | Název aktivity                     | Ano      |
 | description               | Text popisující, k čemu aktivita slouží | Ne       |
 | type                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Ano      |
 | linkedServiceName         | Odkaz **Azure SQL Database** nebo **Azure SQL Data Warehouse** nebo **systému SQL Server** zaregistrovaný jako propojenou službu ve službě Data Factory. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |

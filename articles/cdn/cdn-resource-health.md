@@ -15,11 +15,11 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad4bf7ae97a08f89b9d82e1d4e025a5bd5d47fc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324669"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696176"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Monitorování stavu prostředků Azure CDN
   
@@ -51,7 +51,7 @@ Azure CDN Resource health je podmnožinou [Azure resource health](../resource-he
 
 Stavy související s Azure CDN služba resource health najdete níže.
 
-|Zpráva | Doporučená akce |
+|Message | Doporučená akce |
 |---|---|
 |Možná jste zastavili, odebrali nebo chybně nakonfigurovali nejméně jeden koncový bod CDN. | Možná jste zastavili, odebrali nebo chybně nakonfigurovali nejméně jeden koncový bod CDN.|
 |Je nám líto, ale služba pro správu CDN není aktuálně k dispozici. | Kontrolujte stav aktualizací; Pokud váš problém nevyřeší ani po očekávané době řešení, obraťte se na podporu.|

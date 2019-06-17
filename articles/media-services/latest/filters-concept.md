@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66225411"
 ---
 # <a name="filters"></a>Filtry
@@ -57,7 +57,7 @@ Následující vlastnosti použít k popisu filtry.
 
 Pomocí této vlastnosti se **Asset filtry**. Nedoporučuje se nastavit vlastnost s **filtrů účtů**.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |**endTimestamp**|Vztahuje se na Video na vyžádání (VoD).<br/>Pro prezentaci živého streamování je tiše ignorováno a použít jakmile skončí prezentace a datový proud změní videa na vyžádání.<br/>To je dlouhou hodnotu, která představuje absolutní koncový bod prezentace zaokrouhlí na nejbližší další GOP start. Jednotka je na časové ose, takže endTimestamp 1800000000 bude po dobu 3 minut.<br/>Použijte startTimestamp a endTimestamp oříznout fragmenty, které budou v seznamu testů (manifest).<br/>Například startTimestamp = 40000000 a endTimestamp = 100000000 pomocí časové osy výchozí vygeneruje seznam testů, který obsahuje fragmenty mezi 4 sekundami a 10 sekund prezentace videa na vyžádání. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.|
 |**forceEndTimestamp**|Platí pro živé streamování.<br/>Určuje, zda vlastnost endTimestamp musí být k dispozici. Při hodnotě true se endTimestamp musí být zadán nebo je vrácen chybný požadavek kód.<br/>Povolené hodnoty: false, true.|
@@ -72,7 +72,7 @@ Můžete zadat seznam podmínek vlastností sledování filtru (FilterTrackPrope
 
 Podmínky pro vlastnost sledování filtru popisují typy stop, hodnoty (popsané v následující tabulce) a operací (rovná, NotEqual). 
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 |**Bitrate**|Použijte přenosové rychlosti jeden směr určený pro filtrování.<br/><br/>Doporučená hodnota je rozsah přenosových rychlostí v bitech za sekundu. Například "0-2427000".<br/><br/>Poznámka: když konkrétní s přenosovou rychlostí s hodnotou, jako třeba částku 250 000 jedné (bity za sekundu), můžete použít tento přístup se nedoporučuje, protože přesné přenosových rychlostí může kolísat z jednoho prostředku do jiného.|
 |**FourCC**|Použijte hodnotu FourCC jeden směr určený pro filtrování.<br/><br/>Hodnota je první prvek kodeky formát, jak je uvedeno v [RFC 6381](https://tools.ietf.org/html/rfc6381). V současné době jsou podporovány následující kodeky: <br/>Video: "Avc1", "hev1", "hvc1"<br/>Pro zvuk: "Mp4a", "ES-3"<br/><br/>K určení hodnoty FourCC sleduje v Assetu, získejte a zkontrolujte soubor manifestu.|

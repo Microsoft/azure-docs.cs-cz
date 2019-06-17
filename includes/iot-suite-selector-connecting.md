@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66147706"
 ---
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "66147706"
 V tomto kurzu je implementovat **chladič** zařízení, která odesílá následující telemetrii do vzdáleného monitorování [akcelerátor řešení](../articles/iot-accelerators/about-iot-accelerators.md):
 
 * Teplota
-* Tlak
+* Přetížení
 * Vlhkost
 
 Kód pro zjednodušení generuje ukázkové hodnoty telemetrie pro **chladič**. Můžete ukázku rozšířit připojením skutečných senzorů k zařízení a odesíláním skutečné telemetrie.

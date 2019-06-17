@@ -14,20 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60705393"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573601"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Přizpůsobení konfiguracemi zabezpečení operačního systému ve službě Azure Security Center (Preview)
 
 Tento návod ukazuje, jak přizpůsobit hodnocení konfigurace zabezpečení operačního systému ve službě Azure Security Center.
 
+> [!NOTE]
+> Možnost přizpůsobit si konfiguracemi zabezpečení operačního systému se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
+
 ## <a name="what-are-os-security-configurations"></a>Co jsou konfiguracemi zabezpečení operačního systému?
 
-Azure Security Center monitoruje konfigurace zabezpečení s použitím sady [víc než 150 doporučená pravidla](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) pro posílení zabezpečení operačního systému, včetně pravidel souvisejících s branami firewall, auditování, zásady pro hesla a další. Pokud na počítači se zjistilo, že zranitelné konfigurace jim, Security Center vygeneruje doporučení k zabezpečení.
+Azure Security Center monitoruje konfigurace zabezpečení tím, že pro posílení systému uplatňuje sadu [více než 150 doporučených pravidel](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335), včetně pravidel souvisejících s branami firewall, auditováním, zásadami hesel a dalšími. Pokud se na počítači zjistí zranitelná konfigurace, Security Center vygeneruje doporučení k zabezpečení.
 
 Přizpůsobením pravidla organizace řídit, jaké možnosti konfigurace jsou vhodnější pro jejich prostředí. Můžete nastavit vlastní hodnocení zásad a použijte ji ve všech příslušných počítačích v rámci předplatného.
 
@@ -180,7 +183,7 @@ V následujících třech částech obsahují příklady z předchozích pravide
 
 Některá pravidla jsou duplicitní pro různé typy operačních systémů. Duplicitní pravidla mají stejnou *originalId* atribut.
 
-## <a name="create-custom-rules"></a>Vytvořit vlastní pravidla
+## <a name="create-custom-rules"></a>Vytvoření vlastních rolí
 
 Můžete také vytvořit nová pravidla. Než vytvoříte nové pravidlo, mějte na paměti následující omezení:
 
@@ -275,13 +278,13 @@ Všechny možné chyby jsou uvedené v následující tabulce:
 
 | **Chyba**                                | **Popis**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfigurationSchemaVersionError  | Vlastnost *schemaVersion* byl nalezen neplatný nebo prázdný. Hodnota musí být nastavena na *{0}*.                                                         |
+| BaselineConfigurationSchemaVersionError  | Vlastnost *schemaVersion* byl nalezen neplatný nebo prázdný. Hodnota musí být nastavena na *{0}* .                                                         |
 | BaselineInvalidStringError               | Vlastnost *{0}* nemůže obsahovat  *\\n*.                                                                                                         |
 | BaselineNullRuleError                    | Seznam standardních hodnot konfigurace pravidel obsahuje pravidla s hodnotou *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | Identifikátor CCE *{0}* není jedinečný.                                                                                                                  |
 | BaselineRuleEmptyProperty                | Vlastnost *{0}* chybí nebo není platná.                                                                                                       |
 | BaselineRuleIdNotInDefault               | Toto pravidlo má vlastnosti zdroje *Microsoft* , ale nebyl nalezen v sadě Microsoft výchozích pravidel.                                                   |
-| BaselineRuleIdNotUniqueError             | ID pravidla není jedinečný.                                                                                                                       |
+| BaselineRuleIdNotUniqueError             | Identifikátor pravidla není jedinečný.                                                                                                                       |
 | BaselineRuleInvalidGuid                  | Vlastnost *{0}* nebyla platná. Hodnota není platným identifikátorem GUID.                                                                             |
 | BaselineRuleInvalidHive                  | Hive je třeba úložiště LocalMachine.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Název pravidla není jedinečný.                                                                                                                 |
@@ -290,12 +293,12 @@ Všechny možné chyby jsou uvedené v následující tabulce:
 | BaselineRuleNotInPlace                   | Pravidlo výchozí pravidlo s typem {0} a je uvedené v {1} seznamu.                                                                       |
 | BaselineRulePropertyTooLong              | Vlastnost *{0}* je příliš dlouhý. Maximální povolená délka: {1}.                                                                                        |
 | BaselineRuleRegTypeInvalidError          | Očekávaná hodnota *{0}* neshoduje s typem hodnoty registru, který je definován.                                                              |
-| BaselineRulesetAdded                     | Sada pravidel s ID *{0}* nebyl nalezen ve výchozí konfiguraci. Nelze přidat sady pravidel.                                               |
+| BaselineRulesetAdded                     | Sada pravidel s identifikátorem *{0}* nebyl nalezen ve výchozí konfiguraci. Nelze přidat sady pravidel.                                               |
 | BaselineRulesetIdMustBeUnique            | Sada pravidel daného směrného plánu *{0}* musí být jedinečný.                                                                                           |
-| BaselineRulesetNotFound                  | Sada pravidel s id *{0}* a název *{1}* nebyl nalezen v příslušné konfiguraci. Nelze odstranit, sada pravidel.                                |
-| BaselineRuleSourceNotMatch               | Pravidlo s ID *{0}* je již definován.                                                                                                       |
-| BaselineRuleTypeDoesntMatch              | Výchozí typ pravidla je *{0}*.                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | Skutečný typ pravidla je *{0}*, ale *ruleType* vlastnost *{1}*.                                                                          |
+| BaselineRulesetNotFound                  | Sada pravidel s identifikátorem *{0}* a název *{1}* nebyl nalezen v příslušné konfiguraci. Nelze odstranit, sada pravidel.                                |
+| BaselineRuleSourceNotMatch               | Pravidlo s identifikátorem *{0}* je již definován.                                                                                                       |
+| BaselineRuleTypeDoesntMatch              | Výchozí typ pravidla je *{0}* .                                                                                                              |
+| BaselineRuleTypeDoesntMatchError         | Skutečný typ pravidla je *{0}* , ale *ruleType* vlastnost *{1}* .                                                                          |
 | BaselineRuleUnpermittedChangesError      | Pouze *expectedValue* a *stavu* vlastnosti se nesmí měnit.                                                                       |
 | BaselineTooManyRules                     | Maximální počet povolených přizpůsobených pravidel je {0} pravidla. Obsahuje danou konfiguraci {1} pravidla, {2} výchozí pravidla, a {3} přizpůsobit pravidla. |
 | ErrorNoConfigurationStatus               | Nenašel se žádný stav konfigurace. Stav konfigurace požadovaného stavu: *Výchozí* nebo *vlastní*.                                    |

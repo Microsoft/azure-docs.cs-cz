@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61420305"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Vyhledání a použití doporučení k výkonu
@@ -41,8 +41,8 @@ Doporučení jsou seřazeny podle jejich potenciální dopad na výkon do násle
 
 | Dopad | Popis |
 |:--- |:--- |
-| Vysoký |Vysoký dopad doporučení by měla poskytnout nejvýraznější dopad na výkon. |
-| Střednědobé používání |Střední dopad doporučení by měl zvýšit výkon, ale není výrazně. |
+| Vysoká |Vysoký dopad doporučení by měla poskytnout nejvýraznější dopad na výkon. |
+| Střední |Střední dopad doporučení by měl zvýšit výkon, ale není výrazně. |
 | Nízká |Nízký dopad doporučení by měl poskytovat lepší výkon než bez, ale nemusí být výrazné vylepšení. |
 
 
@@ -54,7 +54,7 @@ Můžete také zobrazit stav přehled činností. Vyberte stav nebo doporučení
 
 Tady je příklad z "Vytvořit index" doporučení na webu Azure Portal.
 
-![Vytvořit index](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
+![Vytvoření indexu](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Použití doporučení
 Azure SQL Database poskytuje plnou kontrolu nad jak doporučení jsou povolené pomocí kteréhokoli z těchto tří možností: 
@@ -132,11 +132,11 @@ Použití doporučení nemusí dojít okamžitě. Portál poskytuje podrobné in
 |:--- |:--- |
 | Čekající na vyřízení |Použití doporučení příkaz byla přijata a je naplánováno na vykonání. |
 | Provádění |Doporučení se zavádí. |
-| Ověřování platnosti |Doporučení se úspěšně zavedlo a služba je měření výhody. |
+| Probíhá ověřování |Doporučení se úspěšně zavedlo a služba je měření výhody. |
 | Úspěch |Doporučení se úspěšně zavedlo a měří výhody. |
-| Chyba |Při zavádění doporučení se stala chyba. Může jít o přechodný problém, případně schéma změňte na tabulky a skript už není platný. |
-| Probíhá vrácení |Doporučení se použil, ale bylo považováno za nenáročných a je automaticky vrací k uloženému. |
-| Vráceno |Doporučení bylo vráceno zpět. |
+| Chyba |Během procesu zavádění doporučení došlo k chybě. Může jít o přechodný problém, případně schéma změňte na tabulky a skript už není platný. |
+| Vrácení zpět |Doporučení se použil, ale bylo považováno za nenáročných a je automaticky vrací k uloženému. |
+| Vrátit zpět |Doporučení bylo vráceno zpět. |
 
 Kliknutím na doporučení v procesu ze seznamu zobrazíte další informace:
 

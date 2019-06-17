@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 85a1579e32b4c216f234f77c76316bedeaea77b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119546"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814716"
 ---
 Tato funkce je ve verzi Preview. Jeho použití, je nutné nainstalovat rozšíření ve verzi preview nebo modulu.
 
@@ -28,11 +28,9 @@ V [cloud Shell](/azure/cloud-shell/quickstart):
 
 Pro místní instalaci:
 
-1. Odinstalujte Azure CLI místně.
-1. Nainstalujte [nejnovější verzi](/cli/azure/install-azure-cli) příkazového řádku Azure.
-1. Spusťte okno příkazového řádku.
+1. [Instalace Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, podle informací v `az --version`.
 1. Odinstalujte předchozí verze rozšíření `az extension remove -n eventgrid`
-1. Instalace rozšíření `az extension add -n eventgrid`
+1. Nainstalujte `eventgrid` rozšíření `az extension add -n eventgrid`
 
 ### <a name="install-module-for-powershell"></a>Instalace modulu prostředí PowerShell
 

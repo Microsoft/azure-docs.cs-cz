@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
 ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60809784"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure na základě rolí řízení přístupu (RBAC) k řízení přístupová práva k vytváření a správě žádostí o podporu
@@ -67,7 +67,7 @@ Chcete poskytnout přístup k partnerské, Joe, možnost vytvářet a spravovat 
 
 1. Prvním krokem je přejít na předplatné a v části "Nastavení" se zobrazí seznam uživatelů. Klikněte na uživatele Joe, kdo má přístup Čtenář pro předplatné a můžeme mu přiřadit novou vlastní roli.
 
-    ![Přidat roli](./media/create-manage-support-requests-using-access-control/add-role.png)
+    ![Přidání role](./media/create-manage-support-requests-using-access-control/add-role.png)
 
 2. Klikněte na tlačítko "Přidat" pod oknem "Users". Vyberte vlastní roli "Podpory požádat o Přispěvatel" ze seznamu rolí
 

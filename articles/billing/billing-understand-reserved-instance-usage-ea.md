@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
 ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126851"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získat smlouvu Enterprise rezervace nákladů a využití
@@ -94,7 +94,7 @@ Na webu Azure Portal, přejděte na [Správa nákladů a fakturace](https://port
 2. Klikněte na tlačítko **a poplatky za využití**.
 3. Klikněte na tlačítko **Stáhnout**.  
 ![Příklad znázorňující, kde chcete stáhnout soubor dat využití sdíleného svazku clusteru na portálu Azure portal](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. V **stáhnout využití a poplatky za** v části **využití podrobnosti verze 2** vyberte **všechny poplatky (využití a nákupy)** a potom klikněte na stáhnout. Opakujte pro **Amortizovaných nákladů (využití a nákupy)**.
+4. V **stáhnout využití a poplatky za** v části **využití podrobnosti verze 2** vyberte **všechny poplatky (využití a nákupy)** a potom klikněte na stáhnout. Opakujte pro **Amortizovaných nákladů (využití a nákupy)** .
 
 Soubory CSV, kterou stáhnete obsahovat skutečné náklady a amortizované náklady.
 

@@ -9,10 +9,10 @@ ms.date: 12/26/2018
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: 35078d9cf705351a9f64f52738c9eaca90814f7a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157932"
 ---
 > [!TIP]
@@ -25,7 +25,7 @@ Je možné otevřít vlastní vygenerovaná dokumentace Swagger rozhraní API Ma
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Název | Nahradit hodnotou |
+| Name | Nahradit hodnotou |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Název instance digitální dvojče Azure |
 | YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |

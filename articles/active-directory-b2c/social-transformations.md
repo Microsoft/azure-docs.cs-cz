@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c1a718539259a284e1d48fe48a3741a676bd4040
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 37fe192e83c946089e2374f24ae10a756134e45a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512490"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807871"
 ---
 # <a name="social-accounts-claims-transformations"></a>Transformace deklarací identity účtů na sociálních sítích
 
@@ -38,7 +38,7 @@ Tento článek obsahuje příklady použití transformace deklarací identity ú
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Vytvoří reprezentaci JSON alternativeSecurityId vlastnosti uživatele, který lze použít ve volání do služby Azure Active Directory. Další informace najdete v tématu [AlternativeSecurityId od schématu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
+Vytvoří reprezentaci JSON alternativeSecurityId vlastnosti uživatele, který lze použít ve volání do služby Azure Active Directory. Další informace najdete v tématu [AlternativeSecurityId od schématu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type).
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |

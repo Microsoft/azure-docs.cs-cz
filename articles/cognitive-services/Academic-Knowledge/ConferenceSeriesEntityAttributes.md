@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 38b4aa4c899668a68041f042ce6981ddd8c58219
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61340192"
 ---
 # <a name="conference-series-entity"></a>Konference řady Entity
@@ -23,10 +23,10 @@ ms.locfileid: "61340192"
 
 Název    |Popis                            |Type       | Operace
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |ID entity                              |Int64      |Rovná se
-CN      |Normalizovaný název řady konference      |String     |Rovná se
-DCN     |Zobrazovaný název řady konference         |String     |žádný
-Kopie      |Konference řady celkový počet citace         |Int32      |žádný  
-ECC     |Konference řady citace celkový odhadovaný počet   |Int32      |žádný
-F.FId   |Pole ID entity studie přiřazená k řadě konference |Int64  | Rovná se
+ID      |Entity ID                              |Int64      |Je rovno
+CN      |Normalizovaný název řady konference      |String     |Je rovno
+DCN     |Zobrazovaný název řady konference         |String     |None
+CC      |Konference řady celkový počet citace         |Int32      |None  
+ECC     |Konference řady citace celkový odhadovaný počet   |Int32      |None
+F.FId   |Pole ID entity studie přiřazená k řadě konference |Int64  | Je rovno
 F.FN    |Pole Název studie přiřazená k řadě konference  | Je rovno<br/>StartsWith

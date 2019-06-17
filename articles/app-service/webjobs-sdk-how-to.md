@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831788"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
@@ -151,7 +151,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Aktivační události
+## <a name="triggers"></a>Aktivační procedury
 
 Funkce musí být veřejné metody a musí obsahovat jeden atribut aktivační události nebo [ `NoAutomaticTrigger` ](#manual-triggers) atribut.
 
@@ -704,7 +704,7 @@ Seznam vazby článku o příkazech naleznete v části "Podporované vazby" v [
 
 [ `Disable` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) Atribut umožňuje řídit, jestli funkce se dá spouštět. 
 
-V následujícím příkladu Pokud nastavení aplikace, které `Disable_TestJob` má hodnotu `1` nebo `True` (malá a velká písmena), funkce se nespustí. V takovém případě modul runtime vytvoří zprávu protokolu *zakázána funkce "Functions.TestJob"*.
+V následujícím příkladu Pokud nastavení aplikace, které `Disable_TestJob` má hodnotu `1` nebo `True` (malá a velká písmena), funkce se nespustí. V takovém případě modul runtime vytvoří zprávu protokolu *zakázána funkce "Functions.TestJob"* .
 
 ```cs
 [Disable("Disable_TestJob")]

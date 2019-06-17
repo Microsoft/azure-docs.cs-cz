@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60881476"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro Service Fabric container service
@@ -29,7 +29,7 @@ Protokoly kontejneru můžete získat přístup pomocí [Service Fabric Explorer
 
 Protokoly kontejneru jsou umístěny na uzlu clusteru, na kterém běží instance služby kontejneru na. Třeba získat protokoly webové front-end kontejneru [ukázkovou aplikaci Linux Voting](service-fabric-quickstart-containers-linux.md). Ve stromovém zobrazení rozbalte **clusteru**>**aplikací**>**VotingType**>**fabric: / Voting / azurevotefront**.  Pak rozbalte oddíl (d1aa737e-f22a-e347-be16-eec90be24bc1, v tomto příkladu) a zobrazit, že je kontejner spuštěný v uzlu clusteru *_lnxvm_0*.
 
-Ve stromovém zobrazení, vyhledejte balíček kódu na *_lnxvm_0* uzlu tak, že rozbalíte **uzly**>**_lnxvm_0**>**fabric: / Voting**  > **azurevotfrontPkg**>**balíčky kódu**>**kód**.  Vyberte **protokoly kontejneru** možnosti se zobrazí protokoly kontejneru.
+Ve stromovém zobrazení, vyhledejte balíček kódu na *_lnxvm_0* uzlu tak, že rozbalíte **uzly**> **_lnxvm_0**>**fabric: / Voting**  > **azurevotfrontPkg**>**balíčky kódu**>**kód**.  Vyberte **protokoly kontejneru** možnosti se zobrazí protokoly kontejneru.
 
 ![Platforma Service Fabric][Image1]
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/15/2018
 ms.author: aljo
 ms.openlocfilehash: b7efeb1b4d83f6a6b372f73a7c0a5ca9bffdc052
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60946667"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasazení existujícího spustitelného souboru do Service Fabric
@@ -35,7 +35,7 @@ Existuje několik výhod ke spuštění spustitelného souboru v clusteru Servic
 * Hustota. Můžete spustit několik aplikací v clusteru, není potřeba pro každou aplikaci spouštět na vlastní hardware.
 * Zjistitelnost: Pomocí rozhraní REST může volat službě pojmenování service Fabric k nalezení dalších služeb v clusteru. 
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>Ukázky kódu
 * [Ukázka pro balení a nasazení hostujícího spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Ukázka dvě hosta spustitelných souborů (C# a Node.js) komunikaci přes službu pojmenování pomocí rozhraní REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 

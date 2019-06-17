@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: ccecfd6abe0e9418e217ad7f200ce980d73c7b45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61468325"
 ---
 # <a name="ibm-workloads-on-azure"></a>IBM úloh v Azure
@@ -31,7 +31,7 @@ Kromě toho software IBM včetně WebSphere a MQ, je teď na webu Azure Marketpl
 
 Rozsáhlý partnerský ekosystém nabízíme vám pomůžeme s migrací systémy pro sálové počítače IBM do Azure. Většina podle pragmatický postoj opakované kdykoli je to možné, před začátkem uplatňování postupného nasazení přepsání nebo výměna aplikací. Získejte informace a pomoc od partnerů na [migrace Mainframů Azure center](https://azure.microsoft.com/migration/mainframe/).
 
-**Další kroky**
+**Další postup**
 
 - [Migrace mainframů: mýty a skutečnosti](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Instalace IBM zD & T vývojovým/testovacím prostředím v Azure](./install-ibm-z-environment.md)

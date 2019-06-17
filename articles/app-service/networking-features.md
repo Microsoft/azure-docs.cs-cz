@@ -16,10 +16,10 @@ ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66498946"
 ---
 # <a name="app-service-networking-features"></a>Funkce sítě služby App Service
@@ -46,8 +46,8 @@ Pro případ použití daného může být několik způsobů, jak problém vyř
  
 | Příchozí případy použití | Funkce |
 |---------------------|-------------------|
-| Podpora protokolu SSL na základě IP adresy, musí mít vaše aplikace | aplikace přiřazena adresa |
-| Sdílí, ne vyhrazenou příchozí adresy pro vaši aplikaci | aplikace přiřazena adresa |
+| Podpora protokolu SSL na základě IP adresy, musí mít vaše aplikace | Aplikace přiřazena adresa |
+| Sdílí, ne vyhrazenou příchozí adresy pro vaši aplikaci | Aplikace přiřazena adresa |
 | Omezení přístupu k aplikaci ze sady dobře definovaných adres | Omezení přístupu |
 | Zveřejnit své aplikace na privátních IP adres ve virtuální síti | SLUŽBA ASE S ILB </br> Application Gateway s koncovými body služby |
 | Omezení přístupu k aplikaci z prostředků ve virtuální síti | Koncové body služeb </br> SLUŽBA ASE S ILB |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: 455e78c63960103f5facae764aff3d2b3b2a590d
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 4d772b8cad64f138d93d91e87f6e6364c5a5d602
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735187"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808893"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definovaných funkcí v Azure digitální dvojče
 
@@ -34,7 +34,7 @@ Vědět, jak diagnostikovat problémy v rámci Azure digitální dvojče umožň
 Azure digitální dvojče podporuje robustní protokolování, monitorování a analýzy. Řešení mohou vývojáři protokoly, diagnostických protokolů, protokoly aktivit a další služby Azure Monitor pro podporu komplexní monitorování potřeb aplikace IoT. Možnosti protokolování můžete kombinovat, zadat dotaz nebo zobrazení záznamů napříč několika službami a poskytuje podrobné protokolování pokrytí u řady služeb.
 
 * Konfigurace protokolování specifické pro digitální dvojče Azure, najdete v článku [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
-* Najdete [Azure Monitor](../azure-monitor/overview.md) přehled a další informace o nastavení výkonné protokolu povoleno v nástroji Azure Monitor.
+* Poraďte [Azure Monitor](../azure-monitor/overview.md) přehled a další informace o nastavení výkonné protokolu povoleno v nástroji Azure Monitor.
 * Přečtěte si článek [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitální dvojče Azure prostřednictvím webu Azure Portal, Azure CLI nebo Powershellu.
 
 Po nakonfigurování, budete moci vybrat všechny kategorie protokolů, metrik a použijte výkonné Azure Monitor pracovní prostory log analytics pro podporu ladění úsilí.

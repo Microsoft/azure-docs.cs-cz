@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: 1639b8066f3c9943bc42f5151fcb456585441baf
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866232"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Podpora jazyka a oblasti pro rozhraní API vizuální vyhledávání Bingu
@@ -34,7 +34,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 > - Recepty, nákupy a přehledů stránek, včetně jsou k dispozici pouze na trhu en US.
 
 
-## <a name="countriesregions"></a>Země nebo oblasti
+## <a name="countriesregions"></a>Země/oblasti
 
 |Země/oblast|Kód|
 |-------|----|
@@ -49,7 +49,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
-|Hongkong – zvláštní správní oblast|HK|
+|Hongkong – zvláštní administrativní oblast|HK|
 |Indie|IN|
 |Indonésie|ID|
 |Itálie|IT|
@@ -93,7 +93,7 @@ Alternativně můžete zadat pomocí země/oblast `cc` parametr dotazu. Pokud ch
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh-HK|
 |Indie|Angličtina|en-IN|
 |Indonésie|Angličtina|cs ID|
 |Itálie|italština|IT-IT|

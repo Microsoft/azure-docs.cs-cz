@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165418"
 ---
 1. V modulu Správce clusteru převzetí služeb při selhání rozbalte **role**a pak zvýrazněte vaší skupiny dostupnosti.  
@@ -31,7 +31,7 @@ ms.locfileid: "66165418"
 
 8. Spusťte SQL Server Management Studio a připojte se k primární replice.
 
-9. Přejděte na **AlwaysOn vysokou dostupnost** > **skupin dostupnosti** > **\<AvailabilityGroupName\>**   >  **Naslouchacích procesů skupin dostupnosti**.  
+9. Přejděte na **AlwaysOn vysokou dostupnost** > **skupin dostupnosti** >  **\<AvailabilityGroupName\>**   >  **Naslouchacích procesů skupin dostupnosti**.  
     Naslouchací proces s názvem, který jste vytvořili v modulu Správce clusteru převzetí služeb při selhání má být zobrazena.
 
 10. Klikněte pravým tlačítkem na název naslouchacího procesu a potom klikněte na tlačítko **vlastnosti**.

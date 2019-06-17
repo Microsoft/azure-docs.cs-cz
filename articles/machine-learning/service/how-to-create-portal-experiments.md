@@ -12,10 +12,10 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
 ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989876"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Vytvoření a prozkoumejte automatizované se strojovým učením na webu Azure Portal (Preview)
@@ -60,7 +60,7 @@ Vyberte tlačítko Vytvořit Experiment k naplnění následující formulář.
 
     Pole|Popis
     ---|---
-    Název výpočetních prostředků služby Machine Learning| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
+    Název COMPUTE| Zadejte jedinečný název, který identifikuje váš výpočetní kontext.
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetních prostředků.
     Další nastavení| *Uzel min*: Zadejte minimální počet uzlů pro vaše výpočetní prostředky. Minimální počet uzlů pro službu AML compute je 0. Pokud chcete povolit profilaci dat, musí mít 1 nebo více uzlů. <br> *Maximální počet uzlů*: Zadejte maximální počet uzlů pro vaše výpočetní prostředky. Výchozí hodnota je 6 uzly Compute AML.
 
@@ -103,9 +103,9 @@ Vyberte tlačítko Vytvořit Experiment k naplnění následující formulář.
     Upřesnit nastavení|Popis
     ------|------
     Primární metriku| Hlavní metriku pro vyhodnocení modelu. [Další informace o metrikách modelu](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
-    Výstupní kritéria| Pokud se splní některá z těchto kritérií, trénovací úlohu ukončí před dokončením úplné. <br> *Trénovací úlohu doba (v minutách)*: Jak dlouho se má povolit spuštění trénovací úlohy.  <br> *Maximální počet opakování*: Maximální počet kanálů (iterací) k testování v trénovací úlohu. Úloha se vůbec nespustí větší než zadaný počet iterací. <br> *Metriky skóre prahová hodnota*:  Minimální skóre metriky pro všechny kanály. Tím se zajistí, že pokud máte definovanému cíli metriky, které chcete dosáhnout, není strávíte víc času na trénovací úlohu, než je nutné.
+    Výstupní kritéria| Pokud se splní některá z těchto kritérií, trénovací úlohu ukončí před dokončením úplné. <br> *Trénovací úlohu doba (v minutách)* : Jak dlouho se má povolit spuštění trénovací úlohy.  <br> *Maximální počet opakování*: Maximální počet kanálů (iterací) k testování v trénovací úlohu. Úloha se vůbec nespustí větší než zadaný počet iterací. <br> *Metriky skóre prahová hodnota*:  Minimální skóre metriky pro všechny kanály. Tím se zajistí, že pokud máte definovanému cíli metriky, které chcete dosáhnout, není strávíte víc času na trénovací úlohu, než je nutné.
     Předzpracování| Vyberte k povolení nebo zakázání předběžného zpracování v automatizovaných strojové učení. Předběžné zpracování zahrnuje čištění dat, přípravě a transformace ke generování syntetické funkce. [Další informace o předběžném zpracování](#preprocess).
-    Ověřování| Vyberte jednu z možností křížového ověření pro použití v trénovací úlohu. [Další informace o křížové ověření](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Ověření| Vyberte jednu z možností křížového ověření pro použití v trénovací úlohu. [Další informace o křížové ověření](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
     Souběžnost| Vyberte vícejádrových limity, které chcete použít při používání vícejádrové výpočetní.
     Blokované algoritmus| Výběr algoritmů, které chcete vyloučit z trénovací úlohu.
 
@@ -213,7 +213,7 @@ Automatizované ML vám pomůže s nasazením modelu bez nutnosti psaní kódu:
 
     Model může identifikovat podle jeho popis, který bude obsahovat ID běhu, počet opakování, v následujícím formátu: *_modelu < Run_ID > _ < Iteration_number >*
 
-    ![Modely: Vytvořit image](media/how-to-create-portal-experiments/model-create-image.png)
+    ![Modely: Vytvoření image](media/how-to-create-portal-experiments/model-create-image.png)
 
 1. Zadejte název image. 
 1. Vyberte **Procházet** tlačítko vedle textového pole "Soubor vyhodnocování" nahrát soubor vyhodnocení (scoring.py) jste předtím stáhli.
@@ -225,7 +225,7 @@ Automatizované ML vám pomůže s nasazením modelu bez nutnosti psaní kódu:
       >[!Important]
       > Názvy souborů musí být v části 32 znaků a musí začínat a končit alfanumerické znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Nejsou povoleny mezery.
 
-    ![Vytvořit image](media/how-to-create-portal-experiments/create-image.png)
+    ![Vytvoření image](media/how-to-create-portal-experiments/create-image.png)
 
 1. Vyberte tlačítko "Vytvořit" spusťte vytváření bitové kopie. Bude to trvat několik minut, až to bude hotové, zobrazí se zpráva na horním panelu.
 1. Přejděte na kartu "Image", zaškrtněte políčko vedle image, kterou chcete nasadit a vyberte možnost "Vytvořit nasazení". [Další informace o nasazení](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).

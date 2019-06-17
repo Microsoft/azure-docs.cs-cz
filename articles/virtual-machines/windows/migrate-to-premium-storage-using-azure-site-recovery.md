@@ -11,10 +11,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: 5744ee76d36b1cea256cd2594bcbc07c954f38f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60849761"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
@@ -77,7 +77,7 @@ Site Recovery můžete použít k migraci virtuálních počítačů Azure IaaS 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: Vytvoření trezoru Služeb zotavení
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. Vyberte **vytvořit prostředek** > **správu** > **Backup a Site Recovery (OMS)**. Alternativně můžete vybrat **Procházet** > **trezor služby Recovery Services** > **přidat**.
+2. Vyberte **vytvořit prostředek** > **správu** > **Backup a Site Recovery (OMS)** . Alternativně můžete vybrat **Procházet** > **trezor služby Recovery Services** > **přidat**.
    >[!NOTE]
    >Backup a Site Recovery byl dříve součástí ![sadu OMS](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
 1. Zadejte oblast, která bude replikován virtuálních počítačů. Pro účely migrace ve stejné oblasti vyberte oblast, kde je zdrojových virtuálních počítačů a účtů úložiště zdroje. 
@@ -144,7 +144,7 @@ Chcete-li ověřit, že je konfigurační server úspěšně přidružené k zá
 ### <a name="step-6-plan-capacity"></a>Krok 6: Plánování kapacity
 
 1. Použití [Plánovač kapacity](../../site-recovery/site-recovery-capacity-planner.md) pro přesný odhad šířky pásma sítě, úložiště a dalších požadavků na provádění vašeho replikace potřebuje. 
-2. Jakmile budete hotovi, vyberte **Ano, mám to hotové** v **dokončili jste plánování kapacity?**.
+2. Jakmile budete hotovi, vyberte **Ano, mám to hotové** v **dokončili jste plánování kapacity?** .
 
    ![Pole pro potvrzení, že jste dokončili, plánování kapacity][11]
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153434"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
@@ -158,8 +158,8 @@ Můžete načíst spravovaná identita z webu Azure portal nebo prostřednictví
 
 Můžete najít informace o spravovaných identit z webu Azure portal -> datové továrny -> vlastnosti:
 
-- ID objektu spravované identity
-- Tenant spravované identity
+- Spravované Identity ID objektu
+- Tenant spravované Identity
 - **Spravované ID aplikace Identity** > zkopírujte tuto hodnotu
 
 ![Načíst spravovaná identita](media/data-factory-service-identity/retrieve-service-identity-portal.png)

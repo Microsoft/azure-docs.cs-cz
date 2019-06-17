@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9f4d3ff6fa02369c0e4a01949cc686b842a63a12
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808464"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service
 
@@ -92,7 +92,7 @@ Můžete nasadit projekt jako webová úloha samostatně, nebo odkaz do webovéh
 
 Pokud používáte Visual Studio 2015, nainstalujte [sady Azure SDK pro .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Pokud používáte Visual Studio 2019, nainstalujte [funkcí vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
+Pokud používáte Visual Studio 2019, nainstalujte [funkcí vývoj pro Azure](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
 ### <a id="convert"></a> Povolit nasazení WebJobs pro existující projekt konzolové aplikace
 

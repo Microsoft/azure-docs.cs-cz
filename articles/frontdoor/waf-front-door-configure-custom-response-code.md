@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/21/2019
 ms.author: tyao;kumud
 ms.openlocfilehash: d6d73055abe972cd3b6fee253b6bdb2b082ceca8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242992"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Konfigurace vlastní odpovědi pro brány firewall webových aplikací

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-pawal
 ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389849"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
@@ -85,7 +85,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis    |Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace  |(prázdné)    |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query|string|
+|appid  |(prázdné)    |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query|string|
 |text|(prázdné)   |Povinná hodnota. Řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|query|string|
 |from|(prázdné)   |Volitelné. Řetězec představující kód jazyka textu překlad. Například en pro angličtinu.|query|string|
 |na|(prázdné) |Povinná hodnota. Řetězec představující kód jazyka můžete přeložit text do.|query|string|
@@ -231,7 +231,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Národní prostředí|(prázdné) |Povinná hodnota. Řetězec představující kombinaci kód ISO 639 dvoupísmenné malá jazykové verze přidružený jazyk a kód ISO 3166 velká subkulturu dvoupísmenné lokalizovat názvy jazyků nebo malými písmeny kód ISO 639 samostatně.|query|string|
 |Autorizace|(prázdné)  |Požadováno pokud pole appid nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud pole appid nebo `Authorization` není zadána hlavička.|záhlaví|string|
@@ -265,7 +265,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Autorizace|(prázdné)  |Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
 
@@ -298,7 +298,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
  
@@ -330,11 +330,11 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)   |Povinná hodnota. Řetězec obsahující věty nebo věty zadaného jazyka, který má být používaný wave Stream. Velikost textu mluvit nesmí přesáhnout 2000 znaků.|query|string|
 |language|(prázdné)   |Povinná hodnota. Řetězec představující kód podporovaného jazyka mluvit textu. Kód musí být uvedený v seznamu kódů vrátil z metody `GetLanguagesForSpeak`.|query|string|
 |format|(prázdné)|Volitelné. Řetězec určující identifikátor typu obsahu V současné době `audio/wav` a `audio/mp3` jsou k dispozici. Výchozí hodnota je `audio/wav`.|query|string|
-|Možnosti|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára <code>\|</code> zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul> |query|string|
+|options|(prázdné)    |<ul><li>Volitelné. Řetězec určující vlastnosti syntetizovaný řeči:<li>`MaxQuality` a `MinSize` je možné určit kvalitu zvukového signálu. S `MaxQuality`, můžete získat hlasy s nejvyšší kvalitu a `MinSize`, můžete získat hlasy s nejmenší velikost. Výchozí hodnota je `MinSize`.</li><li>`female` a `male` je možné určit požadovanou pohlaví hlasu. Výchozí hodnota je `female`. Použít svislá čára <code>\|</code> zahrnout více možností. Například `MaxQuality|Male`.</li></li></ul> |query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)  |Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
 
@@ -366,7 +366,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)  |Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)  |Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)|Povinná hodnota. Řetězec obsahující text, jehož jazyk je možné identifikovat. Velikost textu nesmí být delší než 10000 znaků.|query| string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key  |(prázdné)    |Požadováno pokud `appid` pole nebo `Authorization` není zadána hlavička.|záhlaví|string|
@@ -421,7 +421,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |Autorizace|(prázdné)|Požadováno pokud `appid` pole nebo `Ocp-Apim-Subscription-Key` není zadána hlavička. Autorizační token: `"Bearer" + " " + "access_token"`.|záhlaví|string|
 |OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `appid` není zadáno pole nebo autorizační hlavičky.|záhlaví|string|
 
@@ -455,7 +455,7 @@ Typ obsahu odpovědi: aplikace: xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat   |
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |originalText|(prázdné)|Povinná hodnota. Řetězec obsahující text na překlad z. Řetězec má maximální délku 1000 znaků.|query|string|
 |translatedText|(prázdné) |Povinná hodnota. Řetězec obsahující přeložený text v cílovém jazyce. Řetězec má maximální délku 2000 znaků.|query|string|
 |from|(prázdné)   |Povinná hodnota. Řetězec představující kód jazyka textu překlad. cs = angličtina, de = německé atd...|query|string|
@@ -565,7 +565,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)  |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query| string|
+|appid|(prázdné)  |Povinná hodnota. Pokud hlavička autorizace nebo Ocp-Apim-Subscription-Key se používá, ponechejte tuto položku appid pole prázdné jinak obsahovat řetězec obsahující "Nosiče" + "" + "access_token".|query| string|
 |text|(prázdné)   |Povinná hodnota. Řetězec představující text, který má rozdělení na věty. Velikost textu nesmí být delší než 10000 znaků.|query|string|
 |language   |(prázdné)    |Povinná hodnota. Řetězec představující kód jazyka vstupního textu.|query|string|
 |Autorizace|(prázdné)|Povinné, pokud není zadán appid pole nebo záhlaví Ocp-Apim-Subscription-Key. Autorizační token:  "Nosiče" + "" + "access_token".    |záhlaví|string|
@@ -659,7 +659,7 @@ Typ obsahu odpovědi: application/xml
 
 |Parametr|Hodnota|Popis|Typ parametru|Typ dat|
 |:--|:--|:--|:--|:--|
-|ID aplikace|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
+|appid|(prázdné)|Povinná hodnota. Pokud `Authorization` nebo `Ocp-Apim-Subscription-Key` záhlaví se používá, ponechejte tuto položku appid pole prázdné jinak zahrnout řetězec obsahující `"Bearer" + " " + "access_token"`.|query|string|
 |text|(prázdné)|Povinná hodnota. Řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|query|string|
 |from|(prázdné)|Povinná hodnota. Řetězec představující kód jazyka textu překlad.|query|string|
 |na |(prázdné)    |Povinná hodnota. Řetězec představující kód jazyka můžete přeložit text do.|query|string|

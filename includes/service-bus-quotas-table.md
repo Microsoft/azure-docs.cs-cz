@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171222"
 ---
 V následující tabulce jsou uvedeny informace o kvótě specifické pro zasílání zpráv Azure Service Bus. Informace o cenách a další kvóty pro služby Service Bus, najdete v části [cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).

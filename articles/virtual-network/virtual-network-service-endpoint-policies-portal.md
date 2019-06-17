@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: kumud
 ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710906"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásady koncového bodu služby pomocí webu Azure portal
@@ -73,7 +73,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
  
 ## <a name="view-endpoint-policies"></a>Zobrazit zásady koncového bodu 
 
-1. V *všechny služby* pole na portálu, začněte psát *zásad koncových bodů služeb*. Vyberte **služby koncového bodu Policies(Preview)**.
+1. V *všechny služby* pole na portálu, začněte psát *zásad koncových bodů služeb*. Vyberte **služby koncového bodu Policies(Preview)** .
 2. V části **předplatná**, vyberte svoje předplatné a skupinu prostředků, jak je znázorněno na následujícím obrázku
 
    ![Zobrazit zásady](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)
