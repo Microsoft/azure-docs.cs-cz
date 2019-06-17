@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
 ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258004"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari
@@ -159,7 +159,7 @@ Práce s uživatele, skupiny a oprávnění jsou podporovány při použití [p�
     |Zapnout režim údržby|Potlačí zobrazení výstrah pro hostitele. Tento režim musí být povolené, pokud provádíte akce, která generují výstrahy. Například, zastavení a spuštění služby.|
     |Vypnout režim údržby|Vrátí hostitele tak, aby normální výstrahy.|
     |Zastavit|Zastaví DataNode nebo NodeManagers na hostiteli.|
-    |Spustit|Spustí se DataNode nebo NodeManagers na hostiteli.|
+    |Start|Spustí se DataNode nebo NodeManagers na hostiteli.|
     |Restart|Zastaví a spustí DataNode nebo NodeManagers na hostiteli.|
     |Vyřazení z provozu|Odebere hostitele z clusteru. **Nepoužívejte tuto akci na clusterech HDInsight.**|
     |Recommission|Přidá dříve Vyřazená z provozu hostitele do clusteru. **Nepoužívejte tuto akci na clusterech HDInsight.**|

@@ -16,10 +16,10 @@ ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792099"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata service
@@ -107,8 +107,8 @@ V následující tabulce je odkaz jiné formáty dat, které můžou podporovat 
 Rozhraní API | Výchozí formát dat | Další formáty
 --------|---------------------|--------------
 /instance | json | text
-/scheduledevents | json | žádný
-/ potvrzeno | json | žádný
+/scheduledevents | json | None
+/ potvrzeno | json | None
 
 Pro přístup k formátu odpovědi jiné než výchozí, zadejte požadovaný formát jako parametru řetězce dotazu v žádosti. Příklad:
 
@@ -132,7 +132,7 @@ Kód stavu HTTP | Reason
 ----------------|-------
 200 OK |
 400 – Chybný požadavek | Chybí `Metadata: true` záhlaví nebo chybějící formát při dotazování na uzel typu list
-404 Nenalezeno | Požadovaný element neexistuje
+404 – Nenalezeno | Požadovaný element neexistuje
 405 Metoda není povolena | Pouze `GET` a `POST` jsou podporovány požadavky
 429 příliš mnoho požadavků | Rozhraní API v současné době podporuje maximálně 5 dotazů za sekundu
 Chyba 500 služby     | Zkuste to znovu za nějakou dobu
@@ -365,11 +365,11 @@ placementGroupId | [Skupiny umístění](../../virtual-machine-scale-sets/virtua
 plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název produktu a vydavatele pro virtuální počítač, pokud jeho Azure Marketplace Image | 2018-04-02
 platformUpdateDomain |  [Aktualizační doména](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) virtuální počítač je spuštěný | 2017-04-02
-zprostředkovatel | Zprostředkovatel virtuálního počítače | 2018-10-01
+Zprostředkovatel | Zprostředkovatel virtuálního počítače | 2018-10-01
 publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazená k virtuálnímu počítači a cesty | 2018-04-02
-vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
+publisher | Vydavatel image virtuálního počítače | 2017-04-02
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro váš virtuální počítač | 2017-08-01
-SKU | Konkrétní SKU pro image virtuálního počítače | 2017-04-02
+Skladová položka | Konkrétní SKU pro image virtuálního počítače | 2017-04-02
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
 značky | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro váš virtuální počítač  | 2017-08-01
 version | Verzi image virtuálního počítače | 2017-04-02
@@ -606,7 +606,7 @@ Verification successful
 
 Data | Popis
 -----|------------
-Hodnota Nonce | Uživatelem zadaný volitelný řetězec s požadavkem. Pokud se žádná hodnota nonce byl zadaný v požadavku, vrátí se aktuální časové razítko UTC
+nonce | Uživatelem zadaný volitelný řetězec s požadavkem. Pokud se žádná hodnota nonce byl zadaný v požadavku, vrátí se aktuální časové razítko UTC
 plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) pro virtuální počítač v něm je Azure Marketplace Image, obsahuje název, produktu a vydavatel
 časové razítko/createdOn | Časové razítko, kdy byla vytvořena první podepsaný dokument
 časové razítko/expiresOn | Časové razítko, kdy vyprší platnost podepsaný dokument
@@ -687,7 +687,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Vlastní data
+### <a name="custom-data"></a>Vlastní Data
 Služba instance Metadata poskytuje možnost pro virtuální počítač přístup k jeho vlastní data. Binární data musí být menší než 64 KB a je k dispozici k virtuálnímu počítači v podobě kódování base64.
 
 Vlastní data Azure může být vložen do virtuálního počítače pomocí rozhraní REST API, rutin prostředí PowerShell, rozhraní příkazového řádku Azure (CLI) nebo šablonu ARM.

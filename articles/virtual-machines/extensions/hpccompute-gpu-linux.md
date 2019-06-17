@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
 ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683172"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
@@ -71,10 +71,10 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota / příklad | Typ dat |
+| Name | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| vydavatele | Microsoft.HpcCompute | string |
+| publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
@@ -82,7 +82,7 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 
 Všechna nastavení jsou volitelná. Výchozí chování je k aktualizaci jádra není-li vyžadované pro instalaci ovladače, nainstalujte nejnovější podporované ovladače a CUDA toolkit (podle vhodnosti).
 
-| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Name | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false (nepravda) | Hodnota TRUE, false | Boolean |
 | driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | nejnovější | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
@@ -174,9 +174,9 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 
 ### <a name="exit-codes"></a>Kódy ukončení
 
-| Kód ukončení | Význam | Je to možné akce |
+| Ukončovací kód | Význam | Je to možné akce |
 | :---: | --- | --- |
-| 0 | Úspěšná operace |
+| 0 | Operace byla úspěšná. |
 | 1 | Nesprávné použití rozšíření | Zkontrolujte výstup protokolu spuštění |
 | 10 | Integrační služby Linuxu pro Hyper-V a Azure není k dispozici nebo nainstalované | Zkontrolujte výstup lspci |
 | 11 | Grafický procesor NVIDIA nebyla nalezena na velikosti tohoto virtuálního počítače | Použití [podporovaná velikost virtuálního počítače a operačního systému](../linux/n-series-driver-setup.md) |

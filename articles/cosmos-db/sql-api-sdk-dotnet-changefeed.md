@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417911"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET change Feed procesoru SDK: Stáhněte si a poznámky k verzi
@@ -170,20 +170,20 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.2.7](#2.2.7) |14. května 2019 |--- |
-| [2.2.6](#2.2.6) |29. ledna 2019 |--- |
-| [2.2.5](#2.2.5) |13. prosince 2018 |--- |
-| [2.2.4](#2.2.4) |29. listopadu 2018 |--- |
-| [2.2.3](#2.2.3) |19. listopadu 2018 |--- |
-| [2.2.2](#2.2.2) |31. října 2018 |--- |
-| [2.2.1](#2.2.1) |24. října 2018 |--- |
-| [1.3.3](#1.3.3) |08. května 2018 |--- |
-| [1.3.2](#1.3.2) |18. dubna 2018 |--- |
-| [1.3.1](#1.3.1) |13. března 2018 |--- |
-| [1.2.0](#1.2.0) |31. října 2017 |--- |
-| [1.1.1](#1.1.1) |29. srpna 2017 |--- |
-| [1.1.0](#1.1.0) |13. srpna 2017 |--- |
-| [1.0.0](#1.0.0) |07. července 2017 |--- |
+| [2.2.7](#2.2.7) |14\. května 2019 |--- |
+| [2.2.6](#2.2.6) |29\. ledna 2019 |--- |
+| [2.2.5](#2.2.5) |13\. prosince 2018 |--- |
+| [2.2.4](#2.2.4) |29\. listopadu 2018 |--- |
+| [2.2.3](#2.2.3) |19\. listopadu 2018 |--- |
+| [2.2.2](#2.2.2) |31\. října 2018 |--- |
+| [2.2.1](#2.2.1) |24\. října 2018 |--- |
+| [1.3.3](#1.3.3) |08\. května 2018 |--- |
+| [1.3.2](#1.3.2) |18\. dubna 2018 |--- |
+| [1.3.1](#1.3.1) |13\. března 2018 |--- |
+| [1.2.0](#1.2.0) |31\. října 2017 |--- |
+| [1.1.1](#1.1.1) |29\. srpna 2017 |--- |
+| [1.1.0](#1.1.0) |13\. srpna 2017 |--- |
+| [1.0.0](#1.0.0) |07\. července 2017 |--- |
 
 ## <a name="faq"></a>Nejčastější dotazy
 

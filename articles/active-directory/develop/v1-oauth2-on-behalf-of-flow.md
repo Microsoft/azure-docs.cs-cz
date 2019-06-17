@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f4ab484b76bb536dd4e9d3c4fff2c85d93e4a41
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc352c6867779fd8f4487acdb1d11c0fabe4b9f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235196"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110994"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Služba služba volá tuto identitu uživatele použijte delegovaný v tok On-Behalf-Of
 
@@ -115,7 +115,7 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 | assertion |Vyžaduje | Hodnota přístupový token, který je použitý v požadavku. |
 | client_id |Vyžaduje | ID aplikace přiřazené k volání služby během registrace ve službě Azure AD. Pokud chcete najít ID aplikace na webu Azure Portal, vyberte **služby Active Directory**, vyberte adresář a potom vyberte název aplikace. |
 | client_secret |Vyžaduje | Klíč zaregistrovaný pro volání služby ve službě Azure AD. Tato hodnota by bylo zaznamenáno v době registrace. |
-| prostředek |Vyžaduje | Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). Chcete-li najít identifikátor URI ID aplikace na webu Azure Portal, vyberte **služby Active Directory** a vyberte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| resource |Vyžaduje | Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). Chcete-li najít identifikátor URI ID aplikace na webu Azure Portal, vyberte **služby Active Directory** a vyberte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
 | requested_token_use |Vyžaduje | Určuje, jak by měl být požadavek zpracovat. Tok On-Behalf-Of, musí být hodnota **on_behalf_of**. |
 | scope |Vyžaduje | Mezerou oddělený seznam oborů pro žádosti o token. Pro OpenID Connect, oboru **openid** musí být zadán.|
 
@@ -150,7 +150,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | client_id |Vyžaduje | ID aplikace přiřazené k volání služby během registrace ve službě Azure AD. Pokud chcete najít ID aplikace na webu Azure Portal, vyberte **služby Active Directory**, vyberte adresář a potom vyberte název aplikace. |
 | client_assertion_type |Vyžaduje |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |Vyžaduje | Webového tokenu JSON, které vytvoříte a podepsat pomocí certifikátu můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci. Zobrazit [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o formátu kontrolní výraz a o tom, jak zaregistrovat certifikát.|
-| prostředek |Vyžaduje | Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). Chcete-li najít identifikátor URI ID aplikace na webu Azure Portal, vyberte **služby Active Directory** a vyberte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| resource |Vyžaduje | Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). Chcete-li najít identifikátor URI ID aplikace na webu Azure Portal, vyberte **služby Active Directory** a vyberte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
 | requested_token_use |Vyžaduje | Určuje, jak by měl být požadavek zpracovat. Tok On-Behalf-Of, musí být hodnota **on_behalf_of**. |
 | scope |Vyžaduje | Mezerou oddělený seznam oborů pro žádosti o token. Pro OpenID Connect, oboru **openid** musí být zadán.|
 
@@ -187,7 +187,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | scope |Obor přístupu v tokenu. |
 | expires_in |Dlouhá doba přístupový token je platný (v sekundách). |
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti. |
-| prostředek |Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). |
+| resource |Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). |
 | access_token |Požadovaný přístupový token. Volání služby můžete použít tento token k ověření přijímající služby. |
 | id_token |Požadovaný token ID. Volání služby můžete použít tento token pro ověření identity uživatele a zahájit relaci s uživatelem. |
 | refresh_token |Obnovovací token pro požadované přístupový token. Volání služby můžete tento token po vypršení platnosti přístupového tokenu aktuální vyžádat dalšího přístupového tokenu. |
@@ -259,7 +259,7 @@ Některé OAuth webových služeb využívajících potřebují přístup k jin�
 | assertion |Vyžaduje | Hodnota přístupový token, který je použitý v požadavku.|
 | client_id |Vyžaduje | ID aplikace přiřazené k volání služby během registrace ve službě Azure AD. Pokud chcete najít ID aplikace na webu Azure Portal, vyberte **služby Active Directory**, vyberte adresář a potom vyberte název aplikace. |
 | client_secret |Vyžaduje | Klíč zaregistrovaný pro volání služby ve službě Azure AD. Tato hodnota by bylo zaznamenáno v době registrace. |
-| prostředek |Vyžaduje | Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). Toto je prostředek, který bude cílová skupina tokenu SAML. Chcete-li najít identifikátor URI ID aplikace na webu Azure Portal, vyberte **služby Active Directory** a vyberte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
+| resource |Vyžaduje | Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). Toto je prostředek, který bude cílová skupina tokenu SAML. Chcete-li najít identifikátor URI ID aplikace na webu Azure Portal, vyberte **služby Active Directory** a vyberte adresář. Vyberte název aplikace, zvolte **všechna nastavení**a pak vyberte **vlastnosti**. |
 | requested_token_use |Vyžaduje | Určuje, jak by měl být požadavek zpracovat. Tok On-Behalf-Of, musí být hodnota **on_behalf_of**. |
 | requested_token_type | Vyžaduje | Určuje typ tokenu požadováno. Hodnota může být **urn: ietf:params:oauth:token-typu: saml2** nebo **urn: ietf:params:oauth:token-typu: saml1** v závislosti na požadavcích využívaných prostředků. |
 
@@ -278,7 +278,7 @@ Odpověď obsahuje token SAML kódovaný v UTF8 a Base64url.
 | scope |Obor přístupu v tokenu. |
 | expires_in |Dlouhá doba přístupový token je platný (v sekundách). |
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti. |
-| prostředek |Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). |
+| resource |Identifikátor URI ID aplikace přijímající služby (zabezpečeným prostředkům). |
 | access_token |Parametr, který vrátí kontrolního výrazu SAML. |
 | refresh_token |Token obnovení. Volání služby můžete tento token vyžádat dalšího přístupového tokenu po vypršení platnosti aktuální kontrolní výraz SAML. |
 

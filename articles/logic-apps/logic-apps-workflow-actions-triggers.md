@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596944"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenční informace pro aktivační událost a akce typy v jazyka definice pracovního postupu pro Azure Logic Apps
@@ -157,7 +157,7 @@ Kontroluje, Tato aktivační událost nebo *hlasování* koncový bod pomocí [r
 | Element | Type | Popis |
 |---------|------|-------------|
 | Záhlaví | JSON – objekt | Hlavičky z odpovědi |
-| hlavní část | JSON – objekt | Text z odpovědi |
+| Text | JSON – objekt | Text z odpovědi |
 | Stavový kód | Integer | Stavový kód z odpovědi |
 |||| 
 
@@ -330,7 +330,7 @@ Tento trigger zkontroluje nebo dotazuje zadaný koncový bod na základě plánu
 | Element | Type | Popis |
 |---------|------|-------------| 
 | Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
-| hlavní část | JSON – objekt | Text z odpovědi | 
+| Text | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
@@ -425,7 +425,7 @@ Některé hodnoty, jako například <*typ metody*>, jsou k dispozici pro obě `"
 | Element | Type | Popis |
 |---------|------|-------------| 
 | Záhlaví | JSON – objekt | Hlavičky z odpovědi | 
-| hlavní část | JSON – objekt | Text z odpovědi | 
+| Text | JSON – objekt | Text z odpovědi | 
 | Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
@@ -824,7 +824,7 @@ Tady jsou některé běžně používané akce:
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Vytvoří jeden výstup ze vstupů, což může mít různé typy. | 
 | [**Spuštění kódu jazyka JavaScript**](#run-javascript-code) | Spouštět fragmenty kódu jazyka JavaScript, které se vejdou do určitých kritérií. Požadavky na kód a další informace najdete v tématu [přidat a spuštění kódu pomocí vloženého kódu](../logic-apps/logic-apps-add-run-inline-code.md). |
-| [**– funkce**](#function-action) | Volá funkci Azure. | 
+| [ **– funkce**](#function-action) | Volá funkci Azure. | 
 | [**HTTP**](#http-action) | Zavolá koncový bod HTTP. | 
 | [**Připojte se k**](#join-action) | Vytvoří řetězec ze všech položek v poli a tyto položky odděluje znak zadaného oddělovače. | 
 | [**Parsování formátu JSON**](#parse-json-action) | Vytvoří uživatelsky přívětivé tokeny z vlastností ve formátu JSON obsahu. Tyto vlastnosti pak odkazujete včetně tokenů ve vaší aplikaci logiky. | 
@@ -1014,7 +1014,7 @@ Pak můžete výstup akce v dalších akcí.
 
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
-| <*inputs-to-compose*> | Vše | Vstupy pro vytvoření jediného výstupu | 
+| <*inputs-to-compose*> | Jakýkoli | Vstupy pro vytvoření jediného výstupu | 
 |||| 
 
 *Příklad 1*
@@ -1645,7 +1645,7 @@ Chcete-li zadat nebo upravit záhlaví sloupců a hodnot, použijte `columns` po
 | Hodnota | Type | Popis | 
 |-------|------|-------------| 
 | <*název sloupce*> | String | Název záhlaví sloupce | 
-| <*Hodnota sloupce*> | Vše | Hodnota ve sloupci | 
+| <*Hodnota sloupce*> | Jakýkoli | Hodnota ve sloupci | 
 |||| 
 
 *Příklad 1*

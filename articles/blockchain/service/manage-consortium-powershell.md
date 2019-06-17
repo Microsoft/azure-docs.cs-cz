@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 4bb72bc3fe8b85a8d2aed88e02f5f3150abb6899
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66493635"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Spravovat členy consortium ve službě Azure Blockchain s použitím prostředí PowerShell
@@ -145,7 +145,7 @@ Pomocí této rutiny můžete získat podrobnosti o členovi nebo seznam členů
 
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
-| Name | Název člena Blockchain služby, který chcete načíst podrobnosti o. Při zadání názvu se vrátí podrobnosti člena. Pokud název je vynechán, vrátí seznam všech členů consortium. | Ne |
+| Název | Název člena Blockchain služby, který chcete načíst podrobnosti o. Při zadání názvu se vrátí podrobnosti člena. Pokud název je vynechán, vrátí seznam všech členů consortium. | Ne |
 | Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
 
@@ -174,7 +174,7 @@ Tuto rutinu použijte k odebrání člena blockchain.
 
 | Parametr | Popis | Požaduje se |
 |-----------|-------------|:--------:|
-| Název | Název člena odebrat | Ano |
+| Name | Název člena odebrat | Ano |
 | Členové | Členové objektu získané z ConsortiumManagementContracts importu | Ano |
 | Web3Account | Objekt Web3Account získané z Web3Account importu | Ano |
 | Web3Client | Objekt Web3Client získané z New-Web3Connection | Ano |
