@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698168"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight pomocí Azure IoT Hub
@@ -141,7 +141,7 @@ Z připojení SSH k hraničnímu uzlu použijte následující postup ke konfigu
         ```
 
         > [!TIP]  
-        > Tato změna je zabránit vypršení časového limitu pro v konektoru jímky omezení na 10 záznamů najednou. Další informace najdete na adrese [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
+        > Tato změna je zabránit vypršení časového limitu pro v konektoru jímky omezení na 10 záznamů najednou. Další informace najdete na webu [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
 
 6. Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
 
@@ -167,7 +167,7 @@ Pokud chcete načíst informace o IoT hub používá konektorem, použijte násl
 
 1. Získejte koncový bod kompatibilní s centrem událostí a název koncový bod kompatibilní s centrem událostí služby IoT hub. Pokud chcete získat tyto informace, použijte jednu z následujících metod:
 
-   * __Z [webu Azure portal](https://portal.azure.com/)__, použijte následující postup:
+   * __Z [webu Azure portal](https://portal.azure.com/)__ , použijte následující postup:
 
      1. Přejděte do služby IoT Hub a vyberte __koncové body__.
      2. Z __integrovaných koncových bodech__vyberte __události__.
@@ -180,7 +180,7 @@ Pokud chcete načíst informace o IoT hub používá konektorem, použijte násl
         > [!IMPORTANT]  
         > Hodnota koncový bod z portálu může obsahovat další text, který není nutné v tomto příkladu. Extrahovat text, který odpovídá tomuto vzoru `sb://<randomnamespace>.servicebus.windows.net/`.
 
-   * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, použijte následující příkaz:
+   * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , použijte následující příkaz:
 
        ```azure-cli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -196,13 +196,13 @@ Pokud chcete načíst informace o IoT hub používá konektorem, použijte násl
 
 2. Získejte __sdílené zásady přístupu__ a __klíč__. V tomto příkladu použijte __služby__ klíč. Pokud chcete získat tyto informace, použijte jednu z následujících metod:
 
-    * __Z [webu Azure portal](https://portal.azure.com/)__, použijte následující postup:
+    * __Z [webu Azure portal](https://portal.azure.com/)__ , použijte následující postup:
 
         1. Vyberte __zásady sdíleného přístupu__a pak vyberte __služby__.
         2. Kopírovat __primární klíč__ hodnotu.
         3. Kopírovat __připojovací řetězec – primární klíč__ hodnotu.
 
-    * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__, použijte následující příkaz:
+    * __Z [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ , použijte následující příkaz:
 
         1. Pokud chcete získat hodnotu primárního klíče, použijte následující příkaz:
 

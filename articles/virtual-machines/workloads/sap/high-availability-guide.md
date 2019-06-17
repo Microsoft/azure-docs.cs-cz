@@ -17,10 +17,10 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409974"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
@@ -54,21 +54,21 @@ ms.locfileid: "65409974"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -365,7 +365,7 @@ ms.locfileid: "65409974"
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[sap-pam]:https://support.sap.com/pam (Přehled dostupnosti SAP produktu)
+[sap-pam]: https://support.sap.com/pam (Přehled dostupnosti SAP produktu)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -1047,7 +1047,7 @@ Chcete-li přidat položky registru v obou uzlů clusteru z instance SAP ASCS/SC
 | --- | --- |
 | Název proměnné |`KeepAliveTime` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Value |120000 |
+| Hodnota |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**Tabulka 3:** Změnit první parametr protokolu TCP/IP_
@@ -1058,7 +1058,7 @@ Pak přidejte této položky registru Windows na oba uzly clusteru Windows pro S
 | --- | --- |
 | Název proměnné |`KeepAliveInterval` |
 | Typ proměnné |REG_DWORD (decimální) |
-| Value |120000 |
+| Hodnota |120000 |
 | Odkaz na dokumentaci |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Tabulka 4:** Změňte druhý parametr protokolu TCP/IP_
@@ -1177,7 +1177,7 @@ Konfigurace určující sdílené složky clusteru zahrnuje tyto úlohy:
 
    _**Obrázek 30:** Přiřazení oprávnění pro sdílenou složku pro objekt názvu clusteru_
 
-   Ujistěte se, že oprávnění zahrnují oprávnění ke změně dat ve sdílené složce pro objekt názvu clusteru (v našem příkladu **pr1. ascs vir$**).
+   Ujistěte se, že oprávnění zahrnují oprávnění ke změně dat ve sdílené složce pro objekt názvu clusteru (v našem příkladu **pr1. ascs vir$** ).
 
 3. Chcete-li přidat objekt názvu clusteru do seznamu, **přidat**. Změňte filtr, aby se vyhledávat objekty počítačů, kromě těch uvedených v obrázek 31.
 
@@ -1410,7 +1410,7 @@ Instalace SAP s ASCS/SCS instancí vysoké dostupnosti zahrnuje tyto úlohy:
 1. Ve správci Windows DNS vytvořte položku DNS pro název virtuálního hostitele ASCS/SCS instance.
 
    > [!IMPORTANT]
-   > IP adresa, která je přiřazena k názvu virtuální hostitel ASCS/SCS instance musí být stejné jako IP adresu, který jste přiřadili do Azure Load Balancer (**<*SID*> - lb - ascs**).  
+   > IP adresa, která je přiřazena k názvu virtuální hostitel ASCS/SCS instance musí být stejné jako IP adresu, který jste přiřadili do Azure Load Balancer ( **<*SID*> - lb - ascs**).  
    >
    >
 
@@ -1612,7 +1612,7 @@ Je snadno testujte a monitorujte SAP ASCS/SCS instance převzetí služeb při s
 
 _**Obrázek 61:** Správce clusteru převzetí služeb při selhání: SAP <*SID*> Skupina clusteru běží na uzlu clusteru A_
 
-V nástroji SIOS DataKeeper Správa a konfigurace uvidíte, že data sdíleného disku je synchronně replikovaných z disku zdrojového svazku S na uzlu clusteru A na jednotku cílový svazek S na uzlu clusteru B. Například se replikují z **pr1 ascs 0 [10.0.0.40]** k **pr1-ascs-1 [10.0.0.41]**.
+V nástroji SIOS DataKeeper Správa a konfigurace uvidíte, že data sdíleného disku je synchronně replikovaných z disku zdrojového svazku S na uzlu clusteru A na jednotku cílový svazek S na uzlu clusteru B. Například se replikují z **pr1 ascs 0 [10.0.0.40]** k **pr1-ascs-1 [10.0.0.41]** .
 
 ![62 obrázek: V SIOS DataKeeper replikujte místní svazek z uzlu clusteru A k uzlům clusteru B][sap-ha-guide-figure-5001]
 
@@ -1641,7 +1641,7 @@ _**62 obrázek:** V SIOS DataKeeper replikujte místní svazek z uzlu clusteru A
 
    _**Obrázek 63**: V převzetí služeb při selhání modulu Správce clusteru systému SAP <*SID*> Skupina clusteru běží na uzlu clusteru B_
 
-   Sdílený disk je teď připojená na clusteru uzel B. SIOS DataKeeper je replikace dat ze zdrojového svazku jednotky S na uzlu clusteru B do cílového svazku jednotky S na uzlu clusteru A. Například je replikace z **pr1-ascs-1 [10.0.0.41]** k **pr1 ascs 0 [10.0.0.40]**.
+   Sdílený disk je teď připojená na clusteru uzel B. SIOS DataKeeper je replikace dat ze zdrojového svazku jednotky S na uzlu clusteru B do cílového svazku jednotky S na uzlu clusteru A. Například je replikace z **pr1-ascs-1 [10.0.0.41]** k **pr1 ascs 0 [10.0.0.40]** .
 
    ![Obrázek 64: SIOS DataKeeper replikuje místní svazek z uzlu clusteru B A uzlu v clusteru][sap-ha-guide-figure-5003]
 
