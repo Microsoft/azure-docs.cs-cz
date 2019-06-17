@@ -113,11 +113,11 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
-| fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | pole |
+| fileUris (např.) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (např.) | python MyPythonScript.py \<my-param1> | string |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix (např.) | false (nepravda) | Boolean |
-| časové razítko (např.) | 123456789 | 32bitové celé číslo |
+| timestamp (např.) | 123456789 | 32bitové celé číslo |
 | storageAccountName (např.) | examplestorageacct | string |
 | storageAccountKey (např.) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
