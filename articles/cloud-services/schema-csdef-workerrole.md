@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62095400"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Schéma WorkerRole definice služby Azure Cloud Services
@@ -136,7 +136,7 @@ Definiční soubor služby obsahuje tyto prvky, které jsou podrobně popsány v
 
 [Startup](#Startup)
 
-[Úkol](#Task)
+[Úloha](#Task)
 
 [Obsah](#Contents)
 
@@ -151,7 +151,7 @@ Následující tabulka popisuje atributy `WorkerRole` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Název pro roli pracovního procesu. Název role musí být jedinečný.|
+|name|string|Povinná hodnota. Název pro roli pracovního procesu. Název role musí být jedinečný.|
 |enableNativeCodeExecution|Boolean|Volitelné. Výchozí hodnota je `true`; nativní provádění kódu a úplný vztah důvěryhodnosti, které jsou ve výchozím nastavení povolená. Tento atribut nastavte na `false` zakázat spouštění nativního kódu pro roli pracovního procesu a místo toho použít Azure částečným vztahem důvěryhodnosti.|
 |vmsize|string|Volitelné. Nastavením této hodnoty můžete změnit velikost virtuálního počítače, který je přidělený k této roli. Výchozí hodnota je `Small`. Seznam velikostí virtuálních počítačů je to možné a jejich atributů najdete v tématu [velikostí virtuálních počítačů pro Cloud Services](cloud-services-sizes-specs.md).|
 
@@ -165,7 +165,7 @@ Následující tabulka popisuje atributy `Setting` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Jedinečný název pro nastavení konfigurace.|
+|name|string|Povinná hodnota. Jedinečný název pro nastavení konfigurace.|
 
 Nastavení konfigurace pro role jsou páry název-hodnota, které jsou deklarovány v souboru definice služby a nastavte v konfiguračním souboru služby.
 
@@ -182,7 +182,7 @@ Následující tabulka popisuje atributy `LocalStorage` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Jedinečný název pro místní úložiště.|
+|name|string|Povinná hodnota. Jedinečný název pro místní úložiště.|
 |cleanOnRoleRecycle|Boolean|Volitelné. Určuje, zda by měl při restartování role vyčistit místní úložiště. Výchozí hodnota je `true`.|
 |sizeInMb|int|Volitelné. Požadované množství místa k přidělení pro místní úložiště v MB. Pokud není zadán, výchozí přidělené místo úložiště je 100 MB. Minimální množství místa, které mohou být přiděleny je 1 MB.<br /><br /> Maximální velikost místních prostředků závisí na velikosti virtuálního počítače. Další informace najdete v tématu [velikostí virtuálních počítačů pro Cloud Services](cloud-services-sizes-specs.md).|
 
@@ -205,8 +205,8 @@ Následující tabulka popisuje atributy `InputEndpoint` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Jedinečný název pro externí koncový bod.|
-|Protokol|string|Povinná hodnota. Přenosový protokol pro externí koncový bod. Pro roli pracovního procesu, možné hodnoty jsou `HTTP`, `HTTPS`, `UDP`, nebo `TCP`.|
+|name|string|Povinná hodnota. Jedinečný název pro externí koncový bod.|
+|protocol|string|Povinná hodnota. Přenosový protokol pro externí koncový bod. Pro roli pracovního procesu, možné hodnoty jsou `HTTP`, `HTTPS`, `UDP`, nebo `TCP`.|
 |port|int|Povinná hodnota. Port pro externí koncový bod. Můžete zadat libovolné číslo portu, který zvolíte, ale zadaný pro každou roli ve službě čísla portů musí být jedinečný.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).|
 |certifikát|string|Vyžaduje se pro koncový bod HTTPS. Název certifikátu určené `Certificate` elementu.|
 |localPort|int|Volitelné. Určuje port používaný pro interní připojení na koncový bod. `localPort` Atribut mapuje externí port v koncovém bodě na interní port na roli. To je užitečné v situacích, kde role musí komunikovat na interní komponenty na portu, liší od ten, který je vystaven externě.<br /><br /> Pokud nezadáte hodnotu `localPort` je stejné jako `port` atribut. Nastavte hodnotu `localPort` na "*" automaticky přiřadit nepřidělenou port, který je zjistitelné pomocí rozhraní API modulu runtime.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).<br /><br /> `localPort` Atribut je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.|
@@ -220,8 +220,8 @@ Následující tabulka popisuje atributy `InternalEndpoint` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Jedinečný název pro vnitřní koncový bod.|
-|Protokol|string|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `HTTP`, `TCP`, `UDP`, nebo `ANY`.<br /><br /> Hodnota `ANY` Určuje, že je povolen libovolný protokol jiný port.|
+|name|string|Povinná hodnota. Jedinečný název pro vnitřní koncový bod.|
+|protocol|string|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `HTTP`, `TCP`, `UDP`, nebo `ANY`.<br /><br /> Hodnota `ANY` Určuje, že je povolen libovolný protokol jiný port.|
 |port|int|Volitelné. Port používaný pro připojení s vyrovnáváním zatížení interní na koncovém bodu. Skupinu s vyrovnáváním zatížení koncový bod používá dva porty. Port používaný pro veřejnou IP adresu a port používaný na privátní IP adresu. Obvykle se jedná o tyto vlastnosti se nastaví na stejnou, ale můžete použít jiné porty.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně) (Azure SDK verze 1.7 nebo vyšší).<br /><br /> `Port` Atribut je pouze k dispozici prostřednictvím Azure SDK verze 1.3 nebo vyšší.|
 
 ##  <a name="InstanceInputEndpoint"></a> InstanceInputEndpoint
@@ -233,9 +233,9 @@ Následující tabulka popisuje atributy `InstanceInputEndpoint` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Jedinečný název pro koncový bod.|
+|name|string|Povinná hodnota. Jedinečný název pro koncový bod.|
 |localPort|int|Povinná hodnota. Určuje interní port, který bude naslouchat všem instancím rolí k přijímání příchozího provozu předány z nástroje pro vyrovnávání zatížení. Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně).|
-|Protokol|string|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `udp` nebo `tcp`. Použití `tcp` http/https podle provozu.|
+|protocol|string|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `udp` nebo `tcp`. Použití `tcp` http/https podle provozu.|
 
 ##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom
 `AllocatePublicPortFrom` Element popisuje rozsah veřejný port, který je možné ke každé instanci vstupní koncový bod externí zákazníky. Číslo veřejného portu (VIP) se přiděluje z tohoto rozsahu a přiřadí do každého koncového bodu instance jednotlivých rolí během nasazení klienta a aktualizace. Tento element je nadřazeného člena `FixedPortRange` elementu.
@@ -278,7 +278,7 @@ Následující tabulka popisuje atributy `Certificate` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Název tohoto certifikátu, který se používá k na ni odkazují, když je přidružen HTTPS `InputEndpoint` elementu.|
+|name|string|Povinná hodnota. Název tohoto certifikátu, který se používá k na ni odkazují, když je přidružen HTTPS `InputEndpoint` elementu.|
 |storeLocation|string|Povinná hodnota. Umístění úložiště certifikátů, kde může najít tohoto certifikátu na místním počítači. Možné hodnoty jsou `CurrentUser` a `LocalMachine`.|
 |storeName|string|Povinná hodnota. Název úložiště certifikátů, pokud tento certifikát je umístěn v místním počítači. Možné hodnoty zahrnují názvy předdefinovaných úložiště `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot`, `AddressBook`, nebo libovolný název vlastního úložiště. Pokud není zadán název vlastní úložiště, automaticky se vytvoří ve storu.|
 |permissionLevel|string|Volitelné. Určuje přístupová oprávnění udělená role procesy. Pokud chcete umožnit přístup k privátnímu klíči a poté zadejte pouze se zvýšenými oprávněními procesy `elevated` oprávnění. `limitedOrElevated` oprávnění umožňuje všechny procesy rolí pro přístup k privátnímu klíči. Možné hodnoty jsou `limitedOrElevated` nebo `elevated`. Výchozí hodnota je `limitedOrElevated`.|
@@ -322,7 +322,7 @@ Následující tabulka popisuje atributy `Variable` element:
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|jméno|string|Povinná hodnota. Název proměnné prostředí pro nastavení.|
+|name|string|Povinná hodnota. Název proměnné prostředí pro nastavení.|
 |value|string|Volitelné. Hodnota k nastavení proměnné prostředí. Musí obsahovat atribut hodnoty nebo `RoleInstanceValue` elementu.|
 
 ##  <a name="RoleInstanceValue"></a> RoleInstanceValue
@@ -349,7 +349,7 @@ Následující tabulka popisuje atributy `NetFxEntryPoint` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|assemblyName|string|Povinná hodnota. Název a cesta k souboru sestavení obsahující vstupní bod. Cesta je relativní vzhledem ke složce  **\\%ROLEROOT%\Approot** (nezadávejte  **\\%ROLEROOT%\Approot** v `commandLine`, předpokládá se). **ROLEROOT %** je spravován proměnnou prostředí Azure a představuje umístění kořenové složky pro vaši roli.  **\\%ROLEROOT%\Approot** složky představuje složka aplikace pro vaši roli.|
+|assemblyName|string|Povinná hodnota. Název a cesta k souboru sestavení obsahující vstupní bod. Cesta je relativní vzhledem ke složce  **\\%ROLEROOT%\Approot** (nezadávejte  **\\%ROLEROOT%\Approot** v `commandLine`, předpokládá se). **ROLEROOT %** je spravován proměnnou prostředí Azure a představuje umístění kořenové složky pro vaši roli. **\\%ROLEROOT%\Approot** složky představuje složka aplikace pro vaši roli.|
 |targetFrameworkVersion|string|Povinná hodnota. Verze rozhraní .NET framework, na kterém byla vytvořena sestavení. Například, `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="ProgramEntryPoint"></a> ProgramEntryPoint
@@ -401,7 +401,7 @@ Následující tabulka popisuje atributy `Content` elementu.
 
 | Atribut | Type | Popis |
 | --------- | ---- | ----------- |
-|cíl|string|Povinná hodnota. Umístění v Azure virtuální počítač, na který je umístěn obsah. Toto umístění je složkou **%ROLEROOT%\Approot**.|
+|destination|string|Povinná hodnota. Umístění v Azure virtuální počítač, na který je umístěn obsah. Toto umístění je složkou **%ROLEROOT%\Approot**.|
 
 Tento element je nadřazeného elementu `SourceDirectory` elementu.
 
