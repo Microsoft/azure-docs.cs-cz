@@ -70,18 +70,18 @@ Následující kód JSON ukazuje schématu pro rozšíření virtuálního poč�
 
 | Název | Hodnota / příklad | Typ dat
 | ---- | ---- | ---- 
-| apiVersion | `2017-12-01` | řetězec (date) |
+| apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | řetězec (double) |
+| typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Nastavení
 
 | Název | Hodnota / příklad | Typ dat | Požadováno?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | řetězec (url) | Ano |
-| nastavení/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
-| nastavení nebo poradci | `recipe[mycookbook::default]` | string | Ano |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Ano |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Ano |
+| settings/runlist | `recipe[mycookbook::default]` | string | Ano |
 
 ### <a name="protected-settings"></a>Chráněné nastavení
 
