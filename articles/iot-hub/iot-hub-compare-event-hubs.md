@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60735507"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Připojení zařízení IoT k Azure: IoT Hub a Event Hubs
@@ -29,16 +29,16 @@ Následující tabulka obsahuje podrobnosti o dvě úrovně služby IoT Hub poro
 
 | Funkce IoT | Úroveň standard služby IoT Hub | IoT Hub basic tier | Event Hubs |
 | --- | --- | --- | --- |
-| Zasílání zpráv typu zařízení cloud | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |
-| Protokoly: AMQP HTTPS, AMQP, přes webSockets | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |
-| Protokoly: Protokol MQTT, MQTT přes webSockets | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
-| Identita na jedno zařízení | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
-| Načtení souborů ze zařízení | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
-| Device Provisioning Service | ![Zaškrtnout][checkmark] | ![Zaškrtnout][checkmark] |  |
-| Zasílání zpráv z cloudu na zařízení | ![Zaškrtnout][checkmark] |  |  |
-| Dvojče zařízení a správy zařízení | ![Zaškrtnout][checkmark] |  |  |
-| Datové proudy zařízení (preview) | ![Zaškrtnout][checkmark] |  |  |
-| IoT Edge | ![Zaškrtnout][checkmark] |  |  |
+| Zasílání zpráv typu zařízení cloud | ![Kontrola][checkmark] | ![Kontrola][checkmark] | ![Kontrola][checkmark] |
+| Protokoly: AMQP HTTPS, AMQP, přes webSockets | ![Kontrola][checkmark] | ![Kontrola][checkmark] | ![Kontrola][checkmark] |
+| Protokoly: Protokol MQTT, MQTT přes webSockets | ![Kontrola][checkmark] | ![Kontrola][checkmark] |  |
+| Identita na jedno zařízení | ![Kontrola][checkmark] | ![Kontrola][checkmark] |  |
+| Načtení souborů ze zařízení | ![Kontrola][checkmark] | ![Kontrola][checkmark] |  |
+| Služba Device Provisioning Service | ![Kontrola][checkmark] | ![Kontrola][checkmark] |  |
+| Zasílání zpráv z cloudu na zařízení | ![Kontrola][checkmark] |  |  |
+| Dvojče zařízení a správy zařízení | ![Kontrola][checkmark] |  |  |
+| Datové proudy zařízení (preview) | ![Kontrola][checkmark] |  |  |
+| IoT Edge | ![Kontrola][checkmark] |  |  |
 
 I v případě, že jediným případem použití je příjem dat typu zařízení cloud, důrazně doporučujeme pomocí služby IoT Hub, protože poskytuje službu, která je navržená pro připojení zařízení IoT. 
 

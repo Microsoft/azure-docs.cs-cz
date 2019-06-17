@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: aschhab
 ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003122"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled fronty nedoručených zpráv služby Service Bus
@@ -45,10 +45,10 @@ Aplikace můžete definovat vlastní kódy `DeadLetterReason` vlastnost, ale sys
 
 | Podmínka | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
-| Vždy |HeaderSizeExceeded |Byla překročena kvóta velikosti pro tento datový proud. |
+| Vždy |HeaderSizeExceeded |Kvóta velikosti pro tento datový proud byla překročena. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing a SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |došlo k výjimce. Zpráva |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Zpráva vypršení platnosti a bylo dead lettered. |
-| SubscriptionDescription.RequiresSession |Id relace má hodnotu null. |Povolené relace entity nepovoluje zpráva, jejíž identifikátor relace má hodnotu null. |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Zprávě vypršela platnost a zařadila se do fronty nedoručených zpráv. |
+| SubscriptionDescription.RequiresSession |Id relace má hodnotu null. |Entita povolená relací nepodporuje zprávy, jejichž identifikátor relace má hodnotu null. |
 | ! fronty nedoručených zpráv |MaxTransferHopCountExceeded |Null |
 | Aplikace explicitní dead písmem. |Zadaná aplikace |Zadaná aplikace |
 
