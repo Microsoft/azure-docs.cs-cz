@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 43fe0047022173cc20f58688920fa95b95cc6c22
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65473533"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako zprostředkovatel kryptografických služeb vytvářet a spravovat Azure IoT Central aplikace jménem vašich zákazníků 
@@ -87,7 +87,7 @@ Můžete vybrat některou ze šablon dostupné aplikace pro novou aplikaci Azure
 | Šablona aplikace | Popis |
 | -------------------- | ----------- |
 | Custom application (Vlastní aplikace)   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
-| Ukázka Contoso       | Vytvoří aplikaci, která obsahuje zařízení šablony pro jednoduchou připojené zařízení. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
+| Sample Contoso (Ukázka Contoso)       | Vytvoří aplikaci, která obsahuje zařízení šablony pro jednoduchou připojené zařízení. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
 | Sample Devkits (Ukázka Devkits)       | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s kódem na jedno z těchto zařízení. |
 
 ## <a name="next-steps"></a>Další postup

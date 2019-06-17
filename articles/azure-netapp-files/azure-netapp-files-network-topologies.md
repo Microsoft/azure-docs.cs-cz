@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826461"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Pokyny pro plánování sítě Azure NetApp Files
@@ -95,7 +95,7 @@ Následující diagram znázorňuje prostředí Azure-native:
 
 Základní scénář je vytvořit nebo připojit k Azure NetApp Files svazku z virtuálních počítačů (VM) ve stejné virtuální síti. 2 virtuální sítě ve výše uvedeném diagramu svazku 1 se vytvoří v delegované podsítě a je možné připojit na 1 virtuální počítač ve výchozím nastavení podsítě.
 
-### <a name="vnet-peering"></a>VNET Peering
+### <a name="vnet-peering"></a>Partnerské vztahy virtuálních sítí
 
 Pokud máte další virtuální sítě ve stejné oblasti, které potřebují přístup k prostředkům druhé strany, virtuální sítě můžou být připojené pomocí [VNet peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) povolit zabezpečené připojení přes infrastrukturu Azure. 
 

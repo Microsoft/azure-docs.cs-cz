@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128845"
 ---
 1. Chcete-li zobrazit značky pro prostředek nebo skupinu prostředků existující značky v přehledu nástroje hledá. Pokud jste značky ještě nepoužili, seznam je prázdný.
@@ -46,7 +46,7 @@ Chcete-li hromadně přiřadit značky k více prostředkům:
 
      ![Přiřadit značky](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. Po každý název a hodnotu, vyberte **+**. Až budete hotovi, vyberte **přiřadit**.
+1. Po každý název a hodnotu, vyberte **+** . Až budete hotovi, vyberte **přiřadit**.
 
      ![Vyberte přiřazení](./media/resource-manager-tag-resources/select-assign.png)
 

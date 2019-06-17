@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
 ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66497537"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
@@ -67,7 +67,7 @@ Clustery S2D vyžadují operační systém, který se opravit, aktualizují a za
 
 ## <a name="fslogix-profile-containers"></a>Kontejnery FSLogix profilu
 
-19. listopadu 2018 [společnosti Microsoft získali FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší řadu výzev kontejneru profilu. Klíče mezi nimi jsou:
+19\. listopadu 2018 [společnosti Microsoft získali FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší řadu výzev kontejneru profilu. Klíče mezi nimi jsou:
 
 - **Výkon:** [FSLogix profilu kontejnery](https://fslogix.com/products/profile-containers) vysoce a vyřešit problémy s výkonem, které jste v minulosti blokované uložili do mezipaměti v režimu serveru exchange.
 - **OneDrive:** Bez FSLogix profilu kontejnery OneDrive pro firmy nepodporuje dočasné prostředí RDSH nebo infrastruktury virtuálních klientských počítačů. [OneDrive pro firmy a FSLogix osvědčené postupy](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) popisuje způsob, jakým interagují. Další informace najdete v tématu [použití synchronizačního klienta na virtuální plochy](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).
@@ -77,7 +77,7 @@ Od pořízení začínal Microsoft nahradíte existující řešení profilu už
 
 ## <a name="azure-files-integration-with-azure-active-directory"></a>Integrace soubory Azure pomocí Azure Active Directory
 
-FSLogix profilu kontejnery výkon i funkce využít výhod cloudu. 24. září 2018, Microsoft Azure Files oznámili verze public preview služby [soubory Azure podporuje ověřování Azure Active Directory](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). Adresování administrativní režii i náklady, soubory Azure pomocí ověřování Azure Active Directory je řešení premium pro uživatelské profily v této nové službě virtuální plochy Windows.
+FSLogix profilu kontejnery výkon i funkce využít výhod cloudu. 24\. září 2018, Microsoft Azure Files oznámili verze public preview služby [soubory Azure podporuje ověřování Azure Active Directory](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/). Adresování administrativní režii i náklady, soubory Azure pomocí ověřování Azure Active Directory je řešení premium pro uživatelské profily v této nové službě virtuální plochy Windows.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Osvědčené postupy pro virtuální plochy Windows
 

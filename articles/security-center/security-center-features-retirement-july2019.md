@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
 ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952134"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Vyřazení služby Security Center nabízí (2019 dne)
@@ -42,7 +42,7 @@ Security Center používá agenta Microsoft Monitoring Agent shromažďovat růz
 
 Jsme se vyřazování z provozu řídicí panel události, které se zobrazí po výběru pracovního prostoru:
 
-![Řídicí panel Události][2]
+![Řídicí panel události][2]
 
 ### <a name="events-dashboard---the-new-experience"></a>Řídicí panel události – nové prostředí
 
@@ -110,7 +110,7 @@ Existující data zůstanou k dispozici v Log Analytics řešení zabezpečení 
 
 ### <a name="security-events-map---the-new-experience"></a>Mapy událostí zabezpečení – nové prostředí
 
-Doporučujeme vám používat funkce mapy výstrahy, které jsou integrované do Security Center: **Mapa upozornění zabezpečení (Preview)**. Tato funkce poskytuje optimalizované a funguje ve všech předplatných a přidružených pracovních prostorů. Poskytuje podrobný přehled napříč vaším prostředím a se zaměřuje na jeden pracovní prostor.
+Doporučujeme vám používat funkce mapy výstrahy, které jsou integrované do Security Center: **Mapa upozornění zabezpečení (Preview)** . Tato funkce poskytuje optimalizované a funguje ve všech předplatných a přidružených pracovních prostorů. Poskytuje podrobný přehled napříč vaším prostředím a se zaměřuje na jeden pracovní prostor.
 
 ## Vlastní pravidla výstrah (Preview)<a name="menu_customalerts"></a>
 

@@ -11,10 +11,10 @@ ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512838"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -74,7 +74,7 @@ Následující příklad ukazuje **RelyingParty** prvek *B2C_1A_signup_signin* s
 
 Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cestu uživatele pro aplikace předávající strany. |
 | UserJourneyBehaviors | 0:1 | Rozsah cesty chování uživatelů. |
@@ -110,7 +110,7 @@ Volitelný **RelyingParty** prvek obsahuje následující prvky:
 
 **UserJourneyBehaviors** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah jednotné přihlašování (SSO) chování relace cesty uživatele. |
 | SessionExpiryType |0:1 | Chování ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute`. `Rolling` Hodnotu (výchozí) určuje, že uživatel zůstane přihlášený za předpokladu, uživatel je neustále aktivní v aplikaci. `Absolute` Hodnota značí, že uživatel musí po době určené aplikace relace donutit k životnost. |
@@ -152,7 +152,7 @@ Následující příklad předá parametr s názvem `campaignId` s hodnotou `haw
 
 **ContentDefinitionParameters** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Řetězec, který obsahuje pár klíč-hodnota, která se připojuje k řetězci dotazu identifikátoru definici obsahu zatížení identifikátor URI. |
 
@@ -174,7 +174,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 **Technický profil** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | displayName | 0:1 | Řetězec, který obsahuje název technický profil, který se zobrazí uživatelům. |
 | Popis | 0:1 | Řetězec, který obsahuje popis technický profil, který se zobrazí uživatelům. |
@@ -193,7 +193,7 @@ Další informace najdete v tématu [konfigurace uživatelského rozhraní s dyn
 
 **OutputClaims** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | outputClaim | 0: n | Název typu očekávané deklarace identity v seznamu podporovaných pro zásady, na který se přihlásí předávající straně. Tato deklarace identity slouží jako výstup pro technický profil. |
 

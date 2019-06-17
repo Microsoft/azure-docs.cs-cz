@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606247"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Rozhraní .NET API tabulky Azure Cosmos DB: Stáhněte si a poznámky k verzi
@@ -38,7 +38,7 @@ ms.locfileid: "65606247"
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
 >
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
@@ -86,13 +86,13 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Version | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |22. ledna 2019|01 dubna 2020 |
-| [2.0.0](#2.0.0) |26. září 2018|01 března 2020 |
-| [1.1.3](#1.1.3) |17. července 2018|01. prosince 2019 |
-| [1.1.1](#1.1.1) |26. března 2018|01. prosince 2019 |
-| [1.1.0](#1.1.0) |21. února 2018|01. prosince 2019 |
-| [1.0.0](#1.0.0) |15. listopadu 2017|15. listopadu 2019 |
-| 0.9.0-Preview |11. listopadu 2017 |11. listopadu 2019 |
+| [2.1.0](#2.1.0) |22\. ledna 2019|01 dubna 2020 |
+| [2.0.0](#2.0.0) |26\. září 2018|01 března 2020 |
+| [1.1.3](#1.1.3) |17\. července 2018|01\. prosince 2019 |
+| [1.1.1](#1.1.1) |26\. března 2018|01\. prosince 2019 |
+| [1.1.0](#1.1.0) |21\. února 2018|01\. prosince 2019 |
+| [1.0.0](#1.0.0) |15\. listopadu 2017|15\. listopadu 2019 |
+| 0.9.0-Preview |11\. listopadu 2017 |11\. listopadu 2019 |
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

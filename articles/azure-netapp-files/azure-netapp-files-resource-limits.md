@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: b-juche
 ms.openlocfilehash: b55467d77beb8f97b8e392b72682268ae0407e54
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826374"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
@@ -43,7 +43,7 @@ Následující tabulka popisuje omezení prostředků pro soubory Azure NetApp:
 |  Maximální kvóty z jednoho svazku * přiřazené   |   92 TiB   |    Ne   |
 |  Maximální velikost jednoho svazku *     |    100 TiB    |    Ne       |
 
-* Svazek můžete ručně vytvořit nebo změně velikosti lze uchovávat 92 TiB. Svazek však může růst až 100 TB za Nadlimitní využití scénář. Zobrazit [modelu nákladů pro soubory Azure NetApp](azure-netapp-files-cost-model.md) podrobnosti o překročení kapacity. 
+\* Svazek můžete ručně vytvořit nebo změně velikosti lze uchovávat 92 TiB. Svazek však může růst až 100 TB za Nadlimitní využití scénář. Zobrazit [modelu nákladů pro soubory Azure NetApp](azure-netapp-files-cost-model.md) podrobnosti o překročení kapacity. 
 
 ## <a name="request-limit-increase"></a>Požádat o zvýšení limitu 
 
@@ -54,7 +54,7 @@ Z plochy Azure portal navigace:
 1. Klikněte na tlačítko **Nápověda a podpora**.
 2. Klikněte na tlačítko **+ nová žádost o podporu**.
 3. Na kartě základy zadejte následující informace: 
-    1. Typ problému: Vyberte **limity služby a předplatného (kvóty)**.
+    1. Typ problému: Vyberte **limity služby a předplatného (kvóty)** .
     2. Předplatná: Vyberte předplatné pro prostředek, který je třeba zvýšit kvótu.
     3. Typ kvóty: Vyberte **úložiště: Služba soubory Azure NetApp omezuje**.
     4. Klikněte na tlačítko **Další: Řešení**.

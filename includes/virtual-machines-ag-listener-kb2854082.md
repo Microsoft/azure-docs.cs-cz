@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165364"
 ---
 Dále, pokud všechny servery v clusteru se systémem Windows Server 2008 R2 nebo Windows Server 2012, musíte ověřit, že oprava hotfix [KB2854082](https://support.microsoft.com/kb/2854082) je nainstalovaný na všech na místních serverech nebo virtuálních počítačích Azure, které jsou součástí clusteru. Libovolný server nebo virtuální počítač, který je v clusteru, ale není ve skupině dostupnosti musí být také tato oprava hotfix nainstalovaná.

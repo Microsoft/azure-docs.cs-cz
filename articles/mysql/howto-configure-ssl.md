@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: eb405549ba2d1c97b16f5b465abf0dc54de3b80d
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000918"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL
@@ -56,7 +56,7 @@ mysql> status
 ```
 Potvrďte, že připojení je zašifrován kontrolou výstupu by se zobrazit:  **SSL: Šifrování používá je AES256 SHA** 
 
-## <a name="sample-code"></a>Ukázkový kód
+## <a name="sample-code"></a>Ukázka kódu
 Pokud chcete navázat zabezpečené připojení ke službě Azure Database for MySQL přes SSL z vaší aplikace, podívejte se na následující ukázky kódu:
 
 ### <a name="php"></a>PHP

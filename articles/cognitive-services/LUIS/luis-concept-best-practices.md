@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
 ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60812908"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
@@ -59,7 +59,7 @@ Vezměte v úvahu následující příklad projevy:
 
 "Rezervovat let" a "Rezervovat hotel" použít stejné slovník "knihy". Tento formát je stejné, takže by mělo být stejné záměr s jiná slova letů a hotelů jako extrahované entity. 
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Principy záměry aplikace LUIS](luis-concept-intent.md)
 * Kurz: [Sestavení aplikace LUIS k určení záměry uživatele](luis-quickstart-intents-only.md)
 * Postup: [Přidání záměrů k určení uživatelů záměr projevů](luis-how-to-add-intents.md)
@@ -73,7 +73,7 @@ Udržovat samostatnou sadu projevy, které se nepoužívá jako [příklad proje
 
 Vývojáři by měli mít tři sady data. První je příklad projevy pro vytváření modelu. Druhá je pro testování modelu v koncovém bodě. Třetí je nevidomé testovací data použít v [batch testování](luis-how-to-batch-test.md). Tento poslední sady není používán školení aplikace ani odeslané pro koncový bod.  
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Vytváření cyklus aplikace LUIS](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Přidat frázi seznamy a vzory ve vyšším počtu iterací
@@ -93,7 +93,7 @@ Osvědčeným postupem je otestovat prostřednictvím [koncový bod](luis-get-st
 
 Nepřidávejte všechna slova pro slovník od seznamu frázi není přesná shoda. 
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Seznam frázi je součástí aplikace LUIS](luis-concept-feature.md)
 * Postupy: [Použijte frázi v seznamech boost signál seznam slov](luis-how-to-add-features.md)
 
@@ -103,7 +103,7 @@ Projevy uživatelů z koncového bodu, velmi podobné k sobě navzájem, může 
 
 Použití vzoru [volitelné syntaxe](luis-concept-patterns.md) pro interpunkční znaménka, může být ignorována interpunkce. Použití [explicitní seznam](luis-concept-patterns.md#explicit-lists) jako kompenzaci za pattern.any problémů. 
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Vzory zvyšte přesnost předpovědi](luis-concept-patterns.md)
 * Postupy: [Jak přidat vzorce, a zvyšte přesnost předpovědi](luis-how-to-model-intent-pattern.md)
 
@@ -117,14 +117,14 @@ Pokud máte záměru s 100 příklad projevy a záměru s 20 příklad projevy, 
 
 Tato záměrem je použití náhrady záměr, uvedené všechno mimo vaši aplikaci. Přidejte jeden příklad utterance záměru pro každých 10 příklad projevy ve zbývající části aplikace LUIS None.
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Porozumění projevy vhodné pro aplikace LUIS](luis-concept-utterance.md)
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Využijte funkci navrhnout pro aktivní učení
 
 Použití [aktivně učit](luis-how-to-review-endpoint-utterances.md)společnosti **zkontrolujte koncový bod projevy** v pravidelných intervalech, nepřidávat další příklad projevy na záměry. Protože aplikace neustále přijímá projevy koncový bod, je tento seznam rozrůstá a změna.
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Koncepty pro povolení aktivně učit kontrolou projevy koncového bodu](luis-concept-review-endpoint-utterances.md)
 * Kurz: [Kurz: Oprava jisti predikcí kontrolou projevy koncového bodu](luis-tutorial-review-endpoint-utterances.md)
 * Postupy: [Kontrola projevy koncový bod portálu služby LUIS](luis-how-to-review-endpoint-utterances.md)
@@ -173,7 +173,7 @@ Přidání projevů 10 až 15 před trénování a publikování. Který můžet
 
 Každém vývojovém cyklu by měl být v rámci nového [verze](luis-concept-version.md), naklonované z existující verze. Služba LUIS nemá žádné omezení pro verze. Název verze se používá jako součást rozhraní API route, takže je důležité vybrat znaků povolený v adrese URL, stejně jako uchování v počtu 10 znaků pro verzi. Vývoj strategie název verze zachovat vaše verze uspořádané. 
 
-Další informace najdete tady:
+Další informace:
 * Koncept: [Pochopit, jak a kdy používat verzi služby LUIS](luis-concept-version.md)
 * Postupy: [Verze můžete upravit a testování bez dopadu na pracovní nebo produkční aplikace](luis-how-to-manage-versions.md)
 

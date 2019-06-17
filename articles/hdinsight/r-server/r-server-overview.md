@@ -8,18 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 1ea3a3efc26de30925d23ab41c377c6db30057eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d24686a094c524c5ce913eee4b711daf1c60100d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066474"
+ms.locfileid: "67130624"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML v Azure HDInsight
 
 Microsoft Machine Learning Server je dostupná jako možnost nasazení, při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tato možnost se nazývá **služby ML**. Tato funkce poskytuje datovým vědcům, statistikům a programátorům v R přístup na vyžádání ke škálovatelným, distribuovaným analytickým na HDInsight metodám služby.
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 Služby ML v HDInsight poskytuje nejnovější funkce pro analýzy založené na jazyce R na datových sadách prakticky jakékoli velikosti, načteno do úložiště objektů Blob v Azure nebo Data Lake. Vzhledem k tomu, že cluster se službou ML Services je založená na open-source systému R, můžete využít aplikace založené na jazyce R, které vytváříte, některé balíčky R open source 8000 +. Rutiny v ScaleR balíček analýzy velkých objemů dat společnosti Microsoft jsou k dispozici.
 

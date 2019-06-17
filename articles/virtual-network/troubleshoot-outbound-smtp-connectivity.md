@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: 385163d791bff0c02a05ee1b27afd82c3afd0ac3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61401915"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Řešení potíží s odchozí SMTP připojení v Azure
@@ -36,7 +36,7 @@ Pro uživatele Azure pro smlouvu Enterprise se nezměnila technické schopnost p
 ## <a name="pay-as-you-go"></a>Průběžné platby
 Pokud jste zaregistrovali před 15. listopadu 2017 s průběžnými platbami nebo předplatné Microsoft Partner Network nabízí, nebude žádná změna v technických možnost vyzkoušet doručení odchozích e-mailů. Můžete i nadále mít možnost vyzkoušet odchozí doručování e-mailů z virtuálních počítačů Azure v rámci těchto předplatných přímo poskytovatelům externího e-mailu bez jakýchkoli omezení platformy Azure. Znovu není zaručeno, že přijetí příchozích e-mailů od libovolného daného uživatele poskytovateli e-mailu a uživatelé budou muset pracovat přímo s poskytovateli e-mailu a opravte jakékoli doručování zpráv nebo problémy, které se týkají konkrétní poskytovatele s filtrováním nevyžádané pošty.
 
-Pro předplatné s průběžnými platbami nebo Microsoft Partner Network, které byly vytvořeny po 15. listopadu 2017 budou mít technická omezení, které blokovat e-mailu, která je odeslána přímo z virtuálních počítačů v rámci těchto předplatných. Pokud chcete mít možnost odesílat e-maily přímo poskytovatelům externího e-mailu (bez použití ověřeného serveru SMTP) z virtuálních počítačů Azure, můžete vytvořit žádost o odebrání tohoto omezení. Požadavky, bude zkontrolován a schválen na základě vlastního uvážení Microsoftu a budete mít udělena pouze po provedení dalších kontrol v souvislosti s možnými podvody. Pokud chcete vytvořit žádost, otevřete případ podpory s použitím následující typ problému: **Technické** > **virtuální sítě** > **připojení** > **nemůžou odesílat e-maily (SMTP/Port 25)**. Ujistěte se, že přidáte podrobnosti, proč k odesílání e-mailu přímo poskytovatelům e-mailu místo použití ověřeného relay má vaše nasazení.
+Pro předplatné s průběžnými platbami nebo Microsoft Partner Network, které byly vytvořeny po 15. listopadu 2017 budou mít technická omezení, které blokovat e-mailu, která je odeslána přímo z virtuálních počítačů v rámci těchto předplatných. Pokud chcete mít možnost odesílat e-maily přímo poskytovatelům externího e-mailu (bez použití ověřeného serveru SMTP) z virtuálních počítačů Azure, můžete vytvořit žádost o odebrání tohoto omezení. Požadavky, bude zkontrolován a schválen na základě vlastního uvážení Microsoftu a budete mít udělena pouze po provedení dalších kontrol v souvislosti s možnými podvody. Pokud chcete vytvořit žádost, otevřete případ podpory s použitím následující typ problému: **Technické** > **virtuální sítě** > **připojení** > **nemůžou odesílat e-maily (SMTP/Port 25)** . Ujistěte se, že přidáte podrobnosti, proč k odesílání e-mailu přímo poskytovatelům e-mailu místo použití ověřeného relay má vaše nasazení.
 
 Když předplatné s průběžnými platbami nebo Microsoft Partner Network virtuálních počítačů v rámci tohoto předplatného pouze se má vyloučit do budoucna.
 
@@ -52,6 +52,6 @@ Pokud používáte tyto typy předplatného, už vám doporučujeme využívat s
 
 Pokud používáte prostředky Azure prostřednictvím zprostředkovatele kryptografických služeb, budete moct vytvořit lístek podpory prostřednictvím podle vašeho výběru zprostředkovatele kryptografických služeb a můžete požádat o poskytovateli CSP vaším jménem vytvářet s případem odblokovat, pokud se nedá použít zabezpečeného serveru SMTP.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

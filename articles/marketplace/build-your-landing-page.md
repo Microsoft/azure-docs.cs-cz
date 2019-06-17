@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
 ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935611"
 ---
 # <a name="build-your-landing-page"></a>Cílová stránka sestavení
@@ -24,7 +24,7 @@ Začněte určením svých cílů. Pro svoje řešení zvolte cílový zákazní
 *   Teď získáte řešení
 
 Cílová stránka může odkazovat napříč více marketingové strategie. Můžete použít následující marketingové strategie: 
-*   Události
+*   Duration
 *   Webcasty
 *   Sociální média
 *   Dokumenty white paper

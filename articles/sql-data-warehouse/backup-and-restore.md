@@ -11,10 +11,10 @@ ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236570"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
@@ -27,7 +27,7 @@ A *datového skladu snímku* vytvoří bod obnovení, kterou můžete využít k
 
 A *datového skladu obnovení* je nový datový sklad, který je vytvořen z bodu obnovení pro existující nebo odstraněný datový sklad. Obnovení datového skladu je nedílnou součást každé strategie obchodní kontinuity podnikových procesů a po havárii pro obnovení, protože jej znovu vytvoří data po náhodným poškozením nebo odstranění. Datový sklad je také výkonný mechanismus pro vytvoření kopie vašeho datového skladu pro účely testovacím nebo vývojovém.  SQL Data Warehouse obnovení sazby se můžou lišit v závislosti na velikosti databáze a umístění zdrojového a cílového datového skladu. V průměru ve stejné oblasti obnovení sazby obvykle trvá přibližně 20 minut. 
 
-## <a name="automatic-restore-points"></a>Automatické body obnovení
+## <a name="automatic-restore-points"></a>Body obnovení automaticky
 
 Snímky jsou integrované funkce služby, která vytvoří body obnovení. Není potřeba aktivovat tuto funkci. Automatické body obnovení aktuálně nelze odstranit uživatele, kde se služba používá, obnovení odkazuje na Udržovat smlouvy o úrovni služeb pro obnovení.
 

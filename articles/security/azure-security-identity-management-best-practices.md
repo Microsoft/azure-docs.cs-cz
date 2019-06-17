@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2b57ec7727e8f5b648bcb97e5fae26c63724411c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153245"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127215"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure správu identit a řízení přístupu osvědčené postupy zabezpečení
 V tomto článku se podíváme na kolekci správy identit Azure a osvědčené postupy pro zabezpečení řízení přístupu. Tyto osvědčené postupy, které jsou odvozeny z našich zkušenostech s [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) a prostředí zákazníků, jako je sami.
@@ -113,7 +113,7 @@ Organizace, které pro ně nevytvoříte společnou identitu pro navázání jed
 
 Uživatelé můžou přístup k prostředkům vaší organizace pomocí celé řady zařízení a aplikací z libovolného místa. Jako správce IT budete chtít Ujistěte se, že tato zařízení splňují vaše standardy zabezpečení a dodržování předpisů. Právě se zaměříte na to, kdo má přístup k prostředku dostatečná už není.
 
-Chcete-li zůstatek, zabezpečení a produktivitu, rozmyslete si, jak prostředek přistupuje, než provedete rozhodnutí o řízení přístupu. Tento požadavek můžete vyřešit pomocí podmíněného přístupu služby Azure AD. S podmíněným přístupem můžete provádět automatizované rozhodovat o přístupu na základě podmínek pro přístup k vašim cloudovým aplikacím.
+Chcete-li zůstatek, zabezpečení a produktivitu, rozmyslete si, jak prostředek přistupuje, než provedete rozhodnutí o řízení přístupu. Pomocí podmíněného přístupu Azure AD abyste mohli vyřešit tento požadavek. S podmíněným přístupem můžete provádět automatizované rozhodovat o přístupu na základě podmínek pro přístup k vašim cloudovým aplikacím.
 
 **Osvědčený postup**: Správa a řízení přístupu k firemním prostředkům.  
 **Podrobnosti o**: Konfigurace služby Azure AD [podmíněného přístupu](../active-directory/active-directory-conditional-access-azure-portal.md) na základě skupin, umístění a "choulostivosti" aplikace pro aplikace SaaS a aplikace Azure AD – připojené.

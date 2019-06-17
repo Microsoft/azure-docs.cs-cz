@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727141"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps podporované kategorie
@@ -45,7 +45,7 @@ Při provádění [vyhledávání kategorie](https://docs.microsoft.com/rest/api
 | ŠKOLE\_UNIVERSITY | nižší škole/komunitní škole, vysoké školy, Fakultě, univerzitu prep školu, university |
 | KOMERČNÍ\_SESTAVENÍ | vytváření sestavení park ústředí, obchodní Office |
 | SPOLEČENSTVÍ\_SYSTEM CENTER | Community center. |
-| FIRMA | daňové Electronics počítače datové služby, technologie veřejného zdraví, poradenství, zvířat chránila, letecká společnost, pronájem zařízení, služby, doručování e-mailu/balíčku a přístavů, řádky Service bus, oprava domácí spotřebiče, čištění služby, oem, výroba služby, ropy, plynu přirozeného, právní služby, konstrukce, telekomunikace, přenosu, automobilů výroby, chemikálií, mortuaries pohřební služby, most tunelového propojení operations, automobile, strojírenství, služby, investice poradci reklamu nebo marketingových, přesunutí úložiště, úspory instituce, pojištění, počítačový software pharmaceuticals společnosti svatební služeb, zemědělská technologie, nemovitosti, taxi, limousine shuttle service, Service bus pronajme další směrování, dolování, publikování technologie, telefonní kabel, distribuce import/export, společnosti, o, uhlí mine(s), estate(s), brewery, gold mine(s) |
+| SPOLEČNOSTI | daňové Electronics počítače datové služby, technologie veřejného zdraví, poradenství, zvířat chránila, letecká společnost, pronájem zařízení, služby, doručování e-mailu/balíčku a přístavů, řádky Service bus, oprava domácí spotřebiče, čištění služby, oem, výroba služby, ropy, plynu přirozeného, právní služby, konstrukce, telekomunikace, přenosu, automobilů výroby, chemikálií, mortuaries pohřební služby, most tunelového propojení operations, automobile, strojírenství, služby, investice poradci reklamu nebo marketingových, přesunutí úložiště, úspory instituce, pojištění, počítačový software pharmaceuticals společnosti svatební služeb, zemědělská technologie, nemovitosti, taxi, limousine shuttle service, Service bus pronajme další směrování, dolování, publikování technologie, telefonní kabel, distribuce import/export, společnosti, o, uhlí mine(s), estate(s), brewery, gold mine(s) |
 | COURTHOUSE | courthouse |
 | KULTURNÍ\_SYSTEM CENTER | jazykové verze System center |
 | ZUBNÍ LÉKAŘ | zubní lékař |

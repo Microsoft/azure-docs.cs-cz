@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 2cce7203d23d5de77200fdf75ab31042d9608352
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866378"
 ---
 # <a name="supported-languages"></a>Podporované jazyky
@@ -32,11 +32,11 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky v
 | ES certifikační autority | Katalánština | IT-IT | Italština (Itálie)  |
 | da-DK | Dánština (Dánsko) | ja-JP | Japonština (Japonsko) |
 | de-DE | Němčina (Německo) |ko-KR | Korejština (Jižní Korea) |
-| cs AU | Angličtina (Austrálie) |nb-NO | Norština (Bokmal) (Norsko)  |
-| cs CA | Angličtina (Kanada) | NL-NL | nizozemština (Nizozemsko)   |
+| cs AU | angličtina (Austrálie) |nb-NO | Norština (Bokmal) (Norsko)  |
+| cs CA | angličtina (Kanada) | NL-NL | Nizozemština (Nizozemsko)   |
 | en-GB | Angličtina (Spojené království) |pl-PL | Polština (Polsko) |
 | en-IN | English (India) | pt-BR | Portugalština (Brazílie)  |
-| cs NZ | Angličtina (Nový Zéland) |pt-PT | Portugalština (Portugalsko)  |
+| cs NZ | angličtina (Nový Zéland) |pt-PT | Portugalština (Portugalsko)  |
 | en-US | Angličtina (Spojené státy) | ru-RU | Ruština (Rusko) |
 | es-ES | Španělština (Španělsko) | sv-SE | Švédština (Švédsko) |
 | es-MX | Španělština (Mexiko) |zh-CN | Čínština (Mandarínština, zjednodušená čínština)  |

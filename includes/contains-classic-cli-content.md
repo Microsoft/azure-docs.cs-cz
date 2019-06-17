@@ -4,18 +4,17 @@ description: zahrnout soubor
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 06/12/2018
+ms.date: 06/05/2019
 ms.topic: include
 ms.custom: include file
-ms.openlocfilehash: 6f4f8882952dbc4da64c3f7d601be59abd49601b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b833ae69c0edf3e85bebbb5b78ea514a0c81e5c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122162"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814835"
 ---
 > [!IMPORTANT]
 > Pro obsah v tomto článku se vyžaduje Azure Classic CLI. Jedná se o starší verzi Azure CLI, která by se měla používat pouze s modelem nasazení Azure Classic.
 >
-> Rozhraní Classic CLI je možné nainstalovat vedle moderního Azure CLI. Pro všechny nové skripty a nasazení však doporučujeme používat Azure CLI.
-> Informace o instalaci rozhraní Classic CLI najdete v tématu [Instalace Azure Classic CLI](/cli/azure/install-classic-cli) a informace o instalaci aktuálního rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
+> Pokud chcete nainstalovat rozhraní příkazového řádku classic, naleznete v tématu [instalace Azure classic CLI](/cli/azure/install-classic-cli) a instalaci aktuální příkazového řádku Azure pro nasazení Azure Resource Manageru najdete v tématu [instalace Azure CLI](/cli/azure/install-azure-cli).

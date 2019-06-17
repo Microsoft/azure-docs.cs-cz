@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 9b2db8f913f2eecb4f320b6edde3c1d5a422691f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 8faa524d7d88f09835d26439b772b8d57c84cc73
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062126"
+ms.locfileid: "67122240"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -82,7 +82,7 @@ Kromě toho jsou podporovány některé kontejnery ve službě Cognitive Service
 Kontejnery služby Azure Cognitive Services jsou veřejně dostupné prostřednictvím předplatného Azure a imagí kontejnerů Dockeru můžete načíst z Microsoft Container Registry nebo Docker Hubu. Můžete použít [operace docker pull](https://docs.docker.com/engine/reference/commandline/pull/) příkaz Stáhnout image kontejneru z registru odpovídající.
 
 > [!IMPORTANT]
-> V současné době musíte dokončit proces registrace pro přístup k následujícím kontejnery, ve kterých vyplňují a odesílají dotazník otázek o vás, vaše společnost a případ použití, pro který chcete implementovat kontejnery. Když jste udělili přístup a zadat přihlašovací údaje, můžete pak načítání imagí kontejneru pro rozpoznávání tváře a rozpoznat Text kontejnerů v privátním registru kontejneru hostovaná služba Azure Container Registry.
+> V současné době musíte dokončit proces registrace pro přístup k následujícím kontejnery, ve kterých vyplňují a odesílají dotazník otázek o vás, vaše společnost a případ použití, pro který chcete implementovat kontejnery. Jakmile jste udělili přístup a zadat přihlašovací údaje, můžete pak načítat Image kontejneru z registru kontejneru soukromého hostované ve službě Azure Container Registry.
 > * [Dectector anomálií](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Rozpoznávání tváře](Face/face-how-to-install-containers.md)
 > * [Nástroj pro rozpoznávání formuláře](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)

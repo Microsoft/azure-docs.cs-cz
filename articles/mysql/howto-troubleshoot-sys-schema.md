@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61422292"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak používat sys_schema pro výkon ladění a údržby databáze ve službě Azure Database for MySQL
@@ -24,7 +24,7 @@ Existují 52 zobrazení v sys_schema a každé zobrazení má jednu z následuj�
 - Host_summary nebo vstupně-výstupní operace: Vstupně-výstupní operace související s latencí.
 - InnoDB: Stav InnoDB vyrovnávací paměti a zámky.
 - Paměť: Využití paměti hostitele a uživatelé.
-- Schéma: Schéma související informace, například automatické zvyšování čísla indexů, atd.
+- Schema: Schéma související informace, například automatické zvyšování čísla indexů, atd.
 - příkaz: Informace o příkazech SQL; může být příkaz, který je v skenování celé tabulky nebo dlouhé době zpracování dotazu.
 - Uživatel: Prostředky spotřebované a seskupených podle uživatele. Příklady souborů vstupně-výstupních operací, připojení a paměti.
 - Počkej: Počkejte, než událostí seskupených podle hostitele nebo uživatele.

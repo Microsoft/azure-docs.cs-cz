@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
 ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62098858"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup serveru
@@ -291,7 +291,7 @@ Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure
 * \*.Microsoft.com
 * \*.WindowsAzure.com
 * \*.microsoftonline.com
-* \*.windows.net
+* \*. windows.net
 
 Po připojení k Azure se obnovila na počítač serveru Azure Backup, operace, které lze provést Určuje stav předplatného Azure. Výše uvedené tabulce obsahuje podrobnosti o operacích povolená, když je počítač se "připojeno".
 

@@ -9,10 +9,10 @@ ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156764"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
@@ -40,7 +40,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 2. Vyberte **Průzkumník serveru** a přihlaste se ke svému účtu Azure. Abyste mohli vytvářet prostředky webu, musíte být přihlášení.
 
 3. V sadě Visual Studio klikněte pravým tlačítkem na řešení sady Visual Studio, přejděte na **Přidat** a klikněte na **Nový projekt**.
-4. Rozbalte položku **Visual C#**, vyberte **Web** a klikněte na **Webová aplikace ASP.NET**.
+4. Rozbalte položku **Visual C#** , vyberte **Web** a klikněte na **Webová aplikace ASP.NET**.
 
 5. Do pole **Název** zadejte **AppBackend** a pak vyberte **OK**.
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61424699"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v dotazech protokolu Azure Monitor
@@ -51,9 +51,9 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 Operátor       |Popis                         |Malá a velká písmena|Příklad (vrací `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Rovná se                              |Ano           |`"aBc" == "aBc"`
+`==`           |Je rovno                              |Ano           |`"aBc" == "aBc"`
 `!=`           |Nerovná se                          |Ano           |`"abc" != "ABC"`
-`=~`           |Rovná se                              |Ne            |`"abc" =~ "ABC"`
+`=~`           |Je rovno                              |Ne            |`"abc" =~ "ABC"`
 `!~`           |Nerovná se                          |Ne            |`"aBc" !~ "xyz"`
 `has`          |Pravé straně je celý výraz v levé straně |Ne|`"North America" has "america"`
 `!has`         |Pravé straně není úplný výraz v levé straně       |Ne            |`"North America" !has "amer"` 

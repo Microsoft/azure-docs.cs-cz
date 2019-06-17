@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 77b9b20f99f00ef87c4907c2890cb3a21d20ec75
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62096262"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Upgradovat konfiguraci clusteru v Azure 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infra
 Clustery Azure je možné nakonfigurovat pomocí šablony JSON Resource Manageru. Další informace o různých nastaveních najdete v tématu [nastavení konfigurace pro clustery](service-fabric-cluster-fabric-settings.md). Například následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části pomocí Průzkumníka prostředků Azure.
 
 1. Přejděte na https://resources.azure.com.
-2. Přejděte ke svému předplatnému tak, že rozbalíte **předplatná** -> **\<vašeho předplatného >** -> **resourceGroups**  ->   **\<Vaše skupina prostředků >** -> **poskytovatelé** -> **Microsoft.ServiceFabric**  ->  **clustery** -> **\<si název clusteru >**
+2. Přejděte ke svému předplatnému tak, že rozbalíte **předplatná** ->  **\<vašeho předplatného >**  -> **resourceGroups**  ->   **\<Vaše skupina prostředků >**  -> **poskytovatelé** -> **Microsoft.ServiceFabric**  ->  **clustery** ->  **\<si název clusteru >**
 3. V pravém horním rohu, vyberte **čtení a zápisu.**
 4. Vyberte **upravit** a aktualizovat `fabricSettings` elementu JSON a přidejte nový prvek:
 

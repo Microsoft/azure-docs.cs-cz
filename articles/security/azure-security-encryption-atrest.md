@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/07/2019
 ms.author: barclayn
 ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596378"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data šifrování neaktivních
@@ -258,14 +258,14 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 |                                  | **Na serveru pomocí klíče spravované službou**     | **Na serveru pomocí spravované zákazníkem ve službě Key Vault**             | **Client-Side klienta spravovat pomocí**      |
 | **AI a Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Ano                | -                  | -                  |
-| Azure Machine Learning Service   | Ano                | -                  | -                  |
+| Služba Azure Machine Learning   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Preview, RSA 2048-bit | -               |
 | Power BI                         | Ano                | -                  | -                  |
 | **Analýzy**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | -                  | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
-| Azure Data Catalog               | Ano                | -                  | -                  |
+| Katalog dat Azure               | Ano                | -                  | -                  |
 | HDInsight                        | Ano                | Ve verzi Preview pro Apache Kafka, všechny délky RSA | -                  |
 | Azure Data Factory               | Ano                | -                  | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048 bitů  | -                  |
@@ -287,8 +287,8 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | Azure Active Directory Domain Services | Ano          | Ano, RSA 2048 bitů  | -                  |
 | **Integrace**                  |                    |                    |                    |
 | Service Bus                      | Ano                | -                  | Ano                |
-| Mřížka událostí                       | Ano                | -                  | -                  |
-| API management                   | Ano                | -                  | -                  |
+| Event Grid                       | Ano                | -                  | -                  |
+| API Management                   | Ano                | -                  | -                  |
 | **IoT Services**                 |                    |                    |                    |
 | IoT Hub                          | -                  | -                  | Ano                |
 | **Řízení a zásad správného řízení**    |                    |                    |                    |
@@ -296,7 +296,7 @@ Podpora pro šifrování serveru aktuálně poskytuje prostřednictvím funkce S
 | **Media**                        |                    |                    |                    |
 | Media Services                   | Ano                | -                  | Ano                |
 | **Storage**                      |                    |                    |                    |
-| Úložiště objektů blob                     | Ano                | Ano, RSA 2048 bitů  | Ano                |
+| Blob Storage                     | Ano                | Ano, RSA 2048 bitů  | Ano                |
 | Disk Storage                     | Ano                | -                  | -                  |
 | Spravované diskové úložiště             | Ano                | -                  | -                  |
 | File Storage                     | Ano                | Ano, RSA 2048 bitů  | -                  |

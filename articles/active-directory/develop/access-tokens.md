@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1e47939913435b5b7040c0e6d01b1208d709d3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 355e61fdfd9847e54a4bd13ac3b0f2d416c05812
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111962"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft identity platform přístupové tokeny
 
@@ -74,7 +74,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 
 ### <a name="header-claims"></a>Deklarace identity záhlaví
 
-|Deklarace identity | Formát | Popis |
+|Deklarovat | Formát | Popis |
 |--------|--------|-------------|
 | `typ` | String – vždy tokenů JWT"" | Označuje, že token je token JWT.|
 | `nonce` | String | Jedinečný identifikátor sloužící k ochraně před útoky opětovného přehrání tokenu. Váš prostředek můžete zaznamenat tato hodnota k ochraně proti riziko. |
@@ -84,7 +84,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 
 ### <a name="payload-claims"></a>Datová část deklarace identity
 
-| Deklarace identity | Formát | Popis |
+| Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 | `aud` | Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V přístupových tokenech je cílová skupina ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
 | `iss` | Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud je token vydaný v2.0 token (najdete v článku `ver` deklarace identity), identifikátor URI, skončí za `/v2.0`. Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
@@ -119,7 +119,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 
 Následující deklarace identity se zahrnou v1.0 tokeny, pokud je k dispozici, ale nejsou součástí v2.0 tokeny ve výchozím nastavení. Pokud používáte verze 2.0 a potřebu jeden tyto deklarace, o ně požádat pomocí [nepovinných deklarací identity](active-directory-optional-claims.md).
 
-| Deklarace identity | Formát | Popis |
+| Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 | `ipaddr`| String | Uživatel se ověřil z IP adresy |
 | `onprem_sid`| Řetězec v [formát čísel SID](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | V případech, kde má uživatel místní ověřování poskytuje tato deklarace identifikátoru SID. Můžete použít `onprem_sid` pro ověření ve starší verzi aplikace.|
@@ -141,7 +141,7 @@ Microsoft identity můžete ověřovat různými způsoby, které můžou být r
 | `rsa` | Ověřování bylo založeno na důkaz klíč RSA, například s [aplikaci Microsoft Authenticator](https://aka.ms/AA2kvvu). Jedná se o Pokud ověřovací token JWT podepsaný svým držitelem provedenou službou vlastněných X509 certifikátu. |
 | `otp` | Jednorázové heslo pomocí e-mailem nebo textovou zprávu. |
 | `fed` | Kontrolní výraz federovaného ověřování (například token JWT nebo SAML) byla použita. |
-| `wia` | Integrované ověřování systému Windows |
+| `wia` | Integrované ověřování Windows |
 | `mfa` | Ověřování službou Multi-Factor Authentication byl použit. Když existuje jiné metody ověřování budou také zahrnuty. |
 | `ngcmfa` | Ekvivalentní `mfa`, která slouží k zřizování určité typy pokročilé přihlašovacích údajů. |
 | `wiaormfa`| Uživatel používá Windows nebo pověření vícefaktorové ověřování k ověření. |

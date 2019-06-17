@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482498"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682490"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>K připojení a správě zařízení StorSimple pomocí StorSimple Snapshot Manageru
 ## <a name="overview"></a>Přehled
@@ -33,7 +33,7 @@ V závislosti na vaší **zobrazení** výběr **výsledky** podokně se zobraz�
 
 | Sloupec výsledků | Popis |
 |:--- |:--- |
-| Name |Název zařízení podle konfigurace v portálu Azure classic |
+| Název |Název zařízení podle konfigurace v portálu Azure classic |
 | Model |Číslo modelu zařízení |
 | Version |Verze softwaru nainstalovaného na zařízení |
 | Status |Určuje, zda je k dispozici zařízení |
@@ -140,7 +140,7 @@ Následující postup použijte k zobrazení podrobností o zařízení StorSimp
 * Klikněte na tlačítko **resynchronizace** synchronizovat zařízení.
 * Klikněte na tlačítko **OK** nebo **zrušit** zavřete dialogové okno.
   
-  ![Detaily zařízení](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
+  ![Podrobnosti o zařízení](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
 ## <a name="refresh-an-individual-device"></a>Aktualizace k jednotlivým zařízením
 Pomocí následujícího postupu opakovanou synchronizaci jednotlivých pomocí StorSimple Snapshot Manageru zařízení StorSimple.

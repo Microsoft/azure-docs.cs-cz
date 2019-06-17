@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
 ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64914961"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: Potíže s agentů nebo rozšíření
@@ -26,19 +26,19 @@ Tento článek popisuje postup řešení potíží, které vám může pomoct vy
 
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - agent virtuálního počítače moci komunikovat se službou Azure Backup
 
-**Kód chyby:**: UserErrorGuestAgentStatusUnavailable <br>
+**Kód chyby:** : UserErrorGuestAgentStatusUnavailable <br>
 **Chybová zpráva**: Agent virtuálního počítače moci komunikovat se službou Azure Backup<br>
 
 Po registraci a plánování virtuálních počítačů za službu Backup zahájí zálohování úlohy tím, že komunikuje s agentem virtuálního počítače k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Když se aktivuje snímku, zálohování se nemusí podařit. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:<br>
-**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**1. příčina: [Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **2. příčina: [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. důvod: [Nelze načíst stav snímku, nebo nelze pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**3. důvod: [Nelze načíst stav snímku, nebo nelze pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
 **Příčina 4: [Rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
 **Příčina 5: [Virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - nejde komunikovat s agentem virtuálního počítače kvůli stavu snímku
 
-**Kód chyby:**: GuestAgentSnapshotTaskStatusError<br>
+**Kód chyby:** : GuestAgentSnapshotTaskStatusError<br>
 **Chybová zpráva**: Nejde komunikovat s agentem virtuálního počítače kvůli stavu snímku <br>
 
 Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
@@ -48,7 +48,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - dosáhl maximálního limitu kolekcí bodů obnovení
 
-**Kód chyby:**: UserErrorRpCollectionLimitReached <br>
+**Kód chyby:** : UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: Bylo dosaženo maximálního limitu kolekcí bodů obnovení. <br>
 * Tento problém může dojít, pokud zámek ve skupině prostředků. bod obnovení brání automatickému čištění bod obnovení.
 * Tento problém může také dojít, pokud se aktivují více záloh za den. Aktuálně doporučujeme pouze jedna záloha za den pro 1-5 dní podle uchovávání dat nakonfigurovaných snímku se uchovají body okamžitá obnova a pouze 18 rychlé RPs můžou být spojené s virtuálním počítači v daném okamžiku. <br>
@@ -63,14 +63,14 @@ Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků v
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured – Backup nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů
 
-**Kód chyby:**: UserErrorKeyvaultPermissionsNotConfigured <br>
+**Kód chyby:** : UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. <br>
 
 Záložní operace úspěšná na šifrovaných virtuálních počítačů musí mít oprávnění pro přístup k trezoru klíčů. To lze provést pomocí [webu Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo prostřednictvím [Powershellu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - operace snímku nebyla úspěšná kvůli bez připojení k síti na virtuálním počítači
 
-**Kód chyby:**: ExtensionSnapshotFailedNoNetwork<br>
+**Kód chyby:** : ExtensionSnapshotFailedNoNetwork<br>
 **Chybová zpráva**: Operace vytvoření snímku se nepovedla, protože virtuální počítač není připojený k síti<br>
 
 Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:    
@@ -80,7 +80,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - operace rozšíření VMSnapshot selhala
 
-**Kód chyby:**: ExtentionOperationFailedForManagedDisks <br>
+**Kód chyby:** : ExtentionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: Operace rozšíření VMSnapshot selhala<br>
 
 Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
@@ -91,7 +91,7 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed / BackUpOperationFailedV2 – Zálohování selhalo s interní chybou
 
-**Kód chyby:**: BackUpOperationFailed / BackUpOperationFailedV2 <br>
+**Kód chyby:** : BackUpOperationFailed / BackUpOperationFailedV2 <br>
 **Chybová zpráva**: Zálohování selhalo s interní chybou – Zkuste prosím tuto operaci za pár minut <br>
 
 Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
@@ -104,14 +104,14 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize – aktuálně Azure Backup nepodporuje disky větší než 4 095 GB
 
-**Kód chyby:**: UserErrorUnsupportedDiskSize <br>
+**Kód chyby:** : UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: Azure Backup momentálně nepodporuje disky větší než 4 095 GB <br>
 
 Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 4 095 GB. Podpora velkých disků je již brzy.  
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování
 
-**Kód chyby:**: UserErrorBackupOperationInProgress <br>
+**Kód chyby:** : UserErrorBackupOperationInProgress <br>
 **Chybová zpráva**: Nepovedlo se inicializovat zálohování, protože právě probíhá jiná operace zálohování<br>
 
 Poslední úlohy zálohování se nezdařila, protože je v průběhu existující úlohy zálohování. Nelze spustit novou úlohu zálohování, dokud se nedokončí aktuální úlohu. Ujistěte se, že je aktuálně probíhá operace zálohování dokončeny před aktivací nebo plánování jiné operace zálohování. Pokud chcete zkontrolovat stav úloh zálohování, proveďte následujících kroků:

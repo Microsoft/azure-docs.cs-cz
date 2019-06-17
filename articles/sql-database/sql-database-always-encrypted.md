@@ -14,10 +14,10 @@ ms.reviwer: ''
 manager: craigg
 ms.date: 03/08/2019
 ms.openlocfilehash: 5226ec05af95cf305008968cf945070532274ee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61419997"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů v úložišti certifikátů Windows
@@ -43,7 +43,7 @@ Pro účely tohoto kurzu budete potřebovat:
 * Účet a předplatné Azure. Pokud ho nemáte, zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) verze 13.0.700.242 nebo novější.
 * [Rozhraní .NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) nebo novějším (v klientském počítači).
-* Sadu [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 

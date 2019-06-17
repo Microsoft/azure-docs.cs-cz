@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64866481"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](v1/data-factory-create-datasets.md)
 > * [Aktuální verze](concepts-datasets-linked-services.md)
 
@@ -69,9 +69,9 @@ Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 
 Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
-jméno | Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](naming-rules.md). |  Ano |
+name | Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](naming-rules.md). |  Ano |
 type | Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typů datových sad](#dataset-type). | Ano |
-Struktura | Schéma datové sady. Podrobnosti najdete v tématu [schéma datové sady](#dataset-structure-or-schema). | Ne |
+structure | Schéma datové sady. Podrobnosti najdete v tématu [schéma datové sady](#dataset-structure-or-schema). | Ne |
 typeProperties | Vlastnosti typu se liší pro každý typ (například: Azure Blob, tabulky Azure SQL). Podrobnosti o podporovaných typech a jejich vlastností najdete v tématu [typ datové sady](#dataset-type). | Ano |
 
 ### <a name="data-flow-compatible-dataset"></a>Kompatibilní datové sady toku dat
@@ -114,7 +114,7 @@ Následující tabulka popisuje vlastnosti v výše uvedený text JSON:
 
 Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
-jméno | Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](naming-rules.md). |  Ano |
+name | Název datové sady. Zobrazit [Azure Data Factory – pravidla pojmenování](naming-rules.md). |  Ano |
 type | Typ datové sady. Zadejte jeden z typů podporovaných službou Data Factory (například: AzureBlob, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typů datových sad](#dataset-type). | Ano |
 schema | Schéma datové sady. Podrobnosti najdete v tématu [toku dat kompatibilní datové sady](#dataset-type). | Ne |
 typeProperties | Vlastnosti typu se liší pro každý typ (například: Azure Blob, tabulky Azure SQL). Podrobnosti o podporovaných typech a jejich vlastností najdete v tématu [typ datové sady](#dataset-type). | Ano |
@@ -182,10 +182,10 @@ Všechny sloupce struktury obsahují následující vlastnosti:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-jméno | Název sloupce. | Ano
+name | Název sloupce. | Ano
 type | Datový typ sloupce. Data Factory podporuje následující typy dat dočasné jako Povolené hodnoty: **Int16, Int32, Int64, Single, Double, Decimal, bajtů [], datový typ Boolean, řetězec, Guid, data a času, Datetimeoffset a časový interval** | Ne
-Jazyková verze | . NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne
-formát | Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní data a řetězce formátu časových](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) o tom, jak formátovat datum a čas. | Ne
+culture verze | . NET jazykovou verzi na základě používané pro typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne
+format | Formátovací řetězec se použije, když typ je typ .NET: `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní data a řetězce formátu časových](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) o tom, jak formátovat datum a čas. | Ne
 
 ### <a name="example"></a>Příklad:
 V následujícím příkladu předpokládejme, že zdroj dat objektu Blob je ve formátu CSV a obsahuje tři sloupce: ID uživatele, název a lastlogindate. Jsou typu Int64, řetězce a datum a čas ve formátu vlastní data a času pomocí zkrácené názvy francouzské pro den v týdnu.

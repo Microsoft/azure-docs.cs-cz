@@ -11,10 +11,10 @@ ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: rkarlin
 ms.openlocfilehash: 7f23856363b337a361f329ed54e2152842faf26e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705142"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Co jsou kolekce pracovních prostorů Power BI?
@@ -60,7 +60,7 @@ Dá se datové sady v mezipaměti.  Však nelze aktualizovat data uložená v me
 
 ## <a name="authentication-and-authorization-with-app-tokens"></a>Ověřování a autorizace pomocí tokenů aplikace
 
-**Kolekce pracovních prostorů Power BI Microsoft** odloží do vaší aplikace provést všechny potřebné uživatelské ověřování a autorizace. Neexistuje žádný explicitní požadavek, aby vaši koncoví uživatelé se zákazníci služby Azure Active Directory (Azure AD).  Místo toho vyjadřuje vaší aplikace do **kolekce pracovních prostorů Power BI Microsoft** autorizace k vykreslení sestavy Power BI s použitím **ověřovacích tokenů aplikace (App tokeny)**.  Tyto **tokenů aplikace** vytvářejí podle potřeby vaší aplikace chce vykreslit sestavu.
+**Kolekce pracovních prostorů Power BI Microsoft** odloží do vaší aplikace provést všechny potřebné uživatelské ověřování a autorizace. Neexistuje žádný explicitní požadavek, aby vaši koncoví uživatelé se zákazníci služby Azure Active Directory (Azure AD).  Místo toho vyjadřuje vaší aplikace do **kolekce pracovních prostorů Power BI Microsoft** autorizace k vykreslení sestavy Power BI s použitím **ověřovacích tokenů aplikace (App tokeny)** .  Tyto **tokenů aplikace** vytvářejí podle potřeby vaší aplikace chce vykreslit sestavu.
 
 ![Diagram použití tokenu aplikace](media/what-are-power-bi-workspace-collections/app-tokens.png)
 

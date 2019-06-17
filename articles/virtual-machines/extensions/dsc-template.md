@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: 1bcec37e7642ae0cb5bd68de1426c8cc62085d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61475520"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration rozšíření pomocí šablon Azure Resource Manageru
@@ -186,7 +186,7 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript n
 | settings.configuration.function |string |Určuje název konfigurace DSC. Konfigurace s názvem musí být součástí skriptu, který **settings.configuration.script** definuje. Tato vlastnost je vyžadována, pokud **settings.configuration.url** nebo **settings.configuration.function** jsou definovány. -Li zadána žádná hodnota pro tyto vlastnosti, rozšíření volá výchozí konfigurační skript nastavení LCM metadat a by měl být zadán argument. |
 | settings.configurationArguments |Kolekce |Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost není zašifrován. |
 | settings.configurationData.url |string |Určuje adresu URL z nichž lze stáhnout soubor konfiguračních dat (.psd1) použít jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL se vyžaduje SAS token pro přístup, nastavte **protectedSettings.configurationDataUrlSasToken** k hodnotě váš token SAS. |
-| settings.privacy.dataCollection |string |Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou **povolit**, **zakázat**, **''**, nebo **$null**. Opuštění tato vlastnost prázdná nebo null umožňuje telemetrická data. Výchozí hodnota je **''**. Další informace najdete v tématu [shromažďování dat rozšíření DSC Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
+| settings.privacy.dataCollection |string |Povolí nebo zakáže shromažďování telemetrie. Pouze možné hodnoty této vlastnosti jsou **povolit**, **zakázat**, **''** , nebo **$null**. Opuštění tato vlastnost prázdná nebo null umožňuje telemetrická data. Výchozí hodnota je **''** . Další informace najdete v tématu [shromažďování dat rozšíření DSC Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
 | settings.advancedOptions.downloadMappings |Kolekce |Definuje alternativní umístění, ze kterých chcete stáhnout WMF. Další informace najdete v tématu [rozšíření DSC Azure 2.8 a jak namapovat na vlastní umístění stahování závislostí rozšíření](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings.configurationArguments |Kolekce |Definuje všechny parametry, které chcete předat do vaší konfigurace DSC. Tato vlastnost je šifrovaná. |
 | protectedSettings.configurationUrlSasToken |string |Určuje token SAS používat pro přístup k adresu URL, která **settings.configuration.url** definuje. Tato vlastnost je šifrovaná. |

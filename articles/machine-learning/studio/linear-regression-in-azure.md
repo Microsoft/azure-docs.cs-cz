@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60861084"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrace analytics z Excelu do Azure Machine Learning Studio
@@ -73,7 +73,7 @@ Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výk
 | --- |:---:|:---:|:---:|
 | Hodnota s popiskem |Skutečné hodnoty (číselné) |Stejné |Stejné |
 | Student |Excel -> Data analýzy -> regrese |Lineární regrese. |Lineární regrese |
-| Možnosti learner |neuvedeno |Výchozí nastavení |běžné čtverců<br />L2 = 0,005 |
+| Možnosti learner |neuvedeno |Výchozí hodnoty |běžné čtverců<br />L2 = 0,005 |
 | Datové sady |26 řádků, funkce 3, 1 popisek. Všechny číselné. |Stejné |Stejné |
 | Rozdělení: Trénování |Excel trénuje nejprve 18 řádky, testovat na posledních 8 řádků. |Stejné |Stejné |
 | Rozdělení: Test |Excelovému vzorci regrese použitý pro řádky posledních 8 |Stejné |Stejné |
@@ -119,7 +119,7 @@ Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukáz
 | --- | --- | --- | --- | --- | --- |
 | Posílený rozhodovací strom |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | Lineární regrese (sestupu) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
-| Regrese neuronové sítě |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
+| Regrese neurální sítě |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
 | Lineární regrese (běžný čtverců) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Stěžejní zjištění

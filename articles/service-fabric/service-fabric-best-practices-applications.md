@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/26/2019
 ms.author: msfussell
 ms.openlocfilehash: 55f043effc7cdb102acea856e89c58f660d0cde5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237744"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric application osvědčené postupy pro navrhování
@@ -79,7 +79,7 @@ Reliable Actors umožňuje snadno vytvářet objekty actor stavová a virtuáln�
 - Pokud komunikace s ostatními službami pomocí [vzdálené komunikace Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) a při vytváření `ServiceProxyFactory`, vytvořte objekt pro vytváření v [služba objektu actor](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) úroveň a *není*na úrovni objektu actor.
 
 
-## <a name="application-diagnostics"></a>Diagnostika aplikace
+## <a name="application-diagnostics"></a>Konzole Application diagnostics
 - Při přidávání důkladné [protokolování aplikací](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) ve volání mezi službami. To pomáhá v diagnostice scénářů, kde služby volají navzájem. Například když -> A B -> C -> D volání by mohlo selhat kdekoli; Pokud není k dispozici dostatek protokolování, je obtížné diagnostikovat. Pokud jsou příliš mnoho z důvodu hovorů, protokolování služby alespoň nezapomeňte protokolovat chyby a upozornění.
 
 ## <a name="iot-and-messaging-applications"></a>IoT a aplikace pro zasílání zpráv

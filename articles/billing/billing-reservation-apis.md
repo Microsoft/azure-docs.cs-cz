@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/25/2019
 ms.author: banders
 ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702625"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Rozhraní API pro rezervaci Azure automation
@@ -108,7 +108,7 @@ Rozsah rezervace může být jedno předplatné nebo všechna předplatná v fak
 
 Chcete-li změnit obor prostřednictvím kódu programu, použijte rozhraní API [rezervace - aktualizace](/rest/api/reserved-vm-instances/reservation/update).
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 - [Co jsou rezervace pro Azure](billing-save-compute-costs-reservations.md)
 - [Vysvětlení, používání sleva za rezervaci virtuálních počítačů](billing-understand-vm-reservation-charges.md)

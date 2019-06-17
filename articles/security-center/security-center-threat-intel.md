@@ -14,15 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 36201bad64e5516375afe1ec9ce141c3fd311d48
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574347"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Analýza hrozeb a mapa výstrah zabezpečení
 Tento článek vám umožní použít mapu výstrahy zabezpečení Azure Security Center a mapa analýzy hrozeb založený na událostech zabezpečení pro řešení potíží s související se zabezpečením.
+
+> [!NOTE]
+> Zabezpečení *události* tlačítko mapa se vyřadí dne 31. května 2019. Další informace a alternativní služby najdete v tématu [vyřazení Security Center nabízí (červenec 2019)](security-center-features-retirement-july2019.md#menu_securityeventsmap).
+
 
 ## <a name="how-the-security-alerts-map-works"></a>Jak se mapují výstrahy zabezpečení funguje
 Security Center zajišťuje, že jste s mapu, která vám pomůže identifikovat bezpečnostní hrozby pro prostředí. Můžete například určit, jestli je konkrétní počítač součástí botnetu, a tam, kde je hrozby přicházející z. Počítače se můžou stát uzly v botnetu, když útočníci neoprávněně nainstalují malware, který tajně komunikuje s příkazy a ovládání, které spravují botnetu. 

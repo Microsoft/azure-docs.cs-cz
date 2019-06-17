@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: v-sharos
 ms.custom: ''
 ms.openlocfilehash: 46225e5a332e035e4d1cc256e71c4b5d8686fd47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60845133"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Použití StorSimple Snapshot Manageru uživatelské rozhraní pro správu úloh zálohování a katalog záloh
@@ -56,7 +56,7 @@ Kliknutím na libovolnou položku na řádku nabídek zobrazíte seznam dostupn�
 
 ![Nabídka zobrazení vybrané](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
-### <a name="file-menu"></a>Nabídka Soubor
+### <a name="file-menu"></a>nabídka Soubor
 **Souboru** nabídka obsahuje standardní příkazy konzoly Microsoft Management Console (MMC).
 
 #### <a name="menu-access"></a>Přístup do nabídky
@@ -118,7 +118,7 @@ Následující tabulka obsahuje abecední seznam akcí StorSimple Snapshot Manag
 | Podrobnosti |Klikněte na tlačítko **zařízení** uzel a potom klikněte pravým tlačítkem na zařízení do služby **výsledky** podokně. |Klikněte na tlačítko **podrobnosti** zobrazíte podrobnosti o konfiguraci pro zařízení. |
 | Upravit |Klikněte na tlačítko **zásady zálohování**a potom klikněte pravým tlačítkem na zásadu v **výsledky** podokně. |Klikněte na tlačítko **upravit** Chcete-li změnit plán zálohování pro skupiny svazků. |
 | Exportovat seznam |Klikněte na libovolný uzel nebo výsledek (Tato položka je zobrazena ve všech **akce** nabídky a **akce** podoken.) |Klikněte na tlačítko **exportovat seznam** uložit seznam v souboru hodnot oddělených čárkami (CSV). Tento soubor pak můžete importovat do aplikace tabulku pro analýzu. |
-| Nápověda |Klikněte na libovolný uzel nebo výsledek. (Tato položka je zobrazena ve všech **akce** nabídky a **akce** podoken.) |Klikněte na tlačítko **pomáhají** k otevření online nápovědy v samostatném okně prohlížeče. |
+| Help |Klikněte na libovolný uzel nebo výsledek. (Tato položka je zobrazena ve všech **akce** nabídky a **akce** podoken.) |Klikněte na tlačítko **pomáhají** k otevření online nápovědy v samostatném okně prohlížeče. |
 | Nové okno |Klikněte na libovolný uzel nebo výsledek (Tato položka je zobrazena ve všech **akce** nabídky a **akce** podoken.) |Klikněte na tlačítko **nové okno** otevřete nové okno StorSimple Snapshot Manageru. |
 | Obnovení |Klikněte na libovolný uzel nebo výsledek (Tato položka je zobrazena ve všech **akce** nabídky a **akce** podoken.) |Klikněte na tlačítko **aktualizovat** aktualizovat aktuálně zobrazené okno StorSimple Snapshot Manageru. |
 | Aktualizace zařízení |Klikněte na tlačítko **zařízení** uzel a klikněte pravým tlačítkem na zařízení **výsledky** podokně. |Klikněte na tlačítko **aktualizujte zařízení** synchronizovat konkrétní připojené zařízení pomocí StorSimple Snapshot Manageru. |
@@ -142,7 +142,7 @@ Následující tabulka popisuje položky, které se zobrazují na **zobrazení**
 | Položka nabídky | Popis |
 |:--- |:--- |
 | Přidat/odebrat sloupce |Klikněte na tlačítko **Přidat/odebrat sloupce** k přidání nebo odebrání sloupců v **výsledky** podokně. |
-| Přizpůsobení |Klikněte na tlačítko **vlastní** zobrazení nebo skrytí položky v okně konzoly StorSimple Snapshot Manageru. |
+| Přizpůsobit |Klikněte na tlačítko **vlastní** zobrazení nebo skrytí položky v okně konzoly StorSimple Snapshot Manageru. |
 
 ### <a name="favorites-menu"></a>Nabídka Oblíbené
 Použít **Oblíbené** nabídky přidávat, odebírat a organizovat zobrazení stránek a úlohy, které často používáte. 

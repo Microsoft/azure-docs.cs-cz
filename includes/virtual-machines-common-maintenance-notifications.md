@@ -9,10 +9,10 @@ ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66116969"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Zobrazovat virtuální počítače s naplánovanou údržbou na portálu
@@ -33,11 +33,11 @@ Můžete použít na webu Azure portal a vyhledejte virtuální počítače s na
       
       | Hodnota | Popis |
       |-------|-------------|
-      | Spustit teď | Virtuální počítač je v intervalu samoobslužné údržby, který umožní, abyste údržbu zahájili sami. Níže jsou na tom, jak spustit údržbu na virtuálním počítači. | 
-      | Naplánované | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Další časového období údržby tak, že vyberete Údržba – plánované časové období v tomto zobrazení, nebo kliknutím na virtuálním počítači. | 
+      | Začít teď | Virtuální počítač je v intervalu samoobslužné údržby, který umožní, abyste údržbu zahájili sami. Níže jsou na tom, jak spustit údržbu na virtuálním počítači. | 
+      | Naplánováno | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Další časového období údržby tak, že vyberete Údržba – plánované časové období v tomto zobrazení, nebo kliknutím na virtuálním počítači. | 
       | Už aktualizováno | Váš virtuální počítač je už aktualizovaná a v tuto chvíli není vyžadována žádná další akce. | 
-      | Opakovat později | Inicializovali jste údržby bez úspěchu. Budete moct používat samoobslužné údržby možnost kdykoli později. | 
-      | Zkusit znovu | Zkuste to znovu dříve neúspěšné Údržba svým zahájená uživatelem. | 
+      | Zkuste to znovu později | Inicializovali jste údržby bez úspěchu. Budete moct používat samoobslužné údržby možnost kdykoli později. | 
+      | Zkuste to znovu | Zkuste to znovu dříve neúspěšné Údržba svým zahájená uživatelem. | 
       | - | Váš virtuální počítač není součástí vlny plánované údržby. |
       
 

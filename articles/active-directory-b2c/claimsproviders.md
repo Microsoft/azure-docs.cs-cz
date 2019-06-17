@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: 8d2570af6abb34a87ac4c69dd63408c8ec2e8005
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66511524"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -41,7 +41,7 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 
 **ClaimsProviders** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1: n | Poskytovatele akreditované deklarace identity, který můžete využít v různých cest uživatele. |
 
@@ -49,7 +49,7 @@ Zprostředkovatel deklarací identity obsahuje sadu [technické profily](technic
 
 **ClaimsProvider** prvek obsahuje následujících podřízených elementů:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ---------- | ----------- |
 | Domain (Doména) | 0:1 | Řetězec, který obsahuje název domény pro poskytovatele deklarací identity. Například pokud poskytovatele deklarací identity obsahuje technický profil na Facebooku, název domény je Facebook.com. Tento název domény se používá pro všechny technické profily definovanými v zprostředkovatele deklarací identity, pokud není přepsán technický profil. Název domény můžete také odkazovat **domain_hint**. Další informace najdete v tématu **přesměrování přihlášení k poskytovateli sociální** část [nastavit přímé přihlášení pomocí Azure Active Directory B2C](direct-signin.md). |
 | displayName | 0:1 | Řetězec, který obsahuje název, který může být zobrazen uživatelům. |

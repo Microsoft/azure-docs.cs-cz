@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: acf1195616d45b155445604ef0204528e5f7ca03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754255"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120561"
 ---
 Pro data na cestě:
 

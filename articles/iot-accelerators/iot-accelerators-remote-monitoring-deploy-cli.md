@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61447008"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování, který se pomocí rozhraní příkazového řádku
@@ -68,12 +68,12 @@ Nasazení Basic slouží k předvádění řešení. Pokud chcete snížit nákl
 
 Základní nasazení vytvoří tyto služby ve vašem předplatném Azure:
 
-| Počet | Prostředek                       | Type         | Používá pro |
+| Count | Resource                       | Type         | Používá pro |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Hostování mikroslužeb |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úroveň Standard | Správa zařízení a komunikace |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Ukládání konfiguračních dat, pravidla, oznámení a další studeného úložiště |  
-| 1     | [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro virtuální počítač a kontrolní body streamování |
+| 1     | [Azure Storage Account](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro virtuální počítač a kontrolní body streamování |
 | 1     | [Webové aplikace](https://azure.microsoft.com/services/app-service/web/)        |                 | Hostování front-endové webové aplikace |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Správa identit uživatelů a zabezpečení |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Zobrazení asset umístění |
@@ -89,7 +89,7 @@ Standardní nasazení je nasazení připravené pro produkční prostředí, kte
 
 Standardní nasazení vytvoří tyto služby ve vašem předplatném Azure:
 
-| Počet | Prostředek                                     | SKU nebo velikosti      | Používá pro |
+| Count | Resource                                     | SKU nebo velikosti      | Používá pro |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Použití plně spravovanou službu Orchestrace kontejnerů Kubernetes, výchozí hodnota je 3 agentů|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – úroveň Standard | Správa zařízení, příkazy a ovládání |

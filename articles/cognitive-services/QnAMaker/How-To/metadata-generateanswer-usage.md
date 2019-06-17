@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: tulasim
 ms.openlocfilehash: b18d47b4b09c6fa9c4d5f0ef87d7ebe73f151c60
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66693242"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Získejte odpovědi pomocí rozhraní GenerateAnswer API a metadat

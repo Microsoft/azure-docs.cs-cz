@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
 ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65780007"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor pro kontejnery – nejčastější dotazy
@@ -71,7 +71,7 @@ Podrobný pohled na problém, zkontrolujte následující [odkaz na github](http
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Jak můžu Povolit živé protokoly vyřešit chyby služby Azure AD? 
 
-Může se zobrazit následující chyba: **Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikace: ' < ID aplikace\>"**. Řešení k jeho řešení najdete v článku [zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Může se zobrazit následující chyba: **Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikace: ' < ID aplikace\>"** . Řešení k jeho řešení najdete v článku [zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Proč nemohu upgradovat cluster po připojení?
 

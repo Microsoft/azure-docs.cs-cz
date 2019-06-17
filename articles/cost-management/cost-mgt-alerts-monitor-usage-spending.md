@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002095"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Použít cost výstrahy a monitorování využití a výdajů
@@ -39,10 +39,10 @@ Oddělení útraty kvóty oznámení vás upozorní, jakmile oddělení útraty 
 
 Podpora pro různé typy výstrah závisí na typu účtu Azure, abyste měli (Microsoft nabízí). V následující tabulce jsou uvedeny výstrah funkce, které jsou podporovány v různých nabídek Microsoft. Můžete zobrazit úplný seznam nabídek Microsoft v [datům Cost managementu pochopit](understand-cost-mgt-data.md).
 
-| Typ výstrahy | Smlouva Enterprise | Smlouva se zákazníkem Microsoftu | Web direct/průběžnými platbami-As-You-Go |
+| Typ upozornění | Smlouva Enterprise | Smlouva se zákazníkem Microsoftu | Web direct/průběžnými platbami-As-You-Go |
 |---|---|---|---|
-| Rozpočet | ✔ | ✔ | ✔ |
-| Credit | ✔ |✘ | ✘ |
+| Rozpočtu | ✔ | ✔ | ✔ |
+| Kredit | ✔ |✘ | ✘ |
 | Kvóta útraty oddělení | ✔ | ✘ | ✘ |
 
 

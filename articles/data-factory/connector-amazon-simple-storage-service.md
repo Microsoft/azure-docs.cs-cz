@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: a04dc76a110b1d126d5d826761e2e0c09c6aac47
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65520236"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon Simple Storage Service pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 >
 > * [Verze 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Aktuální verze](connector-amazon-simple-storage-service.md)
@@ -42,7 +42,7 @@ Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je ne
 
 Zkopírujte data z Amazonu S3, ujistěte se, že máte následující oprávnění:
 
-- **Pro spuštění aktivity kopírování:**: `s3:GetObject` a `s3:GetObjectVersion` pro operace objektu Amazon S3.
+- **Pro spuštění aktivity kopírování:** : `s3:GetObject` a `s3:GetObjectVersion` pro operace objektu Amazon S3.
 - **Pro grafické uživatelské rozhraní Data Factory pro vytváření**: `s3:ListAllMyBuckets` a `s3:ListBucket` / `s3:GetBucketLocation` pro Amazon S3 sady Operations se navíc vyžaduje oprávnění, pro cesty k souborům operací, jako jsou test připojení a procházení a přejděte. Pokud nechcete, aby pro udělení těchto oprávnění, přeskočit test připojení na stránce pro vytvoření propojené služby a zadejte cestu přímo v nastavení datové sady.
 
 Podrobnosti o úplný seznam Amazon S3 oprávnění najdete v tématu [určení oprávnění v zásadách](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).

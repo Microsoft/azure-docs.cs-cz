@@ -5,37 +5,53 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 06/10/2019
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 34f2ab8f7ccafb8b30e298cd71e09171ad8c87cb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c5fedc59c80c68fc222693a67664ef60ddd210a9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238286"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133276"
 ---
-Následující omezení platí pro prostředky Azure Log Analytics na jedno předplatné.
+Následující omezení platí pro každý pracovní prostor Log Analytics v aktuální založenou na skutečné spotřebě cenové úrovni zavedené v dubnu 2018:
 
-| Resource | Výchozí omezení | Komentáře
-| --- | --- | --- |
-| Počet bezplatných pracovních prostorů na předplatné | 10 | Toto omezení nejde zvýšit. |
-| Počet placených pracovních prostorů na předplatné | neuvedeno | Co vás omezuje počet prostředků v rámci skupiny prostředků a počtem skupin prostředků na předplatné. | 
+|     | Za GB 2018 |
+| --- | --- | 
+| Objem shromážděných dat za den | Žádný |
+| Doba uchování dat | 30 do 730 dnů<sup>1</sup> |
+
+Následující omezení platí pro každý pracovní prostor Log Analytics nejnovější starší verze cenové úrovně:
+
+|  | Free | Samostatná (za GB) | Za uzel (OMS) |
+| --- | --- | --- | --- | --- | --- |--- |
+| Objem shromážděných dat za den |500 MB<sup>2</sup> |Žádný |Žádný |
+| Doba uchování dat |7 dní | 30 do 730 dnů<sup>1</sup> | 30 do 730 dnů<sup>1</sup> |
+
+Následující omezení platí pro každý pracovní prostor Log Analytics nejstarší starší verze cenové úrovně:
+
+|  | Standard | Premium | 
+| --- | --- | --- | --- | --- | --- |--- |
+| Objem shromážděných dat za den | Žádný | Žádný | 
+| Doba uchování dat |30 dní | 365 dnů |
+
+<sup>1</sup>uchovávání dat nad rámec 31 dní je k dispozici pro další poplatky. Další informace o [ceny Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+
+<sup>2</sup>když váš pracovní prostor dosáhne 500 MB denního limitu přenosu dat, analýza dat se zastaví a bude pokračovat na začátku dalšího dne. Den vychází ze standardu UTC.
 
 >[!NOTE]
->Od 2. dubnem 2018, budou automaticky využívat nové pracovní prostory v novém předplatném *Per GB* cenový plán. Pro existující předplatné vytvořené před 2. dubnem nebo předplatné, které se vázalo na existující registraci smlouvy Enterprise můžete stále vybírat ze tří cenových úrovní pro nové pracovní prostory. 
+>V závislosti na tom, jak dlouho používáte Log Analytics můžete mít přístup k cenové úrovně starší verze. Další informace o [starší verze Log Analytics cenové úrovně](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 
 >
 
-Následující omezení platí pro každý pracovní prostor Log Analytics.
+Následující omezení platí pro prostředky Azure Log Analytics (pracovní prostory) na jedno předplatné.
 
-|  | Free | Standard | Premium | Standalone | OMS | za GB |
-| --- | --- | --- | --- | --- | --- |--- |
-| Objem shromážděných dat za den |500 MB<sup>1</sup> |Žádný |Žádný | Žádný | Žádný | Žádný
-| Doba uchování dat |7 dní |1 měsíc |12 měsíců | 1 měsíc<sup>2</sup> | 1 měsíc<sup>2</sup>| 1 měsíc<sup>2</sup>|
+| Cenová úroveň    | Počet pracovních prostorů na předplatné | Komentáře
+| --- | --- | --- |
+| Úroveň Free  | 10 | Toto omezení nejde zvýšit. |
+| Všechny úrovně než Free | neuvedeno | Co vás omezuje počet prostředků v rámci skupiny prostředků a počtem skupin prostředků na předplatné. | 
 
-<sup>1</sup>když zákazník dosáhne svého denního limitu přenosu dat 500 MB, analýza dat se zastaví a bude pokračovat na začátku dalšího dne. Den vychází ze standardu UTC.
-
-<sup>2</sup>období uchovávání dat pro samostatnou, OMS a za GB cenové plány je možné zvýšit prodloužit na 730 dnů.
+Na rozhraní API služby Log Analytics se vztahují následující omezení:
 
 | Category | Limits | Komentáře
 | --- | --- | --- |

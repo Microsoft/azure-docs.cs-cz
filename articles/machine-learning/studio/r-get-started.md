@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726533"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Začínáme s R programovacím jazyku v nástroji Azure Machine Learning Studio
@@ -930,7 +930,7 @@ outframe
 
 První řádek kódu je trochu složité, a vysvětlení vám můžou pomoct porozumět ho. Práce zevnitř jsme měli tyto položky:
 
-1. "**[[**'Operator s argumentem'**1**" vybere vektor korelace v zjevně demonstruje výskyt pomalé od prvního prvku seznamu PVJS objektů.
+1. " **[[** 'Operator s argumentem'**1**" vybere vektor korelace v zjevně demonstruje výskyt pomalé od prvního prvku seznamu PVJS objektů.
 2. `do.call()` Funkce se vztahuje `rbind()` funkce přes prvky seznamu vrací podle `lapply()`.
 3. `data.frame()` Funkce převede výsledek produkovaný `do.call()` na datový rámec.
 
