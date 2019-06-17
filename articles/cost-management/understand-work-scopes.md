@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991382"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
@@ -154,14 +154,14 @@ Zahrnout všechna zobrazení Cost Management na webu Azure Portal **oboru** obra
 
 Při práci s rozhraními API služby Cost Management je vědět, že obor je velmi důležité. Tyto informace použijte k vytvoření oboru správný identifikátor URI pro rozhraní API pro správu nákladů.
 
-### <a name="billing-accounts"></a>Fakturační účty
+### <a name="billing-accounts"></a>Účty fakturace
 
 1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
 2. Vyberte **vlastnosti** v nabídce fakturační účet.
 3. Zkopírujte ID fakturačního účtu.
 4. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
-### <a name="billing-profiles"></a>Fakturační profily
+### <a name="billing-profiles"></a>Profily fakturace
 
 1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
 2. Vyberte **fakturace profily** v nabídce fakturační účet.
@@ -170,7 +170,7 @@ Při práci s rozhraními API služby Cost Management je vědět, že obor je ve
 5. Zkopírujte fakturační účet a fakturace ID profilu.
 6. Váš obor je: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
-### <a name="invoice-sections"></a>Oddíly faktury
+### <a name="invoice-sections"></a>Části faktury
 
 1. Otevřete na webu Azure portal a potom přejděte k **Správa nákladů a fakturace** v seznamu služeb.
 2. Vyberte **fakturovat oddíly** v nabídce fakturační účet.
@@ -218,7 +218,7 @@ Při práci s rozhraními API služby Cost Management je vědět, že obor je ve
 4. Zkopírujte hodnotu pole ID prostředku.
 5. Váš obor je: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-Služba Cost Management je aktuálně podporován ve [Azure globální](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net). Další informace o službě Azure Government najdete v tématu [koncových bodů rozhraní API Government a Azure globální](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+Služba Cost Management je aktuálně podporován ve [Azure globální](https://management.azure.com) a [Azure Government](https://management.usgovcloudapi.net). Další informace o službě Azure Government najdete v tématu [koncových bodů rozhraní API Government a Azure globální](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,8 +1,8 @@
 ---
-title: Co jsou závislosti služby podmíněného přístupu Azure Active Directory? | Dokumenty Microsoft
-description: Zjistěte, jak se používají podmínky podmíněného přístupu Azure Active Directory k aktivaci zásad.
+title: Co jsou závislosti služby v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
+description: Zjistěte, jak se používají podmínky v Azure Active Directory podmíněný přístup pro aktivaci zásad.
 services: active-directory
-keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 03/18/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 54e5de5fdb03cfaff4d4ed53da94b512f30db58a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354349"
+ms.locfileid: "67112099"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co jsou závislosti služby podmíněného přístupu Azure Active Directory? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Co jsou závislosti služby v Azure Active Directory podmíněného přístupu? 
 
 
 Díky zásadám podmíněného přístupu můžete určit požadavky na přístup k webům a službám. Požadavků na přístup může obsahovat třeba vyžadování vícefaktorového ověřování (MFA) nebo [spravovaných zařízeních](require-managed-devices.md). 

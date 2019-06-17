@@ -14,10 +14,10 @@ ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122845"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí webu Azure portal a Powershellu
@@ -89,7 +89,7 @@ Kolekce obsahuje nějaké řezy datové sady ve službě data factory může mí
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">Párovat s dílčím stavem</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Pro spuštění řezu ještě nenastal čas.</td>
@@ -107,34 +107,34 @@ Kolekce obsahuje nějaké řezy datové sady ve službě data factory může mí
 <td>ActivityResume</td><td>Aktivita je pozastavená a řezy nelze spustit, dokud nebude obnoven aktivity.</td>
 </tr>
 <tr>
-<td>Zkusit znovu</td><td>Je o provádění aktivity.</td>
+<td>Retry</td><td>Je o provádění aktivity.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření se ještě nespustilo.</td>
+<td>Ověření</td><td>Ověření se ještě nespustilo.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověření čeká se na opakování pokusu.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá zpracování</td><td>Probíhá ověřování</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Řez se zpracovává.</td>
 </tr>
 <tr>
-<td rowspan="4">Nezdařilo se</td><td>Vypršel časový limit</td><td>Provádění aktivity trvalo déle, než povoluje aktivitou.</td>
+<td rowspan="4">Selhalo</td><td>Vypršel časový limit</td><td>Provádění aktivity trvalo déle, než povoluje aktivitou.</td>
 </tr>
 <tr>
 <td>Zrušeno</td><td>Řez bylo zrušeno uživatelem.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření selhalo.</td>
+<td>Ověření</td><td>Ověření se nezdařilo.</td>
 </tr>
 <tr>
 <td>-</td><td>Vygenerovat nebo ověřit řez se nezdařilo.</td>
 </tr>
-<td>Připraveno</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
+<td>Připraven</td><td>-</td><td>Řez je připravený k použití.</td>
 </tr>
 <tr>
 <td>Přeskočeno</td><td>Žádný</td><td>Řez se právě zpracovává.</td>

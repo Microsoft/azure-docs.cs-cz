@@ -17,11 +17,11 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: f2110a749c41f59b11a6d400faa2e42e751305fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251076"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693815"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště
 
@@ -126,7 +126,7 @@ Uvolněte virtuální počítač, což uvolní virtuálního pevného disku, kte
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-**Stav** pro virtuální počítač v Azure portal se změní z **Zastaveno** k **zastaveno (přidělení zrušeno)**.
+**Stav** pro virtuální počítač v Azure portal se změní z **Zastaveno** k **zastaveno (přidělení zrušeno)** .
 
 ### <a name="get-the-storage-account-urls"></a>Získání adresy URL účtu úložiště
 Je třeba adresy URL zdrojových a cílových účtů úložiště. Adresy URL vypadat: `https://<storageaccount>.blob.core.windows.net/<containerName>/`. Pokud již znáte název účtu a kontejneru úložiště, můžete nahradit jenom informace mezi hranaté závorky pro vytvoření vaší adresy URL. 

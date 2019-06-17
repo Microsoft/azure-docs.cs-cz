@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925695"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavte si aplikace vývojáři řídit distribuce (ADCD) v IBM zD & T v1
@@ -165,7 +165,7 @@ Po dokončení předchozího kroku konfigurace **vytvoření image pomocí kompo
 
 7. Na další obrazovce zadejte svoje přihlašovací údaje pro virtuální počítač (tedy ne ztadmin přihlašovací údaje).
 
-8. V podokně vlastností zadejte počet **centrální procesory (CPs)**, množství **systémovou paměť (GB)** a **adresáře nasazení** pro běžící imagí. Protože se jedná ukázku, uchovávejte malé.
+8. V podokně vlastností zadejte počet **centrální procesory (CPs)** , množství **systémovou paměť (GB)** a **adresáře nasazení** pro běžící imagí. Protože se jedná ukázku, uchovávejte malé.
 
 9. Ujistěte se, že je vybraná pole **automaticky příkazu IPL problém z/OS po nasazení**.
 
@@ -182,11 +182,11 @@ Bitové kopie teď můžete nasadit a je připravený k upevnění emulátorem 3
 
 Blahopřejeme! Teď používáte prostředí sálové počítače IBM v Azure.
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 
 - [Migrace mainframů: mýty a skutečnosti](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Odstraňování potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Uvedení mainframových migrace do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

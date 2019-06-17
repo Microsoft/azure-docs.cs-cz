@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.openlocfilehash: dae481fb477223f149404c6a09cad024bc15cd90
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62108733"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Použití rozhraní příkazového řádku Databricks z Azure Cloud Shellu

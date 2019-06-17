@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: c34ff487f03d90b16b6660fbad77c3a16699e165
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64719869"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>K zobrazení a Správa úloh zálohování pomocí StorSimple Snapshot Manageru
 
@@ -63,7 +63,7 @@ Pomocí následujícího postupu na zobrazení zálohování a obnovení úloh, 
      ![Úlohy, které byly spuštěny za posledních 24 hodin](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
 3. K provedení další akce pro konkrétní úlohu, klikněte pravým tlačítkem na název úlohy v **výsledky** podokně a vyberte z možností v nabídce.
    
-    ![Odstraní úlohu](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
+    ![Odstranit úlohu](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>Zobrazit aktuálně spuštěné úlohy
 Pomocí následujícího postupu do zobrazení úloh, které jsou aktuálně spuštěny.

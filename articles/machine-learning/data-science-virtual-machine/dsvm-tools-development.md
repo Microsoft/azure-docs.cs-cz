@@ -17,10 +17,10 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
 ms.openlocfilehash: c4e101e45dc1641c5731e246f7fdeeb37ebc0823
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864414"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na virtuální počítač pro datové vědy
@@ -31,7 +31,7 @@ Na Data virtuálního počítače VĚDY poskytuje produktivní prostředí pro v
 
 |    |           |
 | ------------- | ------------- |
-| Co to je?   | Integrované vývojové prostředí pro obecné účely      |
+| Co je to?   | Integrované vývojové prostředí pro obecné účely      |
 | Podporované DSVM verze      | Windows      |
 | Typické použití      | Vývoj softwaru    |
 | Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?      | Úloha datové vědy (Python nebo R tools), úloha Azure (Hadoop, Data Lake), Node.js, nástroje SQL Server, [Azure Machine Learning pro Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |

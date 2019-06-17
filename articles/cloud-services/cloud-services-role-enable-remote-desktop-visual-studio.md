@@ -13,11 +13,11 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: 924719a8371f4d41cb9ead09252d8f3d3424326a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406442"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717755"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení připojení ke vzdálené ploše pro roli v cloudových službách Azure pomocí sady Visual Studio
 
@@ -47,7 +47,7 @@ Pokud používáte Visual Studio 2017 verze 15.4 nebo starší, můžete použí
    > [!Note]
    > Certifikáty, které budete potřebovat pro připojení ke vzdálené ploše se liší od certifikáty, které použijete pro další provoz Azure. Certifikát vzdáleného přístupu musí mít privátní klíč.
 
-5. Vyberte certifikát ze seznamu nebo zvolte  **&lt;vytvořit... &gt;**. Při vytváření nového certifikátu, zadejte popisný název pro nový certifikát po zobrazení výzvy a vyberte **OK**. V rozevíracím seznamu se zobrazí nový certifikát.
+5. Vyberte certifikát ze seznamu nebo zvolte  **&lt;vytvořit... &gt;** . Při vytváření nového certifikátu, zadejte popisný název pro nový certifikát po zobrazení výzvy a vyberte **OK**. V rozevíracím seznamu se zobrazí nový certifikát.
 
 6. Zadejte uživatelské jméno a heslo. Nelze použít existující účet. Nepoužívejte jako uživatelské jméno pro nový účet "Administrator".
 

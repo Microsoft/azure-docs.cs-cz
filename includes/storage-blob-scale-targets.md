@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 4/20/2019
 ms.author: tamram
 ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114828"
 ---
-| Resource | Cíl        |
+| Resource | Target        |
 |----------|---------------|
 | Maximální velikost kontejneru jeden objekt blob | Stejná jako maximální účet kapacita úložiště |
 | Maximální počet objektů blob bloků v bloku nebo doplňovacího objektu blob | 50 000 bloků |

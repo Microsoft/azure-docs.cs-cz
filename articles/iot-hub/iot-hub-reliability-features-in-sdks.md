@@ -8,10 +8,10 @@ ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
 ms.openlocfilehash: 9180c27e64f26c05e6e16007b74f9aa8a98bcfe5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61440297"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Spravovat připojení a spolehlivé zasílání zpráv s použitím sady SDK pro zařízení Azure IoT Hub

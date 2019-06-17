@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704588"
 ---
 # <a name="use-firewall-rules"></a>Pomocí pravidel brány Firewall
@@ -72,7 +72,7 @@ Parametry šablony:
 > Nejsou žádná pravidla odepřít je to možné, šablony Azure Resource Manageru je nastavena na výchozí akce **"Povolit"** který nepodporuje omezení připojení.
 > Při vytváření pravidla virtuální sítě a brány firewall, musíte Změníme ***"defaultAction"***
 > 
-> od
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

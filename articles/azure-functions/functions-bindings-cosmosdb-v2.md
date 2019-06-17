@@ -12,15 +12,15 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5762e934d7735dd9617cefc1f56105823d74312f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61342859"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64511832"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Vyberte verzi modulu runtime Azure Functions, které používáte: "]
 > * [Verze 1](functions-bindings-cosmosdb.md)
 > * [Verze 2](functions-bindings-cosmosdb-v2.md)
 

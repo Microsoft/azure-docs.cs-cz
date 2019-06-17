@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067387"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Protokolů serveru ve službě Azure Database for PostgreSQL – jeden Server
@@ -50,10 +50,10 @@ Následující tabulka popisuje, co je v každém protokolu. V závislosti na v�
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | Protokolování úrovně, například: VŠIMNĚTE SI, ŽE PROTOKOL, CHYBA, |
-| Zpráva | Primární protokolu zpráv | 
+| Message | Primární protokolu zpráv | 
 | Domain (Doména) | Verze serveru, například: postgres 10 |
-| Detail | Zpráva protokolu sekundární (Pokud je k dispozici) |
-| Název sloupce | Název sloupce (Pokud je k dispozici) |
+| Podrobnosti | Zpráva protokolu sekundární (Pokud je k dispozici) |
+| Názevsloupce | Název sloupce (Pokud je k dispozici) |
 | SchemaName | Název schématu (Pokud je k dispozici) |
 | DatatypeName | Název datového typu (Pokud je k dispozici) |
 | LogicalServerName | Název serveru | 

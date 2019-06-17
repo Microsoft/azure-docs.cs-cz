@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60931700"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Odeslání e-mailů pomocí Sendgridu z Node.js
@@ -36,7 +36,7 @@ SendGrid je [založené na cloudu e-mailové služby] , která poskytuje spolehl
 * Předávání dotazy zákazníků
 * E-mailových oznámení z aplikace
 
-Další informace najdete na adrese [https://sendgrid.com](https://sendgrid.com).
+Další informace najdete na webu [https://sendgrid.com](https://sendgrid.com).
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 

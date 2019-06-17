@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 188f5c6cfbb4650ad1ff767955d064f8e0c3cb70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60756742"
 ---
 # <a name="monitor-your-azure-data-box-edge"></a>Monitorování Azure Data Box hranici
@@ -44,7 +44,7 @@ Proveďte následující kroky v místním webovém uživatelském rozhraní pro
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-metrics.md)]
 
-## <a name="manage-alerts"></a>Správa upozornění
+## <a name="manage-alerts"></a>Správa výstrah
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-manage-alerts.md)]
 

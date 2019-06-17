@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d10c3edcf64ccc66b0599d064e91270a4ad8202
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814864"
 ---
 Můžete snadno [automatické škálování](../articles/azure-monitor/platform/autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/azure-monitor/platform/autoscale-overview.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
 
@@ -53,7 +53,7 @@ Je možné [nastavení aktivační události](../articles/azure-monitor/platform
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Ruční škálování virtuálních počítačů ve škálovací sadě
 
-### <a name="horizontal"></a>Horizontálně
+### <a name="horizontal"></a>Vodorovná
 
 Můžete přidat nebo odebrat tak, že změna kapacity škálovací sady virtuálních počítačů. Na webu Azure Portal, můžete snížit nebo zvýšit počet virtuálních počítačů (zobrazené jako **počet instancí**) ve škálovací sadě posunutím panelu podmínku přepsání na obrazovce škálování doleva nebo doprava.
 

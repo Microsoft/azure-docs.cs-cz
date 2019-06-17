@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: f2d1a5a342bfe4527c15a0721a8f852a269bef67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113522"
 ---
 # <a name="combined-security-information-registration-preview"></a>Informace o registraci kombinované zabezpečení (preview)
 
@@ -49,7 +49,7 @@ Kombinované registrace podporuje následující metody ověřování a akce:
 | Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
 | Jiné ověřovací aplikaci | Ano (maximálně 5) | Ne | Ano |
 | Hardwarový token | Ne | Ne | Ano |
-| Phone | Ano | Ano | Ano |
+| Telefon | Ano | Ano | Ano |
 | Alternativní telefonní | Ano | Ano | Ano |
 | Telefon do kanceláře | Ne | Ne | Ne |
 | Email | Ano | Ano | Ano |

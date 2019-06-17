@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
 ms.openlocfilehash: 951178a82e0975f5f2af71bd48cf0f931246ae37
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002126"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace AWS nákladů a využití integrace sestavy
@@ -67,7 +67,7 @@ Pomocí Průvodce vytvořením nové Role:
 3. Vyberte **role** a pak vyberte **vytvořit roli**.
 4. Na další stránce vyberte **účtu AWS jiného**.
 5. V **ID účtu**, zadejte **432263259397**.
-6. V **možnosti**vyberte **vyžadují externí ID (doporučený postup při externí bude předpokládat této role)**.
+6. V **možnosti**vyberte **vyžadují externí ID (doporučený postup při externí bude předpokládat této role)** .
 7. V **externí ID**, zadejte externího ID. Externí ID se sdílený přístupový kód mezi AWS role a Azure Cost Management. Stejný externí ID se také používá na **nový konektor** stránky ve službě Cost Management. Například vypadá podobně jako externí ID _Companyname1234567890123_.
 
     > [!NOTE]
@@ -100,7 +100,7 @@ Konfigurace oprávnění pro Průzkumníka náklady:
 
 1. Vyberte **vybrat službu**.
 2. Zadejte **nákladů Průzkumníka služby**.
-3. Vyberte **akce Explorer – všechny náklady na služby (ce:\*)**. Tato akce ověří správnost kolekce.
+3. Vyberte **akce Explorer – všechny náklady na služby (ce:\*)** . Tato akce ověří správnost kolekce.
 4. Vyberte **přidat další oprávnění**.
 
 Přidání oprávnění pro AWS organizace:

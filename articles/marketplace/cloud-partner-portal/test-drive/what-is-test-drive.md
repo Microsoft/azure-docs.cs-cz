@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938466"
 ---
 <a name="what-is-test-drive"></a>Co je testovací verze?
@@ -47,8 +47,8 @@ A tady dole je příklad toho, jak v rámci nabídky vypadat, když je nutné č
 
 Bez ohledu na to, jak komplexní aplikace, jednotky Microsoft Test vám pomůže přineste svůj produkt do života pro zákazníka. Dnes nabízíme tři různé typy testů jednotek podle typu produktu, scénáře a marketplace, které jsou na.
 
-- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**: Vyzkoušejte Azure Resource Manageru je šablonu nasazení, která obsahuje všechny prostředky Azure, které tvoří vytváří Vydavatel řešení. Produkty, které patří tento scénář jsou ty, které používají jenom prostředky Azure.
-- **[Aplikace logiky](./logic-app-test-drive.md)**: Test aplikace logiky jednotka je šablonu nasazení, která je zamýšlená zahrnovat všechny architektury komplexní řešení. Všechny aplikace Dynamics nebo vlastní produkty by měl použít tento typ testovací verze.
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Vyzkoušejte Azure Resource Manageru je šablonu nasazení, která obsahuje všechny prostředky Azure, které tvoří vytváří Vydavatel řešení. Produkty, které patří tento scénář jsou ty, které používají jenom prostředky Azure.
+- **[Aplikace logiky](./logic-app-test-drive.md)** : Test aplikace logiky jednotka je šablonu nasazení, která je zamýšlená zahrnovat všechny architektury komplexní řešení. Všechny aplikace Dynamics nebo vlastní produkty by měl použít tento typ testovací verze.
 - **Power BI**: Power BI Test Drive je jednoduše vložený odkaz na řídicí panel vlastním. Jakýkoli produkt, který chce jednoduše předvedeme interaktivní Power BI visual by měl použít tento typ testovací verze.
     Vše, co potřebujete k nahrání zde je vaše adresa URL vložené Power BI.
 

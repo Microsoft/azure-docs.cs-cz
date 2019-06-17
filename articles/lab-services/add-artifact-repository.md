@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c1e74efa9cf99e8510ea17aedc840ce3b0731c3b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7ff036fbdf3ae9360bed8d728b9bec3a1937b70a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808249"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Přidání úložiště artefaktů do testovacího prostředí v DevTest Labs
-DevTest Labs umožňuje určit artefakt, který chcete přidat do virtuálního počítače během vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroje nebo aplikace, kterou chcete nainstalovat do virtuálního počítače. Artefakty jsou definovány v souboru JSON načíst z úložiště GitHub nebo VSTS Git. 
+DevTest Labs umožňuje určit artefakt, který chcete přidat do virtuálního počítače během vytváření virtuálního počítače nebo po vytvoření virtuálního počítače. Tento artefakt může být nástroje nebo aplikace, kterou chcete nainstalovat do virtuálního počítače. Artefakty jsou definovány v souboru JSON načíst z úložiště GitHub nebo DevOps Git v Azure. 
 
 [Veřejné úložiště artefaktů](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), spravován DevTest Labs, poskytuje celou řadu běžných nástrojů pro Windows a Linux. Odkaz na toto úložiště se automaticky přidá do vašeho testovacího prostředí. Můžete vytvořit vlastní úložiště artefaktů s konkrétní nástroje, které nejsou dostupné ve veřejné úložiště artefaktů. Další informace o vytváření vlastních artefaktů, naleznete v tématu [při vytváření vlastních artefaktů](devtest-lab-artifact-author.md).
 
@@ -46,7 +46,7 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
 10. Zavřete Githubu.   
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Klonování úložiště Azure získat adresu URL a osobní přístupový token
-1. Přejděte na domovskou stránku týmu kolekce (například https://contoso-web-team.visualstudio.com)a pak vyberte svůj projekt.
+1. Přejděte na domovskou stránku týmu kolekce (například https://contoso-web-team.visualstudio.com) a pak vyberte svůj projekt.
 2. Na domovské stránce projektu, vyberte **kód**.
 3. Chcete-li zobrazit adresu URL klonu na projekt **kód** stránce **klonování**.
 4. Adresu URL si uložte. Adresa URL použijete později.

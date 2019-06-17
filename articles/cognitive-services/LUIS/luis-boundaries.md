@@ -12,10 +12,10 @@ ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154560"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
@@ -28,7 +28,7 @@ Pokud vaše aplikace překračuje omezení modelů služby LUIS a hranice, zvaž
 
 |Oblast|Omezení|
 |--|:--|
-| [Název aplikace][luis-get-started-create-app] | * Znak výchozí maximální |
+| [Název aplikace][luis-get-started-create-app] | \* Znak výchozí maximální |
 | [Testování služby batch][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
 | Explicitní seznam | 50 na aplikaci.|
 | Externí entity | bez omezení |
@@ -47,7 +47,7 @@ Pokud vaše aplikace překračuje omezení modelů služby LUIS a hranice, zvaž
 | [Verze](luis-concept-version.md)| bez omezení |
 | [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a tečky (.) |
 
-* Znak výchozí maximální počet je 50 znaků. 
+\* Znak výchozí maximální počet je 50 znaků. 
 
 <a name="intent-and-entity-naming"></a>
 

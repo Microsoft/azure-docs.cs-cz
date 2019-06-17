@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61485448"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak nasadit Windows 10 v Azure s práv hostování více klientů 
@@ -56,7 +56,7 @@ if($adminAccount.Disabled)
     $adminAccount.Put()
 }
 ```
-Další informace najdete tady: 
+Další informace: 
 * [Jak nahrát virtuální pevný disk do Azure](upload-generalized-managed.md)
 * [Příprava virtuálního pevného disku Windows k nahrání do Azure](prepare-for-upload-vhd-image.md)
 

@@ -1,8 +1,8 @@
 ---
-title: Co je co-li nástroj podmíněného přístupu Azure Active Directory?
+title: Co je co Pokud nástroj Azure Active Directory podmíněného přístupu?
 description: Zjistěte, jak můžete porozumět dopadu zásad podmíněného přístupu ve vašem prostředí.
 services: active-directory
-keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
+keywords: Podmíněný přístup k aplikacím, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -18,14 +18,14 @@ ms.date: 11/20/2018
 ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 6a0f1fa0630a58054a138b730141b982af427475
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354289"
+ms.locfileid: "67111924"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co je co-li nástroj podmíněného přístupu Azure Active Directory?
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co je co Pokud nástroj Azure Active Directory podmíněného přístupu?
 
 [Podmíněný přístup](../active-directory-conditional-access-azure-portal.md) je funkce služby Azure Active Directory (Azure AD), která umožňuje řídit jak Autorizovaní uživatelé přistupovat ke vašim cloudovým aplikacím. Jak víte, co můžete očekávat formuláře zásady podmíněného přístupu ve vašem prostředí? Na tuto otázku odpovědět, můžete použít **podmíněný přístup jak postupovat, pokud nástroj**.
 
@@ -33,7 +33,7 @@ Tento článek vysvětluje, jak můžete tento nástroj pro testování zásad p
 
 ## <a name="what-it-is"></a>Co to je
 
-**Podmíněný přístup citlivostní nástroj zásad** umožňuje na vědomí následky zásad podmíněného přístupu ve vašem prostředí. Místo testování zásad ručním prováděním několika přihlášení umožňuje tento nástroj vyhodnotit simulované přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Sestava neobsahuje pouze seznam použitých zásad správy zásad přístupu ale také [klasické zásady](policy-migration.md#classic-policies) Pokud existují.    
+**Podmíněný přístup citlivostní nástroj zásad** umožňuje na vědomí následky zásad podmíněného přístupu ve vašem prostředí. Místo testování zásad ručním prováděním několika přihlášení umožňuje tento nástroj vyhodnotit simulované přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Sestava neobsahuje pouze seznam použitých zásad podmíněného přístupu, ale také [klasické zásady](policy-migration.md#classic-policies) Pokud existují.    
 
 Co Pokud nástroje také poskytuje způsob, jak rychle určit zásady, které platí pro konkrétní uživatele. Informace, můžete použít například, pokud je potřeba vyřešit nějaký problém.  
 
@@ -123,8 +123,8 @@ V seznamu zásad, které se nevztahují na vaše uživatele můžete a také zji
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
+- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
 
-- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
 
 - Pokud chcete migrovat klasické zásady, najdete v článku [migrace klasických zásad na webu Azure Portal](policy-migration.md)  

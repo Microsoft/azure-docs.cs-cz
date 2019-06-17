@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 53185caa6a0492702035041a893f20a78cf1ea4d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65911240"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
@@ -31,7 +31,7 @@ Před dokončením některé kroky v tomto kurzu, přihlaste se k webu Azure por
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-a-ddos-protection-plan"></a>Vytvořit plán DDoS Protection
+## <a name="create-a-ddos-protection-plan"></a>Vytvořit plán DDoS protection
 
 Plán DDoS protection definuje sadu virtuálních sítí, které mají před útoky DDoS standard protection povolené napříč předplatnými. Můžete nakonfigurovat jeden plán DDoS protection vaší organizace a propojení virtuálních sítí z několika předplatných stejný plán. Plán DDoS Protection samotného je také přidružený k předplatnému, kterou jste vybrali při vytváření plánu. Plánu služby DDoS Protection funguje napříč oblastmi a předplatných. Příklad – můžete vytvořit plán v oblasti East-US a odkaz k předplatnému #1 ve vašem tenantovi. Stejný plán, který lze propojit k virtuálním sítím z jiných předplatných v různých oblastech, ve vašem tenantovi. Předplatné plánu souvisí s sebou nese náklady na měsíční opakované náklady pro plán, jakož i poplatky za Nadlimitní využití, v případě, že počet chráněné veřejné IP adresy překračuje 100. Další informace o cenách za DDoS najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
@@ -44,7 +44,7 @@ Vytvoření více než jeden plán není vyžadováno pro většinu organizací.
 
     |Nastavení        |Hodnota                                              |
     |---------      |---------                                          |
-    |Název           | myDdosProtectionPlan                              |
+    |Name           | myDdosProtectionPlan                              |
     |Předplatné   | Vyberte své předplatné.                         |
     |Skupina prostředků | Vyberte **vytvořit nový** a zadejte *myResourceGroup* |
     |Location       | USA – východ                                           |
@@ -57,7 +57,7 @@ Vytvoření více než jeden plán není vyžadováno pro většinu organizací.
 
     | Nastavení         | Hodnota                                                        |
     | ---------       | ---------                                                    |
-    | Název            | myVirtualNetwork                                             |
+    | Name            | myVirtualNetwork                                             |
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
     | Location        | USA – východ                                                      |
@@ -98,7 +98,7 @@ Můžete vybrat libovolný dostupných metrik DDoS protection vás upozorní, kd
 
     |Nastavení                  |Hodnota                                                                                               |
     |---------                |---------                                                                                           |
-    |Název                     | myDdosAlert                                                                                        |
+    |Name                     | myDdosAlert                                                                                        |
     |Předplatné             | Vyberte předplatné, které obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na.        |
     |Skupina prostředků           | Vyberte skupinu prostředků, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na.      |
     |Resource                 | Vyberte veřejnou IP adresu, která obsahuje veřejnou IP adresu, kterou chcete dostávat upozornění na. Před útoky DDoS monitoruje veřejné IP adresy přiřazené k prostředkům ve virtuální síti. Pokud nemáte k dispozici žádné prostředky s veřejnými IP adresami ve virtuální síti, musíte nejprve vytvořit prostředek s veřejnou IP adresu. Můžete monitorovat veřejnou IP adresu všechny prostředky nasazena prostřednictvím Resource Manageru (ne classic) uvedené v [virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), s výjimkou služby Azure App Service Environment a Azure VPN Gateway. Chcete-li pokračovat v tomto kurzu, můžete rychle vytvářet [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače.                   |
@@ -186,8 +186,8 @@ Protokoly toku omezení rizik útoků umožní zkontrolovat zhoršení provozu p
 1. Chcete-li zobrazit data protokolů toku v řídicím panelu Azure analytics, můžete importovat ukázkový řídicí panel z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Protokoly toku bude mít tahle pole: 
-- IP adresa zdroje
-- Cíl IP
+- Zdrojová adresa IP
+- Cílová IP adresa
 - Zdrojový port 
 - Cílový port 
 - Typ protokolu 
@@ -221,7 +221,7 @@ Výstrahy obsahují obecné informace o veřejnou IP adresu, která je v části
 
 Pro práci s plány DDoS protection, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
 
-| Akce                                            | Název                                     |
+| Akce                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Přečtěte si plán DDoS protection              |
 | Microsoft.Network/ddosProtectionPlans/write       | Vytvořit nebo aktualizovat plán DDoS protection  |

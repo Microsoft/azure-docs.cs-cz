@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111124"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Vytvoření oboru názvů na webu Azure Portal
@@ -35,7 +35,7 @@ Vytvoření oboru názvů:
     6. Pro **umístění**, vyberte oblast, ve kterém by měl váš obor názvů hostovat.
     7. Vyberte **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
    
-        ![Vytvořit obor názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
+        ![Vytvoření oboru názvů](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Potvrďte, že je obor názvů služby Service bus úspěšné nasazení. Pokud chcete zobrazit oznámení, vyberte **ikonu zvonku (výstrahy)** na panelu nástrojů. Vyberte **název skupiny prostředků** v oznámení, jak je znázorněno na obrázku. Zobrazí se skupiny prostředků, který obsahuje obor názvů služby Service bus.
 
     ![Výstraha nasazení](./media/service-bus-create-namespace-portal/deployment-alert.png)

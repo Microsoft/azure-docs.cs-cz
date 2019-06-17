@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62113864"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definice a používání moderování úlohy (.NET)
@@ -47,7 +47,7 @@ Použijete název pracovního postupu v kódu, který zahájí úlohu moderován
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
    Ve vzorovém kódu pojmenujte tento projekt **CreateReviews**.
 

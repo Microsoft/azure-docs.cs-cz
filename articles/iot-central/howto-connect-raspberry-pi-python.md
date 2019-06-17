@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64405878"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (Python)
 
@@ -35,13 +35,13 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberr
 - Telemetrická data, která zahrnuje následující měření, které zařízení bude shromažďovat:
   - Vlhkost
   - Teplota
-  - Tlak
+  - Přetížení
   - Magnetometer (X, Y, Z)
   - Akcelerometr (X, Y, Z)
   - Volný setrvačník (X, Y, Z)
 - Nastavení
   - Snímač napětí
-  - Aktuální
+  - aktuální
   - Ventilátor rychlost
   - Přepnout reakcí na Incidenty.
 - Vlastnosti
@@ -94,24 +94,24 @@ Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberr
 
 Číselné nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
+| Display name | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Snímač napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
-| Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
+| aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
 | Ventilátor rychlost    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
 
 Přepínací tlačítko Nastavení
 
-| Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
+| Display name | Název pole | Na text | Vypnout text | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | Vypnuto     |
 
 ### <a name="properties"></a>Vlastnosti
 
-| Type            | Zobrazované jméno | Název pole | Typ dat |
+| Type            | Display name | Název pole | Typ dat |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnosti zařízení | Kostka čísla   | dieNumber  | číslo    |
-| Text            | Umístění     | location   | neuvedeno       |
+| Text            | Location     | location   | neuvedeno       |
 
 ## <a name="next-steps"></a>Další postup
 

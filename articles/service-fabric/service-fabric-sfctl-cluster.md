@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60837308"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -30,17 +30,17 @@ Vyberte, spravovat a provozovat clustery Service Fabric.
 | --- | --- |
 | Kód verze | Získá seznam prostředků infrastruktury verze kódu, které jsou zřízené v clusteru Service Fabric. |
 | verze konfigurace | Získá seznam fabric config verze, které jsou zřízené v clusteru Service Fabric. |
-| zdravotnictví | Získá stav clusteru Service Fabric. |
-| Manifest | Získejte manifestu clusteru Service Fabric. |
+| health | Získá stav clusteru Service Fabric. |
+| manifest | Získejte manifestu clusteru Service Fabric. |
 | zrušit operaci | Chyby vyvolané uživatel operaci zruší. |
 | seznam operací | Získá seznam operací chybu způsobenou uživatele filtrované podle zadaného vstupu. |
-| Zřizování | Zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
+| provision | Zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
 | obnovení systému | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení systému služby, které jsou aktuálně zablokované ve ztrátě kvora. |
 | report-health | Odešle zprávu o stavu v clusteru Service Fabric. |
-| vybrat | Se připojí ke koncovému bodu clusteru Service Fabric. |
+| Vyberte | Se připojí ke koncovému bodu clusteru Service Fabric. |
 | show-connection | Zobrazit clusteru Service Fabric, které tato instance sfctl je připojen k. |
-| zrušení zajišťování | Zrušení zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
-| upgradovat | Spuštění upgradu verze kódu nebo konfigurace clusteru Service Fabric. |
+| unprovision | Zrušení zřízení balíčky kódu nebo konfigurace clusteru Service Fabric. |
+| upgrade | Spuštění upgradu verze kódu nebo konfigurace clusteru Service Fabric. |
 | upgrade-resume | Ujistěte se, přejít k další upgradovací doméně upgradu clusteru. |
 | upgrade-rollback | Upgrade clusteru Service Fabric se vrátit zpět. |
 | upgrade-status | Získá průběh aktuální upgradu clusteru. |

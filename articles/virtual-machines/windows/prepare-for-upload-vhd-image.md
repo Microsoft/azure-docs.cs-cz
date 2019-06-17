@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
 ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561337"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
@@ -327,7 +327,7 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
 
    - Správci
    - Backup Operators
-   - Všichni
+   - Všem uživatelům
    - Uživatelé
 
 10. Restartování virtuálního počítače, abyste měli jistotu, že je Windows i nadále v pořádku lze dosáhnout pomocí připojení RDP. V tomto okamžiku můžete vytvořit virtuální počítač s vaší místní Hyper-v a ujistěte se, že virtuální počítač se spouští kompletně poté otestujte, zda je dostupný protokol RDP.
@@ -339,7 +339,7 @@ Ujistěte se, že jsou správně nakonfigurované následující nastavení pro 
 ### <a name="install-windows-updates"></a>Instalace aktualizací Windows
 Je ideální konfiguraci **počítače na nejnovější úroveň opravy**. Pokud to není možné, ujistěte se, že jsou nainstalované následující aktualizace:
 
-| Komponenta               | Binary         | Windows 7 SP1,Windows Server 2008 R2  SP1 | Windows 8,Windows Server 2012               | Windows 8.1,Windows Server 2012 R2 | Windows 10 verze 1607 systému Windows Server 2016 verze 1607 | Windows 10 verze 1703    | Windows 10 1709 Windows serveru 2016 verze 1709 | Windows 10 1803 Windows serveru 2016 verzi 1803 |
+| Komponenta               | Binární hodnota         | Windows 7 SP1,Windows Server 2008 R2  SP1 | Windows 8,Windows Server 2012               | Windows 8.1,Windows Server 2012 R2 | Windows 10 verze 1607 systému Windows Server 2016 verze 1607 | Windows 10 verze 1703    | Windows 10 1709 Windows serveru 2016 verze 1709 | Windows 10 1803 Windows serveru 2016 verzi 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Úložiště                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |

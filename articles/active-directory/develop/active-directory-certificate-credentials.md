@@ -19,10 +19,10 @@ ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001219"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certifikát přihlašovacích údajů pro ověřování aplikace
@@ -53,7 +53,7 @@ Pro výpočet kontrolního výrazu, můžete použít jednu z dalších [webové
 | `nbf` | Ne dříve než: datum, před kterým nelze použít token. Čas je vyjádřen takto: počet sekund od 1. ledna 1970 (1970-01-01T0:0:0Z) UTC až do doby byl token vydán. |
 | `sub` | Předmět: Jako u `iss`, by měl být client_id (ID aplikace pro službu klienta) |
 
-### <a name="signature"></a>Podpis
+### <a name="signature"></a>podpis
 
 Podpis je vypočítán s použitím certifikátu, jak je popsáno v [JSON Web Token RFC7519 specifikace](https://tools.ietf.org/html/rfc7519)
 

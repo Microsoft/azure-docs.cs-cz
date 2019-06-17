@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
 ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60734452"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
@@ -39,7 +39,7 @@ Veřejné a vnitřní nástroj pro vyrovnávání zatížení podporují zónov�
 
 Prostředek nástroje pro vyrovnávání zatížení, samotného je místní a nikdy oblastmi.  A virtuální sítě a podsítě jsou vždy místní a nikdy oblastmi.
 
-### <a name="frontend"></a>Front-end
+### <a name="frontend"></a>Front-endu
 
 Front-endu nástroje pro vyrovnávání zatížení je konfigurace IP front-endu na prostředek veřejné IP adresy nebo privátní IP adresu v rámci podsítě prostředku virtuální sítě.  Vymezuje koncový bod s vyrovnáváním zatížení, kde je vystaven vaší služby.
 
@@ -156,7 +156,7 @@ Vyrovnávání zatížení mezi zónami je schopnost služby Load Balancer oslov
 
 Pokud chcete zarovnat a zaručit nasazení v rámci jedné oblasti, zarovnání oblastmi front-endu a zónové back-endovým prostředkům do stejné zóny. Nevyžaduje se žádná další akce.
 
-### <a name="backend"></a>Back-end
+### <a name="backend"></a>Back-endu
 
 Nástroj pro vyrovnávání zatížení funguje s virtuálními počítači.  Všech virtuálních počítačů v jedné virtuální sítě můžou být součástí fondu back-endu bez ohledu na to, zda byla zaručeno do zóny nebo zóně, ve které byla zaručeno, že.
 

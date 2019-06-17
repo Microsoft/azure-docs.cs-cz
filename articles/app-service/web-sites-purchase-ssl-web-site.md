@@ -16,10 +16,10 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955712"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
@@ -50,7 +50,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 | Nastavení | Popis |
 |-|-|
 | Název | Popisný název služby App Service certificate. |
-| Název hostitele základní domény | Pokud zadáte kořenovou doménu, můžete získat certifikát, který zabezpečuje *obě* kořenové domény a `www` subdomény. Pro zabezpečené jakákoli subdoména, zadat pouze plně kvalifikovaný název domény zde poddomény (například `mysubdomain.contoso.com`). |
+| Naked Domain Host Name | Pokud zadáte kořenovou doménu, můžete získat certifikát, který zabezpečuje *obě* kořenové domény a `www` subdomény. Pro zabezpečené jakákoli subdoména, zadat pouze plně kvalifikovaný název domény zde poddomény (například `mysubdomain.contoso.com`). |
 | Předplatné | Datacentrum, které je hostitelem webové aplikace. |
 | Skupina prostředků | Skupina prostředků, který obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vyberte stejnou skupinu prostředků jako aplikace služby App Service, třeba. |
 | SKU certifikátu | Určuje typ certifikátů k vytvoření, jestli certifikát standardní nebo [certifikát se zástupným znakem](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -79,7 +79,7 @@ V **Key Vault stav** klikněte na **úložiště Key Vault** a vytvořte nový t
 
 Po výběru trezoru, zavřete **úložiště Key Vault** stránky. **Store** možnost by se měla zobrazit zelená značka zaškrtnutí pro úspěch. Na stránce ponechte otevřené na další krok.
 
-## <a name="verify-domain-ownership"></a>Ověřit vlastnictví domény
+## <a name="verify-domain-ownership"></a>Ověří vlastnictví domény
 
 Ze stejného **konfigurace certifikátu** stránky, které jste použili v předchozím kroku, klikněte na tlačítko **krok 2: Ověřte**.
 
@@ -97,9 +97,9 @@ Vyberte **ověřování App Service**. Protože je již namapována domény do w
 
 ## <a name="bind-certificate-to-app"></a>Vytvořte vazbu certifikátu k aplikaci
 
-V  **[webu Azure portal](https://portal.azure.com/)**, v nabídce vlevo vyberte **App Services** > **\<your_ aplikace >**.
+V  **[webu Azure portal](https://portal.azure.com/)** , v nabídce vlevo vyberte **App Services** >  **\<your_ aplikace >** .
 
-V levém navigačním panelu vaší aplikace, vyberte **nastavení SSL** > **privátní certifikáty (.pfx)** > **Import App Service Certificate**.
+V levém navigačním panelu vaší aplikace, vyberte **nastavení SSL** > **privátní certifikáty (.pfx)**  > **Import App Service Certificate**.
 
 ![Vložit obrázek importovat certifikát](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
@@ -114,7 +114,7 @@ Pomocí následující tabulky můžete nakonfigurovat vazby v **vazby SSL** dia
 | Nastavení | Popis |
 |-|-|
 | Název hostitele | Chcete-li přidat vazbu SSL pro název domény. |
-| Kryptografický otisk privátního certifikátu | Certifikát pro vazbu. |
+| Privátní kryptografický otisk certifikátu | Certifikát pro vazbu. |
 | Typ SSL | <ul><li>**SNI SSL** -lze přidat více SSL typu sni vazby. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**SSL na základě IP adresy** – Můžete přidat pouze jednu vazbu SSL na základě IP adresy. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jedním certifikátem SSL. Po konfiguraci vazby, postupujte podle kroků v [přemapování záznamu A pro IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>Ověření přístupu pro protokol HTTPS
@@ -136,7 +136,7 @@ Po dokončení operace obnovení klíče, klikněte na tlačítko **synchronizac
 > [!NOTE]
 > Pokud neklepnete na **synchronizace**, App Service se automaticky synchronizuje vaše certifikát do 48 hodin.
 
-## <a name="renew-certificate"></a>Prodloužit platnost certifikátu
+## <a name="renew-certificate"></a>Obnovení certifikátu
 
 Zapnutí automatického obnovení certifikátu v okamžiku, vyberte certifikát v [služby App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stránce a potom klikněte na **nastavení automatického obnovení** v levém navigačním panelu.
 

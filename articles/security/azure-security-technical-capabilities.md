@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 2dad1caeba8a0417b7ac16ebaa45f4f291f54495
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c28c87339bbfda7cc47e329c8fe6cebdee4a7843
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127193"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek obsahuje úvod k zabezpečení služby v Azure, které vám pomohou chránit data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vašeho podnikání.
@@ -124,9 +124,9 @@ Při použití Azure Active Directory B2C uživatele můžete zaregistrovat pro 
 
 #### <a name="device-registration"></a>Registrace zařízení
 
-[Registrace zařízení služby Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-introduction) je základem pro na základě zařízení [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup) scénáře. Když je zařízení registrováno, registrace zařízení služby Azure AD nabízí zařízení s identitou, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a jeho atributy pak lze použít k vynucení zásad podmíněného přístupu u aplikací, které jsou hostovány na cloudu a v místním úložišti.
+[Registrace zařízení služby Azure AD](https://docs.microsoft.com/azure/active-directory/device-management-introduction) je základem pro na základě zařízení [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup) scénáře. Když je zařízení registrováno, registrace zařízení služby Azure AD nabízí zařízení s identitou, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a atributy zařízení, potom slouží k vynucení zásad podmíněného přístupu pro aplikace, které jsou hostované v cloudu i lokálně.
 
-V kombinaci s [správu mobilních zařízení (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) řešení, třeba Intune, budou atributy zařízení ve službě Azure Active Directory aktualizovány o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.
+V kombinaci s [správu mobilních zařízení (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) řešení, třeba Intune, budou atributy zařízení ve službě Azure Active Directory aktualizovány o další informace o zařízení. To umožňuje vytvořit pravidla podmíněného přístupu, které vynucují přístup ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 

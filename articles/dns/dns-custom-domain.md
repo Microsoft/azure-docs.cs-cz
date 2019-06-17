@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
 ms.openlocfilehash: 5c098c6c22b079d586c0bd808df9af4a737c17a8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62096238"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Použití Azure DNS k poskytování nastavení vlastní domény pro službu Azure
@@ -40,7 +40,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Název     | myfunctionapp        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Name     | myfunctionapp        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
 |Type     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
@@ -65,7 +65,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Název     | mywebserver        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Name     | mywebserver        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
 |Type     | A        | Záznam A použijte, protože prostředek IP adresy.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
@@ -92,7 +92,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Název     | mywebserver        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Name     | mywebserver        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
 |Type     | CNAME        | Použít záznam CNAME, který používá jako alias. Pokud prostředek IP adresy, záznam se použije.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |
@@ -126,7 +126,7 @@ Přejděte na svoji zónu DNS a klikněte na tlačítko **+ sada záznamů**. Vy
 
 |Vlastnost  |Hodnota  |Popis  |
 |---------|---------|---------|
-|Název     | asverify.mystorageaccount        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
+|Name     | asverify.mystorageaccount        | Tato hodnota spolu s Popisek názvu domény je plně kvalifikovaný název domény pro vlastní název domény.        |
 |Type     | CNAME        | Použít záznam CNAME, který používá jako alias.        |
 |TTL     | 1        | použije se 1 za 1 hodinu        |
 |Jednotka TTL     | Hodiny        | Hodiny jsou použity jako měření času         |

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: jeconnoc
 ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61435732"
 ---
 # <a name="how-to-configure-cloud-services"></a>Postup konfigurace služby Cloud Services
@@ -101,7 +101,7 @@ Možná budete muset změnit konfiguraci cloudové služby až [konfigurace slu�
     ![Ke stažení](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Po aktualizaci konfigurační soubor služby nahrát a zavést aktualizace konfigurace:
 
-    ![Odeslat](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+    ![Nahrávání](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Vyberte soubor .cscfg a klikněte na tlačítko **OK**.
 
 ## <a name="next-steps"></a>Další postup

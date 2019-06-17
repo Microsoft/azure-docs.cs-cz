@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
 ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231114"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
@@ -115,10 +115,10 @@ Následující tabulka uvádí hrozby ROZTEČ a poskytuje některá příklad zm
 | --- | --- | --- |
 | Falšování identity | Authentication | Vyžadovat připojení prostřednictvím protokolu HTTPS. |
 | Manipulace | Integrita | Ověření certifikátů SSL. |
-| odmítnutí | Neodvolatelnost | Povolení služby Azure [monitorováním a diagnostikou](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
+| odmítnutí | Nepopiratelnost odpovědnosti | Povolení služby Azure [monitorováním a diagnostikou](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
 | Zpřístupnění informací | Důvěrnost | Šifrovat citlivá data v klidovém stavu pomocí [služby certifikáty](https://docs.microsoft.com/rest/api/appservice/certificates). |
-| Přerušení služby | Dostupnost | Monitorovat metriky výkonu pro potenciální útok na dostupnost služby podmínky. Implementace připojení filtry. |
-| Zvýšení oprávnění | Autorizace | Použití [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md). |
+| Útok DoS | Dostupnost | Monitorovat metriky výkonu pro potenciální útok na dostupnost služby podmínky. Implementace připojení filtry. |
+| Zvýšení úrovně oprávnění | Autorizace | Použití [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md). |
 
 ## <a name="develop-on-azure-app-service"></a>Vývoj pro služby Azure App Service
 [Azure App Service](../app-service/overview.md) je PaaS nabídka, která umožňuje vytvářet webové a mobilní aplikace pro jakoukoliv platformu nebo zařízení a připojení k datům bez ohledu na, v cloudu nebo místně. App Service zahrnuje webové a mobilní funkce, které byly dříve nabízeli samostatně jako weby Azure a Azure Mobile Services. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba App Service přináší bohatou sadu možností pro webové, mobilní a integrační scénáře.

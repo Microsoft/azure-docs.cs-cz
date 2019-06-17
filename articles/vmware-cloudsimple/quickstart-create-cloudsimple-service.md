@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64577567"
 ---
 # <a name="quickstart---create-service"></a>Rychlý start – vytvoření služby
@@ -71,7 +71,7 @@ Postupem uvedeným níže povolte poskytovatele prostředků pro službu CloudSi
 
 Služba je vytvořen a přidán do seznamu služeb.
 
-## <a name="purchase-nodes"></a>Nákupní uzly
+## <a name="purchase-nodes"></a>Nákup uzlů
 
 Nastavení platit jako můžete přejít kapacity pro prostředí CloudSimple privátního cloudu, nejdříve zřídit uzly na webu Azure Portal.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0abf2eca52616638f0c4dce89691c0d4f7875106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: a5b1838007e1be7fc1d9872516ede14c208b1f57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415266"
+ms.locfileid: "67113460"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
 
@@ -86,10 +86,10 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **Podmíněný přístup** > **Pojmenovaná umístění**.
-3. V okně **Podmíněný přístup – pojmenovaná umístění** vyberte **Konfigurovat důvěryhodné IP adresy MFA**.
+2. Vyberte **Azure Active Directory** > **podmíněného přístupu** > **pojmenovaná umístění**.
+3. Z **podmíněný přístup – pojmenovaná umístění** okně vyberte **MFA nakonfigurovat důvěryhodné IP adresy**
 
-   ![Azure AD – Podmíněný přístup – Pojmenovaná umístění – Konfigurovat důvěryhodné IP adresy MFA](./media/howto-mfa-adfs/trustedip6.png)
+   ![Pojmenovaná umístění podmíněný přístup Azure AD MFA nakonfigurovat důvěryhodné IP adresy](./media/howto-mfa-adfs/trustedip6.png)
 
 4. Na stránce Nastavení služby v části **Důvěryhodné IP adresy** vyberte **Pro žádosti od federovaných uživatelů v mém intranetu přeskočit vícefaktorové ověřování**.  
 5. Klikněte na **Uložit**.
