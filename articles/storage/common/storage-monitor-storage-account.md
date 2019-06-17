@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153631"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
@@ -94,7 +94,7 @@ Metriky, které jste vybrali v **diagnostiky** určuje řešení, která jsou k 
 
 Můžete vytvářet výstrahy, které vás upozorní, pokud bylo dosaženo prahové hodnoty pro metriky prostředků úložiště.
 
-1. Chcete-li otevřít **okno pravidla upozornění**, přejděte dolů k položce **monitorování** část **okně s nabídkou** a vyberte **upozornění (klasická)**.
+1. Chcete-li otevřít **okno pravidla upozornění**, přejděte dolů k položce **monitorování** část **okně s nabídkou** a vyberte **upozornění (klasická)** .
 2. Vyberte **přidat upozornění metriky (klasické)** otevřít **přidání pravidla výstrahy** okno
 3. Zadejte **název** a **popis** pro nové pravidlo výstrah.
 4. Vyberte **metrika** pro který chcete přidat upozornění, oznámení **podmínku**a **prahová hodnota**. Prahová hodnota jednotku zadejte mění v závislosti na metriku, kterou jste zvolili. Například "počet" je typ jednotky pro *ContainerCount*, zatímco jednotky pro *PercentNetworkError* metrika je procento.

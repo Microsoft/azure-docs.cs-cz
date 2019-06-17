@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6661cee8ba6176bd706d31a10a8f20549e29e4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2804a50cc1ef7bb257e1549afabdef466ce3c2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60356225"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112200"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrovat klasické zásady, která vyžaduje ověření službou Multi-Factor Authentication na webu Azure Portal
 
@@ -31,7 +31,7 @@ Scénář v tomto článku ukazuje, jak migrovat klasické zásady, které vyža
 Proces migrace se skládá z následujících kroků:
 
 1. [Otevřete klasické zásady](#open-a-classic-policy) zobrazíte nastavení konfigurace.
-1. Vytvoření nové zásady podmíněného přístupu Azure AD k nahrazení klasické zásady. 
+1. Vytvořte novou zásadu podmíněného přístupu Azure AD k nahrazení klasické zásady. 
 1. Zakážete klasické zásady.
 
 ## <a name="open-a-classic-policy"></a>Otevřete klasické zásady
@@ -44,7 +44,7 @@ Proces migrace se skládá z následujících kroků:
 
    ![Podmíněný přístup](./media/policy-migration-mfa/02.png)
 
-1. V **spravovat** klikněte na tlačítko **klasické zásady (preview)**.
+1. V **spravovat** klikněte na tlačítko **klasické zásady (preview)** .
 
    ![Klasické zásady](./media/policy-migration-mfa/12.png)
 
@@ -125,5 +125,5 @@ Chcete-li zakázat klasické zásady, klikněte na tlačítko **zakázat** v **p
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o migraci klasické zásady, najdete v části [migrace klasických zásad na webu Azure Portal](policy-migration.md).
-- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
-- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace, pomocí Azure Active Directory podmíněného přístupu](app-based-mfa.md).
+- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).

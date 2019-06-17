@@ -9,20 +9,20 @@ ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65555951"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Řešit problémy se Synchronizací souborů Azure
+# <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
 
 Tento článek je určen můžete odstraňovat potíže a řešit problémy, které se můžete setkat s nasazením Azure File Sync. Také zjistíte, jak shromažďovat důležité protokoly ze systému, pokud se vyžaduje hlubší zkoumání problému. Pokud nevidíte odpověď na svoji otázku, kontaktujte nás prostřednictvím následujících kanálů (v neustále rostoucích pořadí):
 
 1. [Fórum služby Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
-3. podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
+3. Podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mám potíže s Azure File Sync na serveru (synchronizace, cloud vrstvení atd.). By měla odebrat a znovu vytvořte koncový bod pro tento server?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -84,18 +84,18 @@ Pokud se zobrazí tato zpráva a sdílené složky Azure aktuálně není použ�
 K tomuto problému dochází, pokud váš uživatelský účet nemá dostatečná práva k vytvoření koncového bodu cloudu. 
 
 Vytvoření koncového bodu cloudu, váš uživatelský účet musí mít následující oprávnění Authorization společnosti Microsoft:  
-* Čtení: Načíst definici role
+* Čtení: Získání definice role
 * Zápis: Vytvořit nebo aktualizovat vlastní definici role
-* Čtení: Načíst přiřazení role
+* Čtení: Získat přiřazení role
 * Zápis: Vytvořit přiřazení role
 
 Následující předdefinované role mají všechna oprávnění vyžadovaná Authorization společnosti Microsoft:  
 * Vlastník
-* Správce uživatelských přístupů
+* Správce přístupu uživatelů
 
 Chcete-li zjistit, zda vaše uživatelská role účet má potřebná oprávnění:  
 1. Na webu Azure Portal, vyberte **skupiny prostředků**.
-2. Vyberte skupinu prostředků, které je umístěný účet úložiště a pak vyberte **řízení přístupu (IAM)**.
+2. Vyberte skupinu prostředků, které je umístěný účet úložiště a pak vyberte **řízení přístupu (IAM)** .
 3. Vyberte **přiřazení rolí** kartu.
 4. Vyberte **Role** (například vlastníka nebo přispěvatele) pro váš uživatelský účet.
 5. V **poskytovatele prostředků** seznamu vyberte **Microsoft Authorization**. 
@@ -105,7 +105,7 @@ Chcete-li zjistit, zda vaše uživatelská role účet má potřebná oprávněn
 <a id="server-endpoint-createjobfailed"></a>**Vytvoření koncového bodu serveru selže s touto chybou: "MgmtServerJobFailed" (kód chyby:-2134375898)**  
 K tomuto problému dochází, pokud je cesta na koncový bod serveru na systémovém svazku a cloud ovládání datových vrstev je povolená. Cloud nepodporuje ovládání datových vrstev na systémovém svazku. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte vrstvení cloudu po vytvoření koncového bodu serveru.
 
-<a id="server-endpoint-deletejobexpired"></a>**Odstraňuje se koncový bod serveru selže s touto chybou: "MgmtServerJobExpired"**                
+<a id="server-endpoint-deletejobexpired"></a>**Odstraňuje se koncový bod serveru selže s touto chybou: "MgmtServerJobExpired"**                 
 K tomuto problému dochází, pokud se server je offline nebo nemá připojení k síti. Pokud již není k dispozici na serveru, zrušení registrace serveru na portálu, který se odstraní koncové body serveru. Pokud chcete odstranit koncové body serveru, postupujte podle kroků, které jsou popsány v [zrušení registrace serveru pomocí služby Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
 <a id="server-endpoint-provisioningfailed"></a>**Nelze otevřít stránku Vlastnosti koncového bodu serveru nebo aktualizujete zásady pro vrstvení cloudu**  
@@ -153,7 +153,7 @@ Koncový bod serveru nemůže protokolu aktivitu synchronizace z následujícíc
 > [!Note]  
 > Je-li stav serveru v okně registrované servery "Se zobrazí v režimu Offline", proveďte kroky popsané v [koncový bod serveru je ve stavu stavu "Žádná aktivita" nebo "Čeká na vyřízení" a stavu serveru v okně registrované servery je "Se zobrazí v režimu offline" ](#server-endpoint-noactivity) oddílu.
 
-## <a name="sync"></a>Synchronizovat
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Když jsem vytvořil soubor přímo v mé sdílené složky Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá synchronizaci pro servery ve skupině synchronizace souboru?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -244,15 +244,15 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 
 | HODNOTA HRESULT | HRESULT (decimální) | Text chyby | Problém | Náprava |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nejde zatím synchronizovat, protože ještě není synchronizovaná závislá složka. Tato položka se synchronizuje po závislých změn. | Nevyžaduje se žádná akce. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nejde zatím synchronizovat, protože ještě není synchronizovaná závislá složka. Tato položka se synchronizuje po závislých změn. | Není vyžadována žádná akce. |
 | 0x7b | 123 | ERROR_INVALID_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Název souboru nebo adresáře je neplatný. | Přejmenujte soubor nebo adresář nejistá. Zobrazit [zpracování nepodporované znaky](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Další informace. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Nevyžaduje se žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Nevyžaduje se žádná akce. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Soubor byl změněn, ale změny ještě nezjistil synchronizace. Synchronizace se obnoví po této změně se detekuje. | Není vyžadována žádná akce. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Soubor nelze synchronizovat, protože je dosažen limit sdílené složky Azure file. | Chcete-li vyřešit tento problém, naleznete v tématu [jste dosáhli limitu úložiště sdílené složky Azure file](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) části v Průvodci odstraňováním potíží. |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | Této chybě může dojít z následujících důvodů: soubor je zašifrovaný pomocí nepodporované řešení (například systém souborů EFS systému souborů NTFS), soubor obsahuje odstranění stav Čekání na vyřízení nebo soubor se nachází ve složce jen pro čtení replikace DFS-R | Pokud je soubor šifrovaný pomocí nepodporované řešení, dešifrování souboru a používejte šifrování podporovaných řešení. Seznam řešení podpory najdete v tématu [řešení šifrování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) části v Průvodci plánem. Pokud se soubor nachází v odstranění stav Čekání na vyřízení, soubor odstraní, jakmile se zavřou všechny otevřené popisovače souborů. Pokud se soubor nachází ve složce jen pro čtení replikace DFS-R, Azure File Sync nepodporuje koncové body serveru na složky jen pro čtení replikace DFS-R. Zobrazit [Příručka pro plánování](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs) Další informace.
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Nevyžaduje se žádná akce. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Nevyžaduje se žádná akce. |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor byl změněn během synchronizace, proto musí znovu synchronizovat. | Není vyžadována žádná akce. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporované znaky.
 Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kódy chyb 0x7b a 0x8007007b), by měl neodeberete nebo nepřejmenujete znaky na selhání z názvů příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-tool) slouží k identifikaci znaky, které nejsou podporovány.
@@ -310,7 +310,7 @@ Nemusíte nic dělat; server to zkusí znovu. Pokud tento problém potrvá déle
 | **Text chyby** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **Požadována náprava** | Ne |
 
-Není vyžadována žádná akce. Pokud soubor nebo soubor sdílet (koncový bod v cloudu) je obnovit pomocí služby Azure Backup, blokuje synchronizaci, dokud se nedokončí detekce změn na sdílenou složku Azure. Detekce změn spustí ihned po dokončení obnovení a dobu trvání je založena na počtu souborů ve sdílené složce.
+Nevyžaduje se žádná akce. Pokud soubor nebo soubor sdílet (koncový bod v cloudu) je obnovit pomocí služby Azure Backup, blokuje synchronizaci, dokud se nedokončí detekce změn na sdílenou složku Azure. Detekce změn spustí ihned po dokončení obnovení a dobu trvání je založena na počtu souborů ve sdílené složce.
 
 <a id="-2134364065"></a>**Synchronizaci nelze přistoupit, sdílené složky Azure zadaný koncový bod cloudu.**  
 
@@ -475,7 +475,7 @@ K této chybě může dojít, pokud vaše organizace používá SSL proxy ukonč
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Když nastavíte tuto hodnotu registru, agent funkce Synchronizace souborů Azure přijme při přenosu dat mezi serverem a cloudovou službou jakýkoli místně důvěryhodný certifikát protokolu SSL.
+Nastavením této hodnoty registru, agenta Azure File Sync přijímat všechny místně důvěryhodný certifikát SSL při přenosu dat mezi serverem a cloudovou službu.
 
 <a id="-2147012894"></a>**Nelze navázat připojení ke službě.**  
 
@@ -577,7 +577,7 @@ V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace
 | **Text chyby** | ECS_E_SYNC_INVALID_PATH |
 | **Požadována náprava** | Ano |
 
-Ujistěte se, že cesta existuje, je na místním svazku NTFS a není to spojovací bod nebo existující koncový bod serveru.
+Ujistěte se, že cesta existuje, je na místním svazku NTFS a se spojovacím bodem nebo existující koncový bod serveru.
 
 <a id="-2134375817"></a>**Synchronizace se nezdařila, protože verze ovladače filtru není kompatibilní s verzí agenta**  
 

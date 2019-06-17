@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61481579"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozšíření místních skupin dostupnosti Always On do Azure
@@ -42,7 +42,7 @@ V této části se dozvíte, jak používat **Průvodce přidáním repliky Azur
 > [!IMPORTANT]
 > **Průvodce přidáním repliky Azure** podporuje pouze virtuální počítače vytvořené pomocí modelu nasazení Classic. Nové nasazení virtuálního počítače by měla používat novější modelu Resource Manager. Pokud používáte virtuální počítače s využitím Resource Manageru, je třeba ručně přidat sekundární repliky Azure pomocí jazyka Transact-SQL commmands (není tady zobrazené). Tento průvodce nebudou fungovat ve scénáři Resource Manageru.
 
-1. Z v rámci SQL Server Management Studio rozbalte **vysoká dostupnost AlwaysOn** > **skupin dostupnosti** > **[název vaší skupiny dostupnosti]**.
+1. Z v rámci SQL Server Management Studio rozbalte **vysoká dostupnost AlwaysOn** > **skupin dostupnosti** >  **[název vaší skupiny dostupnosti]** .
 2. Klikněte pravým tlačítkem na **replik dostupnosti**, pak klikněte na tlačítko **přidat repliky**.
 3. Ve výchozím nastavení **přidat repliky Průvodce vytvořením skupiny dostupnosti** se zobrazí. Klikněte na **Další**.  Pokud jste vybrali **tuto stránku již příště nezobrazovat** možnost v dolní části stránky při předchozím spuštění tohoto průvodce se tato obrazovka se nezobrazí.
    

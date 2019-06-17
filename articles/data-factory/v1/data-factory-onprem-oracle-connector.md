@@ -14,15 +14,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61462381"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
 > * [Verze 1](data-factory-onprem-oracle-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-oracle.md)
 
@@ -55,7 +55,7 @@ Brána je požadovaná i v případě, že Oracle je hostovaná v Azure infrastr
 
 Tento konektor Oracle podporuje dvě verze ovladače:
 
-- **Ovladač Microsoft pro Oracle (doporučeno)**: Počínaje brána správy dat verze 2.7, ovladač Microsoft pro Oracle se automaticky nainstaluje s bránou. Není nutné pro instalaci nebo aktualizaci ovladače k navázání připojení k systému Oracle. Může také docházet lepší výkon kopírování s použitím tohoto ovladače. Jsou podporovány tyto verze databáze Oracle:
+- **Ovladač Microsoft pro Oracle (doporučeno)** : Počínaje brána správy dat verze 2.7, ovladač Microsoft pro Oracle se automaticky nainstaluje s bránou. Není nutné pro instalaci nebo aktualizaci ovladače k navázání připojení k systému Oracle. Může také docházet lepší výkon kopírování s použitím tohoto ovladače. Jsou podporovány tyto verze databáze Oracle:
   - R1 Oracle 12c (12.1)
   - Oracle 11g R1, R2 (11.1, 11.2)
   - Oracle 10g R1, R2 (10,1, 10.2)
@@ -183,7 +183,7 @@ V aktivitě kopírování, pokud je zdroj **OracleSource** typu, jsou k dispozic
 | writeBatchTimeout |Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Celé číslo (počet řádků) |Ne (výchozí: 100) |
 | sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování ke spuštění tak, aby se vyčistit data určitý řez. |Příkaz dotazu. |Ne |
-| sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generované řez. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitý řez, kdy se znovu spustit. |Název sloupce, který má datový typ sloupce **binary(32)**. |Ne |
+| sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generované řez. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitý řez, kdy se znovu spustit. |Název sloupce, který má datový typ sloupce **binary(32)** . |Ne |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Příklady JSON pro kopírování dat do a z databáze Oracle
 
@@ -571,7 +571,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
     1. Otevřete konfigurační soubor počítače pro rozhraní .NET 2.0 ze složky < systémový disk\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Vyhledejte **poskytovatel dat Oracle pro .NET**. Byste měli najít položku, jak je znázorněno v následujícím příkladu v části **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Zkopírujte tuto položku do souboru machine.config v následující složce rozhraní .NET 4.0: < disk systému\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Změňte verzi na 4.xxx.x.x.
-* Nainstalovat < cesta nainstalované ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll v globální mezipaměti sestavení (GAC) spuštěním **gacutil /i [cesta zprostředkovatele]**.
+* Nainstalovat < cesta nainstalované ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll v globální mezipaměti sestavení (GAC) spuštěním **gacutil /i [cesta zprostředkovatele]** .
 
 ### <a name="problem-2-datetime-formatting"></a>Problém č. 2: Formátování data a času
 
@@ -600,24 +600,24 @@ Při přesunu dat od Oraclu, se od Oracle datového typu na typ formátu .NET a 
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(podporováno pouze ve Oracle 10g a novějších verzích při použití ovladač Microsoft) |
 | CHAR |String |
-| DATOVÝ TYP CLOB |String |
-| DATE (Datum) |DateTime |
-| PLOVOUCÍ DESETINNOU ČÁRKOU |Desetinné číslo, řetězec (Pokud přesnost > 28) |
-| CELÉ ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| CLOB |String |
+| DATE |DateTime |
+| FLOAT |Decimal, String (Pokud přesnost > 28) |
+| INTEGER |Decimal, String (Pokud přesnost > 28) |
 | INTERVAL ROK MĚSÍC |Int32 |
 | DEN INTERVALU SEKUNDY. |TimeSpan |
 | LONG |String |
-| DLOUHO NEZPRACOVANÉ |Byte[] |
+| LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| ČÍSLO |Desetinné číslo, řetězec (Pokud přesnost > 28) |
+| NUMBER |Decimal, String (Pokud přesnost > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
-| ID ŘÁDKU |String |
-| ČASOVÉ RAZÍTKO |DateTime |
-| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |DateTime |
-| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |DateTime |
-| CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |
+| ROWID |String |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
+| UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
 | XML |String |
 

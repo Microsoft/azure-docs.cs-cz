@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939996"
 ---
 # <a name="hosted-test-drive"></a>Hostovaná testovací verze
@@ -41,7 +41,7 @@ Zadejte následující pole v \'technické konfigurace\' části:
 
 - **Typ testu jednotky**: Zvolte \'Hosted Microsoft (příklad Dynamics 365 for Customer Engagement)' možnost. To znamená, že Microsoft bude hostovat a spravovat služby, který provádí Test Drive uživatele zřizování a zrušení zřizování.
 - **Maximálního počtu současných testovacími verzemi**: Nastavte pole na počet souběžných uživatelů, které může mít aktivní testovací verze v libovolném časovém okamžiku dobu. Každý uživatel bude využívat licence Dynamics, jejich Test Drive je aktivní, proto budete muset zajistit, že máte alespoň tolik Dynamics licencí k dispozici pro uživatele testovací verze. Doporučená hodnota 3 – 5.
-- **Jednotka doba trvání testu (hodiny)**: Nastavte pole na počet hodin, uživatele, které budou aktivní pro testovací verze. Po tomto počtu hodin bude se uživatel zrušit zřízení z vašeho tenanta. Doporučená hodnota 2 až 24 hodin v závislosti na složitosti vaší aplikace. Je-li spustit mimo časový limit a chtějí mít přístup k testovací verze, může uživatel vždy požádat jiného testovací verze.
+- **Jednotka doba trvání testu (hodiny)** : Nastavte pole na počet hodin, uživatele, které budou aktivní pro testovací verze. Po tomto počtu hodin bude se uživatel zrušit zřízení z vašeho tenanta. Doporučená hodnota 2 až 24 hodin v závislosti na složitosti vaší aplikace. Je-li spustit mimo časový limit a chtějí mít přístup k testovací verze, může uživatel vždy požádat jiného testovací verze.
 - **Adresa URL instance**: Zadejte adresu URL, která uživatel testovací verze se zpočátku přejde při jejich spuštění na testovací verzi. Toto je obvykle adresa URL instance Dynamics 365, který má vaše aplikace a ukázková data nainstalována. Příklad hodnoty: https:\//testdrive.crm.dynamics.com
 - **Azure AD Tenant ID**: Zadejte ID Tenanta Azure pro vaši instanci Dynamics 365. Načíst tuto hodnotu, přihlaste se k webu Azure portal a přejděte do \'Azure Active Directory\'  - \> vybrat vlastnosti v okně nabídky -\> zkopírujte ID adresáře. Příklad hodnoty: 72f988bf-86f1-41af-91ab-2d7cd0111234
 - **ID aplikace Azure AD**: ID aplikace Azure AD, kterou jste vytvořili v kroku 7. \ Příklad hodnoty: 53852862-a2ae-4e43-9461-faa49650a096

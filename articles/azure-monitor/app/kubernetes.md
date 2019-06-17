@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
 ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65555839"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulové instrumentace application monitoring pro aplikace pro systém Kubernetes hostované aplikace
@@ -34,7 +34,7 @@ Azure Monitor teď využívá technická sítě služby v clusteru Kubernetes po
 - [Prostředku Application Insights](create-new-resource.md)
 - Být mřížku služby. Pokud váš cluster nemá Istio nasazení, můžete se dozvědět jak [nainstalovat a používat ve službě Azure Kubernetes Service Istio](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Schopnosti
+## <a name="capabilities"></a>Možnosti
 
 Pomocí nulové instrumentace aplikace pro monitorování Kubernetes hostované aplikace bude moct používat:
 
@@ -78,7 +78,7 @@ Aplikace běžící mimo síť služby nejsou ovlivněny.
 3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
     - Upravit hodnotu daného *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* proměnnou prostředí tak, aby obsahovala Instrumentační klíč tohoto prostředku Application Insights na webu Azure portal tak, aby obsahovala telemetrická data.
     - V případě potřeby upravte hodnotu *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* proměnnou prostředí tak, aby obsahovala čárkou oddělený seznam oborů názvů, pro kterou chcete povolit monitorování. Ponechte prázdné, pokud chcete monitorovat všechny obory názvů.
-4. Použít *každý* soubor YAML nalezené pod *src/kubernetes/* spuštěním následujícího (přesto musí být uvnitř */src/kubernetes/*):
+4. Použít *každý* soubor YAML nalezené pod *src/kubernetes/* spuštěním následujícího (přesto musí být uvnitř */src/kubernetes/* ):
 
    ```console
    kubectl apply -f .
@@ -134,7 +134,7 @@ Níže se řešení potíží tok při telemetrická data nezobrazí na portálu
 
 Nejnovější informace o průběhu na tento projekt, najdete [adaptér Application Insights pro GitHub project Istio Mixer](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
 Chcete-li odinstalovat produkt, pro *každý* soubor YAML nalezené pod *src/kubernetes/* spustit:
 

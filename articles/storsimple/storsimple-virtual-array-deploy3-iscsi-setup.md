@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61416867"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasazení virtuálních polí StorSimple – sady nahoru jako serveru iSCSI prostřednictvím portálu Azure portal
@@ -90,7 +90,7 @@ Nastavit a nakonfigurovat StorSimple Virtual Array pomocí následujících krok
       > 
    4. Zobrazí se dialogové okno. Zadejte přihlašovací údaje domény v zadaném formátu. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). Ověří přihlašovací údaje domény. Pokud přihlašovací údaje jsou nesprávné, zobrazí se chybová zpráva.
       
-       ![přihlašovací údaje](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
+       ![Přihlašovací údaje](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. Klikněte na tlačítko **Použít**. Tím se použít a ověřit nastavení zařízení.
 7. (Volitelně) nakonfigurujte váš webový proxy server. Sice volitelné konfigurace webového proxy serveru, mějte na paměti, že pokud používáte webový proxy server, můžete pouze nakonfigurovat ji sem.
    
@@ -118,12 +118,12 @@ Nastavit a nakonfigurovat StorSimple Virtual Array pomocí následujících krok
    2. Pokud to není první zařízení, které při registraci k této službě, je potřeba zadat **šifrovací klíč dat služby**. Tento klíč je požadován spolu s registračním klíčem služby k registraci dalších zařízení ve službě Správce zařízení StorSimple. Další informace najdete v [získat šifrovací klíč dat služby](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) na vaše místní webové uživatelské rozhraní.
    3. Klikněte na tlačítko **zaregistrovat**. Tato operace restartuje zařízení. Budete muset počkat 2 až 3 minut, než se zařízení úspěšně zaregistruje. Po restartování zařízení, budete přesměrováni na přihlašovací stránku.
       
-      ![Zaregistrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
+      ![Registrace zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Vraťte se na Azure Portal.
 11. Přejděte **zařízení** okna vaší služby. Pokud máte velké množství prostředků, klikněte na tlačítko **všechny prostředky**, klikněte na název služby (vyhledejte ho v případě potřeby) a potom klikněte na tlačítko **zařízení**.
 12. Na **zařízení** okno, ověřte, že zařízení úspěšně připojilo ke službě kontrolou stavu. Stav zařízení musí být **Připraveno k nastavení**.
     
-    ![Zaregistrovat zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Registrace zařízení](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>Krok 2: Konfigurace zařízení jako serveru iSCSI
 

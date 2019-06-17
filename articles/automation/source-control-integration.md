@@ -10,10 +10,10 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574106"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
@@ -22,7 +22,7 @@ Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší slu�
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHubu
+* GitHub
 * Úložiště Azure (Git)
 * Úložiště Azure (TFVC)
 
@@ -48,7 +48,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Vlastnost  |Popis  |
 |---------|---------|
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu. *Tento název může obsahovat jenom písmena a číslice.*        |
-|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHubu</br>Úložiště Azure (Git)</br> Úložiště Azure (TFVC)        |
+|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Úložiště Azure (Git)</br> Úložiště Azure (TFVC)        |
 |Úložiště     | Název úložiště nebo projektu. Prvních 200 úložišť jsou vráceny. K vyhledání úložiště, zadejte název do pole a klikněte na tlačítko **hledání na Githubu**.|
 |Branch     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks </br>*Jenom runbooky ve složce určené synchronizují. Rekurze se nepodporuje.*        |
@@ -79,7 +79,7 @@ New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountnam
 New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-### <a name="github"></a>GitHubu
+### <a name="github"></a>GitHub
 
 ```powershell-interactive
 New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -89,11 +89,11 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 Správy zdrojových kódů vyžaduje některé minimální sadu oprávnění pro osobní přístupové tokeny. Následující tabulky obsahují minimální sadu oprávnění potřebných pro GitHub a úložiště Azure.
 
-#### <a name="github"></a>GitHubu
+#### <a name="github"></a>GitHub
 
 Další informace o vytvoření osobního přístupového tokenu githubu najdete [vytvoření osobního přístupového tokenu pro příkazový řádek](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Rozsah  |Popis  |
+|Scope  |Popis  |
 |---------|---------|
 |**úložiště**     |         |
 |repo:status     | Stav přístupu pro potvrzení změn         |
@@ -107,7 +107,7 @@ Další informace o vytvoření osobního přístupového tokenu githubu najdete
 
 Další informace o vytvoření osobního přístupového tokenu v úložišti Azure, navštivte [ověření přístupu s osobní přístupové tokeny](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Rozsah  |
+|Scope  |
 |---------|
 |Kódování (čtení)     |
 |Projekt a tým (čtení)|

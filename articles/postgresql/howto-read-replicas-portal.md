@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510402"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytvoření a správa repliky pro čtení ve službě Azure Database for PostgreSQL – jeden Server z webu Azure portal
@@ -67,7 +67,7 @@ Vytvoření repliky pro čtení, postupujte podle těchto kroků:
 
 5. Vyberte umístění pro repliku. Repliku můžete vytvořit v libovolné oblasti Azure. Výchozí umístění je stejná jako hlavní server.
 
-    ![Vyberte umístění](./media/howto-read-replicas-portal/location-replica.png)
+    ![Vybrat umístění](./media/howto-read-replicas-portal/location-replica.png)
 
 6. Vyberte **OK** pro potvrzení vytvoření repliky.
 
@@ -81,7 +81,7 @@ Po vytvoření repliky pro čtení, můžete zobrazit v **replikace** okno:
 ![Zobrazit novou repliku v okně replikace](./media/howto-read-replicas-portal/list-replica.png)
  
 
-## <a name="stop-replication"></a>Zastavit replikaci
+## <a name="stop-replication"></a>Zastavení replikace
 Je-li zastavit replikace mezi serverem a hlavním serverem repliky pro čtení.
 
 > [!IMPORTANT]

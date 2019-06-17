@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61482790"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Nahraďte modul řadiče na zařízení StorSimple
@@ -36,7 +36,7 @@ Tento kurz vysvětluje, jak odstranit a nahradit jeden nebo oba řadiče modulů
 
 Následující tabulka uvádí scénáře podporované řadiče nahrazení.
 
-| Případ | Scénáře s výměnou | Příslušný postup popsaný |
+| případ | Scénáře s výměnou | Příslušný postup popsaný |
 |:--- |:--- |:--- |
 | 1 |Jeden kontroler je v chybovém stavu, druhý kontroler je v pořádku a aktivní. |[Jeden kontroler nahrazení](#replace-a-single-controller), která popisuje [logice nahrazení jedním řadičem](#single-controller-replacement-logic), stejně jako [kroky nahrazení](#single-controller-replacement-steps). |
 | 2 |Oba kontrolery selhat a vyžadovat nahrazení. Skříň, disky a skříně disku jsou v pořádku. |[Nahrazení dvěma řadiči](#replace-both-controllers), vystihuje [logiku za dvěma řadiči nahrazení](#dual-controller-replacement-logic), stejně jako [kroky nahrazení](#dual-controller-replacement-steps). |
@@ -94,8 +94,8 @@ Pokud selže některý kontroler v zařízení Microsoft Azure StorSimple, prove
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |Řadič 0 |
-   | 4 |Řadič 1 |
+   | 3 |Kontroler 0 |
+   | 4 |Kontroler 1 |
 4. Na řadiči selhalo odeberte všechny připojené síťové kabely z portů, data. Pokud používáte modelu 8600, také odeberte SAS kabely, které se připojují ke kontroleru EBOD kontroleru.
 5. Postupujte podle kroků v [odebrat řadič](#remove-a-controller) odebrání kontroleru, který selhal.
 6. Nainstalujte náhradní objekt pro vytváření stejný slot, ze kterého byla odebrána kontroleru, který selhal. Tím se aktivuje jedním řadičem náhradní logiku. Další informace najdete v tématu [jeden kontroler náhradní logiku](#single-controller-replacement-logic).

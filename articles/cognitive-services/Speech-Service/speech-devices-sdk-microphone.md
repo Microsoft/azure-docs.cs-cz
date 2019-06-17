@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65237004"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pole zařízení SDK mikrofon řeči
@@ -80,7 +80,7 @@ Je nezbytné pro zařízení se rozpoznávání řeči, které obsahují předn�
 |-----------------------------------|-----------------------------------|
 | Důležité informace o linearity          | Žádné nelineárních zpracování za odkazem mluvčího, jinak hardwarové zpětné smyčky odkaz datový proud je povinné  |
 | Zpětné smyčky mluvčího                  | Prostřednictvím WASAPI, privátní rozhraní API, vlastní ALSA modulu plug-in (Linux), nebo poskytnutý prostřednictvím kanálu firmwaru      |
-| % NEPODPORUJE                              | 3. oktáv minimální 5. pořadí, 70 dBA přehrávání @ 0,8 m ≤ 6.3 %, % 5 315 500 Hz ≤, 630 5000 Hz                 |
+| % NEPODPORUJE                              | 3\. oktáv minimální 5. pořadí, 70 dBA přehrávání @ 0,8 m ≤ 6.3 %, % 5 315 500 Hz ≤, 630 5000 Hz                 |
 | Párování odezvu na mikrofon      | \> dB-10 TCLw metodou ITU-T G.122 přílohy B.4 normalizovány na úrovni mic<br />TCLw = TCLwmeasured \+ (měří úroveň - cílit výstupní citlivost)<br />TCLw = TCLwmeasured \+ (měří úroveň - (-26)) |
 
 ## <a name="integration-design-architecture"></a>Architektura návrhu integrace

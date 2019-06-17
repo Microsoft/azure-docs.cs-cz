@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
 ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64682053"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Zobrazení topologie služby Azure virtual network
@@ -37,7 +37,7 @@ Můžete použít [webu Azure portal](#azure-portal), [rozhraní příkazového 
 4. Vyberte **topologie**. Sledovací proces sítě ve stejné oblasti, v existující virtuální síť, kterou chcete vygenerovat topologie pro generování topologii vyžaduje. Pokud nemáte k dispozici sledovací proces sítě povolené v oblasti, kde se virtuální síť, kterou chcete vygenerovat topologie pro v, jsou sledovací procesy sítě automaticky vytvoří za vás ve všech oblastech. Sledovací procesy sítě se vytvoří ve skupině prostředků s názvem **NetworkWatcherRG**.
 5. Vyberte předplatné, skupinu prostředků, virtuální sítě, které chcete zobrazit topologii, a potom vyberte virtuální síť. Na následujícím obrázku je pro virtuální síť s názvem zobrazen topologii *MyVnet*, ve skupině prostředků s názvem *MyResourceGroup*:
 
-    ![Zobrazit topologii](./media/view-network-topology/view-topology.png)
+    ![Zobrazení topologie](./media/view-network-topology/view-topology.png)
 
     Jak je vidět na předchozím obrázku, virtuální síť obsahuje tři podsítě. Jednu podsíť má virtuální počítač v ní nasazená. Virtuální počítač má jedno síťové rozhraní připojené k němu a k němu přidružená veřejná IP adresa. Těmito dvěma podsítěmi mít směrovací tabulky přidružené k nim. Každý směrovací tabulka obsahuje dvě trasy. Skupinu zabezpečení sítě přidruženou k němu má jednu podsíť. Informace o topologii se zobrazuje pouze pro prostředky, které jsou:
     
@@ -134,7 +134,7 @@ Všechny prostředky, které jsou vráceny v topologii mít jednu z následujíc
 | Typ vztahu | Příklad:                                                                                                |
 | ---               | ---                                                                                                    |
 | Členství ve skupině       | Virtuální síť obsahuje podsítě. Podsíť obsahuje síťové rozhraní.                            |
-| Přidruženo        | Síťové rozhraní je přidružený virtuální počítač. Veřejná IP adresa je přidružená k síťovému rozhraní. |
+| Související        | Síťové rozhraní je přidružený virtuální počítač. Veřejná IP adresa je přidružená k síťovému rozhraní. |
 
 ## <a name="properties"></a>Vlastnosti
 

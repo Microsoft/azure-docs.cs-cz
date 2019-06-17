@@ -14,16 +14,16 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150743"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrovat data z StorSimple 5000 – 7000 series do Azure File Sync
 
 > [!IMPORTANT]
-> 9. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
+> 9\. července 2019 řady StorSimple 5000/7000 skončí jeho stavu podpory (SESTAVENÁ). Doporučujeme vám, že zákazníci řady StorSimple 5000/7000 migrace na jednu z alternativ popsané v dokumentu.
 
 Migrace dat je proces přesunu dat z jednoho umístění úložiště. To znamená, že přesnou kopii aktuální data vaší organizace z jednoho zařízení na jiné zařízení – pokud možno bez přerušení nebo zakázání aktivní aplikace – a pak všechny vstupní a výstupní (I/O) aktivity přesměrování na nová zařízení. 
 
@@ -33,7 +33,7 @@ StorSimple 5000 a 7000 series úložná zařízení bude dosáhnout konce služb
 
 Tento článek je určený pro odborníky v oblasti technologií (IT) informace a kvalifikovaní pracovníci zodpovědná za nasazení a správa zařízení řady StorSimple 5000/7000 v datové centrum. Zákazníci, kteří používají zařízení StorSimple pro úlohy serveru souboru (v systému Windows Server) může najít tento způsob migrace zejména atraktivní. Pokud se domníváte, že funkce služby Azure File Sync fungovat dobře ve vaší organizaci, a potom tento článek vám pomůže pochopit, jak přejít k těmto řešením od StorSimple.
 
-## <a name="migration-considerations"></a>Aspekty migrace
+## <a name="migration-considerations"></a>Požadavky na migraci
 
 Tento proces funguje pro zákazníky, kteří nakonfigurovali sdílenou složku Windows pomocí svazek StorSimple pro úložiště. Migrace dat ze StorSimple 5000/7000 do Azure File Sync zahrnuje převod tohoto umístění sdílené složky souboru [koncový bod serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) a následným použitím místně připojené disky jako jiný koncový bod, který se pak do nového umístění. 
 

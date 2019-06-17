@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65230829"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporován styly mapy
 Azure Maps podporuje několik různých předdefinovaných Mapovat styly, jak je popsáno níže.
 
-## <a name="road"></a>silniční
+## <a name="road"></a>Silniční
 A **silniční** mapa je standardní mapy, která zobrazuje silnicích zakázána, přirozené a umělý funkce spolu s popisky pro tyto funkce.
 
-![silniční](./media/supported-map-styles/road.png)
+![Silniční](./media/supported-map-styles/road.png)
 
 **Použít rozhraní API:**
 * [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)

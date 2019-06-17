@@ -14,14 +14,14 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61255826"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server aktivita uložených procedur
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="Aktivity transformace"]
 > * [Aktivita hivu](data-factory-hive-activity.md)
 > * [Aktivita pig](data-factory-pig-activity.md)
 > * [Aktivita MapReduce](data-factory-map-reduce.md)

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387931"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120181"
 ---
 Diagnostika potíží s cloudovou službou Microsoft Azure vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích problémy vedly. AzureLogCollector rozšíření na vyžádání můžete provádět jednorázové shromažďování protokolů z jednoho nebo více cloudové služby virtuálních počítačů (z webové role a role pracovního procesu) a jeho přenosu shromážděných souborů do účtu služby Azure storage – vše bez vzdálené přihlášení k libovolné virtuálních počítačů.
 
@@ -20,8 +20,8 @@ Diagnostika potíží s cloudovou službou Microsoft Azure vyžaduje shromažďo
 
 Existují dva režimy kolekce závisí na typy souborů, které se mají shromažďovat.
 
-* **Azure hostovaného agenta protokoly pouze (GA)**. Tento režim kolekce obsahuje všechny protokoly týkající se agentů hosta Azure a dalšími komponentami Azure.
-* **Všechny protokoly (úplné)**. Tento režim kolekce shromáždí všechny soubory v režimu GA plus:
+* **Azure hostovaného agenta protokoly pouze (GA)** . Tento režim kolekce obsahuje všechny protokoly týkající se agentů hosta Azure a dalšími komponentami Azure.
+* **Všechny protokoly (úplné)** . Tento režim kolekce shromáždí všechny soubory v režimu GA plus:
   
   * protokoly událostí systému a aplikací
   * Protokoly chyb HTTP

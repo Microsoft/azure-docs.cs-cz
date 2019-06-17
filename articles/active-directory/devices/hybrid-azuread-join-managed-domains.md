@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9daeb5e0de9c53f16efff46e02015acfa7c521
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 6ea885dfd1dd38e0811606cd67bf0a1730b0c824
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734594"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67110638"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridních připojení k Azure Active Directory pro spravované domény
 
@@ -26,7 +26,7 @@ Podobným způsobem pro uživatele zařízení je jiné identity jádro, které 
 - Hybridní připojení k Azure AD
 - Registrace v Azure AD
 
-Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky jednotnému přihlašování ke cloudovým i místním prostředkům. Současně můžete zabezpečit přístup k vašim cloudovým i místním prostředkům s využitím [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
+Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky jednotnému přihlašování ke cloudovým i místním prostředkům. Ve stejnou dobu, můžete zabezpečit přístup do cloudu a místních prostředků pomocí [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md).
 
 V tomto kurzu se dozvíte, jak nakonfigurovat připojení k hybridní službě Azure AD službě pro zařízení pro počítače připojené k doméně AD ve spravovaném prostředí. 
 
@@ -160,7 +160,7 @@ Když použijete rutinu **Get-MSolDevice** ke kontrole podrobností služby:
 
 - Objekt se **ID zařízení** , který odpovídá ID na Windows, klient musí existovat.
 - Hodnota **DeviceTrustType** (Stav důvěryhodnosti zařízení) musí být nastavená na **Domain Joined** (Připojeno k doméně). Jedná se o ekvivalent stavu **Hybridně připojeno k Azure AD** na stránce Zařízení na portálu Azure AD.
-- U zařízení, která se používají k podmíněnému přístupu, musí být hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda) a hodnota **DeviceTrustLevel** (Úroveň důvěryhodnosti zařízení) musí být nastavená na **Managed** (Spravované).
+- Hodnota pro **povoleno** musí být **True** a **DeviceTrustLevel** musí být **spravované** pro zařízení, která se používají v podmíněného přístupu.
 
 **Kontrola podrobností služby:**
 

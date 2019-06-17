@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418922"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693756"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Nahraďte modulu záložní baterie zařízení StorSimple
 
@@ -51,8 +51,8 @@ Modul záložní baterie pro zařízení StorSimple je Výměnná jednotka. Pře
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
-   | 3 |Řadič 0 |
-   | 4 |Řadič 1 |
+   | 3 |Kontroler 0 |
+   | 4 |Kontroler 1 |
    
     Jak je znázorněno na obrázku 2 číslem 3, indikátorů VEDLA v PCM 0, která odpovídá **baterie selhání** by měl být lit.
    

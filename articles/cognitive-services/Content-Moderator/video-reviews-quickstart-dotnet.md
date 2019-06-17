@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c8572e6bc7fdedb68527cad4e7ea4109838089b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726847"
 ---
 # <a name="create-video-reviews-using-net"></a>Vytvoření videa kontroly pomocí .NET
 
@@ -61,7 +61,7 @@ Pro snímky videa (imagí) použijte následující Image:
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
 
-1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)** .
 
 1. Pojmenujte projekt **VideoReviews**.
 
@@ -174,7 +174,7 @@ Vytvořit kontrolu videa s **ContentModeratorClient.Reviews.CreateVideoReviews**
 - **Stav**. Nastavte hodnotu na "Nepublikované." Pokud ho nenastavíte, použije se výchozí "Čeká na vyřízení", což znamená, že je publikovaná videa revize a recenze prováděné lidmi ve stavu čekání. Po publikování videa revize můžete už přidat snímky videí, přepis nebo výsledek moderování přepisu k němu.
 
 > [!NOTE]
-> **CreateVideoReviews** vrátí objekt IList<string>. Každý z těchto řetězců obsahuje ID videa revize. Tyto identifikátory jsou identifikátory GUID a nejsou stejná jako hodnota **ContentId** vlastnost. 
+> **CreateVideoReviews** vrátí objekt IList\<řetězec >. Každý z těchto řetězců obsahuje ID videa revize. Tyto identifikátory jsou identifikátory GUID a nejsou stejná jako hodnota **ContentId** vlastnost. 
 
 Přidejte následující definici metody do oboru názvů VideoReviews, třídu programu.
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65501700"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
@@ -27,7 +27,7 @@ ms.locfileid: "65501700"
 Zotavení po havárii se zaměřuje na obnovení závažné ztráty funkčnost aplikace. Pokud chcete zvolit řešení zotavení po havárii, třeba obchodním a technologickým vlastníky nejprve určit úroveň funkcí, které se vyžaduje při havárii, jako například – není k dispozici, částečně dostupného přes omezenou funkčnost, nebo zpožděného dostupnosti, nebo plně k dispozici.
 Většina podnikoví zákazníci volí architektura pro více oblastí pro odolnost proti aplikace nebo úrovni převzetí služeb při selhání infrastrukturou. Zákazníci si mohou vybrat několik přístupů v Vyžá zajistit převzetí služeb při selhání a vysokou dostupností redundantní architektury. Tady jsou některé z oblíbených přístupů:
 
-- **Aktivní-pasivní vysoká dostupnost s pasivním pohotovostním režimem:**: V tomto řešení převzetí služeb při selhání virtuálních počítačů a jiných zařízení, které jsou spuštěny v pohotovostním režimu oblasti nejsou aktivní dokud je potřeba pro převzetí služeb při selhání. Produkčním prostředí se však replikují ve formě záloh, Image virtuálních počítačů nebo šablon Resource Manageru do jiné oblasti. Tento mechanismus převzetí služeb při selhání je nákladově efektivní, ale trvá delší dobu provádět dokončení převzetí služeb při selhání.
+- **Aktivní-pasivní vysoká dostupnost s pasivním pohotovostním režimem:** : V tomto řešení převzetí služeb při selhání virtuálních počítačů a jiných zařízení, které jsou spuštěny v pohotovostním režimu oblasti nejsou aktivní dokud je potřeba pro převzetí služeb při selhání. Produkčním prostředí se však replikují ve formě záloh, Image virtuálních počítačů nebo šablon Resource Manageru do jiné oblasti. Tento mechanismus převzetí služeb při selhání je nákladově efektivní, ale trvá delší dobu provádět dokončení převzetí služeb při selhání.
  
     ![Aktivní/pasivní vysoká dostupnost s pasivním pohotovostním režimem:](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     

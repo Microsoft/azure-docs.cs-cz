@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925654"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Spravovat data uložená v Azure Cosmos DB přes rozhraní API pro MongoDB pomocí příkazů rozšíření MongoDB 
@@ -163,7 +163,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 | customAction    | string | Název vlastní příkaz. Musí být "CreateCollection"     |
-| kolekce      | string | Název kolekce                                   |
+| Kolekce      | string | Název kolekce                                   |
 | offerThroughput | int    | Zřízená propustnost nastavit v databázi. Je volitelný parametr |
 | shardKey        | string | Cesta klíče horizontálních oddílů k vytvoření horizontálně dělené kolekce. Je volitelný parametr |
 
@@ -208,7 +208,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 |  customAction   |   string      |   Název vlastní příkaz. Musí být "UpdateCollection".      |
-|  kolekce   |   string      |   Název kolekce.       |
+|  Kolekce   |   string      |   Název kolekce.       |
 | offerThroughput   |int|   Zřízená propustnost nastavit na kolekci.|
 
 ## <a name="output"></a>Výstup
@@ -243,7 +243,7 @@ Následující tabulka popisuje parametry v rámci příkazu:
 |**Pole**|**Typ** |**Popis** |
 |---------|---------|---------|
 | customAction    |   string      |   Název vlastní příkaz. Musí být "GetCollection".      |
-| kolekce    |    string     |    Název kolekce.     |
+| Kolekce    |    string     |    Název kolekce.     |
 
 ### <a name="output"></a>Výstup
 

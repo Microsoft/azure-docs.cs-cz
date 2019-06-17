@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 8cf743902d37d30b6e8ef49773fb5fe372ca9bf5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7228fdf1bb67ff8029412174a883a3a0b123cfc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061454"
+ms.locfileid: "67126205"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Co je balíček zabezpečení podniku v Azure HDInsight
 
@@ -23,8 +23,7 @@ Můžete vytvořit cluster služby HDInsight s Enterprise Security Package (ESP)
 
 Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Apache Hive pomocí [Apache Ranger](https://ranger.apache.org/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
 
-> [!NOTE]  
-> Apache Oozie je nyní zapnuta ESP clustery. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).
+Apache Oozie je nyní zapnuta ESP clustery. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Podnikové zabezpečení obsahuje čtyři hlavní pilíře: zabezpečení perimetru, ověřování, autorizace a šifrování.
 
@@ -55,7 +54,7 @@ Cluster HDInsight s ESP používá k prohledávání protokolů auditu známé u
 ## <a name="encryption"></a>Šifrování
 Ochrana dat je důležitá pro organizační požadavky zabezpečení a dodržování předpisů na schůzku. Kromě omezení přístupu k datům neautorizovanými, by ho zašifrovat. 
 
-Obě úložiště dat pro clustery HDInsight – Azure Blob storage a Azure Data Lake úložiště Gen1 a Gen2 – odborné pomoci průhlednou serverové [šifrování dat](../../storage/common/storage-service-encryption.md) v klidovém stavu. Zabezpečené clustery HDInsight budou bez problému fungovat díky této funkci šifrování na straně serveru dat v klidovém stavu.
+Obě úložiště dat pro clustery HDInsight, Azure Blob storage a Azure Data Lake Storage Gen1 a Gen2, podporují transparentní na straně serveru [šifrování dat](../../storage/common/storage-service-encryption.md) v klidovém stavu. Zabezpečené clustery HDInsight budou bez problému fungovat díky této funkci šifrování na straně serveru dat v klidovém stavu.
 
 ## <a name="next-steps"></a>Další postup
 

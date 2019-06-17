@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65834950"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Vizualizace telemetrická data odesílaná z akcelerátoru řešení simulace zařízení pomocí služby Time Series Insights
@@ -98,13 +98,13 @@ Vytvořte nový zdroj událostí k připojení ke službě IoT hub. Použijte sk
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Zdroj událostí název | Na následujícím snímku obrazovky používá název **contoso-iot-hub**. Po dokončení tohoto kroku, použijte vlastní jedinečný název. |
-    | Zdroj | **IoT Hub** |
+    | source | **IoT Hub** |
     | Možnost importu | **Pomocí služby IoT Hub z dostupných předplatných** |
     | ID předplatného | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Název centra IoT Hub | **contoso-simulation7d894**. Použijte název vašeho centra IoT z akcelerátor řešení simulace zařízení. |
-    | Název zásady centra IoT Hub | **iothubowner** |
-    | Klíč zásad centra IoT Hub | Toto pole se vyplní automaticky. |
-    | Skupina uživatelů centra IoT Hub | **devicesimulationtsi** |
+    | Název centra IOT | **contoso-simulation7d894**. Použijte název vašeho centra IoT z akcelerátor řešení simulace zařízení. |
+    | Název zásad centra IOT | **iothubowner** |
+    | Klíč zásad centra IOT | Toto pole se vyplní automaticky. |
+    | Skupina uživatelů centra IOT | **devicesimulationtsi** |
     | Formát serializace události | **JSON** |
     | Název vlastnosti časového razítka | Ponechte prázdné |
 
