@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64680897"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Vývoj C# modul IoT Edge pro přesun souborů na hraničních zařízeních Data Box
@@ -260,7 +260,7 @@ V předchozí části jste vytvořili hraničních zařízeních IoT řešení a
 
     Zobrazí výzva k výběru platformy modulu. Vyberte *amd64* odpovídající Linux.
 
-    ![Vybrat platformu](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+    ![Vyberte platformu](./media/data-box-edge-create-iot-edge-module/select-platform.png)
 
     > [!IMPORTANT] 
     > Jsou podporovány pouze moduly systému Linux.

@@ -10,10 +10,10 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: f851fd2857650dd00e365abf71ec5f0199db6d57
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711585"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
@@ -39,7 +39,7 @@ Runbooky ve službě Azure Automation můžete spustit v jedné izolovaný prost
 |Minimalizovat provozní náklady|Azure Sandbox|Neexistuje žádné režijní náklady na výpočetní prostředky, není nutné pro virtuální počítač|
 |Dlouho běžící skript|Hybrid Runbook Worker|Máte Azure sandboxy [omezení prostředků](../azure-subscription-service-limits.md#automation-limits)|
 |Interakci s místním službám|Hybrid Runbook Worker|Můžete mít přístup přímo na hostitelském počítači|
-|3. software jiného výrobce a spustitelné soubory|Hybrid Runbook Worker|Spravovat operační systém a mohou instalovat software|
+|3\. software jiného výrobce a spustitelné soubory|Hybrid Runbook Worker|Spravovat operační systém a mohou instalovat software|
 |Monitorovat soubor nebo složka s sady runbook|Hybrid Runbook Worker|Použití [úlohy sledovacího procesu](automation-watchers-tutorial.md) v procesu Hybrid Runbook worker|
 |Náročné na skriptu prostředků|Hybrid Runbook Worker| Máte Azure sandboxy [omezení prostředků](../azure-subscription-service-limits.md#automation-limits)|
 |Používání modulů s konkrétním požadavkům| Hybrid Runbook Worker|Tady je několik příkladů:</br> **WinSCP** -závislost na winscp.exe </br> **IISAdministration** -IIS musí být povolen|
@@ -208,7 +208,7 @@ Následující tabulka popisuje různé stavy, které můžou u úlohy nastat. P
 | Se nezdařilo, čekání na prostředky |Úloha se nezdařila, protože bylo dosaženo [spravedlivé sdílení](#fair-share) omezit třikrát a spustit pokaždé, když ze stejného kontrolního bodu nebo od začátku runbooku. |
 | Ve frontě |Úloha čeká, než budou dostupné prostředky pracovního procesu Automatizace, aby se dala spustit. |
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a spouštění systému. |
-| Obnovení |Systém obnovuje úlohy poté, co bylo pozastaveno. |
+| Obnovování |Systém obnovuje úlohy poté, co bylo pozastaveno. |
 | Spuštěno |Úloha je spuštěná. |
 | Spuštění, čekání na prostředky |Úloha byla uvolněna, protože bylo dosaženo [spravedlivé sdílení](#fair-share) limit. Bude pokračovat i za chvíli od svého posledního kontrolního bodu. |
 | Zastaveno |Úlohu uživatel zastavil před tím, než se dokončila. |

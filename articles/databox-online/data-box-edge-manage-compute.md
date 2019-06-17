@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65953120"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Správa výpočetních služeb v Azure Data Box hranici
@@ -34,7 +34,7 @@ Události jsou možnosti, ke kterým dochází ve vašem cloudovém prostředí 
 - **Naplánované**: Tyto triggery jsou v reakci na plán, který můžete definovat s počátečním datem, počáteční čas a interval opakování.
 
 
-### <a name="add-a-trigger"></a>Přidat trigger
+### <a name="add-a-trigger"></a>Přidání triggeru
 
 Pomocí následujících kroků na webu Azure Portal k vytvoření aktivační události.
 
@@ -68,7 +68,7 @@ Pomocí následujících kroků na webu Azure Portal k odstranění aktivační 
 
 1. Ze seznamu triggerů vyberte trigger, který chcete odstranit.
 
-    ![Vybrat trigger](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Výběr triggeru](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 2. Klikněte pravým tlačítkem a pak vyberte **odstranit**.
 
@@ -76,7 +76,7 @@ Pomocí následujících kroků na webu Azure Portal k odstranění aktivační 
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-    ![Potvrdit odstranění](media/data-box-edge-manage-compute/add-trigger-1.png)
+    ![Potvrzení odstranění](media/data-box-edge-manage-compute/add-trigger-1.png)
 
 Seznam se aktualizuje tak, aby odrážely odstranění aktivační události.
 

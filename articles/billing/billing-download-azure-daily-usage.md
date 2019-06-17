@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60918973"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Zobrazovat a stahovat využití Azure a poplatky za
@@ -77,7 +77,7 @@ Pokud máte smlouvu Microsoft zákazníka, můžete stáhnout využití Azure a 
 ### <a name="download-usage-for-billed-charges"></a>Stáhnout využití fakturuje za
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 3. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
 4. Vyberte **Faktury**.
 5. V mřížce faktury nalezen řádek odpovídající využití, které chcete stáhnout fakturu.
@@ -94,7 +94,7 @@ Pokud máte smlouvu Microsoft zákazníka, můžete stáhnout využití Azure a 
 Můžete také stáhnout využití za měsíc k datu v aktuálním fakturačním období. Tyto poplatky za využívání, které nebyly dosud účtuje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyhledejte **Cost Management a fakturace**.
+2. Hledat na **Cost Management a fakturace**.
 3. Vyberte fakturační profil. V závislosti na přístup potřebujete nejprve vybrat fakturační účet.
 4. V **přehled** okně Najít odkazy ke stažení pod poplatky za měsíc k datu.
 5. Vyberte **využití Azure a poplatky za**.

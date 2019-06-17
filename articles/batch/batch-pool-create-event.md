@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60776503"
 ---
 # <a name="pool-create-event"></a>Událost vytvoření fondu
@@ -61,7 +61,7 @@ ms.locfileid: "60776503"
 |enableInterNodeCommunication|Bool|Určuje, zda fond je nastaven pro přímou komunikaci mezi uzly.|
 |isAutoPool|Bool|Určuje, zda že byl fond vytvořen prostřednictvím mechanismu AutoPool úlohy.|
 |maxTasksPerNode|Int32|Maximální počet úloh, které můžou běžet souběžně na jedné výpočetních uzlech ve fondu.|
-|vmFillType|String|Definuje způsob, jakým služba Batch distribuuje úkoly mezi výpočetní uzly ve fondu. Platné hodnoty jsou rozloženy nebo aktualizací Service Pack.|
+|vmFillType|String|Definuje, jak služba Batch distribuuje úkoly mezi výpočetní uzly ve fondu. Platné hodnoty jsou rozloženy nebo aktualizací Service Pack.|
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
@@ -82,9 +82,9 @@ ms.locfileid: "60776503"
 
 |Název elementu|Type|Poznámky|
 |------------------|----------|-----------|
-|vydavatele|String|Vydavatel image.|
+|publisher|String|Vydavatel image.|
 |nabídka|String|Nabídka image.|
-|SKU|String|Skladová položka image.|
+|Skladová položka|String|Skladová položka image.|
 |version|String|Verze image.|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration

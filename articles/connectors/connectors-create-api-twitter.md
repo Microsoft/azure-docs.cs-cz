@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62104982"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorování a správa Twitteru s využitím Azure Logic Apps
@@ -59,7 +59,7 @@ Můžete použít aktivační události, které odpovědi z vašeho účtu na Tw
        -nebo-
 
      * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
-     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
      
        Do vyhledávacího pole zadejte jako filtr "twitter". 
        V seznamu akcí vyberte požadovanou akci.
@@ -70,7 +70,7 @@ Můžete použít aktivační události, které odpovědi z vašeho účtu na Tw
 
 ## <a name="examples"></a>Příklady
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Trigger twitteru: Když se publikuje nový tweet
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Trigger twitteru: Když se nový tweet
 
 Tato aktivační událost se spustí pracovní postup aplikace logiky při trigger například rozpozná nový tweet s hashtagem, #Seattle. Takže například nalezený tyto tweety můžete přidat soubor s obsahem tweety do úložiště, například účtu Dropboxu pomocí konektor Dropbox. 
 
@@ -78,7 +78,7 @@ Volitelně může obsahovat podmínku, která oprávněné tweety musí pocháze
 
 **Příklad organizace**: Tato aktivační událost můžete použít ke sledování tweetů o vaší společnosti a nahrát obsah tweetů do služby SQL database.
 
-### <a name="twitter-action-post-a-tweet"></a>Akce Twitter: Publikovat tweet
+### <a name="twitter-action-post-a-tweet"></a>Akce Twitter: Odeslání tweetu
 
 Tato akce publikuje tweet, ale akce můžete nastavit tak, aby tento tweet obsahuje obsah tweetů objevila dříve popsaná aktivační události. 
 

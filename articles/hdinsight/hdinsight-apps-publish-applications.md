@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64685322"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight na Azure Marketplace
@@ -91,8 +91,8 @@ Chcete-li publikovat aplikace HDInsight:
 3. Zadejte název a potom vyberte **vytvořit novou šablonu řešení**.
 4. Pokud jste ještě nezaregistrovali vaší organizaci, vyberte **účtu centra vývojářů pro vytvoření a zapojte se do programu Azure**.  Další informace najdete v tématu [vytvoření účtu Microsoft Developer](../marketplace/marketplace-publishers-guide.md).
 5. Vyberte **definovat některé topologie, abyste mohli začít**. Šablona řešení je "nadřazený objekt" všem svým topologiím. V jedné šabloně nabídky nebo řešení můžete definovat více topologií. Když se nabídka převede do přípravy, převede se se svým topologiím. 
-6. Zadejte název topologie a potom vyberte **+**.
-7. Zadejte novou verzi a pak vyberte **+**.
+6. Zadejte název topologie a potom vyberte **+** .
+7. Zadejte novou verzi a pak vyberte **+** .
 8. Nahrajte soubor ZIP, který jste vytvořili při balení aplikace.  
 9. Vyberte **žádost o certifikaci**. Tým certifikace společnosti Microsoft soubory zkontroluje a topologii certifikuje.
 

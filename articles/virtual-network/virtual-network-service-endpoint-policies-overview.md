@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
 ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61033896"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zásady koncových bodů služby pro virtuální síť (Preview)
@@ -182,7 +182,7 @@ Za používání zásad koncových bodů služby se neplatí další poplatky. P
 
 Pro zásady koncových bodů služeb platí následující limity: 
 
- |Prostředek | Výchozí omezení |
+ |Resource | Výchozí omezení |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

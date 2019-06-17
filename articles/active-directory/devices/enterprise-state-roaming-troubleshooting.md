@@ -19,12 +19,12 @@ ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 0b74be0dda8e5c79987479393ad0d8ef5c3bdd16
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60353172"
+ms.locfileid: "67110672"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
 
@@ -85,7 +85,7 @@ Za určitých podmínek Enterprise State Roaming může selhat synchronizaci dat
 
 **Potenciální problém**: Pokud vaše zařízení nakonfigurován tak, aby ověřování službou Multi-Factor Authentication na portálu Azure Active Directory, nemusí podařit synchronizovat nastavení při přihlašování k zařízení s Windows 10 pomocí hesla. Tento typ konfigurace ověřování službou Multi-Factor Authentication je určen k ochraně účet správce služby Azure. Správci mohou nadále moci synchronizovat po přihlášení k zařízení s Windows 10 s jejich Microsoft Passport pro pracovní PIN kód nebo pomocí služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
 
-**Potenciální problém**: Synchronizace může selhat, pokud správce nakonfiguruje zásady podmíněného přístupu ověřování Active Directory Federation Services službou Multi-Factor Authentication a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro Work PIN nebo dokončí ověření služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
+**Potenciální problém**: Synchronizace může selhat, pokud správce nakonfiguruje zásady podmíněného přístupu s Active Directory Federation služby Multi-Factor Authentication ověřování a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro Work PIN nebo dokončí ověření služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
 
 ### <a name="event-viewer"></a>Prohlížeč událostí
 
