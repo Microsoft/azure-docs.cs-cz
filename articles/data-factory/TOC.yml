@@ -486,6 +486,8 @@
           href: control-flow-expression-language-functions.md
         - name: Systémové proměnné
           href: control-flow-system-variables.md
+        - name: Parametry toku dat
+          href: parameters-data-flow.md
     - name: Zabezpečení
       items:
         - name: Aspekty zabezpečení přesunu dat
@@ -516,7 +518,7 @@
       items:
         - name: Prostředí Azure Integration Runtime
           href: create-azure-integration-runtime.md
-        - name: Místní prostředí Integration Runtime
+        - name: Prostředí Integration Runtime v místním prostředí
           href: create-self-hosted-integration-runtime.md
         - name: Prostředí Azure-SSIS Integration Runtime
           href: create-azure-ssis-integration-runtime.md
@@ -546,6 +548,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Vyčištění protokolů SSISDB s využitím úloh Elastic Database
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Řešení potíží se spuštěním balíčku v prostředí Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: Vytvoření aktivačních událostí
       items:
         - name: Vytvoření aktivační události na základě událostí

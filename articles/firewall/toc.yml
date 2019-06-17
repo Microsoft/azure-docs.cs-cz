@@ -39,6 +39,8 @@
   items:
     - name: Nasazení s využitím Azure PowerShellu
       href: deploy-ps.md
+    - name: Nasazení s využitím rozhraní příkazového řádku Azure
+      href: deploy-cli.md
     - name: Nasazení pomocí šablony
       href: deploy-template.md
     - name: Integrace s využitím nástroje pro vyrovnávání zatížení

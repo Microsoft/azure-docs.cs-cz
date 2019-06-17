@@ -1,0 +1,15 @@
+- name: Dokumentace k zabezpečenému vývoji
+  href: index.yml
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Osvědčené postupy
+      items:
+        - name: Přehled
+          href: secure-dev-overview.md
+        - name: Návrh zabezpečených aplikací
+          href: secure-design.md
+        - name: Vývoj zabezpečených aplikací
+          href: secure-develop.md
+        - name: Nasazení zabezpečených aplikací
+          href: secure-deploy.md

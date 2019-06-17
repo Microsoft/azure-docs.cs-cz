@@ -89,12 +89,14 @@
               href: container-registry-auth-aks.md
         - name: Důvěryhodnost obsahu
           href: container-registry-content-trust.md
-    - name: Sestavení a opravy
+    - name: Úlohy ACR
       items:
-        - name: Úlohy ACR
+        - name: Přehled úloh ACR
           href: container-registry-tasks-overview.md
         - name: Úlohy s více kroky
           href: container-registry-tasks-multi-step.md
+        - name: Použití s využitím spravované identity
+          href: container-registry-tasks-authentication-managed-identity.md
     - name: Registry a další služby Azure
       items:
         - name: Azure Container Instances

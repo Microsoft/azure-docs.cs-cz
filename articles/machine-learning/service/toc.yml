@@ -79,8 +79,7 @@
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
     - name: Otevřené datové sady Azure
-      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
-      maintainContext: true
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Koncepty
   items:
     - name: Pracovní prostor
@@ -98,7 +97,7 @@
     - name: Správa modelů (MLOps)
       displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
-    - name: Opakovaně použitelné kanály ML
+    - name: Kanály ML
       href: concept-ml-pipelines.md
     - name: Interpretovatelnost modelů
       displayName: explainability
@@ -119,6 +118,8 @@
           href: how-to-enable-virtual-network.md
         - name: Zabezpečení webových služeb pomocí SSL
           href: how-to-secure-web-service.md
+        - name: Opětovné vygenerování přístupových klíčů k úložišti
+          href: how-to-change-storage-access-key.md
 - name: Návody
   items:
     - name: Správa pracovních prostorů
@@ -177,10 +178,12 @@
           href: how-to-set-up-training-targets.md
         - name: Vytváření odhadů při trénování
           href: how-to-train-ml-models.md
-        - name: Použití PyTorchu
-          href: how-to-train-pytorch.md
         - name: Použití TensorFlow
           href: how-to-train-tensorflow.md
+        - name: Použití Keras
+          href: how-to-train-keras.md
+        - name: Použití PyTorchu
+          href: how-to-train-pytorch.md
         - name: Ladění hyperparametrů
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -191,6 +194,9 @@
           href: how-to-manage-runs.md
         - name: Protokolování metrik pro tréninková spuštění
           href: how-to-track-experiments.md
+        - name: Sledování experimentů s využitím MLflow
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
     - name: Automatizace strojového učení
       displayName: 'automl, auto ml'
       items:
@@ -215,8 +221,9 @@
         - name: FPGA
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
-          href: ../../iot-edge/tutorial-deploy-machine-learning.md
-          maintainContext: true
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Vlastní image Dockeru
+          href: how-to-deploy-custom-docker-image.md
         - name: Řešení potíží
           href: how-to-troubleshoot-deployment.md
     - name: Využívání webových služeb
@@ -241,8 +248,7 @@
           href: how-to-create-your-first-pipeline.md
         - name: CI/CD pracovních postupů ML s využitím Azure Pipelines
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning
-          mainContext: true
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md
@@ -366,8 +372,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
     - name: Porovnání našich produktů ML
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Co se stalo s Workbenchem
       displayName: desktop ui Workbench upgrade update transfer
       href: overview-what-happened-to-workbench.md

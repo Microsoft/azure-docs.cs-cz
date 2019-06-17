@@ -139,6 +139,8 @@
                   href: scenario-protected-web-api-app-registration.md
                 - name: Konfigurace kódu
                   href: scenario-protected-web-api-app-configuration.md
+                - name: Ověření rozsahů nebo rolí aplikací
+                  href: scenario-protected-web-api-verification-scope-app-roles.md
                 - name: Přechod k produkčnímu prostředí
                   href: scenario-protected-web-api-production.md
             - name: 'Webové rozhraní API, které volá webová rozhraní API'

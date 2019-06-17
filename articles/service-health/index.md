@@ -5,33 +5,48 @@ author: stephbaron
 layout: LandingPage
 ms.service: service-health
 ms.topic: landing-page
-ms.date: 03/4/2019
+ms.date: 06/05/2019
 ms.author: stbaron
-ms.openlocfilehash: aa00d4b08725eaf4b667fc7b53b225198db95a02
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 05ea33076f329a6244d4259bf3f973b88bf1f2b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073395"
 ---
 # <a name="azure-service-health-documentation"></a>Dokumentace ke službě Azure Service Health
 
-Azure nabízí sadu prostředí, která vás informují o stavu vašich cloudových prostředků, včetně aktuálních a možných nadcházejících potížích, jako jsou události s dopadem na služby, plánovaná údržba a další změny, které mohou ovlivnit vaši dostupnost.
+Azure Service Health je sada prostředí, která poskytují pokyny a podporu na míru v situacích, kdy vás ovlivňují problémy ve službách Azure. Azure Service Health vás může upozornit, pomůže vám zjistit dopad případných potíží a bude vás informovat o průběhu jejich řešení. Azure Service Health vám pomůže připravit se na plánovanou údržbu a změny, které by mohly ovlivnit dostupnost vašich prostředků.
 
-Možná už znáte **[stavovou stránku Azure](https://status.azure.com)**, globální zobrazení stavu všech služeb Azure napříč všemi oblastmi Azure. Stavová stránka je vhodnou referencí pro incidenty s širším dopadem, ale důrazně doporučujeme, aby aktuální uživatelé Azure využívali službu **Azure Service Health** a zajistili si tak informace o údržbě a incidentech Azure.
+Služba Azure Service Health se skládá z těchto částí:
 
-**[Azure Service Health](service-health-overview.md)** poskytuje přizpůsobené zobrazení stavu oblastí a služeb Azure, které využíváte. Je to nejvhodnější místo pro hledání informací o výpadcích s dopadem na služby, aktivitách plánované údržby a dalších rad ohledně stavu, protože ověřené prostředí služby Azure Service Health ví, které služby a prostředky aktuálně používáte. Nejlepší způsob využití služby Service Health je nastavit upozornění této služby, která vás budou prostřednictvím vašich upřednostňovaných komunikačních kanálů informovat o potížích se službami, plánované údržbě nebo jiných změnách, které by mohly ovlivnit oblasti nebo služby Azure, které využíváte.
-
-**[Azure Resource Health](resource-health-overview.md)** poskytuje informace o stavu jednotlivých cloudových prostředků, jako je třeba konkrétní instance virtuálního počítače. Pomocí Azure Monitoru můžete také nastavit výstrahy, které vás upozorní na změny dostupnosti vašich cloudových prostředků. Azure Resource Health vám společně s oznámeními Azure Monitoru pomůže zajistit lepší informovanost o okamžité dostupnosti vašich prostředků a rychle vyhodnotit, jestli případné potíže jsou způsobené problémy na vaší straně, nebo jestli souvisejí s událostí platformy Azure.
+ * **Stav Azure** – Globální zobrazení stavu služeb Azure
+ * **Service Health** – Přizpůsobené zobrazení stavu služeb Azure
+ * **Resource Health** – Podrobnější přehled o stavu jednotlivých prostředků, které pro vás zřídily služby Azure
 
 Společně poskytují kompletní přehled o stavu Azure, a to s takovou úrovní podrobností, která je pro vás nejrelevantnější.
 
-### <a name="watch-an-overview-of-the-azure-status-page-azure-service-health-and-azure-resource-health"></a>Podívejte se na přehled stránky stavu Azure a služeb Azure Service Health a Azure Resource Health
-
->[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
-
+Podrobnější informace o jednotlivých službách najdete v [přehledu služby Service Health](overview.md).
 
 <ul class="panelContent cardsFTitle">
+    <li>
+        <a href="https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/video-library.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Úvodní video ke službě Service Health</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
     <li>
         <a href="/azure/service-health/azure-status-overview">
         <div class="cardSize">
@@ -80,24 +95,6 @@ Společně poskytují kompletní přehled o stavu Azure, a to s takovou úrovní
                     </div>
                     <div class="cardText">
                         <h3>Další informace o službě Resource Health</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/resources/videos/announcing-azure-service-health/">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Úvodní video ke službě Service Health</h3>
                     </div>
                 </div>
             </div>

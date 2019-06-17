@@ -82,10 +82,10 @@
           items:
             - name: Optimalizace výkonu
               href: storage-performance.md
-        - name: Optimalizované z hlediska GPU
-          displayName: NV NVv2 NC NCv2 NCv3 ND
-          href: sizes-gpu.md
+        - name: Zrychlené výpočetní funkce
           items:
+            - name: Optimalizované z hlediska GPU
+              href: sizes-gpu.md
             - name: Nastavení ovladačů GPU
               href: n-series-driver-setup.md
         - name: Vysokovýkonné výpočetní prostředí

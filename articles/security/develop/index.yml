@@ -1,0 +1,44 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k zabezpečenému vývoji
+metadata:
+  document_id: null
+  title: Dokumentace k zabezpečenému vývoji v Microsoft Azure
+  meta.description: Learn how to develop secure apps on Azure.
+  services: security
+  author: TerryLanfear
+  manager: barbkess
+  ms.service: security
+  ms.subservice: develop
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/11/2019
+  ms.author: terrylan
+abstract:
+  description: 'Naše ukázkové aplikace, osvědčené postupy a pokyny vám ukážou, jak vyvíjet a nasazovat zabezpečené aplikace v Azure.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/security/develop/secure-dev-overview
+            html: <p>Vývoj zabezpečené webové aplikace v Azure</p>
+            image:
+              src: /media/common/i_get-started.svg
+            title: Začínáme
+          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
+            html: <p>Pět hlavních položek zabezpečení pro webové aplikace</p>
+            image:
+              src: /media/common/i_learn-about.svg
+            title: Získávání dovedností pomocí Microsoft Learn
+  - title: Koncepty
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-dev-overview">Osvědčené postupy zabezpečeného vývoje</a>
+          - html: <a href="/azure/security/azure-security-threat-modeling-tool">Modelování hrozeb</a>

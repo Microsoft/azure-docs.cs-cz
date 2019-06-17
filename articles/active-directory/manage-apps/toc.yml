@@ -83,6 +83,10 @@
           href: plan-sso-deployment.md
     - name: Portály pro koncové uživatele
       href: end-user-experiences.md
+    - name: Jednotné přihlašování jedním kliknutím
+      items:
+        - name: Co je jednotné přihlašování jedním kliknutím
+          href: one-click-sso-tutorial.md
 - name: Návody
   items:
     - name: Přidání cloudové aplikace
