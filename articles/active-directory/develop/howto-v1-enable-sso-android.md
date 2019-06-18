@@ -18,10 +18,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962641"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postup: Povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL

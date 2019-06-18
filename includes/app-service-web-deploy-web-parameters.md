@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132873"
 ---
 Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část s názvem parametry, které obsahuje všechny hodnoty parametrů.
@@ -32,7 +32,7 @@ Název plánu služby App Service pro hostování webové aplikace.
       "type":"string"
     }
 
-### <a name="sku"></a>SKU
+### <a name="sku"></a>Skladová položka
 Cenová úroveň pro plán hostování.
 
     "sku": {

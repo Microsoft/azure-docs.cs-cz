@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161319"
 ---
 Můžete také zobrazit metriky monitorovat výkon zařízení a v některých případech pro odstraňování problémů se zařízením.
@@ -17,7 +17,7 @@ Pomocí následujících kroků na webu Azure Portal k vytvoření grafu pro vyb
 
 1. Pro prostředek na webu Azure Portal, přejděte na **monitorování > metriky** a vyberte **přidat metriku**.
 
-    ![Přidat metriku](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
+    ![Přidání metriky](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
 2. Prostředek se vyplní automaticky.  
 
@@ -65,4 +65,4 @@ Pomocí následujících kroků na webu Azure Portal k vytvoření grafu pro vyb
 
 8. Pokud chcete exportovat data grafu do aplikace Excel nebo získání odkazu na graf, který můžete sdílet, vyberte možnost sdílené složky na panelu příkazů.
 
-    ![Exportuje data.](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)
+    ![Exportovat data](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

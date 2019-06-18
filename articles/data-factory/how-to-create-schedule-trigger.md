@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
 ms.openlocfilehash: 09f80f69857ae17a0136229fe9bf13d4f63e7096
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65151074"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který spouští kanál podle časového plánu
@@ -44,7 +44,7 @@ Můžete vytvořit **aktivační událost plánovače** naplánovat pravidelné 
 3. V **Nová aktivační událost** stránce, proveďte následující kroky: 
 
     1. Ujistěte se, že **plán** vybraná **typ**. 
-    2. Zadejte počáteční datum a čas triggeru pro **Start datum (UTC)**. Je nastavena na aktuální datum a čas ve výchozím nastavení. 
+    2. Zadejte počáteční datum a čas triggeru pro **Start datum (UTC)** . Je nastavena na aktuální datum a čas ve výchozím nastavení. 
     3. Zadejte **opakování** aktivační události. Vyberte jednu z hodnot z rozevíracího seznamu (každou minutu, hodinu, denně, týdně a každý měsíc). Násobitel zadejte do textového pole. Například pokud má aktivační událost pro spuštění jednou každých 15 minut, můžete vybrat **každou minutu**a zadejte **15** v textovém poli. 
     4. Pro **End** pole, pokud nechcete zadat datum a čas ukončení pro aktivační událost, vyberte **bez ukončení**. Chcete-li zadat datum a čas ukončení, vyberte **k datu**a zadejte koncového data a času a klikněte na tlačítko **použít**. Každé spuštění kanálu je zpoplatněno. Pokud testujete, můžete zajistit, že se aktivuje kanál pouze několik případů. Zajistěte však, aby měl kanál mezi časem publikování a koncovým časem dostatek času na spuštění. Aktivační událost nabývá účinnosti po publikování řešení do služby Data Factory, a ne při uložení aktivační události v uživatelském rozhraní.
 
@@ -58,7 +58,7 @@ Můžete vytvořit **aktivační událost plánovače** naplánovat pravidelné 
 6. Kliknutím na **Publikovat** publikujte změny do služby Data Factory. Až po publikování změn do služby Data Factory, nespustí se aktivační událost aktivuje spuštění kanálu. 
 
     ![Tlačítko Publikovat](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Vlevo přepněte na kartu **Monitorování**. Kliknutím na **Aktualizovat** seznam aktualizujte. Zobrazí se že kanál spustí naplánované aktivační procedura aktivovaná. Všimněte si hodnot ve sloupci **Aktivoval(a)**. Pokud používáte **aktivovat** možnost, zobrazí ruční spuštění aktivační události v seznamu. 
+8. Vlevo přepněte na kartu **Monitorování**. Kliknutím na **Aktualizovat** seznam aktualizujte. Zobrazí se že kanál spustí naplánované aktivační procedura aktivovaná. Všimněte si hodnot ve sloupci **Aktivoval(a)** . Pokud používáte **aktivovat** možnost, zobrazí ruční spuštění aktivační události v seznamu. 
 
     ![Monitorování aktivovaných spuštění](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 9. Kliknutím na šipku dolů vedle **Spuštění kanálu** přepněte na zobrazení **Spuštění aktivační události**. 

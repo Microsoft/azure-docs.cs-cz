@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236357"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
@@ -50,7 +50,7 @@ Veřejné IP adresy umožňují internetovým prostředkům příchozí komunika
 
 Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. Veřejné IPv6 adresy je možné přiřadit pouze k internetovým nástrojům pro vyrovnávání zatížení.
 
-### <a name="sku"></a>Skladová jednotka
+### <a name="sku"></a>Skladová jednotka (SKU)
 
 Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 
@@ -122,7 +122,7 @@ Veřejnou IP adresu můžete k virtuálnímu počítači s [Windows](../virtual-
 
 Veřejnou IP adresu vytvořenou s kteroukoli [SKU](#sku) můžete přiřadit službě [Azure Load Balancer](../load-balancer/load-balancer-overview.md) tak, že ji přiřadíte konfiguraci **front-endu** tohoto nástroje pro vyrovnávání zatížení. Veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Front-endu nástroje pro vyrovnávání zatížení můžete přiřadit dynamickou nebo statickou veřejnou IP adresu. Front-endu nástroje pro vyrovnávání zatížení můžete také přiřadit několik veřejných IP adres, což umožňuje použití scénářů s [několika VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), jako je víceklientské prostředí s weby využívajícími SSL. Další informace o skladových položkách nástroje pro vyrovnávání zatížení Azure najdete v tématu věnovaném [standardní SKU nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="vpn-gateways"></a>Brány VPN Gateway
+### <a name="vpn-gateways"></a>VPN Gateway
 
 [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) připojuje virtuální síť Azure k dalším virtuálním sítím Azure nebo k místní síti. Aby služba VPN Gateway mohla komunikovat se vzdálenou sítí, přiřadí se jí veřejná IP adresa. Službě VPN Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
 
@@ -138,7 +138,7 @@ Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
 | VPN Gateway |Konfigurace protokolu IP brány |Ano |Ne |
-| Aplikační brána |Konfigurace front-endu |Ano (pouze verze 1) |Ano (pouze verze 2) |
+| Application Gateway |Konfigurace front-endu |Ano (pouze verze 1) |Ano (pouze verze 2) |
 
 ## <a name="private-ip-addresses"></a>Privátní IP adresy
 Privátní IP adresy umožňují prostředkům Azure komunikovat s ostatními prostředky ve [virtuální](virtual-networks-overview.md) nebo místní síti prostřednictvím brány sítě VPN nebo okruhu ExpressRoute, a to bez použití IP adresy dostupné na internetu.
@@ -185,7 +185,7 @@ Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
-| Aplikační brána |Konfigurace front-endu |Ano |Ano |
+| Application Gateway |Konfigurace front-endu |Ano |Ano |
 
 ## <a name="limits"></a>Limits
 Omezení IP adresování jsou uvedená v kompletní sadě [omezení sítě](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) v Azure. Omezení platí pro jednotlivé oblasti a jednotlivá předplatná. Pokud chcete v závislosti na svých obchodních potřebách zvýšit výchozí omezení na povolené maximum, [kontaktujte podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
 ms.openlocfilehash: ce2559f62d29c7b062cfd1ad1dcb61146adfd91c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001743"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů Blob v Azure
@@ -37,7 +37,7 @@ Zásady správy životního cyklu je k dispozici obě obecné účely v2 (GPv2) 
 
 Funkce správy životního cyklu je zdarma. Zákazníkům se poplatky účtují náklady běžném provozu [výpis objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. Operace odstranění je zdarma. Další informace o cenách najdete v tématu [ceny za objekty Blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Dostupnost podle oblasti
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Funkce správy životního cyklu je k dispozici ve všech oblastech Azure globální.
 
@@ -200,7 +200,7 @@ Každé pravidlo v rámci zásady má několik parametrů:
 | Název parametru | Typ parametru | Poznámky | Požaduje se |
 |----------------|----------------|-------|----------|
 | `name`         | String |Název pravidla může obsahovat až 256 znaků. Název pravidla je velká a malá písmena.  Musí být jedinečný v rámci zásady. | True |
-| `enabled`      | Boolean | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False (Nepravda) | 
+| `enabled`      | Boolean | Nepovinný datový typ boolean Povolit pravidlo, které se dočasné zakázán. Výchozí hodnota je hodnota true, pokud není nastaven. | False | 
 | `type`         | Hodnoty výčtu | Je aktuální platný typ `Lifecycle`. | True |
 | `definition`   | Objekt, který definuje pravidlo životního cyklu | Každá definice se skládá sada filtru a skupinu akcí. | True |
 
@@ -251,7 +251,7 @@ Filtry omezují akce pravidla na podmnožinu objektů BLOB v účtu úložiště
 
 Filtry zahrnují:
 
-| Název filtru | Typ filtru | Poznámky | Je požadováno |
+| Název filtru | Typ filtru | Poznámky | Vyžaduje se |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole hodnot předdefinovaných výčtu. | Aktuální verze podporuje `blockBlob`. | Ano |
 | prefixMatch | Pole řetězců u předpony, jež mají být shodovat. Každé pravidlo můžete definovat až 10 předpony. Řetězec předpony musí začínat znakem název kontejneru. Například, pokud chcete najít všechny objekty BLOB v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pro pravidlo, je prefixMatch `container1/foo`. | Pokud nebudete definovat prefixMatch, pravidlo platí pro všechny objekty BLOB v účtu úložiště.  | Ne |
@@ -266,7 +266,7 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Podpora objektů BLOB momentálně na vrstvu hot         | Nepodporuje se |
 | tierToArchive | Podpora objektů BLOB momentálně na horké nebo studené úrovni | Nepodporuje se |
-| odstraňovat        | Podporováno                                   | Podporováno     |
+| delete        | Podporováno                                   | Podporováno     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci na stejný objekt blob, správu životního cyklu použije nejlevnější akci do objektu blob. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.

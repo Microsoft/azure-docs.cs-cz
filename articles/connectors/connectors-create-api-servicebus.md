@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62105576"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Výměna zpráv v cloudu pomocí služby Azure Service Bus a Azure Logic Apps
@@ -79,7 +79,7 @@ Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů 
    ![Výběr triggeru služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > Některé aktivačních událostí může vracet instanci jednoho nebo zprávy, například aktivační událost, **při doručení jedné či více zpráv do fronty (automatické dokončení)**. Když tyto triggery aktivují, vrátí rozsahu od 1 do počtu zpráv zadaného má aktivační procedura **maximální počet zpráv** vlastnost.
+   > Některé aktivačních událostí může vracet instanci jednoho nebo zprávy, například aktivační událost, **při doručení jedné či více zpráv do fronty (automatické dokončení)** . Když tyto triggery aktivují, vrátí rozsahu od 1 do počtu zpráv zadaného má aktivační procedura **maximální počet zpráv** vlastnost.
 
    *Všechny aktivační události služby Service Bus jsou triggery s dlouhým intervalem dotazování*, což znamená, že když se trigger aktivuje, aktivační událost zpracovávat všechny zprávy a poté počká 30 sekund pro další zprávy zobrazit v předplatném fronty nebo tématu. 
    Pokud během 30 sekund, nezobrazí se žádné zprávy, spuštění aktivační události je přeskočeno. 
@@ -90,7 +90,7 @@ Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů 
    1. V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
 
       Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
-      Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+      Vyberte znaménko plus ( **+** ), který se zobrazí a pak vyberte **přidat akci**.
 
    1. Do vyhledávacího pole zadejte jako filtr "Azure Service Bus". 
    V seznamu akcí vyberte požadovanou akci. 

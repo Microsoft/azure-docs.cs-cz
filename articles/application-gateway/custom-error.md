@@ -5,14 +5,13 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 02/14/2019
-ms.date: 02/26/2019
-ms.author: v-junlch
+ms.date: 2/14/2019
+ms.author: victorh
 ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60832004"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Vytvořit Application Gateway vlastní chybové stránky
@@ -35,6 +34,7 @@ Vlastní chybové stránky dají definovat na globální úrovni a úrovni naslo
 - **Obě** – vlastní chybovou stránku definované na úrovni naslouchací proces přepíše nastavené na globální úrovni.
 
 Chcete-li vytvořit vlastní chybovou stránku, musíte mít:
+
 - Stavový kód odpovědi HTTP.
 - odpovídající umístění pro chybovou stránku. 
 - veřejně přístupné služby Azure storage blob pro umístění.
@@ -48,10 +48,10 @@ Po zadání chybovou stránku application gateway stáhne z úložiště objekt�
 
 1. Přejděte k Application Gateway na portálu a zvolte službu application gateway.
 
-    ![ag-overview](./media/custom-error/ag-overview.png)
+    ![ag-overview](media/custom-error/ag-overview.png)
 2. Klikněte na tlačítko **naslouchacích procesů** a přejděte do příslušného naslouchacího procesu, ve které chcete zadat chybovou stránku.
 
-    ![Naslouchací procesy Application Gateway](./media/custom-error/ag-listener.png)
+    ![Naslouchací procesy Application Gateway](media/custom-error/ag-listener.png)
 3. Konfigurace vlastní chybové stránky pro chybu 403 WAF nebo stránku 502 údržby na úrovni naslouchacího procesu.
 
     > [!NOTE]
@@ -59,7 +59,7 @@ Po zadání chybovou stránku application gateway stáhne z úložiště objekt�
 
 4. Zadejte adresu URL veřejně přístupná objektů blob pro dané chybě. stavový kód a klikněte na tlačítko **Uložit**. Application Gateway je nyní nakonfigurován s vlastní chybovou stránku.
 
-   ![Kódy chyb aplikace brány](./media/custom-error/ag-error-codes.png)
+   ![Kódy chyb aplikace brány](media/custom-error/ag-error-codes.png)
 
 ## <a name="azure-powershell-configuration"></a>Konfigurace Azure PowerShellu
 
@@ -76,5 +76,3 @@ Další informace najdete v tématu [přidat AzApplicationGatewayCustomError](ht
 ## <a name="next-steps"></a>Další postup
 
 Informace o diagnostice služby Application Gateway najdete v tématu [stav Back endu, diagnostické protokoly a metriky pro službu Application Gateway](application-gateway-diagnostics.md).
-
-<!-- Update_Description: wording update -->

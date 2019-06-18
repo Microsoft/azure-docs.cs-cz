@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66512286"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
@@ -80,7 +80,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 
 **Technický profil** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Domain (Doména) | 0:1 | Název domény pro technický profil. Například pokud váš technický profil určuje zprostředkovatele identity Facebook, název domény je Facebook.com. |
 | displayName | 0:1 | Název technický profil, který může být zobrazen uživatelům. |
@@ -115,7 +115,7 @@ A **TechnicalProfiles** prvek obsahuje sadu technické profily, které podporuje
 
 A **metadat** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Metadata, která se týká technického profilu. Každý typ technický profil má jinou sadu položky metadat. V části technický profil typů, další informace. |
 
@@ -131,7 +131,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **CryptographicKeys** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | Klíč | 1: n | Kryptografický klíč používaný v tomto technickém profilu. |
 
@@ -148,7 +148,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **InputClaimsTransformations** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Identifikátor deklarace identity transformace, která má být provedena před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. Transformace deklarací identity lze použít k úpravě existující deklarace identity ClaimsSchema nebo generovat nové značky. |
 
@@ -164,7 +164,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **InputClaims** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Typ deklarace identity očekávaný vstup. |
 
@@ -182,7 +182,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **PersistedClaims** prvek obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Typ deklarace k uchování. |
 
@@ -200,7 +200,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **OutputClaims** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | outputClaim | 1: n | Typ deklarace identity očekávaný výstup. |
 
@@ -219,7 +219,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **OutputClaimsTransformations** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | Identifikátory transformace deklarací, které budou spuštěny před všechny deklarace identity se odesílají do zprostředkovatele deklarací identity nebo předávající straně. Transformace deklarací identity lze použít k úpravě existující deklarace identity ClaimsSchema nebo generovat nové značky. |
 
@@ -235,7 +235,7 @@ A **metadat** prvek obsahuje následující prvky:
 
 **ValidationTechnicalProfiles** prvek obsahuje následující element:
 
-| Prvek | Výskyty | Popis |
+| Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Identifikátory technické profily, které se používají ověřit některé nebo všechny výstupní deklarace identit odkazující technického profilu. Všechny mezi vstupními deklaracemi identity odkazovaného technického profilu musí být uvedena v výstupní deklarace identit odkazující technického profilu. |
 

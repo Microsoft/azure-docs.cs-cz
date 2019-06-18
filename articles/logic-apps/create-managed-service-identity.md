@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65416124"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
@@ -59,7 +59,7 @@ Chcete-li povolit systém přiřadil spravovanou identitu pro vaši aplikaci log
 
    ![Identifikátory GUID pro ID objektu](./media/create-managed-service-identity/object-id.png)
 
-   | Vlastnost | Value | Popis | 
+   | Vlastnost | Hodnota | Popis | 
    |----------|-------|-------------| 
    | **ID objektu** | <*identity-resource-ID*> | Globálně jedinečný identifikátor (GUID), který představuje systém přiřadil spravované identity pro vaše aplikace logiky v tenantovi Azure AD | 
    ||| 
@@ -111,7 +111,7 @@ Když Azure vytvářet aplikace logiky, definice pracovního postupu vaší apli
 }
 ```
 
-| Vlastnost | Value | Popis | 
+| Vlastnost | Hodnota | Popis | 
 |----------|-------|-------------|
 | **principalId** | <*principal-ID*> | Globálně jedinečný identifikátor (GUID), který představuje aplikace logiky v tenantovi Azure AD a někdy se zobrazí jako "ID objektu" nebo `objectID` | 
 | **ID Tenanta** | <*Azure-AD-tenant-ID*> | Globálně jedinečný identifikátor (GUID), který představuje tenanta Azure AD, kde aplikace logiky je teď členem. Instanční objekt v tenantovi Azure AD má stejný název jako instanci aplikace logiky. | 
@@ -132,9 +132,9 @@ Udělit přístup do jiného prostředku Azure pro svou aplikaci logiky, systém
 
 1. Na webu Azure Portal přejděte k prostředku Azure ve které chcete přiřadit přístup pro spravovanou identitu. 
 
-1. V nabídce prostředků vyberte **řízení přístupu (IAM)**. Na panelu nástrojů zvolte **přidat** > **přidat přiřazení role**.
+1. V nabídce prostředků vyberte **řízení přístupu (IAM)** . Na panelu nástrojů zvolte **přidat** > **přidat přiřazení role**.
 
-   ![Přidat přiřazení role](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![Přidání přiřazení role](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
 1. V části **přidat přiřazení role**, vyberte **Role** chcete použít pro identitu. 
 

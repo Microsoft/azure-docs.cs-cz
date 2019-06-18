@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61480649"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Provedení analýzy subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning
@@ -175,7 +175,7 @@ V této části kurzu definujete funkci v úloze Stream analýzy. Funkci lze vyv
 
 1. Ujistěte se, že máte na webové služby adresy URL a klíč rozhraní API, který jste stáhli dříve v Excelovém sešitu.
 
-2. Přejděte do okna vaší úlohy > **funkce** > **+ přidat** > **Azure ml**
+2. Přejděte do okna vaší úlohy > **funkce** >  **+ přidat** > **Azure ml**
 
 3. Vyplňte **funkce Azure Machine Learning** okno s těmito hodnotami:
 

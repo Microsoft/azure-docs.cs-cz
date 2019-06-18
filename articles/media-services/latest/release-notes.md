@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/04/2019
 ms.author: juliako
 ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66688645"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi
@@ -62,14 +62,14 @@ Přidané aktualizace, které zahrnují vylepšení výkonu služby Media Servic
 * Maximální velikost souboru podporovaná při zpracování byl aktualizován. Zobrazit, [kvóty a omezení](limits-quotas-constraints.md).
 * [Kódování vylepšení rychlosti](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
-## <a name="april-2019"></a>2019. dubna
+## <a name="april-2019"></a>2019\. dubna
 
 ### <a name="new-presets"></a>Nové přednastavení
 
 * [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) byl přidán do přednastavení integrovaná analýza.
 * [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) přidal do předdefinované kodér přednastavení. Další informace najdete v tématu [kódování obsahu](cae-experimental.md). 
 
-## <a name="march-2019"></a>2019. března
+## <a name="march-2019"></a>2019\. března
 
 Dynamické balení, teď podporuje Dolby Atmos. Další informace najdete v tématu [zvuk kodeky podporuje dynamické balení](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
 
@@ -81,7 +81,7 @@ Media Services v3 je nyní podporována v národních cloudů Azure. Ne všechny
 
 [Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) událostí byl přidán do služby Azure Event Grid schémata pro Media Services.
 
-## <a name="january-2019"></a>2019. ledna
+## <a name="january-2019"></a>2019\. ledna
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Soubory kodéru Media Encoder Standard a MPI 
 

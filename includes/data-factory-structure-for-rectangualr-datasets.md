@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122525"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro obdélníkové datové sady
@@ -18,7 +18,7 @@ Všechny sloupce obsahují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název sloupce. |Ano |
+| name |Název sloupce. |Ano |
 | type |Datový typ sloupce. Zobrazit typ části převody pro více podrobností, kdy by měla zadáte informace o typu |Ne |
 | culture |.NET na základě jazykové verze se použije, když je zadán typ a je typ formátu .NET Datetime nebo Datetimeoffset. Výchozí hodnota je "en-us". |Ne |
 | format |Formátovací řetězec se použije, když je zadán typ a je typ formátu .NET Datetime nebo Datetimeoffset. |Ne |
@@ -58,7 +58,7 @@ Data factory podporuje následující kompatibilní se Specifikací kompatibiln�
 * Guid
 * Datetime
 * Datetimeoffset
-* Timespan 
+* Časový interval 
 
 Pro typ Datetime a Datetimeoffset také volitelně můžete zadat řetězce "culture" & "format" usnadnit analýzu svůj vlastní řetězec data a času. Najdete v ukázce pro převod typu níže.
 

@@ -15,10 +15,10 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61128843"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
@@ -94,10 +94,10 @@ Odkazovat [SAP, řešení potíží s HANA: Problémy s pamětí](https://help.s
 Odkazovat na [SAP Poznámka #2081065 – řešení potíží s SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2081065) a provedení kroků v této poznámky SAP pro řešení potíží síť.
 
 1. Analýza dobu odezvy mezi serverem a klientem.
-  A. Spusťte skript SQL [ _HANA\_sítě\_klienti_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Spusťte skript SQL [ _HANA\_sítě\_klienti_](https://launchpad.support.sap.com/#/notes/1969700) _._
   
 2. Analýza komunikace mezi uzly.
-  A. Spusťte skript SQL [ _HANA\_sítě\_služby_](https://launchpad.support.sap.com/#/notes/1969700)_._
+  A. Spusťte skript SQL [ _HANA\_sítě\_služby_](https://launchpad.support.sap.com/#/notes/1969700) _._
 
 3. Spusťte příkaz Linux **ifconfig** (výstup zobrazuje, pokud se vyskytnou ztráty paketů).
 4. Spusťte příkaz Linux **tcpdump**.
@@ -168,6 +168,6 @@ Ukázkový výstup:
 
 ![HANA\_konfigurace\_parametry\_Rev70 + Zkontrolujte parametry SAP HANA](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
-**Další kroky**
+**Další postup**
 
 - Přečtěte si [vysokou dostupnost v SUSE pomocí využitím techniky STONITH](ha-setup-with-stonith.md).

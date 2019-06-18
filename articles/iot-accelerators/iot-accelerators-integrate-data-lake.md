@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61449346"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Při integraci řešení vzdáleného monitorování Azure Data Lake Store
@@ -103,7 +103,7 @@ Vytvořte úlohu Azure Stream Analytics Streamovat data ze služby IoT hub k ú�
 
 1. Vyberte účet Data Lake Store, který jste vytvořili v předchozích krocích a poskytnout strukturu složek pro streamování dat do úložiště.
 
-1. V poli Formát data, zadejte **/streaming/ {date} / {time}**. Ponechte výchozí formát data rrrr/MM/DD a formát času HH.
+1. V poli Formát data, zadejte **/streaming/ {date} / {time}** . Ponechte výchozí formát data rrrr/MM/DD a formát času HH.
 
     ![Poskytuje strukturu složek](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
 ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60831826"
 ---
 # <a name="application-gateway-components"></a>Součásti aplikace brány
@@ -126,7 +126,7 @@ Back-endový fond přesměruje požadavek na back-end serverů, které požadave
 - Škálovací sady virtuálních počítačů
 - Veřejné IP adresy
 - Interní IP adresy
-- Plně kvalifikovaný název domény
+- PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY
 - Víceklientské back-EndY (jako je App Service)
 
 Členy fondu back-end brány aplikace nejsou vázané na skupinu dostupnosti. Službu application gateway může komunikovat s instancí mimo virtuální síť, která je v. V důsledku toho členy fondu back-end může být napříč clustery, napříč několika datacentry nebo mimo Azure, jako je připojení pomocí IP adresy.

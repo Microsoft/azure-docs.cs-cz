@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65597207"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testování aplikací logiky s využitím mock data nastavením statické výsledky
@@ -38,7 +38,7 @@ Pokud jste nastavili statickou výsledky pro Outlooku 365 odeslat akci e-mailu, 
 
 1. Na akce, ve které chcete nastavit statickou výsledky postupujte podle těchto kroků: 
 
-   1. V pravém horním rohu akce, klikněte na trojtečku (*...* ) tlačítko a vyberte **statické výsledek**, například:
+   1. V pravém horním rohu akce, klikněte na trojtečku ( *...* ) tlačítko a vyberte **statické výsledek**, například:
 
       ![Vyberte "Statické výsledek" > "Povolit statickou výsledek"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
@@ -50,7 +50,7 @@ Pokud jste nastavili statickou výsledky pro Outlooku 365 odeslat akci e-mailu, 
       |----------|-------------|
       | **Stav** | Stav akce vrátit |
       | **Stavový kód** | Konkrétní stavový kód, který má vrátit |
-      | **Záhlaví** | Obsah hlavičky pro vrácení |
+      | **Hlavičky** | Obsah hlavičky pro vrácení |
       |||
 
       ![Vyberte možnost "Povolit statickou výsledek"](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)

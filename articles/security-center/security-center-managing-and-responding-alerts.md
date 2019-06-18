@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
 ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65235759"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Správa a zpracování výstrah zabezpečení v Azure Security Center
 Tento dokument vám pomůže používat Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
 
 > [!NOTE]
-> Pokud chcete povolit rozšířené detekce, upgradujte na Azure Security Center Standard. Bezplatná zkušební verze je k dispozici. Pokud chcete provést upgrade, vyberte v [zásadách zabezpečení](tutorial-security-policy.md) cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
+> Pokud chcete povolit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná zkušební verze. Pokud chcete provést upgrade, vyberte v [zásadách zabezpečení](tutorial-security-policy.md) cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
 >
 >
 
@@ -65,7 +65,7 @@ V dolní části této stránky jsou uvedené podrobnosti pro každou výstrahu.
 >
 
 
-### <a name="alert-severity"></a>Závažnost upozornění
+### <a name="alert-severity"></a>Závažnost výstrahy
 
 -   **Vysoká**: Existuje vysoká pravděpodobnost, že dojde k ohrožení vašich prostředků. Byste se podívat do něj okamžitě. Security Center má vysokou spolehlivostí škodlivým činnostem závěry používají k vydávání výstrahu. Například výstrahy, které se zjistí spuštění známé škodlivé nástroje, jako je nástroj Mimikatz, běžné nástroj používaný pro krádež přihlašovacích údajů. 
 -   **Střední**: To je pravděpodobně podezřelou aktivitu, která může znamenat, že dojde k ohrožení prostředku.

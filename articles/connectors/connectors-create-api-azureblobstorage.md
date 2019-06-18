@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60958586"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytvoření a Správa objektů BLOB v Azure blob storage s využitím Azure Logic Apps
@@ -55,7 +55,7 @@ Tento příklad ukazuje, jak můžete začít pracovní postup aplikace logiky s
 
    V tomto příkladu této aktivační události: **Azure Blob Storage – když se objekt blob se přidá nebo upraví (jen vlastnosti)**
 
-   ![Vybrat trigger](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
+   ![Výběr triggeru](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
 3. Pokud se zobrazí výzva k připojení podrobnosti [vytvořte připojení úložiště objektů blob nyní](#create-connection). Nebo, pokud už připojení existuje, zadejte informace potřebné pro aktivační událost.
 
@@ -86,7 +86,7 @@ V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concept
    ![Přidání akce](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
    Přidání akce mezi stávající kroky, najeďte myší na připojení šipku. 
-   Vyberte znaménko plus (**+**), který se zobrazí a klikněte na tlačítko **přidat akci**.
+   Vyberte znaménko plus ( **+** ), který se zobrazí a klikněte na tlačítko **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "objektů blob v azure". Ze seznamu akcí vyberte požadovanou akci.
 

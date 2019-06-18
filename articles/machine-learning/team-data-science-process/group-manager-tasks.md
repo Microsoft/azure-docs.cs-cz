@@ -11,10 +11,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65950096"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Úlohy pro skupiny správce na týmovém projektu datové vědy
@@ -86,7 +86,7 @@ Jakmile se přihlásíte, klikněte na tlačítko **Create New Account** v prav�
 Zadejte informace pro služby Azure DevOps, které chcete vytvořit v **vytvoření účtu** průvodce s použitím následujících hodnot:
 
 - **Adresa URL serveru**: Nahraďte *mysamplegroup* vlastními *název serveru*. Adresa URL serveru bude: *https://\<servername\>. visualstudio.com*.
-- **Spravujete kód pomocí:** Vyberte  **_Git_**.
+- **Spravujete kód pomocí:** Vyberte  **_Git_** .
 - **Název projektu:** Zadejte *GroupCommon*.
 - **Uspořádejte práci pomocí:** Zvolte *agilní*.
 - **Hostovat projekty v::** Zvolte geografické polohy. V tomto příkladu jsme zvolili *střed USA – jih*.

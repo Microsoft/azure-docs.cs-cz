@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
 ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791433"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
@@ -44,19 +44,19 @@ Založený na virtuálních jádrech služby, které úrovně se liší předev�
 - Úroveň služby Hyperškálovatelného je optimalizována pro úlohy velmi rozsáhlé databáze.
 - Úroveň pro důležité obchodní informace služby jsou vhodné pro firemní úlohy kde vstupně-výstupní latence je prioritou.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Obchodně klíčové |
+| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Všechny|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
+| **Nejlepší pro** |Vše|  Většinu obchodních úloh. Nabídky rozpočtu orientované vyvážené výpočetní a úložné možnosti. | Datové aplikace s požadavky na kapacitu velkých objemů dat a možnost automatického škálování úložiště a škálování výpočetní plynule. | OLTP aplikace s vysokou četností transakcí a nejnižší latenci vstupně-výstupních operací. Nabízí nejvyšší odolnost proti selhání s využitím několika, izolovaných replik.|
 |  **Typ prostředku** ||Izolované databáze nebo elastického fondu / spravované instance | Izolovaná databáze | Izolované databáze nebo elastického fondu / spravované instance |
 | **Vypočítat velikost**|Izolovanou databázi nebo elastický fond * | 1 až 80 virtuálních jader | 1 až 80 virtuálních jader * | 1 až 80 virtuálních jader |
 | |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuálních jader | neuvedeno | 8, 16, 24, 32, 40, 64, 80 virtuálních jader |
-| **Typ úložiště** | Všechny |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
+| **Typ úložiště** | Vše |Vzdálené úložiště úrovně Premium (za instanci) | Zrušit propojených úložiště místní mezipaměti SSD (za instanci) | Mimořádně rychlým místní SSD storage (za instanci) |
 | **Velikost úložiště** | Izolované databáze nebo elastického fondu | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
 | | Spravovaná instance  | 32 GB – 8 TB | neuvedeno | 32 GB – 4 TB |
 | **Vstupně-výstupních operací** | Jednu databázi ** | 500 IOPS na vCore s 7000 maximální IOPS | Zatím neznámý | 5000 vstupně-výstupních operací s 200 000 maximální IOPS|
 | | Spravovaná instance | Závisí na velikosti souboru | neuvedeno | Spravovanou instanci: Závisí na velikosti souboru|
-|**Dostupnost**|Všechny|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
-|**Zálohování**|Všechny|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
+|**Dostupnost**|Vše|1 repliky, žádné škálování pro čtení, ne v místní mezipaměti | Víc replik, až 15 škálování pro čtení, částečné místní mezipaměti | 3 repliky, 1 škálování pro čtení, zónově redundantní vysokou dostupnost, úplná místní mezipaměti |
+|**Zálohování**|Vše|RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení)| RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení), konstantní čas obnovení bodu v čase (PITR) | RA-GRS, 7 – 35 dní (7 dní ve výchozím nastavení) |
 
 \* Elastické fondy nejsou podporovány v rámci úrovně služeb hyperškálovatelný systém
 

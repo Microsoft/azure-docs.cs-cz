@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60859337"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD & T vývojovým/testovacím prostředím v Azure
@@ -58,7 +58,7 @@ V tomto článku se dozvíte, jak nastavit Z vývojové a testovací prostředí
 
 3. Získat přihlašovací údaje SSH je vidět na **přehled** okno virtuálního počítače přes **připojit** tlačítko. Vyberte **SSH** kartu a zkopírujte tento příkaz přihlášení SSH do schránky.
 
-4. Přihlaste se k [prostředí Bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formuláři **ssh\<id uživatele\>\@\<IP adresu\>**. Po zobrazení výzvy k zadání pověření, zadejte je k navázání připojení k domovský adresář.
+4. Přihlaste se k [prostředí Bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formuláři **ssh\<id uživatele\>\@\<IP adresu\>** . Po zobrazení výzvy k zadání pověření, zadejte je k navázání připojení k domovský adresář.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server
 

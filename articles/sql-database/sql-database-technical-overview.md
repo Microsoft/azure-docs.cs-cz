@@ -14,10 +14,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073614"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co je služba Azure SQL Database
@@ -39,11 +39,11 @@ Následující obrázek ukazuje tyto možnosti nasazení:
 
 SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). V rámci strategie Microsoftu zaměřené na cloud se nové funkce SQL Serveru uvolňují nejprve do služby SQL Database a až potom do samotného SQL Serveru. Tento přístup vám poskytuje nejnovější funkce SQL Serveru bez režijních nákladů na opravy nebo aktualizace. Kromě toho umožňuje testování těchto funkcí v milionech databází. Pokud se chcete o nových funkcích dozvědět hned po jejich oznámení, podívejte se na:
 
-- **[Plány Azure do budoucna pro službu SQL Database](https://azure.microsoft.com/roadmap/?category=databases)**:
+- **[Plány Azure do budoucna pro službu SQL Database](https://azure.microsoft.com/roadmap/?category=databases)** :
 
   Místo, kde můžete zjistit, co je nového a co se chystá.
 
-- **[Blog o Azure SQL Database](https://azure.microsoft.com/blog/topics/database)**:
+- **[Blog o Azure SQL Database](https://azure.microsoft.com/blog/topics/database)** :
 
   Místo, kde produktového týmu SQL serveru členy blogu o SQL Database novinkách a funkcích.
 
@@ -110,20 +110,20 @@ Zóny dostupnosti Azure je play na příslušný problém vysokou dostupnost.  P
 
 Ve skutečnosti smlouvu o úrovni služeb Azure odvětví přední 99,99 % dostupnost [(SLA)](https://azure.microsoft.com/support/legal/sla/), technologii globální síti Datacenter řízených microsoftem, pomáhá zachovat aplikaci spuštěnou 24 hodin denně 7. Platforma Azure plně spravuje každou databázi a garantuje bez ztráty dat a vysoké procento dostupnosti data. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Premium dostupnosti se dosahuje prostřednictvím integrace výpočetní výkon a úložiště na jednom uzlu pro výkon a potom implementace technologie podobný skupin dostupnosti Always On na pozadí. Úplnou diskusi o možnosti vysoké dostupnosti služby Azure SQL Database, najdete v části [dostupnost SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
 
-- **[Automatické zálohování](sql-database-automated-backups.md)**:
+- **[Automatické zálohování](sql-database-automated-backups.md)** :
 
   SQL Database automaticky provádí úplné a rozdílové zálohování a zálohy transakčního protokolu databáze Azure SQL umožňuje obnovit do libovolného bodu v čase. Pro izolované databáze a databáze ve fondu můžete nakonfigurovat databázi SQL pro ukládání úplné zálohy databáze do úložiště Azure pro dlouhodobé uchovávání záloh. Pro spravované instance můžete také provádět pouze kopie zálohy pro dlouhodobé uchovávání záloh.
 
-- **[Obnovení bodu v čase](sql-database-recovery-using-backups.md)**:
+- **[Obnovení bodu v čase](sql-database-recovery-using-backups.md)** :
 
   Všechny možnosti nasazení SQL Database podporu obnovení do libovolného bodu v čase v rámci doby uchování automatických záloh pro libovolnou databázi Azure SQL.
-- **[Aktivní geografická replikace](sql-database-active-geo-replication.md)**:
+- **[Aktivní geografická replikace](sql-database-active-geo-replication.md)** :
 
   Izolovaná databáze a databáze ve fondu umožňují konfigurovat až čtyři čitelné sekundární databáze ve stejné nebo v globálně distribuovaných datových center Azure.  Pokud například máte aplikaci SaaS s databází katalogu s velkým počtem souběžných transakcí jen pro čtení, použijte geografickou replikaci a umožněte globální škálovaní operací čtení a odstraňte problémová místa v hlavní databázi způsobená úlohami čtení. Pro spravované instance pomocí skupin automatického – převzetí služeb při selhání.
-- **[Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md)**:
+- **[Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md)** :
 
   Všechny možnosti nasazení SQL Database umožňují použití skupin převzetí služeb při selhání pro povolit vysokou dostupnost a vyrovnávání zatížení v globálním měřítku, včetně transparentní geografické replikace a převzetí služeb při selhání z velké sady databází a elastických fondů, spravované instance. Skupiny převzetí služeb při selhání umožňují vytváření globálně distribuovaných aplikací SaaS s minimálními nároky na správu všech komplexní monitorování, směrování a orchestraci převzetí služeb při selhání do služby SQL Database.
-- **[Zónově redundantní databáze](sql-database-high-availability.md)**:
+- **[Zónově redundantní databáze](sql-database-high-availability.md)** :
 
   SQL Database umožňuje zřizování premium nebo kritické obchodní databáze nebo elastické fondy napříč několika zónami dostupnosti. Vzhledem k tomu, že tyto databáze a elastické fondy mají z důvodu zajištění vysoké dostupnosti několik redundantních replik, umístění těchto replik do několika zón dostupnosti zajistí vyšší odolnost, včetně možnosti automatického obnovení bez ztráty dat v případě selhání na úrovni datacentra.
 
@@ -191,16 +191,16 @@ Služba SQL Database se účastní pravidelných auditů a byla certifikována p
 
 SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL Database vám umožňuje soustředit se na to, v čem jste nejlepší – na vytváření skvělých aplikací. Ve službě SQL Database můžete vyvíjet a provádět správu pomocí nástrojů a dovedností, které už máte.
 
-- **[Na webu Azure portal](https://portal.azure.com/)**:
+- **[Na webu Azure portal](https://portal.azure.com/)** :
 
   Webová aplikace pro správu všech služeb Azure
-- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**:
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** :
 
   Stáhnout zdarma a klientskou aplikaci pro správu jakékoliv infrastruktury SQL, od SQL serveru do služby SQL Database
-- **[SQL Server Data Tools v sadě Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
+- **[SQL Server Data Tools v sadě Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** :
 
   Na bezplatné klientská aplikace ke stažení pro vývoj relačních databází systému SQL Server, databáze Azure SQL, balíčků integračních služeb, datových modelů Analysis Services a sestavy služby Reporting Services.
-- **[Visual Studio Code](https://code.visualstudio.com/docs)**:
+- **[Visual Studio Code](https://code.visualstudio.com/docs)** :
 
   Editor kódu zdarma ke stažení, open source pro Windows, macOS a Linux, který podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a SQL Data Warehouse.
 
