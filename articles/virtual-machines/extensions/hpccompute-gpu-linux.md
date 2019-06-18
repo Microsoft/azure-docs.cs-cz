@@ -84,9 +84,9 @@ Všechna nastavení jsou volitelná. Výchozí chování je k aktualizaci jádra
 
 | Name | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false (nepravda) | Hodnota TRUE, false | Boolean |
-| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | nejnovější | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
-| installCUDA | Nainstalujte CUDA toolkit. Platí pouze pro řady NC/ND virtuálních počítačů. | true (pravda) | Hodnota TRUE, false | Boolean |
+| updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false | true, false | boolean |
+| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | latest | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
+| installCUDA | Nainstalujte CUDA toolkit. Platí pouze pro řady NC/ND virtuálních počítačů. | true | true, false | boolean |
 
 
 ## <a name="deployment"></a>Nasazení
