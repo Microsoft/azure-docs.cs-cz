@@ -15,11 +15,11 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: ae6d590cdada24638ec2d24c83609b8e6addfaf0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121633"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175182"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -34,8 +34,8 @@ Aplikace, kterou vytvoříte v této příručce se zobrazí tlačítko, které 
 Jak vytvořit aplikaci, postupujte takto:
 
 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
-2. V části **šablony**vyberte **Visual C#**.
-3. Vyberte **aplikace WPF (.NET Framework)**, v závislosti na verzi verze sady Visual Studio, kterou používáte.
+2. V části **šablony**vyberte **Visual C#** .
+3. Vyberte **aplikace WPF (.NET Framework)** , v závislosti na verzi verze sady Visual Studio, kterou používáte.
 
 ## <a name="add-msal-to-your-project"></a>Do projektu přidejte MSAL
 

@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/22/2019
 ms.openlocfilehash: eda4395b46abdfdccb76c0960984b3f6d7614a48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66124271"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175285"
 ---
 Hostitel je x64 počítač, který spustí kontejner Dockeru. Může být počítač připojený k vaší místní nebo hostující služby Docker v Azure, jako například:
 

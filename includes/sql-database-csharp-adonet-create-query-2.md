@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66167222"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175085"
 ---
 ## <a name="c-program-example"></a>C#Příklad programu
 
@@ -37,7 +37,7 @@ Opravné zobrazuje vztah mezi dvěma tabulkami. Hodnoty **tabEmployee.Department
 
 C# Programu je logicky jeden soubor .cs a fyzicky je rozdělen na několik bloků kódu, aby každý blok snadněji jim porozumíte. Kompilace a spuštění programu, proveďte následující kroky:
 
-1. Vytvoření C# projektu v sadě Visual Studio. Typ projektu by měl být *konzoly*, je uvedený v části **šablony** > **Visual C#**   >  **Windows Desktop**  >  **Aplikace konzoly (.NET Framework)**.
+1. Vytvoření C# projektu v sadě Visual Studio. Typ projektu by měl být *konzoly*, je uvedený v části **šablony** > **Visual C#**   >  **Windows Desktop**  >  **Aplikace konzoly (.NET Framework)** .
 
 1. V souboru *Program.cs*, starter řádky kódu nahraďte následující kroky:
 

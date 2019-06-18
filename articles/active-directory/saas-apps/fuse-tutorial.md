@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a57ab6e8f742cb44425ef703986e61529672264
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fda9594d97500075e6b018e1e8c9ff5816fe3590
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102223"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Kurz: Integrace Azure Active Directory s Fuse
 
@@ -104,7 +104,7 @@ Ke konfiguraci Azure AD jednotné přihlašování s Fuse, proveďte následují
 
     ![Fuse domény a adresy URL jednotné přihlašování – informace](common/sp-signonurl.png)
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<tenant name>.fusionuniversal.com/`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://{tenantname}.fuseuniversal.com/`
 
     > [!NOTE]
     > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory prověřování klientských](mailto:support@fusion-universal.com) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.

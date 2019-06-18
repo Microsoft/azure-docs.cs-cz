@@ -9,11 +9,11 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66163511"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175632"
 ---
 Vytvoření IoT Hubu pomocí webu Azure Portal:
 
@@ -30,13 +30,13 @@ Vytvoření IoT Hubu pomocí webu Azure Portal:
     | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
     | Skupina prostředků | Vytvořte novou. Tento kurz používá název **tutorials-iot-hub-rg**. |
     | Oblast | Tento kurz používá **Západní USA**. Vy si můžete vybrat oblast, která je vám nejbližší. |
-    | Název | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
+    | Name | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
 
     ![Nastavení centra 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Úroveň ceny a škálování | F1 Free. V jednom předplatném můžete mít pouze jedno centrum úrovně Free. |
+    | Cenová úroveň a úroveň škálování | F1 Free. V jednom předplatném můžete mít pouze jedno centrum úrovně Free. |
     | Jednotky služby IoT Hub | 1 |
 
     ![Nastavení centra 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)

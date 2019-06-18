@@ -11,11 +11,11 @@ ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
 ms.openlocfilehash: 40c1be20df845b975c023616e38cbb932c985735
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157866"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175445"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -58,7 +58,7 @@ Nejdřív potřebujeme nasazení standardních hodnot z našich služeb. Toto na
 
 1. Klonování [Dev prostory ukázkovou aplikaci](https://github.com/Azure/dev-spaces): `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. Rezervujte vzdálenou větev *azds_updates*: `git checkout -b azds_updates origin/azds_updates`
-1. Vyberte _dev_ místa: `azds space select --name dev`. Po zobrazení výzvy k výběru místa dev nadřazené vyberte  _\<žádný\>_.
+1. Vyberte _dev_ místa: `azds space select --name dev`. Po zobrazení výzvy k výběru místa dev nadřazené vyberte  _\<žádný\>_ .
 1. Přejděte _mywebapi_ adresáře a spusťte: `azds up -d`
 1. Přejděte _webfrontend_ adresáře a spusťte: `azds up -d`
 1. Spustit `azds list-uris` zobrazíte veřejný koncový bod pro _webfrontend_

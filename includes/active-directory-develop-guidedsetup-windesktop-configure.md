@@ -15,13 +15,13 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121621"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175183"
 ---
-## <a name="register-your-application"></a>Zaregistrujte svoji aplikaci.
+## <a name="register-your-application"></a>Registrace vaší aplikace
 
 Registrace vaší aplikace v jednom ze dvou způsobů.
 
@@ -40,11 +40,11 @@ Postup při registraci aplikace a přidání informací o registraci aplikace k 
 1. Přejděte na Microsoft identity platform pro vývojáře [registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) stránky.
 1. Vyberte **registrace nové**.
    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Win-App-calling-MsGraph`.
-   - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
+   - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)** .
    - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
    1. V **identifikátory URI přesměrování** části, v seznamu identifikátorů URI pro přesměrování:
-   1. V **typ** vybrat sloupec **veřejným klientem (mobilních a desktopových)**.
+   1. V **typ** vybrat sloupec **veřejným klientem (mobilních a desktopových)** .
    1. Zadejte `urn:ietf:wg:oauth:2.0:oob` v **identifikátor URI pro PŘESMĚROVÁNÍ** sloupce.
 1. Vyberte **Uložit**.
 1. Přejděte do sady Visual Studio, otevřete *App.xaml.cs* souboru a potom nahraďte `Enter_the_Application_Id_here` s ID aplikace, které jste právě zaregistrovali a zkopírovat.

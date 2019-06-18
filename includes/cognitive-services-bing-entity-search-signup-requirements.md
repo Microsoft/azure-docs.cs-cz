@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/15/2019
 ms.openlocfilehash: 10629387d92cedb1092c4647d924f2322816ec26
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124888"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175337"
 ---
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si zdarma [vytvořit účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Než budete pokračovat, budete potřebovat přístupový klíč k dispozici po aktivaci vaší bezplatné zkušební verze nebo placené předplatné klíč z řídicího panelu Azure.

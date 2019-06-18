@@ -330,10 +330,10 @@ Zde je, jak přizpůsobuje předešlým formátem do aktuálního formátu:
 
 | Aktuální název vlastnosti | Ekvivalentní předchozí schématu |
 | --- | --- |
-| settings.wmfVersion |settings.WMFVersion |
+| settings.wmfVersion |nastavení. WMFVersion |
 | settings.configuration.url |settings.ModulesUrl |
-| settings.configuration.script |First part of settings.ConfigurationFunction (before \\\\) |
-| settings.configuration.function |Second part of settings.ConfigurationFunction (after \\\\) |
+| settings.configuration.script |První část nastavení. ConfigurationFunction (před \\ \\) |
+| settings.configuration.function |Druhá část nastavení. ConfigurationFunction (po \\ \\) |
 | settings.configuration.module.name | settings.ModuleSource |
 | settings.configuration.module.version | settings.ModuleVersion |
 | settings.configurationArguments |settings.Properties |

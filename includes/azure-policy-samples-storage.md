@@ -9,13 +9,13 @@ ms.date: 05/17/2018
 ms.author: dacoulte
 ms.custom: include file
 ms.openlocfilehash: fe6c6d461fd6b99ce2ce57ebdd61a3f3e961489c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155502"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175170"
 ---
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 |  |  |
 |---------|---------|

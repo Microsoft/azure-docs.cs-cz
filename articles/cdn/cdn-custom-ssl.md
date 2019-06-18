@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9cca4cd113115a1acf676b46cc65dc4ed7021fa
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 6a41df70340da626a849804155ca245d95b6da46
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144072"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190509"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN
 
@@ -174,7 +174,7 @@ Při použití vlastního certifikátu se ověření domény nevyžaduje.
 
 Váš záznam CNAME by měl mít následující formát, kde *Název* je název vaší vlastní domény a *Hodnota* je název hostitele vašeho koncového bodu CDN:
 
-| Name            | Typ  | Hodnota                 |
+| Název            | Typ  | Hodnota                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -189,10 +189,10 @@ Automatické ověření trvá obvykle několik hodin. Pokud se vaše doména neo
 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Vlastní doména se nemapuje na koncový bod CDN
 
-Pokud položka záznamu CNAME pro váš koncový bod už neexistuje nebo obsahuje subdoménu cdnverify, postupujte podle zbývajících pokynů v tomto kroku.
-
 >[!NOTE]
->E-mailová ověření vlastní domény vlastnictví není momentálně k dispozici pro **Azure CDN od Akamai** profily. Tato funkce je aktuálně v našem seznamu nevyřízených věcí. 
+>E-mailová ověření vlastní domény vlastnictví není momentálně k dispozici pro **Azure CDN od Akamai** profily. Pokud používáte **Azure CDN od Akamai**, vaše vlastní doména musí být namapována na váš koncový bod cdn pomocí záznamu CNAME, jak je uvedeno výše.  Tato funkce je aktuálně v našem seznamu nevyřízených věcí. 
+
+Pokud položka záznamu CNAME obsahuje subdoménu cdnverify, postupujte podle zbývajících pokynů v tomto kroku.
 
 Po odeslání žádosti pro povolení HTTPS pro vlastní doménu certifikační Autorita DigiCert ověří vlastnictví vaší domény ve kontaktuje podle domény [WHOIS](http://whois.domaintools.com/) informace o žadateli o. Kontakt proběhne přes e-mailovou adresu (ve výchozím nastavení) nebo telefonní číslo uvedené v registraci WHOIS. Nejprve je potřeba provést ověření domény, a teprve pak se protokol HTTPS pro vaši vlastní doménu aktivuje. Na schválení domény máte šest pracovních dnů. Žádosti, které se nepotvrdí do šesti pracovních dnů, se automaticky zruší. 
 

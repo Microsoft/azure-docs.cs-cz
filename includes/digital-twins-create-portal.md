@@ -9,15 +9,15 @@ ms.date: 12/17/2018
 ms.author: dkshir
 ms.custom: include file
 ms.openlocfilehash: 0c89c8353d410ddd54e8a59f3838c914702b96ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153711"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175670"
 ---
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
-1. V levém podokně vyberte **vytvořit prostředek**. Vyhledejte **digital twins** a vyberte **Digital Twins (Preview)**. Vyberte **vytvořit** k zahájení procesu nasazení.
+1. V levém podokně vyberte **vytvořit prostředek**. Vyhledejte **digital twins** a vyberte **Digital Twins (Preview)** . Vyberte **vytvořit** k zahájení procesu nasazení.
 
    ![Výběry pro vytvoření nové instance digitální dvojče](./media/create-digital-twins-portal/create-digital-twins.png)
 
@@ -37,4 +37,4 @@ ms.locfileid: "66153711"
 
     Upravit **rozhraní API pro správu** adresa URL tento formát `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Vaše aplikace bude tuto upravenou adresu URL používat jako základní adresu URL pro přístup k vaší instanci. Zkopírujte tuto upravenou adresu URL do dočasného souboru. Budete potřebovat v další části.
 
-    ![API pro správu](./media/create-digital-twins-portal/digital-twins-management-api.png)
+    ![Rozhraní API pro správu](./media/create-digital-twins-portal/digital-twins-management-api.png)

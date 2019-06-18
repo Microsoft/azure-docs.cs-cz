@@ -9,11 +9,11 @@ ms.date: 07/05/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c3677e7897498aa06d7bd547988ad4dc0326f39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150437"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175096"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Povolit poskytovatele prostředků služby Event Grid
 
