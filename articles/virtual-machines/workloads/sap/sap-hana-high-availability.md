@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922292"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
@@ -26,17 +26,17 @@ ms.locfileid: "64922292"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]:https://launchpad.support.sap.com/#/notes/2205917
-[1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2205917]: https://launchpad.support.sap.com/#/notes/2205917
+[1944799]: https://launchpad.support.sap.com/#/notes/1944799
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]:https://launchpad.support.sap.com/#/notes/401162
+[401162]: https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -113,7 +113,7 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
     - **Dostupnost systému**: Vyberte **HA**.
     - **Uživatelské jméno Admin a heslo správce**: Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
     - **Nové nebo existující podsíti**: Určuje, zda má být vytvořena nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-    - **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá jako **/subscriptions/\<ID předplatného > /resourceGroups/\<název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě > /subnets/ \<název podsítě >**.
+    - **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá jako **/subscriptions/\<ID předplatného > /resourceGroups/\<název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě > /subnets/ \<název podsítě >** .
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
@@ -204,11 +204,11 @@ Postupujte podle kroků v [nastavení Pacemaker na SUSE Linux Enterprise Server 
 ## <a name="install-sap-hana"></a>Instalace SAP HANA
 
 Kroky v této části používají následující předpony:
-- **[A]**: V kroku se vztahuje na všechny uzly.
-- **[1]**: V kroku se týká pouze uzlu 1.
-- **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+- **[A]** : V kroku se vztahuje na všechny uzly.
+- **[1]** : V kroku se týká pouze uzlu 1.
+- **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
-1. **[A] ** Nastavení rozložení disků: **Správce logických svazků (LVM)**.
+1. **[A]**  Nastavení rozložení disků: **Správce logických svazků (LVM)** .
 
    Doporučujeme použít LVM pro svazky, které ukládají data a soubory protokolu. V následujícím příkladu se předpokládá, že virtuální počítače mají čtyři datové disky připojené, které se používají k vytváření dva svazky.
 
@@ -274,7 +274,7 @@ Kroky v této části používají následující předpony:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A] ** Nastavení rozložení disků: **Standardní disky**.
+1. **[A]**  Nastavení rozložení disků: **Standardní disky**.
 
    Pro ukázku systémy můžete umístit vaše HANA dat a souborů protokolu na jeden disk. Na /dev/disk/azure/scsi1/lun0 vytvořit oddíl a naformátovat s xfs:
 
@@ -297,7 +297,7 @@ Kroky v této části používají následující předpony:
    sudo mount -a
    </code></pre>
 
-1. **[A] ** Nastavit rozlišení názvu hostitele pro všechny hostitele.
+1. **[A]**  Nastavit rozlišení názvu hostitele pro všechny hostitele.
 
    Můžete buď použít DNS server, nebo upravte soubor/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    Nahraďte IP adresu a název hostitele v následujících příkazech:
@@ -311,14 +311,14 @@ Kroky v této části používají následující předpony:
    <b>10.0.0.6 hn1-db-1</b>
    </code></pre>
 
-1. **[A] ** Nainstalujte balíčky vysoké dostupnosti SAP HANA:
+1. **[A]**  Nainstalujte balíčky vysoké dostupnosti SAP HANA:
 
    <pre><code>sudo zypper install SAPHanaSR
    </code></pre>
 
 Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce SAP HANA SR výkonu optimalizované scénářem](https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/).
 
-1. **[A] ** Spustit **hdblcm** program z disku DVD HANA. Zadejte následující hodnoty do příkazového řádku:
+1. **[A]**  Spustit **hdblcm** program z disku DVD HANA. Zadejte následující hodnoty do příkazového řádku:
    * Zvolte instalaci: Zadejte **1**.
    * Vyberte další součásti k instalaci: Zadejte **1**.
    * Zadejte instalační cesta [/ hana/sdílené]: Vyberte možnost Enter.
@@ -343,9 +343,9 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
    * Zadejte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze.
    * Potvrďte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze znovu pro potvrzení.
    * Restartování systému po restartování počítače? [n]: Vyberte možnost Enter.
-   * Chcete pokračovat? (y/n): Souhrn ověření. Zadejte **y** pokračujte.
+   * Opravdu chcete pokračovat? (y/n): Souhrn ověření. Zadejte **y** pokračujte.
 
-1. **[A] ** Upgrade agenta hostitele SAP.
+1. **[A]**  Upgrade agenta hostitele SAP.
 
    Stáhněte si nejnovější Agent hostitele SAP archiv z [centra softwaru SAP] [ sap-swcenter] a spusťte následující příkaz pro upgrade agenta. Cesta k archivu tak, aby odkazoval na soubor, který jste si stáhli nahradíte:
 
@@ -356,11 +356,11 @@ Instalace systémové replikace SAP HANA, postupujte podle kapitoly 4 [Průvodce
 
 Kroky v této části používají následující předpony:
 
-* **[A]**: V kroku se vztahuje na všechny uzly.
-* **[1]**: V kroku se týká pouze uzlu 1.
-* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]** : V kroku se vztahuje na všechny uzly.
+* **[1]** : V kroku se týká pouze uzlu 1.
+* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
-1. **[1] ** Vytvoření databáze tenanta.
+1. **[1]**  Vytvoření databáze tenanta.
 
    Pokud používáte SAP HANA 2.0 nebo MDC, vytvoření databáze tenanta pro váš systém SAP NetWeaver. Nahraďte **NW1** s identifikátorem SID systému SAP.
 
@@ -369,7 +369,7 @@ Kroky v této části používají následující předpony:
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
-1. **[1] ** Konfigurace systémové replikace na prvním uzlu:
+1. **[1]**  Konfigurace systémové replikace na prvním uzlu:
 
    Proveďte zálohu databáze jako < hanasid\>adm:
 
@@ -389,7 +389,7 @@ Kroky v této části používají následující předpony:
    <pre><code>hdbnsutil -sr_enable --name=<b>SITE1</b>
    </code></pre>
 
-1. **[2] ** Konfigurace systémové replikace na druhém uzlu:
+1. **[2]**  Konfigurace systémové replikace na druhém uzlu:
     
    Zaregistrujte druhého uzlu do spuštění replikace systému. Spuštěním následujícího příkazu jako < hanasid\>adm:
 
@@ -401,11 +401,11 @@ Kroky v této části používají následující předpony:
 
 Kroky v této části používají následující předpony:
 
-* **[A]**: V kroku se vztahuje na všechny uzly.
-* **[1]**: V kroku se týká pouze uzlu 1.
-* **[2]**: V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]** : V kroku se vztahuje na všechny uzly.
+* **[1]** : V kroku se týká pouze uzlu 1.
+* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
-1. **[1] ** Vytvořit požadovaní uživatelé.
+1. **[1]**  Vytvořit požadovaní uživatelé.
 
    Spusťte následující příkaz jako uživatel root. Ujistěte se, že k nahrazení řetězců tučné (ID systému HANA **HN1** a číslo instance **03**) s hodnotami instalace SAP HANA:
 
@@ -415,7 +415,7 @@ Kroky v této části používají následující předpony:
    hdbsql -u system -i <b>03</b> 'ALTER USER <b>hdb</b>hasync DISABLE PASSWORD LIFETIME'
    </code></pre>
 
-1. **[A] ** Vytvořit položka úložiště klíčů.
+1. **[A]**  Vytvořit položka úložiště klíčů.
 
    Jako uživatel root, chcete-li vytvořit novou položku úložiště klíčů, spusťte následující příkaz:
 
@@ -423,7 +423,7 @@ Kroky v této části používají následující předpony:
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
    </code></pre>
 
-1. **[1] ** Zálohování databáze.
+1. **[1]**  Zálohování databáze.
 
    Zálohování databází jako kořenový adresář:
 
@@ -436,7 +436,7 @@ Kroky v této části používají následující předpony:
    <pre><code>hdbsql -d <b>HN1</b> -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
    </code></pre>
 
-1. **[1] ** Konfigurace systémové replikace na prvním uzlu.
+1. **[1]**  Konfigurace systémové replikace na prvním uzlu.
 
    Vytvořte primární lokalitu jako < hanasid\>adm:
 
@@ -444,7 +444,7 @@ Kroky v této části používají následující předpony:
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
    </code></pre>
 
-1. **[2] ** Konfigurace systémové replikace na sekundárním uzlu.
+1. **[2]**  Konfigurace systémové replikace na sekundárním uzlu.
 
    Zaregistrovat jako sekundární lokalitu < hanasid\>adm:
 
