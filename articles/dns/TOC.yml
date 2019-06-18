@@ -4,6 +4,8 @@
   items:
     - name: Co je Azure DNS?
       href: dns-overview.md
+    - name: Co je Privátní DNS v Azure?
+      href: private-dns-overview.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -20,7 +22,7 @@
     - name: Vytvoření vlastních záznamů DNS pro webovou aplikaci
       href: dns-web-sites-custom-domain.md
     - name: Vytvoření privátní zóny DNS a záznamu
-      href: private-dns-getstarted-powershell.md
+      href: private-dns-portal.md
     - name: Záznamy aliasů pro Traffic Manager
       href: tutorial-alias-tm.md
     - name: Záznamy aliasů pro veřejné IP adresy
@@ -33,6 +35,12 @@
       href: cli-samples.md
 - name: Koncepty
   items:
+    - name: Privátní DNS
+      items:
+        - name: Nejčastější dotazy – Privátní DNS
+          href: dns-faq-private.md
+        - name: Scénáře pro privátní DNS
+          href: private-dns-scenarios.md
     - name: Zóny a záznamy
       href: dns-zones-records.md
     - name: Záznamy aliasů
@@ -41,10 +49,6 @@
       href: dns-domain-delegation.md
     - name: Nejčastější dotazy
       href: dns-faq.md
-    - name: Použití privátních zón DNS
-      href: private-dns-overview.md
-    - name: Scénáře pro privátní DNS
-      href: private-dns-scenarios.md
     - name: Metriky a upozornění DNS
       href: dns-alerts-metrics.md
     - name: Reverzní DNS
@@ -53,8 +57,12 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Postup
   items:
-    - name: Vytvoření privátní zóny a záznamu DNS – Azure CLI
-      href: private-dns-getstarted-cli.md
+    - name: Privátní DNS
+      items:
+        - name: Vytvoření privátní zóny – rozhraní příkazového řádku
+          href: private-dns-getstarted-cli.md
+        - name: Vytvoření privátní zóny – PowerShell
+          href: private-dns-getstarted-powershell.md
     - name: Záznamy aliasů pro webové aplikace s vyrovnáváním zatížení
       href: dns-alias-appservice.md
     - name: Správa zón DNS
