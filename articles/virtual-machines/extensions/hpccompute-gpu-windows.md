@@ -37,7 +37,7 @@ Toto rozšíření podporuje následující OSs:
 
 | Distribuce | Version |
 |---|---|
-| Windows 10 (up to version 1803)| Core |
+| Windows 10 (až do verze 1803)| Core |
 | Windows Server 2016 | Core |
 | Windows Server 2012R2 | Core |
 
