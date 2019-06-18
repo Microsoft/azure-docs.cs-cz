@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c6fddec80da1baa852a2f3712a94b785d775919e
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788722"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151048"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze v jazyce Java pomocí nástroje QnA Maker
 
@@ -100,7 +100,7 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 ```
 
 ## <a name="add-a-main-method"></a>Přidání metody main
-Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. V poli hlavičky odpovědi POST **Location** se vrátí **ID operace** vytváření, které se pak použije jako část trasy v požadavku GET. **Smyčka `while` kontroluje stav, dokud není dokončený.
+Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. Operace POST pole hlavičky odpovědi se vrátí ID **umístění**, použije se jako součást trasy v požadavek GET. `while` Smyčka opakování stav, pokud není dokončena.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60721007"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
@@ -62,7 +62,7 @@ Informace o povolených použití a zobrazení výsledků najdete v tématu [pou
 ## <a name="headers"></a>Hlavičky  
 Níže jsou hlavičky, které mohou zahrnovat požadavek a odpověď.  
   
-|Hlavička|Popis|  
+|Záhlaví|Popis|  
 |------------|-----------------|  
 |Přijmout|Nepovinná hlavička požadavku.<br /><br /> Výchozí typ média je application/json. Určující, že odpověď [JSON-LD](https://json-ld.org/), nastavit hlavičku Accept application/ld + json.|  
 |<a name="acceptlanguage" />Accept-Language|Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud nastavíte tuto hlavičku, musíte zadat také parametr dotazu kopie. K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Pokud chcete zjistit, který trh Bing použil, podívejte se do hlavičky BingAPIs-Market.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.|  
@@ -119,7 +119,7 @@ Definuje chyby, ke které došlo k chybě.
 ### <a name="errorresponse"></a>ErrorResponse  
 Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu.|String|  
 |<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)|  
@@ -131,7 +131,7 @@ Definuje licence, pod kterým mohou být použity text nebo fotografie.
   
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|jméno|Název licence.|String|  
+|name|Název licence.|String|  
 |url|Adresa URL webu, kde uživatel získat další informace o licenci.<br /><br /> Vytvoření hypertextového odkazu, použijte název a adresu URL.|String|  
   
 
@@ -141,7 +141,7 @@ Definuje smluvní pravidlo pro přiřazení licence.
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na LicenseAttribution.|String|  
-|licence|Licence, pod kterým mohou být použity obsah.|[Licence](#license)|  
+|Licence|Licence, pod kterým mohou být použity obsah.|[Licence](#license)|  
 |licenseNotice|Licence, který se zobrazí vedle cílové pole. Například "Text v rámci licence kopie SA".<br /><br /> Použijte název a adresu URL licenci `license` pole, které chcete vytvořit hypertextový odkaz na web, který popisuje podrobnosti o licenci. Potom nahraďte název licence v `licenseNotice` řetězec (například CC-podle-SA) s odkazem, který jste právě vytvořili.|String|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Boolean|  
 |targetPropertyName|Název pole, které se pravidlo vztahuje.|String|  
@@ -150,7 +150,7 @@ Definuje smluvní pravidlo pro přiřazení licence.
 ### <a name="link"></a>Odkaz  
 Definuje komponenty hypertextový odkaz.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu.|String|  
 |text|Zobrazení textu.|String|  
@@ -172,7 +172,7 @@ Definuje pravidlo smluvní pro přidělení odkazu.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definuje smluvní pravidlo pro attribution média.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na MediaAttribution.|String|  
 |mustBeCloseToContent|Logická hodnota, která určuje, zda obsah pravidlo musí být umístěn v blízkosti pole, které se pravidlo vztahuje. Pokud **true**, obsah musí být umístěn v těsné blízkosti. Pokud **false**, nebo tato pole neexistuje, můžete umístit obsah na základě vlastního uvážení volajícího.|Boolean|  
@@ -188,7 +188,7 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
   
 |Název|Hodnota|Type|  
 |----------|-----------|----------|  
-|jméno|Název vydavatele.|String|  
+|name|Název vydavatele.|String|  
 |url|Adresa URL webu vydavatele.<br /><br /> Všimněte si, že vydavatel nemusí poskytnout webu.|String|  
   
   
@@ -196,9 +196,9 @@ Všimněte si, že vydavatel může zadat jeho název nebo jejich webu nebo oboj
 ### <a name="webpage"></a>Webová stránka  
 Definuje informace o webové stránce ve verzi preview.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|
-|jméno|Název stránky, ne tedy nutně Nadpis HTML|String|
+|name|Název stránky, ne tedy nutně Nadpis HTML|String|
 |url|Adresu URL, kterou byl ve skutečnosti procházen (žádosti může provedli přesměrování)|String|  
 |description|Stručný popis stránky a obsahu|String|  
 |isFamilyFriendly|Co nejvíce zpřesnili pro položky v rejstříku web. Tato detekce založené výhradně na adresu URL a obsah stránky se načte v reálném čase|Boolean|
@@ -218,21 +218,21 @@ Definuje kontext dotazu, který používá Bing pro daný požadavek.
 
 ### <a name="identifiable"></a>Údaje
 
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |-------------|-----------------|----------|
 |id|Identifikátor prostředku|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definuje skupinu výsledky, jako například mainline.
 
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |-------------|-----------------|----------|
-|položek|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
+|items|Seznam výsledků hledání pro zobrazení ve skupině.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definuje položku výsledek vyhledávání k zobrazení.
 
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Z nuly vycházející index položky v odpovědi na dotaz k zobrazení. Pokud položka neobsahuje toto pole, zobrazí všechny položky v odpovědi na dotaz. Například zobrazte všechny články o novinkách v zpráv odpovědí.|Integer|
 |answerType|Odpověď obsahující položku k zobrazení. Například příspěvky.<br /><br />Použijte typ odpovědi SearchResponse objektu. Typ je název SearchResponse pole.<br /><br /> Pouze v případě, že tento objekt obsahuje pole hodnoty; však použijte typ odpovědi v opačném případě ji ignorujte.|String|
@@ -242,7 +242,7 @@ Definuje položku výsledek vyhledávání k zobrazení.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde na hledání by měl být umístěn obsah stránky výsledků a v jakém pořadí.  
   
-|Název|Hodnota|  
+|Name|Hodnota|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Výsledky hledání pro zobrazení v hlavní linii.|  
 |<a name="ranking-pole" />pole|Výsledky hledání, které by měl být poskytnuta nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).|  
@@ -254,7 +254,7 @@ Definuje objekt nejvyšší úrovně, který obsahuje odpověď po úspěšném 
   
 Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude úspěšné (stavový kód protokolu HTTP je 200 OK); text odpovědi však bude prázdný.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Pomocný parametr typu, který je nastaven na SearchResponse.|String|  
 |Webová stránka|Objekt JSON, který definuje verzi preview|string|  
@@ -263,7 +263,7 @@ Všimněte si, že pokud služba má podezření útoku DOS, požadavek bude ús
 ### <a name="textattribution"></a>TextAttribution  
 Definuje pravidlo smluvní pro attribution prostý text.  
   
-|Název|Hodnota|Type|  
+|Name|Hodnota|Type|  
 |----------|-----------|----------|  
 |_type|Typ pomocného parametru, která je nastavena na TextAttribution.|String|  
 |text|Attribution text.<br /><br /> Text attribution platí pro entity jako celek a měla by se zobrazit okamžitě po prezentace entity. Pokud existuje více textu nebo odkazů attribution pravidla, která není zadejte cíl, by měl je zřetězit a jejich zobrazení pomocí "Data z:" popisek.|String| 
@@ -315,7 +315,7 @@ Jsou následující hodnoty možnou chybu kódu a dílčí chyba kódu.
 
 |Kód|Podřízeného|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Stavový kód protokolu HTTP je 500.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Stavový kód protokolu HTTP je 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud používáte protokol HTTP místo protokolu HTTPS, Bing vrátí HttpNotAllowed a je stavový kód HTTP 410.
 |RateLimitExceeded|Žádné dílčí kódy|Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Pokud překročíte QPS, Bing, vrátí stavový kód HTTP 429 a pokud překročíte QPM, Bing vrátí 403.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.

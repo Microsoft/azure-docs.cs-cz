@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4a94560bcb66c2ed59f78eef4f6a08b3f0227dc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af91dc09f8ed68d7bd4f2378c13d99eb67c52e9e
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057635"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155645"
 ---
-# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: Trénování a nasadit model ve službě Azure Machine Learning
+# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: Trénování a nasazení modelu služby Azure Machine Learning
 
 > [!NOTE]
 > Tento článek je součástí série kurz o používání Azure Machine learningu na hraničních zařízeních IoT. Pokud jste jste dostali přímo v tomto článku, doporučujeme vám začneme [nejprve článek](tutorial-machine-learning-edge-01-intro.md) v řadě nejlepších výsledků.
@@ -98,7 +98,7 @@ Vytvořte nový projekt a nahrajte soubory v poznámkovém bloku.
 
 ## <a name="run-azure-notebooks"></a>Spouštění poznámkových bloků Azure
 
-Teď, když tento projekt je vytvořen, spusťte **01 turbofan\_regression.ipynb** poznámkového bloku.
+Teď, když se vytvoří projekt, spusťte **01 turbofan\_regression.ipynb** poznámkového bloku.
 
 1. Na stránce projektu turbofan vyberte **01 turbofan\_regression.ipynb**.
 

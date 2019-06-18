@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: dd84f9b3b68d7a34903241caed7f1f93e685fb57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 548cd3de6d2eff9f2077ca66b66d5c60aa84f7e2
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138973"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154213"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečené připojení k databázi SQL Azure ze služby App Service pomocí spravované identity
 
@@ -84,6 +84,15 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 ```
 
 Spravovaná identita má teď přístup k vašemu serveru služby Azure SQL Database.
+
+> [!IMPORTANT]
+> Pro zjednodušení tento krok nakonfiguruje identity spravované služby Azure AD jako správce databáze SQL. Tato metoda má následující omezení:
+>
+> - Přístup pro správu aplikace nebude dodržovat osvědčené postupy zabezpečení.
+> - Spravovaná identita je konkrétní aplikace, nelze použít stejné spravovanou identitu pro připojení k SQL Database z jiné aplikace.
+> - Spravovaná identita nemůže přihlásit ke službě SQL Database interaktivně, takže je možné udělit přístup ke spravovaným identitám i další aplikace. 
+>
+> Pro zlepšení zabezpečení a Správa účtů služby Azure AD ve službě SQL Database, postupujte podle kroků uvedených v [udělení minimálních oprávnění identitě](#grant-minimal-privileges-to-identity).
 
 ## <a name="modify-connection-string"></a>Úprava připojovacího řetězce
 
@@ -186,7 +195,7 @@ Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu
 sqlcmd -S <server_name>.database.windows.net -d <db_name> -U <AADuser_name> -P "<AADpassword>" -G -l 30
 ```
 
-Na příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, kterými přidáte dříve vytvořenou skupinu Azure Active Directory a udělíte jí oprávnění nezbytná pro vaši aplikaci. Například 
+Na příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, kterými přidáte dříve vytvořenou skupinu Azure Active Directory a udělíte jí oprávnění nezbytná pro vaši aplikaci. Například: 
 
 ```sql
 CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;

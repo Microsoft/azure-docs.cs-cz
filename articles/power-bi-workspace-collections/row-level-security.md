@@ -9,10 +9,10 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64715202"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpečení na úrovni řádků s kolekcemi pracovních prostorů Power BI
@@ -48,7 +48,7 @@ Tady je několik věcí, Všimněte si, že se toto schéma:
 
 * Všechny míry, například **celkový prodej**, jsou uloženy v **Sales** tabulka faktů.
 * Existují čtyři další související tabulky dimenzí: **Položka**, **čas**, **Store**, a **District**.
-* Šipky na vztahu čáry označují, kterým směrem filtry můžete tok z jedné tabulky do druhé. Například, pokud filtr je umístěn na **čas [Date]**, v aktuálním schématu bude pouze filtrovat seznam hodnot v **Sales** tabulky. Žádné další tabulky by tímto filtrem ovlivněné, protože všechny šipky na čárách vztah bod registrace k tabulce prodeje a neukazuje.
+* Šipky na vztahu čáry označují, kterým směrem filtry můžete tok z jedné tabulky do druhé. Například, pokud filtr je umístěn na **čas [Date]** , v aktuálním schématu bude pouze filtrovat seznam hodnot v **Sales** tabulky. Žádné další tabulky by tímto filtrem ovlivněné, protože všechny šipky na čárách vztah bod registrace k tabulce prodeje a neukazuje.
 * **District** tabulka udává, kdo je manažerem každé oblasti:
   
   ![Řádky tabulky District](media/row-level-security/district-table-4.png)

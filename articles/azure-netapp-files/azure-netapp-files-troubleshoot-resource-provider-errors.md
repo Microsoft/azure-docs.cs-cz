@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: b-juche
 ms.openlocfilehash: d4e06429aa1efec7c3301c7d0f0e7e17800fd520
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "63769433"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Řešení potíží s chybami poskytovatele prostředků Azure NetApp Files
@@ -34,8 +34,8 @@ Služba Azure Key Vault nepřijala správné přihlašovací údaje nebo přihla
 * Řešení   
 Služba soubory Azure NetApp používat Azure Key Vault. Služba Azure Key Vault se ověřuje pomocí tokenu z Azure Active Directory. Vlastník aplikace proto musí zaregistrovat aplikaci v Azure Active Directory.
 
-* Alternativní řešení   
-Žádné.  Služba Azure Key Vault musí být zařídit správné nastavení pro použití služby soubory Azure NetApp.  
+* Alternativní řešení:   
+Žádné  Služba Azure Key Vault musí být zařídit správné nastavení pro použití služby soubory Azure NetApp.  
 
 <a name="error_02"></a>***Vytvoření tokenu se nedá změnit.***   
 Tato chyba nastane při změně tokenu vytvoření po vytvoření svazku.
@@ -47,7 +47,7 @@ Se pokoušíte změnit token pro vytvoření svazku se vytvořil, což není pod
 * Řešení   
 Po vytvoření svazku, zvažte odebrání parametru z požadavku na Zavřít chybovou zprávu.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Pokud potřebujete změnit vytvoření tokenu, můžete vytvořte nový svazek s nový token pro vytvoření a potom migrovat data do nového svazku.
 
 
@@ -60,7 +60,7 @@ Vytvoření tokenu nesplňuje požadavek na délku.  Při vytvoření svazku s p
 * Řešení   
 Zvyšte délku vytvoření tokenu. Například můžete přidat jiného slova na začátku nebo konci vytvoření tokenu.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Minimální požadovaná délka vytvoření tokenu se nedají obejít.  Prefix nebo sufix můžete zvýšit vytvořením tokenu.
 
 
@@ -73,7 +73,7 @@ Svazek může zůstat zobrazená na portálu nějakou dobu, po jeho odstranění
 * Řešení   
 Pokud používáte portál vymazat prohlížeče mezipaměti. Je také interní mezipaměť, která se aktualizují každých 10 minut.  Můžete zkusit vymazat mezipaměť znovu.  Pokud se problém nevyřeší po 10 minutách, můžete vytvořit lístek podpory.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Prozatím použijte jiný svazek a ignorovat existující.
 
 
@@ -86,7 +86,7 @@ Svazek může být zůstane zobrazené na portálu nechystáte nějakou dobu, po
 * Řešení   
 Pokud používáte portál, svazek již byla vytvořena.  Svazek by se zobrazit automaticky. Pokud se problém nevyřeší, můžete vytvořit lístek podpory.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Vytvořit svazek s jiným názvem a vytváření jiný token.
 
 
@@ -99,7 +99,7 @@ Cesta k souboru obsahuje nepodporované znaky, například, období ("."), čár
 * Řešení   
 Odebere znaky, které nejsou písmena abecedy, číslice nebo pomlčky ("-") ze zadané cesty k souboru.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Můžete nahradit podtržítkem pomlčkou nebo použít malá a velká písmena namísto prostorů k označení začátku nového slova (například "NewVolume" místo "nový svazek").
 
 
@@ -110,10 +110,10 @@ K této chybě dochází při pokusu o změnit ID svazku.  Změna ID svazku nen�
 ID systému souborů je nastaven při vytvoření svazku. ID svazku nelze později změnit.
 
 * Řešení   
-Žádné.
+Žádné
 
-* Alternativní řešení   
-Žádné.  ID svazku se vygeneruje, když svazek je vytvořen a následně se nedá změnit.
+* Alternativní řešení:   
+Žádné  ID svazku se vygeneruje, když svazek je vytvořen a následně se nedá změnit.
 
 
 <a name="error_08"></a>***Neplatná hodnota "{0}' byl přijat pro {1}.***   
@@ -125,7 +125,7 @@ Tato zpráva znamená chybu v polích pro RuleIndex AllowedClients, UnixReadOnly
 * Řešení   
 Ujistěte se, že můžete nastavit všechny povinné a nekonfliktní parametry příkazového řádku. Například nelze nastavit parametry UnixReadOnly i UnixReadWrite ve stejnou dobu.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 V části řešení.  
 
 
@@ -138,7 +138,7 @@ Tato chyba označuje, že požadovaný atribut chybí požadavek pro nejméně j
 * Řešení   
 Ujistěte se, že můžete nastavit všechny povinné a nekonfliktní parametry příkazového řádku. Například nelze nastavit parametry UnixReadOnly i UnixReadWrite ve stejnou dobu
 
-* Alternativní řešení   
+* Alternativní řešení:   
 V části řešení.  
 
 
@@ -151,7 +151,7 @@ Pokoušíte se vytvořit svazek s názvem, který je stejný jako existující s
 * Řešení   
 Při vytváření svazku, použijte jedinečný název.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 V případě potřeby můžete změnit název existující svazek tak, aby nový svazek, můžete použít odpovídající název.
 
 
@@ -164,7 +164,7 @@ Název svazku je příliš krátký.
 * Řešení   
 Zvyšte délku název svazku.  
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Název svazku, můžete přidat běžné prefix nebo sufix.
 
 
@@ -177,8 +177,8 @@ Základní rozhraní API neodpovídá, výsledkem vnitřní chyby. Tato chyba je
 * Řešení   
 Problém je pravděpodobně být dočasné.  Požadavek uspěli po nějaké době.
 
-* Alternativní řešení   
-Žádné. Základní rozhraní API je nezbytné pro správu svazků.  
+* Alternativní řešení:   
+Žádné Základní rozhraní API je nezbytné pro správu svazků.  
 
 
 <a name="error_13"></a>***Pro předplatné se nenašly žádné přihlašovací údaje "{0}".***   
@@ -190,8 +190,8 @@ Přihlašovací údaje, které jsou neplatné nebo nesprávně nastavenu zabrán
 * Řešení   
 Ujistěte se, že přihlašovací údaje nastavit a na příkazovém řádku zadán správně.
 
-* Alternativní řešení   
-Žádné.  Nastavení přihlašovacích údajů správně je nezbytné pro použití služby soubory Azure NetApp.  
+* Alternativní řešení:   
+Žádné  Nastavení přihlašovacích údajů správně je nezbytné pro použití služby soubory Azure NetApp.  
 
 
 <a name="error_14"></a>***Nenašlo žádné id výsledku operace pro "{0}".***   
@@ -203,7 +203,7 @@ Vnitřní chyba došlo k chybě a zabránila dokončení operace.
 * Řešení   
 Tato chyba je pravděpodobně být dočasné.  Počkejte pár minut a zkuste to znovu. Pokud se problém nevyřeší, vytvořte lístek a máte technické podpory prošetření problému.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Počkejte pár minut a zkontrolujte, zda problém přetrvává.
 
 
@@ -216,7 +216,7 @@ Operace není k dispozici pro předplatné nebo prostředek.
 * Řešení   
 Ujistěte se, že příkaz je zadán správně a dostupných prostředků a předplatným, které používáte.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 V části řešení.  
 
 
@@ -227,10 +227,10 @@ K této chybě dochází při pokusu o změnit cíl připojení nebo snímku.
 Cíl připojení se definuje při vytvoření, a nedá se změnit později.
 
 * Řešení   
-Žádné.  Cíl připojení nelze změnit po vytvoření svazku.
+Žádné  Cíl připojení nelze změnit po vytvoření svazku.
 
-* Alternativní řešení   
-Žádné.
+* Alternativní řešení:   
+Žádné
 
 
 <a name="error_17"></a>***Přijala se hodnota pro vlastnost jen pro čtení "{0}".***   
@@ -240,9 +240,9 @@ K této chybě dochází, když definujete hodnotu pro vlastnost, která se ned�
 Jste se pokusili upravit parametr (například Identifikátor svazku), který se nedá změnit.
 
 * Řešení   
-Žádné. Parametr ID svazku se nedá upravit.
+Žádné Parametr ID svazku se nedá upravit.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 ID svazku by neměla vyžadovat úpravy.  Alternativní řešení proto není nutné.
 
 <a name="error_18"></a>***Požadovaná {0} nebyl nalezen.***   
@@ -254,7 +254,7 @@ Pokoušíte se odkazují na neexistující prostředku (například svazku nebo 
 * Řešení   
 Kontrola žádosti o pravopisné chyby, abyste měli jistotu, že je správně odkazováno.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 V části řešení.
 
 <a name="error_19"></a>***Nepovedlo se získat přihlašovací údaje pro předplatné "{0}".***   
@@ -266,8 +266,8 @@ Přihlašovací údaje, které jsou neplatné nebo nesprávně sady v rámci př
 * Řešení   
 Ujistěte se, že přihlašovací údaje nastavit a na příkazovém řádku zadán správně.
 
-* Alternativní řešení   
-Žádné.  Správně nastavit přihlašovací údaje jsou nezbytné pro použití služby soubory Azure NetApp.
+* Alternativní řešení:   
+Žádné  Správně nastavit přihlašovací údaje jsou nezbytné pro použití služby soubory Azure NetApp.
 
 <a name="error_20"></a>***Neznámý Azure NetApp souborů došlo k chybě.***   
 Rozhraní API služby Azure využívá rozhraní API služby soubory Azure NetApp ke správě svazky. Chyba určuje problému v komunikaci se rozhraní API.
@@ -278,8 +278,8 @@ Základní rozhraní API přihlašuje k neznámé chybě.  Tato chyba je pravdě
 * Řešení   
 Tento problém je pravděpodobně dočasný a požadavek uspěli po nějaké době. Pokud potíže potrvají, vytvořte lístek podpory a mít problém prozkoumat.
 
-* Alternativní řešení   
-Žádné.  Základní rozhraní API je nezbytné pro správu svazků.
+* Alternativní řešení:   
+Žádné  Základní rozhraní API je nezbytné pro správu svazků.
 
 <a name="error_21"></a>***Hodnota pro na neznámou vlastnost '{0}".***   
 Tato chyba nastane, pokud jsou k dispozici neexistující vlastnosti pro určitý prostředek, například svazků, snímku nebo cíl připojení.
@@ -290,7 +290,7 @@ Požadavek obsahuje sadu vlastností, které lze použít s každého prostředk
 * Řešení   
 Ujistěte se, že všechny názvy vlastností jsou zadány správně a vlastnosti jsou k dispozici pro dané předplatné a prostředků.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Snižte počet vlastností definovaných v požadavku na odstranění vlastnost, která je příčinou chyby.
 
 
@@ -301,9 +301,9 @@ Je možné aktualizovat jenom svazky. K této chybě dochází při pokusu o pro
 Prostředek, který se pokoušíte aktualizovat nepodporuje operaci update.  Pouze svazky může mít své vlastnosti změnit.
 
 * Řešení   
-Žádné.  Prostředek, který se pokoušíte aktualizovat nepodporuje operaci update. Proto jej nelze změnit.
+Žádné  Prostředek, který se pokoušíte aktualizovat nepodporuje operaci update. Proto jej nelze změnit.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Pro svazek vytvořte nový prostředek se aktualizace na místě a znovu migrovat data.
 
 
@@ -316,7 +316,7 @@ Export zásady, které jste definovali nesplňuje požadovaný rozsah.
 * Řešení   
 Ujistěte se, že se již nepoužívá index, který je v rozsahu od 1 do 5.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Není to povinné použití export zásad na svazcích. Proto můžete vynechat export zásad úplně, pokud není potřeba mít pravidla zásad exportu.
 
 
@@ -329,7 +329,7 @@ Zásady definované export nesplňuje požadavek na export pravidla zásad. Mus�
 * Řešení   
 Ujistěte se, že se již nepoužívá index a že je v rozsahu od 1 do 5.
 
-* Alternativní řešení   
+* Alternativní řešení:   
 Pro pravidlo, které se pokoušíte nastavit, použijte jiný index.
 
 

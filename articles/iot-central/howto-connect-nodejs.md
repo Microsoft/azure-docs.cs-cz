@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60888910"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
@@ -34,11 +34,11 @@ V aplikaci Azure IoT Central je třeba šablona zařízení s následujícími m
 
 Přidejte následující telemetrii na **měření** stránky:
 
-| Zobrazovaný název | Název pole  | Jednotky | Minimum | Maximum | Desetinná místa |
+| Zobrazované jméno | Název pole  | Jednotky | Minimum | Maximum | Desetinná místa |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Teplota  | teplota | F     | 60  | 110 | 0              |
 | Vlhkost     | vlhkost    | %     | 0   | 100 | 0              |
-| Tlak     | tlak    | kPa   | 80  | 110 | 0              |
+| Přetížení     | tlak    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Datový typ telemetrických dat měření je plovoucí číslo bodu.
@@ -49,7 +49,7 @@ Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony za�
 
 Přidejte následující stav na **měření** stránky:
 
-| Zobrazovaný název | Název pole  | Hodnota 1 | Zobrazovaný název | Hodnota 2 | Zobrazovaný název |
+| Zobrazované jméno | Název pole  | Hodnota 1 | Zobrazované jméno | Hodnota 2 | Zobrazované jméno |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
 | Režim ventilátoru     | fanmode     | 1       | Spuštěno      | 0       | Zastaveno      |
 
@@ -62,7 +62,7 @@ Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony za�
 
 Přidejte následující událost na **měření** stránky:
 
-| Zobrazovaný název | Název pole  | Severity |
+| Zobrazované jméno | Název pole  | Severity |
 | ------------ | ----------- | -------- |
 | Přehřívání  | overheat    | Chyba    |
 
@@ -73,10 +73,10 @@ Přidejte následující událost na **měření** stránky:
 
 Přidejte následující vlastnosti zařízení na **vlastnosti** stránky:
 
-| Zobrazovaný název        | Název pole        | Typ dat |
+| Zobrazované jméno        | Název pole        | Typ dat |
 | ------------------- | ----------------- | --------- |
 | Sériové číslo       | serialNumber      | text      |
-| Výrobce zařízení | výrobce      | text      |
+| Výrobce zařízení | Výrobce      | text      |
 
 Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony zařízení. Pokud se názvy polí neshodují názvy vlastností v odpovídajícím kódu zařízení, nelze zobrazit vlastnosti v aplikaci.
 
@@ -84,7 +84,7 @@ Názvy polí zadejte přesně tak, jak je znázorněno v tabulce do šablony za�
 
 Přidejte následující **číslo** nastavení **nastavení** stránky:
 
-| Zobrazovaný název    | Název pole     | Jednotky | Desetinná místa | Minimum | Maximum  | Počáteční |
+| Zobrazované jméno    | Název pole     | Jednotky | Desetinná místa | Minimum | Maximum  | Počáteční |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Ventilátor rychlost       | fanSpeed       | ot. / min   | 0        | 0   | 3000 | 0       |
 | Nastavená teplota | setTemperature | F     | 0        | 20  | 200  | 80      |
@@ -95,13 +95,13 @@ Pole Název zadejte přesně tak, jak je znázorněno v tabulce do šablony zař
 
 Přidáním následujícího příkazu na **příkazy** stránky:
 
-| Zobrazovaný název    | Název pole     | Výchozí časový limit | Typ dat |
+| Zobrazované jméno    | Název pole     | Výchozí časový limit | Typ dat |
 | --------------- | -------------- | --------------- | --------- |
-| odpočítávání       | Odpočítávání      | 30              | číslo    |
+| Odpočítávání       | Odpočítávání      | 30              | číslo    |
 
 Přidejte následující vstupní pole odpočítávání příkazu:
 
-| Zobrazovaný název    | Název pole     | Typ dat | Hodnota |
+| Zobrazované jméno    | Název pole     | Typ dat | Hodnota |
 | --------------- | -------------- | --------- | ----- |
 | Od      | countFrom      | číslo    | 10    |
 

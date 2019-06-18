@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35dad420aa004e27ec974c494dc66e9b8e13c733
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65811940"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurace aplikací SaaS pro spolupráci B2B
@@ -72,7 +72,7 @@ Pokud chcete povolit uživatelům umožní přihlásit se pomocí svého účtu 
 
 Po uživatelů typu Host nebo člen mít nastavení v aplikaci Dropbox, dostanou samostatnou pozvánku z Dropboxu. Pokud chcete používat Dropbox jednotného přihlašování, musí budou pozvaní uživatelé přijetí pozvánky klepnutím na odkaz v ní.
 
-## <a name="box"></a>Pole
+## <a name="box"></a>Box
 Můžete povolit uživatele bude možné ověřit uživatele typu Host pole ke svému účtu Azure AD s použitím federace, která je založená na protokolu SAML. V tomto postupu nahrajte metadat na Box.com.
 
 1. Přidáte aplikaci Box z podnikových aplikací.
@@ -81,7 +81,7 @@ Můžete povolit uživatele bude možné ověřit uživatele typu Host pole ke s
 
    ![Snímek obrazovky zobrazující nastavení konfigurace jednotného přihlašování](media/configure-saas-apps/configure-box-sso.png)
 
-   a. V **přihlašovací adresa URL** pole, ujistěte se, že přihlašovací adresa URL je nakonfigurovaná pro pole na webu Azure Portal. Tato adresa URL je adresa URL vašeho tenanta Box.com. Měla by odpovídat zásady vytváření názvů *https://.box.com*.  
+   a. V **přihlašovací adresa URL** pole, ujistěte se, že přihlašovací adresa URL je nakonfigurovaná pro pole na webu Azure Portal. Tato adresa URL je adresa URL vašeho tenanta Box.com. Měla by odpovídat zásady vytváření názvů *https://.box.com* .  
    **Identifikátor** se nedá použít u této aplikace, ale stále zobrazuje jako povinné pole.
 
    b. V **identifikátor uživatele** zadejte **user.mail** (pro jednotné přihlašování pro účty hostů).

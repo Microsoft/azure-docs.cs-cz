@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: evansma
 ms.openlocfilehash: abe499c081c73d42e712d5872e121262a1a50197
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66259161"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
@@ -78,7 +78,7 @@ Metoda HTTP
 
 |  **Název parametru**  | **Požadováno**  | **Popis**                               |
 |  ------------------  | ------------- | --------------------------------------------- |
-| ID Tenanta             | True          | ID klienta registrované aplikace AAD   |
+| tenantId             | True          | ID klienta registrované aplikace AAD   |
 |  |  |  |
 
 

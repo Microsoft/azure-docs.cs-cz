@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: f98cdcab2d108f8dd9d40e3770498ad17b2a8a88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799617"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Upravit jazykový model s webem Video Indexer
@@ -144,7 +144,7 @@ Video Indexer podporuje automatické přizpůsobení jazykových modelů na zák
 
    Podívejte se na soubor "od úpravy přepisu" pro jednotlivé jazykové modely, klikněte na tlačítko na něj a otevřete ho. 
 
-    ![Z úprav přepisů](./media/customize-language-model/from-transcript-edits.png)
+    ![Z přepisu úpravy](./media/customize-language-model/from-transcript-edits.png)
 
 ## <a name="next-steps"></a>Další postup
 

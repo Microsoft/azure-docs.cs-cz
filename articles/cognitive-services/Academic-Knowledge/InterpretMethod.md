@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61338448"
 ---
 # <a name="interpret-method"></a>interpretace – metoda
@@ -29,9 +29,9 @@ Pro zajištění interaktivní prostředí, můžete volat tuto metodu opakovan�
 
 ## <a name="request-parameters"></a>Parametry žádosti
 
-Název     | Hodnota | Povinné?  | Popis
+Name     | Hodnota | Požadováno?  | Popis
 ---------|---------|---------|---------
-**Dotaz**    | Textový řetězec | Ano | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
+**query**    | Textový řetězec | Ano | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
 **model**    | Textový řetězec | Ne  | Název modelu, který chcete dotazovat.  V současné době má výchozí hodnotu *nejnovější*.        
 **Dokončení** | 0 nebo 1 | Ne<br>Výchozí: 0  | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a graf.         
 **count**    | Číslo | Ne<br>Výchozí: 10 | Maximální počet interpretace vrátit.         
@@ -42,9 +42,9 @@ Název     | Hodnota | Povinné?  | Popis
   
 ## <a name="response-json"></a>Odpověď (JSON)
 
-Název     | Popis
+Name     | Popis
 ---------|---------
-**Dotaz** |*Dotazu* parametr z požadavku.
+**query** |*Dotazu* parametr z požadavku.
 **interpretace** |Pole 0 nebo více různých způsobů, jak odpovídající vstup uživatele v porovnání se gramatika.
 **interpretations[x].logprob**  |Pravděpodobnost relativní přirozený logaritmus výkladu. Vyšší hodnoty budou pravděpodobně.
 **interpretations[x].parse**  |Řetězec XML, který ukazuje, jak byl interpretován každá část dotazu.

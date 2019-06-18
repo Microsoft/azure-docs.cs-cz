@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2019
 ms.author: magoedte
 ms.openlocfilehash: 792c2bd02b666cd656f1df368a7a60db44ccf8c4
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522180"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pro virtuální počítače (preview) mapy pochopit součásti aplikace pomocí Azure monitoru
@@ -67,7 +67,7 @@ Neúspěšná připojení jsou uvedeny v objektu map pro procesy a počítačů 
 
 Principy selhání připojení můžou pomoct se řešení potíží, ověření migrace, analýzu zabezpečení a vysvětlení architektury služby. Neúspěšná připojení jsou někdy neškodné, ale často ukazují přímo na problém, jako je převzetí služeb při selhání prostředí náhle stane nedostupný nebo dvou aplikačních vrstev nemožnosti komunikovat mezi sebou po migrace do cloudu.
 
-### <a name="client-groups"></a>Skupiny klientů
+### <a name="client-groups"></a>Skupin klientů
 Skupiny klientů na mapě představují klientské počítače, které mají připojení k počítači, který namapované. Jedné skupiny klientů reprezentuje klienty pro jednotlivé procesy nebo počítač.
 
 ![Příklad skupin klientů na mapě](./media/vminsights-maps/map-group-client-groups-01.png)
@@ -90,7 +90,7 @@ Pokud skupina obsahuje servery monitorované a nemonitorovaná, můžete vybrat 
 Pokud chcete získat přístup k Azure Monitor pro virtuální počítače přímo z virtuálního počítače, postupujte takto.
 
 1. Na webu Azure Portal, vyberte **virtuálních počítačů**. 
-2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)**.  
+2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)** .  
 3. Vyberte **mapy** kartu.
 
 Mapa vizualizuje závislosti virtuálních počítačů, ve kterých běží skupin procesů a procesy s aktivními síťovými připojeními za zadané časové období.  Ve výchozím nastavení zobrazí na mapě posledních 30 minut.  Použití **TimeRange** selektoru v levém horním rohu, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).  
@@ -102,7 +102,7 @@ Mapa vizualizuje závislosti virtuálních počítačů, ve kterých běží sku
 Pokud chcete získat přístup k Azure Monitor pro virtuální počítače přímo ze škálovací sady virtuálních počítačů, postupujte takto.
 
 1. Na webu Azure Portal, vyberte **škálovací sady virtuálních počítačů**.
-2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)**.  
+2. V seznamu vyberte virtuální počítač a **monitorování** zvolte **Insights (preview)** .  
 3. Vyberte **mapy** kartu.
 
 Mapa vizualizuje všechny instance ve škálovací sadě jako uzel skupiny spolu s skupiny závislosti. Rozbalený uzel obsahuje seznam instancí ve škálovací sadě, která můžete procházet deset najednou. Chcete-li načíst mapu pro konkrétní instanci, vyberte, že instance na mapě a potom klikněte na tři tečky na ni je nejvhodnější a zvolte **načíst serverovou mapu**. Tím se načtou mapování pro tuto instanci, což vám umožní podívat skupin procesů a procesy s aktivními síťovými připojeními za zadané časové období. Ve výchozím nastavení zobrazí na mapě posledních 30 minut. Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).  
@@ -110,7 +110,7 @@ Mapa vizualizuje všechny instance ve škálovací sadě jako uzel skupiny spolu
 ![Přímé mapování Přehled virtuálních počítačů](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->Mapování pro konkrétní instanci ze zobrazení instancí lze rovněž použít pro škálovací sadu virtuálních počítačů. Přejděte do **instance** pod **nastavení** části a klikněte na tlačítko **Insights (preview)**.
+>Mapování pro konkrétní instanci ze zobrazení instancí lze rovněž použít pro škálovací sadu virtuálních počítačů. Přejděte do **instance** pod **nastavení** části a klikněte na tlačítko **Insights (preview)** .
 
 ## <a name="view-map-from-azure-monitor"></a>Zobrazení mapování ze služby Azure Monitor
 Funkci Mapa ze služby Azure Monitor poskytuje globální přehled o vašich virtuálních počítačů a jejich závislosti.  Pokud chcete získat přístup k funkci Mapa ze služby Azure Monitor, postupujte takto. 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
 ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "62129055"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Jak vytvořit žádost o podporu Azure
@@ -76,7 +76,7 @@ Budete pokračovat s výše uvedeného příkladu připojení k virtuálnímu po
 ## <a name="related-help"></a>Související Nápověda
 Na základě typ problému a kategorii, kterou jste vybrali, zajišťuje řešení, které mohou přispět k vyřešení problému.
 
-![Související nápověda](./media/how-to-create-azure-support-request/RelatedHelp.png)
+![Související Nápověda](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
 Poskytujeme také kontextové svépomocná řešení založená na textový popis problému.
 
@@ -130,5 +130,5 @@ Kliknutím na dlaždici zobrazuje seznam závažnosti, které můžete přiřadi
 ## <a name="feedback"></a>Váš názor
 Máme vždy otevřít na názory a návrhy! Pošlete nám prosím vaše [návrhy](https://feedback.azure.com/forums/266794-support-feedback). Kromě toho můžete zapojit s námi prostřednictvím [Twitter](https://twitter.com/azuresupport) nebo [DISKUZNÍ fóra MSDN](https://social.msdn.microsoft.com/Forums/azure).
 
-## <a name="learn-more"></a>Další informace
+## <a name="learn-more"></a>Víc se uč
 [Nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq)

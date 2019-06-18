@@ -13,10 +13,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711567"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
@@ -66,7 +66,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
 1. Stáhnout, nainstalovat a spustit [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
 
-   1. V části **(místní a připojené)**, stisknutém pravém tlačítku vyberte **účty úložiště** a vyberte **připojit ke službě Azure storage**.
+   1. V části **(místní a připojené)** , stisknutém pravém tlačítku vyberte **účty úložiště** a vyberte **připojit ke službě Azure storage**.
 
       ![Připojení k úložišti Azure](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
@@ -122,7 +122,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
 1. Pokud chcete zobrazit další příklady vlastních nastavení, připojte se ke kontejneru ve verzi Public Preview pomocí Průzkumníka služby Azure Storage.
 
-   a.  V části **(místní a připojené)**, klikněte pravým tlačítkem na **účty úložiště**vyberte **připojit ke službě Azure storage**vyberte **pomocí připojovacího řetězce nebo sdíleného přístupu podpis URI**a pak vyberte **Další**.
+   a.  V části **(místní a připojené)** , klikněte pravým tlačítkem na **účty úložiště**vyberte **připojit ke službě Azure storage**vyberte **pomocí připojovacího řetězce nebo sdíleného přístupu podpis URI**a pak vyberte **Další**.
 
       ![Připojení k úložišti Azure pomocí sdíleného přístupového podpisu](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 

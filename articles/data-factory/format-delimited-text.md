@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 407b8ba2fda35d3acbf1b425bb15fe20778613d7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146001"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Formát odděleného textu ve službě Azure Data Factory
@@ -31,7 +31,7 @@ Text s oddělovači formát je podporován pro následující konektory: [Amazon
 | type             | Vlastnost type datové sady, musí být nastavená na **DelimitedText**. | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor souborové má svůj vlastní typ umístění a nepodporuje vlastnosti z kategorie `location`. **Podrobnosti najdete v článku konektor -> vlastnosti části datové sady**. | Ano      |
 | columnDelimiter  | Znaky použitý k oddělení sloupců v souboru. V současné době více znakový oddělovač je podporována pouze pro mapování toku dat, ale ne aktivitu kopírování. <br>Výchozí hodnota je **čárkou `,`** , pokud je definován oddělovač sloupců jako prázdný řetězec, což znamená, že žádný oddělovač, celý řádek je považován za jeden sloupec. | Ne       |
-| rowDelimiter     | Jeden znak nebo "\r\n" slouží k oddělení řádků v souboru.<br>Výchozí hodnota je některý z následujících hodnot **pro čtení: ["\r\n", "\r", "\n"]**, a **"\n" nebo "\r\n" při zápisu do** daty mapování toku a aktivita kopírování v uvedeném pořadí. <br>Když `rowDelimiter` je nastavena na žádné oddělovače (prázdný řetězec), `columnDelimiter` musí být nastavena jako oddělovač (prázdný řetězec) jako dobře, což znamená, že bude považovat celý obsah jako jednu hodnotu. | Ne       |
+| rowDelimiter     | Jeden znak nebo "\r\n" slouží k oddělení řádků v souboru.<br>Výchozí hodnota je některý z následujících hodnot **pro čtení: ["\r\n", "\r", "\n"]** , a **"\n" nebo "\r\n" při zápisu do** daty mapování toku a aktivita kopírování v uvedeném pořadí. <br>Když `rowDelimiter` je nastavena na žádné oddělovače (prázdný řetězec), `columnDelimiter` musí být nastavena jako oddělovač (prázdný řetězec) jako dobře, což znamená, že bude považovat celý obsah jako jednu hodnotu. | Ne       |
 | quoteChar        | Jeden znak do uvozovek hodnoty sloupce, pokud obsahuje oddělovač sloupců. <br>Výchozí hodnota je **dvojité uvozovky** `"`. <br>Pro mapování toku dat `quoteChar` nemůže být prázdný řetězec. <br>Pro aktivitu kopírování když `quoteChar` je definovaný jako prázdný řetězec, to znamená, že neexistuje žádný znak uvozovky a hodnota sloupce není uveden v uvozovkách, a `escapeChar` se používá k uvození oddělovače sloupců a jí samou. | Ne       |
 | escapeChar       | Jeden znak pro přepnutí uvozovky uvnitř hodnoty v uvozovkách.<br>Výchozí hodnota je **zpětné lomítko `\`** . <br>Pro mapování toku dat `escapeChar` nemůže být prázdný řetězec. <br/>Pro aktivitu kopírování když `escapeChar` je definovaný jako prázdný řetězec, `quoteChar` musí být nastavena jako prázdný řetězec i se v takovém případě se ujistěte, že všechny hodnoty ve sloupcích neobsahují oddělovače. | Ne       |
 | firstRowAsHeader | Určuje, zda považovat/zkontrolujte první řádek jako záhlaví řádku s názvy sloupců.<br>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne       |

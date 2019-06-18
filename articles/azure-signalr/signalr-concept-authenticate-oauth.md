@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128331"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR Service
@@ -54,7 +54,7 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 1. Otevřete webový prohlížeč, přejděte na `https://github.com` a přihlaste se k účtu.
 
-2. Přejděte k **Nastavení** > **Nastavení pro vývojáře** a klikněte na **Register a new application (Registrovat novou aplikaci)** nebo **New OAuth App (Nová aplikace OAuth)** v části *OAuth Apps (Aplikace OAuth)*.
+2. Přejděte k **Nastavení** > **Nastavení pro vývojáře** a klikněte na **Register a new application (Registrovat novou aplikaci)** nebo **New OAuth App (Nová aplikace OAuth)** v části *OAuth Apps (Aplikace OAuth)* .
 
 3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci**:
 
@@ -363,7 +363,7 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
     ![Protokol OAuth kompletně hostovaný v Azure](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    Zobrazí se výzva k autorizaci přístupu chatovací aplikace k vašemu účtu GitHub. Klikněte na tlačítko **Authorize (Autorizovat)**.
+    Zobrazí se výzva k autorizaci přístupu chatovací aplikace k vašemu účtu GitHub. Klikněte na tlačítko **Authorize (Autorizovat)** .
 
     ![Autorizace aplikace OAuth](media/signalr-concept-authenticate-oauth/signalr-authorize-oauth-app.png)
 
@@ -539,7 +539,7 @@ Pokud chcete nasadit váš kód, spusťte následující příkazy v Git Shellu.
 
 Poslední věcí, která zbývá, je aktualizace nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace** aplikace OAuth GitHubu, aby odkazovaly na novou hostovanou aplikaci.
 
-1. Otevřete [https://github.com](https://github.com) v prohlížeči a přejděte k **Nastavení** > **Nastavení pro vývojáře** > **Oauth Apps (Aplikace OAuth)**.
+1. Otevřete [https://github.com](https://github.com) v prohlížeči a přejděte k **Nastavení** > **Nastavení pro vývojáře** > **Oauth Apps (Aplikace OAuth)** .
 
 2. Klikněte na vaši ověřovací aplikaci a aktualizujte nastavení **Adresa URL domovské stránky** a **Adresa URL zpětného volání autorizace**, jak je uvedeno dál:
 

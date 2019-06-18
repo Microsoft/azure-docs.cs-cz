@@ -13,10 +13,10 @@ ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "61484916"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Prozkoumejte SaaS analýz s využitím Azure SQL Database, SQL Data Warehouse, služby Data Factory a Power BI
@@ -63,7 +63,7 @@ Nakonec hvězdicového schématu tabulky se generuje dotaz. Výsledky dotazu jso
 
 Tento kurz obsahuje přehledy, které mohou být úsporách získaných dat Wingtip Tickets základních příkladů. Vysvětlení, jak každé místo používá službu může způsobit dodavatele Wingtip Tickets přemýšlet o různých plánech zaměřený na víc nebo míň aktivní místa, např. 
 
-## <a name="setup"></a>Nastavení
+## <a name="setup"></a>Instalace
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -87,7 +87,7 @@ Tento kurz se věnuje analýza prodejních dat lístků. V tomto kroku vygeneruj
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>Nasazení SQL Data Warehouse, služby Data Factory a Blob Storage 
 V aplikaci Wingtip Tickets klienty transakční data distribuovaná mezi mnoha databázemi. Azure Data Factory (ADF) se používá k orchestraci extrakce, načítání a transformace (ELT) těchto dat do datového skladu. Co nejefektivněji načtení dat do SQL Data Warehouse, extrahuje data do soubory zprostředkující blob ADF a pak ho použije [PolyBase](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) k načtení dat do datového skladu.   
 
-V tomto kroku nasadíte další prostředky v tomto kurzu použili: volá se SQL Data Warehouse _tenantanalytics_, službu Azure Data Factory volat _dbtodwload -\<uživatele\>_  , a účet úložiště Azure s názvem _wingtipstaging\<uživatele\>_. Účet úložiště se používá pro dočasné uchování dat extrahované soubory jako objekty BLOB, před načtením do datového skladu. Tento krok také nasadí schématu datového skladu a definuje ADF kanály, které orchestrují procesu ELT.
+V tomto kroku nasadíte další prostředky v tomto kurzu použili: volá se SQL Data Warehouse _tenantanalytics_, službu Azure Data Factory volat _dbtodwload -\<uživatele\>_  , a účet úložiště Azure s názvem _wingtipstaging\<uživatele\>_ . Účet úložiště se používá pro dočasné uchování dat extrahované soubory jako objekty BLOB, před načtením do datového skladu. Tento krok také nasadí schématu datového skladu a definuje ADF kanály, které orchestrují procesu ELT.
 1. Otevřít v PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* a nastavte:
     - **$DemoScenario** = **2** nasazení tenant analytics datového skladu, úložiště objektů blob a data factory 
 1. Stisknutím klávesy **F5** a spustit ukázkový skript nasazení prostředků Azure. 
@@ -126,7 +126,7 @@ V [webu Azure Portal](https://ms.portal.azure.com) ve skupině prostředků, ov�
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
 Tato část popisuje vytvoření datové továrny. Podle následujících pokynů ke spuštění služby data factory:
-1. Na portálu klikněte na datovou továrnu, volá **dbtodwload -\<uživatele\>**.
+1. Na portálu klikněte na datovou továrnu, volá **dbtodwload -\<uživatele\>** .
 2. Klikněte na tlačítko **vytvořit a monitorovat** dlaždice pro spuštění návrháře služby Data Factory na samostatné kartě. 
 
 ## <a name="extract-load-and-transform-data"></a>Extrakce, načítání a transformaci dat.

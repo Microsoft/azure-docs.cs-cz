@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 2707081adafa74237e3fb7730837f581e0c8b790
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154227"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
@@ -220,7 +220,7 @@ Kromě použití rozložení zobrazení služby Azure Storage, můžete také de
 ### <a name="apply-color-rules-to-the-analysis-grid"></a>Použít pravidla barev do mřížky analýzy
 Prostředky úložiště zahrnují také barva pravidla, která nabízejí že znamená, že vizuál k identifikaci různých typů chyb v mřížce analýzy. Předdefinované barvy pravidla se vztahují na chyby protokolu HTTP, takže se budou zobrazovat jenom pro server protokolu a síťové trasování.
 
-Chcete-li použít pravidla barvy, vyberte **pravidel barvy** pásu panelu nástrojů. Zobrazí se vám barvy pravidla služby Azure Storage v nabídce. Pro tento kurz vyberte **chyby klienta (StatusCode 400 až 499)**, jak je znázorněno na obrázku níže.
+Chcete-li použít pravidla barvy, vyberte **pravidel barvy** pásu panelu nástrojů. Zobrazí se vám barvy pravidla služby Azure Storage v nabídce. Pro tento kurz vyberte **chyby klienta (StatusCode 400 až 499)** , jak je znázorněno na obrázku níže.
 
 ![Rozložení zobrazení služby Azure Storage](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 
@@ -278,7 +278,7 @@ Následující obrázek ukazuje konkrétní požadavek, kde operace získání o
 
 Dále jsme toto ID žádosti klienta budete korelovat s dat protokolu klienta a zjistit, které akce trvala klienta, když došlo k chybě. Můžete zobrazit nové zobrazení mřížky analýzy pro tuto relaci prohlížet klientská data protokolu, který se otevře na druhé kartě:
 
-1. Nejprve zkopírujte hodnotu **ID žádosti klienta** pole do schránky. Uděláte to tak vyberete buď řádku, hledání **ID žádosti klienta** pole pravým tlačítkem myši na hodnotu data a zvolíte **kopírování "ID žádosti klienta"**.
+1. Nejprve zkopírujte hodnotu **ID žádosti klienta** pole do schránky. Uděláte to tak vyberete buď řádku, hledání **ID žádosti klienta** pole pravým tlačítkem myši na hodnotu data a zvolíte **kopírování "ID žádosti klienta"** .
 2. Na pásu panelu nástrojů vyberte **nový prohlížeč**a pak vyberte **analýzy mřížky** otevřete novou kartu. Nová karta zobrazuje všechna data v souborech protokolu bez seskupování, filtrování nebo pravidla barvy.
 3. Na pásu panelu nástrojů vyberte **rozložení zobrazení**a pak vyberte **všechny sloupce klienta .NET** pod **služby Azure Storage** oddílu. Toto rozložení zobrazení zobrazuje data z klienta protokolu, stejně jako protokoly trasování serveru a sítě. Ve výchozím nastavení je seřazená podle **MessageNumber** sloupce.
 4. V dalším kroku klienta protokolu vyhledejte ID požadavku klienta. Na pásu panelu nástrojů vyberte **najít zprávy**, potom zadat vlastní filtr pro ID žádosti klienta v **najít** pole. Pro filtr, určíte vlastní ID žádosti klienta použijte následující syntaxi:
@@ -307,10 +307,10 @@ Teď, když jste se seznámili s použitím nástroje Message Analyzer k analýz
 | Zvýšení u PercentNetworkError |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Klient |
 | HTTP 403 (zakázáno) zprávy |HTTP. Response.StatusCode == 403 |Síť |
 | HTTP 404 (Nenalezeno) zprávy |HTTP. Response.StatusCode == 404 |Síť |
-| 404 (vše) |* StatusCode == 404 |Vše |
+| 404 (vše) |\* StatusCode == 404 |Vše |
 | Sdíleného přístupového podpisu (SAS) autorizace problém |AzureStorageLog.RequestStatus == "SASAuthorizationError" |Síť |
 | HTTP 409 (konflikt) zprávy |HTTP. Response.StatusCode == 409 |Síť |
-| 409 (vše) |* StatusCode == 409 |Vše |
+| 409 (vše) |\* StatusCode == 409 |Vše |
 | Nízká PercentSuccess nebo analýzy protokolu položky mají operací se stavem transakce ClientOtherErrors |AzureStorageLog.RequestStatus == "ClientOtherError" |Server |
 | Nagle upozornění |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) a (AzureStorageLog.RequestPacketSize < 1460) a (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Server |
 | Časové rozmezí, v protokolech serveru a sítě |#Timestamp > = 2014-10-20T16:36:38 a #Timestamp < = 2014-10-20T16:36:39 |Server sítě |

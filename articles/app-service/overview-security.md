@@ -16,10 +16,10 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66475861"
 ---
 # <a name="security-in-azure-app-service"></a>Zabezpečení ve službě Azure App Service
@@ -64,7 +64,7 @@ Pro službu App Service na Windows, můžete taky omezit IP adresy dynamicky tí
 
 Azure App Service poskytuje klíč ověřování a autorizace uživatelů nebo klientské aplikace. Pokud povolená, můžete podepsat v modulu Uživatelé a klientské aplikace s kódem nebo vůbec žádné aplikace. Můžete implementovat vlastní řešení pro ověřování a autorizace nebo Povolit službě App Service, aby to zvládnul za vás. Modul ověřování a autorizace zpracovává webové požadavky před jejich předání do kódu aplikace a zakazuje neoprávněné požadavky dřív, než dorazí váš kód.
 
-App Service ověřování a autorizace podporují více zprostředkovatelů ověřování, včetně Azure Active Directory, účty Microsoft, Facebook, Google a Twitter. Další informace najdete v tématu [ověřování a autorizace ve službě Azure App Service](overview-authentication-authorization.md).
+App Service ověřování a autorizace podporují více zprostředkovatelů ověřování, včetně Azure Active Directory, účty Microsoft, Facebook, Google a Twitter. Další informace najdete v tématu [Ověřování a autorizace ve službě Azure App Service](overview-authentication-authorization.md).
 
 ## <a name="service-to-service-authentication"></a>Ověřování služba-služba
 

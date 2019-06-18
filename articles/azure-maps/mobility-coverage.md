@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735613"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps Mobility pokrytí
@@ -47,7 +47,7 @@ Následující tabulka obsahuje informace o pokrytí pro služby Azure Maps Mobi
 | Portoriko | San Juan |
 | Uruguay | Montevideo, Punta del Este |
 | Spojené státy americké | <p>Albany (USA), Albuquerque (NM), ukotvení (AK) Appleton Neenah Oshkosh (WI), Asheville (NC), (OH) Atény, Atlantu (GA), Austin (USA), Bakersfield (CA), Baltimore), Bellevue (WA), Berkshire Kraj (MA), Birmingham (AI), Bloomingtonu (Indie), Boise (ID), Boston () MA), Boulder (ko) Brevard Kraj (USA), Buffalo (USA), Butte (MT), Cabo Cod), Centrum Kraj (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (no) Citrusových Kraj (USA), Cleveland (OH), Coachella Valley (CA), Coloradu pružiny (ko), Kolumbie (TN), Kolumbův (no), souhrnu Christi (USA), Dallas/dále vhodné (USA), Daytonské (OH), Delaware, Denver (ko), Moines Des (i), Detroitu (IU), Duluth (MN), El Paso (USA), Eugene (OR ), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), Collins Fort tvrdou (IU) (ko), Wayne Fort (Indie), Fresno (CA), Gainesville (USA), Grand větve (ND) Grand Rapids (IU), zelená pozice (WI), Greensboro (NC), Greenville (SC), Gunnison (ko), Hampton cest (VA ), Hanford (CA), Hartford (Dal), kraje Hernando (USA), Brně (Ahoj), Houston (USA), kraje Humboldtově (CA), Huntsville (AI), Indianapolis (Indie), Ithaca (USA), Jackson (MS), Jackson (TN), verzí Jacksonville – St. John's Kraj (USA), Johnsonem města (TN) Jonesboro (AR), Joplin (měsíc), Juneau (AK), Kalamazoo (IU), Kansas City (měsíc), Kauai (Ahoj), Ketchum (ID), Knoxville (TN), Lafayette (Indie), univerzitě (PA), Lansing (IU), Las Vegas (NV), Lawrence (Lokálně), County Lee (USA), Lexington (KY), Lincoln Kraj (nebo), Little Rock (AR), Los Angeles) Certifikační Autorita), Louisville (KY), Madison (WI), McAllen (USA), Memphis (TN), Miami (USA), Milwaukee/Waukesha (WI), SV Minneapolis. (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe Kraj (PA), Montgomery (AI), Morgantown (WV), americkém Nashvillu (TN), Navajo národ), Nové Haven (Dal), nový Orleans (LA), NYC NJ), Ocala (USA), Okaloosa Kraj (USA), Oklahoma města (OK), Omaha (NE), Orlando (USA), City Panama (USA), Pensacola (USA), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pensylvánském (PA), Portland, (ME), Portland (nebo), Racine (w) Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Valley (VA - Lynchburg), Rochester (USA), skalní Mountain národní Park), podvodné Valley (nebo), Roseburg (nebo), Roseville (CA), Sacramento (CA), Salem (nebo), hodnota Salt Lake města (UT), San Antonio (USA), () po síti San Diegu Certifikační Autority), síť San Luis Obispo (CA), Design Santa (CA), Santa Fe (NM), Sarasota (USA), Savannah (GA), Seacoast oblasti (NH), Seattle Bellevue Tacoma (WA) SF pozice oblasti (CA), Sioux města (i), Sioux spadající do určité (SS), Sitka (AK), Spokane (WA), Springfieldu (IL), Springfieldu (velkokapacitních) Svatý George (UT), St. Louis (měsíc), Stockton (CA), Syrakusách Utica (USA), Tallahassee (USA), Tampa St. Petersburg (USA), Terre Haute (Indie), Toledo (OH), Topeka (Lokálně), přechod města (IU), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia Kraj (USA), Waco (USA) Washington (DC), Waterbury (Dal), Wichita (Lokálně), Wilmington (NC), Yakima (WA), York Kraj (PA), Yuma Kraj (AZ)</p>|
-| + USA Panenské ostrovy | USA Panenské ostrovy * |
+| \+ USA Panenské ostrovy | USA Panenské ostrovy * |
 
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
@@ -90,8 +90,8 @@ Následující tabulka obsahuje informace o pokrytí pro služby Azure Maps Mobi
 | Estonsko   | Estonsko * |   
 | Finsko   | Hämeenlinna, Helsinky, Joensuu, Jyväskylä, Kajaani, Kouvola - Kotka Kuopio, Lappeenranta Mikkeli Oulu, Seinäjoki, zasedání, Turku, Vaasa|
 | Francie    | <p>Amberieu-en-Bugey Amiens, Angers, Annecy, Annonay, Arras, Aubenas, Bayonne, Besançon, Blois, Bordeaux, Boulogne sur Mer, Brest, Briançon, cannes, Châlons-en šampaňské Chartres, Clermont-Ferrand, Colmar, Dax, Dijon, Grenoble, Haguenau, La Seignettovy, Le Oddíl, Lille, Lorient, Lyon, počítače Mac, Marseille & Provence, Mety, Millau, Mont-de-Marsan, Montpellier, Mulhouse, Nancy rozumí Nantes dobrý, Nimes, Normandy, Nyons, Paříž, Poitiers, Privas, Quimper, Rennes, Svatý Malo, Svatý Étienne, Saint-Nazaire, Saintes Sarrebourg, Sete, Štrasburku, Tarbes, Toulouse, kurzy</P> | 
-| + Francouzská Guyana | Cayenne |
-| + Nová Kaledonie | Nouméa  |
+| \+ Francouzská Guyana | Cayenne |
+| \+ Nová Kaledonie | Nouméa  |
 | Gruzie | Tbilisi | 
 | Německo | <p>Berlín, Braniborsko, Bremen & Niedersachsen, Kolín, Eisenach, Frankfurt, Hamburk, Karlsruhe, Mainz, München - Mnichově Rýn Neckar oblasti Rýn Ruhr oblasti Stuttgart, Titisee-Neustadt, Ulm</P> | 
 | Řecko | <p>Atény, Arta, Amorgos, Chania, Korfu, Chios Kos, Heraklion, Ioannina, Kavala, Kalamata, Komotini, Kos, Larissa, Meganisi, Mykonos, Patra, Rethimno, Rhodu, Santorini, Séres, Syros, Tinos, Soluni, Veria, Volos, Xanthi </P> |

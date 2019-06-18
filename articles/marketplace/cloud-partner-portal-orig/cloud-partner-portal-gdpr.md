@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 221f559dde2017c9b5d13dd4e06a140a6bcb5e2e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935428"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Dodržování předpisů GDPR portál partnerů cloudu
@@ -31,7 +31,7 @@ Portál partnerů cloudu poskytuje přístup ke svým datům v kartě Uživatel�
 
 Vaše osobní data můžete spravovat pomocí klávesy delete na váš uživatelský účet na kartě Uživatelé. Máme role **vlastníka** a **Přispěvatel** každý konkrétního uživatele, které můžete přiřadit, a může být přiřazena/zkopírovat/aktualizovaných/odstraněných.
 
-<a name="consent"></a>Souhlas
+<a name="consent"></a>Vyjádření souhlasu
 -------
 
 Pro správu vyjádření souhlasu v portál Cloud Partner, se vždy zpočátku zobrazí vydavatel smlouvy, ke které je potřeba na souhlas dalo vydavatele u Microsoftu. Pokud nesouhlasíte do smlouvy vydavatele, Omezujeme publisher nebude moct prodej s Microsoftem.

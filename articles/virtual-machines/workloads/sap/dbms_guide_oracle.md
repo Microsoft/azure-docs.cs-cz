@@ -17,10 +17,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60835256"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení Azure Virtual Machines DBMS pro úlohy SAP
@@ -30,7 +30,7 @@ ms.locfileid: "60835256"
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
+[1114181]: https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -39,7 +39,7 @@ ms.locfileid: "60835256"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -55,23 +55,23 @@ ms.locfileid: "60835256"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2039619]: https://launchpad.support.sap.com/#/notes/2039619
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2171857]: https://launchpad.support.sap.com/#/notes/2171857
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -319,7 +319,7 @@ Oracle software je podporován společností Oracle v Microsoft Azure. Další i
 
 Následující poznámky SAP jsou související s řešením SAP v Azure.
 
-| Poznámka: číslo | Název |
+| Poznámka: číslo | Titul |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: Podporované produkty a typy virtuálních počítačů Azure |
 | [2015553] |SAP v Microsoft Azure: Požadavky pro podporu |
@@ -373,7 +373,7 @@ Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, v
 
 Minimální požadavky na konfiguraci vypadá takto: 
 
-| Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
+| Komponenta | Disk | Caching | Fond úložiště |
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA & mirrlogB | Premium | Žádný | Není vyžadováno |
 | \oracle\<SID > \origlogaB & mirrlogA | Premium | Žádný | Není vyžadováno |
@@ -386,7 +386,7 @@ Výběr disků pro hostování online znovu protokolů by měl vycházet požada
 
 Konfigurace výkonu vypadá takto:
 
-| Komponenta | Disk | Ukládání do mezipaměti | Fond úložiště |
+| Komponenta | Disk | Caching | Fond úložiště |
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA | Premium | Žádný | Je možné  |
 | \oracle\<SID > \origlogaB | Premium | Žádný | Je možné |
@@ -397,9 +397,9 @@ Konfigurace výkonu vypadá takto:
 | \oracle\<SID > \oraarch* | Premium | Žádný | Není vyžadováno |
 | Domovská stránka Oracle, saptrace... | Disk OS | Není vyžadováno |
 
-* (n + 1): hostování tabulkové prostory systému, TEMP a vrácení zpět. Vzor vstupně-výstupních operací systému a vrácení zpět tabulkové prostory se liší od jiných tabulkové prostory hostování dat aplikací. Neexistující ukládání do mezipaměti je nejvhodnější volbou pro výkon systému a vrácení zpět tabulkové prostory.
+\* (n + 1): hostování tabulkové prostory systému, TEMP a vrácení zpět. Vzor vstupně-výstupních operací systému a vrácení zpět tabulkové prostory se liší od jiných tabulkové prostory hostování dat aplikací. Neexistující ukládání do mezipaměti je nejvhodnější volbou pro výkon systému a vrácení zpět tabulkové prostory.
 
-* oraarch: není nutné z hlediska výkonu fondu úložiště. Slouží k získání dalšího místa.
+\* oraarch: není nutné z hlediska výkonu fondu úložiště. Slouží k získání dalšího místa.
 
 Pokud potřebujete další vstupně-výstupních operací, doporučujeme používat fondy úložišť systému Windows (pouze k dispozici ve Windows serveru 2012 a novější) vytvořte jedno velké logické zařízení přes několik připojených disků. Tento přístup zjednodušuje správu režie pro správu místa na disku a pomůže vám vyhnout se úsilí ručně distribuce souborů na několik připojených disků.
 
@@ -463,7 +463,7 @@ Pokud chcete identifikovat podporované typy virtuálních počítačů Azure, v
 
 Minimální konfigurace:
 
-| Komponenta | Disk | Ukládání do mezipaměti | Odstranění * |
+| Komponenta | Disk | Caching | Odstranění * |
 | --- | ---| --- | --- |
 | /Oracle/\<SID > / origlogaA & mirrlogB | Premium | Žádný | Není vyžadováno |
 | /Oracle/\<SID > / origlogaB & mirrlogA | Premium | Žádný | Není vyžadováno |
@@ -471,13 +471,13 @@ Minimální konfigurace:
 | /Oracle/\<SID > / oraarch | Standard | Žádný | Není vyžadováno |
 | Domovská stránka Oracle, saptrace... | Disk OS | | Není vyžadováno |
 
-* Odstranění: LVM stripe nebo MDADM pomocí 0
+\* Odstranění: LVM stripe nebo MDADM pomocí 0
 
 Výběr disku pro hostování Oracle online znovu protokolů by měl vycházet požadavky na vstupně-výstupních operací. Je možné ukládat všechny sapdata1... n (tabulkové prostory) na jednom připojeném disku, dokud svazek, IOPS a propustnost splňují požadavky. 
 
 Konfigurace výkonu:
 
-| Komponenta | Disk | Ukládání do mezipaměti | Odstranění * |
+| Komponenta | Disk | Caching | Odstranění * |
 | --- | ---| --- | --- |
 | /Oracle/\<SID > / origlogaA | Premium | Žádný | Je možné  |
 | /Oracle/\<SID > / origlogaB | Premium | Žádný | Je možné |
@@ -488,11 +488,11 @@ Konfigurace výkonu:
 | /Oracle/\<SID > / oraarch * | Premium | Žádný | Není vyžadováno |
 | Domovská stránka Oracle, saptrace... | Disk OS | Není vyžadováno |
 
-* Odstranění: LVM stripe nebo MDADM pomocí 0
+\* Odstranění: LVM stripe nebo MDADM pomocí 0
 
-* (n + 1): hostování tabulkové prostory systému, TEMP a vrácení zpět: Vzor vstupně-výstupních operací systému a vrácení zpět tabulkové prostory se liší od jiných tabulkové prostory hostování dat aplikací. Neexistující ukládání do mezipaměti je nejvhodnější volbou pro výkon systému a vrácení zpět tabulkové prostory.
+\* (n + 1): hostování tabulkové prostory systému, TEMP a vrácení zpět: Vzor vstupně-výstupních operací systému a vrácení zpět tabulkové prostory se liší od jiných tabulkové prostory hostování dat aplikací. Neexistující ukládání do mezipaměti je nejvhodnější volbou pro výkon systému a vrácení zpět tabulkové prostory.
 
-* oraarch: není nutné z hlediska výkonu fondu úložiště.
+\* oraarch: není nutné z hlediska výkonu fondu úložiště.
 
 
 Pokud potřebujete další vstupně-výstupních operací, doporučujeme použít LVM (Správce logických svazků) nebo MDADM vytvoření jedné velké logické přes několik připojených disků. Další informace najdete v tématu [aspekty pro nasazení DBMS virtuálních počítačů Azure pro úlohy SAP](dbms_guide_general.md) týkající se ukazatele a pokyny o tom, jak využít LVM nebo MDADM. Tento přístup zjednodušuje správu režijní náklady správy místa na disku a pomůže vám vyhnout se úsilí ručně distribuce souborů na několik připojených disků.

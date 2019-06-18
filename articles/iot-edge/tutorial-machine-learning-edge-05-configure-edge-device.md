@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 86efbaa053e087885f0dbfea24000781d41ac5d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a2096004a7b389f627c528a8dfb4768ac001f390
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057712"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155625"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: Konfigurace zařízení IoT Edge
 
@@ -35,7 +35,7 @@ V této části se nám vytvořit certifikáty podepsané svým držitelem pomoc
 2. Otevřete příkazový řádek příkazový řádek a spusťte následující příkaz k vytvoření adresáře ve virtuálním počítači.
 
     ```cmd
-    mkdir C:\edgecertificates
+    mkdir c:\edgeCertificates
     ```
 
 3. Spustit **Docker pro Windows** v nabídce Windows Start.
@@ -56,22 +56,20 @@ V této části se nám vytvořit certifikáty podepsané svým držitelem pomoc
 9. V okně terminálu Visual Studio Code spuštěním createcertificates kontejneru.
 
     ```cmd
-    docker run --name createcertificates --rm -v
-    C:\edgeCertificates:/edgeCertificates createcertificates
-    /edgeCertificates
+    docker run --name createcertificates --rm -v c:\edgeCertificates:/edgeCertificates createcertificates /edgeCertificates
     ```
 
-10. Docker zobrazí výzvu pro přístup k **C:\\**  jednotky. Vyberte **nesdílíme data se**.
+10. Docker zobrazí výzvu pro přístup k **c:\\**  jednotky. Vyberte **nesdílíme data se**.
 
 11. Zadejte svoje přihlašovací údaje po zobrazení výzvy.
 
-12. Jednou kontejner dokončí spuštěné, zkontrolujte následující soubory v **c:\\edgecertificates**:
+12. Jednou kontejner dokončí spuštěné, zkontrolujte následující soubory v **c:\\edgeCertificates**:
 
-    * C:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * C:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
-    * C:\\edgeCertificates\\private\\new-edge-device.key.pem
+    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device-full-chain.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
+    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
+    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Nahrát certifikáty pro Azure Key Vault
 
@@ -86,8 +84,7 @@ Naše certifikáty bezpečně uložte a zajistíte jejich přístupnost z více 
 3. Na svém vývojovém počítači nahrajte certifikáty do služby Key Vault. Nahraďte **\<subscriptionId\>** a **\<keyvaultname\>** s informacemi o prostředku.
 
     ```powershell
-    C:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1
-    -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
+    c:\source\IoTEdgeAndMlSample\CreateCertificates\upload-keyvaultcerts.ps1 -SubscriptionId <subscriptionId> -KeyVaultName <keyvaultname>
     ```
 
 4. Pokud se zobrazí výzva, přihlaste se k Azure.
@@ -145,7 +142,7 @@ V dalším kroku spusťte skript k vytvoření virtuálního počítače pro za�
 1. Otevřete okno Powershellu a přejděte **EdgeVM** adresáře.
 
     ```powershell
-    cd C:\source\IoTEdgeAndMlSample\EdgeVM”
+    cd c:\source\IoTEdgeAndMlSample\EdgeVM
     ```
 
 2. Spusťte skript k vytvoření virtuálního počítače.
@@ -210,7 +207,7 @@ Dříve v tomto článku jsme nahráli certifikáty do služby Key Vault, aby by
 1. Sada předplatné Azure, kterou chcete použít pro příkazy Azure CLI.
 
     ```bash
-    az account set --subscription <subscription id>
+    az account set --subscription <subscriptionId>
     ```
 
 1. Vytvořte adresář na virtuálním počítači pro certifikáty.

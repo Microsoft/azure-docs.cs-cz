@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: e6b484dabd77a142961db2d97242896790fa3d8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60836948"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
@@ -28,7 +28,7 @@ Vytvoření sítě pro Service Fabric prostředků.
 
 |Příkaz|Popis|
 | --- | --- |
-| vytvoření | Vytvoří nasazení mřížky prostředků služby Service Fabric. |
+| create | Vytvoří nasazení mřížky prostředků služby Service Fabric. |
 
 ## <a name="sfctl-mesh-deployment-create"></a>Vytvoření nasazení sítě sfctl
 Vytvoří nasazení mřížky prostředků služby Service Fabric.

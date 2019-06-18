@@ -13,10 +13,10 @@ ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
 ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160880"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Připojení k Azure SQL Database pomocí ověřování Azure Multi-Factor Authentication
@@ -62,7 +62,7 @@ K registraci a nastavit potřebná oprávnění pro vaši aplikaci:
 
 1. Na webu Azure Portal, vyberte **Azure Active Directory** > **registrace aplikací** > **registrace nové aplikace**.
 
-    ![Registrace aplikace](media/active-directory-interactive-connect-azure-sql-db/image1.png)
+    ![Registrace aplikací](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
     Po registraci aplikace **ID aplikace** vygeneruje a zobrazí hodnotu.
 
@@ -122,7 +122,7 @@ Pro C# k úspěšnému spuštění programu, je potřeba přiřadit statická po
 | AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Azure Active Directory** > **uživatele** > **nový uživatel typu Host** |
 | Initial_DatabaseName | "myDatabase" | **SQL servery** > **databáze SQL** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** > **registrace aplikací** > **hledat podle názvu** > **ID aplikace** |
-| RedirectUri | nový identifikátor Uri ("https://mywebserver.com/") | **Azure Active Directory** > **registrace aplikací** > **hledat podle názvu** > *[Your-App registrace]*  >  **Nastavení** > **RedirectURIs**<br /><br />Pro účely tohoto článku libovolnou platnou hodnotu je v pořádku pro identifikátor URI pro přesměrování, protože se tady nepoužívá. |
+| RedirectUri | nový identifikátor Uri ("https://mywebserver.com/") | **Azure Active Directory** > **registrace aplikací** > **hledat podle názvu** >  *[Your-App registrace]*  >  **Nastavení** > **RedirectURIs**<br /><br />Pro účely tohoto článku libovolnou platnou hodnotu je v pořádku pro identifikátor URI pro přesměrování, protože se tady nepoužívá. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>Ověření pomocí aplikace SQL Server Management Studio
@@ -135,7 +135,7 @@ Spusťte aplikaci SSMS ze stejného počítače ve stejné budově, kde plánuje
 
 ### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Ověření vícefaktorového ověřování Azure Active Directory
 
-Spusťte aplikaci SSMS znovu, tentokrát s **ověřování** nastavena na **univerzální podporující vícefaktorové ověřování služby Active Directory –**. Tato možnost vyžaduje 17,5 nebo novější verze aplikace SSMS.
+Spusťte aplikaci SSMS znovu, tentokrát s **ověřování** nastavena na **univerzální podporující vícefaktorové ověřování služby Active Directory –** . Tato možnost vyžaduje 17,5 nebo novější verze aplikace SSMS.
 
 Další informace najdete v tématu [konfigurace vícefaktorového ověřování pro aplikaci SSMS a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 

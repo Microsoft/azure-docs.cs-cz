@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory, podmíněného přístupu, nejčastější dotazy | Dokumentace Microsoftu
+title: Nejčastější dotazy k Azure Active Directory podmíněného přístupu | Dokumentace Microsoftu
 description: Získejte odpovědi na nejčastější dotazy týkající se podmíněného přístupu v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 01/15/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21c89d9d686c4af594aa7a0fd921471105669e02
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: 111daef3448533cd863d45197d45c87d8d21264b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/13/2019
-ms.locfileid: "60354532"
+ms.locfileid: "67112397"
 ---
-# <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory, podmíněného přístupu, nejčastější dotazy
+# <a name="azure-active-directory-conditional-access-faqs"></a>Nejčastější dotazy k Azure Active Directory podmíněného přístupu
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Aplikace, které podporují zásady podmíněného přístupu?
 
@@ -61,6 +61,6 @@ V současné době se pro uživatele zařízení s Iosem a androidem selektivně
 
 Spoléhá Microsoft Teams pro základní scénáře produktivity, jako je schůzky, kalendáře a sdílení souborů na Exchange Online a SharePoint Online. Zásady podmíněného přístupu, které jsou nastavené pro tyto cloudové aplikace platí pro Microsoft Teams, když se uživatel přihlašuje přímo do Microsoft Teams.
 
-Microsoft Teams také je podporovaný samostatně jako cloudové aplikace v rámci zásad podmíněného přístupu Azure Active Directory. Zásady podmíněného přístupu, které jsou nastavené pro cloudové aplikace platí pro Microsoft Teams, když se uživatel přihlásí. Ale bez správné zásady, které na jiné aplikace, jako je Exchange Online a SharePoint Online uživatelé mohou moct dál přístup k těmto prostředkům.
+Microsoft Teams také je podporovaný samostatně jako cloudové aplikace v Azure Active Directory zásady podmíněného přístupu na. Zásady podmíněného přístupu, které jsou nastavené pro cloudové aplikace platí pro Microsoft Teams, když se uživatel přihlásí. Ale bez správné zásady, které na jiné aplikace, jako je Exchange Online a SharePoint Online uživatelé mohou moct dál přístup k těmto prostředkům.
 
 Klienti klasické pracovní plochy Microsoft Teams pro Windows a Mac podporují moderní ověřování. Moderní ověřování poskytuje přihlašování založené na Azure Active Directory ověřování Library (ADAL) pro klientské aplikace Microsoft Office napříč platformami.

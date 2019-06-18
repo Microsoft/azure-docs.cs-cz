@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/23/2019
+ms.date: 6/6/2019
 ms.author: b-juche
-ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 657bacc153b5721d5a9f34792eaf4796cb477755
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808881"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Vytvoření svazku pro Azure NetApp Files
 
@@ -90,34 +90,36 @@ Podsíť je potřeba delegovat do služby soubory Azure NetApp.
 
 Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit připojení služby Active Directory před přidáním svazku SMB. 
 
+### <a name="requirements-for-active-directory-connections"></a>Požadavky pro připojení služby Active Directory
+
+ Požadavky pro připojení služby Active Directory jsou následující: 
+
+* Účet správce, který používáte musí být schopen vytvořit účty počítače v cestě organizační jednotka (OU), který zadáte.  
+
+* Musí být na příslušný server služby Windows Active Directory (AD) otevřené správné porty.  
+    Požadované porty jsou následující: 
+
+    |     Služba           |     Port     |     Protocol     |
+    |-----------------------|--------------|------------------|
+    |    AD webové služby    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    neuvedeno       |    Odpovědi s odezvou    |
+    |    Protokol Kerberos           |    464       |    TCP           |
+    |    Protokol Kerberos           |    464       |    UDP           |
+    |    Protokol Kerberos           |    88        |    TCP           |
+    |    Protokol Kerberos           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    Název rozhraní NetBIOS       |    138       |    UDP           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    UDP           |
+    |    Protokol Secure LDAP.        |    636       |    TCP           |
+    |    Protokol Secure LDAP.        |    3269      |    TCP           |
+    |    Služba W32Time            |    123       |    UDP           |
+
 ### <a name="create-an-active-directory-connection"></a>Vytvoření připojení k službě Active Directory
-
-1. Ujistěte se, že splňujete následující requiements: 
-
-    * Účet správce, který používáte musí být schopen vytvořit účty počítače v cestě organizační jednotka (OU), který zadáte.
-    * Musí být na příslušný server služby Windows Active Directory (AD) otevřené správné porty.  
-        Požadované porty jsou následující: 
-
-        |     Služba           |     Port     |     Protocol (Protokol)     |
-        |-----------------------|--------------|------------------|
-        |    AD webové služby    |    9389      |    TCP           |
-        |    DNS                |    53        |    TCP           |
-        |    DNS                |    53        |    UDP           |
-        |    ICMPv4             |    neuvedeno       |    Odpovědi s odezvou    |
-        |    Kerberos           |    464       |    TCP           |
-        |    Kerberos           |    464       |    UDP           |
-        |    Kerberos           |    88        |    TCP           |
-        |    Kerberos           |    88        |    UDP           |
-        |    LDAP               |    389       |    TCP           |
-        |    LDAP               |    389       |    UDP           |
-        |    LDAP               |    3268      |    TCP           |
-        |    Název rozhraní NetBIOS       |    138       |    UDP           |
-        |    SAM/LSA            |    445       |    TCP           |
-        |    SAM/LSA            |    445       |    UDP           |
-        |    Protokol Secure LDAP        |    636       |    TCP           |
-        |    Protokol Secure LDAP        |    3269      |    TCP           |
-        |    Služba W32Time            |    123       |    UDP           |
-
 
 1. Z vašeho účtu NetApp, klikněte na tlačítko **připojení služby Active Directory**, pak klikněte na tlačítko **připojit**.  
 
@@ -125,10 +127,10 @@ Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit přip
 
 2. V okně připojit k Active Directory zadejte následující informace:
 
-    * **Primary DNS**   
-        Toto je IP adresa řadiče domény pro preferované Active Directory Domain Services pro použití s Azure NetApp Files. 
-    * **Sekundární server DNS**  
-        Toto je IP adresa řadiče domény pro sekundární Active Directory Domain Services pro použití s Azure NetApp Files. 
+    * **Primary DNS**  
+        Toto je DNS, která je požadována pro připojení k doméně služby Active Directory a ověřování operace SMB. 
+    * **Sekundární server DNS**   
+        Toto je sekundární server DNS pro zajištění redundantní název služby. 
     * **Domény**  
         Toto je název domény Active Directory Domain Services, který chcete připojit.
     * **Předpona protokolu SMB serveru (účet počítače)**  
@@ -142,7 +144,7 @@ Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit přip
         Toto je cesta protokolu LDAP pro organizační jednotku (OU), kde se vytvoří účty počítače serveru protokolu SMB. To znamená, OU = druhou úroveň, OU = první úroveň. 
     * Přihlašovací údaje, včetně vašich **uživatelské jméno** a **heslo**
 
-    ![Připojit k Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Připojte se k Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Klikněte na **Připojit**.  
 
@@ -204,5 +206,5 @@ Služba soubory Azure NetApp podporuje SMBv3 svazky. Je potřeba vytvořit přip
 ## <a name="next-steps"></a>Další postup  
 
 * [Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [Konfigurace zásad export pro svazek systému souborů NFS](azure-netapp-files-configure-export-policy.md)
+* [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md)
 * [Další informace o integraci virtuální sítě pro služby Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 06/13/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0314c0e03402d53c7f79eed2efe11db953d184e6
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603083"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147512"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Kurz: Vrátí disku Azure Data Box a ověřte nahrání dat do Azure
 
@@ -156,6 +156,8 @@ Jakmile jsou disky připojené k serveru v datovém centru Azure, data se automa
 Po dokončení kopírování se stav objednávky změní na **Dokončeno**.
 
 ![Kopírování dat je dokončené](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
+
+Pokud se kopírování dokončí s chybami, naleznete v tématu [řešení chyb nahrávání](data-box-disk-troubleshoot-upload.md).
 
 Než odstraníte data ze zdroje, ujistěte se, že je máte v účtech úložiště. Vaše data můžou být v:
 
