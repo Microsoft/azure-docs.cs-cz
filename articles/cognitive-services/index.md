@@ -7,18 +7,108 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 06/16/2019
+ms.date: 06/17/2019
 ms.topic: hub-page
-ms.openlocfilehash: aacd85f0f6a583869fe9c879d63b31e7d7d3cccd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d7234ca2441310867aa2f60936de0e3f44342ee8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163812"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204000"
 ---
 <div id="main" class="v2">
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>
+
+
+<h2>Rozhraní API služeb Cognitive Services</h2>
+<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Rozhraní API pro zpracování obrazu</h3>
+                        <p><a href="/azure/cognitive-services/computer-vision/">Počítačové zpracování obrazu</a></p>
+                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
+                        <p><a href="/azure/cognitive-services/face/">Rozhraní API pro rozpoznávání tváře</a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Rozpoznávání formulářů&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088323"><span>Rozpoznávání rukopisu&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Rozhraní Speech API</h3>
+                        <p><a href="/azure/cognitive-services/speech-service">Hlasové služby</a></p>
+                        <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznávání mluvčího&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/speech/home"><span>Rozhraní API pro zpracování řeči Bingu&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/translator-speech/"><span>Translator Speech&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Rozhraní API pro jazyk</h3>
+                        <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
+                        <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
+                        <p><a href="/azure/cognitive-services/text-analytics/">Analýza textu</a></p>
+                        <p><a href="/azure/cognitive-services/translator/">Translator Text</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Search API</h3>
+                        <p><a href="/azure/cognitive-services/bing-news-search/">Vyhledávání zpráv Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/Bing-Video-Search/">Vyhledávání videí Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-web-search/">Vyhledávání na webu Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/Bing-Autosuggest">Automatické návrhy Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-custom-search">Vlastní vyhledávání Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-entities-search/">Vyhledávání entit Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-image-search">Vyhledávání obrázků Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-visual-search">Vizuální vyhledávání Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-spell-check/">Kontrola pravopisu Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-local-business-search"><span>Místní obchodní vyhledávání Bingu&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Rozhraní API pro rozhodování</h3>
+                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Detektor anomálií&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Personalizace&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+</div>
+
+<h2>Začínáme</h2>
 <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure/cognitive-services/welcome/">
@@ -286,89 +376,4 @@ ms.locfileid: "67163812"
     </li>
 </ul>
 
-<h2>Rozhraní API služeb Cognitive Services</h2>
-<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Rozhraní API pro zpracování obrazu</h3>
-                        <p><a href="/azure/cognitive-services/computer-vision/">Počítačové zpracování obrazu</a></p>
-                        <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
-                        <p><a href="/azure/cognitive-services/face/">Rozhraní API pro rozpoznávání tváře</a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Rozpoznávání formulářů&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088323"><span>Rozpoznávání rukopisu&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Rozhraní Speech API</h3>
-                        <p><a href="/azure/cognitive-services/speech-service">Hlasové služby</a></p>
-                        <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznávání mluvčího&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/speech/home"><span>Rozhraní API pro zpracování řeči Bingu&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/translator-speech/"><span>Translator Speech&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Rozhraní API pro jazyk</h3>
-                        <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
-                        <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
-                        <p><a href="/azure/cognitive-services/text-analytics/">Analýza textu</a></p>
-                        <p><a href="/azure/cognitive-services/translator/">Translator Text</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Search API</h3>
-                        <p><a href="/azure/cognitive-services/bing-news-search/">Vyhledávání zpráv Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/Bing-Video-Search/">Vyhledávání videí Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-web-search/">Vyhledávání na webu Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/Bing-Autosuggest">Automatické návrhy Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-custom-search">Vlastní vyhledávání Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-entities-search/">Vyhledávání entit Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-image-search">Vyhledávání obrázků Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-visual-search">Vizuální vyhledávání Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-spell-check/">Kontrola pravopisu Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/bing-local-business-search"><span>Místní obchodní vyhledávání Bingu&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Rozhraní API pro rozhodování</h3>
-                        <p><a href="/azure/cognitive-services/anomaly-detector/"><span>Detektor anomálií&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/content-moderator/">Content Moderator</a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088324"><span>Personalizace&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
-</div>
+
