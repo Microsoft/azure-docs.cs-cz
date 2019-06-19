@@ -85,12 +85,24 @@
           displayName: roles
         - name: Extrakce dat volného tvaru
           href: luis-tutorial-pattern-any.md
-    - name: Použití architektury robotů V4
+    - name: Použití s robotem
       items:
         - name: 'Pomocí jazyka C#'
-          href: luis-csharp-tutorial-bf-v4.md
+          items:
+            - name: 1. Vytvoření základního robota
+              href: luis-csharp-tutorial-bf-v4.md
+              displayName: 'bot framework, framework, sdk, abs'
+            - name: 2. Přidání telemetrie do Application Insights
+              href: luis-tutorial-bot-csharp-appinsights.md
+              displayName: 'Application insight, kusto'
         - name: Pomocí Node.js
-          href: luis-nodejs-tutorial-bf-v4.md
+          items:
+            - name: 1. Vytvoření základního robota
+              displayName: 'bot framework, framework, sdk, abs'
+              href: luis-nodejs-tutorial-bf-v4.md
+            - name: 2. Přidání telemetrie do Application Insights
+              displayName: 'Application insight, kusto'
+              href: luis-tutorial-bot-nodejs-appinsights.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -200,14 +212,6 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: S využitím služby Speech
           href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
-        - name: Robot s využitím Application Insights
-          items:
-            - name: Node.js
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
-            - name: 'C#'
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-csharp-appinsights.md
     - name: Zlepšení přesnosti předpovědi
       items:
         - name: S využitím řídicího panelu

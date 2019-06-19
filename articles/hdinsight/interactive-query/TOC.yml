@@ -2,11 +2,8 @@
   href: /azure/hdinsight
 - name: Přehled
   items:
-    - name: Součásti systému Apache Hadoop ve službě HDInsight
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+    - name: Co je Interactive Query v HDInsightu?
+      href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: Šablony Rychlý start
   items:
@@ -14,8 +11,6 @@
       href: ./hdinsight-connect-hive-zeppelin.md
 - name: Začínáme
   items:
-    - name: Začínáme s interaktivními dotazy
-      href: ./apache-interactive-query-get-started.md
     - name: Instalace aplikací HDInsight
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

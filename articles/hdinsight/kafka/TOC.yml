@@ -11,7 +11,7 @@
       href: apache-kafka-get-started.md
     - name: Vytvoření clusteru Apache Kafka – PowerShell
       href: apache-kafka-quickstart-powershell.md
-    - name: Vytvoření clusteru Apache Kafka – šablona Resource Manageru
+    - name: Vytvoření clusteru Apache Kafka – šablona
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-kafka-quickstart-resource-manager-template.md
 - name: Kurzy

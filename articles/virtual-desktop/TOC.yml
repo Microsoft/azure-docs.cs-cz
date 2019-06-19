@@ -44,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: Automatické škálování hostitelů relace
       href: set-up-scaling-script.md
+    - name: Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
+      href: customize-feed-for-virtual-desktop-users.md
     - name: Přizpůsobení vlastností RDP
       href: customize-rdp-properties.md
 - name: Koncepty

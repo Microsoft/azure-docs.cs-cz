@@ -115,12 +115,8 @@
       href: visualizations.md
     - name: Integrace partnerů
       href: platform/partners.md
-    - name: Přechod na portál OMS
-      items:
-        - name: Přehled
-          href: platform/oms-portal-transition.md
-        - name: Časté dotazy
-          href: platform/oms-portal-faq.md
+    - name: Vyřazení portálu OMS
+      href: platform/oms-portal-transition.md
     - name: Nejčastější dotazy
       items:
         - name: Log Analytics
@@ -249,6 +245,8 @@
               items:
                 - name: Rozšíření Log Analytics pro virtuální počítače
                   href: platform/vmext-troubleshoot.md
+                - name: Agent Log Analytics pro Windows
+                  href: platform/agent-windows-troubleshoot.md
                 - name: Linuxový agent Log Analytics
                   href: platform/agent-linux-troubleshoot.md
         - name: Zdroje dat agenta
@@ -985,6 +983,8 @@
           href: app/nuget.md
         - name: Podpora platformy
           href: app/platforms.md
+        - name: Přepsání koncového bodu
+          href: app/custom-endpoints.md
     - name: Datový model Application Insights
       items:
         - name: Přehled
