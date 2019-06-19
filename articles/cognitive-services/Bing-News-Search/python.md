@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání zpráv s využitím Pythonu – rozhraní API REST vyhledávání zpráv Bingu'
+title: 'Rychlý start: Vyhledávání zpráv pomocí Pythonu a rozhraní API REST vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
 description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Pythonu a přijetí odpovědi JSON.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7745db722d1862e5254c0e0fb07605799a8f7457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c598a9e879cf2f48b6b038f0688d7394075ef521
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578925"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206093"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Pythonu a rozhraní API REST vyhledávání zpráv Bingu
 

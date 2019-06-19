@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/19/2019
 ms.author: diberry
-ms.openlocfilehash: f8d2f6d9fce6a249a782f959ac7672ac8e123fbc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b73884e544ea1b8ee76c8a891048e6a8e17d6ab3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075164"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204080"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktivní studium slouží ke zlepšení znalostní báze
 
@@ -181,7 +181,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Vlastnost požadavku HTTP|Název|Type|Účel|
+|Vlastnost požadavku HTTP|Name|Type|Účel|
 |--|--|--|--|
 |Parametr trasa adresy URL|ID znalostní báze|string|Identifikátor GUID pro znalostní báze.|
 |Host subdomain|Název prostředku QnA maker|string|Název hostitele pro váš nástroj QnA Maker ve vašem předplatném Azure. Toto je k dispozici na stránce nastavení po publikování znalostní báze. |
@@ -195,7 +195,7 @@ Text JSON má několik nastavení:
 |--|--|--|--|
 |`feedbackRecords`|pole|Seznam zpětnou vazbu.|
 |`userId`|string|ID uživatele osoby, která přijímá navržené otázky. Formát ID uživatele je na vás. Například e-mailová adresa může být platné ID uživatele ve vaší architektuře. Volitelné.|
-|`userQuestion`|string|Přesný text otázky. Povinná hodnota.|
+|`userQuestion`|string|Přesný text dotazu daného uživatele. Povinná hodnota.|
 |`qnaID`|číslo|ID otázku, součástí [GenerateAnswer odpovědi](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Příklad text JSON vypadá takto:
@@ -213,6 +213,36 @@ Příklad text JSON vypadá takto:
 ```
 
 Úspěšná odpověď vrátí stav 204 a bez těla odpovědi JSON. 
+
+### <a name="batch-many-feedback-records-into-a-single-call"></a>Batch mnoho zpětnou vazbu záznamů do jednoho volání
+
+V aplikaci na straně klienta, například robota, můžete ukládat data a pak odeslat do jednoho textu JSON v mnoha záznamů `feedbackRecords` pole. 
+
+Příklad text JSON vypadá takto:
+
+```json
+{
+    "feedbackRecords": [
+        {
+            "userId": "1",
+            "userQuestion": "How do I ...",
+            "qnaId": 1
+        },
+        {
+            "userId": "2",
+            "userQuestion": "Where is ...",
+            "qnaId": 40
+        },
+        {
+            "userId": "3",
+            "userQuestion": "When do I ...",
+            "qnaId": 33
+        }
+    ]
+}
+```
+
+
 
 <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
 

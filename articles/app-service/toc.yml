@@ -70,14 +70,17 @@
     - name: Funkce operačního systému
       href: operating-system-functionality.md
     - name: Zabezpečení
-      href: overview-security.md
       items:
+        - name: Doporučení
+          href: security-recommendations.md
         - name: Ověřování a autorizace
           href: overview-authentication-authorization.md
         - name: Opravy operačního systému a modulů runtime
           href: overview-patch-os-runtime.md
         - name: Atributy zabezpečení
           href: app-service-security-attributes.md
+        - name: Přehled zabezpečení
+          href: overview-security.md
     - name: Síťové funkce
       href: networking-features.md
     - name: Příchozí a odchozí IP adresy

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107223"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203612"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Použití revizí k bezpečnému provedení nevýznamných změn
 Jakmile bude vaše rozhraní API připravené a začnou ho využívat vývojáři, časem bude potřeba provádět změny rozhraní API, aniž by to mělo negativní vliv na volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Ve službě Azure API Management k tomu můžeme použít **revize**. Další informace najdete v tématech [Verze a revize](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) a [Správa verzí rozhraní API pomocí služby Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -50,7 +50,7 @@ V tomto kurzu se naučíte:
 4. Vyberte **+ Přidat revizi**.
 
     > [!TIP]
-    > Můžete také zvolit **Přidat revizi** v místní nabídce (**...**) rozhraní API.
+    > Můžete také zvolit **Přidat revizi** v místní nabídce ( **...** ) rozhraní API.
 
 5. Zadejte popis nové revize, který vám pomůže zapamatovat si, k čemu se bude používat.
 6. Vyberte **Vytvořit**.
@@ -82,7 +82,7 @@ V tomto kurzu se naučíte:
 
     ![Nabídka Revize na obrazovce Revize](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
 
-2. Otevřete místní nabídku (**...**) pro **Revizi 2**.
+2. Otevřete místní nabídku ( **...** ) pro **Revizi 2**.
 3. Vyberte **Nastavit jako aktuální**.
 4. Zaškrtněte políčko **Odeslat do veřejného protokolu změn pro toto rozhraní API**, pokud chcete odesílat poznámky o této změně. Zadejte popis provedené změny, který se zobrazí vývojářům, například: **Testování revizí. Přidání nové operace test.**
 5. **Revize 2** je teď nastavená jako aktuální.

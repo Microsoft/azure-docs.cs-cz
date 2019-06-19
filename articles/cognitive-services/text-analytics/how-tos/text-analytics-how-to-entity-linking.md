@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 881c829424124cca843beb7005306edd53be2673
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231419"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203992"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics
 
@@ -31,7 +31,7 @@ Propojování entit je schopnost identifikovat a rozpoznat identity entity v tex
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 Rozpoznávání entit s názvem (NER) je schopnost určit různé entity v textu a uspořádejte je do kategorií na předem definované třídy. Níže jsou uvedeny podporované tříd entit.
 
-V rozhraní Text Analytics [verze 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici.
+V rozhraní Text Analytics [verze 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634), propojování entit a rozpoznávání pojmenovaných entit (NER) jsou k dispozici pro několik jazyků. Zobrazit [jazykovou podporu](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) najdete další informace. 
 
 ### <a name="language-support"></a>Podpora jazyků
 

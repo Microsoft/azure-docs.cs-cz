@@ -6,14 +6,14 @@ author: dcurwin
 manager: ''
 ms.service: backup
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: bfe48fb1bf6a361ce79d0ddc5281a6380a5367e4
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 5fbbd2cf999ab8ba3183879bd9b417353aa5edd0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016479"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203480"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Zálohování databází SQL Serveru ve virtuálních počítačích Azure
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak zálohovat databázi serveru SQL Server běž�
 Zálohujte databázi SQL serveru, zkontrolujte následující podmínky:
 
 1. Identifikovat nebo [vytvořit](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) trezor služby Recovery Services ve stejné oblasti nebo národní prostředí jako virtuální počítač, který je hostitelem instance serveru SQL Server.
-2. [Zkontrolujte oprávnění VM](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) potřebné k zálohování databází SQL.
+2. [Zkontrolujte oprávnění VM](backup-azure-sql-database.md#set-vm-permissions) potřebné k zálohování databází SQL.
 3. Ověřte, zda má virtuální počítač [připojení k síti](backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 4. Zkontrolujte, zda databáze systému SQL Server jsou pojmenovány v souladu s maticí [pokyny pro pojmenování](#verify-database-naming-guidelines-for-azure-backup) pro službu Azure Backup.
 5. Ověřte, že není nutné záložní řešení pro databázi povoleno. Zakažte další zálohy systému SQL Server před instalací tohoto scénáře. Azure Backup pro virtuální počítač Azure společně s Azure Backup můžete povolit pro databázi serveru SQL Server spuštěnou na virtuálním počítači bez jakéhokoli konfliktu.
@@ -61,7 +61,7 @@ Azure Backup nemá řada věcí, při konfiguraci zálohování pro databázi se
 - Azure Backup se zjistit databáze na virtuálním počítači, vytvoří účet **NT SERVICE\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a vyžaduje oprávnění správce systému SQL.
 - Využívá službu Azure Backup **NT AUTHORITY\SYSTEM** účet za databázi zjišťování nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
 
-Pokud jste nevytvořili virtuální počítač SQL Server na Azure Marketplace, k chybě může dojít **UserErrorSQLNoSysadminMembership**. V tomto případě [postupujte podle těchto pokynů](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
+Pokud jste nevytvořili virtuální počítač SQL Server na Azure Marketplace, k chybě může dojít **UserErrorSQLNoSysadminMembership**. V tomto případě [postupujte podle těchto pokynů](backup-azure-sql-database.md#set-vm-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Zkontrolujte pokyny pro pojmenování databáze pro službu Azure Backup
 
@@ -114,7 +114,7 @@ Zjistěte databáze spuštěné na virtuálním počítači.
     - Vytvoří účet služby Azure Backup **NT Service\AzureWLBackupPluginSvc** na virtuálním počítači.
       - Všechny operace zálohování a obnovení pomocí účtu služby.
       - **NT Service\AzureWLBackupPluginSvc** potřebuje oprávnění správce systému SQL. Všechny virtuální počítače SQL serveru, vytvořené na webu Azure Marketplace jsou dostupné **SqlIaaSExtension** nainstalované. **AzureBackupWindowsWorkload** používá rozšíření **SQLIaaSExtension** automaticky získat požadované oprávnění.
-    - Pokud jste nevytvořili virtuální počítač z marketplace, pak virtuální počítač nemá **SqlIaaSExtension** nainstalované, a operace zjišťování se nezdaří s chybovou zprávou **UserErrorSQLNoSysAdminMembership**. Postupujte podle [pokyny](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) chcete tento problém vyřešit.
+    - Pokud jste nevytvořili virtuální počítač z marketplace, pak virtuální počítač nemá **SqlIaaSExtension** nainstalované, a operace zjišťování se nezdaří s chybovou zprávou **UserErrorSQLNoSysAdminMembership**. Postupujte podle [pokyny](backup-azure-sql-database.md#set-vm-permissions) chcete tento problém vyřešit.
 
         ![Vyberte virtuální počítač a databáze](./media/backup-azure-sql-database/registration-errors.png)
 

@@ -1,21 +1,21 @@
 ---
 title: Jak nakonfigurovat více hlavních databází ve službě Azure Cosmos DB
 description: Zjistěte, jak konfigurovat více hlavních databází ve vašich aplikacích ve službě Azure Cosmos DB.
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.author: mjbrown
+ms.openlocfilehash: e33aa10673f4c4b061f8961959f20b7b3416ec84
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244745"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204788"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurovat více hlavních databází ve vašich aplikacích, které používají službu Azure Cosmos DB
 
-Použití několika hlavními databázemi funkce ve vaší aplikaci, musíte povolit zápisů ve více oblastech a nakonfigurovat vícenásobné navádění schopností ve službě Azure Cosmos DB. Pokud chcete nakonfigurovat vícenásobné navádění, nastavte oblast, ve kterém je aplikace nasazená.
+Použití několika hlavními databázemi funkce ve vaší aplikaci, musíte povolit zápisů ve více oblastech a nakonfigurovat vícenásobné navádění schopností ve službě Azure Cosmos DB. Pokud chcete nakonfigurovat vícenásobné navádění, předejte název oblasti, kde je aplikace nasazená na vlastnost SetCurrentLocation. Tím automaticky naplní vlastnost PreferredLocations podle geografické blízkosti z předané v umístění. Pokud k účtu je později přidat novou oblast, aplikace nebude muset aktualizovat nebo znovu nasadit, automaticky zjistí blíž oblasti a bude automaticky – Domovská stránka k ho musí dojít k místní události.
 
 ## <a id="netv2"></a>Sady .NET SDK v2
 

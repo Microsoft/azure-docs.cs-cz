@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 06/14/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 84e8eedfb206e28f245128a4e30aba44e96277ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a3469e4f7fe1c234a6df694d7bdd6d9e2c46407a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072424"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204895"
 ---
 # <a name="what-is-text-to-speech"></a>Co je převod textu na řeč?
 
@@ -26,13 +25,13 @@ Převod textu na řeč technologie umožňuje tvůrce obsahu pro interakci se sv
 
 ### <a name="standard-voices"></a>Standardní hlasů
 
-Standardní hlasy jsou vytvořeny pomocí statistické ukazatelů syntézu a/nebo zřetězení syntézu technik. Tyto hlasy jsou vysoce srozumitelné a zvukové poměrně fyzické. Můžete snadno povolit aplikacím řeči ve více než 45 jazyků s širokou škálu možností hlasu. Tyto hlasy poskytují vysokou výslovnost přesnost, včetně podpory pro zkratky, rozšíření zkratka, interpretace datum a čas, polyphones a další. Standardní hlas používejte ke zlepšení dostupnosti aplikací a služeb tím, že uživatelé interagují s vaším obsahem zvukově.
+Standardní hlasy jsou vytvořeny pomocí statistické ukazatelů syntézu a/nebo zřetězení syntézu technik. Tyto hlasy jsou vysoce srozumitelné a zvukových přirozený. Můžete snadno povolit aplikacím řeči ve více než 45 jazyků s širokou škálu možností hlasu. Tyto hlasy poskytují vysokou výslovnost přesnost, včetně podpory pro zkratky, rozšíření zkratka, interpretace datum a čas, polyphones a další. Standardní hlas používejte ke zlepšení dostupnosti aplikací a služeb tím, že uživatelé interagují s vaším obsahem zvukově.
 
 ### <a name="neural-voices"></a>Neurální hlasů
 
-Neurální hlasy překonání omezení tradičních systémů převod textu na řeč v odpovídající vzory zátěže a intonací mluvený jazyk a syntetizační jednotky řeči do počítače hlasový vstup pomocí hluboké neuronové sítě. Standardní převod textu na řeč boří prosody do samostatných pro jazykovou analýzu a akustický předpovědi kroky, které se řídí nezávislé modely. Výsledkem může být syntézu muffled, buzzy hlasu. Naše neuronových sítí funkce nemá prosody předpovědi a způsobu vyjadřování syntézu současně, povede k více plynulá práce a přirozeného to nezní hlasový vstup.
+Neurální hlasy překonání omezení tradičních systémů převod textu na řeč v odpovídající vzory zátěže a intonací mluvený jazyk a syntetizační jednotky řeči do počítače hlasový vstup pomocí hluboké neuronové sítě. Standardní převod textu na řeč boří prosody do samostatných pro jazykovou analýzu a akustický předpovědi kroky, které se řídí nezávislé modely, které může vést k syntézu muffled hlasu. Naše neuronových sítí funkce nemá prosody předpovědi a způsobu vyjadřování syntézu současně, povede k více plynulá práce a přirozeného to nezní hlasový vstup.
 
-Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit systémy navigaci. Díky přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální hlasy výrazně snížit naslouchání reorganizovaly při interakci s AI systémy. 
+Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit systémy navigaci. Díky přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální hlasy výrazně snížit naslouchání reorganizovaly při interakci s AI systémy.
 
 Neurální hlasy podporují různé styly, jako je například neutrální a veselejší. Například hlasové Jessa (en US) mohou mluvit cheerfully, který je optimalizovaný pro horké, vám rádi konverzace. Můžete upravit hlasový výstup, podobný tón, výšku a urychlit pomocí [Markup Language syntézu řeči](speech-synthesis-markup.md). Úplný seznam dostupných hlasů, naleznete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
@@ -41,6 +40,26 @@ Další informace o výhodách neuronových sítí hlasů, najdete v článku [s
 ### <a name="custom-voices"></a>Vlastní hlasů
 
 Přizpůsobení hlasové umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky. Pokud chcete vytvořit vlastní hlasové písmo, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Toto vlastní hlasové písmo můžete použít tak, aby odpovídaly řeči. Další informace najdete v tématu [vlastní hlasy](how-to-customize-voice-font.md).
+
+## <a name="speech-synthesis-markup-language-ssml"></a>Jazyk SSML (Speech Synthesis Markup Language)
+
+Rozpoznávání řeči syntézu Markup Language (SSML) je jazyka kód založený na formátu XML, který umožňuje vývojářům zadat jak vstupní text, který je převeden na řečového pomocí převod textu na řeč služby. Porovnání na prostý text, SSML umožňuje vývojářům pro vyladění od výslovnost, mluvený rychlost, svazek a více převod textu na řeč výstupu. Normální interpunkce, jako je například pozastavení po určité době nebo pomocí správné intonací větu s otazníkem končí jsou automaticky zpracovány.
+
+Všechny textovými vstupy odesílají převod textu na řeč služby musí být strukturu SSML. Další informace najdete v tématu [Markup Language syntézu řeči](speech-synthesis-markup.md).
+
+### <a name="pricing-note"></a>Poznámka: ceny
+
+Pokud používáte službu Převod textu na řeč, účtuje se vám pro každý znak, který je převeden do mluvené řeči, včetně interpunkce. Samotný dokument SSML není fakturovatelné, volitelné elementy, které se používají k úpravě, jak je text převést na řeč, jako je fonémy důraz a výšku, se počítají jako fakturovatelná znaků. Tady je seznam co jsou fakturovatelná:
+
+* Text předat službě převod textu na řeč v SSML text žádosti
+* Všechny značky v rámci textového pole text požadavku ve formátu SSML, s výjimkou `<speak>` a `<voice>` značky
+* Písmena, interpunkční znaménka, mezery, tabulátory, značky a všechny prázdné znaky
+* Každý bod kódu definované v kódování Unicode
+
+Podrobné informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+
+> [!IMPORTANT]
+> Každý znak jazyk čínštiny, japonštiny a korejštiny se počítá jako dva znaky pro fakturaci.
 
 ## <a name="core-features"></a>Základní funkce
 
