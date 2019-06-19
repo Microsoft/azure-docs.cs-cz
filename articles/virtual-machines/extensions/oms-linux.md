@@ -135,10 +135,10 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 | Název | Hodnota / příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
-| vydavatele | Microsoft.EnterpriseCloud.Monitoring |
+| publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
-| ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceId (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
