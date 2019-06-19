@@ -41,10 +41,10 @@ Network Watcher Agent rozšíření lze nakonfigurovat pro následující distri
 | Ubuntu | 12+ |
 | Debian | 7 a 8 |
 | Red Hat | 6 a 7 |
-| Oracle Linux | 6.8 + a 7 |
+| Oracle Linux | 6.8+ a 7 |
 | SUSE Linux Enterprise Server | 11 a 12 |
-| Přestupné OpenSUSE | 42.3+ |
-| CentOS | 6.5 + a 7 |
+| OpenSUSE Leap | 42.3+ |
+| CentOS | 6.5+ a 7 |
 | CoreOS | 899.17.0+ |
 
 
