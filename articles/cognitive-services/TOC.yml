@@ -7,8 +7,28 @@
       href: Welcome.md
     - name: Podpora jazyků
       href: language-support.md
+- name: Podpora kontejnerů
+  items:
     - name: Podpora kontejnerů
       href: cognitive-services-container-support.md
+    - name: Návody ke kontejnerům
+      items:
+        - name: Opakované využití kontejnerů
+          href: ./containers/container-reuse-recipe.md
+        - name: Nasazení do instance kontejneru Azure
+          href: ./containers/azure-container-instance-recipe.md
+        - name: Nasazení do Kubernetes v Azure
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: Nasazení s využitím Docker Compose
+          href: ./containers/docker-compose-recipe.md
+    - name: Další služby kontejnerů
+      items:
+        - name: Azure Container Instances
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure Container Registry
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes Service (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Šablony Rychlý start
   items:
     - name: Vytvoření účtu

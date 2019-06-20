@@ -31,6 +31,14 @@
       href: search-get-started-python.md
 - name: Kurzy
   items:
+    - name: Vytvoření první aplikace
+      items:
+        - name: 1. Základní vyhledávací stránka
+          href: tutorial-csharp-create-first-app.md
+        - name: 2. Přidání stránkování výsledků
+          href: tutorial-csharp-paging.md
+        - name: 3. Přidání našeptávání
+          href: tutorial-csharp-type-ahead-and-suggestions.md
     - name: Indexování Azure SQL Database
       href: search-indexer-tutorial.md
     - name: Indexování objektů blob Azure JSON

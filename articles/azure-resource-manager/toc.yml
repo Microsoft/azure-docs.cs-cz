@@ -124,9 +124,10 @@
               href: resource-manager-powershell-sas-token.md
         - name: Nasazení do několika skupin prostředků nebo předplatných
           href: resource-manager-cross-resource-group-deployment.md
-        - name: Průběžná integrace s využitím Azure DevOps Services
-          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
-          maintainContext: true
+    - name: CI/CD
+      items:
+        - name: Projekt VS s kanály
+          href: vs-resource-groups-project-devops-pipelines.md
     - name: Export šablony
       href: export-template-portal.md
     - name: Spravovat
