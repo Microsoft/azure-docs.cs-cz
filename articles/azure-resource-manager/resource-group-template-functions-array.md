@@ -49,7 +49,7 @@ K získání řetězcové hodnoty oddělené hodnotu pole, naleznete v tématu [
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="array"></a>pole
+## <a name="array"></a>array
 `array(convertToArray)`
 
 Převede hodnotu na pole.
@@ -58,7 +58,7 @@ Převede hodnotu na pole.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Ano |int, string, pole nebo objekt |Hodnota k převedení na pole. |
+| convertToArray |Ano |int, string, array nebo object |Hodnota k převedení na pole. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
