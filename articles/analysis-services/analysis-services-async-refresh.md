@@ -104,7 +104,7 @@ Zadání parametrů se nevyžaduje. Výchozí hodnota je použita.
 | `CommitMode`     | Enum  | Určuje, pokud objekty budou potvrzeny v dávkách, nebo pouze v případě, že je dokončeno. Režimy: výchozí, transakční, partialBatch.  |  transakční       |
 | `MaxParallelism` | Int   | Tato hodnota určuje maximální počet vláken, ve kterém se spustí paralelní zpracování příkazů. Tuto hodnotu v souladu s MaxParallelism vlastnost, která je možné nastavit v TMSL [pořadí příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) nebo pomocí jiné metody.       | 10        |
 | `RetryCount`     | Int   | Označuje počet pokusů, které se předtím, než oznámí opakování operace.      |     0    |
-| `Objects`        | Pole | Pole objektů, které chcete zpracovat. Každý objekt obsahuje: "tabulky" při zpracování celé tabulky nebo "table" a "oddíl" při zpracování oddílu. Pokud nejsou zadány žádné objekty, se aktualizují celý model. |   Celý model procesu      |
+| `Objects`        | Array | Pole objektů, které chcete zpracovat. Každý objekt obsahuje: "tabulky" při zpracování celé tabulky nebo "table" a "oddíl" při zpracování oddílu. Pokud nejsou zadány žádné objekty, se aktualizují celý model. |   Celý model procesu      |
 
 Je rovno partialBatch CommitMode. Používá se při provádění počátečním načtení rozsáhlých datových sad, které může trvat hodiny. Pokud operace aktualizace selže po úspěšně potvrzování jeden nebo více dávky, úspěšně potvrzeny dávky zůstanou potvrzené (nevrátí zpět úspěšně potvrzeny dávky).
 
