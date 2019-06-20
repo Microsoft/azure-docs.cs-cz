@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/16/2019
 ms.author: juliako
-ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 02c359fa7a0da5c7b374e202dc91ceb6489a5352
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556229"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190883"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -31,7 +31,7 @@ Azure Media Services umožňuje doručovat živé události do vašich zákazní
 - Komponenty ve službě Media Services, která umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a vysílat živě přenášená akce vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
 Tento článek obsahuje přehled a pokyny k živé streamování pomocí služby Media Services a odkazy na další související články.
-
+ 
 > [!NOTE]
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte rozhraní [REST API](https://aka.ms/ams-v3-rest-ref), [rozhraní příkazového řádku](https://aka.ms/ams-v3-cli-ref) nebo některou z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
 
@@ -49,7 +49,7 @@ Dynamické filtrování se používá k řízení počet stop, formáty, přenos
 
 ## <a name="live-event-types"></a>Live typy událostí
 
-Živá událost může být jeden ze dvou typů: Předávací tak pro živé kódování. Podrobnosti o živém streamování v Media Services v3 najdete v tématu [živé události a Live výstupy](live-events-outputs-concept.md).
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Živá událost může být jeden ze dvou typů: Předávací tak pro živé kódování. Podrobnosti o živém streamování v Media Services v3 najdete v tématu [živé události a Live výstupy](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Průchod
 
@@ -67,9 +67,9 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 
 Živé streamování pracovního postupu v Media Services v3 informace o tom, je nutné nejdříve si přečtěte a koncepce následující: 
 
-- [Koncové body streamování rozhraní API](streaming-endpoint-concept.md)
-- [Živé události a rozhraní API za provozu výstupy](live-events-outputs-concept.md)
-- [Rozhraní API pro streamování lokátory](streaming-locators-concept.md)
+- [Koncové body streamování](streaming-endpoint-concept.md)
+- [Živé události a výstupy](live-events-outputs-concept.md)
+- [Lokátory streamování](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Obecné kroky
 
@@ -79,7 +79,7 @@ Při použití kódování v reálném čase pomocí Media Services nakonfiguruj
 4. Získat adresu URL ve verzi preview a použít ho k ověření, že je ve skutečnosti přijímají vstup z kodéru.
 5. Vytvořte nový **Asset** objektu.
 6. Vytvoření **Live výstup** a používat název assetu, kterou jste vytvořili.<br/>**Live výstup** bude archivovat do datového proudu **Asset**.
-7. Vytvoření **Lokátor streamování** pomocí integrované **streamování zásad** typy.<br/>Pokud máte v úmyslu šifrování obsahu, přečtěte si [Content protection přehled](content-protection-overview.md).
+7. Vytvoření **Lokátor streamování** s [předdefinovaných typů zásad streamování](streaming-policy-concept.md)
 8. Seznam cest na **Lokátor streamování** získat zpět adresy URL používat (Toto jsou deterministické).
 9. Získání názvu hostitele pro **koncový bod streamování** (původní), kterou chcete z datového proudu.
 10. Adresu URL v kroku 8 v kombinaci s názvem hostitele v kroku 9 získat úplnou adresu URL.

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 372922fff600aaa12fddfeeb86ff4522eca3e602
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075102"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190647"
 ---
 # <a name="mapping-data-flow-transformation-optimize-tab"></a>Mapování dat transformace toku optimalizovat kartu
 
@@ -45,7 +45,7 @@ Dynamický rozsah budou používat dynamické rozsahy Spark na základě sloupce
 
 ### <a name="fixed-range"></a>Dlouhodobý rozsah
 
-Je nutné vytvořit výraz, který poskytuje pevné rozsah hodnot ve sloupcích dělená data. Měli byste rozumět tomu vaše data před použitím této možnosti, pokud se chcete vyhnout Nerovnoměrná distribuce oddílu. Hodnota, která zadejte výraz se použije jako součást funkce oddílu. Můžete nastavit počet fyzických oddílů.
+Je nutné vytvořit výraz, který poskytuje pevné rozsah hodnot ve sloupcích dělená data. Měli byste rozumět tomu vaše data před použitím této možnosti, pokud se chcete vyhnout Nerovnoměrná distribuce oddílu. Hodnoty, které zadáte pro výraz se použije jako součást funkce oddílu. Můžete nastavit počet fyzických oddílů.
 
 ### <a name="key"></a>Klíč
 

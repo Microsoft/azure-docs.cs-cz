@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 06/12/2019
-ms.openlocfilehash: b740b49e2decabd5f104d1db5d38b48f2bc2111c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116207"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275464"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bez serveru (preview)
 
@@ -253,6 +253,8 @@ Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředk�
 
 ### <a name="metrics"></a>Metriky
 
+Metriky pro monitorování využití prostředků aplikace balíčku a uživatele fondu bez serveru databáze jsou uvedeny v následující tabulce:
+
 |Entita|Metrika|Popis|Jednotky|
 |---|---|---|---|
 |Balíček aplikace|app_cpu_percent|Procentuální podíl virtuálních jader, používat aplikace vzhledem k maximální počet virtuálních jader pro povolené aplikace.|Procento|
@@ -263,10 +265,6 @@ Uživatelským fondem zdrojů je vnitřní většina hranice správy prostředk�
 |Uživatel fondu|log_IO_percent|Procento protokolu pro uživatelské zatížení povoleny MB/s, které používá uživatelské zatížení vzhledem k maximální protokolu MB/s.|Procento|
 |Uživatel fondu|workers_percent|Procento pracovních procesů využívaných zatížení uživatelů vzhledem k maximální počet pracovních procesů povolen pro uživatelské zatížení.|Procento|
 |Uživatel fondu|sessions_percent|Procento relací použít úlohu uživatele vzhledem k maximálního počtu relací povolená pro uživatelské zatížení.|Procento|
-____
-
-> [!NOTE]
-> Metriky na webu Azure Portal jsou k dispozici v podokně databáze pro izolované databáze podle **monitorování**.
 
 ### <a name="pause-and-resume-status"></a>Pozastavit a obnovit stav
 

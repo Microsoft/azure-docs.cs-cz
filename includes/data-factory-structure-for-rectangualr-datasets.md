@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122525"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175677"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro obdélníkové datové sady
 Části struktury v datových sadách JSON je **volitelné** obdélníkové tabulky (s řádky a sloupce) v části a obsahuje kolekci sloupců pro tabulku. Části struktury použije pro buď poskytující informace o typu pro převod na typ nebo provádění mapování sloupců. Následující části popisují tyto funkce podrobně. 

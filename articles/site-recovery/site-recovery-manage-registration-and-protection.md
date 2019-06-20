@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 400ffaa9e6fed14ceabf34283cd5fa7c7a0336b8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65415482"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203398"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -151,6 +151,8 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 > [!NOTE]
 > V obou možností, které služba mobility neodinstaluje z chráněných serverů musíte odinstalovat ručně. Pokud budete chránit server znovu pomocí stejný konfigurační server, můžete přeskočit odinstalace služby mobility.
 
+> [!NOTE]
+> Pokud jste již převzetí služeb při selhání virtuálního počítače a běží v Azure, Všimněte si, že zakázání ochrany není odebrat / ovlivnit se selhání pro virtuální počítač.
 ## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Zakažte ochranu pro virtuální počítač Azure (Azure do Azure)
 
 -  V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.
@@ -167,8 +169,12 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
    - **Zakázat replikaci a odebrat (doporučeno)** – tato možnost odebere replikovanou položku z Azure Site Recovery a replikace pro počítač se zastaví. Konfigurace replikace na místním virtuálním počítači se vyčistí a zastaví se fakturace služby Site Recovery pro tento chráněný server.
    - **Odebrat** – tato možnost by měla použít pouze v případě, že zdrojové prostředí je Odstraněná nebo není přístupný (nepřipojeno). To odebere replikovanou položku z Azure Site Recovery (účtování se ukončí). Konfigurace replikace na virtuálním počítači s místními **nebudou** vyčistit. 
 
-     > [!NOTE]
+ > [!NOTE]
      > Pokud jste zvolili **odebrat** možnost pak spusťte následující sadu skriptů a vyčistit nastavení replikace v místním serveru technologie Hyper-V.
+
+> [!NOTE]
+> Pokud jste již převzetí služeb při selhání virtuálního počítače a běží v Azure, Všimněte si, že zakázání ochrany není odebrat / ovlivnit se selhání pro virtuální počítač.
+
 1. Na zdrojovém Hyper-V hostitelském serveru, chcete-li odebrat replikaci pro virtuální počítač. Nahraďte názvem vašeho virtuálního počítače SQLVM1 a spusťte skript ze správy prostředí PowerShell
 
 ```powershell

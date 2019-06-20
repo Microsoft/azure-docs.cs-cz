@@ -12,13 +12,13 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.date: 06/14/2019
+ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019824"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144035"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s problémy s připojením k databázi SQL a přechodných chyb
 
@@ -93,7 +93,7 @@ Jedním ze způsobů můžete otestovat svoji logiku opakování je klientský p
 - **SqlException.Number** = 11001
 - zpráva: "Je znám žádný takový hostitel"
 
-Jako součást první pokus o opakování můžete program opravte chyba a pak se pokusíte připojit.
+Jako součást první pokus o opakování můžete znovu připojte klientský počítač k síti a pak se pokusíte připojit.
 
 Chcete-li tento test praktické, odpojte před spuštěním programu počítači ze sítě. Potom program rozpozná parametr modulu runtime, který způsobí, že program:
 

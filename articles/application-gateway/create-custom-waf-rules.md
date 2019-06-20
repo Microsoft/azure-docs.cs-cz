@@ -1,24 +1,24 @@
 ---
-title: Vytvoření a používání vlastních pravidel Firewall Azure webových aplikací (WAF)
-description: Tento článek obsahuje informace o tom, jak vytvořit vlastní pravidla brány Firewall webových aplikací (WAF) ve službě Azure Application Gateway.
+title: Vytvoření a používání vlastních pravidel v2 Firewall Azure webových aplikací (WAF)
+description: Tento článek obsahuje informace o tom, jak vytvořit vlastní pravidla brány Firewall webových aplikací (WAF) v2 ve službě Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66689028"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164679"
 ---
-# <a name="create-and-use-web-application-firewall-custom-rules"></a>Vytvoření a používání vlastních pravidel brány Firewall webových aplikací
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Vytvoření a používání vlastních pravidel brány Firewall webových aplikací v2
 
-Firewall webových aplikací (WAF) Azure Application Gateway chrání webové aplikace. Tato ochrana je k dispozici ve Open Web Application zabezpečení projektu (OWASP) základní pravidlo nastavte (CRS). V některých případech budete muset vytvořit vaše vlastní pravidla podle svých konkrétních potřeb. Další informace o vlastní pravidla firewallu webových aplikací najdete v tématu [webových vlastní aplikací – přehled pravidel brány firewall](custom-waf-rules-overview.md).
+Azure Application Gateway Firewall webových aplikací (WAF) verze 2 poskytuje ochranu webových aplikací. Tato ochrana je k dispozici ve Open Web Application zabezpečení projektu (OWASP) základní pravidlo nastavte (CRS). V některých případech budete muset vytvořit vaše vlastní pravidla podle svých konkrétních potřeb. Další informace o vlastní pravidla firewallu webových aplikací najdete v tématu [webových vlastní aplikací – přehled pravidel brány firewall](custom-waf-rules-overview.md).
 
-Tento článek popisuje několik ukázkových vlastních pravidel, které můžete vytvořit a používat se svou bránu WAF. Informace o nasazení brány WAF pomocí vlastního pravidla pomocí Azure Powershellu najdete v tématu [vlastní pravidla konfigurace firewallu webových aplikací pomocí Azure Powershellu](configure-waf-custom-rules.md).
+Tento článek popisuje několik ukázkových vlastních pravidel, které můžete vytvořit a používat se svou bránu WAF v2. Informace o nasazení brány WAF pomocí vlastního pravidla pomocí Azure Powershellu najdete v tématu [vlastní pravidla konfigurace firewallu webových aplikací pomocí Azure Powershellu](configure-waf-custom-rules.md).
 
 >[!NOTE]
 > Pokud vaše brána application gateway úrovně WAF nepoužívá, možnost upgradovat na vrstvu waf služby application gateway se zobrazí v pravém podokně.

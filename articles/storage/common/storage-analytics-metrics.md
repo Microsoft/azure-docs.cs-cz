@@ -9,12 +9,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fecced844b3580c83fd18d0c14c3a2083f7a4fc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153941"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165723"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage analytics metriky (klasické)
 
@@ -90,18 +90,27 @@ Rutiny, které řídí metrik úložiště, použijte následující parametry:
 * **Služba**: Shromažďuje metriky, jako je příchozí a odchozí transakce, dostupnosti, latence a procenta úspěšnosti, které se zobrazují se pro objekt blob, fronty, tabulky a souborové služby.
 * **ServiceAndApi**: Kromě metrik služeb shromažďuje stejnou sadu metrik pro každou operaci úložiště v rozhraní API služby Azure Storage.
 
-Například následující příkaz zapne minutové metriky pro službu blob service ve výchozí účet úložiště s uchováním nastavte období na pět dní:  
+Například následující příkaz zapne minutové metriky pro službu blob service ve vašem účtu úložiště s uchováním nastavte období na pět dní: 
+
+> [!NOTE]
+> Tento příkaz předpokládá, že jste přihlášení vašeho předplatného Azure s použitím `Connect-AzAccount` příkazu.
 
 ```  
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute   
--ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5  
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+
+Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
+
+* Nahradit `<resource-group-name>` zástupnou hodnotu s názvem vaší skupiny prostředků.
+
+* Nahradit `<storage-account-name>` zástupnou hodnotu s názvem účtu úložiště.
+
+
 
 Následující příkaz načte aktuální hodinové metriky úroveň a uchovávání dní pro službu blob service ve výchozí účet úložiště:  
 
 ```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour   
--ServiceType Blob  
+Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 Informace o tom, jak nakonfigurovat rutiny Azure Powershellu pro práci s vaším předplatným Azure a jak vybrat výchozí účet úložiště pro použití najdete tady: [Jak nainstalovat a nakonfigurovat Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

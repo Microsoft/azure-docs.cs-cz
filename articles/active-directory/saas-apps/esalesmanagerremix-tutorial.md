@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65406955"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s prodejní manažer Remix E
@@ -103,7 +103,7 @@ Povolení služby Azure AD jednotného přihlašování na portálu Azure portal
 
     a. V **přihlašovací adresa URL** pole, zadejte adresu URL v následujícím formátu: *https://\<– na základě – adresa URL serveru > /\<subdomény > / esales-pc*.
 
-    b. V **identifikátor** pole, zadejte adresu URL v následujícím formátu: *https://\<– na základě – adresa URL serveru > /\<subdomény > /*.
+    b. V **identifikátor** pole, zadejte adresu URL v následujícím formátu: *https://\<– na základě – adresa URL serveru > /\<subdomény > /* .
 
     c. Poznámka: **identifikátor** hodnoty pro pozdější použití v tomto kurzu.
     
@@ -158,7 +158,7 @@ Povolení služby Azure AD jednotného přihlašování na portálu Azure portal
     
     b. V **spolupráci položky** části, v rozevíracím seznamu vyberte **e-mailu**.
 
-    c. V **spolupráci položky** vložte hodnotu deklarace identity, který jste si zkopírovali z portálu Azure portal (to znamená **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. V **spolupráci položky** vložte hodnotu deklarace identity, který jste si zkopírovali z portálu Azure portal (to znamená **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ).
 
     d. V **vystavitele (entity ID)** vložte hodnotu identifikátoru, který jste si zkopírovali z **E Sales Manager Remix domény a adresy URL** části webu Azure portal.
 
@@ -262,7 +262,7 @@ V této části povolit uživatele Britta Simon k udělení přístupu k E Sales
 
 1. V **přidat přiřazení** okně **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

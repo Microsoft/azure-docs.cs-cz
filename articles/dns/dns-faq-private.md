@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: c963cb1b6930b41a703b479e0213311d971e6606
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 480cf22491dbbfcb9fe1961b5c9a7aa6fe12a0cb
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082843"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274048"
 ---
 # <a name="azure-private-dns-faq"></a>Nejčastější dotazy k DNS Azure privátní
 
@@ -88,6 +88,13 @@ Následující výchozí omezení platí při použití služby privátní DNS A
 ## <a name="is-there-portal-support-for-private-zones"></a>Je k dispozici portálu podpora pro privátní zóny?
 
 Ano a privátních zón, které budou vytvořeny již prostřednictvím rozhraní API, Powershellu, rozhraní příkazového řádku a sady SDK jsou viditelné na webu Azure portal.
+
+## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Proč existující privátních zón DNS nezobrazují v nové prostředí portálu?
+
+Jako součást verze Preview aktualizace dodali jsme nový model prostředků pro privátní zóny DNS. Existující privátních zón DNS, bude nutné migrovat na nový model prostředků než ty se zobrazí v novém prostředí portálu. Níže naleznete pokyny o tom, jak migrovat na nový model prostředků.
+
+## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Jak migrovat existující privátní zóny DNS na nový model?
+Důrazně doporučujeme migrovat na nový model resource co nejdříve. Model starší verze prostředků se nepodporuje, ale funkce nebude možné vyvíjet nad rámec tohoto modelu. V budoucnu plánujeme přestat používat ho ve prospěch nový model prostředků. Pokyny, jak migrovat existující služby privátní DNS zóny na nový model prostředků najdete v části[Průvodce migrací pro privátní zóny Azure DNS](private-dns-migration-guide.md).
 
 ## <a name="next-steps"></a>Další postup
 

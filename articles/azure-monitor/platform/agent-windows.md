@@ -1,6 +1,6 @@
 ---
-title: Připojení počítačů s Windows ke službě Azure Log Analytics | Dokumentace Microsoftu
-description: Tento článek popisuje postup připojení počítačů s Windows hostovaných v jiných cloudech nebo místních do Log Analytics se Microsoft Monitoring Agent (MMA).
+title: Připojení počítačů s Windows do Azure monitoru | Dokumentace Microsoftu
+description: Tento článek popisuje postup připojení počítačů s Windows hostovaných v jiných cloudech nebo místních do Azure monitoru pomocí agenta Log Analytics pro Windows.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2d57e619ec17e183bc8c9bb155f3e111f43b85f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952487"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146355"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows do Azure monitoru
 
@@ -110,14 +110,16 @@ Následující tabulka obsahuje konkrétní parametry nepodporuje instalaci agen
 2. Bezobslužná instalace agenta a nakonfigurovat, aby hlásit do pracovního prostoru v komerčním cloudu Azure, ze složky extrahovány instalační soubory, zadejte: 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    nebo pokud chcete konfigurovat agenta na generování sestav do cloudu Azure pro státní správu USA, zadejte: 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
+    >[!NOTE]
+    >Řetězcové hodnoty pro parametry *OPINSIGHTS_WORKSPACE_ID* a *OPINSIGHTS_WORKSPACE_KEY* musí být zapouzdřen v uvozovkách dáte pokyn, aby instalační služby systému Windows na interprit jako možnosti pro balíček. 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Instalace agenta pomocí ve službě Azure Automation DSC
 
@@ -202,4 +204,6 @@ Ve výsledcích hledání vrátí měli byste vidět záznamy prezenčního sign
 
 ## <a name="next-steps"></a>Další postup
 
-Kontrola [Správa a údržba agenta Log Analytics pro Windows a Linux](agent-manage.md) Další informace o tom, jak Správa agenta během životního cyklu jeho nasazení na vašich počítačích.  
+- Kontrola [Správa a údržba agenta Log Analytics pro Windows a Linux](agent-manage.md) Další informace o tom, jak Správa agenta během životního cyklu jeho nasazení na vašich počítačích.  
+
+- Kontrola [řešení potíží s agentem Windows](agent-windows-troubleshoot.md) Pokud narazíte na problémy při instalaci a správě agenta.

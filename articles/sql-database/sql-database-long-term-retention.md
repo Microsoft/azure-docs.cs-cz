@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 0f764ebbad53185f46c7166011e05493ed261d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696647"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190547"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store Azure SQL Database zálohy až 10 let
 
@@ -59,8 +59,8 @@ W = 12 týdnů (84 dní), M = 12 měsíců (365 dní), Y = 10 let (3650 dnů) We
 
 Pokud upravíte výše uvedenou zásadu a W = 0 (žádné týdenní zálohy), tempo sadu záložní kopie se změní zobrazené v tabulce výše zvýrazněná data. Velikost úložiště potřebných k zajištění tyto zálohy by došlo ke snížení odpovídajícím způsobem. 
 
-> [!NOTE]
-> Služba Azure SQL Database je řízen časování jednotlivých záloh zleva doprava. Nelze ručně vytvořit zálohu zleva doprava nebo ovlivnit načasování vytvoření zálohy.
+> [!IMPORTANT]
+> Služba Azure SQL Database je řízen časování jednotlivých záloh zleva doprava. Nelze ručně vytvořit zálohu zleva doprava nebo ovlivnit načasování vytvoření zálohy. Po konfiguraci zásady LTR, může trvat až 7 dní před první zálohování LTR se zobrazí v seznamu dostupných záloh.  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Geografická replikace a dlouhodobé uchovávání záloh

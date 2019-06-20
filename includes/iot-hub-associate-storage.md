@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: 8693c48905155ed757bb727e42f4180f36c015f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146398"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175110"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Přidružení účtu služby Azure Storage do služby IoT Hub
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1583ccf04b68f81a71bd2f63779680427ce3362
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 3482b33f4198bf138a9475d4fdb4e3ba4b171445
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068785"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165277"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption pro virtuální počítače IaaS – nejčastější dotazy
 
@@ -55,6 +55,7 @@ Server distribucí systému Linux, které nejsou schválené pro Azure nepodporu
 | RHEL | 7.2 | Disk s operačním systémem a daty (viz poznámka níže) |
 | RHEL | 6.8 | Datový disk (viz poznámka níže) |
 | RHEL | 6.7 | Datový disk (viz poznámka níže) |
+| CentOS | 7.6 | Disk operačního systému a dat |
 | CentOS | 7.5 | Disk operačního systému a dat |
 | CentOS | 7.4 | Disk operačního systému a dat |
 | CentOS | 7.3 | Disk operačního systému a dat |

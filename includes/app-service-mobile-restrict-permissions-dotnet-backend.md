@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66139852"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175500"
 ---
 Ve výchozím nastavení může anonymně volat rozhraní API v back-end Mobile Apps. Dále je třeba omezit přístup jenom ověřené klienty.  
 

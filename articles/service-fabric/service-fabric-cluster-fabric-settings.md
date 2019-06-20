@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: fed991193e8d4a1f8e4e2fcf75ef8e2bf0d0a8d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a309b30fc9438ded280109691afd3bde0883dc3c
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074296"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144397"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -150,7 +150,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |PartitionPrefix|řetězec, výchozí hodnota je "--"|Statická|Určuje předponu řetězce oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md).|
 |PartitionSuffix|řetězec, výchozí hodnota je ""|Statická|Určuje řetězcovou hodnotu přípony oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md). |
 
-## <a name="eventstore"></a>Eventstoru
+## <a name="eventstoreservice"></a>EventStoreService
 
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |

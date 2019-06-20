@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 653c175a559f5c0b7dc551b396e91276332df20a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "67120541"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175651"
 ---
 Vaše zařízení je přidružené k účtu úložiště, který se používá jako cíl pro vaše data v Azure. Přístup k účtu úložiště řídí předplatné a úložiště dva 512bitové přístupové klíče přidružené k tomuto účtu úložiště.
 

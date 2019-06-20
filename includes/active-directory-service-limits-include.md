@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 067280cdad85f59106bce5ff214e2fa9eddf3b71
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: HT
+ms.openlocfilehash: e6e1014ac20ef70f21344ec6ece5627eccb7ba66
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133358"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67148407"
 ---
 Tady jsou omezení využití a další omezení služby Azure Active Directory (Azure AD).
 
@@ -29,4 +29,4 @@ Tady jsou omezení využití a další omezení služby Azure Active Directory (
 | Přístupový panel |<ul><li>Počet aplikací, které se zobrazí na přístupovém panelu pro jednoho uživatele, není nijak omezený. To platí pro uživatele s přiřazenými licencemi pro Azure AD Premium nebo Enterprise Mobility Suite.</li><li>Jednotliví uživatelé mohou na přístupovém panelu zobrazit maximálně 10 dlaždic aplikací. Tento limit platí pro uživatele s přiřazenými licencemi pro edice Free nebo Azure AD Basic služby Azure Active Directory. Příklady dlaždic aplikací zahrnují Box, Salesforce nebo Dropbox. Toto omezení se nevztahuje na účty správců.</li></ul> |
 | Sestavy | V jednotlivých sestavách je možné zobrazit nebo stáhnout maximálně 1 000 řádků. Veškerá další data se oříznou. |
 | Jednotky pro správu | Objekt může být členem maximálně 30 jednotek pro správu. |
-| Oprávnění a role správce | <ul><li>Skupinu nelze přidat jako [vlastníka](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Nelze přiřadit skupinu [role](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Uživatelé budou moci číst informace adresáře jiných uživatelů není možné omezit mimo přepínač celého tenanta můžete zakázat přístup všichni uživatelé bez oprávnění správce na všech informací adresáře (nedoporučuje se). Další informace o výchozích oprávnění [tady](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Může trvat až 15 minut nebo podepisování out/přihlášení před správce přidání členství role a zrušení projeví.</li></ul> |
+| Oprávnění a role správce | <ul><li>Skupinu nelze přidat jako [vlastníka](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Nelze přiřadit skupinu [role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Uživatelé budou moci číst informace adresáře jiných uživatelů není možné omezit mimo přepínač celého tenanta můžete zakázat přístup všichni uživatelé bez oprávnění správce na všech informací adresáře (nedoporučuje se). Další informace o výchozích oprávnění [tady](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Může trvat až 15 minut nebo podepisování out/přihlášení před správce přidání členství role a zrušení projeví.</li></ul> |

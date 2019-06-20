@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: 776f79d7f32cf23943ecab4133e055993d30c7cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04b1d0eda85972517155f80488ad590fb56619ab
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075066"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190686"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -53,7 +53,7 @@ Konkrétní informace o cenách najdete v části [cenami Azure Logic Apps](http
 
 ## <a name="connectors"></a>Konektory
 
-Konektorů Azure Logic Apps pomůže tím, že poskytuje přístup k aplikacím logiky aplikace, služby a systémy v cloudu nebo lokálně [triggery](#triggers), [akce](#actions), nebo obojí. Konektory jsou klasifikovány jako Standard nebo Enterprise. Přehled o tyto konektory, naleznete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). Následující části obsahují další informace o jak fakturace se aktivuje a akce fungují.
+Konektorů Azure Logic Apps pomůže tím, že poskytuje přístup k aplikacím logiky aplikace, služby a systémy v cloudu nebo lokálně [triggery](#triggers), [akce](#actions), nebo obojí. Konektory jsou klasifikovány jako Standard nebo Enterprise. Přehled o tyto konektory, naleznete v tématu [konektory pro Azure Logic Apps](../connectors/apis-list.md). Pokud žádné předem připravené konektory nejsou k dispozici pro rozhraní REST API, kterou chcete použít ve svých aplikacích logiky, můžete vytvořit [vlastních konektorů](https://docs.microsoft.com/connectors/custom-connectors), které jsou pouze obálky kolem ty rozhraní REST API. Vlastní konektory se účtují jako konektory úrovně Standard. Následující části obsahují další informace o jak fakturace se aktivuje a akce fungují.
 
 <a name="triggers"></a>
 

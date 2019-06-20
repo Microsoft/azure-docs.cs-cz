@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/06/2019
-ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 11b3e7724f34a7929d9851dbc8034829f020868b
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522858"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190717"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Povolit transparentní a koordinovaný převzetí služeb při selhání několika databází pomocí skupiny automatické převzetí služeb při selhání
 
@@ -42,7 +42,10 @@ Pro dosažení skutečné obchodní kontinuity podnikových procesů, je přidá
 
 - **Skupiny převzetí služeb při selhání (MLHOVÉ)**
 
-  Skupina převzetí služeb při selhání je skupina databází spravovaných jediný server SQL Database nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti. Při vytvoření spravované instance skupiny převzetí služeb při selhání obsahuje všechny uživatele databáze v instanci a proto lze konfigurovat pouze jednu skupinu převzetí služeb při selhání pro instanci.
+  Skupina převzetí služeb při selhání je pojmenovaná skupina databází spravovaných jediný server SQL Database nebo v rámci jednoho managed instance, můžete převzetí služeb při selhání jako jednotku do jiné oblasti pro případ, že některá nebo všechna primární databáze nedostupné kvůli výpadku v primární oblasti. Při vytvoření spravované instance skupiny převzetí služeb při selhání obsahuje všechny uživatele databáze v instanci a proto lze konfigurovat pouze jednu skupinu převzetí služeb při selhání pro instanci.
+  
+  > [!IMPORTANT]
+  > Název skupiny převzetí služeb při selhání musí být globálně jedinečný v rámci `.database.windows.net` domény.
 
 - **Servery SQL Database**
 

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822753"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273696"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure
-Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V důsledku toho Služba Event Hubs využití často zvětšuje po začali používat službu. Použití je potřeba zvýšit předem [jednotek propustnosti](event-hubs-features.md#throughput-units) zpracovat větší množství přenesených dat a škálovat služby Event Hubs. **Automatické rozšiřování** funkce Event Hubs se automaticky zvětší zvýšením počtu jednotek propustnosti, které bude vyhovovat požadavkům využití. Zvýšení jednotek propustnosti brání omezení scénáře, ve kterém:
+Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V důsledku toho Služba Event Hubs využití často zvětšuje po začali používat službu. Použití je potřeba zvýšit předem [jednotek propustnosti](event-hubs-scalability.md#throughput-units) zpracovat větší množství přenesených dat a škálovat služby Event Hubs. **Automatické rozšiřování** funkce Event Hubs se automaticky zvětší zvýšením počtu jednotek propustnosti, které bude vyhovovat požadavkům využití. Zvýšení jednotek propustnosti brání omezení scénáře, ve kterém:
 
 * Sazby za příchozí přenos dat překročí sady jednotek propustnosti.
 * Žádost o přenosy dat překročí sady jednotek propustnosti.
@@ -32,7 +32,7 @@ Služba Event Hubs se zvyšuje propustnost při zvýšení zátěže ze strany n
 
 ## <a name="how-auto-inflate-works"></a>Jak funguje automatické rozšiřování
 
-Event Hubs provoz se řídí [jednotek propustnosti](event-hubs-features.md#throughput-units). Za druhé příchozího přenosu dat a dvakrát šířka odchozích přenosů dat umožňuje jedna jednotka propustnosti 1 MB. Centra událostí úrovně Standard může mít nakonfigurovanou 1 až 20 jednotek propustnosti. Automatické rozšiřování umožňuje začít v malém s jednotkami minimální požadované propustnosti, které zvolíte. Funkce pak automaticky škáluje do maximálního počtu jednotek propustnosti, které potřebujete, v závislosti na nárůst objemu provozu. Automatické rozšiřování poskytuje následující výhody:
+Event Hubs provoz se řídí [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Za druhé příchozího přenosu dat a dvakrát šířka odchozích přenosů dat umožňuje jedna jednotka propustnosti 1 MB. Centra událostí úrovně Standard může mít nakonfigurovanou 1 až 20 jednotek propustnosti. Automatické rozšiřování umožňuje začít v malém s jednotkami minimální požadované propustnosti, které zvolíte. Funkce pak automaticky škáluje do maximálního počtu jednotek propustnosti, které potřebujete, v závislosti na nárůst objemu provozu. Automatické rozšiřování poskytuje následující výhody:
 
 - Efektivní škálování mechanismus začít v malém a vertikálně navyšujte kapacitu podle bude vaše firma růst.
 - Automatické škálování na zadané horní mez bez omezení problémy.

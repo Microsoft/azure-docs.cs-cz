@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tyfox
-ms.openlocfilehash: 7c12831c43762ddc776e8d5701f002be97992cbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859963"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137404"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -85,7 +85,7 @@ az group delete --name RESOURCE_GROUP_NAME
 Použití [změnit velikost az hdinsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) ke změně velikosti zadaný cluster HDInsight zadané velikosti. Upravte následující příkaz tak, že nahradíte `RESOURCE_GROUP_NAME`, a `CLUSTER_NAME` příslušné informace. Nahraďte `TARGET_INSTANCE_COUNT` s požadovaný počet uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [clusterů HDInsight škálování](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
 
 ```azurecli-interactive
-az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
+az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
 ```
 
 ## <a name="next-steps"></a>Další postup

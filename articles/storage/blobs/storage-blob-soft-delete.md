@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1c6f8074dab19b18f695763b160e4aeffe3ac44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148619"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204839"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Obnovitelné odstranění pro objekty BLOB služby Azure Storage
 Azure Storage teď nabízí obnovitelného odstranění pro objekty blob, takže můžete snadno obnovit data, když je chybně změněného nebo odstraněného aplikaci nebo jiný uživatel účet úložiště.
@@ -274,13 +274,10 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>Použít obnovitelné odstranění?
-Může se stát, že vaše data náhodně změněného nebo odstraněného aplikaci nebo jiný uživatelský účet úložiště, doporučujeme zapnout obnovitelné odstranění. Obnovitelné odstranění je jednou ze součástí strategie ochrany dat a pomáhá zabránit nechtěnému úniku.
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Existují žádná zvláštní opatření pro použití obnovitelného odstranění?
+Může se stát, že vaše data náhodně změněného nebo odstraněného aplikaci nebo jiný uživatelský účet úložiště, doporučujeme zapnout obnovitelné odstranění. Povolení obnovitelného odstranění pro často přepsána dat může vést k poplatky za větší úložiště kapacity a zvýší latence při výpisu objektů BLOB. Tento problém můžete zmírnit uložením často přepsaná data v samostatný účet úložiště se obnovitelného odstranění zakázáno. 
 
 ## <a name="faq"></a>Nejčastější dotazy
-**Existují žádná zvláštní opatření pro použití obnovitelného odstranění?**  
-Povolení obnovitelného odstranění pro často přepsána dat může vést k poplatky za větší úložiště kapacity a zvýší latence při výpisu objektů BLOB. Tento problém můžete zmírnit uložením často přepsaná data v samostatný účet úložiště se obnovitelného odstranění zakázáno. 
-
 **Jaké typy úložiště je možné použít obnovitelné odstranění?**  
 V současné době obnovitelné odstranění je k dispozici pouze pro úložiště objektů blob (objekt).
 

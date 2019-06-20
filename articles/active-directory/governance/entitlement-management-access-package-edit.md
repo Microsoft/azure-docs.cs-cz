@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833332"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190338"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Úprava a správa přístupu balíček ve správě služby Azure AD oprávnění (Preview)
 
@@ -348,4 +348,5 @@ Ve správě oprávnění Azure AD zpracuje hromadných změn pro přiřazení a 
 
 ## <a name="next-steps"></a>Další postup
 
+- [Přidat katalog vlastník nebo správce přístupu k balíčku](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Požádat o procesu a e-mailových oznámení](entitlement-management-process.md)

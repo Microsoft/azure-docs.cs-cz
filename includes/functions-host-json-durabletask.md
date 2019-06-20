@@ -10,11 +10,11 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d79d1bd5ec244ad4399a02c349e2504516d06ccd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131695"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175576"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -58,8 +58,8 @@ Centrum názvy úloh musí začínat písmenem a obsahovat jenom písmena a čí
 |azureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, které obsahuje připojovací řetězec služby Azure Storage používá ke správě základní prostředky služby Azure Storage.|
 |trackingStoreConnectionStringName||Název připojovacího řetězce pro tabulky historie a instancí. Pokud není zadán, `azureStorageConnectionStringName` slouží k připojení.|
 |trackingStoreNamePrefix||Předpona, kterou chcete použít pro historie a instance tabulky, kdy `trackingStoreConnectionStringName` je zadán. Pokud není nastavený, výchozí hodnota předpona bude `DurableTask`. Pokud `trackingStoreConnectionStringName` není zadán, pak bude používat tabulky historie a instance `hubName` hodnotu jako jejich Předpona a všechna nastavení pro `trackingStoreNamePrefix` budou ignorovány.|
-|traceInputsAndOutputs |false (nepravda)|Hodnota označující, zda se pro sledování vstupů a výstupů volání funkce. Výchozí chování při trasování událostí spuštění funkce se zahrnou počet bajtů v serializovaném vstupy a výstupy pro volání funkce. Toto chování poskytuje minimální informace o vstupy a výstupy vypadat bez nadměrnému nárůstu velikosti protokolů nebo neúmyslně odhalují citlivé informace. Nastavení této vlastnosti na hodnotu true způsobí, že je výchozí funkce protokolování do protokolu celý obsah vstupy a výstupy funkcí.|
-|LogReplayEvents|false (nepravda)|Hodnota určující, jestli se má zapsat události opakování Orchestrace do Application Insights.|
+|traceInputsAndOutputs |false|Hodnota označující, zda se pro sledování vstupů a výstupů volání funkce. Výchozí chování při trasování událostí spuštění funkce se zahrnou počet bajtů v serializovaném vstupy a výstupy pro volání funkce. Toto chování poskytuje minimální informace o vstupy a výstupy vypadat bez nadměrnému nárůstu velikosti protokolů nebo neúmyslně odhalují citlivé informace. Nastavení této vlastnosti na hodnotu true způsobí, že je výchozí funkce protokolování do protokolu celý obsah vstupy a výstupy funkcí.|
+|LogReplayEvents|false|Hodnota určující, jestli se má zapsat události opakování Orchestrace do Application Insights.|
 |eventGridTopicEndpoint ||Adresa URL koncového bodu služby Azure Event Grid vlastního tématu. Pokud je tato vlastnost nastavena, Orchestrace životního cyklu oznámení události se publikují do tohoto koncového bodu. Tato vlastnost podporuje překlad nastavení aplikace.|
 |eventGridKeySettingName ||Název nastavení aplikace, který obsahuje klíč používaný k ověřování pomocí Azure Event Grid vlastního tématu v `EventGridTopicEndpoint`.|
 |eventGridPublishRetryCount|0|Počet pokusů o zopakování Pokud publikování do tématu Event gridu se nezdaří.|

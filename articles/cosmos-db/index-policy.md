@@ -4,20 +4,23 @@ description: Zjistěte, jak konfigurovat a měnit výchozí zásady pro automati
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 4206fba8297672a1a24415169cfd19ff89344038
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431181"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163731"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
 Každý kontejner ve službě Azure Cosmos DB, má zásady indexování, který určuje, jak položky kontejneru se má indexovat. Výchozí zásady pro indexování nově vytvořeny kontejnery indexy každou vlastnost každé položce, vynucování rozsah indexů pro libovolný řetězec nebo číslo, a zadejte prostorové indexy pro libovolný objekt GeoJSON bodu. To umožňuje získat vysokého výkonu dotazu bez nutnosti uvažovat o indexování a správou indexů předem.
 
 V některých případech můžete chtít přepsat toto automatické chování, aby lépe vyhovovala vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit tak, že nastavíte její *indexování režimu*a zahrnout nebo vyloučit *cesty vlastností*.
+
+> [!NOTE]
+> Metoda aktualizace indexování zásad popsané v tomto článku se vztahuje pouze na služby Azure Cosmos DB SQL (Core) rozhraní API.
 
 ## <a name="indexing-mode"></a>Indexování režimu
 

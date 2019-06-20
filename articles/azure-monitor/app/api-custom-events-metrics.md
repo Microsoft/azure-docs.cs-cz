@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478416"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154772"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric je zastaralé v sadě .NET SDK. Metriky musí být vždy předem agregovat napříč časové období před odesláním. Pomocí jednoho z přetížení GetMetric(..) jak získat objekt metriky pro přístup k možnosti předběžnou agregací SDK. Při implementaci vlastní logiky předběžnou agregací, můžete odeslat výsledný agregace – metoda (ITelemetry metricTelemetry) sledování. Pokud vaše aplikace vyžaduje odeslání telemetrie samostatné položky ve všech případech mohou oprávnění bez agregace v čase, pravděpodobně máte případ použití pro telemetrii událostí; Zobrazit TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric není upřednostňovanou metodou pro odesílání metriky. Metriky musí být vždy předem agregovat napříč časové období před odesláním. Pomocí jednoho z přetížení GetMetric(..) jak získat objekt metriky pro přístup k možnosti předběžnou agregací SDK. Při implementaci vlastní logiky předběžnou agregací, můžete použít metodu metody TrackMetric() odesílat výsledný agregace. Pokud vaše aplikace vyžaduje odeslání telemetrie samostatné položky ve všech případech mohou oprávnění bez agregace v čase, pravděpodobně máte případ použití pro telemetrii událostí; Zobrazit TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry).
 
 Application Insights můžete graf metrik, které nejsou přiřazené k určité události. Například může monitorovat délka fronty v pravidelných intervalech. S metrikami jednotlivými měřeními jsou méně zajímavé než odchylky a trendy a proto statistické grafy.
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 85abc4a50710629d3485d05115698e59a93fc96e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cff5fdac39be2338305cd37a4b2328a28a48255
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995612"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269261"
 ---
 # <a name="limits-and-quotas"></a>Omezení a kvóty
 
@@ -39,3 +39,5 @@ Počet trénovacích obrázků na projekt a značky pro každý projekt se oček
 |[Další volání rozhraní API](https://go.microsoft.com/fwlink/?linkid=865446) (transakcí za sekundu)|10|10|
 |Maximální velikost obrázku (školení pro nahrání image) |6 MB|6 MB|
 |Maximální velikost obrázku (předpověď)|4 MB|4 MB|
+|Maximální počet oblastí na image školení zjištění objektu|200|200|
+|Maximální počet značek na klasifikace obrázků|30|30|

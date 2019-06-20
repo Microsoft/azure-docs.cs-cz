@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0f19e3ea4f5952ac96b589fa267a2136c85e4f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abf48f3edc090550647b6865e96afeabe3727cf5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711648"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190533"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
@@ -69,10 +69,13 @@ Tyto metriky pro Azure File Sync jsou k dispozici ve službě Azure Monitor:
 | Název metriky | Popis |
 |-|-|
 | Bajty synchronizované | Množství přenesených dat (nahrávání a stahování).<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Odvolání vrstvení cloudu | Velikost dat odvolána.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název serveru |
+| Odvolání vrstvení cloudu | Velikost dat odvolána.<br><br>Poznámka: Tato metrika se v budoucnu odeberou. Ke sledování velikosti dat připomenout, použijte velikost metriku vrstvení spojené s vracením cloudu.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název serveru |
+| Cloud vrstvení spojené s vracením velikost | Velikost dat odvolána.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
+| Cloud vrstvení spojené s vracením velikost aplikace | Velikost dat připomenout aplikací.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název název aplikace, název serveru, synchronizace skupiny |
+| Propustnost spojené s vracením vrstvení cloudu | Velikost dat spojené s vracením propustnosti.<br><br>Jednotka: B<br>Typ agregace: Součet<br>Příslušné dimenze: Název názvem serveru, skupiny synchronizace |
 | Soubory nesynchronizuje | Počet souborů, které se nedaří synchronizovat.<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
 | Synchronizovat soubory | Počet souborů přenesených (nahrávání a stahování).<br><br>Jednotka: Count<br>Typ agregace: Součet<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
-| Online stav serveru | Počet prezenčních signálů přijatou ze serveru.<br><br>Jednotka: Počet<br>Typ agregace: Maximum<br>Příslušné dimenze: Název serveru |
+| Online stav serveru | Počet prezenčních signálů přijatou ze serveru.<br><br>Jednotka: Count<br>Typ agregace: Maximum<br>Příslušné dimenze: Název serveru |
 | Výsledek relace synchronizace | Synchronizovat výsledek relace (1 = úspěšná synchronizace relace; 0 = selhání synchronizace relace)<br><br>Jednotka: Počet<br>Typ agregace: Maximum<br>Příslušné dimenze: Server koncového bodu název, směr, synchronizace název skupiny synchronizace |
 
 ## <a name="windows-server"></a>Windows Server

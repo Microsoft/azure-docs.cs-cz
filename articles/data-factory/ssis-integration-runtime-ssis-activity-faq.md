@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: f17c364d258ef356a98180c9903603d92a6a9245
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7789970b47f0e55adee5bbe9da9f303aee6cdb25
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078518"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190119"
 ---
 # <a name="troubleshooting-package-execution-in-ssis-integration-runtime"></a>Řešení potíží s spouštění balíčku v prostředí SSIS integration runtime
 
@@ -103,6 +103,13 @@ Tento článek obsahuje většinu běžných chyb, které pravděpodobně dojde 
 ### <a name="error-message-your-integration-runtime-cannot-be-upgraded-and-will-eventually-stop-working-since-we-cannot-access-the-azure-blob-container-you-provided-for-custom-setup"></a>Chybová zpráva: "Vašeho prostředí integration runtime nelze upgradovat a nakonec kód přestane fungovat, protože nemůže přistupovat k kontejneru objektů Blob v Azure, které jste zadali pro vlastní nastavení."
 
 * Tato chyba nastane, pokud prostředí SSIS Integration Runtime nelze získat přístup k úložišti nakonfigurovaný pro vlastní nastavení. Zkontrolujte, zda je zadaný identifikátor Uri SAS je platný a že nevypršela platnost.
+
+### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Chybová zpráva: "Zprostředkovatel Microsoft OLE DB pro Analysis Services. ' Hresult: 0x80004005 Popis: " Chyba COM: Chyba COM: mscorlib; Došlo k výjimce způsobené cílem vyvolání"
+
+* Možná příčina a doporučená akce:
+  * Jednou možnou příčinou je tohoto uživatelského jména a hesla pomocí MFA povoleno je nakonfigurován pro ověřování služby Azure Analysis Services, které se zatím nepodporuje v prostředí SSIS integration runtime. Zkuste použít instanční objekt služby pro ověřování pomocí služby Azure Analysis Service:
+    1. Příprava AAS instančního objektu [https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal)
+    2. Správce připojení, nakonfigurujte "Pomocí konkrétní uživatelské jméno a heslo": "AppID" nastavit jako uživatelské jméno a "clientSecret" jako heslo
 
 ### <a name="package-takes-unexpected-long-time-to-execute"></a>Balíček má neočekávaný dlouhý čas ke spuštění
 

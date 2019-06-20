@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: d4d2f24a0a7b1f01627ed2cea4a5732ca0e001c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2dc5fab0966c2ead0276cd8b23ea764bd4f9ef59
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068446"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190483"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 
@@ -32,7 +32,7 @@ Aplikace function app je jednotka nasazení pro službu Azure functions. To znam
 
 ## <a name="requirements-for-continuous-deployment"></a>Požadavky pro průběžné nasazování
 
-Pro průběžné nasazování úspěšné, musí být kompatibilní strukturu následující strukturu základní složka, která očekává, že Azure Functions:
+Pro průběžné nasazování úspěšné musí být kompatibilní s následující strukturou základní složka, která očekává, že Azure Functions adresářovou strukturu:
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
@@ -44,13 +44,15 @@ Pomocí tohoto postupu konfigurace průběžného nasazování pro existující 
 
     ![Otevírá Centrum pro nasazení](./media/functions-continuous-deployment/platform-features.png)
 
-2. Na **Deployment Center**vyberte **Githubu** pro **správy zdrojových kódů** > **Authorize**.
+2. V **Deployment Center**vyberte **Githubu**a pak vyberte **Authorize**. Nebo, pokud jste už oprávnění GitHub, vyberte **pokračovat**. 
 
     ![Nasazení System center](./media/functions-continuous-deployment/github.png)
 
-3. Vyberte **autorizovat AzureAppService** > **pokračovat**.
+3. V Githubu, vyberte **autorizovat AzureAppService**. 
 
     ![Autorizace](./media/functions-continuous-deployment/authorize.png)
+    
+    Na webu Azure Portal **Deployment Center**vyberte **pokračovat**.
 
 4. Vyberte jednu z následujících zprostředkovatelů sestavení:
 

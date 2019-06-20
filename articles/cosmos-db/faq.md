@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.openlocfilehash: 47b1d9720a23c1dbfdee8c2e4cba95ff998a4cc0
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954145"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137745"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -744,11 +744,11 @@ Ano, pomocí syntaxe regulárních k vytvoření oddílu složený klíč.
 
 ### <a name="can-i-use-stable-loader-for-data-loading"></a>Můžete použít stabilní zaváděcího programu pro načítání dat?
 
-Ne, ve verzi preview nepodporuje stabilní zavaděče.
+Ne, stabilní zavaděč nepodporuje.
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Cluster Apache Cassandra v místním se dají párovat s rozhraním Cassandra API služby Azure Cosmos DB?
 
-V této službě Azure Cosmos DB má optimalizované prostředí pro prostředí cloud bez režijní náklady na operace. Pokud požadujete párování, odeslat e-mail na adresu [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) s popisem vaší situaci.
+V této službě Azure Cosmos DB má optimalizované prostředí pro prostředí cloud bez režijní náklady na operace. Pokud požadujete párování, odeslat e-mail na adresu [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) s popisem vaší situaci. Pracujeme na nabídky na spárování nápovědy na – místních nebo jiné cloudové Cassandra clusteru Cosomos DB Cassandra API.
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Rozhraní Cassandra API poskytuje úplné zálohy?
 
@@ -763,15 +763,12 @@ Můžete přidat jakýkoli počet oblastí pro účet a řídit, kdy se převzí
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Rozhraní Apache Cassandra API všechny atributy indexu entity ve výchozím nastavení?
 
-Ano, všechny atributy entity jsou indexovány ve výchozím nastavení služba Azure Cosmos DB. Další informace najdete v tématu [služby Azure Cosmos DB: Zásady indexování](index-policy.md). Získejte výhody zaručený výkon s konzistentní indexování a trvalý kvora potvrzené zapíše vždycky.
+Rozhraní Cassandra API je plánování pro podporu sekundárního indexování, které vám pomohou zajistit selektivním indexem na určité atributy. 
 
-### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Dělá to znamená, které nemusíte vytvářet více než jeden index splňovat dotazy?
-
-Ano, Azure Cosmos DB nabízí, automatické indexování všechny atributy bez jakékoli definice schématu. Tato automatizace uvolní vývojářům zaměřit na aplikace a nikoli na vytvoření indexu a správu. Další informace najdete v tématu [služby Azure Cosmos DB: Zásady indexování](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Můžu používat sadu SDK Cassandra API místně v emulátoru?
 
-Plánujeme v budoucnu podporu této možnosti.
+Ano toto je podporováno.
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>Azure Cosmos DB jako platformu zdá se, že máte spoustu možností, jako je například kanálu změn a další funkce. Tyto možnosti přidáme k rozhraní Cassandra API?
 

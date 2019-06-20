@@ -9,11 +9,11 @@ ms.date: 10/19/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ed7bfca6095dbb03042efd14456f34556f74a843
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115659"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175229"
 ---
 Můžete se účtuje na základě vašeho využití účtu úložiště Azure Storage. Všechny objekty v rámci účtu úložiště se fakturují společně jako skupina. 
 

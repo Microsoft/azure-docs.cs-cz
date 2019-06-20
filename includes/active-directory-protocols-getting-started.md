@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/22/2019
 ms.author: priyamo
 ms.openlocfilehash: b6dd4cd55755ae2c92afd327ad72ffe6966b9a07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: HT
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121518"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175180"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Registrace aplikace pomocí tenanta AD
 Nejprve budete muset zaregistrovat aplikaci v tenantu Azure Active Directory (Azure AD). Pro svou aplikaci tak získáte ID a umožníte jí přijímat tokeny.

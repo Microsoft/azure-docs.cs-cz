@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793629"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165977"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jak v Azure Search implementovat fasetovou navigaci
 Fasetová navigace je filtrační mechanismus, který poskytuje samořízeného k podrobnostem námětů a navigace ve vyhledávání aplikací. Termín 'Fasetové navigace' může být obeznámeni, ale pravděpodobně ho před jste použili. Jak ukazuje následující příklad, Fasetové navigace není nic jiného než kategorie slouží k filtrování výsledků.
@@ -401,5 +401,5 @@ Sledování [podrobné informace o Azure Search](https://channel9.msdn.com/Event
 Další přehledy o Principy návrhu pro fasetovou navigaci doporučujeme na následujících odkazech:
 
 * [Vzory návrhu: Fasetová navigace](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [Front-endu aspekty při implementaci Fasetové vyhledávání – část 1 ](https://articles.uie.com/faceted_search2/)
+* [Front-endu aspekty při implementaci Fasetové vyhledávání – část 1](https://articles.uie.com/faceted_search2/)
 

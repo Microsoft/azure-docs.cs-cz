@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66140267"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175514"
 ---
 1. Vytvořte novou třídu v projektu volá `ToDoBroadcastReceiver`.
 2. Přidejte následující příkazy using do **ToDoBroadcastReceiver** třídy:
