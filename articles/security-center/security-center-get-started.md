@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4464796e655cefd28f858cb732ff3d5721a7aa47
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60908260"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206816"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rychlý start: Připojení předplatného Azure na Security Center úrovně Standard
 Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Security Center úrovně Standard můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
@@ -74,10 +74,10 @@ Pokud je povoleno automatické zřizování, Security Center nainstaluje agenta 
 Povolení automatického zřizování agenta Microsoft Monitoring Agent:
 
 1. V hlavní nabídce služby Security Center vyberte **Zásady zabezpečení**.
-2. Na řádku předplatného vyberte **Upravit nastavení>**.
+2. Na řádku předplatného vyberte **Upravit nastavení>** .
 3. Na kartě **Shromažďování dat** nastavte **Automatické zřizování** na **Zapnuto**.
 4. Vyberte **Uložit**.
-****
+---
   ![Povolení automatického zřizování][6]
 
 Díky tomuto novému přehledu o vašich virtuálních počítačích Azure může Security Center poskytovat další doporučení související se stavem aktualizace systému, konfiguracemi zabezpečení operačního systému, ochranou koncových bodů a může také generovat další výstrahy zabezpečení.
@@ -88,14 +88,14 @@ Díky tomuto novému přehledu o vašich virtuálních počítačích Azure mů�
 Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého startu. Pokud budete chtít pokračovat v práci s následnými kurzy a rychlými starty, ponechte v provozu úroveň Standard a nechte zapnuté automatické zřizování. Pokud neplánujete pokračovat nebo se chcete vrátit na úroveň Free:
 
 1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
-2. Na řádku předplatného, které chcete vrátit do bezplatné cenové úrovně, vyberte **Upravit nastavení>**.
+2. Na řádku předplatného, které chcete vrátit do bezplatné cenové úrovně, vyberte **Upravit nastavení>** .
 3. Vyberte položku **Cenová úroveň** a pak vyberte **Bezplatné**. Standardní úroveň předplatného se změní na bezplatnou.
 5. Vyberte **Uložit**.
 
 Pokud chcete vypnout automatické zřizování:
 
 1. Vraťte se do hlavní nabídky služby Security Center a vyberte **Zásady zabezpečení**.
-2. Na řádku předplatného, u kterého chcete zakázat automatické zřizování, vyberte **Upravit nastavení>**.
+2. Na řádku předplatného, u kterého chcete zakázat automatické zřizování, vyberte **Upravit nastavení>** .
 3. Na kartě **Shromažďování dat** nastavte **Automatické zřizování** na **Vypnuto**.
 4. Vyberte **Uložit**.
 

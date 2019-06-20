@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7a9eedfe851bb8b5519d0831f47cf6787345a1f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80dcdd666c1067f2fc9415a663f26b82d1335d5f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60233377"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "67135266"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Rychlý start: Vytvoření aplikace HoloLens s Azure prostorových ukotvení v C++/WinRT a DirectX
 
@@ -32,7 +32,7 @@ Dozvíte se, jak provést tyto akce:
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Počítače s Windows s <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> součástí **vývoj pro univerzální platformu Windows** pracovního vytížení a **Windows 10 SDK (10.0.17763.0 nebo novější)** komponenty, a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
+- Počítače s Windows s <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> nainstalované s **vývoj pro univerzální platformu Windows** pracovního vytížení a **Windows 10 SDK (10.0.17763.0 nebo novější)** komponenty, a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a>.
 - [ C++WinRT rozšíření aplikace Visual Studio (VSIX)](https://aka.ms/cppwinrt/vsix) pro Visual Studio musí nainstalovat z [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 - Zařízení HoloLens s [vývojářský režim](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) povolena. Tento článek vyžaduje zařízení HoloLens se [Windows 10. října 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (označované také jako RS5). Chcete-li aktualizovat na nejnovější verzi na HoloLens, otevřete **nastavení** aplikaci, přejděte na **aktualizace a zabezpečení**, vyberte **vyhledat aktualizace** tlačítko.
 - Aplikaci musíte nastavit **spatialPerception** schopností ve svém manifestu AppX.

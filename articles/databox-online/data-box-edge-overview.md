@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 06/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e1870093dc89856e093267172418e9c7330c479
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438e25a72361866acd449024b6e7e8c06ed6c9c7
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080565"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144229"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Co je Azure Data Box Edge? 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge je zařízení s hraničními výpočetními funkcemi s podp
     - Vytvoření podmnožin dat potřebných pro podrobnější analýzu v cloudu a jejich přenos
     - Analýza a reakce na události IoT 
 
-- **Odvození Azure Machine Learning** – pomocí Data Box Edge můžete spouštět modely Machine Learning (ML), abyste rychle získali výsledky, u kterých můžete provést akce dříve, než se data odešlou do cloudu. Kompletní data lze přenést dál přeučování a vylepšit své modely ML. Další informace o tom, jak používat Azure ML hardware akcelerované modely na Databox hraniční zařízení, najdete v části [nasazení Azure ML hardware accelerated modely na hraničních zařízeních Databox](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Odvození Azure Machine Learning** – pomocí Data Box Edge můžete spouštět modely Machine Learning (ML), abyste rychle získali výsledky, u kterých můžete provést akce dříve, než se data odešlou do cloudu. Kompletní data lze přenést dál přeučování a vylepšit své modely ML. Další informace o tom, jak používat Azure ML hardware akcelerované modely na Databox hraniční zařízení, najdete v části [nasazení Azure ML hardware accelerated modely na hraničních zařízeních Databox](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Přenos dat do Azure přes síť** – Data Box Edge umožňuje snadno a rychle přenášet data do Azure, aby bylo možné provádět další výpočetní operace a analýzy pro účely archivace. 
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7362bd5b4e15df516478ef4bef20d76fc46b326f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236240"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275366"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – streamovací platforma pro velký objem dat a služba ingestování událostí
 Azure Event Hubs je velké objemy dat, platformy a události služba pro ingestování datových proudů. Může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -23,7 +23,7 @@ Azure Event Hubs je velké objemy dat, platformy a události služba pro ingesto
 Některé scénáře, ve kterém můžete používat Event Hubs jsou následující scénáře:
 
 - Detekce anomálií (podvody/odlehlé hodnoty)
-- Protokolování aplikace
+- Protokolování aplikací
 - Analytické kanály, jako například navštívené stránky
 - Živé řídicí panely
 - Archivace dat
@@ -45,9 +45,9 @@ Event Hubs je plně spravovanou platformu as-a-Service (PaaS) s nízkou režií 
 
 ## <a name="support-for-real-time-and-batch-processing"></a>Podpora zpracování v reálném čase a dávkového zpracování
 
-Ingestování, ukládání do vyrovnávací paměti, dlouhodobé ukládání a zpracování streamu je možné v reálném čase, takže můžete využívat užitečné přehledy hned. Služba Event Hubs využívá [modelu oddělených příjemců je pravidlo](event-hubs-features.md#partitions), povolení současně více aplikací ke zpracování datového proudu a umožňuje řídit rychlost zpracování.
+Ingestování, ukládání do vyrovnávací paměti, dlouhodobé ukládání a zpracování streamu je možné v reálném čase, takže můžete využívat užitečné přehledy hned. Služba Event Hubs využívá [modelu oddělených příjemců je pravidlo](event-hubs-scalability.md#partitions), povolení současně více aplikací ke zpracování datového proudu a umožňuje řídit rychlost zpracování.
 
-[Zachycení](event-hubs-capture-overview.md) vašich dat v téměř reálném čase v [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) pro dlouhodobé uchovávání dat nebo mikrodávek. zpracování. Toto chování pro stejný datový proud, který používáte pro odvození analýzy v reálném čase můžete dosáhnout. Nastavení sběru dat události je rychlé. Neexistují žádné administrativní náklady, aby běžel, a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-features.md#throughput-units). Event Hubs vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
+[Zachycení](event-hubs-capture-overview.md) vašich dat v téměř reálném čase v [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) pro dlouhodobé uchovávání dat nebo mikrodávek. zpracování. Toto chování pro stejný datový proud, který používáte pro odvození analýzy v reálném čase můžete dosáhnout. Nastavení sběru dat události je rychlé. Neexistují žádné administrativní náklady, aby běžel, a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
 
 Azure Event Hubs se také dá integrovat s [Azure Functions](/azure/azure-functions/) jako architektura bez serveru.
 

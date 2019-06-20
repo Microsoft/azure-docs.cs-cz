@@ -49,6 +49,11 @@
         - name: Kroky pro nasazení
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
+    - name: UK OFFICIAL
+      items:
+        - name: Mapování kontrol
+          displayName: 'standards, uk official'
+          href: ./samples/ukofficial/control-mapping.md
 - name: Koncepty
   items:
     - name: Životní cyklus podrobného plánu

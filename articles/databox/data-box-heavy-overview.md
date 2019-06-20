@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991688"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271741"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Co je Azure Data Box Heavy? (Preview)
 
@@ -62,14 +62,14 @@ Data Box náročné zařízení má následující funkce v této verzi.
 
 | Specifikace                                          | Popis              |
 |---------------------------------------------------------|--------------------------|
-| Váha                                                  | ~ 500 lbs.                |
+| Hmotnost                                                  | ~ 500 lbs. <br>Zařízení na zamykání souborů Wheel pro přenos|
 | Dimenze                                              | Width: 26 palců Height: 28 palců délka: 48 palců |
 | Místo v racku                                              | Nemůže být skříňová|
-| Potřebné kabely                                         | 4 X založený 120 V/10 A napájecích kabelů (NEMA 5 – 15) zahrnuté <br> Podporuje až 240 V power a má C-13 power zásobníků <br> Použití síťové kabely, které jsou kompatibilní s [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
-|Napájení                                                    | 4 integrované power dodavatelského jednotky (PSUs) sdíleny napříč uzly zařízení|
+| Potřebné kabely                                         | 120 V založený 4 / 10 A napájení zahrnutá kabely (NEMA 5 – 15) <br> Podporuje až 240 V power a má C-13 power zásobníků <br> Použití síťové kabely, které jsou kompatibilní s [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
+| Napájení                                                    | 4 integrované power dodavatelského jednotky (PSUs) sdíleny napříč uzly zařízení <br> 1 200 watt typické power kreslení|
 | Kapacita úložiště                                        | ~ 1 PB nezpracovaná, 70 disků 14 TB <br> 770 TB využitelné kapacity|
-|Počet uzlů                                          | 2 uzly nezávislé na zařízení (500 TB) |
-| Síťová rozhraní za uzel                             | 4 síťových rozhraní na jeden uzel <br> MGMT DATA3 <ul><li> 2 × 1 GbE rozhraní </li><li> MGMT je pro správu, není konfigurovatelná uživatelem, použít pro počáteční instalaci </li><li> DATA3 je uživatelem konfigurovatelné data rozhraní, DHCP Dynamic Host Configuration Protocol () ve výchozím nastavení</li><li>1 GbE síťová rozhraní můžete také nakonfigurovat jako rozhraní 10 GbE</li></ul>Data1 DATA2 datová rozhraní <ul><li>2 x 40 10GbE rozhraní </li><li> DHCP pomocí výchozího nebo statické, uživatelská rozhraní konfigurovatelná data</li>|
+| Počet uzlů                                          | 2 uzly nezávislé na zařízení (500 TB) |
+| Síťová rozhraní za uzel                             | 4 síťových rozhraní na jeden uzel <br><br> MGMT DATA3 <ul><li> 2 × 1 GbE rozhraní </li><li> MGMT je pro správu a počáteční nastavení, není konfigurovatelná uživatelem </li><li> DATA3 je uživatelem konfigurovatelné a dynamické Host Configuration Protocol (DHCP) ve výchozím nastavení</li><li>1 GbE síťová rozhraní můžete také nakonfigurovat jako rozhraní 10 GbE</li></ul>Data1 DATA2 datová rozhraní <ul><li>2 x 40 10GbE rozhraní </li><li> Uživatel je možné nakonfigurovat pro protokol DHCP (výchozí) nebo statické</li></ul>|
 
 
 ## <a name="components"></a>Komponenty

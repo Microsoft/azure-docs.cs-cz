@@ -20,8 +20,6 @@
   items:
     - name: Spouštění dotazů v clusteru Apache Spark
       href: apache-spark-load-data-run-query.md
-    - name: Použití VSCode ke spouštění dotazů Apache Sparku
-      href: ../hdinsight-for-vscode.md
     - name: Použití IntelliJ ke spouštění dotazů Apache Sparku
       href: apache-spark-intellij-tool-plugin.md
     - name: Analýza dat pomocí nástrojů BI
@@ -32,6 +30,8 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: Vytvoření aplikace Apache Spark v IntelliJ
       href: apache-spark-create-standalone-application.md
+    - name: Použití VSCode ke spouštění dotazů Apache Sparku
+      href: ../hdinsight-for-vscode.md
     - name: Monitorování dostupnosti clusterů s využitím protokolů Azure Monitoru a Ambari
       href: ../hdinsight-cluster-availability.md
 - name: Ukázky

@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a0ca2adebe662c72eb476e800e17092ddbba34a0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872998"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275608"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Rychlý start: Použití mezipaměti Azure pro Redis s Pythonem
 
@@ -66,6 +66,9 @@ True
 >>> r.get('foo')
 b'bar'
 ```
+
+> [!IMPORTANT]
+> Pro Redis je verze 3.0 nebo vyšší, bude vynucovat Kontrola certifikátu SSL. ssl_ca_certs musí být explicitně nastaveny při připojování k úložišti Redis. V případě Linuxu RH ssl_ca_certs najdete v "/ etc/pki/tls/certs/ca-bundle.crt" certifikát modulu.
 
 ## <a name="create-a-python-script"></a>Vytvoření skriptu Pythonu
 

@@ -9,11 +9,11 @@ ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 28d003e123069c47d87d81570b4a5b69b3b9d64b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66128225"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175377"
 ---
 1. Pokud chcete vytvořit prostředek služby Azure SignalR, nejdřív přihlásit k [webu Azure portal](https://portal.azure.com). V levém horním okraji stránky vyberte **+ vytvořit prostředek**. V **Hledat na Marketplace** textové pole, zadejte **služby SignalR**.
 
@@ -21,7 +21,7 @@ ms.locfileid: "66128225"
 
 3. Na novém **SignalR** nastavení stránky, přidáním následujícího nastavení pro nový prostředek SignalR:
 
-    | Název | Doporučená hodnota | Popis |
+    | Name | Doporučená hodnota | Popis |
     | ---- | ----------------- | ----------- |
     | Název prostředku | *testsignalr* | Zadejte jedinečný název prostředku, který se použije pro prostředek služby SignalR. Název musí být řetězec dlouhý 1 až 63 znaků a obsahovat jenom čísla, písmena a spojovník (`-`) znaků. Název nesmí začínat ani končit znakem spojovníku, a znaky po sobě jdoucí pomlčky nejsou platné.|
     | Předplatné | Zvolte vaše předplatné. |  Vyberte předplatné Azure, které chcete k otestování služby SignalR použít. Pokud má váš účet jenom jedno předplatné, je automaticky vybrána a **předplatné** rozevíracím seznamu nezobrazí.|

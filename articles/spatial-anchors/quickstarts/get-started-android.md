@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 03589745e6e9b40b937c49162e99035ce6c81423
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9046af82388f99cfdd82c8cb816d4cda1e5f8237
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800052"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206869"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Rychlý start: Vytvoření aplikace pro Android pomocí Azure prostorových kotvy
 
@@ -57,7 +57,7 @@ Vyberte **otevřete existující projekt Android Studio** a vyberte projekt v `A
 
 Vyberte **otevřete existující projekt Android Studio** a vyberte projekt v `Android/NDK/`.
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
 
@@ -65,7 +65,7 @@ Dalším krokem je konfigurace aplikace pro používání identifikátor účtu 
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Otevřít `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`.
+Otevřít `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
 
@@ -79,7 +79,7 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Nasazení aplikace na zařízení s Androidem
 

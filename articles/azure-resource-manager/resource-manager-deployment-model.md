@@ -1,24 +1,17 @@
 ---
 title: Nasazení Resource Manager a Classic | Microsoft Docs
 description: Popisuje rozdíly mezi modelem nasazení Resource Manager a modelem nasazení Classic (neboli Service Management).
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: c8aafa2dc2798aee5576dab4781b42d4aa67ddd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 773d369f23154a510624169b9329555a1f865320
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128479"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206317"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manageru a klasického nasazení: Vysvětlení modelů nasazení a stavu prostředků
 
@@ -114,7 +107,7 @@ Následující tabulka popisuje změny v interakci poskytovatelů výpočetních
 | Cloudová služba pro službu Virtual Machines |Cloudová služba byla kontejnerem pro uložení virtuálních počítačů, která vyžadovala dostupnost z platformy a vyrovnávání zatížení. |Cloudová služba už není objektem vyžadovaným pro vytvoření virtuálního počítače pomocí nového modelu. |
 | Virtuální sítě |Virtuální síť je pro virtuální počítač volitelná. Pokud existuje, nedá se nasadit pomocí Resource Manageru. |Virtuální počítač vyžaduje virtuální síť nasazenou pomocí Resource Manageru. |
 | Účty úložiště |Virtuální počítač vyžaduje účet úložiště pro uložení virtuálních pevných disků pro operační systém, dočasné soubory a další data. |Virtuální počítač vyžaduje účet úložiště pro uložení disků do úložiště objektů blob. |
-| Sady dostupnosti |Dostupnost pro platformu byla označovaná konfigurací stejného parametru „AvailabilitySetName“ ve službě Virtual Machines. Maximální počet domén selhání byl 2. |Skupina dostupnosti je prostředek vystavený poskytovatelem Microsoft.Compute. Služby Virtual Machines, které vyžadují vysokou dostupnost, musejí být součástí skupiny dostupnosti. Maximální počet domén selhání je teď 3. |
+| Skupiny dostupnosti |Dostupnost pro platformu byla označovaná konfigurací stejného parametru „AvailabilitySetName“ ve službě Virtual Machines. Maximální počet domén selhání byl 2. |Skupina dostupnosti je prostředek vystavený poskytovatelem Microsoft.Compute. Služby Virtual Machines, které vyžadují vysokou dostupnost, musejí být součástí skupiny dostupnosti. Maximální počet domén selhání je teď 3. |
 | Skupiny vztahů |Skupiny vztahů byly nezbytné k vytváření služeb Virtual Network. Se zavedením regionálních služeb Virtual Network přestaly být nutné. |Abychom to zjednodušili, koncept skupin vztahů neexistuje v rozhraních API, které se vystavují prostřednictvím správce Azure Resource Manager. |
 | Vyrovnávání zatížení |Vytvoření cloudové služby nabízí implicitní nástroj pro vyrovnávání zatížení nasazených služeb Virtual Machines. |Nástroj pro vyrovnávání zatížení je prostředek vystavený poskytovatelem Microsoft.Network. Primární síťové rozhraní služeb Virtual Machines, které potřebuje vyrovnávání zatížení, musí odkazovat na nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení můžou být interní nebo externí. Instance nástroje pro vyrovnávání zatížení odkazuje na back-endový fond IP adres zahrnující síťový adaptér virtuálního počítače (volitelné) a na veřejnou nebo privátní IP adresu nástroje pro vyrovnávání zatížení (volitelné). |
 | Virtuální IP adresa |Po přidání virtuálního počítače do cloudové služby získají služby Cloud Services výchozí VIP (virtuální IP adresu). Virtuální IP adresa je adresa přidružená k implicitnímu nástroji pro vyrovnávání zatížení. |Veřejná IP adresa je prostředek vystavený poskytovatelem Microsoft.Network. Veřejná IP adresa může být statická (vyhrazená) nebo dynamická. Dynamické veřejné IP adresy můžete přiřadit ke službě Load Balancer. Veřejné IP adresy můžete zabezpečit pomocí skupin zabezpečení. |

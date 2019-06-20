@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 44ee258567ca357687feb24337f2d5974e2532b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66169615"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175621"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

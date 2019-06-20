@@ -10,11 +10,11 @@ ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: ec0425ff2188ecf1816d5f5841394c8e32f301d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132228"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174804"
 ---
 ## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
 
@@ -27,7 +27,7 @@ Tento článek předpokládá, že vytváříte novou aplikaci funkcí.
 
 1. V **Azure: Funkce** oblasti, vyberte nasazení na ikonu aplikace Function App.
 
-    ![Nastavení Function App](./media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![Nastavení aplikace funkcí](./media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. Pokud nejsou přihlášeni, zobrazí se výzva k **přihlášení k Azure**. Můžete také **vytvořit si bezplatný účet Azure**. Po úspěšném přihlášení z prohlížeče přejděte zpět do Visual Studio Code. 
 
@@ -43,9 +43,9 @@ Tento článek předpokládá, že vytváříte novou aplikaci funkcí.
 
     Při stisknutí klávesy Enter, vytvoří následující prostředky Azure v rámci vašeho předplatného:
 
-    * **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)**: Obsahuje všechny vytvořené prostředky Azure. Název je založené na název vaší aplikace funkcí.
-    * **[Účet úložiště](../articles/storage/common/storage-quickstart-create-account.md)**: Standardní účet úložiště se vytvoří s jedinečným názvem, který je založen na název vaší aplikace funkcí.
-    * **[Plán hostování](../articles/azure-functions/functions-scale.md)**: Plán consumption se vytvoří v oblasti USA – západ hostovat vaše function app bez serveru.
+    * **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** : Obsahuje všechny vytvořené prostředky Azure. Název je založené na název vaší aplikace funkcí.
+    * **[Účet úložiště](../articles/storage/common/storage-quickstart-create-account.md)** : Standardní účet úložiště se vytvoří s jedinečným názvem, který je založen na název vaší aplikace funkcí.
+    * **[Plán hostování](../articles/azure-functions/functions-scale.md)** : Plán consumption se vytvoří v oblasti USA – západ hostovat vaše function app bez serveru.
     * **Aplikace Function app**: Váš projekt nasazené a běží v této nové aplikace function app.
 
     Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení. Vyberte **zobrazení výstupu** toto oznámení zobrazíte vytváření a výsledky nasazení, včetně Azure prostředky, které jste vytvořili.

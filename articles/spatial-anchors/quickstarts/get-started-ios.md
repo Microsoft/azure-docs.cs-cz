@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56360238db8632e74a95c057a7fe643b5cea3151
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234106"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206837"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Rychlý start: Vytvoření aplikace pro iOS pomocí Azure prostorových ukotvení v Swift a Objective-C
 
@@ -62,7 +62,7 @@ Přejděte na adresu `iOS/Objective-C/`.
 cd ./iOS/Objective-C/
 ```
 
-***
+---
 
 Spustit `pod install --repo-update` nainstalujte CocoaPods pro projekt.
 
@@ -80,7 +80,7 @@ open ./SampleSwift.xcworkspace
 open ./SampleObjC.xcworkspace
 ```
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>Nakonfigurujte identifikátor účtu a klíč
 
@@ -102,13 +102,13 @@ Vyhledejte `SpatialAnchorsAccountKey` pole a nahraďte `Set me` klíčem účtu.
 
 Vyhledejte `SpatialAnchorsAccountId` pole a nahraďte `Set me` s identifikátor účtu.
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Nasazení aplikace na zařízení s Iosem
 
 Připojit zařízení s Iosem do Mac a nastavte **aktivní schéma** na zařízení s Iosem.
 
-![Vybrat zařízení](./media/get-started-ios/select-device.png)
+![Vyberte zařízení](./media/get-started-ios/select-device.png)
 
 Vyberte **sestavení a poté spusťte aktuální schéma**.
 

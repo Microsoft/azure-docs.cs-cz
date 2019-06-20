@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: sngun
 ms.openlocfilehash: e7fc8f57c0fe290809354ce19fe92337178a84b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66151345"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67175550"
 ---
 Jakmile budete hotovi s web app a účtu služby Azure Cosmos DB, můžete odstranit, kterou jste vytvořili, takže se vám neúčtovaly poplatky za další prostředky Azure. Odstranění prostředků:
 

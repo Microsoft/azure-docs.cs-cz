@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 0c7b63dd8f6ed06c1ece403ee18f9be48d4797e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120827"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67150883"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí webu Azure portal
 
@@ -49,7 +49,7 @@ K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následujíc
     
    Vyberte __Typ clusteru__ a zobrazte **Konfiguraci clusteru**.
    
-   ![Základní konfigurace clusteru Apache Kafka ve službě HDInsight](./media/apache-kafka-get-started/hdinsight-basic-configuration-1.png)
+   ![Základní konfigurace clusteru Apache Kafka ve službě HDInsight](./media/apache-kafka-get-started/custom-basics-kafka.png)
 
 4. Z __konfigurace clusteru__, vyberte následující hodnoty:
 

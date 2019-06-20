@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 15b7c052d0e4d51cb033607c156a55c581f722b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539528"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147281"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Linuxem v hybridním prostředí
-[Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](quick-collect-azurevm.md).  
+[Azure Log Analytics](../platform/agent-windows.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací. Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](quick-collect-azurevm.md).  
 
-Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+Než budete pokračovat, měli byste nejdřív zkontrolovat agenta Log Analytics [přehled](../platform/log-analytics-agent.md) článek pochopit, jaké konfigurace jsou podporovány, [podporovaných operačních systémech Linux](../platform/log-analytics-agent.md#supported-linux-operating-systems) a [ Konfigurace brány firewall sítě](../platform/log-analytics-agent.md#network-firewall-requirements). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -107,7 +107,7 @@ Příklad: `https://user01:password@proxy01.contoso.com:30443`
 Log Analytics může shromažďovat události z protokolu Syslog v Linuxu a z čítačů výkonu, které určíte pro dlouhodobější analýzu a generování sestav, a provést akci při zjištění konkrétní podmínky.  Postupujte podle těchto kroků a pro začátek nakonfigurujte shromažďování událostí z protokolu Syslog v Linuxu a několika běžných čítačů výkonu.  
 
 1. Vyberte **Syslog**.  
-2. Protokol událostí přidáte zadáním názvu protokolu. Zadejte **Syslog** a klikněte na symbol plus **+**.  
+2. Protokol událostí přidáte zadáním názvu protokolu. Zadejte **Syslog** a klikněte na symbol plus **+** .  
 3. V tabulce zrušte zaškrtnutí závažností **Informace**, **Oznámení** a **Ladění**. 
 4. Uložte konfiguraci kliknutím na **Uložit** v horní části stránky.
 5. Výběrem **Data o výkonu systému Linux** povolte shromažďování čítačů výkonu na počítači s Linuxem. 

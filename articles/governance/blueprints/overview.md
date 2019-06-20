@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 8b340eeaaae41815482f4dfed4168dfd8367aba9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60876235"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143909"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure podrobné plány
 
@@ -109,7 +109,7 @@ Pokud chcete podrobný plán přiřadit nebo zrušit jeho přiřazení, váš ú
 Všechny výše uvedené oprávnění jsou součástí **vlastníka** role. **Přispěvatel** role má vytvořit podrobný plán a odstranit podrobný plán oprávnění, ale nemá oprávnění k přiřazení podrobného plánu. Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečení, zvažte vytvoření [vlastní role](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> K povolení nasazení vyžaduje instanční objekt pro Azure Blueprints u přiřazeného předplatného roli **Vlastník**. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky.
+> Pokud systém přiřadil pomocí spravované identity, vyžaduje instanční objekt služby Azure podrobného plánu **vlastníka** role na přiřazené předplatné, chcete-li povolit nasazení. Pokud používáte portál, tato role se pro nasazení uděluje a ruší automaticky. Pokud používáte rozhraní REST API, tato role se musí udělit ručně, ale po dokončení nasazení se zruší automaticky. Pokud uživatel přiřazenou pomocí spravované identity, jenom na uživatele, vytváří se přiřazení podrobného plánu musí **vlastníka** oprávnění.
 
 ## <a name="video-overview"></a>Video s přehledem
 

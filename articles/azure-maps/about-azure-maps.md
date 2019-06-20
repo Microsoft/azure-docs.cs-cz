@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8092cd169f93a6815e52517d805941ac7ddcbbc0
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 2368d097cc0bfe82d0b869c3c8eb48760cc41616
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66807515"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275108"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb, nepřipnutých nejčerstvější mapování daty dostupnými poskytování přesných geografického kontextu pro webové a mobilní aplikace. Azure Maps se skládá z rozhraní REST API pro vykreslování **mapy** v několika – styly a satelitních snímků, **hledání** pro adresy, místa a body zájmu po celém světě; **Směrování** point-to-point, multipoint, multipoint optimalizace, isochrone, komerční vozidla, provoz k nim a matice směrování; zobrazení toku provozu předních výrobců a incidentů **Mobility** služby vyžádání veřejné přenosu, sdílení kol, scooter sdílené složky a Auto sdílet informace k plánování tras využívá alternativní režimy dopravy a dat v reálném čase; navazování polohu uživatele přes **Informace o zeměpisné poloze**; a umístění pro převod **časových pásem**, jakož i načítání čas do umístění. Kromě toho Azure Maps nabízí služby pro **monitorování geografických zón**, mapy **Data** úložiště – hostování informace o poloze v Azure; a **prostorových operace** umístění Chcete-li zobrazit Intelligence prostřednictvím geoprostorové analýzy. Služby Azure Maps jsou k dispozici přímo jako rozhraní REST API nebo prostřednictvím naší robustní **Web SDK** nebo **sady Android SDK**. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení schopná integrovat informace o poloze do řešení Azure z v rámci cloudu Azure. Zaregistrujte vaši bezplatnou [účet Azure Maps](https://azure.microsoft.com/services/azure-maps/) dnes a vývoj start!
+Azure Maps je kolekce geoprostorových služeb, s nejčerstvější data mapování, která je k dispozici, poskytování přesných geografického kontextu pro webové a mobilní aplikace. Azure Maps se skládá z rozhraní REST API pro vykreslování **mapy** v několika – styly a satelitních snímků, **hledání** pro adresy, místa a body zájmu po celém světě; **Směrování** point-to-point, multipoint, multipoint optimalizace, isochrone, komerční vozidla, provoz k nim a matice směrování; zobrazení toku provozu předních výrobců a incidentů **Mobility** služby vyžádání veřejné přenosu, sdílení kol, scooter sdílené složky a Auto sdílet informace k plánování tras využívá alternativní režimy dopravy a dat v reálném čase; navazování polohu uživatele přes **Informace o zeměpisné poloze**; a umístění pro převod **časových pásem**, jakož i načítání čas do umístění. Kromě toho Azure Maps nabízí služby pro **monitorování geografických zón**, mapy **Data** úložiště – hostování informace o poloze v Azure; a **prostorových operace** umístění Chcete-li zobrazit Intelligence prostřednictvím geoprostorové analýzy. Služby Azure Maps jsou k dispozici přímo jako rozhraní REST API nebo prostřednictvím naší robustní **Web SDK** nebo **sady Android SDK**. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení schopná integrovat informace o poloze do řešení Azure z v rámci cloudu Azure. Zaregistrujte vaši bezplatnou [účet Azure Maps](https://azure.microsoft.com/services/azure-maps/) dnes a vývoj start!
 
 Následující video vysvětluje Azure Maps do hloubky:
 
@@ -151,12 +151,12 @@ Ověřte, že umístění vaši aktuální IP adresu není v jedné z nepodporov
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o nových funkcích Azure Maps:
-
-> [!div class="nextstepaction"]
-> [Matice tras, izochrony, vyhledávání IP adresy a další](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/).
-
 Vyzkoušejte si ukázkové aplikace demonstrující Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Rychlé zprovoznění: Vytvoření webové aplikace](quick-demo-map-app.md)
+
+Aktuální informace o Azure Maps: 
+
+> [!div class="nextstepaction"]
+> [Blog o Azure Maps](https://azure.microsoft.com/blog/topics/azure-maps/)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: dfe4f226302b6bb6a010d9d4348fde05b2d31193
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 76771a7dfcc323cca6ea52366195c895ee510701
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356940"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165598"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý start: Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
 
@@ -91,8 +91,7 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
 Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
 > [!NOTE]
-> Pokud dotaz nevrátí žádné výsledky z předplatného už máte přístup, pak Všimněte si, že `Search-AzGraph` výchozí nastavení rutiny pro předplatná ve výchozím kontextu. Zobrazí seznam předplatné ID, které jsou součástí výchozí kontext spustit `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Pokud chcete hledat ve všech předplatných, kterým máte přístup, jeden nastavit PSDefaultParameterValues pro `Search-AzGraph' cmdlet by running 
-> `$PSDefaultParameterValues = @{" Search – AzGraph:Subscription "= $(Get-AzSubscription) .ID}.
+> Pokud dotaz nevrátí žádné výsledky z předplatného už máte přístup, pak Všimněte si, že `Search-AzGraph` výchozí nastavení rutiny pro předplatná ve výchozím kontextu. Zobrazí seznam předplatné ID, které jsou součástí výchozí kontext spustit `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Pokud chcete hledat ve všech předplatných, kterým máte přístup, jeden nastavit PSDefaultParameterValues pro `Search-AzGraph` spuštěním `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID }`
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
